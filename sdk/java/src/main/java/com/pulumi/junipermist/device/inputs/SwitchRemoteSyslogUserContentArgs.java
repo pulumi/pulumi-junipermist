@@ -16,14 +16,14 @@ public final class SwitchRemoteSyslogUserContentArgs extends com.pulumi.resource
     public static final SwitchRemoteSyslogUserContentArgs Empty = new SwitchRemoteSyslogUserContentArgs();
 
     /**
-     * enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`
+     * Syslog facility to match for this selector
      * 
      */
     @Import(name="facility")
     private @Nullable Output<String> facility;
 
     /**
-     * @return enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`
+     * @return Syslog facility to match for this selector
      * 
      */
     public Optional<Output<String>> facility() {
@@ -31,14 +31,14 @@ public final class SwitchRemoteSyslogUserContentArgs extends com.pulumi.resource
     }
 
     /**
-     * enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
+     * Syslog severity to match for this selector
      * 
      */
     @Import(name="severity")
     private @Nullable Output<String> severity;
 
     /**
-     * @return enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
+     * @return Syslog severity to match for this selector
      * 
      */
     public Optional<Output<String>> severity() {
@@ -71,7 +71,7 @@ public final class SwitchRemoteSyslogUserContentArgs extends com.pulumi.resource
         }
 
         /**
-         * @param facility enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`
+         * @param facility Syslog facility to match for this selector
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class SwitchRemoteSyslogUserContentArgs extends com.pulumi.resource
         }
 
         /**
-         * @param facility enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`
+         * @param facility Syslog facility to match for this selector
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class SwitchRemoteSyslogUserContentArgs extends com.pulumi.resource
         }
 
         /**
-         * @param severity enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
+         * @param severity Syslog severity to match for this selector
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class SwitchRemoteSyslogUserContentArgs extends com.pulumi.resource
         }
 
         /**
-         * @param severity enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
+         * @param severity Syslog severity to match for this selector
          * 
          * @return builder
          * 

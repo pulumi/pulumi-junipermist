@@ -13,7 +13,13 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class BaseLatlng
     {
+        /// <summary>
+        /// Geographic latitude in decimal degrees
+        /// </summary>
         public readonly double Lat;
+        /// <summary>
+        /// Geographic longitude in decimal degrees
+        /// </summary>
         public readonly double Lng;
 
         [OutputConstructor]

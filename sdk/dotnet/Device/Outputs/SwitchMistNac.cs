@@ -13,7 +13,13 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class SwitchMistNac
     {
+        /// <summary>
+        /// Whether Mist NAC RadSec is enabled for the switch
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// Switch network used for Mist NAC RadSec connectivity
+        /// </summary>
         public readonly string? Network;
 
         [OutputConstructor]

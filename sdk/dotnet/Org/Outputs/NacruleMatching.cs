@@ -14,37 +14,43 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class NacruleMatching
     {
         /// <summary>
-        /// enum: `Cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `Idp`, `Mab`, `eap-peap`
+        /// NAC authentication method that must match the request
         /// </summary>
         public readonly string? AuthType;
         /// <summary>
-        /// List of client device families to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed family values
+        /// Client device family values that must match the request
         /// </summary>
         public readonly ImmutableArray<string> Families;
         /// <summary>
-        /// List of client device models to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed model values
+        /// Client device manufacturer values that must match the request
         /// </summary>
         public readonly ImmutableArray<string> Mfgs;
         /// <summary>
-        /// List of client device manufacturers to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed mfg values
+        /// Client device model values that must match the request
         /// </summary>
         public readonly ImmutableArray<string> Models;
+        /// <summary>
+        /// NAC tag IDs whose match criteria must be satisfied by the request
+        /// </summary>
         public readonly ImmutableArray<string> Nactags;
         /// <summary>
-        /// List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed OsType values
+        /// Client OS type values that must match the request
         /// </summary>
         public readonly ImmutableArray<string> OsTypes;
+        /// <summary>
+        /// Wired or wireless access types that must match the request
+        /// </summary>
         public readonly ImmutableArray<string> PortTypes;
         /// <summary>
-        /// List of site ids to match
+        /// Site IDs where the rule criteria apply
         /// </summary>
         public readonly ImmutableArray<string> SiteIds;
         /// <summary>
-        /// List of sitegroup ids to match
+        /// Site group IDs where the rule criteria apply
         /// </summary>
         public readonly ImmutableArray<string> SitegroupIds;
         /// <summary>
-        /// List of vendors to match
+        /// Client device vendor values that must match the request
         /// </summary>
         public readonly ImmutableArray<string> Vendors;
 

@@ -13,7 +13,13 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class SwitchSnmpConfigV3ConfigNotifyFilterContent
     {
+        /// <summary>
+        /// Whether the matching OID subtree is included
+        /// </summary>
         public readonly bool? Include;
+        /// <summary>
+        /// Matched OID subtree for this notification filter rule
+        /// </summary>
         public readonly string Oid;
 
         [OutputConstructor]

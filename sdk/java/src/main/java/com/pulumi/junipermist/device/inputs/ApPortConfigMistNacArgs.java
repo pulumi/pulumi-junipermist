@@ -18,14 +18,14 @@ public final class ApPortConfigMistNacArgs extends com.pulumi.resources.Resource
     public static final ApPortConfigMistNacArgs Empty = new ApPortConfigMistNacArgs();
 
     /**
-     * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+     * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled.
      * 
      */
     @Import(name="acctInterimInterval")
     private @Nullable Output<Integer> acctInterimInterval;
 
     /**
-     * @return How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+     * @return How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled.
      * 
      */
     public Optional<Output<Integer>> acctInterimInterval() {
@@ -33,14 +33,14 @@ public final class ApPortConfigMistNacArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Radius auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. &#34;retries&#34; are set to value of `authServersTimeout`. &#34;max-requests&#34; is also set when setting `authServersRetries` is set to default value to 3.
+     * RADIUS auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. &#34;retries&#34; are set to value of `authServersTimeout`. &#34;max-requests&#34; is also set when setting `authServersRetries` is set to default value to 3.
      * 
      */
     @Import(name="authServersRetries")
     private @Nullable Output<Integer> authServersRetries;
 
     /**
-     * @return Radius auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. &#34;retries&#34; are set to value of `authServersTimeout`. &#34;max-requests&#34; is also set when setting `authServersRetries` is set to default value to 3.
+     * @return RADIUS auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. &#34;retries&#34; are set to value of `authServersTimeout`. &#34;max-requests&#34; is also set when setting `authServersRetries` is set to default value to 3.
      * 
      */
     public Optional<Output<Integer>> authServersRetries() {
@@ -48,14 +48,14 @@ public final class ApPortConfigMistNacArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Radius auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. &#34;quite-period&#34; and &#34;transmit-period&#34; are set to half the value of `authServersTimeout`. &#34;supplicant-timeout&#34; is also set when setting `authServersTimeout` is set to default value of 10.
+     * RADIUS auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. &#34;quite-period&#34; and &#34;transmit-period&#34; are set to half the value of `authServersTimeout`. &#34;supplicant-timeout&#34; is also set when setting `authServersTimeout` is set to default value of 10.
      * 
      */
     @Import(name="authServersTimeout")
     private @Nullable Output<Integer> authServersTimeout;
 
     /**
-     * @return Radius auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. &#34;quite-period&#34; and &#34;transmit-period&#34; are set to half the value of `authServersTimeout`. &#34;supplicant-timeout&#34; is also set when setting `authServersTimeout` is set to default value of 10.
+     * @return RADIUS auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. &#34;quite-period&#34; and &#34;transmit-period&#34; are set to half the value of `authServersTimeout`. &#34;supplicant-timeout&#34; is also set when setting `authServersTimeout` is set to default value of 10.
      * 
      */
     public Optional<Output<Integer>> authServersTimeout() {
@@ -197,7 +197,7 @@ public final class ApPortConfigMistNacArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param acctInterimInterval How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+         * @param acctInterimInterval How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled.
          * 
          * @return builder
          * 
@@ -208,7 +208,7 @@ public final class ApPortConfigMistNacArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param acctInterimInterval How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+         * @param acctInterimInterval How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled.
          * 
          * @return builder
          * 
@@ -218,7 +218,7 @@ public final class ApPortConfigMistNacArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param authServersRetries Radius auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. &#34;retries&#34; are set to value of `authServersTimeout`. &#34;max-requests&#34; is also set when setting `authServersRetries` is set to default value to 3.
+         * @param authServersRetries RADIUS auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. &#34;retries&#34; are set to value of `authServersTimeout`. &#34;max-requests&#34; is also set when setting `authServersRetries` is set to default value to 3.
          * 
          * @return builder
          * 
@@ -229,7 +229,7 @@ public final class ApPortConfigMistNacArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param authServersRetries Radius auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. &#34;retries&#34; are set to value of `authServersTimeout`. &#34;max-requests&#34; is also set when setting `authServersRetries` is set to default value to 3.
+         * @param authServersRetries RADIUS auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. &#34;retries&#34; are set to value of `authServersTimeout`. &#34;max-requests&#34; is also set when setting `authServersRetries` is set to default value to 3.
          * 
          * @return builder
          * 
@@ -239,7 +239,7 @@ public final class ApPortConfigMistNacArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param authServersTimeout Radius auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. &#34;quite-period&#34; and &#34;transmit-period&#34; are set to half the value of `authServersTimeout`. &#34;supplicant-timeout&#34; is also set when setting `authServersTimeout` is set to default value of 10.
+         * @param authServersTimeout RADIUS auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. &#34;quite-period&#34; and &#34;transmit-period&#34; are set to half the value of `authServersTimeout`. &#34;supplicant-timeout&#34; is also set when setting `authServersTimeout` is set to default value of 10.
          * 
          * @return builder
          * 
@@ -250,7 +250,7 @@ public final class ApPortConfigMistNacArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param authServersTimeout Radius auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. &#34;quite-period&#34; and &#34;transmit-period&#34; are set to half the value of `authServersTimeout`. &#34;supplicant-timeout&#34; is also set when setting `authServersTimeout` is set to default value of 10.
+         * @param authServersTimeout RADIUS auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. &#34;quite-period&#34; and &#34;transmit-period&#34; are set to half the value of `authServersTimeout`. &#34;supplicant-timeout&#34; is also set when setting `authServersTimeout` is set to default value of 10.
          * 
          * @return builder
          * 

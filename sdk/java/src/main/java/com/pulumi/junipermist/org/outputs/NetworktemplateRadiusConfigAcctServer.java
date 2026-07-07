@@ -14,54 +14,86 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworktemplateRadiusConfigAcctServer {
     /**
-     * @return IP/ hostname of RADIUS server
+     * @return Address or hostname of the RADIUS accounting server
      * 
      */
     private String host;
+    /**
+     * @return Whether RADIUS keywrap is enabled for messages sent to this accounting server
+     * 
+     */
     private @Nullable Boolean keywrapEnabled;
     /**
-     * @return enum: `ascii`, `hex`
+     * @return Encoding format for RADIUS keywrap KEK and MACK values
      * 
      */
     private @Nullable String keywrapFormat;
+    /**
+     * @return RADIUS keywrap key encryption key (KEK)
+     * 
+     */
     private @Nullable String keywrapKek;
+    /**
+     * @return RADIUS keywrap message authentication code key (MACK)
+     * 
+     */
     private @Nullable String keywrapMack;
+    /**
+     * @return UDP port used by the RADIUS accounting server
+     * 
+     */
     private @Nullable String port;
     /**
-     * @return Secret of RADIUS server
+     * @return Shared secret used with this RADIUS accounting server
      * 
      */
     private String secret;
 
     private NetworktemplateRadiusConfigAcctServer() {}
     /**
-     * @return IP/ hostname of RADIUS server
+     * @return Address or hostname of the RADIUS accounting server
      * 
      */
     public String host() {
         return this.host;
     }
+    /**
+     * @return Whether RADIUS keywrap is enabled for messages sent to this accounting server
+     * 
+     */
     public Optional<Boolean> keywrapEnabled() {
         return Optional.ofNullable(this.keywrapEnabled);
     }
     /**
-     * @return enum: `ascii`, `hex`
+     * @return Encoding format for RADIUS keywrap KEK and MACK values
      * 
      */
     public Optional<String> keywrapFormat() {
         return Optional.ofNullable(this.keywrapFormat);
     }
+    /**
+     * @return RADIUS keywrap key encryption key (KEK)
+     * 
+     */
     public Optional<String> keywrapKek() {
         return Optional.ofNullable(this.keywrapKek);
     }
+    /**
+     * @return RADIUS keywrap message authentication code key (MACK)
+     * 
+     */
     public Optional<String> keywrapMack() {
         return Optional.ofNullable(this.keywrapMack);
     }
+    /**
+     * @return UDP port used by the RADIUS accounting server
+     * 
+     */
     public Optional<String> port() {
         return Optional.ofNullable(this.port);
     }
     /**
-     * @return Secret of RADIUS server
+     * @return Shared secret used with this RADIUS accounting server
      * 
      */
     public String secret() {

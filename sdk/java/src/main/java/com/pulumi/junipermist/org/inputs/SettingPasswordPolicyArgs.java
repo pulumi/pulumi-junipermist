@@ -47,14 +47,14 @@ public final class SettingPasswordPolicyArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Required password length
+     * Minimum number of characters required for passwords
      * 
      */
     @Import(name="minLength")
     private @Nullable Output<Integer> minLength;
 
     /**
-     * @return Required password length
+     * @return Minimum number of characters required for passwords
      * 
      */
     public Optional<Output<Integer>> minLength() {
@@ -162,7 +162,7 @@ public final class SettingPasswordPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param minLength Required password length
+         * @param minLength Minimum number of characters required for passwords
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class SettingPasswordPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param minLength Required password length
+         * @param minLength Minimum number of characters required for passwords
          * 
          * @return builder
          * 

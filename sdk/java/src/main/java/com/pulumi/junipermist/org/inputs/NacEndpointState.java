@@ -16,38 +16,62 @@ public final class NacEndpointState extends com.pulumi.resources.ResourceArgs {
 
     public static final NacEndpointState Empty = new NacEndpointState();
 
+    /**
+     * Applied labels for this user MAC entry
+     * 
+     */
     @Import(name="labels")
     private @Nullable Output<List<String>> labels;
 
+    /**
+     * @return Applied labels for this user MAC entry
+     * 
+     */
     public Optional<Output<List<String>>> labels() {
         return Optional.ofNullable(this.labels);
     }
 
     /**
-     * Only non-local-admin MAC is accepted
+     * Client MAC address for this entry. Only non-local-admin MAC addresses are accepted
      * 
      */
     @Import(name="mac")
     private @Nullable Output<String> mac;
 
     /**
-     * @return Only non-local-admin MAC is accepted
+     * @return Client MAC address for this entry. Only non-local-admin MAC addresses are accepted
      * 
      */
     public Optional<Output<String>> mac() {
         return Optional.ofNullable(this.mac);
     }
 
+    /**
+     * Display name for this user MAC entry
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Display name for this user MAC entry
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Free-form notes about this user MAC entry
+     * 
+     */
     @Import(name="notes")
     private @Nullable Output<String> notes;
 
+    /**
+     * @return Free-form notes about this user MAC entry
+     * 
+     */
     public Optional<Output<String>> notes() {
         return Optional.ofNullable(this.notes);
     }
@@ -59,16 +83,32 @@ public final class NacEndpointState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.orgId);
     }
 
+    /**
+     * RADIUS group associated with this user MAC entry
+     * 
+     */
     @Import(name="radiusGroup")
     private @Nullable Output<String> radiusGroup;
 
+    /**
+     * @return RADIUS group associated with this user MAC entry
+     * 
+     */
     public Optional<Output<String>> radiusGroup() {
         return Optional.ofNullable(this.radiusGroup);
     }
 
+    /**
+     * Network VLAN value associated with this user MAC entry
+     * 
+     */
     @Import(name="vlan")
     private @Nullable Output<String> vlan;
 
+    /**
+     * @return Network VLAN value associated with this user MAC entry
+     * 
+     */
     public Optional<Output<String>> vlan() {
         return Optional.ofNullable(this.vlan);
     }
@@ -103,21 +143,39 @@ public final class NacEndpointState extends com.pulumi.resources.ResourceArgs {
             $ = new NacEndpointState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param labels Applied labels for this user MAC entry
+         * 
+         * @return builder
+         * 
+         */
         public Builder labels(@Nullable Output<List<String>> labels) {
             $.labels = labels;
             return this;
         }
 
+        /**
+         * @param labels Applied labels for this user MAC entry
+         * 
+         * @return builder
+         * 
+         */
         public Builder labels(List<String> labels) {
             return labels(Output.of(labels));
         }
 
+        /**
+         * @param labels Applied labels for this user MAC entry
+         * 
+         * @return builder
+         * 
+         */
         public Builder labels(String... labels) {
             return labels(List.of(labels));
         }
 
         /**
-         * @param mac Only non-local-admin MAC is accepted
+         * @param mac Client MAC address for this entry. Only non-local-admin MAC addresses are accepted
          * 
          * @return builder
          * 
@@ -128,7 +186,7 @@ public final class NacEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mac Only non-local-admin MAC is accepted
+         * @param mac Client MAC address for this entry. Only non-local-admin MAC addresses are accepted
          * 
          * @return builder
          * 
@@ -137,20 +195,44 @@ public final class NacEndpointState extends com.pulumi.resources.ResourceArgs {
             return mac(Output.of(mac));
         }
 
+        /**
+         * @param name Display name for this user MAC entry
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Display name for this user MAC entry
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param notes Free-form notes about this user MAC entry
+         * 
+         * @return builder
+         * 
+         */
         public Builder notes(@Nullable Output<String> notes) {
             $.notes = notes;
             return this;
         }
 
+        /**
+         * @param notes Free-form notes about this user MAC entry
+         * 
+         * @return builder
+         * 
+         */
         public Builder notes(String notes) {
             return notes(Output.of(notes));
         }
@@ -164,20 +246,44 @@ public final class NacEndpointState extends com.pulumi.resources.ResourceArgs {
             return orgId(Output.of(orgId));
         }
 
+        /**
+         * @param radiusGroup RADIUS group associated with this user MAC entry
+         * 
+         * @return builder
+         * 
+         */
         public Builder radiusGroup(@Nullable Output<String> radiusGroup) {
             $.radiusGroup = radiusGroup;
             return this;
         }
 
+        /**
+         * @param radiusGroup RADIUS group associated with this user MAC entry
+         * 
+         * @return builder
+         * 
+         */
         public Builder radiusGroup(String radiusGroup) {
             return radiusGroup(Output.of(radiusGroup));
         }
 
+        /**
+         * @param vlan Network VLAN value associated with this user MAC entry
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlan(@Nullable Output<String> vlan) {
             $.vlan = vlan;
             return this;
         }
 
+        /**
+         * @param vlan Network VLAN value associated with this user MAC entry
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlan(String vlan) {
             return vlan(Output.of(vlan));
         }

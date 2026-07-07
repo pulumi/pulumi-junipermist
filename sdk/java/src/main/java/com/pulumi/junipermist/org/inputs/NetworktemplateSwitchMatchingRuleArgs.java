@@ -24,14 +24,14 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
     public static final NetworktemplateSwitchMatchingRuleArgs Empty = new NetworktemplateSwitchMatchingRuleArgs();
 
     /**
-     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
+     * Additional Junos CLI commands applied when this matching rule matches
      * 
      */
     @Import(name="additionalConfigCmds")
     private @Nullable Output<List<String>> additionalConfigCmds;
 
     /**
-     * @return additional CLI commands to append to the generated Junos config. **Note**: no check is done
+     * @return Additional Junos CLI commands applied when this matching rule matches
      * 
      */
     public Optional<Output<List<String>>> additionalConfigCmds() {
@@ -54,14 +54,14 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
     }
 
     /**
-     * In-Band Management interface configuration
+     * In-band management IP configuration applied when this matching rule matches
      * 
      */
     @Import(name="ipConfig")
     private @Nullable Output<NetworktemplateSwitchMatchingRuleIpConfigArgs> ipConfig;
 
     /**
-     * @return In-Band Management interface configuration
+     * @return In-band management IP configuration applied when this matching rule matches
      * 
      */
     public Optional<Output<NetworktemplateSwitchMatchingRuleIpConfigArgs>> ipConfig() {
@@ -144,14 +144,14 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
     }
 
     /**
-     * Out-of-Band Management interface configuration
+     * Out-of-band management IP configuration applied when this matching rule matches
      * 
      */
     @Import(name="oobIpConfig")
     private @Nullable Output<NetworktemplateSwitchMatchingRuleOobIpConfigArgs> oobIpConfig;
 
     /**
-     * @return Out-of-Band Management interface configuration
+     * @return Out-of-band management IP configuration applied when this matching rule matches
      * 
      */
     public Optional<Output<NetworktemplateSwitchMatchingRuleOobIpConfigArgs>> oobIpConfig() {
@@ -159,14 +159,14 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
     }
 
     /**
-     * Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
+     * Per-port wired configuration applied when this matching rule matches
      * 
      */
     @Import(name="portConfig")
     private @Nullable Output<Map<String,NetworktemplateSwitchMatchingRulePortConfigArgs>> portConfig;
 
     /**
-     * @return Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
+     * @return Per-port wired configuration applied when this matching rule matches
      * 
      */
     public Optional<Output<Map<String,NetworktemplateSwitchMatchingRulePortConfigArgs>>> portConfig() {
@@ -174,23 +174,31 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
     }
 
     /**
-     * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+     * Port mirroring configuration applied when this matching rule matches
      * 
      */
     @Import(name="portMirroring")
     private @Nullable Output<Map<String,NetworktemplateSwitchMatchingRulePortMirroringArgs>> portMirroring;
 
     /**
-     * @return Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+     * @return Port mirroring configuration applied when this matching rule matches
      * 
      */
     public Optional<Output<Map<String,NetworktemplateSwitchMatchingRulePortMirroringArgs>>> portMirroring() {
         return Optional.ofNullable(this.portMirroring);
     }
 
+    /**
+     * Spanning Tree Protocol configuration applied when this matching rule matches
+     * 
+     */
     @Import(name="stpConfig")
     private @Nullable Output<NetworktemplateSwitchMatchingRuleStpConfigArgs> stpConfig;
 
+    /**
+     * @return Spanning Tree Protocol configuration applied when this matching rule matches
+     * 
+     */
     public Optional<Output<NetworktemplateSwitchMatchingRuleStpConfigArgs>> stpConfig() {
         return Optional.ofNullable(this.stpConfig);
     }
@@ -231,7 +239,7 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config. **Note**: no check is done
+         * @param additionalConfigCmds Additional Junos CLI commands applied when this matching rule matches
          * 
          * @return builder
          * 
@@ -242,7 +250,7 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config. **Note**: no check is done
+         * @param additionalConfigCmds Additional Junos CLI commands applied when this matching rule matches
          * 
          * @return builder
          * 
@@ -252,7 +260,7 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config. **Note**: no check is done
+         * @param additionalConfigCmds Additional Junos CLI commands applied when this matching rule matches
          * 
          * @return builder
          * 
@@ -283,7 +291,7 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param ipConfig In-Band Management interface configuration
+         * @param ipConfig In-band management IP configuration applied when this matching rule matches
          * 
          * @return builder
          * 
@@ -294,7 +302,7 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param ipConfig In-Band Management interface configuration
+         * @param ipConfig In-band management IP configuration applied when this matching rule matches
          * 
          * @return builder
          * 
@@ -409,7 +417,7 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param oobIpConfig Out-of-Band Management interface configuration
+         * @param oobIpConfig Out-of-band management IP configuration applied when this matching rule matches
          * 
          * @return builder
          * 
@@ -420,7 +428,7 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param oobIpConfig Out-of-Band Management interface configuration
+         * @param oobIpConfig Out-of-band management IP configuration applied when this matching rule matches
          * 
          * @return builder
          * 
@@ -430,7 +438,7 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param portConfig Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
+         * @param portConfig Per-port wired configuration applied when this matching rule matches
          * 
          * @return builder
          * 
@@ -441,7 +449,7 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param portConfig Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
+         * @param portConfig Per-port wired configuration applied when this matching rule matches
          * 
          * @return builder
          * 
@@ -451,7 +459,7 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param portMirroring Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+         * @param portMirroring Port mirroring configuration applied when this matching rule matches
          * 
          * @return builder
          * 
@@ -462,7 +470,7 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param portMirroring Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+         * @param portMirroring Port mirroring configuration applied when this matching rule matches
          * 
          * @return builder
          * 
@@ -471,11 +479,23 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
             return portMirroring(Output.of(portMirroring));
         }
 
+        /**
+         * @param stpConfig Spanning Tree Protocol configuration applied when this matching rule matches
+         * 
+         * @return builder
+         * 
+         */
         public Builder stpConfig(@Nullable Output<NetworktemplateSwitchMatchingRuleStpConfigArgs> stpConfig) {
             $.stpConfig = stpConfig;
             return this;
         }
 
+        /**
+         * @param stpConfig Spanning Tree Protocol configuration applied when this matching rule matches
+         * 
+         * @return builder
+         * 
+         */
         public Builder stpConfig(NetworktemplateSwitchMatchingRuleStpConfigArgs stpConfig) {
             return stpConfig(Output.of(stpConfig));
         }

@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class EvpnTopologyEvpnOptionsVsInstances
     {
+        /// <summary>
+        /// List of network names included in this virtual-switch instance
+        /// </summary>
         public readonly ImmutableArray<string> Networks;
 
         [OutputConstructor]

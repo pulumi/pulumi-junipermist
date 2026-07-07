@@ -13,16 +13,19 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class GatewayServicePolicyAntivirusGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// org-level AV Profile can be used, this takes precedence over 'profile'
+        /// Organization-level antivirus profile ID; takes precedence over inline `Profile` settings
         /// </summary>
         [Input("avprofileId")]
         public Input<string>? AvprofileId { get; set; }
 
+        /// <summary>
+        /// Whether antivirus inspection is enabled for the service policy
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Default / noftp / httponly / or keys from av_profiles
+        /// Antivirus profile name to apply, such as `Default`, `Noftp`, `Httponly`, or an AV profile key
         /// </summary>
         [Input("profile")]
         public Input<string>? Profile { get; set; }

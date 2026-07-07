@@ -48,60 +48,109 @@ export class Mxedge extends pulumi.CustomResource {
         return obj['__pulumiType'] === Mxedge.__pulumiType;
     }
 
+    /**
+     * Registration claim code for the Mist Edge
+     */
     declare public readonly claimCode: pulumi.Output<string>;
+    /**
+     * Whether this Mist Edge is scoped to a site
+     */
+    declare public /*out*/ readonly forSite: pulumi.Output<boolean>;
+    /**
+     * Mist Edge MAC address
+     */
     declare public /*out*/ readonly mac: pulumi.Output<string>;
+    /**
+     * Mist Edge hardware or virtual appliance model
+     */
     declare public readonly model: pulumi.Output<string>;
+    /**
+     * Whether the Mist Edge agent has registered with Mist cloud
+     */
     declare public /*out*/ readonly mxagentRegistered: pulumi.Output<boolean>;
     /**
-     * MxCluster this MxEdge belongs to
+     * Mist Edge cluster identifier that this appliance belongs to
      */
     declare public readonly mxclusterId: pulumi.Output<string | undefined>;
+    /**
+     * Management credentials and settings for the Mist Edge
+     */
     declare public readonly mxedgeMgmt: pulumi.Output<outputs.org.MxedgeMxedgeMgmt | undefined>;
+    /**
+     * Display name of the Mist Edge
+     */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Free-form notes for the Mist Edge
+     */
     declare public readonly notes: pulumi.Output<string | undefined>;
+    /**
+     * Time synchronization servers used by the Mist Edge
+     */
     declare public readonly ntpServers: pulumi.Output<string[] | undefined>;
     /**
-     * IPconfiguration of the Mist Edge out-of*band management interface
+     * Out-of-band management IP configuration for the Mist Edge
      */
     declare public readonly oobIpConfig: pulumi.Output<outputs.org.MxedgeOobIpConfig | undefined>;
+    /**
+     * Identifier of the org that owns the Mist Edge
+     */
     declare public readonly orgId: pulumi.Output<string>;
     /**
-     * Proxy Configuration to talk to Mist
+     * Network proxy settings used by the Mist Edge
      */
     declare public readonly proxy: pulumi.Output<outputs.org.MxedgeProxy | undefined>;
     /**
-     * List of services to run, tunterm only for now
+     * List of services enabled to run on the Mist Edge
      */
     declare public /*out*/ readonly services: pulumi.Output<string[]>;
+    /**
+     * Identifier of the site when the Mist Edge is site-scoped
+     */
     declare public readonly siteId: pulumi.Output<string | undefined>;
     /**
-     * Global and per-VLAN. Property key is the VLAN ID
+     * DHCP relay or server settings for Mist Tunneled VLANs
      */
     declare public readonly tuntermDhcpdConfig: pulumi.Output<{[key: string]: outputs.org.MxedgeTuntermDhcpdConfig} | undefined>;
     /**
-     * Property key is a CIDR
+     * Extra routes for Mist Tunneled VLAN traffic; property key is a CIDR
      */
     declare public readonly tuntermExtraRoutes: pulumi.Output<{[key: string]: outputs.org.MxedgeTuntermExtraRoutes} | undefined>;
+    /**
+     * IGMP snooping settings for Mist Tunneled VLANs
+     */
     declare public readonly tuntermIgmpSnoopingConfig: pulumi.Output<outputs.org.MxedgeTuntermIgmpSnoopingConfig | undefined>;
     /**
-     * IPconfiguration of the Mist Tunnel interface
+     * Tunnel termination IP configuration for the Mist Edge
      */
     declare public readonly tuntermIpConfig: pulumi.Output<outputs.org.MxedgeTuntermIpConfig | undefined>;
+    /**
+     * Monitoring checks for tunnel termination reachability
+     */
     declare public readonly tuntermMonitorings: pulumi.Output<outputs.org.MxedgeTuntermMonitoring[][] | undefined>;
+    /**
+     * Multicast forwarding settings for tunnel termination
+     */
     declare public readonly tuntermMulticastConfig: pulumi.Output<outputs.org.MxedgeTuntermMulticastConfig | undefined>;
     /**
      * IPconfigs by VLAN ID. Property key is the VLAN ID
      */
     declare public readonly tuntermOtherIpConfigs: pulumi.Output<{[key: string]: outputs.org.MxedgeTuntermOtherIpConfigs} | undefined>;
     /**
-     * Ethernet port configurations
+     * Port configuration for tunnel termination traffic
      */
     declare public readonly tuntermPortConfig: pulumi.Output<outputs.org.MxedgeTuntermPortConfig | undefined>;
+    /**
+     * Whether the tunnel termination service has registered with Mist cloud
+     */
     declare public /*out*/ readonly tuntermRegistered: pulumi.Output<boolean>;
     /**
-     * If custom vlan settings are desired
+     * Switch VLAN settings for tunnel termination
      */
     declare public readonly tuntermSwitchConfig: pulumi.Output<{[key: string]: outputs.org.MxedgeTuntermSwitchConfig} | undefined>;
+    /**
+     * Service version information reported by the Mist Edge
+     */
     declare public readonly versions: pulumi.Output<outputs.org.MxedgeVersions | undefined>;
 
     /**
@@ -118,6 +167,7 @@ export class Mxedge extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as MxedgeState | undefined;
             resourceInputs["claimCode"] = state?.claimCode;
+            resourceInputs["forSite"] = state?.forSite;
             resourceInputs["mac"] = state?.mac;
             resourceInputs["model"] = state?.model;
             resourceInputs["mxagentRegistered"] = state?.mxagentRegistered;
@@ -168,6 +218,7 @@ export class Mxedge extends pulumi.CustomResource {
             resourceInputs["tuntermPortConfig"] = args?.tuntermPortConfig;
             resourceInputs["tuntermSwitchConfig"] = args?.tuntermSwitchConfig;
             resourceInputs["versions"] = args?.versions;
+            resourceInputs["forSite"] = undefined /*out*/;
             resourceInputs["mac"] = undefined /*out*/;
             resourceInputs["mxagentRegistered"] = undefined /*out*/;
             resourceInputs["services"] = undefined /*out*/;
@@ -182,60 +233,109 @@ export class Mxedge extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Mxedge resources.
  */
 export interface MxedgeState {
+    /**
+     * Registration claim code for the Mist Edge
+     */
     claimCode?: pulumi.Input<string | undefined>;
+    /**
+     * Whether this Mist Edge is scoped to a site
+     */
+    forSite?: pulumi.Input<boolean | undefined>;
+    /**
+     * Mist Edge MAC address
+     */
     mac?: pulumi.Input<string | undefined>;
+    /**
+     * Mist Edge hardware or virtual appliance model
+     */
     model?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the Mist Edge agent has registered with Mist cloud
+     */
     mxagentRegistered?: pulumi.Input<boolean | undefined>;
     /**
-     * MxCluster this MxEdge belongs to
+     * Mist Edge cluster identifier that this appliance belongs to
      */
     mxclusterId?: pulumi.Input<string | undefined>;
+    /**
+     * Management credentials and settings for the Mist Edge
+     */
     mxedgeMgmt?: pulumi.Input<inputs.org.MxedgeMxedgeMgmt | undefined>;
+    /**
+     * Display name of the Mist Edge
+     */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Free-form notes for the Mist Edge
+     */
     notes?: pulumi.Input<string | undefined>;
+    /**
+     * Time synchronization servers used by the Mist Edge
+     */
     ntpServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * IPconfiguration of the Mist Edge out-of*band management interface
+     * Out-of-band management IP configuration for the Mist Edge
      */
     oobIpConfig?: pulumi.Input<inputs.org.MxedgeOobIpConfig | undefined>;
+    /**
+     * Identifier of the org that owns the Mist Edge
+     */
     orgId?: pulumi.Input<string | undefined>;
     /**
-     * Proxy Configuration to talk to Mist
+     * Network proxy settings used by the Mist Edge
      */
     proxy?: pulumi.Input<inputs.org.MxedgeProxy | undefined>;
     /**
-     * List of services to run, tunterm only for now
+     * List of services enabled to run on the Mist Edge
      */
     services?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Identifier of the site when the Mist Edge is site-scoped
+     */
     siteId?: pulumi.Input<string | undefined>;
     /**
-     * Global and per-VLAN. Property key is the VLAN ID
+     * DHCP relay or server settings for Mist Tunneled VLANs
      */
     tuntermDhcpdConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.MxedgeTuntermDhcpdConfig>} | undefined>;
     /**
-     * Property key is a CIDR
+     * Extra routes for Mist Tunneled VLAN traffic; property key is a CIDR
      */
     tuntermExtraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.MxedgeTuntermExtraRoutes>} | undefined>;
+    /**
+     * IGMP snooping settings for Mist Tunneled VLANs
+     */
     tuntermIgmpSnoopingConfig?: pulumi.Input<inputs.org.MxedgeTuntermIgmpSnoopingConfig | undefined>;
     /**
-     * IPconfiguration of the Mist Tunnel interface
+     * Tunnel termination IP configuration for the Mist Edge
      */
     tuntermIpConfig?: pulumi.Input<inputs.org.MxedgeTuntermIpConfig | undefined>;
+    /**
+     * Monitoring checks for tunnel termination reachability
+     */
     tuntermMonitorings?: pulumi.Input<pulumi.Input<pulumi.Input<inputs.org.MxedgeTuntermMonitoring>[]>[] | undefined>;
+    /**
+     * Multicast forwarding settings for tunnel termination
+     */
     tuntermMulticastConfig?: pulumi.Input<inputs.org.MxedgeTuntermMulticastConfig | undefined>;
     /**
      * IPconfigs by VLAN ID. Property key is the VLAN ID
      */
     tuntermOtherIpConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.MxedgeTuntermOtherIpConfigs>} | undefined>;
     /**
-     * Ethernet port configurations
+     * Port configuration for tunnel termination traffic
      */
     tuntermPortConfig?: pulumi.Input<inputs.org.MxedgeTuntermPortConfig | undefined>;
+    /**
+     * Whether the tunnel termination service has registered with Mist cloud
+     */
     tuntermRegistered?: pulumi.Input<boolean | undefined>;
     /**
-     * If custom vlan settings are desired
+     * Switch VLAN settings for tunnel termination
      */
     tuntermSwitchConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.MxedgeTuntermSwitchConfig>} | undefined>;
+    /**
+     * Service version information reported by the Mist Edge
+     */
     versions?: pulumi.Input<inputs.org.MxedgeVersions | undefined>;
 }
 
@@ -243,52 +343,88 @@ export interface MxedgeState {
  * The set of arguments for constructing a Mxedge resource.
  */
 export interface MxedgeArgs {
+    /**
+     * Registration claim code for the Mist Edge
+     */
     claimCode?: pulumi.Input<string | undefined>;
+    /**
+     * Mist Edge hardware or virtual appliance model
+     */
     model?: pulumi.Input<string | undefined>;
     /**
-     * MxCluster this MxEdge belongs to
+     * Mist Edge cluster identifier that this appliance belongs to
      */
     mxclusterId?: pulumi.Input<string | undefined>;
+    /**
+     * Management credentials and settings for the Mist Edge
+     */
     mxedgeMgmt?: pulumi.Input<inputs.org.MxedgeMxedgeMgmt | undefined>;
+    /**
+     * Display name of the Mist Edge
+     */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Free-form notes for the Mist Edge
+     */
     notes?: pulumi.Input<string | undefined>;
+    /**
+     * Time synchronization servers used by the Mist Edge
+     */
     ntpServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * IPconfiguration of the Mist Edge out-of*band management interface
+     * Out-of-band management IP configuration for the Mist Edge
      */
     oobIpConfig?: pulumi.Input<inputs.org.MxedgeOobIpConfig | undefined>;
+    /**
+     * Identifier of the org that owns the Mist Edge
+     */
     orgId: pulumi.Input<string>;
     /**
-     * Proxy Configuration to talk to Mist
+     * Network proxy settings used by the Mist Edge
      */
     proxy?: pulumi.Input<inputs.org.MxedgeProxy | undefined>;
+    /**
+     * Identifier of the site when the Mist Edge is site-scoped
+     */
     siteId?: pulumi.Input<string | undefined>;
     /**
-     * Global and per-VLAN. Property key is the VLAN ID
+     * DHCP relay or server settings for Mist Tunneled VLANs
      */
     tuntermDhcpdConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.MxedgeTuntermDhcpdConfig>} | undefined>;
     /**
-     * Property key is a CIDR
+     * Extra routes for Mist Tunneled VLAN traffic; property key is a CIDR
      */
     tuntermExtraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.MxedgeTuntermExtraRoutes>} | undefined>;
+    /**
+     * IGMP snooping settings for Mist Tunneled VLANs
+     */
     tuntermIgmpSnoopingConfig?: pulumi.Input<inputs.org.MxedgeTuntermIgmpSnoopingConfig | undefined>;
     /**
-     * IPconfiguration of the Mist Tunnel interface
+     * Tunnel termination IP configuration for the Mist Edge
      */
     tuntermIpConfig?: pulumi.Input<inputs.org.MxedgeTuntermIpConfig | undefined>;
+    /**
+     * Monitoring checks for tunnel termination reachability
+     */
     tuntermMonitorings?: pulumi.Input<pulumi.Input<pulumi.Input<inputs.org.MxedgeTuntermMonitoring>[]>[] | undefined>;
+    /**
+     * Multicast forwarding settings for tunnel termination
+     */
     tuntermMulticastConfig?: pulumi.Input<inputs.org.MxedgeTuntermMulticastConfig | undefined>;
     /**
      * IPconfigs by VLAN ID. Property key is the VLAN ID
      */
     tuntermOtherIpConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.MxedgeTuntermOtherIpConfigs>} | undefined>;
     /**
-     * Ethernet port configurations
+     * Port configuration for tunnel termination traffic
      */
     tuntermPortConfig?: pulumi.Input<inputs.org.MxedgeTuntermPortConfig | undefined>;
     /**
-     * If custom vlan settings are desired
+     * Switch VLAN settings for tunnel termination
      */
     tuntermSwitchConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.MxedgeTuntermSwitchConfig>} | undefined>;
+    /**
+     * Service version information reported by the Mist Edge
+     */
     versions?: pulumi.Input<inputs.org.MxedgeVersions | undefined>;
 }

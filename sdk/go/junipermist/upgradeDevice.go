@@ -61,24 +61,30 @@ import (
 type UpgradeDevice struct {
 	pulumi.CustomResourceState
 
+	// Automatic firmware upgrade status for the switch
 	AutoUpgradeStat UpgradeDeviceAutoUpgradeStatOutput `pulumi:"autoUpgradeStat"`
-	ConfigTimestamp pulumi.IntOutput                   `pulumi:"configTimestamp"`
-	ConfigVersion   pulumi.IntOutput                   `pulumi:"configVersion"`
-	DeviceId        pulumi.StringOutput                `pulumi:"deviceId"`
+	// Time when the switch configuration status was last updated, in epoch seconds
+	ConfigTimestamp pulumi.IntOutput `pulumi:"configTimestamp"`
+	// Currently applied configuration version for the switch
+	ConfigVersion pulumi.IntOutput    `pulumi:"configVersion"`
+	DeviceId      pulumi.StringOutput `pulumi:"deviceId"`
 	// current device firmware version
-	DeviceVersion pulumi.StringOutput         `pulumi:"deviceVersion"`
-	ExtIp         pulumi.StringOutput         `pulumi:"extIp"`
-	Fwupdate      UpgradeDeviceFwupdateOutput `pulumi:"fwupdate"`
+	DeviceVersion pulumi.StringOutput `pulumi:"deviceVersion"`
+	// Public IP address observed for the switch
+	ExtIp pulumi.StringOutput `pulumi:"extIp"`
+	// Firmware update status for the switch
+	Fwupdate UpgradeDeviceFwupdateOutput `pulumi:"fwupdate"`
 	// For Switches and Gateways only (APs are automatically rebooted). Reboot device immediately after upgrade is completed
 	Reboot pulumi.BoolOutput `pulumi:"reboot"`
 	// For Switches and Gateways only and if `reboot`==`true`. Reboot start time in epoch seconds, default is `startTime`
 	RebootAt pulumi.IntPtrOutput `pulumi:"rebootAt"`
-	SiteId   pulumi.StringOutput `pulumi:"siteId"`
+	// Associated site identifier for the switch statistics record
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// For Junos devices only. Perform recovery snapshot after device is rebooted
 	Snapshot pulumi.BoolOutput `pulumi:"snapshot"`
 	// Firmware download start time in epoch
 	StartTime pulumi.IntPtrOutput `pulumi:"startTime"`
-	// enum: `error`, `inprogress`, `scheduled`, `starting`, `success`
+	// Current status of the requested device upgrade
 	Status pulumi.StringOutput `pulumi:"status"`
 	// if set to `false`, the provider will just trigger the upgrade and not wait for the end of the upgrade process. Default is `true`
 	SyncUpgrade pulumi.BoolOutput `pulumi:"syncUpgrade"`
@@ -87,12 +93,14 @@ type UpgradeDevice struct {
 	// if set to `syncUpgrade`==`true`, how long to wait for the upgrade to start before raising an error, in seconds. Default is 60, minimum is 60
 	SyncUpgradeStartTimeout pulumi.IntOutput `pulumi:"syncUpgradeStartTimeout"`
 	// if set to `syncUpgrade`==`true`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800
-	SyncUpgradeTimeout pulumi.IntOutput    `pulumi:"syncUpgradeTimeout"`
-	TagId              pulumi.IntOutput    `pulumi:"tagId"`
-	TagUuid            pulumi.StringOutput `pulumi:"tagUuid"`
+	SyncUpgradeTimeout pulumi.IntOutput `pulumi:"syncUpgradeTimeout"`
+	// Numeric inventory tag identifier associated with the switch
+	TagId pulumi.IntOutput `pulumi:"tagId"`
+	// Inventory tag UUID associated with the switch
+	TagUuid pulumi.StringOutput `pulumi:"tagUuid"`
 	// firmware version to deploy to the device. Use the `device.getVersions` datasource to get the list of available firmware versions
 	TargetVersion pulumi.StringOutput `pulumi:"targetVersion"`
-	// Epoch (seconds)
+	// Epoch timestamp when the device upgrade status was reported
 	Timestamp pulumi.Float64Output `pulumi:"timestamp"`
 }
 
@@ -135,24 +143,30 @@ func GetUpgradeDevice(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering UpgradeDevice resources.
 type upgradeDeviceState struct {
+	// Automatic firmware upgrade status for the switch
 	AutoUpgradeStat *UpgradeDeviceAutoUpgradeStat `pulumi:"autoUpgradeStat"`
-	ConfigTimestamp *int                          `pulumi:"configTimestamp"`
-	ConfigVersion   *int                          `pulumi:"configVersion"`
-	DeviceId        *string                       `pulumi:"deviceId"`
+	// Time when the switch configuration status was last updated, in epoch seconds
+	ConfigTimestamp *int `pulumi:"configTimestamp"`
+	// Currently applied configuration version for the switch
+	ConfigVersion *int    `pulumi:"configVersion"`
+	DeviceId      *string `pulumi:"deviceId"`
 	// current device firmware version
-	DeviceVersion *string                `pulumi:"deviceVersion"`
-	ExtIp         *string                `pulumi:"extIp"`
-	Fwupdate      *UpgradeDeviceFwupdate `pulumi:"fwupdate"`
+	DeviceVersion *string `pulumi:"deviceVersion"`
+	// Public IP address observed for the switch
+	ExtIp *string `pulumi:"extIp"`
+	// Firmware update status for the switch
+	Fwupdate *UpgradeDeviceFwupdate `pulumi:"fwupdate"`
 	// For Switches and Gateways only (APs are automatically rebooted). Reboot device immediately after upgrade is completed
 	Reboot *bool `pulumi:"reboot"`
 	// For Switches and Gateways only and if `reboot`==`true`. Reboot start time in epoch seconds, default is `startTime`
-	RebootAt *int    `pulumi:"rebootAt"`
-	SiteId   *string `pulumi:"siteId"`
+	RebootAt *int `pulumi:"rebootAt"`
+	// Associated site identifier for the switch statistics record
+	SiteId *string `pulumi:"siteId"`
 	// For Junos devices only. Perform recovery snapshot after device is rebooted
 	Snapshot *bool `pulumi:"snapshot"`
 	// Firmware download start time in epoch
 	StartTime *int `pulumi:"startTime"`
-	// enum: `error`, `inprogress`, `scheduled`, `starting`, `success`
+	// Current status of the requested device upgrade
 	Status *string `pulumi:"status"`
 	// if set to `false`, the provider will just trigger the upgrade and not wait for the end of the upgrade process. Default is `true`
 	SyncUpgrade *bool `pulumi:"syncUpgrade"`
@@ -161,34 +175,42 @@ type upgradeDeviceState struct {
 	// if set to `syncUpgrade`==`true`, how long to wait for the upgrade to start before raising an error, in seconds. Default is 60, minimum is 60
 	SyncUpgradeStartTimeout *int `pulumi:"syncUpgradeStartTimeout"`
 	// if set to `syncUpgrade`==`true`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800
-	SyncUpgradeTimeout *int    `pulumi:"syncUpgradeTimeout"`
-	TagId              *int    `pulumi:"tagId"`
-	TagUuid            *string `pulumi:"tagUuid"`
+	SyncUpgradeTimeout *int `pulumi:"syncUpgradeTimeout"`
+	// Numeric inventory tag identifier associated with the switch
+	TagId *int `pulumi:"tagId"`
+	// Inventory tag UUID associated with the switch
+	TagUuid *string `pulumi:"tagUuid"`
 	// firmware version to deploy to the device. Use the `device.getVersions` datasource to get the list of available firmware versions
 	TargetVersion *string `pulumi:"targetVersion"`
-	// Epoch (seconds)
+	// Epoch timestamp when the device upgrade status was reported
 	Timestamp *float64 `pulumi:"timestamp"`
 }
 
 type UpgradeDeviceState struct {
+	// Automatic firmware upgrade status for the switch
 	AutoUpgradeStat UpgradeDeviceAutoUpgradeStatPtrInput
+	// Time when the switch configuration status was last updated, in epoch seconds
 	ConfigTimestamp pulumi.IntPtrInput
-	ConfigVersion   pulumi.IntPtrInput
-	DeviceId        pulumi.StringPtrInput
+	// Currently applied configuration version for the switch
+	ConfigVersion pulumi.IntPtrInput
+	DeviceId      pulumi.StringPtrInput
 	// current device firmware version
 	DeviceVersion pulumi.StringPtrInput
-	ExtIp         pulumi.StringPtrInput
-	Fwupdate      UpgradeDeviceFwupdatePtrInput
+	// Public IP address observed for the switch
+	ExtIp pulumi.StringPtrInput
+	// Firmware update status for the switch
+	Fwupdate UpgradeDeviceFwupdatePtrInput
 	// For Switches and Gateways only (APs are automatically rebooted). Reboot device immediately after upgrade is completed
 	Reboot pulumi.BoolPtrInput
 	// For Switches and Gateways only and if `reboot`==`true`. Reboot start time in epoch seconds, default is `startTime`
 	RebootAt pulumi.IntPtrInput
-	SiteId   pulumi.StringPtrInput
+	// Associated site identifier for the switch statistics record
+	SiteId pulumi.StringPtrInput
 	// For Junos devices only. Perform recovery snapshot after device is rebooted
 	Snapshot pulumi.BoolPtrInput
 	// Firmware download start time in epoch
 	StartTime pulumi.IntPtrInput
-	// enum: `error`, `inprogress`, `scheduled`, `starting`, `success`
+	// Current status of the requested device upgrade
 	Status pulumi.StringPtrInput
 	// if set to `false`, the provider will just trigger the upgrade and not wait for the end of the upgrade process. Default is `true`
 	SyncUpgrade pulumi.BoolPtrInput
@@ -198,11 +220,13 @@ type UpgradeDeviceState struct {
 	SyncUpgradeStartTimeout pulumi.IntPtrInput
 	// if set to `syncUpgrade`==`true`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800
 	SyncUpgradeTimeout pulumi.IntPtrInput
-	TagId              pulumi.IntPtrInput
-	TagUuid            pulumi.StringPtrInput
+	// Numeric inventory tag identifier associated with the switch
+	TagId pulumi.IntPtrInput
+	// Inventory tag UUID associated with the switch
+	TagUuid pulumi.StringPtrInput
 	// firmware version to deploy to the device. Use the `device.getVersions` datasource to get the list of available firmware versions
 	TargetVersion pulumi.StringPtrInput
-	// Epoch (seconds)
+	// Epoch timestamp when the device upgrade status was reported
 	Timestamp pulumi.Float64PtrInput
 }
 
@@ -215,8 +239,9 @@ type upgradeDeviceArgs struct {
 	// For Switches and Gateways only (APs are automatically rebooted). Reboot device immediately after upgrade is completed
 	Reboot *bool `pulumi:"reboot"`
 	// For Switches and Gateways only and if `reboot`==`true`. Reboot start time in epoch seconds, default is `startTime`
-	RebootAt *int   `pulumi:"rebootAt"`
-	SiteId   string `pulumi:"siteId"`
+	RebootAt *int `pulumi:"rebootAt"`
+	// Associated site identifier for the switch statistics record
+	SiteId string `pulumi:"siteId"`
 	// For Junos devices only. Perform recovery snapshot after device is rebooted
 	Snapshot *bool `pulumi:"snapshot"`
 	// Firmware download start time in epoch
@@ -240,7 +265,8 @@ type UpgradeDeviceArgs struct {
 	Reboot pulumi.BoolPtrInput
 	// For Switches and Gateways only and if `reboot`==`true`. Reboot start time in epoch seconds, default is `startTime`
 	RebootAt pulumi.IntPtrInput
-	SiteId   pulumi.StringInput
+	// Associated site identifier for the switch statistics record
+	SiteId pulumi.StringInput
 	// For Junos devices only. Perform recovery snapshot after device is rebooted
 	Snapshot pulumi.BoolPtrInput
 	// Firmware download start time in epoch
@@ -344,14 +370,17 @@ func (o UpgradeDeviceOutput) ToUpgradeDeviceOutputWithContext(ctx context.Contex
 	return o
 }
 
+// Automatic firmware upgrade status for the switch
 func (o UpgradeDeviceOutput) AutoUpgradeStat() UpgradeDeviceAutoUpgradeStatOutput {
 	return o.ApplyT(func(v *UpgradeDevice) UpgradeDeviceAutoUpgradeStatOutput { return v.AutoUpgradeStat }).(UpgradeDeviceAutoUpgradeStatOutput)
 }
 
+// Time when the switch configuration status was last updated, in epoch seconds
 func (o UpgradeDeviceOutput) ConfigTimestamp() pulumi.IntOutput {
 	return o.ApplyT(func(v *UpgradeDevice) pulumi.IntOutput { return v.ConfigTimestamp }).(pulumi.IntOutput)
 }
 
+// Currently applied configuration version for the switch
 func (o UpgradeDeviceOutput) ConfigVersion() pulumi.IntOutput {
 	return o.ApplyT(func(v *UpgradeDevice) pulumi.IntOutput { return v.ConfigVersion }).(pulumi.IntOutput)
 }
@@ -365,10 +394,12 @@ func (o UpgradeDeviceOutput) DeviceVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *UpgradeDevice) pulumi.StringOutput { return v.DeviceVersion }).(pulumi.StringOutput)
 }
 
+// Public IP address observed for the switch
 func (o UpgradeDeviceOutput) ExtIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *UpgradeDevice) pulumi.StringOutput { return v.ExtIp }).(pulumi.StringOutput)
 }
 
+// Firmware update status for the switch
 func (o UpgradeDeviceOutput) Fwupdate() UpgradeDeviceFwupdateOutput {
 	return o.ApplyT(func(v *UpgradeDevice) UpgradeDeviceFwupdateOutput { return v.Fwupdate }).(UpgradeDeviceFwupdateOutput)
 }
@@ -383,6 +414,7 @@ func (o UpgradeDeviceOutput) RebootAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *UpgradeDevice) pulumi.IntPtrOutput { return v.RebootAt }).(pulumi.IntPtrOutput)
 }
 
+// Associated site identifier for the switch statistics record
 func (o UpgradeDeviceOutput) SiteId() pulumi.StringOutput {
 	return o.ApplyT(func(v *UpgradeDevice) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
@@ -397,7 +429,7 @@ func (o UpgradeDeviceOutput) StartTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *UpgradeDevice) pulumi.IntPtrOutput { return v.StartTime }).(pulumi.IntPtrOutput)
 }
 
-// enum: `error`, `inprogress`, `scheduled`, `starting`, `success`
+// Current status of the requested device upgrade
 func (o UpgradeDeviceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *UpgradeDevice) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
@@ -422,10 +454,12 @@ func (o UpgradeDeviceOutput) SyncUpgradeTimeout() pulumi.IntOutput {
 	return o.ApplyT(func(v *UpgradeDevice) pulumi.IntOutput { return v.SyncUpgradeTimeout }).(pulumi.IntOutput)
 }
 
+// Numeric inventory tag identifier associated with the switch
 func (o UpgradeDeviceOutput) TagId() pulumi.IntOutput {
 	return o.ApplyT(func(v *UpgradeDevice) pulumi.IntOutput { return v.TagId }).(pulumi.IntOutput)
 }
 
+// Inventory tag UUID associated with the switch
 func (o UpgradeDeviceOutput) TagUuid() pulumi.StringOutput {
 	return o.ApplyT(func(v *UpgradeDevice) pulumi.StringOutput { return v.TagUuid }).(pulumi.StringOutput)
 }
@@ -435,7 +469,7 @@ func (o UpgradeDeviceOutput) TargetVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *UpgradeDevice) pulumi.StringOutput { return v.TargetVersion }).(pulumi.StringOutput)
 }
 
-// Epoch (seconds)
+// Epoch timestamp when the device upgrade status was reported
 func (o UpgradeDeviceOutput) Timestamp() pulumi.Float64Output {
 	return o.ApplyT(func(v *UpgradeDevice) pulumi.Float64Output { return v.Timestamp }).(pulumi.Float64Output)
 }

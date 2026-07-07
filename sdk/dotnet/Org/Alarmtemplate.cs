@@ -84,7 +84,7 @@ namespace Pulumi.JuniperMist.Org
     public partial class Alarmtemplate : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Delivery object to configure the alarm delivery
+        /// Default alarm delivery settings for rules in this template
         /// </summary>
         [Output("delivery")]
         public Output<Outputs.AlarmtemplateDelivery> Delivery { get; private set; } = null!;
@@ -95,6 +95,9 @@ namespace Pulumi.JuniperMist.Org
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Organization that owns this alarm template
+        /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
@@ -152,7 +155,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class AlarmtemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Delivery object to configure the alarm delivery
+        /// Default alarm delivery settings for rules in this template
         /// </summary>
         [Input("delivery", required: true)]
         public Input<Inputs.AlarmtemplateDeliveryArgs> Delivery { get; set; } = null!;
@@ -163,6 +166,9 @@ namespace Pulumi.JuniperMist.Org
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Organization that owns this alarm template
+        /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
@@ -187,7 +193,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class AlarmtemplateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Delivery object to configure the alarm delivery
+        /// Default alarm delivery settings for rules in this template
         /// </summary>
         [Input("delivery")]
         public Input<Inputs.AlarmtemplateDeliveryGetArgs>? Delivery { get; set; }
@@ -198,6 +204,9 @@ namespace Pulumi.JuniperMist.Org
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Organization that owns this alarm template
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 

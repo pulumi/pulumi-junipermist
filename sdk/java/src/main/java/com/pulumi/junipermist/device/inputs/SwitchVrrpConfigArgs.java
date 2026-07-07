@@ -18,22 +18,30 @@ public final class SwitchVrrpConfigArgs extends com.pulumi.resources.ResourceArg
 
     public static final SwitchVrrpConfigArgs Empty = new SwitchVrrpConfigArgs();
 
+    /**
+     * Whether VRRP configuration is enabled
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether VRRP configuration is enabled
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
     /**
-     * Property key is the VRRP name
+     * VRRP groups keyed by group name
      * 
      */
     @Import(name="groups")
     private @Nullable Output<Map<String,SwitchVrrpConfigGroupsArgs>> groups;
 
     /**
-     * @return Property key is the VRRP name
+     * @return VRRP groups keyed by group name
      * 
      */
     public Optional<Output<Map<String,SwitchVrrpConfigGroupsArgs>>> groups() {
@@ -65,17 +73,29 @@ public final class SwitchVrrpConfigArgs extends com.pulumi.resources.ResourceArg
             $ = new SwitchVrrpConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Whether VRRP configuration is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether VRRP configuration is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
         /**
-         * @param groups Property key is the VRRP name
+         * @param groups VRRP groups keyed by group name
          * 
          * @return builder
          * 
@@ -86,7 +106,7 @@ public final class SwitchVrrpConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param groups Property key is the VRRP name
+         * @param groups VRRP groups keyed by group name
          * 
          * @return builder
          * 

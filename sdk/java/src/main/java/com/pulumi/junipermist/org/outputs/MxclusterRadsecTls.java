@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MxclusterRadsecTls {
+    /**
+     * @return Name or identifier of the TLS keypair used by RadSec
+     * 
+     */
     private @Nullable String keypair;
 
     private MxclusterRadsecTls() {}
+    /**
+     * @return Name or identifier of the TLS keypair used by RadSec
+     * 
+     */
     public Optional<String> keypair() {
         return Optional.ofNullable(this.keypair);
     }

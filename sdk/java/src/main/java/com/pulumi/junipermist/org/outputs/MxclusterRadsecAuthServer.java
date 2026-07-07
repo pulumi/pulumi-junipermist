@@ -35,7 +35,7 @@ public final class MxclusterRadsecAuthServer {
      */
     private @Nullable Boolean keywrapEnabled;
     /**
-     * @return if used for Mist APs. enum: `ascii`, `hex`
+     * @return Encoding format for Mist AP RADIUS keywrap keys
      * 
      */
     private @Nullable String keywrapFormat;
@@ -55,17 +55,17 @@ public final class MxclusterRadsecAuthServer {
      */
     private @Nullable Integer port;
     /**
-     * @return Authentication request retry
+     * @return Number of authentication request retries before failing over
      * 
      */
     private @Nullable Integer retry;
     /**
-     * @return Secret of RADIUS server
+     * @return Shared secret used with this RADIUS authentication server
      * 
      */
     private @Nullable String secret;
     /**
-     * @return List of ssids that will use this server if matchSsid is true and match is found
+     * @return WLAN SSID filters that use this authentication server when matching is enabled
      * 
      */
     private @Nullable List<String> ssids;
@@ -105,7 +105,7 @@ public final class MxclusterRadsecAuthServer {
         return Optional.ofNullable(this.keywrapEnabled);
     }
     /**
-     * @return if used for Mist APs. enum: `ascii`, `hex`
+     * @return Encoding format for Mist AP RADIUS keywrap keys
      * 
      */
     public Optional<String> keywrapFormat() {
@@ -133,21 +133,21 @@ public final class MxclusterRadsecAuthServer {
         return Optional.ofNullable(this.port);
     }
     /**
-     * @return Authentication request retry
+     * @return Number of authentication request retries before failing over
      * 
      */
     public Optional<Integer> retry() {
         return Optional.ofNullable(this.retry);
     }
     /**
-     * @return Secret of RADIUS server
+     * @return Shared secret used with this RADIUS authentication server
      * 
      */
     public Optional<String> secret() {
         return Optional.ofNullable(this.secret);
     }
     /**
-     * @return List of ssids that will use this server if matchSsid is true and match is found
+     * @return WLAN SSID filters that use this authentication server when matching is enabled
      * 
      */
     public List<String> ssids() {

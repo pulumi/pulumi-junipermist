@@ -17,9 +17,17 @@ public final class ApClientBridgeArgs extends com.pulumi.resources.ResourceArgs 
 
     public static final ApClientBridgeArgs Empty = new ApClientBridgeArgs();
 
+    /**
+     * Credentials and security mode used when the AP connects as a wireless client bridge
+     * 
+     */
     @Import(name="auth")
     private @Nullable Output<ApClientBridgeAuthArgs> auth;
 
+    /**
+     * @return Credentials and security mode used when the AP connects as a wireless client bridge
+     * 
+     */
     public Optional<Output<ApClientBridgeAuthArgs>> auth() {
         return Optional.ofNullable(this.auth);
     }
@@ -43,9 +51,17 @@ public final class ApClientBridgeArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * Uplink SSID used by the AP when client bridge mode is enabled
+     * 
+     */
     @Import(name="ssid")
     private @Nullable Output<String> ssid;
 
+    /**
+     * @return Uplink SSID used by the AP when client bridge mode is enabled
+     * 
+     */
     public Optional<Output<String>> ssid() {
         return Optional.ofNullable(this.ssid);
     }
@@ -76,11 +92,23 @@ public final class ApClientBridgeArgs extends com.pulumi.resources.ResourceArgs 
             $ = new ApClientBridgeArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param auth Credentials and security mode used when the AP connects as a wireless client bridge
+         * 
+         * @return builder
+         * 
+         */
         public Builder auth(@Nullable Output<ApClientBridgeAuthArgs> auth) {
             $.auth = auth;
             return this;
         }
 
+        /**
+         * @param auth Credentials and security mode used when the AP connects as a wireless client bridge
+         * 
+         * @return builder
+         * 
+         */
         public Builder auth(ApClientBridgeAuthArgs auth) {
             return auth(Output.of(auth));
         }
@@ -110,11 +138,23 @@ public final class ApClientBridgeArgs extends com.pulumi.resources.ResourceArgs 
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param ssid Uplink SSID used by the AP when client bridge mode is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder ssid(@Nullable Output<String> ssid) {
             $.ssid = ssid;
             return this;
         }
 
+        /**
+         * @param ssid Uplink SSID used by the AP when client bridge mode is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder ssid(String ssid) {
             return ssid(Output.of(ssid));
         }

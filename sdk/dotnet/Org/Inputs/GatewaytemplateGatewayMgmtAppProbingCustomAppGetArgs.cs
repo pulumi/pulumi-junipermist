@@ -13,11 +13,14 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class GatewaytemplateGatewayMgmtAppProbingCustomAppGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required if `Protocol`==`Icmp`
+        /// Required if `Protocol`==`Icmp`. IP address probed by the ICMP custom app
         /// </summary>
         [Input("address")]
         public Input<string>? Address { get; set; }
 
+        /// <summary>
+        /// Category label used for this custom application probe
+        /// </summary>
         [Input("appType")]
         public Input<string>? AppType { get; set; }
 
@@ -25,7 +28,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _hostnames;
 
         /// <summary>
-        /// If `Protocol`==`Http`
+        /// If `Protocol`==`Http`. Hostnames or URLs probed by this custom app
         /// </summary>
         public InputList<string> Hostnames
         {
@@ -35,6 +38,10 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
         [Input("key")]
         private Input<string>? _key;
+
+        /// <summary>
+        /// Stable key used to identify this custom application probe
+        /// </summary>
         public Input<string>? Key
         {
             get => _key;
@@ -45,30 +52,39 @@ namespace Pulumi.JuniperMist.Org.Inputs
             }
         }
 
+        /// <summary>
+        /// Display name for this custom application probe
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Gateway network used as the source context for this probe
+        /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// If `Protocol`==`Icmp`
+        /// If `Protocol`==`Icmp`. ICMP packet size used by this custom app probe
         /// </summary>
         [Input("packetSize")]
         public Input<int>? PacketSize { get; set; }
 
         /// <summary>
-        /// enum: `Http`, `Icmp`
+        /// Probe protocol used by this custom application definition
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// If `Protocol`==`Http`
+        /// If `Protocol`==`Http`. HTTP URL or hostname probed by this custom app
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
 
+        /// <summary>
+        /// Gateway VRF used as the source context for this probe
+        /// </summary>
         [Input("vrf")]
         public Input<string>? Vrf { get; set; }
 

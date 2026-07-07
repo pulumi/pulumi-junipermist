@@ -31,9 +31,17 @@ public final class SwitchVrrpConfigGroupsArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.preempt);
     }
 
+    /**
+     * VRRP priority for this router in the group
+     * 
+     */
     @Import(name="priority")
     private @Nullable Output<Integer> priority;
 
+    /**
+     * @return VRRP priority for this router in the group
+     * 
+     */
     public Optional<Output<Integer>> priority() {
         return Optional.ofNullable(this.priority);
     }
@@ -84,11 +92,23 @@ public final class SwitchVrrpConfigGroupsArgs extends com.pulumi.resources.Resou
             return preempt(Output.of(preempt));
         }
 
+        /**
+         * @param priority VRRP priority for this router in the group
+         * 
+         * @return builder
+         * 
+         */
         public Builder priority(@Nullable Output<Integer> priority) {
             $.priority = priority;
             return this;
         }
 
+        /**
+         * @param priority VRRP priority for this router in the group
+         * 
+         * @return builder
+         * 
+         */
         public Builder priority(Integer priority) {
             return priority(Output.of(priority));
         }

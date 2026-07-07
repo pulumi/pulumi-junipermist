@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class WlanDynamicVlan
     {
         /// <summary>
-        /// Default VLAN ID(s) can be a number, a range of VLAN IDs, a variable or multiple numbers, ranges or variables as a VLAN pool. Default VLAN as a pool of VLANS requires 0.14.x or newer firmware
+        /// Fallback VLAN IDs, ranges, or variables used when no RADIUS VLAN match is returned
         /// </summary>
         public readonly ImmutableArray<string> DefaultVlanIds;
         /// <summary>
@@ -22,17 +22,17 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// VLAN_ids to be locally bridged
+        /// VLAN IDs that should be locally bridged for dynamic VLAN assignment
         /// </summary>
         public readonly ImmutableArray<string> LocalVlanIds;
         /// <summary>
-        /// standard (using Tunnel-Private-Group-ID, widely supported), airespace-interface-name (Airespace/Cisco). enum: `airespace-interface-name`, `Standard`
+        /// Dynamic VLAN mapping method used for RADIUS-provided VLAN attributes
         /// </summary>
         public readonly string? Type;
         /// <summary>
         /// Map between VlanId (as string) to airespace interface names (comma-separated) or null for standard mapping
-        ///   * if `dynamic_vlan.type`==`Standard`, property key is the Vlan ID and property value is \"\"
-        ///   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
+        ///   * if `dynamic_vlan.type`==`Standard`, property key is the VLAN ID and property value is \"\"
+        ///   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the VLAN ID and property value is the Airespace Interface Name
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Vlans;
 

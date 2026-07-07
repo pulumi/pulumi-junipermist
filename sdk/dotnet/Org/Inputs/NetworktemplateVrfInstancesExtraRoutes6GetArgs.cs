@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class NetworktemplateVrfInstancesExtraRoutes6GetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Next-hop address
+        /// IPv6 next-hop address for this VRF extra route
         /// </summary>
         [Input("via")]
         public Input<string>? Via { get; set; }

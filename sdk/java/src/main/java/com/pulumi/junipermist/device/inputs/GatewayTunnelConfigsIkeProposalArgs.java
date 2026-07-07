@@ -16,14 +16,14 @@ public final class GatewayTunnelConfigsIkeProposalArgs extends com.pulumi.resour
     public static final GatewayTunnelConfigsIkeProposalArgs Empty = new GatewayTunnelConfigsIkeProposalArgs();
 
     /**
-     * enum: `md5`, `sha1`, `sha2`
+     * Integrity algorithm used by this IKE proposal
      * 
      */
     @Import(name="authAlgo")
     private @Nullable Output<String> authAlgo;
 
     /**
-     * @return enum: `md5`, `sha1`, `sha2`
+     * @return Integrity algorithm used by this IKE proposal
      * 
      */
     public Optional<Output<String>> authAlgo() {
@@ -31,34 +31,14 @@ public final class GatewayTunnelConfigsIkeProposalArgs extends com.pulumi.resour
     }
 
     /**
-     * enum:
-     *   * 1
-     *   * 2 (1024-bit)
-     *   * 5
-     *   * 14 (default, 2048-bit)
-     *   * 15 (3072-bit)
-     *   * 16 (4096-bit)
-     *   * 19 (256-bit ECP)
-     *   * 20 (384-bit ECP)
-     *   * 21 (521-bit ECP)
-     *   * 24 (2048-bit ECP)
+     * Diffie-Hellman group used by this IKE proposal
      * 
      */
     @Import(name="dhGroup")
     private @Nullable Output<String> dhGroup;
 
     /**
-     * @return enum:
-     *   * 1
-     *   * 2 (1024-bit)
-     *   * 5
-     *   * 14 (default, 2048-bit)
-     *   * 15 (3072-bit)
-     *   * 16 (4096-bit)
-     *   * 19 (256-bit ECP)
-     *   * 20 (384-bit ECP)
-     *   * 21 (521-bit ECP)
-     *   * 24 (2048-bit ECP)
+     * @return Diffie-Hellman group used by this IKE proposal
      * 
      */
     public Optional<Output<String>> dhGroup() {
@@ -66,14 +46,14 @@ public final class GatewayTunnelConfigsIkeProposalArgs extends com.pulumi.resour
     }
 
     /**
-     * enum: `3des`, `aes128`, `aes256`, `aesGcm128`, `aesGcm256`
+     * Cipher algorithm used by this IKE proposal
      * 
      */
     @Import(name="encAlgo")
     private @Nullable Output<String> encAlgo;
 
     /**
-     * @return enum: `3des`, `aes128`, `aes256`, `aesGcm128`, `aesGcm256`
+     * @return Cipher algorithm used by this IKE proposal
      * 
      */
     public Optional<Output<String>> encAlgo() {
@@ -107,7 +87,7 @@ public final class GatewayTunnelConfigsIkeProposalArgs extends com.pulumi.resour
         }
 
         /**
-         * @param authAlgo enum: `md5`, `sha1`, `sha2`
+         * @param authAlgo Integrity algorithm used by this IKE proposal
          * 
          * @return builder
          * 
@@ -118,7 +98,7 @@ public final class GatewayTunnelConfigsIkeProposalArgs extends com.pulumi.resour
         }
 
         /**
-         * @param authAlgo enum: `md5`, `sha1`, `sha2`
+         * @param authAlgo Integrity algorithm used by this IKE proposal
          * 
          * @return builder
          * 
@@ -128,17 +108,7 @@ public final class GatewayTunnelConfigsIkeProposalArgs extends com.pulumi.resour
         }
 
         /**
-         * @param dhGroup enum:
-         *   * 1
-         *   * 2 (1024-bit)
-         *   * 5
-         *   * 14 (default, 2048-bit)
-         *   * 15 (3072-bit)
-         *   * 16 (4096-bit)
-         *   * 19 (256-bit ECP)
-         *   * 20 (384-bit ECP)
-         *   * 21 (521-bit ECP)
-         *   * 24 (2048-bit ECP)
+         * @param dhGroup Diffie-Hellman group used by this IKE proposal
          * 
          * @return builder
          * 
@@ -149,17 +119,7 @@ public final class GatewayTunnelConfigsIkeProposalArgs extends com.pulumi.resour
         }
 
         /**
-         * @param dhGroup enum:
-         *   * 1
-         *   * 2 (1024-bit)
-         *   * 5
-         *   * 14 (default, 2048-bit)
-         *   * 15 (3072-bit)
-         *   * 16 (4096-bit)
-         *   * 19 (256-bit ECP)
-         *   * 20 (384-bit ECP)
-         *   * 21 (521-bit ECP)
-         *   * 24 (2048-bit ECP)
+         * @param dhGroup Diffie-Hellman group used by this IKE proposal
          * 
          * @return builder
          * 
@@ -169,7 +129,7 @@ public final class GatewayTunnelConfigsIkeProposalArgs extends com.pulumi.resour
         }
 
         /**
-         * @param encAlgo enum: `3des`, `aes128`, `aes256`, `aesGcm128`, `aesGcm256`
+         * @param encAlgo Cipher algorithm used by this IKE proposal
          * 
          * @return builder
          * 
@@ -180,7 +140,7 @@ public final class GatewayTunnelConfigsIkeProposalArgs extends com.pulumi.resour
         }
 
         /**
-         * @param encAlgo enum: `3des`, `aes128`, `aes256`, `aesGcm128`, `aesGcm256`
+         * @param encAlgo Cipher algorithm used by this IKE proposal
          * 
          * @return builder
          * 

@@ -16,16 +16,32 @@ public final class SwitchSnmpConfigClientListArgs extends com.pulumi.resources.R
 
     public static final SwitchSnmpConfigClientListArgs Empty = new SwitchSnmpConfigClientListArgs();
 
+    /**
+     * Name of the SNMP client list
+     * 
+     */
     @Import(name="clientListName")
     private @Nullable Output<String> clientListName;
 
+    /**
+     * @return Name of the SNMP client list
+     * 
+     */
     public Optional<Output<String>> clientListName() {
         return Optional.ofNullable(this.clientListName);
     }
 
+    /**
+     * SNMP client IP addresses or CIDR ranges allowed by this list
+     * 
+     */
     @Import(name="clients")
     private @Nullable Output<List<String>> clients;
 
+    /**
+     * @return SNMP client IP addresses or CIDR ranges allowed by this list
+     * 
+     */
     public Optional<Output<List<String>>> clients() {
         return Optional.ofNullable(this.clients);
     }
@@ -55,24 +71,54 @@ public final class SwitchSnmpConfigClientListArgs extends com.pulumi.resources.R
             $ = new SwitchSnmpConfigClientListArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param clientListName Name of the SNMP client list
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientListName(@Nullable Output<String> clientListName) {
             $.clientListName = clientListName;
             return this;
         }
 
+        /**
+         * @param clientListName Name of the SNMP client list
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientListName(String clientListName) {
             return clientListName(Output.of(clientListName));
         }
 
+        /**
+         * @param clients SNMP client IP addresses or CIDR ranges allowed by this list
+         * 
+         * @return builder
+         * 
+         */
         public Builder clients(@Nullable Output<List<String>> clients) {
             $.clients = clients;
             return this;
         }
 
+        /**
+         * @param clients SNMP client IP addresses or CIDR ranges allowed by this list
+         * 
+         * @return builder
+         * 
+         */
         public Builder clients(List<String> clients) {
             return clients(Output.of(clients));
         }
 
+        /**
+         * @param clients SNMP client IP addresses or CIDR ranges allowed by this list
+         * 
+         * @return builder
+         * 
+         */
         public Builder clients(String... clients) {
             return clients(List.of(clients));
         }

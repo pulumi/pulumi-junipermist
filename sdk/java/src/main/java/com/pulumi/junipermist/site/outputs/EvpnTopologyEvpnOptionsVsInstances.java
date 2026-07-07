@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EvpnTopologyEvpnOptionsVsInstances {
+    /**
+     * @return List of network names included in this virtual-switch instance
+     * 
+     */
     private @Nullable List<String> networks;
 
     private EvpnTopologyEvpnOptionsVsInstances() {}
+    /**
+     * @return List of network names included in this virtual-switch instance
+     * 
+     */
     public List<String> networks() {
         return this.networks == null ? List.of() : this.networks;
     }

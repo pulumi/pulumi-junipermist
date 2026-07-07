@@ -14,11 +14,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class SsoRolePrivilege
     {
         /// <summary>
-        /// access permissions. enum: `Admin`, `Helpdesk`, `Installer`, `Read`, `Write`
+        /// Access role granted by this organization privilege
         /// </summary>
         public readonly string Role;
         /// <summary>
-        /// enum: `Org`, `Site`, `Sitegroup`, `Orgsites`
+        /// Organization hierarchy level where this privilege applies
         /// </summary>
         public readonly string Scope;
         /// <summary>
@@ -30,20 +30,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? SitegroupId;
         /// <summary>
-        /// Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.  
-        /// You can define custom roles by adding the `Views` attribute along with `Role` when assigning privileges.  
-        /// Below are the list of supported UI views. Note that this is UI only feature.  
-        /// 
-        ///   | UI View | Required Role | Description |
-        ///   | --- | --- | --- |
-        ///   | `Reporting` | `Read` | full access to all analytics tools |
-        ///   | `Marketing` | `Read` | can view analytics and location maps |
-        ///   | `SuperObserver` | `Read` | can view all the organization except the subscription page |
-        ///   | `Location` | `Write` | can view and manage location maps, can view analytics |
-        ///   | `Security` | `Write` | can view and manage site labels, policies and security |
-        ///   | `SwitchAdmin` | `Helpdesk` | can view and manage Switch ports, can view wired clients |
-        ///   | `MxedgeAdmin` | `Admin` | can view and manage Mist edges and Mist tunnels |
-        ///   | `LobbyAdmin` | `Admin` | full access to Org and Site Pre-shared keys |
+        /// UI views allowed by custom role restrictions
         /// </summary>
         public readonly ImmutableArray<string> Views;
 

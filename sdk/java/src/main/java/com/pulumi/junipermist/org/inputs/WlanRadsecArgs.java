@@ -18,36 +18,60 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final WlanRadsecArgs Empty = new WlanRadsecArgs();
 
+    /**
+     * Whether RADIUS Change of Authorization (CoA) is enabled for RadSec traffic
+     * 
+     */
     @Import(name="coaEnabled")
     private @Nullable Output<Boolean> coaEnabled;
 
+    /**
+     * @return Whether RADIUS Change of Authorization (CoA) is enabled for RadSec traffic
+     * 
+     */
     public Optional<Output<Boolean>> coaEnabled() {
         return Optional.ofNullable(this.coaEnabled);
     }
 
+    /**
+     * Whether RadSec is enabled
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether RadSec is enabled
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * Idle timeout, in seconds, for RadSec connections
+     * 
+     */
     @Import(name="idleTimeout")
     private @Nullable Output<String> idleTimeout;
 
+    /**
+     * @return Idle timeout, in seconds, for RadSec connections
+     * 
+     */
     public Optional<Output<String>> idleTimeout() {
         return Optional.ofNullable(this.idleTimeout);
     }
 
     /**
-     * To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
+     * Mist Edge cluster IDs used as RadSec proxies when the WLAN does not use mxtunnel
      * 
      */
     @Import(name="mxclusterIds")
     private @Nullable Output<List<String>> mxclusterIds;
 
     /**
-     * @return To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
+     * @return Mist Edge cluster IDs used as RadSec proxies when the WLAN does not use mxtunnel
      * 
      */
     public Optional<Output<List<String>>> mxclusterIds() {
@@ -55,14 +79,14 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
+     * RadSec proxy hostnames advertised to APs
      * 
      */
     @Import(name="proxyHosts")
     private @Nullable Output<List<String>> proxyHosts;
 
     /**
-     * @return Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
+     * @return RadSec proxy hostnames advertised to APs
      * 
      */
     public Optional<Output<List<String>>> proxyHosts() {
@@ -70,14 +94,14 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+     * TLS server name to verify against the CA certificates in Org Setting. Only if not Mist Edge.
      * 
      */
     @Import(name="serverName")
     private @Nullable Output<String> serverName;
 
     /**
-     * @return Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+     * @return TLS server name to verify against the CA certificates in Org Setting. Only if not Mist Edge.
      * 
      */
     public Optional<Output<String>> serverName() {
@@ -85,14 +109,14 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of RadSec Servers. Only if not Mist Edge.
+     * External RadSec servers. Only if not Mist Edge.
      * 
      */
     @Import(name="servers")
     private @Nullable Output<List<WlanRadsecServerArgs>> servers;
 
     /**
-     * @return List of RadSec Servers. Only if not Mist Edge.
+     * @return External RadSec servers. Only if not Mist Edge.
      * 
      */
     public Optional<Output<List<WlanRadsecServerArgs>>> servers() {
@@ -100,14 +124,14 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * use mxedge(s) as RadSec Proxy
+     * Whether to use organization Mist Edge instances as RadSec proxies
      * 
      */
     @Import(name="useMxedge")
     private @Nullable Output<Boolean> useMxedge;
 
     /**
-     * @return use mxedge(s) as RadSec Proxy
+     * @return Whether to use organization Mist Edge instances as RadSec proxies
      * 
      */
     public Optional<Output<Boolean>> useMxedge() {
@@ -115,14 +139,14 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * To use Site mxedges when this WLAN does not use mxtunnel
+     * Whether to use site Mist Edge instances when this WLAN does not use mxtunnel
      * 
      */
     @Import(name="useSiteMxedge")
     private @Nullable Output<Boolean> useSiteMxedge;
 
     /**
-     * @return To use Site mxedges when this WLAN does not use mxtunnel
+     * @return Whether to use site Mist Edge instances when this WLAN does not use mxtunnel
      * 
      */
     public Optional<Output<Boolean>> useSiteMxedge() {
@@ -161,35 +185,71 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
             $ = new WlanRadsecArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param coaEnabled Whether RADIUS Change of Authorization (CoA) is enabled for RadSec traffic
+         * 
+         * @return builder
+         * 
+         */
         public Builder coaEnabled(@Nullable Output<Boolean> coaEnabled) {
             $.coaEnabled = coaEnabled;
             return this;
         }
 
+        /**
+         * @param coaEnabled Whether RADIUS Change of Authorization (CoA) is enabled for RadSec traffic
+         * 
+         * @return builder
+         * 
+         */
         public Builder coaEnabled(Boolean coaEnabled) {
             return coaEnabled(Output.of(coaEnabled));
         }
 
+        /**
+         * @param enabled Whether RadSec is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether RadSec is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param idleTimeout Idle timeout, in seconds, for RadSec connections
+         * 
+         * @return builder
+         * 
+         */
         public Builder idleTimeout(@Nullable Output<String> idleTimeout) {
             $.idleTimeout = idleTimeout;
             return this;
         }
 
+        /**
+         * @param idleTimeout Idle timeout, in seconds, for RadSec connections
+         * 
+         * @return builder
+         * 
+         */
         public Builder idleTimeout(String idleTimeout) {
             return idleTimeout(Output.of(idleTimeout));
         }
 
         /**
-         * @param mxclusterIds To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
+         * @param mxclusterIds Mist Edge cluster IDs used as RadSec proxies when the WLAN does not use mxtunnel
          * 
          * @return builder
          * 
@@ -200,7 +260,7 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mxclusterIds To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
+         * @param mxclusterIds Mist Edge cluster IDs used as RadSec proxies when the WLAN does not use mxtunnel
          * 
          * @return builder
          * 
@@ -210,7 +270,7 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mxclusterIds To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
+         * @param mxclusterIds Mist Edge cluster IDs used as RadSec proxies when the WLAN does not use mxtunnel
          * 
          * @return builder
          * 
@@ -220,7 +280,7 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxyHosts Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
+         * @param proxyHosts RadSec proxy hostnames advertised to APs
          * 
          * @return builder
          * 
@@ -231,7 +291,7 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxyHosts Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
+         * @param proxyHosts RadSec proxy hostnames advertised to APs
          * 
          * @return builder
          * 
@@ -241,7 +301,7 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxyHosts Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
+         * @param proxyHosts RadSec proxy hostnames advertised to APs
          * 
          * @return builder
          * 
@@ -251,7 +311,7 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverName Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+         * @param serverName TLS server name to verify against the CA certificates in Org Setting. Only if not Mist Edge.
          * 
          * @return builder
          * 
@@ -262,7 +322,7 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverName Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+         * @param serverName TLS server name to verify against the CA certificates in Org Setting. Only if not Mist Edge.
          * 
          * @return builder
          * 
@@ -272,7 +332,7 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param servers List of RadSec Servers. Only if not Mist Edge.
+         * @param servers External RadSec servers. Only if not Mist Edge.
          * 
          * @return builder
          * 
@@ -283,7 +343,7 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param servers List of RadSec Servers. Only if not Mist Edge.
+         * @param servers External RadSec servers. Only if not Mist Edge.
          * 
          * @return builder
          * 
@@ -293,7 +353,7 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param servers List of RadSec Servers. Only if not Mist Edge.
+         * @param servers External RadSec servers. Only if not Mist Edge.
          * 
          * @return builder
          * 
@@ -303,7 +363,7 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param useMxedge use mxedge(s) as RadSec Proxy
+         * @param useMxedge Whether to use organization Mist Edge instances as RadSec proxies
          * 
          * @return builder
          * 
@@ -314,7 +374,7 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param useMxedge use mxedge(s) as RadSec Proxy
+         * @param useMxedge Whether to use organization Mist Edge instances as RadSec proxies
          * 
          * @return builder
          * 
@@ -324,7 +384,7 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param useSiteMxedge To use Site mxedges when this WLAN does not use mxtunnel
+         * @param useSiteMxedge Whether to use site Mist Edge instances when this WLAN does not use mxtunnel
          * 
          * @return builder
          * 
@@ -335,7 +395,7 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param useSiteMxedge To use Site mxedges when this WLAN does not use mxtunnel
+         * @param useSiteMxedge Whether to use site Mist Edge instances when this WLAN does not use mxtunnel
          * 
          * @return builder
          * 

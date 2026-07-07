@@ -13,20 +13,28 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SwitchAclPolicyAction {
     /**
-     * @return enum: `allow`, `deny`
+     * @return Allow or deny decision applied to traffic matching the destination tag
      * 
      */
     private @Nullable String action;
+    /**
+     * @return Destination ACL tag matched by this policy action
+     * 
+     */
     private String dstTag;
 
     private SwitchAclPolicyAction() {}
     /**
-     * @return enum: `allow`, `deny`
+     * @return Allow or deny decision applied to traffic matching the destination tag
      * 
      */
     public Optional<String> action() {
         return Optional.ofNullable(this.action);
     }
+    /**
+     * @return Destination ACL tag matched by this policy action
+     * 
+     */
     public String dstTag() {
         return this.dstTag;
     }

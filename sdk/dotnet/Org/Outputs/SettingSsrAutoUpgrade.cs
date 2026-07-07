@@ -14,13 +14,16 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class SettingSsrAutoUpgrade
     {
         /// <summary>
-        /// upgrade channel to follow. enum: `Alpha`, `Beta`, `Stable`
+        /// Firmware release channel used for SSR auto-upgrade
         /// </summary>
         public readonly string? Channel;
         /// <summary>
-        /// Property key is the SSR model (e.g. "SSR130").
+        /// Per-model SSR firmware versions used for auto-upgrade
         /// </summary>
         public readonly ImmutableDictionary<string, string>? CustomVersions;
+        /// <summary>
+        /// Whether SSR auto-upgrade is enabled for newly onboarded devices
+        /// </summary>
         public readonly bool? Enabled;
         /// <summary>
         /// Firmware version to deploy (e.g. 6.3.0-107.r1). Optional, used when CustomVersions not specified

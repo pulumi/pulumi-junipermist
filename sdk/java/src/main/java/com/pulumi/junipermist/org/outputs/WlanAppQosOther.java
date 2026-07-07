@@ -11,25 +11,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class WlanAppQosOther {
+    /**
+     * @return Differentiated Services Code Point value applied to matching traffic
+     * 
+     */
     private @Nullable String dscp;
+    /**
+     * @return Destination subnet filter for this custom QoS rule
+     * 
+     */
     private @Nullable String dstSubnet;
+    /**
+     * @return TCP or UDP port ranges matched by this custom QoS rule
+     * 
+     */
     private @Nullable String portRanges;
+    /**
+     * @return IP protocol matched by this custom QoS rule
+     * 
+     */
     private @Nullable String protocol;
+    /**
+     * @return Source subnet filter for this custom QoS rule
+     * 
+     */
     private @Nullable String srcSubnet;
 
     private WlanAppQosOther() {}
+    /**
+     * @return Differentiated Services Code Point value applied to matching traffic
+     * 
+     */
     public Optional<String> dscp() {
         return Optional.ofNullable(this.dscp);
     }
+    /**
+     * @return Destination subnet filter for this custom QoS rule
+     * 
+     */
     public Optional<String> dstSubnet() {
         return Optional.ofNullable(this.dstSubnet);
     }
+    /**
+     * @return TCP or UDP port ranges matched by this custom QoS rule
+     * 
+     */
     public Optional<String> portRanges() {
         return Optional.ofNullable(this.portRanges);
     }
+    /**
+     * @return IP protocol matched by this custom QoS rule
+     * 
+     */
     public Optional<String> protocol() {
         return Optional.ofNullable(this.protocol);
     }
+    /**
+     * @return Source subnet filter for this custom QoS rule
+     * 
+     */
     public Optional<String> srcSubnet() {
         return Optional.ofNullable(this.srcSubnet);
     }

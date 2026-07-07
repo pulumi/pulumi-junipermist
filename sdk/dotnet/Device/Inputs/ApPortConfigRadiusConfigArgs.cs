@@ -13,13 +13,17 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class ApPortConfigRadiusConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+        /// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled
         /// </summary>
         [Input("acctInterimInterval")]
         public Input<int>? AcctInterimInterval { get; set; }
 
         [Input("acctServers")]
         private InputList<Inputs.ApPortConfigRadiusConfigAcctServerArgs>? _acctServers;
+
+        /// <summary>
+        /// RADIUS accounting servers used by this Junos configuration
+        /// </summary>
         public InputList<Inputs.ApPortConfigRadiusConfigAcctServerArgs> AcctServers
         {
             get => _acctServers ?? (_acctServers = new InputList<Inputs.ApPortConfigRadiusConfigAcctServerArgs>());
@@ -28,6 +32,10 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
         [Input("authServers")]
         private InputList<Inputs.ApPortConfigRadiusConfigAuthServerArgs>? _authServers;
+
+        /// <summary>
+        /// RADIUS authentication servers used by this Junos configuration
+        /// </summary>
         public InputList<Inputs.ApPortConfigRadiusConfigAuthServerArgs> AuthServers
         {
             get => _authServers ?? (_authServers = new InputList<Inputs.ApPortConfigRadiusConfigAuthServerArgs>());
@@ -35,31 +43,37 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// radius auth session retries
+        /// Number of RADIUS authentication request retries before failover
         /// </summary>
         [Input("authServersRetries")]
         public Input<int>? AuthServersRetries { get; set; }
 
         /// <summary>
-        /// radius auth session timeout
+        /// RADIUS authentication server timeout, in seconds
         /// </summary>
         [Input("authServersTimeout")]
         public Input<int>? AuthServersTimeout { get; set; }
 
+        /// <summary>
+        /// Whether RADIUS Change of Authorization (CoA) is enabled
+        /// </summary>
         [Input("coaEnabled")]
         public Input<bool>? CoaEnabled { get; set; }
 
+        /// <summary>
+        /// UDP port used for RADIUS Change of Authorization (CoA)
+        /// </summary>
         [Input("coaPort")]
         public Input<int>? CoaPort { get; set; }
 
         /// <summary>
-        /// use `Network`or `SourceIp`, which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+        /// Use `Network` or `SourceIp`. Network where the RADIUS server resides; if the network has a static IP, Mist uses it as the source IP
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// use `Network`or `SourceIp`
+        /// Use `Network` or `SourceIp`. Explicit source IP address for RADIUS traffic
         /// </summary>
         [Input("sourceIp")]
         public Input<string>? SourceIp { get; set; }

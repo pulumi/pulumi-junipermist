@@ -16,36 +16,60 @@ public final class MxclusterMxedgeMgmtArgs extends com.pulumi.resources.Resource
 
     public static final MxclusterMxedgeMgmtArgs Empty = new MxclusterMxedgeMgmtArgs();
 
+    /**
+     * Whether the Mist Edge automatically reverts configuration changes if connectivity is lost
+     * 
+     */
     @Import(name="configAutoRevert")
     private @Nullable Output<Boolean> configAutoRevert;
 
+    /**
+     * @return Whether the Mist Edge automatically reverts configuration changes if connectivity is lost
+     * 
+     */
     public Optional<Output<Boolean>> configAutoRevert() {
         return Optional.ofNullable(this.configAutoRevert);
     }
 
+    /**
+     * Whether FIPS mode is enabled on the Mist Edge
+     * 
+     */
     @Import(name="fipsEnabled")
     private @Nullable Output<Boolean> fipsEnabled;
 
+    /**
+     * @return Whether FIPS mode is enabled on the Mist Edge
+     * 
+     */
     public Optional<Output<Boolean>> fipsEnabled() {
         return Optional.ofNullable(this.fipsEnabled);
     }
 
+    /**
+     * Password for the Mist service account on the Mist Edge
+     * 
+     */
     @Import(name="mistPassword")
     private @Nullable Output<String> mistPassword;
 
+    /**
+     * @return Password for the Mist service account on the Mist Edge
+     * 
+     */
     public Optional<Output<String>> mistPassword() {
         return Optional.ofNullable(this.mistPassword);
     }
 
     /**
-     * enum: `dhcp`, `disabled`, `static`
+     * IPv4 address assignment mode for out-of-band management
      * 
      */
     @Import(name="oobIpType")
     private @Nullable Output<String> oobIpType;
 
     /**
-     * @return enum: `dhcp`, `disabled`, `static`
+     * @return IPv4 address assignment mode for out-of-band management
      * 
      */
     public Optional<Output<String>> oobIpType() {
@@ -53,23 +77,31 @@ public final class MxclusterMxedgeMgmtArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * enum: `autoconf`, `dhcp`, `disabled`, `static`
+     * IPv6 address assignment mode for out-of-band management
      * 
      */
     @Import(name="oobIpType6")
     private @Nullable Output<String> oobIpType6;
 
     /**
-     * @return enum: `autoconf`, `dhcp`, `disabled`, `static`
+     * @return IPv6 address assignment mode for out-of-band management
      * 
      */
     public Optional<Output<String>> oobIpType6() {
         return Optional.ofNullable(this.oobIpType6);
     }
 
+    /**
+     * Root account password for the Mist Edge
+     * 
+     */
     @Import(name="rootPassword")
     private @Nullable Output<String> rootPassword;
 
+    /**
+     * @return Root account password for the Mist Edge
+     * 
+     */
     public Optional<Output<String>> rootPassword() {
         return Optional.ofNullable(this.rootPassword);
     }
@@ -103,35 +135,71 @@ public final class MxclusterMxedgeMgmtArgs extends com.pulumi.resources.Resource
             $ = new MxclusterMxedgeMgmtArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param configAutoRevert Whether the Mist Edge automatically reverts configuration changes if connectivity is lost
+         * 
+         * @return builder
+         * 
+         */
         public Builder configAutoRevert(@Nullable Output<Boolean> configAutoRevert) {
             $.configAutoRevert = configAutoRevert;
             return this;
         }
 
+        /**
+         * @param configAutoRevert Whether the Mist Edge automatically reverts configuration changes if connectivity is lost
+         * 
+         * @return builder
+         * 
+         */
         public Builder configAutoRevert(Boolean configAutoRevert) {
             return configAutoRevert(Output.of(configAutoRevert));
         }
 
+        /**
+         * @param fipsEnabled Whether FIPS mode is enabled on the Mist Edge
+         * 
+         * @return builder
+         * 
+         */
         public Builder fipsEnabled(@Nullable Output<Boolean> fipsEnabled) {
             $.fipsEnabled = fipsEnabled;
             return this;
         }
 
+        /**
+         * @param fipsEnabled Whether FIPS mode is enabled on the Mist Edge
+         * 
+         * @return builder
+         * 
+         */
         public Builder fipsEnabled(Boolean fipsEnabled) {
             return fipsEnabled(Output.of(fipsEnabled));
         }
 
+        /**
+         * @param mistPassword Password for the Mist service account on the Mist Edge
+         * 
+         * @return builder
+         * 
+         */
         public Builder mistPassword(@Nullable Output<String> mistPassword) {
             $.mistPassword = mistPassword;
             return this;
         }
 
+        /**
+         * @param mistPassword Password for the Mist service account on the Mist Edge
+         * 
+         * @return builder
+         * 
+         */
         public Builder mistPassword(String mistPassword) {
             return mistPassword(Output.of(mistPassword));
         }
 
         /**
-         * @param oobIpType enum: `dhcp`, `disabled`, `static`
+         * @param oobIpType IPv4 address assignment mode for out-of-band management
          * 
          * @return builder
          * 
@@ -142,7 +210,7 @@ public final class MxclusterMxedgeMgmtArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param oobIpType enum: `dhcp`, `disabled`, `static`
+         * @param oobIpType IPv4 address assignment mode for out-of-band management
          * 
          * @return builder
          * 
@@ -152,7 +220,7 @@ public final class MxclusterMxedgeMgmtArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param oobIpType6 enum: `autoconf`, `dhcp`, `disabled`, `static`
+         * @param oobIpType6 IPv6 address assignment mode for out-of-band management
          * 
          * @return builder
          * 
@@ -163,7 +231,7 @@ public final class MxclusterMxedgeMgmtArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param oobIpType6 enum: `autoconf`, `dhcp`, `disabled`, `static`
+         * @param oobIpType6 IPv6 address assignment mode for out-of-band management
          * 
          * @return builder
          * 
@@ -172,11 +240,23 @@ public final class MxclusterMxedgeMgmtArgs extends com.pulumi.resources.Resource
             return oobIpType6(Output.of(oobIpType6));
         }
 
+        /**
+         * @param rootPassword Root account password for the Mist Edge
+         * 
+         * @return builder
+         * 
+         */
         public Builder rootPassword(@Nullable Output<String> rootPassword) {
             $.rootPassword = rootPassword;
             return this;
         }
 
+        /**
+         * @param rootPassword Root account password for the Mist Edge
+         * 
+         * @return builder
+         * 
+         */
         public Builder rootPassword(String rootPassword) {
             return rootPassword(Output.of(rootPassword));
         }

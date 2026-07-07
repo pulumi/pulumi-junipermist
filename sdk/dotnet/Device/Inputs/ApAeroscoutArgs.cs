@@ -30,6 +30,9 @@ namespace Pulumi.JuniperMist.Device.Inputs
         [Input("locateConnected")]
         public Input<bool>? LocateConnected { get; set; }
 
+        /// <summary>
+        /// Optional if enabled, Aeroscout server port. Defaults to 1144
+        /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 

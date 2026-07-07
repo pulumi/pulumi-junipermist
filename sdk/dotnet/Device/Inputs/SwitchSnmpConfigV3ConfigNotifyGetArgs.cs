@@ -12,14 +12,20 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class SwitchSnmpConfigV3ConfigNotifyGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Identifier for this SNMPv3 notification definition
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// Notification tag used to select target addresses
+        /// </summary>
         [Input("tag", required: true)]
         public Input<string> Tag { get; set; } = null!;
 
         /// <summary>
-        /// enum: `Inform`, `Trap`
+        /// Delivery mode for this SNMPv3 notification, such as trap or inform
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

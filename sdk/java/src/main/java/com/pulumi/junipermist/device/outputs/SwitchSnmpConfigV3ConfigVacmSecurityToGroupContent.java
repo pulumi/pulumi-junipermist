@@ -12,20 +12,28 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SwitchSnmpConfigV3ConfigVacmSecurityToGroupContent {
     /**
-     * @return Refer to groupName under access
+     * @return VACM group name referenced by this mapping
      * 
      */
     private @Nullable String group;
+    /**
+     * @return Name of the SNMP security principal mapped to a VACM group
+     * 
+     */
     private @Nullable String securityName;
 
     private SwitchSnmpConfigV3ConfigVacmSecurityToGroupContent() {}
     /**
-     * @return Refer to groupName under access
+     * @return VACM group name referenced by this mapping
      * 
      */
     public Optional<String> group() {
         return Optional.ofNullable(this.group);
     }
+    /**
+     * @return Name of the SNMP security principal mapped to a VACM group
+     * 
+     */
     public Optional<String> securityName() {
         return Optional.ofNullable(this.securityName);
     }

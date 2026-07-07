@@ -17,16 +17,32 @@ public final class GatewayServicePolicySyslogArgs extends com.pulumi.resources.R
 
     public static final GatewayServicePolicySyslogArgs Empty = new GatewayServicePolicySyslogArgs();
 
+    /**
+     * Whether syslog logging is enabled for the service policy
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether syslog logging is enabled for the service policy
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * Names of syslog servers that receive logs for this service policy
+     * 
+     */
     @Import(name="serverNames")
     private @Nullable Output<List<String>> serverNames;
 
+    /**
+     * @return Names of syslog servers that receive logs for this service policy
+     * 
+     */
     public Optional<Output<List<String>>> serverNames() {
         return Optional.ofNullable(this.serverNames);
     }
@@ -56,24 +72,54 @@ public final class GatewayServicePolicySyslogArgs extends com.pulumi.resources.R
             $ = new GatewayServicePolicySyslogArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Whether syslog logging is enabled for the service policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether syslog logging is enabled for the service policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param serverNames Names of syslog servers that receive logs for this service policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder serverNames(@Nullable Output<List<String>> serverNames) {
             $.serverNames = serverNames;
             return this;
         }
 
+        /**
+         * @param serverNames Names of syslog servers that receive logs for this service policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder serverNames(List<String> serverNames) {
             return serverNames(Output.of(serverNames));
         }
 
+        /**
+         * @param serverNames Names of syslog servers that receive logs for this service policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder serverNames(String... serverNames) {
             return serverNames(List.of(serverNames));
         }

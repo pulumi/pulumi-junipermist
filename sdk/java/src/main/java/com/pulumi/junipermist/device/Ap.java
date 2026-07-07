@@ -20,6 +20,7 @@ import com.pulumi.junipermist.device.outputs.ApIpConfig;
 import com.pulumi.junipermist.device.outputs.ApLacpConfig;
 import com.pulumi.junipermist.device.outputs.ApLed;
 import com.pulumi.junipermist.device.outputs.ApMesh;
+import com.pulumi.junipermist.device.outputs.ApMqttConfig;
 import com.pulumi.junipermist.device.outputs.ApPortConfig;
 import com.pulumi.junipermist.device.outputs.ApPwrConfig;
 import com.pulumi.junipermist.device.outputs.ApRadioConfig;
@@ -53,48 +54,72 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:device/ap:Ap")
 public class Ap extends com.pulumi.resources.CustomResource {
     /**
-     * Aeroscout AP settings
+     * Location integration settings for AeroScout on this access point
      * 
      */
     @Export(name="aeroscout", refs={ApAeroscout.class}, tree="[0]")
     private Output</* @Nullable */ ApAeroscout> aeroscout;
 
     /**
-     * @return Aeroscout AP settings
+     * @return Location integration settings for AeroScout on this access point
      * 
      */
     public Output<Optional<ApAeroscout>> aeroscout() {
         return Codegen.optional(this.aeroscout);
     }
+    /**
+     * Location integration settings for Airista on this access point
+     * 
+     */
     @Export(name="airista", refs={ApAirista.class}, tree="[0]")
     private Output</* @Nullable */ ApAirista> airista;
 
+    /**
+     * @return Location integration settings for Airista on this access point
+     * 
+     */
     public Output<Optional<ApAirista>> airista() {
         return Codegen.optional(this.airista);
     }
     /**
-     * BLE AP settings
+     * Bluetooth Low Energy beacon and asset settings for this access point
      * 
      */
     @Export(name="bleConfig", refs={ApBleConfig.class}, tree="[0]")
     private Output</* @Nullable */ ApBleConfig> bleConfig;
 
     /**
-     * @return BLE AP settings
+     * @return Bluetooth Low Energy beacon and asset settings for this access point
      * 
      */
     public Output<Optional<ApBleConfig>> bleConfig() {
         return Codegen.optional(this.bleConfig);
     }
+    /**
+     * Location integration settings for Centrak on this access point
+     * 
+     */
     @Export(name="centrak", refs={ApCentrak.class}, tree="[0]")
     private Output</* @Nullable */ ApCentrak> centrak;
 
+    /**
+     * @return Location integration settings for Centrak on this access point
+     * 
+     */
     public Output<Optional<ApCentrak>> centrak() {
         return Codegen.optional(this.centrak);
     }
+    /**
+     * Wireless client bridge settings for this access point
+     * 
+     */
     @Export(name="clientBridge", refs={ApClientBridge.class}, tree="[0]")
     private Output</* @Nullable */ ApClientBridge> clientBridge;
 
+    /**
+     * @return Wireless client bridge settings for this access point
+     * 
+     */
     public Output<Optional<ApClientBridge>> clientBridge() {
         return Codegen.optional(this.clientBridge);
     }
@@ -160,9 +185,17 @@ public class Ap extends com.pulumi.resources.CustomResource {
     public Output<Boolean> disableModule() {
         return this.disableModule;
     }
+    /**
+     * Electronic shelf label integration settings for this access point
+     * 
+     */
     @Export(name="eslConfig", refs={ApEslConfig.class}, tree="[0]")
     private Output</* @Nullable */ ApEslConfig> eslConfig;
 
+    /**
+     * @return Electronic shelf label integration settings for this access point
+     * 
+     */
     public Output<Optional<ApEslConfig>> eslConfig() {
         return Codegen.optional(this.eslConfig);
     }
@@ -181,66 +214,98 @@ public class Ap extends com.pulumi.resources.CustomResource {
         return this.flowControl;
     }
     /**
-     * Height, in meters, optional
+     * Installation height of the AP, in meters
      * 
      */
     @Export(name="height", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> height;
 
     /**
-     * @return Height, in meters, optional
+     * @return Installation height of the AP, in meters
      * 
      */
     public Output<Optional<Double>> height() {
         return Codegen.optional(this.height);
     }
+    /**
+     * First custom image URL associated with the access point
+     * 
+     */
     @Export(name="image1Url", refs={String.class}, tree="[0]")
     private Output<String> image1Url;
 
+    /**
+     * @return First custom image URL associated with the access point
+     * 
+     */
     public Output<String> image1Url() {
         return this.image1Url;
     }
+    /**
+     * Second custom image URL associated with the access point
+     * 
+     */
     @Export(name="image2Url", refs={String.class}, tree="[0]")
     private Output<String> image2Url;
 
+    /**
+     * @return Second custom image URL associated with the access point
+     * 
+     */
     public Output<String> image2Url() {
         return this.image2Url;
     }
+    /**
+     * Third custom image URL associated with the access point
+     * 
+     */
     @Export(name="image3Url", refs={String.class}, tree="[0]")
     private Output<String> image3Url;
 
+    /**
+     * @return Third custom image URL associated with the access point
+     * 
+     */
     public Output<String> image3Url() {
         return this.image3Url;
     }
     /**
-     * IP AP settings
+     * Management IP addressing settings for this access point
      * 
      */
     @Export(name="ipConfig", refs={ApIpConfig.class}, tree="[0]")
     private Output</* @Nullable */ ApIpConfig> ipConfig;
 
     /**
-     * @return IP AP settings
+     * @return Management IP addressing settings for this access point
      * 
      */
     public Output<Optional<ApIpConfig>> ipConfig() {
         return Codegen.optional(this.ipConfig);
     }
+    /**
+     * Link aggregation settings for supported AP Ethernet uplinks
+     * 
+     */
     @Export(name="lacpConfig", refs={ApLacpConfig.class}, tree="[0]")
     private Output</* @Nullable */ ApLacpConfig> lacpConfig;
 
+    /**
+     * @return Link aggregation settings for supported AP Ethernet uplinks
+     * 
+     */
     public Output<Optional<ApLacpConfig>> lacpConfig() {
         return Codegen.optional(this.lacpConfig);
     }
     /**
-     * LED AP settings
+     * Indicator light behavior settings for this access point
      * 
      */
     @Export(name="led", refs={ApLed.class}, tree="[0]")
     private Output</* @Nullable */ ApLed> led;
 
     /**
-     * @return LED AP settings
+     * @return Indicator light behavior settings for this access point
      * 
      */
     public Output<Optional<ApLed>> led() {
@@ -261,14 +326,14 @@ public class Ap extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.locked);
     }
     /**
-     * Device MAC address
+     * Access point MAC address used to identify the device
      * 
      */
     @Export(name="mac", refs={String.class}, tree="[0]")
     private Output<String> mac;
 
     /**
-     * @return Device MAC address
+     * @return Access point MAC address used to identify the device
      * 
      */
     public Output<String> mac() {
@@ -289,36 +354,58 @@ public class Ap extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.mapId);
     }
     /**
-     * Mesh AP settings
+     * Wireless mesh role and band settings for this access point
      * 
      */
     @Export(name="mesh", refs={ApMesh.class}, tree="[0]")
     private Output</* @Nullable */ ApMesh> mesh;
 
     /**
-     * @return Mesh AP settings
+     * @return Wireless mesh role and band settings for this access point
      * 
      */
     public Output<Optional<ApMesh>> mesh() {
         return Codegen.optional(this.mesh);
     }
     /**
-     * Device Model
+     * Hardware model reported for the access point
      * 
      */
     @Export(name="model", refs={String.class}, tree="[0]")
     private Output<String> model;
 
     /**
-     * @return Device Model
+     * @return Hardware model reported for the access point
      * 
      */
     public Output<String> model() {
         return this.model;
     }
+    /**
+     * MQTT broker publishing settings for this access point
+     * 
+     */
+    @Export(name="mqttConfig", refs={ApMqttConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ApMqttConfig> mqttConfig;
+
+    /**
+     * @return MQTT broker publishing settings for this access point
+     * 
+     */
+    public Output<Optional<ApMqttConfig>> mqttConfig() {
+        return Codegen.optional(this.mqttConfig);
+    }
+    /**
+     * Configured hostname assigned to the access point
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Configured hostname assigned to the access point
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
@@ -336,27 +423,43 @@ public class Ap extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> notes() {
         return Codegen.optional(this.notes);
     }
+    /**
+     * NTP servers used by this access point
+     * 
+     */
     @Export(name="ntpServers", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> ntpServers;
 
+    /**
+     * @return NTP servers used by this access point
+     * 
+     */
     public Output<Optional<List<String>>> ntpServers() {
         return Codegen.optional(this.ntpServers);
     }
+    /**
+     * Organization that owns this access point
+     * 
+     */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
+    /**
+     * @return Organization that owns this access point
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }
     /**
-     * Orientation, 0-359, in degrees, up is 0, right is 90.
+     * AP orientation in degrees from 0 to 359, where 0 is up and 90 is right
      * 
      */
     @Export(name="orientation", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> orientation;
 
     /**
-     * @return Orientation, 0-359, in degrees, up is 0, right is 90.
+     * @return AP orientation in degrees from 0 to 359, where 0 is up and 90 is right
      * 
      */
     public Output<Optional<Integer>> orientation() {
@@ -391,150 +494,154 @@ public class Ap extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.portConfig);
     }
     /**
-     * Power related configs
+     * Power negotiation and peripheral power settings for this access point
      * 
      */
     @Export(name="pwrConfig", refs={ApPwrConfig.class}, tree="[0]")
     private Output</* @Nullable */ ApPwrConfig> pwrConfig;
 
     /**
-     * @return Power related configs
+     * @return Power negotiation and peripheral power settings for this access point
      * 
      */
     public Output<Optional<ApPwrConfig>> pwrConfig() {
         return Codegen.optional(this.pwrConfig);
     }
     /**
-     * Radio AP settings
+     * Radio configuration overrides for this access point
      * 
      */
     @Export(name="radioConfig", refs={ApRadioConfig.class}, tree="[0]")
     private Output</* @Nullable */ ApRadioConfig> radioConfig;
 
     /**
-     * @return Radio AP settings
+     * @return Radio configuration overrides for this access point
      * 
      */
     public Output<Optional<ApRadioConfig>> radioConfig() {
         return Codegen.optional(this.radioConfig);
     }
     /**
-     * Device Serial
+     * Manufacturer serial number for the access point
      * 
      */
     @Export(name="serial", refs={String.class}, tree="[0]")
     private Output<String> serial;
 
     /**
-     * @return Device Serial
+     * @return Manufacturer serial number for the access point
      * 
      */
     public Output<String> serial() {
         return this.serial;
     }
+    /**
+     * Site where this access point is assigned
+     * 
+     */
     @Export(name="siteId", refs={String.class}, tree="[0]")
     private Output<String> siteId;
 
+    /**
+     * @return Site where this access point is assigned
+     * 
+     */
     public Output<String> siteId() {
         return this.siteId;
     }
     /**
-     * Device Type. enum: `ap`
+     * Device type discriminator for access point records
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Device Type. enum: `ap`
+     * @return Device type discriminator for access point records
      * 
      */
     public Output<String> type() {
         return this.type;
     }
     /**
-     * AP Uplink port configuration
+     * Authentication and failover behavior for AP uplink ports
      * 
      */
     @Export(name="uplinkPortConfig", refs={ApUplinkPortConfig.class}, tree="[0]")
     private Output</* @Nullable */ ApUplinkPortConfig> uplinkPortConfig;
 
     /**
-     * @return AP Uplink port configuration
+     * @return Authentication and failover behavior for AP uplink ports
      * 
      */
     public Output<Optional<ApUplinkPortConfig>> uplinkPortConfig() {
         return Codegen.optional(this.uplinkPortConfig);
     }
     /**
-     * USB AP settings
-     *   - Note: if native imagotag is enabled, BLE will be disabled automatically
-     *   - Note: legacy, new config moved to ESL Config.
+     * Legacy USB integration settings for this access point
      * 
      */
     @Export(name="usbConfig", refs={ApUsbConfig.class}, tree="[0]")
     private Output</* @Nullable */ ApUsbConfig> usbConfig;
 
     /**
-     * @return USB AP settings
-     *   - Note: if native imagotag is enabled, BLE will be disabled automatically
-     *   - Note: legacy, new config moved to ESL Config.
+     * @return Legacy USB integration settings for this access point
      * 
      */
     public Output<Optional<ApUsbConfig>> usbConfig() {
         return Codegen.optional(this.usbConfig);
     }
     /**
-     * Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Variable values that override site variables for this access point
      * 
      */
     @Export(name="vars", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> vars;
 
     /**
-     * @return Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * @return Variable values that override site variables for this access point
      * 
      */
     public Output<Optional<Map<String,String>>> vars() {
         return Codegen.optional(this.vars);
     }
     /**
-     * X in pixel
+     * Horizontal map position of the AP, in pixels
      * 
      */
     @Export(name="x", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> x;
 
     /**
-     * @return X in pixel
+     * @return Horizontal map position of the AP, in pixels
      * 
      */
     public Output<Optional<Double>> x() {
         return Codegen.optional(this.x);
     }
     /**
-     * Y in pixel
+     * Vertical map position of the AP, in pixels
      * 
      */
     @Export(name="y", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> y;
 
     /**
-     * @return Y in pixel
+     * @return Vertical map position of the AP, in pixels
      * 
      */
     public Output<Optional<Double>> y() {
         return Codegen.optional(this.y);
     }
     /**
-     * Zigbee AP settings
+     * Zigbee radio and network settings for this access point
      * 
      */
     @Export(name="zigbeeConfig", refs={ApZigbeeConfig.class}, tree="[0]")
     private Output</* @Nullable */ ApZigbeeConfig> zigbeeConfig;
 
     /**
-     * @return Zigbee AP settings
+     * @return Zigbee radio and network settings for this access point
      * 
      */
     public Output<Optional<ApZigbeeConfig>> zigbeeConfig() {

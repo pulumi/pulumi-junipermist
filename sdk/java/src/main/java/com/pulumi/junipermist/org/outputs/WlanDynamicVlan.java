@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WlanDynamicVlan {
     /**
-     * @return Default VLAN ID(s) can be a number, a range of VLAN IDs, a variable or multiple numbers, ranges or variables as a VLAN pool. Default VLAN as a pool of VLANS requires 0.14.x or newer firmware
+     * @return Fallback VLAN IDs, ranges, or variables used when no RADIUS VLAN match is returned
      * 
      */
     private @Nullable List<String> defaultVlanIds;
@@ -25,26 +25,26 @@ public final class WlanDynamicVlan {
      */
     private @Nullable Boolean enabled;
     /**
-     * @return VLAN_ids to be locally bridged
+     * @return VLAN IDs that should be locally bridged for dynamic VLAN assignment
      * 
      */
     private @Nullable List<String> localVlanIds;
     /**
-     * @return standard (using Tunnel-Private-Group-ID, widely supported), airespace-interface-name (Airespace/Cisco). enum: `airespace-interface-name`, `standard`
+     * @return Dynamic VLAN mapping method used for RADIUS-provided VLAN attributes
      * 
      */
     private @Nullable String type;
     /**
      * @return Map between vlanId (as string) to airespace interface names (comma-separated) or null for standard mapping
-     *   * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \&#34;\&#34;
-     *   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
+     *   * if `dynamic_vlan.type`==`standard`, property key is the VLAN ID and property value is \&#34;\&#34;
+     *   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the VLAN ID and property value is the Airespace Interface Name
      * 
      */
     private @Nullable Map<String,String> vlans;
 
     private WlanDynamicVlan() {}
     /**
-     * @return Default VLAN ID(s) can be a number, a range of VLAN IDs, a variable or multiple numbers, ranges or variables as a VLAN pool. Default VLAN as a pool of VLANS requires 0.14.x or newer firmware
+     * @return Fallback VLAN IDs, ranges, or variables used when no RADIUS VLAN match is returned
      * 
      */
     public List<String> defaultVlanIds() {
@@ -58,14 +58,14 @@ public final class WlanDynamicVlan {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return VLAN_ids to be locally bridged
+     * @return VLAN IDs that should be locally bridged for dynamic VLAN assignment
      * 
      */
     public List<String> localVlanIds() {
         return this.localVlanIds == null ? List.of() : this.localVlanIds;
     }
     /**
-     * @return standard (using Tunnel-Private-Group-ID, widely supported), airespace-interface-name (Airespace/Cisco). enum: `airespace-interface-name`, `standard`
+     * @return Dynamic VLAN mapping method used for RADIUS-provided VLAN attributes
      * 
      */
     public Optional<String> type() {
@@ -73,8 +73,8 @@ public final class WlanDynamicVlan {
     }
     /**
      * @return Map between vlanId (as string) to airespace interface names (comma-separated) or null for standard mapping
-     *   * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \&#34;\&#34;
-     *   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
+     *   * if `dynamic_vlan.type`==`standard`, property key is the VLAN ID and property value is \&#34;\&#34;
+     *   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the VLAN ID and property value is the Airespace Interface Name
      * 
      */
     public Map<String,String> vlans() {

@@ -12,50 +12,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingJunosShellAccess {
     /**
-     * @return enum: `admin`, `viewer`, `none`
+     * @return Shell access level used for administrator web-shell sessions
      * 
      */
     private @Nullable String admin;
     /**
-     * @return enum: `admin`, `viewer`, `none`
+     * @return Shell access level used for helpdesk web-shell sessions
      * 
      */
     private @Nullable String helpdesk;
     /**
-     * @return enum: `admin`, `viewer`, `none`
+     * @return Shell access level used for read-only web-shell sessions
      * 
      */
     private @Nullable String read;
     /**
-     * @return enum: `admin`, `viewer`, `none`
+     * @return Shell access level used for write-role web-shell sessions
      * 
      */
     private @Nullable String write;
 
     private SettingJunosShellAccess() {}
     /**
-     * @return enum: `admin`, `viewer`, `none`
+     * @return Shell access level used for administrator web-shell sessions
      * 
      */
     public Optional<String> admin() {
         return Optional.ofNullable(this.admin);
     }
     /**
-     * @return enum: `admin`, `viewer`, `none`
+     * @return Shell access level used for helpdesk web-shell sessions
      * 
      */
     public Optional<String> helpdesk() {
         return Optional.ofNullable(this.helpdesk);
     }
     /**
-     * @return enum: `admin`, `viewer`, `none`
+     * @return Shell access level used for read-only web-shell sessions
      * 
      */
     public Optional<String> read() {
         return Optional.ofNullable(this.read);
     }
     /**
-     * @return enum: `admin`, `viewer`, `none`
+     * @return Shell access level used for write-role web-shell sessions
      * 
      */
     public Optional<String> write() {

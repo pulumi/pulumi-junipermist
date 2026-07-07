@@ -15,22 +15,30 @@ public final class GatewayRoutingPoliciesTermMatchingRouteExistsArgs extends com
 
     public static final GatewayRoutingPoliciesTermMatchingRouteExistsArgs Empty = new GatewayRoutingPoliciesTermMatchingRouteExistsArgs();
 
+    /**
+     * Prefix that must exist for this condition to match
+     * 
+     */
     @Import(name="route")
     private @Nullable Output<String> route;
 
+    /**
+     * @return Prefix that must exist for this condition to match
+     * 
+     */
     public Optional<Output<String>> route() {
         return Optional.ofNullable(this.route);
     }
 
     /**
-     * Name of the vrf instance, it can also be the name of the VPN or wan if they
+     * Name of the VRF instance where the route is checked; can also be a VPN or WAN name when applicable
      * 
      */
     @Import(name="vrfName")
     private @Nullable Output<String> vrfName;
 
     /**
-     * @return Name of the vrf instance, it can also be the name of the VPN or wan if they
+     * @return Name of the VRF instance where the route is checked; can also be a VPN or WAN name when applicable
      * 
      */
     public Optional<Output<String>> vrfName() {
@@ -62,17 +70,29 @@ public final class GatewayRoutingPoliciesTermMatchingRouteExistsArgs extends com
             $ = new GatewayRoutingPoliciesTermMatchingRouteExistsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param route Prefix that must exist for this condition to match
+         * 
+         * @return builder
+         * 
+         */
         public Builder route(@Nullable Output<String> route) {
             $.route = route;
             return this;
         }
 
+        /**
+         * @param route Prefix that must exist for this condition to match
+         * 
+         * @return builder
+         * 
+         */
         public Builder route(String route) {
             return route(Output.of(route));
         }
 
         /**
-         * @param vrfName Name of the vrf instance, it can also be the name of the VPN or wan if they
+         * @param vrfName Name of the VRF instance where the route is checked; can also be a VPN or WAN name when applicable
          * 
          * @return builder
          * 
@@ -83,7 +103,7 @@ public final class GatewayRoutingPoliciesTermMatchingRouteExistsArgs extends com
         }
 
         /**
-         * @param vrfName Name of the vrf instance, it can also be the name of the VPN or wan if they
+         * @param vrfName Name of the VRF instance where the route is checked; can also be a VPN or WAN name when applicable
          * 
          * @return builder
          * 

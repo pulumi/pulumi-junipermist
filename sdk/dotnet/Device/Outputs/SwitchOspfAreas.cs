@@ -13,10 +13,16 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class SwitchOspfAreas
     {
+        /// <summary>
+        /// Whether loopback interfaces are included in this OSPF area
+        /// </summary>
         public readonly bool? IncludeLoopback;
+        /// <summary>
+        /// OSPF network settings keyed by network name
+        /// </summary>
         public readonly ImmutableDictionary<string, Outputs.SwitchOspfAreasNetworks> Networks;
         /// <summary>
-        /// OSPF type. enum: `Default`, `Nssa`, `Stub`
+        /// Area type for this OSPF area
         /// </summary>
         public readonly string? Type;
 

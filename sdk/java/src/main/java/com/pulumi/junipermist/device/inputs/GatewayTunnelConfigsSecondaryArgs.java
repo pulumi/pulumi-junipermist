@@ -17,53 +17,77 @@ public final class GatewayTunnelConfigsSecondaryArgs extends com.pulumi.resource
 
     public static final GatewayTunnelConfigsSecondaryArgs Empty = new GatewayTunnelConfigsSecondaryArgs();
 
+    /**
+     * Remote gateway host addresses for this tunnel node
+     * 
+     */
     @Import(name="hosts", required=true)
     private Output<List<String>> hosts;
 
+    /**
+     * @return Remote gateway host addresses for this tunnel node
+     * 
+     */
     public Output<List<String>> hosts() {
         return this.hosts;
     }
 
     /**
-     * Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
+     * Internal IP addresses configured on this tunnel node
      * 
      */
     @Import(name="internalIps")
     private @Nullable Output<List<String>> internalIps;
 
     /**
-     * @return Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
+     * @return Internal IP addresses configured on this tunnel node
      * 
      */
     public Optional<Output<List<String>>> internalIps() {
         return Optional.ofNullable(this.internalIps);
     }
 
+    /**
+     * Health-check IP addresses used to monitor this tunnel node
+     * 
+     */
     @Import(name="probeIps")
     private @Nullable Output<List<String>> probeIps;
 
+    /**
+     * @return Health-check IP addresses used to monitor this tunnel node
+     * 
+     */
     public Optional<Output<List<String>>> probeIps() {
         return Optional.ofNullable(this.probeIps);
     }
 
     /**
-     * Only if `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+     * IKE identities expected from this tunnel node
      * 
      */
     @Import(name="remoteIds")
     private @Nullable Output<List<String>> remoteIds;
 
     /**
-     * @return Only if `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+     * @return IKE identities expected from this tunnel node
      * 
      */
     public Optional<Output<List<String>>> remoteIds() {
         return Optional.ofNullable(this.remoteIds);
     }
 
+    /**
+     * Interface names that source tunnel traffic for this node
+     * 
+     */
     @Import(name="wanNames", required=true)
     private Output<List<String>> wanNames;
 
+    /**
+     * @return Interface names that source tunnel traffic for this node
+     * 
+     */
     public Output<List<String>> wanNames() {
         return this.wanNames;
     }
@@ -96,21 +120,39 @@ public final class GatewayTunnelConfigsSecondaryArgs extends com.pulumi.resource
             $ = new GatewayTunnelConfigsSecondaryArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param hosts Remote gateway host addresses for this tunnel node
+         * 
+         * @return builder
+         * 
+         */
         public Builder hosts(Output<List<String>> hosts) {
             $.hosts = hosts;
             return this;
         }
 
+        /**
+         * @param hosts Remote gateway host addresses for this tunnel node
+         * 
+         * @return builder
+         * 
+         */
         public Builder hosts(List<String> hosts) {
             return hosts(Output.of(hosts));
         }
 
+        /**
+         * @param hosts Remote gateway host addresses for this tunnel node
+         * 
+         * @return builder
+         * 
+         */
         public Builder hosts(String... hosts) {
             return hosts(List.of(hosts));
         }
 
         /**
-         * @param internalIps Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
+         * @param internalIps Internal IP addresses configured on this tunnel node
          * 
          * @return builder
          * 
@@ -121,7 +163,7 @@ public final class GatewayTunnelConfigsSecondaryArgs extends com.pulumi.resource
         }
 
         /**
-         * @param internalIps Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
+         * @param internalIps Internal IP addresses configured on this tunnel node
          * 
          * @return builder
          * 
@@ -131,7 +173,7 @@ public final class GatewayTunnelConfigsSecondaryArgs extends com.pulumi.resource
         }
 
         /**
-         * @param internalIps Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
+         * @param internalIps Internal IP addresses configured on this tunnel node
          * 
          * @return builder
          * 
@@ -140,21 +182,39 @@ public final class GatewayTunnelConfigsSecondaryArgs extends com.pulumi.resource
             return internalIps(List.of(internalIps));
         }
 
+        /**
+         * @param probeIps Health-check IP addresses used to monitor this tunnel node
+         * 
+         * @return builder
+         * 
+         */
         public Builder probeIps(@Nullable Output<List<String>> probeIps) {
             $.probeIps = probeIps;
             return this;
         }
 
+        /**
+         * @param probeIps Health-check IP addresses used to monitor this tunnel node
+         * 
+         * @return builder
+         * 
+         */
         public Builder probeIps(List<String> probeIps) {
             return probeIps(Output.of(probeIps));
         }
 
+        /**
+         * @param probeIps Health-check IP addresses used to monitor this tunnel node
+         * 
+         * @return builder
+         * 
+         */
         public Builder probeIps(String... probeIps) {
             return probeIps(List.of(probeIps));
         }
 
         /**
-         * @param remoteIds Only if `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+         * @param remoteIds IKE identities expected from this tunnel node
          * 
          * @return builder
          * 
@@ -165,7 +225,7 @@ public final class GatewayTunnelConfigsSecondaryArgs extends com.pulumi.resource
         }
 
         /**
-         * @param remoteIds Only if `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+         * @param remoteIds IKE identities expected from this tunnel node
          * 
          * @return builder
          * 
@@ -175,7 +235,7 @@ public final class GatewayTunnelConfigsSecondaryArgs extends com.pulumi.resource
         }
 
         /**
-         * @param remoteIds Only if `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+         * @param remoteIds IKE identities expected from this tunnel node
          * 
          * @return builder
          * 
@@ -184,15 +244,33 @@ public final class GatewayTunnelConfigsSecondaryArgs extends com.pulumi.resource
             return remoteIds(List.of(remoteIds));
         }
 
+        /**
+         * @param wanNames Interface names that source tunnel traffic for this node
+         * 
+         * @return builder
+         * 
+         */
         public Builder wanNames(Output<List<String>> wanNames) {
             $.wanNames = wanNames;
             return this;
         }
 
+        /**
+         * @param wanNames Interface names that source tunnel traffic for this node
+         * 
+         * @return builder
+         * 
+         */
         public Builder wanNames(List<String> wanNames) {
             return wanNames(Output.of(wanNames));
         }
 
+        /**
+         * @param wanNames Interface names that source tunnel traffic for this node
+         * 
+         * @return builder
+         * 
+         */
         public Builder wanNames(String... wanNames) {
             return wanNames(List.of(wanNames));
         }

@@ -13,7 +13,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingVpnOptions {
+    /**
+     * @return Base BGP autonomous system number used for generated VPN configurations
+     * 
+     */
     private @Nullable Integer asBase;
+    /**
+     * @return Whether IPv6 is enabled for organization VPN configuration
+     * 
+     */
     private @Nullable Boolean enableIpv6;
     /**
      * @return requiring /12 or bigger to support 16 private IPs for 65535 gateways
@@ -22,9 +30,17 @@ public final class SettingVpnOptions {
     private @Nullable String stSubnet;
 
     private SettingVpnOptions() {}
+    /**
+     * @return Base BGP autonomous system number used for generated VPN configurations
+     * 
+     */
     public Optional<Integer> asBase() {
         return Optional.ofNullable(this.asBase);
     }
+    /**
+     * @return Whether IPv6 is enabled for organization VPN configuration
+     * 
+     */
     public Optional<Boolean> enableIpv6() {
         return Optional.ofNullable(this.enableIpv6);
     }

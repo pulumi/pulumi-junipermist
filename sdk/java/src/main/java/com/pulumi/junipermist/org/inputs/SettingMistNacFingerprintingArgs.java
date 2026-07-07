@@ -62,14 +62,14 @@ public final class SettingMistNacFingerprintingArgs extends com.pulumi.resources
     }
 
     /**
-     * enum: `reauth`, `disconnect`
+     * Change of Authorization action sent to wireless clients when fingerprints change
      * 
      */
     @Import(name="wirelessCoaType")
     private @Nullable Output<String> wirelessCoaType;
 
     /**
-     * @return enum: `reauth`, `disconnect`
+     * @return Change of Authorization action sent to wireless clients when fingerprints change
      * 
      */
     public Optional<Output<String>> wirelessCoaType() {
@@ -167,7 +167,7 @@ public final class SettingMistNacFingerprintingArgs extends com.pulumi.resources
         }
 
         /**
-         * @param wirelessCoaType enum: `reauth`, `disconnect`
+         * @param wirelessCoaType Change of Authorization action sent to wireless clients when fingerprints change
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class SettingMistNacFingerprintingArgs extends com.pulumi.resources
         }
 
         /**
-         * @param wirelessCoaType enum: `reauth`, `disconnect`
+         * @param wirelessCoaType Change of Authorization action sent to wireless clients when fingerprints change
          * 
          * @return builder
          * 

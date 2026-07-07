@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class SettingSwitchArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Auto-upgrade defaults for switches in this organization
+        /// </summary>
         [Input("autoUpgrade")]
         public Input<Inputs.SettingSwitchAutoUpgradeArgs>? AutoUpgrade { get; set; }
 

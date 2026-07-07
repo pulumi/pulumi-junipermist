@@ -14,12 +14,15 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class ServicepolicyAntivirus
     {
         /// <summary>
-        /// org-level AV Profile can be used, this takes precedence over 'profile'
+        /// Organization-level antivirus profile ID; takes precedence over inline `Profile` settings
         /// </summary>
         public readonly string? AvprofileId;
+        /// <summary>
+        /// Whether antivirus inspection is enabled for the service policy
+        /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Default / noftp / httponly / or keys from av_profiles
+        /// Antivirus profile name to apply, such as `Default`, `Noftp`, `Httponly`, or an AV profile key
         /// </summary>
         public readonly string? Profile;
 

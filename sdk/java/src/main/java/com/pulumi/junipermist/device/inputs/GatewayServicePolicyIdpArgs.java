@@ -16,16 +16,32 @@ public final class GatewayServicePolicyIdpArgs extends com.pulumi.resources.Reso
 
     public static final GatewayServicePolicyIdpArgs Empty = new GatewayServicePolicyIdpArgs();
 
+    /**
+     * Whether to alert without enforcing IDP prevention actions
+     * 
+     */
     @Import(name="alertOnly")
     private @Nullable Output<Boolean> alertOnly;
 
+    /**
+     * @return Whether to alert without enforcing IDP prevention actions
+     * 
+     */
     public Optional<Output<Boolean>> alertOnly() {
         return Optional.ofNullable(this.alertOnly);
     }
 
+    /**
+     * Whether IDP inspection is enabled for the policy
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether IDP inspection is enabled for the policy
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -87,20 +103,44 @@ public final class GatewayServicePolicyIdpArgs extends com.pulumi.resources.Reso
             $ = new GatewayServicePolicyIdpArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param alertOnly Whether to alert without enforcing IDP prevention actions
+         * 
+         * @return builder
+         * 
+         */
         public Builder alertOnly(@Nullable Output<Boolean> alertOnly) {
             $.alertOnly = alertOnly;
             return this;
         }
 
+        /**
+         * @param alertOnly Whether to alert without enforcing IDP prevention actions
+         * 
+         * @return builder
+         * 
+         */
         public Builder alertOnly(Boolean alertOnly) {
             return alertOnly(Output.of(alertOnly));
         }
 
+        /**
+         * @param enabled Whether IDP inspection is enabled for the policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether IDP inspection is enabled for the policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

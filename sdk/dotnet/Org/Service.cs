@@ -64,28 +64,25 @@ namespace Pulumi.JuniperMist.Org
     public partial class Service : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// If `Type`==`Custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
+        /// Custom IPv4 or IPv6 subnets matched by this service when `Type`==`Custom`
         /// </summary>
         [Output("addresses")]
         public Output<ImmutableArray<string>> Addresses { get; private set; } = null!;
 
         /// <summary>
-        /// When `Type`==`AppCategories`, list of application categories are available through List App Category Definitions
+        /// Categories of applications matched by this service when `Type`==`AppCategories`
         /// </summary>
         [Output("appCategories")]
         public Output<ImmutableArray<string>> AppCategories { get; private set; } = null!;
 
         /// <summary>
-        /// When `Type`==`AppCategories`, list of application categories are available through List App Sub Category Definitions
+        /// Application subcategories matched by this service when `Type`==`AppCategories`
         /// </summary>
         [Output("appSubcategories")]
         public Output<ImmutableArray<string>> AppSubcategories { get; private set; } = null!;
 
         /// <summary>
-        /// When `Type`==`Apps`, list of applications are available through:
-        ///   * List Applications
-        ///   * List Gateway Applications
-        ///   * /insight/top_app_by-bytes?wired=true
+        /// Application identifiers matched by this service when `Type`==`Apps`
         /// </summary>
         [Output("apps")]
         public Output<ImmutableArray<string>> Apps { get; private set; } = null!;
@@ -102,36 +99,57 @@ namespace Pulumi.JuniperMist.Org
         [Output("clientLimitUp")]
         public Output<int?> ClientLimitUp { get; private set; } = null!;
 
+        /// <summary>
+        /// Free-form description of the service definition
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// QoS DSCP value used for custom SSR traffic classification
+        /// </summary>
         [Output("dscp")]
         public Output<string?> Dscp { get; private set; } = null!;
 
         /// <summary>
-        /// enum: `NonRevertible`, `None`, `Revertible`
+        /// Failover behavior for traffic matched by this service
         /// </summary>
         [Output("failoverPolicy")]
         public Output<string?> FailoverPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// If `Type`==`Custom`, web filtering
+        /// Domain hostnames matched by this custom service for web filtering
         /// </summary>
         [Output("hostnames")]
         public Output<ImmutableArray<string>> Hostnames { get; private set; } = null!;
 
+        /// <summary>
+        /// Maximum jitter threshold used for SSR uplink selection when `TrafficType`==`Custom`
+        /// </summary>
         [Output("maxJitter")]
         public Output<string?> MaxJitter { get; private set; } = null!;
 
+        /// <summary>
+        /// Maximum latency threshold used for SSR uplink selection when `TrafficType`==`Custom`
+        /// </summary>
         [Output("maxLatency")]
         public Output<string?> MaxLatency { get; private set; } = null!;
 
+        /// <summary>
+        /// Maximum packet loss threshold used for SSR uplink selection when `TrafficType`==`Custom`
+        /// </summary>
         [Output("maxLoss")]
         public Output<string?> MaxLoss { get; private set; } = null!;
 
+        /// <summary>
+        /// Display name of the service definition
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Organization identifier associated with the service definition
+        /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
@@ -154,16 +172,19 @@ namespace Pulumi.JuniperMist.Org
         public Output<bool?> SleEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// When `Type`==`Custom`, optional, if it doesn't exist, http and https is assumed
+        /// Protocol and port match rules used when `Type`==`Custom`
         /// </summary>
         [Output("specs")]
         public Output<ImmutableArray<Outputs.ServiceSpec>> Specs { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether SSR relaxes TCP state enforcement for this service
+        /// </summary>
         [Output("ssrRelaxedTcpStateEnforcement")]
         public Output<bool?> SsrRelaxedTcpStateEnforcement { get; private set; } = null!;
 
         /// <summary>
-        /// when `TrafficType`==`Custom`. enum: `BestEffort`, `High`, `Low`, `Medium`
+        /// Traffic class applied when `TrafficType`==`Custom`
         /// </summary>
         [Output("trafficClass")]
         public Output<string?> TrafficClass { get; private set; } = null!;
@@ -175,13 +196,13 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> TrafficType { get; private set; } = null!;
 
         /// <summary>
-        /// enum: `AppCategories`, `Apps`, `Custom`, `Urls`
+        /// Matching mode that determines which app, URL, or custom fields are used
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// When `Type`==`Urls`, no need for spec as URL can encode the ports being used
+        /// URL patterns matched by this service when `Type`==`Urls`
         /// </summary>
         [Output("urls")]
         public Output<ImmutableArray<string>> Urls { get; private set; } = null!;
@@ -237,7 +258,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _addresses;
 
         /// <summary>
-        /// If `Type`==`Custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
+        /// Custom IPv4 or IPv6 subnets matched by this service when `Type`==`Custom`
         /// </summary>
         public InputList<string> Addresses
         {
@@ -249,7 +270,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _appCategories;
 
         /// <summary>
-        /// When `Type`==`AppCategories`, list of application categories are available through List App Category Definitions
+        /// Categories of applications matched by this service when `Type`==`AppCategories`
         /// </summary>
         public InputList<string> AppCategories
         {
@@ -261,7 +282,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _appSubcategories;
 
         /// <summary>
-        /// When `Type`==`AppCategories`, list of application categories are available through List App Sub Category Definitions
+        /// Application subcategories matched by this service when `Type`==`AppCategories`
         /// </summary>
         public InputList<string> AppSubcategories
         {
@@ -273,10 +294,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _apps;
 
         /// <summary>
-        /// When `Type`==`Apps`, list of applications are available through:
-        ///   * List Applications
-        ///   * List Gateway Applications
-        ///   * /insight/top_app_by-bytes?wired=true
+        /// Application identifiers matched by this service when `Type`==`Apps`
         /// </summary>
         public InputList<string> Apps
         {
@@ -296,14 +314,20 @@ namespace Pulumi.JuniperMist.Org
         [Input("clientLimitUp")]
         public Input<int>? ClientLimitUp { get; set; }
 
+        /// <summary>
+        /// Free-form description of the service definition
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// QoS DSCP value used for custom SSR traffic classification
+        /// </summary>
         [Input("dscp")]
         public Input<string>? Dscp { get; set; }
 
         /// <summary>
-        /// enum: `NonRevertible`, `None`, `Revertible`
+        /// Failover behavior for traffic matched by this service
         /// </summary>
         [Input("failoverPolicy")]
         public Input<string>? FailoverPolicy { get; set; }
@@ -312,7 +336,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _hostnames;
 
         /// <summary>
-        /// If `Type`==`Custom`, web filtering
+        /// Domain hostnames matched by this custom service for web filtering
         /// </summary>
         public InputList<string> Hostnames
         {
@@ -320,18 +344,33 @@ namespace Pulumi.JuniperMist.Org
             set => _hostnames = value;
         }
 
+        /// <summary>
+        /// Maximum jitter threshold used for SSR uplink selection when `TrafficType`==`Custom`
+        /// </summary>
         [Input("maxJitter")]
         public Input<string>? MaxJitter { get; set; }
 
+        /// <summary>
+        /// Maximum latency threshold used for SSR uplink selection when `TrafficType`==`Custom`
+        /// </summary>
         [Input("maxLatency")]
         public Input<string>? MaxLatency { get; set; }
 
+        /// <summary>
+        /// Maximum packet loss threshold used for SSR uplink selection when `TrafficType`==`Custom`
+        /// </summary>
         [Input("maxLoss")]
         public Input<string>? MaxLoss { get; set; }
 
+        /// <summary>
+        /// Display name of the service definition
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Organization identifier associated with the service definition
+        /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
@@ -357,7 +396,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<Inputs.ServiceSpecArgs>? _specs;
 
         /// <summary>
-        /// When `Type`==`Custom`, optional, if it doesn't exist, http and https is assumed
+        /// Protocol and port match rules used when `Type`==`Custom`
         /// </summary>
         public InputList<Inputs.ServiceSpecArgs> Specs
         {
@@ -365,11 +404,14 @@ namespace Pulumi.JuniperMist.Org
             set => _specs = value;
         }
 
+        /// <summary>
+        /// Whether SSR relaxes TCP state enforcement for this service
+        /// </summary>
         [Input("ssrRelaxedTcpStateEnforcement")]
         public Input<bool>? SsrRelaxedTcpStateEnforcement { get; set; }
 
         /// <summary>
-        /// when `TrafficType`==`Custom`. enum: `BestEffort`, `High`, `Low`, `Medium`
+        /// Traffic class applied when `TrafficType`==`Custom`
         /// </summary>
         [Input("trafficClass")]
         public Input<string>? TrafficClass { get; set; }
@@ -381,7 +423,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? TrafficType { get; set; }
 
         /// <summary>
-        /// enum: `AppCategories`, `Apps`, `Custom`, `Urls`
+        /// Matching mode that determines which app, URL, or custom fields are used
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -390,7 +432,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _urls;
 
         /// <summary>
-        /// When `Type`==`Urls`, no need for spec as URL can encode the ports being used
+        /// URL patterns matched by this service when `Type`==`Urls`
         /// </summary>
         public InputList<string> Urls
         {
@@ -410,7 +452,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _addresses;
 
         /// <summary>
-        /// If `Type`==`Custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
+        /// Custom IPv4 or IPv6 subnets matched by this service when `Type`==`Custom`
         /// </summary>
         public InputList<string> Addresses
         {
@@ -422,7 +464,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _appCategories;
 
         /// <summary>
-        /// When `Type`==`AppCategories`, list of application categories are available through List App Category Definitions
+        /// Categories of applications matched by this service when `Type`==`AppCategories`
         /// </summary>
         public InputList<string> AppCategories
         {
@@ -434,7 +476,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _appSubcategories;
 
         /// <summary>
-        /// When `Type`==`AppCategories`, list of application categories are available through List App Sub Category Definitions
+        /// Application subcategories matched by this service when `Type`==`AppCategories`
         /// </summary>
         public InputList<string> AppSubcategories
         {
@@ -446,10 +488,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _apps;
 
         /// <summary>
-        /// When `Type`==`Apps`, list of applications are available through:
-        ///   * List Applications
-        ///   * List Gateway Applications
-        ///   * /insight/top_app_by-bytes?wired=true
+        /// Application identifiers matched by this service when `Type`==`Apps`
         /// </summary>
         public InputList<string> Apps
         {
@@ -469,14 +508,20 @@ namespace Pulumi.JuniperMist.Org
         [Input("clientLimitUp")]
         public Input<int>? ClientLimitUp { get; set; }
 
+        /// <summary>
+        /// Free-form description of the service definition
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// QoS DSCP value used for custom SSR traffic classification
+        /// </summary>
         [Input("dscp")]
         public Input<string>? Dscp { get; set; }
 
         /// <summary>
-        /// enum: `NonRevertible`, `None`, `Revertible`
+        /// Failover behavior for traffic matched by this service
         /// </summary>
         [Input("failoverPolicy")]
         public Input<string>? FailoverPolicy { get; set; }
@@ -485,7 +530,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _hostnames;
 
         /// <summary>
-        /// If `Type`==`Custom`, web filtering
+        /// Domain hostnames matched by this custom service for web filtering
         /// </summary>
         public InputList<string> Hostnames
         {
@@ -493,18 +538,33 @@ namespace Pulumi.JuniperMist.Org
             set => _hostnames = value;
         }
 
+        /// <summary>
+        /// Maximum jitter threshold used for SSR uplink selection when `TrafficType`==`Custom`
+        /// </summary>
         [Input("maxJitter")]
         public Input<string>? MaxJitter { get; set; }
 
+        /// <summary>
+        /// Maximum latency threshold used for SSR uplink selection when `TrafficType`==`Custom`
+        /// </summary>
         [Input("maxLatency")]
         public Input<string>? MaxLatency { get; set; }
 
+        /// <summary>
+        /// Maximum packet loss threshold used for SSR uplink selection when `TrafficType`==`Custom`
+        /// </summary>
         [Input("maxLoss")]
         public Input<string>? MaxLoss { get; set; }
 
+        /// <summary>
+        /// Display name of the service definition
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Organization identifier associated with the service definition
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
@@ -530,7 +590,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<Inputs.ServiceSpecGetArgs>? _specs;
 
         /// <summary>
-        /// When `Type`==`Custom`, optional, if it doesn't exist, http and https is assumed
+        /// Protocol and port match rules used when `Type`==`Custom`
         /// </summary>
         public InputList<Inputs.ServiceSpecGetArgs> Specs
         {
@@ -538,11 +598,14 @@ namespace Pulumi.JuniperMist.Org
             set => _specs = value;
         }
 
+        /// <summary>
+        /// Whether SSR relaxes TCP state enforcement for this service
+        /// </summary>
         [Input("ssrRelaxedTcpStateEnforcement")]
         public Input<bool>? SsrRelaxedTcpStateEnforcement { get; set; }
 
         /// <summary>
-        /// when `TrafficType`==`Custom`. enum: `BestEffort`, `High`, `Low`, `Medium`
+        /// Traffic class applied when `TrafficType`==`Custom`
         /// </summary>
         [Input("trafficClass")]
         public Input<string>? TrafficClass { get; set; }
@@ -554,7 +617,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? TrafficType { get; set; }
 
         /// <summary>
-        /// enum: `AppCategories`, `Apps`, `Custom`, `Urls`
+        /// Matching mode that determines which app, URL, or custom fields are used
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -563,7 +626,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _urls;
 
         /// <summary>
-        /// When `Type`==`Urls`, no need for spec as URL can encode the ports being used
+        /// URL patterns matched by this service when `Type`==`Urls`
         /// </summary>
         public InputList<string> Urls
         {

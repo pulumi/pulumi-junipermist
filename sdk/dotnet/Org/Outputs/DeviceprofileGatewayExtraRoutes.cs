@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class DeviceprofileGatewayExtraRoutes
     {
+        /// <summary>
+        /// Next-hop IPv4 address for the gateway extra route
+        /// </summary>
         public readonly string Via;
 
         [OutputConstructor]

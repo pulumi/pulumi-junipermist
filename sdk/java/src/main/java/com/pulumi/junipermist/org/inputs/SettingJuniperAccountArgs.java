@@ -15,16 +15,32 @@ public final class SettingJuniperAccountArgs extends com.pulumi.resources.Resour
 
     public static final SettingJuniperAccountArgs Empty = new SettingJuniperAccountArgs();
 
+    /**
+     * User who linked this Juniper account
+     * 
+     */
     @Import(name="linkedBy")
     private @Nullable Output<String> linkedBy;
 
+    /**
+     * @return User who linked this Juniper account
+     * 
+     */
     public Optional<Output<String>> linkedBy() {
         return Optional.ofNullable(this.linkedBy);
     }
 
+    /**
+     * Display name of the linked Juniper account
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Display name of the linked Juniper account
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -54,20 +70,44 @@ public final class SettingJuniperAccountArgs extends com.pulumi.resources.Resour
             $ = new SettingJuniperAccountArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param linkedBy User who linked this Juniper account
+         * 
+         * @return builder
+         * 
+         */
         public Builder linkedBy(@Nullable Output<String> linkedBy) {
             $.linkedBy = linkedBy;
             return this;
         }
 
+        /**
+         * @param linkedBy User who linked this Juniper account
+         * 
+         * @return builder
+         * 
+         */
         public Builder linkedBy(String linkedBy) {
             return linkedBy(Output.of(linkedBy));
         }
 
+        /**
+         * @param name Display name of the linked Juniper account
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Display name of the linked Juniper account
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

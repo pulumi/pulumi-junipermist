@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SwitchVirtualChassis {
     /**
-     * @return List of Virtual Chassis members
+     * @return Virtual Chassis members and their expected roles
      * 
      */
     private @Nullable List<SwitchVirtualChassisMember> members;
@@ -26,7 +26,7 @@ public final class SwitchVirtualChassis {
 
     private SwitchVirtualChassis() {}
     /**
-     * @return List of Virtual Chassis members
+     * @return Virtual Chassis members and their expected roles
      * 
      */
     public List<SwitchVirtualChassisMember> members() {

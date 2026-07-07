@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingOpticPortConfig {
     /**
-     * @return Enable channelization
+     * @return Whether channelization is enabled on this optic port
      * 
      */
     private @Nullable Boolean channelized;
@@ -25,7 +25,7 @@ public final class SettingOpticPortConfig {
 
     private SettingOpticPortConfig() {}
     /**
-     * @return Enable channelization
+     * @return Whether channelization is enabled on this optic port
      * 
      */
     public Optional<Boolean> channelized() {

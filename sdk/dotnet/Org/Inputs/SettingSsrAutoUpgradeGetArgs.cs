@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class SettingSsrAutoUpgradeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// upgrade channel to follow. enum: `Alpha`, `Beta`, `Stable`
+        /// Firmware release channel used for SSR auto-upgrade
         /// </summary>
         [Input("channel")]
         public Input<string>? Channel { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputMap<string>? _customVersions;
 
         /// <summary>
-        /// Property key is the SSR model (e.g. "SSR130").
+        /// Per-model SSR firmware versions used for auto-upgrade
         /// </summary>
         public InputMap<string> CustomVersions
         {
@@ -30,6 +30,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
             set => _customVersions = value;
         }
 
+        /// <summary>
+        /// Whether SSR auto-upgrade is enabled for newly onboarded devices
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

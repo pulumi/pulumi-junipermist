@@ -26,19 +26,27 @@ public final class GatewaytemplateServicePolicy {
      */
     private @Nullable String action;
     /**
-     * @return For SRX-only
+     * @return Malware and virus inspection settings applied by this service policy
      * 
      */
     private @Nullable GatewaytemplateServicePolicyAntivirus antivirus;
     /**
-     * @return SRX only
+     * @return Application QoE settings applied by this service policy
      * 
      */
     private @Nullable GatewaytemplateServicePolicyAppqoe appqoe;
+    /**
+     * @return Enhanced web filtering rules applied by this service policy
+     * 
+     */
     private @Nullable List<GatewaytemplateServicePolicyEwf> ewfs;
+    /**
+     * @return Intrusion detection and prevention settings applied by this service policy
+     * 
+     */
     private @Nullable GatewaytemplateServicePolicyIdp idp;
     /**
-     * @return access within the same VRF
+     * @return Whether the policy permits access within the same VRF
      * 
      */
     private @Nullable Boolean localRouting;
@@ -53,7 +61,7 @@ public final class GatewaytemplateServicePolicy {
      */
     private @Nullable String pathPreference;
     /**
-     * @return Used to link servicepolicy defined at org level and overwrite some attributes
+     * @return Organization-level service policy identifier used to link and override selected attributes
      * 
      */
     private @Nullable String servicepolicyId;
@@ -63,17 +71,17 @@ public final class GatewaytemplateServicePolicy {
      */
     private @Nullable List<String> services;
     /**
-     * @return SRX only
+     * @return Threat inspection settings provided by Sky ATP for this service policy
      * 
      */
     private @Nullable GatewaytemplateServicePolicySkyatp skyatp;
     /**
-     * @return For SRX-only
+     * @return TLS inspection settings applied by this service policy
      * 
      */
     private @Nullable GatewaytemplateServicePolicySslProxy sslProxy;
     /**
-     * @return Required for syslog logging
+     * @return Remote logging settings applied by this service policy
      * 
      */
     private @Nullable GatewaytemplateServicePolicySyslog syslog;
@@ -92,27 +100,35 @@ public final class GatewaytemplateServicePolicy {
         return Optional.ofNullable(this.action);
     }
     /**
-     * @return For SRX-only
+     * @return Malware and virus inspection settings applied by this service policy
      * 
      */
     public Optional<GatewaytemplateServicePolicyAntivirus> antivirus() {
         return Optional.ofNullable(this.antivirus);
     }
     /**
-     * @return SRX only
+     * @return Application QoE settings applied by this service policy
      * 
      */
     public Optional<GatewaytemplateServicePolicyAppqoe> appqoe() {
         return Optional.ofNullable(this.appqoe);
     }
+    /**
+     * @return Enhanced web filtering rules applied by this service policy
+     * 
+     */
     public List<GatewaytemplateServicePolicyEwf> ewfs() {
         return this.ewfs == null ? List.of() : this.ewfs;
     }
+    /**
+     * @return Intrusion detection and prevention settings applied by this service policy
+     * 
+     */
     public Optional<GatewaytemplateServicePolicyIdp> idp() {
         return Optional.ofNullable(this.idp);
     }
     /**
-     * @return access within the same VRF
+     * @return Whether the policy permits access within the same VRF
      * 
      */
     public Optional<Boolean> localRouting() {
@@ -133,7 +149,7 @@ public final class GatewaytemplateServicePolicy {
         return Optional.ofNullable(this.pathPreference);
     }
     /**
-     * @return Used to link servicepolicy defined at org level and overwrite some attributes
+     * @return Organization-level service policy identifier used to link and override selected attributes
      * 
      */
     public Optional<String> servicepolicyId() {
@@ -147,21 +163,21 @@ public final class GatewaytemplateServicePolicy {
         return this.services == null ? List.of() : this.services;
     }
     /**
-     * @return SRX only
+     * @return Threat inspection settings provided by Sky ATP for this service policy
      * 
      */
     public Optional<GatewaytemplateServicePolicySkyatp> skyatp() {
         return Optional.ofNullable(this.skyatp);
     }
     /**
-     * @return For SRX-only
+     * @return TLS inspection settings applied by this service policy
      * 
      */
     public Optional<GatewaytemplateServicePolicySslProxy> sslProxy() {
         return Optional.ofNullable(this.sslProxy);
     }
     /**
-     * @return Required for syslog logging
+     * @return Remote logging settings applied by this service policy
      * 
      */
     public Optional<GatewaytemplateServicePolicySyslog> syslog() {

@@ -12,11 +12,18 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class SettingMistNacServerCertArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// PEM-encoded RADIUS server certificate presented during EAP-TLS
+        /// </summary>
         [Input("cert")]
         public Input<string>? Cert { get; set; }
 
         [Input("key")]
         private Input<string>? _key;
+
+        /// <summary>
+        /// Private key paired with the Mist NAC RADIUS server certificate
+        /// </summary>
         public Input<string>? Key
         {
             get => _key;
@@ -31,7 +38,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private Input<string>? _password;
 
         /// <summary>
-        /// private key password (optional)
+        /// Optional password for the private key
         /// </summary>
         public Input<string>? Password
         {

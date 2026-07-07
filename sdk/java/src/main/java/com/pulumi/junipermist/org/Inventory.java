@@ -11,8 +11,10 @@ import com.pulumi.junipermist.Utilities;
 import com.pulumi.junipermist.org.InventoryArgs;
 import com.pulumi.junipermist.org.inputs.InventoryState;
 import com.pulumi.junipermist.org.outputs.InventoryInventory;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -86,6 +88,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="junipermist:org/inventory:Inventory")
 public class Inventory extends com.pulumi.resources.CustomResource {
+    /**
+     * Filter results to devices that were last disconnected before this time, in epoch seconds
+     * 
+     */
+    @Export(name="disconnectedBefore", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> disconnectedBefore;
+
+    /**
+     * @return Filter results to devices that were last disconnected before this time, in epoch seconds
+     * 
+     */
+    public Output<Optional<Integer>> disconnectedBefore() {
+        return Codegen.optional(this.disconnectedBefore);
+    }
     /**
      * Property key can be the device Claim Code or the device MAC Address:
      *   * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)

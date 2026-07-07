@@ -14,30 +14,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewaytemplateTunnelProviderOptions {
     /**
-     * @return For jse-ipsec, this allows provisioning of adequate resource on JSE. Make sure adequate licenses are added
+     * @return Juniper Secure Edge provisioning options for tunnel endpoints
      * 
      */
     private @Nullable GatewaytemplateTunnelProviderOptionsJse jse;
+    /**
+     * @return Palo Alto Prisma Access provisioning options for tunnel endpoints
+     * 
+     */
     private @Nullable GatewaytemplateTunnelProviderOptionsPrisma prisma;
     /**
-     * @return For zscaler-ipsec and zscaler-gre
+     * @return Provider settings for Zscaler tunnel endpoints
      * 
      */
     private @Nullable GatewaytemplateTunnelProviderOptionsZscaler zscaler;
 
     private GatewaytemplateTunnelProviderOptions() {}
     /**
-     * @return For jse-ipsec, this allows provisioning of adequate resource on JSE. Make sure adequate licenses are added
+     * @return Juniper Secure Edge provisioning options for tunnel endpoints
      * 
      */
     public Optional<GatewaytemplateTunnelProviderOptionsJse> jse() {
         return Optional.ofNullable(this.jse);
     }
+    /**
+     * @return Palo Alto Prisma Access provisioning options for tunnel endpoints
+     * 
+     */
     public Optional<GatewaytemplateTunnelProviderOptionsPrisma> prisma() {
         return Optional.ofNullable(this.prisma);
     }
     /**
-     * @return For zscaler-ipsec and zscaler-gre
+     * @return Provider settings for Zscaler tunnel endpoints
      * 
      */
     public Optional<GatewaytemplateTunnelProviderOptionsZscaler> zscaler() {

@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingWanPma {
+    /**
+     * @return Whether PMA is enabled for WAN Assurance
+     * 
+     */
     private @Nullable Boolean enabled;
 
     private SettingWanPma() {}
+    /**
+     * @return Whether PMA is enabled for WAN Assurance
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }

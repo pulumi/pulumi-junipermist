@@ -62,68 +62,56 @@ namespace Pulumi.JuniperMist.Site
     public partial class Wxtag : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// If `Type`==`Client`, Client MAC Address
+        /// If `Type`==`Client`, Client MAC address
         /// </summary>
         [Output("mac")]
         public Output<string?> Mac { get; private set; } = null!;
 
         /// <summary>
-        /// required if `Type`==`Match`. enum: `ApId`, `App`, `AssetMac`, `ClientMac`, `Hostname`, `IpRangeSubnet`, `Port`, `PskName`, `PskRole`, `RadiusAttr`, `RadiusClass`, `RadiusGroup`, `RadiusUsername`, `SdkclientUuid`, `WlanId`
+        /// Required if `Type`==`Match`; attribute compared against `Values`
         /// </summary>
         [Output("match")]
         public Output<string?> Match { get; private set; } = null!;
 
         /// <summary>
-        /// The name
+        /// Display name of the WxLAN tag
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// required if `Type`==`Match`, type of tag (inclusive/exclusive). enum: `In`, `NotIn`
+        /// Required if `Type`==`Match`; whether `Values` are inclusive or exclusive matches
         /// </summary>
         [Output("op")]
         public Output<string?> Op { get; private set; } = null!;
 
+        /// <summary>
+        /// Mist site associated with this WxLAN tag, when site-scoped
+        /// </summary>
         [Output("siteId")]
         public Output<string> SiteId { get; private set; } = null!;
 
         /// <summary>
-        /// If `Type`==`Spec`
+        /// Traffic match specifications used when `Type`==`Spec`
         /// </summary>
         [Output("specs")]
         public Output<ImmutableArray<Outputs.WxtagSpec>> Specs { get; private set; } = null!;
 
         /// <summary>
-        /// enum: `Client`, `Match`, `Resource`, `Spec`, `Subnet`, `Vlan`
+        /// Kind of WxLAN tag and how it is populated
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// Required if `Type`==`Match` and
-        ///   * `Match`==`ApId`: list of AP IDs
-        ///   * `Match`==`App`: list of Application Names
-        ///   * `Match`==`AssetMac`: list of Asset MAC Addresses
-        ///   * `Match`==`ClientMac`: list of Client MAC Addresses
-        ///   * `Match`==`Hostname`: list of Resources Hostnames
-        ///   * `Match`==`IpRangeSubnet`: list of IP Addresses and/or CIDRs
-        ///   * `Match`==`PskName`: list of PSK Names
-        ///   * `Match`==`PskRole`: list of PSK Roles
-        ///   * `Match`==`Port`: list of Ports or Port Ranges
-        ///   * `Match`==`RadiusAttr`: list of RADIUS Attributes. The values are [ "6=1", "26=10.2.3.4" ], this support other RADIUS attributes where we know the type
-        ///   * `Match`==`RadiusClass`: list of RADIUS Classes. This matches the ATTR-Class(25)
-        ///   * `Match`==`RadiusGroup`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID, Airespace-ACL-Name (VendorID=14179, VendorType=6) / Aruba-User-Role (VendorID=14823, VendorType=1)
-        ///   * `Match`==`RadiusUsername`: list of RADIUS Usernames. This matches the ATTR-User-Name(1)
-        ///   * `Match`==`SdkclientUuid`: list of SDK UUIDs
-        ///   * `Match`==`WlanId`: list of WLAN IDs
-        /// 
-        /// **Notes**:
-        /// Variables are not allowed
+        /// Comparison values for the selected `Match` attribute when `Type`==`Match`
         /// </summary>
         [Output("values")]
         public Output<ImmutableArray<string>> Values { get; private set; } = null!;
 
+        /// <summary>
+        /// Identifier of the VLAN associated with this WxLAN tag when `Type`==`Vlan`
+        /// </summary>
         [Output("vlanId")]
         public Output<string?> VlanId { get; private set; } = null!;
 
@@ -175,29 +163,32 @@ namespace Pulumi.JuniperMist.Site
     public sealed class WxtagArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If `Type`==`Client`, Client MAC Address
+        /// If `Type`==`Client`, Client MAC address
         /// </summary>
         [Input("mac")]
         public Input<string>? Mac { get; set; }
 
         /// <summary>
-        /// required if `Type`==`Match`. enum: `ApId`, `App`, `AssetMac`, `ClientMac`, `Hostname`, `IpRangeSubnet`, `Port`, `PskName`, `PskRole`, `RadiusAttr`, `RadiusClass`, `RadiusGroup`, `RadiusUsername`, `SdkclientUuid`, `WlanId`
+        /// Required if `Type`==`Match`; attribute compared against `Values`
         /// </summary>
         [Input("match")]
         public Input<string>? Match { get; set; }
 
         /// <summary>
-        /// The name
+        /// Display name of the WxLAN tag
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// required if `Type`==`Match`, type of tag (inclusive/exclusive). enum: `In`, `NotIn`
+        /// Required if `Type`==`Match`; whether `Values` are inclusive or exclusive matches
         /// </summary>
         [Input("op")]
         public Input<string>? Op { get; set; }
 
+        /// <summary>
+        /// Mist site associated with this WxLAN tag, when site-scoped
+        /// </summary>
         [Input("siteId", required: true)]
         public Input<string> SiteId { get; set; } = null!;
 
@@ -205,7 +196,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<Inputs.WxtagSpecArgs>? _specs;
 
         /// <summary>
-        /// If `Type`==`Spec`
+        /// Traffic match specifications used when `Type`==`Spec`
         /// </summary>
         public InputList<Inputs.WxtagSpecArgs> Specs
         {
@@ -214,7 +205,7 @@ namespace Pulumi.JuniperMist.Site
         }
 
         /// <summary>
-        /// enum: `Client`, `Match`, `Resource`, `Spec`, `Subnet`, `Vlan`
+        /// Kind of WxLAN tag and how it is populated
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -223,25 +214,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _values;
 
         /// <summary>
-        /// Required if `Type`==`Match` and
-        ///   * `Match`==`ApId`: list of AP IDs
-        ///   * `Match`==`App`: list of Application Names
-        ///   * `Match`==`AssetMac`: list of Asset MAC Addresses
-        ///   * `Match`==`ClientMac`: list of Client MAC Addresses
-        ///   * `Match`==`Hostname`: list of Resources Hostnames
-        ///   * `Match`==`IpRangeSubnet`: list of IP Addresses and/or CIDRs
-        ///   * `Match`==`PskName`: list of PSK Names
-        ///   * `Match`==`PskRole`: list of PSK Roles
-        ///   * `Match`==`Port`: list of Ports or Port Ranges
-        ///   * `Match`==`RadiusAttr`: list of RADIUS Attributes. The values are [ "6=1", "26=10.2.3.4" ], this support other RADIUS attributes where we know the type
-        ///   * `Match`==`RadiusClass`: list of RADIUS Classes. This matches the ATTR-Class(25)
-        ///   * `Match`==`RadiusGroup`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID, Airespace-ACL-Name (VendorID=14179, VendorType=6) / Aruba-User-Role (VendorID=14823, VendorType=1)
-        ///   * `Match`==`RadiusUsername`: list of RADIUS Usernames. This matches the ATTR-User-Name(1)
-        ///   * `Match`==`SdkclientUuid`: list of SDK UUIDs
-        ///   * `Match`==`WlanId`: list of WLAN IDs
-        /// 
-        /// **Notes**:
-        /// Variables are not allowed
+        /// Comparison values for the selected `Match` attribute when `Type`==`Match`
         /// </summary>
         public InputList<string> Values
         {
@@ -249,6 +222,9 @@ namespace Pulumi.JuniperMist.Site
             set => _values = value;
         }
 
+        /// <summary>
+        /// Identifier of the VLAN associated with this WxLAN tag when `Type`==`Vlan`
+        /// </summary>
         [Input("vlanId")]
         public Input<string>? VlanId { get; set; }
 
@@ -261,29 +237,32 @@ namespace Pulumi.JuniperMist.Site
     public sealed class WxtagState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If `Type`==`Client`, Client MAC Address
+        /// If `Type`==`Client`, Client MAC address
         /// </summary>
         [Input("mac")]
         public Input<string>? Mac { get; set; }
 
         /// <summary>
-        /// required if `Type`==`Match`. enum: `ApId`, `App`, `AssetMac`, `ClientMac`, `Hostname`, `IpRangeSubnet`, `Port`, `PskName`, `PskRole`, `RadiusAttr`, `RadiusClass`, `RadiusGroup`, `RadiusUsername`, `SdkclientUuid`, `WlanId`
+        /// Required if `Type`==`Match`; attribute compared against `Values`
         /// </summary>
         [Input("match")]
         public Input<string>? Match { get; set; }
 
         /// <summary>
-        /// The name
+        /// Display name of the WxLAN tag
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// required if `Type`==`Match`, type of tag (inclusive/exclusive). enum: `In`, `NotIn`
+        /// Required if `Type`==`Match`; whether `Values` are inclusive or exclusive matches
         /// </summary>
         [Input("op")]
         public Input<string>? Op { get; set; }
 
+        /// <summary>
+        /// Mist site associated with this WxLAN tag, when site-scoped
+        /// </summary>
         [Input("siteId")]
         public Input<string>? SiteId { get; set; }
 
@@ -291,7 +270,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<Inputs.WxtagSpecGetArgs>? _specs;
 
         /// <summary>
-        /// If `Type`==`Spec`
+        /// Traffic match specifications used when `Type`==`Spec`
         /// </summary>
         public InputList<Inputs.WxtagSpecGetArgs> Specs
         {
@@ -300,7 +279,7 @@ namespace Pulumi.JuniperMist.Site
         }
 
         /// <summary>
-        /// enum: `Client`, `Match`, `Resource`, `Spec`, `Subnet`, `Vlan`
+        /// Kind of WxLAN tag and how it is populated
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -309,25 +288,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _values;
 
         /// <summary>
-        /// Required if `Type`==`Match` and
-        ///   * `Match`==`ApId`: list of AP IDs
-        ///   * `Match`==`App`: list of Application Names
-        ///   * `Match`==`AssetMac`: list of Asset MAC Addresses
-        ///   * `Match`==`ClientMac`: list of Client MAC Addresses
-        ///   * `Match`==`Hostname`: list of Resources Hostnames
-        ///   * `Match`==`IpRangeSubnet`: list of IP Addresses and/or CIDRs
-        ///   * `Match`==`PskName`: list of PSK Names
-        ///   * `Match`==`PskRole`: list of PSK Roles
-        ///   * `Match`==`Port`: list of Ports or Port Ranges
-        ///   * `Match`==`RadiusAttr`: list of RADIUS Attributes. The values are [ "6=1", "26=10.2.3.4" ], this support other RADIUS attributes where we know the type
-        ///   * `Match`==`RadiusClass`: list of RADIUS Classes. This matches the ATTR-Class(25)
-        ///   * `Match`==`RadiusGroup`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID, Airespace-ACL-Name (VendorID=14179, VendorType=6) / Aruba-User-Role (VendorID=14823, VendorType=1)
-        ///   * `Match`==`RadiusUsername`: list of RADIUS Usernames. This matches the ATTR-User-Name(1)
-        ///   * `Match`==`SdkclientUuid`: list of SDK UUIDs
-        ///   * `Match`==`WlanId`: list of WLAN IDs
-        /// 
-        /// **Notes**:
-        /// Variables are not allowed
+        /// Comparison values for the selected `Match` attribute when `Type`==`Match`
         /// </summary>
         public InputList<string> Values
         {
@@ -335,6 +296,9 @@ namespace Pulumi.JuniperMist.Site
             set => _values = value;
         }
 
+        /// <summary>
+        /// Identifier of the VLAN associated with this WxLAN tag when `Type`==`Vlan`
+        /// </summary>
         [Input("vlanId")]
         public Input<string>? VlanId { get; set; }
 

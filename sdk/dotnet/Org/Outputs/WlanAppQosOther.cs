@@ -13,10 +13,25 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class WlanAppQosOther
     {
+        /// <summary>
+        /// Differentiated Services Code Point value applied to matching traffic
+        /// </summary>
         public readonly string? Dscp;
+        /// <summary>
+        /// Destination subnet filter for this custom QoS rule
+        /// </summary>
         public readonly string? DstSubnet;
+        /// <summary>
+        /// TCP or UDP port ranges matched by this custom QoS rule
+        /// </summary>
         public readonly string? PortRanges;
+        /// <summary>
+        /// IP protocol matched by this custom QoS rule
+        /// </summary>
         public readonly string? Protocol;
+        /// <summary>
+        /// Source subnet filter for this custom QoS rule
+        /// </summary>
         public readonly string? SrcSubnet;
 
         [OutputConstructor]

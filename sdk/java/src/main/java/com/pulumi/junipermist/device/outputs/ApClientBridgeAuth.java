@@ -11,19 +11,27 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ApClientBridgeAuth {
+    /**
+     * @return Pre-shared key used when `type`==`psk` for client bridge authentication
+     * 
+     */
     private @Nullable String psk;
     /**
-     * @return wpa2-AES/CCMPp is assumed when `type`==`psk`. enum: `open`, `psk`
+     * @return Authentication mode for the client bridge connection
      * 
      */
     private @Nullable String type;
 
     private ApClientBridgeAuth() {}
+    /**
+     * @return Pre-shared key used when `type`==`psk` for client bridge authentication
+     * 
+     */
     public Optional<String> psk() {
         return Optional.ofNullable(this.psk);
     }
     /**
-     * @return wpa2-AES/CCMPp is assumed when `type`==`psk`. enum: `open`, `psk`
+     * @return Authentication mode for the client bridge connection
      * 
      */
     public Optional<String> type() {

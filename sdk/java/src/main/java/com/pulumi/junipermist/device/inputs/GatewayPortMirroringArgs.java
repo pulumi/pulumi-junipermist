@@ -15,9 +15,17 @@ public final class GatewayPortMirroringArgs extends com.pulumi.resources.Resourc
 
     public static final GatewayPortMirroringArgs Empty = new GatewayPortMirroringArgs();
 
+    /**
+     * Mirroring rule that copies ingress traffic from source ports to an output port
+     * 
+     */
     @Import(name="portMirror")
     private @Nullable Output<GatewayPortMirroringPortMirrorArgs> portMirror;
 
+    /**
+     * @return Mirroring rule that copies ingress traffic from source ports to an output port
+     * 
+     */
     public Optional<Output<GatewayPortMirroringPortMirrorArgs>> portMirror() {
         return Optional.ofNullable(this.portMirror);
     }
@@ -46,11 +54,23 @@ public final class GatewayPortMirroringArgs extends com.pulumi.resources.Resourc
             $ = new GatewayPortMirroringArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param portMirror Mirroring rule that copies ingress traffic from source ports to an output port
+         * 
+         * @return builder
+         * 
+         */
         public Builder portMirror(@Nullable Output<GatewayPortMirroringPortMirrorArgs> portMirror) {
             $.portMirror = portMirror;
             return this;
         }
 
+        /**
+         * @param portMirror Mirroring rule that copies ingress traffic from source ports to an output port
+         * 
+         * @return builder
+         * 
+         */
         public Builder portMirror(GatewayPortMirroringPortMirrorArgs portMirror) {
             return portMirror(Output.of(portMirror));
         }

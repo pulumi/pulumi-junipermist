@@ -18,6 +18,7 @@ import com.pulumi.junipermist.org.outputs.DeviceprofileApIpConfig;
 import com.pulumi.junipermist.org.outputs.DeviceprofileApLacpConfig;
 import com.pulumi.junipermist.org.outputs.DeviceprofileApLed;
 import com.pulumi.junipermist.org.outputs.DeviceprofileApMesh;
+import com.pulumi.junipermist.org.outputs.DeviceprofileApMqttConfig;
 import com.pulumi.junipermist.org.outputs.DeviceprofileApPortConfig;
 import com.pulumi.junipermist.org.outputs.DeviceprofileApPwrConfig;
 import com.pulumi.junipermist.org.outputs.DeviceprofileApRadioConfig;
@@ -90,34 +91,42 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:org/deviceprofileAp:DeviceprofileAp")
 public class DeviceprofileAp extends com.pulumi.resources.CustomResource {
     /**
-     * Aeroscout AP settings
+     * Location integration defaults for AeroScout in this AP profile
      * 
      */
     @Export(name="aeroscout", refs={DeviceprofileApAeroscout.class}, tree="[0]")
     private Output</* @Nullable */ DeviceprofileApAeroscout> aeroscout;
 
     /**
-     * @return Aeroscout AP settings
+     * @return Location integration defaults for AeroScout in this AP profile
      * 
      */
     public Output<Optional<DeviceprofileApAeroscout>> aeroscout() {
         return Codegen.optional(this.aeroscout);
     }
+    /**
+     * Location integration defaults for Airista in this AP profile
+     * 
+     */
     @Export(name="airista", refs={DeviceprofileApAirista.class}, tree="[0]")
     private Output</* @Nullable */ DeviceprofileApAirista> airista;
 
+    /**
+     * @return Location integration defaults for Airista in this AP profile
+     * 
+     */
     public Output<Optional<DeviceprofileApAirista>> airista() {
         return Codegen.optional(this.airista);
     }
     /**
-     * BLE AP settings
+     * Bluetooth Low Energy beacon and asset defaults in this AP profile
      * 
      */
     @Export(name="bleConfig", refs={DeviceprofileApBleConfig.class}, tree="[0]")
     private Output</* @Nullable */ DeviceprofileApBleConfig> bleConfig;
 
     /**
-     * @return BLE AP settings
+     * @return Bluetooth Low Energy beacon and asset defaults in this AP profile
      * 
      */
     public Output<Optional<DeviceprofileApBleConfig>> bleConfig() {
@@ -179,75 +188,129 @@ public class DeviceprofileAp extends com.pulumi.resources.CustomResource {
     public Output<Boolean> disableModule() {
         return this.disableModule;
     }
+    /**
+     * Electronic shelf label integration defaults in this AP profile
+     * 
+     */
     @Export(name="eslConfig", refs={DeviceprofileApEslConfig.class}, tree="[0]")
     private Output</* @Nullable */ DeviceprofileApEslConfig> eslConfig;
 
+    /**
+     * @return Electronic shelf label integration defaults in this AP profile
+     * 
+     */
     public Output<Optional<DeviceprofileApEslConfig>> eslConfig() {
         return Codegen.optional(this.eslConfig);
     }
     /**
-     * IP AP settings
+     * Management IP addressing defaults in this AP profile
      * 
      */
     @Export(name="ipConfig", refs={DeviceprofileApIpConfig.class}, tree="[0]")
     private Output</* @Nullable */ DeviceprofileApIpConfig> ipConfig;
 
     /**
-     * @return IP AP settings
+     * @return Management IP addressing defaults in this AP profile
      * 
      */
     public Output<Optional<DeviceprofileApIpConfig>> ipConfig() {
         return Codegen.optional(this.ipConfig);
     }
+    /**
+     * Link aggregation defaults for supported AP Ethernet uplinks
+     * 
+     */
     @Export(name="lacpConfig", refs={DeviceprofileApLacpConfig.class}, tree="[0]")
     private Output</* @Nullable */ DeviceprofileApLacpConfig> lacpConfig;
 
+    /**
+     * @return Link aggregation defaults for supported AP Ethernet uplinks
+     * 
+     */
     public Output<Optional<DeviceprofileApLacpConfig>> lacpConfig() {
         return Codegen.optional(this.lacpConfig);
     }
     /**
-     * LED AP settings
+     * Indicator light behavior defaults in this AP profile
      * 
      */
     @Export(name="led", refs={DeviceprofileApLed.class}, tree="[0]")
     private Output</* @Nullable */ DeviceprofileApLed> led;
 
     /**
-     * @return LED AP settings
+     * @return Indicator light behavior defaults in this AP profile
      * 
      */
     public Output<Optional<DeviceprofileApLed>> led() {
         return Codegen.optional(this.led);
     }
     /**
-     * Mesh AP settings
+     * Wireless mesh role and band defaults in this AP profile
      * 
      */
     @Export(name="mesh", refs={DeviceprofileApMesh.class}, tree="[0]")
     private Output</* @Nullable */ DeviceprofileApMesh> mesh;
 
     /**
-     * @return Mesh AP settings
+     * @return Wireless mesh role and band defaults in this AP profile
      * 
      */
     public Output<Optional<DeviceprofileApMesh>> mesh() {
         return Codegen.optional(this.mesh);
     }
+    /**
+     * MQTT broker publishing settings for this AP profile
+     * 
+     */
+    @Export(name="mqttConfig", refs={DeviceprofileApMqttConfig.class}, tree="[0]")
+    private Output</* @Nullable */ DeviceprofileApMqttConfig> mqttConfig;
+
+    /**
+     * @return MQTT broker publishing settings for this AP profile
+     * 
+     */
+    public Output<Optional<DeviceprofileApMqttConfig>> mqttConfig() {
+        return Codegen.optional(this.mqttConfig);
+    }
+    /**
+     * Display name of the AP device profile
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Display name of the AP device profile
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * NTP servers configured by this AP profile
+     * 
+     */
     @Export(name="ntpServers", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> ntpServers;
 
+    /**
+     * @return NTP servers configured by this AP profile
+     * 
+     */
     public Output<Optional<List<String>>> ntpServers() {
         return Codegen.optional(this.ntpServers);
     }
+    /**
+     * Organization that owns this AP device profile
+     * 
+     */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
+    /**
+     * @return Organization that owns this AP device profile
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }
@@ -280,108 +343,112 @@ public class DeviceprofileAp extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.portConfig);
     }
     /**
-     * Power related configs
+     * Power negotiation and peripheral power defaults in this AP profile
      * 
      */
     @Export(name="pwrConfig", refs={DeviceprofileApPwrConfig.class}, tree="[0]")
     private Output</* @Nullable */ DeviceprofileApPwrConfig> pwrConfig;
 
     /**
-     * @return Power related configs
+     * @return Power negotiation and peripheral power defaults in this AP profile
      * 
      */
     public Output<Optional<DeviceprofileApPwrConfig>> pwrConfig() {
         return Codegen.optional(this.pwrConfig);
     }
     /**
-     * Radio AP settings
+     * Radio configuration defaults in this AP profile
      * 
      */
     @Export(name="radioConfig", refs={DeviceprofileApRadioConfig.class}, tree="[0]")
     private Output</* @Nullable */ DeviceprofileApRadioConfig> radioConfig;
 
     /**
-     * @return Radio AP settings
+     * @return Radio configuration defaults in this AP profile
      * 
      */
     public Output<Optional<DeviceprofileApRadioConfig>> radioConfig() {
         return Codegen.optional(this.radioConfig);
     }
+    /**
+     * Site where this AP device profile is defined, when scoped to a site
+     * 
+     */
     @Export(name="siteId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> siteId;
 
+    /**
+     * @return Site where this AP device profile is defined, when scoped to a site
+     * 
+     */
     public Output<Optional<String>> siteId() {
         return Codegen.optional(this.siteId);
     }
     /**
-     * Device Type. enum: `ap`
+     * Device type discriminator for AP device profiles
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Device Type. enum: `ap`
+     * @return Device type discriminator for AP device profiles
      * 
      */
     public Output<String> type() {
         return this.type;
     }
     /**
-     * AP Uplink port configuration
+     * Authentication and failover defaults for AP uplink ports
      * 
      */
     @Export(name="uplinkPortConfig", refs={DeviceprofileApUplinkPortConfig.class}, tree="[0]")
     private Output</* @Nullable */ DeviceprofileApUplinkPortConfig> uplinkPortConfig;
 
     /**
-     * @return AP Uplink port configuration
+     * @return Authentication and failover defaults for AP uplink ports
      * 
      */
     public Output<Optional<DeviceprofileApUplinkPortConfig>> uplinkPortConfig() {
         return Codegen.optional(this.uplinkPortConfig);
     }
     /**
-     * USB AP settings
-     *   - Note: if native imagotag is enabled, BLE will be disabled automatically
-     *   - Note: legacy, new config moved to ESL Config.
+     * Legacy USB integration defaults in this AP profile
      * 
      */
     @Export(name="usbConfig", refs={DeviceprofileApUsbConfig.class}, tree="[0]")
     private Output</* @Nullable */ DeviceprofileApUsbConfig> usbConfig;
 
     /**
-     * @return USB AP settings
-     *   - Note: if native imagotag is enabled, BLE will be disabled automatically
-     *   - Note: legacy, new config moved to ESL Config.
+     * @return Legacy USB integration defaults in this AP profile
      * 
      */
     public Output<Optional<DeviceprofileApUsbConfig>> usbConfig() {
         return Codegen.optional(this.usbConfig);
     }
     /**
-     * Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Variable values provided by this AP device profile
      * 
      */
     @Export(name="vars", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> vars;
 
     /**
-     * @return Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * @return Variable values provided by this AP device profile
      * 
      */
     public Output<Optional<Map<String,String>>> vars() {
         return Codegen.optional(this.vars);
     }
     /**
-     * Zigbee AP settings
+     * Zigbee radio and network defaults in this AP profile
      * 
      */
     @Export(name="zigbeeConfig", refs={DeviceprofileApZigbeeConfig.class}, tree="[0]")
     private Output</* @Nullable */ DeviceprofileApZigbeeConfig> zigbeeConfig;
 
     /**
-     * @return Zigbee AP settings
+     * @return Zigbee radio and network defaults in this AP profile
      * 
      */
     public Output<Optional<DeviceprofileApZigbeeConfig>> zigbeeConfig() {

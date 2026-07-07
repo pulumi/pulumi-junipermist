@@ -17,14 +17,14 @@ public final class SwitchPortMirroringArgs extends com.pulumi.resources.Resource
     public static final SwitchPortMirroringArgs Empty = new SwitchPortMirroringArgs();
 
     /**
-     * At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
+     * At least one mirror input source should be specified. Networks whose ingress traffic is mirrored
      * 
      */
     @Import(name="inputNetworksIngresses")
     private @Nullable Output<List<String>> inputNetworksIngresses;
 
     /**
-     * @return At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
+     * @return At least one mirror input source should be specified. Networks whose ingress traffic is mirrored
      * 
      */
     public Optional<Output<List<String>>> inputNetworksIngresses() {
@@ -32,14 +32,14 @@ public final class SwitchPortMirroringArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
+     * At least one mirror input source should be specified. Switch ports whose egress traffic is mirrored
      * 
      */
     @Import(name="inputPortIdsEgresses")
     private @Nullable Output<List<String>> inputPortIdsEgresses;
 
     /**
-     * @return At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
+     * @return At least one mirror input source should be specified. Switch ports whose egress traffic is mirrored
      * 
      */
     public Optional<Output<List<String>>> inputPortIdsEgresses() {
@@ -47,14 +47,14 @@ public final class SwitchPortMirroringArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
+     * At least one mirror input source should be specified. Switch ports whose ingress traffic is mirrored
      * 
      */
     @Import(name="inputPortIdsIngresses")
     private @Nullable Output<List<String>> inputPortIdsIngresses;
 
     /**
-     * @return At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
+     * @return At least one mirror input source should be specified. Switch ports whose ingress traffic is mirrored
      * 
      */
     public Optional<Output<List<String>>> inputPortIdsIngresses() {
@@ -136,7 +136,7 @@ public final class SwitchPortMirroringArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param inputNetworksIngresses At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
+         * @param inputNetworksIngresses At least one mirror input source should be specified. Networks whose ingress traffic is mirrored
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class SwitchPortMirroringArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param inputNetworksIngresses At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
+         * @param inputNetworksIngresses At least one mirror input source should be specified. Networks whose ingress traffic is mirrored
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class SwitchPortMirroringArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param inputNetworksIngresses At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
+         * @param inputNetworksIngresses At least one mirror input source should be specified. Networks whose ingress traffic is mirrored
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class SwitchPortMirroringArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param inputPortIdsEgresses At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
+         * @param inputPortIdsEgresses At least one mirror input source should be specified. Switch ports whose egress traffic is mirrored
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class SwitchPortMirroringArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param inputPortIdsEgresses At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
+         * @param inputPortIdsEgresses At least one mirror input source should be specified. Switch ports whose egress traffic is mirrored
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class SwitchPortMirroringArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param inputPortIdsEgresses At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
+         * @param inputPortIdsEgresses At least one mirror input source should be specified. Switch ports whose egress traffic is mirrored
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class SwitchPortMirroringArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param inputPortIdsIngresses At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
+         * @param inputPortIdsIngresses At least one mirror input source should be specified. Switch ports whose ingress traffic is mirrored
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class SwitchPortMirroringArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param inputPortIdsIngresses At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
+         * @param inputPortIdsIngresses At least one mirror input source should be specified. Switch ports whose ingress traffic is mirrored
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class SwitchPortMirroringArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param inputPortIdsIngresses At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
+         * @param inputPortIdsIngresses At least one mirror input source should be specified. Switch ports whose ingress traffic is mirrored
          * 
          * @return builder
          * 

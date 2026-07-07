@@ -17,8 +17,17 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// If true, the BGP session to this neighbor will be administratively disabled/shutdown
         /// </summary>
         public readonly bool? Disabled;
+        /// <summary>
+        /// Export policy applied only to this BGP neighbor
+        /// </summary>
         public readonly string? ExportPolicy;
+        /// <summary>
+        /// BGP hold time for this neighbor, in seconds
+        /// </summary>
         public readonly int? HoldTime;
+        /// <summary>
+        /// Import policy applied only to this BGP neighbor
+        /// </summary>
         public readonly string? ImportPolicy;
         /// <summary>
         /// Assuming BGP neighbor is directly connected
@@ -29,7 +38,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string NeighborAs;
         /// <summary>
-        /// If `Via`==`Tunnel`, specifies which tunnel (primary/secondary) this neighbor is associated with. enum: `Primary`, `Secondary`
+        /// If `Via`==`Tunnel`, primary or secondary tunnel associated with this BGP neighbor
         /// </summary>
         public readonly string? TunnelVia;
 

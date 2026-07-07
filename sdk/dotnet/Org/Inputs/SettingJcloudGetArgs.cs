@@ -13,19 +13,19 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class SettingJcloudGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// JCloud Org Token
+        /// JCloud organization API token used by this Mist organization
         /// </summary>
         [Input("orgApitoken", required: true)]
         public Input<string> OrgApitoken { get; set; } = null!;
 
         /// <summary>
-        /// JCloud Org Token Name
+        /// Display name for the JCloud organization API token
         /// </summary>
         [Input("orgApitokenName", required: true)]
         public Input<string> OrgApitokenName { get; set; } = null!;
 
         /// <summary>
-        /// JCloud Org ID
+        /// JCloud organization identifier linked to this Mist organization
         /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;

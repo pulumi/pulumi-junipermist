@@ -13,10 +13,25 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class SettingCradlepoint
     {
+        /// <summary>
+        /// Cradlepoint API ID used by Mist for the integration
+        /// </summary>
         public readonly string? CpApiId;
+        /// <summary>
+        /// Cradlepoint API key paired with the Cradlepoint API ID
+        /// </summary>
         public readonly string? CpApiKey;
+        /// <summary>
+        /// Cradlepoint ECM API ID used by Mist for the integration
+        /// </summary>
         public readonly string? EcmApiId;
+        /// <summary>
+        /// Cradlepoint ECM API key paired with the ECM API ID
+        /// </summary>
         public readonly string? EcmApiKey;
+        /// <summary>
+        /// Whether Mist uses Cradlepoint LLDP data to link routers to Mist sites and devices
+        /// </summary>
         public readonly bool? EnableLldp;
 
         [OutputConstructor]

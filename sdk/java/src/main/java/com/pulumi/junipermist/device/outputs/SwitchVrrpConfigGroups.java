@@ -17,6 +17,10 @@ public final class SwitchVrrpConfigGroups {
      * 
      */
     private @Nullable Boolean preempt;
+    /**
+     * @return VRRP priority for this router in the group
+     * 
+     */
     private @Nullable Integer priority;
 
     private SwitchVrrpConfigGroups() {}
@@ -27,6 +31,10 @@ public final class SwitchVrrpConfigGroups {
     public Optional<Boolean> preempt() {
         return Optional.ofNullable(this.preempt);
     }
+    /**
+     * @return VRRP priority for this router in the group
+     * 
+     */
     public Optional<Integer> priority() {
         return Optional.ofNullable(this.priority);
     }

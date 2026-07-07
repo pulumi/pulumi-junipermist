@@ -16,14 +16,14 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
     public static final NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs Empty = new NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs();
 
     /**
-     * Only required if `type`==`contextPrefix`
+     * Context prefix for this VACM access rule. Required only if `type`==`contextPrefix`
      * 
      */
     @Import(name="contextPrefix")
     private @Nullable Output<String> contextPrefix;
 
     /**
-     * @return Only required if `type`==`contextPrefix`
+     * @return Context prefix for this VACM access rule. Required only if `type`==`contextPrefix`
      * 
      */
     public Optional<Output<String>> contextPrefix() {
@@ -31,14 +31,14 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
     }
 
     /**
-     * Refer to view name
+     * Notify view name referenced by this VACM access rule
      * 
      */
     @Import(name="notifyView")
     private @Nullable Output<String> notifyView;
 
     /**
-     * @return Refer to view name
+     * @return Notify view name referenced by this VACM access rule
      * 
      */
     public Optional<Output<String>> notifyView() {
@@ -46,14 +46,14 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
     }
 
     /**
-     * Refer to view name
+     * Read view name referenced by this VACM access rule
      * 
      */
     @Import(name="readView")
     private @Nullable Output<String> readView;
 
     /**
-     * @return Refer to view name
+     * @return Read view name referenced by this VACM access rule
      * 
      */
     public Optional<Output<String>> readView() {
@@ -61,14 +61,14 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
     }
 
     /**
-     * enum: `authentication`, `none`, `privacy`
+     * Required security level for this VACM access rule
      * 
      */
     @Import(name="securityLevel")
     private @Nullable Output<String> securityLevel;
 
     /**
-     * @return enum: `authentication`, `none`, `privacy`
+     * @return Required security level for this VACM access rule
      * 
      */
     public Optional<Output<String>> securityLevel() {
@@ -76,14 +76,14 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
     }
 
     /**
-     * enum: `any`, `usm`, `v1`, `v2c`
+     * Required security model for this VACM access rule
      * 
      */
     @Import(name="securityModel")
     private @Nullable Output<String> securityModel;
 
     /**
-     * @return enum: `any`, `usm`, `v1`, `v2c`
+     * @return Required security model for this VACM access rule
      * 
      */
     public Optional<Output<String>> securityModel() {
@@ -91,14 +91,14 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
     }
 
     /**
-     * enum: `contextPrefix`, `defaultContextPrefix`
+     * VACM context matching type for this access rule
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return enum: `contextPrefix`, `defaultContextPrefix`
+     * @return VACM context matching type for this access rule
      * 
      */
     public Optional<Output<String>> type() {
@@ -106,14 +106,14 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
     }
 
     /**
-     * Refer to view name
+     * Write view name referenced by this VACM access rule
      * 
      */
     @Import(name="writeView")
     private @Nullable Output<String> writeView;
 
     /**
-     * @return Refer to view name
+     * @return Write view name referenced by this VACM access rule
      * 
      */
     public Optional<Output<String>> writeView() {
@@ -151,7 +151,7 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
         }
 
         /**
-         * @param contextPrefix Only required if `type`==`contextPrefix`
+         * @param contextPrefix Context prefix for this VACM access rule. Required only if `type`==`contextPrefix`
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
         }
 
         /**
-         * @param contextPrefix Only required if `type`==`contextPrefix`
+         * @param contextPrefix Context prefix for this VACM access rule. Required only if `type`==`contextPrefix`
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
         }
 
         /**
-         * @param notifyView Refer to view name
+         * @param notifyView Notify view name referenced by this VACM access rule
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
         }
 
         /**
-         * @param notifyView Refer to view name
+         * @param notifyView Notify view name referenced by this VACM access rule
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
         }
 
         /**
-         * @param readView Refer to view name
+         * @param readView Read view name referenced by this VACM access rule
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
         }
 
         /**
-         * @param readView Refer to view name
+         * @param readView Read view name referenced by this VACM access rule
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
         }
 
         /**
-         * @param securityLevel enum: `authentication`, `none`, `privacy`
+         * @param securityLevel Required security level for this VACM access rule
          * 
          * @return builder
          * 
@@ -225,7 +225,7 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
         }
 
         /**
-         * @param securityLevel enum: `authentication`, `none`, `privacy`
+         * @param securityLevel Required security level for this VACM access rule
          * 
          * @return builder
          * 
@@ -235,7 +235,7 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
         }
 
         /**
-         * @param securityModel enum: `any`, `usm`, `v1`, `v2c`
+         * @param securityModel Required security model for this VACM access rule
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
         }
 
         /**
-         * @param securityModel enum: `any`, `usm`, `v1`, `v2c`
+         * @param securityModel Required security model for this VACM access rule
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
         }
 
         /**
-         * @param type enum: `contextPrefix`, `defaultContextPrefix`
+         * @param type VACM context matching type for this access rule
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
         }
 
         /**
-         * @param type enum: `contextPrefix`, `defaultContextPrefix`
+         * @param type VACM context matching type for this access rule
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
         }
 
         /**
-         * @param writeView Refer to view name
+         * @param writeView Write view name referenced by this VACM access rule
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
         }
 
         /**
-         * @param writeView Refer to view name
+         * @param writeView Write view name referenced by this VACM access rule
          * 
          * @return builder
          * 

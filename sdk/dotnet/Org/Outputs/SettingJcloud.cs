@@ -14,15 +14,15 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class SettingJcloud
     {
         /// <summary>
-        /// JCloud Org Token
+        /// JCloud organization API token used by this Mist organization
         /// </summary>
         public readonly string OrgApitoken;
         /// <summary>
-        /// JCloud Org Token Name
+        /// Display name for the JCloud organization API token
         /// </summary>
         public readonly string OrgApitokenName;
         /// <summary>
-        /// JCloud Org ID
+        /// JCloud organization identifier linked to this Mist organization
         /// </summary>
         public readonly string OrgId;
 

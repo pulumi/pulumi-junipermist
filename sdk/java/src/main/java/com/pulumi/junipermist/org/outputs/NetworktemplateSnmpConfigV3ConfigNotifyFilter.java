@@ -13,13 +13,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NetworktemplateSnmpConfigV3ConfigNotifyFilter {
+    /**
+     * @return OID filter rules in this notification filter profile
+     * 
+     */
     private @Nullable List<NetworktemplateSnmpConfigV3ConfigNotifyFilterContent> contents;
+    /**
+     * @return Notification filter profile name
+     * 
+     */
     private @Nullable String profileName;
 
     private NetworktemplateSnmpConfigV3ConfigNotifyFilter() {}
+    /**
+     * @return OID filter rules in this notification filter profile
+     * 
+     */
     public List<NetworktemplateSnmpConfigV3ConfigNotifyFilterContent> contents() {
         return this.contents == null ? List.of() : this.contents;
     }
+    /**
+     * @return Notification filter profile name
+     * 
+     */
     public Optional<String> profileName() {
         return Optional.ofNullable(this.profileName);
     }

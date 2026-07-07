@@ -90,34 +90,58 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:org/idpprofile:Idpprofile")
 public class Idpprofile extends com.pulumi.resources.CustomResource {
     /**
-     * enum: `critical`, `standard`, `strict`
+     * Built-in IDP baseline profile inherited before applying overwrites
      * 
      */
     @Export(name="baseProfile", refs={String.class}, tree="[0]")
     private Output<String> baseProfile;
 
     /**
-     * @return enum: `critical`, `standard`, `strict`
+     * @return Built-in IDP baseline profile inherited before applying overwrites
      * 
      */
     public Output<String> baseProfile() {
         return this.baseProfile;
     }
+    /**
+     * Display name of the IDP profile
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Display name of the IDP profile
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Owning organization for the IDP profile
+     * 
+     */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
+    /**
+     * @return Owning organization for the IDP profile
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }
+    /**
+     * IDP signature override rules applied on top of the base profile
+     * 
+     */
     @Export(name="overwrites", refs={List.class,IdpprofileOverwrite.class}, tree="[0,1]")
     private Output</* @Nullable */ List<IdpprofileOverwrite>> overwrites;
 
+    /**
+     * @return IDP signature override rules applied on top of the base profile
+     * 
+     */
     public Output<Optional<List<IdpprofileOverwrite>>> overwrites() {
         return Codegen.optional(this.overwrites);
     }

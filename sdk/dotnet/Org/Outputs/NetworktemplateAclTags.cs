@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class NetworktemplateAclTags
     {
         /// <summary>
-        /// ARP / IPv6. Default is `Any`
+        /// Layer 2 EtherTypes matched by this ACL tag; defaults to `Any`
         /// </summary>
         public readonly ImmutableArray<string> EtherTypes;
         /// <summary>
@@ -25,9 +25,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly int? GbpTag;
         /// <summary>
-        /// Required if 
-        /// - `Type`==`Mac`
-        /// - `Type`==`StaticGbp` if from matching mac
+        /// Client or resource MAC addresses matched by this ACL tag
         /// </summary>
         public readonly ImmutableArray<string> Macs;
         /// <summary>
@@ -40,7 +38,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Network;
         /// <summary>
-        /// Required if `Type`==`PortUsage`
+        /// Required if `Type`==`PortUsage`. Switch port usage name matched by this ACL tag
         /// </summary>
         public readonly string? PortUsage;
         /// <summary>
@@ -51,28 +49,15 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? RadiusGroup;
         /// <summary>
-        /// If `Type`==`Resource`, `Type`==`RadiusGroup`, `Type`==`PortUsage` or `Type`==`GbpResource`. Empty means unrestricted, i.e. any
+        /// Layer 4 protocol and destination-port constraints for this ACL tag
         /// </summary>
         public readonly ImmutableArray<Outputs.NetworktemplateAclTagsSpec> Specs;
         /// <summary>
-        /// If 
-        /// - `Type`==`Subnet` 
-        /// - `Type`==`Resource` (optional. default is `Any`)
-        /// - `Type`==`StaticGbp` if from matching subnet
+        /// IP subnets matched by this ACL tag
         /// </summary>
         public readonly ImmutableArray<string> Subnets;
         /// <summary>
-        /// enum: 
-        ///   * `Any`: matching anything not identified
-        ///   * `DynamicGbp`: from the GbpTag received from RADIUS
-        ///   * `GbpResource`: can only be used in `DstTags`
-        ///   * `Mac`
-        ///   * `Network`
-        ///   * `PortUsage`
-        ///   * `RadiusGroup`
-        ///   * `Resource`: can only be used in `DstTags`
-        ///   * `StaticGbp`: applying gbp tag against matching conditions
-        ///   * `Subnet`'
+        /// Classifier type that determines which ACL tag fields are evaluated
         /// </summary>
         public readonly string Type;
 

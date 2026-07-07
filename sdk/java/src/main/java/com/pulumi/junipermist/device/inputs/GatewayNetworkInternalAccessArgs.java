@@ -15,9 +15,17 @@ public final class GatewayNetworkInternalAccessArgs extends com.pulumi.resources
 
     public static final GatewayNetworkInternalAccessArgs Empty = new GatewayNetworkInternalAccessArgs();
 
+    /**
+     * Whether internal access is enabled for this network
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether internal access is enabled for this network
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -46,11 +54,23 @@ public final class GatewayNetworkInternalAccessArgs extends com.pulumi.resources
             $ = new GatewayNetworkInternalAccessArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Whether internal access is enabled for this network
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether internal access is enabled for this network
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

@@ -13,9 +13,21 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class GatewayServicePolicySkyatp
     {
+        /// <summary>
+        /// Detection settings for DNS DGA threats provided by Sky ATP
+        /// </summary>
         public readonly Outputs.GatewayServicePolicySkyatpDnsDgaDetection? DnsDgaDetection;
+        /// <summary>
+        /// Detection settings for DNS tunneling threats provided by Sky ATP
+        /// </summary>
         public readonly Outputs.GatewayServicePolicySkyatpDnsTunnelDetection? DnsTunnelDetection;
+        /// <summary>
+        /// Web traffic inspection settings provided by Sky ATP
+        /// </summary>
         public readonly Outputs.GatewayServicePolicySkyatpHttpInspection? HttpInspection;
+        /// <summary>
+        /// Device threat policy settings provided by Sky ATP for IoT clients
+        /// </summary>
         public readonly Outputs.GatewayServicePolicySkyatpIotDevicePolicy? IotDevicePolicy;
 
         [OutputConstructor]

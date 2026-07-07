@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NetworktemplateSnmpConfigClientList {
+    /**
+     * @return Name of the SNMP client list
+     * 
+     */
     private @Nullable String clientListName;
+    /**
+     * @return SNMP client IP addresses or CIDR ranges allowed by this list
+     * 
+     */
     private @Nullable List<String> clients;
 
     private NetworktemplateSnmpConfigClientList() {}
+    /**
+     * @return Name of the SNMP client list
+     * 
+     */
     public Optional<String> clientListName() {
         return Optional.ofNullable(this.clientListName);
     }
+    /**
+     * @return SNMP client IP addresses or CIDR ranges allowed by this list
+     * 
+     */
     public List<String> clients() {
         return this.clients == null ? List.of() : this.clients;
     }

@@ -27,16 +27,18 @@ type EvpnTopologyEvpnOptions struct {
 	// Whether to route management traffic inband; routes will be propagated to downstream switches
 	EnableInbandMgmt *bool `pulumi:"enableInbandMgmt"`
 	// if the mangement traffic goes inbnd, during installation, only the border/core switches are connected to the Internet to allow initial configuration to be pushed down and leave the downstream access switches stay in the Factory Default state enabling inband-ztp allows upstream switches to use LLDP to assign IP and gives Internet to downstream switches in that state
-	EnableInbandZtp *bool                           `pulumi:"enableInbandZtp"`
-	Overlay         *EvpnTopologyEvpnOptionsOverlay `pulumi:"overlay"`
+	EnableInbandZtp *bool `pulumi:"enableInbandZtp"`
+	// EVPN overlay BGP settings for the topology
+	Overlay *EvpnTopologyEvpnOptionsOverlay `pulumi:"overlay"`
 	// Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address's v4_mac. If enabled, 00-00-5e-00-0X-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)
 	PerVlanVgaV4Mac *bool `pulumi:"perVlanVgaV4Mac"`
 	// Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-02-01 as the virtual-gateway-address's v6_mac. If enabled, 00-00-5e-00-1X-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)
 	PerVlanVgaV6Mac *bool `pulumi:"perVlanVgaV6Mac"`
-	// optional, where virtual-gateway should reside. enum: `core`, `distribution`, `edge`
-	RoutedAt *string                          `pulumi:"routedAt"`
+	// Topology tier where EVPN virtual gateway routing is placed
+	RoutedAt *string `pulumi:"routedAt"`
+	// EVPN underlay BGP and subnet settings for the topology
 	Underlay *EvpnTopologyEvpnOptionsUnderlay `pulumi:"underlay"`
-	// Optional, for EX9200 only to segregate virtual-switches
+	// Virtual-switch instance mappings used to segregate EVPN networks
 	VsInstances map[string]EvpnTopologyEvpnOptionsVsInstances `pulumi:"vsInstances"`
 }
 
@@ -65,16 +67,18 @@ type EvpnTopologyEvpnOptionsArgs struct {
 	// Whether to route management traffic inband; routes will be propagated to downstream switches
 	EnableInbandMgmt pulumi.BoolPtrInput `pulumi:"enableInbandMgmt"`
 	// if the mangement traffic goes inbnd, during installation, only the border/core switches are connected to the Internet to allow initial configuration to be pushed down and leave the downstream access switches stay in the Factory Default state enabling inband-ztp allows upstream switches to use LLDP to assign IP and gives Internet to downstream switches in that state
-	EnableInbandZtp pulumi.BoolPtrInput                    `pulumi:"enableInbandZtp"`
-	Overlay         EvpnTopologyEvpnOptionsOverlayPtrInput `pulumi:"overlay"`
+	EnableInbandZtp pulumi.BoolPtrInput `pulumi:"enableInbandZtp"`
+	// EVPN overlay BGP settings for the topology
+	Overlay EvpnTopologyEvpnOptionsOverlayPtrInput `pulumi:"overlay"`
 	// Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address's v4_mac. If enabled, 00-00-5e-00-0X-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)
 	PerVlanVgaV4Mac pulumi.BoolPtrInput `pulumi:"perVlanVgaV4Mac"`
 	// Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-02-01 as the virtual-gateway-address's v6_mac. If enabled, 00-00-5e-00-1X-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)
 	PerVlanVgaV6Mac pulumi.BoolPtrInput `pulumi:"perVlanVgaV6Mac"`
-	// optional, where virtual-gateway should reside. enum: `core`, `distribution`, `edge`
-	RoutedAt pulumi.StringPtrInput                   `pulumi:"routedAt"`
+	// Topology tier where EVPN virtual gateway routing is placed
+	RoutedAt pulumi.StringPtrInput `pulumi:"routedAt"`
+	// EVPN underlay BGP and subnet settings for the topology
 	Underlay EvpnTopologyEvpnOptionsUnderlayPtrInput `pulumi:"underlay"`
-	// Optional, for EX9200 only to segregate virtual-switches
+	// Virtual-switch instance mappings used to segregate EVPN networks
 	VsInstances EvpnTopologyEvpnOptionsVsInstancesMapInput `pulumi:"vsInstances"`
 }
 
@@ -190,6 +194,7 @@ func (o EvpnTopologyEvpnOptionsOutput) EnableInbandZtp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EvpnTopologyEvpnOptions) *bool { return v.EnableInbandZtp }).(pulumi.BoolPtrOutput)
 }
 
+// EVPN overlay BGP settings for the topology
 func (o EvpnTopologyEvpnOptionsOutput) Overlay() EvpnTopologyEvpnOptionsOverlayPtrOutput {
 	return o.ApplyT(func(v EvpnTopologyEvpnOptions) *EvpnTopologyEvpnOptionsOverlay { return v.Overlay }).(EvpnTopologyEvpnOptionsOverlayPtrOutput)
 }
@@ -204,16 +209,17 @@ func (o EvpnTopologyEvpnOptionsOutput) PerVlanVgaV6Mac() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EvpnTopologyEvpnOptions) *bool { return v.PerVlanVgaV6Mac }).(pulumi.BoolPtrOutput)
 }
 
-// optional, where virtual-gateway should reside. enum: `core`, `distribution`, `edge`
+// Topology tier where EVPN virtual gateway routing is placed
 func (o EvpnTopologyEvpnOptionsOutput) RoutedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EvpnTopologyEvpnOptions) *string { return v.RoutedAt }).(pulumi.StringPtrOutput)
 }
 
+// EVPN underlay BGP and subnet settings for the topology
 func (o EvpnTopologyEvpnOptionsOutput) Underlay() EvpnTopologyEvpnOptionsUnderlayPtrOutput {
 	return o.ApplyT(func(v EvpnTopologyEvpnOptions) *EvpnTopologyEvpnOptionsUnderlay { return v.Underlay }).(EvpnTopologyEvpnOptionsUnderlayPtrOutput)
 }
 
-// Optional, for EX9200 only to segregate virtual-switches
+// Virtual-switch instance mappings used to segregate EVPN networks
 func (o EvpnTopologyEvpnOptionsOutput) VsInstances() EvpnTopologyEvpnOptionsVsInstancesMapOutput {
 	return o.ApplyT(func(v EvpnTopologyEvpnOptions) map[string]EvpnTopologyEvpnOptionsVsInstances { return v.VsInstances }).(EvpnTopologyEvpnOptionsVsInstancesMapOutput)
 }
@@ -312,6 +318,7 @@ func (o EvpnTopologyEvpnOptionsPtrOutput) EnableInbandZtp() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
+// EVPN overlay BGP settings for the topology
 func (o EvpnTopologyEvpnOptionsPtrOutput) Overlay() EvpnTopologyEvpnOptionsOverlayPtrOutput {
 	return o.ApplyT(func(v *EvpnTopologyEvpnOptions) *EvpnTopologyEvpnOptionsOverlay {
 		if v == nil {
@@ -341,7 +348,7 @@ func (o EvpnTopologyEvpnOptionsPtrOutput) PerVlanVgaV6Mac() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
-// optional, where virtual-gateway should reside. enum: `core`, `distribution`, `edge`
+// Topology tier where EVPN virtual gateway routing is placed
 func (o EvpnTopologyEvpnOptionsPtrOutput) RoutedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EvpnTopologyEvpnOptions) *string {
 		if v == nil {
@@ -351,6 +358,7 @@ func (o EvpnTopologyEvpnOptionsPtrOutput) RoutedAt() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// EVPN underlay BGP and subnet settings for the topology
 func (o EvpnTopologyEvpnOptionsPtrOutput) Underlay() EvpnTopologyEvpnOptionsUnderlayPtrOutput {
 	return o.ApplyT(func(v *EvpnTopologyEvpnOptions) *EvpnTopologyEvpnOptionsUnderlay {
 		if v == nil {
@@ -360,7 +368,7 @@ func (o EvpnTopologyEvpnOptionsPtrOutput) Underlay() EvpnTopologyEvpnOptionsUnde
 	}).(EvpnTopologyEvpnOptionsUnderlayPtrOutput)
 }
 
-// Optional, for EX9200 only to segregate virtual-switches
+// Virtual-switch instance mappings used to segregate EVPN networks
 func (o EvpnTopologyEvpnOptionsPtrOutput) VsInstances() EvpnTopologyEvpnOptionsVsInstancesMapOutput {
 	return o.ApplyT(func(v *EvpnTopologyEvpnOptions) map[string]EvpnTopologyEvpnOptionsVsInstances {
 		if v == nil {
@@ -509,7 +517,8 @@ func (o EvpnTopologyEvpnOptionsOverlayPtrOutput) As() pulumi.IntPtrOutput {
 
 type EvpnTopologyEvpnOptionsUnderlay struct {
 	// Underlay BGP Base AS Number
-	AsBase         *int    `pulumi:"asBase"`
+	AsBase *int `pulumi:"asBase"`
+	// Prefix length used for automatically derived underlay router identifiers
 	RoutedIdPrefix *string `pulumi:"routedIdPrefix"`
 	// Underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6
 	Subnet *string `pulumi:"subnet"`
@@ -530,7 +539,8 @@ type EvpnTopologyEvpnOptionsUnderlayInput interface {
 
 type EvpnTopologyEvpnOptionsUnderlayArgs struct {
 	// Underlay BGP Base AS Number
-	AsBase         pulumi.IntPtrInput    `pulumi:"asBase"`
+	AsBase pulumi.IntPtrInput `pulumi:"asBase"`
+	// Prefix length used for automatically derived underlay router identifiers
 	RoutedIdPrefix pulumi.StringPtrInput `pulumi:"routedIdPrefix"`
 	// Underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6
 	Subnet pulumi.StringPtrInput `pulumi:"subnet"`
@@ -620,6 +630,7 @@ func (o EvpnTopologyEvpnOptionsUnderlayOutput) AsBase() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EvpnTopologyEvpnOptionsUnderlay) *int { return v.AsBase }).(pulumi.IntPtrOutput)
 }
 
+// Prefix length used for automatically derived underlay router identifiers
 func (o EvpnTopologyEvpnOptionsUnderlayOutput) RoutedIdPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EvpnTopologyEvpnOptionsUnderlay) *string { return v.RoutedIdPrefix }).(pulumi.StringPtrOutput)
 }
@@ -668,6 +679,7 @@ func (o EvpnTopologyEvpnOptionsUnderlayPtrOutput) AsBase() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Prefix length used for automatically derived underlay router identifiers
 func (o EvpnTopologyEvpnOptionsUnderlayPtrOutput) RoutedIdPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EvpnTopologyEvpnOptionsUnderlay) *string {
 		if v == nil {
@@ -698,6 +710,7 @@ func (o EvpnTopologyEvpnOptionsUnderlayPtrOutput) UseIpv6() pulumi.BoolPtrOutput
 }
 
 type EvpnTopologyEvpnOptionsVsInstances struct {
+	// List of network names included in this virtual-switch instance
 	Networks []string `pulumi:"networks"`
 }
 
@@ -713,6 +726,7 @@ type EvpnTopologyEvpnOptionsVsInstancesInput interface {
 }
 
 type EvpnTopologyEvpnOptionsVsInstancesArgs struct {
+	// List of network names included in this virtual-switch instance
 	Networks pulumi.StringArrayInput `pulumi:"networks"`
 }
 
@@ -767,6 +781,7 @@ func (o EvpnTopologyEvpnOptionsVsInstancesOutput) ToEvpnTopologyEvpnOptionsVsIns
 	return o
 }
 
+// List of network names included in this virtual-switch instance
 func (o EvpnTopologyEvpnOptionsVsInstancesOutput) Networks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EvpnTopologyEvpnOptionsVsInstances) []string { return v.Networks }).(pulumi.StringArrayOutput)
 }
@@ -792,28 +807,40 @@ func (o EvpnTopologyEvpnOptionsVsInstancesMapOutput) MapIndex(k pulumi.StringInp
 }
 
 type EvpnTopologySwitches struct {
-	DeviceprofileId *string  `pulumi:"deviceprofileId"`
-	DownlinkIps     []string `pulumi:"downlinkIps"`
-	Downlinks       []string `pulumi:"downlinks"`
-	Esilaglinks     []string `pulumi:"esilaglinks"`
-	EvpnId          *int     `pulumi:"evpnId"`
-	Mac             *string  `pulumi:"mac"`
-	Model           *string  `pulumi:"model"`
+	// Associated device profile identifier for the switch. Use the Assign Org Device Profile endpoint to assign a Device Profile to the switch.
+	DeviceprofileId *string `pulumi:"deviceprofileId"`
+	// IP addresses used by this switch for EVPN downlinks
+	DownlinkIps []string `pulumi:"downlinkIps"`
+	// Switch MAC addresses connected as downlinks from this topology member
+	Downlinks []string `pulumi:"downlinks"`
+	// Switch MAC addresses connected through ESI-LAG from this topology member
+	Esilaglinks []string `pulumi:"esilaglinks"`
+	// Topology identifier number for this EVPN switch member
+	EvpnId *int `pulumi:"evpnId"`
+	// Switch MAC address used to identify the topology member
+	Mac *string `pulumi:"mac"`
+	// Switch model for this topology member
+	Model *string `pulumi:"model"`
 	// Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g.
 	//   * for CLOS, to group dist / access switches into pods
 	//   * for ERB/CRB, to group dist / esilag-access into pods
 	Pod *int `pulumi:"pod"`
-	// By default, core switches are assumed to be connecting all pods.
-	// if you want to limit the pods, you can specify pods.
+	// List of pod numbers this switch participates in
 	Pods []int `pulumi:"pods"`
-	// use `role`==`none` to remove a switch from the topology. enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
-	Role                 string   `pulumi:"role"`
-	RouterId             *string  `pulumi:"routerId"`
-	SiteId               *string  `pulumi:"siteId"`
-	SuggestedDownlinks   []string `pulumi:"suggestedDownlinks"`
+	// EVPN topology role for this switch
+	Role string `pulumi:"role"`
+	// Routing identifier used by this switch for EVPN routing
+	RouterId *string `pulumi:"routerId"`
+	// Associated site for this EVPN topology switch
+	SiteId *string `pulumi:"siteId"`
+	// Builder-suggested downlink switch MAC addresses
+	SuggestedDownlinks []string `pulumi:"suggestedDownlinks"`
+	// Builder-suggested ESI-LAG switch MAC addresses
 	SuggestedEsilaglinks []string `pulumi:"suggestedEsilaglinks"`
-	SuggestedUplinks     []string `pulumi:"suggestedUplinks"`
-	Uplinks              []string `pulumi:"uplinks"`
+	// Builder-suggested uplink switch MAC addresses
+	SuggestedUplinks []string `pulumi:"suggestedUplinks"`
+	// Switch MAC addresses connected as uplinks from this topology member
+	Uplinks []string `pulumi:"uplinks"`
 }
 
 // EvpnTopologySwitchesInput is an input type that accepts EvpnTopologySwitchesArgs and EvpnTopologySwitchesOutput values.
@@ -828,28 +855,40 @@ type EvpnTopologySwitchesInput interface {
 }
 
 type EvpnTopologySwitchesArgs struct {
-	DeviceprofileId pulumi.StringPtrInput   `pulumi:"deviceprofileId"`
-	DownlinkIps     pulumi.StringArrayInput `pulumi:"downlinkIps"`
-	Downlinks       pulumi.StringArrayInput `pulumi:"downlinks"`
-	Esilaglinks     pulumi.StringArrayInput `pulumi:"esilaglinks"`
-	EvpnId          pulumi.IntPtrInput      `pulumi:"evpnId"`
-	Mac             pulumi.StringPtrInput   `pulumi:"mac"`
-	Model           pulumi.StringPtrInput   `pulumi:"model"`
+	// Associated device profile identifier for the switch. Use the Assign Org Device Profile endpoint to assign a Device Profile to the switch.
+	DeviceprofileId pulumi.StringPtrInput `pulumi:"deviceprofileId"`
+	// IP addresses used by this switch for EVPN downlinks
+	DownlinkIps pulumi.StringArrayInput `pulumi:"downlinkIps"`
+	// Switch MAC addresses connected as downlinks from this topology member
+	Downlinks pulumi.StringArrayInput `pulumi:"downlinks"`
+	// Switch MAC addresses connected through ESI-LAG from this topology member
+	Esilaglinks pulumi.StringArrayInput `pulumi:"esilaglinks"`
+	// Topology identifier number for this EVPN switch member
+	EvpnId pulumi.IntPtrInput `pulumi:"evpnId"`
+	// Switch MAC address used to identify the topology member
+	Mac pulumi.StringPtrInput `pulumi:"mac"`
+	// Switch model for this topology member
+	Model pulumi.StringPtrInput `pulumi:"model"`
 	// Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g.
 	//   * for CLOS, to group dist / access switches into pods
 	//   * for ERB/CRB, to group dist / esilag-access into pods
 	Pod pulumi.IntPtrInput `pulumi:"pod"`
-	// By default, core switches are assumed to be connecting all pods.
-	// if you want to limit the pods, you can specify pods.
+	// List of pod numbers this switch participates in
 	Pods pulumi.IntArrayInput `pulumi:"pods"`
-	// use `role`==`none` to remove a switch from the topology. enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
-	Role                 pulumi.StringInput      `pulumi:"role"`
-	RouterId             pulumi.StringPtrInput   `pulumi:"routerId"`
-	SiteId               pulumi.StringPtrInput   `pulumi:"siteId"`
-	SuggestedDownlinks   pulumi.StringArrayInput `pulumi:"suggestedDownlinks"`
+	// EVPN topology role for this switch
+	Role pulumi.StringInput `pulumi:"role"`
+	// Routing identifier used by this switch for EVPN routing
+	RouterId pulumi.StringPtrInput `pulumi:"routerId"`
+	// Associated site for this EVPN topology switch
+	SiteId pulumi.StringPtrInput `pulumi:"siteId"`
+	// Builder-suggested downlink switch MAC addresses
+	SuggestedDownlinks pulumi.StringArrayInput `pulumi:"suggestedDownlinks"`
+	// Builder-suggested ESI-LAG switch MAC addresses
 	SuggestedEsilaglinks pulumi.StringArrayInput `pulumi:"suggestedEsilaglinks"`
-	SuggestedUplinks     pulumi.StringArrayInput `pulumi:"suggestedUplinks"`
-	Uplinks              pulumi.StringArrayInput `pulumi:"uplinks"`
+	// Builder-suggested uplink switch MAC addresses
+	SuggestedUplinks pulumi.StringArrayInput `pulumi:"suggestedUplinks"`
+	// Switch MAC addresses connected as uplinks from this topology member
+	Uplinks pulumi.StringArrayInput `pulumi:"uplinks"`
 }
 
 func (EvpnTopologySwitchesArgs) ElementType() reflect.Type {
@@ -903,30 +942,37 @@ func (o EvpnTopologySwitchesOutput) ToEvpnTopologySwitchesOutputWithContext(ctx 
 	return o
 }
 
+// Associated device profile identifier for the switch. Use the Assign Org Device Profile endpoint to assign a Device Profile to the switch.
 func (o EvpnTopologySwitchesOutput) DeviceprofileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EvpnTopologySwitches) *string { return v.DeviceprofileId }).(pulumi.StringPtrOutput)
 }
 
+// IP addresses used by this switch for EVPN downlinks
 func (o EvpnTopologySwitchesOutput) DownlinkIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EvpnTopologySwitches) []string { return v.DownlinkIps }).(pulumi.StringArrayOutput)
 }
 
+// Switch MAC addresses connected as downlinks from this topology member
 func (o EvpnTopologySwitchesOutput) Downlinks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EvpnTopologySwitches) []string { return v.Downlinks }).(pulumi.StringArrayOutput)
 }
 
+// Switch MAC addresses connected through ESI-LAG from this topology member
 func (o EvpnTopologySwitchesOutput) Esilaglinks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EvpnTopologySwitches) []string { return v.Esilaglinks }).(pulumi.StringArrayOutput)
 }
 
+// Topology identifier number for this EVPN switch member
 func (o EvpnTopologySwitchesOutput) EvpnId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EvpnTopologySwitches) *int { return v.EvpnId }).(pulumi.IntPtrOutput)
 }
 
+// Switch MAC address used to identify the topology member
 func (o EvpnTopologySwitchesOutput) Mac() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EvpnTopologySwitches) *string { return v.Mac }).(pulumi.StringPtrOutput)
 }
 
+// Switch model for this topology member
 func (o EvpnTopologySwitchesOutput) Model() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EvpnTopologySwitches) *string { return v.Model }).(pulumi.StringPtrOutput)
 }
@@ -938,37 +984,42 @@ func (o EvpnTopologySwitchesOutput) Pod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EvpnTopologySwitches) *int { return v.Pod }).(pulumi.IntPtrOutput)
 }
 
-// By default, core switches are assumed to be connecting all pods.
-// if you want to limit the pods, you can specify pods.
+// List of pod numbers this switch participates in
 func (o EvpnTopologySwitchesOutput) Pods() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v EvpnTopologySwitches) []int { return v.Pods }).(pulumi.IntArrayOutput)
 }
 
-// use `role`==`none` to remove a switch from the topology. enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
+// EVPN topology role for this switch
 func (o EvpnTopologySwitchesOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v EvpnTopologySwitches) string { return v.Role }).(pulumi.StringOutput)
 }
 
+// Routing identifier used by this switch for EVPN routing
 func (o EvpnTopologySwitchesOutput) RouterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EvpnTopologySwitches) *string { return v.RouterId }).(pulumi.StringPtrOutput)
 }
 
+// Associated site for this EVPN topology switch
 func (o EvpnTopologySwitchesOutput) SiteId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EvpnTopologySwitches) *string { return v.SiteId }).(pulumi.StringPtrOutput)
 }
 
+// Builder-suggested downlink switch MAC addresses
 func (o EvpnTopologySwitchesOutput) SuggestedDownlinks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EvpnTopologySwitches) []string { return v.SuggestedDownlinks }).(pulumi.StringArrayOutput)
 }
 
+// Builder-suggested ESI-LAG switch MAC addresses
 func (o EvpnTopologySwitchesOutput) SuggestedEsilaglinks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EvpnTopologySwitches) []string { return v.SuggestedEsilaglinks }).(pulumi.StringArrayOutput)
 }
 
+// Builder-suggested uplink switch MAC addresses
 func (o EvpnTopologySwitchesOutput) SuggestedUplinks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EvpnTopologySwitches) []string { return v.SuggestedUplinks }).(pulumi.StringArrayOutput)
 }
 
+// Switch MAC addresses connected as uplinks from this topology member
 func (o EvpnTopologySwitchesOutput) Uplinks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EvpnTopologySwitches) []string { return v.Uplinks }).(pulumi.StringArrayOutput)
 }
@@ -22426,15 +22477,19 @@ func (o SettingZoneOccupancyAlertPtrOutput) Threshold() pulumi.IntPtrOutput {
 }
 
 type WlanAcctServer struct {
-	// IP/ hostname of RADIUS server
-	Host           string `pulumi:"host"`
-	KeywrapEnabled *bool  `pulumi:"keywrapEnabled"`
-	// enum: `ascii`, `hex`
+	// Address or hostname of the RADIUS accounting server
+	Host string `pulumi:"host"`
+	// Whether RADIUS keywrap is enabled for messages sent to this accounting server
+	KeywrapEnabled *bool `pulumi:"keywrapEnabled"`
+	// Encoding format for RADIUS keywrap KEK and MACK values
 	KeywrapFormat *string `pulumi:"keywrapFormat"`
-	KeywrapKek    *string `pulumi:"keywrapKek"`
-	KeywrapMack   *string `pulumi:"keywrapMack"`
-	Port          *string `pulumi:"port"`
-	// Secret of RADIUS server
+	// RADIUS keywrap key encryption key (KEK)
+	KeywrapKek *string `pulumi:"keywrapKek"`
+	// RADIUS keywrap message authentication code key (MACK)
+	KeywrapMack *string `pulumi:"keywrapMack"`
+	// UDP port used by the RADIUS accounting server
+	Port *string `pulumi:"port"`
+	// Shared secret used with this RADIUS accounting server
 	Secret string `pulumi:"secret"`
 }
 
@@ -22450,15 +22505,19 @@ type WlanAcctServerInput interface {
 }
 
 type WlanAcctServerArgs struct {
-	// IP/ hostname of RADIUS server
-	Host           pulumi.StringInput  `pulumi:"host"`
+	// Address or hostname of the RADIUS accounting server
+	Host pulumi.StringInput `pulumi:"host"`
+	// Whether RADIUS keywrap is enabled for messages sent to this accounting server
 	KeywrapEnabled pulumi.BoolPtrInput `pulumi:"keywrapEnabled"`
-	// enum: `ascii`, `hex`
+	// Encoding format for RADIUS keywrap KEK and MACK values
 	KeywrapFormat pulumi.StringPtrInput `pulumi:"keywrapFormat"`
-	KeywrapKek    pulumi.StringPtrInput `pulumi:"keywrapKek"`
-	KeywrapMack   pulumi.StringPtrInput `pulumi:"keywrapMack"`
-	Port          pulumi.StringPtrInput `pulumi:"port"`
-	// Secret of RADIUS server
+	// RADIUS keywrap key encryption key (KEK)
+	KeywrapKek pulumi.StringPtrInput `pulumi:"keywrapKek"`
+	// RADIUS keywrap message authentication code key (MACK)
+	KeywrapMack pulumi.StringPtrInput `pulumi:"keywrapMack"`
+	// UDP port used by the RADIUS accounting server
+	Port pulumi.StringPtrInput `pulumi:"port"`
+	// Shared secret used with this RADIUS accounting server
 	Secret pulumi.StringInput `pulumi:"secret"`
 }
 
@@ -22513,33 +22572,37 @@ func (o WlanAcctServerOutput) ToWlanAcctServerOutputWithContext(ctx context.Cont
 	return o
 }
 
-// IP/ hostname of RADIUS server
+// Address or hostname of the RADIUS accounting server
 func (o WlanAcctServerOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v WlanAcctServer) string { return v.Host }).(pulumi.StringOutput)
 }
 
+// Whether RADIUS keywrap is enabled for messages sent to this accounting server
 func (o WlanAcctServerOutput) KeywrapEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanAcctServer) *bool { return v.KeywrapEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// enum: `ascii`, `hex`
+// Encoding format for RADIUS keywrap KEK and MACK values
 func (o WlanAcctServerOutput) KeywrapFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanAcctServer) *string { return v.KeywrapFormat }).(pulumi.StringPtrOutput)
 }
 
+// RADIUS keywrap key encryption key (KEK)
 func (o WlanAcctServerOutput) KeywrapKek() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanAcctServer) *string { return v.KeywrapKek }).(pulumi.StringPtrOutput)
 }
 
+// RADIUS keywrap message authentication code key (MACK)
 func (o WlanAcctServerOutput) KeywrapMack() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanAcctServer) *string { return v.KeywrapMack }).(pulumi.StringPtrOutput)
 }
 
+// UDP port used by the RADIUS accounting server
 func (o WlanAcctServerOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanAcctServer) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
-// Secret of RADIUS server
+// Shared secret used with this RADIUS accounting server
 func (o WlanAcctServerOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v WlanAcctServer) string { return v.Secret }).(pulumi.StringOutput)
 }
@@ -22565,14 +22628,15 @@ func (o WlanAcctServerArrayOutput) Index(i pulumi.IntInput) WlanAcctServerOutput
 }
 
 type WlanAirwatch struct {
-	// API Key
+	// API key used to authenticate to the AirWatch service
 	ApiKey *string `pulumi:"apiKey"`
-	// Console URL
+	// Base console URL of the AirWatch deployment
 	ConsoleUrl *string `pulumi:"consoleUrl"`
-	Enabled    *bool   `pulumi:"enabled"`
-	// Password
+	// Whether AirWatch integration is enabled for the WLAN
+	Enabled *bool `pulumi:"enabled"`
+	// AirWatch integration account password for this WLAN
 	Password *string `pulumi:"password"`
-	// Username
+	// AirWatch integration account username for this WLAN
 	Username *string `pulumi:"username"`
 }
 
@@ -22588,14 +22652,15 @@ type WlanAirwatchInput interface {
 }
 
 type WlanAirwatchArgs struct {
-	// API Key
+	// API key used to authenticate to the AirWatch service
 	ApiKey pulumi.StringPtrInput `pulumi:"apiKey"`
-	// Console URL
+	// Base console URL of the AirWatch deployment
 	ConsoleUrl pulumi.StringPtrInput `pulumi:"consoleUrl"`
-	Enabled    pulumi.BoolPtrInput   `pulumi:"enabled"`
-	// Password
+	// Whether AirWatch integration is enabled for the WLAN
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// AirWatch integration account password for this WLAN
 	Password pulumi.StringPtrInput `pulumi:"password"`
-	// Username
+	// AirWatch integration account username for this WLAN
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
@@ -22676,26 +22741,27 @@ func (o WlanAirwatchOutput) ToWlanAirwatchPtrOutputWithContext(ctx context.Conte
 	}).(WlanAirwatchPtrOutput)
 }
 
-// API Key
+// API key used to authenticate to the AirWatch service
 func (o WlanAirwatchOutput) ApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanAirwatch) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
 }
 
-// Console URL
+// Base console URL of the AirWatch deployment
 func (o WlanAirwatchOutput) ConsoleUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanAirwatch) *string { return v.ConsoleUrl }).(pulumi.StringPtrOutput)
 }
 
+// Whether AirWatch integration is enabled for the WLAN
 func (o WlanAirwatchOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanAirwatch) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Password
+// AirWatch integration account password for this WLAN
 func (o WlanAirwatchOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanAirwatch) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// Username
+// AirWatch integration account username for this WLAN
 func (o WlanAirwatchOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanAirwatch) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -22724,7 +22790,7 @@ func (o WlanAirwatchPtrOutput) Elem() WlanAirwatchOutput {
 	}).(WlanAirwatchOutput)
 }
 
-// API Key
+// API key used to authenticate to the AirWatch service
 func (o WlanAirwatchPtrOutput) ApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanAirwatch) *string {
 		if v == nil {
@@ -22734,7 +22800,7 @@ func (o WlanAirwatchPtrOutput) ApiKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Console URL
+// Base console URL of the AirWatch deployment
 func (o WlanAirwatchPtrOutput) ConsoleUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanAirwatch) *string {
 		if v == nil {
@@ -22744,6 +22810,7 @@ func (o WlanAirwatchPtrOutput) ConsoleUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whether AirWatch integration is enabled for the WLAN
 func (o WlanAirwatchPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanAirwatch) *bool {
 		if v == nil {
@@ -22753,7 +22820,7 @@ func (o WlanAirwatchPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Password
+// AirWatch integration account password for this WLAN
 func (o WlanAirwatchPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanAirwatch) *string {
 		if v == nil {
@@ -22763,7 +22830,7 @@ func (o WlanAirwatchPtrOutput) Password() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Username
+// AirWatch integration account username for this WLAN
 func (o WlanAirwatchPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanAirwatch) *string {
 		if v == nil {
@@ -22776,8 +22843,9 @@ func (o WlanAirwatchPtrOutput) Username() pulumi.StringPtrOutput {
 type WlanAppLimit struct {
 	// Map from app key to bandwidth in kbps.
 	// Property key is the app key, defined in Get Application List
-	Apps    map[string]int `pulumi:"apps"`
-	Enabled *bool          `pulumi:"enabled"`
+	Apps map[string]int `pulumi:"apps"`
+	// Whether application bandwidth limits are enabled for this WLAN
+	Enabled *bool `pulumi:"enabled"`
 	// Map from wxtagId of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtagId`
 	WxtagIds map[string]int `pulumi:"wxtagIds"`
 }
@@ -22796,7 +22864,8 @@ type WlanAppLimitInput interface {
 type WlanAppLimitArgs struct {
 	// Map from app key to bandwidth in kbps.
 	// Property key is the app key, defined in Get Application List
-	Apps    pulumi.IntMapInput  `pulumi:"apps"`
+	Apps pulumi.IntMapInput `pulumi:"apps"`
+	// Whether application bandwidth limits are enabled for this WLAN
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// Map from wxtagId of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtagId`
 	WxtagIds pulumi.IntMapInput `pulumi:"wxtagIds"`
@@ -22885,6 +22954,7 @@ func (o WlanAppLimitOutput) Apps() pulumi.IntMapOutput {
 	return o.ApplyT(func(v WlanAppLimit) map[string]int { return v.Apps }).(pulumi.IntMapOutput)
 }
 
+// Whether application bandwidth limits are enabled for this WLAN
 func (o WlanAppLimitOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanAppLimit) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -22929,6 +22999,7 @@ func (o WlanAppLimitPtrOutput) Apps() pulumi.IntMapOutput {
 	}).(pulumi.IntMapOutput)
 }
 
+// Whether application bandwidth limits are enabled for this WLAN
 func (o WlanAppLimitPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanAppLimit) *bool {
 		if v == nil {
@@ -22949,9 +23020,12 @@ func (o WlanAppLimitPtrOutput) WxtagIds() pulumi.IntMapOutput {
 }
 
 type WlanAppQos struct {
-	Apps    map[string]WlanAppQosApps `pulumi:"apps"`
-	Enabled *bool                     `pulumi:"enabled"`
-	Others  []WlanAppQosOther         `pulumi:"others"`
+	// Map of application keys to QoS rewrite settings
+	Apps map[string]WlanAppQosApps `pulumi:"apps"`
+	// Whether application QoS rewrite rules are enabled for this WLAN
+	Enabled *bool `pulumi:"enabled"`
+	// Custom traffic QoS rules that are not tied to named applications
+	Others []WlanAppQosOther `pulumi:"others"`
 }
 
 // WlanAppQosInput is an input type that accepts WlanAppQosArgs and WlanAppQosOutput values.
@@ -22966,9 +23040,12 @@ type WlanAppQosInput interface {
 }
 
 type WlanAppQosArgs struct {
-	Apps    WlanAppQosAppsMapInput    `pulumi:"apps"`
-	Enabled pulumi.BoolPtrInput       `pulumi:"enabled"`
-	Others  WlanAppQosOtherArrayInput `pulumi:"others"`
+	// Map of application keys to QoS rewrite settings
+	Apps WlanAppQosAppsMapInput `pulumi:"apps"`
+	// Whether application QoS rewrite rules are enabled for this WLAN
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Custom traffic QoS rules that are not tied to named applications
+	Others WlanAppQosOtherArrayInput `pulumi:"others"`
 }
 
 func (WlanAppQosArgs) ElementType() reflect.Type {
@@ -23048,14 +23125,17 @@ func (o WlanAppQosOutput) ToWlanAppQosPtrOutputWithContext(ctx context.Context) 
 	}).(WlanAppQosPtrOutput)
 }
 
+// Map of application keys to QoS rewrite settings
 func (o WlanAppQosOutput) Apps() WlanAppQosAppsMapOutput {
 	return o.ApplyT(func(v WlanAppQos) map[string]WlanAppQosApps { return v.Apps }).(WlanAppQosAppsMapOutput)
 }
 
+// Whether application QoS rewrite rules are enabled for this WLAN
 func (o WlanAppQosOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanAppQos) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Custom traffic QoS rules that are not tied to named applications
 func (o WlanAppQosOutput) Others() WlanAppQosOtherArrayOutput {
 	return o.ApplyT(func(v WlanAppQos) []WlanAppQosOther { return v.Others }).(WlanAppQosOtherArrayOutput)
 }
@@ -23084,6 +23164,7 @@ func (o WlanAppQosPtrOutput) Elem() WlanAppQosOutput {
 	}).(WlanAppQosOutput)
 }
 
+// Map of application keys to QoS rewrite settings
 func (o WlanAppQosPtrOutput) Apps() WlanAppQosAppsMapOutput {
 	return o.ApplyT(func(v *WlanAppQos) map[string]WlanAppQosApps {
 		if v == nil {
@@ -23093,6 +23174,7 @@ func (o WlanAppQosPtrOutput) Apps() WlanAppQosAppsMapOutput {
 	}).(WlanAppQosAppsMapOutput)
 }
 
+// Whether application QoS rewrite rules are enabled for this WLAN
 func (o WlanAppQosPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanAppQos) *bool {
 		if v == nil {
@@ -23102,6 +23184,7 @@ func (o WlanAppQosPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Custom traffic QoS rules that are not tied to named applications
 func (o WlanAppQosPtrOutput) Others() WlanAppQosOtherArrayOutput {
 	return o.ApplyT(func(v *WlanAppQos) []WlanAppQosOther {
 		if v == nil {
@@ -23227,11 +23310,16 @@ func (o WlanAppQosAppsMapOutput) MapIndex(k pulumi.StringInput) WlanAppQosAppsOu
 }
 
 type WlanAppQosOther struct {
-	Dscp       *string `pulumi:"dscp"`
-	DstSubnet  *string `pulumi:"dstSubnet"`
+	// Differentiated Services Code Point value applied to matching traffic
+	Dscp *string `pulumi:"dscp"`
+	// Destination subnet filter for this custom QoS rule
+	DstSubnet *string `pulumi:"dstSubnet"`
+	// TCP or UDP port ranges matched by this custom QoS rule
 	PortRanges *string `pulumi:"portRanges"`
-	Protocol   *string `pulumi:"protocol"`
-	SrcSubnet  *string `pulumi:"srcSubnet"`
+	// IP protocol matched by this custom QoS rule
+	Protocol *string `pulumi:"protocol"`
+	// Source subnet filter for this custom QoS rule
+	SrcSubnet *string `pulumi:"srcSubnet"`
 }
 
 // WlanAppQosOtherInput is an input type that accepts WlanAppQosOtherArgs and WlanAppQosOtherOutput values.
@@ -23246,11 +23334,16 @@ type WlanAppQosOtherInput interface {
 }
 
 type WlanAppQosOtherArgs struct {
-	Dscp       pulumi.StringPtrInput `pulumi:"dscp"`
-	DstSubnet  pulumi.StringPtrInput `pulumi:"dstSubnet"`
+	// Differentiated Services Code Point value applied to matching traffic
+	Dscp pulumi.StringPtrInput `pulumi:"dscp"`
+	// Destination subnet filter for this custom QoS rule
+	DstSubnet pulumi.StringPtrInput `pulumi:"dstSubnet"`
+	// TCP or UDP port ranges matched by this custom QoS rule
 	PortRanges pulumi.StringPtrInput `pulumi:"portRanges"`
-	Protocol   pulumi.StringPtrInput `pulumi:"protocol"`
-	SrcSubnet  pulumi.StringPtrInput `pulumi:"srcSubnet"`
+	// IP protocol matched by this custom QoS rule
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+	// Source subnet filter for this custom QoS rule
+	SrcSubnet pulumi.StringPtrInput `pulumi:"srcSubnet"`
 }
 
 func (WlanAppQosOtherArgs) ElementType() reflect.Type {
@@ -23304,22 +23397,27 @@ func (o WlanAppQosOtherOutput) ToWlanAppQosOtherOutputWithContext(ctx context.Co
 	return o
 }
 
+// Differentiated Services Code Point value applied to matching traffic
 func (o WlanAppQosOtherOutput) Dscp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanAppQosOther) *string { return v.Dscp }).(pulumi.StringPtrOutput)
 }
 
+// Destination subnet filter for this custom QoS rule
 func (o WlanAppQosOtherOutput) DstSubnet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanAppQosOther) *string { return v.DstSubnet }).(pulumi.StringPtrOutput)
 }
 
+// TCP or UDP port ranges matched by this custom QoS rule
 func (o WlanAppQosOtherOutput) PortRanges() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanAppQosOther) *string { return v.PortRanges }).(pulumi.StringPtrOutput)
 }
 
+// IP protocol matched by this custom QoS rule
 func (o WlanAppQosOtherOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanAppQosOther) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
+// Source subnet filter for this custom QoS rule
 func (o WlanAppQosOtherOutput) SrcSubnet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanAppQosOther) *string { return v.SrcSubnet }).(pulumi.StringPtrOutput)
 }
@@ -23355,21 +23453,21 @@ type WlanAuth struct {
 	EnableGcmp256 *bool `pulumi:"enableGcmp256"`
 	// Whether to enable MAC Auth, uses the same auth_servers
 	EnableMacAuth *bool `pulumi:"enableMacAuth"`
-	// When `type`==`wep`
+	// When `type`==`wep`, index of the WEP key used as the default transmit key
 	KeyIdx *int `pulumi:"keyIdx"`
-	// When type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+	// When `type`==`wep`, WEP keys configured for this WLAN
 	Keys []string `pulumi:"keys"`
 	// When `type`==`psk`, whether to only use multi_psk
 	MultiPskOnly *bool `pulumi:"multiPskOnly"`
-	// if `type`==`open`. enum: `disabled`, `enabled` (means transition mode), `required`
+	// When `type`==`open`, Opportunistic Wireless Encryption mode for this WLAN
 	Owe *string `pulumi:"owe"`
-	// When `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+	// When `type`==`psk` or `type`==`eap`, pairwise cipher suites allowed for this WLAN
 	Pairwises []string `pulumi:"pairwises"`
 	// When `multiPskOnly`==`true`, whether private wlan is enabled
 	PrivateWlan *bool `pulumi:"privateWlan"`
 	// When `type`==`psk`, 8-64 characters, or 64 hex characters
 	Psk *string `pulumi:"psk"`
-	// enum: `eap`, `eap192`, `open`, `psk`, `psk-tkip`, `psk-wpa2-tkip`, `wep`
+	// Authentication mode used by this WLAN
 	Type *string `pulumi:"type"`
 	// Enable WEP as secondary auth
 	WepAsSecondaryAuth *bool `pulumi:"wepAsSecondaryAuth"`
@@ -23397,21 +23495,21 @@ type WlanAuthArgs struct {
 	EnableGcmp256 pulumi.BoolPtrInput `pulumi:"enableGcmp256"`
 	// Whether to enable MAC Auth, uses the same auth_servers
 	EnableMacAuth pulumi.BoolPtrInput `pulumi:"enableMacAuth"`
-	// When `type`==`wep`
+	// When `type`==`wep`, index of the WEP key used as the default transmit key
 	KeyIdx pulumi.IntPtrInput `pulumi:"keyIdx"`
-	// When type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+	// When `type`==`wep`, WEP keys configured for this WLAN
 	Keys pulumi.StringArrayInput `pulumi:"keys"`
 	// When `type`==`psk`, whether to only use multi_psk
 	MultiPskOnly pulumi.BoolPtrInput `pulumi:"multiPskOnly"`
-	// if `type`==`open`. enum: `disabled`, `enabled` (means transition mode), `required`
+	// When `type`==`open`, Opportunistic Wireless Encryption mode for this WLAN
 	Owe pulumi.StringPtrInput `pulumi:"owe"`
-	// When `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+	// When `type`==`psk` or `type`==`eap`, pairwise cipher suites allowed for this WLAN
 	Pairwises pulumi.StringArrayInput `pulumi:"pairwises"`
 	// When `multiPskOnly`==`true`, whether private wlan is enabled
 	PrivateWlan pulumi.BoolPtrInput `pulumi:"privateWlan"`
 	// When `type`==`psk`, 8-64 characters, or 64 hex characters
 	Psk pulumi.StringPtrInput `pulumi:"psk"`
-	// enum: `eap`, `eap192`, `open`, `psk`, `psk-tkip`, `psk-wpa2-tkip`, `wep`
+	// Authentication mode used by this WLAN
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Enable WEP as secondary auth
 	WepAsSecondaryAuth pulumi.BoolPtrInput `pulumi:"wepAsSecondaryAuth"`
@@ -23519,12 +23617,12 @@ func (o WlanAuthOutput) EnableMacAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanAuth) *bool { return v.EnableMacAuth }).(pulumi.BoolPtrOutput)
 }
 
-// When `type`==`wep`
+// When `type`==`wep`, index of the WEP key used as the default transmit key
 func (o WlanAuthOutput) KeyIdx() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WlanAuth) *int { return v.KeyIdx }).(pulumi.IntPtrOutput)
 }
 
-// When type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+// When `type`==`wep`, WEP keys configured for this WLAN
 func (o WlanAuthOutput) Keys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanAuth) []string { return v.Keys }).(pulumi.StringArrayOutput)
 }
@@ -23534,12 +23632,12 @@ func (o WlanAuthOutput) MultiPskOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanAuth) *bool { return v.MultiPskOnly }).(pulumi.BoolPtrOutput)
 }
 
-// if `type`==`open`. enum: `disabled`, `enabled` (means transition mode), `required`
+// When `type`==`open`, Opportunistic Wireless Encryption mode for this WLAN
 func (o WlanAuthOutput) Owe() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanAuth) *string { return v.Owe }).(pulumi.StringPtrOutput)
 }
 
-// When `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+// When `type`==`psk` or `type`==`eap`, pairwise cipher suites allowed for this WLAN
 func (o WlanAuthOutput) Pairwises() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanAuth) []string { return v.Pairwises }).(pulumi.StringArrayOutput)
 }
@@ -23554,7 +23652,7 @@ func (o WlanAuthOutput) Psk() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanAuth) *string { return v.Psk }).(pulumi.StringPtrOutput)
 }
 
-// enum: `eap`, `eap192`, `open`, `psk`, `psk-tkip`, `psk-wpa2-tkip`, `wep`
+// Authentication mode used by this WLAN
 func (o WlanAuthOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanAuth) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -23638,7 +23736,7 @@ func (o WlanAuthPtrOutput) EnableMacAuth() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// When `type`==`wep`
+// When `type`==`wep`, index of the WEP key used as the default transmit key
 func (o WlanAuthPtrOutput) KeyIdx() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WlanAuth) *int {
 		if v == nil {
@@ -23648,7 +23746,7 @@ func (o WlanAuthPtrOutput) KeyIdx() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// When type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+// When `type`==`wep`, WEP keys configured for this WLAN
 func (o WlanAuthPtrOutput) Keys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WlanAuth) []string {
 		if v == nil {
@@ -23668,7 +23766,7 @@ func (o WlanAuthPtrOutput) MultiPskOnly() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// if `type`==`open`. enum: `disabled`, `enabled` (means transition mode), `required`
+// When `type`==`open`, Opportunistic Wireless Encryption mode for this WLAN
 func (o WlanAuthPtrOutput) Owe() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanAuth) *string {
 		if v == nil {
@@ -23678,7 +23776,7 @@ func (o WlanAuthPtrOutput) Owe() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// When `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+// When `type`==`psk` or `type`==`eap`, pairwise cipher suites allowed for this WLAN
 func (o WlanAuthPtrOutput) Pairwises() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WlanAuth) []string {
 		if v == nil {
@@ -23708,7 +23806,7 @@ func (o WlanAuthPtrOutput) Psk() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// enum: `eap`, `eap192`, `open`, `psk`, `psk-tkip`, `psk-wpa2-tkip`, `wep`
+// Authentication mode used by this WLAN
 func (o WlanAuthPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanAuth) *string {
 		if v == nil {
@@ -23729,17 +23827,21 @@ func (o WlanAuthPtrOutput) WepAsSecondaryAuth() pulumi.BoolPtrOutput {
 }
 
 type WlanAuthServer struct {
-	// IP/ hostname of RADIUS server
-	Host           string `pulumi:"host"`
-	KeywrapEnabled *bool  `pulumi:"keywrapEnabled"`
-	// enum: `ascii`, `hex`
+	// Address or hostname of the RADIUS authentication server
+	Host string `pulumi:"host"`
+	// Whether RADIUS keywrap is enabled for messages sent to this authentication server
+	KeywrapEnabled *bool `pulumi:"keywrapEnabled"`
+	// Encoding format for RADIUS keywrap KEK and MACK values
 	KeywrapFormat *string `pulumi:"keywrapFormat"`
-	KeywrapKek    *string `pulumi:"keywrapKek"`
-	KeywrapMack   *string `pulumi:"keywrapMack"`
-	Port          *string `pulumi:"port"`
+	// RADIUS keywrap key encryption key (KEK)
+	KeywrapKek *string `pulumi:"keywrapKek"`
+	// RADIUS keywrap message authentication code key (MACK)
+	KeywrapMack *string `pulumi:"keywrapMack"`
+	// UDP port used by the RADIUS authentication server
+	Port *string `pulumi:"port"`
 	// Whether to require Message-Authenticator in requests
 	RequireMessageAuthenticator *bool `pulumi:"requireMessageAuthenticator"`
-	// Secret of RADIUS server
+	// Shared secret used with this RADIUS authentication server
 	Secret string `pulumi:"secret"`
 }
 
@@ -23755,17 +23857,21 @@ type WlanAuthServerInput interface {
 }
 
 type WlanAuthServerArgs struct {
-	// IP/ hostname of RADIUS server
-	Host           pulumi.StringInput  `pulumi:"host"`
+	// Address or hostname of the RADIUS authentication server
+	Host pulumi.StringInput `pulumi:"host"`
+	// Whether RADIUS keywrap is enabled for messages sent to this authentication server
 	KeywrapEnabled pulumi.BoolPtrInput `pulumi:"keywrapEnabled"`
-	// enum: `ascii`, `hex`
+	// Encoding format for RADIUS keywrap KEK and MACK values
 	KeywrapFormat pulumi.StringPtrInput `pulumi:"keywrapFormat"`
-	KeywrapKek    pulumi.StringPtrInput `pulumi:"keywrapKek"`
-	KeywrapMack   pulumi.StringPtrInput `pulumi:"keywrapMack"`
-	Port          pulumi.StringPtrInput `pulumi:"port"`
+	// RADIUS keywrap key encryption key (KEK)
+	KeywrapKek pulumi.StringPtrInput `pulumi:"keywrapKek"`
+	// RADIUS keywrap message authentication code key (MACK)
+	KeywrapMack pulumi.StringPtrInput `pulumi:"keywrapMack"`
+	// UDP port used by the RADIUS authentication server
+	Port pulumi.StringPtrInput `pulumi:"port"`
 	// Whether to require Message-Authenticator in requests
 	RequireMessageAuthenticator pulumi.BoolPtrInput `pulumi:"requireMessageAuthenticator"`
-	// Secret of RADIUS server
+	// Shared secret used with this RADIUS authentication server
 	Secret pulumi.StringInput `pulumi:"secret"`
 }
 
@@ -23820,28 +23926,32 @@ func (o WlanAuthServerOutput) ToWlanAuthServerOutputWithContext(ctx context.Cont
 	return o
 }
 
-// IP/ hostname of RADIUS server
+// Address or hostname of the RADIUS authentication server
 func (o WlanAuthServerOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v WlanAuthServer) string { return v.Host }).(pulumi.StringOutput)
 }
 
+// Whether RADIUS keywrap is enabled for messages sent to this authentication server
 func (o WlanAuthServerOutput) KeywrapEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanAuthServer) *bool { return v.KeywrapEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// enum: `ascii`, `hex`
+// Encoding format for RADIUS keywrap KEK and MACK values
 func (o WlanAuthServerOutput) KeywrapFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanAuthServer) *string { return v.KeywrapFormat }).(pulumi.StringPtrOutput)
 }
 
+// RADIUS keywrap key encryption key (KEK)
 func (o WlanAuthServerOutput) KeywrapKek() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanAuthServer) *string { return v.KeywrapKek }).(pulumi.StringPtrOutput)
 }
 
+// RADIUS keywrap message authentication code key (MACK)
 func (o WlanAuthServerOutput) KeywrapMack() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanAuthServer) *string { return v.KeywrapMack }).(pulumi.StringPtrOutput)
 }
 
+// UDP port used by the RADIUS authentication server
 func (o WlanAuthServerOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanAuthServer) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
@@ -23851,7 +23961,7 @@ func (o WlanAuthServerOutput) RequireMessageAuthenticator() pulumi.BoolPtrOutput
 	return o.ApplyT(func(v WlanAuthServer) *bool { return v.RequireMessageAuthenticator }).(pulumi.BoolPtrOutput)
 }
 
-// Secret of RADIUS server
+// Shared secret used with this RADIUS authentication server
 func (o WlanAuthServerOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v WlanAuthServer) string { return v.Secret }).(pulumi.StringOutput)
 }
@@ -24058,9 +24168,9 @@ func (o WlanBonjourPtrOutput) Services() WlanBonjourServicesMapOutput {
 type WlanBonjourServices struct {
 	// Whether to prevent wireless clients to discover bonjour devices on the same WLAN
 	DisableLocal *bool `pulumi:"disableLocal"`
-	// Optional, if the service is further restricted for certain RADIUS groups
+	// RADIUS groups allowed to discover this Bonjour service, when restricted
 	RadiusGroups []string `pulumi:"radiusGroups"`
-	// how bonjour services should be discovered for the same WLAN. enum: `sameAp`, `sameMap`, `sameSite`
+	// Discovery scope for this Bonjour service on the WLAN
 	Scope *string `pulumi:"scope"`
 }
 
@@ -24078,9 +24188,9 @@ type WlanBonjourServicesInput interface {
 type WlanBonjourServicesArgs struct {
 	// Whether to prevent wireless clients to discover bonjour devices on the same WLAN
 	DisableLocal pulumi.BoolPtrInput `pulumi:"disableLocal"`
-	// Optional, if the service is further restricted for certain RADIUS groups
+	// RADIUS groups allowed to discover this Bonjour service, when restricted
 	RadiusGroups pulumi.StringArrayInput `pulumi:"radiusGroups"`
-	// how bonjour services should be discovered for the same WLAN. enum: `sameAp`, `sameMap`, `sameSite`
+	// Discovery scope for this Bonjour service on the WLAN
 	Scope pulumi.StringPtrInput `pulumi:"scope"`
 }
 
@@ -24140,12 +24250,12 @@ func (o WlanBonjourServicesOutput) DisableLocal() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanBonjourServices) *bool { return v.DisableLocal }).(pulumi.BoolPtrOutput)
 }
 
-// Optional, if the service is further restricted for certain RADIUS groups
+// RADIUS groups allowed to discover this Bonjour service, when restricted
 func (o WlanBonjourServicesOutput) RadiusGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanBonjourServices) []string { return v.RadiusGroups }).(pulumi.StringArrayOutput)
 }
 
-// how bonjour services should be discovered for the same WLAN. enum: `sameAp`, `sameMap`, `sameSite`
+// Discovery scope for this Bonjour service on the WLAN
 func (o WlanBonjourServicesOutput) Scope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanBonjourServices) *string { return v.Scope }).(pulumi.StringPtrOutput)
 }
@@ -24171,13 +24281,14 @@ func (o WlanBonjourServicesMapOutput) MapIndex(k pulumi.StringInput) WlanBonjour
 }
 
 type WlanCiscoCwa struct {
-	// List of hostnames without http(s):// (matched by substring)
+	// Hostnames allowed for Cisco CWA client access before authorization
 	AllowedHostnames []string `pulumi:"allowedHostnames"`
-	// List of CIDRs
+	// CIDR subnets allowed for Cisco CWA client access before authorization
 	AllowedSubnets []string `pulumi:"allowedSubnets"`
-	// List of blocked CIDRs
+	// CIDR subnets blocked for Cisco CWA client access
 	BlockedSubnets []string `pulumi:"blockedSubnets"`
-	Enabled        *bool    `pulumi:"enabled"`
+	// Whether Cisco CWA is enabled for this WLAN
+	Enabled *bool `pulumi:"enabled"`
 }
 
 // WlanCiscoCwaInput is an input type that accepts WlanCiscoCwaArgs and WlanCiscoCwaOutput values.
@@ -24192,13 +24303,14 @@ type WlanCiscoCwaInput interface {
 }
 
 type WlanCiscoCwaArgs struct {
-	// List of hostnames without http(s):// (matched by substring)
+	// Hostnames allowed for Cisco CWA client access before authorization
 	AllowedHostnames pulumi.StringArrayInput `pulumi:"allowedHostnames"`
-	// List of CIDRs
+	// CIDR subnets allowed for Cisco CWA client access before authorization
 	AllowedSubnets pulumi.StringArrayInput `pulumi:"allowedSubnets"`
-	// List of blocked CIDRs
+	// CIDR subnets blocked for Cisco CWA client access
 	BlockedSubnets pulumi.StringArrayInput `pulumi:"blockedSubnets"`
-	Enabled        pulumi.BoolPtrInput     `pulumi:"enabled"`
+	// Whether Cisco CWA is enabled for this WLAN
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
 func (WlanCiscoCwaArgs) ElementType() reflect.Type {
@@ -24278,21 +24390,22 @@ func (o WlanCiscoCwaOutput) ToWlanCiscoCwaPtrOutputWithContext(ctx context.Conte
 	}).(WlanCiscoCwaPtrOutput)
 }
 
-// List of hostnames without http(s):// (matched by substring)
+// Hostnames allowed for Cisco CWA client access before authorization
 func (o WlanCiscoCwaOutput) AllowedHostnames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanCiscoCwa) []string { return v.AllowedHostnames }).(pulumi.StringArrayOutput)
 }
 
-// List of CIDRs
+// CIDR subnets allowed for Cisco CWA client access before authorization
 func (o WlanCiscoCwaOutput) AllowedSubnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanCiscoCwa) []string { return v.AllowedSubnets }).(pulumi.StringArrayOutput)
 }
 
-// List of blocked CIDRs
+// CIDR subnets blocked for Cisco CWA client access
 func (o WlanCiscoCwaOutput) BlockedSubnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanCiscoCwa) []string { return v.BlockedSubnets }).(pulumi.StringArrayOutput)
 }
 
+// Whether Cisco CWA is enabled for this WLAN
 func (o WlanCiscoCwaOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanCiscoCwa) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -24321,7 +24434,7 @@ func (o WlanCiscoCwaPtrOutput) Elem() WlanCiscoCwaOutput {
 	}).(WlanCiscoCwaOutput)
 }
 
-// List of hostnames without http(s):// (matched by substring)
+// Hostnames allowed for Cisco CWA client access before authorization
 func (o WlanCiscoCwaPtrOutput) AllowedHostnames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WlanCiscoCwa) []string {
 		if v == nil {
@@ -24331,7 +24444,7 @@ func (o WlanCiscoCwaPtrOutput) AllowedHostnames() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// List of CIDRs
+// CIDR subnets allowed for Cisco CWA client access before authorization
 func (o WlanCiscoCwaPtrOutput) AllowedSubnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WlanCiscoCwa) []string {
 		if v == nil {
@@ -24341,7 +24454,7 @@ func (o WlanCiscoCwaPtrOutput) AllowedSubnets() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// List of blocked CIDRs
+// CIDR subnets blocked for Cisco CWA client access
 func (o WlanCiscoCwaPtrOutput) BlockedSubnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WlanCiscoCwa) []string {
 		if v == nil {
@@ -24351,6 +24464,7 @@ func (o WlanCiscoCwaPtrOutput) BlockedSubnets() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// Whether Cisco CWA is enabled for this WLAN
 func (o WlanCiscoCwaPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanCiscoCwa) *bool {
 		if v == nil {
@@ -24362,11 +24476,15 @@ func (o WlanCiscoCwaPtrOutput) Enabled() pulumi.BoolPtrOutput {
 
 type WlanCoaServer struct {
 	// Whether to disable Event-Timestamp Check
-	DisableEventTimestampCheck *bool   `pulumi:"disableEventTimestampCheck"`
-	Enabled                    *bool   `pulumi:"enabled"`
-	Ip                         string  `pulumi:"ip"`
-	Port                       *string `pulumi:"port"`
-	Secret                     string  `pulumi:"secret"`
+	DisableEventTimestampCheck *bool `pulumi:"disableEventTimestampCheck"`
+	// Whether this RADIUS CoA server is enabled
+	Enabled *bool `pulumi:"enabled"`
+	// Server IPv4 address for RADIUS CoA messages
+	Ip string `pulumi:"ip"`
+	// UDP port used to send RADIUS CoA messages to the server
+	Port *string `pulumi:"port"`
+	// Shared secret used to authenticate RADIUS CoA messages
+	Secret string `pulumi:"secret"`
 }
 
 // WlanCoaServerInput is an input type that accepts WlanCoaServerArgs and WlanCoaServerOutput values.
@@ -24382,11 +24500,15 @@ type WlanCoaServerInput interface {
 
 type WlanCoaServerArgs struct {
 	// Whether to disable Event-Timestamp Check
-	DisableEventTimestampCheck pulumi.BoolPtrInput   `pulumi:"disableEventTimestampCheck"`
-	Enabled                    pulumi.BoolPtrInput   `pulumi:"enabled"`
-	Ip                         pulumi.StringInput    `pulumi:"ip"`
-	Port                       pulumi.StringPtrInput `pulumi:"port"`
-	Secret                     pulumi.StringInput    `pulumi:"secret"`
+	DisableEventTimestampCheck pulumi.BoolPtrInput `pulumi:"disableEventTimestampCheck"`
+	// Whether this RADIUS CoA server is enabled
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Server IPv4 address for RADIUS CoA messages
+	Ip pulumi.StringInput `pulumi:"ip"`
+	// UDP port used to send RADIUS CoA messages to the server
+	Port pulumi.StringPtrInput `pulumi:"port"`
+	// Shared secret used to authenticate RADIUS CoA messages
+	Secret pulumi.StringInput `pulumi:"secret"`
 }
 
 func (WlanCoaServerArgs) ElementType() reflect.Type {
@@ -24445,18 +24567,22 @@ func (o WlanCoaServerOutput) DisableEventTimestampCheck() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanCoaServer) *bool { return v.DisableEventTimestampCheck }).(pulumi.BoolPtrOutput)
 }
 
+// Whether this RADIUS CoA server is enabled
 func (o WlanCoaServerOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanCoaServer) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Server IPv4 address for RADIUS CoA messages
 func (o WlanCoaServerOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v WlanCoaServer) string { return v.Ip }).(pulumi.StringOutput)
 }
 
+// UDP port used to send RADIUS CoA messages to the server
 func (o WlanCoaServerOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanCoaServer) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
+// Shared secret used to authenticate RADIUS CoA messages
 func (o WlanCoaServerOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v WlanCoaServer) string { return v.Secret }).(pulumi.StringOutput)
 }
@@ -24482,6 +24608,7 @@ func (o WlanCoaServerArrayOutput) Index(i pulumi.IntInput) WlanCoaServerOutput {
 }
 
 type WlanDnsServerRewrite struct {
+	// Whether DNS server rewrite by RADIUS group is enabled for this WLAN
 	Enabled *bool `pulumi:"enabled"`
 	// Map between radiusGroup and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
 	RadiusGroups map[string]string `pulumi:"radiusGroups"`
@@ -24499,6 +24626,7 @@ type WlanDnsServerRewriteInput interface {
 }
 
 type WlanDnsServerRewriteArgs struct {
+	// Whether DNS server rewrite by RADIUS group is enabled for this WLAN
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// Map between radiusGroup and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
 	RadiusGroups pulumi.StringMapInput `pulumi:"radiusGroups"`
@@ -24581,6 +24709,7 @@ func (o WlanDnsServerRewriteOutput) ToWlanDnsServerRewritePtrOutputWithContext(c
 	}).(WlanDnsServerRewritePtrOutput)
 }
 
+// Whether DNS server rewrite by RADIUS group is enabled for this WLAN
 func (o WlanDnsServerRewriteOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanDnsServerRewrite) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -24614,6 +24743,7 @@ func (o WlanDnsServerRewritePtrOutput) Elem() WlanDnsServerRewriteOutput {
 	}).(WlanDnsServerRewriteOutput)
 }
 
+// Whether DNS server rewrite by RADIUS group is enabled for this WLAN
 func (o WlanDnsServerRewritePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanDnsServerRewrite) *bool {
 		if v == nil {
@@ -24635,12 +24765,14 @@ func (o WlanDnsServerRewritePtrOutput) RadiusGroups() pulumi.StringMapOutput {
 
 type WlanDynamicPsk struct {
 	// Default PSK to use if cloud WLC is not available, 8-63 characters
-	DefaultPsk    *string `pulumi:"defaultPsk"`
+	DefaultPsk *string `pulumi:"defaultPsk"`
+	// Default VLAN ID used when dynamic PSK lookup does not return a VLAN
 	DefaultVlanId *string `pulumi:"defaultVlanId"`
-	Enabled       *bool   `pulumi:"enabled"`
+	// Whether dynamic PSK is enabled for this WLAN
+	Enabled *bool `pulumi:"enabled"`
 	// When 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
 	ForceLookup *bool `pulumi:"forceLookup"`
-	// enum: `cloudPsks`, `radius`
+	// Origin used to retrieve per-user PSKs
 	Source *string `pulumi:"source"`
 }
 
@@ -24657,12 +24789,14 @@ type WlanDynamicPskInput interface {
 
 type WlanDynamicPskArgs struct {
 	// Default PSK to use if cloud WLC is not available, 8-63 characters
-	DefaultPsk    pulumi.StringPtrInput `pulumi:"defaultPsk"`
+	DefaultPsk pulumi.StringPtrInput `pulumi:"defaultPsk"`
+	// Default VLAN ID used when dynamic PSK lookup does not return a VLAN
 	DefaultVlanId pulumi.StringPtrInput `pulumi:"defaultVlanId"`
-	Enabled       pulumi.BoolPtrInput   `pulumi:"enabled"`
+	// Whether dynamic PSK is enabled for this WLAN
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// When 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
 	ForceLookup pulumi.BoolPtrInput `pulumi:"forceLookup"`
-	// enum: `cloudPsks`, `radius`
+	// Origin used to retrieve per-user PSKs
 	Source pulumi.StringPtrInput `pulumi:"source"`
 }
 
@@ -24748,10 +24882,12 @@ func (o WlanDynamicPskOutput) DefaultPsk() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanDynamicPsk) *string { return v.DefaultPsk }).(pulumi.StringPtrOutput)
 }
 
+// Default VLAN ID used when dynamic PSK lookup does not return a VLAN
 func (o WlanDynamicPskOutput) DefaultVlanId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanDynamicPsk) *string { return v.DefaultVlanId }).(pulumi.StringPtrOutput)
 }
 
+// Whether dynamic PSK is enabled for this WLAN
 func (o WlanDynamicPskOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanDynamicPsk) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -24761,7 +24897,7 @@ func (o WlanDynamicPskOutput) ForceLookup() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanDynamicPsk) *bool { return v.ForceLookup }).(pulumi.BoolPtrOutput)
 }
 
-// enum: `cloudPsks`, `radius`
+// Origin used to retrieve per-user PSKs
 func (o WlanDynamicPskOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanDynamicPsk) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
@@ -24800,6 +24936,7 @@ func (o WlanDynamicPskPtrOutput) DefaultPsk() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Default VLAN ID used when dynamic PSK lookup does not return a VLAN
 func (o WlanDynamicPskPtrOutput) DefaultVlanId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanDynamicPsk) *string {
 		if v == nil {
@@ -24809,6 +24946,7 @@ func (o WlanDynamicPskPtrOutput) DefaultVlanId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whether dynamic PSK is enabled for this WLAN
 func (o WlanDynamicPskPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanDynamicPsk) *bool {
 		if v == nil {
@@ -24828,7 +24966,7 @@ func (o WlanDynamicPskPtrOutput) ForceLookup() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// enum: `cloudPsks`, `radius`
+// Origin used to retrieve per-user PSKs
 func (o WlanDynamicPskPtrOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanDynamicPsk) *string {
 		if v == nil {
@@ -24839,17 +24977,17 @@ func (o WlanDynamicPskPtrOutput) Source() pulumi.StringPtrOutput {
 }
 
 type WlanDynamicVlan struct {
-	// Default VLAN ID(s) can be a number, a range of VLAN IDs, a variable or multiple numbers, ranges or variables as a VLAN pool. Default VLAN as a pool of VLANS requires 0.14.x or newer firmware
+	// Fallback VLAN IDs, ranges, or variables used when no RADIUS VLAN match is returned
 	DefaultVlanIds []string `pulumi:"defaultVlanIds"`
 	// Requires `vlanEnabled`==`true` to be set to `true`. Whether to enable dynamic vlan
 	Enabled *bool `pulumi:"enabled"`
-	// VLAN_ids to be locally bridged
+	// VLAN IDs that should be locally bridged for dynamic VLAN assignment
 	LocalVlanIds []string `pulumi:"localVlanIds"`
-	// standard (using Tunnel-Private-Group-ID, widely supported), airespace-interface-name (Airespace/Cisco). enum: `airespace-interface-name`, `standard`
+	// Dynamic VLAN mapping method used for RADIUS-provided VLAN attributes
 	Type *string `pulumi:"type"`
 	// Map between vlanId (as string) to airespace interface names (comma-separated) or null for standard mapping
-	//   * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \"\"
-	//   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
+	//   * if `dynamic_vlan.type`==`standard`, property key is the VLAN ID and property value is \"\"
+	//   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the VLAN ID and property value is the Airespace Interface Name
 	Vlans map[string]string `pulumi:"vlans"`
 }
 
@@ -24865,17 +25003,17 @@ type WlanDynamicVlanInput interface {
 }
 
 type WlanDynamicVlanArgs struct {
-	// Default VLAN ID(s) can be a number, a range of VLAN IDs, a variable or multiple numbers, ranges or variables as a VLAN pool. Default VLAN as a pool of VLANS requires 0.14.x or newer firmware
+	// Fallback VLAN IDs, ranges, or variables used when no RADIUS VLAN match is returned
 	DefaultVlanIds pulumi.StringArrayInput `pulumi:"defaultVlanIds"`
 	// Requires `vlanEnabled`==`true` to be set to `true`. Whether to enable dynamic vlan
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// VLAN_ids to be locally bridged
+	// VLAN IDs that should be locally bridged for dynamic VLAN assignment
 	LocalVlanIds pulumi.StringArrayInput `pulumi:"localVlanIds"`
-	// standard (using Tunnel-Private-Group-ID, widely supported), airespace-interface-name (Airespace/Cisco). enum: `airespace-interface-name`, `standard`
+	// Dynamic VLAN mapping method used for RADIUS-provided VLAN attributes
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Map between vlanId (as string) to airespace interface names (comma-separated) or null for standard mapping
-	//   * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \"\"
-	//   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
+	//   * if `dynamic_vlan.type`==`standard`, property key is the VLAN ID and property value is \"\"
+	//   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the VLAN ID and property value is the Airespace Interface Name
 	Vlans pulumi.StringMapInput `pulumi:"vlans"`
 }
 
@@ -24956,7 +25094,7 @@ func (o WlanDynamicVlanOutput) ToWlanDynamicVlanPtrOutputWithContext(ctx context
 	}).(WlanDynamicVlanPtrOutput)
 }
 
-// Default VLAN ID(s) can be a number, a range of VLAN IDs, a variable or multiple numbers, ranges or variables as a VLAN pool. Default VLAN as a pool of VLANS requires 0.14.x or newer firmware
+// Fallback VLAN IDs, ranges, or variables used when no RADIUS VLAN match is returned
 func (o WlanDynamicVlanOutput) DefaultVlanIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanDynamicVlan) []string { return v.DefaultVlanIds }).(pulumi.StringArrayOutput)
 }
@@ -24966,19 +25104,19 @@ func (o WlanDynamicVlanOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanDynamicVlan) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// VLAN_ids to be locally bridged
+// VLAN IDs that should be locally bridged for dynamic VLAN assignment
 func (o WlanDynamicVlanOutput) LocalVlanIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanDynamicVlan) []string { return v.LocalVlanIds }).(pulumi.StringArrayOutput)
 }
 
-// standard (using Tunnel-Private-Group-ID, widely supported), airespace-interface-name (Airespace/Cisco). enum: `airespace-interface-name`, `standard`
+// Dynamic VLAN mapping method used for RADIUS-provided VLAN attributes
 func (o WlanDynamicVlanOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanDynamicVlan) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 // Map between vlanId (as string) to airespace interface names (comma-separated) or null for standard mapping
-//   - if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \"\"
-//   - if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
+//   - if `dynamic_vlan.type`==`standard`, property key is the VLAN ID and property value is \"\"
+//   - if `dynamic_vlan.type`==`airespace-interface-name`, property key is the VLAN ID and property value is the Airespace Interface Name
 func (o WlanDynamicVlanOutput) Vlans() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WlanDynamicVlan) map[string]string { return v.Vlans }).(pulumi.StringMapOutput)
 }
@@ -25007,7 +25145,7 @@ func (o WlanDynamicVlanPtrOutput) Elem() WlanDynamicVlanOutput {
 	}).(WlanDynamicVlanOutput)
 }
 
-// Default VLAN ID(s) can be a number, a range of VLAN IDs, a variable or multiple numbers, ranges or variables as a VLAN pool. Default VLAN as a pool of VLANS requires 0.14.x or newer firmware
+// Fallback VLAN IDs, ranges, or variables used when no RADIUS VLAN match is returned
 func (o WlanDynamicVlanPtrOutput) DefaultVlanIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WlanDynamicVlan) []string {
 		if v == nil {
@@ -25027,7 +25165,7 @@ func (o WlanDynamicVlanPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// VLAN_ids to be locally bridged
+// VLAN IDs that should be locally bridged for dynamic VLAN assignment
 func (o WlanDynamicVlanPtrOutput) LocalVlanIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WlanDynamicVlan) []string {
 		if v == nil {
@@ -25037,7 +25175,7 @@ func (o WlanDynamicVlanPtrOutput) LocalVlanIds() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// standard (using Tunnel-Private-Group-ID, widely supported), airespace-interface-name (Airespace/Cisco). enum: `airespace-interface-name`, `standard`
+// Dynamic VLAN mapping method used for RADIUS-provided VLAN attributes
 func (o WlanDynamicVlanPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanDynamicVlan) *string {
 		if v == nil {
@@ -25048,8 +25186,8 @@ func (o WlanDynamicVlanPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 // Map between vlanId (as string) to airespace interface names (comma-separated) or null for standard mapping
-//   - if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \"\"
-//   - if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
+//   - if `dynamic_vlan.type`==`standard`, property key is the VLAN ID and property value is \"\"
+//   - if `dynamic_vlan.type`==`airespace-interface-name`, property key is the VLAN ID and property value is the Airespace Interface Name
 func (o WlanDynamicVlanPtrOutput) Vlans() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WlanDynamicVlan) map[string]string {
 		if v == nil {
@@ -25060,13 +25198,16 @@ func (o WlanDynamicVlanPtrOutput) Vlans() pulumi.StringMapOutput {
 }
 
 type WlanHotspot20 struct {
+	// Advertised domain names for Hotspot 2.0 clients
 	DomainNames []string `pulumi:"domainNames"`
 	// Whether to enable hotspot 2.0 config
-	Enabled   *bool    `pulumi:"enabled"`
+	Enabled *bool `pulumi:"enabled"`
+	// NAI realms advertised for Hotspot 2.0 authentication
 	NaiRealms []string `pulumi:"naiRealms"`
-	// List of operators to support
+	// Operator profiles supported by this Hotspot 2.0 configuration
 	Operators []string `pulumi:"operators"`
-	Rcois     []string `pulumi:"rcois"`
+	// Roaming Consortium Organization Identifiers advertised for Hotspot 2.0
+	Rcois []string `pulumi:"rcois"`
 	// Venue name, default is site name
 	VenueName *string `pulumi:"venueName"`
 }
@@ -25083,13 +25224,16 @@ type WlanHotspot20Input interface {
 }
 
 type WlanHotspot20Args struct {
+	// Advertised domain names for Hotspot 2.0 clients
 	DomainNames pulumi.StringArrayInput `pulumi:"domainNames"`
 	// Whether to enable hotspot 2.0 config
-	Enabled   pulumi.BoolPtrInput     `pulumi:"enabled"`
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// NAI realms advertised for Hotspot 2.0 authentication
 	NaiRealms pulumi.StringArrayInput `pulumi:"naiRealms"`
-	// List of operators to support
+	// Operator profiles supported by this Hotspot 2.0 configuration
 	Operators pulumi.StringArrayInput `pulumi:"operators"`
-	Rcois     pulumi.StringArrayInput `pulumi:"rcois"`
+	// Roaming Consortium Organization Identifiers advertised for Hotspot 2.0
+	Rcois pulumi.StringArrayInput `pulumi:"rcois"`
 	// Venue name, default is site name
 	VenueName pulumi.StringPtrInput `pulumi:"venueName"`
 }
@@ -25171,6 +25315,7 @@ func (o WlanHotspot20Output) ToWlanHotspot20PtrOutputWithContext(ctx context.Con
 	}).(WlanHotspot20PtrOutput)
 }
 
+// Advertised domain names for Hotspot 2.0 clients
 func (o WlanHotspot20Output) DomainNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanHotspot20) []string { return v.DomainNames }).(pulumi.StringArrayOutput)
 }
@@ -25180,15 +25325,17 @@ func (o WlanHotspot20Output) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanHotspot20) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// NAI realms advertised for Hotspot 2.0 authentication
 func (o WlanHotspot20Output) NaiRealms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanHotspot20) []string { return v.NaiRealms }).(pulumi.StringArrayOutput)
 }
 
-// List of operators to support
+// Operator profiles supported by this Hotspot 2.0 configuration
 func (o WlanHotspot20Output) Operators() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanHotspot20) []string { return v.Operators }).(pulumi.StringArrayOutput)
 }
 
+// Roaming Consortium Organization Identifiers advertised for Hotspot 2.0
 func (o WlanHotspot20Output) Rcois() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanHotspot20) []string { return v.Rcois }).(pulumi.StringArrayOutput)
 }
@@ -25222,6 +25369,7 @@ func (o WlanHotspot20PtrOutput) Elem() WlanHotspot20Output {
 	}).(WlanHotspot20Output)
 }
 
+// Advertised domain names for Hotspot 2.0 clients
 func (o WlanHotspot20PtrOutput) DomainNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WlanHotspot20) []string {
 		if v == nil {
@@ -25241,6 +25389,7 @@ func (o WlanHotspot20PtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// NAI realms advertised for Hotspot 2.0 authentication
 func (o WlanHotspot20PtrOutput) NaiRealms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WlanHotspot20) []string {
 		if v == nil {
@@ -25250,7 +25399,7 @@ func (o WlanHotspot20PtrOutput) NaiRealms() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// List of operators to support
+// Operator profiles supported by this Hotspot 2.0 configuration
 func (o WlanHotspot20PtrOutput) Operators() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WlanHotspot20) []string {
 		if v == nil {
@@ -25260,6 +25409,7 @@ func (o WlanHotspot20PtrOutput) Operators() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// Roaming Consortium Organization Identifiers advertised for Hotspot 2.0
 func (o WlanHotspot20PtrOutput) Rcois() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WlanHotspot20) []string {
 		if v == nil {
@@ -25460,11 +25610,11 @@ func (o WlanInjectDhcpOption82PtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type WlanMistNac struct {
-	// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+	// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled.
 	AcctInterimInterval *int `pulumi:"acctInterimInterval"`
-	// Radius auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. "retries" are set to value of `authServersTimeout`. "max-requests" is also set when setting `authServersRetries` is set to default value to 3.
+	// RADIUS auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. "retries" are set to value of `authServersTimeout`. "max-requests" is also set when setting `authServersRetries` is set to default value to 3.
 	AuthServersRetries *int `pulumi:"authServersRetries"`
-	// Radius auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `authServersTimeout`. "supplicant-timeout" is also set when setting `authServersTimeout` is set to default value of 10.
+	// RADIUS auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `authServersTimeout`. "supplicant-timeout" is also set when setting `authServersTimeout` is set to default value of 10.
 	AuthServersTimeout *int `pulumi:"authServersTimeout"`
 	// Allows a RADIUS server to dynamically modify the authorization status of a user session.
 	CoaEnabled *bool `pulumi:"coaEnabled"`
@@ -25498,11 +25648,11 @@ type WlanMistNacInput interface {
 }
 
 type WlanMistNacArgs struct {
-	// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+	// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled.
 	AcctInterimInterval pulumi.IntPtrInput `pulumi:"acctInterimInterval"`
-	// Radius auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. "retries" are set to value of `authServersTimeout`. "max-requests" is also set when setting `authServersRetries` is set to default value to 3.
+	// RADIUS auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. "retries" are set to value of `authServersTimeout`. "max-requests" is also set when setting `authServersRetries` is set to default value to 3.
 	AuthServersRetries pulumi.IntPtrInput `pulumi:"authServersRetries"`
-	// Radius auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `authServersTimeout`. "supplicant-timeout" is also set when setting `authServersTimeout` is set to default value of 10.
+	// RADIUS auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `authServersTimeout`. "supplicant-timeout" is also set when setting `authServersTimeout` is set to default value of 10.
 	AuthServersTimeout pulumi.IntPtrInput `pulumi:"authServersTimeout"`
 	// Allows a RADIUS server to dynamically modify the authorization status of a user session.
 	CoaEnabled pulumi.BoolPtrInput `pulumi:"coaEnabled"`
@@ -25601,17 +25751,17 @@ func (o WlanMistNacOutput) ToWlanMistNacPtrOutputWithContext(ctx context.Context
 	}).(WlanMistNacPtrOutput)
 }
 
-// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled.
 func (o WlanMistNacOutput) AcctInterimInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WlanMistNac) *int { return v.AcctInterimInterval }).(pulumi.IntPtrOutput)
 }
 
-// Radius auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. "retries" are set to value of `authServersTimeout`. "max-requests" is also set when setting `authServersRetries` is set to default value to 3.
+// RADIUS auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. "retries" are set to value of `authServersTimeout`. "max-requests" is also set when setting `authServersRetries` is set to default value to 3.
 func (o WlanMistNacOutput) AuthServersRetries() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WlanMistNac) *int { return v.AuthServersRetries }).(pulumi.IntPtrOutput)
 }
 
-// Radius auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `authServersTimeout`. "supplicant-timeout" is also set when setting `authServersTimeout` is set to default value of 10.
+// RADIUS auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `authServersTimeout`. "supplicant-timeout" is also set when setting `authServersTimeout` is set to default value of 10.
 func (o WlanMistNacOutput) AuthServersTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WlanMistNac) *int { return v.AuthServersTimeout }).(pulumi.IntPtrOutput)
 }
@@ -25676,7 +25826,7 @@ func (o WlanMistNacPtrOutput) Elem() WlanMistNacOutput {
 	}).(WlanMistNacOutput)
 }
 
-// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled.
 func (o WlanMistNacPtrOutput) AcctInterimInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WlanMistNac) *int {
 		if v == nil {
@@ -25686,7 +25836,7 @@ func (o WlanMistNacPtrOutput) AcctInterimInterval() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Radius auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. "retries" are set to value of `authServersTimeout`. "max-requests" is also set when setting `authServersRetries` is set to default value to 3.
+// RADIUS auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. "retries" are set to value of `authServersTimeout`. "max-requests" is also set when setting `authServersRetries` is set to default value to 3.
 func (o WlanMistNacPtrOutput) AuthServersRetries() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WlanMistNac) *int {
 		if v == nil {
@@ -25696,7 +25846,7 @@ func (o WlanMistNacPtrOutput) AuthServersRetries() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Radius auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `authServersTimeout`. "supplicant-timeout" is also set when setting `authServersTimeout` is set to default value of 10.
+// RADIUS auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `authServersTimeout`. "supplicant-timeout" is also set when setting `authServersTimeout` is set to default value of 10.
 func (o WlanMistNacPtrOutput) AuthServersTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WlanMistNac) *int {
 		if v == nil {
@@ -25779,13 +25929,13 @@ type WlanPortal struct {
 	AmazonClientId *string `pulumi:"amazonClientId"`
 	// Optional if `amazonEnabled`==`true`. Amazon OAuth2 client secret. If amazonClientId was provided, provide a corresponding value. Else leave blank.
 	AmazonClientSecret *string `pulumi:"amazonClientSecret"`
-	// Optional if `amazonEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+	// Optional if `amazonEnabled`==`true`. Email domains allowed for Amazon-authenticated guest users. If null or empty, any authenticated Amazon email domain is allowed.
 	AmazonEmailDomains []string `pulumi:"amazonEmailDomains"`
 	// Whether amazon is enabled as a login method
 	AmazonEnabled *bool `pulumi:"amazonEnabled"`
 	// Optional if `amazonEnabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
 	AmazonExpire *int `pulumi:"amazonExpire"`
-	// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
+	// Guest portal login scheme used by the WLAN
 	Auth *string `pulumi:"auth"`
 	// Required if `azureEnabled`==`true`. Azure active directory app client id
 	AzureClientId *string `pulumi:"azureClientId"`
@@ -25797,15 +25947,15 @@ type WlanPortal struct {
 	AzureExpire *int `pulumi:"azureExpire"`
 	// Required if `azureEnabled`==`true`. Azure active directory tenant id.
 	AzureTenantId *string `pulumi:"azureTenantId"`
-	// Required if `smsProvider`==`broadnet`
+	// Required if `smsProvider`==`broadnet`. Password for the Broadnet SMS provider account
 	BroadnetPassword *string `pulumi:"broadnetPassword"`
-	// Required if `smsProvider`==`broadnet`
+	// Required if `smsProvider`==`broadnet`. SID for the Broadnet SMS provider account
 	BroadnetSid *string `pulumi:"broadnetSid"`
-	// Required if `smsProvider`==`broadnet`
+	// Required if `smsProvider`==`broadnet`. User ID for the Broadnet SMS provider account
 	BroadnetUserId *string `pulumi:"broadnetUserId"`
 	// Whether to bypass the guest portal when cloud not reachable (and apply the default policies)
 	BypassWhenCloudDown *bool `pulumi:"bypassWhenCloudDown"`
-	// Required if `smsProvider`==`clickatell`
+	// Required if `smsProvider`==`clickatell`. API key for the Clickatell SMS provider account
 	ClickatellApiKey *string `pulumi:"clickatellApiKey"`
 	// Whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable randomMac for seamless roaming)
 	CrossSite *bool `pulumi:"crossSite"`
@@ -25821,7 +25971,7 @@ type WlanPortal struct {
 	FacebookClientId *string `pulumi:"facebookClientId"`
 	// Required if `facebookEnabled`==`true`. Facebook OAuth2 app secret. If facebookClientId was provided, provide a corresponding value. Else leave blank.
 	FacebookClientSecret *string `pulumi:"facebookClientSecret"`
-	// Optional if `facebookEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+	// Optional if `facebookEnabled`==`true`. Email domains allowed for Facebook-authenticated guest users. If null or empty, any authenticated Facebook email domain is allowed.
 	FacebookEmailDomains []string `pulumi:"facebookEmailDomains"`
 	// Whether facebook is enabled as a login method
 	FacebookEnabled *bool `pulumi:"facebookEnabled"`
@@ -25835,21 +25985,21 @@ type WlanPortal struct {
 	GoogleClientId *string `pulumi:"googleClientId"`
 	// Optional if `googleEnabled`==`true`. Google OAuth2 app secret. If googleClientId was provided, provide a corresponding value. Else leave blank.
 	GoogleClientSecret *string `pulumi:"googleClientSecret"`
-	// Optional if `googleEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+	// Optional if `googleEnabled`==`true`. Email domains allowed for Google-authenticated guest users. If null or empty, any authenticated Google email domain is allowed.
 	GoogleEmailDomains []string `pulumi:"googleEmailDomains"`
 	// Whether Google is enabled as login method
 	GoogleEnabled *bool `pulumi:"googleEnabled"`
 	// Optional if `googleEnabled`==`true`. Interval for which guest remains authorized using Google Auth (in minutes), if not provided, uses expire`
 	GoogleExpire *int `pulumi:"googleExpire"`
-	// Required if `smsProvider`==`gupshup`
+	// Required if `smsProvider`==`gupshup`. Password for the Gupshup SMS provider account
 	GupshupPassword *string `pulumi:"gupshupPassword"`
-	// Required if `smsProvider`==`gupshup`
+	// Required if `smsProvider`==`gupshup`. User ID for the Gupshup SMS provider account
 	GupshupUserid *string `pulumi:"gupshupUserid"`
 	// Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
 	MicrosoftClientId *string `pulumi:"microsoftClientId"`
 	// Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoftClientId was provided, provide a corresponding value. Else leave blank.
 	MicrosoftClientSecret *string `pulumi:"microsoftClientSecret"`
-	// Optional if `microsoftEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+	// Optional if `microsoftEnabled`==`true`. Email domains allowed for Microsoft 365-authenticated guest users. If null or empty, any authenticated Microsoft 365 email domain is allowed.
 	MicrosoftEmailDomains []string `pulumi:"microsoftEmailDomains"`
 	// Whether microsoft 365 is enabled as a login method
 	MicrosoftEnabled *bool `pulumi:"microsoftEnabled"`
@@ -25859,18 +26009,19 @@ type WlanPortal struct {
 	PassphraseEnabled *bool `pulumi:"passphraseEnabled"`
 	// Optional if `passphraseEnabled`==`true`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
 	PassphraseExpire *int `pulumi:"passphraseExpire"`
-	// Required if `passphraseEnabled`==`true`.
+	// Required if `passphraseEnabled`==`true`. Passphrase guests must enter when passphrase authentication is enabled
 	Password *string `pulumi:"password"`
 	// Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behavior is acc to `sponsorEmailDomains`
 	PredefinedSponsorsEnabled *bool `pulumi:"predefinedSponsorsEnabled"`
 	// Whether to hide sponsor’s email from list of sponsors
 	PredefinedSponsorsHideEmail *bool `pulumi:"predefinedSponsorsHideEmail"`
-	Privacy                     *bool `pulumi:"privacy"`
-	// Required if `smsProvider`==`puzzel`
+	// Whether to show the privacy policy in the WLAN guest portal
+	Privacy *bool `pulumi:"privacy"`
+	// Required if `smsProvider`==`puzzel`. Password for the Puzzel SMS provider account
 	PuzzelPassword *string `pulumi:"puzzelPassword"`
-	// Required if `smsProvider`==`puzzel`
+	// Required if `smsProvider`==`puzzel`. Service ID for the Puzzel SMS provider account
 	PuzzelServiceId *string `pulumi:"puzzelServiceId"`
-	// Required if `smsProvider`==`puzzel`
+	// Required if `smsProvider`==`puzzel`. Username for the Puzzel SMS provider account
 	PuzzelUsername *string `pulumi:"puzzelUsername"`
 	// Whether sms is enabled as a login method
 	SmsEnabled *bool `pulumi:"smsEnabled"`
@@ -25878,15 +26029,17 @@ type WlanPortal struct {
 	SmsExpire *int `pulumi:"smsExpire"`
 	// Optional if `smsEnabled`==`true`. SMS Message format
 	SmsMessageFormat *string `pulumi:"smsMessageFormat"`
-	// Optional if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
+	// Optional if `smsEnabled`==`true`. SMS provider used to deliver guest portal access codes
 	SmsProvider *string `pulumi:"smsProvider"`
 	// Required if `smsProvider`==`smsglobal`, Client API Key
 	SmsglobalApiKey *string `pulumi:"smsglobalApiKey"`
 	// Required if `smsProvider`==`smsglobal`, Client secret
 	SmsglobalApiSecret *string `pulumi:"smsglobalApiSecret"`
+	// Optional sender's number or sender ID for SMSGlobal. If not provided, uses the default number associated with the account
+	SmsglobalSender *string `pulumi:"smsglobalSender"`
 	// Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
 	SponsorAutoApprove *bool `pulumi:"sponsorAutoApprove"`
-	// List of domain allowed for sponsor email. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
+	// Email domains allowed for sponsor email addresses. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
 	SponsorEmailDomains []string `pulumi:"sponsorEmailDomains"`
 	// Whether sponsor is enabled
 	SponsorEnabled *bool `pulumi:"sponsorEnabled"`
@@ -25905,17 +26058,17 @@ type WlanPortal struct {
 	Sponsors map[string]string `pulumi:"sponsors"`
 	// Optional if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
 	SsoDefaultRole *string `pulumi:"ssoDefaultRole"`
-	// Optional if `wlanPortalAuth`==`sso`
+	// Optional if `wlanPortalAuth`==`sso`. Role assigned to authenticated users when guest SSO is used
 	SsoForcedRole *string `pulumi:"ssoForcedRole"`
 	// Required if `wlanPortalAuth`==`sso`. IDP Cert (used to verify the signed response)
 	SsoIdpCert *string `pulumi:"ssoIdpCert"`
-	// Optional if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+	// Optional if `wlanPortalAuth`==`sso`. Signing algorithm used for SAML assertions from the identity provider
 	SsoIdpSignAlgo *string `pulumi:"ssoIdpSignAlgo"`
 	// Required if `wlanPortalAuth`==`sso`, IDP Single-Sign-On URL
 	SsoIdpSsoUrl *string `pulumi:"ssoIdpSsoUrl"`
 	// Required if `wlanPortalAuth`==`sso`, IDP issuer URL
 	SsoIssuer *string `pulumi:"ssoIssuer"`
-	// Optional if `wlanPortalAuth`==`sso`. enum: `email`, `unspecified`
+	// Optional if `wlanPortalAuth`==`sso`. SAML NameID format expected from the identity provider
 	SsoNameidFormat *string `pulumi:"ssoNameidFormat"`
 	// Required if `smsProvider`==`telstra`, Client ID provided by Telstra
 	TelstraClientId *string `pulumi:"telstraClientId"`
@@ -25947,13 +26100,13 @@ type WlanPortalArgs struct {
 	AmazonClientId pulumi.StringPtrInput `pulumi:"amazonClientId"`
 	// Optional if `amazonEnabled`==`true`. Amazon OAuth2 client secret. If amazonClientId was provided, provide a corresponding value. Else leave blank.
 	AmazonClientSecret pulumi.StringPtrInput `pulumi:"amazonClientSecret"`
-	// Optional if `amazonEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+	// Optional if `amazonEnabled`==`true`. Email domains allowed for Amazon-authenticated guest users. If null or empty, any authenticated Amazon email domain is allowed.
 	AmazonEmailDomains pulumi.StringArrayInput `pulumi:"amazonEmailDomains"`
 	// Whether amazon is enabled as a login method
 	AmazonEnabled pulumi.BoolPtrInput `pulumi:"amazonEnabled"`
 	// Optional if `amazonEnabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
 	AmazonExpire pulumi.IntPtrInput `pulumi:"amazonExpire"`
-	// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
+	// Guest portal login scheme used by the WLAN
 	Auth pulumi.StringPtrInput `pulumi:"auth"`
 	// Required if `azureEnabled`==`true`. Azure active directory app client id
 	AzureClientId pulumi.StringPtrInput `pulumi:"azureClientId"`
@@ -25965,15 +26118,15 @@ type WlanPortalArgs struct {
 	AzureExpire pulumi.IntPtrInput `pulumi:"azureExpire"`
 	// Required if `azureEnabled`==`true`. Azure active directory tenant id.
 	AzureTenantId pulumi.StringPtrInput `pulumi:"azureTenantId"`
-	// Required if `smsProvider`==`broadnet`
+	// Required if `smsProvider`==`broadnet`. Password for the Broadnet SMS provider account
 	BroadnetPassword pulumi.StringPtrInput `pulumi:"broadnetPassword"`
-	// Required if `smsProvider`==`broadnet`
+	// Required if `smsProvider`==`broadnet`. SID for the Broadnet SMS provider account
 	BroadnetSid pulumi.StringPtrInput `pulumi:"broadnetSid"`
-	// Required if `smsProvider`==`broadnet`
+	// Required if `smsProvider`==`broadnet`. User ID for the Broadnet SMS provider account
 	BroadnetUserId pulumi.StringPtrInput `pulumi:"broadnetUserId"`
 	// Whether to bypass the guest portal when cloud not reachable (and apply the default policies)
 	BypassWhenCloudDown pulumi.BoolPtrInput `pulumi:"bypassWhenCloudDown"`
-	// Required if `smsProvider`==`clickatell`
+	// Required if `smsProvider`==`clickatell`. API key for the Clickatell SMS provider account
 	ClickatellApiKey pulumi.StringPtrInput `pulumi:"clickatellApiKey"`
 	// Whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable randomMac for seamless roaming)
 	CrossSite pulumi.BoolPtrInput `pulumi:"crossSite"`
@@ -25989,7 +26142,7 @@ type WlanPortalArgs struct {
 	FacebookClientId pulumi.StringPtrInput `pulumi:"facebookClientId"`
 	// Required if `facebookEnabled`==`true`. Facebook OAuth2 app secret. If facebookClientId was provided, provide a corresponding value. Else leave blank.
 	FacebookClientSecret pulumi.StringPtrInput `pulumi:"facebookClientSecret"`
-	// Optional if `facebookEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+	// Optional if `facebookEnabled`==`true`. Email domains allowed for Facebook-authenticated guest users. If null or empty, any authenticated Facebook email domain is allowed.
 	FacebookEmailDomains pulumi.StringArrayInput `pulumi:"facebookEmailDomains"`
 	// Whether facebook is enabled as a login method
 	FacebookEnabled pulumi.BoolPtrInput `pulumi:"facebookEnabled"`
@@ -26003,21 +26156,21 @@ type WlanPortalArgs struct {
 	GoogleClientId pulumi.StringPtrInput `pulumi:"googleClientId"`
 	// Optional if `googleEnabled`==`true`. Google OAuth2 app secret. If googleClientId was provided, provide a corresponding value. Else leave blank.
 	GoogleClientSecret pulumi.StringPtrInput `pulumi:"googleClientSecret"`
-	// Optional if `googleEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+	// Optional if `googleEnabled`==`true`. Email domains allowed for Google-authenticated guest users. If null or empty, any authenticated Google email domain is allowed.
 	GoogleEmailDomains pulumi.StringArrayInput `pulumi:"googleEmailDomains"`
 	// Whether Google is enabled as login method
 	GoogleEnabled pulumi.BoolPtrInput `pulumi:"googleEnabled"`
 	// Optional if `googleEnabled`==`true`. Interval for which guest remains authorized using Google Auth (in minutes), if not provided, uses expire`
 	GoogleExpire pulumi.IntPtrInput `pulumi:"googleExpire"`
-	// Required if `smsProvider`==`gupshup`
+	// Required if `smsProvider`==`gupshup`. Password for the Gupshup SMS provider account
 	GupshupPassword pulumi.StringPtrInput `pulumi:"gupshupPassword"`
-	// Required if `smsProvider`==`gupshup`
+	// Required if `smsProvider`==`gupshup`. User ID for the Gupshup SMS provider account
 	GupshupUserid pulumi.StringPtrInput `pulumi:"gupshupUserid"`
 	// Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
 	MicrosoftClientId pulumi.StringPtrInput `pulumi:"microsoftClientId"`
 	// Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoftClientId was provided, provide a corresponding value. Else leave blank.
 	MicrosoftClientSecret pulumi.StringPtrInput `pulumi:"microsoftClientSecret"`
-	// Optional if `microsoftEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+	// Optional if `microsoftEnabled`==`true`. Email domains allowed for Microsoft 365-authenticated guest users. If null or empty, any authenticated Microsoft 365 email domain is allowed.
 	MicrosoftEmailDomains pulumi.StringArrayInput `pulumi:"microsoftEmailDomains"`
 	// Whether microsoft 365 is enabled as a login method
 	MicrosoftEnabled pulumi.BoolPtrInput `pulumi:"microsoftEnabled"`
@@ -26027,18 +26180,19 @@ type WlanPortalArgs struct {
 	PassphraseEnabled pulumi.BoolPtrInput `pulumi:"passphraseEnabled"`
 	// Optional if `passphraseEnabled`==`true`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
 	PassphraseExpire pulumi.IntPtrInput `pulumi:"passphraseExpire"`
-	// Required if `passphraseEnabled`==`true`.
+	// Required if `passphraseEnabled`==`true`. Passphrase guests must enter when passphrase authentication is enabled
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behavior is acc to `sponsorEmailDomains`
 	PredefinedSponsorsEnabled pulumi.BoolPtrInput `pulumi:"predefinedSponsorsEnabled"`
 	// Whether to hide sponsor’s email from list of sponsors
 	PredefinedSponsorsHideEmail pulumi.BoolPtrInput `pulumi:"predefinedSponsorsHideEmail"`
-	Privacy                     pulumi.BoolPtrInput `pulumi:"privacy"`
-	// Required if `smsProvider`==`puzzel`
+	// Whether to show the privacy policy in the WLAN guest portal
+	Privacy pulumi.BoolPtrInput `pulumi:"privacy"`
+	// Required if `smsProvider`==`puzzel`. Password for the Puzzel SMS provider account
 	PuzzelPassword pulumi.StringPtrInput `pulumi:"puzzelPassword"`
-	// Required if `smsProvider`==`puzzel`
+	// Required if `smsProvider`==`puzzel`. Service ID for the Puzzel SMS provider account
 	PuzzelServiceId pulumi.StringPtrInput `pulumi:"puzzelServiceId"`
-	// Required if `smsProvider`==`puzzel`
+	// Required if `smsProvider`==`puzzel`. Username for the Puzzel SMS provider account
 	PuzzelUsername pulumi.StringPtrInput `pulumi:"puzzelUsername"`
 	// Whether sms is enabled as a login method
 	SmsEnabled pulumi.BoolPtrInput `pulumi:"smsEnabled"`
@@ -26046,15 +26200,17 @@ type WlanPortalArgs struct {
 	SmsExpire pulumi.IntPtrInput `pulumi:"smsExpire"`
 	// Optional if `smsEnabled`==`true`. SMS Message format
 	SmsMessageFormat pulumi.StringPtrInput `pulumi:"smsMessageFormat"`
-	// Optional if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
+	// Optional if `smsEnabled`==`true`. SMS provider used to deliver guest portal access codes
 	SmsProvider pulumi.StringPtrInput `pulumi:"smsProvider"`
 	// Required if `smsProvider`==`smsglobal`, Client API Key
 	SmsglobalApiKey pulumi.StringPtrInput `pulumi:"smsglobalApiKey"`
 	// Required if `smsProvider`==`smsglobal`, Client secret
 	SmsglobalApiSecret pulumi.StringPtrInput `pulumi:"smsglobalApiSecret"`
+	// Optional sender's number or sender ID for SMSGlobal. If not provided, uses the default number associated with the account
+	SmsglobalSender pulumi.StringPtrInput `pulumi:"smsglobalSender"`
 	// Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
 	SponsorAutoApprove pulumi.BoolPtrInput `pulumi:"sponsorAutoApprove"`
-	// List of domain allowed for sponsor email. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
+	// Email domains allowed for sponsor email addresses. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
 	SponsorEmailDomains pulumi.StringArrayInput `pulumi:"sponsorEmailDomains"`
 	// Whether sponsor is enabled
 	SponsorEnabled pulumi.BoolPtrInput `pulumi:"sponsorEnabled"`
@@ -26073,17 +26229,17 @@ type WlanPortalArgs struct {
 	Sponsors pulumi.StringMapInput `pulumi:"sponsors"`
 	// Optional if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
 	SsoDefaultRole pulumi.StringPtrInput `pulumi:"ssoDefaultRole"`
-	// Optional if `wlanPortalAuth`==`sso`
+	// Optional if `wlanPortalAuth`==`sso`. Role assigned to authenticated users when guest SSO is used
 	SsoForcedRole pulumi.StringPtrInput `pulumi:"ssoForcedRole"`
 	// Required if `wlanPortalAuth`==`sso`. IDP Cert (used to verify the signed response)
 	SsoIdpCert pulumi.StringPtrInput `pulumi:"ssoIdpCert"`
-	// Optional if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+	// Optional if `wlanPortalAuth`==`sso`. Signing algorithm used for SAML assertions from the identity provider
 	SsoIdpSignAlgo pulumi.StringPtrInput `pulumi:"ssoIdpSignAlgo"`
 	// Required if `wlanPortalAuth`==`sso`, IDP Single-Sign-On URL
 	SsoIdpSsoUrl pulumi.StringPtrInput `pulumi:"ssoIdpSsoUrl"`
 	// Required if `wlanPortalAuth`==`sso`, IDP issuer URL
 	SsoIssuer pulumi.StringPtrInput `pulumi:"ssoIssuer"`
-	// Optional if `wlanPortalAuth`==`sso`. enum: `email`, `unspecified`
+	// Optional if `wlanPortalAuth`==`sso`. SAML NameID format expected from the identity provider
 	SsoNameidFormat pulumi.StringPtrInput `pulumi:"ssoNameidFormat"`
 	// Required if `smsProvider`==`telstra`, Client ID provided by Telstra
 	TelstraClientId pulumi.StringPtrInput `pulumi:"telstraClientId"`
@@ -26189,7 +26345,7 @@ func (o WlanPortalOutput) AmazonClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.AmazonClientSecret }).(pulumi.StringPtrOutput)
 }
 
-// Optional if `amazonEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+// Optional if `amazonEnabled`==`true`. Email domains allowed for Amazon-authenticated guest users. If null or empty, any authenticated Amazon email domain is allowed.
 func (o WlanPortalOutput) AmazonEmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanPortal) []string { return v.AmazonEmailDomains }).(pulumi.StringArrayOutput)
 }
@@ -26204,7 +26360,7 @@ func (o WlanPortalOutput) AmazonExpire() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *int { return v.AmazonExpire }).(pulumi.IntPtrOutput)
 }
 
-// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
+// Guest portal login scheme used by the WLAN
 func (o WlanPortalOutput) Auth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.Auth }).(pulumi.StringPtrOutput)
 }
@@ -26234,17 +26390,17 @@ func (o WlanPortalOutput) AzureTenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.AzureTenantId }).(pulumi.StringPtrOutput)
 }
 
-// Required if `smsProvider`==`broadnet`
+// Required if `smsProvider`==`broadnet`. Password for the Broadnet SMS provider account
 func (o WlanPortalOutput) BroadnetPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.BroadnetPassword }).(pulumi.StringPtrOutput)
 }
 
-// Required if `smsProvider`==`broadnet`
+// Required if `smsProvider`==`broadnet`. SID for the Broadnet SMS provider account
 func (o WlanPortalOutput) BroadnetSid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.BroadnetSid }).(pulumi.StringPtrOutput)
 }
 
-// Required if `smsProvider`==`broadnet`
+// Required if `smsProvider`==`broadnet`. User ID for the Broadnet SMS provider account
 func (o WlanPortalOutput) BroadnetUserId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.BroadnetUserId }).(pulumi.StringPtrOutput)
 }
@@ -26254,7 +26410,7 @@ func (o WlanPortalOutput) BypassWhenCloudDown() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *bool { return v.BypassWhenCloudDown }).(pulumi.BoolPtrOutput)
 }
 
-// Required if `smsProvider`==`clickatell`
+// Required if `smsProvider`==`clickatell`. API key for the Clickatell SMS provider account
 func (o WlanPortalOutput) ClickatellApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.ClickatellApiKey }).(pulumi.StringPtrOutput)
 }
@@ -26294,7 +26450,7 @@ func (o WlanPortalOutput) FacebookClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.FacebookClientSecret }).(pulumi.StringPtrOutput)
 }
 
-// Optional if `facebookEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+// Optional if `facebookEnabled`==`true`. Email domains allowed for Facebook-authenticated guest users. If null or empty, any authenticated Facebook email domain is allowed.
 func (o WlanPortalOutput) FacebookEmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanPortal) []string { return v.FacebookEmailDomains }).(pulumi.StringArrayOutput)
 }
@@ -26329,7 +26485,7 @@ func (o WlanPortalOutput) GoogleClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.GoogleClientSecret }).(pulumi.StringPtrOutput)
 }
 
-// Optional if `googleEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+// Optional if `googleEnabled`==`true`. Email domains allowed for Google-authenticated guest users. If null or empty, any authenticated Google email domain is allowed.
 func (o WlanPortalOutput) GoogleEmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanPortal) []string { return v.GoogleEmailDomains }).(pulumi.StringArrayOutput)
 }
@@ -26344,12 +26500,12 @@ func (o WlanPortalOutput) GoogleExpire() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *int { return v.GoogleExpire }).(pulumi.IntPtrOutput)
 }
 
-// Required if `smsProvider`==`gupshup`
+// Required if `smsProvider`==`gupshup`. Password for the Gupshup SMS provider account
 func (o WlanPortalOutput) GupshupPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.GupshupPassword }).(pulumi.StringPtrOutput)
 }
 
-// Required if `smsProvider`==`gupshup`
+// Required if `smsProvider`==`gupshup`. User ID for the Gupshup SMS provider account
 func (o WlanPortalOutput) GupshupUserid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.GupshupUserid }).(pulumi.StringPtrOutput)
 }
@@ -26364,7 +26520,7 @@ func (o WlanPortalOutput) MicrosoftClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.MicrosoftClientSecret }).(pulumi.StringPtrOutput)
 }
 
-// Optional if `microsoftEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+// Optional if `microsoftEnabled`==`true`. Email domains allowed for Microsoft 365-authenticated guest users. If null or empty, any authenticated Microsoft 365 email domain is allowed.
 func (o WlanPortalOutput) MicrosoftEmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanPortal) []string { return v.MicrosoftEmailDomains }).(pulumi.StringArrayOutput)
 }
@@ -26389,7 +26545,7 @@ func (o WlanPortalOutput) PassphraseExpire() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *int { return v.PassphraseExpire }).(pulumi.IntPtrOutput)
 }
 
-// Required if `passphraseEnabled`==`true`.
+// Required if `passphraseEnabled`==`true`. Passphrase guests must enter when passphrase authentication is enabled
 func (o WlanPortalOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
@@ -26404,21 +26560,22 @@ func (o WlanPortalOutput) PredefinedSponsorsHideEmail() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *bool { return v.PredefinedSponsorsHideEmail }).(pulumi.BoolPtrOutput)
 }
 
+// Whether to show the privacy policy in the WLAN guest portal
 func (o WlanPortalOutput) Privacy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *bool { return v.Privacy }).(pulumi.BoolPtrOutput)
 }
 
-// Required if `smsProvider`==`puzzel`
+// Required if `smsProvider`==`puzzel`. Password for the Puzzel SMS provider account
 func (o WlanPortalOutput) PuzzelPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.PuzzelPassword }).(pulumi.StringPtrOutput)
 }
 
-// Required if `smsProvider`==`puzzel`
+// Required if `smsProvider`==`puzzel`. Service ID for the Puzzel SMS provider account
 func (o WlanPortalOutput) PuzzelServiceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.PuzzelServiceId }).(pulumi.StringPtrOutput)
 }
 
-// Required if `smsProvider`==`puzzel`
+// Required if `smsProvider`==`puzzel`. Username for the Puzzel SMS provider account
 func (o WlanPortalOutput) PuzzelUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.PuzzelUsername }).(pulumi.StringPtrOutput)
 }
@@ -26438,7 +26595,7 @@ func (o WlanPortalOutput) SmsMessageFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.SmsMessageFormat }).(pulumi.StringPtrOutput)
 }
 
-// Optional if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
+// Optional if `smsEnabled`==`true`. SMS provider used to deliver guest portal access codes
 func (o WlanPortalOutput) SmsProvider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.SmsProvider }).(pulumi.StringPtrOutput)
 }
@@ -26453,12 +26610,17 @@ func (o WlanPortalOutput) SmsglobalApiSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.SmsglobalApiSecret }).(pulumi.StringPtrOutput)
 }
 
+// Optional sender's number or sender ID for SMSGlobal. If not provided, uses the default number associated with the account
+func (o WlanPortalOutput) SmsglobalSender() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortal) *string { return v.SmsglobalSender }).(pulumi.StringPtrOutput)
+}
+
 // Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
 func (o WlanPortalOutput) SponsorAutoApprove() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *bool { return v.SponsorAutoApprove }).(pulumi.BoolPtrOutput)
 }
 
-// List of domain allowed for sponsor email. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
+// Email domains allowed for sponsor email addresses. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
 func (o WlanPortalOutput) SponsorEmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanPortal) []string { return v.SponsorEmailDomains }).(pulumi.StringArrayOutput)
 }
@@ -26502,7 +26664,7 @@ func (o WlanPortalOutput) SsoDefaultRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.SsoDefaultRole }).(pulumi.StringPtrOutput)
 }
 
-// Optional if `wlanPortalAuth`==`sso`
+// Optional if `wlanPortalAuth`==`sso`. Role assigned to authenticated users when guest SSO is used
 func (o WlanPortalOutput) SsoForcedRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.SsoForcedRole }).(pulumi.StringPtrOutput)
 }
@@ -26512,7 +26674,7 @@ func (o WlanPortalOutput) SsoIdpCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.SsoIdpCert }).(pulumi.StringPtrOutput)
 }
 
-// Optional if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+// Optional if `wlanPortalAuth`==`sso`. Signing algorithm used for SAML assertions from the identity provider
 func (o WlanPortalOutput) SsoIdpSignAlgo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.SsoIdpSignAlgo }).(pulumi.StringPtrOutput)
 }
@@ -26527,7 +26689,7 @@ func (o WlanPortalOutput) SsoIssuer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.SsoIssuer }).(pulumi.StringPtrOutput)
 }
 
-// Optional if `wlanPortalAuth`==`sso`. enum: `email`, `unspecified`
+// Optional if `wlanPortalAuth`==`sso`. SAML NameID format expected from the identity provider
 func (o WlanPortalOutput) SsoNameidFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.SsoNameidFormat }).(pulumi.StringPtrOutput)
 }
@@ -26611,7 +26773,7 @@ func (o WlanPortalPtrOutput) AmazonClientSecret() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional if `amazonEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+// Optional if `amazonEnabled`==`true`. Email domains allowed for Amazon-authenticated guest users. If null or empty, any authenticated Amazon email domain is allowed.
 func (o WlanPortalPtrOutput) AmazonEmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WlanPortal) []string {
 		if v == nil {
@@ -26641,7 +26803,7 @@ func (o WlanPortalPtrOutput) AmazonExpire() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
+// Guest portal login scheme used by the WLAN
 func (o WlanPortalPtrOutput) Auth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -26701,7 +26863,7 @@ func (o WlanPortalPtrOutput) AzureTenantId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required if `smsProvider`==`broadnet`
+// Required if `smsProvider`==`broadnet`. Password for the Broadnet SMS provider account
 func (o WlanPortalPtrOutput) BroadnetPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -26711,7 +26873,7 @@ func (o WlanPortalPtrOutput) BroadnetPassword() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required if `smsProvider`==`broadnet`
+// Required if `smsProvider`==`broadnet`. SID for the Broadnet SMS provider account
 func (o WlanPortalPtrOutput) BroadnetSid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -26721,7 +26883,7 @@ func (o WlanPortalPtrOutput) BroadnetSid() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required if `smsProvider`==`broadnet`
+// Required if `smsProvider`==`broadnet`. User ID for the Broadnet SMS provider account
 func (o WlanPortalPtrOutput) BroadnetUserId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -26741,7 +26903,7 @@ func (o WlanPortalPtrOutput) BypassWhenCloudDown() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Required if `smsProvider`==`clickatell`
+// Required if `smsProvider`==`clickatell`. API key for the Clickatell SMS provider account
 func (o WlanPortalPtrOutput) ClickatellApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -26821,7 +26983,7 @@ func (o WlanPortalPtrOutput) FacebookClientSecret() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional if `facebookEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+// Optional if `facebookEnabled`==`true`. Email domains allowed for Facebook-authenticated guest users. If null or empty, any authenticated Facebook email domain is allowed.
 func (o WlanPortalPtrOutput) FacebookEmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WlanPortal) []string {
 		if v == nil {
@@ -26891,7 +27053,7 @@ func (o WlanPortalPtrOutput) GoogleClientSecret() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional if `googleEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+// Optional if `googleEnabled`==`true`. Email domains allowed for Google-authenticated guest users. If null or empty, any authenticated Google email domain is allowed.
 func (o WlanPortalPtrOutput) GoogleEmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WlanPortal) []string {
 		if v == nil {
@@ -26921,7 +27083,7 @@ func (o WlanPortalPtrOutput) GoogleExpire() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Required if `smsProvider`==`gupshup`
+// Required if `smsProvider`==`gupshup`. Password for the Gupshup SMS provider account
 func (o WlanPortalPtrOutput) GupshupPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -26931,7 +27093,7 @@ func (o WlanPortalPtrOutput) GupshupPassword() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required if `smsProvider`==`gupshup`
+// Required if `smsProvider`==`gupshup`. User ID for the Gupshup SMS provider account
 func (o WlanPortalPtrOutput) GupshupUserid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -26961,7 +27123,7 @@ func (o WlanPortalPtrOutput) MicrosoftClientSecret() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional if `microsoftEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+// Optional if `microsoftEnabled`==`true`. Email domains allowed for Microsoft 365-authenticated guest users. If null or empty, any authenticated Microsoft 365 email domain is allowed.
 func (o WlanPortalPtrOutput) MicrosoftEmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WlanPortal) []string {
 		if v == nil {
@@ -27011,7 +27173,7 @@ func (o WlanPortalPtrOutput) PassphraseExpire() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Required if `passphraseEnabled`==`true`.
+// Required if `passphraseEnabled`==`true`. Passphrase guests must enter when passphrase authentication is enabled
 func (o WlanPortalPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -27041,6 +27203,7 @@ func (o WlanPortalPtrOutput) PredefinedSponsorsHideEmail() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Whether to show the privacy policy in the WLAN guest portal
 func (o WlanPortalPtrOutput) Privacy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *bool {
 		if v == nil {
@@ -27050,7 +27213,7 @@ func (o WlanPortalPtrOutput) Privacy() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Required if `smsProvider`==`puzzel`
+// Required if `smsProvider`==`puzzel`. Password for the Puzzel SMS provider account
 func (o WlanPortalPtrOutput) PuzzelPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -27060,7 +27223,7 @@ func (o WlanPortalPtrOutput) PuzzelPassword() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required if `smsProvider`==`puzzel`
+// Required if `smsProvider`==`puzzel`. Service ID for the Puzzel SMS provider account
 func (o WlanPortalPtrOutput) PuzzelServiceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -27070,7 +27233,7 @@ func (o WlanPortalPtrOutput) PuzzelServiceId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required if `smsProvider`==`puzzel`
+// Required if `smsProvider`==`puzzel`. Username for the Puzzel SMS provider account
 func (o WlanPortalPtrOutput) PuzzelUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -27110,7 +27273,7 @@ func (o WlanPortalPtrOutput) SmsMessageFormat() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
+// Optional if `smsEnabled`==`true`. SMS provider used to deliver guest portal access codes
 func (o WlanPortalPtrOutput) SmsProvider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -27140,6 +27303,16 @@ func (o WlanPortalPtrOutput) SmsglobalApiSecret() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional sender's number or sender ID for SMSGlobal. If not provided, uses the default number associated with the account
+func (o WlanPortalPtrOutput) SmsglobalSender() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortal) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SmsglobalSender
+	}).(pulumi.StringPtrOutput)
+}
+
 // Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
 func (o WlanPortalPtrOutput) SponsorAutoApprove() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *bool {
@@ -27150,7 +27323,7 @@ func (o WlanPortalPtrOutput) SponsorAutoApprove() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// List of domain allowed for sponsor email. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
+// Email domains allowed for sponsor email addresses. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
 func (o WlanPortalPtrOutput) SponsorEmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WlanPortal) []string {
 		if v == nil {
@@ -27234,7 +27407,7 @@ func (o WlanPortalPtrOutput) SsoDefaultRole() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional if `wlanPortalAuth`==`sso`
+// Optional if `wlanPortalAuth`==`sso`. Role assigned to authenticated users when guest SSO is used
 func (o WlanPortalPtrOutput) SsoForcedRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -27254,7 +27427,7 @@ func (o WlanPortalPtrOutput) SsoIdpCert() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+// Optional if `wlanPortalAuth`==`sso`. Signing algorithm used for SAML assertions from the identity provider
 func (o WlanPortalPtrOutput) SsoIdpSignAlgo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -27284,7 +27457,7 @@ func (o WlanPortalPtrOutput) SsoIssuer() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional if `wlanPortalAuth`==`sso`. enum: `email`, `unspecified`
+// Optional if `wlanPortalAuth`==`sso`. SAML NameID format expected from the identity provider
 func (o WlanPortalPtrOutput) SsoNameidFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -27345,8 +27518,9 @@ func (o WlanPortalPtrOutput) TwilioSid() pulumi.StringPtrOutput {
 }
 
 type WlanPortalTemplatePortalTemplate struct {
+	// Link text for using an alternate email address during access-code login
 	AccessCodeAlternateEmail *string `pulumi:"accessCodeAlternateEmail"`
-	// defines alignment on portal. enum: `center`, `left`, `right`
+	// Text and content alignment used by the guest portal template
 	Alignment *string `pulumi:"alignment"`
 	// Label for Amazon auth button
 	AuthButtonAmazon *string `pulumi:"authButtonAmazon"`
@@ -27366,36 +27540,47 @@ type WlanPortalTemplatePortalTemplate struct {
 	AuthButtonSms *string `pulumi:"authButtonSms"`
 	// Label for Sponsor auth button
 	AuthButtonSponsor *string `pulumi:"authButtonSponsor"`
-	AuthLabel         *string `pulumi:"authLabel"`
+	// Heading text displayed above portal authentication options
+	AuthLabel *string `pulumi:"authLabel"`
 	// Label of the link to go back to /logon
 	BackLink *string `pulumi:"backLink"`
-	// Portal main color
-	Color      *string `pulumi:"color"`
-	ColorDark  *string `pulumi:"colorDark"`
+	// Primary color used by the portal template
+	Color *string `pulumi:"color"`
+	// Darker accent color used by the portal template
+	ColorDark *string `pulumi:"colorDark"`
+	// Lighter accent color used by the portal template
 	ColorLight *string `pulumi:"colorLight"`
 	// Whether company field is required
 	Company *bool `pulumi:"company"`
 	// Error message when company not provided
 	CompanyError *string `pulumi:"companyError"`
-	// Label of company field
+	// Label displayed for the company input field
 	CompanyLabel *string `pulumi:"companyLabel"`
 	// Whether email field is required
 	Email *bool `pulumi:"email"`
 	// Error message when a user has valid social login but doesn't match specified email domains.
 	EmailAccessDomainError *string `pulumi:"emailAccessDomainError"`
 	// Label for cancel confirmation code submission using email auth
-	EmailCancel         *string `pulumi:"emailCancel"`
-	EmailCodeCancel     *string `pulumi:"emailCodeCancel"`
-	EmailCodeError      *string `pulumi:"emailCodeError"`
+	EmailCancel *string `pulumi:"emailCancel"`
+	// Link text for requesting help when the email access code was not received
+	EmailCodeCancel *string `pulumi:"emailCodeCancel"`
+	// Error message shown when the alternate email address for access-code delivery is invalid
+	EmailCodeError *string `pulumi:"emailCodeError"`
+	// Label for the email access-code input field
 	EmailCodeFieldLabel *string `pulumi:"emailCodeFieldLabel"`
-	EmailCodeMessage    *string `pulumi:"emailCodeMessage"`
-	EmailCodeSubmit     *string `pulumi:"emailCodeSubmit"`
-	EmailCodeTitle      *string `pulumi:"emailCodeTitle"`
+	// Instructional text shown before entering the email access code
+	EmailCodeMessage *string `pulumi:"emailCodeMessage"`
+	// Button label for submitting the email access code
+	EmailCodeSubmit *string `pulumi:"emailCodeSubmit"`
+	// Title shown on the email access-code entry page
+	EmailCodeTitle *string `pulumi:"emailCodeTitle"`
 	// Error message when email not provided
-	EmailError      *string `pulumi:"emailError"`
+	EmailError *string `pulumi:"emailError"`
+	// Label for the email address input field
 	EmailFieldLabel *string `pulumi:"emailFieldLabel"`
-	// Label of email field
-	EmailLabel   *string `pulumi:"emailLabel"`
+	// Label displayed for the email input field
+	EmailLabel *string `pulumi:"emailLabel"`
+	// Instructional text explaining email access-code delivery
 	EmailMessage *string `pulumi:"emailMessage"`
 	// Label for confirmation code submit button using email auth
 	EmailSubmit *string `pulumi:"emailSubmit"`
@@ -27405,33 +27590,33 @@ type WlanPortalTemplatePortalTemplate struct {
 	Field1 *bool `pulumi:"field1"`
 	// Error message when field1 not provided
 	Field1error *string `pulumi:"field1error"`
-	// Label of field1
+	// Label for custom field 1 input
 	Field1label *string `pulumi:"field1label"`
-	// Whether field1 is required field
+	// Whether custom field 1 must be provided when the field is shown
 	Field1required *bool `pulumi:"field1required"`
 	// Whether to ask field2
 	Field2 *bool `pulumi:"field2"`
 	// Error message when field2 not provided
 	Field2error *string `pulumi:"field2error"`
-	// Label of field2
+	// Label for custom field 2 input
 	Field2label *string `pulumi:"field2label"`
-	// Whether field2 is required field
+	// Whether custom field 2 must be provided when the field is shown
 	Field2required *bool `pulumi:"field2required"`
 	// Whether to ask field3
 	Field3 *bool `pulumi:"field3"`
 	// Error message when field3 not provided
 	Field3error *string `pulumi:"field3error"`
-	// Label of field3
+	// Label for custom field 3 input
 	Field3label *string `pulumi:"field3label"`
-	// Whether field3 is required field
+	// Whether custom field 3 must be provided when the field is shown
 	Field3required *bool `pulumi:"field3required"`
 	// Whether to ask field4
 	Field4 *bool `pulumi:"field4"`
 	// Error message when field4 not provided
 	Field4error *string `pulumi:"field4error"`
-	// Label of field4
+	// Label for custom field 4 input
 	Field4label *string `pulumi:"field4label"`
-	// Whether field4 is required field
+	// Whether custom field 4 must be provided when the field is shown
 	Field4required *bool `pulumi:"field4required"`
 	// Can be used to localize the portal based on the User Agent. Allowed property key values are:
 	//   `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`,
@@ -27447,15 +27632,17 @@ type WlanPortalTemplatePortalTemplate struct {
 	MarketingPolicyOptIn *bool `pulumi:"marketingPolicyOptIn"`
 	// label for marketing optin
 	MarketingPolicyOptInLabel *string `pulumi:"marketingPolicyOptInLabel"`
-	// marketing policy text
+	// Text of the marketing policy opt-in content
 	MarketingPolicyOptInText *string `pulumi:"marketingPolicyOptInText"`
-	Message                  *string `pulumi:"message"`
-	MultiAuth                *bool   `pulumi:"multiAuth"`
+	// Main message displayed on the guest portal sign-in page
+	Message *string `pulumi:"message"`
+	// Whether the portal presents multiple authentication methods
+	MultiAuth *bool `pulumi:"multiAuth"`
 	// Whether name field is required
 	Name *bool `pulumi:"name"`
 	// Error message when name not provided
 	NameError *string `pulumi:"nameError"`
-	// Label of name field
+	// Label displayed for the name input field
 	NameLabel *string `pulumi:"nameLabel"`
 	// Default value for the `Do not store` checkbox
 	OptOutDefault *bool `pulumi:"optOutDefault"`
@@ -27463,13 +27650,15 @@ type WlanPortalTemplatePortalTemplate struct {
 	Optout *bool `pulumi:"optout"`
 	// Label for Do Not Store My Personal Information
 	OptoutLabel *string `pulumi:"optoutLabel"`
-	PageTitle   *string `pulumi:"pageTitle"`
+	// Browser or page title shown for the guest portal
+	PageTitle *string `pulumi:"pageTitle"`
 	// Label for the Passphrase cancel button
 	PassphraseCancel *string `pulumi:"passphraseCancel"`
 	// Error message when invalid passphrase is provided
 	PassphraseError *string `pulumi:"passphraseError"`
-	// Passphrase
-	PassphraseLabel   *string `pulumi:"passphraseLabel"`
+	// Label for the passphrase input field
+	PassphraseLabel *string `pulumi:"passphraseLabel"`
+	// Instructional text shown on the passphrase sign-in page
 	PassphraseMessage *string `pulumi:"passphraseMessage"`
 	// Label for the Passphrase submit button
 	PassphraseSubmit *string `pulumi:"passphraseSubmit"`
@@ -27487,49 +27676,65 @@ type WlanPortalTemplatePortalTemplate struct {
 	PrivacyPolicyLink *string `pulumi:"privacyPolicyLink"`
 	// Text of the Privacy Policy
 	PrivacyPolicyText *string `pulumi:"privacyPolicyText"`
-	// Label to denote required field
+	// Text used to mark a form field as required
 	RequiredFieldLabel *string `pulumi:"requiredFieldLabel"`
-	ResponsiveLayout   *bool   `pulumi:"responsiveLayout"`
+	// Whether the portal template uses a responsive layout
+	ResponsiveLayout *bool `pulumi:"responsiveLayout"`
 	// Label of the button to signin
-	SignInLabel       *string `pulumi:"signInLabel"`
+	SignInLabel *string `pulumi:"signInLabel"`
+	// Default option text shown in the SMS carrier selector
 	SmsCarrierDefault *string `pulumi:"smsCarrierDefault"`
-	SmsCarrierError   *string `pulumi:"smsCarrierError"`
+	// Error message shown when no mobile carrier is selected
+	SmsCarrierError *string `pulumi:"smsCarrierError"`
 	// Label for mobile carrier drop-down list
 	SmsCarrierFieldLabel *string `pulumi:"smsCarrierFieldLabel"`
 	// Label for cancel confirmation code submission
 	SmsCodeCancel *string `pulumi:"smsCodeCancel"`
 	// Error message when confirmation code is invalid
-	SmsCodeError      *string `pulumi:"smsCodeError"`
+	SmsCodeError *string `pulumi:"smsCodeError"`
+	// Label for the SMS confirmation-code input field
 	SmsCodeFieldLabel *string `pulumi:"smsCodeFieldLabel"`
-	SmsCodeMessage    *string `pulumi:"smsCodeMessage"`
+	// Instructional text shown before entering the SMS access code
+	SmsCodeMessage *string `pulumi:"smsCodeMessage"`
 	// Label for confirmation code submit button
-	SmsCodeSubmit        *string `pulumi:"smsCodeSubmit"`
-	SmsCodeTitle         *string `pulumi:"smsCodeTitle"`
+	SmsCodeSubmit *string `pulumi:"smsCodeSubmit"`
+	// Title shown on the SMS access-code entry page
+	SmsCodeTitle *string `pulumi:"smsCodeTitle"`
+	// Label for the SMS country-code input field
 	SmsCountryFieldLabel *string `pulumi:"smsCountryFieldLabel"`
-	SmsCountryFormat     *string `pulumi:"smsCountryFormat"`
+	// Example country code format shown for SMS authentication
+	SmsCountryFormat *string `pulumi:"smsCountryFormat"`
 	// Label for checkbox to specify that the user has access code
 	SmsHaveAccessCode *string `pulumi:"smsHaveAccessCode"`
-	SmsIsTwilio       *bool   `pulumi:"smsIsTwilio"`
+	// Whether the SMS portal flow uses Twilio-specific behavior
+	SmsIsTwilio *bool `pulumi:"smsIsTwilio"`
 	// Format of access code sms message. {{code}} and {{duration}} are placeholders and should be retained as is.
 	SmsMessageFormat *string `pulumi:"smsMessageFormat"`
 	// Label for canceling mobile details for SMS auth
 	SmsNumberCancel *string `pulumi:"smsNumberCancel"`
-	SmsNumberError  *string `pulumi:"smsNumberError"`
+	// Error message shown when the mobile number is invalid
+	SmsNumberError *string `pulumi:"smsNumberError"`
 	// Label for field to provide mobile number
 	SmsNumberFieldLabel *string `pulumi:"smsNumberFieldLabel"`
-	SmsNumberFormat     *string `pulumi:"smsNumberFormat"`
-	SmsNumberMessage    *string `pulumi:"smsNumberMessage"`
+	// Example mobile number format shown for SMS authentication
+	SmsNumberFormat *string `pulumi:"smsNumberFormat"`
+	// Instructional text explaining SMS access-code delivery
+	SmsNumberMessage *string `pulumi:"smsNumberMessage"`
 	// Label for submit button for code generation
 	SmsNumberSubmit *string `pulumi:"smsNumberSubmit"`
 	// Title for phone number details
-	SmsNumberTitle    *string `pulumi:"smsNumberTitle"`
+	SmsNumberTitle *string `pulumi:"smsNumberTitle"`
+	// Example username format shown for SMS authentication
 	SmsUsernameFormat *string `pulumi:"smsUsernameFormat"`
 	// How long confirmation code should be considered valid (in minutes)
-	SmsValidityDuration *int    `pulumi:"smsValidityDuration"`
-	SponsorBackLink     *string `pulumi:"sponsorBackLink"`
-	SponsorCancel       *string `pulumi:"sponsorCancel"`
+	SmsValidityDuration *int `pulumi:"smsValidityDuration"`
+	// Link text for returning to edit the sponsor request form
+	SponsorBackLink *string `pulumi:"sponsorBackLink"`
+	// Button label for canceling sponsor authentication
+	SponsorCancel *string `pulumi:"sponsorCancel"`
 	// Label for Sponsor Email
-	SponsorEmail      *string `pulumi:"sponsorEmail"`
+	SponsorEmail *string `pulumi:"sponsorEmail"`
+	// Error message shown when the sponsor email address is invalid
 	SponsorEmailError *string `pulumi:"sponsorEmailError"`
 	// HTML template to replace/override default sponsor email template
 	// Sponsor Email Template supports following template variables:
@@ -27542,12 +27747,17 @@ type WlanPortalTemplatePortalTemplate struct {
 	//   * `sponsorLinkValidityDuration`: Renders validity time of the request (i.e. Approve/Deny URL)
 	//   * `authExpireMinutes`: Renders Wlan-level configured Guest Authorization Expiration time period (in minutes), If not configured then default (1 day in minutes)
 	SponsorEmailTemplate *string `pulumi:"sponsorEmailTemplate"`
-	SponsorInfoApproved  *string `pulumi:"sponsorInfoApproved"`
-	SponsorInfoDenied    *string `pulumi:"sponsorInfoDenied"`
-	SponsorInfoPending   *string `pulumi:"sponsorInfoPending"`
+	// Status message prefix shown when a sponsor approves the request
+	SponsorInfoApproved *string `pulumi:"sponsorInfoApproved"`
+	// Status message prefix shown when a sponsor denies the request
+	SponsorInfoDenied *string `pulumi:"sponsorInfoDenied"`
+	// Status message prefix shown after a sponsor notification is sent
+	SponsorInfoPending *string `pulumi:"sponsorInfoPending"`
 	// Label for Sponsor Name
-	SponsorName        *string `pulumi:"sponsorName"`
-	SponsorNameError   *string `pulumi:"sponsorNameError"`
+	SponsorName *string `pulumi:"sponsorName"`
+	// Error message shown when the sponsor name is missing
+	SponsorNameError *string `pulumi:"sponsorNameError"`
+	// Additional status text shown while sponsor approval is pending
 	SponsorNotePending *string `pulumi:"sponsorNotePending"`
 	// Submit button label request Wifi Access and notify sponsor about guest request
 	SponsorRequestAccess *string `pulumi:"sponsorRequestAccess"`
@@ -27558,10 +27768,13 @@ type WlanPortalTemplatePortalTemplate struct {
 	// Text to display if request is still pending
 	SponsorStatusPending *string `pulumi:"sponsorStatusPending"`
 	// Submit button label to notify sponsor about guest request
-	SponsorSubmit      *string `pulumi:"sponsorSubmit"`
-	SponsorsError      *string `pulumi:"sponsorsError"`
+	SponsorSubmit *string `pulumi:"sponsorSubmit"`
+	// Error message shown when no sponsor is selected
+	SponsorsError *string `pulumi:"sponsorsError"`
+	// Label for the sponsor selection field
 	SponsorsFieldLabel *string `pulumi:"sponsorsFieldLabel"`
-	Tos                *bool   `pulumi:"tos"`
+	// Whether the portal requires Terms of Service acceptance
+	Tos *bool `pulumi:"tos"`
 	// Prefix of the label of the link to go to tos
 	TosAcceptLabel *string `pulumi:"tosAcceptLabel"`
 	// Error message when tos not accepted
@@ -27584,8 +27797,9 @@ type WlanPortalTemplatePortalTemplateInput interface {
 }
 
 type WlanPortalTemplatePortalTemplateArgs struct {
+	// Link text for using an alternate email address during access-code login
 	AccessCodeAlternateEmail pulumi.StringPtrInput `pulumi:"accessCodeAlternateEmail"`
-	// defines alignment on portal. enum: `center`, `left`, `right`
+	// Text and content alignment used by the guest portal template
 	Alignment pulumi.StringPtrInput `pulumi:"alignment"`
 	// Label for Amazon auth button
 	AuthButtonAmazon pulumi.StringPtrInput `pulumi:"authButtonAmazon"`
@@ -27605,36 +27819,47 @@ type WlanPortalTemplatePortalTemplateArgs struct {
 	AuthButtonSms pulumi.StringPtrInput `pulumi:"authButtonSms"`
 	// Label for Sponsor auth button
 	AuthButtonSponsor pulumi.StringPtrInput `pulumi:"authButtonSponsor"`
-	AuthLabel         pulumi.StringPtrInput `pulumi:"authLabel"`
+	// Heading text displayed above portal authentication options
+	AuthLabel pulumi.StringPtrInput `pulumi:"authLabel"`
 	// Label of the link to go back to /logon
 	BackLink pulumi.StringPtrInput `pulumi:"backLink"`
-	// Portal main color
-	Color      pulumi.StringPtrInput `pulumi:"color"`
-	ColorDark  pulumi.StringPtrInput `pulumi:"colorDark"`
+	// Primary color used by the portal template
+	Color pulumi.StringPtrInput `pulumi:"color"`
+	// Darker accent color used by the portal template
+	ColorDark pulumi.StringPtrInput `pulumi:"colorDark"`
+	// Lighter accent color used by the portal template
 	ColorLight pulumi.StringPtrInput `pulumi:"colorLight"`
 	// Whether company field is required
 	Company pulumi.BoolPtrInput `pulumi:"company"`
 	// Error message when company not provided
 	CompanyError pulumi.StringPtrInput `pulumi:"companyError"`
-	// Label of company field
+	// Label displayed for the company input field
 	CompanyLabel pulumi.StringPtrInput `pulumi:"companyLabel"`
 	// Whether email field is required
 	Email pulumi.BoolPtrInput `pulumi:"email"`
 	// Error message when a user has valid social login but doesn't match specified email domains.
 	EmailAccessDomainError pulumi.StringPtrInput `pulumi:"emailAccessDomainError"`
 	// Label for cancel confirmation code submission using email auth
-	EmailCancel         pulumi.StringPtrInput `pulumi:"emailCancel"`
-	EmailCodeCancel     pulumi.StringPtrInput `pulumi:"emailCodeCancel"`
-	EmailCodeError      pulumi.StringPtrInput `pulumi:"emailCodeError"`
+	EmailCancel pulumi.StringPtrInput `pulumi:"emailCancel"`
+	// Link text for requesting help when the email access code was not received
+	EmailCodeCancel pulumi.StringPtrInput `pulumi:"emailCodeCancel"`
+	// Error message shown when the alternate email address for access-code delivery is invalid
+	EmailCodeError pulumi.StringPtrInput `pulumi:"emailCodeError"`
+	// Label for the email access-code input field
 	EmailCodeFieldLabel pulumi.StringPtrInput `pulumi:"emailCodeFieldLabel"`
-	EmailCodeMessage    pulumi.StringPtrInput `pulumi:"emailCodeMessage"`
-	EmailCodeSubmit     pulumi.StringPtrInput `pulumi:"emailCodeSubmit"`
-	EmailCodeTitle      pulumi.StringPtrInput `pulumi:"emailCodeTitle"`
+	// Instructional text shown before entering the email access code
+	EmailCodeMessage pulumi.StringPtrInput `pulumi:"emailCodeMessage"`
+	// Button label for submitting the email access code
+	EmailCodeSubmit pulumi.StringPtrInput `pulumi:"emailCodeSubmit"`
+	// Title shown on the email access-code entry page
+	EmailCodeTitle pulumi.StringPtrInput `pulumi:"emailCodeTitle"`
 	// Error message when email not provided
-	EmailError      pulumi.StringPtrInput `pulumi:"emailError"`
+	EmailError pulumi.StringPtrInput `pulumi:"emailError"`
+	// Label for the email address input field
 	EmailFieldLabel pulumi.StringPtrInput `pulumi:"emailFieldLabel"`
-	// Label of email field
-	EmailLabel   pulumi.StringPtrInput `pulumi:"emailLabel"`
+	// Label displayed for the email input field
+	EmailLabel pulumi.StringPtrInput `pulumi:"emailLabel"`
+	// Instructional text explaining email access-code delivery
 	EmailMessage pulumi.StringPtrInput `pulumi:"emailMessage"`
 	// Label for confirmation code submit button using email auth
 	EmailSubmit pulumi.StringPtrInput `pulumi:"emailSubmit"`
@@ -27644,33 +27869,33 @@ type WlanPortalTemplatePortalTemplateArgs struct {
 	Field1 pulumi.BoolPtrInput `pulumi:"field1"`
 	// Error message when field1 not provided
 	Field1error pulumi.StringPtrInput `pulumi:"field1error"`
-	// Label of field1
+	// Label for custom field 1 input
 	Field1label pulumi.StringPtrInput `pulumi:"field1label"`
-	// Whether field1 is required field
+	// Whether custom field 1 must be provided when the field is shown
 	Field1required pulumi.BoolPtrInput `pulumi:"field1required"`
 	// Whether to ask field2
 	Field2 pulumi.BoolPtrInput `pulumi:"field2"`
 	// Error message when field2 not provided
 	Field2error pulumi.StringPtrInput `pulumi:"field2error"`
-	// Label of field2
+	// Label for custom field 2 input
 	Field2label pulumi.StringPtrInput `pulumi:"field2label"`
-	// Whether field2 is required field
+	// Whether custom field 2 must be provided when the field is shown
 	Field2required pulumi.BoolPtrInput `pulumi:"field2required"`
 	// Whether to ask field3
 	Field3 pulumi.BoolPtrInput `pulumi:"field3"`
 	// Error message when field3 not provided
 	Field3error pulumi.StringPtrInput `pulumi:"field3error"`
-	// Label of field3
+	// Label for custom field 3 input
 	Field3label pulumi.StringPtrInput `pulumi:"field3label"`
-	// Whether field3 is required field
+	// Whether custom field 3 must be provided when the field is shown
 	Field3required pulumi.BoolPtrInput `pulumi:"field3required"`
 	// Whether to ask field4
 	Field4 pulumi.BoolPtrInput `pulumi:"field4"`
 	// Error message when field4 not provided
 	Field4error pulumi.StringPtrInput `pulumi:"field4error"`
-	// Label of field4
+	// Label for custom field 4 input
 	Field4label pulumi.StringPtrInput `pulumi:"field4label"`
-	// Whether field4 is required field
+	// Whether custom field 4 must be provided when the field is shown
 	Field4required pulumi.BoolPtrInput `pulumi:"field4required"`
 	// Can be used to localize the portal based on the User Agent. Allowed property key values are:
 	//   `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`,
@@ -27686,15 +27911,17 @@ type WlanPortalTemplatePortalTemplateArgs struct {
 	MarketingPolicyOptIn pulumi.BoolPtrInput `pulumi:"marketingPolicyOptIn"`
 	// label for marketing optin
 	MarketingPolicyOptInLabel pulumi.StringPtrInput `pulumi:"marketingPolicyOptInLabel"`
-	// marketing policy text
+	// Text of the marketing policy opt-in content
 	MarketingPolicyOptInText pulumi.StringPtrInput `pulumi:"marketingPolicyOptInText"`
-	Message                  pulumi.StringPtrInput `pulumi:"message"`
-	MultiAuth                pulumi.BoolPtrInput   `pulumi:"multiAuth"`
+	// Main message displayed on the guest portal sign-in page
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// Whether the portal presents multiple authentication methods
+	MultiAuth pulumi.BoolPtrInput `pulumi:"multiAuth"`
 	// Whether name field is required
 	Name pulumi.BoolPtrInput `pulumi:"name"`
 	// Error message when name not provided
 	NameError pulumi.StringPtrInput `pulumi:"nameError"`
-	// Label of name field
+	// Label displayed for the name input field
 	NameLabel pulumi.StringPtrInput `pulumi:"nameLabel"`
 	// Default value for the `Do not store` checkbox
 	OptOutDefault pulumi.BoolPtrInput `pulumi:"optOutDefault"`
@@ -27702,13 +27929,15 @@ type WlanPortalTemplatePortalTemplateArgs struct {
 	Optout pulumi.BoolPtrInput `pulumi:"optout"`
 	// Label for Do Not Store My Personal Information
 	OptoutLabel pulumi.StringPtrInput `pulumi:"optoutLabel"`
-	PageTitle   pulumi.StringPtrInput `pulumi:"pageTitle"`
+	// Browser or page title shown for the guest portal
+	PageTitle pulumi.StringPtrInput `pulumi:"pageTitle"`
 	// Label for the Passphrase cancel button
 	PassphraseCancel pulumi.StringPtrInput `pulumi:"passphraseCancel"`
 	// Error message when invalid passphrase is provided
 	PassphraseError pulumi.StringPtrInput `pulumi:"passphraseError"`
-	// Passphrase
-	PassphraseLabel   pulumi.StringPtrInput `pulumi:"passphraseLabel"`
+	// Label for the passphrase input field
+	PassphraseLabel pulumi.StringPtrInput `pulumi:"passphraseLabel"`
+	// Instructional text shown on the passphrase sign-in page
 	PassphraseMessage pulumi.StringPtrInput `pulumi:"passphraseMessage"`
 	// Label for the Passphrase submit button
 	PassphraseSubmit pulumi.StringPtrInput `pulumi:"passphraseSubmit"`
@@ -27726,49 +27955,65 @@ type WlanPortalTemplatePortalTemplateArgs struct {
 	PrivacyPolicyLink pulumi.StringPtrInput `pulumi:"privacyPolicyLink"`
 	// Text of the Privacy Policy
 	PrivacyPolicyText pulumi.StringPtrInput `pulumi:"privacyPolicyText"`
-	// Label to denote required field
+	// Text used to mark a form field as required
 	RequiredFieldLabel pulumi.StringPtrInput `pulumi:"requiredFieldLabel"`
-	ResponsiveLayout   pulumi.BoolPtrInput   `pulumi:"responsiveLayout"`
+	// Whether the portal template uses a responsive layout
+	ResponsiveLayout pulumi.BoolPtrInput `pulumi:"responsiveLayout"`
 	// Label of the button to signin
-	SignInLabel       pulumi.StringPtrInput `pulumi:"signInLabel"`
+	SignInLabel pulumi.StringPtrInput `pulumi:"signInLabel"`
+	// Default option text shown in the SMS carrier selector
 	SmsCarrierDefault pulumi.StringPtrInput `pulumi:"smsCarrierDefault"`
-	SmsCarrierError   pulumi.StringPtrInput `pulumi:"smsCarrierError"`
+	// Error message shown when no mobile carrier is selected
+	SmsCarrierError pulumi.StringPtrInput `pulumi:"smsCarrierError"`
 	// Label for mobile carrier drop-down list
 	SmsCarrierFieldLabel pulumi.StringPtrInput `pulumi:"smsCarrierFieldLabel"`
 	// Label for cancel confirmation code submission
 	SmsCodeCancel pulumi.StringPtrInput `pulumi:"smsCodeCancel"`
 	// Error message when confirmation code is invalid
-	SmsCodeError      pulumi.StringPtrInput `pulumi:"smsCodeError"`
+	SmsCodeError pulumi.StringPtrInput `pulumi:"smsCodeError"`
+	// Label for the SMS confirmation-code input field
 	SmsCodeFieldLabel pulumi.StringPtrInput `pulumi:"smsCodeFieldLabel"`
-	SmsCodeMessage    pulumi.StringPtrInput `pulumi:"smsCodeMessage"`
+	// Instructional text shown before entering the SMS access code
+	SmsCodeMessage pulumi.StringPtrInput `pulumi:"smsCodeMessage"`
 	// Label for confirmation code submit button
-	SmsCodeSubmit        pulumi.StringPtrInput `pulumi:"smsCodeSubmit"`
-	SmsCodeTitle         pulumi.StringPtrInput `pulumi:"smsCodeTitle"`
+	SmsCodeSubmit pulumi.StringPtrInput `pulumi:"smsCodeSubmit"`
+	// Title shown on the SMS access-code entry page
+	SmsCodeTitle pulumi.StringPtrInput `pulumi:"smsCodeTitle"`
+	// Label for the SMS country-code input field
 	SmsCountryFieldLabel pulumi.StringPtrInput `pulumi:"smsCountryFieldLabel"`
-	SmsCountryFormat     pulumi.StringPtrInput `pulumi:"smsCountryFormat"`
+	// Example country code format shown for SMS authentication
+	SmsCountryFormat pulumi.StringPtrInput `pulumi:"smsCountryFormat"`
 	// Label for checkbox to specify that the user has access code
 	SmsHaveAccessCode pulumi.StringPtrInput `pulumi:"smsHaveAccessCode"`
-	SmsIsTwilio       pulumi.BoolPtrInput   `pulumi:"smsIsTwilio"`
+	// Whether the SMS portal flow uses Twilio-specific behavior
+	SmsIsTwilio pulumi.BoolPtrInput `pulumi:"smsIsTwilio"`
 	// Format of access code sms message. {{code}} and {{duration}} are placeholders and should be retained as is.
 	SmsMessageFormat pulumi.StringPtrInput `pulumi:"smsMessageFormat"`
 	// Label for canceling mobile details for SMS auth
 	SmsNumberCancel pulumi.StringPtrInput `pulumi:"smsNumberCancel"`
-	SmsNumberError  pulumi.StringPtrInput `pulumi:"smsNumberError"`
+	// Error message shown when the mobile number is invalid
+	SmsNumberError pulumi.StringPtrInput `pulumi:"smsNumberError"`
 	// Label for field to provide mobile number
 	SmsNumberFieldLabel pulumi.StringPtrInput `pulumi:"smsNumberFieldLabel"`
-	SmsNumberFormat     pulumi.StringPtrInput `pulumi:"smsNumberFormat"`
-	SmsNumberMessage    pulumi.StringPtrInput `pulumi:"smsNumberMessage"`
+	// Example mobile number format shown for SMS authentication
+	SmsNumberFormat pulumi.StringPtrInput `pulumi:"smsNumberFormat"`
+	// Instructional text explaining SMS access-code delivery
+	SmsNumberMessage pulumi.StringPtrInput `pulumi:"smsNumberMessage"`
 	// Label for submit button for code generation
 	SmsNumberSubmit pulumi.StringPtrInput `pulumi:"smsNumberSubmit"`
 	// Title for phone number details
-	SmsNumberTitle    pulumi.StringPtrInput `pulumi:"smsNumberTitle"`
+	SmsNumberTitle pulumi.StringPtrInput `pulumi:"smsNumberTitle"`
+	// Example username format shown for SMS authentication
 	SmsUsernameFormat pulumi.StringPtrInput `pulumi:"smsUsernameFormat"`
 	// How long confirmation code should be considered valid (in minutes)
-	SmsValidityDuration pulumi.IntPtrInput    `pulumi:"smsValidityDuration"`
-	SponsorBackLink     pulumi.StringPtrInput `pulumi:"sponsorBackLink"`
-	SponsorCancel       pulumi.StringPtrInput `pulumi:"sponsorCancel"`
+	SmsValidityDuration pulumi.IntPtrInput `pulumi:"smsValidityDuration"`
+	// Link text for returning to edit the sponsor request form
+	SponsorBackLink pulumi.StringPtrInput `pulumi:"sponsorBackLink"`
+	// Button label for canceling sponsor authentication
+	SponsorCancel pulumi.StringPtrInput `pulumi:"sponsorCancel"`
 	// Label for Sponsor Email
-	SponsorEmail      pulumi.StringPtrInput `pulumi:"sponsorEmail"`
+	SponsorEmail pulumi.StringPtrInput `pulumi:"sponsorEmail"`
+	// Error message shown when the sponsor email address is invalid
 	SponsorEmailError pulumi.StringPtrInput `pulumi:"sponsorEmailError"`
 	// HTML template to replace/override default sponsor email template
 	// Sponsor Email Template supports following template variables:
@@ -27781,12 +28026,17 @@ type WlanPortalTemplatePortalTemplateArgs struct {
 	//   * `sponsorLinkValidityDuration`: Renders validity time of the request (i.e. Approve/Deny URL)
 	//   * `authExpireMinutes`: Renders Wlan-level configured Guest Authorization Expiration time period (in minutes), If not configured then default (1 day in minutes)
 	SponsorEmailTemplate pulumi.StringPtrInput `pulumi:"sponsorEmailTemplate"`
-	SponsorInfoApproved  pulumi.StringPtrInput `pulumi:"sponsorInfoApproved"`
-	SponsorInfoDenied    pulumi.StringPtrInput `pulumi:"sponsorInfoDenied"`
-	SponsorInfoPending   pulumi.StringPtrInput `pulumi:"sponsorInfoPending"`
+	// Status message prefix shown when a sponsor approves the request
+	SponsorInfoApproved pulumi.StringPtrInput `pulumi:"sponsorInfoApproved"`
+	// Status message prefix shown when a sponsor denies the request
+	SponsorInfoDenied pulumi.StringPtrInput `pulumi:"sponsorInfoDenied"`
+	// Status message prefix shown after a sponsor notification is sent
+	SponsorInfoPending pulumi.StringPtrInput `pulumi:"sponsorInfoPending"`
 	// Label for Sponsor Name
-	SponsorName        pulumi.StringPtrInput `pulumi:"sponsorName"`
-	SponsorNameError   pulumi.StringPtrInput `pulumi:"sponsorNameError"`
+	SponsorName pulumi.StringPtrInput `pulumi:"sponsorName"`
+	// Error message shown when the sponsor name is missing
+	SponsorNameError pulumi.StringPtrInput `pulumi:"sponsorNameError"`
+	// Additional status text shown while sponsor approval is pending
 	SponsorNotePending pulumi.StringPtrInput `pulumi:"sponsorNotePending"`
 	// Submit button label request Wifi Access and notify sponsor about guest request
 	SponsorRequestAccess pulumi.StringPtrInput `pulumi:"sponsorRequestAccess"`
@@ -27797,10 +28047,13 @@ type WlanPortalTemplatePortalTemplateArgs struct {
 	// Text to display if request is still pending
 	SponsorStatusPending pulumi.StringPtrInput `pulumi:"sponsorStatusPending"`
 	// Submit button label to notify sponsor about guest request
-	SponsorSubmit      pulumi.StringPtrInput `pulumi:"sponsorSubmit"`
-	SponsorsError      pulumi.StringPtrInput `pulumi:"sponsorsError"`
+	SponsorSubmit pulumi.StringPtrInput `pulumi:"sponsorSubmit"`
+	// Error message shown when no sponsor is selected
+	SponsorsError pulumi.StringPtrInput `pulumi:"sponsorsError"`
+	// Label for the sponsor selection field
 	SponsorsFieldLabel pulumi.StringPtrInput `pulumi:"sponsorsFieldLabel"`
-	Tos                pulumi.BoolPtrInput   `pulumi:"tos"`
+	// Whether the portal requires Terms of Service acceptance
+	Tos pulumi.BoolPtrInput `pulumi:"tos"`
 	// Prefix of the label of the link to go to tos
 	TosAcceptLabel pulumi.StringPtrInput `pulumi:"tosAcceptLabel"`
 	// Error message when tos not accepted
@@ -27888,11 +28141,12 @@ func (o WlanPortalTemplatePortalTemplateOutput) ToWlanPortalTemplatePortalTempla
 	}).(WlanPortalTemplatePortalTemplatePtrOutput)
 }
 
+// Link text for using an alternate email address during access-code login
 func (o WlanPortalTemplatePortalTemplateOutput) AccessCodeAlternateEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.AccessCodeAlternateEmail }).(pulumi.StringPtrOutput)
 }
 
-// defines alignment on portal. enum: `center`, `left`, `right`
+// Text and content alignment used by the guest portal template
 func (o WlanPortalTemplatePortalTemplateOutput) Alignment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.Alignment }).(pulumi.StringPtrOutput)
 }
@@ -27942,6 +28196,7 @@ func (o WlanPortalTemplatePortalTemplateOutput) AuthButtonSponsor() pulumi.Strin
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.AuthButtonSponsor }).(pulumi.StringPtrOutput)
 }
 
+// Heading text displayed above portal authentication options
 func (o WlanPortalTemplatePortalTemplateOutput) AuthLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.AuthLabel }).(pulumi.StringPtrOutput)
 }
@@ -27951,15 +28206,17 @@ func (o WlanPortalTemplatePortalTemplateOutput) BackLink() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.BackLink }).(pulumi.StringPtrOutput)
 }
 
-// Portal main color
+// Primary color used by the portal template
 func (o WlanPortalTemplatePortalTemplateOutput) Color() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.Color }).(pulumi.StringPtrOutput)
 }
 
+// Darker accent color used by the portal template
 func (o WlanPortalTemplatePortalTemplateOutput) ColorDark() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.ColorDark }).(pulumi.StringPtrOutput)
 }
 
+// Lighter accent color used by the portal template
 func (o WlanPortalTemplatePortalTemplateOutput) ColorLight() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.ColorLight }).(pulumi.StringPtrOutput)
 }
@@ -27974,7 +28231,7 @@ func (o WlanPortalTemplatePortalTemplateOutput) CompanyError() pulumi.StringPtrO
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.CompanyError }).(pulumi.StringPtrOutput)
 }
 
-// Label of company field
+// Label displayed for the company input field
 func (o WlanPortalTemplatePortalTemplateOutput) CompanyLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.CompanyLabel }).(pulumi.StringPtrOutput)
 }
@@ -27994,26 +28251,32 @@ func (o WlanPortalTemplatePortalTemplateOutput) EmailCancel() pulumi.StringPtrOu
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.EmailCancel }).(pulumi.StringPtrOutput)
 }
 
+// Link text for requesting help when the email access code was not received
 func (o WlanPortalTemplatePortalTemplateOutput) EmailCodeCancel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.EmailCodeCancel }).(pulumi.StringPtrOutput)
 }
 
+// Error message shown when the alternate email address for access-code delivery is invalid
 func (o WlanPortalTemplatePortalTemplateOutput) EmailCodeError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.EmailCodeError }).(pulumi.StringPtrOutput)
 }
 
+// Label for the email access-code input field
 func (o WlanPortalTemplatePortalTemplateOutput) EmailCodeFieldLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.EmailCodeFieldLabel }).(pulumi.StringPtrOutput)
 }
 
+// Instructional text shown before entering the email access code
 func (o WlanPortalTemplatePortalTemplateOutput) EmailCodeMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.EmailCodeMessage }).(pulumi.StringPtrOutput)
 }
 
+// Button label for submitting the email access code
 func (o WlanPortalTemplatePortalTemplateOutput) EmailCodeSubmit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.EmailCodeSubmit }).(pulumi.StringPtrOutput)
 }
 
+// Title shown on the email access-code entry page
 func (o WlanPortalTemplatePortalTemplateOutput) EmailCodeTitle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.EmailCodeTitle }).(pulumi.StringPtrOutput)
 }
@@ -28023,15 +28286,17 @@ func (o WlanPortalTemplatePortalTemplateOutput) EmailError() pulumi.StringPtrOut
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.EmailError }).(pulumi.StringPtrOutput)
 }
 
+// Label for the email address input field
 func (o WlanPortalTemplatePortalTemplateOutput) EmailFieldLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.EmailFieldLabel }).(pulumi.StringPtrOutput)
 }
 
-// Label of email field
+// Label displayed for the email input field
 func (o WlanPortalTemplatePortalTemplateOutput) EmailLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.EmailLabel }).(pulumi.StringPtrOutput)
 }
 
+// Instructional text explaining email access-code delivery
 func (o WlanPortalTemplatePortalTemplateOutput) EmailMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.EmailMessage }).(pulumi.StringPtrOutput)
 }
@@ -28056,12 +28321,12 @@ func (o WlanPortalTemplatePortalTemplateOutput) Field1error() pulumi.StringPtrOu
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.Field1error }).(pulumi.StringPtrOutput)
 }
 
-// Label of field1
+// Label for custom field 1 input
 func (o WlanPortalTemplatePortalTemplateOutput) Field1label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.Field1label }).(pulumi.StringPtrOutput)
 }
 
-// Whether field1 is required field
+// Whether custom field 1 must be provided when the field is shown
 func (o WlanPortalTemplatePortalTemplateOutput) Field1required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.Field1required }).(pulumi.BoolPtrOutput)
 }
@@ -28076,12 +28341,12 @@ func (o WlanPortalTemplatePortalTemplateOutput) Field2error() pulumi.StringPtrOu
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.Field2error }).(pulumi.StringPtrOutput)
 }
 
-// Label of field2
+// Label for custom field 2 input
 func (o WlanPortalTemplatePortalTemplateOutput) Field2label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.Field2label }).(pulumi.StringPtrOutput)
 }
 
-// Whether field2 is required field
+// Whether custom field 2 must be provided when the field is shown
 func (o WlanPortalTemplatePortalTemplateOutput) Field2required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.Field2required }).(pulumi.BoolPtrOutput)
 }
@@ -28096,12 +28361,12 @@ func (o WlanPortalTemplatePortalTemplateOutput) Field3error() pulumi.StringPtrOu
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.Field3error }).(pulumi.StringPtrOutput)
 }
 
-// Label of field3
+// Label for custom field 3 input
 func (o WlanPortalTemplatePortalTemplateOutput) Field3label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.Field3label }).(pulumi.StringPtrOutput)
 }
 
-// Whether field3 is required field
+// Whether custom field 3 must be provided when the field is shown
 func (o WlanPortalTemplatePortalTemplateOutput) Field3required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.Field3required }).(pulumi.BoolPtrOutput)
 }
@@ -28116,12 +28381,12 @@ func (o WlanPortalTemplatePortalTemplateOutput) Field4error() pulumi.StringPtrOu
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.Field4error }).(pulumi.StringPtrOutput)
 }
 
-// Label of field4
+// Label for custom field 4 input
 func (o WlanPortalTemplatePortalTemplateOutput) Field4label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.Field4label }).(pulumi.StringPtrOutput)
 }
 
-// Whether field4 is required field
+// Whether custom field 4 must be provided when the field is shown
 func (o WlanPortalTemplatePortalTemplateOutput) Field4required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.Field4required }).(pulumi.BoolPtrOutput)
 }
@@ -28158,15 +28423,17 @@ func (o WlanPortalTemplatePortalTemplateOutput) MarketingPolicyOptInLabel() pulu
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.MarketingPolicyOptInLabel }).(pulumi.StringPtrOutput)
 }
 
-// marketing policy text
+// Text of the marketing policy opt-in content
 func (o WlanPortalTemplatePortalTemplateOutput) MarketingPolicyOptInText() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.MarketingPolicyOptInText }).(pulumi.StringPtrOutput)
 }
 
+// Main message displayed on the guest portal sign-in page
 func (o WlanPortalTemplatePortalTemplateOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
 
+// Whether the portal presents multiple authentication methods
 func (o WlanPortalTemplatePortalTemplateOutput) MultiAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.MultiAuth }).(pulumi.BoolPtrOutput)
 }
@@ -28181,7 +28448,7 @@ func (o WlanPortalTemplatePortalTemplateOutput) NameError() pulumi.StringPtrOutp
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.NameError }).(pulumi.StringPtrOutput)
 }
 
-// Label of name field
+// Label displayed for the name input field
 func (o WlanPortalTemplatePortalTemplateOutput) NameLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.NameLabel }).(pulumi.StringPtrOutput)
 }
@@ -28201,6 +28468,7 @@ func (o WlanPortalTemplatePortalTemplateOutput) OptoutLabel() pulumi.StringPtrOu
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.OptoutLabel }).(pulumi.StringPtrOutput)
 }
 
+// Browser or page title shown for the guest portal
 func (o WlanPortalTemplatePortalTemplateOutput) PageTitle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.PageTitle }).(pulumi.StringPtrOutput)
 }
@@ -28215,11 +28483,12 @@ func (o WlanPortalTemplatePortalTemplateOutput) PassphraseError() pulumi.StringP
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.PassphraseError }).(pulumi.StringPtrOutput)
 }
 
-// Passphrase
+// Label for the passphrase input field
 func (o WlanPortalTemplatePortalTemplateOutput) PassphraseLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.PassphraseLabel }).(pulumi.StringPtrOutput)
 }
 
+// Instructional text shown on the passphrase sign-in page
 func (o WlanPortalTemplatePortalTemplateOutput) PassphraseMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.PassphraseMessage }).(pulumi.StringPtrOutput)
 }
@@ -28264,11 +28533,12 @@ func (o WlanPortalTemplatePortalTemplateOutput) PrivacyPolicyText() pulumi.Strin
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.PrivacyPolicyText }).(pulumi.StringPtrOutput)
 }
 
-// Label to denote required field
+// Text used to mark a form field as required
 func (o WlanPortalTemplatePortalTemplateOutput) RequiredFieldLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.RequiredFieldLabel }).(pulumi.StringPtrOutput)
 }
 
+// Whether the portal template uses a responsive layout
 func (o WlanPortalTemplatePortalTemplateOutput) ResponsiveLayout() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.ResponsiveLayout }).(pulumi.BoolPtrOutput)
 }
@@ -28278,10 +28548,12 @@ func (o WlanPortalTemplatePortalTemplateOutput) SignInLabel() pulumi.StringPtrOu
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SignInLabel }).(pulumi.StringPtrOutput)
 }
 
+// Default option text shown in the SMS carrier selector
 func (o WlanPortalTemplatePortalTemplateOutput) SmsCarrierDefault() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsCarrierDefault }).(pulumi.StringPtrOutput)
 }
 
+// Error message shown when no mobile carrier is selected
 func (o WlanPortalTemplatePortalTemplateOutput) SmsCarrierError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsCarrierError }).(pulumi.StringPtrOutput)
 }
@@ -28301,10 +28573,12 @@ func (o WlanPortalTemplatePortalTemplateOutput) SmsCodeError() pulumi.StringPtrO
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsCodeError }).(pulumi.StringPtrOutput)
 }
 
+// Label for the SMS confirmation-code input field
 func (o WlanPortalTemplatePortalTemplateOutput) SmsCodeFieldLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsCodeFieldLabel }).(pulumi.StringPtrOutput)
 }
 
+// Instructional text shown before entering the SMS access code
 func (o WlanPortalTemplatePortalTemplateOutput) SmsCodeMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsCodeMessage }).(pulumi.StringPtrOutput)
 }
@@ -28314,14 +28588,17 @@ func (o WlanPortalTemplatePortalTemplateOutput) SmsCodeSubmit() pulumi.StringPtr
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsCodeSubmit }).(pulumi.StringPtrOutput)
 }
 
+// Title shown on the SMS access-code entry page
 func (o WlanPortalTemplatePortalTemplateOutput) SmsCodeTitle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsCodeTitle }).(pulumi.StringPtrOutput)
 }
 
+// Label for the SMS country-code input field
 func (o WlanPortalTemplatePortalTemplateOutput) SmsCountryFieldLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsCountryFieldLabel }).(pulumi.StringPtrOutput)
 }
 
+// Example country code format shown for SMS authentication
 func (o WlanPortalTemplatePortalTemplateOutput) SmsCountryFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsCountryFormat }).(pulumi.StringPtrOutput)
 }
@@ -28331,6 +28608,7 @@ func (o WlanPortalTemplatePortalTemplateOutput) SmsHaveAccessCode() pulumi.Strin
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsHaveAccessCode }).(pulumi.StringPtrOutput)
 }
 
+// Whether the SMS portal flow uses Twilio-specific behavior
 func (o WlanPortalTemplatePortalTemplateOutput) SmsIsTwilio() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.SmsIsTwilio }).(pulumi.BoolPtrOutput)
 }
@@ -28345,6 +28623,7 @@ func (o WlanPortalTemplatePortalTemplateOutput) SmsNumberCancel() pulumi.StringP
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsNumberCancel }).(pulumi.StringPtrOutput)
 }
 
+// Error message shown when the mobile number is invalid
 func (o WlanPortalTemplatePortalTemplateOutput) SmsNumberError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsNumberError }).(pulumi.StringPtrOutput)
 }
@@ -28354,10 +28633,12 @@ func (o WlanPortalTemplatePortalTemplateOutput) SmsNumberFieldLabel() pulumi.Str
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsNumberFieldLabel }).(pulumi.StringPtrOutput)
 }
 
+// Example mobile number format shown for SMS authentication
 func (o WlanPortalTemplatePortalTemplateOutput) SmsNumberFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsNumberFormat }).(pulumi.StringPtrOutput)
 }
 
+// Instructional text explaining SMS access-code delivery
 func (o WlanPortalTemplatePortalTemplateOutput) SmsNumberMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsNumberMessage }).(pulumi.StringPtrOutput)
 }
@@ -28372,6 +28653,7 @@ func (o WlanPortalTemplatePortalTemplateOutput) SmsNumberTitle() pulumi.StringPt
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsNumberTitle }).(pulumi.StringPtrOutput)
 }
 
+// Example username format shown for SMS authentication
 func (o WlanPortalTemplatePortalTemplateOutput) SmsUsernameFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsUsernameFormat }).(pulumi.StringPtrOutput)
 }
@@ -28381,10 +28663,12 @@ func (o WlanPortalTemplatePortalTemplateOutput) SmsValidityDuration() pulumi.Int
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *int { return v.SmsValidityDuration }).(pulumi.IntPtrOutput)
 }
 
+// Link text for returning to edit the sponsor request form
 func (o WlanPortalTemplatePortalTemplateOutput) SponsorBackLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorBackLink }).(pulumi.StringPtrOutput)
 }
 
+// Button label for canceling sponsor authentication
 func (o WlanPortalTemplatePortalTemplateOutput) SponsorCancel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorCancel }).(pulumi.StringPtrOutput)
 }
@@ -28394,6 +28678,7 @@ func (o WlanPortalTemplatePortalTemplateOutput) SponsorEmail() pulumi.StringPtrO
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorEmail }).(pulumi.StringPtrOutput)
 }
 
+// Error message shown when the sponsor email address is invalid
 func (o WlanPortalTemplatePortalTemplateOutput) SponsorEmailError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorEmailError }).(pulumi.StringPtrOutput)
 }
@@ -28412,14 +28697,17 @@ func (o WlanPortalTemplatePortalTemplateOutput) SponsorEmailTemplate() pulumi.St
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorEmailTemplate }).(pulumi.StringPtrOutput)
 }
 
+// Status message prefix shown when a sponsor approves the request
 func (o WlanPortalTemplatePortalTemplateOutput) SponsorInfoApproved() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorInfoApproved }).(pulumi.StringPtrOutput)
 }
 
+// Status message prefix shown when a sponsor denies the request
 func (o WlanPortalTemplatePortalTemplateOutput) SponsorInfoDenied() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorInfoDenied }).(pulumi.StringPtrOutput)
 }
 
+// Status message prefix shown after a sponsor notification is sent
 func (o WlanPortalTemplatePortalTemplateOutput) SponsorInfoPending() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorInfoPending }).(pulumi.StringPtrOutput)
 }
@@ -28429,10 +28717,12 @@ func (o WlanPortalTemplatePortalTemplateOutput) SponsorName() pulumi.StringPtrOu
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorName }).(pulumi.StringPtrOutput)
 }
 
+// Error message shown when the sponsor name is missing
 func (o WlanPortalTemplatePortalTemplateOutput) SponsorNameError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorNameError }).(pulumi.StringPtrOutput)
 }
 
+// Additional status text shown while sponsor approval is pending
 func (o WlanPortalTemplatePortalTemplateOutput) SponsorNotePending() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorNotePending }).(pulumi.StringPtrOutput)
 }
@@ -28462,14 +28752,17 @@ func (o WlanPortalTemplatePortalTemplateOutput) SponsorSubmit() pulumi.StringPtr
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorSubmit }).(pulumi.StringPtrOutput)
 }
 
+// Error message shown when no sponsor is selected
 func (o WlanPortalTemplatePortalTemplateOutput) SponsorsError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorsError }).(pulumi.StringPtrOutput)
 }
 
+// Label for the sponsor selection field
 func (o WlanPortalTemplatePortalTemplateOutput) SponsorsFieldLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorsFieldLabel }).(pulumi.StringPtrOutput)
 }
 
+// Whether the portal requires Terms of Service acceptance
 func (o WlanPortalTemplatePortalTemplateOutput) Tos() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.Tos }).(pulumi.BoolPtrOutput)
 }
@@ -28518,6 +28811,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) Elem() WlanPortalTemplatePort
 	}).(WlanPortalTemplatePortalTemplateOutput)
 }
 
+// Link text for using an alternate email address during access-code login
 func (o WlanPortalTemplatePortalTemplatePtrOutput) AccessCodeAlternateEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -28527,7 +28821,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) AccessCodeAlternateEmail() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// defines alignment on portal. enum: `center`, `left`, `right`
+// Text and content alignment used by the guest portal template
 func (o WlanPortalTemplatePortalTemplatePtrOutput) Alignment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -28627,6 +28921,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) AuthButtonSponsor() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+// Heading text displayed above portal authentication options
 func (o WlanPortalTemplatePortalTemplatePtrOutput) AuthLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -28646,7 +28941,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) BackLink() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Portal main color
+// Primary color used by the portal template
 func (o WlanPortalTemplatePortalTemplatePtrOutput) Color() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -28656,6 +28951,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) Color() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Darker accent color used by the portal template
 func (o WlanPortalTemplatePortalTemplatePtrOutput) ColorDark() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -28665,6 +28961,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) ColorDark() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// Lighter accent color used by the portal template
 func (o WlanPortalTemplatePortalTemplatePtrOutput) ColorLight() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -28694,7 +28991,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) CompanyError() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// Label of company field
+// Label displayed for the company input field
 func (o WlanPortalTemplatePortalTemplatePtrOutput) CompanyLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -28734,6 +29031,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) EmailCancel() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Link text for requesting help when the email access code was not received
 func (o WlanPortalTemplatePortalTemplatePtrOutput) EmailCodeCancel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -28743,6 +29041,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) EmailCodeCancel() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Error message shown when the alternate email address for access-code delivery is invalid
 func (o WlanPortalTemplatePortalTemplatePtrOutput) EmailCodeError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -28752,6 +29051,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) EmailCodeError() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// Label for the email access-code input field
 func (o WlanPortalTemplatePortalTemplatePtrOutput) EmailCodeFieldLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -28761,6 +29061,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) EmailCodeFieldLabel() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+// Instructional text shown before entering the email access code
 func (o WlanPortalTemplatePortalTemplatePtrOutput) EmailCodeMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -28770,6 +29071,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) EmailCodeMessage() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// Button label for submitting the email access code
 func (o WlanPortalTemplatePortalTemplatePtrOutput) EmailCodeSubmit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -28779,6 +29081,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) EmailCodeSubmit() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Title shown on the email access-code entry page
 func (o WlanPortalTemplatePortalTemplatePtrOutput) EmailCodeTitle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -28798,6 +29101,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) EmailError() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// Label for the email address input field
 func (o WlanPortalTemplatePortalTemplatePtrOutput) EmailFieldLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -28807,7 +29111,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) EmailFieldLabel() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Label of email field
+// Label displayed for the email input field
 func (o WlanPortalTemplatePortalTemplatePtrOutput) EmailLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -28817,6 +29121,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) EmailLabel() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// Instructional text explaining email access-code delivery
 func (o WlanPortalTemplatePortalTemplatePtrOutput) EmailMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -28866,7 +29171,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) Field1error() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Label of field1
+// Label for custom field 1 input
 func (o WlanPortalTemplatePortalTemplatePtrOutput) Field1label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -28876,7 +29181,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) Field1label() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Whether field1 is required field
+// Whether custom field 1 must be provided when the field is shown
 func (o WlanPortalTemplatePortalTemplatePtrOutput) Field1required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
 		if v == nil {
@@ -28906,7 +29211,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) Field2error() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Label of field2
+// Label for custom field 2 input
 func (o WlanPortalTemplatePortalTemplatePtrOutput) Field2label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -28916,7 +29221,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) Field2label() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Whether field2 is required field
+// Whether custom field 2 must be provided when the field is shown
 func (o WlanPortalTemplatePortalTemplatePtrOutput) Field2required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
 		if v == nil {
@@ -28946,7 +29251,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) Field3error() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Label of field3
+// Label for custom field 3 input
 func (o WlanPortalTemplatePortalTemplatePtrOutput) Field3label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -28956,7 +29261,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) Field3label() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Whether field3 is required field
+// Whether custom field 3 must be provided when the field is shown
 func (o WlanPortalTemplatePortalTemplatePtrOutput) Field3required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
 		if v == nil {
@@ -28986,7 +29291,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) Field4error() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Label of field4
+// Label for custom field 4 input
 func (o WlanPortalTemplatePortalTemplatePtrOutput) Field4label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -28996,7 +29301,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) Field4label() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Whether field4 is required field
+// Whether custom field 4 must be provided when the field is shown
 func (o WlanPortalTemplatePortalTemplatePtrOutput) Field4required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
 		if v == nil {
@@ -29061,7 +29366,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) MarketingPolicyOptInLabel() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// marketing policy text
+// Text of the marketing policy opt-in content
 func (o WlanPortalTemplatePortalTemplatePtrOutput) MarketingPolicyOptInText() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -29071,6 +29376,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) MarketingPolicyOptInText() pu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Main message displayed on the guest portal sign-in page
 func (o WlanPortalTemplatePortalTemplatePtrOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -29080,6 +29386,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) Message() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whether the portal presents multiple authentication methods
 func (o WlanPortalTemplatePortalTemplatePtrOutput) MultiAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
 		if v == nil {
@@ -29109,7 +29416,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) NameError() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// Label of name field
+// Label displayed for the name input field
 func (o WlanPortalTemplatePortalTemplatePtrOutput) NameLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -29149,6 +29456,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) OptoutLabel() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Browser or page title shown for the guest portal
 func (o WlanPortalTemplatePortalTemplatePtrOutput) PageTitle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -29178,7 +29486,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) PassphraseError() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Passphrase
+// Label for the passphrase input field
 func (o WlanPortalTemplatePortalTemplatePtrOutput) PassphraseLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -29188,6 +29496,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) PassphraseLabel() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Instructional text shown on the passphrase sign-in page
 func (o WlanPortalTemplatePortalTemplatePtrOutput) PassphraseMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -29277,7 +29586,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) PrivacyPolicyText() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// Label to denote required field
+// Text used to mark a form field as required
 func (o WlanPortalTemplatePortalTemplatePtrOutput) RequiredFieldLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -29287,6 +29596,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) RequiredFieldLabel() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whether the portal template uses a responsive layout
 func (o WlanPortalTemplatePortalTemplatePtrOutput) ResponsiveLayout() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
 		if v == nil {
@@ -29306,6 +29616,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) SignInLabel() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Default option text shown in the SMS carrier selector
 func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsCarrierDefault() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -29315,6 +29626,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsCarrierDefault() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+// Error message shown when no mobile carrier is selected
 func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsCarrierError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -29354,6 +29666,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsCodeError() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// Label for the SMS confirmation-code input field
 func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsCodeFieldLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -29363,6 +29676,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsCodeFieldLabel() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+// Instructional text shown before entering the SMS access code
 func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsCodeMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -29382,6 +29696,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsCodeSubmit() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// Title shown on the SMS access-code entry page
 func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsCodeTitle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -29391,6 +29706,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsCodeTitle() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// Label for the SMS country-code input field
 func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsCountryFieldLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -29400,6 +29716,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsCountryFieldLabel() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// Example country code format shown for SMS authentication
 func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsCountryFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -29419,6 +29736,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsHaveAccessCode() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whether the SMS portal flow uses Twilio-specific behavior
 func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsIsTwilio() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
 		if v == nil {
@@ -29448,6 +29766,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsNumberCancel() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Error message shown when the mobile number is invalid
 func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsNumberError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -29467,6 +29786,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsNumberFieldLabel() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+// Example mobile number format shown for SMS authentication
 func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsNumberFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -29476,6 +29796,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsNumberFormat() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Instructional text explaining SMS access-code delivery
 func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsNumberMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -29505,6 +29826,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsNumberTitle() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// Example username format shown for SMS authentication
 func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsUsernameFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -29524,6 +29846,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsValidityDuration() pulumi.
 	}).(pulumi.IntPtrOutput)
 }
 
+// Link text for returning to edit the sponsor request form
 func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorBackLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -29533,6 +29856,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorBackLink() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Button label for canceling sponsor authentication
 func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorCancel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -29552,6 +29876,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorEmail() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// Error message shown when the sponsor email address is invalid
 func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorEmailError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -29580,6 +29905,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorEmailTemplate() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// Status message prefix shown when a sponsor approves the request
 func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorInfoApproved() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -29589,6 +29915,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorInfoApproved() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+// Status message prefix shown when a sponsor denies the request
 func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorInfoDenied() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -29598,6 +29925,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorInfoDenied() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+// Status message prefix shown after a sponsor notification is sent
 func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorInfoPending() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -29617,6 +29945,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorName() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Error message shown when the sponsor name is missing
 func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorNameError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -29626,6 +29955,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorNameError() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// Additional status text shown while sponsor approval is pending
 func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorNotePending() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -29685,6 +30015,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorSubmit() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// Error message shown when no sponsor is selected
 func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorsError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -29694,6 +30025,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorsError() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// Label for the sponsor selection field
 func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorsFieldLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -29703,6 +30035,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorsFieldLabel() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whether the portal requires Terms of Service acceptance
 func (o WlanPortalTemplatePortalTemplatePtrOutput) Tos() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
 		if v == nil {
@@ -29771,28 +30104,37 @@ type WlanPortalTemplatePortalTemplateLocales struct {
 	AuthButtonSms *string `pulumi:"authButtonSms"`
 	// Label for Sponsor auth button
 	AuthButtonSponsor *string `pulumi:"authButtonSponsor"`
-	AuthLabel         *string `pulumi:"authLabel"`
+	// Localized heading text displayed above portal authentication options
+	AuthLabel *string `pulumi:"authLabel"`
 	// Label of the link to go back to /logon
 	BackLink *string `pulumi:"backLink"`
 	// Error message when company not provided
 	CompanyError *string `pulumi:"companyError"`
-	// Label of company field
+	// Localized label displayed for the company input field
 	CompanyLabel *string `pulumi:"companyLabel"`
 	// Error message when a user has valid social login but doesn't match specified email domains.
 	EmailAccessDomainError *string `pulumi:"emailAccessDomainError"`
 	// Label for cancel confirmation code submission using email auth
-	EmailCancel         *string `pulumi:"emailCancel"`
-	EmailCodeCancel     *string `pulumi:"emailCodeCancel"`
-	EmailCodeError      *string `pulumi:"emailCodeError"`
+	EmailCancel *string `pulumi:"emailCancel"`
+	// Localized link text for requesting help when the email access code was not received
+	EmailCodeCancel *string `pulumi:"emailCodeCancel"`
+	// Localized error message shown when the alternate email address for access-code delivery is invalid
+	EmailCodeError *string `pulumi:"emailCodeError"`
+	// Localized label for the email access-code input field
 	EmailCodeFieldLabel *string `pulumi:"emailCodeFieldLabel"`
-	EmailCodeMessage    *string `pulumi:"emailCodeMessage"`
-	EmailCodeSubmit     *string `pulumi:"emailCodeSubmit"`
-	EmailCodeTitle      *string `pulumi:"emailCodeTitle"`
+	// Localized instructional text shown before entering the email access code
+	EmailCodeMessage *string `pulumi:"emailCodeMessage"`
+	// Localized button label for submitting the email access code
+	EmailCodeSubmit *string `pulumi:"emailCodeSubmit"`
+	// Localized title shown on the email access-code entry page
+	EmailCodeTitle *string `pulumi:"emailCodeTitle"`
 	// Error message when email not provided
-	EmailError      *string `pulumi:"emailError"`
+	EmailError *string `pulumi:"emailError"`
+	// Localized label for the email address input field
 	EmailFieldLabel *string `pulumi:"emailFieldLabel"`
-	// Label of email field
-	EmailLabel   *string `pulumi:"emailLabel"`
+	// Localized label displayed for the email input field
+	EmailLabel *string `pulumi:"emailLabel"`
+	// Localized instructional text explaining email access-code delivery
 	EmailMessage *string `pulumi:"emailMessage"`
 	// Label for confirmation code submit button using email auth
 	EmailSubmit *string `pulumi:"emailSubmit"`
@@ -29800,19 +30142,19 @@ type WlanPortalTemplatePortalTemplateLocales struct {
 	EmailTitle *string `pulumi:"emailTitle"`
 	// Error message when field1 not provided
 	Field1error *string `pulumi:"field1error"`
-	// Label of field1
+	// Localized label for custom field 1 input
 	Field1label *string `pulumi:"field1label"`
 	// Error message when field2 not provided
 	Field2error *string `pulumi:"field2error"`
-	// Label of field2
+	// Localized label for custom field 2 input
 	Field2label *string `pulumi:"field2label"`
 	// Error message when field3 not provided
 	Field3error *string `pulumi:"field3error"`
-	// Label of field3
+	// Localized label for custom field 3 input
 	Field3label *string `pulumi:"field3label"`
 	// Error message when field4 not provided
 	Field4error *string `pulumi:"field4error"`
-	// Label of field4
+	// Localized label for custom field 4 input
 	Field4label *string `pulumi:"field4label"`
 	// label of the link to go to /marketing_policy
 	MarketingPolicyLink *string `pulumi:"marketingPolicyLink"`
@@ -29820,22 +30162,25 @@ type WlanPortalTemplatePortalTemplateLocales struct {
 	MarketingPolicyOptIn *bool `pulumi:"marketingPolicyOptIn"`
 	// label for marketing optin
 	MarketingPolicyOptInLabel *string `pulumi:"marketingPolicyOptInLabel"`
-	// marketing policy text
+	// Localized text of the marketing policy opt-in content
 	MarketingPolicyOptInText *string `pulumi:"marketingPolicyOptInText"`
-	Message                  *string `pulumi:"message"`
+	// Localized main message displayed on the guest portal sign-in page
+	Message *string `pulumi:"message"`
 	// Error message when name not provided
 	NameError *string `pulumi:"nameError"`
-	// Label of name field
+	// Localized label displayed for the name input field
 	NameLabel *string `pulumi:"nameLabel"`
 	// Label for Do Not Store My Personal Information
 	OptoutLabel *string `pulumi:"optoutLabel"`
-	PageTitle   *string `pulumi:"pageTitle"`
+	// Localized browser or page title shown for the guest portal
+	PageTitle *string `pulumi:"pageTitle"`
 	// Label for the Passphrase cancel button
 	PassphraseCancel *string `pulumi:"passphraseCancel"`
 	// Error message when invalid passphrase is provided
 	PassphraseError *string `pulumi:"passphraseError"`
-	// Passphrase
-	PassphraseLabel   *string `pulumi:"passphraseLabel"`
+	// Localized label for the passphrase input field
+	PassphraseLabel *string `pulumi:"passphraseLabel"`
+	// Localized instructional text shown on the passphrase sign-in page
 	PassphraseMessage *string `pulumi:"passphraseMessage"`
 	// Label for the Passphrase submit button
 	PassphraseSubmit *string `pulumi:"passphraseSubmit"`
@@ -29849,52 +30194,71 @@ type WlanPortalTemplatePortalTemplateLocales struct {
 	PrivacyPolicyLink *string `pulumi:"privacyPolicyLink"`
 	// Text of the Privacy Policy
 	PrivacyPolicyText *string `pulumi:"privacyPolicyText"`
-	// Label to denote required field
+	// Localized text used to mark a form field as required
 	RequiredFieldLabel *string `pulumi:"requiredFieldLabel"`
 	// Label of the button to signin
-	SignInLabel       *string `pulumi:"signInLabel"`
+	SignInLabel *string `pulumi:"signInLabel"`
+	// Localized default option text shown in the SMS carrier selector
 	SmsCarrierDefault *string `pulumi:"smsCarrierDefault"`
-	SmsCarrierError   *string `pulumi:"smsCarrierError"`
+	// Localized error message shown when no mobile carrier is selected
+	SmsCarrierError *string `pulumi:"smsCarrierError"`
 	// Label for mobile carrier drop-down list
 	SmsCarrierFieldLabel *string `pulumi:"smsCarrierFieldLabel"`
 	// Label for cancel confirmation code submission
 	SmsCodeCancel *string `pulumi:"smsCodeCancel"`
 	// Error message when confirmation code is invalid
-	SmsCodeError      *string `pulumi:"smsCodeError"`
+	SmsCodeError *string `pulumi:"smsCodeError"`
+	// Localized label for the SMS confirmation-code input field
 	SmsCodeFieldLabel *string `pulumi:"smsCodeFieldLabel"`
-	SmsCodeMessage    *string `pulumi:"smsCodeMessage"`
+	// Localized instructional text shown before entering the SMS access code
+	SmsCodeMessage *string `pulumi:"smsCodeMessage"`
 	// Label for confirmation code submit button
-	SmsCodeSubmit        *string `pulumi:"smsCodeSubmit"`
-	SmsCodeTitle         *string `pulumi:"smsCodeTitle"`
+	SmsCodeSubmit *string `pulumi:"smsCodeSubmit"`
+	// Localized title shown on the SMS access-code entry page
+	SmsCodeTitle *string `pulumi:"smsCodeTitle"`
+	// Localized label for the SMS country-code input field
 	SmsCountryFieldLabel *string `pulumi:"smsCountryFieldLabel"`
-	SmsCountryFormat     *string `pulumi:"smsCountryFormat"`
+	// Localized example country code format shown for SMS authentication
+	SmsCountryFormat *string `pulumi:"smsCountryFormat"`
 	// Label for checkbox to specify that the user has access code
 	SmsHaveAccessCode *string `pulumi:"smsHaveAccessCode"`
 	// Format of access code sms message. {{code}} and {{duration}} are placeholders and should be retained as is.
 	SmsMessageFormat *string `pulumi:"smsMessageFormat"`
 	// Label for canceling mobile details for SMS auth
 	SmsNumberCancel *string `pulumi:"smsNumberCancel"`
-	SmsNumberError  *string `pulumi:"smsNumberError"`
+	// Localized error message shown when the mobile number is invalid
+	SmsNumberError *string `pulumi:"smsNumberError"`
 	// Label for field to provide mobile number
 	SmsNumberFieldLabel *string `pulumi:"smsNumberFieldLabel"`
-	SmsNumberFormat     *string `pulumi:"smsNumberFormat"`
-	SmsNumberMessage    *string `pulumi:"smsNumberMessage"`
+	// Localized example mobile number format shown for SMS authentication
+	SmsNumberFormat *string `pulumi:"smsNumberFormat"`
+	// Localized instructional text explaining SMS access-code delivery
+	SmsNumberMessage *string `pulumi:"smsNumberMessage"`
 	// Label for submit button for code generation
 	SmsNumberSubmit *string `pulumi:"smsNumberSubmit"`
 	// Title for phone number details
-	SmsNumberTitle    *string `pulumi:"smsNumberTitle"`
+	SmsNumberTitle *string `pulumi:"smsNumberTitle"`
+	// Localized example username format shown for SMS authentication
 	SmsUsernameFormat *string `pulumi:"smsUsernameFormat"`
-	SponsorBackLink   *string `pulumi:"sponsorBackLink"`
-	SponsorCancel     *string `pulumi:"sponsorCancel"`
+	// Localized link text for returning to edit the sponsor request form
+	SponsorBackLink *string `pulumi:"sponsorBackLink"`
+	// Localized button label for canceling sponsor authentication
+	SponsorCancel *string `pulumi:"sponsorCancel"`
 	// Label for Sponsor Email
-	SponsorEmail        *string `pulumi:"sponsorEmail"`
-	SponsorEmailError   *string `pulumi:"sponsorEmailError"`
+	SponsorEmail *string `pulumi:"sponsorEmail"`
+	// Localized error message shown when the sponsor email address is invalid
+	SponsorEmailError *string `pulumi:"sponsorEmailError"`
+	// Localized status message prefix shown when a sponsor approves the request
 	SponsorInfoApproved *string `pulumi:"sponsorInfoApproved"`
-	SponsorInfoDenied   *string `pulumi:"sponsorInfoDenied"`
-	SponsorInfoPending  *string `pulumi:"sponsorInfoPending"`
+	// Localized status message prefix shown when a sponsor denies the request
+	SponsorInfoDenied *string `pulumi:"sponsorInfoDenied"`
+	// Localized status message prefix shown after a sponsor notification is sent
+	SponsorInfoPending *string `pulumi:"sponsorInfoPending"`
 	// Label for Sponsor Name
-	SponsorName        *string `pulumi:"sponsorName"`
-	SponsorNameError   *string `pulumi:"sponsorNameError"`
+	SponsorName *string `pulumi:"sponsorName"`
+	// Localized error message shown when the sponsor name is missing
+	SponsorNameError *string `pulumi:"sponsorNameError"`
+	// Localized additional status text shown while sponsor approval is pending
 	SponsorNotePending *string `pulumi:"sponsorNotePending"`
 	// Submit button label request Wifi Access and notify sponsor about guest request
 	SponsorRequestAccess *string `pulumi:"sponsorRequestAccess"`
@@ -29905,8 +30269,10 @@ type WlanPortalTemplatePortalTemplateLocales struct {
 	// Text to display if request is still pending
 	SponsorStatusPending *string `pulumi:"sponsorStatusPending"`
 	// Submit button label to notify sponsor about guest request
-	SponsorSubmit      *string `pulumi:"sponsorSubmit"`
-	SponsorsError      *string `pulumi:"sponsorsError"`
+	SponsorSubmit *string `pulumi:"sponsorSubmit"`
+	// Localized error message shown when no sponsor is selected
+	SponsorsError *string `pulumi:"sponsorsError"`
+	// Localized label for the sponsor selection field
 	SponsorsFieldLabel *string `pulumi:"sponsorsFieldLabel"`
 	// Prefix of the label of the link to go to tos
 	TosAcceptLabel *string `pulumi:"tosAcceptLabel"`
@@ -29948,28 +30314,37 @@ type WlanPortalTemplatePortalTemplateLocalesArgs struct {
 	AuthButtonSms pulumi.StringPtrInput `pulumi:"authButtonSms"`
 	// Label for Sponsor auth button
 	AuthButtonSponsor pulumi.StringPtrInput `pulumi:"authButtonSponsor"`
-	AuthLabel         pulumi.StringPtrInput `pulumi:"authLabel"`
+	// Localized heading text displayed above portal authentication options
+	AuthLabel pulumi.StringPtrInput `pulumi:"authLabel"`
 	// Label of the link to go back to /logon
 	BackLink pulumi.StringPtrInput `pulumi:"backLink"`
 	// Error message when company not provided
 	CompanyError pulumi.StringPtrInput `pulumi:"companyError"`
-	// Label of company field
+	// Localized label displayed for the company input field
 	CompanyLabel pulumi.StringPtrInput `pulumi:"companyLabel"`
 	// Error message when a user has valid social login but doesn't match specified email domains.
 	EmailAccessDomainError pulumi.StringPtrInput `pulumi:"emailAccessDomainError"`
 	// Label for cancel confirmation code submission using email auth
-	EmailCancel         pulumi.StringPtrInput `pulumi:"emailCancel"`
-	EmailCodeCancel     pulumi.StringPtrInput `pulumi:"emailCodeCancel"`
-	EmailCodeError      pulumi.StringPtrInput `pulumi:"emailCodeError"`
+	EmailCancel pulumi.StringPtrInput `pulumi:"emailCancel"`
+	// Localized link text for requesting help when the email access code was not received
+	EmailCodeCancel pulumi.StringPtrInput `pulumi:"emailCodeCancel"`
+	// Localized error message shown when the alternate email address for access-code delivery is invalid
+	EmailCodeError pulumi.StringPtrInput `pulumi:"emailCodeError"`
+	// Localized label for the email access-code input field
 	EmailCodeFieldLabel pulumi.StringPtrInput `pulumi:"emailCodeFieldLabel"`
-	EmailCodeMessage    pulumi.StringPtrInput `pulumi:"emailCodeMessage"`
-	EmailCodeSubmit     pulumi.StringPtrInput `pulumi:"emailCodeSubmit"`
-	EmailCodeTitle      pulumi.StringPtrInput `pulumi:"emailCodeTitle"`
+	// Localized instructional text shown before entering the email access code
+	EmailCodeMessage pulumi.StringPtrInput `pulumi:"emailCodeMessage"`
+	// Localized button label for submitting the email access code
+	EmailCodeSubmit pulumi.StringPtrInput `pulumi:"emailCodeSubmit"`
+	// Localized title shown on the email access-code entry page
+	EmailCodeTitle pulumi.StringPtrInput `pulumi:"emailCodeTitle"`
 	// Error message when email not provided
-	EmailError      pulumi.StringPtrInput `pulumi:"emailError"`
+	EmailError pulumi.StringPtrInput `pulumi:"emailError"`
+	// Localized label for the email address input field
 	EmailFieldLabel pulumi.StringPtrInput `pulumi:"emailFieldLabel"`
-	// Label of email field
-	EmailLabel   pulumi.StringPtrInput `pulumi:"emailLabel"`
+	// Localized label displayed for the email input field
+	EmailLabel pulumi.StringPtrInput `pulumi:"emailLabel"`
+	// Localized instructional text explaining email access-code delivery
 	EmailMessage pulumi.StringPtrInput `pulumi:"emailMessage"`
 	// Label for confirmation code submit button using email auth
 	EmailSubmit pulumi.StringPtrInput `pulumi:"emailSubmit"`
@@ -29977,19 +30352,19 @@ type WlanPortalTemplatePortalTemplateLocalesArgs struct {
 	EmailTitle pulumi.StringPtrInput `pulumi:"emailTitle"`
 	// Error message when field1 not provided
 	Field1error pulumi.StringPtrInput `pulumi:"field1error"`
-	// Label of field1
+	// Localized label for custom field 1 input
 	Field1label pulumi.StringPtrInput `pulumi:"field1label"`
 	// Error message when field2 not provided
 	Field2error pulumi.StringPtrInput `pulumi:"field2error"`
-	// Label of field2
+	// Localized label for custom field 2 input
 	Field2label pulumi.StringPtrInput `pulumi:"field2label"`
 	// Error message when field3 not provided
 	Field3error pulumi.StringPtrInput `pulumi:"field3error"`
-	// Label of field3
+	// Localized label for custom field 3 input
 	Field3label pulumi.StringPtrInput `pulumi:"field3label"`
 	// Error message when field4 not provided
 	Field4error pulumi.StringPtrInput `pulumi:"field4error"`
-	// Label of field4
+	// Localized label for custom field 4 input
 	Field4label pulumi.StringPtrInput `pulumi:"field4label"`
 	// label of the link to go to /marketing_policy
 	MarketingPolicyLink pulumi.StringPtrInput `pulumi:"marketingPolicyLink"`
@@ -29997,22 +30372,25 @@ type WlanPortalTemplatePortalTemplateLocalesArgs struct {
 	MarketingPolicyOptIn pulumi.BoolPtrInput `pulumi:"marketingPolicyOptIn"`
 	// label for marketing optin
 	MarketingPolicyOptInLabel pulumi.StringPtrInput `pulumi:"marketingPolicyOptInLabel"`
-	// marketing policy text
+	// Localized text of the marketing policy opt-in content
 	MarketingPolicyOptInText pulumi.StringPtrInput `pulumi:"marketingPolicyOptInText"`
-	Message                  pulumi.StringPtrInput `pulumi:"message"`
+	// Localized main message displayed on the guest portal sign-in page
+	Message pulumi.StringPtrInput `pulumi:"message"`
 	// Error message when name not provided
 	NameError pulumi.StringPtrInput `pulumi:"nameError"`
-	// Label of name field
+	// Localized label displayed for the name input field
 	NameLabel pulumi.StringPtrInput `pulumi:"nameLabel"`
 	// Label for Do Not Store My Personal Information
 	OptoutLabel pulumi.StringPtrInput `pulumi:"optoutLabel"`
-	PageTitle   pulumi.StringPtrInput `pulumi:"pageTitle"`
+	// Localized browser or page title shown for the guest portal
+	PageTitle pulumi.StringPtrInput `pulumi:"pageTitle"`
 	// Label for the Passphrase cancel button
 	PassphraseCancel pulumi.StringPtrInput `pulumi:"passphraseCancel"`
 	// Error message when invalid passphrase is provided
 	PassphraseError pulumi.StringPtrInput `pulumi:"passphraseError"`
-	// Passphrase
-	PassphraseLabel   pulumi.StringPtrInput `pulumi:"passphraseLabel"`
+	// Localized label for the passphrase input field
+	PassphraseLabel pulumi.StringPtrInput `pulumi:"passphraseLabel"`
+	// Localized instructional text shown on the passphrase sign-in page
 	PassphraseMessage pulumi.StringPtrInput `pulumi:"passphraseMessage"`
 	// Label for the Passphrase submit button
 	PassphraseSubmit pulumi.StringPtrInput `pulumi:"passphraseSubmit"`
@@ -30026,52 +30404,71 @@ type WlanPortalTemplatePortalTemplateLocalesArgs struct {
 	PrivacyPolicyLink pulumi.StringPtrInput `pulumi:"privacyPolicyLink"`
 	// Text of the Privacy Policy
 	PrivacyPolicyText pulumi.StringPtrInput `pulumi:"privacyPolicyText"`
-	// Label to denote required field
+	// Localized text used to mark a form field as required
 	RequiredFieldLabel pulumi.StringPtrInput `pulumi:"requiredFieldLabel"`
 	// Label of the button to signin
-	SignInLabel       pulumi.StringPtrInput `pulumi:"signInLabel"`
+	SignInLabel pulumi.StringPtrInput `pulumi:"signInLabel"`
+	// Localized default option text shown in the SMS carrier selector
 	SmsCarrierDefault pulumi.StringPtrInput `pulumi:"smsCarrierDefault"`
-	SmsCarrierError   pulumi.StringPtrInput `pulumi:"smsCarrierError"`
+	// Localized error message shown when no mobile carrier is selected
+	SmsCarrierError pulumi.StringPtrInput `pulumi:"smsCarrierError"`
 	// Label for mobile carrier drop-down list
 	SmsCarrierFieldLabel pulumi.StringPtrInput `pulumi:"smsCarrierFieldLabel"`
 	// Label for cancel confirmation code submission
 	SmsCodeCancel pulumi.StringPtrInput `pulumi:"smsCodeCancel"`
 	// Error message when confirmation code is invalid
-	SmsCodeError      pulumi.StringPtrInput `pulumi:"smsCodeError"`
+	SmsCodeError pulumi.StringPtrInput `pulumi:"smsCodeError"`
+	// Localized label for the SMS confirmation-code input field
 	SmsCodeFieldLabel pulumi.StringPtrInput `pulumi:"smsCodeFieldLabel"`
-	SmsCodeMessage    pulumi.StringPtrInput `pulumi:"smsCodeMessage"`
+	// Localized instructional text shown before entering the SMS access code
+	SmsCodeMessage pulumi.StringPtrInput `pulumi:"smsCodeMessage"`
 	// Label for confirmation code submit button
-	SmsCodeSubmit        pulumi.StringPtrInput `pulumi:"smsCodeSubmit"`
-	SmsCodeTitle         pulumi.StringPtrInput `pulumi:"smsCodeTitle"`
+	SmsCodeSubmit pulumi.StringPtrInput `pulumi:"smsCodeSubmit"`
+	// Localized title shown on the SMS access-code entry page
+	SmsCodeTitle pulumi.StringPtrInput `pulumi:"smsCodeTitle"`
+	// Localized label for the SMS country-code input field
 	SmsCountryFieldLabel pulumi.StringPtrInput `pulumi:"smsCountryFieldLabel"`
-	SmsCountryFormat     pulumi.StringPtrInput `pulumi:"smsCountryFormat"`
+	// Localized example country code format shown for SMS authentication
+	SmsCountryFormat pulumi.StringPtrInput `pulumi:"smsCountryFormat"`
 	// Label for checkbox to specify that the user has access code
 	SmsHaveAccessCode pulumi.StringPtrInput `pulumi:"smsHaveAccessCode"`
 	// Format of access code sms message. {{code}} and {{duration}} are placeholders and should be retained as is.
 	SmsMessageFormat pulumi.StringPtrInput `pulumi:"smsMessageFormat"`
 	// Label for canceling mobile details for SMS auth
 	SmsNumberCancel pulumi.StringPtrInput `pulumi:"smsNumberCancel"`
-	SmsNumberError  pulumi.StringPtrInput `pulumi:"smsNumberError"`
+	// Localized error message shown when the mobile number is invalid
+	SmsNumberError pulumi.StringPtrInput `pulumi:"smsNumberError"`
 	// Label for field to provide mobile number
 	SmsNumberFieldLabel pulumi.StringPtrInput `pulumi:"smsNumberFieldLabel"`
-	SmsNumberFormat     pulumi.StringPtrInput `pulumi:"smsNumberFormat"`
-	SmsNumberMessage    pulumi.StringPtrInput `pulumi:"smsNumberMessage"`
+	// Localized example mobile number format shown for SMS authentication
+	SmsNumberFormat pulumi.StringPtrInput `pulumi:"smsNumberFormat"`
+	// Localized instructional text explaining SMS access-code delivery
+	SmsNumberMessage pulumi.StringPtrInput `pulumi:"smsNumberMessage"`
 	// Label for submit button for code generation
 	SmsNumberSubmit pulumi.StringPtrInput `pulumi:"smsNumberSubmit"`
 	// Title for phone number details
-	SmsNumberTitle    pulumi.StringPtrInput `pulumi:"smsNumberTitle"`
+	SmsNumberTitle pulumi.StringPtrInput `pulumi:"smsNumberTitle"`
+	// Localized example username format shown for SMS authentication
 	SmsUsernameFormat pulumi.StringPtrInput `pulumi:"smsUsernameFormat"`
-	SponsorBackLink   pulumi.StringPtrInput `pulumi:"sponsorBackLink"`
-	SponsorCancel     pulumi.StringPtrInput `pulumi:"sponsorCancel"`
+	// Localized link text for returning to edit the sponsor request form
+	SponsorBackLink pulumi.StringPtrInput `pulumi:"sponsorBackLink"`
+	// Localized button label for canceling sponsor authentication
+	SponsorCancel pulumi.StringPtrInput `pulumi:"sponsorCancel"`
 	// Label for Sponsor Email
-	SponsorEmail        pulumi.StringPtrInput `pulumi:"sponsorEmail"`
-	SponsorEmailError   pulumi.StringPtrInput `pulumi:"sponsorEmailError"`
+	SponsorEmail pulumi.StringPtrInput `pulumi:"sponsorEmail"`
+	// Localized error message shown when the sponsor email address is invalid
+	SponsorEmailError pulumi.StringPtrInput `pulumi:"sponsorEmailError"`
+	// Localized status message prefix shown when a sponsor approves the request
 	SponsorInfoApproved pulumi.StringPtrInput `pulumi:"sponsorInfoApproved"`
-	SponsorInfoDenied   pulumi.StringPtrInput `pulumi:"sponsorInfoDenied"`
-	SponsorInfoPending  pulumi.StringPtrInput `pulumi:"sponsorInfoPending"`
+	// Localized status message prefix shown when a sponsor denies the request
+	SponsorInfoDenied pulumi.StringPtrInput `pulumi:"sponsorInfoDenied"`
+	// Localized status message prefix shown after a sponsor notification is sent
+	SponsorInfoPending pulumi.StringPtrInput `pulumi:"sponsorInfoPending"`
 	// Label for Sponsor Name
-	SponsorName        pulumi.StringPtrInput `pulumi:"sponsorName"`
-	SponsorNameError   pulumi.StringPtrInput `pulumi:"sponsorNameError"`
+	SponsorName pulumi.StringPtrInput `pulumi:"sponsorName"`
+	// Localized error message shown when the sponsor name is missing
+	SponsorNameError pulumi.StringPtrInput `pulumi:"sponsorNameError"`
+	// Localized additional status text shown while sponsor approval is pending
 	SponsorNotePending pulumi.StringPtrInput `pulumi:"sponsorNotePending"`
 	// Submit button label request Wifi Access and notify sponsor about guest request
 	SponsorRequestAccess pulumi.StringPtrInput `pulumi:"sponsorRequestAccess"`
@@ -30082,8 +30479,10 @@ type WlanPortalTemplatePortalTemplateLocalesArgs struct {
 	// Text to display if request is still pending
 	SponsorStatusPending pulumi.StringPtrInput `pulumi:"sponsorStatusPending"`
 	// Submit button label to notify sponsor about guest request
-	SponsorSubmit      pulumi.StringPtrInput `pulumi:"sponsorSubmit"`
-	SponsorsError      pulumi.StringPtrInput `pulumi:"sponsorsError"`
+	SponsorSubmit pulumi.StringPtrInput `pulumi:"sponsorSubmit"`
+	// Localized error message shown when no sponsor is selected
+	SponsorsError pulumi.StringPtrInput `pulumi:"sponsorsError"`
+	// Localized label for the sponsor selection field
 	SponsorsFieldLabel pulumi.StringPtrInput `pulumi:"sponsorsFieldLabel"`
 	// Prefix of the label of the link to go to tos
 	TosAcceptLabel pulumi.StringPtrInput `pulumi:"tosAcceptLabel"`
@@ -30191,6 +30590,7 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) AuthButtonSponsor() pulum
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.AuthButtonSponsor }).(pulumi.StringPtrOutput)
 }
 
+// Localized heading text displayed above portal authentication options
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) AuthLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.AuthLabel }).(pulumi.StringPtrOutput)
 }
@@ -30205,7 +30605,7 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) CompanyError() pulumi.Str
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.CompanyError }).(pulumi.StringPtrOutput)
 }
 
-// Label of company field
+// Localized label displayed for the company input field
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) CompanyLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.CompanyLabel }).(pulumi.StringPtrOutput)
 }
@@ -30220,26 +30620,32 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) EmailCancel() pulumi.Stri
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.EmailCancel }).(pulumi.StringPtrOutput)
 }
 
+// Localized link text for requesting help when the email access code was not received
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) EmailCodeCancel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.EmailCodeCancel }).(pulumi.StringPtrOutput)
 }
 
+// Localized error message shown when the alternate email address for access-code delivery is invalid
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) EmailCodeError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.EmailCodeError }).(pulumi.StringPtrOutput)
 }
 
+// Localized label for the email access-code input field
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) EmailCodeFieldLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.EmailCodeFieldLabel }).(pulumi.StringPtrOutput)
 }
 
+// Localized instructional text shown before entering the email access code
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) EmailCodeMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.EmailCodeMessage }).(pulumi.StringPtrOutput)
 }
 
+// Localized button label for submitting the email access code
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) EmailCodeSubmit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.EmailCodeSubmit }).(pulumi.StringPtrOutput)
 }
 
+// Localized title shown on the email access-code entry page
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) EmailCodeTitle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.EmailCodeTitle }).(pulumi.StringPtrOutput)
 }
@@ -30249,15 +30655,17 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) EmailError() pulumi.Strin
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.EmailError }).(pulumi.StringPtrOutput)
 }
 
+// Localized label for the email address input field
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) EmailFieldLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.EmailFieldLabel }).(pulumi.StringPtrOutput)
 }
 
-// Label of email field
+// Localized label displayed for the email input field
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) EmailLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.EmailLabel }).(pulumi.StringPtrOutput)
 }
 
+// Localized instructional text explaining email access-code delivery
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) EmailMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.EmailMessage }).(pulumi.StringPtrOutput)
 }
@@ -30277,7 +30685,7 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) Field1error() pulumi.Stri
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.Field1error }).(pulumi.StringPtrOutput)
 }
 
-// Label of field1
+// Localized label for custom field 1 input
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) Field1label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.Field1label }).(pulumi.StringPtrOutput)
 }
@@ -30287,7 +30695,7 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) Field2error() pulumi.Stri
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.Field2error }).(pulumi.StringPtrOutput)
 }
 
-// Label of field2
+// Localized label for custom field 2 input
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) Field2label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.Field2label }).(pulumi.StringPtrOutput)
 }
@@ -30297,7 +30705,7 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) Field3error() pulumi.Stri
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.Field3error }).(pulumi.StringPtrOutput)
 }
 
-// Label of field3
+// Localized label for custom field 3 input
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) Field3label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.Field3label }).(pulumi.StringPtrOutput)
 }
@@ -30307,7 +30715,7 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) Field4error() pulumi.Stri
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.Field4error }).(pulumi.StringPtrOutput)
 }
 
-// Label of field4
+// Localized label for custom field 4 input
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) Field4label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.Field4label }).(pulumi.StringPtrOutput)
 }
@@ -30327,11 +30735,12 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) MarketingPolicyOptInLabel
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.MarketingPolicyOptInLabel }).(pulumi.StringPtrOutput)
 }
 
-// marketing policy text
+// Localized text of the marketing policy opt-in content
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) MarketingPolicyOptInText() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.MarketingPolicyOptInText }).(pulumi.StringPtrOutput)
 }
 
+// Localized main message displayed on the guest portal sign-in page
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
@@ -30341,7 +30750,7 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) NameError() pulumi.String
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.NameError }).(pulumi.StringPtrOutput)
 }
 
-// Label of name field
+// Localized label displayed for the name input field
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) NameLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.NameLabel }).(pulumi.StringPtrOutput)
 }
@@ -30351,6 +30760,7 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) OptoutLabel() pulumi.Stri
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.OptoutLabel }).(pulumi.StringPtrOutput)
 }
 
+// Localized browser or page title shown for the guest portal
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) PageTitle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.PageTitle }).(pulumi.StringPtrOutput)
 }
@@ -30365,11 +30775,12 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) PassphraseError() pulumi.
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.PassphraseError }).(pulumi.StringPtrOutput)
 }
 
-// Passphrase
+// Localized label for the passphrase input field
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) PassphraseLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.PassphraseLabel }).(pulumi.StringPtrOutput)
 }
 
+// Localized instructional text shown on the passphrase sign-in page
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) PassphraseMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.PassphraseMessage }).(pulumi.StringPtrOutput)
 }
@@ -30404,7 +30815,7 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) PrivacyPolicyText() pulum
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.PrivacyPolicyText }).(pulumi.StringPtrOutput)
 }
 
-// Label to denote required field
+// Localized text used to mark a form field as required
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) RequiredFieldLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.RequiredFieldLabel }).(pulumi.StringPtrOutput)
 }
@@ -30414,10 +30825,12 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) SignInLabel() pulumi.Stri
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SignInLabel }).(pulumi.StringPtrOutput)
 }
 
+// Localized default option text shown in the SMS carrier selector
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsCarrierDefault() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsCarrierDefault }).(pulumi.StringPtrOutput)
 }
 
+// Localized error message shown when no mobile carrier is selected
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsCarrierError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsCarrierError }).(pulumi.StringPtrOutput)
 }
@@ -30437,10 +30850,12 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsCodeError() pulumi.Str
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsCodeError }).(pulumi.StringPtrOutput)
 }
 
+// Localized label for the SMS confirmation-code input field
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsCodeFieldLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsCodeFieldLabel }).(pulumi.StringPtrOutput)
 }
 
+// Localized instructional text shown before entering the SMS access code
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsCodeMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsCodeMessage }).(pulumi.StringPtrOutput)
 }
@@ -30450,14 +30865,17 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsCodeSubmit() pulumi.St
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsCodeSubmit }).(pulumi.StringPtrOutput)
 }
 
+// Localized title shown on the SMS access-code entry page
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsCodeTitle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsCodeTitle }).(pulumi.StringPtrOutput)
 }
 
+// Localized label for the SMS country-code input field
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsCountryFieldLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsCountryFieldLabel }).(pulumi.StringPtrOutput)
 }
 
+// Localized example country code format shown for SMS authentication
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsCountryFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsCountryFormat }).(pulumi.StringPtrOutput)
 }
@@ -30477,6 +30895,7 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsNumberCancel() pulumi.
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsNumberCancel }).(pulumi.StringPtrOutput)
 }
 
+// Localized error message shown when the mobile number is invalid
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsNumberError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsNumberError }).(pulumi.StringPtrOutput)
 }
@@ -30486,10 +30905,12 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsNumberFieldLabel() pul
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsNumberFieldLabel }).(pulumi.StringPtrOutput)
 }
 
+// Localized example mobile number format shown for SMS authentication
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsNumberFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsNumberFormat }).(pulumi.StringPtrOutput)
 }
 
+// Localized instructional text explaining SMS access-code delivery
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsNumberMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsNumberMessage }).(pulumi.StringPtrOutput)
 }
@@ -30504,14 +30925,17 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsNumberTitle() pulumi.S
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsNumberTitle }).(pulumi.StringPtrOutput)
 }
 
+// Localized example username format shown for SMS authentication
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsUsernameFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsUsernameFormat }).(pulumi.StringPtrOutput)
 }
 
+// Localized link text for returning to edit the sponsor request form
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorBackLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorBackLink }).(pulumi.StringPtrOutput)
 }
 
+// Localized button label for canceling sponsor authentication
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorCancel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorCancel }).(pulumi.StringPtrOutput)
 }
@@ -30521,18 +30945,22 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorEmail() pulumi.Str
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorEmail }).(pulumi.StringPtrOutput)
 }
 
+// Localized error message shown when the sponsor email address is invalid
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorEmailError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorEmailError }).(pulumi.StringPtrOutput)
 }
 
+// Localized status message prefix shown when a sponsor approves the request
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorInfoApproved() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorInfoApproved }).(pulumi.StringPtrOutput)
 }
 
+// Localized status message prefix shown when a sponsor denies the request
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorInfoDenied() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorInfoDenied }).(pulumi.StringPtrOutput)
 }
 
+// Localized status message prefix shown after a sponsor notification is sent
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorInfoPending() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorInfoPending }).(pulumi.StringPtrOutput)
 }
@@ -30542,10 +30970,12 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorName() pulumi.Stri
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorName }).(pulumi.StringPtrOutput)
 }
 
+// Localized error message shown when the sponsor name is missing
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorNameError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorNameError }).(pulumi.StringPtrOutput)
 }
 
+// Localized additional status text shown while sponsor approval is pending
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorNotePending() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorNotePending }).(pulumi.StringPtrOutput)
 }
@@ -30575,10 +31005,12 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorSubmit() pulumi.St
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorSubmit }).(pulumi.StringPtrOutput)
 }
 
+// Localized error message shown when no sponsor is selected
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorsError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorsError }).(pulumi.StringPtrOutput)
 }
 
+// Localized label for the sponsor selection field
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorsFieldLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorsFieldLabel }).(pulumi.StringPtrOutput)
 }
@@ -30624,7 +31056,7 @@ func (o WlanPortalTemplatePortalTemplateLocalesMapOutput) MapIndex(k pulumi.Stri
 }
 
 type WlanQos struct {
-	// enum: `background`, `bestEffort`, `video`, `voice`
+	// QoS traffic class applied when WLAN QoS override is enabled
 	Class *string `pulumi:"class"`
 	// Whether to overwrite QoS
 	Overwrite *bool `pulumi:"overwrite"`
@@ -30642,7 +31074,7 @@ type WlanQosInput interface {
 }
 
 type WlanQosArgs struct {
-	// enum: `background`, `bestEffort`, `video`, `voice`
+	// QoS traffic class applied when WLAN QoS override is enabled
 	Class pulumi.StringPtrInput `pulumi:"class"`
 	// Whether to overwrite QoS
 	Overwrite pulumi.BoolPtrInput `pulumi:"overwrite"`
@@ -30725,7 +31157,7 @@ func (o WlanQosOutput) ToWlanQosPtrOutputWithContext(ctx context.Context) WlanQo
 	}).(WlanQosPtrOutput)
 }
 
-// enum: `background`, `bestEffort`, `video`, `voice`
+// QoS traffic class applied when WLAN QoS override is enabled
 func (o WlanQosOutput) Class() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanQos) *string { return v.Class }).(pulumi.StringPtrOutput)
 }
@@ -30759,7 +31191,7 @@ func (o WlanQosPtrOutput) Elem() WlanQosOutput {
 	}).(WlanQosOutput)
 }
 
-// enum: `background`, `bestEffort`, `video`, `voice`
+// QoS traffic class applied when WLAN QoS override is enabled
 func (o WlanQosPtrOutput) Class() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanQos) *string {
 		if v == nil {
@@ -30780,20 +31212,23 @@ func (o WlanQosPtrOutput) Overwrite() pulumi.BoolPtrOutput {
 }
 
 type WlanRadsec struct {
-	CoaEnabled  *bool   `pulumi:"coaEnabled"`
-	Enabled     *bool   `pulumi:"enabled"`
+	// Whether RADIUS Change of Authorization (CoA) is enabled for RadSec traffic
+	CoaEnabled *bool `pulumi:"coaEnabled"`
+	// Whether RadSec is enabled
+	Enabled *bool `pulumi:"enabled"`
+	// Idle timeout, in seconds, for RadSec connections
 	IdleTimeout *string `pulumi:"idleTimeout"`
-	// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
+	// Mist Edge cluster IDs used as RadSec proxies when the WLAN does not use mxtunnel
 	MxclusterIds []string `pulumi:"mxclusterIds"`
-	// Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
+	// RadSec proxy hostnames advertised to APs
 	ProxyHosts []string `pulumi:"proxyHosts"`
-	// Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+	// TLS server name to verify against the CA certificates in Org Setting. Only if not Mist Edge.
 	ServerName *string `pulumi:"serverName"`
-	// List of RadSec Servers. Only if not Mist Edge.
+	// External RadSec servers. Only if not Mist Edge.
 	Servers []WlanRadsecServer `pulumi:"servers"`
-	// use mxedge(s) as RadSec Proxy
+	// Whether to use organization Mist Edge instances as RadSec proxies
 	UseMxedge *bool `pulumi:"useMxedge"`
-	// To use Site mxedges when this WLAN does not use mxtunnel
+	// Whether to use site Mist Edge instances when this WLAN does not use mxtunnel
 	UseSiteMxedge *bool `pulumi:"useSiteMxedge"`
 }
 
@@ -30809,20 +31244,23 @@ type WlanRadsecInput interface {
 }
 
 type WlanRadsecArgs struct {
-	CoaEnabled  pulumi.BoolPtrInput   `pulumi:"coaEnabled"`
-	Enabled     pulumi.BoolPtrInput   `pulumi:"enabled"`
+	// Whether RADIUS Change of Authorization (CoA) is enabled for RadSec traffic
+	CoaEnabled pulumi.BoolPtrInput `pulumi:"coaEnabled"`
+	// Whether RadSec is enabled
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Idle timeout, in seconds, for RadSec connections
 	IdleTimeout pulumi.StringPtrInput `pulumi:"idleTimeout"`
-	// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
+	// Mist Edge cluster IDs used as RadSec proxies when the WLAN does not use mxtunnel
 	MxclusterIds pulumi.StringArrayInput `pulumi:"mxclusterIds"`
-	// Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
+	// RadSec proxy hostnames advertised to APs
 	ProxyHosts pulumi.StringArrayInput `pulumi:"proxyHosts"`
-	// Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+	// TLS server name to verify against the CA certificates in Org Setting. Only if not Mist Edge.
 	ServerName pulumi.StringPtrInput `pulumi:"serverName"`
-	// List of RadSec Servers. Only if not Mist Edge.
+	// External RadSec servers. Only if not Mist Edge.
 	Servers WlanRadsecServerArrayInput `pulumi:"servers"`
-	// use mxedge(s) as RadSec Proxy
+	// Whether to use organization Mist Edge instances as RadSec proxies
 	UseMxedge pulumi.BoolPtrInput `pulumi:"useMxedge"`
-	// To use Site mxedges when this WLAN does not use mxtunnel
+	// Whether to use site Mist Edge instances when this WLAN does not use mxtunnel
 	UseSiteMxedge pulumi.BoolPtrInput `pulumi:"useSiteMxedge"`
 }
 
@@ -30903,44 +31341,47 @@ func (o WlanRadsecOutput) ToWlanRadsecPtrOutputWithContext(ctx context.Context) 
 	}).(WlanRadsecPtrOutput)
 }
 
+// Whether RADIUS Change of Authorization (CoA) is enabled for RadSec traffic
 func (o WlanRadsecOutput) CoaEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanRadsec) *bool { return v.CoaEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Whether RadSec is enabled
 func (o WlanRadsecOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanRadsec) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Idle timeout, in seconds, for RadSec connections
 func (o WlanRadsecOutput) IdleTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanRadsec) *string { return v.IdleTimeout }).(pulumi.StringPtrOutput)
 }
 
-// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
+// Mist Edge cluster IDs used as RadSec proxies when the WLAN does not use mxtunnel
 func (o WlanRadsecOutput) MxclusterIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanRadsec) []string { return v.MxclusterIds }).(pulumi.StringArrayOutput)
 }
 
-// Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
+// RadSec proxy hostnames advertised to APs
 func (o WlanRadsecOutput) ProxyHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanRadsec) []string { return v.ProxyHosts }).(pulumi.StringArrayOutput)
 }
 
-// Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+// TLS server name to verify against the CA certificates in Org Setting. Only if not Mist Edge.
 func (o WlanRadsecOutput) ServerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanRadsec) *string { return v.ServerName }).(pulumi.StringPtrOutput)
 }
 
-// List of RadSec Servers. Only if not Mist Edge.
+// External RadSec servers. Only if not Mist Edge.
 func (o WlanRadsecOutput) Servers() WlanRadsecServerArrayOutput {
 	return o.ApplyT(func(v WlanRadsec) []WlanRadsecServer { return v.Servers }).(WlanRadsecServerArrayOutput)
 }
 
-// use mxedge(s) as RadSec Proxy
+// Whether to use organization Mist Edge instances as RadSec proxies
 func (o WlanRadsecOutput) UseMxedge() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanRadsec) *bool { return v.UseMxedge }).(pulumi.BoolPtrOutput)
 }
 
-// To use Site mxedges when this WLAN does not use mxtunnel
+// Whether to use site Mist Edge instances when this WLAN does not use mxtunnel
 func (o WlanRadsecOutput) UseSiteMxedge() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanRadsec) *bool { return v.UseSiteMxedge }).(pulumi.BoolPtrOutput)
 }
@@ -30969,6 +31410,7 @@ func (o WlanRadsecPtrOutput) Elem() WlanRadsecOutput {
 	}).(WlanRadsecOutput)
 }
 
+// Whether RADIUS Change of Authorization (CoA) is enabled for RadSec traffic
 func (o WlanRadsecPtrOutput) CoaEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanRadsec) *bool {
 		if v == nil {
@@ -30978,6 +31420,7 @@ func (o WlanRadsecPtrOutput) CoaEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Whether RadSec is enabled
 func (o WlanRadsecPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanRadsec) *bool {
 		if v == nil {
@@ -30987,6 +31430,7 @@ func (o WlanRadsecPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Idle timeout, in seconds, for RadSec connections
 func (o WlanRadsecPtrOutput) IdleTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanRadsec) *string {
 		if v == nil {
@@ -30996,7 +31440,7 @@ func (o WlanRadsecPtrOutput) IdleTimeout() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
+// Mist Edge cluster IDs used as RadSec proxies when the WLAN does not use mxtunnel
 func (o WlanRadsecPtrOutput) MxclusterIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WlanRadsec) []string {
 		if v == nil {
@@ -31006,7 +31450,7 @@ func (o WlanRadsecPtrOutput) MxclusterIds() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
+// RadSec proxy hostnames advertised to APs
 func (o WlanRadsecPtrOutput) ProxyHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WlanRadsec) []string {
 		if v == nil {
@@ -31016,7 +31460,7 @@ func (o WlanRadsecPtrOutput) ProxyHosts() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+// TLS server name to verify against the CA certificates in Org Setting. Only if not Mist Edge.
 func (o WlanRadsecPtrOutput) ServerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanRadsec) *string {
 		if v == nil {
@@ -31026,7 +31470,7 @@ func (o WlanRadsecPtrOutput) ServerName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// List of RadSec Servers. Only if not Mist Edge.
+// External RadSec servers. Only if not Mist Edge.
 func (o WlanRadsecPtrOutput) Servers() WlanRadsecServerArrayOutput {
 	return o.ApplyT(func(v *WlanRadsec) []WlanRadsecServer {
 		if v == nil {
@@ -31036,7 +31480,7 @@ func (o WlanRadsecPtrOutput) Servers() WlanRadsecServerArrayOutput {
 	}).(WlanRadsecServerArrayOutput)
 }
 
-// use mxedge(s) as RadSec Proxy
+// Whether to use organization Mist Edge instances as RadSec proxies
 func (o WlanRadsecPtrOutput) UseMxedge() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanRadsec) *bool {
 		if v == nil {
@@ -31046,7 +31490,7 @@ func (o WlanRadsecPtrOutput) UseMxedge() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// To use Site mxedges when this WLAN does not use mxtunnel
+// Whether to use site Mist Edge instances when this WLAN does not use mxtunnel
 func (o WlanRadsecPtrOutput) UseSiteMxedge() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanRadsec) *bool {
 		if v == nil {
@@ -31057,8 +31501,10 @@ func (o WlanRadsecPtrOutput) UseSiteMxedge() pulumi.BoolPtrOutput {
 }
 
 type WlanRadsecServer struct {
+	// Address or hostname of the RadSec server
 	Host *string `pulumi:"host"`
-	Port *int    `pulumi:"port"`
+	// TCP port used by the RadSec server
+	Port *int `pulumi:"port"`
 }
 
 // WlanRadsecServerInput is an input type that accepts WlanRadsecServerArgs and WlanRadsecServerOutput values.
@@ -31073,8 +31519,10 @@ type WlanRadsecServerInput interface {
 }
 
 type WlanRadsecServerArgs struct {
+	// Address or hostname of the RadSec server
 	Host pulumi.StringPtrInput `pulumi:"host"`
-	Port pulumi.IntPtrInput    `pulumi:"port"`
+	// TCP port used by the RadSec server
+	Port pulumi.IntPtrInput `pulumi:"port"`
 }
 
 func (WlanRadsecServerArgs) ElementType() reflect.Type {
@@ -31128,10 +31576,12 @@ func (o WlanRadsecServerOutput) ToWlanRadsecServerOutputWithContext(ctx context.
 	return o
 }
 
+// Address or hostname of the RadSec server
 func (o WlanRadsecServerOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanRadsecServer) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
+// TCP port used by the RadSec server
 func (o WlanRadsecServerOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WlanRadsecServer) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -31167,12 +31617,7 @@ type WlanRateset struct {
 	Legacies []string `pulumi:"legacies"`
 	// Minimum RSSI for client to connect, 0 means not enforcing
 	MinRssi *int `pulumi:"minRssi"`
-	// Data Rates template to apply. enum:
-	//   * `no-legacy`: no 11b
-	//   * `compatible`: all, like before, default setting that Broadcom/Atheros used
-	//   * `legacy-only`: disable 802.11n and 802.11ac
-	//   * `high-density`: no 11b, no low rates
-	//   * `custom`: user defined
+	// Data rate template used to derive WLAN rate settings
 	Template *string `pulumi:"template"`
 	// If `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
 	Vht *string `pulumi:"vht"`
@@ -31200,12 +31645,7 @@ type WlanRatesetArgs struct {
 	Legacies pulumi.StringArrayInput `pulumi:"legacies"`
 	// Minimum RSSI for client to connect, 0 means not enforcing
 	MinRssi pulumi.IntPtrInput `pulumi:"minRssi"`
-	// Data Rates template to apply. enum:
-	//   * `no-legacy`: no 11b
-	//   * `compatible`: all, like before, default setting that Broadcom/Atheros used
-	//   * `legacy-only`: disable 802.11n and 802.11ac
-	//   * `high-density`: no 11b, no low rates
-	//   * `custom`: user defined
+	// Data rate template used to derive WLAN rate settings
 	Template pulumi.StringPtrInput `pulumi:"template"`
 	// If `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
 	Vht pulumi.StringPtrInput `pulumi:"vht"`
@@ -31287,12 +31727,7 @@ func (o WlanRatesetOutput) MinRssi() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WlanRateset) *int { return v.MinRssi }).(pulumi.IntPtrOutput)
 }
 
-// Data Rates template to apply. enum:
-//   - `no-legacy`: no 11b
-//   - `compatible`: all, like before, default setting that Broadcom/Atheros used
-//   - `legacy-only`: disable 802.11n and 802.11ac
-//   - `high-density`: no 11b, no low rates
-//   - `custom`: user defined
+// Data rate template used to derive WLAN rate settings
 func (o WlanRatesetOutput) Template() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanRateset) *string { return v.Template }).(pulumi.StringPtrOutput)
 }
@@ -31323,8 +31758,9 @@ func (o WlanRatesetMapOutput) MapIndex(k pulumi.StringInput) WlanRatesetOutput {
 }
 
 type WlanSchedule struct {
+	// Whether the WLAN operating schedule is enabled
 	Enabled *bool `pulumi:"enabled"`
-	// Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+	// Time ranges when the WLAN is scheduled to operate
 	Hours *WlanScheduleHours `pulumi:"hours"`
 }
 
@@ -31340,8 +31776,9 @@ type WlanScheduleInput interface {
 }
 
 type WlanScheduleArgs struct {
+	// Whether the WLAN operating schedule is enabled
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+	// Time ranges when the WLAN is scheduled to operate
 	Hours WlanScheduleHoursPtrInput `pulumi:"hours"`
 }
 
@@ -31422,11 +31859,12 @@ func (o WlanScheduleOutput) ToWlanSchedulePtrOutputWithContext(ctx context.Conte
 	}).(WlanSchedulePtrOutput)
 }
 
+// Whether the WLAN operating schedule is enabled
 func (o WlanScheduleOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanSchedule) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+// Time ranges when the WLAN is scheduled to operate
 func (o WlanScheduleOutput) Hours() WlanScheduleHoursPtrOutput {
 	return o.ApplyT(func(v WlanSchedule) *WlanScheduleHours { return v.Hours }).(WlanScheduleHoursPtrOutput)
 }
@@ -31455,6 +31893,7 @@ func (o WlanSchedulePtrOutput) Elem() WlanScheduleOutput {
 	}).(WlanScheduleOutput)
 }
 
+// Whether the WLAN operating schedule is enabled
 func (o WlanSchedulePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanSchedule) *bool {
 		if v == nil {
@@ -31464,7 +31903,7 @@ func (o WlanSchedulePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+// Time ranges when the WLAN is scheduled to operate
 func (o WlanSchedulePtrOutput) Hours() WlanScheduleHoursPtrOutput {
 	return o.ApplyT(func(v *WlanSchedule) *WlanScheduleHours {
 		if v == nil {
@@ -31475,19 +31914,19 @@ func (o WlanSchedulePtrOutput) Hours() WlanScheduleHoursPtrOutput {
 }
 
 type WlanScheduleHours struct {
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Friday
 	Fri *string `pulumi:"fri"`
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Monday
 	Mon *string `pulumi:"mon"`
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Saturday
 	Sat *string `pulumi:"sat"`
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Sunday
 	Sun *string `pulumi:"sun"`
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Thursday
 	Thu *string `pulumi:"thu"`
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Tuesday
 	Tue *string `pulumi:"tue"`
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Wednesday
 	Wed *string `pulumi:"wed"`
 }
 
@@ -31503,19 +31942,19 @@ type WlanScheduleHoursInput interface {
 }
 
 type WlanScheduleHoursArgs struct {
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Friday
 	Fri pulumi.StringPtrInput `pulumi:"fri"`
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Monday
 	Mon pulumi.StringPtrInput `pulumi:"mon"`
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Saturday
 	Sat pulumi.StringPtrInput `pulumi:"sat"`
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Sunday
 	Sun pulumi.StringPtrInput `pulumi:"sun"`
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Thursday
 	Thu pulumi.StringPtrInput `pulumi:"thu"`
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Tuesday
 	Tue pulumi.StringPtrInput `pulumi:"tue"`
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Wednesday
 	Wed pulumi.StringPtrInput `pulumi:"wed"`
 }
 
@@ -31596,37 +32035,37 @@ func (o WlanScheduleHoursOutput) ToWlanScheduleHoursPtrOutputWithContext(ctx con
 	}).(WlanScheduleHoursPtrOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Friday
 func (o WlanScheduleHoursOutput) Fri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanScheduleHours) *string { return v.Fri }).(pulumi.StringPtrOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Monday
 func (o WlanScheduleHoursOutput) Mon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanScheduleHours) *string { return v.Mon }).(pulumi.StringPtrOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Saturday
 func (o WlanScheduleHoursOutput) Sat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanScheduleHours) *string { return v.Sat }).(pulumi.StringPtrOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Sunday
 func (o WlanScheduleHoursOutput) Sun() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanScheduleHours) *string { return v.Sun }).(pulumi.StringPtrOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Thursday
 func (o WlanScheduleHoursOutput) Thu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanScheduleHours) *string { return v.Thu }).(pulumi.StringPtrOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Tuesday
 func (o WlanScheduleHoursOutput) Tue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanScheduleHours) *string { return v.Tue }).(pulumi.StringPtrOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Wednesday
 func (o WlanScheduleHoursOutput) Wed() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanScheduleHours) *string { return v.Wed }).(pulumi.StringPtrOutput)
 }
@@ -31655,7 +32094,7 @@ func (o WlanScheduleHoursPtrOutput) Elem() WlanScheduleHoursOutput {
 	}).(WlanScheduleHoursOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Friday
 func (o WlanScheduleHoursPtrOutput) Fri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanScheduleHours) *string {
 		if v == nil {
@@ -31665,7 +32104,7 @@ func (o WlanScheduleHoursPtrOutput) Fri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Monday
 func (o WlanScheduleHoursPtrOutput) Mon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanScheduleHours) *string {
 		if v == nil {
@@ -31675,7 +32114,7 @@ func (o WlanScheduleHoursPtrOutput) Mon() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Saturday
 func (o WlanScheduleHoursPtrOutput) Sat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanScheduleHours) *string {
 		if v == nil {
@@ -31685,7 +32124,7 @@ func (o WlanScheduleHoursPtrOutput) Sat() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Sunday
 func (o WlanScheduleHoursPtrOutput) Sun() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanScheduleHours) *string {
 		if v == nil {
@@ -31695,7 +32134,7 @@ func (o WlanScheduleHoursPtrOutput) Sun() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Thursday
 func (o WlanScheduleHoursPtrOutput) Thu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanScheduleHours) *string {
 		if v == nil {
@@ -31705,7 +32144,7 @@ func (o WlanScheduleHoursPtrOutput) Thu() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Tuesday
 func (o WlanScheduleHoursPtrOutput) Tue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanScheduleHours) *string {
 		if v == nil {
@@ -31715,7 +32154,7 @@ func (o WlanScheduleHoursPtrOutput) Tue() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Wednesday
 func (o WlanScheduleHoursPtrOutput) Wed() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanScheduleHours) *string {
 		if v == nil {
@@ -31730,7 +32169,7 @@ type WxtagSpec struct {
 	PortRange *string `pulumi:"portRange"`
 	// tcp / udp / icmp / gre / any / ":protocol_number", `protocolNumber` is between 1-254
 	Protocol *string `pulumi:"protocol"`
-	// Matched destination subnets and/or IP Addresses
+	// Destination subnets or IP addresses matched by this WxLAN tag spec
 	Subnets []string `pulumi:"subnets"`
 }
 
@@ -31750,7 +32189,7 @@ type WxtagSpecArgs struct {
 	PortRange pulumi.StringPtrInput `pulumi:"portRange"`
 	// tcp / udp / icmp / gre / any / ":protocol_number", `protocolNumber` is between 1-254
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
-	// Matched destination subnets and/or IP Addresses
+	// Destination subnets or IP addresses matched by this WxLAN tag spec
 	Subnets pulumi.StringArrayInput `pulumi:"subnets"`
 }
 
@@ -31815,7 +32254,7 @@ func (o WxtagSpecOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WxtagSpec) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
-// Matched destination subnets and/or IP Addresses
+// Destination subnets or IP addresses matched by this WxLAN tag spec
 func (o WxtagSpecOutput) Subnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WxtagSpec) []string { return v.Subnets }).(pulumi.StringArrayOutput)
 }
@@ -31841,7 +32280,9 @@ func (o WxtagSpecArrayOutput) Index(i pulumi.IntInput) WxtagSpecOutput {
 }
 
 type BaseLatlng struct {
+	// Geographic latitude in decimal degrees
 	Lat float64 `pulumi:"lat"`
+	// Geographic longitude in decimal degrees
 	Lng float64 `pulumi:"lng"`
 }
 
@@ -31857,7 +32298,9 @@ type BaseLatlngInput interface {
 }
 
 type BaseLatlngArgs struct {
+	// Geographic latitude in decimal degrees
 	Lat pulumi.Float64Input `pulumi:"lat"`
+	// Geographic longitude in decimal degrees
 	Lng pulumi.Float64Input `pulumi:"lng"`
 }
 
@@ -31938,10 +32381,12 @@ func (o BaseLatlngOutput) ToBaseLatlngPtrOutputWithContext(ctx context.Context) 
 	}).(BaseLatlngPtrOutput)
 }
 
+// Geographic latitude in decimal degrees
 func (o BaseLatlngOutput) Lat() pulumi.Float64Output {
 	return o.ApplyT(func(v BaseLatlng) float64 { return v.Lat }).(pulumi.Float64Output)
 }
 
+// Geographic longitude in decimal degrees
 func (o BaseLatlngOutput) Lng() pulumi.Float64Output {
 	return o.ApplyT(func(v BaseLatlng) float64 { return v.Lng }).(pulumi.Float64Output)
 }
@@ -31970,6 +32415,7 @@ func (o BaseLatlngPtrOutput) Elem() BaseLatlngOutput {
 	}).(BaseLatlngOutput)
 }
 
+// Geographic latitude in decimal degrees
 func (o BaseLatlngPtrOutput) Lat() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *BaseLatlng) *float64 {
 		if v == nil {
@@ -31979,6 +32425,7 @@ func (o BaseLatlngPtrOutput) Lat() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Geographic longitude in decimal degrees
 func (o BaseLatlngPtrOutput) Lng() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *BaseLatlng) *float64 {
 		if v == nil {

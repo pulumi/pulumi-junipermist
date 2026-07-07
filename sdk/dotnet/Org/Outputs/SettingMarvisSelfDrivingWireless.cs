@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class SettingMarvisSelfDrivingWireless
     {
+        /// <summary>
+        /// Whether self-driving automation is enabled for this domain
+        /// </summary>
         public readonly bool? Enabled;
 
         [OutputConstructor]

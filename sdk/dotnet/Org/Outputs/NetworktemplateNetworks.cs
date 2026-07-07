@@ -25,6 +25,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// whether to stop clients to talk to each other, default is false (when enabled, a unique IsolationVlanId is required). NOTE: this features requires uplink device to also a be Juniper device and `InterSwitchLink` to be set. See also `InterIsolationNetworkLink` and `CommunityVlanId` in port_usage
         /// </summary>
         public readonly bool? Isolation;
+        /// <summary>
+        /// Required when `Isolation`==`True`. Unique VLAN ID used for client isolation
+        /// </summary>
         public readonly string? IsolationVlanId;
         /// <summary>
         /// Optional for pure switching, required when L3 / routing features are used
@@ -34,6 +37,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// Optional for pure switching, required when L3 / routing features are used
         /// </summary>
         public readonly string? Subnet6;
+        /// <summary>
+        /// VLAN identifier for this switch network
+        /// </summary>
         public readonly string VlanId;
 
         [OutputConstructor]

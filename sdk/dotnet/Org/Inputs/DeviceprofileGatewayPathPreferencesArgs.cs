@@ -14,6 +14,10 @@ namespace Pulumi.JuniperMist.Org.Inputs
     {
         [Input("paths")]
         private InputList<Inputs.DeviceprofileGatewayPathPreferencesPathArgs>? _paths;
+
+        /// <summary>
+        /// Candidate paths evaluated for this gateway path preference
+        /// </summary>
         public InputList<Inputs.DeviceprofileGatewayPathPreferencesPathArgs> Paths
         {
             get => _paths ?? (_paths = new InputList<Inputs.DeviceprofileGatewayPathPreferencesPathArgs>());
@@ -21,7 +25,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// enum: `Ecmp`, `Ordered`, `Weighted`
+        /// Selection strategy used to evaluate the candidate paths
         /// </summary>
         [Input("strategy")]
         public Input<string>? Strategy { get; set; }

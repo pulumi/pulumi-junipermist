@@ -68,21 +68,45 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="junipermist:org/base:base")
 public class Base extends com.pulumi.resources.CustomResource {
+    /**
+     * Org-level alarm template ID used as the default for sites
+     * 
+     */
     @Export(name="alarmtemplateId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> alarmtemplateId;
 
+    /**
+     * @return Org-level alarm template ID used as the default for sites
+     * 
+     */
     public Output<Optional<String>> alarmtemplateId() {
         return Codegen.optional(this.alarmtemplateId);
     }
+    /**
+     * Whether Mist support access is allowed for this organization
+     * 
+     */
     @Export(name="allowMist", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> allowMist;
 
+    /**
+     * @return Whether Mist support access is allowed for this organization
+     * 
+     */
     public Output<Boolean> allowMist() {
         return this.allowMist;
     }
+    /**
+     * Managed service provider account that owns this organization, when applicable
+     * 
+     */
     @Export(name="mspId", refs={String.class}, tree="[0]")
     private Output<String> mspId;
 
+    /**
+     * @return Managed service provider account that owns this organization, when applicable
+     * 
+     */
     public Output<String> mspId() {
         return this.mspId;
     }
@@ -114,21 +138,45 @@ public class Base extends com.pulumi.resources.CustomResource {
     public Output<String> mspName() {
         return this.mspName;
     }
+    /**
+     * Display name of the organization
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Display name of the organization
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Organization group IDs that include this organization
+     * 
+     */
     @Export(name="orggroupIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> orggroupIds;
 
+    /**
+     * @return Organization group IDs that include this organization
+     * 
+     */
     public Output<List<String>> orggroupIds() {
         return this.orggroupIds;
     }
+    /**
+     * Admin session lifetime for the organization, in minutes
+     * 
+     */
     @Export(name="sessionExpiry", refs={Integer.class}, tree="[0]")
     private Output<Integer> sessionExpiry;
 
+    /**
+     * @return Admin session lifetime for the organization, in minutes
+     * 
+     */
     public Output<Integer> sessionExpiry() {
         return this.sessionExpiry;
     }

@@ -24,6 +24,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("srcVlanId", required: true)]
         public Input<int> SrcVlanId { get; set; } = null!;
 
+        /// <summary>
+        /// Authentication request timeout, in seconds
+        /// </summary>
         [Input("timeout", required: true)]
         public Input<int> Timeout { get; set; } = null!;
 

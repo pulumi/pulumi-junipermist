@@ -14,11 +14,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class MxclusterRadsec
     {
         /// <summary>
-        /// List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+        /// RADIUS accounting servers used by the RadSec proxy
         /// </summary>
         public readonly ImmutableArray<Outputs.MxclusterRadsecAcctServer> AcctServers;
         /// <summary>
-        /// List of RADIUS authentication servers, order matters where the first one is treated as primary
+        /// RADIUS authentication servers used by the RadSec proxy
         /// </summary>
         public readonly ImmutableArray<Outputs.MxclusterRadsecAuthServer> AuthServers;
         /// <summary>
@@ -30,19 +30,19 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? MatchSsid;
         /// <summary>
-        /// SSpecify NAS-IP-ADDRESS, NAS-IPv6-ADDRESS to use with auth_servers. enum: `Any`, `Oob`, `Oob6`, `Tunnel`, `Tunnel6`
+        /// Source used to populate NAS-IP-Address and NAS-IPv6-Address attributes
         /// </summary>
         public readonly string? NasIpSource;
         /// <summary>
-        /// Hostnames or IPs for Mist AP to use as the TLS Server (i.e. they are reachable from AP) in addition to `TuntermHosts`
+        /// AP-reachable hostnames or IP addresses advertised as RadSec TLS servers
         /// </summary>
         public readonly ImmutableArray<string> ProxyHosts;
         /// <summary>
-        /// When ordered, Mist Edge will prefer and go back to the first radius server if possible. enum: `Ordered`, `Unordered`
+        /// RADIUS server selection strategy for RadSec failover
         /// </summary>
         public readonly string? ServerSelection;
         /// <summary>
-        /// Specify IP address to connect to AuthServers and acct_servers. enum: `Any`, `Oob`, `Oob6`, `Tunnel`, `Tunnel6`
+        /// Connection source interface or address used when reaching RADIUS servers
         /// </summary>
         public readonly string? SrcIpSource;
 

@@ -14,6 +14,10 @@ namespace Pulumi.JuniperMist.Org.Inputs
     {
         [Input("networks")]
         private InputList<string>? _networks;
+
+        /// <summary>
+        /// List of network names included in this virtual-switch instance
+        /// </summary>
         public InputList<string> Networks
         {
             get => _networks ?? (_networks = new InputList<string>());

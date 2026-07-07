@@ -12,9 +12,15 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class MxedgeVersionsArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Reported version of the mxagent service
+        /// </summary>
         [Input("mxagent")]
         public Input<string>? Mxagent { get; set; }
 
+        /// <summary>
+        /// Reported version of the tunnel termination service
+        /// </summary>
         [Input("tunterm")]
         public Input<string>? Tunterm { get; set; }
 

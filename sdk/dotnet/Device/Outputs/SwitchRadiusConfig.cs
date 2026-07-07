@@ -13,34 +13,52 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class SwitchRadiusConfig
     {
+        /// <summary>
+        /// Whether immediate RADIUS accounting updates are sent
+        /// </summary>
         public readonly bool? AcctImmediateUpdate;
         /// <summary>
-        /// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+        /// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled
         /// </summary>
         public readonly int? AcctInterimInterval;
+        /// <summary>
+        /// RADIUS accounting servers used by this switch configuration
+        /// </summary>
         public readonly ImmutableArray<Outputs.SwitchRadiusConfigAcctServer> AcctServers;
         /// <summary>
-        /// enum: `Ordered`, `Unordered`
+        /// Selection strategy for RADIUS authentication servers
         /// </summary>
         public readonly string? AuthServerSelection;
+        /// <summary>
+        /// RADIUS authentication servers used by this switch configuration
+        /// </summary>
         public readonly ImmutableArray<Outputs.SwitchRadiusConfigAuthServer> AuthServers;
         /// <summary>
-        /// Radius auth session retries
+        /// RADIUS auth session retries
         /// </summary>
         public readonly int? AuthServersRetries;
         /// <summary>
-        /// Radius auth session timeout
+        /// RADIUS auth session timeout
         /// </summary>
         public readonly int? AuthServersTimeout;
+        /// <summary>
+        /// Whether RADIUS Change of Authorization (CoA) is enabled
+        /// </summary>
         public readonly bool? CoaEnabled;
+        /// <summary>
+        /// UDP port used for RADIUS Change of Authorization (CoA)
+        /// </summary>
         public readonly string? CoaPort;
+        /// <summary>
+        /// Whether fast 802.1X timers are enabled for RADIUS authentication
+        /// </summary>
         public readonly bool? FastDot1xTimers;
         /// <summary>
         /// Use `Network`or `SourceIp`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
         /// </summary>
         public readonly string? Network;
         /// <summary>
-        /// Use `Network`or `SourceIp`
+        /// Use `Network` or `SourceIp`. Explicit source IP address for RADIUS traffic
         /// </summary>
         public readonly string? SourceIp;
 

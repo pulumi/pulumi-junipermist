@@ -40,18 +40,23 @@ class PskArgs:
         """
         The set of arguments for constructing a Psk resource.
 
-        :param pulumi.Input[_builtins.str] passphrase: passphrase of the PSK (8-63 character or 64 in hex)
-        :param pulumi.Input[_builtins.str] ssid: SSID this PSK should be applicable to
-        :param pulumi.Input[_builtins.str] email: email to send psk expiring notifications to
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns the org-level PSK
+        :param pulumi.Input[_builtins.str] passphrase: PSK passphrase, 8-63 characters or 64 hexadecimal characters
+        :param pulumi.Input[_builtins.str] ssid: WLAN SSID where this PSK can be used
+        :param pulumi.Input[_builtins.str] email: Notification recipient email address for PSK creation notification and expiration reminders
         :param pulumi.Input[_builtins.int] expire_time: Expire time for this PSK key (epoch time in seconds). Default `null` (as no expiration)
         :param pulumi.Input[_builtins.int] expiry_notification_time: Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
-        :param pulumi.Input[_builtins.str] mac: If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] macs: If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
+        :param pulumi.Input[_builtins.str] mac: If `usage`==`single`, client MAC address this PSK is bound to; empty when auto-binding is used
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] macs: Client MAC addresses or MAC patterns allowed when `usage`==`macs`
         :param pulumi.Input[_builtins.int] max_usage: For Org PSK Only. Max concurrent users for this PSK key. Default is 0 (unlimited)
+        :param pulumi.Input[_builtins.str] name: Display name of the PSK
+        :param pulumi.Input[_builtins.str] note: Admin note or description stored with the PSK
         :param pulumi.Input[_builtins.bool] notify_expiry: If set to true, reminder notification will be sent when psk is about to expire
         :param pulumi.Input[_builtins.bool] notify_on_create_or_edit: If set to true, notification will be sent when psk is created or edited
         :param pulumi.Input[_builtins.str] old_passphrase: previous passphrase of the PSK if it has been rotated
-        :param pulumi.Input[_builtins.str] usage: enum: `macs`, `multi`, `single`
+        :param pulumi.Input[_builtins.str] role: Client role applied to users authenticated with this PSK
+        :param pulumi.Input[_builtins.str] usage: Binding mode for this PSK, enum: `macs`, `multi`, `single`
+        :param pulumi.Input[_builtins.str] vlan_id: VLAN ID returned for clients using this PSK
         :param pulumi.Input[_builtins.str] vlan_name: VLAN name to be assigned. Optional, `vlan_id` takes precedence if both are provided
         """
         pulumi.set(__self__, "org_id", org_id)
@@ -91,6 +96,9 @@ class PskArgs:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Organization that owns the org-level PSK
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -101,7 +109,7 @@ class PskArgs:
     @pulumi.getter
     def passphrase(self) -> pulumi.Input[_builtins.str]:
         """
-        passphrase of the PSK (8-63 character or 64 in hex)
+        PSK passphrase, 8-63 characters or 64 hexadecimal characters
         """
         return pulumi.get(self, "passphrase")
 
@@ -113,7 +121,7 @@ class PskArgs:
     @pulumi.getter
     def ssid(self) -> pulumi.Input[_builtins.str]:
         """
-        SSID this PSK should be applicable to
+        WLAN SSID where this PSK can be used
         """
         return pulumi.get(self, "ssid")
 
@@ -125,7 +133,7 @@ class PskArgs:
     @pulumi.getter
     def email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        email to send psk expiring notifications to
+        Notification recipient email address for PSK creation notification and expiration reminders
         """
         return pulumi.get(self, "email")
 
@@ -161,7 +169,7 @@ class PskArgs:
     @pulumi.getter
     def mac(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+        If `usage`==`single`, client MAC address this PSK is bound to; empty when auto-binding is used
         """
         return pulumi.get(self, "mac")
 
@@ -173,7 +181,7 @@ class PskArgs:
     @pulumi.getter
     def macs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
+        Client MAC addresses or MAC patterns allowed when `usage`==`macs`
         """
         return pulumi.get(self, "macs")
 
@@ -196,6 +204,9 @@ class PskArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Display name of the PSK
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -205,6 +216,9 @@ class PskArgs:
     @_builtins.property
     @pulumi.getter
     def note(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Admin note or description stored with the PSK
+        """
         return pulumi.get(self, "note")
 
     @note.setter
@@ -250,6 +264,9 @@ class PskArgs:
     @_builtins.property
     @pulumi.getter
     def role(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Client role applied to users authenticated with this PSK
+        """
         return pulumi.get(self, "role")
 
     @role.setter
@@ -260,7 +277,7 @@ class PskArgs:
     @pulumi.getter
     def usage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        enum: `macs`, `multi`, `single`
+        Binding mode for this PSK, enum: `macs`, `multi`, `single`
         """
         return pulumi.get(self, "usage")
 
@@ -271,6 +288,9 @@ class PskArgs:
     @_builtins.property
     @pulumi.getter(name="vlanId")
     def vlan_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        VLAN ID returned for clients using this PSK
+        """
         return pulumi.get(self, "vlan_id")
 
     @vlan_id.setter
@@ -314,18 +334,23 @@ class _PskState:
         """
         Input properties used for looking up and filtering Psk resources.
 
-        :param pulumi.Input[_builtins.str] email: email to send psk expiring notifications to
+        :param pulumi.Input[_builtins.str] email: Notification recipient email address for PSK creation notification and expiration reminders
         :param pulumi.Input[_builtins.int] expire_time: Expire time for this PSK key (epoch time in seconds). Default `null` (as no expiration)
         :param pulumi.Input[_builtins.int] expiry_notification_time: Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
-        :param pulumi.Input[_builtins.str] mac: If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] macs: If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
+        :param pulumi.Input[_builtins.str] mac: If `usage`==`single`, client MAC address this PSK is bound to; empty when auto-binding is used
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] macs: Client MAC addresses or MAC patterns allowed when `usage`==`macs`
         :param pulumi.Input[_builtins.int] max_usage: For Org PSK Only. Max concurrent users for this PSK key. Default is 0 (unlimited)
+        :param pulumi.Input[_builtins.str] name: Display name of the PSK
+        :param pulumi.Input[_builtins.str] note: Admin note or description stored with the PSK
         :param pulumi.Input[_builtins.bool] notify_expiry: If set to true, reminder notification will be sent when psk is about to expire
         :param pulumi.Input[_builtins.bool] notify_on_create_or_edit: If set to true, notification will be sent when psk is created or edited
         :param pulumi.Input[_builtins.str] old_passphrase: previous passphrase of the PSK if it has been rotated
-        :param pulumi.Input[_builtins.str] passphrase: passphrase of the PSK (8-63 character or 64 in hex)
-        :param pulumi.Input[_builtins.str] ssid: SSID this PSK should be applicable to
-        :param pulumi.Input[_builtins.str] usage: enum: `macs`, `multi`, `single`
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns the org-level PSK
+        :param pulumi.Input[_builtins.str] passphrase: PSK passphrase, 8-63 characters or 64 hexadecimal characters
+        :param pulumi.Input[_builtins.str] role: Client role applied to users authenticated with this PSK
+        :param pulumi.Input[_builtins.str] ssid: WLAN SSID where this PSK can be used
+        :param pulumi.Input[_builtins.str] usage: Binding mode for this PSK, enum: `macs`, `multi`, `single`
+        :param pulumi.Input[_builtins.str] vlan_id: VLAN ID returned for clients using this PSK
         :param pulumi.Input[_builtins.str] vlan_name: VLAN name to be assigned. Optional, `vlan_id` takes precedence if both are provided
         """
         if email is not None:
@@ -369,7 +394,7 @@ class _PskState:
     @pulumi.getter
     def email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        email to send psk expiring notifications to
+        Notification recipient email address for PSK creation notification and expiration reminders
         """
         return pulumi.get(self, "email")
 
@@ -405,7 +430,7 @@ class _PskState:
     @pulumi.getter
     def mac(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+        If `usage`==`single`, client MAC address this PSK is bound to; empty when auto-binding is used
         """
         return pulumi.get(self, "mac")
 
@@ -417,7 +442,7 @@ class _PskState:
     @pulumi.getter
     def macs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
+        Client MAC addresses or MAC patterns allowed when `usage`==`macs`
         """
         return pulumi.get(self, "macs")
 
@@ -440,6 +465,9 @@ class _PskState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Display name of the PSK
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -449,6 +477,9 @@ class _PskState:
     @_builtins.property
     @pulumi.getter
     def note(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Admin note or description stored with the PSK
+        """
         return pulumi.get(self, "note")
 
     @note.setter
@@ -494,6 +525,9 @@ class _PskState:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Organization that owns the org-level PSK
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -504,7 +538,7 @@ class _PskState:
     @pulumi.getter
     def passphrase(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        passphrase of the PSK (8-63 character or 64 in hex)
+        PSK passphrase, 8-63 characters or 64 hexadecimal characters
         """
         return pulumi.get(self, "passphrase")
 
@@ -515,6 +549,9 @@ class _PskState:
     @_builtins.property
     @pulumi.getter
     def role(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Client role applied to users authenticated with this PSK
+        """
         return pulumi.get(self, "role")
 
     @role.setter
@@ -525,7 +562,7 @@ class _PskState:
     @pulumi.getter
     def ssid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        SSID this PSK should be applicable to
+        WLAN SSID where this PSK can be used
         """
         return pulumi.get(self, "ssid")
 
@@ -537,7 +574,7 @@ class _PskState:
     @pulumi.getter
     def usage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        enum: `macs`, `multi`, `single`
+        Binding mode for this PSK, enum: `macs`, `multi`, `single`
         """
         return pulumi.get(self, "usage")
 
@@ -548,6 +585,9 @@ class _PskState:
     @_builtins.property
     @pulumi.getter(name="vlanId")
     def vlan_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        VLAN ID returned for clients using this PSK
+        """
         return pulumi.get(self, "vlan_id")
 
     @vlan_id.setter
@@ -631,18 +671,23 @@ class Psk(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] email: email to send psk expiring notifications to
+        :param pulumi.Input[_builtins.str] email: Notification recipient email address for PSK creation notification and expiration reminders
         :param pulumi.Input[_builtins.int] expire_time: Expire time for this PSK key (epoch time in seconds). Default `null` (as no expiration)
         :param pulumi.Input[_builtins.int] expiry_notification_time: Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
-        :param pulumi.Input[_builtins.str] mac: If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] macs: If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
+        :param pulumi.Input[_builtins.str] mac: If `usage`==`single`, client MAC address this PSK is bound to; empty when auto-binding is used
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] macs: Client MAC addresses or MAC patterns allowed when `usage`==`macs`
         :param pulumi.Input[_builtins.int] max_usage: For Org PSK Only. Max concurrent users for this PSK key. Default is 0 (unlimited)
+        :param pulumi.Input[_builtins.str] name: Display name of the PSK
+        :param pulumi.Input[_builtins.str] note: Admin note or description stored with the PSK
         :param pulumi.Input[_builtins.bool] notify_expiry: If set to true, reminder notification will be sent when psk is about to expire
         :param pulumi.Input[_builtins.bool] notify_on_create_or_edit: If set to true, notification will be sent when psk is created or edited
         :param pulumi.Input[_builtins.str] old_passphrase: previous passphrase of the PSK if it has been rotated
-        :param pulumi.Input[_builtins.str] passphrase: passphrase of the PSK (8-63 character or 64 in hex)
-        :param pulumi.Input[_builtins.str] ssid: SSID this PSK should be applicable to
-        :param pulumi.Input[_builtins.str] usage: enum: `macs`, `multi`, `single`
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns the org-level PSK
+        :param pulumi.Input[_builtins.str] passphrase: PSK passphrase, 8-63 characters or 64 hexadecimal characters
+        :param pulumi.Input[_builtins.str] role: Client role applied to users authenticated with this PSK
+        :param pulumi.Input[_builtins.str] ssid: WLAN SSID where this PSK can be used
+        :param pulumi.Input[_builtins.str] usage: Binding mode for this PSK, enum: `macs`, `multi`, `single`
+        :param pulumi.Input[_builtins.str] vlan_id: VLAN ID returned for clients using this PSK
         :param pulumi.Input[_builtins.str] vlan_name: VLAN name to be assigned. Optional, `vlan_id` takes precedence if both are provided
         """
         ...
@@ -791,18 +836,23 @@ class Psk(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] email: email to send psk expiring notifications to
+        :param pulumi.Input[_builtins.str] email: Notification recipient email address for PSK creation notification and expiration reminders
         :param pulumi.Input[_builtins.int] expire_time: Expire time for this PSK key (epoch time in seconds). Default `null` (as no expiration)
         :param pulumi.Input[_builtins.int] expiry_notification_time: Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
-        :param pulumi.Input[_builtins.str] mac: If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] macs: If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
+        :param pulumi.Input[_builtins.str] mac: If `usage`==`single`, client MAC address this PSK is bound to; empty when auto-binding is used
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] macs: Client MAC addresses or MAC patterns allowed when `usage`==`macs`
         :param pulumi.Input[_builtins.int] max_usage: For Org PSK Only. Max concurrent users for this PSK key. Default is 0 (unlimited)
+        :param pulumi.Input[_builtins.str] name: Display name of the PSK
+        :param pulumi.Input[_builtins.str] note: Admin note or description stored with the PSK
         :param pulumi.Input[_builtins.bool] notify_expiry: If set to true, reminder notification will be sent when psk is about to expire
         :param pulumi.Input[_builtins.bool] notify_on_create_or_edit: If set to true, notification will be sent when psk is created or edited
         :param pulumi.Input[_builtins.str] old_passphrase: previous passphrase of the PSK if it has been rotated
-        :param pulumi.Input[_builtins.str] passphrase: passphrase of the PSK (8-63 character or 64 in hex)
-        :param pulumi.Input[_builtins.str] ssid: SSID this PSK should be applicable to
-        :param pulumi.Input[_builtins.str] usage: enum: `macs`, `multi`, `single`
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns the org-level PSK
+        :param pulumi.Input[_builtins.str] passphrase: PSK passphrase, 8-63 characters or 64 hexadecimal characters
+        :param pulumi.Input[_builtins.str] role: Client role applied to users authenticated with this PSK
+        :param pulumi.Input[_builtins.str] ssid: WLAN SSID where this PSK can be used
+        :param pulumi.Input[_builtins.str] usage: Binding mode for this PSK, enum: `macs`, `multi`, `single`
+        :param pulumi.Input[_builtins.str] vlan_id: VLAN ID returned for clients using this PSK
         :param pulumi.Input[_builtins.str] vlan_name: VLAN name to be assigned. Optional, `vlan_id` takes precedence if both are provided
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -833,7 +883,7 @@ class Psk(pulumi.CustomResource):
     @pulumi.getter
     def email(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        email to send psk expiring notifications to
+        Notification recipient email address for PSK creation notification and expiration reminders
         """
         return pulumi.get(self, "email")
 
@@ -857,7 +907,7 @@ class Psk(pulumi.CustomResource):
     @pulumi.getter
     def mac(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+        If `usage`==`single`, client MAC address this PSK is bound to; empty when auto-binding is used
         """
         return pulumi.get(self, "mac")
 
@@ -865,7 +915,7 @@ class Psk(pulumi.CustomResource):
     @pulumi.getter
     def macs(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
+        Client MAC addresses or MAC patterns allowed when `usage`==`macs`
         """
         return pulumi.get(self, "macs")
 
@@ -880,11 +930,17 @@ class Psk(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
+        """
+        Display name of the PSK
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def note(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Admin note or description stored with the PSK
+        """
         return pulumi.get(self, "note")
 
     @_builtins.property
@@ -914,26 +970,32 @@ class Psk(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Organization that owns the org-level PSK
+        """
         return pulumi.get(self, "org_id")
 
     @_builtins.property
     @pulumi.getter
     def passphrase(self) -> pulumi.Output[_builtins.str]:
         """
-        passphrase of the PSK (8-63 character or 64 in hex)
+        PSK passphrase, 8-63 characters or 64 hexadecimal characters
         """
         return pulumi.get(self, "passphrase")
 
     @_builtins.property
     @pulumi.getter
     def role(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Client role applied to users authenticated with this PSK
+        """
         return pulumi.get(self, "role")
 
     @_builtins.property
     @pulumi.getter
     def ssid(self) -> pulumi.Output[_builtins.str]:
         """
-        SSID this PSK should be applicable to
+        WLAN SSID where this PSK can be used
         """
         return pulumi.get(self, "ssid")
 
@@ -941,13 +1003,16 @@ class Psk(pulumi.CustomResource):
     @pulumi.getter
     def usage(self) -> pulumi.Output[_builtins.str]:
         """
-        enum: `macs`, `multi`, `single`
+        Binding mode for this PSK, enum: `macs`, `multi`, `single`
         """
         return pulumi.get(self, "usage")
 
     @_builtins.property
     @pulumi.getter(name="vlanId")
     def vlan_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        VLAN ID returned for clients using this PSK
+        """
         return pulumi.get(self, "vlan_id")
 
     @_builtins.property

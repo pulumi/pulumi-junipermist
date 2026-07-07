@@ -52,22 +52,25 @@ namespace Pulumi.JuniperMist.Org
     public partial class Nactag : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Can be set to true to allow the override by usermac result
+        /// Whether usermac result values can override this NAC tag when the result type is also supported by usermac
         /// </summary>
         [Output("allowUsermacOverride")]
         public Output<bool?> AllowUsermacOverride { get; private set; } = null!;
 
         /// <summary>
-        /// If `Type`==`EgressVlanNames`, list of egress vlans to return
+        /// If `Type`==`EgressVlanNames`, list of egress VLAN names returned by the NAC rule
         /// </summary>
         [Output("egressVlanNames")]
         public Output<ImmutableArray<string>> EgressVlanNames { get; private set; } = null!;
 
+        /// <summary>
+        /// If `Type`==`GbpTag`, GBP tag value returned by the NAC rule
+        /// </summary>
         [Output("gbpTag")]
         public Output<string?> GbpTag { get; private set; } = null!;
 
         /// <summary>
-        /// if `Type`==`Match`. enum: `CertCn`, `CertEku`, `CertIssuer`, `CertSan`, `CertSerial`, `CertSub`, `CertTemplate`, `ClientMac`, `EdrStatus`, `GbpTag`, `Hostname`, `IdpRole`, `IngressVlan`, `MdmStatus`, `NasIp`, `RadiusGroup`, `Realm`, `Ssid`, `UserName`, `UsermacLabel`
+        /// If `Type`==`Match`, client or authentication attribute used for rule matching
         /// </summary>
         [Output("match")]
         public Output<string?> Match { get; private set; } = null!;
@@ -84,65 +87,67 @@ namespace Pulumi.JuniperMist.Org
         public Output<bool?> MatchAll { get; private set; } = null!;
 
         /// <summary>
-        /// If `Type`==`RedirectNacportalId`, the ID of the NAC portal to redirect to
+        /// If `Type`==`RedirectNacportalId`, NAC portal ID used for client redirection
         /// </summary>
         [Output("nacportalId")]
         public Output<string?> NacportalId { get; private set; } = null!;
 
+        /// <summary>
+        /// Human-readable name of the NAC tag
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Org identifier that owns the NAC tag
+        /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// If `Type`==`RadiusAttrs`, user can specify a list of one or more standard attributes in the field "RadiusAttrs". 
-        /// It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
-        /// Note that it is allowed to have more than one RadiusAttrs in the result of a given rule.
+        /// If `Type`==`RadiusAttrs`, standard RADIUS attributes returned by the NAC rule
         /// </summary>
         [Output("radiusAttrs")]
         public Output<ImmutableArray<string>> RadiusAttrs { get; private set; } = null!;
 
         /// <summary>
-        /// If `Type`==`RadiusGroup`
+        /// If `Type`==`RadiusGroup`, RADIUS group value returned by the NAC rule
         /// </summary>
         [Output("radiusGroup")]
         public Output<string?> RadiusGroup { get; private set; } = null!;
 
         /// <summary>
-        /// If `Type`==`RadiusVendorAttrs`, user can specify a list of one or more vendor-specific attributes in the field "RadiusVendorAttrs". 
-        /// It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
-        /// Note that it is allowed to have more than one RadiusVendorAttrs in the result of a given rule.
+        /// If `Type`==`RadiusVendorAttrs`, vendor-specific RADIUS attributes returned by the NAC rule
         /// </summary>
         [Output("radiusVendorAttrs")]
         public Output<ImmutableArray<string>> RadiusVendorAttrs { get; private set; } = null!;
 
         /// <summary>
-        /// If `Type`==`session_timeout, in seconds
+        /// If `Type`==`SessionTimeout`, session timeout returned by the NAC rule, in seconds
         /// </summary>
         [Output("sessionTimeout")]
         public Output<int?> SessionTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// enum: `EgressVlanNames`, `GbpTag`, `Match`, `RadiusAttrs`, `RadiusGroup`, `RadiusVendorAttrs`, `RedirectNacportalId`, `SessionTimeout`, `UsernameAttr`, `Vlan`
+        /// NAC tag type that determines whether the tag is a matcher or a result attribute
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// enum: `Automatic`, `Cn`, `Dns`, `Email`, `Upn`
+        /// If `Type`==`UsernameAttr`, attribute used to derive the username returned by the NAC rule
         /// </summary>
         [Output("usernameAttr")]
         public Output<string?> UsernameAttr { get; private set; } = null!;
 
         /// <summary>
-        /// If `Type`==`Match`
+        /// If `Type`==`Match`, attribute values used by the NAC tag matcher
         /// </summary>
         [Output("values")]
         public Output<ImmutableArray<string>> Values { get; private set; } = null!;
 
         /// <summary>
-        /// If `Type`==`Vlan`
+        /// If `Type`==`Vlan`, VLAN name or ID returned by the NAC rule
         /// </summary>
         [Output("vlan")]
         public Output<string?> Vlan { get; private set; } = null!;
@@ -195,7 +200,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class NactagArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Can be set to true to allow the override by usermac result
+        /// Whether usermac result values can override this NAC tag when the result type is also supported by usermac
         /// </summary>
         [Input("allowUsermacOverride")]
         public Input<bool>? AllowUsermacOverride { get; set; }
@@ -204,7 +209,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _egressVlanNames;
 
         /// <summary>
-        /// If `Type`==`EgressVlanNames`, list of egress vlans to return
+        /// If `Type`==`EgressVlanNames`, list of egress VLAN names returned by the NAC rule
         /// </summary>
         public InputList<string> EgressVlanNames
         {
@@ -212,11 +217,14 @@ namespace Pulumi.JuniperMist.Org
             set => _egressVlanNames = value;
         }
 
+        /// <summary>
+        /// If `Type`==`GbpTag`, GBP tag value returned by the NAC rule
+        /// </summary>
         [Input("gbpTag")]
         public Input<string>? GbpTag { get; set; }
 
         /// <summary>
-        /// if `Type`==`Match`. enum: `CertCn`, `CertEku`, `CertIssuer`, `CertSan`, `CertSerial`, `CertSub`, `CertTemplate`, `ClientMac`, `EdrStatus`, `GbpTag`, `Hostname`, `IdpRole`, `IngressVlan`, `MdmStatus`, `NasIp`, `RadiusGroup`, `Realm`, `Ssid`, `UserName`, `UsermacLabel`
+        /// If `Type`==`Match`, client or authentication attribute used for rule matching
         /// </summary>
         [Input("match")]
         public Input<string>? Match { get; set; }
@@ -233,14 +241,20 @@ namespace Pulumi.JuniperMist.Org
         public Input<bool>? MatchAll { get; set; }
 
         /// <summary>
-        /// If `Type`==`RedirectNacportalId`, the ID of the NAC portal to redirect to
+        /// If `Type`==`RedirectNacportalId`, NAC portal ID used for client redirection
         /// </summary>
         [Input("nacportalId")]
         public Input<string>? NacportalId { get; set; }
 
+        /// <summary>
+        /// Human-readable name of the NAC tag
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Org identifier that owns the NAC tag
+        /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
@@ -248,9 +262,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _radiusAttrs;
 
         /// <summary>
-        /// If `Type`==`RadiusAttrs`, user can specify a list of one or more standard attributes in the field "RadiusAttrs". 
-        /// It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
-        /// Note that it is allowed to have more than one RadiusAttrs in the result of a given rule.
+        /// If `Type`==`RadiusAttrs`, standard RADIUS attributes returned by the NAC rule
         /// </summary>
         public InputList<string> RadiusAttrs
         {
@@ -259,7 +271,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// If `Type`==`RadiusGroup`
+        /// If `Type`==`RadiusGroup`, RADIUS group value returned by the NAC rule
         /// </summary>
         [Input("radiusGroup")]
         public Input<string>? RadiusGroup { get; set; }
@@ -268,9 +280,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _radiusVendorAttrs;
 
         /// <summary>
-        /// If `Type`==`RadiusVendorAttrs`, user can specify a list of one or more vendor-specific attributes in the field "RadiusVendorAttrs". 
-        /// It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
-        /// Note that it is allowed to have more than one RadiusVendorAttrs in the result of a given rule.
+        /// If `Type`==`RadiusVendorAttrs`, vendor-specific RADIUS attributes returned by the NAC rule
         /// </summary>
         public InputList<string> RadiusVendorAttrs
         {
@@ -279,19 +289,19 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// If `Type`==`session_timeout, in seconds
+        /// If `Type`==`SessionTimeout`, session timeout returned by the NAC rule, in seconds
         /// </summary>
         [Input("sessionTimeout")]
         public Input<int>? SessionTimeout { get; set; }
 
         /// <summary>
-        /// enum: `EgressVlanNames`, `GbpTag`, `Match`, `RadiusAttrs`, `RadiusGroup`, `RadiusVendorAttrs`, `RedirectNacportalId`, `SessionTimeout`, `UsernameAttr`, `Vlan`
+        /// NAC tag type that determines whether the tag is a matcher or a result attribute
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
         /// <summary>
-        /// enum: `Automatic`, `Cn`, `Dns`, `Email`, `Upn`
+        /// If `Type`==`UsernameAttr`, attribute used to derive the username returned by the NAC rule
         /// </summary>
         [Input("usernameAttr")]
         public Input<string>? UsernameAttr { get; set; }
@@ -300,7 +310,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _values;
 
         /// <summary>
-        /// If `Type`==`Match`
+        /// If `Type`==`Match`, attribute values used by the NAC tag matcher
         /// </summary>
         public InputList<string> Values
         {
@@ -309,7 +319,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// If `Type`==`Vlan`
+        /// If `Type`==`Vlan`, VLAN name or ID returned by the NAC rule
         /// </summary>
         [Input("vlan")]
         public Input<string>? Vlan { get; set; }
@@ -323,7 +333,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class NactagState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Can be set to true to allow the override by usermac result
+        /// Whether usermac result values can override this NAC tag when the result type is also supported by usermac
         /// </summary>
         [Input("allowUsermacOverride")]
         public Input<bool>? AllowUsermacOverride { get; set; }
@@ -332,7 +342,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _egressVlanNames;
 
         /// <summary>
-        /// If `Type`==`EgressVlanNames`, list of egress vlans to return
+        /// If `Type`==`EgressVlanNames`, list of egress VLAN names returned by the NAC rule
         /// </summary>
         public InputList<string> EgressVlanNames
         {
@@ -340,11 +350,14 @@ namespace Pulumi.JuniperMist.Org
             set => _egressVlanNames = value;
         }
 
+        /// <summary>
+        /// If `Type`==`GbpTag`, GBP tag value returned by the NAC rule
+        /// </summary>
         [Input("gbpTag")]
         public Input<string>? GbpTag { get; set; }
 
         /// <summary>
-        /// if `Type`==`Match`. enum: `CertCn`, `CertEku`, `CertIssuer`, `CertSan`, `CertSerial`, `CertSub`, `CertTemplate`, `ClientMac`, `EdrStatus`, `GbpTag`, `Hostname`, `IdpRole`, `IngressVlan`, `MdmStatus`, `NasIp`, `RadiusGroup`, `Realm`, `Ssid`, `UserName`, `UsermacLabel`
+        /// If `Type`==`Match`, client or authentication attribute used for rule matching
         /// </summary>
         [Input("match")]
         public Input<string>? Match { get; set; }
@@ -361,14 +374,20 @@ namespace Pulumi.JuniperMist.Org
         public Input<bool>? MatchAll { get; set; }
 
         /// <summary>
-        /// If `Type`==`RedirectNacportalId`, the ID of the NAC portal to redirect to
+        /// If `Type`==`RedirectNacportalId`, NAC portal ID used for client redirection
         /// </summary>
         [Input("nacportalId")]
         public Input<string>? NacportalId { get; set; }
 
+        /// <summary>
+        /// Human-readable name of the NAC tag
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Org identifier that owns the NAC tag
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
@@ -376,9 +395,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _radiusAttrs;
 
         /// <summary>
-        /// If `Type`==`RadiusAttrs`, user can specify a list of one or more standard attributes in the field "RadiusAttrs". 
-        /// It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
-        /// Note that it is allowed to have more than one RadiusAttrs in the result of a given rule.
+        /// If `Type`==`RadiusAttrs`, standard RADIUS attributes returned by the NAC rule
         /// </summary>
         public InputList<string> RadiusAttrs
         {
@@ -387,7 +404,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// If `Type`==`RadiusGroup`
+        /// If `Type`==`RadiusGroup`, RADIUS group value returned by the NAC rule
         /// </summary>
         [Input("radiusGroup")]
         public Input<string>? RadiusGroup { get; set; }
@@ -396,9 +413,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _radiusVendorAttrs;
 
         /// <summary>
-        /// If `Type`==`RadiusVendorAttrs`, user can specify a list of one or more vendor-specific attributes in the field "RadiusVendorAttrs". 
-        /// It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
-        /// Note that it is allowed to have more than one RadiusVendorAttrs in the result of a given rule.
+        /// If `Type`==`RadiusVendorAttrs`, vendor-specific RADIUS attributes returned by the NAC rule
         /// </summary>
         public InputList<string> RadiusVendorAttrs
         {
@@ -407,19 +422,19 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// If `Type`==`session_timeout, in seconds
+        /// If `Type`==`SessionTimeout`, session timeout returned by the NAC rule, in seconds
         /// </summary>
         [Input("sessionTimeout")]
         public Input<int>? SessionTimeout { get; set; }
 
         /// <summary>
-        /// enum: `EgressVlanNames`, `GbpTag`, `Match`, `RadiusAttrs`, `RadiusGroup`, `RadiusVendorAttrs`, `RedirectNacportalId`, `SessionTimeout`, `UsernameAttr`, `Vlan`
+        /// NAC tag type that determines whether the tag is a matcher or a result attribute
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// enum: `Automatic`, `Cn`, `Dns`, `Email`, `Upn`
+        /// If `Type`==`UsernameAttr`, attribute used to derive the username returned by the NAC rule
         /// </summary>
         [Input("usernameAttr")]
         public Input<string>? UsernameAttr { get; set; }
@@ -428,7 +443,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _values;
 
         /// <summary>
-        /// If `Type`==`Match`
+        /// If `Type`==`Match`, attribute values used by the NAC tag matcher
         /// </summary>
         public InputList<string> Values
         {
@@ -437,7 +452,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// If `Type`==`Vlan`
+        /// If `Type`==`Vlan`, VLAN name or ID returned by the NAC rule
         /// </summary>
         [Input("vlan")]
         public Input<string>? Vlan { get; set; }

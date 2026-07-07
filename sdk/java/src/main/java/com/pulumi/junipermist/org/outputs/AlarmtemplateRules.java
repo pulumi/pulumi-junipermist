@@ -13,20 +13,28 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AlarmtemplateRules {
     /**
-     * @return Delivery object to configure the alarm delivery
+     * @return Overrides for the alarm template delivery defaults for this alarm rule
      * 
      */
     private @Nullable AlarmtemplateRulesDelivery delivery;
+    /**
+     * @return Whether this alarm rule is enabled in the template
+     * 
+     */
     private @Nullable Boolean enabled;
 
     private AlarmtemplateRules() {}
     /**
-     * @return Delivery object to configure the alarm delivery
+     * @return Overrides for the alarm template delivery defaults for this alarm rule
      * 
      */
     public Optional<AlarmtemplateRulesDelivery> delivery() {
         return Optional.ofNullable(this.delivery);
     }
+    /**
+     * @return Whether this alarm rule is enabled in the template
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }

@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class MxedgeTuntermExtraRoutes
     {
+        /// <summary>
+        /// Next-hop IP address for this Mist Tunnel extra route
+        /// </summary>
         public readonly string? Via;
 
         [OutputConstructor]

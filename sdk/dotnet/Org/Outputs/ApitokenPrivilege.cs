@@ -14,11 +14,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class ApitokenPrivilege
     {
         /// <summary>
-        /// access permissions. enum: `Admin`, `Helpdesk`, `Installer`, `Read`, `Write`
+        /// Access role granted by this organization privilege
         /// </summary>
         public readonly string Role;
         /// <summary>
-        /// enum: `Org`, `Site`, `Sitegroup`, `Orgsites`
+        /// Organization hierarchy level where this privilege applies
         /// </summary>
         public readonly string Scope;
         /// <summary>

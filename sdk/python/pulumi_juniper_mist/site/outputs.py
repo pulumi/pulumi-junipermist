@@ -274,10 +274,12 @@ class EvpnTopologyEvpnOptions(dict):
         :param _builtins.bool core_as_border: Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routed_at` != `core`, whether to do virtual-gateway at core as well
         :param _builtins.bool enable_inband_mgmt: Whether to route management traffic inband; routes will be propagated to downstream switches
         :param _builtins.bool enable_inband_ztp: if the mangement traffic goes inbnd, during installation, only the border/core switches are connected to the Internet to allow initial configuration to be pushed down and leave the downstream access switches stay in the Factory Default state enabling inband-ztp allows upstream switches to use LLDP to assign IP and gives Internet to downstream switches in that state
+        :param 'EvpnTopologyEvpnOptionsOverlayArgs' overlay: EVPN overlay BGP settings for the topology
         :param _builtins.bool per_vlan_vga_v4_mac: Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address's v4_mac. If enabled, 00-00-5e-00-0X-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)
         :param _builtins.bool per_vlan_vga_v6_mac: Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-02-01 as the virtual-gateway-address's v6_mac. If enabled, 00-00-5e-00-1X-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)
-        :param _builtins.str routed_at: optional, where virtual-gateway should reside. enum: `core`, `distribution`, `edge`
-        :param Mapping[str, 'EvpnTopologyEvpnOptionsVsInstancesArgs'] vs_instances: Optional, for EX9200 only to segregate virtual-switches
+        :param _builtins.str routed_at: Topology tier where EVPN virtual gateway routing is placed
+        :param 'EvpnTopologyEvpnOptionsUnderlayArgs' underlay: EVPN underlay BGP and subnet settings for the topology
+        :param Mapping[str, 'EvpnTopologyEvpnOptionsVsInstancesArgs'] vs_instances: Virtual-switch instance mappings used to segregate EVPN networks
         """
         if auto_loopback_subnet is not None:
             pulumi.set(__self__, "auto_loopback_subnet", auto_loopback_subnet)
@@ -365,6 +367,9 @@ class EvpnTopologyEvpnOptions(dict):
     @_builtins.property
     @pulumi.getter
     def overlay(self) -> Optional['outputs.EvpnTopologyEvpnOptionsOverlay']:
+        """
+        EVPN overlay BGP settings for the topology
+        """
         return pulumi.get(self, "overlay")
 
     @_builtins.property
@@ -387,20 +392,23 @@ class EvpnTopologyEvpnOptions(dict):
     @pulumi.getter(name="routedAt")
     def routed_at(self) -> Optional[_builtins.str]:
         """
-        optional, where virtual-gateway should reside. enum: `core`, `distribution`, `edge`
+        Topology tier where EVPN virtual gateway routing is placed
         """
         return pulumi.get(self, "routed_at")
 
     @_builtins.property
     @pulumi.getter
     def underlay(self) -> Optional['outputs.EvpnTopologyEvpnOptionsUnderlay']:
+        """
+        EVPN underlay BGP and subnet settings for the topology
+        """
         return pulumi.get(self, "underlay")
 
     @_builtins.property
     @pulumi.getter(name="vsInstances")
     def vs_instances(self) -> Optional[Mapping[str, 'outputs.EvpnTopologyEvpnOptionsVsInstances']]:
         """
-        Optional, for EX9200 only to segregate virtual-switches
+        Virtual-switch instance mappings used to segregate EVPN networks
         """
         return pulumi.get(self, "vs_instances")
 
@@ -471,6 +479,7 @@ class EvpnTopologyEvpnOptionsUnderlay(dict):
                  use_ipv6: Optional[_builtins.bool] = None):
         """
         :param _builtins.int as_base: Underlay BGP Base AS Number
+        :param _builtins.str routed_id_prefix: Prefix length used for automatically derived underlay router identifiers
         :param _builtins.str subnet: Underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6
         :param _builtins.bool use_ipv6: If v6 is desired for underlay
         """
@@ -494,6 +503,9 @@ class EvpnTopologyEvpnOptionsUnderlay(dict):
     @_builtins.property
     @pulumi.getter(name="routedIdPrefix")
     def routed_id_prefix(self) -> Optional[_builtins.str]:
+        """
+        Prefix length used for automatically derived underlay router identifiers
+        """
         return pulumi.get(self, "routed_id_prefix")
 
     @_builtins.property
@@ -517,12 +529,18 @@ class EvpnTopologyEvpnOptionsUnderlay(dict):
 class EvpnTopologyEvpnOptionsVsInstances(dict):
     def __init__(__self__, *,
                  networks: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] networks: List of network names included in this virtual-switch instance
+        """
         if networks is not None:
             pulumi.set(__self__, "networks", networks)
 
     @_builtins.property
     @pulumi.getter
     def networks(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of network names included in this virtual-switch instance
+        """
         return pulumi.get(self, "networks")
 
 
@@ -577,12 +595,24 @@ class EvpnTopologySwitches(dict):
                  suggested_uplinks: Optional[Sequence[_builtins.str]] = None,
                  uplinks: Optional[Sequence[_builtins.str]] = None):
         """
-        :param _builtins.str role: use `role`==`none` to remove a switch from the topology. enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
+        :param _builtins.str role: EVPN topology role for this switch
+        :param _builtins.str deviceprofile_id: Associated device profile identifier for the switch. Use the Assign Org Device Profile endpoint to assign a Device Profile to the switch.
+        :param Sequence[_builtins.str] downlink_ips: IP addresses used by this switch for EVPN downlinks
+        :param Sequence[_builtins.str] downlinks: Switch MAC addresses connected as downlinks from this topology member
+        :param Sequence[_builtins.str] esilaglinks: Switch MAC addresses connected through ESI-LAG from this topology member
+        :param _builtins.int evpn_id: Topology identifier number for this EVPN switch member
+        :param _builtins.str mac: Switch MAC address used to identify the topology member
+        :param _builtins.str model: Switch model for this topology member
         :param _builtins.int pod: Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g. 
                  * for CLOS, to group dist / access switches into pods
                  * for ERB/CRB, to group dist / esilag-access into pods
-        :param Sequence[_builtins.int] pods: By default, core switches are assumed to be connecting all pods. 
-               if you want to limit the pods, you can specify pods.
+        :param Sequence[_builtins.int] pods: List of pod numbers this switch participates in
+        :param _builtins.str router_id: Routing identifier used by this switch for EVPN routing
+        :param _builtins.str site_id: Associated site for this EVPN topology switch
+        :param Sequence[_builtins.str] suggested_downlinks: Builder-suggested downlink switch MAC addresses
+        :param Sequence[_builtins.str] suggested_esilaglinks: Builder-suggested ESI-LAG switch MAC addresses
+        :param Sequence[_builtins.str] suggested_uplinks: Builder-suggested uplink switch MAC addresses
+        :param Sequence[_builtins.str] uplinks: Switch MAC addresses connected as uplinks from this topology member
         """
         pulumi.set(__self__, "role", role)
         if deviceprofile_id is not None:
@@ -620,43 +650,64 @@ class EvpnTopologySwitches(dict):
     @pulumi.getter
     def role(self) -> _builtins.str:
         """
-        use `role`==`none` to remove a switch from the topology. enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
+        EVPN topology role for this switch
         """
         return pulumi.get(self, "role")
 
     @_builtins.property
     @pulumi.getter(name="deviceprofileId")
     def deviceprofile_id(self) -> Optional[_builtins.str]:
+        """
+        Associated device profile identifier for the switch. Use the Assign Org Device Profile endpoint to assign a Device Profile to the switch.
+        """
         return pulumi.get(self, "deviceprofile_id")
 
     @_builtins.property
     @pulumi.getter(name="downlinkIps")
     def downlink_ips(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        IP addresses used by this switch for EVPN downlinks
+        """
         return pulumi.get(self, "downlink_ips")
 
     @_builtins.property
     @pulumi.getter
     def downlinks(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Switch MAC addresses connected as downlinks from this topology member
+        """
         return pulumi.get(self, "downlinks")
 
     @_builtins.property
     @pulumi.getter
     def esilaglinks(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Switch MAC addresses connected through ESI-LAG from this topology member
+        """
         return pulumi.get(self, "esilaglinks")
 
     @_builtins.property
     @pulumi.getter(name="evpnId")
     def evpn_id(self) -> Optional[_builtins.int]:
+        """
+        Topology identifier number for this EVPN switch member
+        """
         return pulumi.get(self, "evpn_id")
 
     @_builtins.property
     @pulumi.getter
     def mac(self) -> Optional[_builtins.str]:
+        """
+        Switch MAC address used to identify the topology member
+        """
         return pulumi.get(self, "mac")
 
     @_builtins.property
     @pulumi.getter
     def model(self) -> Optional[_builtins.str]:
+        """
+        Switch model for this topology member
+        """
         return pulumi.get(self, "model")
 
     @_builtins.property
@@ -673,39 +724,56 @@ class EvpnTopologySwitches(dict):
     @pulumi.getter
     def pods(self) -> Optional[Sequence[_builtins.int]]:
         """
-        By default, core switches are assumed to be connecting all pods. 
-        if you want to limit the pods, you can specify pods.
+        List of pod numbers this switch participates in
         """
         return pulumi.get(self, "pods")
 
     @_builtins.property
     @pulumi.getter(name="routerId")
     def router_id(self) -> Optional[_builtins.str]:
+        """
+        Routing identifier used by this switch for EVPN routing
+        """
         return pulumi.get(self, "router_id")
 
     @_builtins.property
     @pulumi.getter(name="siteId")
     def site_id(self) -> Optional[_builtins.str]:
+        """
+        Associated site for this EVPN topology switch
+        """
         return pulumi.get(self, "site_id")
 
     @_builtins.property
     @pulumi.getter(name="suggestedDownlinks")
     def suggested_downlinks(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Builder-suggested downlink switch MAC addresses
+        """
         return pulumi.get(self, "suggested_downlinks")
 
     @_builtins.property
     @pulumi.getter(name="suggestedEsilaglinks")
     def suggested_esilaglinks(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Builder-suggested ESI-LAG switch MAC addresses
+        """
         return pulumi.get(self, "suggested_esilaglinks")
 
     @_builtins.property
     @pulumi.getter(name="suggestedUplinks")
     def suggested_uplinks(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Builder-suggested uplink switch MAC addresses
+        """
         return pulumi.get(self, "suggested_uplinks")
 
     @_builtins.property
     @pulumi.getter
     def uplinks(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Switch MAC addresses connected as uplinks from this topology member
+        """
         return pulumi.get(self, "uplinks")
 
 
@@ -10028,9 +10096,13 @@ class WlanAcctServer(dict):
                  keywrap_mack: Optional[_builtins.str] = None,
                  port: Optional[_builtins.str] = None):
         """
-        :param _builtins.str host: IP/ hostname of RADIUS server
-        :param _builtins.str secret: Secret of RADIUS server
-        :param _builtins.str keywrap_format: enum: `ascii`, `hex`
+        :param _builtins.str host: Address or hostname of the RADIUS accounting server
+        :param _builtins.str secret: Shared secret used with this RADIUS accounting server
+        :param _builtins.bool keywrap_enabled: Whether RADIUS keywrap is enabled for messages sent to this accounting server
+        :param _builtins.str keywrap_format: Encoding format for RADIUS keywrap KEK and MACK values
+        :param _builtins.str keywrap_kek: RADIUS keywrap key encryption key (KEK)
+        :param _builtins.str keywrap_mack: RADIUS keywrap message authentication code key (MACK)
+        :param _builtins.str port: UDP port used by the RADIUS accounting server
         """
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "secret", secret)
@@ -10049,7 +10121,7 @@ class WlanAcctServer(dict):
     @pulumi.getter
     def host(self) -> _builtins.str:
         """
-        IP/ hostname of RADIUS server
+        Address or hostname of the RADIUS accounting server
         """
         return pulumi.get(self, "host")
 
@@ -10057,36 +10129,48 @@ class WlanAcctServer(dict):
     @pulumi.getter
     def secret(self) -> _builtins.str:
         """
-        Secret of RADIUS server
+        Shared secret used with this RADIUS accounting server
         """
         return pulumi.get(self, "secret")
 
     @_builtins.property
     @pulumi.getter(name="keywrapEnabled")
     def keywrap_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether RADIUS keywrap is enabled for messages sent to this accounting server
+        """
         return pulumi.get(self, "keywrap_enabled")
 
     @_builtins.property
     @pulumi.getter(name="keywrapFormat")
     def keywrap_format(self) -> Optional[_builtins.str]:
         """
-        enum: `ascii`, `hex`
+        Encoding format for RADIUS keywrap KEK and MACK values
         """
         return pulumi.get(self, "keywrap_format")
 
     @_builtins.property
     @pulumi.getter(name="keywrapKek")
     def keywrap_kek(self) -> Optional[_builtins.str]:
+        """
+        RADIUS keywrap key encryption key (KEK)
+        """
         return pulumi.get(self, "keywrap_kek")
 
     @_builtins.property
     @pulumi.getter(name="keywrapMack")
     def keywrap_mack(self) -> Optional[_builtins.str]:
+        """
+        RADIUS keywrap message authentication code key (MACK)
+        """
         return pulumi.get(self, "keywrap_mack")
 
     @_builtins.property
     @pulumi.getter
     def port(self) -> Optional[_builtins.str]:
+        """
+        UDP port used by the RADIUS accounting server
+        """
         return pulumi.get(self, "port")
 
 
@@ -10118,10 +10202,11 @@ class WlanAirwatch(dict):
                  password: Optional[_builtins.str] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str api_key: API Key
-        :param _builtins.str console_url: Console URL
-        :param _builtins.str password: Password
-        :param _builtins.str username: Username
+        :param _builtins.str api_key: API key used to authenticate to the AirWatch service
+        :param _builtins.str console_url: Base console URL of the AirWatch deployment
+        :param _builtins.bool enabled: Whether AirWatch integration is enabled for the WLAN
+        :param _builtins.str password: AirWatch integration account password for this WLAN
+        :param _builtins.str username: AirWatch integration account username for this WLAN
         """
         if api_key is not None:
             pulumi.set(__self__, "api_key", api_key)
@@ -10138,7 +10223,7 @@ class WlanAirwatch(dict):
     @pulumi.getter(name="apiKey")
     def api_key(self) -> Optional[_builtins.str]:
         """
-        API Key
+        API key used to authenticate to the AirWatch service
         """
         return pulumi.get(self, "api_key")
 
@@ -10146,20 +10231,23 @@ class WlanAirwatch(dict):
     @pulumi.getter(name="consoleUrl")
     def console_url(self) -> Optional[_builtins.str]:
         """
-        Console URL
+        Base console URL of the AirWatch deployment
         """
         return pulumi.get(self, "console_url")
 
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether AirWatch integration is enabled for the WLAN
+        """
         return pulumi.get(self, "enabled")
 
     @_builtins.property
     @pulumi.getter
     def password(self) -> Optional[_builtins.str]:
         """
-        Password
+        AirWatch integration account password for this WLAN
         """
         return pulumi.get(self, "password")
 
@@ -10167,7 +10255,7 @@ class WlanAirwatch(dict):
     @pulumi.getter
     def username(self) -> Optional[_builtins.str]:
         """
-        Username
+        AirWatch integration account username for this WLAN
         """
         return pulumi.get(self, "username")
 
@@ -10198,6 +10286,7 @@ class WlanAppLimit(dict):
         """
         :param Mapping[str, _builtins.int] apps: Map from app key to bandwidth in kbps. 
                Property key is the app key, defined in Get Application List
+        :param _builtins.bool enabled: Whether application bandwidth limits are enabled for this WLAN
         :param Mapping[str, _builtins.int] wxtag_ids: Map from wxtag_id of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtag_id`
         """
         if apps is not None:
@@ -10219,6 +10308,9 @@ class WlanAppLimit(dict):
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether application bandwidth limits are enabled for this WLAN
+        """
         return pulumi.get(self, "enabled")
 
     @_builtins.property
@@ -10236,6 +10328,11 @@ class WlanAppQos(dict):
                  apps: Optional[Mapping[str, 'outputs.WlanAppQosApps']] = None,
                  enabled: Optional[_builtins.bool] = None,
                  others: Optional[Sequence['outputs.WlanAppQosOther']] = None):
+        """
+        :param Mapping[str, 'WlanAppQosAppsArgs'] apps: Map of application keys to QoS rewrite settings
+        :param _builtins.bool enabled: Whether application QoS rewrite rules are enabled for this WLAN
+        :param Sequence['WlanAppQosOtherArgs'] others: Custom traffic QoS rules that are not tied to named applications
+        """
         if apps is not None:
             pulumi.set(__self__, "apps", apps)
         if enabled is not None:
@@ -10246,16 +10343,25 @@ class WlanAppQos(dict):
     @_builtins.property
     @pulumi.getter
     def apps(self) -> Optional[Mapping[str, 'outputs.WlanAppQosApps']]:
+        """
+        Map of application keys to QoS rewrite settings
+        """
         return pulumi.get(self, "apps")
 
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether application QoS rewrite rules are enabled for this WLAN
+        """
         return pulumi.get(self, "enabled")
 
     @_builtins.property
     @pulumi.getter
     def others(self) -> Optional[Sequence['outputs.WlanAppQosOther']]:
+        """
+        Custom traffic QoS rules that are not tied to named applications
+        """
         return pulumi.get(self, "others")
 
 
@@ -10350,6 +10456,13 @@ class WlanAppQosOther(dict):
                  port_ranges: Optional[_builtins.str] = None,
                  protocol: Optional[_builtins.str] = None,
                  src_subnet: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str dscp: Differentiated Services Code Point value applied to matching traffic
+        :param _builtins.str dst_subnet: Destination subnet filter for this custom QoS rule
+        :param _builtins.str port_ranges: TCP or UDP port ranges matched by this custom QoS rule
+        :param _builtins.str protocol: IP protocol matched by this custom QoS rule
+        :param _builtins.str src_subnet: Source subnet filter for this custom QoS rule
+        """
         if dscp is not None:
             pulumi.set(__self__, "dscp", dscp)
         if dst_subnet is not None:
@@ -10364,26 +10477,41 @@ class WlanAppQosOther(dict):
     @_builtins.property
     @pulumi.getter
     def dscp(self) -> Optional[_builtins.str]:
+        """
+        Differentiated Services Code Point value applied to matching traffic
+        """
         return pulumi.get(self, "dscp")
 
     @_builtins.property
     @pulumi.getter(name="dstSubnet")
     def dst_subnet(self) -> Optional[_builtins.str]:
+        """
+        Destination subnet filter for this custom QoS rule
+        """
         return pulumi.get(self, "dst_subnet")
 
     @_builtins.property
     @pulumi.getter(name="portRanges")
     def port_ranges(self) -> Optional[_builtins.str]:
+        """
+        TCP or UDP port ranges matched by this custom QoS rule
+        """
         return pulumi.get(self, "port_ranges")
 
     @_builtins.property
     @pulumi.getter
     def protocol(self) -> Optional[_builtins.str]:
+        """
+        IP protocol matched by this custom QoS rule
+        """
         return pulumi.get(self, "protocol")
 
     @_builtins.property
     @pulumi.getter(name="srcSubnet")
     def src_subnet(self) -> Optional[_builtins.str]:
+        """
+        Source subnet filter for this custom QoS rule
+        """
         return pulumi.get(self, "src_subnet")
 
 
@@ -10443,14 +10571,14 @@ class WlanAuth(dict):
         :param _builtins.bool enable_beacon_protection: Enable Beacon Protection; default is false for better compatibility
         :param _builtins.bool enable_gcmp256: Enable GCMP-256 encryption suite; default is false for better compatibility
         :param _builtins.bool enable_mac_auth: Whether to enable MAC Auth, uses the same auth_servers
-        :param _builtins.int key_idx: When `type`==`wep`
-        :param Sequence[_builtins.str] keys: When type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+        :param _builtins.int key_idx: When `type`==`wep`, index of the WEP key used as the default transmit key
+        :param Sequence[_builtins.str] keys: When `type`==`wep`, WEP keys configured for this WLAN
         :param _builtins.bool multi_psk_only: When `type`==`psk`, whether to only use multi_psk
-        :param _builtins.str owe: if `type`==`open`. enum: `disabled`, `enabled` (means transition mode), `required`
-        :param Sequence[_builtins.str] pairwises: When `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+        :param _builtins.str owe: When `type`==`open`, Opportunistic Wireless Encryption mode for this WLAN
+        :param Sequence[_builtins.str] pairwises: When `type`==`psk` or `type`==`eap`, pairwise cipher suites allowed for this WLAN
         :param _builtins.bool private_wlan: When `multi_psk_only`==`true`, whether private wlan is enabled
         :param _builtins.str psk: When `type`==`psk`, 8-64 characters, or 64 hex characters
-        :param _builtins.str type: enum: `eap`, `eap192`, `open`, `psk`, `psk-tkip`, `psk-wpa2-tkip`, `wep`
+        :param _builtins.str type: Authentication mode used by this WLAN
         :param _builtins.bool wep_as_secondary_auth: Enable WEP as secondary auth
         """
         if anticlog_threshold is not None:
@@ -10526,7 +10654,7 @@ class WlanAuth(dict):
     @pulumi.getter(name="keyIdx")
     def key_idx(self) -> Optional[_builtins.int]:
         """
-        When `type`==`wep`
+        When `type`==`wep`, index of the WEP key used as the default transmit key
         """
         return pulumi.get(self, "key_idx")
 
@@ -10534,7 +10662,7 @@ class WlanAuth(dict):
     @pulumi.getter
     def keys(self) -> Optional[Sequence[_builtins.str]]:
         """
-        When type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+        When `type`==`wep`, WEP keys configured for this WLAN
         """
         return pulumi.get(self, "keys")
 
@@ -10550,7 +10678,7 @@ class WlanAuth(dict):
     @pulumi.getter
     def owe(self) -> Optional[_builtins.str]:
         """
-        if `type`==`open`. enum: `disabled`, `enabled` (means transition mode), `required`
+        When `type`==`open`, Opportunistic Wireless Encryption mode for this WLAN
         """
         return pulumi.get(self, "owe")
 
@@ -10558,7 +10686,7 @@ class WlanAuth(dict):
     @pulumi.getter
     def pairwises(self) -> Optional[Sequence[_builtins.str]]:
         """
-        When `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+        When `type`==`psk` or `type`==`eap`, pairwise cipher suites allowed for this WLAN
         """
         return pulumi.get(self, "pairwises")
 
@@ -10582,7 +10710,7 @@ class WlanAuth(dict):
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
         """
-        enum: `eap`, `eap192`, `open`, `psk`, `psk-tkip`, `psk-wpa2-tkip`, `wep`
+        Authentication mode used by this WLAN
         """
         return pulumi.get(self, "type")
 
@@ -10632,9 +10760,13 @@ class WlanAuthServer(dict):
                  port: Optional[_builtins.str] = None,
                  require_message_authenticator: Optional[_builtins.bool] = None):
         """
-        :param _builtins.str host: IP/ hostname of RADIUS server
-        :param _builtins.str secret: Secret of RADIUS server
-        :param _builtins.str keywrap_format: enum: `ascii`, `hex`
+        :param _builtins.str host: Address or hostname of the RADIUS authentication server
+        :param _builtins.str secret: Shared secret used with this RADIUS authentication server
+        :param _builtins.bool keywrap_enabled: Whether RADIUS keywrap is enabled for messages sent to this authentication server
+        :param _builtins.str keywrap_format: Encoding format for RADIUS keywrap KEK and MACK values
+        :param _builtins.str keywrap_kek: RADIUS keywrap key encryption key (KEK)
+        :param _builtins.str keywrap_mack: RADIUS keywrap message authentication code key (MACK)
+        :param _builtins.str port: UDP port used by the RADIUS authentication server
         :param _builtins.bool require_message_authenticator: Whether to require Message-Authenticator in requests
         """
         pulumi.set(__self__, "host", host)
@@ -10656,7 +10788,7 @@ class WlanAuthServer(dict):
     @pulumi.getter
     def host(self) -> _builtins.str:
         """
-        IP/ hostname of RADIUS server
+        Address or hostname of the RADIUS authentication server
         """
         return pulumi.get(self, "host")
 
@@ -10664,36 +10796,48 @@ class WlanAuthServer(dict):
     @pulumi.getter
     def secret(self) -> _builtins.str:
         """
-        Secret of RADIUS server
+        Shared secret used with this RADIUS authentication server
         """
         return pulumi.get(self, "secret")
 
     @_builtins.property
     @pulumi.getter(name="keywrapEnabled")
     def keywrap_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether RADIUS keywrap is enabled for messages sent to this authentication server
+        """
         return pulumi.get(self, "keywrap_enabled")
 
     @_builtins.property
     @pulumi.getter(name="keywrapFormat")
     def keywrap_format(self) -> Optional[_builtins.str]:
         """
-        enum: `ascii`, `hex`
+        Encoding format for RADIUS keywrap KEK and MACK values
         """
         return pulumi.get(self, "keywrap_format")
 
     @_builtins.property
     @pulumi.getter(name="keywrapKek")
     def keywrap_kek(self) -> Optional[_builtins.str]:
+        """
+        RADIUS keywrap key encryption key (KEK)
+        """
         return pulumi.get(self, "keywrap_kek")
 
     @_builtins.property
     @pulumi.getter(name="keywrapMack")
     def keywrap_mack(self) -> Optional[_builtins.str]:
+        """
+        RADIUS keywrap message authentication code key (MACK)
+        """
         return pulumi.get(self, "keywrap_mack")
 
     @_builtins.property
     @pulumi.getter
     def port(self) -> Optional[_builtins.str]:
+        """
+        UDP port used by the RADIUS authentication server
+        """
         return pulumi.get(self, "port")
 
     @_builtins.property
@@ -10794,8 +10938,8 @@ class WlanBonjourServices(dict):
                  scope: Optional[_builtins.str] = None):
         """
         :param _builtins.bool disable_local: Whether to prevent wireless clients to discover bonjour devices on the same WLAN
-        :param Sequence[_builtins.str] radius_groups: Optional, if the service is further restricted for certain RADIUS groups
-        :param _builtins.str scope: how bonjour services should be discovered for the same WLAN. enum: `same_ap`, `same_map`, `same_site`
+        :param Sequence[_builtins.str] radius_groups: RADIUS groups allowed to discover this Bonjour service, when restricted
+        :param _builtins.str scope: Discovery scope for this Bonjour service on the WLAN
         """
         if disable_local is not None:
             pulumi.set(__self__, "disable_local", disable_local)
@@ -10816,7 +10960,7 @@ class WlanBonjourServices(dict):
     @pulumi.getter(name="radiusGroups")
     def radius_groups(self) -> Optional[Sequence[_builtins.str]]:
         """
-        Optional, if the service is further restricted for certain RADIUS groups
+        RADIUS groups allowed to discover this Bonjour service, when restricted
         """
         return pulumi.get(self, "radius_groups")
 
@@ -10824,7 +10968,7 @@ class WlanBonjourServices(dict):
     @pulumi.getter
     def scope(self) -> Optional[_builtins.str]:
         """
-        how bonjour services should be discovered for the same WLAN. enum: `same_ap`, `same_map`, `same_site`
+        Discovery scope for this Bonjour service on the WLAN
         """
         return pulumi.get(self, "scope")
 
@@ -10858,9 +11002,10 @@ class WlanCiscoCwa(dict):
                  blocked_subnets: Optional[Sequence[_builtins.str]] = None,
                  enabled: Optional[_builtins.bool] = None):
         """
-        :param Sequence[_builtins.str] allowed_hostnames: List of hostnames without http(s):// (matched by substring)
-        :param Sequence[_builtins.str] allowed_subnets: List of CIDRs
-        :param Sequence[_builtins.str] blocked_subnets: List of blocked CIDRs
+        :param Sequence[_builtins.str] allowed_hostnames: Hostnames allowed for Cisco CWA client access before authorization
+        :param Sequence[_builtins.str] allowed_subnets: CIDR subnets allowed for Cisco CWA client access before authorization
+        :param Sequence[_builtins.str] blocked_subnets: CIDR subnets blocked for Cisco CWA client access
+        :param _builtins.bool enabled: Whether Cisco CWA is enabled for this WLAN
         """
         if allowed_hostnames is not None:
             pulumi.set(__self__, "allowed_hostnames", allowed_hostnames)
@@ -10875,7 +11020,7 @@ class WlanCiscoCwa(dict):
     @pulumi.getter(name="allowedHostnames")
     def allowed_hostnames(self) -> Optional[Sequence[_builtins.str]]:
         """
-        List of hostnames without http(s):// (matched by substring)
+        Hostnames allowed for Cisco CWA client access before authorization
         """
         return pulumi.get(self, "allowed_hostnames")
 
@@ -10883,7 +11028,7 @@ class WlanCiscoCwa(dict):
     @pulumi.getter(name="allowedSubnets")
     def allowed_subnets(self) -> Optional[Sequence[_builtins.str]]:
         """
-        List of CIDRs
+        CIDR subnets allowed for Cisco CWA client access before authorization
         """
         return pulumi.get(self, "allowed_subnets")
 
@@ -10891,13 +11036,16 @@ class WlanCiscoCwa(dict):
     @pulumi.getter(name="blockedSubnets")
     def blocked_subnets(self) -> Optional[Sequence[_builtins.str]]:
         """
-        List of blocked CIDRs
+        CIDR subnets blocked for Cisco CWA client access
         """
         return pulumi.get(self, "blocked_subnets")
 
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether Cisco CWA is enabled for this WLAN
+        """
         return pulumi.get(self, "enabled")
 
 
@@ -10927,7 +11075,11 @@ class WlanCoaServer(dict):
                  enabled: Optional[_builtins.bool] = None,
                  port: Optional[_builtins.str] = None):
         """
+        :param _builtins.str ip: Server IPv4 address for RADIUS CoA messages
+        :param _builtins.str secret: Shared secret used to authenticate RADIUS CoA messages
         :param _builtins.bool disable_event_timestamp_check: Whether to disable Event-Timestamp Check
+        :param _builtins.bool enabled: Whether this RADIUS CoA server is enabled
+        :param _builtins.str port: UDP port used to send RADIUS CoA messages to the server
         """
         pulumi.set(__self__, "ip", ip)
         pulumi.set(__self__, "secret", secret)
@@ -10941,11 +11093,17 @@ class WlanCoaServer(dict):
     @_builtins.property
     @pulumi.getter
     def ip(self) -> _builtins.str:
+        """
+        Server IPv4 address for RADIUS CoA messages
+        """
         return pulumi.get(self, "ip")
 
     @_builtins.property
     @pulumi.getter
     def secret(self) -> _builtins.str:
+        """
+        Shared secret used to authenticate RADIUS CoA messages
+        """
         return pulumi.get(self, "secret")
 
     @_builtins.property
@@ -10959,11 +11117,17 @@ class WlanCoaServer(dict):
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether this RADIUS CoA server is enabled
+        """
         return pulumi.get(self, "enabled")
 
     @_builtins.property
     @pulumi.getter
     def port(self) -> Optional[_builtins.str]:
+        """
+        UDP port used to send RADIUS CoA messages to the server
+        """
         return pulumi.get(self, "port")
 
 
@@ -10990,6 +11154,7 @@ class WlanDnsServerRewrite(dict):
                  enabled: Optional[_builtins.bool] = None,
                  radius_groups: Optional[Mapping[str, _builtins.str]] = None):
         """
+        :param _builtins.bool enabled: Whether DNS server rewrite by RADIUS group is enabled for this WLAN
         :param Mapping[str, _builtins.str] radius_groups: Map between radius_group and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
         """
         if enabled is not None:
@@ -11000,6 +11165,9 @@ class WlanDnsServerRewrite(dict):
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether DNS server rewrite by RADIUS group is enabled for this WLAN
+        """
         return pulumi.get(self, "enabled")
 
     @_builtins.property
@@ -11042,8 +11210,10 @@ class WlanDynamicPsk(dict):
                  source: Optional[_builtins.str] = None):
         """
         :param _builtins.str default_psk: Default PSK to use if cloud WLC is not available, 8-63 characters
+        :param _builtins.str default_vlan_id: Default VLAN ID used when dynamic PSK lookup does not return a VLAN
+        :param _builtins.bool enabled: Whether dynamic PSK is enabled for this WLAN
         :param _builtins.bool force_lookup: When 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
-        :param _builtins.str source: enum: `cloud_psks`, `radius`
+        :param _builtins.str source: Origin used to retrieve per-user PSKs
         """
         if default_psk is not None:
             pulumi.set(__self__, "default_psk", default_psk)
@@ -11067,11 +11237,17 @@ class WlanDynamicPsk(dict):
     @_builtins.property
     @pulumi.getter(name="defaultVlanId")
     def default_vlan_id(self) -> Optional[_builtins.str]:
+        """
+        Default VLAN ID used when dynamic PSK lookup does not return a VLAN
+        """
         return pulumi.get(self, "default_vlan_id")
 
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether dynamic PSK is enabled for this WLAN
+        """
         return pulumi.get(self, "enabled")
 
     @_builtins.property
@@ -11086,7 +11262,7 @@ class WlanDynamicPsk(dict):
     @pulumi.getter
     def source(self) -> Optional[_builtins.str]:
         """
-        enum: `cloud_psks`, `radius`
+        Origin used to retrieve per-user PSKs
         """
         return pulumi.get(self, "source")
 
@@ -11119,13 +11295,13 @@ class WlanDynamicVlan(dict):
                  type: Optional[_builtins.str] = None,
                  vlans: Optional[Mapping[str, _builtins.str]] = None):
         """
-        :param Sequence[_builtins.str] default_vlan_ids: Default VLAN ID(s) can be a number, a range of VLAN IDs, a variable or multiple numbers, ranges or variables as a VLAN pool. Default VLAN as a pool of VLANS requires 0.14.x or newer firmware
+        :param Sequence[_builtins.str] default_vlan_ids: Fallback VLAN IDs, ranges, or variables used when no RADIUS VLAN match is returned
         :param _builtins.bool enabled: Requires `vlan_enabled`==`true` to be set to `true`. Whether to enable dynamic vlan
-        :param Sequence[_builtins.str] local_vlan_ids: VLAN_ids to be locally bridged
-        :param _builtins.str type: standard (using Tunnel-Private-Group-ID, widely supported), airespace-interface-name (Airespace/Cisco). enum: `airespace-interface-name`, `standard`
+        :param Sequence[_builtins.str] local_vlan_ids: VLAN IDs that should be locally bridged for dynamic VLAN assignment
+        :param _builtins.str type: Dynamic VLAN mapping method used for RADIUS-provided VLAN attributes
         :param Mapping[str, _builtins.str] vlans: Map between vlan_id (as string) to airespace interface names (comma-separated) or null for standard mapping
-                 * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \\"\\"
-                 * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
+                 * if `dynamic_vlan.type`==`standard`, property key is the VLAN ID and property value is \\"\\"
+                 * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the VLAN ID and property value is the Airespace Interface Name
         """
         if default_vlan_ids is not None:
             pulumi.set(__self__, "default_vlan_ids", default_vlan_ids)
@@ -11142,7 +11318,7 @@ class WlanDynamicVlan(dict):
     @pulumi.getter(name="defaultVlanIds")
     def default_vlan_ids(self) -> Optional[Sequence[_builtins.str]]:
         """
-        Default VLAN ID(s) can be a number, a range of VLAN IDs, a variable or multiple numbers, ranges or variables as a VLAN pool. Default VLAN as a pool of VLANS requires 0.14.x or newer firmware
+        Fallback VLAN IDs, ranges, or variables used when no RADIUS VLAN match is returned
         """
         return pulumi.get(self, "default_vlan_ids")
 
@@ -11158,7 +11334,7 @@ class WlanDynamicVlan(dict):
     @pulumi.getter(name="localVlanIds")
     def local_vlan_ids(self) -> Optional[Sequence[_builtins.str]]:
         """
-        VLAN_ids to be locally bridged
+        VLAN IDs that should be locally bridged for dynamic VLAN assignment
         """
         return pulumi.get(self, "local_vlan_ids")
 
@@ -11166,7 +11342,7 @@ class WlanDynamicVlan(dict):
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
         """
-        standard (using Tunnel-Private-Group-ID, widely supported), airespace-interface-name (Airespace/Cisco). enum: `airespace-interface-name`, `standard`
+        Dynamic VLAN mapping method used for RADIUS-provided VLAN attributes
         """
         return pulumi.get(self, "type")
 
@@ -11175,8 +11351,8 @@ class WlanDynamicVlan(dict):
     def vlans(self) -> Optional[Mapping[str, _builtins.str]]:
         """
         Map between vlan_id (as string) to airespace interface names (comma-separated) or null for standard mapping
-          * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \\"\\"
-          * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
+          * if `dynamic_vlan.type`==`standard`, property key is the VLAN ID and property value is \\"\\"
+          * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the VLAN ID and property value is the Airespace Interface Name
         """
         return pulumi.get(self, "vlans")
 
@@ -11212,8 +11388,11 @@ class WlanHotspot20(dict):
                  rcois: Optional[Sequence[_builtins.str]] = None,
                  venue_name: Optional[_builtins.str] = None):
         """
+        :param Sequence[_builtins.str] domain_names: Advertised domain names for Hotspot 2.0 clients
         :param _builtins.bool enabled: Whether to enable hotspot 2.0 config
-        :param Sequence[_builtins.str] operators: List of operators to support
+        :param Sequence[_builtins.str] nai_realms: NAI realms advertised for Hotspot 2.0 authentication
+        :param Sequence[_builtins.str] operators: Operator profiles supported by this Hotspot 2.0 configuration
+        :param Sequence[_builtins.str] rcois: Roaming Consortium Organization Identifiers advertised for Hotspot 2.0
         :param _builtins.str venue_name: Venue name, default is site name
         """
         if domain_names is not None:
@@ -11232,6 +11411,9 @@ class WlanHotspot20(dict):
     @_builtins.property
     @pulumi.getter(name="domainNames")
     def domain_names(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Advertised domain names for Hotspot 2.0 clients
+        """
         return pulumi.get(self, "domain_names")
 
     @_builtins.property
@@ -11245,19 +11427,25 @@ class WlanHotspot20(dict):
     @_builtins.property
     @pulumi.getter(name="naiRealms")
     def nai_realms(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        NAI realms advertised for Hotspot 2.0 authentication
+        """
         return pulumi.get(self, "nai_realms")
 
     @_builtins.property
     @pulumi.getter
     def operators(self) -> Optional[Sequence[_builtins.str]]:
         """
-        List of operators to support
+        Operator profiles supported by this Hotspot 2.0 configuration
         """
         return pulumi.get(self, "operators")
 
     @_builtins.property
     @pulumi.getter
     def rcois(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Roaming Consortium Organization Identifiers advertised for Hotspot 2.0
+        """
         return pulumi.get(self, "rcois")
 
     @_builtins.property
@@ -11371,9 +11559,9 @@ class WlanMistNac(dict):
                  network: Optional[_builtins.str] = None,
                  source_ip: Optional[_builtins.str] = None):
         """
-        :param _builtins.int acct_interim_interval: How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
-        :param _builtins.int auth_servers_retries: Radius auth session retries. Following fast timers are set if `fast_dot1x_timers` knob is enabled. "retries" are set to value of `auth_servers_timeout`. "max-requests" is also set when setting `auth_servers_retries` is set to default value to 3.
-        :param _builtins.int auth_servers_timeout: Radius auth session timeout. Following fast timers are set if `fast_dot1x_timers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `auth_servers_timeout`. "supplicant-timeout" is also set when setting `auth_servers_timeout` is set to default value of 10.
+        :param _builtins.int acct_interim_interval: How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled.
+        :param _builtins.int auth_servers_retries: RADIUS auth session retries. Following fast timers are set if `fast_dot1x_timers` knob is enabled. "retries" are set to value of `auth_servers_timeout`. "max-requests" is also set when setting `auth_servers_retries` is set to default value to 3.
+        :param _builtins.int auth_servers_timeout: RADIUS auth session timeout. Following fast timers are set if `fast_dot1x_timers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `auth_servers_timeout`. "supplicant-timeout" is also set when setting `auth_servers_timeout` is set to default value of 10.
         :param _builtins.bool coa_enabled: Allows a RADIUS server to dynamically modify the authorization status of a user session.
         :param _builtins.int coa_port: the communication port used for “Change of Authorization” (CoA) messages
         :param _builtins.bool enabled: When enabled:
@@ -11410,7 +11598,7 @@ class WlanMistNac(dict):
     @pulumi.getter(name="acctInterimInterval")
     def acct_interim_interval(self) -> Optional[_builtins.int]:
         """
-        How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+        How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled.
         """
         return pulumi.get(self, "acct_interim_interval")
 
@@ -11418,7 +11606,7 @@ class WlanMistNac(dict):
     @pulumi.getter(name="authServersRetries")
     def auth_servers_retries(self) -> Optional[_builtins.int]:
         """
-        Radius auth session retries. Following fast timers are set if `fast_dot1x_timers` knob is enabled. "retries" are set to value of `auth_servers_timeout`. "max-requests" is also set when setting `auth_servers_retries` is set to default value to 3.
+        RADIUS auth session retries. Following fast timers are set if `fast_dot1x_timers` knob is enabled. "retries" are set to value of `auth_servers_timeout`. "max-requests" is also set when setting `auth_servers_retries` is set to default value to 3.
         """
         return pulumi.get(self, "auth_servers_retries")
 
@@ -11426,7 +11614,7 @@ class WlanMistNac(dict):
     @pulumi.getter(name="authServersTimeout")
     def auth_servers_timeout(self) -> Optional[_builtins.int]:
         """
-        Radius auth session timeout. Following fast timers are set if `fast_dot1x_timers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `auth_servers_timeout`. "supplicant-timeout" is also set when setting `auth_servers_timeout` is set to default value of 10.
+        RADIUS auth session timeout. Following fast timers are set if `fast_dot1x_timers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `auth_servers_timeout`. "supplicant-timeout" is also set when setting `auth_servers_timeout` is set to default value of 10.
         """
         return pulumi.get(self, "auth_servers_timeout")
 
@@ -11590,6 +11778,8 @@ class WlanPortal(dict):
             suggest = "smsglobal_api_key"
         elif key == "smsglobalApiSecret":
             suggest = "smsglobal_api_secret"
+        elif key == "smsglobalSender":
+            suggest = "smsglobal_sender"
         elif key == "sponsorAutoApprove":
             suggest = "sponsor_auto_approve"
         elif key == "sponsorEmailDomains":
@@ -11697,6 +11887,7 @@ class WlanPortal(dict):
                  sms_provider: Optional[_builtins.str] = None,
                  smsglobal_api_key: Optional[_builtins.str] = None,
                  smsglobal_api_secret: Optional[_builtins.str] = None,
+                 smsglobal_sender: Optional[_builtins.str] = None,
                  sponsor_auto_approve: Optional[_builtins.bool] = None,
                  sponsor_email_domains: Optional[Sequence[_builtins.str]] = None,
                  sponsor_enabled: Optional[_builtins.bool] = None,
@@ -11721,20 +11912,20 @@ class WlanPortal(dict):
         :param _builtins.bool allow_wlan_id_roam: Optional if `amazon_enabled`==`true`. Whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable random_mac for seamless roaming)
         :param _builtins.str amazon_client_id: Optional if `amazon_enabled`==`true`. Amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
         :param _builtins.str amazon_client_secret: Optional if `amazon_enabled`==`true`. Amazon OAuth2 client secret. If amazon_client_id was provided, provide a corresponding value. Else leave blank.
-        :param Sequence[_builtins.str] amazon_email_domains: Optional if `amazon_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+        :param Sequence[_builtins.str] amazon_email_domains: Optional if `amazon_enabled`==`true`. Email domains allowed for Amazon-authenticated guest users. If null or empty, any authenticated Amazon email domain is allowed.
         :param _builtins.bool amazon_enabled: Whether amazon is enabled as a login method
         :param _builtins.int amazon_expire: Optional if `amazon_enabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
-        :param _builtins.str auth: authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
+        :param _builtins.str auth: Guest portal login scheme used by the WLAN
         :param _builtins.str azure_client_id: Required if `azure_enabled`==`true`. Azure active directory app client id
         :param _builtins.str azure_client_secret: Required if `azure_enabled`==`true`. Azure active directory app client secret
         :param _builtins.bool azure_enabled: Whether Azure Active Directory is enabled as a login method
         :param _builtins.int azure_expire: Interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
         :param _builtins.str azure_tenant_id: Required if `azure_enabled`==`true`. Azure active directory tenant id.
-        :param _builtins.str broadnet_password: Required if `sms_provider`==`broadnet`
-        :param _builtins.str broadnet_sid: Required if `sms_provider`==`broadnet`
-        :param _builtins.str broadnet_user_id: Required if `sms_provider`==`broadnet`
+        :param _builtins.str broadnet_password: Required if `sms_provider`==`broadnet`. Password for the Broadnet SMS provider account
+        :param _builtins.str broadnet_sid: Required if `sms_provider`==`broadnet`. SID for the Broadnet SMS provider account
+        :param _builtins.str broadnet_user_id: Required if `sms_provider`==`broadnet`. User ID for the Broadnet SMS provider account
         :param _builtins.bool bypass_when_cloud_down: Whether to bypass the guest portal when cloud not reachable (and apply the default policies)
-        :param _builtins.str clickatell_api_key: Required if `sms_provider`==`clickatell`
+        :param _builtins.str clickatell_api_key: Required if `sms_provider`==`clickatell`. API key for the Clickatell SMS provider account
         :param _builtins.bool cross_site: Whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable random_mac for seamless roaming)
         :param _builtins.bool email_enabled: Whether email (access code verification) is enabled as a login method
         :param _builtins.bool enabled: Whether guest portal is enabled
@@ -11742,39 +11933,41 @@ class WlanPortal(dict):
         :param _builtins.str external_portal_url: Required if `wlan_portal_auth`==`external`. External portal URL (e.g. https://host/url) where we can append our query parameters to
         :param _builtins.str facebook_client_id: Required if `facebook_enabled`==`true`. Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
         :param _builtins.str facebook_client_secret: Required if `facebook_enabled`==`true`. Facebook OAuth2 app secret. If facebook_client_id was provided, provide a corresponding value. Else leave blank.
-        :param Sequence[_builtins.str] facebook_email_domains: Optional if `facebook_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+        :param Sequence[_builtins.str] facebook_email_domains: Optional if `facebook_enabled`==`true`. Email domains allowed for Facebook-authenticated guest users. If null or empty, any authenticated Facebook email domain is allowed.
         :param _builtins.bool facebook_enabled: Whether facebook is enabled as a login method
         :param _builtins.int facebook_expire: Optional if `facebook_enabled`==`true`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
         :param _builtins.bool forward: Whether to forward the user to another URL after authorized
         :param _builtins.str forward_url: URL to forward the user to
         :param _builtins.str google_client_id: Google OAuth2 app id. This is optional. If not provided, it will use a default one.
         :param _builtins.str google_client_secret: Optional if `google_enabled`==`true`. Google OAuth2 app secret. If google_client_id was provided, provide a corresponding value. Else leave blank.
-        :param Sequence[_builtins.str] google_email_domains: Optional if `google_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+        :param Sequence[_builtins.str] google_email_domains: Optional if `google_enabled`==`true`. Email domains allowed for Google-authenticated guest users. If null or empty, any authenticated Google email domain is allowed.
         :param _builtins.bool google_enabled: Whether Google is enabled as login method
         :param _builtins.int google_expire: Optional if `google_enabled`==`true`. Interval for which guest remains authorized using Google Auth (in minutes), if not provided, uses expire`
-        :param _builtins.str gupshup_password: Required if `sms_provider`==`gupshup`
-        :param _builtins.str gupshup_userid: Required if `sms_provider`==`gupshup`
+        :param _builtins.str gupshup_password: Required if `sms_provider`==`gupshup`. Password for the Gupshup SMS provider account
+        :param _builtins.str gupshup_userid: Required if `sms_provider`==`gupshup`. User ID for the Gupshup SMS provider account
         :param _builtins.str microsoft_client_id: Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
         :param _builtins.str microsoft_client_secret: Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoft_client_id was provided, provide a corresponding value. Else leave blank.
-        :param Sequence[_builtins.str] microsoft_email_domains: Optional if `microsoft_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+        :param Sequence[_builtins.str] microsoft_email_domains: Optional if `microsoft_enabled`==`true`. Email domains allowed for Microsoft 365-authenticated guest users. If null or empty, any authenticated Microsoft 365 email domain is allowed.
         :param _builtins.bool microsoft_enabled: Whether microsoft 365 is enabled as a login method
         :param _builtins.int microsoft_expire: Optional if `microsoft_enabled`==`true`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
         :param _builtins.bool passphrase_enabled: Whether password is enabled
         :param _builtins.int passphrase_expire: Optional if `passphrase_enabled`==`true`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
-        :param _builtins.str password: Required if `passphrase_enabled`==`true`.
+        :param _builtins.str password: Required if `passphrase_enabled`==`true`. Passphrase guests must enter when passphrase authentication is enabled
         :param _builtins.bool predefined_sponsors_enabled: Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behavior is acc to `sponsor_email_domains`
         :param _builtins.bool predefined_sponsors_hide_email: Whether to hide sponsor’s email from list of sponsors
-        :param _builtins.str puzzel_password: Required if `sms_provider`==`puzzel`
-        :param _builtins.str puzzel_service_id: Required if `sms_provider`==`puzzel`
-        :param _builtins.str puzzel_username: Required if `sms_provider`==`puzzel`
+        :param _builtins.bool privacy: Whether to show the privacy policy in the WLAN guest portal
+        :param _builtins.str puzzel_password: Required if `sms_provider`==`puzzel`. Password for the Puzzel SMS provider account
+        :param _builtins.str puzzel_service_id: Required if `sms_provider`==`puzzel`. Service ID for the Puzzel SMS provider account
+        :param _builtins.str puzzel_username: Required if `sms_provider`==`puzzel`. Username for the Puzzel SMS provider account
         :param _builtins.bool sms_enabled: Whether sms is enabled as a login method
         :param _builtins.int sms_expire: Optional if `sms_enabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
         :param _builtins.str sms_message_format: Optional if `sms_enabled`==`true`. SMS Message format
-        :param _builtins.str sms_provider: Optional if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
+        :param _builtins.str sms_provider: Optional if `sms_enabled`==`true`. SMS provider used to deliver guest portal access codes
         :param _builtins.str smsglobal_api_key: Required if `sms_provider`==`smsglobal`, Client API Key
         :param _builtins.str smsglobal_api_secret: Required if `sms_provider`==`smsglobal`, Client secret
+        :param _builtins.str smsglobal_sender: Optional sender's number or sender ID for SMSGlobal. If not provided, uses the default number associated with the account
         :param _builtins.bool sponsor_auto_approve: Optional if `sponsor_enabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefined_sponsors_enabled enabled and sponsor_notify_all disabled
-        :param Sequence[_builtins.str] sponsor_email_domains: List of domain allowed for sponsor email. Required if `sponsor_enabled` is `true` and `sponsors` is empty.
+        :param Sequence[_builtins.str] sponsor_email_domains: Email domains allowed for sponsor email addresses. Required if `sponsor_enabled` is `true` and `sponsors` is empty.
         :param _builtins.bool sponsor_enabled: Whether sponsor is enabled
         :param _builtins.int sponsor_expire: Optional if `sponsor_enabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
         :param _builtins.str sponsor_link_validity_duration: Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes. Default is 60 minutes.
@@ -11785,12 +11978,12 @@ class WlanPortal(dict):
                
                            Property key is the sponsor email, Property value is the sponsor name
         :param _builtins.str sso_default_role: Optional if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
-        :param _builtins.str sso_forced_role: Optional if `wlan_portal_auth`==`sso`
+        :param _builtins.str sso_forced_role: Optional if `wlan_portal_auth`==`sso`. Role assigned to authenticated users when guest SSO is used
         :param _builtins.str sso_idp_cert: Required if `wlan_portal_auth`==`sso`. IDP Cert (used to verify the signed response)
-        :param _builtins.str sso_idp_sign_algo: Optional if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+        :param _builtins.str sso_idp_sign_algo: Optional if `wlan_portal_auth`==`sso`. Signing algorithm used for SAML assertions from the identity provider
         :param _builtins.str sso_idp_sso_url: Required if `wlan_portal_auth`==`sso`, IDP Single-Sign-On URL
         :param _builtins.str sso_issuer: Required if `wlan_portal_auth`==`sso`, IDP issuer URL
-        :param _builtins.str sso_nameid_format: Optional if `wlan_portal_auth`==`sso`. enum: `email`, `unspecified`
+        :param _builtins.str sso_nameid_format: Optional if `wlan_portal_auth`==`sso`. SAML NameID format expected from the identity provider
         :param _builtins.str telstra_client_id: Required if `sms_provider`==`telstra`, Client ID provided by Telstra
         :param _builtins.str telstra_client_secret: Required if `sms_provider`==`telstra`, Client secret provided by Telstra
         :param _builtins.str twilio_auth_token: Required if `sms_provider`==`twilio`, Auth token account with twilio account
@@ -11909,6 +12102,8 @@ class WlanPortal(dict):
             pulumi.set(__self__, "smsglobal_api_key", smsglobal_api_key)
         if smsglobal_api_secret is not None:
             pulumi.set(__self__, "smsglobal_api_secret", smsglobal_api_secret)
+        if smsglobal_sender is not None:
+            pulumi.set(__self__, "smsglobal_sender", smsglobal_sender)
         if sponsor_auto_approve is not None:
             pulumi.set(__self__, "sponsor_auto_approve", sponsor_auto_approve)
         if sponsor_email_domains is not None:
@@ -11978,7 +12173,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="amazonEmailDomains")
     def amazon_email_domains(self) -> Optional[Sequence[_builtins.str]]:
         """
-        Optional if `amazon_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+        Optional if `amazon_enabled`==`true`. Email domains allowed for Amazon-authenticated guest users. If null or empty, any authenticated Amazon email domain is allowed.
         """
         return pulumi.get(self, "amazon_email_domains")
 
@@ -12002,7 +12197,7 @@ class WlanPortal(dict):
     @pulumi.getter
     def auth(self) -> Optional[_builtins.str]:
         """
-        authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
+        Guest portal login scheme used by the WLAN
         """
         return pulumi.get(self, "auth")
 
@@ -12050,7 +12245,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="broadnetPassword")
     def broadnet_password(self) -> Optional[_builtins.str]:
         """
-        Required if `sms_provider`==`broadnet`
+        Required if `sms_provider`==`broadnet`. Password for the Broadnet SMS provider account
         """
         return pulumi.get(self, "broadnet_password")
 
@@ -12058,7 +12253,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="broadnetSid")
     def broadnet_sid(self) -> Optional[_builtins.str]:
         """
-        Required if `sms_provider`==`broadnet`
+        Required if `sms_provider`==`broadnet`. SID for the Broadnet SMS provider account
         """
         return pulumi.get(self, "broadnet_sid")
 
@@ -12066,7 +12261,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="broadnetUserId")
     def broadnet_user_id(self) -> Optional[_builtins.str]:
         """
-        Required if `sms_provider`==`broadnet`
+        Required if `sms_provider`==`broadnet`. User ID for the Broadnet SMS provider account
         """
         return pulumi.get(self, "broadnet_user_id")
 
@@ -12082,7 +12277,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="clickatellApiKey")
     def clickatell_api_key(self) -> Optional[_builtins.str]:
         """
-        Required if `sms_provider`==`clickatell`
+        Required if `sms_provider`==`clickatell`. API key for the Clickatell SMS provider account
         """
         return pulumi.get(self, "clickatell_api_key")
 
@@ -12146,7 +12341,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="facebookEmailDomains")
     def facebook_email_domains(self) -> Optional[Sequence[_builtins.str]]:
         """
-        Optional if `facebook_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+        Optional if `facebook_enabled`==`true`. Email domains allowed for Facebook-authenticated guest users. If null or empty, any authenticated Facebook email domain is allowed.
         """
         return pulumi.get(self, "facebook_email_domains")
 
@@ -12202,7 +12397,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="googleEmailDomains")
     def google_email_domains(self) -> Optional[Sequence[_builtins.str]]:
         """
-        Optional if `google_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+        Optional if `google_enabled`==`true`. Email domains allowed for Google-authenticated guest users. If null or empty, any authenticated Google email domain is allowed.
         """
         return pulumi.get(self, "google_email_domains")
 
@@ -12226,7 +12421,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="gupshupPassword")
     def gupshup_password(self) -> Optional[_builtins.str]:
         """
-        Required if `sms_provider`==`gupshup`
+        Required if `sms_provider`==`gupshup`. Password for the Gupshup SMS provider account
         """
         return pulumi.get(self, "gupshup_password")
 
@@ -12234,7 +12429,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="gupshupUserid")
     def gupshup_userid(self) -> Optional[_builtins.str]:
         """
-        Required if `sms_provider`==`gupshup`
+        Required if `sms_provider`==`gupshup`. User ID for the Gupshup SMS provider account
         """
         return pulumi.get(self, "gupshup_userid")
 
@@ -12258,7 +12453,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="microsoftEmailDomains")
     def microsoft_email_domains(self) -> Optional[Sequence[_builtins.str]]:
         """
-        Optional if `microsoft_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+        Optional if `microsoft_enabled`==`true`. Email domains allowed for Microsoft 365-authenticated guest users. If null or empty, any authenticated Microsoft 365 email domain is allowed.
         """
         return pulumi.get(self, "microsoft_email_domains")
 
@@ -12298,7 +12493,7 @@ class WlanPortal(dict):
     @pulumi.getter
     def password(self) -> Optional[_builtins.str]:
         """
-        Required if `passphrase_enabled`==`true`.
+        Required if `passphrase_enabled`==`true`. Passphrase guests must enter when passphrase authentication is enabled
         """
         return pulumi.get(self, "password")
 
@@ -12321,13 +12516,16 @@ class WlanPortal(dict):
     @_builtins.property
     @pulumi.getter
     def privacy(self) -> Optional[_builtins.bool]:
+        """
+        Whether to show the privacy policy in the WLAN guest portal
+        """
         return pulumi.get(self, "privacy")
 
     @_builtins.property
     @pulumi.getter(name="puzzelPassword")
     def puzzel_password(self) -> Optional[_builtins.str]:
         """
-        Required if `sms_provider`==`puzzel`
+        Required if `sms_provider`==`puzzel`. Password for the Puzzel SMS provider account
         """
         return pulumi.get(self, "puzzel_password")
 
@@ -12335,7 +12533,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="puzzelServiceId")
     def puzzel_service_id(self) -> Optional[_builtins.str]:
         """
-        Required if `sms_provider`==`puzzel`
+        Required if `sms_provider`==`puzzel`. Service ID for the Puzzel SMS provider account
         """
         return pulumi.get(self, "puzzel_service_id")
 
@@ -12343,7 +12541,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="puzzelUsername")
     def puzzel_username(self) -> Optional[_builtins.str]:
         """
-        Required if `sms_provider`==`puzzel`
+        Required if `sms_provider`==`puzzel`. Username for the Puzzel SMS provider account
         """
         return pulumi.get(self, "puzzel_username")
 
@@ -12375,7 +12573,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="smsProvider")
     def sms_provider(self) -> Optional[_builtins.str]:
         """
-        Optional if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
+        Optional if `sms_enabled`==`true`. SMS provider used to deliver guest portal access codes
         """
         return pulumi.get(self, "sms_provider")
 
@@ -12396,6 +12594,14 @@ class WlanPortal(dict):
         return pulumi.get(self, "smsglobal_api_secret")
 
     @_builtins.property
+    @pulumi.getter(name="smsglobalSender")
+    def smsglobal_sender(self) -> Optional[_builtins.str]:
+        """
+        Optional sender's number or sender ID for SMSGlobal. If not provided, uses the default number associated with the account
+        """
+        return pulumi.get(self, "smsglobal_sender")
+
+    @_builtins.property
     @pulumi.getter(name="sponsorAutoApprove")
     def sponsor_auto_approve(self) -> Optional[_builtins.bool]:
         """
@@ -12407,7 +12613,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="sponsorEmailDomains")
     def sponsor_email_domains(self) -> Optional[Sequence[_builtins.str]]:
         """
-        List of domain allowed for sponsor email. Required if `sponsor_enabled` is `true` and `sponsors` is empty.
+        Email domains allowed for sponsor email addresses. Required if `sponsor_enabled` is `true` and `sponsors` is empty.
         """
         return pulumi.get(self, "sponsor_email_domains")
 
@@ -12474,7 +12680,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="ssoForcedRole")
     def sso_forced_role(self) -> Optional[_builtins.str]:
         """
-        Optional if `wlan_portal_auth`==`sso`
+        Optional if `wlan_portal_auth`==`sso`. Role assigned to authenticated users when guest SSO is used
         """
         return pulumi.get(self, "sso_forced_role")
 
@@ -12490,7 +12696,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="ssoIdpSignAlgo")
     def sso_idp_sign_algo(self) -> Optional[_builtins.str]:
         """
-        Optional if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+        Optional if `wlan_portal_auth`==`sso`. Signing algorithm used for SAML assertions from the identity provider
         """
         return pulumi.get(self, "sso_idp_sign_algo")
 
@@ -12514,7 +12720,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="ssoNameidFormat")
     def sso_nameid_format(self) -> Optional[_builtins.str]:
         """
-        Optional if `wlan_portal_auth`==`sso`. enum: `email`, `unspecified`
+        Optional if `wlan_portal_auth`==`sso`. SAML NameID format expected from the identity provider
         """
         return pulumi.get(self, "sso_nameid_format")
 
@@ -12902,7 +13108,8 @@ class WlanPortalTemplatePortalTemplate(dict):
                  tos_link: Optional[_builtins.str] = None,
                  tos_text: Optional[_builtins.str] = None):
         """
-        :param _builtins.str alignment: defines alignment on portal. enum: `center`, `left`, `right`
+        :param _builtins.str access_code_alternate_email: Link text for using an alternate email address during access-code login
+        :param _builtins.str alignment: Text and content alignment used by the guest portal template
         :param _builtins.str auth_button_amazon: Label for Amazon auth button
         :param _builtins.str auth_button_azure: Label for Azure auth button
         :param _builtins.str auth_button_email: Label for Email auth button
@@ -12912,34 +13119,45 @@ class WlanPortalTemplatePortalTemplate(dict):
         :param _builtins.str auth_button_passphrase: Label for passphrase auth button
         :param _builtins.str auth_button_sms: Label for SMS auth button
         :param _builtins.str auth_button_sponsor: Label for Sponsor auth button
+        :param _builtins.str auth_label: Heading text displayed above portal authentication options
         :param _builtins.str back_link: Label of the link to go back to /logon
-        :param _builtins.str color: Portal main color
+        :param _builtins.str color: Primary color used by the portal template
+        :param _builtins.str color_dark: Darker accent color used by the portal template
+        :param _builtins.str color_light: Lighter accent color used by the portal template
         :param _builtins.bool company: Whether company field is required
         :param _builtins.str company_error: Error message when company not provided
-        :param _builtins.str company_label: Label of company field
+        :param _builtins.str company_label: Label displayed for the company input field
         :param _builtins.bool email: Whether email field is required
         :param _builtins.str email_access_domain_error: Error message when a user has valid social login but doesn't match specified email domains.
         :param _builtins.str email_cancel: Label for cancel confirmation code submission using email auth
+        :param _builtins.str email_code_cancel: Link text for requesting help when the email access code was not received
+        :param _builtins.str email_code_error: Error message shown when the alternate email address for access-code delivery is invalid
+        :param _builtins.str email_code_field_label: Label for the email access-code input field
+        :param _builtins.str email_code_message: Instructional text shown before entering the email access code
+        :param _builtins.str email_code_submit: Button label for submitting the email access code
+        :param _builtins.str email_code_title: Title shown on the email access-code entry page
         :param _builtins.str email_error: Error message when email not provided
-        :param _builtins.str email_label: Label of email field
+        :param _builtins.str email_field_label: Label for the email address input field
+        :param _builtins.str email_label: Label displayed for the email input field
+        :param _builtins.str email_message: Instructional text explaining email access-code delivery
         :param _builtins.str email_submit: Label for confirmation code submit button using email auth
         :param _builtins.str email_title: Title for the Email registration
         :param _builtins.bool field1: Whether to ask field1
         :param _builtins.str field1error: Error message when field1 not provided
-        :param _builtins.str field1label: Label of field1
-        :param _builtins.bool field1required: Whether field1 is required field
+        :param _builtins.str field1label: Label for custom field 1 input
+        :param _builtins.bool field1required: Whether custom field 1 must be provided when the field is shown
         :param _builtins.bool field2: Whether to ask field2
         :param _builtins.str field2error: Error message when field2 not provided
-        :param _builtins.str field2label: Label of field2
-        :param _builtins.bool field2required: Whether field2 is required field
+        :param _builtins.str field2label: Label for custom field 2 input
+        :param _builtins.bool field2required: Whether custom field 2 must be provided when the field is shown
         :param _builtins.bool field3: Whether to ask field3
         :param _builtins.str field3error: Error message when field3 not provided
-        :param _builtins.str field3label: Label of field3
-        :param _builtins.bool field3required: Whether field3 is required field
+        :param _builtins.str field3label: Label for custom field 3 input
+        :param _builtins.bool field3required: Whether custom field 3 must be provided when the field is shown
         :param _builtins.bool field4: Whether to ask field4
         :param _builtins.str field4error: Error message when field4 not provided
-        :param _builtins.str field4label: Label of field4
-        :param _builtins.bool field4required: Whether field4 is required field
+        :param _builtins.str field4label: Label for custom field 4 input
+        :param _builtins.bool field4required: Whether custom field 4 must be provided when the field is shown
         :param Mapping[str, 'WlanPortalTemplatePortalTemplateLocalesArgs'] locales: Can be used to localize the portal based on the User Agent. Allowed property key values are:
                  `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`, 
                  `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`, 
@@ -12949,16 +13167,20 @@ class WlanPortalTemplatePortalTemplate(dict):
         :param _builtins.str marketing_policy_link: label of the link to go to /marketing_policy
         :param _builtins.bool marketing_policy_opt_in: Whether marketing policy optin is enabled
         :param _builtins.str marketing_policy_opt_in_label: label for marketing optin
-        :param _builtins.str marketing_policy_opt_in_text: marketing policy text
+        :param _builtins.str marketing_policy_opt_in_text: Text of the marketing policy opt-in content
+        :param _builtins.str message: Main message displayed on the guest portal sign-in page
+        :param _builtins.bool multi_auth: Whether the portal presents multiple authentication methods
         :param _builtins.bool name: Whether name field is required
         :param _builtins.str name_error: Error message when name not provided
-        :param _builtins.str name_label: Label of name field
+        :param _builtins.str name_label: Label displayed for the name input field
         :param _builtins.bool opt_out_default: Default value for the `Do not store` checkbox
         :param _builtins.bool optout: Whether to display Do Not Store My Personal Information
         :param _builtins.str optout_label: Label for Do Not Store My Personal Information
+        :param _builtins.str page_title: Browser or page title shown for the guest portal
         :param _builtins.str passphrase_cancel: Label for the Passphrase cancel button
         :param _builtins.str passphrase_error: Error message when invalid passphrase is provided
-        :param _builtins.str passphrase_label: Passphrase
+        :param _builtins.str passphrase_label: Label for the passphrase input field
+        :param _builtins.str passphrase_message: Instructional text shown on the passphrase sign-in page
         :param _builtins.str passphrase_submit: Label for the Passphrase submit button
         :param _builtins.str passphrase_title: Title for passphrase details page
         :param _builtins.bool powered_by: Whether to show \\"Powered by Mist\\"
@@ -12967,20 +13189,36 @@ class WlanPortalTemplatePortalTemplate(dict):
         :param _builtins.str privacy_policy_error: Error message when Privacy Policy not accepted
         :param _builtins.str privacy_policy_link: Label of the link to go to Privacy Policy
         :param _builtins.str privacy_policy_text: Text of the Privacy Policy
-        :param _builtins.str required_field_label: Label to denote required field
+        :param _builtins.str required_field_label: Text used to mark a form field as required
+        :param _builtins.bool responsive_layout: Whether the portal template uses a responsive layout
         :param _builtins.str sign_in_label: Label of the button to signin
+        :param _builtins.str sms_carrier_default: Default option text shown in the SMS carrier selector
+        :param _builtins.str sms_carrier_error: Error message shown when no mobile carrier is selected
         :param _builtins.str sms_carrier_field_label: Label for mobile carrier drop-down list
         :param _builtins.str sms_code_cancel: Label for cancel confirmation code submission
         :param _builtins.str sms_code_error: Error message when confirmation code is invalid
+        :param _builtins.str sms_code_field_label: Label for the SMS confirmation-code input field
+        :param _builtins.str sms_code_message: Instructional text shown before entering the SMS access code
         :param _builtins.str sms_code_submit: Label for confirmation code submit button
+        :param _builtins.str sms_code_title: Title shown on the SMS access-code entry page
+        :param _builtins.str sms_country_field_label: Label for the SMS country-code input field
+        :param _builtins.str sms_country_format: Example country code format shown for SMS authentication
         :param _builtins.str sms_have_access_code: Label for checkbox to specify that the user has access code
+        :param _builtins.bool sms_is_twilio: Whether the SMS portal flow uses Twilio-specific behavior
         :param _builtins.str sms_message_format: Format of access code sms message. {{code}} and {{duration}} are placeholders and should be retained as is.
         :param _builtins.str sms_number_cancel: Label for canceling mobile details for SMS auth
+        :param _builtins.str sms_number_error: Error message shown when the mobile number is invalid
         :param _builtins.str sms_number_field_label: Label for field to provide mobile number
+        :param _builtins.str sms_number_format: Example mobile number format shown for SMS authentication
+        :param _builtins.str sms_number_message: Instructional text explaining SMS access-code delivery
         :param _builtins.str sms_number_submit: Label for submit button for code generation
         :param _builtins.str sms_number_title: Title for phone number details
+        :param _builtins.str sms_username_format: Example username format shown for SMS authentication
         :param _builtins.int sms_validity_duration: How long confirmation code should be considered valid (in minutes)
+        :param _builtins.str sponsor_back_link: Link text for returning to edit the sponsor request form
+        :param _builtins.str sponsor_cancel: Button label for canceling sponsor authentication
         :param _builtins.str sponsor_email: Label for Sponsor Email
+        :param _builtins.str sponsor_email_error: Error message shown when the sponsor email address is invalid
         :param _builtins.str sponsor_email_template: HTML template to replace/override default sponsor email template 
                Sponsor Email Template supports following template variables:
                  * `approve_url`: Renders URL to approve the request; optionally &minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
@@ -12991,12 +13229,20 @@ class WlanPortalTemplatePortalTemplate(dict):
                  * `field2`: Renders value of the Custom Field 2
                  * `sponsor_link_validity_duration`: Renders validity time of the request (i.e. Approve/Deny URL)
                  * `auth_expire_minutes`: Renders Wlan-level configured Guest Authorization Expiration time period (in minutes), If not configured then default (1 day in minutes)
+        :param _builtins.str sponsor_info_approved: Status message prefix shown when a sponsor approves the request
+        :param _builtins.str sponsor_info_denied: Status message prefix shown when a sponsor denies the request
+        :param _builtins.str sponsor_info_pending: Status message prefix shown after a sponsor notification is sent
         :param _builtins.str sponsor_name: Label for Sponsor Name
+        :param _builtins.str sponsor_name_error: Error message shown when the sponsor name is missing
+        :param _builtins.str sponsor_note_pending: Additional status text shown while sponsor approval is pending
         :param _builtins.str sponsor_request_access: Submit button label request Wifi Access and notify sponsor about guest request
         :param _builtins.str sponsor_status_approved: Text to display if sponsor approves request
         :param _builtins.str sponsor_status_denied: Text to display when sponsor denies request
         :param _builtins.str sponsor_status_pending: Text to display if request is still pending
         :param _builtins.str sponsor_submit: Submit button label to notify sponsor about guest request
+        :param _builtins.str sponsors_error: Error message shown when no sponsor is selected
+        :param _builtins.str sponsors_field_label: Label for the sponsor selection field
+        :param _builtins.bool tos: Whether the portal requires Terms of Service acceptance
         :param _builtins.str tos_accept_label: Prefix of the label of the link to go to tos
         :param _builtins.str tos_error: Error message when tos not accepted
         :param _builtins.str tos_link: Label of the link to go to tos
@@ -13258,13 +13504,16 @@ class WlanPortalTemplatePortalTemplate(dict):
     @_builtins.property
     @pulumi.getter(name="accessCodeAlternateEmail")
     def access_code_alternate_email(self) -> Optional[_builtins.str]:
+        """
+        Link text for using an alternate email address during access-code login
+        """
         return pulumi.get(self, "access_code_alternate_email")
 
     @_builtins.property
     @pulumi.getter
     def alignment(self) -> Optional[_builtins.str]:
         """
-        defines alignment on portal. enum: `center`, `left`, `right`
+        Text and content alignment used by the guest portal template
         """
         return pulumi.get(self, "alignment")
 
@@ -13343,6 +13592,9 @@ class WlanPortalTemplatePortalTemplate(dict):
     @_builtins.property
     @pulumi.getter(name="authLabel")
     def auth_label(self) -> Optional[_builtins.str]:
+        """
+        Heading text displayed above portal authentication options
+        """
         return pulumi.get(self, "auth_label")
 
     @_builtins.property
@@ -13357,18 +13609,24 @@ class WlanPortalTemplatePortalTemplate(dict):
     @pulumi.getter
     def color(self) -> Optional[_builtins.str]:
         """
-        Portal main color
+        Primary color used by the portal template
         """
         return pulumi.get(self, "color")
 
     @_builtins.property
     @pulumi.getter(name="colorDark")
     def color_dark(self) -> Optional[_builtins.str]:
+        """
+        Darker accent color used by the portal template
+        """
         return pulumi.get(self, "color_dark")
 
     @_builtins.property
     @pulumi.getter(name="colorLight")
     def color_light(self) -> Optional[_builtins.str]:
+        """
+        Lighter accent color used by the portal template
+        """
         return pulumi.get(self, "color_light")
 
     @_builtins.property
@@ -13391,7 +13649,7 @@ class WlanPortalTemplatePortalTemplate(dict):
     @pulumi.getter(name="companyLabel")
     def company_label(self) -> Optional[_builtins.str]:
         """
-        Label of company field
+        Label displayed for the company input field
         """
         return pulumi.get(self, "company_label")
 
@@ -13422,31 +13680,49 @@ class WlanPortalTemplatePortalTemplate(dict):
     @_builtins.property
     @pulumi.getter(name="emailCodeCancel")
     def email_code_cancel(self) -> Optional[_builtins.str]:
+        """
+        Link text for requesting help when the email access code was not received
+        """
         return pulumi.get(self, "email_code_cancel")
 
     @_builtins.property
     @pulumi.getter(name="emailCodeError")
     def email_code_error(self) -> Optional[_builtins.str]:
+        """
+        Error message shown when the alternate email address for access-code delivery is invalid
+        """
         return pulumi.get(self, "email_code_error")
 
     @_builtins.property
     @pulumi.getter(name="emailCodeFieldLabel")
     def email_code_field_label(self) -> Optional[_builtins.str]:
+        """
+        Label for the email access-code input field
+        """
         return pulumi.get(self, "email_code_field_label")
 
     @_builtins.property
     @pulumi.getter(name="emailCodeMessage")
     def email_code_message(self) -> Optional[_builtins.str]:
+        """
+        Instructional text shown before entering the email access code
+        """
         return pulumi.get(self, "email_code_message")
 
     @_builtins.property
     @pulumi.getter(name="emailCodeSubmit")
     def email_code_submit(self) -> Optional[_builtins.str]:
+        """
+        Button label for submitting the email access code
+        """
         return pulumi.get(self, "email_code_submit")
 
     @_builtins.property
     @pulumi.getter(name="emailCodeTitle")
     def email_code_title(self) -> Optional[_builtins.str]:
+        """
+        Title shown on the email access-code entry page
+        """
         return pulumi.get(self, "email_code_title")
 
     @_builtins.property
@@ -13460,19 +13736,25 @@ class WlanPortalTemplatePortalTemplate(dict):
     @_builtins.property
     @pulumi.getter(name="emailFieldLabel")
     def email_field_label(self) -> Optional[_builtins.str]:
+        """
+        Label for the email address input field
+        """
         return pulumi.get(self, "email_field_label")
 
     @_builtins.property
     @pulumi.getter(name="emailLabel")
     def email_label(self) -> Optional[_builtins.str]:
         """
-        Label of email field
+        Label displayed for the email input field
         """
         return pulumi.get(self, "email_label")
 
     @_builtins.property
     @pulumi.getter(name="emailMessage")
     def email_message(self) -> Optional[_builtins.str]:
+        """
+        Instructional text explaining email access-code delivery
+        """
         return pulumi.get(self, "email_message")
 
     @_builtins.property
@@ -13511,7 +13793,7 @@ class WlanPortalTemplatePortalTemplate(dict):
     @pulumi.getter
     def field1label(self) -> Optional[_builtins.str]:
         """
-        Label of field1
+        Label for custom field 1 input
         """
         return pulumi.get(self, "field1label")
 
@@ -13519,7 +13801,7 @@ class WlanPortalTemplatePortalTemplate(dict):
     @pulumi.getter
     def field1required(self) -> Optional[_builtins.bool]:
         """
-        Whether field1 is required field
+        Whether custom field 1 must be provided when the field is shown
         """
         return pulumi.get(self, "field1required")
 
@@ -13543,7 +13825,7 @@ class WlanPortalTemplatePortalTemplate(dict):
     @pulumi.getter
     def field2label(self) -> Optional[_builtins.str]:
         """
-        Label of field2
+        Label for custom field 2 input
         """
         return pulumi.get(self, "field2label")
 
@@ -13551,7 +13833,7 @@ class WlanPortalTemplatePortalTemplate(dict):
     @pulumi.getter
     def field2required(self) -> Optional[_builtins.bool]:
         """
-        Whether field2 is required field
+        Whether custom field 2 must be provided when the field is shown
         """
         return pulumi.get(self, "field2required")
 
@@ -13575,7 +13857,7 @@ class WlanPortalTemplatePortalTemplate(dict):
     @pulumi.getter
     def field3label(self) -> Optional[_builtins.str]:
         """
-        Label of field3
+        Label for custom field 3 input
         """
         return pulumi.get(self, "field3label")
 
@@ -13583,7 +13865,7 @@ class WlanPortalTemplatePortalTemplate(dict):
     @pulumi.getter
     def field3required(self) -> Optional[_builtins.bool]:
         """
-        Whether field3 is required field
+        Whether custom field 3 must be provided when the field is shown
         """
         return pulumi.get(self, "field3required")
 
@@ -13607,7 +13889,7 @@ class WlanPortalTemplatePortalTemplate(dict):
     @pulumi.getter
     def field4label(self) -> Optional[_builtins.str]:
         """
-        Label of field4
+        Label for custom field 4 input
         """
         return pulumi.get(self, "field4label")
 
@@ -13615,7 +13897,7 @@ class WlanPortalTemplatePortalTemplate(dict):
     @pulumi.getter
     def field4required(self) -> Optional[_builtins.bool]:
         """
-        Whether field4 is required field
+        Whether custom field 4 must be provided when the field is shown
         """
         return pulumi.get(self, "field4required")
 
@@ -13667,18 +13949,24 @@ class WlanPortalTemplatePortalTemplate(dict):
     @pulumi.getter(name="marketingPolicyOptInText")
     def marketing_policy_opt_in_text(self) -> Optional[_builtins.str]:
         """
-        marketing policy text
+        Text of the marketing policy opt-in content
         """
         return pulumi.get(self, "marketing_policy_opt_in_text")
 
     @_builtins.property
     @pulumi.getter
     def message(self) -> Optional[_builtins.str]:
+        """
+        Main message displayed on the guest portal sign-in page
+        """
         return pulumi.get(self, "message")
 
     @_builtins.property
     @pulumi.getter(name="multiAuth")
     def multi_auth(self) -> Optional[_builtins.bool]:
+        """
+        Whether the portal presents multiple authentication methods
+        """
         return pulumi.get(self, "multi_auth")
 
     @_builtins.property
@@ -13701,7 +13989,7 @@ class WlanPortalTemplatePortalTemplate(dict):
     @pulumi.getter(name="nameLabel")
     def name_label(self) -> Optional[_builtins.str]:
         """
-        Label of name field
+        Label displayed for the name input field
         """
         return pulumi.get(self, "name_label")
 
@@ -13732,6 +14020,9 @@ class WlanPortalTemplatePortalTemplate(dict):
     @_builtins.property
     @pulumi.getter(name="pageTitle")
     def page_title(self) -> Optional[_builtins.str]:
+        """
+        Browser or page title shown for the guest portal
+        """
         return pulumi.get(self, "page_title")
 
     @_builtins.property
@@ -13754,13 +14045,16 @@ class WlanPortalTemplatePortalTemplate(dict):
     @pulumi.getter(name="passphraseLabel")
     def passphrase_label(self) -> Optional[_builtins.str]:
         """
-        Passphrase
+        Label for the passphrase input field
         """
         return pulumi.get(self, "passphrase_label")
 
     @_builtins.property
     @pulumi.getter(name="passphraseMessage")
     def passphrase_message(self) -> Optional[_builtins.str]:
+        """
+        Instructional text shown on the passphrase sign-in page
+        """
         return pulumi.get(self, "passphrase_message")
 
     @_builtins.property
@@ -13831,13 +14125,16 @@ class WlanPortalTemplatePortalTemplate(dict):
     @pulumi.getter(name="requiredFieldLabel")
     def required_field_label(self) -> Optional[_builtins.str]:
         """
-        Label to denote required field
+        Text used to mark a form field as required
         """
         return pulumi.get(self, "required_field_label")
 
     @_builtins.property
     @pulumi.getter(name="responsiveLayout")
     def responsive_layout(self) -> Optional[_builtins.bool]:
+        """
+        Whether the portal template uses a responsive layout
+        """
         return pulumi.get(self, "responsive_layout")
 
     @_builtins.property
@@ -13851,11 +14148,17 @@ class WlanPortalTemplatePortalTemplate(dict):
     @_builtins.property
     @pulumi.getter(name="smsCarrierDefault")
     def sms_carrier_default(self) -> Optional[_builtins.str]:
+        """
+        Default option text shown in the SMS carrier selector
+        """
         return pulumi.get(self, "sms_carrier_default")
 
     @_builtins.property
     @pulumi.getter(name="smsCarrierError")
     def sms_carrier_error(self) -> Optional[_builtins.str]:
+        """
+        Error message shown when no mobile carrier is selected
+        """
         return pulumi.get(self, "sms_carrier_error")
 
     @_builtins.property
@@ -13885,11 +14188,17 @@ class WlanPortalTemplatePortalTemplate(dict):
     @_builtins.property
     @pulumi.getter(name="smsCodeFieldLabel")
     def sms_code_field_label(self) -> Optional[_builtins.str]:
+        """
+        Label for the SMS confirmation-code input field
+        """
         return pulumi.get(self, "sms_code_field_label")
 
     @_builtins.property
     @pulumi.getter(name="smsCodeMessage")
     def sms_code_message(self) -> Optional[_builtins.str]:
+        """
+        Instructional text shown before entering the SMS access code
+        """
         return pulumi.get(self, "sms_code_message")
 
     @_builtins.property
@@ -13903,16 +14212,25 @@ class WlanPortalTemplatePortalTemplate(dict):
     @_builtins.property
     @pulumi.getter(name="smsCodeTitle")
     def sms_code_title(self) -> Optional[_builtins.str]:
+        """
+        Title shown on the SMS access-code entry page
+        """
         return pulumi.get(self, "sms_code_title")
 
     @_builtins.property
     @pulumi.getter(name="smsCountryFieldLabel")
     def sms_country_field_label(self) -> Optional[_builtins.str]:
+        """
+        Label for the SMS country-code input field
+        """
         return pulumi.get(self, "sms_country_field_label")
 
     @_builtins.property
     @pulumi.getter(name="smsCountryFormat")
     def sms_country_format(self) -> Optional[_builtins.str]:
+        """
+        Example country code format shown for SMS authentication
+        """
         return pulumi.get(self, "sms_country_format")
 
     @_builtins.property
@@ -13926,6 +14244,9 @@ class WlanPortalTemplatePortalTemplate(dict):
     @_builtins.property
     @pulumi.getter(name="smsIsTwilio")
     def sms_is_twilio(self) -> Optional[_builtins.bool]:
+        """
+        Whether the SMS portal flow uses Twilio-specific behavior
+        """
         return pulumi.get(self, "sms_is_twilio")
 
     @_builtins.property
@@ -13947,6 +14268,9 @@ class WlanPortalTemplatePortalTemplate(dict):
     @_builtins.property
     @pulumi.getter(name="smsNumberError")
     def sms_number_error(self) -> Optional[_builtins.str]:
+        """
+        Error message shown when the mobile number is invalid
+        """
         return pulumi.get(self, "sms_number_error")
 
     @_builtins.property
@@ -13960,11 +14284,17 @@ class WlanPortalTemplatePortalTemplate(dict):
     @_builtins.property
     @pulumi.getter(name="smsNumberFormat")
     def sms_number_format(self) -> Optional[_builtins.str]:
+        """
+        Example mobile number format shown for SMS authentication
+        """
         return pulumi.get(self, "sms_number_format")
 
     @_builtins.property
     @pulumi.getter(name="smsNumberMessage")
     def sms_number_message(self) -> Optional[_builtins.str]:
+        """
+        Instructional text explaining SMS access-code delivery
+        """
         return pulumi.get(self, "sms_number_message")
 
     @_builtins.property
@@ -13986,6 +14316,9 @@ class WlanPortalTemplatePortalTemplate(dict):
     @_builtins.property
     @pulumi.getter(name="smsUsernameFormat")
     def sms_username_format(self) -> Optional[_builtins.str]:
+        """
+        Example username format shown for SMS authentication
+        """
         return pulumi.get(self, "sms_username_format")
 
     @_builtins.property
@@ -13999,11 +14332,17 @@ class WlanPortalTemplatePortalTemplate(dict):
     @_builtins.property
     @pulumi.getter(name="sponsorBackLink")
     def sponsor_back_link(self) -> Optional[_builtins.str]:
+        """
+        Link text for returning to edit the sponsor request form
+        """
         return pulumi.get(self, "sponsor_back_link")
 
     @_builtins.property
     @pulumi.getter(name="sponsorCancel")
     def sponsor_cancel(self) -> Optional[_builtins.str]:
+        """
+        Button label for canceling sponsor authentication
+        """
         return pulumi.get(self, "sponsor_cancel")
 
     @_builtins.property
@@ -14017,6 +14356,9 @@ class WlanPortalTemplatePortalTemplate(dict):
     @_builtins.property
     @pulumi.getter(name="sponsorEmailError")
     def sponsor_email_error(self) -> Optional[_builtins.str]:
+        """
+        Error message shown when the sponsor email address is invalid
+        """
         return pulumi.get(self, "sponsor_email_error")
 
     @_builtins.property
@@ -14039,16 +14381,25 @@ class WlanPortalTemplatePortalTemplate(dict):
     @_builtins.property
     @pulumi.getter(name="sponsorInfoApproved")
     def sponsor_info_approved(self) -> Optional[_builtins.str]:
+        """
+        Status message prefix shown when a sponsor approves the request
+        """
         return pulumi.get(self, "sponsor_info_approved")
 
     @_builtins.property
     @pulumi.getter(name="sponsorInfoDenied")
     def sponsor_info_denied(self) -> Optional[_builtins.str]:
+        """
+        Status message prefix shown when a sponsor denies the request
+        """
         return pulumi.get(self, "sponsor_info_denied")
 
     @_builtins.property
     @pulumi.getter(name="sponsorInfoPending")
     def sponsor_info_pending(self) -> Optional[_builtins.str]:
+        """
+        Status message prefix shown after a sponsor notification is sent
+        """
         return pulumi.get(self, "sponsor_info_pending")
 
     @_builtins.property
@@ -14062,11 +14413,17 @@ class WlanPortalTemplatePortalTemplate(dict):
     @_builtins.property
     @pulumi.getter(name="sponsorNameError")
     def sponsor_name_error(self) -> Optional[_builtins.str]:
+        """
+        Error message shown when the sponsor name is missing
+        """
         return pulumi.get(self, "sponsor_name_error")
 
     @_builtins.property
     @pulumi.getter(name="sponsorNotePending")
     def sponsor_note_pending(self) -> Optional[_builtins.str]:
+        """
+        Additional status text shown while sponsor approval is pending
+        """
         return pulumi.get(self, "sponsor_note_pending")
 
     @_builtins.property
@@ -14112,16 +14469,25 @@ class WlanPortalTemplatePortalTemplate(dict):
     @_builtins.property
     @pulumi.getter(name="sponsorsError")
     def sponsors_error(self) -> Optional[_builtins.str]:
+        """
+        Error message shown when no sponsor is selected
+        """
         return pulumi.get(self, "sponsors_error")
 
     @_builtins.property
     @pulumi.getter(name="sponsorsFieldLabel")
     def sponsors_field_label(self) -> Optional[_builtins.str]:
+        """
+        Label for the sponsor selection field
+        """
         return pulumi.get(self, "sponsors_field_label")
 
     @_builtins.property
     @pulumi.getter
     def tos(self) -> Optional[_builtins.bool]:
+        """
+        Whether the portal requires Terms of Service acceptance
+        """
         return pulumi.get(self, "tos")
 
     @_builtins.property
@@ -14461,58 +14827,91 @@ class WlanPortalTemplatePortalTemplateLocales(dict):
         :param _builtins.str auth_button_passphrase: Label for passphrase auth button
         :param _builtins.str auth_button_sms: Label for SMS auth button
         :param _builtins.str auth_button_sponsor: Label for Sponsor auth button
+        :param _builtins.str auth_label: Localized heading text displayed above portal authentication options
         :param _builtins.str back_link: Label of the link to go back to /logon
         :param _builtins.str company_error: Error message when company not provided
-        :param _builtins.str company_label: Label of company field
+        :param _builtins.str company_label: Localized label displayed for the company input field
         :param _builtins.str email_access_domain_error: Error message when a user has valid social login but doesn't match specified email domains.
         :param _builtins.str email_cancel: Label for cancel confirmation code submission using email auth
+        :param _builtins.str email_code_cancel: Localized link text for requesting help when the email access code was not received
+        :param _builtins.str email_code_error: Localized error message shown when the alternate email address for access-code delivery is invalid
+        :param _builtins.str email_code_field_label: Localized label for the email access-code input field
+        :param _builtins.str email_code_message: Localized instructional text shown before entering the email access code
+        :param _builtins.str email_code_submit: Localized button label for submitting the email access code
+        :param _builtins.str email_code_title: Localized title shown on the email access-code entry page
         :param _builtins.str email_error: Error message when email not provided
-        :param _builtins.str email_label: Label of email field
+        :param _builtins.str email_field_label: Localized label for the email address input field
+        :param _builtins.str email_label: Localized label displayed for the email input field
+        :param _builtins.str email_message: Localized instructional text explaining email access-code delivery
         :param _builtins.str email_submit: Label for confirmation code submit button using email auth
         :param _builtins.str email_title: Title for the Email registration
         :param _builtins.str field1error: Error message when field1 not provided
-        :param _builtins.str field1label: Label of field1
+        :param _builtins.str field1label: Localized label for custom field 1 input
         :param _builtins.str field2error: Error message when field2 not provided
-        :param _builtins.str field2label: Label of field2
+        :param _builtins.str field2label: Localized label for custom field 2 input
         :param _builtins.str field3error: Error message when field3 not provided
-        :param _builtins.str field3label: Label of field3
+        :param _builtins.str field3label: Localized label for custom field 3 input
         :param _builtins.str field4error: Error message when field4 not provided
-        :param _builtins.str field4label: Label of field4
+        :param _builtins.str field4label: Localized label for custom field 4 input
         :param _builtins.str marketing_policy_link: label of the link to go to /marketing_policy
         :param _builtins.bool marketing_policy_opt_in: Whether marketing policy optin is enabled
         :param _builtins.str marketing_policy_opt_in_label: label for marketing optin
-        :param _builtins.str marketing_policy_opt_in_text: marketing policy text
+        :param _builtins.str marketing_policy_opt_in_text: Localized text of the marketing policy opt-in content
+        :param _builtins.str message: Localized main message displayed on the guest portal sign-in page
         :param _builtins.str name_error: Error message when name not provided
-        :param _builtins.str name_label: Label of name field
+        :param _builtins.str name_label: Localized label displayed for the name input field
         :param _builtins.str optout_label: Label for Do Not Store My Personal Information
+        :param _builtins.str page_title: Localized browser or page title shown for the guest portal
         :param _builtins.str passphrase_cancel: Label for the Passphrase cancel button
         :param _builtins.str passphrase_error: Error message when invalid passphrase is provided
-        :param _builtins.str passphrase_label: Passphrase
+        :param _builtins.str passphrase_label: Localized label for the passphrase input field
+        :param _builtins.str passphrase_message: Localized instructional text shown on the passphrase sign-in page
         :param _builtins.str passphrase_submit: Label for the Passphrase submit button
         :param _builtins.str passphrase_title: Title for passphrase details page
         :param _builtins.str privacy_policy_accept_label: Prefix of the label of the link to go to Privacy Policy
         :param _builtins.str privacy_policy_error: Error message when Privacy Policy not accepted
         :param _builtins.str privacy_policy_link: Label of the link to go to Privacy Policy
         :param _builtins.str privacy_policy_text: Text of the Privacy Policy
-        :param _builtins.str required_field_label: Label to denote required field
+        :param _builtins.str required_field_label: Localized text used to mark a form field as required
         :param _builtins.str sign_in_label: Label of the button to signin
+        :param _builtins.str sms_carrier_default: Localized default option text shown in the SMS carrier selector
+        :param _builtins.str sms_carrier_error: Localized error message shown when no mobile carrier is selected
         :param _builtins.str sms_carrier_field_label: Label for mobile carrier drop-down list
         :param _builtins.str sms_code_cancel: Label for cancel confirmation code submission
         :param _builtins.str sms_code_error: Error message when confirmation code is invalid
+        :param _builtins.str sms_code_field_label: Localized label for the SMS confirmation-code input field
+        :param _builtins.str sms_code_message: Localized instructional text shown before entering the SMS access code
         :param _builtins.str sms_code_submit: Label for confirmation code submit button
+        :param _builtins.str sms_code_title: Localized title shown on the SMS access-code entry page
+        :param _builtins.str sms_country_field_label: Localized label for the SMS country-code input field
+        :param _builtins.str sms_country_format: Localized example country code format shown for SMS authentication
         :param _builtins.str sms_have_access_code: Label for checkbox to specify that the user has access code
         :param _builtins.str sms_message_format: Format of access code sms message. {{code}} and {{duration}} are placeholders and should be retained as is.
         :param _builtins.str sms_number_cancel: Label for canceling mobile details for SMS auth
+        :param _builtins.str sms_number_error: Localized error message shown when the mobile number is invalid
         :param _builtins.str sms_number_field_label: Label for field to provide mobile number
+        :param _builtins.str sms_number_format: Localized example mobile number format shown for SMS authentication
+        :param _builtins.str sms_number_message: Localized instructional text explaining SMS access-code delivery
         :param _builtins.str sms_number_submit: Label for submit button for code generation
         :param _builtins.str sms_number_title: Title for phone number details
+        :param _builtins.str sms_username_format: Localized example username format shown for SMS authentication
+        :param _builtins.str sponsor_back_link: Localized link text for returning to edit the sponsor request form
+        :param _builtins.str sponsor_cancel: Localized button label for canceling sponsor authentication
         :param _builtins.str sponsor_email: Label for Sponsor Email
+        :param _builtins.str sponsor_email_error: Localized error message shown when the sponsor email address is invalid
+        :param _builtins.str sponsor_info_approved: Localized status message prefix shown when a sponsor approves the request
+        :param _builtins.str sponsor_info_denied: Localized status message prefix shown when a sponsor denies the request
+        :param _builtins.str sponsor_info_pending: Localized status message prefix shown after a sponsor notification is sent
         :param _builtins.str sponsor_name: Label for Sponsor Name
+        :param _builtins.str sponsor_name_error: Localized error message shown when the sponsor name is missing
+        :param _builtins.str sponsor_note_pending: Localized additional status text shown while sponsor approval is pending
         :param _builtins.str sponsor_request_access: Submit button label request Wifi Access and notify sponsor about guest request
         :param _builtins.str sponsor_status_approved: Text to display if sponsor approves request
         :param _builtins.str sponsor_status_denied: Text to display when sponsor denies request
         :param _builtins.str sponsor_status_pending: Text to display if request is still pending
         :param _builtins.str sponsor_submit: Submit button label to notify sponsor about guest request
+        :param _builtins.str sponsors_error: Localized error message shown when no sponsor is selected
+        :param _builtins.str sponsors_field_label: Localized label for the sponsor selection field
         :param _builtins.str tos_accept_label: Prefix of the label of the link to go to tos
         :param _builtins.str tos_error: Error message when tos not accepted
         :param _builtins.str tos_link: Label of the link to go to tos
@@ -14790,6 +15189,9 @@ class WlanPortalTemplatePortalTemplateLocales(dict):
     @_builtins.property
     @pulumi.getter(name="authLabel")
     def auth_label(self) -> Optional[_builtins.str]:
+        """
+        Localized heading text displayed above portal authentication options
+        """
         return pulumi.get(self, "auth_label")
 
     @_builtins.property
@@ -14812,7 +15214,7 @@ class WlanPortalTemplatePortalTemplateLocales(dict):
     @pulumi.getter(name="companyLabel")
     def company_label(self) -> Optional[_builtins.str]:
         """
-        Label of company field
+        Localized label displayed for the company input field
         """
         return pulumi.get(self, "company_label")
 
@@ -14835,31 +15237,49 @@ class WlanPortalTemplatePortalTemplateLocales(dict):
     @_builtins.property
     @pulumi.getter(name="emailCodeCancel")
     def email_code_cancel(self) -> Optional[_builtins.str]:
+        """
+        Localized link text for requesting help when the email access code was not received
+        """
         return pulumi.get(self, "email_code_cancel")
 
     @_builtins.property
     @pulumi.getter(name="emailCodeError")
     def email_code_error(self) -> Optional[_builtins.str]:
+        """
+        Localized error message shown when the alternate email address for access-code delivery is invalid
+        """
         return pulumi.get(self, "email_code_error")
 
     @_builtins.property
     @pulumi.getter(name="emailCodeFieldLabel")
     def email_code_field_label(self) -> Optional[_builtins.str]:
+        """
+        Localized label for the email access-code input field
+        """
         return pulumi.get(self, "email_code_field_label")
 
     @_builtins.property
     @pulumi.getter(name="emailCodeMessage")
     def email_code_message(self) -> Optional[_builtins.str]:
+        """
+        Localized instructional text shown before entering the email access code
+        """
         return pulumi.get(self, "email_code_message")
 
     @_builtins.property
     @pulumi.getter(name="emailCodeSubmit")
     def email_code_submit(self) -> Optional[_builtins.str]:
+        """
+        Localized button label for submitting the email access code
+        """
         return pulumi.get(self, "email_code_submit")
 
     @_builtins.property
     @pulumi.getter(name="emailCodeTitle")
     def email_code_title(self) -> Optional[_builtins.str]:
+        """
+        Localized title shown on the email access-code entry page
+        """
         return pulumi.get(self, "email_code_title")
 
     @_builtins.property
@@ -14873,19 +15293,25 @@ class WlanPortalTemplatePortalTemplateLocales(dict):
     @_builtins.property
     @pulumi.getter(name="emailFieldLabel")
     def email_field_label(self) -> Optional[_builtins.str]:
+        """
+        Localized label for the email address input field
+        """
         return pulumi.get(self, "email_field_label")
 
     @_builtins.property
     @pulumi.getter(name="emailLabel")
     def email_label(self) -> Optional[_builtins.str]:
         """
-        Label of email field
+        Localized label displayed for the email input field
         """
         return pulumi.get(self, "email_label")
 
     @_builtins.property
     @pulumi.getter(name="emailMessage")
     def email_message(self) -> Optional[_builtins.str]:
+        """
+        Localized instructional text explaining email access-code delivery
+        """
         return pulumi.get(self, "email_message")
 
     @_builtins.property
@@ -14916,7 +15342,7 @@ class WlanPortalTemplatePortalTemplateLocales(dict):
     @pulumi.getter
     def field1label(self) -> Optional[_builtins.str]:
         """
-        Label of field1
+        Localized label for custom field 1 input
         """
         return pulumi.get(self, "field1label")
 
@@ -14932,7 +15358,7 @@ class WlanPortalTemplatePortalTemplateLocales(dict):
     @pulumi.getter
     def field2label(self) -> Optional[_builtins.str]:
         """
-        Label of field2
+        Localized label for custom field 2 input
         """
         return pulumi.get(self, "field2label")
 
@@ -14948,7 +15374,7 @@ class WlanPortalTemplatePortalTemplateLocales(dict):
     @pulumi.getter
     def field3label(self) -> Optional[_builtins.str]:
         """
-        Label of field3
+        Localized label for custom field 3 input
         """
         return pulumi.get(self, "field3label")
 
@@ -14964,7 +15390,7 @@ class WlanPortalTemplatePortalTemplateLocales(dict):
     @pulumi.getter
     def field4label(self) -> Optional[_builtins.str]:
         """
-        Label of field4
+        Localized label for custom field 4 input
         """
         return pulumi.get(self, "field4label")
 
@@ -14996,13 +15422,16 @@ class WlanPortalTemplatePortalTemplateLocales(dict):
     @pulumi.getter(name="marketingPolicyOptInText")
     def marketing_policy_opt_in_text(self) -> Optional[_builtins.str]:
         """
-        marketing policy text
+        Localized text of the marketing policy opt-in content
         """
         return pulumi.get(self, "marketing_policy_opt_in_text")
 
     @_builtins.property
     @pulumi.getter
     def message(self) -> Optional[_builtins.str]:
+        """
+        Localized main message displayed on the guest portal sign-in page
+        """
         return pulumi.get(self, "message")
 
     @_builtins.property
@@ -15017,7 +15446,7 @@ class WlanPortalTemplatePortalTemplateLocales(dict):
     @pulumi.getter(name="nameLabel")
     def name_label(self) -> Optional[_builtins.str]:
         """
-        Label of name field
+        Localized label displayed for the name input field
         """
         return pulumi.get(self, "name_label")
 
@@ -15032,6 +15461,9 @@ class WlanPortalTemplatePortalTemplateLocales(dict):
     @_builtins.property
     @pulumi.getter(name="pageTitle")
     def page_title(self) -> Optional[_builtins.str]:
+        """
+        Localized browser or page title shown for the guest portal
+        """
         return pulumi.get(self, "page_title")
 
     @_builtins.property
@@ -15054,13 +15486,16 @@ class WlanPortalTemplatePortalTemplateLocales(dict):
     @pulumi.getter(name="passphraseLabel")
     def passphrase_label(self) -> Optional[_builtins.str]:
         """
-        Passphrase
+        Localized label for the passphrase input field
         """
         return pulumi.get(self, "passphrase_label")
 
     @_builtins.property
     @pulumi.getter(name="passphraseMessage")
     def passphrase_message(self) -> Optional[_builtins.str]:
+        """
+        Localized instructional text shown on the passphrase sign-in page
+        """
         return pulumi.get(self, "passphrase_message")
 
     @_builtins.property
@@ -15115,7 +15550,7 @@ class WlanPortalTemplatePortalTemplateLocales(dict):
     @pulumi.getter(name="requiredFieldLabel")
     def required_field_label(self) -> Optional[_builtins.str]:
         """
-        Label to denote required field
+        Localized text used to mark a form field as required
         """
         return pulumi.get(self, "required_field_label")
 
@@ -15130,11 +15565,17 @@ class WlanPortalTemplatePortalTemplateLocales(dict):
     @_builtins.property
     @pulumi.getter(name="smsCarrierDefault")
     def sms_carrier_default(self) -> Optional[_builtins.str]:
+        """
+        Localized default option text shown in the SMS carrier selector
+        """
         return pulumi.get(self, "sms_carrier_default")
 
     @_builtins.property
     @pulumi.getter(name="smsCarrierError")
     def sms_carrier_error(self) -> Optional[_builtins.str]:
+        """
+        Localized error message shown when no mobile carrier is selected
+        """
         return pulumi.get(self, "sms_carrier_error")
 
     @_builtins.property
@@ -15164,11 +15605,17 @@ class WlanPortalTemplatePortalTemplateLocales(dict):
     @_builtins.property
     @pulumi.getter(name="smsCodeFieldLabel")
     def sms_code_field_label(self) -> Optional[_builtins.str]:
+        """
+        Localized label for the SMS confirmation-code input field
+        """
         return pulumi.get(self, "sms_code_field_label")
 
     @_builtins.property
     @pulumi.getter(name="smsCodeMessage")
     def sms_code_message(self) -> Optional[_builtins.str]:
+        """
+        Localized instructional text shown before entering the SMS access code
+        """
         return pulumi.get(self, "sms_code_message")
 
     @_builtins.property
@@ -15182,16 +15629,25 @@ class WlanPortalTemplatePortalTemplateLocales(dict):
     @_builtins.property
     @pulumi.getter(name="smsCodeTitle")
     def sms_code_title(self) -> Optional[_builtins.str]:
+        """
+        Localized title shown on the SMS access-code entry page
+        """
         return pulumi.get(self, "sms_code_title")
 
     @_builtins.property
     @pulumi.getter(name="smsCountryFieldLabel")
     def sms_country_field_label(self) -> Optional[_builtins.str]:
+        """
+        Localized label for the SMS country-code input field
+        """
         return pulumi.get(self, "sms_country_field_label")
 
     @_builtins.property
     @pulumi.getter(name="smsCountryFormat")
     def sms_country_format(self) -> Optional[_builtins.str]:
+        """
+        Localized example country code format shown for SMS authentication
+        """
         return pulumi.get(self, "sms_country_format")
 
     @_builtins.property
@@ -15221,6 +15677,9 @@ class WlanPortalTemplatePortalTemplateLocales(dict):
     @_builtins.property
     @pulumi.getter(name="smsNumberError")
     def sms_number_error(self) -> Optional[_builtins.str]:
+        """
+        Localized error message shown when the mobile number is invalid
+        """
         return pulumi.get(self, "sms_number_error")
 
     @_builtins.property
@@ -15234,11 +15693,17 @@ class WlanPortalTemplatePortalTemplateLocales(dict):
     @_builtins.property
     @pulumi.getter(name="smsNumberFormat")
     def sms_number_format(self) -> Optional[_builtins.str]:
+        """
+        Localized example mobile number format shown for SMS authentication
+        """
         return pulumi.get(self, "sms_number_format")
 
     @_builtins.property
     @pulumi.getter(name="smsNumberMessage")
     def sms_number_message(self) -> Optional[_builtins.str]:
+        """
+        Localized instructional text explaining SMS access-code delivery
+        """
         return pulumi.get(self, "sms_number_message")
 
     @_builtins.property
@@ -15260,16 +15725,25 @@ class WlanPortalTemplatePortalTemplateLocales(dict):
     @_builtins.property
     @pulumi.getter(name="smsUsernameFormat")
     def sms_username_format(self) -> Optional[_builtins.str]:
+        """
+        Localized example username format shown for SMS authentication
+        """
         return pulumi.get(self, "sms_username_format")
 
     @_builtins.property
     @pulumi.getter(name="sponsorBackLink")
     def sponsor_back_link(self) -> Optional[_builtins.str]:
+        """
+        Localized link text for returning to edit the sponsor request form
+        """
         return pulumi.get(self, "sponsor_back_link")
 
     @_builtins.property
     @pulumi.getter(name="sponsorCancel")
     def sponsor_cancel(self) -> Optional[_builtins.str]:
+        """
+        Localized button label for canceling sponsor authentication
+        """
         return pulumi.get(self, "sponsor_cancel")
 
     @_builtins.property
@@ -15283,21 +15757,33 @@ class WlanPortalTemplatePortalTemplateLocales(dict):
     @_builtins.property
     @pulumi.getter(name="sponsorEmailError")
     def sponsor_email_error(self) -> Optional[_builtins.str]:
+        """
+        Localized error message shown when the sponsor email address is invalid
+        """
         return pulumi.get(self, "sponsor_email_error")
 
     @_builtins.property
     @pulumi.getter(name="sponsorInfoApproved")
     def sponsor_info_approved(self) -> Optional[_builtins.str]:
+        """
+        Localized status message prefix shown when a sponsor approves the request
+        """
         return pulumi.get(self, "sponsor_info_approved")
 
     @_builtins.property
     @pulumi.getter(name="sponsorInfoDenied")
     def sponsor_info_denied(self) -> Optional[_builtins.str]:
+        """
+        Localized status message prefix shown when a sponsor denies the request
+        """
         return pulumi.get(self, "sponsor_info_denied")
 
     @_builtins.property
     @pulumi.getter(name="sponsorInfoPending")
     def sponsor_info_pending(self) -> Optional[_builtins.str]:
+        """
+        Localized status message prefix shown after a sponsor notification is sent
+        """
         return pulumi.get(self, "sponsor_info_pending")
 
     @_builtins.property
@@ -15311,11 +15797,17 @@ class WlanPortalTemplatePortalTemplateLocales(dict):
     @_builtins.property
     @pulumi.getter(name="sponsorNameError")
     def sponsor_name_error(self) -> Optional[_builtins.str]:
+        """
+        Localized error message shown when the sponsor name is missing
+        """
         return pulumi.get(self, "sponsor_name_error")
 
     @_builtins.property
     @pulumi.getter(name="sponsorNotePending")
     def sponsor_note_pending(self) -> Optional[_builtins.str]:
+        """
+        Localized additional status text shown while sponsor approval is pending
+        """
         return pulumi.get(self, "sponsor_note_pending")
 
     @_builtins.property
@@ -15361,11 +15853,17 @@ class WlanPortalTemplatePortalTemplateLocales(dict):
     @_builtins.property
     @pulumi.getter(name="sponsorsError")
     def sponsors_error(self) -> Optional[_builtins.str]:
+        """
+        Localized error message shown when no sponsor is selected
+        """
         return pulumi.get(self, "sponsors_error")
 
     @_builtins.property
     @pulumi.getter(name="sponsorsFieldLabel")
     def sponsors_field_label(self) -> Optional[_builtins.str]:
+        """
+        Localized label for the sponsor selection field
+        """
         return pulumi.get(self, "sponsors_field_label")
 
     @_builtins.property
@@ -15424,7 +15922,7 @@ class WlanQos(dict):
                  class_: Optional[_builtins.str] = None,
                  overwrite: Optional[_builtins.bool] = None):
         """
-        :param _builtins.str class_: enum: `background`, `best_effort`, `video`, `voice`
+        :param _builtins.str class_: QoS traffic class applied when WLAN QoS override is enabled
         :param _builtins.bool overwrite: Whether to overwrite QoS
         """
         if class_ is not None:
@@ -15436,7 +15934,7 @@ class WlanQos(dict):
     @pulumi.getter(name="class")
     def class_(self) -> Optional[_builtins.str]:
         """
-        enum: `background`, `best_effort`, `video`, `voice`
+        QoS traffic class applied when WLAN QoS override is enabled
         """
         return pulumi.get(self, "class_")
 
@@ -15491,12 +15989,15 @@ class WlanRadsec(dict):
                  use_mxedge: Optional[_builtins.bool] = None,
                  use_site_mxedge: Optional[_builtins.bool] = None):
         """
-        :param Sequence[_builtins.str] mxcluster_ids: To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
-        :param Sequence[_builtins.str] proxy_hosts: Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`
-        :param _builtins.str server_name: Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
-        :param Sequence['WlanRadsecServerArgs'] servers: List of RadSec Servers. Only if not Mist Edge.
-        :param _builtins.bool use_mxedge: use mxedge(s) as RadSec Proxy
-        :param _builtins.bool use_site_mxedge: To use Site mxedges when this WLAN does not use mxtunnel
+        :param _builtins.bool coa_enabled: Whether RADIUS Change of Authorization (CoA) is enabled for RadSec traffic
+        :param _builtins.bool enabled: Whether RadSec is enabled
+        :param _builtins.str idle_timeout: Idle timeout, in seconds, for RadSec connections
+        :param Sequence[_builtins.str] mxcluster_ids: Mist Edge cluster IDs used as RadSec proxies when the WLAN does not use mxtunnel
+        :param Sequence[_builtins.str] proxy_hosts: RadSec proxy hostnames advertised to APs
+        :param _builtins.str server_name: TLS server name to verify against the CA certificates in Org Setting. Only if not Mist Edge.
+        :param Sequence['WlanRadsecServerArgs'] servers: External RadSec servers. Only if not Mist Edge.
+        :param _builtins.bool use_mxedge: Whether to use organization Mist Edge instances as RadSec proxies
+        :param _builtins.bool use_site_mxedge: Whether to use site Mist Edge instances when this WLAN does not use mxtunnel
         """
         if coa_enabled is not None:
             pulumi.set(__self__, "coa_enabled", coa_enabled)
@@ -15520,23 +16021,32 @@ class WlanRadsec(dict):
     @_builtins.property
     @pulumi.getter(name="coaEnabled")
     def coa_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether RADIUS Change of Authorization (CoA) is enabled for RadSec traffic
+        """
         return pulumi.get(self, "coa_enabled")
 
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether RadSec is enabled
+        """
         return pulumi.get(self, "enabled")
 
     @_builtins.property
     @pulumi.getter(name="idleTimeout")
     def idle_timeout(self) -> Optional[_builtins.str]:
+        """
+        Idle timeout, in seconds, for RadSec connections
+        """
         return pulumi.get(self, "idle_timeout")
 
     @_builtins.property
     @pulumi.getter(name="mxclusterIds")
     def mxcluster_ids(self) -> Optional[Sequence[_builtins.str]]:
         """
-        To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
+        Mist Edge cluster IDs used as RadSec proxies when the WLAN does not use mxtunnel
         """
         return pulumi.get(self, "mxcluster_ids")
 
@@ -15544,7 +16054,7 @@ class WlanRadsec(dict):
     @pulumi.getter(name="proxyHosts")
     def proxy_hosts(self) -> Optional[Sequence[_builtins.str]]:
         """
-        Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`
+        RadSec proxy hostnames advertised to APs
         """
         return pulumi.get(self, "proxy_hosts")
 
@@ -15552,7 +16062,7 @@ class WlanRadsec(dict):
     @pulumi.getter(name="serverName")
     def server_name(self) -> Optional[_builtins.str]:
         """
-        Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+        TLS server name to verify against the CA certificates in Org Setting. Only if not Mist Edge.
         """
         return pulumi.get(self, "server_name")
 
@@ -15560,7 +16070,7 @@ class WlanRadsec(dict):
     @pulumi.getter
     def servers(self) -> Optional[Sequence['outputs.WlanRadsecServer']]:
         """
-        List of RadSec Servers. Only if not Mist Edge.
+        External RadSec servers. Only if not Mist Edge.
         """
         return pulumi.get(self, "servers")
 
@@ -15568,7 +16078,7 @@ class WlanRadsec(dict):
     @pulumi.getter(name="useMxedge")
     def use_mxedge(self) -> Optional[_builtins.bool]:
         """
-        use mxedge(s) as RadSec Proxy
+        Whether to use organization Mist Edge instances as RadSec proxies
         """
         return pulumi.get(self, "use_mxedge")
 
@@ -15576,7 +16086,7 @@ class WlanRadsec(dict):
     @pulumi.getter(name="useSiteMxedge")
     def use_site_mxedge(self) -> Optional[_builtins.bool]:
         """
-        To use Site mxedges when this WLAN does not use mxtunnel
+        Whether to use site Mist Edge instances when this WLAN does not use mxtunnel
         """
         return pulumi.get(self, "use_site_mxedge")
 
@@ -15586,6 +16096,10 @@ class WlanRadsecServer(dict):
     def __init__(__self__, *,
                  host: Optional[_builtins.str] = None,
                  port: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str host: Address or hostname of the RadSec server
+        :param _builtins.int port: TCP port used by the RadSec server
+        """
         if host is not None:
             pulumi.set(__self__, "host", host)
         if port is not None:
@@ -15594,11 +16108,17 @@ class WlanRadsecServer(dict):
     @_builtins.property
     @pulumi.getter
     def host(self) -> Optional[_builtins.str]:
+        """
+        Address or hostname of the RadSec server
+        """
         return pulumi.get(self, "host")
 
     @_builtins.property
     @pulumi.getter
     def port(self) -> Optional[_builtins.int]:
+        """
+        TCP port used by the RadSec server
+        """
         return pulumi.get(self, "port")
 
 
@@ -15635,12 +16155,7 @@ class WlanRateset(dict):
         :param _builtins.str ht: If `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
         :param Sequence[_builtins.str] legacies: if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values. enum: `1`, `11`, `11b`, `12`, `12b`, `18`, `18b`, `1b`, `2`, `24`, `24b`, `2b`, `36`, `36b`, `48`, `48b`, `5.5`, `5.5b`, `54`, `54b`, `6`, `6b`, `9`, `9b`
         :param _builtins.int min_rssi: Minimum RSSI for client to connect, 0 means not enforcing
-        :param _builtins.str template: Data Rates template to apply. enum: 
-                 * `no-legacy`: no 11b
-                 * `compatible`: all, like before, default setting that Broadcom/Atheros used
-                 * `legacy-only`: disable 802.11n and 802.11ac
-                 * `high-density`: no 11b, no low rates
-                 * `custom`: user defined
+        :param _builtins.str template: Data rate template used to derive WLAN rate settings
         :param _builtins.str vht: If `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
         """
         if eht is not None:
@@ -15702,12 +16217,7 @@ class WlanRateset(dict):
     @pulumi.getter
     def template(self) -> Optional[_builtins.str]:
         """
-        Data Rates template to apply. enum: 
-          * `no-legacy`: no 11b
-          * `compatible`: all, like before, default setting that Broadcom/Atheros used
-          * `legacy-only`: disable 802.11n and 802.11ac
-          * `high-density`: no 11b, no low rates
-          * `custom`: user defined
+        Data rate template used to derive WLAN rate settings
         """
         return pulumi.get(self, "template")
 
@@ -15726,7 +16236,8 @@ class WlanSchedule(dict):
                  enabled: Optional[_builtins.bool] = None,
                  hours: Optional['outputs.WlanScheduleHours'] = None):
         """
-        :param 'WlanScheduleHoursArgs' hours: Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+        :param _builtins.bool enabled: Whether the WLAN operating schedule is enabled
+        :param 'WlanScheduleHoursArgs' hours: Time ranges when the WLAN is scheduled to operate
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -15736,13 +16247,16 @@ class WlanSchedule(dict):
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether the WLAN operating schedule is enabled
+        """
         return pulumi.get(self, "enabled")
 
     @_builtins.property
     @pulumi.getter
     def hours(self) -> Optional['outputs.WlanScheduleHours']:
         """
-        Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+        Time ranges when the WLAN is scheduled to operate
         """
         return pulumi.get(self, "hours")
 
@@ -15758,13 +16272,13 @@ class WlanScheduleHours(dict):
                  tue: Optional[_builtins.str] = None,
                  wed: Optional[_builtins.str] = None):
         """
-        :param _builtins.str fri: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
-        :param _builtins.str mon: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
-        :param _builtins.str sat: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
-        :param _builtins.str sun: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
-        :param _builtins.str thu: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
-        :param _builtins.str tue: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
-        :param _builtins.str wed: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        :param _builtins.str fri: Operating hour range for Friday
+        :param _builtins.str mon: Operating hour range for Monday
+        :param _builtins.str sat: Operating hour range for Saturday
+        :param _builtins.str sun: Operating hour range for Sunday
+        :param _builtins.str thu: Operating hour range for Thursday
+        :param _builtins.str tue: Operating hour range for Tuesday
+        :param _builtins.str wed: Operating hour range for Wednesday
         """
         if fri is not None:
             pulumi.set(__self__, "fri", fri)
@@ -15785,7 +16299,7 @@ class WlanScheduleHours(dict):
     @pulumi.getter
     def fri(self) -> Optional[_builtins.str]:
         """
-        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        Operating hour range for Friday
         """
         return pulumi.get(self, "fri")
 
@@ -15793,7 +16307,7 @@ class WlanScheduleHours(dict):
     @pulumi.getter
     def mon(self) -> Optional[_builtins.str]:
         """
-        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        Operating hour range for Monday
         """
         return pulumi.get(self, "mon")
 
@@ -15801,7 +16315,7 @@ class WlanScheduleHours(dict):
     @pulumi.getter
     def sat(self) -> Optional[_builtins.str]:
         """
-        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        Operating hour range for Saturday
         """
         return pulumi.get(self, "sat")
 
@@ -15809,7 +16323,7 @@ class WlanScheduleHours(dict):
     @pulumi.getter
     def sun(self) -> Optional[_builtins.str]:
         """
-        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        Operating hour range for Sunday
         """
         return pulumi.get(self, "sun")
 
@@ -15817,7 +16331,7 @@ class WlanScheduleHours(dict):
     @pulumi.getter
     def thu(self) -> Optional[_builtins.str]:
         """
-        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        Operating hour range for Thursday
         """
         return pulumi.get(self, "thu")
 
@@ -15825,7 +16339,7 @@ class WlanScheduleHours(dict):
     @pulumi.getter
     def tue(self) -> Optional[_builtins.str]:
         """
-        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        Operating hour range for Tuesday
         """
         return pulumi.get(self, "tue")
 
@@ -15833,7 +16347,7 @@ class WlanScheduleHours(dict):
     @pulumi.getter
     def wed(self) -> Optional[_builtins.str]:
         """
-        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        Operating hour range for Wednesday
         """
         return pulumi.get(self, "wed")
 
@@ -15864,7 +16378,7 @@ class WxtagSpec(dict):
         """
         :param _builtins.str port_range: Matched destination port, "0" means any
         :param _builtins.str protocol: tcp / udp / icmp / gre / any / ":protocol_number", `protocol_number` is between 1-254
-        :param Sequence[_builtins.str] subnets: Matched destination subnets and/or IP Addresses
+        :param Sequence[_builtins.str] subnets: Destination subnets or IP addresses matched by this WxLAN tag spec
         """
         if port_range is not None:
             pulumi.set(__self__, "port_range", port_range)
@@ -15893,7 +16407,7 @@ class WxtagSpec(dict):
     @pulumi.getter
     def subnets(self) -> Optional[Sequence[_builtins.str]]:
         """
-        Matched destination subnets and/or IP Addresses
+        Destination subnets or IP addresses matched by this WxLAN tag spec
         """
         return pulumi.get(self, "subnets")
 
@@ -15903,17 +16417,27 @@ class BaseLatlng(dict):
     def __init__(__self__, *,
                  lat: _builtins.float,
                  lng: _builtins.float):
+        """
+        :param _builtins.float lat: Geographic latitude in decimal degrees
+        :param _builtins.float lng: Geographic longitude in decimal degrees
+        """
         pulumi.set(__self__, "lat", lat)
         pulumi.set(__self__, "lng", lng)
 
     @_builtins.property
     @pulumi.getter
     def lat(self) -> _builtins.float:
+        """
+        Geographic latitude in decimal degrees
+        """
         return pulumi.get(self, "lat")
 
     @_builtins.property
     @pulumi.getter
     def lng(self) -> _builtins.float:
+        """
+        Geographic longitude in decimal degrees
+        """
         return pulumi.get(self, "lng")
 
 

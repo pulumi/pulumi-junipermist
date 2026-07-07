@@ -17,22 +17,30 @@ public final class SwitchRoutingPoliciesTermActionsArgs extends com.pulumi.resou
 
     public static final SwitchRoutingPoliciesTermActionsArgs Empty = new SwitchRoutingPoliciesTermActionsArgs();
 
+    /**
+     * Whether to accept routes that match this term
+     * 
+     */
     @Import(name="accept")
     private @Nullable Output<Boolean> accept;
 
+    /**
+     * @return Whether to accept routes that match this term
+     * 
+     */
     public Optional<Output<Boolean>> accept() {
         return Optional.ofNullable(this.accept);
     }
 
     /**
-     * When used as export policy, optional
+     * BGP communities to set when this term is used as an export policy
      * 
      */
     @Import(name="communities")
     private @Nullable Output<List<String>> communities;
 
     /**
-     * @return When used as export policy, optional
+     * @return BGP communities to set when this term is used as an export policy
      * 
      */
     public Optional<Output<List<String>>> communities() {
@@ -55,14 +63,14 @@ public final class SwitchRoutingPoliciesTermActionsArgs extends com.pulumi.resou
     }
 
     /**
-     * When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
+     * AS path values to prepend when this term is used as an export policy
      * 
      */
     @Import(name="prependAsPaths")
     private @Nullable Output<List<String>> prependAsPaths;
 
     /**
-     * @return When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
+     * @return AS path values to prepend when this term is used as an export policy
      * 
      */
     public Optional<Output<List<String>>> prependAsPaths() {
@@ -96,17 +104,29 @@ public final class SwitchRoutingPoliciesTermActionsArgs extends com.pulumi.resou
             $ = new SwitchRoutingPoliciesTermActionsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accept Whether to accept routes that match this term
+         * 
+         * @return builder
+         * 
+         */
         public Builder accept(@Nullable Output<Boolean> accept) {
             $.accept = accept;
             return this;
         }
 
+        /**
+         * @param accept Whether to accept routes that match this term
+         * 
+         * @return builder
+         * 
+         */
         public Builder accept(Boolean accept) {
             return accept(Output.of(accept));
         }
 
         /**
-         * @param communities When used as export policy, optional
+         * @param communities BGP communities to set when this term is used as an export policy
          * 
          * @return builder
          * 
@@ -117,7 +137,7 @@ public final class SwitchRoutingPoliciesTermActionsArgs extends com.pulumi.resou
         }
 
         /**
-         * @param communities When used as export policy, optional
+         * @param communities BGP communities to set when this term is used as an export policy
          * 
          * @return builder
          * 
@@ -127,7 +147,7 @@ public final class SwitchRoutingPoliciesTermActionsArgs extends com.pulumi.resou
         }
 
         /**
-         * @param communities When used as export policy, optional
+         * @param communities BGP communities to set when this term is used as an export policy
          * 
          * @return builder
          * 
@@ -158,7 +178,7 @@ public final class SwitchRoutingPoliciesTermActionsArgs extends com.pulumi.resou
         }
 
         /**
-         * @param prependAsPaths When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
+         * @param prependAsPaths AS path values to prepend when this term is used as an export policy
          * 
          * @return builder
          * 
@@ -169,7 +189,7 @@ public final class SwitchRoutingPoliciesTermActionsArgs extends com.pulumi.resou
         }
 
         /**
-         * @param prependAsPaths When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
+         * @param prependAsPaths AS path values to prepend when this term is used as an export policy
          * 
          * @return builder
          * 
@@ -179,7 +199,7 @@ public final class SwitchRoutingPoliciesTermActionsArgs extends com.pulumi.resou
         }
 
         /**
-         * @param prependAsPaths When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
+         * @param prependAsPaths AS path values to prepend when this term is used as an export policy
          * 
          * @return builder
          * 

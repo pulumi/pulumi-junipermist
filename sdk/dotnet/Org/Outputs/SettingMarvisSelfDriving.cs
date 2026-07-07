@@ -13,8 +13,17 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class SettingMarvisSelfDriving
     {
+        /// <summary>
+        /// Self-driving automation settings for the WAN domain
+        /// </summary>
         public readonly Outputs.SettingMarvisSelfDrivingWan? Wan;
+        /// <summary>
+        /// Self-driving automation settings for the wired domain
+        /// </summary>
         public readonly Outputs.SettingMarvisSelfDrivingWired? Wired;
+        /// <summary>
+        /// Self-driving automation settings for the wireless domain
+        /// </summary>
         public readonly Outputs.SettingMarvisSelfDrivingWireless? Wireless;
 
         [OutputConstructor]

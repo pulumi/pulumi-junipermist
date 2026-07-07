@@ -12,9 +12,15 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class ApLedArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Indicator LED brightness level from 0 to 255
+        /// </summary>
         [Input("brightness")]
         public Input<int>? Brightness { get; set; }
 
+        /// <summary>
+        /// Whether the AP indicator LED is enabled
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

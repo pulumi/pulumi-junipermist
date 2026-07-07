@@ -14,6 +14,10 @@ namespace Pulumi.JuniperMist.Org.Inputs
     {
         [Input("domainNames")]
         private InputList<string>? _domainNames;
+
+        /// <summary>
+        /// Advertised domain names for Hotspot 2.0 clients
+        /// </summary>
         public InputList<string> DomainNames
         {
             get => _domainNames ?? (_domainNames = new InputList<string>());
@@ -28,6 +32,10 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
         [Input("naiRealms")]
         private InputList<string>? _naiRealms;
+
+        /// <summary>
+        /// NAI realms advertised for Hotspot 2.0 authentication
+        /// </summary>
         public InputList<string> NaiRealms
         {
             get => _naiRealms ?? (_naiRealms = new InputList<string>());
@@ -38,7 +46,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _operators;
 
         /// <summary>
-        /// List of operators to support
+        /// Operator profiles supported by this Hotspot 2.0 configuration
         /// </summary>
         public InputList<string> Operators
         {
@@ -48,6 +56,10 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
         [Input("rcois")]
         private InputList<string>? _rcois;
+
+        /// <summary>
+        /// Roaming Consortium Organization Identifiers advertised for Hotspot 2.0
+        /// </summary>
         public InputList<string> Rcois
         {
             get => _rcois ?? (_rcois = new InputList<string>());

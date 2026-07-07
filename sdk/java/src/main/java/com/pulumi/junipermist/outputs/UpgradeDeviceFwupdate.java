@@ -14,41 +14,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class UpgradeDeviceFwupdate {
+    /**
+     * @return Firmware update progress percentage, or null when unavailable
+     * 
+     */
     private @Nullable Integer progress;
     /**
-     * @return enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
+     * @return Current firmware update status
      * 
      */
     private @Nullable String status;
+    /**
+     * @return Numeric firmware update status identifier
+     * 
+     */
     private @Nullable Integer statusId;
     /**
-     * @return Epoch (seconds)
+     * @return Time when the firmware update status was last updated
      * 
      */
     private @Nullable Double timestamp;
+    /**
+     * @return Whether the firmware update process will retry after the current status
+     * 
+     */
     private @Nullable Boolean willRetry;
 
     private UpgradeDeviceFwupdate() {}
+    /**
+     * @return Firmware update progress percentage, or null when unavailable
+     * 
+     */
     public Optional<Integer> progress() {
         return Optional.ofNullable(this.progress);
     }
     /**
-     * @return enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
+     * @return Current firmware update status
      * 
      */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return Numeric firmware update status identifier
+     * 
+     */
     public Optional<Integer> statusId() {
         return Optional.ofNullable(this.statusId);
     }
     /**
-     * @return Epoch (seconds)
+     * @return Time when the firmware update status was last updated
      * 
      */
     public Optional<Double> timestamp() {
         return Optional.ofNullable(this.timestamp);
     }
+    /**
+     * @return Whether the firmware update process will retry after the current status
+     * 
+     */
     public Optional<Boolean> willRetry() {
         return Optional.ofNullable(this.willRetry);
     }

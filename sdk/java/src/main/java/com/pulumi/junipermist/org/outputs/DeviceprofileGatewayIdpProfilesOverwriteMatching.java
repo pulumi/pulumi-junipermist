@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DeviceprofileGatewayIdpProfilesOverwriteMatching {
+    /**
+     * @return Signature names matched by the IDP profile overwrite
+     * 
+     */
     private @Nullable List<String> attackNames;
+    /**
+     * @return Destination subnets matched by the IDP profile overwrite
+     * 
+     */
     private @Nullable List<String> dstSubnets;
+    /**
+     * @return Threat levels matched by the IDP profile overwrite
+     * 
+     */
     private @Nullable List<String> severities;
 
     private DeviceprofileGatewayIdpProfilesOverwriteMatching() {}
+    /**
+     * @return Signature names matched by the IDP profile overwrite
+     * 
+     */
     public List<String> attackNames() {
         return this.attackNames == null ? List.of() : this.attackNames;
     }
+    /**
+     * @return Destination subnets matched by the IDP profile overwrite
+     * 
+     */
     public List<String> dstSubnets() {
         return this.dstSubnets == null ? List.of() : this.dstSubnets;
     }
+    /**
+     * @return Threat levels matched by the IDP profile overwrite
+     * 
+     */
     public List<String> severities() {
         return this.severities == null ? List.of() : this.severities;
     }

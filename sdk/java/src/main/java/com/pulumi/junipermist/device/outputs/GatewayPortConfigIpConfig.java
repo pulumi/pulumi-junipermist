@@ -13,17 +13,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewayPortConfigIpConfig {
     /**
-     * @return Except for out-of_band interface (vme/em0/fxp0)
+     * @return Resolver server IP addresses used by this interface, except on out-of-band interfaces such as vme, em0, or fxp0
      * 
      */
     private @Nullable List<String> dns;
     /**
-     * @return Except for out-of_band interface (vme/em0/fxp0)
+     * @return DNS search suffixes used by this interface, except on out-of-band interfaces such as vme, em0, or fxp0
      * 
      */
     private @Nullable List<String> dnsSuffixes;
     /**
-     * @return Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. &#34;192.168.1.1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * @return Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP address (i.e. &#34;192.168.1.1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     private @Nullable String gateway;
@@ -33,7 +33,7 @@ public final class GatewayPortConfigIpConfig {
      */
     private @Nullable String gateway6;
     /**
-     * @return Interface IP Address (i.e. &#34;192.168.1.8&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * @return Interface IP address (i.e. &#34;192.168.1.8&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     private @Nullable String ip;
@@ -58,48 +58,48 @@ public final class GatewayPortConfigIpConfig {
      */
     private @Nullable String network;
     /**
-     * @return If `type`==`pppoe`
+     * @return Password used for PPPoE when `type`==`pppoe`
      * 
      */
     private @Nullable String poserPassword;
     /**
-     * @return if `type`==`pppoe`. enum: `chap`, `none`, `pap`
+     * @return Authentication protocol used for PPPoE when `type`==`pppoe`
      * 
      */
     private @Nullable String pppoeAuth;
     /**
-     * @return If `type`==`pppoe`
+     * @return Username used for PPPoE when `type`==`pppoe`
      * 
      */
     private @Nullable String pppoeUsername;
     /**
-     * @return enum: `dhcp`, `pppoe`, `static`
+     * @return IPv4 assignment mode for this gateway port interface
      * 
      */
     private @Nullable String type;
     /**
-     * @return enum: `autoconf`, `dhcp`, `static`
+     * @return IPv6 assignment mode for this gateway port interface
      * 
      */
     private @Nullable String type6;
 
     private GatewayPortConfigIpConfig() {}
     /**
-     * @return Except for out-of_band interface (vme/em0/fxp0)
+     * @return Resolver server IP addresses used by this interface, except on out-of-band interfaces such as vme, em0, or fxp0
      * 
      */
     public List<String> dns() {
         return this.dns == null ? List.of() : this.dns;
     }
     /**
-     * @return Except for out-of_band interface (vme/em0/fxp0)
+     * @return DNS search suffixes used by this interface, except on out-of-band interfaces such as vme, em0, or fxp0
      * 
      */
     public List<String> dnsSuffixes() {
         return this.dnsSuffixes == null ? List.of() : this.dnsSuffixes;
     }
     /**
-     * @return Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. &#34;192.168.1.1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * @return Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP address (i.e. &#34;192.168.1.1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     public Optional<String> gateway() {
@@ -113,7 +113,7 @@ public final class GatewayPortConfigIpConfig {
         return Optional.ofNullable(this.gateway6);
     }
     /**
-     * @return Interface IP Address (i.e. &#34;192.168.1.8&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * @return Interface IP address (i.e. &#34;192.168.1.8&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     public Optional<String> ip() {
@@ -148,35 +148,35 @@ public final class GatewayPortConfigIpConfig {
         return Optional.ofNullable(this.network);
     }
     /**
-     * @return If `type`==`pppoe`
+     * @return Password used for PPPoE when `type`==`pppoe`
      * 
      */
     public Optional<String> poserPassword() {
         return Optional.ofNullable(this.poserPassword);
     }
     /**
-     * @return if `type`==`pppoe`. enum: `chap`, `none`, `pap`
+     * @return Authentication protocol used for PPPoE when `type`==`pppoe`
      * 
      */
     public Optional<String> pppoeAuth() {
         return Optional.ofNullable(this.pppoeAuth);
     }
     /**
-     * @return If `type`==`pppoe`
+     * @return Username used for PPPoE when `type`==`pppoe`
      * 
      */
     public Optional<String> pppoeUsername() {
         return Optional.ofNullable(this.pppoeUsername);
     }
     /**
-     * @return enum: `dhcp`, `pppoe`, `static`
+     * @return IPv4 assignment mode for this gateway port interface
      * 
      */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return enum: `autoconf`, `dhcp`, `static`
+     * @return IPv6 assignment mode for this gateway port interface
      * 
      */
     public Optional<String> type6() {

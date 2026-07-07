@@ -32,13 +32,16 @@ class WxruleArgs:
         """
         The set of arguments for constructing a Wxrule resource.
 
-        :param pulumi.Input[_builtins.str] action: type of action, allow / block. enum: `allow`, `block`
-        :param pulumi.Input[_builtins.int] order: Order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blocked_apps: Blocked apps (always blocking, ignoring action), the key of Get Application List
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dst_allow_wxtags: List of WxTag UUID to indicate these tags are allowed access
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dst_deny_wxtags: List of WxTag UUID to indicate these tags are blocked access
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dst_wxtags: List of WxTag UUID
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] src_wxtags: List of WxTag UUID to determine if this rule would match
+        :param pulumi.Input[_builtins.str] action: Allow or block behavior applied by this WxLAN rule
+        :param pulumi.Input[_builtins.int] order: Lookup priority for WxLAN rules; larger positive values match first, and -1 means LAST. Uniqueness is not checked
+        :param pulumi.Input[_builtins.str] site_id: Mist site associated with this WxLAN rule, when site-scoped
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] apply_tags: WxLAN tag identifiers applied when this rule matches
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blocked_apps: Application keys always blocked by this rule, regardless of the rule action
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dst_allow_wxtags: Destination WxLAN tag identifiers explicitly allowed by this rule
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dst_deny_wxtags: Destination WxLAN tag identifiers explicitly denied by this rule
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dst_wxtags: Destination WxLAN tag identifiers matched by this rule
+        :param pulumi.Input[_builtins.bool] enabled: Whether this WxLAN rule is enabled
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] src_wxtags: Source WxLAN tag identifiers that must match for this rule to apply
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "order", order)
@@ -62,7 +65,7 @@ class WxruleArgs:
     @pulumi.getter
     def action(self) -> pulumi.Input[_builtins.str]:
         """
-        type of action, allow / block. enum: `allow`, `block`
+        Allow or block behavior applied by this WxLAN rule
         """
         return pulumi.get(self, "action")
 
@@ -74,7 +77,7 @@ class WxruleArgs:
     @pulumi.getter
     def order(self) -> pulumi.Input[_builtins.int]:
         """
-        Order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+        Lookup priority for WxLAN rules; larger positive values match first, and -1 means LAST. Uniqueness is not checked
         """
         return pulumi.get(self, "order")
 
@@ -85,6 +88,9 @@ class WxruleArgs:
     @_builtins.property
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Mist site associated with this WxLAN rule, when site-scoped
+        """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
@@ -94,6 +100,9 @@ class WxruleArgs:
     @_builtins.property
     @pulumi.getter(name="applyTags")
     def apply_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        WxLAN tag identifiers applied when this rule matches
+        """
         return pulumi.get(self, "apply_tags")
 
     @apply_tags.setter
@@ -104,7 +113,7 @@ class WxruleArgs:
     @pulumi.getter(name="blockedApps")
     def blocked_apps(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Blocked apps (always blocking, ignoring action), the key of Get Application List
+        Application keys always blocked by this rule, regardless of the rule action
         """
         return pulumi.get(self, "blocked_apps")
 
@@ -116,7 +125,7 @@ class WxruleArgs:
     @pulumi.getter(name="dstAllowWxtags")
     def dst_allow_wxtags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of WxTag UUID to indicate these tags are allowed access
+        Destination WxLAN tag identifiers explicitly allowed by this rule
         """
         return pulumi.get(self, "dst_allow_wxtags")
 
@@ -128,7 +137,7 @@ class WxruleArgs:
     @pulumi.getter(name="dstDenyWxtags")
     def dst_deny_wxtags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of WxTag UUID to indicate these tags are blocked access
+        Destination WxLAN tag identifiers explicitly denied by this rule
         """
         return pulumi.get(self, "dst_deny_wxtags")
 
@@ -140,7 +149,7 @@ class WxruleArgs:
     @pulumi.getter(name="dstWxtags")
     def dst_wxtags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of WxTag UUID
+        Destination WxLAN tag identifiers matched by this rule
         """
         return pulumi.get(self, "dst_wxtags")
 
@@ -151,6 +160,9 @@ class WxruleArgs:
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether this WxLAN rule is enabled
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -161,7 +173,7 @@ class WxruleArgs:
     @pulumi.getter(name="srcWxtags")
     def src_wxtags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of WxTag UUID to determine if this rule would match
+        Source WxLAN tag identifiers that must match for this rule to apply
         """
         return pulumi.get(self, "src_wxtags")
 
@@ -186,13 +198,16 @@ class _WxruleState:
         """
         Input properties used for looking up and filtering Wxrule resources.
 
-        :param pulumi.Input[_builtins.str] action: type of action, allow / block. enum: `allow`, `block`
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blocked_apps: Blocked apps (always blocking, ignoring action), the key of Get Application List
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dst_allow_wxtags: List of WxTag UUID to indicate these tags are allowed access
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dst_deny_wxtags: List of WxTag UUID to indicate these tags are blocked access
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dst_wxtags: List of WxTag UUID
-        :param pulumi.Input[_builtins.int] order: Order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] src_wxtags: List of WxTag UUID to determine if this rule would match
+        :param pulumi.Input[_builtins.str] action: Allow or block behavior applied by this WxLAN rule
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] apply_tags: WxLAN tag identifiers applied when this rule matches
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blocked_apps: Application keys always blocked by this rule, regardless of the rule action
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dst_allow_wxtags: Destination WxLAN tag identifiers explicitly allowed by this rule
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dst_deny_wxtags: Destination WxLAN tag identifiers explicitly denied by this rule
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dst_wxtags: Destination WxLAN tag identifiers matched by this rule
+        :param pulumi.Input[_builtins.bool] enabled: Whether this WxLAN rule is enabled
+        :param pulumi.Input[_builtins.int] order: Lookup priority for WxLAN rules; larger positive values match first, and -1 means LAST. Uniqueness is not checked
+        :param pulumi.Input[_builtins.str] site_id: Mist site associated with this WxLAN rule, when site-scoped
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] src_wxtags: Source WxLAN tag identifiers that must match for this rule to apply
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -219,7 +234,7 @@ class _WxruleState:
     @pulumi.getter
     def action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        type of action, allow / block. enum: `allow`, `block`
+        Allow or block behavior applied by this WxLAN rule
         """
         return pulumi.get(self, "action")
 
@@ -230,6 +245,9 @@ class _WxruleState:
     @_builtins.property
     @pulumi.getter(name="applyTags")
     def apply_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        WxLAN tag identifiers applied when this rule matches
+        """
         return pulumi.get(self, "apply_tags")
 
     @apply_tags.setter
@@ -240,7 +258,7 @@ class _WxruleState:
     @pulumi.getter(name="blockedApps")
     def blocked_apps(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Blocked apps (always blocking, ignoring action), the key of Get Application List
+        Application keys always blocked by this rule, regardless of the rule action
         """
         return pulumi.get(self, "blocked_apps")
 
@@ -252,7 +270,7 @@ class _WxruleState:
     @pulumi.getter(name="dstAllowWxtags")
     def dst_allow_wxtags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of WxTag UUID to indicate these tags are allowed access
+        Destination WxLAN tag identifiers explicitly allowed by this rule
         """
         return pulumi.get(self, "dst_allow_wxtags")
 
@@ -264,7 +282,7 @@ class _WxruleState:
     @pulumi.getter(name="dstDenyWxtags")
     def dst_deny_wxtags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of WxTag UUID to indicate these tags are blocked access
+        Destination WxLAN tag identifiers explicitly denied by this rule
         """
         return pulumi.get(self, "dst_deny_wxtags")
 
@@ -276,7 +294,7 @@ class _WxruleState:
     @pulumi.getter(name="dstWxtags")
     def dst_wxtags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of WxTag UUID
+        Destination WxLAN tag identifiers matched by this rule
         """
         return pulumi.get(self, "dst_wxtags")
 
@@ -287,6 +305,9 @@ class _WxruleState:
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether this WxLAN rule is enabled
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -297,7 +318,7 @@ class _WxruleState:
     @pulumi.getter
     def order(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+        Lookup priority for WxLAN rules; larger positive values match first, and -1 means LAST. Uniqueness is not checked
         """
         return pulumi.get(self, "order")
 
@@ -308,6 +329,9 @@ class _WxruleState:
     @_builtins.property
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Mist site associated with this WxLAN rule, when site-scoped
+        """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
@@ -318,7 +342,7 @@ class _WxruleState:
     @pulumi.getter(name="srcWxtags")
     def src_wxtags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of WxTag UUID to determine if this rule would match
+        Source WxLAN tag identifiers that must match for this rule to apply
         """
         return pulumi.get(self, "src_wxtags")
 
@@ -376,13 +400,16 @@ class Wxrule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] action: type of action, allow / block. enum: `allow`, `block`
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blocked_apps: Blocked apps (always blocking, ignoring action), the key of Get Application List
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dst_allow_wxtags: List of WxTag UUID to indicate these tags are allowed access
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dst_deny_wxtags: List of WxTag UUID to indicate these tags are blocked access
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dst_wxtags: List of WxTag UUID
-        :param pulumi.Input[_builtins.int] order: Order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] src_wxtags: List of WxTag UUID to determine if this rule would match
+        :param pulumi.Input[_builtins.str] action: Allow or block behavior applied by this WxLAN rule
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] apply_tags: WxLAN tag identifiers applied when this rule matches
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blocked_apps: Application keys always blocked by this rule, regardless of the rule action
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dst_allow_wxtags: Destination WxLAN tag identifiers explicitly allowed by this rule
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dst_deny_wxtags: Destination WxLAN tag identifiers explicitly denied by this rule
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dst_wxtags: Destination WxLAN tag identifiers matched by this rule
+        :param pulumi.Input[_builtins.bool] enabled: Whether this WxLAN rule is enabled
+        :param pulumi.Input[_builtins.int] order: Lookup priority for WxLAN rules; larger positive values match first, and -1 means LAST. Uniqueness is not checked
+        :param pulumi.Input[_builtins.str] site_id: Mist site associated with this WxLAN rule, when site-scoped
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] src_wxtags: Source WxLAN tag identifiers that must match for this rule to apply
         """
         ...
     @overload
@@ -497,13 +524,16 @@ class Wxrule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] action: type of action, allow / block. enum: `allow`, `block`
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blocked_apps: Blocked apps (always blocking, ignoring action), the key of Get Application List
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dst_allow_wxtags: List of WxTag UUID to indicate these tags are allowed access
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dst_deny_wxtags: List of WxTag UUID to indicate these tags are blocked access
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dst_wxtags: List of WxTag UUID
-        :param pulumi.Input[_builtins.int] order: Order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] src_wxtags: List of WxTag UUID to determine if this rule would match
+        :param pulumi.Input[_builtins.str] action: Allow or block behavior applied by this WxLAN rule
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] apply_tags: WxLAN tag identifiers applied when this rule matches
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blocked_apps: Application keys always blocked by this rule, regardless of the rule action
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dst_allow_wxtags: Destination WxLAN tag identifiers explicitly allowed by this rule
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dst_deny_wxtags: Destination WxLAN tag identifiers explicitly denied by this rule
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dst_wxtags: Destination WxLAN tag identifiers matched by this rule
+        :param pulumi.Input[_builtins.bool] enabled: Whether this WxLAN rule is enabled
+        :param pulumi.Input[_builtins.int] order: Lookup priority for WxLAN rules; larger positive values match first, and -1 means LAST. Uniqueness is not checked
+        :param pulumi.Input[_builtins.str] site_id: Mist site associated with this WxLAN rule, when site-scoped
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] src_wxtags: Source WxLAN tag identifiers that must match for this rule to apply
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -525,20 +555,23 @@ class Wxrule(pulumi.CustomResource):
     @pulumi.getter
     def action(self) -> pulumi.Output[_builtins.str]:
         """
-        type of action, allow / block. enum: `allow`, `block`
+        Allow or block behavior applied by this WxLAN rule
         """
         return pulumi.get(self, "action")
 
     @_builtins.property
     @pulumi.getter(name="applyTags")
     def apply_tags(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        WxLAN tag identifiers applied when this rule matches
+        """
         return pulumi.get(self, "apply_tags")
 
     @_builtins.property
     @pulumi.getter(name="blockedApps")
     def blocked_apps(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        Blocked apps (always blocking, ignoring action), the key of Get Application List
+        Application keys always blocked by this rule, regardless of the rule action
         """
         return pulumi.get(self, "blocked_apps")
 
@@ -546,7 +579,7 @@ class Wxrule(pulumi.CustomResource):
     @pulumi.getter(name="dstAllowWxtags")
     def dst_allow_wxtags(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        List of WxTag UUID to indicate these tags are allowed access
+        Destination WxLAN tag identifiers explicitly allowed by this rule
         """
         return pulumi.get(self, "dst_allow_wxtags")
 
@@ -554,7 +587,7 @@ class Wxrule(pulumi.CustomResource):
     @pulumi.getter(name="dstDenyWxtags")
     def dst_deny_wxtags(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        List of WxTag UUID to indicate these tags are blocked access
+        Destination WxLAN tag identifiers explicitly denied by this rule
         """
         return pulumi.get(self, "dst_deny_wxtags")
 
@@ -562,33 +595,39 @@ class Wxrule(pulumi.CustomResource):
     @pulumi.getter(name="dstWxtags")
     def dst_wxtags(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        List of WxTag UUID
+        Destination WxLAN tag identifiers matched by this rule
         """
         return pulumi.get(self, "dst_wxtags")
 
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether this WxLAN rule is enabled
+        """
         return pulumi.get(self, "enabled")
 
     @_builtins.property
     @pulumi.getter
     def order(self) -> pulumi.Output[_builtins.int]:
         """
-        Order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+        Lookup priority for WxLAN rules; larger positive values match first, and -1 means LAST. Uniqueness is not checked
         """
         return pulumi.get(self, "order")
 
     @_builtins.property
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Mist site associated with this WxLAN rule, when site-scoped
+        """
         return pulumi.get(self, "site_id")
 
     @_builtins.property
     @pulumi.getter(name="srcWxtags")
     def src_wxtags(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        List of WxTag UUID to determine if this rule would match
+        Source WxLAN tag identifiers that must match for this rule to apply
         """
         return pulumi.get(self, "src_wxtags")
 

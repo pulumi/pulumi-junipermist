@@ -72,6 +72,8 @@ import (
 type Inventory struct {
 	pulumi.CustomResourceState
 
+	// Filter results to devices that were last disconnected before this time, in epoch seconds
+	DisconnectedBefore pulumi.IntPtrOutput `pulumi:"disconnectedBefore"`
 	// Property key can be the device Claim Code or the device MAC Address:
 	//   * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
 	//   * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
@@ -114,6 +116,8 @@ func GetInventory(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Inventory resources.
 type inventoryState struct {
+	// Filter results to devices that were last disconnected before this time, in epoch seconds
+	DisconnectedBefore *int `pulumi:"disconnectedBefore"`
 	// Property key can be the device Claim Code or the device MAC Address:
 	//   * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
 	//   * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
@@ -124,6 +128,8 @@ type inventoryState struct {
 }
 
 type InventoryState struct {
+	// Filter results to devices that were last disconnected before this time, in epoch seconds
+	DisconnectedBefore pulumi.IntPtrInput
 	// Property key can be the device Claim Code or the device MAC Address:
 	//   * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
 	//   * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
@@ -138,6 +144,8 @@ func (InventoryState) ElementType() reflect.Type {
 }
 
 type inventoryArgs struct {
+	// Filter results to devices that were last disconnected before this time, in epoch seconds
+	DisconnectedBefore *int `pulumi:"disconnectedBefore"`
 	// Property key can be the device Claim Code or the device MAC Address:
 	//   * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
 	//   * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
@@ -149,6 +157,8 @@ type inventoryArgs struct {
 
 // The set of arguments for constructing a Inventory resource.
 type InventoryArgs struct {
+	// Filter results to devices that were last disconnected before this time, in epoch seconds
+	DisconnectedBefore pulumi.IntPtrInput
 	// Property key can be the device Claim Code or the device MAC Address:
 	//   * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
 	//   * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
@@ -243,6 +253,11 @@ func (o InventoryOutput) ToInventoryOutput() InventoryOutput {
 
 func (o InventoryOutput) ToInventoryOutputWithContext(ctx context.Context) InventoryOutput {
 	return o
+}
+
+// Filter results to devices that were last disconnected before this time, in epoch seconds
+func (o InventoryOutput) DisconnectedBefore() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Inventory) pulumi.IntPtrOutput { return v.DisconnectedBefore }).(pulumi.IntPtrOutput)
 }
 
 // Property key can be the device Claim Code or the device MAC Address:

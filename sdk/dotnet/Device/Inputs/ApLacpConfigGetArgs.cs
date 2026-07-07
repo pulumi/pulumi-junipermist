@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class ApLacpConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to enable LACP on supported AP Ethernet uplinks
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

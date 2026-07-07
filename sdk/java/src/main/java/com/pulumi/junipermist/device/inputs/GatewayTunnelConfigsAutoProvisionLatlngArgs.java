@@ -14,16 +14,32 @@ public final class GatewayTunnelConfigsAutoProvisionLatlngArgs extends com.pulum
 
     public static final GatewayTunnelConfigsAutoProvisionLatlngArgs Empty = new GatewayTunnelConfigsAutoProvisionLatlngArgs();
 
+    /**
+     * Geographic latitude used for POP selection override
+     * 
+     */
     @Import(name="lat", required=true)
     private Output<Double> lat;
 
+    /**
+     * @return Geographic latitude used for POP selection override
+     * 
+     */
     public Output<Double> lat() {
         return this.lat;
     }
 
+    /**
+     * Geographic longitude used for POP selection override
+     * 
+     */
     @Import(name="lng", required=true)
     private Output<Double> lng;
 
+    /**
+     * @return Geographic longitude used for POP selection override
+     * 
+     */
     public Output<Double> lng() {
         return this.lng;
     }
@@ -53,20 +69,44 @@ public final class GatewayTunnelConfigsAutoProvisionLatlngArgs extends com.pulum
             $ = new GatewayTunnelConfigsAutoProvisionLatlngArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param lat Geographic latitude used for POP selection override
+         * 
+         * @return builder
+         * 
+         */
         public Builder lat(Output<Double> lat) {
             $.lat = lat;
             return this;
         }
 
+        /**
+         * @param lat Geographic latitude used for POP selection override
+         * 
+         * @return builder
+         * 
+         */
         public Builder lat(Double lat) {
             return lat(Output.of(lat));
         }
 
+        /**
+         * @param lng Geographic longitude used for POP selection override
+         * 
+         * @return builder
+         * 
+         */
         public Builder lng(Output<Double> lng) {
             $.lng = lng;
             return this;
         }
 
+        /**
+         * @param lng Geographic longitude used for POP selection override
+         * 
+         * @return builder
+         * 
+         */
         public Builder lng(Double lng) {
             return lng(Output.of(lng));
         }

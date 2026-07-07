@@ -16,30 +16,62 @@ public final class SwitchSwitchMgmtTacacsAcctServerArgs extends com.pulumi.resou
 
     public static final SwitchSwitchMgmtTacacsAcctServerArgs Empty = new SwitchSwitchMgmtTacacsAcctServerArgs();
 
+    /**
+     * Address or hostname of the TACACS+ accounting server
+     * 
+     */
     @Import(name="host")
     private @Nullable Output<String> host;
 
+    /**
+     * @return Address or hostname of the TACACS+ accounting server
+     * 
+     */
     public Optional<Output<String>> host() {
         return Optional.ofNullable(this.host);
     }
 
+    /**
+     * TCP port used by the TACACS+ accounting server
+     * 
+     */
     @Import(name="port")
     private @Nullable Output<String> port;
 
+    /**
+     * @return TCP port used by the TACACS+ accounting server
+     * 
+     */
     public Optional<Output<String>> port() {
         return Optional.ofNullable(this.port);
     }
 
+    /**
+     * Shared secret used with this TACACS+ accounting server
+     * 
+     */
     @Import(name="secret")
     private @Nullable Output<String> secret;
 
+    /**
+     * @return Shared secret used with this TACACS+ accounting server
+     * 
+     */
     public Optional<Output<String>> secret() {
         return Optional.ofNullable(this.secret);
     }
 
+    /**
+     * TACACS+ accounting server timeout, in seconds
+     * 
+     */
     @Import(name="timeout")
     private @Nullable Output<Integer> timeout;
 
+    /**
+     * @return TACACS+ accounting server timeout, in seconds
+     * 
+     */
     public Optional<Output<Integer>> timeout() {
         return Optional.ofNullable(this.timeout);
     }
@@ -71,38 +103,86 @@ public final class SwitchSwitchMgmtTacacsAcctServerArgs extends com.pulumi.resou
             $ = new SwitchSwitchMgmtTacacsAcctServerArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param host Address or hostname of the TACACS+ accounting server
+         * 
+         * @return builder
+         * 
+         */
         public Builder host(@Nullable Output<String> host) {
             $.host = host;
             return this;
         }
 
+        /**
+         * @param host Address or hostname of the TACACS+ accounting server
+         * 
+         * @return builder
+         * 
+         */
         public Builder host(String host) {
             return host(Output.of(host));
         }
 
+        /**
+         * @param port TCP port used by the TACACS+ accounting server
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(@Nullable Output<String> port) {
             $.port = port;
             return this;
         }
 
+        /**
+         * @param port TCP port used by the TACACS+ accounting server
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(String port) {
             return port(Output.of(port));
         }
 
+        /**
+         * @param secret Shared secret used with this TACACS+ accounting server
+         * 
+         * @return builder
+         * 
+         */
         public Builder secret(@Nullable Output<String> secret) {
             $.secret = secret;
             return this;
         }
 
+        /**
+         * @param secret Shared secret used with this TACACS+ accounting server
+         * 
+         * @return builder
+         * 
+         */
         public Builder secret(String secret) {
             return secret(Output.of(secret));
         }
 
+        /**
+         * @param timeout TACACS+ accounting server timeout, in seconds
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeout(@Nullable Output<Integer> timeout) {
             $.timeout = timeout;
             return this;
         }
 
+        /**
+         * @param timeout TACACS+ accounting server timeout, in seconds
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeout(Integer timeout) {
             return timeout(Output.of(timeout));
         }

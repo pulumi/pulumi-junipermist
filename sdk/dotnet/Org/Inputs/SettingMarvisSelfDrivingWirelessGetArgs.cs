@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class SettingMarvisSelfDrivingWirelessGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether self-driving automation is enabled for this domain
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

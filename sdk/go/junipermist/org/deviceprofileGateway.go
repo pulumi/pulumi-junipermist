@@ -134,51 +134,61 @@ import (
 type DeviceprofileGateway struct {
 	pulumi.CustomResourceState
 
-	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
-	AdditionalConfigCmds pulumi.StringArrayOutput                 `pulumi:"additionalConfigCmds"`
-	BgpConfig            DeviceprofileGatewayBgpConfigMapOutput   `pulumi:"bgpConfig"`
-	DhcpdConfig          DeviceprofileGatewayDhcpdConfigPtrOutput `pulumi:"dhcpdConfig"`
-	DnsOverride          pulumi.BoolPtrOutput                     `pulumi:"dnsOverride"`
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// Additional CLI configuration commands provided by this gateway profile
+	AdditionalConfigCmds pulumi.StringArrayOutput `pulumi:"additionalConfigCmds"`
+	// BGP routing defaults for this gateway profile. Property key is the BGP session name
+	BgpConfig DeviceprofileGatewayBgpConfigMapOutput `pulumi:"bgpConfig"`
+	// DHCP server defaults provided by this gateway profile
+	DhcpdConfig DeviceprofileGatewayDhcpdConfigPtrOutput `pulumi:"dhcpdConfig"`
+	// Whether DNS server and suffix settings in this profile override inherited values
+	DnsOverride pulumi.BoolPtrOutput `pulumi:"dnsOverride"`
+	// DNS servers provided by this gateway profile
 	DnsServers pulumi.StringArrayOutput `pulumi:"dnsServers"`
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// DNS search suffixes provided by this gateway profile
 	DnsSuffixes pulumi.StringArrayOutput `pulumi:"dnsSuffixes"`
-	// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
+	// Additional IPv4 route defaults in this gateway profile
 	ExtraRoutes DeviceprofileGatewayExtraRoutesMapOutput `pulumi:"extraRoutes"`
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+	// Additional IPv6 route defaults in this gateway profile
 	ExtraRoutes6 DeviceprofileGatewayExtraRoutes6MapOutput `pulumi:"extraRoutes6"`
-	// Property key is the profile name
+	// Intrusion detection and prevention profile defaults in this gateway profile
 	IdpProfiles DeviceprofileGatewayIdpProfilesMapOutput `pulumi:"idpProfiles"`
-	// Property key is the network name
-	IpConfigs   DeviceprofileGatewayIpConfigsMapOutput `pulumi:"ipConfigs"`
-	Name        pulumi.StringOutput                    `pulumi:"name"`
-	Networks    DeviceprofileGatewayNetworkArrayOutput `pulumi:"networks"`
-	NtpOverride pulumi.BoolPtrOutput                   `pulumi:"ntpOverride"`
-	// List of NTP servers specific to this device. By default, those in Site Settings will be used
+	// Gateway interface IP configuration defaults by network name
+	IpConfigs DeviceprofileGatewayIpConfigsMapOutput `pulumi:"ipConfigs"`
+	// Display name of the gateway profile
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Layer 3 networks configured by this gateway profile
+	Networks DeviceprofileGatewayNetworkArrayOutput `pulumi:"networks"`
+	// Whether NTP servers in this profile override inherited values
+	NtpOverride pulumi.BoolPtrOutput `pulumi:"ntpOverride"`
+	// NTP servers provided by this gateway profile
 	NtpServers pulumi.StringArrayOutput `pulumi:"ntpServers"`
-	// Out-of-band (vme/em0/fxp0) IP config
+	// Out-of-band management IP defaults in this gateway profile
 	OobIpConfig DeviceprofileGatewayOobIpConfigOutput `pulumi:"oobIpConfig"`
-	OrgId       pulumi.StringOutput                   `pulumi:"orgId"`
+	// Organization that owns this gateway profile
+	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// Property key is the path name
 	PathPreferences DeviceprofileGatewayPathPreferencesMapOutput `pulumi:"pathPreferences"`
 	// Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
 	PortConfig DeviceprofileGatewayPortConfigMapOutput `pulumi:"portConfig"`
 	// Auto assigned if not set
 	RouterId pulumi.StringPtrOutput `pulumi:"routerId"`
-	// Property key is the routing policy name
+	// Routing policy defaults applied by this gateway profile
 	RoutingPolicies DeviceprofileGatewayRoutingPoliciesMapOutput `pulumi:"routingPolicies"`
+	// Traffic service policy defaults enforced by this gateway profile
 	ServicePolicies DeviceprofileGatewayServicePolicyArrayOutput `pulumi:"servicePolicies"`
 	// additional CLI commands to append to the generated SSR config. **Note**: no check is done
 	SsrAdditionalConfigCmds pulumi.StringArrayOutput `pulumi:"ssrAdditionalConfigCmds"`
 	// Property key is the tunnel name
-	TunnelConfigs         DeviceprofileGatewayTunnelConfigsMapOutput         `pulumi:"tunnelConfigs"`
+	TunnelConfigs DeviceprofileGatewayTunnelConfigsMapOutput `pulumi:"tunnelConfigs"`
+	// Provider-specific tunnel options defined by this gateway profile
 	TunnelProviderOptions DeviceprofileGatewayTunnelProviderOptionsPtrOutput `pulumi:"tunnelProviderOptions"`
-	// Device Type. enum: `gateway`
+	// Device type discriminator for gateway profiles
 	Type pulumi.StringOutput `pulumi:"type"`
 	// When a service policy denies a app_category, what message to show in user's browser
-	UrlFilteringDenyMsg pulumi.StringPtrOutput                 `pulumi:"urlFilteringDenyMsg"`
-	VrfConfig           DeviceprofileGatewayVrfConfigPtrOutput `pulumi:"vrfConfig"`
-	// Property key is the network name
+	UrlFilteringDenyMsg pulumi.StringPtrOutput `pulumi:"urlFilteringDenyMsg"`
+	// VRF defaults applied by this gateway profile
+	VrfConfig DeviceprofileGatewayVrfConfigPtrOutput `pulumi:"vrfConfig"`
+	// VRF instances configured by this gateway profile
 	VrfInstances DeviceprofileGatewayVrfInstancesMapOutput `pulumi:"vrfInstances"`
 }
 
@@ -215,100 +225,120 @@ func GetDeviceprofileGateway(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DeviceprofileGateway resources.
 type deviceprofileGatewayState struct {
-	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
-	AdditionalConfigCmds []string                                 `pulumi:"additionalConfigCmds"`
-	BgpConfig            map[string]DeviceprofileGatewayBgpConfig `pulumi:"bgpConfig"`
-	DhcpdConfig          *DeviceprofileGatewayDhcpdConfig         `pulumi:"dhcpdConfig"`
-	DnsOverride          *bool                                    `pulumi:"dnsOverride"`
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// Additional CLI configuration commands provided by this gateway profile
+	AdditionalConfigCmds []string `pulumi:"additionalConfigCmds"`
+	// BGP routing defaults for this gateway profile. Property key is the BGP session name
+	BgpConfig map[string]DeviceprofileGatewayBgpConfig `pulumi:"bgpConfig"`
+	// DHCP server defaults provided by this gateway profile
+	DhcpdConfig *DeviceprofileGatewayDhcpdConfig `pulumi:"dhcpdConfig"`
+	// Whether DNS server and suffix settings in this profile override inherited values
+	DnsOverride *bool `pulumi:"dnsOverride"`
+	// DNS servers provided by this gateway profile
 	DnsServers []string `pulumi:"dnsServers"`
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// DNS search suffixes provided by this gateway profile
 	DnsSuffixes []string `pulumi:"dnsSuffixes"`
-	// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
+	// Additional IPv4 route defaults in this gateway profile
 	ExtraRoutes map[string]DeviceprofileGatewayExtraRoutes `pulumi:"extraRoutes"`
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+	// Additional IPv6 route defaults in this gateway profile
 	ExtraRoutes6 map[string]DeviceprofileGatewayExtraRoutes6 `pulumi:"extraRoutes6"`
-	// Property key is the profile name
+	// Intrusion detection and prevention profile defaults in this gateway profile
 	IdpProfiles map[string]DeviceprofileGatewayIdpProfiles `pulumi:"idpProfiles"`
-	// Property key is the network name
-	IpConfigs   map[string]DeviceprofileGatewayIpConfigs `pulumi:"ipConfigs"`
-	Name        *string                                  `pulumi:"name"`
-	Networks    []DeviceprofileGatewayNetwork            `pulumi:"networks"`
-	NtpOverride *bool                                    `pulumi:"ntpOverride"`
-	// List of NTP servers specific to this device. By default, those in Site Settings will be used
+	// Gateway interface IP configuration defaults by network name
+	IpConfigs map[string]DeviceprofileGatewayIpConfigs `pulumi:"ipConfigs"`
+	// Display name of the gateway profile
+	Name *string `pulumi:"name"`
+	// Layer 3 networks configured by this gateway profile
+	Networks []DeviceprofileGatewayNetwork `pulumi:"networks"`
+	// Whether NTP servers in this profile override inherited values
+	NtpOverride *bool `pulumi:"ntpOverride"`
+	// NTP servers provided by this gateway profile
 	NtpServers []string `pulumi:"ntpServers"`
-	// Out-of-band (vme/em0/fxp0) IP config
+	// Out-of-band management IP defaults in this gateway profile
 	OobIpConfig *DeviceprofileGatewayOobIpConfig `pulumi:"oobIpConfig"`
-	OrgId       *string                          `pulumi:"orgId"`
+	// Organization that owns this gateway profile
+	OrgId *string `pulumi:"orgId"`
 	// Property key is the path name
 	PathPreferences map[string]DeviceprofileGatewayPathPreferences `pulumi:"pathPreferences"`
 	// Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
 	PortConfig map[string]DeviceprofileGatewayPortConfig `pulumi:"portConfig"`
 	// Auto assigned if not set
 	RouterId *string `pulumi:"routerId"`
-	// Property key is the routing policy name
+	// Routing policy defaults applied by this gateway profile
 	RoutingPolicies map[string]DeviceprofileGatewayRoutingPolicies `pulumi:"routingPolicies"`
-	ServicePolicies []DeviceprofileGatewayServicePolicy            `pulumi:"servicePolicies"`
+	// Traffic service policy defaults enforced by this gateway profile
+	ServicePolicies []DeviceprofileGatewayServicePolicy `pulumi:"servicePolicies"`
 	// additional CLI commands to append to the generated SSR config. **Note**: no check is done
 	SsrAdditionalConfigCmds []string `pulumi:"ssrAdditionalConfigCmds"`
 	// Property key is the tunnel name
-	TunnelConfigs         map[string]DeviceprofileGatewayTunnelConfigs `pulumi:"tunnelConfigs"`
-	TunnelProviderOptions *DeviceprofileGatewayTunnelProviderOptions   `pulumi:"tunnelProviderOptions"`
-	// Device Type. enum: `gateway`
+	TunnelConfigs map[string]DeviceprofileGatewayTunnelConfigs `pulumi:"tunnelConfigs"`
+	// Provider-specific tunnel options defined by this gateway profile
+	TunnelProviderOptions *DeviceprofileGatewayTunnelProviderOptions `pulumi:"tunnelProviderOptions"`
+	// Device type discriminator for gateway profiles
 	Type *string `pulumi:"type"`
 	// When a service policy denies a app_category, what message to show in user's browser
-	UrlFilteringDenyMsg *string                        `pulumi:"urlFilteringDenyMsg"`
-	VrfConfig           *DeviceprofileGatewayVrfConfig `pulumi:"vrfConfig"`
-	// Property key is the network name
+	UrlFilteringDenyMsg *string `pulumi:"urlFilteringDenyMsg"`
+	// VRF defaults applied by this gateway profile
+	VrfConfig *DeviceprofileGatewayVrfConfig `pulumi:"vrfConfig"`
+	// VRF instances configured by this gateway profile
 	VrfInstances map[string]DeviceprofileGatewayVrfInstances `pulumi:"vrfInstances"`
 }
 
 type DeviceprofileGatewayState struct {
-	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
+	// Additional CLI configuration commands provided by this gateway profile
 	AdditionalConfigCmds pulumi.StringArrayInput
-	BgpConfig            DeviceprofileGatewayBgpConfigMapInput
-	DhcpdConfig          DeviceprofileGatewayDhcpdConfigPtrInput
-	DnsOverride          pulumi.BoolPtrInput
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// BGP routing defaults for this gateway profile. Property key is the BGP session name
+	BgpConfig DeviceprofileGatewayBgpConfigMapInput
+	// DHCP server defaults provided by this gateway profile
+	DhcpdConfig DeviceprofileGatewayDhcpdConfigPtrInput
+	// Whether DNS server and suffix settings in this profile override inherited values
+	DnsOverride pulumi.BoolPtrInput
+	// DNS servers provided by this gateway profile
 	DnsServers pulumi.StringArrayInput
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// DNS search suffixes provided by this gateway profile
 	DnsSuffixes pulumi.StringArrayInput
-	// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
+	// Additional IPv4 route defaults in this gateway profile
 	ExtraRoutes DeviceprofileGatewayExtraRoutesMapInput
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+	// Additional IPv6 route defaults in this gateway profile
 	ExtraRoutes6 DeviceprofileGatewayExtraRoutes6MapInput
-	// Property key is the profile name
+	// Intrusion detection and prevention profile defaults in this gateway profile
 	IdpProfiles DeviceprofileGatewayIdpProfilesMapInput
-	// Property key is the network name
-	IpConfigs   DeviceprofileGatewayIpConfigsMapInput
-	Name        pulumi.StringPtrInput
-	Networks    DeviceprofileGatewayNetworkArrayInput
+	// Gateway interface IP configuration defaults by network name
+	IpConfigs DeviceprofileGatewayIpConfigsMapInput
+	// Display name of the gateway profile
+	Name pulumi.StringPtrInput
+	// Layer 3 networks configured by this gateway profile
+	Networks DeviceprofileGatewayNetworkArrayInput
+	// Whether NTP servers in this profile override inherited values
 	NtpOverride pulumi.BoolPtrInput
-	// List of NTP servers specific to this device. By default, those in Site Settings will be used
+	// NTP servers provided by this gateway profile
 	NtpServers pulumi.StringArrayInput
-	// Out-of-band (vme/em0/fxp0) IP config
+	// Out-of-band management IP defaults in this gateway profile
 	OobIpConfig DeviceprofileGatewayOobIpConfigPtrInput
-	OrgId       pulumi.StringPtrInput
+	// Organization that owns this gateway profile
+	OrgId pulumi.StringPtrInput
 	// Property key is the path name
 	PathPreferences DeviceprofileGatewayPathPreferencesMapInput
 	// Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
 	PortConfig DeviceprofileGatewayPortConfigMapInput
 	// Auto assigned if not set
 	RouterId pulumi.StringPtrInput
-	// Property key is the routing policy name
+	// Routing policy defaults applied by this gateway profile
 	RoutingPolicies DeviceprofileGatewayRoutingPoliciesMapInput
+	// Traffic service policy defaults enforced by this gateway profile
 	ServicePolicies DeviceprofileGatewayServicePolicyArrayInput
 	// additional CLI commands to append to the generated SSR config. **Note**: no check is done
 	SsrAdditionalConfigCmds pulumi.StringArrayInput
 	// Property key is the tunnel name
-	TunnelConfigs         DeviceprofileGatewayTunnelConfigsMapInput
+	TunnelConfigs DeviceprofileGatewayTunnelConfigsMapInput
+	// Provider-specific tunnel options defined by this gateway profile
 	TunnelProviderOptions DeviceprofileGatewayTunnelProviderOptionsPtrInput
-	// Device Type. enum: `gateway`
+	// Device type discriminator for gateway profiles
 	Type pulumi.StringPtrInput
 	// When a service policy denies a app_category, what message to show in user's browser
 	UrlFilteringDenyMsg pulumi.StringPtrInput
-	VrfConfig           DeviceprofileGatewayVrfConfigPtrInput
-	// Property key is the network name
+	// VRF defaults applied by this gateway profile
+	VrfConfig DeviceprofileGatewayVrfConfigPtrInput
+	// VRF instances configured by this gateway profile
 	VrfInstances DeviceprofileGatewayVrfInstancesMapInput
 }
 
@@ -317,97 +347,117 @@ func (DeviceprofileGatewayState) ElementType() reflect.Type {
 }
 
 type deviceprofileGatewayArgs struct {
-	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
-	AdditionalConfigCmds []string                                 `pulumi:"additionalConfigCmds"`
-	BgpConfig            map[string]DeviceprofileGatewayBgpConfig `pulumi:"bgpConfig"`
-	DhcpdConfig          *DeviceprofileGatewayDhcpdConfig         `pulumi:"dhcpdConfig"`
-	DnsOverride          *bool                                    `pulumi:"dnsOverride"`
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// Additional CLI configuration commands provided by this gateway profile
+	AdditionalConfigCmds []string `pulumi:"additionalConfigCmds"`
+	// BGP routing defaults for this gateway profile. Property key is the BGP session name
+	BgpConfig map[string]DeviceprofileGatewayBgpConfig `pulumi:"bgpConfig"`
+	// DHCP server defaults provided by this gateway profile
+	DhcpdConfig *DeviceprofileGatewayDhcpdConfig `pulumi:"dhcpdConfig"`
+	// Whether DNS server and suffix settings in this profile override inherited values
+	DnsOverride *bool `pulumi:"dnsOverride"`
+	// DNS servers provided by this gateway profile
 	DnsServers []string `pulumi:"dnsServers"`
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// DNS search suffixes provided by this gateway profile
 	DnsSuffixes []string `pulumi:"dnsSuffixes"`
-	// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
+	// Additional IPv4 route defaults in this gateway profile
 	ExtraRoutes map[string]DeviceprofileGatewayExtraRoutes `pulumi:"extraRoutes"`
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+	// Additional IPv6 route defaults in this gateway profile
 	ExtraRoutes6 map[string]DeviceprofileGatewayExtraRoutes6 `pulumi:"extraRoutes6"`
-	// Property key is the profile name
+	// Intrusion detection and prevention profile defaults in this gateway profile
 	IdpProfiles map[string]DeviceprofileGatewayIdpProfiles `pulumi:"idpProfiles"`
-	// Property key is the network name
-	IpConfigs   map[string]DeviceprofileGatewayIpConfigs `pulumi:"ipConfigs"`
-	Name        *string                                  `pulumi:"name"`
-	Networks    []DeviceprofileGatewayNetwork            `pulumi:"networks"`
-	NtpOverride *bool                                    `pulumi:"ntpOverride"`
-	// List of NTP servers specific to this device. By default, those in Site Settings will be used
+	// Gateway interface IP configuration defaults by network name
+	IpConfigs map[string]DeviceprofileGatewayIpConfigs `pulumi:"ipConfigs"`
+	// Display name of the gateway profile
+	Name *string `pulumi:"name"`
+	// Layer 3 networks configured by this gateway profile
+	Networks []DeviceprofileGatewayNetwork `pulumi:"networks"`
+	// Whether NTP servers in this profile override inherited values
+	NtpOverride *bool `pulumi:"ntpOverride"`
+	// NTP servers provided by this gateway profile
 	NtpServers []string `pulumi:"ntpServers"`
-	// Out-of-band (vme/em0/fxp0) IP config
+	// Out-of-band management IP defaults in this gateway profile
 	OobIpConfig *DeviceprofileGatewayOobIpConfig `pulumi:"oobIpConfig"`
-	OrgId       string                           `pulumi:"orgId"`
+	// Organization that owns this gateway profile
+	OrgId string `pulumi:"orgId"`
 	// Property key is the path name
 	PathPreferences map[string]DeviceprofileGatewayPathPreferences `pulumi:"pathPreferences"`
 	// Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
 	PortConfig map[string]DeviceprofileGatewayPortConfig `pulumi:"portConfig"`
 	// Auto assigned if not set
 	RouterId *string `pulumi:"routerId"`
-	// Property key is the routing policy name
+	// Routing policy defaults applied by this gateway profile
 	RoutingPolicies map[string]DeviceprofileGatewayRoutingPolicies `pulumi:"routingPolicies"`
-	ServicePolicies []DeviceprofileGatewayServicePolicy            `pulumi:"servicePolicies"`
+	// Traffic service policy defaults enforced by this gateway profile
+	ServicePolicies []DeviceprofileGatewayServicePolicy `pulumi:"servicePolicies"`
 	// additional CLI commands to append to the generated SSR config. **Note**: no check is done
 	SsrAdditionalConfigCmds []string `pulumi:"ssrAdditionalConfigCmds"`
 	// Property key is the tunnel name
-	TunnelConfigs         map[string]DeviceprofileGatewayTunnelConfigs `pulumi:"tunnelConfigs"`
-	TunnelProviderOptions *DeviceprofileGatewayTunnelProviderOptions   `pulumi:"tunnelProviderOptions"`
+	TunnelConfigs map[string]DeviceprofileGatewayTunnelConfigs `pulumi:"tunnelConfigs"`
+	// Provider-specific tunnel options defined by this gateway profile
+	TunnelProviderOptions *DeviceprofileGatewayTunnelProviderOptions `pulumi:"tunnelProviderOptions"`
 	// When a service policy denies a app_category, what message to show in user's browser
-	UrlFilteringDenyMsg *string                        `pulumi:"urlFilteringDenyMsg"`
-	VrfConfig           *DeviceprofileGatewayVrfConfig `pulumi:"vrfConfig"`
-	// Property key is the network name
+	UrlFilteringDenyMsg *string `pulumi:"urlFilteringDenyMsg"`
+	// VRF defaults applied by this gateway profile
+	VrfConfig *DeviceprofileGatewayVrfConfig `pulumi:"vrfConfig"`
+	// VRF instances configured by this gateway profile
 	VrfInstances map[string]DeviceprofileGatewayVrfInstances `pulumi:"vrfInstances"`
 }
 
 // The set of arguments for constructing a DeviceprofileGateway resource.
 type DeviceprofileGatewayArgs struct {
-	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
+	// Additional CLI configuration commands provided by this gateway profile
 	AdditionalConfigCmds pulumi.StringArrayInput
-	BgpConfig            DeviceprofileGatewayBgpConfigMapInput
-	DhcpdConfig          DeviceprofileGatewayDhcpdConfigPtrInput
-	DnsOverride          pulumi.BoolPtrInput
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// BGP routing defaults for this gateway profile. Property key is the BGP session name
+	BgpConfig DeviceprofileGatewayBgpConfigMapInput
+	// DHCP server defaults provided by this gateway profile
+	DhcpdConfig DeviceprofileGatewayDhcpdConfigPtrInput
+	// Whether DNS server and suffix settings in this profile override inherited values
+	DnsOverride pulumi.BoolPtrInput
+	// DNS servers provided by this gateway profile
 	DnsServers pulumi.StringArrayInput
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// DNS search suffixes provided by this gateway profile
 	DnsSuffixes pulumi.StringArrayInput
-	// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
+	// Additional IPv4 route defaults in this gateway profile
 	ExtraRoutes DeviceprofileGatewayExtraRoutesMapInput
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+	// Additional IPv6 route defaults in this gateway profile
 	ExtraRoutes6 DeviceprofileGatewayExtraRoutes6MapInput
-	// Property key is the profile name
+	// Intrusion detection and prevention profile defaults in this gateway profile
 	IdpProfiles DeviceprofileGatewayIdpProfilesMapInput
-	// Property key is the network name
-	IpConfigs   DeviceprofileGatewayIpConfigsMapInput
-	Name        pulumi.StringPtrInput
-	Networks    DeviceprofileGatewayNetworkArrayInput
+	// Gateway interface IP configuration defaults by network name
+	IpConfigs DeviceprofileGatewayIpConfigsMapInput
+	// Display name of the gateway profile
+	Name pulumi.StringPtrInput
+	// Layer 3 networks configured by this gateway profile
+	Networks DeviceprofileGatewayNetworkArrayInput
+	// Whether NTP servers in this profile override inherited values
 	NtpOverride pulumi.BoolPtrInput
-	// List of NTP servers specific to this device. By default, those in Site Settings will be used
+	// NTP servers provided by this gateway profile
 	NtpServers pulumi.StringArrayInput
-	// Out-of-band (vme/em0/fxp0) IP config
+	// Out-of-band management IP defaults in this gateway profile
 	OobIpConfig DeviceprofileGatewayOobIpConfigPtrInput
-	OrgId       pulumi.StringInput
+	// Organization that owns this gateway profile
+	OrgId pulumi.StringInput
 	// Property key is the path name
 	PathPreferences DeviceprofileGatewayPathPreferencesMapInput
 	// Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
 	PortConfig DeviceprofileGatewayPortConfigMapInput
 	// Auto assigned if not set
 	RouterId pulumi.StringPtrInput
-	// Property key is the routing policy name
+	// Routing policy defaults applied by this gateway profile
 	RoutingPolicies DeviceprofileGatewayRoutingPoliciesMapInput
+	// Traffic service policy defaults enforced by this gateway profile
 	ServicePolicies DeviceprofileGatewayServicePolicyArrayInput
 	// additional CLI commands to append to the generated SSR config. **Note**: no check is done
 	SsrAdditionalConfigCmds pulumi.StringArrayInput
 	// Property key is the tunnel name
-	TunnelConfigs         DeviceprofileGatewayTunnelConfigsMapInput
+	TunnelConfigs DeviceprofileGatewayTunnelConfigsMapInput
+	// Provider-specific tunnel options defined by this gateway profile
 	TunnelProviderOptions DeviceprofileGatewayTunnelProviderOptionsPtrInput
 	// When a service policy denies a app_category, what message to show in user's browser
 	UrlFilteringDenyMsg pulumi.StringPtrInput
-	VrfConfig           DeviceprofileGatewayVrfConfigPtrInput
-	// Property key is the network name
+	// VRF defaults applied by this gateway profile
+	VrfConfig DeviceprofileGatewayVrfConfigPtrInput
+	// VRF instances configured by this gateway profile
 	VrfInstances DeviceprofileGatewayVrfInstancesMapInput
 }
 
@@ -498,75 +548,82 @@ func (o DeviceprofileGatewayOutput) ToDeviceprofileGatewayOutputWithContext(ctx 
 	return o
 }
 
-// additional CLI commands to append to the generated Junos config. **Note**: no check is done
+// Additional CLI configuration commands provided by this gateway profile
 func (o DeviceprofileGatewayOutput) AdditionalConfigCmds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DeviceprofileGateway) pulumi.StringArrayOutput { return v.AdditionalConfigCmds }).(pulumi.StringArrayOutput)
 }
 
+// BGP routing defaults for this gateway profile. Property key is the BGP session name
 func (o DeviceprofileGatewayOutput) BgpConfig() DeviceprofileGatewayBgpConfigMapOutput {
 	return o.ApplyT(func(v *DeviceprofileGateway) DeviceprofileGatewayBgpConfigMapOutput { return v.BgpConfig }).(DeviceprofileGatewayBgpConfigMapOutput)
 }
 
+// DHCP server defaults provided by this gateway profile
 func (o DeviceprofileGatewayOutput) DhcpdConfig() DeviceprofileGatewayDhcpdConfigPtrOutput {
 	return o.ApplyT(func(v *DeviceprofileGateway) DeviceprofileGatewayDhcpdConfigPtrOutput { return v.DhcpdConfig }).(DeviceprofileGatewayDhcpdConfigPtrOutput)
 }
 
+// Whether DNS server and suffix settings in this profile override inherited values
 func (o DeviceprofileGatewayOutput) DnsOverride() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DeviceprofileGateway) pulumi.BoolPtrOutput { return v.DnsOverride }).(pulumi.BoolPtrOutput)
 }
 
-// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+// DNS servers provided by this gateway profile
 func (o DeviceprofileGatewayOutput) DnsServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DeviceprofileGateway) pulumi.StringArrayOutput { return v.DnsServers }).(pulumi.StringArrayOutput)
 }
 
-// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+// DNS search suffixes provided by this gateway profile
 func (o DeviceprofileGatewayOutput) DnsSuffixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DeviceprofileGateway) pulumi.StringArrayOutput { return v.DnsSuffixes }).(pulumi.StringArrayOutput)
 }
 
-// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
+// Additional IPv4 route defaults in this gateway profile
 func (o DeviceprofileGatewayOutput) ExtraRoutes() DeviceprofileGatewayExtraRoutesMapOutput {
 	return o.ApplyT(func(v *DeviceprofileGateway) DeviceprofileGatewayExtraRoutesMapOutput { return v.ExtraRoutes }).(DeviceprofileGatewayExtraRoutesMapOutput)
 }
 
-// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+// Additional IPv6 route defaults in this gateway profile
 func (o DeviceprofileGatewayOutput) ExtraRoutes6() DeviceprofileGatewayExtraRoutes6MapOutput {
 	return o.ApplyT(func(v *DeviceprofileGateway) DeviceprofileGatewayExtraRoutes6MapOutput { return v.ExtraRoutes6 }).(DeviceprofileGatewayExtraRoutes6MapOutput)
 }
 
-// Property key is the profile name
+// Intrusion detection and prevention profile defaults in this gateway profile
 func (o DeviceprofileGatewayOutput) IdpProfiles() DeviceprofileGatewayIdpProfilesMapOutput {
 	return o.ApplyT(func(v *DeviceprofileGateway) DeviceprofileGatewayIdpProfilesMapOutput { return v.IdpProfiles }).(DeviceprofileGatewayIdpProfilesMapOutput)
 }
 
-// Property key is the network name
+// Gateway interface IP configuration defaults by network name
 func (o DeviceprofileGatewayOutput) IpConfigs() DeviceprofileGatewayIpConfigsMapOutput {
 	return o.ApplyT(func(v *DeviceprofileGateway) DeviceprofileGatewayIpConfigsMapOutput { return v.IpConfigs }).(DeviceprofileGatewayIpConfigsMapOutput)
 }
 
+// Display name of the gateway profile
 func (o DeviceprofileGatewayOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DeviceprofileGateway) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Layer 3 networks configured by this gateway profile
 func (o DeviceprofileGatewayOutput) Networks() DeviceprofileGatewayNetworkArrayOutput {
 	return o.ApplyT(func(v *DeviceprofileGateway) DeviceprofileGatewayNetworkArrayOutput { return v.Networks }).(DeviceprofileGatewayNetworkArrayOutput)
 }
 
+// Whether NTP servers in this profile override inherited values
 func (o DeviceprofileGatewayOutput) NtpOverride() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DeviceprofileGateway) pulumi.BoolPtrOutput { return v.NtpOverride }).(pulumi.BoolPtrOutput)
 }
 
-// List of NTP servers specific to this device. By default, those in Site Settings will be used
+// NTP servers provided by this gateway profile
 func (o DeviceprofileGatewayOutput) NtpServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DeviceprofileGateway) pulumi.StringArrayOutput { return v.NtpServers }).(pulumi.StringArrayOutput)
 }
 
-// Out-of-band (vme/em0/fxp0) IP config
+// Out-of-band management IP defaults in this gateway profile
 func (o DeviceprofileGatewayOutput) OobIpConfig() DeviceprofileGatewayOobIpConfigOutput {
 	return o.ApplyT(func(v *DeviceprofileGateway) DeviceprofileGatewayOobIpConfigOutput { return v.OobIpConfig }).(DeviceprofileGatewayOobIpConfigOutput)
 }
 
+// Organization that owns this gateway profile
 func (o DeviceprofileGatewayOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DeviceprofileGateway) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
@@ -586,11 +643,12 @@ func (o DeviceprofileGatewayOutput) RouterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceprofileGateway) pulumi.StringPtrOutput { return v.RouterId }).(pulumi.StringPtrOutput)
 }
 
-// Property key is the routing policy name
+// Routing policy defaults applied by this gateway profile
 func (o DeviceprofileGatewayOutput) RoutingPolicies() DeviceprofileGatewayRoutingPoliciesMapOutput {
 	return o.ApplyT(func(v *DeviceprofileGateway) DeviceprofileGatewayRoutingPoliciesMapOutput { return v.RoutingPolicies }).(DeviceprofileGatewayRoutingPoliciesMapOutput)
 }
 
+// Traffic service policy defaults enforced by this gateway profile
 func (o DeviceprofileGatewayOutput) ServicePolicies() DeviceprofileGatewayServicePolicyArrayOutput {
 	return o.ApplyT(func(v *DeviceprofileGateway) DeviceprofileGatewayServicePolicyArrayOutput { return v.ServicePolicies }).(DeviceprofileGatewayServicePolicyArrayOutput)
 }
@@ -605,13 +663,14 @@ func (o DeviceprofileGatewayOutput) TunnelConfigs() DeviceprofileGatewayTunnelCo
 	return o.ApplyT(func(v *DeviceprofileGateway) DeviceprofileGatewayTunnelConfigsMapOutput { return v.TunnelConfigs }).(DeviceprofileGatewayTunnelConfigsMapOutput)
 }
 
+// Provider-specific tunnel options defined by this gateway profile
 func (o DeviceprofileGatewayOutput) TunnelProviderOptions() DeviceprofileGatewayTunnelProviderOptionsPtrOutput {
 	return o.ApplyT(func(v *DeviceprofileGateway) DeviceprofileGatewayTunnelProviderOptionsPtrOutput {
 		return v.TunnelProviderOptions
 	}).(DeviceprofileGatewayTunnelProviderOptionsPtrOutput)
 }
 
-// Device Type. enum: `gateway`
+// Device type discriminator for gateway profiles
 func (o DeviceprofileGatewayOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *DeviceprofileGateway) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
@@ -621,11 +680,12 @@ func (o DeviceprofileGatewayOutput) UrlFilteringDenyMsg() pulumi.StringPtrOutput
 	return o.ApplyT(func(v *DeviceprofileGateway) pulumi.StringPtrOutput { return v.UrlFilteringDenyMsg }).(pulumi.StringPtrOutput)
 }
 
+// VRF defaults applied by this gateway profile
 func (o DeviceprofileGatewayOutput) VrfConfig() DeviceprofileGatewayVrfConfigPtrOutput {
 	return o.ApplyT(func(v *DeviceprofileGateway) DeviceprofileGatewayVrfConfigPtrOutput { return v.VrfConfig }).(DeviceprofileGatewayVrfConfigPtrOutput)
 }
 
-// Property key is the network name
+// VRF instances configured by this gateway profile
 func (o DeviceprofileGatewayOutput) VrfInstances() DeviceprofileGatewayVrfInstancesMapOutput {
 	return o.ApplyT(func(v *DeviceprofileGateway) DeviceprofileGatewayVrfInstancesMapOutput { return v.VrfInstances }).(DeviceprofileGatewayVrfInstancesMapOutput)
 }

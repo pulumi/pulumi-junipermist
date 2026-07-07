@@ -48,14 +48,14 @@ public final class MxclusterRadsecAcctServerArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Secret of RADIUS server
+     * Shared secret used with this RADIUS accounting server
      * 
      */
     @Import(name="secret")
     private @Nullable Output<String> secret;
 
     /**
-     * @return Secret of RADIUS server
+     * @return Shared secret used with this RADIUS accounting server
      * 
      */
     public Optional<Output<String>> secret() {
@@ -63,14 +63,14 @@ public final class MxclusterRadsecAcctServerArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * List of ssids that will use this server if matchSsid is true and match is found
+     * WLAN SSID filters that use this accounting server when matching is enabled
      * 
      */
     @Import(name="ssids")
     private @Nullable Output<List<String>> ssids;
 
     /**
-     * @return List of ssids that will use this server if matchSsid is true and match is found
+     * @return WLAN SSID filters that use this accounting server when matching is enabled
      * 
      */
     public Optional<Output<List<String>>> ssids() {
@@ -147,7 +147,7 @@ public final class MxclusterRadsecAcctServerArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param secret Secret of RADIUS server
+         * @param secret Shared secret used with this RADIUS accounting server
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class MxclusterRadsecAcctServerArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param secret Secret of RADIUS server
+         * @param secret Shared secret used with this RADIUS accounting server
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class MxclusterRadsecAcctServerArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param ssids List of ssids that will use this server if matchSsid is true and match is found
+         * @param ssids WLAN SSID filters that use this accounting server when matching is enabled
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class MxclusterRadsecAcctServerArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param ssids List of ssids that will use this server if matchSsid is true and match is found
+         * @param ssids WLAN SSID filters that use this accounting server when matching is enabled
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class MxclusterRadsecAcctServerArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param ssids List of ssids that will use this server if matchSsid is true and match is found
+         * @param ssids WLAN SSID filters that use this accounting server when matching is enabled
          * 
          * @return builder
          * 

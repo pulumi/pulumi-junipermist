@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class WlanQos
     {
         /// <summary>
-        /// enum: `Background`, `BestEffort`, `Video`, `Voice`
+        /// QoS traffic class applied when WLAN QoS override is enabled
         /// </summary>
         public readonly string? Class;
         /// <summary>

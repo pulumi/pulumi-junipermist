@@ -21,54 +21,60 @@ public final class DeviceprofileApPortConfigArgs extends com.pulumi.resources.Re
 
     public static final DeviceprofileApPortConfigArgs Empty = new DeviceprofileApPortConfigArgs();
 
+    /**
+     * Whether this AP Ethernet port is disabled
+     * 
+     */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
+    /**
+     * @return Whether this AP Ethernet port is disabled
+     * 
+     */
     public Optional<Output<Boolean>> disabled() {
         return Optional.ofNullable(this.disabled);
     }
 
     /**
-     * Optional dynamic vlan
+     * RADIUS-assigned VLAN settings for AP port authentication
      * 
      */
     @Import(name="dynamicVlan")
     private @Nullable Output<DeviceprofileApPortConfigDynamicVlanArgs> dynamicVlan;
 
     /**
-     * @return Optional dynamic vlan
+     * @return RADIUS-assigned VLAN settings for AP port authentication
      * 
      */
     public Optional<Output<DeviceprofileApPortConfigDynamicVlanArgs>> dynamicVlan() {
         return Optional.ofNullable(this.dynamicVlan);
     }
 
+    /**
+     * Whether MAC authentication is enabled on this AP port
+     * 
+     */
     @Import(name="enableMacAuth")
     private @Nullable Output<Boolean> enableMacAuth;
 
+    /**
+     * @return Whether MAC authentication is enabled on this AP port
+     * 
+     */
     public Optional<Output<Boolean>> enableMacAuth() {
         return Optional.ofNullable(this.enableMacAuth);
     }
 
     /**
-     * enum:
-     *   * `all`: local breakout, All VLANs
-     *   * `limited`: local breakout, only the VLANs configured in `portVlanId` and `vlanIds`
-     *   * `mxtunnel`: central breakout to an Org Mist Edge (requires `mxtunnelId`)
-     *   * `siteMxedge`: central breakout to a Site Mist Edge (requires `mxtunnelName`)
-     *   * `wxtunnel`&#39;: central breakout to an Org WxTunnel (requires `wxtunnelId`)
+     * Traffic forwarding mode for this AP Ethernet port
      * 
      */
     @Import(name="forwarding")
     private @Nullable Output<String> forwarding;
 
     /**
-     * @return enum:
-     *   * `all`: local breakout, All VLANs
-     *   * `limited`: local breakout, only the VLANs configured in `portVlanId` and `vlanIds`
-     *   * `mxtunnel`: central breakout to an Org Mist Edge (requires `mxtunnelId`)
-     *   * `siteMxedge`: central breakout to a Site Mist Edge (requires `mxtunnelName`)
-     *   * `wxtunnel`&#39;: central breakout to an Org WxTunnel (requires `wxtunnelId`)
+     * @return Traffic forwarding mode for this AP Ethernet port
      * 
      */
     public Optional<Output<String>> forwarding() {
@@ -91,23 +97,31 @@ public final class DeviceprofileApPortConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * if `enableMacAuth`==`true`, allows user to select an authentication protocol. enum: `eap-md5`, `eap-peap`, `pap`
+     * Protocol used for MAC authentication when `enableMacAuth` is `true`
      * 
      */
     @Import(name="macAuthProtocol")
     private @Nullable Output<String> macAuthProtocol;
 
     /**
-     * @return if `enableMacAuth`==`true`, allows user to select an authentication protocol. enum: `eap-md5`, `eap-peap`, `pap`
+     * @return Protocol used for MAC authentication when `enableMacAuth` is `true`
      * 
      */
     public Optional<Output<String>> macAuthProtocol() {
         return Optional.ofNullable(this.macAuthProtocol);
     }
 
+    /**
+     * Juniper Mist NAC settings used by AP port authentication
+     * 
+     */
     @Import(name="mistNac")
     private @Nullable Output<DeviceprofileApPortConfigMistNacArgs> mistNac;
 
+    /**
+     * @return Juniper Mist NAC settings used by AP port authentication
+     * 
+     */
     public Optional<Output<DeviceprofileApPortConfigMistNacArgs>> mistNac() {
         return Optional.ofNullable(this.mistNac);
     }
@@ -143,14 +157,14 @@ public final class DeviceprofileApPortConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * When doing port auth. enum: `dot1x`, `none`
+     * Authentication mode for this AP Ethernet port
      * 
      */
     @Import(name="portAuth")
     private @Nullable Output<String> portAuth;
 
     /**
-     * @return When doing port auth. enum: `dot1x`, `none`
+     * @return Authentication mode for this AP Ethernet port
      * 
      */
     public Optional<Output<String>> portAuth() {
@@ -158,14 +172,14 @@ public final class DeviceprofileApPortConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * If `forwarding`==`limited`
+     * If `forwarding`==`limited`. VLAN ID allowed on this AP Ethernet port
      * 
      */
     @Import(name="portVlanId")
     private @Nullable Output<Integer> portVlanId;
 
     /**
-     * @return If `forwarding`==`limited`
+     * @return If `forwarding`==`limited`. VLAN ID allowed on this AP Ethernet port
      * 
      */
     public Optional<Output<Integer>> portVlanId() {
@@ -173,14 +187,14 @@ public final class DeviceprofileApPortConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Junos Radius config
+     * RADIUS authentication and accounting settings for this AP port
      * 
      */
     @Import(name="radiusConfig")
     private @Nullable Output<DeviceprofileApPortConfigRadiusConfigArgs> radiusConfig;
 
     /**
-     * @return Junos Radius config
+     * @return RADIUS authentication and accounting settings for this AP port
      * 
      */
     public Optional<Output<DeviceprofileApPortConfigRadiusConfigArgs>> radiusConfig() {
@@ -188,14 +202,14 @@ public final class DeviceprofileApPortConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * RadSec settings
+     * TLS-secured RADIUS settings for this AP port
      * 
      */
     @Import(name="radsec")
     private @Nullable Output<DeviceprofileApPortConfigRadsecArgs> radsec;
 
     /**
-     * @return RadSec settings
+     * @return TLS-secured RADIUS settings for this AP port
      * 
      */
     public Optional<Output<DeviceprofileApPortConfigRadsecArgs>> radsec() {
@@ -203,7 +217,7 @@ public final class DeviceprofileApPortConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Optional to specify the vlan id for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `siteMxedge`.
+     * Optional to specify the VLAN ID for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `siteMxedge`.
      *   * if vlanId is not specified then it will use first one in vlan_ids[] of the mxtunnel.
      *   * if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
      * 
@@ -212,7 +226,7 @@ public final class DeviceprofileApPortConfigArgs extends com.pulumi.resources.Re
     private @Nullable Output<Integer> vlanId;
 
     /**
-     * @return Optional to specify the vlan id for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `siteMxedge`.
+     * @return Optional to specify the VLAN ID for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `siteMxedge`.
      *   * if vlanId is not specified then it will use first one in vlan_ids[] of the mxtunnel.
      *   * if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
      * 
@@ -222,14 +236,14 @@ public final class DeviceprofileApPortConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * If `forwarding`==`limited`, comma separated list of additional vlan ids allowed on this port
+     * If `forwarding`==`limited`, comma separated list of additional VLAN IDs allowed on this port
      * 
      */
     @Import(name="vlanIds")
     private @Nullable Output<String> vlanIds;
 
     /**
-     * @return If `forwarding`==`limited`, comma separated list of additional vlan ids allowed on this port
+     * @return If `forwarding`==`limited`, comma separated list of additional VLAN IDs allowed on this port
      * 
      */
     public Optional<Output<String>> vlanIds() {
@@ -306,17 +320,29 @@ public final class DeviceprofileApPortConfigArgs extends com.pulumi.resources.Re
             $ = new DeviceprofileApPortConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param disabled Whether this AP Ethernet port is disabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder disabled(@Nullable Output<Boolean> disabled) {
             $.disabled = disabled;
             return this;
         }
 
+        /**
+         * @param disabled Whether this AP Ethernet port is disabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder disabled(Boolean disabled) {
             return disabled(Output.of(disabled));
         }
 
         /**
-         * @param dynamicVlan Optional dynamic vlan
+         * @param dynamicVlan RADIUS-assigned VLAN settings for AP port authentication
          * 
          * @return builder
          * 
@@ -327,7 +353,7 @@ public final class DeviceprofileApPortConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param dynamicVlan Optional dynamic vlan
+         * @param dynamicVlan RADIUS-assigned VLAN settings for AP port authentication
          * 
          * @return builder
          * 
@@ -336,22 +362,29 @@ public final class DeviceprofileApPortConfigArgs extends com.pulumi.resources.Re
             return dynamicVlan(Output.of(dynamicVlan));
         }
 
+        /**
+         * @param enableMacAuth Whether MAC authentication is enabled on this AP port
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableMacAuth(@Nullable Output<Boolean> enableMacAuth) {
             $.enableMacAuth = enableMacAuth;
             return this;
         }
 
+        /**
+         * @param enableMacAuth Whether MAC authentication is enabled on this AP port
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableMacAuth(Boolean enableMacAuth) {
             return enableMacAuth(Output.of(enableMacAuth));
         }
 
         /**
-         * @param forwarding enum:
-         *   * `all`: local breakout, All VLANs
-         *   * `limited`: local breakout, only the VLANs configured in `portVlanId` and `vlanIds`
-         *   * `mxtunnel`: central breakout to an Org Mist Edge (requires `mxtunnelId`)
-         *   * `siteMxedge`: central breakout to a Site Mist Edge (requires `mxtunnelName`)
-         *   * `wxtunnel`&#39;: central breakout to an Org WxTunnel (requires `wxtunnelId`)
+         * @param forwarding Traffic forwarding mode for this AP Ethernet port
          * 
          * @return builder
          * 
@@ -362,12 +395,7 @@ public final class DeviceprofileApPortConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param forwarding enum:
-         *   * `all`: local breakout, All VLANs
-         *   * `limited`: local breakout, only the VLANs configured in `portVlanId` and `vlanIds`
-         *   * `mxtunnel`: central breakout to an Org Mist Edge (requires `mxtunnelId`)
-         *   * `siteMxedge`: central breakout to a Site Mist Edge (requires `mxtunnelName`)
-         *   * `wxtunnel`&#39;: central breakout to an Org WxTunnel (requires `wxtunnelId`)
+         * @param forwarding Traffic forwarding mode for this AP Ethernet port
          * 
          * @return builder
          * 
@@ -398,7 +426,7 @@ public final class DeviceprofileApPortConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param macAuthProtocol if `enableMacAuth`==`true`, allows user to select an authentication protocol. enum: `eap-md5`, `eap-peap`, `pap`
+         * @param macAuthProtocol Protocol used for MAC authentication when `enableMacAuth` is `true`
          * 
          * @return builder
          * 
@@ -409,7 +437,7 @@ public final class DeviceprofileApPortConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param macAuthProtocol if `enableMacAuth`==`true`, allows user to select an authentication protocol. enum: `eap-md5`, `eap-peap`, `pap`
+         * @param macAuthProtocol Protocol used for MAC authentication when `enableMacAuth` is `true`
          * 
          * @return builder
          * 
@@ -418,11 +446,23 @@ public final class DeviceprofileApPortConfigArgs extends com.pulumi.resources.Re
             return macAuthProtocol(Output.of(macAuthProtocol));
         }
 
+        /**
+         * @param mistNac Juniper Mist NAC settings used by AP port authentication
+         * 
+         * @return builder
+         * 
+         */
         public Builder mistNac(@Nullable Output<DeviceprofileApPortConfigMistNacArgs> mistNac) {
             $.mistNac = mistNac;
             return this;
         }
 
+        /**
+         * @param mistNac Juniper Mist NAC settings used by AP port authentication
+         * 
+         * @return builder
+         * 
+         */
         public Builder mistNac(DeviceprofileApPortConfigMistNacArgs mistNac) {
             return mistNac(Output.of(mistNac));
         }
@@ -470,7 +510,7 @@ public final class DeviceprofileApPortConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param portAuth When doing port auth. enum: `dot1x`, `none`
+         * @param portAuth Authentication mode for this AP Ethernet port
          * 
          * @return builder
          * 
@@ -481,7 +521,7 @@ public final class DeviceprofileApPortConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param portAuth When doing port auth. enum: `dot1x`, `none`
+         * @param portAuth Authentication mode for this AP Ethernet port
          * 
          * @return builder
          * 
@@ -491,7 +531,7 @@ public final class DeviceprofileApPortConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param portVlanId If `forwarding`==`limited`
+         * @param portVlanId If `forwarding`==`limited`. VLAN ID allowed on this AP Ethernet port
          * 
          * @return builder
          * 
@@ -502,7 +542,7 @@ public final class DeviceprofileApPortConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param portVlanId If `forwarding`==`limited`
+         * @param portVlanId If `forwarding`==`limited`. VLAN ID allowed on this AP Ethernet port
          * 
          * @return builder
          * 
@@ -512,7 +552,7 @@ public final class DeviceprofileApPortConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param radiusConfig Junos Radius config
+         * @param radiusConfig RADIUS authentication and accounting settings for this AP port
          * 
          * @return builder
          * 
@@ -523,7 +563,7 @@ public final class DeviceprofileApPortConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param radiusConfig Junos Radius config
+         * @param radiusConfig RADIUS authentication and accounting settings for this AP port
          * 
          * @return builder
          * 
@@ -533,7 +573,7 @@ public final class DeviceprofileApPortConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param radsec RadSec settings
+         * @param radsec TLS-secured RADIUS settings for this AP port
          * 
          * @return builder
          * 
@@ -544,7 +584,7 @@ public final class DeviceprofileApPortConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param radsec RadSec settings
+         * @param radsec TLS-secured RADIUS settings for this AP port
          * 
          * @return builder
          * 
@@ -554,7 +594,7 @@ public final class DeviceprofileApPortConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param vlanId Optional to specify the vlan id for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `siteMxedge`.
+         * @param vlanId Optional to specify the VLAN ID for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `siteMxedge`.
          *   * if vlanId is not specified then it will use first one in vlan_ids[] of the mxtunnel.
          *   * if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
          * 
@@ -567,7 +607,7 @@ public final class DeviceprofileApPortConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param vlanId Optional to specify the vlan id for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `siteMxedge`.
+         * @param vlanId Optional to specify the VLAN ID for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `siteMxedge`.
          *   * if vlanId is not specified then it will use first one in vlan_ids[] of the mxtunnel.
          *   * if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
          * 
@@ -579,7 +619,7 @@ public final class DeviceprofileApPortConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param vlanIds If `forwarding`==`limited`, comma separated list of additional vlan ids allowed on this port
+         * @param vlanIds If `forwarding`==`limited`, comma separated list of additional VLAN IDs allowed on this port
          * 
          * @return builder
          * 
@@ -590,7 +630,7 @@ public final class DeviceprofileApPortConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param vlanIds If `forwarding`==`limited`, comma separated list of additional vlan ids allowed on this port
+         * @param vlanIds If `forwarding`==`limited`, comma separated list of additional VLAN IDs allowed on this port
          * 
          * @return builder
          * 

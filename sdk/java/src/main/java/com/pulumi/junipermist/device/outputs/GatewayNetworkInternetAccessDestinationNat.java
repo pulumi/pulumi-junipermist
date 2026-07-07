@@ -12,13 +12,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewayNetworkInternetAccessDestinationNat {
     /**
-     * @return The Destination NAT destination IP Address. Must be an IP (i.e. &#34;192.168.70.30&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * @return The Destination NAT destination IP address. Must be an IP (i.e. &#34;192.168.70.30&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     private @Nullable String internalIp;
+    /**
+     * @return Label for this direct internet destination NAT rule
+     * 
+     */
     private @Nullable String name;
     /**
-     * @return The Destination NAT destination IP Address. Must be a Port (i.e. &#34;443&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * @return The Destination NAT destination IP address. Must be a Port (i.e. &#34;443&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     private @Nullable String port;
@@ -30,17 +34,21 @@ public final class GatewayNetworkInternetAccessDestinationNat {
 
     private GatewayNetworkInternetAccessDestinationNat() {}
     /**
-     * @return The Destination NAT destination IP Address. Must be an IP (i.e. &#34;192.168.70.30&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * @return The Destination NAT destination IP address. Must be an IP (i.e. &#34;192.168.70.30&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     public Optional<String> internalIp() {
         return Optional.ofNullable(this.internalIp);
     }
+    /**
+     * @return Label for this direct internet destination NAT rule
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return The Destination NAT destination IP Address. Must be a Port (i.e. &#34;443&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * @return The Destination NAT destination IP address. Must be a Port (i.e. &#34;443&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     public Optional<String> port() {

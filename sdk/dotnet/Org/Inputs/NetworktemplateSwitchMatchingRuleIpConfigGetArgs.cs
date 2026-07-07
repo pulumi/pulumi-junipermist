@@ -19,7 +19,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// enum: `Dhcp`, `Static`
+        /// IP assignment mode for in-band switch management
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

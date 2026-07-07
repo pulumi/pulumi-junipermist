@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.junipermist.org.inputs.MxclusterMistDasArgs;
 import com.pulumi.junipermist.org.inputs.MxclusterMistNacArgs;
+import com.pulumi.junipermist.org.inputs.MxclusterMistNacedgeArgs;
 import com.pulumi.junipermist.org.inputs.MxclusterMxedgeMgmtArgs;
 import com.pulumi.junipermist.org.inputs.MxclusterProxyArgs;
 import com.pulumi.junipermist.org.inputs.MxclusterRadsecArgs;
@@ -29,57 +30,104 @@ public final class MxclusterState extends com.pulumi.resources.ResourceArgs {
     public static final MxclusterState Empty = new MxclusterState();
 
     /**
-     * Configure cloud-assisted dynamic authorization service on this cluster of mist edges
+     * Dynamic authorization service settings for the cluster
      * 
      */
     @Import(name="mistDas")
     private @Nullable Output<MxclusterMistDasArgs> mistDas;
 
     /**
-     * @return Configure cloud-assisted dynamic authorization service on this cluster of mist edges
+     * @return Dynamic authorization service settings for the cluster
      * 
      */
     public Optional<Output<MxclusterMistDasArgs>> mistDas() {
         return Optional.ofNullable(this.mistDas);
     }
 
+    /**
+     * NAC settings for the Mist Edge cluster
+     * 
+     */
     @Import(name="mistNac")
     private @Nullable Output<MxclusterMistNacArgs> mistNac;
 
+    /**
+     * @return NAC settings for the Mist Edge cluster
+     * 
+     */
     public Optional<Output<MxclusterMistNacArgs>> mistNac() {
         return Optional.ofNullable(this.mistNac);
     }
 
+    /**
+     * NAC Edge survivability settings for the cluster; requires `mistNac` to be enabled
+     * 
+     */
+    @Import(name="mistNacedge")
+    private @Nullable Output<MxclusterMistNacedgeArgs> mistNacedge;
+
+    /**
+     * @return NAC Edge survivability settings for the cluster; requires `mistNac` to be enabled
+     * 
+     */
+    public Optional<Output<MxclusterMistNacedgeArgs>> mistNacedge() {
+        return Optional.ofNullable(this.mistNacedge);
+    }
+
+    /**
+     * Out-of-band management settings for Mist Edges in the cluster
+     * 
+     */
     @Import(name="mxedgeMgmt")
     private @Nullable Output<MxclusterMxedgeMgmtArgs> mxedgeMgmt;
 
+    /**
+     * @return Out-of-band management settings for Mist Edges in the cluster
+     * 
+     */
     public Optional<Output<MxclusterMxedgeMgmtArgs>> mxedgeMgmt() {
         return Optional.ofNullable(this.mxedgeMgmt);
     }
 
+    /**
+     * Display name of the Mist Edge cluster
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Display name of the Mist Edge cluster
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Identifier of the org that owns the Mist Edge cluster
+     * 
+     */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
+    /**
+     * @return Identifier of the org that owns the Mist Edge cluster
+     * 
+     */
     public Optional<Output<String>> orgId() {
         return Optional.ofNullable(this.orgId);
     }
 
     /**
-     * Proxy Configuration to talk to Mist
+     * Network proxy settings used by Mist Edges in the cluster to communicate with the Mist Cloud
      * 
      */
     @Import(name="proxy")
     private @Nullable Output<MxclusterProxyArgs> proxy;
 
     /**
-     * @return Proxy Configuration to talk to Mist
+     * @return Network proxy settings used by Mist Edges in the cluster to communicate with the Mist Cloud
      * 
      */
     public Optional<Output<MxclusterProxyArgs>> proxy() {
@@ -87,43 +135,59 @@ public final class MxclusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * MxEdge RadSec Configuration
+     * TLS RADIUS proxy settings for the Mist Edge cluster
      * 
      */
     @Import(name="radsec")
     private @Nullable Output<MxclusterRadsecArgs> radsec;
 
     /**
-     * @return MxEdge RadSec Configuration
+     * @return TLS RADIUS proxy settings for the Mist Edge cluster
      * 
      */
     public Optional<Output<MxclusterRadsecArgs>> radsec() {
         return Optional.ofNullable(this.radsec);
     }
 
+    /**
+     * TLS keypair settings for RadSec on the Mist Edge cluster
+     * 
+     */
     @Import(name="radsecTls")
     private @Nullable Output<MxclusterRadsecTlsArgs> radsecTls;
 
+    /**
+     * @return TLS keypair settings for RadSec on the Mist Edge cluster
+     * 
+     */
     public Optional<Output<MxclusterRadsecTlsArgs>> radsecTls() {
         return Optional.ofNullable(this.radsecTls);
     }
 
+    /**
+     * Identifier of the site when the Mist Edge cluster is site-scoped
+     * 
+     */
     @Import(name="siteId")
     private @Nullable Output<String> siteId;
 
+    /**
+     * @return Identifier of the site when the Mist Edge cluster is site-scoped
+     * 
+     */
     public Optional<Output<String>> siteId() {
         return Optional.ofNullable(this.siteId);
     }
 
     /**
-     * List of subnets where we allow AP to establish Mist Tunnels from
+     * AP source subnets allowed to establish Mist tunnels
      * 
      */
     @Import(name="tuntermApSubnets")
     private @Nullable Output<List<String>> tuntermApSubnets;
 
     /**
-     * @return List of subnets where we allow AP to establish Mist Tunnels from
+     * @return AP source subnets allowed to establish Mist tunnels
      * 
      */
     public Optional<Output<List<String>>> tuntermApSubnets() {
@@ -131,14 +195,14 @@ public final class MxclusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * DHCP server/relay configuration of Mist Tunneled VLANs. Property key is the VLAN ID
+     * DHCP relay or server settings for tunneled VLANs
      * 
      */
     @Import(name="tuntermDhcpdConfig")
     private @Nullable Output<Map<String,MxclusterTuntermDhcpdConfigArgs>> tuntermDhcpdConfig;
 
     /**
-     * @return DHCP server/relay configuration of Mist Tunneled VLANs. Property key is the VLAN ID
+     * @return DHCP relay or server settings for tunneled VLANs
      * 
      */
     public Optional<Output<Map<String,MxclusterTuntermDhcpdConfigArgs>>> tuntermDhcpdConfig() {
@@ -146,14 +210,14 @@ public final class MxclusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Extra routes for Mist Tunneled VLANs. Property key is a CIDR
+     * Extra routes for Mist Tunnel VLAN traffic
      * 
      */
     @Import(name="tuntermExtraRoutes")
     private @Nullable Output<Map<String,MxclusterTuntermExtraRoutesArgs>> tuntermExtraRoutes;
 
     /**
-     * @return Extra routes for Mist Tunneled VLANs. Property key is a CIDR
+     * @return Extra routes for Mist Tunnel VLAN traffic
      * 
      */
     public Optional<Output<Map<String,MxclusterTuntermExtraRoutesArgs>>> tuntermExtraRoutes() {
@@ -161,14 +225,14 @@ public final class MxclusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Hostnames or IPs where a Mist Tunnel will use as the Peer (i.e. they are reachable from AP)
+     * Hostnames or IP addresses used as Mist Tunnel peers
      * 
      */
     @Import(name="tuntermHosts")
     private @Nullable Output<List<String>> tuntermHosts;
 
     /**
-     * @return Hostnames or IPs where a Mist Tunnel will use as the Peer (i.e. they are reachable from AP)
+     * @return Hostnames or IP addresses used as Mist Tunnel peers
      * 
      */
     public Optional<Output<List<String>>> tuntermHosts() {
@@ -176,14 +240,14 @@ public final class MxclusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of index of tunterm_hosts
+     * Explicit host ordering indexes used when ordered selection is configured
      * 
      */
     @Import(name="tuntermHostsOrders")
     private @Nullable Output<List<Integer>> tuntermHostsOrders;
 
     /**
-     * @return List of index of tunterm_hosts
+     * @return Explicit host ordering indexes used when ordered selection is configured
      * 
      */
     public Optional<Output<List<Integer>>> tuntermHostsOrders() {
@@ -191,36 +255,46 @@ public final class MxclusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Ordering of tuntermHosts for mxedge within the same mxcluster. enum:
-     *   * `shuffle`: the ordering of tuntermHosts is randomized by the device&#39;&#39;s MAC
-     *   * `shuffle-by-site`: shuffle by site_id+tunnel_id (so when client connects to a specific Tunnel, it will go to the same (order of) mxedge, and we load-balancing between tunnels)
-     *   * `ordered`: order decided by tunterm_hosts_order
+     * Selection strategy for ordering tunnel termination hosts
      * 
      */
     @Import(name="tuntermHostsSelection")
     private @Nullable Output<String> tuntermHostsSelection;
 
     /**
-     * @return Ordering of tuntermHosts for mxedge within the same mxcluster. enum:
-     *   * `shuffle`: the ordering of tuntermHosts is randomized by the device&#39;&#39;s MAC
-     *   * `shuffle-by-site`: shuffle by site_id+tunnel_id (so when client connects to a specific Tunnel, it will go to the same (order of) mxedge, and we load-balancing between tunnels)
-     *   * `ordered`: order decided by tunterm_hosts_order
+     * @return Selection strategy for ordering tunnel termination hosts
      * 
      */
     public Optional<Output<String>> tuntermHostsSelection() {
         return Optional.ofNullable(this.tuntermHostsSelection);
     }
 
+    /**
+     * Whether tunnel termination monitoring is disabled for the cluster
+     * 
+     */
     @Import(name="tuntermMonitoringDisabled")
     private @Nullable Output<Boolean> tuntermMonitoringDisabled;
 
+    /**
+     * @return Whether tunnel termination monitoring is disabled for the cluster
+     * 
+     */
     public Optional<Output<Boolean>> tuntermMonitoringDisabled() {
         return Optional.ofNullable(this.tuntermMonitoringDisabled);
     }
 
+    /**
+     * Monitoring checks for tunnel termination reachability
+     * 
+     */
     @Import(name="tuntermMonitorings")
     private @Nullable Output<List<List<MxclusterTuntermMonitoringArgs>>> tuntermMonitorings;
 
+    /**
+     * @return Monitoring checks for tunnel termination reachability
+     * 
+     */
     public Optional<Output<List<List<MxclusterTuntermMonitoringArgs>>>> tuntermMonitorings() {
         return Optional.ofNullable(this.tuntermMonitorings);
     }
@@ -230,6 +304,7 @@ public final class MxclusterState extends com.pulumi.resources.ResourceArgs {
     private MxclusterState(MxclusterState $) {
         this.mistDas = $.mistDas;
         this.mistNac = $.mistNac;
+        this.mistNacedge = $.mistNacedge;
         this.mxedgeMgmt = $.mxedgeMgmt;
         this.name = $.name;
         this.orgId = $.orgId;
@@ -266,7 +341,7 @@ public final class MxclusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mistDas Configure cloud-assisted dynamic authorization service on this cluster of mist edges
+         * @param mistDas Dynamic authorization service settings for the cluster
          * 
          * @return builder
          * 
@@ -277,7 +352,7 @@ public final class MxclusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mistDas Configure cloud-assisted dynamic authorization service on this cluster of mist edges
+         * @param mistDas Dynamic authorization service settings for the cluster
          * 
          * @return builder
          * 
@@ -286,44 +361,113 @@ public final class MxclusterState extends com.pulumi.resources.ResourceArgs {
             return mistDas(Output.of(mistDas));
         }
 
+        /**
+         * @param mistNac NAC settings for the Mist Edge cluster
+         * 
+         * @return builder
+         * 
+         */
         public Builder mistNac(@Nullable Output<MxclusterMistNacArgs> mistNac) {
             $.mistNac = mistNac;
             return this;
         }
 
+        /**
+         * @param mistNac NAC settings for the Mist Edge cluster
+         * 
+         * @return builder
+         * 
+         */
         public Builder mistNac(MxclusterMistNacArgs mistNac) {
             return mistNac(Output.of(mistNac));
         }
 
+        /**
+         * @param mistNacedge NAC Edge survivability settings for the cluster; requires `mistNac` to be enabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mistNacedge(@Nullable Output<MxclusterMistNacedgeArgs> mistNacedge) {
+            $.mistNacedge = mistNacedge;
+            return this;
+        }
+
+        /**
+         * @param mistNacedge NAC Edge survivability settings for the cluster; requires `mistNac` to be enabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mistNacedge(MxclusterMistNacedgeArgs mistNacedge) {
+            return mistNacedge(Output.of(mistNacedge));
+        }
+
+        /**
+         * @param mxedgeMgmt Out-of-band management settings for Mist Edges in the cluster
+         * 
+         * @return builder
+         * 
+         */
         public Builder mxedgeMgmt(@Nullable Output<MxclusterMxedgeMgmtArgs> mxedgeMgmt) {
             $.mxedgeMgmt = mxedgeMgmt;
             return this;
         }
 
+        /**
+         * @param mxedgeMgmt Out-of-band management settings for Mist Edges in the cluster
+         * 
+         * @return builder
+         * 
+         */
         public Builder mxedgeMgmt(MxclusterMxedgeMgmtArgs mxedgeMgmt) {
             return mxedgeMgmt(Output.of(mxedgeMgmt));
         }
 
+        /**
+         * @param name Display name of the Mist Edge cluster
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Display name of the Mist Edge cluster
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param orgId Identifier of the org that owns the Mist Edge cluster
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(@Nullable Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param orgId Identifier of the org that owns the Mist Edge cluster
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }
 
         /**
-         * @param proxy Proxy Configuration to talk to Mist
+         * @param proxy Network proxy settings used by Mist Edges in the cluster to communicate with the Mist Cloud
          * 
          * @return builder
          * 
@@ -334,7 +478,7 @@ public final class MxclusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxy Proxy Configuration to talk to Mist
+         * @param proxy Network proxy settings used by Mist Edges in the cluster to communicate with the Mist Cloud
          * 
          * @return builder
          * 
@@ -344,7 +488,7 @@ public final class MxclusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param radsec MxEdge RadSec Configuration
+         * @param radsec TLS RADIUS proxy settings for the Mist Edge cluster
          * 
          * @return builder
          * 
@@ -355,7 +499,7 @@ public final class MxclusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param radsec MxEdge RadSec Configuration
+         * @param radsec TLS RADIUS proxy settings for the Mist Edge cluster
          * 
          * @return builder
          * 
@@ -364,26 +508,50 @@ public final class MxclusterState extends com.pulumi.resources.ResourceArgs {
             return radsec(Output.of(radsec));
         }
 
+        /**
+         * @param radsecTls TLS keypair settings for RadSec on the Mist Edge cluster
+         * 
+         * @return builder
+         * 
+         */
         public Builder radsecTls(@Nullable Output<MxclusterRadsecTlsArgs> radsecTls) {
             $.radsecTls = radsecTls;
             return this;
         }
 
+        /**
+         * @param radsecTls TLS keypair settings for RadSec on the Mist Edge cluster
+         * 
+         * @return builder
+         * 
+         */
         public Builder radsecTls(MxclusterRadsecTlsArgs radsecTls) {
             return radsecTls(Output.of(radsecTls));
         }
 
+        /**
+         * @param siteId Identifier of the site when the Mist Edge cluster is site-scoped
+         * 
+         * @return builder
+         * 
+         */
         public Builder siteId(@Nullable Output<String> siteId) {
             $.siteId = siteId;
             return this;
         }
 
+        /**
+         * @param siteId Identifier of the site when the Mist Edge cluster is site-scoped
+         * 
+         * @return builder
+         * 
+         */
         public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
         }
 
         /**
-         * @param tuntermApSubnets List of subnets where we allow AP to establish Mist Tunnels from
+         * @param tuntermApSubnets AP source subnets allowed to establish Mist tunnels
          * 
          * @return builder
          * 
@@ -394,7 +562,7 @@ public final class MxclusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tuntermApSubnets List of subnets where we allow AP to establish Mist Tunnels from
+         * @param tuntermApSubnets AP source subnets allowed to establish Mist tunnels
          * 
          * @return builder
          * 
@@ -404,7 +572,7 @@ public final class MxclusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tuntermApSubnets List of subnets where we allow AP to establish Mist Tunnels from
+         * @param tuntermApSubnets AP source subnets allowed to establish Mist tunnels
          * 
          * @return builder
          * 
@@ -414,7 +582,7 @@ public final class MxclusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tuntermDhcpdConfig DHCP server/relay configuration of Mist Tunneled VLANs. Property key is the VLAN ID
+         * @param tuntermDhcpdConfig DHCP relay or server settings for tunneled VLANs
          * 
          * @return builder
          * 
@@ -425,7 +593,7 @@ public final class MxclusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tuntermDhcpdConfig DHCP server/relay configuration of Mist Tunneled VLANs. Property key is the VLAN ID
+         * @param tuntermDhcpdConfig DHCP relay or server settings for tunneled VLANs
          * 
          * @return builder
          * 
@@ -435,7 +603,7 @@ public final class MxclusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tuntermExtraRoutes Extra routes for Mist Tunneled VLANs. Property key is a CIDR
+         * @param tuntermExtraRoutes Extra routes for Mist Tunnel VLAN traffic
          * 
          * @return builder
          * 
@@ -446,7 +614,7 @@ public final class MxclusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tuntermExtraRoutes Extra routes for Mist Tunneled VLANs. Property key is a CIDR
+         * @param tuntermExtraRoutes Extra routes for Mist Tunnel VLAN traffic
          * 
          * @return builder
          * 
@@ -456,7 +624,7 @@ public final class MxclusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tuntermHosts Hostnames or IPs where a Mist Tunnel will use as the Peer (i.e. they are reachable from AP)
+         * @param tuntermHosts Hostnames or IP addresses used as Mist Tunnel peers
          * 
          * @return builder
          * 
@@ -467,7 +635,7 @@ public final class MxclusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tuntermHosts Hostnames or IPs where a Mist Tunnel will use as the Peer (i.e. they are reachable from AP)
+         * @param tuntermHosts Hostnames or IP addresses used as Mist Tunnel peers
          * 
          * @return builder
          * 
@@ -477,7 +645,7 @@ public final class MxclusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tuntermHosts Hostnames or IPs where a Mist Tunnel will use as the Peer (i.e. they are reachable from AP)
+         * @param tuntermHosts Hostnames or IP addresses used as Mist Tunnel peers
          * 
          * @return builder
          * 
@@ -487,7 +655,7 @@ public final class MxclusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tuntermHostsOrders List of index of tunterm_hosts
+         * @param tuntermHostsOrders Explicit host ordering indexes used when ordered selection is configured
          * 
          * @return builder
          * 
@@ -498,7 +666,7 @@ public final class MxclusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tuntermHostsOrders List of index of tunterm_hosts
+         * @param tuntermHostsOrders Explicit host ordering indexes used when ordered selection is configured
          * 
          * @return builder
          * 
@@ -508,7 +676,7 @@ public final class MxclusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tuntermHostsOrders List of index of tunterm_hosts
+         * @param tuntermHostsOrders Explicit host ordering indexes used when ordered selection is configured
          * 
          * @return builder
          * 
@@ -518,10 +686,7 @@ public final class MxclusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tuntermHostsSelection Ordering of tuntermHosts for mxedge within the same mxcluster. enum:
-         *   * `shuffle`: the ordering of tuntermHosts is randomized by the device&#39;&#39;s MAC
-         *   * `shuffle-by-site`: shuffle by site_id+tunnel_id (so when client connects to a specific Tunnel, it will go to the same (order of) mxedge, and we load-balancing between tunnels)
-         *   * `ordered`: order decided by tunterm_hosts_order
+         * @param tuntermHostsSelection Selection strategy for ordering tunnel termination hosts
          * 
          * @return builder
          * 
@@ -532,10 +697,7 @@ public final class MxclusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tuntermHostsSelection Ordering of tuntermHosts for mxedge within the same mxcluster. enum:
-         *   * `shuffle`: the ordering of tuntermHosts is randomized by the device&#39;&#39;s MAC
-         *   * `shuffle-by-site`: shuffle by site_id+tunnel_id (so when client connects to a specific Tunnel, it will go to the same (order of) mxedge, and we load-balancing between tunnels)
-         *   * `ordered`: order decided by tunterm_hosts_order
+         * @param tuntermHostsSelection Selection strategy for ordering tunnel termination hosts
          * 
          * @return builder
          * 
@@ -544,24 +706,54 @@ public final class MxclusterState extends com.pulumi.resources.ResourceArgs {
             return tuntermHostsSelection(Output.of(tuntermHostsSelection));
         }
 
+        /**
+         * @param tuntermMonitoringDisabled Whether tunnel termination monitoring is disabled for the cluster
+         * 
+         * @return builder
+         * 
+         */
         public Builder tuntermMonitoringDisabled(@Nullable Output<Boolean> tuntermMonitoringDisabled) {
             $.tuntermMonitoringDisabled = tuntermMonitoringDisabled;
             return this;
         }
 
+        /**
+         * @param tuntermMonitoringDisabled Whether tunnel termination monitoring is disabled for the cluster
+         * 
+         * @return builder
+         * 
+         */
         public Builder tuntermMonitoringDisabled(Boolean tuntermMonitoringDisabled) {
             return tuntermMonitoringDisabled(Output.of(tuntermMonitoringDisabled));
         }
 
+        /**
+         * @param tuntermMonitorings Monitoring checks for tunnel termination reachability
+         * 
+         * @return builder
+         * 
+         */
         public Builder tuntermMonitorings(@Nullable Output<List<List<MxclusterTuntermMonitoringArgs>>> tuntermMonitorings) {
             $.tuntermMonitorings = tuntermMonitorings;
             return this;
         }
 
+        /**
+         * @param tuntermMonitorings Monitoring checks for tunnel termination reachability
+         * 
+         * @return builder
+         * 
+         */
         public Builder tuntermMonitorings(List<List<MxclusterTuntermMonitoringArgs>> tuntermMonitorings) {
             return tuntermMonitorings(Output.of(tuntermMonitorings));
         }
 
+        /**
+         * @param tuntermMonitorings Monitoring checks for tunnel termination reachability
+         * 
+         * @return builder
+         * 
+         */
         public Builder tuntermMonitorings(List<MxclusterTuntermMonitoringArgs>... tuntermMonitorings) {
             return tuntermMonitorings(List.of(tuntermMonitorings));
         }

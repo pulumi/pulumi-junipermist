@@ -27,41 +27,58 @@ import (
 type Mxedge struct {
 	pulumi.CustomResourceState
 
-	ClaimCode         pulumi.StringOutput `pulumi:"claimCode"`
-	Mac               pulumi.StringOutput `pulumi:"mac"`
-	Model             pulumi.StringOutput `pulumi:"model"`
-	MxagentRegistered pulumi.BoolOutput   `pulumi:"mxagentRegistered"`
-	// MxCluster this MxEdge belongs to
-	MxclusterId pulumi.StringPtrOutput    `pulumi:"mxclusterId"`
-	MxedgeMgmt  MxedgeMxedgeMgmtPtrOutput `pulumi:"mxedgeMgmt"`
-	Name        pulumi.StringOutput       `pulumi:"name"`
-	Notes       pulumi.StringPtrOutput    `pulumi:"notes"`
-	NtpServers  pulumi.StringArrayOutput  `pulumi:"ntpServers"`
-	// IPconfiguration of the Mist Edge out-of*band management interface
+	// Registration claim code for the Mist Edge
+	ClaimCode pulumi.StringOutput `pulumi:"claimCode"`
+	// Whether this Mist Edge is scoped to a site
+	ForSite pulumi.BoolOutput `pulumi:"forSite"`
+	// Mist Edge MAC address
+	Mac pulumi.StringOutput `pulumi:"mac"`
+	// Mist Edge hardware or virtual appliance model
+	Model pulumi.StringOutput `pulumi:"model"`
+	// Whether the Mist Edge agent has registered with Mist cloud
+	MxagentRegistered pulumi.BoolOutput `pulumi:"mxagentRegistered"`
+	// Mist Edge cluster identifier that this appliance belongs to
+	MxclusterId pulumi.StringPtrOutput `pulumi:"mxclusterId"`
+	// Management credentials and settings for the Mist Edge
+	MxedgeMgmt MxedgeMxedgeMgmtPtrOutput `pulumi:"mxedgeMgmt"`
+	// Display name of the Mist Edge
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Free-form notes for the Mist Edge
+	Notes pulumi.StringPtrOutput `pulumi:"notes"`
+	// Time synchronization servers used by the Mist Edge
+	NtpServers pulumi.StringArrayOutput `pulumi:"ntpServers"`
+	// Out-of-band management IP configuration for the Mist Edge
 	OobIpConfig MxedgeOobIpConfigPtrOutput `pulumi:"oobIpConfig"`
-	OrgId       pulumi.StringOutput        `pulumi:"orgId"`
-	// Proxy Configuration to talk to Mist
+	// Identifier of the org that owns the Mist Edge
+	OrgId pulumi.StringOutput `pulumi:"orgId"`
+	// Network proxy settings used by the Mist Edge
 	Proxy MxedgeProxyPtrOutput `pulumi:"proxy"`
-	// List of services to run, tunterm only for now
+	// List of services enabled to run on the Mist Edge
 	Services pulumi.StringArrayOutput `pulumi:"services"`
-	SiteId   pulumi.StringPtrOutput   `pulumi:"siteId"`
-	// Global and per-VLAN. Property key is the VLAN ID
+	// Identifier of the site when the Mist Edge is site-scoped
+	SiteId pulumi.StringPtrOutput `pulumi:"siteId"`
+	// DHCP relay or server settings for Mist Tunneled VLANs
 	TuntermDhcpdConfig MxedgeTuntermDhcpdConfigMapOutput `pulumi:"tuntermDhcpdConfig"`
-	// Property key is a CIDR
-	TuntermExtraRoutes        MxedgeTuntermExtraRoutesMapOutput        `pulumi:"tuntermExtraRoutes"`
+	// Extra routes for Mist Tunneled VLAN traffic; property key is a CIDR
+	TuntermExtraRoutes MxedgeTuntermExtraRoutesMapOutput `pulumi:"tuntermExtraRoutes"`
+	// IGMP snooping settings for Mist Tunneled VLANs
 	TuntermIgmpSnoopingConfig MxedgeTuntermIgmpSnoopingConfigPtrOutput `pulumi:"tuntermIgmpSnoopingConfig"`
-	// IPconfiguration of the Mist Tunnel interface
-	TuntermIpConfig        MxedgeTuntermIpConfigPtrOutput          `pulumi:"tuntermIpConfig"`
-	TuntermMonitorings     MxedgeTuntermMonitoringArrayArrayOutput `pulumi:"tuntermMonitorings"`
-	TuntermMulticastConfig MxedgeTuntermMulticastConfigPtrOutput   `pulumi:"tuntermMulticastConfig"`
+	// Tunnel termination IP configuration for the Mist Edge
+	TuntermIpConfig MxedgeTuntermIpConfigPtrOutput `pulumi:"tuntermIpConfig"`
+	// Monitoring checks for tunnel termination reachability
+	TuntermMonitorings MxedgeTuntermMonitoringArrayArrayOutput `pulumi:"tuntermMonitorings"`
+	// Multicast forwarding settings for tunnel termination
+	TuntermMulticastConfig MxedgeTuntermMulticastConfigPtrOutput `pulumi:"tuntermMulticastConfig"`
 	// IPconfigs by VLAN ID. Property key is the VLAN ID
 	TuntermOtherIpConfigs MxedgeTuntermOtherIpConfigsMapOutput `pulumi:"tuntermOtherIpConfigs"`
-	// Ethernet port configurations
+	// Port configuration for tunnel termination traffic
 	TuntermPortConfig MxedgeTuntermPortConfigPtrOutput `pulumi:"tuntermPortConfig"`
-	TuntermRegistered pulumi.BoolOutput                `pulumi:"tuntermRegistered"`
-	// If custom vlan settings are desired
+	// Whether the tunnel termination service has registered with Mist cloud
+	TuntermRegistered pulumi.BoolOutput `pulumi:"tuntermRegistered"`
+	// Switch VLAN settings for tunnel termination
 	TuntermSwitchConfig MxedgeTuntermSwitchConfigMapOutput `pulumi:"tuntermSwitchConfig"`
-	Versions            MxedgeVersionsPtrOutput            `pulumi:"versions"`
+	// Service version information reported by the Mist Edge
+	Versions MxedgeVersionsPtrOutput `pulumi:"versions"`
 }
 
 // NewMxedge registers a new resource with the given unique name, arguments, and options.
@@ -97,79 +114,113 @@ func GetMxedge(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Mxedge resources.
 type mxedgeState struct {
-	ClaimCode         *string `pulumi:"claimCode"`
-	Mac               *string `pulumi:"mac"`
-	Model             *string `pulumi:"model"`
-	MxagentRegistered *bool   `pulumi:"mxagentRegistered"`
-	// MxCluster this MxEdge belongs to
-	MxclusterId *string           `pulumi:"mxclusterId"`
-	MxedgeMgmt  *MxedgeMxedgeMgmt `pulumi:"mxedgeMgmt"`
-	Name        *string           `pulumi:"name"`
-	Notes       *string           `pulumi:"notes"`
-	NtpServers  []string          `pulumi:"ntpServers"`
-	// IPconfiguration of the Mist Edge out-of*band management interface
+	// Registration claim code for the Mist Edge
+	ClaimCode *string `pulumi:"claimCode"`
+	// Whether this Mist Edge is scoped to a site
+	ForSite *bool `pulumi:"forSite"`
+	// Mist Edge MAC address
+	Mac *string `pulumi:"mac"`
+	// Mist Edge hardware or virtual appliance model
+	Model *string `pulumi:"model"`
+	// Whether the Mist Edge agent has registered with Mist cloud
+	MxagentRegistered *bool `pulumi:"mxagentRegistered"`
+	// Mist Edge cluster identifier that this appliance belongs to
+	MxclusterId *string `pulumi:"mxclusterId"`
+	// Management credentials and settings for the Mist Edge
+	MxedgeMgmt *MxedgeMxedgeMgmt `pulumi:"mxedgeMgmt"`
+	// Display name of the Mist Edge
+	Name *string `pulumi:"name"`
+	// Free-form notes for the Mist Edge
+	Notes *string `pulumi:"notes"`
+	// Time synchronization servers used by the Mist Edge
+	NtpServers []string `pulumi:"ntpServers"`
+	// Out-of-band management IP configuration for the Mist Edge
 	OobIpConfig *MxedgeOobIpConfig `pulumi:"oobIpConfig"`
-	OrgId       *string            `pulumi:"orgId"`
-	// Proxy Configuration to talk to Mist
+	// Identifier of the org that owns the Mist Edge
+	OrgId *string `pulumi:"orgId"`
+	// Network proxy settings used by the Mist Edge
 	Proxy *MxedgeProxy `pulumi:"proxy"`
-	// List of services to run, tunterm only for now
+	// List of services enabled to run on the Mist Edge
 	Services []string `pulumi:"services"`
-	SiteId   *string  `pulumi:"siteId"`
-	// Global and per-VLAN. Property key is the VLAN ID
+	// Identifier of the site when the Mist Edge is site-scoped
+	SiteId *string `pulumi:"siteId"`
+	// DHCP relay or server settings for Mist Tunneled VLANs
 	TuntermDhcpdConfig map[string]MxedgeTuntermDhcpdConfig `pulumi:"tuntermDhcpdConfig"`
-	// Property key is a CIDR
-	TuntermExtraRoutes        map[string]MxedgeTuntermExtraRoutes `pulumi:"tuntermExtraRoutes"`
-	TuntermIgmpSnoopingConfig *MxedgeTuntermIgmpSnoopingConfig    `pulumi:"tuntermIgmpSnoopingConfig"`
-	// IPconfiguration of the Mist Tunnel interface
-	TuntermIpConfig        *MxedgeTuntermIpConfig        `pulumi:"tuntermIpConfig"`
-	TuntermMonitorings     [][]MxedgeTuntermMonitoring   `pulumi:"tuntermMonitorings"`
+	// Extra routes for Mist Tunneled VLAN traffic; property key is a CIDR
+	TuntermExtraRoutes map[string]MxedgeTuntermExtraRoutes `pulumi:"tuntermExtraRoutes"`
+	// IGMP snooping settings for Mist Tunneled VLANs
+	TuntermIgmpSnoopingConfig *MxedgeTuntermIgmpSnoopingConfig `pulumi:"tuntermIgmpSnoopingConfig"`
+	// Tunnel termination IP configuration for the Mist Edge
+	TuntermIpConfig *MxedgeTuntermIpConfig `pulumi:"tuntermIpConfig"`
+	// Monitoring checks for tunnel termination reachability
+	TuntermMonitorings [][]MxedgeTuntermMonitoring `pulumi:"tuntermMonitorings"`
+	// Multicast forwarding settings for tunnel termination
 	TuntermMulticastConfig *MxedgeTuntermMulticastConfig `pulumi:"tuntermMulticastConfig"`
 	// IPconfigs by VLAN ID. Property key is the VLAN ID
 	TuntermOtherIpConfigs map[string]MxedgeTuntermOtherIpConfigs `pulumi:"tuntermOtherIpConfigs"`
-	// Ethernet port configurations
+	// Port configuration for tunnel termination traffic
 	TuntermPortConfig *MxedgeTuntermPortConfig `pulumi:"tuntermPortConfig"`
-	TuntermRegistered *bool                    `pulumi:"tuntermRegistered"`
-	// If custom vlan settings are desired
+	// Whether the tunnel termination service has registered with Mist cloud
+	TuntermRegistered *bool `pulumi:"tuntermRegistered"`
+	// Switch VLAN settings for tunnel termination
 	TuntermSwitchConfig map[string]MxedgeTuntermSwitchConfig `pulumi:"tuntermSwitchConfig"`
-	Versions            *MxedgeVersions                      `pulumi:"versions"`
+	// Service version information reported by the Mist Edge
+	Versions *MxedgeVersions `pulumi:"versions"`
 }
 
 type MxedgeState struct {
-	ClaimCode         pulumi.StringPtrInput
-	Mac               pulumi.StringPtrInput
-	Model             pulumi.StringPtrInput
+	// Registration claim code for the Mist Edge
+	ClaimCode pulumi.StringPtrInput
+	// Whether this Mist Edge is scoped to a site
+	ForSite pulumi.BoolPtrInput
+	// Mist Edge MAC address
+	Mac pulumi.StringPtrInput
+	// Mist Edge hardware or virtual appliance model
+	Model pulumi.StringPtrInput
+	// Whether the Mist Edge agent has registered with Mist cloud
 	MxagentRegistered pulumi.BoolPtrInput
-	// MxCluster this MxEdge belongs to
+	// Mist Edge cluster identifier that this appliance belongs to
 	MxclusterId pulumi.StringPtrInput
-	MxedgeMgmt  MxedgeMxedgeMgmtPtrInput
-	Name        pulumi.StringPtrInput
-	Notes       pulumi.StringPtrInput
-	NtpServers  pulumi.StringArrayInput
-	// IPconfiguration of the Mist Edge out-of*band management interface
+	// Management credentials and settings for the Mist Edge
+	MxedgeMgmt MxedgeMxedgeMgmtPtrInput
+	// Display name of the Mist Edge
+	Name pulumi.StringPtrInput
+	// Free-form notes for the Mist Edge
+	Notes pulumi.StringPtrInput
+	// Time synchronization servers used by the Mist Edge
+	NtpServers pulumi.StringArrayInput
+	// Out-of-band management IP configuration for the Mist Edge
 	OobIpConfig MxedgeOobIpConfigPtrInput
-	OrgId       pulumi.StringPtrInput
-	// Proxy Configuration to talk to Mist
+	// Identifier of the org that owns the Mist Edge
+	OrgId pulumi.StringPtrInput
+	// Network proxy settings used by the Mist Edge
 	Proxy MxedgeProxyPtrInput
-	// List of services to run, tunterm only for now
+	// List of services enabled to run on the Mist Edge
 	Services pulumi.StringArrayInput
-	SiteId   pulumi.StringPtrInput
-	// Global and per-VLAN. Property key is the VLAN ID
+	// Identifier of the site when the Mist Edge is site-scoped
+	SiteId pulumi.StringPtrInput
+	// DHCP relay or server settings for Mist Tunneled VLANs
 	TuntermDhcpdConfig MxedgeTuntermDhcpdConfigMapInput
-	// Property key is a CIDR
-	TuntermExtraRoutes        MxedgeTuntermExtraRoutesMapInput
+	// Extra routes for Mist Tunneled VLAN traffic; property key is a CIDR
+	TuntermExtraRoutes MxedgeTuntermExtraRoutesMapInput
+	// IGMP snooping settings for Mist Tunneled VLANs
 	TuntermIgmpSnoopingConfig MxedgeTuntermIgmpSnoopingConfigPtrInput
-	// IPconfiguration of the Mist Tunnel interface
-	TuntermIpConfig        MxedgeTuntermIpConfigPtrInput
-	TuntermMonitorings     MxedgeTuntermMonitoringArrayArrayInput
+	// Tunnel termination IP configuration for the Mist Edge
+	TuntermIpConfig MxedgeTuntermIpConfigPtrInput
+	// Monitoring checks for tunnel termination reachability
+	TuntermMonitorings MxedgeTuntermMonitoringArrayArrayInput
+	// Multicast forwarding settings for tunnel termination
 	TuntermMulticastConfig MxedgeTuntermMulticastConfigPtrInput
 	// IPconfigs by VLAN ID. Property key is the VLAN ID
 	TuntermOtherIpConfigs MxedgeTuntermOtherIpConfigsMapInput
-	// Ethernet port configurations
+	// Port configuration for tunnel termination traffic
 	TuntermPortConfig MxedgeTuntermPortConfigPtrInput
+	// Whether the tunnel termination service has registered with Mist cloud
 	TuntermRegistered pulumi.BoolPtrInput
-	// If custom vlan settings are desired
+	// Switch VLAN settings for tunnel termination
 	TuntermSwitchConfig MxedgeTuntermSwitchConfigMapInput
-	Versions            MxedgeVersionsPtrInput
+	// Service version information reported by the Mist Edge
+	Versions MxedgeVersionsPtrInput
 }
 
 func (MxedgeState) ElementType() reflect.Type {
@@ -177,70 +228,94 @@ func (MxedgeState) ElementType() reflect.Type {
 }
 
 type mxedgeArgs struct {
+	// Registration claim code for the Mist Edge
 	ClaimCode *string `pulumi:"claimCode"`
-	Model     *string `pulumi:"model"`
-	// MxCluster this MxEdge belongs to
-	MxclusterId *string           `pulumi:"mxclusterId"`
-	MxedgeMgmt  *MxedgeMxedgeMgmt `pulumi:"mxedgeMgmt"`
-	Name        *string           `pulumi:"name"`
-	Notes       *string           `pulumi:"notes"`
-	NtpServers  []string          `pulumi:"ntpServers"`
-	// IPconfiguration of the Mist Edge out-of*band management interface
+	// Mist Edge hardware or virtual appliance model
+	Model *string `pulumi:"model"`
+	// Mist Edge cluster identifier that this appliance belongs to
+	MxclusterId *string `pulumi:"mxclusterId"`
+	// Management credentials and settings for the Mist Edge
+	MxedgeMgmt *MxedgeMxedgeMgmt `pulumi:"mxedgeMgmt"`
+	// Display name of the Mist Edge
+	Name *string `pulumi:"name"`
+	// Free-form notes for the Mist Edge
+	Notes *string `pulumi:"notes"`
+	// Time synchronization servers used by the Mist Edge
+	NtpServers []string `pulumi:"ntpServers"`
+	// Out-of-band management IP configuration for the Mist Edge
 	OobIpConfig *MxedgeOobIpConfig `pulumi:"oobIpConfig"`
-	OrgId       string             `pulumi:"orgId"`
-	// Proxy Configuration to talk to Mist
-	Proxy  *MxedgeProxy `pulumi:"proxy"`
-	SiteId *string      `pulumi:"siteId"`
-	// Global and per-VLAN. Property key is the VLAN ID
+	// Identifier of the org that owns the Mist Edge
+	OrgId string `pulumi:"orgId"`
+	// Network proxy settings used by the Mist Edge
+	Proxy *MxedgeProxy `pulumi:"proxy"`
+	// Identifier of the site when the Mist Edge is site-scoped
+	SiteId *string `pulumi:"siteId"`
+	// DHCP relay or server settings for Mist Tunneled VLANs
 	TuntermDhcpdConfig map[string]MxedgeTuntermDhcpdConfig `pulumi:"tuntermDhcpdConfig"`
-	// Property key is a CIDR
-	TuntermExtraRoutes        map[string]MxedgeTuntermExtraRoutes `pulumi:"tuntermExtraRoutes"`
-	TuntermIgmpSnoopingConfig *MxedgeTuntermIgmpSnoopingConfig    `pulumi:"tuntermIgmpSnoopingConfig"`
-	// IPconfiguration of the Mist Tunnel interface
-	TuntermIpConfig        *MxedgeTuntermIpConfig        `pulumi:"tuntermIpConfig"`
-	TuntermMonitorings     [][]MxedgeTuntermMonitoring   `pulumi:"tuntermMonitorings"`
+	// Extra routes for Mist Tunneled VLAN traffic; property key is a CIDR
+	TuntermExtraRoutes map[string]MxedgeTuntermExtraRoutes `pulumi:"tuntermExtraRoutes"`
+	// IGMP snooping settings for Mist Tunneled VLANs
+	TuntermIgmpSnoopingConfig *MxedgeTuntermIgmpSnoopingConfig `pulumi:"tuntermIgmpSnoopingConfig"`
+	// Tunnel termination IP configuration for the Mist Edge
+	TuntermIpConfig *MxedgeTuntermIpConfig `pulumi:"tuntermIpConfig"`
+	// Monitoring checks for tunnel termination reachability
+	TuntermMonitorings [][]MxedgeTuntermMonitoring `pulumi:"tuntermMonitorings"`
+	// Multicast forwarding settings for tunnel termination
 	TuntermMulticastConfig *MxedgeTuntermMulticastConfig `pulumi:"tuntermMulticastConfig"`
 	// IPconfigs by VLAN ID. Property key is the VLAN ID
 	TuntermOtherIpConfigs map[string]MxedgeTuntermOtherIpConfigs `pulumi:"tuntermOtherIpConfigs"`
-	// Ethernet port configurations
+	// Port configuration for tunnel termination traffic
 	TuntermPortConfig *MxedgeTuntermPortConfig `pulumi:"tuntermPortConfig"`
-	// If custom vlan settings are desired
+	// Switch VLAN settings for tunnel termination
 	TuntermSwitchConfig map[string]MxedgeTuntermSwitchConfig `pulumi:"tuntermSwitchConfig"`
-	Versions            *MxedgeVersions                      `pulumi:"versions"`
+	// Service version information reported by the Mist Edge
+	Versions *MxedgeVersions `pulumi:"versions"`
 }
 
 // The set of arguments for constructing a Mxedge resource.
 type MxedgeArgs struct {
+	// Registration claim code for the Mist Edge
 	ClaimCode pulumi.StringPtrInput
-	Model     pulumi.StringPtrInput
-	// MxCluster this MxEdge belongs to
+	// Mist Edge hardware or virtual appliance model
+	Model pulumi.StringPtrInput
+	// Mist Edge cluster identifier that this appliance belongs to
 	MxclusterId pulumi.StringPtrInput
-	MxedgeMgmt  MxedgeMxedgeMgmtPtrInput
-	Name        pulumi.StringPtrInput
-	Notes       pulumi.StringPtrInput
-	NtpServers  pulumi.StringArrayInput
-	// IPconfiguration of the Mist Edge out-of*band management interface
+	// Management credentials and settings for the Mist Edge
+	MxedgeMgmt MxedgeMxedgeMgmtPtrInput
+	// Display name of the Mist Edge
+	Name pulumi.StringPtrInput
+	// Free-form notes for the Mist Edge
+	Notes pulumi.StringPtrInput
+	// Time synchronization servers used by the Mist Edge
+	NtpServers pulumi.StringArrayInput
+	// Out-of-band management IP configuration for the Mist Edge
 	OobIpConfig MxedgeOobIpConfigPtrInput
-	OrgId       pulumi.StringInput
-	// Proxy Configuration to talk to Mist
-	Proxy  MxedgeProxyPtrInput
+	// Identifier of the org that owns the Mist Edge
+	OrgId pulumi.StringInput
+	// Network proxy settings used by the Mist Edge
+	Proxy MxedgeProxyPtrInput
+	// Identifier of the site when the Mist Edge is site-scoped
 	SiteId pulumi.StringPtrInput
-	// Global and per-VLAN. Property key is the VLAN ID
+	// DHCP relay or server settings for Mist Tunneled VLANs
 	TuntermDhcpdConfig MxedgeTuntermDhcpdConfigMapInput
-	// Property key is a CIDR
-	TuntermExtraRoutes        MxedgeTuntermExtraRoutesMapInput
+	// Extra routes for Mist Tunneled VLAN traffic; property key is a CIDR
+	TuntermExtraRoutes MxedgeTuntermExtraRoutesMapInput
+	// IGMP snooping settings for Mist Tunneled VLANs
 	TuntermIgmpSnoopingConfig MxedgeTuntermIgmpSnoopingConfigPtrInput
-	// IPconfiguration of the Mist Tunnel interface
-	TuntermIpConfig        MxedgeTuntermIpConfigPtrInput
-	TuntermMonitorings     MxedgeTuntermMonitoringArrayArrayInput
+	// Tunnel termination IP configuration for the Mist Edge
+	TuntermIpConfig MxedgeTuntermIpConfigPtrInput
+	// Monitoring checks for tunnel termination reachability
+	TuntermMonitorings MxedgeTuntermMonitoringArrayArrayInput
+	// Multicast forwarding settings for tunnel termination
 	TuntermMulticastConfig MxedgeTuntermMulticastConfigPtrInput
 	// IPconfigs by VLAN ID. Property key is the VLAN ID
 	TuntermOtherIpConfigs MxedgeTuntermOtherIpConfigsMapInput
-	// Ethernet port configurations
+	// Port configuration for tunnel termination traffic
 	TuntermPortConfig MxedgeTuntermPortConfigPtrInput
-	// If custom vlan settings are desired
+	// Switch VLAN settings for tunnel termination
 	TuntermSwitchConfig MxedgeTuntermSwitchConfigMapInput
-	Versions            MxedgeVersionsPtrInput
+	// Service version information reported by the Mist Edge
+	Versions MxedgeVersionsPtrInput
 }
 
 func (MxedgeArgs) ElementType() reflect.Type {
@@ -330,89 +405,107 @@ func (o MxedgeOutput) ToMxedgeOutputWithContext(ctx context.Context) MxedgeOutpu
 	return o
 }
 
+// Registration claim code for the Mist Edge
 func (o MxedgeOutput) ClaimCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Mxedge) pulumi.StringOutput { return v.ClaimCode }).(pulumi.StringOutput)
 }
 
+// Whether this Mist Edge is scoped to a site
+func (o MxedgeOutput) ForSite() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Mxedge) pulumi.BoolOutput { return v.ForSite }).(pulumi.BoolOutput)
+}
+
+// Mist Edge MAC address
 func (o MxedgeOutput) Mac() pulumi.StringOutput {
 	return o.ApplyT(func(v *Mxedge) pulumi.StringOutput { return v.Mac }).(pulumi.StringOutput)
 }
 
+// Mist Edge hardware or virtual appliance model
 func (o MxedgeOutput) Model() pulumi.StringOutput {
 	return o.ApplyT(func(v *Mxedge) pulumi.StringOutput { return v.Model }).(pulumi.StringOutput)
 }
 
+// Whether the Mist Edge agent has registered with Mist cloud
 func (o MxedgeOutput) MxagentRegistered() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Mxedge) pulumi.BoolOutput { return v.MxagentRegistered }).(pulumi.BoolOutput)
 }
 
-// MxCluster this MxEdge belongs to
+// Mist Edge cluster identifier that this appliance belongs to
 func (o MxedgeOutput) MxclusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Mxedge) pulumi.StringPtrOutput { return v.MxclusterId }).(pulumi.StringPtrOutput)
 }
 
+// Management credentials and settings for the Mist Edge
 func (o MxedgeOutput) MxedgeMgmt() MxedgeMxedgeMgmtPtrOutput {
 	return o.ApplyT(func(v *Mxedge) MxedgeMxedgeMgmtPtrOutput { return v.MxedgeMgmt }).(MxedgeMxedgeMgmtPtrOutput)
 }
 
+// Display name of the Mist Edge
 func (o MxedgeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Mxedge) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Free-form notes for the Mist Edge
 func (o MxedgeOutput) Notes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Mxedge) pulumi.StringPtrOutput { return v.Notes }).(pulumi.StringPtrOutput)
 }
 
+// Time synchronization servers used by the Mist Edge
 func (o MxedgeOutput) NtpServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Mxedge) pulumi.StringArrayOutput { return v.NtpServers }).(pulumi.StringArrayOutput)
 }
 
-// IPconfiguration of the Mist Edge out-of*band management interface
+// Out-of-band management IP configuration for the Mist Edge
 func (o MxedgeOutput) OobIpConfig() MxedgeOobIpConfigPtrOutput {
 	return o.ApplyT(func(v *Mxedge) MxedgeOobIpConfigPtrOutput { return v.OobIpConfig }).(MxedgeOobIpConfigPtrOutput)
 }
 
+// Identifier of the org that owns the Mist Edge
 func (o MxedgeOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Mxedge) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// Proxy Configuration to talk to Mist
+// Network proxy settings used by the Mist Edge
 func (o MxedgeOutput) Proxy() MxedgeProxyPtrOutput {
 	return o.ApplyT(func(v *Mxedge) MxedgeProxyPtrOutput { return v.Proxy }).(MxedgeProxyPtrOutput)
 }
 
-// List of services to run, tunterm only for now
+// List of services enabled to run on the Mist Edge
 func (o MxedgeOutput) Services() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Mxedge) pulumi.StringArrayOutput { return v.Services }).(pulumi.StringArrayOutput)
 }
 
+// Identifier of the site when the Mist Edge is site-scoped
 func (o MxedgeOutput) SiteId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Mxedge) pulumi.StringPtrOutput { return v.SiteId }).(pulumi.StringPtrOutput)
 }
 
-// Global and per-VLAN. Property key is the VLAN ID
+// DHCP relay or server settings for Mist Tunneled VLANs
 func (o MxedgeOutput) TuntermDhcpdConfig() MxedgeTuntermDhcpdConfigMapOutput {
 	return o.ApplyT(func(v *Mxedge) MxedgeTuntermDhcpdConfigMapOutput { return v.TuntermDhcpdConfig }).(MxedgeTuntermDhcpdConfigMapOutput)
 }
 
-// Property key is a CIDR
+// Extra routes for Mist Tunneled VLAN traffic; property key is a CIDR
 func (o MxedgeOutput) TuntermExtraRoutes() MxedgeTuntermExtraRoutesMapOutput {
 	return o.ApplyT(func(v *Mxedge) MxedgeTuntermExtraRoutesMapOutput { return v.TuntermExtraRoutes }).(MxedgeTuntermExtraRoutesMapOutput)
 }
 
+// IGMP snooping settings for Mist Tunneled VLANs
 func (o MxedgeOutput) TuntermIgmpSnoopingConfig() MxedgeTuntermIgmpSnoopingConfigPtrOutput {
 	return o.ApplyT(func(v *Mxedge) MxedgeTuntermIgmpSnoopingConfigPtrOutput { return v.TuntermIgmpSnoopingConfig }).(MxedgeTuntermIgmpSnoopingConfigPtrOutput)
 }
 
-// IPconfiguration of the Mist Tunnel interface
+// Tunnel termination IP configuration for the Mist Edge
 func (o MxedgeOutput) TuntermIpConfig() MxedgeTuntermIpConfigPtrOutput {
 	return o.ApplyT(func(v *Mxedge) MxedgeTuntermIpConfigPtrOutput { return v.TuntermIpConfig }).(MxedgeTuntermIpConfigPtrOutput)
 }
 
+// Monitoring checks for tunnel termination reachability
 func (o MxedgeOutput) TuntermMonitorings() MxedgeTuntermMonitoringArrayArrayOutput {
 	return o.ApplyT(func(v *Mxedge) MxedgeTuntermMonitoringArrayArrayOutput { return v.TuntermMonitorings }).(MxedgeTuntermMonitoringArrayArrayOutput)
 }
 
+// Multicast forwarding settings for tunnel termination
 func (o MxedgeOutput) TuntermMulticastConfig() MxedgeTuntermMulticastConfigPtrOutput {
 	return o.ApplyT(func(v *Mxedge) MxedgeTuntermMulticastConfigPtrOutput { return v.TuntermMulticastConfig }).(MxedgeTuntermMulticastConfigPtrOutput)
 }
@@ -422,20 +515,22 @@ func (o MxedgeOutput) TuntermOtherIpConfigs() MxedgeTuntermOtherIpConfigsMapOutp
 	return o.ApplyT(func(v *Mxedge) MxedgeTuntermOtherIpConfigsMapOutput { return v.TuntermOtherIpConfigs }).(MxedgeTuntermOtherIpConfigsMapOutput)
 }
 
-// Ethernet port configurations
+// Port configuration for tunnel termination traffic
 func (o MxedgeOutput) TuntermPortConfig() MxedgeTuntermPortConfigPtrOutput {
 	return o.ApplyT(func(v *Mxedge) MxedgeTuntermPortConfigPtrOutput { return v.TuntermPortConfig }).(MxedgeTuntermPortConfigPtrOutput)
 }
 
+// Whether the tunnel termination service has registered with Mist cloud
 func (o MxedgeOutput) TuntermRegistered() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Mxedge) pulumi.BoolOutput { return v.TuntermRegistered }).(pulumi.BoolOutput)
 }
 
-// If custom vlan settings are desired
+// Switch VLAN settings for tunnel termination
 func (o MxedgeOutput) TuntermSwitchConfig() MxedgeTuntermSwitchConfigMapOutput {
 	return o.ApplyT(func(v *Mxedge) MxedgeTuntermSwitchConfigMapOutput { return v.TuntermSwitchConfig }).(MxedgeTuntermSwitchConfigMapOutput)
 }
 
+// Service version information reported by the Mist Edge
 func (o MxedgeOutput) Versions() MxedgeVersionsPtrOutput {
 	return o.ApplyT(func(v *Mxedge) MxedgeVersionsPtrOutput { return v.Versions }).(MxedgeVersionsPtrOutput)
 }

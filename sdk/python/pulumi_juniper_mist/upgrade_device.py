@@ -35,6 +35,7 @@ class UpgradeDeviceArgs:
         """
         The set of arguments for constructing a UpgradeDevice resource.
 
+        :param pulumi.Input[_builtins.str] site_id: Associated site identifier for the switch statistics record
         :param pulumi.Input[_builtins.str] target_version: firmware version to deploy to the device. Use the `device_get_versions` datasource to get the list of available firmware versions
         :param pulumi.Input[_builtins.bool] reboot: For Switches and Gateways only (APs are automatically rebooted). Reboot device immediately after upgrade is completed
         :param pulumi.Input[_builtins.int] reboot_at: For Switches and Gateways only and if `reboot`==`true`. Reboot start time in epoch seconds, default is `start_time`
@@ -77,6 +78,9 @@ class UpgradeDeviceArgs:
     @_builtins.property
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Associated site identifier for the switch statistics record
+        """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
@@ -219,18 +223,26 @@ class _UpgradeDeviceState:
         """
         Input properties used for looking up and filtering UpgradeDevice resources.
 
+        :param pulumi.Input['UpgradeDeviceAutoUpgradeStatArgs'] auto_upgrade_stat: Automatic firmware upgrade status for the switch
+        :param pulumi.Input[_builtins.int] config_timestamp: Time when the switch configuration status was last updated, in epoch seconds
+        :param pulumi.Input[_builtins.int] config_version: Currently applied configuration version for the switch
         :param pulumi.Input[_builtins.str] device_version: current device firmware version
+        :param pulumi.Input[_builtins.str] ext_ip: Public IP address observed for the switch
+        :param pulumi.Input['UpgradeDeviceFwupdateArgs'] fwupdate: Firmware update status for the switch
         :param pulumi.Input[_builtins.bool] reboot: For Switches and Gateways only (APs are automatically rebooted). Reboot device immediately after upgrade is completed
         :param pulumi.Input[_builtins.int] reboot_at: For Switches and Gateways only and if `reboot`==`true`. Reboot start time in epoch seconds, default is `start_time`
+        :param pulumi.Input[_builtins.str] site_id: Associated site identifier for the switch statistics record
         :param pulumi.Input[_builtins.bool] snapshot: For Junos devices only. Perform recovery snapshot after device is rebooted
         :param pulumi.Input[_builtins.int] start_time: Firmware download start time in epoch
-        :param pulumi.Input[_builtins.str] status: enum: `error`, `inprogress`, `scheduled`, `starting`, `success`
+        :param pulumi.Input[_builtins.str] status: Current status of the requested device upgrade
         :param pulumi.Input[_builtins.bool] sync_upgrade: if set to `false`, the provider will just trigger the upgrade and not wait for the end of the upgrade process. Default is `true`
         :param pulumi.Input[_builtins.int] sync_upgrade_refresh_interval: if set to `sync_upgrade`==`true`, how long to wait between each refresh of the upgrade status, in seconds. Default is 30, minimum is 15
         :param pulumi.Input[_builtins.int] sync_upgrade_start_timeout: if set to `sync_upgrade`==`true`, how long to wait for the upgrade to start before raising an error, in seconds. Default is 60, minimum is 60
         :param pulumi.Input[_builtins.int] sync_upgrade_timeout: if set to `sync_upgrade`==`true`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800
+        :param pulumi.Input[_builtins.int] tag_id: Numeric inventory tag identifier associated with the switch
+        :param pulumi.Input[_builtins.str] tag_uuid: Inventory tag UUID associated with the switch
         :param pulumi.Input[_builtins.str] target_version: firmware version to deploy to the device. Use the `device_get_versions` datasource to get the list of available firmware versions
-        :param pulumi.Input[_builtins.float] timestamp: Epoch (seconds)
+        :param pulumi.Input[_builtins.float] timestamp: Epoch timestamp when the device upgrade status was reported
         """
         if auto_upgrade_stat is not None:
             pulumi.set(__self__, "auto_upgrade_stat", auto_upgrade_stat)
@@ -278,6 +290,9 @@ class _UpgradeDeviceState:
     @_builtins.property
     @pulumi.getter(name="autoUpgradeStat")
     def auto_upgrade_stat(self) -> pulumi.Input[Optional['UpgradeDeviceAutoUpgradeStatArgs']]:
+        """
+        Automatic firmware upgrade status for the switch
+        """
         return pulumi.get(self, "auto_upgrade_stat")
 
     @auto_upgrade_stat.setter
@@ -287,6 +302,9 @@ class _UpgradeDeviceState:
     @_builtins.property
     @pulumi.getter(name="configTimestamp")
     def config_timestamp(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Time when the switch configuration status was last updated, in epoch seconds
+        """
         return pulumi.get(self, "config_timestamp")
 
     @config_timestamp.setter
@@ -296,6 +314,9 @@ class _UpgradeDeviceState:
     @_builtins.property
     @pulumi.getter(name="configVersion")
     def config_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Currently applied configuration version for the switch
+        """
         return pulumi.get(self, "config_version")
 
     @config_version.setter
@@ -326,6 +347,9 @@ class _UpgradeDeviceState:
     @_builtins.property
     @pulumi.getter(name="extIp")
     def ext_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Public IP address observed for the switch
+        """
         return pulumi.get(self, "ext_ip")
 
     @ext_ip.setter
@@ -335,6 +359,9 @@ class _UpgradeDeviceState:
     @_builtins.property
     @pulumi.getter
     def fwupdate(self) -> pulumi.Input[Optional['UpgradeDeviceFwupdateArgs']]:
+        """
+        Firmware update status for the switch
+        """
         return pulumi.get(self, "fwupdate")
 
     @fwupdate.setter
@@ -368,6 +395,9 @@ class _UpgradeDeviceState:
     @_builtins.property
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Associated site identifier for the switch statistics record
+        """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
@@ -402,7 +432,7 @@ class _UpgradeDeviceState:
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        enum: `error`, `inprogress`, `scheduled`, `starting`, `success`
+        Current status of the requested device upgrade
         """
         return pulumi.get(self, "status")
 
@@ -461,6 +491,9 @@ class _UpgradeDeviceState:
     @_builtins.property
     @pulumi.getter(name="tagId")
     def tag_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Numeric inventory tag identifier associated with the switch
+        """
         return pulumi.get(self, "tag_id")
 
     @tag_id.setter
@@ -470,6 +503,9 @@ class _UpgradeDeviceState:
     @_builtins.property
     @pulumi.getter(name="tagUuid")
     def tag_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Inventory tag UUID associated with the switch
+        """
         return pulumi.get(self, "tag_uuid")
 
     @tag_uuid.setter
@@ -492,7 +528,7 @@ class _UpgradeDeviceState:
     @pulumi.getter
     def timestamp(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
-        Epoch (seconds)
+        Epoch timestamp when the device upgrade status was reported
         """
         return pulumi.get(self, "timestamp")
 
@@ -552,6 +588,7 @@ class UpgradeDevice(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] reboot: For Switches and Gateways only (APs are automatically rebooted). Reboot device immediately after upgrade is completed
         :param pulumi.Input[_builtins.int] reboot_at: For Switches and Gateways only and if `reboot`==`true`. Reboot start time in epoch seconds, default is `start_time`
+        :param pulumi.Input[_builtins.str] site_id: Associated site identifier for the switch statistics record
         :param pulumi.Input[_builtins.bool] snapshot: For Junos devices only. Perform recovery snapshot after device is rebooted
         :param pulumi.Input[_builtins.int] start_time: Firmware download start time in epoch
         :param pulumi.Input[_builtins.bool] sync_upgrade: if set to `false`, the provider will just trigger the upgrade and not wait for the end of the upgrade process. Default is `true`
@@ -695,18 +732,26 @@ class UpgradeDevice(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['UpgradeDeviceAutoUpgradeStatArgs', 'UpgradeDeviceAutoUpgradeStatArgsDict']] auto_upgrade_stat: Automatic firmware upgrade status for the switch
+        :param pulumi.Input[_builtins.int] config_timestamp: Time when the switch configuration status was last updated, in epoch seconds
+        :param pulumi.Input[_builtins.int] config_version: Currently applied configuration version for the switch
         :param pulumi.Input[_builtins.str] device_version: current device firmware version
+        :param pulumi.Input[_builtins.str] ext_ip: Public IP address observed for the switch
+        :param pulumi.Input[Union['UpgradeDeviceFwupdateArgs', 'UpgradeDeviceFwupdateArgsDict']] fwupdate: Firmware update status for the switch
         :param pulumi.Input[_builtins.bool] reboot: For Switches and Gateways only (APs are automatically rebooted). Reboot device immediately after upgrade is completed
         :param pulumi.Input[_builtins.int] reboot_at: For Switches and Gateways only and if `reboot`==`true`. Reboot start time in epoch seconds, default is `start_time`
+        :param pulumi.Input[_builtins.str] site_id: Associated site identifier for the switch statistics record
         :param pulumi.Input[_builtins.bool] snapshot: For Junos devices only. Perform recovery snapshot after device is rebooted
         :param pulumi.Input[_builtins.int] start_time: Firmware download start time in epoch
-        :param pulumi.Input[_builtins.str] status: enum: `error`, `inprogress`, `scheduled`, `starting`, `success`
+        :param pulumi.Input[_builtins.str] status: Current status of the requested device upgrade
         :param pulumi.Input[_builtins.bool] sync_upgrade: if set to `false`, the provider will just trigger the upgrade and not wait for the end of the upgrade process. Default is `true`
         :param pulumi.Input[_builtins.int] sync_upgrade_refresh_interval: if set to `sync_upgrade`==`true`, how long to wait between each refresh of the upgrade status, in seconds. Default is 30, minimum is 15
         :param pulumi.Input[_builtins.int] sync_upgrade_start_timeout: if set to `sync_upgrade`==`true`, how long to wait for the upgrade to start before raising an error, in seconds. Default is 60, minimum is 60
         :param pulumi.Input[_builtins.int] sync_upgrade_timeout: if set to `sync_upgrade`==`true`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800
+        :param pulumi.Input[_builtins.int] tag_id: Numeric inventory tag identifier associated with the switch
+        :param pulumi.Input[_builtins.str] tag_uuid: Inventory tag UUID associated with the switch
         :param pulumi.Input[_builtins.str] target_version: firmware version to deploy to the device. Use the `device_get_versions` datasource to get the list of available firmware versions
-        :param pulumi.Input[_builtins.float] timestamp: Epoch (seconds)
+        :param pulumi.Input[_builtins.float] timestamp: Epoch timestamp when the device upgrade status was reported
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -738,16 +783,25 @@ class UpgradeDevice(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="autoUpgradeStat")
     def auto_upgrade_stat(self) -> pulumi.Output['outputs.UpgradeDeviceAutoUpgradeStat']:
+        """
+        Automatic firmware upgrade status for the switch
+        """
         return pulumi.get(self, "auto_upgrade_stat")
 
     @_builtins.property
     @pulumi.getter(name="configTimestamp")
     def config_timestamp(self) -> pulumi.Output[_builtins.int]:
+        """
+        Time when the switch configuration status was last updated, in epoch seconds
+        """
         return pulumi.get(self, "config_timestamp")
 
     @_builtins.property
     @pulumi.getter(name="configVersion")
     def config_version(self) -> pulumi.Output[_builtins.int]:
+        """
+        Currently applied configuration version for the switch
+        """
         return pulumi.get(self, "config_version")
 
     @_builtins.property
@@ -766,11 +820,17 @@ class UpgradeDevice(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="extIp")
     def ext_ip(self) -> pulumi.Output[_builtins.str]:
+        """
+        Public IP address observed for the switch
+        """
         return pulumi.get(self, "ext_ip")
 
     @_builtins.property
     @pulumi.getter
     def fwupdate(self) -> pulumi.Output['outputs.UpgradeDeviceFwupdate']:
+        """
+        Firmware update status for the switch
+        """
         return pulumi.get(self, "fwupdate")
 
     @_builtins.property
@@ -792,6 +852,9 @@ class UpgradeDevice(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Associated site identifier for the switch statistics record
+        """
         return pulumi.get(self, "site_id")
 
     @_builtins.property
@@ -814,7 +877,7 @@ class UpgradeDevice(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        enum: `error`, `inprogress`, `scheduled`, `starting`, `success`
+        Current status of the requested device upgrade
         """
         return pulumi.get(self, "status")
 
@@ -853,11 +916,17 @@ class UpgradeDevice(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="tagId")
     def tag_id(self) -> pulumi.Output[_builtins.int]:
+        """
+        Numeric inventory tag identifier associated with the switch
+        """
         return pulumi.get(self, "tag_id")
 
     @_builtins.property
     @pulumi.getter(name="tagUuid")
     def tag_uuid(self) -> pulumi.Output[_builtins.str]:
+        """
+        Inventory tag UUID associated with the switch
+        """
         return pulumi.get(self, "tag_uuid")
 
     @_builtins.property
@@ -872,7 +941,7 @@ class UpgradeDevice(pulumi.CustomResource):
     @pulumi.getter
     def timestamp(self) -> pulumi.Output[_builtins.float]:
         """
-        Epoch (seconds)
+        Epoch timestamp when the device upgrade status was reported
         """
         return pulumi.get(self, "timestamp")
 

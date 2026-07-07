@@ -47,9 +47,17 @@ public final class ApAiristaArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.host);
     }
 
+    /**
+     * Optional if enabled, Airista server port. Defaults to 1144
+     * 
+     */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
+    /**
+     * @return Optional if enabled, Airista server port. Defaults to 1144
+     * 
+     */
     public Optional<Output<Integer>> port() {
         return Optional.ofNullable(this.port);
     }
@@ -122,11 +130,23 @@ public final class ApAiristaArgs extends com.pulumi.resources.ResourceArgs {
             return host(Output.of(host));
         }
 
+        /**
+         * @param port Optional if enabled, Airista server port. Defaults to 1144
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(@Nullable Output<Integer> port) {
             $.port = port;
             return this;
         }
 
+        /**
+         * @param port Optional if enabled, Airista server port. Defaults to 1144
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(Integer port) {
             return port(Output.of(port));
         }

@@ -12,7 +12,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GatewaytemplateServicePolicyIdp {
+    /**
+     * @return Whether to alert without enforcing IDP prevention actions
+     * 
+     */
     private @Nullable Boolean alertOnly;
+    /**
+     * @return Whether IDP inspection is enabled for the policy
+     * 
+     */
     private @Nullable Boolean enabled;
     /**
      * @return org_level IDP Profile can be used, this takes precedence over `profile`
@@ -26,9 +34,17 @@ public final class GatewaytemplateServicePolicyIdp {
     private @Nullable String profile;
 
     private GatewaytemplateServicePolicyIdp() {}
+    /**
+     * @return Whether to alert without enforcing IDP prevention actions
+     * 
+     */
     public Optional<Boolean> alertOnly() {
         return Optional.ofNullable(this.alertOnly);
     }
+    /**
+     * @return Whether IDP inspection is enabled for the policy
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }

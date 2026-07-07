@@ -14,16 +14,32 @@ public final class BaseLatlngArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final BaseLatlngArgs Empty = new BaseLatlngArgs();
 
+    /**
+     * Geographic latitude in decimal degrees
+     * 
+     */
     @Import(name="lat", required=true)
     private Output<Double> lat;
 
+    /**
+     * @return Geographic latitude in decimal degrees
+     * 
+     */
     public Output<Double> lat() {
         return this.lat;
     }
 
+    /**
+     * Geographic longitude in decimal degrees
+     * 
+     */
     @Import(name="lng", required=true)
     private Output<Double> lng;
 
+    /**
+     * @return Geographic longitude in decimal degrees
+     * 
+     */
     public Output<Double> lng() {
         return this.lng;
     }
@@ -53,20 +69,44 @@ public final class BaseLatlngArgs extends com.pulumi.resources.ResourceArgs {
             $ = new BaseLatlngArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param lat Geographic latitude in decimal degrees
+         * 
+         * @return builder
+         * 
+         */
         public Builder lat(Output<Double> lat) {
             $.lat = lat;
             return this;
         }
 
+        /**
+         * @param lat Geographic latitude in decimal degrees
+         * 
+         * @return builder
+         * 
+         */
         public Builder lat(Double lat) {
             return lat(Output.of(lat));
         }
 
+        /**
+         * @param lng Geographic longitude in decimal degrees
+         * 
+         * @return builder
+         * 
+         */
         public Builder lng(Output<Double> lng) {
             $.lng = lng;
             return this;
         }
 
+        /**
+         * @param lng Geographic longitude in decimal degrees
+         * 
+         * @return builder
+         * 
+         */
         public Builder lng(Double lng) {
             return lng(Output.of(lng));
         }

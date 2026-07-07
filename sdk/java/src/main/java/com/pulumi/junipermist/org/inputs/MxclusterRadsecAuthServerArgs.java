@@ -79,14 +79,14 @@ public final class MxclusterRadsecAuthServerArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * if used for Mist APs. enum: `ascii`, `hex`
+     * Encoding format for Mist AP RADIUS keywrap keys
      * 
      */
     @Import(name="keywrapFormat")
     private @Nullable Output<String> keywrapFormat;
 
     /**
-     * @return if used for Mist APs. enum: `ascii`, `hex`
+     * @return Encoding format for Mist AP RADIUS keywrap keys
      * 
      */
     public Optional<Output<String>> keywrapFormat() {
@@ -139,14 +139,14 @@ public final class MxclusterRadsecAuthServerArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Authentication request retry
+     * Number of authentication request retries before failing over
      * 
      */
     @Import(name="retry")
     private @Nullable Output<Integer> retry;
 
     /**
-     * @return Authentication request retry
+     * @return Number of authentication request retries before failing over
      * 
      */
     public Optional<Output<Integer>> retry() {
@@ -154,14 +154,14 @@ public final class MxclusterRadsecAuthServerArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Secret of RADIUS server
+     * Shared secret used with this RADIUS authentication server
      * 
      */
     @Import(name="secret")
     private @Nullable Output<String> secret;
 
     /**
-     * @return Secret of RADIUS server
+     * @return Shared secret used with this RADIUS authentication server
      * 
      */
     public Optional<Output<String>> secret() {
@@ -169,14 +169,14 @@ public final class MxclusterRadsecAuthServerArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * List of ssids that will use this server if matchSsid is true and match is found
+     * WLAN SSID filters that use this authentication server when matching is enabled
      * 
      */
     @Import(name="ssids")
     private @Nullable Output<List<String>> ssids;
 
     /**
-     * @return List of ssids that will use this server if matchSsid is true and match is found
+     * @return WLAN SSID filters that use this authentication server when matching is enabled
      * 
      */
     public Optional<Output<List<String>>> ssids() {
@@ -318,7 +318,7 @@ public final class MxclusterRadsecAuthServerArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param keywrapFormat if used for Mist APs. enum: `ascii`, `hex`
+         * @param keywrapFormat Encoding format for Mist AP RADIUS keywrap keys
          * 
          * @return builder
          * 
@@ -329,7 +329,7 @@ public final class MxclusterRadsecAuthServerArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param keywrapFormat if used for Mist APs. enum: `ascii`, `hex`
+         * @param keywrapFormat Encoding format for Mist AP RADIUS keywrap keys
          * 
          * @return builder
          * 
@@ -402,7 +402,7 @@ public final class MxclusterRadsecAuthServerArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param retry Authentication request retry
+         * @param retry Number of authentication request retries before failing over
          * 
          * @return builder
          * 
@@ -413,7 +413,7 @@ public final class MxclusterRadsecAuthServerArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param retry Authentication request retry
+         * @param retry Number of authentication request retries before failing over
          * 
          * @return builder
          * 
@@ -423,7 +423,7 @@ public final class MxclusterRadsecAuthServerArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param secret Secret of RADIUS server
+         * @param secret Shared secret used with this RADIUS authentication server
          * 
          * @return builder
          * 
@@ -434,7 +434,7 @@ public final class MxclusterRadsecAuthServerArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param secret Secret of RADIUS server
+         * @param secret Shared secret used with this RADIUS authentication server
          * 
          * @return builder
          * 
@@ -444,7 +444,7 @@ public final class MxclusterRadsecAuthServerArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param ssids List of ssids that will use this server if matchSsid is true and match is found
+         * @param ssids WLAN SSID filters that use this authentication server when matching is enabled
          * 
          * @return builder
          * 
@@ -455,7 +455,7 @@ public final class MxclusterRadsecAuthServerArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param ssids List of ssids that will use this server if matchSsid is true and match is found
+         * @param ssids WLAN SSID filters that use this authentication server when matching is enabled
          * 
          * @return builder
          * 
@@ -465,7 +465,7 @@ public final class MxclusterRadsecAuthServerArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param ssids List of ssids that will use this server if matchSsid is true and match is found
+         * @param ssids WLAN SSID filters that use this authentication server when matching is enabled
          * 
          * @return builder
          * 

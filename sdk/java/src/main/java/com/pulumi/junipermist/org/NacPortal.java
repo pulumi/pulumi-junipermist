@@ -119,28 +119,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:org/nacPortal:NacPortal")
 public class NacPortal extends com.pulumi.resources.CustomResource {
     /**
-     * if `type`==`marvisClient`. enum: `wireless`, `wireless+wired`
+     * If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients
      * 
      */
     @Export(name="accessType", refs={String.class}, tree="[0]")
     private Output<String> accessType;
 
     /**
-     * @return if `type`==`marvisClient`. enum: `wireless`, `wireless+wired`
+     * @return If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients
      * 
      */
     public Output<String> accessType() {
         return this.accessType;
     }
     /**
-     * Optional list of additional CA certificates to be used
+     * Additional CA certificates trusted during NAC portal certificate onboarding
      * 
      */
     @Export(name="additionalCacerts", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> additionalCacerts;
 
     /**
-     * @return Optional list of additional CA certificates to be used
+     * @return Additional CA certificates trusted during NAC portal certificate onboarding
      * 
      */
     public Output<Optional<List<String>>> additionalCacerts() {
@@ -161,28 +161,28 @@ public class NacPortal extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.additionalNacServerNames);
     }
     /**
-     * In days
+     * Validity duration for portal-issued client certificates, in days
      * 
      */
     @Export(name="certExpireTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> certExpireTime;
 
     /**
-     * @return In days
+     * @return Validity duration for portal-issued client certificates, in days
      * 
      */
     public Output<Optional<Integer>> certExpireTime() {
         return Codegen.optional(this.certExpireTime);
     }
     /**
-     * enum: `wpa2`, `wpa3`
+     * EAP mode used when onboarding wireless clients through the NAC portal
      * 
      */
     @Export(name="eapType", refs={String.class}, tree="[0]")
     private Output<String> eapType;
 
     /**
-     * @return enum: `wpa2`, `wpa3`
+     * @return EAP mode used when onboarding wireless clients through the NAC portal
      * 
      */
     public Output<String> eapType() {
@@ -203,110 +203,126 @@ public class NacPortal extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enableTelemetry);
     }
     /**
-     * In days
+     * Number of days before certificate expiration to start sending reminder notifications
      * 
      */
     @Export(name="expiryNotificationTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> expiryNotificationTime;
 
     /**
-     * @return In days
+     * @return Number of days before certificate expiration to start sending reminder notifications
      * 
      */
     public Output<Optional<Integer>> expiryNotificationTime() {
         return Codegen.optional(this.expiryNotificationTime);
     }
+    /**
+     * Human-readable name of the NAC portal
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Human-readable name of the NAC portal
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * phase 2
+     * Whether to send reminder notifications before portal-issued certificates expire
      * 
      */
     @Export(name="notifyExpiry", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> notifyExpiry;
 
     /**
-     * @return phase 2
+     * @return Whether to send reminder notifications before portal-issued certificates expire
      * 
      */
     public Output<Optional<Boolean>> notifyExpiry() {
         return Codegen.optional(this.notifyExpiry);
     }
+    /**
+     * Organization that owns this NAC portal
+     * 
+     */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
+    /**
+     * @return Organization that owns this NAC portal
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }
     /**
-     * Guest portal configuration when `type`==`guestPortal`. If
-     *   * `auth`==`none`, the user is presented with a terms of service and can click and continue.
-     *   * `auth`==`external`, the user is redirected to an external URL for authentication.
-     *   * `auth`==`multi`, the user is presented with a choice of authentication methods:
-     *     - social logins: facebook / google / amazon / microsoft / azure
-     *     - sponsor
-     *     - sms: supported provider: twillio
-     *     - email
-     *     - sso
-     *     - userpass: pre created guest list
+     * Guest portal settings used when `type`==`guestPortal`
      * 
      */
     @Export(name="portal", refs={NacPortalPortal.class}, tree="[0]")
     private Output</* @Nullable */ NacPortalPortal> portal;
 
     /**
-     * @return Guest portal configuration when `type`==`guestPortal`. If
-     *   * `auth`==`none`, the user is presented with a terms of service and can click and continue.
-     *   * `auth`==`external`, the user is redirected to an external URL for authentication.
-     *   * `auth`==`multi`, the user is presented with a choice of authentication methods:
-     *     - social logins: facebook / google / amazon / microsoft / azure
-     *     - sponsor
-     *     - sms: supported provider: twillio
-     *     - email
-     *     - sso
-     *     - userpass: pre created guest list
+     * @return Guest portal settings used when `type`==`guestPortal`
      * 
      */
     public Output<Optional<NacPortalPortal>> portal() {
         return Codegen.optional(this.portal);
     }
+    /**
+     * Wireless SSID associated with the NAC portal
+     * 
+     */
     @Export(name="ssid", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ssid;
 
+    /**
+     * @return Wireless SSID associated with the NAC portal
+     * 
+     */
     public Output<Optional<String>> ssid() {
         return Codegen.optional(this.ssid);
     }
+    /**
+     * SAML SSO settings for NAC portal authentication and role mapping
+     * 
+     */
     @Export(name="sso", refs={NacPortalSso.class}, tree="[0]")
     private Output</* @Nullable */ NacPortalSso> sso;
 
+    /**
+     * @return SAML SSO settings for NAC portal authentication and role mapping
+     * 
+     */
     public Output<Optional<NacPortalSso>> sso() {
         return Codegen.optional(this.sso);
     }
+    /**
+     * Terms of service text shown in the NAC portal
+     * 
+     */
     @Export(name="tos", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tos;
 
+    /**
+     * @return Terms of service text shown in the NAC portal
+     * 
+     */
     public Output<Optional<String>> tos() {
         return Codegen.optional(this.tos);
     }
     /**
-     * enum:
-     *   * `guestAdmin`: NAC-Based Portal Admin for Pre Created Guest Authentication
-     *   * `guestPortal`: NAC-Based Guest Portal
-     *   * `marvisClient`
+     * NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return enum:
-     *   * `guestAdmin`: NAC-Based Portal Admin for Pre Created Guest Authentication
-     *   * `guestPortal`: NAC-Based Guest Portal
-     *   * `marvisClient`
+     * @return NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
      * 
      */
     public Output<Optional<String>> type() {

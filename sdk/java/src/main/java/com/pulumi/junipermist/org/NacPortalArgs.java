@@ -22,14 +22,14 @@ public final class NacPortalArgs extends com.pulumi.resources.ResourceArgs {
     public static final NacPortalArgs Empty = new NacPortalArgs();
 
     /**
-     * if `type`==`marvisClient`. enum: `wireless`, `wireless+wired`
+     * If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients
      * 
      */
     @Import(name="accessType")
     private @Nullable Output<String> accessType;
 
     /**
-     * @return if `type`==`marvisClient`. enum: `wireless`, `wireless+wired`
+     * @return If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients
      * 
      */
     public Optional<Output<String>> accessType() {
@@ -37,14 +37,14 @@ public final class NacPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional list of additional CA certificates to be used
+     * Additional CA certificates trusted during NAC portal certificate onboarding
      * 
      */
     @Import(name="additionalCacerts")
     private @Nullable Output<List<String>> additionalCacerts;
 
     /**
-     * @return Optional list of additional CA certificates to be used
+     * @return Additional CA certificates trusted during NAC portal certificate onboarding
      * 
      */
     public Optional<Output<List<String>>> additionalCacerts() {
@@ -67,14 +67,14 @@ public final class NacPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * In days
+     * Validity duration for portal-issued client certificates, in days
      * 
      */
     @Import(name="certExpireTime")
     private @Nullable Output<Integer> certExpireTime;
 
     /**
-     * @return In days
+     * @return Validity duration for portal-issued client certificates, in days
      * 
      */
     public Optional<Output<Integer>> certExpireTime() {
@@ -82,14 +82,14 @@ public final class NacPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * enum: `wpa2`, `wpa3`
+     * EAP mode used when onboarding wireless clients through the NAC portal
      * 
      */
     @Import(name="eapType")
     private @Nullable Output<String> eapType;
 
     /**
-     * @return enum: `wpa2`, `wpa3`
+     * @return EAP mode used when onboarding wireless clients through the NAC portal
      * 
      */
     public Optional<Output<String>> eapType() {
@@ -112,118 +112,134 @@ public final class NacPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * In days
+     * Number of days before certificate expiration to start sending reminder notifications
      * 
      */
     @Import(name="expiryNotificationTime")
     private @Nullable Output<Integer> expiryNotificationTime;
 
     /**
-     * @return In days
+     * @return Number of days before certificate expiration to start sending reminder notifications
      * 
      */
     public Optional<Output<Integer>> expiryNotificationTime() {
         return Optional.ofNullable(this.expiryNotificationTime);
     }
 
+    /**
+     * Human-readable name of the NAC portal
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Human-readable name of the NAC portal
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
     /**
-     * phase 2
+     * Whether to send reminder notifications before portal-issued certificates expire
      * 
      */
     @Import(name="notifyExpiry")
     private @Nullable Output<Boolean> notifyExpiry;
 
     /**
-     * @return phase 2
+     * @return Whether to send reminder notifications before portal-issued certificates expire
      * 
      */
     public Optional<Output<Boolean>> notifyExpiry() {
         return Optional.ofNullable(this.notifyExpiry);
     }
 
+    /**
+     * Organization that owns this NAC portal
+     * 
+     */
     @Import(name="orgId", required=true)
     private Output<String> orgId;
 
+    /**
+     * @return Organization that owns this NAC portal
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }
 
     /**
-     * Guest portal configuration when `type`==`guestPortal`. If
-     *   * `auth`==`none`, the user is presented with a terms of service and can click and continue.
-     *   * `auth`==`external`, the user is redirected to an external URL for authentication.
-     *   * `auth`==`multi`, the user is presented with a choice of authentication methods:
-     *     - social logins: facebook / google / amazon / microsoft / azure
-     *     - sponsor
-     *     - sms: supported provider: twillio
-     *     - email
-     *     - sso
-     *     - userpass: pre created guest list
+     * Guest portal settings used when `type`==`guestPortal`
      * 
      */
     @Import(name="portal")
     private @Nullable Output<NacPortalPortalArgs> portal;
 
     /**
-     * @return Guest portal configuration when `type`==`guestPortal`. If
-     *   * `auth`==`none`, the user is presented with a terms of service and can click and continue.
-     *   * `auth`==`external`, the user is redirected to an external URL for authentication.
-     *   * `auth`==`multi`, the user is presented with a choice of authentication methods:
-     *     - social logins: facebook / google / amazon / microsoft / azure
-     *     - sponsor
-     *     - sms: supported provider: twillio
-     *     - email
-     *     - sso
-     *     - userpass: pre created guest list
+     * @return Guest portal settings used when `type`==`guestPortal`
      * 
      */
     public Optional<Output<NacPortalPortalArgs>> portal() {
         return Optional.ofNullable(this.portal);
     }
 
+    /**
+     * Wireless SSID associated with the NAC portal
+     * 
+     */
     @Import(name="ssid")
     private @Nullable Output<String> ssid;
 
+    /**
+     * @return Wireless SSID associated with the NAC portal
+     * 
+     */
     public Optional<Output<String>> ssid() {
         return Optional.ofNullable(this.ssid);
     }
 
+    /**
+     * SAML SSO settings for NAC portal authentication and role mapping
+     * 
+     */
     @Import(name="sso")
     private @Nullable Output<NacPortalSsoArgs> sso;
 
+    /**
+     * @return SAML SSO settings for NAC portal authentication and role mapping
+     * 
+     */
     public Optional<Output<NacPortalSsoArgs>> sso() {
         return Optional.ofNullable(this.sso);
     }
 
+    /**
+     * Terms of service text shown in the NAC portal
+     * 
+     */
     @Import(name="tos")
     private @Nullable Output<String> tos;
 
+    /**
+     * @return Terms of service text shown in the NAC portal
+     * 
+     */
     public Optional<Output<String>> tos() {
         return Optional.ofNullable(this.tos);
     }
 
     /**
-     * enum:
-     *   * `guestAdmin`: NAC-Based Portal Admin for Pre Created Guest Authentication
-     *   * `guestPortal`: NAC-Based Guest Portal
-     *   * `marvisClient`
+     * NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return enum:
-     *   * `guestAdmin`: NAC-Based Portal Admin for Pre Created Guest Authentication
-     *   * `guestPortal`: NAC-Based Guest Portal
-     *   * `marvisClient`
+     * @return NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
      * 
      */
     public Optional<Output<String>> type() {
@@ -269,7 +285,7 @@ public final class NacPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessType if `type`==`marvisClient`. enum: `wireless`, `wireless+wired`
+         * @param accessType If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients
          * 
          * @return builder
          * 
@@ -280,7 +296,7 @@ public final class NacPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessType if `type`==`marvisClient`. enum: `wireless`, `wireless+wired`
+         * @param accessType If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients
          * 
          * @return builder
          * 
@@ -290,7 +306,7 @@ public final class NacPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalCacerts Optional list of additional CA certificates to be used
+         * @param additionalCacerts Additional CA certificates trusted during NAC portal certificate onboarding
          * 
          * @return builder
          * 
@@ -301,7 +317,7 @@ public final class NacPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalCacerts Optional list of additional CA certificates to be used
+         * @param additionalCacerts Additional CA certificates trusted during NAC portal certificate onboarding
          * 
          * @return builder
          * 
@@ -311,7 +327,7 @@ public final class NacPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalCacerts Optional list of additional CA certificates to be used
+         * @param additionalCacerts Additional CA certificates trusted during NAC portal certificate onboarding
          * 
          * @return builder
          * 
@@ -352,7 +368,7 @@ public final class NacPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certExpireTime In days
+         * @param certExpireTime Validity duration for portal-issued client certificates, in days
          * 
          * @return builder
          * 
@@ -363,7 +379,7 @@ public final class NacPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certExpireTime In days
+         * @param certExpireTime Validity duration for portal-issued client certificates, in days
          * 
          * @return builder
          * 
@@ -373,7 +389,7 @@ public final class NacPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eapType enum: `wpa2`, `wpa3`
+         * @param eapType EAP mode used when onboarding wireless clients through the NAC portal
          * 
          * @return builder
          * 
@@ -384,7 +400,7 @@ public final class NacPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eapType enum: `wpa2`, `wpa3`
+         * @param eapType EAP mode used when onboarding wireless clients through the NAC portal
          * 
          * @return builder
          * 
@@ -415,7 +431,7 @@ public final class NacPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param expiryNotificationTime In days
+         * @param expiryNotificationTime Number of days before certificate expiration to start sending reminder notifications
          * 
          * @return builder
          * 
@@ -426,7 +442,7 @@ public final class NacPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param expiryNotificationTime In days
+         * @param expiryNotificationTime Number of days before certificate expiration to start sending reminder notifications
          * 
          * @return builder
          * 
@@ -435,17 +451,29 @@ public final class NacPortalArgs extends com.pulumi.resources.ResourceArgs {
             return expiryNotificationTime(Output.of(expiryNotificationTime));
         }
 
+        /**
+         * @param name Human-readable name of the NAC portal
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Human-readable name of the NAC portal
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
         /**
-         * @param notifyExpiry phase 2
+         * @param notifyExpiry Whether to send reminder notifications before portal-issued certificates expire
          * 
          * @return builder
          * 
@@ -456,7 +484,7 @@ public final class NacPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notifyExpiry phase 2
+         * @param notifyExpiry Whether to send reminder notifications before portal-issued certificates expire
          * 
          * @return builder
          * 
@@ -465,26 +493,29 @@ public final class NacPortalArgs extends com.pulumi.resources.ResourceArgs {
             return notifyExpiry(Output.of(notifyExpiry));
         }
 
+        /**
+         * @param orgId Organization that owns this NAC portal
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param orgId Organization that owns this NAC portal
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }
 
         /**
-         * @param portal Guest portal configuration when `type`==`guestPortal`. If
-         *   * `auth`==`none`, the user is presented with a terms of service and can click and continue.
-         *   * `auth`==`external`, the user is redirected to an external URL for authentication.
-         *   * `auth`==`multi`, the user is presented with a choice of authentication methods:
-         *     - social logins: facebook / google / amazon / microsoft / azure
-         *     - sponsor
-         *     - sms: supported provider: twillio
-         *     - email
-         *     - sso
-         *     - userpass: pre created guest list
+         * @param portal Guest portal settings used when `type`==`guestPortal`
          * 
          * @return builder
          * 
@@ -495,16 +526,7 @@ public final class NacPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portal Guest portal configuration when `type`==`guestPortal`. If
-         *   * `auth`==`none`, the user is presented with a terms of service and can click and continue.
-         *   * `auth`==`external`, the user is redirected to an external URL for authentication.
-         *   * `auth`==`multi`, the user is presented with a choice of authentication methods:
-         *     - social logins: facebook / google / amazon / microsoft / azure
-         *     - sponsor
-         *     - sms: supported provider: twillio
-         *     - email
-         *     - sso
-         *     - userpass: pre created guest list
+         * @param portal Guest portal settings used when `type`==`guestPortal`
          * 
          * @return builder
          * 
@@ -513,38 +535,71 @@ public final class NacPortalArgs extends com.pulumi.resources.ResourceArgs {
             return portal(Output.of(portal));
         }
 
+        /**
+         * @param ssid Wireless SSID associated with the NAC portal
+         * 
+         * @return builder
+         * 
+         */
         public Builder ssid(@Nullable Output<String> ssid) {
             $.ssid = ssid;
             return this;
         }
 
+        /**
+         * @param ssid Wireless SSID associated with the NAC portal
+         * 
+         * @return builder
+         * 
+         */
         public Builder ssid(String ssid) {
             return ssid(Output.of(ssid));
         }
 
+        /**
+         * @param sso SAML SSO settings for NAC portal authentication and role mapping
+         * 
+         * @return builder
+         * 
+         */
         public Builder sso(@Nullable Output<NacPortalSsoArgs> sso) {
             $.sso = sso;
             return this;
         }
 
+        /**
+         * @param sso SAML SSO settings for NAC portal authentication and role mapping
+         * 
+         * @return builder
+         * 
+         */
         public Builder sso(NacPortalSsoArgs sso) {
             return sso(Output.of(sso));
         }
 
+        /**
+         * @param tos Terms of service text shown in the NAC portal
+         * 
+         * @return builder
+         * 
+         */
         public Builder tos(@Nullable Output<String> tos) {
             $.tos = tos;
             return this;
         }
 
+        /**
+         * @param tos Terms of service text shown in the NAC portal
+         * 
+         * @return builder
+         * 
+         */
         public Builder tos(String tos) {
             return tos(Output.of(tos));
         }
 
         /**
-         * @param type enum:
-         *   * `guestAdmin`: NAC-Based Portal Admin for Pre Created Guest Authentication
-         *   * `guestPortal`: NAC-Based Guest Portal
-         *   * `marvisClient`
+         * @param type NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
          * 
          * @return builder
          * 
@@ -555,10 +610,7 @@ public final class NacPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type enum:
-         *   * `guestAdmin`: NAC-Based Portal Admin for Pre Created Guest Authentication
-         *   * `guestPortal`: NAC-Based Guest Portal
-         *   * `marvisClient`
+         * @param type NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
          * 
          * @return builder
          * 

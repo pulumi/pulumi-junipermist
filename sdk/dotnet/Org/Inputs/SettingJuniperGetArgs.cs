@@ -14,6 +14,10 @@ namespace Pulumi.JuniperMist.Org.Inputs
     {
         [Input("accounts")]
         private InputList<Inputs.SettingJuniperAccountGetArgs>? _accounts;
+
+        /// <summary>
+        /// List of linked Juniper account records
+        /// </summary>
         public InputList<Inputs.SettingJuniperAccountGetArgs> Accounts
         {
             get => _accounts ?? (_accounts = new InputList<Inputs.SettingJuniperAccountGetArgs>());

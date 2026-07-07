@@ -13,9 +13,21 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class NetworktemplateSwitchMgmtTacacsAcctServer
     {
+        /// <summary>
+        /// Address or hostname of the TACACS+ accounting server
+        /// </summary>
         public readonly string? Host;
+        /// <summary>
+        /// TCP port used by the TACACS+ accounting server
+        /// </summary>
         public readonly string? Port;
+        /// <summary>
+        /// Shared secret used with this TACACS+ accounting server
+        /// </summary>
         public readonly string? Secret;
+        /// <summary>
+        /// TACACS+ accounting server timeout, in seconds
+        /// </summary>
         public readonly int? Timeout;
 
         [OutputConstructor]

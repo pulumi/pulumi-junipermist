@@ -73,7 +73,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// Only if `Mode`!=`Dynamic`. Link connection mode. enum: `Auto`, `Full`, `Half`
+        /// Only if `Mode`!=`Dynamic`. Link duplex mode for this port usage
         /// </summary>
         [Input("duplex")]
         public Input<string>? Duplex { get; set; }
@@ -82,7 +82,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _dynamicVlanNetworks;
 
         /// <summary>
-        /// Only if `Mode`!=`Dynamic` and `PortAuth`==`Dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
+        /// Only if `Mode`!=`Dynamic` and `PortAuth`==`Dot1x`. Networks or VLANs that RADIUS can return for dynamic VLAN assignment
         /// </summary>
         public InputList<string> DynamicVlanNetworks
         {
@@ -133,7 +133,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? MacAuthPreferred { get; set; }
 
         /// <summary>
-        /// Only if `Mode`!=`Dynamic` and `EnableMacAuth` ==`True`. This type is ignored if MistNac is enabled. enum: `eap-md5`, `eap-peap`, `Pap`
+        /// Only if `Mode`!=`Dynamic` and `EnableMacAuth`==`True`. MAC authentication protocol to use; ignored if Mist NAC is enabled
         /// </summary>
         [Input("macAuthProtocol")]
         public Input<string>? MacAuthProtocol { get; set; }
@@ -145,7 +145,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? MacLimit { get; set; }
 
         /// <summary>
-        /// `Mode`==`Dynamic` must only be used if the port usage name is `Dynamic`. enum: `Access`, `Dynamic`, `Inet`, `Trunk`
+        /// Switching mode for this port usage
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -160,7 +160,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _networks;
 
         /// <summary>
-        /// Only if `Mode`==`Trunk`, the list of network/vlans
+        /// Only if `Mode`==`Trunk`. Network or VLAN names to trunk
         /// </summary>
         public InputList<string> Networks
         {
@@ -187,13 +187,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? PoeKeepStateWhenReboot { get; set; }
 
         /// <summary>
-        /// PoE priority. enum: `Low`, `High`
+        /// Only if `Mode`!=`Dynamic`. PoE priority for ports using this port usage
         /// </summary>
         [Input("poePriority")]
         public Input<string>? PoePriority { get; set; }
 
         /// <summary>
-        /// Only if `Mode`!=`Dynamic`. If dot1x is desired, set to dot1x. enum: `Dot1x`
+        /// Only if `Mode`!=`Dynamic`. 802.1X authentication mode for this port usage
         /// </summary>
         [Input("portAuth")]
         public Input<string>? PortAuth { get; set; }
@@ -211,7 +211,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? ReauthInterval { get; set; }
 
         /// <summary>
-        /// Only if `Mode`==`Dynamic` Control when the DPC port should be changed to the default port usage. enum: `LinkDown`, `None` (let the DPC port keep at the current port usage)
+        /// Only if `Mode`==`Dynamic`. Condition that resets a dynamic port to the default port usage
         /// </summary>
         [Input("resetDefaultWhen")]
         public Input<string>? ResetDefaultWhen { get; set; }
@@ -220,7 +220,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<Inputs.NetworktemplatePortUsagesRuleArgs>? _rules;
 
         /// <summary>
-        /// Only if `Mode`==`Dynamic`
+        /// Only if `Mode`==`Dynamic`. Dynamic matching rules that select the port usage to apply
         /// </summary>
         public InputList<Inputs.NetworktemplatePortUsagesRuleArgs> Rules
         {
@@ -235,19 +235,25 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? ServerFailNetwork { get; set; }
 
         /// <summary>
-        /// Only if `Mode`!=`Dynamic` and `PortAuth`==`Dot1x`. When radius server reject / fails
+        /// Only if `Mode`!=`Dynamic` and `PortAuth`==`Dot1x`. Interval, in seconds. Sets the wait time before retrying authentication after RADIUS failure to reduce client flapping. Range 120-65535
+        /// </summary>
+        [Input("serverFailRetryInterval")]
+        public Input<int>? ServerFailRetryInterval { get; set; }
+
+        /// <summary>
+        /// Only if `Mode`!=`Dynamic` and `PortAuth`==`Dot1x`. When RADIUS server reject / fails
         /// </summary>
         [Input("serverRejectNetwork")]
         public Input<string>? ServerRejectNetwork { get; set; }
 
         /// <summary>
-        /// Only if `Mode`!=`Dynamic`, Port speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`Auto`
+        /// Only if `Mode`!=`Dynamic`. Link speed for this port usage
         /// </summary>
         [Input("speed")]
         public Input<string>? Speed { get; set; }
 
         /// <summary>
-        /// Switch storm control. Only if `Mode`!=`Dynamic`
+        /// Only if `Mode`!=`Dynamic`. Storm-control settings for this port usage
         /// </summary>
         [Input("stormControl")]
         public Input<Inputs.NetworktemplatePortUsagesStormControlArgs>? StormControl { get; set; }

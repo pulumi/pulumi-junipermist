@@ -18,14 +18,14 @@ public final class GatewayIdpProfilesArgs extends com.pulumi.resources.ResourceA
     public static final GatewayIdpProfilesArgs Empty = new GatewayIdpProfilesArgs();
 
     /**
-     * enum: `critical`, `standard`, `strict`
+     * Built-in IDP baseline profile inherited before applying overwrites
      * 
      */
     @Import(name="baseProfile")
     private @Nullable Output<String> baseProfile;
 
     /**
-     * @return enum: `critical`, `standard`, `strict`
+     * @return Built-in IDP baseline profile inherited before applying overwrites
      * 
      */
     public Optional<Output<String>> baseProfile() {
@@ -33,37 +33,61 @@ public final class GatewayIdpProfilesArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Unique ID of the object instance in the Mist Organization
+     * Unique identifier of the IDP profile
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return Unique ID of the object instance in the Mist Organization
+     * @return Unique identifier of the IDP profile
      * 
      */
     public Optional<Output<String>> id() {
         return Optional.ofNullable(this.id);
     }
 
+    /**
+     * Display name of the IDP profile
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Display name of the IDP profile
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Owning organization for the IDP profile
+     * 
+     */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
+    /**
+     * @return Owning organization for the IDP profile
+     * 
+     */
     public Optional<Output<String>> orgId() {
         return Optional.ofNullable(this.orgId);
     }
 
+    /**
+     * IDP signature override rules applied on top of the base profile
+     * 
+     */
     @Import(name="overwrites")
     private @Nullable Output<List<GatewayIdpProfilesOverwriteArgs>> overwrites;
 
+    /**
+     * @return IDP signature override rules applied on top of the base profile
+     * 
+     */
     public Optional<Output<List<GatewayIdpProfilesOverwriteArgs>>> overwrites() {
         return Optional.ofNullable(this.overwrites);
     }
@@ -97,7 +121,7 @@ public final class GatewayIdpProfilesArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param baseProfile enum: `critical`, `standard`, `strict`
+         * @param baseProfile Built-in IDP baseline profile inherited before applying overwrites
          * 
          * @return builder
          * 
@@ -108,7 +132,7 @@ public final class GatewayIdpProfilesArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param baseProfile enum: `critical`, `standard`, `strict`
+         * @param baseProfile Built-in IDP baseline profile inherited before applying overwrites
          * 
          * @return builder
          * 
@@ -118,7 +142,7 @@ public final class GatewayIdpProfilesArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param id Unique ID of the object instance in the Mist Organization
+         * @param id Unique identifier of the IDP profile
          * 
          * @return builder
          * 
@@ -129,7 +153,7 @@ public final class GatewayIdpProfilesArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param id Unique ID of the object instance in the Mist Organization
+         * @param id Unique identifier of the IDP profile
          * 
          * @return builder
          * 
@@ -138,33 +162,75 @@ public final class GatewayIdpProfilesArgs extends com.pulumi.resources.ResourceA
             return id(Output.of(id));
         }
 
+        /**
+         * @param name Display name of the IDP profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Display name of the IDP profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param orgId Owning organization for the IDP profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(@Nullable Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param orgId Owning organization for the IDP profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }
 
+        /**
+         * @param overwrites IDP signature override rules applied on top of the base profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder overwrites(@Nullable Output<List<GatewayIdpProfilesOverwriteArgs>> overwrites) {
             $.overwrites = overwrites;
             return this;
         }
 
+        /**
+         * @param overwrites IDP signature override rules applied on top of the base profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder overwrites(List<GatewayIdpProfilesOverwriteArgs> overwrites) {
             return overwrites(Output.of(overwrites));
         }
 
+        /**
+         * @param overwrites IDP signature override rules applied on top of the base profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder overwrites(GatewayIdpProfilesOverwriteArgs... overwrites) {
             return overwrites(List.of(overwrites));
         }

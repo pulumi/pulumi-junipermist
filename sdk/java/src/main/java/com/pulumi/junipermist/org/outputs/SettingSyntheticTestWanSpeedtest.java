@@ -12,19 +12,27 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingSyntheticTestWanSpeedtest {
+    /**
+     * @return Whether scheduled WAN speedtests are enabled
+     * 
+     */
     private @Nullable Boolean enabled;
     /**
-     * @return `any` / HH:MM (24-hour format)
+     * @return Scheduled time of day for WAN speedtests
      * 
      */
     private @Nullable String timeOfDay;
 
     private SettingSyntheticTestWanSpeedtest() {}
+    /**
+     * @return Whether scheduled WAN speedtests are enabled
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return `any` / HH:MM (24-hour format)
+     * @return Scheduled time of day for WAN speedtests
      * 
      */
     public Optional<String> timeOfDay() {

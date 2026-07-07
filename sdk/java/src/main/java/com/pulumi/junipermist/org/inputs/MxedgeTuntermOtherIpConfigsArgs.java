@@ -14,16 +14,32 @@ public final class MxedgeTuntermOtherIpConfigsArgs extends com.pulumi.resources.
 
     public static final MxedgeTuntermOtherIpConfigsArgs Empty = new MxedgeTuntermOtherIpConfigsArgs();
 
+    /**
+     * Address for the additional Mist Tunnel interface, in IPv4 format
+     * 
+     */
     @Import(name="ip", required=true)
     private Output<String> ip;
 
+    /**
+     * @return Address for the additional Mist Tunnel interface, in IPv4 format
+     * 
+     */
     public Output<String> ip() {
         return this.ip;
     }
 
+    /**
+     * Subnet mask for the additional Mist Tunnel IPv4 address
+     * 
+     */
     @Import(name="netmask", required=true)
     private Output<String> netmask;
 
+    /**
+     * @return Subnet mask for the additional Mist Tunnel IPv4 address
+     * 
+     */
     public Output<String> netmask() {
         return this.netmask;
     }
@@ -53,20 +69,44 @@ public final class MxedgeTuntermOtherIpConfigsArgs extends com.pulumi.resources.
             $ = new MxedgeTuntermOtherIpConfigsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ip Address for the additional Mist Tunnel interface, in IPv4 format
+         * 
+         * @return builder
+         * 
+         */
         public Builder ip(Output<String> ip) {
             $.ip = ip;
             return this;
         }
 
+        /**
+         * @param ip Address for the additional Mist Tunnel interface, in IPv4 format
+         * 
+         * @return builder
+         * 
+         */
         public Builder ip(String ip) {
             return ip(Output.of(ip));
         }
 
+        /**
+         * @param netmask Subnet mask for the additional Mist Tunnel IPv4 address
+         * 
+         * @return builder
+         * 
+         */
         public Builder netmask(Output<String> netmask) {
             $.netmask = netmask;
             return this;
         }
 
+        /**
+         * @param netmask Subnet mask for the additional Mist Tunnel IPv4 address
+         * 
+         * @return builder
+         * 
+         */
         public Builder netmask(String netmask) {
             return netmask(Output.of(netmask));
         }

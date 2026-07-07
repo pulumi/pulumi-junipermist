@@ -12,37 +12,77 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MxedgeTuntermIpConfig {
+    /**
+     * @return IPv4 gateway for the Mist Tunnel interface
+     * 
+     */
     private String gateway;
+    /**
+     * @return IPv6 gateway for the Mist Tunnel interface
+     * 
+     */
     private @Nullable String gateway6;
     /**
-     * @return Untagged VLAN
+     * @return Address on the untagged Mist Tunnel interface, in IPv4 format
      * 
      */
     private String ip;
+    /**
+     * @return Address on the Mist Tunnel interface, in IPv6 format
+     * 
+     */
     private @Nullable String ip6;
+    /**
+     * @return Subnet mask for the Mist Tunnel IPv4 address
+     * 
+     */
     private String netmask;
+    /**
+     * @return Prefix length for the Mist Tunnel IPv6 address
+     * 
+     */
     private @Nullable String netmask6;
 
     private MxedgeTuntermIpConfig() {}
+    /**
+     * @return IPv4 gateway for the Mist Tunnel interface
+     * 
+     */
     public String gateway() {
         return this.gateway;
     }
+    /**
+     * @return IPv6 gateway for the Mist Tunnel interface
+     * 
+     */
     public Optional<String> gateway6() {
         return Optional.ofNullable(this.gateway6);
     }
     /**
-     * @return Untagged VLAN
+     * @return Address on the untagged Mist Tunnel interface, in IPv4 format
      * 
      */
     public String ip() {
         return this.ip;
     }
+    /**
+     * @return Address on the Mist Tunnel interface, in IPv6 format
+     * 
+     */
     public Optional<String> ip6() {
         return Optional.ofNullable(this.ip6);
     }
+    /**
+     * @return Subnet mask for the Mist Tunnel IPv4 address
+     * 
+     */
     public String netmask() {
         return this.netmask;
     }
+    /**
+     * @return Prefix length for the Mist Tunnel IPv6 address
+     * 
+     */
     public Optional<String> netmask6() {
         return Optional.ofNullable(this.netmask6);
     }

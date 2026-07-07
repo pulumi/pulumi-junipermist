@@ -34,12 +34,18 @@ __all__ = [
 class UpgradeDeviceAutoUpgradeStat(dict):
     def __init__(__self__, *,
                  lastcheck: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int lastcheck: Time when the device last checked for auto-upgrade, in epoch seconds
+        """
         if lastcheck is not None:
             pulumi.set(__self__, "lastcheck", lastcheck)
 
     @_builtins.property
     @pulumi.getter
     def lastcheck(self) -> Optional[_builtins.int]:
+        """
+        Time when the device last checked for auto-upgrade, in epoch seconds
+        """
         return pulumi.get(self, "lastcheck")
 
 
@@ -71,8 +77,11 @@ class UpgradeDeviceFwupdate(dict):
                  timestamp: Optional[_builtins.float] = None,
                  will_retry: Optional[_builtins.bool] = None):
         """
-        :param _builtins.str status: enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
-        :param _builtins.float timestamp: Epoch (seconds)
+        :param _builtins.int progress: Firmware update progress percentage, or null when unavailable
+        :param _builtins.str status: Current firmware update status
+        :param _builtins.int status_id: Numeric firmware update status identifier
+        :param _builtins.float timestamp: Time when the firmware update status was last updated
+        :param _builtins.bool will_retry: Whether the firmware update process will retry after the current status
         """
         if progress is not None:
             pulumi.set(__self__, "progress", progress)
@@ -88,32 +97,41 @@ class UpgradeDeviceFwupdate(dict):
     @_builtins.property
     @pulumi.getter
     def progress(self) -> Optional[_builtins.int]:
+        """
+        Firmware update progress percentage, or null when unavailable
+        """
         return pulumi.get(self, "progress")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
         """
-        enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
+        Current firmware update status
         """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="statusId")
     def status_id(self) -> Optional[_builtins.int]:
+        """
+        Numeric firmware update status identifier
+        """
         return pulumi.get(self, "status_id")
 
     @_builtins.property
     @pulumi.getter
     def timestamp(self) -> Optional[_builtins.float]:
         """
-        Epoch (seconds)
+        Time when the firmware update status was last updated
         """
         return pulumi.get(self, "timestamp")
 
     @_builtins.property
     @pulumi.getter(name="willRetry")
     def will_retry(self) -> Optional[_builtins.bool]:
+        """
+        Whether the firmware update process will retry after the current status
+        """
         return pulumi.get(self, "will_retry")
 
 

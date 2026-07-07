@@ -12,25 +12,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingCradlepoint {
+    /**
+     * @return Cradlepoint API ID used by Mist for the integration
+     * 
+     */
     private @Nullable String cpApiId;
+    /**
+     * @return Cradlepoint API key paired with the Cradlepoint API ID
+     * 
+     */
     private @Nullable String cpApiKey;
+    /**
+     * @return Cradlepoint ECM API ID used by Mist for the integration
+     * 
+     */
     private @Nullable String ecmApiId;
+    /**
+     * @return Cradlepoint ECM API key paired with the ECM API ID
+     * 
+     */
     private @Nullable String ecmApiKey;
+    /**
+     * @return Whether Mist uses Cradlepoint LLDP data to link routers to Mist sites and devices
+     * 
+     */
     private @Nullable Boolean enableLldp;
 
     private SettingCradlepoint() {}
+    /**
+     * @return Cradlepoint API ID used by Mist for the integration
+     * 
+     */
     public Optional<String> cpApiId() {
         return Optional.ofNullable(this.cpApiId);
     }
+    /**
+     * @return Cradlepoint API key paired with the Cradlepoint API ID
+     * 
+     */
     public Optional<String> cpApiKey() {
         return Optional.ofNullable(this.cpApiKey);
     }
+    /**
+     * @return Cradlepoint ECM API ID used by Mist for the integration
+     * 
+     */
     public Optional<String> ecmApiId() {
         return Optional.ofNullable(this.ecmApiId);
     }
+    /**
+     * @return Cradlepoint ECM API key paired with the ECM API ID
+     * 
+     */
     public Optional<String> ecmApiKey() {
         return Optional.ofNullable(this.ecmApiKey);
     }
+    /**
+     * @return Whether Mist uses Cradlepoint LLDP data to link routers to Mist sites and devices
+     * 
+     */
     public Optional<Boolean> enableLldp() {
         return Optional.ofNullable(this.enableLldp);
     }

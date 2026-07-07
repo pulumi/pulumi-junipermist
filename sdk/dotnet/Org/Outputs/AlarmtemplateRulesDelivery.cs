@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class AlarmtemplateRulesDelivery
     {
         /// <summary>
-        /// List of additional email string to deliver the alarms via emails
+        /// Additional email recipients for alarm delivery
         /// </summary>
         public readonly ImmutableArray<string> AdditionalEmails;
         /// <summary>

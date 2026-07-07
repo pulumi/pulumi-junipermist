@@ -21,6 +21,9 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; `True`: ports become trusted ports allowing DHCP server traffic, `False`: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
         /// </summary>
         public readonly bool? AllowDhcpd;
+        /// <summary>
+        /// Whether multiple supplicants may authenticate on the port
+        /// </summary>
         public readonly bool? AllowMultipleSupplicants;
         /// <summary>
         /// Only if `PortAuth`==`Dot1x` bypass auth for known clients if set to true when RADIUS server is down
@@ -30,6 +33,9 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// Only if `PortAuth`=`Dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
         /// </summary>
         public readonly bool? BypassAuthWhenServerDownForUnknownClient;
+        /// <summary>
+        /// Human-readable description for this local port configuration
+        /// </summary>
         public readonly string? Description;
         /// <summary>
         /// Only if `Mode`!=`Dynamic` if speed and duplex are specified, whether to disable autonegotiation
@@ -40,28 +46,31 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>
-        /// link connection mode. enum: `Auto`, `Full`, `Half`
+        /// Link duplex mode for this local port configuration
         /// </summary>
         public readonly string? Duplex;
         /// <summary>
-        /// Only if `PortAuth`==`Dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
+        /// Only if `PortAuth`==`Dot1x`, networks or VLANs that RADIUS can return for dynamic VLAN assignment
         /// </summary>
         public readonly ImmutableArray<string> DynamicVlanNetworks;
         /// <summary>
         /// Only if `PortAuth`==`Dot1x` whether to enable MAC Auth
         /// </summary>
         public readonly bool? EnableMacAuth;
+        /// <summary>
+        /// Whether QoS is enabled on ports using this local configuration
+        /// </summary>
         public readonly bool? EnableQos;
         /// <summary>
         /// Only if `PortAuth`==`Dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
         /// </summary>
         public readonly string? GuestNetwork;
         /// <summary>
-        /// inter_switch_link is used together with "isolation" under networks. NOTE: InterSwitchLink works only between Juniper devices. This has to be applied to both ports connected together
+        /// Used together with "isolation" under networks for links between Juniper devices; must be applied to both connected ports
         /// </summary>
         public readonly bool? InterSwitchLink;
         /// <summary>
-        /// Only if `EnableMacAuth`==`True`
+        /// Only if `EnableMacAuth`==`True`, whether to use MAC authentication without 802.1X
         /// </summary>
         public readonly bool? MacAuthOnly;
         /// <summary>
@@ -69,15 +78,15 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool? MacAuthPreferred;
         /// <summary>
-        /// Only if `EnableMacAuth` ==`True`. This type is ignored if MistNac is enabled. enum: `eap-md5`, `eap-peap`, `Pap`
+        /// Only if `EnableMacAuth`==`True`, MAC authentication protocol to use
         /// </summary>
         public readonly string? MacAuthProtocol;
         /// <summary>
-        /// Max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
+        /// Max number of MAC addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
         /// </summary>
         public readonly int? MacLimit;
         /// <summary>
-        /// enum: `Access`, `Inet`, `Trunk`
+        /// Switching mode for this local port configuration
         /// </summary>
         public readonly string? Mode;
         /// <summary>
@@ -85,7 +94,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly int? Mtu;
         /// <summary>
-        /// Only if `Mode`==`Trunk`, the list of network/vlans
+        /// Only if `Mode`==`Trunk`, network or VLAN names to trunk
         /// </summary>
         public readonly ImmutableArray<string> Networks;
         /// <summary>
@@ -101,7 +110,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool? PoeDisabled;
         /// <summary>
-        /// if dot1x is desired, set to dot1x. enum: `Dot1x`
+        /// 802.1X authentication mode for this local port configuration
         /// </summary>
         public readonly string? PortAuth;
         /// <summary>
@@ -117,25 +126,31 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? ServerFailNetwork;
         /// <summary>
-        /// Only if `PortAuth`==`Dot1x` when radius server reject / fails
+        /// Only if `PortAuth`==`Dot1x` when RADIUS server reject / fails
         /// </summary>
         public readonly string? ServerRejectNetwork;
         /// <summary>
-        /// enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`Auto`
+        /// Link speed for this local port configuration
         /// </summary>
         public readonly string? Speed;
         /// <summary>
-        /// Switch storm control
+        /// Storm-control settings for this local port configuration
         /// </summary>
         public readonly Outputs.SwitchLocalPortConfigStormControl? StormControl;
         /// <summary>
         /// When enabled, the port is not expected to receive BPDU frames
         /// </summary>
         public readonly bool? StpEdge;
+        /// <summary>
+        /// Whether STP should prevent this port from becoming a root port
+        /// </summary>
         public readonly bool? StpNoRootPort;
+        /// <summary>
+        /// Whether STP treats this port as a point-to-point link
+        /// </summary>
         public readonly bool? StpP2p;
         /// <summary>
-        /// Port usage name.
+        /// Port usage profile name for this local port configuration
         /// </summary>
         public readonly string Usage;
         /// <summary>

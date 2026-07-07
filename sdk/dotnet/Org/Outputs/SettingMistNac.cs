@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? AllowTeapMachineAuthOnly;
         /// <summary>
-        /// List of PEM-encoded ca certs
+        /// CA certificates trusted by Mist NAC for certificate-based authentication
         /// </summary>
         public readonly ImmutableArray<string> Cacerts;
         /// <summary>
@@ -34,32 +34,35 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly int? EapSslSecurityLevel;
         /// <summary>
-        /// By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliance NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, mxedge clusters that have MistNac enabled
+        /// By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliance NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, Mist Edge clusters that have MistNac enabled
         /// </summary>
         public readonly bool? EuOnly;
         /// <summary>
-        /// Allows customer to enable client fingerprinting for policy enforcement
+        /// Client fingerprinting settings used by Mist NAC
         /// </summary>
         public readonly Outputs.SettingMistNacFingerprinting? Fingerprinting;
         /// <summary>
-        /// allow customer to choose the EAP-TLS client certificate's field to use for IDP Machine Groups lookup. enum: `Automatic`, `Cn`, `Dns`
+        /// Client certificate field used to look up machine groups in identity providers
         /// </summary>
         public readonly string? IdpMachineCertLookupField;
         /// <summary>
-        /// allow customer to choose the EAP-TLS client certificate's field. To use for IDP User Groups lookup. enum: `Automatic`, `Cn`, `Email`, `Upn`
+        /// Client certificate field used to look up user groups in identity providers
         /// </summary>
         public readonly string? IdpUserCertLookupField;
+        /// <summary>
+        /// Identity provider mappings used by Mist NAC realm matching
+        /// </summary>
         public readonly ImmutableArray<Outputs.SettingMistNacIdp> Idps;
         /// <summary>
-        /// MDM (Mobile Device Management) CoA configuration
+        /// Mobile Device Management CoA settings for Mist NAC
         /// </summary>
         public readonly Outputs.SettingMistNacMdm? Mdm;
         /// <summary>
-        /// radius server cert to be presented in EAP TLS
+        /// RADIUS server certificate presented by Mist NAC during EAP-TLS
         /// </summary>
         public readonly Outputs.SettingMistNacServerCert? ServerCert;
         /// <summary>
-        /// by default, NAS devices(switches/aps) and proxies(mxedge) are configured to reach mist-nac via IPv4. enum: `V4`, `V6`
+        /// IP version used by NAS devices and Mist Edge proxies to reach Mist NAC
         /// </summary>
         public readonly string? UseIpVersion;
         /// <summary>

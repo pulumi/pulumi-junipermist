@@ -42,6 +42,10 @@ public final class InventoryInventory {
      * 
      */
     private @Nullable String model;
+    /**
+     * @return Unique identifier of a Mist organization
+     * 
+     */
     private @Nullable String orgId;
     /**
      * @return device serial
@@ -112,6 +116,10 @@ public final class InventoryInventory {
     public Optional<String> model() {
         return Optional.ofNullable(this.model);
     }
+    /**
+     * @return Unique identifier of a Mist organization
+     * 
+     */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }

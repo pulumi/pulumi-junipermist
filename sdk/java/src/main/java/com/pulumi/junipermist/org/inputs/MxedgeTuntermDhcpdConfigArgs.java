@@ -17,22 +17,30 @@ public final class MxedgeTuntermDhcpdConfigArgs extends com.pulumi.resources.Res
 
     public static final MxedgeTuntermDhcpdConfigArgs Empty = new MxedgeTuntermDhcpdConfigArgs();
 
+    /**
+     * Whether DHCP relay is enabled for this tunneled VLAN
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether DHCP relay is enabled for this tunneled VLAN
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
     /**
-     * List of DHCP servers; required if `type`==`relay`
+     * DHCP relay server addresses used by this tunneled VLAN
      * 
      */
     @Import(name="servers")
     private @Nullable Output<List<String>> servers;
 
     /**
-     * @return List of DHCP servers; required if `type`==`relay`
+     * @return DHCP relay server addresses used by this tunneled VLAN
      * 
      */
     public Optional<Output<List<String>>> servers() {
@@ -40,14 +48,14 @@ public final class MxedgeTuntermDhcpdConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * enum: `relay`
+     * DHCP handling mode for this tunneled VLAN
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return enum: `relay`
+     * @return DHCP handling mode for this tunneled VLAN
      * 
      */
     public Optional<Output<String>> type() {
@@ -80,17 +88,29 @@ public final class MxedgeTuntermDhcpdConfigArgs extends com.pulumi.resources.Res
             $ = new MxedgeTuntermDhcpdConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Whether DHCP relay is enabled for this tunneled VLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether DHCP relay is enabled for this tunneled VLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
         /**
-         * @param servers List of DHCP servers; required if `type`==`relay`
+         * @param servers DHCP relay server addresses used by this tunneled VLAN
          * 
          * @return builder
          * 
@@ -101,7 +121,7 @@ public final class MxedgeTuntermDhcpdConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param servers List of DHCP servers; required if `type`==`relay`
+         * @param servers DHCP relay server addresses used by this tunneled VLAN
          * 
          * @return builder
          * 
@@ -111,7 +131,7 @@ public final class MxedgeTuntermDhcpdConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param servers List of DHCP servers; required if `type`==`relay`
+         * @param servers DHCP relay server addresses used by this tunneled VLAN
          * 
          * @return builder
          * 
@@ -121,7 +141,7 @@ public final class MxedgeTuntermDhcpdConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param type enum: `relay`
+         * @param type DHCP handling mode for this tunneled VLAN
          * 
          * @return builder
          * 
@@ -132,7 +152,7 @@ public final class MxedgeTuntermDhcpdConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param type enum: `relay`
+         * @param type DHCP handling mode for this tunneled VLAN
          * 
          * @return builder
          * 

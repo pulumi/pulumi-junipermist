@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SwitchVrfInstancesExtraRoutes6 {
     /**
-     * @return Next-hop address
+     * @return IPv6 next-hop address for this VRF extra route
      * 
      */
     private @Nullable String via;
 
     private SwitchVrfInstancesExtraRoutes6() {}
     /**
-     * @return Next-hop address
+     * @return IPv6 next-hop address for this VRF extra route
      * 
      */
     public Optional<String> via() {

@@ -15,16 +15,32 @@ public final class NacPortalSsoSsoRoleMatchingArgs extends com.pulumi.resources.
 
     public static final NacPortalSsoSsoRoleMatchingArgs Empty = new NacPortalSsoSsoRoleMatchingArgs();
 
+    /**
+     * NAC portal role assigned when the SSO role value matches
+     * 
+     */
     @Import(name="assigned")
     private @Nullable Output<String> assigned;
 
+    /**
+     * @return NAC portal role assigned when the SSO role value matches
+     * 
+     */
     public Optional<Output<String>> assigned() {
         return Optional.ofNullable(this.assigned);
     }
 
+    /**
+     * SSO role value to match from the SAML assertion
+     * 
+     */
     @Import(name="match")
     private @Nullable Output<String> match;
 
+    /**
+     * @return SSO role value to match from the SAML assertion
+     * 
+     */
     public Optional<Output<String>> match() {
         return Optional.ofNullable(this.match);
     }
@@ -54,20 +70,44 @@ public final class NacPortalSsoSsoRoleMatchingArgs extends com.pulumi.resources.
             $ = new NacPortalSsoSsoRoleMatchingArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param assigned NAC portal role assigned when the SSO role value matches
+         * 
+         * @return builder
+         * 
+         */
         public Builder assigned(@Nullable Output<String> assigned) {
             $.assigned = assigned;
             return this;
         }
 
+        /**
+         * @param assigned NAC portal role assigned when the SSO role value matches
+         * 
+         * @return builder
+         * 
+         */
         public Builder assigned(String assigned) {
             return assigned(Output.of(assigned));
         }
 
+        /**
+         * @param match SSO role value to match from the SAML assertion
+         * 
+         * @return builder
+         * 
+         */
         public Builder match(@Nullable Output<String> match) {
             $.match = match;
             return this;
         }
 
+        /**
+         * @param match SSO role value to match from the SAML assertion
+         * 
+         * @return builder
+         * 
+         */
         public Builder match(String match) {
             return match(Output.of(match));
         }

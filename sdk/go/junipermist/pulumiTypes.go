@@ -14,6 +14,7 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type UpgradeDeviceAutoUpgradeStat struct {
+	// Time when the device last checked for auto-upgrade, in epoch seconds
 	Lastcheck *int `pulumi:"lastcheck"`
 }
 
@@ -29,6 +30,7 @@ type UpgradeDeviceAutoUpgradeStatInput interface {
 }
 
 type UpgradeDeviceAutoUpgradeStatArgs struct {
+	// Time when the device last checked for auto-upgrade, in epoch seconds
 	Lastcheck pulumi.IntPtrInput `pulumi:"lastcheck"`
 }
 
@@ -109,6 +111,7 @@ func (o UpgradeDeviceAutoUpgradeStatOutput) ToUpgradeDeviceAutoUpgradeStatPtrOut
 	}).(UpgradeDeviceAutoUpgradeStatPtrOutput)
 }
 
+// Time when the device last checked for auto-upgrade, in epoch seconds
 func (o UpgradeDeviceAutoUpgradeStatOutput) Lastcheck() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v UpgradeDeviceAutoUpgradeStat) *int { return v.Lastcheck }).(pulumi.IntPtrOutput)
 }
@@ -137,6 +140,7 @@ func (o UpgradeDeviceAutoUpgradeStatPtrOutput) Elem() UpgradeDeviceAutoUpgradeSt
 	}).(UpgradeDeviceAutoUpgradeStatOutput)
 }
 
+// Time when the device last checked for auto-upgrade, in epoch seconds
 func (o UpgradeDeviceAutoUpgradeStatPtrOutput) Lastcheck() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *UpgradeDeviceAutoUpgradeStat) *int {
 		if v == nil {
@@ -147,13 +151,16 @@ func (o UpgradeDeviceAutoUpgradeStatPtrOutput) Lastcheck() pulumi.IntPtrOutput {
 }
 
 type UpgradeDeviceFwupdate struct {
+	// Firmware update progress percentage, or null when unavailable
 	Progress *int `pulumi:"progress"`
-	// enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
-	Status   *string `pulumi:"status"`
-	StatusId *int    `pulumi:"statusId"`
-	// Epoch (seconds)
+	// Current firmware update status
+	Status *string `pulumi:"status"`
+	// Numeric firmware update status identifier
+	StatusId *int `pulumi:"statusId"`
+	// Time when the firmware update status was last updated
 	Timestamp *float64 `pulumi:"timestamp"`
-	WillRetry *bool    `pulumi:"willRetry"`
+	// Whether the firmware update process will retry after the current status
+	WillRetry *bool `pulumi:"willRetry"`
 }
 
 // UpgradeDeviceFwupdateInput is an input type that accepts UpgradeDeviceFwupdateArgs and UpgradeDeviceFwupdateOutput values.
@@ -168,13 +175,16 @@ type UpgradeDeviceFwupdateInput interface {
 }
 
 type UpgradeDeviceFwupdateArgs struct {
+	// Firmware update progress percentage, or null when unavailable
 	Progress pulumi.IntPtrInput `pulumi:"progress"`
-	// enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
-	Status   pulumi.StringPtrInput `pulumi:"status"`
-	StatusId pulumi.IntPtrInput    `pulumi:"statusId"`
-	// Epoch (seconds)
+	// Current firmware update status
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Numeric firmware update status identifier
+	StatusId pulumi.IntPtrInput `pulumi:"statusId"`
+	// Time when the firmware update status was last updated
 	Timestamp pulumi.Float64PtrInput `pulumi:"timestamp"`
-	WillRetry pulumi.BoolPtrInput    `pulumi:"willRetry"`
+	// Whether the firmware update process will retry after the current status
+	WillRetry pulumi.BoolPtrInput `pulumi:"willRetry"`
 }
 
 func (UpgradeDeviceFwupdateArgs) ElementType() reflect.Type {
@@ -254,24 +264,27 @@ func (o UpgradeDeviceFwupdateOutput) ToUpgradeDeviceFwupdatePtrOutputWithContext
 	}).(UpgradeDeviceFwupdatePtrOutput)
 }
 
+// Firmware update progress percentage, or null when unavailable
 func (o UpgradeDeviceFwupdateOutput) Progress() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v UpgradeDeviceFwupdate) *int { return v.Progress }).(pulumi.IntPtrOutput)
 }
 
-// enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
+// Current firmware update status
 func (o UpgradeDeviceFwupdateOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UpgradeDeviceFwupdate) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// Numeric firmware update status identifier
 func (o UpgradeDeviceFwupdateOutput) StatusId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v UpgradeDeviceFwupdate) *int { return v.StatusId }).(pulumi.IntPtrOutput)
 }
 
-// Epoch (seconds)
+// Time when the firmware update status was last updated
 func (o UpgradeDeviceFwupdateOutput) Timestamp() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v UpgradeDeviceFwupdate) *float64 { return v.Timestamp }).(pulumi.Float64PtrOutput)
 }
 
+// Whether the firmware update process will retry after the current status
 func (o UpgradeDeviceFwupdateOutput) WillRetry() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v UpgradeDeviceFwupdate) *bool { return v.WillRetry }).(pulumi.BoolPtrOutput)
 }
@@ -300,6 +313,7 @@ func (o UpgradeDeviceFwupdatePtrOutput) Elem() UpgradeDeviceFwupdateOutput {
 	}).(UpgradeDeviceFwupdateOutput)
 }
 
+// Firmware update progress percentage, or null when unavailable
 func (o UpgradeDeviceFwupdatePtrOutput) Progress() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *UpgradeDeviceFwupdate) *int {
 		if v == nil {
@@ -309,7 +323,7 @@ func (o UpgradeDeviceFwupdatePtrOutput) Progress() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
+// Current firmware update status
 func (o UpgradeDeviceFwupdatePtrOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UpgradeDeviceFwupdate) *string {
 		if v == nil {
@@ -319,6 +333,7 @@ func (o UpgradeDeviceFwupdatePtrOutput) Status() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Numeric firmware update status identifier
 func (o UpgradeDeviceFwupdatePtrOutput) StatusId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *UpgradeDeviceFwupdate) *int {
 		if v == nil {
@@ -328,7 +343,7 @@ func (o UpgradeDeviceFwupdatePtrOutput) StatusId() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Epoch (seconds)
+// Time when the firmware update status was last updated
 func (o UpgradeDeviceFwupdatePtrOutput) Timestamp() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *UpgradeDeviceFwupdate) *float64 {
 		if v == nil {
@@ -338,6 +353,7 @@ func (o UpgradeDeviceFwupdatePtrOutput) Timestamp() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Whether the firmware update process will retry after the current status
 func (o UpgradeDeviceFwupdatePtrOutput) WillRetry() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *UpgradeDeviceFwupdate) *bool {
 		if v == nil {

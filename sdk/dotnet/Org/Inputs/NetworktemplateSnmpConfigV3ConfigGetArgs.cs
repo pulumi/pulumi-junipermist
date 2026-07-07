@@ -14,6 +14,10 @@ namespace Pulumi.JuniperMist.Org.Inputs
     {
         [Input("notifies")]
         private InputList<Inputs.NetworktemplateSnmpConfigV3ConfigNotifyGetArgs>? _notifies;
+
+        /// <summary>
+        /// SNMPv3 notification definitions used for traps and informs
+        /// </summary>
         public InputList<Inputs.NetworktemplateSnmpConfigV3ConfigNotifyGetArgs> Notifies
         {
             get => _notifies ?? (_notifies = new InputList<Inputs.NetworktemplateSnmpConfigV3ConfigNotifyGetArgs>());
@@ -22,6 +26,10 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
         [Input("notifyFilters")]
         private InputList<Inputs.NetworktemplateSnmpConfigV3ConfigNotifyFilterGetArgs>? _notifyFilters;
+
+        /// <summary>
+        /// SNMPv3 notification filter profiles
+        /// </summary>
         public InputList<Inputs.NetworktemplateSnmpConfigV3ConfigNotifyFilterGetArgs> NotifyFilters
         {
             get => _notifyFilters ?? (_notifyFilters = new InputList<Inputs.NetworktemplateSnmpConfigV3ConfigNotifyFilterGetArgs>());
@@ -30,6 +38,10 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
         [Input("targetAddresses")]
         private InputList<Inputs.NetworktemplateSnmpConfigV3ConfigTargetAddressGetArgs>? _targetAddresses;
+
+        /// <summary>
+        /// SNMPv3 notification target addresses
+        /// </summary>
         public InputList<Inputs.NetworktemplateSnmpConfigV3ConfigTargetAddressGetArgs> TargetAddresses
         {
             get => _targetAddresses ?? (_targetAddresses = new InputList<Inputs.NetworktemplateSnmpConfigV3ConfigTargetAddressGetArgs>());
@@ -38,6 +50,10 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
         [Input("targetParameters")]
         private InputList<Inputs.NetworktemplateSnmpConfigV3ConfigTargetParameterGetArgs>? _targetParameters;
+
+        /// <summary>
+        /// SNMPv3 target parameter profiles
+        /// </summary>
         public InputList<Inputs.NetworktemplateSnmpConfigV3ConfigTargetParameterGetArgs> TargetParameters
         {
             get => _targetParameters ?? (_targetParameters = new InputList<Inputs.NetworktemplateSnmpConfigV3ConfigTargetParameterGetArgs>());
@@ -46,12 +62,19 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
         [Input("usms")]
         private InputList<Inputs.NetworktemplateSnmpConfigV3ConfigUsmGetArgs>? _usms;
+
+        /// <summary>
+        /// SNMPv3 USM engine configurations
+        /// </summary>
         public InputList<Inputs.NetworktemplateSnmpConfigV3ConfigUsmGetArgs> Usms
         {
             get => _usms ?? (_usms = new InputList<Inputs.NetworktemplateSnmpConfigV3ConfigUsmGetArgs>());
             set => _usms = value;
         }
 
+        /// <summary>
+        /// SNMPv3 VACM access control configuration
+        /// </summary>
         [Input("vacm")]
         public Input<Inputs.NetworktemplateSnmpConfigV3ConfigVacmGetArgs>? Vacm { get; set; }
 

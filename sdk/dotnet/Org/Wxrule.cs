@@ -58,52 +58,61 @@ namespace Pulumi.JuniperMist.Org
     public partial class Wxrule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// type of action, allow / block. enum: `Allow`, `Block`
+        /// Allow or block behavior applied by this WxLAN rule
         /// </summary>
         [Output("action")]
         public Output<string> Action { get; private set; } = null!;
 
+        /// <summary>
+        /// WxLAN tag identifiers applied when this rule matches
+        /// </summary>
         [Output("applyTags")]
         public Output<ImmutableArray<string>> ApplyTags { get; private set; } = null!;
 
         /// <summary>
-        /// Blocked apps (always blocking, ignoring action), the key of Get Application List
+        /// Application keys always blocked by this rule, regardless of the rule action
         /// </summary>
         [Output("blockedApps")]
         public Output<ImmutableArray<string>> BlockedApps { get; private set; } = null!;
 
         /// <summary>
-        /// List of WxTag UUID to indicate these tags are allowed access
+        /// Destination WxLAN tag identifiers explicitly allowed by this rule
         /// </summary>
         [Output("dstAllowWxtags")]
         public Output<ImmutableArray<string>> DstAllowWxtags { get; private set; } = null!;
 
         /// <summary>
-        /// List of WxTag UUID to indicate these tags are blocked access
+        /// Destination WxLAN tag identifiers explicitly denied by this rule
         /// </summary>
         [Output("dstDenyWxtags")]
         public Output<ImmutableArray<string>> DstDenyWxtags { get; private set; } = null!;
 
         /// <summary>
-        /// List of WxTag UUID
+        /// Destination WxLAN tag identifiers matched by this rule
         /// </summary>
         [Output("dstWxtags")]
         public Output<ImmutableArray<string>> DstWxtags { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether this WxLAN rule is enabled
+        /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Order how rules would be looked up, &gt; 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+        /// Lookup priority for WxLAN rules; larger positive values match first, and -1 means LAST. Uniqueness is not checked
         /// </summary>
         [Output("order")]
         public Output<int> Order { get; private set; } = null!;
 
+        /// <summary>
+        /// Owning organization associated with this WxLAN rule
+        /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// List of WxTag UUID to determine if this rule would match
+        /// Source WxLAN tag identifiers that must match for this rule to apply
         /// </summary>
         [Output("srcWxtags")]
         public Output<ImmutableArray<string>> SrcWxtags { get; private set; } = null!;
@@ -162,13 +171,17 @@ namespace Pulumi.JuniperMist.Org
     public sealed class WxruleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// type of action, allow / block. enum: `Allow`, `Block`
+        /// Allow or block behavior applied by this WxLAN rule
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
 
         [Input("applyTags")]
         private InputList<string>? _applyTags;
+
+        /// <summary>
+        /// WxLAN tag identifiers applied when this rule matches
+        /// </summary>
         public InputList<string> ApplyTags
         {
             get => _applyTags ?? (_applyTags = new InputList<string>());
@@ -179,7 +192,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _blockedApps;
 
         /// <summary>
-        /// Blocked apps (always blocking, ignoring action), the key of Get Application List
+        /// Application keys always blocked by this rule, regardless of the rule action
         /// </summary>
         public InputList<string> BlockedApps
         {
@@ -191,7 +204,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _dstAllowWxtags;
 
         /// <summary>
-        /// List of WxTag UUID to indicate these tags are allowed access
+        /// Destination WxLAN tag identifiers explicitly allowed by this rule
         /// </summary>
         public InputList<string> DstAllowWxtags
         {
@@ -203,7 +216,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _dstDenyWxtags;
 
         /// <summary>
-        /// List of WxTag UUID to indicate these tags are blocked access
+        /// Destination WxLAN tag identifiers explicitly denied by this rule
         /// </summary>
         public InputList<string> DstDenyWxtags
         {
@@ -215,7 +228,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _dstWxtags;
 
         /// <summary>
-        /// List of WxTag UUID
+        /// Destination WxLAN tag identifiers matched by this rule
         /// </summary>
         public InputList<string> DstWxtags
         {
@@ -223,15 +236,21 @@ namespace Pulumi.JuniperMist.Org
             set => _dstWxtags = value;
         }
 
+        /// <summary>
+        /// Whether this WxLAN rule is enabled
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Order how rules would be looked up, &gt; 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+        /// Lookup priority for WxLAN rules; larger positive values match first, and -1 means LAST. Uniqueness is not checked
         /// </summary>
         [Input("order", required: true)]
         public Input<int> Order { get; set; } = null!;
 
+        /// <summary>
+        /// Owning organization associated with this WxLAN rule
+        /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
@@ -239,7 +258,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _srcWxtags;
 
         /// <summary>
-        /// List of WxTag UUID to determine if this rule would match
+        /// Source WxLAN tag identifiers that must match for this rule to apply
         /// </summary>
         public InputList<string> SrcWxtags
         {
@@ -262,13 +281,17 @@ namespace Pulumi.JuniperMist.Org
     public sealed class WxruleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// type of action, allow / block. enum: `Allow`, `Block`
+        /// Allow or block behavior applied by this WxLAN rule
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
 
         [Input("applyTags")]
         private InputList<string>? _applyTags;
+
+        /// <summary>
+        /// WxLAN tag identifiers applied when this rule matches
+        /// </summary>
         public InputList<string> ApplyTags
         {
             get => _applyTags ?? (_applyTags = new InputList<string>());
@@ -279,7 +302,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _blockedApps;
 
         /// <summary>
-        /// Blocked apps (always blocking, ignoring action), the key of Get Application List
+        /// Application keys always blocked by this rule, regardless of the rule action
         /// </summary>
         public InputList<string> BlockedApps
         {
@@ -291,7 +314,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _dstAllowWxtags;
 
         /// <summary>
-        /// List of WxTag UUID to indicate these tags are allowed access
+        /// Destination WxLAN tag identifiers explicitly allowed by this rule
         /// </summary>
         public InputList<string> DstAllowWxtags
         {
@@ -303,7 +326,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _dstDenyWxtags;
 
         /// <summary>
-        /// List of WxTag UUID to indicate these tags are blocked access
+        /// Destination WxLAN tag identifiers explicitly denied by this rule
         /// </summary>
         public InputList<string> DstDenyWxtags
         {
@@ -315,7 +338,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _dstWxtags;
 
         /// <summary>
-        /// List of WxTag UUID
+        /// Destination WxLAN tag identifiers matched by this rule
         /// </summary>
         public InputList<string> DstWxtags
         {
@@ -323,15 +346,21 @@ namespace Pulumi.JuniperMist.Org
             set => _dstWxtags = value;
         }
 
+        /// <summary>
+        /// Whether this WxLAN rule is enabled
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Order how rules would be looked up, &gt; 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+        /// Lookup priority for WxLAN rules; larger positive values match first, and -1 means LAST. Uniqueness is not checked
         /// </summary>
         [Input("order")]
         public Input<int>? Order { get; set; }
 
+        /// <summary>
+        /// Owning organization associated with this WxLAN rule
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
@@ -339,7 +368,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _srcWxtags;
 
         /// <summary>
-        /// List of WxTag UUID to determine if this rule would match
+        /// Source WxLAN tag identifiers that must match for this rule to apply
         /// </summary>
         public InputList<string> SrcWxtags
         {

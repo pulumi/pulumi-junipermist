@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class WlanDnsServerRewrite
     {
+        /// <summary>
+        /// Whether DNS server rewrite by RADIUS group is enabled for this WLAN
+        /// </summary>
         public readonly bool? Enabled;
         /// <summary>
         /// Map between RadiusGroup and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server

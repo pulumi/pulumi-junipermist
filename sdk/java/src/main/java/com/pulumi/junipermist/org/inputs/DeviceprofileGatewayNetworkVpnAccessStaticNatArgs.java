@@ -15,23 +15,31 @@ public final class DeviceprofileGatewayNetworkVpnAccessStaticNatArgs extends com
     public static final DeviceprofileGatewayNetworkVpnAccessStaticNatArgs Empty = new DeviceprofileGatewayNetworkVpnAccessStaticNatArgs();
 
     /**
-     * The Static NAT destination IP Address. Must be an IP Address (i.e. &#34;192.168.70.3&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * The Static NAT destination IP address. Must be an IP address (i.e. &#34;192.168.70.3&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     @Import(name="internalIp", required=true)
     private Output<String> internalIp;
 
     /**
-     * @return The Static NAT destination IP Address. Must be an IP Address (i.e. &#34;192.168.70.3&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * @return The Static NAT destination IP address. Must be an IP address (i.e. &#34;192.168.70.3&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     public Output<String> internalIp() {
         return this.internalIp;
     }
 
+    /**
+     * Label for this VPN static NAT rule
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return Label for this VPN static NAT rule
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
@@ -62,7 +70,7 @@ public final class DeviceprofileGatewayNetworkVpnAccessStaticNatArgs extends com
         }
 
         /**
-         * @param internalIp The Static NAT destination IP Address. Must be an IP Address (i.e. &#34;192.168.70.3&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+         * @param internalIp The Static NAT destination IP address. Must be an IP address (i.e. &#34;192.168.70.3&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
          * 
          * @return builder
          * 
@@ -73,7 +81,7 @@ public final class DeviceprofileGatewayNetworkVpnAccessStaticNatArgs extends com
         }
 
         /**
-         * @param internalIp The Static NAT destination IP Address. Must be an IP Address (i.e. &#34;192.168.70.3&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+         * @param internalIp The Static NAT destination IP address. Must be an IP address (i.e. &#34;192.168.70.3&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
          * 
          * @return builder
          * 
@@ -82,11 +90,23 @@ public final class DeviceprofileGatewayNetworkVpnAccessStaticNatArgs extends com
             return internalIp(Output.of(internalIp));
         }
 
+        /**
+         * @param name Label for this VPN static NAT rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Label for this VPN static NAT rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

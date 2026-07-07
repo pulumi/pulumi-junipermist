@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DeviceprofileGatewayTunnelProviderOptionsZscalerSubLocation {
+    /**
+     * @return Whether this sub-location blocks internet access until the Acceptable Use Policy is accepted
+     * 
+     */
     private @Nullable Boolean aupBlockInternetUntilAccepted;
     /**
      * @return Can only be `true` when `authRequired`==`false`, display Acceptable Use Policy (AUP)
@@ -82,6 +86,10 @@ public final class DeviceprofileGatewayTunnelProviderOptionsZscalerSubLocation {
     private @Nullable Double upBandwidth;
 
     private DeviceprofileGatewayTunnelProviderOptionsZscalerSubLocation() {}
+    /**
+     * @return Whether this sub-location blocks internet access until the Acceptable Use Policy is accepted
+     * 
+     */
     public Optional<Boolean> aupBlockInternetUntilAccepted() {
         return Optional.ofNullable(this.aupBlockInternetUntilAccepted);
     }

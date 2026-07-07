@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class GatewayServicePolicyAppqoeArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether application QoE is enabled for the service policy
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

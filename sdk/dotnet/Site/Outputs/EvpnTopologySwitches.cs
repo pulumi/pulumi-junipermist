@@ -13,12 +13,33 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class EvpnTopologySwitches
     {
+        /// <summary>
+        /// Associated device profile identifier for the switch. Use the Assign Org Device Profile endpoint to assign a Device Profile to the switch.
+        /// </summary>
         public readonly string? DeviceprofileId;
+        /// <summary>
+        /// IP addresses used by this switch for EVPN downlinks
+        /// </summary>
         public readonly ImmutableArray<string> DownlinkIps;
+        /// <summary>
+        /// Switch MAC addresses connected as downlinks from this topology member
+        /// </summary>
         public readonly ImmutableArray<string> Downlinks;
+        /// <summary>
+        /// Switch MAC addresses connected through ESI-LAG from this topology member
+        /// </summary>
         public readonly ImmutableArray<string> Esilaglinks;
+        /// <summary>
+        /// Topology identifier number for this EVPN switch member
+        /// </summary>
         public readonly int? EvpnId;
+        /// <summary>
+        /// Switch MAC address used to identify the topology member
+        /// </summary>
         public readonly string? Mac;
+        /// <summary>
+        /// Switch model for this topology member
+        /// </summary>
         public readonly string? Model;
         /// <summary>
         /// Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g. 
@@ -27,19 +48,36 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly int? Pod;
         /// <summary>
-        /// By default, core switches are assumed to be connecting all pods. 
-        /// if you want to limit the pods, you can specify pods.
+        /// List of pod numbers this switch participates in
         /// </summary>
         public readonly ImmutableArray<int> Pods;
         /// <summary>
-        /// use `Role`==`None` to remove a switch from the topology. enum: `Access`, `collapsed-core`, `Core`, `Distribution`, `esilag-access`, `None`
+        /// EVPN topology role for this switch
         /// </summary>
         public readonly string Role;
+        /// <summary>
+        /// Routing identifier used by this switch for EVPN routing
+        /// </summary>
         public readonly string? RouterId;
+        /// <summary>
+        /// Associated site for this EVPN topology switch
+        /// </summary>
         public readonly string? SiteId;
+        /// <summary>
+        /// Builder-suggested downlink switch MAC addresses
+        /// </summary>
         public readonly ImmutableArray<string> SuggestedDownlinks;
+        /// <summary>
+        /// Builder-suggested ESI-LAG switch MAC addresses
+        /// </summary>
         public readonly ImmutableArray<string> SuggestedEsilaglinks;
+        /// <summary>
+        /// Builder-suggested uplink switch MAC addresses
+        /// </summary>
         public readonly ImmutableArray<string> SuggestedUplinks;
+        /// <summary>
+        /// Switch MAC addresses connected as uplinks from this topology member
+        /// </summary>
         public readonly ImmutableArray<string> Uplinks;
 
         [OutputConstructor]

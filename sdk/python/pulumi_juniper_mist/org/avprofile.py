@@ -29,9 +29,13 @@ class AvprofileArgs:
         """
         The set of arguments for constructing a Avprofile resource.
 
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
-        :param pulumi.Input[_builtins.str] fallback_action: enum: `block`, `log-and-permit`, `permit`
-        :param pulumi.Input[_builtins.int] max_filesize: In KB
+        :param pulumi.Input[_builtins.str] org_id: Owning organization identifier for this antivirus profile
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: Network protocols inspected by this antivirus profile
+        :param pulumi.Input[_builtins.str] fallback_action: Action to take when antivirus scanning cannot complete
+        :param pulumi.Input[_builtins.int] max_filesize: Maximum file size scanned by this antivirus profile, in KB
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mime_whitelists: Content MIME types exempted from antivirus scanning
+        :param pulumi.Input[_builtins.str] name: Display name of the antivirus profile
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] url_whitelists: Allowed URL entries exempted from antivirus scanning
         """
         pulumi.set(__self__, "org_id", org_id)
         pulumi.set(__self__, "protocols", protocols)
@@ -49,6 +53,9 @@ class AvprofileArgs:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Owning organization identifier for this antivirus profile
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -59,7 +66,7 @@ class AvprofileArgs:
     @pulumi.getter
     def protocols(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
+        Network protocols inspected by this antivirus profile
         """
         return pulumi.get(self, "protocols")
 
@@ -71,7 +78,7 @@ class AvprofileArgs:
     @pulumi.getter(name="fallbackAction")
     def fallback_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        enum: `block`, `log-and-permit`, `permit`
+        Action to take when antivirus scanning cannot complete
         """
         return pulumi.get(self, "fallback_action")
 
@@ -83,7 +90,7 @@ class AvprofileArgs:
     @pulumi.getter(name="maxFilesize")
     def max_filesize(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        In KB
+        Maximum file size scanned by this antivirus profile, in KB
         """
         return pulumi.get(self, "max_filesize")
 
@@ -94,6 +101,9 @@ class AvprofileArgs:
     @_builtins.property
     @pulumi.getter(name="mimeWhitelists")
     def mime_whitelists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Content MIME types exempted from antivirus scanning
+        """
         return pulumi.get(self, "mime_whitelists")
 
     @mime_whitelists.setter
@@ -103,6 +113,9 @@ class AvprofileArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Display name of the antivirus profile
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -112,6 +125,9 @@ class AvprofileArgs:
     @_builtins.property
     @pulumi.getter(name="urlWhitelists")
     def url_whitelists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Allowed URL entries exempted from antivirus scanning
+        """
         return pulumi.get(self, "url_whitelists")
 
     @url_whitelists.setter
@@ -132,9 +148,13 @@ class _AvprofileState:
         """
         Input properties used for looking up and filtering Avprofile resources.
 
-        :param pulumi.Input[_builtins.str] fallback_action: enum: `block`, `log-and-permit`, `permit`
-        :param pulumi.Input[_builtins.int] max_filesize: In KB
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
+        :param pulumi.Input[_builtins.str] fallback_action: Action to take when antivirus scanning cannot complete
+        :param pulumi.Input[_builtins.int] max_filesize: Maximum file size scanned by this antivirus profile, in KB
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mime_whitelists: Content MIME types exempted from antivirus scanning
+        :param pulumi.Input[_builtins.str] name: Display name of the antivirus profile
+        :param pulumi.Input[_builtins.str] org_id: Owning organization identifier for this antivirus profile
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: Network protocols inspected by this antivirus profile
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] url_whitelists: Allowed URL entries exempted from antivirus scanning
         """
         if fallback_action is not None:
             pulumi.set(__self__, "fallback_action", fallback_action)
@@ -155,7 +175,7 @@ class _AvprofileState:
     @pulumi.getter(name="fallbackAction")
     def fallback_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        enum: `block`, `log-and-permit`, `permit`
+        Action to take when antivirus scanning cannot complete
         """
         return pulumi.get(self, "fallback_action")
 
@@ -167,7 +187,7 @@ class _AvprofileState:
     @pulumi.getter(name="maxFilesize")
     def max_filesize(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        In KB
+        Maximum file size scanned by this antivirus profile, in KB
         """
         return pulumi.get(self, "max_filesize")
 
@@ -178,6 +198,9 @@ class _AvprofileState:
     @_builtins.property
     @pulumi.getter(name="mimeWhitelists")
     def mime_whitelists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Content MIME types exempted from antivirus scanning
+        """
         return pulumi.get(self, "mime_whitelists")
 
     @mime_whitelists.setter
@@ -187,6 +210,9 @@ class _AvprofileState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Display name of the antivirus profile
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -196,6 +222,9 @@ class _AvprofileState:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Owning organization identifier for this antivirus profile
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -206,7 +235,7 @@ class _AvprofileState:
     @pulumi.getter
     def protocols(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
+        Network protocols inspected by this antivirus profile
         """
         return pulumi.get(self, "protocols")
 
@@ -217,6 +246,9 @@ class _AvprofileState:
     @_builtins.property
     @pulumi.getter(name="urlWhitelists")
     def url_whitelists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Allowed URL entries exempted from antivirus scanning
+        """
         return pulumi.get(self, "url_whitelists")
 
     @url_whitelists.setter
@@ -283,9 +315,13 @@ class Avprofile(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] fallback_action: enum: `block`, `log-and-permit`, `permit`
-        :param pulumi.Input[_builtins.int] max_filesize: In KB
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
+        :param pulumi.Input[_builtins.str] fallback_action: Action to take when antivirus scanning cannot complete
+        :param pulumi.Input[_builtins.int] max_filesize: Maximum file size scanned by this antivirus profile, in KB
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mime_whitelists: Content MIME types exempted from antivirus scanning
+        :param pulumi.Input[_builtins.str] name: Display name of the antivirus profile
+        :param pulumi.Input[_builtins.str] org_id: Owning organization identifier for this antivirus profile
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: Network protocols inspected by this antivirus profile
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] url_whitelists: Allowed URL entries exempted from antivirus scanning
         """
         ...
     @overload
@@ -402,9 +438,13 @@ class Avprofile(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] fallback_action: enum: `block`, `log-and-permit`, `permit`
-        :param pulumi.Input[_builtins.int] max_filesize: In KB
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
+        :param pulumi.Input[_builtins.str] fallback_action: Action to take when antivirus scanning cannot complete
+        :param pulumi.Input[_builtins.int] max_filesize: Maximum file size scanned by this antivirus profile, in KB
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mime_whitelists: Content MIME types exempted from antivirus scanning
+        :param pulumi.Input[_builtins.str] name: Display name of the antivirus profile
+        :param pulumi.Input[_builtins.str] org_id: Owning organization identifier for this antivirus profile
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: Network protocols inspected by this antivirus profile
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] url_whitelists: Allowed URL entries exempted from antivirus scanning
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -423,7 +463,7 @@ class Avprofile(pulumi.CustomResource):
     @pulumi.getter(name="fallbackAction")
     def fallback_action(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        enum: `block`, `log-and-permit`, `permit`
+        Action to take when antivirus scanning cannot complete
         """
         return pulumi.get(self, "fallback_action")
 
@@ -431,35 +471,47 @@ class Avprofile(pulumi.CustomResource):
     @pulumi.getter(name="maxFilesize")
     def max_filesize(self) -> pulumi.Output[_builtins.int]:
         """
-        In KB
+        Maximum file size scanned by this antivirus profile, in KB
         """
         return pulumi.get(self, "max_filesize")
 
     @_builtins.property
     @pulumi.getter(name="mimeWhitelists")
     def mime_whitelists(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        Content MIME types exempted from antivirus scanning
+        """
         return pulumi.get(self, "mime_whitelists")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
+        """
+        Display name of the antivirus profile
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Owning organization identifier for this antivirus profile
+        """
         return pulumi.get(self, "org_id")
 
     @_builtins.property
     @pulumi.getter
     def protocols(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
+        Network protocols inspected by this antivirus profile
         """
         return pulumi.get(self, "protocols")
 
     @_builtins.property
     @pulumi.getter(name="urlWhitelists")
     def url_whitelists(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        Allowed URL entries exempted from antivirus scanning
+        """
         return pulumi.get(self, "url_whitelists")
 

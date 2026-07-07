@@ -17,19 +17,25 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// Whether to disable Event-Timestamp Check
         /// </summary>
         public readonly bool? DisableEventTimestampCheck;
+        /// <summary>
+        /// Whether this DAS CoA or Disconnect-Message client is enabled
+        /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// This server configured to send CoA|DM to mist edges
+        /// Server host allowed to send CoA or Disconnect-Message requests to Mist Edges
         /// </summary>
         public readonly string? Host;
         /// <summary>
-        /// Mist edges will allow this host on this port
+        /// UDP port where Mist Edges accept CoA or Disconnect-Message requests from this host
         /// </summary>
         public readonly int? Port;
         /// <summary>
         /// Whether to require Message-Authenticator in requests
         /// </summary>
         public readonly bool? RequireMessageAuthenticator;
+        /// <summary>
+        /// Shared secret used by this DAS CoA or Disconnect-Message client
+        /// </summary>
         public readonly string? Secret;
 
         [OutputConstructor]

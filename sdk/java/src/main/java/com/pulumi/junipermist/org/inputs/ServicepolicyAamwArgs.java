@@ -17,36 +17,44 @@ public final class ServicepolicyAamwArgs extends com.pulumi.resources.ResourceAr
     public static final ServicepolicyAamwArgs Empty = new ServicepolicyAamwArgs();
 
     /**
-     * org-level Advanced Advance Anti Malware Profile (SkyAtp) Profile can be used, this takes precedence over &#39;profile&#39;
+     * Organization-level advanced anti-malware profile ID; takes precedence over inline `profile` settings
      * 
      */
     @Import(name="aamwprofileId")
     private @Nullable Output<String> aamwprofileId;
 
     /**
-     * @return org-level Advanced Advance Anti Malware Profile (SkyAtp) Profile can be used, this takes precedence over &#39;profile&#39;
+     * @return Organization-level advanced anti-malware profile ID; takes precedence over inline `profile` settings
      * 
      */
     public Optional<Output<String>> aamwprofileId() {
         return Optional.ofNullable(this.aamwprofileId);
     }
 
+    /**
+     * Whether advanced anti-malware inspection is enabled for the service policy
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether advanced anti-malware inspection is enabled for the service policy
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
     /**
-     * enum: `docsonly`, `executables`, `standard`
+     * Built-in advanced anti-malware inspection profile to apply
      * 
      */
     @Import(name="profile")
     private @Nullable Output<String> profile;
 
     /**
-     * @return enum: `docsonly`, `executables`, `standard`
+     * @return Built-in advanced anti-malware inspection profile to apply
      * 
      */
     public Optional<Output<String>> profile() {
@@ -80,7 +88,7 @@ public final class ServicepolicyAamwArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param aamwprofileId org-level Advanced Advance Anti Malware Profile (SkyAtp) Profile can be used, this takes precedence over &#39;profile&#39;
+         * @param aamwprofileId Organization-level advanced anti-malware profile ID; takes precedence over inline `profile` settings
          * 
          * @return builder
          * 
@@ -91,7 +99,7 @@ public final class ServicepolicyAamwArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param aamwprofileId org-level Advanced Advance Anti Malware Profile (SkyAtp) Profile can be used, this takes precedence over &#39;profile&#39;
+         * @param aamwprofileId Organization-level advanced anti-malware profile ID; takes precedence over inline `profile` settings
          * 
          * @return builder
          * 
@@ -100,17 +108,29 @@ public final class ServicepolicyAamwArgs extends com.pulumi.resources.ResourceAr
             return aamwprofileId(Output.of(aamwprofileId));
         }
 
+        /**
+         * @param enabled Whether advanced anti-malware inspection is enabled for the service policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether advanced anti-malware inspection is enabled for the service policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
         /**
-         * @param profile enum: `docsonly`, `executables`, `standard`
+         * @param profile Built-in advanced anti-malware inspection profile to apply
          * 
          * @return builder
          * 
@@ -121,7 +141,7 @@ public final class ServicepolicyAamwArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param profile enum: `docsonly`, `executables`, `standard`
+         * @param profile Built-in advanced anti-malware inspection profile to apply
          * 
          * @return builder
          * 

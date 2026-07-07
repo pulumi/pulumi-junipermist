@@ -12,9 +12,15 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class WlanRadsecServerArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Address or hostname of the RadSec server
+        /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
 
+        /// <summary>
+        /// TCP port used by the RadSec server
+        /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 

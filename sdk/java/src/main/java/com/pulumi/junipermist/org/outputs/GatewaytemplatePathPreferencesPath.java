@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GatewaytemplatePathPreferencesPath {
+    /**
+     * @return Relative cost assigned to this path for gateway path selection
+     * 
+     */
     private @Nullable Integer cost;
     /**
      * @return For SSR Only. `true`, if this specific path is undesired
@@ -39,27 +43,31 @@ public final class GatewaytemplatePathPreferencesPath {
      */
     private @Nullable String name;
     /**
-     * @return Required when `type`==`local`
+     * @return List of network names used when `type`==`local`
      * 
      */
     private @Nullable List<String> networks;
     /**
-     * @return If `type`==`local`, if destination IP is to be replaced
+     * @return List of destination IP addresses to replace when `type`==`local`
      * 
      */
     private @Nullable List<String> targetIps;
     /**
-     * @return enum: `local`, `tunnel`, `vpn`, `wan`
+     * @return Gateway path source type, such as local network, WAN interface, VPN path, or tunnel
      * 
      */
     private String type;
     /**
-     * @return Optional if `type`==`vpn`
+     * @return Optional if `type`==`vpn`; WAN interface name associated with the VPN path
      * 
      */
     private @Nullable String wanName;
 
     private GatewaytemplatePathPreferencesPath() {}
+    /**
+     * @return Relative cost assigned to this path for gateway path selection
+     * 
+     */
     public Optional<Integer> cost() {
         return Optional.ofNullable(this.cost);
     }
@@ -94,28 +102,28 @@ public final class GatewaytemplatePathPreferencesPath {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Required when `type`==`local`
+     * @return List of network names used when `type`==`local`
      * 
      */
     public List<String> networks() {
         return this.networks == null ? List.of() : this.networks;
     }
     /**
-     * @return If `type`==`local`, if destination IP is to be replaced
+     * @return List of destination IP addresses to replace when `type`==`local`
      * 
      */
     public List<String> targetIps() {
         return this.targetIps == null ? List.of() : this.targetIps;
     }
     /**
-     * @return enum: `local`, `tunnel`, `vpn`, `wan`
+     * @return Gateway path source type, such as local network, WAN interface, VPN path, or tunnel
      * 
      */
     public String type() {
         return this.type;
     }
     /**
-     * @return Optional if `type`==`vpn`
+     * @return Optional if `type`==`vpn`; WAN interface name associated with the VPN path
      * 
      */
     public Optional<String> wanName() {

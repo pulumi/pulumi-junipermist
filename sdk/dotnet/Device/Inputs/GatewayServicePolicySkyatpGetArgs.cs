@@ -12,15 +12,27 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class GatewayServicePolicySkyatpGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Detection settings for DNS DGA threats provided by Sky ATP
+        /// </summary>
         [Input("dnsDgaDetection")]
         public Input<Inputs.GatewayServicePolicySkyatpDnsDgaDetectionGetArgs>? DnsDgaDetection { get; set; }
 
+        /// <summary>
+        /// Detection settings for DNS tunneling threats provided by Sky ATP
+        /// </summary>
         [Input("dnsTunnelDetection")]
         public Input<Inputs.GatewayServicePolicySkyatpDnsTunnelDetectionGetArgs>? DnsTunnelDetection { get; set; }
 
+        /// <summary>
+        /// Web traffic inspection settings provided by Sky ATP
+        /// </summary>
         [Input("httpInspection")]
         public Input<Inputs.GatewayServicePolicySkyatpHttpInspectionGetArgs>? HttpInspection { get; set; }
 
+        /// <summary>
+        /// Device threat policy settings provided by Sky ATP for IoT clients
+        /// </summary>
         [Input("iotDevicePolicy")]
         public Input<Inputs.GatewayServicePolicySkyatpIotDevicePolicyGetArgs>? IotDevicePolicy { get; set; }
 

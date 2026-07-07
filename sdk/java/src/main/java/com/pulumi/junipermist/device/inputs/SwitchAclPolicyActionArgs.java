@@ -17,23 +17,31 @@ public final class SwitchAclPolicyActionArgs extends com.pulumi.resources.Resour
     public static final SwitchAclPolicyActionArgs Empty = new SwitchAclPolicyActionArgs();
 
     /**
-     * enum: `allow`, `deny`
+     * Allow or deny decision applied to traffic matching the destination tag
      * 
      */
     @Import(name="action")
     private @Nullable Output<String> action;
 
     /**
-     * @return enum: `allow`, `deny`
+     * @return Allow or deny decision applied to traffic matching the destination tag
      * 
      */
     public Optional<Output<String>> action() {
         return Optional.ofNullable(this.action);
     }
 
+    /**
+     * Destination ACL tag matched by this policy action
+     * 
+     */
     @Import(name="dstTag", required=true)
     private Output<String> dstTag;
 
+    /**
+     * @return Destination ACL tag matched by this policy action
+     * 
+     */
     public Output<String> dstTag() {
         return this.dstTag;
     }
@@ -64,7 +72,7 @@ public final class SwitchAclPolicyActionArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param action enum: `allow`, `deny`
+         * @param action Allow or deny decision applied to traffic matching the destination tag
          * 
          * @return builder
          * 
@@ -75,7 +83,7 @@ public final class SwitchAclPolicyActionArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param action enum: `allow`, `deny`
+         * @param action Allow or deny decision applied to traffic matching the destination tag
          * 
          * @return builder
          * 
@@ -84,11 +92,23 @@ public final class SwitchAclPolicyActionArgs extends com.pulumi.resources.Resour
             return action(Output.of(action));
         }
 
+        /**
+         * @param dstTag Destination ACL tag matched by this policy action
+         * 
+         * @return builder
+         * 
+         */
         public Builder dstTag(Output<String> dstTag) {
             $.dstTag = dstTag;
             return this;
         }
 
+        /**
+         * @param dstTag Destination ACL tag matched by this policy action
+         * 
+         * @return builder
+         * 
+         */
         public Builder dstTag(String dstTag) {
             return dstTag(Output.of(dstTag));
         }

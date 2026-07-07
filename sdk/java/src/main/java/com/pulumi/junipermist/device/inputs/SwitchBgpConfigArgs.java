@@ -20,9 +20,17 @@ public final class SwitchBgpConfigArgs extends com.pulumi.resources.ResourceArgs
 
     public static final SwitchBgpConfigArgs Empty = new SwitchBgpConfigArgs();
 
+    /**
+     * Authentication key used for BGP neighbor sessions, when configured
+     * 
+     */
     @Import(name="authKey")
     private @Nullable Output<String> authKey;
 
+    /**
+     * @return Authentication key used for BGP neighbor sessions, when configured
+     * 
+     */
     public Optional<Output<String>> authKey() {
         return Optional.ofNullable(this.authKey);
     }
@@ -58,14 +66,14 @@ public final class SwitchBgpConfigArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+     * Default BGP hold time for switch BGP sessions
      * 
      */
     @Import(name="holdTime")
     private @Nullable Output<Integer> holdTime;
 
     /**
-     * @return Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+     * @return Default BGP hold time for switch BGP sessions
      * 
      */
     public Optional<Output<Integer>> holdTime() {
@@ -87,22 +95,30 @@ public final class SwitchBgpConfigArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.importPolicy);
     }
 
+    /**
+     * Local BGP Autonomous System (AS) number for the switch
+     * 
+     */
     @Import(name="localAs", required=true)
     private Output<String> localAs;
 
+    /**
+     * @return Local BGP Autonomous System (AS) number for the switch
+     * 
+     */
     public Output<String> localAs() {
         return this.localAs;
     }
 
     /**
-     * Property key is the BGP Neighbor IP Address.
+     * BGP neighbor settings keyed by neighbor IP address
      * 
      */
     @Import(name="neighbors")
     private @Nullable Output<Map<String,SwitchBgpConfigNeighborsArgs>> neighbors;
 
     /**
-     * @return Property key is the BGP Neighbor IP Address.
+     * @return BGP neighbor settings keyed by neighbor IP address
      * 
      */
     public Optional<Output<Map<String,SwitchBgpConfigNeighborsArgs>>> neighbors() {
@@ -110,14 +126,14 @@ public final class SwitchBgpConfigArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * List of network names for BGP configuration. When a network is specified, a BGP group will be added to the VRF that network is part of.
+     * Network names used to add BGP groups to the corresponding VRFs
      * 
      */
     @Import(name="networks")
     private @Nullable Output<List<String>> networks;
 
     /**
-     * @return List of network names for BGP configuration. When a network is specified, a BGP group will be added to the VRF that network is part of.
+     * @return Network names used to add BGP groups to the corresponding VRFs
      * 
      */
     public Optional<Output<List<String>>> networks() {
@@ -125,14 +141,14 @@ public final class SwitchBgpConfigArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * enum: `external`, `internal`
+     * BGP session type for this switch BGP configuration
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return enum: `external`, `internal`
+     * @return BGP session type for this switch BGP configuration
      * 
      */
     public Output<String> type() {
@@ -171,11 +187,23 @@ public final class SwitchBgpConfigArgs extends com.pulumi.resources.ResourceArgs
             $ = new SwitchBgpConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param authKey Authentication key used for BGP neighbor sessions, when configured
+         * 
+         * @return builder
+         * 
+         */
         public Builder authKey(@Nullable Output<String> authKey) {
             $.authKey = authKey;
             return this;
         }
 
+        /**
+         * @param authKey Authentication key used for BGP neighbor sessions, when configured
+         * 
+         * @return builder
+         * 
+         */
         public Builder authKey(String authKey) {
             return authKey(Output.of(authKey));
         }
@@ -223,7 +251,7 @@ public final class SwitchBgpConfigArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param holdTime Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+         * @param holdTime Default BGP hold time for switch BGP sessions
          * 
          * @return builder
          * 
@@ -234,7 +262,7 @@ public final class SwitchBgpConfigArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param holdTime Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+         * @param holdTime Default BGP hold time for switch BGP sessions
          * 
          * @return builder
          * 
@@ -264,17 +292,29 @@ public final class SwitchBgpConfigArgs extends com.pulumi.resources.ResourceArgs
             return importPolicy(Output.of(importPolicy));
         }
 
+        /**
+         * @param localAs Local BGP Autonomous System (AS) number for the switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder localAs(Output<String> localAs) {
             $.localAs = localAs;
             return this;
         }
 
+        /**
+         * @param localAs Local BGP Autonomous System (AS) number for the switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder localAs(String localAs) {
             return localAs(Output.of(localAs));
         }
 
         /**
-         * @param neighbors Property key is the BGP Neighbor IP Address.
+         * @param neighbors BGP neighbor settings keyed by neighbor IP address
          * 
          * @return builder
          * 
@@ -285,7 +325,7 @@ public final class SwitchBgpConfigArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param neighbors Property key is the BGP Neighbor IP Address.
+         * @param neighbors BGP neighbor settings keyed by neighbor IP address
          * 
          * @return builder
          * 
@@ -295,7 +335,7 @@ public final class SwitchBgpConfigArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param networks List of network names for BGP configuration. When a network is specified, a BGP group will be added to the VRF that network is part of.
+         * @param networks Network names used to add BGP groups to the corresponding VRFs
          * 
          * @return builder
          * 
@@ -306,7 +346,7 @@ public final class SwitchBgpConfigArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param networks List of network names for BGP configuration. When a network is specified, a BGP group will be added to the VRF that network is part of.
+         * @param networks Network names used to add BGP groups to the corresponding VRFs
          * 
          * @return builder
          * 
@@ -316,7 +356,7 @@ public final class SwitchBgpConfigArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param networks List of network names for BGP configuration. When a network is specified, a BGP group will be added to the VRF that network is part of.
+         * @param networks Network names used to add BGP groups to the corresponding VRFs
          * 
          * @return builder
          * 
@@ -326,7 +366,7 @@ public final class SwitchBgpConfigArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type enum: `external`, `internal`
+         * @param type BGP session type for this switch BGP configuration
          * 
          * @return builder
          * 
@@ -337,7 +377,7 @@ public final class SwitchBgpConfigArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type enum: `external`, `internal`
+         * @param type BGP session type for this switch BGP configuration
          * 
          * @return builder
          * 

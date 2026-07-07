@@ -14,23 +14,39 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MxedgeTuntermIgmpSnoopingConfig {
+    /**
+     * @return Whether IGMP snooping is enabled for the configured VLANs
+     * 
+     */
     private @Nullable Boolean enabled;
+    /**
+     * @return IGMP querier settings used with tunnel termination snooping
+     * 
+     */
     private @Nullable MxedgeTuntermIgmpSnoopingConfigQuerier querier;
     /**
-     * @return List of vlans on which tunterm performs IGMP snooping
+     * @return List of VLAN IDs where tunnel termination performs IGMP snooping
      * 
      */
     private @Nullable List<Integer> vlanIds;
 
     private MxedgeTuntermIgmpSnoopingConfig() {}
+    /**
+     * @return Whether IGMP snooping is enabled for the configured VLANs
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return IGMP querier settings used with tunnel termination snooping
+     * 
+     */
     public Optional<MxedgeTuntermIgmpSnoopingConfigQuerier> querier() {
         return Optional.ofNullable(this.querier);
     }
     /**
-     * @return List of vlans on which tunterm performs IGMP snooping
+     * @return List of VLAN IDs where tunnel termination performs IGMP snooping
      * 
      */
     public List<Integer> vlanIds() {

@@ -17,14 +17,20 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// Default PSK to use if cloud WLC is not available, 8-63 characters
         /// </summary>
         public readonly string? DefaultPsk;
+        /// <summary>
+        /// Default VLAN ID used when dynamic PSK lookup does not return a VLAN
+        /// </summary>
         public readonly string? DefaultVlanId;
+        /// <summary>
+        /// Whether dynamic PSK is enabled for this WLAN
+        /// </summary>
         public readonly bool? Enabled;
         /// <summary>
         /// When 11r is enabled, we'll try to use the cached PMK, this can be disabled. `False` means auto
         /// </summary>
         public readonly bool? ForceLookup;
         /// <summary>
-        /// enum: `CloudPsks`, `Radius`
+        /// Origin used to retrieve per-user PSKs
         /// </summary>
         public readonly string? Source;
 

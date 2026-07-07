@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class GatewayTunnelProviderOptionsJse
     {
+        /// <summary>
+        /// User capacity to provision on Juniper Secure Edge
+        /// </summary>
         public readonly int? NumUsers;
         /// <summary>
         /// JSE Organization name

@@ -20,14 +20,14 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
     public static final SwitchAclTagsArgs Empty = new SwitchAclTagsArgs();
 
     /**
-     * ARP / IPv6. Default is `any`
+     * Layer 2 EtherTypes matched by this ACL tag; defaults to `any`
      * 
      */
     @Import(name="etherTypes")
     private @Nullable Output<List<String>> etherTypes;
 
     /**
-     * @return ARP / IPv6. Default is `any`
+     * @return Layer 2 EtherTypes matched by this ACL tag; defaults to `any`
      * 
      */
     public Optional<Output<List<String>>> etherTypes() {
@@ -56,18 +56,14 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if
-     * - `type`==`mac`
-     * - `type`==`staticGbp` if from matching mac
+     * Client or resource MAC addresses matched by this ACL tag
      * 
      */
     @Import(name="macs")
     private @Nullable Output<List<String>> macs;
 
     /**
-     * @return Required if
-     * - `type`==`mac`
-     * - `type`==`staticGbp` if from matching mac
+     * @return Client or resource MAC addresses matched by this ACL tag
      * 
      */
     public Optional<Output<List<String>>> macs() {
@@ -100,14 +96,14 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `type`==`portUsage`
+     * Required if `type`==`portUsage`. Switch port usage name matched by this ACL tag
      * 
      */
     @Import(name="portUsage")
     private @Nullable Output<String> portUsage;
 
     /**
-     * @return Required if `type`==`portUsage`
+     * @return Required if `type`==`portUsage`. Switch port usage name matched by this ACL tag
      * 
      */
     public Optional<Output<String>> portUsage() {
@@ -136,14 +132,14 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `type`==`resource`, `type`==`radiusGroup`, `type`==`portUsage` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
+     * Layer 4 protocol and destination-port constraints for this ACL tag
      * 
      */
     @Import(name="specs")
     private @Nullable Output<List<SwitchAclTagsSpecArgs>> specs;
 
     /**
-     * @return If `type`==`resource`, `type`==`radiusGroup`, `type`==`portUsage` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
+     * @return Layer 4 protocol and destination-port constraints for this ACL tag
      * 
      */
     public Optional<Output<List<SwitchAclTagsSpecArgs>>> specs() {
@@ -151,20 +147,14 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If
-     * - `type`==`subnet`
-     * - `type`==`resource` (optional. default is `any`)
-     * - `type`==`staticGbp` if from matching subnet
+     * IP subnets matched by this ACL tag
      * 
      */
     @Import(name="subnets")
     private @Nullable Output<List<String>> subnets;
 
     /**
-     * @return If
-     * - `type`==`subnet`
-     * - `type`==`resource` (optional. default is `any`)
-     * - `type`==`staticGbp` if from matching subnet
+     * @return IP subnets matched by this ACL tag
      * 
      */
     public Optional<Output<List<String>>> subnets() {
@@ -172,34 +162,14 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * enum:
-     *   * `any`: matching anything not identified
-     *   * `dynamicGbp`: from the gbpTag received from RADIUS
-     *   * `gbpResource`: can only be used in `dstTags`
-     *   * `mac`
-     *   * `network`
-     *   * `portUsage`
-     *   * `radiusGroup`
-     *   * `resource`: can only be used in `dstTags`
-     *   * `staticGbp`: applying gbp tag against matching conditions
-     *   * `subnet`&#39;
+     * Classifier type that determines which ACL tag fields are evaluated
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return enum:
-     *   * `any`: matching anything not identified
-     *   * `dynamicGbp`: from the gbpTag received from RADIUS
-     *   * `gbpResource`: can only be used in `dstTags`
-     *   * `mac`
-     *   * `network`
-     *   * `portUsage`
-     *   * `radiusGroup`
-     *   * `resource`: can only be used in `dstTags`
-     *   * `staticGbp`: applying gbp tag against matching conditions
-     *   * `subnet`&#39;
+     * @return Classifier type that determines which ACL tag fields are evaluated
      * 
      */
     public Output<String> type() {
@@ -239,7 +209,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param etherTypes ARP / IPv6. Default is `any`
+         * @param etherTypes Layer 2 EtherTypes matched by this ACL tag; defaults to `any`
          * 
          * @return builder
          * 
@@ -250,7 +220,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param etherTypes ARP / IPv6. Default is `any`
+         * @param etherTypes Layer 2 EtherTypes matched by this ACL tag; defaults to `any`
          * 
          * @return builder
          * 
@@ -260,7 +230,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param etherTypes ARP / IPv6. Default is `any`
+         * @param etherTypes Layer 2 EtherTypes matched by this ACL tag; defaults to `any`
          * 
          * @return builder
          * 
@@ -297,9 +267,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param macs Required if
-         * - `type`==`mac`
-         * - `type`==`staticGbp` if from matching mac
+         * @param macs Client or resource MAC addresses matched by this ACL tag
          * 
          * @return builder
          * 
@@ -310,9 +278,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param macs Required if
-         * - `type`==`mac`
-         * - `type`==`staticGbp` if from matching mac
+         * @param macs Client or resource MAC addresses matched by this ACL tag
          * 
          * @return builder
          * 
@@ -322,9 +288,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param macs Required if
-         * - `type`==`mac`
-         * - `type`==`staticGbp` if from matching mac
+         * @param macs Client or resource MAC addresses matched by this ACL tag
          * 
          * @return builder
          * 
@@ -365,7 +329,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portUsage Required if `type`==`portUsage`
+         * @param portUsage Required if `type`==`portUsage`. Switch port usage name matched by this ACL tag
          * 
          * @return builder
          * 
@@ -376,7 +340,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portUsage Required if `type`==`portUsage`
+         * @param portUsage Required if `type`==`portUsage`. Switch port usage name matched by this ACL tag
          * 
          * @return builder
          * 
@@ -413,7 +377,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param specs If `type`==`resource`, `type`==`radiusGroup`, `type`==`portUsage` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
+         * @param specs Layer 4 protocol and destination-port constraints for this ACL tag
          * 
          * @return builder
          * 
@@ -424,7 +388,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param specs If `type`==`resource`, `type`==`radiusGroup`, `type`==`portUsage` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
+         * @param specs Layer 4 protocol and destination-port constraints for this ACL tag
          * 
          * @return builder
          * 
@@ -434,7 +398,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param specs If `type`==`resource`, `type`==`radiusGroup`, `type`==`portUsage` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
+         * @param specs Layer 4 protocol and destination-port constraints for this ACL tag
          * 
          * @return builder
          * 
@@ -444,10 +408,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param subnets If
-         * - `type`==`subnet`
-         * - `type`==`resource` (optional. default is `any`)
-         * - `type`==`staticGbp` if from matching subnet
+         * @param subnets IP subnets matched by this ACL tag
          * 
          * @return builder
          * 
@@ -458,10 +419,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param subnets If
-         * - `type`==`subnet`
-         * - `type`==`resource` (optional. default is `any`)
-         * - `type`==`staticGbp` if from matching subnet
+         * @param subnets IP subnets matched by this ACL tag
          * 
          * @return builder
          * 
@@ -471,10 +429,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param subnets If
-         * - `type`==`subnet`
-         * - `type`==`resource` (optional. default is `any`)
-         * - `type`==`staticGbp` if from matching subnet
+         * @param subnets IP subnets matched by this ACL tag
          * 
          * @return builder
          * 
@@ -484,17 +439,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type enum:
-         *   * `any`: matching anything not identified
-         *   * `dynamicGbp`: from the gbpTag received from RADIUS
-         *   * `gbpResource`: can only be used in `dstTags`
-         *   * `mac`
-         *   * `network`
-         *   * `portUsage`
-         *   * `radiusGroup`
-         *   * `resource`: can only be used in `dstTags`
-         *   * `staticGbp`: applying gbp tag against matching conditions
-         *   * `subnet`&#39;
+         * @param type Classifier type that determines which ACL tag fields are evaluated
          * 
          * @return builder
          * 
@@ -505,17 +450,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type enum:
-         *   * `any`: matching anything not identified
-         *   * `dynamicGbp`: from the gbpTag received from RADIUS
-         *   * `gbpResource`: can only be used in `dstTags`
-         *   * `mac`
-         *   * `network`
-         *   * `portUsage`
-         *   * `radiusGroup`
-         *   * `resource`: can only be used in `dstTags`
-         *   * `staticGbp`: applying gbp tag against matching conditions
-         *   * `subnet`&#39;
+         * @param type Classifier type that determines which ACL tag fields are evaluated
          * 
          * @return builder
          * 

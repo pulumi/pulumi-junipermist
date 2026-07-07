@@ -93,16 +93,32 @@ public final class BaseState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.gatewaytemplateId);
     }
 
+    /**
+     * Latitude and longitude for the site location
+     * 
+     */
     @Import(name="latlng")
     private @Nullable Output<BaseLatlngArgs> latlng;
 
+    /**
+     * @return Latitude and longitude for the site location
+     * 
+     */
     public Optional<Output<BaseLatlngArgs>> latlng() {
         return Optional.ofNullable(this.latlng);
     }
 
+    /**
+     * Display name of the site
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Display name of the site
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -137,9 +153,17 @@ public final class BaseState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.notes);
     }
 
+    /**
+     * Organization identifier associated with the site
+     * 
+     */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
+    /**
+     * @return Organization identifier associated with the site
+     * 
+     */
     public Optional<Output<String>> orgId() {
         return Optional.ofNullable(this.orgId);
     }
@@ -175,14 +199,14 @@ public final class BaseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * SecPolicy ID
+     * Security policy identifier applied to this site
      * 
      */
     @Import(name="secpolicyId")
     private @Nullable Output<String> secpolicyId;
 
     /**
-     * @return SecPolicy ID
+     * @return Security policy identifier applied to this site
      * 
      */
     public Optional<Output<String>> secpolicyId() {
@@ -205,14 +229,14 @@ public final class BaseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Site Template ID
+     * Site template identifier applied to this site
      * 
      */
     @Import(name="sitetemplateId")
     private @Nullable Output<String> sitetemplateId;
 
     /**
-     * @return Site Template ID
+     * @return Site template identifier applied to this site
      * 
      */
     public Optional<Output<String>> sitetemplateId() {
@@ -220,23 +244,31 @@ public final class BaseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Timezone the site is at
+     * IANA time zone name for the site
      * 
      */
     @Import(name="timezone")
     private @Nullable Output<String> timezone;
 
     /**
-     * @return Timezone the site is at
+     * @return IANA time zone name for the site
      * 
      */
     public Optional<Output<String>> timezone() {
         return Optional.ofNullable(this.timezone);
     }
 
+    /**
+     * Time zone offset value derived from the site&#39;s timezone
+     * 
+     */
     @Import(name="tzoffset")
     private @Nullable Output<Integer> tzoffset;
 
+    /**
+     * @return Time zone offset value derived from the site&#39;s timezone
+     * 
+     */
     public Optional<Output<Integer>> tzoffset() {
         return Optional.ofNullable(this.tzoffset);
     }
@@ -386,20 +418,44 @@ public final class BaseState extends com.pulumi.resources.ResourceArgs {
             return gatewaytemplateId(Output.of(gatewaytemplateId));
         }
 
+        /**
+         * @param latlng Latitude and longitude for the site location
+         * 
+         * @return builder
+         * 
+         */
         public Builder latlng(@Nullable Output<BaseLatlngArgs> latlng) {
             $.latlng = latlng;
             return this;
         }
 
+        /**
+         * @param latlng Latitude and longitude for the site location
+         * 
+         * @return builder
+         * 
+         */
         public Builder latlng(BaseLatlngArgs latlng) {
             return latlng(Output.of(latlng));
         }
 
+        /**
+         * @param name Display name of the site
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Display name of the site
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -446,11 +502,23 @@ public final class BaseState extends com.pulumi.resources.ResourceArgs {
             return notes(Output.of(notes));
         }
 
+        /**
+         * @param orgId Organization identifier associated with the site
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(@Nullable Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param orgId Organization identifier associated with the site
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }
@@ -498,7 +566,7 @@ public final class BaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secpolicyId SecPolicy ID
+         * @param secpolicyId Security policy identifier applied to this site
          * 
          * @return builder
          * 
@@ -509,7 +577,7 @@ public final class BaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secpolicyId SecPolicy ID
+         * @param secpolicyId Security policy identifier applied to this site
          * 
          * @return builder
          * 
@@ -550,7 +618,7 @@ public final class BaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sitetemplateId Site Template ID
+         * @param sitetemplateId Site template identifier applied to this site
          * 
          * @return builder
          * 
@@ -561,7 +629,7 @@ public final class BaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sitetemplateId Site Template ID
+         * @param sitetemplateId Site template identifier applied to this site
          * 
          * @return builder
          * 
@@ -571,7 +639,7 @@ public final class BaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timezone Timezone the site is at
+         * @param timezone IANA time zone name for the site
          * 
          * @return builder
          * 
@@ -582,7 +650,7 @@ public final class BaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timezone Timezone the site is at
+         * @param timezone IANA time zone name for the site
          * 
          * @return builder
          * 
@@ -591,11 +659,23 @@ public final class BaseState extends com.pulumi.resources.ResourceArgs {
             return timezone(Output.of(timezone));
         }
 
+        /**
+         * @param tzoffset Time zone offset value derived from the site&#39;s timezone
+         * 
+         * @return builder
+         * 
+         */
         public Builder tzoffset(@Nullable Output<Integer> tzoffset) {
             $.tzoffset = tzoffset;
             return this;
         }
 
+        /**
+         * @param tzoffset Time zone offset value derived from the site&#39;s timezone
+         * 
+         * @return builder
+         * 
+         */
         public Builder tzoffset(Integer tzoffset) {
             return tzoffset(Output.of(tzoffset));
         }

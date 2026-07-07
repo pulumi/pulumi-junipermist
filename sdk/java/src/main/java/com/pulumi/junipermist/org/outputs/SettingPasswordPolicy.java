@@ -23,7 +23,7 @@ public final class SettingPasswordPolicy {
      */
     private @Nullable Integer expiryInDays;
     /**
-     * @return Required password length
+     * @return Minimum number of characters required for passwords
      * 
      */
     private @Nullable Integer minLength;
@@ -54,7 +54,7 @@ public final class SettingPasswordPolicy {
         return Optional.ofNullable(this.expiryInDays);
     }
     /**
-     * @return Required password length
+     * @return Minimum number of characters required for passwords
      * 
      */
     public Optional<Integer> minLength() {

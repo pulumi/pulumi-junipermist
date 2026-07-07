@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class GatewayPathPreferencesPathGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Relative cost assigned to this path for gateway path selection
+        /// </summary>
         [Input("cost")]
         public Input<int>? Cost { get; set; }
 
@@ -45,7 +48,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _networks;
 
         /// <summary>
-        /// Required when `Type`==`Local`
+        /// List of network names used when `Type`==`Local`
         /// </summary>
         public InputList<string> Networks
         {
@@ -57,7 +60,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _targetIps;
 
         /// <summary>
-        /// If `Type`==`Local`, if destination IP is to be replaced
+        /// List of destination IP addresses to replace when `Type`==`Local`
         /// </summary>
         public InputList<string> TargetIps
         {
@@ -66,13 +69,13 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// enum: `Local`, `Tunnel`, `Vpn`, `Wan`
+        /// Gateway path source type, such as local network, WAN interface, VPN path, or tunnel
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
         /// <summary>
-        /// Optional if `Type`==`Vpn`
+        /// Optional if `Type`==`Vpn`; WAN interface name associated with the VPN path
         /// </summary>
         [Input("wanName")]
         public Input<string>? WanName { get; set; }

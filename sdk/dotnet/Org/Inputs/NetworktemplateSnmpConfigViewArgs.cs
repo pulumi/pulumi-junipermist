@@ -13,14 +13,20 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class NetworktemplateSnmpConfigViewArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If the root oid configured is included
+        /// Whether the root OID is included in this SNMP view
         /// </summary>
         [Input("include")]
         public Input<bool>? Include { get; set; }
 
+        /// <summary>
+        /// Root OID for this SNMP view
+        /// </summary>
         [Input("oid")]
         public Input<string>? Oid { get; set; }
 
+        /// <summary>
+        /// Name of the SNMP MIB view definition
+        /// </summary>
         [Input("viewName")]
         public Input<string>? ViewName { get; set; }
 

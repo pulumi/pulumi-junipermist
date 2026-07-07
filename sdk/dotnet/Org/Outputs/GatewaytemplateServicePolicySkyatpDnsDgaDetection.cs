@@ -13,9 +13,12 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class GatewaytemplateServicePolicySkyatpDnsDgaDetection
     {
+        /// <summary>
+        /// Whether Sky ATP DNS DGA detection is enabled
+        /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// enum: `Default`, `Standard`, `Strict`
+        /// Sky ATP DNS DGA detection profile to apply
         /// </summary>
         public readonly string? Profile;
 

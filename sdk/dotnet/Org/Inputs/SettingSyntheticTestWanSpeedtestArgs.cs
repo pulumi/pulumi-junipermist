@@ -12,11 +12,14 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class SettingSyntheticTestWanSpeedtestArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether scheduled WAN speedtests are enabled
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// `Any` / HH:MM (24-hour format)
+        /// Scheduled time of day for WAN speedtests
         /// </summary>
         [Input("timeOfDay")]
         public Input<string>? TimeOfDay { get; set; }

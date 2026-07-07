@@ -12,11 +12,18 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class SettingDeviceCertGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// PEM-encoded common device certificate used by organization settings
+        /// </summary>
         [Input("cert", required: true)]
         public Input<string> Cert { get; set; } = null!;
 
         [Input("key", required: true)]
         private Input<string>? _key;
+
+        /// <summary>
+        /// Private key paired with the common device certificate
+        /// </summary>
         public Input<string>? Key
         {
             get => _key;

@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GatewayPortConfigWanExtraRoutes {
+    /**
+     * @return IPv4 next-hop address for this WAN extra route
+     * 
+     */
     private @Nullable String via;
 
     private GatewayPortConfigWanExtraRoutes() {}
+    /**
+     * @return IPv4 next-hop address for this WAN extra route
+     * 
+     */
     public Optional<String> via() {
         return Optional.ofNullable(this.via);
     }

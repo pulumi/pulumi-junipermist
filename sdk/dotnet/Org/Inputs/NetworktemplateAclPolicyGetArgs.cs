@@ -16,9 +16,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<Inputs.NetworktemplateAclPolicyActionGetArgs>? _actions;
 
         /// <summary>
-        /// ACL Policy Actions:
-        ///   - for GBP-based policy, all SrcTags and DstTags have to be gbp-based
-        ///   - for ACL-based policy, `Network` is required in either the source or destination so that we know where to attach the policy to
+        /// Destination tag actions evaluated for sources matching this ACL policy
         /// </summary>
         public InputList<Inputs.NetworktemplateAclPolicyActionGetArgs> Actions
         {
@@ -26,6 +24,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
             set => _actions = value;
         }
 
+        /// <summary>
+        /// Display name of the ACL policy
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -33,9 +34,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _srcTags;
 
         /// <summary>
-        /// ACL Policy Source Tags:
-        ///   - for GBP-based policy, all SrcTags and DstTags have to be gbp-based
-        ///   - for ACL-based policy, `Network` is required in either the source or destination so that we know where to attach the policy to
+        /// Source ACL tags that select traffic for this ACL policy
         /// </summary>
         public InputList<string> SrcTags
         {

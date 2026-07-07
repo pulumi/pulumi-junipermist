@@ -34,11 +34,11 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly bool? EnableMacAuth;
         /// <summary>
-        /// When `Type`==`Wep`
+        /// When `Type`==`Wep`, index of the WEP key used as the default transmit key
         /// </summary>
         public readonly int? KeyIdx;
         /// <summary>
-        /// When type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+        /// When `Type`==`Wep`, WEP keys configured for this WLAN
         /// </summary>
         public readonly ImmutableArray<string> Keys;
         /// <summary>
@@ -46,11 +46,11 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly bool? MultiPskOnly;
         /// <summary>
-        /// if `Type`==`Open`. enum: `Disabled`, `Enabled` (means transition mode), `Required`
+        /// When `Type`==`Open`, Opportunistic Wireless Encryption mode for this WLAN
         /// </summary>
         public readonly string? Owe;
         /// <summary>
-        /// When `Type`=`Psk` or `Type`=`Eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `Wpa3`
+        /// When `Type`==`Psk` or `Type`==`Eap`, pairwise cipher suites allowed for this WLAN
         /// </summary>
         public readonly ImmutableArray<string> Pairwises;
         /// <summary>
@@ -62,7 +62,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? Psk;
         /// <summary>
-        /// enum: `Eap`, `Eap192`, `Open`, `Psk`, `psk-tkip`, `psk-wpa2-tkip`, `Wep`
+        /// Authentication mode used by this WLAN
         /// </summary>
         public readonly string? Type;
         /// <summary>

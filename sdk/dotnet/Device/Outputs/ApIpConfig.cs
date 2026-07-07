@@ -14,39 +14,51 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class ApIpConfig
     {
         /// <summary>
-        /// If `Type`==`Static`
+        /// If `Type`==`Static`. DNS server IP addresses for AP management traffic
         /// </summary>
         public readonly ImmutableArray<string> Dns;
         /// <summary>
-        /// Required if `Type`==`Static`
+        /// If `Type`==`Static`. DNS search suffixes applied to AP management lookups
         /// </summary>
         public readonly ImmutableArray<string> DnsSuffixes;
         /// <summary>
-        /// Required if `Type`==`Static`
+        /// Required if `Type`==`Static`. IPv4 default gateway for AP management traffic
         /// </summary>
         public readonly string? Gateway;
+        /// <summary>
+        /// Required if `Type6`==`Static`. IPv6 default gateway for AP management traffic when static IPv6 addressing is used
+        /// </summary>
         public readonly string? Gateway6;
         /// <summary>
-        /// Required if `Type`==`Static`
+        /// Required if `Type`==`Static`. Static IPv4 address for the AP management interface
         /// </summary>
         public readonly string? Ip;
+        /// <summary>
+        /// Required if `Type6`==`Static`. Static IPv6 address for the AP management interface
+        /// </summary>
         public readonly string? Ip6;
+        /// <summary>
+        /// Maximum transmission unit for AP management traffic
+        /// </summary>
         public readonly int? Mtu;
         /// <summary>
-        /// Required if `Type`==`Static`
+        /// Required if `Type`==`Static`. IPv4 netmask for the AP management interface
         /// </summary>
         public readonly string? Netmask;
+        /// <summary>
+        /// Required if `Type6`==`Static`. IPv6 prefix length for the AP management interface
+        /// </summary>
         public readonly string? Netmask6;
         /// <summary>
-        /// enum: `Dhcp`, `Static`
+        /// IPv4 address assignment mode for AP management traffic
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// enum: `Autoconf`, `Dhcp`, `Disabled`, `Static`
+        /// IPv6 address assignment mode for AP management traffic
         /// </summary>
         public readonly string? Type6;
         /// <summary>
-        /// Management VLAN id, default is 1 (untagged)
+        /// Management VLAN ID, default is 1 (untagged)
         /// </summary>
         public readonly int? VlanId;
 

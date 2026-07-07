@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NacPortalSsoSsoRoleMatching {
+    /**
+     * @return NAC portal role assigned when the SSO role value matches
+     * 
+     */
     private @Nullable String assigned;
+    /**
+     * @return SSO role value to match from the SAML assertion
+     * 
+     */
     private @Nullable String match;
 
     private NacPortalSsoSsoRoleMatching() {}
+    /**
+     * @return NAC portal role assigned when the SSO role value matches
+     * 
+     */
     public Optional<String> assigned() {
         return Optional.ofNullable(this.assigned);
     }
+    /**
+     * @return SSO role value to match from the SAML assertion
+     * 
+     */
     public Optional<String> match() {
         return Optional.ofNullable(this.match);
     }

@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingMarvisSelfDrivingWireless {
+    /**
+     * @return Whether self-driving automation is enabled for this domain
+     * 
+     */
     private @Nullable Boolean enabled;
 
     private SettingMarvisSelfDrivingWireless() {}
+    /**
+     * @return Whether self-driving automation is enabled for this domain
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }

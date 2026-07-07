@@ -49,14 +49,14 @@ public final class ApBleConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * enum: `custom`, `default`
+     * Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate
      * 
      */
     @Import(name="beaconRateMode")
     private @Nullable Output<String> beaconRateMode;
 
     /**
-     * @return enum: `custom`, `default`
+     * @return Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate
      * 
      */
     public Optional<Output<String>> beaconRateMode() {
@@ -64,14 +64,14 @@ public final class ApBleConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
+     * AP BLE beam numbers disabled for location advertisements
      * 
      */
     @Import(name="beamDisableds")
     private @Nullable Output<List<Integer>> beamDisableds;
 
     /**
-     * @return List of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
+     * @return AP BLE beam numbers disabled for location advertisements
      * 
      */
     public Optional<Output<List<Integer>>> beamDisableds() {
@@ -138,9 +138,17 @@ public final class ApBleConfigArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.eddystoneUidAdvPower);
     }
 
+    /**
+     * BLE beams used to transmit Eddystone-UID advertisements, expressed as ranges such as `2-4,7`
+     * 
+     */
     @Import(name="eddystoneUidBeams")
     private @Nullable Output<String> eddystoneUidBeams;
 
+    /**
+     * @return BLE beams used to transmit Eddystone-UID advertisements, expressed as ranges such as `2-4,7`
+     * 
+     */
     public Optional<Output<String>> eddystoneUidBeams() {
         return Optional.ofNullable(this.eddystoneUidBeams);
     }
@@ -191,14 +199,14 @@ public final class ApBleConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Eddystone-UID namespace
+     * Eddystone-UID namespace broadcast by the AP, as a 10-byte hex string
      * 
      */
     @Import(name="eddystoneUidNamespace")
     private @Nullable Output<String> eddystoneUidNamespace;
 
     /**
-     * @return Eddystone-UID namespace
+     * @return Eddystone-UID namespace broadcast by the AP, as a 10-byte hex string
      * 
      */
     public Optional<Output<String>> eddystoneUidNamespace() {
@@ -220,9 +228,17 @@ public final class ApBleConfigArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.eddystoneUrlAdvPower);
     }
 
+    /**
+     * BLE beams used to transmit Eddystone-URL advertisements, expressed as ranges such as `2-4,7`
+     * 
+     */
     @Import(name="eddystoneUrlBeams")
     private @Nullable Output<String> eddystoneUrlBeams;
 
+    /**
+     * @return BLE beams used to transmit Eddystone-URL advertisements, expressed as ranges such as `2-4,7`
+     * 
+     */
     public Optional<Output<String>> eddystoneUrlBeams() {
         return Optional.ofNullable(this.eddystoneUrlBeams);
     }
@@ -243,14 +259,14 @@ public final class ApBleConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Frequency (msec) of data emit by Eddystone-UID beacon
+     * Frequency (msec) of data emitted by Eddystone-URL beacon
      * 
      */
     @Import(name="eddystoneUrlFreqMsec")
     private @Nullable Output<Integer> eddystoneUrlFreqMsec;
 
     /**
-     * @return Frequency (msec) of data emit by Eddystone-UID beacon
+     * @return Frequency (msec) of data emitted by Eddystone-URL beacon
      * 
      */
     public Optional<Output<Integer>> eddystoneUrlFreqMsec() {
@@ -287,9 +303,17 @@ public final class ApBleConfigArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.ibeaconAdvPower);
     }
 
+    /**
+     * BLE beams used to transmit iBeacon advertisements, expressed as ranges such as `2-4,7`
+     * 
+     */
     @Import(name="ibeaconBeams")
     private @Nullable Output<String> ibeaconBeams;
 
+    /**
+     * @return BLE beams used to transmit iBeacon advertisements, expressed as ranges such as `2-4,7`
+     * 
+     */
     public Optional<Output<String>> ibeaconBeams() {
         return Optional.ofNullable(this.ibeaconBeams);
     }
@@ -325,14 +349,14 @@ public final class ApBleConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Major number for iBeacon
+     * iBeacon major value broadcast by the AP
      * 
      */
     @Import(name="ibeaconMajor")
     private @Nullable Output<Integer> ibeaconMajor;
 
     /**
-     * @return Major number for iBeacon
+     * @return iBeacon major value broadcast by the AP
      * 
      */
     public Optional<Output<Integer>> ibeaconMajor() {
@@ -340,14 +364,14 @@ public final class ApBleConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Minor number for iBeacon
+     * iBeacon minor value broadcast by the AP
      * 
      */
     @Import(name="ibeaconMinor")
     private @Nullable Output<Integer> ibeaconMinor;
 
     /**
-     * @return Minor number for iBeacon
+     * @return iBeacon minor value broadcast by the AP
      * 
      */
     public Optional<Output<Integer>> ibeaconMinor() {
@@ -385,14 +409,14 @@ public final class ApBleConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * enum: `custom`, `default`
+     * Transmit power mode for BLE beacons; use custom to set `power`
      * 
      */
     @Import(name="powerMode")
     private @Nullable Output<String> powerMode;
 
     /**
-     * @return enum: `custom`, `default`
+     * @return Transmit power mode for BLE beacons; use custom to set `power`
      * 
      */
     public Optional<Output<String>> powerMode() {
@@ -492,7 +516,7 @@ public final class ApBleConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param beaconRateMode enum: `custom`, `default`
+         * @param beaconRateMode Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate
          * 
          * @return builder
          * 
@@ -503,7 +527,7 @@ public final class ApBleConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param beaconRateMode enum: `custom`, `default`
+         * @param beaconRateMode Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate
          * 
          * @return builder
          * 
@@ -513,7 +537,7 @@ public final class ApBleConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param beamDisableds List of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
+         * @param beamDisableds AP BLE beam numbers disabled for location advertisements
          * 
          * @return builder
          * 
@@ -524,7 +548,7 @@ public final class ApBleConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param beamDisableds List of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
+         * @param beamDisableds AP BLE beam numbers disabled for location advertisements
          * 
          * @return builder
          * 
@@ -534,7 +558,7 @@ public final class ApBleConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param beamDisableds List of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
+         * @param beamDisableds AP BLE beam numbers disabled for location advertisements
          * 
          * @return builder
          * 
@@ -627,11 +651,23 @@ public final class ApBleConfigArgs extends com.pulumi.resources.ResourceArgs {
             return eddystoneUidAdvPower(Output.of(eddystoneUidAdvPower));
         }
 
+        /**
+         * @param eddystoneUidBeams BLE beams used to transmit Eddystone-UID advertisements, expressed as ranges such as `2-4,7`
+         * 
+         * @return builder
+         * 
+         */
         public Builder eddystoneUidBeams(@Nullable Output<String> eddystoneUidBeams) {
             $.eddystoneUidBeams = eddystoneUidBeams;
             return this;
         }
 
+        /**
+         * @param eddystoneUidBeams BLE beams used to transmit Eddystone-UID advertisements, expressed as ranges such as `2-4,7`
+         * 
+         * @return builder
+         * 
+         */
         public Builder eddystoneUidBeams(String eddystoneUidBeams) {
             return eddystoneUidBeams(Output.of(eddystoneUidBeams));
         }
@@ -700,7 +736,7 @@ public final class ApBleConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eddystoneUidNamespace Eddystone-UID namespace
+         * @param eddystoneUidNamespace Eddystone-UID namespace broadcast by the AP, as a 10-byte hex string
          * 
          * @return builder
          * 
@@ -711,7 +747,7 @@ public final class ApBleConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eddystoneUidNamespace Eddystone-UID namespace
+         * @param eddystoneUidNamespace Eddystone-UID namespace broadcast by the AP, as a 10-byte hex string
          * 
          * @return builder
          * 
@@ -741,11 +777,23 @@ public final class ApBleConfigArgs extends com.pulumi.resources.ResourceArgs {
             return eddystoneUrlAdvPower(Output.of(eddystoneUrlAdvPower));
         }
 
+        /**
+         * @param eddystoneUrlBeams BLE beams used to transmit Eddystone-URL advertisements, expressed as ranges such as `2-4,7`
+         * 
+         * @return builder
+         * 
+         */
         public Builder eddystoneUrlBeams(@Nullable Output<String> eddystoneUrlBeams) {
             $.eddystoneUrlBeams = eddystoneUrlBeams;
             return this;
         }
 
+        /**
+         * @param eddystoneUrlBeams BLE beams used to transmit Eddystone-URL advertisements, expressed as ranges such as `2-4,7`
+         * 
+         * @return builder
+         * 
+         */
         public Builder eddystoneUrlBeams(String eddystoneUrlBeams) {
             return eddystoneUrlBeams(Output.of(eddystoneUrlBeams));
         }
@@ -772,7 +820,7 @@ public final class ApBleConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eddystoneUrlFreqMsec Frequency (msec) of data emit by Eddystone-UID beacon
+         * @param eddystoneUrlFreqMsec Frequency (msec) of data emitted by Eddystone-URL beacon
          * 
          * @return builder
          * 
@@ -783,7 +831,7 @@ public final class ApBleConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eddystoneUrlFreqMsec Frequency (msec) of data emit by Eddystone-UID beacon
+         * @param eddystoneUrlFreqMsec Frequency (msec) of data emitted by Eddystone-URL beacon
          * 
          * @return builder
          * 
@@ -834,11 +882,23 @@ public final class ApBleConfigArgs extends com.pulumi.resources.ResourceArgs {
             return ibeaconAdvPower(Output.of(ibeaconAdvPower));
         }
 
+        /**
+         * @param ibeaconBeams BLE beams used to transmit iBeacon advertisements, expressed as ranges such as `2-4,7`
+         * 
+         * @return builder
+         * 
+         */
         public Builder ibeaconBeams(@Nullable Output<String> ibeaconBeams) {
             $.ibeaconBeams = ibeaconBeams;
             return this;
         }
 
+        /**
+         * @param ibeaconBeams BLE beams used to transmit iBeacon advertisements, expressed as ranges such as `2-4,7`
+         * 
+         * @return builder
+         * 
+         */
         public Builder ibeaconBeams(String ibeaconBeams) {
             return ibeaconBeams(Output.of(ibeaconBeams));
         }
@@ -886,7 +946,7 @@ public final class ApBleConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ibeaconMajor Major number for iBeacon
+         * @param ibeaconMajor iBeacon major value broadcast by the AP
          * 
          * @return builder
          * 
@@ -897,7 +957,7 @@ public final class ApBleConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ibeaconMajor Major number for iBeacon
+         * @param ibeaconMajor iBeacon major value broadcast by the AP
          * 
          * @return builder
          * 
@@ -907,7 +967,7 @@ public final class ApBleConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ibeaconMinor Minor number for iBeacon
+         * @param ibeaconMinor iBeacon minor value broadcast by the AP
          * 
          * @return builder
          * 
@@ -918,7 +978,7 @@ public final class ApBleConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ibeaconMinor Minor number for iBeacon
+         * @param ibeaconMinor iBeacon minor value broadcast by the AP
          * 
          * @return builder
          * 
@@ -970,7 +1030,7 @@ public final class ApBleConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param powerMode enum: `custom`, `default`
+         * @param powerMode Transmit power mode for BLE beacons; use custom to set `power`
          * 
          * @return builder
          * 
@@ -981,7 +1041,7 @@ public final class ApBleConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param powerMode enum: `custom`, `default`
+         * @param powerMode Transmit power mode for BLE beacons; use custom to set `power`
          * 
          * @return builder
          * 

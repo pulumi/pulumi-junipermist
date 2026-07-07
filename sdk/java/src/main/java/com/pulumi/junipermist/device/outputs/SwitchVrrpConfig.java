@@ -14,19 +14,27 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SwitchVrrpConfig {
+    /**
+     * @return Whether VRRP configuration is enabled
+     * 
+     */
     private @Nullable Boolean enabled;
     /**
-     * @return Property key is the VRRP name
+     * @return VRRP groups keyed by group name
      * 
      */
     private @Nullable Map<String,SwitchVrrpConfigGroups> groups;
 
     private SwitchVrrpConfig() {}
+    /**
+     * @return Whether VRRP configuration is enabled
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Property key is the VRRP name
+     * @return VRRP groups keyed by group name
      * 
      */
     public Map<String,SwitchVrrpConfigGroups> groups() {

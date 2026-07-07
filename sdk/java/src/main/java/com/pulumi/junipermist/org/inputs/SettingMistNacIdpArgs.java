@@ -18,14 +18,14 @@ public final class SettingMistNacIdpArgs extends com.pulumi.resources.ResourceAr
     public static final SettingMistNacIdpArgs Empty = new SettingMistNacIdpArgs();
 
     /**
-     * When the IDP of mxedgeProxy type, exclude the following realms from proxying in addition to other valid home realms in this org
+     * When the IDP is `mxedgeProxy` type, realms excluded from proxying in addition to other valid home realms in this org
      * 
      */
     @Import(name="excludeRealms")
     private @Nullable Output<List<String>> excludeRealms;
 
     /**
-     * @return When the IDP of mxedgeProxy type, exclude the following realms from proxying in addition to other valid home realms in this org
+     * @return When the IDP is `mxedgeProxy` type, realms excluded from proxying in addition to other valid home realms in this org
      * 
      */
     public Optional<Output<List<String>>> excludeRealms() {
@@ -48,18 +48,14 @@ public final class SettingMistNacIdpArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Which realm should trigger this IDP. User Realm is extracted from:
-     *   * Username-AVP (`mist.com` from john{@literal @}mist.com)
-     *   * Cert CN
+     * User realms that select this identity provider
      * 
      */
     @Import(name="userRealms", required=true)
     private Output<List<String>> userRealms;
 
     /**
-     * @return Which realm should trigger this IDP. User Realm is extracted from:
-     *   * Username-AVP (`mist.com` from john{@literal @}mist.com)
-     *   * Cert CN
+     * @return User realms that select this identity provider
      * 
      */
     public Output<List<String>> userRealms() {
@@ -93,7 +89,7 @@ public final class SettingMistNacIdpArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param excludeRealms When the IDP of mxedgeProxy type, exclude the following realms from proxying in addition to other valid home realms in this org
+         * @param excludeRealms When the IDP is `mxedgeProxy` type, realms excluded from proxying in addition to other valid home realms in this org
          * 
          * @return builder
          * 
@@ -104,7 +100,7 @@ public final class SettingMistNacIdpArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param excludeRealms When the IDP of mxedgeProxy type, exclude the following realms from proxying in addition to other valid home realms in this org
+         * @param excludeRealms When the IDP is `mxedgeProxy` type, realms excluded from proxying in addition to other valid home realms in this org
          * 
          * @return builder
          * 
@@ -114,7 +110,7 @@ public final class SettingMistNacIdpArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param excludeRealms When the IDP of mxedgeProxy type, exclude the following realms from proxying in addition to other valid home realms in this org
+         * @param excludeRealms When the IDP is `mxedgeProxy` type, realms excluded from proxying in addition to other valid home realms in this org
          * 
          * @return builder
          * 
@@ -145,9 +141,7 @@ public final class SettingMistNacIdpArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param userRealms Which realm should trigger this IDP. User Realm is extracted from:
-         *   * Username-AVP (`mist.com` from john{@literal @}mist.com)
-         *   * Cert CN
+         * @param userRealms User realms that select this identity provider
          * 
          * @return builder
          * 
@@ -158,9 +152,7 @@ public final class SettingMistNacIdpArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param userRealms Which realm should trigger this IDP. User Realm is extracted from:
-         *   * Username-AVP (`mist.com` from john{@literal @}mist.com)
-         *   * Cert CN
+         * @param userRealms User realms that select this identity provider
          * 
          * @return builder
          * 
@@ -170,9 +162,7 @@ public final class SettingMistNacIdpArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param userRealms Which realm should trigger this IDP. User Realm is extracted from:
-         *   * Username-AVP (`mist.com` from john{@literal @}mist.com)
-         *   * Cert CN
+         * @param userRealms User realms that select this identity provider
          * 
          * @return builder
          * 

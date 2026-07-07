@@ -23,14 +23,14 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
     public static final DeviceprofileGatewayDhcpdConfigConfigArgs Empty = new DeviceprofileGatewayDhcpdConfigConfigArgs();
 
     /**
-     * If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+     * If `type`==`local` or `type6`==`local`, DNS servers advertised to DHCP clients
      * 
      */
     @Import(name="dnsServers")
     private @Nullable Output<List<String>> dnsServers;
 
     /**
-     * @return If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+     * @return If `type`==`local` or `type6`==`local`, DNS servers advertised to DHCP clients
      * 
      */
     public Optional<Output<List<String>>> dnsServers() {
@@ -38,7 +38,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
     }
 
     /**
-     * If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+     * If `type`==`local` or `type6`==`local`, DNS search suffixes advertised to DHCP clients
      * 
      * @deprecated
      * Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
@@ -49,7 +49,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
     private @Nullable Output<List<String>> dnsSuffixes;
 
     /**
-     * @return If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+     * @return If `type`==`local` or `type6`==`local`, DNS search suffixes advertised to DHCP clients
      * 
      * @deprecated
      * Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
@@ -61,14 +61,14 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
     }
 
     /**
-     * If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. &#34;5684dae9ac8b&#34;)
+     * If `type`==`local` or `type6`==`local`, fixed client bindings for local DHCP service
      * 
      */
     @Import(name="fixedBindings")
     private @Nullable Output<Map<String,DeviceprofileGatewayDhcpdConfigConfigFixedBindingsArgs>> fixedBindings;
 
     /**
-     * @return If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. &#34;5684dae9ac8b&#34;)
+     * @return If `type`==`local` or `type6`==`local`, fixed client bindings for local DHCP service
      * 
      */
     public Optional<Output<Map<String,DeviceprofileGatewayDhcpdConfigConfigFixedBindingsArgs>>> fixedBindings() {
@@ -91,14 +91,14 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
     }
 
     /**
-     * If `type6`==`local`
+     * If `type6`==`local`, ending IPv6 address for the DHCP lease pool
      * 
      */
     @Import(name="ip6End")
     private @Nullable Output<String> ip6End;
 
     /**
-     * @return If `type6`==`local`
+     * @return If `type6`==`local`, ending IPv6 address for the DHCP lease pool
      * 
      */
     public Optional<Output<String>> ip6End() {
@@ -106,14 +106,14 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
     }
 
     /**
-     * If `type6`==`local`
+     * If `type6`==`local`, starting IPv6 address for the DHCP lease pool
      * 
      */
     @Import(name="ip6Start")
     private @Nullable Output<String> ip6Start;
 
     /**
-     * @return If `type6`==`local`
+     * @return If `type6`==`local`, starting IPv6 address for the DHCP lease pool
      * 
      */
     public Optional<Output<String>> ip6Start() {
@@ -121,14 +121,14 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
     }
 
     /**
-     * If `type`==`local`
+     * If `type`==`local`, ending IPv4 address for the DHCP lease pool
      * 
      */
     @Import(name="ipEnd")
     private @Nullable Output<String> ipEnd;
 
     /**
-     * @return If `type`==`local`
+     * @return If `type`==`local`, ending IPv4 address for the DHCP lease pool
      * 
      */
     public Optional<Output<String>> ipEnd() {
@@ -136,14 +136,14 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
     }
 
     /**
-     * If `type`==`local`
+     * If `type`==`local`, starting IPv4 address for the DHCP lease pool
      * 
      */
     @Import(name="ipStart")
     private @Nullable Output<String> ipStart;
 
     /**
-     * @return If `type`==`local`
+     * @return If `type`==`local`, starting IPv4 address for the DHCP lease pool
      * 
      */
     public Optional<Output<String>> ipStart() {
@@ -166,14 +166,14 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
     }
 
     /**
-     * If `type`==`local` or `type6`==`local`. Property key is the DHCP option number
+     * If `type`==`local` or `type6`==`local`, custom DHCP options advertised to clients
      * 
      */
     @Import(name="options")
     private @Nullable Output<Map<String,DeviceprofileGatewayDhcpdConfigConfigOptionsArgs>> options;
 
     /**
-     * @return If `type`==`local` or `type6`==`local`. Property key is the DHCP option number
+     * @return If `type`==`local` or `type6`==`local`, custom DHCP options advertised to clients
      * 
      */
     public Optional<Output<Map<String,DeviceprofileGatewayDhcpdConfigConfigOptionsArgs>>> options() {
@@ -198,14 +198,14 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
     }
 
     /**
-     * If `type`==`relay`
+     * If `type`==`relay`, upstream IPv4 DHCP servers
      * 
      */
     @Import(name="servers")
     private @Nullable Output<List<String>> servers;
 
     /**
-     * @return If `type`==`relay`
+     * @return If `type`==`relay`, upstream IPv4 DHCP servers
      * 
      */
     public Optional<Output<List<String>>> servers() {
@@ -213,14 +213,14 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
     }
 
     /**
-     * If `type6`==`relay`
+     * If `type6`==`relay`, upstream IPv6 DHCP servers
      * 
      */
     @Import(name="serversv6s")
     private @Nullable Output<List<String>> serversv6s;
 
     /**
-     * @return If `type6`==`relay`
+     * @return If `type6`==`relay`, upstream IPv6 DHCP servers
      * 
      */
     public Optional<Output<List<String>>> serversv6s() {
@@ -228,14 +228,14 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
     }
 
     /**
-     * enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+     * IPv4 DHCP mode for this network
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+     * @return IPv4 DHCP mode for this network
      * 
      */
     public Optional<Output<String>> type() {
@@ -243,14 +243,14 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
     }
 
     /**
-     * enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+     * IPv6 DHCP mode for this network
      * 
      */
     @Import(name="type6")
     private @Nullable Output<String> type6;
 
     /**
-     * @return enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+     * @return IPv6 DHCP mode for this network
      * 
      */
     public Optional<Output<String>> type6() {
@@ -258,18 +258,14 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
     }
 
     /**
-     * If `type`==`local` or `type6`==`local`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
-     *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
-     *   * sub option code: 1-255, sub-option code
+     * If `type`==`local` or `type6`==`local`, vendor-encapsulated DHCP options advertised to clients
      * 
      */
     @Import(name="vendorEncapsulated")
     private @Nullable Output<Map<String,DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedArgs>> vendorEncapsulated;
 
     /**
-     * @return If `type`==`local` or `type6`==`local`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
-     *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
-     *   * sub option code: 1-255, sub-option code
+     * @return If `type`==`local` or `type6`==`local`, vendor-encapsulated DHCP options advertised to clients
      * 
      */
     public Optional<Output<Map<String,DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedArgs>>> vendorEncapsulated() {
@@ -316,7 +312,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param dnsServers If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+         * @param dnsServers If `type`==`local` or `type6`==`local`, DNS servers advertised to DHCP clients
          * 
          * @return builder
          * 
@@ -327,7 +323,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param dnsServers If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+         * @param dnsServers If `type`==`local` or `type6`==`local`, DNS servers advertised to DHCP clients
          * 
          * @return builder
          * 
@@ -337,7 +333,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param dnsServers If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+         * @param dnsServers If `type`==`local` or `type6`==`local`, DNS servers advertised to DHCP clients
          * 
          * @return builder
          * 
@@ -347,7 +343,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param dnsSuffixes If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+         * @param dnsSuffixes If `type`==`local` or `type6`==`local`, DNS search suffixes advertised to DHCP clients
          * 
          * @return builder
          * 
@@ -362,7 +358,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param dnsSuffixes If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+         * @param dnsSuffixes If `type`==`local` or `type6`==`local`, DNS search suffixes advertised to DHCP clients
          * 
          * @return builder
          * 
@@ -376,7 +372,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param dnsSuffixes If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+         * @param dnsSuffixes If `type`==`local` or `type6`==`local`, DNS search suffixes advertised to DHCP clients
          * 
          * @return builder
          * 
@@ -390,7 +386,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param fixedBindings If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. &#34;5684dae9ac8b&#34;)
+         * @param fixedBindings If `type`==`local` or `type6`==`local`, fixed client bindings for local DHCP service
          * 
          * @return builder
          * 
@@ -401,7 +397,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param fixedBindings If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. &#34;5684dae9ac8b&#34;)
+         * @param fixedBindings If `type`==`local` or `type6`==`local`, fixed client bindings for local DHCP service
          * 
          * @return builder
          * 
@@ -432,7 +428,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param ip6End If `type6`==`local`
+         * @param ip6End If `type6`==`local`, ending IPv6 address for the DHCP lease pool
          * 
          * @return builder
          * 
@@ -443,7 +439,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param ip6End If `type6`==`local`
+         * @param ip6End If `type6`==`local`, ending IPv6 address for the DHCP lease pool
          * 
          * @return builder
          * 
@@ -453,7 +449,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param ip6Start If `type6`==`local`
+         * @param ip6Start If `type6`==`local`, starting IPv6 address for the DHCP lease pool
          * 
          * @return builder
          * 
@@ -464,7 +460,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param ip6Start If `type6`==`local`
+         * @param ip6Start If `type6`==`local`, starting IPv6 address for the DHCP lease pool
          * 
          * @return builder
          * 
@@ -474,7 +470,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param ipEnd If `type`==`local`
+         * @param ipEnd If `type`==`local`, ending IPv4 address for the DHCP lease pool
          * 
          * @return builder
          * 
@@ -485,7 +481,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param ipEnd If `type`==`local`
+         * @param ipEnd If `type`==`local`, ending IPv4 address for the DHCP lease pool
          * 
          * @return builder
          * 
@@ -495,7 +491,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param ipStart If `type`==`local`
+         * @param ipStart If `type`==`local`, starting IPv4 address for the DHCP lease pool
          * 
          * @return builder
          * 
@@ -506,7 +502,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param ipStart If `type`==`local`
+         * @param ipStart If `type`==`local`, starting IPv4 address for the DHCP lease pool
          * 
          * @return builder
          * 
@@ -537,7 +533,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param options If `type`==`local` or `type6`==`local`. Property key is the DHCP option number
+         * @param options If `type`==`local` or `type6`==`local`, custom DHCP options advertised to clients
          * 
          * @return builder
          * 
@@ -548,7 +544,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param options If `type`==`local` or `type6`==`local`. Property key is the DHCP option number
+         * @param options If `type`==`local` or `type6`==`local`, custom DHCP options advertised to clients
          * 
          * @return builder
          * 
@@ -581,7 +577,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param servers If `type`==`relay`
+         * @param servers If `type`==`relay`, upstream IPv4 DHCP servers
          * 
          * @return builder
          * 
@@ -592,7 +588,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param servers If `type`==`relay`
+         * @param servers If `type`==`relay`, upstream IPv4 DHCP servers
          * 
          * @return builder
          * 
@@ -602,7 +598,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param servers If `type`==`relay`
+         * @param servers If `type`==`relay`, upstream IPv4 DHCP servers
          * 
          * @return builder
          * 
@@ -612,7 +608,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param serversv6s If `type6`==`relay`
+         * @param serversv6s If `type6`==`relay`, upstream IPv6 DHCP servers
          * 
          * @return builder
          * 
@@ -623,7 +619,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param serversv6s If `type6`==`relay`
+         * @param serversv6s If `type6`==`relay`, upstream IPv6 DHCP servers
          * 
          * @return builder
          * 
@@ -633,7 +629,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param serversv6s If `type6`==`relay`
+         * @param serversv6s If `type6`==`relay`, upstream IPv6 DHCP servers
          * 
          * @return builder
          * 
@@ -643,7 +639,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param type enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+         * @param type IPv4 DHCP mode for this network
          * 
          * @return builder
          * 
@@ -654,7 +650,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param type enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+         * @param type IPv4 DHCP mode for this network
          * 
          * @return builder
          * 
@@ -664,7 +660,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param type6 enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+         * @param type6 IPv6 DHCP mode for this network
          * 
          * @return builder
          * 
@@ -675,7 +671,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param type6 enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+         * @param type6 IPv6 DHCP mode for this network
          * 
          * @return builder
          * 
@@ -685,9 +681,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param vendorEncapsulated If `type`==`local` or `type6`==`local`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
-         *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
-         *   * sub option code: 1-255, sub-option code
+         * @param vendorEncapsulated If `type`==`local` or `type6`==`local`, vendor-encapsulated DHCP options advertised to clients
          * 
          * @return builder
          * 
@@ -698,9 +692,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param vendorEncapsulated If `type`==`local` or `type6`==`local`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
-         *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
-         *   * sub option code: 1-255, sub-option code
+         * @param vendorEncapsulated If `type`==`local` or `type6`==`local`, vendor-encapsulated DHCP options advertised to clients
          * 
          * @return builder
          * 

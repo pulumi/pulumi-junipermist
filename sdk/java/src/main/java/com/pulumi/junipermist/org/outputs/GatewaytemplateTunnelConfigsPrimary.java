@@ -12,41 +12,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GatewaytemplateTunnelConfigsPrimary {
+    /**
+     * @return Remote gateway host addresses for this tunnel node
+     * 
+     */
     private List<String> hosts;
     /**
-     * @return Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
+     * @return Internal IP addresses configured on this tunnel node
      * 
      */
     private @Nullable List<String> internalIps;
+    /**
+     * @return Health-check IP addresses used to monitor this tunnel node
+     * 
+     */
     private @Nullable List<String> probeIps;
     /**
-     * @return Only if `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+     * @return IKE identities expected from this tunnel node
      * 
      */
     private @Nullable List<String> remoteIds;
+    /**
+     * @return Interface names that source tunnel traffic for this node
+     * 
+     */
     private List<String> wanNames;
 
     private GatewaytemplateTunnelConfigsPrimary() {}
+    /**
+     * @return Remote gateway host addresses for this tunnel node
+     * 
+     */
     public List<String> hosts() {
         return this.hosts;
     }
     /**
-     * @return Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
+     * @return Internal IP addresses configured on this tunnel node
      * 
      */
     public List<String> internalIps() {
         return this.internalIps == null ? List.of() : this.internalIps;
     }
+    /**
+     * @return Health-check IP addresses used to monitor this tunnel node
+     * 
+     */
     public List<String> probeIps() {
         return this.probeIps == null ? List.of() : this.probeIps;
     }
     /**
-     * @return Only if `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+     * @return IKE identities expected from this tunnel node
      * 
      */
     public List<String> remoteIds() {
         return this.remoteIds == null ? List.of() : this.remoteIds;
     }
+    /**
+     * @return Interface names that source tunnel traffic for this node
+     * 
+     */
     public List<String> wanNames() {
         return this.wanNames;
     }

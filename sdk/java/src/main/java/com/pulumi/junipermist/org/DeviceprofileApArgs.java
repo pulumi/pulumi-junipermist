@@ -14,6 +14,7 @@ import com.pulumi.junipermist.org.inputs.DeviceprofileApIpConfigArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileApLacpConfigArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileApLedArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileApMeshArgs;
+import com.pulumi.junipermist.org.inputs.DeviceprofileApMqttConfigArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileApPortConfigArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileApPwrConfigArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileApRadioConfigArgs;
@@ -34,36 +35,44 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
     public static final DeviceprofileApArgs Empty = new DeviceprofileApArgs();
 
     /**
-     * Aeroscout AP settings
+     * Location integration defaults for AeroScout in this AP profile
      * 
      */
     @Import(name="aeroscout")
     private @Nullable Output<DeviceprofileApAeroscoutArgs> aeroscout;
 
     /**
-     * @return Aeroscout AP settings
+     * @return Location integration defaults for AeroScout in this AP profile
      * 
      */
     public Optional<Output<DeviceprofileApAeroscoutArgs>> aeroscout() {
         return Optional.ofNullable(this.aeroscout);
     }
 
+    /**
+     * Location integration defaults for Airista in this AP profile
+     * 
+     */
     @Import(name="airista")
     private @Nullable Output<DeviceprofileApAiristaArgs> airista;
 
+    /**
+     * @return Location integration defaults for Airista in this AP profile
+     * 
+     */
     public Optional<Output<DeviceprofileApAiristaArgs>> airista() {
         return Optional.ofNullable(this.airista);
     }
 
     /**
-     * BLE AP settings
+     * Bluetooth Low Energy beacon and asset defaults in this AP profile
      * 
      */
     @Import(name="bleConfig")
     private @Nullable Output<DeviceprofileApBleConfigArgs> bleConfig;
 
     /**
-     * @return BLE AP settings
+     * @return Bluetooth Low Energy beacon and asset defaults in this AP profile
      * 
      */
     public Optional<Output<DeviceprofileApBleConfigArgs>> bleConfig() {
@@ -130,44 +139,60 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.disableModule);
     }
 
+    /**
+     * Electronic shelf label integration defaults in this AP profile
+     * 
+     */
     @Import(name="eslConfig")
     private @Nullable Output<DeviceprofileApEslConfigArgs> eslConfig;
 
+    /**
+     * @return Electronic shelf label integration defaults in this AP profile
+     * 
+     */
     public Optional<Output<DeviceprofileApEslConfigArgs>> eslConfig() {
         return Optional.ofNullable(this.eslConfig);
     }
 
     /**
-     * IP AP settings
+     * Management IP addressing defaults in this AP profile
      * 
      */
     @Import(name="ipConfig")
     private @Nullable Output<DeviceprofileApIpConfigArgs> ipConfig;
 
     /**
-     * @return IP AP settings
+     * @return Management IP addressing defaults in this AP profile
      * 
      */
     public Optional<Output<DeviceprofileApIpConfigArgs>> ipConfig() {
         return Optional.ofNullable(this.ipConfig);
     }
 
+    /**
+     * Link aggregation defaults for supported AP Ethernet uplinks
+     * 
+     */
     @Import(name="lacpConfig")
     private @Nullable Output<DeviceprofileApLacpConfigArgs> lacpConfig;
 
+    /**
+     * @return Link aggregation defaults for supported AP Ethernet uplinks
+     * 
+     */
     public Optional<Output<DeviceprofileApLacpConfigArgs>> lacpConfig() {
         return Optional.ofNullable(this.lacpConfig);
     }
 
     /**
-     * LED AP settings
+     * Indicator light behavior defaults in this AP profile
      * 
      */
     @Import(name="led")
     private @Nullable Output<DeviceprofileApLedArgs> led;
 
     /**
-     * @return LED AP settings
+     * @return Indicator light behavior defaults in this AP profile
      * 
      */
     public Optional<Output<DeviceprofileApLedArgs>> led() {
@@ -175,37 +200,76 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Mesh AP settings
+     * Wireless mesh role and band defaults in this AP profile
      * 
      */
     @Import(name="mesh")
     private @Nullable Output<DeviceprofileApMeshArgs> mesh;
 
     /**
-     * @return Mesh AP settings
+     * @return Wireless mesh role and band defaults in this AP profile
      * 
      */
     public Optional<Output<DeviceprofileApMeshArgs>> mesh() {
         return Optional.ofNullable(this.mesh);
     }
 
+    /**
+     * MQTT broker publishing settings for this AP profile
+     * 
+     */
+    @Import(name="mqttConfig")
+    private @Nullable Output<DeviceprofileApMqttConfigArgs> mqttConfig;
+
+    /**
+     * @return MQTT broker publishing settings for this AP profile
+     * 
+     */
+    public Optional<Output<DeviceprofileApMqttConfigArgs>> mqttConfig() {
+        return Optional.ofNullable(this.mqttConfig);
+    }
+
+    /**
+     * Display name of the AP device profile
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Display name of the AP device profile
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * NTP servers configured by this AP profile
+     * 
+     */
     @Import(name="ntpServers")
     private @Nullable Output<List<String>> ntpServers;
 
+    /**
+     * @return NTP servers configured by this AP profile
+     * 
+     */
     public Optional<Output<List<String>>> ntpServers() {
         return Optional.ofNullable(this.ntpServers);
     }
 
+    /**
+     * Organization that owns this AP device profile
+     * 
+     */
     @Import(name="orgId", required=true)
     private Output<String> orgId;
 
+    /**
+     * @return Organization that owns this AP device profile
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }
@@ -241,14 +305,14 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Power related configs
+     * Power negotiation and peripheral power defaults in this AP profile
      * 
      */
     @Import(name="pwrConfig")
     private @Nullable Output<DeviceprofileApPwrConfigArgs> pwrConfig;
 
     /**
-     * @return Power related configs
+     * @return Power negotiation and peripheral power defaults in this AP profile
      * 
      */
     public Optional<Output<DeviceprofileApPwrConfigArgs>> pwrConfig() {
@@ -256,36 +320,44 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Radio AP settings
+     * Radio configuration defaults in this AP profile
      * 
      */
     @Import(name="radioConfig")
     private @Nullable Output<DeviceprofileApRadioConfigArgs> radioConfig;
 
     /**
-     * @return Radio AP settings
+     * @return Radio configuration defaults in this AP profile
      * 
      */
     public Optional<Output<DeviceprofileApRadioConfigArgs>> radioConfig() {
         return Optional.ofNullable(this.radioConfig);
     }
 
+    /**
+     * Site where this AP device profile is defined, when scoped to a site
+     * 
+     */
     @Import(name="siteId")
     private @Nullable Output<String> siteId;
 
+    /**
+     * @return Site where this AP device profile is defined, when scoped to a site
+     * 
+     */
     public Optional<Output<String>> siteId() {
         return Optional.ofNullable(this.siteId);
     }
 
     /**
-     * AP Uplink port configuration
+     * Authentication and failover defaults for AP uplink ports
      * 
      */
     @Import(name="uplinkPortConfig")
     private @Nullable Output<DeviceprofileApUplinkPortConfigArgs> uplinkPortConfig;
 
     /**
-     * @return AP Uplink port configuration
+     * @return Authentication and failover defaults for AP uplink ports
      * 
      */
     public Optional<Output<DeviceprofileApUplinkPortConfigArgs>> uplinkPortConfig() {
@@ -293,18 +365,14 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * USB AP settings
-     *   - Note: if native imagotag is enabled, BLE will be disabled automatically
-     *   - Note: legacy, new config moved to ESL Config.
+     * Legacy USB integration defaults in this AP profile
      * 
      */
     @Import(name="usbConfig")
     private @Nullable Output<DeviceprofileApUsbConfigArgs> usbConfig;
 
     /**
-     * @return USB AP settings
-     *   - Note: if native imagotag is enabled, BLE will be disabled automatically
-     *   - Note: legacy, new config moved to ESL Config.
+     * @return Legacy USB integration defaults in this AP profile
      * 
      */
     public Optional<Output<DeviceprofileApUsbConfigArgs>> usbConfig() {
@@ -312,14 +380,14 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Variable values provided by this AP device profile
      * 
      */
     @Import(name="vars")
     private @Nullable Output<Map<String,String>> vars;
 
     /**
-     * @return Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * @return Variable values provided by this AP device profile
      * 
      */
     public Optional<Output<Map<String,String>>> vars() {
@@ -327,14 +395,14 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Zigbee AP settings
+     * Zigbee radio and network defaults in this AP profile
      * 
      */
     @Import(name="zigbeeConfig")
     private @Nullable Output<DeviceprofileApZigbeeConfigArgs> zigbeeConfig;
 
     /**
-     * @return Zigbee AP settings
+     * @return Zigbee radio and network defaults in this AP profile
      * 
      */
     public Optional<Output<DeviceprofileApZigbeeConfigArgs>> zigbeeConfig() {
@@ -356,6 +424,7 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
         this.lacpConfig = $.lacpConfig;
         this.led = $.led;
         this.mesh = $.mesh;
+        this.mqttConfig = $.mqttConfig;
         this.name = $.name;
         this.ntpServers = $.ntpServers;
         this.orgId = $.orgId;
@@ -389,7 +458,7 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param aeroscout Aeroscout AP settings
+         * @param aeroscout Location integration defaults for AeroScout in this AP profile
          * 
          * @return builder
          * 
@@ -400,7 +469,7 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param aeroscout Aeroscout AP settings
+         * @param aeroscout Location integration defaults for AeroScout in this AP profile
          * 
          * @return builder
          * 
@@ -409,17 +478,29 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
             return aeroscout(Output.of(aeroscout));
         }
 
+        /**
+         * @param airista Location integration defaults for Airista in this AP profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder airista(@Nullable Output<DeviceprofileApAiristaArgs> airista) {
             $.airista = airista;
             return this;
         }
 
+        /**
+         * @param airista Location integration defaults for Airista in this AP profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder airista(DeviceprofileApAiristaArgs airista) {
             return airista(Output.of(airista));
         }
 
         /**
-         * @param bleConfig BLE AP settings
+         * @param bleConfig Bluetooth Low Energy beacon and asset defaults in this AP profile
          * 
          * @return builder
          * 
@@ -430,7 +511,7 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param bleConfig BLE AP settings
+         * @param bleConfig Bluetooth Low Energy beacon and asset defaults in this AP profile
          * 
          * @return builder
          * 
@@ -523,17 +604,29 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
             return disableModule(Output.of(disableModule));
         }
 
+        /**
+         * @param eslConfig Electronic shelf label integration defaults in this AP profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder eslConfig(@Nullable Output<DeviceprofileApEslConfigArgs> eslConfig) {
             $.eslConfig = eslConfig;
             return this;
         }
 
+        /**
+         * @param eslConfig Electronic shelf label integration defaults in this AP profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder eslConfig(DeviceprofileApEslConfigArgs eslConfig) {
             return eslConfig(Output.of(eslConfig));
         }
 
         /**
-         * @param ipConfig IP AP settings
+         * @param ipConfig Management IP addressing defaults in this AP profile
          * 
          * @return builder
          * 
@@ -544,7 +637,7 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ipConfig IP AP settings
+         * @param ipConfig Management IP addressing defaults in this AP profile
          * 
          * @return builder
          * 
@@ -553,17 +646,29 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
             return ipConfig(Output.of(ipConfig));
         }
 
+        /**
+         * @param lacpConfig Link aggregation defaults for supported AP Ethernet uplinks
+         * 
+         * @return builder
+         * 
+         */
         public Builder lacpConfig(@Nullable Output<DeviceprofileApLacpConfigArgs> lacpConfig) {
             $.lacpConfig = lacpConfig;
             return this;
         }
 
+        /**
+         * @param lacpConfig Link aggregation defaults for supported AP Ethernet uplinks
+         * 
+         * @return builder
+         * 
+         */
         public Builder lacpConfig(DeviceprofileApLacpConfigArgs lacpConfig) {
             return lacpConfig(Output.of(lacpConfig));
         }
 
         /**
-         * @param led LED AP settings
+         * @param led Indicator light behavior defaults in this AP profile
          * 
          * @return builder
          * 
@@ -574,7 +679,7 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param led LED AP settings
+         * @param led Indicator light behavior defaults in this AP profile
          * 
          * @return builder
          * 
@@ -584,7 +689,7 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param mesh Mesh AP settings
+         * @param mesh Wireless mesh role and band defaults in this AP profile
          * 
          * @return builder
          * 
@@ -595,7 +700,7 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param mesh Mesh AP settings
+         * @param mesh Wireless mesh role and band defaults in this AP profile
          * 
          * @return builder
          * 
@@ -604,33 +709,96 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
             return mesh(Output.of(mesh));
         }
 
+        /**
+         * @param mqttConfig MQTT broker publishing settings for this AP profile
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mqttConfig(@Nullable Output<DeviceprofileApMqttConfigArgs> mqttConfig) {
+            $.mqttConfig = mqttConfig;
+            return this;
+        }
+
+        /**
+         * @param mqttConfig MQTT broker publishing settings for this AP profile
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mqttConfig(DeviceprofileApMqttConfigArgs mqttConfig) {
+            return mqttConfig(Output.of(mqttConfig));
+        }
+
+        /**
+         * @param name Display name of the AP device profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Display name of the AP device profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param ntpServers NTP servers configured by this AP profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder ntpServers(@Nullable Output<List<String>> ntpServers) {
             $.ntpServers = ntpServers;
             return this;
         }
 
+        /**
+         * @param ntpServers NTP servers configured by this AP profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder ntpServers(List<String> ntpServers) {
             return ntpServers(Output.of(ntpServers));
         }
 
+        /**
+         * @param ntpServers NTP servers configured by this AP profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder ntpServers(String... ntpServers) {
             return ntpServers(List.of(ntpServers));
         }
 
+        /**
+         * @param orgId Organization that owns this AP device profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param orgId Organization that owns this AP device profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }
@@ -678,7 +846,7 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param pwrConfig Power related configs
+         * @param pwrConfig Power negotiation and peripheral power defaults in this AP profile
          * 
          * @return builder
          * 
@@ -689,7 +857,7 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param pwrConfig Power related configs
+         * @param pwrConfig Power negotiation and peripheral power defaults in this AP profile
          * 
          * @return builder
          * 
@@ -699,7 +867,7 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param radioConfig Radio AP settings
+         * @param radioConfig Radio configuration defaults in this AP profile
          * 
          * @return builder
          * 
@@ -710,7 +878,7 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param radioConfig Radio AP settings
+         * @param radioConfig Radio configuration defaults in this AP profile
          * 
          * @return builder
          * 
@@ -719,17 +887,29 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
             return radioConfig(Output.of(radioConfig));
         }
 
+        /**
+         * @param siteId Site where this AP device profile is defined, when scoped to a site
+         * 
+         * @return builder
+         * 
+         */
         public Builder siteId(@Nullable Output<String> siteId) {
             $.siteId = siteId;
             return this;
         }
 
+        /**
+         * @param siteId Site where this AP device profile is defined, when scoped to a site
+         * 
+         * @return builder
+         * 
+         */
         public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
         }
 
         /**
-         * @param uplinkPortConfig AP Uplink port configuration
+         * @param uplinkPortConfig Authentication and failover defaults for AP uplink ports
          * 
          * @return builder
          * 
@@ -740,7 +920,7 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param uplinkPortConfig AP Uplink port configuration
+         * @param uplinkPortConfig Authentication and failover defaults for AP uplink ports
          * 
          * @return builder
          * 
@@ -750,9 +930,7 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param usbConfig USB AP settings
-         *   - Note: if native imagotag is enabled, BLE will be disabled automatically
-         *   - Note: legacy, new config moved to ESL Config.
+         * @param usbConfig Legacy USB integration defaults in this AP profile
          * 
          * @return builder
          * 
@@ -763,9 +941,7 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param usbConfig USB AP settings
-         *   - Note: if native imagotag is enabled, BLE will be disabled automatically
-         *   - Note: legacy, new config moved to ESL Config.
+         * @param usbConfig Legacy USB integration defaults in this AP profile
          * 
          * @return builder
          * 
@@ -775,7 +951,7 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vars Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+         * @param vars Variable values provided by this AP device profile
          * 
          * @return builder
          * 
@@ -786,7 +962,7 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vars Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+         * @param vars Variable values provided by this AP device profile
          * 
          * @return builder
          * 
@@ -796,7 +972,7 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param zigbeeConfig Zigbee AP settings
+         * @param zigbeeConfig Zigbee radio and network defaults in this AP profile
          * 
          * @return builder
          * 
@@ -807,7 +983,7 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param zigbeeConfig Zigbee AP settings
+         * @param zigbeeConfig Zigbee radio and network defaults in this AP profile
          * 
          * @return builder
          * 

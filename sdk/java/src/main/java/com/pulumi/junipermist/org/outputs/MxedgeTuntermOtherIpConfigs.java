@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class MxedgeTuntermOtherIpConfigs {
+    /**
+     * @return Address for the additional Mist Tunnel interface, in IPv4 format
+     * 
+     */
     private String ip;
+    /**
+     * @return Subnet mask for the additional Mist Tunnel IPv4 address
+     * 
+     */
     private String netmask;
 
     private MxedgeTuntermOtherIpConfigs() {}
+    /**
+     * @return Address for the additional Mist Tunnel interface, in IPv4 format
+     * 
+     */
     public String ip() {
         return this.ip;
     }
+    /**
+     * @return Subnet mask for the additional Mist Tunnel IPv4 address
+     * 
+     */
     public String netmask() {
         return this.netmask;
     }

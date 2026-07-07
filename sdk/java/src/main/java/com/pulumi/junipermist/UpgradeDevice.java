@@ -75,21 +75,45 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="junipermist:index/upgradeDevice:UpgradeDevice")
 public class UpgradeDevice extends com.pulumi.resources.CustomResource {
+    /**
+     * Automatic firmware upgrade status for the switch
+     * 
+     */
     @Export(name="autoUpgradeStat", refs={UpgradeDeviceAutoUpgradeStat.class}, tree="[0]")
     private Output<UpgradeDeviceAutoUpgradeStat> autoUpgradeStat;
 
+    /**
+     * @return Automatic firmware upgrade status for the switch
+     * 
+     */
     public Output<UpgradeDeviceAutoUpgradeStat> autoUpgradeStat() {
         return this.autoUpgradeStat;
     }
+    /**
+     * Time when the switch configuration status was last updated, in epoch seconds
+     * 
+     */
     @Export(name="configTimestamp", refs={Integer.class}, tree="[0]")
     private Output<Integer> configTimestamp;
 
+    /**
+     * @return Time when the switch configuration status was last updated, in epoch seconds
+     * 
+     */
     public Output<Integer> configTimestamp() {
         return this.configTimestamp;
     }
+    /**
+     * Currently applied configuration version for the switch
+     * 
+     */
     @Export(name="configVersion", refs={Integer.class}, tree="[0]")
     private Output<Integer> configVersion;
 
+    /**
+     * @return Currently applied configuration version for the switch
+     * 
+     */
     public Output<Integer> configVersion() {
         return this.configVersion;
     }
@@ -113,15 +137,31 @@ public class UpgradeDevice extends com.pulumi.resources.CustomResource {
     public Output<String> deviceVersion() {
         return this.deviceVersion;
     }
+    /**
+     * Public IP address observed for the switch
+     * 
+     */
     @Export(name="extIp", refs={String.class}, tree="[0]")
     private Output<String> extIp;
 
+    /**
+     * @return Public IP address observed for the switch
+     * 
+     */
     public Output<String> extIp() {
         return this.extIp;
     }
+    /**
+     * Firmware update status for the switch
+     * 
+     */
     @Export(name="fwupdate", refs={UpgradeDeviceFwupdate.class}, tree="[0]")
     private Output<UpgradeDeviceFwupdate> fwupdate;
 
+    /**
+     * @return Firmware update status for the switch
+     * 
+     */
     public Output<UpgradeDeviceFwupdate> fwupdate() {
         return this.fwupdate;
     }
@@ -153,9 +193,17 @@ public class UpgradeDevice extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> rebootAt() {
         return Codegen.optional(this.rebootAt);
     }
+    /**
+     * Associated site identifier for the switch statistics record
+     * 
+     */
     @Export(name="siteId", refs={String.class}, tree="[0]")
     private Output<String> siteId;
 
+    /**
+     * @return Associated site identifier for the switch statistics record
+     * 
+     */
     public Output<String> siteId() {
         return this.siteId;
     }
@@ -188,14 +236,14 @@ public class UpgradeDevice extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.startTime);
     }
     /**
-     * enum: `error`, `inprogress`, `scheduled`, `starting`, `success`
+     * Current status of the requested device upgrade
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return enum: `error`, `inprogress`, `scheduled`, `starting`, `success`
+     * @return Current status of the requested device upgrade
      * 
      */
     public Output<String> status() {
@@ -257,15 +305,31 @@ public class UpgradeDevice extends com.pulumi.resources.CustomResource {
     public Output<Integer> syncUpgradeTimeout() {
         return this.syncUpgradeTimeout;
     }
+    /**
+     * Numeric inventory tag identifier associated with the switch
+     * 
+     */
     @Export(name="tagId", refs={Integer.class}, tree="[0]")
     private Output<Integer> tagId;
 
+    /**
+     * @return Numeric inventory tag identifier associated with the switch
+     * 
+     */
     public Output<Integer> tagId() {
         return this.tagId;
     }
+    /**
+     * Inventory tag UUID associated with the switch
+     * 
+     */
     @Export(name="tagUuid", refs={String.class}, tree="[0]")
     private Output<String> tagUuid;
 
+    /**
+     * @return Inventory tag UUID associated with the switch
+     * 
+     */
     public Output<String> tagUuid() {
         return this.tagUuid;
     }
@@ -284,14 +348,14 @@ public class UpgradeDevice extends com.pulumi.resources.CustomResource {
         return this.targetVersion;
     }
     /**
-     * Epoch (seconds)
+     * Epoch timestamp when the device upgrade status was reported
      * 
      */
     @Export(name="timestamp", refs={Double.class}, tree="[0]")
     private Output<Double> timestamp;
 
     /**
-     * @return Epoch (seconds)
+     * @return Epoch timestamp when the device upgrade status was reported
      * 
      */
     public Output<Double> timestamp() {

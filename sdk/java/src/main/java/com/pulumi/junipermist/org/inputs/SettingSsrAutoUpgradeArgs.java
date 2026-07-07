@@ -18,14 +18,14 @@ public final class SettingSsrAutoUpgradeArgs extends com.pulumi.resources.Resour
     public static final SettingSsrAutoUpgradeArgs Empty = new SettingSsrAutoUpgradeArgs();
 
     /**
-     * upgrade channel to follow. enum: `alpha`, `beta`, `stable`
+     * Firmware release channel used for SSR auto-upgrade
      * 
      */
     @Import(name="channel")
     private @Nullable Output<String> channel;
 
     /**
-     * @return upgrade channel to follow. enum: `alpha`, `beta`, `stable`
+     * @return Firmware release channel used for SSR auto-upgrade
      * 
      */
     public Optional<Output<String>> channel() {
@@ -33,23 +33,31 @@ public final class SettingSsrAutoUpgradeArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Property key is the SSR model (e.g. &#34;SSR130&#34;).
+     * Per-model SSR firmware versions used for auto-upgrade
      * 
      */
     @Import(name="customVersions")
     private @Nullable Output<Map<String,String>> customVersions;
 
     /**
-     * @return Property key is the SSR model (e.g. &#34;SSR130&#34;).
+     * @return Per-model SSR firmware versions used for auto-upgrade
      * 
      */
     public Optional<Output<Map<String,String>>> customVersions() {
         return Optional.ofNullable(this.customVersions);
     }
 
+    /**
+     * Whether SSR auto-upgrade is enabled for newly onboarded devices
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether SSR auto-upgrade is enabled for newly onboarded devices
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -97,7 +105,7 @@ public final class SettingSsrAutoUpgradeArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param channel upgrade channel to follow. enum: `alpha`, `beta`, `stable`
+         * @param channel Firmware release channel used for SSR auto-upgrade
          * 
          * @return builder
          * 
@@ -108,7 +116,7 @@ public final class SettingSsrAutoUpgradeArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param channel upgrade channel to follow. enum: `alpha`, `beta`, `stable`
+         * @param channel Firmware release channel used for SSR auto-upgrade
          * 
          * @return builder
          * 
@@ -118,7 +126,7 @@ public final class SettingSsrAutoUpgradeArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param customVersions Property key is the SSR model (e.g. &#34;SSR130&#34;).
+         * @param customVersions Per-model SSR firmware versions used for auto-upgrade
          * 
          * @return builder
          * 
@@ -129,7 +137,7 @@ public final class SettingSsrAutoUpgradeArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param customVersions Property key is the SSR model (e.g. &#34;SSR130&#34;).
+         * @param customVersions Per-model SSR firmware versions used for auto-upgrade
          * 
          * @return builder
          * 
@@ -138,11 +146,23 @@ public final class SettingSsrAutoUpgradeArgs extends com.pulumi.resources.Resour
             return customVersions(Output.of(customVersions));
         }
 
+        /**
+         * @param enabled Whether SSR auto-upgrade is enabled for newly onboarded devices
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether SSR auto-upgrade is enabled for newly onboarded devices
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

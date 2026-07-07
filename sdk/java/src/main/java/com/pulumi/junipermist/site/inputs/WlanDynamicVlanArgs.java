@@ -19,14 +19,14 @@ public final class WlanDynamicVlanArgs extends com.pulumi.resources.ResourceArgs
     public static final WlanDynamicVlanArgs Empty = new WlanDynamicVlanArgs();
 
     /**
-     * Default VLAN ID(s) can be a number, a range of VLAN IDs, a variable or multiple numbers, ranges or variables as a VLAN pool. Default VLAN as a pool of VLANS requires 0.14.x or newer firmware
+     * Fallback VLAN IDs, ranges, or variables used when no RADIUS VLAN match is returned
      * 
      */
     @Import(name="defaultVlanIds")
     private @Nullable Output<List<String>> defaultVlanIds;
 
     /**
-     * @return Default VLAN ID(s) can be a number, a range of VLAN IDs, a variable or multiple numbers, ranges or variables as a VLAN pool. Default VLAN as a pool of VLANS requires 0.14.x or newer firmware
+     * @return Fallback VLAN IDs, ranges, or variables used when no RADIUS VLAN match is returned
      * 
      */
     public Optional<Output<List<String>>> defaultVlanIds() {
@@ -49,14 +49,14 @@ public final class WlanDynamicVlanArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * VLAN_ids to be locally bridged
+     * VLAN IDs that should be locally bridged for dynamic VLAN assignment
      * 
      */
     @Import(name="localVlanIds")
     private @Nullable Output<List<String>> localVlanIds;
 
     /**
-     * @return VLAN_ids to be locally bridged
+     * @return VLAN IDs that should be locally bridged for dynamic VLAN assignment
      * 
      */
     public Optional<Output<List<String>>> localVlanIds() {
@@ -64,14 +64,14 @@ public final class WlanDynamicVlanArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * standard (using Tunnel-Private-Group-ID, widely supported), airespace-interface-name (Airespace/Cisco). enum: `airespace-interface-name`, `standard`
+     * Dynamic VLAN mapping method used for RADIUS-provided VLAN attributes
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return standard (using Tunnel-Private-Group-ID, widely supported), airespace-interface-name (Airespace/Cisco). enum: `airespace-interface-name`, `standard`
+     * @return Dynamic VLAN mapping method used for RADIUS-provided VLAN attributes
      * 
      */
     public Optional<Output<String>> type() {
@@ -80,8 +80,8 @@ public final class WlanDynamicVlanArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * Map between vlanId (as string) to airespace interface names (comma-separated) or null for standard mapping
-     *   * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \&#34;\&#34;
-     *   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
+     *   * if `dynamic_vlan.type`==`standard`, property key is the VLAN ID and property value is \&#34;\&#34;
+     *   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the VLAN ID and property value is the Airespace Interface Name
      * 
      */
     @Import(name="vlans")
@@ -89,8 +89,8 @@ public final class WlanDynamicVlanArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return Map between vlanId (as string) to airespace interface names (comma-separated) or null for standard mapping
-     *   * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \&#34;\&#34;
-     *   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
+     *   * if `dynamic_vlan.type`==`standard`, property key is the VLAN ID and property value is \&#34;\&#34;
+     *   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the VLAN ID and property value is the Airespace Interface Name
      * 
      */
     public Optional<Output<Map<String,String>>> vlans() {
@@ -126,7 +126,7 @@ public final class WlanDynamicVlanArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param defaultVlanIds Default VLAN ID(s) can be a number, a range of VLAN IDs, a variable or multiple numbers, ranges or variables as a VLAN pool. Default VLAN as a pool of VLANS requires 0.14.x or newer firmware
+         * @param defaultVlanIds Fallback VLAN IDs, ranges, or variables used when no RADIUS VLAN match is returned
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class WlanDynamicVlanArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param defaultVlanIds Default VLAN ID(s) can be a number, a range of VLAN IDs, a variable or multiple numbers, ranges or variables as a VLAN pool. Default VLAN as a pool of VLANS requires 0.14.x or newer firmware
+         * @param defaultVlanIds Fallback VLAN IDs, ranges, or variables used when no RADIUS VLAN match is returned
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class WlanDynamicVlanArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param defaultVlanIds Default VLAN ID(s) can be a number, a range of VLAN IDs, a variable or multiple numbers, ranges or variables as a VLAN pool. Default VLAN as a pool of VLANS requires 0.14.x or newer firmware
+         * @param defaultVlanIds Fallback VLAN IDs, ranges, or variables used when no RADIUS VLAN match is returned
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class WlanDynamicVlanArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param localVlanIds VLAN_ids to be locally bridged
+         * @param localVlanIds VLAN IDs that should be locally bridged for dynamic VLAN assignment
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class WlanDynamicVlanArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param localVlanIds VLAN_ids to be locally bridged
+         * @param localVlanIds VLAN IDs that should be locally bridged for dynamic VLAN assignment
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class WlanDynamicVlanArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param localVlanIds VLAN_ids to be locally bridged
+         * @param localVlanIds VLAN IDs that should be locally bridged for dynamic VLAN assignment
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class WlanDynamicVlanArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type standard (using Tunnel-Private-Group-ID, widely supported), airespace-interface-name (Airespace/Cisco). enum: `airespace-interface-name`, `standard`
+         * @param type Dynamic VLAN mapping method used for RADIUS-provided VLAN attributes
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class WlanDynamicVlanArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type standard (using Tunnel-Private-Group-ID, widely supported), airespace-interface-name (Airespace/Cisco). enum: `airespace-interface-name`, `standard`
+         * @param type Dynamic VLAN mapping method used for RADIUS-provided VLAN attributes
          * 
          * @return builder
          * 
@@ -231,8 +231,8 @@ public final class WlanDynamicVlanArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param vlans Map between vlanId (as string) to airespace interface names (comma-separated) or null for standard mapping
-         *   * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \&#34;\&#34;
-         *   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
+         *   * if `dynamic_vlan.type`==`standard`, property key is the VLAN ID and property value is \&#34;\&#34;
+         *   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the VLAN ID and property value is the Airespace Interface Name
          * 
          * @return builder
          * 
@@ -244,8 +244,8 @@ public final class WlanDynamicVlanArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param vlans Map between vlanId (as string) to airespace interface names (comma-separated) or null for standard mapping
-         *   * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \&#34;\&#34;
-         *   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
+         *   * if `dynamic_vlan.type`==`standard`, property key is the VLAN ID and property value is \&#34;\&#34;
+         *   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the VLAN ID and property value is the Airespace Interface Name
          * 
          * @return builder
          * 

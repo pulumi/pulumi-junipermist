@@ -18,10 +18,14 @@ public final class GatewayGatewayMgmtProtectReCustom {
      */
     private @Nullable String portRange;
     /**
-     * @return enum: `any`, `icmp`, `tcp`, `udp`
+     * @return Transport protocol matched by this custom Protect RE ACL
      * 
      */
     private @Nullable String protocol;
+    /**
+     * @return Source subnets matched by this custom Protect RE ACL
+     * 
+     */
     private @Nullable List<String> subnets;
 
     private GatewayGatewayMgmtProtectReCustom() {}
@@ -33,12 +37,16 @@ public final class GatewayGatewayMgmtProtectReCustom {
         return Optional.ofNullable(this.portRange);
     }
     /**
-     * @return enum: `any`, `icmp`, `tcp`, `udp`
+     * @return Transport protocol matched by this custom Protect RE ACL
      * 
      */
     public Optional<String> protocol() {
         return Optional.ofNullable(this.protocol);
     }
+    /**
+     * @return Source subnets matched by this custom Protect RE ACL
+     * 
+     */
     public List<String> subnets() {
         return this.subnets == null ? List.of() : this.subnets;
     }

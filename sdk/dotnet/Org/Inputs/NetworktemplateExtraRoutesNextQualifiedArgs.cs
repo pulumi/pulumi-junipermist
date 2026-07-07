@@ -12,9 +12,15 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class NetworktemplateExtraRoutesNextQualifiedArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Route metric for this qualified IPv4 next hop
+        /// </summary>
         [Input("metric")]
         public Input<int>? Metric { get; set; }
 
+        /// <summary>
+        /// Route preference for this qualified IPv4 next hop
+        /// </summary>
         [Input("preference")]
         public Input<int>? Preference { get; set; }
 

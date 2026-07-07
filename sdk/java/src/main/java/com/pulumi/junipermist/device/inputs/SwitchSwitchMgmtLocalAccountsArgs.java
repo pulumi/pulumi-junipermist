@@ -15,22 +15,30 @@ public final class SwitchSwitchMgmtLocalAccountsArgs extends com.pulumi.resource
 
     public static final SwitchSwitchMgmtLocalAccountsArgs Empty = new SwitchSwitchMgmtLocalAccountsArgs();
 
+    /**
+     * Local password for the switch user account
+     * 
+     */
     @Import(name="password")
     private @Nullable Output<String> password;
 
+    /**
+     * @return Local password for the switch user account
+     * 
+     */
     public Optional<Output<String>> password() {
         return Optional.ofNullable(this.password);
     }
 
     /**
-     * enum: `admin`, `helpdesk`, `none`, `read`
+     * Access role granted to the local switch user account
      * 
      */
     @Import(name="role")
     private @Nullable Output<String> role;
 
     /**
-     * @return enum: `admin`, `helpdesk`, `none`, `read`
+     * @return Access role granted to the local switch user account
      * 
      */
     public Optional<Output<String>> role() {
@@ -62,17 +70,29 @@ public final class SwitchSwitchMgmtLocalAccountsArgs extends com.pulumi.resource
             $ = new SwitchSwitchMgmtLocalAccountsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param password Local password for the switch user account
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
         }
 
+        /**
+         * @param password Local password for the switch user account
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(String password) {
             return password(Output.of(password));
         }
 
         /**
-         * @param role enum: `admin`, `helpdesk`, `none`, `read`
+         * @param role Access role granted to the local switch user account
          * 
          * @return builder
          * 
@@ -83,7 +103,7 @@ public final class SwitchSwitchMgmtLocalAccountsArgs extends com.pulumi.resource
         }
 
         /**
-         * @param role enum: `admin`, `helpdesk`, `none`, `read`
+         * @param role Access role granted to the local switch user account
          * 
          * @return builder
          * 

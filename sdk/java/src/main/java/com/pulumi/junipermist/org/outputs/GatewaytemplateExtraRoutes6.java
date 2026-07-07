@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GatewaytemplateExtraRoutes6 {
+    /**
+     * @return Next-hop IPv6 address for the gateway extra route
+     * 
+     */
     private String via;
 
     private GatewaytemplateExtraRoutes6() {}
+    /**
+     * @return Next-hop IPv6 address for the gateway extra route
+     * 
+     */
     public String via() {
         return this.via;
     }

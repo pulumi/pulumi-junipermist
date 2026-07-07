@@ -13,18 +13,24 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class NetworkInternetAccess
     {
+        /// <summary>
+        /// Whether Mist should create simple service policies for restricted internet access
+        /// </summary>
         public readonly bool? CreateSimpleServicePolicy;
         /// <summary>
-        /// Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `InternalIp` or `Port` must be defined
+        /// Destination NAT rules for direct internet access
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.NetworkInternetAccessDestinationNat>? DestinationNat;
+        /// <summary>
+        /// Whether direct internet access is enabled for this network
+        /// </summary>
         public readonly bool? Enabled;
         /// <summary>
         /// By default, all access is allowed, to only allow certain traffic, make `Restricted`=`True` and define service_policies
         /// </summary>
         public readonly bool? Restricted;
         /// <summary>
-        /// Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
+        /// Static NAT rules for direct internet access
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.NetworkInternetAccessStaticNat>? StaticNat;
 

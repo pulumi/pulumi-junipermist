@@ -49,15 +49,24 @@ export class Ap extends pulumi.CustomResource {
     }
 
     /**
-     * Aeroscout AP settings
+     * Location integration settings for AeroScout on this access point
      */
     declare public readonly aeroscout: pulumi.Output<outputs.device.ApAeroscout | undefined>;
+    /**
+     * Location integration settings for Airista on this access point
+     */
     declare public readonly airista: pulumi.Output<outputs.device.ApAirista | undefined>;
     /**
-     * BLE AP settings
+     * Bluetooth Low Energy beacon and asset settings for this access point
      */
     declare public readonly bleConfig: pulumi.Output<outputs.device.ApBleConfig | undefined>;
+    /**
+     * Location integration settings for Centrak on this access point
+     */
     declare public readonly centrak: pulumi.Output<outputs.device.ApCentrak | undefined>;
+    /**
+     * Wireless client bridge settings for this access point
+     */
     declare public readonly clientBridge: pulumi.Output<outputs.device.ApClientBridge | undefined>;
     declare public readonly deviceId: pulumi.Output<string>;
     /**
@@ -76,25 +85,40 @@ export class Ap extends pulumi.CustomResource {
      * Whether to disable module port
      */
     declare public readonly disableModule: pulumi.Output<boolean>;
+    /**
+     * Electronic shelf label integration settings for this access point
+     */
     declare public readonly eslConfig: pulumi.Output<outputs.device.ApEslConfig | undefined>;
     /**
      * For some AP models, flowControl can be enabled to address some switch compatibility issue
      */
     declare public readonly flowControl: pulumi.Output<boolean>;
     /**
-     * Height, in meters, optional
+     * Installation height of the AP, in meters
      */
     declare public readonly height: pulumi.Output<number | undefined>;
+    /**
+     * First custom image URL associated with the access point
+     */
     declare public /*out*/ readonly image1Url: pulumi.Output<string>;
+    /**
+     * Second custom image URL associated with the access point
+     */
     declare public /*out*/ readonly image2Url: pulumi.Output<string>;
+    /**
+     * Third custom image URL associated with the access point
+     */
     declare public /*out*/ readonly image3Url: pulumi.Output<string>;
     /**
-     * IP AP settings
+     * Management IP addressing settings for this access point
      */
     declare public readonly ipConfig: pulumi.Output<outputs.device.ApIpConfig | undefined>;
+    /**
+     * Link aggregation settings for supported AP Ethernet uplinks
+     */
     declare public readonly lacpConfig: pulumi.Output<outputs.device.ApLacpConfig | undefined>;
     /**
-     * LED AP settings
+     * Indicator light behavior settings for this access point
      */
     declare public readonly led: pulumi.Output<outputs.device.ApLed | undefined>;
     /**
@@ -102,7 +126,7 @@ export class Ap extends pulumi.CustomResource {
      */
     declare public readonly locked: pulumi.Output<boolean | undefined>;
     /**
-     * Device MAC address
+     * Access point MAC address used to identify the device
      */
     declare public /*out*/ readonly mac: pulumi.Output<string>;
     /**
@@ -110,22 +134,35 @@ export class Ap extends pulumi.CustomResource {
      */
     declare public readonly mapId: pulumi.Output<string | undefined>;
     /**
-     * Mesh AP settings
+     * Wireless mesh role and band settings for this access point
      */
     declare public readonly mesh: pulumi.Output<outputs.device.ApMesh | undefined>;
     /**
-     * Device Model
+     * Hardware model reported for the access point
      */
     declare public /*out*/ readonly model: pulumi.Output<string>;
+    /**
+     * MQTT broker publishing settings for this access point
+     */
+    declare public readonly mqttConfig: pulumi.Output<outputs.device.ApMqttConfig | undefined>;
+    /**
+     * Configured hostname assigned to the access point
+     */
     declare public readonly name: pulumi.Output<string>;
     /**
      * Any notes about this AP
      */
     declare public readonly notes: pulumi.Output<string | undefined>;
+    /**
+     * NTP servers used by this access point
+     */
     declare public readonly ntpServers: pulumi.Output<string[] | undefined>;
+    /**
+     * Organization that owns this access point
+     */
     declare public /*out*/ readonly orgId: pulumi.Output<string>;
     /**
-     * Orientation, 0-359, in degrees, up is 0, right is 90.
+     * AP orientation in degrees from 0 to 359, where 0 is up and 90 is right
      */
     declare public readonly orientation: pulumi.Output<number | undefined>;
     /**
@@ -137,46 +174,47 @@ export class Ap extends pulumi.CustomResource {
      */
     declare public readonly portConfig: pulumi.Output<{[key: string]: outputs.device.ApPortConfig} | undefined>;
     /**
-     * Power related configs
+     * Power negotiation and peripheral power settings for this access point
      */
     declare public readonly pwrConfig: pulumi.Output<outputs.device.ApPwrConfig | undefined>;
     /**
-     * Radio AP settings
+     * Radio configuration overrides for this access point
      */
     declare public readonly radioConfig: pulumi.Output<outputs.device.ApRadioConfig | undefined>;
     /**
-     * Device Serial
+     * Manufacturer serial number for the access point
      */
     declare public /*out*/ readonly serial: pulumi.Output<string>;
+    /**
+     * Site where this access point is assigned
+     */
     declare public readonly siteId: pulumi.Output<string>;
     /**
-     * Device Type. enum: `ap`
+     * Device type discriminator for access point records
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
-     * AP Uplink port configuration
+     * Authentication and failover behavior for AP uplink ports
      */
     declare public readonly uplinkPortConfig: pulumi.Output<outputs.device.ApUplinkPortConfig | undefined>;
     /**
-     * USB AP settings
-     *   - Note: if native imagotag is enabled, BLE will be disabled automatically
-     *   - Note: legacy, new config moved to ESL Config.
+     * Legacy USB integration settings for this access point
      */
     declare public readonly usbConfig: pulumi.Output<outputs.device.ApUsbConfig | undefined>;
     /**
-     * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Variable values that override site variables for this access point
      */
     declare public readonly vars: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * X in pixel
+     * Horizontal map position of the AP, in pixels
      */
     declare public readonly x: pulumi.Output<number | undefined>;
     /**
-     * Y in pixel
+     * Vertical map position of the AP, in pixels
      */
     declare public readonly y: pulumi.Output<number | undefined>;
     /**
-     * Zigbee AP settings
+     * Zigbee radio and network settings for this access point
      */
     declare public readonly zigbeeConfig: pulumi.Output<outputs.device.ApZigbeeConfig | undefined>;
 
@@ -217,6 +255,7 @@ export class Ap extends pulumi.CustomResource {
             resourceInputs["mapId"] = state?.mapId;
             resourceInputs["mesh"] = state?.mesh;
             resourceInputs["model"] = state?.model;
+            resourceInputs["mqttConfig"] = state?.mqttConfig;
             resourceInputs["name"] = state?.name;
             resourceInputs["notes"] = state?.notes;
             resourceInputs["ntpServers"] = state?.ntpServers;
@@ -262,6 +301,7 @@ export class Ap extends pulumi.CustomResource {
             resourceInputs["locked"] = args?.locked;
             resourceInputs["mapId"] = args?.mapId;
             resourceInputs["mesh"] = args?.mesh;
+            resourceInputs["mqttConfig"] = args?.mqttConfig;
             resourceInputs["name"] = args?.name;
             resourceInputs["notes"] = args?.notes;
             resourceInputs["ntpServers"] = args?.ntpServers;
@@ -296,15 +336,24 @@ export class Ap extends pulumi.CustomResource {
  */
 export interface ApState {
     /**
-     * Aeroscout AP settings
+     * Location integration settings for AeroScout on this access point
      */
     aeroscout?: pulumi.Input<inputs.device.ApAeroscout | undefined>;
+    /**
+     * Location integration settings for Airista on this access point
+     */
     airista?: pulumi.Input<inputs.device.ApAirista | undefined>;
     /**
-     * BLE AP settings
+     * Bluetooth Low Energy beacon and asset settings for this access point
      */
     bleConfig?: pulumi.Input<inputs.device.ApBleConfig | undefined>;
+    /**
+     * Location integration settings for Centrak on this access point
+     */
     centrak?: pulumi.Input<inputs.device.ApCentrak | undefined>;
+    /**
+     * Wireless client bridge settings for this access point
+     */
     clientBridge?: pulumi.Input<inputs.device.ApClientBridge | undefined>;
     deviceId?: pulumi.Input<string | undefined>;
     /**
@@ -323,25 +372,40 @@ export interface ApState {
      * Whether to disable module port
      */
     disableModule?: pulumi.Input<boolean | undefined>;
+    /**
+     * Electronic shelf label integration settings for this access point
+     */
     eslConfig?: pulumi.Input<inputs.device.ApEslConfig | undefined>;
     /**
      * For some AP models, flowControl can be enabled to address some switch compatibility issue
      */
     flowControl?: pulumi.Input<boolean | undefined>;
     /**
-     * Height, in meters, optional
+     * Installation height of the AP, in meters
      */
     height?: pulumi.Input<number | undefined>;
+    /**
+     * First custom image URL associated with the access point
+     */
     image1Url?: pulumi.Input<string | undefined>;
+    /**
+     * Second custom image URL associated with the access point
+     */
     image2Url?: pulumi.Input<string | undefined>;
+    /**
+     * Third custom image URL associated with the access point
+     */
     image3Url?: pulumi.Input<string | undefined>;
     /**
-     * IP AP settings
+     * Management IP addressing settings for this access point
      */
     ipConfig?: pulumi.Input<inputs.device.ApIpConfig | undefined>;
+    /**
+     * Link aggregation settings for supported AP Ethernet uplinks
+     */
     lacpConfig?: pulumi.Input<inputs.device.ApLacpConfig | undefined>;
     /**
-     * LED AP settings
+     * Indicator light behavior settings for this access point
      */
     led?: pulumi.Input<inputs.device.ApLed | undefined>;
     /**
@@ -349,7 +413,7 @@ export interface ApState {
      */
     locked?: pulumi.Input<boolean | undefined>;
     /**
-     * Device MAC address
+     * Access point MAC address used to identify the device
      */
     mac?: pulumi.Input<string | undefined>;
     /**
@@ -357,22 +421,35 @@ export interface ApState {
      */
     mapId?: pulumi.Input<string | undefined>;
     /**
-     * Mesh AP settings
+     * Wireless mesh role and band settings for this access point
      */
     mesh?: pulumi.Input<inputs.device.ApMesh | undefined>;
     /**
-     * Device Model
+     * Hardware model reported for the access point
      */
     model?: pulumi.Input<string | undefined>;
+    /**
+     * MQTT broker publishing settings for this access point
+     */
+    mqttConfig?: pulumi.Input<inputs.device.ApMqttConfig | undefined>;
+    /**
+     * Configured hostname assigned to the access point
+     */
     name?: pulumi.Input<string | undefined>;
     /**
      * Any notes about this AP
      */
     notes?: pulumi.Input<string | undefined>;
+    /**
+     * NTP servers used by this access point
+     */
     ntpServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Organization that owns this access point
+     */
     orgId?: pulumi.Input<string | undefined>;
     /**
-     * Orientation, 0-359, in degrees, up is 0, right is 90.
+     * AP orientation in degrees from 0 to 359, where 0 is up and 90 is right
      */
     orientation?: pulumi.Input<number | undefined>;
     /**
@@ -384,46 +461,47 @@ export interface ApState {
      */
     portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.ApPortConfig>} | undefined>;
     /**
-     * Power related configs
+     * Power negotiation and peripheral power settings for this access point
      */
     pwrConfig?: pulumi.Input<inputs.device.ApPwrConfig | undefined>;
     /**
-     * Radio AP settings
+     * Radio configuration overrides for this access point
      */
     radioConfig?: pulumi.Input<inputs.device.ApRadioConfig | undefined>;
     /**
-     * Device Serial
+     * Manufacturer serial number for the access point
      */
     serial?: pulumi.Input<string | undefined>;
+    /**
+     * Site where this access point is assigned
+     */
     siteId?: pulumi.Input<string | undefined>;
     /**
-     * Device Type. enum: `ap`
+     * Device type discriminator for access point records
      */
     type?: pulumi.Input<string | undefined>;
     /**
-     * AP Uplink port configuration
+     * Authentication and failover behavior for AP uplink ports
      */
     uplinkPortConfig?: pulumi.Input<inputs.device.ApUplinkPortConfig | undefined>;
     /**
-     * USB AP settings
-     *   - Note: if native imagotag is enabled, BLE will be disabled automatically
-     *   - Note: legacy, new config moved to ESL Config.
+     * Legacy USB integration settings for this access point
      */
     usbConfig?: pulumi.Input<inputs.device.ApUsbConfig | undefined>;
     /**
-     * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Variable values that override site variables for this access point
      */
     vars?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * X in pixel
+     * Horizontal map position of the AP, in pixels
      */
     x?: pulumi.Input<number | undefined>;
     /**
-     * Y in pixel
+     * Vertical map position of the AP, in pixels
      */
     y?: pulumi.Input<number | undefined>;
     /**
-     * Zigbee AP settings
+     * Zigbee radio and network settings for this access point
      */
     zigbeeConfig?: pulumi.Input<inputs.device.ApZigbeeConfig | undefined>;
 }
@@ -433,15 +511,24 @@ export interface ApState {
  */
 export interface ApArgs {
     /**
-     * Aeroscout AP settings
+     * Location integration settings for AeroScout on this access point
      */
     aeroscout?: pulumi.Input<inputs.device.ApAeroscout | undefined>;
+    /**
+     * Location integration settings for Airista on this access point
+     */
     airista?: pulumi.Input<inputs.device.ApAirista | undefined>;
     /**
-     * BLE AP settings
+     * Bluetooth Low Energy beacon and asset settings for this access point
      */
     bleConfig?: pulumi.Input<inputs.device.ApBleConfig | undefined>;
+    /**
+     * Location integration settings for Centrak on this access point
+     */
     centrak?: pulumi.Input<inputs.device.ApCentrak | undefined>;
+    /**
+     * Wireless client bridge settings for this access point
+     */
     clientBridge?: pulumi.Input<inputs.device.ApClientBridge | undefined>;
     deviceId: pulumi.Input<string>;
     /**
@@ -460,22 +547,28 @@ export interface ApArgs {
      * Whether to disable module port
      */
     disableModule?: pulumi.Input<boolean | undefined>;
+    /**
+     * Electronic shelf label integration settings for this access point
+     */
     eslConfig?: pulumi.Input<inputs.device.ApEslConfig | undefined>;
     /**
      * For some AP models, flowControl can be enabled to address some switch compatibility issue
      */
     flowControl?: pulumi.Input<boolean | undefined>;
     /**
-     * Height, in meters, optional
+     * Installation height of the AP, in meters
      */
     height?: pulumi.Input<number | undefined>;
     /**
-     * IP AP settings
+     * Management IP addressing settings for this access point
      */
     ipConfig?: pulumi.Input<inputs.device.ApIpConfig | undefined>;
+    /**
+     * Link aggregation settings for supported AP Ethernet uplinks
+     */
     lacpConfig?: pulumi.Input<inputs.device.ApLacpConfig | undefined>;
     /**
-     * LED AP settings
+     * Indicator light behavior settings for this access point
      */
     led?: pulumi.Input<inputs.device.ApLed | undefined>;
     /**
@@ -487,17 +580,27 @@ export interface ApArgs {
      */
     mapId?: pulumi.Input<string | undefined>;
     /**
-     * Mesh AP settings
+     * Wireless mesh role and band settings for this access point
      */
     mesh?: pulumi.Input<inputs.device.ApMesh | undefined>;
+    /**
+     * MQTT broker publishing settings for this access point
+     */
+    mqttConfig?: pulumi.Input<inputs.device.ApMqttConfig | undefined>;
+    /**
+     * Configured hostname assigned to the access point
+     */
     name?: pulumi.Input<string | undefined>;
     /**
      * Any notes about this AP
      */
     notes?: pulumi.Input<string | undefined>;
+    /**
+     * NTP servers used by this access point
+     */
     ntpServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Orientation, 0-359, in degrees, up is 0, right is 90.
+     * AP orientation in degrees from 0 to 359, where 0 is up and 90 is right
      */
     orientation?: pulumi.Input<number | undefined>;
     /**
@@ -509,38 +612,39 @@ export interface ApArgs {
      */
     portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.ApPortConfig>} | undefined>;
     /**
-     * Power related configs
+     * Power negotiation and peripheral power settings for this access point
      */
     pwrConfig?: pulumi.Input<inputs.device.ApPwrConfig | undefined>;
     /**
-     * Radio AP settings
+     * Radio configuration overrides for this access point
      */
     radioConfig?: pulumi.Input<inputs.device.ApRadioConfig | undefined>;
+    /**
+     * Site where this access point is assigned
+     */
     siteId: pulumi.Input<string>;
     /**
-     * AP Uplink port configuration
+     * Authentication and failover behavior for AP uplink ports
      */
     uplinkPortConfig?: pulumi.Input<inputs.device.ApUplinkPortConfig | undefined>;
     /**
-     * USB AP settings
-     *   - Note: if native imagotag is enabled, BLE will be disabled automatically
-     *   - Note: legacy, new config moved to ESL Config.
+     * Legacy USB integration settings for this access point
      */
     usbConfig?: pulumi.Input<inputs.device.ApUsbConfig | undefined>;
     /**
-     * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Variable values that override site variables for this access point
      */
     vars?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * X in pixel
+     * Horizontal map position of the AP, in pixels
      */
     x?: pulumi.Input<number | undefined>;
     /**
-     * Y in pixel
+     * Vertical map position of the AP, in pixels
      */
     y?: pulumi.Input<number | undefined>;
     /**
-     * Zigbee AP settings
+     * Zigbee radio and network settings for this access point
      */
     zigbeeConfig?: pulumi.Input<inputs.device.ApZigbeeConfig | undefined>;
 }

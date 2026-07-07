@@ -16,17 +16,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class WlanAppQos {
+    /**
+     * @return Map of application keys to QoS rewrite settings
+     * 
+     */
     private @Nullable Map<String,WlanAppQosApps> apps;
+    /**
+     * @return Whether application QoS rewrite rules are enabled for this WLAN
+     * 
+     */
     private @Nullable Boolean enabled;
+    /**
+     * @return Custom traffic QoS rules that are not tied to named applications
+     * 
+     */
     private @Nullable List<WlanAppQosOther> others;
 
     private WlanAppQos() {}
+    /**
+     * @return Map of application keys to QoS rewrite settings
+     * 
+     */
     public Map<String,WlanAppQosApps> apps() {
         return this.apps == null ? Map.of() : this.apps;
     }
+    /**
+     * @return Whether application QoS rewrite rules are enabled for this WLAN
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return Custom traffic QoS rules that are not tied to named applications
+     * 
+     */
     public List<WlanAppQosOther> others() {
         return this.others == null ? List.of() : this.others;
     }

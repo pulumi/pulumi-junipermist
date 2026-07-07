@@ -16,9 +16,17 @@ public final class GatewayNetworkTenantsArgs extends com.pulumi.resources.Resour
 
     public static final GatewayNetworkTenantsArgs Empty = new GatewayNetworkTenantsArgs();
 
+    /**
+     * IP addresses or subnets assigned to this tenant in the network
+     * 
+     */
     @Import(name="addresses")
     private @Nullable Output<List<String>> addresses;
 
+    /**
+     * @return IP addresses or subnets assigned to this tenant in the network
+     * 
+     */
     public Optional<Output<List<String>>> addresses() {
         return Optional.ofNullable(this.addresses);
     }
@@ -47,15 +55,33 @@ public final class GatewayNetworkTenantsArgs extends com.pulumi.resources.Resour
             $ = new GatewayNetworkTenantsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param addresses IP addresses or subnets assigned to this tenant in the network
+         * 
+         * @return builder
+         * 
+         */
         public Builder addresses(@Nullable Output<List<String>> addresses) {
             $.addresses = addresses;
             return this;
         }
 
+        /**
+         * @param addresses IP addresses or subnets assigned to this tenant in the network
+         * 
+         * @return builder
+         * 
+         */
         public Builder addresses(List<String> addresses) {
             return addresses(Output.of(addresses));
         }
 
+        /**
+         * @param addresses IP addresses or subnets assigned to this tenant in the network
+         * 
+         * @return builder
+         * 
+         */
         public Builder addresses(String... addresses) {
             return addresses(List.of(addresses));
         }

@@ -91,55 +91,71 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="junipermist:org/vpn:Vpn")
 public class Vpn extends com.pulumi.resources.CustomResource {
+    /**
+     * Display name of the VPN configuration
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Display name of the VPN configuration
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Organization that owns the VPN configuration
+     * 
+     */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orgId;
 
+    /**
+     * @return Organization that owns the VPN configuration
+     * 
+     */
     public Output<Optional<String>> orgId() {
         return Codegen.optional(this.orgId);
     }
     /**
-     * Only if `type`==`hubSpoke`
+     * Path selection settings used when `type`==`hubSpoke`
      * 
      */
     @Export(name="pathSelection", refs={VpnPathSelection.class}, tree="[0]")
     private Output</* @Nullable */ VpnPathSelection> pathSelection;
 
     /**
-     * @return Only if `type`==`hubSpoke`
+     * @return Path selection settings used when `type`==`hubSpoke`
      * 
      */
     public Output<Optional<VpnPathSelection>> pathSelection() {
         return Codegen.optional(this.pathSelection);
     }
     /**
-     * For `type`==`hubSpoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+     * VPN path definitions keyed by VPN name for `hubSpoke` mode or interface name for `mesh` mode
      * 
      */
     @Export(name="paths", refs={Map.class,String.class,VpnPaths.class}, tree="[0,1,2]")
     private Output<Map<String,VpnPaths>> paths;
 
     /**
-     * @return For `type`==`hubSpoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+     * @return VPN path definitions keyed by VPN name for `hubSpoke` mode or interface name for `mesh` mode
      * 
      */
     public Output<Map<String,VpnPaths>> paths() {
         return this.paths;
     }
     /**
-     * enum: `hubSpoke`, `mesh`
+     * VPN topology mode for this configuration
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return enum: `hubSpoke`, `mesh`
+     * @return VPN topology mode for this configuration
      * 
      */
     public Output<Optional<String>> type() {

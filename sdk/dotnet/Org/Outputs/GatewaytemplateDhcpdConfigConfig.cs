@@ -14,15 +14,15 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class GatewaytemplateDhcpdConfigConfig
     {
         /// <summary>
-        /// If `Type`==`Local` or `Type6`==`Local` - optional, if not defined, system one will be used
+        /// If `Type`==`Local` or `Type6`==`Local`, DNS servers advertised to DHCP clients
         /// </summary>
         public readonly ImmutableArray<string> DnsServers;
         /// <summary>
-        /// If `Type`==`Local` or `Type6`==`Local` - optional, if not defined, system one will be used
+        /// If `Type`==`Local` or `Type6`==`Local`, DNS search suffixes advertised to DHCP clients
         /// </summary>
         public readonly ImmutableArray<string> DnsSuffixes;
         /// <summary>
-        /// If `Type`==`Local` or `Type6`==`Local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
+        /// If `Type`==`Local` or `Type6`==`Local`, fixed client bindings for local DHCP service
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.GatewaytemplateDhcpdConfigConfigFixedBindings>? FixedBindings;
         /// <summary>
@@ -30,19 +30,19 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Gateway;
         /// <summary>
-        /// If `Type6`==`Local`
+        /// If `Type6`==`Local`, ending IPv6 address for the DHCP lease pool
         /// </summary>
         public readonly string? Ip6End;
         /// <summary>
-        /// If `Type6`==`Local`
+        /// If `Type6`==`Local`, starting IPv6 address for the DHCP lease pool
         /// </summary>
         public readonly string? Ip6Start;
         /// <summary>
-        /// If `Type`==`Local`
+        /// If `Type`==`Local`, ending IPv4 address for the DHCP lease pool
         /// </summary>
         public readonly string? IpEnd;
         /// <summary>
-        /// If `Type`==`Local`
+        /// If `Type`==`Local`, starting IPv4 address for the DHCP lease pool
         /// </summary>
         public readonly string? IpStart;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly int? LeaseTime;
         /// <summary>
-        /// If `Type`==`Local` or `Type6`==`Local`. Property key is the DHCP option number
+        /// If `Type`==`Local` or `Type6`==`Local`, custom DHCP options advertised to clients
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.GatewaytemplateDhcpdConfigConfigOptions>? Options;
         /// <summary>
@@ -59,25 +59,23 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? ServerIdOverride;
         /// <summary>
-        /// If `Type`==`Relay`
+        /// If `Type`==`Relay`, upstream IPv4 DHCP servers
         /// </summary>
         public readonly ImmutableArray<string> Servers;
         /// <summary>
-        /// If `Type6`==`Relay`
+        /// If `Type6`==`Relay`, upstream IPv6 DHCP servers
         /// </summary>
         public readonly ImmutableArray<string> Serversv6s;
         /// <summary>
-        /// enum: `Local` (DHCP Server), `None`, `Relay` (DHCP Relay)
+        /// IPv4 DHCP mode for this network
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// enum: `Local` (DHCP Server), `None`, `Relay` (DHCP Relay)
+        /// IPv6 DHCP mode for this network
         /// </summary>
         public readonly string? Type6;
         /// <summary>
-        /// If `Type`==`Local` or `Type6`==`Local`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
-        ///   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
-        ///   * sub option code: 1-255, sub-option code
+        /// If `Type`==`Local` or `Type6`==`Local`, vendor-encapsulated DHCP options advertised to clients
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.GatewaytemplateDhcpdConfigConfigVendorEncapsulated>? VendorEncapsulated;
 

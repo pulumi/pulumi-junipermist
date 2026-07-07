@@ -75,116 +75,140 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:org/wxrule:Wxrule")
 public class Wxrule extends com.pulumi.resources.CustomResource {
     /**
-     * type of action, allow / block. enum: `allow`, `block`
+     * Allow or block behavior applied by this WxLAN rule
      * 
      */
     @Export(name="action", refs={String.class}, tree="[0]")
     private Output<String> action;
 
     /**
-     * @return type of action, allow / block. enum: `allow`, `block`
+     * @return Allow or block behavior applied by this WxLAN rule
      * 
      */
     public Output<String> action() {
         return this.action;
     }
+    /**
+     * WxLAN tag identifiers applied when this rule matches
+     * 
+     */
     @Export(name="applyTags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> applyTags;
 
+    /**
+     * @return WxLAN tag identifiers applied when this rule matches
+     * 
+     */
     public Output<Optional<List<String>>> applyTags() {
         return Codegen.optional(this.applyTags);
     }
     /**
-     * Blocked apps (always blocking, ignoring action), the key of Get Application List
+     * Application keys always blocked by this rule, regardless of the rule action
      * 
      */
     @Export(name="blockedApps", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> blockedApps;
 
     /**
-     * @return Blocked apps (always blocking, ignoring action), the key of Get Application List
+     * @return Application keys always blocked by this rule, regardless of the rule action
      * 
      */
     public Output<Optional<List<String>>> blockedApps() {
         return Codegen.optional(this.blockedApps);
     }
     /**
-     * List of WxTag UUID to indicate these tags are allowed access
+     * Destination WxLAN tag identifiers explicitly allowed by this rule
      * 
      */
     @Export(name="dstAllowWxtags", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> dstAllowWxtags;
 
     /**
-     * @return List of WxTag UUID to indicate these tags are allowed access
+     * @return Destination WxLAN tag identifiers explicitly allowed by this rule
      * 
      */
     public Output<List<String>> dstAllowWxtags() {
         return this.dstAllowWxtags;
     }
     /**
-     * List of WxTag UUID to indicate these tags are blocked access
+     * Destination WxLAN tag identifiers explicitly denied by this rule
      * 
      */
     @Export(name="dstDenyWxtags", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> dstDenyWxtags;
 
     /**
-     * @return List of WxTag UUID to indicate these tags are blocked access
+     * @return Destination WxLAN tag identifiers explicitly denied by this rule
      * 
      */
     public Output<List<String>> dstDenyWxtags() {
         return this.dstDenyWxtags;
     }
     /**
-     * List of WxTag UUID
+     * Destination WxLAN tag identifiers matched by this rule
      * 
      */
     @Export(name="dstWxtags", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> dstWxtags;
 
     /**
-     * @return List of WxTag UUID
+     * @return Destination WxLAN tag identifiers matched by this rule
      * 
      */
     public Output<List<String>> dstWxtags() {
         return this.dstWxtags;
     }
+    /**
+     * Whether this WxLAN rule is enabled
+     * 
+     */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
+    /**
+     * @return Whether this WxLAN rule is enabled
+     * 
+     */
     public Output<Boolean> enabled() {
         return this.enabled;
     }
     /**
-     * Order how rules would be looked up, &gt; 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+     * Lookup priority for WxLAN rules; larger positive values match first, and -1 means LAST. Uniqueness is not checked
      * 
      */
     @Export(name="order", refs={Integer.class}, tree="[0]")
     private Output<Integer> order;
 
     /**
-     * @return Order how rules would be looked up, &gt; 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+     * @return Lookup priority for WxLAN rules; larger positive values match first, and -1 means LAST. Uniqueness is not checked
      * 
      */
     public Output<Integer> order() {
         return this.order;
     }
+    /**
+     * Owning organization associated with this WxLAN rule
+     * 
+     */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
+    /**
+     * @return Owning organization associated with this WxLAN rule
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }
     /**
-     * List of WxTag UUID to determine if this rule would match
+     * Source WxLAN tag identifiers that must match for this rule to apply
      * 
      */
     @Export(name="srcWxtags", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> srcWxtags;
 
     /**
-     * @return List of WxTag UUID to determine if this rule would match
+     * @return Source WxLAN tag identifiers that must match for this rule to apply
      * 
      */
     public Output<List<String>> srcWxtags() {

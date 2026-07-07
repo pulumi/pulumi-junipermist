@@ -12,19 +12,27 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GatewaytemplateServicePolicySkyatpDnsTunnelDetection {
+    /**
+     * @return Whether Sky ATP DNS tunneling detection is enabled
+     * 
+     */
     private @Nullable Boolean enabled;
     /**
-     * @return enum: `default`, `standard`, `strict`
+     * @return Sky ATP DNS tunneling detection profile to apply
      * 
      */
     private @Nullable String profile;
 
     private GatewaytemplateServicePolicySkyatpDnsTunnelDetection() {}
+    /**
+     * @return Whether Sky ATP DNS tunneling detection is enabled
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return enum: `default`, `standard`, `strict`
+     * @return Sky ATP DNS tunneling detection profile to apply
      * 
      */
     public Optional<String> profile() {

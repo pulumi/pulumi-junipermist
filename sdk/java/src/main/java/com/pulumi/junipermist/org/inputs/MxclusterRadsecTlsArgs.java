@@ -15,9 +15,17 @@ public final class MxclusterRadsecTlsArgs extends com.pulumi.resources.ResourceA
 
     public static final MxclusterRadsecTlsArgs Empty = new MxclusterRadsecTlsArgs();
 
+    /**
+     * Name or identifier of the TLS keypair used by RadSec
+     * 
+     */
     @Import(name="keypair")
     private @Nullable Output<String> keypair;
 
+    /**
+     * @return Name or identifier of the TLS keypair used by RadSec
+     * 
+     */
     public Optional<Output<String>> keypair() {
         return Optional.ofNullable(this.keypair);
     }
@@ -46,11 +54,23 @@ public final class MxclusterRadsecTlsArgs extends com.pulumi.resources.ResourceA
             $ = new MxclusterRadsecTlsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param keypair Name or identifier of the TLS keypair used by RadSec
+         * 
+         * @return builder
+         * 
+         */
         public Builder keypair(@Nullable Output<String> keypair) {
             $.keypair = keypair;
             return this;
         }
 
+        /**
+         * @param keypair Name or identifier of the TLS keypair used by RadSec
+         * 
+         * @return builder
+         * 
+         */
         public Builder keypair(String keypair) {
             return keypair(Output.of(keypair));
         }

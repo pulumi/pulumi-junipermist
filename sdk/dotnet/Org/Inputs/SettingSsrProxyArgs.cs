@@ -12,9 +12,15 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class SettingSsrProxyArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether the SSR proxy configuration is disabled
+        /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
+        /// <summary>
+        /// Proxy URL that SSR devices use to reach Mist
+        /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
 

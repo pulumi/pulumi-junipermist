@@ -15,9 +15,17 @@ public final class SettingSwitchArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SettingSwitchArgs Empty = new SettingSwitchArgs();
 
+    /**
+     * Auto-upgrade defaults for switches in this organization
+     * 
+     */
     @Import(name="autoUpgrade")
     private @Nullable Output<SettingSwitchAutoUpgradeArgs> autoUpgrade;
 
+    /**
+     * @return Auto-upgrade defaults for switches in this organization
+     * 
+     */
     public Optional<Output<SettingSwitchAutoUpgradeArgs>> autoUpgrade() {
         return Optional.ofNullable(this.autoUpgrade);
     }
@@ -46,11 +54,23 @@ public final class SettingSwitchArgs extends com.pulumi.resources.ResourceArgs {
             $ = new SettingSwitchArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param autoUpgrade Auto-upgrade defaults for switches in this organization
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoUpgrade(@Nullable Output<SettingSwitchAutoUpgradeArgs> autoUpgrade) {
             $.autoUpgrade = autoUpgrade;
             return this;
         }
 
+        /**
+         * @param autoUpgrade Auto-upgrade defaults for switches in this organization
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoUpgrade(SettingSwitchAutoUpgradeArgs autoUpgrade) {
             return autoUpgrade(Output.of(autoUpgrade));
         }

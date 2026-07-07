@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _dnsServers;
 
         /// <summary>
-        /// If `Type`==`Server` or `Type6`==`Server` - optional, if not defined, system one will be used
+        /// If `Type`==`Server` or `Type6`==`Server`, DNS servers advertised to DHCP clients
         /// </summary>
         public InputList<string> DnsServers
         {
@@ -28,7 +28,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _dnsSuffixes;
 
         /// <summary>
-        /// If `Type`==`Server` or `Type6`==`Server` - optional, if not defined, system one will be used
+        /// If `Type`==`Server` or `Type6`==`Server`, DNS search suffixes advertised to DHCP clients
         /// </summary>
         public InputList<string> DnsSuffixes
         {
@@ -40,7 +40,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputMap<Inputs.SwitchDhcpdConfigConfigFixedBindingsArgs>? _fixedBindings;
 
         /// <summary>
-        /// If `Type`==`Server` or `Type6`==`Server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
+        /// If `Type`==`Server` or `Type6`==`Server`, fixed client bindings for DHCP service
         /// </summary>
         public InputMap<Inputs.SwitchDhcpdConfigConfigFixedBindingsArgs> FixedBindings
         {
@@ -55,25 +55,25 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? Gateway { get; set; }
 
         /// <summary>
-        /// If `Type`==`Server`
+        /// If `Type`==`Server`, ending IPv4 address for the DHCP lease pool
         /// </summary>
         [Input("ipEnd")]
         public Input<string>? IpEnd { get; set; }
 
         /// <summary>
-        /// If `Type6`==`Server`
+        /// If `Type6`==`Server`, ending IPv6 address for the DHCP lease pool
         /// </summary>
         [Input("ipEnd6")]
         public Input<string>? IpEnd6 { get; set; }
 
         /// <summary>
-        /// If `Type`==`Server`
+        /// If `Type`==`Server`, starting IPv4 address for the DHCP lease pool
         /// </summary>
         [Input("ipStart")]
         public Input<string>? IpStart { get; set; }
 
         /// <summary>
-        /// If `Type6`==`Server`
+        /// If `Type6`==`Server`, starting IPv6 address for the DHCP lease pool
         /// </summary>
         [Input("ipStart6")]
         public Input<string>? IpStart6 { get; set; }
@@ -88,7 +88,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputMap<Inputs.SwitchDhcpdConfigConfigOptionsArgs>? _options;
 
         /// <summary>
-        /// If `Type`==`Server` or `Type6`==`Server`. Property key is the DHCP option number
+        /// If `Type`==`Server` or `Type6`==`Server`, custom DHCP options advertised to clients
         /// </summary>
         public InputMap<Inputs.SwitchDhcpdConfigConfigOptionsArgs> Options
         {
@@ -107,7 +107,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _servers;
 
         /// <summary>
-        /// If `Type`==`Relay`
+        /// If `Type`==`Relay`, upstream IPv4 DHCP servers
         /// </summary>
         public InputList<string> Servers
         {
@@ -119,7 +119,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _servers6s;
 
         /// <summary>
-        /// If `Type6`==`Relay`
+        /// If `Type6`==`Relay`, upstream IPv6 DHCP servers
         /// </summary>
         public InputList<string> Servers6s
         {
@@ -128,13 +128,13 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// enum: `None`, `Relay` (DHCP Relay), `Server` (DHCP Server)
+        /// IPv4 DHCP mode for this switch network
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// enum: `None`, `Relay` (DHCP Relay), `Server` (DHCP Server)
+        /// IPv6 DHCP mode for this switch network
         /// </summary>
         [Input("type6")]
         public Input<string>? Type6 { get; set; }
@@ -143,9 +143,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputMap<Inputs.SwitchDhcpdConfigConfigVendorEncapsulatedArgs>? _vendorEncapsulated;
 
         /// <summary>
-        /// If `Type`==`Server` or `Type6`==`Server`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
-        ///   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
-        ///   * sub option code: 1-255, sub-option code'
+        /// If `Type`==`Server` or `Type6`==`Server`, vendor-encapsulated DHCP options advertised to clients
         /// </summary>
         public InputMap<Inputs.SwitchDhcpdConfigConfigVendorEncapsulatedArgs> VendorEncapsulated
         {

@@ -14,13 +14,16 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class NetworktemplateRoutingPoliciesTerm
     {
         /// <summary>
-        /// When used as import policy
+        /// Policy actions applied when this routing policy term matches
         /// </summary>
         public readonly Outputs.NetworktemplateRoutingPoliciesTermActions? Actions;
         /// <summary>
-        /// zero or more criteria/filter can be specified to match the term, all criteria have to be met
+        /// Route match criteria that must be satisfied before actions are applied
         /// </summary>
         public readonly Outputs.NetworktemplateRoutingPoliciesTermMatching? Matching;
+        /// <summary>
+        /// Display name of the switch routing policy term
+        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

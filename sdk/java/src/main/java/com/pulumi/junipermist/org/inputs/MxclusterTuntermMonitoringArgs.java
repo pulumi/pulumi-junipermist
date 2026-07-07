@@ -43,9 +43,17 @@ public final class MxclusterTuntermMonitoringArgs extends com.pulumi.resources.R
         return this.srcVlanId;
     }
 
+    /**
+     * Authentication request timeout, in seconds
+     * 
+     */
     @Import(name="timeout", required=true)
     private Output<Integer> timeout;
 
+    /**
+     * @return Authentication request timeout, in seconds
+     * 
+     */
     public Output<Integer> timeout() {
         return this.timeout;
     }
@@ -114,11 +122,23 @@ public final class MxclusterTuntermMonitoringArgs extends com.pulumi.resources.R
             return srcVlanId(Output.of(srcVlanId));
         }
 
+        /**
+         * @param timeout Authentication request timeout, in seconds
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeout(Output<Integer> timeout) {
             $.timeout = timeout;
             return this;
         }
 
+        /**
+         * @param timeout Authentication request timeout, in seconds
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeout(Integer timeout) {
             return timeout(Output.of(timeout));
         }

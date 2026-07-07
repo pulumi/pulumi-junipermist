@@ -13,16 +13,19 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class SwitchVirtualChassisMemberGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// fpc0, same as the mac of device_id
+        /// Virtual Chassis member MAC address; for FPC0 this matches the device ID MAC
         /// </summary>
         [Input("mac", required: true)]
         public Input<string> Mac { get; set; } = null!;
 
+        /// <summary>
+        /// Virtual Chassis member identifier
+        /// </summary>
         [Input("memberId", required: true)]
         public Input<int> MemberId { get; set; } = null!;
 
         /// <summary>
-        /// Both VcRole master and backup will be matched to routing-engine role in Junos preprovisioned VC config. enum: `Backup`, `Linecard`, `Master`
+        /// Role of this member in the Virtual Chassis
         /// </summary>
         [Input("vcRole", required: true)]
         public Input<string> VcRole { get; set; } = null!;

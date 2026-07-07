@@ -51,6 +51,10 @@ public final class EvpnTopologyEvpnOptions {
      * 
      */
     private @Nullable Boolean enableInbandZtp;
+    /**
+     * @return EVPN overlay BGP settings for the topology
+     * 
+     */
     private @Nullable EvpnTopologyEvpnOptionsOverlay overlay;
     /**
      * @return Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address&#39;s v4_mac. If enabled, 00-00-5e-00-0X-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)
@@ -63,13 +67,17 @@ public final class EvpnTopologyEvpnOptions {
      */
     private @Nullable Boolean perVlanVgaV6Mac;
     /**
-     * @return optional, where virtual-gateway should reside. enum: `core`, `distribution`, `edge`
+     * @return Topology tier where EVPN virtual gateway routing is placed
      * 
      */
     private @Nullable String routedAt;
+    /**
+     * @return EVPN underlay BGP and subnet settings for the topology
+     * 
+     */
     private @Nullable EvpnTopologyEvpnOptionsUnderlay underlay;
     /**
-     * @return Optional, for EX9200 only to segregate virtual-switches
+     * @return Virtual-switch instance mappings used to segregate EVPN networks
      * 
      */
     private @Nullable Map<String,EvpnTopologyEvpnOptionsVsInstances> vsInstances;
@@ -124,6 +132,10 @@ public final class EvpnTopologyEvpnOptions {
     public Optional<Boolean> enableInbandZtp() {
         return Optional.ofNullable(this.enableInbandZtp);
     }
+    /**
+     * @return EVPN overlay BGP settings for the topology
+     * 
+     */
     public Optional<EvpnTopologyEvpnOptionsOverlay> overlay() {
         return Optional.ofNullable(this.overlay);
     }
@@ -142,17 +154,21 @@ public final class EvpnTopologyEvpnOptions {
         return Optional.ofNullable(this.perVlanVgaV6Mac);
     }
     /**
-     * @return optional, where virtual-gateway should reside. enum: `core`, `distribution`, `edge`
+     * @return Topology tier where EVPN virtual gateway routing is placed
      * 
      */
     public Optional<String> routedAt() {
         return Optional.ofNullable(this.routedAt);
     }
+    /**
+     * @return EVPN underlay BGP and subnet settings for the topology
+     * 
+     */
     public Optional<EvpnTopologyEvpnOptionsUnderlay> underlay() {
         return Optional.ofNullable(this.underlay);
     }
     /**
-     * @return Optional, for EX9200 only to segregate virtual-switches
+     * @return Virtual-switch instance mappings used to segregate EVPN networks
      * 
      */
     public Map<String,EvpnTopologyEvpnOptionsVsInstances> vsInstances() {

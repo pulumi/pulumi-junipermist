@@ -31,7 +31,7 @@ public final class WlanPortal {
      */
     private @Nullable String amazonClientSecret;
     /**
-     * @return Optional if `amazonEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+     * @return Optional if `amazonEnabled`==`true`. Email domains allowed for Amazon-authenticated guest users. If null or empty, any authenticated Amazon email domain is allowed.
      * 
      */
     private @Nullable List<String> amazonEmailDomains;
@@ -46,7 +46,7 @@ public final class WlanPortal {
      */
     private @Nullable Integer amazonExpire;
     /**
-     * @return authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
+     * @return Guest portal login scheme used by the WLAN
      * 
      */
     private @Nullable String auth;
@@ -76,17 +76,17 @@ public final class WlanPortal {
      */
     private @Nullable String azureTenantId;
     /**
-     * @return Required if `smsProvider`==`broadnet`
+     * @return Required if `smsProvider`==`broadnet`. Password for the Broadnet SMS provider account
      * 
      */
     private @Nullable String broadnetPassword;
     /**
-     * @return Required if `smsProvider`==`broadnet`
+     * @return Required if `smsProvider`==`broadnet`. SID for the Broadnet SMS provider account
      * 
      */
     private @Nullable String broadnetSid;
     /**
-     * @return Required if `smsProvider`==`broadnet`
+     * @return Required if `smsProvider`==`broadnet`. User ID for the Broadnet SMS provider account
      * 
      */
     private @Nullable String broadnetUserId;
@@ -96,7 +96,7 @@ public final class WlanPortal {
      */
     private @Nullable Boolean bypassWhenCloudDown;
     /**
-     * @return Required if `smsProvider`==`clickatell`
+     * @return Required if `smsProvider`==`clickatell`. API key for the Clickatell SMS provider account
      * 
      */
     private @Nullable String clickatellApiKey;
@@ -136,7 +136,7 @@ public final class WlanPortal {
      */
     private @Nullable String facebookClientSecret;
     /**
-     * @return Optional if `facebookEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+     * @return Optional if `facebookEnabled`==`true`. Email domains allowed for Facebook-authenticated guest users. If null or empty, any authenticated Facebook email domain is allowed.
      * 
      */
     private @Nullable List<String> facebookEmailDomains;
@@ -171,7 +171,7 @@ public final class WlanPortal {
      */
     private @Nullable String googleClientSecret;
     /**
-     * @return Optional if `googleEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+     * @return Optional if `googleEnabled`==`true`. Email domains allowed for Google-authenticated guest users. If null or empty, any authenticated Google email domain is allowed.
      * 
      */
     private @Nullable List<String> googleEmailDomains;
@@ -186,12 +186,12 @@ public final class WlanPortal {
      */
     private @Nullable Integer googleExpire;
     /**
-     * @return Required if `smsProvider`==`gupshup`
+     * @return Required if `smsProvider`==`gupshup`. Password for the Gupshup SMS provider account
      * 
      */
     private @Nullable String gupshupPassword;
     /**
-     * @return Required if `smsProvider`==`gupshup`
+     * @return Required if `smsProvider`==`gupshup`. User ID for the Gupshup SMS provider account
      * 
      */
     private @Nullable String gupshupUserid;
@@ -206,7 +206,7 @@ public final class WlanPortal {
      */
     private @Nullable String microsoftClientSecret;
     /**
-     * @return Optional if `microsoftEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+     * @return Optional if `microsoftEnabled`==`true`. Email domains allowed for Microsoft 365-authenticated guest users. If null or empty, any authenticated Microsoft 365 email domain is allowed.
      * 
      */
     private @Nullable List<String> microsoftEmailDomains;
@@ -231,7 +231,7 @@ public final class WlanPortal {
      */
     private @Nullable Integer passphraseExpire;
     /**
-     * @return Required if `passphraseEnabled`==`true`.
+     * @return Required if `passphraseEnabled`==`true`. Passphrase guests must enter when passphrase authentication is enabled
      * 
      */
     private @Nullable String password;
@@ -245,19 +245,23 @@ public final class WlanPortal {
      * 
      */
     private @Nullable Boolean predefinedSponsorsHideEmail;
+    /**
+     * @return Whether to show the privacy policy in the WLAN guest portal
+     * 
+     */
     private @Nullable Boolean privacy;
     /**
-     * @return Required if `smsProvider`==`puzzel`
+     * @return Required if `smsProvider`==`puzzel`. Password for the Puzzel SMS provider account
      * 
      */
     private @Nullable String puzzelPassword;
     /**
-     * @return Required if `smsProvider`==`puzzel`
+     * @return Required if `smsProvider`==`puzzel`. Service ID for the Puzzel SMS provider account
      * 
      */
     private @Nullable String puzzelServiceId;
     /**
-     * @return Required if `smsProvider`==`puzzel`
+     * @return Required if `smsProvider`==`puzzel`. Username for the Puzzel SMS provider account
      * 
      */
     private @Nullable String puzzelUsername;
@@ -277,7 +281,7 @@ public final class WlanPortal {
      */
     private @Nullable String smsMessageFormat;
     /**
-     * @return Optional if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
+     * @return Optional if `smsEnabled`==`true`. SMS provider used to deliver guest portal access codes
      * 
      */
     private @Nullable String smsProvider;
@@ -292,12 +296,17 @@ public final class WlanPortal {
      */
     private @Nullable String smsglobalApiSecret;
     /**
+     * @return Optional sender&#39;s number or sender ID for SMSGlobal. If not provided, uses the default number associated with the account
+     * 
+     */
+    private @Nullable String smsglobalSender;
+    /**
      * @return Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
      * 
      */
     private @Nullable Boolean sponsorAutoApprove;
     /**
-     * @return List of domain allowed for sponsor email. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
+     * @return Email domains allowed for sponsor email addresses. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
      * 
      */
     private @Nullable List<String> sponsorEmailDomains;
@@ -340,7 +349,7 @@ public final class WlanPortal {
      */
     private @Nullable String ssoDefaultRole;
     /**
-     * @return Optional if `wlanPortalAuth`==`sso`
+     * @return Optional if `wlanPortalAuth`==`sso`. Role assigned to authenticated users when guest SSO is used
      * 
      */
     private @Nullable String ssoForcedRole;
@@ -350,7 +359,7 @@ public final class WlanPortal {
      */
     private @Nullable String ssoIdpCert;
     /**
-     * @return Optional if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+     * @return Optional if `wlanPortalAuth`==`sso`. Signing algorithm used for SAML assertions from the identity provider
      * 
      */
     private @Nullable String ssoIdpSignAlgo;
@@ -365,7 +374,7 @@ public final class WlanPortal {
      */
     private @Nullable String ssoIssuer;
     /**
-     * @return Optional if `wlanPortalAuth`==`sso`. enum: `email`, `unspecified`
+     * @return Optional if `wlanPortalAuth`==`sso`. SAML NameID format expected from the identity provider
      * 
      */
     private @Nullable String ssoNameidFormat;
@@ -418,7 +427,7 @@ public final class WlanPortal {
         return Optional.ofNullable(this.amazonClientSecret);
     }
     /**
-     * @return Optional if `amazonEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+     * @return Optional if `amazonEnabled`==`true`. Email domains allowed for Amazon-authenticated guest users. If null or empty, any authenticated Amazon email domain is allowed.
      * 
      */
     public List<String> amazonEmailDomains() {
@@ -439,7 +448,7 @@ public final class WlanPortal {
         return Optional.ofNullable(this.amazonExpire);
     }
     /**
-     * @return authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
+     * @return Guest portal login scheme used by the WLAN
      * 
      */
     public Optional<String> auth() {
@@ -481,21 +490,21 @@ public final class WlanPortal {
         return Optional.ofNullable(this.azureTenantId);
     }
     /**
-     * @return Required if `smsProvider`==`broadnet`
+     * @return Required if `smsProvider`==`broadnet`. Password for the Broadnet SMS provider account
      * 
      */
     public Optional<String> broadnetPassword() {
         return Optional.ofNullable(this.broadnetPassword);
     }
     /**
-     * @return Required if `smsProvider`==`broadnet`
+     * @return Required if `smsProvider`==`broadnet`. SID for the Broadnet SMS provider account
      * 
      */
     public Optional<String> broadnetSid() {
         return Optional.ofNullable(this.broadnetSid);
     }
     /**
-     * @return Required if `smsProvider`==`broadnet`
+     * @return Required if `smsProvider`==`broadnet`. User ID for the Broadnet SMS provider account
      * 
      */
     public Optional<String> broadnetUserId() {
@@ -509,7 +518,7 @@ public final class WlanPortal {
         return Optional.ofNullable(this.bypassWhenCloudDown);
     }
     /**
-     * @return Required if `smsProvider`==`clickatell`
+     * @return Required if `smsProvider`==`clickatell`. API key for the Clickatell SMS provider account
      * 
      */
     public Optional<String> clickatellApiKey() {
@@ -565,7 +574,7 @@ public final class WlanPortal {
         return Optional.ofNullable(this.facebookClientSecret);
     }
     /**
-     * @return Optional if `facebookEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+     * @return Optional if `facebookEnabled`==`true`. Email domains allowed for Facebook-authenticated guest users. If null or empty, any authenticated Facebook email domain is allowed.
      * 
      */
     public List<String> facebookEmailDomains() {
@@ -614,7 +623,7 @@ public final class WlanPortal {
         return Optional.ofNullable(this.googleClientSecret);
     }
     /**
-     * @return Optional if `googleEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+     * @return Optional if `googleEnabled`==`true`. Email domains allowed for Google-authenticated guest users. If null or empty, any authenticated Google email domain is allowed.
      * 
      */
     public List<String> googleEmailDomains() {
@@ -635,14 +644,14 @@ public final class WlanPortal {
         return Optional.ofNullable(this.googleExpire);
     }
     /**
-     * @return Required if `smsProvider`==`gupshup`
+     * @return Required if `smsProvider`==`gupshup`. Password for the Gupshup SMS provider account
      * 
      */
     public Optional<String> gupshupPassword() {
         return Optional.ofNullable(this.gupshupPassword);
     }
     /**
-     * @return Required if `smsProvider`==`gupshup`
+     * @return Required if `smsProvider`==`gupshup`. User ID for the Gupshup SMS provider account
      * 
      */
     public Optional<String> gupshupUserid() {
@@ -663,7 +672,7 @@ public final class WlanPortal {
         return Optional.ofNullable(this.microsoftClientSecret);
     }
     /**
-     * @return Optional if `microsoftEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+     * @return Optional if `microsoftEnabled`==`true`. Email domains allowed for Microsoft 365-authenticated guest users. If null or empty, any authenticated Microsoft 365 email domain is allowed.
      * 
      */
     public List<String> microsoftEmailDomains() {
@@ -698,7 +707,7 @@ public final class WlanPortal {
         return Optional.ofNullable(this.passphraseExpire);
     }
     /**
-     * @return Required if `passphraseEnabled`==`true`.
+     * @return Required if `passphraseEnabled`==`true`. Passphrase guests must enter when passphrase authentication is enabled
      * 
      */
     public Optional<String> password() {
@@ -718,25 +727,29 @@ public final class WlanPortal {
     public Optional<Boolean> predefinedSponsorsHideEmail() {
         return Optional.ofNullable(this.predefinedSponsorsHideEmail);
     }
+    /**
+     * @return Whether to show the privacy policy in the WLAN guest portal
+     * 
+     */
     public Optional<Boolean> privacy() {
         return Optional.ofNullable(this.privacy);
     }
     /**
-     * @return Required if `smsProvider`==`puzzel`
+     * @return Required if `smsProvider`==`puzzel`. Password for the Puzzel SMS provider account
      * 
      */
     public Optional<String> puzzelPassword() {
         return Optional.ofNullable(this.puzzelPassword);
     }
     /**
-     * @return Required if `smsProvider`==`puzzel`
+     * @return Required if `smsProvider`==`puzzel`. Service ID for the Puzzel SMS provider account
      * 
      */
     public Optional<String> puzzelServiceId() {
         return Optional.ofNullable(this.puzzelServiceId);
     }
     /**
-     * @return Required if `smsProvider`==`puzzel`
+     * @return Required if `smsProvider`==`puzzel`. Username for the Puzzel SMS provider account
      * 
      */
     public Optional<String> puzzelUsername() {
@@ -764,7 +777,7 @@ public final class WlanPortal {
         return Optional.ofNullable(this.smsMessageFormat);
     }
     /**
-     * @return Optional if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
+     * @return Optional if `smsEnabled`==`true`. SMS provider used to deliver guest portal access codes
      * 
      */
     public Optional<String> smsProvider() {
@@ -785,6 +798,13 @@ public final class WlanPortal {
         return Optional.ofNullable(this.smsglobalApiSecret);
     }
     /**
+     * @return Optional sender&#39;s number or sender ID for SMSGlobal. If not provided, uses the default number associated with the account
+     * 
+     */
+    public Optional<String> smsglobalSender() {
+        return Optional.ofNullable(this.smsglobalSender);
+    }
+    /**
      * @return Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
      * 
      */
@@ -792,7 +812,7 @@ public final class WlanPortal {
         return Optional.ofNullable(this.sponsorAutoApprove);
     }
     /**
-     * @return List of domain allowed for sponsor email. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
+     * @return Email domains allowed for sponsor email addresses. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
      * 
      */
     public List<String> sponsorEmailDomains() {
@@ -851,7 +871,7 @@ public final class WlanPortal {
         return Optional.ofNullable(this.ssoDefaultRole);
     }
     /**
-     * @return Optional if `wlanPortalAuth`==`sso`
+     * @return Optional if `wlanPortalAuth`==`sso`. Role assigned to authenticated users when guest SSO is used
      * 
      */
     public Optional<String> ssoForcedRole() {
@@ -865,7 +885,7 @@ public final class WlanPortal {
         return Optional.ofNullable(this.ssoIdpCert);
     }
     /**
-     * @return Optional if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+     * @return Optional if `wlanPortalAuth`==`sso`. Signing algorithm used for SAML assertions from the identity provider
      * 
      */
     public Optional<String> ssoIdpSignAlgo() {
@@ -886,7 +906,7 @@ public final class WlanPortal {
         return Optional.ofNullable(this.ssoIssuer);
     }
     /**
-     * @return Optional if `wlanPortalAuth`==`sso`. enum: `email`, `unspecified`
+     * @return Optional if `wlanPortalAuth`==`sso`. SAML NameID format expected from the identity provider
      * 
      */
     public Optional<String> ssoNameidFormat() {
@@ -993,6 +1013,7 @@ public final class WlanPortal {
         private @Nullable String smsProvider;
         private @Nullable String smsglobalApiKey;
         private @Nullable String smsglobalApiSecret;
+        private @Nullable String smsglobalSender;
         private @Nullable Boolean sponsorAutoApprove;
         private @Nullable List<String> sponsorEmailDomains;
         private @Nullable Boolean sponsorEnabled;
@@ -1072,6 +1093,7 @@ public final class WlanPortal {
     	      this.smsProvider = defaults.smsProvider;
     	      this.smsglobalApiKey = defaults.smsglobalApiKey;
     	      this.smsglobalApiSecret = defaults.smsglobalApiSecret;
+    	      this.smsglobalSender = defaults.smsglobalSender;
     	      this.sponsorAutoApprove = defaults.sponsorAutoApprove;
     	      this.sponsorEmailDomains = defaults.sponsorEmailDomains;
     	      this.sponsorEnabled = defaults.sponsorEnabled;
@@ -1443,6 +1465,12 @@ public final class WlanPortal {
             return this;
         }
         @CustomType.Setter
+        public Builder smsglobalSender(@Nullable String smsglobalSender) {
+
+            this.smsglobalSender = smsglobalSender;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sponsorAutoApprove(@Nullable Boolean sponsorAutoApprove) {
 
             this.sponsorAutoApprove = sponsorAutoApprove;
@@ -1623,6 +1651,7 @@ public final class WlanPortal {
             _resultValue.smsProvider = smsProvider;
             _resultValue.smsglobalApiKey = smsglobalApiKey;
             _resultValue.smsglobalApiSecret = smsglobalApiSecret;
+            _resultValue.smsglobalSender = smsglobalSender;
             _resultValue.sponsorAutoApprove = sponsorAutoApprove;
             _resultValue.sponsorEmailDomains = sponsorEmailDomains;
             _resultValue.sponsorEnabled = sponsorEnabled;

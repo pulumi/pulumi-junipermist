@@ -15,14 +15,14 @@ public final class SwitchVrfInstancesExtraRoutesArgs extends com.pulumi.resource
     public static final SwitchVrfInstancesExtraRoutesArgs Empty = new SwitchVrfInstancesExtraRoutesArgs();
 
     /**
-     * Next-hop address
+     * IPv4 next-hop address for this VRF extra route
      * 
      */
     @Import(name="via", required=true)
     private Output<String> via;
 
     /**
-     * @return Next-hop address
+     * @return IPv4 next-hop address for this VRF extra route
      * 
      */
     public Output<String> via() {
@@ -54,7 +54,7 @@ public final class SwitchVrfInstancesExtraRoutesArgs extends com.pulumi.resource
         }
 
         /**
-         * @param via Next-hop address
+         * @param via IPv4 next-hop address for this VRF extra route
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class SwitchVrfInstancesExtraRoutesArgs extends com.pulumi.resource
         }
 
         /**
-         * @param via Next-hop address
+         * @param via IPv4 next-hop address for this VRF extra route
          * 
          * @return builder
          * 

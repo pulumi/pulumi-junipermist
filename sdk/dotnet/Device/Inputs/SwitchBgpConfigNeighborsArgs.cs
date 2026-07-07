@@ -19,7 +19,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? ExportPolicy { get; set; }
 
         /// <summary>
-        /// Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+        /// BGP hold time for this neighbor
         /// </summary>
         [Input("holdTime")]
         public Input<int>? HoldTime { get; set; }
@@ -30,6 +30,9 @@ namespace Pulumi.JuniperMist.Device.Inputs
         [Input("importPolicy")]
         public Input<string>? ImportPolicy { get; set; }
 
+        /// <summary>
+        /// Time-to-live value for multihop BGP sessions to this neighbor
+        /// </summary>
         [Input("multihopTtl")]
         public Input<int>? MultihopTtl { get; set; }
 

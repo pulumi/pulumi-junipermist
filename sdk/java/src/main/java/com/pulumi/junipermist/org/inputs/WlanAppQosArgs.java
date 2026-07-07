@@ -20,23 +20,47 @@ public final class WlanAppQosArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final WlanAppQosArgs Empty = new WlanAppQosArgs();
 
+    /**
+     * Map of application keys to QoS rewrite settings
+     * 
+     */
     @Import(name="apps")
     private @Nullable Output<Map<String,WlanAppQosAppsArgs>> apps;
 
+    /**
+     * @return Map of application keys to QoS rewrite settings
+     * 
+     */
     public Optional<Output<Map<String,WlanAppQosAppsArgs>>> apps() {
         return Optional.ofNullable(this.apps);
     }
 
+    /**
+     * Whether application QoS rewrite rules are enabled for this WLAN
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether application QoS rewrite rules are enabled for this WLAN
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * Custom traffic QoS rules that are not tied to named applications
+     * 
+     */
     @Import(name="others")
     private @Nullable Output<List<WlanAppQosOtherArgs>> others;
 
+    /**
+     * @return Custom traffic QoS rules that are not tied to named applications
+     * 
+     */
     public Optional<Output<List<WlanAppQosOtherArgs>>> others() {
         return Optional.ofNullable(this.others);
     }
@@ -67,33 +91,75 @@ public final class WlanAppQosArgs extends com.pulumi.resources.ResourceArgs {
             $ = new WlanAppQosArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param apps Map of application keys to QoS rewrite settings
+         * 
+         * @return builder
+         * 
+         */
         public Builder apps(@Nullable Output<Map<String,WlanAppQosAppsArgs>> apps) {
             $.apps = apps;
             return this;
         }
 
+        /**
+         * @param apps Map of application keys to QoS rewrite settings
+         * 
+         * @return builder
+         * 
+         */
         public Builder apps(Map<String,WlanAppQosAppsArgs> apps) {
             return apps(Output.of(apps));
         }
 
+        /**
+         * @param enabled Whether application QoS rewrite rules are enabled for this WLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether application QoS rewrite rules are enabled for this WLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param others Custom traffic QoS rules that are not tied to named applications
+         * 
+         * @return builder
+         * 
+         */
         public Builder others(@Nullable Output<List<WlanAppQosOtherArgs>> others) {
             $.others = others;
             return this;
         }
 
+        /**
+         * @param others Custom traffic QoS rules that are not tied to named applications
+         * 
+         * @return builder
+         * 
+         */
         public Builder others(List<WlanAppQosOtherArgs> others) {
             return others(Output.of(others));
         }
 
+        /**
+         * @param others Custom traffic QoS rules that are not tied to named applications
+         * 
+         * @return builder
+         * 
+         */
         public Builder others(WlanAppQosOtherArgs... others) {
             return others(List.of(others));
         }

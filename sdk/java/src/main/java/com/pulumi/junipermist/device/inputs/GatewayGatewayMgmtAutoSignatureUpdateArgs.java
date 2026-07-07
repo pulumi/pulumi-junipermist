@@ -17,23 +17,31 @@ public final class GatewayGatewayMgmtAutoSignatureUpdateArgs extends com.pulumi.
     public static final GatewayGatewayMgmtAutoSignatureUpdateArgs Empty = new GatewayGatewayMgmtAutoSignatureUpdateArgs();
 
     /**
-     * enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+     * Scheduled weekday for automatic signature updates
      * 
      */
     @Import(name="dayOfWeek")
     private @Nullable Output<String> dayOfWeek;
 
     /**
-     * @return enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+     * @return Scheduled weekday for automatic signature updates
      * 
      */
     public Optional<Output<String>> dayOfWeek() {
         return Optional.ofNullable(this.dayOfWeek);
     }
 
+    /**
+     * Whether automatic security signature updates are enabled
+     * 
+     */
     @Import(name="enable")
     private @Nullable Output<Boolean> enable;
 
+    /**
+     * @return Whether automatic security signature updates are enabled
+     * 
+     */
     public Optional<Output<Boolean>> enable() {
         return Optional.ofNullable(this.enable);
     }
@@ -80,7 +88,7 @@ public final class GatewayGatewayMgmtAutoSignatureUpdateArgs extends com.pulumi.
         }
 
         /**
-         * @param dayOfWeek enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+         * @param dayOfWeek Scheduled weekday for automatic signature updates
          * 
          * @return builder
          * 
@@ -91,7 +99,7 @@ public final class GatewayGatewayMgmtAutoSignatureUpdateArgs extends com.pulumi.
         }
 
         /**
-         * @param dayOfWeek enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+         * @param dayOfWeek Scheduled weekday for automatic signature updates
          * 
          * @return builder
          * 
@@ -100,11 +108,23 @@ public final class GatewayGatewayMgmtAutoSignatureUpdateArgs extends com.pulumi.
             return dayOfWeek(Output.of(dayOfWeek));
         }
 
+        /**
+         * @param enable Whether automatic security signature updates are enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enable(@Nullable Output<Boolean> enable) {
             $.enable = enable;
             return this;
         }
 
+        /**
+         * @param enable Whether automatic security signature updates are enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enable(Boolean enable) {
             return enable(Output.of(enable));
         }

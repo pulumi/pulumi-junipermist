@@ -70,18 +70,24 @@ export class Apitoken extends pulumi.CustomResource {
      * email of the token creator / null if creator is deleted
      */
     declare public /*out*/ readonly createdBy: pulumi.Output<string>;
+    /**
+     * Token secret key. The full API Token is only returned when the API token is created and can only be partially retrieved afterward
+     */
     declare public /*out*/ readonly key: pulumi.Output<string>;
     /**
-     * Name of the token
+     * Display name of the organization API token
      */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Organization that owns this API token
+     */
     declare public readonly orgId: pulumi.Output<string>;
     /**
-     * List of privileges the token has on the orgs/sites
+     * Access scopes and roles granted to the organization API token
      */
     declare public readonly privileges: pulumi.Output<outputs.org.ApitokenPrivilege[]>;
     /**
-     * List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+     * Allowed source IP addresses or CIDRs from which the token may be used
      */
     declare public readonly srcIps: pulumi.Output<string[] | undefined>;
 
@@ -134,18 +140,24 @@ export interface ApitokenState {
      * email of the token creator / null if creator is deleted
      */
     createdBy?: pulumi.Input<string | undefined>;
+    /**
+     * Token secret key. The full API Token is only returned when the API token is created and can only be partially retrieved afterward
+     */
     key?: pulumi.Input<string | undefined>;
     /**
-     * Name of the token
+     * Display name of the organization API token
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Organization that owns this API token
+     */
     orgId?: pulumi.Input<string | undefined>;
     /**
-     * List of privileges the token has on the orgs/sites
+     * Access scopes and roles granted to the organization API token
      */
     privileges?: pulumi.Input<pulumi.Input<inputs.org.ApitokenPrivilege>[] | undefined>;
     /**
-     * List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+     * Allowed source IP addresses or CIDRs from which the token may be used
      */
     srcIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
@@ -155,16 +167,19 @@ export interface ApitokenState {
  */
 export interface ApitokenArgs {
     /**
-     * Name of the token
+     * Display name of the organization API token
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Organization that owns this API token
+     */
     orgId: pulumi.Input<string>;
     /**
-     * List of privileges the token has on the orgs/sites
+     * Access scopes and roles granted to the organization API token
      */
     privileges: pulumi.Input<pulumi.Input<inputs.org.ApitokenPrivilege>[]>;
     /**
-     * List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+     * Allowed source IP addresses or CIDRs from which the token may be used
      */
     srcIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

@@ -59,7 +59,13 @@ export class Sitegroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === Sitegroup.__pulumiType;
     }
 
+    /**
+     * Display name of the site group
+     */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Identifier of the org that owns the site group
+     */
     declare public readonly orgId: pulumi.Output<string>;
 
     /**
@@ -94,7 +100,13 @@ export class Sitegroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Sitegroup resources.
  */
 export interface SitegroupState {
+    /**
+     * Display name of the site group
+     */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Identifier of the org that owns the site group
+     */
     orgId?: pulumi.Input<string | undefined>;
 }
 
@@ -102,6 +114,12 @@ export interface SitegroupState {
  * The set of arguments for constructing a Sitegroup resource.
  */
 export interface SitegroupArgs {
+    /**
+     * Display name of the site group
+     */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Identifier of the org that owns the site group
+     */
     orgId: pulumi.Input<string>;
 }

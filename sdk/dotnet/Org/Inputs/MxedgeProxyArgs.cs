@@ -12,9 +12,15 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class MxedgeProxyArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether this proxy configuration is disabled
+        /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
+        /// <summary>
+        /// Proxy URL used to reach Mist
+        /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
 

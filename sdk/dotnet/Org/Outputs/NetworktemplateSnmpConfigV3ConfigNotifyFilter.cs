@@ -13,7 +13,13 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class NetworktemplateSnmpConfigV3ConfigNotifyFilter
     {
+        /// <summary>
+        /// OID filter rules in this notification filter profile
+        /// </summary>
         public readonly ImmutableArray<Outputs.NetworktemplateSnmpConfigV3ConfigNotifyFilterContent> Contents;
+        /// <summary>
+        /// Notification filter profile name
+        /// </summary>
         public readonly string? ProfileName;
 
         [OutputConstructor]

@@ -50,9 +50,17 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.allowDhcpd);
     }
 
+    /**
+     * Whether multiple supplicants may authenticate on the port
+     * 
+     */
     @Import(name="allowMultipleSupplicants")
     private @Nullable Output<Boolean> allowMultipleSupplicants;
 
+    /**
+     * @return Whether multiple supplicants may authenticate on the port
+     * 
+     */
     public Optional<Output<Boolean>> allowMultipleSupplicants() {
         return Optional.ofNullable(this.allowMultipleSupplicants);
     }
@@ -87,9 +95,17 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.bypassAuthWhenServerDownForUnknownClient);
     }
 
+    /**
+     * Human-readable description for this local port configuration
+     * 
+     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
+    /**
+     * @return Human-readable description for this local port configuration
+     * 
+     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
@@ -125,14 +141,14 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * link connection mode. enum: `auto`, `full`, `half`
+     * Link duplex mode for this local port configuration
      * 
      */
     @Import(name="duplex")
     private @Nullable Output<String> duplex;
 
     /**
-     * @return link connection mode. enum: `auto`, `full`, `half`
+     * @return Link duplex mode for this local port configuration
      * 
      */
     public Optional<Output<String>> duplex() {
@@ -140,14 +156,14 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Only if `portAuth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
+     * Only if `portAuth`==`dot1x`, networks or VLANs that RADIUS can return for dynamic VLAN assignment
      * 
      */
     @Import(name="dynamicVlanNetworks")
     private @Nullable Output<List<String>> dynamicVlanNetworks;
 
     /**
-     * @return Only if `portAuth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
+     * @return Only if `portAuth`==`dot1x`, networks or VLANs that RADIUS can return for dynamic VLAN assignment
      * 
      */
     public Optional<Output<List<String>>> dynamicVlanNetworks() {
@@ -169,9 +185,17 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.enableMacAuth);
     }
 
+    /**
+     * Whether QoS is enabled on ports using this local configuration
+     * 
+     */
     @Import(name="enableQos")
     private @Nullable Output<Boolean> enableQos;
 
+    /**
+     * @return Whether QoS is enabled on ports using this local configuration
+     * 
+     */
     public Optional<Output<Boolean>> enableQos() {
         return Optional.ofNullable(this.enableQos);
     }
@@ -192,14 +216,14 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * inter_switch_link is used together with &#34;isolation&#34; under networks. NOTE: interSwitchLink works only between Juniper devices. This has to be applied to both ports connected together
+     * Used together with &#34;isolation&#34; under networks for links between Juniper devices; must be applied to both connected ports
      * 
      */
     @Import(name="interSwitchLink")
     private @Nullable Output<Boolean> interSwitchLink;
 
     /**
-     * @return inter_switch_link is used together with &#34;isolation&#34; under networks. NOTE: interSwitchLink works only between Juniper devices. This has to be applied to both ports connected together
+     * @return Used together with &#34;isolation&#34; under networks for links between Juniper devices; must be applied to both connected ports
      * 
      */
     public Optional<Output<Boolean>> interSwitchLink() {
@@ -207,14 +231,14 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Only if `enableMacAuth`==`true`
+     * Only if `enableMacAuth`==`true`, whether to use MAC authentication without 802.1X
      * 
      */
     @Import(name="macAuthOnly")
     private @Nullable Output<Boolean> macAuthOnly;
 
     /**
-     * @return Only if `enableMacAuth`==`true`
+     * @return Only if `enableMacAuth`==`true`, whether to use MAC authentication without 802.1X
      * 
      */
     public Optional<Output<Boolean>> macAuthOnly() {
@@ -237,14 +261,14 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Only if `enableMacAuth` ==`true`. This type is ignored if mistNac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
+     * Only if `enableMacAuth`==`true`, MAC authentication protocol to use
      * 
      */
     @Import(name="macAuthProtocol")
     private @Nullable Output<String> macAuthProtocol;
 
     /**
-     * @return Only if `enableMacAuth` ==`true`. This type is ignored if mistNac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
+     * @return Only if `enableMacAuth`==`true`, MAC authentication protocol to use
      * 
      */
     public Optional<Output<String>> macAuthProtocol() {
@@ -252,14 +276,14 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
+     * Max number of MAC addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
      * 
      */
     @Import(name="macLimit")
     private @Nullable Output<Integer> macLimit;
 
     /**
-     * @return Max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
+     * @return Max number of MAC addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
      * 
      */
     public Optional<Output<Integer>> macLimit() {
@@ -267,14 +291,14 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * enum: `access`, `inet`, `trunk`
+     * Switching mode for this local port configuration
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return enum: `access`, `inet`, `trunk`
+     * @return Switching mode for this local port configuration
      * 
      */
     public Optional<Output<String>> mode() {
@@ -297,14 +321,14 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Only if `mode`==`trunk`, the list of network/vlans
+     * Only if `mode`==`trunk`, network or VLAN names to trunk
      * 
      */
     @Import(name="networks")
     private @Nullable Output<List<String>> networks;
 
     /**
-     * @return Only if `mode`==`trunk`, the list of network/vlans
+     * @return Only if `mode`==`trunk`, network or VLAN names to trunk
      * 
      */
     public Optional<Output<List<String>>> networks() {
@@ -357,14 +381,14 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * if dot1x is desired, set to dot1x. enum: `dot1x`
+     * 802.1X authentication mode for this local port configuration
      * 
      */
     @Import(name="portAuth")
     private @Nullable Output<String> portAuth;
 
     /**
-     * @return if dot1x is desired, set to dot1x. enum: `dot1x`
+     * @return 802.1X authentication mode for this local port configuration
      * 
      */
     public Optional<Output<String>> portAuth() {
@@ -417,14 +441,14 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Only if `portAuth`==`dot1x` when radius server reject / fails
+     * Only if `portAuth`==`dot1x` when RADIUS server reject / fails
      * 
      */
     @Import(name="serverRejectNetwork")
     private @Nullable Output<String> serverRejectNetwork;
 
     /**
-     * @return Only if `portAuth`==`dot1x` when radius server reject / fails
+     * @return Only if `portAuth`==`dot1x` when RADIUS server reject / fails
      * 
      */
     public Optional<Output<String>> serverRejectNetwork() {
@@ -432,14 +456,14 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+     * Link speed for this local port configuration
      * 
      */
     @Import(name="speed")
     private @Nullable Output<String> speed;
 
     /**
-     * @return enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+     * @return Link speed for this local port configuration
      * 
      */
     public Optional<Output<String>> speed() {
@@ -447,14 +471,14 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Switch storm control
+     * Storm-control settings for this local port configuration
      * 
      */
     @Import(name="stormControl")
     private @Nullable Output<SwitchLocalPortConfigStormControlArgs> stormControl;
 
     /**
-     * @return Switch storm control
+     * @return Storm-control settings for this local port configuration
      * 
      */
     public Optional<Output<SwitchLocalPortConfigStormControlArgs>> stormControl() {
@@ -476,29 +500,45 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.stpEdge);
     }
 
+    /**
+     * Whether STP should prevent this port from becoming a root port
+     * 
+     */
     @Import(name="stpNoRootPort")
     private @Nullable Output<Boolean> stpNoRootPort;
 
+    /**
+     * @return Whether STP should prevent this port from becoming a root port
+     * 
+     */
     public Optional<Output<Boolean>> stpNoRootPort() {
         return Optional.ofNullable(this.stpNoRootPort);
     }
 
+    /**
+     * Whether STP treats this port as a point-to-point link
+     * 
+     */
     @Import(name="stpP2p")
     private @Nullable Output<Boolean> stpP2p;
 
+    /**
+     * @return Whether STP treats this port as a point-to-point link
+     * 
+     */
     public Optional<Output<Boolean>> stpP2p() {
         return Optional.ofNullable(this.stpP2p);
     }
 
     /**
-     * Port usage name.
+     * Port usage profile name for this local port configuration
      * 
      */
     @Import(name="usage", required=true)
     private Output<String> usage;
 
     /**
-     * @return Port usage name.
+     * @return Port usage profile name for this local port configuration
      * 
      */
     public Output<String> usage() {
@@ -637,11 +677,23 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
             return allowDhcpd(Output.of(allowDhcpd));
         }
 
+        /**
+         * @param allowMultipleSupplicants Whether multiple supplicants may authenticate on the port
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowMultipleSupplicants(@Nullable Output<Boolean> allowMultipleSupplicants) {
             $.allowMultipleSupplicants = allowMultipleSupplicants;
             return this;
         }
 
+        /**
+         * @param allowMultipleSupplicants Whether multiple supplicants may authenticate on the port
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowMultipleSupplicants(Boolean allowMultipleSupplicants) {
             return allowMultipleSupplicants(Output.of(allowMultipleSupplicants));
         }
@@ -688,11 +740,23 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
             return bypassAuthWhenServerDownForUnknownClient(Output.of(bypassAuthWhenServerDownForUnknownClient));
         }
 
+        /**
+         * @param description Human-readable description for this local port configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param description Human-readable description for this local port configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
@@ -740,7 +804,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param duplex link connection mode. enum: `auto`, `full`, `half`
+         * @param duplex Link duplex mode for this local port configuration
          * 
          * @return builder
          * 
@@ -751,7 +815,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param duplex link connection mode. enum: `auto`, `full`, `half`
+         * @param duplex Link duplex mode for this local port configuration
          * 
          * @return builder
          * 
@@ -761,7 +825,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param dynamicVlanNetworks Only if `portAuth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
+         * @param dynamicVlanNetworks Only if `portAuth`==`dot1x`, networks or VLANs that RADIUS can return for dynamic VLAN assignment
          * 
          * @return builder
          * 
@@ -772,7 +836,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param dynamicVlanNetworks Only if `portAuth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
+         * @param dynamicVlanNetworks Only if `portAuth`==`dot1x`, networks or VLANs that RADIUS can return for dynamic VLAN assignment
          * 
          * @return builder
          * 
@@ -782,7 +846,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param dynamicVlanNetworks Only if `portAuth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
+         * @param dynamicVlanNetworks Only if `portAuth`==`dot1x`, networks or VLANs that RADIUS can return for dynamic VLAN assignment
          * 
          * @return builder
          * 
@@ -812,11 +876,23 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
             return enableMacAuth(Output.of(enableMacAuth));
         }
 
+        /**
+         * @param enableQos Whether QoS is enabled on ports using this local configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableQos(@Nullable Output<Boolean> enableQos) {
             $.enableQos = enableQos;
             return this;
         }
 
+        /**
+         * @param enableQos Whether QoS is enabled on ports using this local configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableQos(Boolean enableQos) {
             return enableQos(Output.of(enableQos));
         }
@@ -843,7 +919,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param interSwitchLink inter_switch_link is used together with &#34;isolation&#34; under networks. NOTE: interSwitchLink works only between Juniper devices. This has to be applied to both ports connected together
+         * @param interSwitchLink Used together with &#34;isolation&#34; under networks for links between Juniper devices; must be applied to both connected ports
          * 
          * @return builder
          * 
@@ -854,7 +930,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param interSwitchLink inter_switch_link is used together with &#34;isolation&#34; under networks. NOTE: interSwitchLink works only between Juniper devices. This has to be applied to both ports connected together
+         * @param interSwitchLink Used together with &#34;isolation&#34; under networks for links between Juniper devices; must be applied to both connected ports
          * 
          * @return builder
          * 
@@ -864,7 +940,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param macAuthOnly Only if `enableMacAuth`==`true`
+         * @param macAuthOnly Only if `enableMacAuth`==`true`, whether to use MAC authentication without 802.1X
          * 
          * @return builder
          * 
@@ -875,7 +951,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param macAuthOnly Only if `enableMacAuth`==`true`
+         * @param macAuthOnly Only if `enableMacAuth`==`true`, whether to use MAC authentication without 802.1X
          * 
          * @return builder
          * 
@@ -906,7 +982,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param macAuthProtocol Only if `enableMacAuth` ==`true`. This type is ignored if mistNac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
+         * @param macAuthProtocol Only if `enableMacAuth`==`true`, MAC authentication protocol to use
          * 
          * @return builder
          * 
@@ -917,7 +993,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param macAuthProtocol Only if `enableMacAuth` ==`true`. This type is ignored if mistNac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
+         * @param macAuthProtocol Only if `enableMacAuth`==`true`, MAC authentication protocol to use
          * 
          * @return builder
          * 
@@ -927,7 +1003,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param macLimit Max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
+         * @param macLimit Max number of MAC addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
          * 
          * @return builder
          * 
@@ -938,7 +1014,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param macLimit Max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
+         * @param macLimit Max number of MAC addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
          * 
          * @return builder
          * 
@@ -948,7 +1024,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param mode enum: `access`, `inet`, `trunk`
+         * @param mode Switching mode for this local port configuration
          * 
          * @return builder
          * 
@@ -959,7 +1035,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param mode enum: `access`, `inet`, `trunk`
+         * @param mode Switching mode for this local port configuration
          * 
          * @return builder
          * 
@@ -990,7 +1066,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param networks Only if `mode`==`trunk`, the list of network/vlans
+         * @param networks Only if `mode`==`trunk`, network or VLAN names to trunk
          * 
          * @return builder
          * 
@@ -1001,7 +1077,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param networks Only if `mode`==`trunk`, the list of network/vlans
+         * @param networks Only if `mode`==`trunk`, network or VLAN names to trunk
          * 
          * @return builder
          * 
@@ -1011,7 +1087,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param networks Only if `mode`==`trunk`, the list of network/vlans
+         * @param networks Only if `mode`==`trunk`, network or VLAN names to trunk
          * 
          * @return builder
          * 
@@ -1084,7 +1160,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param portAuth if dot1x is desired, set to dot1x. enum: `dot1x`
+         * @param portAuth 802.1X authentication mode for this local port configuration
          * 
          * @return builder
          * 
@@ -1095,7 +1171,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param portAuth if dot1x is desired, set to dot1x. enum: `dot1x`
+         * @param portAuth 802.1X authentication mode for this local port configuration
          * 
          * @return builder
          * 
@@ -1168,7 +1244,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param serverRejectNetwork Only if `portAuth`==`dot1x` when radius server reject / fails
+         * @param serverRejectNetwork Only if `portAuth`==`dot1x` when RADIUS server reject / fails
          * 
          * @return builder
          * 
@@ -1179,7 +1255,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param serverRejectNetwork Only if `portAuth`==`dot1x` when radius server reject / fails
+         * @param serverRejectNetwork Only if `portAuth`==`dot1x` when RADIUS server reject / fails
          * 
          * @return builder
          * 
@@ -1189,7 +1265,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+         * @param speed Link speed for this local port configuration
          * 
          * @return builder
          * 
@@ -1200,7 +1276,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+         * @param speed Link speed for this local port configuration
          * 
          * @return builder
          * 
@@ -1210,7 +1286,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param stormControl Switch storm control
+         * @param stormControl Storm-control settings for this local port configuration
          * 
          * @return builder
          * 
@@ -1221,7 +1297,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param stormControl Switch storm control
+         * @param stormControl Storm-control settings for this local port configuration
          * 
          * @return builder
          * 
@@ -1251,26 +1327,50 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
             return stpEdge(Output.of(stpEdge));
         }
 
+        /**
+         * @param stpNoRootPort Whether STP should prevent this port from becoming a root port
+         * 
+         * @return builder
+         * 
+         */
         public Builder stpNoRootPort(@Nullable Output<Boolean> stpNoRootPort) {
             $.stpNoRootPort = stpNoRootPort;
             return this;
         }
 
+        /**
+         * @param stpNoRootPort Whether STP should prevent this port from becoming a root port
+         * 
+         * @return builder
+         * 
+         */
         public Builder stpNoRootPort(Boolean stpNoRootPort) {
             return stpNoRootPort(Output.of(stpNoRootPort));
         }
 
+        /**
+         * @param stpP2p Whether STP treats this port as a point-to-point link
+         * 
+         * @return builder
+         * 
+         */
         public Builder stpP2p(@Nullable Output<Boolean> stpP2p) {
             $.stpP2p = stpP2p;
             return this;
         }
 
+        /**
+         * @param stpP2p Whether STP treats this port as a point-to-point link
+         * 
+         * @return builder
+         * 
+         */
         public Builder stpP2p(Boolean stpP2p) {
             return stpP2p(Output.of(stpP2p));
         }
 
         /**
-         * @param usage Port usage name.
+         * @param usage Port usage profile name for this local port configuration
          * 
          * @return builder
          * 
@@ -1281,7 +1381,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param usage Port usage name.
+         * @param usage Port usage profile name for this local port configuration
          * 
          * @return builder
          * 

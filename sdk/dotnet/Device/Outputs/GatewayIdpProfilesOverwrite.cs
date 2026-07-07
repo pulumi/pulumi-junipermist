@@ -14,13 +14,16 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class GatewayIdpProfilesOverwrite
     {
         /// <summary>
-        /// enum:
-        ///   * alert (default)
-        ///   * drop: silently dropping packets
-        ///   * close: notify client/server to close connection
+        /// Enforcement action applied when this overwrite rule matches
         /// </summary>
         public readonly string? Action;
+        /// <summary>
+        /// Criteria that select signatures for this overwrite rule
+        /// </summary>
         public readonly Outputs.GatewayIdpProfilesOverwriteMatching? Matching;
+        /// <summary>
+        /// Display name for this IDP profile overwrite rule
+        /// </summary>
         public readonly string? Name;
 
         [OutputConstructor]

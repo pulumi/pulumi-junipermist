@@ -19,14 +19,14 @@ public final class WxtagArgs extends com.pulumi.resources.ResourceArgs {
     public static final WxtagArgs Empty = new WxtagArgs();
 
     /**
-     * If `type`==`client`, Client MAC Address
+     * If `type`==`client`, Client MAC address
      * 
      */
     @Import(name="mac")
     private @Nullable Output<String> mac;
 
     /**
-     * @return If `type`==`client`, Client MAC Address
+     * @return If `type`==`client`, Client MAC address
      * 
      */
     public Optional<Output<String>> mac() {
@@ -34,14 +34,14 @@ public final class WxtagArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * required if `type`==`match`. enum: `apId`, `app`, `assetMac`, `clientMac`, `hostname`, `ipRangeSubnet`, `port`, `pskName`, `pskRole`, `radiusAttr`, `radiusClass`, `radiusGroup`, `radiusUsername`, `sdkclientUuid`, `wlanId`
+     * Required if `type`==`match`; attribute compared against `values`
      * 
      */
     @Import(name="match")
     private @Nullable Output<String> match;
 
     /**
-     * @return required if `type`==`match`. enum: `apId`, `app`, `assetMac`, `clientMac`, `hostname`, `ipRangeSubnet`, `port`, `pskName`, `pskRole`, `radiusAttr`, `radiusClass`, `radiusGroup`, `radiusUsername`, `sdkclientUuid`, `wlanId`
+     * @return Required if `type`==`match`; attribute compared against `values`
      * 
      */
     public Optional<Output<String>> match() {
@@ -49,14 +49,14 @@ public final class WxtagArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name
+     * Display name of the WxLAN tag
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name
+     * @return Display name of the WxLAN tag
      * 
      */
     public Optional<Output<String>> name() {
@@ -64,36 +64,44 @@ public final class WxtagArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * required if `type`==`match`, type of tag (inclusive/exclusive). enum: `in`, `notIn`
+     * Required if `type`==`match`; whether `values` are inclusive or exclusive matches
      * 
      */
     @Import(name="op")
     private @Nullable Output<String> op;
 
     /**
-     * @return required if `type`==`match`, type of tag (inclusive/exclusive). enum: `in`, `notIn`
+     * @return Required if `type`==`match`; whether `values` are inclusive or exclusive matches
      * 
      */
     public Optional<Output<String>> op() {
         return Optional.ofNullable(this.op);
     }
 
+    /**
+     * Owning organization associated with this WxLAN tag
+     * 
+     */
     @Import(name="orgId", required=true)
     private Output<String> orgId;
 
+    /**
+     * @return Owning organization associated with this WxLAN tag
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }
 
     /**
-     * If `type`==`spec`
+     * Traffic match specifications used when `type`==`spec`
      * 
      */
     @Import(name="specs")
     private @Nullable Output<List<WxtagSpecArgs>> specs;
 
     /**
-     * @return If `type`==`spec`
+     * @return Traffic match specifications used when `type`==`spec`
      * 
      */
     public Optional<Output<List<WxtagSpecArgs>>> specs() {
@@ -101,14 +109,14 @@ public final class WxtagArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`
+     * Kind of WxLAN tag and how it is populated
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`
+     * @return Kind of WxLAN tag and how it is populated
      * 
      */
     public Output<String> type() {
@@ -116,59 +124,31 @@ public final class WxtagArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `type`==`match` and
-     *   * `match`==`apId`: list of AP IDs
-     *   * `match`==`app`: list of Application Names
-     *   * `match`==`assetMac`: list of Asset MAC Addresses
-     *   * `match`==`clientMac`: list of Client MAC Addresses
-     *   * `match`==`hostname`: list of Resources Hostnames
-     *   * `match`==`ipRangeSubnet`: list of IP Addresses and/or CIDRs
-     *   * `match`==`pskName`: list of PSK Names
-     *   * `match`==`pskRole`: list of PSK Roles
-     *   * `match`==`port`: list of Ports or Port Ranges
-     *   * `match`==`radiusAttr`: list of RADIUS Attributes. The values are [ &#34;6=1&#34;, &#34;26=10.2.3.4&#34; ], this support other RADIUS attributes where we know the type
-     *   * `match`==`radiusClass`: list of RADIUS Classes. This matches the ATTR-Class(25)
-     *   * `match`==`radiusGroup`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID, Airespace-ACL-Name (VendorID=14179, VendorType=6) / Aruba-User-Role (VendorID=14823, VendorType=1)
-     *   * `match`==`radiusUsername`: list of RADIUS Usernames. This matches the ATTR-User-Name(1)
-     *   * `match`==`sdkclientUuid`: list of SDK UUIDs
-     *   * `match`==`wlanId`: list of WLAN IDs
-     * 
-     * **Notes**:
-     * Variables are not allowed
+     * Comparison values for the selected `match` attribute when `type`==`match`
      * 
      */
     @Import(name="values")
     private @Nullable Output<List<String>> values;
 
     /**
-     * @return Required if `type`==`match` and
-     *   * `match`==`apId`: list of AP IDs
-     *   * `match`==`app`: list of Application Names
-     *   * `match`==`assetMac`: list of Asset MAC Addresses
-     *   * `match`==`clientMac`: list of Client MAC Addresses
-     *   * `match`==`hostname`: list of Resources Hostnames
-     *   * `match`==`ipRangeSubnet`: list of IP Addresses and/or CIDRs
-     *   * `match`==`pskName`: list of PSK Names
-     *   * `match`==`pskRole`: list of PSK Roles
-     *   * `match`==`port`: list of Ports or Port Ranges
-     *   * `match`==`radiusAttr`: list of RADIUS Attributes. The values are [ &#34;6=1&#34;, &#34;26=10.2.3.4&#34; ], this support other RADIUS attributes where we know the type
-     *   * `match`==`radiusClass`: list of RADIUS Classes. This matches the ATTR-Class(25)
-     *   * `match`==`radiusGroup`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID, Airespace-ACL-Name (VendorID=14179, VendorType=6) / Aruba-User-Role (VendorID=14823, VendorType=1)
-     *   * `match`==`radiusUsername`: list of RADIUS Usernames. This matches the ATTR-User-Name(1)
-     *   * `match`==`sdkclientUuid`: list of SDK UUIDs
-     *   * `match`==`wlanId`: list of WLAN IDs
-     * 
-     * **Notes**:
-     * Variables are not allowed
+     * @return Comparison values for the selected `match` attribute when `type`==`match`
      * 
      */
     public Optional<Output<List<String>>> values() {
         return Optional.ofNullable(this.values);
     }
 
+    /**
+     * Identifier of the VLAN associated with this WxLAN tag when `type`==`vlan`
+     * 
+     */
     @Import(name="vlanId")
     private @Nullable Output<String> vlanId;
 
+    /**
+     * @return Identifier of the VLAN associated with this WxLAN tag when `type`==`vlan`
+     * 
+     */
     public Optional<Output<String>> vlanId() {
         return Optional.ofNullable(this.vlanId);
     }
@@ -206,7 +186,7 @@ public final class WxtagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mac If `type`==`client`, Client MAC Address
+         * @param mac If `type`==`client`, Client MAC address
          * 
          * @return builder
          * 
@@ -217,7 +197,7 @@ public final class WxtagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mac If `type`==`client`, Client MAC Address
+         * @param mac If `type`==`client`, Client MAC address
          * 
          * @return builder
          * 
@@ -227,7 +207,7 @@ public final class WxtagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param match required if `type`==`match`. enum: `apId`, `app`, `assetMac`, `clientMac`, `hostname`, `ipRangeSubnet`, `port`, `pskName`, `pskRole`, `radiusAttr`, `radiusClass`, `radiusGroup`, `radiusUsername`, `sdkclientUuid`, `wlanId`
+         * @param match Required if `type`==`match`; attribute compared against `values`
          * 
          * @return builder
          * 
@@ -238,7 +218,7 @@ public final class WxtagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param match required if `type`==`match`. enum: `apId`, `app`, `assetMac`, `clientMac`, `hostname`, `ipRangeSubnet`, `port`, `pskName`, `pskRole`, `radiusAttr`, `radiusClass`, `radiusGroup`, `radiusUsername`, `sdkclientUuid`, `wlanId`
+         * @param match Required if `type`==`match`; attribute compared against `values`
          * 
          * @return builder
          * 
@@ -248,7 +228,7 @@ public final class WxtagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name
+         * @param name Display name of the WxLAN tag
          * 
          * @return builder
          * 
@@ -259,7 +239,7 @@ public final class WxtagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name
+         * @param name Display name of the WxLAN tag
          * 
          * @return builder
          * 
@@ -269,7 +249,7 @@ public final class WxtagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param op required if `type`==`match`, type of tag (inclusive/exclusive). enum: `in`, `notIn`
+         * @param op Required if `type`==`match`; whether `values` are inclusive or exclusive matches
          * 
          * @return builder
          * 
@@ -280,7 +260,7 @@ public final class WxtagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param op required if `type`==`match`, type of tag (inclusive/exclusive). enum: `in`, `notIn`
+         * @param op Required if `type`==`match`; whether `values` are inclusive or exclusive matches
          * 
          * @return builder
          * 
@@ -289,17 +269,29 @@ public final class WxtagArgs extends com.pulumi.resources.ResourceArgs {
             return op(Output.of(op));
         }
 
+        /**
+         * @param orgId Owning organization associated with this WxLAN tag
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param orgId Owning organization associated with this WxLAN tag
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }
 
         /**
-         * @param specs If `type`==`spec`
+         * @param specs Traffic match specifications used when `type`==`spec`
          * 
          * @return builder
          * 
@@ -310,7 +302,7 @@ public final class WxtagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param specs If `type`==`spec`
+         * @param specs Traffic match specifications used when `type`==`spec`
          * 
          * @return builder
          * 
@@ -320,7 +312,7 @@ public final class WxtagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param specs If `type`==`spec`
+         * @param specs Traffic match specifications used when `type`==`spec`
          * 
          * @return builder
          * 
@@ -330,7 +322,7 @@ public final class WxtagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`
+         * @param type Kind of WxLAN tag and how it is populated
          * 
          * @return builder
          * 
@@ -341,7 +333,7 @@ public final class WxtagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`
+         * @param type Kind of WxLAN tag and how it is populated
          * 
          * @return builder
          * 
@@ -351,25 +343,7 @@ public final class WxtagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param values Required if `type`==`match` and
-         *   * `match`==`apId`: list of AP IDs
-         *   * `match`==`app`: list of Application Names
-         *   * `match`==`assetMac`: list of Asset MAC Addresses
-         *   * `match`==`clientMac`: list of Client MAC Addresses
-         *   * `match`==`hostname`: list of Resources Hostnames
-         *   * `match`==`ipRangeSubnet`: list of IP Addresses and/or CIDRs
-         *   * `match`==`pskName`: list of PSK Names
-         *   * `match`==`pskRole`: list of PSK Roles
-         *   * `match`==`port`: list of Ports or Port Ranges
-         *   * `match`==`radiusAttr`: list of RADIUS Attributes. The values are [ &#34;6=1&#34;, &#34;26=10.2.3.4&#34; ], this support other RADIUS attributes where we know the type
-         *   * `match`==`radiusClass`: list of RADIUS Classes. This matches the ATTR-Class(25)
-         *   * `match`==`radiusGroup`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID, Airespace-ACL-Name (VendorID=14179, VendorType=6) / Aruba-User-Role (VendorID=14823, VendorType=1)
-         *   * `match`==`radiusUsername`: list of RADIUS Usernames. This matches the ATTR-User-Name(1)
-         *   * `match`==`sdkclientUuid`: list of SDK UUIDs
-         *   * `match`==`wlanId`: list of WLAN IDs
-         * 
-         * **Notes**:
-         * Variables are not allowed
+         * @param values Comparison values for the selected `match` attribute when `type`==`match`
          * 
          * @return builder
          * 
@@ -380,25 +354,7 @@ public final class WxtagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param values Required if `type`==`match` and
-         *   * `match`==`apId`: list of AP IDs
-         *   * `match`==`app`: list of Application Names
-         *   * `match`==`assetMac`: list of Asset MAC Addresses
-         *   * `match`==`clientMac`: list of Client MAC Addresses
-         *   * `match`==`hostname`: list of Resources Hostnames
-         *   * `match`==`ipRangeSubnet`: list of IP Addresses and/or CIDRs
-         *   * `match`==`pskName`: list of PSK Names
-         *   * `match`==`pskRole`: list of PSK Roles
-         *   * `match`==`port`: list of Ports or Port Ranges
-         *   * `match`==`radiusAttr`: list of RADIUS Attributes. The values are [ &#34;6=1&#34;, &#34;26=10.2.3.4&#34; ], this support other RADIUS attributes where we know the type
-         *   * `match`==`radiusClass`: list of RADIUS Classes. This matches the ATTR-Class(25)
-         *   * `match`==`radiusGroup`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID, Airespace-ACL-Name (VendorID=14179, VendorType=6) / Aruba-User-Role (VendorID=14823, VendorType=1)
-         *   * `match`==`radiusUsername`: list of RADIUS Usernames. This matches the ATTR-User-Name(1)
-         *   * `match`==`sdkclientUuid`: list of SDK UUIDs
-         *   * `match`==`wlanId`: list of WLAN IDs
-         * 
-         * **Notes**:
-         * Variables are not allowed
+         * @param values Comparison values for the selected `match` attribute when `type`==`match`
          * 
          * @return builder
          * 
@@ -408,25 +364,7 @@ public final class WxtagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param values Required if `type`==`match` and
-         *   * `match`==`apId`: list of AP IDs
-         *   * `match`==`app`: list of Application Names
-         *   * `match`==`assetMac`: list of Asset MAC Addresses
-         *   * `match`==`clientMac`: list of Client MAC Addresses
-         *   * `match`==`hostname`: list of Resources Hostnames
-         *   * `match`==`ipRangeSubnet`: list of IP Addresses and/or CIDRs
-         *   * `match`==`pskName`: list of PSK Names
-         *   * `match`==`pskRole`: list of PSK Roles
-         *   * `match`==`port`: list of Ports or Port Ranges
-         *   * `match`==`radiusAttr`: list of RADIUS Attributes. The values are [ &#34;6=1&#34;, &#34;26=10.2.3.4&#34; ], this support other RADIUS attributes where we know the type
-         *   * `match`==`radiusClass`: list of RADIUS Classes. This matches the ATTR-Class(25)
-         *   * `match`==`radiusGroup`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID, Airespace-ACL-Name (VendorID=14179, VendorType=6) / Aruba-User-Role (VendorID=14823, VendorType=1)
-         *   * `match`==`radiusUsername`: list of RADIUS Usernames. This matches the ATTR-User-Name(1)
-         *   * `match`==`sdkclientUuid`: list of SDK UUIDs
-         *   * `match`==`wlanId`: list of WLAN IDs
-         * 
-         * **Notes**:
-         * Variables are not allowed
+         * @param values Comparison values for the selected `match` attribute when `type`==`match`
          * 
          * @return builder
          * 
@@ -435,11 +373,23 @@ public final class WxtagArgs extends com.pulumi.resources.ResourceArgs {
             return values(List.of(values));
         }
 
+        /**
+         * @param vlanId Identifier of the VLAN associated with this WxLAN tag when `type`==`vlan`
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlanId(@Nullable Output<String> vlanId) {
             $.vlanId = vlanId;
             return this;
         }
 
+        /**
+         * @param vlanId Identifier of the VLAN associated with this WxLAN tag when `type`==`vlan`
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlanId(String vlanId) {
             return vlanId(Output.of(vlanId));
         }

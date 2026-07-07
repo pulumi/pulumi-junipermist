@@ -11,6 +11,7 @@ import com.pulumi.junipermist.Utilities;
 import com.pulumi.junipermist.org.SettingArgs;
 import com.pulumi.junipermist.org.inputs.SettingState;
 import com.pulumi.junipermist.org.outputs.SettingApiPolicy;
+import com.pulumi.junipermist.org.outputs.SettingAutoUpgrade;
 import com.pulumi.junipermist.org.outputs.SettingCelona;
 import com.pulumi.junipermist.org.outputs.SettingCloudshark;
 import com.pulumi.junipermist.org.outputs.SettingCradlepoint;
@@ -173,53 +174,99 @@ public class Setting extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> apUpdownThreshold() {
         return Codegen.optional(this.apUpdownThreshold);
     }
+    /**
+     * Policy for hiding API secrets and passwords in responses
+     * 
+     */
     @Export(name="apiPolicy", refs={SettingApiPolicy.class}, tree="[0]")
     private Output</* @Nullable */ SettingApiPolicy> apiPolicy;
 
+    /**
+     * @return Policy for hiding API secrets and passwords in responses
+     * 
+     */
     public Output<Optional<SettingApiPolicy>> apiPolicy() {
         return Codegen.optional(this.apiPolicy);
     }
     /**
-     * RADSec certificates for AP
+     * AP automatic firmware upgrade policy for the organization
+     * 
+     */
+    @Export(name="autoUpgrade", refs={SettingAutoUpgrade.class}, tree="[0]")
+    private Output</* @Nullable */ SettingAutoUpgrade> autoUpgrade;
+
+    /**
+     * @return AP automatic firmware upgrade policy for the organization
+     * 
+     */
+    public Output<Optional<SettingAutoUpgrade>> autoUpgrade() {
+        return Codegen.optional(this.autoUpgrade);
+    }
+    /**
+     * CA certificates used by organization-level RADIUS and RADSec settings
      * 
      */
     @Export(name="cacerts", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> cacerts;
 
     /**
-     * @return RADSec certificates for AP
+     * @return CA certificates used by organization-level RADIUS and RADSec settings
      * 
      */
     public Output<List<String>> cacerts() {
         return this.cacerts;
     }
+    /**
+     * Integration settings for Celona
+     * 
+     */
     @Export(name="celona", refs={SettingCelona.class}, tree="[0]")
     private Output</* @Nullable */ SettingCelona> celona;
 
+    /**
+     * @return Integration settings for Celona
+     * 
+     */
     public Output<Optional<SettingCelona>> celona() {
         return Codegen.optional(this.celona);
     }
+    /**
+     * Packet capture integration settings for CloudShark
+     * 
+     */
     @Export(name="cloudshark", refs={SettingCloudshark.class}, tree="[0]")
     private Output</* @Nullable */ SettingCloudshark> cloudshark;
 
+    /**
+     * @return Packet capture integration settings for CloudShark
+     * 
+     */
     public Output<Optional<SettingCloudshark>> cloudshark() {
         return Codegen.optional(this.cloudshark);
     }
+    /**
+     * Integration settings for Cradlepoint devices
+     * 
+     */
     @Export(name="cradlepoint", refs={SettingCradlepoint.class}, tree="[0]")
     private Output<SettingCradlepoint> cradlepoint;
 
+    /**
+     * @return Integration settings for Cradlepoint devices
+     * 
+     */
     public Output<SettingCradlepoint> cradlepoint() {
         return this.cradlepoint;
     }
     /**
-     * common device cert, optional
+     * Common device certificate used by organization settings
      * 
      */
     @Export(name="deviceCert", refs={SettingDeviceCert.class}, tree="[0]")
     private Output</* @Nullable */ SettingDeviceCert> deviceCert;
 
     /**
-     * @return common device cert, optional
+     * @return Common device certificate used by organization settings
      * 
      */
     public Output<Optional<SettingDeviceCert>> deviceCert() {
@@ -299,155 +346,255 @@ public class Setting extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> gatewayUpdownThreshold() {
         return Codegen.optional(this.gatewayUpdownThreshold);
     }
+    /**
+     * Access settings for organization installer workflows
+     * 
+     */
     @Export(name="installer", refs={SettingInstaller.class}, tree="[0]")
     private Output</* @Nullable */ SettingInstaller> installer;
 
+    /**
+     * @return Access settings for organization installer workflows
+     * 
+     */
     public Output<Optional<SettingInstaller>> installer() {
         return Codegen.optional(this.installer);
     }
+    /**
+     * Integration settings for JCloud
+     * 
+     */
     @Export(name="jcloud", refs={SettingJcloud.class}, tree="[0]")
     private Output</* @Nullable */ SettingJcloud> jcloud;
 
+    /**
+     * @return Integration settings for JCloud
+     * 
+     */
     public Output<Optional<SettingJcloud>> jcloud() {
         return Codegen.optional(this.jcloud);
     }
     /**
-     * JCloud Routing Assurance connexion
+     * Routing Assurance integration settings for JCloud
      * 
      */
     @Export(name="jcloudRa", refs={SettingJcloudRa.class}, tree="[0]")
     private Output</* @Nullable */ SettingJcloudRa> jcloudRa;
 
     /**
-     * @return JCloud Routing Assurance connexion
+     * @return Routing Assurance integration settings for JCloud
      * 
      */
     public Output<Optional<SettingJcloudRa>> jcloudRa() {
         return Codegen.optional(this.jcloudRa);
     }
+    /**
+     * Linked Juniper account information for this organization
+     * 
+     */
     @Export(name="juniper", refs={SettingJuniper.class}, tree="[0]")
     private Output<SettingJuniper> juniper;
 
+    /**
+     * @return Linked Juniper account information for this organization
+     * 
+     */
     public Output<SettingJuniper> juniper() {
         return this.juniper;
     }
+    /**
+     * SRX integration settings for Juniper devices
+     * 
+     */
     @Export(name="juniperSrx", refs={SettingJuniperSrx.class}, tree="[0]")
     private Output</* @Nullable */ SettingJuniperSrx> juniperSrx;
 
+    /**
+     * @return SRX integration settings for Juniper devices
+     * 
+     */
     public Output<Optional<SettingJuniperSrx>> juniperSrx() {
         return Codegen.optional(this.juniperSrx);
     }
     /**
-     * junos_shell_access: Manages role-based web-shell access.\
-     * When junosShell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.\
-     * When junosShellAccess is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to &#34;none&#34;, disables web-shell access for that specific role.
+     * Role-based Junos web-shell access settings
      * 
      */
     @Export(name="junosShellAccess", refs={SettingJunosShellAccess.class}, tree="[0]")
     private Output</* @Nullable */ SettingJunosShellAccess> junosShellAccess;
 
     /**
-     * @return junos_shell_access: Manages role-based web-shell access.\
-     * When junosShell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.\
-     * When junosShellAccess is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to &#34;none&#34;, disables web-shell access for that specific role.
+     * @return Role-based Junos web-shell access settings
      * 
      */
     public Output<Optional<SettingJunosShellAccess>> junosShellAccess() {
         return Codegen.optional(this.junosShellAccess);
     }
+    /**
+     * AI assistant and self-driving feature settings for Marvis
+     * 
+     */
     @Export(name="marvis", refs={SettingMarvis.class}, tree="[0]")
     private Output</* @Nullable */ SettingMarvis> marvis;
 
+    /**
+     * @return AI assistant and self-driving feature settings for Marvis
+     * 
+     */
     public Output<Optional<SettingMarvis>> marvis() {
         return Codegen.optional(this.marvis);
     }
     /**
-     * management-related properties
+     * Tunnel settings for organization management connectivity
      * 
      */
     @Export(name="mgmt", refs={SettingMgmt.class}, tree="[0]")
     private Output</* @Nullable */ SettingMgmt> mgmt;
 
     /**
-     * @return management-related properties
+     * @return Tunnel settings for organization management connectivity
      * 
      */
     public Output<Optional<SettingMgmt>> mgmt() {
         return Codegen.optional(this.mgmt);
     }
+    /**
+     * NAC settings for Mist Access Assurance
+     * 
+     */
     @Export(name="mistNac", refs={SettingMistNac.class}, tree="[0]")
     private Output</* @Nullable */ SettingMistNac> mistNac;
 
+    /**
+     * @return NAC settings for Mist Access Assurance
+     * 
+     */
     public Output<Optional<SettingMistNac>> mistNac() {
         return Codegen.optional(this.mistNac);
     }
+    /**
+     * Management settings for Mist Edge devices
+     * 
+     */
     @Export(name="mxedgeMgmt", refs={SettingMxedgeMgmt.class}, tree="[0]")
     private Output</* @Nullable */ SettingMxedgeMgmt> mxedgeMgmt;
 
+    /**
+     * @return Management settings for Mist Edge devices
+     * 
+     */
     public Output<Optional<SettingMxedgeMgmt>> mxedgeMgmt() {
         return Codegen.optional(this.mxedgeMgmt);
     }
     /**
-     * Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
+     * Configuration defaults for optic ports
      * 
      */
     @Export(name="opticPortConfig", refs={Map.class,String.class,SettingOpticPortConfig.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,SettingOpticPortConfig>> opticPortConfig;
 
     /**
-     * @return Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
+     * @return Configuration defaults for optic ports
      * 
      */
     public Output<Optional<Map<String,SettingOpticPortConfig>>> opticPortConfig() {
         return Codegen.optional(this.opticPortConfig);
     }
+    /**
+     * Organization that owns these settings
+     * 
+     */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
+    /**
+     * @return Organization that owns these settings
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }
     /**
-     * password policy
+     * Admin credential policy settings for the organization
      * 
      */
     @Export(name="passwordPolicy", refs={SettingPasswordPolicy.class}, tree="[0]")
     private Output</* @Nullable */ SettingPasswordPolicy> passwordPolicy;
 
     /**
-     * @return password policy
+     * @return Admin credential policy settings for the organization
      * 
      */
     public Output<Optional<SettingPasswordPolicy>> passwordPolicy() {
         return Codegen.optional(this.passwordPolicy);
     }
+    /**
+     * Packet capture settings for the organization
+     * 
+     */
     @Export(name="pcap", refs={SettingPcap.class}, tree="[0]")
     private Output<SettingPcap> pcap;
 
+    /**
+     * @return Packet capture settings for the organization
+     * 
+     */
     public Output<SettingPcap> pcap() {
         return this.pcap;
     }
+    /**
+     * Organization security controls such as local SSH restrictions
+     * 
+     */
     @Export(name="security", refs={SettingSecurity.class}, tree="[0]")
     private Output</* @Nullable */ SettingSecurity> security;
 
+    /**
+     * @return Organization security controls such as local SSH restrictions
+     * 
+     */
     public Output<Optional<SettingSecurity>> security() {
         return Codegen.optional(this.security);
     }
+    /**
+     * Session Smart Router settings for the organization
+     * 
+     */
     @Export(name="ssr", refs={SettingSsr.class}, tree="[0]")
     private Output</* @Nullable */ SettingSsr> ssr;
 
+    /**
+     * @return Session Smart Router settings for the organization
+     * 
+     */
     public Output<Optional<SettingSsr>> ssr() {
         return Codegen.optional(this.ssr);
     }
+    /**
+     * Configuration defaults for switches in this organization
+     * 
+     */
     @Export(name="switch", refs={SettingSwitch.class}, tree="[0]")
     private Output</* @Nullable */ SettingSwitch> switch_;
 
+    /**
+     * @return Configuration defaults for switches in this organization
+     * 
+     */
     public Output<Optional<SettingSwitch>> switch_() {
         return Codegen.optional(this.switch_);
     }
+    /**
+     * Management settings for switches in this organization
+     * 
+     */
     @Export(name="switchMgmt", refs={SettingSwitchMgmt.class}, tree="[0]")
     private Output</* @Nullable */ SettingSwitchMgmt> switchMgmt;
 
+    /**
+     * @return Management settings for switches in this organization
+     * 
+     */
     public Output<Optional<SettingSwitchMgmt>> switchMgmt() {
         return Codegen.optional(this.switchMgmt);
     }
@@ -465,9 +612,17 @@ public class Setting extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> switchUpdownThreshold() {
         return Codegen.optional(this.switchUpdownThreshold);
     }
+    /**
+     * Configuration for organization synthetic tests
+     * 
+     */
     @Export(name="syntheticTest", refs={SettingSyntheticTest.class}, tree="[0]")
     private Output</* @Nullable */ SettingSyntheticTest> syntheticTest;
 
+    /**
+     * @return Configuration for organization synthetic tests
+     * 
+     */
     public Output<Optional<SettingSyntheticTest>> syntheticTest() {
         return Codegen.optional(this.syntheticTest);
     }
@@ -485,33 +640,73 @@ public class Setting extends com.pulumi.resources.CustomResource {
     public Output<Integer> uiIdleTimeout() {
         return this.uiIdleTimeout;
     }
+    /**
+     * Whether UI usage tracking is disabled for the organization
+     * 
+     */
     @Export(name="uiNoTracking", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> uiNoTracking;
 
+    /**
+     * @return Whether UI usage tracking is disabled for the organization
+     * 
+     */
     public Output<Optional<Boolean>> uiNoTracking() {
         return Codegen.optional(this.uiNoTracking);
     }
+    /**
+     * Options for organization VPN behavior
+     * 
+     */
     @Export(name="vpnOptions", refs={SettingVpnOptions.class}, tree="[0]")
     private Output</* @Nullable */ SettingVpnOptions> vpnOptions;
 
+    /**
+     * @return Options for organization VPN behavior
+     * 
+     */
     public Output<Optional<SettingVpnOptions>> vpnOptions() {
         return Codegen.optional(this.vpnOptions);
     }
+    /**
+     * PMA feature settings for WAN Assurance
+     * 
+     */
     @Export(name="wanPma", refs={SettingWanPma.class}, tree="[0]")
     private Output</* @Nullable */ SettingWanPma> wanPma;
 
+    /**
+     * @return PMA feature settings for WAN Assurance
+     * 
+     */
     public Output<Optional<SettingWanPma>> wanPma() {
         return Codegen.optional(this.wanPma);
     }
+    /**
+     * PMA feature settings for Wired Assurance
+     * 
+     */
     @Export(name="wiredPma", refs={SettingWiredPma.class}, tree="[0]")
     private Output</* @Nullable */ SettingWiredPma> wiredPma;
 
+    /**
+     * @return PMA feature settings for Wired Assurance
+     * 
+     */
     public Output<Optional<SettingWiredPma>> wiredPma() {
         return Codegen.optional(this.wiredPma);
     }
+    /**
+     * PMA feature settings for Wireless Assurance
+     * 
+     */
     @Export(name="wirelessPma", refs={SettingWirelessPma.class}, tree="[0]")
     private Output</* @Nullable */ SettingWirelessPma> wirelessPma;
 
+    /**
+     * @return PMA feature settings for Wireless Assurance
+     * 
+     */
     public Output<Optional<SettingWirelessPma>> wirelessPma() {
         return Codegen.optional(this.wirelessPma);
     }

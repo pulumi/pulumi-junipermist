@@ -18,14 +18,14 @@ public final class MxedgeTuntermPortConfigArgs extends com.pulumi.resources.Reso
     public static final MxedgeTuntermPortConfigArgs Empty = new MxedgeTuntermPortConfigArgs();
 
     /**
-     * List of ports to be used for downstream (to AP) purpose
+     * Ports connected downstream toward APs for tunnel termination
      * 
      */
     @Import(name="downstreamPorts")
     private @Nullable Output<List<String>> downstreamPorts;
 
     /**
-     * @return List of ports to be used for downstream (to AP) purpose
+     * @return Ports connected downstream toward APs for tunnel termination
      * 
      */
     public Optional<Output<List<String>>> downstreamPorts() {
@@ -47,22 +47,30 @@ public final class MxedgeTuntermPortConfigArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.separateUpstreamDownstream);
     }
 
+    /**
+     * Native VLAN ID applied to upstream tunnel termination ports
+     * 
+     */
     @Import(name="upstreamPortVlanId")
     private @Nullable Output<String> upstreamPortVlanId;
 
+    /**
+     * @return Native VLAN ID applied to upstream tunnel termination ports
+     * 
+     */
     public Optional<Output<String>> upstreamPortVlanId() {
         return Optional.ofNullable(this.upstreamPortVlanId);
     }
 
     /**
-     * List of ports to be used for upstream purpose (to LAN)
+     * Ports connected upstream toward the LAN for tunnel termination
      * 
      */
     @Import(name="upstreamPorts")
     private @Nullable Output<List<String>> upstreamPorts;
 
     /**
-     * @return List of ports to be used for upstream purpose (to LAN)
+     * @return Ports connected upstream toward the LAN for tunnel termination
      * 
      */
     public Optional<Output<List<String>>> upstreamPorts() {
@@ -97,7 +105,7 @@ public final class MxedgeTuntermPortConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param downstreamPorts List of ports to be used for downstream (to AP) purpose
+         * @param downstreamPorts Ports connected downstream toward APs for tunnel termination
          * 
          * @return builder
          * 
@@ -108,7 +116,7 @@ public final class MxedgeTuntermPortConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param downstreamPorts List of ports to be used for downstream (to AP) purpose
+         * @param downstreamPorts Ports connected downstream toward APs for tunnel termination
          * 
          * @return builder
          * 
@@ -118,7 +126,7 @@ public final class MxedgeTuntermPortConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param downstreamPorts List of ports to be used for downstream (to AP) purpose
+         * @param downstreamPorts Ports connected downstream toward APs for tunnel termination
          * 
          * @return builder
          * 
@@ -148,17 +156,29 @@ public final class MxedgeTuntermPortConfigArgs extends com.pulumi.resources.Reso
             return separateUpstreamDownstream(Output.of(separateUpstreamDownstream));
         }
 
+        /**
+         * @param upstreamPortVlanId Native VLAN ID applied to upstream tunnel termination ports
+         * 
+         * @return builder
+         * 
+         */
         public Builder upstreamPortVlanId(@Nullable Output<String> upstreamPortVlanId) {
             $.upstreamPortVlanId = upstreamPortVlanId;
             return this;
         }
 
+        /**
+         * @param upstreamPortVlanId Native VLAN ID applied to upstream tunnel termination ports
+         * 
+         * @return builder
+         * 
+         */
         public Builder upstreamPortVlanId(String upstreamPortVlanId) {
             return upstreamPortVlanId(Output.of(upstreamPortVlanId));
         }
 
         /**
-         * @param upstreamPorts List of ports to be used for upstream purpose (to LAN)
+         * @param upstreamPorts Ports connected upstream toward the LAN for tunnel termination
          * 
          * @return builder
          * 
@@ -169,7 +189,7 @@ public final class MxedgeTuntermPortConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param upstreamPorts List of ports to be used for upstream purpose (to LAN)
+         * @param upstreamPorts Ports connected upstream toward the LAN for tunnel termination
          * 
          * @return builder
          * 
@@ -179,7 +199,7 @@ public final class MxedgeTuntermPortConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param upstreamPorts List of ports to be used for upstream purpose (to LAN)
+         * @param upstreamPorts Ports connected upstream toward the LAN for tunnel termination
          * 
          * @return builder
          * 

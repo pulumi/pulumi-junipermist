@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GatewayExtraRoutes {
+    /**
+     * @return Next-hop IPv4 address for the gateway extra route
+     * 
+     */
     private String via;
 
     private GatewayExtraRoutes() {}
+    /**
+     * @return Next-hop IPv4 address for the gateway extra route
+     * 
+     */
     public String via() {
         return this.via;
     }

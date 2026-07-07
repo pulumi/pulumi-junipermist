@@ -11,19 +11,27 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DeviceprofileGatewayRoutingPoliciesTermMatchingRouteExists {
+    /**
+     * @return Prefix that must exist for this condition to match
+     * 
+     */
     private @Nullable String route;
     /**
-     * @return Name of the vrf instance, it can also be the name of the VPN or wan if they
+     * @return Name of the VRF instance where the route is checked; can also be a VPN or WAN name when applicable
      * 
      */
     private @Nullable String vrfName;
 
     private DeviceprofileGatewayRoutingPoliciesTermMatchingRouteExists() {}
+    /**
+     * @return Prefix that must exist for this condition to match
+     * 
+     */
     public Optional<String> route() {
         return Optional.ofNullable(this.route);
     }
     /**
-     * @return Name of the vrf instance, it can also be the name of the VPN or wan if they
+     * @return Name of the VRF instance where the route is checked; can also be a VPN or WAN name when applicable
      * 
      */
     public Optional<String> vrfName() {

@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class GatewayTunnelProviderOptionsJseGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// User capacity to provision on Juniper Secure Edge
+        /// </summary>
         [Input("numUsers")]
         public Input<int>? NumUsers { get; set; }
 

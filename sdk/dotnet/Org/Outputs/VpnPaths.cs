@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class VpnPaths
     {
         /// <summary>
-        /// enum: `Broadband`, `Lte`
+        /// BFD profile used for this VPN path
         /// </summary>
         public readonly string? BfdProfile;
         /// <summary>
@@ -22,14 +22,20 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? BfdUseTunnelMode;
         /// <summary>
-        /// If different from the wan port
+        /// Source IP address for this VPN path, if different from the WAN port IP
         /// </summary>
         public readonly string? Ip;
         /// <summary>
-        /// If `Type`==`Mesh`, Property key is the Peer Interface name
+        /// Peer path preferences used when `Type`==`Mesh`
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.VpnPathsPeerPaths>? PeerPaths;
+        /// <summary>
+        /// Grouping index used to place this VPN path into a pod
+        /// </summary>
         public readonly int? Pod;
+        /// <summary>
+        /// Traffic shaping settings applied to this VPN path
+        /// </summary>
         public readonly Outputs.VpnPathsTrafficShaping? TrafficShaping;
 
         [OutputConstructor]

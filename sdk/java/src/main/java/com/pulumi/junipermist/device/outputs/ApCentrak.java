@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ApCentrak {
+    /**
+     * @return Whether to enable Centrak config
+     * 
+     */
     private @Nullable Boolean enabled;
 
     private ApCentrak() {}
+    /**
+     * @return Whether to enable Centrak config
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }

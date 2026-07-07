@@ -13,7 +13,13 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class SettingCelona
     {
+        /// <summary>
+        /// Credential used by Mist for the Celona integration
+        /// </summary>
         public readonly string ApiKey;
+        /// <summary>
+        /// Celona API prefix configured for the integration
+        /// </summary>
         public readonly string ApiPrefix;
 
         [OutputConstructor]

@@ -16,22 +16,30 @@ public final class GatewaytemplateServicePolicySkyatpHttpInspectionArgs extends 
 
     public static final GatewaytemplateServicePolicySkyatpHttpInspectionArgs Empty = new GatewaytemplateServicePolicySkyatpHttpInspectionArgs();
 
+    /**
+     * Whether Sky ATP HTTP inspection is enabled
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether Sky ATP HTTP inspection is enabled
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
     /**
-     * enum: `standard`, `strict`
+     * Sky ATP HTTP inspection profile to apply
      * 
      */
     @Import(name="profile")
     private @Nullable Output<String> profile;
 
     /**
-     * @return enum: `standard`, `strict`
+     * @return Sky ATP HTTP inspection profile to apply
      * 
      */
     public Optional<Output<String>> profile() {
@@ -63,17 +71,29 @@ public final class GatewaytemplateServicePolicySkyatpHttpInspectionArgs extends 
             $ = new GatewaytemplateServicePolicySkyatpHttpInspectionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Whether Sky ATP HTTP inspection is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether Sky ATP HTTP inspection is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
         /**
-         * @param profile enum: `standard`, `strict`
+         * @param profile Sky ATP HTTP inspection profile to apply
          * 
          * @return builder
          * 
@@ -84,7 +104,7 @@ public final class GatewaytemplateServicePolicySkyatpHttpInspectionArgs extends 
         }
 
         /**
-         * @param profile enum: `standard`, `strict`
+         * @param profile Sky ATP HTTP inspection profile to apply
          * 
          * @return builder
          * 

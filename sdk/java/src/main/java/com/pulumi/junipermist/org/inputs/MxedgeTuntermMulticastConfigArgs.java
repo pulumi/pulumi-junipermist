@@ -16,16 +16,32 @@ public final class MxedgeTuntermMulticastConfigArgs extends com.pulumi.resources
 
     public static final MxedgeTuntermMulticastConfigArgs Empty = new MxedgeTuntermMulticastConfigArgs();
 
+    /**
+     * Settings for mDNS forwarding on tunnel termination VLANs
+     * 
+     */
     @Import(name="mdns")
     private @Nullable Output<MxedgeTuntermMulticastConfigMdnsArgs> mdns;
 
+    /**
+     * @return Settings for mDNS forwarding on tunnel termination VLANs
+     * 
+     */
     public Optional<Output<MxedgeTuntermMulticastConfigMdnsArgs>> mdns() {
         return Optional.ofNullable(this.mdns);
     }
 
+    /**
+     * Settings for SSDP forwarding on tunnel termination VLANs
+     * 
+     */
     @Import(name="ssdp")
     private @Nullable Output<MxedgeTuntermMulticastConfigSsdpArgs> ssdp;
 
+    /**
+     * @return Settings for SSDP forwarding on tunnel termination VLANs
+     * 
+     */
     public Optional<Output<MxedgeTuntermMulticastConfigSsdpArgs>> ssdp() {
         return Optional.ofNullable(this.ssdp);
     }
@@ -55,20 +71,44 @@ public final class MxedgeTuntermMulticastConfigArgs extends com.pulumi.resources
             $ = new MxedgeTuntermMulticastConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param mdns Settings for mDNS forwarding on tunnel termination VLANs
+         * 
+         * @return builder
+         * 
+         */
         public Builder mdns(@Nullable Output<MxedgeTuntermMulticastConfigMdnsArgs> mdns) {
             $.mdns = mdns;
             return this;
         }
 
+        /**
+         * @param mdns Settings for mDNS forwarding on tunnel termination VLANs
+         * 
+         * @return builder
+         * 
+         */
         public Builder mdns(MxedgeTuntermMulticastConfigMdnsArgs mdns) {
             return mdns(Output.of(mdns));
         }
 
+        /**
+         * @param ssdp Settings for SSDP forwarding on tunnel termination VLANs
+         * 
+         * @return builder
+         * 
+         */
         public Builder ssdp(@Nullable Output<MxedgeTuntermMulticastConfigSsdpArgs> ssdp) {
             $.ssdp = ssdp;
             return this;
         }
 
+        /**
+         * @param ssdp Settings for SSDP forwarding on tunnel termination VLANs
+         * 
+         * @return builder
+         * 
+         */
         public Builder ssdp(MxedgeTuntermMulticastConfigSsdpArgs ssdp) {
             return ssdp(Output.of(ssdp));
         }

@@ -20,23 +20,31 @@ public final class EvpnTopologyArgs extends com.pulumi.resources.ResourceArgs {
     public static final EvpnTopologyArgs Empty = new EvpnTopologyArgs();
 
     /**
-     * EVPN Options
+     * Generation options applied to the EVPN topology
      * 
      */
     @Import(name="evpnOptions")
     private @Nullable Output<EvpnTopologyEvpnOptionsArgs> evpnOptions;
 
     /**
-     * @return EVPN Options
+     * @return Generation options applied to the EVPN topology
      * 
      */
     public Optional<Output<EvpnTopologyEvpnOptionsArgs>> evpnOptions() {
         return Optional.ofNullable(this.evpnOptions);
     }
 
+    /**
+     * Display name for the EVPN topology
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Display name for the EVPN topology
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -56,22 +64,30 @@ public final class EvpnTopologyArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.podNames);
     }
 
+    /**
+     * Site associated with the EVPN topology
+     * 
+     */
     @Import(name="siteId", required=true)
     private Output<String> siteId;
 
+    /**
+     * @return Site associated with the EVPN topology
+     * 
+     */
     public Output<String> siteId() {
         return this.siteId;
     }
 
     /**
-     * Property key can be the switch MAC Address
+     * Topology member switches, roles, and links
      * 
      */
     @Import(name="switches", required=true)
     private Output<Map<String,EvpnTopologySwitchesArgs>> switches;
 
     /**
-     * @return Property key can be the switch MAC Address
+     * @return Topology member switches, roles, and links
      * 
      */
     public Output<Map<String,EvpnTopologySwitchesArgs>> switches() {
@@ -107,7 +123,7 @@ public final class EvpnTopologyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param evpnOptions EVPN Options
+         * @param evpnOptions Generation options applied to the EVPN topology
          * 
          * @return builder
          * 
@@ -118,7 +134,7 @@ public final class EvpnTopologyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param evpnOptions EVPN Options
+         * @param evpnOptions Generation options applied to the EVPN topology
          * 
          * @return builder
          * 
@@ -127,11 +143,23 @@ public final class EvpnTopologyArgs extends com.pulumi.resources.ResourceArgs {
             return evpnOptions(Output.of(evpnOptions));
         }
 
+        /**
+         * @param name Display name for the EVPN topology
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Display name for the EVPN topology
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -157,17 +185,29 @@ public final class EvpnTopologyArgs extends com.pulumi.resources.ResourceArgs {
             return podNames(Output.of(podNames));
         }
 
+        /**
+         * @param siteId Site associated with the EVPN topology
+         * 
+         * @return builder
+         * 
+         */
         public Builder siteId(Output<String> siteId) {
             $.siteId = siteId;
             return this;
         }
 
+        /**
+         * @param siteId Site associated with the EVPN topology
+         * 
+         * @return builder
+         * 
+         */
         public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
         }
 
         /**
-         * @param switches Property key can be the switch MAC Address
+         * @param switches Topology member switches, roles, and links
          * 
          * @return builder
          * 
@@ -178,7 +218,7 @@ public final class EvpnTopologyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param switches Property key can be the switch MAC Address
+         * @param switches Topology member switches, roles, and links
          * 
          * @return builder
          * 

@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewayPortConfigVpnPaths {
     /**
-     * @return Only if the VPN `type`==`hubSpoke`. enum: `broadband`, `lte`
+     * @return BFD profile used for this VPN path when the VPN `type`==`hubSpoke`
      * 
      */
     private @Nullable String bfdProfile;
@@ -30,15 +30,19 @@ public final class GatewayPortConfigVpnPaths {
      */
     private @Nullable Integer preference;
     /**
-     * @return If the VPN `type`==`hubSpoke`, enum: `hub`, `spoke`. If the VPN `type`==`mesh`, enum: `mesh`
+     * @return Gateway role for this VPN path; valid values depend on the VPN `type`
      * 
      */
     private @Nullable String role;
+    /**
+     * @return Traffic shaping settings applied to this VPN path
+     * 
+     */
     private @Nullable GatewayPortConfigVpnPathsTrafficShaping trafficShaping;
 
     private GatewayPortConfigVpnPaths() {}
     /**
-     * @return Only if the VPN `type`==`hubSpoke`. enum: `broadband`, `lte`
+     * @return BFD profile used for this VPN path when the VPN `type`==`hubSpoke`
      * 
      */
     public Optional<String> bfdProfile() {
@@ -59,12 +63,16 @@ public final class GatewayPortConfigVpnPaths {
         return Optional.ofNullable(this.preference);
     }
     /**
-     * @return If the VPN `type`==`hubSpoke`, enum: `hub`, `spoke`. If the VPN `type`==`mesh`, enum: `mesh`
+     * @return Gateway role for this VPN path; valid values depend on the VPN `type`
      * 
      */
     public Optional<String> role() {
         return Optional.ofNullable(this.role);
     }
+    /**
+     * @return Traffic shaping settings applied to this VPN path
+     * 
+     */
     public Optional<GatewayPortConfigVpnPathsTrafficShaping> trafficShaping() {
         return Optional.ofNullable(this.trafficShaping);
     }

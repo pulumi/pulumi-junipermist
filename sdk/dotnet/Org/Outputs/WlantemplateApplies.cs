@@ -13,13 +13,16 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class WlantemplateApplies
     {
+        /// <summary>
+        /// Organization included in the WLAN template application scope
+        /// </summary>
         public readonly string? OrgId;
         /// <summary>
-        /// List of site ids
+        /// Sites included in the WLAN template application scope
         /// </summary>
         public readonly ImmutableArray<string> SiteIds;
         /// <summary>
-        /// List of sitegroup ids
+        /// Site groups included in the WLAN template application scope
         /// </summary>
         public readonly ImmutableArray<string> SitegroupIds;
 

@@ -16,43 +16,75 @@ public final class DeviceprofileGatewayIpConfigsArgs extends com.pulumi.resource
 
     public static final DeviceprofileGatewayIpConfigsArgs Empty = new DeviceprofileGatewayIpConfigsArgs();
 
+    /**
+     * Static IPv4 address for the gateway network interface when `type`==`static`
+     * 
+     */
     @Import(name="ip")
     private @Nullable Output<String> ip;
 
+    /**
+     * @return Static IPv4 address for the gateway network interface when `type`==`static`
+     * 
+     */
     public Optional<Output<String>> ip() {
         return Optional.ofNullable(this.ip);
     }
 
+    /**
+     * Static IPv6 address for the gateway network interface when `type6`==`static`
+     * 
+     */
     @Import(name="ip6")
     private @Nullable Output<String> ip6;
 
+    /**
+     * @return Static IPv6 address for the gateway network interface when `type6`==`static`
+     * 
+     */
     public Optional<Output<String>> ip6() {
         return Optional.ofNullable(this.ip6);
     }
 
+    /**
+     * IPv4 netmask or prefix length for the gateway network interface when `type`==`static`
+     * 
+     */
     @Import(name="netmask")
     private @Nullable Output<String> netmask;
 
+    /**
+     * @return IPv4 netmask or prefix length for the gateway network interface when `type`==`static`
+     * 
+     */
     public Optional<Output<String>> netmask() {
         return Optional.ofNullable(this.netmask);
     }
 
+    /**
+     * IPv6 netmask or prefix length for the gateway network interface when `type6`==`static`
+     * 
+     */
     @Import(name="netmask6")
     private @Nullable Output<String> netmask6;
 
+    /**
+     * @return IPv6 netmask or prefix length for the gateway network interface when `type6`==`static`
+     * 
+     */
     public Optional<Output<String>> netmask6() {
         return Optional.ofNullable(this.netmask6);
     }
 
     /**
-     * Optional list of secondary IPs in CIDR format
+     * Additional IPv4 addresses in CIDR notation for this gateway network interface
      * 
      */
     @Import(name="secondaryIps")
     private @Nullable Output<List<String>> secondaryIps;
 
     /**
-     * @return Optional list of secondary IPs in CIDR format
+     * @return Additional IPv4 addresses in CIDR notation for this gateway network interface
      * 
      */
     public Optional<Output<List<String>>> secondaryIps() {
@@ -60,14 +92,14 @@ public final class DeviceprofileGatewayIpConfigsArgs extends com.pulumi.resource
     }
 
     /**
-     * enum: `dhcp`, `static`
+     * IPv4 address assignment mode for this gateway network interface
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return enum: `dhcp`, `static`
+     * @return IPv4 address assignment mode for this gateway network interface
      * 
      */
     public Optional<Output<String>> type() {
@@ -75,14 +107,14 @@ public final class DeviceprofileGatewayIpConfigsArgs extends com.pulumi.resource
     }
 
     /**
-     * enum: `autoconf`, `dhcp`, `disabled`, `static`
+     * IPv6 address assignment mode for this gateway network interface
      * 
      */
     @Import(name="type6")
     private @Nullable Output<String> type6;
 
     /**
-     * @return enum: `autoconf`, `dhcp`, `disabled`, `static`
+     * @return IPv6 address assignment mode for this gateway network interface
      * 
      */
     public Optional<Output<String>> type6() {
@@ -119,44 +151,92 @@ public final class DeviceprofileGatewayIpConfigsArgs extends com.pulumi.resource
             $ = new DeviceprofileGatewayIpConfigsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ip Static IPv4 address for the gateway network interface when `type`==`static`
+         * 
+         * @return builder
+         * 
+         */
         public Builder ip(@Nullable Output<String> ip) {
             $.ip = ip;
             return this;
         }
 
+        /**
+         * @param ip Static IPv4 address for the gateway network interface when `type`==`static`
+         * 
+         * @return builder
+         * 
+         */
         public Builder ip(String ip) {
             return ip(Output.of(ip));
         }
 
+        /**
+         * @param ip6 Static IPv6 address for the gateway network interface when `type6`==`static`
+         * 
+         * @return builder
+         * 
+         */
         public Builder ip6(@Nullable Output<String> ip6) {
             $.ip6 = ip6;
             return this;
         }
 
+        /**
+         * @param ip6 Static IPv6 address for the gateway network interface when `type6`==`static`
+         * 
+         * @return builder
+         * 
+         */
         public Builder ip6(String ip6) {
             return ip6(Output.of(ip6));
         }
 
+        /**
+         * @param netmask IPv4 netmask or prefix length for the gateway network interface when `type`==`static`
+         * 
+         * @return builder
+         * 
+         */
         public Builder netmask(@Nullable Output<String> netmask) {
             $.netmask = netmask;
             return this;
         }
 
+        /**
+         * @param netmask IPv4 netmask or prefix length for the gateway network interface when `type`==`static`
+         * 
+         * @return builder
+         * 
+         */
         public Builder netmask(String netmask) {
             return netmask(Output.of(netmask));
         }
 
+        /**
+         * @param netmask6 IPv6 netmask or prefix length for the gateway network interface when `type6`==`static`
+         * 
+         * @return builder
+         * 
+         */
         public Builder netmask6(@Nullable Output<String> netmask6) {
             $.netmask6 = netmask6;
             return this;
         }
 
+        /**
+         * @param netmask6 IPv6 netmask or prefix length for the gateway network interface when `type6`==`static`
+         * 
+         * @return builder
+         * 
+         */
         public Builder netmask6(String netmask6) {
             return netmask6(Output.of(netmask6));
         }
 
         /**
-         * @param secondaryIps Optional list of secondary IPs in CIDR format
+         * @param secondaryIps Additional IPv4 addresses in CIDR notation for this gateway network interface
          * 
          * @return builder
          * 
@@ -167,7 +247,7 @@ public final class DeviceprofileGatewayIpConfigsArgs extends com.pulumi.resource
         }
 
         /**
-         * @param secondaryIps Optional list of secondary IPs in CIDR format
+         * @param secondaryIps Additional IPv4 addresses in CIDR notation for this gateway network interface
          * 
          * @return builder
          * 
@@ -177,7 +257,7 @@ public final class DeviceprofileGatewayIpConfigsArgs extends com.pulumi.resource
         }
 
         /**
-         * @param secondaryIps Optional list of secondary IPs in CIDR format
+         * @param secondaryIps Additional IPv4 addresses in CIDR notation for this gateway network interface
          * 
          * @return builder
          * 
@@ -187,7 +267,7 @@ public final class DeviceprofileGatewayIpConfigsArgs extends com.pulumi.resource
         }
 
         /**
-         * @param type enum: `dhcp`, `static`
+         * @param type IPv4 address assignment mode for this gateway network interface
          * 
          * @return builder
          * 
@@ -198,7 +278,7 @@ public final class DeviceprofileGatewayIpConfigsArgs extends com.pulumi.resource
         }
 
         /**
-         * @param type enum: `dhcp`, `static`
+         * @param type IPv4 address assignment mode for this gateway network interface
          * 
          * @return builder
          * 
@@ -208,7 +288,7 @@ public final class DeviceprofileGatewayIpConfigsArgs extends com.pulumi.resource
         }
 
         /**
-         * @param type6 enum: `autoconf`, `dhcp`, `disabled`, `static`
+         * @param type6 IPv6 address assignment mode for this gateway network interface
          * 
          * @return builder
          * 
@@ -219,7 +299,7 @@ public final class DeviceprofileGatewayIpConfigsArgs extends com.pulumi.resource
         }
 
         /**
-         * @param type6 enum: `autoconf`, `dhcp`, `disabled`, `static`
+         * @param type6 IPv6 address assignment mode for this gateway network interface
          * 
          * @return builder
          * 

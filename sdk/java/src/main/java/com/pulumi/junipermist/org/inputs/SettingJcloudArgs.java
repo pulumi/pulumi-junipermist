@@ -15,14 +15,14 @@ public final class SettingJcloudArgs extends com.pulumi.resources.ResourceArgs {
     public static final SettingJcloudArgs Empty = new SettingJcloudArgs();
 
     /**
-     * JCloud Org Token
+     * JCloud organization API token used by this Mist organization
      * 
      */
     @Import(name="orgApitoken", required=true)
     private Output<String> orgApitoken;
 
     /**
-     * @return JCloud Org Token
+     * @return JCloud organization API token used by this Mist organization
      * 
      */
     public Output<String> orgApitoken() {
@@ -30,14 +30,14 @@ public final class SettingJcloudArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * JCloud Org Token Name
+     * Display name for the JCloud organization API token
      * 
      */
     @Import(name="orgApitokenName", required=true)
     private Output<String> orgApitokenName;
 
     /**
-     * @return JCloud Org Token Name
+     * @return Display name for the JCloud organization API token
      * 
      */
     public Output<String> orgApitokenName() {
@@ -45,14 +45,14 @@ public final class SettingJcloudArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * JCloud Org ID
+     * JCloud organization identifier linked to this Mist organization
      * 
      */
     @Import(name="orgId", required=true)
     private Output<String> orgId;
 
     /**
-     * @return JCloud Org ID
+     * @return JCloud organization identifier linked to this Mist organization
      * 
      */
     public Output<String> orgId() {
@@ -86,7 +86,7 @@ public final class SettingJcloudArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orgApitoken JCloud Org Token
+         * @param orgApitoken JCloud organization API token used by this Mist organization
          * 
          * @return builder
          * 
@@ -97,7 +97,7 @@ public final class SettingJcloudArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orgApitoken JCloud Org Token
+         * @param orgApitoken JCloud organization API token used by this Mist organization
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class SettingJcloudArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orgApitokenName JCloud Org Token Name
+         * @param orgApitokenName Display name for the JCloud organization API token
          * 
          * @return builder
          * 
@@ -118,7 +118,7 @@ public final class SettingJcloudArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orgApitokenName JCloud Org Token Name
+         * @param orgApitokenName Display name for the JCloud organization API token
          * 
          * @return builder
          * 
@@ -128,7 +128,7 @@ public final class SettingJcloudArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orgId JCloud Org ID
+         * @param orgId JCloud organization identifier linked to this Mist organization
          * 
          * @return builder
          * 
@@ -139,7 +139,7 @@ public final class SettingJcloudArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orgId JCloud Org ID
+         * @param orgId JCloud organization identifier linked to this Mist organization
          * 
          * @return builder
          * 

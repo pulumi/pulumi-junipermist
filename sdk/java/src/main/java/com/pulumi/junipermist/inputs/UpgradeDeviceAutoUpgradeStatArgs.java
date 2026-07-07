@@ -15,9 +15,17 @@ public final class UpgradeDeviceAutoUpgradeStatArgs extends com.pulumi.resources
 
     public static final UpgradeDeviceAutoUpgradeStatArgs Empty = new UpgradeDeviceAutoUpgradeStatArgs();
 
+    /**
+     * Time when the device last checked for auto-upgrade, in epoch seconds
+     * 
+     */
     @Import(name="lastcheck")
     private @Nullable Output<Integer> lastcheck;
 
+    /**
+     * @return Time when the device last checked for auto-upgrade, in epoch seconds
+     * 
+     */
     public Optional<Output<Integer>> lastcheck() {
         return Optional.ofNullable(this.lastcheck);
     }
@@ -46,11 +54,23 @@ public final class UpgradeDeviceAutoUpgradeStatArgs extends com.pulumi.resources
             $ = new UpgradeDeviceAutoUpgradeStatArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param lastcheck Time when the device last checked for auto-upgrade, in epoch seconds
+         * 
+         * @return builder
+         * 
+         */
         public Builder lastcheck(@Nullable Output<Integer> lastcheck) {
             $.lastcheck = lastcheck;
             return this;
         }
 
+        /**
+         * @param lastcheck Time when the device last checked for auto-upgrade, in epoch seconds
+         * 
+         * @return builder
+         * 
+         */
         public Builder lastcheck(Integer lastcheck) {
             return lastcheck(Output.of(lastcheck));
         }

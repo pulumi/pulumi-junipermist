@@ -31,7 +31,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<int>? QueryInterval { get; set; }
 
         /// <summary>
-        /// Querier's robustness
+        /// IGMP querier robustness variable
         /// </summary>
         [Input("robustness")]
         public Input<int>? Robustness { get; set; }

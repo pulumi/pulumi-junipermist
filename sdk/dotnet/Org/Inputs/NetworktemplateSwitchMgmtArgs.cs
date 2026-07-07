@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class NetworktemplateSwitchMgmtArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// AP_affinity_threshold ApAffinityThreshold can be added as a field under site/setting. By default, this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+        /// AP affinity threshold for switch management. If set in both site settings and organization settings, the site setting value is used.
         /// </summary>
         [Input("apAffinityThreshold")]
         public Input<int>? ApAffinityThreshold { get; set; }
@@ -42,9 +42,15 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("dhcpOptionFqdn")]
         public Input<bool>? DhcpOptionFqdn { get; set; }
 
+        /// <summary>
+        /// Whether to suppress alarms when the switch out-of-band management interface is down
+        /// </summary>
         [Input("disableOobDownAlarm")]
         public Input<bool>? DisableOobDownAlarm { get; set; }
 
+        /// <summary>
+        /// Whether FIPS mode is enabled on the switch
+        /// </summary>
         [Input("fipsEnabled")]
         public Input<bool>? FipsEnabled { get; set; }
 
@@ -52,7 +58,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputMap<Inputs.NetworktemplateSwitchMgmtLocalAccountsArgs>? _localAccounts;
 
         /// <summary>
-        /// Property key is the user name. For Local user authentication
+        /// Local switch user accounts keyed by username
         /// </summary>
         public InputMap<Inputs.NetworktemplateSwitchMgmtLocalAccountsArgs> LocalAccounts
         {
@@ -61,7 +67,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// IP Address or FQDN of the Mist Edge used to proxy the switch management traffic to the Mist Cloud
+        /// IP address or FQDN of the Mist Edge used to proxy the switch management traffic to the Mist Cloud
         /// </summary>
         [Input("mxedgeProxyHost")]
         public Input<string>? MxedgeProxyHost { get; set; }
@@ -73,9 +79,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? MxedgeProxyPort { get; set; }
 
         /// <summary>
-        /// Restrict inbound-traffic to host
-        /// when enabled, all traffic that is not essential to our operation will be dropped 
-        /// e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
+        /// Control-plane protection settings for the switch
         /// </summary>
         [Input("protectRe")]
         public Input<Inputs.NetworktemplateSwitchMgmtProtectReArgs>? ProtectRe { get; set; }
@@ -88,6 +92,10 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
         [Input("rootPassword")]
         private Input<string>? _rootPassword;
+
+        /// <summary>
+        /// Root password for local switch access
+        /// </summary>
         public Input<string>? RootPassword
         {
             get => _rootPassword;
@@ -98,11 +106,14 @@ namespace Pulumi.JuniperMist.Org.Inputs
             }
         }
 
+        /// <summary>
+        /// Management authentication settings using TACACS+
+        /// </summary>
         [Input("tacacs")]
         public Input<Inputs.NetworktemplateSwitchMgmtTacacsArgs>? Tacacs { get; set; }
 
         /// <summary>
-        /// To use mxedge as proxy
+        /// Whether to use Mist Edge as a proxy for switch management traffic
         /// </summary>
         [Input("useMxedgeProxy")]
         public Input<bool>? UseMxedgeProxy { get; set; }

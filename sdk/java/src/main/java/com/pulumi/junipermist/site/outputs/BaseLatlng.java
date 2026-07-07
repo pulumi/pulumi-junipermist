@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class BaseLatlng {
+    /**
+     * @return Geographic latitude in decimal degrees
+     * 
+     */
     private Double lat;
+    /**
+     * @return Geographic longitude in decimal degrees
+     * 
+     */
     private Double lng;
 
     private BaseLatlng() {}
+    /**
+     * @return Geographic latitude in decimal degrees
+     * 
+     */
     public Double lat() {
         return this.lat;
     }
+    /**
+     * @return Geographic longitude in decimal degrees
+     * 
+     */
     public Double lng() {
         return this.lng;
     }

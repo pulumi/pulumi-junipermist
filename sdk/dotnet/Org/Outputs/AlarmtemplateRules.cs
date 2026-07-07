@@ -14,9 +14,12 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class AlarmtemplateRules
     {
         /// <summary>
-        /// Delivery object to configure the alarm delivery
+        /// Overrides for the alarm template delivery defaults for this alarm rule
         /// </summary>
         public readonly Outputs.AlarmtemplateRulesDelivery? Delivery;
+        /// <summary>
+        /// Whether this alarm rule is enabled in the template
+        /// </summary>
         public readonly bool? Enabled;
 
         [OutputConstructor]

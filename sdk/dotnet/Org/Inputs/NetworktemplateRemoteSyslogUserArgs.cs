@@ -14,15 +14,25 @@ namespace Pulumi.JuniperMist.Org.Inputs
     {
         [Input("contents")]
         private InputList<Inputs.NetworktemplateRemoteSyslogUserContentArgs>? _contents;
+
+        /// <summary>
+        /// Syslog facilities and severities logged for this user rule
+        /// </summary>
         public InputList<Inputs.NetworktemplateRemoteSyslogUserContentArgs> Contents
         {
             get => _contents ?? (_contents = new InputList<Inputs.NetworktemplateRemoteSyslogUserContentArgs>());
             set => _contents = value;
         }
 
+        /// <summary>
+        /// Expression used to filter user log messages
+        /// </summary>
         [Input("match")]
         public Input<string>? Match { get; set; }
 
+        /// <summary>
+        /// Account name or wildcard matched by this syslog rule
+        /// </summary>
         [Input("user")]
         public Input<string>? User { get; set; }
 

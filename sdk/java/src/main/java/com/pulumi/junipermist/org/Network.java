@@ -89,33 +89,57 @@ public class Network extends com.pulumi.resources.CustomResource {
     public Output<Boolean> disallowMistServices() {
         return this.disallowMistServices;
     }
+    /**
+     * IPv4 gateway address for this network
+     * 
+     */
     @Export(name="gateway", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> gateway;
 
+    /**
+     * @return IPv4 gateway address for this network
+     * 
+     */
     public Output<Optional<String>> gateway() {
         return Codegen.optional(this.gateway);
     }
+    /**
+     * IPv6 gateway address for this network
+     * 
+     */
     @Export(name="gateway6", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> gateway6;
 
+    /**
+     * @return IPv6 gateway address for this network
+     * 
+     */
     public Output<Optional<String>> gateway6() {
         return Codegen.optional(this.gateway6);
     }
+    /**
+     * Internal access settings for this network
+     * 
+     */
     @Export(name="internalAccess", refs={NetworkInternalAccess.class}, tree="[0]")
     private Output</* @Nullable */ NetworkInternalAccess> internalAccess;
 
+    /**
+     * @return Internal access settings for this network
+     * 
+     */
     public Output<Optional<NetworkInternalAccess>> internalAccess() {
         return Codegen.optional(this.internalAccess);
     }
     /**
-     * Whether this network has direct internet access
+     * Direct internet access and NAT settings for this network
      * 
      */
     @Export(name="internetAccess", refs={NetworkInternetAccess.class}, tree="[0]")
     private Output</* @Nullable */ NetworkInternetAccess> internetAccess;
 
     /**
-     * @return Whether this network has direct internet access
+     * @return Direct internet access and NAT settings for this network
      * 
      */
     public Output<Optional<NetworkInternetAccess>> internetAccess() {
@@ -136,86 +160,126 @@ public class Network extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.isolation);
     }
     /**
-     * Whether to enable multicast support (only PIM-sparse mode is supported)
+     * Settings for multicast routing on this network
      * 
      */
     @Export(name="multicast", refs={NetworkMulticast.class}, tree="[0]")
     private Output</* @Nullable */ NetworkMulticast> multicast;
 
     /**
-     * @return Whether to enable multicast support (only PIM-sparse mode is supported)
+     * @return Settings for multicast routing on this network
      * 
      */
     public Output<Optional<NetworkMulticast>> multicast() {
         return Codegen.optional(this.multicast);
     }
+    /**
+     * Display name of the organization network
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Display name of the organization network
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Organization that owns this network
+     * 
+     */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
+    /**
+     * @return Organization that owns this network
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }
     /**
-     * For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+     * Other network names this network can route to, for example through BGP, OSPF or static routes
      * 
      */
     @Export(name="routedForNetworks", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> routedForNetworks;
 
     /**
-     * @return For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+     * @return Other network names this network can route to, for example through BGP, OSPF or static routes
      * 
      */
     public Output<List<String>> routedForNetworks() {
         return this.routedForNetworks;
     }
+    /**
+     * IPv4 subnet CIDR for this network
+     * 
+     */
     @Export(name="subnet", refs={String.class}, tree="[0]")
     private Output<String> subnet;
 
+    /**
+     * @return IPv4 subnet CIDR for this network
+     * 
+     */
     public Output<String> subnet() {
         return this.subnet;
     }
+    /**
+     * IPv6 subnet CIDR for this network
+     * 
+     */
     @Export(name="subnet6", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> subnet6;
 
+    /**
+     * @return IPv6 subnet CIDR for this network
+     * 
+     */
     public Output<Optional<String>> subnet6() {
         return Codegen.optional(this.subnet6);
     }
     /**
-     * Property key must be the user/tenant name (i.e. &#34;printer-1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * Tenant address mappings associated with this network
      * 
      */
     @Export(name="tenants", refs={Map.class,String.class,NetworkTenants.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,NetworkTenants>> tenants;
 
     /**
-     * @return Property key must be the user/tenant name (i.e. &#34;printer-1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * @return Tenant address mappings associated with this network
      * 
      */
     public Output<Optional<Map<String,NetworkTenants>>> tenants() {
         return Codegen.optional(this.tenants);
     }
+    /**
+     * VLAN ID or variable associated with this network
+     * 
+     */
     @Export(name="vlanId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vlanId;
 
+    /**
+     * @return VLAN ID or variable associated with this network
+     * 
+     */
     public Output<Optional<String>> vlanId() {
         return Codegen.optional(this.vlanId);
     }
     /**
-     * Property key is the VPN name. Whether this network can be accessed from vpn
+     * VPN access settings keyed by VPN name for this network
      * 
      */
     @Export(name="vpnAccess", refs={Map.class,String.class,NetworkVpnAccess.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,NetworkVpnAccess>> vpnAccess;
 
     /**
-     * @return Property key is the VPN name. Whether this network can be accessed from vpn
+     * @return VPN access settings keyed by VPN name for this network
      * 
      */
     public Output<Optional<Map<String,NetworkVpnAccess>>> vpnAccess() {

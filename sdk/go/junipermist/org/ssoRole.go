@@ -63,8 +63,11 @@ import (
 type SsoRole struct {
 	pulumi.CustomResourceState
 
-	Name       pulumi.StringOutput         `pulumi:"name"`
-	OrgId      pulumi.StringOutput         `pulumi:"orgId"`
+	// Display name of the organization SSO role
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Owning organization identifier for this SSO role
+	OrgId pulumi.StringOutput `pulumi:"orgId"`
+	// Access privileges granted by this organization SSO role
 	Privileges SsoRolePrivilegeArrayOutput `pulumi:"privileges"`
 }
 
@@ -104,14 +107,20 @@ func GetSsoRole(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SsoRole resources.
 type ssoRoleState struct {
-	Name       *string            `pulumi:"name"`
-	OrgId      *string            `pulumi:"orgId"`
+	// Display name of the organization SSO role
+	Name *string `pulumi:"name"`
+	// Owning organization identifier for this SSO role
+	OrgId *string `pulumi:"orgId"`
+	// Access privileges granted by this organization SSO role
 	Privileges []SsoRolePrivilege `pulumi:"privileges"`
 }
 
 type SsoRoleState struct {
-	Name       pulumi.StringPtrInput
-	OrgId      pulumi.StringPtrInput
+	// Display name of the organization SSO role
+	Name pulumi.StringPtrInput
+	// Owning organization identifier for this SSO role
+	OrgId pulumi.StringPtrInput
+	// Access privileges granted by this organization SSO role
 	Privileges SsoRolePrivilegeArrayInput
 }
 
@@ -120,15 +129,21 @@ func (SsoRoleState) ElementType() reflect.Type {
 }
 
 type ssoRoleArgs struct {
-	Name       *string            `pulumi:"name"`
-	OrgId      string             `pulumi:"orgId"`
+	// Display name of the organization SSO role
+	Name *string `pulumi:"name"`
+	// Owning organization identifier for this SSO role
+	OrgId string `pulumi:"orgId"`
+	// Access privileges granted by this organization SSO role
 	Privileges []SsoRolePrivilege `pulumi:"privileges"`
 }
 
 // The set of arguments for constructing a SsoRole resource.
 type SsoRoleArgs struct {
-	Name       pulumi.StringPtrInput
-	OrgId      pulumi.StringInput
+	// Display name of the organization SSO role
+	Name pulumi.StringPtrInput
+	// Owning organization identifier for this SSO role
+	OrgId pulumi.StringInput
+	// Access privileges granted by this organization SSO role
 	Privileges SsoRolePrivilegeArrayInput
 }
 
@@ -219,14 +234,17 @@ func (o SsoRoleOutput) ToSsoRoleOutputWithContext(ctx context.Context) SsoRoleOu
 	return o
 }
 
+// Display name of the organization SSO role
 func (o SsoRoleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SsoRole) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Owning organization identifier for this SSO role
 func (o SsoRoleOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SsoRole) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
+// Access privileges granted by this organization SSO role
 func (o SsoRoleOutput) Privileges() SsoRolePrivilegeArrayOutput {
 	return o.ApplyT(func(v *SsoRole) SsoRolePrivilegeArrayOutput { return v.Privileges }).(SsoRolePrivilegeArrayOutput)
 }

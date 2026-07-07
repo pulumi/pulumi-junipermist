@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class ApUsbConfig
     {
         /// <summary>
-        /// Only if `Type`==`Imagotag`
+        /// Only if `Type`==`Imagotag`. CA certificate used to validate the Imagotag service certificate
         /// </summary>
         public readonly string? Cacert;
         /// <summary>
@@ -26,15 +26,15 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Only if `Type`==`Imagotag`
+        /// Only if `Type`==`Imagotag`. Imagotag service host or IP address contacted by the AP
         /// </summary>
         public readonly string? Host;
         /// <summary>
-        /// Only if `Type`==`Imagotag`
+        /// Only if `Type`==`Imagotag`. TCP port used to reach the Imagotag service
         /// </summary>
         public readonly int? Port;
         /// <summary>
-        /// usb config type. enum: `Hanshow`, `Imagotag`, `Solum`
+        /// USB integration type for this legacy AP USB configuration
         /// </summary>
         public readonly string? Type;
         /// <summary>

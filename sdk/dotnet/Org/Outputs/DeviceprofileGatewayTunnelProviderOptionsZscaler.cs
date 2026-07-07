@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class DeviceprofileGatewayTunnelProviderOptionsZscaler
     {
+        /// <summary>
+        /// Whether Zscaler blocks internet access until the Acceptable Use Policy is accepted
+        /// </summary>
         public readonly bool? AupBlockInternetUntilAccepted;
         /// <summary>
         /// Can only be `True` when `AuthRequired`==`False`, display Acceptable Use Policy (AUP)
@@ -47,7 +50,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? OfwEnabled;
         /// <summary>
-        /// `sub-locations` can be used for specific uses cases to define different configuration based on the user network
+        /// Per-network Zscaler sub-location settings
         /// </summary>
         public readonly ImmutableArray<Outputs.DeviceprofileGatewayTunnelProviderOptionsZscalerSubLocation> SubLocations;
         /// <summary>

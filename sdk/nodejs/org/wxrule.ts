@@ -65,34 +65,43 @@ export class Wxrule extends pulumi.CustomResource {
     }
 
     /**
-     * type of action, allow / block. enum: `allow`, `block`
+     * Allow or block behavior applied by this WxLAN rule
      */
     declare public readonly action: pulumi.Output<string>;
+    /**
+     * WxLAN tag identifiers applied when this rule matches
+     */
     declare public readonly applyTags: pulumi.Output<string[] | undefined>;
     /**
-     * Blocked apps (always blocking, ignoring action), the key of Get Application List
+     * Application keys always blocked by this rule, regardless of the rule action
      */
     declare public readonly blockedApps: pulumi.Output<string[] | undefined>;
     /**
-     * List of WxTag UUID to indicate these tags are allowed access
+     * Destination WxLAN tag identifiers explicitly allowed by this rule
      */
     declare public readonly dstAllowWxtags: pulumi.Output<string[]>;
     /**
-     * List of WxTag UUID to indicate these tags are blocked access
+     * Destination WxLAN tag identifiers explicitly denied by this rule
      */
     declare public readonly dstDenyWxtags: pulumi.Output<string[]>;
     /**
-     * List of WxTag UUID
+     * Destination WxLAN tag identifiers matched by this rule
      */
     declare public readonly dstWxtags: pulumi.Output<string[]>;
+    /**
+     * Whether this WxLAN rule is enabled
+     */
     declare public readonly enabled: pulumi.Output<boolean>;
     /**
-     * Order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+     * Lookup priority for WxLAN rules; larger positive values match first, and -1 means LAST. Uniqueness is not checked
      */
     declare public readonly order: pulumi.Output<number>;
+    /**
+     * Owning organization associated with this WxLAN rule
+     */
     declare public readonly orgId: pulumi.Output<string>;
     /**
-     * List of WxTag UUID to determine if this rule would match
+     * Source WxLAN tag identifiers that must match for this rule to apply
      */
     declare public readonly srcWxtags: pulumi.Output<string[]>;
     /**
@@ -160,34 +169,43 @@ export class Wxrule extends pulumi.CustomResource {
  */
 export interface WxruleState {
     /**
-     * type of action, allow / block. enum: `allow`, `block`
+     * Allow or block behavior applied by this WxLAN rule
      */
     action?: pulumi.Input<string | undefined>;
+    /**
+     * WxLAN tag identifiers applied when this rule matches
+     */
     applyTags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Blocked apps (always blocking, ignoring action), the key of Get Application List
+     * Application keys always blocked by this rule, regardless of the rule action
      */
     blockedApps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * List of WxTag UUID to indicate these tags are allowed access
+     * Destination WxLAN tag identifiers explicitly allowed by this rule
      */
     dstAllowWxtags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * List of WxTag UUID to indicate these tags are blocked access
+     * Destination WxLAN tag identifiers explicitly denied by this rule
      */
     dstDenyWxtags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * List of WxTag UUID
+     * Destination WxLAN tag identifiers matched by this rule
      */
     dstWxtags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether this WxLAN rule is enabled
+     */
     enabled?: pulumi.Input<boolean | undefined>;
     /**
-     * Order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+     * Lookup priority for WxLAN rules; larger positive values match first, and -1 means LAST. Uniqueness is not checked
      */
     order?: pulumi.Input<number | undefined>;
+    /**
+     * Owning organization associated with this WxLAN rule
+     */
     orgId?: pulumi.Input<string | undefined>;
     /**
-     * List of WxTag UUID to determine if this rule would match
+     * Source WxLAN tag identifiers that must match for this rule to apply
      */
     srcWxtags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -201,34 +219,43 @@ export interface WxruleState {
  */
 export interface WxruleArgs {
     /**
-     * type of action, allow / block. enum: `allow`, `block`
+     * Allow or block behavior applied by this WxLAN rule
      */
     action: pulumi.Input<string>;
+    /**
+     * WxLAN tag identifiers applied when this rule matches
+     */
     applyTags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Blocked apps (always blocking, ignoring action), the key of Get Application List
+     * Application keys always blocked by this rule, regardless of the rule action
      */
     blockedApps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * List of WxTag UUID to indicate these tags are allowed access
+     * Destination WxLAN tag identifiers explicitly allowed by this rule
      */
     dstAllowWxtags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * List of WxTag UUID to indicate these tags are blocked access
+     * Destination WxLAN tag identifiers explicitly denied by this rule
      */
     dstDenyWxtags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * List of WxTag UUID
+     * Destination WxLAN tag identifiers matched by this rule
      */
     dstWxtags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether this WxLAN rule is enabled
+     */
     enabled?: pulumi.Input<boolean | undefined>;
     /**
-     * Order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+     * Lookup priority for WxLAN rules; larger positive values match first, and -1 means LAST. Uniqueness is not checked
      */
     order: pulumi.Input<number>;
+    /**
+     * Owning organization associated with this WxLAN rule
+     */
     orgId: pulumi.Input<string>;
     /**
-     * List of WxTag UUID to determine if this rule would match
+     * Source WxLAN tag identifiers that must match for this rule to apply
      */
     srcWxtags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**

@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<int>? _classPercentages;
 
         /// <summary>
-        /// percentages for different class of traffic: high / medium / low / best-effort adding up to 100
+        /// Bandwidth percentages for high, medium, low, and best-effort traffic classes
         /// </summary>
         public InputList<int> ClassPercentages
         {
@@ -24,9 +24,15 @@ namespace Pulumi.JuniperMist.Org.Inputs
             set => _classPercentages = value;
         }
 
+        /// <summary>
+        /// Whether traffic shaping is enabled for this VPN path
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// Maximum transmit rate for this VPN path, in Kbps; `Null` means no explicit limit
+        /// </summary>
         [Input("maxTxKbps")]
         public Input<int>? MaxTxKbps { get; set; }
 

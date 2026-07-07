@@ -72,9 +72,17 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.aeLacpForceUp);
     }
 
+    /**
+     * Whether the port participates in an aggregated Ethernet interface
+     * 
+     */
     @Import(name="aggregated")
     private @Nullable Output<Boolean> aggregated;
 
+    /**
+     * @return Whether the port participates in an aggregated Ethernet interface
+     * 
+     */
     public Optional<Output<Boolean>> aggregated() {
         return Optional.ofNullable(this.aggregated);
     }
@@ -109,9 +117,17 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * Whether Ethernet autonegotiation is disabled on the port
+     * 
+     */
     @Import(name="disableAutoneg")
     private @Nullable Output<Boolean> disableAutoneg;
 
+    /**
+     * @return Whether Ethernet autonegotiation is disabled on the port
+     * 
+     */
     public Optional<Output<Boolean>> disableAutoneg() {
         return Optional.ofNullable(this.disableAutoneg);
     }
@@ -132,14 +148,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * if `wanType`==`dsl`. enum: `adsl`, `vdsl`
+     * If `wanType`==`dsl`. DSL technology used by the WAN port
      * 
      */
     @Import(name="dslType")
     private @Nullable Output<String> dslType;
 
     /**
-     * @return if `wanType`==`dsl`. enum: `adsl`, `vdsl`
+     * @return If `wanType`==`dsl`. DSL technology used by the WAN port
      * 
      */
     public Optional<Output<String>> dslType() {
@@ -177,14 +193,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * enum: `auto`, `full`, `half`
+     * Ethernet duplex mode configured on the port
      * 
      */
     @Import(name="duplex")
     private @Nullable Output<String> duplex;
 
     /**
-     * @return enum: `auto`, `full`, `half`
+     * @return Ethernet duplex mode configured on the port
      * 
      */
     public Optional<Output<String>> duplex() {
@@ -192,14 +208,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Junos IP Config
+     * Layer 3 IP configuration for the port
      * 
      */
     @Import(name="ipConfig")
     private @Nullable Output<GatewayPortConfigIpConfigArgs> ipConfig;
 
     /**
-     * @return Junos IP Config
+     * @return Layer 3 IP configuration for the port
      * 
      */
     public Optional<Output<GatewayPortConfigIpConfigArgs>> ipConfig() {
@@ -207,14 +223,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * If `wanType`==`lte`
+     * If `wanType`==`lte`. APN used by the LTE uplink
      * 
      */
     @Import(name="lteApn")
     private @Nullable Output<String> lteApn;
 
     /**
-     * @return If `wanType`==`lte`
+     * @return If `wanType`==`lte`. APN used by the LTE uplink
      * 
      */
     public Optional<Output<String>> lteApn() {
@@ -222,36 +238,44 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * if `wanType`==`lte`. enum: `chap`, `none`, `pap`
+     * If `wanType`==`lte`. Authentication method used by the LTE uplink
      * 
      */
     @Import(name="lteAuth")
     private @Nullable Output<String> lteAuth;
 
     /**
-     * @return if `wanType`==`lte`. enum: `chap`, `none`, `pap`
+     * @return If `wanType`==`lte`. Authentication method used by the LTE uplink
      * 
      */
     public Optional<Output<String>> lteAuth() {
         return Optional.ofNullable(this.lteAuth);
     }
 
+    /**
+     * Whether the LTE uplink is used as a backup WAN connection
+     * 
+     */
     @Import(name="lteBackup")
     private @Nullable Output<Boolean> lteBackup;
 
+    /**
+     * @return Whether the LTE uplink is used as a backup WAN connection
+     * 
+     */
     public Optional<Output<Boolean>> lteBackup() {
         return Optional.ofNullable(this.lteBackup);
     }
 
     /**
-     * If `wanType`==`lte`
+     * If `wanType`==`lte`. Password used for LTE uplink authentication
      * 
      */
     @Import(name="ltePassword")
     private @Nullable Output<String> ltePassword;
 
     /**
-     * @return If `wanType`==`lte`
+     * @return If `wanType`==`lte`. Password used for LTE uplink authentication
      * 
      */
     public Optional<Output<String>> ltePassword() {
@@ -259,36 +283,44 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * If `wanType`==`lte`
+     * If `wanType`==`lte`. Username used for LTE uplink authentication
      * 
      */
     @Import(name="lteUsername")
     private @Nullable Output<String> lteUsername;
 
     /**
-     * @return If `wanType`==`lte`
+     * @return If `wanType`==`lte`. Username used for LTE uplink authentication
      * 
      */
     public Optional<Output<String>> lteUsername() {
         return Optional.ofNullable(this.lteUsername);
     }
 
+    /**
+     * Layer 3 MTU configured on the port
+     * 
+     */
     @Import(name="mtu")
     private @Nullable Output<Integer> mtu;
 
+    /**
+     * @return Layer 3 MTU configured on the port
+     * 
+     */
     public Optional<Output<Integer>> mtu() {
         return Optional.ofNullable(this.mtu);
     }
 
     /**
-     * Name that we&#39;ll use to derive config
+     * Interface name used to derive device configuration
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name that we&#39;ll use to derive config
+     * @return Interface name used to derive device configuration
      * 
      */
     public Optional<Output<String>> name() {
@@ -311,23 +343,31 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * For Q-in-Q
+     * For Q-in-Q. Outer VLAN ID used for QinQ encapsulation
      * 
      */
     @Import(name="outerVlanId")
     private @Nullable Output<Integer> outerVlanId;
 
     /**
-     * @return For Q-in-Q
+     * @return For Q-in-Q. Outer VLAN ID used for QinQ encapsulation
      * 
      */
     public Optional<Output<Integer>> outerVlanId() {
         return Optional.ofNullable(this.outerVlanId);
     }
 
+    /**
+     * Whether PoE output is disabled on the port
+     * 
+     */
     @Import(name="poeDisabled")
     private @Nullable Output<Boolean> poeDisabled;
 
+    /**
+     * @return Whether PoE output is disabled on the port
+     * 
+     */
     public Optional<Output<Boolean>> poeDisabled() {
         return Optional.ofNullable(this.poeDisabled);
     }
@@ -378,14 +418,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * If HA mode
+     * If HA mode. Whether the port participates in the redundant Ethernet configuration
      * 
      */
     @Import(name="redundant")
     private @Nullable Output<Boolean> redundant;
 
     /**
-     * @return If HA mode
+     * @return If HA mode. Whether the port participates in the redundant Ethernet configuration
      * 
      */
     public Optional<Output<Boolean>> redundant() {
@@ -423,14 +463,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * If HA mode
+     * If HA mode. Node associated with the redundant Ethernet interface
      * 
      */
     @Import(name="rethNode")
     private @Nullable Output<String> rethNode;
 
     /**
-     * @return If HA mode
+     * @return If HA mode. Node associated with the redundant Ethernet interface
      * 
      */
     public Optional<Output<String>> rethNode() {
@@ -438,23 +478,31 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * SSR only - supporting vlan-based redundancy (matching the size of `networks`)
+     * If HA mode and for SSR only. Per-network node assignment used for VLAN-based redundancy
      * 
      */
     @Import(name="rethNodes")
     private @Nullable Output<List<String>> rethNodes;
 
     /**
-     * @return SSR only - supporting vlan-based redundancy (matching the size of `networks`)
+     * @return If HA mode and for SSR only. Per-network node assignment used for VLAN-based redundancy
      * 
      */
     public Optional<Output<List<String>>> rethNodes() {
         return Optional.ofNullable(this.rethNodes);
     }
 
+    /**
+     * Link speed configured on the port
+     * 
+     */
     @Import(name="speed")
     private @Nullable Output<String> speed;
 
+    /**
+     * @return Link speed configured on the port
+     * 
+     */
     public Optional<Output<String>> speed() {
         return Optional.ofNullable(this.speed);
     }
@@ -475,58 +523,74 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * For SSR only
+     * For SSR only. Port range configured on the interface
      * 
      */
     @Import(name="svrPortRange")
     private @Nullable Output<String> svrPortRange;
 
     /**
-     * @return For SSR only
+     * @return For SSR only. Port range configured on the interface
      * 
      */
     public Optional<Output<String>> svrPortRange() {
         return Optional.ofNullable(this.svrPortRange);
     }
 
+    /**
+     * Traffic shaping settings applied to the port
+     * 
+     */
     @Import(name="trafficShaping")
     private @Nullable Output<GatewayPortConfigTrafficShapingArgs> trafficShaping;
 
+    /**
+     * @return Traffic shaping settings applied to the port
+     * 
+     */
     public Optional<Output<GatewayPortConfigTrafficShapingArgs>> trafficShaping() {
         return Optional.ofNullable(this.trafficShaping);
     }
 
     /**
-     * port usage name. enum: `haControl`, `haData`, `lan`, `wan`
+     * Logical usage assigned to the port
      * 
      */
     @Import(name="usage", required=true)
     private Output<String> usage;
 
     /**
-     * @return port usage name. enum: `haControl`, `haData`, `lan`, `wan`
+     * @return Logical usage assigned to the port
      * 
      */
     public Output<String> usage() {
         return this.usage;
     }
 
+    /**
+     * VLAN ID or variable used when the WAN interface is carried on a VLAN
+     * 
+     */
     @Import(name="vlanId")
     private @Nullable Output<String> vlanId;
 
+    /**
+     * @return VLAN ID or variable used when the WAN interface is carried on a VLAN
+     * 
+     */
     public Optional<Output<String>> vlanId() {
         return Optional.ofNullable(this.vlanId);
     }
 
     /**
-     * Property key is the VPN name
+     * Per-VPN path settings for traffic that uses this port
      * 
      */
     @Import(name="vpnPaths")
     private @Nullable Output<Map<String,GatewayPortConfigVpnPathsArgs>> vpnPaths;
 
     /**
-     * @return Property key is the VPN name
+     * @return Per-VPN path settings for traffic that uses this port
      * 
      */
     public Optional<Output<Map<String,GatewayPortConfigVpnPathsArgs>>> vpnPaths() {
@@ -534,14 +598,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Only when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
+     * Only when `wanType`==`broadband`. ARP policer profile applied to the WAN port
      * 
      */
     @Import(name="wanArpPolicer")
     private @Nullable Output<String> wanArpPolicer;
 
     /**
-     * @return Only when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
+     * @return Only when `wanType`==`broadband`. ARP policer profile applied to the WAN port
      * 
      */
     public Optional<Output<String>> wanArpPolicer() {
@@ -609,14 +673,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
+     * Only if `usage`==`wan`. Networks reachable through this WAN port for policy definition
      * 
      */
     @Import(name="wanNetworks")
     private @Nullable Output<List<String>> wanNetworks;
 
     /**
-     * @return Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
+     * @return Only if `usage`==`wan`. Networks reachable through this WAN port for policy definition
      * 
      */
     public Optional<Output<List<String>>> wanNetworks() {
@@ -624,14 +688,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Only if `usage`==`wan`
+     * Optional WAN health probe override settings for this port
      * 
      */
     @Import(name="wanProbeOverride")
     private @Nullable Output<GatewayPortConfigWanProbeOverrideArgs> wanProbeOverride;
 
     /**
-     * @return Only if `usage`==`wan`
+     * @return Optional WAN health probe override settings for this port
      * 
      */
     public Optional<Output<GatewayPortConfigWanProbeOverrideArgs>> wanProbeOverride() {
@@ -639,14 +703,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
+     * Source NAT settings applied to traffic leaving this WAN port
      * 
      */
     @Import(name="wanSourceNat")
     private @Nullable Output<GatewayPortConfigWanSourceNatArgs> wanSourceNat;
 
     /**
-     * @return Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
+     * @return Source NAT settings applied to traffic leaving this WAN port
      * 
      */
     public Optional<Output<GatewayPortConfigWanSourceNatArgs>> wanSourceNat() {
@@ -654,14 +718,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Controls whether Marvis/scheduler can run speedtest on this port. enum: `auto`, `enabled`, `disabled`
+     * Controls whether Marvis or the scheduler can run speed tests on this WAN port
      * 
      */
     @Import(name="wanSpeedtestMode")
     private @Nullable Output<String> wanSpeedtestMode;
 
     /**
-     * @return Controls whether Marvis/scheduler can run speedtest on this port. enum: `auto`, `enabled`, `disabled`
+     * @return Controls whether Marvis or the scheduler can run speed tests on this WAN port
      * 
      */
     public Optional<Output<String>> wanSpeedtestMode() {
@@ -669,14 +733,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
+     * Only if `usage`==`wan`. WAN uplink type configured on the port
      * 
      */
     @Import(name="wanType")
     private @Nullable Output<String> wanType;
 
     /**
-     * @return Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
+     * @return Only if `usage`==`wan`. WAN uplink type configured on the port
      * 
      */
     public Optional<Output<String>> wanType() {
@@ -817,11 +881,23 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
             return aeLacpForceUp(Output.of(aeLacpForceUp));
         }
 
+        /**
+         * @param aggregated Whether the port participates in an aggregated Ethernet interface
+         * 
+         * @return builder
+         * 
+         */
         public Builder aggregated(@Nullable Output<Boolean> aggregated) {
             $.aggregated = aggregated;
             return this;
         }
 
+        /**
+         * @param aggregated Whether the port participates in an aggregated Ethernet interface
+         * 
+         * @return builder
+         * 
+         */
         public Builder aggregated(Boolean aggregated) {
             return aggregated(Output.of(aggregated));
         }
@@ -868,11 +944,23 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
             return description(Output.of(description));
         }
 
+        /**
+         * @param disableAutoneg Whether Ethernet autonegotiation is disabled on the port
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableAutoneg(@Nullable Output<Boolean> disableAutoneg) {
             $.disableAutoneg = disableAutoneg;
             return this;
         }
 
+        /**
+         * @param disableAutoneg Whether Ethernet autonegotiation is disabled on the port
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableAutoneg(Boolean disableAutoneg) {
             return disableAutoneg(Output.of(disableAutoneg));
         }
@@ -899,7 +987,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dslType if `wanType`==`dsl`. enum: `adsl`, `vdsl`
+         * @param dslType If `wanType`==`dsl`. DSL technology used by the WAN port
          * 
          * @return builder
          * 
@@ -910,7 +998,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dslType if `wanType`==`dsl`. enum: `adsl`, `vdsl`
+         * @param dslType If `wanType`==`dsl`. DSL technology used by the WAN port
          * 
          * @return builder
          * 
@@ -962,7 +1050,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param duplex enum: `auto`, `full`, `half`
+         * @param duplex Ethernet duplex mode configured on the port
          * 
          * @return builder
          * 
@@ -973,7 +1061,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param duplex enum: `auto`, `full`, `half`
+         * @param duplex Ethernet duplex mode configured on the port
          * 
          * @return builder
          * 
@@ -983,7 +1071,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param ipConfig Junos IP Config
+         * @param ipConfig Layer 3 IP configuration for the port
          * 
          * @return builder
          * 
@@ -994,7 +1082,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param ipConfig Junos IP Config
+         * @param ipConfig Layer 3 IP configuration for the port
          * 
          * @return builder
          * 
@@ -1004,7 +1092,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param lteApn If `wanType`==`lte`
+         * @param lteApn If `wanType`==`lte`. APN used by the LTE uplink
          * 
          * @return builder
          * 
@@ -1015,7 +1103,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param lteApn If `wanType`==`lte`
+         * @param lteApn If `wanType`==`lte`. APN used by the LTE uplink
          * 
          * @return builder
          * 
@@ -1025,7 +1113,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param lteAuth if `wanType`==`lte`. enum: `chap`, `none`, `pap`
+         * @param lteAuth If `wanType`==`lte`. Authentication method used by the LTE uplink
          * 
          * @return builder
          * 
@@ -1036,7 +1124,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param lteAuth if `wanType`==`lte`. enum: `chap`, `none`, `pap`
+         * @param lteAuth If `wanType`==`lte`. Authentication method used by the LTE uplink
          * 
          * @return builder
          * 
@@ -1045,17 +1133,29 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
             return lteAuth(Output.of(lteAuth));
         }
 
+        /**
+         * @param lteBackup Whether the LTE uplink is used as a backup WAN connection
+         * 
+         * @return builder
+         * 
+         */
         public Builder lteBackup(@Nullable Output<Boolean> lteBackup) {
             $.lteBackup = lteBackup;
             return this;
         }
 
+        /**
+         * @param lteBackup Whether the LTE uplink is used as a backup WAN connection
+         * 
+         * @return builder
+         * 
+         */
         public Builder lteBackup(Boolean lteBackup) {
             return lteBackup(Output.of(lteBackup));
         }
 
         /**
-         * @param ltePassword If `wanType`==`lte`
+         * @param ltePassword If `wanType`==`lte`. Password used for LTE uplink authentication
          * 
          * @return builder
          * 
@@ -1066,7 +1166,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param ltePassword If `wanType`==`lte`
+         * @param ltePassword If `wanType`==`lte`. Password used for LTE uplink authentication
          * 
          * @return builder
          * 
@@ -1076,7 +1176,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param lteUsername If `wanType`==`lte`
+         * @param lteUsername If `wanType`==`lte`. Username used for LTE uplink authentication
          * 
          * @return builder
          * 
@@ -1087,7 +1187,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param lteUsername If `wanType`==`lte`
+         * @param lteUsername If `wanType`==`lte`. Username used for LTE uplink authentication
          * 
          * @return builder
          * 
@@ -1096,17 +1196,29 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
             return lteUsername(Output.of(lteUsername));
         }
 
+        /**
+         * @param mtu Layer 3 MTU configured on the port
+         * 
+         * @return builder
+         * 
+         */
         public Builder mtu(@Nullable Output<Integer> mtu) {
             $.mtu = mtu;
             return this;
         }
 
+        /**
+         * @param mtu Layer 3 MTU configured on the port
+         * 
+         * @return builder
+         * 
+         */
         public Builder mtu(Integer mtu) {
             return mtu(Output.of(mtu));
         }
 
         /**
-         * @param name Name that we&#39;ll use to derive config
+         * @param name Interface name used to derive device configuration
          * 
          * @return builder
          * 
@@ -1117,7 +1229,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name Name that we&#39;ll use to derive config
+         * @param name Interface name used to derive device configuration
          * 
          * @return builder
          * 
@@ -1158,7 +1270,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param outerVlanId For Q-in-Q
+         * @param outerVlanId For Q-in-Q. Outer VLAN ID used for QinQ encapsulation
          * 
          * @return builder
          * 
@@ -1169,7 +1281,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param outerVlanId For Q-in-Q
+         * @param outerVlanId For Q-in-Q. Outer VLAN ID used for QinQ encapsulation
          * 
          * @return builder
          * 
@@ -1178,11 +1290,23 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
             return outerVlanId(Output.of(outerVlanId));
         }
 
+        /**
+         * @param poeDisabled Whether PoE output is disabled on the port
+         * 
+         * @return builder
+         * 
+         */
         public Builder poeDisabled(@Nullable Output<Boolean> poeDisabled) {
             $.poeDisabled = poeDisabled;
             return this;
         }
 
+        /**
+         * @param poeDisabled Whether PoE output is disabled on the port
+         * 
+         * @return builder
+         * 
+         */
         public Builder poeDisabled(Boolean poeDisabled) {
             return poeDisabled(Output.of(poeDisabled));
         }
@@ -1251,7 +1375,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param redundant If HA mode
+         * @param redundant If HA mode. Whether the port participates in the redundant Ethernet configuration
          * 
          * @return builder
          * 
@@ -1262,7 +1386,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param redundant If HA mode
+         * @param redundant If HA mode. Whether the port participates in the redundant Ethernet configuration
          * 
          * @return builder
          * 
@@ -1314,7 +1438,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param rethNode If HA mode
+         * @param rethNode If HA mode. Node associated with the redundant Ethernet interface
          * 
          * @return builder
          * 
@@ -1325,7 +1449,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param rethNode If HA mode
+         * @param rethNode If HA mode. Node associated with the redundant Ethernet interface
          * 
          * @return builder
          * 
@@ -1335,7 +1459,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param rethNodes SSR only - supporting vlan-based redundancy (matching the size of `networks`)
+         * @param rethNodes If HA mode and for SSR only. Per-network node assignment used for VLAN-based redundancy
          * 
          * @return builder
          * 
@@ -1346,7 +1470,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param rethNodes SSR only - supporting vlan-based redundancy (matching the size of `networks`)
+         * @param rethNodes If HA mode and for SSR only. Per-network node assignment used for VLAN-based redundancy
          * 
          * @return builder
          * 
@@ -1356,7 +1480,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param rethNodes SSR only - supporting vlan-based redundancy (matching the size of `networks`)
+         * @param rethNodes If HA mode and for SSR only. Per-network node assignment used for VLAN-based redundancy
          * 
          * @return builder
          * 
@@ -1365,11 +1489,23 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
             return rethNodes(List.of(rethNodes));
         }
 
+        /**
+         * @param speed Link speed configured on the port
+         * 
+         * @return builder
+         * 
+         */
         public Builder speed(@Nullable Output<String> speed) {
             $.speed = speed;
             return this;
         }
 
+        /**
+         * @param speed Link speed configured on the port
+         * 
+         * @return builder
+         * 
+         */
         public Builder speed(String speed) {
             return speed(Output.of(speed));
         }
@@ -1396,7 +1532,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param svrPortRange For SSR only
+         * @param svrPortRange For SSR only. Port range configured on the interface
          * 
          * @return builder
          * 
@@ -1407,7 +1543,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param svrPortRange For SSR only
+         * @param svrPortRange For SSR only. Port range configured on the interface
          * 
          * @return builder
          * 
@@ -1416,17 +1552,29 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
             return svrPortRange(Output.of(svrPortRange));
         }
 
+        /**
+         * @param trafficShaping Traffic shaping settings applied to the port
+         * 
+         * @return builder
+         * 
+         */
         public Builder trafficShaping(@Nullable Output<GatewayPortConfigTrafficShapingArgs> trafficShaping) {
             $.trafficShaping = trafficShaping;
             return this;
         }
 
+        /**
+         * @param trafficShaping Traffic shaping settings applied to the port
+         * 
+         * @return builder
+         * 
+         */
         public Builder trafficShaping(GatewayPortConfigTrafficShapingArgs trafficShaping) {
             return trafficShaping(Output.of(trafficShaping));
         }
 
         /**
-         * @param usage port usage name. enum: `haControl`, `haData`, `lan`, `wan`
+         * @param usage Logical usage assigned to the port
          * 
          * @return builder
          * 
@@ -1437,7 +1585,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param usage port usage name. enum: `haControl`, `haData`, `lan`, `wan`
+         * @param usage Logical usage assigned to the port
          * 
          * @return builder
          * 
@@ -1446,17 +1594,29 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
             return usage(Output.of(usage));
         }
 
+        /**
+         * @param vlanId VLAN ID or variable used when the WAN interface is carried on a VLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlanId(@Nullable Output<String> vlanId) {
             $.vlanId = vlanId;
             return this;
         }
 
+        /**
+         * @param vlanId VLAN ID or variable used when the WAN interface is carried on a VLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlanId(String vlanId) {
             return vlanId(Output.of(vlanId));
         }
 
         /**
-         * @param vpnPaths Property key is the VPN name
+         * @param vpnPaths Per-VPN path settings for traffic that uses this port
          * 
          * @return builder
          * 
@@ -1467,7 +1627,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param vpnPaths Property key is the VPN name
+         * @param vpnPaths Per-VPN path settings for traffic that uses this port
          * 
          * @return builder
          * 
@@ -1477,7 +1637,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param wanArpPolicer Only when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
+         * @param wanArpPolicer Only when `wanType`==`broadband`. ARP policer profile applied to the WAN port
          * 
          * @return builder
          * 
@@ -1488,7 +1648,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param wanArpPolicer Only when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
+         * @param wanArpPolicer Only when `wanType`==`broadband`. ARP policer profile applied to the WAN port
          * 
          * @return builder
          * 
@@ -1582,7 +1742,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param wanNetworks Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
+         * @param wanNetworks Only if `usage`==`wan`. Networks reachable through this WAN port for policy definition
          * 
          * @return builder
          * 
@@ -1593,7 +1753,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param wanNetworks Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
+         * @param wanNetworks Only if `usage`==`wan`. Networks reachable through this WAN port for policy definition
          * 
          * @return builder
          * 
@@ -1603,7 +1763,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param wanNetworks Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
+         * @param wanNetworks Only if `usage`==`wan`. Networks reachable through this WAN port for policy definition
          * 
          * @return builder
          * 
@@ -1613,7 +1773,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param wanProbeOverride Only if `usage`==`wan`
+         * @param wanProbeOverride Optional WAN health probe override settings for this port
          * 
          * @return builder
          * 
@@ -1624,7 +1784,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param wanProbeOverride Only if `usage`==`wan`
+         * @param wanProbeOverride Optional WAN health probe override settings for this port
          * 
          * @return builder
          * 
@@ -1634,7 +1794,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param wanSourceNat Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
+         * @param wanSourceNat Source NAT settings applied to traffic leaving this WAN port
          * 
          * @return builder
          * 
@@ -1645,7 +1805,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param wanSourceNat Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
+         * @param wanSourceNat Source NAT settings applied to traffic leaving this WAN port
          * 
          * @return builder
          * 
@@ -1655,7 +1815,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param wanSpeedtestMode Controls whether Marvis/scheduler can run speedtest on this port. enum: `auto`, `enabled`, `disabled`
+         * @param wanSpeedtestMode Controls whether Marvis or the scheduler can run speed tests on this WAN port
          * 
          * @return builder
          * 
@@ -1666,7 +1826,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param wanSpeedtestMode Controls whether Marvis/scheduler can run speedtest on this port. enum: `auto`, `enabled`, `disabled`
+         * @param wanSpeedtestMode Controls whether Marvis or the scheduler can run speed tests on this WAN port
          * 
          * @return builder
          * 
@@ -1676,7 +1836,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param wanType Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
+         * @param wanType Only if `usage`==`wan`. WAN uplink type configured on the port
          * 
          * @return builder
          * 
@@ -1687,7 +1847,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param wanType Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
+         * @param wanType Only if `usage`==`wan`. WAN uplink type configured on the port
          * 
          * @return builder
          * 

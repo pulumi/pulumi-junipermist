@@ -65,9 +65,17 @@ public class DeviceprofileAssign extends com.pulumi.resources.CustomResource {
     public Output<String> deviceprofileId() {
         return this.deviceprofileId;
     }
+    /**
+     * List of MAC addresses included in the request
+     * 
+     */
     @Export(name="macs", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> macs;
 
+    /**
+     * @return List of MAC addresses included in the request
+     * 
+     */
     public Output<List<String>> macs() {
         return this.macs;
     }

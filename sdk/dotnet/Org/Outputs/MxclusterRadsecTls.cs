@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class MxclusterRadsecTls
     {
+        /// <summary>
+        /// Name or identifier of the TLS keypair used by RadSec
+        /// </summary>
         public readonly string? Keypair;
 
         [OutputConstructor]

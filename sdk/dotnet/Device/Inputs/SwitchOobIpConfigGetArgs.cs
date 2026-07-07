@@ -12,9 +12,15 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class SwitchOobIpConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Default gateway for the out-of-band management interface when `Type`==`Static`
+        /// </summary>
         [Input("gateway")]
         public Input<string>? Gateway { get; set; }
 
+        /// <summary>
+        /// Static IPv4 address for the out-of-band management interface when `Type`==`Static`
+        /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
@@ -31,7 +37,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// enum: `Dhcp`, `Static`
+        /// IP assignment mode for the out-of-band management interface
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

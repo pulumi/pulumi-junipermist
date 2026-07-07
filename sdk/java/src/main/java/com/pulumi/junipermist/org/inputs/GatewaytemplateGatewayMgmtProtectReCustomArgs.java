@@ -32,23 +32,31 @@ public final class GatewaytemplateGatewayMgmtProtectReCustomArgs extends com.pul
     }
 
     /**
-     * enum: `any`, `icmp`, `tcp`, `udp`
+     * Transport protocol matched by this custom Protect RE ACL
      * 
      */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
     /**
-     * @return enum: `any`, `icmp`, `tcp`, `udp`
+     * @return Transport protocol matched by this custom Protect RE ACL
      * 
      */
     public Optional<Output<String>> protocol() {
         return Optional.ofNullable(this.protocol);
     }
 
+    /**
+     * Source subnets matched by this custom Protect RE ACL
+     * 
+     */
     @Import(name="subnets")
     private @Nullable Output<List<String>> subnets;
 
+    /**
+     * @return Source subnets matched by this custom Protect RE ACL
+     * 
+     */
     public Optional<Output<List<String>>> subnets() {
         return Optional.ofNullable(this.subnets);
     }
@@ -101,7 +109,7 @@ public final class GatewaytemplateGatewayMgmtProtectReCustomArgs extends com.pul
         }
 
         /**
-         * @param protocol enum: `any`, `icmp`, `tcp`, `udp`
+         * @param protocol Transport protocol matched by this custom Protect RE ACL
          * 
          * @return builder
          * 
@@ -112,7 +120,7 @@ public final class GatewaytemplateGatewayMgmtProtectReCustomArgs extends com.pul
         }
 
         /**
-         * @param protocol enum: `any`, `icmp`, `tcp`, `udp`
+         * @param protocol Transport protocol matched by this custom Protect RE ACL
          * 
          * @return builder
          * 
@@ -121,15 +129,33 @@ public final class GatewaytemplateGatewayMgmtProtectReCustomArgs extends com.pul
             return protocol(Output.of(protocol));
         }
 
+        /**
+         * @param subnets Source subnets matched by this custom Protect RE ACL
+         * 
+         * @return builder
+         * 
+         */
         public Builder subnets(@Nullable Output<List<String>> subnets) {
             $.subnets = subnets;
             return this;
         }
 
+        /**
+         * @param subnets Source subnets matched by this custom Protect RE ACL
+         * 
+         * @return builder
+         * 
+         */
         public Builder subnets(List<String> subnets) {
             return subnets(Output.of(subnets));
         }
 
+        /**
+         * @param subnets Source subnets matched by this custom Protect RE ACL
+         * 
+         * @return builder
+         * 
+         */
         public Builder subnets(String... subnets) {
             return subnets(List.of(subnets));
         }

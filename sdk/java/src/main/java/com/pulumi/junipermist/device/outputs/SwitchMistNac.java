@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SwitchMistNac {
+    /**
+     * @return Whether Mist NAC RadSec is enabled for the switch
+     * 
+     */
     private @Nullable Boolean enabled;
+    /**
+     * @return Switch network used for Mist NAC RadSec connectivity
+     * 
+     */
     private @Nullable String network;
 
     private SwitchMistNac() {}
+    /**
+     * @return Whether Mist NAC RadSec is enabled for the switch
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return Switch network used for Mist NAC RadSec connectivity
+     * 
+     */
     public Optional<String> network() {
         return Optional.ofNullable(this.network);
     }

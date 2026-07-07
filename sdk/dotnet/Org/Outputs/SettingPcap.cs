@@ -13,9 +13,12 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class SettingPcap
     {
+        /// <summary>
+        /// Storage bucket name used for organization packet capture files
+        /// </summary>
         public readonly string? Bucket;
         /// <summary>
-        /// Max_len of non-management packets to capture
+        /// Maximum length of non-management packets to capture, in bytes
         /// </summary>
         public readonly int? MaxPktLen;
 

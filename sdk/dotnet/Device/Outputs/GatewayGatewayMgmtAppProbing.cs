@@ -14,10 +14,16 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class GatewayGatewayMgmtAppProbing
     {
         /// <summary>
-        /// APp-keys from List Applications
+        /// Predefined application keys to probe
         /// </summary>
         public readonly ImmutableArray<string> Apps;
+        /// <summary>
+        /// User-defined application probe definitions
+        /// </summary>
         public readonly ImmutableArray<Outputs.GatewayGatewayMgmtAppProbingCustomApp> CustomApps;
+        /// <summary>
+        /// Whether gateway application probing is enabled
+        /// </summary>
         public readonly bool? Enabled;
 
         [OutputConstructor]

@@ -12,55 +12,87 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GatewaytemplateIpConfigs {
+    /**
+     * @return Static IPv4 address for the gateway network interface when `type`==`static`
+     * 
+     */
     private @Nullable String ip;
+    /**
+     * @return Static IPv6 address for the gateway network interface when `type6`==`static`
+     * 
+     */
     private @Nullable String ip6;
+    /**
+     * @return IPv4 netmask or prefix length for the gateway network interface when `type`==`static`
+     * 
+     */
     private @Nullable String netmask;
+    /**
+     * @return IPv6 netmask or prefix length for the gateway network interface when `type6`==`static`
+     * 
+     */
     private @Nullable String netmask6;
     /**
-     * @return Optional list of secondary IPs in CIDR format
+     * @return Additional IPv4 addresses in CIDR notation for this gateway network interface
      * 
      */
     private @Nullable List<String> secondaryIps;
     /**
-     * @return enum: `dhcp`, `static`
+     * @return IPv4 address assignment mode for this gateway network interface
      * 
      */
     private @Nullable String type;
     /**
-     * @return enum: `autoconf`, `dhcp`, `disabled`, `static`
+     * @return IPv6 address assignment mode for this gateway network interface
      * 
      */
     private @Nullable String type6;
 
     private GatewaytemplateIpConfigs() {}
+    /**
+     * @return Static IPv4 address for the gateway network interface when `type`==`static`
+     * 
+     */
     public Optional<String> ip() {
         return Optional.ofNullable(this.ip);
     }
+    /**
+     * @return Static IPv6 address for the gateway network interface when `type6`==`static`
+     * 
+     */
     public Optional<String> ip6() {
         return Optional.ofNullable(this.ip6);
     }
+    /**
+     * @return IPv4 netmask or prefix length for the gateway network interface when `type`==`static`
+     * 
+     */
     public Optional<String> netmask() {
         return Optional.ofNullable(this.netmask);
     }
+    /**
+     * @return IPv6 netmask or prefix length for the gateway network interface when `type6`==`static`
+     * 
+     */
     public Optional<String> netmask6() {
         return Optional.ofNullable(this.netmask6);
     }
     /**
-     * @return Optional list of secondary IPs in CIDR format
+     * @return Additional IPv4 addresses in CIDR notation for this gateway network interface
      * 
      */
     public List<String> secondaryIps() {
         return this.secondaryIps == null ? List.of() : this.secondaryIps;
     }
     /**
-     * @return enum: `dhcp`, `static`
+     * @return IPv4 address assignment mode for this gateway network interface
      * 
      */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return enum: `autoconf`, `dhcp`, `disabled`, `static`
+     * @return IPv6 address assignment mode for this gateway network interface
      * 
      */
     public Optional<String> type6() {

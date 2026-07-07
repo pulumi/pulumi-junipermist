@@ -13,13 +13,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MxedgeTuntermMulticastConfigMdns {
+    /**
+     * @return Whether mDNS forwarding is enabled for the configured VLANs
+     * 
+     */
     private @Nullable Boolean enabled;
+    /**
+     * @return List of VLAN IDs where mDNS forwarding is enabled
+     * 
+     */
     private @Nullable List<String> vlanIds;
 
     private MxedgeTuntermMulticastConfigMdns() {}
+    /**
+     * @return Whether mDNS forwarding is enabled for the configured VLANs
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return List of VLAN IDs where mDNS forwarding is enabled
+     * 
+     */
     public List<String> vlanIds() {
         return this.vlanIds == null ? List.of() : this.vlanIds;
     }

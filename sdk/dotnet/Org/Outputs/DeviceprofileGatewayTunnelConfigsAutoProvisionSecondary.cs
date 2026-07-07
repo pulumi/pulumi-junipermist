@@ -13,9 +13,12 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class DeviceprofileGatewayTunnelConfigsAutoProvisionSecondary
     {
+        /// <summary>
+        /// Probe IP addresses used to monitor auto-provisioned tunnel reachability
+        /// </summary>
         public readonly ImmutableArray<string> ProbeIps;
         /// <summary>
-        /// Optional, only needed if `VarsOnly`==`False`
+        /// WAN interface names used by the auto-provisioned tunnel endpoint
         /// </summary>
         public readonly ImmutableArray<string> WanNames;
 

@@ -17,14 +17,14 @@ public final class ApitokenPrivilegeArgs extends com.pulumi.resources.ResourceAr
     public static final ApitokenPrivilegeArgs Empty = new ApitokenPrivilegeArgs();
 
     /**
-     * access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
+     * Access role granted by this organization privilege
      * 
      */
     @Import(name="role", required=true)
     private Output<String> role;
 
     /**
-     * @return access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
+     * @return Access role granted by this organization privilege
      * 
      */
     public Output<String> role() {
@@ -32,14 +32,14 @@ public final class ApitokenPrivilegeArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * enum: `org`, `site`, `sitegroup`, `orgsites`
+     * Organization hierarchy level where this privilege applies
      * 
      */
     @Import(name="scope", required=true)
     private Output<String> scope;
 
     /**
-     * @return enum: `org`, `site`, `sitegroup`, `orgsites`
+     * @return Organization hierarchy level where this privilege applies
      * 
      */
     public Output<String> scope() {
@@ -104,7 +104,7 @@ public final class ApitokenPrivilegeArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param role access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
+         * @param role Access role granted by this organization privilege
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class ApitokenPrivilegeArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param role access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
+         * @param role Access role granted by this organization privilege
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class ApitokenPrivilegeArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param scope enum: `org`, `site`, `sitegroup`, `orgsites`
+         * @param scope Organization hierarchy level where this privilege applies
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class ApitokenPrivilegeArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param scope enum: `org`, `site`, `sitegroup`, `orgsites`
+         * @param scope Organization hierarchy level where this privilege applies
          * 
          * @return builder
          * 

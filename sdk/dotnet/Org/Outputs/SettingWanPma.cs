@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class SettingWanPma
     {
+        /// <summary>
+        /// Whether PMA is enabled for WAN Assurance
+        /// </summary>
         public readonly bool? Enabled;
 
         [OutputConstructor]

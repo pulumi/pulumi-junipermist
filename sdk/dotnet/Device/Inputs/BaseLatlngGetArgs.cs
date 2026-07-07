@@ -12,9 +12,15 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class BaseLatlngGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Geographic latitude in decimal degrees
+        /// </summary>
         [Input("lat", required: true)]
         public Input<double> Lat { get; set; } = null!;
 
+        /// <summary>
+        /// Geographic longitude in decimal degrees
+        /// </summary>
         [Input("lng", required: true)]
         public Input<double> Lng { get; set; } = null!;
 

@@ -14,6 +14,10 @@ namespace Pulumi.JuniperMist.Device.Inputs
     {
         [Input("ip6s")]
         private InputList<string>? _ip6s;
+
+        /// <summary>
+        /// List of IPv6 probe host addresses used by this WAN override
+        /// </summary>
         public InputList<string> Ip6s
         {
             get => _ip6s ?? (_ip6s = new InputList<string>());
@@ -22,6 +26,10 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
         [Input("ips")]
         private InputList<string>? _ips;
+
+        /// <summary>
+        /// List of IPv4 probe host addresses used by this WAN override
+        /// </summary>
         public InputList<string> Ips
         {
             get => _ips ?? (_ips = new InputList<string>());
@@ -29,7 +37,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// enum: `Broadband`, `Lte`
+        /// WAN probe profile used for health checks on this port
         /// </summary>
         [Input("probeProfile")]
         public Input<string>? ProbeProfile { get; set; }

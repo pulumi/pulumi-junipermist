@@ -12,12 +12,21 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class GatewayRoutingPoliciesTermMatchingVpnPathSlaArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Maximum jitter threshold allowed for the VPN path
+        /// </summary>
         [Input("maxJitter")]
         public Input<int>? MaxJitter { get; set; }
 
+        /// <summary>
+        /// Maximum latency threshold allowed for the VPN path
+        /// </summary>
         [Input("maxLatency")]
         public Input<int>? MaxLatency { get; set; }
 
+        /// <summary>
+        /// Maximum packet-loss threshold allowed for the VPN path
+        /// </summary>
         [Input("maxLoss")]
         public Input<int>? MaxLoss { get; set; }
 

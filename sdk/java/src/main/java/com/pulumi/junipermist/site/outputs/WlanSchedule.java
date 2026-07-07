@@ -12,19 +12,27 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class WlanSchedule {
+    /**
+     * @return Whether the WLAN operating schedule is enabled
+     * 
+     */
     private @Nullable Boolean enabled;
     /**
-     * @return Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+     * @return Time ranges when the WLAN is scheduled to operate
      * 
      */
     private @Nullable WlanScheduleHours hours;
 
     private WlanSchedule() {}
+    /**
+     * @return Whether the WLAN operating schedule is enabled
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+     * @return Time ranges when the WLAN is scheduled to operate
      * 
      */
     public Optional<WlanScheduleHours> hours() {

@@ -12,23 +12,39 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GatewaytemplatePortConfigWanProbeOverride {
+    /**
+     * @return List of IPv6 probe host addresses used by this WAN override
+     * 
+     */
     private @Nullable List<String> ip6s;
+    /**
+     * @return List of IPv4 probe host addresses used by this WAN override
+     * 
+     */
     private @Nullable List<String> ips;
     /**
-     * @return enum: `broadband`, `lte`
+     * @return WAN probe profile used for health checks on this port
      * 
      */
     private @Nullable String probeProfile;
 
     private GatewaytemplatePortConfigWanProbeOverride() {}
+    /**
+     * @return List of IPv6 probe host addresses used by this WAN override
+     * 
+     */
     public List<String> ip6s() {
         return this.ip6s == null ? List.of() : this.ip6s;
     }
+    /**
+     * @return List of IPv4 probe host addresses used by this WAN override
+     * 
+     */
     public List<String> ips() {
         return this.ips == null ? List.of() : this.ips;
     }
     /**
-     * @return enum: `broadband`, `lte`
+     * @return WAN probe profile used for health checks on this port
      * 
      */
     public Optional<String> probeProfile() {

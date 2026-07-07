@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class GatewaytemplateTunnelConfigs
     {
         /// <summary>
-        /// Auto Provisioning configuration for the tunne. This takes precedence over the `Primary` and `Secondary` nodes.
+        /// Provider auto-provisioning settings for tunnel endpoints
         /// </summary>
         public readonly Outputs.GatewaytemplateTunnelConfigsAutoProvision? AutoProvision;
         /// <summary>
@@ -22,11 +22,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly int? IkeLifetime;
         /// <summary>
-        /// Only if `Provider`==`custom-ipsec`. enum: `Aggressive`, `Main`
+        /// Only if `Provider`==`custom-ipsec`. IKE negotiation mode for the tunnel
         /// </summary>
         public readonly string? IkeMode;
         /// <summary>
-        /// If `Provider`==`custom-ipsec`
+        /// If `Provider`==`custom-ipsec`, IKE proposals used for custom IPsec negotiation
         /// </summary>
         public readonly ImmutableArray<Outputs.GatewaytemplateTunnelConfigsIkeProposal> IkeProposals;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly int? IpsecLifetime;
         /// <summary>
-        /// Only if `Provider`==`custom-ipsec`
+        /// Only if `Provider`==`custom-ipsec`. IPsec proposals used for custom IPsec negotiation
         /// </summary>
         public readonly ImmutableArray<Outputs.GatewaytemplateTunnelConfigsIpsecProposal> IpsecProposals;
         /// <summary>
@@ -42,31 +42,31 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? LocalId;
         /// <summary>
-        /// List of Local protected subnet for policy-based IPSec negotiation
+        /// Local protected subnets advertised by this tunnel
         /// </summary>
         public readonly ImmutableArray<string> LocalSubnets;
         /// <summary>
-        /// Required if `Provider`==`zscaler-gre`, `Provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
+        /// Tunnel failover mode used for primary and secondary endpoints
         /// </summary>
         public readonly string? Mode;
         /// <summary>
-        /// If `Provider`==`custom-ipsec` or `Provider`==`prisma-ipsec`, networks reachable via this tunnel
+        /// Destination networks reachable through this tunnel
         /// </summary>
         public readonly ImmutableArray<string> Networks;
         /// <summary>
-        /// Only if `Provider`==`zscaler-ipsec`, `Provider`==`jse-ipsec` or `Provider`==`custom-ipsec`
+        /// Main remote tunnel endpoint settings
         /// </summary>
         public readonly Outputs.GatewaytemplateTunnelConfigsPrimary? Primary;
         /// <summary>
-        /// Only if `Provider`==`custom-ipsec`
+        /// Tunnel health probe settings
         /// </summary>
         public readonly Outputs.GatewaytemplateTunnelConfigsProbe? Probe;
         /// <summary>
-        /// Only if `Provider`==`custom-ipsec`. enum: `Gre`, `Ipsec`
+        /// Only if `Provider`==`custom-ipsec`. Tunnel protocol for custom tunnel negotiation
         /// </summary>
         public readonly string? Protocol;
         /// <summary>
-        /// Only if `auto_provision.enabled`==`False`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+        /// Tunnel provider used when auto provisioning is disabled
         /// </summary>
         public readonly string? Provider;
         /// <summary>
@@ -74,15 +74,15 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Psk;
         /// <summary>
-        /// List of Remote protected subnet for policy-based IPSec negotiation
+        /// Remote protected subnets reached through policy-based IPsec
         /// </summary>
         public readonly ImmutableArray<string> RemoteSubnets;
         /// <summary>
-        /// Only if `Provider`==`zscaler-ipsec`, `Provider`==`jse-ipsec` or `Provider`==`custom-ipsec`
+        /// Backup remote tunnel endpoint settings
         /// </summary>
         public readonly Outputs.GatewaytemplateTunnelConfigsSecondary? Secondary;
         /// <summary>
-        /// Only if `Provider`==`custom-gre` or `Provider`==`custom-ipsec`. enum: `1`, `2`
+        /// Only if `Provider`==`custom-gre` or `Provider`==`custom-ipsec`. Tunnel version value for custom tunnel configuration
         /// </summary>
         public readonly string? Version;
 

@@ -14,11 +14,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class WlantemplateExceptions
     {
         /// <summary>
-        /// List of site ids
+        /// Sites excluded from the WLAN template application scope
         /// </summary>
         public readonly ImmutableArray<string> SiteIds;
         /// <summary>
-        /// List of sitegroup ids
+        /// Site groups excluded from the WLAN template application scope
         /// </summary>
         public readonly ImmutableArray<string> SitegroupIds;
 

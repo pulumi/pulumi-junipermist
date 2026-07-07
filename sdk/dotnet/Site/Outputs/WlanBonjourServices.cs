@@ -18,11 +18,11 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly bool? DisableLocal;
         /// <summary>
-        /// Optional, if the service is further restricted for certain RADIUS groups
+        /// RADIUS groups allowed to discover this Bonjour service, when restricted
         /// </summary>
         public readonly ImmutableArray<string> RadiusGroups;
         /// <summary>
-        /// how bonjour services should be discovered for the same WLAN. enum: `SameAp`, `SameMap`, `SameSite`
+        /// Discovery scope for this Bonjour service on the WLAN
         /// </summary>
         public readonly string? Scope;
 

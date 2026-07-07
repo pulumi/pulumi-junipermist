@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class GatewaytemplateNetworkInternalAccessArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether internal access is enabled for this network
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

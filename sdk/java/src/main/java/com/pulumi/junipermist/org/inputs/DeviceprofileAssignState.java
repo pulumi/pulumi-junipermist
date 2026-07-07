@@ -23,9 +23,17 @@ public final class DeviceprofileAssignState extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.deviceprofileId);
     }
 
+    /**
+     * List of MAC addresses included in the request
+     * 
+     */
     @Import(name="macs")
     private @Nullable Output<List<String>> macs;
 
+    /**
+     * @return List of MAC addresses included in the request
+     * 
+     */
     public Optional<Output<List<String>>> macs() {
         return Optional.ofNullable(this.macs);
     }
@@ -72,15 +80,33 @@ public final class DeviceprofileAssignState extends com.pulumi.resources.Resourc
             return deviceprofileId(Output.of(deviceprofileId));
         }
 
+        /**
+         * @param macs List of MAC addresses included in the request
+         * 
+         * @return builder
+         * 
+         */
         public Builder macs(@Nullable Output<List<String>> macs) {
             $.macs = macs;
             return this;
         }
 
+        /**
+         * @param macs List of MAC addresses included in the request
+         * 
+         * @return builder
+         * 
+         */
         public Builder macs(List<String> macs) {
             return macs(Output.of(macs));
         }
 
+        /**
+         * @param macs List of MAC addresses included in the request
+         * 
+         * @return builder
+         * 
+         */
         public Builder macs(String... macs) {
             return macs(List.of(macs));
         }

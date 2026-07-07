@@ -20,6 +20,18 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("noReveal")]
         public Input<bool>? NoReveal { get; set; }
 
+        [Input("srcIps")]
+        private InputList<string>? _srcIps;
+
+        /// <summary>
+        /// Optional list of IP addresses or CIDR subnets from which org API access is allowed. At most 10 entries. The source IP of the request making this update must be within one of the specified subnets.
+        /// </summary>
+        public InputList<string> SrcIps
+        {
+            get => _srcIps ?? (_srcIps = new InputList<string>());
+            set => _srcIps = value;
+        }
+
         public SettingApiPolicyArgs()
         {
         }

@@ -54,6 +54,9 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("enableInbandZtp")]
         public Input<bool>? EnableInbandZtp { get; set; }
 
+        /// <summary>
+        /// EVPN overlay BGP settings for the topology
+        /// </summary>
         [Input("overlay")]
         public Input<Inputs.EvpnTopologyEvpnOptionsOverlayArgs>? Overlay { get; set; }
 
@@ -70,11 +73,14 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<bool>? PerVlanVgaV6Mac { get; set; }
 
         /// <summary>
-        /// optional, where virtual-gateway should reside. enum: `Core`, `Distribution`, `Edge`
+        /// Topology tier where EVPN virtual gateway routing is placed
         /// </summary>
         [Input("routedAt")]
         public Input<string>? RoutedAt { get; set; }
 
+        /// <summary>
+        /// EVPN underlay BGP and subnet settings for the topology
+        /// </summary>
         [Input("underlay")]
         public Input<Inputs.EvpnTopologyEvpnOptionsUnderlayArgs>? Underlay { get; set; }
 
@@ -82,7 +88,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputMap<Inputs.EvpnTopologyEvpnOptionsVsInstancesArgs>? _vsInstances;
 
         /// <summary>
-        /// Optional, for EX9200 only to segregate virtual-switches
+        /// Virtual-switch instance mappings used to segregate EVPN networks
         /// </summary>
         public InputMap<Inputs.EvpnTopologyEvpnOptionsVsInstancesArgs> VsInstances
         {

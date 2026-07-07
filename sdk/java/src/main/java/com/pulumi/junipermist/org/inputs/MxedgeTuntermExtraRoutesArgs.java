@@ -15,9 +15,17 @@ public final class MxedgeTuntermExtraRoutesArgs extends com.pulumi.resources.Res
 
     public static final MxedgeTuntermExtraRoutesArgs Empty = new MxedgeTuntermExtraRoutesArgs();
 
+    /**
+     * Next-hop IP address for this Mist Tunnel extra route
+     * 
+     */
     @Import(name="via")
     private @Nullable Output<String> via;
 
+    /**
+     * @return Next-hop IP address for this Mist Tunnel extra route
+     * 
+     */
     public Optional<Output<String>> via() {
         return Optional.ofNullable(this.via);
     }
@@ -46,11 +54,23 @@ public final class MxedgeTuntermExtraRoutesArgs extends com.pulumi.resources.Res
             $ = new MxedgeTuntermExtraRoutesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param via Next-hop IP address for this Mist Tunnel extra route
+         * 
+         * @return builder
+         * 
+         */
         public Builder via(@Nullable Output<String> via) {
             $.via = via;
             return this;
         }
 
+        /**
+         * @param via Next-hop IP address for this Mist Tunnel extra route
+         * 
+         * @return builder
+         * 
+         */
         public Builder via(String via) {
             return via(Output.of(via));
         }

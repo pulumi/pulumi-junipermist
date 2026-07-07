@@ -13,11 +13,20 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class GatewayServicePolicyEwf
     {
+        /// <summary>
+        /// Whether matching enhanced web filtering traffic is logged without being blocked
+        /// </summary>
         public readonly bool? AlertOnly;
+        /// <summary>
+        /// Message returned when enhanced web filtering blocks a request
+        /// </summary>
         public readonly string? BlockMessage;
+        /// <summary>
+        /// Whether this enhanced web filtering rule is enabled
+        /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// enum: `Critical`, `Standard`, `Strict`
+        /// Enhanced web filtering profile applied by this rule
         /// </summary>
         public readonly string? Profile;
 

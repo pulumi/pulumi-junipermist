@@ -28,7 +28,7 @@ public final class NetworkVpnAccess {
      */
     private @Nullable Boolean allowPing;
     /**
-     * @return Property key can be an External IP (i.e. &#34;63.16.0.3&#34;), an External IP:Port (i.e. &#34;63.16.0.3:443&#34;), an External Port (i.e. &#34;:443&#34;), an External CIDR (i.e. &#34;63.16.0.0/30&#34;), an External CIDR:Port (i.e. &#34;63.16.0.0/30:443&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;). At least one of the `internalIp` or `port` must be defined
+     * @return Destination NAT rules applied for VPN access to this network
      * 
      */
     private @Nullable Map<String,NetworkVpnAccessDestinationNat> destinationNat;
@@ -53,7 +53,7 @@ public final class NetworkVpnAccess {
      */
     private @Nullable Boolean noReadvertiseToOverlay;
     /**
-     * @return By default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
+     * @return Other VRFs that can receive leaked routes from this spoke network
      * 
      */
     private @Nullable List<String> otherVrfs;
@@ -63,12 +63,12 @@ public final class NetworkVpnAccess {
      */
     private @Nullable Boolean routed;
     /**
-     * @return If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
+     * @return Source NAT settings used when non-routed spoke hosts must be reachable from the hub
      * 
      */
     private @Nullable NetworkVpnAccessSourceNat sourceNat;
     /**
-     * @return Property key may be an External IP Address (i.e. &#34;63.16.0.3&#34;), a CIDR (i.e. &#34;63.16.0.12/20&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * @return Static NAT rules applied for VPN access to this network
      * 
      */
     private @Nullable Map<String,NetworkVpnAccessStaticNat> staticNat;
@@ -104,7 +104,7 @@ public final class NetworkVpnAccess {
         return Optional.ofNullable(this.allowPing);
     }
     /**
-     * @return Property key can be an External IP (i.e. &#34;63.16.0.3&#34;), an External IP:Port (i.e. &#34;63.16.0.3:443&#34;), an External Port (i.e. &#34;:443&#34;), an External CIDR (i.e. &#34;63.16.0.0/30&#34;), an External CIDR:Port (i.e. &#34;63.16.0.0/30:443&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;). At least one of the `internalIp` or `port` must be defined
+     * @return Destination NAT rules applied for VPN access to this network
      * 
      */
     public Map<String,NetworkVpnAccessDestinationNat> destinationNat() {
@@ -139,7 +139,7 @@ public final class NetworkVpnAccess {
         return Optional.ofNullable(this.noReadvertiseToOverlay);
     }
     /**
-     * @return By default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
+     * @return Other VRFs that can receive leaked routes from this spoke network
      * 
      */
     public List<String> otherVrfs() {
@@ -153,14 +153,14 @@ public final class NetworkVpnAccess {
         return Optional.ofNullable(this.routed);
     }
     /**
-     * @return If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
+     * @return Source NAT settings used when non-routed spoke hosts must be reachable from the hub
      * 
      */
     public Optional<NetworkVpnAccessSourceNat> sourceNat() {
         return Optional.ofNullable(this.sourceNat);
     }
     /**
-     * @return Property key may be an External IP Address (i.e. &#34;63.16.0.3&#34;), a CIDR (i.e. &#34;63.16.0.12/20&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * @return Static NAT rules applied for VPN access to this network
      * 
      */
     public Map<String,NetworkVpnAccessStaticNat> staticNat() {

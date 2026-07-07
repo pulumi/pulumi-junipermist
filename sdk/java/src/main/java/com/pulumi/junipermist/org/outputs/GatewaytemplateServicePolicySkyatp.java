@@ -14,21 +14,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GatewaytemplateServicePolicySkyatp {
+    /**
+     * @return Detection settings for DNS DGA threats provided by Sky ATP
+     * 
+     */
     private @Nullable GatewaytemplateServicePolicySkyatpDnsDgaDetection dnsDgaDetection;
+    /**
+     * @return Detection settings for DNS tunneling threats provided by Sky ATP
+     * 
+     */
     private @Nullable GatewaytemplateServicePolicySkyatpDnsTunnelDetection dnsTunnelDetection;
+    /**
+     * @return Web traffic inspection settings provided by Sky ATP
+     * 
+     */
     private @Nullable GatewaytemplateServicePolicySkyatpHttpInspection httpInspection;
+    /**
+     * @return Device threat policy settings provided by Sky ATP for IoT clients
+     * 
+     */
     private @Nullable GatewaytemplateServicePolicySkyatpIotDevicePolicy iotDevicePolicy;
 
     private GatewaytemplateServicePolicySkyatp() {}
+    /**
+     * @return Detection settings for DNS DGA threats provided by Sky ATP
+     * 
+     */
     public Optional<GatewaytemplateServicePolicySkyatpDnsDgaDetection> dnsDgaDetection() {
         return Optional.ofNullable(this.dnsDgaDetection);
     }
+    /**
+     * @return Detection settings for DNS tunneling threats provided by Sky ATP
+     * 
+     */
     public Optional<GatewaytemplateServicePolicySkyatpDnsTunnelDetection> dnsTunnelDetection() {
         return Optional.ofNullable(this.dnsTunnelDetection);
     }
+    /**
+     * @return Web traffic inspection settings provided by Sky ATP
+     * 
+     */
     public Optional<GatewaytemplateServicePolicySkyatpHttpInspection> httpInspection() {
         return Optional.ofNullable(this.httpInspection);
     }
+    /**
+     * @return Device threat policy settings provided by Sky ATP for IoT clients
+     * 
+     */
     public Optional<GatewaytemplateServicePolicySkyatpIotDevicePolicy> iotDevicePolicy() {
         return Optional.ofNullable(this.iotDevicePolicy);
     }

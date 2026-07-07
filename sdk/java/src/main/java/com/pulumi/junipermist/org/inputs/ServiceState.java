@@ -20,14 +20,14 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     public static final ServiceState Empty = new ServiceState();
 
     /**
-     * If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
+     * Custom IPv4 or IPv6 subnets matched by this service when `type`==`custom`
      * 
      */
     @Import(name="addresses")
     private @Nullable Output<List<String>> addresses;
 
     /**
-     * @return If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
+     * @return Custom IPv4 or IPv6 subnets matched by this service when `type`==`custom`
      * 
      */
     public Optional<Output<List<String>>> addresses() {
@@ -35,14 +35,14 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When `type`==`appCategories`, list of application categories are available through List App Category Definitions
+     * Categories of applications matched by this service when `type`==`appCategories`
      * 
      */
     @Import(name="appCategories")
     private @Nullable Output<List<String>> appCategories;
 
     /**
-     * @return When `type`==`appCategories`, list of application categories are available through List App Category Definitions
+     * @return Categories of applications matched by this service when `type`==`appCategories`
      * 
      */
     public Optional<Output<List<String>>> appCategories() {
@@ -50,14 +50,14 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
+     * Application subcategories matched by this service when `type`==`appCategories`
      * 
      */
     @Import(name="appSubcategories")
     private @Nullable Output<List<String>> appSubcategories;
 
     /**
-     * @return When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
+     * @return Application subcategories matched by this service when `type`==`appCategories`
      * 
      */
     public Optional<Output<List<String>>> appSubcategories() {
@@ -65,20 +65,14 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When `type`==`apps`, list of applications are available through:
-     *   * List Applications
-     *   * List Gateway Applications
-     *   * /insight/top_app_by-bytes?wired=true
+     * Application identifiers matched by this service when `type`==`apps`
      * 
      */
     @Import(name="apps")
     private @Nullable Output<List<String>> apps;
 
     /**
-     * @return When `type`==`apps`, list of applications are available through:
-     *   * List Applications
-     *   * List Gateway Applications
-     *   * /insight/top_app_by-bytes?wired=true
+     * @return Application identifiers matched by this service when `type`==`apps`
      * 
      */
     public Optional<Output<List<String>>> apps() {
@@ -115,29 +109,45 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.clientLimitUp);
     }
 
+    /**
+     * Free-form description of the service definition
+     * 
+     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
+    /**
+     * @return Free-form description of the service definition
+     * 
+     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * QoS DSCP value used for custom SSR traffic classification
+     * 
+     */
     @Import(name="dscp")
     private @Nullable Output<String> dscp;
 
+    /**
+     * @return QoS DSCP value used for custom SSR traffic classification
+     * 
+     */
     public Optional<Output<String>> dscp() {
         return Optional.ofNullable(this.dscp);
     }
 
     /**
-     * enum: `nonRevertible`, `none`, `revertible`
+     * Failover behavior for traffic matched by this service
      * 
      */
     @Import(name="failoverPolicy")
     private @Nullable Output<String> failoverPolicy;
 
     /**
-     * @return enum: `nonRevertible`, `none`, `revertible`
+     * @return Failover behavior for traffic matched by this service
      * 
      */
     public Optional<Output<String>> failoverPolicy() {
@@ -145,51 +155,91 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `type`==`custom`, web filtering
+     * Domain hostnames matched by this custom service for web filtering
      * 
      */
     @Import(name="hostnames")
     private @Nullable Output<List<String>> hostnames;
 
     /**
-     * @return If `type`==`custom`, web filtering
+     * @return Domain hostnames matched by this custom service for web filtering
      * 
      */
     public Optional<Output<List<String>>> hostnames() {
         return Optional.ofNullable(this.hostnames);
     }
 
+    /**
+     * Maximum jitter threshold used for SSR uplink selection when `trafficType`==`custom`
+     * 
+     */
     @Import(name="maxJitter")
     private @Nullable Output<String> maxJitter;
 
+    /**
+     * @return Maximum jitter threshold used for SSR uplink selection when `trafficType`==`custom`
+     * 
+     */
     public Optional<Output<String>> maxJitter() {
         return Optional.ofNullable(this.maxJitter);
     }
 
+    /**
+     * Maximum latency threshold used for SSR uplink selection when `trafficType`==`custom`
+     * 
+     */
     @Import(name="maxLatency")
     private @Nullable Output<String> maxLatency;
 
+    /**
+     * @return Maximum latency threshold used for SSR uplink selection when `trafficType`==`custom`
+     * 
+     */
     public Optional<Output<String>> maxLatency() {
         return Optional.ofNullable(this.maxLatency);
     }
 
+    /**
+     * Maximum packet loss threshold used for SSR uplink selection when `trafficType`==`custom`
+     * 
+     */
     @Import(name="maxLoss")
     private @Nullable Output<String> maxLoss;
 
+    /**
+     * @return Maximum packet loss threshold used for SSR uplink selection when `trafficType`==`custom`
+     * 
+     */
     public Optional<Output<String>> maxLoss() {
         return Optional.ofNullable(this.maxLoss);
     }
 
+    /**
+     * Display name of the service definition
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Display name of the service definition
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Organization identifier associated with the service definition
+     * 
+     */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
+    /**
+     * @return Organization identifier associated with the service definition
+     * 
+     */
     public Optional<Output<String>> orgId() {
         return Optional.ofNullable(this.orgId);
     }
@@ -240,36 +290,44 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When `type`==`custom`, optional, if it doesn&#39;t exist, http and https is assumed
+     * Protocol and port match rules used when `type`==`custom`
      * 
      */
     @Import(name="specs")
     private @Nullable Output<List<ServiceSpecArgs>> specs;
 
     /**
-     * @return When `type`==`custom`, optional, if it doesn&#39;t exist, http and https is assumed
+     * @return Protocol and port match rules used when `type`==`custom`
      * 
      */
     public Optional<Output<List<ServiceSpecArgs>>> specs() {
         return Optional.ofNullable(this.specs);
     }
 
+    /**
+     * Whether SSR relaxes TCP state enforcement for this service
+     * 
+     */
     @Import(name="ssrRelaxedTcpStateEnforcement")
     private @Nullable Output<Boolean> ssrRelaxedTcpStateEnforcement;
 
+    /**
+     * @return Whether SSR relaxes TCP state enforcement for this service
+     * 
+     */
     public Optional<Output<Boolean>> ssrRelaxedTcpStateEnforcement() {
         return Optional.ofNullable(this.ssrRelaxedTcpStateEnforcement);
     }
 
     /**
-     * when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`
+     * Traffic class applied when `trafficType`==`custom`
      * 
      */
     @Import(name="trafficClass")
     private @Nullable Output<String> trafficClass;
 
     /**
-     * @return when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`
+     * @return Traffic class applied when `trafficType`==`custom`
      * 
      */
     public Optional<Output<String>> trafficClass() {
@@ -292,14 +350,14 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * enum: `appCategories`, `apps`, `custom`, `urls`
+     * Matching mode that determines which app, URL, or custom fields are used
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return enum: `appCategories`, `apps`, `custom`, `urls`
+     * @return Matching mode that determines which app, URL, or custom fields are used
      * 
      */
     public Optional<Output<String>> type() {
@@ -307,14 +365,14 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When `type`==`urls`, no need for spec as URL can encode the ports being used
+     * URL patterns matched by this service when `type`==`urls`
      * 
      */
     @Import(name="urls")
     private @Nullable Output<List<String>> urls;
 
     /**
-     * @return When `type`==`urls`, no need for spec as URL can encode the ports being used
+     * @return URL patterns matched by this service when `type`==`urls`
      * 
      */
     public Optional<Output<List<String>>> urls() {
@@ -369,7 +427,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addresses If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
+         * @param addresses Custom IPv4 or IPv6 subnets matched by this service when `type`==`custom`
          * 
          * @return builder
          * 
@@ -380,7 +438,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addresses If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
+         * @param addresses Custom IPv4 or IPv6 subnets matched by this service when `type`==`custom`
          * 
          * @return builder
          * 
@@ -390,7 +448,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addresses If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
+         * @param addresses Custom IPv4 or IPv6 subnets matched by this service when `type`==`custom`
          * 
          * @return builder
          * 
@@ -400,7 +458,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appCategories When `type`==`appCategories`, list of application categories are available through List App Category Definitions
+         * @param appCategories Categories of applications matched by this service when `type`==`appCategories`
          * 
          * @return builder
          * 
@@ -411,7 +469,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appCategories When `type`==`appCategories`, list of application categories are available through List App Category Definitions
+         * @param appCategories Categories of applications matched by this service when `type`==`appCategories`
          * 
          * @return builder
          * 
@@ -421,7 +479,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appCategories When `type`==`appCategories`, list of application categories are available through List App Category Definitions
+         * @param appCategories Categories of applications matched by this service when `type`==`appCategories`
          * 
          * @return builder
          * 
@@ -431,7 +489,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appSubcategories When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
+         * @param appSubcategories Application subcategories matched by this service when `type`==`appCategories`
          * 
          * @return builder
          * 
@@ -442,7 +500,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appSubcategories When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
+         * @param appSubcategories Application subcategories matched by this service when `type`==`appCategories`
          * 
          * @return builder
          * 
@@ -452,7 +510,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appSubcategories When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
+         * @param appSubcategories Application subcategories matched by this service when `type`==`appCategories`
          * 
          * @return builder
          * 
@@ -462,10 +520,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apps When `type`==`apps`, list of applications are available through:
-         *   * List Applications
-         *   * List Gateway Applications
-         *   * /insight/top_app_by-bytes?wired=true
+         * @param apps Application identifiers matched by this service when `type`==`apps`
          * 
          * @return builder
          * 
@@ -476,10 +531,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apps When `type`==`apps`, list of applications are available through:
-         *   * List Applications
-         *   * List Gateway Applications
-         *   * /insight/top_app_by-bytes?wired=true
+         * @param apps Application identifiers matched by this service when `type`==`apps`
          * 
          * @return builder
          * 
@@ -489,10 +541,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apps When `type`==`apps`, list of applications are available through:
-         *   * List Applications
-         *   * List Gateway Applications
-         *   * /insight/top_app_by-bytes?wired=true
+         * @param apps Application identifiers matched by this service when `type`==`apps`
          * 
          * @return builder
          * 
@@ -543,26 +592,50 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
             return clientLimitUp(Output.of(clientLimitUp));
         }
 
+        /**
+         * @param description Free-form description of the service definition
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param description Free-form description of the service definition
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
+        /**
+         * @param dscp QoS DSCP value used for custom SSR traffic classification
+         * 
+         * @return builder
+         * 
+         */
         public Builder dscp(@Nullable Output<String> dscp) {
             $.dscp = dscp;
             return this;
         }
 
+        /**
+         * @param dscp QoS DSCP value used for custom SSR traffic classification
+         * 
+         * @return builder
+         * 
+         */
         public Builder dscp(String dscp) {
             return dscp(Output.of(dscp));
         }
 
         /**
-         * @param failoverPolicy enum: `nonRevertible`, `none`, `revertible`
+         * @param failoverPolicy Failover behavior for traffic matched by this service
          * 
          * @return builder
          * 
@@ -573,7 +646,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param failoverPolicy enum: `nonRevertible`, `none`, `revertible`
+         * @param failoverPolicy Failover behavior for traffic matched by this service
          * 
          * @return builder
          * 
@@ -583,7 +656,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostnames If `type`==`custom`, web filtering
+         * @param hostnames Domain hostnames matched by this custom service for web filtering
          * 
          * @return builder
          * 
@@ -594,7 +667,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostnames If `type`==`custom`, web filtering
+         * @param hostnames Domain hostnames matched by this custom service for web filtering
          * 
          * @return builder
          * 
@@ -604,7 +677,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostnames If `type`==`custom`, web filtering
+         * @param hostnames Domain hostnames matched by this custom service for web filtering
          * 
          * @return builder
          * 
@@ -613,47 +686,107 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
             return hostnames(List.of(hostnames));
         }
 
+        /**
+         * @param maxJitter Maximum jitter threshold used for SSR uplink selection when `trafficType`==`custom`
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxJitter(@Nullable Output<String> maxJitter) {
             $.maxJitter = maxJitter;
             return this;
         }
 
+        /**
+         * @param maxJitter Maximum jitter threshold used for SSR uplink selection when `trafficType`==`custom`
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxJitter(String maxJitter) {
             return maxJitter(Output.of(maxJitter));
         }
 
+        /**
+         * @param maxLatency Maximum latency threshold used for SSR uplink selection when `trafficType`==`custom`
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxLatency(@Nullable Output<String> maxLatency) {
             $.maxLatency = maxLatency;
             return this;
         }
 
+        /**
+         * @param maxLatency Maximum latency threshold used for SSR uplink selection when `trafficType`==`custom`
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxLatency(String maxLatency) {
             return maxLatency(Output.of(maxLatency));
         }
 
+        /**
+         * @param maxLoss Maximum packet loss threshold used for SSR uplink selection when `trafficType`==`custom`
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxLoss(@Nullable Output<String> maxLoss) {
             $.maxLoss = maxLoss;
             return this;
         }
 
+        /**
+         * @param maxLoss Maximum packet loss threshold used for SSR uplink selection when `trafficType`==`custom`
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxLoss(String maxLoss) {
             return maxLoss(Output.of(maxLoss));
         }
 
+        /**
+         * @param name Display name of the service definition
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Display name of the service definition
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param orgId Organization identifier associated with the service definition
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(@Nullable Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param orgId Organization identifier associated with the service definition
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }
@@ -722,7 +855,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param specs When `type`==`custom`, optional, if it doesn&#39;t exist, http and https is assumed
+         * @param specs Protocol and port match rules used when `type`==`custom`
          * 
          * @return builder
          * 
@@ -733,7 +866,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param specs When `type`==`custom`, optional, if it doesn&#39;t exist, http and https is assumed
+         * @param specs Protocol and port match rules used when `type`==`custom`
          * 
          * @return builder
          * 
@@ -743,7 +876,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param specs When `type`==`custom`, optional, if it doesn&#39;t exist, http and https is assumed
+         * @param specs Protocol and port match rules used when `type`==`custom`
          * 
          * @return builder
          * 
@@ -752,17 +885,29 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
             return specs(List.of(specs));
         }
 
+        /**
+         * @param ssrRelaxedTcpStateEnforcement Whether SSR relaxes TCP state enforcement for this service
+         * 
+         * @return builder
+         * 
+         */
         public Builder ssrRelaxedTcpStateEnforcement(@Nullable Output<Boolean> ssrRelaxedTcpStateEnforcement) {
             $.ssrRelaxedTcpStateEnforcement = ssrRelaxedTcpStateEnforcement;
             return this;
         }
 
+        /**
+         * @param ssrRelaxedTcpStateEnforcement Whether SSR relaxes TCP state enforcement for this service
+         * 
+         * @return builder
+         * 
+         */
         public Builder ssrRelaxedTcpStateEnforcement(Boolean ssrRelaxedTcpStateEnforcement) {
             return ssrRelaxedTcpStateEnforcement(Output.of(ssrRelaxedTcpStateEnforcement));
         }
 
         /**
-         * @param trafficClass when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`
+         * @param trafficClass Traffic class applied when `trafficType`==`custom`
          * 
          * @return builder
          * 
@@ -773,7 +918,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param trafficClass when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`
+         * @param trafficClass Traffic class applied when `trafficType`==`custom`
          * 
          * @return builder
          * 
@@ -804,7 +949,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type enum: `appCategories`, `apps`, `custom`, `urls`
+         * @param type Matching mode that determines which app, URL, or custom fields are used
          * 
          * @return builder
          * 
@@ -815,7 +960,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type enum: `appCategories`, `apps`, `custom`, `urls`
+         * @param type Matching mode that determines which app, URL, or custom fields are used
          * 
          * @return builder
          * 
@@ -825,7 +970,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param urls When `type`==`urls`, no need for spec as URL can encode the ports being used
+         * @param urls URL patterns matched by this service when `type`==`urls`
          * 
          * @return builder
          * 
@@ -836,7 +981,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param urls When `type`==`urls`, no need for spec as URL can encode the ports being used
+         * @param urls URL patterns matched by this service when `type`==`urls`
          * 
          * @return builder
          * 
@@ -846,7 +991,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param urls When `type`==`urls`, no need for spec as URL can encode the ports being used
+         * @param urls URL patterns matched by this service when `type`==`urls`
          * 
          * @return builder
          * 

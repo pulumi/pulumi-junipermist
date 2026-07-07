@@ -13,7 +13,13 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class SettingDeviceCert
     {
+        /// <summary>
+        /// PEM-encoded common device certificate used by organization settings
+        /// </summary>
         public readonly string Cert;
+        /// <summary>
+        /// Private key paired with the common device certificate
+        /// </summary>
         public readonly string Key;
 
         [OutputConstructor]

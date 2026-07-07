@@ -70,19 +70,25 @@ import (
 type Nacrule struct {
 	pulumi.CustomResourceState
 
-	// enum: `allow`, `block`
+	// Allow or block decision applied when the NAC rule matches
 	Action pulumi.StringOutput `pulumi:"action"`
-	// All optional, this goes into Access-Accept
+	// NAC tag IDs to include in the Access-Accept when the rule allows access
 	ApplyTags pulumi.StringArrayOutput `pulumi:"applyTags"`
-	// Enabled or not
+	// Whether the NAC rule is in dry-run mode, where matches are logged but the action is not enforced
+	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
+	// Whether the NAC rule is evaluated during policy matching
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
-	// Guest portal authorization state. enum: `authorized`, `unknown`
-	GuestAuthState pulumi.StringPtrOutput      `pulumi:"guestAuthState"`
-	Matching       NacruleMatchingPtrOutput    `pulumi:"matching"`
-	Name           pulumi.StringOutput         `pulumi:"name"`
-	NotMatching    NacruleNotMatchingPtrOutput `pulumi:"notMatching"`
-	// Order of the rule, lower value implies higher priority
-	Order pulumi.IntOutput    `pulumi:"order"`
+	// Guest portal authorization state condition for the rule
+	GuestAuthState pulumi.StringPtrOutput `pulumi:"guestAuthState"`
+	// Criteria that must match for the NAC rule to apply
+	Matching NacruleMatchingPtrOutput `pulumi:"matching"`
+	// Human-readable name of the NAC rule
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Criteria that must not match for the NAC rule to apply
+	NotMatching NacruleNotMatchingPtrOutput `pulumi:"notMatching"`
+	// Rule priority; lower values are evaluated with higher priority
+	Order pulumi.IntOutput `pulumi:"order"`
+	// Org identifier that owns the NAC rule
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
 }
 
@@ -125,36 +131,48 @@ func GetNacrule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Nacrule resources.
 type nacruleState struct {
-	// enum: `allow`, `block`
+	// Allow or block decision applied when the NAC rule matches
 	Action *string `pulumi:"action"`
-	// All optional, this goes into Access-Accept
+	// NAC tag IDs to include in the Access-Accept when the rule allows access
 	ApplyTags []string `pulumi:"applyTags"`
-	// Enabled or not
+	// Whether the NAC rule is in dry-run mode, where matches are logged but the action is not enforced
+	DryRun *bool `pulumi:"dryRun"`
+	// Whether the NAC rule is evaluated during policy matching
 	Enabled *bool `pulumi:"enabled"`
-	// Guest portal authorization state. enum: `authorized`, `unknown`
-	GuestAuthState *string             `pulumi:"guestAuthState"`
-	Matching       *NacruleMatching    `pulumi:"matching"`
-	Name           *string             `pulumi:"name"`
-	NotMatching    *NacruleNotMatching `pulumi:"notMatching"`
-	// Order of the rule, lower value implies higher priority
-	Order *int    `pulumi:"order"`
+	// Guest portal authorization state condition for the rule
+	GuestAuthState *string `pulumi:"guestAuthState"`
+	// Criteria that must match for the NAC rule to apply
+	Matching *NacruleMatching `pulumi:"matching"`
+	// Human-readable name of the NAC rule
+	Name *string `pulumi:"name"`
+	// Criteria that must not match for the NAC rule to apply
+	NotMatching *NacruleNotMatching `pulumi:"notMatching"`
+	// Rule priority; lower values are evaluated with higher priority
+	Order *int `pulumi:"order"`
+	// Org identifier that owns the NAC rule
 	OrgId *string `pulumi:"orgId"`
 }
 
 type NacruleState struct {
-	// enum: `allow`, `block`
+	// Allow or block decision applied when the NAC rule matches
 	Action pulumi.StringPtrInput
-	// All optional, this goes into Access-Accept
+	// NAC tag IDs to include in the Access-Accept when the rule allows access
 	ApplyTags pulumi.StringArrayInput
-	// Enabled or not
+	// Whether the NAC rule is in dry-run mode, where matches are logged but the action is not enforced
+	DryRun pulumi.BoolPtrInput
+	// Whether the NAC rule is evaluated during policy matching
 	Enabled pulumi.BoolPtrInput
-	// Guest portal authorization state. enum: `authorized`, `unknown`
+	// Guest portal authorization state condition for the rule
 	GuestAuthState pulumi.StringPtrInput
-	Matching       NacruleMatchingPtrInput
-	Name           pulumi.StringPtrInput
-	NotMatching    NacruleNotMatchingPtrInput
-	// Order of the rule, lower value implies higher priority
+	// Criteria that must match for the NAC rule to apply
+	Matching NacruleMatchingPtrInput
+	// Human-readable name of the NAC rule
+	Name pulumi.StringPtrInput
+	// Criteria that must not match for the NAC rule to apply
+	NotMatching NacruleNotMatchingPtrInput
+	// Rule priority; lower values are evaluated with higher priority
 	Order pulumi.IntPtrInput
+	// Org identifier that owns the NAC rule
 	OrgId pulumi.StringPtrInput
 }
 
@@ -163,37 +181,49 @@ func (NacruleState) ElementType() reflect.Type {
 }
 
 type nacruleArgs struct {
-	// enum: `allow`, `block`
+	// Allow or block decision applied when the NAC rule matches
 	Action string `pulumi:"action"`
-	// All optional, this goes into Access-Accept
+	// NAC tag IDs to include in the Access-Accept when the rule allows access
 	ApplyTags []string `pulumi:"applyTags"`
-	// Enabled or not
+	// Whether the NAC rule is in dry-run mode, where matches are logged but the action is not enforced
+	DryRun *bool `pulumi:"dryRun"`
+	// Whether the NAC rule is evaluated during policy matching
 	Enabled *bool `pulumi:"enabled"`
-	// Guest portal authorization state. enum: `authorized`, `unknown`
-	GuestAuthState *string             `pulumi:"guestAuthState"`
-	Matching       *NacruleMatching    `pulumi:"matching"`
-	Name           *string             `pulumi:"name"`
-	NotMatching    *NacruleNotMatching `pulumi:"notMatching"`
-	// Order of the rule, lower value implies higher priority
-	Order int    `pulumi:"order"`
+	// Guest portal authorization state condition for the rule
+	GuestAuthState *string `pulumi:"guestAuthState"`
+	// Criteria that must match for the NAC rule to apply
+	Matching *NacruleMatching `pulumi:"matching"`
+	// Human-readable name of the NAC rule
+	Name *string `pulumi:"name"`
+	// Criteria that must not match for the NAC rule to apply
+	NotMatching *NacruleNotMatching `pulumi:"notMatching"`
+	// Rule priority; lower values are evaluated with higher priority
+	Order int `pulumi:"order"`
+	// Org identifier that owns the NAC rule
 	OrgId string `pulumi:"orgId"`
 }
 
 // The set of arguments for constructing a Nacrule resource.
 type NacruleArgs struct {
-	// enum: `allow`, `block`
+	// Allow or block decision applied when the NAC rule matches
 	Action pulumi.StringInput
-	// All optional, this goes into Access-Accept
+	// NAC tag IDs to include in the Access-Accept when the rule allows access
 	ApplyTags pulumi.StringArrayInput
-	// Enabled or not
+	// Whether the NAC rule is in dry-run mode, where matches are logged but the action is not enforced
+	DryRun pulumi.BoolPtrInput
+	// Whether the NAC rule is evaluated during policy matching
 	Enabled pulumi.BoolPtrInput
-	// Guest portal authorization state. enum: `authorized`, `unknown`
+	// Guest portal authorization state condition for the rule
 	GuestAuthState pulumi.StringPtrInput
-	Matching       NacruleMatchingPtrInput
-	Name           pulumi.StringPtrInput
-	NotMatching    NacruleNotMatchingPtrInput
-	// Order of the rule, lower value implies higher priority
+	// Criteria that must match for the NAC rule to apply
+	Matching NacruleMatchingPtrInput
+	// Human-readable name of the NAC rule
+	Name pulumi.StringPtrInput
+	// Criteria that must not match for the NAC rule to apply
+	NotMatching NacruleNotMatchingPtrInput
+	// Rule priority; lower values are evaluated with higher priority
 	Order pulumi.IntInput
+	// Org identifier that owns the NAC rule
 	OrgId pulumi.StringInput
 }
 
@@ -284,43 +314,52 @@ func (o NacruleOutput) ToNacruleOutputWithContext(ctx context.Context) NacruleOu
 	return o
 }
 
-// enum: `allow`, `block`
+// Allow or block decision applied when the NAC rule matches
 func (o NacruleOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v *Nacrule) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
 }
 
-// All optional, this goes into Access-Accept
+// NAC tag IDs to include in the Access-Accept when the rule allows access
 func (o NacruleOutput) ApplyTags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Nacrule) pulumi.StringArrayOutput { return v.ApplyTags }).(pulumi.StringArrayOutput)
 }
 
-// Enabled or not
+// Whether the NAC rule is in dry-run mode, where matches are logged but the action is not enforced
+func (o NacruleOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Nacrule) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// Whether the NAC rule is evaluated during policy matching
 func (o NacruleOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Nacrule) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// Guest portal authorization state. enum: `authorized`, `unknown`
+// Guest portal authorization state condition for the rule
 func (o NacruleOutput) GuestAuthState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Nacrule) pulumi.StringPtrOutput { return v.GuestAuthState }).(pulumi.StringPtrOutput)
 }
 
+// Criteria that must match for the NAC rule to apply
 func (o NacruleOutput) Matching() NacruleMatchingPtrOutput {
 	return o.ApplyT(func(v *Nacrule) NacruleMatchingPtrOutput { return v.Matching }).(NacruleMatchingPtrOutput)
 }
 
+// Human-readable name of the NAC rule
 func (o NacruleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Nacrule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Criteria that must not match for the NAC rule to apply
 func (o NacruleOutput) NotMatching() NacruleNotMatchingPtrOutput {
 	return o.ApplyT(func(v *Nacrule) NacruleNotMatchingPtrOutput { return v.NotMatching }).(NacruleNotMatchingPtrOutput)
 }
 
-// Order of the rule, lower value implies higher priority
+// Rule priority; lower values are evaluated with higher priority
 func (o NacruleOutput) Order() pulumi.IntOutput {
 	return o.ApplyT(func(v *Nacrule) pulumi.IntOutput { return v.Order }).(pulumi.IntOutput)
 }
 
+// Org identifier that owns the NAC rule
 func (o NacruleOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Nacrule) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }

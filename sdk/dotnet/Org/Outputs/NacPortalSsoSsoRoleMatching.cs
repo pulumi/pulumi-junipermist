@@ -13,7 +13,13 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class NacPortalSsoSsoRoleMatching
     {
+        /// <summary>
+        /// NAC portal role assigned when the SSO role value matches
+        /// </summary>
         public readonly string? Assigned;
+        /// <summary>
+        /// SSO role value to match from the SAML assertion
+        /// </summary>
         public readonly string? Match;
 
         [OutputConstructor]

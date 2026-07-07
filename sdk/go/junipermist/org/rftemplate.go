@@ -80,25 +80,29 @@ import (
 type Rftemplate struct {
 	pulumi.CustomResourceState
 
+	// External antenna gain for the 2.4 GHz radio
 	AntGain24 pulumi.IntOutput `pulumi:"antGain24"`
-	AntGain5  pulumi.IntOutput `pulumi:"antGain5"`
-	AntGain6  pulumi.IntOutput `pulumi:"antGain6"`
-	// Radio Band AP settings
+	// External antenna gain for the 5 GHz radio
+	AntGain5 pulumi.IntOutput `pulumi:"antGain5"`
+	// External antenna gain for the 6 GHz radio
+	AntGain6 pulumi.IntOutput `pulumi:"antGain6"`
+	// 2.4 GHz radio settings in this RF template
 	Band24 RftemplateBand24PtrOutput `pulumi:"band24"`
-	// enum: `24`, `5`, `6`, `auto`
+	// Radio usage mode for the 2.4 GHz-capable radio in this RF template
 	Band24Usage pulumi.StringPtrOutput `pulumi:"band24Usage"`
-	// Radio Band AP settings
+	// 5 GHz radio settings in this RF template
 	Band5 RftemplateBand5PtrOutput `pulumi:"band5"`
-	// Radio Band AP settings
+	// 5 GHz settings used when the 2.4 GHz radio operates in 5 GHz mode
 	Band5On24Radio RftemplateBand5On24RadioPtrOutput `pulumi:"band5On24Radio"`
-	// Radio Band AP settings
+	// 6 GHz radio settings in this RF template
 	Band6 RftemplateBand6PtrOutput `pulumi:"band6"`
 	// Optional, country code to use. If specified, this gets applied to all sites using the RF Template
 	CountryCode pulumi.StringPtrOutput `pulumi:"countryCode"`
 	// overwrites for a specific model. If a band is specified, it will shadow the default. Property key is the model name (e.g. "AP63")
 	ModelSpecific RftemplateModelSpecificMapOutput `pulumi:"modelSpecific"`
 	// The name of the RF template
-	Name  pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Organization that owns this RF template
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// Whether scanning radio is enabled
 	ScanningEnabled pulumi.BoolPtrOutput `pulumi:"scanningEnabled"`
@@ -137,50 +141,58 @@ func GetRftemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Rftemplate resources.
 type rftemplateState struct {
+	// External antenna gain for the 2.4 GHz radio
 	AntGain24 *int `pulumi:"antGain24"`
-	AntGain5  *int `pulumi:"antGain5"`
-	AntGain6  *int `pulumi:"antGain6"`
-	// Radio Band AP settings
+	// External antenna gain for the 5 GHz radio
+	AntGain5 *int `pulumi:"antGain5"`
+	// External antenna gain for the 6 GHz radio
+	AntGain6 *int `pulumi:"antGain6"`
+	// 2.4 GHz radio settings in this RF template
 	Band24 *RftemplateBand24 `pulumi:"band24"`
-	// enum: `24`, `5`, `6`, `auto`
+	// Radio usage mode for the 2.4 GHz-capable radio in this RF template
 	Band24Usage *string `pulumi:"band24Usage"`
-	// Radio Band AP settings
+	// 5 GHz radio settings in this RF template
 	Band5 *RftemplateBand5 `pulumi:"band5"`
-	// Radio Band AP settings
+	// 5 GHz settings used when the 2.4 GHz radio operates in 5 GHz mode
 	Band5On24Radio *RftemplateBand5On24Radio `pulumi:"band5On24Radio"`
-	// Radio Band AP settings
+	// 6 GHz radio settings in this RF template
 	Band6 *RftemplateBand6 `pulumi:"band6"`
 	// Optional, country code to use. If specified, this gets applied to all sites using the RF Template
 	CountryCode *string `pulumi:"countryCode"`
 	// overwrites for a specific model. If a band is specified, it will shadow the default. Property key is the model name (e.g. "AP63")
 	ModelSpecific map[string]RftemplateModelSpecific `pulumi:"modelSpecific"`
 	// The name of the RF template
-	Name  *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// Organization that owns this RF template
 	OrgId *string `pulumi:"orgId"`
 	// Whether scanning radio is enabled
 	ScanningEnabled *bool `pulumi:"scanningEnabled"`
 }
 
 type RftemplateState struct {
+	// External antenna gain for the 2.4 GHz radio
 	AntGain24 pulumi.IntPtrInput
-	AntGain5  pulumi.IntPtrInput
-	AntGain6  pulumi.IntPtrInput
-	// Radio Band AP settings
+	// External antenna gain for the 5 GHz radio
+	AntGain5 pulumi.IntPtrInput
+	// External antenna gain for the 6 GHz radio
+	AntGain6 pulumi.IntPtrInput
+	// 2.4 GHz radio settings in this RF template
 	Band24 RftemplateBand24PtrInput
-	// enum: `24`, `5`, `6`, `auto`
+	// Radio usage mode for the 2.4 GHz-capable radio in this RF template
 	Band24Usage pulumi.StringPtrInput
-	// Radio Band AP settings
+	// 5 GHz radio settings in this RF template
 	Band5 RftemplateBand5PtrInput
-	// Radio Band AP settings
+	// 5 GHz settings used when the 2.4 GHz radio operates in 5 GHz mode
 	Band5On24Radio RftemplateBand5On24RadioPtrInput
-	// Radio Band AP settings
+	// 6 GHz radio settings in this RF template
 	Band6 RftemplateBand6PtrInput
 	// Optional, country code to use. If specified, this gets applied to all sites using the RF Template
 	CountryCode pulumi.StringPtrInput
 	// overwrites for a specific model. If a band is specified, it will shadow the default. Property key is the model name (e.g. "AP63")
 	ModelSpecific RftemplateModelSpecificMapInput
 	// The name of the RF template
-	Name  pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// Organization that owns this RF template
 	OrgId pulumi.StringPtrInput
 	// Whether scanning radio is enabled
 	ScanningEnabled pulumi.BoolPtrInput
@@ -191,51 +203,59 @@ func (RftemplateState) ElementType() reflect.Type {
 }
 
 type rftemplateArgs struct {
+	// External antenna gain for the 2.4 GHz radio
 	AntGain24 *int `pulumi:"antGain24"`
-	AntGain5  *int `pulumi:"antGain5"`
-	AntGain6  *int `pulumi:"antGain6"`
-	// Radio Band AP settings
+	// External antenna gain for the 5 GHz radio
+	AntGain5 *int `pulumi:"antGain5"`
+	// External antenna gain for the 6 GHz radio
+	AntGain6 *int `pulumi:"antGain6"`
+	// 2.4 GHz radio settings in this RF template
 	Band24 *RftemplateBand24 `pulumi:"band24"`
-	// enum: `24`, `5`, `6`, `auto`
+	// Radio usage mode for the 2.4 GHz-capable radio in this RF template
 	Band24Usage *string `pulumi:"band24Usage"`
-	// Radio Band AP settings
+	// 5 GHz radio settings in this RF template
 	Band5 *RftemplateBand5 `pulumi:"band5"`
-	// Radio Band AP settings
+	// 5 GHz settings used when the 2.4 GHz radio operates in 5 GHz mode
 	Band5On24Radio *RftemplateBand5On24Radio `pulumi:"band5On24Radio"`
-	// Radio Band AP settings
+	// 6 GHz radio settings in this RF template
 	Band6 *RftemplateBand6 `pulumi:"band6"`
 	// Optional, country code to use. If specified, this gets applied to all sites using the RF Template
 	CountryCode *string `pulumi:"countryCode"`
 	// overwrites for a specific model. If a band is specified, it will shadow the default. Property key is the model name (e.g. "AP63")
 	ModelSpecific map[string]RftemplateModelSpecific `pulumi:"modelSpecific"`
 	// The name of the RF template
-	Name  *string `pulumi:"name"`
-	OrgId string  `pulumi:"orgId"`
+	Name *string `pulumi:"name"`
+	// Organization that owns this RF template
+	OrgId string `pulumi:"orgId"`
 	// Whether scanning radio is enabled
 	ScanningEnabled *bool `pulumi:"scanningEnabled"`
 }
 
 // The set of arguments for constructing a Rftemplate resource.
 type RftemplateArgs struct {
+	// External antenna gain for the 2.4 GHz radio
 	AntGain24 pulumi.IntPtrInput
-	AntGain5  pulumi.IntPtrInput
-	AntGain6  pulumi.IntPtrInput
-	// Radio Band AP settings
+	// External antenna gain for the 5 GHz radio
+	AntGain5 pulumi.IntPtrInput
+	// External antenna gain for the 6 GHz radio
+	AntGain6 pulumi.IntPtrInput
+	// 2.4 GHz radio settings in this RF template
 	Band24 RftemplateBand24PtrInput
-	// enum: `24`, `5`, `6`, `auto`
+	// Radio usage mode for the 2.4 GHz-capable radio in this RF template
 	Band24Usage pulumi.StringPtrInput
-	// Radio Band AP settings
+	// 5 GHz radio settings in this RF template
 	Band5 RftemplateBand5PtrInput
-	// Radio Band AP settings
+	// 5 GHz settings used when the 2.4 GHz radio operates in 5 GHz mode
 	Band5On24Radio RftemplateBand5On24RadioPtrInput
-	// Radio Band AP settings
+	// 6 GHz radio settings in this RF template
 	Band6 RftemplateBand6PtrInput
 	// Optional, country code to use. If specified, this gets applied to all sites using the RF Template
 	CountryCode pulumi.StringPtrInput
 	// overwrites for a specific model. If a band is specified, it will shadow the default. Property key is the model name (e.g. "AP63")
 	ModelSpecific RftemplateModelSpecificMapInput
 	// The name of the RF template
-	Name  pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// Organization that owns this RF template
 	OrgId pulumi.StringInput
 	// Whether scanning radio is enabled
 	ScanningEnabled pulumi.BoolPtrInput
@@ -328,39 +348,42 @@ func (o RftemplateOutput) ToRftemplateOutputWithContext(ctx context.Context) Rft
 	return o
 }
 
+// External antenna gain for the 2.4 GHz radio
 func (o RftemplateOutput) AntGain24() pulumi.IntOutput {
 	return o.ApplyT(func(v *Rftemplate) pulumi.IntOutput { return v.AntGain24 }).(pulumi.IntOutput)
 }
 
+// External antenna gain for the 5 GHz radio
 func (o RftemplateOutput) AntGain5() pulumi.IntOutput {
 	return o.ApplyT(func(v *Rftemplate) pulumi.IntOutput { return v.AntGain5 }).(pulumi.IntOutput)
 }
 
+// External antenna gain for the 6 GHz radio
 func (o RftemplateOutput) AntGain6() pulumi.IntOutput {
 	return o.ApplyT(func(v *Rftemplate) pulumi.IntOutput { return v.AntGain6 }).(pulumi.IntOutput)
 }
 
-// Radio Band AP settings
+// 2.4 GHz radio settings in this RF template
 func (o RftemplateOutput) Band24() RftemplateBand24PtrOutput {
 	return o.ApplyT(func(v *Rftemplate) RftemplateBand24PtrOutput { return v.Band24 }).(RftemplateBand24PtrOutput)
 }
 
-// enum: `24`, `5`, `6`, `auto`
+// Radio usage mode for the 2.4 GHz-capable radio in this RF template
 func (o RftemplateOutput) Band24Usage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Rftemplate) pulumi.StringPtrOutput { return v.Band24Usage }).(pulumi.StringPtrOutput)
 }
 
-// Radio Band AP settings
+// 5 GHz radio settings in this RF template
 func (o RftemplateOutput) Band5() RftemplateBand5PtrOutput {
 	return o.ApplyT(func(v *Rftemplate) RftemplateBand5PtrOutput { return v.Band5 }).(RftemplateBand5PtrOutput)
 }
 
-// Radio Band AP settings
+// 5 GHz settings used when the 2.4 GHz radio operates in 5 GHz mode
 func (o RftemplateOutput) Band5On24Radio() RftemplateBand5On24RadioPtrOutput {
 	return o.ApplyT(func(v *Rftemplate) RftemplateBand5On24RadioPtrOutput { return v.Band5On24Radio }).(RftemplateBand5On24RadioPtrOutput)
 }
 
-// Radio Band AP settings
+// 6 GHz radio settings in this RF template
 func (o RftemplateOutput) Band6() RftemplateBand6PtrOutput {
 	return o.ApplyT(func(v *Rftemplate) RftemplateBand6PtrOutput { return v.Band6 }).(RftemplateBand6PtrOutput)
 }
@@ -380,6 +403,7 @@ func (o RftemplateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rftemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Organization that owns this RF template
 func (o RftemplateOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rftemplate) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }

@@ -19,59 +19,107 @@ public final class SwitchRemoteSyslogFileArgs extends com.pulumi.resources.Resou
 
     public static final SwitchRemoteSyslogFileArgs Empty = new SwitchRemoteSyslogFileArgs();
 
+    /**
+     * Retention settings for this generated syslog file
+     * 
+     */
     @Import(name="archive")
     private @Nullable Output<SwitchRemoteSyslogFileArchiveArgs> archive;
 
+    /**
+     * @return Retention settings for this generated syslog file
+     * 
+     */
     public Optional<Output<SwitchRemoteSyslogFileArchiveArgs>> archive() {
         return Optional.ofNullable(this.archive);
     }
 
+    /**
+     * Syslog facilities and severities written to this file
+     * 
+     */
     @Import(name="contents")
     private @Nullable Output<List<SwitchRemoteSyslogFileContentArgs>> contents;
 
+    /**
+     * @return Syslog facilities and severities written to this file
+     * 
+     */
     public Optional<Output<List<SwitchRemoteSyslogFileContentArgs>>> contents() {
         return Optional.ofNullable(this.contents);
     }
 
     /**
-     * Only if `protocol`==`tcp`
+     * Only if `protocol`==`tcp`, enable TLS for this syslog file destination
      * 
      */
     @Import(name="enableTls")
     private @Nullable Output<Boolean> enableTls;
 
     /**
-     * @return Only if `protocol`==`tcp`
+     * @return Only if `protocol`==`tcp`, enable TLS for this syslog file destination
      * 
      */
     public Optional<Output<Boolean>> enableTls() {
         return Optional.ofNullable(this.enableTls);
     }
 
+    /**
+     * Whether to include explicit syslog priority values in file output
+     * 
+     */
     @Import(name="explicitPriority")
     private @Nullable Output<Boolean> explicitPriority;
 
+    /**
+     * @return Whether to include explicit syslog priority values in file output
+     * 
+     */
     public Optional<Output<Boolean>> explicitPriority() {
         return Optional.ofNullable(this.explicitPriority);
     }
 
+    /**
+     * Generated syslog file name
+     * 
+     */
     @Import(name="file")
     private @Nullable Output<String> file;
 
+    /**
+     * @return Generated syslog file name
+     * 
+     */
     public Optional<Output<String>> file() {
         return Optional.ofNullable(this.file);
     }
 
+    /**
+     * Expression used to filter log messages written to this file
+     * 
+     */
     @Import(name="match")
     private @Nullable Output<String> match;
 
+    /**
+     * @return Expression used to filter log messages written to this file
+     * 
+     */
     public Optional<Output<String>> match() {
         return Optional.ofNullable(this.match);
     }
 
+    /**
+     * Whether to include structured syslog data in file output
+     * 
+     */
     @Import(name="structuredData")
     private @Nullable Output<Boolean> structuredData;
 
+    /**
+     * @return Whether to include structured syslog data in file output
+     * 
+     */
     public Optional<Output<Boolean>> structuredData() {
         return Optional.ofNullable(this.structuredData);
     }
@@ -106,30 +154,60 @@ public final class SwitchRemoteSyslogFileArgs extends com.pulumi.resources.Resou
             $ = new SwitchRemoteSyslogFileArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param archive Retention settings for this generated syslog file
+         * 
+         * @return builder
+         * 
+         */
         public Builder archive(@Nullable Output<SwitchRemoteSyslogFileArchiveArgs> archive) {
             $.archive = archive;
             return this;
         }
 
+        /**
+         * @param archive Retention settings for this generated syslog file
+         * 
+         * @return builder
+         * 
+         */
         public Builder archive(SwitchRemoteSyslogFileArchiveArgs archive) {
             return archive(Output.of(archive));
         }
 
+        /**
+         * @param contents Syslog facilities and severities written to this file
+         * 
+         * @return builder
+         * 
+         */
         public Builder contents(@Nullable Output<List<SwitchRemoteSyslogFileContentArgs>> contents) {
             $.contents = contents;
             return this;
         }
 
+        /**
+         * @param contents Syslog facilities and severities written to this file
+         * 
+         * @return builder
+         * 
+         */
         public Builder contents(List<SwitchRemoteSyslogFileContentArgs> contents) {
             return contents(Output.of(contents));
         }
 
+        /**
+         * @param contents Syslog facilities and severities written to this file
+         * 
+         * @return builder
+         * 
+         */
         public Builder contents(SwitchRemoteSyslogFileContentArgs... contents) {
             return contents(List.of(contents));
         }
 
         /**
-         * @param enableTls Only if `protocol`==`tcp`
+         * @param enableTls Only if `protocol`==`tcp`, enable TLS for this syslog file destination
          * 
          * @return builder
          * 
@@ -140,7 +218,7 @@ public final class SwitchRemoteSyslogFileArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param enableTls Only if `protocol`==`tcp`
+         * @param enableTls Only if `protocol`==`tcp`, enable TLS for this syslog file destination
          * 
          * @return builder
          * 
@@ -149,38 +227,86 @@ public final class SwitchRemoteSyslogFileArgs extends com.pulumi.resources.Resou
             return enableTls(Output.of(enableTls));
         }
 
+        /**
+         * @param explicitPriority Whether to include explicit syslog priority values in file output
+         * 
+         * @return builder
+         * 
+         */
         public Builder explicitPriority(@Nullable Output<Boolean> explicitPriority) {
             $.explicitPriority = explicitPriority;
             return this;
         }
 
+        /**
+         * @param explicitPriority Whether to include explicit syslog priority values in file output
+         * 
+         * @return builder
+         * 
+         */
         public Builder explicitPriority(Boolean explicitPriority) {
             return explicitPriority(Output.of(explicitPriority));
         }
 
+        /**
+         * @param file Generated syslog file name
+         * 
+         * @return builder
+         * 
+         */
         public Builder file(@Nullable Output<String> file) {
             $.file = file;
             return this;
         }
 
+        /**
+         * @param file Generated syslog file name
+         * 
+         * @return builder
+         * 
+         */
         public Builder file(String file) {
             return file(Output.of(file));
         }
 
+        /**
+         * @param match Expression used to filter log messages written to this file
+         * 
+         * @return builder
+         * 
+         */
         public Builder match(@Nullable Output<String> match) {
             $.match = match;
             return this;
         }
 
+        /**
+         * @param match Expression used to filter log messages written to this file
+         * 
+         * @return builder
+         * 
+         */
         public Builder match(String match) {
             return match(Output.of(match));
         }
 
+        /**
+         * @param structuredData Whether to include structured syslog data in file output
+         * 
+         * @return builder
+         * 
+         */
         public Builder structuredData(@Nullable Output<Boolean> structuredData) {
             $.structuredData = structuredData;
             return this;
         }
 
+        /**
+         * @param structuredData Whether to include structured syslog data in file output
+         * 
+         * @return builder
+         * 
+         */
         public Builder structuredData(Boolean structuredData) {
             return structuredData(Output.of(structuredData));
         }

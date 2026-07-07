@@ -5,6 +5,7 @@ package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.junipermist.org.outputs.SettingMarvisSelfDriving;
+import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -12,14 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingMarvis {
     /**
-     * @return Self-driving network automation settings per domain
+     * @return Disable proactive monitoring in Marvis. NOTE: support access must be enabled for the org (`allowMist`=`true`) for proactive monitoring to function.
+     * 
+     */
+    private @Nullable Boolean disableProactiveMonitoring;
+    /**
+     * @return Self-driving network automation settings by domain
      * 
      */
     private @Nullable SettingMarvisSelfDriving selfDriving;
 
     private SettingMarvis() {}
     /**
-     * @return Self-driving network automation settings per domain
+     * @return Disable proactive monitoring in Marvis. NOTE: support access must be enabled for the org (`allowMist`=`true`) for proactive monitoring to function.
+     * 
+     */
+    public Optional<Boolean> disableProactiveMonitoring() {
+        return Optional.ofNullable(this.disableProactiveMonitoring);
+    }
+    /**
+     * @return Self-driving network automation settings by domain
      * 
      */
     public Optional<SettingMarvisSelfDriving> selfDriving() {
@@ -35,13 +48,21 @@ public final class SettingMarvis {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean disableProactiveMonitoring;
         private @Nullable SettingMarvisSelfDriving selfDriving;
         public Builder() {}
         public Builder(SettingMarvis defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.disableProactiveMonitoring = defaults.disableProactiveMonitoring;
     	      this.selfDriving = defaults.selfDriving;
         }
 
+        @CustomType.Setter
+        public Builder disableProactiveMonitoring(@Nullable Boolean disableProactiveMonitoring) {
+
+            this.disableProactiveMonitoring = disableProactiveMonitoring;
+            return this;
+        }
         @CustomType.Setter
         public Builder selfDriving(@Nullable SettingMarvisSelfDriving selfDriving) {
 
@@ -50,6 +71,7 @@ public final class SettingMarvis {
         }
         public SettingMarvis build() {
             final var _resultValue = new SettingMarvis();
+            _resultValue.disableProactiveMonitoring = disableProactiveMonitoring;
             _resultValue.selfDriving = selfDriving;
             return _resultValue;
         }

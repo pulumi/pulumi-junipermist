@@ -17,14 +17,14 @@ public final class NacruleNotMatchingArgs extends com.pulumi.resources.ResourceA
     public static final NacruleNotMatchingArgs Empty = new NacruleNotMatchingArgs();
 
     /**
-     * enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `eap-peap`
+     * NAC authentication method that must match the request
      * 
      */
     @Import(name="authType")
     private @Nullable Output<String> authType;
 
     /**
-     * @return enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `eap-peap`
+     * @return NAC authentication method that must match the request
      * 
      */
     public Optional<Output<String>> authType() {
@@ -32,14 +32,14 @@ public final class NacruleNotMatchingArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * List of client device families to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed family values
+     * Client device family values that must match the request
      * 
      */
     @Import(name="families")
     private @Nullable Output<List<String>> families;
 
     /**
-     * @return List of client device families to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed family values
+     * @return Client device family values that must match the request
      * 
      */
     public Optional<Output<List<String>>> families() {
@@ -47,14 +47,14 @@ public final class NacruleNotMatchingArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * List of client device models to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed model values
+     * Client device manufacturer values that must match the request
      * 
      */
     @Import(name="mfgs")
     private @Nullable Output<List<String>> mfgs;
 
     /**
-     * @return List of client device models to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed model values
+     * @return Client device manufacturer values that must match the request
      * 
      */
     public Optional<Output<List<String>>> mfgs() {
@@ -62,58 +62,74 @@ public final class NacruleNotMatchingArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * List of client device manufacturers to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed mfg values
+     * Client device model values that must match the request
      * 
      */
     @Import(name="models")
     private @Nullable Output<List<String>> models;
 
     /**
-     * @return List of client device manufacturers to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed mfg values
+     * @return Client device model values that must match the request
      * 
      */
     public Optional<Output<List<String>>> models() {
         return Optional.ofNullable(this.models);
     }
 
+    /**
+     * NAC tag IDs whose match criteria must be satisfied by the request
+     * 
+     */
     @Import(name="nactags")
     private @Nullable Output<List<String>> nactags;
 
+    /**
+     * @return NAC tag IDs whose match criteria must be satisfied by the request
+     * 
+     */
     public Optional<Output<List<String>>> nactags() {
         return Optional.ofNullable(this.nactags);
     }
 
     /**
-     * List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed osType values
+     * Client OS type values that must match the request
      * 
      */
     @Import(name="osTypes")
     private @Nullable Output<List<String>> osTypes;
 
     /**
-     * @return List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed osType values
+     * @return Client OS type values that must match the request
      * 
      */
     public Optional<Output<List<String>>> osTypes() {
         return Optional.ofNullable(this.osTypes);
     }
 
+    /**
+     * Wired or wireless access types that must match the request
+     * 
+     */
     @Import(name="portTypes")
     private @Nullable Output<List<String>> portTypes;
 
+    /**
+     * @return Wired or wireless access types that must match the request
+     * 
+     */
     public Optional<Output<List<String>>> portTypes() {
         return Optional.ofNullable(this.portTypes);
     }
 
     /**
-     * List of site ids to match
+     * Site IDs where the rule criteria apply
      * 
      */
     @Import(name="siteIds")
     private @Nullable Output<List<String>> siteIds;
 
     /**
-     * @return List of site ids to match
+     * @return Site IDs where the rule criteria apply
      * 
      */
     public Optional<Output<List<String>>> siteIds() {
@@ -121,14 +137,14 @@ public final class NacruleNotMatchingArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * List of sitegroup ids to match
+     * Site group IDs where the rule criteria apply
      * 
      */
     @Import(name="sitegroupIds")
     private @Nullable Output<List<String>> sitegroupIds;
 
     /**
-     * @return List of sitegroup ids to match
+     * @return Site group IDs where the rule criteria apply
      * 
      */
     public Optional<Output<List<String>>> sitegroupIds() {
@@ -136,14 +152,14 @@ public final class NacruleNotMatchingArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * List of vendors to match
+     * Client device vendor values that must match the request
      * 
      */
     @Import(name="vendors")
     private @Nullable Output<List<String>> vendors;
 
     /**
-     * @return List of vendors to match
+     * @return Client device vendor values that must match the request
      * 
      */
     public Optional<Output<List<String>>> vendors() {
@@ -184,7 +200,7 @@ public final class NacruleNotMatchingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param authType enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `eap-peap`
+         * @param authType NAC authentication method that must match the request
          * 
          * @return builder
          * 
@@ -195,7 +211,7 @@ public final class NacruleNotMatchingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param authType enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `eap-peap`
+         * @param authType NAC authentication method that must match the request
          * 
          * @return builder
          * 
@@ -205,7 +221,7 @@ public final class NacruleNotMatchingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param families List of client device families to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed family values
+         * @param families Client device family values that must match the request
          * 
          * @return builder
          * 
@@ -216,7 +232,7 @@ public final class NacruleNotMatchingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param families List of client device families to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed family values
+         * @param families Client device family values that must match the request
          * 
          * @return builder
          * 
@@ -226,7 +242,7 @@ public final class NacruleNotMatchingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param families List of client device families to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed family values
+         * @param families Client device family values that must match the request
          * 
          * @return builder
          * 
@@ -236,7 +252,7 @@ public final class NacruleNotMatchingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param mfgs List of client device models to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed model values
+         * @param mfgs Client device manufacturer values that must match the request
          * 
          * @return builder
          * 
@@ -247,7 +263,7 @@ public final class NacruleNotMatchingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param mfgs List of client device models to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed model values
+         * @param mfgs Client device manufacturer values that must match the request
          * 
          * @return builder
          * 
@@ -257,7 +273,7 @@ public final class NacruleNotMatchingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param mfgs List of client device models to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed model values
+         * @param mfgs Client device manufacturer values that must match the request
          * 
          * @return builder
          * 
@@ -267,7 +283,7 @@ public final class NacruleNotMatchingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param models List of client device manufacturers to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed mfg values
+         * @param models Client device model values that must match the request
          * 
          * @return builder
          * 
@@ -278,7 +294,7 @@ public final class NacruleNotMatchingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param models List of client device manufacturers to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed mfg values
+         * @param models Client device model values that must match the request
          * 
          * @return builder
          * 
@@ -288,7 +304,7 @@ public final class NacruleNotMatchingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param models List of client device manufacturers to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed mfg values
+         * @param models Client device model values that must match the request
          * 
          * @return builder
          * 
@@ -297,21 +313,39 @@ public final class NacruleNotMatchingArgs extends com.pulumi.resources.ResourceA
             return models(List.of(models));
         }
 
+        /**
+         * @param nactags NAC tag IDs whose match criteria must be satisfied by the request
+         * 
+         * @return builder
+         * 
+         */
         public Builder nactags(@Nullable Output<List<String>> nactags) {
             $.nactags = nactags;
             return this;
         }
 
+        /**
+         * @param nactags NAC tag IDs whose match criteria must be satisfied by the request
+         * 
+         * @return builder
+         * 
+         */
         public Builder nactags(List<String> nactags) {
             return nactags(Output.of(nactags));
         }
 
+        /**
+         * @param nactags NAC tag IDs whose match criteria must be satisfied by the request
+         * 
+         * @return builder
+         * 
+         */
         public Builder nactags(String... nactags) {
             return nactags(List.of(nactags));
         }
 
         /**
-         * @param osTypes List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed osType values
+         * @param osTypes Client OS type values that must match the request
          * 
          * @return builder
          * 
@@ -322,7 +356,7 @@ public final class NacruleNotMatchingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param osTypes List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed osType values
+         * @param osTypes Client OS type values that must match the request
          * 
          * @return builder
          * 
@@ -332,7 +366,7 @@ public final class NacruleNotMatchingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param osTypes List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed osType values
+         * @param osTypes Client OS type values that must match the request
          * 
          * @return builder
          * 
@@ -341,21 +375,39 @@ public final class NacruleNotMatchingArgs extends com.pulumi.resources.ResourceA
             return osTypes(List.of(osTypes));
         }
 
+        /**
+         * @param portTypes Wired or wireless access types that must match the request
+         * 
+         * @return builder
+         * 
+         */
         public Builder portTypes(@Nullable Output<List<String>> portTypes) {
             $.portTypes = portTypes;
             return this;
         }
 
+        /**
+         * @param portTypes Wired or wireless access types that must match the request
+         * 
+         * @return builder
+         * 
+         */
         public Builder portTypes(List<String> portTypes) {
             return portTypes(Output.of(portTypes));
         }
 
+        /**
+         * @param portTypes Wired or wireless access types that must match the request
+         * 
+         * @return builder
+         * 
+         */
         public Builder portTypes(String... portTypes) {
             return portTypes(List.of(portTypes));
         }
 
         /**
-         * @param siteIds List of site ids to match
+         * @param siteIds Site IDs where the rule criteria apply
          * 
          * @return builder
          * 
@@ -366,7 +418,7 @@ public final class NacruleNotMatchingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param siteIds List of site ids to match
+         * @param siteIds Site IDs where the rule criteria apply
          * 
          * @return builder
          * 
@@ -376,7 +428,7 @@ public final class NacruleNotMatchingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param siteIds List of site ids to match
+         * @param siteIds Site IDs where the rule criteria apply
          * 
          * @return builder
          * 
@@ -386,7 +438,7 @@ public final class NacruleNotMatchingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param sitegroupIds List of sitegroup ids to match
+         * @param sitegroupIds Site group IDs where the rule criteria apply
          * 
          * @return builder
          * 
@@ -397,7 +449,7 @@ public final class NacruleNotMatchingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param sitegroupIds List of sitegroup ids to match
+         * @param sitegroupIds Site group IDs where the rule criteria apply
          * 
          * @return builder
          * 
@@ -407,7 +459,7 @@ public final class NacruleNotMatchingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param sitegroupIds List of sitegroup ids to match
+         * @param sitegroupIds Site group IDs where the rule criteria apply
          * 
          * @return builder
          * 
@@ -417,7 +469,7 @@ public final class NacruleNotMatchingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param vendors List of vendors to match
+         * @param vendors Client device vendor values that must match the request
          * 
          * @return builder
          * 
@@ -428,7 +480,7 @@ public final class NacruleNotMatchingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param vendors List of vendors to match
+         * @param vendors Client device vendor values that must match the request
          * 
          * @return builder
          * 
@@ -438,7 +490,7 @@ public final class NacruleNotMatchingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param vendors List of vendors to match
+         * @param vendors Client device vendor values that must match the request
          * 
          * @return builder
          * 

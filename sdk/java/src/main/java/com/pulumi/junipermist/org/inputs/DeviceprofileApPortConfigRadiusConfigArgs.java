@@ -21,43 +21,59 @@ public final class DeviceprofileApPortConfigRadiusConfigArgs extends com.pulumi.
     public static final DeviceprofileApPortConfigRadiusConfigArgs Empty = new DeviceprofileApPortConfigRadiusConfigArgs();
 
     /**
-     * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+     * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled
      * 
      */
     @Import(name="acctInterimInterval")
     private @Nullable Output<Integer> acctInterimInterval;
 
     /**
-     * @return How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+     * @return How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled
      * 
      */
     public Optional<Output<Integer>> acctInterimInterval() {
         return Optional.ofNullable(this.acctInterimInterval);
     }
 
+    /**
+     * RADIUS accounting servers used by this Junos configuration
+     * 
+     */
     @Import(name="acctServers")
     private @Nullable Output<List<DeviceprofileApPortConfigRadiusConfigAcctServerArgs>> acctServers;
 
+    /**
+     * @return RADIUS accounting servers used by this Junos configuration
+     * 
+     */
     public Optional<Output<List<DeviceprofileApPortConfigRadiusConfigAcctServerArgs>>> acctServers() {
         return Optional.ofNullable(this.acctServers);
     }
 
+    /**
+     * RADIUS authentication servers used by this Junos configuration
+     * 
+     */
     @Import(name="authServers")
     private @Nullable Output<List<DeviceprofileApPortConfigRadiusConfigAuthServerArgs>> authServers;
 
+    /**
+     * @return RADIUS authentication servers used by this Junos configuration
+     * 
+     */
     public Optional<Output<List<DeviceprofileApPortConfigRadiusConfigAuthServerArgs>>> authServers() {
         return Optional.ofNullable(this.authServers);
     }
 
     /**
-     * radius auth session retries
+     * Number of RADIUS authentication request retries before failover
      * 
      */
     @Import(name="authServersRetries")
     private @Nullable Output<Integer> authServersRetries;
 
     /**
-     * @return radius auth session retries
+     * @return Number of RADIUS authentication request retries before failover
      * 
      */
     public Optional<Output<Integer>> authServersRetries() {
@@ -65,43 +81,59 @@ public final class DeviceprofileApPortConfigRadiusConfigArgs extends com.pulumi.
     }
 
     /**
-     * radius auth session timeout
+     * RADIUS authentication server timeout, in seconds
      * 
      */
     @Import(name="authServersTimeout")
     private @Nullable Output<Integer> authServersTimeout;
 
     /**
-     * @return radius auth session timeout
+     * @return RADIUS authentication server timeout, in seconds
      * 
      */
     public Optional<Output<Integer>> authServersTimeout() {
         return Optional.ofNullable(this.authServersTimeout);
     }
 
+    /**
+     * Whether RADIUS Change of Authorization (CoA) is enabled
+     * 
+     */
     @Import(name="coaEnabled")
     private @Nullable Output<Boolean> coaEnabled;
 
+    /**
+     * @return Whether RADIUS Change of Authorization (CoA) is enabled
+     * 
+     */
     public Optional<Output<Boolean>> coaEnabled() {
         return Optional.ofNullable(this.coaEnabled);
     }
 
+    /**
+     * UDP port used for RADIUS Change of Authorization (CoA)
+     * 
+     */
     @Import(name="coaPort")
     private @Nullable Output<Integer> coaPort;
 
+    /**
+     * @return UDP port used for RADIUS Change of Authorization (CoA)
+     * 
+     */
     public Optional<Output<Integer>> coaPort() {
         return Optional.ofNullable(this.coaPort);
     }
 
     /**
-     * use `network`or `sourceIp`, which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
+     * Use `network` or `sourceIp`. Network where the RADIUS server resides; if the network has a static IP, Mist uses it as the source IP
      * 
      */
     @Import(name="network")
     private @Nullable Output<String> network;
 
     /**
-     * @return use `network`or `sourceIp`, which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
+     * @return Use `network` or `sourceIp`. Network where the RADIUS server resides; if the network has a static IP, Mist uses it as the source IP
      * 
      */
     public Optional<Output<String>> network() {
@@ -109,14 +141,14 @@ public final class DeviceprofileApPortConfigRadiusConfigArgs extends com.pulumi.
     }
 
     /**
-     * use `network`or `sourceIp`
+     * Use `network` or `sourceIp`. Explicit source IP address for RADIUS traffic
      * 
      */
     @Import(name="sourceIp")
     private @Nullable Output<String> sourceIp;
 
     /**
-     * @return use `network`or `sourceIp`
+     * @return Use `network` or `sourceIp`. Explicit source IP address for RADIUS traffic
      * 
      */
     public Optional<Output<String>> sourceIp() {
@@ -156,7 +188,7 @@ public final class DeviceprofileApPortConfigRadiusConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param acctInterimInterval How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+         * @param acctInterimInterval How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled
          * 
          * @return builder
          * 
@@ -167,7 +199,7 @@ public final class DeviceprofileApPortConfigRadiusConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param acctInterimInterval How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+         * @param acctInterimInterval How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled
          * 
          * @return builder
          * 
@@ -176,34 +208,70 @@ public final class DeviceprofileApPortConfigRadiusConfigArgs extends com.pulumi.
             return acctInterimInterval(Output.of(acctInterimInterval));
         }
 
+        /**
+         * @param acctServers RADIUS accounting servers used by this Junos configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder acctServers(@Nullable Output<List<DeviceprofileApPortConfigRadiusConfigAcctServerArgs>> acctServers) {
             $.acctServers = acctServers;
             return this;
         }
 
+        /**
+         * @param acctServers RADIUS accounting servers used by this Junos configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder acctServers(List<DeviceprofileApPortConfigRadiusConfigAcctServerArgs> acctServers) {
             return acctServers(Output.of(acctServers));
         }
 
+        /**
+         * @param acctServers RADIUS accounting servers used by this Junos configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder acctServers(DeviceprofileApPortConfigRadiusConfigAcctServerArgs... acctServers) {
             return acctServers(List.of(acctServers));
         }
 
+        /**
+         * @param authServers RADIUS authentication servers used by this Junos configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder authServers(@Nullable Output<List<DeviceprofileApPortConfigRadiusConfigAuthServerArgs>> authServers) {
             $.authServers = authServers;
             return this;
         }
 
+        /**
+         * @param authServers RADIUS authentication servers used by this Junos configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder authServers(List<DeviceprofileApPortConfigRadiusConfigAuthServerArgs> authServers) {
             return authServers(Output.of(authServers));
         }
 
+        /**
+         * @param authServers RADIUS authentication servers used by this Junos configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder authServers(DeviceprofileApPortConfigRadiusConfigAuthServerArgs... authServers) {
             return authServers(List.of(authServers));
         }
 
         /**
-         * @param authServersRetries radius auth session retries
+         * @param authServersRetries Number of RADIUS authentication request retries before failover
          * 
          * @return builder
          * 
@@ -214,7 +282,7 @@ public final class DeviceprofileApPortConfigRadiusConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param authServersRetries radius auth session retries
+         * @param authServersRetries Number of RADIUS authentication request retries before failover
          * 
          * @return builder
          * 
@@ -224,7 +292,7 @@ public final class DeviceprofileApPortConfigRadiusConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param authServersTimeout radius auth session timeout
+         * @param authServersTimeout RADIUS authentication server timeout, in seconds
          * 
          * @return builder
          * 
@@ -235,7 +303,7 @@ public final class DeviceprofileApPortConfigRadiusConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param authServersTimeout radius auth session timeout
+         * @param authServersTimeout RADIUS authentication server timeout, in seconds
          * 
          * @return builder
          * 
@@ -244,26 +312,50 @@ public final class DeviceprofileApPortConfigRadiusConfigArgs extends com.pulumi.
             return authServersTimeout(Output.of(authServersTimeout));
         }
 
+        /**
+         * @param coaEnabled Whether RADIUS Change of Authorization (CoA) is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder coaEnabled(@Nullable Output<Boolean> coaEnabled) {
             $.coaEnabled = coaEnabled;
             return this;
         }
 
+        /**
+         * @param coaEnabled Whether RADIUS Change of Authorization (CoA) is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder coaEnabled(Boolean coaEnabled) {
             return coaEnabled(Output.of(coaEnabled));
         }
 
+        /**
+         * @param coaPort UDP port used for RADIUS Change of Authorization (CoA)
+         * 
+         * @return builder
+         * 
+         */
         public Builder coaPort(@Nullable Output<Integer> coaPort) {
             $.coaPort = coaPort;
             return this;
         }
 
+        /**
+         * @param coaPort UDP port used for RADIUS Change of Authorization (CoA)
+         * 
+         * @return builder
+         * 
+         */
         public Builder coaPort(Integer coaPort) {
             return coaPort(Output.of(coaPort));
         }
 
         /**
-         * @param network use `network`or `sourceIp`, which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
+         * @param network Use `network` or `sourceIp`. Network where the RADIUS server resides; if the network has a static IP, Mist uses it as the source IP
          * 
          * @return builder
          * 
@@ -274,7 +366,7 @@ public final class DeviceprofileApPortConfigRadiusConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param network use `network`or `sourceIp`, which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
+         * @param network Use `network` or `sourceIp`. Network where the RADIUS server resides; if the network has a static IP, Mist uses it as the source IP
          * 
          * @return builder
          * 
@@ -284,7 +376,7 @@ public final class DeviceprofileApPortConfigRadiusConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param sourceIp use `network`or `sourceIp`
+         * @param sourceIp Use `network` or `sourceIp`. Explicit source IP address for RADIUS traffic
          * 
          * @return builder
          * 
@@ -295,7 +387,7 @@ public final class DeviceprofileApPortConfigRadiusConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param sourceIp use `network`or `sourceIp`
+         * @param sourceIp Use `network` or `sourceIp`. Explicit source IP address for RADIUS traffic
          * 
          * @return builder
          * 

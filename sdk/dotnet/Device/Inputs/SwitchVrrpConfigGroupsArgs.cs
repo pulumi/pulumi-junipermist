@@ -18,6 +18,9 @@ namespace Pulumi.JuniperMist.Device.Inputs
         [Input("preempt")]
         public Input<bool>? Preempt { get; set; }
 
+        /// <summary>
+        /// VRRP priority for this router in the group
+        /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 

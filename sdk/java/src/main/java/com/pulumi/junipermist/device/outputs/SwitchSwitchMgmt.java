@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SwitchSwitchMgmt {
     /**
-     * @return AP_affinity_threshold apAffinityThreshold can be added as a field under site/setting. By default, this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+     * @return AP affinity threshold for switch management. If set in both site settings and organization settings, the site setting value is used.
      * 
      */
     private @Nullable Integer apAffinityThreshold;
@@ -42,15 +42,23 @@ public final class SwitchSwitchMgmt {
      * 
      */
     private @Nullable Boolean dhcpOptionFqdn;
+    /**
+     * @return Whether to suppress alarms when the switch out-of-band management interface is down
+     * 
+     */
     private @Nullable Boolean disableOobDownAlarm;
+    /**
+     * @return Whether FIPS mode is enabled on the switch
+     * 
+     */
     private @Nullable Boolean fipsEnabled;
     /**
-     * @return Property key is the user name. For Local user authentication
+     * @return Local switch user accounts keyed by username
      * 
      */
     private @Nullable Map<String,SwitchSwitchMgmtLocalAccounts> localAccounts;
     /**
-     * @return IP Address or FQDN of the Mist Edge used to proxy the switch management traffic to the Mist Cloud
+     * @return IP address or FQDN of the Mist Edge used to proxy the switch management traffic to the Mist Cloud
      * 
      */
     private @Nullable String mxedgeProxyHost;
@@ -60,9 +68,7 @@ public final class SwitchSwitchMgmt {
      */
     private @Nullable String mxedgeProxyPort;
     /**
-     * @return Restrict inbound-traffic to host
-     * when enabled, all traffic that is not essential to our operation will be dropped
-     * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we&#39;ll make sure it works
+     * @return Control-plane protection settings for the switch
      * 
      */
     private @Nullable SwitchSwitchMgmtProtectRe protectRe;
@@ -71,17 +77,25 @@ public final class SwitchSwitchMgmt {
      * 
      */
     private @Nullable Boolean removeExistingConfigs;
+    /**
+     * @return Root password for local switch access
+     * 
+     */
     private @Nullable String rootPassword;
+    /**
+     * @return Management authentication settings using TACACS+
+     * 
+     */
     private @Nullable SwitchSwitchMgmtTacacs tacacs;
     /**
-     * @return To use mxedge as proxy
+     * @return Whether to use Mist Edge as a proxy for switch management traffic
      * 
      */
     private @Nullable Boolean useMxedgeProxy;
 
     private SwitchSwitchMgmt() {}
     /**
-     * @return AP_affinity_threshold apAffinityThreshold can be added as a field under site/setting. By default, this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+     * @return AP affinity threshold for switch management. If set in both site settings and organization settings, the site setting value is used.
      * 
      */
     public Optional<Integer> apAffinityThreshold() {
@@ -115,21 +129,29 @@ public final class SwitchSwitchMgmt {
     public Optional<Boolean> dhcpOptionFqdn() {
         return Optional.ofNullable(this.dhcpOptionFqdn);
     }
+    /**
+     * @return Whether to suppress alarms when the switch out-of-band management interface is down
+     * 
+     */
     public Optional<Boolean> disableOobDownAlarm() {
         return Optional.ofNullable(this.disableOobDownAlarm);
     }
+    /**
+     * @return Whether FIPS mode is enabled on the switch
+     * 
+     */
     public Optional<Boolean> fipsEnabled() {
         return Optional.ofNullable(this.fipsEnabled);
     }
     /**
-     * @return Property key is the user name. For Local user authentication
+     * @return Local switch user accounts keyed by username
      * 
      */
     public Map<String,SwitchSwitchMgmtLocalAccounts> localAccounts() {
         return this.localAccounts == null ? Map.of() : this.localAccounts;
     }
     /**
-     * @return IP Address or FQDN of the Mist Edge used to proxy the switch management traffic to the Mist Cloud
+     * @return IP address or FQDN of the Mist Edge used to proxy the switch management traffic to the Mist Cloud
      * 
      */
     public Optional<String> mxedgeProxyHost() {
@@ -143,9 +165,7 @@ public final class SwitchSwitchMgmt {
         return Optional.ofNullable(this.mxedgeProxyPort);
     }
     /**
-     * @return Restrict inbound-traffic to host
-     * when enabled, all traffic that is not essential to our operation will be dropped
-     * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we&#39;ll make sure it works
+     * @return Control-plane protection settings for the switch
      * 
      */
     public Optional<SwitchSwitchMgmtProtectRe> protectRe() {
@@ -158,14 +178,22 @@ public final class SwitchSwitchMgmt {
     public Optional<Boolean> removeExistingConfigs() {
         return Optional.ofNullable(this.removeExistingConfigs);
     }
+    /**
+     * @return Root password for local switch access
+     * 
+     */
     public Optional<String> rootPassword() {
         return Optional.ofNullable(this.rootPassword);
     }
+    /**
+     * @return Management authentication settings using TACACS+
+     * 
+     */
     public Optional<SwitchSwitchMgmtTacacs> tacacs() {
         return Optional.ofNullable(this.tacacs);
     }
     /**
-     * @return To use mxedge as proxy
+     * @return Whether to use Mist Edge as a proxy for switch management traffic
      * 
      */
     public Optional<Boolean> useMxedgeProxy() {

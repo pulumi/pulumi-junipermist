@@ -15,9 +15,17 @@ public final class DeviceprofileApLacpConfigArgs extends com.pulumi.resources.Re
 
     public static final DeviceprofileApLacpConfigArgs Empty = new DeviceprofileApLacpConfigArgs();
 
+    /**
+     * Whether to enable LACP on supported AP Ethernet uplinks
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether to enable LACP on supported AP Ethernet uplinks
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -46,11 +54,23 @@ public final class DeviceprofileApLacpConfigArgs extends com.pulumi.resources.Re
             $ = new DeviceprofileApLacpConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Whether to enable LACP on supported AP Ethernet uplinks
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether to enable LACP on supported AP Ethernet uplinks
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

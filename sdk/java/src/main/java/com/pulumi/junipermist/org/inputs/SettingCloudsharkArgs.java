@@ -15,22 +15,30 @@ public final class SettingCloudsharkArgs extends com.pulumi.resources.ResourceAr
 
     public static final SettingCloudsharkArgs Empty = new SettingCloudsharkArgs();
 
+    /**
+     * Token used by Mist to access the CloudShark integration
+     * 
+     */
     @Import(name="apitoken")
     private @Nullable Output<String> apitoken;
 
+    /**
+     * @return Token used by Mist to access the CloudShark integration
+     * 
+     */
     public Optional<Output<String>> apitoken() {
         return Optional.ofNullable(this.apitoken);
     }
 
     /**
-     * If using CS Enterprise
+     * CloudShark Enterprise URL, if using a self-hosted CS Enterprise instance
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return If using CS Enterprise
+     * @return CloudShark Enterprise URL, if using a self-hosted CS Enterprise instance
      * 
      */
     public Optional<Output<String>> url() {
@@ -62,17 +70,29 @@ public final class SettingCloudsharkArgs extends com.pulumi.resources.ResourceAr
             $ = new SettingCloudsharkArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param apitoken Token used by Mist to access the CloudShark integration
+         * 
+         * @return builder
+         * 
+         */
         public Builder apitoken(@Nullable Output<String> apitoken) {
             $.apitoken = apitoken;
             return this;
         }
 
+        /**
+         * @param apitoken Token used by Mist to access the CloudShark integration
+         * 
+         * @return builder
+         * 
+         */
         public Builder apitoken(String apitoken) {
             return apitoken(Output.of(apitoken));
         }
 
         /**
-         * @param url If using CS Enterprise
+         * @param url CloudShark Enterprise URL, if using a self-hosted CS Enterprise instance
          * 
          * @return builder
          * 
@@ -83,7 +103,7 @@ public final class SettingCloudsharkArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param url If using CS Enterprise
+         * @param url CloudShark Enterprise URL, if using a self-hosted CS Enterprise instance
          * 
          * @return builder
          * 

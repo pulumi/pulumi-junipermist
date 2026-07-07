@@ -25,6 +25,9 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// For SRX only, if `Aggregated`==`True`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
         /// </summary>
         public readonly bool? AeLacpForceUp;
+        /// <summary>
+        /// Whether the port participates in an aggregated Ethernet interface
+        /// </summary>
         public readonly bool? Aggregated;
         /// <summary>
         /// To generate port up/down alarm, set it to true
@@ -34,13 +37,16 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// Interface Description. Can be a variable (i.e. "{{myvar}}")
         /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// Whether Ethernet autonegotiation is disabled on the port
+        /// </summary>
         public readonly bool? DisableAutoneg;
         /// <summary>
         /// Port admin up (true) / down (false)
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>
-        /// if `WanType`==`Dsl`. enum: `Adsl`, `Vdsl`
+        /// If `WanType`==`Dsl`. DSL technology used by the WAN port
         /// </summary>
         public readonly string? DslType;
         /// <summary>
@@ -52,33 +58,39 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly int? DslVpi;
         /// <summary>
-        /// enum: `Auto`, `Full`, `Half`
+        /// Ethernet duplex mode configured on the port
         /// </summary>
         public readonly string? Duplex;
         /// <summary>
-        /// Junos IP Config
+        /// Layer 3 IP configuration for the port
         /// </summary>
         public readonly Outputs.GatewayPortConfigIpConfig? IpConfig;
         /// <summary>
-        /// If `WanType`==`Lte`
+        /// If `WanType`==`Lte`. APN used by the LTE uplink
         /// </summary>
         public readonly string? LteApn;
         /// <summary>
-        /// if `WanType`==`Lte`. enum: `Chap`, `None`, `Pap`
+        /// If `WanType`==`Lte`. Authentication method used by the LTE uplink
         /// </summary>
         public readonly string? LteAuth;
+        /// <summary>
+        /// Whether the LTE uplink is used as a backup WAN connection
+        /// </summary>
         public readonly bool? LteBackup;
         /// <summary>
-        /// If `WanType`==`Lte`
+        /// If `WanType`==`Lte`. Password used for LTE uplink authentication
         /// </summary>
         public readonly string? LtePassword;
         /// <summary>
-        /// If `WanType`==`Lte`
+        /// If `WanType`==`Lte`. Username used for LTE uplink authentication
         /// </summary>
         public readonly string? LteUsername;
+        /// <summary>
+        /// Layer 3 MTU configured on the port
+        /// </summary>
         public readonly int? Mtu;
         /// <summary>
-        /// Name that we'll use to derive config
+        /// Interface name used to derive device configuration
         /// </summary>
         public readonly string? Name;
         /// <summary>
@@ -86,9 +98,12 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Networks;
         /// <summary>
-        /// For Q-in-Q
+        /// For Q-in-Q. Outer VLAN ID used for QinQ encapsulation
         /// </summary>
         public readonly int? OuterVlanId;
+        /// <summary>
+        /// Whether PoE output is disabled on the port
+        /// </summary>
         public readonly bool? PoeDisabled;
         /// <summary>
         /// Whether Perpetual PoE capabilities are enabled for a port
@@ -103,7 +118,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool? PreserveDscp;
         /// <summary>
-        /// If HA mode
+        /// If HA mode. Whether the port participates in the redundant Ethernet configuration
         /// </summary>
         public readonly bool? Redundant;
         /// <summary>
@@ -115,34 +130,43 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? RethIdx;
         /// <summary>
-        /// If HA mode
+        /// If HA mode. Node associated with the redundant Ethernet interface
         /// </summary>
         public readonly string? RethNode;
         /// <summary>
-        /// SSR only - supporting vlan-based redundancy (matching the size of `Networks`)
+        /// If HA mode and for SSR only. Per-network node assignment used for VLAN-based redundancy
         /// </summary>
         public readonly ImmutableArray<string> RethNodes;
+        /// <summary>
+        /// Link speed configured on the port
+        /// </summary>
         public readonly string? Speed;
         /// <summary>
         /// When SSR is running as VM, this is required on certain hosting platforms
         /// </summary>
         public readonly bool? SsrNoVirtualMac;
         /// <summary>
-        /// For SSR only
+        /// For SSR only. Port range configured on the interface
         /// </summary>
         public readonly string? SvrPortRange;
+        /// <summary>
+        /// Traffic shaping settings applied to the port
+        /// </summary>
         public readonly Outputs.GatewayPortConfigTrafficShaping? TrafficShaping;
         /// <summary>
-        /// port usage name. enum: `HaControl`, `HaData`, `Lan`, `Wan`
+        /// Logical usage assigned to the port
         /// </summary>
         public readonly string Usage;
+        /// <summary>
+        /// VLAN ID or variable used when the WAN interface is carried on a VLAN
+        /// </summary>
         public readonly string? VlanId;
         /// <summary>
-        /// Property key is the VPN name
+        /// Per-VPN path settings for traffic that uses this port
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.GatewayPortConfigVpnPaths>? VpnPaths;
         /// <summary>
-        /// Only when `WanType`==`Broadband`. enum: `Default`, `Max`, `Recommended`
+        /// Only when `WanType`==`Broadband`. ARP policer profile applied to the WAN port
         /// </summary>
         public readonly string? WanArpPolicer;
         /// <summary>
@@ -162,23 +186,23 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.GatewayPortConfigWanExtraRoutes6>? WanExtraRoutes6;
         /// <summary>
-        /// Only if `Usage`==`Wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
+        /// Only if `Usage`==`Wan`. Networks reachable through this WAN port for policy definition
         /// </summary>
         public readonly ImmutableArray<string> WanNetworks;
         /// <summary>
-        /// Only if `Usage`==`Wan`
+        /// Optional WAN health probe override settings for this port
         /// </summary>
         public readonly Outputs.GatewayPortConfigWanProbeOverride? WanProbeOverride;
         /// <summary>
-        /// Only if `Usage`==`Wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
+        /// Source NAT settings applied to traffic leaving this WAN port
         /// </summary>
         public readonly Outputs.GatewayPortConfigWanSourceNat? WanSourceNat;
         /// <summary>
-        /// Controls whether Marvis/scheduler can run speedtest on this port. enum: `Auto`, `Enabled`, `Disabled`
+        /// Controls whether Marvis or the scheduler can run speed tests on this WAN port
         /// </summary>
         public readonly string? WanSpeedtestMode;
         /// <summary>
-        /// Only if `Usage`==`Wan`. enum: `Broadband`, `Dsl`, `Lte`
+        /// Only if `Usage`==`Wan`. WAN uplink type configured on the port
         /// </summary>
         public readonly string? WanType;
 

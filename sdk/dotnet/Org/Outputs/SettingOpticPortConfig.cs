@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class SettingOpticPortConfig
     {
         /// <summary>
-        /// Enable channelization
+        /// Whether channelization is enabled on this optic port
         /// </summary>
         public readonly bool? Channelized;
         /// <summary>

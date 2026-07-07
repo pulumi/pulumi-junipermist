@@ -94,14 +94,14 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When `type`==`wep`
+     * When `type`==`wep`, index of the WEP key used as the default transmit key
      * 
      */
     @Import(name="keyIdx")
     private @Nullable Output<Integer> keyIdx;
 
     /**
-     * @return When `type`==`wep`
+     * @return When `type`==`wep`, index of the WEP key used as the default transmit key
      * 
      */
     public Optional<Output<Integer>> keyIdx() {
@@ -109,14 +109,14 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+     * When `type`==`wep`, WEP keys configured for this WLAN
      * 
      */
     @Import(name="keys")
     private @Nullable Output<List<String>> keys;
 
     /**
-     * @return When type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+     * @return When `type`==`wep`, WEP keys configured for this WLAN
      * 
      */
     public Optional<Output<List<String>>> keys() {
@@ -139,14 +139,14 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * if `type`==`open`. enum: `disabled`, `enabled` (means transition mode), `required`
+     * When `type`==`open`, Opportunistic Wireless Encryption mode for this WLAN
      * 
      */
     @Import(name="owe")
     private @Nullable Output<String> owe;
 
     /**
-     * @return if `type`==`open`. enum: `disabled`, `enabled` (means transition mode), `required`
+     * @return When `type`==`open`, Opportunistic Wireless Encryption mode for this WLAN
      * 
      */
     public Optional<Output<String>> owe() {
@@ -154,14 +154,14 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+     * When `type`==`psk` or `type`==`eap`, pairwise cipher suites allowed for this WLAN
      * 
      */
     @Import(name="pairwises")
     private @Nullable Output<List<String>> pairwises;
 
     /**
-     * @return When `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+     * @return When `type`==`psk` or `type`==`eap`, pairwise cipher suites allowed for this WLAN
      * 
      */
     public Optional<Output<List<String>>> pairwises() {
@@ -199,14 +199,14 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * enum: `eap`, `eap192`, `open`, `psk`, `psk-tkip`, `psk-wpa2-tkip`, `wep`
+     * Authentication mode used by this WLAN
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return enum: `eap`, `eap192`, `open`, `psk`, `psk-tkip`, `psk-wpa2-tkip`, `wep`
+     * @return Authentication mode used by this WLAN
      * 
      */
     public Optional<Output<String>> type() {
@@ -371,7 +371,7 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keyIdx When `type`==`wep`
+         * @param keyIdx When `type`==`wep`, index of the WEP key used as the default transmit key
          * 
          * @return builder
          * 
@@ -382,7 +382,7 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keyIdx When `type`==`wep`
+         * @param keyIdx When `type`==`wep`, index of the WEP key used as the default transmit key
          * 
          * @return builder
          * 
@@ -392,7 +392,7 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keys When type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+         * @param keys When `type`==`wep`, WEP keys configured for this WLAN
          * 
          * @return builder
          * 
@@ -403,7 +403,7 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keys When type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+         * @param keys When `type`==`wep`, WEP keys configured for this WLAN
          * 
          * @return builder
          * 
@@ -413,7 +413,7 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keys When type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+         * @param keys When `type`==`wep`, WEP keys configured for this WLAN
          * 
          * @return builder
          * 
@@ -444,7 +444,7 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param owe if `type`==`open`. enum: `disabled`, `enabled` (means transition mode), `required`
+         * @param owe When `type`==`open`, Opportunistic Wireless Encryption mode for this WLAN
          * 
          * @return builder
          * 
@@ -455,7 +455,7 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param owe if `type`==`open`. enum: `disabled`, `enabled` (means transition mode), `required`
+         * @param owe When `type`==`open`, Opportunistic Wireless Encryption mode for this WLAN
          * 
          * @return builder
          * 
@@ -465,7 +465,7 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pairwises When `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+         * @param pairwises When `type`==`psk` or `type`==`eap`, pairwise cipher suites allowed for this WLAN
          * 
          * @return builder
          * 
@@ -476,7 +476,7 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pairwises When `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+         * @param pairwises When `type`==`psk` or `type`==`eap`, pairwise cipher suites allowed for this WLAN
          * 
          * @return builder
          * 
@@ -486,7 +486,7 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pairwises When `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+         * @param pairwises When `type`==`psk` or `type`==`eap`, pairwise cipher suites allowed for this WLAN
          * 
          * @return builder
          * 
@@ -538,7 +538,7 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type enum: `eap`, `eap192`, `open`, `psk`, `psk-tkip`, `psk-wpa2-tkip`, `wep`
+         * @param type Authentication mode used by this WLAN
          * 
          * @return builder
          * 
@@ -549,7 +549,7 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type enum: `eap`, `eap192`, `open`, `psk`, `psk-tkip`, `psk-wpa2-tkip`, `wep`
+         * @param type Authentication mode used by this WLAN
          * 
          * @return builder
          * 

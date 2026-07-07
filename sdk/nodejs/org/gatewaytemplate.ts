@@ -134,51 +134,72 @@ export class Gatewaytemplate extends pulumi.CustomResource {
     }
 
     /**
-     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
+     * Additional CLI configuration commands provided by this gateway template
      */
     declare public readonly additionalConfigCmds: pulumi.Output<string[] | undefined>;
+    /**
+     * BGP routing defaults for this gateway template. Property key is the BGP session name
+     */
     declare public readonly bgpConfig: pulumi.Output<{[key: string]: outputs.org.GatewaytemplateBgpConfig} | undefined>;
+    /**
+     * DHCP server defaults provided by this gateway template
+     */
     declare public readonly dhcpdConfig: pulumi.Output<outputs.org.GatewaytemplateDhcpdConfig | undefined>;
+    /**
+     * Whether DNS server and suffix settings in this template override inherited values
+     */
     declare public readonly dnsOverride: pulumi.Output<boolean | undefined>;
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS servers provided by this gateway template
      */
     declare public readonly dnsServers: pulumi.Output<string[] | undefined>;
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS search suffixes provided by this gateway template
      */
     declare public readonly dnsSuffixes: pulumi.Output<string[] | undefined>;
     /**
-     * Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
+     * Additional IPv4 route defaults in this gateway template
      */
     declare public readonly extraRoutes: pulumi.Output<{[key: string]: outputs.org.GatewaytemplateExtraRoutes} | undefined>;
     /**
-     * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+     * Additional IPv6 route defaults in this gateway template
      */
     declare public readonly extraRoutes6: pulumi.Output<{[key: string]: outputs.org.GatewaytemplateExtraRoutes6} | undefined>;
     /**
-     * Gateway Management settings
+     * Management-plane defaults provided by this gateway template
      */
     declare public readonly gatewayMgmt: pulumi.Output<outputs.org.GatewaytemplateGatewayMgmt | undefined>;
     /**
-     * Property key is the profile name
+     * Intrusion detection and prevention profile defaults in this gateway template
      */
     declare public readonly idpProfiles: pulumi.Output<{[key: string]: outputs.org.GatewaytemplateIdpProfiles} | undefined>;
     /**
-     * Property key is the network name
+     * Gateway interface IP configuration defaults by network name
      */
     declare public readonly ipConfigs: pulumi.Output<{[key: string]: outputs.org.GatewaytemplateIpConfigs} | undefined>;
+    /**
+     * Display name of the gateway template
+     */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Layer 3 networks configured by this gateway template
+     */
     declare public readonly networks: pulumi.Output<outputs.org.GatewaytemplateNetwork[] | undefined>;
+    /**
+     * Whether NTP servers in this template override inherited values
+     */
     declare public readonly ntpOverride: pulumi.Output<boolean | undefined>;
     /**
-     * List of NTP servers specific to this device. By default, those in Site Settings will be used
+     * NTP servers provided by this gateway template
      */
     declare public readonly ntpServers: pulumi.Output<string[] | undefined>;
     /**
-     * Out-of-band (vme/em0/fxp0) IP config
+     * Out-of-band management IP defaults in this gateway template
      */
     declare public readonly oobIpConfig: pulumi.Output<outputs.org.GatewaytemplateOobIpConfig>;
+    /**
+     * Organization that owns this gateway template
+     */
     declare public readonly orgId: pulumi.Output<string>;
     /**
      * Property key is the path name
@@ -193,9 +214,12 @@ export class Gatewaytemplate extends pulumi.CustomResource {
      */
     declare public readonly routerId: pulumi.Output<string | undefined>;
     /**
-     * Property key is the routing policy name
+     * Routing policy defaults applied by this gateway template
      */
     declare public readonly routingPolicies: pulumi.Output<{[key: string]: outputs.org.GatewaytemplateRoutingPolicies} | undefined>;
+    /**
+     * Traffic service policy defaults enforced by this gateway template
+     */
     declare public readonly servicePolicies: pulumi.Output<outputs.org.GatewaytemplateServicePolicy[] | undefined>;
     /**
      * additional CLI commands to append to the generated SSR config. **Note**: no check is done
@@ -205,18 +229,24 @@ export class Gatewaytemplate extends pulumi.CustomResource {
      * Property key is the tunnel name
      */
     declare public readonly tunnelConfigs: pulumi.Output<{[key: string]: outputs.org.GatewaytemplateTunnelConfigs} | undefined>;
+    /**
+     * Provider-specific tunnel options defined by this gateway template
+     */
     declare public readonly tunnelProviderOptions: pulumi.Output<outputs.org.GatewaytemplateTunnelProviderOptions | undefined>;
     /**
-     * enum: `spoke`, `standalone`
+     * Gateway template deployment type
      */
     declare public readonly type: pulumi.Output<string>;
     /**
      * When a service policy denies a app_category, what message to show in user's browser
      */
     declare public readonly urlFilteringDenyMsg: pulumi.Output<string | undefined>;
+    /**
+     * VRF defaults applied by this gateway template
+     */
     declare public readonly vrfConfig: pulumi.Output<outputs.org.GatewaytemplateVrfConfig | undefined>;
     /**
-     * Property key is the network name
+     * VRF instances configured by this gateway template
      */
     declare public readonly vrfInstances: pulumi.Output<{[key: string]: outputs.org.GatewaytemplateVrfInstances} | undefined>;
 
@@ -307,51 +337,72 @@ export class Gatewaytemplate extends pulumi.CustomResource {
  */
 export interface GatewaytemplateState {
     /**
-     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
+     * Additional CLI configuration commands provided by this gateway template
      */
     additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * BGP routing defaults for this gateway template. Property key is the BGP session name
+     */
     bgpConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplateBgpConfig>} | undefined>;
+    /**
+     * DHCP server defaults provided by this gateway template
+     */
     dhcpdConfig?: pulumi.Input<inputs.org.GatewaytemplateDhcpdConfig | undefined>;
+    /**
+     * Whether DNS server and suffix settings in this template override inherited values
+     */
     dnsOverride?: pulumi.Input<boolean | undefined>;
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS servers provided by this gateway template
      */
     dnsServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS search suffixes provided by this gateway template
      */
     dnsSuffixes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
+     * Additional IPv4 route defaults in this gateway template
      */
     extraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplateExtraRoutes>} | undefined>;
     /**
-     * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+     * Additional IPv6 route defaults in this gateway template
      */
     extraRoutes6?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplateExtraRoutes6>} | undefined>;
     /**
-     * Gateway Management settings
+     * Management-plane defaults provided by this gateway template
      */
     gatewayMgmt?: pulumi.Input<inputs.org.GatewaytemplateGatewayMgmt | undefined>;
     /**
-     * Property key is the profile name
+     * Intrusion detection and prevention profile defaults in this gateway template
      */
     idpProfiles?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplateIdpProfiles>} | undefined>;
     /**
-     * Property key is the network name
+     * Gateway interface IP configuration defaults by network name
      */
     ipConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplateIpConfigs>} | undefined>;
+    /**
+     * Display name of the gateway template
+     */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Layer 3 networks configured by this gateway template
+     */
     networks?: pulumi.Input<pulumi.Input<inputs.org.GatewaytemplateNetwork>[] | undefined>;
+    /**
+     * Whether NTP servers in this template override inherited values
+     */
     ntpOverride?: pulumi.Input<boolean | undefined>;
     /**
-     * List of NTP servers specific to this device. By default, those in Site Settings will be used
+     * NTP servers provided by this gateway template
      */
     ntpServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Out-of-band (vme/em0/fxp0) IP config
+     * Out-of-band management IP defaults in this gateway template
      */
     oobIpConfig?: pulumi.Input<inputs.org.GatewaytemplateOobIpConfig | undefined>;
+    /**
+     * Organization that owns this gateway template
+     */
     orgId?: pulumi.Input<string | undefined>;
     /**
      * Property key is the path name
@@ -366,9 +417,12 @@ export interface GatewaytemplateState {
      */
     routerId?: pulumi.Input<string | undefined>;
     /**
-     * Property key is the routing policy name
+     * Routing policy defaults applied by this gateway template
      */
     routingPolicies?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplateRoutingPolicies>} | undefined>;
+    /**
+     * Traffic service policy defaults enforced by this gateway template
+     */
     servicePolicies?: pulumi.Input<pulumi.Input<inputs.org.GatewaytemplateServicePolicy>[] | undefined>;
     /**
      * additional CLI commands to append to the generated SSR config. **Note**: no check is done
@@ -378,18 +432,24 @@ export interface GatewaytemplateState {
      * Property key is the tunnel name
      */
     tunnelConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplateTunnelConfigs>} | undefined>;
+    /**
+     * Provider-specific tunnel options defined by this gateway template
+     */
     tunnelProviderOptions?: pulumi.Input<inputs.org.GatewaytemplateTunnelProviderOptions | undefined>;
     /**
-     * enum: `spoke`, `standalone`
+     * Gateway template deployment type
      */
     type?: pulumi.Input<string | undefined>;
     /**
      * When a service policy denies a app_category, what message to show in user's browser
      */
     urlFilteringDenyMsg?: pulumi.Input<string | undefined>;
+    /**
+     * VRF defaults applied by this gateway template
+     */
     vrfConfig?: pulumi.Input<inputs.org.GatewaytemplateVrfConfig | undefined>;
     /**
-     * Property key is the network name
+     * VRF instances configured by this gateway template
      */
     vrfInstances?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplateVrfInstances>} | undefined>;
 }
@@ -399,51 +459,72 @@ export interface GatewaytemplateState {
  */
 export interface GatewaytemplateArgs {
     /**
-     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
+     * Additional CLI configuration commands provided by this gateway template
      */
     additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * BGP routing defaults for this gateway template. Property key is the BGP session name
+     */
     bgpConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplateBgpConfig>} | undefined>;
+    /**
+     * DHCP server defaults provided by this gateway template
+     */
     dhcpdConfig?: pulumi.Input<inputs.org.GatewaytemplateDhcpdConfig | undefined>;
+    /**
+     * Whether DNS server and suffix settings in this template override inherited values
+     */
     dnsOverride?: pulumi.Input<boolean | undefined>;
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS servers provided by this gateway template
      */
     dnsServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS search suffixes provided by this gateway template
      */
     dnsSuffixes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
+     * Additional IPv4 route defaults in this gateway template
      */
     extraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplateExtraRoutes>} | undefined>;
     /**
-     * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+     * Additional IPv6 route defaults in this gateway template
      */
     extraRoutes6?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplateExtraRoutes6>} | undefined>;
     /**
-     * Gateway Management settings
+     * Management-plane defaults provided by this gateway template
      */
     gatewayMgmt?: pulumi.Input<inputs.org.GatewaytemplateGatewayMgmt | undefined>;
     /**
-     * Property key is the profile name
+     * Intrusion detection and prevention profile defaults in this gateway template
      */
     idpProfiles?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplateIdpProfiles>} | undefined>;
     /**
-     * Property key is the network name
+     * Gateway interface IP configuration defaults by network name
      */
     ipConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplateIpConfigs>} | undefined>;
+    /**
+     * Display name of the gateway template
+     */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Layer 3 networks configured by this gateway template
+     */
     networks?: pulumi.Input<pulumi.Input<inputs.org.GatewaytemplateNetwork>[] | undefined>;
+    /**
+     * Whether NTP servers in this template override inherited values
+     */
     ntpOverride?: pulumi.Input<boolean | undefined>;
     /**
-     * List of NTP servers specific to this device. By default, those in Site Settings will be used
+     * NTP servers provided by this gateway template
      */
     ntpServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Out-of-band (vme/em0/fxp0) IP config
+     * Out-of-band management IP defaults in this gateway template
      */
     oobIpConfig?: pulumi.Input<inputs.org.GatewaytemplateOobIpConfig | undefined>;
+    /**
+     * Organization that owns this gateway template
+     */
     orgId: pulumi.Input<string>;
     /**
      * Property key is the path name
@@ -458,9 +539,12 @@ export interface GatewaytemplateArgs {
      */
     routerId?: pulumi.Input<string | undefined>;
     /**
-     * Property key is the routing policy name
+     * Routing policy defaults applied by this gateway template
      */
     routingPolicies?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplateRoutingPolicies>} | undefined>;
+    /**
+     * Traffic service policy defaults enforced by this gateway template
+     */
     servicePolicies?: pulumi.Input<pulumi.Input<inputs.org.GatewaytemplateServicePolicy>[] | undefined>;
     /**
      * additional CLI commands to append to the generated SSR config. **Note**: no check is done
@@ -470,18 +554,24 @@ export interface GatewaytemplateArgs {
      * Property key is the tunnel name
      */
     tunnelConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplateTunnelConfigs>} | undefined>;
+    /**
+     * Provider-specific tunnel options defined by this gateway template
+     */
     tunnelProviderOptions?: pulumi.Input<inputs.org.GatewaytemplateTunnelProviderOptions | undefined>;
     /**
-     * enum: `spoke`, `standalone`
+     * Gateway template deployment type
      */
     type?: pulumi.Input<string | undefined>;
     /**
      * When a service policy denies a app_category, what message to show in user's browser
      */
     urlFilteringDenyMsg?: pulumi.Input<string | undefined>;
+    /**
+     * VRF defaults applied by this gateway template
+     */
     vrfConfig?: pulumi.Input<inputs.org.GatewaytemplateVrfConfig | undefined>;
     /**
-     * Property key is the network name
+     * VRF instances configured by this gateway template
      */
     vrfInstances?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplateVrfInstances>} | undefined>;
 }

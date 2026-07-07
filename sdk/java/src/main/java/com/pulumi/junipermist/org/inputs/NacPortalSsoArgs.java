@@ -18,65 +18,105 @@ public final class NacPortalSsoArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final NacPortalSsoArgs Empty = new NacPortalSsoArgs();
 
+    /**
+     * Identity provider certificate used to verify signed SAML responses
+     * 
+     */
     @Import(name="idpCert")
     private @Nullable Output<String> idpCert;
 
+    /**
+     * @return Identity provider certificate used to verify signed SAML responses
+     * 
+     */
     public Optional<Output<String>> idpCert() {
         return Optional.ofNullable(this.idpCert);
     }
 
     /**
-     * Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`.
+     * Signing algorithm expected for SAML assertions from the identity provider
      * 
      */
     @Import(name="idpSignAlgo")
     private @Nullable Output<String> idpSignAlgo;
 
     /**
-     * @return Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`.
+     * @return Signing algorithm expected for SAML assertions from the identity provider
      * 
      */
     public Optional<Output<String>> idpSignAlgo() {
         return Optional.ofNullable(this.idpSignAlgo);
     }
 
+    /**
+     * Identity provider Single Sign-On URL for SAML authentication
+     * 
+     */
     @Import(name="idpSsoUrl")
     private @Nullable Output<String> idpSsoUrl;
 
+    /**
+     * @return Identity provider Single Sign-On URL for SAML authentication
+     * 
+     */
     public Optional<Output<String>> idpSsoUrl() {
         return Optional.ofNullable(this.idpSsoUrl);
     }
 
+    /**
+     * Identity provider issuer URL for SAML authentication
+     * 
+     */
     @Import(name="issuer")
     private @Nullable Output<String> issuer;
 
+    /**
+     * @return Identity provider issuer URL for SAML authentication
+     * 
+     */
     public Optional<Output<String>> issuer() {
         return Optional.ofNullable(this.issuer);
     }
 
+    /**
+     * SAML NameID format expected from the identity provider
+     * 
+     */
     @Import(name="nameidFormat")
     private @Nullable Output<String> nameidFormat;
 
+    /**
+     * @return SAML NameID format expected from the identity provider
+     * 
+     */
     public Optional<Output<String>> nameidFormat() {
         return Optional.ofNullable(this.nameidFormat);
     }
 
+    /**
+     * Rules that map SSO role values from the identity provider to NAC portal roles
+     * 
+     */
     @Import(name="ssoRoleMatchings")
     private @Nullable Output<List<NacPortalSsoSsoRoleMatchingArgs>> ssoRoleMatchings;
 
+    /**
+     * @return Rules that map SSO role values from the identity provider to NAC portal roles
+     * 
+     */
     public Optional<Output<List<NacPortalSsoSsoRoleMatchingArgs>>> ssoRoleMatchings() {
         return Optional.ofNullable(this.ssoRoleMatchings);
     }
 
     /**
-     * If it&#39;s desired to inject a role into Cert&#39;s Subject (so it can be used later on in policy)
+     * Whether to include the matched SSO role in the issued certificate subject for later policy matching
      * 
      */
     @Import(name="useSsoRoleForCert")
     private @Nullable Output<Boolean> useSsoRoleForCert;
 
     /**
-     * @return If it&#39;s desired to inject a role into Cert&#39;s Subject (so it can be used later on in policy)
+     * @return Whether to include the matched SSO role in the issued certificate subject for later policy matching
      * 
      */
     public Optional<Output<Boolean>> useSsoRoleForCert() {
@@ -113,17 +153,29 @@ public final class NacPortalSsoArgs extends com.pulumi.resources.ResourceArgs {
             $ = new NacPortalSsoArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param idpCert Identity provider certificate used to verify signed SAML responses
+         * 
+         * @return builder
+         * 
+         */
         public Builder idpCert(@Nullable Output<String> idpCert) {
             $.idpCert = idpCert;
             return this;
         }
 
+        /**
+         * @param idpCert Identity provider certificate used to verify signed SAML responses
+         * 
+         * @return builder
+         * 
+         */
         public Builder idpCert(String idpCert) {
             return idpCert(Output.of(idpCert));
         }
 
         /**
-         * @param idpSignAlgo Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`.
+         * @param idpSignAlgo Signing algorithm expected for SAML assertions from the identity provider
          * 
          * @return builder
          * 
@@ -134,7 +186,7 @@ public final class NacPortalSsoArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param idpSignAlgo Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`.
+         * @param idpSignAlgo Signing algorithm expected for SAML assertions from the identity provider
          * 
          * @return builder
          * 
@@ -143,48 +195,102 @@ public final class NacPortalSsoArgs extends com.pulumi.resources.ResourceArgs {
             return idpSignAlgo(Output.of(idpSignAlgo));
         }
 
+        /**
+         * @param idpSsoUrl Identity provider Single Sign-On URL for SAML authentication
+         * 
+         * @return builder
+         * 
+         */
         public Builder idpSsoUrl(@Nullable Output<String> idpSsoUrl) {
             $.idpSsoUrl = idpSsoUrl;
             return this;
         }
 
+        /**
+         * @param idpSsoUrl Identity provider Single Sign-On URL for SAML authentication
+         * 
+         * @return builder
+         * 
+         */
         public Builder idpSsoUrl(String idpSsoUrl) {
             return idpSsoUrl(Output.of(idpSsoUrl));
         }
 
+        /**
+         * @param issuer Identity provider issuer URL for SAML authentication
+         * 
+         * @return builder
+         * 
+         */
         public Builder issuer(@Nullable Output<String> issuer) {
             $.issuer = issuer;
             return this;
         }
 
+        /**
+         * @param issuer Identity provider issuer URL for SAML authentication
+         * 
+         * @return builder
+         * 
+         */
         public Builder issuer(String issuer) {
             return issuer(Output.of(issuer));
         }
 
+        /**
+         * @param nameidFormat SAML NameID format expected from the identity provider
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameidFormat(@Nullable Output<String> nameidFormat) {
             $.nameidFormat = nameidFormat;
             return this;
         }
 
+        /**
+         * @param nameidFormat SAML NameID format expected from the identity provider
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameidFormat(String nameidFormat) {
             return nameidFormat(Output.of(nameidFormat));
         }
 
+        /**
+         * @param ssoRoleMatchings Rules that map SSO role values from the identity provider to NAC portal roles
+         * 
+         * @return builder
+         * 
+         */
         public Builder ssoRoleMatchings(@Nullable Output<List<NacPortalSsoSsoRoleMatchingArgs>> ssoRoleMatchings) {
             $.ssoRoleMatchings = ssoRoleMatchings;
             return this;
         }
 
+        /**
+         * @param ssoRoleMatchings Rules that map SSO role values from the identity provider to NAC portal roles
+         * 
+         * @return builder
+         * 
+         */
         public Builder ssoRoleMatchings(List<NacPortalSsoSsoRoleMatchingArgs> ssoRoleMatchings) {
             return ssoRoleMatchings(Output.of(ssoRoleMatchings));
         }
 
+        /**
+         * @param ssoRoleMatchings Rules that map SSO role values from the identity provider to NAC portal roles
+         * 
+         * @return builder
+         * 
+         */
         public Builder ssoRoleMatchings(NacPortalSsoSsoRoleMatchingArgs... ssoRoleMatchings) {
             return ssoRoleMatchings(List.of(ssoRoleMatchings));
         }
 
         /**
-         * @param useSsoRoleForCert If it&#39;s desired to inject a role into Cert&#39;s Subject (so it can be used later on in policy)
+         * @param useSsoRoleForCert Whether to include the matched SSO role in the issued certificate subject for later policy matching
          * 
          * @return builder
          * 
@@ -195,7 +301,7 @@ public final class NacPortalSsoArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param useSsoRoleForCert If it&#39;s desired to inject a role into Cert&#39;s Subject (so it can be used later on in policy)
+         * @param useSsoRoleForCert Whether to include the matched SSO role in the issued certificate subject for later policy matching
          * 
          * @return builder
          * 

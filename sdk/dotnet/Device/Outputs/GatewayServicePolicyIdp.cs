@@ -13,7 +13,13 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class GatewayServicePolicyIdp
     {
+        /// <summary>
+        /// Whether to alert without enforcing IDP prevention actions
+        /// </summary>
         public readonly bool? AlertOnly;
+        /// <summary>
+        /// Whether IDP inspection is enabled for the policy
+        /// </summary>
         public readonly bool? Enabled;
         /// <summary>
         /// org_level IDP Profile can be used, this takes precedence over `Profile`

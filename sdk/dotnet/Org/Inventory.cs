@@ -68,6 +68,12 @@ namespace Pulumi.JuniperMist.Org
     public partial class Inventory : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Filter results to devices that were last disconnected before this time, in epoch seconds
+        /// </summary>
+        [Output("disconnectedBefore")]
+        public Output<int?> DisconnectedBefore { get; private set; } = null!;
+
+        /// <summary>
         /// Property key can be the device Claim Code or the device MAC Address:
         ///   * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
         ///   * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
@@ -127,6 +133,12 @@ namespace Pulumi.JuniperMist.Org
 
     public sealed class InventoryArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Filter results to devices that were last disconnected before this time, in epoch seconds
+        /// </summary>
+        [Input("disconnectedBefore")]
+        public Input<int>? DisconnectedBefore { get; set; }
+
         [Input("inventory")]
         private InputMap<Inputs.InventoryInventoryArgs>? _inventory;
 
@@ -154,6 +166,12 @@ namespace Pulumi.JuniperMist.Org
 
     public sealed class InventoryState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Filter results to devices that were last disconnected before this time, in epoch seconds
+        /// </summary>
+        [Input("disconnectedBefore")]
+        public Input<int>? DisconnectedBefore { get; set; }
+
         [Input("inventory")]
         private InputMap<Inputs.InventoryInventoryGetArgs>? _inventory;
 

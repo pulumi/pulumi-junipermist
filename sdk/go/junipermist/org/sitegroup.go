@@ -55,7 +55,9 @@ import (
 type Sitegroup struct {
 	pulumi.CustomResourceState
 
-	Name  pulumi.StringOutput `pulumi:"name"`
+	// Display name of the site group
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Identifier of the org that owns the site group
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
 }
 
@@ -92,12 +94,16 @@ func GetSitegroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Sitegroup resources.
 type sitegroupState struct {
-	Name  *string `pulumi:"name"`
+	// Display name of the site group
+	Name *string `pulumi:"name"`
+	// Identifier of the org that owns the site group
 	OrgId *string `pulumi:"orgId"`
 }
 
 type SitegroupState struct {
-	Name  pulumi.StringPtrInput
+	// Display name of the site group
+	Name pulumi.StringPtrInput
+	// Identifier of the org that owns the site group
 	OrgId pulumi.StringPtrInput
 }
 
@@ -106,13 +112,17 @@ func (SitegroupState) ElementType() reflect.Type {
 }
 
 type sitegroupArgs struct {
-	Name  *string `pulumi:"name"`
-	OrgId string  `pulumi:"orgId"`
+	// Display name of the site group
+	Name *string `pulumi:"name"`
+	// Identifier of the org that owns the site group
+	OrgId string `pulumi:"orgId"`
 }
 
 // The set of arguments for constructing a Sitegroup resource.
 type SitegroupArgs struct {
-	Name  pulumi.StringPtrInput
+	// Display name of the site group
+	Name pulumi.StringPtrInput
+	// Identifier of the org that owns the site group
 	OrgId pulumi.StringInput
 }
 
@@ -203,10 +213,12 @@ func (o SitegroupOutput) ToSitegroupOutputWithContext(ctx context.Context) Siteg
 	return o
 }
 
+// Display name of the site group
 func (o SitegroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Sitegroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Identifier of the org that owns the site group
 func (o SitegroupOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Sitegroup) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }

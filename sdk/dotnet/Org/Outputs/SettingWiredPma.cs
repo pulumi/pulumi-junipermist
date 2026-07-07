@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class SettingWiredPma
     {
+        /// <summary>
+        /// Whether PMA is enabled for Wired Assurance
+        /// </summary>
         public readonly bool? Enabled;
 
         [OutputConstructor]

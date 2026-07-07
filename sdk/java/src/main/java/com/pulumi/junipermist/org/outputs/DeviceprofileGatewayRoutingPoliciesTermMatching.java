@@ -19,10 +19,18 @@ public final class DeviceprofileGatewayRoutingPoliciesTermMatching {
      * 
      */
     private @Nullable List<String> asPaths;
+    /**
+     * @return BGP communities that routes must match
+     * 
+     */
     private @Nullable List<String> communities;
+    /**
+     * @return Configured network names that routes must match
+     * 
+     */
     private @Nullable List<String> networks;
     /**
-     * @return zero or more criteria/filter can be specified to match the term, all criteria have to be met
+     * @return Route prefixes that routes must match
      * 
      */
     private @Nullable List<String> prefixes;
@@ -31,15 +39,23 @@ public final class DeviceprofileGatewayRoutingPoliciesTermMatching {
      * 
      */
     private @Nullable List<String> protocols;
+    /**
+     * @return Existing route condition that must be satisfied before this term matches
+     * 
+     */
     private @Nullable DeviceprofileGatewayRoutingPoliciesTermMatchingRouteExists routeExists;
     /**
-     * @return overlay-facing criteria (used for bgpConfig where via=vpn)
+     * @return Overlay neighbor MAC addresses used as match criteria for BGP sessions with `via`==`vpn`
      * 
      */
     private @Nullable List<String> vpnNeighborMacs;
+    /**
+     * @return SLA thresholds used when matching a VPN path
+     * 
+     */
     private @Nullable DeviceprofileGatewayRoutingPoliciesTermMatchingVpnPathSla vpnPathSla;
     /**
-     * @return overlay-facing criteria (used for bgpConfig where via=vpn). ordered-
+     * @return Overlay path names used as match criteria for BGP sessions with `via`==`vpn`
      * 
      */
     private @Nullable List<String> vpnPaths;
@@ -52,14 +68,22 @@ public final class DeviceprofileGatewayRoutingPoliciesTermMatching {
     public List<String> asPaths() {
         return this.asPaths == null ? List.of() : this.asPaths;
     }
+    /**
+     * @return BGP communities that routes must match
+     * 
+     */
     public List<String> communities() {
         return this.communities == null ? List.of() : this.communities;
     }
+    /**
+     * @return Configured network names that routes must match
+     * 
+     */
     public List<String> networks() {
         return this.networks == null ? List.of() : this.networks;
     }
     /**
-     * @return zero or more criteria/filter can be specified to match the term, all criteria have to be met
+     * @return Route prefixes that routes must match
      * 
      */
     public List<String> prefixes() {
@@ -72,21 +96,29 @@ public final class DeviceprofileGatewayRoutingPoliciesTermMatching {
     public List<String> protocols() {
         return this.protocols == null ? List.of() : this.protocols;
     }
+    /**
+     * @return Existing route condition that must be satisfied before this term matches
+     * 
+     */
     public Optional<DeviceprofileGatewayRoutingPoliciesTermMatchingRouteExists> routeExists() {
         return Optional.ofNullable(this.routeExists);
     }
     /**
-     * @return overlay-facing criteria (used for bgpConfig where via=vpn)
+     * @return Overlay neighbor MAC addresses used as match criteria for BGP sessions with `via`==`vpn`
      * 
      */
     public List<String> vpnNeighborMacs() {
         return this.vpnNeighborMacs == null ? List.of() : this.vpnNeighborMacs;
     }
+    /**
+     * @return SLA thresholds used when matching a VPN path
+     * 
+     */
     public Optional<DeviceprofileGatewayRoutingPoliciesTermMatchingVpnPathSla> vpnPathSla() {
         return Optional.ofNullable(this.vpnPathSla);
     }
     /**
-     * @return overlay-facing criteria (used for bgpConfig where via=vpn). ordered-
+     * @return Overlay path names used as match criteria for BGP sessions with `via`==`vpn`
      * 
      */
     public List<String> vpnPaths() {

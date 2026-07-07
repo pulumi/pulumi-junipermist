@@ -13,13 +13,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class DeviceprofileGatewayRoutingPoliciesTermGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// When used as import policy
+        /// Policy actions applied when this routing policy term matches
         /// </summary>
         [Input("actions")]
         public Input<Inputs.DeviceprofileGatewayRoutingPoliciesTermActionsGetArgs>? Actions { get; set; }
 
         /// <summary>
-        /// zero or more criteria/filter can be specified to match the term, all criteria have to be met
+        /// Route match criteria that must be satisfied before actions are applied
         /// </summary>
         [Input("matching")]
         public Input<Inputs.DeviceprofileGatewayRoutingPoliciesTermMatchingGetArgs>? Matching { get; set; }

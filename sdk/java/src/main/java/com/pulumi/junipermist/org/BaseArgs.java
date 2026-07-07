@@ -17,30 +17,62 @@ public final class BaseArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final BaseArgs Empty = new BaseArgs();
 
+    /**
+     * Org-level alarm template ID used as the default for sites
+     * 
+     */
     @Import(name="alarmtemplateId")
     private @Nullable Output<String> alarmtemplateId;
 
+    /**
+     * @return Org-level alarm template ID used as the default for sites
+     * 
+     */
     public Optional<Output<String>> alarmtemplateId() {
         return Optional.ofNullable(this.alarmtemplateId);
     }
 
+    /**
+     * Whether Mist support access is allowed for this organization
+     * 
+     */
     @Import(name="allowMist")
     private @Nullable Output<Boolean> allowMist;
 
+    /**
+     * @return Whether Mist support access is allowed for this organization
+     * 
+     */
     public Optional<Output<Boolean>> allowMist() {
         return Optional.ofNullable(this.allowMist);
     }
 
+    /**
+     * Display name of the organization
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Display name of the organization
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Admin session lifetime for the organization, in minutes
+     * 
+     */
     @Import(name="sessionExpiry")
     private @Nullable Output<Integer> sessionExpiry;
 
+    /**
+     * @return Admin session lifetime for the organization, in minutes
+     * 
+     */
     public Optional<Output<Integer>> sessionExpiry() {
         return Optional.ofNullable(this.sessionExpiry);
     }
@@ -72,38 +104,86 @@ public final class BaseArgs extends com.pulumi.resources.ResourceArgs {
             $ = new BaseArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param alarmtemplateId Org-level alarm template ID used as the default for sites
+         * 
+         * @return builder
+         * 
+         */
         public Builder alarmtemplateId(@Nullable Output<String> alarmtemplateId) {
             $.alarmtemplateId = alarmtemplateId;
             return this;
         }
 
+        /**
+         * @param alarmtemplateId Org-level alarm template ID used as the default for sites
+         * 
+         * @return builder
+         * 
+         */
         public Builder alarmtemplateId(String alarmtemplateId) {
             return alarmtemplateId(Output.of(alarmtemplateId));
         }
 
+        /**
+         * @param allowMist Whether Mist support access is allowed for this organization
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowMist(@Nullable Output<Boolean> allowMist) {
             $.allowMist = allowMist;
             return this;
         }
 
+        /**
+         * @param allowMist Whether Mist support access is allowed for this organization
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowMist(Boolean allowMist) {
             return allowMist(Output.of(allowMist));
         }
 
+        /**
+         * @param name Display name of the organization
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Display name of the organization
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param sessionExpiry Admin session lifetime for the organization, in minutes
+         * 
+         * @return builder
+         * 
+         */
         public Builder sessionExpiry(@Nullable Output<Integer> sessionExpiry) {
             $.sessionExpiry = sessionExpiry;
             return this;
         }
 
+        /**
+         * @param sessionExpiry Admin session lifetime for the organization, in minutes
+         * 
+         * @return builder
+         * 
+         */
         public Builder sessionExpiry(Integer sessionExpiry) {
             return sessionExpiry(Output.of(sessionExpiry));
         }

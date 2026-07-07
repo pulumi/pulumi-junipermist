@@ -14,12 +14,19 @@ namespace Pulumi.JuniperMist.Device.Inputs
     {
         [Input("contents")]
         private InputList<Inputs.SwitchSnmpConfigV3ConfigNotifyFilterContentGetArgs>? _contents;
+
+        /// <summary>
+        /// OID filter rules in this notification filter profile
+        /// </summary>
         public InputList<Inputs.SwitchSnmpConfigV3ConfigNotifyFilterContentGetArgs> Contents
         {
             get => _contents ?? (_contents = new InputList<Inputs.SwitchSnmpConfigV3ConfigNotifyFilterContentGetArgs>());
             set => _contents = value;
         }
 
+        /// <summary>
+        /// Notification filter profile name
+        /// </summary>
         [Input("profileName")]
         public Input<string>? ProfileName { get; set; }
 

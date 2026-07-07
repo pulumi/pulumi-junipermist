@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _dns;
 
         /// <summary>
-        /// If `Type`==`Static`
+        /// If `Type`==`Static`. DNS server IP addresses for AP management traffic
         /// </summary>
         public InputList<string> Dns
         {
@@ -28,7 +28,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _dnsSuffixes;
 
         /// <summary>
-        /// Required if `Type`==`Static`
+        /// If `Type`==`Static`. DNS search suffixes applied to AP management lookups
         /// </summary>
         public InputList<string> DnsSuffixes
         {
@@ -37,49 +37,61 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// Required if `Type`==`Static`
+        /// Required if `Type`==`Static`. IPv4 default gateway for AP management traffic
         /// </summary>
         [Input("gateway")]
         public Input<string>? Gateway { get; set; }
 
+        /// <summary>
+        /// Required if `Type6`==`Static`. IPv6 default gateway for AP management traffic when static IPv6 addressing is used
+        /// </summary>
         [Input("gateway6")]
         public Input<string>? Gateway6 { get; set; }
 
         /// <summary>
-        /// Required if `Type`==`Static`
+        /// Required if `Type`==`Static`. Static IPv4 address for the AP management interface
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
+        /// <summary>
+        /// Required if `Type6`==`Static`. Static IPv6 address for the AP management interface
+        /// </summary>
         [Input("ip6")]
         public Input<string>? Ip6 { get; set; }
 
+        /// <summary>
+        /// Maximum transmission unit for AP management traffic
+        /// </summary>
         [Input("mtu")]
         public Input<int>? Mtu { get; set; }
 
         /// <summary>
-        /// Required if `Type`==`Static`
+        /// Required if `Type`==`Static`. IPv4 netmask for the AP management interface
         /// </summary>
         [Input("netmask")]
         public Input<string>? Netmask { get; set; }
 
+        /// <summary>
+        /// Required if `Type6`==`Static`. IPv6 prefix length for the AP management interface
+        /// </summary>
         [Input("netmask6")]
         public Input<string>? Netmask6 { get; set; }
 
         /// <summary>
-        /// enum: `Dhcp`, `Static`
+        /// IPv4 address assignment mode for AP management traffic
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// enum: `Autoconf`, `Dhcp`, `Disabled`, `Static`
+        /// IPv6 address assignment mode for AP management traffic
         /// </summary>
         [Input("type6")]
         public Input<string>? Type6 { get; set; }
 
         /// <summary>
-        /// Management VLAN id, default is 1 (untagged)
+        /// Management VLAN ID, default is 1 (untagged)
         /// </summary>
         [Input("vlanId")]
         public Input<int>? VlanId { get; set; }

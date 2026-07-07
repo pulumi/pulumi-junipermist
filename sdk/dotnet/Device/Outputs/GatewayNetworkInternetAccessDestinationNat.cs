@@ -14,12 +14,15 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class GatewayNetworkInternetAccessDestinationNat
     {
         /// <summary>
-        /// The Destination NAT destination IP Address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
+        /// The Destination NAT destination IP address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
         /// </summary>
         public readonly string? InternalIp;
+        /// <summary>
+        /// Label for this direct internet destination NAT rule
+        /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// The Destination NAT destination IP Address. Must be a Port (i.e. "443") or a Variable (i.e. "{{myvar}}")
+        /// The Destination NAT destination IP address. Must be a Port (i.e. "443") or a Variable (i.e. "{{myvar}}")
         /// </summary>
         public readonly string? Port;
         /// <summary>

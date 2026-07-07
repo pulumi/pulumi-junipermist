@@ -13,18 +13,24 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class RftemplateBand5On24Radio
     {
+        /// <summary>
+        /// Whether RRM may disable the 5 GHz radio when optimizing RF settings
+        /// </summary>
         public readonly bool? AllowRrmDisable;
+        /// <summary>
+        /// External antenna gain for the 5 GHz radio
+        /// </summary>
         public readonly int? AntGain;
         /// <summary>
-        /// enum: `1x1`, `2x2`, `3x3`, `4x4`, `Default`
+        /// Radio chain mode for the 5 GHz radio
         /// </summary>
         public readonly string? AntennaMode;
         /// <summary>
-        /// channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
+        /// Channel width configured for the 5 GHz radio
         /// </summary>
         public readonly int? Bandwidth;
         /// <summary>
-        /// For RFTemplates. List of channels, null or empty array means auto
+        /// Allowed channel list for the 5 GHz radio; null or an empty array uses automatic selection
         /// </summary>
         public readonly ImmutableArray<int> Channels;
         /// <summary>
@@ -32,19 +38,19 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>
-        /// Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+        /// Radio Tx power, in dBm. Can be an integer 0-25 for static power configuration, or `Null` or unset for auto power mode
         /// </summary>
         public readonly int? Power;
         /// <summary>
-        /// When power=0, max tx power to use, HW-specific values will be used if not set
+        /// When power=null/unset, max tx power to use, HW-specific values will be used if not set
         /// </summary>
         public readonly int? PowerMax;
         /// <summary>
-        /// When power=0, min tx power to use, HW-specific values will be used if not set
+        /// When power=null/unset, min tx power to use, HW-specific values will be used if not set
         /// </summary>
         public readonly int? PowerMin;
         /// <summary>
-        /// enum: `Auto`, `Long`, `Short`
+        /// 802.11 preamble mode used by the 5 GHz radio
         /// </summary>
         public readonly string? Preamble;
 

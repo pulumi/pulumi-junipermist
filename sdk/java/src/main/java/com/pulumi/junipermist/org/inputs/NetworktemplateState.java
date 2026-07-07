@@ -37,22 +37,30 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
 
     public static final NetworktemplateState Empty = new NetworktemplateState();
 
+    /**
+     * ACL policy defaults provided by this network template
+     * 
+     */
     @Import(name="aclPolicies")
     private @Nullable Output<List<NetworktemplateAclPolicyArgs>> aclPolicies;
 
+    /**
+     * @return ACL policy defaults provided by this network template
+     * 
+     */
     public Optional<Output<List<NetworktemplateAclPolicyArgs>>> aclPolicies() {
         return Optional.ofNullable(this.aclPolicies);
     }
 
     /**
-     * ACL Tags to identify traffic source or destination. Key name is the tag name
+     * ACL tags available to access policies in this network template
      * 
      */
     @Import(name="aclTags")
     private @Nullable Output<Map<String,NetworktemplateAclTagsArgs>> aclTags;
 
     /**
-     * @return ACL Tags to identify traffic source or destination. Key name is the tag name
+     * @return ACL tags available to access policies in this network template
      * 
      */
     public Optional<Output<Map<String,NetworktemplateAclTagsArgs>>> aclTags() {
@@ -60,43 +68,59 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
+     * Additional CLI configuration commands provided by this network template
      * 
      */
     @Import(name="additionalConfigCmds")
     private @Nullable Output<List<String>> additionalConfigCmds;
 
     /**
-     * @return additional CLI commands to append to the generated Junos config. **Note**: no check is done
+     * @return Additional CLI configuration commands provided by this network template
      * 
      */
     public Optional<Output<List<String>>> additionalConfigCmds() {
         return Optional.ofNullable(this.additionalConfigCmds);
     }
 
+    /**
+     * BGP routing defaults for this network template. Property key is the BGP session name
+     * 
+     */
     @Import(name="bgpConfig")
     private @Nullable Output<Map<String,NetworktemplateBgpConfigArgs>> bgpConfig;
 
+    /**
+     * @return BGP routing defaults for this network template. Property key is the BGP session name
+     * 
+     */
     public Optional<Output<Map<String,NetworktemplateBgpConfigArgs>>> bgpConfig() {
         return Optional.ofNullable(this.bgpConfig);
     }
 
+    /**
+     * DHCP snooping defaults provided by this network template
+     * 
+     */
     @Import(name="dhcpSnooping")
     private @Nullable Output<NetworktemplateDhcpSnoopingArgs> dhcpSnooping;
 
+    /**
+     * @return DHCP snooping defaults provided by this network template
+     * 
+     */
     public Optional<Output<NetworktemplateDhcpSnoopingArgs>> dhcpSnooping() {
         return Optional.ofNullable(this.dhcpSnooping);
     }
 
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS servers provided by this network template
      * 
      */
     @Import(name="dnsServers")
     private @Nullable Output<List<String>> dnsServers;
 
     /**
-     * @return Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * @return DNS servers provided by this network template
      * 
      */
     public Optional<Output<List<String>>> dnsServers() {
@@ -104,14 +128,14 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS search suffixes provided by this network template
      * 
      */
     @Import(name="dnsSuffixes")
     private @Nullable Output<List<String>> dnsSuffixes;
 
     /**
-     * @return Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * @return DNS search suffixes provided by this network template
      * 
      */
     public Optional<Output<List<String>>> dnsSuffixes() {
@@ -119,14 +143,14 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+     * Additional IPv4 route defaults in this network template
      * 
      */
     @Import(name="extraRoutes")
     private @Nullable Output<Map<String,NetworktemplateExtraRoutesArgs>> extraRoutes;
 
     /**
-     * @return Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+     * @return Additional IPv4 route defaults in this network template
      * 
      */
     public Optional<Output<Map<String,NetworktemplateExtraRoutesArgs>>> extraRoutes() {
@@ -134,14 +158,14 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+     * Additional IPv6 route defaults in this network template
      * 
      */
     @Import(name="extraRoutes6")
     private @Nullable Output<Map<String,NetworktemplateExtraRoutes6Args>> extraRoutes6;
 
     /**
-     * @return Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+     * @return Additional IPv6 route defaults in this network template
      * 
      */
     public Optional<Output<Map<String,NetworktemplateExtraRoutes6Args>>> extraRoutes6() {
@@ -149,36 +173,44 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Enable mistNac to use RadSec
+     * Mist NAC defaults applied by this network template
      * 
      */
     @Import(name="mistNac")
     private @Nullable Output<NetworktemplateMistNacArgs> mistNac;
 
     /**
-     * @return Enable mistNac to use RadSec
+     * @return Mist NAC defaults applied by this network template
      * 
      */
     public Optional<Output<NetworktemplateMistNacArgs>> mistNac() {
         return Optional.ofNullable(this.mistNac);
     }
 
+    /**
+     * Display name of the network template
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Display name of the network template
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
     /**
-     * Property key is network name
+     * Layer 3 networks configured by this network template
      * 
      */
     @Import(name="networks")
     private @Nullable Output<Map<String,NetworktemplateNetworksArgs>> networks;
 
     /**
-     * @return Property key is network name
+     * @return Layer 3 networks configured by this network template
      * 
      */
     public Optional<Output<Map<String,NetworktemplateNetworksArgs>>> networks() {
@@ -186,36 +218,44 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * List of NTP servers specific to this device. By default, those in Site Settings will be used
+     * NTP servers provided by this network template
      * 
      */
     @Import(name="ntpServers")
     private @Nullable Output<List<String>> ntpServers;
 
     /**
-     * @return List of NTP servers specific to this device. By default, those in Site Settings will be used
+     * @return NTP servers provided by this network template
      * 
      */
     public Optional<Output<List<String>>> ntpServers() {
         return Optional.ofNullable(this.ntpServers);
     }
 
+    /**
+     * Organization that owns this network template
+     * 
+     */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
+    /**
+     * @return Organization that owns this network template
+     * 
+     */
     public Optional<Output<String>> orgId() {
         return Optional.ofNullable(this.orgId);
     }
 
     /**
-     * Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+     * OSPF area defaults provided by this network template
      * 
      */
     @Import(name="ospfAreas")
     private @Nullable Output<Map<String,NetworktemplateOspfAreasArgs>> ospfAreas;
 
     /**
-     * @return Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+     * @return OSPF area defaults provided by this network template
      * 
      */
     public Optional<Output<Map<String,NetworktemplateOspfAreasArgs>>> ospfAreas() {
@@ -223,14 +263,14 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+     * Port mirroring defaults provided by this network template
      * 
      */
     @Import(name="portMirroring")
     private @Nullable Output<Map<String,NetworktemplatePortMirroringArgs>> portMirroring;
 
     /**
-     * @return Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+     * @return Port mirroring defaults provided by this network template
      * 
      */
     public Optional<Output<Map<String,NetworktemplatePortMirroringArgs>>> portMirroring() {
@@ -238,14 +278,14 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     * Reusable switch port usage profiles provided by this network template
      * 
      */
     @Import(name="portUsages")
     private @Nullable Output<Map<String,NetworktemplatePortUsagesArgs>> portUsages;
 
     /**
-     * @return Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     * @return Reusable switch port usage profiles provided by this network template
      * 
      */
     public Optional<Output<Map<String,NetworktemplatePortUsagesArgs>>> portUsages() {
@@ -253,23 +293,31 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Junos Radius config
+     * RADIUS authentication and accounting defaults in this network template
      * 
      */
     @Import(name="radiusConfig")
     private @Nullable Output<NetworktemplateRadiusConfigArgs> radiusConfig;
 
     /**
-     * @return Junos Radius config
+     * @return RADIUS authentication and accounting defaults in this network template
      * 
      */
     public Optional<Output<NetworktemplateRadiusConfigArgs>> radiusConfig() {
         return Optional.ofNullable(this.radiusConfig);
     }
 
+    /**
+     * Remote syslog defaults provided by this network template
+     * 
+     */
     @Import(name="remoteSyslog")
     private @Nullable Output<NetworktemplateRemoteSyslogArgs> remoteSyslog;
 
+    /**
+     * @return Remote syslog defaults provided by this network template
+     * 
+     */
     public Optional<Output<NetworktemplateRemoteSyslogArgs>> remoteSyslog() {
         return Optional.ofNullable(this.remoteSyslog);
     }
@@ -290,36 +338,44 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Property key is the routing policy name
+     * Routing policy defaults applied by this network template
      * 
      */
     @Import(name="routingPolicies")
     private @Nullable Output<Map<String,NetworktemplateRoutingPoliciesArgs>> routingPolicies;
 
     /**
-     * @return Property key is the routing policy name
+     * @return Routing policy defaults applied by this network template
      * 
      */
     public Optional<Output<Map<String,NetworktemplateRoutingPoliciesArgs>>> routingPolicies() {
         return Optional.ofNullable(this.routingPolicies);
     }
 
+    /**
+     * SNMP defaults provided by this network template
+     * 
+     */
     @Import(name="snmpConfig")
     private @Nullable Output<NetworktemplateSnmpConfigArgs> snmpConfig;
 
+    /**
+     * @return SNMP defaults provided by this network template
+     * 
+     */
     public Optional<Output<NetworktemplateSnmpConfigArgs>> snmpConfig() {
         return Optional.ofNullable(this.snmpConfig);
     }
 
     /**
-     * Defines custom switch configuration based on different criteria
+     * Matching rules that select switches for this network template
      * 
      */
     @Import(name="switchMatching")
     private @Nullable Output<NetworktemplateSwitchMatchingArgs> switchMatching;
 
     /**
-     * @return Defines custom switch configuration based on different criteria
+     * @return Matching rules that select switches for this network template
      * 
      */
     public Optional<Output<NetworktemplateSwitchMatchingArgs>> switchMatching() {
@@ -327,36 +383,44 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Switch Management settings
+     * Management-plane defaults provided by this network template
      * 
      */
     @Import(name="switchMgmt")
     private @Nullable Output<NetworktemplateSwitchMgmtArgs> switchMgmt;
 
     /**
-     * @return Switch Management settings
+     * @return Management-plane defaults provided by this network template
      * 
      */
     public Optional<Output<NetworktemplateSwitchMgmtArgs>> switchMgmt() {
         return Optional.ofNullable(this.switchMgmt);
     }
 
+    /**
+     * VRF defaults applied by this network template
+     * 
+     */
     @Import(name="vrfConfig")
     private @Nullable Output<NetworktemplateVrfConfigArgs> vrfConfig;
 
+    /**
+     * @return VRF defaults applied by this network template
+     * 
+     */
     public Optional<Output<NetworktemplateVrfConfigArgs>> vrfConfig() {
         return Optional.ofNullable(this.vrfConfig);
     }
 
     /**
-     * Property key is the network name
+     * VRF instances configured by this network template
      * 
      */
     @Import(name="vrfInstances")
     private @Nullable Output<Map<String,NetworktemplateVrfInstancesArgs>> vrfInstances;
 
     /**
-     * @return Property key is the network name
+     * @return VRF instances configured by this network template
      * 
      */
     public Optional<Output<Map<String,NetworktemplateVrfInstancesArgs>>> vrfInstances() {
@@ -412,21 +476,39 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
             $ = new NetworktemplateState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param aclPolicies ACL policy defaults provided by this network template
+         * 
+         * @return builder
+         * 
+         */
         public Builder aclPolicies(@Nullable Output<List<NetworktemplateAclPolicyArgs>> aclPolicies) {
             $.aclPolicies = aclPolicies;
             return this;
         }
 
+        /**
+         * @param aclPolicies ACL policy defaults provided by this network template
+         * 
+         * @return builder
+         * 
+         */
         public Builder aclPolicies(List<NetworktemplateAclPolicyArgs> aclPolicies) {
             return aclPolicies(Output.of(aclPolicies));
         }
 
+        /**
+         * @param aclPolicies ACL policy defaults provided by this network template
+         * 
+         * @return builder
+         * 
+         */
         public Builder aclPolicies(NetworktemplateAclPolicyArgs... aclPolicies) {
             return aclPolicies(List.of(aclPolicies));
         }
 
         /**
-         * @param aclTags ACL Tags to identify traffic source or destination. Key name is the tag name
+         * @param aclTags ACL tags available to access policies in this network template
          * 
          * @return builder
          * 
@@ -437,7 +519,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param aclTags ACL Tags to identify traffic source or destination. Key name is the tag name
+         * @param aclTags ACL tags available to access policies in this network template
          * 
          * @return builder
          * 
@@ -447,7 +529,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config. **Note**: no check is done
+         * @param additionalConfigCmds Additional CLI configuration commands provided by this network template
          * 
          * @return builder
          * 
@@ -458,7 +540,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config. **Note**: no check is done
+         * @param additionalConfigCmds Additional CLI configuration commands provided by this network template
          * 
          * @return builder
          * 
@@ -468,7 +550,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config. **Note**: no check is done
+         * @param additionalConfigCmds Additional CLI configuration commands provided by this network template
          * 
          * @return builder
          * 
@@ -477,26 +559,50 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
             return additionalConfigCmds(List.of(additionalConfigCmds));
         }
 
+        /**
+         * @param bgpConfig BGP routing defaults for this network template. Property key is the BGP session name
+         * 
+         * @return builder
+         * 
+         */
         public Builder bgpConfig(@Nullable Output<Map<String,NetworktemplateBgpConfigArgs>> bgpConfig) {
             $.bgpConfig = bgpConfig;
             return this;
         }
 
+        /**
+         * @param bgpConfig BGP routing defaults for this network template. Property key is the BGP session name
+         * 
+         * @return builder
+         * 
+         */
         public Builder bgpConfig(Map<String,NetworktemplateBgpConfigArgs> bgpConfig) {
             return bgpConfig(Output.of(bgpConfig));
         }
 
+        /**
+         * @param dhcpSnooping DHCP snooping defaults provided by this network template
+         * 
+         * @return builder
+         * 
+         */
         public Builder dhcpSnooping(@Nullable Output<NetworktemplateDhcpSnoopingArgs> dhcpSnooping) {
             $.dhcpSnooping = dhcpSnooping;
             return this;
         }
 
+        /**
+         * @param dhcpSnooping DHCP snooping defaults provided by this network template
+         * 
+         * @return builder
+         * 
+         */
         public Builder dhcpSnooping(NetworktemplateDhcpSnoopingArgs dhcpSnooping) {
             return dhcpSnooping(Output.of(dhcpSnooping));
         }
 
         /**
-         * @param dnsServers Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+         * @param dnsServers DNS servers provided by this network template
          * 
          * @return builder
          * 
@@ -507,7 +613,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dnsServers Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+         * @param dnsServers DNS servers provided by this network template
          * 
          * @return builder
          * 
@@ -517,7 +623,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dnsServers Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+         * @param dnsServers DNS servers provided by this network template
          * 
          * @return builder
          * 
@@ -527,7 +633,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dnsSuffixes Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+         * @param dnsSuffixes DNS search suffixes provided by this network template
          * 
          * @return builder
          * 
@@ -538,7 +644,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dnsSuffixes Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+         * @param dnsSuffixes DNS search suffixes provided by this network template
          * 
          * @return builder
          * 
@@ -548,7 +654,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dnsSuffixes Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+         * @param dnsSuffixes DNS search suffixes provided by this network template
          * 
          * @return builder
          * 
@@ -558,7 +664,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param extraRoutes Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+         * @param extraRoutes Additional IPv4 route defaults in this network template
          * 
          * @return builder
          * 
@@ -569,7 +675,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param extraRoutes Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+         * @param extraRoutes Additional IPv4 route defaults in this network template
          * 
          * @return builder
          * 
@@ -579,7 +685,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param extraRoutes6 Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+         * @param extraRoutes6 Additional IPv6 route defaults in this network template
          * 
          * @return builder
          * 
@@ -590,7 +696,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param extraRoutes6 Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+         * @param extraRoutes6 Additional IPv6 route defaults in this network template
          * 
          * @return builder
          * 
@@ -600,7 +706,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param mistNac Enable mistNac to use RadSec
+         * @param mistNac Mist NAC defaults applied by this network template
          * 
          * @return builder
          * 
@@ -611,7 +717,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param mistNac Enable mistNac to use RadSec
+         * @param mistNac Mist NAC defaults applied by this network template
          * 
          * @return builder
          * 
@@ -620,17 +726,29 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
             return mistNac(Output.of(mistNac));
         }
 
+        /**
+         * @param name Display name of the network template
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Display name of the network template
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
         /**
-         * @param networks Property key is network name
+         * @param networks Layer 3 networks configured by this network template
          * 
          * @return builder
          * 
@@ -641,7 +759,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param networks Property key is network name
+         * @param networks Layer 3 networks configured by this network template
          * 
          * @return builder
          * 
@@ -651,7 +769,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ntpServers List of NTP servers specific to this device. By default, those in Site Settings will be used
+         * @param ntpServers NTP servers provided by this network template
          * 
          * @return builder
          * 
@@ -662,7 +780,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ntpServers List of NTP servers specific to this device. By default, those in Site Settings will be used
+         * @param ntpServers NTP servers provided by this network template
          * 
          * @return builder
          * 
@@ -672,7 +790,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ntpServers List of NTP servers specific to this device. By default, those in Site Settings will be used
+         * @param ntpServers NTP servers provided by this network template
          * 
          * @return builder
          * 
@@ -681,17 +799,29 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
             return ntpServers(List.of(ntpServers));
         }
 
+        /**
+         * @param orgId Organization that owns this network template
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(@Nullable Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param orgId Organization that owns this network template
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }
 
         /**
-         * @param ospfAreas Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+         * @param ospfAreas OSPF area defaults provided by this network template
          * 
          * @return builder
          * 
@@ -702,7 +832,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ospfAreas Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+         * @param ospfAreas OSPF area defaults provided by this network template
          * 
          * @return builder
          * 
@@ -712,7 +842,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param portMirroring Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+         * @param portMirroring Port mirroring defaults provided by this network template
          * 
          * @return builder
          * 
@@ -723,7 +853,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param portMirroring Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+         * @param portMirroring Port mirroring defaults provided by this network template
          * 
          * @return builder
          * 
@@ -733,7 +863,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param portUsages Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+         * @param portUsages Reusable switch port usage profiles provided by this network template
          * 
          * @return builder
          * 
@@ -744,7 +874,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param portUsages Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+         * @param portUsages Reusable switch port usage profiles provided by this network template
          * 
          * @return builder
          * 
@@ -754,7 +884,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param radiusConfig Junos Radius config
+         * @param radiusConfig RADIUS authentication and accounting defaults in this network template
          * 
          * @return builder
          * 
@@ -765,7 +895,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param radiusConfig Junos Radius config
+         * @param radiusConfig RADIUS authentication and accounting defaults in this network template
          * 
          * @return builder
          * 
@@ -774,11 +904,23 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
             return radiusConfig(Output.of(radiusConfig));
         }
 
+        /**
+         * @param remoteSyslog Remote syslog defaults provided by this network template
+         * 
+         * @return builder
+         * 
+         */
         public Builder remoteSyslog(@Nullable Output<NetworktemplateRemoteSyslogArgs> remoteSyslog) {
             $.remoteSyslog = remoteSyslog;
             return this;
         }
 
+        /**
+         * @param remoteSyslog Remote syslog defaults provided by this network template
+         * 
+         * @return builder
+         * 
+         */
         public Builder remoteSyslog(NetworktemplateRemoteSyslogArgs remoteSyslog) {
             return remoteSyslog(Output.of(remoteSyslog));
         }
@@ -805,7 +947,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param routingPolicies Property key is the routing policy name
+         * @param routingPolicies Routing policy defaults applied by this network template
          * 
          * @return builder
          * 
@@ -816,7 +958,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param routingPolicies Property key is the routing policy name
+         * @param routingPolicies Routing policy defaults applied by this network template
          * 
          * @return builder
          * 
@@ -825,17 +967,29 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
             return routingPolicies(Output.of(routingPolicies));
         }
 
+        /**
+         * @param snmpConfig SNMP defaults provided by this network template
+         * 
+         * @return builder
+         * 
+         */
         public Builder snmpConfig(@Nullable Output<NetworktemplateSnmpConfigArgs> snmpConfig) {
             $.snmpConfig = snmpConfig;
             return this;
         }
 
+        /**
+         * @param snmpConfig SNMP defaults provided by this network template
+         * 
+         * @return builder
+         * 
+         */
         public Builder snmpConfig(NetworktemplateSnmpConfigArgs snmpConfig) {
             return snmpConfig(Output.of(snmpConfig));
         }
 
         /**
-         * @param switchMatching Defines custom switch configuration based on different criteria
+         * @param switchMatching Matching rules that select switches for this network template
          * 
          * @return builder
          * 
@@ -846,7 +1000,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param switchMatching Defines custom switch configuration based on different criteria
+         * @param switchMatching Matching rules that select switches for this network template
          * 
          * @return builder
          * 
@@ -856,7 +1010,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param switchMgmt Switch Management settings
+         * @param switchMgmt Management-plane defaults provided by this network template
          * 
          * @return builder
          * 
@@ -867,7 +1021,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param switchMgmt Switch Management settings
+         * @param switchMgmt Management-plane defaults provided by this network template
          * 
          * @return builder
          * 
@@ -876,17 +1030,29 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
             return switchMgmt(Output.of(switchMgmt));
         }
 
+        /**
+         * @param vrfConfig VRF defaults applied by this network template
+         * 
+         * @return builder
+         * 
+         */
         public Builder vrfConfig(@Nullable Output<NetworktemplateVrfConfigArgs> vrfConfig) {
             $.vrfConfig = vrfConfig;
             return this;
         }
 
+        /**
+         * @param vrfConfig VRF defaults applied by this network template
+         * 
+         * @return builder
+         * 
+         */
         public Builder vrfConfig(NetworktemplateVrfConfigArgs vrfConfig) {
             return vrfConfig(Output.of(vrfConfig));
         }
 
         /**
-         * @param vrfInstances Property key is the network name
+         * @param vrfInstances VRF instances configured by this network template
          * 
          * @return builder
          * 
@@ -897,7 +1063,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param vrfInstances Property key is the network name
+         * @param vrfInstances VRF instances configured by this network template
          * 
          * @return builder
          * 

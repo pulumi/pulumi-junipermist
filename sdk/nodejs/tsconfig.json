@@ -49,6 +49,7 @@
         "org/deviceprofileAp.ts",
         "org/deviceprofileAssign.ts",
         "org/deviceprofileGateway.ts",
+        "org/deviceprofileSwitch.ts",
         "org/evpnTopology.ts",
         "org/gatewaytemplate.ts",
         "org/getAlarmtemplates.ts",

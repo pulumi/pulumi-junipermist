@@ -13,7 +13,13 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class SwitchSnmpConfigClientList
     {
+        /// <summary>
+        /// Name of the SNMP client list
+        /// </summary>
         public readonly string? ClientListName;
+        /// <summary>
+        /// SNMP client IP addresses or CIDR ranges allowed by this list
+        /// </summary>
         public readonly ImmutableArray<string> Clients;
 
         [OutputConstructor]

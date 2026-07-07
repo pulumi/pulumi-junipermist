@@ -16,9 +16,17 @@ public final class SettingJuniperArgs extends com.pulumi.resources.ResourceArgs 
 
     public static final SettingJuniperArgs Empty = new SettingJuniperArgs();
 
+    /**
+     * List of linked Juniper account records
+     * 
+     */
     @Import(name="accounts")
     private @Nullable Output<List<SettingJuniperAccountArgs>> accounts;
 
+    /**
+     * @return List of linked Juniper account records
+     * 
+     */
     public Optional<Output<List<SettingJuniperAccountArgs>>> accounts() {
         return Optional.ofNullable(this.accounts);
     }
@@ -47,15 +55,33 @@ public final class SettingJuniperArgs extends com.pulumi.resources.ResourceArgs 
             $ = new SettingJuniperArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accounts List of linked Juniper account records
+         * 
+         * @return builder
+         * 
+         */
         public Builder accounts(@Nullable Output<List<SettingJuniperAccountArgs>> accounts) {
             $.accounts = accounts;
             return this;
         }
 
+        /**
+         * @param accounts List of linked Juniper account records
+         * 
+         * @return builder
+         * 
+         */
         public Builder accounts(List<SettingJuniperAccountArgs> accounts) {
             return accounts(Output.of(accounts));
         }
 
+        /**
+         * @param accounts List of linked Juniper account records
+         * 
+         * @return builder
+         * 
+         */
         public Builder accounts(SettingJuniperAccountArgs... accounts) {
             return accounts(List.of(accounts));
         }

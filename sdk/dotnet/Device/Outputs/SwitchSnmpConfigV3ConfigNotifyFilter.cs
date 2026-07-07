@@ -13,7 +13,13 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class SwitchSnmpConfigV3ConfigNotifyFilter
     {
+        /// <summary>
+        /// OID filter rules in this notification filter profile
+        /// </summary>
         public readonly ImmutableArray<Outputs.SwitchSnmpConfigV3ConfigNotifyFilterContent> Contents;
+        /// <summary>
+        /// Notification filter profile name
+        /// </summary>
         public readonly string? ProfileName;
 
         [OutputConstructor]

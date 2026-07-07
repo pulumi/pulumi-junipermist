@@ -37,50 +37,74 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
     public static final GatewaytemplateArgs Empty = new GatewaytemplateArgs();
 
     /**
-     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
+     * Additional CLI configuration commands provided by this gateway template
      * 
      */
     @Import(name="additionalConfigCmds")
     private @Nullable Output<List<String>> additionalConfigCmds;
 
     /**
-     * @return additional CLI commands to append to the generated Junos config. **Note**: no check is done
+     * @return Additional CLI configuration commands provided by this gateway template
      * 
      */
     public Optional<Output<List<String>>> additionalConfigCmds() {
         return Optional.ofNullable(this.additionalConfigCmds);
     }
 
+    /**
+     * BGP routing defaults for this gateway template. Property key is the BGP session name
+     * 
+     */
     @Import(name="bgpConfig")
     private @Nullable Output<Map<String,GatewaytemplateBgpConfigArgs>> bgpConfig;
 
+    /**
+     * @return BGP routing defaults for this gateway template. Property key is the BGP session name
+     * 
+     */
     public Optional<Output<Map<String,GatewaytemplateBgpConfigArgs>>> bgpConfig() {
         return Optional.ofNullable(this.bgpConfig);
     }
 
+    /**
+     * DHCP server defaults provided by this gateway template
+     * 
+     */
     @Import(name="dhcpdConfig")
     private @Nullable Output<GatewaytemplateDhcpdConfigArgs> dhcpdConfig;
 
+    /**
+     * @return DHCP server defaults provided by this gateway template
+     * 
+     */
     public Optional<Output<GatewaytemplateDhcpdConfigArgs>> dhcpdConfig() {
         return Optional.ofNullable(this.dhcpdConfig);
     }
 
+    /**
+     * Whether DNS server and suffix settings in this template override inherited values
+     * 
+     */
     @Import(name="dnsOverride")
     private @Nullable Output<Boolean> dnsOverride;
 
+    /**
+     * @return Whether DNS server and suffix settings in this template override inherited values
+     * 
+     */
     public Optional<Output<Boolean>> dnsOverride() {
         return Optional.ofNullable(this.dnsOverride);
     }
 
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS servers provided by this gateway template
      * 
      */
     @Import(name="dnsServers")
     private @Nullable Output<List<String>> dnsServers;
 
     /**
-     * @return Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * @return DNS servers provided by this gateway template
      * 
      */
     public Optional<Output<List<String>>> dnsServers() {
@@ -88,14 +112,14 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS search suffixes provided by this gateway template
      * 
      */
     @Import(name="dnsSuffixes")
     private @Nullable Output<List<String>> dnsSuffixes;
 
     /**
-     * @return Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * @return DNS search suffixes provided by this gateway template
      * 
      */
     public Optional<Output<List<String>>> dnsSuffixes() {
@@ -103,14 +127,14 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;), the destination Network name or a variable (e.g. &#34;{{myvar}}&#34;)
+     * Additional IPv4 route defaults in this gateway template
      * 
      */
     @Import(name="extraRoutes")
     private @Nullable Output<Map<String,GatewaytemplateExtraRoutesArgs>> extraRoutes;
 
     /**
-     * @return Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;), the destination Network name or a variable (e.g. &#34;{{myvar}}&#34;)
+     * @return Additional IPv4 route defaults in this gateway template
      * 
      */
     public Optional<Output<Map<String,GatewaytemplateExtraRoutesArgs>>> extraRoutes() {
@@ -118,14 +142,14 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;), the destination Network name or a variable (e.g. &#34;{{myvar}}&#34;)
+     * Additional IPv6 route defaults in this gateway template
      * 
      */
     @Import(name="extraRoutes6")
     private @Nullable Output<Map<String,GatewaytemplateExtraRoutes6Args>> extraRoutes6;
 
     /**
-     * @return Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;), the destination Network name or a variable (e.g. &#34;{{myvar}}&#34;)
+     * @return Additional IPv6 route defaults in this gateway template
      * 
      */
     public Optional<Output<Map<String,GatewaytemplateExtraRoutes6Args>>> extraRoutes6() {
@@ -133,14 +157,14 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Gateway Management settings
+     * Management-plane defaults provided by this gateway template
      * 
      */
     @Import(name="gatewayMgmt")
     private @Nullable Output<GatewaytemplateGatewayMgmtArgs> gatewayMgmt;
 
     /**
-     * @return Gateway Management settings
+     * @return Management-plane defaults provided by this gateway template
      * 
      */
     public Optional<Output<GatewaytemplateGatewayMgmtArgs>> gatewayMgmt() {
@@ -148,14 +172,14 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Property key is the profile name
+     * Intrusion detection and prevention profile defaults in this gateway template
      * 
      */
     @Import(name="idpProfiles")
     private @Nullable Output<Map<String,GatewaytemplateIdpProfilesArgs>> idpProfiles;
 
     /**
-     * @return Property key is the profile name
+     * @return Intrusion detection and prevention profile defaults in this gateway template
      * 
      */
     public Optional<Output<Map<String,GatewaytemplateIdpProfilesArgs>>> idpProfiles() {
@@ -163,50 +187,74 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Property key is the network name
+     * Gateway interface IP configuration defaults by network name
      * 
      */
     @Import(name="ipConfigs")
     private @Nullable Output<Map<String,GatewaytemplateIpConfigsArgs>> ipConfigs;
 
     /**
-     * @return Property key is the network name
+     * @return Gateway interface IP configuration defaults by network name
      * 
      */
     public Optional<Output<Map<String,GatewaytemplateIpConfigsArgs>>> ipConfigs() {
         return Optional.ofNullable(this.ipConfigs);
     }
 
+    /**
+     * Display name of the gateway template
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Display name of the gateway template
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Layer 3 networks configured by this gateway template
+     * 
+     */
     @Import(name="networks")
     private @Nullable Output<List<GatewaytemplateNetworkArgs>> networks;
 
+    /**
+     * @return Layer 3 networks configured by this gateway template
+     * 
+     */
     public Optional<Output<List<GatewaytemplateNetworkArgs>>> networks() {
         return Optional.ofNullable(this.networks);
     }
 
+    /**
+     * Whether NTP servers in this template override inherited values
+     * 
+     */
     @Import(name="ntpOverride")
     private @Nullable Output<Boolean> ntpOverride;
 
+    /**
+     * @return Whether NTP servers in this template override inherited values
+     * 
+     */
     public Optional<Output<Boolean>> ntpOverride() {
         return Optional.ofNullable(this.ntpOverride);
     }
 
     /**
-     * List of NTP servers specific to this device. By default, those in Site Settings will be used
+     * NTP servers provided by this gateway template
      * 
      */
     @Import(name="ntpServers")
     private @Nullable Output<List<String>> ntpServers;
 
     /**
-     * @return List of NTP servers specific to this device. By default, those in Site Settings will be used
+     * @return NTP servers provided by this gateway template
      * 
      */
     public Optional<Output<List<String>>> ntpServers() {
@@ -214,23 +262,31 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Out-of-band (vme/em0/fxp0) IP config
+     * Out-of-band management IP defaults in this gateway template
      * 
      */
     @Import(name="oobIpConfig")
     private @Nullable Output<GatewaytemplateOobIpConfigArgs> oobIpConfig;
 
     /**
-     * @return Out-of-band (vme/em0/fxp0) IP config
+     * @return Out-of-band management IP defaults in this gateway template
      * 
      */
     public Optional<Output<GatewaytemplateOobIpConfigArgs>> oobIpConfig() {
         return Optional.ofNullable(this.oobIpConfig);
     }
 
+    /**
+     * Organization that owns this gateway template
+     * 
+     */
     @Import(name="orgId", required=true)
     private Output<String> orgId;
 
+    /**
+     * @return Organization that owns this gateway template
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }
@@ -281,23 +337,31 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Property key is the routing policy name
+     * Routing policy defaults applied by this gateway template
      * 
      */
     @Import(name="routingPolicies")
     private @Nullable Output<Map<String,GatewaytemplateRoutingPoliciesArgs>> routingPolicies;
 
     /**
-     * @return Property key is the routing policy name
+     * @return Routing policy defaults applied by this gateway template
      * 
      */
     public Optional<Output<Map<String,GatewaytemplateRoutingPoliciesArgs>>> routingPolicies() {
         return Optional.ofNullable(this.routingPolicies);
     }
 
+    /**
+     * Traffic service policy defaults enforced by this gateway template
+     * 
+     */
     @Import(name="servicePolicies")
     private @Nullable Output<List<GatewaytemplateServicePolicyArgs>> servicePolicies;
 
+    /**
+     * @return Traffic service policy defaults enforced by this gateway template
+     * 
+     */
     public Optional<Output<List<GatewaytemplateServicePolicyArgs>>> servicePolicies() {
         return Optional.ofNullable(this.servicePolicies);
     }
@@ -332,22 +396,30 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.tunnelConfigs);
     }
 
+    /**
+     * Provider-specific tunnel options defined by this gateway template
+     * 
+     */
     @Import(name="tunnelProviderOptions")
     private @Nullable Output<GatewaytemplateTunnelProviderOptionsArgs> tunnelProviderOptions;
 
+    /**
+     * @return Provider-specific tunnel options defined by this gateway template
+     * 
+     */
     public Optional<Output<GatewaytemplateTunnelProviderOptionsArgs>> tunnelProviderOptions() {
         return Optional.ofNullable(this.tunnelProviderOptions);
     }
 
     /**
-     * enum: `spoke`, `standalone`
+     * Gateway template deployment type
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return enum: `spoke`, `standalone`
+     * @return Gateway template deployment type
      * 
      */
     public Optional<Output<String>> type() {
@@ -369,22 +441,30 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.urlFilteringDenyMsg);
     }
 
+    /**
+     * VRF defaults applied by this gateway template
+     * 
+     */
     @Import(name="vrfConfig")
     private @Nullable Output<GatewaytemplateVrfConfigArgs> vrfConfig;
 
+    /**
+     * @return VRF defaults applied by this gateway template
+     * 
+     */
     public Optional<Output<GatewaytemplateVrfConfigArgs>> vrfConfig() {
         return Optional.ofNullable(this.vrfConfig);
     }
 
     /**
-     * Property key is the network name
+     * VRF instances configured by this gateway template
      * 
      */
     @Import(name="vrfInstances")
     private @Nullable Output<Map<String,GatewaytemplateVrfInstancesArgs>> vrfInstances;
 
     /**
-     * @return Property key is the network name
+     * @return VRF instances configured by this gateway template
      * 
      */
     public Optional<Output<Map<String,GatewaytemplateVrfInstancesArgs>>> vrfInstances() {
@@ -444,7 +524,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config. **Note**: no check is done
+         * @param additionalConfigCmds Additional CLI configuration commands provided by this gateway template
          * 
          * @return builder
          * 
@@ -455,7 +535,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config. **Note**: no check is done
+         * @param additionalConfigCmds Additional CLI configuration commands provided by this gateway template
          * 
          * @return builder
          * 
@@ -465,7 +545,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config. **Note**: no check is done
+         * @param additionalConfigCmds Additional CLI configuration commands provided by this gateway template
          * 
          * @return builder
          * 
@@ -474,35 +554,71 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
             return additionalConfigCmds(List.of(additionalConfigCmds));
         }
 
+        /**
+         * @param bgpConfig BGP routing defaults for this gateway template. Property key is the BGP session name
+         * 
+         * @return builder
+         * 
+         */
         public Builder bgpConfig(@Nullable Output<Map<String,GatewaytemplateBgpConfigArgs>> bgpConfig) {
             $.bgpConfig = bgpConfig;
             return this;
         }
 
+        /**
+         * @param bgpConfig BGP routing defaults for this gateway template. Property key is the BGP session name
+         * 
+         * @return builder
+         * 
+         */
         public Builder bgpConfig(Map<String,GatewaytemplateBgpConfigArgs> bgpConfig) {
             return bgpConfig(Output.of(bgpConfig));
         }
 
+        /**
+         * @param dhcpdConfig DHCP server defaults provided by this gateway template
+         * 
+         * @return builder
+         * 
+         */
         public Builder dhcpdConfig(@Nullable Output<GatewaytemplateDhcpdConfigArgs> dhcpdConfig) {
             $.dhcpdConfig = dhcpdConfig;
             return this;
         }
 
+        /**
+         * @param dhcpdConfig DHCP server defaults provided by this gateway template
+         * 
+         * @return builder
+         * 
+         */
         public Builder dhcpdConfig(GatewaytemplateDhcpdConfigArgs dhcpdConfig) {
             return dhcpdConfig(Output.of(dhcpdConfig));
         }
 
+        /**
+         * @param dnsOverride Whether DNS server and suffix settings in this template override inherited values
+         * 
+         * @return builder
+         * 
+         */
         public Builder dnsOverride(@Nullable Output<Boolean> dnsOverride) {
             $.dnsOverride = dnsOverride;
             return this;
         }
 
+        /**
+         * @param dnsOverride Whether DNS server and suffix settings in this template override inherited values
+         * 
+         * @return builder
+         * 
+         */
         public Builder dnsOverride(Boolean dnsOverride) {
             return dnsOverride(Output.of(dnsOverride));
         }
 
         /**
-         * @param dnsServers Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+         * @param dnsServers DNS servers provided by this gateway template
          * 
          * @return builder
          * 
@@ -513,7 +629,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param dnsServers Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+         * @param dnsServers DNS servers provided by this gateway template
          * 
          * @return builder
          * 
@@ -523,7 +639,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param dnsServers Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+         * @param dnsServers DNS servers provided by this gateway template
          * 
          * @return builder
          * 
@@ -533,7 +649,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param dnsSuffixes Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+         * @param dnsSuffixes DNS search suffixes provided by this gateway template
          * 
          * @return builder
          * 
@@ -544,7 +660,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param dnsSuffixes Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+         * @param dnsSuffixes DNS search suffixes provided by this gateway template
          * 
          * @return builder
          * 
@@ -554,7 +670,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param dnsSuffixes Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+         * @param dnsSuffixes DNS search suffixes provided by this gateway template
          * 
          * @return builder
          * 
@@ -564,7 +680,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param extraRoutes Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;), the destination Network name or a variable (e.g. &#34;{{myvar}}&#34;)
+         * @param extraRoutes Additional IPv4 route defaults in this gateway template
          * 
          * @return builder
          * 
@@ -575,7 +691,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param extraRoutes Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;), the destination Network name or a variable (e.g. &#34;{{myvar}}&#34;)
+         * @param extraRoutes Additional IPv4 route defaults in this gateway template
          * 
          * @return builder
          * 
@@ -585,7 +701,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param extraRoutes6 Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;), the destination Network name or a variable (e.g. &#34;{{myvar}}&#34;)
+         * @param extraRoutes6 Additional IPv6 route defaults in this gateway template
          * 
          * @return builder
          * 
@@ -596,7 +712,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param extraRoutes6 Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;), the destination Network name or a variable (e.g. &#34;{{myvar}}&#34;)
+         * @param extraRoutes6 Additional IPv6 route defaults in this gateway template
          * 
          * @return builder
          * 
@@ -606,7 +722,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param gatewayMgmt Gateway Management settings
+         * @param gatewayMgmt Management-plane defaults provided by this gateway template
          * 
          * @return builder
          * 
@@ -617,7 +733,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param gatewayMgmt Gateway Management settings
+         * @param gatewayMgmt Management-plane defaults provided by this gateway template
          * 
          * @return builder
          * 
@@ -627,7 +743,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param idpProfiles Property key is the profile name
+         * @param idpProfiles Intrusion detection and prevention profile defaults in this gateway template
          * 
          * @return builder
          * 
@@ -638,7 +754,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param idpProfiles Property key is the profile name
+         * @param idpProfiles Intrusion detection and prevention profile defaults in this gateway template
          * 
          * @return builder
          * 
@@ -648,7 +764,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ipConfigs Property key is the network name
+         * @param ipConfigs Gateway interface IP configuration defaults by network name
          * 
          * @return builder
          * 
@@ -659,7 +775,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ipConfigs Property key is the network name
+         * @param ipConfigs Gateway interface IP configuration defaults by network name
          * 
          * @return builder
          * 
@@ -668,39 +784,81 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
             return ipConfigs(Output.of(ipConfigs));
         }
 
+        /**
+         * @param name Display name of the gateway template
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Display name of the gateway template
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param networks Layer 3 networks configured by this gateway template
+         * 
+         * @return builder
+         * 
+         */
         public Builder networks(@Nullable Output<List<GatewaytemplateNetworkArgs>> networks) {
             $.networks = networks;
             return this;
         }
 
+        /**
+         * @param networks Layer 3 networks configured by this gateway template
+         * 
+         * @return builder
+         * 
+         */
         public Builder networks(List<GatewaytemplateNetworkArgs> networks) {
             return networks(Output.of(networks));
         }
 
+        /**
+         * @param networks Layer 3 networks configured by this gateway template
+         * 
+         * @return builder
+         * 
+         */
         public Builder networks(GatewaytemplateNetworkArgs... networks) {
             return networks(List.of(networks));
         }
 
+        /**
+         * @param ntpOverride Whether NTP servers in this template override inherited values
+         * 
+         * @return builder
+         * 
+         */
         public Builder ntpOverride(@Nullable Output<Boolean> ntpOverride) {
             $.ntpOverride = ntpOverride;
             return this;
         }
 
+        /**
+         * @param ntpOverride Whether NTP servers in this template override inherited values
+         * 
+         * @return builder
+         * 
+         */
         public Builder ntpOverride(Boolean ntpOverride) {
             return ntpOverride(Output.of(ntpOverride));
         }
 
         /**
-         * @param ntpServers List of NTP servers specific to this device. By default, those in Site Settings will be used
+         * @param ntpServers NTP servers provided by this gateway template
          * 
          * @return builder
          * 
@@ -711,7 +869,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ntpServers List of NTP servers specific to this device. By default, those in Site Settings will be used
+         * @param ntpServers NTP servers provided by this gateway template
          * 
          * @return builder
          * 
@@ -721,7 +879,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ntpServers List of NTP servers specific to this device. By default, those in Site Settings will be used
+         * @param ntpServers NTP servers provided by this gateway template
          * 
          * @return builder
          * 
@@ -731,7 +889,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param oobIpConfig Out-of-band (vme/em0/fxp0) IP config
+         * @param oobIpConfig Out-of-band management IP defaults in this gateway template
          * 
          * @return builder
          * 
@@ -742,7 +900,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param oobIpConfig Out-of-band (vme/em0/fxp0) IP config
+         * @param oobIpConfig Out-of-band management IP defaults in this gateway template
          * 
          * @return builder
          * 
@@ -751,11 +909,23 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
             return oobIpConfig(Output.of(oobIpConfig));
         }
 
+        /**
+         * @param orgId Organization that owns this gateway template
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param orgId Organization that owns this gateway template
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }
@@ -824,7 +994,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param routingPolicies Property key is the routing policy name
+         * @param routingPolicies Routing policy defaults applied by this gateway template
          * 
          * @return builder
          * 
@@ -835,7 +1005,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param routingPolicies Property key is the routing policy name
+         * @param routingPolicies Routing policy defaults applied by this gateway template
          * 
          * @return builder
          * 
@@ -844,15 +1014,33 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
             return routingPolicies(Output.of(routingPolicies));
         }
 
+        /**
+         * @param servicePolicies Traffic service policy defaults enforced by this gateway template
+         * 
+         * @return builder
+         * 
+         */
         public Builder servicePolicies(@Nullable Output<List<GatewaytemplateServicePolicyArgs>> servicePolicies) {
             $.servicePolicies = servicePolicies;
             return this;
         }
 
+        /**
+         * @param servicePolicies Traffic service policy defaults enforced by this gateway template
+         * 
+         * @return builder
+         * 
+         */
         public Builder servicePolicies(List<GatewaytemplateServicePolicyArgs> servicePolicies) {
             return servicePolicies(Output.of(servicePolicies));
         }
 
+        /**
+         * @param servicePolicies Traffic service policy defaults enforced by this gateway template
+         * 
+         * @return builder
+         * 
+         */
         public Builder servicePolicies(GatewaytemplateServicePolicyArgs... servicePolicies) {
             return servicePolicies(List.of(servicePolicies));
         }
@@ -909,17 +1097,29 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
             return tunnelConfigs(Output.of(tunnelConfigs));
         }
 
+        /**
+         * @param tunnelProviderOptions Provider-specific tunnel options defined by this gateway template
+         * 
+         * @return builder
+         * 
+         */
         public Builder tunnelProviderOptions(@Nullable Output<GatewaytemplateTunnelProviderOptionsArgs> tunnelProviderOptions) {
             $.tunnelProviderOptions = tunnelProviderOptions;
             return this;
         }
 
+        /**
+         * @param tunnelProviderOptions Provider-specific tunnel options defined by this gateway template
+         * 
+         * @return builder
+         * 
+         */
         public Builder tunnelProviderOptions(GatewaytemplateTunnelProviderOptionsArgs tunnelProviderOptions) {
             return tunnelProviderOptions(Output.of(tunnelProviderOptions));
         }
 
         /**
-         * @param type enum: `spoke`, `standalone`
+         * @param type Gateway template deployment type
          * 
          * @return builder
          * 
@@ -930,7 +1130,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type enum: `spoke`, `standalone`
+         * @param type Gateway template deployment type
          * 
          * @return builder
          * 
@@ -960,17 +1160,29 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
             return urlFilteringDenyMsg(Output.of(urlFilteringDenyMsg));
         }
 
+        /**
+         * @param vrfConfig VRF defaults applied by this gateway template
+         * 
+         * @return builder
+         * 
+         */
         public Builder vrfConfig(@Nullable Output<GatewaytemplateVrfConfigArgs> vrfConfig) {
             $.vrfConfig = vrfConfig;
             return this;
         }
 
+        /**
+         * @param vrfConfig VRF defaults applied by this gateway template
+         * 
+         * @return builder
+         * 
+         */
         public Builder vrfConfig(GatewaytemplateVrfConfigArgs vrfConfig) {
             return vrfConfig(Output.of(vrfConfig));
         }
 
         /**
-         * @param vrfInstances Property key is the network name
+         * @param vrfInstances VRF instances configured by this gateway template
          * 
          * @return builder
          * 
@@ -981,7 +1193,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vrfInstances Property key is the network name
+         * @param vrfInstances VRF instances configured by this gateway template
          * 
          * @return builder
          * 

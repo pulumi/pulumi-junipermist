@@ -81,14 +81,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:device/gatewayCluster:GatewayCluster")
 public class GatewayCluster extends com.pulumi.resources.CustomResource {
     /**
-     * When replacing a node, either mac has to remain the same as existing cluster
+     * Gateway nodes that form the HA cluster
      * 
      */
     @Export(name="nodes", refs={List.class,GatewayClusterNode.class}, tree="[0,1]")
     private Output<List<GatewayClusterNode>> nodes;
 
     /**
-     * @return When replacing a node, either mac has to remain the same as existing cluster
+     * @return Gateway nodes that form the HA cluster
      * 
      */
     public Output<List<GatewayClusterNode>> nodes() {

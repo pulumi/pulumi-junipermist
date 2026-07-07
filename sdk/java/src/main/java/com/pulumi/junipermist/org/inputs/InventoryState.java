@@ -6,6 +6,7 @@ package com.pulumi.junipermist.org.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.junipermist.org.inputs.InventoryInventoryArgs;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -16,6 +17,21 @@ import javax.annotation.Nullable;
 public final class InventoryState extends com.pulumi.resources.ResourceArgs {
 
     public static final InventoryState Empty = new InventoryState();
+
+    /**
+     * Filter results to devices that were last disconnected before this time, in epoch seconds
+     * 
+     */
+    @Import(name="disconnectedBefore")
+    private @Nullable Output<Integer> disconnectedBefore;
+
+    /**
+     * @return Filter results to devices that were last disconnected before this time, in epoch seconds
+     * 
+     */
+    public Optional<Output<Integer>> disconnectedBefore() {
+        return Optional.ofNullable(this.disconnectedBefore);
+    }
 
     /**
      * Property key can be the device Claim Code or the device MAC Address:
@@ -50,6 +66,7 @@ public final class InventoryState extends com.pulumi.resources.ResourceArgs {
     private InventoryState() {}
 
     private InventoryState(InventoryState $) {
+        this.disconnectedBefore = $.disconnectedBefore;
         this.inventory = $.inventory;
         this.orgId = $.orgId;
     }
@@ -70,6 +87,27 @@ public final class InventoryState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(InventoryState defaults) {
             $ = new InventoryState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param disconnectedBefore Filter results to devices that were last disconnected before this time, in epoch seconds
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disconnectedBefore(@Nullable Output<Integer> disconnectedBefore) {
+            $.disconnectedBefore = disconnectedBefore;
+            return this;
+        }
+
+        /**
+         * @param disconnectedBefore Filter results to devices that were last disconnected before this time, in epoch seconds
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disconnectedBefore(Integer disconnectedBefore) {
+            return disconnectedBefore(Output.of(disconnectedBefore));
         }
 
         /**

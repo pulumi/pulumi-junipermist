@@ -13,43 +13,43 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class SwitchOtherIpConfigsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// For EVPN, if anycast is desired
+        /// For EVPN, whether anycast is desired
         /// </summary>
         [Input("evpnAnycast")]
         public Input<bool>? EvpnAnycast { get; set; }
 
         /// <summary>
-        /// Required if `Type`==`Static`
+        /// Required if `Type`==`Static`; IPv4 address for the additional Junos L3 presence
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
         /// <summary>
-        /// Required if `Type6`==`Static`
+        /// Required if `Type6`==`Static`; IPv6 address for the additional Junos L3 presence
         /// </summary>
         [Input("ip6")]
         public Input<string>? Ip6 { get; set; }
 
         /// <summary>
-        /// Optional, `Subnet` from `Network` definition will be used if defined
+        /// Optional IPv4 netmask; `Subnet` from `Network` definition will be used if defined
         /// </summary>
         [Input("netmask")]
         public Input<string>? Netmask { get; set; }
 
         /// <summary>
-        /// Optional, `Subnet` from `Network` definition will be used if defined
+        /// Optional IPv6 prefix length; `Subnet` from `Network` definition will be used if defined
         /// </summary>
         [Input("netmask6")]
         public Input<string>? Netmask6 { get; set; }
 
         /// <summary>
-        /// enum: `Dhcp`, `Static`
+        /// IPv4 assignment mode for the additional Junos L3 presence
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// enum: `Autoconf`, `Dhcp`, `Disabled`, `Static`
+        /// IPv6 assignment mode for the additional Junos L3 presence
         /// </summary>
         [Input("type6")]
         public Input<string>? Type6 { get; set; }

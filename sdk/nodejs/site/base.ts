@@ -96,7 +96,13 @@ export class Base extends pulumi.CustomResource {
      * Gateway Template ID, used by gateways
      */
     declare public readonly gatewaytemplateId: pulumi.Output<string | undefined>;
+    /**
+     * Latitude and longitude for the site location
+     */
     declare public readonly latlng: pulumi.Output<outputs.site.BaseLatlng | undefined>;
+    /**
+     * Display name of the site
+     */
     declare public readonly name: pulumi.Output<string>;
     /**
      * Network Template ID, this takes precedence over Site Settings
@@ -106,6 +112,9 @@ export class Base extends pulumi.CustomResource {
      * Optional, any notes about the site
      */
     declare public readonly notes: pulumi.Output<string>;
+    /**
+     * Organization identifier associated with the site
+     */
     declare public readonly orgId: pulumi.Output<string>;
     /**
      * RF Template ID, this takes precedence over Site Settings
@@ -116,7 +125,7 @@ export class Base extends pulumi.CustomResource {
      */
     declare public readonly routertemplateId: pulumi.Output<string | undefined>;
     /**
-     * SecPolicy ID
+     * Security policy identifier applied to this site
      */
     declare public readonly secpolicyId: pulumi.Output<string | undefined>;
     /**
@@ -124,13 +133,16 @@ export class Base extends pulumi.CustomResource {
      */
     declare public readonly sitegroupIds: pulumi.Output<string[]>;
     /**
-     * Site Template ID
+     * Site template identifier applied to this site
      */
     declare public readonly sitetemplateId: pulumi.Output<string | undefined>;
     /**
-     * Timezone the site is at
+     * IANA time zone name for the site
      */
     declare public readonly timezone: pulumi.Output<string>;
+    /**
+     * Time zone offset value derived from the site's timezone
+     */
     declare public /*out*/ readonly tzoffset: pulumi.Output<number>;
 
     /**
@@ -220,7 +232,13 @@ export interface BaseState {
      * Gateway Template ID, used by gateways
      */
     gatewaytemplateId?: pulumi.Input<string | undefined>;
+    /**
+     * Latitude and longitude for the site location
+     */
     latlng?: pulumi.Input<inputs.site.BaseLatlng | undefined>;
+    /**
+     * Display name of the site
+     */
     name?: pulumi.Input<string | undefined>;
     /**
      * Network Template ID, this takes precedence over Site Settings
@@ -230,6 +248,9 @@ export interface BaseState {
      * Optional, any notes about the site
      */
     notes?: pulumi.Input<string | undefined>;
+    /**
+     * Organization identifier associated with the site
+     */
     orgId?: pulumi.Input<string | undefined>;
     /**
      * RF Template ID, this takes precedence over Site Settings
@@ -240,7 +261,7 @@ export interface BaseState {
      */
     routertemplateId?: pulumi.Input<string | undefined>;
     /**
-     * SecPolicy ID
+     * Security policy identifier applied to this site
      */
     secpolicyId?: pulumi.Input<string | undefined>;
     /**
@@ -248,13 +269,16 @@ export interface BaseState {
      */
     sitegroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Site Template ID
+     * Site template identifier applied to this site
      */
     sitetemplateId?: pulumi.Input<string | undefined>;
     /**
-     * Timezone the site is at
+     * IANA time zone name for the site
      */
     timezone?: pulumi.Input<string | undefined>;
+    /**
+     * Time zone offset value derived from the site's timezone
+     */
     tzoffset?: pulumi.Input<number | undefined>;
 }
 
@@ -282,7 +306,13 @@ export interface BaseArgs {
      * Gateway Template ID, used by gateways
      */
     gatewaytemplateId?: pulumi.Input<string | undefined>;
+    /**
+     * Latitude and longitude for the site location
+     */
     latlng?: pulumi.Input<inputs.site.BaseLatlng | undefined>;
+    /**
+     * Display name of the site
+     */
     name?: pulumi.Input<string | undefined>;
     /**
      * Network Template ID, this takes precedence over Site Settings
@@ -292,6 +322,9 @@ export interface BaseArgs {
      * Optional, any notes about the site
      */
     notes?: pulumi.Input<string | undefined>;
+    /**
+     * Organization identifier associated with the site
+     */
     orgId: pulumi.Input<string>;
     /**
      * RF Template ID, this takes precedence over Site Settings
@@ -302,7 +335,7 @@ export interface BaseArgs {
      */
     routertemplateId?: pulumi.Input<string | undefined>;
     /**
-     * SecPolicy ID
+     * Security policy identifier applied to this site
      */
     secpolicyId?: pulumi.Input<string | undefined>;
     /**
@@ -310,11 +343,11 @@ export interface BaseArgs {
      */
     sitegroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Site Template ID
+     * Site template identifier applied to this site
      */
     sitetemplateId?: pulumi.Input<string | undefined>;
     /**
-     * Timezone the site is at
+     * IANA time zone name for the site
      */
     timezone?: pulumi.Input<string | undefined>;
 }

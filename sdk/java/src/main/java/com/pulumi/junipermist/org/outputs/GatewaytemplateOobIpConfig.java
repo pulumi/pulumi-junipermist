@@ -14,27 +14,27 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewaytemplateOobIpConfig {
     /**
-     * @return If `type`==`static`
+     * @return Default gateway for the out-of-band management interface when `type`==`static`
      * 
      */
     private @Nullable String gateway;
     /**
-     * @return If `type`==`static`
+     * @return Static IPv4 address for the out-of-band management interface when `type`==`static`
      * 
      */
     private @Nullable String ip;
     /**
-     * @return If `type`==`static`
+     * @return IPv4 netmask or prefix length for the out-of-band management interface when `type`==`static`
      * 
      */
     private @Nullable String netmask;
     /**
-     * @return For HA Cluster, node1 can have different IP Config
+     * @return Out-of-band management IP configuration override for node1 in an HA cluster
      * 
      */
     private @Nullable GatewaytemplateOobIpConfigNode1 node1;
     /**
-     * @return enum: `dhcp`, `static`
+     * @return IP assignment mode for the out-of-band management interface
      * 
      */
     private @Nullable String type;
@@ -48,39 +48,43 @@ public final class GatewaytemplateOobIpConfig {
      * 
      */
     private @Nullable Boolean useMgmtVrfForHostOut;
+    /**
+     * @return VLAN ID used for out-of-band management traffic
+     * 
+     */
     private @Nullable String vlanId;
 
     private GatewaytemplateOobIpConfig() {}
     /**
-     * @return If `type`==`static`
+     * @return Default gateway for the out-of-band management interface when `type`==`static`
      * 
      */
     public Optional<String> gateway() {
         return Optional.ofNullable(this.gateway);
     }
     /**
-     * @return If `type`==`static`
+     * @return Static IPv4 address for the out-of-band management interface when `type`==`static`
      * 
      */
     public Optional<String> ip() {
         return Optional.ofNullable(this.ip);
     }
     /**
-     * @return If `type`==`static`
+     * @return IPv4 netmask or prefix length for the out-of-band management interface when `type`==`static`
      * 
      */
     public Optional<String> netmask() {
         return Optional.ofNullable(this.netmask);
     }
     /**
-     * @return For HA Cluster, node1 can have different IP Config
+     * @return Out-of-band management IP configuration override for node1 in an HA cluster
      * 
      */
     public Optional<GatewaytemplateOobIpConfigNode1> node1() {
         return Optional.ofNullable(this.node1);
     }
     /**
-     * @return enum: `dhcp`, `static`
+     * @return IP assignment mode for the out-of-band management interface
      * 
      */
     public Optional<String> type() {
@@ -100,6 +104,10 @@ public final class GatewaytemplateOobIpConfig {
     public Optional<Boolean> useMgmtVrfForHostOut() {
         return Optional.ofNullable(this.useMgmtVrfForHostOut);
     }
+    /**
+     * @return VLAN ID used for out-of-band management traffic
+     * 
+     */
     public Optional<String> vlanId() {
         return Optional.ofNullable(this.vlanId);
     }

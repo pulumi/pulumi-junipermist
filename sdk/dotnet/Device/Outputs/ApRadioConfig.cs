@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class ApRadioConfig
     {
+        /// <summary>
+        /// Whether RRM can be disabled for individual radio-band settings
+        /// </summary>
         public readonly bool? AllowRrmDisable;
         /// <summary>
         /// Antenna gain for 2.4G - for models with external antenna only
@@ -27,31 +30,31 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly int? AntGain6;
         /// <summary>
-        /// enum: `1x1`, `2x2`, `3x3`, `4x4`, `Default`
+        /// Selected radio chain mode for AP models that support antenna mode control
         /// </summary>
         public readonly string? AntennaMode;
         /// <summary>
-        /// Antenna Mode for AP which supports selectable antennas. enum: `""` (default), `External`, `Internal`
+        /// Internal or external antenna selection for AP models with selectable antennas
         /// </summary>
         public readonly string? AntennaSelect;
         /// <summary>
-        /// Radio Band AP settings
+        /// 2.4 GHz radio settings for this access point
         /// </summary>
         public readonly Outputs.ApRadioConfigBand24? Band24;
         /// <summary>
-        /// enum: `24`, `5`, `6`, `Auto`
+        /// Radio usage mode for the 2.4 GHz-capable radio
         /// </summary>
         public readonly string? Band24Usage;
         /// <summary>
-        /// Radio Band AP settings
+        /// 5 GHz radio settings for this access point
         /// </summary>
         public readonly Outputs.ApRadioConfigBand5? Band5;
         /// <summary>
-        /// Radio Band AP settings
+        /// 5 GHz settings used when the 2.4 GHz radio operates in 5 GHz mode
         /// </summary>
         public readonly Outputs.ApRadioConfigBand5On24Radio? Band5On24Radio;
         /// <summary>
-        /// Radio Band AP settings
+        /// 6 GHz radio settings for this access point
         /// </summary>
         public readonly Outputs.ApRadioConfigBand6? Band6;
         /// <summary>

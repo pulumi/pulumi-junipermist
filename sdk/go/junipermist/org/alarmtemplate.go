@@ -84,10 +84,11 @@ import (
 type Alarmtemplate struct {
 	pulumi.CustomResourceState
 
-	// Delivery object to configure the alarm delivery
+	// Default alarm delivery settings for rules in this template
 	Delivery AlarmtemplateDeliveryOutput `pulumi:"delivery"`
 	// Some string to name the alarm template
-	Name  pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Organization that owns this alarm template
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// Alarm Rules object to configure the individual alarm keys/types. Property key is the alarm name (list available with the `getConstAlarms` data source).
 	Rules AlarmtemplateRulesMapOutput `pulumi:"rules"`
@@ -132,20 +133,22 @@ func GetAlarmtemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Alarmtemplate resources.
 type alarmtemplateState struct {
-	// Delivery object to configure the alarm delivery
+	// Default alarm delivery settings for rules in this template
 	Delivery *AlarmtemplateDelivery `pulumi:"delivery"`
 	// Some string to name the alarm template
-	Name  *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// Organization that owns this alarm template
 	OrgId *string `pulumi:"orgId"`
 	// Alarm Rules object to configure the individual alarm keys/types. Property key is the alarm name (list available with the `getConstAlarms` data source).
 	Rules map[string]AlarmtemplateRules `pulumi:"rules"`
 }
 
 type AlarmtemplateState struct {
-	// Delivery object to configure the alarm delivery
+	// Default alarm delivery settings for rules in this template
 	Delivery AlarmtemplateDeliveryPtrInput
 	// Some string to name the alarm template
-	Name  pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// Organization that owns this alarm template
 	OrgId pulumi.StringPtrInput
 	// Alarm Rules object to configure the individual alarm keys/types. Property key is the alarm name (list available with the `getConstAlarms` data source).
 	Rules AlarmtemplateRulesMapInput
@@ -156,21 +159,23 @@ func (AlarmtemplateState) ElementType() reflect.Type {
 }
 
 type alarmtemplateArgs struct {
-	// Delivery object to configure the alarm delivery
+	// Default alarm delivery settings for rules in this template
 	Delivery AlarmtemplateDelivery `pulumi:"delivery"`
 	// Some string to name the alarm template
-	Name  *string `pulumi:"name"`
-	OrgId string  `pulumi:"orgId"`
+	Name *string `pulumi:"name"`
+	// Organization that owns this alarm template
+	OrgId string `pulumi:"orgId"`
 	// Alarm Rules object to configure the individual alarm keys/types. Property key is the alarm name (list available with the `getConstAlarms` data source).
 	Rules map[string]AlarmtemplateRules `pulumi:"rules"`
 }
 
 // The set of arguments for constructing a Alarmtemplate resource.
 type AlarmtemplateArgs struct {
-	// Delivery object to configure the alarm delivery
+	// Default alarm delivery settings for rules in this template
 	Delivery AlarmtemplateDeliveryInput
 	// Some string to name the alarm template
-	Name  pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// Organization that owns this alarm template
 	OrgId pulumi.StringInput
 	// Alarm Rules object to configure the individual alarm keys/types. Property key is the alarm name (list available with the `getConstAlarms` data source).
 	Rules AlarmtemplateRulesMapInput
@@ -263,7 +268,7 @@ func (o AlarmtemplateOutput) ToAlarmtemplateOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Delivery object to configure the alarm delivery
+// Default alarm delivery settings for rules in this template
 func (o AlarmtemplateOutput) Delivery() AlarmtemplateDeliveryOutput {
 	return o.ApplyT(func(v *Alarmtemplate) AlarmtemplateDeliveryOutput { return v.Delivery }).(AlarmtemplateDeliveryOutput)
 }
@@ -273,6 +278,7 @@ func (o AlarmtemplateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Alarmtemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Organization that owns this alarm template
 func (o AlarmtemplateOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Alarmtemplate) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }

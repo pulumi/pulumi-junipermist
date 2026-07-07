@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class SwitchRemoteSyslogConsole
     {
+        /// <summary>
+        /// Syslog facilities and severities forwarded from console logs
+        /// </summary>
         public readonly ImmutableArray<Outputs.SwitchRemoteSyslogConsoleContent> Contents;
 
         [OutputConstructor]

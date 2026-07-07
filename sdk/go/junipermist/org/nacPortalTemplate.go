@@ -80,9 +80,10 @@ import (
 type NacPortalTemplate struct {
 	pulumi.CustomResourceState
 
-	// defines alignment on portal. enum: `center`, `left`, `right`
+	// Text and content alignment for the NAC portal page
 	Alignment pulumi.StringOutput `pulumi:"alignment"`
-	Color     pulumi.StringOutput `pulumi:"color"`
+	// Primary color used by the NAC portal template
+	Color pulumi.StringOutput `pulumi:"color"`
 	// path to the logo image file. File must be a `png` image less than 100kB and image dimension must be less 500px x 200px (width x height).
 	Logo pulumi.StringPtrOutput `pulumi:"logo"`
 	// Org NAC Portal ID
@@ -128,9 +129,10 @@ func GetNacPortalTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NacPortalTemplate resources.
 type nacPortalTemplateState struct {
-	// defines alignment on portal. enum: `center`, `left`, `right`
+	// Text and content alignment for the NAC portal page
 	Alignment *string `pulumi:"alignment"`
-	Color     *string `pulumi:"color"`
+	// Primary color used by the NAC portal template
+	Color *string `pulumi:"color"`
 	// path to the logo image file. File must be a `png` image less than 100kB and image dimension must be less 500px x 200px (width x height).
 	Logo *string `pulumi:"logo"`
 	// Org NAC Portal ID
@@ -141,9 +143,10 @@ type nacPortalTemplateState struct {
 }
 
 type NacPortalTemplateState struct {
-	// defines alignment on portal. enum: `center`, `left`, `right`
+	// Text and content alignment for the NAC portal page
 	Alignment pulumi.StringPtrInput
-	Color     pulumi.StringPtrInput
+	// Primary color used by the NAC portal template
+	Color pulumi.StringPtrInput
 	// path to the logo image file. File must be a `png` image less than 100kB and image dimension must be less 500px x 200px (width x height).
 	Logo pulumi.StringPtrInput
 	// Org NAC Portal ID
@@ -158,9 +161,10 @@ func (NacPortalTemplateState) ElementType() reflect.Type {
 }
 
 type nacPortalTemplateArgs struct {
-	// defines alignment on portal. enum: `center`, `left`, `right`
+	// Text and content alignment for the NAC portal page
 	Alignment *string `pulumi:"alignment"`
-	Color     *string `pulumi:"color"`
+	// Primary color used by the NAC portal template
+	Color *string `pulumi:"color"`
 	// path to the logo image file. File must be a `png` image less than 100kB and image dimension must be less 500px x 200px (width x height).
 	Logo *string `pulumi:"logo"`
 	// Org NAC Portal ID
@@ -172,9 +176,10 @@ type nacPortalTemplateArgs struct {
 
 // The set of arguments for constructing a NacPortalTemplate resource.
 type NacPortalTemplateArgs struct {
-	// defines alignment on portal. enum: `center`, `left`, `right`
+	// Text and content alignment for the NAC portal page
 	Alignment pulumi.StringPtrInput
-	Color     pulumi.StringPtrInput
+	// Primary color used by the NAC portal template
+	Color pulumi.StringPtrInput
 	// path to the logo image file. File must be a `png` image less than 100kB and image dimension must be less 500px x 200px (width x height).
 	Logo pulumi.StringPtrInput
 	// Org NAC Portal ID
@@ -271,11 +276,12 @@ func (o NacPortalTemplateOutput) ToNacPortalTemplateOutputWithContext(ctx contex
 	return o
 }
 
-// defines alignment on portal. enum: `center`, `left`, `right`
+// Text and content alignment for the NAC portal page
 func (o NacPortalTemplateOutput) Alignment() pulumi.StringOutput {
 	return o.ApplyT(func(v *NacPortalTemplate) pulumi.StringOutput { return v.Alignment }).(pulumi.StringOutput)
 }
 
+// Primary color used by the NAC portal template
 func (o NacPortalTemplateOutput) Color() pulumi.StringOutput {
 	return o.ApplyT(func(v *NacPortalTemplate) pulumi.StringOutput { return v.Color }).(pulumi.StringOutput)
 }

@@ -64,13 +64,15 @@ type Apitoken struct {
 
 	// email of the token creator / null if creator is deleted
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
-	Key       pulumi.StringOutput `pulumi:"key"`
-	// Name of the token
-	Name  pulumi.StringOutput `pulumi:"name"`
+	// Token secret key. The full API Token is only returned when the API token is created and can only be partially retrieved afterward
+	Key pulumi.StringOutput `pulumi:"key"`
+	// Display name of the organization API token
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Organization that owns this API token
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
-	// List of privileges the token has on the orgs/sites
+	// Access scopes and roles granted to the organization API token
 	Privileges ApitokenPrivilegeArrayOutput `pulumi:"privileges"`
-	// List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+	// Allowed source IP addresses or CIDRs from which the token may be used
 	SrcIps pulumi.StringArrayOutput `pulumi:"srcIps"`
 }
 
@@ -116,26 +118,30 @@ func GetApitoken(ctx *pulumi.Context,
 type apitokenState struct {
 	// email of the token creator / null if creator is deleted
 	CreatedBy *string `pulumi:"createdBy"`
-	Key       *string `pulumi:"key"`
-	// Name of the token
-	Name  *string `pulumi:"name"`
+	// Token secret key. The full API Token is only returned when the API token is created and can only be partially retrieved afterward
+	Key *string `pulumi:"key"`
+	// Display name of the organization API token
+	Name *string `pulumi:"name"`
+	// Organization that owns this API token
 	OrgId *string `pulumi:"orgId"`
-	// List of privileges the token has on the orgs/sites
+	// Access scopes and roles granted to the organization API token
 	Privileges []ApitokenPrivilege `pulumi:"privileges"`
-	// List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+	// Allowed source IP addresses or CIDRs from which the token may be used
 	SrcIps []string `pulumi:"srcIps"`
 }
 
 type ApitokenState struct {
 	// email of the token creator / null if creator is deleted
 	CreatedBy pulumi.StringPtrInput
-	Key       pulumi.StringPtrInput
-	// Name of the token
-	Name  pulumi.StringPtrInput
+	// Token secret key. The full API Token is only returned when the API token is created and can only be partially retrieved afterward
+	Key pulumi.StringPtrInput
+	// Display name of the organization API token
+	Name pulumi.StringPtrInput
+	// Organization that owns this API token
 	OrgId pulumi.StringPtrInput
-	// List of privileges the token has on the orgs/sites
+	// Access scopes and roles granted to the organization API token
 	Privileges ApitokenPrivilegeArrayInput
-	// List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+	// Allowed source IP addresses or CIDRs from which the token may be used
 	SrcIps pulumi.StringArrayInput
 }
 
@@ -144,23 +150,25 @@ func (ApitokenState) ElementType() reflect.Type {
 }
 
 type apitokenArgs struct {
-	// Name of the token
-	Name  *string `pulumi:"name"`
-	OrgId string  `pulumi:"orgId"`
-	// List of privileges the token has on the orgs/sites
+	// Display name of the organization API token
+	Name *string `pulumi:"name"`
+	// Organization that owns this API token
+	OrgId string `pulumi:"orgId"`
+	// Access scopes and roles granted to the organization API token
 	Privileges []ApitokenPrivilege `pulumi:"privileges"`
-	// List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+	// Allowed source IP addresses or CIDRs from which the token may be used
 	SrcIps []string `pulumi:"srcIps"`
 }
 
 // The set of arguments for constructing a Apitoken resource.
 type ApitokenArgs struct {
-	// Name of the token
-	Name  pulumi.StringPtrInput
+	// Display name of the organization API token
+	Name pulumi.StringPtrInput
+	// Organization that owns this API token
 	OrgId pulumi.StringInput
-	// List of privileges the token has on the orgs/sites
+	// Access scopes and roles granted to the organization API token
 	Privileges ApitokenPrivilegeArrayInput
-	// List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+	// Allowed source IP addresses or CIDRs from which the token may be used
 	SrcIps pulumi.StringArrayInput
 }
 
@@ -256,25 +264,27 @@ func (o ApitokenOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Apitoken) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
 }
 
+// Token secret key. The full API Token is only returned when the API token is created and can only be partially retrieved afterward
 func (o ApitokenOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v *Apitoken) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
 }
 
-// Name of the token
+// Display name of the organization API token
 func (o ApitokenOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Apitoken) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Organization that owns this API token
 func (o ApitokenOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Apitoken) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// List of privileges the token has on the orgs/sites
+// Access scopes and roles granted to the organization API token
 func (o ApitokenOutput) Privileges() ApitokenPrivilegeArrayOutput {
 	return o.ApplyT(func(v *Apitoken) ApitokenPrivilegeArrayOutput { return v.Privileges }).(ApitokenPrivilegeArrayOutput)
 }
 
-// List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+// Allowed source IP addresses or CIDRs from which the token may be used
 func (o ApitokenOutput) SrcIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Apitoken) pulumi.StringArrayOutput { return v.SrcIps }).(pulumi.StringArrayOutput)
 }

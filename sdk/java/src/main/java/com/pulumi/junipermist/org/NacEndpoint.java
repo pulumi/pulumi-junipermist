@@ -76,35 +76,59 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="junipermist:org/nacEndpoint:NacEndpoint")
 public class NacEndpoint extends com.pulumi.resources.CustomResource {
+    /**
+     * Applied labels for this user MAC entry
+     * 
+     */
     @Export(name="labels", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> labels;
 
+    /**
+     * @return Applied labels for this user MAC entry
+     * 
+     */
     public Output<List<String>> labels() {
         return this.labels;
     }
     /**
-     * Only non-local-admin MAC is accepted
+     * Client MAC address for this entry. Only non-local-admin MAC addresses are accepted
      * 
      */
     @Export(name="mac", refs={String.class}, tree="[0]")
     private Output<String> mac;
 
     /**
-     * @return Only non-local-admin MAC is accepted
+     * @return Client MAC address for this entry. Only non-local-admin MAC addresses are accepted
      * 
      */
     public Output<String> mac() {
         return this.mac;
     }
+    /**
+     * Display name for this user MAC entry
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Display name for this user MAC entry
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Free-form notes about this user MAC entry
+     * 
+     */
     @Export(name="notes", refs={String.class}, tree="[0]")
     private Output<String> notes;
 
+    /**
+     * @return Free-form notes about this user MAC entry
+     * 
+     */
     public Output<String> notes() {
         return this.notes;
     }
@@ -114,15 +138,31 @@ public class NacEndpoint extends com.pulumi.resources.CustomResource {
     public Output<String> orgId() {
         return this.orgId;
     }
+    /**
+     * RADIUS group associated with this user MAC entry
+     * 
+     */
     @Export(name="radiusGroup", refs={String.class}, tree="[0]")
     private Output<String> radiusGroup;
 
+    /**
+     * @return RADIUS group associated with this user MAC entry
+     * 
+     */
     public Output<String> radiusGroup() {
         return this.radiusGroup;
     }
+    /**
+     * Network VLAN value associated with this user MAC entry
+     * 
+     */
     @Export(name="vlan", refs={String.class}, tree="[0]")
     private Output<String> vlan;
 
+    /**
+     * @return Network VLAN value associated with this user MAC entry
+     * 
+     */
     public Output<String> vlan() {
         return this.vlan;
     }

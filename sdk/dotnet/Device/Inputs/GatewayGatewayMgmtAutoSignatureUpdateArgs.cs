@@ -13,11 +13,14 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class GatewayGatewayMgmtAutoSignatureUpdateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `Any`, `Fri`, `Mon`, `Sat`, `Sun`, `Thu`, `Tue`, `Wed`
+        /// Scheduled weekday for automatic signature updates
         /// </summary>
         [Input("dayOfWeek")]
         public Input<string>? DayOfWeek { get; set; }
 
+        /// <summary>
+        /// Whether automatic security signature updates are enabled
+        /// </summary>
         [Input("enable")]
         public Input<bool>? Enable { get; set; }
 

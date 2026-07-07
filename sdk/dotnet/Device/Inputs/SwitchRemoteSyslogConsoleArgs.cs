@@ -14,6 +14,10 @@ namespace Pulumi.JuniperMist.Device.Inputs
     {
         [Input("contents")]
         private InputList<Inputs.SwitchRemoteSyslogConsoleContentArgs>? _contents;
+
+        /// <summary>
+        /// Syslog facilities and severities forwarded from console logs
+        /// </summary>
         public InputList<Inputs.SwitchRemoteSyslogConsoleContentArgs> Contents
         {
             get => _contents ?? (_contents = new InputList<Inputs.SwitchRemoteSyslogConsoleContentArgs>());

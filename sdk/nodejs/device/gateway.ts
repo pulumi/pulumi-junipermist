@@ -76,45 +76,60 @@ export class Gateway extends pulumi.CustomResource {
     }
 
     /**
-     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
+     * Additional CLI configuration commands to apply to this gateway
      */
     declare public readonly additionalConfigCmds: pulumi.Output<string[] | undefined>;
+    /**
+     * BGP routing configuration for this gateway. Property key is the BGP session name
+     */
     declare public readonly bgpConfig: pulumi.Output<{[key: string]: outputs.device.GatewayBgpConfig} | undefined>;
     declare public readonly deviceId: pulumi.Output<string>;
+    /**
+     * DHCP server configuration served by this gateway
+     */
     declare public readonly dhcpdConfig: pulumi.Output<outputs.device.GatewayDhcpdConfig | undefined>;
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS servers configured for this gateway
      */
     declare public readonly dnsServers: pulumi.Output<string[] | undefined>;
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS search suffixes configured for this gateway
      */
     declare public readonly dnsSuffixes: pulumi.Output<string[] | undefined>;
     /**
-     * Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
+     * Additional IPv4 routes configured on this gateway
      */
     declare public readonly extraRoutes: pulumi.Output<{[key: string]: outputs.device.GatewayExtraRoutes} | undefined>;
     /**
-     * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+     * Additional IPv6 routes configured on this gateway
      */
     declare public readonly extraRoutes6: pulumi.Output<{[key: string]: outputs.device.GatewayExtraRoutes6} | undefined>;
     /**
-     * Gateway Management settings
+     * Management-plane settings for this gateway
      */
     declare public readonly gatewayMgmt: pulumi.Output<outputs.device.GatewayGatewayMgmt | undefined>;
     /**
-     * Property key is the profile name
+     * Intrusion detection and prevention profiles configured for this gateway
      */
     declare public readonly idpProfiles: pulumi.Output<{[key: string]: outputs.device.GatewayIdpProfiles} | undefined>;
+    /**
+     * First custom image URL associated with the gateway
+     */
     declare public /*out*/ readonly image1Url: pulumi.Output<string>;
+    /**
+     * Second custom image URL associated with the gateway
+     */
     declare public /*out*/ readonly image2Url: pulumi.Output<string>;
+    /**
+     * Third custom image URL associated with the gateway
+     */
     declare public /*out*/ readonly image3Url: pulumi.Output<string>;
     /**
-     * Property key is the network name
+     * Gateway interface IP configurations by network name
      */
     declare public readonly ipConfigs: pulumi.Output<{[key: string]: outputs.device.GatewayIpConfigs} | undefined>;
     /**
-     * Device MAC address
+     * Gateway MAC address used to identify the device
      */
     declare public /*out*/ readonly mac: pulumi.Output<string>;
     /**
@@ -132,18 +147,36 @@ export class Gateway extends pulumi.CustomResource {
      */
     declare public readonly mistConfigured: pulumi.Output<boolean>;
     /**
-     * Device Model
+     * Gateway model reported for the device
      */
     declare public /*out*/ readonly model: pulumi.Output<string>;
+    /**
+     * MSP that manages this gateway, when applicable
+     */
     declare public readonly mspId: pulumi.Output<string | undefined>;
+    /**
+     * Friendly display name assigned to the gateway
+     */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Layer 3 networks configured for use by this gateway
+     */
     declare public readonly networks: pulumi.Output<outputs.device.GatewayNetwork[] | undefined>;
+    /**
+     * Free-form administrative notes for this gateway
+     */
     declare public readonly notes: pulumi.Output<string | undefined>;
+    /**
+     * NTP servers used by this gateway
+     */
     declare public readonly ntpServers: pulumi.Output<string[] | undefined>;
     /**
-     * Out-of-band (vme/em0/fxp0) IP config
+     * Out-of-band management IP configuration for this gateway
      */
     declare public readonly oobIpConfig: pulumi.Output<outputs.device.GatewayOobIpConfig>;
+    /**
+     * Organization that owns this gateway
+     */
     declare public /*out*/ readonly orgId: pulumi.Output<string>;
     /**
      * Property key is the path name
@@ -153,20 +186,29 @@ export class Gateway extends pulumi.CustomResource {
      * Property key is the port name or range (e.g. "ge-0/0/0-10")
      */
     declare public readonly portConfig: pulumi.Output<{[key: string]: outputs.device.GatewayPortConfig} | undefined>;
+    /**
+     * Port mirroring configuration for this gateway
+     */
     declare public readonly portMirroring: pulumi.Output<outputs.device.GatewayPortMirroring | undefined>;
     /**
      * Auto assigned if not set
      */
     declare public readonly routerId: pulumi.Output<string | undefined>;
     /**
-     * Property key is the routing policy name
+     * Routing policies applied by this gateway
      */
     declare public readonly routingPolicies: pulumi.Output<{[key: string]: outputs.device.GatewayRoutingPolicies} | undefined>;
     /**
-     * Device Serial
+     * Manufacturer serial number for the gateway
      */
     declare public /*out*/ readonly serial: pulumi.Output<string>;
+    /**
+     * Traffic service policies enforced by this gateway
+     */
     declare public readonly servicePolicies: pulumi.Output<outputs.device.GatewayServicePolicy[] | undefined>;
+    /**
+     * Site where this gateway is assigned
+     */
     declare public readonly siteId: pulumi.Output<string>;
     /**
      * additional CLI commands to append to the generated SSR config. **Note**: no check is done
@@ -176,9 +218,12 @@ export class Gateway extends pulumi.CustomResource {
      * Property key is the tunnel name
      */
     declare public readonly tunnelConfigs: pulumi.Output<{[key: string]: outputs.device.GatewayTunnelConfigs} | undefined>;
+    /**
+     * Provider-specific options for tunnels terminated by this gateway
+     */
     declare public readonly tunnelProviderOptions: pulumi.Output<outputs.device.GatewayTunnelProviderOptions | undefined>;
     /**
-     * Device Type. enum: `gateway`
+     * Device type discriminator for gateway records
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
@@ -186,20 +231,23 @@ export class Gateway extends pulumi.CustomResource {
      */
     declare public readonly urlFilteringDenyMsg: pulumi.Output<string | undefined>;
     /**
-     * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Variable values that override site variables for this gateway
      */
     declare public readonly vars: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * VRF configuration applied to this gateway
+     */
     declare public readonly vrfConfig: pulumi.Output<outputs.device.GatewayVrfConfig | undefined>;
     /**
-     * Property key is the network name
+     * VRF instances configured on this gateway
      */
     declare public readonly vrfInstances: pulumi.Output<{[key: string]: outputs.device.GatewayVrfInstances} | undefined>;
     /**
-     * X in pixel
+     * Horizontal map position of the gateway, in pixels
      */
     declare public readonly x: pulumi.Output<number | undefined>;
     /**
-     * Y in pixel
+     * Vertical map position of the gateway, in pixels
      */
     declare public readonly y: pulumi.Output<number | undefined>;
 
@@ -323,45 +371,60 @@ export class Gateway extends pulumi.CustomResource {
  */
 export interface GatewayState {
     /**
-     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
+     * Additional CLI configuration commands to apply to this gateway
      */
     additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * BGP routing configuration for this gateway. Property key is the BGP session name
+     */
     bgpConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayBgpConfig>} | undefined>;
     deviceId?: pulumi.Input<string | undefined>;
+    /**
+     * DHCP server configuration served by this gateway
+     */
     dhcpdConfig?: pulumi.Input<inputs.device.GatewayDhcpdConfig | undefined>;
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS servers configured for this gateway
      */
     dnsServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS search suffixes configured for this gateway
      */
     dnsSuffixes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
+     * Additional IPv4 routes configured on this gateway
      */
     extraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayExtraRoutes>} | undefined>;
     /**
-     * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+     * Additional IPv6 routes configured on this gateway
      */
     extraRoutes6?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayExtraRoutes6>} | undefined>;
     /**
-     * Gateway Management settings
+     * Management-plane settings for this gateway
      */
     gatewayMgmt?: pulumi.Input<inputs.device.GatewayGatewayMgmt | undefined>;
     /**
-     * Property key is the profile name
+     * Intrusion detection and prevention profiles configured for this gateway
      */
     idpProfiles?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayIdpProfiles>} | undefined>;
+    /**
+     * First custom image URL associated with the gateway
+     */
     image1Url?: pulumi.Input<string | undefined>;
+    /**
+     * Second custom image URL associated with the gateway
+     */
     image2Url?: pulumi.Input<string | undefined>;
+    /**
+     * Third custom image URL associated with the gateway
+     */
     image3Url?: pulumi.Input<string | undefined>;
     /**
-     * Property key is the network name
+     * Gateway interface IP configurations by network name
      */
     ipConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayIpConfigs>} | undefined>;
     /**
-     * Device MAC address
+     * Gateway MAC address used to identify the device
      */
     mac?: pulumi.Input<string | undefined>;
     /**
@@ -379,18 +442,36 @@ export interface GatewayState {
      */
     mistConfigured?: pulumi.Input<boolean | undefined>;
     /**
-     * Device Model
+     * Gateway model reported for the device
      */
     model?: pulumi.Input<string | undefined>;
+    /**
+     * MSP that manages this gateway, when applicable
+     */
     mspId?: pulumi.Input<string | undefined>;
+    /**
+     * Friendly display name assigned to the gateway
+     */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Layer 3 networks configured for use by this gateway
+     */
     networks?: pulumi.Input<pulumi.Input<inputs.device.GatewayNetwork>[] | undefined>;
+    /**
+     * Free-form administrative notes for this gateway
+     */
     notes?: pulumi.Input<string | undefined>;
+    /**
+     * NTP servers used by this gateway
+     */
     ntpServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Out-of-band (vme/em0/fxp0) IP config
+     * Out-of-band management IP configuration for this gateway
      */
     oobIpConfig?: pulumi.Input<inputs.device.GatewayOobIpConfig | undefined>;
+    /**
+     * Organization that owns this gateway
+     */
     orgId?: pulumi.Input<string | undefined>;
     /**
      * Property key is the path name
@@ -400,20 +481,29 @@ export interface GatewayState {
      * Property key is the port name or range (e.g. "ge-0/0/0-10")
      */
     portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayPortConfig>} | undefined>;
+    /**
+     * Port mirroring configuration for this gateway
+     */
     portMirroring?: pulumi.Input<inputs.device.GatewayPortMirroring | undefined>;
     /**
      * Auto assigned if not set
      */
     routerId?: pulumi.Input<string | undefined>;
     /**
-     * Property key is the routing policy name
+     * Routing policies applied by this gateway
      */
     routingPolicies?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayRoutingPolicies>} | undefined>;
     /**
-     * Device Serial
+     * Manufacturer serial number for the gateway
      */
     serial?: pulumi.Input<string | undefined>;
+    /**
+     * Traffic service policies enforced by this gateway
+     */
     servicePolicies?: pulumi.Input<pulumi.Input<inputs.device.GatewayServicePolicy>[] | undefined>;
+    /**
+     * Site where this gateway is assigned
+     */
     siteId?: pulumi.Input<string | undefined>;
     /**
      * additional CLI commands to append to the generated SSR config. **Note**: no check is done
@@ -423,9 +513,12 @@ export interface GatewayState {
      * Property key is the tunnel name
      */
     tunnelConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayTunnelConfigs>} | undefined>;
+    /**
+     * Provider-specific options for tunnels terminated by this gateway
+     */
     tunnelProviderOptions?: pulumi.Input<inputs.device.GatewayTunnelProviderOptions | undefined>;
     /**
-     * Device Type. enum: `gateway`
+     * Device type discriminator for gateway records
      */
     type?: pulumi.Input<string | undefined>;
     /**
@@ -433,20 +526,23 @@ export interface GatewayState {
      */
     urlFilteringDenyMsg?: pulumi.Input<string | undefined>;
     /**
-     * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Variable values that override site variables for this gateway
      */
     vars?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * VRF configuration applied to this gateway
+     */
     vrfConfig?: pulumi.Input<inputs.device.GatewayVrfConfig | undefined>;
     /**
-     * Property key is the network name
+     * VRF instances configured on this gateway
      */
     vrfInstances?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayVrfInstances>} | undefined>;
     /**
-     * X in pixel
+     * Horizontal map position of the gateway, in pixels
      */
     x?: pulumi.Input<number | undefined>;
     /**
-     * Y in pixel
+     * Vertical map position of the gateway, in pixels
      */
     y?: pulumi.Input<number | undefined>;
 }
@@ -456,38 +552,44 @@ export interface GatewayState {
  */
 export interface GatewayArgs {
     /**
-     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
+     * Additional CLI configuration commands to apply to this gateway
      */
     additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * BGP routing configuration for this gateway. Property key is the BGP session name
+     */
     bgpConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayBgpConfig>} | undefined>;
     deviceId: pulumi.Input<string>;
+    /**
+     * DHCP server configuration served by this gateway
+     */
     dhcpdConfig?: pulumi.Input<inputs.device.GatewayDhcpdConfig | undefined>;
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS servers configured for this gateway
      */
     dnsServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS search suffixes configured for this gateway
      */
     dnsSuffixes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
+     * Additional IPv4 routes configured on this gateway
      */
     extraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayExtraRoutes>} | undefined>;
     /**
-     * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+     * Additional IPv6 routes configured on this gateway
      */
     extraRoutes6?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayExtraRoutes6>} | undefined>;
     /**
-     * Gateway Management settings
+     * Management-plane settings for this gateway
      */
     gatewayMgmt?: pulumi.Input<inputs.device.GatewayGatewayMgmt | undefined>;
     /**
-     * Property key is the profile name
+     * Intrusion detection and prevention profiles configured for this gateway
      */
     idpProfiles?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayIdpProfiles>} | undefined>;
     /**
-     * Property key is the network name
+     * Gateway interface IP configurations by network name
      */
     ipConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayIpConfigs>} | undefined>;
     /**
@@ -504,13 +606,28 @@ export interface GatewayArgs {
      * whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
      */
     mistConfigured?: pulumi.Input<boolean | undefined>;
+    /**
+     * MSP that manages this gateway, when applicable
+     */
     mspId?: pulumi.Input<string | undefined>;
+    /**
+     * Friendly display name assigned to the gateway
+     */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Layer 3 networks configured for use by this gateway
+     */
     networks?: pulumi.Input<pulumi.Input<inputs.device.GatewayNetwork>[] | undefined>;
+    /**
+     * Free-form administrative notes for this gateway
+     */
     notes?: pulumi.Input<string | undefined>;
+    /**
+     * NTP servers used by this gateway
+     */
     ntpServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Out-of-band (vme/em0/fxp0) IP config
+     * Out-of-band management IP configuration for this gateway
      */
     oobIpConfig?: pulumi.Input<inputs.device.GatewayOobIpConfig | undefined>;
     /**
@@ -521,16 +638,25 @@ export interface GatewayArgs {
      * Property key is the port name or range (e.g. "ge-0/0/0-10")
      */
     portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayPortConfig>} | undefined>;
+    /**
+     * Port mirroring configuration for this gateway
+     */
     portMirroring?: pulumi.Input<inputs.device.GatewayPortMirroring | undefined>;
     /**
      * Auto assigned if not set
      */
     routerId?: pulumi.Input<string | undefined>;
     /**
-     * Property key is the routing policy name
+     * Routing policies applied by this gateway
      */
     routingPolicies?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayRoutingPolicies>} | undefined>;
+    /**
+     * Traffic service policies enforced by this gateway
+     */
     servicePolicies?: pulumi.Input<pulumi.Input<inputs.device.GatewayServicePolicy>[] | undefined>;
+    /**
+     * Site where this gateway is assigned
+     */
     siteId: pulumi.Input<string>;
     /**
      * additional CLI commands to append to the generated SSR config. **Note**: no check is done
@@ -540,26 +666,32 @@ export interface GatewayArgs {
      * Property key is the tunnel name
      */
     tunnelConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayTunnelConfigs>} | undefined>;
+    /**
+     * Provider-specific options for tunnels terminated by this gateway
+     */
     tunnelProviderOptions?: pulumi.Input<inputs.device.GatewayTunnelProviderOptions | undefined>;
     /**
      * When a service policy denies a app_category, what message to show in user's browser
      */
     urlFilteringDenyMsg?: pulumi.Input<string | undefined>;
     /**
-     * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Variable values that override site variables for this gateway
      */
     vars?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * VRF configuration applied to this gateway
+     */
     vrfConfig?: pulumi.Input<inputs.device.GatewayVrfConfig | undefined>;
     /**
-     * Property key is the network name
+     * VRF instances configured on this gateway
      */
     vrfInstances?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayVrfInstances>} | undefined>;
     /**
-     * X in pixel
+     * Horizontal map position of the gateway, in pixels
      */
     x?: pulumi.Input<number | undefined>;
     /**
-     * Y in pixel
+     * Vertical map position of the gateway, in pixels
      */
     y?: pulumi.Input<number | undefined>;
 }

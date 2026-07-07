@@ -17,9 +17,21 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// Whether to disable Event-Timestamp Check
         /// </summary>
         public readonly bool? DisableEventTimestampCheck;
+        /// <summary>
+        /// Whether this RADIUS CoA server is enabled
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// Server IPv4 address for RADIUS CoA messages
+        /// </summary>
         public readonly string Ip;
+        /// <summary>
+        /// UDP port used to send RADIUS CoA messages to the server
+        /// </summary>
         public readonly string? Port;
+        /// <summary>
+        /// Shared secret used to authenticate RADIUS CoA messages
+        /// </summary>
         public readonly string Secret;
 
         [OutputConstructor]

@@ -13,11 +13,14 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupContentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Refer to GroupName under access
+        /// VACM group name referenced by this mapping
         /// </summary>
         [Input("group")]
         public Input<string>? Group { get; set; }
 
+        /// <summary>
+        /// Name of the SNMP security principal mapped to a VACM group
+        /// </summary>
         [Input("securityName")]
         public Input<string>? SecurityName { get; set; }
 

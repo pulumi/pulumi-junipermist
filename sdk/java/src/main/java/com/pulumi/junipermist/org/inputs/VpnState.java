@@ -18,29 +18,45 @@ public final class VpnState extends com.pulumi.resources.ResourceArgs {
 
     public static final VpnState Empty = new VpnState();
 
+    /**
+     * Display name of the VPN configuration
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Display name of the VPN configuration
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Organization that owns the VPN configuration
+     * 
+     */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
+    /**
+     * @return Organization that owns the VPN configuration
+     * 
+     */
     public Optional<Output<String>> orgId() {
         return Optional.ofNullable(this.orgId);
     }
 
     /**
-     * Only if `type`==`hubSpoke`
+     * Path selection settings used when `type`==`hubSpoke`
      * 
      */
     @Import(name="pathSelection")
     private @Nullable Output<VpnPathSelectionArgs> pathSelection;
 
     /**
-     * @return Only if `type`==`hubSpoke`
+     * @return Path selection settings used when `type`==`hubSpoke`
      * 
      */
     public Optional<Output<VpnPathSelectionArgs>> pathSelection() {
@@ -48,14 +64,14 @@ public final class VpnState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * For `type`==`hubSpoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+     * VPN path definitions keyed by VPN name for `hubSpoke` mode or interface name for `mesh` mode
      * 
      */
     @Import(name="paths")
     private @Nullable Output<Map<String,VpnPathsArgs>> paths;
 
     /**
-     * @return For `type`==`hubSpoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+     * @return VPN path definitions keyed by VPN name for `hubSpoke` mode or interface name for `mesh` mode
      * 
      */
     public Optional<Output<Map<String,VpnPathsArgs>>> paths() {
@@ -63,14 +79,14 @@ public final class VpnState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * enum: `hubSpoke`, `mesh`
+     * VPN topology mode for this configuration
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return enum: `hubSpoke`, `mesh`
+     * @return VPN topology mode for this configuration
      * 
      */
     public Optional<Output<String>> type() {
@@ -105,26 +121,50 @@ public final class VpnState extends com.pulumi.resources.ResourceArgs {
             $ = new VpnState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name Display name of the VPN configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Display name of the VPN configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param orgId Organization that owns the VPN configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(@Nullable Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param orgId Organization that owns the VPN configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }
 
         /**
-         * @param pathSelection Only if `type`==`hubSpoke`
+         * @param pathSelection Path selection settings used when `type`==`hubSpoke`
          * 
          * @return builder
          * 
@@ -135,7 +175,7 @@ public final class VpnState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pathSelection Only if `type`==`hubSpoke`
+         * @param pathSelection Path selection settings used when `type`==`hubSpoke`
          * 
          * @return builder
          * 
@@ -145,7 +185,7 @@ public final class VpnState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paths For `type`==`hubSpoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+         * @param paths VPN path definitions keyed by VPN name for `hubSpoke` mode or interface name for `mesh` mode
          * 
          * @return builder
          * 
@@ -156,7 +196,7 @@ public final class VpnState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paths For `type`==`hubSpoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+         * @param paths VPN path definitions keyed by VPN name for `hubSpoke` mode or interface name for `mesh` mode
          * 
          * @return builder
          * 
@@ -166,7 +206,7 @@ public final class VpnState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type enum: `hubSpoke`, `mesh`
+         * @param type VPN topology mode for this configuration
          * 
          * @return builder
          * 
@@ -177,7 +217,7 @@ public final class VpnState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type enum: `hubSpoke`, `mesh`
+         * @param type VPN topology mode for this configuration
          * 
          * @return builder
          * 

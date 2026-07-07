@@ -17,22 +17,30 @@ public final class DeviceprofileGatewayPathPreferencesArgs extends com.pulumi.re
 
     public static final DeviceprofileGatewayPathPreferencesArgs Empty = new DeviceprofileGatewayPathPreferencesArgs();
 
+    /**
+     * Candidate paths evaluated for this gateway path preference
+     * 
+     */
     @Import(name="paths")
     private @Nullable Output<List<DeviceprofileGatewayPathPreferencesPathArgs>> paths;
 
+    /**
+     * @return Candidate paths evaluated for this gateway path preference
+     * 
+     */
     public Optional<Output<List<DeviceprofileGatewayPathPreferencesPathArgs>>> paths() {
         return Optional.ofNullable(this.paths);
     }
 
     /**
-     * enum: `ecmp`, `ordered`, `weighted`
+     * Selection strategy used to evaluate the candidate paths
      * 
      */
     @Import(name="strategy")
     private @Nullable Output<String> strategy;
 
     /**
-     * @return enum: `ecmp`, `ordered`, `weighted`
+     * @return Selection strategy used to evaluate the candidate paths
      * 
      */
     public Optional<Output<String>> strategy() {
@@ -64,21 +72,39 @@ public final class DeviceprofileGatewayPathPreferencesArgs extends com.pulumi.re
             $ = new DeviceprofileGatewayPathPreferencesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param paths Candidate paths evaluated for this gateway path preference
+         * 
+         * @return builder
+         * 
+         */
         public Builder paths(@Nullable Output<List<DeviceprofileGatewayPathPreferencesPathArgs>> paths) {
             $.paths = paths;
             return this;
         }
 
+        /**
+         * @param paths Candidate paths evaluated for this gateway path preference
+         * 
+         * @return builder
+         * 
+         */
         public Builder paths(List<DeviceprofileGatewayPathPreferencesPathArgs> paths) {
             return paths(Output.of(paths));
         }
 
+        /**
+         * @param paths Candidate paths evaluated for this gateway path preference
+         * 
+         * @return builder
+         * 
+         */
         public Builder paths(DeviceprofileGatewayPathPreferencesPathArgs... paths) {
             return paths(List.of(paths));
         }
 
         /**
-         * @param strategy enum: `ecmp`, `ordered`, `weighted`
+         * @param strategy Selection strategy used to evaluate the candidate paths
          * 
          * @return builder
          * 
@@ -89,7 +115,7 @@ public final class DeviceprofileGatewayPathPreferencesArgs extends com.pulumi.re
         }
 
         /**
-         * @param strategy enum: `ecmp`, `ordered`, `weighted`
+         * @param strategy Selection strategy used to evaluate the candidate paths
          * 
          * @return builder
          * 

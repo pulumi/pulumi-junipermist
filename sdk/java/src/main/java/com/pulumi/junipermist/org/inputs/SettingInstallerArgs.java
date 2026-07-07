@@ -18,30 +18,62 @@ public final class SettingInstallerArgs extends com.pulumi.resources.ResourceArg
 
     public static final SettingInstallerArgs Empty = new SettingInstallerArgs();
 
+    /**
+     * Whether installers may work with all eligible devices
+     * 
+     */
     @Import(name="allowAllDevices")
     private @Nullable Output<Boolean> allowAllDevices;
 
+    /**
+     * @return Whether installers may work with all eligible devices
+     * 
+     */
     public Optional<Output<Boolean>> allowAllDevices() {
         return Optional.ofNullable(this.allowAllDevices);
     }
 
+    /**
+     * Whether installers may work with all sites
+     * 
+     */
     @Import(name="allowAllSites")
     private @Nullable Output<Boolean> allowAllSites;
 
+    /**
+     * @return Whether installers may work with all sites
+     * 
+     */
     public Optional<Output<Boolean>> allowAllSites() {
         return Optional.ofNullable(this.allowAllSites);
     }
 
+    /**
+     * Additional site IDs that installers may access
+     * 
+     */
     @Import(name="extraSiteIds")
     private @Nullable Output<List<String>> extraSiteIds;
 
+    /**
+     * @return Additional site IDs that installers may access
+     * 
+     */
     public Optional<Output<List<String>>> extraSiteIds() {
         return Optional.ofNullable(this.extraSiteIds);
     }
 
+    /**
+     * Grace period, in days, during which installers can modify recent sites or devices
+     * 
+     */
     @Import(name="gracePeriod")
     private @Nullable Output<Integer> gracePeriod;
 
+    /**
+     * @return Grace period, in days, during which installers can modify recent sites or devices
+     * 
+     */
     public Optional<Output<Integer>> gracePeriod() {
         return Optional.ofNullable(this.gracePeriod);
     }
@@ -73,42 +105,96 @@ public final class SettingInstallerArgs extends com.pulumi.resources.ResourceArg
             $ = new SettingInstallerArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param allowAllDevices Whether installers may work with all eligible devices
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowAllDevices(@Nullable Output<Boolean> allowAllDevices) {
             $.allowAllDevices = allowAllDevices;
             return this;
         }
 
+        /**
+         * @param allowAllDevices Whether installers may work with all eligible devices
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowAllDevices(Boolean allowAllDevices) {
             return allowAllDevices(Output.of(allowAllDevices));
         }
 
+        /**
+         * @param allowAllSites Whether installers may work with all sites
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowAllSites(@Nullable Output<Boolean> allowAllSites) {
             $.allowAllSites = allowAllSites;
             return this;
         }
 
+        /**
+         * @param allowAllSites Whether installers may work with all sites
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowAllSites(Boolean allowAllSites) {
             return allowAllSites(Output.of(allowAllSites));
         }
 
+        /**
+         * @param extraSiteIds Additional site IDs that installers may access
+         * 
+         * @return builder
+         * 
+         */
         public Builder extraSiteIds(@Nullable Output<List<String>> extraSiteIds) {
             $.extraSiteIds = extraSiteIds;
             return this;
         }
 
+        /**
+         * @param extraSiteIds Additional site IDs that installers may access
+         * 
+         * @return builder
+         * 
+         */
         public Builder extraSiteIds(List<String> extraSiteIds) {
             return extraSiteIds(Output.of(extraSiteIds));
         }
 
+        /**
+         * @param extraSiteIds Additional site IDs that installers may access
+         * 
+         * @return builder
+         * 
+         */
         public Builder extraSiteIds(String... extraSiteIds) {
             return extraSiteIds(List.of(extraSiteIds));
         }
 
+        /**
+         * @param gracePeriod Grace period, in days, during which installers can modify recent sites or devices
+         * 
+         * @return builder
+         * 
+         */
         public Builder gracePeriod(@Nullable Output<Integer> gracePeriod) {
             $.gracePeriod = gracePeriod;
             return this;
         }
 
+        /**
+         * @param gracePeriod Grace period, in days, during which installers can modify recent sites or devices
+         * 
+         * @return builder
+         * 
+         */
         public Builder gracePeriod(Integer gracePeriod) {
             return gracePeriod(Output.of(gracePeriod));
         }

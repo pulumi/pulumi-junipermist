@@ -28,9 +28,15 @@ namespace Pulumi.JuniperMist.Org.Inputs
             }
         }
 
+        /// <summary>
+        /// Default VLAN ID used when dynamic PSK lookup does not return a VLAN
+        /// </summary>
         [Input("defaultVlanId")]
         public Input<string>? DefaultVlanId { get; set; }
 
+        /// <summary>
+        /// Whether dynamic PSK is enabled for this WLAN
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
@@ -41,7 +47,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? ForceLookup { get; set; }
 
         /// <summary>
-        /// enum: `CloudPsks`, `Radius`
+        /// Origin used to retrieve per-user PSKs
         /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }

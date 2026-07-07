@@ -14,9 +14,17 @@ public final class GatewayExtraRoutesArgs extends com.pulumi.resources.ResourceA
 
     public static final GatewayExtraRoutesArgs Empty = new GatewayExtraRoutesArgs();
 
+    /**
+     * Next-hop IPv4 address for the gateway extra route
+     * 
+     */
     @Import(name="via", required=true)
     private Output<String> via;
 
+    /**
+     * @return Next-hop IPv4 address for the gateway extra route
+     * 
+     */
     public Output<String> via() {
         return this.via;
     }
@@ -45,11 +53,23 @@ public final class GatewayExtraRoutesArgs extends com.pulumi.resources.ResourceA
             $ = new GatewayExtraRoutesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param via Next-hop IPv4 address for the gateway extra route
+         * 
+         * @return builder
+         * 
+         */
         public Builder via(Output<String> via) {
             $.via = via;
             return this;
         }
 
+        /**
+         * @param via Next-hop IPv4 address for the gateway extra route
+         * 
+         * @return builder
+         * 
+         */
         public Builder via(String via) {
             return via(Output.of(via));
         }

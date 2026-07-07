@@ -13,8 +13,17 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class GatewayIdpProfilesOverwriteMatching
     {
+        /// <summary>
+        /// Signature names matched by the IDP profile overwrite
+        /// </summary>
         public readonly ImmutableArray<string> AttackNames;
+        /// <summary>
+        /// Destination subnets matched by the IDP profile overwrite
+        /// </summary>
         public readonly ImmutableArray<string> DstSubnets;
+        /// <summary>
+        /// Threat levels matched by the IDP profile overwrite
+        /// </summary>
         public readonly ImmutableArray<string> Severities;
 
         [OutputConstructor]

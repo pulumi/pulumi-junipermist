@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class WlanQosArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `Background`, `BestEffort`, `Video`, `Voice`
+        /// QoS traffic class applied when WLAN QoS override is enabled
         /// </summary>
         [Input("class")]
         public Input<string>? Class { get; set; }

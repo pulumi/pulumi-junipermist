@@ -17,9 +17,12 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// Optional description of the rule
         /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// Exact value that the selected source attribute must match
+        /// </summary>
         public readonly string? Equals;
         /// <summary>
-        /// Use `EqualsAny` to match any item in a list
+        /// List of values where any match satisfies this dynamic rule
         /// </summary>
         public readonly ImmutableArray<string> EqualsAnies;
         /// <summary>
@@ -29,11 +32,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Expression;
         /// <summary>
-        /// enum: `LinkPeermac`, `LldpChassisId`, `LldpHardwareRevision`, `LldpManufacturerName`, `LldpOui`, `LldpSerialNumber`, `LldpSystemDescription`, `LldpSystemName`, `RadiusDynamicfilter`, `RadiusUsermac`, `RadiusUsername`
+        /// Source attribute evaluated by this dynamic rule
         /// </summary>
         public readonly string Src;
         /// <summary>
-        /// `PortUsage` name
+        /// Port usage name to apply when this dynamic rule matches
         /// </summary>
         public readonly string? Usage;
 

@@ -17,16 +17,32 @@ public final class NetworktemplateSnmpConfigV3ConfigNotifyFilterArgs extends com
 
     public static final NetworktemplateSnmpConfigV3ConfigNotifyFilterArgs Empty = new NetworktemplateSnmpConfigV3ConfigNotifyFilterArgs();
 
+    /**
+     * OID filter rules in this notification filter profile
+     * 
+     */
     @Import(name="contents")
     private @Nullable Output<List<NetworktemplateSnmpConfigV3ConfigNotifyFilterContentArgs>> contents;
 
+    /**
+     * @return OID filter rules in this notification filter profile
+     * 
+     */
     public Optional<Output<List<NetworktemplateSnmpConfigV3ConfigNotifyFilterContentArgs>>> contents() {
         return Optional.ofNullable(this.contents);
     }
 
+    /**
+     * Notification filter profile name
+     * 
+     */
     @Import(name="profileName")
     private @Nullable Output<String> profileName;
 
+    /**
+     * @return Notification filter profile name
+     * 
+     */
     public Optional<Output<String>> profileName() {
         return Optional.ofNullable(this.profileName);
     }
@@ -56,24 +72,54 @@ public final class NetworktemplateSnmpConfigV3ConfigNotifyFilterArgs extends com
             $ = new NetworktemplateSnmpConfigV3ConfigNotifyFilterArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param contents OID filter rules in this notification filter profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder contents(@Nullable Output<List<NetworktemplateSnmpConfigV3ConfigNotifyFilterContentArgs>> contents) {
             $.contents = contents;
             return this;
         }
 
+        /**
+         * @param contents OID filter rules in this notification filter profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder contents(List<NetworktemplateSnmpConfigV3ConfigNotifyFilterContentArgs> contents) {
             return contents(Output.of(contents));
         }
 
+        /**
+         * @param contents OID filter rules in this notification filter profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder contents(NetworktemplateSnmpConfigV3ConfigNotifyFilterContentArgs... contents) {
             return contents(List.of(contents));
         }
 
+        /**
+         * @param profileName Notification filter profile name
+         * 
+         * @return builder
+         * 
+         */
         public Builder profileName(@Nullable Output<String> profileName) {
             $.profileName = profileName;
             return this;
         }
 
+        /**
+         * @param profileName Notification filter profile name
+         * 
+         * @return builder
+         * 
+         */
         public Builder profileName(String profileName) {
             return profileName(Output.of(profileName));
         }

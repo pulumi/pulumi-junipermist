@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _mxtunnelIds;
 
         /// <summary>
-        /// List of Mist Tunnels
+        /// Mist Tunnel IDs selected for management connectivity
         /// </summary>
         public InputList<string> MxtunnelIds
         {

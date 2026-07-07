@@ -98,13 +98,15 @@ import (
 type EvpnTopology struct {
 	pulumi.CustomResourceState
 
-	// EVPN Options
+	// Generation options applied to the EVPN topology
 	EvpnOptions EvpnTopologyEvpnOptionsPtrOutput `pulumi:"evpnOptions"`
-	Name        pulumi.StringOutput              `pulumi:"name"`
-	OrgId       pulumi.StringOutput              `pulumi:"orgId"`
+	// Display name for the EVPN topology
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Organization that owns the EVPN topology
+	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// Property key is the pod number
 	PodNames pulumi.StringMapOutput `pulumi:"podNames"`
-	// Property key can be the switch MAC Address
+	// Topology member switches, roles, and links
 	Switches EvpnTopologySwitchesMapOutput `pulumi:"switches"`
 }
 
@@ -144,24 +146,28 @@ func GetEvpnTopology(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EvpnTopology resources.
 type evpnTopologyState struct {
-	// EVPN Options
+	// Generation options applied to the EVPN topology
 	EvpnOptions *EvpnTopologyEvpnOptions `pulumi:"evpnOptions"`
-	Name        *string                  `pulumi:"name"`
-	OrgId       *string                  `pulumi:"orgId"`
+	// Display name for the EVPN topology
+	Name *string `pulumi:"name"`
+	// Organization that owns the EVPN topology
+	OrgId *string `pulumi:"orgId"`
 	// Property key is the pod number
 	PodNames map[string]string `pulumi:"podNames"`
-	// Property key can be the switch MAC Address
+	// Topology member switches, roles, and links
 	Switches map[string]EvpnTopologySwitches `pulumi:"switches"`
 }
 
 type EvpnTopologyState struct {
-	// EVPN Options
+	// Generation options applied to the EVPN topology
 	EvpnOptions EvpnTopologyEvpnOptionsPtrInput
-	Name        pulumi.StringPtrInput
-	OrgId       pulumi.StringPtrInput
+	// Display name for the EVPN topology
+	Name pulumi.StringPtrInput
+	// Organization that owns the EVPN topology
+	OrgId pulumi.StringPtrInput
 	// Property key is the pod number
 	PodNames pulumi.StringMapInput
-	// Property key can be the switch MAC Address
+	// Topology member switches, roles, and links
 	Switches EvpnTopologySwitchesMapInput
 }
 
@@ -170,25 +176,29 @@ func (EvpnTopologyState) ElementType() reflect.Type {
 }
 
 type evpnTopologyArgs struct {
-	// EVPN Options
+	// Generation options applied to the EVPN topology
 	EvpnOptions *EvpnTopologyEvpnOptions `pulumi:"evpnOptions"`
-	Name        *string                  `pulumi:"name"`
-	OrgId       string                   `pulumi:"orgId"`
+	// Display name for the EVPN topology
+	Name *string `pulumi:"name"`
+	// Organization that owns the EVPN topology
+	OrgId string `pulumi:"orgId"`
 	// Property key is the pod number
 	PodNames map[string]string `pulumi:"podNames"`
-	// Property key can be the switch MAC Address
+	// Topology member switches, roles, and links
 	Switches map[string]EvpnTopologySwitches `pulumi:"switches"`
 }
 
 // The set of arguments for constructing a EvpnTopology resource.
 type EvpnTopologyArgs struct {
-	// EVPN Options
+	// Generation options applied to the EVPN topology
 	EvpnOptions EvpnTopologyEvpnOptionsPtrInput
-	Name        pulumi.StringPtrInput
-	OrgId       pulumi.StringInput
+	// Display name for the EVPN topology
+	Name pulumi.StringPtrInput
+	// Organization that owns the EVPN topology
+	OrgId pulumi.StringInput
 	// Property key is the pod number
 	PodNames pulumi.StringMapInput
-	// Property key can be the switch MAC Address
+	// Topology member switches, roles, and links
 	Switches EvpnTopologySwitchesMapInput
 }
 
@@ -279,15 +289,17 @@ func (o EvpnTopologyOutput) ToEvpnTopologyOutputWithContext(ctx context.Context)
 	return o
 }
 
-// EVPN Options
+// Generation options applied to the EVPN topology
 func (o EvpnTopologyOutput) EvpnOptions() EvpnTopologyEvpnOptionsPtrOutput {
 	return o.ApplyT(func(v *EvpnTopology) EvpnTopologyEvpnOptionsPtrOutput { return v.EvpnOptions }).(EvpnTopologyEvpnOptionsPtrOutput)
 }
 
+// Display name for the EVPN topology
 func (o EvpnTopologyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *EvpnTopology) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Organization that owns the EVPN topology
 func (o EvpnTopologyOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EvpnTopology) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
@@ -297,7 +309,7 @@ func (o EvpnTopologyOutput) PodNames() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EvpnTopology) pulumi.StringMapOutput { return v.PodNames }).(pulumi.StringMapOutput)
 }
 
-// Property key can be the switch MAC Address
+// Topology member switches, roles, and links
 func (o EvpnTopologyOutput) Switches() EvpnTopologySwitchesMapOutput {
 	return o.ApplyT(func(v *EvpnTopology) EvpnTopologySwitchesMapOutput { return v.Switches }).(EvpnTopologySwitchesMapOutput)
 }

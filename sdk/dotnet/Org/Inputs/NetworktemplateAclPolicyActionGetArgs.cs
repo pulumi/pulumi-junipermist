@@ -13,11 +13,14 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class NetworktemplateAclPolicyActionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `Allow`, `Deny`
+        /// Allow or deny decision applied to traffic matching the destination tag
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
 
+        /// <summary>
+        /// Destination ACL tag matched by this policy action
+        /// </summary>
         [Input("dstTag", required: true)]
         public Input<string> DstTag { get; set; } = null!;
 

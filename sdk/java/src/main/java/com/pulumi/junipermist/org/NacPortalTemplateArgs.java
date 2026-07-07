@@ -18,23 +18,31 @@ public final class NacPortalTemplateArgs extends com.pulumi.resources.ResourceAr
     public static final NacPortalTemplateArgs Empty = new NacPortalTemplateArgs();
 
     /**
-     * defines alignment on portal. enum: `center`, `left`, `right`
+     * Text and content alignment for the NAC portal page
      * 
      */
     @Import(name="alignment")
     private @Nullable Output<String> alignment;
 
     /**
-     * @return defines alignment on portal. enum: `center`, `left`, `right`
+     * @return Text and content alignment for the NAC portal page
      * 
      */
     public Optional<Output<String>> alignment() {
         return Optional.ofNullable(this.alignment);
     }
 
+    /**
+     * Primary color used by the NAC portal template
+     * 
+     */
     @Import(name="color")
     private @Nullable Output<String> color;
 
+    /**
+     * @return Primary color used by the NAC portal template
+     * 
+     */
     public Optional<Output<String>> color() {
         return Optional.ofNullable(this.color);
     }
@@ -121,7 +129,7 @@ public final class NacPortalTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param alignment defines alignment on portal. enum: `center`, `left`, `right`
+         * @param alignment Text and content alignment for the NAC portal page
          * 
          * @return builder
          * 
@@ -132,7 +140,7 @@ public final class NacPortalTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param alignment defines alignment on portal. enum: `center`, `left`, `right`
+         * @param alignment Text and content alignment for the NAC portal page
          * 
          * @return builder
          * 
@@ -141,11 +149,23 @@ public final class NacPortalTemplateArgs extends com.pulumi.resources.ResourceAr
             return alignment(Output.of(alignment));
         }
 
+        /**
+         * @param color Primary color used by the NAC portal template
+         * 
+         * @return builder
+         * 
+         */
         public Builder color(@Nullable Output<String> color) {
             $.color = color;
             return this;
         }
 
+        /**
+         * @param color Primary color used by the NAC portal template
+         * 
+         * @return builder
+         * 
+         */
         public Builder color(String color) {
             return color(Output.of(color));
         }

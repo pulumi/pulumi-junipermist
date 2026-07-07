@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GatewayTunnelConfigsAutoProvisionLatlng {
+    /**
+     * @return Geographic latitude used for POP selection override
+     * 
+     */
     private Double lat;
+    /**
+     * @return Geographic longitude used for POP selection override
+     * 
+     */
     private Double lng;
 
     private GatewayTunnelConfigsAutoProvisionLatlng() {}
+    /**
+     * @return Geographic latitude used for POP selection override
+     * 
+     */
     public Double lat() {
         return this.lat;
     }
+    /**
+     * @return Geographic longitude used for POP selection override
+     * 
+     */
     public Double lng() {
         return this.lng;
     }

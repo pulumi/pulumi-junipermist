@@ -19,16 +19,32 @@ public final class MxclusterMistNacArgs extends com.pulumi.resources.ResourceArg
 
     public static final MxclusterMistNacArgs Empty = new MxclusterMistNacArgs();
 
+    /**
+     * RADIUS accounting port used by Mist NAC on the cluster
+     * 
+     */
     @Import(name="acctServerPort")
     private @Nullable Output<Integer> acctServerPort;
 
+    /**
+     * @return RADIUS accounting port used by Mist NAC on the cluster
+     * 
+     */
     public Optional<Output<Integer>> acctServerPort() {
         return Optional.ofNullable(this.acctServerPort);
     }
 
+    /**
+     * RADIUS authentication port used by Mist NAC on the cluster
+     * 
+     */
     @Import(name="authServerPort")
     private @Nullable Output<Integer> authServerPort;
 
+    /**
+     * @return RADIUS authentication port used by Mist NAC on the cluster
+     * 
+     */
     public Optional<Output<Integer>> authServerPort() {
         return Optional.ofNullable(this.authServerPort);
     }
@@ -48,16 +64,32 @@ public final class MxclusterMistNacArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.clientIps);
     }
 
+    /**
+     * Whether Mist NAC is enabled on the cluster
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether Mist NAC is enabled on the cluster
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * Shared RADIUS secret used by Mist NAC clients
+     * 
+     */
     @Import(name="secret")
     private @Nullable Output<String> secret;
 
+    /**
+     * @return Shared RADIUS secret used by Mist NAC clients
+     * 
+     */
     public Optional<Output<String>> secret() {
         return Optional.ofNullable(this.secret);
     }
@@ -90,20 +122,44 @@ public final class MxclusterMistNacArgs extends com.pulumi.resources.ResourceArg
             $ = new MxclusterMistNacArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param acctServerPort RADIUS accounting port used by Mist NAC on the cluster
+         * 
+         * @return builder
+         * 
+         */
         public Builder acctServerPort(@Nullable Output<Integer> acctServerPort) {
             $.acctServerPort = acctServerPort;
             return this;
         }
 
+        /**
+         * @param acctServerPort RADIUS accounting port used by Mist NAC on the cluster
+         * 
+         * @return builder
+         * 
+         */
         public Builder acctServerPort(Integer acctServerPort) {
             return acctServerPort(Output.of(acctServerPort));
         }
 
+        /**
+         * @param authServerPort RADIUS authentication port used by Mist NAC on the cluster
+         * 
+         * @return builder
+         * 
+         */
         public Builder authServerPort(@Nullable Output<Integer> authServerPort) {
             $.authServerPort = authServerPort;
             return this;
         }
 
+        /**
+         * @param authServerPort RADIUS authentication port used by Mist NAC on the cluster
+         * 
+         * @return builder
+         * 
+         */
         public Builder authServerPort(Integer authServerPort) {
             return authServerPort(Output.of(authServerPort));
         }
@@ -129,20 +185,44 @@ public final class MxclusterMistNacArgs extends com.pulumi.resources.ResourceArg
             return clientIps(Output.of(clientIps));
         }
 
+        /**
+         * @param enabled Whether Mist NAC is enabled on the cluster
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether Mist NAC is enabled on the cluster
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param secret Shared RADIUS secret used by Mist NAC clients
+         * 
+         * @return builder
+         * 
+         */
         public Builder secret(@Nullable Output<String> secret) {
             $.secret = secret;
             return this;
         }
 
+        /**
+         * @param secret Shared RADIUS secret used by Mist NAC clients
+         * 
+         * @return builder
+         * 
+         */
         public Builder secret(String secret) {
             return secret(Output.of(secret));
         }

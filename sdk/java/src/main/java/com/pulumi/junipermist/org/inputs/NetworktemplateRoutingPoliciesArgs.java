@@ -17,14 +17,14 @@ public final class NetworktemplateRoutingPoliciesArgs extends com.pulumi.resourc
     public static final NetworktemplateRoutingPoliciesArgs Empty = new NetworktemplateRoutingPoliciesArgs();
 
     /**
-     * at least criteria/filter must be specified to match the term, all criteria have to be met
+     * Ordered terms evaluated by this switch routing policy
      * 
      */
     @Import(name="terms")
     private @Nullable Output<List<NetworktemplateRoutingPoliciesTermArgs>> terms;
 
     /**
-     * @return at least criteria/filter must be specified to match the term, all criteria have to be met
+     * @return Ordered terms evaluated by this switch routing policy
      * 
      */
     public Optional<Output<List<NetworktemplateRoutingPoliciesTermArgs>>> terms() {
@@ -56,7 +56,7 @@ public final class NetworktemplateRoutingPoliciesArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param terms at least criteria/filter must be specified to match the term, all criteria have to be met
+         * @param terms Ordered terms evaluated by this switch routing policy
          * 
          * @return builder
          * 
@@ -67,7 +67,7 @@ public final class NetworktemplateRoutingPoliciesArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param terms at least criteria/filter must be specified to match the term, all criteria have to be met
+         * @param terms Ordered terms evaluated by this switch routing policy
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class NetworktemplateRoutingPoliciesArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param terms at least criteria/filter must be specified to match the term, all criteria have to be met
+         * @param terms Ordered terms evaluated by this switch routing policy
          * 
          * @return builder
          * 

@@ -13,87 +13,111 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GatewayRoutingPoliciesTermActions {
+    /**
+     * @return Whether to accept routes that match this term
+     * 
+     */
     private @Nullable Boolean accept;
+    /**
+     * @return BGP communities to add to routes that match this term
+     * 
+     */
     private @Nullable List<String> addCommunities;
     /**
-     * @return For SSR, hub decides how VRF routes are leaked on spoke
+     * @return SSR target VRFs to add when leaking routes from hub to spoke
      * 
      */
     private @Nullable List<String> addTargetVrfs;
     /**
-     * @return When used as export policy, optional
+     * @return BGP communities to set when this term is used as an export policy
      * 
      */
     private @Nullable List<String> communities;
     /**
-     * @return When used as export policy, optional. To exclude certain AS
+     * @return AS path values to exclude when this term is used as an export policy
      * 
      */
     private @Nullable List<String> excludeAsPaths;
+    /**
+     * @return BGP communities to exclude from routes that match this term
+     * 
+     */
     private @Nullable List<String> excludeCommunities;
     /**
-     * @return When used as export policy, optional
+     * @return BGP communities allowed for export when this term is used as an export policy
      * 
      */
     private @Nullable List<String> exportCommunities;
     /**
-     * @return Optional, for an import policy, localPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+     * @return Preference value to set when this term is used as an import policy
      * 
      */
     private @Nullable String localPreference;
     /**
-     * @return When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
+     * @return AS path values to prepend when this term is used as an export policy
      * 
      */
     private @Nullable List<String> prependAsPaths;
 
     private GatewayRoutingPoliciesTermActions() {}
+    /**
+     * @return Whether to accept routes that match this term
+     * 
+     */
     public Optional<Boolean> accept() {
         return Optional.ofNullable(this.accept);
     }
+    /**
+     * @return BGP communities to add to routes that match this term
+     * 
+     */
     public List<String> addCommunities() {
         return this.addCommunities == null ? List.of() : this.addCommunities;
     }
     /**
-     * @return For SSR, hub decides how VRF routes are leaked on spoke
+     * @return SSR target VRFs to add when leaking routes from hub to spoke
      * 
      */
     public List<String> addTargetVrfs() {
         return this.addTargetVrfs == null ? List.of() : this.addTargetVrfs;
     }
     /**
-     * @return When used as export policy, optional
+     * @return BGP communities to set when this term is used as an export policy
      * 
      */
     public List<String> communities() {
         return this.communities == null ? List.of() : this.communities;
     }
     /**
-     * @return When used as export policy, optional. To exclude certain AS
+     * @return AS path values to exclude when this term is used as an export policy
      * 
      */
     public List<String> excludeAsPaths() {
         return this.excludeAsPaths == null ? List.of() : this.excludeAsPaths;
     }
+    /**
+     * @return BGP communities to exclude from routes that match this term
+     * 
+     */
     public List<String> excludeCommunities() {
         return this.excludeCommunities == null ? List.of() : this.excludeCommunities;
     }
     /**
-     * @return When used as export policy, optional
+     * @return BGP communities allowed for export when this term is used as an export policy
      * 
      */
     public List<String> exportCommunities() {
         return this.exportCommunities == null ? List.of() : this.exportCommunities;
     }
     /**
-     * @return Optional, for an import policy, localPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+     * @return Preference value to set when this term is used as an import policy
      * 
      */
     public Optional<String> localPreference() {
         return Optional.ofNullable(this.localPreference);
     }
     /**
-     * @return When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
+     * @return AS path values to prepend when this term is used as an export policy
      * 
      */
     public List<String> prependAsPaths() {

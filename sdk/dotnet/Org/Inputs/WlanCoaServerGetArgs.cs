@@ -18,17 +18,30 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("disableEventTimestampCheck")]
         public Input<bool>? DisableEventTimestampCheck { get; set; }
 
+        /// <summary>
+        /// Whether this RADIUS CoA server is enabled
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// Server IPv4 address for RADIUS CoA messages
+        /// </summary>
         [Input("ip", required: true)]
         public Input<string> Ip { get; set; } = null!;
 
+        /// <summary>
+        /// UDP port used to send RADIUS CoA messages to the server
+        /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
 
         [Input("secret", required: true)]
         private Input<string>? _secret;
+
+        /// <summary>
+        /// Shared secret used to authenticate RADIUS CoA messages
+        /// </summary>
         public Input<string>? Secret
         {
             get => _secret;

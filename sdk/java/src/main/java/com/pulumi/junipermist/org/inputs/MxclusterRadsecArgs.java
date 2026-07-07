@@ -20,14 +20,14 @@ public final class MxclusterRadsecArgs extends com.pulumi.resources.ResourceArgs
     public static final MxclusterRadsecArgs Empty = new MxclusterRadsecArgs();
 
     /**
-     * List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+     * RADIUS accounting servers used by the RadSec proxy
      * 
      */
     @Import(name="acctServers")
     private @Nullable Output<List<MxclusterRadsecAcctServerArgs>> acctServers;
 
     /**
-     * @return List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+     * @return RADIUS accounting servers used by the RadSec proxy
      * 
      */
     public Optional<Output<List<MxclusterRadsecAcctServerArgs>>> acctServers() {
@@ -35,14 +35,14 @@ public final class MxclusterRadsecArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * List of RADIUS authentication servers, order matters where the first one is treated as primary
+     * RADIUS authentication servers used by the RadSec proxy
      * 
      */
     @Import(name="authServers")
     private @Nullable Output<List<MxclusterRadsecAuthServerArgs>> authServers;
 
     /**
-     * @return List of RADIUS authentication servers, order matters where the first one is treated as primary
+     * @return RADIUS authentication servers used by the RadSec proxy
      * 
      */
     public Optional<Output<List<MxclusterRadsecAuthServerArgs>>> authServers() {
@@ -80,14 +80,14 @@ public final class MxclusterRadsecArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * SSpecify NAS-IP-ADDRESS, NAS-IPv6-ADDRESS to use with auth_servers. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`
+     * Source used to populate NAS-IP-Address and NAS-IPv6-Address attributes
      * 
      */
     @Import(name="nasIpSource")
     private @Nullable Output<String> nasIpSource;
 
     /**
-     * @return SSpecify NAS-IP-ADDRESS, NAS-IPv6-ADDRESS to use with auth_servers. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`
+     * @return Source used to populate NAS-IP-Address and NAS-IPv6-Address attributes
      * 
      */
     public Optional<Output<String>> nasIpSource() {
@@ -95,14 +95,14 @@ public final class MxclusterRadsecArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Hostnames or IPs for Mist AP to use as the TLS Server (i.e. they are reachable from AP) in addition to `tuntermHosts`
+     * AP-reachable hostnames or IP addresses advertised as RadSec TLS servers
      * 
      */
     @Import(name="proxyHosts")
     private @Nullable Output<List<String>> proxyHosts;
 
     /**
-     * @return Hostnames or IPs for Mist AP to use as the TLS Server (i.e. they are reachable from AP) in addition to `tuntermHosts`
+     * @return AP-reachable hostnames or IP addresses advertised as RadSec TLS servers
      * 
      */
     public Optional<Output<List<String>>> proxyHosts() {
@@ -110,14 +110,14 @@ public final class MxclusterRadsecArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * When ordered, Mist Edge will prefer and go back to the first radius server if possible. enum: `ordered`, `unordered`
+     * RADIUS server selection strategy for RadSec failover
      * 
      */
     @Import(name="serverSelection")
     private @Nullable Output<String> serverSelection;
 
     /**
-     * @return When ordered, Mist Edge will prefer and go back to the first radius server if possible. enum: `ordered`, `unordered`
+     * @return RADIUS server selection strategy for RadSec failover
      * 
      */
     public Optional<Output<String>> serverSelection() {
@@ -125,14 +125,14 @@ public final class MxclusterRadsecArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Specify IP address to connect to authServers and acct_servers. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`
+     * Connection source interface or address used when reaching RADIUS servers
      * 
      */
     @Import(name="srcIpSource")
     private @Nullable Output<String> srcIpSource;
 
     /**
-     * @return Specify IP address to connect to authServers and acct_servers. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`
+     * @return Connection source interface or address used when reaching RADIUS servers
      * 
      */
     public Optional<Output<String>> srcIpSource() {
@@ -171,7 +171,7 @@ public final class MxclusterRadsecArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param acctServers List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+         * @param acctServers RADIUS accounting servers used by the RadSec proxy
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class MxclusterRadsecArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param acctServers List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+         * @param acctServers RADIUS accounting servers used by the RadSec proxy
          * 
          * @return builder
          * 
@@ -192,7 +192,7 @@ public final class MxclusterRadsecArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param acctServers List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+         * @param acctServers RADIUS accounting servers used by the RadSec proxy
          * 
          * @return builder
          * 
@@ -202,7 +202,7 @@ public final class MxclusterRadsecArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param authServers List of RADIUS authentication servers, order matters where the first one is treated as primary
+         * @param authServers RADIUS authentication servers used by the RadSec proxy
          * 
          * @return builder
          * 
@@ -213,7 +213,7 @@ public final class MxclusterRadsecArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param authServers List of RADIUS authentication servers, order matters where the first one is treated as primary
+         * @param authServers RADIUS authentication servers used by the RadSec proxy
          * 
          * @return builder
          * 
@@ -223,7 +223,7 @@ public final class MxclusterRadsecArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param authServers List of RADIUS authentication servers, order matters where the first one is treated as primary
+         * @param authServers RADIUS authentication servers used by the RadSec proxy
          * 
          * @return builder
          * 
@@ -275,7 +275,7 @@ public final class MxclusterRadsecArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param nasIpSource SSpecify NAS-IP-ADDRESS, NAS-IPv6-ADDRESS to use with auth_servers. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`
+         * @param nasIpSource Source used to populate NAS-IP-Address and NAS-IPv6-Address attributes
          * 
          * @return builder
          * 
@@ -286,7 +286,7 @@ public final class MxclusterRadsecArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param nasIpSource SSpecify NAS-IP-ADDRESS, NAS-IPv6-ADDRESS to use with auth_servers. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`
+         * @param nasIpSource Source used to populate NAS-IP-Address and NAS-IPv6-Address attributes
          * 
          * @return builder
          * 
@@ -296,7 +296,7 @@ public final class MxclusterRadsecArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param proxyHosts Hostnames or IPs for Mist AP to use as the TLS Server (i.e. they are reachable from AP) in addition to `tuntermHosts`
+         * @param proxyHosts AP-reachable hostnames or IP addresses advertised as RadSec TLS servers
          * 
          * @return builder
          * 
@@ -307,7 +307,7 @@ public final class MxclusterRadsecArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param proxyHosts Hostnames or IPs for Mist AP to use as the TLS Server (i.e. they are reachable from AP) in addition to `tuntermHosts`
+         * @param proxyHosts AP-reachable hostnames or IP addresses advertised as RadSec TLS servers
          * 
          * @return builder
          * 
@@ -317,7 +317,7 @@ public final class MxclusterRadsecArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param proxyHosts Hostnames or IPs for Mist AP to use as the TLS Server (i.e. they are reachable from AP) in addition to `tuntermHosts`
+         * @param proxyHosts AP-reachable hostnames or IP addresses advertised as RadSec TLS servers
          * 
          * @return builder
          * 
@@ -327,7 +327,7 @@ public final class MxclusterRadsecArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param serverSelection When ordered, Mist Edge will prefer and go back to the first radius server if possible. enum: `ordered`, `unordered`
+         * @param serverSelection RADIUS server selection strategy for RadSec failover
          * 
          * @return builder
          * 
@@ -338,7 +338,7 @@ public final class MxclusterRadsecArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param serverSelection When ordered, Mist Edge will prefer and go back to the first radius server if possible. enum: `ordered`, `unordered`
+         * @param serverSelection RADIUS server selection strategy for RadSec failover
          * 
          * @return builder
          * 
@@ -348,7 +348,7 @@ public final class MxclusterRadsecArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param srcIpSource Specify IP address to connect to authServers and acct_servers. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`
+         * @param srcIpSource Connection source interface or address used when reaching RADIUS servers
          * 
          * @return builder
          * 
@@ -359,7 +359,7 @@ public final class MxclusterRadsecArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param srcIpSource Specify IP address to connect to authServers and acct_servers. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`
+         * @param srcIpSource Connection source interface or address used when reaching RADIUS servers
          * 
          * @return builder
          * 

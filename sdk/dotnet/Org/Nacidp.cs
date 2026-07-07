@@ -100,7 +100,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string?> GroupFilter { get; private set; } = null!;
 
         /// <summary>
-        /// enum: `Ldap`, `MxedgeProxy`, `Oauth`
+        /// enum: `Ldap`, `MxedgeProxy`, `Oauth`, `Openroaming`
         /// </summary>
         [Output("idpType")]
         public Output<string> IdpType { get; private set; } = null!;
@@ -124,7 +124,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string?> LdapBindPassword { get; private set; } = null!;
 
         /// <summary>
-        /// Required if `IdpType`==`Ldap`, list of CA certificates to validate the LDAP certificate
+        /// CA certificates used to validate LDAP or LDAPS server certificates. Required if `IdpType`==`Ldap`
         /// </summary>
         [Output("ldapCacerts")]
         public Output<ImmutableArray<string>> LdapCacerts { get; private set; } = null!;
@@ -142,13 +142,13 @@ namespace Pulumi.JuniperMist.Org
         public Output<string?> LdapClientKey { get; private set; } = null!;
 
         /// <summary>
-        /// If `LdapType`==`Custom`
+        /// Group attribute used to resolve LDAP memberships. If `LdapType`==`Custom`
         /// </summary>
         [Output("ldapGroupAttr")]
         public Output<string?> LdapGroupAttr { get; private set; } = null!;
 
         /// <summary>
-        /// If `LdapType`==`Custom`
+        /// Group search base used for custom LDAP group lookup. If `LdapType`==`Custom`
         /// </summary>
         [Output("ldapGroupDn")]
         public Output<string?> LdapGroupDn { get; private set; } = null!;
@@ -160,13 +160,13 @@ namespace Pulumi.JuniperMist.Org
         public Output<bool> LdapResolveGroups { get; private set; } = null!;
 
         /// <summary>
-        /// If `IdpType`==`Ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
+        /// Server hostnames or IP addresses for LDAP or LDAPS when `IdpType`==`Ldap`
         /// </summary>
         [Output("ldapServerHosts")]
         public Output<ImmutableArray<string>> LdapServerHosts { get; private set; } = null!;
 
         /// <summary>
-        /// if `IdpType`==`Ldap`. enum: `Azure`, `Custom`, `Google`, `Okta`, `PingIdentity`
+        /// Provider template for LDAP SSO when `IdpType`==`Ldap`
         /// </summary>
         [Output("ldapType")]
         public Output<string?> LdapType { get; private set; } = null!;
@@ -184,7 +184,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string?> MemberFilter { get; private set; } = null!;
 
         /// <summary>
-        /// Name
+        /// Display name of the NAC IDP configuration
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -202,19 +202,19 @@ namespace Pulumi.JuniperMist.Org
         public Output<string?> OauthCcClientSecret { get; private set; } = null!;
 
         /// <summary>
-        /// If `IdpType`==`Oauth`
+        /// OAuth discovery document URL used when `IdpType`==`Oauth`
         /// </summary>
         [Output("oauthDiscoveryUrl")]
         public Output<string?> OauthDiscoveryUrl { get; private set; } = null!;
 
         /// <summary>
-        /// enum: `Us` (United States, default), `Ca` (Canada), `Eu` (Europe), `Asia` (Asia), `Au` (Australia)
+        /// Ping Identity region for OAuth SSO when `OauthType`==`PingIdentity`
         /// </summary>
         [Output("oauthPingIdentityRegion")]
         public Output<string> OauthPingIdentityRegion { get; private set; } = null!;
 
         /// <summary>
-        /// If `OauthType`==`Okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+        /// Provider domain for Okta OAuth SSO when `OauthType`==`Okta`
         /// </summary>
         [Output("oauthProviderDomain")]
         public Output<string> OauthProviderDomain { get; private set; } = null!;
@@ -238,11 +238,32 @@ namespace Pulumi.JuniperMist.Org
         public Output<string?> OauthTenantId { get; private set; } = null!;
 
         /// <summary>
-        /// if `IdpType`==`Oauth`. enum: `Azure`, `azure-gov`, `Okta`, `PingIdentity`
+        /// Provider type for OAuth SSO when `IdpType`==`Oauth`
         /// </summary>
         [Output("oauthType")]
         public Output<string> OauthType { get; private set; } = null!;
 
+        /// <summary>
+        /// SSIDs that support OpenRoaming, used when `IdpType`==`Openroaming`
+        /// </summary>
+        [Output("openroamingSsids")]
+        public Output<ImmutableArray<string>> OpenroamingSsids { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+        /// </summary>
+        [Output("openroamingWbaClientCert")]
+        public Output<string?> OpenroamingWbaClientCert { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+        /// </summary>
+        [Output("openroamingWbaClientKey")]
+        public Output<string?> OpenroamingWbaClientKey { get; private set; } = null!;
+
+        /// <summary>
+        /// Owning organization identifier for this NAC IDP configuration
+        /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
@@ -286,6 +307,8 @@ namespace Pulumi.JuniperMist.Org
                 {
                     "oauthCcClientSecret",
                     "oauthRopcClientSecret",
+                    "openroamingWbaClientCert",
+                    "openroamingWbaClientKey",
                     "scimSecretToken",
                 },
             };
@@ -318,7 +341,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? GroupFilter { get; set; }
 
         /// <summary>
-        /// enum: `Ldap`, `MxedgeProxy`, `Oauth`
+        /// enum: `Ldap`, `MxedgeProxy`, `Oauth`, `Openroaming`
         /// </summary>
         [Input("idpType", required: true)]
         public Input<string> IdpType { get; set; } = null!;
@@ -345,7 +368,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _ldapCacerts;
 
         /// <summary>
-        /// Required if `IdpType`==`Ldap`, list of CA certificates to validate the LDAP certificate
+        /// CA certificates used to validate LDAP or LDAPS server certificates. Required if `IdpType`==`Ldap`
         /// </summary>
         public InputList<string> LdapCacerts
         {
@@ -366,13 +389,13 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? LdapClientKey { get; set; }
 
         /// <summary>
-        /// If `LdapType`==`Custom`
+        /// Group attribute used to resolve LDAP memberships. If `LdapType`==`Custom`
         /// </summary>
         [Input("ldapGroupAttr")]
         public Input<string>? LdapGroupAttr { get; set; }
 
         /// <summary>
-        /// If `LdapType`==`Custom`
+        /// Group search base used for custom LDAP group lookup. If `LdapType`==`Custom`
         /// </summary>
         [Input("ldapGroupDn")]
         public Input<string>? LdapGroupDn { get; set; }
@@ -387,7 +410,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _ldapServerHosts;
 
         /// <summary>
-        /// If `IdpType`==`Ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
+        /// Server hostnames or IP addresses for LDAP or LDAPS when `IdpType`==`Ldap`
         /// </summary>
         public InputList<string> LdapServerHosts
         {
@@ -396,7 +419,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// if `IdpType`==`Ldap`. enum: `Azure`, `Custom`, `Google`, `Okta`, `PingIdentity`
+        /// Provider template for LDAP SSO when `IdpType`==`Ldap`
         /// </summary>
         [Input("ldapType")]
         public Input<string>? LdapType { get; set; }
@@ -414,7 +437,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? MemberFilter { get; set; }
 
         /// <summary>
-        /// Name
+        /// Display name of the NAC IDP configuration
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -442,19 +465,19 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// If `IdpType`==`Oauth`
+        /// OAuth discovery document URL used when `IdpType`==`Oauth`
         /// </summary>
         [Input("oauthDiscoveryUrl")]
         public Input<string>? OauthDiscoveryUrl { get; set; }
 
         /// <summary>
-        /// enum: `Us` (United States, default), `Ca` (Canada), `Eu` (Europe), `Asia` (Asia), `Au` (Australia)
+        /// Ping Identity region for OAuth SSO when `OauthType`==`PingIdentity`
         /// </summary>
         [Input("oauthPingIdentityRegion")]
         public Input<string>? OauthPingIdentityRegion { get; set; }
 
         /// <summary>
-        /// If `OauthType`==`Okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+        /// Provider domain for Okta OAuth SSO when `OauthType`==`Okta`
         /// </summary>
         [Input("oauthProviderDomain")]
         public Input<string>? OauthProviderDomain { get; set; }
@@ -488,11 +511,58 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? OauthTenantId { get; set; }
 
         /// <summary>
-        /// if `IdpType`==`Oauth`. enum: `Azure`, `azure-gov`, `Okta`, `PingIdentity`
+        /// Provider type for OAuth SSO when `IdpType`==`Oauth`
         /// </summary>
         [Input("oauthType")]
         public Input<string>? OauthType { get; set; }
 
+        [Input("openroamingSsids")]
+        private InputList<string>? _openroamingSsids;
+
+        /// <summary>
+        /// SSIDs that support OpenRoaming, used when `IdpType`==`Openroaming`
+        /// </summary>
+        public InputList<string> OpenroamingSsids
+        {
+            get => _openroamingSsids ?? (_openroamingSsids = new InputList<string>());
+            set => _openroamingSsids = value;
+        }
+
+        [Input("openroamingWbaClientCert")]
+        private Input<string>? _openroamingWbaClientCert;
+
+        /// <summary>
+        /// Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+        /// </summary>
+        public Input<string>? OpenroamingWbaClientCert
+        {
+            get => _openroamingWbaClientCert;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _openroamingWbaClientCert = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("openroamingWbaClientKey")]
+        private Input<string>? _openroamingWbaClientKey;
+
+        /// <summary>
+        /// Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+        /// </summary>
+        public Input<string>? OpenroamingWbaClientKey
+        {
+            get => _openroamingWbaClientKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _openroamingWbaClientKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Owning organization identifier for this NAC IDP configuration
+        /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
@@ -533,7 +603,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? GroupFilter { get; set; }
 
         /// <summary>
-        /// enum: `Ldap`, `MxedgeProxy`, `Oauth`
+        /// enum: `Ldap`, `MxedgeProxy`, `Oauth`, `Openroaming`
         /// </summary>
         [Input("idpType")]
         public Input<string>? IdpType { get; set; }
@@ -560,7 +630,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _ldapCacerts;
 
         /// <summary>
-        /// Required if `IdpType`==`Ldap`, list of CA certificates to validate the LDAP certificate
+        /// CA certificates used to validate LDAP or LDAPS server certificates. Required if `IdpType`==`Ldap`
         /// </summary>
         public InputList<string> LdapCacerts
         {
@@ -581,13 +651,13 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? LdapClientKey { get; set; }
 
         /// <summary>
-        /// If `LdapType`==`Custom`
+        /// Group attribute used to resolve LDAP memberships. If `LdapType`==`Custom`
         /// </summary>
         [Input("ldapGroupAttr")]
         public Input<string>? LdapGroupAttr { get; set; }
 
         /// <summary>
-        /// If `LdapType`==`Custom`
+        /// Group search base used for custom LDAP group lookup. If `LdapType`==`Custom`
         /// </summary>
         [Input("ldapGroupDn")]
         public Input<string>? LdapGroupDn { get; set; }
@@ -602,7 +672,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _ldapServerHosts;
 
         /// <summary>
-        /// If `IdpType`==`Ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
+        /// Server hostnames or IP addresses for LDAP or LDAPS when `IdpType`==`Ldap`
         /// </summary>
         public InputList<string> LdapServerHosts
         {
@@ -611,7 +681,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// if `IdpType`==`Ldap`. enum: `Azure`, `Custom`, `Google`, `Okta`, `PingIdentity`
+        /// Provider template for LDAP SSO when `IdpType`==`Ldap`
         /// </summary>
         [Input("ldapType")]
         public Input<string>? LdapType { get; set; }
@@ -629,7 +699,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? MemberFilter { get; set; }
 
         /// <summary>
-        /// Name
+        /// Display name of the NAC IDP configuration
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -657,19 +727,19 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// If `IdpType`==`Oauth`
+        /// OAuth discovery document URL used when `IdpType`==`Oauth`
         /// </summary>
         [Input("oauthDiscoveryUrl")]
         public Input<string>? OauthDiscoveryUrl { get; set; }
 
         /// <summary>
-        /// enum: `Us` (United States, default), `Ca` (Canada), `Eu` (Europe), `Asia` (Asia), `Au` (Australia)
+        /// Ping Identity region for OAuth SSO when `OauthType`==`PingIdentity`
         /// </summary>
         [Input("oauthPingIdentityRegion")]
         public Input<string>? OauthPingIdentityRegion { get; set; }
 
         /// <summary>
-        /// If `OauthType`==`Okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+        /// Provider domain for Okta OAuth SSO when `OauthType`==`Okta`
         /// </summary>
         [Input("oauthProviderDomain")]
         public Input<string>? OauthProviderDomain { get; set; }
@@ -703,11 +773,58 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? OauthTenantId { get; set; }
 
         /// <summary>
-        /// if `IdpType`==`Oauth`. enum: `Azure`, `azure-gov`, `Okta`, `PingIdentity`
+        /// Provider type for OAuth SSO when `IdpType`==`Oauth`
         /// </summary>
         [Input("oauthType")]
         public Input<string>? OauthType { get; set; }
 
+        [Input("openroamingSsids")]
+        private InputList<string>? _openroamingSsids;
+
+        /// <summary>
+        /// SSIDs that support OpenRoaming, used when `IdpType`==`Openroaming`
+        /// </summary>
+        public InputList<string> OpenroamingSsids
+        {
+            get => _openroamingSsids ?? (_openroamingSsids = new InputList<string>());
+            set => _openroamingSsids = value;
+        }
+
+        [Input("openroamingWbaClientCert")]
+        private Input<string>? _openroamingWbaClientCert;
+
+        /// <summary>
+        /// Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+        /// </summary>
+        public Input<string>? OpenroamingWbaClientCert
+        {
+            get => _openroamingWbaClientCert;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _openroamingWbaClientCert = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("openroamingWbaClientKey")]
+        private Input<string>? _openroamingWbaClientKey;
+
+        /// <summary>
+        /// Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+        /// </summary>
+        public Input<string>? OpenroamingWbaClientKey
+        {
+            get => _openroamingWbaClientKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _openroamingWbaClientKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Owning organization identifier for this NAC IDP configuration
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 

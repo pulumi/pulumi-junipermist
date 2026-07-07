@@ -26,6 +26,10 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
         [Input("customs")]
         private InputList<Inputs.NetworktemplateSwitchMgmtProtectReCustomArgs>? _customs;
+
+        /// <summary>
+        /// Additional ACL entries allowed by the Protect RE policy
+        /// </summary>
         public InputList<Inputs.NetworktemplateSwitchMgmtProtectReCustomArgs> Customs
         {
             get => _customs ?? (_customs = new InputList<Inputs.NetworktemplateSwitchMgmtProtectReCustomArgs>());
@@ -50,7 +54,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _trustedHosts;
 
         /// <summary>
-        /// host/subnets we'll allow traffic to/from
+        /// Trusted host or subnet entries allowed by the Protect RE policy
         /// </summary>
         public InputList<string> TrustedHosts
         {

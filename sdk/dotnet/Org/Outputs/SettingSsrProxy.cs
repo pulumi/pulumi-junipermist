@@ -13,7 +13,13 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class SettingSsrProxy
     {
+        /// <summary>
+        /// Whether the SSR proxy configuration is disabled
+        /// </summary>
         public readonly bool? Disabled;
+        /// <summary>
+        /// Proxy URL that SSR devices use to reach Mist
+        /// </summary>
         public readonly string? Url;
 
         [OutputConstructor]

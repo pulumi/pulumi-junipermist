@@ -13,10 +13,16 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class MxedgeTuntermIgmpSnoopingConfig
     {
+        /// <summary>
+        /// Whether IGMP snooping is enabled for the configured VLANs
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// IGMP querier settings used with tunnel termination snooping
+        /// </summary>
         public readonly Outputs.MxedgeTuntermIgmpSnoopingConfigQuerier? Querier;
         /// <summary>
-        /// List of vlans on which tunterm performs IGMP snooping
+        /// List of VLAN IDs where tunnel termination performs IGMP snooping
         /// </summary>
         public readonly ImmutableArray<int> VlanIds;
 

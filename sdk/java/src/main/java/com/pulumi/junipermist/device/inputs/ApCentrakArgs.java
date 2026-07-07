@@ -15,9 +15,17 @@ public final class ApCentrakArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ApCentrakArgs Empty = new ApCentrakArgs();
 
+    /**
+     * Whether to enable Centrak config
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether to enable Centrak config
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -46,11 +54,23 @@ public final class ApCentrakArgs extends com.pulumi.resources.ResourceArgs {
             $ = new ApCentrakArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Whether to enable Centrak config
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether to enable Centrak config
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<int>? _classPercentages;
 
         /// <summary>
-        /// percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
+        /// Traffic class bandwidth percentages for high, medium, low, and best-effort queues
         /// </summary>
         public InputList<int> ClassPercentages
         {
@@ -24,11 +24,14 @@ namespace Pulumi.JuniperMist.Org.Inputs
             set => _classPercentages = value;
         }
 
+        /// <summary>
+        /// Whether traffic shaping is enabled
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Interface Transmit Cap in kbps
+        /// Maximum transmit bandwidth for the interface, in Kbps
         /// </summary>
         [Input("maxTxKbps")]
         public Input<int>? MaxTxKbps { get; set; }

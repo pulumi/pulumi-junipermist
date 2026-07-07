@@ -13,9 +13,21 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class SettingInstaller
     {
+        /// <summary>
+        /// Whether installers may work with all eligible devices
+        /// </summary>
         public readonly bool? AllowAllDevices;
+        /// <summary>
+        /// Whether installers may work with all sites
+        /// </summary>
         public readonly bool? AllowAllSites;
+        /// <summary>
+        /// Additional site IDs that installers may access
+        /// </summary>
         public readonly ImmutableArray<string> ExtraSiteIds;
+        /// <summary>
+        /// Grace period, in days, during which installers can modify recent sites or devices
+        /// </summary>
         public readonly int? GracePeriod;
 
         [OutputConstructor]

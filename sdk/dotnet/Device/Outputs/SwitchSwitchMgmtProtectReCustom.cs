@@ -21,6 +21,9 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// enum: `Any`, `Icmp`, `Tcp`, `Udp`. Note: For `Protocol`==`Any` and  `PortRange`==`Any`, configure `TrustedHosts` instead
         /// </summary>
         public readonly string? Protocol;
+        /// <summary>
+        /// Source subnets matched by this custom Protect RE ACL
+        /// </summary>
         public readonly ImmutableArray<string> Subnets;
 
         [OutputConstructor]

@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class DeviceprofileGatewayNetworkMulticastGroups
     {
         /// <summary>
-        /// RP (rendezvous point) IP Address
+        /// RP (rendezvous point) IP address
         /// </summary>
         public readonly string? RpIp;
 

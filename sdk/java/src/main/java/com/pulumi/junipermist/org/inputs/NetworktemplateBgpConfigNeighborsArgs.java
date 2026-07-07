@@ -33,14 +33,14 @@ public final class NetworktemplateBgpConfigNeighborsArgs extends com.pulumi.reso
     }
 
     /**
-     * Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+     * BGP hold time for this neighbor
      * 
      */
     @Import(name="holdTime")
     private @Nullable Output<Integer> holdTime;
 
     /**
-     * @return Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+     * @return BGP hold time for this neighbor
      * 
      */
     public Optional<Output<Integer>> holdTime() {
@@ -62,9 +62,17 @@ public final class NetworktemplateBgpConfigNeighborsArgs extends com.pulumi.reso
         return Optional.ofNullable(this.importPolicy);
     }
 
+    /**
+     * Time-to-live value for multihop BGP sessions to this neighbor
+     * 
+     */
     @Import(name="multihopTtl")
     private @Nullable Output<Integer> multihopTtl;
 
+    /**
+     * @return Time-to-live value for multihop BGP sessions to this neighbor
+     * 
+     */
     public Optional<Output<Integer>> multihopTtl() {
         return Optional.ofNullable(this.multihopTtl);
     }
@@ -134,7 +142,7 @@ public final class NetworktemplateBgpConfigNeighborsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param holdTime Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+         * @param holdTime BGP hold time for this neighbor
          * 
          * @return builder
          * 
@@ -145,7 +153,7 @@ public final class NetworktemplateBgpConfigNeighborsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param holdTime Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+         * @param holdTime BGP hold time for this neighbor
          * 
          * @return builder
          * 
@@ -175,11 +183,23 @@ public final class NetworktemplateBgpConfigNeighborsArgs extends com.pulumi.reso
             return importPolicy(Output.of(importPolicy));
         }
 
+        /**
+         * @param multihopTtl Time-to-live value for multihop BGP sessions to this neighbor
+         * 
+         * @return builder
+         * 
+         */
         public Builder multihopTtl(@Nullable Output<Integer> multihopTtl) {
             $.multihopTtl = multihopTtl;
             return this;
         }
 
+        /**
+         * @param multihopTtl Time-to-live value for multihop BGP sessions to this neighbor
+         * 
+         * @return builder
+         * 
+         */
         public Builder multihopTtl(Integer multihopTtl) {
             return multihopTtl(Output.of(multihopTtl));
         }

@@ -14,12 +14,15 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class GatewayPortConfigTrafficShaping
     {
         /// <summary>
-        /// percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
+        /// Traffic class bandwidth percentages for high, medium, low, and best-effort queues
         /// </summary>
         public readonly ImmutableArray<int> ClassPercentages;
+        /// <summary>
+        /// Whether traffic shaping is enabled
+        /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Interface Transmit Cap in kbps
+        /// Maximum transmit bandwidth for the interface, in Kbps
         /// </summary>
         public readonly int? MaxTxKbps;
 

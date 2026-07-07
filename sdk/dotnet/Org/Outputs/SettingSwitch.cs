@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class SettingSwitch
     {
+        /// <summary>
+        /// Auto-upgrade defaults for switches in this organization
+        /// </summary>
         public readonly Outputs.SettingSwitchAutoUpgrade? AutoUpgrade;
 
         [OutputConstructor]

@@ -18,14 +18,18 @@ public final class MxclusterMistDasCoaServer {
      * 
      */
     private @Nullable Boolean disableEventTimestampCheck;
+    /**
+     * @return Whether this DAS CoA or Disconnect-Message client is enabled
+     * 
+     */
     private @Nullable Boolean enabled;
     /**
-     * @return This server configured to send CoA|DM to mist edges
+     * @return Server host allowed to send CoA or Disconnect-Message requests to Mist Edges
      * 
      */
     private @Nullable String host;
     /**
-     * @return Mist edges will allow this host on this port
+     * @return UDP port where Mist Edges accept CoA or Disconnect-Message requests from this host
      * 
      */
     private @Nullable Integer port;
@@ -34,6 +38,10 @@ public final class MxclusterMistDasCoaServer {
      * 
      */
     private @Nullable Boolean requireMessageAuthenticator;
+    /**
+     * @return Shared secret used by this DAS CoA or Disconnect-Message client
+     * 
+     */
     private @Nullable String secret;
 
     private MxclusterMistDasCoaServer() {}
@@ -44,18 +52,22 @@ public final class MxclusterMistDasCoaServer {
     public Optional<Boolean> disableEventTimestampCheck() {
         return Optional.ofNullable(this.disableEventTimestampCheck);
     }
+    /**
+     * @return Whether this DAS CoA or Disconnect-Message client is enabled
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return This server configured to send CoA|DM to mist edges
+     * @return Server host allowed to send CoA or Disconnect-Message requests to Mist Edges
      * 
      */
     public Optional<String> host() {
         return Optional.ofNullable(this.host);
     }
     /**
-     * @return Mist edges will allow this host on this port
+     * @return UDP port where Mist Edges accept CoA or Disconnect-Message requests from this host
      * 
      */
     public Optional<Integer> port() {
@@ -68,6 +80,10 @@ public final class MxclusterMistDasCoaServer {
     public Optional<Boolean> requireMessageAuthenticator() {
         return Optional.ofNullable(this.requireMessageAuthenticator);
     }
+    /**
+     * @return Shared secret used by this DAS CoA or Disconnect-Message client
+     * 
+     */
     public Optional<String> secret() {
         return Optional.ofNullable(this.secret);
     }

@@ -32,22 +32,30 @@ public final class SwitchPortUsagesRuleArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * Exact value that the selected source attribute must match
+     * 
+     */
     @Import(name="equals")
     private @Nullable Output<String> equals;
 
+    /**
+     * @return Exact value that the selected source attribute must match
+     * 
+     */
     public Optional<Output<String>> equals_() {
         return Optional.ofNullable(this.equals);
     }
 
     /**
-     * Use `equalsAny` to match any item in a list
+     * List of values where any match satisfies this dynamic rule
      * 
      */
     @Import(name="equalsAnies")
     private @Nullable Output<List<String>> equalsAnies;
 
     /**
-     * @return Use `equalsAny` to match any item in a list
+     * @return List of values where any match satisfies this dynamic rule
      * 
      */
     public Optional<Output<List<String>>> equalsAnies() {
@@ -74,14 +82,14 @@ public final class SwitchPortUsagesRuleArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemDescription`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
+     * Source attribute evaluated by this dynamic rule
      * 
      */
     @Import(name="src", required=true)
     private Output<String> src;
 
     /**
-     * @return enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemDescription`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
+     * @return Source attribute evaluated by this dynamic rule
      * 
      */
     public Output<String> src() {
@@ -89,14 +97,14 @@ public final class SwitchPortUsagesRuleArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * `portUsage` name
+     * Port usage name to apply when this dynamic rule matches
      * 
      */
     @Import(name="usage")
     private @Nullable Output<String> usage;
 
     /**
-     * @return `portUsage` name
+     * @return Port usage name to apply when this dynamic rule matches
      * 
      */
     public Optional<Output<String>> usage() {
@@ -153,17 +161,29 @@ public final class SwitchPortUsagesRuleArgs extends com.pulumi.resources.Resourc
             return description(Output.of(description));
         }
 
+        /**
+         * @param equals Exact value that the selected source attribute must match
+         * 
+         * @return builder
+         * 
+         */
         public Builder equals_(@Nullable Output<String> equals) {
             $.equals = equals;
             return this;
         }
 
+        /**
+         * @param equals Exact value that the selected source attribute must match
+         * 
+         * @return builder
+         * 
+         */
         public Builder equals_(String equals) {
             return equals_(Output.of(equals));
         }
 
         /**
-         * @param equalsAnies Use `equalsAny` to match any item in a list
+         * @param equalsAnies List of values where any match satisfies this dynamic rule
          * 
          * @return builder
          * 
@@ -174,7 +194,7 @@ public final class SwitchPortUsagesRuleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param equalsAnies Use `equalsAny` to match any item in a list
+         * @param equalsAnies List of values where any match satisfies this dynamic rule
          * 
          * @return builder
          * 
@@ -184,7 +204,7 @@ public final class SwitchPortUsagesRuleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param equalsAnies Use `equalsAny` to match any item in a list
+         * @param equalsAnies List of values where any match satisfies this dynamic rule
          * 
          * @return builder
          * 
@@ -219,7 +239,7 @@ public final class SwitchPortUsagesRuleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param src enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemDescription`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
+         * @param src Source attribute evaluated by this dynamic rule
          * 
          * @return builder
          * 
@@ -230,7 +250,7 @@ public final class SwitchPortUsagesRuleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param src enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemDescription`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
+         * @param src Source attribute evaluated by this dynamic rule
          * 
          * @return builder
          * 
@@ -240,7 +260,7 @@ public final class SwitchPortUsagesRuleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param usage `portUsage` name
+         * @param usage Port usage name to apply when this dynamic rule matches
          * 
          * @return builder
          * 
@@ -251,7 +271,7 @@ public final class SwitchPortUsagesRuleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param usage `portUsage` name
+         * @param usage Port usage name to apply when this dynamic rule matches
          * 
          * @return builder
          * 

@@ -17,14 +17,14 @@ public final class SwitchOtherIpConfigsArgs extends com.pulumi.resources.Resourc
     public static final SwitchOtherIpConfigsArgs Empty = new SwitchOtherIpConfigsArgs();
 
     /**
-     * For EVPN, if anycast is desired
+     * For EVPN, whether anycast is desired
      * 
      */
     @Import(name="evpnAnycast")
     private @Nullable Output<Boolean> evpnAnycast;
 
     /**
-     * @return For EVPN, if anycast is desired
+     * @return For EVPN, whether anycast is desired
      * 
      */
     public Optional<Output<Boolean>> evpnAnycast() {
@@ -32,14 +32,14 @@ public final class SwitchOtherIpConfigsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Required if `type`==`static`
+     * Required if `type`==`static`; IPv4 address for the additional Junos L3 presence
      * 
      */
     @Import(name="ip")
     private @Nullable Output<String> ip;
 
     /**
-     * @return Required if `type`==`static`
+     * @return Required if `type`==`static`; IPv4 address for the additional Junos L3 presence
      * 
      */
     public Optional<Output<String>> ip() {
@@ -47,14 +47,14 @@ public final class SwitchOtherIpConfigsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Required if `type6`==`static`
+     * Required if `type6`==`static`; IPv6 address for the additional Junos L3 presence
      * 
      */
     @Import(name="ip6")
     private @Nullable Output<String> ip6;
 
     /**
-     * @return Required if `type6`==`static`
+     * @return Required if `type6`==`static`; IPv6 address for the additional Junos L3 presence
      * 
      */
     public Optional<Output<String>> ip6() {
@@ -62,14 +62,14 @@ public final class SwitchOtherIpConfigsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Optional, `subnet` from `network` definition will be used if defined
+     * Optional IPv4 netmask; `subnet` from `network` definition will be used if defined
      * 
      */
     @Import(name="netmask")
     private @Nullable Output<String> netmask;
 
     /**
-     * @return Optional, `subnet` from `network` definition will be used if defined
+     * @return Optional IPv4 netmask; `subnet` from `network` definition will be used if defined
      * 
      */
     public Optional<Output<String>> netmask() {
@@ -77,14 +77,14 @@ public final class SwitchOtherIpConfigsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Optional, `subnet` from `network` definition will be used if defined
+     * Optional IPv6 prefix length; `subnet` from `network` definition will be used if defined
      * 
      */
     @Import(name="netmask6")
     private @Nullable Output<String> netmask6;
 
     /**
-     * @return Optional, `subnet` from `network` definition will be used if defined
+     * @return Optional IPv6 prefix length; `subnet` from `network` definition will be used if defined
      * 
      */
     public Optional<Output<String>> netmask6() {
@@ -92,14 +92,14 @@ public final class SwitchOtherIpConfigsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * enum: `dhcp`, `static`
+     * IPv4 assignment mode for the additional Junos L3 presence
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return enum: `dhcp`, `static`
+     * @return IPv4 assignment mode for the additional Junos L3 presence
      * 
      */
     public Optional<Output<String>> type() {
@@ -107,14 +107,14 @@ public final class SwitchOtherIpConfigsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * enum: `autoconf`, `dhcp`, `disabled`, `static`
+     * IPv6 assignment mode for the additional Junos L3 presence
      * 
      */
     @Import(name="type6")
     private @Nullable Output<String> type6;
 
     /**
-     * @return enum: `autoconf`, `dhcp`, `disabled`, `static`
+     * @return IPv6 assignment mode for the additional Junos L3 presence
      * 
      */
     public Optional<Output<String>> type6() {
@@ -152,7 +152,7 @@ public final class SwitchOtherIpConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param evpnAnycast For EVPN, if anycast is desired
+         * @param evpnAnycast For EVPN, whether anycast is desired
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class SwitchOtherIpConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param evpnAnycast For EVPN, if anycast is desired
+         * @param evpnAnycast For EVPN, whether anycast is desired
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class SwitchOtherIpConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ip Required if `type`==`static`
+         * @param ip Required if `type`==`static`; IPv4 address for the additional Junos L3 presence
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class SwitchOtherIpConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ip Required if `type`==`static`
+         * @param ip Required if `type`==`static`; IPv4 address for the additional Junos L3 presence
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class SwitchOtherIpConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ip6 Required if `type6`==`static`
+         * @param ip6 Required if `type6`==`static`; IPv6 address for the additional Junos L3 presence
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class SwitchOtherIpConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ip6 Required if `type6`==`static`
+         * @param ip6 Required if `type6`==`static`; IPv6 address for the additional Junos L3 presence
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class SwitchOtherIpConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param netmask Optional, `subnet` from `network` definition will be used if defined
+         * @param netmask Optional IPv4 netmask; `subnet` from `network` definition will be used if defined
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class SwitchOtherIpConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param netmask Optional, `subnet` from `network` definition will be used if defined
+         * @param netmask Optional IPv4 netmask; `subnet` from `network` definition will be used if defined
          * 
          * @return builder
          * 
@@ -236,7 +236,7 @@ public final class SwitchOtherIpConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param netmask6 Optional, `subnet` from `network` definition will be used if defined
+         * @param netmask6 Optional IPv6 prefix length; `subnet` from `network` definition will be used if defined
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class SwitchOtherIpConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param netmask6 Optional, `subnet` from `network` definition will be used if defined
+         * @param netmask6 Optional IPv6 prefix length; `subnet` from `network` definition will be used if defined
          * 
          * @return builder
          * 
@@ -257,7 +257,7 @@ public final class SwitchOtherIpConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param type enum: `dhcp`, `static`
+         * @param type IPv4 assignment mode for the additional Junos L3 presence
          * 
          * @return builder
          * 
@@ -268,7 +268,7 @@ public final class SwitchOtherIpConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param type enum: `dhcp`, `static`
+         * @param type IPv4 assignment mode for the additional Junos L3 presence
          * 
          * @return builder
          * 
@@ -278,7 +278,7 @@ public final class SwitchOtherIpConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param type6 enum: `autoconf`, `dhcp`, `disabled`, `static`
+         * @param type6 IPv6 assignment mode for the additional Junos L3 presence
          * 
          * @return builder
          * 
@@ -289,7 +289,7 @@ public final class SwitchOtherIpConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param type6 enum: `autoconf`, `dhcp`, `disabled`, `static`
+         * @param type6 IPv6 assignment mode for the additional Junos L3 presence
          * 
          * @return builder
          * 

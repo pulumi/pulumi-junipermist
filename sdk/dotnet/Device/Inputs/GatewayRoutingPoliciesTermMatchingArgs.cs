@@ -26,6 +26,10 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
         [Input("communities")]
         private InputList<string>? _communities;
+
+        /// <summary>
+        /// BGP communities that routes must match
+        /// </summary>
         public InputList<string> Communities
         {
             get => _communities ?? (_communities = new InputList<string>());
@@ -34,6 +38,10 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
         [Input("networks")]
         private InputList<string>? _networks;
+
+        /// <summary>
+        /// Configured network names that routes must match
+        /// </summary>
         public InputList<string> Networks
         {
             get => _networks ?? (_networks = new InputList<string>());
@@ -44,7 +52,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _prefixes;
 
         /// <summary>
-        /// zero or more criteria/filter can be specified to match the term, all criteria have to be met
+        /// Route prefixes that routes must match
         /// </summary>
         public InputList<string> Prefixes
         {
@@ -64,6 +72,9 @@ namespace Pulumi.JuniperMist.Device.Inputs
             set => _protocols = value;
         }
 
+        /// <summary>
+        /// Existing route condition that must be satisfied before this term matches
+        /// </summary>
         [Input("routeExists")]
         public Input<Inputs.GatewayRoutingPoliciesTermMatchingRouteExistsArgs>? RouteExists { get; set; }
 
@@ -71,7 +82,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _vpnNeighborMacs;
 
         /// <summary>
-        /// overlay-facing criteria (used for BgpConfig where via=vpn)
+        /// Overlay neighbor MAC addresses used as match criteria for BGP sessions with `Via`==`Vpn`
         /// </summary>
         public InputList<string> VpnNeighborMacs
         {
@@ -79,6 +90,9 @@ namespace Pulumi.JuniperMist.Device.Inputs
             set => _vpnNeighborMacs = value;
         }
 
+        /// <summary>
+        /// SLA thresholds used when matching a VPN path
+        /// </summary>
         [Input("vpnPathSla")]
         public Input<Inputs.GatewayRoutingPoliciesTermMatchingVpnPathSlaArgs>? VpnPathSla { get; set; }
 
@@ -86,7 +100,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _vpnPaths;
 
         /// <summary>
-        /// overlay-facing criteria (used for BgpConfig where via=vpn). ordered-
+        /// Overlay path names used as match criteria for BGP sessions with `Via`==`Vpn`
         /// </summary>
         public InputList<string> VpnPaths
         {

@@ -14,6 +14,10 @@ namespace Pulumi.JuniperMist.Device.Inputs
     {
         [Input("networks")]
         private InputList<string>? _networks;
+
+        /// <summary>
+        /// Network names included in this gateway VRF instance
+        /// </summary>
         public InputList<string> Networks
         {
             get => _networks ?? (_networks = new InputList<string>());

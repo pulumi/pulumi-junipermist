@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? Protocol;
         /// <summary>
-        /// Matched destination subnets and/or IP Addresses
+        /// Destination subnets or IP addresses matched by this WxLAN tag spec
         /// </summary>
         public readonly ImmutableArray<string> Subnets;
 

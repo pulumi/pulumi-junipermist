@@ -29,7 +29,8 @@ class NacPortalTemplateArgs:
         The set of arguments for constructing a NacPortalTemplate resource.
 
         :param pulumi.Input[_builtins.str] nacportal_id: Org NAC Portal ID
-        :param pulumi.Input[_builtins.str] alignment: defines alignment on portal. enum: `center`, `left`, `right`
+        :param pulumi.Input[_builtins.str] alignment: Text and content alignment for the NAC portal page
+        :param pulumi.Input[_builtins.str] color: Primary color used by the NAC portal template
         :param pulumi.Input[_builtins.str] logo: path to the logo image file. File must be a `png` image less than 100kB and image dimension must be less 500px x 200px (width x height).
         :param pulumi.Input[_builtins.bool] powered_by: Whether to hide "Powered by Juniper Mist" and email footers
         """
@@ -69,7 +70,7 @@ class NacPortalTemplateArgs:
     @pulumi.getter
     def alignment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        defines alignment on portal. enum: `center`, `left`, `right`
+        Text and content alignment for the NAC portal page
         """
         return pulumi.get(self, "alignment")
 
@@ -80,6 +81,9 @@ class NacPortalTemplateArgs:
     @_builtins.property
     @pulumi.getter
     def color(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Primary color used by the NAC portal template
+        """
         return pulumi.get(self, "color")
 
     @color.setter
@@ -123,7 +127,8 @@ class _NacPortalTemplateState:
         """
         Input properties used for looking up and filtering NacPortalTemplate resources.
 
-        :param pulumi.Input[_builtins.str] alignment: defines alignment on portal. enum: `center`, `left`, `right`
+        :param pulumi.Input[_builtins.str] alignment: Text and content alignment for the NAC portal page
+        :param pulumi.Input[_builtins.str] color: Primary color used by the NAC portal template
         :param pulumi.Input[_builtins.str] logo: path to the logo image file. File must be a `png` image less than 100kB and image dimension must be less 500px x 200px (width x height).
         :param pulumi.Input[_builtins.str] nacportal_id: Org NAC Portal ID
         :param pulumi.Input[_builtins.bool] powered_by: Whether to hide "Powered by Juniper Mist" and email footers
@@ -145,7 +150,7 @@ class _NacPortalTemplateState:
     @pulumi.getter
     def alignment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        defines alignment on portal. enum: `center`, `left`, `right`
+        Text and content alignment for the NAC portal page
         """
         return pulumi.get(self, "alignment")
 
@@ -156,6 +161,9 @@ class _NacPortalTemplateState:
     @_builtins.property
     @pulumi.getter
     def color(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Primary color used by the NAC portal template
+        """
         return pulumi.get(self, "color")
 
     @color.setter
@@ -267,7 +275,8 @@ class NacPortalTemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] alignment: defines alignment on portal. enum: `center`, `left`, `right`
+        :param pulumi.Input[_builtins.str] alignment: Text and content alignment for the NAC portal page
+        :param pulumi.Input[_builtins.str] color: Primary color used by the NAC portal template
         :param pulumi.Input[_builtins.str] logo: path to the logo image file. File must be a `png` image less than 100kB and image dimension must be less 500px x 200px (width x height).
         :param pulumi.Input[_builtins.str] nacportal_id: Org NAC Portal ID
         :param pulumi.Input[_builtins.bool] powered_by: Whether to hide "Powered by Juniper Mist" and email footers
@@ -385,7 +394,8 @@ class NacPortalTemplate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] alignment: defines alignment on portal. enum: `center`, `left`, `right`
+        :param pulumi.Input[_builtins.str] alignment: Text and content alignment for the NAC portal page
+        :param pulumi.Input[_builtins.str] color: Primary color used by the NAC portal template
         :param pulumi.Input[_builtins.str] logo: path to the logo image file. File must be a `png` image less than 100kB and image dimension must be less 500px x 200px (width x height).
         :param pulumi.Input[_builtins.str] nacportal_id: Org NAC Portal ID
         :param pulumi.Input[_builtins.bool] powered_by: Whether to hide "Powered by Juniper Mist" and email footers
@@ -406,13 +416,16 @@ class NacPortalTemplate(pulumi.CustomResource):
     @pulumi.getter
     def alignment(self) -> pulumi.Output[_builtins.str]:
         """
-        defines alignment on portal. enum: `center`, `left`, `right`
+        Text and content alignment for the NAC portal page
         """
         return pulumi.get(self, "alignment")
 
     @_builtins.property
     @pulumi.getter
     def color(self) -> pulumi.Output[_builtins.str]:
+        """
+        Primary color used by the NAC portal template
+        """
         return pulumi.get(self, "color")
 
     @_builtins.property

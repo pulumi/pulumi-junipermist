@@ -16,14 +16,14 @@ public final class SettingMistNacMdmArgs extends com.pulumi.resources.ResourceAr
     public static final SettingMistNacMdmArgs Empty = new SettingMistNacMdmArgs();
 
     /**
-     * CoA type to send. enum: `reauth`, `disconnect`
+     * Change of Authorization action sent for MDM posture changes
      * 
      */
     @Import(name="coaType")
     private @Nullable Output<String> coaType;
 
     /**
-     * @return CoA type to send. enum: `reauth`, `disconnect`
+     * @return Change of Authorization action sent for MDM posture changes
      * 
      */
     public Optional<Output<String>> coaType() {
@@ -55,7 +55,7 @@ public final class SettingMistNacMdmArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param coaType CoA type to send. enum: `reauth`, `disconnect`
+         * @param coaType Change of Authorization action sent for MDM posture changes
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class SettingMistNacMdmArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param coaType CoA type to send. enum: `reauth`, `disconnect`
+         * @param coaType Change of Authorization action sent for MDM posture changes
          * 
          * @return builder
          * 

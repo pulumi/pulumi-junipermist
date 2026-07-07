@@ -12,21 +12,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NetworktemplateSwitchMgmtTacacsTacplusServer {
+    /**
+     * @return Address or hostname of the TACACS+ authentication server
+     * 
+     */
     private @Nullable String host;
+    /**
+     * @return TCP port used by the TACACS+ authentication server
+     * 
+     */
     private @Nullable String port;
+    /**
+     * @return Shared secret used with this TACACS+ authentication server
+     * 
+     */
     private @Nullable String secret;
+    /**
+     * @return TACACS+ authentication server timeout, in seconds
+     * 
+     */
     private @Nullable Integer timeout;
 
     private NetworktemplateSwitchMgmtTacacsTacplusServer() {}
+    /**
+     * @return Address or hostname of the TACACS+ authentication server
+     * 
+     */
     public Optional<String> host() {
         return Optional.ofNullable(this.host);
     }
+    /**
+     * @return TCP port used by the TACACS+ authentication server
+     * 
+     */
     public Optional<String> port() {
         return Optional.ofNullable(this.port);
     }
+    /**
+     * @return Shared secret used with this TACACS+ authentication server
+     * 
+     */
     public Optional<String> secret() {
         return Optional.ofNullable(this.secret);
     }
+    /**
+     * @return TACACS+ authentication server timeout, in seconds
+     * 
+     */
     public Optional<Integer> timeout() {
         return Optional.ofNullable(this.timeout);
     }

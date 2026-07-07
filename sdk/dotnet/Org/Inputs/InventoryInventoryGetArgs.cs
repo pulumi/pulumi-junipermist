@@ -48,6 +48,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("model")]
         public Input<string>? Model { get; set; }
 
+        /// <summary>
+        /// Unique identifier of a Mist organization
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 

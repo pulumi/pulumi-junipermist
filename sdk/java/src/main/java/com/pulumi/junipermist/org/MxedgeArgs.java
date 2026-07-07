@@ -31,116 +31,180 @@ public final class MxedgeArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final MxedgeArgs Empty = new MxedgeArgs();
 
+    /**
+     * Registration claim code for the Mist Edge
+     * 
+     */
     @Import(name="claimCode")
     private @Nullable Output<String> claimCode;
 
+    /**
+     * @return Registration claim code for the Mist Edge
+     * 
+     */
     public Optional<Output<String>> claimCode() {
         return Optional.ofNullable(this.claimCode);
     }
 
+    /**
+     * Mist Edge hardware or virtual appliance model
+     * 
+     */
     @Import(name="model")
     private @Nullable Output<String> model;
 
+    /**
+     * @return Mist Edge hardware or virtual appliance model
+     * 
+     */
     public Optional<Output<String>> model() {
         return Optional.ofNullable(this.model);
     }
 
     /**
-     * MxCluster this MxEdge belongs to
+     * Mist Edge cluster identifier that this appliance belongs to
      * 
      */
     @Import(name="mxclusterId")
     private @Nullable Output<String> mxclusterId;
 
     /**
-     * @return MxCluster this MxEdge belongs to
+     * @return Mist Edge cluster identifier that this appliance belongs to
      * 
      */
     public Optional<Output<String>> mxclusterId() {
         return Optional.ofNullable(this.mxclusterId);
     }
 
+    /**
+     * Management credentials and settings for the Mist Edge
+     * 
+     */
     @Import(name="mxedgeMgmt")
     private @Nullable Output<MxedgeMxedgeMgmtArgs> mxedgeMgmt;
 
+    /**
+     * @return Management credentials and settings for the Mist Edge
+     * 
+     */
     public Optional<Output<MxedgeMxedgeMgmtArgs>> mxedgeMgmt() {
         return Optional.ofNullable(this.mxedgeMgmt);
     }
 
+    /**
+     * Display name of the Mist Edge
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Display name of the Mist Edge
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Free-form notes for the Mist Edge
+     * 
+     */
     @Import(name="notes")
     private @Nullable Output<String> notes;
 
+    /**
+     * @return Free-form notes for the Mist Edge
+     * 
+     */
     public Optional<Output<String>> notes() {
         return Optional.ofNullable(this.notes);
     }
 
+    /**
+     * Time synchronization servers used by the Mist Edge
+     * 
+     */
     @Import(name="ntpServers")
     private @Nullable Output<List<String>> ntpServers;
 
+    /**
+     * @return Time synchronization servers used by the Mist Edge
+     * 
+     */
     public Optional<Output<List<String>>> ntpServers() {
         return Optional.ofNullable(this.ntpServers);
     }
 
     /**
-     * IPconfiguration of the Mist Edge out-of*band management interface
+     * Out-of-band management IP configuration for the Mist Edge
      * 
      */
     @Import(name="oobIpConfig")
     private @Nullable Output<MxedgeOobIpConfigArgs> oobIpConfig;
 
     /**
-     * @return IPconfiguration of the Mist Edge out-of*band management interface
+     * @return Out-of-band management IP configuration for the Mist Edge
      * 
      */
     public Optional<Output<MxedgeOobIpConfigArgs>> oobIpConfig() {
         return Optional.ofNullable(this.oobIpConfig);
     }
 
+    /**
+     * Identifier of the org that owns the Mist Edge
+     * 
+     */
     @Import(name="orgId", required=true)
     private Output<String> orgId;
 
+    /**
+     * @return Identifier of the org that owns the Mist Edge
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }
 
     /**
-     * Proxy Configuration to talk to Mist
+     * Network proxy settings used by the Mist Edge
      * 
      */
     @Import(name="proxy")
     private @Nullable Output<MxedgeProxyArgs> proxy;
 
     /**
-     * @return Proxy Configuration to talk to Mist
+     * @return Network proxy settings used by the Mist Edge
      * 
      */
     public Optional<Output<MxedgeProxyArgs>> proxy() {
         return Optional.ofNullable(this.proxy);
     }
 
+    /**
+     * Identifier of the site when the Mist Edge is site-scoped
+     * 
+     */
     @Import(name="siteId")
     private @Nullable Output<String> siteId;
 
+    /**
+     * @return Identifier of the site when the Mist Edge is site-scoped
+     * 
+     */
     public Optional<Output<String>> siteId() {
         return Optional.ofNullable(this.siteId);
     }
 
     /**
-     * Global and per-VLAN. Property key is the VLAN ID
+     * DHCP relay or server settings for Mist Tunneled VLANs
      * 
      */
     @Import(name="tuntermDhcpdConfig")
     private @Nullable Output<Map<String,MxedgeTuntermDhcpdConfigArgs>> tuntermDhcpdConfig;
 
     /**
-     * @return Global and per-VLAN. Property key is the VLAN ID
+     * @return DHCP relay or server settings for Mist Tunneled VLANs
      * 
      */
     public Optional<Output<Map<String,MxedgeTuntermDhcpdConfigArgs>>> tuntermDhcpdConfig() {
@@ -148,52 +212,76 @@ public final class MxedgeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Property key is a CIDR
+     * Extra routes for Mist Tunneled VLAN traffic; property key is a CIDR
      * 
      */
     @Import(name="tuntermExtraRoutes")
     private @Nullable Output<Map<String,MxedgeTuntermExtraRoutesArgs>> tuntermExtraRoutes;
 
     /**
-     * @return Property key is a CIDR
+     * @return Extra routes for Mist Tunneled VLAN traffic; property key is a CIDR
      * 
      */
     public Optional<Output<Map<String,MxedgeTuntermExtraRoutesArgs>>> tuntermExtraRoutes() {
         return Optional.ofNullable(this.tuntermExtraRoutes);
     }
 
+    /**
+     * IGMP snooping settings for Mist Tunneled VLANs
+     * 
+     */
     @Import(name="tuntermIgmpSnoopingConfig")
     private @Nullable Output<MxedgeTuntermIgmpSnoopingConfigArgs> tuntermIgmpSnoopingConfig;
 
+    /**
+     * @return IGMP snooping settings for Mist Tunneled VLANs
+     * 
+     */
     public Optional<Output<MxedgeTuntermIgmpSnoopingConfigArgs>> tuntermIgmpSnoopingConfig() {
         return Optional.ofNullable(this.tuntermIgmpSnoopingConfig);
     }
 
     /**
-     * IPconfiguration of the Mist Tunnel interface
+     * Tunnel termination IP configuration for the Mist Edge
      * 
      */
     @Import(name="tuntermIpConfig")
     private @Nullable Output<MxedgeTuntermIpConfigArgs> tuntermIpConfig;
 
     /**
-     * @return IPconfiguration of the Mist Tunnel interface
+     * @return Tunnel termination IP configuration for the Mist Edge
      * 
      */
     public Optional<Output<MxedgeTuntermIpConfigArgs>> tuntermIpConfig() {
         return Optional.ofNullable(this.tuntermIpConfig);
     }
 
+    /**
+     * Monitoring checks for tunnel termination reachability
+     * 
+     */
     @Import(name="tuntermMonitorings")
     private @Nullable Output<List<List<MxedgeTuntermMonitoringArgs>>> tuntermMonitorings;
 
+    /**
+     * @return Monitoring checks for tunnel termination reachability
+     * 
+     */
     public Optional<Output<List<List<MxedgeTuntermMonitoringArgs>>>> tuntermMonitorings() {
         return Optional.ofNullable(this.tuntermMonitorings);
     }
 
+    /**
+     * Multicast forwarding settings for tunnel termination
+     * 
+     */
     @Import(name="tuntermMulticastConfig")
     private @Nullable Output<MxedgeTuntermMulticastConfigArgs> tuntermMulticastConfig;
 
+    /**
+     * @return Multicast forwarding settings for tunnel termination
+     * 
+     */
     public Optional<Output<MxedgeTuntermMulticastConfigArgs>> tuntermMulticastConfig() {
         return Optional.ofNullable(this.tuntermMulticastConfig);
     }
@@ -214,14 +302,14 @@ public final class MxedgeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Ethernet port configurations
+     * Port configuration for tunnel termination traffic
      * 
      */
     @Import(name="tuntermPortConfig")
     private @Nullable Output<MxedgeTuntermPortConfigArgs> tuntermPortConfig;
 
     /**
-     * @return Ethernet port configurations
+     * @return Port configuration for tunnel termination traffic
      * 
      */
     public Optional<Output<MxedgeTuntermPortConfigArgs>> tuntermPortConfig() {
@@ -229,23 +317,31 @@ public final class MxedgeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If custom vlan settings are desired
+     * Switch VLAN settings for tunnel termination
      * 
      */
     @Import(name="tuntermSwitchConfig")
     private @Nullable Output<Map<String,MxedgeTuntermSwitchConfigArgs>> tuntermSwitchConfig;
 
     /**
-     * @return If custom vlan settings are desired
+     * @return Switch VLAN settings for tunnel termination
      * 
      */
     public Optional<Output<Map<String,MxedgeTuntermSwitchConfigArgs>>> tuntermSwitchConfig() {
         return Optional.ofNullable(this.tuntermSwitchConfig);
     }
 
+    /**
+     * Service version information reported by the Mist Edge
+     * 
+     */
     @Import(name="versions")
     private @Nullable Output<MxedgeVersionsArgs> versions;
 
+    /**
+     * @return Service version information reported by the Mist Edge
+     * 
+     */
     public Optional<Output<MxedgeVersionsArgs>> versions() {
         return Optional.ofNullable(this.versions);
     }
@@ -294,26 +390,50 @@ public final class MxedgeArgs extends com.pulumi.resources.ResourceArgs {
             $ = new MxedgeArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param claimCode Registration claim code for the Mist Edge
+         * 
+         * @return builder
+         * 
+         */
         public Builder claimCode(@Nullable Output<String> claimCode) {
             $.claimCode = claimCode;
             return this;
         }
 
+        /**
+         * @param claimCode Registration claim code for the Mist Edge
+         * 
+         * @return builder
+         * 
+         */
         public Builder claimCode(String claimCode) {
             return claimCode(Output.of(claimCode));
         }
 
+        /**
+         * @param model Mist Edge hardware or virtual appliance model
+         * 
+         * @return builder
+         * 
+         */
         public Builder model(@Nullable Output<String> model) {
             $.model = model;
             return this;
         }
 
+        /**
+         * @param model Mist Edge hardware or virtual appliance model
+         * 
+         * @return builder
+         * 
+         */
         public Builder model(String model) {
             return model(Output.of(model));
         }
 
         /**
-         * @param mxclusterId MxCluster this MxEdge belongs to
+         * @param mxclusterId Mist Edge cluster identifier that this appliance belongs to
          * 
          * @return builder
          * 
@@ -324,7 +444,7 @@ public final class MxedgeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mxclusterId MxCluster this MxEdge belongs to
+         * @param mxclusterId Mist Edge cluster identifier that this appliance belongs to
          * 
          * @return builder
          * 
@@ -333,48 +453,102 @@ public final class MxedgeArgs extends com.pulumi.resources.ResourceArgs {
             return mxclusterId(Output.of(mxclusterId));
         }
 
+        /**
+         * @param mxedgeMgmt Management credentials and settings for the Mist Edge
+         * 
+         * @return builder
+         * 
+         */
         public Builder mxedgeMgmt(@Nullable Output<MxedgeMxedgeMgmtArgs> mxedgeMgmt) {
             $.mxedgeMgmt = mxedgeMgmt;
             return this;
         }
 
+        /**
+         * @param mxedgeMgmt Management credentials and settings for the Mist Edge
+         * 
+         * @return builder
+         * 
+         */
         public Builder mxedgeMgmt(MxedgeMxedgeMgmtArgs mxedgeMgmt) {
             return mxedgeMgmt(Output.of(mxedgeMgmt));
         }
 
+        /**
+         * @param name Display name of the Mist Edge
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Display name of the Mist Edge
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param notes Free-form notes for the Mist Edge
+         * 
+         * @return builder
+         * 
+         */
         public Builder notes(@Nullable Output<String> notes) {
             $.notes = notes;
             return this;
         }
 
+        /**
+         * @param notes Free-form notes for the Mist Edge
+         * 
+         * @return builder
+         * 
+         */
         public Builder notes(String notes) {
             return notes(Output.of(notes));
         }
 
+        /**
+         * @param ntpServers Time synchronization servers used by the Mist Edge
+         * 
+         * @return builder
+         * 
+         */
         public Builder ntpServers(@Nullable Output<List<String>> ntpServers) {
             $.ntpServers = ntpServers;
             return this;
         }
 
+        /**
+         * @param ntpServers Time synchronization servers used by the Mist Edge
+         * 
+         * @return builder
+         * 
+         */
         public Builder ntpServers(List<String> ntpServers) {
             return ntpServers(Output.of(ntpServers));
         }
 
+        /**
+         * @param ntpServers Time synchronization servers used by the Mist Edge
+         * 
+         * @return builder
+         * 
+         */
         public Builder ntpServers(String... ntpServers) {
             return ntpServers(List.of(ntpServers));
         }
 
         /**
-         * @param oobIpConfig IPconfiguration of the Mist Edge out-of*band management interface
+         * @param oobIpConfig Out-of-band management IP configuration for the Mist Edge
          * 
          * @return builder
          * 
@@ -385,7 +559,7 @@ public final class MxedgeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oobIpConfig IPconfiguration of the Mist Edge out-of*band management interface
+         * @param oobIpConfig Out-of-band management IP configuration for the Mist Edge
          * 
          * @return builder
          * 
@@ -394,17 +568,29 @@ public final class MxedgeArgs extends com.pulumi.resources.ResourceArgs {
             return oobIpConfig(Output.of(oobIpConfig));
         }
 
+        /**
+         * @param orgId Identifier of the org that owns the Mist Edge
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param orgId Identifier of the org that owns the Mist Edge
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }
 
         /**
-         * @param proxy Proxy Configuration to talk to Mist
+         * @param proxy Network proxy settings used by the Mist Edge
          * 
          * @return builder
          * 
@@ -415,7 +601,7 @@ public final class MxedgeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxy Proxy Configuration to talk to Mist
+         * @param proxy Network proxy settings used by the Mist Edge
          * 
          * @return builder
          * 
@@ -424,17 +610,29 @@ public final class MxedgeArgs extends com.pulumi.resources.ResourceArgs {
             return proxy(Output.of(proxy));
         }
 
+        /**
+         * @param siteId Identifier of the site when the Mist Edge is site-scoped
+         * 
+         * @return builder
+         * 
+         */
         public Builder siteId(@Nullable Output<String> siteId) {
             $.siteId = siteId;
             return this;
         }
 
+        /**
+         * @param siteId Identifier of the site when the Mist Edge is site-scoped
+         * 
+         * @return builder
+         * 
+         */
         public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
         }
 
         /**
-         * @param tuntermDhcpdConfig Global and per-VLAN. Property key is the VLAN ID
+         * @param tuntermDhcpdConfig DHCP relay or server settings for Mist Tunneled VLANs
          * 
          * @return builder
          * 
@@ -445,7 +643,7 @@ public final class MxedgeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tuntermDhcpdConfig Global and per-VLAN. Property key is the VLAN ID
+         * @param tuntermDhcpdConfig DHCP relay or server settings for Mist Tunneled VLANs
          * 
          * @return builder
          * 
@@ -455,7 +653,7 @@ public final class MxedgeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tuntermExtraRoutes Property key is a CIDR
+         * @param tuntermExtraRoutes Extra routes for Mist Tunneled VLAN traffic; property key is a CIDR
          * 
          * @return builder
          * 
@@ -466,7 +664,7 @@ public final class MxedgeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tuntermExtraRoutes Property key is a CIDR
+         * @param tuntermExtraRoutes Extra routes for Mist Tunneled VLAN traffic; property key is a CIDR
          * 
          * @return builder
          * 
@@ -475,17 +673,29 @@ public final class MxedgeArgs extends com.pulumi.resources.ResourceArgs {
             return tuntermExtraRoutes(Output.of(tuntermExtraRoutes));
         }
 
+        /**
+         * @param tuntermIgmpSnoopingConfig IGMP snooping settings for Mist Tunneled VLANs
+         * 
+         * @return builder
+         * 
+         */
         public Builder tuntermIgmpSnoopingConfig(@Nullable Output<MxedgeTuntermIgmpSnoopingConfigArgs> tuntermIgmpSnoopingConfig) {
             $.tuntermIgmpSnoopingConfig = tuntermIgmpSnoopingConfig;
             return this;
         }
 
+        /**
+         * @param tuntermIgmpSnoopingConfig IGMP snooping settings for Mist Tunneled VLANs
+         * 
+         * @return builder
+         * 
+         */
         public Builder tuntermIgmpSnoopingConfig(MxedgeTuntermIgmpSnoopingConfigArgs tuntermIgmpSnoopingConfig) {
             return tuntermIgmpSnoopingConfig(Output.of(tuntermIgmpSnoopingConfig));
         }
 
         /**
-         * @param tuntermIpConfig IPconfiguration of the Mist Tunnel interface
+         * @param tuntermIpConfig Tunnel termination IP configuration for the Mist Edge
          * 
          * @return builder
          * 
@@ -496,7 +706,7 @@ public final class MxedgeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tuntermIpConfig IPconfiguration of the Mist Tunnel interface
+         * @param tuntermIpConfig Tunnel termination IP configuration for the Mist Edge
          * 
          * @return builder
          * 
@@ -505,24 +715,54 @@ public final class MxedgeArgs extends com.pulumi.resources.ResourceArgs {
             return tuntermIpConfig(Output.of(tuntermIpConfig));
         }
 
+        /**
+         * @param tuntermMonitorings Monitoring checks for tunnel termination reachability
+         * 
+         * @return builder
+         * 
+         */
         public Builder tuntermMonitorings(@Nullable Output<List<List<MxedgeTuntermMonitoringArgs>>> tuntermMonitorings) {
             $.tuntermMonitorings = tuntermMonitorings;
             return this;
         }
 
+        /**
+         * @param tuntermMonitorings Monitoring checks for tunnel termination reachability
+         * 
+         * @return builder
+         * 
+         */
         public Builder tuntermMonitorings(List<List<MxedgeTuntermMonitoringArgs>> tuntermMonitorings) {
             return tuntermMonitorings(Output.of(tuntermMonitorings));
         }
 
+        /**
+         * @param tuntermMonitorings Monitoring checks for tunnel termination reachability
+         * 
+         * @return builder
+         * 
+         */
         public Builder tuntermMonitorings(List<MxedgeTuntermMonitoringArgs>... tuntermMonitorings) {
             return tuntermMonitorings(List.of(tuntermMonitorings));
         }
 
+        /**
+         * @param tuntermMulticastConfig Multicast forwarding settings for tunnel termination
+         * 
+         * @return builder
+         * 
+         */
         public Builder tuntermMulticastConfig(@Nullable Output<MxedgeTuntermMulticastConfigArgs> tuntermMulticastConfig) {
             $.tuntermMulticastConfig = tuntermMulticastConfig;
             return this;
         }
 
+        /**
+         * @param tuntermMulticastConfig Multicast forwarding settings for tunnel termination
+         * 
+         * @return builder
+         * 
+         */
         public Builder tuntermMulticastConfig(MxedgeTuntermMulticastConfigArgs tuntermMulticastConfig) {
             return tuntermMulticastConfig(Output.of(tuntermMulticastConfig));
         }
@@ -549,7 +789,7 @@ public final class MxedgeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tuntermPortConfig Ethernet port configurations
+         * @param tuntermPortConfig Port configuration for tunnel termination traffic
          * 
          * @return builder
          * 
@@ -560,7 +800,7 @@ public final class MxedgeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tuntermPortConfig Ethernet port configurations
+         * @param tuntermPortConfig Port configuration for tunnel termination traffic
          * 
          * @return builder
          * 
@@ -570,7 +810,7 @@ public final class MxedgeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tuntermSwitchConfig If custom vlan settings are desired
+         * @param tuntermSwitchConfig Switch VLAN settings for tunnel termination
          * 
          * @return builder
          * 
@@ -581,7 +821,7 @@ public final class MxedgeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tuntermSwitchConfig If custom vlan settings are desired
+         * @param tuntermSwitchConfig Switch VLAN settings for tunnel termination
          * 
          * @return builder
          * 
@@ -590,11 +830,23 @@ public final class MxedgeArgs extends com.pulumi.resources.ResourceArgs {
             return tuntermSwitchConfig(Output.of(tuntermSwitchConfig));
         }
 
+        /**
+         * @param versions Service version information reported by the Mist Edge
+         * 
+         * @return builder
+         * 
+         */
         public Builder versions(@Nullable Output<MxedgeVersionsArgs> versions) {
             $.versions = versions;
             return this;
         }
 
+        /**
+         * @param versions Service version information reported by the Mist Edge
+         * 
+         * @return builder
+         * 
+         */
         public Builder versions(MxedgeVersionsArgs versions) {
             return versions(Output.of(versions));
         }

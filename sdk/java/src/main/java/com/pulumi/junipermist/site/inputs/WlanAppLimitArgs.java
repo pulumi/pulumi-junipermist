@@ -35,9 +35,17 @@ public final class WlanAppLimitArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.apps);
     }
 
+    /**
+     * Whether application bandwidth limits are enabled for this WLAN
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether application bandwidth limits are enabled for this WLAN
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -106,11 +114,23 @@ public final class WlanAppLimitArgs extends com.pulumi.resources.ResourceArgs {
             return apps(Output.of(apps));
         }
 
+        /**
+         * @param enabled Whether application bandwidth limits are enabled for this WLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether application bandwidth limits are enabled for this WLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

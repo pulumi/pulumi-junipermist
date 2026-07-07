@@ -14,6 +14,10 @@ namespace Pulumi.JuniperMist.Org.Inputs
     {
         [Input("attackNames")]
         private InputList<string>? _attackNames;
+
+        /// <summary>
+        /// Signature names matched by the IDP profile overwrite
+        /// </summary>
         public InputList<string> AttackNames
         {
             get => _attackNames ?? (_attackNames = new InputList<string>());
@@ -22,6 +26,10 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
         [Input("dstSubnets")]
         private InputList<string>? _dstSubnets;
+
+        /// <summary>
+        /// Destination subnets matched by the IDP profile overwrite
+        /// </summary>
         public InputList<string> DstSubnets
         {
             get => _dstSubnets ?? (_dstSubnets = new InputList<string>());
@@ -30,6 +38,10 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
         [Input("severities")]
         private InputList<string>? _severities;
+
+        /// <summary>
+        /// Threat levels matched by the IDP profile overwrite
+        /// </summary>
         public InputList<string> Severities
         {
             get => _severities ?? (_severities = new InputList<string>());

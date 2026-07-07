@@ -15,41 +15,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NetworktemplateSwitchMgmtTacacs {
+    /**
+     * @return TACACS+ accounting servers used for switch management sessions
+     * 
+     */
     private @Nullable List<NetworktemplateSwitchMgmtTacacsAcctServer> acctServers;
     /**
-     * @return enum: `admin`, `helpdesk`, `none`, `read`
+     * @return Default switch-management role to use for TACACS+ logins
      * 
      */
     private @Nullable String defaultRole;
+    /**
+     * @return Whether TACACS+ is enabled for switch management authentication
+     * 
+     */
     private @Nullable Boolean enabled;
     /**
-     * @return Which network the TACACS server resides
+     * @return Source network used for connectivity to the TACACS+ servers
      * 
      */
     private @Nullable String network;
+    /**
+     * @return TACACS+ authentication servers used for switch management logins
+     * 
+     */
     private @Nullable List<NetworktemplateSwitchMgmtTacacsTacplusServer> tacplusServers;
 
     private NetworktemplateSwitchMgmtTacacs() {}
+    /**
+     * @return TACACS+ accounting servers used for switch management sessions
+     * 
+     */
     public List<NetworktemplateSwitchMgmtTacacsAcctServer> acctServers() {
         return this.acctServers == null ? List.of() : this.acctServers;
     }
     /**
-     * @return enum: `admin`, `helpdesk`, `none`, `read`
+     * @return Default switch-management role to use for TACACS+ logins
      * 
      */
     public Optional<String> defaultRole() {
         return Optional.ofNullable(this.defaultRole);
     }
+    /**
+     * @return Whether TACACS+ is enabled for switch management authentication
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Which network the TACACS server resides
+     * @return Source network used for connectivity to the TACACS+ servers
      * 
      */
     public Optional<String> network() {
         return Optional.ofNullable(this.network);
     }
+    /**
+     * @return TACACS+ authentication servers used for switch management logins
+     * 
+     */
     public List<NetworktemplateSwitchMgmtTacacsTacplusServer> tacplusServers() {
         return this.tacplusServers == null ? List.of() : this.tacplusServers;
     }

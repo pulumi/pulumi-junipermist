@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AlarmtemplateRulesDelivery {
     /**
-     * @return List of additional email string to deliver the alarms via emails
+     * @return Additional email recipients for alarm delivery
      * 
      */
     private @Nullable List<String> additionalEmails;
@@ -37,7 +37,7 @@ public final class AlarmtemplateRulesDelivery {
 
     private AlarmtemplateRulesDelivery() {}
     /**
-     * @return List of additional email string to deliver the alarms via emails
+     * @return Additional email recipients for alarm delivery
      * 
      */
     public List<String> additionalEmails() {

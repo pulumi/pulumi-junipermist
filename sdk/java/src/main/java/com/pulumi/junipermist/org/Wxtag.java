@@ -82,148 +82,128 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:org/wxtag:Wxtag")
 public class Wxtag extends com.pulumi.resources.CustomResource {
     /**
-     * If `type`==`client`, Client MAC Address
+     * If `type`==`client`, Client MAC address
      * 
      */
     @Export(name="mac", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mac;
 
     /**
-     * @return If `type`==`client`, Client MAC Address
+     * @return If `type`==`client`, Client MAC address
      * 
      */
     public Output<Optional<String>> mac() {
         return Codegen.optional(this.mac);
     }
     /**
-     * required if `type`==`match`. enum: `apId`, `app`, `assetMac`, `clientMac`, `hostname`, `ipRangeSubnet`, `port`, `pskName`, `pskRole`, `radiusAttr`, `radiusClass`, `radiusGroup`, `radiusUsername`, `sdkclientUuid`, `wlanId`
+     * Required if `type`==`match`; attribute compared against `values`
      * 
      */
     @Export(name="match", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> match;
 
     /**
-     * @return required if `type`==`match`. enum: `apId`, `app`, `assetMac`, `clientMac`, `hostname`, `ipRangeSubnet`, `port`, `pskName`, `pskRole`, `radiusAttr`, `radiusClass`, `radiusGroup`, `radiusUsername`, `sdkclientUuid`, `wlanId`
+     * @return Required if `type`==`match`; attribute compared against `values`
      * 
      */
     public Output<Optional<String>> match() {
         return Codegen.optional(this.match);
     }
     /**
-     * The name
+     * Display name of the WxLAN tag
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name
+     * @return Display name of the WxLAN tag
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * required if `type`==`match`, type of tag (inclusive/exclusive). enum: `in`, `notIn`
+     * Required if `type`==`match`; whether `values` are inclusive or exclusive matches
      * 
      */
     @Export(name="op", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> op;
 
     /**
-     * @return required if `type`==`match`, type of tag (inclusive/exclusive). enum: `in`, `notIn`
+     * @return Required if `type`==`match`; whether `values` are inclusive or exclusive matches
      * 
      */
     public Output<Optional<String>> op() {
         return Codegen.optional(this.op);
     }
+    /**
+     * Owning organization associated with this WxLAN tag
+     * 
+     */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
+    /**
+     * @return Owning organization associated with this WxLAN tag
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }
     /**
-     * If `type`==`spec`
+     * Traffic match specifications used when `type`==`spec`
      * 
      */
     @Export(name="specs", refs={List.class,WxtagSpec.class}, tree="[0,1]")
     private Output</* @Nullable */ List<WxtagSpec>> specs;
 
     /**
-     * @return If `type`==`spec`
+     * @return Traffic match specifications used when `type`==`spec`
      * 
      */
     public Output<Optional<List<WxtagSpec>>> specs() {
         return Codegen.optional(this.specs);
     }
     /**
-     * enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`
+     * Kind of WxLAN tag and how it is populated
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`
+     * @return Kind of WxLAN tag and how it is populated
      * 
      */
     public Output<String> type() {
         return this.type;
     }
     /**
-     * Required if `type`==`match` and
-     *   * `match`==`apId`: list of AP IDs
-     *   * `match`==`app`: list of Application Names
-     *   * `match`==`assetMac`: list of Asset MAC Addresses
-     *   * `match`==`clientMac`: list of Client MAC Addresses
-     *   * `match`==`hostname`: list of Resources Hostnames
-     *   * `match`==`ipRangeSubnet`: list of IP Addresses and/or CIDRs
-     *   * `match`==`pskName`: list of PSK Names
-     *   * `match`==`pskRole`: list of PSK Roles
-     *   * `match`==`port`: list of Ports or Port Ranges
-     *   * `match`==`radiusAttr`: list of RADIUS Attributes. The values are [ &#34;6=1&#34;, &#34;26=10.2.3.4&#34; ], this support other RADIUS attributes where we know the type
-     *   * `match`==`radiusClass`: list of RADIUS Classes. This matches the ATTR-Class(25)
-     *   * `match`==`radiusGroup`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID, Airespace-ACL-Name (VendorID=14179, VendorType=6) / Aruba-User-Role (VendorID=14823, VendorType=1)
-     *   * `match`==`radiusUsername`: list of RADIUS Usernames. This matches the ATTR-User-Name(1)
-     *   * `match`==`sdkclientUuid`: list of SDK UUIDs
-     *   * `match`==`wlanId`: list of WLAN IDs
-     * 
-     * **Notes**:
-     * Variables are not allowed
+     * Comparison values for the selected `match` attribute when `type`==`match`
      * 
      */
     @Export(name="values", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> values;
 
     /**
-     * @return Required if `type`==`match` and
-     *   * `match`==`apId`: list of AP IDs
-     *   * `match`==`app`: list of Application Names
-     *   * `match`==`assetMac`: list of Asset MAC Addresses
-     *   * `match`==`clientMac`: list of Client MAC Addresses
-     *   * `match`==`hostname`: list of Resources Hostnames
-     *   * `match`==`ipRangeSubnet`: list of IP Addresses and/or CIDRs
-     *   * `match`==`pskName`: list of PSK Names
-     *   * `match`==`pskRole`: list of PSK Roles
-     *   * `match`==`port`: list of Ports or Port Ranges
-     *   * `match`==`radiusAttr`: list of RADIUS Attributes. The values are [ &#34;6=1&#34;, &#34;26=10.2.3.4&#34; ], this support other RADIUS attributes where we know the type
-     *   * `match`==`radiusClass`: list of RADIUS Classes. This matches the ATTR-Class(25)
-     *   * `match`==`radiusGroup`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID, Airespace-ACL-Name (VendorID=14179, VendorType=6) / Aruba-User-Role (VendorID=14823, VendorType=1)
-     *   * `match`==`radiusUsername`: list of RADIUS Usernames. This matches the ATTR-User-Name(1)
-     *   * `match`==`sdkclientUuid`: list of SDK UUIDs
-     *   * `match`==`wlanId`: list of WLAN IDs
-     * 
-     * **Notes**:
-     * Variables are not allowed
+     * @return Comparison values for the selected `match` attribute when `type`==`match`
      * 
      */
     public Output<Optional<List<String>>> values() {
         return Codegen.optional(this.values);
     }
+    /**
+     * Identifier of the VLAN associated with this WxLAN tag when `type`==`vlan`
+     * 
+     */
     @Export(name="vlanId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vlanId;
 
+    /**
+     * @return Identifier of the VLAN associated with this WxLAN tag when `type`==`vlan`
+     * 
+     */
     public Output<Optional<String>> vlanId() {
         return Codegen.optional(this.vlanId);
     }

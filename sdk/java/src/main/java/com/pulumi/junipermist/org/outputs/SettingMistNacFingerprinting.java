@@ -28,7 +28,7 @@ public final class SettingMistNacFingerprinting {
      */
     private @Nullable Boolean generateWirelessCoa;
     /**
-     * @return enum: `reauth`, `disconnect`
+     * @return Change of Authorization action sent to wireless clients when fingerprints change
      * 
      */
     private @Nullable String wirelessCoaType;
@@ -56,7 +56,7 @@ public final class SettingMistNacFingerprinting {
         return Optional.ofNullable(this.generateWirelessCoa);
     }
     /**
-     * @return enum: `reauth`, `disconnect`
+     * @return Change of Authorization action sent to wireless clients when fingerprints change
      * 
      */
     public Optional<String> wirelessCoaType() {

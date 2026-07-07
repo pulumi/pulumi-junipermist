@@ -13,19 +13,19 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class DeviceprofileApPortConfigMistNacArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+        /// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled.
         /// </summary>
         [Input("acctInterimInterval")]
         public Input<int>? AcctInterimInterval { get; set; }
 
         /// <summary>
-        /// Radius auth session retries. Following fast timers are set if `FastDot1xTimers` knob is enabled. "retries" are set to value of `AuthServersTimeout`. "max-requests" is also set when setting `AuthServersRetries` is set to default value to 3.
+        /// RADIUS auth session retries. Following fast timers are set if `FastDot1xTimers` knob is enabled. "retries" are set to value of `AuthServersTimeout`. "max-requests" is also set when setting `AuthServersRetries` is set to default value to 3.
         /// </summary>
         [Input("authServersRetries")]
         public Input<int>? AuthServersRetries { get; set; }
 
         /// <summary>
-        /// Radius auth session timeout. Following fast timers are set if `FastDot1xTimers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `AuthServersTimeout`. "supplicant-timeout" is also set when setting `AuthServersTimeout` is set to default value of 10.
+        /// RADIUS auth session timeout. Following fast timers are set if `FastDot1xTimers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `AuthServersTimeout`. "supplicant-timeout" is also set when setting `AuthServersTimeout` is set to default value of 10.
         /// </summary>
         [Input("authServersTimeout")]
         public Input<int>? AuthServersTimeout { get; set; }

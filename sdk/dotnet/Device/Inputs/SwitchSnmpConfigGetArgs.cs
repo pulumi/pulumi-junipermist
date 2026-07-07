@@ -14,41 +14,70 @@ namespace Pulumi.JuniperMist.Device.Inputs
     {
         [Input("clientLists")]
         private InputList<Inputs.SwitchSnmpConfigClientListGetArgs>? _clientLists;
+
+        /// <summary>
+        /// SNMP client allowlists that can be referenced by communities
+        /// </summary>
         public InputList<Inputs.SwitchSnmpConfigClientListGetArgs> ClientLists
         {
             get => _clientLists ?? (_clientLists = new InputList<Inputs.SwitchSnmpConfigClientListGetArgs>());
             set => _clientLists = value;
         }
 
+        /// <summary>
+        /// Administrative contact string advertised through SNMP
+        /// </summary>
         [Input("contact")]
         public Input<string>? Contact { get; set; }
 
+        /// <summary>
+        /// Device description string advertised through SNMP
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Whether SNMP is enabled
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// SNMP engine ID used for SNMPv3
+        /// </summary>
         [Input("engineId")]
         public Input<string>? EngineId { get; set; }
 
         /// <summary>
-        /// enum: `Local`, `UseMacAddress`
+        /// Method used to derive the SNMP engine ID
         /// </summary>
         [Input("engineIdType")]
         public Input<string>? EngineIdType { get; set; }
 
+        /// <summary>
+        /// Physical location string advertised through SNMP
+        /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
+        /// <summary>
+        /// System name advertised through SNMP
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Management network used for SNMP traffic
+        /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
 
         [Input("trapGroups")]
         private InputList<Inputs.SwitchSnmpConfigTrapGroupGetArgs>? _trapGroups;
+
+        /// <summary>
+        /// SNMP trap group definitions
+        /// </summary>
         public InputList<Inputs.SwitchSnmpConfigTrapGroupGetArgs> TrapGroups
         {
             get => _trapGroups ?? (_trapGroups = new InputList<Inputs.SwitchSnmpConfigTrapGroupGetArgs>());
@@ -57,17 +86,28 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
         [Input("v2cConfigs")]
         private InputList<Inputs.SwitchSnmpConfigV2cConfigGetArgs>? _v2cConfigs;
+
+        /// <summary>
+        /// SNMPv2c community configuration entries for this SNMP profile
+        /// </summary>
         public InputList<Inputs.SwitchSnmpConfigV2cConfigGetArgs> V2cConfigs
         {
             get => _v2cConfigs ?? (_v2cConfigs = new InputList<Inputs.SwitchSnmpConfigV2cConfigGetArgs>());
             set => _v2cConfigs = value;
         }
 
+        /// <summary>
+        /// SNMPv3 user, VACM, notify, and target configuration
+        /// </summary>
         [Input("v3Config")]
         public Input<Inputs.SwitchSnmpConfigV3ConfigGetArgs>? V3Config { get; set; }
 
         [Input("views")]
         private InputList<Inputs.SwitchSnmpConfigViewGetArgs>? _views;
+
+        /// <summary>
+        /// SNMP MIB view definitions
+        /// </summary>
         public InputList<Inputs.SwitchSnmpConfigViewGetArgs> Views
         {
             get => _views ?? (_views = new InputList<Inputs.SwitchSnmpConfigViewGetArgs>());

@@ -12,11 +12,14 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class SettingPcapArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Storage bucket name used for organization packet capture files
+        /// </summary>
         [Input("bucket")]
         public Input<string>? Bucket { get; set; }
 
         /// <summary>
-        /// Max_len of non-management packets to capture
+        /// Maximum length of non-management packets to capture, in bytes
         /// </summary>
         [Input("maxPktLen")]
         public Input<int>? MaxPktLen { get; set; }

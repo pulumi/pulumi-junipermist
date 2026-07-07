@@ -17,29 +17,45 @@ public final class MxclusterTuntermDhcpdConfigArgs extends com.pulumi.resources.
 
     public static final MxclusterTuntermDhcpdConfigArgs Empty = new MxclusterTuntermDhcpdConfigArgs();
 
+    /**
+     * Whether DHCP relay is enabled for this tunneled VLAN
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether DHCP relay is enabled for this tunneled VLAN
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * DHCP server IP addresses used as relay targets for this VLAN
+     * 
+     */
     @Import(name="servers")
     private @Nullable Output<List<String>> servers;
 
+    /**
+     * @return DHCP server IP addresses used as relay targets for this VLAN
+     * 
+     */
     public Optional<Output<List<String>>> servers() {
         return Optional.ofNullable(this.servers);
     }
 
     /**
-     * enum: `relay`
+     * DHCP forwarding mode for this tunneled VLAN
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return enum: `relay`
+     * @return DHCP forwarding mode for this tunneled VLAN
      * 
      */
     public Optional<Output<String>> type() {
@@ -72,30 +88,60 @@ public final class MxclusterTuntermDhcpdConfigArgs extends com.pulumi.resources.
             $ = new MxclusterTuntermDhcpdConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Whether DHCP relay is enabled for this tunneled VLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether DHCP relay is enabled for this tunneled VLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param servers DHCP server IP addresses used as relay targets for this VLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder servers(@Nullable Output<List<String>> servers) {
             $.servers = servers;
             return this;
         }
 
+        /**
+         * @param servers DHCP server IP addresses used as relay targets for this VLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder servers(List<String> servers) {
             return servers(Output.of(servers));
         }
 
+        /**
+         * @param servers DHCP server IP addresses used as relay targets for this VLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder servers(String... servers) {
             return servers(List.of(servers));
         }
 
         /**
-         * @param type enum: `relay`
+         * @param type DHCP forwarding mode for this tunneled VLAN
          * 
          * @return builder
          * 
@@ -106,7 +152,7 @@ public final class MxclusterTuntermDhcpdConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param type enum: `relay`
+         * @param type DHCP forwarding mode for this tunneled VLAN
          * 
          * @return builder
          * 

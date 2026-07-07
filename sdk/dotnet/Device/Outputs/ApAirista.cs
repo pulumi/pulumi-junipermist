@@ -21,6 +21,9 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// Required if enabled, Airista server host
         /// </summary>
         public readonly string? Host;
+        /// <summary>
+        /// Optional if enabled, Airista server port. Defaults to 1144
+        /// </summary>
         public readonly int? Port;
 
         [OutputConstructor]

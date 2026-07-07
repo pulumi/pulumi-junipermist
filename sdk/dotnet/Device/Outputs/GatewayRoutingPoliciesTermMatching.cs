@@ -17,24 +17,36 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
         /// </summary>
         public readonly ImmutableArray<string> AsPaths;
+        /// <summary>
+        /// BGP communities that routes must match
+        /// </summary>
         public readonly ImmutableArray<string> Communities;
+        /// <summary>
+        /// Configured network names that routes must match
+        /// </summary>
         public readonly ImmutableArray<string> Networks;
         /// <summary>
-        /// zero or more criteria/filter can be specified to match the term, all criteria have to be met
+        /// Route prefixes that routes must match
         /// </summary>
         public readonly ImmutableArray<string> Prefixes;
         /// <summary>
         /// enum: `Aggregate`, `Bgp`, `Direct`, `Ospf`, `Static` (SRX Only)
         /// </summary>
         public readonly ImmutableArray<string> Protocols;
+        /// <summary>
+        /// Existing route condition that must be satisfied before this term matches
+        /// </summary>
         public readonly Outputs.GatewayRoutingPoliciesTermMatchingRouteExists? RouteExists;
         /// <summary>
-        /// overlay-facing criteria (used for BgpConfig where via=vpn)
+        /// Overlay neighbor MAC addresses used as match criteria for BGP sessions with `Via`==`Vpn`
         /// </summary>
         public readonly ImmutableArray<string> VpnNeighborMacs;
+        /// <summary>
+        /// SLA thresholds used when matching a VPN path
+        /// </summary>
         public readonly Outputs.GatewayRoutingPoliciesTermMatchingVpnPathSla? VpnPathSla;
         /// <summary>
-        /// overlay-facing criteria (used for BgpConfig where via=vpn). ordered-
+        /// Overlay path names used as match criteria for BGP sessions with `Via`==`Vpn`
         /// </summary>
         public readonly ImmutableArray<string> VpnPaths;
 

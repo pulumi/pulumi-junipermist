@@ -24,6 +24,8 @@ class DeviceprofileAssignArgs:
                  org_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a DeviceprofileAssign resource.
+
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] macs: List of MAC addresses included in the request
         """
         pulumi.set(__self__, "deviceprofile_id", deviceprofile_id)
         pulumi.set(__self__, "macs", macs)
@@ -41,6 +43,9 @@ class DeviceprofileAssignArgs:
     @_builtins.property
     @pulumi.getter
     def macs(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        List of MAC addresses included in the request
+        """
         return pulumi.get(self, "macs")
 
     @macs.setter
@@ -65,6 +70,8 @@ class _DeviceprofileAssignState:
                  org_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DeviceprofileAssign resources.
+
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] macs: List of MAC addresses included in the request
         """
         if deviceprofile_id is not None:
             pulumi.set(__self__, "deviceprofile_id", deviceprofile_id)
@@ -85,6 +92,9 @@ class _DeviceprofileAssignState:
     @_builtins.property
     @pulumi.getter
     def macs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of MAC addresses included in the request
+        """
         return pulumi.get(self, "macs")
 
     @macs.setter
@@ -134,6 +144,7 @@ class DeviceprofileAssign(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] macs: List of MAC addresses included in the request
         """
         ...
     @overload
@@ -218,6 +229,7 @@ class DeviceprofileAssign(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] macs: List of MAC addresses included in the request
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -236,6 +248,9 @@ class DeviceprofileAssign(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def macs(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        List of MAC addresses included in the request
+        """
         return pulumi.get(self, "macs")
 
     @_builtins.property

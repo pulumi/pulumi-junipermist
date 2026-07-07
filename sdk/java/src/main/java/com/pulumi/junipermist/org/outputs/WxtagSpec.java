@@ -23,7 +23,7 @@ public final class WxtagSpec {
      */
     private @Nullable String protocol;
     /**
-     * @return Matched destination subnets and/or IP Addresses
+     * @return Destination subnets or IP addresses matched by this WxLAN tag spec
      * 
      */
     private @Nullable List<String> subnets;
@@ -44,7 +44,7 @@ public final class WxtagSpec {
         return Optional.ofNullable(this.protocol);
     }
     /**
-     * @return Matched destination subnets and/or IP Addresses
+     * @return Destination subnets or IP addresses matched by this WxLAN tag spec
      * 
      */
     public List<String> subnets() {

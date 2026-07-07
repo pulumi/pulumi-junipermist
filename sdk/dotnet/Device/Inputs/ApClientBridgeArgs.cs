@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class ApClientBridgeArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Credentials and security mode used when the AP connects as a wireless client bridge
+        /// </summary>
         [Input("auth")]
         public Input<Inputs.ApClientBridgeAuthArgs>? Auth { get; set; }
 
@@ -23,6 +26,9 @@ namespace Pulumi.JuniperMist.Device.Inputs
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// Uplink SSID used by the AP when client bridge mode is enabled
+        /// </summary>
         [Input("ssid")]
         public Input<string>? Ssid { get; set; }
 

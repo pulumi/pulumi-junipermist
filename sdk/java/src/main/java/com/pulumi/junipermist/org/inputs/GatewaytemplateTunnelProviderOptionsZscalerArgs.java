@@ -19,9 +19,17 @@ public final class GatewaytemplateTunnelProviderOptionsZscalerArgs extends com.p
 
     public static final GatewaytemplateTunnelProviderOptionsZscalerArgs Empty = new GatewaytemplateTunnelProviderOptionsZscalerArgs();
 
+    /**
+     * Whether Zscaler blocks internet access until the Acceptable Use Policy is accepted
+     * 
+     */
     @Import(name="aupBlockInternetUntilAccepted")
     private @Nullable Output<Boolean> aupBlockInternetUntilAccepted;
 
+    /**
+     * @return Whether Zscaler blocks internet access until the Acceptable Use Policy is accepted
+     * 
+     */
     public Optional<Output<Boolean>> aupBlockInternetUntilAccepted() {
         return Optional.ofNullable(this.aupBlockInternetUntilAccepted);
     }
@@ -147,14 +155,14 @@ public final class GatewaytemplateTunnelProviderOptionsZscalerArgs extends com.p
     }
 
     /**
-     * `sub-locations` can be used for specific uses cases to define different configuration based on the user network
+     * Per-network Zscaler sub-location settings
      * 
      */
     @Import(name="subLocations")
     private @Nullable Output<List<GatewaytemplateTunnelProviderOptionsZscalerSubLocationArgs>> subLocations;
 
     /**
-     * @return `sub-locations` can be used for specific uses cases to define different configuration based on the user network
+     * @return Per-network Zscaler sub-location settings
      * 
      */
     public Optional<Output<List<GatewaytemplateTunnelProviderOptionsZscalerSubLocationArgs>>> subLocations() {
@@ -274,11 +282,23 @@ public final class GatewaytemplateTunnelProviderOptionsZscalerArgs extends com.p
             $ = new GatewaytemplateTunnelProviderOptionsZscalerArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param aupBlockInternetUntilAccepted Whether Zscaler blocks internet access until the Acceptable Use Policy is accepted
+         * 
+         * @return builder
+         * 
+         */
         public Builder aupBlockInternetUntilAccepted(@Nullable Output<Boolean> aupBlockInternetUntilAccepted) {
             $.aupBlockInternetUntilAccepted = aupBlockInternetUntilAccepted;
             return this;
         }
 
+        /**
+         * @param aupBlockInternetUntilAccepted Whether Zscaler blocks internet access until the Acceptable Use Policy is accepted
+         * 
+         * @return builder
+         * 
+         */
         public Builder aupBlockInternetUntilAccepted(Boolean aupBlockInternetUntilAccepted) {
             return aupBlockInternetUntilAccepted(Output.of(aupBlockInternetUntilAccepted));
         }
@@ -452,7 +472,7 @@ public final class GatewaytemplateTunnelProviderOptionsZscalerArgs extends com.p
         }
 
         /**
-         * @param subLocations `sub-locations` can be used for specific uses cases to define different configuration based on the user network
+         * @param subLocations Per-network Zscaler sub-location settings
          * 
          * @return builder
          * 
@@ -463,7 +483,7 @@ public final class GatewaytemplateTunnelProviderOptionsZscalerArgs extends com.p
         }
 
         /**
-         * @param subLocations `sub-locations` can be used for specific uses cases to define different configuration based on the user network
+         * @param subLocations Per-network Zscaler sub-location settings
          * 
          * @return builder
          * 
@@ -473,7 +493,7 @@ public final class GatewaytemplateTunnelProviderOptionsZscalerArgs extends com.p
         }
 
         /**
-         * @param subLocations `sub-locations` can be used for specific uses cases to define different configuration based on the user network
+         * @param subLocations Per-network Zscaler sub-location settings
          * 
          * @return builder
          * 

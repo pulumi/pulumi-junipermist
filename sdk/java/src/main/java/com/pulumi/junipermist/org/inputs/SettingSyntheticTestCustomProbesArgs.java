@@ -17,14 +17,14 @@ public final class SettingSyntheticTestCustomProbesArgs extends com.pulumi.resou
     public static final SettingSyntheticTestCustomProbesArgs Empty = new SettingSyntheticTestCustomProbesArgs();
 
     /**
-     * enum: `auto`, `high`, `low`
+     * Probe aggressiveness level for this custom synthetic probe
      * 
      */
     @Import(name="aggressiveness")
     private @Nullable Output<String> aggressiveness;
 
     /**
-     * @return enum: `auto`, `high`, `low`
+     * @return Probe aggressiveness level for this custom synthetic probe
      * 
      */
     public Optional<Output<String>> aggressiveness() {
@@ -47,14 +47,14 @@ public final class SettingSyntheticTestCustomProbesArgs extends com.pulumi.resou
     }
 
     /**
-     * In milliseconds
+     * Response-time threshold for this custom probe, in milliseconds
      * 
      */
     @Import(name="threshold")
     private @Nullable Output<Integer> threshold;
 
     /**
-     * @return In milliseconds
+     * @return Response-time threshold for this custom probe, in milliseconds
      * 
      */
     public Optional<Output<Integer>> threshold() {
@@ -62,14 +62,14 @@ public final class SettingSyntheticTestCustomProbesArgs extends com.pulumi.resou
     }
 
     /**
-     * enum: `application`, `curl`, `icmp`, `reachability`, `tcp`
+     * Probe type used by this custom synthetic probe
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return enum: `application`, `curl`, `icmp`, `reachability`, `tcp`
+     * @return Probe type used by this custom synthetic probe
      * 
      */
     public Optional<Output<String>> type() {
@@ -104,7 +104,7 @@ public final class SettingSyntheticTestCustomProbesArgs extends com.pulumi.resou
         }
 
         /**
-         * @param aggressiveness enum: `auto`, `high`, `low`
+         * @param aggressiveness Probe aggressiveness level for this custom synthetic probe
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class SettingSyntheticTestCustomProbesArgs extends com.pulumi.resou
         }
 
         /**
-         * @param aggressiveness enum: `auto`, `high`, `low`
+         * @param aggressiveness Probe aggressiveness level for this custom synthetic probe
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class SettingSyntheticTestCustomProbesArgs extends com.pulumi.resou
         }
 
         /**
-         * @param threshold In milliseconds
+         * @param threshold Response-time threshold for this custom probe, in milliseconds
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class SettingSyntheticTestCustomProbesArgs extends com.pulumi.resou
         }
 
         /**
-         * @param threshold In milliseconds
+         * @param threshold Response-time threshold for this custom probe, in milliseconds
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class SettingSyntheticTestCustomProbesArgs extends com.pulumi.resou
         }
 
         /**
-         * @param type enum: `application`, `curl`, `icmp`, `reachability`, `tcp`
+         * @param type Probe type used by this custom synthetic probe
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class SettingSyntheticTestCustomProbesArgs extends com.pulumi.resou
         }
 
         /**
-         * @param type enum: `application`, `curl`, `icmp`, `reachability`, `tcp`
+         * @param type Probe type used by this custom synthetic probe
          * 
          * @return builder
          * 

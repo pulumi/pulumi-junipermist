@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class VpnPathsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `Broadband`, `Lte`
+        /// BFD profile used for this VPN path
         /// </summary>
         [Input("bfdProfile")]
         public Input<string>? BfdProfile { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? BfdUseTunnelMode { get; set; }
 
         /// <summary>
-        /// If different from the wan port
+        /// Source IP address for this VPN path, if different from the WAN port IP
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
@@ -34,7 +34,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputMap<Inputs.VpnPathsPeerPathsGetArgs>? _peerPaths;
 
         /// <summary>
-        /// If `Type`==`Mesh`, Property key is the Peer Interface name
+        /// Peer path preferences used when `Type`==`Mesh`
         /// </summary>
         public InputMap<Inputs.VpnPathsPeerPathsGetArgs> PeerPaths
         {
@@ -42,9 +42,15 @@ namespace Pulumi.JuniperMist.Org.Inputs
             set => _peerPaths = value;
         }
 
+        /// <summary>
+        /// Grouping index used to place this VPN path into a pod
+        /// </summary>
         [Input("pod")]
         public Input<int>? Pod { get; set; }
 
+        /// <summary>
+        /// Traffic shaping settings applied to this VPN path
+        /// </summary>
         [Input("trafficShaping")]
         public Input<Inputs.VpnPathsTrafficShapingGetArgs>? TrafficShaping { get; set; }
 

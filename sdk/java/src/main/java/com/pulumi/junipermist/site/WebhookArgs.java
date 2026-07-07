@@ -20,14 +20,14 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
     public static final WebhookArgs Empty = new WebhookArgs();
 
     /**
-     * Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+     * Asset filter identifiers used to restrict `asset-raw-rssi` webhook events
      * 
      */
     @Import(name="assetfilterIds")
     private @Nullable Output<List<String>> assetfilterIds;
 
     /**
-     * @return Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+     * @return Asset filter identifiers used to restrict `asset-raw-rssi` webhook events
      * 
      */
     public Optional<Output<List<String>>> assetfilterIds() {
@@ -65,14 +65,14 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the webhook
+     * Display name of the webhook
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the webhook
+     * @return Display name of the webhook
      * 
      */
     public Optional<Output<String>> name() {
@@ -80,14 +80,14 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required when `oauth2GrantType`==`clientCredentials`
+     * Required when `oauth2GrantType`==`clientCredentials`; OAuth2 client identifier used to request an access token
      * 
      */
     @Import(name="oauth2ClientId")
     private @Nullable Output<String> oauth2ClientId;
 
     /**
-     * @return Required when `oauth2GrantType`==`clientCredentials`
+     * @return Required when `oauth2GrantType`==`clientCredentials`; OAuth2 client identifier used to request an access token
      * 
      */
     public Optional<Output<String>> oauth2ClientId() {
@@ -95,14 +95,14 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required when `oauth2GrantType`==`clientCredentials`
+     * Required when `oauth2GrantType`==`clientCredentials`; OAuth2 client secret used to request an access token
      * 
      */
     @Import(name="oauth2ClientSecret")
     private @Nullable Output<String> oauth2ClientSecret;
 
     /**
-     * @return Required when `oauth2GrantType`==`clientCredentials`
+     * @return Required when `oauth2GrantType`==`clientCredentials`; OAuth2 client secret used to request an access token
      * 
      */
     public Optional<Output<String>> oauth2ClientSecret() {
@@ -110,14 +110,14 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * required when `type`==`oauth2`. enum: `clientCredentials`, `password`
+     * OAuth2 grant type used when `type`==`oauth2`
      * 
      */
     @Import(name="oauth2GrantType")
     private @Nullable Output<String> oauth2GrantType;
 
     /**
-     * @return required when `type`==`oauth2`. enum: `clientCredentials`, `password`
+     * @return OAuth2 grant type used when `type`==`oauth2`
      * 
      */
     public Optional<Output<String>> oauth2GrantType() {
@@ -125,14 +125,14 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required when `oauth2GrantType`==`password`
+     * Required when `oauth2GrantType`==`password`; password used for the OAuth2 token request
      * 
      */
     @Import(name="oauth2Password")
     private @Nullable Output<String> oauth2Password;
 
     /**
-     * @return Required when `oauth2GrantType`==`password`
+     * @return Required when `oauth2GrantType`==`password`; password used for the OAuth2 token request
      * 
      */
     public Optional<Output<String>> oauth2Password() {
@@ -140,14 +140,14 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required when `type`==`oauth2`, if provided, will be used in the token request
+     * OAuth2 scopes included in the token request when `type`==`oauth2`
      * 
      */
     @Import(name="oauth2Scopes")
     private @Nullable Output<List<String>> oauth2Scopes;
 
     /**
-     * @return Required when `type`==`oauth2`, if provided, will be used in the token request
+     * @return OAuth2 scopes included in the token request when `type`==`oauth2`
      * 
      */
     public Optional<Output<List<String>>> oauth2Scopes() {
@@ -155,14 +155,14 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required when `type`==`oauth2`
+     * Required when `type`==`oauth2`; token endpoint URL used to obtain the OAuth2 access token
      * 
      */
     @Import(name="oauth2TokenUrl")
     private @Nullable Output<String> oauth2TokenUrl;
 
     /**
-     * @return Required when `type`==`oauth2`
+     * @return Required when `type`==`oauth2`; token endpoint URL used to obtain the OAuth2 access token
      * 
      */
     public Optional<Output<String>> oauth2TokenUrl() {
@@ -170,14 +170,14 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required when `oauth2GrantType`==`password`
+     * Required when `oauth2GrantType`==`password`; username used for the OAuth2 token request
      * 
      */
     @Import(name="oauth2Username")
     private @Nullable Output<String> oauth2Username;
 
     /**
-     * @return Required when `oauth2GrantType`==`password`
+     * @return Required when `oauth2GrantType`==`password`; username used for the OAuth2 token request
      * 
      */
     public Optional<Output<String>> oauth2Username() {
@@ -214,9 +214,17 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.singleEventPerMessage);
     }
 
+    /**
+     * Site associated with this webhook when it is site-scoped
+     * 
+     */
     @Import(name="siteId", required=true)
     private Output<String> siteId;
 
+    /**
+     * @return Site associated with this webhook when it is site-scoped
+     * 
+     */
     public Output<String> siteId() {
         return this.siteId;
     }
@@ -252,23 +260,31 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
+     * Delivery mechanism used by this webhook
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
+     * @return Delivery mechanism used by this webhook
      * 
      */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
 
+    /**
+     * Destination URL that receives webhook deliveries
+     * 
+     */
     @Import(name="url", required=true)
     private Output<String> url;
 
+    /**
+     * @return Destination URL that receives webhook deliveries
+     * 
+     */
     public Output<String> url() {
         return this.url;
     }
@@ -331,7 +347,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param assetfilterIds Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+         * @param assetfilterIds Asset filter identifiers used to restrict `asset-raw-rssi` webhook events
          * 
          * @return builder
          * 
@@ -342,7 +358,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param assetfilterIds Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+         * @param assetfilterIds Asset filter identifiers used to restrict `asset-raw-rssi` webhook events
          * 
          * @return builder
          * 
@@ -352,7 +368,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param assetfilterIds Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+         * @param assetfilterIds Asset filter identifiers used to restrict `asset-raw-rssi` webhook events
          * 
          * @return builder
          * 
@@ -404,7 +420,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the webhook
+         * @param name Display name of the webhook
          * 
          * @return builder
          * 
@@ -415,7 +431,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the webhook
+         * @param name Display name of the webhook
          * 
          * @return builder
          * 
@@ -425,7 +441,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2ClientId Required when `oauth2GrantType`==`clientCredentials`
+         * @param oauth2ClientId Required when `oauth2GrantType`==`clientCredentials`; OAuth2 client identifier used to request an access token
          * 
          * @return builder
          * 
@@ -436,7 +452,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2ClientId Required when `oauth2GrantType`==`clientCredentials`
+         * @param oauth2ClientId Required when `oauth2GrantType`==`clientCredentials`; OAuth2 client identifier used to request an access token
          * 
          * @return builder
          * 
@@ -446,7 +462,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2ClientSecret Required when `oauth2GrantType`==`clientCredentials`
+         * @param oauth2ClientSecret Required when `oauth2GrantType`==`clientCredentials`; OAuth2 client secret used to request an access token
          * 
          * @return builder
          * 
@@ -457,7 +473,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2ClientSecret Required when `oauth2GrantType`==`clientCredentials`
+         * @param oauth2ClientSecret Required when `oauth2GrantType`==`clientCredentials`; OAuth2 client secret used to request an access token
          * 
          * @return builder
          * 
@@ -467,7 +483,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2GrantType required when `type`==`oauth2`. enum: `clientCredentials`, `password`
+         * @param oauth2GrantType OAuth2 grant type used when `type`==`oauth2`
          * 
          * @return builder
          * 
@@ -478,7 +494,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2GrantType required when `type`==`oauth2`. enum: `clientCredentials`, `password`
+         * @param oauth2GrantType OAuth2 grant type used when `type`==`oauth2`
          * 
          * @return builder
          * 
@@ -488,7 +504,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2Password Required when `oauth2GrantType`==`password`
+         * @param oauth2Password Required when `oauth2GrantType`==`password`; password used for the OAuth2 token request
          * 
          * @return builder
          * 
@@ -499,7 +515,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2Password Required when `oauth2GrantType`==`password`
+         * @param oauth2Password Required when `oauth2GrantType`==`password`; password used for the OAuth2 token request
          * 
          * @return builder
          * 
@@ -509,7 +525,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2Scopes Required when `type`==`oauth2`, if provided, will be used in the token request
+         * @param oauth2Scopes OAuth2 scopes included in the token request when `type`==`oauth2`
          * 
          * @return builder
          * 
@@ -520,7 +536,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2Scopes Required when `type`==`oauth2`, if provided, will be used in the token request
+         * @param oauth2Scopes OAuth2 scopes included in the token request when `type`==`oauth2`
          * 
          * @return builder
          * 
@@ -530,7 +546,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2Scopes Required when `type`==`oauth2`, if provided, will be used in the token request
+         * @param oauth2Scopes OAuth2 scopes included in the token request when `type`==`oauth2`
          * 
          * @return builder
          * 
@@ -540,7 +556,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2TokenUrl Required when `type`==`oauth2`
+         * @param oauth2TokenUrl Required when `type`==`oauth2`; token endpoint URL used to obtain the OAuth2 access token
          * 
          * @return builder
          * 
@@ -551,7 +567,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2TokenUrl Required when `type`==`oauth2`
+         * @param oauth2TokenUrl Required when `type`==`oauth2`; token endpoint URL used to obtain the OAuth2 access token
          * 
          * @return builder
          * 
@@ -561,7 +577,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2Username Required when `oauth2GrantType`==`password`
+         * @param oauth2Username Required when `oauth2GrantType`==`password`; username used for the OAuth2 token request
          * 
          * @return builder
          * 
@@ -572,7 +588,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2Username Required when `oauth2GrantType`==`password`
+         * @param oauth2Username Required when `oauth2GrantType`==`password`; username used for the OAuth2 token request
          * 
          * @return builder
          * 
@@ -623,11 +639,23 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
             return singleEventPerMessage(Output.of(singleEventPerMessage));
         }
 
+        /**
+         * @param siteId Site associated with this webhook when it is site-scoped
+         * 
+         * @return builder
+         * 
+         */
         public Builder siteId(Output<String> siteId) {
             $.siteId = siteId;
             return this;
         }
 
+        /**
+         * @param siteId Site associated with this webhook when it is site-scoped
+         * 
+         * @return builder
+         * 
+         */
         public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
         }
@@ -685,7 +713,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
+         * @param type Delivery mechanism used by this webhook
          * 
          * @return builder
          * 
@@ -696,7 +724,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
+         * @param type Delivery mechanism used by this webhook
          * 
          * @return builder
          * 
@@ -705,11 +733,23 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
             return type(Output.of(type));
         }
 
+        /**
+         * @param url Destination URL that receives webhook deliveries
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(Output<String> url) {
             $.url = url;
             return this;
         }
 
+        /**
+         * @param url Destination URL that receives webhook deliveries
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(String url) {
             return url(Output.of(url));
         }

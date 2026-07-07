@@ -14,31 +14,31 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class SwitchOtherIpConfigs
     {
         /// <summary>
-        /// For EVPN, if anycast is desired
+        /// For EVPN, whether anycast is desired
         /// </summary>
         public readonly bool? EvpnAnycast;
         /// <summary>
-        /// Required if `Type`==`Static`
+        /// Required if `Type`==`Static`; IPv4 address for the additional Junos L3 presence
         /// </summary>
         public readonly string? Ip;
         /// <summary>
-        /// Required if `Type6`==`Static`
+        /// Required if `Type6`==`Static`; IPv6 address for the additional Junos L3 presence
         /// </summary>
         public readonly string? Ip6;
         /// <summary>
-        /// Optional, `Subnet` from `Network` definition will be used if defined
+        /// Optional IPv4 netmask; `Subnet` from `Network` definition will be used if defined
         /// </summary>
         public readonly string? Netmask;
         /// <summary>
-        /// Optional, `Subnet` from `Network` definition will be used if defined
+        /// Optional IPv6 prefix length; `Subnet` from `Network` definition will be used if defined
         /// </summary>
         public readonly string? Netmask6;
         /// <summary>
-        /// enum: `Dhcp`, `Static`
+        /// IPv4 assignment mode for the additional Junos L3 presence
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// enum: `Autoconf`, `Dhcp`, `Disabled`, `Static`
+        /// IPv6 assignment mode for the additional Junos L3 presence
         /// </summary>
         public readonly string? Type6;
 

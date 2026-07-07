@@ -22,13 +22,17 @@ public final class GatewayTunnelConfigsAutoProvision {
      */
     private @Nullable Boolean enabled;
     /**
-     * @return API override for POP selection
+     * @return Geographic coordinate override used for tunnel POP selection
      * 
      */
     private @Nullable GatewayTunnelConfigsAutoProvisionLatlng latlng;
+    /**
+     * @return Main auto-provisioned tunnel endpoint settings
+     * 
+     */
     private @Nullable GatewayTunnelConfigsAutoProvisionPrimary primary;
     /**
-     * @return enum: `jse-ipsec`, `zscaler-ipsec`
+     * @return Tunnel provider used for automatic endpoint provisioning
      * 
      */
     private String provider;
@@ -37,6 +41,10 @@ public final class GatewayTunnelConfigsAutoProvision {
      * 
      */
     private @Nullable String region;
+    /**
+     * @return Backup auto-provisioned tunnel endpoint settings
+     * 
+     */
     private @Nullable GatewayTunnelConfigsAutoProvisionSecondary secondary;
     /**
      * @return if `provider`==`prisma-ipsec`. By default, we&#39;ll use the location of the site to determine the optimal Remote Network location, optionally, serviceConnection can be considered, then we&#39;ll also consider this along with the site location. Define serviceConnection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup &gt; Service Connections.
@@ -53,17 +61,21 @@ public final class GatewayTunnelConfigsAutoProvision {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return API override for POP selection
+     * @return Geographic coordinate override used for tunnel POP selection
      * 
      */
     public Optional<GatewayTunnelConfigsAutoProvisionLatlng> latlng() {
         return Optional.ofNullable(this.latlng);
     }
+    /**
+     * @return Main auto-provisioned tunnel endpoint settings
+     * 
+     */
     public Optional<GatewayTunnelConfigsAutoProvisionPrimary> primary() {
         return Optional.ofNullable(this.primary);
     }
     /**
-     * @return enum: `jse-ipsec`, `zscaler-ipsec`
+     * @return Tunnel provider used for automatic endpoint provisioning
      * 
      */
     public String provider() {
@@ -76,6 +88,10 @@ public final class GatewayTunnelConfigsAutoProvision {
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
+    /**
+     * @return Backup auto-provisioned tunnel endpoint settings
+     * 
+     */
     public Optional<GatewayTunnelConfigsAutoProvisionSecondary> secondary() {
         return Optional.ofNullable(this.secondary);
     }

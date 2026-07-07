@@ -27,35 +27,42 @@ import (
 type Mxcluster struct {
 	pulumi.CustomResourceState
 
-	// Configure cloud-assisted dynamic authorization service on this cluster of mist edges
-	MistDas    MxclusterMistDasPtrOutput    `pulumi:"mistDas"`
-	MistNac    MxclusterMistNacPtrOutput    `pulumi:"mistNac"`
+	// Dynamic authorization service settings for the cluster
+	MistDas MxclusterMistDasPtrOutput `pulumi:"mistDas"`
+	// NAC settings for the Mist Edge cluster
+	MistNac MxclusterMistNacPtrOutput `pulumi:"mistNac"`
+	// NAC Edge survivability settings for the cluster; requires `mistNac` to be enabled
+	MistNacedge MxclusterMistNacedgePtrOutput `pulumi:"mistNacedge"`
+	// Out-of-band management settings for Mist Edges in the cluster
 	MxedgeMgmt MxclusterMxedgeMgmtPtrOutput `pulumi:"mxedgeMgmt"`
-	Name       pulumi.StringOutput          `pulumi:"name"`
-	OrgId      pulumi.StringOutput          `pulumi:"orgId"`
-	// Proxy Configuration to talk to Mist
+	// Display name of the Mist Edge cluster
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Identifier of the org that owns the Mist Edge cluster
+	OrgId pulumi.StringOutput `pulumi:"orgId"`
+	// Network proxy settings used by Mist Edges in the cluster to communicate with the Mist Cloud
 	Proxy MxclusterProxyPtrOutput `pulumi:"proxy"`
-	// MxEdge RadSec Configuration
-	Radsec    MxclusterRadsecPtrOutput `pulumi:"radsec"`
+	// TLS RADIUS proxy settings for the Mist Edge cluster
+	Radsec MxclusterRadsecPtrOutput `pulumi:"radsec"`
+	// TLS keypair settings for RadSec on the Mist Edge cluster
 	RadsecTls MxclusterRadsecTlsOutput `pulumi:"radsecTls"`
-	SiteId    pulumi.StringPtrOutput   `pulumi:"siteId"`
-	// List of subnets where we allow AP to establish Mist Tunnels from
+	// Identifier of the site when the Mist Edge cluster is site-scoped
+	SiteId pulumi.StringPtrOutput `pulumi:"siteId"`
+	// AP source subnets allowed to establish Mist tunnels
 	TuntermApSubnets pulumi.StringArrayOutput `pulumi:"tuntermApSubnets"`
-	// DHCP server/relay configuration of Mist Tunneled VLANs. Property key is the VLAN ID
+	// DHCP relay or server settings for tunneled VLANs
 	TuntermDhcpdConfig MxclusterTuntermDhcpdConfigMapOutput `pulumi:"tuntermDhcpdConfig"`
-	// Extra routes for Mist Tunneled VLANs. Property key is a CIDR
+	// Extra routes for Mist Tunnel VLAN traffic
 	TuntermExtraRoutes MxclusterTuntermExtraRoutesMapOutput `pulumi:"tuntermExtraRoutes"`
-	// Hostnames or IPs where a Mist Tunnel will use as the Peer (i.e. they are reachable from AP)
+	// Hostnames or IP addresses used as Mist Tunnel peers
 	TuntermHosts pulumi.StringArrayOutput `pulumi:"tuntermHosts"`
-	// List of index of tunterm_hosts
+	// Explicit host ordering indexes used when ordered selection is configured
 	TuntermHostsOrders pulumi.IntArrayOutput `pulumi:"tuntermHostsOrders"`
-	// Ordering of tuntermHosts for mxedge within the same mxcluster. enum:
-	//   * `shuffle`: the ordering of tuntermHosts is randomized by the device''s MAC
-	//   * `shuffle-by-site`: shuffle by site_id+tunnel_id (so when client connects to a specific Tunnel, it will go to the same (order of) mxedge, and we load-balancing between tunnels)
-	//   * `ordered`: order decided by tunterm_hosts_order
-	TuntermHostsSelection     pulumi.StringOutput                        `pulumi:"tuntermHostsSelection"`
-	TuntermMonitoringDisabled pulumi.BoolPtrOutput                       `pulumi:"tuntermMonitoringDisabled"`
-	TuntermMonitorings        MxclusterTuntermMonitoringArrayArrayOutput `pulumi:"tuntermMonitorings"`
+	// Selection strategy for ordering tunnel termination hosts
+	TuntermHostsSelection pulumi.StringOutput `pulumi:"tuntermHostsSelection"`
+	// Whether tunnel termination monitoring is disabled for the cluster
+	TuntermMonitoringDisabled pulumi.BoolPtrOutput `pulumi:"tuntermMonitoringDisabled"`
+	// Monitoring checks for tunnel termination reachability
+	TuntermMonitorings MxclusterTuntermMonitoringArrayArrayOutput `pulumi:"tuntermMonitorings"`
 }
 
 // NewMxcluster registers a new resource with the given unique name, arguments, and options.
@@ -91,67 +98,81 @@ func GetMxcluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Mxcluster resources.
 type mxclusterState struct {
-	// Configure cloud-assisted dynamic authorization service on this cluster of mist edges
-	MistDas    *MxclusterMistDas    `pulumi:"mistDas"`
-	MistNac    *MxclusterMistNac    `pulumi:"mistNac"`
+	// Dynamic authorization service settings for the cluster
+	MistDas *MxclusterMistDas `pulumi:"mistDas"`
+	// NAC settings for the Mist Edge cluster
+	MistNac *MxclusterMistNac `pulumi:"mistNac"`
+	// NAC Edge survivability settings for the cluster; requires `mistNac` to be enabled
+	MistNacedge *MxclusterMistNacedge `pulumi:"mistNacedge"`
+	// Out-of-band management settings for Mist Edges in the cluster
 	MxedgeMgmt *MxclusterMxedgeMgmt `pulumi:"mxedgeMgmt"`
-	Name       *string              `pulumi:"name"`
-	OrgId      *string              `pulumi:"orgId"`
-	// Proxy Configuration to talk to Mist
+	// Display name of the Mist Edge cluster
+	Name *string `pulumi:"name"`
+	// Identifier of the org that owns the Mist Edge cluster
+	OrgId *string `pulumi:"orgId"`
+	// Network proxy settings used by Mist Edges in the cluster to communicate with the Mist Cloud
 	Proxy *MxclusterProxy `pulumi:"proxy"`
-	// MxEdge RadSec Configuration
-	Radsec    *MxclusterRadsec    `pulumi:"radsec"`
+	// TLS RADIUS proxy settings for the Mist Edge cluster
+	Radsec *MxclusterRadsec `pulumi:"radsec"`
+	// TLS keypair settings for RadSec on the Mist Edge cluster
 	RadsecTls *MxclusterRadsecTls `pulumi:"radsecTls"`
-	SiteId    *string             `pulumi:"siteId"`
-	// List of subnets where we allow AP to establish Mist Tunnels from
+	// Identifier of the site when the Mist Edge cluster is site-scoped
+	SiteId *string `pulumi:"siteId"`
+	// AP source subnets allowed to establish Mist tunnels
 	TuntermApSubnets []string `pulumi:"tuntermApSubnets"`
-	// DHCP server/relay configuration of Mist Tunneled VLANs. Property key is the VLAN ID
+	// DHCP relay or server settings for tunneled VLANs
 	TuntermDhcpdConfig map[string]MxclusterTuntermDhcpdConfig `pulumi:"tuntermDhcpdConfig"`
-	// Extra routes for Mist Tunneled VLANs. Property key is a CIDR
+	// Extra routes for Mist Tunnel VLAN traffic
 	TuntermExtraRoutes map[string]MxclusterTuntermExtraRoutes `pulumi:"tuntermExtraRoutes"`
-	// Hostnames or IPs where a Mist Tunnel will use as the Peer (i.e. they are reachable from AP)
+	// Hostnames or IP addresses used as Mist Tunnel peers
 	TuntermHosts []string `pulumi:"tuntermHosts"`
-	// List of index of tunterm_hosts
+	// Explicit host ordering indexes used when ordered selection is configured
 	TuntermHostsOrders []int `pulumi:"tuntermHostsOrders"`
-	// Ordering of tuntermHosts for mxedge within the same mxcluster. enum:
-	//   * `shuffle`: the ordering of tuntermHosts is randomized by the device''s MAC
-	//   * `shuffle-by-site`: shuffle by site_id+tunnel_id (so when client connects to a specific Tunnel, it will go to the same (order of) mxedge, and we load-balancing between tunnels)
-	//   * `ordered`: order decided by tunterm_hosts_order
-	TuntermHostsSelection     *string                        `pulumi:"tuntermHostsSelection"`
-	TuntermMonitoringDisabled *bool                          `pulumi:"tuntermMonitoringDisabled"`
-	TuntermMonitorings        [][]MxclusterTuntermMonitoring `pulumi:"tuntermMonitorings"`
+	// Selection strategy for ordering tunnel termination hosts
+	TuntermHostsSelection *string `pulumi:"tuntermHostsSelection"`
+	// Whether tunnel termination monitoring is disabled for the cluster
+	TuntermMonitoringDisabled *bool `pulumi:"tuntermMonitoringDisabled"`
+	// Monitoring checks for tunnel termination reachability
+	TuntermMonitorings [][]MxclusterTuntermMonitoring `pulumi:"tuntermMonitorings"`
 }
 
 type MxclusterState struct {
-	// Configure cloud-assisted dynamic authorization service on this cluster of mist edges
-	MistDas    MxclusterMistDasPtrInput
-	MistNac    MxclusterMistNacPtrInput
+	// Dynamic authorization service settings for the cluster
+	MistDas MxclusterMistDasPtrInput
+	// NAC settings for the Mist Edge cluster
+	MistNac MxclusterMistNacPtrInput
+	// NAC Edge survivability settings for the cluster; requires `mistNac` to be enabled
+	MistNacedge MxclusterMistNacedgePtrInput
+	// Out-of-band management settings for Mist Edges in the cluster
 	MxedgeMgmt MxclusterMxedgeMgmtPtrInput
-	Name       pulumi.StringPtrInput
-	OrgId      pulumi.StringPtrInput
-	// Proxy Configuration to talk to Mist
+	// Display name of the Mist Edge cluster
+	Name pulumi.StringPtrInput
+	// Identifier of the org that owns the Mist Edge cluster
+	OrgId pulumi.StringPtrInput
+	// Network proxy settings used by Mist Edges in the cluster to communicate with the Mist Cloud
 	Proxy MxclusterProxyPtrInput
-	// MxEdge RadSec Configuration
-	Radsec    MxclusterRadsecPtrInput
+	// TLS RADIUS proxy settings for the Mist Edge cluster
+	Radsec MxclusterRadsecPtrInput
+	// TLS keypair settings for RadSec on the Mist Edge cluster
 	RadsecTls MxclusterRadsecTlsPtrInput
-	SiteId    pulumi.StringPtrInput
-	// List of subnets where we allow AP to establish Mist Tunnels from
+	// Identifier of the site when the Mist Edge cluster is site-scoped
+	SiteId pulumi.StringPtrInput
+	// AP source subnets allowed to establish Mist tunnels
 	TuntermApSubnets pulumi.StringArrayInput
-	// DHCP server/relay configuration of Mist Tunneled VLANs. Property key is the VLAN ID
+	// DHCP relay or server settings for tunneled VLANs
 	TuntermDhcpdConfig MxclusterTuntermDhcpdConfigMapInput
-	// Extra routes for Mist Tunneled VLANs. Property key is a CIDR
+	// Extra routes for Mist Tunnel VLAN traffic
 	TuntermExtraRoutes MxclusterTuntermExtraRoutesMapInput
-	// Hostnames or IPs where a Mist Tunnel will use as the Peer (i.e. they are reachable from AP)
+	// Hostnames or IP addresses used as Mist Tunnel peers
 	TuntermHosts pulumi.StringArrayInput
-	// List of index of tunterm_hosts
+	// Explicit host ordering indexes used when ordered selection is configured
 	TuntermHostsOrders pulumi.IntArrayInput
-	// Ordering of tuntermHosts for mxedge within the same mxcluster. enum:
-	//   * `shuffle`: the ordering of tuntermHosts is randomized by the device''s MAC
-	//   * `shuffle-by-site`: shuffle by site_id+tunnel_id (so when client connects to a specific Tunnel, it will go to the same (order of) mxedge, and we load-balancing between tunnels)
-	//   * `ordered`: order decided by tunterm_hosts_order
-	TuntermHostsSelection     pulumi.StringPtrInput
+	// Selection strategy for ordering tunnel termination hosts
+	TuntermHostsSelection pulumi.StringPtrInput
+	// Whether tunnel termination monitoring is disabled for the cluster
 	TuntermMonitoringDisabled pulumi.BoolPtrInput
-	TuntermMonitorings        MxclusterTuntermMonitoringArrayArrayInput
+	// Monitoring checks for tunnel termination reachability
+	TuntermMonitorings MxclusterTuntermMonitoringArrayArrayInput
 }
 
 func (MxclusterState) ElementType() reflect.Type {
@@ -159,66 +180,78 @@ func (MxclusterState) ElementType() reflect.Type {
 }
 
 type mxclusterArgs struct {
-	// Configure cloud-assisted dynamic authorization service on this cluster of mist edges
-	MistDas    *MxclusterMistDas    `pulumi:"mistDas"`
-	MistNac    *MxclusterMistNac    `pulumi:"mistNac"`
+	// Dynamic authorization service settings for the cluster
+	MistDas *MxclusterMistDas `pulumi:"mistDas"`
+	// NAC settings for the Mist Edge cluster
+	MistNac *MxclusterMistNac `pulumi:"mistNac"`
+	// NAC Edge survivability settings for the cluster; requires `mistNac` to be enabled
+	MistNacedge *MxclusterMistNacedge `pulumi:"mistNacedge"`
+	// Out-of-band management settings for Mist Edges in the cluster
 	MxedgeMgmt *MxclusterMxedgeMgmt `pulumi:"mxedgeMgmt"`
-	Name       *string              `pulumi:"name"`
-	OrgId      string               `pulumi:"orgId"`
-	// Proxy Configuration to talk to Mist
+	// Display name of the Mist Edge cluster
+	Name *string `pulumi:"name"`
+	// Identifier of the org that owns the Mist Edge cluster
+	OrgId string `pulumi:"orgId"`
+	// Network proxy settings used by Mist Edges in the cluster to communicate with the Mist Cloud
 	Proxy *MxclusterProxy `pulumi:"proxy"`
-	// MxEdge RadSec Configuration
+	// TLS RADIUS proxy settings for the Mist Edge cluster
 	Radsec *MxclusterRadsec `pulumi:"radsec"`
-	SiteId *string          `pulumi:"siteId"`
-	// List of subnets where we allow AP to establish Mist Tunnels from
+	// Identifier of the site when the Mist Edge cluster is site-scoped
+	SiteId *string `pulumi:"siteId"`
+	// AP source subnets allowed to establish Mist tunnels
 	TuntermApSubnets []string `pulumi:"tuntermApSubnets"`
-	// DHCP server/relay configuration of Mist Tunneled VLANs. Property key is the VLAN ID
+	// DHCP relay or server settings for tunneled VLANs
 	TuntermDhcpdConfig map[string]MxclusterTuntermDhcpdConfig `pulumi:"tuntermDhcpdConfig"`
-	// Extra routes for Mist Tunneled VLANs. Property key is a CIDR
+	// Extra routes for Mist Tunnel VLAN traffic
 	TuntermExtraRoutes map[string]MxclusterTuntermExtraRoutes `pulumi:"tuntermExtraRoutes"`
-	// Hostnames or IPs where a Mist Tunnel will use as the Peer (i.e. they are reachable from AP)
+	// Hostnames or IP addresses used as Mist Tunnel peers
 	TuntermHosts []string `pulumi:"tuntermHosts"`
-	// List of index of tunterm_hosts
+	// Explicit host ordering indexes used when ordered selection is configured
 	TuntermHostsOrders []int `pulumi:"tuntermHostsOrders"`
-	// Ordering of tuntermHosts for mxedge within the same mxcluster. enum:
-	//   * `shuffle`: the ordering of tuntermHosts is randomized by the device''s MAC
-	//   * `shuffle-by-site`: shuffle by site_id+tunnel_id (so when client connects to a specific Tunnel, it will go to the same (order of) mxedge, and we load-balancing between tunnels)
-	//   * `ordered`: order decided by tunterm_hosts_order
-	TuntermHostsSelection     *string                        `pulumi:"tuntermHostsSelection"`
-	TuntermMonitoringDisabled *bool                          `pulumi:"tuntermMonitoringDisabled"`
-	TuntermMonitorings        [][]MxclusterTuntermMonitoring `pulumi:"tuntermMonitorings"`
+	// Selection strategy for ordering tunnel termination hosts
+	TuntermHostsSelection *string `pulumi:"tuntermHostsSelection"`
+	// Whether tunnel termination monitoring is disabled for the cluster
+	TuntermMonitoringDisabled *bool `pulumi:"tuntermMonitoringDisabled"`
+	// Monitoring checks for tunnel termination reachability
+	TuntermMonitorings [][]MxclusterTuntermMonitoring `pulumi:"tuntermMonitorings"`
 }
 
 // The set of arguments for constructing a Mxcluster resource.
 type MxclusterArgs struct {
-	// Configure cloud-assisted dynamic authorization service on this cluster of mist edges
-	MistDas    MxclusterMistDasPtrInput
-	MistNac    MxclusterMistNacPtrInput
+	// Dynamic authorization service settings for the cluster
+	MistDas MxclusterMistDasPtrInput
+	// NAC settings for the Mist Edge cluster
+	MistNac MxclusterMistNacPtrInput
+	// NAC Edge survivability settings for the cluster; requires `mistNac` to be enabled
+	MistNacedge MxclusterMistNacedgePtrInput
+	// Out-of-band management settings for Mist Edges in the cluster
 	MxedgeMgmt MxclusterMxedgeMgmtPtrInput
-	Name       pulumi.StringPtrInput
-	OrgId      pulumi.StringInput
-	// Proxy Configuration to talk to Mist
+	// Display name of the Mist Edge cluster
+	Name pulumi.StringPtrInput
+	// Identifier of the org that owns the Mist Edge cluster
+	OrgId pulumi.StringInput
+	// Network proxy settings used by Mist Edges in the cluster to communicate with the Mist Cloud
 	Proxy MxclusterProxyPtrInput
-	// MxEdge RadSec Configuration
+	// TLS RADIUS proxy settings for the Mist Edge cluster
 	Radsec MxclusterRadsecPtrInput
+	// Identifier of the site when the Mist Edge cluster is site-scoped
 	SiteId pulumi.StringPtrInput
-	// List of subnets where we allow AP to establish Mist Tunnels from
+	// AP source subnets allowed to establish Mist tunnels
 	TuntermApSubnets pulumi.StringArrayInput
-	// DHCP server/relay configuration of Mist Tunneled VLANs. Property key is the VLAN ID
+	// DHCP relay or server settings for tunneled VLANs
 	TuntermDhcpdConfig MxclusterTuntermDhcpdConfigMapInput
-	// Extra routes for Mist Tunneled VLANs. Property key is a CIDR
+	// Extra routes for Mist Tunnel VLAN traffic
 	TuntermExtraRoutes MxclusterTuntermExtraRoutesMapInput
-	// Hostnames or IPs where a Mist Tunnel will use as the Peer (i.e. they are reachable from AP)
+	// Hostnames or IP addresses used as Mist Tunnel peers
 	TuntermHosts pulumi.StringArrayInput
-	// List of index of tunterm_hosts
+	// Explicit host ordering indexes used when ordered selection is configured
 	TuntermHostsOrders pulumi.IntArrayInput
-	// Ordering of tuntermHosts for mxedge within the same mxcluster. enum:
-	//   * `shuffle`: the ordering of tuntermHosts is randomized by the device''s MAC
-	//   * `shuffle-by-site`: shuffle by site_id+tunnel_id (so when client connects to a specific Tunnel, it will go to the same (order of) mxedge, and we load-balancing between tunnels)
-	//   * `ordered`: order decided by tunterm_hosts_order
-	TuntermHostsSelection     pulumi.StringPtrInput
+	// Selection strategy for ordering tunnel termination hosts
+	TuntermHostsSelection pulumi.StringPtrInput
+	// Whether tunnel termination monitoring is disabled for the cluster
 	TuntermMonitoringDisabled pulumi.BoolPtrInput
-	TuntermMonitorings        MxclusterTuntermMonitoringArrayArrayInput
+	// Monitoring checks for tunnel termination reachability
+	TuntermMonitorings MxclusterTuntermMonitoringArrayArrayInput
 }
 
 func (MxclusterArgs) ElementType() reflect.Type {
@@ -308,82 +341,92 @@ func (o MxclusterOutput) ToMxclusterOutputWithContext(ctx context.Context) Mxclu
 	return o
 }
 
-// Configure cloud-assisted dynamic authorization service on this cluster of mist edges
+// Dynamic authorization service settings for the cluster
 func (o MxclusterOutput) MistDas() MxclusterMistDasPtrOutput {
 	return o.ApplyT(func(v *Mxcluster) MxclusterMistDasPtrOutput { return v.MistDas }).(MxclusterMistDasPtrOutput)
 }
 
+// NAC settings for the Mist Edge cluster
 func (o MxclusterOutput) MistNac() MxclusterMistNacPtrOutput {
 	return o.ApplyT(func(v *Mxcluster) MxclusterMistNacPtrOutput { return v.MistNac }).(MxclusterMistNacPtrOutput)
 }
 
+// NAC Edge survivability settings for the cluster; requires `mistNac` to be enabled
+func (o MxclusterOutput) MistNacedge() MxclusterMistNacedgePtrOutput {
+	return o.ApplyT(func(v *Mxcluster) MxclusterMistNacedgePtrOutput { return v.MistNacedge }).(MxclusterMistNacedgePtrOutput)
+}
+
+// Out-of-band management settings for Mist Edges in the cluster
 func (o MxclusterOutput) MxedgeMgmt() MxclusterMxedgeMgmtPtrOutput {
 	return o.ApplyT(func(v *Mxcluster) MxclusterMxedgeMgmtPtrOutput { return v.MxedgeMgmt }).(MxclusterMxedgeMgmtPtrOutput)
 }
 
+// Display name of the Mist Edge cluster
 func (o MxclusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Mxcluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Identifier of the org that owns the Mist Edge cluster
 func (o MxclusterOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Mxcluster) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// Proxy Configuration to talk to Mist
+// Network proxy settings used by Mist Edges in the cluster to communicate with the Mist Cloud
 func (o MxclusterOutput) Proxy() MxclusterProxyPtrOutput {
 	return o.ApplyT(func(v *Mxcluster) MxclusterProxyPtrOutput { return v.Proxy }).(MxclusterProxyPtrOutput)
 }
 
-// MxEdge RadSec Configuration
+// TLS RADIUS proxy settings for the Mist Edge cluster
 func (o MxclusterOutput) Radsec() MxclusterRadsecPtrOutput {
 	return o.ApplyT(func(v *Mxcluster) MxclusterRadsecPtrOutput { return v.Radsec }).(MxclusterRadsecPtrOutput)
 }
 
+// TLS keypair settings for RadSec on the Mist Edge cluster
 func (o MxclusterOutput) RadsecTls() MxclusterRadsecTlsOutput {
 	return o.ApplyT(func(v *Mxcluster) MxclusterRadsecTlsOutput { return v.RadsecTls }).(MxclusterRadsecTlsOutput)
 }
 
+// Identifier of the site when the Mist Edge cluster is site-scoped
 func (o MxclusterOutput) SiteId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Mxcluster) pulumi.StringPtrOutput { return v.SiteId }).(pulumi.StringPtrOutput)
 }
 
-// List of subnets where we allow AP to establish Mist Tunnels from
+// AP source subnets allowed to establish Mist tunnels
 func (o MxclusterOutput) TuntermApSubnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Mxcluster) pulumi.StringArrayOutput { return v.TuntermApSubnets }).(pulumi.StringArrayOutput)
 }
 
-// DHCP server/relay configuration of Mist Tunneled VLANs. Property key is the VLAN ID
+// DHCP relay or server settings for tunneled VLANs
 func (o MxclusterOutput) TuntermDhcpdConfig() MxclusterTuntermDhcpdConfigMapOutput {
 	return o.ApplyT(func(v *Mxcluster) MxclusterTuntermDhcpdConfigMapOutput { return v.TuntermDhcpdConfig }).(MxclusterTuntermDhcpdConfigMapOutput)
 }
 
-// Extra routes for Mist Tunneled VLANs. Property key is a CIDR
+// Extra routes for Mist Tunnel VLAN traffic
 func (o MxclusterOutput) TuntermExtraRoutes() MxclusterTuntermExtraRoutesMapOutput {
 	return o.ApplyT(func(v *Mxcluster) MxclusterTuntermExtraRoutesMapOutput { return v.TuntermExtraRoutes }).(MxclusterTuntermExtraRoutesMapOutput)
 }
 
-// Hostnames or IPs where a Mist Tunnel will use as the Peer (i.e. they are reachable from AP)
+// Hostnames or IP addresses used as Mist Tunnel peers
 func (o MxclusterOutput) TuntermHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Mxcluster) pulumi.StringArrayOutput { return v.TuntermHosts }).(pulumi.StringArrayOutput)
 }
 
-// List of index of tunterm_hosts
+// Explicit host ordering indexes used when ordered selection is configured
 func (o MxclusterOutput) TuntermHostsOrders() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *Mxcluster) pulumi.IntArrayOutput { return v.TuntermHostsOrders }).(pulumi.IntArrayOutput)
 }
 
-// Ordering of tuntermHosts for mxedge within the same mxcluster. enum:
-//   - `shuffle`: the ordering of tuntermHosts is randomized by the device”s MAC
-//   - `shuffle-by-site`: shuffle by site_id+tunnel_id (so when client connects to a specific Tunnel, it will go to the same (order of) mxedge, and we load-balancing between tunnels)
-//   - `ordered`: order decided by tunterm_hosts_order
+// Selection strategy for ordering tunnel termination hosts
 func (o MxclusterOutput) TuntermHostsSelection() pulumi.StringOutput {
 	return o.ApplyT(func(v *Mxcluster) pulumi.StringOutput { return v.TuntermHostsSelection }).(pulumi.StringOutput)
 }
 
+// Whether tunnel termination monitoring is disabled for the cluster
 func (o MxclusterOutput) TuntermMonitoringDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Mxcluster) pulumi.BoolPtrOutput { return v.TuntermMonitoringDisabled }).(pulumi.BoolPtrOutput)
 }
 
+// Monitoring checks for tunnel termination reachability
 func (o MxclusterOutput) TuntermMonitorings() MxclusterTuntermMonitoringArrayArrayOutput {
 	return o.ApplyT(func(v *Mxcluster) MxclusterTuntermMonitoringArrayArrayOutput { return v.TuntermMonitorings }).(MxclusterTuntermMonitoringArrayArrayOutput)
 }

@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingSsrProxy {
+    /**
+     * @return Whether the SSR proxy configuration is disabled
+     * 
+     */
     private @Nullable Boolean disabled;
+    /**
+     * @return Proxy URL that SSR devices use to reach Mist
+     * 
+     */
     private @Nullable String url;
 
     private SettingSsrProxy() {}
+    /**
+     * @return Whether the SSR proxy configuration is disabled
+     * 
+     */
     public Optional<Boolean> disabled() {
         return Optional.ofNullable(this.disabled);
     }
+    /**
+     * @return Proxy URL that SSR devices use to reach Mist
+     * 
+     */
     public Optional<String> url() {
         return Optional.ofNullable(this.url);
     }

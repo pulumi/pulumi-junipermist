@@ -22,101 +22,197 @@ public final class SwitchSnmpConfigArgs extends com.pulumi.resources.ResourceArg
 
     public static final SwitchSnmpConfigArgs Empty = new SwitchSnmpConfigArgs();
 
+    /**
+     * SNMP client allowlists that can be referenced by communities
+     * 
+     */
     @Import(name="clientLists")
     private @Nullable Output<List<SwitchSnmpConfigClientListArgs>> clientLists;
 
+    /**
+     * @return SNMP client allowlists that can be referenced by communities
+     * 
+     */
     public Optional<Output<List<SwitchSnmpConfigClientListArgs>>> clientLists() {
         return Optional.ofNullable(this.clientLists);
     }
 
+    /**
+     * Administrative contact string advertised through SNMP
+     * 
+     */
     @Import(name="contact")
     private @Nullable Output<String> contact;
 
+    /**
+     * @return Administrative contact string advertised through SNMP
+     * 
+     */
     public Optional<Output<String>> contact() {
         return Optional.ofNullable(this.contact);
     }
 
+    /**
+     * Device description string advertised through SNMP
+     * 
+     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
+    /**
+     * @return Device description string advertised through SNMP
+     * 
+     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * Whether SNMP is enabled
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether SNMP is enabled
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * SNMP engine ID used for SNMPv3
+     * 
+     */
     @Import(name="engineId")
     private @Nullable Output<String> engineId;
 
+    /**
+     * @return SNMP engine ID used for SNMPv3
+     * 
+     */
     public Optional<Output<String>> engineId() {
         return Optional.ofNullable(this.engineId);
     }
 
     /**
-     * enum: `local`, `useMacAddress`
+     * Method used to derive the SNMP engine ID
      * 
      */
     @Import(name="engineIdType")
     private @Nullable Output<String> engineIdType;
 
     /**
-     * @return enum: `local`, `useMacAddress`
+     * @return Method used to derive the SNMP engine ID
      * 
      */
     public Optional<Output<String>> engineIdType() {
         return Optional.ofNullable(this.engineIdType);
     }
 
+    /**
+     * Physical location string advertised through SNMP
+     * 
+     */
     @Import(name="location")
     private @Nullable Output<String> location;
 
+    /**
+     * @return Physical location string advertised through SNMP
+     * 
+     */
     public Optional<Output<String>> location() {
         return Optional.ofNullable(this.location);
     }
 
+    /**
+     * System name advertised through SNMP
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return System name advertised through SNMP
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Management network used for SNMP traffic
+     * 
+     */
     @Import(name="network")
     private @Nullable Output<String> network;
 
+    /**
+     * @return Management network used for SNMP traffic
+     * 
+     */
     public Optional<Output<String>> network() {
         return Optional.ofNullable(this.network);
     }
 
+    /**
+     * SNMP trap group definitions
+     * 
+     */
     @Import(name="trapGroups")
     private @Nullable Output<List<SwitchSnmpConfigTrapGroupArgs>> trapGroups;
 
+    /**
+     * @return SNMP trap group definitions
+     * 
+     */
     public Optional<Output<List<SwitchSnmpConfigTrapGroupArgs>>> trapGroups() {
         return Optional.ofNullable(this.trapGroups);
     }
 
+    /**
+     * SNMPv2c community configuration entries for this SNMP profile
+     * 
+     */
     @Import(name="v2cConfigs")
     private @Nullable Output<List<SwitchSnmpConfigV2cConfigArgs>> v2cConfigs;
 
+    /**
+     * @return SNMPv2c community configuration entries for this SNMP profile
+     * 
+     */
     public Optional<Output<List<SwitchSnmpConfigV2cConfigArgs>>> v2cConfigs() {
         return Optional.ofNullable(this.v2cConfigs);
     }
 
+    /**
+     * SNMPv3 user, VACM, notify, and target configuration
+     * 
+     */
     @Import(name="v3Config")
     private @Nullable Output<SwitchSnmpConfigV3ConfigArgs> v3Config;
 
+    /**
+     * @return SNMPv3 user, VACM, notify, and target configuration
+     * 
+     */
     public Optional<Output<SwitchSnmpConfigV3ConfigArgs>> v3Config() {
         return Optional.ofNullable(this.v3Config);
     }
 
+    /**
+     * SNMP MIB view definitions
+     * 
+     */
     @Import(name="views")
     private @Nullable Output<List<SwitchSnmpConfigViewArgs>> views;
 
+    /**
+     * @return SNMP MIB view definitions
+     * 
+     */
     public Optional<Output<List<SwitchSnmpConfigViewArgs>>> views() {
         return Optional.ofNullable(this.views);
     }
@@ -157,57 +253,123 @@ public final class SwitchSnmpConfigArgs extends com.pulumi.resources.ResourceArg
             $ = new SwitchSnmpConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param clientLists SNMP client allowlists that can be referenced by communities
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientLists(@Nullable Output<List<SwitchSnmpConfigClientListArgs>> clientLists) {
             $.clientLists = clientLists;
             return this;
         }
 
+        /**
+         * @param clientLists SNMP client allowlists that can be referenced by communities
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientLists(List<SwitchSnmpConfigClientListArgs> clientLists) {
             return clientLists(Output.of(clientLists));
         }
 
+        /**
+         * @param clientLists SNMP client allowlists that can be referenced by communities
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientLists(SwitchSnmpConfigClientListArgs... clientLists) {
             return clientLists(List.of(clientLists));
         }
 
+        /**
+         * @param contact Administrative contact string advertised through SNMP
+         * 
+         * @return builder
+         * 
+         */
         public Builder contact(@Nullable Output<String> contact) {
             $.contact = contact;
             return this;
         }
 
+        /**
+         * @param contact Administrative contact string advertised through SNMP
+         * 
+         * @return builder
+         * 
+         */
         public Builder contact(String contact) {
             return contact(Output.of(contact));
         }
 
+        /**
+         * @param description Device description string advertised through SNMP
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param description Device description string advertised through SNMP
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
+        /**
+         * @param enabled Whether SNMP is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether SNMP is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param engineId SNMP engine ID used for SNMPv3
+         * 
+         * @return builder
+         * 
+         */
         public Builder engineId(@Nullable Output<String> engineId) {
             $.engineId = engineId;
             return this;
         }
 
+        /**
+         * @param engineId SNMP engine ID used for SNMPv3
+         * 
+         * @return builder
+         * 
+         */
         public Builder engineId(String engineId) {
             return engineId(Output.of(engineId));
         }
 
         /**
-         * @param engineIdType enum: `local`, `useMacAddress`
+         * @param engineIdType Method used to derive the SNMP engine ID
          * 
          * @return builder
          * 
@@ -218,7 +380,7 @@ public final class SwitchSnmpConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param engineIdType enum: `local`, `useMacAddress`
+         * @param engineIdType Method used to derive the SNMP engine ID
          * 
          * @return builder
          * 
@@ -227,77 +389,179 @@ public final class SwitchSnmpConfigArgs extends com.pulumi.resources.ResourceArg
             return engineIdType(Output.of(engineIdType));
         }
 
+        /**
+         * @param location Physical location string advertised through SNMP
+         * 
+         * @return builder
+         * 
+         */
         public Builder location(@Nullable Output<String> location) {
             $.location = location;
             return this;
         }
 
+        /**
+         * @param location Physical location string advertised through SNMP
+         * 
+         * @return builder
+         * 
+         */
         public Builder location(String location) {
             return location(Output.of(location));
         }
 
+        /**
+         * @param name System name advertised through SNMP
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name System name advertised through SNMP
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param network Management network used for SNMP traffic
+         * 
+         * @return builder
+         * 
+         */
         public Builder network(@Nullable Output<String> network) {
             $.network = network;
             return this;
         }
 
+        /**
+         * @param network Management network used for SNMP traffic
+         * 
+         * @return builder
+         * 
+         */
         public Builder network(String network) {
             return network(Output.of(network));
         }
 
+        /**
+         * @param trapGroups SNMP trap group definitions
+         * 
+         * @return builder
+         * 
+         */
         public Builder trapGroups(@Nullable Output<List<SwitchSnmpConfigTrapGroupArgs>> trapGroups) {
             $.trapGroups = trapGroups;
             return this;
         }
 
+        /**
+         * @param trapGroups SNMP trap group definitions
+         * 
+         * @return builder
+         * 
+         */
         public Builder trapGroups(List<SwitchSnmpConfigTrapGroupArgs> trapGroups) {
             return trapGroups(Output.of(trapGroups));
         }
 
+        /**
+         * @param trapGroups SNMP trap group definitions
+         * 
+         * @return builder
+         * 
+         */
         public Builder trapGroups(SwitchSnmpConfigTrapGroupArgs... trapGroups) {
             return trapGroups(List.of(trapGroups));
         }
 
+        /**
+         * @param v2cConfigs SNMPv2c community configuration entries for this SNMP profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder v2cConfigs(@Nullable Output<List<SwitchSnmpConfigV2cConfigArgs>> v2cConfigs) {
             $.v2cConfigs = v2cConfigs;
             return this;
         }
 
+        /**
+         * @param v2cConfigs SNMPv2c community configuration entries for this SNMP profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder v2cConfigs(List<SwitchSnmpConfigV2cConfigArgs> v2cConfigs) {
             return v2cConfigs(Output.of(v2cConfigs));
         }
 
+        /**
+         * @param v2cConfigs SNMPv2c community configuration entries for this SNMP profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder v2cConfigs(SwitchSnmpConfigV2cConfigArgs... v2cConfigs) {
             return v2cConfigs(List.of(v2cConfigs));
         }
 
+        /**
+         * @param v3Config SNMPv3 user, VACM, notify, and target configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder v3Config(@Nullable Output<SwitchSnmpConfigV3ConfigArgs> v3Config) {
             $.v3Config = v3Config;
             return this;
         }
 
+        /**
+         * @param v3Config SNMPv3 user, VACM, notify, and target configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder v3Config(SwitchSnmpConfigV3ConfigArgs v3Config) {
             return v3Config(Output.of(v3Config));
         }
 
+        /**
+         * @param views SNMP MIB view definitions
+         * 
+         * @return builder
+         * 
+         */
         public Builder views(@Nullable Output<List<SwitchSnmpConfigViewArgs>> views) {
             $.views = views;
             return this;
         }
 
+        /**
+         * @param views SNMP MIB view definitions
+         * 
+         * @return builder
+         * 
+         */
         public Builder views(List<SwitchSnmpConfigViewArgs> views) {
             return views(Output.of(views));
         }
 
+        /**
+         * @param views SNMP MIB view definitions
+         * 
+         * @return builder
+         * 
+         */
         public Builder views(SwitchSnmpConfigViewArgs... views) {
             return views(List.of(views));
         }

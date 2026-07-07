@@ -82,11 +82,20 @@ export class Idpprofile extends pulumi.CustomResource {
     }
 
     /**
-     * enum: `critical`, `standard`, `strict`
+     * Built-in IDP baseline profile inherited before applying overwrites
      */
     declare public readonly baseProfile: pulumi.Output<string>;
+    /**
+     * Display name of the IDP profile
+     */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Owning organization for the IDP profile
+     */
     declare public readonly orgId: pulumi.Output<string>;
+    /**
+     * IDP signature override rules applied on top of the base profile
+     */
     declare public readonly overwrites: pulumi.Output<outputs.org.IdpprofileOverwrite[] | undefined>;
 
     /**
@@ -129,11 +138,20 @@ export class Idpprofile extends pulumi.CustomResource {
  */
 export interface IdpprofileState {
     /**
-     * enum: `critical`, `standard`, `strict`
+     * Built-in IDP baseline profile inherited before applying overwrites
      */
     baseProfile?: pulumi.Input<string | undefined>;
+    /**
+     * Display name of the IDP profile
+     */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Owning organization for the IDP profile
+     */
     orgId?: pulumi.Input<string | undefined>;
+    /**
+     * IDP signature override rules applied on top of the base profile
+     */
     overwrites?: pulumi.Input<pulumi.Input<inputs.org.IdpprofileOverwrite>[] | undefined>;
 }
 
@@ -142,10 +160,19 @@ export interface IdpprofileState {
  */
 export interface IdpprofileArgs {
     /**
-     * enum: `critical`, `standard`, `strict`
+     * Built-in IDP baseline profile inherited before applying overwrites
      */
     baseProfile: pulumi.Input<string>;
+    /**
+     * Display name of the IDP profile
+     */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Owning organization for the IDP profile
+     */
     orgId: pulumi.Input<string>;
+    /**
+     * IDP signature override rules applied on top of the base profile
+     */
     overwrites?: pulumi.Input<pulumi.Input<inputs.org.IdpprofileOverwrite>[] | undefined>;
 }

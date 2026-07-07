@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class VpnPathsPeerPaths
     {
+        /// <summary>
+        /// Lower numeric value makes this outgoing WAN path more preferred
+        /// </summary>
         public readonly int? Preference;
 
         [OutputConstructor]

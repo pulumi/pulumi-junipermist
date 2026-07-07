@@ -12,26 +12,42 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class NacPortalSsoArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Identity provider certificate used to verify signed SAML responses
+        /// </summary>
         [Input("idpCert")]
         public Input<string>? IdpCert { get; set; }
 
         /// <summary>
-        /// Signing algorithm for SAML Assertion. enum: `Sha1`, `Sha256`, `Sha384`, `Sha512`.
+        /// Signing algorithm expected for SAML assertions from the identity provider
         /// </summary>
         [Input("idpSignAlgo")]
         public Input<string>? IdpSignAlgo { get; set; }
 
+        /// <summary>
+        /// Identity provider Single Sign-On URL for SAML authentication
+        /// </summary>
         [Input("idpSsoUrl")]
         public Input<string>? IdpSsoUrl { get; set; }
 
+        /// <summary>
+        /// Identity provider issuer URL for SAML authentication
+        /// </summary>
         [Input("issuer")]
         public Input<string>? Issuer { get; set; }
 
+        /// <summary>
+        /// SAML NameID format expected from the identity provider
+        /// </summary>
         [Input("nameidFormat")]
         public Input<string>? NameidFormat { get; set; }
 
         [Input("ssoRoleMatchings")]
         private InputList<Inputs.NacPortalSsoSsoRoleMatchingArgs>? _ssoRoleMatchings;
+
+        /// <summary>
+        /// Rules that map SSO role values from the identity provider to NAC portal roles
+        /// </summary>
         public InputList<Inputs.NacPortalSsoSsoRoleMatchingArgs> SsoRoleMatchings
         {
             get => _ssoRoleMatchings ?? (_ssoRoleMatchings = new InputList<Inputs.NacPortalSsoSsoRoleMatchingArgs>());
@@ -39,7 +55,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// If it's desired to inject a role into Cert's Subject (so it can be used later on in policy)
+        /// Whether to include the matched SSO role in the issued certificate subject for later policy matching
         /// </summary>
         [Input("useSsoRoleForCert")]
         public Input<bool>? UseSsoRoleForCert { get; set; }

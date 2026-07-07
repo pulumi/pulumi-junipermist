@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class UpgradeDeviceAutoUpgradeStat {
+    /**
+     * @return Time when the device last checked for auto-upgrade, in epoch seconds
+     * 
+     */
     private @Nullable Integer lastcheck;
 
     private UpgradeDeviceAutoUpgradeStat() {}
+    /**
+     * @return Time when the device last checked for auto-upgrade, in epoch seconds
+     * 
+     */
     public Optional<Integer> lastcheck() {
         return Optional.ofNullable(this.lastcheck);
     }

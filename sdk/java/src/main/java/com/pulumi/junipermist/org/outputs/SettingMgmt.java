@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingMgmt {
     /**
-     * @return List of Mist Tunnels
+     * @return Mist Tunnel IDs selected for management connectivity
      * 
      */
     private @Nullable List<String> mxtunnelIds;
@@ -31,7 +31,7 @@ public final class SettingMgmt {
 
     private SettingMgmt() {}
     /**
-     * @return List of Mist Tunnels
+     * @return Mist Tunnel IDs selected for management connectivity
      * 
      */
     public List<String> mxtunnelIds() {

@@ -53,16 +53,22 @@ import (
 type Base struct {
 	pulumi.CustomResourceState
 
+	// Org-level alarm template ID used as the default for sites
 	AlarmtemplateId pulumi.StringPtrOutput `pulumi:"alarmtemplateId"`
-	AllowMist       pulumi.BoolOutput      `pulumi:"allowMist"`
-	MspId           pulumi.StringOutput    `pulumi:"mspId"`
+	// Whether Mist support access is allowed for this organization
+	AllowMist pulumi.BoolOutput `pulumi:"allowMist"`
+	// Managed service provider account that owns this organization, when applicable
+	MspId pulumi.StringOutput `pulumi:"mspId"`
 	// logo uploaded by the MSP with advanced tier, only present if provided
 	MspLogoUrl pulumi.StringOutput `pulumi:"mspLogoUrl"`
 	// Name of the msp the org belongs to
-	MspName       pulumi.StringOutput      `pulumi:"mspName"`
-	Name          pulumi.StringOutput      `pulumi:"name"`
-	OrggroupIds   pulumi.StringArrayOutput `pulumi:"orggroupIds"`
-	SessionExpiry pulumi.IntOutput         `pulumi:"sessionExpiry"`
+	MspName pulumi.StringOutput `pulumi:"mspName"`
+	// Display name of the organization
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Organization group IDs that include this organization
+	OrggroupIds pulumi.StringArrayOutput `pulumi:"orggroupIds"`
+	// Admin session lifetime for the organization, in minutes
+	SessionExpiry pulumi.IntOutput `pulumi:"sessionExpiry"`
 }
 
 // NewBase registers a new resource with the given unique name, arguments, and options.
@@ -95,28 +101,40 @@ func GetBase(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Base resources.
 type baseState struct {
+	// Org-level alarm template ID used as the default for sites
 	AlarmtemplateId *string `pulumi:"alarmtemplateId"`
-	AllowMist       *bool   `pulumi:"allowMist"`
-	MspId           *string `pulumi:"mspId"`
+	// Whether Mist support access is allowed for this organization
+	AllowMist *bool `pulumi:"allowMist"`
+	// Managed service provider account that owns this organization, when applicable
+	MspId *string `pulumi:"mspId"`
 	// logo uploaded by the MSP with advanced tier, only present if provided
 	MspLogoUrl *string `pulumi:"mspLogoUrl"`
 	// Name of the msp the org belongs to
-	MspName       *string  `pulumi:"mspName"`
-	Name          *string  `pulumi:"name"`
-	OrggroupIds   []string `pulumi:"orggroupIds"`
-	SessionExpiry *int     `pulumi:"sessionExpiry"`
+	MspName *string `pulumi:"mspName"`
+	// Display name of the organization
+	Name *string `pulumi:"name"`
+	// Organization group IDs that include this organization
+	OrggroupIds []string `pulumi:"orggroupIds"`
+	// Admin session lifetime for the organization, in minutes
+	SessionExpiry *int `pulumi:"sessionExpiry"`
 }
 
 type BaseState struct {
+	// Org-level alarm template ID used as the default for sites
 	AlarmtemplateId pulumi.StringPtrInput
-	AllowMist       pulumi.BoolPtrInput
-	MspId           pulumi.StringPtrInput
+	// Whether Mist support access is allowed for this organization
+	AllowMist pulumi.BoolPtrInput
+	// Managed service provider account that owns this organization, when applicable
+	MspId pulumi.StringPtrInput
 	// logo uploaded by the MSP with advanced tier, only present if provided
 	MspLogoUrl pulumi.StringPtrInput
 	// Name of the msp the org belongs to
-	MspName       pulumi.StringPtrInput
-	Name          pulumi.StringPtrInput
-	OrggroupIds   pulumi.StringArrayInput
+	MspName pulumi.StringPtrInput
+	// Display name of the organization
+	Name pulumi.StringPtrInput
+	// Organization group IDs that include this organization
+	OrggroupIds pulumi.StringArrayInput
+	// Admin session lifetime for the organization, in minutes
 	SessionExpiry pulumi.IntPtrInput
 }
 
@@ -125,18 +143,26 @@ func (BaseState) ElementType() reflect.Type {
 }
 
 type baseArgs struct {
+	// Org-level alarm template ID used as the default for sites
 	AlarmtemplateId *string `pulumi:"alarmtemplateId"`
-	AllowMist       *bool   `pulumi:"allowMist"`
-	Name            *string `pulumi:"name"`
-	SessionExpiry   *int    `pulumi:"sessionExpiry"`
+	// Whether Mist support access is allowed for this organization
+	AllowMist *bool `pulumi:"allowMist"`
+	// Display name of the organization
+	Name *string `pulumi:"name"`
+	// Admin session lifetime for the organization, in minutes
+	SessionExpiry *int `pulumi:"sessionExpiry"`
 }
 
 // The set of arguments for constructing a Base resource.
 type BaseArgs struct {
+	// Org-level alarm template ID used as the default for sites
 	AlarmtemplateId pulumi.StringPtrInput
-	AllowMist       pulumi.BoolPtrInput
-	Name            pulumi.StringPtrInput
-	SessionExpiry   pulumi.IntPtrInput
+	// Whether Mist support access is allowed for this organization
+	AllowMist pulumi.BoolPtrInput
+	// Display name of the organization
+	Name pulumi.StringPtrInput
+	// Admin session lifetime for the organization, in minutes
+	SessionExpiry pulumi.IntPtrInput
 }
 
 func (BaseArgs) ElementType() reflect.Type {
@@ -226,14 +252,17 @@ func (o BaseOutput) ToBaseOutputWithContext(ctx context.Context) BaseOutput {
 	return o
 }
 
+// Org-level alarm template ID used as the default for sites
 func (o BaseOutput) AlarmtemplateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Base) pulumi.StringPtrOutput { return v.AlarmtemplateId }).(pulumi.StringPtrOutput)
 }
 
+// Whether Mist support access is allowed for this organization
 func (o BaseOutput) AllowMist() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Base) pulumi.BoolOutput { return v.AllowMist }).(pulumi.BoolOutput)
 }
 
+// Managed service provider account that owns this organization, when applicable
 func (o BaseOutput) MspId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Base) pulumi.StringOutput { return v.MspId }).(pulumi.StringOutput)
 }
@@ -248,14 +277,17 @@ func (o BaseOutput) MspName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Base) pulumi.StringOutput { return v.MspName }).(pulumi.StringOutput)
 }
 
+// Display name of the organization
 func (o BaseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Base) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Organization group IDs that include this organization
 func (o BaseOutput) OrggroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Base) pulumi.StringArrayOutput { return v.OrggroupIds }).(pulumi.StringArrayOutput)
 }
 
+// Admin session lifetime for the organization, in minutes
 func (o BaseOutput) SessionExpiry() pulumi.IntOutput {
 	return o.ApplyT(func(v *Base) pulumi.IntOutput { return v.SessionExpiry }).(pulumi.IntOutput)
 }

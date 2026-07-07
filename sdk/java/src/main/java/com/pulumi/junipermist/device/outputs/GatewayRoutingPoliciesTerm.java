@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewayRoutingPoliciesTerm {
     /**
-     * @return When used as import policy
+     * @return Policy actions applied when this routing policy term matches
      * 
      */
     private @Nullable GatewayRoutingPoliciesTermActions actions;
     /**
-     * @return zero or more criteria/filter can be specified to match the term, all criteria have to be met
+     * @return Route match criteria that must be satisfied before actions are applied
      * 
      */
     private @Nullable GatewayRoutingPoliciesTermMatching matching;
 
     private GatewayRoutingPoliciesTerm() {}
     /**
-     * @return When used as import policy
+     * @return Policy actions applied when this routing policy term matches
      * 
      */
     public Optional<GatewayRoutingPoliciesTermActions> actions() {
         return Optional.ofNullable(this.actions);
     }
     /**
-     * @return zero or more criteria/filter can be specified to match the term, all criteria have to be met
+     * @return Route match criteria that must be satisfied before actions are applied
      * 
      */
     public Optional<GatewayRoutingPoliciesTermMatching> matching() {

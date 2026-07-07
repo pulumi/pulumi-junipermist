@@ -14,9 +14,12 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class GatewayDhcpdConfigConfigOptions
     {
         /// <summary>
-        /// enum: `Boolean`, `Hex`, `Int16`, `Int32`, `Ip`, `String`, `Uint16`, `Uint32`
+        /// Data type used to encode this DHCP option value
         /// </summary>
         public readonly string? Type;
+        /// <summary>
+        /// Option value to send for this DHCP option
+        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

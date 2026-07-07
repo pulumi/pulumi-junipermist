@@ -33,29 +33,45 @@ public final class GatewaytemplateRoutingPoliciesTermMatchingArgs extends com.pu
         return Optional.ofNullable(this.asPaths);
     }
 
+    /**
+     * BGP communities that routes must match
+     * 
+     */
     @Import(name="communities")
     private @Nullable Output<List<String>> communities;
 
+    /**
+     * @return BGP communities that routes must match
+     * 
+     */
     public Optional<Output<List<String>>> communities() {
         return Optional.ofNullable(this.communities);
     }
 
+    /**
+     * Configured network names that routes must match
+     * 
+     */
     @Import(name="networks")
     private @Nullable Output<List<String>> networks;
 
+    /**
+     * @return Configured network names that routes must match
+     * 
+     */
     public Optional<Output<List<String>>> networks() {
         return Optional.ofNullable(this.networks);
     }
 
     /**
-     * zero or more criteria/filter can be specified to match the term, all criteria have to be met
+     * Route prefixes that routes must match
      * 
      */
     @Import(name="prefixes")
     private @Nullable Output<List<String>> prefixes;
 
     /**
-     * @return zero or more criteria/filter can be specified to match the term, all criteria have to be met
+     * @return Route prefixes that routes must match
      * 
      */
     public Optional<Output<List<String>>> prefixes() {
@@ -77,44 +93,60 @@ public final class GatewaytemplateRoutingPoliciesTermMatchingArgs extends com.pu
         return Optional.ofNullable(this.protocols);
     }
 
+    /**
+     * Existing route condition that must be satisfied before this term matches
+     * 
+     */
     @Import(name="routeExists")
     private @Nullable Output<GatewaytemplateRoutingPoliciesTermMatchingRouteExistsArgs> routeExists;
 
+    /**
+     * @return Existing route condition that must be satisfied before this term matches
+     * 
+     */
     public Optional<Output<GatewaytemplateRoutingPoliciesTermMatchingRouteExistsArgs>> routeExists() {
         return Optional.ofNullable(this.routeExists);
     }
 
     /**
-     * overlay-facing criteria (used for bgpConfig where via=vpn)
+     * Overlay neighbor MAC addresses used as match criteria for BGP sessions with `via`==`vpn`
      * 
      */
     @Import(name="vpnNeighborMacs")
     private @Nullable Output<List<String>> vpnNeighborMacs;
 
     /**
-     * @return overlay-facing criteria (used for bgpConfig where via=vpn)
+     * @return Overlay neighbor MAC addresses used as match criteria for BGP sessions with `via`==`vpn`
      * 
      */
     public Optional<Output<List<String>>> vpnNeighborMacs() {
         return Optional.ofNullable(this.vpnNeighborMacs);
     }
 
+    /**
+     * SLA thresholds used when matching a VPN path
+     * 
+     */
     @Import(name="vpnPathSla")
     private @Nullable Output<GatewaytemplateRoutingPoliciesTermMatchingVpnPathSlaArgs> vpnPathSla;
 
+    /**
+     * @return SLA thresholds used when matching a VPN path
+     * 
+     */
     public Optional<Output<GatewaytemplateRoutingPoliciesTermMatchingVpnPathSlaArgs>> vpnPathSla() {
         return Optional.ofNullable(this.vpnPathSla);
     }
 
     /**
-     * overlay-facing criteria (used for bgpConfig where via=vpn). ordered-
+     * Overlay path names used as match criteria for BGP sessions with `via`==`vpn`
      * 
      */
     @Import(name="vpnPaths")
     private @Nullable Output<List<String>> vpnPaths;
 
     /**
-     * @return overlay-facing criteria (used for bgpConfig where via=vpn). ordered-
+     * @return Overlay path names used as match criteria for BGP sessions with `via`==`vpn`
      * 
      */
     public Optional<Output<List<String>>> vpnPaths() {
@@ -184,34 +216,70 @@ public final class GatewaytemplateRoutingPoliciesTermMatchingArgs extends com.pu
             return asPaths(List.of(asPaths));
         }
 
+        /**
+         * @param communities BGP communities that routes must match
+         * 
+         * @return builder
+         * 
+         */
         public Builder communities(@Nullable Output<List<String>> communities) {
             $.communities = communities;
             return this;
         }
 
+        /**
+         * @param communities BGP communities that routes must match
+         * 
+         * @return builder
+         * 
+         */
         public Builder communities(List<String> communities) {
             return communities(Output.of(communities));
         }
 
+        /**
+         * @param communities BGP communities that routes must match
+         * 
+         * @return builder
+         * 
+         */
         public Builder communities(String... communities) {
             return communities(List.of(communities));
         }
 
+        /**
+         * @param networks Configured network names that routes must match
+         * 
+         * @return builder
+         * 
+         */
         public Builder networks(@Nullable Output<List<String>> networks) {
             $.networks = networks;
             return this;
         }
 
+        /**
+         * @param networks Configured network names that routes must match
+         * 
+         * @return builder
+         * 
+         */
         public Builder networks(List<String> networks) {
             return networks(Output.of(networks));
         }
 
+        /**
+         * @param networks Configured network names that routes must match
+         * 
+         * @return builder
+         * 
+         */
         public Builder networks(String... networks) {
             return networks(List.of(networks));
         }
 
         /**
-         * @param prefixes zero or more criteria/filter can be specified to match the term, all criteria have to be met
+         * @param prefixes Route prefixes that routes must match
          * 
          * @return builder
          * 
@@ -222,7 +290,7 @@ public final class GatewaytemplateRoutingPoliciesTermMatchingArgs extends com.pu
         }
 
         /**
-         * @param prefixes zero or more criteria/filter can be specified to match the term, all criteria have to be met
+         * @param prefixes Route prefixes that routes must match
          * 
          * @return builder
          * 
@@ -232,7 +300,7 @@ public final class GatewaytemplateRoutingPoliciesTermMatchingArgs extends com.pu
         }
 
         /**
-         * @param prefixes zero or more criteria/filter can be specified to match the term, all criteria have to be met
+         * @param prefixes Route prefixes that routes must match
          * 
          * @return builder
          * 
@@ -272,17 +340,29 @@ public final class GatewaytemplateRoutingPoliciesTermMatchingArgs extends com.pu
             return protocols(List.of(protocols));
         }
 
+        /**
+         * @param routeExists Existing route condition that must be satisfied before this term matches
+         * 
+         * @return builder
+         * 
+         */
         public Builder routeExists(@Nullable Output<GatewaytemplateRoutingPoliciesTermMatchingRouteExistsArgs> routeExists) {
             $.routeExists = routeExists;
             return this;
         }
 
+        /**
+         * @param routeExists Existing route condition that must be satisfied before this term matches
+         * 
+         * @return builder
+         * 
+         */
         public Builder routeExists(GatewaytemplateRoutingPoliciesTermMatchingRouteExistsArgs routeExists) {
             return routeExists(Output.of(routeExists));
         }
 
         /**
-         * @param vpnNeighborMacs overlay-facing criteria (used for bgpConfig where via=vpn)
+         * @param vpnNeighborMacs Overlay neighbor MAC addresses used as match criteria for BGP sessions with `via`==`vpn`
          * 
          * @return builder
          * 
@@ -293,7 +373,7 @@ public final class GatewaytemplateRoutingPoliciesTermMatchingArgs extends com.pu
         }
 
         /**
-         * @param vpnNeighborMacs overlay-facing criteria (used for bgpConfig where via=vpn)
+         * @param vpnNeighborMacs Overlay neighbor MAC addresses used as match criteria for BGP sessions with `via`==`vpn`
          * 
          * @return builder
          * 
@@ -303,7 +383,7 @@ public final class GatewaytemplateRoutingPoliciesTermMatchingArgs extends com.pu
         }
 
         /**
-         * @param vpnNeighborMacs overlay-facing criteria (used for bgpConfig where via=vpn)
+         * @param vpnNeighborMacs Overlay neighbor MAC addresses used as match criteria for BGP sessions with `via`==`vpn`
          * 
          * @return builder
          * 
@@ -312,17 +392,29 @@ public final class GatewaytemplateRoutingPoliciesTermMatchingArgs extends com.pu
             return vpnNeighborMacs(List.of(vpnNeighborMacs));
         }
 
+        /**
+         * @param vpnPathSla SLA thresholds used when matching a VPN path
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpnPathSla(@Nullable Output<GatewaytemplateRoutingPoliciesTermMatchingVpnPathSlaArgs> vpnPathSla) {
             $.vpnPathSla = vpnPathSla;
             return this;
         }
 
+        /**
+         * @param vpnPathSla SLA thresholds used when matching a VPN path
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpnPathSla(GatewaytemplateRoutingPoliciesTermMatchingVpnPathSlaArgs vpnPathSla) {
             return vpnPathSla(Output.of(vpnPathSla));
         }
 
         /**
-         * @param vpnPaths overlay-facing criteria (used for bgpConfig where via=vpn). ordered-
+         * @param vpnPaths Overlay path names used as match criteria for BGP sessions with `via`==`vpn`
          * 
          * @return builder
          * 
@@ -333,7 +425,7 @@ public final class GatewaytemplateRoutingPoliciesTermMatchingArgs extends com.pu
         }
 
         /**
-         * @param vpnPaths overlay-facing criteria (used for bgpConfig where via=vpn). ordered-
+         * @param vpnPaths Overlay path names used as match criteria for BGP sessions with `via`==`vpn`
          * 
          * @return builder
          * 
@@ -343,7 +435,7 @@ public final class GatewaytemplateRoutingPoliciesTermMatchingArgs extends com.pu
         }
 
         /**
-         * @param vpnPaths overlay-facing criteria (used for bgpConfig where via=vpn). ordered-
+         * @param vpnPaths Overlay path names used as match criteria for BGP sessions with `via`==`vpn`
          * 
          * @return builder
          * 

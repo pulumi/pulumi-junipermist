@@ -13,7 +13,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class SettingMarvisArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Self-driving network automation settings per domain
+        /// Disable proactive monitoring in Marvis. NOTE: support access must be enabled for the org (`AllowMist`=`True`) for proactive monitoring to function.
+        /// </summary>
+        [Input("disableProactiveMonitoring")]
+        public Input<bool>? DisableProactiveMonitoring { get; set; }
+
+        /// <summary>
+        /// Self-driving network automation settings by domain
         /// </summary>
         [Input("selfDriving")]
         public Input<Inputs.SettingMarvisSelfDrivingArgs>? SelfDriving { get; set; }

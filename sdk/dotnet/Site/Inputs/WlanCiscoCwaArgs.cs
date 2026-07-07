@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputList<string>? _allowedHostnames;
 
         /// <summary>
-        /// List of hostnames without http(s):// (matched by substring)
+        /// Hostnames allowed for Cisco CWA client access before authorization
         /// </summary>
         public InputList<string> AllowedHostnames
         {
@@ -28,7 +28,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputList<string>? _allowedSubnets;
 
         /// <summary>
-        /// List of CIDRs
+        /// CIDR subnets allowed for Cisco CWA client access before authorization
         /// </summary>
         public InputList<string> AllowedSubnets
         {
@@ -40,7 +40,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputList<string>? _blockedSubnets;
 
         /// <summary>
-        /// List of blocked CIDRs
+        /// CIDR subnets blocked for Cisco CWA client access
         /// </summary>
         public InputList<string> BlockedSubnets
         {
@@ -48,6 +48,9 @@ namespace Pulumi.JuniperMist.Site.Inputs
             set => _blockedSubnets = value;
         }
 
+        /// <summary>
+        /// Whether Cisco CWA is enabled for this WLAN
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

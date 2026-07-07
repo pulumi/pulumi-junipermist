@@ -16,14 +16,14 @@ public final class WlanScheduleHoursArgs extends com.pulumi.resources.ResourceAr
     public static final WlanScheduleHoursArgs Empty = new WlanScheduleHoursArgs();
 
     /**
-     * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * Operating hour range for Friday
      * 
      */
     @Import(name="fri")
     private @Nullable Output<String> fri;
 
     /**
-     * @return Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * @return Operating hour range for Friday
      * 
      */
     public Optional<Output<String>> fri() {
@@ -31,14 +31,14 @@ public final class WlanScheduleHoursArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * Operating hour range for Monday
      * 
      */
     @Import(name="mon")
     private @Nullable Output<String> mon;
 
     /**
-     * @return Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * @return Operating hour range for Monday
      * 
      */
     public Optional<Output<String>> mon() {
@@ -46,14 +46,14 @@ public final class WlanScheduleHoursArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * Operating hour range for Saturday
      * 
      */
     @Import(name="sat")
     private @Nullable Output<String> sat;
 
     /**
-     * @return Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * @return Operating hour range for Saturday
      * 
      */
     public Optional<Output<String>> sat() {
@@ -61,14 +61,14 @@ public final class WlanScheduleHoursArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * Operating hour range for Sunday
      * 
      */
     @Import(name="sun")
     private @Nullable Output<String> sun;
 
     /**
-     * @return Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * @return Operating hour range for Sunday
      * 
      */
     public Optional<Output<String>> sun() {
@@ -76,14 +76,14 @@ public final class WlanScheduleHoursArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * Operating hour range for Thursday
      * 
      */
     @Import(name="thu")
     private @Nullable Output<String> thu;
 
     /**
-     * @return Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * @return Operating hour range for Thursday
      * 
      */
     public Optional<Output<String>> thu() {
@@ -91,14 +91,14 @@ public final class WlanScheduleHoursArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * Operating hour range for Tuesday
      * 
      */
     @Import(name="tue")
     private @Nullable Output<String> tue;
 
     /**
-     * @return Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * @return Operating hour range for Tuesday
      * 
      */
     public Optional<Output<String>> tue() {
@@ -106,14 +106,14 @@ public final class WlanScheduleHoursArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * Operating hour range for Wednesday
      * 
      */
     @Import(name="wed")
     private @Nullable Output<String> wed;
 
     /**
-     * @return Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * @return Operating hour range for Wednesday
      * 
      */
     public Optional<Output<String>> wed() {
@@ -151,7 +151,7 @@ public final class WlanScheduleHoursArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param fri Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+         * @param fri Operating hour range for Friday
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class WlanScheduleHoursArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param fri Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+         * @param fri Operating hour range for Friday
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class WlanScheduleHoursArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param mon Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+         * @param mon Operating hour range for Monday
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class WlanScheduleHoursArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param mon Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+         * @param mon Operating hour range for Monday
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class WlanScheduleHoursArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sat Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+         * @param sat Operating hour range for Saturday
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class WlanScheduleHoursArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sat Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+         * @param sat Operating hour range for Saturday
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class WlanScheduleHoursArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sun Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+         * @param sun Operating hour range for Sunday
          * 
          * @return builder
          * 
@@ -225,7 +225,7 @@ public final class WlanScheduleHoursArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sun Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+         * @param sun Operating hour range for Sunday
          * 
          * @return builder
          * 
@@ -235,7 +235,7 @@ public final class WlanScheduleHoursArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param thu Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+         * @param thu Operating hour range for Thursday
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class WlanScheduleHoursArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param thu Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+         * @param thu Operating hour range for Thursday
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class WlanScheduleHoursArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tue Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+         * @param tue Operating hour range for Tuesday
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class WlanScheduleHoursArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tue Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+         * @param tue Operating hour range for Tuesday
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class WlanScheduleHoursArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param wed Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+         * @param wed Operating hour range for Wednesday
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class WlanScheduleHoursArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param wed Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+         * @param wed Operating hour range for Wednesday
          * 
          * @return builder
          * 

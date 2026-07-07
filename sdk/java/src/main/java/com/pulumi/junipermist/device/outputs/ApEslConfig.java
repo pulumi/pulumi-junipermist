@@ -39,7 +39,7 @@ public final class ApEslConfig {
      */
     private @Nullable Integer port;
     /**
-     * @return note: bleConfig will be ignored if eslConfig is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
+     * @return ESL integration type to enable on the AP
      * 
      */
     private @Nullable String type;
@@ -91,7 +91,7 @@ public final class ApEslConfig {
         return Optional.ofNullable(this.port);
     }
     /**
-     * @return note: bleConfig will be ignored if eslConfig is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
+     * @return ESL integration type to enable on the AP
      * 
      */
     public Optional<String> type() {

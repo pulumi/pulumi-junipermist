@@ -15,9 +15,17 @@ public final class SettingMarvisSelfDrivingWanArgs extends com.pulumi.resources.
 
     public static final SettingMarvisSelfDrivingWanArgs Empty = new SettingMarvisSelfDrivingWanArgs();
 
+    /**
+     * Whether self-driving automation is enabled for this domain
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether self-driving automation is enabled for this domain
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -46,11 +54,23 @@ public final class SettingMarvisSelfDrivingWanArgs extends com.pulumi.resources.
             $ = new SettingMarvisSelfDrivingWanArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Whether self-driving automation is enabled for this domain
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether self-driving automation is enabled for this domain
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

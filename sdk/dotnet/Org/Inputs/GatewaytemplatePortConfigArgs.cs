@@ -30,6 +30,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("aeLacpForceUp")]
         public Input<bool>? AeLacpForceUp { get; set; }
 
+        /// <summary>
+        /// Whether the port participates in an aggregated Ethernet interface
+        /// </summary>
         [Input("aggregated")]
         public Input<bool>? Aggregated { get; set; }
 
@@ -45,6 +48,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Whether Ethernet autonegotiation is disabled on the port
+        /// </summary>
         [Input("disableAutoneg")]
         public Input<bool>? DisableAutoneg { get; set; }
 
@@ -55,7 +61,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// if `WanType`==`Dsl`. enum: `Adsl`, `Vdsl`
+        /// If `WanType`==`Dsl`. DSL technology used by the WAN port
         /// </summary>
         [Input("dslType")]
         public Input<string>? DslType { get; set; }
@@ -73,29 +79,32 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<int>? DslVpi { get; set; }
 
         /// <summary>
-        /// enum: `Auto`, `Full`, `Half`
+        /// Ethernet duplex mode configured on the port
         /// </summary>
         [Input("duplex")]
         public Input<string>? Duplex { get; set; }
 
         /// <summary>
-        /// Junos IP Config
+        /// Layer 3 IP configuration for the port
         /// </summary>
         [Input("ipConfig")]
         public Input<Inputs.GatewaytemplatePortConfigIpConfigArgs>? IpConfig { get; set; }
 
         /// <summary>
-        /// If `WanType`==`Lte`
+        /// If `WanType`==`Lte`. APN used by the LTE uplink
         /// </summary>
         [Input("lteApn")]
         public Input<string>? LteApn { get; set; }
 
         /// <summary>
-        /// if `WanType`==`Lte`. enum: `Chap`, `None`, `Pap`
+        /// If `WanType`==`Lte`. Authentication method used by the LTE uplink
         /// </summary>
         [Input("lteAuth")]
         public Input<string>? LteAuth { get; set; }
 
+        /// <summary>
+        /// Whether the LTE uplink is used as a backup WAN connection
+        /// </summary>
         [Input("lteBackup")]
         public Input<bool>? LteBackup { get; set; }
 
@@ -103,7 +112,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private Input<string>? _ltePassword;
 
         /// <summary>
-        /// If `WanType`==`Lte`
+        /// If `WanType`==`Lte`. Password used for LTE uplink authentication
         /// </summary>
         public Input<string>? LtePassword
         {
@@ -116,16 +125,19 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// If `WanType`==`Lte`
+        /// If `WanType`==`Lte`. Username used for LTE uplink authentication
         /// </summary>
         [Input("lteUsername")]
         public Input<string>? LteUsername { get; set; }
 
+        /// <summary>
+        /// Layer 3 MTU configured on the port
+        /// </summary>
         [Input("mtu")]
         public Input<int>? Mtu { get; set; }
 
         /// <summary>
-        /// Name that we'll use to derive config
+        /// Interface name used to derive device configuration
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -143,11 +155,14 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// For Q-in-Q
+        /// For Q-in-Q. Outer VLAN ID used for QinQ encapsulation
         /// </summary>
         [Input("outerVlanId")]
         public Input<int>? OuterVlanId { get; set; }
 
+        /// <summary>
+        /// Whether PoE output is disabled on the port
+        /// </summary>
         [Input("poeDisabled")]
         public Input<bool>? PoeDisabled { get; set; }
 
@@ -170,7 +185,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? PreserveDscp { get; set; }
 
         /// <summary>
-        /// If HA mode
+        /// If HA mode. Whether the port participates in the redundant Ethernet configuration
         /// </summary>
         [Input("redundant")]
         public Input<bool>? Redundant { get; set; }
@@ -188,7 +203,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? RethIdx { get; set; }
 
         /// <summary>
-        /// If HA mode
+        /// If HA mode. Node associated with the redundant Ethernet interface
         /// </summary>
         [Input("rethNode")]
         public Input<string>? RethNode { get; set; }
@@ -197,7 +212,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _rethNodes;
 
         /// <summary>
-        /// SSR only - supporting vlan-based redundancy (matching the size of `Networks`)
+        /// If HA mode and for SSR only. Per-network node assignment used for VLAN-based redundancy
         /// </summary>
         public InputList<string> RethNodes
         {
@@ -205,6 +220,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
             set => _rethNodes = value;
         }
 
+        /// <summary>
+        /// Link speed configured on the port
+        /// </summary>
         [Input("speed")]
         public Input<string>? Speed { get; set; }
 
@@ -215,20 +233,26 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? SsrNoVirtualMac { get; set; }
 
         /// <summary>
-        /// For SSR only
+        /// For SSR only. Port range configured on the interface
         /// </summary>
         [Input("svrPortRange")]
         public Input<string>? SvrPortRange { get; set; }
 
+        /// <summary>
+        /// Traffic shaping settings applied to the port
+        /// </summary>
         [Input("trafficShaping")]
         public Input<Inputs.GatewaytemplatePortConfigTrafficShapingArgs>? TrafficShaping { get; set; }
 
         /// <summary>
-        /// port usage name. enum: `HaControl`, `HaData`, `Lan`, `Wan`
+        /// Logical usage assigned to the port
         /// </summary>
         [Input("usage", required: true)]
         public Input<string> Usage { get; set; } = null!;
 
+        /// <summary>
+        /// VLAN ID or variable used when the WAN interface is carried on a VLAN
+        /// </summary>
         [Input("vlanId")]
         public Input<string>? VlanId { get; set; }
 
@@ -236,7 +260,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputMap<Inputs.GatewaytemplatePortConfigVpnPathsArgs>? _vpnPaths;
 
         /// <summary>
-        /// Property key is the VPN name
+        /// Per-VPN path settings for traffic that uses this port
         /// </summary>
         public InputMap<Inputs.GatewaytemplatePortConfigVpnPathsArgs> VpnPaths
         {
@@ -245,7 +269,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// Only when `WanType`==`Broadband`. enum: `Default`, `Max`, `Recommended`
+        /// Only when `WanType`==`Broadband`. ARP policer profile applied to the WAN port
         /// </summary>
         [Input("wanArpPolicer")]
         public Input<string>? WanArpPolicer { get; set; }
@@ -290,7 +314,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _wanNetworks;
 
         /// <summary>
-        /// Only if `Usage`==`Wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
+        /// Only if `Usage`==`Wan`. Networks reachable through this WAN port for policy definition
         /// </summary>
         public InputList<string> WanNetworks
         {
@@ -299,25 +323,25 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// Only if `Usage`==`Wan`
+        /// Optional WAN health probe override settings for this port
         /// </summary>
         [Input("wanProbeOverride")]
         public Input<Inputs.GatewaytemplatePortConfigWanProbeOverrideArgs>? WanProbeOverride { get; set; }
 
         /// <summary>
-        /// Only if `Usage`==`Wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
+        /// Source NAT settings applied to traffic leaving this WAN port
         /// </summary>
         [Input("wanSourceNat")]
         public Input<Inputs.GatewaytemplatePortConfigWanSourceNatArgs>? WanSourceNat { get; set; }
 
         /// <summary>
-        /// Controls whether Marvis/scheduler can run speedtest on this port. enum: `Auto`, `Enabled`, `Disabled`
+        /// Controls whether Marvis or the scheduler can run speed tests on this WAN port
         /// </summary>
         [Input("wanSpeedtestMode")]
         public Input<string>? WanSpeedtestMode { get; set; }
 
         /// <summary>
-        /// Only if `Usage`==`Wan`. enum: `Broadband`, `Dsl`, `Lte`
+        /// Only if `Usage`==`Wan`. WAN uplink type configured on the port
         /// </summary>
         [Input("wanType")]
         public Input<string>? WanType { get; set; }

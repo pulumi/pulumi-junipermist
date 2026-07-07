@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DeviceprofileGatewayTunnelConfigs {
     /**
-     * @return Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.
+     * @return Provider auto-provisioning settings for tunnel endpoints
      * 
      */
     private @Nullable DeviceprofileGatewayTunnelConfigsAutoProvision autoProvision;
@@ -30,12 +30,12 @@ public final class DeviceprofileGatewayTunnelConfigs {
      */
     private @Nullable Integer ikeLifetime;
     /**
-     * @return Only if `provider`==`custom-ipsec`. enum: `aggressive`, `main`
+     * @return Only if `provider`==`custom-ipsec`. IKE negotiation mode for the tunnel
      * 
      */
     private @Nullable String ikeMode;
     /**
-     * @return If `provider`==`custom-ipsec`
+     * @return If `provider`==`custom-ipsec`, IKE proposals used for custom IPsec negotiation
      * 
      */
     private @Nullable List<DeviceprofileGatewayTunnelConfigsIkeProposal> ikeProposals;
@@ -45,7 +45,7 @@ public final class DeviceprofileGatewayTunnelConfigs {
      */
     private @Nullable Integer ipsecLifetime;
     /**
-     * @return Only if `provider`==`custom-ipsec`
+     * @return Only if `provider`==`custom-ipsec`. IPsec proposals used for custom IPsec negotiation
      * 
      */
     private @Nullable List<DeviceprofileGatewayTunnelConfigsIpsecProposal> ipsecProposals;
@@ -55,37 +55,37 @@ public final class DeviceprofileGatewayTunnelConfigs {
      */
     private @Nullable String localId;
     /**
-     * @return List of Local protected subnet for policy-based IPSec negotiation
+     * @return Local protected subnets advertised by this tunnel
      * 
      */
     private @Nullable List<String> localSubnets;
     /**
-     * @return Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
+     * @return Tunnel failover mode used for primary and secondary endpoints
      * 
      */
     private @Nullable String mode;
     /**
-     * @return If `provider`==`custom-ipsec` or `provider`==`prisma-ipsec`, networks reachable via this tunnel
+     * @return Destination networks reachable through this tunnel
      * 
      */
     private @Nullable List<String> networks;
     /**
-     * @return Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+     * @return Main remote tunnel endpoint settings
      * 
      */
     private @Nullable DeviceprofileGatewayTunnelConfigsPrimary primary;
     /**
-     * @return Only if `provider`==`custom-ipsec`
+     * @return Tunnel health probe settings
      * 
      */
     private @Nullable DeviceprofileGatewayTunnelConfigsProbe probe;
     /**
-     * @return Only if `provider`==`custom-ipsec`. enum: `gre`, `ipsec`
+     * @return Only if `provider`==`custom-ipsec`. Tunnel protocol for custom tunnel negotiation
      * 
      */
     private @Nullable String protocol;
     /**
-     * @return Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+     * @return Tunnel provider used when auto provisioning is disabled
      * 
      */
     private @Nullable String provider;
@@ -95,24 +95,24 @@ public final class DeviceprofileGatewayTunnelConfigs {
      */
     private @Nullable String psk;
     /**
-     * @return List of Remote protected subnet for policy-based IPSec negotiation
+     * @return Remote protected subnets reached through policy-based IPsec
      * 
      */
     private @Nullable List<String> remoteSubnets;
     /**
-     * @return Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+     * @return Backup remote tunnel endpoint settings
      * 
      */
     private @Nullable DeviceprofileGatewayTunnelConfigsSecondary secondary;
     /**
-     * @return Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. enum: `1`, `2`
+     * @return Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. Tunnel version value for custom tunnel configuration
      * 
      */
     private @Nullable String version;
 
     private DeviceprofileGatewayTunnelConfigs() {}
     /**
-     * @return Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.
+     * @return Provider auto-provisioning settings for tunnel endpoints
      * 
      */
     public Optional<DeviceprofileGatewayTunnelConfigsAutoProvision> autoProvision() {
@@ -126,14 +126,14 @@ public final class DeviceprofileGatewayTunnelConfigs {
         return Optional.ofNullable(this.ikeLifetime);
     }
     /**
-     * @return Only if `provider`==`custom-ipsec`. enum: `aggressive`, `main`
+     * @return Only if `provider`==`custom-ipsec`. IKE negotiation mode for the tunnel
      * 
      */
     public Optional<String> ikeMode() {
         return Optional.ofNullable(this.ikeMode);
     }
     /**
-     * @return If `provider`==`custom-ipsec`
+     * @return If `provider`==`custom-ipsec`, IKE proposals used for custom IPsec negotiation
      * 
      */
     public List<DeviceprofileGatewayTunnelConfigsIkeProposal> ikeProposals() {
@@ -147,7 +147,7 @@ public final class DeviceprofileGatewayTunnelConfigs {
         return Optional.ofNullable(this.ipsecLifetime);
     }
     /**
-     * @return Only if `provider`==`custom-ipsec`
+     * @return Only if `provider`==`custom-ipsec`. IPsec proposals used for custom IPsec negotiation
      * 
      */
     public List<DeviceprofileGatewayTunnelConfigsIpsecProposal> ipsecProposals() {
@@ -161,49 +161,49 @@ public final class DeviceprofileGatewayTunnelConfigs {
         return Optional.ofNullable(this.localId);
     }
     /**
-     * @return List of Local protected subnet for policy-based IPSec negotiation
+     * @return Local protected subnets advertised by this tunnel
      * 
      */
     public List<String> localSubnets() {
         return this.localSubnets == null ? List.of() : this.localSubnets;
     }
     /**
-     * @return Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
+     * @return Tunnel failover mode used for primary and secondary endpoints
      * 
      */
     public Optional<String> mode() {
         return Optional.ofNullable(this.mode);
     }
     /**
-     * @return If `provider`==`custom-ipsec` or `provider`==`prisma-ipsec`, networks reachable via this tunnel
+     * @return Destination networks reachable through this tunnel
      * 
      */
     public List<String> networks() {
         return this.networks == null ? List.of() : this.networks;
     }
     /**
-     * @return Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+     * @return Main remote tunnel endpoint settings
      * 
      */
     public Optional<DeviceprofileGatewayTunnelConfigsPrimary> primary() {
         return Optional.ofNullable(this.primary);
     }
     /**
-     * @return Only if `provider`==`custom-ipsec`
+     * @return Tunnel health probe settings
      * 
      */
     public Optional<DeviceprofileGatewayTunnelConfigsProbe> probe() {
         return Optional.ofNullable(this.probe);
     }
     /**
-     * @return Only if `provider`==`custom-ipsec`. enum: `gre`, `ipsec`
+     * @return Only if `provider`==`custom-ipsec`. Tunnel protocol for custom tunnel negotiation
      * 
      */
     public Optional<String> protocol() {
         return Optional.ofNullable(this.protocol);
     }
     /**
-     * @return Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+     * @return Tunnel provider used when auto provisioning is disabled
      * 
      */
     public Optional<String> provider() {
@@ -217,21 +217,21 @@ public final class DeviceprofileGatewayTunnelConfigs {
         return Optional.ofNullable(this.psk);
     }
     /**
-     * @return List of Remote protected subnet for policy-based IPSec negotiation
+     * @return Remote protected subnets reached through policy-based IPsec
      * 
      */
     public List<String> remoteSubnets() {
         return this.remoteSubnets == null ? List.of() : this.remoteSubnets;
     }
     /**
-     * @return Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+     * @return Backup remote tunnel endpoint settings
      * 
      */
     public Optional<DeviceprofileGatewayTunnelConfigsSecondary> secondary() {
         return Optional.ofNullable(this.secondary);
     }
     /**
-     * @return Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. enum: `1`, `2`
+     * @return Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. Tunnel version value for custom tunnel configuration
      * 
      */
     public Optional<String> version() {

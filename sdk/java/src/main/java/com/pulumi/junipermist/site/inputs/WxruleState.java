@@ -19,36 +19,44 @@ public final class WxruleState extends com.pulumi.resources.ResourceArgs {
     public static final WxruleState Empty = new WxruleState();
 
     /**
-     * type of action, allow / block. enum: `allow`, `block`
+     * Allow or block behavior applied by this WxLAN rule
      * 
      */
     @Import(name="action")
     private @Nullable Output<String> action;
 
     /**
-     * @return type of action, allow / block. enum: `allow`, `block`
+     * @return Allow or block behavior applied by this WxLAN rule
      * 
      */
     public Optional<Output<String>> action() {
         return Optional.ofNullable(this.action);
     }
 
+    /**
+     * WxLAN tag identifiers applied when this rule matches
+     * 
+     */
     @Import(name="applyTags")
     private @Nullable Output<List<String>> applyTags;
 
+    /**
+     * @return WxLAN tag identifiers applied when this rule matches
+     * 
+     */
     public Optional<Output<List<String>>> applyTags() {
         return Optional.ofNullable(this.applyTags);
     }
 
     /**
-     * Blocked apps (always blocking, ignoring action), the key of Get Application List
+     * Application keys always blocked by this rule, regardless of the rule action
      * 
      */
     @Import(name="blockedApps")
     private @Nullable Output<List<String>> blockedApps;
 
     /**
-     * @return Blocked apps (always blocking, ignoring action), the key of Get Application List
+     * @return Application keys always blocked by this rule, regardless of the rule action
      * 
      */
     public Optional<Output<List<String>>> blockedApps() {
@@ -56,14 +64,14 @@ public final class WxruleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of WxTag UUID to indicate these tags are allowed access
+     * Destination WxLAN tag identifiers explicitly allowed by this rule
      * 
      */
     @Import(name="dstAllowWxtags")
     private @Nullable Output<List<String>> dstAllowWxtags;
 
     /**
-     * @return List of WxTag UUID to indicate these tags are allowed access
+     * @return Destination WxLAN tag identifiers explicitly allowed by this rule
      * 
      */
     public Optional<Output<List<String>>> dstAllowWxtags() {
@@ -71,14 +79,14 @@ public final class WxruleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of WxTag UUID to indicate these tags are blocked access
+     * Destination WxLAN tag identifiers explicitly denied by this rule
      * 
      */
     @Import(name="dstDenyWxtags")
     private @Nullable Output<List<String>> dstDenyWxtags;
 
     /**
-     * @return List of WxTag UUID to indicate these tags are blocked access
+     * @return Destination WxLAN tag identifiers explicitly denied by this rule
      * 
      */
     public Optional<Output<List<String>>> dstDenyWxtags() {
@@ -86,58 +94,74 @@ public final class WxruleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of WxTag UUID
+     * Destination WxLAN tag identifiers matched by this rule
      * 
      */
     @Import(name="dstWxtags")
     private @Nullable Output<List<String>> dstWxtags;
 
     /**
-     * @return List of WxTag UUID
+     * @return Destination WxLAN tag identifiers matched by this rule
      * 
      */
     public Optional<Output<List<String>>> dstWxtags() {
         return Optional.ofNullable(this.dstWxtags);
     }
 
+    /**
+     * Whether this WxLAN rule is enabled
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether this WxLAN rule is enabled
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
     /**
-     * Order how rules would be looked up, &gt; 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+     * Lookup priority for WxLAN rules; larger positive values match first, and -1 means LAST. Uniqueness is not checked
      * 
      */
     @Import(name="order")
     private @Nullable Output<Integer> order;
 
     /**
-     * @return Order how rules would be looked up, &gt; 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+     * @return Lookup priority for WxLAN rules; larger positive values match first, and -1 means LAST. Uniqueness is not checked
      * 
      */
     public Optional<Output<Integer>> order() {
         return Optional.ofNullable(this.order);
     }
 
+    /**
+     * Mist site associated with this WxLAN rule, when site-scoped
+     * 
+     */
     @Import(name="siteId")
     private @Nullable Output<String> siteId;
 
+    /**
+     * @return Mist site associated with this WxLAN rule, when site-scoped
+     * 
+     */
     public Optional<Output<String>> siteId() {
         return Optional.ofNullable(this.siteId);
     }
 
     /**
-     * List of WxTag UUID to determine if this rule would match
+     * Source WxLAN tag identifiers that must match for this rule to apply
      * 
      */
     @Import(name="srcWxtags")
     private @Nullable Output<List<String>> srcWxtags;
 
     /**
-     * @return List of WxTag UUID to determine if this rule would match
+     * @return Source WxLAN tag identifiers that must match for this rule to apply
      * 
      */
     public Optional<Output<List<String>>> srcWxtags() {
@@ -178,7 +202,7 @@ public final class WxruleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param action type of action, allow / block. enum: `allow`, `block`
+         * @param action Allow or block behavior applied by this WxLAN rule
          * 
          * @return builder
          * 
@@ -189,7 +213,7 @@ public final class WxruleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param action type of action, allow / block. enum: `allow`, `block`
+         * @param action Allow or block behavior applied by this WxLAN rule
          * 
          * @return builder
          * 
@@ -198,21 +222,39 @@ public final class WxruleState extends com.pulumi.resources.ResourceArgs {
             return action(Output.of(action));
         }
 
+        /**
+         * @param applyTags WxLAN tag identifiers applied when this rule matches
+         * 
+         * @return builder
+         * 
+         */
         public Builder applyTags(@Nullable Output<List<String>> applyTags) {
             $.applyTags = applyTags;
             return this;
         }
 
+        /**
+         * @param applyTags WxLAN tag identifiers applied when this rule matches
+         * 
+         * @return builder
+         * 
+         */
         public Builder applyTags(List<String> applyTags) {
             return applyTags(Output.of(applyTags));
         }
 
+        /**
+         * @param applyTags WxLAN tag identifiers applied when this rule matches
+         * 
+         * @return builder
+         * 
+         */
         public Builder applyTags(String... applyTags) {
             return applyTags(List.of(applyTags));
         }
 
         /**
-         * @param blockedApps Blocked apps (always blocking, ignoring action), the key of Get Application List
+         * @param blockedApps Application keys always blocked by this rule, regardless of the rule action
          * 
          * @return builder
          * 
@@ -223,7 +265,7 @@ public final class WxruleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param blockedApps Blocked apps (always blocking, ignoring action), the key of Get Application List
+         * @param blockedApps Application keys always blocked by this rule, regardless of the rule action
          * 
          * @return builder
          * 
@@ -233,7 +275,7 @@ public final class WxruleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param blockedApps Blocked apps (always blocking, ignoring action), the key of Get Application List
+         * @param blockedApps Application keys always blocked by this rule, regardless of the rule action
          * 
          * @return builder
          * 
@@ -243,7 +285,7 @@ public final class WxruleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dstAllowWxtags List of WxTag UUID to indicate these tags are allowed access
+         * @param dstAllowWxtags Destination WxLAN tag identifiers explicitly allowed by this rule
          * 
          * @return builder
          * 
@@ -254,7 +296,7 @@ public final class WxruleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dstAllowWxtags List of WxTag UUID to indicate these tags are allowed access
+         * @param dstAllowWxtags Destination WxLAN tag identifiers explicitly allowed by this rule
          * 
          * @return builder
          * 
@@ -264,7 +306,7 @@ public final class WxruleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dstAllowWxtags List of WxTag UUID to indicate these tags are allowed access
+         * @param dstAllowWxtags Destination WxLAN tag identifiers explicitly allowed by this rule
          * 
          * @return builder
          * 
@@ -274,7 +316,7 @@ public final class WxruleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dstDenyWxtags List of WxTag UUID to indicate these tags are blocked access
+         * @param dstDenyWxtags Destination WxLAN tag identifiers explicitly denied by this rule
          * 
          * @return builder
          * 
@@ -285,7 +327,7 @@ public final class WxruleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dstDenyWxtags List of WxTag UUID to indicate these tags are blocked access
+         * @param dstDenyWxtags Destination WxLAN tag identifiers explicitly denied by this rule
          * 
          * @return builder
          * 
@@ -295,7 +337,7 @@ public final class WxruleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dstDenyWxtags List of WxTag UUID to indicate these tags are blocked access
+         * @param dstDenyWxtags Destination WxLAN tag identifiers explicitly denied by this rule
          * 
          * @return builder
          * 
@@ -305,7 +347,7 @@ public final class WxruleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dstWxtags List of WxTag UUID
+         * @param dstWxtags Destination WxLAN tag identifiers matched by this rule
          * 
          * @return builder
          * 
@@ -316,7 +358,7 @@ public final class WxruleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dstWxtags List of WxTag UUID
+         * @param dstWxtags Destination WxLAN tag identifiers matched by this rule
          * 
          * @return builder
          * 
@@ -326,7 +368,7 @@ public final class WxruleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dstWxtags List of WxTag UUID
+         * @param dstWxtags Destination WxLAN tag identifiers matched by this rule
          * 
          * @return builder
          * 
@@ -335,17 +377,29 @@ public final class WxruleState extends com.pulumi.resources.ResourceArgs {
             return dstWxtags(List.of(dstWxtags));
         }
 
+        /**
+         * @param enabled Whether this WxLAN rule is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether this WxLAN rule is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
         /**
-         * @param order Order how rules would be looked up, &gt; 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+         * @param order Lookup priority for WxLAN rules; larger positive values match first, and -1 means LAST. Uniqueness is not checked
          * 
          * @return builder
          * 
@@ -356,7 +410,7 @@ public final class WxruleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param order Order how rules would be looked up, &gt; 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+         * @param order Lookup priority for WxLAN rules; larger positive values match first, and -1 means LAST. Uniqueness is not checked
          * 
          * @return builder
          * 
@@ -365,17 +419,29 @@ public final class WxruleState extends com.pulumi.resources.ResourceArgs {
             return order(Output.of(order));
         }
 
+        /**
+         * @param siteId Mist site associated with this WxLAN rule, when site-scoped
+         * 
+         * @return builder
+         * 
+         */
         public Builder siteId(@Nullable Output<String> siteId) {
             $.siteId = siteId;
             return this;
         }
 
+        /**
+         * @param siteId Mist site associated with this WxLAN rule, when site-scoped
+         * 
+         * @return builder
+         * 
+         */
         public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
         }
 
         /**
-         * @param srcWxtags List of WxTag UUID to determine if this rule would match
+         * @param srcWxtags Source WxLAN tag identifiers that must match for this rule to apply
          * 
          * @return builder
          * 
@@ -386,7 +452,7 @@ public final class WxruleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param srcWxtags List of WxTag UUID to determine if this rule would match
+         * @param srcWxtags Source WxLAN tag identifiers that must match for this rule to apply
          * 
          * @return builder
          * 
@@ -396,7 +462,7 @@ public final class WxruleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param srcWxtags List of WxTag UUID to determine if this rule would match
+         * @param srcWxtags Source WxLAN tag identifiers that must match for this rule to apply
          * 
          * @return builder
          * 

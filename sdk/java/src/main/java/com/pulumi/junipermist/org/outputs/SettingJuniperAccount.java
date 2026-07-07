@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingJuniperAccount {
+    /**
+     * @return User who linked this Juniper account
+     * 
+     */
     private @Nullable String linkedBy;
+    /**
+     * @return Display name of the linked Juniper account
+     * 
+     */
     private @Nullable String name;
 
     private SettingJuniperAccount() {}
+    /**
+     * @return User who linked this Juniper account
+     * 
+     */
     public Optional<String> linkedBy() {
         return Optional.ofNullable(this.linkedBy);
     }
+    /**
+     * @return Display name of the linked Juniper account
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }

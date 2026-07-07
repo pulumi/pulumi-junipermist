@@ -11,20 +11,28 @@ import java.util.Objects;
 @CustomType
 public final class GatewayNetworkVpnAccessStaticNat {
     /**
-     * @return The Static NAT destination IP Address. Must be an IP Address (i.e. &#34;192.168.70.3&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * @return The Static NAT destination IP address. Must be an IP address (i.e. &#34;192.168.70.3&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     private String internalIp;
+    /**
+     * @return Label for this VPN static NAT rule
+     * 
+     */
     private String name;
 
     private GatewayNetworkVpnAccessStaticNat() {}
     /**
-     * @return The Static NAT destination IP Address. Must be an IP Address (i.e. &#34;192.168.70.3&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * @return The Static NAT destination IP address. Must be an IP address (i.e. &#34;192.168.70.3&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     public String internalIp() {
         return this.internalIp;
     }
+    /**
+     * @return Label for this VPN static NAT rule
+     * 
+     */
     public String name() {
         return this.name;
     }

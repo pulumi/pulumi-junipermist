@@ -14,20 +14,28 @@ import javax.annotation.Nullable;
 @CustomType
 public final class MxclusterMistDas {
     /**
-     * @return Dynamic authorization clients configured to send CoA|DM to mist edges on port 3799
+     * @return Dynamic authorization clients allowed to send CoA or Disconnect-Message requests
      * 
      */
     private @Nullable List<MxclusterMistDasCoaServer> coaServers;
+    /**
+     * @return Whether cloud-assisted DAS is enabled for the Mist Edge cluster
+     * 
+     */
     private @Nullable Boolean enabled;
 
     private MxclusterMistDas() {}
     /**
-     * @return Dynamic authorization clients configured to send CoA|DM to mist edges on port 3799
+     * @return Dynamic authorization clients allowed to send CoA or Disconnect-Message requests
      * 
      */
     public List<MxclusterMistDasCoaServer> coaServers() {
         return this.coaServers == null ? List.of() : this.coaServers;
     }
+    /**
+     * @return Whether cloud-assisted DAS is enabled for the Mist Edge cluster
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }

@@ -13,9 +13,12 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class ApClientBridgeAuth
     {
+        /// <summary>
+        /// Pre-shared key used when `Type`==`Psk` for client bridge authentication
+        /// </summary>
         public readonly string? Psk;
         /// <summary>
-        /// wpa2-AES/CCMPp is assumed when `Type`==`Psk`. enum: `Open`, `Psk`
+        /// Authentication mode for the client bridge connection
         /// </summary>
         public readonly string? Type;
 

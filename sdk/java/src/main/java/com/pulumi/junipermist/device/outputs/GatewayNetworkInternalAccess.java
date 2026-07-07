@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GatewayNetworkInternalAccess {
+    /**
+     * @return Whether internal access is enabled for this network
+     * 
+     */
     private @Nullable Boolean enabled;
 
     private GatewayNetworkInternalAccess() {}
+    /**
+     * @return Whether internal access is enabled for this network
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }

@@ -16,23 +16,31 @@ public final class GatewaytemplateDhcpdConfigConfigOptionsArgs extends com.pulum
     public static final GatewaytemplateDhcpdConfigConfigOptionsArgs Empty = new GatewaytemplateDhcpdConfigConfigOptionsArgs();
 
     /**
-     * enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
+     * Data type used to encode this DHCP option value
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
+     * @return Data type used to encode this DHCP option value
      * 
      */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
 
+    /**
+     * Option value to send for this DHCP option
+     * 
+     */
     @Import(name="value")
     private @Nullable Output<String> value;
 
+    /**
+     * @return Option value to send for this DHCP option
+     * 
+     */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -63,7 +71,7 @@ public final class GatewaytemplateDhcpdConfigConfigOptionsArgs extends com.pulum
         }
 
         /**
-         * @param type enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
+         * @param type Data type used to encode this DHCP option value
          * 
          * @return builder
          * 
@@ -74,7 +82,7 @@ public final class GatewaytemplateDhcpdConfigConfigOptionsArgs extends com.pulum
         }
 
         /**
-         * @param type enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
+         * @param type Data type used to encode this DHCP option value
          * 
          * @return builder
          * 
@@ -83,11 +91,23 @@ public final class GatewaytemplateDhcpdConfigConfigOptionsArgs extends com.pulum
             return type(Output.of(type));
         }
 
+        /**
+         * @param value Option value to send for this DHCP option
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value Option value to send for this DHCP option
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

@@ -114,84 +114,108 @@ export class Networktemplate extends pulumi.CustomResource {
         return obj['__pulumiType'] === Networktemplate.__pulumiType;
     }
 
+    /**
+     * ACL policy defaults provided by this network template
+     */
     declare public readonly aclPolicies: pulumi.Output<outputs.org.NetworktemplateAclPolicy[] | undefined>;
     /**
-     * ACL Tags to identify traffic source or destination. Key name is the tag name
+     * ACL tags available to access policies in this network template
      */
     declare public readonly aclTags: pulumi.Output<{[key: string]: outputs.org.NetworktemplateAclTags} | undefined>;
     /**
-     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
+     * Additional CLI configuration commands provided by this network template
      */
     declare public readonly additionalConfigCmds: pulumi.Output<string[] | undefined>;
+    /**
+     * BGP routing defaults for this network template. Property key is the BGP session name
+     */
     declare public readonly bgpConfig: pulumi.Output<{[key: string]: outputs.org.NetworktemplateBgpConfig} | undefined>;
+    /**
+     * DHCP snooping defaults provided by this network template
+     */
     declare public readonly dhcpSnooping: pulumi.Output<outputs.org.NetworktemplateDhcpSnooping | undefined>;
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS servers provided by this network template
      */
     declare public readonly dnsServers: pulumi.Output<string[]>;
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS search suffixes provided by this network template
      */
     declare public readonly dnsSuffixes: pulumi.Output<string[]>;
     /**
-     * Property key is the destination CIDR (e.g. "10.0.0.0/8")
+     * Additional IPv4 route defaults in this network template
      */
     declare public readonly extraRoutes: pulumi.Output<{[key: string]: outputs.org.NetworktemplateExtraRoutes} | undefined>;
     /**
-     * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+     * Additional IPv6 route defaults in this network template
      */
     declare public readonly extraRoutes6: pulumi.Output<{[key: string]: outputs.org.NetworktemplateExtraRoutes6} | undefined>;
     /**
-     * Enable mistNac to use RadSec
+     * Mist NAC defaults applied by this network template
      */
     declare public readonly mistNac: pulumi.Output<outputs.org.NetworktemplateMistNac | undefined>;
+    /**
+     * Display name of the network template
+     */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * Property key is network name
+     * Layer 3 networks configured by this network template
      */
     declare public readonly networks: pulumi.Output<{[key: string]: outputs.org.NetworktemplateNetworks} | undefined>;
     /**
-     * List of NTP servers specific to this device. By default, those in Site Settings will be used
+     * NTP servers provided by this network template
      */
     declare public readonly ntpServers: pulumi.Output<string[]>;
+    /**
+     * Organization that owns this network template
+     */
     declare public readonly orgId: pulumi.Output<string>;
     /**
-     * Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+     * OSPF area defaults provided by this network template
      */
     declare public readonly ospfAreas: pulumi.Output<{[key: string]: outputs.org.NetworktemplateOspfAreas} | undefined>;
     /**
-     * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+     * Port mirroring defaults provided by this network template
      */
     declare public readonly portMirroring: pulumi.Output<{[key: string]: outputs.org.NetworktemplatePortMirroring} | undefined>;
     /**
-     * Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     * Reusable switch port usage profiles provided by this network template
      */
     declare public readonly portUsages: pulumi.Output<{[key: string]: outputs.org.NetworktemplatePortUsages} | undefined>;
     /**
-     * Junos Radius config
+     * RADIUS authentication and accounting defaults in this network template
      */
     declare public readonly radiusConfig: pulumi.Output<outputs.org.NetworktemplateRadiusConfig | undefined>;
+    /**
+     * Remote syslog defaults provided by this network template
+     */
     declare public readonly remoteSyslog: pulumi.Output<outputs.org.NetworktemplateRemoteSyslog | undefined>;
     /**
      * By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
      */
     declare public readonly removeExistingConfigs: pulumi.Output<boolean | undefined>;
     /**
-     * Property key is the routing policy name
+     * Routing policy defaults applied by this network template
      */
     declare public readonly routingPolicies: pulumi.Output<{[key: string]: outputs.org.NetworktemplateRoutingPolicies} | undefined>;
+    /**
+     * SNMP defaults provided by this network template
+     */
     declare public readonly snmpConfig: pulumi.Output<outputs.org.NetworktemplateSnmpConfig | undefined>;
     /**
-     * Defines custom switch configuration based on different criteria
+     * Matching rules that select switches for this network template
      */
     declare public readonly switchMatching: pulumi.Output<outputs.org.NetworktemplateSwitchMatching | undefined>;
     /**
-     * Switch Management settings
+     * Management-plane defaults provided by this network template
      */
     declare public readonly switchMgmt: pulumi.Output<outputs.org.NetworktemplateSwitchMgmt | undefined>;
+    /**
+     * VRF defaults applied by this network template
+     */
     declare public readonly vrfConfig: pulumi.Output<outputs.org.NetworktemplateVrfConfig | undefined>;
     /**
-     * Property key is the network name
+     * VRF instances configured by this network template
      */
     declare public readonly vrfInstances: pulumi.Output<{[key: string]: outputs.org.NetworktemplateVrfInstances} | undefined>;
 
@@ -275,84 +299,108 @@ export class Networktemplate extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Networktemplate resources.
  */
 export interface NetworktemplateState {
+    /**
+     * ACL policy defaults provided by this network template
+     */
     aclPolicies?: pulumi.Input<pulumi.Input<inputs.org.NetworktemplateAclPolicy>[] | undefined>;
     /**
-     * ACL Tags to identify traffic source or destination. Key name is the tag name
+     * ACL tags available to access policies in this network template
      */
     aclTags?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplateAclTags>} | undefined>;
     /**
-     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
+     * Additional CLI configuration commands provided by this network template
      */
     additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * BGP routing defaults for this network template. Property key is the BGP session name
+     */
     bgpConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplateBgpConfig>} | undefined>;
+    /**
+     * DHCP snooping defaults provided by this network template
+     */
     dhcpSnooping?: pulumi.Input<inputs.org.NetworktemplateDhcpSnooping | undefined>;
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS servers provided by this network template
      */
     dnsServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS search suffixes provided by this network template
      */
     dnsSuffixes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Property key is the destination CIDR (e.g. "10.0.0.0/8")
+     * Additional IPv4 route defaults in this network template
      */
     extraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplateExtraRoutes>} | undefined>;
     /**
-     * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+     * Additional IPv6 route defaults in this network template
      */
     extraRoutes6?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplateExtraRoutes6>} | undefined>;
     /**
-     * Enable mistNac to use RadSec
+     * Mist NAC defaults applied by this network template
      */
     mistNac?: pulumi.Input<inputs.org.NetworktemplateMistNac | undefined>;
+    /**
+     * Display name of the network template
+     */
     name?: pulumi.Input<string | undefined>;
     /**
-     * Property key is network name
+     * Layer 3 networks configured by this network template
      */
     networks?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplateNetworks>} | undefined>;
     /**
-     * List of NTP servers specific to this device. By default, those in Site Settings will be used
+     * NTP servers provided by this network template
      */
     ntpServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Organization that owns this network template
+     */
     orgId?: pulumi.Input<string | undefined>;
     /**
-     * Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+     * OSPF area defaults provided by this network template
      */
     ospfAreas?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplateOspfAreas>} | undefined>;
     /**
-     * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+     * Port mirroring defaults provided by this network template
      */
     portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplatePortMirroring>} | undefined>;
     /**
-     * Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     * Reusable switch port usage profiles provided by this network template
      */
     portUsages?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplatePortUsages>} | undefined>;
     /**
-     * Junos Radius config
+     * RADIUS authentication and accounting defaults in this network template
      */
     radiusConfig?: pulumi.Input<inputs.org.NetworktemplateRadiusConfig | undefined>;
+    /**
+     * Remote syslog defaults provided by this network template
+     */
     remoteSyslog?: pulumi.Input<inputs.org.NetworktemplateRemoteSyslog | undefined>;
     /**
      * By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
      */
     removeExistingConfigs?: pulumi.Input<boolean | undefined>;
     /**
-     * Property key is the routing policy name
+     * Routing policy defaults applied by this network template
      */
     routingPolicies?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplateRoutingPolicies>} | undefined>;
+    /**
+     * SNMP defaults provided by this network template
+     */
     snmpConfig?: pulumi.Input<inputs.org.NetworktemplateSnmpConfig | undefined>;
     /**
-     * Defines custom switch configuration based on different criteria
+     * Matching rules that select switches for this network template
      */
     switchMatching?: pulumi.Input<inputs.org.NetworktemplateSwitchMatching | undefined>;
     /**
-     * Switch Management settings
+     * Management-plane defaults provided by this network template
      */
     switchMgmt?: pulumi.Input<inputs.org.NetworktemplateSwitchMgmt | undefined>;
+    /**
+     * VRF defaults applied by this network template
+     */
     vrfConfig?: pulumi.Input<inputs.org.NetworktemplateVrfConfig | undefined>;
     /**
-     * Property key is the network name
+     * VRF instances configured by this network template
      */
     vrfInstances?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplateVrfInstances>} | undefined>;
 }
@@ -361,84 +409,108 @@ export interface NetworktemplateState {
  * The set of arguments for constructing a Networktemplate resource.
  */
 export interface NetworktemplateArgs {
+    /**
+     * ACL policy defaults provided by this network template
+     */
     aclPolicies?: pulumi.Input<pulumi.Input<inputs.org.NetworktemplateAclPolicy>[] | undefined>;
     /**
-     * ACL Tags to identify traffic source or destination. Key name is the tag name
+     * ACL tags available to access policies in this network template
      */
     aclTags?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplateAclTags>} | undefined>;
     /**
-     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
+     * Additional CLI configuration commands provided by this network template
      */
     additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * BGP routing defaults for this network template. Property key is the BGP session name
+     */
     bgpConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplateBgpConfig>} | undefined>;
+    /**
+     * DHCP snooping defaults provided by this network template
+     */
     dhcpSnooping?: pulumi.Input<inputs.org.NetworktemplateDhcpSnooping | undefined>;
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS servers provided by this network template
      */
     dnsServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS search suffixes provided by this network template
      */
     dnsSuffixes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Property key is the destination CIDR (e.g. "10.0.0.0/8")
+     * Additional IPv4 route defaults in this network template
      */
     extraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplateExtraRoutes>} | undefined>;
     /**
-     * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+     * Additional IPv6 route defaults in this network template
      */
     extraRoutes6?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplateExtraRoutes6>} | undefined>;
     /**
-     * Enable mistNac to use RadSec
+     * Mist NAC defaults applied by this network template
      */
     mistNac?: pulumi.Input<inputs.org.NetworktemplateMistNac | undefined>;
+    /**
+     * Display name of the network template
+     */
     name?: pulumi.Input<string | undefined>;
     /**
-     * Property key is network name
+     * Layer 3 networks configured by this network template
      */
     networks?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplateNetworks>} | undefined>;
     /**
-     * List of NTP servers specific to this device. By default, those in Site Settings will be used
+     * NTP servers provided by this network template
      */
     ntpServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Organization that owns this network template
+     */
     orgId: pulumi.Input<string>;
     /**
-     * Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+     * OSPF area defaults provided by this network template
      */
     ospfAreas?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplateOspfAreas>} | undefined>;
     /**
-     * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+     * Port mirroring defaults provided by this network template
      */
     portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplatePortMirroring>} | undefined>;
     /**
-     * Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     * Reusable switch port usage profiles provided by this network template
      */
     portUsages?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplatePortUsages>} | undefined>;
     /**
-     * Junos Radius config
+     * RADIUS authentication and accounting defaults in this network template
      */
     radiusConfig?: pulumi.Input<inputs.org.NetworktemplateRadiusConfig | undefined>;
+    /**
+     * Remote syslog defaults provided by this network template
+     */
     remoteSyslog?: pulumi.Input<inputs.org.NetworktemplateRemoteSyslog | undefined>;
     /**
      * By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
      */
     removeExistingConfigs?: pulumi.Input<boolean | undefined>;
     /**
-     * Property key is the routing policy name
+     * Routing policy defaults applied by this network template
      */
     routingPolicies?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplateRoutingPolicies>} | undefined>;
+    /**
+     * SNMP defaults provided by this network template
+     */
     snmpConfig?: pulumi.Input<inputs.org.NetworktemplateSnmpConfig | undefined>;
     /**
-     * Defines custom switch configuration based on different criteria
+     * Matching rules that select switches for this network template
      */
     switchMatching?: pulumi.Input<inputs.org.NetworktemplateSwitchMatching | undefined>;
     /**
-     * Switch Management settings
+     * Management-plane defaults provided by this network template
      */
     switchMgmt?: pulumi.Input<inputs.org.NetworktemplateSwitchMgmt | undefined>;
+    /**
+     * VRF defaults applied by this network template
+     */
     vrfConfig?: pulumi.Input<inputs.org.NetworktemplateVrfConfig | undefined>;
     /**
-     * Property key is the network name
+     * VRF instances configured by this network template
      */
     vrfInstances?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplateVrfInstances>} | undefined>;
 }

@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class NetworkTenants
     {
+        /// <summary>
+        /// IP addresses or subnets assigned to this tenant in the network
+        /// </summary>
         public readonly ImmutableArray<string> Addresses;
 
         [OutputConstructor]

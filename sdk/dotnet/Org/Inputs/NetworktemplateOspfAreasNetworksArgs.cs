@@ -31,32 +31,50 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? AuthPassword { get; set; }
 
         /// <summary>
-        /// auth type. enum: `Md5`, `None`, `Password`
+        /// Authentication method used by this OSPF network
         /// </summary>
         [Input("authType")]
         public Input<string>? AuthType { get; set; }
 
+        /// <summary>
+        /// Minimum BFD interval for this OSPF network, in milliseconds
+        /// </summary>
         [Input("bfdMinimumInterval")]
         public Input<int>? BfdMinimumInterval { get; set; }
 
+        /// <summary>
+        /// OSPF dead interval for this network, in seconds
+        /// </summary>
         [Input("deadInterval")]
         public Input<int>? DeadInterval { get; set; }
 
+        /// <summary>
+        /// Routing policy used to export routes from this OSPF network
+        /// </summary>
         [Input("exportPolicy")]
         public Input<string>? ExportPolicy { get; set; }
 
+        /// <summary>
+        /// OSPF hello interval for this network, in seconds
+        /// </summary>
         [Input("helloInterval")]
         public Input<int>? HelloInterval { get; set; }
 
+        /// <summary>
+        /// Routing policy used to import routes for this OSPF network
+        /// </summary>
         [Input("importPolicy")]
         public Input<string>? ImportPolicy { get; set; }
 
         /// <summary>
-        /// interface type (nbma = non-broadcast multi-access). enum: `Broadcast`, `Nbma`, `P2mp`, `P2p`
+        /// OSPF interface type used for this network
         /// </summary>
         [Input("interfaceType")]
         public Input<string>? InterfaceType { get; set; }
 
+        /// <summary>
+        /// OSPF metric assigned to this network
+        /// </summary>
         [Input("metric")]
         public Input<int>? Metric { get; set; }
 

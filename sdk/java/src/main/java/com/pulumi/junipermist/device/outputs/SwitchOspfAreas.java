@@ -15,23 +15,39 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SwitchOspfAreas {
+    /**
+     * @return Whether loopback interfaces are included in this OSPF area
+     * 
+     */
     private @Nullable Boolean includeLoopback;
+    /**
+     * @return OSPF network settings keyed by network name
+     * 
+     */
     private Map<String,SwitchOspfAreasNetworks> networks;
     /**
-     * @return OSPF type. enum: `default`, `nssa`, `stub`
+     * @return Area type for this OSPF area
      * 
      */
     private @Nullable String type;
 
     private SwitchOspfAreas() {}
+    /**
+     * @return Whether loopback interfaces are included in this OSPF area
+     * 
+     */
     public Optional<Boolean> includeLoopback() {
         return Optional.ofNullable(this.includeLoopback);
     }
+    /**
+     * @return OSPF network settings keyed by network name
+     * 
+     */
     public Map<String,SwitchOspfAreasNetworks> networks() {
         return this.networks;
     }
     /**
-     * @return OSPF type. enum: `default`, `nssa`, `stub`
+     * @return Area type for this OSPF area
      * 
      */
     public Optional<String> type() {

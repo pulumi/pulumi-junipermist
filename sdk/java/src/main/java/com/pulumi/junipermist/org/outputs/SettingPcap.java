@@ -12,19 +12,27 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingPcap {
+    /**
+     * @return Storage bucket name used for organization packet capture files
+     * 
+     */
     private @Nullable String bucket;
     /**
-     * @return Max_len of non-management packets to capture
+     * @return Maximum length of non-management packets to capture, in bytes
      * 
      */
     private @Nullable Integer maxPktLen;
 
     private SettingPcap() {}
+    /**
+     * @return Storage bucket name used for organization packet capture files
+     * 
+     */
     public Optional<String> bucket() {
         return Optional.ofNullable(this.bucket);
     }
     /**
-     * @return Max_len of non-management packets to capture
+     * @return Maximum length of non-management packets to capture, in bytes
      * 
      */
     public Optional<Integer> maxPktLen() {

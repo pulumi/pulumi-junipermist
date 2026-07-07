@@ -103,22 +103,30 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:device/gateway:Gateway")
 public class Gateway extends com.pulumi.resources.CustomResource {
     /**
-     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
+     * Additional CLI configuration commands to apply to this gateway
      * 
      */
     @Export(name="additionalConfigCmds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> additionalConfigCmds;
 
     /**
-     * @return additional CLI commands to append to the generated Junos config. **Note**: no check is done
+     * @return Additional CLI configuration commands to apply to this gateway
      * 
      */
     public Output<Optional<List<String>>> additionalConfigCmds() {
         return Codegen.optional(this.additionalConfigCmds);
     }
+    /**
+     * BGP routing configuration for this gateway. Property key is the BGP session name
+     * 
+     */
     @Export(name="bgpConfig", refs={Map.class,String.class,GatewayBgpConfig.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,GatewayBgpConfig>> bgpConfig;
 
+    /**
+     * @return BGP routing configuration for this gateway. Property key is the BGP session name
+     * 
+     */
     public Output<Optional<Map<String,GatewayBgpConfig>>> bgpConfig() {
         return Codegen.optional(this.bgpConfig);
     }
@@ -128,137 +136,169 @@ public class Gateway extends com.pulumi.resources.CustomResource {
     public Output<String> deviceId() {
         return this.deviceId;
     }
+    /**
+     * DHCP server configuration served by this gateway
+     * 
+     */
     @Export(name="dhcpdConfig", refs={GatewayDhcpdConfig.class}, tree="[0]")
     private Output</* @Nullable */ GatewayDhcpdConfig> dhcpdConfig;
 
+    /**
+     * @return DHCP server configuration served by this gateway
+     * 
+     */
     public Output<Optional<GatewayDhcpdConfig>> dhcpdConfig() {
         return Codegen.optional(this.dhcpdConfig);
     }
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS servers configured for this gateway
      * 
      */
     @Export(name="dnsServers", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> dnsServers;
 
     /**
-     * @return Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * @return DNS servers configured for this gateway
      * 
      */
     public Output<Optional<List<String>>> dnsServers() {
         return Codegen.optional(this.dnsServers);
     }
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS search suffixes configured for this gateway
      * 
      */
     @Export(name="dnsSuffixes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> dnsSuffixes;
 
     /**
-     * @return Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * @return DNS search suffixes configured for this gateway
      * 
      */
     public Output<Optional<List<String>>> dnsSuffixes() {
         return Codegen.optional(this.dnsSuffixes);
     }
     /**
-     * Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;), the destination Network name or a variable (e.g. &#34;{{myvar}}&#34;)
+     * Additional IPv4 routes configured on this gateway
      * 
      */
     @Export(name="extraRoutes", refs={Map.class,String.class,GatewayExtraRoutes.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,GatewayExtraRoutes>> extraRoutes;
 
     /**
-     * @return Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;), the destination Network name or a variable (e.g. &#34;{{myvar}}&#34;)
+     * @return Additional IPv4 routes configured on this gateway
      * 
      */
     public Output<Optional<Map<String,GatewayExtraRoutes>>> extraRoutes() {
         return Codegen.optional(this.extraRoutes);
     }
     /**
-     * Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;), the destination Network name or a variable (e.g. &#34;{{myvar}}&#34;)
+     * Additional IPv6 routes configured on this gateway
      * 
      */
     @Export(name="extraRoutes6", refs={Map.class,String.class,GatewayExtraRoutes6.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,GatewayExtraRoutes6>> extraRoutes6;
 
     /**
-     * @return Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;), the destination Network name or a variable (e.g. &#34;{{myvar}}&#34;)
+     * @return Additional IPv6 routes configured on this gateway
      * 
      */
     public Output<Optional<Map<String,GatewayExtraRoutes6>>> extraRoutes6() {
         return Codegen.optional(this.extraRoutes6);
     }
     /**
-     * Gateway Management settings
+     * Management-plane settings for this gateway
      * 
      */
     @Export(name="gatewayMgmt", refs={GatewayGatewayMgmt.class}, tree="[0]")
     private Output</* @Nullable */ GatewayGatewayMgmt> gatewayMgmt;
 
     /**
-     * @return Gateway Management settings
+     * @return Management-plane settings for this gateway
      * 
      */
     public Output<Optional<GatewayGatewayMgmt>> gatewayMgmt() {
         return Codegen.optional(this.gatewayMgmt);
     }
     /**
-     * Property key is the profile name
+     * Intrusion detection and prevention profiles configured for this gateway
      * 
      */
     @Export(name="idpProfiles", refs={Map.class,String.class,GatewayIdpProfiles.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,GatewayIdpProfiles>> idpProfiles;
 
     /**
-     * @return Property key is the profile name
+     * @return Intrusion detection and prevention profiles configured for this gateway
      * 
      */
     public Output<Optional<Map<String,GatewayIdpProfiles>>> idpProfiles() {
         return Codegen.optional(this.idpProfiles);
     }
+    /**
+     * First custom image URL associated with the gateway
+     * 
+     */
     @Export(name="image1Url", refs={String.class}, tree="[0]")
     private Output<String> image1Url;
 
+    /**
+     * @return First custom image URL associated with the gateway
+     * 
+     */
     public Output<String> image1Url() {
         return this.image1Url;
     }
+    /**
+     * Second custom image URL associated with the gateway
+     * 
+     */
     @Export(name="image2Url", refs={String.class}, tree="[0]")
     private Output<String> image2Url;
 
+    /**
+     * @return Second custom image URL associated with the gateway
+     * 
+     */
     public Output<String> image2Url() {
         return this.image2Url;
     }
+    /**
+     * Third custom image URL associated with the gateway
+     * 
+     */
     @Export(name="image3Url", refs={String.class}, tree="[0]")
     private Output<String> image3Url;
 
+    /**
+     * @return Third custom image URL associated with the gateway
+     * 
+     */
     public Output<String> image3Url() {
         return this.image3Url;
     }
     /**
-     * Property key is the network name
+     * Gateway interface IP configurations by network name
      * 
      */
     @Export(name="ipConfigs", refs={Map.class,String.class,GatewayIpConfigs.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,GatewayIpConfigs>> ipConfigs;
 
     /**
-     * @return Property key is the network name
+     * @return Gateway interface IP configurations by network name
      * 
      */
     public Output<Optional<Map<String,GatewayIpConfigs>>> ipConfigs() {
         return Codegen.optional(this.ipConfigs);
     }
     /**
-     * Device MAC address
+     * Gateway MAC address used to identify the device
      * 
      */
     @Export(name="mac", refs={String.class}, tree="[0]")
     private Output<String> mac;
 
     /**
-     * @return Device MAC address
+     * @return Gateway MAC address used to identify the device
      * 
      */
     public Output<String> mac() {
@@ -311,66 +351,114 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return this.mistConfigured;
     }
     /**
-     * Device Model
+     * Gateway model reported for the device
      * 
      */
     @Export(name="model", refs={String.class}, tree="[0]")
     private Output<String> model;
 
     /**
-     * @return Device Model
+     * @return Gateway model reported for the device
      * 
      */
     public Output<String> model() {
         return this.model;
     }
+    /**
+     * MSP that manages this gateway, when applicable
+     * 
+     */
     @Export(name="mspId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mspId;
 
+    /**
+     * @return MSP that manages this gateway, when applicable
+     * 
+     */
     public Output<Optional<String>> mspId() {
         return Codegen.optional(this.mspId);
     }
+    /**
+     * Friendly display name assigned to the gateway
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Friendly display name assigned to the gateway
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Layer 3 networks configured for use by this gateway
+     * 
+     */
     @Export(name="networks", refs={List.class,GatewayNetwork.class}, tree="[0,1]")
     private Output</* @Nullable */ List<GatewayNetwork>> networks;
 
+    /**
+     * @return Layer 3 networks configured for use by this gateway
+     * 
+     */
     public Output<Optional<List<GatewayNetwork>>> networks() {
         return Codegen.optional(this.networks);
     }
+    /**
+     * Free-form administrative notes for this gateway
+     * 
+     */
     @Export(name="notes", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> notes;
 
+    /**
+     * @return Free-form administrative notes for this gateway
+     * 
+     */
     public Output<Optional<String>> notes() {
         return Codegen.optional(this.notes);
     }
+    /**
+     * NTP servers used by this gateway
+     * 
+     */
     @Export(name="ntpServers", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> ntpServers;
 
+    /**
+     * @return NTP servers used by this gateway
+     * 
+     */
     public Output<Optional<List<String>>> ntpServers() {
         return Codegen.optional(this.ntpServers);
     }
     /**
-     * Out-of-band (vme/em0/fxp0) IP config
+     * Out-of-band management IP configuration for this gateway
      * 
      */
     @Export(name="oobIpConfig", refs={GatewayOobIpConfig.class}, tree="[0]")
     private Output<GatewayOobIpConfig> oobIpConfig;
 
     /**
-     * @return Out-of-band (vme/em0/fxp0) IP config
+     * @return Out-of-band management IP configuration for this gateway
      * 
      */
     public Output<GatewayOobIpConfig> oobIpConfig() {
         return this.oobIpConfig;
     }
+    /**
+     * Organization that owns this gateway
+     * 
+     */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
+    /**
+     * @return Organization that owns this gateway
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }
@@ -402,9 +490,17 @@ public class Gateway extends com.pulumi.resources.CustomResource {
     public Output<Optional<Map<String,GatewayPortConfig>>> portConfig() {
         return Codegen.optional(this.portConfig);
     }
+    /**
+     * Port mirroring configuration for this gateway
+     * 
+     */
     @Export(name="portMirroring", refs={GatewayPortMirroring.class}, tree="[0]")
     private Output</* @Nullable */ GatewayPortMirroring> portMirroring;
 
+    /**
+     * @return Port mirroring configuration for this gateway
+     * 
+     */
     public Output<Optional<GatewayPortMirroring>> portMirroring() {
         return Codegen.optional(this.portMirroring);
     }
@@ -423,42 +519,58 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.routerId);
     }
     /**
-     * Property key is the routing policy name
+     * Routing policies applied by this gateway
      * 
      */
     @Export(name="routingPolicies", refs={Map.class,String.class,GatewayRoutingPolicies.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,GatewayRoutingPolicies>> routingPolicies;
 
     /**
-     * @return Property key is the routing policy name
+     * @return Routing policies applied by this gateway
      * 
      */
     public Output<Optional<Map<String,GatewayRoutingPolicies>>> routingPolicies() {
         return Codegen.optional(this.routingPolicies);
     }
     /**
-     * Device Serial
+     * Manufacturer serial number for the gateway
      * 
      */
     @Export(name="serial", refs={String.class}, tree="[0]")
     private Output<String> serial;
 
     /**
-     * @return Device Serial
+     * @return Manufacturer serial number for the gateway
      * 
      */
     public Output<String> serial() {
         return this.serial;
     }
+    /**
+     * Traffic service policies enforced by this gateway
+     * 
+     */
     @Export(name="servicePolicies", refs={List.class,GatewayServicePolicy.class}, tree="[0,1]")
     private Output</* @Nullable */ List<GatewayServicePolicy>> servicePolicies;
 
+    /**
+     * @return Traffic service policies enforced by this gateway
+     * 
+     */
     public Output<Optional<List<GatewayServicePolicy>>> servicePolicies() {
         return Codegen.optional(this.servicePolicies);
     }
+    /**
+     * Site where this gateway is assigned
+     * 
+     */
     @Export(name="siteId", refs={String.class}, tree="[0]")
     private Output<String> siteId;
 
+    /**
+     * @return Site where this gateway is assigned
+     * 
+     */
     public Output<String> siteId() {
         return this.siteId;
     }
@@ -490,21 +602,29 @@ public class Gateway extends com.pulumi.resources.CustomResource {
     public Output<Optional<Map<String,GatewayTunnelConfigs>>> tunnelConfigs() {
         return Codegen.optional(this.tunnelConfigs);
     }
+    /**
+     * Provider-specific options for tunnels terminated by this gateway
+     * 
+     */
     @Export(name="tunnelProviderOptions", refs={GatewayTunnelProviderOptions.class}, tree="[0]")
     private Output</* @Nullable */ GatewayTunnelProviderOptions> tunnelProviderOptions;
 
+    /**
+     * @return Provider-specific options for tunnels terminated by this gateway
+     * 
+     */
     public Output<Optional<GatewayTunnelProviderOptions>> tunnelProviderOptions() {
         return Codegen.optional(this.tunnelProviderOptions);
     }
     /**
-     * Device Type. enum: `gateway`
+     * Device type discriminator for gateway records
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Device Type. enum: `gateway`
+     * @return Device type discriminator for gateway records
      * 
      */
     public Output<String> type() {
@@ -525,62 +645,70 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.urlFilteringDenyMsg);
     }
     /**
-     * Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Variable values that override site variables for this gateway
      * 
      */
     @Export(name="vars", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> vars;
 
     /**
-     * @return Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * @return Variable values that override site variables for this gateway
      * 
      */
     public Output<Optional<Map<String,String>>> vars() {
         return Codegen.optional(this.vars);
     }
+    /**
+     * VRF configuration applied to this gateway
+     * 
+     */
     @Export(name="vrfConfig", refs={GatewayVrfConfig.class}, tree="[0]")
     private Output</* @Nullable */ GatewayVrfConfig> vrfConfig;
 
+    /**
+     * @return VRF configuration applied to this gateway
+     * 
+     */
     public Output<Optional<GatewayVrfConfig>> vrfConfig() {
         return Codegen.optional(this.vrfConfig);
     }
     /**
-     * Property key is the network name
+     * VRF instances configured on this gateway
      * 
      */
     @Export(name="vrfInstances", refs={Map.class,String.class,GatewayVrfInstances.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,GatewayVrfInstances>> vrfInstances;
 
     /**
-     * @return Property key is the network name
+     * @return VRF instances configured on this gateway
      * 
      */
     public Output<Optional<Map<String,GatewayVrfInstances>>> vrfInstances() {
         return Codegen.optional(this.vrfInstances);
     }
     /**
-     * X in pixel
+     * Horizontal map position of the gateway, in pixels
      * 
      */
     @Export(name="x", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> x;
 
     /**
-     * @return X in pixel
+     * @return Horizontal map position of the gateway, in pixels
      * 
      */
     public Output<Optional<Double>> x() {
         return Codegen.optional(this.x);
     }
     /**
-     * Y in pixel
+     * Vertical map position of the gateway, in pixels
      * 
      */
     @Export(name="y", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> y;
 
     /**
-     * @return Y in pixel
+     * @return Vertical map position of the gateway, in pixels
      * 
      */
     public Output<Optional<Double>> y() {

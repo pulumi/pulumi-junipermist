@@ -17,16 +17,32 @@ public final class SwitchSnmpConfigV3ConfigVacmArgs extends com.pulumi.resources
 
     public static final SwitchSnmpConfigV3ConfigVacmArgs Empty = new SwitchSnmpConfigV3ConfigVacmArgs();
 
+    /**
+     * VACM access rules for SNMPv3
+     * 
+     */
     @Import(name="accesses")
     private @Nullable Output<List<SwitchSnmpConfigV3ConfigVacmAccessArgs>> accesses;
 
+    /**
+     * @return VACM access rules for SNMPv3
+     * 
+     */
     public Optional<Output<List<SwitchSnmpConfigV3ConfigVacmAccessArgs>>> accesses() {
         return Optional.ofNullable(this.accesses);
     }
 
+    /**
+     * VACM security-name to group mappings
+     * 
+     */
     @Import(name="securityToGroup")
     private @Nullable Output<SwitchSnmpConfigV3ConfigVacmSecurityToGroupArgs> securityToGroup;
 
+    /**
+     * @return VACM security-name to group mappings
+     * 
+     */
     public Optional<Output<SwitchSnmpConfigV3ConfigVacmSecurityToGroupArgs>> securityToGroup() {
         return Optional.ofNullable(this.securityToGroup);
     }
@@ -56,24 +72,54 @@ public final class SwitchSnmpConfigV3ConfigVacmArgs extends com.pulumi.resources
             $ = new SwitchSnmpConfigV3ConfigVacmArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accesses VACM access rules for SNMPv3
+         * 
+         * @return builder
+         * 
+         */
         public Builder accesses(@Nullable Output<List<SwitchSnmpConfigV3ConfigVacmAccessArgs>> accesses) {
             $.accesses = accesses;
             return this;
         }
 
+        /**
+         * @param accesses VACM access rules for SNMPv3
+         * 
+         * @return builder
+         * 
+         */
         public Builder accesses(List<SwitchSnmpConfigV3ConfigVacmAccessArgs> accesses) {
             return accesses(Output.of(accesses));
         }
 
+        /**
+         * @param accesses VACM access rules for SNMPv3
+         * 
+         * @return builder
+         * 
+         */
         public Builder accesses(SwitchSnmpConfigV3ConfigVacmAccessArgs... accesses) {
             return accesses(List.of(accesses));
         }
 
+        /**
+         * @param securityToGroup VACM security-name to group mappings
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityToGroup(@Nullable Output<SwitchSnmpConfigV3ConfigVacmSecurityToGroupArgs> securityToGroup) {
             $.securityToGroup = securityToGroup;
             return this;
         }
 
+        /**
+         * @param securityToGroup VACM security-name to group mappings
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityToGroup(SwitchSnmpConfigV3ConfigVacmSecurityToGroupArgs securityToGroup) {
             return securityToGroup(Output.of(securityToGroup));
         }

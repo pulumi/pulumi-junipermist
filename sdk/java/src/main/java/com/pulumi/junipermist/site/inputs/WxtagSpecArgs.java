@@ -47,14 +47,14 @@ public final class WxtagSpecArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Matched destination subnets and/or IP Addresses
+     * Destination subnets or IP addresses matched by this WxLAN tag spec
      * 
      */
     @Import(name="subnets")
     private @Nullable Output<List<String>> subnets;
 
     /**
-     * @return Matched destination subnets and/or IP Addresses
+     * @return Destination subnets or IP addresses matched by this WxLAN tag spec
      * 
      */
     public Optional<Output<List<String>>> subnets() {
@@ -130,7 +130,7 @@ public final class WxtagSpecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param subnets Matched destination subnets and/or IP Addresses
+         * @param subnets Destination subnets or IP addresses matched by this WxLAN tag spec
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class WxtagSpecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param subnets Matched destination subnets and/or IP Addresses
+         * @param subnets Destination subnets or IP addresses matched by this WxLAN tag spec
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class WxtagSpecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param subnets Matched destination subnets and/or IP Addresses
+         * @param subnets Destination subnets or IP addresses matched by this WxLAN tag spec
          * 
          * @return builder
          * 

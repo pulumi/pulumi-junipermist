@@ -17,14 +17,14 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
     public static final DeviceprofileGatewayPortConfigIpConfigArgs Empty = new DeviceprofileGatewayPortConfigIpConfigArgs();
 
     /**
-     * Except for out-of_band interface (vme/em0/fxp0)
+     * Resolver server IP addresses used by this interface, except on out-of-band interfaces such as vme, em0, or fxp0
      * 
      */
     @Import(name="dns")
     private @Nullable Output<List<String>> dns;
 
     /**
-     * @return Except for out-of_band interface (vme/em0/fxp0)
+     * @return Resolver server IP addresses used by this interface, except on out-of-band interfaces such as vme, em0, or fxp0
      * 
      */
     public Optional<Output<List<String>>> dns() {
@@ -32,14 +32,14 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
     }
 
     /**
-     * Except for out-of_band interface (vme/em0/fxp0)
+     * DNS search suffixes used by this interface, except on out-of-band interfaces such as vme, em0, or fxp0
      * 
      */
     @Import(name="dnsSuffixes")
     private @Nullable Output<List<String>> dnsSuffixes;
 
     /**
-     * @return Except for out-of_band interface (vme/em0/fxp0)
+     * @return DNS search suffixes used by this interface, except on out-of-band interfaces such as vme, em0, or fxp0
      * 
      */
     public Optional<Output<List<String>>> dnsSuffixes() {
@@ -47,14 +47,14 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
     }
 
     /**
-     * Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. &#34;192.168.1.1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP address (i.e. &#34;192.168.1.1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     @Import(name="gateway")
     private @Nullable Output<String> gateway;
 
     /**
-     * @return Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. &#34;192.168.1.1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * @return Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP address (i.e. &#34;192.168.1.1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     public Optional<Output<String>> gateway() {
@@ -77,14 +77,14 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
     }
 
     /**
-     * Interface IP Address (i.e. &#34;192.168.1.8&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * Interface IP address (i.e. &#34;192.168.1.8&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     @Import(name="ip")
     private @Nullable Output<String> ip;
 
     /**
-     * @return Interface IP Address (i.e. &#34;192.168.1.8&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * @return Interface IP address (i.e. &#34;192.168.1.8&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     public Optional<Output<String>> ip() {
@@ -152,14 +152,14 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
     }
 
     /**
-     * If `type`==`pppoe`
+     * Password used for PPPoE when `type`==`pppoe`
      * 
      */
     @Import(name="poserPassword")
     private @Nullable Output<String> poserPassword;
 
     /**
-     * @return If `type`==`pppoe`
+     * @return Password used for PPPoE when `type`==`pppoe`
      * 
      */
     public Optional<Output<String>> poserPassword() {
@@ -167,14 +167,14 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
     }
 
     /**
-     * if `type`==`pppoe`. enum: `chap`, `none`, `pap`
+     * Authentication protocol used for PPPoE when `type`==`pppoe`
      * 
      */
     @Import(name="pppoeAuth")
     private @Nullable Output<String> pppoeAuth;
 
     /**
-     * @return if `type`==`pppoe`. enum: `chap`, `none`, `pap`
+     * @return Authentication protocol used for PPPoE when `type`==`pppoe`
      * 
      */
     public Optional<Output<String>> pppoeAuth() {
@@ -182,14 +182,14 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
     }
 
     /**
-     * If `type`==`pppoe`
+     * Username used for PPPoE when `type`==`pppoe`
      * 
      */
     @Import(name="pppoeUsername")
     private @Nullable Output<String> pppoeUsername;
 
     /**
-     * @return If `type`==`pppoe`
+     * @return Username used for PPPoE when `type`==`pppoe`
      * 
      */
     public Optional<Output<String>> pppoeUsername() {
@@ -197,14 +197,14 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
     }
 
     /**
-     * enum: `dhcp`, `pppoe`, `static`
+     * IPv4 assignment mode for this gateway port interface
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return enum: `dhcp`, `pppoe`, `static`
+     * @return IPv4 assignment mode for this gateway port interface
      * 
      */
     public Optional<Output<String>> type() {
@@ -212,14 +212,14 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
     }
 
     /**
-     * enum: `autoconf`, `dhcp`, `static`
+     * IPv6 assignment mode for this gateway port interface
      * 
      */
     @Import(name="type6")
     private @Nullable Output<String> type6;
 
     /**
-     * @return enum: `autoconf`, `dhcp`, `static`
+     * @return IPv6 assignment mode for this gateway port interface
      * 
      */
     public Optional<Output<String>> type6() {
@@ -264,7 +264,7 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
         }
 
         /**
-         * @param dns Except for out-of_band interface (vme/em0/fxp0)
+         * @param dns Resolver server IP addresses used by this interface, except on out-of-band interfaces such as vme, em0, or fxp0
          * 
          * @return builder
          * 
@@ -275,7 +275,7 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
         }
 
         /**
-         * @param dns Except for out-of_band interface (vme/em0/fxp0)
+         * @param dns Resolver server IP addresses used by this interface, except on out-of-band interfaces such as vme, em0, or fxp0
          * 
          * @return builder
          * 
@@ -285,7 +285,7 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
         }
 
         /**
-         * @param dns Except for out-of_band interface (vme/em0/fxp0)
+         * @param dns Resolver server IP addresses used by this interface, except on out-of-band interfaces such as vme, em0, or fxp0
          * 
          * @return builder
          * 
@@ -295,7 +295,7 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
         }
 
         /**
-         * @param dnsSuffixes Except for out-of_band interface (vme/em0/fxp0)
+         * @param dnsSuffixes DNS search suffixes used by this interface, except on out-of-band interfaces such as vme, em0, or fxp0
          * 
          * @return builder
          * 
@@ -306,7 +306,7 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
         }
 
         /**
-         * @param dnsSuffixes Except for out-of_band interface (vme/em0/fxp0)
+         * @param dnsSuffixes DNS search suffixes used by this interface, except on out-of-band interfaces such as vme, em0, or fxp0
          * 
          * @return builder
          * 
@@ -316,7 +316,7 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
         }
 
         /**
-         * @param dnsSuffixes Except for out-of_band interface (vme/em0/fxp0)
+         * @param dnsSuffixes DNS search suffixes used by this interface, except on out-of-band interfaces such as vme, em0, or fxp0
          * 
          * @return builder
          * 
@@ -326,7 +326,7 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
         }
 
         /**
-         * @param gateway Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. &#34;192.168.1.1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+         * @param gateway Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP address (i.e. &#34;192.168.1.1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
          * 
          * @return builder
          * 
@@ -337,7 +337,7 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
         }
 
         /**
-         * @param gateway Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. &#34;192.168.1.1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+         * @param gateway Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP address (i.e. &#34;192.168.1.1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
          * 
          * @return builder
          * 
@@ -368,7 +368,7 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
         }
 
         /**
-         * @param ip Interface IP Address (i.e. &#34;192.168.1.8&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+         * @param ip Interface IP address (i.e. &#34;192.168.1.8&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
          * 
          * @return builder
          * 
@@ -379,7 +379,7 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
         }
 
         /**
-         * @param ip Interface IP Address (i.e. &#34;192.168.1.8&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+         * @param ip Interface IP address (i.e. &#34;192.168.1.8&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
          * 
          * @return builder
          * 
@@ -473,7 +473,7 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
         }
 
         /**
-         * @param poserPassword If `type`==`pppoe`
+         * @param poserPassword Password used for PPPoE when `type`==`pppoe`
          * 
          * @return builder
          * 
@@ -484,7 +484,7 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
         }
 
         /**
-         * @param poserPassword If `type`==`pppoe`
+         * @param poserPassword Password used for PPPoE when `type`==`pppoe`
          * 
          * @return builder
          * 
@@ -494,7 +494,7 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
         }
 
         /**
-         * @param pppoeAuth if `type`==`pppoe`. enum: `chap`, `none`, `pap`
+         * @param pppoeAuth Authentication protocol used for PPPoE when `type`==`pppoe`
          * 
          * @return builder
          * 
@@ -505,7 +505,7 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
         }
 
         /**
-         * @param pppoeAuth if `type`==`pppoe`. enum: `chap`, `none`, `pap`
+         * @param pppoeAuth Authentication protocol used for PPPoE when `type`==`pppoe`
          * 
          * @return builder
          * 
@@ -515,7 +515,7 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
         }
 
         /**
-         * @param pppoeUsername If `type`==`pppoe`
+         * @param pppoeUsername Username used for PPPoE when `type`==`pppoe`
          * 
          * @return builder
          * 
@@ -526,7 +526,7 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
         }
 
         /**
-         * @param pppoeUsername If `type`==`pppoe`
+         * @param pppoeUsername Username used for PPPoE when `type`==`pppoe`
          * 
          * @return builder
          * 
@@ -536,7 +536,7 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
         }
 
         /**
-         * @param type enum: `dhcp`, `pppoe`, `static`
+         * @param type IPv4 assignment mode for this gateway port interface
          * 
          * @return builder
          * 
@@ -547,7 +547,7 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
         }
 
         /**
-         * @param type enum: `dhcp`, `pppoe`, `static`
+         * @param type IPv4 assignment mode for this gateway port interface
          * 
          * @return builder
          * 
@@ -557,7 +557,7 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
         }
 
         /**
-         * @param type6 enum: `autoconf`, `dhcp`, `static`
+         * @param type6 IPv6 assignment mode for this gateway port interface
          * 
          * @return builder
          * 
@@ -568,7 +568,7 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
         }
 
         /**
-         * @param type6 enum: `autoconf`, `dhcp`, `static`
+         * @param type6 IPv6 assignment mode for this gateway port interface
          * 
          * @return builder
          * 

@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GatewaytemplateDhcpdConfigConfigFixedBindings {
+    /**
+     * @return Reserved IPv4 address for this fixed DHCP binding
+     * 
+     */
     private @Nullable String ip;
+    /**
+     * @return Reserved IPv6 address for this fixed DHCP binding
+     * 
+     */
     private @Nullable String ip6;
+    /**
+     * @return Friendly name for this fixed DHCP binding
+     * 
+     */
     private @Nullable String name;
 
     private GatewaytemplateDhcpdConfigConfigFixedBindings() {}
+    /**
+     * @return Reserved IPv4 address for this fixed DHCP binding
+     * 
+     */
     public Optional<String> ip() {
         return Optional.ofNullable(this.ip);
     }
+    /**
+     * @return Reserved IPv6 address for this fixed DHCP binding
+     * 
+     */
     public Optional<String> ip6() {
         return Optional.ofNullable(this.ip6);
     }
+    /**
+     * @return Friendly name for this fixed DHCP binding
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }

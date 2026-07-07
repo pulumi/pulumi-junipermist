@@ -38,6 +38,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("disableBfd")]
         public Input<bool>? DisableBfd { get; set; }
 
+        /// <summary>
+        /// Routing policy applied to routes exported by this BGP session
+        /// </summary>
         [Input("export")]
         public Input<string>? Export { get; set; }
 
@@ -65,6 +68,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("holdTime")]
         public Input<int>? HoldTime { get; set; }
 
+        /// <summary>
+        /// Routing policy applied to routes imported by this BGP session
+        /// </summary>
         [Input("import")]
         public Input<string>? Import { get; set; }
 
@@ -102,7 +108,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _networks;
 
         /// <summary>
-        /// Optional if `Via`==`Lan`. List of networks where we expect BGP neighbor to connect to/from
+        /// Optional if `Via`==`Lan`; networks where BGP neighbors can connect to or from
         /// </summary>
         public InputList<string> Networks
         {
@@ -123,31 +129,31 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? NoReadvertiseToOverlay { get; set; }
 
         /// <summary>
-        /// Optional if `Via`==`Tunnel`
+        /// Optional if `Via`==`Tunnel`; tunnel name used for this BGP session
         /// </summary>
         [Input("tunnelName")]
         public Input<string>? TunnelName { get; set; }
 
         /// <summary>
-        /// Required if `Via`==`Lan`, `Via`==`Tunnel` or `Via`==`Wan`. enum: `External`, `Internal`
+        /// Required if `Via`==`Lan`, `Via`==`Tunnel` or `Via`==`Wan`; BGP session type, internal or external
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// enum: `Lan`, `Tunnel`, `Vpn`, `Wan`
+        /// Transport used for this BGP session, such as LAN, tunnel, VPN, or WAN
         /// </summary>
         [Input("via", required: true)]
         public Input<string> Via { get; set; } = null!;
 
         /// <summary>
-        /// Optional if `Via`==`Vpn`
+        /// Optional if `Via`==`Vpn`; VPN name used for this BGP session
         /// </summary>
         [Input("vpnName")]
         public Input<string>? VpnName { get; set; }
 
         /// <summary>
-        /// Optional if `Via`==`Wan`
+        /// Optional if `Via`==`Wan`; WAN interface name used for this BGP session
         /// </summary>
         [Input("wanName")]
         public Input<string>? WanName { get; set; }

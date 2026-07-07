@@ -18,13 +18,16 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? ExportPolicy;
         /// <summary>
-        /// Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+        /// BGP hold time for this neighbor
         /// </summary>
         public readonly int? HoldTime;
         /// <summary>
         /// Import policy must match one of the policy names defined in the `RoutingPolicies` property.
         /// </summary>
         public readonly string? ImportPolicy;
+        /// <summary>
+        /// Time-to-live value for multihop BGP sessions to this neighbor
+        /// </summary>
         public readonly int? MultihopTtl;
         /// <summary>
         /// Autonomous System (AS) number of the BGP neighbor. For internal BGP, this must match `LocalAs`. For external BGP, this must differ from `LocalAs`.

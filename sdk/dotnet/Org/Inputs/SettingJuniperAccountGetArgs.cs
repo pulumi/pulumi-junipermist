@@ -12,9 +12,15 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class SettingJuniperAccountGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// User who linked this Juniper account
+        /// </summary>
         [Input("linkedBy")]
         public Input<string>? LinkedBy { get; set; }
 
+        /// <summary>
+        /// Display name of the linked Juniper account
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

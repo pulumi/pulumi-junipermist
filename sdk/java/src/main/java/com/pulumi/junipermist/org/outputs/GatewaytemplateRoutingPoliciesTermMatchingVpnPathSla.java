@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GatewaytemplateRoutingPoliciesTermMatchingVpnPathSla {
+    /**
+     * @return Maximum jitter threshold allowed for the VPN path
+     * 
+     */
     private @Nullable Integer maxJitter;
+    /**
+     * @return Maximum latency threshold allowed for the VPN path
+     * 
+     */
     private @Nullable Integer maxLatency;
+    /**
+     * @return Maximum packet-loss threshold allowed for the VPN path
+     * 
+     */
     private @Nullable Integer maxLoss;
 
     private GatewaytemplateRoutingPoliciesTermMatchingVpnPathSla() {}
+    /**
+     * @return Maximum jitter threshold allowed for the VPN path
+     * 
+     */
     public Optional<Integer> maxJitter() {
         return Optional.ofNullable(this.maxJitter);
     }
+    /**
+     * @return Maximum latency threshold allowed for the VPN path
+     * 
+     */
     public Optional<Integer> maxLatency() {
         return Optional.ofNullable(this.maxLatency);
     }
+    /**
+     * @return Maximum packet-loss threshold allowed for the VPN path
+     * 
+     */
     public Optional<Integer> maxLoss() {
         return Optional.ofNullable(this.maxLoss);
     }

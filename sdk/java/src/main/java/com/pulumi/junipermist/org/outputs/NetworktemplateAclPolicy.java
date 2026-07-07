@@ -14,38 +14,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworktemplateAclPolicy {
     /**
-     * @return ACL Policy Actions:
-     *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-     *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+     * @return Destination tag actions evaluated for sources matching this ACL policy
      * 
      */
     private @Nullable List<NetworktemplateAclPolicyAction> actions;
+    /**
+     * @return Display name of the ACL policy
+     * 
+     */
     private @Nullable String name;
     /**
-     * @return ACL Policy Source Tags:
-     *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-     *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+     * @return Source ACL tags that select traffic for this ACL policy
      * 
      */
     private @Nullable List<String> srcTags;
 
     private NetworktemplateAclPolicy() {}
     /**
-     * @return ACL Policy Actions:
-     *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-     *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+     * @return Destination tag actions evaluated for sources matching this ACL policy
      * 
      */
     public List<NetworktemplateAclPolicyAction> actions() {
         return this.actions == null ? List.of() : this.actions;
     }
+    /**
+     * @return Display name of the ACL policy
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return ACL Policy Source Tags:
-     *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-     *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+     * @return Source ACL tags that select traffic for this ACL policy
      * 
      */
     public List<String> srcTags() {

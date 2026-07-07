@@ -28,7 +28,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private Input<string>? _secret;
 
         /// <summary>
-        /// Secret of RADIUS server
+        /// Shared secret used with this RADIUS accounting server
         /// </summary>
         public Input<string>? Secret
         {
@@ -44,7 +44,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _ssids;
 
         /// <summary>
-        /// List of ssids that will use this server if MatchSsid is true and match is found
+        /// WLAN SSID filters that use this accounting server when matching is enabled
         /// </summary>
         public InputList<string> Ssids
         {

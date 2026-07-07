@@ -33,22 +33,30 @@ public final class DeviceprofileGatewayNetworkMulticastArgs extends com.pulumi.r
         return Optional.ofNullable(this.disableIgmp);
     }
 
+    /**
+     * Whether multicast support is enabled for this network
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether multicast support is enabled for this network
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
     /**
-     * Group address to RP (rendezvous point) mapping. Property Key is the CIDR (example &#34;225.1.0.3/32&#34;)
+     * Multicast group-to-RP mappings for this network
      * 
      */
     @Import(name="groups")
     private @Nullable Output<Map<String,DeviceprofileGatewayNetworkMulticastGroupsArgs>> groups;
 
     /**
-     * @return Group address to RP (rendezvous point) mapping. Property Key is the CIDR (example &#34;225.1.0.3/32&#34;)
+     * @return Multicast group-to-RP mappings for this network
      * 
      */
     public Optional<Output<Map<String,DeviceprofileGatewayNetworkMulticastGroupsArgs>>> groups() {
@@ -102,17 +110,29 @@ public final class DeviceprofileGatewayNetworkMulticastArgs extends com.pulumi.r
             return disableIgmp(Output.of(disableIgmp));
         }
 
+        /**
+         * @param enabled Whether multicast support is enabled for this network
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether multicast support is enabled for this network
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
         /**
-         * @param groups Group address to RP (rendezvous point) mapping. Property Key is the CIDR (example &#34;225.1.0.3/32&#34;)
+         * @param groups Multicast group-to-RP mappings for this network
          * 
          * @return builder
          * 
@@ -123,7 +143,7 @@ public final class DeviceprofileGatewayNetworkMulticastArgs extends com.pulumi.r
         }
 
         /**
-         * @param groups Group address to RP (rendezvous point) mapping. Property Key is the CIDR (example &#34;225.1.0.3/32&#34;)
+         * @param groups Multicast group-to-RP mappings for this network
          * 
          * @return builder
          * 

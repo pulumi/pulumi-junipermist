@@ -15,22 +15,30 @@ public final class ApClientBridgeAuthArgs extends com.pulumi.resources.ResourceA
 
     public static final ApClientBridgeAuthArgs Empty = new ApClientBridgeAuthArgs();
 
+    /**
+     * Pre-shared key used when `type`==`psk` for client bridge authentication
+     * 
+     */
     @Import(name="psk")
     private @Nullable Output<String> psk;
 
+    /**
+     * @return Pre-shared key used when `type`==`psk` for client bridge authentication
+     * 
+     */
     public Optional<Output<String>> psk() {
         return Optional.ofNullable(this.psk);
     }
 
     /**
-     * wpa2-AES/CCMPp is assumed when `type`==`psk`. enum: `open`, `psk`
+     * Authentication mode for the client bridge connection
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return wpa2-AES/CCMPp is assumed when `type`==`psk`. enum: `open`, `psk`
+     * @return Authentication mode for the client bridge connection
      * 
      */
     public Optional<Output<String>> type() {
@@ -62,17 +70,29 @@ public final class ApClientBridgeAuthArgs extends com.pulumi.resources.ResourceA
             $ = new ApClientBridgeAuthArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param psk Pre-shared key used when `type`==`psk` for client bridge authentication
+         * 
+         * @return builder
+         * 
+         */
         public Builder psk(@Nullable Output<String> psk) {
             $.psk = psk;
             return this;
         }
 
+        /**
+         * @param psk Pre-shared key used when `type`==`psk` for client bridge authentication
+         * 
+         * @return builder
+         * 
+         */
         public Builder psk(String psk) {
             return psk(Output.of(psk));
         }
 
         /**
-         * @param type wpa2-AES/CCMPp is assumed when `type`==`psk`. enum: `open`, `psk`
+         * @param type Authentication mode for the client bridge connection
          * 
          * @return builder
          * 
@@ -83,7 +103,7 @@ public final class ApClientBridgeAuthArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param type wpa2-AES/CCMPp is assumed when `type`==`psk`. enum: `open`, `psk`
+         * @param type Authentication mode for the client bridge connection
          * 
          * @return builder
          * 

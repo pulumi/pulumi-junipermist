@@ -70,11 +70,14 @@ namespace Pulumi.JuniperMist.Org
     public partial class NacPortalTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// defines alignment on portal. enum: `Center`, `Left`, `Right`
+        /// Text and content alignment for the NAC portal page
         /// </summary>
         [Output("alignment")]
         public Output<string> Alignment { get; private set; } = null!;
 
+        /// <summary>
+        /// Primary color used by the NAC portal template
+        /// </summary>
         [Output("color")]
         public Output<string> Color { get; private set; } = null!;
 
@@ -147,11 +150,14 @@ namespace Pulumi.JuniperMist.Org
     public sealed class NacPortalTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// defines alignment on portal. enum: `Center`, `Left`, `Right`
+        /// Text and content alignment for the NAC portal page
         /// </summary>
         [Input("alignment")]
         public Input<string>? Alignment { get; set; }
 
+        /// <summary>
+        /// Primary color used by the NAC portal template
+        /// </summary>
         [Input("color")]
         public Input<string>? Color { get; set; }
 
@@ -185,11 +191,14 @@ namespace Pulumi.JuniperMist.Org
     public sealed class NacPortalTemplateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// defines alignment on portal. enum: `Center`, `Left`, `Right`
+        /// Text and content alignment for the NAC portal page
         /// </summary>
         [Input("alignment")]
         public Input<string>? Alignment { get; set; }
 
+        /// <summary>
+        /// Primary color used by the NAC portal template
+        /// </summary>
         [Input("color")]
         public Input<string>? Color { get; set; }
 

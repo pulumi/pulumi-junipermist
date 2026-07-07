@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class NacPortalPortalGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Guest portal authentication type. enum: `External`, `Multi`, `None`
+        /// Mode presented by the NAC guest portal for user authentication
         /// </summary>
         [Input("auth")]
         public Input<string>? Auth { get; set; }

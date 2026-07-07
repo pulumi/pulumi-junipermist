@@ -16,14 +16,14 @@ public final class DeviceprofileGatewayNetworkMulticastGroupsArgs extends com.pu
     public static final DeviceprofileGatewayNetworkMulticastGroupsArgs Empty = new DeviceprofileGatewayNetworkMulticastGroupsArgs();
 
     /**
-     * RP (rendezvous point) IP Address
+     * RP (rendezvous point) IP address
      * 
      */
     @Import(name="rpIp")
     private @Nullable Output<String> rpIp;
 
     /**
-     * @return RP (rendezvous point) IP Address
+     * @return RP (rendezvous point) IP address
      * 
      */
     public Optional<Output<String>> rpIp() {
@@ -55,7 +55,7 @@ public final class DeviceprofileGatewayNetworkMulticastGroupsArgs extends com.pu
         }
 
         /**
-         * @param rpIp RP (rendezvous point) IP Address
+         * @param rpIp RP (rendezvous point) IP address
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class DeviceprofileGatewayNetworkMulticastGroupsArgs extends com.pu
         }
 
         /**
-         * @param rpIp RP (rendezvous point) IP Address
+         * @param rpIp RP (rendezvous point) IP address
          * 
          * @return builder
          * 

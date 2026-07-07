@@ -18,14 +18,14 @@ public final class DeviceprofileApUsbConfigArgs extends com.pulumi.resources.Res
     public static final DeviceprofileApUsbConfigArgs Empty = new DeviceprofileApUsbConfigArgs();
 
     /**
-     * Only if `type`==`imagotag`
+     * Only if `type`==`imagotag`. CA certificate used to validate the Imagotag service certificate
      * 
      */
     @Import(name="cacert")
     private @Nullable Output<String> cacert;
 
     /**
-     * @return Only if `type`==`imagotag`
+     * @return Only if `type`==`imagotag`. CA certificate used to validate the Imagotag service certificate
      * 
      */
     public Optional<Output<String>> cacert() {
@@ -63,14 +63,14 @@ public final class DeviceprofileApUsbConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Only if `type`==`imagotag`
+     * Only if `type`==`imagotag`. Imagotag service host or IP address contacted by the AP
      * 
      */
     @Import(name="host")
     private @Nullable Output<String> host;
 
     /**
-     * @return Only if `type`==`imagotag`
+     * @return Only if `type`==`imagotag`. Imagotag service host or IP address contacted by the AP
      * 
      */
     public Optional<Output<String>> host() {
@@ -78,14 +78,14 @@ public final class DeviceprofileApUsbConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Only if `type`==`imagotag`
+     * Only if `type`==`imagotag`. TCP port used to reach the Imagotag service
      * 
      */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
     /**
-     * @return Only if `type`==`imagotag`
+     * @return Only if `type`==`imagotag`. TCP port used to reach the Imagotag service
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -93,14 +93,14 @@ public final class DeviceprofileApUsbConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * usb config type. enum: `hanshow`, `imagotag`, `solum`
+     * USB integration type for this legacy AP USB configuration
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return usb config type. enum: `hanshow`, `imagotag`, `solum`
+     * @return USB integration type for this legacy AP USB configuration
      * 
      */
     public Optional<Output<String>> type() {
@@ -169,7 +169,7 @@ public final class DeviceprofileApUsbConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param cacert Only if `type`==`imagotag`
+         * @param cacert Only if `type`==`imagotag`. CA certificate used to validate the Imagotag service certificate
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class DeviceprofileApUsbConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param cacert Only if `type`==`imagotag`
+         * @param cacert Only if `type`==`imagotag`. CA certificate used to validate the Imagotag service certificate
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class DeviceprofileApUsbConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param host Only if `type`==`imagotag`
+         * @param host Only if `type`==`imagotag`. Imagotag service host or IP address contacted by the AP
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class DeviceprofileApUsbConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param host Only if `type`==`imagotag`
+         * @param host Only if `type`==`imagotag`. Imagotag service host or IP address contacted by the AP
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class DeviceprofileApUsbConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param port Only if `type`==`imagotag`
+         * @param port Only if `type`==`imagotag`. TCP port used to reach the Imagotag service
          * 
          * @return builder
          * 
@@ -264,7 +264,7 @@ public final class DeviceprofileApUsbConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param port Only if `type`==`imagotag`
+         * @param port Only if `type`==`imagotag`. TCP port used to reach the Imagotag service
          * 
          * @return builder
          * 
@@ -274,7 +274,7 @@ public final class DeviceprofileApUsbConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param type usb config type. enum: `hanshow`, `imagotag`, `solum`
+         * @param type USB integration type for this legacy AP USB configuration
          * 
          * @return builder
          * 
@@ -285,7 +285,7 @@ public final class DeviceprofileApUsbConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param type usb config type. enum: `hanshow`, `imagotag`, `solum`
+         * @param type USB integration type for this legacy AP USB configuration
          * 
          * @return builder
          * 

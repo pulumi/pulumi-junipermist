@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.org.inputs.SettingApiPolicyArgs;
+import com.pulumi.junipermist.org.inputs.SettingAutoUpgradeArgs;
 import com.pulumi.junipermist.org.inputs.SettingCelonaArgs;
 import com.pulumi.junipermist.org.inputs.SettingCloudsharkArgs;
 import com.pulumi.junipermist.org.inputs.SettingDeviceCertArgs;
@@ -59,51 +60,90 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.apUpdownThreshold);
     }
 
+    /**
+     * Policy for hiding API secrets and passwords in responses
+     * 
+     */
     @Import(name="apiPolicy")
     private @Nullable Output<SettingApiPolicyArgs> apiPolicy;
 
+    /**
+     * @return Policy for hiding API secrets and passwords in responses
+     * 
+     */
     public Optional<Output<SettingApiPolicyArgs>> apiPolicy() {
         return Optional.ofNullable(this.apiPolicy);
     }
 
     /**
-     * RADSec certificates for AP
+     * AP automatic firmware upgrade policy for the organization
+     * 
+     */
+    @Import(name="autoUpgrade")
+    private @Nullable Output<SettingAutoUpgradeArgs> autoUpgrade;
+
+    /**
+     * @return AP automatic firmware upgrade policy for the organization
+     * 
+     */
+    public Optional<Output<SettingAutoUpgradeArgs>> autoUpgrade() {
+        return Optional.ofNullable(this.autoUpgrade);
+    }
+
+    /**
+     * CA certificates used by organization-level RADIUS and RADSec settings
      * 
      */
     @Import(name="cacerts")
     private @Nullable Output<List<String>> cacerts;
 
     /**
-     * @return RADSec certificates for AP
+     * @return CA certificates used by organization-level RADIUS and RADSec settings
      * 
      */
     public Optional<Output<List<String>>> cacerts() {
         return Optional.ofNullable(this.cacerts);
     }
 
+    /**
+     * Integration settings for Celona
+     * 
+     */
     @Import(name="celona")
     private @Nullable Output<SettingCelonaArgs> celona;
 
+    /**
+     * @return Integration settings for Celona
+     * 
+     */
     public Optional<Output<SettingCelonaArgs>> celona() {
         return Optional.ofNullable(this.celona);
     }
 
+    /**
+     * Packet capture integration settings for CloudShark
+     * 
+     */
     @Import(name="cloudshark")
     private @Nullable Output<SettingCloudsharkArgs> cloudshark;
 
+    /**
+     * @return Packet capture integration settings for CloudShark
+     * 
+     */
     public Optional<Output<SettingCloudsharkArgs>> cloudshark() {
         return Optional.ofNullable(this.cloudshark);
     }
 
     /**
-     * common device cert, optional
+     * Common device certificate used by organization settings
      * 
      */
     @Import(name="deviceCert")
     private @Nullable Output<SettingDeviceCertArgs> deviceCert;
 
     /**
-     * @return common device cert, optional
+     * @return Common device certificate used by organization settings
      * 
      */
     public Optional<Output<SettingDeviceCertArgs>> deviceCert() {
@@ -189,158 +229,242 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.gatewayUpdownThreshold);
     }
 
+    /**
+     * Access settings for organization installer workflows
+     * 
+     */
     @Import(name="installer")
     private @Nullable Output<SettingInstallerArgs> installer;
 
+    /**
+     * @return Access settings for organization installer workflows
+     * 
+     */
     public Optional<Output<SettingInstallerArgs>> installer() {
         return Optional.ofNullable(this.installer);
     }
 
+    /**
+     * Integration settings for JCloud
+     * 
+     */
     @Import(name="jcloud")
     private @Nullable Output<SettingJcloudArgs> jcloud;
 
+    /**
+     * @return Integration settings for JCloud
+     * 
+     */
     public Optional<Output<SettingJcloudArgs>> jcloud() {
         return Optional.ofNullable(this.jcloud);
     }
 
     /**
-     * JCloud Routing Assurance connexion
+     * Routing Assurance integration settings for JCloud
      * 
      */
     @Import(name="jcloudRa")
     private @Nullable Output<SettingJcloudRaArgs> jcloudRa;
 
     /**
-     * @return JCloud Routing Assurance connexion
+     * @return Routing Assurance integration settings for JCloud
      * 
      */
     public Optional<Output<SettingJcloudRaArgs>> jcloudRa() {
         return Optional.ofNullable(this.jcloudRa);
     }
 
+    /**
+     * SRX integration settings for Juniper devices
+     * 
+     */
     @Import(name="juniperSrx")
     private @Nullable Output<SettingJuniperSrxArgs> juniperSrx;
 
+    /**
+     * @return SRX integration settings for Juniper devices
+     * 
+     */
     public Optional<Output<SettingJuniperSrxArgs>> juniperSrx() {
         return Optional.ofNullable(this.juniperSrx);
     }
 
     /**
-     * junos_shell_access: Manages role-based web-shell access.\
-     * When junosShell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.\
-     * When junosShellAccess is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to &#34;none&#34;, disables web-shell access for that specific role.
+     * Role-based Junos web-shell access settings
      * 
      */
     @Import(name="junosShellAccess")
     private @Nullable Output<SettingJunosShellAccessArgs> junosShellAccess;
 
     /**
-     * @return junos_shell_access: Manages role-based web-shell access.\
-     * When junosShell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.\
-     * When junosShellAccess is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to &#34;none&#34;, disables web-shell access for that specific role.
+     * @return Role-based Junos web-shell access settings
      * 
      */
     public Optional<Output<SettingJunosShellAccessArgs>> junosShellAccess() {
         return Optional.ofNullable(this.junosShellAccess);
     }
 
+    /**
+     * AI assistant and self-driving feature settings for Marvis
+     * 
+     */
     @Import(name="marvis")
     private @Nullable Output<SettingMarvisArgs> marvis;
 
+    /**
+     * @return AI assistant and self-driving feature settings for Marvis
+     * 
+     */
     public Optional<Output<SettingMarvisArgs>> marvis() {
         return Optional.ofNullable(this.marvis);
     }
 
     /**
-     * management-related properties
+     * Tunnel settings for organization management connectivity
      * 
      */
     @Import(name="mgmt")
     private @Nullable Output<SettingMgmtArgs> mgmt;
 
     /**
-     * @return management-related properties
+     * @return Tunnel settings for organization management connectivity
      * 
      */
     public Optional<Output<SettingMgmtArgs>> mgmt() {
         return Optional.ofNullable(this.mgmt);
     }
 
+    /**
+     * NAC settings for Mist Access Assurance
+     * 
+     */
     @Import(name="mistNac")
     private @Nullable Output<SettingMistNacArgs> mistNac;
 
+    /**
+     * @return NAC settings for Mist Access Assurance
+     * 
+     */
     public Optional<Output<SettingMistNacArgs>> mistNac() {
         return Optional.ofNullable(this.mistNac);
     }
 
+    /**
+     * Management settings for Mist Edge devices
+     * 
+     */
     @Import(name="mxedgeMgmt")
     private @Nullable Output<SettingMxedgeMgmtArgs> mxedgeMgmt;
 
+    /**
+     * @return Management settings for Mist Edge devices
+     * 
+     */
     public Optional<Output<SettingMxedgeMgmtArgs>> mxedgeMgmt() {
         return Optional.ofNullable(this.mxedgeMgmt);
     }
 
     /**
-     * Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
+     * Configuration defaults for optic ports
      * 
      */
     @Import(name="opticPortConfig")
     private @Nullable Output<Map<String,SettingOpticPortConfigArgs>> opticPortConfig;
 
     /**
-     * @return Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
+     * @return Configuration defaults for optic ports
      * 
      */
     public Optional<Output<Map<String,SettingOpticPortConfigArgs>>> opticPortConfig() {
         return Optional.ofNullable(this.opticPortConfig);
     }
 
+    /**
+     * Organization that owns these settings
+     * 
+     */
     @Import(name="orgId", required=true)
     private Output<String> orgId;
 
+    /**
+     * @return Organization that owns these settings
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }
 
     /**
-     * password policy
+     * Admin credential policy settings for the organization
      * 
      */
     @Import(name="passwordPolicy")
     private @Nullable Output<SettingPasswordPolicyArgs> passwordPolicy;
 
     /**
-     * @return password policy
+     * @return Admin credential policy settings for the organization
      * 
      */
     public Optional<Output<SettingPasswordPolicyArgs>> passwordPolicy() {
         return Optional.ofNullable(this.passwordPolicy);
     }
 
+    /**
+     * Organization security controls such as local SSH restrictions
+     * 
+     */
     @Import(name="security")
     private @Nullable Output<SettingSecurityArgs> security;
 
+    /**
+     * @return Organization security controls such as local SSH restrictions
+     * 
+     */
     public Optional<Output<SettingSecurityArgs>> security() {
         return Optional.ofNullable(this.security);
     }
 
+    /**
+     * Session Smart Router settings for the organization
+     * 
+     */
     @Import(name="ssr")
     private @Nullable Output<SettingSsrArgs> ssr;
 
+    /**
+     * @return Session Smart Router settings for the organization
+     * 
+     */
     public Optional<Output<SettingSsrArgs>> ssr() {
         return Optional.ofNullable(this.ssr);
     }
 
+    /**
+     * Configuration defaults for switches in this organization
+     * 
+     */
     @Import(name="switch")
     private @Nullable Output<SettingSwitchArgs> switch_;
 
+    /**
+     * @return Configuration defaults for switches in this organization
+     * 
+     */
     public Optional<Output<SettingSwitchArgs>> switch_() {
         return Optional.ofNullable(this.switch_);
     }
 
+    /**
+     * Management settings for switches in this organization
+     * 
+     */
     @Import(name="switchMgmt")
     private @Nullable Output<SettingSwitchMgmtArgs> switchMgmt;
 
+    /**
+     * @return Management settings for switches in this organization
+     * 
+     */
     public Optional<Output<SettingSwitchMgmtArgs>> switchMgmt() {
         return Optional.ofNullable(this.switchMgmt);
     }
@@ -360,9 +484,17 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.switchUpdownThreshold);
     }
 
+    /**
+     * Configuration for organization synthetic tests
+     * 
+     */
     @Import(name="syntheticTest")
     private @Nullable Output<SettingSyntheticTestArgs> syntheticTest;
 
+    /**
+     * @return Configuration for organization synthetic tests
+     * 
+     */
     public Optional<Output<SettingSyntheticTestArgs>> syntheticTest() {
         return Optional.ofNullable(this.syntheticTest);
     }
@@ -382,37 +514,77 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.uiIdleTimeout);
     }
 
+    /**
+     * Whether UI usage tracking is disabled for the organization
+     * 
+     */
     @Import(name="uiNoTracking")
     private @Nullable Output<Boolean> uiNoTracking;
 
+    /**
+     * @return Whether UI usage tracking is disabled for the organization
+     * 
+     */
     public Optional<Output<Boolean>> uiNoTracking() {
         return Optional.ofNullable(this.uiNoTracking);
     }
 
+    /**
+     * Options for organization VPN behavior
+     * 
+     */
     @Import(name="vpnOptions")
     private @Nullable Output<SettingVpnOptionsArgs> vpnOptions;
 
+    /**
+     * @return Options for organization VPN behavior
+     * 
+     */
     public Optional<Output<SettingVpnOptionsArgs>> vpnOptions() {
         return Optional.ofNullable(this.vpnOptions);
     }
 
+    /**
+     * PMA feature settings for WAN Assurance
+     * 
+     */
     @Import(name="wanPma")
     private @Nullable Output<SettingWanPmaArgs> wanPma;
 
+    /**
+     * @return PMA feature settings for WAN Assurance
+     * 
+     */
     public Optional<Output<SettingWanPmaArgs>> wanPma() {
         return Optional.ofNullable(this.wanPma);
     }
 
+    /**
+     * PMA feature settings for Wired Assurance
+     * 
+     */
     @Import(name="wiredPma")
     private @Nullable Output<SettingWiredPmaArgs> wiredPma;
 
+    /**
+     * @return PMA feature settings for Wired Assurance
+     * 
+     */
     public Optional<Output<SettingWiredPmaArgs>> wiredPma() {
         return Optional.ofNullable(this.wiredPma);
     }
 
+    /**
+     * PMA feature settings for Wireless Assurance
+     * 
+     */
     @Import(name="wirelessPma")
     private @Nullable Output<SettingWirelessPmaArgs> wirelessPma;
 
+    /**
+     * @return PMA feature settings for Wireless Assurance
+     * 
+     */
     public Optional<Output<SettingWirelessPmaArgs>> wirelessPma() {
         return Optional.ofNullable(this.wirelessPma);
     }
@@ -422,6 +594,7 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
     private SettingArgs(SettingArgs $) {
         this.apUpdownThreshold = $.apUpdownThreshold;
         this.apiPolicy = $.apiPolicy;
+        this.autoUpgrade = $.autoUpgrade;
         this.cacerts = $.cacerts;
         this.celona = $.celona;
         this.cloudshark = $.cloudshark;
@@ -496,17 +669,50 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
             return apUpdownThreshold(Output.of(apUpdownThreshold));
         }
 
+        /**
+         * @param apiPolicy Policy for hiding API secrets and passwords in responses
+         * 
+         * @return builder
+         * 
+         */
         public Builder apiPolicy(@Nullable Output<SettingApiPolicyArgs> apiPolicy) {
             $.apiPolicy = apiPolicy;
             return this;
         }
 
+        /**
+         * @param apiPolicy Policy for hiding API secrets and passwords in responses
+         * 
+         * @return builder
+         * 
+         */
         public Builder apiPolicy(SettingApiPolicyArgs apiPolicy) {
             return apiPolicy(Output.of(apiPolicy));
         }
 
         /**
-         * @param cacerts RADSec certificates for AP
+         * @param autoUpgrade AP automatic firmware upgrade policy for the organization
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoUpgrade(@Nullable Output<SettingAutoUpgradeArgs> autoUpgrade) {
+            $.autoUpgrade = autoUpgrade;
+            return this;
+        }
+
+        /**
+         * @param autoUpgrade AP automatic firmware upgrade policy for the organization
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoUpgrade(SettingAutoUpgradeArgs autoUpgrade) {
+            return autoUpgrade(Output.of(autoUpgrade));
+        }
+
+        /**
+         * @param cacerts CA certificates used by organization-level RADIUS and RADSec settings
          * 
          * @return builder
          * 
@@ -517,7 +723,7 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cacerts RADSec certificates for AP
+         * @param cacerts CA certificates used by organization-level RADIUS and RADSec settings
          * 
          * @return builder
          * 
@@ -527,7 +733,7 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cacerts RADSec certificates for AP
+         * @param cacerts CA certificates used by organization-level RADIUS and RADSec settings
          * 
          * @return builder
          * 
@@ -536,26 +742,50 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
             return cacerts(List.of(cacerts));
         }
 
+        /**
+         * @param celona Integration settings for Celona
+         * 
+         * @return builder
+         * 
+         */
         public Builder celona(@Nullable Output<SettingCelonaArgs> celona) {
             $.celona = celona;
             return this;
         }
 
+        /**
+         * @param celona Integration settings for Celona
+         * 
+         * @return builder
+         * 
+         */
         public Builder celona(SettingCelonaArgs celona) {
             return celona(Output.of(celona));
         }
 
+        /**
+         * @param cloudshark Packet capture integration settings for CloudShark
+         * 
+         * @return builder
+         * 
+         */
         public Builder cloudshark(@Nullable Output<SettingCloudsharkArgs> cloudshark) {
             $.cloudshark = cloudshark;
             return this;
         }
 
+        /**
+         * @param cloudshark Packet capture integration settings for CloudShark
+         * 
+         * @return builder
+         * 
+         */
         public Builder cloudshark(SettingCloudsharkArgs cloudshark) {
             return cloudshark(Output.of(cloudshark));
         }
 
         /**
-         * @param deviceCert common device cert, optional
+         * @param deviceCert Common device certificate used by organization settings
          * 
          * @return builder
          * 
@@ -566,7 +796,7 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deviceCert common device cert, optional
+         * @param deviceCert Common device certificate used by organization settings
          * 
          * @return builder
          * 
@@ -684,26 +914,50 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
             return gatewayUpdownThreshold(Output.of(gatewayUpdownThreshold));
         }
 
+        /**
+         * @param installer Access settings for organization installer workflows
+         * 
+         * @return builder
+         * 
+         */
         public Builder installer(@Nullable Output<SettingInstallerArgs> installer) {
             $.installer = installer;
             return this;
         }
 
+        /**
+         * @param installer Access settings for organization installer workflows
+         * 
+         * @return builder
+         * 
+         */
         public Builder installer(SettingInstallerArgs installer) {
             return installer(Output.of(installer));
         }
 
+        /**
+         * @param jcloud Integration settings for JCloud
+         * 
+         * @return builder
+         * 
+         */
         public Builder jcloud(@Nullable Output<SettingJcloudArgs> jcloud) {
             $.jcloud = jcloud;
             return this;
         }
 
+        /**
+         * @param jcloud Integration settings for JCloud
+         * 
+         * @return builder
+         * 
+         */
         public Builder jcloud(SettingJcloudArgs jcloud) {
             return jcloud(Output.of(jcloud));
         }
 
         /**
-         * @param jcloudRa JCloud Routing Assurance connexion
+         * @param jcloudRa Routing Assurance integration settings for JCloud
          * 
          * @return builder
          * 
@@ -714,7 +968,7 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param jcloudRa JCloud Routing Assurance connexion
+         * @param jcloudRa Routing Assurance integration settings for JCloud
          * 
          * @return builder
          * 
@@ -723,19 +977,29 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
             return jcloudRa(Output.of(jcloudRa));
         }
 
+        /**
+         * @param juniperSrx SRX integration settings for Juniper devices
+         * 
+         * @return builder
+         * 
+         */
         public Builder juniperSrx(@Nullable Output<SettingJuniperSrxArgs> juniperSrx) {
             $.juniperSrx = juniperSrx;
             return this;
         }
 
+        /**
+         * @param juniperSrx SRX integration settings for Juniper devices
+         * 
+         * @return builder
+         * 
+         */
         public Builder juniperSrx(SettingJuniperSrxArgs juniperSrx) {
             return juniperSrx(Output.of(juniperSrx));
         }
 
         /**
-         * @param junosShellAccess junos_shell_access: Manages role-based web-shell access.\
-         * When junosShell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.\
-         * When junosShellAccess is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to &#34;none&#34;, disables web-shell access for that specific role.
+         * @param junosShellAccess Role-based Junos web-shell access settings
          * 
          * @return builder
          * 
@@ -746,9 +1010,7 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param junosShellAccess junos_shell_access: Manages role-based web-shell access.\
-         * When junosShell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.\
-         * When junosShellAccess is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to &#34;none&#34;, disables web-shell access for that specific role.
+         * @param junosShellAccess Role-based Junos web-shell access settings
          * 
          * @return builder
          * 
@@ -757,17 +1019,29 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
             return junosShellAccess(Output.of(junosShellAccess));
         }
 
+        /**
+         * @param marvis AI assistant and self-driving feature settings for Marvis
+         * 
+         * @return builder
+         * 
+         */
         public Builder marvis(@Nullable Output<SettingMarvisArgs> marvis) {
             $.marvis = marvis;
             return this;
         }
 
+        /**
+         * @param marvis AI assistant and self-driving feature settings for Marvis
+         * 
+         * @return builder
+         * 
+         */
         public Builder marvis(SettingMarvisArgs marvis) {
             return marvis(Output.of(marvis));
         }
 
         /**
-         * @param mgmt management-related properties
+         * @param mgmt Tunnel settings for organization management connectivity
          * 
          * @return builder
          * 
@@ -778,7 +1052,7 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mgmt management-related properties
+         * @param mgmt Tunnel settings for organization management connectivity
          * 
          * @return builder
          * 
@@ -787,26 +1061,50 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
             return mgmt(Output.of(mgmt));
         }
 
+        /**
+         * @param mistNac NAC settings for Mist Access Assurance
+         * 
+         * @return builder
+         * 
+         */
         public Builder mistNac(@Nullable Output<SettingMistNacArgs> mistNac) {
             $.mistNac = mistNac;
             return this;
         }
 
+        /**
+         * @param mistNac NAC settings for Mist Access Assurance
+         * 
+         * @return builder
+         * 
+         */
         public Builder mistNac(SettingMistNacArgs mistNac) {
             return mistNac(Output.of(mistNac));
         }
 
+        /**
+         * @param mxedgeMgmt Management settings for Mist Edge devices
+         * 
+         * @return builder
+         * 
+         */
         public Builder mxedgeMgmt(@Nullable Output<SettingMxedgeMgmtArgs> mxedgeMgmt) {
             $.mxedgeMgmt = mxedgeMgmt;
             return this;
         }
 
+        /**
+         * @param mxedgeMgmt Management settings for Mist Edge devices
+         * 
+         * @return builder
+         * 
+         */
         public Builder mxedgeMgmt(SettingMxedgeMgmtArgs mxedgeMgmt) {
             return mxedgeMgmt(Output.of(mxedgeMgmt));
         }
 
         /**
-         * @param opticPortConfig Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
+         * @param opticPortConfig Configuration defaults for optic ports
          * 
          * @return builder
          * 
@@ -817,7 +1115,7 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param opticPortConfig Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
+         * @param opticPortConfig Configuration defaults for optic ports
          * 
          * @return builder
          * 
@@ -826,17 +1124,29 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
             return opticPortConfig(Output.of(opticPortConfig));
         }
 
+        /**
+         * @param orgId Organization that owns these settings
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param orgId Organization that owns these settings
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }
 
         /**
-         * @param passwordPolicy password policy
+         * @param passwordPolicy Admin credential policy settings for the organization
          * 
          * @return builder
          * 
@@ -847,7 +1157,7 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param passwordPolicy password policy
+         * @param passwordPolicy Admin credential policy settings for the organization
          * 
          * @return builder
          * 
@@ -856,38 +1166,86 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
             return passwordPolicy(Output.of(passwordPolicy));
         }
 
+        /**
+         * @param security Organization security controls such as local SSH restrictions
+         * 
+         * @return builder
+         * 
+         */
         public Builder security(@Nullable Output<SettingSecurityArgs> security) {
             $.security = security;
             return this;
         }
 
+        /**
+         * @param security Organization security controls such as local SSH restrictions
+         * 
+         * @return builder
+         * 
+         */
         public Builder security(SettingSecurityArgs security) {
             return security(Output.of(security));
         }
 
+        /**
+         * @param ssr Session Smart Router settings for the organization
+         * 
+         * @return builder
+         * 
+         */
         public Builder ssr(@Nullable Output<SettingSsrArgs> ssr) {
             $.ssr = ssr;
             return this;
         }
 
+        /**
+         * @param ssr Session Smart Router settings for the organization
+         * 
+         * @return builder
+         * 
+         */
         public Builder ssr(SettingSsrArgs ssr) {
             return ssr(Output.of(ssr));
         }
 
+        /**
+         * @param switch_ Configuration defaults for switches in this organization
+         * 
+         * @return builder
+         * 
+         */
         public Builder switch_(@Nullable Output<SettingSwitchArgs> switch_) {
             $.switch_ = switch_;
             return this;
         }
 
+        /**
+         * @param switch_ Configuration defaults for switches in this organization
+         * 
+         * @return builder
+         * 
+         */
         public Builder switch_(SettingSwitchArgs switch_) {
             return switch_(Output.of(switch_));
         }
 
+        /**
+         * @param switchMgmt Management settings for switches in this organization
+         * 
+         * @return builder
+         * 
+         */
         public Builder switchMgmt(@Nullable Output<SettingSwitchMgmtArgs> switchMgmt) {
             $.switchMgmt = switchMgmt;
             return this;
         }
 
+        /**
+         * @param switchMgmt Management settings for switches in this organization
+         * 
+         * @return builder
+         * 
+         */
         public Builder switchMgmt(SettingSwitchMgmtArgs switchMgmt) {
             return switchMgmt(Output.of(switchMgmt));
         }
@@ -913,11 +1271,23 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
             return switchUpdownThreshold(Output.of(switchUpdownThreshold));
         }
 
+        /**
+         * @param syntheticTest Configuration for organization synthetic tests
+         * 
+         * @return builder
+         * 
+         */
         public Builder syntheticTest(@Nullable Output<SettingSyntheticTestArgs> syntheticTest) {
             $.syntheticTest = syntheticTest;
             return this;
         }
 
+        /**
+         * @param syntheticTest Configuration for organization synthetic tests
+         * 
+         * @return builder
+         * 
+         */
         public Builder syntheticTest(SettingSyntheticTestArgs syntheticTest) {
             return syntheticTest(Output.of(syntheticTest));
         }
@@ -943,47 +1313,107 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
             return uiIdleTimeout(Output.of(uiIdleTimeout));
         }
 
+        /**
+         * @param uiNoTracking Whether UI usage tracking is disabled for the organization
+         * 
+         * @return builder
+         * 
+         */
         public Builder uiNoTracking(@Nullable Output<Boolean> uiNoTracking) {
             $.uiNoTracking = uiNoTracking;
             return this;
         }
 
+        /**
+         * @param uiNoTracking Whether UI usage tracking is disabled for the organization
+         * 
+         * @return builder
+         * 
+         */
         public Builder uiNoTracking(Boolean uiNoTracking) {
             return uiNoTracking(Output.of(uiNoTracking));
         }
 
+        /**
+         * @param vpnOptions Options for organization VPN behavior
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpnOptions(@Nullable Output<SettingVpnOptionsArgs> vpnOptions) {
             $.vpnOptions = vpnOptions;
             return this;
         }
 
+        /**
+         * @param vpnOptions Options for organization VPN behavior
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpnOptions(SettingVpnOptionsArgs vpnOptions) {
             return vpnOptions(Output.of(vpnOptions));
         }
 
+        /**
+         * @param wanPma PMA feature settings for WAN Assurance
+         * 
+         * @return builder
+         * 
+         */
         public Builder wanPma(@Nullable Output<SettingWanPmaArgs> wanPma) {
             $.wanPma = wanPma;
             return this;
         }
 
+        /**
+         * @param wanPma PMA feature settings for WAN Assurance
+         * 
+         * @return builder
+         * 
+         */
         public Builder wanPma(SettingWanPmaArgs wanPma) {
             return wanPma(Output.of(wanPma));
         }
 
+        /**
+         * @param wiredPma PMA feature settings for Wired Assurance
+         * 
+         * @return builder
+         * 
+         */
         public Builder wiredPma(@Nullable Output<SettingWiredPmaArgs> wiredPma) {
             $.wiredPma = wiredPma;
             return this;
         }
 
+        /**
+         * @param wiredPma PMA feature settings for Wired Assurance
+         * 
+         * @return builder
+         * 
+         */
         public Builder wiredPma(SettingWiredPmaArgs wiredPma) {
             return wiredPma(Output.of(wiredPma));
         }
 
+        /**
+         * @param wirelessPma PMA feature settings for Wireless Assurance
+         * 
+         * @return builder
+         * 
+         */
         public Builder wirelessPma(@Nullable Output<SettingWirelessPmaArgs> wirelessPma) {
             $.wirelessPma = wirelessPma;
             return this;
         }
 
+        /**
+         * @param wirelessPma PMA feature settings for Wireless Assurance
+         * 
+         * @return builder
+         * 
+         */
         public Builder wirelessPma(SettingWirelessPmaArgs wirelessPma) {
             return wirelessPma(Output.of(wirelessPma));
         }

@@ -13,7 +13,13 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class SwitchExtraRoutesNextQualified
     {
+        /// <summary>
+        /// Route metric for this qualified IPv4 next hop
+        /// </summary>
         public readonly int? Metric;
+        /// <summary>
+        /// Route preference for this qualified IPv4 next hop
+        /// </summary>
         public readonly int? Preference;
 
         [OutputConstructor]

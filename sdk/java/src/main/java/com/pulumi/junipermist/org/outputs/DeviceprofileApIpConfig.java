@@ -14,114 +14,146 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DeviceprofileApIpConfig {
     /**
-     * @return If `type`==`static`
+     * @return If `type`==`static`. DNS server IP addresses for AP management traffic
      * 
      */
     private @Nullable List<String> dns;
     /**
-     * @return Required if `type`==`static`
+     * @return If `type`==`static`. DNS search suffixes applied to AP management lookups
      * 
      */
     private @Nullable List<String> dnsSuffixes;
     /**
-     * @return Required if `type`==`static`
+     * @return Required if `type`==`static`. IPv4 default gateway for AP management traffic
      * 
      */
     private @Nullable String gateway;
+    /**
+     * @return Required if `type6`==`static`. IPv6 default gateway for AP management traffic when static IPv6 addressing is used
+     * 
+     */
     private @Nullable String gateway6;
     /**
-     * @return Required if `type`==`static`
+     * @return Required if `type`==`static`. Static IPv4 address for the AP management interface
      * 
      */
     private @Nullable String ip;
+    /**
+     * @return Required if `type6`==`static`. Static IPv6 address for the AP management interface
+     * 
+     */
     private @Nullable String ip6;
+    /**
+     * @return Maximum transmission unit for AP management traffic
+     * 
+     */
     private @Nullable Integer mtu;
     /**
-     * @return Required if `type`==`static`
+     * @return Required if `type`==`static`. IPv4 netmask for the AP management interface
      * 
      */
     private @Nullable String netmask;
+    /**
+     * @return Required if `type6`==`static`. IPv6 prefix length for the AP management interface
+     * 
+     */
     private @Nullable String netmask6;
     /**
-     * @return enum: `dhcp`, `static`
+     * @return IPv4 address assignment mode for AP management traffic
      * 
      */
     private @Nullable String type;
     /**
-     * @return enum: `autoconf`, `dhcp`, `disabled`, `static`
+     * @return IPv6 address assignment mode for AP management traffic
      * 
      */
     private @Nullable String type6;
     /**
-     * @return Management VLAN id, default is 1 (untagged)
+     * @return Management VLAN ID, default is 1 (untagged)
      * 
      */
     private @Nullable Integer vlanId;
 
     private DeviceprofileApIpConfig() {}
     /**
-     * @return If `type`==`static`
+     * @return If `type`==`static`. DNS server IP addresses for AP management traffic
      * 
      */
     public List<String> dns() {
         return this.dns == null ? List.of() : this.dns;
     }
     /**
-     * @return Required if `type`==`static`
+     * @return If `type`==`static`. DNS search suffixes applied to AP management lookups
      * 
      */
     public List<String> dnsSuffixes() {
         return this.dnsSuffixes == null ? List.of() : this.dnsSuffixes;
     }
     /**
-     * @return Required if `type`==`static`
+     * @return Required if `type`==`static`. IPv4 default gateway for AP management traffic
      * 
      */
     public Optional<String> gateway() {
         return Optional.ofNullable(this.gateway);
     }
+    /**
+     * @return Required if `type6`==`static`. IPv6 default gateway for AP management traffic when static IPv6 addressing is used
+     * 
+     */
     public Optional<String> gateway6() {
         return Optional.ofNullable(this.gateway6);
     }
     /**
-     * @return Required if `type`==`static`
+     * @return Required if `type`==`static`. Static IPv4 address for the AP management interface
      * 
      */
     public Optional<String> ip() {
         return Optional.ofNullable(this.ip);
     }
+    /**
+     * @return Required if `type6`==`static`. Static IPv6 address for the AP management interface
+     * 
+     */
     public Optional<String> ip6() {
         return Optional.ofNullable(this.ip6);
     }
+    /**
+     * @return Maximum transmission unit for AP management traffic
+     * 
+     */
     public Optional<Integer> mtu() {
         return Optional.ofNullable(this.mtu);
     }
     /**
-     * @return Required if `type`==`static`
+     * @return Required if `type`==`static`. IPv4 netmask for the AP management interface
      * 
      */
     public Optional<String> netmask() {
         return Optional.ofNullable(this.netmask);
     }
+    /**
+     * @return Required if `type6`==`static`. IPv6 prefix length for the AP management interface
+     * 
+     */
     public Optional<String> netmask6() {
         return Optional.ofNullable(this.netmask6);
     }
     /**
-     * @return enum: `dhcp`, `static`
+     * @return IPv4 address assignment mode for AP management traffic
      * 
      */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return enum: `autoconf`, `dhcp`, `disabled`, `static`
+     * @return IPv6 address assignment mode for AP management traffic
      * 
      */
     public Optional<String> type6() {
         return Optional.ofNullable(this.type6);
     }
     /**
-     * @return Management VLAN id, default is 1 (untagged)
+     * @return Management VLAN ID, default is 1 (untagged)
      * 
      */
     public Optional<Integer> vlanId() {

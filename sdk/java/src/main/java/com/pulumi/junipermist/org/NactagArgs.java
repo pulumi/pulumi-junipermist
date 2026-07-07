@@ -20,14 +20,14 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
     public static final NactagArgs Empty = new NactagArgs();
 
     /**
-     * Can be set to true to allow the override by usermac result
+     * Whether usermac result values can override this NAC tag when the result type is also supported by usermac
      * 
      */
     @Import(name="allowUsermacOverride")
     private @Nullable Output<Boolean> allowUsermacOverride;
 
     /**
-     * @return Can be set to true to allow the override by usermac result
+     * @return Whether usermac result values can override this NAC tag when the result type is also supported by usermac
      * 
      */
     public Optional<Output<Boolean>> allowUsermacOverride() {
@@ -35,36 +35,44 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `type`==`egressVlanNames`, list of egress vlans to return
+     * If `type`==`egressVlanNames`, list of egress VLAN names returned by the NAC rule
      * 
      */
     @Import(name="egressVlanNames")
     private @Nullable Output<List<String>> egressVlanNames;
 
     /**
-     * @return If `type`==`egressVlanNames`, list of egress vlans to return
+     * @return If `type`==`egressVlanNames`, list of egress VLAN names returned by the NAC rule
      * 
      */
     public Optional<Output<List<String>>> egressVlanNames() {
         return Optional.ofNullable(this.egressVlanNames);
     }
 
+    /**
+     * If `type`==`gbpTag`, GBP tag value returned by the NAC rule
+     * 
+     */
     @Import(name="gbpTag")
     private @Nullable Output<String> gbpTag;
 
+    /**
+     * @return If `type`==`gbpTag`, GBP tag value returned by the NAC rule
+     * 
+     */
     public Optional<Output<String>> gbpTag() {
         return Optional.ofNullable(this.gbpTag);
     }
 
     /**
-     * if `type`==`match`. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrStatus`, `gbpTag`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+     * If `type`==`match`, client or authentication attribute used for rule matching
      * 
      */
     @Import(name="match")
     private @Nullable Output<String> match;
 
     /**
-     * @return if `type`==`match`. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrStatus`, `gbpTag`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+     * @return If `type`==`match`, client or authentication attribute used for rule matching
      * 
      */
     public Optional<Output<String>> match() {
@@ -95,47 +103,59 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `type`==`redirectNacportalId`, the ID of the NAC portal to redirect to
+     * If `type`==`redirectNacportalId`, NAC portal ID used for client redirection
      * 
      */
     @Import(name="nacportalId")
     private @Nullable Output<String> nacportalId;
 
     /**
-     * @return If `type`==`redirectNacportalId`, the ID of the NAC portal to redirect to
+     * @return If `type`==`redirectNacportalId`, NAC portal ID used for client redirection
      * 
      */
     public Optional<Output<String>> nacportalId() {
         return Optional.ofNullable(this.nacportalId);
     }
 
+    /**
+     * Human-readable name of the NAC tag
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Human-readable name of the NAC tag
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Org identifier that owns the NAC tag
+     * 
+     */
     @Import(name="orgId", required=true)
     private Output<String> orgId;
 
+    /**
+     * @return Org identifier that owns the NAC tag
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }
 
     /**
-     * If `type`==`radiusAttrs`, user can specify a list of one or more standard attributes in the field &#34;radiusAttrs&#34;.
-     * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
-     * Note that it is allowed to have more than one radiusAttrs in the result of a given rule.
+     * If `type`==`radiusAttrs`, standard RADIUS attributes returned by the NAC rule
      * 
      */
     @Import(name="radiusAttrs")
     private @Nullable Output<List<String>> radiusAttrs;
 
     /**
-     * @return If `type`==`radiusAttrs`, user can specify a list of one or more standard attributes in the field &#34;radiusAttrs&#34;.
-     * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
-     * Note that it is allowed to have more than one radiusAttrs in the result of a given rule.
+     * @return If `type`==`radiusAttrs`, standard RADIUS attributes returned by the NAC rule
      * 
      */
     public Optional<Output<List<String>>> radiusAttrs() {
@@ -143,14 +163,14 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `type`==`radiusGroup`
+     * If `type`==`radiusGroup`, RADIUS group value returned by the NAC rule
      * 
      */
     @Import(name="radiusGroup")
     private @Nullable Output<String> radiusGroup;
 
     /**
-     * @return If `type`==`radiusGroup`
+     * @return If `type`==`radiusGroup`, RADIUS group value returned by the NAC rule
      * 
      */
     public Optional<Output<String>> radiusGroup() {
@@ -158,18 +178,14 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `type`==`radiusVendorAttrs`, user can specify a list of one or more vendor-specific attributes in the field &#34;radiusVendorAttrs&#34;.
-     * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
-     * Note that it is allowed to have more than one radiusVendorAttrs in the result of a given rule.
+     * If `type`==`radiusVendorAttrs`, vendor-specific RADIUS attributes returned by the NAC rule
      * 
      */
     @Import(name="radiusVendorAttrs")
     private @Nullable Output<List<String>> radiusVendorAttrs;
 
     /**
-     * @return If `type`==`radiusVendorAttrs`, user can specify a list of one or more vendor-specific attributes in the field &#34;radiusVendorAttrs&#34;.
-     * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
-     * Note that it is allowed to have more than one radiusVendorAttrs in the result of a given rule.
+     * @return If `type`==`radiusVendorAttrs`, vendor-specific RADIUS attributes returned by the NAC rule
      * 
      */
     public Optional<Output<List<String>>> radiusVendorAttrs() {
@@ -177,14 +193,14 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `type`==`session_timeout, in seconds
+     * If `type`==`sessionTimeout`, session timeout returned by the NAC rule, in seconds
      * 
      */
     @Import(name="sessionTimeout")
     private @Nullable Output<Integer> sessionTimeout;
 
     /**
-     * @return If `type`==`session_timeout, in seconds
+     * @return If `type`==`sessionTimeout`, session timeout returned by the NAC rule, in seconds
      * 
      */
     public Optional<Output<Integer>> sessionTimeout() {
@@ -192,14 +208,14 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`
+     * NAC tag type that determines whether the tag is a matcher or a result attribute
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`
+     * @return NAC tag type that determines whether the tag is a matcher or a result attribute
      * 
      */
     public Output<String> type() {
@@ -207,14 +223,14 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * enum: `automatic`, `cn`, `dns`, `email`, `upn`
+     * If `type`==`usernameAttr`, attribute used to derive the username returned by the NAC rule
      * 
      */
     @Import(name="usernameAttr")
     private @Nullable Output<String> usernameAttr;
 
     /**
-     * @return enum: `automatic`, `cn`, `dns`, `email`, `upn`
+     * @return If `type`==`usernameAttr`, attribute used to derive the username returned by the NAC rule
      * 
      */
     public Optional<Output<String>> usernameAttr() {
@@ -222,14 +238,14 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `type`==`match`
+     * If `type`==`match`, attribute values used by the NAC tag matcher
      * 
      */
     @Import(name="values")
     private @Nullable Output<List<String>> values;
 
     /**
-     * @return If `type`==`match`
+     * @return If `type`==`match`, attribute values used by the NAC tag matcher
      * 
      */
     public Optional<Output<List<String>>> values() {
@@ -237,14 +253,14 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `type`==`vlan`
+     * If `type`==`vlan`, VLAN name or ID returned by the NAC rule
      * 
      */
     @Import(name="vlan")
     private @Nullable Output<String> vlan;
 
     /**
-     * @return If `type`==`vlan`
+     * @return If `type`==`vlan`, VLAN name or ID returned by the NAC rule
      * 
      */
     public Optional<Output<String>> vlan() {
@@ -291,7 +307,7 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowUsermacOverride Can be set to true to allow the override by usermac result
+         * @param allowUsermacOverride Whether usermac result values can override this NAC tag when the result type is also supported by usermac
          * 
          * @return builder
          * 
@@ -302,7 +318,7 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowUsermacOverride Can be set to true to allow the override by usermac result
+         * @param allowUsermacOverride Whether usermac result values can override this NAC tag when the result type is also supported by usermac
          * 
          * @return builder
          * 
@@ -312,7 +328,7 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param egressVlanNames If `type`==`egressVlanNames`, list of egress vlans to return
+         * @param egressVlanNames If `type`==`egressVlanNames`, list of egress VLAN names returned by the NAC rule
          * 
          * @return builder
          * 
@@ -323,7 +339,7 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param egressVlanNames If `type`==`egressVlanNames`, list of egress vlans to return
+         * @param egressVlanNames If `type`==`egressVlanNames`, list of egress VLAN names returned by the NAC rule
          * 
          * @return builder
          * 
@@ -333,7 +349,7 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param egressVlanNames If `type`==`egressVlanNames`, list of egress vlans to return
+         * @param egressVlanNames If `type`==`egressVlanNames`, list of egress VLAN names returned by the NAC rule
          * 
          * @return builder
          * 
@@ -342,17 +358,29 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
             return egressVlanNames(List.of(egressVlanNames));
         }
 
+        /**
+         * @param gbpTag If `type`==`gbpTag`, GBP tag value returned by the NAC rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder gbpTag(@Nullable Output<String> gbpTag) {
             $.gbpTag = gbpTag;
             return this;
         }
 
+        /**
+         * @param gbpTag If `type`==`gbpTag`, GBP tag value returned by the NAC rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder gbpTag(String gbpTag) {
             return gbpTag(Output.of(gbpTag));
         }
 
         /**
-         * @param match if `type`==`match`. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrStatus`, `gbpTag`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+         * @param match If `type`==`match`, client or authentication attribute used for rule matching
          * 
          * @return builder
          * 
@@ -363,7 +391,7 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param match if `type`==`match`. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrStatus`, `gbpTag`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+         * @param match If `type`==`match`, client or authentication attribute used for rule matching
          * 
          * @return builder
          * 
@@ -402,7 +430,7 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nacportalId If `type`==`redirectNacportalId`, the ID of the NAC portal to redirect to
+         * @param nacportalId If `type`==`redirectNacportalId`, NAC portal ID used for client redirection
          * 
          * @return builder
          * 
@@ -413,7 +441,7 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nacportalId If `type`==`redirectNacportalId`, the ID of the NAC portal to redirect to
+         * @param nacportalId If `type`==`redirectNacportalId`, NAC portal ID used for client redirection
          * 
          * @return builder
          * 
@@ -422,28 +450,50 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
             return nacportalId(Output.of(nacportalId));
         }
 
+        /**
+         * @param name Human-readable name of the NAC tag
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Human-readable name of the NAC tag
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param orgId Org identifier that owns the NAC tag
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param orgId Org identifier that owns the NAC tag
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }
 
         /**
-         * @param radiusAttrs If `type`==`radiusAttrs`, user can specify a list of one or more standard attributes in the field &#34;radiusAttrs&#34;.
-         * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
-         * Note that it is allowed to have more than one radiusAttrs in the result of a given rule.
+         * @param radiusAttrs If `type`==`radiusAttrs`, standard RADIUS attributes returned by the NAC rule
          * 
          * @return builder
          * 
@@ -454,9 +504,7 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param radiusAttrs If `type`==`radiusAttrs`, user can specify a list of one or more standard attributes in the field &#34;radiusAttrs&#34;.
-         * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
-         * Note that it is allowed to have more than one radiusAttrs in the result of a given rule.
+         * @param radiusAttrs If `type`==`radiusAttrs`, standard RADIUS attributes returned by the NAC rule
          * 
          * @return builder
          * 
@@ -466,9 +514,7 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param radiusAttrs If `type`==`radiusAttrs`, user can specify a list of one or more standard attributes in the field &#34;radiusAttrs&#34;.
-         * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
-         * Note that it is allowed to have more than one radiusAttrs in the result of a given rule.
+         * @param radiusAttrs If `type`==`radiusAttrs`, standard RADIUS attributes returned by the NAC rule
          * 
          * @return builder
          * 
@@ -478,7 +524,7 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param radiusGroup If `type`==`radiusGroup`
+         * @param radiusGroup If `type`==`radiusGroup`, RADIUS group value returned by the NAC rule
          * 
          * @return builder
          * 
@@ -489,7 +535,7 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param radiusGroup If `type`==`radiusGroup`
+         * @param radiusGroup If `type`==`radiusGroup`, RADIUS group value returned by the NAC rule
          * 
          * @return builder
          * 
@@ -499,9 +545,7 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param radiusVendorAttrs If `type`==`radiusVendorAttrs`, user can specify a list of one or more vendor-specific attributes in the field &#34;radiusVendorAttrs&#34;.
-         * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
-         * Note that it is allowed to have more than one radiusVendorAttrs in the result of a given rule.
+         * @param radiusVendorAttrs If `type`==`radiusVendorAttrs`, vendor-specific RADIUS attributes returned by the NAC rule
          * 
          * @return builder
          * 
@@ -512,9 +556,7 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param radiusVendorAttrs If `type`==`radiusVendorAttrs`, user can specify a list of one or more vendor-specific attributes in the field &#34;radiusVendorAttrs&#34;.
-         * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
-         * Note that it is allowed to have more than one radiusVendorAttrs in the result of a given rule.
+         * @param radiusVendorAttrs If `type`==`radiusVendorAttrs`, vendor-specific RADIUS attributes returned by the NAC rule
          * 
          * @return builder
          * 
@@ -524,9 +566,7 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param radiusVendorAttrs If `type`==`radiusVendorAttrs`, user can specify a list of one or more vendor-specific attributes in the field &#34;radiusVendorAttrs&#34;.
-         * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
-         * Note that it is allowed to have more than one radiusVendorAttrs in the result of a given rule.
+         * @param radiusVendorAttrs If `type`==`radiusVendorAttrs`, vendor-specific RADIUS attributes returned by the NAC rule
          * 
          * @return builder
          * 
@@ -536,7 +576,7 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sessionTimeout If `type`==`session_timeout, in seconds
+         * @param sessionTimeout If `type`==`sessionTimeout`, session timeout returned by the NAC rule, in seconds
          * 
          * @return builder
          * 
@@ -547,7 +587,7 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sessionTimeout If `type`==`session_timeout, in seconds
+         * @param sessionTimeout If `type`==`sessionTimeout`, session timeout returned by the NAC rule, in seconds
          * 
          * @return builder
          * 
@@ -557,7 +597,7 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`
+         * @param type NAC tag type that determines whether the tag is a matcher or a result attribute
          * 
          * @return builder
          * 
@@ -568,7 +608,7 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`
+         * @param type NAC tag type that determines whether the tag is a matcher or a result attribute
          * 
          * @return builder
          * 
@@ -578,7 +618,7 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param usernameAttr enum: `automatic`, `cn`, `dns`, `email`, `upn`
+         * @param usernameAttr If `type`==`usernameAttr`, attribute used to derive the username returned by the NAC rule
          * 
          * @return builder
          * 
@@ -589,7 +629,7 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param usernameAttr enum: `automatic`, `cn`, `dns`, `email`, `upn`
+         * @param usernameAttr If `type`==`usernameAttr`, attribute used to derive the username returned by the NAC rule
          * 
          * @return builder
          * 
@@ -599,7 +639,7 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param values If `type`==`match`
+         * @param values If `type`==`match`, attribute values used by the NAC tag matcher
          * 
          * @return builder
          * 
@@ -610,7 +650,7 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param values If `type`==`match`
+         * @param values If `type`==`match`, attribute values used by the NAC tag matcher
          * 
          * @return builder
          * 
@@ -620,7 +660,7 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param values If `type`==`match`
+         * @param values If `type`==`match`, attribute values used by the NAC tag matcher
          * 
          * @return builder
          * 
@@ -630,7 +670,7 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vlan If `type`==`vlan`
+         * @param vlan If `type`==`vlan`, VLAN name or ID returned by the NAC rule
          * 
          * @return builder
          * 
@@ -641,7 +681,7 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vlan If `type`==`vlan`
+         * @param vlan If `type`==`vlan`, VLAN name or ID returned by the NAC rule
          * 
          * @return builder
          * 

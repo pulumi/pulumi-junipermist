@@ -17,14 +17,14 @@ public final class WlantemplateExceptionsArgs extends com.pulumi.resources.Resou
     public static final WlantemplateExceptionsArgs Empty = new WlantemplateExceptionsArgs();
 
     /**
-     * List of site ids
+     * Sites excluded from the WLAN template application scope
      * 
      */
     @Import(name="siteIds")
     private @Nullable Output<List<String>> siteIds;
 
     /**
-     * @return List of site ids
+     * @return Sites excluded from the WLAN template application scope
      * 
      */
     public Optional<Output<List<String>>> siteIds() {
@@ -32,14 +32,14 @@ public final class WlantemplateExceptionsArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * List of sitegroup ids
+     * Site groups excluded from the WLAN template application scope
      * 
      */
     @Import(name="sitegroupIds")
     private @Nullable Output<List<String>> sitegroupIds;
 
     /**
-     * @return List of sitegroup ids
+     * @return Site groups excluded from the WLAN template application scope
      * 
      */
     public Optional<Output<List<String>>> sitegroupIds() {
@@ -72,7 +72,7 @@ public final class WlantemplateExceptionsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param siteIds List of site ids
+         * @param siteIds Sites excluded from the WLAN template application scope
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class WlantemplateExceptionsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param siteIds List of site ids
+         * @param siteIds Sites excluded from the WLAN template application scope
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class WlantemplateExceptionsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param siteIds List of site ids
+         * @param siteIds Sites excluded from the WLAN template application scope
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class WlantemplateExceptionsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param sitegroupIds List of sitegroup ids
+         * @param sitegroupIds Site groups excluded from the WLAN template application scope
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class WlantemplateExceptionsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param sitegroupIds List of sitegroup ids
+         * @param sitegroupIds Site groups excluded from the WLAN template application scope
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class WlantemplateExceptionsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param sitegroupIds List of sitegroup ids
+         * @param sitegroupIds Site groups excluded from the WLAN template application scope
          * 
          * @return builder
          * 

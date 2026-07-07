@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _additionalEmails;
 
         /// <summary>
-        /// List of additional email string to deliver the alarms via emails
+        /// Additional email recipients for alarm delivery
         /// </summary>
         public InputList<string> AdditionalEmails
         {

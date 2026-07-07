@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class GatewaytemplateNetworkVpnAccessSourceNatArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// External source NAT IP or subnet used when spoke hosts must be reachable from the hub
+        /// </summary>
         [Input("externalIp")]
         public Input<string>? ExternalIp { get; set; }
 

@@ -56,12 +56,21 @@ namespace Pulumi.JuniperMist.Org
     [JuniperMistResourceType("junipermist:org/ssoRole:SsoRole")]
     public partial class SsoRole : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Display name of the organization SSO role
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Owning organization identifier for this SSO role
+        /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
+        /// <summary>
+        /// Access privileges granted by this organization SSO role
+        /// </summary>
         [Output("privileges")]
         public Output<ImmutableArray<Outputs.SsoRolePrivilege>> Privileges { get; private set; } = null!;
 
@@ -112,14 +121,24 @@ namespace Pulumi.JuniperMist.Org
 
     public sealed class SsoRoleArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Display name of the organization SSO role
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Owning organization identifier for this SSO role
+        /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
         [Input("privileges", required: true)]
         private InputList<Inputs.SsoRolePrivilegeArgs>? _privileges;
+
+        /// <summary>
+        /// Access privileges granted by this organization SSO role
+        /// </summary>
         public InputList<Inputs.SsoRolePrivilegeArgs> Privileges
         {
             get => _privileges ?? (_privileges = new InputList<Inputs.SsoRolePrivilegeArgs>());
@@ -134,14 +153,24 @@ namespace Pulumi.JuniperMist.Org
 
     public sealed class SsoRoleState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Display name of the organization SSO role
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Owning organization identifier for this SSO role
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         [Input("privileges")]
         private InputList<Inputs.SsoRolePrivilegeGetArgs>? _privileges;
+
+        /// <summary>
+        /// Access privileges granted by this organization SSO role
+        /// </summary>
         public InputList<Inputs.SsoRolePrivilegeGetArgs> Privileges
         {
             get => _privileges ?? (_privileges = new InputList<Inputs.SsoRolePrivilegeGetArgs>());

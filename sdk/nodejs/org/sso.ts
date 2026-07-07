@@ -101,7 +101,7 @@ export class Sso extends pulumi.CustomResource {
      */
     declare public readonly issuer: pulumi.Output<string>;
     /**
-     * Name
+     * Display name of the SSO configuration
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -109,9 +109,24 @@ export class Sso extends pulumi.CustomResource {
      */
     declare public readonly nameidFormat: pulumi.Output<string>;
     /**
-     * If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+     * Provider domain for Okta OAuth SSO when `oauthType`==`okta`
      */
     declare public readonly oauthProviderDomain: pulumi.Output<string>;
+    /**
+     * SSIDs that support OpenRoaming, used when `idpType`==`openroaming`
+     */
+    declare public readonly openroamingSsids: pulumi.Output<string[] | undefined>;
+    /**
+     * Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+     */
+    declare public readonly openroamingWbaClientCert: pulumi.Output<string | undefined>;
+    /**
+     * Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+     */
+    declare public readonly openroamingWbaClientKey: pulumi.Output<string | undefined>;
+    /**
+     * Owning organization identifier for this SSO configuration
+     */
     declare public readonly orgId: pulumi.Output<string>;
     /**
      * custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
@@ -146,6 +161,9 @@ export class Sso extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["nameidFormat"] = state?.nameidFormat;
             resourceInputs["oauthProviderDomain"] = state?.oauthProviderDomain;
+            resourceInputs["openroamingSsids"] = state?.openroamingSsids;
+            resourceInputs["openroamingWbaClientCert"] = state?.openroamingWbaClientCert;
+            resourceInputs["openroamingWbaClientKey"] = state?.openroamingWbaClientKey;
             resourceInputs["orgId"] = state?.orgId;
             resourceInputs["roleAttrExtraction"] = state?.roleAttrExtraction;
             resourceInputs["roleAttrFrom"] = state?.roleAttrFrom;
@@ -176,12 +194,17 @@ export class Sso extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["nameidFormat"] = args?.nameidFormat;
             resourceInputs["oauthProviderDomain"] = args?.oauthProviderDomain;
+            resourceInputs["openroamingSsids"] = args?.openroamingSsids;
+            resourceInputs["openroamingWbaClientCert"] = args?.openroamingWbaClientCert ? pulumi.secret(args.openroamingWbaClientCert) : undefined;
+            resourceInputs["openroamingWbaClientKey"] = args?.openroamingWbaClientKey ? pulumi.secret(args.openroamingWbaClientKey) : undefined;
             resourceInputs["orgId"] = args?.orgId;
             resourceInputs["roleAttrExtraction"] = args?.roleAttrExtraction;
             resourceInputs["roleAttrFrom"] = args?.roleAttrFrom;
             resourceInputs["domain"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["openroamingWbaClientCert", "openroamingWbaClientKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Sso.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -225,7 +248,7 @@ export interface SsoState {
      */
     issuer?: pulumi.Input<string | undefined>;
     /**
-     * Name
+     * Display name of the SSO configuration
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -233,9 +256,24 @@ export interface SsoState {
      */
     nameidFormat?: pulumi.Input<string | undefined>;
     /**
-     * If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+     * Provider domain for Okta OAuth SSO when `oauthType`==`okta`
      */
     oauthProviderDomain?: pulumi.Input<string | undefined>;
+    /**
+     * SSIDs that support OpenRoaming, used when `idpType`==`openroaming`
+     */
+    openroamingSsids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+     */
+    openroamingWbaClientCert?: pulumi.Input<string | undefined>;
+    /**
+     * Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+     */
+    openroamingWbaClientKey?: pulumi.Input<string | undefined>;
+    /**
+     * Owning organization identifier for this SSO configuration
+     */
     orgId?: pulumi.Input<string | undefined>;
     /**
      * custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
@@ -280,7 +318,7 @@ export interface SsoArgs {
      */
     issuer: pulumi.Input<string>;
     /**
-     * Name
+     * Display name of the SSO configuration
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -288,9 +326,24 @@ export interface SsoArgs {
      */
     nameidFormat?: pulumi.Input<string | undefined>;
     /**
-     * If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+     * Provider domain for Okta OAuth SSO when `oauthType`==`okta`
      */
     oauthProviderDomain?: pulumi.Input<string | undefined>;
+    /**
+     * SSIDs that support OpenRoaming, used when `idpType`==`openroaming`
+     */
+    openroamingSsids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+     */
+    openroamingWbaClientCert?: pulumi.Input<string | undefined>;
+    /**
+     * Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+     */
+    openroamingWbaClientKey?: pulumi.Input<string | undefined>;
+    /**
+     * Owning organization identifier for this SSO configuration
+     */
     orgId: pulumi.Input<string>;
     /**
      * custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>

@@ -17,7 +17,15 @@ public final class WlanDynamicPsk {
      * 
      */
     private @Nullable String defaultPsk;
+    /**
+     * @return Default VLAN ID used when dynamic PSK lookup does not return a VLAN
+     * 
+     */
     private @Nullable String defaultVlanId;
+    /**
+     * @return Whether dynamic PSK is enabled for this WLAN
+     * 
+     */
     private @Nullable Boolean enabled;
     /**
      * @return When 11r is enabled, we&#39;ll try to use the cached PMK, this can be disabled. `false` means auto
@@ -25,7 +33,7 @@ public final class WlanDynamicPsk {
      */
     private @Nullable Boolean forceLookup;
     /**
-     * @return enum: `cloudPsks`, `radius`
+     * @return Origin used to retrieve per-user PSKs
      * 
      */
     private @Nullable String source;
@@ -38,9 +46,17 @@ public final class WlanDynamicPsk {
     public Optional<String> defaultPsk() {
         return Optional.ofNullable(this.defaultPsk);
     }
+    /**
+     * @return Default VLAN ID used when dynamic PSK lookup does not return a VLAN
+     * 
+     */
     public Optional<String> defaultVlanId() {
         return Optional.ofNullable(this.defaultVlanId);
     }
+    /**
+     * @return Whether dynamic PSK is enabled for this WLAN
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -52,7 +68,7 @@ public final class WlanDynamicPsk {
         return Optional.ofNullable(this.forceLookup);
     }
     /**
-     * @return enum: `cloudPsks`, `radius`
+     * @return Origin used to retrieve per-user PSKs
      * 
      */
     public Optional<String> source() {

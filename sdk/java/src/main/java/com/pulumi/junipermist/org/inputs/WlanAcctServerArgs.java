@@ -18,72 +18,104 @@ public final class WlanAcctServerArgs extends com.pulumi.resources.ResourceArgs 
     public static final WlanAcctServerArgs Empty = new WlanAcctServerArgs();
 
     /**
-     * IP/ hostname of RADIUS server
+     * Address or hostname of the RADIUS accounting server
      * 
      */
     @Import(name="host", required=true)
     private Output<String> host;
 
     /**
-     * @return IP/ hostname of RADIUS server
+     * @return Address or hostname of the RADIUS accounting server
      * 
      */
     public Output<String> host() {
         return this.host;
     }
 
+    /**
+     * Whether RADIUS keywrap is enabled for messages sent to this accounting server
+     * 
+     */
     @Import(name="keywrapEnabled")
     private @Nullable Output<Boolean> keywrapEnabled;
 
+    /**
+     * @return Whether RADIUS keywrap is enabled for messages sent to this accounting server
+     * 
+     */
     public Optional<Output<Boolean>> keywrapEnabled() {
         return Optional.ofNullable(this.keywrapEnabled);
     }
 
     /**
-     * enum: `ascii`, `hex`
+     * Encoding format for RADIUS keywrap KEK and MACK values
      * 
      */
     @Import(name="keywrapFormat")
     private @Nullable Output<String> keywrapFormat;
 
     /**
-     * @return enum: `ascii`, `hex`
+     * @return Encoding format for RADIUS keywrap KEK and MACK values
      * 
      */
     public Optional<Output<String>> keywrapFormat() {
         return Optional.ofNullable(this.keywrapFormat);
     }
 
+    /**
+     * RADIUS keywrap key encryption key (KEK)
+     * 
+     */
     @Import(name="keywrapKek")
     private @Nullable Output<String> keywrapKek;
 
+    /**
+     * @return RADIUS keywrap key encryption key (KEK)
+     * 
+     */
     public Optional<Output<String>> keywrapKek() {
         return Optional.ofNullable(this.keywrapKek);
     }
 
+    /**
+     * RADIUS keywrap message authentication code key (MACK)
+     * 
+     */
     @Import(name="keywrapMack")
     private @Nullable Output<String> keywrapMack;
 
+    /**
+     * @return RADIUS keywrap message authentication code key (MACK)
+     * 
+     */
     public Optional<Output<String>> keywrapMack() {
         return Optional.ofNullable(this.keywrapMack);
     }
 
+    /**
+     * UDP port used by the RADIUS accounting server
+     * 
+     */
     @Import(name="port")
     private @Nullable Output<String> port;
 
+    /**
+     * @return UDP port used by the RADIUS accounting server
+     * 
+     */
     public Optional<Output<String>> port() {
         return Optional.ofNullable(this.port);
     }
 
     /**
-     * Secret of RADIUS server
+     * Shared secret used with this RADIUS accounting server
      * 
      */
     @Import(name="secret", required=true)
     private Output<String> secret;
 
     /**
-     * @return Secret of RADIUS server
+     * @return Shared secret used with this RADIUS accounting server
      * 
      */
     public Output<String> secret() {
@@ -121,7 +153,7 @@ public final class WlanAcctServerArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param host IP/ hostname of RADIUS server
+         * @param host Address or hostname of the RADIUS accounting server
          * 
          * @return builder
          * 
@@ -132,7 +164,7 @@ public final class WlanAcctServerArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param host IP/ hostname of RADIUS server
+         * @param host Address or hostname of the RADIUS accounting server
          * 
          * @return builder
          * 
@@ -141,17 +173,29 @@ public final class WlanAcctServerArgs extends com.pulumi.resources.ResourceArgs 
             return host(Output.of(host));
         }
 
+        /**
+         * @param keywrapEnabled Whether RADIUS keywrap is enabled for messages sent to this accounting server
+         * 
+         * @return builder
+         * 
+         */
         public Builder keywrapEnabled(@Nullable Output<Boolean> keywrapEnabled) {
             $.keywrapEnabled = keywrapEnabled;
             return this;
         }
 
+        /**
+         * @param keywrapEnabled Whether RADIUS keywrap is enabled for messages sent to this accounting server
+         * 
+         * @return builder
+         * 
+         */
         public Builder keywrapEnabled(Boolean keywrapEnabled) {
             return keywrapEnabled(Output.of(keywrapEnabled));
         }
 
         /**
-         * @param keywrapFormat enum: `ascii`, `hex`
+         * @param keywrapFormat Encoding format for RADIUS keywrap KEK and MACK values
          * 
          * @return builder
          * 
@@ -162,7 +206,7 @@ public final class WlanAcctServerArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param keywrapFormat enum: `ascii`, `hex`
+         * @param keywrapFormat Encoding format for RADIUS keywrap KEK and MACK values
          * 
          * @return builder
          * 
@@ -171,35 +215,71 @@ public final class WlanAcctServerArgs extends com.pulumi.resources.ResourceArgs 
             return keywrapFormat(Output.of(keywrapFormat));
         }
 
+        /**
+         * @param keywrapKek RADIUS keywrap key encryption key (KEK)
+         * 
+         * @return builder
+         * 
+         */
         public Builder keywrapKek(@Nullable Output<String> keywrapKek) {
             $.keywrapKek = keywrapKek;
             return this;
         }
 
+        /**
+         * @param keywrapKek RADIUS keywrap key encryption key (KEK)
+         * 
+         * @return builder
+         * 
+         */
         public Builder keywrapKek(String keywrapKek) {
             return keywrapKek(Output.of(keywrapKek));
         }
 
+        /**
+         * @param keywrapMack RADIUS keywrap message authentication code key (MACK)
+         * 
+         * @return builder
+         * 
+         */
         public Builder keywrapMack(@Nullable Output<String> keywrapMack) {
             $.keywrapMack = keywrapMack;
             return this;
         }
 
+        /**
+         * @param keywrapMack RADIUS keywrap message authentication code key (MACK)
+         * 
+         * @return builder
+         * 
+         */
         public Builder keywrapMack(String keywrapMack) {
             return keywrapMack(Output.of(keywrapMack));
         }
 
+        /**
+         * @param port UDP port used by the RADIUS accounting server
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(@Nullable Output<String> port) {
             $.port = port;
             return this;
         }
 
+        /**
+         * @param port UDP port used by the RADIUS accounting server
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(String port) {
             return port(Output.of(port));
         }
 
         /**
-         * @param secret Secret of RADIUS server
+         * @param secret Shared secret used with this RADIUS accounting server
          * 
          * @return builder
          * 
@@ -210,7 +290,7 @@ public final class WlanAcctServerArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param secret Secret of RADIUS server
+         * @param secret Shared secret used with this RADIUS accounting server
          * 
          * @return builder
          * 

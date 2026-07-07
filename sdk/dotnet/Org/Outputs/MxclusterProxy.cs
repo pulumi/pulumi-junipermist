@@ -13,7 +13,13 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class MxclusterProxy
     {
+        /// <summary>
+        /// Whether this proxy configuration is disabled
+        /// </summary>
         public readonly bool? Disabled;
+        /// <summary>
+        /// Proxy URL used to reach Mist
+        /// </summary>
         public readonly string? Url;
 
         [OutputConstructor]

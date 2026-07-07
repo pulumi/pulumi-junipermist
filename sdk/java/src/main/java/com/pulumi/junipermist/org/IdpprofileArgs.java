@@ -19,37 +19,61 @@ public final class IdpprofileArgs extends com.pulumi.resources.ResourceArgs {
     public static final IdpprofileArgs Empty = new IdpprofileArgs();
 
     /**
-     * enum: `critical`, `standard`, `strict`
+     * Built-in IDP baseline profile inherited before applying overwrites
      * 
      */
     @Import(name="baseProfile", required=true)
     private Output<String> baseProfile;
 
     /**
-     * @return enum: `critical`, `standard`, `strict`
+     * @return Built-in IDP baseline profile inherited before applying overwrites
      * 
      */
     public Output<String> baseProfile() {
         return this.baseProfile;
     }
 
+    /**
+     * Display name of the IDP profile
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Display name of the IDP profile
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Owning organization for the IDP profile
+     * 
+     */
     @Import(name="orgId", required=true)
     private Output<String> orgId;
 
+    /**
+     * @return Owning organization for the IDP profile
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }
 
+    /**
+     * IDP signature override rules applied on top of the base profile
+     * 
+     */
     @Import(name="overwrites")
     private @Nullable Output<List<IdpprofileOverwriteArgs>> overwrites;
 
+    /**
+     * @return IDP signature override rules applied on top of the base profile
+     * 
+     */
     public Optional<Output<List<IdpprofileOverwriteArgs>>> overwrites() {
         return Optional.ofNullable(this.overwrites);
     }
@@ -82,7 +106,7 @@ public final class IdpprofileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param baseProfile enum: `critical`, `standard`, `strict`
+         * @param baseProfile Built-in IDP baseline profile inherited before applying overwrites
          * 
          * @return builder
          * 
@@ -93,7 +117,7 @@ public final class IdpprofileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param baseProfile enum: `critical`, `standard`, `strict`
+         * @param baseProfile Built-in IDP baseline profile inherited before applying overwrites
          * 
          * @return builder
          * 
@@ -102,33 +126,75 @@ public final class IdpprofileArgs extends com.pulumi.resources.ResourceArgs {
             return baseProfile(Output.of(baseProfile));
         }
 
+        /**
+         * @param name Display name of the IDP profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Display name of the IDP profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param orgId Owning organization for the IDP profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param orgId Owning organization for the IDP profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }
 
+        /**
+         * @param overwrites IDP signature override rules applied on top of the base profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder overwrites(@Nullable Output<List<IdpprofileOverwriteArgs>> overwrites) {
             $.overwrites = overwrites;
             return this;
         }
 
+        /**
+         * @param overwrites IDP signature override rules applied on top of the base profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder overwrites(List<IdpprofileOverwriteArgs> overwrites) {
             return overwrites(Output.of(overwrites));
         }
 
+        /**
+         * @param overwrites IDP signature override rules applied on top of the base profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder overwrites(IdpprofileOverwriteArgs... overwrites) {
             return overwrites(List.of(overwrites));
         }

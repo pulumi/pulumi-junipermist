@@ -13,16 +13,25 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class WlanHotspot20
     {
+        /// <summary>
+        /// Advertised domain names for Hotspot 2.0 clients
+        /// </summary>
         public readonly ImmutableArray<string> DomainNames;
         /// <summary>
         /// Whether to enable hotspot 2.0 config
         /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// NAI realms advertised for Hotspot 2.0 authentication
+        /// </summary>
         public readonly ImmutableArray<string> NaiRealms;
         /// <summary>
-        /// List of operators to support
+        /// Operator profiles supported by this Hotspot 2.0 configuration
         /// </summary>
         public readonly ImmutableArray<string> Operators;
+        /// <summary>
+        /// Roaming Consortium Organization Identifiers advertised for Hotspot 2.0
+        /// </summary>
         public readonly ImmutableArray<string> Rcois;
         /// <summary>
         /// Venue name, default is site name

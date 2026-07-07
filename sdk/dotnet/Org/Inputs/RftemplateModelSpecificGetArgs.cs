@@ -12,41 +12,50 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class RftemplateModelSpecificGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Model-specific external antenna gain for the 2.4 GHz radio
+        /// </summary>
         [Input("antGain24")]
         public Input<int>? AntGain24 { get; set; }
 
+        /// <summary>
+        /// Model-specific external antenna gain for the 5 GHz radio
+        /// </summary>
         [Input("antGain5")]
         public Input<int>? AntGain5 { get; set; }
 
+        /// <summary>
+        /// Model-specific external antenna gain for the 6 GHz radio
+        /// </summary>
         [Input("antGain6")]
         public Input<int>? AntGain6 { get; set; }
 
         /// <summary>
-        /// Radio Band AP settings
+        /// Model-specific 2.4 GHz radio settings that override RF template defaults
         /// </summary>
         [Input("band24")]
         public Input<Inputs.RftemplateModelSpecificBand24GetArgs>? Band24 { get; set; }
 
         /// <summary>
-        /// enum: `24`, `5`, `6`, `Auto`
+        /// Model-specific radio usage mode for the 2.4 GHz-capable radio
         /// </summary>
         [Input("band24Usage")]
         public Input<string>? Band24Usage { get; set; }
 
         /// <summary>
-        /// Radio Band AP settings
+        /// Model-specific 5 GHz radio settings that override RF template defaults
         /// </summary>
         [Input("band5")]
         public Input<Inputs.RftemplateModelSpecificBand5GetArgs>? Band5 { get; set; }
 
         /// <summary>
-        /// Radio Band AP settings
+        /// Model-specific 5 GHz settings used when the 2.4 GHz radio operates in 5 GHz mode
         /// </summary>
         [Input("band5On24Radio")]
         public Input<Inputs.RftemplateModelSpecificBand5On24RadioGetArgs>? Band5On24Radio { get; set; }
 
         /// <summary>
-        /// Radio Band AP settings
+        /// Model-specific 6 GHz radio settings that override RF template defaults
         /// </summary>
         [Input("band6")]
         public Input<Inputs.RftemplateModelSpecificBand6GetArgs>? Band6 { get; set; }

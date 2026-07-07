@@ -13,30 +13,40 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewaytemplateIdpProfilesOverwrite {
     /**
-     * @return enum:
-     *   * alert (default)
-     *   * drop: silently dropping packets
-     *   * close: notify client/server to close connection
+     * @return Enforcement action applied when this overwrite rule matches
      * 
      */
     private @Nullable String action;
+    /**
+     * @return Criteria that select signatures for this overwrite rule
+     * 
+     */
     private @Nullable GatewaytemplateIdpProfilesOverwriteMatching matching;
+    /**
+     * @return Display name for this IDP profile overwrite rule
+     * 
+     */
     private @Nullable String name;
 
     private GatewaytemplateIdpProfilesOverwrite() {}
     /**
-     * @return enum:
-     *   * alert (default)
-     *   * drop: silently dropping packets
-     *   * close: notify client/server to close connection
+     * @return Enforcement action applied when this overwrite rule matches
      * 
      */
     public Optional<String> action() {
         return Optional.ofNullable(this.action);
     }
+    /**
+     * @return Criteria that select signatures for this overwrite rule
+     * 
+     */
     public Optional<GatewaytemplateIdpProfilesOverwriteMatching> matching() {
         return Optional.ofNullable(this.matching);
     }
+    /**
+     * @return Display name for this IDP profile overwrite rule
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }

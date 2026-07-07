@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SwitchSnmpConfigV3ConfigUsm {
     /**
-     * @return enum: `localEngine`, `remoteEngine`
+     * @return SNMP engine type used for this USM configuration
      * 
      */
     private String engineType;
@@ -24,11 +24,15 @@ public final class SwitchSnmpConfigV3ConfigUsm {
      * 
      */
     private @Nullable String remoteEngineId;
+    /**
+     * @return SNMPv3 USM users for this engine
+     * 
+     */
     private @Nullable List<SwitchSnmpConfigV3ConfigUsmUser> users;
 
     private SwitchSnmpConfigV3ConfigUsm() {}
     /**
-     * @return enum: `localEngine`, `remoteEngine`
+     * @return SNMP engine type used for this USM configuration
      * 
      */
     public String engineType() {
@@ -41,6 +45,10 @@ public final class SwitchSnmpConfigV3ConfigUsm {
     public Optional<String> remoteEngineId() {
         return Optional.ofNullable(this.remoteEngineId);
     }
+    /**
+     * @return SNMPv3 USM users for this engine
+     * 
+     */
     public List<SwitchSnmpConfigV3ConfigUsmUser> users() {
         return this.users == null ? List.of() : this.users;
     }

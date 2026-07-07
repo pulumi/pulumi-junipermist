@@ -14,20 +14,28 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RftemplateBand24 {
+    /**
+     * @return Whether RRM may disable the 2.4 GHz radio when optimizing RF settings
+     * 
+     */
     private @Nullable Boolean allowRrmDisable;
+    /**
+     * @return External antenna gain for the 2.4 GHz radio
+     * 
+     */
     private @Nullable Integer antGain;
     /**
-     * @return enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
+     * @return Radio chain mode for the 2.4 GHz radio
      * 
      */
     private @Nullable String antennaMode;
     /**
-     * @return channel width for the 2.4GHz band. enum: `0`(disabled, response only), `20`, `40`
+     * @return Channel width configured for the 2.4 GHz radio
      * 
      */
     private @Nullable Integer bandwidth;
     /**
-     * @return For RFTemplates. List of channels, null or empty array means auto
+     * @return Allowed channel list for the 2.4 GHz radio; null or an empty array uses automatic selection
      * 
      */
     private @Nullable List<Integer> channels;
@@ -37,49 +45,57 @@ public final class RftemplateBand24 {
      */
     private @Nullable Boolean disabled;
     /**
-     * @return tx power of the radio, null or 0 means auto, when power*min=power*max=power=0 to indicate power=0
+     * @return Radio Tx power, in dBm. Can be an integer 0-25 for static power configuration, or `null` or unset for auto power mode
      * 
      */
     private @Nullable Integer power;
     /**
-     * @return When power=0, max tx power to use, HW-specific values will be used if not set
+     * @return When power=null/unset, max tx power to use, HW-specific values will be used if not set
      * 
      */
     private @Nullable Integer powerMax;
     /**
-     * @return When power=0, min tx power to use, HW-specific values will be used if not set
+     * @return When power=null/unset, min tx power to use, HW-specific values will be used if not set
      * 
      */
     private @Nullable Integer powerMin;
     /**
-     * @return enum: `auto`, `long`, `short`
+     * @return 802.11 preamble mode used by the 2.4 GHz radio
      * 
      */
     private @Nullable String preamble;
 
     private RftemplateBand24() {}
+    /**
+     * @return Whether RRM may disable the 2.4 GHz radio when optimizing RF settings
+     * 
+     */
     public Optional<Boolean> allowRrmDisable() {
         return Optional.ofNullable(this.allowRrmDisable);
     }
+    /**
+     * @return External antenna gain for the 2.4 GHz radio
+     * 
+     */
     public Optional<Integer> antGain() {
         return Optional.ofNullable(this.antGain);
     }
     /**
-     * @return enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
+     * @return Radio chain mode for the 2.4 GHz radio
      * 
      */
     public Optional<String> antennaMode() {
         return Optional.ofNullable(this.antennaMode);
     }
     /**
-     * @return channel width for the 2.4GHz band. enum: `0`(disabled, response only), `20`, `40`
+     * @return Channel width configured for the 2.4 GHz radio
      * 
      */
     public Optional<Integer> bandwidth() {
         return Optional.ofNullable(this.bandwidth);
     }
     /**
-     * @return For RFTemplates. List of channels, null or empty array means auto
+     * @return Allowed channel list for the 2.4 GHz radio; null or an empty array uses automatic selection
      * 
      */
     public List<Integer> channels() {
@@ -93,28 +109,28 @@ public final class RftemplateBand24 {
         return Optional.ofNullable(this.disabled);
     }
     /**
-     * @return tx power of the radio, null or 0 means auto, when power*min=power*max=power=0 to indicate power=0
+     * @return Radio Tx power, in dBm. Can be an integer 0-25 for static power configuration, or `null` or unset for auto power mode
      * 
      */
     public Optional<Integer> power() {
         return Optional.ofNullable(this.power);
     }
     /**
-     * @return When power=0, max tx power to use, HW-specific values will be used if not set
+     * @return When power=null/unset, max tx power to use, HW-specific values will be used if not set
      * 
      */
     public Optional<Integer> powerMax() {
         return Optional.ofNullable(this.powerMax);
     }
     /**
-     * @return When power=0, min tx power to use, HW-specific values will be used if not set
+     * @return When power=null/unset, min tx power to use, HW-specific values will be used if not set
      * 
      */
     public Optional<Integer> powerMin() {
         return Optional.ofNullable(this.powerMin);
     }
     /**
-     * @return enum: `auto`, `long`, `short`
+     * @return 802.11 preamble mode used by the 2.4 GHz radio
      * 
      */
     public Optional<String> preamble() {

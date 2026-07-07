@@ -18,36 +18,44 @@ public final class GatewaytemplatePortConfigTrafficShapingArgs extends com.pulum
     public static final GatewaytemplatePortConfigTrafficShapingArgs Empty = new GatewaytemplatePortConfigTrafficShapingArgs();
 
     /**
-     * percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
+     * Traffic class bandwidth percentages for high, medium, low, and best-effort queues
      * 
      */
     @Import(name="classPercentages")
     private @Nullable Output<List<Integer>> classPercentages;
 
     /**
-     * @return percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
+     * @return Traffic class bandwidth percentages for high, medium, low, and best-effort queues
      * 
      */
     public Optional<Output<List<Integer>>> classPercentages() {
         return Optional.ofNullable(this.classPercentages);
     }
 
+    /**
+     * Whether traffic shaping is enabled
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether traffic shaping is enabled
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
     /**
-     * Interface Transmit Cap in kbps
+     * Maximum transmit bandwidth for the interface, in Kbps
      * 
      */
     @Import(name="maxTxKbps")
     private @Nullable Output<Integer> maxTxKbps;
 
     /**
-     * @return Interface Transmit Cap in kbps
+     * @return Maximum transmit bandwidth for the interface, in Kbps
      * 
      */
     public Optional<Output<Integer>> maxTxKbps() {
@@ -81,7 +89,7 @@ public final class GatewaytemplatePortConfigTrafficShapingArgs extends com.pulum
         }
 
         /**
-         * @param classPercentages percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
+         * @param classPercentages Traffic class bandwidth percentages for high, medium, low, and best-effort queues
          * 
          * @return builder
          * 
@@ -92,7 +100,7 @@ public final class GatewaytemplatePortConfigTrafficShapingArgs extends com.pulum
         }
 
         /**
-         * @param classPercentages percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
+         * @param classPercentages Traffic class bandwidth percentages for high, medium, low, and best-effort queues
          * 
          * @return builder
          * 
@@ -102,7 +110,7 @@ public final class GatewaytemplatePortConfigTrafficShapingArgs extends com.pulum
         }
 
         /**
-         * @param classPercentages percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
+         * @param classPercentages Traffic class bandwidth percentages for high, medium, low, and best-effort queues
          * 
          * @return builder
          * 
@@ -111,17 +119,29 @@ public final class GatewaytemplatePortConfigTrafficShapingArgs extends com.pulum
             return classPercentages(List.of(classPercentages));
         }
 
+        /**
+         * @param enabled Whether traffic shaping is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether traffic shaping is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
         /**
-         * @param maxTxKbps Interface Transmit Cap in kbps
+         * @param maxTxKbps Maximum transmit bandwidth for the interface, in Kbps
          * 
          * @return builder
          * 
@@ -132,7 +152,7 @@ public final class GatewaytemplatePortConfigTrafficShapingArgs extends com.pulum
         }
 
         /**
-         * @param maxTxKbps Interface Transmit Cap in kbps
+         * @param maxTxKbps Maximum transmit bandwidth for the interface, in Kbps
          * 
          * @return builder
          * 

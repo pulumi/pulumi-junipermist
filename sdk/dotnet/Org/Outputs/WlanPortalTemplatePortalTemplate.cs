@@ -13,9 +13,12 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class WlanPortalTemplatePortalTemplate
     {
+        /// <summary>
+        /// Link text for using an alternate email address during access-code login
+        /// </summary>
         public readonly string? AccessCodeAlternateEmail;
         /// <summary>
-        /// defines alignment on portal. enum: `Center`, `Left`, `Right`
+        /// Text and content alignment used by the guest portal template
         /// </summary>
         public readonly string? Alignment;
         /// <summary>
@@ -54,16 +57,25 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// Label for Sponsor auth button
         /// </summary>
         public readonly string? AuthButtonSponsor;
+        /// <summary>
+        /// Heading text displayed above portal authentication options
+        /// </summary>
         public readonly string? AuthLabel;
         /// <summary>
         /// Label of the link to go back to /logon
         /// </summary>
         public readonly string? BackLink;
         /// <summary>
-        /// Portal main color
+        /// Primary color used by the portal template
         /// </summary>
         public readonly string? Color;
+        /// <summary>
+        /// Darker accent color used by the portal template
+        /// </summary>
         public readonly string? ColorDark;
+        /// <summary>
+        /// Lighter accent color used by the portal template
+        /// </summary>
         public readonly string? ColorLight;
         /// <summary>
         /// Whether company field is required
@@ -74,7 +86,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? CompanyError;
         /// <summary>
-        /// Label of company field
+        /// Label displayed for the company input field
         /// </summary>
         public readonly string? CompanyLabel;
         /// <summary>
@@ -89,21 +101,45 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// Label for cancel confirmation code submission using email auth
         /// </summary>
         public readonly string? EmailCancel;
+        /// <summary>
+        /// Link text for requesting help when the email access code was not received
+        /// </summary>
         public readonly string? EmailCodeCancel;
+        /// <summary>
+        /// Error message shown when the alternate email address for access-code delivery is invalid
+        /// </summary>
         public readonly string? EmailCodeError;
+        /// <summary>
+        /// Label for the email access-code input field
+        /// </summary>
         public readonly string? EmailCodeFieldLabel;
+        /// <summary>
+        /// Instructional text shown before entering the email access code
+        /// </summary>
         public readonly string? EmailCodeMessage;
+        /// <summary>
+        /// Button label for submitting the email access code
+        /// </summary>
         public readonly string? EmailCodeSubmit;
+        /// <summary>
+        /// Title shown on the email access-code entry page
+        /// </summary>
         public readonly string? EmailCodeTitle;
         /// <summary>
         /// Error message when email not provided
         /// </summary>
         public readonly string? EmailError;
+        /// <summary>
+        /// Label for the email address input field
+        /// </summary>
         public readonly string? EmailFieldLabel;
         /// <summary>
-        /// Label of email field
+        /// Label displayed for the email input field
         /// </summary>
         public readonly string? EmailLabel;
+        /// <summary>
+        /// Instructional text explaining email access-code delivery
+        /// </summary>
         public readonly string? EmailMessage;
         /// <summary>
         /// Label for confirmation code submit button using email auth
@@ -122,11 +158,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Field1error;
         /// <summary>
-        /// Label of field1
+        /// Label for custom field 1 input
         /// </summary>
         public readonly string? Field1label;
         /// <summary>
-        /// Whether field1 is required field
+        /// Whether custom field 1 must be provided when the field is shown
         /// </summary>
         public readonly bool? Field1required;
         /// <summary>
@@ -138,11 +174,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Field2error;
         /// <summary>
-        /// Label of field2
+        /// Label for custom field 2 input
         /// </summary>
         public readonly string? Field2label;
         /// <summary>
-        /// Whether field2 is required field
+        /// Whether custom field 2 must be provided when the field is shown
         /// </summary>
         public readonly bool? Field2required;
         /// <summary>
@@ -154,11 +190,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Field3error;
         /// <summary>
-        /// Label of field3
+        /// Label for custom field 3 input
         /// </summary>
         public readonly string? Field3label;
         /// <summary>
-        /// Whether field3 is required field
+        /// Whether custom field 3 must be provided when the field is shown
         /// </summary>
         public readonly bool? Field3required;
         /// <summary>
@@ -170,11 +206,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Field4error;
         /// <summary>
-        /// Label of field4
+        /// Label for custom field 4 input
         /// </summary>
         public readonly string? Field4label;
         /// <summary>
-        /// Whether field4 is required field
+        /// Whether custom field 4 must be provided when the field is shown
         /// </summary>
         public readonly bool? Field4required;
         /// <summary>
@@ -202,10 +238,16 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? MarketingPolicyOptInLabel;
         /// <summary>
-        /// marketing policy text
+        /// Text of the marketing policy opt-in content
         /// </summary>
         public readonly string? MarketingPolicyOptInText;
+        /// <summary>
+        /// Main message displayed on the guest portal sign-in page
+        /// </summary>
         public readonly string? Message;
+        /// <summary>
+        /// Whether the portal presents multiple authentication methods
+        /// </summary>
         public readonly bool? MultiAuth;
         /// <summary>
         /// Whether name field is required
@@ -216,7 +258,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? NameError;
         /// <summary>
-        /// Label of name field
+        /// Label displayed for the name input field
         /// </summary>
         public readonly string? NameLabel;
         /// <summary>
@@ -231,6 +273,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// Label for Do Not Store My Personal Information
         /// </summary>
         public readonly string? OptoutLabel;
+        /// <summary>
+        /// Browser or page title shown for the guest portal
+        /// </summary>
         public readonly string? PageTitle;
         /// <summary>
         /// Label for the Passphrase cancel button
@@ -241,9 +286,12 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? PassphraseError;
         /// <summary>
-        /// Passphrase
+        /// Label for the passphrase input field
         /// </summary>
         public readonly string? PassphraseLabel;
+        /// <summary>
+        /// Instructional text shown on the passphrase sign-in page
+        /// </summary>
         public readonly string? PassphraseMessage;
         /// <summary>
         /// Label for the Passphrase submit button
@@ -278,15 +326,24 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? PrivacyPolicyText;
         /// <summary>
-        /// Label to denote required field
+        /// Text used to mark a form field as required
         /// </summary>
         public readonly string? RequiredFieldLabel;
+        /// <summary>
+        /// Whether the portal template uses a responsive layout
+        /// </summary>
         public readonly bool? ResponsiveLayout;
         /// <summary>
         /// Label of the button to signin
         /// </summary>
         public readonly string? SignInLabel;
+        /// <summary>
+        /// Default option text shown in the SMS carrier selector
+        /// </summary>
         public readonly string? SmsCarrierDefault;
+        /// <summary>
+        /// Error message shown when no mobile carrier is selected
+        /// </summary>
         public readonly string? SmsCarrierError;
         /// <summary>
         /// Label for mobile carrier drop-down list
@@ -300,19 +357,37 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// Error message when confirmation code is invalid
         /// </summary>
         public readonly string? SmsCodeError;
+        /// <summary>
+        /// Label for the SMS confirmation-code input field
+        /// </summary>
         public readonly string? SmsCodeFieldLabel;
+        /// <summary>
+        /// Instructional text shown before entering the SMS access code
+        /// </summary>
         public readonly string? SmsCodeMessage;
         /// <summary>
         /// Label for confirmation code submit button
         /// </summary>
         public readonly string? SmsCodeSubmit;
+        /// <summary>
+        /// Title shown on the SMS access-code entry page
+        /// </summary>
         public readonly string? SmsCodeTitle;
+        /// <summary>
+        /// Label for the SMS country-code input field
+        /// </summary>
         public readonly string? SmsCountryFieldLabel;
+        /// <summary>
+        /// Example country code format shown for SMS authentication
+        /// </summary>
         public readonly string? SmsCountryFormat;
         /// <summary>
         /// Label for checkbox to specify that the user has access code
         /// </summary>
         public readonly string? SmsHaveAccessCode;
+        /// <summary>
+        /// Whether the SMS portal flow uses Twilio-specific behavior
+        /// </summary>
         public readonly bool? SmsIsTwilio;
         /// <summary>
         /// Format of access code sms message. {{code}} and {{duration}} are placeholders and should be retained as is.
@@ -322,12 +397,21 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// Label for canceling mobile details for SMS auth
         /// </summary>
         public readonly string? SmsNumberCancel;
+        /// <summary>
+        /// Error message shown when the mobile number is invalid
+        /// </summary>
         public readonly string? SmsNumberError;
         /// <summary>
         /// Label for field to provide mobile number
         /// </summary>
         public readonly string? SmsNumberFieldLabel;
+        /// <summary>
+        /// Example mobile number format shown for SMS authentication
+        /// </summary>
         public readonly string? SmsNumberFormat;
+        /// <summary>
+        /// Instructional text explaining SMS access-code delivery
+        /// </summary>
         public readonly string? SmsNumberMessage;
         /// <summary>
         /// Label for submit button for code generation
@@ -337,17 +421,29 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// Title for phone number details
         /// </summary>
         public readonly string? SmsNumberTitle;
+        /// <summary>
+        /// Example username format shown for SMS authentication
+        /// </summary>
         public readonly string? SmsUsernameFormat;
         /// <summary>
         /// How long confirmation code should be considered valid (in minutes)
         /// </summary>
         public readonly int? SmsValidityDuration;
+        /// <summary>
+        /// Link text for returning to edit the sponsor request form
+        /// </summary>
         public readonly string? SponsorBackLink;
+        /// <summary>
+        /// Button label for canceling sponsor authentication
+        /// </summary>
         public readonly string? SponsorCancel;
         /// <summary>
         /// Label for Sponsor Email
         /// </summary>
         public readonly string? SponsorEmail;
+        /// <summary>
+        /// Error message shown when the sponsor email address is invalid
+        /// </summary>
         public readonly string? SponsorEmailError;
         /// <summary>
         /// HTML template to replace/override default sponsor email template 
@@ -362,14 +458,29 @@ namespace Pulumi.JuniperMist.Org.Outputs
         ///   * `AuthExpireMinutes`: Renders Wlan-level configured Guest Authorization Expiration time period (in minutes), If not configured then default (1 day in minutes)
         /// </summary>
         public readonly string? SponsorEmailTemplate;
+        /// <summary>
+        /// Status message prefix shown when a sponsor approves the request
+        /// </summary>
         public readonly string? SponsorInfoApproved;
+        /// <summary>
+        /// Status message prefix shown when a sponsor denies the request
+        /// </summary>
         public readonly string? SponsorInfoDenied;
+        /// <summary>
+        /// Status message prefix shown after a sponsor notification is sent
+        /// </summary>
         public readonly string? SponsorInfoPending;
         /// <summary>
         /// Label for Sponsor Name
         /// </summary>
         public readonly string? SponsorName;
+        /// <summary>
+        /// Error message shown when the sponsor name is missing
+        /// </summary>
         public readonly string? SponsorNameError;
+        /// <summary>
+        /// Additional status text shown while sponsor approval is pending
+        /// </summary>
         public readonly string? SponsorNotePending;
         /// <summary>
         /// Submit button label request Wifi Access and notify sponsor about guest request
@@ -391,8 +502,17 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// Submit button label to notify sponsor about guest request
         /// </summary>
         public readonly string? SponsorSubmit;
+        /// <summary>
+        /// Error message shown when no sponsor is selected
+        /// </summary>
         public readonly string? SponsorsError;
+        /// <summary>
+        /// Label for the sponsor selection field
+        /// </summary>
         public readonly string? SponsorsFieldLabel;
+        /// <summary>
+        /// Whether the portal requires Terms of Service acceptance
+        /// </summary>
         public readonly bool? Tos;
         /// <summary>
         /// Prefix of the label of the link to go to tos

@@ -31,7 +31,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<int>? Timeout { get; set; }
 
         /// <summary>
-        /// enum: `Http`, `Icmp`
+        /// Protocol used by the custom IPsec tunnel health probe
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

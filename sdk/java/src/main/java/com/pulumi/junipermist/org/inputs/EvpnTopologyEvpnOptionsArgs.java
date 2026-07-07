@@ -125,9 +125,17 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.enableInbandZtp);
     }
 
+    /**
+     * EVPN overlay BGP settings for the topology
+     * 
+     */
     @Import(name="overlay")
     private @Nullable Output<EvpnTopologyEvpnOptionsOverlayArgs> overlay;
 
+    /**
+     * @return EVPN overlay BGP settings for the topology
+     * 
+     */
     public Optional<Output<EvpnTopologyEvpnOptionsOverlayArgs>> overlay() {
         return Optional.ofNullable(this.overlay);
     }
@@ -163,36 +171,44 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * optional, where virtual-gateway should reside. enum: `core`, `distribution`, `edge`
+     * Topology tier where EVPN virtual gateway routing is placed
      * 
      */
     @Import(name="routedAt")
     private @Nullable Output<String> routedAt;
 
     /**
-     * @return optional, where virtual-gateway should reside. enum: `core`, `distribution`, `edge`
+     * @return Topology tier where EVPN virtual gateway routing is placed
      * 
      */
     public Optional<Output<String>> routedAt() {
         return Optional.ofNullable(this.routedAt);
     }
 
+    /**
+     * EVPN underlay BGP and subnet settings for the topology
+     * 
+     */
     @Import(name="underlay")
     private @Nullable Output<EvpnTopologyEvpnOptionsUnderlayArgs> underlay;
 
+    /**
+     * @return EVPN underlay BGP and subnet settings for the topology
+     * 
+     */
     public Optional<Output<EvpnTopologyEvpnOptionsUnderlayArgs>> underlay() {
         return Optional.ofNullable(this.underlay);
     }
 
     /**
-     * Optional, for EX9200 only to segregate virtual-switches
+     * Virtual-switch instance mappings used to segregate EVPN networks
      * 
      */
     @Import(name="vsInstances")
     private @Nullable Output<Map<String,EvpnTopologyEvpnOptionsVsInstancesArgs>> vsInstances;
 
     /**
-     * @return Optional, for EX9200 only to segregate virtual-switches
+     * @return Virtual-switch instance mappings used to segregate EVPN networks
      * 
      */
     public Optional<Output<Map<String,EvpnTopologyEvpnOptionsVsInstancesArgs>>> vsInstances() {
@@ -382,11 +398,23 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
             return enableInbandZtp(Output.of(enableInbandZtp));
         }
 
+        /**
+         * @param overlay EVPN overlay BGP settings for the topology
+         * 
+         * @return builder
+         * 
+         */
         public Builder overlay(@Nullable Output<EvpnTopologyEvpnOptionsOverlayArgs> overlay) {
             $.overlay = overlay;
             return this;
         }
 
+        /**
+         * @param overlay EVPN overlay BGP settings for the topology
+         * 
+         * @return builder
+         * 
+         */
         public Builder overlay(EvpnTopologyEvpnOptionsOverlayArgs overlay) {
             return overlay(Output.of(overlay));
         }
@@ -434,7 +462,7 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param routedAt optional, where virtual-gateway should reside. enum: `core`, `distribution`, `edge`
+         * @param routedAt Topology tier where EVPN virtual gateway routing is placed
          * 
          * @return builder
          * 
@@ -445,7 +473,7 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param routedAt optional, where virtual-gateway should reside. enum: `core`, `distribution`, `edge`
+         * @param routedAt Topology tier where EVPN virtual gateway routing is placed
          * 
          * @return builder
          * 
@@ -454,17 +482,29 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
             return routedAt(Output.of(routedAt));
         }
 
+        /**
+         * @param underlay EVPN underlay BGP and subnet settings for the topology
+         * 
+         * @return builder
+         * 
+         */
         public Builder underlay(@Nullable Output<EvpnTopologyEvpnOptionsUnderlayArgs> underlay) {
             $.underlay = underlay;
             return this;
         }
 
+        /**
+         * @param underlay EVPN underlay BGP and subnet settings for the topology
+         * 
+         * @return builder
+         * 
+         */
         public Builder underlay(EvpnTopologyEvpnOptionsUnderlayArgs underlay) {
             return underlay(Output.of(underlay));
         }
 
         /**
-         * @param vsInstances Optional, for EX9200 only to segregate virtual-switches
+         * @param vsInstances Virtual-switch instance mappings used to segregate EVPN networks
          * 
          * @return builder
          * 
@@ -475,7 +515,7 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param vsInstances Optional, for EX9200 only to segregate virtual-switches
+         * @param vsInstances Virtual-switch instance mappings used to segregate EVPN networks
          * 
          * @return builder
          * 

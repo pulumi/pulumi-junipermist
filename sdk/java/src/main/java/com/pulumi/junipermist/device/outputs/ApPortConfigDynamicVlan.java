@@ -14,21 +14,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ApPortConfigDynamicVlan {
+    /**
+     * @return Fallback VLAN ID used when RADIUS does not return a dynamic VLAN match
+     * 
+     */
     private @Nullable Integer defaultVlanId;
+    /**
+     * @return Whether dynamic VLAN assignment is enabled for this AP port
+     * 
+     */
     private @Nullable Boolean enabled;
+    /**
+     * @return Mapping mode for interpreting dynamic VLAN attributes returned by RADIUS
+     * 
+     */
     private @Nullable String type;
+    /**
+     * @return Mapping entries for RADIUS-assigned VLAN values on this AP port. For `type`==`airespace-interface-name`, the property key is the Airespace interface name returned by RADIUS (e.g. &#34;guest&#34;), and the value is the corresponding VLAN ID (e.g. 100). For `type`==`standard`, the property key is the VLAN ID number returned by RADIUS, and the value is ignored.
+     * 
+     */
     private @Nullable Map<String,String> vlans;
 
     private ApPortConfigDynamicVlan() {}
+    /**
+     * @return Fallback VLAN ID used when RADIUS does not return a dynamic VLAN match
+     * 
+     */
     public Optional<Integer> defaultVlanId() {
         return Optional.ofNullable(this.defaultVlanId);
     }
+    /**
+     * @return Whether dynamic VLAN assignment is enabled for this AP port
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return Mapping mode for interpreting dynamic VLAN attributes returned by RADIUS
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
+    /**
+     * @return Mapping entries for RADIUS-assigned VLAN values on this AP port. For `type`==`airespace-interface-name`, the property key is the Airespace interface name returned by RADIUS (e.g. &#34;guest&#34;), and the value is the corresponding VLAN ID (e.g. 100). For `type`==`standard`, the property key is the VLAN ID number returned by RADIUS, and the value is ignored.
+     * 
+     */
     public Map<String,String> vlans() {
         return this.vlans == null ? Map.of() : this.vlans;
     }

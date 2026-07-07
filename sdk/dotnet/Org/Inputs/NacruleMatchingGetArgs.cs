@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class NacruleMatchingGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `Cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `Idp`, `Mab`, `eap-peap`
+        /// NAC authentication method that must match the request
         /// </summary>
         [Input("authType")]
         public Input<string>? AuthType { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _families;
 
         /// <summary>
-        /// List of client device families to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed family values
+        /// Client device family values that must match the request
         /// </summary>
         public InputList<string> Families
         {
@@ -34,7 +34,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _mfgs;
 
         /// <summary>
-        /// List of client device models to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed model values
+        /// Client device manufacturer values that must match the request
         /// </summary>
         public InputList<string> Mfgs
         {
@@ -46,7 +46,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _models;
 
         /// <summary>
-        /// List of client device manufacturers to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed mfg values
+        /// Client device model values that must match the request
         /// </summary>
         public InputList<string> Models
         {
@@ -56,6 +56,10 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
         [Input("nactags")]
         private InputList<string>? _nactags;
+
+        /// <summary>
+        /// NAC tag IDs whose match criteria must be satisfied by the request
+        /// </summary>
         public InputList<string> Nactags
         {
             get => _nactags ?? (_nactags = new InputList<string>());
@@ -66,7 +70,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _osTypes;
 
         /// <summary>
-        /// List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed OsType values
+        /// Client OS type values that must match the request
         /// </summary>
         public InputList<string> OsTypes
         {
@@ -76,6 +80,10 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
         [Input("portTypes")]
         private InputList<string>? _portTypes;
+
+        /// <summary>
+        /// Wired or wireless access types that must match the request
+        /// </summary>
         public InputList<string> PortTypes
         {
             get => _portTypes ?? (_portTypes = new InputList<string>());
@@ -86,7 +94,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _siteIds;
 
         /// <summary>
-        /// List of site ids to match
+        /// Site IDs where the rule criteria apply
         /// </summary>
         public InputList<string> SiteIds
         {
@@ -98,7 +106,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _sitegroupIds;
 
         /// <summary>
-        /// List of sitegroup ids to match
+        /// Site group IDs where the rule criteria apply
         /// </summary>
         public InputList<string> SitegroupIds
         {
@@ -110,7 +118,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _vendors;
 
         /// <summary>
-        /// List of vendors to match
+        /// Client device vendor values that must match the request
         /// </summary>
         public InputList<string> Vendors
         {

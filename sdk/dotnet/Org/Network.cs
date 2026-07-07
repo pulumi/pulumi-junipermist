@@ -53,17 +53,26 @@ namespace Pulumi.JuniperMist.Org
         [Output("disallowMistServices")]
         public Output<bool> DisallowMistServices { get; private set; } = null!;
 
+        /// <summary>
+        /// IPv4 gateway address for this network
+        /// </summary>
         [Output("gateway")]
         public Output<string?> Gateway { get; private set; } = null!;
 
+        /// <summary>
+        /// IPv6 gateway address for this network
+        /// </summary>
         [Output("gateway6")]
         public Output<string?> Gateway6 { get; private set; } = null!;
 
+        /// <summary>
+        /// Internal access settings for this network
+        /// </summary>
         [Output("internalAccess")]
         public Output<Outputs.NetworkInternalAccess?> InternalAccess { get; private set; } = null!;
 
         /// <summary>
-        /// Whether this network has direct internet access
+        /// Direct internet access and NAT settings for this network
         /// </summary>
         [Output("internetAccess")]
         public Output<Outputs.NetworkInternetAccess?> InternetAccess { get; private set; } = null!;
@@ -75,40 +84,55 @@ namespace Pulumi.JuniperMist.Org
         public Output<bool?> Isolation { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable multicast support (only PIM-sparse mode is supported)
+        /// Settings for multicast routing on this network
         /// </summary>
         [Output("multicast")]
         public Output<Outputs.NetworkMulticast?> Multicast { get; private set; } = null!;
 
+        /// <summary>
+        /// Display name of the organization network
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Organization that owns this network
+        /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+        /// Other network names this network can route to, for example through BGP, OSPF or static routes
         /// </summary>
         [Output("routedForNetworks")]
         public Output<ImmutableArray<string>> RoutedForNetworks { get; private set; } = null!;
 
+        /// <summary>
+        /// IPv4 subnet CIDR for this network
+        /// </summary>
         [Output("subnet")]
         public Output<string> Subnet { get; private set; } = null!;
 
+        /// <summary>
+        /// IPv6 subnet CIDR for this network
+        /// </summary>
         [Output("subnet6")]
         public Output<string?> Subnet6 { get; private set; } = null!;
 
         /// <summary>
-        /// Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+        /// Tenant address mappings associated with this network
         /// </summary>
         [Output("tenants")]
         public Output<ImmutableDictionary<string, Outputs.NetworkTenants>?> Tenants { get; private set; } = null!;
 
+        /// <summary>
+        /// VLAN ID or variable associated with this network
+        /// </summary>
         [Output("vlanId")]
         public Output<string?> VlanId { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the VPN name. Whether this network can be accessed from vpn
+        /// VPN access settings keyed by VPN name for this network
         /// </summary>
         [Output("vpnAccess")]
         public Output<ImmutableDictionary<string, Outputs.NetworkVpnAccess>?> VpnAccess { get; private set; } = null!;
@@ -166,17 +190,26 @@ namespace Pulumi.JuniperMist.Org
         [Input("disallowMistServices")]
         public Input<bool>? DisallowMistServices { get; set; }
 
+        /// <summary>
+        /// IPv4 gateway address for this network
+        /// </summary>
         [Input("gateway")]
         public Input<string>? Gateway { get; set; }
 
+        /// <summary>
+        /// IPv6 gateway address for this network
+        /// </summary>
         [Input("gateway6")]
         public Input<string>? Gateway6 { get; set; }
 
+        /// <summary>
+        /// Internal access settings for this network
+        /// </summary>
         [Input("internalAccess")]
         public Input<Inputs.NetworkInternalAccessArgs>? InternalAccess { get; set; }
 
         /// <summary>
-        /// Whether this network has direct internet access
+        /// Direct internet access and NAT settings for this network
         /// </summary>
         [Input("internetAccess")]
         public Input<Inputs.NetworkInternetAccessArgs>? InternetAccess { get; set; }
@@ -188,14 +221,20 @@ namespace Pulumi.JuniperMist.Org
         public Input<bool>? Isolation { get; set; }
 
         /// <summary>
-        /// Whether to enable multicast support (only PIM-sparse mode is supported)
+        /// Settings for multicast routing on this network
         /// </summary>
         [Input("multicast")]
         public Input<Inputs.NetworkMulticastArgs>? Multicast { get; set; }
 
+        /// <summary>
+        /// Display name of the organization network
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Organization that owns this network
+        /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
@@ -203,7 +242,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _routedForNetworks;
 
         /// <summary>
-        /// For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+        /// Other network names this network can route to, for example through BGP, OSPF or static routes
         /// </summary>
         public InputList<string> RoutedForNetworks
         {
@@ -211,9 +250,15 @@ namespace Pulumi.JuniperMist.Org
             set => _routedForNetworks = value;
         }
 
+        /// <summary>
+        /// IPv4 subnet CIDR for this network
+        /// </summary>
         [Input("subnet", required: true)]
         public Input<string> Subnet { get; set; } = null!;
 
+        /// <summary>
+        /// IPv6 subnet CIDR for this network
+        /// </summary>
         [Input("subnet6")]
         public Input<string>? Subnet6 { get; set; }
 
@@ -221,7 +266,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.NetworkTenantsArgs>? _tenants;
 
         /// <summary>
-        /// Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+        /// Tenant address mappings associated with this network
         /// </summary>
         public InputMap<Inputs.NetworkTenantsArgs> Tenants
         {
@@ -229,6 +274,9 @@ namespace Pulumi.JuniperMist.Org
             set => _tenants = value;
         }
 
+        /// <summary>
+        /// VLAN ID or variable associated with this network
+        /// </summary>
         [Input("vlanId")]
         public Input<string>? VlanId { get; set; }
 
@@ -236,7 +284,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.NetworkVpnAccessArgs>? _vpnAccess;
 
         /// <summary>
-        /// Property key is the VPN name. Whether this network can be accessed from vpn
+        /// VPN access settings keyed by VPN name for this network
         /// </summary>
         public InputMap<Inputs.NetworkVpnAccessArgs> VpnAccess
         {
@@ -258,17 +306,26 @@ namespace Pulumi.JuniperMist.Org
         [Input("disallowMistServices")]
         public Input<bool>? DisallowMistServices { get; set; }
 
+        /// <summary>
+        /// IPv4 gateway address for this network
+        /// </summary>
         [Input("gateway")]
         public Input<string>? Gateway { get; set; }
 
+        /// <summary>
+        /// IPv6 gateway address for this network
+        /// </summary>
         [Input("gateway6")]
         public Input<string>? Gateway6 { get; set; }
 
+        /// <summary>
+        /// Internal access settings for this network
+        /// </summary>
         [Input("internalAccess")]
         public Input<Inputs.NetworkInternalAccessGetArgs>? InternalAccess { get; set; }
 
         /// <summary>
-        /// Whether this network has direct internet access
+        /// Direct internet access and NAT settings for this network
         /// </summary>
         [Input("internetAccess")]
         public Input<Inputs.NetworkInternetAccessGetArgs>? InternetAccess { get; set; }
@@ -280,14 +337,20 @@ namespace Pulumi.JuniperMist.Org
         public Input<bool>? Isolation { get; set; }
 
         /// <summary>
-        /// Whether to enable multicast support (only PIM-sparse mode is supported)
+        /// Settings for multicast routing on this network
         /// </summary>
         [Input("multicast")]
         public Input<Inputs.NetworkMulticastGetArgs>? Multicast { get; set; }
 
+        /// <summary>
+        /// Display name of the organization network
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Organization that owns this network
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
@@ -295,7 +358,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _routedForNetworks;
 
         /// <summary>
-        /// For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+        /// Other network names this network can route to, for example through BGP, OSPF or static routes
         /// </summary>
         public InputList<string> RoutedForNetworks
         {
@@ -303,9 +366,15 @@ namespace Pulumi.JuniperMist.Org
             set => _routedForNetworks = value;
         }
 
+        /// <summary>
+        /// IPv4 subnet CIDR for this network
+        /// </summary>
         [Input("subnet")]
         public Input<string>? Subnet { get; set; }
 
+        /// <summary>
+        /// IPv6 subnet CIDR for this network
+        /// </summary>
         [Input("subnet6")]
         public Input<string>? Subnet6 { get; set; }
 
@@ -313,7 +382,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.NetworkTenantsGetArgs>? _tenants;
 
         /// <summary>
-        /// Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+        /// Tenant address mappings associated with this network
         /// </summary>
         public InputMap<Inputs.NetworkTenantsGetArgs> Tenants
         {
@@ -321,6 +390,9 @@ namespace Pulumi.JuniperMist.Org
             set => _tenants = value;
         }
 
+        /// <summary>
+        /// VLAN ID or variable associated with this network
+        /// </summary>
         [Input("vlanId")]
         public Input<string>? VlanId { get; set; }
 
@@ -328,7 +400,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.NetworkVpnAccessGetArgs>? _vpnAccess;
 
         /// <summary>
-        /// Property key is the VPN name. Whether this network can be accessed from vpn
+        /// VPN access settings keyed by VPN name for this network
         /// </summary>
         public InputMap<Inputs.NetworkVpnAccessGetArgs> VpnAccess
         {

@@ -16,14 +16,14 @@ public final class SettingJuniperSrxArgs extends com.pulumi.resources.ResourceAr
     public static final SettingJuniperSrxArgs Empty = new SettingJuniperSrxArgs();
 
     /**
-     * auto_upgrade device first time it is onboarded
+     * SRX auto-upgrade settings applied when Juniper SRX devices are first onboarded
      * 
      */
     @Import(name="autoUpgrade")
     private @Nullable Output<SettingJuniperSrxAutoUpgradeArgs> autoUpgrade;
 
     /**
-     * @return auto_upgrade device first time it is onboarded
+     * @return SRX auto-upgrade settings applied when Juniper SRX devices are first onboarded
      * 
      */
     public Optional<Output<SettingJuniperSrxAutoUpgradeArgs>> autoUpgrade() {
@@ -55,7 +55,7 @@ public final class SettingJuniperSrxArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param autoUpgrade auto_upgrade device first time it is onboarded
+         * @param autoUpgrade SRX auto-upgrade settings applied when Juniper SRX devices are first onboarded
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class SettingJuniperSrxArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param autoUpgrade auto_upgrade device first time it is onboarded
+         * @param autoUpgrade SRX auto-upgrade settings applied when Juniper SRX devices are first onboarded
          * 
          * @return builder
          * 

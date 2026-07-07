@@ -18,14 +18,14 @@ public final class AvprofileState extends com.pulumi.resources.ResourceArgs {
     public static final AvprofileState Empty = new AvprofileState();
 
     /**
-     * enum: `block`, `log-and-permit`, `permit`
+     * Action to take when antivirus scanning cannot complete
      * 
      */
     @Import(name="fallbackAction")
     private @Nullable Output<String> fallbackAction;
 
     /**
-     * @return enum: `block`, `log-and-permit`, `permit`
+     * @return Action to take when antivirus scanning cannot complete
      * 
      */
     public Optional<Output<String>> fallbackAction() {
@@ -33,59 +33,91 @@ public final class AvprofileState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * In KB
+     * Maximum file size scanned by this antivirus profile, in KB
      * 
      */
     @Import(name="maxFilesize")
     private @Nullable Output<Integer> maxFilesize;
 
     /**
-     * @return In KB
+     * @return Maximum file size scanned by this antivirus profile, in KB
      * 
      */
     public Optional<Output<Integer>> maxFilesize() {
         return Optional.ofNullable(this.maxFilesize);
     }
 
+    /**
+     * Content MIME types exempted from antivirus scanning
+     * 
+     */
     @Import(name="mimeWhitelists")
     private @Nullable Output<List<String>> mimeWhitelists;
 
+    /**
+     * @return Content MIME types exempted from antivirus scanning
+     * 
+     */
     public Optional<Output<List<String>>> mimeWhitelists() {
         return Optional.ofNullable(this.mimeWhitelists);
     }
 
+    /**
+     * Display name of the antivirus profile
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Display name of the antivirus profile
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Owning organization identifier for this antivirus profile
+     * 
+     */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
+    /**
+     * @return Owning organization identifier for this antivirus profile
+     * 
+     */
     public Optional<Output<String>> orgId() {
         return Optional.ofNullable(this.orgId);
     }
 
     /**
-     * List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
+     * Network protocols inspected by this antivirus profile
      * 
      */
     @Import(name="protocols")
     private @Nullable Output<List<String>> protocols;
 
     /**
-     * @return List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
+     * @return Network protocols inspected by this antivirus profile
      * 
      */
     public Optional<Output<List<String>>> protocols() {
         return Optional.ofNullable(this.protocols);
     }
 
+    /**
+     * Allowed URL entries exempted from antivirus scanning
+     * 
+     */
     @Import(name="urlWhitelists")
     private @Nullable Output<List<String>> urlWhitelists;
 
+    /**
+     * @return Allowed URL entries exempted from antivirus scanning
+     * 
+     */
     public Optional<Output<List<String>>> urlWhitelists() {
         return Optional.ofNullable(this.urlWhitelists);
     }
@@ -121,7 +153,7 @@ public final class AvprofileState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fallbackAction enum: `block`, `log-and-permit`, `permit`
+         * @param fallbackAction Action to take when antivirus scanning cannot complete
          * 
          * @return builder
          * 
@@ -132,7 +164,7 @@ public final class AvprofileState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fallbackAction enum: `block`, `log-and-permit`, `permit`
+         * @param fallbackAction Action to take when antivirus scanning cannot complete
          * 
          * @return builder
          * 
@@ -142,7 +174,7 @@ public final class AvprofileState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxFilesize In KB
+         * @param maxFilesize Maximum file size scanned by this antivirus profile, in KB
          * 
          * @return builder
          * 
@@ -153,7 +185,7 @@ public final class AvprofileState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxFilesize In KB
+         * @param maxFilesize Maximum file size scanned by this antivirus profile, in KB
          * 
          * @return builder
          * 
@@ -162,39 +194,81 @@ public final class AvprofileState extends com.pulumi.resources.ResourceArgs {
             return maxFilesize(Output.of(maxFilesize));
         }
 
+        /**
+         * @param mimeWhitelists Content MIME types exempted from antivirus scanning
+         * 
+         * @return builder
+         * 
+         */
         public Builder mimeWhitelists(@Nullable Output<List<String>> mimeWhitelists) {
             $.mimeWhitelists = mimeWhitelists;
             return this;
         }
 
+        /**
+         * @param mimeWhitelists Content MIME types exempted from antivirus scanning
+         * 
+         * @return builder
+         * 
+         */
         public Builder mimeWhitelists(List<String> mimeWhitelists) {
             return mimeWhitelists(Output.of(mimeWhitelists));
         }
 
+        /**
+         * @param mimeWhitelists Content MIME types exempted from antivirus scanning
+         * 
+         * @return builder
+         * 
+         */
         public Builder mimeWhitelists(String... mimeWhitelists) {
             return mimeWhitelists(List.of(mimeWhitelists));
         }
 
+        /**
+         * @param name Display name of the antivirus profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Display name of the antivirus profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param orgId Owning organization identifier for this antivirus profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(@Nullable Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param orgId Owning organization identifier for this antivirus profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }
 
         /**
-         * @param protocols List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
+         * @param protocols Network protocols inspected by this antivirus profile
          * 
          * @return builder
          * 
@@ -205,7 +279,7 @@ public final class AvprofileState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocols List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
+         * @param protocols Network protocols inspected by this antivirus profile
          * 
          * @return builder
          * 
@@ -215,7 +289,7 @@ public final class AvprofileState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocols List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
+         * @param protocols Network protocols inspected by this antivirus profile
          * 
          * @return builder
          * 
@@ -224,15 +298,33 @@ public final class AvprofileState extends com.pulumi.resources.ResourceArgs {
             return protocols(List.of(protocols));
         }
 
+        /**
+         * @param urlWhitelists Allowed URL entries exempted from antivirus scanning
+         * 
+         * @return builder
+         * 
+         */
         public Builder urlWhitelists(@Nullable Output<List<String>> urlWhitelists) {
             $.urlWhitelists = urlWhitelists;
             return this;
         }
 
+        /**
+         * @param urlWhitelists Allowed URL entries exempted from antivirus scanning
+         * 
+         * @return builder
+         * 
+         */
         public Builder urlWhitelists(List<String> urlWhitelists) {
             return urlWhitelists(Output.of(urlWhitelists));
         }
 
+        /**
+         * @param urlWhitelists Allowed URL entries exempted from antivirus scanning
+         * 
+         * @return builder
+         * 
+         */
         public Builder urlWhitelists(String... urlWhitelists) {
             return urlWhitelists(List.of(urlWhitelists));
         }

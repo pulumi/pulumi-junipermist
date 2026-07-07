@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WlanQos {
     /**
-     * @return enum: `background`, `bestEffort`, `video`, `voice`
+     * @return QoS traffic class applied when WLAN QoS override is enabled
      * 
      */
     private @Nullable String class_;
@@ -25,7 +25,7 @@ public final class WlanQos {
 
     private WlanQos() {}
     /**
-     * @return enum: `background`, `bestEffort`, `video`, `voice`
+     * @return QoS traffic class applied when WLAN QoS override is enabled
      * 
      */
     public Optional<String> class_() {

@@ -12,9 +12,15 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class MxclusterMistNacArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// RADIUS accounting port used by Mist NAC on the cluster
+        /// </summary>
         [Input("acctServerPort")]
         public Input<int>? AcctServerPort { get; set; }
 
+        /// <summary>
+        /// RADIUS authentication port used by Mist NAC on the cluster
+        /// </summary>
         [Input("authServerPort")]
         public Input<int>? AuthServerPort { get; set; }
 
@@ -30,11 +36,18 @@ namespace Pulumi.JuniperMist.Org.Inputs
             set => _clientIps = value;
         }
 
+        /// <summary>
+        /// Whether Mist NAC is enabled on the cluster
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         [Input("secret")]
         private Input<string>? _secret;
+
+        /// <summary>
+        /// Shared RADIUS secret used by Mist NAC clients
+        /// </summary>
         public Input<string>? Secret
         {
             get => _secret;

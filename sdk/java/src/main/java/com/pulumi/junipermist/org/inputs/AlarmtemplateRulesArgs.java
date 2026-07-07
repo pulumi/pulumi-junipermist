@@ -17,23 +17,31 @@ public final class AlarmtemplateRulesArgs extends com.pulumi.resources.ResourceA
     public static final AlarmtemplateRulesArgs Empty = new AlarmtemplateRulesArgs();
 
     /**
-     * Delivery object to configure the alarm delivery
+     * Overrides for the alarm template delivery defaults for this alarm rule
      * 
      */
     @Import(name="delivery")
     private @Nullable Output<AlarmtemplateRulesDeliveryArgs> delivery;
 
     /**
-     * @return Delivery object to configure the alarm delivery
+     * @return Overrides for the alarm template delivery defaults for this alarm rule
      * 
      */
     public Optional<Output<AlarmtemplateRulesDeliveryArgs>> delivery() {
         return Optional.ofNullable(this.delivery);
     }
 
+    /**
+     * Whether this alarm rule is enabled in the template
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether this alarm rule is enabled in the template
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -64,7 +72,7 @@ public final class AlarmtemplateRulesArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param delivery Delivery object to configure the alarm delivery
+         * @param delivery Overrides for the alarm template delivery defaults for this alarm rule
          * 
          * @return builder
          * 
@@ -75,7 +83,7 @@ public final class AlarmtemplateRulesArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param delivery Delivery object to configure the alarm delivery
+         * @param delivery Overrides for the alarm template delivery defaults for this alarm rule
          * 
          * @return builder
          * 
@@ -84,11 +92,23 @@ public final class AlarmtemplateRulesArgs extends com.pulumi.resources.ResourceA
             return delivery(Output.of(delivery));
         }
 
+        /**
+         * @param enabled Whether this alarm rule is enabled in the template
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether this alarm rule is enabled in the template
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

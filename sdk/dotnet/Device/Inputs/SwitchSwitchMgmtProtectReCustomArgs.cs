@@ -26,6 +26,10 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
         [Input("subnets", required: true)]
         private InputList<string>? _subnets;
+
+        /// <summary>
+        /// Source subnets matched by this custom Protect RE ACL
+        /// </summary>
         public InputList<string> Subnets
         {
             get => _subnets ?? (_subnets = new InputList<string>());

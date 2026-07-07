@@ -18,14 +18,14 @@ public final class SsoRolePrivilegeArgs extends com.pulumi.resources.ResourceArg
     public static final SsoRolePrivilegeArgs Empty = new SsoRolePrivilegeArgs();
 
     /**
-     * access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
+     * Access role granted by this organization privilege
      * 
      */
     @Import(name="role", required=true)
     private Output<String> role;
 
     /**
-     * @return access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
+     * @return Access role granted by this organization privilege
      * 
      */
     public Output<String> role() {
@@ -33,14 +33,14 @@ public final class SsoRolePrivilegeArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * enum: `org`, `site`, `sitegroup`, `orgsites`
+     * Organization hierarchy level where this privilege applies
      * 
      */
     @Import(name="scope", required=true)
     private Output<String> scope;
 
     /**
-     * @return enum: `org`, `site`, `sitegroup`, `orgsites`
+     * @return Organization hierarchy level where this privilege applies
      * 
      */
     public Output<String> scope() {
@@ -78,40 +78,14 @@ public final class SsoRolePrivilegeArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.\
-     * You can define custom roles by adding the `views` attribute along with `role` when assigning privileges.\
-     * Below are the list of supported UI views. Note that this is UI only feature.
-     * 
-     *   | UI View | Required Role | Description |
-     *   | --- | --- | --- |
-     *   | `reporting` | `read` | full access to all analytics tools |
-     *   | `marketing` | `read` | can view analytics and location maps |
-     *   | `superObserver` | `read` | can view all the organization except the subscription page |
-     *   | `location` | `write` | can view and manage location maps, can view analytics |
-     *   | `security` | `write` | can view and manage site labels, policies and security |
-     *   | `switchAdmin` | `helpdesk` | can view and manage Switch ports, can view wired clients |
-     *   | `mxedgeAdmin` | `admin` | can view and manage Mist edges and Mist tunnels |
-     *   | `lobbyAdmin` | `admin` | full access to Org and Site Pre-shared keys |
+     * UI views allowed by custom role restrictions
      * 
      */
     @Import(name="views")
     private @Nullable Output<List<String>> views;
 
     /**
-     * @return Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.\
-     * You can define custom roles by adding the `views` attribute along with `role` when assigning privileges.\
-     * Below are the list of supported UI views. Note that this is UI only feature.
-     * 
-     *   | UI View | Required Role | Description |
-     *   | --- | --- | --- |
-     *   | `reporting` | `read` | full access to all analytics tools |
-     *   | `marketing` | `read` | can view analytics and location maps |
-     *   | `superObserver` | `read` | can view all the organization except the subscription page |
-     *   | `location` | `write` | can view and manage location maps, can view analytics |
-     *   | `security` | `write` | can view and manage site labels, policies and security |
-     *   | `switchAdmin` | `helpdesk` | can view and manage Switch ports, can view wired clients |
-     *   | `mxedgeAdmin` | `admin` | can view and manage Mist edges and Mist tunnels |
-     *   | `lobbyAdmin` | `admin` | full access to Org and Site Pre-shared keys |
+     * @return UI views allowed by custom role restrictions
      * 
      */
     public Optional<Output<List<String>>> views() {
@@ -147,7 +121,7 @@ public final class SsoRolePrivilegeArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param role access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
+         * @param role Access role granted by this organization privilege
          * 
          * @return builder
          * 
@@ -158,7 +132,7 @@ public final class SsoRolePrivilegeArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param role access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
+         * @param role Access role granted by this organization privilege
          * 
          * @return builder
          * 
@@ -168,7 +142,7 @@ public final class SsoRolePrivilegeArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param scope enum: `org`, `site`, `sitegroup`, `orgsites`
+         * @param scope Organization hierarchy level where this privilege applies
          * 
          * @return builder
          * 
@@ -179,7 +153,7 @@ public final class SsoRolePrivilegeArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param scope enum: `org`, `site`, `sitegroup`, `orgsites`
+         * @param scope Organization hierarchy level where this privilege applies
          * 
          * @return builder
          * 
@@ -231,20 +205,7 @@ public final class SsoRolePrivilegeArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param views Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.\
-         * You can define custom roles by adding the `views` attribute along with `role` when assigning privileges.\
-         * Below are the list of supported UI views. Note that this is UI only feature.
-         * 
-         *   | UI View | Required Role | Description |
-         *   | --- | --- | --- |
-         *   | `reporting` | `read` | full access to all analytics tools |
-         *   | `marketing` | `read` | can view analytics and location maps |
-         *   | `superObserver` | `read` | can view all the organization except the subscription page |
-         *   | `location` | `write` | can view and manage location maps, can view analytics |
-         *   | `security` | `write` | can view and manage site labels, policies and security |
-         *   | `switchAdmin` | `helpdesk` | can view and manage Switch ports, can view wired clients |
-         *   | `mxedgeAdmin` | `admin` | can view and manage Mist edges and Mist tunnels |
-         *   | `lobbyAdmin` | `admin` | full access to Org and Site Pre-shared keys |
+         * @param views UI views allowed by custom role restrictions
          * 
          * @return builder
          * 
@@ -255,20 +216,7 @@ public final class SsoRolePrivilegeArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param views Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.\
-         * You can define custom roles by adding the `views` attribute along with `role` when assigning privileges.\
-         * Below are the list of supported UI views. Note that this is UI only feature.
-         * 
-         *   | UI View | Required Role | Description |
-         *   | --- | --- | --- |
-         *   | `reporting` | `read` | full access to all analytics tools |
-         *   | `marketing` | `read` | can view analytics and location maps |
-         *   | `superObserver` | `read` | can view all the organization except the subscription page |
-         *   | `location` | `write` | can view and manage location maps, can view analytics |
-         *   | `security` | `write` | can view and manage site labels, policies and security |
-         *   | `switchAdmin` | `helpdesk` | can view and manage Switch ports, can view wired clients |
-         *   | `mxedgeAdmin` | `admin` | can view and manage Mist edges and Mist tunnels |
-         *   | `lobbyAdmin` | `admin` | full access to Org and Site Pre-shared keys |
+         * @param views UI views allowed by custom role restrictions
          * 
          * @return builder
          * 
@@ -278,20 +226,7 @@ public final class SsoRolePrivilegeArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param views Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.\
-         * You can define custom roles by adding the `views` attribute along with `role` when assigning privileges.\
-         * Below are the list of supported UI views. Note that this is UI only feature.
-         * 
-         *   | UI View | Required Role | Description |
-         *   | --- | --- | --- |
-         *   | `reporting` | `read` | full access to all analytics tools |
-         *   | `marketing` | `read` | can view analytics and location maps |
-         *   | `superObserver` | `read` | can view all the organization except the subscription page |
-         *   | `location` | `write` | can view and manage location maps, can view analytics |
-         *   | `security` | `write` | can view and manage site labels, policies and security |
-         *   | `switchAdmin` | `helpdesk` | can view and manage Switch ports, can view wired clients |
-         *   | `mxedgeAdmin` | `admin` | can view and manage Mist edges and Mist tunnels |
-         *   | `lobbyAdmin` | `admin` | full access to Org and Site Pre-shared keys |
+         * @param views UI views allowed by custom role restrictions
          * 
          * @return builder
          * 

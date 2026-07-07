@@ -13,6 +13,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SwitchDhcpSnooping {
+    /**
+     * @return Whether DHCP snooping applies to all configured networks
+     * 
+     */
     private @Nullable Boolean allNetworks;
     /**
      * @return Enable for dynamic ARP inspection check
@@ -24,14 +28,22 @@ public final class SwitchDhcpSnooping {
      * 
      */
     private @Nullable Boolean enableIpSourceGuard;
+    /**
+     * @return Whether DHCP snooping is enabled
+     * 
+     */
     private @Nullable Boolean enabled;
     /**
-     * @return If `allNetworks`==`false`, list of network with DHCP snooping enabled
+     * @return Network names with DHCP snooping enabled when `allNetworks`==`false`
      * 
      */
     private @Nullable List<String> networks;
 
     private SwitchDhcpSnooping() {}
+    /**
+     * @return Whether DHCP snooping applies to all configured networks
+     * 
+     */
     public Optional<Boolean> allNetworks() {
         return Optional.ofNullable(this.allNetworks);
     }
@@ -49,11 +61,15 @@ public final class SwitchDhcpSnooping {
     public Optional<Boolean> enableIpSourceGuard() {
         return Optional.ofNullable(this.enableIpSourceGuard);
     }
+    /**
+     * @return Whether DHCP snooping is enabled
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return If `allNetworks`==`false`, list of network with DHCP snooping enabled
+     * @return Network names with DHCP snooping enabled when `allNetworks`==`false`
      * 
      */
     public List<String> networks() {

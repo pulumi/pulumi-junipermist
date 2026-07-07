@@ -15,6 +15,10 @@ public final class MxclusterTuntermMonitoring {
     private Integer port;
     private String protocol;
     private Integer srcVlanId;
+    /**
+     * @return Authentication request timeout, in seconds
+     * 
+     */
     private Integer timeout;
 
     private MxclusterTuntermMonitoring() {}
@@ -30,6 +34,10 @@ public final class MxclusterTuntermMonitoring {
     public Integer srcVlanId() {
         return this.srcVlanId;
     }
+    /**
+     * @return Authentication request timeout, in seconds
+     * 
+     */
     public Integer timeout() {
         return this.timeout;
     }

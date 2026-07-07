@@ -13,17 +13,32 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class NacPortalSso
     {
+        /// <summary>
+        /// Identity provider certificate used to verify signed SAML responses
+        /// </summary>
         public readonly string? IdpCert;
         /// <summary>
-        /// Signing algorithm for SAML Assertion. enum: `Sha1`, `Sha256`, `Sha384`, `Sha512`.
+        /// Signing algorithm expected for SAML assertions from the identity provider
         /// </summary>
         public readonly string? IdpSignAlgo;
+        /// <summary>
+        /// Identity provider Single Sign-On URL for SAML authentication
+        /// </summary>
         public readonly string? IdpSsoUrl;
+        /// <summary>
+        /// Identity provider issuer URL for SAML authentication
+        /// </summary>
         public readonly string? Issuer;
+        /// <summary>
+        /// SAML NameID format expected from the identity provider
+        /// </summary>
         public readonly string? NameidFormat;
+        /// <summary>
+        /// Rules that map SSO role values from the identity provider to NAC portal roles
+        /// </summary>
         public readonly ImmutableArray<Outputs.NacPortalSsoSsoRoleMatching> SsoRoleMatchings;
         /// <summary>
-        /// If it's desired to inject a role into Cert's Subject (so it can be used later on in policy)
+        /// Whether to include the matched SSO role in the issued certificate subject for later policy matching
         /// </summary>
         public readonly bool? UseSsoRoleForCert;
 

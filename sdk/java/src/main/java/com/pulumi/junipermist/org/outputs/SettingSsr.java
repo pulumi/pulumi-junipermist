@@ -16,62 +16,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingSsr {
     /**
-     * @return auto_upgrade device first time it is onboarded
+     * @return Automatic SSR firmware upgrade settings for newly onboarded devices
      * 
      */
     private @Nullable SettingSsrAutoUpgrade autoUpgrade;
     /**
-     * @return List of Conductor IP Addresses or Hosts to be used by the SSR Devices
+     * @return IP addresses or hostnames of conductors used by SSR devices
      * 
      */
     private @Nullable List<String> conductorHosts;
     /**
-     * @return Token to be used by the SSR Devices to connect to the Conductor
+     * @return Registration token used by SSR devices to connect to the conductor
      * 
      */
     private @Nullable String conductorToken;
     /**
-     * @return Disable stats collection on SSR devices
+     * @return Whether stats collection is disabled on SSR devices
      * 
      */
     private @Nullable Boolean disableStats;
     /**
-     * @return SSR proxy configuration to talk to Mist
+     * @return Network proxy settings used by SSR devices to reach Mist
      * 
      */
     private @Nullable SettingSsrProxy proxy;
 
     private SettingSsr() {}
     /**
-     * @return auto_upgrade device first time it is onboarded
+     * @return Automatic SSR firmware upgrade settings for newly onboarded devices
      * 
      */
     public Optional<SettingSsrAutoUpgrade> autoUpgrade() {
         return Optional.ofNullable(this.autoUpgrade);
     }
     /**
-     * @return List of Conductor IP Addresses or Hosts to be used by the SSR Devices
+     * @return IP addresses or hostnames of conductors used by SSR devices
      * 
      */
     public List<String> conductorHosts() {
         return this.conductorHosts == null ? List.of() : this.conductorHosts;
     }
     /**
-     * @return Token to be used by the SSR Devices to connect to the Conductor
+     * @return Registration token used by SSR devices to connect to the conductor
      * 
      */
     public Optional<String> conductorToken() {
         return Optional.ofNullable(this.conductorToken);
     }
     /**
-     * @return Disable stats collection on SSR devices
+     * @return Whether stats collection is disabled on SSR devices
      * 
      */
     public Optional<Boolean> disableStats() {
         return Optional.ofNullable(this.disableStats);
     }
     /**
-     * @return SSR proxy configuration to talk to Mist
+     * @return Network proxy settings used by SSR devices to reach Mist
      * 
      */
     public Optional<SettingSsrProxy> proxy() {

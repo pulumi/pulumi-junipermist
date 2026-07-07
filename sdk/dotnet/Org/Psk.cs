@@ -57,7 +57,7 @@ namespace Pulumi.JuniperMist.Org
     public partial class Psk : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// email to send psk expiring notifications to
+        /// Notification recipient email address for PSK creation notification and expiration reminders
         /// </summary>
         [Output("email")]
         public Output<string?> Email { get; private set; } = null!;
@@ -75,13 +75,13 @@ namespace Pulumi.JuniperMist.Org
         public Output<int?> ExpiryNotificationTime { get; private set; } = null!;
 
         /// <summary>
-        /// If `Usage`==`Single`, the mac that this PSK ties to, empty if `auto-binding`
+        /// If `Usage`==`Single`, client MAC address this PSK is bound to; empty when auto-binding is used
         /// </summary>
         [Output("mac")]
         public Output<string?> Mac { get; private set; } = null!;
 
         /// <summary>
-        /// If `Usage`==`Macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
+        /// Client MAC addresses or MAC patterns allowed when `Usage`==`Macs`
         /// </summary>
         [Output("macs")]
         public Output<ImmutableArray<string>> Macs { get; private set; } = null!;
@@ -92,9 +92,15 @@ namespace Pulumi.JuniperMist.Org
         [Output("maxUsage")]
         public Output<int?> MaxUsage { get; private set; } = null!;
 
+        /// <summary>
+        /// Display name of the PSK
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Admin note or description stored with the PSK
+        /// </summary>
         [Output("note")]
         public Output<string?> Note { get; private set; } = null!;
 
@@ -116,30 +122,39 @@ namespace Pulumi.JuniperMist.Org
         [Output("oldPassphrase")]
         public Output<string?> OldPassphrase { get; private set; } = null!;
 
+        /// <summary>
+        /// Organization that owns the org-level PSK
+        /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// passphrase of the PSK (8-63 character or 64 in hex)
+        /// PSK passphrase, 8-63 characters or 64 hexadecimal characters
         /// </summary>
         [Output("passphrase")]
         public Output<string> Passphrase { get; private set; } = null!;
 
+        /// <summary>
+        /// Client role applied to users authenticated with this PSK
+        /// </summary>
         [Output("role")]
         public Output<string?> Role { get; private set; } = null!;
 
         /// <summary>
-        /// SSID this PSK should be applicable to
+        /// WLAN SSID where this PSK can be used
         /// </summary>
         [Output("ssid")]
         public Output<string> Ssid { get; private set; } = null!;
 
         /// <summary>
-        /// enum: `Macs`, `Multi`, `Single`
+        /// Binding mode for this PSK, enum: `Macs`, `Multi`, `Single`
         /// </summary>
         [Output("usage")]
         public Output<string> Usage { get; private set; } = null!;
 
+        /// <summary>
+        /// VLAN ID returned for clients using this PSK
+        /// </summary>
         [Output("vlanId")]
         public Output<string?> VlanId { get; private set; } = null!;
 
@@ -202,7 +217,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class PskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// email to send psk expiring notifications to
+        /// Notification recipient email address for PSK creation notification and expiration reminders
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
@@ -220,7 +235,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<int>? ExpiryNotificationTime { get; set; }
 
         /// <summary>
-        /// If `Usage`==`Single`, the mac that this PSK ties to, empty if `auto-binding`
+        /// If `Usage`==`Single`, client MAC address this PSK is bound to; empty when auto-binding is used
         /// </summary>
         [Input("mac")]
         public Input<string>? Mac { get; set; }
@@ -229,7 +244,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _macs;
 
         /// <summary>
-        /// If `Usage`==`Macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
+        /// Client MAC addresses or MAC patterns allowed when `Usage`==`Macs`
         /// </summary>
         public InputList<string> Macs
         {
@@ -243,9 +258,15 @@ namespace Pulumi.JuniperMist.Org
         [Input("maxUsage")]
         public Input<int>? MaxUsage { get; set; }
 
+        /// <summary>
+        /// Display name of the PSK
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Admin note or description stored with the PSK
+        /// </summary>
         [Input("note")]
         public Input<string>? Note { get; set; }
 
@@ -277,6 +298,9 @@ namespace Pulumi.JuniperMist.Org
             }
         }
 
+        /// <summary>
+        /// Organization that owns the org-level PSK
+        /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
@@ -284,7 +308,7 @@ namespace Pulumi.JuniperMist.Org
         private Input<string>? _passphrase;
 
         /// <summary>
-        /// passphrase of the PSK (8-63 character or 64 in hex)
+        /// PSK passphrase, 8-63 characters or 64 hexadecimal characters
         /// </summary>
         public Input<string>? Passphrase
         {
@@ -296,21 +320,27 @@ namespace Pulumi.JuniperMist.Org
             }
         }
 
+        /// <summary>
+        /// Client role applied to users authenticated with this PSK
+        /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 
         /// <summary>
-        /// SSID this PSK should be applicable to
+        /// WLAN SSID where this PSK can be used
         /// </summary>
         [Input("ssid", required: true)]
         public Input<string> Ssid { get; set; } = null!;
 
         /// <summary>
-        /// enum: `Macs`, `Multi`, `Single`
+        /// Binding mode for this PSK, enum: `Macs`, `Multi`, `Single`
         /// </summary>
         [Input("usage")]
         public Input<string>? Usage { get; set; }
 
+        /// <summary>
+        /// VLAN ID returned for clients using this PSK
+        /// </summary>
         [Input("vlanId")]
         public Input<string>? VlanId { get; set; }
 
@@ -329,7 +359,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class PskState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// email to send psk expiring notifications to
+        /// Notification recipient email address for PSK creation notification and expiration reminders
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
@@ -347,7 +377,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<int>? ExpiryNotificationTime { get; set; }
 
         /// <summary>
-        /// If `Usage`==`Single`, the mac that this PSK ties to, empty if `auto-binding`
+        /// If `Usage`==`Single`, client MAC address this PSK is bound to; empty when auto-binding is used
         /// </summary>
         [Input("mac")]
         public Input<string>? Mac { get; set; }
@@ -356,7 +386,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _macs;
 
         /// <summary>
-        /// If `Usage`==`Macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
+        /// Client MAC addresses or MAC patterns allowed when `Usage`==`Macs`
         /// </summary>
         public InputList<string> Macs
         {
@@ -370,9 +400,15 @@ namespace Pulumi.JuniperMist.Org
         [Input("maxUsage")]
         public Input<int>? MaxUsage { get; set; }
 
+        /// <summary>
+        /// Display name of the PSK
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Admin note or description stored with the PSK
+        /// </summary>
         [Input("note")]
         public Input<string>? Note { get; set; }
 
@@ -404,6 +440,9 @@ namespace Pulumi.JuniperMist.Org
             }
         }
 
+        /// <summary>
+        /// Organization that owns the org-level PSK
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
@@ -411,7 +450,7 @@ namespace Pulumi.JuniperMist.Org
         private Input<string>? _passphrase;
 
         /// <summary>
-        /// passphrase of the PSK (8-63 character or 64 in hex)
+        /// PSK passphrase, 8-63 characters or 64 hexadecimal characters
         /// </summary>
         public Input<string>? Passphrase
         {
@@ -423,21 +462,27 @@ namespace Pulumi.JuniperMist.Org
             }
         }
 
+        /// <summary>
+        /// Client role applied to users authenticated with this PSK
+        /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 
         /// <summary>
-        /// SSID this PSK should be applicable to
+        /// WLAN SSID where this PSK can be used
         /// </summary>
         [Input("ssid")]
         public Input<string>? Ssid { get; set; }
 
         /// <summary>
-        /// enum: `Macs`, `Multi`, `Single`
+        /// Binding mode for this PSK, enum: `Macs`, `Multi`, `Single`
         /// </summary>
         [Input("usage")]
         public Input<string>? Usage { get; set; }
 
+        /// <summary>
+        /// VLAN ID returned for clients using this PSK
+        /// </summary>
         [Input("vlanId")]
         public Input<string>? VlanId { get; set; }
 

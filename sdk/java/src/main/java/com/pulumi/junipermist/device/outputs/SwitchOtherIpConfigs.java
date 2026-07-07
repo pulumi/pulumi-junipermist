@@ -13,86 +13,86 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SwitchOtherIpConfigs {
     /**
-     * @return For EVPN, if anycast is desired
+     * @return For EVPN, whether anycast is desired
      * 
      */
     private @Nullable Boolean evpnAnycast;
     /**
-     * @return Required if `type`==`static`
+     * @return Required if `type`==`static`; IPv4 address for the additional Junos L3 presence
      * 
      */
     private @Nullable String ip;
     /**
-     * @return Required if `type6`==`static`
+     * @return Required if `type6`==`static`; IPv6 address for the additional Junos L3 presence
      * 
      */
     private @Nullable String ip6;
     /**
-     * @return Optional, `subnet` from `network` definition will be used if defined
+     * @return Optional IPv4 netmask; `subnet` from `network` definition will be used if defined
      * 
      */
     private @Nullable String netmask;
     /**
-     * @return Optional, `subnet` from `network` definition will be used if defined
+     * @return Optional IPv6 prefix length; `subnet` from `network` definition will be used if defined
      * 
      */
     private @Nullable String netmask6;
     /**
-     * @return enum: `dhcp`, `static`
+     * @return IPv4 assignment mode for the additional Junos L3 presence
      * 
      */
     private @Nullable String type;
     /**
-     * @return enum: `autoconf`, `dhcp`, `disabled`, `static`
+     * @return IPv6 assignment mode for the additional Junos L3 presence
      * 
      */
     private @Nullable String type6;
 
     private SwitchOtherIpConfigs() {}
     /**
-     * @return For EVPN, if anycast is desired
+     * @return For EVPN, whether anycast is desired
      * 
      */
     public Optional<Boolean> evpnAnycast() {
         return Optional.ofNullable(this.evpnAnycast);
     }
     /**
-     * @return Required if `type`==`static`
+     * @return Required if `type`==`static`; IPv4 address for the additional Junos L3 presence
      * 
      */
     public Optional<String> ip() {
         return Optional.ofNullable(this.ip);
     }
     /**
-     * @return Required if `type6`==`static`
+     * @return Required if `type6`==`static`; IPv6 address for the additional Junos L3 presence
      * 
      */
     public Optional<String> ip6() {
         return Optional.ofNullable(this.ip6);
     }
     /**
-     * @return Optional, `subnet` from `network` definition will be used if defined
+     * @return Optional IPv4 netmask; `subnet` from `network` definition will be used if defined
      * 
      */
     public Optional<String> netmask() {
         return Optional.ofNullable(this.netmask);
     }
     /**
-     * @return Optional, `subnet` from `network` definition will be used if defined
+     * @return Optional IPv6 prefix length; `subnet` from `network` definition will be used if defined
      * 
      */
     public Optional<String> netmask6() {
         return Optional.ofNullable(this.netmask6);
     }
     /**
-     * @return enum: `dhcp`, `static`
+     * @return IPv4 assignment mode for the additional Junos L3 presence
      * 
      */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return enum: `autoconf`, `dhcp`, `disabled`, `static`
+     * @return IPv6 assignment mode for the additional Junos L3 presence
      * 
      */
     public Optional<String> type6() {

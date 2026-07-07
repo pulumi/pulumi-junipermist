@@ -21,14 +21,14 @@ public final class NacruleState extends com.pulumi.resources.ResourceArgs {
     public static final NacruleState Empty = new NacruleState();
 
     /**
-     * enum: `allow`, `block`
+     * Allow or block decision applied when the NAC rule matches
      * 
      */
     @Import(name="action")
     private @Nullable Output<String> action;
 
     /**
-     * @return enum: `allow`, `block`
+     * @return Allow or block decision applied when the NAC rule matches
      * 
      */
     public Optional<Output<String>> action() {
@@ -36,14 +36,14 @@ public final class NacruleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * All optional, this goes into Access-Accept
+     * NAC tag IDs to include in the Access-Accept when the rule allows access
      * 
      */
     @Import(name="applyTags")
     private @Nullable Output<List<String>> applyTags;
 
     /**
-     * @return All optional, this goes into Access-Accept
+     * @return NAC tag IDs to include in the Access-Accept when the rule allows access
      * 
      */
     public Optional<Output<List<String>>> applyTags() {
@@ -51,14 +51,29 @@ public final class NacruleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enabled or not
+     * Whether the NAC rule is in dry-run mode, where matches are logged but the action is not enforced
+     * 
+     */
+    @Import(name="dryRun")
+    private @Nullable Output<Boolean> dryRun;
+
+    /**
+     * @return Whether the NAC rule is in dry-run mode, where matches are logged but the action is not enforced
+     * 
+     */
+    public Optional<Output<Boolean>> dryRun() {
+        return Optional.ofNullable(this.dryRun);
+    }
+
+    /**
+     * Whether the NAC rule is evaluated during policy matching
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enabled or not
+     * @return Whether the NAC rule is evaluated during policy matching
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -66,59 +81,91 @@ public final class NacruleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Guest portal authorization state. enum: `authorized`, `unknown`
+     * Guest portal authorization state condition for the rule
      * 
      */
     @Import(name="guestAuthState")
     private @Nullable Output<String> guestAuthState;
 
     /**
-     * @return Guest portal authorization state. enum: `authorized`, `unknown`
+     * @return Guest portal authorization state condition for the rule
      * 
      */
     public Optional<Output<String>> guestAuthState() {
         return Optional.ofNullable(this.guestAuthState);
     }
 
+    /**
+     * Criteria that must match for the NAC rule to apply
+     * 
+     */
     @Import(name="matching")
     private @Nullable Output<NacruleMatchingArgs> matching;
 
+    /**
+     * @return Criteria that must match for the NAC rule to apply
+     * 
+     */
     public Optional<Output<NacruleMatchingArgs>> matching() {
         return Optional.ofNullable(this.matching);
     }
 
+    /**
+     * Human-readable name of the NAC rule
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Human-readable name of the NAC rule
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Criteria that must not match for the NAC rule to apply
+     * 
+     */
     @Import(name="notMatching")
     private @Nullable Output<NacruleNotMatchingArgs> notMatching;
 
+    /**
+     * @return Criteria that must not match for the NAC rule to apply
+     * 
+     */
     public Optional<Output<NacruleNotMatchingArgs>> notMatching() {
         return Optional.ofNullable(this.notMatching);
     }
 
     /**
-     * Order of the rule, lower value implies higher priority
+     * Rule priority; lower values are evaluated with higher priority
      * 
      */
     @Import(name="order")
     private @Nullable Output<Integer> order;
 
     /**
-     * @return Order of the rule, lower value implies higher priority
+     * @return Rule priority; lower values are evaluated with higher priority
      * 
      */
     public Optional<Output<Integer>> order() {
         return Optional.ofNullable(this.order);
     }
 
+    /**
+     * Org identifier that owns the NAC rule
+     * 
+     */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
+    /**
+     * @return Org identifier that owns the NAC rule
+     * 
+     */
     public Optional<Output<String>> orgId() {
         return Optional.ofNullable(this.orgId);
     }
@@ -128,6 +175,7 @@ public final class NacruleState extends com.pulumi.resources.ResourceArgs {
     private NacruleState(NacruleState $) {
         this.action = $.action;
         this.applyTags = $.applyTags;
+        this.dryRun = $.dryRun;
         this.enabled = $.enabled;
         this.guestAuthState = $.guestAuthState;
         this.matching = $.matching;
@@ -156,7 +204,7 @@ public final class NacruleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param action enum: `allow`, `block`
+         * @param action Allow or block decision applied when the NAC rule matches
          * 
          * @return builder
          * 
@@ -167,7 +215,7 @@ public final class NacruleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param action enum: `allow`, `block`
+         * @param action Allow or block decision applied when the NAC rule matches
          * 
          * @return builder
          * 
@@ -177,7 +225,7 @@ public final class NacruleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param applyTags All optional, this goes into Access-Accept
+         * @param applyTags NAC tag IDs to include in the Access-Accept when the rule allows access
          * 
          * @return builder
          * 
@@ -188,7 +236,7 @@ public final class NacruleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param applyTags All optional, this goes into Access-Accept
+         * @param applyTags NAC tag IDs to include in the Access-Accept when the rule allows access
          * 
          * @return builder
          * 
@@ -198,7 +246,7 @@ public final class NacruleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param applyTags All optional, this goes into Access-Accept
+         * @param applyTags NAC tag IDs to include in the Access-Accept when the rule allows access
          * 
          * @return builder
          * 
@@ -208,7 +256,28 @@ public final class NacruleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Enabled or not
+         * @param dryRun Whether the NAC rule is in dry-run mode, where matches are logged but the action is not enforced
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dryRun(@Nullable Output<Boolean> dryRun) {
+            $.dryRun = dryRun;
+            return this;
+        }
+
+        /**
+         * @param dryRun Whether the NAC rule is in dry-run mode, where matches are logged but the action is not enforced
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dryRun(Boolean dryRun) {
+            return dryRun(Output.of(dryRun));
+        }
+
+        /**
+         * @param enabled Whether the NAC rule is evaluated during policy matching
          * 
          * @return builder
          * 
@@ -219,7 +288,7 @@ public final class NacruleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Enabled or not
+         * @param enabled Whether the NAC rule is evaluated during policy matching
          * 
          * @return builder
          * 
@@ -229,7 +298,7 @@ public final class NacruleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param guestAuthState Guest portal authorization state. enum: `authorized`, `unknown`
+         * @param guestAuthState Guest portal authorization state condition for the rule
          * 
          * @return builder
          * 
@@ -240,7 +309,7 @@ public final class NacruleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param guestAuthState Guest portal authorization state. enum: `authorized`, `unknown`
+         * @param guestAuthState Guest portal authorization state condition for the rule
          * 
          * @return builder
          * 
@@ -249,35 +318,71 @@ public final class NacruleState extends com.pulumi.resources.ResourceArgs {
             return guestAuthState(Output.of(guestAuthState));
         }
 
+        /**
+         * @param matching Criteria that must match for the NAC rule to apply
+         * 
+         * @return builder
+         * 
+         */
         public Builder matching(@Nullable Output<NacruleMatchingArgs> matching) {
             $.matching = matching;
             return this;
         }
 
+        /**
+         * @param matching Criteria that must match for the NAC rule to apply
+         * 
+         * @return builder
+         * 
+         */
         public Builder matching(NacruleMatchingArgs matching) {
             return matching(Output.of(matching));
         }
 
+        /**
+         * @param name Human-readable name of the NAC rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Human-readable name of the NAC rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param notMatching Criteria that must not match for the NAC rule to apply
+         * 
+         * @return builder
+         * 
+         */
         public Builder notMatching(@Nullable Output<NacruleNotMatchingArgs> notMatching) {
             $.notMatching = notMatching;
             return this;
         }
 
+        /**
+         * @param notMatching Criteria that must not match for the NAC rule to apply
+         * 
+         * @return builder
+         * 
+         */
         public Builder notMatching(NacruleNotMatchingArgs notMatching) {
             return notMatching(Output.of(notMatching));
         }
 
         /**
-         * @param order Order of the rule, lower value implies higher priority
+         * @param order Rule priority; lower values are evaluated with higher priority
          * 
          * @return builder
          * 
@@ -288,7 +393,7 @@ public final class NacruleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param order Order of the rule, lower value implies higher priority
+         * @param order Rule priority; lower values are evaluated with higher priority
          * 
          * @return builder
          * 
@@ -297,11 +402,23 @@ public final class NacruleState extends com.pulumi.resources.ResourceArgs {
             return order(Output.of(order));
         }
 
+        /**
+         * @param orgId Org identifier that owns the NAC rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(@Nullable Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param orgId Org identifier that owns the NAC rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }

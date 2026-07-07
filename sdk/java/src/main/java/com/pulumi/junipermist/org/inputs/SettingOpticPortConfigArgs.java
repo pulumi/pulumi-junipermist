@@ -17,14 +17,14 @@ public final class SettingOpticPortConfigArgs extends com.pulumi.resources.Resou
     public static final SettingOpticPortConfigArgs Empty = new SettingOpticPortConfigArgs();
 
     /**
-     * Enable channelization
+     * Whether channelization is enabled on this optic port
      * 
      */
     @Import(name="channelized")
     private @Nullable Output<Boolean> channelized;
 
     /**
-     * @return Enable channelization
+     * @return Whether channelization is enabled on this optic port
      * 
      */
     public Optional<Output<Boolean>> channelized() {
@@ -72,7 +72,7 @@ public final class SettingOpticPortConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param channelized Enable channelization
+         * @param channelized Whether channelization is enabled on this optic port
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class SettingOpticPortConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param channelized Enable channelization
+         * @param channelized Whether channelization is enabled on this optic port
          * 
          * @return builder
          * 

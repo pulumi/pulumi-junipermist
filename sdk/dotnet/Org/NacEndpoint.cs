@@ -58,27 +58,42 @@ namespace Pulumi.JuniperMist.Org
     [JuniperMistResourceType("junipermist:org/nacEndpoint:NacEndpoint")]
     public partial class NacEndpoint : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Applied labels for this user MAC entry
+        /// </summary>
         [Output("labels")]
         public Output<ImmutableArray<string>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Only non-local-admin MAC is accepted
+        /// Client MAC address for this entry. Only non-local-admin MAC addresses are accepted
         /// </summary>
         [Output("mac")]
         public Output<string> Mac { get; private set; } = null!;
 
+        /// <summary>
+        /// Display name for this user MAC entry
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Free-form notes about this user MAC entry
+        /// </summary>
         [Output("notes")]
         public Output<string> Notes { get; private set; } = null!;
 
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
+        /// <summary>
+        /// RADIUS group associated with this user MAC entry
+        /// </summary>
         [Output("radiusGroup")]
         public Output<string> RadiusGroup { get; private set; } = null!;
 
+        /// <summary>
+        /// Network VLAN value associated with this user MAC entry
+        /// </summary>
         [Output("vlan")]
         public Output<string> Vlan { get; private set; } = null!;
 
@@ -131,6 +146,10 @@ namespace Pulumi.JuniperMist.Org
     {
         [Input("labels")]
         private InputList<string>? _labels;
+
+        /// <summary>
+        /// Applied labels for this user MAC entry
+        /// </summary>
         public InputList<string> Labels
         {
             get => _labels ?? (_labels = new InputList<string>());
@@ -138,23 +157,35 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Only non-local-admin MAC is accepted
+        /// Client MAC address for this entry. Only non-local-admin MAC addresses are accepted
         /// </summary>
         [Input("mac", required: true)]
         public Input<string> Mac { get; set; } = null!;
 
+        /// <summary>
+        /// Display name for this user MAC entry
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Free-form notes about this user MAC entry
+        /// </summary>
         [Input("notes")]
         public Input<string>? Notes { get; set; }
 
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
+        /// <summary>
+        /// RADIUS group associated with this user MAC entry
+        /// </summary>
         [Input("radiusGroup")]
         public Input<string>? RadiusGroup { get; set; }
 
+        /// <summary>
+        /// Network VLAN value associated with this user MAC entry
+        /// </summary>
         [Input("vlan")]
         public Input<string>? Vlan { get; set; }
 
@@ -168,6 +199,10 @@ namespace Pulumi.JuniperMist.Org
     {
         [Input("labels")]
         private InputList<string>? _labels;
+
+        /// <summary>
+        /// Applied labels for this user MAC entry
+        /// </summary>
         public InputList<string> Labels
         {
             get => _labels ?? (_labels = new InputList<string>());
@@ -175,23 +210,35 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Only non-local-admin MAC is accepted
+        /// Client MAC address for this entry. Only non-local-admin MAC addresses are accepted
         /// </summary>
         [Input("mac")]
         public Input<string>? Mac { get; set; }
 
+        /// <summary>
+        /// Display name for this user MAC entry
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Free-form notes about this user MAC entry
+        /// </summary>
         [Input("notes")]
         public Input<string>? Notes { get; set; }
 
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
+        /// <summary>
+        /// RADIUS group associated with this user MAC entry
+        /// </summary>
         [Input("radiusGroup")]
         public Input<string>? RadiusGroup { get; set; }
 
+        /// <summary>
+        /// Network VLAN value associated with this user MAC entry
+        /// </summary>
         [Input("vlan")]
         public Input<string>? Vlan { get; set; }
 

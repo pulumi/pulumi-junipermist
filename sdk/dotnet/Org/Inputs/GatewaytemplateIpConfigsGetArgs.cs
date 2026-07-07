@@ -12,15 +12,27 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class GatewaytemplateIpConfigsGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Static IPv4 address for the gateway network interface when `Type`==`Static`
+        /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
+        /// <summary>
+        /// Static IPv6 address for the gateway network interface when `Type6`==`Static`
+        /// </summary>
         [Input("ip6")]
         public Input<string>? Ip6 { get; set; }
 
+        /// <summary>
+        /// IPv4 netmask or prefix length for the gateway network interface when `Type`==`Static`
+        /// </summary>
         [Input("netmask")]
         public Input<string>? Netmask { get; set; }
 
+        /// <summary>
+        /// IPv6 netmask or prefix length for the gateway network interface when `Type6`==`Static`
+        /// </summary>
         [Input("netmask6")]
         public Input<string>? Netmask6 { get; set; }
 
@@ -28,7 +40,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _secondaryIps;
 
         /// <summary>
-        /// Optional list of secondary IPs in CIDR format
+        /// Additional IPv4 addresses in CIDR notation for this gateway network interface
         /// </summary>
         public InputList<string> SecondaryIps
         {
@@ -37,13 +49,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// enum: `Dhcp`, `Static`
+        /// IPv4 address assignment mode for this gateway network interface
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// enum: `Autoconf`, `Dhcp`, `Disabled`, `Static`
+        /// IPv6 address assignment mode for this gateway network interface
         /// </summary>
         [Input("type6")]
         public Input<string>? Type6 { get; set; }

@@ -16,22 +16,30 @@ public final class WlanScheduleArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final WlanScheduleArgs Empty = new WlanScheduleArgs();
 
+    /**
+     * Whether the WLAN operating schedule is enabled
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether the WLAN operating schedule is enabled
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
     /**
-     * Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+     * Time ranges when the WLAN is scheduled to operate
      * 
      */
     @Import(name="hours")
     private @Nullable Output<WlanScheduleHoursArgs> hours;
 
     /**
-     * @return Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+     * @return Time ranges when the WLAN is scheduled to operate
      * 
      */
     public Optional<Output<WlanScheduleHoursArgs>> hours() {
@@ -63,17 +71,29 @@ public final class WlanScheduleArgs extends com.pulumi.resources.ResourceArgs {
             $ = new WlanScheduleArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Whether the WLAN operating schedule is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether the WLAN operating schedule is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
         /**
-         * @param hours Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+         * @param hours Time ranges when the WLAN is scheduled to operate
          * 
          * @return builder
          * 
@@ -84,7 +104,7 @@ public final class WlanScheduleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hours Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+         * @param hours Time ranges when the WLAN is scheduled to operate
          * 
          * @return builder
          * 

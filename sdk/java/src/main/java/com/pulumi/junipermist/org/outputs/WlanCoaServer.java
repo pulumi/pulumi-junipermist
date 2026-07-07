@@ -18,9 +18,25 @@ public final class WlanCoaServer {
      * 
      */
     private @Nullable Boolean disableEventTimestampCheck;
+    /**
+     * @return Whether this RADIUS CoA server is enabled
+     * 
+     */
     private @Nullable Boolean enabled;
+    /**
+     * @return Server IPv4 address for RADIUS CoA messages
+     * 
+     */
     private String ip;
+    /**
+     * @return UDP port used to send RADIUS CoA messages to the server
+     * 
+     */
     private @Nullable String port;
+    /**
+     * @return Shared secret used to authenticate RADIUS CoA messages
+     * 
+     */
     private String secret;
 
     private WlanCoaServer() {}
@@ -31,15 +47,31 @@ public final class WlanCoaServer {
     public Optional<Boolean> disableEventTimestampCheck() {
         return Optional.ofNullable(this.disableEventTimestampCheck);
     }
+    /**
+     * @return Whether this RADIUS CoA server is enabled
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return Server IPv4 address for RADIUS CoA messages
+     * 
+     */
     public String ip() {
         return this.ip;
     }
+    /**
+     * @return UDP port used to send RADIUS CoA messages to the server
+     * 
+     */
     public Optional<String> port() {
         return Optional.ofNullable(this.port);
     }
+    /**
+     * @return Shared secret used to authenticate RADIUS CoA messages
+     * 
+     */
     public String secret() {
         return this.secret;
     }

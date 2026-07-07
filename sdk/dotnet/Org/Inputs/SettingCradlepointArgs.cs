@@ -12,11 +12,18 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class SettingCradlepointArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Cradlepoint API ID used by Mist for the integration
+        /// </summary>
         [Input("cpApiId")]
         public Input<string>? CpApiId { get; set; }
 
         [Input("cpApiKey")]
         private Input<string>? _cpApiKey;
+
+        /// <summary>
+        /// Cradlepoint API key paired with the Cradlepoint API ID
+        /// </summary>
         public Input<string>? CpApiKey
         {
             get => _cpApiKey;
@@ -27,11 +34,18 @@ namespace Pulumi.JuniperMist.Org.Inputs
             }
         }
 
+        /// <summary>
+        /// Cradlepoint ECM API ID used by Mist for the integration
+        /// </summary>
         [Input("ecmApiId")]
         public Input<string>? EcmApiId { get; set; }
 
         [Input("ecmApiKey")]
         private Input<string>? _ecmApiKey;
+
+        /// <summary>
+        /// Cradlepoint ECM API key paired with the ECM API ID
+        /// </summary>
         public Input<string>? EcmApiKey
         {
             get => _ecmApiKey;
@@ -42,6 +56,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
             }
         }
 
+        /// <summary>
+        /// Whether Mist uses Cradlepoint LLDP data to link routers to Mist sites and devices
+        /// </summary>
         [Input("enableLldp")]
         public Input<bool>? EnableLldp { get; set; }
 

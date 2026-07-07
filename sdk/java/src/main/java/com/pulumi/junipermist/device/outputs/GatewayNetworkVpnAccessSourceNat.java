@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GatewayNetworkVpnAccessSourceNat {
+    /**
+     * @return External source NAT IP or subnet used when spoke hosts must be reachable from the hub
+     * 
+     */
     private @Nullable String externalIp;
 
     private GatewayNetworkVpnAccessSourceNat() {}
+    /**
+     * @return External source NAT IP or subnet used when spoke hosts must be reachable from the hub
+     * 
+     */
     public Optional<String> externalIp() {
         return Optional.ofNullable(this.externalIp);
     }

@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GatewayPortMirroring {
+    /**
+     * @return Mirroring rule that copies ingress traffic from source ports to an output port
+     * 
+     */
     private @Nullable GatewayPortMirroringPortMirror portMirror;
 
     private GatewayPortMirroring() {}
+    /**
+     * @return Mirroring rule that copies ingress traffic from source ports to an output port
+     * 
+     */
     public Optional<GatewayPortMirroringPortMirror> portMirror() {
         return Optional.ofNullable(this.portMirror);
     }

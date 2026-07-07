@@ -17,8 +17,20 @@ public final class SwitchIpConfig {
      * 
      */
     private @Nullable List<String> dns;
+    /**
+     * @return DNS search suffixes configured for Junos management traffic
+     * 
+     */
     private @Nullable List<String> dnsSuffixes;
+    /**
+     * @return Default gateway IPv4 address for this Junos IP configuration
+     * 
+     */
     private @Nullable String gateway;
+    /**
+     * @return Configured IPv4 address for this Junos IP configuration
+     * 
+     */
     private @Nullable String ip;
     /**
      * @return Used only if `subnet` is not specified in `networks`
@@ -26,12 +38,12 @@ public final class SwitchIpConfig {
      */
     private @Nullable String netmask;
     /**
-     * @return Network where this mgmt IP reside, this will be used as default network for outbound-ssh, dns, ntp, dns, tacplus, radius, syslog, snmp
+     * @return Management network for this IP configuration; used as the default source network for outbound SSH, DNS, NTP, TACACS+, RADIUS, syslog, and SNMP
      * 
      */
     private @Nullable String network;
     /**
-     * @return enum: `dhcp`, `static`
+     * @return IP assignment mode for this Junos IP configuration
      * 
      */
     private @Nullable String type;
@@ -44,12 +56,24 @@ public final class SwitchIpConfig {
     public List<String> dns() {
         return this.dns == null ? List.of() : this.dns;
     }
+    /**
+     * @return DNS search suffixes configured for Junos management traffic
+     * 
+     */
     public List<String> dnsSuffixes() {
         return this.dnsSuffixes == null ? List.of() : this.dnsSuffixes;
     }
+    /**
+     * @return Default gateway IPv4 address for this Junos IP configuration
+     * 
+     */
     public Optional<String> gateway() {
         return Optional.ofNullable(this.gateway);
     }
+    /**
+     * @return Configured IPv4 address for this Junos IP configuration
+     * 
+     */
     public Optional<String> ip() {
         return Optional.ofNullable(this.ip);
     }
@@ -61,14 +85,14 @@ public final class SwitchIpConfig {
         return Optional.ofNullable(this.netmask);
     }
     /**
-     * @return Network where this mgmt IP reside, this will be used as default network for outbound-ssh, dns, ntp, dns, tacplus, radius, syslog, snmp
+     * @return Management network for this IP configuration; used as the default source network for outbound SSH, DNS, NTP, TACACS+, RADIUS, syslog, and SNMP
      * 
      */
     public Optional<String> network() {
         return Optional.ofNullable(this.network);
     }
     /**
-     * @return enum: `dhcp`, `static`
+     * @return IP assignment mode for this Junos IP configuration
      * 
      */
     public Optional<String> type() {

@@ -16,22 +16,30 @@ public final class GatewaytemplateServicePolicySkyatpDnsTunnelDetectionArgs exte
 
     public static final GatewaytemplateServicePolicySkyatpDnsTunnelDetectionArgs Empty = new GatewaytemplateServicePolicySkyatpDnsTunnelDetectionArgs();
 
+    /**
+     * Whether Sky ATP DNS tunneling detection is enabled
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether Sky ATP DNS tunneling detection is enabled
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
     /**
-     * enum: `default`, `standard`, `strict`
+     * Sky ATP DNS tunneling detection profile to apply
      * 
      */
     @Import(name="profile")
     private @Nullable Output<String> profile;
 
     /**
-     * @return enum: `default`, `standard`, `strict`
+     * @return Sky ATP DNS tunneling detection profile to apply
      * 
      */
     public Optional<Output<String>> profile() {
@@ -63,17 +71,29 @@ public final class GatewaytemplateServicePolicySkyatpDnsTunnelDetectionArgs exte
             $ = new GatewaytemplateServicePolicySkyatpDnsTunnelDetectionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Whether Sky ATP DNS tunneling detection is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether Sky ATP DNS tunneling detection is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
         /**
-         * @param profile enum: `default`, `standard`, `strict`
+         * @param profile Sky ATP DNS tunneling detection profile to apply
          * 
          * @return builder
          * 
@@ -84,7 +104,7 @@ public final class GatewaytemplateServicePolicySkyatpDnsTunnelDetectionArgs exte
         }
 
         /**
-         * @param profile enum: `default`, `standard`, `strict`
+         * @param profile Sky ATP DNS tunneling detection profile to apply
          * 
          * @return builder
          * 

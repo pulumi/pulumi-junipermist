@@ -13,21 +13,57 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class NetworktemplateSnmpConfig
     {
+        /// <summary>
+        /// SNMP client allowlists that can be referenced by communities
+        /// </summary>
         public readonly ImmutableArray<Outputs.NetworktemplateSnmpConfigClientList> ClientLists;
+        /// <summary>
+        /// Administrative contact string advertised through SNMP
+        /// </summary>
         public readonly string? Contact;
+        /// <summary>
+        /// Device description string advertised through SNMP
+        /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// Whether SNMP is enabled
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// SNMP engine ID used for SNMPv3
+        /// </summary>
         public readonly string? EngineId;
         /// <summary>
-        /// enum: `Local`, `UseMacAddress`
+        /// Method used to derive the SNMP engine ID
         /// </summary>
         public readonly string? EngineIdType;
+        /// <summary>
+        /// Physical location string advertised through SNMP
+        /// </summary>
         public readonly string? Location;
+        /// <summary>
+        /// System name advertised through SNMP
+        /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// Management network used for SNMP traffic
+        /// </summary>
         public readonly string? Network;
+        /// <summary>
+        /// SNMP trap group definitions
+        /// </summary>
         public readonly ImmutableArray<Outputs.NetworktemplateSnmpConfigTrapGroup> TrapGroups;
+        /// <summary>
+        /// SNMPv2c community configuration entries for this SNMP profile
+        /// </summary>
         public readonly ImmutableArray<Outputs.NetworktemplateSnmpConfigV2cConfig> V2cConfigs;
+        /// <summary>
+        /// SNMPv3 user, VACM, notify, and target configuration
+        /// </summary>
         public readonly Outputs.NetworktemplateSnmpConfigV3Config? V3Config;
+        /// <summary>
+        /// SNMP MIB view definitions
+        /// </summary>
         public readonly ImmutableArray<Outputs.NetworktemplateSnmpConfigView> Views;
 
         [OutputConstructor]

@@ -18,65 +18,161 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SwitchSnmpConfig {
+    /**
+     * @return SNMP client allowlists that can be referenced by communities
+     * 
+     */
     private @Nullable List<SwitchSnmpConfigClientList> clientLists;
+    /**
+     * @return Administrative contact string advertised through SNMP
+     * 
+     */
     private @Nullable String contact;
+    /**
+     * @return Device description string advertised through SNMP
+     * 
+     */
     private @Nullable String description;
+    /**
+     * @return Whether SNMP is enabled
+     * 
+     */
     private @Nullable Boolean enabled;
+    /**
+     * @return SNMP engine ID used for SNMPv3
+     * 
+     */
     private @Nullable String engineId;
     /**
-     * @return enum: `local`, `useMacAddress`
+     * @return Method used to derive the SNMP engine ID
      * 
      */
     private @Nullable String engineIdType;
+    /**
+     * @return Physical location string advertised through SNMP
+     * 
+     */
     private @Nullable String location;
+    /**
+     * @return System name advertised through SNMP
+     * 
+     */
     private @Nullable String name;
+    /**
+     * @return Management network used for SNMP traffic
+     * 
+     */
     private @Nullable String network;
+    /**
+     * @return SNMP trap group definitions
+     * 
+     */
     private @Nullable List<SwitchSnmpConfigTrapGroup> trapGroups;
+    /**
+     * @return SNMPv2c community configuration entries for this SNMP profile
+     * 
+     */
     private @Nullable List<SwitchSnmpConfigV2cConfig> v2cConfigs;
+    /**
+     * @return SNMPv3 user, VACM, notify, and target configuration
+     * 
+     */
     private @Nullable SwitchSnmpConfigV3Config v3Config;
+    /**
+     * @return SNMP MIB view definitions
+     * 
+     */
     private @Nullable List<SwitchSnmpConfigView> views;
 
     private SwitchSnmpConfig() {}
+    /**
+     * @return SNMP client allowlists that can be referenced by communities
+     * 
+     */
     public List<SwitchSnmpConfigClientList> clientLists() {
         return this.clientLists == null ? List.of() : this.clientLists;
     }
+    /**
+     * @return Administrative contact string advertised through SNMP
+     * 
+     */
     public Optional<String> contact() {
         return Optional.ofNullable(this.contact);
     }
+    /**
+     * @return Device description string advertised through SNMP
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return Whether SNMP is enabled
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return SNMP engine ID used for SNMPv3
+     * 
+     */
     public Optional<String> engineId() {
         return Optional.ofNullable(this.engineId);
     }
     /**
-     * @return enum: `local`, `useMacAddress`
+     * @return Method used to derive the SNMP engine ID
      * 
      */
     public Optional<String> engineIdType() {
         return Optional.ofNullable(this.engineIdType);
     }
+    /**
+     * @return Physical location string advertised through SNMP
+     * 
+     */
     public Optional<String> location() {
         return Optional.ofNullable(this.location);
     }
+    /**
+     * @return System name advertised through SNMP
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return Management network used for SNMP traffic
+     * 
+     */
     public Optional<String> network() {
         return Optional.ofNullable(this.network);
     }
+    /**
+     * @return SNMP trap group definitions
+     * 
+     */
     public List<SwitchSnmpConfigTrapGroup> trapGroups() {
         return this.trapGroups == null ? List.of() : this.trapGroups;
     }
+    /**
+     * @return SNMPv2c community configuration entries for this SNMP profile
+     * 
+     */
     public List<SwitchSnmpConfigV2cConfig> v2cConfigs() {
         return this.v2cConfigs == null ? List.of() : this.v2cConfigs;
     }
+    /**
+     * @return SNMPv3 user, VACM, notify, and target configuration
+     * 
+     */
     public Optional<SwitchSnmpConfigV3Config> v3Config() {
         return Optional.ofNullable(this.v3Config);
     }
+    /**
+     * @return SNMP MIB view definitions
+     * 
+     */
     public List<SwitchSnmpConfigView> views() {
         return this.views == null ? List.of() : this.views;
     }

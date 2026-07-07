@@ -12,58 +12,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewaytemplateTunnelConfigsIkeProposal {
     /**
-     * @return enum: `md5`, `sha1`, `sha2`
+     * @return Integrity algorithm used by this IKE proposal
      * 
      */
     private @Nullable String authAlgo;
     /**
-     * @return enum:
-     *   * 1
-     *   * 2 (1024-bit)
-     *   * 5
-     *   * 14 (default, 2048-bit)
-     *   * 15 (3072-bit)
-     *   * 16 (4096-bit)
-     *   * 19 (256-bit ECP)
-     *   * 20 (384-bit ECP)
-     *   * 21 (521-bit ECP)
-     *   * 24 (2048-bit ECP)
+     * @return Diffie-Hellman group used by this IKE proposal
      * 
      */
     private @Nullable String dhGroup;
     /**
-     * @return enum: `3des`, `aes128`, `aes256`, `aesGcm128`, `aesGcm256`
+     * @return Cipher algorithm used by this IKE proposal
      * 
      */
     private @Nullable String encAlgo;
 
     private GatewaytemplateTunnelConfigsIkeProposal() {}
     /**
-     * @return enum: `md5`, `sha1`, `sha2`
+     * @return Integrity algorithm used by this IKE proposal
      * 
      */
     public Optional<String> authAlgo() {
         return Optional.ofNullable(this.authAlgo);
     }
     /**
-     * @return enum:
-     *   * 1
-     *   * 2 (1024-bit)
-     *   * 5
-     *   * 14 (default, 2048-bit)
-     *   * 15 (3072-bit)
-     *   * 16 (4096-bit)
-     *   * 19 (256-bit ECP)
-     *   * 20 (384-bit ECP)
-     *   * 21 (521-bit ECP)
-     *   * 24 (2048-bit ECP)
+     * @return Diffie-Hellman group used by this IKE proposal
      * 
      */
     public Optional<String> dhGroup() {
         return Optional.ofNullable(this.dhGroup);
     }
     /**
-     * @return enum: `3des`, `aes128`, `aes256`, `aesGcm128`, `aesGcm256`
+     * @return Cipher algorithm used by this IKE proposal
      * 
      */
     public Optional<String> encAlgo() {

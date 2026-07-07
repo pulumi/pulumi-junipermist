@@ -18,6 +18,9 @@ namespace Pulumi.JuniperMist.Device.Inputs
         [Input("disableIgmp")]
         public Input<bool>? DisableIgmp { get; set; }
 
+        /// <summary>
+        /// Whether multicast support is enabled for this network
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
@@ -25,7 +28,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputMap<Inputs.GatewayNetworkMulticastGroupsGetArgs>? _groups;
 
         /// <summary>
-        /// Group address to RP (rendezvous point) mapping. Property Key is the CIDR (example "225.1.0.3/32")
+        /// Multicast group-to-RP mappings for this network
         /// </summary>
         public InputMap<Inputs.GatewayNetworkMulticastGroupsGetArgs> Groups
         {

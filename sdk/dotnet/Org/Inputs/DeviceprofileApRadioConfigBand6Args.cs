@@ -12,26 +12,32 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class DeviceprofileApRadioConfigBand6Args : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether RRM may disable the 6 GHz radio when optimizing RF settings
+        /// </summary>
         [Input("allowRrmDisable")]
         public Input<bool>? AllowRrmDisable { get; set; }
 
+        /// <summary>
+        /// External antenna gain for the 6 GHz radio
+        /// </summary>
         [Input("antGain")]
         public Input<int>? AntGain { get; set; }
 
         /// <summary>
-        /// enum: `Narrow`, `Medium`, `Wide`
+        /// Beam pattern used by the 6 GHz radio antenna
         /// </summary>
         [Input("antennaBeamPattern")]
         public Input<string>? AntennaBeamPattern { get; set; }
 
         /// <summary>
-        /// enum: `1x1`, `2x2`, `3x3`, `4x4`, `Default`
+        /// Radio chain mode for the 6 GHz radio
         /// </summary>
         [Input("antennaMode")]
         public Input<string>? AntennaMode { get; set; }
 
         /// <summary>
-        /// channel width for the 6GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`, `160`
+        /// Channel width configured for the 6 GHz radio
         /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
@@ -46,7 +52,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<int>? _channels;
 
         /// <summary>
-        /// For RFTemplates. List of channels, null or empty array means auto
+        /// Allowed channel list for the 6 GHz radio; null or an empty array uses automatic selection
         /// </summary>
         public InputList<int> Channels
         {
@@ -61,25 +67,25 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// TX power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+        /// Radio Tx power, in dBm. Can be an integer 0-25 for static power configuration, or `Null` or unset for auto power mode
         /// </summary>
         [Input("power")]
         public Input<int>? Power { get; set; }
 
         /// <summary>
-        /// When power=0, max tx power to use, HW-specific values will be used if not set
+        /// When power=null/unset, max tx power to use, HW-specific values will be used if not set
         /// </summary>
         [Input("powerMax")]
         public Input<int>? PowerMax { get; set; }
 
         /// <summary>
-        /// When power=0, min tx power to use, HW-specific values will be used if not set
+        /// When power=null/unset, min tx power to use, HW-specific values will be used if not set
         /// </summary>
         [Input("powerMin")]
         public Input<int>? PowerMin { get; set; }
 
         /// <summary>
-        /// enum: `Auto`, `Long`, `Short`
+        /// 802.11 preamble mode used by the 6 GHz radio
         /// </summary>
         [Input("preamble")]
         public Input<string>? Preamble { get; set; }

@@ -23,6 +23,9 @@ class SitegroupArgs:
                  name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Sitegroup resource.
+
+        :param pulumi.Input[_builtins.str] org_id: Identifier of the org that owns the site group
+        :param pulumi.Input[_builtins.str] name: Display name of the site group
         """
         pulumi.set(__self__, "org_id", org_id)
         if name is not None:
@@ -31,6 +34,9 @@ class SitegroupArgs:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Identifier of the org that owns the site group
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -40,6 +46,9 @@ class SitegroupArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Display name of the site group
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -54,6 +63,9 @@ class _SitegroupState:
                  org_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Sitegroup resources.
+
+        :param pulumi.Input[_builtins.str] name: Display name of the site group
+        :param pulumi.Input[_builtins.str] org_id: Identifier of the org that owns the site group
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -63,6 +75,9 @@ class _SitegroupState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Display name of the site group
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -72,6 +87,9 @@ class _SitegroupState:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Identifier of the org that owns the site group
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -117,6 +135,8 @@ class Sitegroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] name: Display name of the site group
+        :param pulumi.Input[_builtins.str] org_id: Identifier of the org that owns the site group
         """
         ...
     @overload
@@ -200,6 +220,8 @@ class Sitegroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] name: Display name of the site group
+        :param pulumi.Input[_builtins.str] org_id: Identifier of the org that owns the site group
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -212,10 +234,16 @@ class Sitegroup(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
+        """
+        Display name of the site group
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Identifier of the org that owns the site group
+        """
         return pulumi.get(self, "org_id")
 

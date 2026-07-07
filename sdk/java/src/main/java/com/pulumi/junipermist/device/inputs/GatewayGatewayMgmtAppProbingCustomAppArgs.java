@@ -18,72 +18,104 @@ public final class GatewayGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
     public static final GatewayGatewayMgmtAppProbingCustomAppArgs Empty = new GatewayGatewayMgmtAppProbingCustomAppArgs();
 
     /**
-     * Required if `protocol`==`icmp`
+     * Required if `protocol`==`icmp`. IP address probed by the ICMP custom app
      * 
      */
     @Import(name="address")
     private @Nullable Output<String> address;
 
     /**
-     * @return Required if `protocol`==`icmp`
+     * @return Required if `protocol`==`icmp`. IP address probed by the ICMP custom app
      * 
      */
     public Optional<Output<String>> address() {
         return Optional.ofNullable(this.address);
     }
 
+    /**
+     * Category label used for this custom application probe
+     * 
+     */
     @Import(name="appType")
     private @Nullable Output<String> appType;
 
+    /**
+     * @return Category label used for this custom application probe
+     * 
+     */
     public Optional<Output<String>> appType() {
         return Optional.ofNullable(this.appType);
     }
 
     /**
-     * If `protocol`==`http`
+     * If `protocol`==`http`. Hostnames or URLs probed by this custom app
      * 
      */
     @Import(name="hostnames")
     private @Nullable Output<List<String>> hostnames;
 
     /**
-     * @return If `protocol`==`http`
+     * @return If `protocol`==`http`. Hostnames or URLs probed by this custom app
      * 
      */
     public Optional<Output<List<String>>> hostnames() {
         return Optional.ofNullable(this.hostnames);
     }
 
+    /**
+     * Stable key used to identify this custom application probe
+     * 
+     */
     @Import(name="key")
     private @Nullable Output<String> key;
 
+    /**
+     * @return Stable key used to identify this custom application probe
+     * 
+     */
     public Optional<Output<String>> key() {
         return Optional.ofNullable(this.key);
     }
 
+    /**
+     * Display name for this custom application probe
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Display name for this custom application probe
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Gateway network used as the source context for this probe
+     * 
+     */
     @Import(name="network")
     private @Nullable Output<String> network;
 
+    /**
+     * @return Gateway network used as the source context for this probe
+     * 
+     */
     public Optional<Output<String>> network() {
         return Optional.ofNullable(this.network);
     }
 
     /**
-     * If `protocol`==`icmp`
+     * If `protocol`==`icmp`. ICMP packet size used by this custom app probe
      * 
      */
     @Import(name="packetSize")
     private @Nullable Output<Integer> packetSize;
 
     /**
-     * @return If `protocol`==`icmp`
+     * @return If `protocol`==`icmp`. ICMP packet size used by this custom app probe
      * 
      */
     public Optional<Output<Integer>> packetSize() {
@@ -91,14 +123,14 @@ public final class GatewayGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
     }
 
     /**
-     * enum: `http`, `icmp`
+     * Probe protocol used by this custom application definition
      * 
      */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
     /**
-     * @return enum: `http`, `icmp`
+     * @return Probe protocol used by this custom application definition
      * 
      */
     public Optional<Output<String>> protocol() {
@@ -106,23 +138,31 @@ public final class GatewayGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
     }
 
     /**
-     * If `protocol`==`http`
+     * If `protocol`==`http`. HTTP URL or hostname probed by this custom app
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return If `protocol`==`http`
+     * @return If `protocol`==`http`. HTTP URL or hostname probed by this custom app
      * 
      */
     public Optional<Output<String>> url() {
         return Optional.ofNullable(this.url);
     }
 
+    /**
+     * Gateway VRF used as the source context for this probe
+     * 
+     */
     @Import(name="vrf")
     private @Nullable Output<String> vrf;
 
+    /**
+     * @return Gateway VRF used as the source context for this probe
+     * 
+     */
     public Optional<Output<String>> vrf() {
         return Optional.ofNullable(this.vrf);
     }
@@ -161,7 +201,7 @@ public final class GatewayGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
         }
 
         /**
-         * @param address Required if `protocol`==`icmp`
+         * @param address Required if `protocol`==`icmp`. IP address probed by the ICMP custom app
          * 
          * @return builder
          * 
@@ -172,7 +212,7 @@ public final class GatewayGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
         }
 
         /**
-         * @param address Required if `protocol`==`icmp`
+         * @param address Required if `protocol`==`icmp`. IP address probed by the ICMP custom app
          * 
          * @return builder
          * 
@@ -181,17 +221,29 @@ public final class GatewayGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
             return address(Output.of(address));
         }
 
+        /**
+         * @param appType Category label used for this custom application probe
+         * 
+         * @return builder
+         * 
+         */
         public Builder appType(@Nullable Output<String> appType) {
             $.appType = appType;
             return this;
         }
 
+        /**
+         * @param appType Category label used for this custom application probe
+         * 
+         * @return builder
+         * 
+         */
         public Builder appType(String appType) {
             return appType(Output.of(appType));
         }
 
         /**
-         * @param hostnames If `protocol`==`http`
+         * @param hostnames If `protocol`==`http`. Hostnames or URLs probed by this custom app
          * 
          * @return builder
          * 
@@ -202,7 +254,7 @@ public final class GatewayGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
         }
 
         /**
-         * @param hostnames If `protocol`==`http`
+         * @param hostnames If `protocol`==`http`. Hostnames or URLs probed by this custom app
          * 
          * @return builder
          * 
@@ -212,7 +264,7 @@ public final class GatewayGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
         }
 
         /**
-         * @param hostnames If `protocol`==`http`
+         * @param hostnames If `protocol`==`http`. Hostnames or URLs probed by this custom app
          * 
          * @return builder
          * 
@@ -221,35 +273,71 @@ public final class GatewayGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
             return hostnames(List.of(hostnames));
         }
 
+        /**
+         * @param key Stable key used to identify this custom application probe
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(@Nullable Output<String> key) {
             $.key = key;
             return this;
         }
 
+        /**
+         * @param key Stable key used to identify this custom application probe
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(String key) {
             return key(Output.of(key));
         }
 
+        /**
+         * @param name Display name for this custom application probe
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Display name for this custom application probe
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param network Gateway network used as the source context for this probe
+         * 
+         * @return builder
+         * 
+         */
         public Builder network(@Nullable Output<String> network) {
             $.network = network;
             return this;
         }
 
+        /**
+         * @param network Gateway network used as the source context for this probe
+         * 
+         * @return builder
+         * 
+         */
         public Builder network(String network) {
             return network(Output.of(network));
         }
 
         /**
-         * @param packetSize If `protocol`==`icmp`
+         * @param packetSize If `protocol`==`icmp`. ICMP packet size used by this custom app probe
          * 
          * @return builder
          * 
@@ -260,7 +348,7 @@ public final class GatewayGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
         }
 
         /**
-         * @param packetSize If `protocol`==`icmp`
+         * @param packetSize If `protocol`==`icmp`. ICMP packet size used by this custom app probe
          * 
          * @return builder
          * 
@@ -270,7 +358,7 @@ public final class GatewayGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
         }
 
         /**
-         * @param protocol enum: `http`, `icmp`
+         * @param protocol Probe protocol used by this custom application definition
          * 
          * @return builder
          * 
@@ -281,7 +369,7 @@ public final class GatewayGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
         }
 
         /**
-         * @param protocol enum: `http`, `icmp`
+         * @param protocol Probe protocol used by this custom application definition
          * 
          * @return builder
          * 
@@ -291,7 +379,7 @@ public final class GatewayGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
         }
 
         /**
-         * @param url If `protocol`==`http`
+         * @param url If `protocol`==`http`. HTTP URL or hostname probed by this custom app
          * 
          * @return builder
          * 
@@ -302,7 +390,7 @@ public final class GatewayGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
         }
 
         /**
-         * @param url If `protocol`==`http`
+         * @param url If `protocol`==`http`. HTTP URL or hostname probed by this custom app
          * 
          * @return builder
          * 
@@ -311,11 +399,23 @@ public final class GatewayGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
             return url(Output.of(url));
         }
 
+        /**
+         * @param vrf Gateway VRF used as the source context for this probe
+         * 
+         * @return builder
+         * 
+         */
         public Builder vrf(@Nullable Output<String> vrf) {
             $.vrf = vrf;
             return this;
         }
 
+        /**
+         * @param vrf Gateway VRF used as the source context for this probe
+         * 
+         * @return builder
+         * 
+         */
         public Builder vrf(String vrf) {
             return vrf(Output.of(vrf));
         }

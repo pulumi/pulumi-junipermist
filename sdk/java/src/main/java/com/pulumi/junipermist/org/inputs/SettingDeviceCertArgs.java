@@ -14,16 +14,32 @@ public final class SettingDeviceCertArgs extends com.pulumi.resources.ResourceAr
 
     public static final SettingDeviceCertArgs Empty = new SettingDeviceCertArgs();
 
+    /**
+     * PEM-encoded common device certificate used by organization settings
+     * 
+     */
     @Import(name="cert", required=true)
     private Output<String> cert;
 
+    /**
+     * @return PEM-encoded common device certificate used by organization settings
+     * 
+     */
     public Output<String> cert() {
         return this.cert;
     }
 
+    /**
+     * Private key paired with the common device certificate
+     * 
+     */
     @Import(name="key", required=true)
     private Output<String> key;
 
+    /**
+     * @return Private key paired with the common device certificate
+     * 
+     */
     public Output<String> key() {
         return this.key;
     }
@@ -53,20 +69,44 @@ public final class SettingDeviceCertArgs extends com.pulumi.resources.ResourceAr
             $ = new SettingDeviceCertArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param cert PEM-encoded common device certificate used by organization settings
+         * 
+         * @return builder
+         * 
+         */
         public Builder cert(Output<String> cert) {
             $.cert = cert;
             return this;
         }
 
+        /**
+         * @param cert PEM-encoded common device certificate used by organization settings
+         * 
+         * @return builder
+         * 
+         */
         public Builder cert(String cert) {
             return cert(Output.of(cert));
         }
 
+        /**
+         * @param key Private key paired with the common device certificate
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(Output<String> key) {
             $.key = key;
             return this;
         }
 
+        /**
+         * @param key Private key paired with the common device certificate
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(String key) {
             return key(Output.of(key));
         }

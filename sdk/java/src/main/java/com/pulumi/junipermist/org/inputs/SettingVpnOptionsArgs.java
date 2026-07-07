@@ -17,16 +17,32 @@ public final class SettingVpnOptionsArgs extends com.pulumi.resources.ResourceAr
 
     public static final SettingVpnOptionsArgs Empty = new SettingVpnOptionsArgs();
 
+    /**
+     * Base BGP autonomous system number used for generated VPN configurations
+     * 
+     */
     @Import(name="asBase")
     private @Nullable Output<Integer> asBase;
 
+    /**
+     * @return Base BGP autonomous system number used for generated VPN configurations
+     * 
+     */
     public Optional<Output<Integer>> asBase() {
         return Optional.ofNullable(this.asBase);
     }
 
+    /**
+     * Whether IPv6 is enabled for organization VPN configuration
+     * 
+     */
     @Import(name="enableIpv6")
     private @Nullable Output<Boolean> enableIpv6;
 
+    /**
+     * @return Whether IPv6 is enabled for organization VPN configuration
+     * 
+     */
     public Optional<Output<Boolean>> enableIpv6() {
         return Optional.ofNullable(this.enableIpv6);
     }
@@ -72,20 +88,44 @@ public final class SettingVpnOptionsArgs extends com.pulumi.resources.ResourceAr
             $ = new SettingVpnOptionsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param asBase Base BGP autonomous system number used for generated VPN configurations
+         * 
+         * @return builder
+         * 
+         */
         public Builder asBase(@Nullable Output<Integer> asBase) {
             $.asBase = asBase;
             return this;
         }
 
+        /**
+         * @param asBase Base BGP autonomous system number used for generated VPN configurations
+         * 
+         * @return builder
+         * 
+         */
         public Builder asBase(Integer asBase) {
             return asBase(Output.of(asBase));
         }
 
+        /**
+         * @param enableIpv6 Whether IPv6 is enabled for organization VPN configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableIpv6(@Nullable Output<Boolean> enableIpv6) {
             $.enableIpv6 = enableIpv6;
             return this;
         }
 
+        /**
+         * @param enableIpv6 Whether IPv6 is enabled for organization VPN configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableIpv6(Boolean enableIpv6) {
             return enableIpv6(Output.of(enableIpv6));
         }

@@ -14,11 +14,19 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingJuniperSrxAutoUpgrade {
     /**
-     * @return Property key is the SRX Hardware model (e.g. &#34;SRX4600&#34;)
+     * @return Per-SRX-model firmware versions to deploy instead of the default version
      * 
      */
     private @Nullable Map<String,String> customVersions;
+    /**
+     * @return Whether SRX auto-upgrade is enabled for newly onboarded devices
+     * 
+     */
     private @Nullable Boolean enabled;
+    /**
+     * @return Whether to take a snapshot during the SRX upgrade process
+     * 
+     */
     private @Nullable Boolean snapshot;
     /**
      * @return Firmware version to deploy (e.g. 23.4R2-S5.5). Optional, used when customVersions not specified
@@ -28,15 +36,23 @@ public final class SettingJuniperSrxAutoUpgrade {
 
     private SettingJuniperSrxAutoUpgrade() {}
     /**
-     * @return Property key is the SRX Hardware model (e.g. &#34;SRX4600&#34;)
+     * @return Per-SRX-model firmware versions to deploy instead of the default version
      * 
      */
     public Map<String,String> customVersions() {
         return this.customVersions == null ? Map.of() : this.customVersions;
     }
+    /**
+     * @return Whether SRX auto-upgrade is enabled for newly onboarded devices
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return Whether to take a snapshot during the SRX upgrade process
+     * 
+     */
     public Optional<Boolean> snapshot() {
         return Optional.ofNullable(this.snapshot);
     }

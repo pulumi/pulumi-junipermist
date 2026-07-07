@@ -22,10 +22,12 @@ __all__ = ['InventoryArgs', 'Inventory']
 class InventoryArgs:
     def __init__(__self__, *,
                  org_id: pulumi.Input[_builtins.str],
+                 disconnected_before: pulumi.Input[Optional[_builtins.int]] = None,
                  inventory: pulumi.Input[Optional[Mapping[str, pulumi.Input['InventoryInventoryArgs']]]] = None):
         """
         The set of arguments for constructing a Inventory resource.
 
+        :param pulumi.Input[_builtins.int] disconnected_before: Filter results to devices that were last disconnected before this time, in epoch seconds
         :param pulumi.Input[Mapping[str, pulumi.Input['InventoryInventoryArgs']]] inventory: Property key can be the device Claim Code or the device MAC Address:
                  * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
                  * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
@@ -33,6 +35,8 @@ class InventoryArgs:
                    >
         """
         pulumi.set(__self__, "org_id", org_id)
+        if disconnected_before is not None:
+            pulumi.set(__self__, "disconnected_before", disconnected_before)
         if inventory is not None:
             pulumi.set(__self__, "inventory", inventory)
 
@@ -44,6 +48,18 @@ class InventoryArgs:
     @org_id.setter
     def org_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "org_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="disconnectedBefore")
+    def disconnected_before(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Filter results to devices that were last disconnected before this time, in epoch seconds
+        """
+        return pulumi.get(self, "disconnected_before")
+
+    @disconnected_before.setter
+    def disconnected_before(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disconnected_before", value)
 
     @_builtins.property
     @pulumi.getter
@@ -65,21 +81,37 @@ class InventoryArgs:
 @pulumi.input_type
 class _InventoryState:
     def __init__(__self__, *,
+                 disconnected_before: pulumi.Input[Optional[_builtins.int]] = None,
                  inventory: pulumi.Input[Optional[Mapping[str, pulumi.Input['InventoryInventoryArgs']]]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Inventory resources.
 
+        :param pulumi.Input[_builtins.int] disconnected_before: Filter results to devices that were last disconnected before this time, in epoch seconds
         :param pulumi.Input[Mapping[str, pulumi.Input['InventoryInventoryArgs']]] inventory: Property key can be the device Claim Code or the device MAC Address:
                  * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
                  * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
                
                    >
         """
+        if disconnected_before is not None:
+            pulumi.set(__self__, "disconnected_before", disconnected_before)
         if inventory is not None:
             pulumi.set(__self__, "inventory", inventory)
         if org_id is not None:
             pulumi.set(__self__, "org_id", org_id)
+
+    @_builtins.property
+    @pulumi.getter(name="disconnectedBefore")
+    def disconnected_before(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Filter results to devices that were last disconnected before this time, in epoch seconds
+        """
+        return pulumi.get(self, "disconnected_before")
+
+    @disconnected_before.setter
+    def disconnected_before(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disconnected_before", value)
 
     @_builtins.property
     @pulumi.getter
@@ -113,6 +145,7 @@ class Inventory(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 disconnected_before: pulumi.Input[Optional[_builtins.int]] = None,
                  inventory: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['InventoryInventoryArgs', 'InventoryInventoryArgsDict']]]]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -162,6 +195,7 @@ class Inventory(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.int] disconnected_before: Filter results to devices that were last disconnected before this time, in epoch seconds
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['InventoryInventoryArgs', 'InventoryInventoryArgsDict']]]] inventory: Property key can be the device Claim Code or the device MAC Address:
                  * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
                  * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
@@ -233,6 +267,7 @@ class Inventory(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 disconnected_before: pulumi.Input[Optional[_builtins.int]] = None,
                  inventory: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['InventoryInventoryArgs', 'InventoryInventoryArgsDict']]]]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -244,6 +279,7 @@ class Inventory(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InventoryArgs.__new__(InventoryArgs)
 
+            __props__.__dict__["disconnected_before"] = disconnected_before
             __props__.__dict__["inventory"] = inventory
             if org_id is None and not opts.urn:
                 raise TypeError("Missing required property 'org_id'")
@@ -258,6 +294,7 @@ class Inventory(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            disconnected_before: pulumi.Input[Optional[_builtins.int]] = None,
             inventory: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['InventoryInventoryArgs', 'InventoryInventoryArgsDict']]]]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Inventory':
         """
@@ -267,6 +304,7 @@ class Inventory(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.int] disconnected_before: Filter results to devices that were last disconnected before this time, in epoch seconds
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['InventoryInventoryArgs', 'InventoryInventoryArgsDict']]]] inventory: Property key can be the device Claim Code or the device MAC Address:
                  * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
                  * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
@@ -277,9 +315,18 @@ class Inventory(pulumi.CustomResource):
 
         __props__ = _InventoryState.__new__(_InventoryState)
 
+        __props__.__dict__["disconnected_before"] = disconnected_before
         __props__.__dict__["inventory"] = inventory
         __props__.__dict__["org_id"] = org_id
         return Inventory(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="disconnectedBefore")
+    def disconnected_before(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        Filter results to devices that were last disconnected before this time, in epoch seconds
+        """
+        return pulumi.get(self, "disconnected_before")
 
     @_builtins.property
     @pulumi.getter

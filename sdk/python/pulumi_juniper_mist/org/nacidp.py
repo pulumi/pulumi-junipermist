@@ -45,36 +45,43 @@ class NacidpArgs:
                  oauth_ropc_client_secret: pulumi.Input[Optional[_builtins.str]] = None,
                  oauth_tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
                  oauth_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 openroaming_ssids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 openroaming_wba_client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 openroaming_wba_client_key: pulumi.Input[Optional[_builtins.str]] = None,
                  scim_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  scim_secret_token: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Nacidp resource.
 
-        :param pulumi.Input[_builtins.str] idp_type: enum: `ldap`, `mxedge_proxy`, `oauth`
+        :param pulumi.Input[_builtins.str] idp_type: enum: `ldap`, `mxedge_proxy`, `oauth`, `openroaming`
+        :param pulumi.Input[_builtins.str] org_id: Owning organization identifier for this NAC IDP configuration
         :param pulumi.Input[_builtins.str] group_filter: Required if `ldap_type`==`custom`, LDAP filter that will identify the type of group
         :param pulumi.Input[_builtins.str] ldap_base_dn: Required if `idp_type`==`ldap`, whole domain or a specific organization unit (container) in Search base to specify where users and groups are found in the LDAP tree
         :param pulumi.Input[_builtins.str] ldap_bind_dn: Required if `idp_type`==`ldap`, the account used to authenticate against the LDAP
         :param pulumi.Input[_builtins.str] ldap_bind_password: Required if `idp_type`==`ldap`, the password used to authenticate against the LDAP
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ldap_cacerts: Required if `idp_type`==`ldap`, list of CA certificates to validate the LDAP certificate
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ldap_cacerts: CA certificates used to validate LDAP or LDAPS server certificates. Required if `idp_type`==`ldap`
         :param pulumi.Input[_builtins.str] ldap_client_cert: If `idp_type`==`ldap`, LDAPS Client certificate
         :param pulumi.Input[_builtins.str] ldap_client_key: If `idp_type`==`ldap`, Key for the `ldap_client_cert`
-        :param pulumi.Input[_builtins.str] ldap_group_attr: If `ldap_type`==`custom`
-        :param pulumi.Input[_builtins.str] ldap_group_dn: If `ldap_type`==`custom`
+        :param pulumi.Input[_builtins.str] ldap_group_attr: Group attribute used to resolve LDAP memberships. If `ldap_type`==`custom`
+        :param pulumi.Input[_builtins.str] ldap_group_dn: Group search base used for custom LDAP group lookup. If `ldap_type`==`custom`
         :param pulumi.Input[_builtins.bool] ldap_resolve_groups: If `idp_type`==`ldap`, whether to recursively resolve LDAP groups
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ldap_server_hosts: If `idp_type`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
-        :param pulumi.Input[_builtins.str] ldap_type: if `idp_type`==`ldap`. enum: `azure`, `custom`, `google`, `okta`, `ping_identity`
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ldap_server_hosts: Server hostnames or IP addresses for LDAP or LDAPS when `idp_type`==`ldap`
+        :param pulumi.Input[_builtins.str] ldap_type: Provider template for LDAP SSO when `idp_type`==`ldap`
         :param pulumi.Input[_builtins.str] ldap_user_filter: Required if `ldap_type`==`custom`, LDAP filter that will identify the type of user
         :param pulumi.Input[_builtins.str] member_filter: Required if `ldap_type`==`custom`,LDAP filter that will identify the type of member
-        :param pulumi.Input[_builtins.str] name: Name
+        :param pulumi.Input[_builtins.str] name: Display name of the NAC IDP configuration
         :param pulumi.Input[_builtins.str] oauth_cc_client_id: Required if `idp_type`==`oauth`, Client Credentials
         :param pulumi.Input[_builtins.str] oauth_cc_client_secret: Required if `idp_type`==`oauth`, oauth*cc*client_secret is RSA private key, of the form "-----BEGIN RSA PRIVATE KEY--...."
-        :param pulumi.Input[_builtins.str] oauth_discovery_url: If `idp_type`==`oauth`
-        :param pulumi.Input[_builtins.str] oauth_ping_identity_region: enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
-        :param pulumi.Input[_builtins.str] oauth_provider_domain: If `oauth_type`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+        :param pulumi.Input[_builtins.str] oauth_discovery_url: OAuth discovery document URL used when `idp_type`==`oauth`
+        :param pulumi.Input[_builtins.str] oauth_ping_identity_region: Ping Identity region for OAuth SSO when `oauth_type`==`ping_identity`
+        :param pulumi.Input[_builtins.str] oauth_provider_domain: Provider domain for Okta OAuth SSO when `oauth_type`==`okta`
         :param pulumi.Input[_builtins.str] oauth_ropc_client_id: If `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
         :param pulumi.Input[_builtins.str] oauth_ropc_client_secret: If `oauth_type`==`azure` or `oauth_type`==`azure-gov`. oauth*ropc*client_secret can be empty
         :param pulumi.Input[_builtins.str] oauth_tenant_id: Required if `idp_type`==`oauth`, oauth*tenant*id
-        :param pulumi.Input[_builtins.str] oauth_type: if `idp_type`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `ping_identity`
+        :param pulumi.Input[_builtins.str] oauth_type: Provider type for OAuth SSO when `idp_type`==`oauth`
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] openroaming_ssids: SSIDs that support OpenRoaming, used when `idp_type`==`openroaming`
+        :param pulumi.Input[_builtins.str] openroaming_wba_client_cert: Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+        :param pulumi.Input[_builtins.str] openroaming_wba_client_key: Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
         :param pulumi.Input[_builtins.bool] scim_enabled: If `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
         :param pulumi.Input[_builtins.str] scim_secret_token: If `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
         """
@@ -128,6 +135,12 @@ class NacidpArgs:
             pulumi.set(__self__, "oauth_tenant_id", oauth_tenant_id)
         if oauth_type is not None:
             pulumi.set(__self__, "oauth_type", oauth_type)
+        if openroaming_ssids is not None:
+            pulumi.set(__self__, "openroaming_ssids", openroaming_ssids)
+        if openroaming_wba_client_cert is not None:
+            pulumi.set(__self__, "openroaming_wba_client_cert", openroaming_wba_client_cert)
+        if openroaming_wba_client_key is not None:
+            pulumi.set(__self__, "openroaming_wba_client_key", openroaming_wba_client_key)
         if scim_enabled is not None:
             pulumi.set(__self__, "scim_enabled", scim_enabled)
         if scim_secret_token is not None:
@@ -137,7 +150,7 @@ class NacidpArgs:
     @pulumi.getter(name="idpType")
     def idp_type(self) -> pulumi.Input[_builtins.str]:
         """
-        enum: `ldap`, `mxedge_proxy`, `oauth`
+        enum: `ldap`, `mxedge_proxy`, `oauth`, `openroaming`
         """
         return pulumi.get(self, "idp_type")
 
@@ -148,6 +161,9 @@ class NacidpArgs:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Owning organization identifier for this NAC IDP configuration
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -206,7 +222,7 @@ class NacidpArgs:
     @pulumi.getter(name="ldapCacerts")
     def ldap_cacerts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Required if `idp_type`==`ldap`, list of CA certificates to validate the LDAP certificate
+        CA certificates used to validate LDAP or LDAPS server certificates. Required if `idp_type`==`ldap`
         """
         return pulumi.get(self, "ldap_cacerts")
 
@@ -242,7 +258,7 @@ class NacidpArgs:
     @pulumi.getter(name="ldapGroupAttr")
     def ldap_group_attr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        If `ldap_type`==`custom`
+        Group attribute used to resolve LDAP memberships. If `ldap_type`==`custom`
         """
         return pulumi.get(self, "ldap_group_attr")
 
@@ -254,7 +270,7 @@ class NacidpArgs:
     @pulumi.getter(name="ldapGroupDn")
     def ldap_group_dn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        If `ldap_type`==`custom`
+        Group search base used for custom LDAP group lookup. If `ldap_type`==`custom`
         """
         return pulumi.get(self, "ldap_group_dn")
 
@@ -278,7 +294,7 @@ class NacidpArgs:
     @pulumi.getter(name="ldapServerHosts")
     def ldap_server_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        If `idp_type`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
+        Server hostnames or IP addresses for LDAP or LDAPS when `idp_type`==`ldap`
         """
         return pulumi.get(self, "ldap_server_hosts")
 
@@ -290,7 +306,7 @@ class NacidpArgs:
     @pulumi.getter(name="ldapType")
     def ldap_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        if `idp_type`==`ldap`. enum: `azure`, `custom`, `google`, `okta`, `ping_identity`
+        Provider template for LDAP SSO when `idp_type`==`ldap`
         """
         return pulumi.get(self, "ldap_type")
 
@@ -326,7 +342,7 @@ class NacidpArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name
+        Display name of the NAC IDP configuration
         """
         return pulumi.get(self, "name")
 
@@ -362,7 +378,7 @@ class NacidpArgs:
     @pulumi.getter(name="oauthDiscoveryUrl")
     def oauth_discovery_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        If `idp_type`==`oauth`
+        OAuth discovery document URL used when `idp_type`==`oauth`
         """
         return pulumi.get(self, "oauth_discovery_url")
 
@@ -374,7 +390,7 @@ class NacidpArgs:
     @pulumi.getter(name="oauthPingIdentityRegion")
     def oauth_ping_identity_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
+        Ping Identity region for OAuth SSO when `oauth_type`==`ping_identity`
         """
         return pulumi.get(self, "oauth_ping_identity_region")
 
@@ -386,7 +402,7 @@ class NacidpArgs:
     @pulumi.getter(name="oauthProviderDomain")
     def oauth_provider_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        If `oauth_type`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+        Provider domain for Okta OAuth SSO when `oauth_type`==`okta`
         """
         return pulumi.get(self, "oauth_provider_domain")
 
@@ -434,13 +450,49 @@ class NacidpArgs:
     @pulumi.getter(name="oauthType")
     def oauth_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        if `idp_type`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `ping_identity`
+        Provider type for OAuth SSO when `idp_type`==`oauth`
         """
         return pulumi.get(self, "oauth_type")
 
     @oauth_type.setter
     def oauth_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="openroamingSsids")
+    def openroaming_ssids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        SSIDs that support OpenRoaming, used when `idp_type`==`openroaming`
+        """
+        return pulumi.get(self, "openroaming_ssids")
+
+    @openroaming_ssids.setter
+    def openroaming_ssids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "openroaming_ssids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="openroamingWbaClientCert")
+    def openroaming_wba_client_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+        """
+        return pulumi.get(self, "openroaming_wba_client_cert")
+
+    @openroaming_wba_client_cert.setter
+    def openroaming_wba_client_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "openroaming_wba_client_cert", value)
+
+    @_builtins.property
+    @pulumi.getter(name="openroamingWbaClientKey")
+    def openroaming_wba_client_key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+        """
+        return pulumi.get(self, "openroaming_wba_client_key")
+
+    @openroaming_wba_client_key.setter
+    def openroaming_wba_client_key(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "openroaming_wba_client_key", value)
 
     @_builtins.property
     @pulumi.getter(name="scimEnabled")
@@ -495,6 +547,9 @@ class _NacidpState:
                  oauth_ropc_client_secret: pulumi.Input[Optional[_builtins.str]] = None,
                  oauth_tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
                  oauth_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 openroaming_ssids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 openroaming_wba_client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 openroaming_wba_client_key: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  scim_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  scim_secret_token: pulumi.Input[Optional[_builtins.str]] = None):
@@ -502,30 +557,34 @@ class _NacidpState:
         Input properties used for looking up and filtering Nacidp resources.
 
         :param pulumi.Input[_builtins.str] group_filter: Required if `ldap_type`==`custom`, LDAP filter that will identify the type of group
-        :param pulumi.Input[_builtins.str] idp_type: enum: `ldap`, `mxedge_proxy`, `oauth`
+        :param pulumi.Input[_builtins.str] idp_type: enum: `ldap`, `mxedge_proxy`, `oauth`, `openroaming`
         :param pulumi.Input[_builtins.str] ldap_base_dn: Required if `idp_type`==`ldap`, whole domain or a specific organization unit (container) in Search base to specify where users and groups are found in the LDAP tree
         :param pulumi.Input[_builtins.str] ldap_bind_dn: Required if `idp_type`==`ldap`, the account used to authenticate against the LDAP
         :param pulumi.Input[_builtins.str] ldap_bind_password: Required if `idp_type`==`ldap`, the password used to authenticate against the LDAP
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ldap_cacerts: Required if `idp_type`==`ldap`, list of CA certificates to validate the LDAP certificate
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ldap_cacerts: CA certificates used to validate LDAP or LDAPS server certificates. Required if `idp_type`==`ldap`
         :param pulumi.Input[_builtins.str] ldap_client_cert: If `idp_type`==`ldap`, LDAPS Client certificate
         :param pulumi.Input[_builtins.str] ldap_client_key: If `idp_type`==`ldap`, Key for the `ldap_client_cert`
-        :param pulumi.Input[_builtins.str] ldap_group_attr: If `ldap_type`==`custom`
-        :param pulumi.Input[_builtins.str] ldap_group_dn: If `ldap_type`==`custom`
+        :param pulumi.Input[_builtins.str] ldap_group_attr: Group attribute used to resolve LDAP memberships. If `ldap_type`==`custom`
+        :param pulumi.Input[_builtins.str] ldap_group_dn: Group search base used for custom LDAP group lookup. If `ldap_type`==`custom`
         :param pulumi.Input[_builtins.bool] ldap_resolve_groups: If `idp_type`==`ldap`, whether to recursively resolve LDAP groups
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ldap_server_hosts: If `idp_type`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
-        :param pulumi.Input[_builtins.str] ldap_type: if `idp_type`==`ldap`. enum: `azure`, `custom`, `google`, `okta`, `ping_identity`
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ldap_server_hosts: Server hostnames or IP addresses for LDAP or LDAPS when `idp_type`==`ldap`
+        :param pulumi.Input[_builtins.str] ldap_type: Provider template for LDAP SSO when `idp_type`==`ldap`
         :param pulumi.Input[_builtins.str] ldap_user_filter: Required if `ldap_type`==`custom`, LDAP filter that will identify the type of user
         :param pulumi.Input[_builtins.str] member_filter: Required if `ldap_type`==`custom`,LDAP filter that will identify the type of member
-        :param pulumi.Input[_builtins.str] name: Name
+        :param pulumi.Input[_builtins.str] name: Display name of the NAC IDP configuration
         :param pulumi.Input[_builtins.str] oauth_cc_client_id: Required if `idp_type`==`oauth`, Client Credentials
         :param pulumi.Input[_builtins.str] oauth_cc_client_secret: Required if `idp_type`==`oauth`, oauth*cc*client_secret is RSA private key, of the form "-----BEGIN RSA PRIVATE KEY--...."
-        :param pulumi.Input[_builtins.str] oauth_discovery_url: If `idp_type`==`oauth`
-        :param pulumi.Input[_builtins.str] oauth_ping_identity_region: enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
-        :param pulumi.Input[_builtins.str] oauth_provider_domain: If `oauth_type`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+        :param pulumi.Input[_builtins.str] oauth_discovery_url: OAuth discovery document URL used when `idp_type`==`oauth`
+        :param pulumi.Input[_builtins.str] oauth_ping_identity_region: Ping Identity region for OAuth SSO when `oauth_type`==`ping_identity`
+        :param pulumi.Input[_builtins.str] oauth_provider_domain: Provider domain for Okta OAuth SSO when `oauth_type`==`okta`
         :param pulumi.Input[_builtins.str] oauth_ropc_client_id: If `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
         :param pulumi.Input[_builtins.str] oauth_ropc_client_secret: If `oauth_type`==`azure` or `oauth_type`==`azure-gov`. oauth*ropc*client_secret can be empty
         :param pulumi.Input[_builtins.str] oauth_tenant_id: Required if `idp_type`==`oauth`, oauth*tenant*id
-        :param pulumi.Input[_builtins.str] oauth_type: if `idp_type`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `ping_identity`
+        :param pulumi.Input[_builtins.str] oauth_type: Provider type for OAuth SSO when `idp_type`==`oauth`
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] openroaming_ssids: SSIDs that support OpenRoaming, used when `idp_type`==`openroaming`
+        :param pulumi.Input[_builtins.str] openroaming_wba_client_cert: Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+        :param pulumi.Input[_builtins.str] openroaming_wba_client_key: Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+        :param pulumi.Input[_builtins.str] org_id: Owning organization identifier for this NAC IDP configuration
         :param pulumi.Input[_builtins.bool] scim_enabled: If `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
         :param pulumi.Input[_builtins.str] scim_secret_token: If `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
         """
@@ -579,6 +638,12 @@ class _NacidpState:
             pulumi.set(__self__, "oauth_tenant_id", oauth_tenant_id)
         if oauth_type is not None:
             pulumi.set(__self__, "oauth_type", oauth_type)
+        if openroaming_ssids is not None:
+            pulumi.set(__self__, "openroaming_ssids", openroaming_ssids)
+        if openroaming_wba_client_cert is not None:
+            pulumi.set(__self__, "openroaming_wba_client_cert", openroaming_wba_client_cert)
+        if openroaming_wba_client_key is not None:
+            pulumi.set(__self__, "openroaming_wba_client_key", openroaming_wba_client_key)
         if org_id is not None:
             pulumi.set(__self__, "org_id", org_id)
         if scim_enabled is not None:
@@ -602,7 +667,7 @@ class _NacidpState:
     @pulumi.getter(name="idpType")
     def idp_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        enum: `ldap`, `mxedge_proxy`, `oauth`
+        enum: `ldap`, `mxedge_proxy`, `oauth`, `openroaming`
         """
         return pulumi.get(self, "idp_type")
 
@@ -650,7 +715,7 @@ class _NacidpState:
     @pulumi.getter(name="ldapCacerts")
     def ldap_cacerts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Required if `idp_type`==`ldap`, list of CA certificates to validate the LDAP certificate
+        CA certificates used to validate LDAP or LDAPS server certificates. Required if `idp_type`==`ldap`
         """
         return pulumi.get(self, "ldap_cacerts")
 
@@ -686,7 +751,7 @@ class _NacidpState:
     @pulumi.getter(name="ldapGroupAttr")
     def ldap_group_attr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        If `ldap_type`==`custom`
+        Group attribute used to resolve LDAP memberships. If `ldap_type`==`custom`
         """
         return pulumi.get(self, "ldap_group_attr")
 
@@ -698,7 +763,7 @@ class _NacidpState:
     @pulumi.getter(name="ldapGroupDn")
     def ldap_group_dn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        If `ldap_type`==`custom`
+        Group search base used for custom LDAP group lookup. If `ldap_type`==`custom`
         """
         return pulumi.get(self, "ldap_group_dn")
 
@@ -722,7 +787,7 @@ class _NacidpState:
     @pulumi.getter(name="ldapServerHosts")
     def ldap_server_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        If `idp_type`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
+        Server hostnames or IP addresses for LDAP or LDAPS when `idp_type`==`ldap`
         """
         return pulumi.get(self, "ldap_server_hosts")
 
@@ -734,7 +799,7 @@ class _NacidpState:
     @pulumi.getter(name="ldapType")
     def ldap_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        if `idp_type`==`ldap`. enum: `azure`, `custom`, `google`, `okta`, `ping_identity`
+        Provider template for LDAP SSO when `idp_type`==`ldap`
         """
         return pulumi.get(self, "ldap_type")
 
@@ -770,7 +835,7 @@ class _NacidpState:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name
+        Display name of the NAC IDP configuration
         """
         return pulumi.get(self, "name")
 
@@ -806,7 +871,7 @@ class _NacidpState:
     @pulumi.getter(name="oauthDiscoveryUrl")
     def oauth_discovery_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        If `idp_type`==`oauth`
+        OAuth discovery document URL used when `idp_type`==`oauth`
         """
         return pulumi.get(self, "oauth_discovery_url")
 
@@ -818,7 +883,7 @@ class _NacidpState:
     @pulumi.getter(name="oauthPingIdentityRegion")
     def oauth_ping_identity_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
+        Ping Identity region for OAuth SSO when `oauth_type`==`ping_identity`
         """
         return pulumi.get(self, "oauth_ping_identity_region")
 
@@ -830,7 +895,7 @@ class _NacidpState:
     @pulumi.getter(name="oauthProviderDomain")
     def oauth_provider_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        If `oauth_type`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+        Provider domain for Okta OAuth SSO when `oauth_type`==`okta`
         """
         return pulumi.get(self, "oauth_provider_domain")
 
@@ -878,7 +943,7 @@ class _NacidpState:
     @pulumi.getter(name="oauthType")
     def oauth_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        if `idp_type`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `ping_identity`
+        Provider type for OAuth SSO when `idp_type`==`oauth`
         """
         return pulumi.get(self, "oauth_type")
 
@@ -887,8 +952,47 @@ class _NacidpState:
         pulumi.set(self, "oauth_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="openroamingSsids")
+    def openroaming_ssids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        SSIDs that support OpenRoaming, used when `idp_type`==`openroaming`
+        """
+        return pulumi.get(self, "openroaming_ssids")
+
+    @openroaming_ssids.setter
+    def openroaming_ssids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "openroaming_ssids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="openroamingWbaClientCert")
+    def openroaming_wba_client_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+        """
+        return pulumi.get(self, "openroaming_wba_client_cert")
+
+    @openroaming_wba_client_cert.setter
+    def openroaming_wba_client_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "openroaming_wba_client_cert", value)
+
+    @_builtins.property
+    @pulumi.getter(name="openroamingWbaClientKey")
+    def openroaming_wba_client_key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+        """
+        return pulumi.get(self, "openroaming_wba_client_key")
+
+    @openroaming_wba_client_key.setter
+    def openroaming_wba_client_key(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "openroaming_wba_client_key", value)
+
+    @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Owning organization identifier for this NAC IDP configuration
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -951,6 +1055,9 @@ class Nacidp(pulumi.CustomResource):
                  oauth_ropc_client_secret: pulumi.Input[Optional[_builtins.str]] = None,
                  oauth_tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
                  oauth_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 openroaming_ssids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 openroaming_wba_client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 openroaming_wba_client_key: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  scim_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  scim_secret_token: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1027,30 +1134,34 @@ class Nacidp(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] group_filter: Required if `ldap_type`==`custom`, LDAP filter that will identify the type of group
-        :param pulumi.Input[_builtins.str] idp_type: enum: `ldap`, `mxedge_proxy`, `oauth`
+        :param pulumi.Input[_builtins.str] idp_type: enum: `ldap`, `mxedge_proxy`, `oauth`, `openroaming`
         :param pulumi.Input[_builtins.str] ldap_base_dn: Required if `idp_type`==`ldap`, whole domain or a specific organization unit (container) in Search base to specify where users and groups are found in the LDAP tree
         :param pulumi.Input[_builtins.str] ldap_bind_dn: Required if `idp_type`==`ldap`, the account used to authenticate against the LDAP
         :param pulumi.Input[_builtins.str] ldap_bind_password: Required if `idp_type`==`ldap`, the password used to authenticate against the LDAP
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ldap_cacerts: Required if `idp_type`==`ldap`, list of CA certificates to validate the LDAP certificate
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ldap_cacerts: CA certificates used to validate LDAP or LDAPS server certificates. Required if `idp_type`==`ldap`
         :param pulumi.Input[_builtins.str] ldap_client_cert: If `idp_type`==`ldap`, LDAPS Client certificate
         :param pulumi.Input[_builtins.str] ldap_client_key: If `idp_type`==`ldap`, Key for the `ldap_client_cert`
-        :param pulumi.Input[_builtins.str] ldap_group_attr: If `ldap_type`==`custom`
-        :param pulumi.Input[_builtins.str] ldap_group_dn: If `ldap_type`==`custom`
+        :param pulumi.Input[_builtins.str] ldap_group_attr: Group attribute used to resolve LDAP memberships. If `ldap_type`==`custom`
+        :param pulumi.Input[_builtins.str] ldap_group_dn: Group search base used for custom LDAP group lookup. If `ldap_type`==`custom`
         :param pulumi.Input[_builtins.bool] ldap_resolve_groups: If `idp_type`==`ldap`, whether to recursively resolve LDAP groups
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ldap_server_hosts: If `idp_type`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
-        :param pulumi.Input[_builtins.str] ldap_type: if `idp_type`==`ldap`. enum: `azure`, `custom`, `google`, `okta`, `ping_identity`
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ldap_server_hosts: Server hostnames or IP addresses for LDAP or LDAPS when `idp_type`==`ldap`
+        :param pulumi.Input[_builtins.str] ldap_type: Provider template for LDAP SSO when `idp_type`==`ldap`
         :param pulumi.Input[_builtins.str] ldap_user_filter: Required if `ldap_type`==`custom`, LDAP filter that will identify the type of user
         :param pulumi.Input[_builtins.str] member_filter: Required if `ldap_type`==`custom`,LDAP filter that will identify the type of member
-        :param pulumi.Input[_builtins.str] name: Name
+        :param pulumi.Input[_builtins.str] name: Display name of the NAC IDP configuration
         :param pulumi.Input[_builtins.str] oauth_cc_client_id: Required if `idp_type`==`oauth`, Client Credentials
         :param pulumi.Input[_builtins.str] oauth_cc_client_secret: Required if `idp_type`==`oauth`, oauth*cc*client_secret is RSA private key, of the form "-----BEGIN RSA PRIVATE KEY--...."
-        :param pulumi.Input[_builtins.str] oauth_discovery_url: If `idp_type`==`oauth`
-        :param pulumi.Input[_builtins.str] oauth_ping_identity_region: enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
-        :param pulumi.Input[_builtins.str] oauth_provider_domain: If `oauth_type`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+        :param pulumi.Input[_builtins.str] oauth_discovery_url: OAuth discovery document URL used when `idp_type`==`oauth`
+        :param pulumi.Input[_builtins.str] oauth_ping_identity_region: Ping Identity region for OAuth SSO when `oauth_type`==`ping_identity`
+        :param pulumi.Input[_builtins.str] oauth_provider_domain: Provider domain for Okta OAuth SSO when `oauth_type`==`okta`
         :param pulumi.Input[_builtins.str] oauth_ropc_client_id: If `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
         :param pulumi.Input[_builtins.str] oauth_ropc_client_secret: If `oauth_type`==`azure` or `oauth_type`==`azure-gov`. oauth*ropc*client_secret can be empty
         :param pulumi.Input[_builtins.str] oauth_tenant_id: Required if `idp_type`==`oauth`, oauth*tenant*id
-        :param pulumi.Input[_builtins.str] oauth_type: if `idp_type`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `ping_identity`
+        :param pulumi.Input[_builtins.str] oauth_type: Provider type for OAuth SSO when `idp_type`==`oauth`
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] openroaming_ssids: SSIDs that support OpenRoaming, used when `idp_type`==`openroaming`
+        :param pulumi.Input[_builtins.str] openroaming_wba_client_cert: Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+        :param pulumi.Input[_builtins.str] openroaming_wba_client_key: Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+        :param pulumi.Input[_builtins.str] org_id: Owning organization identifier for this NAC IDP configuration
         :param pulumi.Input[_builtins.bool] scim_enabled: If `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
         :param pulumi.Input[_builtins.str] scim_secret_token: If `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
         """
@@ -1169,6 +1280,9 @@ class Nacidp(pulumi.CustomResource):
                  oauth_ropc_client_secret: pulumi.Input[Optional[_builtins.str]] = None,
                  oauth_tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
                  oauth_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 openroaming_ssids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 openroaming_wba_client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 openroaming_wba_client_key: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  scim_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  scim_secret_token: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1208,12 +1322,15 @@ class Nacidp(pulumi.CustomResource):
             __props__.__dict__["oauth_ropc_client_secret"] = None if oauth_ropc_client_secret is None else pulumi.Output.secret(oauth_ropc_client_secret)
             __props__.__dict__["oauth_tenant_id"] = oauth_tenant_id
             __props__.__dict__["oauth_type"] = oauth_type
+            __props__.__dict__["openroaming_ssids"] = openroaming_ssids
+            __props__.__dict__["openroaming_wba_client_cert"] = None if openroaming_wba_client_cert is None else pulumi.Output.secret(openroaming_wba_client_cert)
+            __props__.__dict__["openroaming_wba_client_key"] = None if openroaming_wba_client_key is None else pulumi.Output.secret(openroaming_wba_client_key)
             if org_id is None and not opts.urn:
                 raise TypeError("Missing required property 'org_id'")
             __props__.__dict__["org_id"] = org_id
             __props__.__dict__["scim_enabled"] = scim_enabled
             __props__.__dict__["scim_secret_token"] = None if scim_secret_token is None else pulumi.Output.secret(scim_secret_token)
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["oauthCcClientSecret", "oauthRopcClientSecret", "scimSecretToken"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["oauthCcClientSecret", "oauthRopcClientSecret", "openroamingWbaClientCert", "openroamingWbaClientKey", "scimSecretToken"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Nacidp, __self__).__init__(
             'junipermist:org/nacidp:Nacidp',
@@ -1250,6 +1367,9 @@ class Nacidp(pulumi.CustomResource):
             oauth_ropc_client_secret: pulumi.Input[Optional[_builtins.str]] = None,
             oauth_tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
             oauth_type: pulumi.Input[Optional[_builtins.str]] = None,
+            openroaming_ssids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            openroaming_wba_client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            openroaming_wba_client_key: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             scim_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             scim_secret_token: pulumi.Input[Optional[_builtins.str]] = None) -> 'Nacidp':
@@ -1261,30 +1381,34 @@ class Nacidp(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] group_filter: Required if `ldap_type`==`custom`, LDAP filter that will identify the type of group
-        :param pulumi.Input[_builtins.str] idp_type: enum: `ldap`, `mxedge_proxy`, `oauth`
+        :param pulumi.Input[_builtins.str] idp_type: enum: `ldap`, `mxedge_proxy`, `oauth`, `openroaming`
         :param pulumi.Input[_builtins.str] ldap_base_dn: Required if `idp_type`==`ldap`, whole domain or a specific organization unit (container) in Search base to specify where users and groups are found in the LDAP tree
         :param pulumi.Input[_builtins.str] ldap_bind_dn: Required if `idp_type`==`ldap`, the account used to authenticate against the LDAP
         :param pulumi.Input[_builtins.str] ldap_bind_password: Required if `idp_type`==`ldap`, the password used to authenticate against the LDAP
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ldap_cacerts: Required if `idp_type`==`ldap`, list of CA certificates to validate the LDAP certificate
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ldap_cacerts: CA certificates used to validate LDAP or LDAPS server certificates. Required if `idp_type`==`ldap`
         :param pulumi.Input[_builtins.str] ldap_client_cert: If `idp_type`==`ldap`, LDAPS Client certificate
         :param pulumi.Input[_builtins.str] ldap_client_key: If `idp_type`==`ldap`, Key for the `ldap_client_cert`
-        :param pulumi.Input[_builtins.str] ldap_group_attr: If `ldap_type`==`custom`
-        :param pulumi.Input[_builtins.str] ldap_group_dn: If `ldap_type`==`custom`
+        :param pulumi.Input[_builtins.str] ldap_group_attr: Group attribute used to resolve LDAP memberships. If `ldap_type`==`custom`
+        :param pulumi.Input[_builtins.str] ldap_group_dn: Group search base used for custom LDAP group lookup. If `ldap_type`==`custom`
         :param pulumi.Input[_builtins.bool] ldap_resolve_groups: If `idp_type`==`ldap`, whether to recursively resolve LDAP groups
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ldap_server_hosts: If `idp_type`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
-        :param pulumi.Input[_builtins.str] ldap_type: if `idp_type`==`ldap`. enum: `azure`, `custom`, `google`, `okta`, `ping_identity`
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ldap_server_hosts: Server hostnames or IP addresses for LDAP or LDAPS when `idp_type`==`ldap`
+        :param pulumi.Input[_builtins.str] ldap_type: Provider template for LDAP SSO when `idp_type`==`ldap`
         :param pulumi.Input[_builtins.str] ldap_user_filter: Required if `ldap_type`==`custom`, LDAP filter that will identify the type of user
         :param pulumi.Input[_builtins.str] member_filter: Required if `ldap_type`==`custom`,LDAP filter that will identify the type of member
-        :param pulumi.Input[_builtins.str] name: Name
+        :param pulumi.Input[_builtins.str] name: Display name of the NAC IDP configuration
         :param pulumi.Input[_builtins.str] oauth_cc_client_id: Required if `idp_type`==`oauth`, Client Credentials
         :param pulumi.Input[_builtins.str] oauth_cc_client_secret: Required if `idp_type`==`oauth`, oauth*cc*client_secret is RSA private key, of the form "-----BEGIN RSA PRIVATE KEY--...."
-        :param pulumi.Input[_builtins.str] oauth_discovery_url: If `idp_type`==`oauth`
-        :param pulumi.Input[_builtins.str] oauth_ping_identity_region: enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
-        :param pulumi.Input[_builtins.str] oauth_provider_domain: If `oauth_type`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+        :param pulumi.Input[_builtins.str] oauth_discovery_url: OAuth discovery document URL used when `idp_type`==`oauth`
+        :param pulumi.Input[_builtins.str] oauth_ping_identity_region: Ping Identity region for OAuth SSO when `oauth_type`==`ping_identity`
+        :param pulumi.Input[_builtins.str] oauth_provider_domain: Provider domain for Okta OAuth SSO when `oauth_type`==`okta`
         :param pulumi.Input[_builtins.str] oauth_ropc_client_id: If `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
         :param pulumi.Input[_builtins.str] oauth_ropc_client_secret: If `oauth_type`==`azure` or `oauth_type`==`azure-gov`. oauth*ropc*client_secret can be empty
         :param pulumi.Input[_builtins.str] oauth_tenant_id: Required if `idp_type`==`oauth`, oauth*tenant*id
-        :param pulumi.Input[_builtins.str] oauth_type: if `idp_type`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `ping_identity`
+        :param pulumi.Input[_builtins.str] oauth_type: Provider type for OAuth SSO when `idp_type`==`oauth`
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] openroaming_ssids: SSIDs that support OpenRoaming, used when `idp_type`==`openroaming`
+        :param pulumi.Input[_builtins.str] openroaming_wba_client_cert: Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+        :param pulumi.Input[_builtins.str] openroaming_wba_client_key: Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+        :param pulumi.Input[_builtins.str] org_id: Owning organization identifier for this NAC IDP configuration
         :param pulumi.Input[_builtins.bool] scim_enabled: If `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
         :param pulumi.Input[_builtins.str] scim_secret_token: If `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
         """
@@ -1317,6 +1441,9 @@ class Nacidp(pulumi.CustomResource):
         __props__.__dict__["oauth_ropc_client_secret"] = oauth_ropc_client_secret
         __props__.__dict__["oauth_tenant_id"] = oauth_tenant_id
         __props__.__dict__["oauth_type"] = oauth_type
+        __props__.__dict__["openroaming_ssids"] = openroaming_ssids
+        __props__.__dict__["openroaming_wba_client_cert"] = openroaming_wba_client_cert
+        __props__.__dict__["openroaming_wba_client_key"] = openroaming_wba_client_key
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["scim_enabled"] = scim_enabled
         __props__.__dict__["scim_secret_token"] = scim_secret_token
@@ -1334,7 +1461,7 @@ class Nacidp(pulumi.CustomResource):
     @pulumi.getter(name="idpType")
     def idp_type(self) -> pulumi.Output[_builtins.str]:
         """
-        enum: `ldap`, `mxedge_proxy`, `oauth`
+        enum: `ldap`, `mxedge_proxy`, `oauth`, `openroaming`
         """
         return pulumi.get(self, "idp_type")
 
@@ -1366,7 +1493,7 @@ class Nacidp(pulumi.CustomResource):
     @pulumi.getter(name="ldapCacerts")
     def ldap_cacerts(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        Required if `idp_type`==`ldap`, list of CA certificates to validate the LDAP certificate
+        CA certificates used to validate LDAP or LDAPS server certificates. Required if `idp_type`==`ldap`
         """
         return pulumi.get(self, "ldap_cacerts")
 
@@ -1390,7 +1517,7 @@ class Nacidp(pulumi.CustomResource):
     @pulumi.getter(name="ldapGroupAttr")
     def ldap_group_attr(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        If `ldap_type`==`custom`
+        Group attribute used to resolve LDAP memberships. If `ldap_type`==`custom`
         """
         return pulumi.get(self, "ldap_group_attr")
 
@@ -1398,7 +1525,7 @@ class Nacidp(pulumi.CustomResource):
     @pulumi.getter(name="ldapGroupDn")
     def ldap_group_dn(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        If `ldap_type`==`custom`
+        Group search base used for custom LDAP group lookup. If `ldap_type`==`custom`
         """
         return pulumi.get(self, "ldap_group_dn")
 
@@ -1414,7 +1541,7 @@ class Nacidp(pulumi.CustomResource):
     @pulumi.getter(name="ldapServerHosts")
     def ldap_server_hosts(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        If `idp_type`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
+        Server hostnames or IP addresses for LDAP or LDAPS when `idp_type`==`ldap`
         """
         return pulumi.get(self, "ldap_server_hosts")
 
@@ -1422,7 +1549,7 @@ class Nacidp(pulumi.CustomResource):
     @pulumi.getter(name="ldapType")
     def ldap_type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        if `idp_type`==`ldap`. enum: `azure`, `custom`, `google`, `okta`, `ping_identity`
+        Provider template for LDAP SSO when `idp_type`==`ldap`
         """
         return pulumi.get(self, "ldap_type")
 
@@ -1446,7 +1573,7 @@ class Nacidp(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Name
+        Display name of the NAC IDP configuration
         """
         return pulumi.get(self, "name")
 
@@ -1470,7 +1597,7 @@ class Nacidp(pulumi.CustomResource):
     @pulumi.getter(name="oauthDiscoveryUrl")
     def oauth_discovery_url(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        If `idp_type`==`oauth`
+        OAuth discovery document URL used when `idp_type`==`oauth`
         """
         return pulumi.get(self, "oauth_discovery_url")
 
@@ -1478,7 +1605,7 @@ class Nacidp(pulumi.CustomResource):
     @pulumi.getter(name="oauthPingIdentityRegion")
     def oauth_ping_identity_region(self) -> pulumi.Output[_builtins.str]:
         """
-        enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
+        Ping Identity region for OAuth SSO when `oauth_type`==`ping_identity`
         """
         return pulumi.get(self, "oauth_ping_identity_region")
 
@@ -1486,7 +1613,7 @@ class Nacidp(pulumi.CustomResource):
     @pulumi.getter(name="oauthProviderDomain")
     def oauth_provider_domain(self) -> pulumi.Output[_builtins.str]:
         """
-        If `oauth_type`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+        Provider domain for Okta OAuth SSO when `oauth_type`==`okta`
         """
         return pulumi.get(self, "oauth_provider_domain")
 
@@ -1518,13 +1645,40 @@ class Nacidp(pulumi.CustomResource):
     @pulumi.getter(name="oauthType")
     def oauth_type(self) -> pulumi.Output[_builtins.str]:
         """
-        if `idp_type`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `ping_identity`
+        Provider type for OAuth SSO when `idp_type`==`oauth`
         """
         return pulumi.get(self, "oauth_type")
 
     @_builtins.property
+    @pulumi.getter(name="openroamingSsids")
+    def openroaming_ssids(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        SSIDs that support OpenRoaming, used when `idp_type`==`openroaming`
+        """
+        return pulumi.get(self, "openroaming_ssids")
+
+    @_builtins.property
+    @pulumi.getter(name="openroamingWbaClientCert")
+    def openroaming_wba_client_cert(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+        """
+        return pulumi.get(self, "openroaming_wba_client_cert")
+
+    @_builtins.property
+    @pulumi.getter(name="openroamingWbaClientKey")
+    def openroaming_wba_client_key(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+        """
+        return pulumi.get(self, "openroaming_wba_client_key")
+
+    @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Owning organization identifier for this NAC IDP configuration
+        """
         return pulumi.get(self, "org_id")
 
     @_builtins.property

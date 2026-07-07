@@ -16,58 +16,90 @@ public final class SwitchSnmpConfigV3ConfigTargetAddressArgs extends com.pulumi.
 
     public static final SwitchSnmpConfigV3ConfigTargetAddressArgs Empty = new SwitchSnmpConfigV3ConfigTargetAddressArgs();
 
+    /**
+     * IP address or hostname of the SNMP target
+     * 
+     */
     @Import(name="address", required=true)
     private Output<String> address;
 
+    /**
+     * @return IP address or hostname of the SNMP target
+     * 
+     */
     public Output<String> address() {
         return this.address;
     }
 
+    /**
+     * Mask applied to the SNMP target address
+     * 
+     */
     @Import(name="addressMask", required=true)
     private Output<String> addressMask;
 
+    /**
+     * @return Mask applied to the SNMP target address
+     * 
+     */
     public Output<String> addressMask() {
         return this.addressMask;
     }
 
+    /**
+     * UDP port used by the SNMP target
+     * 
+     */
     @Import(name="port")
     private @Nullable Output<String> port;
 
+    /**
+     * @return UDP port used by the SNMP target
+     * 
+     */
     public Optional<Output<String>> port() {
         return Optional.ofNullable(this.port);
     }
 
     /**
-     * Refer to notify tag, can be multiple with blank
+     * Set of notification tags for this target address; use spaces between multiple tags
      * 
      */
     @Import(name="tagList")
     private @Nullable Output<String> tagList;
 
     /**
-     * @return Refer to notify tag, can be multiple with blank
+     * @return Set of notification tags for this target address; use spaces between multiple tags
      * 
      */
     public Optional<Output<String>> tagList() {
         return Optional.ofNullable(this.tagList);
     }
 
+    /**
+     * Name of the SNMP target address entry
+     * 
+     */
     @Import(name="targetAddressName", required=true)
     private Output<String> targetAddressName;
 
+    /**
+     * @return Name of the SNMP target address entry
+     * 
+     */
     public Output<String> targetAddressName() {
         return this.targetAddressName;
     }
 
     /**
-     * Refer to notify target parameters name
+     * Target parameter profile referenced by this target address
      * 
      */
     @Import(name="targetParameters")
     private @Nullable Output<String> targetParameters;
 
     /**
-     * @return Refer to notify target parameters name
+     * @return Target parameter profile referenced by this target address
      * 
      */
     public Optional<Output<String>> targetParameters() {
@@ -103,35 +135,71 @@ public final class SwitchSnmpConfigV3ConfigTargetAddressArgs extends com.pulumi.
             $ = new SwitchSnmpConfigV3ConfigTargetAddressArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param address IP address or hostname of the SNMP target
+         * 
+         * @return builder
+         * 
+         */
         public Builder address(Output<String> address) {
             $.address = address;
             return this;
         }
 
+        /**
+         * @param address IP address or hostname of the SNMP target
+         * 
+         * @return builder
+         * 
+         */
         public Builder address(String address) {
             return address(Output.of(address));
         }
 
+        /**
+         * @param addressMask Mask applied to the SNMP target address
+         * 
+         * @return builder
+         * 
+         */
         public Builder addressMask(Output<String> addressMask) {
             $.addressMask = addressMask;
             return this;
         }
 
+        /**
+         * @param addressMask Mask applied to the SNMP target address
+         * 
+         * @return builder
+         * 
+         */
         public Builder addressMask(String addressMask) {
             return addressMask(Output.of(addressMask));
         }
 
+        /**
+         * @param port UDP port used by the SNMP target
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(@Nullable Output<String> port) {
             $.port = port;
             return this;
         }
 
+        /**
+         * @param port UDP port used by the SNMP target
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(String port) {
             return port(Output.of(port));
         }
 
         /**
-         * @param tagList Refer to notify tag, can be multiple with blank
+         * @param tagList Set of notification tags for this target address; use spaces between multiple tags
          * 
          * @return builder
          * 
@@ -142,7 +210,7 @@ public final class SwitchSnmpConfigV3ConfigTargetAddressArgs extends com.pulumi.
         }
 
         /**
-         * @param tagList Refer to notify tag, can be multiple with blank
+         * @param tagList Set of notification tags for this target address; use spaces between multiple tags
          * 
          * @return builder
          * 
@@ -151,17 +219,29 @@ public final class SwitchSnmpConfigV3ConfigTargetAddressArgs extends com.pulumi.
             return tagList(Output.of(tagList));
         }
 
+        /**
+         * @param targetAddressName Name of the SNMP target address entry
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetAddressName(Output<String> targetAddressName) {
             $.targetAddressName = targetAddressName;
             return this;
         }
 
+        /**
+         * @param targetAddressName Name of the SNMP target address entry
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetAddressName(String targetAddressName) {
             return targetAddressName(Output.of(targetAddressName));
         }
 
         /**
-         * @param targetParameters Refer to notify target parameters name
+         * @param targetParameters Target parameter profile referenced by this target address
          * 
          * @return builder
          * 
@@ -172,7 +252,7 @@ public final class SwitchSnmpConfigV3ConfigTargetAddressArgs extends com.pulumi.
         }
 
         /**
-         * @param targetParameters Refer to notify target parameters name
+         * @param targetParameters Target parameter profile referenced by this target address
          * 
          * @return builder
          * 

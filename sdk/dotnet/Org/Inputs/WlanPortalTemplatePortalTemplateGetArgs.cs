@@ -12,11 +12,14 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class WlanPortalTemplatePortalTemplateGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Link text for using an alternate email address during access-code login
+        /// </summary>
         [Input("accessCodeAlternateEmail")]
         public Input<string>? AccessCodeAlternateEmail { get; set; }
 
         /// <summary>
-        /// defines alignment on portal. enum: `Center`, `Left`, `Right`
+        /// Text and content alignment used by the guest portal template
         /// </summary>
         [Input("alignment")]
         public Input<string>? Alignment { get; set; }
@@ -75,6 +78,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("authButtonSponsor")]
         public Input<string>? AuthButtonSponsor { get; set; }
 
+        /// <summary>
+        /// Heading text displayed above portal authentication options
+        /// </summary>
         [Input("authLabel")]
         public Input<string>? AuthLabel { get; set; }
 
@@ -85,14 +91,20 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? BackLink { get; set; }
 
         /// <summary>
-        /// Portal main color
+        /// Primary color used by the portal template
         /// </summary>
         [Input("color")]
         public Input<string>? Color { get; set; }
 
+        /// <summary>
+        /// Darker accent color used by the portal template
+        /// </summary>
         [Input("colorDark")]
         public Input<string>? ColorDark { get; set; }
 
+        /// <summary>
+        /// Lighter accent color used by the portal template
+        /// </summary>
         [Input("colorLight")]
         public Input<string>? ColorLight { get; set; }
 
@@ -109,7 +121,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? CompanyError { get; set; }
 
         /// <summary>
-        /// Label of company field
+        /// Label displayed for the company input field
         /// </summary>
         [Input("companyLabel")]
         public Input<string>? CompanyLabel { get; set; }
@@ -132,21 +144,39 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("emailCancel")]
         public Input<string>? EmailCancel { get; set; }
 
+        /// <summary>
+        /// Link text for requesting help when the email access code was not received
+        /// </summary>
         [Input("emailCodeCancel")]
         public Input<string>? EmailCodeCancel { get; set; }
 
+        /// <summary>
+        /// Error message shown when the alternate email address for access-code delivery is invalid
+        /// </summary>
         [Input("emailCodeError")]
         public Input<string>? EmailCodeError { get; set; }
 
+        /// <summary>
+        /// Label for the email access-code input field
+        /// </summary>
         [Input("emailCodeFieldLabel")]
         public Input<string>? EmailCodeFieldLabel { get; set; }
 
+        /// <summary>
+        /// Instructional text shown before entering the email access code
+        /// </summary>
         [Input("emailCodeMessage")]
         public Input<string>? EmailCodeMessage { get; set; }
 
+        /// <summary>
+        /// Button label for submitting the email access code
+        /// </summary>
         [Input("emailCodeSubmit")]
         public Input<string>? EmailCodeSubmit { get; set; }
 
+        /// <summary>
+        /// Title shown on the email access-code entry page
+        /// </summary>
         [Input("emailCodeTitle")]
         public Input<string>? EmailCodeTitle { get; set; }
 
@@ -156,15 +186,21 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("emailError")]
         public Input<string>? EmailError { get; set; }
 
+        /// <summary>
+        /// Label for the email address input field
+        /// </summary>
         [Input("emailFieldLabel")]
         public Input<string>? EmailFieldLabel { get; set; }
 
         /// <summary>
-        /// Label of email field
+        /// Label displayed for the email input field
         /// </summary>
         [Input("emailLabel")]
         public Input<string>? EmailLabel { get; set; }
 
+        /// <summary>
+        /// Instructional text explaining email access-code delivery
+        /// </summary>
         [Input("emailMessage")]
         public Input<string>? EmailMessage { get; set; }
 
@@ -193,13 +229,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? Field1error { get; set; }
 
         /// <summary>
-        /// Label of field1
+        /// Label for custom field 1 input
         /// </summary>
         [Input("field1label")]
         public Input<string>? Field1label { get; set; }
 
         /// <summary>
-        /// Whether field1 is required field
+        /// Whether custom field 1 must be provided when the field is shown
         /// </summary>
         [Input("field1required")]
         public Input<bool>? Field1required { get; set; }
@@ -217,13 +253,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? Field2error { get; set; }
 
         /// <summary>
-        /// Label of field2
+        /// Label for custom field 2 input
         /// </summary>
         [Input("field2label")]
         public Input<string>? Field2label { get; set; }
 
         /// <summary>
-        /// Whether field2 is required field
+        /// Whether custom field 2 must be provided when the field is shown
         /// </summary>
         [Input("field2required")]
         public Input<bool>? Field2required { get; set; }
@@ -241,13 +277,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? Field3error { get; set; }
 
         /// <summary>
-        /// Label of field3
+        /// Label for custom field 3 input
         /// </summary>
         [Input("field3label")]
         public Input<string>? Field3label { get; set; }
 
         /// <summary>
-        /// Whether field3 is required field
+        /// Whether custom field 3 must be provided when the field is shown
         /// </summary>
         [Input("field3required")]
         public Input<bool>? Field3required { get; set; }
@@ -265,13 +301,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? Field4error { get; set; }
 
         /// <summary>
-        /// Label of field4
+        /// Label for custom field 4 input
         /// </summary>
         [Input("field4label")]
         public Input<string>? Field4label { get; set; }
 
         /// <summary>
-        /// Whether field4 is required field
+        /// Whether custom field 4 must be provided when the field is shown
         /// </summary>
         [Input("field4required")]
         public Input<bool>? Field4required { get; set; }
@@ -317,14 +353,20 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? MarketingPolicyOptInLabel { get; set; }
 
         /// <summary>
-        /// marketing policy text
+        /// Text of the marketing policy opt-in content
         /// </summary>
         [Input("marketingPolicyOptInText")]
         public Input<string>? MarketingPolicyOptInText { get; set; }
 
+        /// <summary>
+        /// Main message displayed on the guest portal sign-in page
+        /// </summary>
         [Input("message")]
         public Input<string>? Message { get; set; }
 
+        /// <summary>
+        /// Whether the portal presents multiple authentication methods
+        /// </summary>
         [Input("multiAuth")]
         public Input<bool>? MultiAuth { get; set; }
 
@@ -341,7 +383,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? NameError { get; set; }
 
         /// <summary>
-        /// Label of name field
+        /// Label displayed for the name input field
         /// </summary>
         [Input("nameLabel")]
         public Input<string>? NameLabel { get; set; }
@@ -364,6 +406,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("optoutLabel")]
         public Input<string>? OptoutLabel { get; set; }
 
+        /// <summary>
+        /// Browser or page title shown for the guest portal
+        /// </summary>
         [Input("pageTitle")]
         public Input<string>? PageTitle { get; set; }
 
@@ -380,11 +425,14 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? PassphraseError { get; set; }
 
         /// <summary>
-        /// Passphrase
+        /// Label for the passphrase input field
         /// </summary>
         [Input("passphraseLabel")]
         public Input<string>? PassphraseLabel { get; set; }
 
+        /// <summary>
+        /// Instructional text shown on the passphrase sign-in page
+        /// </summary>
         [Input("passphraseMessage")]
         public Input<string>? PassphraseMessage { get; set; }
 
@@ -437,11 +485,14 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? PrivacyPolicyText { get; set; }
 
         /// <summary>
-        /// Label to denote required field
+        /// Text used to mark a form field as required
         /// </summary>
         [Input("requiredFieldLabel")]
         public Input<string>? RequiredFieldLabel { get; set; }
 
+        /// <summary>
+        /// Whether the portal template uses a responsive layout
+        /// </summary>
         [Input("responsiveLayout")]
         public Input<bool>? ResponsiveLayout { get; set; }
 
@@ -451,9 +502,15 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("signInLabel")]
         public Input<string>? SignInLabel { get; set; }
 
+        /// <summary>
+        /// Default option text shown in the SMS carrier selector
+        /// </summary>
         [Input("smsCarrierDefault")]
         public Input<string>? SmsCarrierDefault { get; set; }
 
+        /// <summary>
+        /// Error message shown when no mobile carrier is selected
+        /// </summary>
         [Input("smsCarrierError")]
         public Input<string>? SmsCarrierError { get; set; }
 
@@ -475,9 +532,15 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("smsCodeError")]
         public Input<string>? SmsCodeError { get; set; }
 
+        /// <summary>
+        /// Label for the SMS confirmation-code input field
+        /// </summary>
         [Input("smsCodeFieldLabel")]
         public Input<string>? SmsCodeFieldLabel { get; set; }
 
+        /// <summary>
+        /// Instructional text shown before entering the SMS access code
+        /// </summary>
         [Input("smsCodeMessage")]
         public Input<string>? SmsCodeMessage { get; set; }
 
@@ -487,12 +550,21 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("smsCodeSubmit")]
         public Input<string>? SmsCodeSubmit { get; set; }
 
+        /// <summary>
+        /// Title shown on the SMS access-code entry page
+        /// </summary>
         [Input("smsCodeTitle")]
         public Input<string>? SmsCodeTitle { get; set; }
 
+        /// <summary>
+        /// Label for the SMS country-code input field
+        /// </summary>
         [Input("smsCountryFieldLabel")]
         public Input<string>? SmsCountryFieldLabel { get; set; }
 
+        /// <summary>
+        /// Example country code format shown for SMS authentication
+        /// </summary>
         [Input("smsCountryFormat")]
         public Input<string>? SmsCountryFormat { get; set; }
 
@@ -502,6 +574,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("smsHaveAccessCode")]
         public Input<string>? SmsHaveAccessCode { get; set; }
 
+        /// <summary>
+        /// Whether the SMS portal flow uses Twilio-specific behavior
+        /// </summary>
         [Input("smsIsTwilio")]
         public Input<bool>? SmsIsTwilio { get; set; }
 
@@ -517,6 +592,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("smsNumberCancel")]
         public Input<string>? SmsNumberCancel { get; set; }
 
+        /// <summary>
+        /// Error message shown when the mobile number is invalid
+        /// </summary>
         [Input("smsNumberError")]
         public Input<string>? SmsNumberError { get; set; }
 
@@ -526,9 +604,15 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("smsNumberFieldLabel")]
         public Input<string>? SmsNumberFieldLabel { get; set; }
 
+        /// <summary>
+        /// Example mobile number format shown for SMS authentication
+        /// </summary>
         [Input("smsNumberFormat")]
         public Input<string>? SmsNumberFormat { get; set; }
 
+        /// <summary>
+        /// Instructional text explaining SMS access-code delivery
+        /// </summary>
         [Input("smsNumberMessage")]
         public Input<string>? SmsNumberMessage { get; set; }
 
@@ -544,6 +628,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("smsNumberTitle")]
         public Input<string>? SmsNumberTitle { get; set; }
 
+        /// <summary>
+        /// Example username format shown for SMS authentication
+        /// </summary>
         [Input("smsUsernameFormat")]
         public Input<string>? SmsUsernameFormat { get; set; }
 
@@ -553,9 +640,15 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("smsValidityDuration")]
         public Input<int>? SmsValidityDuration { get; set; }
 
+        /// <summary>
+        /// Link text for returning to edit the sponsor request form
+        /// </summary>
         [Input("sponsorBackLink")]
         public Input<string>? SponsorBackLink { get; set; }
 
+        /// <summary>
+        /// Button label for canceling sponsor authentication
+        /// </summary>
         [Input("sponsorCancel")]
         public Input<string>? SponsorCancel { get; set; }
 
@@ -565,6 +658,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("sponsorEmail")]
         public Input<string>? SponsorEmail { get; set; }
 
+        /// <summary>
+        /// Error message shown when the sponsor email address is invalid
+        /// </summary>
         [Input("sponsorEmailError")]
         public Input<string>? SponsorEmailError { get; set; }
 
@@ -583,12 +679,21 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("sponsorEmailTemplate")]
         public Input<string>? SponsorEmailTemplate { get; set; }
 
+        /// <summary>
+        /// Status message prefix shown when a sponsor approves the request
+        /// </summary>
         [Input("sponsorInfoApproved")]
         public Input<string>? SponsorInfoApproved { get; set; }
 
+        /// <summary>
+        /// Status message prefix shown when a sponsor denies the request
+        /// </summary>
         [Input("sponsorInfoDenied")]
         public Input<string>? SponsorInfoDenied { get; set; }
 
+        /// <summary>
+        /// Status message prefix shown after a sponsor notification is sent
+        /// </summary>
         [Input("sponsorInfoPending")]
         public Input<string>? SponsorInfoPending { get; set; }
 
@@ -598,9 +703,15 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("sponsorName")]
         public Input<string>? SponsorName { get; set; }
 
+        /// <summary>
+        /// Error message shown when the sponsor name is missing
+        /// </summary>
         [Input("sponsorNameError")]
         public Input<string>? SponsorNameError { get; set; }
 
+        /// <summary>
+        /// Additional status text shown while sponsor approval is pending
+        /// </summary>
         [Input("sponsorNotePending")]
         public Input<string>? SponsorNotePending { get; set; }
 
@@ -634,12 +745,21 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("sponsorSubmit")]
         public Input<string>? SponsorSubmit { get; set; }
 
+        /// <summary>
+        /// Error message shown when no sponsor is selected
+        /// </summary>
         [Input("sponsorsError")]
         public Input<string>? SponsorsError { get; set; }
 
+        /// <summary>
+        /// Label for the sponsor selection field
+        /// </summary>
         [Input("sponsorsFieldLabel")]
         public Input<string>? SponsorsFieldLabel { get; set; }
 
+        /// <summary>
+        /// Whether the portal requires Terms of Service acceptance
+        /// </summary>
         [Input("tos")]
         public Input<bool>? Tos { get; set; }
 

@@ -28,7 +28,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _subnets;
 
         /// <summary>
-        /// Matched destination subnets and/or IP Addresses
+        /// Destination subnets or IP addresses matched by this WxLAN tag spec
         /// </summary>
         public InputList<string> Subnets
         {

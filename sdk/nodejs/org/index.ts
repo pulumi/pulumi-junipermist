@@ -40,6 +40,11 @@ export type DeviceprofileGateway = import("./deviceprofileGateway").Deviceprofil
 export const DeviceprofileGateway: typeof import("./deviceprofileGateway").DeviceprofileGateway = null as any;
 utilities.lazyLoad(exports, ["DeviceprofileGateway"], () => require("./deviceprofileGateway"));
 
+export { DeviceprofileSwitchArgs, DeviceprofileSwitchState } from "./deviceprofileSwitch";
+export type DeviceprofileSwitch = import("./deviceprofileSwitch").DeviceprofileSwitch;
+export const DeviceprofileSwitch: typeof import("./deviceprofileSwitch").DeviceprofileSwitch = null as any;
+utilities.lazyLoad(exports, ["DeviceprofileSwitch"], () => require("./deviceprofileSwitch"));
+
 export { EvpnTopologyArgs, EvpnTopologyState } from "./evpnTopology";
 export type EvpnTopology = import("./evpnTopology").EvpnTopology;
 export const EvpnTopology: typeof import("./evpnTopology").EvpnTopology = null as any;
@@ -344,6 +349,8 @@ const _module = {
                 return new DeviceprofileAssign(name, <any>undefined, { urn })
             case "junipermist:org/deviceprofileGateway:DeviceprofileGateway":
                 return new DeviceprofileGateway(name, <any>undefined, { urn })
+            case "junipermist:org/deviceprofileSwitch:DeviceprofileSwitch":
+                return new DeviceprofileSwitch(name, <any>undefined, { urn })
             case "junipermist:org/evpnTopology:EvpnTopology":
                 return new EvpnTopology(name, <any>undefined, { urn })
             case "junipermist:org/gatewaytemplate:Gatewaytemplate":
@@ -418,6 +425,7 @@ pulumi.runtime.registerResourceModule("junipermist", "org/base", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/deviceprofileAp", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/deviceprofileAssign", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/deviceprofileGateway", _module)
+pulumi.runtime.registerResourceModule("junipermist", "org/deviceprofileSwitch", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/evpnTopology", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/gatewaytemplate", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/idpprofile", _module)

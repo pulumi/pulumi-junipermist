@@ -12,11 +12,18 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class MxclusterTuntermDhcpdConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether DHCP relay is enabled for this tunneled VLAN
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         [Input("servers")]
         private InputList<string>? _servers;
+
+        /// <summary>
+        /// DHCP server IP addresses used as relay targets for this VLAN
+        /// </summary>
         public InputList<string> Servers
         {
             get => _servers ?? (_servers = new InputList<string>());
@@ -24,7 +31,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// enum: `Relay`
+        /// DHCP forwarding mode for this tunneled VLAN
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

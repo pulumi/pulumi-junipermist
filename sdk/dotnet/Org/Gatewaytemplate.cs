@@ -142,83 +142,104 @@ namespace Pulumi.JuniperMist.Org
     public partial class Gatewaytemplate : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        /// Additional CLI configuration commands provided by this gateway template
         /// </summary>
         [Output("additionalConfigCmds")]
         public Output<ImmutableArray<string>> AdditionalConfigCmds { get; private set; } = null!;
 
+        /// <summary>
+        /// BGP routing defaults for this gateway template. Property key is the BGP session name
+        /// </summary>
         [Output("bgpConfig")]
         public Output<ImmutableDictionary<string, Outputs.GatewaytemplateBgpConfig>?> BgpConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// DHCP server defaults provided by this gateway template
+        /// </summary>
         [Output("dhcpdConfig")]
         public Output<Outputs.GatewaytemplateDhcpdConfig?> DhcpdConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether DNS server and suffix settings in this template override inherited values
+        /// </summary>
         [Output("dnsOverride")]
         public Output<bool?> DnsOverride { get; private set; } = null!;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
+        /// DNS servers provided by this gateway template
         /// </summary>
         [Output("dnsServers")]
         public Output<ImmutableArray<string>> DnsServers { get; private set; } = null!;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
+        /// DNS search suffixes provided by this gateway template
         /// </summary>
         [Output("dnsSuffixes")]
         public Output<ImmutableArray<string>> DnsSuffixes { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
+        /// Additional IPv4 route defaults in this gateway template
         /// </summary>
         [Output("extraRoutes")]
         public Output<ImmutableDictionary<string, Outputs.GatewaytemplateExtraRoutes>?> ExtraRoutes { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+        /// Additional IPv6 route defaults in this gateway template
         /// </summary>
         [Output("extraRoutes6")]
         public Output<ImmutableDictionary<string, Outputs.GatewaytemplateExtraRoutes6>?> ExtraRoutes6 { get; private set; } = null!;
 
         /// <summary>
-        /// Gateway Management settings
+        /// Management-plane defaults provided by this gateway template
         /// </summary>
         [Output("gatewayMgmt")]
         public Output<Outputs.GatewaytemplateGatewayMgmt?> GatewayMgmt { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the profile name
+        /// Intrusion detection and prevention profile defaults in this gateway template
         /// </summary>
         [Output("idpProfiles")]
         public Output<ImmutableDictionary<string, Outputs.GatewaytemplateIdpProfiles>?> IdpProfiles { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the network name
+        /// Gateway interface IP configuration defaults by network name
         /// </summary>
         [Output("ipConfigs")]
         public Output<ImmutableDictionary<string, Outputs.GatewaytemplateIpConfigs>?> IpConfigs { get; private set; } = null!;
 
+        /// <summary>
+        /// Display name of the gateway template
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Layer 3 networks configured by this gateway template
+        /// </summary>
         [Output("networks")]
         public Output<ImmutableArray<Outputs.GatewaytemplateNetwork>> Networks { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether NTP servers in this template override inherited values
+        /// </summary>
         [Output("ntpOverride")]
         public Output<bool?> NtpOverride { get; private set; } = null!;
 
         /// <summary>
-        /// List of NTP servers specific to this device. By default, those in Site Settings will be used
+        /// NTP servers provided by this gateway template
         /// </summary>
         [Output("ntpServers")]
         public Output<ImmutableArray<string>> NtpServers { get; private set; } = null!;
 
         /// <summary>
-        /// Out-of-band (vme/em0/fxp0) IP config
+        /// Out-of-band management IP defaults in this gateway template
         /// </summary>
         [Output("oobIpConfig")]
         public Output<Outputs.GatewaytemplateOobIpConfig> OobIpConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// Organization that owns this gateway template
+        /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
@@ -241,11 +262,14 @@ namespace Pulumi.JuniperMist.Org
         public Output<string?> RouterId { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the routing policy name
+        /// Routing policy defaults applied by this gateway template
         /// </summary>
         [Output("routingPolicies")]
         public Output<ImmutableDictionary<string, Outputs.GatewaytemplateRoutingPolicies>?> RoutingPolicies { get; private set; } = null!;
 
+        /// <summary>
+        /// Traffic service policy defaults enforced by this gateway template
+        /// </summary>
         [Output("servicePolicies")]
         public Output<ImmutableArray<Outputs.GatewaytemplateServicePolicy>> ServicePolicies { get; private set; } = null!;
 
@@ -261,11 +285,14 @@ namespace Pulumi.JuniperMist.Org
         [Output("tunnelConfigs")]
         public Output<ImmutableDictionary<string, Outputs.GatewaytemplateTunnelConfigs>?> TunnelConfigs { get; private set; } = null!;
 
+        /// <summary>
+        /// Provider-specific tunnel options defined by this gateway template
+        /// </summary>
         [Output("tunnelProviderOptions")]
         public Output<Outputs.GatewaytemplateTunnelProviderOptions?> TunnelProviderOptions { get; private set; } = null!;
 
         /// <summary>
-        /// enum: `Spoke`, `Standalone`
+        /// Gateway template deployment type
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -276,11 +303,14 @@ namespace Pulumi.JuniperMist.Org
         [Output("urlFilteringDenyMsg")]
         public Output<string?> UrlFilteringDenyMsg { get; private set; } = null!;
 
+        /// <summary>
+        /// VRF defaults applied by this gateway template
+        /// </summary>
         [Output("vrfConfig")]
         public Output<Outputs.GatewaytemplateVrfConfig?> VrfConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the network name
+        /// VRF instances configured by this gateway template
         /// </summary>
         [Output("vrfInstances")]
         public Output<ImmutableDictionary<string, Outputs.GatewaytemplateVrfInstances>?> VrfInstances { get; private set; } = null!;
@@ -336,7 +366,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _additionalConfigCmds;
 
         /// <summary>
-        /// additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        /// Additional CLI configuration commands provided by this gateway template
         /// </summary>
         public InputList<string> AdditionalConfigCmds
         {
@@ -346,15 +376,25 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("bgpConfig")]
         private InputMap<Inputs.GatewaytemplateBgpConfigArgs>? _bgpConfig;
+
+        /// <summary>
+        /// BGP routing defaults for this gateway template. Property key is the BGP session name
+        /// </summary>
         public InputMap<Inputs.GatewaytemplateBgpConfigArgs> BgpConfig
         {
             get => _bgpConfig ?? (_bgpConfig = new InputMap<Inputs.GatewaytemplateBgpConfigArgs>());
             set => _bgpConfig = value;
         }
 
+        /// <summary>
+        /// DHCP server defaults provided by this gateway template
+        /// </summary>
         [Input("dhcpdConfig")]
         public Input<Inputs.GatewaytemplateDhcpdConfigArgs>? DhcpdConfig { get; set; }
 
+        /// <summary>
+        /// Whether DNS server and suffix settings in this template override inherited values
+        /// </summary>
         [Input("dnsOverride")]
         public Input<bool>? DnsOverride { get; set; }
 
@@ -362,7 +402,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _dnsServers;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
+        /// DNS servers provided by this gateway template
         /// </summary>
         public InputList<string> DnsServers
         {
@@ -374,7 +414,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _dnsSuffixes;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
+        /// DNS search suffixes provided by this gateway template
         /// </summary>
         public InputList<string> DnsSuffixes
         {
@@ -386,7 +426,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.GatewaytemplateExtraRoutesArgs>? _extraRoutes;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
+        /// Additional IPv4 route defaults in this gateway template
         /// </summary>
         public InputMap<Inputs.GatewaytemplateExtraRoutesArgs> ExtraRoutes
         {
@@ -398,7 +438,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.GatewaytemplateExtraRoutes6Args>? _extraRoutes6;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+        /// Additional IPv6 route defaults in this gateway template
         /// </summary>
         public InputMap<Inputs.GatewaytemplateExtraRoutes6Args> ExtraRoutes6
         {
@@ -407,7 +447,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Gateway Management settings
+        /// Management-plane defaults provided by this gateway template
         /// </summary>
         [Input("gatewayMgmt")]
         public Input<Inputs.GatewaytemplateGatewayMgmtArgs>? GatewayMgmt { get; set; }
@@ -416,7 +456,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.GatewaytemplateIdpProfilesArgs>? _idpProfiles;
 
         /// <summary>
-        /// Property key is the profile name
+        /// Intrusion detection and prevention profile defaults in this gateway template
         /// </summary>
         public InputMap<Inputs.GatewaytemplateIdpProfilesArgs> IdpProfiles
         {
@@ -428,7 +468,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.GatewaytemplateIpConfigsArgs>? _ipConfigs;
 
         /// <summary>
-        /// Property key is the network name
+        /// Gateway interface IP configuration defaults by network name
         /// </summary>
         public InputMap<Inputs.GatewaytemplateIpConfigsArgs> IpConfigs
         {
@@ -436,17 +476,27 @@ namespace Pulumi.JuniperMist.Org
             set => _ipConfigs = value;
         }
 
+        /// <summary>
+        /// Display name of the gateway template
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("networks")]
         private InputList<Inputs.GatewaytemplateNetworkArgs>? _networks;
+
+        /// <summary>
+        /// Layer 3 networks configured by this gateway template
+        /// </summary>
         public InputList<Inputs.GatewaytemplateNetworkArgs> Networks
         {
             get => _networks ?? (_networks = new InputList<Inputs.GatewaytemplateNetworkArgs>());
             set => _networks = value;
         }
 
+        /// <summary>
+        /// Whether NTP servers in this template override inherited values
+        /// </summary>
         [Input("ntpOverride")]
         public Input<bool>? NtpOverride { get; set; }
 
@@ -454,7 +504,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _ntpServers;
 
         /// <summary>
-        /// List of NTP servers specific to this device. By default, those in Site Settings will be used
+        /// NTP servers provided by this gateway template
         /// </summary>
         public InputList<string> NtpServers
         {
@@ -463,11 +513,14 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Out-of-band (vme/em0/fxp0) IP config
+        /// Out-of-band management IP defaults in this gateway template
         /// </summary>
         [Input("oobIpConfig")]
         public Input<Inputs.GatewaytemplateOobIpConfigArgs>? OobIpConfig { get; set; }
 
+        /// <summary>
+        /// Organization that owns this gateway template
+        /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
@@ -505,7 +558,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.GatewaytemplateRoutingPoliciesArgs>? _routingPolicies;
 
         /// <summary>
-        /// Property key is the routing policy name
+        /// Routing policy defaults applied by this gateway template
         /// </summary>
         public InputMap<Inputs.GatewaytemplateRoutingPoliciesArgs> RoutingPolicies
         {
@@ -515,6 +568,10 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("servicePolicies")]
         private InputList<Inputs.GatewaytemplateServicePolicyArgs>? _servicePolicies;
+
+        /// <summary>
+        /// Traffic service policy defaults enforced by this gateway template
+        /// </summary>
         public InputList<Inputs.GatewaytemplateServicePolicyArgs> ServicePolicies
         {
             get => _servicePolicies ?? (_servicePolicies = new InputList<Inputs.GatewaytemplateServicePolicyArgs>());
@@ -545,11 +602,14 @@ namespace Pulumi.JuniperMist.Org
             set => _tunnelConfigs = value;
         }
 
+        /// <summary>
+        /// Provider-specific tunnel options defined by this gateway template
+        /// </summary>
         [Input("tunnelProviderOptions")]
         public Input<Inputs.GatewaytemplateTunnelProviderOptionsArgs>? TunnelProviderOptions { get; set; }
 
         /// <summary>
-        /// enum: `Spoke`, `Standalone`
+        /// Gateway template deployment type
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -560,6 +620,9 @@ namespace Pulumi.JuniperMist.Org
         [Input("urlFilteringDenyMsg")]
         public Input<string>? UrlFilteringDenyMsg { get; set; }
 
+        /// <summary>
+        /// VRF defaults applied by this gateway template
+        /// </summary>
         [Input("vrfConfig")]
         public Input<Inputs.GatewaytemplateVrfConfigArgs>? VrfConfig { get; set; }
 
@@ -567,7 +630,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.GatewaytemplateVrfInstancesArgs>? _vrfInstances;
 
         /// <summary>
-        /// Property key is the network name
+        /// VRF instances configured by this gateway template
         /// </summary>
         public InputMap<Inputs.GatewaytemplateVrfInstancesArgs> VrfInstances
         {
@@ -587,7 +650,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _additionalConfigCmds;
 
         /// <summary>
-        /// additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        /// Additional CLI configuration commands provided by this gateway template
         /// </summary>
         public InputList<string> AdditionalConfigCmds
         {
@@ -597,15 +660,25 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("bgpConfig")]
         private InputMap<Inputs.GatewaytemplateBgpConfigGetArgs>? _bgpConfig;
+
+        /// <summary>
+        /// BGP routing defaults for this gateway template. Property key is the BGP session name
+        /// </summary>
         public InputMap<Inputs.GatewaytemplateBgpConfigGetArgs> BgpConfig
         {
             get => _bgpConfig ?? (_bgpConfig = new InputMap<Inputs.GatewaytemplateBgpConfigGetArgs>());
             set => _bgpConfig = value;
         }
 
+        /// <summary>
+        /// DHCP server defaults provided by this gateway template
+        /// </summary>
         [Input("dhcpdConfig")]
         public Input<Inputs.GatewaytemplateDhcpdConfigGetArgs>? DhcpdConfig { get; set; }
 
+        /// <summary>
+        /// Whether DNS server and suffix settings in this template override inherited values
+        /// </summary>
         [Input("dnsOverride")]
         public Input<bool>? DnsOverride { get; set; }
 
@@ -613,7 +686,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _dnsServers;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
+        /// DNS servers provided by this gateway template
         /// </summary>
         public InputList<string> DnsServers
         {
@@ -625,7 +698,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _dnsSuffixes;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
+        /// DNS search suffixes provided by this gateway template
         /// </summary>
         public InputList<string> DnsSuffixes
         {
@@ -637,7 +710,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.GatewaytemplateExtraRoutesGetArgs>? _extraRoutes;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
+        /// Additional IPv4 route defaults in this gateway template
         /// </summary>
         public InputMap<Inputs.GatewaytemplateExtraRoutesGetArgs> ExtraRoutes
         {
@@ -649,7 +722,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.GatewaytemplateExtraRoutes6GetArgs>? _extraRoutes6;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+        /// Additional IPv6 route defaults in this gateway template
         /// </summary>
         public InputMap<Inputs.GatewaytemplateExtraRoutes6GetArgs> ExtraRoutes6
         {
@@ -658,7 +731,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Gateway Management settings
+        /// Management-plane defaults provided by this gateway template
         /// </summary>
         [Input("gatewayMgmt")]
         public Input<Inputs.GatewaytemplateGatewayMgmtGetArgs>? GatewayMgmt { get; set; }
@@ -667,7 +740,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.GatewaytemplateIdpProfilesGetArgs>? _idpProfiles;
 
         /// <summary>
-        /// Property key is the profile name
+        /// Intrusion detection and prevention profile defaults in this gateway template
         /// </summary>
         public InputMap<Inputs.GatewaytemplateIdpProfilesGetArgs> IdpProfiles
         {
@@ -679,7 +752,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.GatewaytemplateIpConfigsGetArgs>? _ipConfigs;
 
         /// <summary>
-        /// Property key is the network name
+        /// Gateway interface IP configuration defaults by network name
         /// </summary>
         public InputMap<Inputs.GatewaytemplateIpConfigsGetArgs> IpConfigs
         {
@@ -687,17 +760,27 @@ namespace Pulumi.JuniperMist.Org
             set => _ipConfigs = value;
         }
 
+        /// <summary>
+        /// Display name of the gateway template
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("networks")]
         private InputList<Inputs.GatewaytemplateNetworkGetArgs>? _networks;
+
+        /// <summary>
+        /// Layer 3 networks configured by this gateway template
+        /// </summary>
         public InputList<Inputs.GatewaytemplateNetworkGetArgs> Networks
         {
             get => _networks ?? (_networks = new InputList<Inputs.GatewaytemplateNetworkGetArgs>());
             set => _networks = value;
         }
 
+        /// <summary>
+        /// Whether NTP servers in this template override inherited values
+        /// </summary>
         [Input("ntpOverride")]
         public Input<bool>? NtpOverride { get; set; }
 
@@ -705,7 +788,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _ntpServers;
 
         /// <summary>
-        /// List of NTP servers specific to this device. By default, those in Site Settings will be used
+        /// NTP servers provided by this gateway template
         /// </summary>
         public InputList<string> NtpServers
         {
@@ -714,11 +797,14 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Out-of-band (vme/em0/fxp0) IP config
+        /// Out-of-band management IP defaults in this gateway template
         /// </summary>
         [Input("oobIpConfig")]
         public Input<Inputs.GatewaytemplateOobIpConfigGetArgs>? OobIpConfig { get; set; }
 
+        /// <summary>
+        /// Organization that owns this gateway template
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
@@ -756,7 +842,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.GatewaytemplateRoutingPoliciesGetArgs>? _routingPolicies;
 
         /// <summary>
-        /// Property key is the routing policy name
+        /// Routing policy defaults applied by this gateway template
         /// </summary>
         public InputMap<Inputs.GatewaytemplateRoutingPoliciesGetArgs> RoutingPolicies
         {
@@ -766,6 +852,10 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("servicePolicies")]
         private InputList<Inputs.GatewaytemplateServicePolicyGetArgs>? _servicePolicies;
+
+        /// <summary>
+        /// Traffic service policy defaults enforced by this gateway template
+        /// </summary>
         public InputList<Inputs.GatewaytemplateServicePolicyGetArgs> ServicePolicies
         {
             get => _servicePolicies ?? (_servicePolicies = new InputList<Inputs.GatewaytemplateServicePolicyGetArgs>());
@@ -796,11 +886,14 @@ namespace Pulumi.JuniperMist.Org
             set => _tunnelConfigs = value;
         }
 
+        /// <summary>
+        /// Provider-specific tunnel options defined by this gateway template
+        /// </summary>
         [Input("tunnelProviderOptions")]
         public Input<Inputs.GatewaytemplateTunnelProviderOptionsGetArgs>? TunnelProviderOptions { get; set; }
 
         /// <summary>
-        /// enum: `Spoke`, `Standalone`
+        /// Gateway template deployment type
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -811,6 +904,9 @@ namespace Pulumi.JuniperMist.Org
         [Input("urlFilteringDenyMsg")]
         public Input<string>? UrlFilteringDenyMsg { get; set; }
 
+        /// <summary>
+        /// VRF defaults applied by this gateway template
+        /// </summary>
         [Input("vrfConfig")]
         public Input<Inputs.GatewaytemplateVrfConfigGetArgs>? VrfConfig { get; set; }
 
@@ -818,7 +914,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.GatewaytemplateVrfInstancesGetArgs>? _vrfInstances;
 
         /// <summary>
-        /// Property key is the network name
+        /// VRF instances configured by this gateway template
         /// </summary>
         public InputMap<Inputs.GatewaytemplateVrfInstancesGetArgs> VrfInstances
         {

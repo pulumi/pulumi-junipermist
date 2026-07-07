@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class SettingWiredPmaArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether PMA is enabled for Wired Assurance
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

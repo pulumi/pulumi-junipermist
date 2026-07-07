@@ -14,9 +14,12 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class NetworkVpnAccessStaticNat
     {
         /// <summary>
-        /// The Static NAT destination IP Address. Must be an IP Address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
+        /// The Static NAT destination IP address. Must be an IP address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
         /// </summary>
         public readonly string InternalIp;
+        /// <summary>
+        /// Label for this VPN static NAT rule
+        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

@@ -14,21 +14,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingInstaller {
+    /**
+     * @return Whether installers may work with all eligible devices
+     * 
+     */
     private @Nullable Boolean allowAllDevices;
+    /**
+     * @return Whether installers may work with all sites
+     * 
+     */
     private @Nullable Boolean allowAllSites;
+    /**
+     * @return Additional site IDs that installers may access
+     * 
+     */
     private @Nullable List<String> extraSiteIds;
+    /**
+     * @return Grace period, in days, during which installers can modify recent sites or devices
+     * 
+     */
     private @Nullable Integer gracePeriod;
 
     private SettingInstaller() {}
+    /**
+     * @return Whether installers may work with all eligible devices
+     * 
+     */
     public Optional<Boolean> allowAllDevices() {
         return Optional.ofNullable(this.allowAllDevices);
     }
+    /**
+     * @return Whether installers may work with all sites
+     * 
+     */
     public Optional<Boolean> allowAllSites() {
         return Optional.ofNullable(this.allowAllSites);
     }
+    /**
+     * @return Additional site IDs that installers may access
+     * 
+     */
     public List<String> extraSiteIds() {
         return this.extraSiteIds == null ? List.of() : this.extraSiteIds;
     }
+    /**
+     * @return Grace period, in days, during which installers can modify recent sites or devices
+     * 
+     */
     public Optional<Integer> gracePeriod() {
         return Optional.ofNullable(this.gracePeriod);
     }

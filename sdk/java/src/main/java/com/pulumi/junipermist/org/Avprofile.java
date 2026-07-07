@@ -84,68 +84,100 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:org/avprofile:Avprofile")
 public class Avprofile extends com.pulumi.resources.CustomResource {
     /**
-     * enum: `block`, `log-and-permit`, `permit`
+     * Action to take when antivirus scanning cannot complete
      * 
      */
     @Export(name="fallbackAction", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> fallbackAction;
 
     /**
-     * @return enum: `block`, `log-and-permit`, `permit`
+     * @return Action to take when antivirus scanning cannot complete
      * 
      */
     public Output<Optional<String>> fallbackAction() {
         return Codegen.optional(this.fallbackAction);
     }
     /**
-     * In KB
+     * Maximum file size scanned by this antivirus profile, in KB
      * 
      */
     @Export(name="maxFilesize", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxFilesize;
 
     /**
-     * @return In KB
+     * @return Maximum file size scanned by this antivirus profile, in KB
      * 
      */
     public Output<Integer> maxFilesize() {
         return this.maxFilesize;
     }
+    /**
+     * Content MIME types exempted from antivirus scanning
+     * 
+     */
     @Export(name="mimeWhitelists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> mimeWhitelists;
 
+    /**
+     * @return Content MIME types exempted from antivirus scanning
+     * 
+     */
     public Output<List<String>> mimeWhitelists() {
         return this.mimeWhitelists;
     }
+    /**
+     * Display name of the antivirus profile
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Display name of the antivirus profile
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Owning organization identifier for this antivirus profile
+     * 
+     */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
+    /**
+     * @return Owning organization identifier for this antivirus profile
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }
     /**
-     * List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
+     * Network protocols inspected by this antivirus profile
      * 
      */
     @Export(name="protocols", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> protocols;
 
     /**
-     * @return List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
+     * @return Network protocols inspected by this antivirus profile
      * 
      */
     public Output<List<String>> protocols() {
         return this.protocols;
     }
+    /**
+     * Allowed URL entries exempted from antivirus scanning
+     * 
+     */
     @Export(name="urlWhitelists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> urlWhitelists;
 
+    /**
+     * @return Allowed URL entries exempted from antivirus scanning
+     * 
+     */
     public Output<List<String>> urlWhitelists() {
         return this.urlWhitelists;
     }

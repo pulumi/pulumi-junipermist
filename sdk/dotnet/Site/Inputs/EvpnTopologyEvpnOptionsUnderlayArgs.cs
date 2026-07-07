@@ -18,6 +18,9 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("asBase")]
         public Input<int>? AsBase { get; set; }
 
+        /// <summary>
+        /// Prefix length used for automatically derived underlay router identifiers
+        /// </summary>
         [Input("routedIdPrefix")]
         public Input<string>? RoutedIdPrefix { get; set; }
 

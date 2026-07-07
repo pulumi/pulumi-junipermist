@@ -17,11 +17,20 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// Whether to disallow Mist Devices in the network
         /// </summary>
         public readonly bool? DisallowMistServices;
+        /// <summary>
+        /// IPv4 gateway address for this network
+        /// </summary>
         public readonly string? Gateway;
+        /// <summary>
+        /// IPv6 gateway address for this network
+        /// </summary>
         public readonly string? Gateway6;
+        /// <summary>
+        /// Internal access settings for this network
+        /// </summary>
         public readonly Outputs.GatewaytemplateNetworkInternalAccess? InternalAccess;
         /// <summary>
-        /// Whether this network has direct internet access
+        /// Direct internet access and NAT settings for this network
         /// </summary>
         public readonly Outputs.GatewaytemplateNetworkInternetAccess? InternetAccess;
         /// <summary>
@@ -29,23 +38,35 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? Isolation;
         /// <summary>
-        /// Whether to enable multicast support (only PIM-sparse mode is supported)
+        /// Settings for multicast routing on this network
         /// </summary>
         public readonly Outputs.GatewaytemplateNetworkMulticast? Multicast;
+        /// <summary>
+        /// Display name of the organization network
+        /// </summary>
         public readonly string Name;
         /// <summary>
-        /// For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+        /// Other network names this network can route to, for example through BGP, OSPF or static routes
         /// </summary>
         public readonly ImmutableArray<string> RoutedForNetworks;
+        /// <summary>
+        /// IPv4 subnet CIDR for this network
+        /// </summary>
         public readonly string Subnet;
+        /// <summary>
+        /// IPv6 subnet CIDR for this network
+        /// </summary>
         public readonly string? Subnet6;
         /// <summary>
-        /// Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+        /// Tenant address mappings associated with this network
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.GatewaytemplateNetworkTenants>? Tenants;
+        /// <summary>
+        /// VLAN ID or variable associated with this network
+        /// </summary>
         public readonly string? VlanId;
         /// <summary>
-        /// Property key is the VPN name. Whether this network can be accessed from vpn
+        /// VPN access settings keyed by VPN name for this network
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.GatewaytemplateNetworkVpnAccess>? VpnAccess;
 

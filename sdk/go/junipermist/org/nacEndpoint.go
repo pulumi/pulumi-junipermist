@@ -66,14 +66,19 @@ import (
 type NacEndpoint struct {
 	pulumi.CustomResourceState
 
+	// Applied labels for this user MAC entry
 	Labels pulumi.StringArrayOutput `pulumi:"labels"`
-	// Only non-local-admin MAC is accepted
-	Mac         pulumi.StringOutput `pulumi:"mac"`
-	Name        pulumi.StringOutput `pulumi:"name"`
-	Notes       pulumi.StringOutput `pulumi:"notes"`
-	OrgId       pulumi.StringOutput `pulumi:"orgId"`
+	// Client MAC address for this entry. Only non-local-admin MAC addresses are accepted
+	Mac pulumi.StringOutput `pulumi:"mac"`
+	// Display name for this user MAC entry
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Free-form notes about this user MAC entry
+	Notes pulumi.StringOutput `pulumi:"notes"`
+	OrgId pulumi.StringOutput `pulumi:"orgId"`
+	// RADIUS group associated with this user MAC entry
 	RadiusGroup pulumi.StringOutput `pulumi:"radiusGroup"`
-	Vlan        pulumi.StringOutput `pulumi:"vlan"`
+	// Network VLAN value associated with this user MAC entry
+	Vlan pulumi.StringOutput `pulumi:"vlan"`
 }
 
 // NewNacEndpoint registers a new resource with the given unique name, arguments, and options.
@@ -112,25 +117,35 @@ func GetNacEndpoint(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NacEndpoint resources.
 type nacEndpointState struct {
+	// Applied labels for this user MAC entry
 	Labels []string `pulumi:"labels"`
-	// Only non-local-admin MAC is accepted
-	Mac         *string `pulumi:"mac"`
-	Name        *string `pulumi:"name"`
-	Notes       *string `pulumi:"notes"`
-	OrgId       *string `pulumi:"orgId"`
+	// Client MAC address for this entry. Only non-local-admin MAC addresses are accepted
+	Mac *string `pulumi:"mac"`
+	// Display name for this user MAC entry
+	Name *string `pulumi:"name"`
+	// Free-form notes about this user MAC entry
+	Notes *string `pulumi:"notes"`
+	OrgId *string `pulumi:"orgId"`
+	// RADIUS group associated with this user MAC entry
 	RadiusGroup *string `pulumi:"radiusGroup"`
-	Vlan        *string `pulumi:"vlan"`
+	// Network VLAN value associated with this user MAC entry
+	Vlan *string `pulumi:"vlan"`
 }
 
 type NacEndpointState struct {
+	// Applied labels for this user MAC entry
 	Labels pulumi.StringArrayInput
-	// Only non-local-admin MAC is accepted
-	Mac         pulumi.StringPtrInput
-	Name        pulumi.StringPtrInput
-	Notes       pulumi.StringPtrInput
-	OrgId       pulumi.StringPtrInput
+	// Client MAC address for this entry. Only non-local-admin MAC addresses are accepted
+	Mac pulumi.StringPtrInput
+	// Display name for this user MAC entry
+	Name pulumi.StringPtrInput
+	// Free-form notes about this user MAC entry
+	Notes pulumi.StringPtrInput
+	OrgId pulumi.StringPtrInput
+	// RADIUS group associated with this user MAC entry
 	RadiusGroup pulumi.StringPtrInput
-	Vlan        pulumi.StringPtrInput
+	// Network VLAN value associated with this user MAC entry
+	Vlan pulumi.StringPtrInput
 }
 
 func (NacEndpointState) ElementType() reflect.Type {
@@ -138,26 +153,36 @@ func (NacEndpointState) ElementType() reflect.Type {
 }
 
 type nacEndpointArgs struct {
+	// Applied labels for this user MAC entry
 	Labels []string `pulumi:"labels"`
-	// Only non-local-admin MAC is accepted
-	Mac         string  `pulumi:"mac"`
-	Name        *string `pulumi:"name"`
-	Notes       *string `pulumi:"notes"`
-	OrgId       string  `pulumi:"orgId"`
+	// Client MAC address for this entry. Only non-local-admin MAC addresses are accepted
+	Mac string `pulumi:"mac"`
+	// Display name for this user MAC entry
+	Name *string `pulumi:"name"`
+	// Free-form notes about this user MAC entry
+	Notes *string `pulumi:"notes"`
+	OrgId string  `pulumi:"orgId"`
+	// RADIUS group associated with this user MAC entry
 	RadiusGroup *string `pulumi:"radiusGroup"`
-	Vlan        *string `pulumi:"vlan"`
+	// Network VLAN value associated with this user MAC entry
+	Vlan *string `pulumi:"vlan"`
 }
 
 // The set of arguments for constructing a NacEndpoint resource.
 type NacEndpointArgs struct {
+	// Applied labels for this user MAC entry
 	Labels pulumi.StringArrayInput
-	// Only non-local-admin MAC is accepted
-	Mac         pulumi.StringInput
-	Name        pulumi.StringPtrInput
-	Notes       pulumi.StringPtrInput
-	OrgId       pulumi.StringInput
+	// Client MAC address for this entry. Only non-local-admin MAC addresses are accepted
+	Mac pulumi.StringInput
+	// Display name for this user MAC entry
+	Name pulumi.StringPtrInput
+	// Free-form notes about this user MAC entry
+	Notes pulumi.StringPtrInput
+	OrgId pulumi.StringInput
+	// RADIUS group associated with this user MAC entry
 	RadiusGroup pulumi.StringPtrInput
-	Vlan        pulumi.StringPtrInput
+	// Network VLAN value associated with this user MAC entry
+	Vlan pulumi.StringPtrInput
 }
 
 func (NacEndpointArgs) ElementType() reflect.Type {
@@ -247,19 +272,22 @@ func (o NacEndpointOutput) ToNacEndpointOutputWithContext(ctx context.Context) N
 	return o
 }
 
+// Applied labels for this user MAC entry
 func (o NacEndpointOutput) Labels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NacEndpoint) pulumi.StringArrayOutput { return v.Labels }).(pulumi.StringArrayOutput)
 }
 
-// Only non-local-admin MAC is accepted
+// Client MAC address for this entry. Only non-local-admin MAC addresses are accepted
 func (o NacEndpointOutput) Mac() pulumi.StringOutput {
 	return o.ApplyT(func(v *NacEndpoint) pulumi.StringOutput { return v.Mac }).(pulumi.StringOutput)
 }
 
+// Display name for this user MAC entry
 func (o NacEndpointOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NacEndpoint) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Free-form notes about this user MAC entry
 func (o NacEndpointOutput) Notes() pulumi.StringOutput {
 	return o.ApplyT(func(v *NacEndpoint) pulumi.StringOutput { return v.Notes }).(pulumi.StringOutput)
 }
@@ -268,10 +296,12 @@ func (o NacEndpointOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NacEndpoint) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
+// RADIUS group associated with this user MAC entry
 func (o NacEndpointOutput) RadiusGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v *NacEndpoint) pulumi.StringOutput { return v.RadiusGroup }).(pulumi.StringOutput)
 }
 
+// Network VLAN value associated with this user MAC entry
 func (o NacEndpointOutput) Vlan() pulumi.StringOutput {
 	return o.ApplyT(func(v *NacEndpoint) pulumi.StringOutput { return v.Vlan }).(pulumi.StringOutput)
 }

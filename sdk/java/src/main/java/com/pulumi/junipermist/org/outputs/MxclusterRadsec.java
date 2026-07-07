@@ -16,12 +16,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class MxclusterRadsec {
     /**
-     * @return List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+     * @return RADIUS accounting servers used by the RadSec proxy
      * 
      */
     private @Nullable List<MxclusterRadsecAcctServer> acctServers;
     /**
-     * @return List of RADIUS authentication servers, order matters where the first one is treated as primary
+     * @return RADIUS authentication servers used by the RadSec proxy
      * 
      */
     private @Nullable List<MxclusterRadsecAuthServer> authServers;
@@ -36,36 +36,36 @@ public final class MxclusterRadsec {
      */
     private @Nullable Boolean matchSsid;
     /**
-     * @return SSpecify NAS-IP-ADDRESS, NAS-IPv6-ADDRESS to use with auth_servers. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`
+     * @return Source used to populate NAS-IP-Address and NAS-IPv6-Address attributes
      * 
      */
     private @Nullable String nasIpSource;
     /**
-     * @return Hostnames or IPs for Mist AP to use as the TLS Server (i.e. they are reachable from AP) in addition to `tuntermHosts`
+     * @return AP-reachable hostnames or IP addresses advertised as RadSec TLS servers
      * 
      */
     private @Nullable List<String> proxyHosts;
     /**
-     * @return When ordered, Mist Edge will prefer and go back to the first radius server if possible. enum: `ordered`, `unordered`
+     * @return RADIUS server selection strategy for RadSec failover
      * 
      */
     private @Nullable String serverSelection;
     /**
-     * @return Specify IP address to connect to authServers and acct_servers. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`
+     * @return Connection source interface or address used when reaching RADIUS servers
      * 
      */
     private @Nullable String srcIpSource;
 
     private MxclusterRadsec() {}
     /**
-     * @return List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+     * @return RADIUS accounting servers used by the RadSec proxy
      * 
      */
     public List<MxclusterRadsecAcctServer> acctServers() {
         return this.acctServers == null ? List.of() : this.acctServers;
     }
     /**
-     * @return List of RADIUS authentication servers, order matters where the first one is treated as primary
+     * @return RADIUS authentication servers used by the RadSec proxy
      * 
      */
     public List<MxclusterRadsecAuthServer> authServers() {
@@ -86,28 +86,28 @@ public final class MxclusterRadsec {
         return Optional.ofNullable(this.matchSsid);
     }
     /**
-     * @return SSpecify NAS-IP-ADDRESS, NAS-IPv6-ADDRESS to use with auth_servers. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`
+     * @return Source used to populate NAS-IP-Address and NAS-IPv6-Address attributes
      * 
      */
     public Optional<String> nasIpSource() {
         return Optional.ofNullable(this.nasIpSource);
     }
     /**
-     * @return Hostnames or IPs for Mist AP to use as the TLS Server (i.e. they are reachable from AP) in addition to `tuntermHosts`
+     * @return AP-reachable hostnames or IP addresses advertised as RadSec TLS servers
      * 
      */
     public List<String> proxyHosts() {
         return this.proxyHosts == null ? List.of() : this.proxyHosts;
     }
     /**
-     * @return When ordered, Mist Edge will prefer and go back to the first radius server if possible. enum: `ordered`, `unordered`
+     * @return RADIUS server selection strategy for RadSec failover
      * 
      */
     public Optional<String> serverSelection() {
         return Optional.ofNullable(this.serverSelection);
     }
     /**
-     * @return Specify IP address to connect to authServers and acct_servers. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`
+     * @return Connection source interface or address used when reaching RADIUS servers
      * 
      */
     public Optional<String> srcIpSource() {

@@ -70,19 +70,19 @@ namespace Pulumi.JuniperMist.Org
         public Output<bool> AcctImmediateUpdate { get; private set; } = null!;
 
         /// <summary>
-        /// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+        /// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled
         /// </summary>
         [Output("acctInterimInterval")]
         public Output<int> AcctInterimInterval { get; private set; } = null!;
 
         /// <summary>
-        /// List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+        /// RADIUS accounting servers used by this WLAN
         /// </summary>
         [Output("acctServers")]
         public Output<ImmutableArray<Outputs.WlanAcctServer>> AcctServers { get; private set; } = null!;
 
         /// <summary>
-        /// Airwatch wlan settings
+        /// Integration settings for AirWatch device compliance on this WLAN
         /// </summary>
         [Output("airwatch")]
         public Output<Outputs.WlanAirwatch> Airwatch { get; private set; } = null!;
@@ -106,25 +106,25 @@ namespace Pulumi.JuniperMist.Org
         public Output<bool> AllowSsdp { get; private set; } = null!;
 
         /// <summary>
-        /// List of device ids
+        /// Access point identifiers used when `ApplyTo`==`Aps`
         /// </summary>
         [Output("apIds")]
         public Output<ImmutableArray<string>> ApIds { get; private set; } = null!;
 
         /// <summary>
-        /// Bandwidth limiting for apps (applies to up/down)
+        /// Bandwidth limits for applications on this WLAN
         /// </summary>
         [Output("appLimit")]
         public Output<Outputs.WlanAppLimit?> AppLimit { get; private set; } = null!;
 
         /// <summary>
-        /// APP qos wlan settings
+        /// QoS rules for application traffic on this WLAN
         /// </summary>
         [Output("appQos")]
         public Output<Outputs.WlanAppQos> AppQos { get; private set; } = null!;
 
         /// <summary>
-        /// enum: `Aps`, `Site`, `Wxtags`
+        /// Scope that determines where this WLAN is applied
         /// </summary>
         [Output("applyTo")]
         public Output<string> ApplyTo { get; private set; } = null!;
@@ -136,19 +136,19 @@ namespace Pulumi.JuniperMist.Org
         public Output<bool> ArpFilter { get; private set; } = null!;
 
         /// <summary>
-        /// Authentication wlan settings
+        /// Settings that control client authentication for this WLAN
         /// </summary>
         [Output("auth")]
         public Output<Outputs.WlanAuth?> Auth { get; private set; } = null!;
 
         /// <summary>
-        /// When ordered, AP will prefer and go back to the first server if possible. enum: `Ordered`, `Unordered`
+        /// RADIUS authentication server selection behavior for this WLAN
         /// </summary>
         [Output("authServerSelection")]
         public Output<string> AuthServerSelection { get; private set; } = null!;
 
         /// <summary>
-        /// List of RADIUS authentication servers, at least one is needed if `auth type`==`Eap`, order matters where the first one is treated as primary
+        /// RADIUS authentication servers used by this WLAN. Required when `auth.type`==`Eap`
         /// </summary>
         [Output("authServers")]
         public Output<ImmutableArray<Outputs.WlanAuthServer>> AuthServers { get; private set; } = null!;
@@ -166,13 +166,13 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> AuthServersNasIp { get; private set; } = null!;
 
         /// <summary>
-        /// Radius auth session retries. Following fast timers are set if "FastDot1xTimers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting AuthServersRetries and is set to default value to 3.
+        /// RADIUS auth session retries. Following fast timers are set if "FastDot1xTimers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting AuthServersRetries and is set to default value to 3.
         /// </summary>
         [Output("authServersRetries")]
         public Output<int?> AuthServersRetries { get; private set; } = null!;
 
         /// <summary>
-        /// Radius auth session timeout. Following fast timers are set if "FastDot1xTimers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting AuthServersTimeout and is set to default value of 10.
+        /// RADIUS auth session timeout. Following fast timers are set if "FastDot1xTimers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting AuthServersTimeout and is set to default value of 10.
         /// </summary>
         [Output("authServersTimeout")]
         public Output<int?> AuthServersTimeout { get; private set; } = null!;
@@ -202,17 +202,20 @@ namespace Pulumi.JuniperMist.Org
         public Output<bool?> BlockBlacklistClients { get; private set; } = null!;
 
         /// <summary>
-        /// Bonjour gateway wlan settings
+        /// Service discovery gateway settings for Bonjour traffic on this WLAN
         /// </summary>
         [Output("bonjour")]
         public Output<Outputs.WlanBonjour?> Bonjour { get; private set; } = null!;
 
         /// <summary>
-        /// Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
+        /// Central web authentication settings for Cisco CWA on this WLAN
         /// </summary>
         [Output("ciscoCwa")]
         public Output<Outputs.WlanCiscoCwa> CiscoCwa { get; private set; } = null!;
 
+        /// <summary>
+        /// Downlink bandwidth limit applied per client
+        /// </summary>
         [Output("clientLimitDown")]
         public Output<string> ClientLimitDown { get; private set; } = null!;
 
@@ -222,6 +225,9 @@ namespace Pulumi.JuniperMist.Org
         [Output("clientLimitDownEnabled")]
         public Output<bool?> ClientLimitDownEnabled { get; private set; } = null!;
 
+        /// <summary>
+        /// Uplink bandwidth limit applied per client
+        /// </summary>
         [Output("clientLimitUp")]
         public Output<string> ClientLimitUp { get; private set; } = null!;
 
@@ -232,7 +238,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<bool?> ClientLimitUpEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// List of COA (change of authorization) servers, optional
+        /// RADIUS Change of Authorization servers available to this WLAN
         /// </summary>
         [Output("coaServers")]
         public Output<ImmutableArray<Outputs.WlanCoaServer>> CoaServers { get; private set; } = null!;
@@ -288,6 +294,9 @@ namespace Pulumi.JuniperMist.Org
         [Output("disableWhenGatewayUnreachable")]
         public Output<bool?> DisableWhenGatewayUnreachable { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether to disable this WLAN when the configured Mist tunnel is down
+        /// </summary>
         [Output("disableWhenMxtunnelDown")]
         public Output<bool?> DisableWhenMxtunnelDown { get; private set; } = null!;
 
@@ -298,33 +307,34 @@ namespace Pulumi.JuniperMist.Org
         public Output<bool> DisableWmm { get; private set; } = null!;
 
         /// <summary>
-        /// For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
+        /// RADIUS group based DNS server rewrite settings for this WLAN
         /// </summary>
         [Output("dnsServerRewrite")]
         public Output<Outputs.WlanDnsServerRewrite?> DnsServerRewrite { get; private set; } = null!;
 
+        /// <summary>
+        /// Delivery Traffic Indication Message interval for this WLAN
+        /// </summary>
         [Output("dtim")]
         public Output<int> Dtim { get; private set; } = null!;
 
         /// <summary>
-        /// For dynamic PSK where we get PerUser PSK from Radius. DynamicPsk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
-        ///   * PSK will come from RADIUS server
-        ///   * AP sends client MAC as username and password (i.e. `EnableMacAuth` is assumed)
-        ///   * AP sends BSSID:SSID as Caller-Station-ID
-        ///   * `AuthServers` is required
-        ///   * PSK will come from cloud WLC if source is CloudPsks
-        ///   * DefaultPsk will be used if cloud WLC is not available
-        ///   * `MultiPskOnly` and `Psk` is ignored
-        ///   * `Pairwise` can only be wpa2-ccmp (for now, wpa3 support on the roadmap)
+        /// Per-user PSK selection settings for this WLAN
         /// </summary>
         [Output("dynamicPsk")]
         public Output<Outputs.WlanDynamicPsk?> DynamicPsk { get; private set; } = null!;
 
         /// <summary>
-        /// For 802.1x
+        /// VLAN assignment settings for 802.1X dynamic VLANs
         /// </summary>
         [Output("dynamicVlan")]
         public Output<Outputs.WlanDynamicVlan?> DynamicVlan { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable FTM (Fine-Time Measurement, 802.11mc); configures the AP as an FTM Responder (target), allowing clients to perform ranging requests against it
+        /// </summary>
+        [Output("enableFtm")]
+        public Output<bool> EnableFtm { get; private set; } = null!;
 
         /// <summary>
         /// Enable AP-AP keycaching via multicast
@@ -369,16 +379,19 @@ namespace Pulumi.JuniperMist.Org
         public Output<bool> HostnameIe { get; private set; } = null!;
 
         /// <summary>
-        /// Hostspot 2.0 wlan settings
+        /// Passpoint and Hotspot 2.0 settings for this WLAN
         /// </summary>
         [Output("hotspot20")]
         public Output<Outputs.WlanHotspot20?> Hotspot20 { get; private set; } = null!;
 
+        /// <summary>
+        /// DHCP Option 82 insertion settings for this WLAN
+        /// </summary>
         [Output("injectDhcpOption82")]
         public Output<Outputs.WlanInjectDhcpOption82?> InjectDhcpOption82 { get; private set; } = null!;
 
         /// <summary>
-        /// where this WLAN will be connected to. enum: `All`, `Eth0`, `Eth1`, `Eth2`, `Eth3`, `Mxtunnel`, `SiteMxedge`, `Wxtunnel`
+        /// Network interface or tunnel where this WLAN bridges client traffic
         /// </summary>
         [Output("interface")]
         public Output<string> Interface { get; private set; } = null!;
@@ -425,20 +438,26 @@ namespace Pulumi.JuniperMist.Org
         [Output("maxNumClients")]
         public Output<int?> MaxNumClients { get; private set; } = null!;
 
+        /// <summary>
+        /// Juniper Mist NAC settings used by this WLAN
+        /// </summary>
         [Output("mistNac")]
         public Output<Outputs.WlanMistNac> MistNac { get; private set; } = null!;
 
+        /// <summary>
+        /// Managed service provider identifier associated with this WLAN
+        /// </summary>
         [Output("mspId")]
         public Output<string> MspId { get; private set; } = null!;
 
         /// <summary>
-        /// When `Interface`=`Mxtunnel`, id of the Mist Tunnel
+        /// Mist Tunnel identifiers used when `Interface`==`Mxtunnel`
         /// </summary>
         [Output("mxtunnelIds")]
         public Output<ImmutableArray<string>> MxtunnelIds { get; private set; } = null!;
 
         /// <summary>
-        /// When `Interface`=`SiteMxedge`, name of the mxtunnel that in mxtunnels under Site Setting
+        /// Mist Tunnel names used when `Interface`==`SiteMxedge`
         /// </summary>
         [Output("mxtunnelNames")]
         public Output<ImmutableArray<string>> MxtunnelNames { get; private set; } = null!;
@@ -455,23 +474,26 @@ namespace Pulumi.JuniperMist.Org
         [Output("noStaticIp")]
         public Output<bool> NoStaticIp { get; private set; } = null!;
 
+        /// <summary>
+        /// Owning organization associated with this WLAN
+        /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Portal wlan settings
+        /// Guest portal settings for this WLAN
         /// </summary>
         [Output("portal")]
         public Output<Outputs.WlanPortal> Portal { get; private set; } = null!;
 
         /// <summary>
-        /// List of hostnames without http(s):// (matched by substring)
+        /// Guest portal hostnames that clients may reach before authorization
         /// </summary>
         [Output("portalAllowedHostnames")]
         public Output<ImmutableArray<string>> PortalAllowedHostnames { get; private set; } = null!;
 
         /// <summary>
-        /// List of CIDRs
+        /// Guest portal CIDR subnets that clients may reach before authorization
         /// </summary>
         [Output("portalAllowedSubnets")]
         public Output<ImmutableArray<string>> PortalAllowedSubnets { get; private set; } = null!;
@@ -483,7 +505,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> PortalApiSecret { get; private set; } = null!;
 
         /// <summary>
-        /// List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
+        /// Guest portal hostnames denied before authorization, taking precedence over allowed hostnames
         /// </summary>
         [Output("portalDeniedHostnames")]
         public Output<ImmutableArray<string>> PortalDeniedHostnames { get; private set; } = null!;
@@ -500,17 +522,20 @@ namespace Pulumi.JuniperMist.Org
         [Output("portalSsoUrl")]
         public Output<string> PortalSsoUrl { get; private set; } = null!;
 
+        /// <summary>
+        /// Quality-of-service settings for WLAN client traffic
+        /// </summary>
         [Output("qos")]
         public Output<Outputs.WlanQos> Qos { get; private set; } = null!;
 
         /// <summary>
-        /// RadSec settings
+        /// TLS-secured RADIUS transport settings for this WLAN
         /// </summary>
         [Output("radsec")]
         public Output<Outputs.WlanRadsec> Radsec { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the RF band. enum: `24`, `5`, `6`
+        /// Data rate settings by RF band for this WLAN
         /// </summary>
         [Output("rateset")]
         public Output<ImmutableDictionary<string, Outputs.WlanRateset>> Rateset { get; private set; } = null!;
@@ -522,13 +547,13 @@ namespace Pulumi.JuniperMist.Org
         public Output<bool?> ReconnectClientsWhenRoamingMxcluster { get; private set; } = null!;
 
         /// <summary>
-        /// enum: `11r`, `OKC`, `NONE`
+        /// Fast roaming mode configured for this WLAN
         /// </summary>
         [Output("roamMode")]
         public Output<string?> RoamMode { get; private set; } = null!;
 
         /// <summary>
-        /// WLAN operating schedule, default is disabled
+        /// Operating schedule controlling when this WLAN is active
         /// </summary>
         [Output("schedule")]
         public Output<Outputs.WlanSchedule> Schedule { get; private set; } = null!;
@@ -545,6 +570,9 @@ namespace Pulumi.JuniperMist.Org
         [Output("ssid")]
         public Output<string> Ssid { get; private set; } = null!;
 
+        /// <summary>
+        /// Identifier of the WLAN template associated with this WLAN
+        /// </summary>
         [Output("templateId")]
         public Output<string> TemplateId { get; private set; } = null!;
 
@@ -560,11 +588,14 @@ namespace Pulumi.JuniperMist.Org
         [Output("vlanEnabled")]
         public Output<bool> VlanEnabled { get; private set; } = null!;
 
+        /// <summary>
+        /// Default VLAN ID, range, or variable used when `VlanEnabled`==`True`
+        /// </summary>
         [Output("vlanId")]
         public Output<string?> VlanId { get; private set; } = null!;
 
         /// <summary>
-        /// if `VlanEnabled`==`True` and `VlanPooling`==`True`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
+        /// Pool of VLAN IDs used when `VlanEnabled`==`True` and `VlanPooling`==`True`
         /// </summary>
         [Output("vlanIds")]
         public Output<ImmutableArray<string>> VlanIds { get; private set; } = null!;
@@ -575,6 +606,9 @@ namespace Pulumi.JuniperMist.Org
         [Output("vlanPooling")]
         public Output<bool> VlanPooling { get; private set; } = null!;
 
+        /// <summary>
+        /// Downlink bandwidth limit applied to the whole WLAN
+        /// </summary>
         [Output("wlanLimitDown")]
         public Output<string> WlanLimitDown { get; private set; } = null!;
 
@@ -584,6 +618,9 @@ namespace Pulumi.JuniperMist.Org
         [Output("wlanLimitDownEnabled")]
         public Output<bool?> WlanLimitDownEnabled { get; private set; } = null!;
 
+        /// <summary>
+        /// Uplink bandwidth limit applied to the whole WLAN
+        /// </summary>
         [Output("wlanLimitUp")]
         public Output<string> WlanLimitUp { get; private set; } = null!;
 
@@ -594,7 +631,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<bool?> WlanLimitUpEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// List of wxtag_ids
+        /// Identifiers of WxLAN tags used when `ApplyTo`==`Wxtags`
         /// </summary>
         [Output("wxtagIds")]
         public Output<ImmutableArray<string>> WxtagIds { get; private set; } = null!;
@@ -665,7 +702,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<bool>? AcctImmediateUpdate { get; set; }
 
         /// <summary>
-        /// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+        /// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled
         /// </summary>
         [Input("acctInterimInterval")]
         public Input<int>? AcctInterimInterval { get; set; }
@@ -674,7 +711,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<Inputs.WlanAcctServerArgs>? _acctServers;
 
         /// <summary>
-        /// List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+        /// RADIUS accounting servers used by this WLAN
         /// </summary>
         public InputList<Inputs.WlanAcctServerArgs> AcctServers
         {
@@ -683,7 +720,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Airwatch wlan settings
+        /// Integration settings for AirWatch device compliance on this WLAN
         /// </summary>
         [Input("airwatch")]
         public Input<Inputs.WlanAirwatchArgs>? Airwatch { get; set; }
@@ -710,7 +747,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _apIds;
 
         /// <summary>
-        /// List of device ids
+        /// Access point identifiers used when `ApplyTo`==`Aps`
         /// </summary>
         public InputList<string> ApIds
         {
@@ -719,19 +756,19 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Bandwidth limiting for apps (applies to up/down)
+        /// Bandwidth limits for applications on this WLAN
         /// </summary>
         [Input("appLimit")]
         public Input<Inputs.WlanAppLimitArgs>? AppLimit { get; set; }
 
         /// <summary>
-        /// APP qos wlan settings
+        /// QoS rules for application traffic on this WLAN
         /// </summary>
         [Input("appQos")]
         public Input<Inputs.WlanAppQosArgs>? AppQos { get; set; }
 
         /// <summary>
-        /// enum: `Aps`, `Site`, `Wxtags`
+        /// Scope that determines where this WLAN is applied
         /// </summary>
         [Input("applyTo")]
         public Input<string>? ApplyTo { get; set; }
@@ -743,13 +780,13 @@ namespace Pulumi.JuniperMist.Org
         public Input<bool>? ArpFilter { get; set; }
 
         /// <summary>
-        /// Authentication wlan settings
+        /// Settings that control client authentication for this WLAN
         /// </summary>
         [Input("auth")]
         public Input<Inputs.WlanAuthArgs>? Auth { get; set; }
 
         /// <summary>
-        /// When ordered, AP will prefer and go back to the first server if possible. enum: `Ordered`, `Unordered`
+        /// RADIUS authentication server selection behavior for this WLAN
         /// </summary>
         [Input("authServerSelection")]
         public Input<string>? AuthServerSelection { get; set; }
@@ -758,7 +795,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<Inputs.WlanAuthServerArgs>? _authServers;
 
         /// <summary>
-        /// List of RADIUS authentication servers, at least one is needed if `auth type`==`Eap`, order matters where the first one is treated as primary
+        /// RADIUS authentication servers used by this WLAN. Required when `auth.type`==`Eap`
         /// </summary>
         public InputList<Inputs.WlanAuthServerArgs> AuthServers
         {
@@ -779,13 +816,13 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? AuthServersNasIp { get; set; }
 
         /// <summary>
-        /// Radius auth session retries. Following fast timers are set if "FastDot1xTimers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting AuthServersRetries and is set to default value to 3.
+        /// RADIUS auth session retries. Following fast timers are set if "FastDot1xTimers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting AuthServersRetries and is set to default value to 3.
         /// </summary>
         [Input("authServersRetries")]
         public Input<int>? AuthServersRetries { get; set; }
 
         /// <summary>
-        /// Radius auth session timeout. Following fast timers are set if "FastDot1xTimers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting AuthServersTimeout and is set to default value of 10.
+        /// RADIUS auth session timeout. Following fast timers are set if "FastDot1xTimers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting AuthServersTimeout and is set to default value of 10.
         /// </summary>
         [Input("authServersTimeout")]
         public Input<int>? AuthServersTimeout { get; set; }
@@ -821,17 +858,20 @@ namespace Pulumi.JuniperMist.Org
         public Input<bool>? BlockBlacklistClients { get; set; }
 
         /// <summary>
-        /// Bonjour gateway wlan settings
+        /// Service discovery gateway settings for Bonjour traffic on this WLAN
         /// </summary>
         [Input("bonjour")]
         public Input<Inputs.WlanBonjourArgs>? Bonjour { get; set; }
 
         /// <summary>
-        /// Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
+        /// Central web authentication settings for Cisco CWA on this WLAN
         /// </summary>
         [Input("ciscoCwa")]
         public Input<Inputs.WlanCiscoCwaArgs>? CiscoCwa { get; set; }
 
+        /// <summary>
+        /// Downlink bandwidth limit applied per client
+        /// </summary>
         [Input("clientLimitDown")]
         public Input<string>? ClientLimitDown { get; set; }
 
@@ -841,6 +881,9 @@ namespace Pulumi.JuniperMist.Org
         [Input("clientLimitDownEnabled")]
         public Input<bool>? ClientLimitDownEnabled { get; set; }
 
+        /// <summary>
+        /// Uplink bandwidth limit applied per client
+        /// </summary>
         [Input("clientLimitUp")]
         public Input<string>? ClientLimitUp { get; set; }
 
@@ -854,7 +897,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<Inputs.WlanCoaServerArgs>? _coaServers;
 
         /// <summary>
-        /// List of COA (change of authorization) servers, optional
+        /// RADIUS Change of Authorization servers available to this WLAN
         /// </summary>
         public InputList<Inputs.WlanCoaServerArgs> CoaServers
         {
@@ -913,6 +956,9 @@ namespace Pulumi.JuniperMist.Org
         [Input("disableWhenGatewayUnreachable")]
         public Input<bool>? DisableWhenGatewayUnreachable { get; set; }
 
+        /// <summary>
+        /// Whether to disable this WLAN when the configured Mist tunnel is down
+        /// </summary>
         [Input("disableWhenMxtunnelDown")]
         public Input<bool>? DisableWhenMxtunnelDown { get; set; }
 
@@ -923,33 +969,34 @@ namespace Pulumi.JuniperMist.Org
         public Input<bool>? DisableWmm { get; set; }
 
         /// <summary>
-        /// For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
+        /// RADIUS group based DNS server rewrite settings for this WLAN
         /// </summary>
         [Input("dnsServerRewrite")]
         public Input<Inputs.WlanDnsServerRewriteArgs>? DnsServerRewrite { get; set; }
 
+        /// <summary>
+        /// Delivery Traffic Indication Message interval for this WLAN
+        /// </summary>
         [Input("dtim")]
         public Input<int>? Dtim { get; set; }
 
         /// <summary>
-        /// For dynamic PSK where we get PerUser PSK from Radius. DynamicPsk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
-        ///   * PSK will come from RADIUS server
-        ///   * AP sends client MAC as username and password (i.e. `EnableMacAuth` is assumed)
-        ///   * AP sends BSSID:SSID as Caller-Station-ID
-        ///   * `AuthServers` is required
-        ///   * PSK will come from cloud WLC if source is CloudPsks
-        ///   * DefaultPsk will be used if cloud WLC is not available
-        ///   * `MultiPskOnly` and `Psk` is ignored
-        ///   * `Pairwise` can only be wpa2-ccmp (for now, wpa3 support on the roadmap)
+        /// Per-user PSK selection settings for this WLAN
         /// </summary>
         [Input("dynamicPsk")]
         public Input<Inputs.WlanDynamicPskArgs>? DynamicPsk { get; set; }
 
         /// <summary>
-        /// For 802.1x
+        /// VLAN assignment settings for 802.1X dynamic VLANs
         /// </summary>
         [Input("dynamicVlan")]
         public Input<Inputs.WlanDynamicVlanArgs>? DynamicVlan { get; set; }
+
+        /// <summary>
+        /// Enable FTM (Fine-Time Measurement, 802.11mc); configures the AP as an FTM Responder (target), allowing clients to perform ranging requests against it
+        /// </summary>
+        [Input("enableFtm")]
+        public Input<bool>? EnableFtm { get; set; }
 
         /// <summary>
         /// Enable AP-AP keycaching via multicast
@@ -994,16 +1041,19 @@ namespace Pulumi.JuniperMist.Org
         public Input<bool>? HostnameIe { get; set; }
 
         /// <summary>
-        /// Hostspot 2.0 wlan settings
+        /// Passpoint and Hotspot 2.0 settings for this WLAN
         /// </summary>
         [Input("hotspot20")]
         public Input<Inputs.WlanHotspot20Args>? Hotspot20 { get; set; }
 
+        /// <summary>
+        /// DHCP Option 82 insertion settings for this WLAN
+        /// </summary>
         [Input("injectDhcpOption82")]
         public Input<Inputs.WlanInjectDhcpOption82Args>? InjectDhcpOption82 { get; set; }
 
         /// <summary>
-        /// where this WLAN will be connected to. enum: `All`, `Eth0`, `Eth1`, `Eth2`, `Eth3`, `Mxtunnel`, `SiteMxedge`, `Wxtunnel`
+        /// Network interface or tunnel where this WLAN bridges client traffic
         /// </summary>
         [Input("interface")]
         public Input<string>? Interface { get; set; }
@@ -1050,6 +1100,9 @@ namespace Pulumi.JuniperMist.Org
         [Input("maxNumClients")]
         public Input<int>? MaxNumClients { get; set; }
 
+        /// <summary>
+        /// Juniper Mist NAC settings used by this WLAN
+        /// </summary>
         [Input("mistNac")]
         public Input<Inputs.WlanMistNacArgs>? MistNac { get; set; }
 
@@ -1057,7 +1110,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _mxtunnelIds;
 
         /// <summary>
-        /// When `Interface`=`Mxtunnel`, id of the Mist Tunnel
+        /// Mist Tunnel identifiers used when `Interface`==`Mxtunnel`
         /// </summary>
         public InputList<string> MxtunnelIds
         {
@@ -1069,7 +1122,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _mxtunnelNames;
 
         /// <summary>
-        /// When `Interface`=`SiteMxedge`, name of the mxtunnel that in mxtunnels under Site Setting
+        /// Mist Tunnel names used when `Interface`==`SiteMxedge`
         /// </summary>
         public InputList<string> MxtunnelNames
         {
@@ -1089,11 +1142,14 @@ namespace Pulumi.JuniperMist.Org
         [Input("noStaticIp")]
         public Input<bool>? NoStaticIp { get; set; }
 
+        /// <summary>
+        /// Owning organization associated with this WLAN
+        /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
         /// <summary>
-        /// Portal wlan settings
+        /// Guest portal settings for this WLAN
         /// </summary>
         [Input("portal")]
         public Input<Inputs.WlanPortalArgs>? Portal { get; set; }
@@ -1102,7 +1158,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _portalAllowedHostnames;
 
         /// <summary>
-        /// List of hostnames without http(s):// (matched by substring)
+        /// Guest portal hostnames that clients may reach before authorization
         /// </summary>
         public InputList<string> PortalAllowedHostnames
         {
@@ -1114,7 +1170,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _portalAllowedSubnets;
 
         /// <summary>
-        /// List of CIDRs
+        /// Guest portal CIDR subnets that clients may reach before authorization
         /// </summary>
         public InputList<string> PortalAllowedSubnets
         {
@@ -1126,7 +1182,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _portalDeniedHostnames;
 
         /// <summary>
-        /// List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
+        /// Guest portal hostnames denied before authorization, taking precedence over allowed hostnames
         /// </summary>
         public InputList<string> PortalDeniedHostnames
         {
@@ -1134,11 +1190,14 @@ namespace Pulumi.JuniperMist.Org
             set => _portalDeniedHostnames = value;
         }
 
+        /// <summary>
+        /// Quality-of-service settings for WLAN client traffic
+        /// </summary>
         [Input("qos")]
         public Input<Inputs.WlanQosArgs>? Qos { get; set; }
 
         /// <summary>
-        /// RadSec settings
+        /// TLS-secured RADIUS transport settings for this WLAN
         /// </summary>
         [Input("radsec")]
         public Input<Inputs.WlanRadsecArgs>? Radsec { get; set; }
@@ -1147,7 +1206,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.WlanRatesetArgs>? _rateset;
 
         /// <summary>
-        /// Property key is the RF band. enum: `24`, `5`, `6`
+        /// Data rate settings by RF band for this WLAN
         /// </summary>
         public InputMap<Inputs.WlanRatesetArgs> Rateset
         {
@@ -1162,13 +1221,13 @@ namespace Pulumi.JuniperMist.Org
         public Input<bool>? ReconnectClientsWhenRoamingMxcluster { get; set; }
 
         /// <summary>
-        /// enum: `11r`, `OKC`, `NONE`
+        /// Fast roaming mode configured for this WLAN
         /// </summary>
         [Input("roamMode")]
         public Input<string>? RoamMode { get; set; }
 
         /// <summary>
-        /// WLAN operating schedule, default is disabled
+        /// Operating schedule controlling when this WLAN is active
         /// </summary>
         [Input("schedule")]
         public Input<Inputs.WlanScheduleArgs>? Schedule { get; set; }
@@ -1185,6 +1244,9 @@ namespace Pulumi.JuniperMist.Org
         [Input("ssid", required: true)]
         public Input<string> Ssid { get; set; } = null!;
 
+        /// <summary>
+        /// Identifier of the WLAN template associated with this WLAN
+        /// </summary>
         [Input("templateId", required: true)]
         public Input<string> TemplateId { get; set; } = null!;
 
@@ -1200,6 +1262,9 @@ namespace Pulumi.JuniperMist.Org
         [Input("vlanEnabled")]
         public Input<bool>? VlanEnabled { get; set; }
 
+        /// <summary>
+        /// Default VLAN ID, range, or variable used when `VlanEnabled`==`True`
+        /// </summary>
         [Input("vlanId")]
         public Input<string>? VlanId { get; set; }
 
@@ -1207,7 +1272,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _vlanIds;
 
         /// <summary>
-        /// if `VlanEnabled`==`True` and `VlanPooling`==`True`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
+        /// Pool of VLAN IDs used when `VlanEnabled`==`True` and `VlanPooling`==`True`
         /// </summary>
         public InputList<string> VlanIds
         {
@@ -1221,6 +1286,9 @@ namespace Pulumi.JuniperMist.Org
         [Input("vlanPooling")]
         public Input<bool>? VlanPooling { get; set; }
 
+        /// <summary>
+        /// Downlink bandwidth limit applied to the whole WLAN
+        /// </summary>
         [Input("wlanLimitDown")]
         public Input<string>? WlanLimitDown { get; set; }
 
@@ -1230,6 +1298,9 @@ namespace Pulumi.JuniperMist.Org
         [Input("wlanLimitDownEnabled")]
         public Input<bool>? WlanLimitDownEnabled { get; set; }
 
+        /// <summary>
+        /// Uplink bandwidth limit applied to the whole WLAN
+        /// </summary>
         [Input("wlanLimitUp")]
         public Input<string>? WlanLimitUp { get; set; }
 
@@ -1243,7 +1314,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _wxtagIds;
 
         /// <summary>
-        /// List of wxtag_ids
+        /// Identifiers of WxLAN tags used when `ApplyTo`==`Wxtags`
         /// </summary>
         public InputList<string> WxtagIds
         {
@@ -1278,7 +1349,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<bool>? AcctImmediateUpdate { get; set; }
 
         /// <summary>
-        /// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+        /// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled
         /// </summary>
         [Input("acctInterimInterval")]
         public Input<int>? AcctInterimInterval { get; set; }
@@ -1287,7 +1358,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<Inputs.WlanAcctServerGetArgs>? _acctServers;
 
         /// <summary>
-        /// List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+        /// RADIUS accounting servers used by this WLAN
         /// </summary>
         public InputList<Inputs.WlanAcctServerGetArgs> AcctServers
         {
@@ -1296,7 +1367,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Airwatch wlan settings
+        /// Integration settings for AirWatch device compliance on this WLAN
         /// </summary>
         [Input("airwatch")]
         public Input<Inputs.WlanAirwatchGetArgs>? Airwatch { get; set; }
@@ -1323,7 +1394,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _apIds;
 
         /// <summary>
-        /// List of device ids
+        /// Access point identifiers used when `ApplyTo`==`Aps`
         /// </summary>
         public InputList<string> ApIds
         {
@@ -1332,19 +1403,19 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Bandwidth limiting for apps (applies to up/down)
+        /// Bandwidth limits for applications on this WLAN
         /// </summary>
         [Input("appLimit")]
         public Input<Inputs.WlanAppLimitGetArgs>? AppLimit { get; set; }
 
         /// <summary>
-        /// APP qos wlan settings
+        /// QoS rules for application traffic on this WLAN
         /// </summary>
         [Input("appQos")]
         public Input<Inputs.WlanAppQosGetArgs>? AppQos { get; set; }
 
         /// <summary>
-        /// enum: `Aps`, `Site`, `Wxtags`
+        /// Scope that determines where this WLAN is applied
         /// </summary>
         [Input("applyTo")]
         public Input<string>? ApplyTo { get; set; }
@@ -1356,13 +1427,13 @@ namespace Pulumi.JuniperMist.Org
         public Input<bool>? ArpFilter { get; set; }
 
         /// <summary>
-        /// Authentication wlan settings
+        /// Settings that control client authentication for this WLAN
         /// </summary>
         [Input("auth")]
         public Input<Inputs.WlanAuthGetArgs>? Auth { get; set; }
 
         /// <summary>
-        /// When ordered, AP will prefer and go back to the first server if possible. enum: `Ordered`, `Unordered`
+        /// RADIUS authentication server selection behavior for this WLAN
         /// </summary>
         [Input("authServerSelection")]
         public Input<string>? AuthServerSelection { get; set; }
@@ -1371,7 +1442,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<Inputs.WlanAuthServerGetArgs>? _authServers;
 
         /// <summary>
-        /// List of RADIUS authentication servers, at least one is needed if `auth type`==`Eap`, order matters where the first one is treated as primary
+        /// RADIUS authentication servers used by this WLAN. Required when `auth.type`==`Eap`
         /// </summary>
         public InputList<Inputs.WlanAuthServerGetArgs> AuthServers
         {
@@ -1392,13 +1463,13 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? AuthServersNasIp { get; set; }
 
         /// <summary>
-        /// Radius auth session retries. Following fast timers are set if "FastDot1xTimers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting AuthServersRetries and is set to default value to 3.
+        /// RADIUS auth session retries. Following fast timers are set if "FastDot1xTimers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting AuthServersRetries and is set to default value to 3.
         /// </summary>
         [Input("authServersRetries")]
         public Input<int>? AuthServersRetries { get; set; }
 
         /// <summary>
-        /// Radius auth session timeout. Following fast timers are set if "FastDot1xTimers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting AuthServersTimeout and is set to default value of 10.
+        /// RADIUS auth session timeout. Following fast timers are set if "FastDot1xTimers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting AuthServersTimeout and is set to default value of 10.
         /// </summary>
         [Input("authServersTimeout")]
         public Input<int>? AuthServersTimeout { get; set; }
@@ -1434,17 +1505,20 @@ namespace Pulumi.JuniperMist.Org
         public Input<bool>? BlockBlacklistClients { get; set; }
 
         /// <summary>
-        /// Bonjour gateway wlan settings
+        /// Service discovery gateway settings for Bonjour traffic on this WLAN
         /// </summary>
         [Input("bonjour")]
         public Input<Inputs.WlanBonjourGetArgs>? Bonjour { get; set; }
 
         /// <summary>
-        /// Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
+        /// Central web authentication settings for Cisco CWA on this WLAN
         /// </summary>
         [Input("ciscoCwa")]
         public Input<Inputs.WlanCiscoCwaGetArgs>? CiscoCwa { get; set; }
 
+        /// <summary>
+        /// Downlink bandwidth limit applied per client
+        /// </summary>
         [Input("clientLimitDown")]
         public Input<string>? ClientLimitDown { get; set; }
 
@@ -1454,6 +1528,9 @@ namespace Pulumi.JuniperMist.Org
         [Input("clientLimitDownEnabled")]
         public Input<bool>? ClientLimitDownEnabled { get; set; }
 
+        /// <summary>
+        /// Uplink bandwidth limit applied per client
+        /// </summary>
         [Input("clientLimitUp")]
         public Input<string>? ClientLimitUp { get; set; }
 
@@ -1467,7 +1544,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<Inputs.WlanCoaServerGetArgs>? _coaServers;
 
         /// <summary>
-        /// List of COA (change of authorization) servers, optional
+        /// RADIUS Change of Authorization servers available to this WLAN
         /// </summary>
         public InputList<Inputs.WlanCoaServerGetArgs> CoaServers
         {
@@ -1526,6 +1603,9 @@ namespace Pulumi.JuniperMist.Org
         [Input("disableWhenGatewayUnreachable")]
         public Input<bool>? DisableWhenGatewayUnreachable { get; set; }
 
+        /// <summary>
+        /// Whether to disable this WLAN when the configured Mist tunnel is down
+        /// </summary>
         [Input("disableWhenMxtunnelDown")]
         public Input<bool>? DisableWhenMxtunnelDown { get; set; }
 
@@ -1536,33 +1616,34 @@ namespace Pulumi.JuniperMist.Org
         public Input<bool>? DisableWmm { get; set; }
 
         /// <summary>
-        /// For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
+        /// RADIUS group based DNS server rewrite settings for this WLAN
         /// </summary>
         [Input("dnsServerRewrite")]
         public Input<Inputs.WlanDnsServerRewriteGetArgs>? DnsServerRewrite { get; set; }
 
+        /// <summary>
+        /// Delivery Traffic Indication Message interval for this WLAN
+        /// </summary>
         [Input("dtim")]
         public Input<int>? Dtim { get; set; }
 
         /// <summary>
-        /// For dynamic PSK where we get PerUser PSK from Radius. DynamicPsk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
-        ///   * PSK will come from RADIUS server
-        ///   * AP sends client MAC as username and password (i.e. `EnableMacAuth` is assumed)
-        ///   * AP sends BSSID:SSID as Caller-Station-ID
-        ///   * `AuthServers` is required
-        ///   * PSK will come from cloud WLC if source is CloudPsks
-        ///   * DefaultPsk will be used if cloud WLC is not available
-        ///   * `MultiPskOnly` and `Psk` is ignored
-        ///   * `Pairwise` can only be wpa2-ccmp (for now, wpa3 support on the roadmap)
+        /// Per-user PSK selection settings for this WLAN
         /// </summary>
         [Input("dynamicPsk")]
         public Input<Inputs.WlanDynamicPskGetArgs>? DynamicPsk { get; set; }
 
         /// <summary>
-        /// For 802.1x
+        /// VLAN assignment settings for 802.1X dynamic VLANs
         /// </summary>
         [Input("dynamicVlan")]
         public Input<Inputs.WlanDynamicVlanGetArgs>? DynamicVlan { get; set; }
+
+        /// <summary>
+        /// Enable FTM (Fine-Time Measurement, 802.11mc); configures the AP as an FTM Responder (target), allowing clients to perform ranging requests against it
+        /// </summary>
+        [Input("enableFtm")]
+        public Input<bool>? EnableFtm { get; set; }
 
         /// <summary>
         /// Enable AP-AP keycaching via multicast
@@ -1607,16 +1688,19 @@ namespace Pulumi.JuniperMist.Org
         public Input<bool>? HostnameIe { get; set; }
 
         /// <summary>
-        /// Hostspot 2.0 wlan settings
+        /// Passpoint and Hotspot 2.0 settings for this WLAN
         /// </summary>
         [Input("hotspot20")]
         public Input<Inputs.WlanHotspot20GetArgs>? Hotspot20 { get; set; }
 
+        /// <summary>
+        /// DHCP Option 82 insertion settings for this WLAN
+        /// </summary>
         [Input("injectDhcpOption82")]
         public Input<Inputs.WlanInjectDhcpOption82GetArgs>? InjectDhcpOption82 { get; set; }
 
         /// <summary>
-        /// where this WLAN will be connected to. enum: `All`, `Eth0`, `Eth1`, `Eth2`, `Eth3`, `Mxtunnel`, `SiteMxedge`, `Wxtunnel`
+        /// Network interface or tunnel where this WLAN bridges client traffic
         /// </summary>
         [Input("interface")]
         public Input<string>? Interface { get; set; }
@@ -1663,9 +1747,15 @@ namespace Pulumi.JuniperMist.Org
         [Input("maxNumClients")]
         public Input<int>? MaxNumClients { get; set; }
 
+        /// <summary>
+        /// Juniper Mist NAC settings used by this WLAN
+        /// </summary>
         [Input("mistNac")]
         public Input<Inputs.WlanMistNacGetArgs>? MistNac { get; set; }
 
+        /// <summary>
+        /// Managed service provider identifier associated with this WLAN
+        /// </summary>
         [Input("mspId")]
         public Input<string>? MspId { get; set; }
 
@@ -1673,7 +1763,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _mxtunnelIds;
 
         /// <summary>
-        /// When `Interface`=`Mxtunnel`, id of the Mist Tunnel
+        /// Mist Tunnel identifiers used when `Interface`==`Mxtunnel`
         /// </summary>
         public InputList<string> MxtunnelIds
         {
@@ -1685,7 +1775,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _mxtunnelNames;
 
         /// <summary>
-        /// When `Interface`=`SiteMxedge`, name of the mxtunnel that in mxtunnels under Site Setting
+        /// Mist Tunnel names used when `Interface`==`SiteMxedge`
         /// </summary>
         public InputList<string> MxtunnelNames
         {
@@ -1705,11 +1795,14 @@ namespace Pulumi.JuniperMist.Org
         [Input("noStaticIp")]
         public Input<bool>? NoStaticIp { get; set; }
 
+        /// <summary>
+        /// Owning organization associated with this WLAN
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Portal wlan settings
+        /// Guest portal settings for this WLAN
         /// </summary>
         [Input("portal")]
         public Input<Inputs.WlanPortalGetArgs>? Portal { get; set; }
@@ -1718,7 +1811,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _portalAllowedHostnames;
 
         /// <summary>
-        /// List of hostnames without http(s):// (matched by substring)
+        /// Guest portal hostnames that clients may reach before authorization
         /// </summary>
         public InputList<string> PortalAllowedHostnames
         {
@@ -1730,7 +1823,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _portalAllowedSubnets;
 
         /// <summary>
-        /// List of CIDRs
+        /// Guest portal CIDR subnets that clients may reach before authorization
         /// </summary>
         public InputList<string> PortalAllowedSubnets
         {
@@ -1748,7 +1841,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _portalDeniedHostnames;
 
         /// <summary>
-        /// List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
+        /// Guest portal hostnames denied before authorization, taking precedence over allowed hostnames
         /// </summary>
         public InputList<string> PortalDeniedHostnames
         {
@@ -1768,11 +1861,14 @@ namespace Pulumi.JuniperMist.Org
         [Input("portalSsoUrl")]
         public Input<string>? PortalSsoUrl { get; set; }
 
+        /// <summary>
+        /// Quality-of-service settings for WLAN client traffic
+        /// </summary>
         [Input("qos")]
         public Input<Inputs.WlanQosGetArgs>? Qos { get; set; }
 
         /// <summary>
-        /// RadSec settings
+        /// TLS-secured RADIUS transport settings for this WLAN
         /// </summary>
         [Input("radsec")]
         public Input<Inputs.WlanRadsecGetArgs>? Radsec { get; set; }
@@ -1781,7 +1877,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.WlanRatesetGetArgs>? _rateset;
 
         /// <summary>
-        /// Property key is the RF band. enum: `24`, `5`, `6`
+        /// Data rate settings by RF band for this WLAN
         /// </summary>
         public InputMap<Inputs.WlanRatesetGetArgs> Rateset
         {
@@ -1796,13 +1892,13 @@ namespace Pulumi.JuniperMist.Org
         public Input<bool>? ReconnectClientsWhenRoamingMxcluster { get; set; }
 
         /// <summary>
-        /// enum: `11r`, `OKC`, `NONE`
+        /// Fast roaming mode configured for this WLAN
         /// </summary>
         [Input("roamMode")]
         public Input<string>? RoamMode { get; set; }
 
         /// <summary>
-        /// WLAN operating schedule, default is disabled
+        /// Operating schedule controlling when this WLAN is active
         /// </summary>
         [Input("schedule")]
         public Input<Inputs.WlanScheduleGetArgs>? Schedule { get; set; }
@@ -1819,6 +1915,9 @@ namespace Pulumi.JuniperMist.Org
         [Input("ssid")]
         public Input<string>? Ssid { get; set; }
 
+        /// <summary>
+        /// Identifier of the WLAN template associated with this WLAN
+        /// </summary>
         [Input("templateId")]
         public Input<string>? TemplateId { get; set; }
 
@@ -1834,6 +1933,9 @@ namespace Pulumi.JuniperMist.Org
         [Input("vlanEnabled")]
         public Input<bool>? VlanEnabled { get; set; }
 
+        /// <summary>
+        /// Default VLAN ID, range, or variable used when `VlanEnabled`==`True`
+        /// </summary>
         [Input("vlanId")]
         public Input<string>? VlanId { get; set; }
 
@@ -1841,7 +1943,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _vlanIds;
 
         /// <summary>
-        /// if `VlanEnabled`==`True` and `VlanPooling`==`True`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
+        /// Pool of VLAN IDs used when `VlanEnabled`==`True` and `VlanPooling`==`True`
         /// </summary>
         public InputList<string> VlanIds
         {
@@ -1855,6 +1957,9 @@ namespace Pulumi.JuniperMist.Org
         [Input("vlanPooling")]
         public Input<bool>? VlanPooling { get; set; }
 
+        /// <summary>
+        /// Downlink bandwidth limit applied to the whole WLAN
+        /// </summary>
         [Input("wlanLimitDown")]
         public Input<string>? WlanLimitDown { get; set; }
 
@@ -1864,6 +1969,9 @@ namespace Pulumi.JuniperMist.Org
         [Input("wlanLimitDownEnabled")]
         public Input<bool>? WlanLimitDownEnabled { get; set; }
 
+        /// <summary>
+        /// Uplink bandwidth limit applied to the whole WLAN
+        /// </summary>
         [Input("wlanLimitUp")]
         public Input<string>? WlanLimitUp { get; set; }
 
@@ -1877,7 +1985,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _wxtagIds;
 
         /// <summary>
-        /// List of wxtag_ids
+        /// Identifiers of WxLAN tags used when `ApplyTo`==`Wxtags`
         /// </summary>
         public InputList<string> WxtagIds
         {

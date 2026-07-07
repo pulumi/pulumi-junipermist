@@ -28,7 +28,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputMap<Inputs.GatewayNetworkVpnAccessDestinationNatArgs>? _destinationNat;
 
         /// <summary>
-        /// Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `InternalIp` or `Port` must be defined
+        /// Destination NAT rules applied for VPN access to this network
         /// </summary>
         public InputMap<Inputs.GatewayNetworkVpnAccessDestinationNatArgs> DestinationNat
         {
@@ -64,7 +64,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _otherVrfs;
 
         /// <summary>
-        /// By default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
+        /// Other VRFs that can receive leaked routes from this spoke network
         /// </summary>
         public InputList<string> OtherVrfs
         {
@@ -79,7 +79,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? Routed { get; set; }
 
         /// <summary>
-        /// If `Routed`==`False` (usually at Spoke), but some hosts needs to be reachable from Hub
+        /// Source NAT settings used when non-routed spoke hosts must be reachable from the hub
         /// </summary>
         [Input("sourceNat")]
         public Input<Inputs.GatewayNetworkVpnAccessSourceNatArgs>? SourceNat { get; set; }
@@ -88,7 +88,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputMap<Inputs.GatewayNetworkVpnAccessStaticNatArgs>? _staticNat;
 
         /// <summary>
-        /// Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
+        /// Static NAT rules applied for VPN access to this network
         /// </summary>
         public InputMap<Inputs.GatewayNetworkVpnAccessStaticNatArgs> StaticNat
         {

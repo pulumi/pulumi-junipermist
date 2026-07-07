@@ -100,14 +100,20 @@ namespace Pulumi.JuniperMist.Org
     public partial class EvpnTopology : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// EVPN Options
+        /// Generation options applied to the EVPN topology
         /// </summary>
         [Output("evpnOptions")]
         public Output<Outputs.EvpnTopologyEvpnOptions?> EvpnOptions { get; private set; } = null!;
 
+        /// <summary>
+        /// Display name for the EVPN topology
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Organization that owns the EVPN topology
+        /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
@@ -118,7 +124,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<ImmutableDictionary<string, string>> PodNames { get; private set; } = null!;
 
         /// <summary>
-        /// Property key can be the switch MAC Address
+        /// Topology member switches, roles, and links
         /// </summary>
         [Output("switches")]
         public Output<ImmutableDictionary<string, Outputs.EvpnTopologySwitches>> Switches { get; private set; } = null!;
@@ -171,14 +177,20 @@ namespace Pulumi.JuniperMist.Org
     public sealed class EvpnTopologyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// EVPN Options
+        /// Generation options applied to the EVPN topology
         /// </summary>
         [Input("evpnOptions")]
         public Input<Inputs.EvpnTopologyEvpnOptionsArgs>? EvpnOptions { get; set; }
 
+        /// <summary>
+        /// Display name for the EVPN topology
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Organization that owns the EVPN topology
+        /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
@@ -198,7 +210,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.EvpnTopologySwitchesArgs>? _switches;
 
         /// <summary>
-        /// Property key can be the switch MAC Address
+        /// Topology member switches, roles, and links
         /// </summary>
         public InputMap<Inputs.EvpnTopologySwitchesArgs> Switches
         {
@@ -215,14 +227,20 @@ namespace Pulumi.JuniperMist.Org
     public sealed class EvpnTopologyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// EVPN Options
+        /// Generation options applied to the EVPN topology
         /// </summary>
         [Input("evpnOptions")]
         public Input<Inputs.EvpnTopologyEvpnOptionsGetArgs>? EvpnOptions { get; set; }
 
+        /// <summary>
+        /// Display name for the EVPN topology
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Organization that owns the EVPN topology
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
@@ -242,7 +260,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.EvpnTopologySwitchesGetArgs>? _switches;
 
         /// <summary>
-        /// Property key can be the switch MAC Address
+        /// Topology member switches, roles, and links
         /// </summary>
         public InputMap<Inputs.EvpnTopologySwitchesGetArgs> Switches
         {

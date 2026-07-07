@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _excludeRealms;
 
         /// <summary>
-        /// When the IDP of MxedgeProxy type, exclude the following realms from proxying in addition to other valid home realms in this org
+        /// When the IDP is `MxedgeProxy` type, realms excluded from proxying in addition to other valid home realms in this org
         /// </summary>
         public InputList<string> ExcludeRealms
         {
@@ -34,9 +34,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _userRealms;
 
         /// <summary>
-        /// Which realm should trigger this IDP. User Realm is extracted from:
-        ///   * Username-AVP (`mist.com` from john@mist.com)
-        ///   * Cert CN
+        /// User realms that select this identity provider
         /// </summary>
         public InputList<string> UserRealms
         {

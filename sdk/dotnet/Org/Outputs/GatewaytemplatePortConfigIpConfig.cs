@@ -14,15 +14,15 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class GatewaytemplatePortConfigIpConfig
     {
         /// <summary>
-        /// Except for out-of_band interface (vme/em0/fxp0)
+        /// Resolver server IP addresses used by this interface, except on out-of-band interfaces such as vme, em0, or fxp0
         /// </summary>
         public readonly ImmutableArray<string> Dns;
         /// <summary>
-        /// Except for out-of_band interface (vme/em0/fxp0)
+        /// DNS search suffixes used by this interface, except on out-of-band interfaces such as vme, em0, or fxp0
         /// </summary>
         public readonly ImmutableArray<string> DnsSuffixes;
         /// <summary>
-        /// Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. "192.168.1.1") or a Variable (i.e. "{{myvar}}")
+        /// Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP address (i.e. "192.168.1.1") or a Variable (i.e. "{{myvar}}")
         /// </summary>
         public readonly string? Gateway;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Gateway6;
         /// <summary>
-        /// Interface IP Address (i.e. "192.168.1.8") or a Variable (i.e. "{{myvar}}")
+        /// Interface IP address (i.e. "192.168.1.8") or a Variable (i.e. "{{myvar}}")
         /// </summary>
         public readonly string? Ip;
         /// <summary>
@@ -50,23 +50,23 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Network;
         /// <summary>
-        /// If `Type`==`Pppoe`
+        /// Password used for PPPoE when `Type`==`Pppoe`
         /// </summary>
         public readonly string? PoserPassword;
         /// <summary>
-        /// if `Type`==`Pppoe`. enum: `Chap`, `None`, `Pap`
+        /// Authentication protocol used for PPPoE when `Type`==`Pppoe`
         /// </summary>
         public readonly string? PppoeAuth;
         /// <summary>
-        /// If `Type`==`Pppoe`
+        /// Username used for PPPoE when `Type`==`Pppoe`
         /// </summary>
         public readonly string? PppoeUsername;
         /// <summary>
-        /// enum: `Dhcp`, `Pppoe`, `Static`
+        /// IPv4 assignment mode for this gateway port interface
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// enum: `Autoconf`, `Dhcp`, `Static`
+        /// IPv6 assignment mode for this gateway port interface
         /// </summary>
         public readonly string? Type6;
 

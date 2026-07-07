@@ -17,19 +17,28 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// Required when `Type`==`Static`
         /// </summary>
         public readonly ImmutableArray<string> Dns;
+        /// <summary>
+        /// DNS search suffixes configured for Junos management traffic
+        /// </summary>
         public readonly ImmutableArray<string> DnsSuffixes;
+        /// <summary>
+        /// Default gateway IPv4 address for this Junos IP configuration
+        /// </summary>
         public readonly string? Gateway;
+        /// <summary>
+        /// Configured IPv4 address for this Junos IP configuration
+        /// </summary>
         public readonly string? Ip;
         /// <summary>
         /// Used only if `Subnet` is not specified in `Networks`
         /// </summary>
         public readonly string? Netmask;
         /// <summary>
-        /// Network where this mgmt IP reside, this will be used as default network for outbound-ssh, dns, ntp, dns, tacplus, radius, syslog, snmp
+        /// Management network for this IP configuration; used as the default source network for outbound SSH, DNS, NTP, TACACS+, RADIUS, syslog, and SNMP
         /// </summary>
         public readonly string? Network;
         /// <summary>
-        /// enum: `Dhcp`, `Static`
+        /// IP assignment mode for this Junos IP configuration
         /// </summary>
         public readonly string? Type;
 

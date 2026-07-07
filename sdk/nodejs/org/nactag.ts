@@ -62,16 +62,19 @@ export class Nactag extends pulumi.CustomResource {
     }
 
     /**
-     * Can be set to true to allow the override by usermac result
+     * Whether usermac result values can override this NAC tag when the result type is also supported by usermac
      */
     declare public readonly allowUsermacOverride: pulumi.Output<boolean | undefined>;
     /**
-     * If `type`==`egressVlanNames`, list of egress vlans to return
+     * If `type`==`egressVlanNames`, list of egress VLAN names returned by the NAC rule
      */
     declare public readonly egressVlanNames: pulumi.Output<string[] | undefined>;
+    /**
+     * If `type`==`gbpTag`, GBP tag value returned by the NAC rule
+     */
     declare public readonly gbpTag: pulumi.Output<string | undefined>;
     /**
-     * if `type`==`match`. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrStatus`, `gbpTag`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+     * If `type`==`match`, client or authentication attribute used for rule matching
      */
     declare public readonly match: pulumi.Output<string | undefined>;
     /**
@@ -84,45 +87,47 @@ export class Nactag extends pulumi.CustomResource {
      */
     declare public readonly matchAll: pulumi.Output<boolean | undefined>;
     /**
-     * If `type`==`redirectNacportalId`, the ID of the NAC portal to redirect to
+     * If `type`==`redirectNacportalId`, NAC portal ID used for client redirection
      */
     declare public readonly nacportalId: pulumi.Output<string | undefined>;
+    /**
+     * Human-readable name of the NAC tag
+     */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Org identifier that owns the NAC tag
+     */
     declare public readonly orgId: pulumi.Output<string>;
     /**
-     * If `type`==`radiusAttrs`, user can specify a list of one or more standard attributes in the field "radiusAttrs". 
-     * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
-     * Note that it is allowed to have more than one radiusAttrs in the result of a given rule.
+     * If `type`==`radiusAttrs`, standard RADIUS attributes returned by the NAC rule
      */
     declare public readonly radiusAttrs: pulumi.Output<string[] | undefined>;
     /**
-     * If `type`==`radiusGroup`
+     * If `type`==`radiusGroup`, RADIUS group value returned by the NAC rule
      */
     declare public readonly radiusGroup: pulumi.Output<string | undefined>;
     /**
-     * If `type`==`radiusVendorAttrs`, user can specify a list of one or more vendor-specific attributes in the field "radiusVendorAttrs". 
-     * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
-     * Note that it is allowed to have more than one radiusVendorAttrs in the result of a given rule.
+     * If `type`==`radiusVendorAttrs`, vendor-specific RADIUS attributes returned by the NAC rule
      */
     declare public readonly radiusVendorAttrs: pulumi.Output<string[] | undefined>;
     /**
-     * If `type`==`session_timeout, in seconds
+     * If `type`==`sessionTimeout`, session timeout returned by the NAC rule, in seconds
      */
     declare public readonly sessionTimeout: pulumi.Output<number | undefined>;
     /**
-     * enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`
+     * NAC tag type that determines whether the tag is a matcher or a result attribute
      */
     declare public readonly type: pulumi.Output<string>;
     /**
-     * enum: `automatic`, `cn`, `dns`, `email`, `upn`
+     * If `type`==`usernameAttr`, attribute used to derive the username returned by the NAC rule
      */
     declare public readonly usernameAttr: pulumi.Output<string | undefined>;
     /**
-     * If `type`==`match`
+     * If `type`==`match`, attribute values used by the NAC tag matcher
      */
     declare public readonly values: pulumi.Output<string[] | undefined>;
     /**
-     * If `type`==`vlan`
+     * If `type`==`vlan`, VLAN name or ID returned by the NAC rule
      */
     declare public readonly vlan: pulumi.Output<string | undefined>;
 
@@ -190,16 +195,19 @@ export class Nactag extends pulumi.CustomResource {
  */
 export interface NactagState {
     /**
-     * Can be set to true to allow the override by usermac result
+     * Whether usermac result values can override this NAC tag when the result type is also supported by usermac
      */
     allowUsermacOverride?: pulumi.Input<boolean | undefined>;
     /**
-     * If `type`==`egressVlanNames`, list of egress vlans to return
+     * If `type`==`egressVlanNames`, list of egress VLAN names returned by the NAC rule
      */
     egressVlanNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * If `type`==`gbpTag`, GBP tag value returned by the NAC rule
+     */
     gbpTag?: pulumi.Input<string | undefined>;
     /**
-     * if `type`==`match`. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrStatus`, `gbpTag`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+     * If `type`==`match`, client or authentication attribute used for rule matching
      */
     match?: pulumi.Input<string | undefined>;
     /**
@@ -212,45 +220,47 @@ export interface NactagState {
      */
     matchAll?: pulumi.Input<boolean | undefined>;
     /**
-     * If `type`==`redirectNacportalId`, the ID of the NAC portal to redirect to
+     * If `type`==`redirectNacportalId`, NAC portal ID used for client redirection
      */
     nacportalId?: pulumi.Input<string | undefined>;
+    /**
+     * Human-readable name of the NAC tag
+     */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Org identifier that owns the NAC tag
+     */
     orgId?: pulumi.Input<string | undefined>;
     /**
-     * If `type`==`radiusAttrs`, user can specify a list of one or more standard attributes in the field "radiusAttrs". 
-     * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
-     * Note that it is allowed to have more than one radiusAttrs in the result of a given rule.
+     * If `type`==`radiusAttrs`, standard RADIUS attributes returned by the NAC rule
      */
     radiusAttrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * If `type`==`radiusGroup`
+     * If `type`==`radiusGroup`, RADIUS group value returned by the NAC rule
      */
     radiusGroup?: pulumi.Input<string | undefined>;
     /**
-     * If `type`==`radiusVendorAttrs`, user can specify a list of one or more vendor-specific attributes in the field "radiusVendorAttrs". 
-     * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
-     * Note that it is allowed to have more than one radiusVendorAttrs in the result of a given rule.
+     * If `type`==`radiusVendorAttrs`, vendor-specific RADIUS attributes returned by the NAC rule
      */
     radiusVendorAttrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * If `type`==`session_timeout, in seconds
+     * If `type`==`sessionTimeout`, session timeout returned by the NAC rule, in seconds
      */
     sessionTimeout?: pulumi.Input<number | undefined>;
     /**
-     * enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`
+     * NAC tag type that determines whether the tag is a matcher or a result attribute
      */
     type?: pulumi.Input<string | undefined>;
     /**
-     * enum: `automatic`, `cn`, `dns`, `email`, `upn`
+     * If `type`==`usernameAttr`, attribute used to derive the username returned by the NAC rule
      */
     usernameAttr?: pulumi.Input<string | undefined>;
     /**
-     * If `type`==`match`
+     * If `type`==`match`, attribute values used by the NAC tag matcher
      */
     values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * If `type`==`vlan`
+     * If `type`==`vlan`, VLAN name or ID returned by the NAC rule
      */
     vlan?: pulumi.Input<string | undefined>;
 }
@@ -260,16 +270,19 @@ export interface NactagState {
  */
 export interface NactagArgs {
     /**
-     * Can be set to true to allow the override by usermac result
+     * Whether usermac result values can override this NAC tag when the result type is also supported by usermac
      */
     allowUsermacOverride?: pulumi.Input<boolean | undefined>;
     /**
-     * If `type`==`egressVlanNames`, list of egress vlans to return
+     * If `type`==`egressVlanNames`, list of egress VLAN names returned by the NAC rule
      */
     egressVlanNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * If `type`==`gbpTag`, GBP tag value returned by the NAC rule
+     */
     gbpTag?: pulumi.Input<string | undefined>;
     /**
-     * if `type`==`match`. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrStatus`, `gbpTag`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+     * If `type`==`match`, client or authentication attribute used for rule matching
      */
     match?: pulumi.Input<string | undefined>;
     /**
@@ -282,45 +295,47 @@ export interface NactagArgs {
      */
     matchAll?: pulumi.Input<boolean | undefined>;
     /**
-     * If `type`==`redirectNacportalId`, the ID of the NAC portal to redirect to
+     * If `type`==`redirectNacportalId`, NAC portal ID used for client redirection
      */
     nacportalId?: pulumi.Input<string | undefined>;
+    /**
+     * Human-readable name of the NAC tag
+     */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Org identifier that owns the NAC tag
+     */
     orgId: pulumi.Input<string>;
     /**
-     * If `type`==`radiusAttrs`, user can specify a list of one or more standard attributes in the field "radiusAttrs". 
-     * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
-     * Note that it is allowed to have more than one radiusAttrs in the result of a given rule.
+     * If `type`==`radiusAttrs`, standard RADIUS attributes returned by the NAC rule
      */
     radiusAttrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * If `type`==`radiusGroup`
+     * If `type`==`radiusGroup`, RADIUS group value returned by the NAC rule
      */
     radiusGroup?: pulumi.Input<string | undefined>;
     /**
-     * If `type`==`radiusVendorAttrs`, user can specify a list of one or more vendor-specific attributes in the field "radiusVendorAttrs". 
-     * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
-     * Note that it is allowed to have more than one radiusVendorAttrs in the result of a given rule.
+     * If `type`==`radiusVendorAttrs`, vendor-specific RADIUS attributes returned by the NAC rule
      */
     radiusVendorAttrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * If `type`==`session_timeout, in seconds
+     * If `type`==`sessionTimeout`, session timeout returned by the NAC rule, in seconds
      */
     sessionTimeout?: pulumi.Input<number | undefined>;
     /**
-     * enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`
+     * NAC tag type that determines whether the tag is a matcher or a result attribute
      */
     type: pulumi.Input<string>;
     /**
-     * enum: `automatic`, `cn`, `dns`, `email`, `upn`
+     * If `type`==`usernameAttr`, attribute used to derive the username returned by the NAC rule
      */
     usernameAttr?: pulumi.Input<string | undefined>;
     /**
-     * If `type`==`match`
+     * If `type`==`match`, attribute values used by the NAC tag matcher
      */
     values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * If `type`==`vlan`
+     * If `type`==`vlan`, VLAN name or ID returned by the NAC rule
      */
     vlan?: pulumi.Input<string | undefined>;
 }

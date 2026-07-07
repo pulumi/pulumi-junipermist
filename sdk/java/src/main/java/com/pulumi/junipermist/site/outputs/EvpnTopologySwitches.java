@@ -14,12 +14,40 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EvpnTopologySwitches {
+    /**
+     * @return Associated device profile identifier for the switch. Use the Assign Org Device Profile endpoint to assign a Device Profile to the switch.
+     * 
+     */
     private @Nullable String deviceprofileId;
+    /**
+     * @return IP addresses used by this switch for EVPN downlinks
+     * 
+     */
     private @Nullable List<String> downlinkIps;
+    /**
+     * @return Switch MAC addresses connected as downlinks from this topology member
+     * 
+     */
     private @Nullable List<String> downlinks;
+    /**
+     * @return Switch MAC addresses connected through ESI-LAG from this topology member
+     * 
+     */
     private @Nullable List<String> esilaglinks;
+    /**
+     * @return Topology identifier number for this EVPN switch member
+     * 
+     */
     private @Nullable Integer evpnId;
+    /**
+     * @return Switch MAC address used to identify the topology member
+     * 
+     */
     private @Nullable String mac;
+    /**
+     * @return Switch model for this topology member
+     * 
+     */
     private @Nullable String model;
     /**
      * @return Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g.
@@ -29,42 +57,93 @@ public final class EvpnTopologySwitches {
      */
     private @Nullable Integer pod;
     /**
-     * @return By default, core switches are assumed to be connecting all pods.
-     * if you want to limit the pods, you can specify pods.
+     * @return List of pod numbers this switch participates in
      * 
      */
     private @Nullable List<Integer> pods;
     /**
-     * @return use `role`==`none` to remove a switch from the topology. enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
+     * @return EVPN topology role for this switch
      * 
      */
     private String role;
+    /**
+     * @return Routing identifier used by this switch for EVPN routing
+     * 
+     */
     private @Nullable String routerId;
+    /**
+     * @return Associated site for this EVPN topology switch
+     * 
+     */
     private @Nullable String siteId;
+    /**
+     * @return Builder-suggested downlink switch MAC addresses
+     * 
+     */
     private @Nullable List<String> suggestedDownlinks;
+    /**
+     * @return Builder-suggested ESI-LAG switch MAC addresses
+     * 
+     */
     private @Nullable List<String> suggestedEsilaglinks;
+    /**
+     * @return Builder-suggested uplink switch MAC addresses
+     * 
+     */
     private @Nullable List<String> suggestedUplinks;
+    /**
+     * @return Switch MAC addresses connected as uplinks from this topology member
+     * 
+     */
     private @Nullable List<String> uplinks;
 
     private EvpnTopologySwitches() {}
+    /**
+     * @return Associated device profile identifier for the switch. Use the Assign Org Device Profile endpoint to assign a Device Profile to the switch.
+     * 
+     */
     public Optional<String> deviceprofileId() {
         return Optional.ofNullable(this.deviceprofileId);
     }
+    /**
+     * @return IP addresses used by this switch for EVPN downlinks
+     * 
+     */
     public List<String> downlinkIps() {
         return this.downlinkIps == null ? List.of() : this.downlinkIps;
     }
+    /**
+     * @return Switch MAC addresses connected as downlinks from this topology member
+     * 
+     */
     public List<String> downlinks() {
         return this.downlinks == null ? List.of() : this.downlinks;
     }
+    /**
+     * @return Switch MAC addresses connected through ESI-LAG from this topology member
+     * 
+     */
     public List<String> esilaglinks() {
         return this.esilaglinks == null ? List.of() : this.esilaglinks;
     }
+    /**
+     * @return Topology identifier number for this EVPN switch member
+     * 
+     */
     public Optional<Integer> evpnId() {
         return Optional.ofNullable(this.evpnId);
     }
+    /**
+     * @return Switch MAC address used to identify the topology member
+     * 
+     */
     public Optional<String> mac() {
         return Optional.ofNullable(this.mac);
     }
+    /**
+     * @return Switch model for this topology member
+     * 
+     */
     public Optional<String> model() {
         return Optional.ofNullable(this.model);
     }
@@ -78,35 +157,58 @@ public final class EvpnTopologySwitches {
         return Optional.ofNullable(this.pod);
     }
     /**
-     * @return By default, core switches are assumed to be connecting all pods.
-     * if you want to limit the pods, you can specify pods.
+     * @return List of pod numbers this switch participates in
      * 
      */
     public List<Integer> pods() {
         return this.pods == null ? List.of() : this.pods;
     }
     /**
-     * @return use `role`==`none` to remove a switch from the topology. enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
+     * @return EVPN topology role for this switch
      * 
      */
     public String role() {
         return this.role;
     }
+    /**
+     * @return Routing identifier used by this switch for EVPN routing
+     * 
+     */
     public Optional<String> routerId() {
         return Optional.ofNullable(this.routerId);
     }
+    /**
+     * @return Associated site for this EVPN topology switch
+     * 
+     */
     public Optional<String> siteId() {
         return Optional.ofNullable(this.siteId);
     }
+    /**
+     * @return Builder-suggested downlink switch MAC addresses
+     * 
+     */
     public List<String> suggestedDownlinks() {
         return this.suggestedDownlinks == null ? List.of() : this.suggestedDownlinks;
     }
+    /**
+     * @return Builder-suggested ESI-LAG switch MAC addresses
+     * 
+     */
     public List<String> suggestedEsilaglinks() {
         return this.suggestedEsilaglinks == null ? List.of() : this.suggestedEsilaglinks;
     }
+    /**
+     * @return Builder-suggested uplink switch MAC addresses
+     * 
+     */
     public List<String> suggestedUplinks() {
         return this.suggestedUplinks == null ? List.of() : this.suggestedUplinks;
     }
+    /**
+     * @return Switch MAC addresses connected as uplinks from this topology member
+     * 
+     */
     public List<String> uplinks() {
         return this.uplinks == null ? List.of() : this.uplinks;
     }

@@ -72,42 +72,53 @@ class SwitchArgs:
         """
         The set of arguments for constructing a Switch resource.
 
-        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchAclTagsArgs']]] acl_tags: ACL Tags to identify traffic source or destination. Key name is the tag name
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        :param pulumi.Input[_builtins.str] site_id: Site where this switch is assigned
+        :param pulumi.Input[Sequence[pulumi.Input['SwitchAclPolicyArgs']]] acl_policies: ACL policies applied to traffic handled by this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchAclTagsArgs']]] acl_tags: ACL tags used by switch access policies
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: Additional CLI configuration commands to apply to this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchBgpConfigArgs']]] bgp_config: BGP routing configuration for this switch. Property key is the BGP session name
         :param pulumi.Input[_builtins.str] default_port_usage: Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+        :param pulumi.Input['SwitchDhcpSnoopingArgs'] dhcp_snooping: DHCP snooping configuration for this switch
+        :param pulumi.Input['SwitchDhcpdConfigArgs'] dhcpd_config: DHCP server configuration served by this switch
         :param pulumi.Input[_builtins.bool] disable_auto_config: This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
-        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchExtraRoutesArgs']]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8")
-        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchExtraRoutes6Args']]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
-        :param pulumi.Input['SwitchIpConfigArgs'] ip_config: Junos IP Config
-        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchLocalPortConfigArgs']]] local_port_config: Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g. "ge-0/0/0-10")
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: DNS servers configured for this switch
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: DNS search suffixes configured for this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchExtraRoutesArgs']]] extra_routes: Additional IPv4 routes configured on this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchExtraRoutes6Args']]] extra_routes6: Additional IPv6 routes configured on this switch
+        :param pulumi.Input['SwitchIpConfigArgs'] ip_config: Management IP addressing settings for this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchLocalPortConfigArgs']]] local_port_config: Local port configuration settings for this switch
         :param pulumi.Input[_builtins.bool] managed: An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist. Deprecated in favour of mist_configured, which is more intuitive and can be used for both adopted and claimed devices.
         :param pulumi.Input[_builtins.str] map_id: Map where the device belongs to
         :param pulumi.Input[_builtins.bool] mist_configured: whether the device can be configured by Mist or not. This deprecates `managed` (for adopted device) and `disable_auto_config` for claimed device)
-        :param pulumi.Input['SwitchMistNacArgs'] mist_nac: Enable mist_nac to use RadSec
-        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchNetworksArgs']]] networks: Property key is network name
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
-        :param pulumi.Input['SwitchOobIpConfigArgs'] oob_ip_config: Switch OOB IP Config:
-                 - If HA configuration: key parameter will be nodeX (eg: node1)
-                 - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
-        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchOspfAreasArgs']]] ospf_areas: Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+        :param pulumi.Input['SwitchMistNacArgs'] mist_nac: Mist NAC settings applied to this switch
+        :param pulumi.Input[_builtins.str] name: Friendly display name assigned to the switch
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchNetworksArgs']]] networks: Layer 3 networks configured for use by this switch
+        :param pulumi.Input[_builtins.str] notes: Free-form administrative notes for this switch
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: NTP servers used by this switch
+        :param pulumi.Input['SwitchOobIpConfigArgs'] oob_ip_config: Out-of-band management IP configuration for this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchOspfAreasArgs']]] ospf_areas: OSPF area configuration for this switch
+        :param pulumi.Input['SwitchOspfConfigArgs'] ospf_config: OSPF routing configuration for this switch
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchOtherIpConfigsArgs']]] other_ip_configs: Property key is the network name. Defines the additional IP Addresses configured on the device.
-        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigArgs']]] port_config: Property key is the port name or range (e.g. "ge-0/0/0-10")
-        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigOverwriteArgs']]] port_config_overwrite: Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the port_usage without having to create a new port_usage.
-        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
-        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortUsagesArgs']]] port_usages: Property key is the port usage name. Defines the profiles of port configuration configured on the switch
-        :param pulumi.Input['SwitchRadiusConfigArgs'] radius_config: Junos Radius config
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigArgs']]] port_config: Per-port wired configuration for this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigOverwriteArgs']]] port_config_overwrite: Per-port overrides for switch port usage attributes
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]] port_mirroring: Port mirroring configuration for this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortUsagesArgs']]] port_usages: Reusable switch port usage profiles available on this switch
+        :param pulumi.Input['SwitchRadiusConfigArgs'] radius_config: RADIUS authentication and accounting settings for this switch
+        :param pulumi.Input['SwitchRemoteSyslogArgs'] remote_syslog: Remote syslog settings for this switch
+        :param pulumi.Input[_builtins.str] role: Deployment role label for this switch
         :param pulumi.Input[_builtins.str] router_id: Used for OSPF / BGP / EVPN
-        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchRoutingPoliciesArgs']]] routing_policies: Property key is the routing policy name
-        :param pulumi.Input['SwitchSwitchMgmtArgs'] switch_mgmt: Switch Management settings
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchRoutingPoliciesArgs']]] routing_policies: Routing policies applied by this switch
+        :param pulumi.Input['SwitchSnmpConfigArgs'] snmp_config: SNMP configuration for this switch
+        :param pulumi.Input['SwitchStpConfigArgs'] stp_config: Spanning Tree Protocol configuration for this switch
+        :param pulumi.Input['SwitchSwitchMgmtArgs'] switch_mgmt: Management-plane settings for this switch
         :param pulumi.Input[_builtins.bool] use_router_id_as_source_ip: Whether to use it for snmp / syslog / tacplus / radius
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
-        :param pulumi.Input['SwitchVirtualChassisArgs'] virtual_chassis: Required for preprovisioned Virtual Chassis
-        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchVrfInstancesArgs']]] vrf_instances: Property key is the network name
-        :param pulumi.Input['SwitchVrrpConfigArgs'] vrrp_config: Junos VRRP config
-        :param pulumi.Input[_builtins.float] x: X in pixel
-        :param pulumi.Input[_builtins.float] y: Y in pixel
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Variable values that override site variables for this switch
+        :param pulumi.Input['SwitchVirtualChassisArgs'] virtual_chassis: Virtual Chassis membership and provisioning settings for this switch
+        :param pulumi.Input['SwitchVrfConfigArgs'] vrf_config: VRF configuration applied to this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchVrfInstancesArgs']]] vrf_instances: VRF instances configured on this switch
+        :param pulumi.Input['SwitchVrrpConfigArgs'] vrrp_config: VRRP configuration applied to this switch
+        :param pulumi.Input[_builtins.float] x: Horizontal map position of the switch, in pixels
+        :param pulumi.Input[_builtins.float] y: Vertical map position of the switch, in pixels
         """
         pulumi.set(__self__, "device_id", device_id)
         pulumi.set(__self__, "site_id", site_id)
@@ -222,6 +233,9 @@ class SwitchArgs:
     @_builtins.property
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Site where this switch is assigned
+        """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
@@ -231,6 +245,9 @@ class SwitchArgs:
     @_builtins.property
     @pulumi.getter(name="aclPolicies")
     def acl_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SwitchAclPolicyArgs']]]]:
+        """
+        ACL policies applied to traffic handled by this switch
+        """
         return pulumi.get(self, "acl_policies")
 
     @acl_policies.setter
@@ -241,7 +258,7 @@ class SwitchArgs:
     @pulumi.getter(name="aclTags")
     def acl_tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchAclTagsArgs']]]]:
         """
-        ACL Tags to identify traffic source or destination. Key name is the tag name
+        ACL tags used by switch access policies
         """
         return pulumi.get(self, "acl_tags")
 
@@ -253,7 +270,7 @@ class SwitchArgs:
     @pulumi.getter(name="additionalConfigCmds")
     def additional_config_cmds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        Additional CLI configuration commands to apply to this switch
         """
         return pulumi.get(self, "additional_config_cmds")
 
@@ -264,6 +281,9 @@ class SwitchArgs:
     @_builtins.property
     @pulumi.getter(name="bgpConfig")
     def bgp_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchBgpConfigArgs']]]]:
+        """
+        BGP routing configuration for this switch. Property key is the BGP session name
+        """
         return pulumi.get(self, "bgp_config")
 
     @bgp_config.setter
@@ -285,6 +305,9 @@ class SwitchArgs:
     @_builtins.property
     @pulumi.getter(name="dhcpSnooping")
     def dhcp_snooping(self) -> pulumi.Input[Optional['SwitchDhcpSnoopingArgs']]:
+        """
+        DHCP snooping configuration for this switch
+        """
         return pulumi.get(self, "dhcp_snooping")
 
     @dhcp_snooping.setter
@@ -294,6 +317,9 @@ class SwitchArgs:
     @_builtins.property
     @pulumi.getter(name="dhcpdConfig")
     def dhcpd_config(self) -> pulumi.Input[Optional['SwitchDhcpdConfigArgs']]:
+        """
+        DHCP server configuration served by this switch
+        """
         return pulumi.get(self, "dhcpd_config")
 
     @dhcpd_config.setter
@@ -317,7 +343,7 @@ class SwitchArgs:
     @pulumi.getter(name="dnsServers")
     def dns_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        DNS servers configured for this switch
         """
         return pulumi.get(self, "dns_servers")
 
@@ -329,7 +355,7 @@ class SwitchArgs:
     @pulumi.getter(name="dnsSuffixes")
     def dns_suffixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        DNS search suffixes configured for this switch
         """
         return pulumi.get(self, "dns_suffixes")
 
@@ -341,7 +367,7 @@ class SwitchArgs:
     @pulumi.getter(name="extraRoutes")
     def extra_routes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchExtraRoutesArgs']]]]:
         """
-        Property key is the destination CIDR (e.g. "10.0.0.0/8")
+        Additional IPv4 routes configured on this switch
         """
         return pulumi.get(self, "extra_routes")
 
@@ -353,7 +379,7 @@ class SwitchArgs:
     @pulumi.getter(name="extraRoutes6")
     def extra_routes6(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchExtraRoutes6Args']]]]:
         """
-        Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+        Additional IPv6 routes configured on this switch
         """
         return pulumi.get(self, "extra_routes6")
 
@@ -365,7 +391,7 @@ class SwitchArgs:
     @pulumi.getter(name="ipConfig")
     def ip_config(self) -> pulumi.Input[Optional['SwitchIpConfigArgs']]:
         """
-        Junos IP Config
+        Management IP addressing settings for this switch
         """
         return pulumi.get(self, "ip_config")
 
@@ -377,7 +403,7 @@ class SwitchArgs:
     @pulumi.getter(name="localPortConfig")
     def local_port_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchLocalPortConfigArgs']]]]:
         """
-        Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g. "ge-0/0/0-10")
+        Local port configuration settings for this switch
         """
         return pulumi.get(self, "local_port_config")
 
@@ -426,7 +452,7 @@ class SwitchArgs:
     @pulumi.getter(name="mistNac")
     def mist_nac(self) -> pulumi.Input[Optional['SwitchMistNacArgs']]:
         """
-        Enable mist_nac to use RadSec
+        Mist NAC settings applied to this switch
         """
         return pulumi.get(self, "mist_nac")
 
@@ -437,6 +463,9 @@ class SwitchArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Friendly display name assigned to the switch
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -447,7 +476,7 @@ class SwitchArgs:
     @pulumi.getter
     def networks(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchNetworksArgs']]]]:
         """
-        Property key is network name
+        Layer 3 networks configured for use by this switch
         """
         return pulumi.get(self, "networks")
 
@@ -458,6 +487,9 @@ class SwitchArgs:
     @_builtins.property
     @pulumi.getter
     def notes(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Free-form administrative notes for this switch
+        """
         return pulumi.get(self, "notes")
 
     @notes.setter
@@ -468,7 +500,7 @@ class SwitchArgs:
     @pulumi.getter(name="ntpServers")
     def ntp_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of NTP servers specific to this device. By default, those in Site Settings will be used
+        NTP servers used by this switch
         """
         return pulumi.get(self, "ntp_servers")
 
@@ -480,9 +512,7 @@ class SwitchArgs:
     @pulumi.getter(name="oobIpConfig")
     def oob_ip_config(self) -> pulumi.Input[Optional['SwitchOobIpConfigArgs']]:
         """
-        Switch OOB IP Config:
-          - If HA configuration: key parameter will be nodeX (eg: node1)
-          - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
+        Out-of-band management IP configuration for this switch
         """
         return pulumi.get(self, "oob_ip_config")
 
@@ -494,7 +524,7 @@ class SwitchArgs:
     @pulumi.getter(name="ospfAreas")
     def ospf_areas(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchOspfAreasArgs']]]]:
         """
-        Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+        OSPF area configuration for this switch
         """
         return pulumi.get(self, "ospf_areas")
 
@@ -505,6 +535,9 @@ class SwitchArgs:
     @_builtins.property
     @pulumi.getter(name="ospfConfig")
     def ospf_config(self) -> pulumi.Input[Optional['SwitchOspfConfigArgs']]:
+        """
+        OSPF routing configuration for this switch
+        """
         return pulumi.get(self, "ospf_config")
 
     @ospf_config.setter
@@ -527,7 +560,7 @@ class SwitchArgs:
     @pulumi.getter(name="portConfig")
     def port_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchPortConfigArgs']]]]:
         """
-        Property key is the port name or range (e.g. "ge-0/0/0-10")
+        Per-port wired configuration for this switch
         """
         return pulumi.get(self, "port_config")
 
@@ -539,7 +572,7 @@ class SwitchArgs:
     @pulumi.getter(name="portConfigOverwrite")
     def port_config_overwrite(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchPortConfigOverwriteArgs']]]]:
         """
-        Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the port_usage without having to create a new port_usage.
+        Per-port overrides for switch port usage attributes
         """
         return pulumi.get(self, "port_config_overwrite")
 
@@ -551,7 +584,7 @@ class SwitchArgs:
     @pulumi.getter(name="portMirroring")
     def port_mirroring(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]]]:
         """
-        Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+        Port mirroring configuration for this switch
         """
         return pulumi.get(self, "port_mirroring")
 
@@ -563,7 +596,7 @@ class SwitchArgs:
     @pulumi.getter(name="portUsages")
     def port_usages(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchPortUsagesArgs']]]]:
         """
-        Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+        Reusable switch port usage profiles available on this switch
         """
         return pulumi.get(self, "port_usages")
 
@@ -575,7 +608,7 @@ class SwitchArgs:
     @pulumi.getter(name="radiusConfig")
     def radius_config(self) -> pulumi.Input[Optional['SwitchRadiusConfigArgs']]:
         """
-        Junos Radius config
+        RADIUS authentication and accounting settings for this switch
         """
         return pulumi.get(self, "radius_config")
 
@@ -586,6 +619,9 @@ class SwitchArgs:
     @_builtins.property
     @pulumi.getter(name="remoteSyslog")
     def remote_syslog(self) -> pulumi.Input[Optional['SwitchRemoteSyslogArgs']]:
+        """
+        Remote syslog settings for this switch
+        """
         return pulumi.get(self, "remote_syslog")
 
     @remote_syslog.setter
@@ -595,6 +631,9 @@ class SwitchArgs:
     @_builtins.property
     @pulumi.getter
     def role(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Deployment role label for this switch
+        """
         return pulumi.get(self, "role")
 
     @role.setter
@@ -617,7 +656,7 @@ class SwitchArgs:
     @pulumi.getter(name="routingPolicies")
     def routing_policies(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchRoutingPoliciesArgs']]]]:
         """
-        Property key is the routing policy name
+        Routing policies applied by this switch
         """
         return pulumi.get(self, "routing_policies")
 
@@ -628,6 +667,9 @@ class SwitchArgs:
     @_builtins.property
     @pulumi.getter(name="snmpConfig")
     def snmp_config(self) -> pulumi.Input[Optional['SwitchSnmpConfigArgs']]:
+        """
+        SNMP configuration for this switch
+        """
         return pulumi.get(self, "snmp_config")
 
     @snmp_config.setter
@@ -637,6 +679,9 @@ class SwitchArgs:
     @_builtins.property
     @pulumi.getter(name="stpConfig")
     def stp_config(self) -> pulumi.Input[Optional['SwitchStpConfigArgs']]:
+        """
+        Spanning Tree Protocol configuration for this switch
+        """
         return pulumi.get(self, "stp_config")
 
     @stp_config.setter
@@ -647,7 +692,7 @@ class SwitchArgs:
     @pulumi.getter(name="switchMgmt")
     def switch_mgmt(self) -> pulumi.Input[Optional['SwitchSwitchMgmtArgs']]:
         """
-        Switch Management settings
+        Management-plane settings for this switch
         """
         return pulumi.get(self, "switch_mgmt")
 
@@ -671,7 +716,7 @@ class SwitchArgs:
     @pulumi.getter
     def vars(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        Variable values that override site variables for this switch
         """
         return pulumi.get(self, "vars")
 
@@ -683,7 +728,7 @@ class SwitchArgs:
     @pulumi.getter(name="virtualChassis")
     def virtual_chassis(self) -> pulumi.Input[Optional['SwitchVirtualChassisArgs']]:
         """
-        Required for preprovisioned Virtual Chassis
+        Virtual Chassis membership and provisioning settings for this switch
         """
         return pulumi.get(self, "virtual_chassis")
 
@@ -694,6 +739,9 @@ class SwitchArgs:
     @_builtins.property
     @pulumi.getter(name="vrfConfig")
     def vrf_config(self) -> pulumi.Input[Optional['SwitchVrfConfigArgs']]:
+        """
+        VRF configuration applied to this switch
+        """
         return pulumi.get(self, "vrf_config")
 
     @vrf_config.setter
@@ -704,7 +752,7 @@ class SwitchArgs:
     @pulumi.getter(name="vrfInstances")
     def vrf_instances(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchVrfInstancesArgs']]]]:
         """
-        Property key is the network name
+        VRF instances configured on this switch
         """
         return pulumi.get(self, "vrf_instances")
 
@@ -716,7 +764,7 @@ class SwitchArgs:
     @pulumi.getter(name="vrrpConfig")
     def vrrp_config(self) -> pulumi.Input[Optional['SwitchVrrpConfigArgs']]:
         """
-        Junos VRRP config
+        VRRP configuration applied to this switch
         """
         return pulumi.get(self, "vrrp_config")
 
@@ -728,7 +776,7 @@ class SwitchArgs:
     @pulumi.getter
     def x(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
-        X in pixel
+        Horizontal map position of the switch, in pixels
         """
         return pulumi.get(self, "x")
 
@@ -740,7 +788,7 @@ class SwitchArgs:
     @pulumi.getter
     def y(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
-        Y in pixel
+        Vertical map position of the switch, in pixels
         """
         return pulumi.get(self, "y")
 
@@ -811,46 +859,61 @@ class _SwitchState:
         """
         Input properties used for looking up and filtering Switch resources.
 
-        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchAclTagsArgs']]] acl_tags: ACL Tags to identify traffic source or destination. Key name is the tag name
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        :param pulumi.Input[Sequence[pulumi.Input['SwitchAclPolicyArgs']]] acl_policies: ACL policies applied to traffic handled by this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchAclTagsArgs']]] acl_tags: ACL tags used by switch access policies
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: Additional CLI configuration commands to apply to this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchBgpConfigArgs']]] bgp_config: BGP routing configuration for this switch. Property key is the BGP session name
         :param pulumi.Input[_builtins.str] default_port_usage: Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+        :param pulumi.Input['SwitchDhcpSnoopingArgs'] dhcp_snooping: DHCP snooping configuration for this switch
+        :param pulumi.Input['SwitchDhcpdConfigArgs'] dhcpd_config: DHCP server configuration served by this switch
         :param pulumi.Input[_builtins.bool] disable_auto_config: This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
-        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchExtraRoutesArgs']]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8")
-        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchExtraRoutes6Args']]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
-        :param pulumi.Input['SwitchIpConfigArgs'] ip_config: Junos IP Config
-        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchLocalPortConfigArgs']]] local_port_config: Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g. "ge-0/0/0-10")
-        :param pulumi.Input[_builtins.str] mac: Device MAC address
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: DNS servers configured for this switch
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: DNS search suffixes configured for this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchExtraRoutesArgs']]] extra_routes: Additional IPv4 routes configured on this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchExtraRoutes6Args']]] extra_routes6: Additional IPv6 routes configured on this switch
+        :param pulumi.Input[_builtins.str] image1_url: First custom image URL associated with the switch
+        :param pulumi.Input[_builtins.str] image2_url: Second custom image URL associated with the switch
+        :param pulumi.Input[_builtins.str] image3_url: Third custom image URL associated with the switch
+        :param pulumi.Input['SwitchIpConfigArgs'] ip_config: Management IP addressing settings for this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchLocalPortConfigArgs']]] local_port_config: Local port configuration settings for this switch
+        :param pulumi.Input[_builtins.str] mac: Switch MAC address used to identify the device
         :param pulumi.Input[_builtins.bool] managed: An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist. Deprecated in favour of mist_configured, which is more intuitive and can be used for both adopted and claimed devices.
         :param pulumi.Input[_builtins.str] map_id: Map where the device belongs to
         :param pulumi.Input[_builtins.bool] mist_configured: whether the device can be configured by Mist or not. This deprecates `managed` (for adopted device) and `disable_auto_config` for claimed device)
-        :param pulumi.Input['SwitchMistNacArgs'] mist_nac: Enable mist_nac to use RadSec
-        :param pulumi.Input[_builtins.str] model: Device Model
-        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchNetworksArgs']]] networks: Property key is network name
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
-        :param pulumi.Input['SwitchOobIpConfigArgs'] oob_ip_config: Switch OOB IP Config:
-                 - If HA configuration: key parameter will be nodeX (eg: node1)
-                 - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
-        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchOspfAreasArgs']]] ospf_areas: Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+        :param pulumi.Input['SwitchMistNacArgs'] mist_nac: Mist NAC settings applied to this switch
+        :param pulumi.Input[_builtins.str] model: Switch model reported for the device
+        :param pulumi.Input[_builtins.str] name: Friendly display name assigned to the switch
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchNetworksArgs']]] networks: Layer 3 networks configured for use by this switch
+        :param pulumi.Input[_builtins.str] notes: Free-form administrative notes for this switch
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: NTP servers used by this switch
+        :param pulumi.Input['SwitchOobIpConfigArgs'] oob_ip_config: Out-of-band management IP configuration for this switch
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchOspfAreasArgs']]] ospf_areas: OSPF area configuration for this switch
+        :param pulumi.Input['SwitchOspfConfigArgs'] ospf_config: OSPF routing configuration for this switch
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchOtherIpConfigsArgs']]] other_ip_configs: Property key is the network name. Defines the additional IP Addresses configured on the device.
-        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigArgs']]] port_config: Property key is the port name or range (e.g. "ge-0/0/0-10")
-        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigOverwriteArgs']]] port_config_overwrite: Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the port_usage without having to create a new port_usage.
-        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
-        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortUsagesArgs']]] port_usages: Property key is the port usage name. Defines the profiles of port configuration configured on the switch
-        :param pulumi.Input['SwitchRadiusConfigArgs'] radius_config: Junos Radius config
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigArgs']]] port_config: Per-port wired configuration for this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigOverwriteArgs']]] port_config_overwrite: Per-port overrides for switch port usage attributes
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]] port_mirroring: Port mirroring configuration for this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortUsagesArgs']]] port_usages: Reusable switch port usage profiles available on this switch
+        :param pulumi.Input['SwitchRadiusConfigArgs'] radius_config: RADIUS authentication and accounting settings for this switch
+        :param pulumi.Input['SwitchRemoteSyslogArgs'] remote_syslog: Remote syslog settings for this switch
+        :param pulumi.Input[_builtins.str] role: Deployment role label for this switch
         :param pulumi.Input[_builtins.str] router_id: Used for OSPF / BGP / EVPN
-        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchRoutingPoliciesArgs']]] routing_policies: Property key is the routing policy name
-        :param pulumi.Input[_builtins.str] serial: Device Serial
-        :param pulumi.Input['SwitchSwitchMgmtArgs'] switch_mgmt: Switch Management settings
-        :param pulumi.Input[_builtins.str] type: Device Type. enum: `switch`
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchRoutingPoliciesArgs']]] routing_policies: Routing policies applied by this switch
+        :param pulumi.Input[_builtins.str] serial: Manufacturer serial number for the switch
+        :param pulumi.Input[_builtins.str] site_id: Site where this switch is assigned
+        :param pulumi.Input['SwitchSnmpConfigArgs'] snmp_config: SNMP configuration for this switch
+        :param pulumi.Input['SwitchStpConfigArgs'] stp_config: Spanning Tree Protocol configuration for this switch
+        :param pulumi.Input['SwitchSwitchMgmtArgs'] switch_mgmt: Management-plane settings for this switch
+        :param pulumi.Input[_builtins.str] type: Device type discriminator for switch records
         :param pulumi.Input[_builtins.bool] use_router_id_as_source_ip: Whether to use it for snmp / syslog / tacplus / radius
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
-        :param pulumi.Input['SwitchVirtualChassisArgs'] virtual_chassis: Required for preprovisioned Virtual Chassis
-        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchVrfInstancesArgs']]] vrf_instances: Property key is the network name
-        :param pulumi.Input['SwitchVrrpConfigArgs'] vrrp_config: Junos VRRP config
-        :param pulumi.Input[_builtins.float] x: X in pixel
-        :param pulumi.Input[_builtins.float] y: Y in pixel
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Variable values that override site variables for this switch
+        :param pulumi.Input['SwitchVirtualChassisArgs'] virtual_chassis: Virtual Chassis membership and provisioning settings for this switch
+        :param pulumi.Input['SwitchVrfConfigArgs'] vrf_config: VRF configuration applied to this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchVrfInstancesArgs']]] vrf_instances: VRF instances configured on this switch
+        :param pulumi.Input['SwitchVrrpConfigArgs'] vrrp_config: VRRP configuration applied to this switch
+        :param pulumi.Input[_builtins.float] x: Horizontal map position of the switch, in pixels
+        :param pulumi.Input[_builtins.float] y: Vertical map position of the switch, in pixels
         """
         if acl_policies is not None:
             pulumi.set(__self__, "acl_policies", acl_policies)
@@ -974,6 +1037,9 @@ class _SwitchState:
     @_builtins.property
     @pulumi.getter(name="aclPolicies")
     def acl_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SwitchAclPolicyArgs']]]]:
+        """
+        ACL policies applied to traffic handled by this switch
+        """
         return pulumi.get(self, "acl_policies")
 
     @acl_policies.setter
@@ -984,7 +1050,7 @@ class _SwitchState:
     @pulumi.getter(name="aclTags")
     def acl_tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchAclTagsArgs']]]]:
         """
-        ACL Tags to identify traffic source or destination. Key name is the tag name
+        ACL tags used by switch access policies
         """
         return pulumi.get(self, "acl_tags")
 
@@ -996,7 +1062,7 @@ class _SwitchState:
     @pulumi.getter(name="additionalConfigCmds")
     def additional_config_cmds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        Additional CLI configuration commands to apply to this switch
         """
         return pulumi.get(self, "additional_config_cmds")
 
@@ -1007,6 +1073,9 @@ class _SwitchState:
     @_builtins.property
     @pulumi.getter(name="bgpConfig")
     def bgp_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchBgpConfigArgs']]]]:
+        """
+        BGP routing configuration for this switch. Property key is the BGP session name
+        """
         return pulumi.get(self, "bgp_config")
 
     @bgp_config.setter
@@ -1037,6 +1106,9 @@ class _SwitchState:
     @_builtins.property
     @pulumi.getter(name="dhcpSnooping")
     def dhcp_snooping(self) -> pulumi.Input[Optional['SwitchDhcpSnoopingArgs']]:
+        """
+        DHCP snooping configuration for this switch
+        """
         return pulumi.get(self, "dhcp_snooping")
 
     @dhcp_snooping.setter
@@ -1046,6 +1118,9 @@ class _SwitchState:
     @_builtins.property
     @pulumi.getter(name="dhcpdConfig")
     def dhcpd_config(self) -> pulumi.Input[Optional['SwitchDhcpdConfigArgs']]:
+        """
+        DHCP server configuration served by this switch
+        """
         return pulumi.get(self, "dhcpd_config")
 
     @dhcpd_config.setter
@@ -1069,7 +1144,7 @@ class _SwitchState:
     @pulumi.getter(name="dnsServers")
     def dns_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        DNS servers configured for this switch
         """
         return pulumi.get(self, "dns_servers")
 
@@ -1081,7 +1156,7 @@ class _SwitchState:
     @pulumi.getter(name="dnsSuffixes")
     def dns_suffixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        DNS search suffixes configured for this switch
         """
         return pulumi.get(self, "dns_suffixes")
 
@@ -1093,7 +1168,7 @@ class _SwitchState:
     @pulumi.getter(name="extraRoutes")
     def extra_routes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchExtraRoutesArgs']]]]:
         """
-        Property key is the destination CIDR (e.g. "10.0.0.0/8")
+        Additional IPv4 routes configured on this switch
         """
         return pulumi.get(self, "extra_routes")
 
@@ -1105,7 +1180,7 @@ class _SwitchState:
     @pulumi.getter(name="extraRoutes6")
     def extra_routes6(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchExtraRoutes6Args']]]]:
         """
-        Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+        Additional IPv6 routes configured on this switch
         """
         return pulumi.get(self, "extra_routes6")
 
@@ -1116,6 +1191,9 @@ class _SwitchState:
     @_builtins.property
     @pulumi.getter(name="image1Url")
     def image1_url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        First custom image URL associated with the switch
+        """
         return pulumi.get(self, "image1_url")
 
     @image1_url.setter
@@ -1125,6 +1203,9 @@ class _SwitchState:
     @_builtins.property
     @pulumi.getter(name="image2Url")
     def image2_url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Second custom image URL associated with the switch
+        """
         return pulumi.get(self, "image2_url")
 
     @image2_url.setter
@@ -1134,6 +1215,9 @@ class _SwitchState:
     @_builtins.property
     @pulumi.getter(name="image3Url")
     def image3_url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Third custom image URL associated with the switch
+        """
         return pulumi.get(self, "image3_url")
 
     @image3_url.setter
@@ -1144,7 +1228,7 @@ class _SwitchState:
     @pulumi.getter(name="ipConfig")
     def ip_config(self) -> pulumi.Input[Optional['SwitchIpConfigArgs']]:
         """
-        Junos IP Config
+        Management IP addressing settings for this switch
         """
         return pulumi.get(self, "ip_config")
 
@@ -1156,7 +1240,7 @@ class _SwitchState:
     @pulumi.getter(name="localPortConfig")
     def local_port_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchLocalPortConfigArgs']]]]:
         """
-        Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g. "ge-0/0/0-10")
+        Local port configuration settings for this switch
         """
         return pulumi.get(self, "local_port_config")
 
@@ -1168,7 +1252,7 @@ class _SwitchState:
     @pulumi.getter
     def mac(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Device MAC address
+        Switch MAC address used to identify the device
         """
         return pulumi.get(self, "mac")
 
@@ -1217,7 +1301,7 @@ class _SwitchState:
     @pulumi.getter(name="mistNac")
     def mist_nac(self) -> pulumi.Input[Optional['SwitchMistNacArgs']]:
         """
-        Enable mist_nac to use RadSec
+        Mist NAC settings applied to this switch
         """
         return pulumi.get(self, "mist_nac")
 
@@ -1229,7 +1313,7 @@ class _SwitchState:
     @pulumi.getter
     def model(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Device Model
+        Switch model reported for the device
         """
         return pulumi.get(self, "model")
 
@@ -1240,6 +1324,9 @@ class _SwitchState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Friendly display name assigned to the switch
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -1250,7 +1337,7 @@ class _SwitchState:
     @pulumi.getter
     def networks(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchNetworksArgs']]]]:
         """
-        Property key is network name
+        Layer 3 networks configured for use by this switch
         """
         return pulumi.get(self, "networks")
 
@@ -1261,6 +1348,9 @@ class _SwitchState:
     @_builtins.property
     @pulumi.getter
     def notes(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Free-form administrative notes for this switch
+        """
         return pulumi.get(self, "notes")
 
     @notes.setter
@@ -1271,7 +1361,7 @@ class _SwitchState:
     @pulumi.getter(name="ntpServers")
     def ntp_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of NTP servers specific to this device. By default, those in Site Settings will be used
+        NTP servers used by this switch
         """
         return pulumi.get(self, "ntp_servers")
 
@@ -1283,9 +1373,7 @@ class _SwitchState:
     @pulumi.getter(name="oobIpConfig")
     def oob_ip_config(self) -> pulumi.Input[Optional['SwitchOobIpConfigArgs']]:
         """
-        Switch OOB IP Config:
-          - If HA configuration: key parameter will be nodeX (eg: node1)
-          - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
+        Out-of-band management IP configuration for this switch
         """
         return pulumi.get(self, "oob_ip_config")
 
@@ -1296,6 +1384,9 @@ class _SwitchState:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Organization that owns this switch
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -1306,7 +1397,7 @@ class _SwitchState:
     @pulumi.getter(name="ospfAreas")
     def ospf_areas(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchOspfAreasArgs']]]]:
         """
-        Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+        OSPF area configuration for this switch
         """
         return pulumi.get(self, "ospf_areas")
 
@@ -1317,6 +1408,9 @@ class _SwitchState:
     @_builtins.property
     @pulumi.getter(name="ospfConfig")
     def ospf_config(self) -> pulumi.Input[Optional['SwitchOspfConfigArgs']]:
+        """
+        OSPF routing configuration for this switch
+        """
         return pulumi.get(self, "ospf_config")
 
     @ospf_config.setter
@@ -1339,7 +1433,7 @@ class _SwitchState:
     @pulumi.getter(name="portConfig")
     def port_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchPortConfigArgs']]]]:
         """
-        Property key is the port name or range (e.g. "ge-0/0/0-10")
+        Per-port wired configuration for this switch
         """
         return pulumi.get(self, "port_config")
 
@@ -1351,7 +1445,7 @@ class _SwitchState:
     @pulumi.getter(name="portConfigOverwrite")
     def port_config_overwrite(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchPortConfigOverwriteArgs']]]]:
         """
-        Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the port_usage without having to create a new port_usage.
+        Per-port overrides for switch port usage attributes
         """
         return pulumi.get(self, "port_config_overwrite")
 
@@ -1363,7 +1457,7 @@ class _SwitchState:
     @pulumi.getter(name="portMirroring")
     def port_mirroring(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]]]:
         """
-        Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+        Port mirroring configuration for this switch
         """
         return pulumi.get(self, "port_mirroring")
 
@@ -1375,7 +1469,7 @@ class _SwitchState:
     @pulumi.getter(name="portUsages")
     def port_usages(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchPortUsagesArgs']]]]:
         """
-        Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+        Reusable switch port usage profiles available on this switch
         """
         return pulumi.get(self, "port_usages")
 
@@ -1387,7 +1481,7 @@ class _SwitchState:
     @pulumi.getter(name="radiusConfig")
     def radius_config(self) -> pulumi.Input[Optional['SwitchRadiusConfigArgs']]:
         """
-        Junos Radius config
+        RADIUS authentication and accounting settings for this switch
         """
         return pulumi.get(self, "radius_config")
 
@@ -1398,6 +1492,9 @@ class _SwitchState:
     @_builtins.property
     @pulumi.getter(name="remoteSyslog")
     def remote_syslog(self) -> pulumi.Input[Optional['SwitchRemoteSyslogArgs']]:
+        """
+        Remote syslog settings for this switch
+        """
         return pulumi.get(self, "remote_syslog")
 
     @remote_syslog.setter
@@ -1407,6 +1504,9 @@ class _SwitchState:
     @_builtins.property
     @pulumi.getter
     def role(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Deployment role label for this switch
+        """
         return pulumi.get(self, "role")
 
     @role.setter
@@ -1429,7 +1529,7 @@ class _SwitchState:
     @pulumi.getter(name="routingPolicies")
     def routing_policies(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchRoutingPoliciesArgs']]]]:
         """
-        Property key is the routing policy name
+        Routing policies applied by this switch
         """
         return pulumi.get(self, "routing_policies")
 
@@ -1441,7 +1541,7 @@ class _SwitchState:
     @pulumi.getter
     def serial(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Device Serial
+        Manufacturer serial number for the switch
         """
         return pulumi.get(self, "serial")
 
@@ -1452,6 +1552,9 @@ class _SwitchState:
     @_builtins.property
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Site where this switch is assigned
+        """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
@@ -1461,6 +1564,9 @@ class _SwitchState:
     @_builtins.property
     @pulumi.getter(name="snmpConfig")
     def snmp_config(self) -> pulumi.Input[Optional['SwitchSnmpConfigArgs']]:
+        """
+        SNMP configuration for this switch
+        """
         return pulumi.get(self, "snmp_config")
 
     @snmp_config.setter
@@ -1470,6 +1576,9 @@ class _SwitchState:
     @_builtins.property
     @pulumi.getter(name="stpConfig")
     def stp_config(self) -> pulumi.Input[Optional['SwitchStpConfigArgs']]:
+        """
+        Spanning Tree Protocol configuration for this switch
+        """
         return pulumi.get(self, "stp_config")
 
     @stp_config.setter
@@ -1480,7 +1589,7 @@ class _SwitchState:
     @pulumi.getter(name="switchMgmt")
     def switch_mgmt(self) -> pulumi.Input[Optional['SwitchSwitchMgmtArgs']]:
         """
-        Switch Management settings
+        Management-plane settings for this switch
         """
         return pulumi.get(self, "switch_mgmt")
 
@@ -1492,7 +1601,7 @@ class _SwitchState:
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Device Type. enum: `switch`
+        Device type discriminator for switch records
         """
         return pulumi.get(self, "type")
 
@@ -1516,7 +1625,7 @@ class _SwitchState:
     @pulumi.getter
     def vars(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        Variable values that override site variables for this switch
         """
         return pulumi.get(self, "vars")
 
@@ -1528,7 +1637,7 @@ class _SwitchState:
     @pulumi.getter(name="virtualChassis")
     def virtual_chassis(self) -> pulumi.Input[Optional['SwitchVirtualChassisArgs']]:
         """
-        Required for preprovisioned Virtual Chassis
+        Virtual Chassis membership and provisioning settings for this switch
         """
         return pulumi.get(self, "virtual_chassis")
 
@@ -1539,6 +1648,9 @@ class _SwitchState:
     @_builtins.property
     @pulumi.getter(name="vrfConfig")
     def vrf_config(self) -> pulumi.Input[Optional['SwitchVrfConfigArgs']]:
+        """
+        VRF configuration applied to this switch
+        """
         return pulumi.get(self, "vrf_config")
 
     @vrf_config.setter
@@ -1549,7 +1661,7 @@ class _SwitchState:
     @pulumi.getter(name="vrfInstances")
     def vrf_instances(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchVrfInstancesArgs']]]]:
         """
-        Property key is the network name
+        VRF instances configured on this switch
         """
         return pulumi.get(self, "vrf_instances")
 
@@ -1561,7 +1673,7 @@ class _SwitchState:
     @pulumi.getter(name="vrrpConfig")
     def vrrp_config(self) -> pulumi.Input[Optional['SwitchVrrpConfigArgs']]:
         """
-        Junos VRRP config
+        VRRP configuration applied to this switch
         """
         return pulumi.get(self, "vrrp_config")
 
@@ -1573,7 +1685,7 @@ class _SwitchState:
     @pulumi.getter
     def x(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
-        X in pixel
+        Horizontal map position of the switch, in pixels
         """
         return pulumi.get(self, "x")
 
@@ -1585,7 +1697,7 @@ class _SwitchState:
     @pulumi.getter
     def y(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
-        Y in pixel
+        Vertical map position of the switch, in pixels
         """
         return pulumi.get(self, "y")
 
@@ -1668,42 +1780,53 @@ class Switch(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchAclTagsArgs', 'SwitchAclTagsArgsDict']]]] acl_tags: ACL Tags to identify traffic source or destination. Key name is the tag name
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SwitchAclPolicyArgs', 'SwitchAclPolicyArgsDict']]]] acl_policies: ACL policies applied to traffic handled by this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchAclTagsArgs', 'SwitchAclTagsArgsDict']]]] acl_tags: ACL tags used by switch access policies
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: Additional CLI configuration commands to apply to this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchBgpConfigArgs', 'SwitchBgpConfigArgsDict']]]] bgp_config: BGP routing configuration for this switch. Property key is the BGP session name
         :param pulumi.Input[_builtins.str] default_port_usage: Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+        :param pulumi.Input[Union['SwitchDhcpSnoopingArgs', 'SwitchDhcpSnoopingArgsDict']] dhcp_snooping: DHCP snooping configuration for this switch
+        :param pulumi.Input[Union['SwitchDhcpdConfigArgs', 'SwitchDhcpdConfigArgsDict']] dhcpd_config: DHCP server configuration served by this switch
         :param pulumi.Input[_builtins.bool] disable_auto_config: This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchExtraRoutesArgs', 'SwitchExtraRoutesArgsDict']]]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8")
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchExtraRoutes6Args', 'SwitchExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
-        :param pulumi.Input[Union['SwitchIpConfigArgs', 'SwitchIpConfigArgsDict']] ip_config: Junos IP Config
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchLocalPortConfigArgs', 'SwitchLocalPortConfigArgsDict']]]] local_port_config: Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g. "ge-0/0/0-10")
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: DNS servers configured for this switch
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: DNS search suffixes configured for this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchExtraRoutesArgs', 'SwitchExtraRoutesArgsDict']]]] extra_routes: Additional IPv4 routes configured on this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchExtraRoutes6Args', 'SwitchExtraRoutes6ArgsDict']]]] extra_routes6: Additional IPv6 routes configured on this switch
+        :param pulumi.Input[Union['SwitchIpConfigArgs', 'SwitchIpConfigArgsDict']] ip_config: Management IP addressing settings for this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchLocalPortConfigArgs', 'SwitchLocalPortConfigArgsDict']]]] local_port_config: Local port configuration settings for this switch
         :param pulumi.Input[_builtins.bool] managed: An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist. Deprecated in favour of mist_configured, which is more intuitive and can be used for both adopted and claimed devices.
         :param pulumi.Input[_builtins.str] map_id: Map where the device belongs to
         :param pulumi.Input[_builtins.bool] mist_configured: whether the device can be configured by Mist or not. This deprecates `managed` (for adopted device) and `disable_auto_config` for claimed device)
-        :param pulumi.Input[Union['SwitchMistNacArgs', 'SwitchMistNacArgsDict']] mist_nac: Enable mist_nac to use RadSec
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchNetworksArgs', 'SwitchNetworksArgsDict']]]] networks: Property key is network name
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
-        :param pulumi.Input[Union['SwitchOobIpConfigArgs', 'SwitchOobIpConfigArgsDict']] oob_ip_config: Switch OOB IP Config:
-                 - If HA configuration: key parameter will be nodeX (eg: node1)
-                 - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOspfAreasArgs', 'SwitchOspfAreasArgsDict']]]] ospf_areas: Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+        :param pulumi.Input[Union['SwitchMistNacArgs', 'SwitchMistNacArgsDict']] mist_nac: Mist NAC settings applied to this switch
+        :param pulumi.Input[_builtins.str] name: Friendly display name assigned to the switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchNetworksArgs', 'SwitchNetworksArgsDict']]]] networks: Layer 3 networks configured for use by this switch
+        :param pulumi.Input[_builtins.str] notes: Free-form administrative notes for this switch
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: NTP servers used by this switch
+        :param pulumi.Input[Union['SwitchOobIpConfigArgs', 'SwitchOobIpConfigArgsDict']] oob_ip_config: Out-of-band management IP configuration for this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOspfAreasArgs', 'SwitchOspfAreasArgsDict']]]] ospf_areas: OSPF area configuration for this switch
+        :param pulumi.Input[Union['SwitchOspfConfigArgs', 'SwitchOspfConfigArgsDict']] ospf_config: OSPF routing configuration for this switch
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOtherIpConfigsArgs', 'SwitchOtherIpConfigsArgsDict']]]] other_ip_configs: Property key is the network name. Defines the additional IP Addresses configured on the device.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigArgs', 'SwitchPortConfigArgsDict']]]] port_config: Property key is the port name or range (e.g. "ge-0/0/0-10")
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigOverwriteArgs', 'SwitchPortConfigOverwriteArgsDict']]]] port_config_overwrite: Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the port_usage without having to create a new port_usage.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict']]]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortUsagesArgs', 'SwitchPortUsagesArgsDict']]]] port_usages: Property key is the port usage name. Defines the profiles of port configuration configured on the switch
-        :param pulumi.Input[Union['SwitchRadiusConfigArgs', 'SwitchRadiusConfigArgsDict']] radius_config: Junos Radius config
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigArgs', 'SwitchPortConfigArgsDict']]]] port_config: Per-port wired configuration for this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigOverwriteArgs', 'SwitchPortConfigOverwriteArgsDict']]]] port_config_overwrite: Per-port overrides for switch port usage attributes
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict']]]] port_mirroring: Port mirroring configuration for this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortUsagesArgs', 'SwitchPortUsagesArgsDict']]]] port_usages: Reusable switch port usage profiles available on this switch
+        :param pulumi.Input[Union['SwitchRadiusConfigArgs', 'SwitchRadiusConfigArgsDict']] radius_config: RADIUS authentication and accounting settings for this switch
+        :param pulumi.Input[Union['SwitchRemoteSyslogArgs', 'SwitchRemoteSyslogArgsDict']] remote_syslog: Remote syslog settings for this switch
+        :param pulumi.Input[_builtins.str] role: Deployment role label for this switch
         :param pulumi.Input[_builtins.str] router_id: Used for OSPF / BGP / EVPN
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchRoutingPoliciesArgs', 'SwitchRoutingPoliciesArgsDict']]]] routing_policies: Property key is the routing policy name
-        :param pulumi.Input[Union['SwitchSwitchMgmtArgs', 'SwitchSwitchMgmtArgsDict']] switch_mgmt: Switch Management settings
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchRoutingPoliciesArgs', 'SwitchRoutingPoliciesArgsDict']]]] routing_policies: Routing policies applied by this switch
+        :param pulumi.Input[_builtins.str] site_id: Site where this switch is assigned
+        :param pulumi.Input[Union['SwitchSnmpConfigArgs', 'SwitchSnmpConfigArgsDict']] snmp_config: SNMP configuration for this switch
+        :param pulumi.Input[Union['SwitchStpConfigArgs', 'SwitchStpConfigArgsDict']] stp_config: Spanning Tree Protocol configuration for this switch
+        :param pulumi.Input[Union['SwitchSwitchMgmtArgs', 'SwitchSwitchMgmtArgsDict']] switch_mgmt: Management-plane settings for this switch
         :param pulumi.Input[_builtins.bool] use_router_id_as_source_ip: Whether to use it for snmp / syslog / tacplus / radius
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
-        :param pulumi.Input[Union['SwitchVirtualChassisArgs', 'SwitchVirtualChassisArgsDict']] virtual_chassis: Required for preprovisioned Virtual Chassis
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchVrfInstancesArgs', 'SwitchVrfInstancesArgsDict']]]] vrf_instances: Property key is the network name
-        :param pulumi.Input[Union['SwitchVrrpConfigArgs', 'SwitchVrrpConfigArgsDict']] vrrp_config: Junos VRRP config
-        :param pulumi.Input[_builtins.float] x: X in pixel
-        :param pulumi.Input[_builtins.float] y: Y in pixel
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Variable values that override site variables for this switch
+        :param pulumi.Input[Union['SwitchVirtualChassisArgs', 'SwitchVirtualChassisArgsDict']] virtual_chassis: Virtual Chassis membership and provisioning settings for this switch
+        :param pulumi.Input[Union['SwitchVrfConfigArgs', 'SwitchVrfConfigArgsDict']] vrf_config: VRF configuration applied to this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchVrfInstancesArgs', 'SwitchVrfInstancesArgsDict']]]] vrf_instances: VRF instances configured on this switch
+        :param pulumi.Input[Union['SwitchVrrpConfigArgs', 'SwitchVrrpConfigArgsDict']] vrrp_config: VRRP configuration applied to this switch
+        :param pulumi.Input[_builtins.float] x: Horizontal map position of the switch, in pixels
+        :param pulumi.Input[_builtins.float] y: Vertical map position of the switch, in pixels
         """
         ...
     @overload
@@ -1933,46 +2056,61 @@ class Switch(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchAclTagsArgs', 'SwitchAclTagsArgsDict']]]] acl_tags: ACL Tags to identify traffic source or destination. Key name is the tag name
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SwitchAclPolicyArgs', 'SwitchAclPolicyArgsDict']]]] acl_policies: ACL policies applied to traffic handled by this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchAclTagsArgs', 'SwitchAclTagsArgsDict']]]] acl_tags: ACL tags used by switch access policies
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: Additional CLI configuration commands to apply to this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchBgpConfigArgs', 'SwitchBgpConfigArgsDict']]]] bgp_config: BGP routing configuration for this switch. Property key is the BGP session name
         :param pulumi.Input[_builtins.str] default_port_usage: Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+        :param pulumi.Input[Union['SwitchDhcpSnoopingArgs', 'SwitchDhcpSnoopingArgsDict']] dhcp_snooping: DHCP snooping configuration for this switch
+        :param pulumi.Input[Union['SwitchDhcpdConfigArgs', 'SwitchDhcpdConfigArgsDict']] dhcpd_config: DHCP server configuration served by this switch
         :param pulumi.Input[_builtins.bool] disable_auto_config: This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchExtraRoutesArgs', 'SwitchExtraRoutesArgsDict']]]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8")
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchExtraRoutes6Args', 'SwitchExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
-        :param pulumi.Input[Union['SwitchIpConfigArgs', 'SwitchIpConfigArgsDict']] ip_config: Junos IP Config
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchLocalPortConfigArgs', 'SwitchLocalPortConfigArgsDict']]]] local_port_config: Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g. "ge-0/0/0-10")
-        :param pulumi.Input[_builtins.str] mac: Device MAC address
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: DNS servers configured for this switch
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: DNS search suffixes configured for this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchExtraRoutesArgs', 'SwitchExtraRoutesArgsDict']]]] extra_routes: Additional IPv4 routes configured on this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchExtraRoutes6Args', 'SwitchExtraRoutes6ArgsDict']]]] extra_routes6: Additional IPv6 routes configured on this switch
+        :param pulumi.Input[_builtins.str] image1_url: First custom image URL associated with the switch
+        :param pulumi.Input[_builtins.str] image2_url: Second custom image URL associated with the switch
+        :param pulumi.Input[_builtins.str] image3_url: Third custom image URL associated with the switch
+        :param pulumi.Input[Union['SwitchIpConfigArgs', 'SwitchIpConfigArgsDict']] ip_config: Management IP addressing settings for this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchLocalPortConfigArgs', 'SwitchLocalPortConfigArgsDict']]]] local_port_config: Local port configuration settings for this switch
+        :param pulumi.Input[_builtins.str] mac: Switch MAC address used to identify the device
         :param pulumi.Input[_builtins.bool] managed: An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist. Deprecated in favour of mist_configured, which is more intuitive and can be used for both adopted and claimed devices.
         :param pulumi.Input[_builtins.str] map_id: Map where the device belongs to
         :param pulumi.Input[_builtins.bool] mist_configured: whether the device can be configured by Mist or not. This deprecates `managed` (for adopted device) and `disable_auto_config` for claimed device)
-        :param pulumi.Input[Union['SwitchMistNacArgs', 'SwitchMistNacArgsDict']] mist_nac: Enable mist_nac to use RadSec
-        :param pulumi.Input[_builtins.str] model: Device Model
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchNetworksArgs', 'SwitchNetworksArgsDict']]]] networks: Property key is network name
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
-        :param pulumi.Input[Union['SwitchOobIpConfigArgs', 'SwitchOobIpConfigArgsDict']] oob_ip_config: Switch OOB IP Config:
-                 - If HA configuration: key parameter will be nodeX (eg: node1)
-                 - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOspfAreasArgs', 'SwitchOspfAreasArgsDict']]]] ospf_areas: Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+        :param pulumi.Input[Union['SwitchMistNacArgs', 'SwitchMistNacArgsDict']] mist_nac: Mist NAC settings applied to this switch
+        :param pulumi.Input[_builtins.str] model: Switch model reported for the device
+        :param pulumi.Input[_builtins.str] name: Friendly display name assigned to the switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchNetworksArgs', 'SwitchNetworksArgsDict']]]] networks: Layer 3 networks configured for use by this switch
+        :param pulumi.Input[_builtins.str] notes: Free-form administrative notes for this switch
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: NTP servers used by this switch
+        :param pulumi.Input[Union['SwitchOobIpConfigArgs', 'SwitchOobIpConfigArgsDict']] oob_ip_config: Out-of-band management IP configuration for this switch
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOspfAreasArgs', 'SwitchOspfAreasArgsDict']]]] ospf_areas: OSPF area configuration for this switch
+        :param pulumi.Input[Union['SwitchOspfConfigArgs', 'SwitchOspfConfigArgsDict']] ospf_config: OSPF routing configuration for this switch
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOtherIpConfigsArgs', 'SwitchOtherIpConfigsArgsDict']]]] other_ip_configs: Property key is the network name. Defines the additional IP Addresses configured on the device.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigArgs', 'SwitchPortConfigArgsDict']]]] port_config: Property key is the port name or range (e.g. "ge-0/0/0-10")
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigOverwriteArgs', 'SwitchPortConfigOverwriteArgsDict']]]] port_config_overwrite: Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the port_usage without having to create a new port_usage.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict']]]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortUsagesArgs', 'SwitchPortUsagesArgsDict']]]] port_usages: Property key is the port usage name. Defines the profiles of port configuration configured on the switch
-        :param pulumi.Input[Union['SwitchRadiusConfigArgs', 'SwitchRadiusConfigArgsDict']] radius_config: Junos Radius config
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigArgs', 'SwitchPortConfigArgsDict']]]] port_config: Per-port wired configuration for this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigOverwriteArgs', 'SwitchPortConfigOverwriteArgsDict']]]] port_config_overwrite: Per-port overrides for switch port usage attributes
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict']]]] port_mirroring: Port mirroring configuration for this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortUsagesArgs', 'SwitchPortUsagesArgsDict']]]] port_usages: Reusable switch port usage profiles available on this switch
+        :param pulumi.Input[Union['SwitchRadiusConfigArgs', 'SwitchRadiusConfigArgsDict']] radius_config: RADIUS authentication and accounting settings for this switch
+        :param pulumi.Input[Union['SwitchRemoteSyslogArgs', 'SwitchRemoteSyslogArgsDict']] remote_syslog: Remote syslog settings for this switch
+        :param pulumi.Input[_builtins.str] role: Deployment role label for this switch
         :param pulumi.Input[_builtins.str] router_id: Used for OSPF / BGP / EVPN
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchRoutingPoliciesArgs', 'SwitchRoutingPoliciesArgsDict']]]] routing_policies: Property key is the routing policy name
-        :param pulumi.Input[_builtins.str] serial: Device Serial
-        :param pulumi.Input[Union['SwitchSwitchMgmtArgs', 'SwitchSwitchMgmtArgsDict']] switch_mgmt: Switch Management settings
-        :param pulumi.Input[_builtins.str] type: Device Type. enum: `switch`
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchRoutingPoliciesArgs', 'SwitchRoutingPoliciesArgsDict']]]] routing_policies: Routing policies applied by this switch
+        :param pulumi.Input[_builtins.str] serial: Manufacturer serial number for the switch
+        :param pulumi.Input[_builtins.str] site_id: Site where this switch is assigned
+        :param pulumi.Input[Union['SwitchSnmpConfigArgs', 'SwitchSnmpConfigArgsDict']] snmp_config: SNMP configuration for this switch
+        :param pulumi.Input[Union['SwitchStpConfigArgs', 'SwitchStpConfigArgsDict']] stp_config: Spanning Tree Protocol configuration for this switch
+        :param pulumi.Input[Union['SwitchSwitchMgmtArgs', 'SwitchSwitchMgmtArgsDict']] switch_mgmt: Management-plane settings for this switch
+        :param pulumi.Input[_builtins.str] type: Device type discriminator for switch records
         :param pulumi.Input[_builtins.bool] use_router_id_as_source_ip: Whether to use it for snmp / syslog / tacplus / radius
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
-        :param pulumi.Input[Union['SwitchVirtualChassisArgs', 'SwitchVirtualChassisArgsDict']] virtual_chassis: Required for preprovisioned Virtual Chassis
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchVrfInstancesArgs', 'SwitchVrfInstancesArgsDict']]]] vrf_instances: Property key is the network name
-        :param pulumi.Input[Union['SwitchVrrpConfigArgs', 'SwitchVrrpConfigArgsDict']] vrrp_config: Junos VRRP config
-        :param pulumi.Input[_builtins.float] x: X in pixel
-        :param pulumi.Input[_builtins.float] y: Y in pixel
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Variable values that override site variables for this switch
+        :param pulumi.Input[Union['SwitchVirtualChassisArgs', 'SwitchVirtualChassisArgsDict']] virtual_chassis: Virtual Chassis membership and provisioning settings for this switch
+        :param pulumi.Input[Union['SwitchVrfConfigArgs', 'SwitchVrfConfigArgsDict']] vrf_config: VRF configuration applied to this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchVrfInstancesArgs', 'SwitchVrfInstancesArgsDict']]]] vrf_instances: VRF instances configured on this switch
+        :param pulumi.Input[Union['SwitchVrrpConfigArgs', 'SwitchVrrpConfigArgsDict']] vrrp_config: VRRP configuration applied to this switch
+        :param pulumi.Input[_builtins.float] x: Horizontal map position of the switch, in pixels
+        :param pulumi.Input[_builtins.float] y: Vertical map position of the switch, in pixels
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -2039,13 +2177,16 @@ class Switch(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="aclPolicies")
     def acl_policies(self) -> pulumi.Output[Optional[Sequence['outputs.SwitchAclPolicy']]]:
+        """
+        ACL policies applied to traffic handled by this switch
+        """
         return pulumi.get(self, "acl_policies")
 
     @_builtins.property
     @pulumi.getter(name="aclTags")
     def acl_tags(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.SwitchAclTags']]]:
         """
-        ACL Tags to identify traffic source or destination. Key name is the tag name
+        ACL tags used by switch access policies
         """
         return pulumi.get(self, "acl_tags")
 
@@ -2053,13 +2194,16 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter(name="additionalConfigCmds")
     def additional_config_cmds(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        Additional CLI configuration commands to apply to this switch
         """
         return pulumi.get(self, "additional_config_cmds")
 
     @_builtins.property
     @pulumi.getter(name="bgpConfig")
     def bgp_config(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.SwitchBgpConfig']]]:
+        """
+        BGP routing configuration for this switch. Property key is the BGP session name
+        """
         return pulumi.get(self, "bgp_config")
 
     @_builtins.property
@@ -2078,11 +2222,17 @@ class Switch(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="dhcpSnooping")
     def dhcp_snooping(self) -> pulumi.Output[Optional['outputs.SwitchDhcpSnooping']]:
+        """
+        DHCP snooping configuration for this switch
+        """
         return pulumi.get(self, "dhcp_snooping")
 
     @_builtins.property
     @pulumi.getter(name="dhcpdConfig")
     def dhcpd_config(self) -> pulumi.Output[Optional['outputs.SwitchDhcpdConfig']]:
+        """
+        DHCP server configuration served by this switch
+        """
         return pulumi.get(self, "dhcpd_config")
 
     @_builtins.property
@@ -2098,7 +2248,7 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter(name="dnsServers")
     def dns_servers(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        DNS servers configured for this switch
         """
         return pulumi.get(self, "dns_servers")
 
@@ -2106,7 +2256,7 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter(name="dnsSuffixes")
     def dns_suffixes(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        DNS search suffixes configured for this switch
         """
         return pulumi.get(self, "dns_suffixes")
 
@@ -2114,7 +2264,7 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter(name="extraRoutes")
     def extra_routes(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.SwitchExtraRoutes']]]:
         """
-        Property key is the destination CIDR (e.g. "10.0.0.0/8")
+        Additional IPv4 routes configured on this switch
         """
         return pulumi.get(self, "extra_routes")
 
@@ -2122,30 +2272,39 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter(name="extraRoutes6")
     def extra_routes6(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.SwitchExtraRoutes6']]]:
         """
-        Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+        Additional IPv6 routes configured on this switch
         """
         return pulumi.get(self, "extra_routes6")
 
     @_builtins.property
     @pulumi.getter(name="image1Url")
     def image1_url(self) -> pulumi.Output[_builtins.str]:
+        """
+        First custom image URL associated with the switch
+        """
         return pulumi.get(self, "image1_url")
 
     @_builtins.property
     @pulumi.getter(name="image2Url")
     def image2_url(self) -> pulumi.Output[_builtins.str]:
+        """
+        Second custom image URL associated with the switch
+        """
         return pulumi.get(self, "image2_url")
 
     @_builtins.property
     @pulumi.getter(name="image3Url")
     def image3_url(self) -> pulumi.Output[_builtins.str]:
+        """
+        Third custom image URL associated with the switch
+        """
         return pulumi.get(self, "image3_url")
 
     @_builtins.property
     @pulumi.getter(name="ipConfig")
     def ip_config(self) -> pulumi.Output[Optional['outputs.SwitchIpConfig']]:
         """
-        Junos IP Config
+        Management IP addressing settings for this switch
         """
         return pulumi.get(self, "ip_config")
 
@@ -2153,7 +2312,7 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter(name="localPortConfig")
     def local_port_config(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.SwitchLocalPortConfig']]]:
         """
-        Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g. "ge-0/0/0-10")
+        Local port configuration settings for this switch
         """
         return pulumi.get(self, "local_port_config")
 
@@ -2161,7 +2320,7 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter
     def mac(self) -> pulumi.Output[_builtins.str]:
         """
-        Device MAC address
+        Switch MAC address used to identify the device
         """
         return pulumi.get(self, "mac")
 
@@ -2194,7 +2353,7 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter(name="mistNac")
     def mist_nac(self) -> pulumi.Output[Optional['outputs.SwitchMistNac']]:
         """
-        Enable mist_nac to use RadSec
+        Mist NAC settings applied to this switch
         """
         return pulumi.get(self, "mist_nac")
 
@@ -2202,33 +2361,39 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter
     def model(self) -> pulumi.Output[_builtins.str]:
         """
-        Device Model
+        Switch model reported for the device
         """
         return pulumi.get(self, "model")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
+        """
+        Friendly display name assigned to the switch
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def networks(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.SwitchNetworks']]]:
         """
-        Property key is network name
+        Layer 3 networks configured for use by this switch
         """
         return pulumi.get(self, "networks")
 
     @_builtins.property
     @pulumi.getter
     def notes(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Free-form administrative notes for this switch
+        """
         return pulumi.get(self, "notes")
 
     @_builtins.property
     @pulumi.getter(name="ntpServers")
     def ntp_servers(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        List of NTP servers specific to this device. By default, those in Site Settings will be used
+        NTP servers used by this switch
         """
         return pulumi.get(self, "ntp_servers")
 
@@ -2236,28 +2401,32 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter(name="oobIpConfig")
     def oob_ip_config(self) -> pulumi.Output[Optional['outputs.SwitchOobIpConfig']]:
         """
-        Switch OOB IP Config:
-          - If HA configuration: key parameter will be nodeX (eg: node1)
-          - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
+        Out-of-band management IP configuration for this switch
         """
         return pulumi.get(self, "oob_ip_config")
 
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Organization that owns this switch
+        """
         return pulumi.get(self, "org_id")
 
     @_builtins.property
     @pulumi.getter(name="ospfAreas")
     def ospf_areas(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.SwitchOspfAreas']]]:
         """
-        Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+        OSPF area configuration for this switch
         """
         return pulumi.get(self, "ospf_areas")
 
     @_builtins.property
     @pulumi.getter(name="ospfConfig")
     def ospf_config(self) -> pulumi.Output[Optional['outputs.SwitchOspfConfig']]:
+        """
+        OSPF routing configuration for this switch
+        """
         return pulumi.get(self, "ospf_config")
 
     @_builtins.property
@@ -2272,7 +2441,7 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter(name="portConfig")
     def port_config(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.SwitchPortConfig']]]:
         """
-        Property key is the port name or range (e.g. "ge-0/0/0-10")
+        Per-port wired configuration for this switch
         """
         return pulumi.get(self, "port_config")
 
@@ -2280,7 +2449,7 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter(name="portConfigOverwrite")
     def port_config_overwrite(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.SwitchPortConfigOverwrite']]]:
         """
-        Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the port_usage without having to create a new port_usage.
+        Per-port overrides for switch port usage attributes
         """
         return pulumi.get(self, "port_config_overwrite")
 
@@ -2288,7 +2457,7 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter(name="portMirroring")
     def port_mirroring(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.SwitchPortMirroring']]]:
         """
-        Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+        Port mirroring configuration for this switch
         """
         return pulumi.get(self, "port_mirroring")
 
@@ -2296,7 +2465,7 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter(name="portUsages")
     def port_usages(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.SwitchPortUsages']]]:
         """
-        Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+        Reusable switch port usage profiles available on this switch
         """
         return pulumi.get(self, "port_usages")
 
@@ -2304,18 +2473,24 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter(name="radiusConfig")
     def radius_config(self) -> pulumi.Output[Optional['outputs.SwitchRadiusConfig']]:
         """
-        Junos Radius config
+        RADIUS authentication and accounting settings for this switch
         """
         return pulumi.get(self, "radius_config")
 
     @_builtins.property
     @pulumi.getter(name="remoteSyslog")
     def remote_syslog(self) -> pulumi.Output[Optional['outputs.SwitchRemoteSyslog']]:
+        """
+        Remote syslog settings for this switch
+        """
         return pulumi.get(self, "remote_syslog")
 
     @_builtins.property
     @pulumi.getter
     def role(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Deployment role label for this switch
+        """
         return pulumi.get(self, "role")
 
     @_builtins.property
@@ -2330,7 +2505,7 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter(name="routingPolicies")
     def routing_policies(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.SwitchRoutingPolicies']]]:
         """
-        Property key is the routing policy name
+        Routing policies applied by this switch
         """
         return pulumi.get(self, "routing_policies")
 
@@ -2338,30 +2513,39 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter
     def serial(self) -> pulumi.Output[_builtins.str]:
         """
-        Device Serial
+        Manufacturer serial number for the switch
         """
         return pulumi.get(self, "serial")
 
     @_builtins.property
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Site where this switch is assigned
+        """
         return pulumi.get(self, "site_id")
 
     @_builtins.property
     @pulumi.getter(name="snmpConfig")
     def snmp_config(self) -> pulumi.Output[Optional['outputs.SwitchSnmpConfig']]:
+        """
+        SNMP configuration for this switch
+        """
         return pulumi.get(self, "snmp_config")
 
     @_builtins.property
     @pulumi.getter(name="stpConfig")
     def stp_config(self) -> pulumi.Output[Optional['outputs.SwitchStpConfig']]:
+        """
+        Spanning Tree Protocol configuration for this switch
+        """
         return pulumi.get(self, "stp_config")
 
     @_builtins.property
     @pulumi.getter(name="switchMgmt")
     def switch_mgmt(self) -> pulumi.Output[Optional['outputs.SwitchSwitchMgmt']]:
         """
-        Switch Management settings
+        Management-plane settings for this switch
         """
         return pulumi.get(self, "switch_mgmt")
 
@@ -2369,7 +2553,7 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        Device Type. enum: `switch`
+        Device type discriminator for switch records
         """
         return pulumi.get(self, "type")
 
@@ -2385,7 +2569,7 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter
     def vars(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
-        Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        Variable values that override site variables for this switch
         """
         return pulumi.get(self, "vars")
 
@@ -2393,20 +2577,23 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter(name="virtualChassis")
     def virtual_chassis(self) -> pulumi.Output[Optional['outputs.SwitchVirtualChassis']]:
         """
-        Required for preprovisioned Virtual Chassis
+        Virtual Chassis membership and provisioning settings for this switch
         """
         return pulumi.get(self, "virtual_chassis")
 
     @_builtins.property
     @pulumi.getter(name="vrfConfig")
     def vrf_config(self) -> pulumi.Output[Optional['outputs.SwitchVrfConfig']]:
+        """
+        VRF configuration applied to this switch
+        """
         return pulumi.get(self, "vrf_config")
 
     @_builtins.property
     @pulumi.getter(name="vrfInstances")
     def vrf_instances(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.SwitchVrfInstances']]]:
         """
-        Property key is the network name
+        VRF instances configured on this switch
         """
         return pulumi.get(self, "vrf_instances")
 
@@ -2414,7 +2601,7 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter(name="vrrpConfig")
     def vrrp_config(self) -> pulumi.Output[Optional['outputs.SwitchVrrpConfig']]:
         """
-        Junos VRRP config
+        VRRP configuration applied to this switch
         """
         return pulumi.get(self, "vrrp_config")
 
@@ -2422,7 +2609,7 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter
     def x(self) -> pulumi.Output[Optional[_builtins.float]]:
         """
-        X in pixel
+        Horizontal map position of the switch, in pixels
         """
         return pulumi.get(self, "x")
 
@@ -2430,7 +2617,7 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter
     def y(self) -> pulumi.Output[Optional[_builtins.float]]:
         """
-        Y in pixel
+        Vertical map position of the switch, in pixels
         """
         return pulumi.get(self, "y")
 

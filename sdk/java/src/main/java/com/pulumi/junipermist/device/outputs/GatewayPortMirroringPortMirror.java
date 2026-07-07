@@ -13,25 +13,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GatewayPortMirroringPortMirror {
+    /**
+     * @return Packet family used for this port mirroring rule
+     * 
+     */
     private @Nullable String familyType;
+    /**
+     * @return Source gateway port IDs whose ingress traffic is mirrored
+     * 
+     */
     private @Nullable List<String> ingressPortIds;
+    /**
+     * @return Destination gateway port ID that receives mirrored traffic
+     * 
+     */
     private @Nullable String outputPortId;
+    /**
+     * @return Sampling rate applied to mirrored traffic
+     * 
+     */
     private @Nullable Integer rate;
+    /**
+     * @return Number of bytes copied from each mirrored packet
+     * 
+     */
     private @Nullable Integer runLength;
 
     private GatewayPortMirroringPortMirror() {}
+    /**
+     * @return Packet family used for this port mirroring rule
+     * 
+     */
     public Optional<String> familyType() {
         return Optional.ofNullable(this.familyType);
     }
+    /**
+     * @return Source gateway port IDs whose ingress traffic is mirrored
+     * 
+     */
     public List<String> ingressPortIds() {
         return this.ingressPortIds == null ? List.of() : this.ingressPortIds;
     }
+    /**
+     * @return Destination gateway port ID that receives mirrored traffic
+     * 
+     */
     public Optional<String> outputPortId() {
         return Optional.ofNullable(this.outputPortId);
     }
+    /**
+     * @return Sampling rate applied to mirrored traffic
+     * 
+     */
     public Optional<Integer> rate() {
         return Optional.ofNullable(this.rate);
     }
+    /**
+     * @return Number of bytes copied from each mirrored packet
+     * 
+     */
     public Optional<Integer> runLength() {
         return Optional.ofNullable(this.runLength);
     }

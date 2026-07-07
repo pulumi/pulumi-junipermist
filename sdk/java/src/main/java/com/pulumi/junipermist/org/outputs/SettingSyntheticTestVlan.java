@@ -14,6 +14,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingSyntheticTestVlan {
     /**
+     * @return Deprecated custom URLs tested by VLAN-based synthetic probes
+     * 
      * @deprecated
      * This attribute is deprecated.
      * 
@@ -26,14 +28,20 @@ public final class SettingSyntheticTestVlan {
      */
     private @Nullable Boolean disabled;
     /**
-     * @return app name comes from `customProbes` above or /const/synthetic_test_probes
+     * @return Synthetic probe names to run for the listed VLANs
      * 
      */
     private @Nullable List<String> probes;
+    /**
+     * @return VLAN identifiers where synthetic probes are run
+     * 
+     */
     private @Nullable List<String> vlanIds;
 
     private SettingSyntheticTestVlan() {}
     /**
+     * @return Deprecated custom URLs tested by VLAN-based synthetic probes
+     * 
      * @deprecated
      * This attribute is deprecated.
      * 
@@ -50,12 +58,16 @@ public final class SettingSyntheticTestVlan {
         return Optional.ofNullable(this.disabled);
     }
     /**
-     * @return app name comes from `customProbes` above or /const/synthetic_test_probes
+     * @return Synthetic probe names to run for the listed VLANs
      * 
      */
     public List<String> probes() {
         return this.probes == null ? List.of() : this.probes;
     }
+    /**
+     * @return VLAN identifiers where synthetic probes are run
+     * 
+     */
     public List<String> vlanIds() {
         return this.vlanIds == null ? List.of() : this.vlanIds;
     }

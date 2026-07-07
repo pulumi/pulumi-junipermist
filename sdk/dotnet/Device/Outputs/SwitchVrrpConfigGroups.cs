@@ -17,6 +17,9 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// If `True`, allow preemption (a backup router can preempt a primary router)
         /// </summary>
         public readonly bool? Preempt;
+        /// <summary>
+        /// VRRP priority for this router in the group
+        /// </summary>
         public readonly int? Priority;
 
         [OutputConstructor]

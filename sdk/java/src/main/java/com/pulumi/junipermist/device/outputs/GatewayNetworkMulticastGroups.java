@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewayNetworkMulticastGroups {
     /**
-     * @return RP (rendezvous point) IP Address
+     * @return RP (rendezvous point) IP address
      * 
      */
     private @Nullable String rpIp;
 
     private GatewayNetworkMulticastGroups() {}
     /**
-     * @return RP (rendezvous point) IP Address
+     * @return RP (rendezvous point) IP address
      * 
      */
     public Optional<String> rpIp() {

@@ -133,53 +133,63 @@ import (
 type Gatewaytemplate struct {
 	pulumi.CustomResourceState
 
-	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
-	AdditionalConfigCmds pulumi.StringArrayOutput            `pulumi:"additionalConfigCmds"`
-	BgpConfig            GatewaytemplateBgpConfigMapOutput   `pulumi:"bgpConfig"`
-	DhcpdConfig          GatewaytemplateDhcpdConfigPtrOutput `pulumi:"dhcpdConfig"`
-	DnsOverride          pulumi.BoolPtrOutput                `pulumi:"dnsOverride"`
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// Additional CLI configuration commands provided by this gateway template
+	AdditionalConfigCmds pulumi.StringArrayOutput `pulumi:"additionalConfigCmds"`
+	// BGP routing defaults for this gateway template. Property key is the BGP session name
+	BgpConfig GatewaytemplateBgpConfigMapOutput `pulumi:"bgpConfig"`
+	// DHCP server defaults provided by this gateway template
+	DhcpdConfig GatewaytemplateDhcpdConfigPtrOutput `pulumi:"dhcpdConfig"`
+	// Whether DNS server and suffix settings in this template override inherited values
+	DnsOverride pulumi.BoolPtrOutput `pulumi:"dnsOverride"`
+	// DNS servers provided by this gateway template
 	DnsServers pulumi.StringArrayOutput `pulumi:"dnsServers"`
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// DNS search suffixes provided by this gateway template
 	DnsSuffixes pulumi.StringArrayOutput `pulumi:"dnsSuffixes"`
-	// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
+	// Additional IPv4 route defaults in this gateway template
 	ExtraRoutes GatewaytemplateExtraRoutesMapOutput `pulumi:"extraRoutes"`
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+	// Additional IPv6 route defaults in this gateway template
 	ExtraRoutes6 GatewaytemplateExtraRoutes6MapOutput `pulumi:"extraRoutes6"`
-	// Gateway Management settings
+	// Management-plane defaults provided by this gateway template
 	GatewayMgmt GatewaytemplateGatewayMgmtPtrOutput `pulumi:"gatewayMgmt"`
-	// Property key is the profile name
+	// Intrusion detection and prevention profile defaults in this gateway template
 	IdpProfiles GatewaytemplateIdpProfilesMapOutput `pulumi:"idpProfiles"`
-	// Property key is the network name
-	IpConfigs   GatewaytemplateIpConfigsMapOutput `pulumi:"ipConfigs"`
-	Name        pulumi.StringOutput               `pulumi:"name"`
-	Networks    GatewaytemplateNetworkArrayOutput `pulumi:"networks"`
-	NtpOverride pulumi.BoolPtrOutput              `pulumi:"ntpOverride"`
-	// List of NTP servers specific to this device. By default, those in Site Settings will be used
+	// Gateway interface IP configuration defaults by network name
+	IpConfigs GatewaytemplateIpConfigsMapOutput `pulumi:"ipConfigs"`
+	// Display name of the gateway template
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Layer 3 networks configured by this gateway template
+	Networks GatewaytemplateNetworkArrayOutput `pulumi:"networks"`
+	// Whether NTP servers in this template override inherited values
+	NtpOverride pulumi.BoolPtrOutput `pulumi:"ntpOverride"`
+	// NTP servers provided by this gateway template
 	NtpServers pulumi.StringArrayOutput `pulumi:"ntpServers"`
-	// Out-of-band (vme/em0/fxp0) IP config
+	// Out-of-band management IP defaults in this gateway template
 	OobIpConfig GatewaytemplateOobIpConfigOutput `pulumi:"oobIpConfig"`
-	OrgId       pulumi.StringOutput              `pulumi:"orgId"`
+	// Organization that owns this gateway template
+	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// Property key is the path name
 	PathPreferences GatewaytemplatePathPreferencesMapOutput `pulumi:"pathPreferences"`
 	// Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e. "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
 	PortConfig GatewaytemplatePortConfigMapOutput `pulumi:"portConfig"`
 	// Auto assigned if not set
 	RouterId pulumi.StringPtrOutput `pulumi:"routerId"`
-	// Property key is the routing policy name
+	// Routing policy defaults applied by this gateway template
 	RoutingPolicies GatewaytemplateRoutingPoliciesMapOutput `pulumi:"routingPolicies"`
+	// Traffic service policy defaults enforced by this gateway template
 	ServicePolicies GatewaytemplateServicePolicyArrayOutput `pulumi:"servicePolicies"`
 	// additional CLI commands to append to the generated SSR config. **Note**: no check is done
 	SsrAdditionalConfigCmds pulumi.StringArrayOutput `pulumi:"ssrAdditionalConfigCmds"`
 	// Property key is the tunnel name
-	TunnelConfigs         GatewaytemplateTunnelConfigsMapOutput         `pulumi:"tunnelConfigs"`
+	TunnelConfigs GatewaytemplateTunnelConfigsMapOutput `pulumi:"tunnelConfigs"`
+	// Provider-specific tunnel options defined by this gateway template
 	TunnelProviderOptions GatewaytemplateTunnelProviderOptionsPtrOutput `pulumi:"tunnelProviderOptions"`
-	// enum: `spoke`, `standalone`
+	// Gateway template deployment type
 	Type pulumi.StringOutput `pulumi:"type"`
 	// When a service policy denies a app_category, what message to show in user's browser
-	UrlFilteringDenyMsg pulumi.StringPtrOutput            `pulumi:"urlFilteringDenyMsg"`
-	VrfConfig           GatewaytemplateVrfConfigPtrOutput `pulumi:"vrfConfig"`
-	// Property key is the network name
+	UrlFilteringDenyMsg pulumi.StringPtrOutput `pulumi:"urlFilteringDenyMsg"`
+	// VRF defaults applied by this gateway template
+	VrfConfig GatewaytemplateVrfConfigPtrOutput `pulumi:"vrfConfig"`
+	// VRF instances configured by this gateway template
 	VrfInstances GatewaytemplateVrfInstancesMapOutput `pulumi:"vrfInstances"`
 }
 
@@ -216,104 +226,124 @@ func GetGatewaytemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Gatewaytemplate resources.
 type gatewaytemplateState struct {
-	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
-	AdditionalConfigCmds []string                            `pulumi:"additionalConfigCmds"`
-	BgpConfig            map[string]GatewaytemplateBgpConfig `pulumi:"bgpConfig"`
-	DhcpdConfig          *GatewaytemplateDhcpdConfig         `pulumi:"dhcpdConfig"`
-	DnsOverride          *bool                               `pulumi:"dnsOverride"`
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// Additional CLI configuration commands provided by this gateway template
+	AdditionalConfigCmds []string `pulumi:"additionalConfigCmds"`
+	// BGP routing defaults for this gateway template. Property key is the BGP session name
+	BgpConfig map[string]GatewaytemplateBgpConfig `pulumi:"bgpConfig"`
+	// DHCP server defaults provided by this gateway template
+	DhcpdConfig *GatewaytemplateDhcpdConfig `pulumi:"dhcpdConfig"`
+	// Whether DNS server and suffix settings in this template override inherited values
+	DnsOverride *bool `pulumi:"dnsOverride"`
+	// DNS servers provided by this gateway template
 	DnsServers []string `pulumi:"dnsServers"`
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// DNS search suffixes provided by this gateway template
 	DnsSuffixes []string `pulumi:"dnsSuffixes"`
-	// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
+	// Additional IPv4 route defaults in this gateway template
 	ExtraRoutes map[string]GatewaytemplateExtraRoutes `pulumi:"extraRoutes"`
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+	// Additional IPv6 route defaults in this gateway template
 	ExtraRoutes6 map[string]GatewaytemplateExtraRoutes6 `pulumi:"extraRoutes6"`
-	// Gateway Management settings
+	// Management-plane defaults provided by this gateway template
 	GatewayMgmt *GatewaytemplateGatewayMgmt `pulumi:"gatewayMgmt"`
-	// Property key is the profile name
+	// Intrusion detection and prevention profile defaults in this gateway template
 	IdpProfiles map[string]GatewaytemplateIdpProfiles `pulumi:"idpProfiles"`
-	// Property key is the network name
-	IpConfigs   map[string]GatewaytemplateIpConfigs `pulumi:"ipConfigs"`
-	Name        *string                             `pulumi:"name"`
-	Networks    []GatewaytemplateNetwork            `pulumi:"networks"`
-	NtpOverride *bool                               `pulumi:"ntpOverride"`
-	// List of NTP servers specific to this device. By default, those in Site Settings will be used
+	// Gateway interface IP configuration defaults by network name
+	IpConfigs map[string]GatewaytemplateIpConfigs `pulumi:"ipConfigs"`
+	// Display name of the gateway template
+	Name *string `pulumi:"name"`
+	// Layer 3 networks configured by this gateway template
+	Networks []GatewaytemplateNetwork `pulumi:"networks"`
+	// Whether NTP servers in this template override inherited values
+	NtpOverride *bool `pulumi:"ntpOverride"`
+	// NTP servers provided by this gateway template
 	NtpServers []string `pulumi:"ntpServers"`
-	// Out-of-band (vme/em0/fxp0) IP config
+	// Out-of-band management IP defaults in this gateway template
 	OobIpConfig *GatewaytemplateOobIpConfig `pulumi:"oobIpConfig"`
-	OrgId       *string                     `pulumi:"orgId"`
+	// Organization that owns this gateway template
+	OrgId *string `pulumi:"orgId"`
 	// Property key is the path name
 	PathPreferences map[string]GatewaytemplatePathPreferences `pulumi:"pathPreferences"`
 	// Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e. "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
 	PortConfig map[string]GatewaytemplatePortConfig `pulumi:"portConfig"`
 	// Auto assigned if not set
 	RouterId *string `pulumi:"routerId"`
-	// Property key is the routing policy name
+	// Routing policy defaults applied by this gateway template
 	RoutingPolicies map[string]GatewaytemplateRoutingPolicies `pulumi:"routingPolicies"`
-	ServicePolicies []GatewaytemplateServicePolicy            `pulumi:"servicePolicies"`
+	// Traffic service policy defaults enforced by this gateway template
+	ServicePolicies []GatewaytemplateServicePolicy `pulumi:"servicePolicies"`
 	// additional CLI commands to append to the generated SSR config. **Note**: no check is done
 	SsrAdditionalConfigCmds []string `pulumi:"ssrAdditionalConfigCmds"`
 	// Property key is the tunnel name
-	TunnelConfigs         map[string]GatewaytemplateTunnelConfigs `pulumi:"tunnelConfigs"`
-	TunnelProviderOptions *GatewaytemplateTunnelProviderOptions   `pulumi:"tunnelProviderOptions"`
-	// enum: `spoke`, `standalone`
+	TunnelConfigs map[string]GatewaytemplateTunnelConfigs `pulumi:"tunnelConfigs"`
+	// Provider-specific tunnel options defined by this gateway template
+	TunnelProviderOptions *GatewaytemplateTunnelProviderOptions `pulumi:"tunnelProviderOptions"`
+	// Gateway template deployment type
 	Type *string `pulumi:"type"`
 	// When a service policy denies a app_category, what message to show in user's browser
-	UrlFilteringDenyMsg *string                   `pulumi:"urlFilteringDenyMsg"`
-	VrfConfig           *GatewaytemplateVrfConfig `pulumi:"vrfConfig"`
-	// Property key is the network name
+	UrlFilteringDenyMsg *string `pulumi:"urlFilteringDenyMsg"`
+	// VRF defaults applied by this gateway template
+	VrfConfig *GatewaytemplateVrfConfig `pulumi:"vrfConfig"`
+	// VRF instances configured by this gateway template
 	VrfInstances map[string]GatewaytemplateVrfInstances `pulumi:"vrfInstances"`
 }
 
 type GatewaytemplateState struct {
-	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
+	// Additional CLI configuration commands provided by this gateway template
 	AdditionalConfigCmds pulumi.StringArrayInput
-	BgpConfig            GatewaytemplateBgpConfigMapInput
-	DhcpdConfig          GatewaytemplateDhcpdConfigPtrInput
-	DnsOverride          pulumi.BoolPtrInput
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// BGP routing defaults for this gateway template. Property key is the BGP session name
+	BgpConfig GatewaytemplateBgpConfigMapInput
+	// DHCP server defaults provided by this gateway template
+	DhcpdConfig GatewaytemplateDhcpdConfigPtrInput
+	// Whether DNS server and suffix settings in this template override inherited values
+	DnsOverride pulumi.BoolPtrInput
+	// DNS servers provided by this gateway template
 	DnsServers pulumi.StringArrayInput
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// DNS search suffixes provided by this gateway template
 	DnsSuffixes pulumi.StringArrayInput
-	// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
+	// Additional IPv4 route defaults in this gateway template
 	ExtraRoutes GatewaytemplateExtraRoutesMapInput
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+	// Additional IPv6 route defaults in this gateway template
 	ExtraRoutes6 GatewaytemplateExtraRoutes6MapInput
-	// Gateway Management settings
+	// Management-plane defaults provided by this gateway template
 	GatewayMgmt GatewaytemplateGatewayMgmtPtrInput
-	// Property key is the profile name
+	// Intrusion detection and prevention profile defaults in this gateway template
 	IdpProfiles GatewaytemplateIdpProfilesMapInput
-	// Property key is the network name
-	IpConfigs   GatewaytemplateIpConfigsMapInput
-	Name        pulumi.StringPtrInput
-	Networks    GatewaytemplateNetworkArrayInput
+	// Gateway interface IP configuration defaults by network name
+	IpConfigs GatewaytemplateIpConfigsMapInput
+	// Display name of the gateway template
+	Name pulumi.StringPtrInput
+	// Layer 3 networks configured by this gateway template
+	Networks GatewaytemplateNetworkArrayInput
+	// Whether NTP servers in this template override inherited values
 	NtpOverride pulumi.BoolPtrInput
-	// List of NTP servers specific to this device. By default, those in Site Settings will be used
+	// NTP servers provided by this gateway template
 	NtpServers pulumi.StringArrayInput
-	// Out-of-band (vme/em0/fxp0) IP config
+	// Out-of-band management IP defaults in this gateway template
 	OobIpConfig GatewaytemplateOobIpConfigPtrInput
-	OrgId       pulumi.StringPtrInput
+	// Organization that owns this gateway template
+	OrgId pulumi.StringPtrInput
 	// Property key is the path name
 	PathPreferences GatewaytemplatePathPreferencesMapInput
 	// Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e. "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
 	PortConfig GatewaytemplatePortConfigMapInput
 	// Auto assigned if not set
 	RouterId pulumi.StringPtrInput
-	// Property key is the routing policy name
+	// Routing policy defaults applied by this gateway template
 	RoutingPolicies GatewaytemplateRoutingPoliciesMapInput
+	// Traffic service policy defaults enforced by this gateway template
 	ServicePolicies GatewaytemplateServicePolicyArrayInput
 	// additional CLI commands to append to the generated SSR config. **Note**: no check is done
 	SsrAdditionalConfigCmds pulumi.StringArrayInput
 	// Property key is the tunnel name
-	TunnelConfigs         GatewaytemplateTunnelConfigsMapInput
+	TunnelConfigs GatewaytemplateTunnelConfigsMapInput
+	// Provider-specific tunnel options defined by this gateway template
 	TunnelProviderOptions GatewaytemplateTunnelProviderOptionsPtrInput
-	// enum: `spoke`, `standalone`
+	// Gateway template deployment type
 	Type pulumi.StringPtrInput
 	// When a service policy denies a app_category, what message to show in user's browser
 	UrlFilteringDenyMsg pulumi.StringPtrInput
-	VrfConfig           GatewaytemplateVrfConfigPtrInput
-	// Property key is the network name
+	// VRF defaults applied by this gateway template
+	VrfConfig GatewaytemplateVrfConfigPtrInput
+	// VRF instances configured by this gateway template
 	VrfInstances GatewaytemplateVrfInstancesMapInput
 }
 
@@ -322,105 +352,125 @@ func (GatewaytemplateState) ElementType() reflect.Type {
 }
 
 type gatewaytemplateArgs struct {
-	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
-	AdditionalConfigCmds []string                            `pulumi:"additionalConfigCmds"`
-	BgpConfig            map[string]GatewaytemplateBgpConfig `pulumi:"bgpConfig"`
-	DhcpdConfig          *GatewaytemplateDhcpdConfig         `pulumi:"dhcpdConfig"`
-	DnsOverride          *bool                               `pulumi:"dnsOverride"`
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// Additional CLI configuration commands provided by this gateway template
+	AdditionalConfigCmds []string `pulumi:"additionalConfigCmds"`
+	// BGP routing defaults for this gateway template. Property key is the BGP session name
+	BgpConfig map[string]GatewaytemplateBgpConfig `pulumi:"bgpConfig"`
+	// DHCP server defaults provided by this gateway template
+	DhcpdConfig *GatewaytemplateDhcpdConfig `pulumi:"dhcpdConfig"`
+	// Whether DNS server and suffix settings in this template override inherited values
+	DnsOverride *bool `pulumi:"dnsOverride"`
+	// DNS servers provided by this gateway template
 	DnsServers []string `pulumi:"dnsServers"`
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// DNS search suffixes provided by this gateway template
 	DnsSuffixes []string `pulumi:"dnsSuffixes"`
-	// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
+	// Additional IPv4 route defaults in this gateway template
 	ExtraRoutes map[string]GatewaytemplateExtraRoutes `pulumi:"extraRoutes"`
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+	// Additional IPv6 route defaults in this gateway template
 	ExtraRoutes6 map[string]GatewaytemplateExtraRoutes6 `pulumi:"extraRoutes6"`
-	// Gateway Management settings
+	// Management-plane defaults provided by this gateway template
 	GatewayMgmt *GatewaytemplateGatewayMgmt `pulumi:"gatewayMgmt"`
-	// Property key is the profile name
+	// Intrusion detection and prevention profile defaults in this gateway template
 	IdpProfiles map[string]GatewaytemplateIdpProfiles `pulumi:"idpProfiles"`
-	// Property key is the network name
-	IpConfigs   map[string]GatewaytemplateIpConfigs `pulumi:"ipConfigs"`
-	Name        *string                             `pulumi:"name"`
-	Networks    []GatewaytemplateNetwork            `pulumi:"networks"`
-	NtpOverride *bool                               `pulumi:"ntpOverride"`
-	// List of NTP servers specific to this device. By default, those in Site Settings will be used
+	// Gateway interface IP configuration defaults by network name
+	IpConfigs map[string]GatewaytemplateIpConfigs `pulumi:"ipConfigs"`
+	// Display name of the gateway template
+	Name *string `pulumi:"name"`
+	// Layer 3 networks configured by this gateway template
+	Networks []GatewaytemplateNetwork `pulumi:"networks"`
+	// Whether NTP servers in this template override inherited values
+	NtpOverride *bool `pulumi:"ntpOverride"`
+	// NTP servers provided by this gateway template
 	NtpServers []string `pulumi:"ntpServers"`
-	// Out-of-band (vme/em0/fxp0) IP config
+	// Out-of-band management IP defaults in this gateway template
 	OobIpConfig *GatewaytemplateOobIpConfig `pulumi:"oobIpConfig"`
-	OrgId       string                      `pulumi:"orgId"`
+	// Organization that owns this gateway template
+	OrgId string `pulumi:"orgId"`
 	// Property key is the path name
 	PathPreferences map[string]GatewaytemplatePathPreferences `pulumi:"pathPreferences"`
 	// Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e. "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
 	PortConfig map[string]GatewaytemplatePortConfig `pulumi:"portConfig"`
 	// Auto assigned if not set
 	RouterId *string `pulumi:"routerId"`
-	// Property key is the routing policy name
+	// Routing policy defaults applied by this gateway template
 	RoutingPolicies map[string]GatewaytemplateRoutingPolicies `pulumi:"routingPolicies"`
-	ServicePolicies []GatewaytemplateServicePolicy            `pulumi:"servicePolicies"`
+	// Traffic service policy defaults enforced by this gateway template
+	ServicePolicies []GatewaytemplateServicePolicy `pulumi:"servicePolicies"`
 	// additional CLI commands to append to the generated SSR config. **Note**: no check is done
 	SsrAdditionalConfigCmds []string `pulumi:"ssrAdditionalConfigCmds"`
 	// Property key is the tunnel name
-	TunnelConfigs         map[string]GatewaytemplateTunnelConfigs `pulumi:"tunnelConfigs"`
-	TunnelProviderOptions *GatewaytemplateTunnelProviderOptions   `pulumi:"tunnelProviderOptions"`
-	// enum: `spoke`, `standalone`
+	TunnelConfigs map[string]GatewaytemplateTunnelConfigs `pulumi:"tunnelConfigs"`
+	// Provider-specific tunnel options defined by this gateway template
+	TunnelProviderOptions *GatewaytemplateTunnelProviderOptions `pulumi:"tunnelProviderOptions"`
+	// Gateway template deployment type
 	Type *string `pulumi:"type"`
 	// When a service policy denies a app_category, what message to show in user's browser
-	UrlFilteringDenyMsg *string                   `pulumi:"urlFilteringDenyMsg"`
-	VrfConfig           *GatewaytemplateVrfConfig `pulumi:"vrfConfig"`
-	// Property key is the network name
+	UrlFilteringDenyMsg *string `pulumi:"urlFilteringDenyMsg"`
+	// VRF defaults applied by this gateway template
+	VrfConfig *GatewaytemplateVrfConfig `pulumi:"vrfConfig"`
+	// VRF instances configured by this gateway template
 	VrfInstances map[string]GatewaytemplateVrfInstances `pulumi:"vrfInstances"`
 }
 
 // The set of arguments for constructing a Gatewaytemplate resource.
 type GatewaytemplateArgs struct {
-	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
+	// Additional CLI configuration commands provided by this gateway template
 	AdditionalConfigCmds pulumi.StringArrayInput
-	BgpConfig            GatewaytemplateBgpConfigMapInput
-	DhcpdConfig          GatewaytemplateDhcpdConfigPtrInput
-	DnsOverride          pulumi.BoolPtrInput
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// BGP routing defaults for this gateway template. Property key is the BGP session name
+	BgpConfig GatewaytemplateBgpConfigMapInput
+	// DHCP server defaults provided by this gateway template
+	DhcpdConfig GatewaytemplateDhcpdConfigPtrInput
+	// Whether DNS server and suffix settings in this template override inherited values
+	DnsOverride pulumi.BoolPtrInput
+	// DNS servers provided by this gateway template
 	DnsServers pulumi.StringArrayInput
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// DNS search suffixes provided by this gateway template
 	DnsSuffixes pulumi.StringArrayInput
-	// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
+	// Additional IPv4 route defaults in this gateway template
 	ExtraRoutes GatewaytemplateExtraRoutesMapInput
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+	// Additional IPv6 route defaults in this gateway template
 	ExtraRoutes6 GatewaytemplateExtraRoutes6MapInput
-	// Gateway Management settings
+	// Management-plane defaults provided by this gateway template
 	GatewayMgmt GatewaytemplateGatewayMgmtPtrInput
-	// Property key is the profile name
+	// Intrusion detection and prevention profile defaults in this gateway template
 	IdpProfiles GatewaytemplateIdpProfilesMapInput
-	// Property key is the network name
-	IpConfigs   GatewaytemplateIpConfigsMapInput
-	Name        pulumi.StringPtrInput
-	Networks    GatewaytemplateNetworkArrayInput
+	// Gateway interface IP configuration defaults by network name
+	IpConfigs GatewaytemplateIpConfigsMapInput
+	// Display name of the gateway template
+	Name pulumi.StringPtrInput
+	// Layer 3 networks configured by this gateway template
+	Networks GatewaytemplateNetworkArrayInput
+	// Whether NTP servers in this template override inherited values
 	NtpOverride pulumi.BoolPtrInput
-	// List of NTP servers specific to this device. By default, those in Site Settings will be used
+	// NTP servers provided by this gateway template
 	NtpServers pulumi.StringArrayInput
-	// Out-of-band (vme/em0/fxp0) IP config
+	// Out-of-band management IP defaults in this gateway template
 	OobIpConfig GatewaytemplateOobIpConfigPtrInput
-	OrgId       pulumi.StringInput
+	// Organization that owns this gateway template
+	OrgId pulumi.StringInput
 	// Property key is the path name
 	PathPreferences GatewaytemplatePathPreferencesMapInput
 	// Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e. "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
 	PortConfig GatewaytemplatePortConfigMapInput
 	// Auto assigned if not set
 	RouterId pulumi.StringPtrInput
-	// Property key is the routing policy name
+	// Routing policy defaults applied by this gateway template
 	RoutingPolicies GatewaytemplateRoutingPoliciesMapInput
+	// Traffic service policy defaults enforced by this gateway template
 	ServicePolicies GatewaytemplateServicePolicyArrayInput
 	// additional CLI commands to append to the generated SSR config. **Note**: no check is done
 	SsrAdditionalConfigCmds pulumi.StringArrayInput
 	// Property key is the tunnel name
-	TunnelConfigs         GatewaytemplateTunnelConfigsMapInput
+	TunnelConfigs GatewaytemplateTunnelConfigsMapInput
+	// Provider-specific tunnel options defined by this gateway template
 	TunnelProviderOptions GatewaytemplateTunnelProviderOptionsPtrInput
-	// enum: `spoke`, `standalone`
+	// Gateway template deployment type
 	Type pulumi.StringPtrInput
 	// When a service policy denies a app_category, what message to show in user's browser
 	UrlFilteringDenyMsg pulumi.StringPtrInput
-	VrfConfig           GatewaytemplateVrfConfigPtrInput
-	// Property key is the network name
+	// VRF defaults applied by this gateway template
+	VrfConfig GatewaytemplateVrfConfigPtrInput
+	// VRF instances configured by this gateway template
 	VrfInstances GatewaytemplateVrfInstancesMapInput
 }
 
@@ -511,80 +561,87 @@ func (o GatewaytemplateOutput) ToGatewaytemplateOutputWithContext(ctx context.Co
 	return o
 }
 
-// additional CLI commands to append to the generated Junos config. **Note**: no check is done
+// Additional CLI configuration commands provided by this gateway template
 func (o GatewaytemplateOutput) AdditionalConfigCmds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) pulumi.StringArrayOutput { return v.AdditionalConfigCmds }).(pulumi.StringArrayOutput)
 }
 
+// BGP routing defaults for this gateway template. Property key is the BGP session name
 func (o GatewaytemplateOutput) BgpConfig() GatewaytemplateBgpConfigMapOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) GatewaytemplateBgpConfigMapOutput { return v.BgpConfig }).(GatewaytemplateBgpConfigMapOutput)
 }
 
+// DHCP server defaults provided by this gateway template
 func (o GatewaytemplateOutput) DhcpdConfig() GatewaytemplateDhcpdConfigPtrOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) GatewaytemplateDhcpdConfigPtrOutput { return v.DhcpdConfig }).(GatewaytemplateDhcpdConfigPtrOutput)
 }
 
+// Whether DNS server and suffix settings in this template override inherited values
 func (o GatewaytemplateOutput) DnsOverride() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) pulumi.BoolPtrOutput { return v.DnsOverride }).(pulumi.BoolPtrOutput)
 }
 
-// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+// DNS servers provided by this gateway template
 func (o GatewaytemplateOutput) DnsServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) pulumi.StringArrayOutput { return v.DnsServers }).(pulumi.StringArrayOutput)
 }
 
-// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+// DNS search suffixes provided by this gateway template
 func (o GatewaytemplateOutput) DnsSuffixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) pulumi.StringArrayOutput { return v.DnsSuffixes }).(pulumi.StringArrayOutput)
 }
 
-// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
+// Additional IPv4 route defaults in this gateway template
 func (o GatewaytemplateOutput) ExtraRoutes() GatewaytemplateExtraRoutesMapOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) GatewaytemplateExtraRoutesMapOutput { return v.ExtraRoutes }).(GatewaytemplateExtraRoutesMapOutput)
 }
 
-// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+// Additional IPv6 route defaults in this gateway template
 func (o GatewaytemplateOutput) ExtraRoutes6() GatewaytemplateExtraRoutes6MapOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) GatewaytemplateExtraRoutes6MapOutput { return v.ExtraRoutes6 }).(GatewaytemplateExtraRoutes6MapOutput)
 }
 
-// Gateway Management settings
+// Management-plane defaults provided by this gateway template
 func (o GatewaytemplateOutput) GatewayMgmt() GatewaytemplateGatewayMgmtPtrOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) GatewaytemplateGatewayMgmtPtrOutput { return v.GatewayMgmt }).(GatewaytemplateGatewayMgmtPtrOutput)
 }
 
-// Property key is the profile name
+// Intrusion detection and prevention profile defaults in this gateway template
 func (o GatewaytemplateOutput) IdpProfiles() GatewaytemplateIdpProfilesMapOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) GatewaytemplateIdpProfilesMapOutput { return v.IdpProfiles }).(GatewaytemplateIdpProfilesMapOutput)
 }
 
-// Property key is the network name
+// Gateway interface IP configuration defaults by network name
 func (o GatewaytemplateOutput) IpConfigs() GatewaytemplateIpConfigsMapOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) GatewaytemplateIpConfigsMapOutput { return v.IpConfigs }).(GatewaytemplateIpConfigsMapOutput)
 }
 
+// Display name of the gateway template
 func (o GatewaytemplateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Layer 3 networks configured by this gateway template
 func (o GatewaytemplateOutput) Networks() GatewaytemplateNetworkArrayOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) GatewaytemplateNetworkArrayOutput { return v.Networks }).(GatewaytemplateNetworkArrayOutput)
 }
 
+// Whether NTP servers in this template override inherited values
 func (o GatewaytemplateOutput) NtpOverride() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) pulumi.BoolPtrOutput { return v.NtpOverride }).(pulumi.BoolPtrOutput)
 }
 
-// List of NTP servers specific to this device. By default, those in Site Settings will be used
+// NTP servers provided by this gateway template
 func (o GatewaytemplateOutput) NtpServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) pulumi.StringArrayOutput { return v.NtpServers }).(pulumi.StringArrayOutput)
 }
 
-// Out-of-band (vme/em0/fxp0) IP config
+// Out-of-band management IP defaults in this gateway template
 func (o GatewaytemplateOutput) OobIpConfig() GatewaytemplateOobIpConfigOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) GatewaytemplateOobIpConfigOutput { return v.OobIpConfig }).(GatewaytemplateOobIpConfigOutput)
 }
 
+// Organization that owns this gateway template
 func (o GatewaytemplateOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
@@ -604,11 +661,12 @@ func (o GatewaytemplateOutput) RouterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) pulumi.StringPtrOutput { return v.RouterId }).(pulumi.StringPtrOutput)
 }
 
-// Property key is the routing policy name
+// Routing policy defaults applied by this gateway template
 func (o GatewaytemplateOutput) RoutingPolicies() GatewaytemplateRoutingPoliciesMapOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) GatewaytemplateRoutingPoliciesMapOutput { return v.RoutingPolicies }).(GatewaytemplateRoutingPoliciesMapOutput)
 }
 
+// Traffic service policy defaults enforced by this gateway template
 func (o GatewaytemplateOutput) ServicePolicies() GatewaytemplateServicePolicyArrayOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) GatewaytemplateServicePolicyArrayOutput { return v.ServicePolicies }).(GatewaytemplateServicePolicyArrayOutput)
 }
@@ -623,11 +681,12 @@ func (o GatewaytemplateOutput) TunnelConfigs() GatewaytemplateTunnelConfigsMapOu
 	return o.ApplyT(func(v *Gatewaytemplate) GatewaytemplateTunnelConfigsMapOutput { return v.TunnelConfigs }).(GatewaytemplateTunnelConfigsMapOutput)
 }
 
+// Provider-specific tunnel options defined by this gateway template
 func (o GatewaytemplateOutput) TunnelProviderOptions() GatewaytemplateTunnelProviderOptionsPtrOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) GatewaytemplateTunnelProviderOptionsPtrOutput { return v.TunnelProviderOptions }).(GatewaytemplateTunnelProviderOptionsPtrOutput)
 }
 
-// enum: `spoke`, `standalone`
+// Gateway template deployment type
 func (o GatewaytemplateOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
@@ -637,11 +696,12 @@ func (o GatewaytemplateOutput) UrlFilteringDenyMsg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) pulumi.StringPtrOutput { return v.UrlFilteringDenyMsg }).(pulumi.StringPtrOutput)
 }
 
+// VRF defaults applied by this gateway template
 func (o GatewaytemplateOutput) VrfConfig() GatewaytemplateVrfConfigPtrOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) GatewaytemplateVrfConfigPtrOutput { return v.VrfConfig }).(GatewaytemplateVrfConfigPtrOutput)
 }
 
-// Property key is the network name
+// VRF instances configured by this gateway template
 func (o GatewaytemplateOutput) VrfInstances() GatewaytemplateVrfInstancesMapOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) GatewaytemplateVrfInstancesMapOutput { return v.VrfInstances }).(GatewaytemplateVrfInstancesMapOutput)
 }

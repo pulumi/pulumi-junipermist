@@ -81,11 +81,14 @@ import (
 type Idpprofile struct {
 	pulumi.CustomResourceState
 
-	// enum: `critical`, `standard`, `strict`
-	BaseProfile pulumi.StringOutput            `pulumi:"baseProfile"`
-	Name        pulumi.StringOutput            `pulumi:"name"`
-	OrgId       pulumi.StringOutput            `pulumi:"orgId"`
-	Overwrites  IdpprofileOverwriteArrayOutput `pulumi:"overwrites"`
+	// Built-in IDP baseline profile inherited before applying overwrites
+	BaseProfile pulumi.StringOutput `pulumi:"baseProfile"`
+	// Display name of the IDP profile
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Owning organization for the IDP profile
+	OrgId pulumi.StringOutput `pulumi:"orgId"`
+	// IDP signature override rules applied on top of the base profile
+	Overwrites IdpprofileOverwriteArrayOutput `pulumi:"overwrites"`
 }
 
 // NewIdpprofile registers a new resource with the given unique name, arguments, and options.
@@ -124,19 +127,25 @@ func GetIdpprofile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Idpprofile resources.
 type idpprofileState struct {
-	// enum: `critical`, `standard`, `strict`
-	BaseProfile *string               `pulumi:"baseProfile"`
-	Name        *string               `pulumi:"name"`
-	OrgId       *string               `pulumi:"orgId"`
-	Overwrites  []IdpprofileOverwrite `pulumi:"overwrites"`
+	// Built-in IDP baseline profile inherited before applying overwrites
+	BaseProfile *string `pulumi:"baseProfile"`
+	// Display name of the IDP profile
+	Name *string `pulumi:"name"`
+	// Owning organization for the IDP profile
+	OrgId *string `pulumi:"orgId"`
+	// IDP signature override rules applied on top of the base profile
+	Overwrites []IdpprofileOverwrite `pulumi:"overwrites"`
 }
 
 type IdpprofileState struct {
-	// enum: `critical`, `standard`, `strict`
+	// Built-in IDP baseline profile inherited before applying overwrites
 	BaseProfile pulumi.StringPtrInput
-	Name        pulumi.StringPtrInput
-	OrgId       pulumi.StringPtrInput
-	Overwrites  IdpprofileOverwriteArrayInput
+	// Display name of the IDP profile
+	Name pulumi.StringPtrInput
+	// Owning organization for the IDP profile
+	OrgId pulumi.StringPtrInput
+	// IDP signature override rules applied on top of the base profile
+	Overwrites IdpprofileOverwriteArrayInput
 }
 
 func (IdpprofileState) ElementType() reflect.Type {
@@ -144,20 +153,26 @@ func (IdpprofileState) ElementType() reflect.Type {
 }
 
 type idpprofileArgs struct {
-	// enum: `critical`, `standard`, `strict`
-	BaseProfile string                `pulumi:"baseProfile"`
-	Name        *string               `pulumi:"name"`
-	OrgId       string                `pulumi:"orgId"`
-	Overwrites  []IdpprofileOverwrite `pulumi:"overwrites"`
+	// Built-in IDP baseline profile inherited before applying overwrites
+	BaseProfile string `pulumi:"baseProfile"`
+	// Display name of the IDP profile
+	Name *string `pulumi:"name"`
+	// Owning organization for the IDP profile
+	OrgId string `pulumi:"orgId"`
+	// IDP signature override rules applied on top of the base profile
+	Overwrites []IdpprofileOverwrite `pulumi:"overwrites"`
 }
 
 // The set of arguments for constructing a Idpprofile resource.
 type IdpprofileArgs struct {
-	// enum: `critical`, `standard`, `strict`
+	// Built-in IDP baseline profile inherited before applying overwrites
 	BaseProfile pulumi.StringInput
-	Name        pulumi.StringPtrInput
-	OrgId       pulumi.StringInput
-	Overwrites  IdpprofileOverwriteArrayInput
+	// Display name of the IDP profile
+	Name pulumi.StringPtrInput
+	// Owning organization for the IDP profile
+	OrgId pulumi.StringInput
+	// IDP signature override rules applied on top of the base profile
+	Overwrites IdpprofileOverwriteArrayInput
 }
 
 func (IdpprofileArgs) ElementType() reflect.Type {
@@ -247,19 +262,22 @@ func (o IdpprofileOutput) ToIdpprofileOutputWithContext(ctx context.Context) Idp
 	return o
 }
 
-// enum: `critical`, `standard`, `strict`
+// Built-in IDP baseline profile inherited before applying overwrites
 func (o IdpprofileOutput) BaseProfile() pulumi.StringOutput {
 	return o.ApplyT(func(v *Idpprofile) pulumi.StringOutput { return v.BaseProfile }).(pulumi.StringOutput)
 }
 
+// Display name of the IDP profile
 func (o IdpprofileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Idpprofile) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Owning organization for the IDP profile
 func (o IdpprofileOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Idpprofile) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
+// IDP signature override rules applied on top of the base profile
 func (o IdpprofileOutput) Overwrites() IdpprofileOverwriteArrayOutput {
 	return o.ApplyT(func(v *Idpprofile) IdpprofileOverwriteArrayOutput { return v.Overwrites }).(IdpprofileOverwriteArrayOutput)
 }

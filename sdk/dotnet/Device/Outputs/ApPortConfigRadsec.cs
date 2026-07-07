@@ -13,31 +13,40 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class ApPortConfigRadsec
     {
+        /// <summary>
+        /// Whether RADIUS Change of Authorization (CoA) is enabled for RadSec traffic
+        /// </summary>
         public readonly bool? CoaEnabled;
+        /// <summary>
+        /// Whether RadSec is enabled
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// Idle timeout, in seconds, for RadSec connections
+        /// </summary>
         public readonly string? IdleTimeout;
         /// <summary>
-        /// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
+        /// Mist Edge cluster IDs used as RadSec proxies when the WLAN does not use mxtunnel
         /// </summary>
         public readonly ImmutableArray<string> MxclusterIds;
         /// <summary>
-        /// Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `UseSiteMxedge`
+        /// RadSec proxy hostnames advertised to APs
         /// </summary>
         public readonly ImmutableArray<string> ProxyHosts;
         /// <summary>
-        /// Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+        /// TLS server name to verify against the CA certificates in Org Setting. Only if not Mist Edge.
         /// </summary>
         public readonly string? ServerName;
         /// <summary>
-        /// List of RadSec Servers. Only if not Mist Edge.
+        /// External RadSec servers. Only if not Mist Edge.
         /// </summary>
         public readonly ImmutableArray<Outputs.ApPortConfigRadsecServer> Servers;
         /// <summary>
-        /// use mxedge(s) as RadSec Proxy
+        /// Whether to use organization Mist Edge instances as RadSec proxies
         /// </summary>
         public readonly bool? UseMxedge;
         /// <summary>
-        /// To use Site mxedges when this WLAN does not use mxtunnel
+        /// Whether to use site Mist Edge instances when this WLAN does not use mxtunnel
         /// </summary>
         public readonly bool? UseSiteMxedge;
 

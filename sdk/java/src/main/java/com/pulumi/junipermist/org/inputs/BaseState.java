@@ -18,23 +18,47 @@ public final class BaseState extends com.pulumi.resources.ResourceArgs {
 
     public static final BaseState Empty = new BaseState();
 
+    /**
+     * Org-level alarm template ID used as the default for sites
+     * 
+     */
     @Import(name="alarmtemplateId")
     private @Nullable Output<String> alarmtemplateId;
 
+    /**
+     * @return Org-level alarm template ID used as the default for sites
+     * 
+     */
     public Optional<Output<String>> alarmtemplateId() {
         return Optional.ofNullable(this.alarmtemplateId);
     }
 
+    /**
+     * Whether Mist support access is allowed for this organization
+     * 
+     */
     @Import(name="allowMist")
     private @Nullable Output<Boolean> allowMist;
 
+    /**
+     * @return Whether Mist support access is allowed for this organization
+     * 
+     */
     public Optional<Output<Boolean>> allowMist() {
         return Optional.ofNullable(this.allowMist);
     }
 
+    /**
+     * Managed service provider account that owns this organization, when applicable
+     * 
+     */
     @Import(name="mspId")
     private @Nullable Output<String> mspId;
 
+    /**
+     * @return Managed service provider account that owns this organization, when applicable
+     * 
+     */
     public Optional<Output<String>> mspId() {
         return Optional.ofNullable(this.mspId);
     }
@@ -69,23 +93,47 @@ public final class BaseState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.mspName);
     }
 
+    /**
+     * Display name of the organization
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Display name of the organization
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Organization group IDs that include this organization
+     * 
+     */
     @Import(name="orggroupIds")
     private @Nullable Output<List<String>> orggroupIds;
 
+    /**
+     * @return Organization group IDs that include this organization
+     * 
+     */
     public Optional<Output<List<String>>> orggroupIds() {
         return Optional.ofNullable(this.orggroupIds);
     }
 
+    /**
+     * Admin session lifetime for the organization, in minutes
+     * 
+     */
     @Import(name="sessionExpiry")
     private @Nullable Output<Integer> sessionExpiry;
 
+    /**
+     * @return Admin session lifetime for the organization, in minutes
+     * 
+     */
     public Optional<Output<Integer>> sessionExpiry() {
         return Optional.ofNullable(this.sessionExpiry);
     }
@@ -121,29 +169,65 @@ public final class BaseState extends com.pulumi.resources.ResourceArgs {
             $ = new BaseState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param alarmtemplateId Org-level alarm template ID used as the default for sites
+         * 
+         * @return builder
+         * 
+         */
         public Builder alarmtemplateId(@Nullable Output<String> alarmtemplateId) {
             $.alarmtemplateId = alarmtemplateId;
             return this;
         }
 
+        /**
+         * @param alarmtemplateId Org-level alarm template ID used as the default for sites
+         * 
+         * @return builder
+         * 
+         */
         public Builder alarmtemplateId(String alarmtemplateId) {
             return alarmtemplateId(Output.of(alarmtemplateId));
         }
 
+        /**
+         * @param allowMist Whether Mist support access is allowed for this organization
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowMist(@Nullable Output<Boolean> allowMist) {
             $.allowMist = allowMist;
             return this;
         }
 
+        /**
+         * @param allowMist Whether Mist support access is allowed for this organization
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowMist(Boolean allowMist) {
             return allowMist(Output.of(allowMist));
         }
 
+        /**
+         * @param mspId Managed service provider account that owns this organization, when applicable
+         * 
+         * @return builder
+         * 
+         */
         public Builder mspId(@Nullable Output<String> mspId) {
             $.mspId = mspId;
             return this;
         }
 
+        /**
+         * @param mspId Managed service provider account that owns this organization, when applicable
+         * 
+         * @return builder
+         * 
+         */
         public Builder mspId(String mspId) {
             return mspId(Output.of(mspId));
         }
@@ -190,33 +274,75 @@ public final class BaseState extends com.pulumi.resources.ResourceArgs {
             return mspName(Output.of(mspName));
         }
 
+        /**
+         * @param name Display name of the organization
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Display name of the organization
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param orggroupIds Organization group IDs that include this organization
+         * 
+         * @return builder
+         * 
+         */
         public Builder orggroupIds(@Nullable Output<List<String>> orggroupIds) {
             $.orggroupIds = orggroupIds;
             return this;
         }
 
+        /**
+         * @param orggroupIds Organization group IDs that include this organization
+         * 
+         * @return builder
+         * 
+         */
         public Builder orggroupIds(List<String> orggroupIds) {
             return orggroupIds(Output.of(orggroupIds));
         }
 
+        /**
+         * @param orggroupIds Organization group IDs that include this organization
+         * 
+         * @return builder
+         * 
+         */
         public Builder orggroupIds(String... orggroupIds) {
             return orggroupIds(List.of(orggroupIds));
         }
 
+        /**
+         * @param sessionExpiry Admin session lifetime for the organization, in minutes
+         * 
+         * @return builder
+         * 
+         */
         public Builder sessionExpiry(@Nullable Output<Integer> sessionExpiry) {
             $.sessionExpiry = sessionExpiry;
             return this;
         }
 
+        /**
+         * @param sessionExpiry Admin session lifetime for the organization, in minutes
+         * 
+         * @return builder
+         * 
+         */
         public Builder sessionExpiry(Integer sessionExpiry) {
             return sessionExpiry(Output.of(sessionExpiry));
         }

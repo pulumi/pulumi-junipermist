@@ -25,6 +25,11 @@ class BaseArgs:
                  session_expiry: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Base resource.
+
+        :param pulumi.Input[_builtins.str] alarmtemplate_id: Org-level alarm template ID used as the default for sites
+        :param pulumi.Input[_builtins.bool] allow_mist: Whether Mist support access is allowed for this organization
+        :param pulumi.Input[_builtins.str] name: Display name of the organization
+        :param pulumi.Input[_builtins.int] session_expiry: Admin session lifetime for the organization, in minutes
         """
         if alarmtemplate_id is not None:
             pulumi.set(__self__, "alarmtemplate_id", alarmtemplate_id)
@@ -38,6 +43,9 @@ class BaseArgs:
     @_builtins.property
     @pulumi.getter(name="alarmtemplateId")
     def alarmtemplate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Org-level alarm template ID used as the default for sites
+        """
         return pulumi.get(self, "alarmtemplate_id")
 
     @alarmtemplate_id.setter
@@ -47,6 +55,9 @@ class BaseArgs:
     @_builtins.property
     @pulumi.getter(name="allowMist")
     def allow_mist(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether Mist support access is allowed for this organization
+        """
         return pulumi.get(self, "allow_mist")
 
     @allow_mist.setter
@@ -56,6 +67,9 @@ class BaseArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Display name of the organization
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -65,6 +79,9 @@ class BaseArgs:
     @_builtins.property
     @pulumi.getter(name="sessionExpiry")
     def session_expiry(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Admin session lifetime for the organization, in minutes
+        """
         return pulumi.get(self, "session_expiry")
 
     @session_expiry.setter
@@ -86,8 +103,14 @@ class _BaseState:
         """
         Input properties used for looking up and filtering Base resources.
 
+        :param pulumi.Input[_builtins.str] alarmtemplate_id: Org-level alarm template ID used as the default for sites
+        :param pulumi.Input[_builtins.bool] allow_mist: Whether Mist support access is allowed for this organization
+        :param pulumi.Input[_builtins.str] msp_id: Managed service provider account that owns this organization, when applicable
         :param pulumi.Input[_builtins.str] msp_logo_url: logo uploaded by the MSP with advanced tier, only present if provided
         :param pulumi.Input[_builtins.str] msp_name: Name of the msp the org belongs to
+        :param pulumi.Input[_builtins.str] name: Display name of the organization
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] orggroup_ids: Organization group IDs that include this organization
+        :param pulumi.Input[_builtins.int] session_expiry: Admin session lifetime for the organization, in minutes
         """
         if alarmtemplate_id is not None:
             pulumi.set(__self__, "alarmtemplate_id", alarmtemplate_id)
@@ -109,6 +132,9 @@ class _BaseState:
     @_builtins.property
     @pulumi.getter(name="alarmtemplateId")
     def alarmtemplate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Org-level alarm template ID used as the default for sites
+        """
         return pulumi.get(self, "alarmtemplate_id")
 
     @alarmtemplate_id.setter
@@ -118,6 +144,9 @@ class _BaseState:
     @_builtins.property
     @pulumi.getter(name="allowMist")
     def allow_mist(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether Mist support access is allowed for this organization
+        """
         return pulumi.get(self, "allow_mist")
 
     @allow_mist.setter
@@ -127,6 +156,9 @@ class _BaseState:
     @_builtins.property
     @pulumi.getter(name="mspId")
     def msp_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Managed service provider account that owns this organization, when applicable
+        """
         return pulumi.get(self, "msp_id")
 
     @msp_id.setter
@@ -160,6 +192,9 @@ class _BaseState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Display name of the organization
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -169,6 +204,9 @@ class _BaseState:
     @_builtins.property
     @pulumi.getter(name="orggroupIds")
     def orggroup_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Organization group IDs that include this organization
+        """
         return pulumi.get(self, "orggroup_ids")
 
     @orggroup_ids.setter
@@ -178,6 +216,9 @@ class _BaseState:
     @_builtins.property
     @pulumi.getter(name="sessionExpiry")
     def session_expiry(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Admin session lifetime for the organization, in minutes
+        """
         return pulumi.get(self, "session_expiry")
 
     @session_expiry.setter
@@ -224,6 +265,10 @@ class Base(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] alarmtemplate_id: Org-level alarm template ID used as the default for sites
+        :param pulumi.Input[_builtins.bool] allow_mist: Whether Mist support access is allowed for this organization
+        :param pulumi.Input[_builtins.str] name: Display name of the organization
+        :param pulumi.Input[_builtins.int] session_expiry: Admin session lifetime for the organization, in minutes
         """
         ...
     @overload
@@ -318,8 +363,14 @@ class Base(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] alarmtemplate_id: Org-level alarm template ID used as the default for sites
+        :param pulumi.Input[_builtins.bool] allow_mist: Whether Mist support access is allowed for this organization
+        :param pulumi.Input[_builtins.str] msp_id: Managed service provider account that owns this organization, when applicable
         :param pulumi.Input[_builtins.str] msp_logo_url: logo uploaded by the MSP with advanced tier, only present if provided
         :param pulumi.Input[_builtins.str] msp_name: Name of the msp the org belongs to
+        :param pulumi.Input[_builtins.str] name: Display name of the organization
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] orggroup_ids: Organization group IDs that include this organization
+        :param pulumi.Input[_builtins.int] session_expiry: Admin session lifetime for the organization, in minutes
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -338,16 +389,25 @@ class Base(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="alarmtemplateId")
     def alarmtemplate_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Org-level alarm template ID used as the default for sites
+        """
         return pulumi.get(self, "alarmtemplate_id")
 
     @_builtins.property
     @pulumi.getter(name="allowMist")
     def allow_mist(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether Mist support access is allowed for this organization
+        """
         return pulumi.get(self, "allow_mist")
 
     @_builtins.property
     @pulumi.getter(name="mspId")
     def msp_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Managed service provider account that owns this organization, when applicable
+        """
         return pulumi.get(self, "msp_id")
 
     @_builtins.property
@@ -369,15 +429,24 @@ class Base(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
+        """
+        Display name of the organization
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="orggroupIds")
     def orggroup_ids(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        Organization group IDs that include this organization
+        """
         return pulumi.get(self, "orggroup_ids")
 
     @_builtins.property
     @pulumi.getter(name="sessionExpiry")
     def session_expiry(self) -> pulumi.Output[_builtins.int]:
+        """
+        Admin session lifetime for the organization, in minutes
+        """
         return pulumi.get(self, "session_expiry")
 

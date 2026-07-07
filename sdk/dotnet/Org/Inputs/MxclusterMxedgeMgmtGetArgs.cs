@@ -12,14 +12,24 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class MxclusterMxedgeMgmtGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether the Mist Edge automatically reverts configuration changes if connectivity is lost
+        /// </summary>
         [Input("configAutoRevert")]
         public Input<bool>? ConfigAutoRevert { get; set; }
 
+        /// <summary>
+        /// Whether FIPS mode is enabled on the Mist Edge
+        /// </summary>
         [Input("fipsEnabled")]
         public Input<bool>? FipsEnabled { get; set; }
 
         [Input("mistPassword")]
         private Input<string>? _mistPassword;
+
+        /// <summary>
+        /// Password for the Mist service account on the Mist Edge
+        /// </summary>
         public Input<string>? MistPassword
         {
             get => _mistPassword;
@@ -31,19 +41,23 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// enum: `Dhcp`, `Disabled`, `Static`
+        /// IPv4 address assignment mode for out-of-band management
         /// </summary>
         [Input("oobIpType")]
         public Input<string>? OobIpType { get; set; }
 
         /// <summary>
-        /// enum: `Autoconf`, `Dhcp`, `Disabled`, `Static`
+        /// IPv6 address assignment mode for out-of-band management
         /// </summary>
         [Input("oobIpType6")]
         public Input<string>? OobIpType6 { get; set; }
 
         [Input("rootPassword")]
         private Input<string>? _rootPassword;
+
+        /// <summary>
+        /// Root account password for the Mist Edge
+        /// </summary>
         public Input<string>? RootPassword
         {
             get => _rootPassword;

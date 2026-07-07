@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class NetworktemplateVrfInstancesExtraRoutes6
     {
         /// <summary>
-        /// Next-hop address
+        /// IPv6 next-hop address for this VRF extra route
         /// </summary>
         public readonly string? Via;
 

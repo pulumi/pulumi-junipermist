@@ -16,6 +16,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SwitchBgpConfig {
+    /**
+     * @return Authentication key used for BGP neighbor sessions, when configured
+     * 
+     */
     private @Nullable String authKey;
     /**
      * @return Minimum interval in milliseconds for BFD hello packets. A neighbor is considered failed when the device stops receiving replies after the specified interval. Value must be between 1 and 255000.
@@ -28,7 +32,7 @@ public final class SwitchBgpConfig {
      */
     private @Nullable String exportPolicy;
     /**
-     * @return Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+     * @return Default BGP hold time for switch BGP sessions
      * 
      */
     private @Nullable Integer holdTime;
@@ -37,24 +41,32 @@ public final class SwitchBgpConfig {
      * 
      */
     private @Nullable String importPolicy;
+    /**
+     * @return Local BGP Autonomous System (AS) number for the switch
+     * 
+     */
     private String localAs;
     /**
-     * @return Property key is the BGP Neighbor IP Address.
+     * @return BGP neighbor settings keyed by neighbor IP address
      * 
      */
     private @Nullable Map<String,SwitchBgpConfigNeighbors> neighbors;
     /**
-     * @return List of network names for BGP configuration. When a network is specified, a BGP group will be added to the VRF that network is part of.
+     * @return Network names used to add BGP groups to the corresponding VRFs
      * 
      */
     private @Nullable List<String> networks;
     /**
-     * @return enum: `external`, `internal`
+     * @return BGP session type for this switch BGP configuration
      * 
      */
     private String type;
 
     private SwitchBgpConfig() {}
+    /**
+     * @return Authentication key used for BGP neighbor sessions, when configured
+     * 
+     */
     public Optional<String> authKey() {
         return Optional.ofNullable(this.authKey);
     }
@@ -73,7 +85,7 @@ public final class SwitchBgpConfig {
         return Optional.ofNullable(this.exportPolicy);
     }
     /**
-     * @return Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+     * @return Default BGP hold time for switch BGP sessions
      * 
      */
     public Optional<Integer> holdTime() {
@@ -86,25 +98,29 @@ public final class SwitchBgpConfig {
     public Optional<String> importPolicy() {
         return Optional.ofNullable(this.importPolicy);
     }
+    /**
+     * @return Local BGP Autonomous System (AS) number for the switch
+     * 
+     */
     public String localAs() {
         return this.localAs;
     }
     /**
-     * @return Property key is the BGP Neighbor IP Address.
+     * @return BGP neighbor settings keyed by neighbor IP address
      * 
      */
     public Map<String,SwitchBgpConfigNeighbors> neighbors() {
         return this.neighbors == null ? Map.of() : this.neighbors;
     }
     /**
-     * @return List of network names for BGP configuration. When a network is specified, a BGP group will be added to the VRF that network is part of.
+     * @return Network names used to add BGP groups to the corresponding VRFs
      * 
      */
     public List<String> networks() {
         return this.networks == null ? List.of() : this.networks;
     }
     /**
-     * @return enum: `external`, `internal`
+     * @return BGP session type for this switch BGP configuration
      * 
      */
     public String type() {

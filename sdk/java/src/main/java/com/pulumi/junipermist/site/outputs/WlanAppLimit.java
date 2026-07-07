@@ -20,6 +20,10 @@ public final class WlanAppLimit {
      * 
      */
     private @Nullable Map<String,Integer> apps;
+    /**
+     * @return Whether application bandwidth limits are enabled for this WLAN
+     * 
+     */
     private @Nullable Boolean enabled;
     /**
      * @return Map from wxtagId of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtagId`
@@ -36,6 +40,10 @@ public final class WlanAppLimit {
     public Map<String,Integer> apps() {
         return this.apps == null ? Map.of() : this.apps;
     }
+    /**
+     * @return Whether application bandwidth limits are enabled for this WLAN
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }

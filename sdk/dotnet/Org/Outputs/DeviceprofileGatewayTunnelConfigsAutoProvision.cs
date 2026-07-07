@@ -18,18 +18,24 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// API override for POP selection
+        /// Geographic coordinate override used for tunnel POP selection
         /// </summary>
         public readonly Outputs.DeviceprofileGatewayTunnelConfigsAutoProvisionLatlng? Latlng;
+        /// <summary>
+        /// Main auto-provisioned tunnel endpoint settings
+        /// </summary>
         public readonly Outputs.DeviceprofileGatewayTunnelConfigsAutoProvisionPrimary? Primary;
         /// <summary>
-        /// enum: `jse-ipsec`, `zscaler-ipsec`
+        /// Tunnel provider used for automatic endpoint provisioning
         /// </summary>
         public readonly string Provider;
         /// <summary>
         /// API override for POP selection in the case user wants to override the auto discovery of remote network location and force the tunnel to use the specified peer location.
         /// </summary>
         public readonly string? Region;
+        /// <summary>
+        /// Backup auto-provisioned tunnel endpoint settings
+        /// </summary>
         public readonly Outputs.DeviceprofileGatewayTunnelConfigsAutoProvisionSecondary? Secondary;
         /// <summary>
         /// if `Provider`==`prisma-ipsec`. By default, we'll use the location of the site to determine the optimal Remote Network location, optionally, ServiceConnection can be considered, then we'll also consider this along with the site location. Define ServiceConnection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup &gt; Service Connections.

@@ -19,14 +19,14 @@ public final class PskArgs extends com.pulumi.resources.ResourceArgs {
     public static final PskArgs Empty = new PskArgs();
 
     /**
-     * email to send psk expiring notifications to
+     * Notification recipient email address for PSK creation notification and expiration reminders
      * 
      */
     @Import(name="email")
     private @Nullable Output<String> email;
 
     /**
-     * @return email to send psk expiring notifications to
+     * @return Notification recipient email address for PSK creation notification and expiration reminders
      * 
      */
     public Optional<Output<String>> email() {
@@ -64,30 +64,46 @@ public final class PskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+     * If `usage`==`single`, client MAC address this PSK is bound to; empty when auto-binding is used
      * 
      */
     @Import(name="mac")
     private @Nullable Output<String> mac;
 
     /**
-     * @return If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+     * @return If `usage`==`single`, client MAC address this PSK is bound to; empty when auto-binding is used
      * 
      */
     public Optional<Output<String>> mac() {
         return Optional.ofNullable(this.mac);
     }
 
+    /**
+     * Display name of the PSK
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Display name of the PSK
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Admin note or description stored with the PSK
+     * 
+     */
     @Import(name="note")
     private @Nullable Output<String> note;
 
+    /**
+     * @return Admin note or description stored with the PSK
+     * 
+     */
     public Optional<Output<String>> note() {
         return Optional.ofNullable(this.note);
     }
@@ -138,43 +154,59 @@ public final class PskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * passphrase of the PSK (8-63 character or 64 in hex)
+     * PSK passphrase, 8-63 characters or 64 hexadecimal characters
      * 
      */
     @Import(name="passphrase", required=true)
     private Output<String> passphrase;
 
     /**
-     * @return passphrase of the PSK (8-63 character or 64 in hex)
+     * @return PSK passphrase, 8-63 characters or 64 hexadecimal characters
      * 
      */
     public Output<String> passphrase() {
         return this.passphrase;
     }
 
+    /**
+     * Client role applied to users authenticated with this PSK
+     * 
+     */
     @Import(name="role")
     private @Nullable Output<String> role;
 
+    /**
+     * @return Client role applied to users authenticated with this PSK
+     * 
+     */
     public Optional<Output<String>> role() {
         return Optional.ofNullable(this.role);
     }
 
+    /**
+     * Site associated with the site-level PSK
+     * 
+     */
     @Import(name="siteId", required=true)
     private Output<String> siteId;
 
+    /**
+     * @return Site associated with the site-level PSK
+     * 
+     */
     public Output<String> siteId() {
         return this.siteId;
     }
 
     /**
-     * SSID this PSK should be applicable to
+     * WLAN SSID where this PSK can be used
      * 
      */
     @Import(name="ssid", required=true)
     private Output<String> ssid;
 
     /**
-     * @return SSID this PSK should be applicable to
+     * @return WLAN SSID where this PSK can be used
      * 
      */
     public Output<String> ssid() {
@@ -196,9 +228,17 @@ public final class PskArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.usage);
     }
 
+    /**
+     * VLAN ID returned for clients using this PSK
+     * 
+     */
     @Import(name="vlanId")
     private @Nullable Output<String> vlanId;
 
+    /**
+     * @return VLAN ID returned for clients using this PSK
+     * 
+     */
     public Optional<Output<String>> vlanId() {
         return Optional.ofNullable(this.vlanId);
     }
@@ -258,7 +298,7 @@ public final class PskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param email email to send psk expiring notifications to
+         * @param email Notification recipient email address for PSK creation notification and expiration reminders
          * 
          * @return builder
          * 
@@ -269,7 +309,7 @@ public final class PskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param email email to send psk expiring notifications to
+         * @param email Notification recipient email address for PSK creation notification and expiration reminders
          * 
          * @return builder
          * 
@@ -321,7 +361,7 @@ public final class PskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mac If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+         * @param mac If `usage`==`single`, client MAC address this PSK is bound to; empty when auto-binding is used
          * 
          * @return builder
          * 
@@ -332,7 +372,7 @@ public final class PskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mac If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+         * @param mac If `usage`==`single`, client MAC address this PSK is bound to; empty when auto-binding is used
          * 
          * @return builder
          * 
@@ -341,20 +381,44 @@ public final class PskArgs extends com.pulumi.resources.ResourceArgs {
             return mac(Output.of(mac));
         }
 
+        /**
+         * @param name Display name of the PSK
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Display name of the PSK
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param note Admin note or description stored with the PSK
+         * 
+         * @return builder
+         * 
+         */
         public Builder note(@Nullable Output<String> note) {
             $.note = note;
             return this;
         }
 
+        /**
+         * @param note Admin note or description stored with the PSK
+         * 
+         * @return builder
+         * 
+         */
         public Builder note(String note) {
             return note(Output.of(note));
         }
@@ -423,7 +487,7 @@ public final class PskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param passphrase passphrase of the PSK (8-63 character or 64 in hex)
+         * @param passphrase PSK passphrase, 8-63 characters or 64 hexadecimal characters
          * 
          * @return builder
          * 
@@ -434,7 +498,7 @@ public final class PskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param passphrase passphrase of the PSK (8-63 character or 64 in hex)
+         * @param passphrase PSK passphrase, 8-63 characters or 64 hexadecimal characters
          * 
          * @return builder
          * 
@@ -443,26 +507,50 @@ public final class PskArgs extends com.pulumi.resources.ResourceArgs {
             return passphrase(Output.of(passphrase));
         }
 
+        /**
+         * @param role Client role applied to users authenticated with this PSK
+         * 
+         * @return builder
+         * 
+         */
         public Builder role(@Nullable Output<String> role) {
             $.role = role;
             return this;
         }
 
+        /**
+         * @param role Client role applied to users authenticated with this PSK
+         * 
+         * @return builder
+         * 
+         */
         public Builder role(String role) {
             return role(Output.of(role));
         }
 
+        /**
+         * @param siteId Site associated with the site-level PSK
+         * 
+         * @return builder
+         * 
+         */
         public Builder siteId(Output<String> siteId) {
             $.siteId = siteId;
             return this;
         }
 
+        /**
+         * @param siteId Site associated with the site-level PSK
+         * 
+         * @return builder
+         * 
+         */
         public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
         }
 
         /**
-         * @param ssid SSID this PSK should be applicable to
+         * @param ssid WLAN SSID where this PSK can be used
          * 
          * @return builder
          * 
@@ -473,7 +561,7 @@ public final class PskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssid SSID this PSK should be applicable to
+         * @param ssid WLAN SSID where this PSK can be used
          * 
          * @return builder
          * 
@@ -503,11 +591,23 @@ public final class PskArgs extends com.pulumi.resources.ResourceArgs {
             return usage(Output.of(usage));
         }
 
+        /**
+         * @param vlanId VLAN ID returned for clients using this PSK
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlanId(@Nullable Output<String> vlanId) {
             $.vlanId = vlanId;
             return this;
         }
 
+        /**
+         * @param vlanId VLAN ID returned for clients using this PSK
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlanId(String vlanId) {
             return vlanId(Output.of(vlanId));
         }

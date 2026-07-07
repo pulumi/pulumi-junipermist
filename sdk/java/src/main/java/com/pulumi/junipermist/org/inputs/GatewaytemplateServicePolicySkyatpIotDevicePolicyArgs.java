@@ -15,9 +15,17 @@ public final class GatewaytemplateServicePolicySkyatpIotDevicePolicyArgs extends
 
     public static final GatewaytemplateServicePolicySkyatpIotDevicePolicyArgs Empty = new GatewaytemplateServicePolicySkyatpIotDevicePolicyArgs();
 
+    /**
+     * Whether Sky ATP IoT device policy inspection is enabled
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether Sky ATP IoT device policy inspection is enabled
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -46,11 +54,23 @@ public final class GatewaytemplateServicePolicySkyatpIotDevicePolicyArgs extends
             $ = new GatewaytemplateServicePolicySkyatpIotDevicePolicyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Whether Sky ATP IoT device policy inspection is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether Sky ATP IoT device policy inspection is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

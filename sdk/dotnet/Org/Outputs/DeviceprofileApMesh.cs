@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class DeviceprofileApMesh
     {
         /// <summary>
-        /// List of bands that the mesh should apply to. For relay, the first viable one will be picked. For relay, the first viable one will be picked. enum: `24`, `5`, `6`
+        /// Radio bands allowed for AP mesh links
         /// </summary>
         public readonly ImmutableArray<string> Bands;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly int? Group;
         /// <summary>
-        /// enum: `Base`, `Remote`
+        /// Mesh role for this AP, either base or remote
         /// </summary>
         public readonly string? Role;
         /// <summary>

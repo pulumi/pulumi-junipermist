@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GatewayVrfInstances {
+    /**
+     * @return Network names included in this gateway VRF instance
+     * 
+     */
     private @Nullable List<String> networks;
 
     private GatewayVrfInstances() {}
+    /**
+     * @return Network names included in this gateway VRF instance
+     * 
+     */
     public List<String> networks() {
         return this.networks == null ? List.of() : this.networks;
     }

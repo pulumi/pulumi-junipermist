@@ -17,14 +17,14 @@ public final class GatewaytemplateRoutingPoliciesArgs extends com.pulumi.resourc
     public static final GatewaytemplateRoutingPoliciesArgs Empty = new GatewaytemplateRoutingPoliciesArgs();
 
     /**
-     * zero or more criteria/filter can be specified to match the term, all criteria have to be met
+     * Ordered terms evaluated by this gateway routing policy
      * 
      */
     @Import(name="terms")
     private @Nullable Output<List<GatewaytemplateRoutingPoliciesTermArgs>> terms;
 
     /**
-     * @return zero or more criteria/filter can be specified to match the term, all criteria have to be met
+     * @return Ordered terms evaluated by this gateway routing policy
      * 
      */
     public Optional<Output<List<GatewaytemplateRoutingPoliciesTermArgs>>> terms() {
@@ -56,7 +56,7 @@ public final class GatewaytemplateRoutingPoliciesArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param terms zero or more criteria/filter can be specified to match the term, all criteria have to be met
+         * @param terms Ordered terms evaluated by this gateway routing policy
          * 
          * @return builder
          * 
@@ -67,7 +67,7 @@ public final class GatewaytemplateRoutingPoliciesArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param terms zero or more criteria/filter can be specified to match the term, all criteria have to be met
+         * @param terms Ordered terms evaluated by this gateway routing policy
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class GatewaytemplateRoutingPoliciesArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param terms zero or more criteria/filter can be specified to match the term, all criteria have to be met
+         * @param terms Ordered terms evaluated by this gateway routing policy
          * 
          * @return builder
          * 

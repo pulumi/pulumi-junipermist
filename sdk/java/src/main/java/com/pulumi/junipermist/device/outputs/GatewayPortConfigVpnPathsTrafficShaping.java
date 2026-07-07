@@ -14,30 +14,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewayPortConfigVpnPathsTrafficShaping {
     /**
-     * @return percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
+     * @return Traffic class bandwidth percentages for high, medium, low, and best-effort queues
      * 
      */
     private @Nullable List<Integer> classPercentages;
+    /**
+     * @return Whether traffic shaping is enabled
+     * 
+     */
     private @Nullable Boolean enabled;
     /**
-     * @return Interface Transmit Cap in kbps
+     * @return Maximum transmit bandwidth for the interface, in Kbps
      * 
      */
     private @Nullable Integer maxTxKbps;
 
     private GatewayPortConfigVpnPathsTrafficShaping() {}
     /**
-     * @return percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
+     * @return Traffic class bandwidth percentages for high, medium, low, and best-effort queues
      * 
      */
     public List<Integer> classPercentages() {
         return this.classPercentages == null ? List.of() : this.classPercentages;
     }
+    /**
+     * @return Whether traffic shaping is enabled
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Interface Transmit Cap in kbps
+     * @return Maximum transmit bandwidth for the interface, in Kbps
      * 
      */
     public Optional<Integer> maxTxKbps() {

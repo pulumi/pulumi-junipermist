@@ -14,19 +14,31 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class NetworktemplateRadiusConfigAcctServer
     {
         /// <summary>
-        /// IP/ hostname of RADIUS server
+        /// Address or hostname of the RADIUS accounting server
         /// </summary>
         public readonly string Host;
+        /// <summary>
+        /// Whether RADIUS keywrap is enabled for messages sent to this accounting server
+        /// </summary>
         public readonly bool? KeywrapEnabled;
         /// <summary>
-        /// enum: `Ascii`, `Hex`
+        /// Encoding format for RADIUS keywrap KEK and MACK values
         /// </summary>
         public readonly string? KeywrapFormat;
+        /// <summary>
+        /// RADIUS keywrap key encryption key (KEK)
+        /// </summary>
         public readonly string? KeywrapKek;
+        /// <summary>
+        /// RADIUS keywrap message authentication code key (MACK)
+        /// </summary>
         public readonly string? KeywrapMack;
+        /// <summary>
+        /// UDP port used by the RADIUS accounting server
+        /// </summary>
         public readonly string? Port;
         /// <summary>
-        /// Secret of RADIUS server
+        /// Shared secret used with this RADIUS accounting server
         /// </summary>
         public readonly string Secret;
 

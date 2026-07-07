@@ -61,14 +61,14 @@ public final class MxedgeTuntermIgmpSnoopingConfigQuerierArgs extends com.pulumi
     }
 
     /**
-     * Querier&#39;s robustness
+     * IGMP querier robustness variable
      * 
      */
     @Import(name="robustness")
     private @Nullable Output<Integer> robustness;
 
     /**
-     * @return Querier&#39;s robustness
+     * @return IGMP querier robustness variable
      * 
      */
     public Optional<Output<Integer>> robustness() {
@@ -182,7 +182,7 @@ public final class MxedgeTuntermIgmpSnoopingConfigQuerierArgs extends com.pulumi
         }
 
         /**
-         * @param robustness Querier&#39;s robustness
+         * @param robustness IGMP querier robustness variable
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class MxedgeTuntermIgmpSnoopingConfigQuerierArgs extends com.pulumi
         }
 
         /**
-         * @param robustness Querier&#39;s robustness
+         * @param robustness IGMP querier robustness variable
          * 
          * @return builder
          * 

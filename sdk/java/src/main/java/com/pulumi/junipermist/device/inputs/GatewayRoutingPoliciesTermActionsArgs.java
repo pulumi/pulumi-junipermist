@@ -17,29 +17,45 @@ public final class GatewayRoutingPoliciesTermActionsArgs extends com.pulumi.reso
 
     public static final GatewayRoutingPoliciesTermActionsArgs Empty = new GatewayRoutingPoliciesTermActionsArgs();
 
+    /**
+     * Whether to accept routes that match this term
+     * 
+     */
     @Import(name="accept")
     private @Nullable Output<Boolean> accept;
 
+    /**
+     * @return Whether to accept routes that match this term
+     * 
+     */
     public Optional<Output<Boolean>> accept() {
         return Optional.ofNullable(this.accept);
     }
 
+    /**
+     * BGP communities to add to routes that match this term
+     * 
+     */
     @Import(name="addCommunities")
     private @Nullable Output<List<String>> addCommunities;
 
+    /**
+     * @return BGP communities to add to routes that match this term
+     * 
+     */
     public Optional<Output<List<String>>> addCommunities() {
         return Optional.ofNullable(this.addCommunities);
     }
 
     /**
-     * For SSR, hub decides how VRF routes are leaked on spoke
+     * SSR target VRFs to add when leaking routes from hub to spoke
      * 
      */
     @Import(name="addTargetVrfs")
     private @Nullable Output<List<String>> addTargetVrfs;
 
     /**
-     * @return For SSR, hub decides how VRF routes are leaked on spoke
+     * @return SSR target VRFs to add when leaking routes from hub to spoke
      * 
      */
     public Optional<Output<List<String>>> addTargetVrfs() {
@@ -47,14 +63,14 @@ public final class GatewayRoutingPoliciesTermActionsArgs extends com.pulumi.reso
     }
 
     /**
-     * When used as export policy, optional
+     * BGP communities to set when this term is used as an export policy
      * 
      */
     @Import(name="communities")
     private @Nullable Output<List<String>> communities;
 
     /**
-     * @return When used as export policy, optional
+     * @return BGP communities to set when this term is used as an export policy
      * 
      */
     public Optional<Output<List<String>>> communities() {
@@ -62,36 +78,44 @@ public final class GatewayRoutingPoliciesTermActionsArgs extends com.pulumi.reso
     }
 
     /**
-     * When used as export policy, optional. To exclude certain AS
+     * AS path values to exclude when this term is used as an export policy
      * 
      */
     @Import(name="excludeAsPaths")
     private @Nullable Output<List<String>> excludeAsPaths;
 
     /**
-     * @return When used as export policy, optional. To exclude certain AS
+     * @return AS path values to exclude when this term is used as an export policy
      * 
      */
     public Optional<Output<List<String>>> excludeAsPaths() {
         return Optional.ofNullable(this.excludeAsPaths);
     }
 
+    /**
+     * BGP communities to exclude from routes that match this term
+     * 
+     */
     @Import(name="excludeCommunities")
     private @Nullable Output<List<String>> excludeCommunities;
 
+    /**
+     * @return BGP communities to exclude from routes that match this term
+     * 
+     */
     public Optional<Output<List<String>>> excludeCommunities() {
         return Optional.ofNullable(this.excludeCommunities);
     }
 
     /**
-     * When used as export policy, optional
+     * BGP communities allowed for export when this term is used as an export policy
      * 
      */
     @Import(name="exportCommunities")
     private @Nullable Output<List<String>> exportCommunities;
 
     /**
-     * @return When used as export policy, optional
+     * @return BGP communities allowed for export when this term is used as an export policy
      * 
      */
     public Optional<Output<List<String>>> exportCommunities() {
@@ -99,14 +123,14 @@ public final class GatewayRoutingPoliciesTermActionsArgs extends com.pulumi.reso
     }
 
     /**
-     * Optional, for an import policy, localPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+     * Preference value to set when this term is used as an import policy
      * 
      */
     @Import(name="localPreference")
     private @Nullable Output<String> localPreference;
 
     /**
-     * @return Optional, for an import policy, localPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+     * @return Preference value to set when this term is used as an import policy
      * 
      */
     public Optional<Output<String>> localPreference() {
@@ -114,14 +138,14 @@ public final class GatewayRoutingPoliciesTermActionsArgs extends com.pulumi.reso
     }
 
     /**
-     * When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
+     * AS path values to prepend when this term is used as an export policy
      * 
      */
     @Import(name="prependAsPaths")
     private @Nullable Output<List<String>> prependAsPaths;
 
     /**
-     * @return When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
+     * @return AS path values to prepend when this term is used as an export policy
      * 
      */
     public Optional<Output<List<String>>> prependAsPaths() {
@@ -160,30 +184,60 @@ public final class GatewayRoutingPoliciesTermActionsArgs extends com.pulumi.reso
             $ = new GatewayRoutingPoliciesTermActionsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accept Whether to accept routes that match this term
+         * 
+         * @return builder
+         * 
+         */
         public Builder accept(@Nullable Output<Boolean> accept) {
             $.accept = accept;
             return this;
         }
 
+        /**
+         * @param accept Whether to accept routes that match this term
+         * 
+         * @return builder
+         * 
+         */
         public Builder accept(Boolean accept) {
             return accept(Output.of(accept));
         }
 
+        /**
+         * @param addCommunities BGP communities to add to routes that match this term
+         * 
+         * @return builder
+         * 
+         */
         public Builder addCommunities(@Nullable Output<List<String>> addCommunities) {
             $.addCommunities = addCommunities;
             return this;
         }
 
+        /**
+         * @param addCommunities BGP communities to add to routes that match this term
+         * 
+         * @return builder
+         * 
+         */
         public Builder addCommunities(List<String> addCommunities) {
             return addCommunities(Output.of(addCommunities));
         }
 
+        /**
+         * @param addCommunities BGP communities to add to routes that match this term
+         * 
+         * @return builder
+         * 
+         */
         public Builder addCommunities(String... addCommunities) {
             return addCommunities(List.of(addCommunities));
         }
 
         /**
-         * @param addTargetVrfs For SSR, hub decides how VRF routes are leaked on spoke
+         * @param addTargetVrfs SSR target VRFs to add when leaking routes from hub to spoke
          * 
          * @return builder
          * 
@@ -194,7 +248,7 @@ public final class GatewayRoutingPoliciesTermActionsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param addTargetVrfs For SSR, hub decides how VRF routes are leaked on spoke
+         * @param addTargetVrfs SSR target VRFs to add when leaking routes from hub to spoke
          * 
          * @return builder
          * 
@@ -204,7 +258,7 @@ public final class GatewayRoutingPoliciesTermActionsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param addTargetVrfs For SSR, hub decides how VRF routes are leaked on spoke
+         * @param addTargetVrfs SSR target VRFs to add when leaking routes from hub to spoke
          * 
          * @return builder
          * 
@@ -214,7 +268,7 @@ public final class GatewayRoutingPoliciesTermActionsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param communities When used as export policy, optional
+         * @param communities BGP communities to set when this term is used as an export policy
          * 
          * @return builder
          * 
@@ -225,7 +279,7 @@ public final class GatewayRoutingPoliciesTermActionsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param communities When used as export policy, optional
+         * @param communities BGP communities to set when this term is used as an export policy
          * 
          * @return builder
          * 
@@ -235,7 +289,7 @@ public final class GatewayRoutingPoliciesTermActionsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param communities When used as export policy, optional
+         * @param communities BGP communities to set when this term is used as an export policy
          * 
          * @return builder
          * 
@@ -245,7 +299,7 @@ public final class GatewayRoutingPoliciesTermActionsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param excludeAsPaths When used as export policy, optional. To exclude certain AS
+         * @param excludeAsPaths AS path values to exclude when this term is used as an export policy
          * 
          * @return builder
          * 
@@ -256,7 +310,7 @@ public final class GatewayRoutingPoliciesTermActionsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param excludeAsPaths When used as export policy, optional. To exclude certain AS
+         * @param excludeAsPaths AS path values to exclude when this term is used as an export policy
          * 
          * @return builder
          * 
@@ -266,7 +320,7 @@ public final class GatewayRoutingPoliciesTermActionsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param excludeAsPaths When used as export policy, optional. To exclude certain AS
+         * @param excludeAsPaths AS path values to exclude when this term is used as an export policy
          * 
          * @return builder
          * 
@@ -275,21 +329,39 @@ public final class GatewayRoutingPoliciesTermActionsArgs extends com.pulumi.reso
             return excludeAsPaths(List.of(excludeAsPaths));
         }
 
+        /**
+         * @param excludeCommunities BGP communities to exclude from routes that match this term
+         * 
+         * @return builder
+         * 
+         */
         public Builder excludeCommunities(@Nullable Output<List<String>> excludeCommunities) {
             $.excludeCommunities = excludeCommunities;
             return this;
         }
 
+        /**
+         * @param excludeCommunities BGP communities to exclude from routes that match this term
+         * 
+         * @return builder
+         * 
+         */
         public Builder excludeCommunities(List<String> excludeCommunities) {
             return excludeCommunities(Output.of(excludeCommunities));
         }
 
+        /**
+         * @param excludeCommunities BGP communities to exclude from routes that match this term
+         * 
+         * @return builder
+         * 
+         */
         public Builder excludeCommunities(String... excludeCommunities) {
             return excludeCommunities(List.of(excludeCommunities));
         }
 
         /**
-         * @param exportCommunities When used as export policy, optional
+         * @param exportCommunities BGP communities allowed for export when this term is used as an export policy
          * 
          * @return builder
          * 
@@ -300,7 +372,7 @@ public final class GatewayRoutingPoliciesTermActionsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param exportCommunities When used as export policy, optional
+         * @param exportCommunities BGP communities allowed for export when this term is used as an export policy
          * 
          * @return builder
          * 
@@ -310,7 +382,7 @@ public final class GatewayRoutingPoliciesTermActionsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param exportCommunities When used as export policy, optional
+         * @param exportCommunities BGP communities allowed for export when this term is used as an export policy
          * 
          * @return builder
          * 
@@ -320,7 +392,7 @@ public final class GatewayRoutingPoliciesTermActionsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param localPreference Optional, for an import policy, localPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+         * @param localPreference Preference value to set when this term is used as an import policy
          * 
          * @return builder
          * 
@@ -331,7 +403,7 @@ public final class GatewayRoutingPoliciesTermActionsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param localPreference Optional, for an import policy, localPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+         * @param localPreference Preference value to set when this term is used as an import policy
          * 
          * @return builder
          * 
@@ -341,7 +413,7 @@ public final class GatewayRoutingPoliciesTermActionsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param prependAsPaths When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
+         * @param prependAsPaths AS path values to prepend when this term is used as an export policy
          * 
          * @return builder
          * 
@@ -352,7 +424,7 @@ public final class GatewayRoutingPoliciesTermActionsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param prependAsPaths When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
+         * @param prependAsPaths AS path values to prepend when this term is used as an export policy
          * 
          * @return builder
          * 
@@ -362,7 +434,7 @@ public final class GatewayRoutingPoliciesTermActionsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param prependAsPaths When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
+         * @param prependAsPaths AS path values to prepend when this term is used as an export policy
          * 
          * @return builder
          * 

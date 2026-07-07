@@ -13,11 +13,14 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class GatewaytemplateNetworkInternetAccessStaticNatGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Static NAT destination IP Address. Must be an IP Address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
+        /// The Static NAT destination IP address. Must be an IP address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
         /// </summary>
         [Input("internalIp", required: true)]
         public Input<string> InternalIp { get; set; } = null!;
 
+        /// <summary>
+        /// Label for this direct internet static NAT rule
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 

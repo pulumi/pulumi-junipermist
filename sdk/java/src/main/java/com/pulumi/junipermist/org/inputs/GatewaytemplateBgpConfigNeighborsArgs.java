@@ -33,23 +33,47 @@ public final class GatewaytemplateBgpConfigNeighborsArgs extends com.pulumi.reso
         return Optional.ofNullable(this.disabled);
     }
 
+    /**
+     * Export policy applied only to this BGP neighbor
+     * 
+     */
     @Import(name="exportPolicy")
     private @Nullable Output<String> exportPolicy;
 
+    /**
+     * @return Export policy applied only to this BGP neighbor
+     * 
+     */
     public Optional<Output<String>> exportPolicy() {
         return Optional.ofNullable(this.exportPolicy);
     }
 
+    /**
+     * BGP hold time for this neighbor, in seconds
+     * 
+     */
     @Import(name="holdTime")
     private @Nullable Output<Integer> holdTime;
 
+    /**
+     * @return BGP hold time for this neighbor, in seconds
+     * 
+     */
     public Optional<Output<Integer>> holdTime() {
         return Optional.ofNullable(this.holdTime);
     }
 
+    /**
+     * Import policy applied only to this BGP neighbor
+     * 
+     */
     @Import(name="importPolicy")
     private @Nullable Output<String> importPolicy;
 
+    /**
+     * @return Import policy applied only to this BGP neighbor
+     * 
+     */
     public Optional<Output<String>> importPolicy() {
         return Optional.ofNullable(this.importPolicy);
     }
@@ -85,14 +109,14 @@ public final class GatewaytemplateBgpConfigNeighborsArgs extends com.pulumi.reso
     }
 
     /**
-     * If `via`==`tunnel`, specifies which tunnel (primary/secondary) this neighbor is associated with. enum: `primary`, `secondary`
+     * If `via`==`tunnel`, primary or secondary tunnel associated with this BGP neighbor
      * 
      */
     @Import(name="tunnelVia")
     private @Nullable Output<String> tunnelVia;
 
     /**
-     * @return If `via`==`tunnel`, specifies which tunnel (primary/secondary) this neighbor is associated with. enum: `primary`, `secondary`
+     * @return If `via`==`tunnel`, primary or secondary tunnel associated with this BGP neighbor
      * 
      */
     public Optional<Output<String>> tunnelVia() {
@@ -150,29 +174,65 @@ public final class GatewaytemplateBgpConfigNeighborsArgs extends com.pulumi.reso
             return disabled(Output.of(disabled));
         }
 
+        /**
+         * @param exportPolicy Export policy applied only to this BGP neighbor
+         * 
+         * @return builder
+         * 
+         */
         public Builder exportPolicy(@Nullable Output<String> exportPolicy) {
             $.exportPolicy = exportPolicy;
             return this;
         }
 
+        /**
+         * @param exportPolicy Export policy applied only to this BGP neighbor
+         * 
+         * @return builder
+         * 
+         */
         public Builder exportPolicy(String exportPolicy) {
             return exportPolicy(Output.of(exportPolicy));
         }
 
+        /**
+         * @param holdTime BGP hold time for this neighbor, in seconds
+         * 
+         * @return builder
+         * 
+         */
         public Builder holdTime(@Nullable Output<Integer> holdTime) {
             $.holdTime = holdTime;
             return this;
         }
 
+        /**
+         * @param holdTime BGP hold time for this neighbor, in seconds
+         * 
+         * @return builder
+         * 
+         */
         public Builder holdTime(Integer holdTime) {
             return holdTime(Output.of(holdTime));
         }
 
+        /**
+         * @param importPolicy Import policy applied only to this BGP neighbor
+         * 
+         * @return builder
+         * 
+         */
         public Builder importPolicy(@Nullable Output<String> importPolicy) {
             $.importPolicy = importPolicy;
             return this;
         }
 
+        /**
+         * @param importPolicy Import policy applied only to this BGP neighbor
+         * 
+         * @return builder
+         * 
+         */
         public Builder importPolicy(String importPolicy) {
             return importPolicy(Output.of(importPolicy));
         }
@@ -220,7 +280,7 @@ public final class GatewaytemplateBgpConfigNeighborsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param tunnelVia If `via`==`tunnel`, specifies which tunnel (primary/secondary) this neighbor is associated with. enum: `primary`, `secondary`
+         * @param tunnelVia If `via`==`tunnel`, primary or secondary tunnel associated with this BGP neighbor
          * 
          * @return builder
          * 
@@ -231,7 +291,7 @@ public final class GatewaytemplateBgpConfigNeighborsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param tunnelVia If `via`==`tunnel`, specifies which tunnel (primary/secondary) this neighbor is associated with. enum: `primary`, `secondary`
+         * @param tunnelVia If `via`==`tunnel`, primary or secondary tunnel associated with this BGP neighbor
          * 
          * @return builder
          * 

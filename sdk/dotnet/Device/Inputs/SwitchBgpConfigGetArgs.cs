@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class SwitchBgpConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Authentication key used for BGP neighbor sessions, when configured
+        /// </summary>
         [Input("authKey")]
         public Input<string>? AuthKey { get; set; }
 
@@ -28,7 +31,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? ExportPolicy { get; set; }
 
         /// <summary>
-        /// Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+        /// Default BGP hold time for switch BGP sessions
         /// </summary>
         [Input("holdTime")]
         public Input<int>? HoldTime { get; set; }
@@ -39,6 +42,9 @@ namespace Pulumi.JuniperMist.Device.Inputs
         [Input("importPolicy")]
         public Input<string>? ImportPolicy { get; set; }
 
+        /// <summary>
+        /// Local BGP Autonomous System (AS) number for the switch
+        /// </summary>
         [Input("localAs", required: true)]
         public Input<string> LocalAs { get; set; } = null!;
 
@@ -46,7 +52,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputMap<Inputs.SwitchBgpConfigNeighborsGetArgs>? _neighbors;
 
         /// <summary>
-        /// Property key is the BGP Neighbor IP Address.
+        /// BGP neighbor settings keyed by neighbor IP address
         /// </summary>
         public InputMap<Inputs.SwitchBgpConfigNeighborsGetArgs> Neighbors
         {
@@ -58,7 +64,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _networks;
 
         /// <summary>
-        /// List of network names for BGP configuration. When a network is specified, a BGP group will be added to the VRF that network is part of.
+        /// Network names used to add BGP groups to the corresponding VRFs
         /// </summary>
         public InputList<string> Networks
         {
@@ -67,7 +73,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// enum: `External`, `Internal`
+        /// BGP session type for this switch BGP configuration
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

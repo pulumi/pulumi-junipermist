@@ -12,9 +12,15 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class GatewaytemplateServicePolicyIdpArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to alert without enforcing IDP prevention actions
+        /// </summary>
         [Input("alertOnly")]
         public Input<bool>? AlertOnly { get; set; }
 
+        /// <summary>
+        /// Whether IDP inspection is enabled for the policy
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

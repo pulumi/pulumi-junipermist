@@ -13,7 +13,13 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class SwitchOobIpConfig
     {
+        /// <summary>
+        /// Default gateway for the out-of-band management interface when `Type`==`Static`
+        /// </summary>
         public readonly string? Gateway;
+        /// <summary>
+        /// Static IPv4 address for the out-of-band management interface when `Type`==`Static`
+        /// </summary>
         public readonly string? Ip;
         /// <summary>
         /// Used only if `Subnet` is not specified in `Networks`
@@ -24,7 +30,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? Network;
         /// <summary>
-        /// enum: `Dhcp`, `Static`
+        /// IP assignment mode for the out-of-band management interface
         /// </summary>
         public readonly string? Type;
         /// <summary>

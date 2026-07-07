@@ -19,17 +19,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SwitchDhcpdConfigConfig {
     /**
-     * @return If `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
+     * @return If `type`==`server` or `type6`==`server`, DNS servers advertised to DHCP clients
      * 
      */
     private @Nullable List<String> dnsServers;
     /**
-     * @return If `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
+     * @return If `type`==`server` or `type6`==`server`, DNS search suffixes advertised to DHCP clients
      * 
      */
     private @Nullable List<String> dnsSuffixes;
     /**
-     * @return If `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. &#34;5684dae9ac8b&#34;)
+     * @return If `type`==`server` or `type6`==`server`, fixed client bindings for DHCP service
      * 
      */
     private @Nullable Map<String,SwitchDhcpdConfigConfigFixedBindings> fixedBindings;
@@ -39,22 +39,22 @@ public final class SwitchDhcpdConfigConfig {
      */
     private @Nullable String gateway;
     /**
-     * @return If `type`==`server`
+     * @return If `type`==`server`, ending IPv4 address for the DHCP lease pool
      * 
      */
     private @Nullable String ipEnd;
     /**
-     * @return If `type6`==`server`
+     * @return If `type6`==`server`, ending IPv6 address for the DHCP lease pool
      * 
      */
     private @Nullable String ipEnd6;
     /**
-     * @return If `type`==`server`
+     * @return If `type`==`server`, starting IPv4 address for the DHCP lease pool
      * 
      */
     private @Nullable String ipStart;
     /**
-     * @return If `type6`==`server`
+     * @return If `type6`==`server`, starting IPv6 address for the DHCP lease pool
      * 
      */
     private @Nullable String ipStart6;
@@ -64,7 +64,7 @@ public final class SwitchDhcpdConfigConfig {
      */
     private @Nullable Integer leaseTime;
     /**
-     * @return If `type`==`server` or `type6`==`server`. Property key is the DHCP option number
+     * @return If `type`==`server` or `type6`==`server`, custom DHCP options advertised to clients
      * 
      */
     private @Nullable Map<String,SwitchDhcpdConfigConfigOptions> options;
@@ -75,50 +75,48 @@ public final class SwitchDhcpdConfigConfig {
      */
     private @Nullable Boolean serverIdOverride;
     /**
-     * @return If `type`==`relay`
+     * @return If `type`==`relay`, upstream IPv4 DHCP servers
      * 
      */
     private @Nullable List<String> servers;
     /**
-     * @return If `type6`==`relay`
+     * @return If `type6`==`relay`, upstream IPv6 DHCP servers
      * 
      */
     private @Nullable List<String> servers6s;
     /**
-     * @return enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
+     * @return IPv4 DHCP mode for this switch network
      * 
      */
     private @Nullable String type;
     /**
-     * @return enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
+     * @return IPv6 DHCP mode for this switch network
      * 
      */
     private @Nullable String type6;
     /**
-     * @return If `type`==`server` or `type6`==`server`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
-     *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
-     *   * sub option code: 1-255, sub-option code&#39;
+     * @return If `type`==`server` or `type6`==`server`, vendor-encapsulated DHCP options advertised to clients
      * 
      */
     private @Nullable Map<String,SwitchDhcpdConfigConfigVendorEncapsulated> vendorEncapsulated;
 
     private SwitchDhcpdConfigConfig() {}
     /**
-     * @return If `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
+     * @return If `type`==`server` or `type6`==`server`, DNS servers advertised to DHCP clients
      * 
      */
     public List<String> dnsServers() {
         return this.dnsServers == null ? List.of() : this.dnsServers;
     }
     /**
-     * @return If `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
+     * @return If `type`==`server` or `type6`==`server`, DNS search suffixes advertised to DHCP clients
      * 
      */
     public List<String> dnsSuffixes() {
         return this.dnsSuffixes == null ? List.of() : this.dnsSuffixes;
     }
     /**
-     * @return If `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. &#34;5684dae9ac8b&#34;)
+     * @return If `type`==`server` or `type6`==`server`, fixed client bindings for DHCP service
      * 
      */
     public Map<String,SwitchDhcpdConfigConfigFixedBindings> fixedBindings() {
@@ -132,28 +130,28 @@ public final class SwitchDhcpdConfigConfig {
         return Optional.ofNullable(this.gateway);
     }
     /**
-     * @return If `type`==`server`
+     * @return If `type`==`server`, ending IPv4 address for the DHCP lease pool
      * 
      */
     public Optional<String> ipEnd() {
         return Optional.ofNullable(this.ipEnd);
     }
     /**
-     * @return If `type6`==`server`
+     * @return If `type6`==`server`, ending IPv6 address for the DHCP lease pool
      * 
      */
     public Optional<String> ipEnd6() {
         return Optional.ofNullable(this.ipEnd6);
     }
     /**
-     * @return If `type`==`server`
+     * @return If `type`==`server`, starting IPv4 address for the DHCP lease pool
      * 
      */
     public Optional<String> ipStart() {
         return Optional.ofNullable(this.ipStart);
     }
     /**
-     * @return If `type6`==`server`
+     * @return If `type6`==`server`, starting IPv6 address for the DHCP lease pool
      * 
      */
     public Optional<String> ipStart6() {
@@ -167,7 +165,7 @@ public final class SwitchDhcpdConfigConfig {
         return Optional.ofNullable(this.leaseTime);
     }
     /**
-     * @return If `type`==`server` or `type6`==`server`. Property key is the DHCP option number
+     * @return If `type`==`server` or `type6`==`server`, custom DHCP options advertised to clients
      * 
      */
     public Map<String,SwitchDhcpdConfigConfigOptions> options() {
@@ -182,37 +180,35 @@ public final class SwitchDhcpdConfigConfig {
         return Optional.ofNullable(this.serverIdOverride);
     }
     /**
-     * @return If `type`==`relay`
+     * @return If `type`==`relay`, upstream IPv4 DHCP servers
      * 
      */
     public List<String> servers() {
         return this.servers == null ? List.of() : this.servers;
     }
     /**
-     * @return If `type6`==`relay`
+     * @return If `type6`==`relay`, upstream IPv6 DHCP servers
      * 
      */
     public List<String> servers6s() {
         return this.servers6s == null ? List.of() : this.servers6s;
     }
     /**
-     * @return enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
+     * @return IPv4 DHCP mode for this switch network
      * 
      */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
+     * @return IPv6 DHCP mode for this switch network
      * 
      */
     public Optional<String> type6() {
         return Optional.ofNullable(this.type6);
     }
     /**
-     * @return If `type`==`server` or `type6`==`server`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
-     *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
-     *   * sub option code: 1-255, sub-option code&#39;
+     * @return If `type`==`server` or `type6`==`server`, vendor-encapsulated DHCP options advertised to clients
      * 
      */
     public Map<String,SwitchDhcpdConfigConfigVendorEncapsulated> vendorEncapsulated() {

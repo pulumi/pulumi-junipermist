@@ -24,6 +24,9 @@ namespace Pulumi.JuniperMist.Device.Inputs
         [Input("allowDhcpd")]
         public Input<bool>? AllowDhcpd { get; set; }
 
+        /// <summary>
+        /// Whether multiple supplicants may authenticate on the port
+        /// </summary>
         [Input("allowMultipleSupplicants")]
         public Input<bool>? AllowMultipleSupplicants { get; set; }
 
@@ -39,6 +42,9 @@ namespace Pulumi.JuniperMist.Device.Inputs
         [Input("bypassAuthWhenServerDownForUnknownClient")]
         public Input<bool>? BypassAuthWhenServerDownForUnknownClient { get; set; }
 
+        /// <summary>
+        /// Human-readable description for this local port configuration
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
@@ -55,7 +61,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// link connection mode. enum: `Auto`, `Full`, `Half`
+        /// Link duplex mode for this local port configuration
         /// </summary>
         [Input("duplex")]
         public Input<string>? Duplex { get; set; }
@@ -64,7 +70,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _dynamicVlanNetworks;
 
         /// <summary>
-        /// Only if `PortAuth`==`Dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
+        /// Only if `PortAuth`==`Dot1x`, networks or VLANs that RADIUS can return for dynamic VLAN assignment
         /// </summary>
         public InputList<string> DynamicVlanNetworks
         {
@@ -78,6 +84,9 @@ namespace Pulumi.JuniperMist.Device.Inputs
         [Input("enableMacAuth")]
         public Input<bool>? EnableMacAuth { get; set; }
 
+        /// <summary>
+        /// Whether QoS is enabled on ports using this local configuration
+        /// </summary>
         [Input("enableQos")]
         public Input<bool>? EnableQos { get; set; }
 
@@ -88,13 +97,13 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? GuestNetwork { get; set; }
 
         /// <summary>
-        /// inter_switch_link is used together with "isolation" under networks. NOTE: InterSwitchLink works only between Juniper devices. This has to be applied to both ports connected together
+        /// Used together with "isolation" under networks for links between Juniper devices; must be applied to both connected ports
         /// </summary>
         [Input("interSwitchLink")]
         public Input<bool>? InterSwitchLink { get; set; }
 
         /// <summary>
-        /// Only if `EnableMacAuth`==`True`
+        /// Only if `EnableMacAuth`==`True`, whether to use MAC authentication without 802.1X
         /// </summary>
         [Input("macAuthOnly")]
         public Input<bool>? MacAuthOnly { get; set; }
@@ -106,19 +115,19 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? MacAuthPreferred { get; set; }
 
         /// <summary>
-        /// Only if `EnableMacAuth` ==`True`. This type is ignored if MistNac is enabled. enum: `eap-md5`, `eap-peap`, `Pap`
+        /// Only if `EnableMacAuth`==`True`, MAC authentication protocol to use
         /// </summary>
         [Input("macAuthProtocol")]
         public Input<string>? MacAuthProtocol { get; set; }
 
         /// <summary>
-        /// Max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
+        /// Max number of MAC addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
         /// </summary>
         [Input("macLimit")]
         public Input<int>? MacLimit { get; set; }
 
         /// <summary>
-        /// enum: `Access`, `Inet`, `Trunk`
+        /// Switching mode for this local port configuration
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -133,7 +142,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _networks;
 
         /// <summary>
-        /// Only if `Mode`==`Trunk`, the list of network/vlans
+        /// Only if `Mode`==`Trunk`, network or VLAN names to trunk
         /// </summary>
         public InputList<string> Networks
         {
@@ -160,7 +169,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? PoeDisabled { get; set; }
 
         /// <summary>
-        /// if dot1x is desired, set to dot1x. enum: `Dot1x`
+        /// 802.1X authentication mode for this local port configuration
         /// </summary>
         [Input("portAuth")]
         public Input<string>? PortAuth { get; set; }
@@ -184,19 +193,19 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? ServerFailNetwork { get; set; }
 
         /// <summary>
-        /// Only if `PortAuth`==`Dot1x` when radius server reject / fails
+        /// Only if `PortAuth`==`Dot1x` when RADIUS server reject / fails
         /// </summary>
         [Input("serverRejectNetwork")]
         public Input<string>? ServerRejectNetwork { get; set; }
 
         /// <summary>
-        /// enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`Auto`
+        /// Link speed for this local port configuration
         /// </summary>
         [Input("speed")]
         public Input<string>? Speed { get; set; }
 
         /// <summary>
-        /// Switch storm control
+        /// Storm-control settings for this local port configuration
         /// </summary>
         [Input("stormControl")]
         public Input<Inputs.SwitchLocalPortConfigStormControlGetArgs>? StormControl { get; set; }
@@ -207,14 +216,20 @@ namespace Pulumi.JuniperMist.Device.Inputs
         [Input("stpEdge")]
         public Input<bool>? StpEdge { get; set; }
 
+        /// <summary>
+        /// Whether STP should prevent this port from becoming a root port
+        /// </summary>
         [Input("stpNoRootPort")]
         public Input<bool>? StpNoRootPort { get; set; }
 
+        /// <summary>
+        /// Whether STP treats this port as a point-to-point link
+        /// </summary>
         [Input("stpP2p")]
         public Input<bool>? StpP2p { get; set; }
 
         /// <summary>
-        /// Port usage name.
+        /// Port usage profile name for this local port configuration
         /// </summary>
         [Input("usage", required: true)]
         public Input<string> Usage { get; set; } = null!;

@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class VpnPathsPeerPathsArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Lower numeric value makes this outgoing WAN path more preferred
+        /// </summary>
         [Input("preference")]
         public Input<int>? Preference { get; set; }
 

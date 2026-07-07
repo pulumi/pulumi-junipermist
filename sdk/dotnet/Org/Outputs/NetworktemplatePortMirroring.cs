@@ -14,15 +14,15 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class NetworktemplatePortMirroring
     {
         /// <summary>
-        /// At least one of the `InputPortIdsIngress`, `InputPortIdsEgress` or `InputNetworksIngress ` should be specified
+        /// At least one mirror input source should be specified. Networks whose ingress traffic is mirrored
         /// </summary>
         public readonly ImmutableArray<string> InputNetworksIngresses;
         /// <summary>
-        /// At least one of the `InputPortIdsIngress`, `InputPortIdsEgress` or `InputNetworksIngress ` should be specified
+        /// At least one mirror input source should be specified. Switch ports whose egress traffic is mirrored
         /// </summary>
         public readonly ImmutableArray<string> InputPortIdsEgresses;
         /// <summary>
-        /// At least one of the `InputPortIdsIngress`, `InputPortIdsEgress` or `InputNetworksIngress ` should be specified
+        /// At least one mirror input source should be specified. Switch ports whose ingress traffic is mirrored
         /// </summary>
         public readonly ImmutableArray<string> InputPortIdsIngresses;
         /// <summary>

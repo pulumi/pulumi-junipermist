@@ -12,23 +12,39 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class GatewayPortMirroringPortMirrorArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Packet family used for this port mirroring rule
+        /// </summary>
         [Input("familyType")]
         public Input<string>? FamilyType { get; set; }
 
         [Input("ingressPortIds")]
         private InputList<string>? _ingressPortIds;
+
+        /// <summary>
+        /// Source gateway port IDs whose ingress traffic is mirrored
+        /// </summary>
         public InputList<string> IngressPortIds
         {
             get => _ingressPortIds ?? (_ingressPortIds = new InputList<string>());
             set => _ingressPortIds = value;
         }
 
+        /// <summary>
+        /// Destination gateway port ID that receives mirrored traffic
+        /// </summary>
         [Input("outputPortId")]
         public Input<string>? OutputPortId { get; set; }
 
+        /// <summary>
+        /// Sampling rate applied to mirrored traffic
+        /// </summary>
         [Input("rate")]
         public Input<int>? Rate { get; set; }
 
+        /// <summary>
+        /// Number of bytes copied from each mirrored packet
+        /// </summary>
         [Input("runLength")]
         public Input<int>? RunLength { get; set; }
 

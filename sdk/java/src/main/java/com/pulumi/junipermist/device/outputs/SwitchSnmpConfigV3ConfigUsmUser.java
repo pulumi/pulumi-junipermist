@@ -17,7 +17,7 @@ public final class SwitchSnmpConfigV3ConfigUsmUser {
      */
     private @Nullable String authenticationPassword;
     /**
-     * @return sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authentication-md5`, `authentication-none`, `authentication-sha`, `authentication-sha224`, `authentication-sha256`, `authentication-sha384`, `authentication-sha512`
+     * @return Authentication protocol used by this SNMPv3 USM user
      * 
      */
     private @Nullable String authenticationType;
@@ -27,10 +27,14 @@ public final class SwitchSnmpConfigV3ConfigUsmUser {
      */
     private @Nullable String encryptionPassword;
     /**
-     * @return enum: `privacy-3des`, `privacy-aes128`, `privacy-des`, `privacy-none`
+     * @return Privacy protocol used by this SNMPv3 USM user
      * 
      */
     private @Nullable String encryptionType;
+    /**
+     * @return Username for the SNMPv3 USM user
+     * 
+     */
     private @Nullable String name;
 
     private SwitchSnmpConfigV3ConfigUsmUser() {}
@@ -42,7 +46,7 @@ public final class SwitchSnmpConfigV3ConfigUsmUser {
         return Optional.ofNullable(this.authenticationPassword);
     }
     /**
-     * @return sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authentication-md5`, `authentication-none`, `authentication-sha`, `authentication-sha224`, `authentication-sha256`, `authentication-sha384`, `authentication-sha512`
+     * @return Authentication protocol used by this SNMPv3 USM user
      * 
      */
     public Optional<String> authenticationType() {
@@ -56,12 +60,16 @@ public final class SwitchSnmpConfigV3ConfigUsmUser {
         return Optional.ofNullable(this.encryptionPassword);
     }
     /**
-     * @return enum: `privacy-3des`, `privacy-aes128`, `privacy-des`, `privacy-none`
+     * @return Privacy protocol used by this SNMPv3 USM user
      * 
      */
     public Optional<String> encryptionType() {
         return Optional.ofNullable(this.encryptionType);
     }
+    /**
+     * @return Username for the SNMPv3 USM user
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }

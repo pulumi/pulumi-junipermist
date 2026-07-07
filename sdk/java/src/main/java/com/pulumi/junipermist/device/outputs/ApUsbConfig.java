@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ApUsbConfig {
     /**
-     * @return Only if `type`==`imagotag`
+     * @return Only if `type`==`imagotag`. CA certificate used to validate the Imagotag service certificate
      * 
      */
     private @Nullable String cacert;
@@ -29,17 +29,17 @@ public final class ApUsbConfig {
      */
     private @Nullable Boolean enabled;
     /**
-     * @return Only if `type`==`imagotag`
+     * @return Only if `type`==`imagotag`. Imagotag service host or IP address contacted by the AP
      * 
      */
     private @Nullable String host;
     /**
-     * @return Only if `type`==`imagotag`
+     * @return Only if `type`==`imagotag`. TCP port used to reach the Imagotag service
      * 
      */
     private @Nullable Integer port;
     /**
-     * @return usb config type. enum: `hanshow`, `imagotag`, `solum`
+     * @return USB integration type for this legacy AP USB configuration
      * 
      */
     private @Nullable String type;
@@ -56,7 +56,7 @@ public final class ApUsbConfig {
 
     private ApUsbConfig() {}
     /**
-     * @return Only if `type`==`imagotag`
+     * @return Only if `type`==`imagotag`. CA certificate used to validate the Imagotag service certificate
      * 
      */
     public Optional<String> cacert() {
@@ -77,21 +77,21 @@ public final class ApUsbConfig {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Only if `type`==`imagotag`
+     * @return Only if `type`==`imagotag`. Imagotag service host or IP address contacted by the AP
      * 
      */
     public Optional<String> host() {
         return Optional.ofNullable(this.host);
     }
     /**
-     * @return Only if `type`==`imagotag`
+     * @return Only if `type`==`imagotag`. TCP port used to reach the Imagotag service
      * 
      */
     public Optional<Integer> port() {
         return Optional.ofNullable(this.port);
     }
     /**
-     * @return usb config type. enum: `hanshow`, `imagotag`, `solum`
+     * @return USB integration type for this legacy AP USB configuration
      * 
      */
     public Optional<String> type() {

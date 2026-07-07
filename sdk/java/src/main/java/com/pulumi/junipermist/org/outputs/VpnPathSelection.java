@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VpnPathSelection {
     /**
-     * @return enum: `disabled`, `simple`, `manual`
+     * @return Path selection strategy for a hub-and-spoke VPN
      * 
      */
     private @Nullable String strategy;
 
     private VpnPathSelection() {}
     /**
-     * @return enum: `disabled`, `simple`, `manual`
+     * @return Path selection strategy for a hub-and-spoke VPN
      * 
      */
     public Optional<String> strategy() {

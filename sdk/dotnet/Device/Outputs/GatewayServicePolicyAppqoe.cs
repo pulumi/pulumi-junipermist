@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class GatewayServicePolicyAppqoe
     {
+        /// <summary>
+        /// Whether application QoE is enabled for the service policy
+        /// </summary>
         public readonly bool? Enabled;
 
         [OutputConstructor]

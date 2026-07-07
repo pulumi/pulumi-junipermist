@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly int? ExpiryInDays;
         /// <summary>
-        /// Required password length
+        /// Minimum number of characters required for passwords
         /// </summary>
         public readonly int? MinLength;
         /// <summary>

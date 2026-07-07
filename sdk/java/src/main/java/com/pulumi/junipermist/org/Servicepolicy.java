@@ -87,96 +87,128 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:org/servicepolicy:Servicepolicy")
 public class Servicepolicy extends com.pulumi.resources.CustomResource {
     /**
-     * SRX only
+     * Advanced anti-malware settings applied by this service policy
      * 
      */
     @Export(name="aamw", refs={ServicepolicyAamw.class}, tree="[0]")
     private Output</* @Nullable */ ServicepolicyAamw> aamw;
 
     /**
-     * @return SRX only
+     * @return Advanced anti-malware settings applied by this service policy
      * 
      */
     public Output<Optional<ServicepolicyAamw>> aamw() {
         return Codegen.optional(this.aamw);
     }
     /**
-     * enum: `allow`, `deny`
+     * Allow or deny action for traffic matched by this service policy
      * 
      */
     @Export(name="action", refs={String.class}, tree="[0]")
     private Output<String> action;
 
     /**
-     * @return enum: `allow`, `deny`
+     * @return Allow or deny action for traffic matched by this service policy
      * 
      */
     public Output<String> action() {
         return this.action;
     }
     /**
-     * For SRX-only
+     * Malware and virus inspection settings applied by this service policy
      * 
      */
     @Export(name="antivirus", refs={ServicepolicyAntivirus.class}, tree="[0]")
     private Output</* @Nullable */ ServicepolicyAntivirus> antivirus;
 
     /**
-     * @return For SRX-only
+     * @return Malware and virus inspection settings applied by this service policy
      * 
      */
     public Output<Optional<ServicepolicyAntivirus>> antivirus() {
         return Codegen.optional(this.antivirus);
     }
     /**
-     * SRX only
+     * Application QoE settings applied by this service policy
      * 
      */
     @Export(name="appqoe", refs={ServicepolicyAppqoe.class}, tree="[0]")
     private Output</* @Nullable */ ServicepolicyAppqoe> appqoe;
 
     /**
-     * @return SRX only
+     * @return Application QoE settings applied by this service policy
      * 
      */
     public Output<Optional<ServicepolicyAppqoe>> appqoe() {
         return Codegen.optional(this.appqoe);
     }
+    /**
+     * Enhanced web filtering rules applied by this service policy
+     * 
+     */
     @Export(name="ewfs", refs={List.class,ServicepolicyEwf.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ServicepolicyEwf>> ewfs;
 
+    /**
+     * @return Enhanced web filtering rules applied by this service policy
+     * 
+     */
     public Output<Optional<List<ServicepolicyEwf>>> ewfs() {
         return Codegen.optional(this.ewfs);
     }
+    /**
+     * Intrusion detection and prevention settings applied by this service policy
+     * 
+     */
     @Export(name="idp", refs={ServicepolicyIdp.class}, tree="[0]")
     private Output</* @Nullable */ ServicepolicyIdp> idp;
 
+    /**
+     * @return Intrusion detection and prevention settings applied by this service policy
+     * 
+     */
     public Output<Optional<ServicepolicyIdp>> idp() {
         return Codegen.optional(this.idp);
     }
     /**
-     * access within the same VRF
+     * Whether the policy permits access within the same VRF
      * 
      */
     @Export(name="localRouting", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> localRouting;
 
     /**
-     * @return access within the same VRF
+     * @return Whether the policy permits access within the same VRF
      * 
      */
     public Output<Optional<Boolean>> localRouting() {
         return Codegen.optional(this.localRouting);
     }
+    /**
+     * Display name of the service policy
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Display name of the service policy
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Organization that owns this service policy
+     * 
+     */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
+    /**
+     * @return Organization that owns this service policy
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }
@@ -194,29 +226,45 @@ public class Servicepolicy extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> pathPreference() {
         return Codegen.optional(this.pathPreference);
     }
+    /**
+     * Application services or groups matched by this policy
+     * 
+     */
     @Export(name="services", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> services;
 
+    /**
+     * @return Application services or groups matched by this policy
+     * 
+     */
     public Output<Optional<List<String>>> services() {
         return Codegen.optional(this.services);
     }
     /**
-     * For SRX-only
+     * SSL proxy inspection settings applied by this service policy
      * 
      */
     @Export(name="sslProxy", refs={ServicepolicySslProxy.class}, tree="[0]")
     private Output</* @Nullable */ ServicepolicySslProxy> sslProxy;
 
     /**
-     * @return For SRX-only
+     * @return SSL proxy inspection settings applied by this service policy
      * 
      */
     public Output<Optional<ServicepolicySslProxy>> sslProxy() {
         return Codegen.optional(this.sslProxy);
     }
+    /**
+     * Tenant names matched by this service policy
+     * 
+     */
     @Export(name="tenants", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tenants;
 
+    /**
+     * @return Tenant names matched by this service policy
+     * 
+     */
     public Output<Optional<List<String>>> tenants() {
         return Codegen.optional(this.tenants);
     }

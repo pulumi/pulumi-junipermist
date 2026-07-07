@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -123,14 +124,14 @@ public final class SsoArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name
+     * Display name of the SSO configuration
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name
+     * @return Display name of the SSO configuration
      * 
      */
     public Optional<Output<String>> name() {
@@ -153,23 +154,76 @@ public final class SsoArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+     * Provider domain for Okta OAuth SSO when `oauthType`==`okta`
      * 
      */
     @Import(name="oauthProviderDomain")
     private @Nullable Output<String> oauthProviderDomain;
 
     /**
-     * @return If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+     * @return Provider domain for Okta OAuth SSO when `oauthType`==`okta`
      * 
      */
     public Optional<Output<String>> oauthProviderDomain() {
         return Optional.ofNullable(this.oauthProviderDomain);
     }
 
+    /**
+     * SSIDs that support OpenRoaming, used when `idpType`==`openroaming`
+     * 
+     */
+    @Import(name="openroamingSsids")
+    private @Nullable Output<List<String>> openroamingSsids;
+
+    /**
+     * @return SSIDs that support OpenRoaming, used when `idpType`==`openroaming`
+     * 
+     */
+    public Optional<Output<List<String>>> openroamingSsids() {
+        return Optional.ofNullable(this.openroamingSsids);
+    }
+
+    /**
+     * Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+     * 
+     */
+    @Import(name="openroamingWbaClientCert")
+    private @Nullable Output<String> openroamingWbaClientCert;
+
+    /**
+     * @return Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+     * 
+     */
+    public Optional<Output<String>> openroamingWbaClientCert() {
+        return Optional.ofNullable(this.openroamingWbaClientCert);
+    }
+
+    /**
+     * Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+     * 
+     */
+    @Import(name="openroamingWbaClientKey")
+    private @Nullable Output<String> openroamingWbaClientKey;
+
+    /**
+     * @return Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+     * 
+     */
+    public Optional<Output<String>> openroamingWbaClientKey() {
+        return Optional.ofNullable(this.openroamingWbaClientKey);
+    }
+
+    /**
+     * Owning organization identifier for this SSO configuration
+     * 
+     */
     @Import(name="orgId", required=true)
     private Output<String> orgId;
 
+    /**
+     * @return Owning organization identifier for this SSO configuration
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }
@@ -217,6 +271,9 @@ public final class SsoArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.nameidFormat = $.nameidFormat;
         this.oauthProviderDomain = $.oauthProviderDomain;
+        this.openroamingSsids = $.openroamingSsids;
+        this.openroamingWbaClientCert = $.openroamingWbaClientCert;
+        this.openroamingWbaClientKey = $.openroamingWbaClientKey;
         this.orgId = $.orgId;
         this.roleAttrExtraction = $.roleAttrExtraction;
         this.roleAttrFrom = $.roleAttrFrom;
@@ -388,7 +445,7 @@ public final class SsoArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name
+         * @param name Display name of the SSO configuration
          * 
          * @return builder
          * 
@@ -399,7 +456,7 @@ public final class SsoArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name
+         * @param name Display name of the SSO configuration
          * 
          * @return builder
          * 
@@ -430,7 +487,7 @@ public final class SsoArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauthProviderDomain If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+         * @param oauthProviderDomain Provider domain for Okta OAuth SSO when `oauthType`==`okta`
          * 
          * @return builder
          * 
@@ -441,7 +498,7 @@ public final class SsoArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauthProviderDomain If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+         * @param oauthProviderDomain Provider domain for Okta OAuth SSO when `oauthType`==`okta`
          * 
          * @return builder
          * 
@@ -450,11 +507,96 @@ public final class SsoArgs extends com.pulumi.resources.ResourceArgs {
             return oauthProviderDomain(Output.of(oauthProviderDomain));
         }
 
+        /**
+         * @param openroamingSsids SSIDs that support OpenRoaming, used when `idpType`==`openroaming`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder openroamingSsids(@Nullable Output<List<String>> openroamingSsids) {
+            $.openroamingSsids = openroamingSsids;
+            return this;
+        }
+
+        /**
+         * @param openroamingSsids SSIDs that support OpenRoaming, used when `idpType`==`openroaming`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder openroamingSsids(List<String> openroamingSsids) {
+            return openroamingSsids(Output.of(openroamingSsids));
+        }
+
+        /**
+         * @param openroamingSsids SSIDs that support OpenRoaming, used when `idpType`==`openroaming`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder openroamingSsids(String... openroamingSsids) {
+            return openroamingSsids(List.of(openroamingSsids));
+        }
+
+        /**
+         * @param openroamingWbaClientCert Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder openroamingWbaClientCert(@Nullable Output<String> openroamingWbaClientCert) {
+            $.openroamingWbaClientCert = openroamingWbaClientCert;
+            return this;
+        }
+
+        /**
+         * @param openroamingWbaClientCert Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder openroamingWbaClientCert(String openroamingWbaClientCert) {
+            return openroamingWbaClientCert(Output.of(openroamingWbaClientCert));
+        }
+
+        /**
+         * @param openroamingWbaClientKey Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder openroamingWbaClientKey(@Nullable Output<String> openroamingWbaClientKey) {
+            $.openroamingWbaClientKey = openroamingWbaClientKey;
+            return this;
+        }
+
+        /**
+         * @param openroamingWbaClientKey Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder openroamingWbaClientKey(String openroamingWbaClientKey) {
+            return openroamingWbaClientKey(Output.of(openroamingWbaClientKey));
+        }
+
+        /**
+         * @param orgId Owning organization identifier for this SSO configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param orgId Owning organization identifier for this SSO configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }

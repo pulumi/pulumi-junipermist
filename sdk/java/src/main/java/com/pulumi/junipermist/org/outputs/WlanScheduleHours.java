@@ -12,86 +12,86 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WlanScheduleHours {
     /**
-     * @return Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * @return Operating hour range for Friday
      * 
      */
     private @Nullable String fri;
     /**
-     * @return Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * @return Operating hour range for Monday
      * 
      */
     private @Nullable String mon;
     /**
-     * @return Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * @return Operating hour range for Saturday
      * 
      */
     private @Nullable String sat;
     /**
-     * @return Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * @return Operating hour range for Sunday
      * 
      */
     private @Nullable String sun;
     /**
-     * @return Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * @return Operating hour range for Thursday
      * 
      */
     private @Nullable String thu;
     /**
-     * @return Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * @return Operating hour range for Tuesday
      * 
      */
     private @Nullable String tue;
     /**
-     * @return Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * @return Operating hour range for Wednesday
      * 
      */
     private @Nullable String wed;
 
     private WlanScheduleHours() {}
     /**
-     * @return Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * @return Operating hour range for Friday
      * 
      */
     public Optional<String> fri() {
         return Optional.ofNullable(this.fri);
     }
     /**
-     * @return Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * @return Operating hour range for Monday
      * 
      */
     public Optional<String> mon() {
         return Optional.ofNullable(this.mon);
     }
     /**
-     * @return Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * @return Operating hour range for Saturday
      * 
      */
     public Optional<String> sat() {
         return Optional.ofNullable(this.sat);
     }
     /**
-     * @return Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * @return Operating hour range for Sunday
      * 
      */
     public Optional<String> sun() {
         return Optional.ofNullable(this.sun);
     }
     /**
-     * @return Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * @return Operating hour range for Thursday
      * 
      */
     public Optional<String> thu() {
         return Optional.ofNullable(this.thu);
     }
     /**
-     * @return Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * @return Operating hour range for Tuesday
      * 
      */
     public Optional<String> tue() {
         return Optional.ofNullable(this.tue);
     }
     /**
-     * @return Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * @return Operating hour range for Wednesday
      * 
      */
     public Optional<String> wed() {

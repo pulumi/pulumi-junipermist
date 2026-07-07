@@ -26,6 +26,10 @@ public final class SwitchLocalPortConfig {
      * 
      */
     private @Nullable Boolean allowDhcpd;
+    /**
+     * @return Whether multiple supplicants may authenticate on the port
+     * 
+     */
     private @Nullable Boolean allowMultipleSupplicants;
     /**
      * @return Only if `portAuth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
@@ -37,6 +41,10 @@ public final class SwitchLocalPortConfig {
      * 
      */
     private @Nullable Boolean bypassAuthWhenServerDownForUnknownClient;
+    /**
+     * @return Human-readable description for this local port configuration
+     * 
+     */
     private @Nullable String description;
     /**
      * @return Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
@@ -49,12 +57,12 @@ public final class SwitchLocalPortConfig {
      */
     private @Nullable Boolean disabled;
     /**
-     * @return link connection mode. enum: `auto`, `full`, `half`
+     * @return Link duplex mode for this local port configuration
      * 
      */
     private @Nullable String duplex;
     /**
-     * @return Only if `portAuth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
+     * @return Only if `portAuth`==`dot1x`, networks or VLANs that RADIUS can return for dynamic VLAN assignment
      * 
      */
     private @Nullable List<String> dynamicVlanNetworks;
@@ -63,6 +71,10 @@ public final class SwitchLocalPortConfig {
      * 
      */
     private @Nullable Boolean enableMacAuth;
+    /**
+     * @return Whether QoS is enabled on ports using this local configuration
+     * 
+     */
     private @Nullable Boolean enableQos;
     /**
      * @return Only if `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
@@ -70,12 +82,12 @@ public final class SwitchLocalPortConfig {
      */
     private @Nullable String guestNetwork;
     /**
-     * @return inter_switch_link is used together with &#34;isolation&#34; under networks. NOTE: interSwitchLink works only between Juniper devices. This has to be applied to both ports connected together
+     * @return Used together with &#34;isolation&#34; under networks for links between Juniper devices; must be applied to both connected ports
      * 
      */
     private @Nullable Boolean interSwitchLink;
     /**
-     * @return Only if `enableMacAuth`==`true`
+     * @return Only if `enableMacAuth`==`true`, whether to use MAC authentication without 802.1X
      * 
      */
     private @Nullable Boolean macAuthOnly;
@@ -85,17 +97,17 @@ public final class SwitchLocalPortConfig {
      */
     private @Nullable Boolean macAuthPreferred;
     /**
-     * @return Only if `enableMacAuth` ==`true`. This type is ignored if mistNac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
+     * @return Only if `enableMacAuth`==`true`, MAC authentication protocol to use
      * 
      */
     private @Nullable String macAuthProtocol;
     /**
-     * @return Max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
+     * @return Max number of MAC addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
      * 
      */
     private @Nullable Integer macLimit;
     /**
-     * @return enum: `access`, `inet`, `trunk`
+     * @return Switching mode for this local port configuration
      * 
      */
     private @Nullable String mode;
@@ -105,7 +117,7 @@ public final class SwitchLocalPortConfig {
      */
     private @Nullable Integer mtu;
     /**
-     * @return Only if `mode`==`trunk`, the list of network/vlans
+     * @return Only if `mode`==`trunk`, network or VLAN names to trunk
      * 
      */
     private @Nullable List<String> networks;
@@ -125,7 +137,7 @@ public final class SwitchLocalPortConfig {
      */
     private @Nullable Boolean poeDisabled;
     /**
-     * @return if dot1x is desired, set to dot1x. enum: `dot1x`
+     * @return 802.1X authentication mode for this local port configuration
      * 
      */
     private @Nullable String portAuth;
@@ -145,17 +157,17 @@ public final class SwitchLocalPortConfig {
      */
     private @Nullable String serverFailNetwork;
     /**
-     * @return Only if `portAuth`==`dot1x` when radius server reject / fails
+     * @return Only if `portAuth`==`dot1x` when RADIUS server reject / fails
      * 
      */
     private @Nullable String serverRejectNetwork;
     /**
-     * @return enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+     * @return Link speed for this local port configuration
      * 
      */
     private @Nullable String speed;
     /**
-     * @return Switch storm control
+     * @return Storm-control settings for this local port configuration
      * 
      */
     private @Nullable SwitchLocalPortConfigStormControl stormControl;
@@ -164,10 +176,18 @@ public final class SwitchLocalPortConfig {
      * 
      */
     private @Nullable Boolean stpEdge;
+    /**
+     * @return Whether STP should prevent this port from becoming a root port
+     * 
+     */
     private @Nullable Boolean stpNoRootPort;
+    /**
+     * @return Whether STP treats this port as a point-to-point link
+     * 
+     */
     private @Nullable Boolean stpP2p;
     /**
-     * @return Port usage name.
+     * @return Port usage profile name for this local port configuration
      * 
      */
     private String usage;
@@ -197,6 +217,10 @@ public final class SwitchLocalPortConfig {
     public Optional<Boolean> allowDhcpd() {
         return Optional.ofNullable(this.allowDhcpd);
     }
+    /**
+     * @return Whether multiple supplicants may authenticate on the port
+     * 
+     */
     public Optional<Boolean> allowMultipleSupplicants() {
         return Optional.ofNullable(this.allowMultipleSupplicants);
     }
@@ -214,6 +238,10 @@ public final class SwitchLocalPortConfig {
     public Optional<Boolean> bypassAuthWhenServerDownForUnknownClient() {
         return Optional.ofNullable(this.bypassAuthWhenServerDownForUnknownClient);
     }
+    /**
+     * @return Human-readable description for this local port configuration
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
@@ -232,14 +260,14 @@ public final class SwitchLocalPortConfig {
         return Optional.ofNullable(this.disabled);
     }
     /**
-     * @return link connection mode. enum: `auto`, `full`, `half`
+     * @return Link duplex mode for this local port configuration
      * 
      */
     public Optional<String> duplex() {
         return Optional.ofNullable(this.duplex);
     }
     /**
-     * @return Only if `portAuth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
+     * @return Only if `portAuth`==`dot1x`, networks or VLANs that RADIUS can return for dynamic VLAN assignment
      * 
      */
     public List<String> dynamicVlanNetworks() {
@@ -252,6 +280,10 @@ public final class SwitchLocalPortConfig {
     public Optional<Boolean> enableMacAuth() {
         return Optional.ofNullable(this.enableMacAuth);
     }
+    /**
+     * @return Whether QoS is enabled on ports using this local configuration
+     * 
+     */
     public Optional<Boolean> enableQos() {
         return Optional.ofNullable(this.enableQos);
     }
@@ -263,14 +295,14 @@ public final class SwitchLocalPortConfig {
         return Optional.ofNullable(this.guestNetwork);
     }
     /**
-     * @return inter_switch_link is used together with &#34;isolation&#34; under networks. NOTE: interSwitchLink works only between Juniper devices. This has to be applied to both ports connected together
+     * @return Used together with &#34;isolation&#34; under networks for links between Juniper devices; must be applied to both connected ports
      * 
      */
     public Optional<Boolean> interSwitchLink() {
         return Optional.ofNullable(this.interSwitchLink);
     }
     /**
-     * @return Only if `enableMacAuth`==`true`
+     * @return Only if `enableMacAuth`==`true`, whether to use MAC authentication without 802.1X
      * 
      */
     public Optional<Boolean> macAuthOnly() {
@@ -284,21 +316,21 @@ public final class SwitchLocalPortConfig {
         return Optional.ofNullable(this.macAuthPreferred);
     }
     /**
-     * @return Only if `enableMacAuth` ==`true`. This type is ignored if mistNac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
+     * @return Only if `enableMacAuth`==`true`, MAC authentication protocol to use
      * 
      */
     public Optional<String> macAuthProtocol() {
         return Optional.ofNullable(this.macAuthProtocol);
     }
     /**
-     * @return Max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
+     * @return Max number of MAC addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
      * 
      */
     public Optional<Integer> macLimit() {
         return Optional.ofNullable(this.macLimit);
     }
     /**
-     * @return enum: `access`, `inet`, `trunk`
+     * @return Switching mode for this local port configuration
      * 
      */
     public Optional<String> mode() {
@@ -312,7 +344,7 @@ public final class SwitchLocalPortConfig {
         return Optional.ofNullable(this.mtu);
     }
     /**
-     * @return Only if `mode`==`trunk`, the list of network/vlans
+     * @return Only if `mode`==`trunk`, network or VLAN names to trunk
      * 
      */
     public List<String> networks() {
@@ -340,7 +372,7 @@ public final class SwitchLocalPortConfig {
         return Optional.ofNullable(this.poeDisabled);
     }
     /**
-     * @return if dot1x is desired, set to dot1x. enum: `dot1x`
+     * @return 802.1X authentication mode for this local port configuration
      * 
      */
     public Optional<String> portAuth() {
@@ -368,21 +400,21 @@ public final class SwitchLocalPortConfig {
         return Optional.ofNullable(this.serverFailNetwork);
     }
     /**
-     * @return Only if `portAuth`==`dot1x` when radius server reject / fails
+     * @return Only if `portAuth`==`dot1x` when RADIUS server reject / fails
      * 
      */
     public Optional<String> serverRejectNetwork() {
         return Optional.ofNullable(this.serverRejectNetwork);
     }
     /**
-     * @return enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+     * @return Link speed for this local port configuration
      * 
      */
     public Optional<String> speed() {
         return Optional.ofNullable(this.speed);
     }
     /**
-     * @return Switch storm control
+     * @return Storm-control settings for this local port configuration
      * 
      */
     public Optional<SwitchLocalPortConfigStormControl> stormControl() {
@@ -395,14 +427,22 @@ public final class SwitchLocalPortConfig {
     public Optional<Boolean> stpEdge() {
         return Optional.ofNullable(this.stpEdge);
     }
+    /**
+     * @return Whether STP should prevent this port from becoming a root port
+     * 
+     */
     public Optional<Boolean> stpNoRootPort() {
         return Optional.ofNullable(this.stpNoRootPort);
     }
+    /**
+     * @return Whether STP treats this port as a point-to-point link
+     * 
+     */
     public Optional<Boolean> stpP2p() {
         return Optional.ofNullable(this.stpP2p);
     }
     /**
-     * @return Port usage name.
+     * @return Port usage profile name for this local port configuration
      * 
      */
     public String usage() {

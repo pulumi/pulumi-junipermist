@@ -38,23 +38,31 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     public static final GatewayState Empty = new GatewayState();
 
     /**
-     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
+     * Additional CLI configuration commands to apply to this gateway
      * 
      */
     @Import(name="additionalConfigCmds")
     private @Nullable Output<List<String>> additionalConfigCmds;
 
     /**
-     * @return additional CLI commands to append to the generated Junos config. **Note**: no check is done
+     * @return Additional CLI configuration commands to apply to this gateway
      * 
      */
     public Optional<Output<List<String>>> additionalConfigCmds() {
         return Optional.ofNullable(this.additionalConfigCmds);
     }
 
+    /**
+     * BGP routing configuration for this gateway. Property key is the BGP session name
+     * 
+     */
     @Import(name="bgpConfig")
     private @Nullable Output<Map<String,GatewayBgpConfigArgs>> bgpConfig;
 
+    /**
+     * @return BGP routing configuration for this gateway. Property key is the BGP session name
+     * 
+     */
     public Optional<Output<Map<String,GatewayBgpConfigArgs>>> bgpConfig() {
         return Optional.ofNullable(this.bgpConfig);
     }
@@ -66,22 +74,30 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.deviceId);
     }
 
+    /**
+     * DHCP server configuration served by this gateway
+     * 
+     */
     @Import(name="dhcpdConfig")
     private @Nullable Output<GatewayDhcpdConfigArgs> dhcpdConfig;
 
+    /**
+     * @return DHCP server configuration served by this gateway
+     * 
+     */
     public Optional<Output<GatewayDhcpdConfigArgs>> dhcpdConfig() {
         return Optional.ofNullable(this.dhcpdConfig);
     }
 
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS servers configured for this gateway
      * 
      */
     @Import(name="dnsServers")
     private @Nullable Output<List<String>> dnsServers;
 
     /**
-     * @return Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * @return DNS servers configured for this gateway
      * 
      */
     public Optional<Output<List<String>>> dnsServers() {
@@ -89,14 +105,14 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS search suffixes configured for this gateway
      * 
      */
     @Import(name="dnsSuffixes")
     private @Nullable Output<List<String>> dnsSuffixes;
 
     /**
-     * @return Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * @return DNS search suffixes configured for this gateway
      * 
      */
     public Optional<Output<List<String>>> dnsSuffixes() {
@@ -104,14 +120,14 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;), the destination Network name or a variable (e.g. &#34;{{myvar}}&#34;)
+     * Additional IPv4 routes configured on this gateway
      * 
      */
     @Import(name="extraRoutes")
     private @Nullable Output<Map<String,GatewayExtraRoutesArgs>> extraRoutes;
 
     /**
-     * @return Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;), the destination Network name or a variable (e.g. &#34;{{myvar}}&#34;)
+     * @return Additional IPv4 routes configured on this gateway
      * 
      */
     public Optional<Output<Map<String,GatewayExtraRoutesArgs>>> extraRoutes() {
@@ -119,14 +135,14 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;), the destination Network name or a variable (e.g. &#34;{{myvar}}&#34;)
+     * Additional IPv6 routes configured on this gateway
      * 
      */
     @Import(name="extraRoutes6")
     private @Nullable Output<Map<String,GatewayExtraRoutes6Args>> extraRoutes6;
 
     /**
-     * @return Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;), the destination Network name or a variable (e.g. &#34;{{myvar}}&#34;)
+     * @return Additional IPv6 routes configured on this gateway
      * 
      */
     public Optional<Output<Map<String,GatewayExtraRoutes6Args>>> extraRoutes6() {
@@ -134,14 +150,14 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Gateway Management settings
+     * Management-plane settings for this gateway
      * 
      */
     @Import(name="gatewayMgmt")
     private @Nullable Output<GatewayGatewayMgmtArgs> gatewayMgmt;
 
     /**
-     * @return Gateway Management settings
+     * @return Management-plane settings for this gateway
      * 
      */
     public Optional<Output<GatewayGatewayMgmtArgs>> gatewayMgmt() {
@@ -149,50 +165,74 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Property key is the profile name
+     * Intrusion detection and prevention profiles configured for this gateway
      * 
      */
     @Import(name="idpProfiles")
     private @Nullable Output<Map<String,GatewayIdpProfilesArgs>> idpProfiles;
 
     /**
-     * @return Property key is the profile name
+     * @return Intrusion detection and prevention profiles configured for this gateway
      * 
      */
     public Optional<Output<Map<String,GatewayIdpProfilesArgs>>> idpProfiles() {
         return Optional.ofNullable(this.idpProfiles);
     }
 
+    /**
+     * First custom image URL associated with the gateway
+     * 
+     */
     @Import(name="image1Url")
     private @Nullable Output<String> image1Url;
 
+    /**
+     * @return First custom image URL associated with the gateway
+     * 
+     */
     public Optional<Output<String>> image1Url() {
         return Optional.ofNullable(this.image1Url);
     }
 
+    /**
+     * Second custom image URL associated with the gateway
+     * 
+     */
     @Import(name="image2Url")
     private @Nullable Output<String> image2Url;
 
+    /**
+     * @return Second custom image URL associated with the gateway
+     * 
+     */
     public Optional<Output<String>> image2Url() {
         return Optional.ofNullable(this.image2Url);
     }
 
+    /**
+     * Third custom image URL associated with the gateway
+     * 
+     */
     @Import(name="image3Url")
     private @Nullable Output<String> image3Url;
 
+    /**
+     * @return Third custom image URL associated with the gateway
+     * 
+     */
     public Optional<Output<String>> image3Url() {
         return Optional.ofNullable(this.image3Url);
     }
 
     /**
-     * Property key is the network name
+     * Gateway interface IP configurations by network name
      * 
      */
     @Import(name="ipConfigs")
     private @Nullable Output<Map<String,GatewayIpConfigsArgs>> ipConfigs;
 
     /**
-     * @return Property key is the network name
+     * @return Gateway interface IP configurations by network name
      * 
      */
     public Optional<Output<Map<String,GatewayIpConfigsArgs>>> ipConfigs() {
@@ -200,14 +240,14 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Device MAC address
+     * Gateway MAC address used to identify the device
      * 
      */
     @Import(name="mac")
     private @Nullable Output<String> mac;
 
     /**
-     * @return Device MAC address
+     * @return Gateway MAC address used to identify the device
      * 
      */
     public Optional<Output<String>> mac() {
@@ -268,73 +308,121 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Device Model
+     * Gateway model reported for the device
      * 
      */
     @Import(name="model")
     private @Nullable Output<String> model;
 
     /**
-     * @return Device Model
+     * @return Gateway model reported for the device
      * 
      */
     public Optional<Output<String>> model() {
         return Optional.ofNullable(this.model);
     }
 
+    /**
+     * MSP that manages this gateway, when applicable
+     * 
+     */
     @Import(name="mspId")
     private @Nullable Output<String> mspId;
 
+    /**
+     * @return MSP that manages this gateway, when applicable
+     * 
+     */
     public Optional<Output<String>> mspId() {
         return Optional.ofNullable(this.mspId);
     }
 
+    /**
+     * Friendly display name assigned to the gateway
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Friendly display name assigned to the gateway
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Layer 3 networks configured for use by this gateway
+     * 
+     */
     @Import(name="networks")
     private @Nullable Output<List<GatewayNetworkArgs>> networks;
 
+    /**
+     * @return Layer 3 networks configured for use by this gateway
+     * 
+     */
     public Optional<Output<List<GatewayNetworkArgs>>> networks() {
         return Optional.ofNullable(this.networks);
     }
 
+    /**
+     * Free-form administrative notes for this gateway
+     * 
+     */
     @Import(name="notes")
     private @Nullable Output<String> notes;
 
+    /**
+     * @return Free-form administrative notes for this gateway
+     * 
+     */
     public Optional<Output<String>> notes() {
         return Optional.ofNullable(this.notes);
     }
 
+    /**
+     * NTP servers used by this gateway
+     * 
+     */
     @Import(name="ntpServers")
     private @Nullable Output<List<String>> ntpServers;
 
+    /**
+     * @return NTP servers used by this gateway
+     * 
+     */
     public Optional<Output<List<String>>> ntpServers() {
         return Optional.ofNullable(this.ntpServers);
     }
 
     /**
-     * Out-of-band (vme/em0/fxp0) IP config
+     * Out-of-band management IP configuration for this gateway
      * 
      */
     @Import(name="oobIpConfig")
     private @Nullable Output<GatewayOobIpConfigArgs> oobIpConfig;
 
     /**
-     * @return Out-of-band (vme/em0/fxp0) IP config
+     * @return Out-of-band management IP configuration for this gateway
      * 
      */
     public Optional<Output<GatewayOobIpConfigArgs>> oobIpConfig() {
         return Optional.ofNullable(this.oobIpConfig);
     }
 
+    /**
+     * Organization that owns this gateway
+     * 
+     */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
+    /**
+     * @return Organization that owns this gateway
+     * 
+     */
     public Optional<Output<String>> orgId() {
         return Optional.ofNullable(this.orgId);
     }
@@ -369,9 +457,17 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.portConfig);
     }
 
+    /**
+     * Port mirroring configuration for this gateway
+     * 
+     */
     @Import(name="portMirroring")
     private @Nullable Output<GatewayPortMirroringArgs> portMirroring;
 
+    /**
+     * @return Port mirroring configuration for this gateway
+     * 
+     */
     public Optional<Output<GatewayPortMirroringArgs>> portMirroring() {
         return Optional.ofNullable(this.portMirroring);
     }
@@ -392,14 +488,14 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Property key is the routing policy name
+     * Routing policies applied by this gateway
      * 
      */
     @Import(name="routingPolicies")
     private @Nullable Output<Map<String,GatewayRoutingPoliciesArgs>> routingPolicies;
 
     /**
-     * @return Property key is the routing policy name
+     * @return Routing policies applied by this gateway
      * 
      */
     public Optional<Output<Map<String,GatewayRoutingPoliciesArgs>>> routingPolicies() {
@@ -407,30 +503,46 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Device Serial
+     * Manufacturer serial number for the gateway
      * 
      */
     @Import(name="serial")
     private @Nullable Output<String> serial;
 
     /**
-     * @return Device Serial
+     * @return Manufacturer serial number for the gateway
      * 
      */
     public Optional<Output<String>> serial() {
         return Optional.ofNullable(this.serial);
     }
 
+    /**
+     * Traffic service policies enforced by this gateway
+     * 
+     */
     @Import(name="servicePolicies")
     private @Nullable Output<List<GatewayServicePolicyArgs>> servicePolicies;
 
+    /**
+     * @return Traffic service policies enforced by this gateway
+     * 
+     */
     public Optional<Output<List<GatewayServicePolicyArgs>>> servicePolicies() {
         return Optional.ofNullable(this.servicePolicies);
     }
 
+    /**
+     * Site where this gateway is assigned
+     * 
+     */
     @Import(name="siteId")
     private @Nullable Output<String> siteId;
 
+    /**
+     * @return Site where this gateway is assigned
+     * 
+     */
     public Optional<Output<String>> siteId() {
         return Optional.ofNullable(this.siteId);
     }
@@ -465,22 +577,30 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tunnelConfigs);
     }
 
+    /**
+     * Provider-specific options for tunnels terminated by this gateway
+     * 
+     */
     @Import(name="tunnelProviderOptions")
     private @Nullable Output<GatewayTunnelProviderOptionsArgs> tunnelProviderOptions;
 
+    /**
+     * @return Provider-specific options for tunnels terminated by this gateway
+     * 
+     */
     public Optional<Output<GatewayTunnelProviderOptionsArgs>> tunnelProviderOptions() {
         return Optional.ofNullable(this.tunnelProviderOptions);
     }
 
     /**
-     * Device Type. enum: `gateway`
+     * Device type discriminator for gateway records
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Device Type. enum: `gateway`
+     * @return Device type discriminator for gateway records
      * 
      */
     public Optional<Output<String>> type() {
@@ -503,36 +623,44 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Variable values that override site variables for this gateway
      * 
      */
     @Import(name="vars")
     private @Nullable Output<Map<String,String>> vars;
 
     /**
-     * @return Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * @return Variable values that override site variables for this gateway
      * 
      */
     public Optional<Output<Map<String,String>>> vars() {
         return Optional.ofNullable(this.vars);
     }
 
+    /**
+     * VRF configuration applied to this gateway
+     * 
+     */
     @Import(name="vrfConfig")
     private @Nullable Output<GatewayVrfConfigArgs> vrfConfig;
 
+    /**
+     * @return VRF configuration applied to this gateway
+     * 
+     */
     public Optional<Output<GatewayVrfConfigArgs>> vrfConfig() {
         return Optional.ofNullable(this.vrfConfig);
     }
 
     /**
-     * Property key is the network name
+     * VRF instances configured on this gateway
      * 
      */
     @Import(name="vrfInstances")
     private @Nullable Output<Map<String,GatewayVrfInstancesArgs>> vrfInstances;
 
     /**
-     * @return Property key is the network name
+     * @return VRF instances configured on this gateway
      * 
      */
     public Optional<Output<Map<String,GatewayVrfInstancesArgs>>> vrfInstances() {
@@ -540,14 +668,14 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * X in pixel
+     * Horizontal map position of the gateway, in pixels
      * 
      */
     @Import(name="x")
     private @Nullable Output<Double> x;
 
     /**
-     * @return X in pixel
+     * @return Horizontal map position of the gateway, in pixels
      * 
      */
     public Optional<Output<Double>> x() {
@@ -555,14 +683,14 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Y in pixel
+     * Vertical map position of the gateway, in pixels
      * 
      */
     @Import(name="y")
     private @Nullable Output<Double> y;
 
     /**
-     * @return Y in pixel
+     * @return Vertical map position of the gateway, in pixels
      * 
      */
     public Optional<Output<Double>> y() {
@@ -637,7 +765,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config. **Note**: no check is done
+         * @param additionalConfigCmds Additional CLI configuration commands to apply to this gateway
          * 
          * @return builder
          * 
@@ -648,7 +776,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config. **Note**: no check is done
+         * @param additionalConfigCmds Additional CLI configuration commands to apply to this gateway
          * 
          * @return builder
          * 
@@ -658,7 +786,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config. **Note**: no check is done
+         * @param additionalConfigCmds Additional CLI configuration commands to apply to this gateway
          * 
          * @return builder
          * 
@@ -667,11 +795,23 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
             return additionalConfigCmds(List.of(additionalConfigCmds));
         }
 
+        /**
+         * @param bgpConfig BGP routing configuration for this gateway. Property key is the BGP session name
+         * 
+         * @return builder
+         * 
+         */
         public Builder bgpConfig(@Nullable Output<Map<String,GatewayBgpConfigArgs>> bgpConfig) {
             $.bgpConfig = bgpConfig;
             return this;
         }
 
+        /**
+         * @param bgpConfig BGP routing configuration for this gateway. Property key is the BGP session name
+         * 
+         * @return builder
+         * 
+         */
         public Builder bgpConfig(Map<String,GatewayBgpConfigArgs> bgpConfig) {
             return bgpConfig(Output.of(bgpConfig));
         }
@@ -685,17 +825,29 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
             return deviceId(Output.of(deviceId));
         }
 
+        /**
+         * @param dhcpdConfig DHCP server configuration served by this gateway
+         * 
+         * @return builder
+         * 
+         */
         public Builder dhcpdConfig(@Nullable Output<GatewayDhcpdConfigArgs> dhcpdConfig) {
             $.dhcpdConfig = dhcpdConfig;
             return this;
         }
 
+        /**
+         * @param dhcpdConfig DHCP server configuration served by this gateway
+         * 
+         * @return builder
+         * 
+         */
         public Builder dhcpdConfig(GatewayDhcpdConfigArgs dhcpdConfig) {
             return dhcpdConfig(Output.of(dhcpdConfig));
         }
 
         /**
-         * @param dnsServers Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+         * @param dnsServers DNS servers configured for this gateway
          * 
          * @return builder
          * 
@@ -706,7 +858,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnsServers Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+         * @param dnsServers DNS servers configured for this gateway
          * 
          * @return builder
          * 
@@ -716,7 +868,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnsServers Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+         * @param dnsServers DNS servers configured for this gateway
          * 
          * @return builder
          * 
@@ -726,7 +878,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnsSuffixes Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+         * @param dnsSuffixes DNS search suffixes configured for this gateway
          * 
          * @return builder
          * 
@@ -737,7 +889,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnsSuffixes Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+         * @param dnsSuffixes DNS search suffixes configured for this gateway
          * 
          * @return builder
          * 
@@ -747,7 +899,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnsSuffixes Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+         * @param dnsSuffixes DNS search suffixes configured for this gateway
          * 
          * @return builder
          * 
@@ -757,7 +909,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param extraRoutes Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;), the destination Network name or a variable (e.g. &#34;{{myvar}}&#34;)
+         * @param extraRoutes Additional IPv4 routes configured on this gateway
          * 
          * @return builder
          * 
@@ -768,7 +920,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param extraRoutes Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;), the destination Network name or a variable (e.g. &#34;{{myvar}}&#34;)
+         * @param extraRoutes Additional IPv4 routes configured on this gateway
          * 
          * @return builder
          * 
@@ -778,7 +930,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param extraRoutes6 Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;), the destination Network name or a variable (e.g. &#34;{{myvar}}&#34;)
+         * @param extraRoutes6 Additional IPv6 routes configured on this gateway
          * 
          * @return builder
          * 
@@ -789,7 +941,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param extraRoutes6 Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;), the destination Network name or a variable (e.g. &#34;{{myvar}}&#34;)
+         * @param extraRoutes6 Additional IPv6 routes configured on this gateway
          * 
          * @return builder
          * 
@@ -799,7 +951,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gatewayMgmt Gateway Management settings
+         * @param gatewayMgmt Management-plane settings for this gateway
          * 
          * @return builder
          * 
@@ -810,7 +962,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gatewayMgmt Gateway Management settings
+         * @param gatewayMgmt Management-plane settings for this gateway
          * 
          * @return builder
          * 
@@ -820,7 +972,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param idpProfiles Property key is the profile name
+         * @param idpProfiles Intrusion detection and prevention profiles configured for this gateway
          * 
          * @return builder
          * 
@@ -831,7 +983,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param idpProfiles Property key is the profile name
+         * @param idpProfiles Intrusion detection and prevention profiles configured for this gateway
          * 
          * @return builder
          * 
@@ -840,35 +992,71 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
             return idpProfiles(Output.of(idpProfiles));
         }
 
+        /**
+         * @param image1Url First custom image URL associated with the gateway
+         * 
+         * @return builder
+         * 
+         */
         public Builder image1Url(@Nullable Output<String> image1Url) {
             $.image1Url = image1Url;
             return this;
         }
 
+        /**
+         * @param image1Url First custom image URL associated with the gateway
+         * 
+         * @return builder
+         * 
+         */
         public Builder image1Url(String image1Url) {
             return image1Url(Output.of(image1Url));
         }
 
+        /**
+         * @param image2Url Second custom image URL associated with the gateway
+         * 
+         * @return builder
+         * 
+         */
         public Builder image2Url(@Nullable Output<String> image2Url) {
             $.image2Url = image2Url;
             return this;
         }
 
+        /**
+         * @param image2Url Second custom image URL associated with the gateway
+         * 
+         * @return builder
+         * 
+         */
         public Builder image2Url(String image2Url) {
             return image2Url(Output.of(image2Url));
         }
 
+        /**
+         * @param image3Url Third custom image URL associated with the gateway
+         * 
+         * @return builder
+         * 
+         */
         public Builder image3Url(@Nullable Output<String> image3Url) {
             $.image3Url = image3Url;
             return this;
         }
 
+        /**
+         * @param image3Url Third custom image URL associated with the gateway
+         * 
+         * @return builder
+         * 
+         */
         public Builder image3Url(String image3Url) {
             return image3Url(Output.of(image3Url));
         }
 
         /**
-         * @param ipConfigs Property key is the network name
+         * @param ipConfigs Gateway interface IP configurations by network name
          * 
          * @return builder
          * 
@@ -879,7 +1067,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipConfigs Property key is the network name
+         * @param ipConfigs Gateway interface IP configurations by network name
          * 
          * @return builder
          * 
@@ -889,7 +1077,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mac Device MAC address
+         * @param mac Gateway MAC address used to identify the device
          * 
          * @return builder
          * 
@@ -900,7 +1088,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mac Device MAC address
+         * @param mac Gateway MAC address used to identify the device
          * 
          * @return builder
          * 
@@ -981,7 +1169,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param model Device Model
+         * @param model Gateway model reported for the device
          * 
          * @return builder
          * 
@@ -992,7 +1180,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param model Device Model
+         * @param model Gateway model reported for the device
          * 
          * @return builder
          * 
@@ -1001,61 +1189,133 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
             return model(Output.of(model));
         }
 
+        /**
+         * @param mspId MSP that manages this gateway, when applicable
+         * 
+         * @return builder
+         * 
+         */
         public Builder mspId(@Nullable Output<String> mspId) {
             $.mspId = mspId;
             return this;
         }
 
+        /**
+         * @param mspId MSP that manages this gateway, when applicable
+         * 
+         * @return builder
+         * 
+         */
         public Builder mspId(String mspId) {
             return mspId(Output.of(mspId));
         }
 
+        /**
+         * @param name Friendly display name assigned to the gateway
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Friendly display name assigned to the gateway
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param networks Layer 3 networks configured for use by this gateway
+         * 
+         * @return builder
+         * 
+         */
         public Builder networks(@Nullable Output<List<GatewayNetworkArgs>> networks) {
             $.networks = networks;
             return this;
         }
 
+        /**
+         * @param networks Layer 3 networks configured for use by this gateway
+         * 
+         * @return builder
+         * 
+         */
         public Builder networks(List<GatewayNetworkArgs> networks) {
             return networks(Output.of(networks));
         }
 
+        /**
+         * @param networks Layer 3 networks configured for use by this gateway
+         * 
+         * @return builder
+         * 
+         */
         public Builder networks(GatewayNetworkArgs... networks) {
             return networks(List.of(networks));
         }
 
+        /**
+         * @param notes Free-form administrative notes for this gateway
+         * 
+         * @return builder
+         * 
+         */
         public Builder notes(@Nullable Output<String> notes) {
             $.notes = notes;
             return this;
         }
 
+        /**
+         * @param notes Free-form administrative notes for this gateway
+         * 
+         * @return builder
+         * 
+         */
         public Builder notes(String notes) {
             return notes(Output.of(notes));
         }
 
+        /**
+         * @param ntpServers NTP servers used by this gateway
+         * 
+         * @return builder
+         * 
+         */
         public Builder ntpServers(@Nullable Output<List<String>> ntpServers) {
             $.ntpServers = ntpServers;
             return this;
         }
 
+        /**
+         * @param ntpServers NTP servers used by this gateway
+         * 
+         * @return builder
+         * 
+         */
         public Builder ntpServers(List<String> ntpServers) {
             return ntpServers(Output.of(ntpServers));
         }
 
+        /**
+         * @param ntpServers NTP servers used by this gateway
+         * 
+         * @return builder
+         * 
+         */
         public Builder ntpServers(String... ntpServers) {
             return ntpServers(List.of(ntpServers));
         }
 
         /**
-         * @param oobIpConfig Out-of-band (vme/em0/fxp0) IP config
+         * @param oobIpConfig Out-of-band management IP configuration for this gateway
          * 
          * @return builder
          * 
@@ -1066,7 +1326,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oobIpConfig Out-of-band (vme/em0/fxp0) IP config
+         * @param oobIpConfig Out-of-band management IP configuration for this gateway
          * 
          * @return builder
          * 
@@ -1075,11 +1335,23 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
             return oobIpConfig(Output.of(oobIpConfig));
         }
 
+        /**
+         * @param orgId Organization that owns this gateway
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(@Nullable Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param orgId Organization that owns this gateway
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }
@@ -1126,11 +1398,23 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
             return portConfig(Output.of(portConfig));
         }
 
+        /**
+         * @param portMirroring Port mirroring configuration for this gateway
+         * 
+         * @return builder
+         * 
+         */
         public Builder portMirroring(@Nullable Output<GatewayPortMirroringArgs> portMirroring) {
             $.portMirroring = portMirroring;
             return this;
         }
 
+        /**
+         * @param portMirroring Port mirroring configuration for this gateway
+         * 
+         * @return builder
+         * 
+         */
         public Builder portMirroring(GatewayPortMirroringArgs portMirroring) {
             return portMirroring(Output.of(portMirroring));
         }
@@ -1157,7 +1441,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routingPolicies Property key is the routing policy name
+         * @param routingPolicies Routing policies applied by this gateway
          * 
          * @return builder
          * 
@@ -1168,7 +1452,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routingPolicies Property key is the routing policy name
+         * @param routingPolicies Routing policies applied by this gateway
          * 
          * @return builder
          * 
@@ -1178,7 +1462,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serial Device Serial
+         * @param serial Manufacturer serial number for the gateway
          * 
          * @return builder
          * 
@@ -1189,7 +1473,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serial Device Serial
+         * @param serial Manufacturer serial number for the gateway
          * 
          * @return builder
          * 
@@ -1198,24 +1482,54 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
             return serial(Output.of(serial));
         }
 
+        /**
+         * @param servicePolicies Traffic service policies enforced by this gateway
+         * 
+         * @return builder
+         * 
+         */
         public Builder servicePolicies(@Nullable Output<List<GatewayServicePolicyArgs>> servicePolicies) {
             $.servicePolicies = servicePolicies;
             return this;
         }
 
+        /**
+         * @param servicePolicies Traffic service policies enforced by this gateway
+         * 
+         * @return builder
+         * 
+         */
         public Builder servicePolicies(List<GatewayServicePolicyArgs> servicePolicies) {
             return servicePolicies(Output.of(servicePolicies));
         }
 
+        /**
+         * @param servicePolicies Traffic service policies enforced by this gateway
+         * 
+         * @return builder
+         * 
+         */
         public Builder servicePolicies(GatewayServicePolicyArgs... servicePolicies) {
             return servicePolicies(List.of(servicePolicies));
         }
 
+        /**
+         * @param siteId Site where this gateway is assigned
+         * 
+         * @return builder
+         * 
+         */
         public Builder siteId(@Nullable Output<String> siteId) {
             $.siteId = siteId;
             return this;
         }
 
+        /**
+         * @param siteId Site where this gateway is assigned
+         * 
+         * @return builder
+         * 
+         */
         public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
         }
@@ -1272,17 +1586,29 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
             return tunnelConfigs(Output.of(tunnelConfigs));
         }
 
+        /**
+         * @param tunnelProviderOptions Provider-specific options for tunnels terminated by this gateway
+         * 
+         * @return builder
+         * 
+         */
         public Builder tunnelProviderOptions(@Nullable Output<GatewayTunnelProviderOptionsArgs> tunnelProviderOptions) {
             $.tunnelProviderOptions = tunnelProviderOptions;
             return this;
         }
 
+        /**
+         * @param tunnelProviderOptions Provider-specific options for tunnels terminated by this gateway
+         * 
+         * @return builder
+         * 
+         */
         public Builder tunnelProviderOptions(GatewayTunnelProviderOptionsArgs tunnelProviderOptions) {
             return tunnelProviderOptions(Output.of(tunnelProviderOptions));
         }
 
         /**
-         * @param type Device Type. enum: `gateway`
+         * @param type Device type discriminator for gateway records
          * 
          * @return builder
          * 
@@ -1293,7 +1619,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Device Type. enum: `gateway`
+         * @param type Device type discriminator for gateway records
          * 
          * @return builder
          * 
@@ -1324,7 +1650,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vars Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+         * @param vars Variable values that override site variables for this gateway
          * 
          * @return builder
          * 
@@ -1335,7 +1661,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vars Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+         * @param vars Variable values that override site variables for this gateway
          * 
          * @return builder
          * 
@@ -1344,17 +1670,29 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
             return vars(Output.of(vars));
         }
 
+        /**
+         * @param vrfConfig VRF configuration applied to this gateway
+         * 
+         * @return builder
+         * 
+         */
         public Builder vrfConfig(@Nullable Output<GatewayVrfConfigArgs> vrfConfig) {
             $.vrfConfig = vrfConfig;
             return this;
         }
 
+        /**
+         * @param vrfConfig VRF configuration applied to this gateway
+         * 
+         * @return builder
+         * 
+         */
         public Builder vrfConfig(GatewayVrfConfigArgs vrfConfig) {
             return vrfConfig(Output.of(vrfConfig));
         }
 
         /**
-         * @param vrfInstances Property key is the network name
+         * @param vrfInstances VRF instances configured on this gateway
          * 
          * @return builder
          * 
@@ -1365,7 +1703,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vrfInstances Property key is the network name
+         * @param vrfInstances VRF instances configured on this gateway
          * 
          * @return builder
          * 
@@ -1375,7 +1713,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param x X in pixel
+         * @param x Horizontal map position of the gateway, in pixels
          * 
          * @return builder
          * 
@@ -1386,7 +1724,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param x X in pixel
+         * @param x Horizontal map position of the gateway, in pixels
          * 
          * @return builder
          * 
@@ -1396,7 +1734,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param y Y in pixel
+         * @param y Vertical map position of the gateway, in pixels
          * 
          * @return builder
          * 
@@ -1407,7 +1745,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param y Y in pixel
+         * @param y Vertical map position of the gateway, in pixels
          * 
          * @return builder
          * 

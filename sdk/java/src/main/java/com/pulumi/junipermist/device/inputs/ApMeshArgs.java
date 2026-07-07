@@ -19,14 +19,14 @@ public final class ApMeshArgs extends com.pulumi.resources.ResourceArgs {
     public static final ApMeshArgs Empty = new ApMeshArgs();
 
     /**
-     * List of bands that the mesh should apply to. For relay, the first viable one will be picked. For relay, the first viable one will be picked. enum: `24`, `5`, `6`
+     * Radio bands allowed for AP mesh links
      * 
      */
     @Import(name="bands")
     private @Nullable Output<List<String>> bands;
 
     /**
-     * @return List of bands that the mesh should apply to. For relay, the first viable one will be picked. For relay, the first viable one will be picked. enum: `24`, `5`, `6`
+     * @return Radio bands allowed for AP mesh links
      * 
      */
     public Optional<Output<List<String>>> bands() {
@@ -64,14 +64,14 @@ public final class ApMeshArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * enum: `base`, `remote`
+     * Mesh role for this AP, either base or remote
      * 
      */
     @Import(name="role")
     private @Nullable Output<String> role;
 
     /**
-     * @return enum: `base`, `remote`
+     * @return Mesh role for this AP, either base or remote
      * 
      */
     public Optional<Output<String>> role() {
@@ -122,7 +122,7 @@ public final class ApMeshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bands List of bands that the mesh should apply to. For relay, the first viable one will be picked. For relay, the first viable one will be picked. enum: `24`, `5`, `6`
+         * @param bands Radio bands allowed for AP mesh links
          * 
          * @return builder
          * 
@@ -133,7 +133,7 @@ public final class ApMeshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bands List of bands that the mesh should apply to. For relay, the first viable one will be picked. For relay, the first viable one will be picked. enum: `24`, `5`, `6`
+         * @param bands Radio bands allowed for AP mesh links
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class ApMeshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bands List of bands that the mesh should apply to. For relay, the first viable one will be picked. For relay, the first viable one will be picked. enum: `24`, `5`, `6`
+         * @param bands Radio bands allowed for AP mesh links
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class ApMeshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param role enum: `base`, `remote`
+         * @param role Mesh role for this AP, either base or remote
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class ApMeshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param role enum: `base`, `remote`
+         * @param role Mesh role for this AP, either base or remote
          * 
          * @return builder
          * 

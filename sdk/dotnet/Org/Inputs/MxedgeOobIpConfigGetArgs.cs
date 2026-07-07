@@ -12,9 +12,15 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class MxedgeOobIpConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether IPv6 autoconfiguration is enabled on the out-of-band management interface
+        /// </summary>
         [Input("autoconf6")]
         public Input<bool>? Autoconf6 { get; set; }
 
+        /// <summary>
+        /// Whether DHCPv6 is enabled on the out-of-band management interface
+        /// </summary>
         [Input("dhcp6")]
         public Input<bool>? Dhcp6 { get; set; }
 
@@ -22,7 +28,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _dns;
 
         /// <summary>
-        /// IPv4 ignored if `Type`!=`Static`, IPv6 ignored if `Type6`!=`Static`
+        /// Name server addresses for out-of-band management
         /// </summary>
         public InputList<string> Dns
         {
@@ -31,40 +37,49 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// If `Type`=`Static`
+        /// If `Type`=`Static`, IPv4 default gateway for the out-of-band management interface
         /// </summary>
         [Input("gateway")]
         public Input<string>? Gateway { get; set; }
 
+        /// <summary>
+        /// If `Type6`=`Static`, IPv6 default gateway for the out-of-band management interface
+        /// </summary>
         [Input("gateway6")]
         public Input<string>? Gateway6 { get; set; }
 
         /// <summary>
-        /// If `Type`=`Static`
+        /// If `Type`=`Static`, IPv4 address for the out-of-band management interface
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
+        /// <summary>
+        /// If `Type6`=`Static`, IPv6 address for the out-of-band management interface
+        /// </summary>
         [Input("ip6")]
         public Input<string>? Ip6 { get; set; }
 
         /// <summary>
-        /// If `Type`=`Static`
+        /// If `Type`=`Static`, IPv4 netmask for the out-of-band management interface
         /// </summary>
         [Input("netmask")]
         public Input<string>? Netmask { get; set; }
 
+        /// <summary>
+        /// If `Type6`=`Static`, IPv6 prefix length for the out-of-band management interface
+        /// </summary>
         [Input("netmask6")]
         public Input<string>? Netmask6 { get; set; }
 
         /// <summary>
-        /// enum: `Dhcp`, `Static`
+        /// IPv4 address assignment mode for out-of-band management
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// enum: `Dhcp`, `Static`
+        /// IPv6 address assignment mode for out-of-band management
         /// </summary>
         [Input("type6")]
         public Input<string>? Type6 { get; set; }

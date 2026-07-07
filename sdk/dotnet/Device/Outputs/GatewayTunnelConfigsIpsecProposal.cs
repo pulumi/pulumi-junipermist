@@ -14,25 +14,15 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class GatewayTunnelConfigsIpsecProposal
     {
         /// <summary>
-        /// enum: `Md5`, `Sha1`, `Sha2`
+        /// Integrity algorithm used by this IPsec proposal
         /// </summary>
         public readonly string? AuthAlgo;
         /// <summary>
-        /// Only if `Provider`==`custom-ipsec`. enum:
-        ///   * 1
-        ///   * 2 (1024-bit)
-        ///   * 5
-        ///   * 14 (default, 2048-bit)
-        ///   * 15 (3072-bit)
-        ///   * 16 (4096-bit)
-        ///   * 19 (256-bit ECP)
-        ///   * 20 (384-bit ECP)
-        ///   * 21 (521-bit ECP)
-        ///   * 24 (2048-bit ECP)
+        /// Diffie-Hellman group used by this IPsec proposal
         /// </summary>
         public readonly string? DhGroup;
         /// <summary>
-        /// enum: `3des`, `Aes128`, `Aes256`, `AesGcm128`, `AesGcm256`
+        /// Cipher algorithm used by this IPsec proposal
         /// </summary>
         public readonly string? EncAlgo;
 

@@ -18,6 +18,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Exact value that the selected source attribute must match
+        /// </summary>
         [Input("equals")]
         public Input<string>? Equals { get; set; }
 
@@ -25,7 +28,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _equalsAnies;
 
         /// <summary>
-        /// Use `EqualsAny` to match any item in a list
+        /// List of values where any match satisfies this dynamic rule
         /// </summary>
         public InputList<string> EqualsAnies
         {
@@ -42,13 +45,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? Expression { get; set; }
 
         /// <summary>
-        /// enum: `LinkPeermac`, `LldpChassisId`, `LldpHardwareRevision`, `LldpManufacturerName`, `LldpOui`, `LldpSerialNumber`, `LldpSystemDescription`, `LldpSystemName`, `RadiusDynamicfilter`, `RadiusUsermac`, `RadiusUsername`
+        /// Source attribute evaluated by this dynamic rule
         /// </summary>
         [Input("src", required: true)]
         public Input<string> Src { get; set; } = null!;
 
         /// <summary>
-        /// `PortUsage` name
+        /// Port usage name to apply when this dynamic rule matches
         /// </summary>
         [Input("usage")]
         public Input<string>? Usage { get; set; }

@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class GatewaytemplateTunnelProviderOptionsZscalerArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether Zscaler blocks internet access until the Acceptable Use Policy is accepted
+        /// </summary>
         [Input("aupBlockInternetUntilAccepted")]
         public Input<bool>? AupBlockInternetUntilAccepted { get; set; }
 
@@ -67,7 +70,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<Inputs.GatewaytemplateTunnelProviderOptionsZscalerSubLocationArgs>? _subLocations;
 
         /// <summary>
-        /// `sub-locations` can be used for specific uses cases to define different configuration based on the user network
+        /// Per-network Zscaler sub-location settings
         /// </summary>
         public InputList<Inputs.GatewaytemplateTunnelProviderOptionsZscalerSubLocationArgs> SubLocations
         {

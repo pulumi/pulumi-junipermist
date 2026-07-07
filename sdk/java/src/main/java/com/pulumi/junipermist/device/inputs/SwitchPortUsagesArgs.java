@@ -171,14 +171,14 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Only if `mode`!=`dynamic`. Link connection mode. enum: `auto`, `full`, `half`
+     * Only if `mode`!=`dynamic`. Link duplex mode for this port usage
      * 
      */
     @Import(name="duplex")
     private @Nullable Output<String> duplex;
 
     /**
-     * @return Only if `mode`!=`dynamic`. Link connection mode. enum: `auto`, `full`, `half`
+     * @return Only if `mode`!=`dynamic`. Link duplex mode for this port usage
      * 
      */
     public Optional<Output<String>> duplex() {
@@ -186,14 +186,14 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
+     * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Networks or VLANs that RADIUS can return for dynamic VLAN assignment
      * 
      */
     @Import(name="dynamicVlanNetworks")
     private @Nullable Output<List<String>> dynamicVlanNetworks;
 
     /**
-     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Networks or VLANs that RADIUS can return for dynamic VLAN assignment
      * 
      */
     public Optional<Output<List<String>>> dynamicVlanNetworks() {
@@ -306,14 +306,14 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Only if `mode`!=`dynamic` and `enableMacAuth` ==`true`. This type is ignored if mistNac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
+     * Only if `mode`!=`dynamic` and `enableMacAuth`==`true`. MAC authentication protocol to use; ignored if Mist NAC is enabled
      * 
      */
     @Import(name="macAuthProtocol")
     private @Nullable Output<String> macAuthProtocol;
 
     /**
-     * @return Only if `mode`!=`dynamic` and `enableMacAuth` ==`true`. This type is ignored if mistNac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
+     * @return Only if `mode`!=`dynamic` and `enableMacAuth`==`true`. MAC authentication protocol to use; ignored if Mist NAC is enabled
      * 
      */
     public Optional<Output<String>> macAuthProtocol() {
@@ -336,14 +336,14 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
+     * Switching mode for this port usage
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
+     * @return Switching mode for this port usage
      * 
      */
     public Optional<Output<String>> mode() {
@@ -366,14 +366,14 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Only if `mode`==`trunk`, the list of network/vlans
+     * Only if `mode`==`trunk`. Network or VLAN names to trunk
      * 
      */
     @Import(name="networks")
     private @Nullable Output<List<String>> networks;
 
     /**
-     * @return Only if `mode`==`trunk`, the list of network/vlans
+     * @return Only if `mode`==`trunk`. Network or VLAN names to trunk
      * 
      */
     public Optional<Output<List<String>>> networks() {
@@ -426,14 +426,14 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * PoE priority. enum: `low`, `high`
+     * Only if `mode`!=`dynamic`. PoE priority for ports using this port usage
      * 
      */
     @Import(name="poePriority")
     private @Nullable Output<String> poePriority;
 
     /**
-     * @return PoE priority. enum: `low`, `high`
+     * @return Only if `mode`!=`dynamic`. PoE priority for ports using this port usage
      * 
      */
     public Optional<Output<String>> poePriority() {
@@ -441,14 +441,14 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
+     * Only if `mode`!=`dynamic`. 802.1X authentication mode for this port usage
      * 
      */
     @Import(name="portAuth")
     private @Nullable Output<String> portAuth;
 
     /**
-     * @return Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
+     * @return Only if `mode`!=`dynamic`. 802.1X authentication mode for this port usage
      * 
      */
     public Optional<Output<String>> portAuth() {
@@ -486,14 +486,14 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `linkDown`, `none` (let the DPC port keep at the current port usage)
+     * Only if `mode`==`dynamic`. Condition that resets a dynamic port to the default port usage
      * 
      */
     @Import(name="resetDefaultWhen")
     private @Nullable Output<String> resetDefaultWhen;
 
     /**
-     * @return Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `linkDown`, `none` (let the DPC port keep at the current port usage)
+     * @return Only if `mode`==`dynamic`. Condition that resets a dynamic port to the default port usage
      * 
      */
     public Optional<Output<String>> resetDefaultWhen() {
@@ -501,14 +501,14 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Only if `mode`==`dynamic`
+     * Only if `mode`==`dynamic`. Dynamic matching rules that select the port usage to apply
      * 
      */
     @Import(name="rules")
     private @Nullable Output<List<SwitchPortUsagesRuleArgs>> rules;
 
     /**
-     * @return Only if `mode`==`dynamic`
+     * @return Only if `mode`==`dynamic`. Dynamic matching rules that select the port usage to apply
      * 
      */
     public Optional<Output<List<SwitchPortUsagesRuleArgs>>> rules() {
@@ -531,14 +531,29 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. When radius server reject / fails
+     * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Interval, in seconds. Sets the wait time before retrying authentication after RADIUS failure to reduce client flapping. Range 120-65535
+     * 
+     */
+    @Import(name="serverFailRetryInterval")
+    private @Nullable Output<Integer> serverFailRetryInterval;
+
+    /**
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Interval, in seconds. Sets the wait time before retrying authentication after RADIUS failure to reduce client flapping. Range 120-65535
+     * 
+     */
+    public Optional<Output<Integer>> serverFailRetryInterval() {
+        return Optional.ofNullable(this.serverFailRetryInterval);
+    }
+
+    /**
+     * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. When RADIUS server reject / fails
      * 
      */
     @Import(name="serverRejectNetwork")
     private @Nullable Output<String> serverRejectNetwork;
 
     /**
-     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. When radius server reject / fails
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. When RADIUS server reject / fails
      * 
      */
     public Optional<Output<String>> serverRejectNetwork() {
@@ -546,14 +561,14 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Only if `mode`!=`dynamic`, Port speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+     * Only if `mode`!=`dynamic`. Link speed for this port usage
      * 
      */
     @Import(name="speed")
     private @Nullable Output<String> speed;
 
     /**
-     * @return Only if `mode`!=`dynamic`, Port speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+     * @return Only if `mode`!=`dynamic`. Link speed for this port usage
      * 
      */
     public Optional<Output<String>> speed() {
@@ -561,14 +576,14 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Switch storm control. Only if `mode`!=`dynamic`
+     * Only if `mode`!=`dynamic`. Storm-control settings for this port usage
      * 
      */
     @Import(name="stormControl")
     private @Nullable Output<SwitchPortUsagesStormControlArgs> stormControl;
 
     /**
-     * @return Switch storm control. Only if `mode`!=`dynamic`
+     * @return Only if `mode`!=`dynamic`. Storm-control settings for this port usage
      * 
      */
     public Optional<Output<SwitchPortUsagesStormControlArgs>> stormControl() {
@@ -717,6 +732,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         this.resetDefaultWhen = $.resetDefaultWhen;
         this.rules = $.rules;
         this.serverFailNetwork = $.serverFailNetwork;
+        this.serverFailRetryInterval = $.serverFailRetryInterval;
         this.serverRejectNetwork = $.serverRejectNetwork;
         this.speed = $.speed;
         this.stormControl = $.stormControl;
@@ -958,7 +974,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param duplex Only if `mode`!=`dynamic`. Link connection mode. enum: `auto`, `full`, `half`
+         * @param duplex Only if `mode`!=`dynamic`. Link duplex mode for this port usage
          * 
          * @return builder
          * 
@@ -969,7 +985,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param duplex Only if `mode`!=`dynamic`. Link connection mode. enum: `auto`, `full`, `half`
+         * @param duplex Only if `mode`!=`dynamic`. Link duplex mode for this port usage
          * 
          * @return builder
          * 
@@ -979,7 +995,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dynamicVlanNetworks Only if `mode`!=`dynamic` and `portAuth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
+         * @param dynamicVlanNetworks Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Networks or VLANs that RADIUS can return for dynamic VLAN assignment
          * 
          * @return builder
          * 
@@ -990,7 +1006,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dynamicVlanNetworks Only if `mode`!=`dynamic` and `portAuth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
+         * @param dynamicVlanNetworks Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Networks or VLANs that RADIUS can return for dynamic VLAN assignment
          * 
          * @return builder
          * 
@@ -1000,7 +1016,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dynamicVlanNetworks Only if `mode`!=`dynamic` and `portAuth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
+         * @param dynamicVlanNetworks Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Networks or VLANs that RADIUS can return for dynamic VLAN assignment
          * 
          * @return builder
          * 
@@ -1157,7 +1173,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param macAuthProtocol Only if `mode`!=`dynamic` and `enableMacAuth` ==`true`. This type is ignored if mistNac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
+         * @param macAuthProtocol Only if `mode`!=`dynamic` and `enableMacAuth`==`true`. MAC authentication protocol to use; ignored if Mist NAC is enabled
          * 
          * @return builder
          * 
@@ -1168,7 +1184,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param macAuthProtocol Only if `mode`!=`dynamic` and `enableMacAuth` ==`true`. This type is ignored if mistNac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
+         * @param macAuthProtocol Only if `mode`!=`dynamic` and `enableMacAuth`==`true`. MAC authentication protocol to use; ignored if Mist NAC is enabled
          * 
          * @return builder
          * 
@@ -1199,7 +1215,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param mode `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
+         * @param mode Switching mode for this port usage
          * 
          * @return builder
          * 
@@ -1210,7 +1226,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param mode `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
+         * @param mode Switching mode for this port usage
          * 
          * @return builder
          * 
@@ -1241,7 +1257,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param networks Only if `mode`==`trunk`, the list of network/vlans
+         * @param networks Only if `mode`==`trunk`. Network or VLAN names to trunk
          * 
          * @return builder
          * 
@@ -1252,7 +1268,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param networks Only if `mode`==`trunk`, the list of network/vlans
+         * @param networks Only if `mode`==`trunk`. Network or VLAN names to trunk
          * 
          * @return builder
          * 
@@ -1262,7 +1278,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param networks Only if `mode`==`trunk`, the list of network/vlans
+         * @param networks Only if `mode`==`trunk`. Network or VLAN names to trunk
          * 
          * @return builder
          * 
@@ -1335,7 +1351,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param poePriority PoE priority. enum: `low`, `high`
+         * @param poePriority Only if `mode`!=`dynamic`. PoE priority for ports using this port usage
          * 
          * @return builder
          * 
@@ -1346,7 +1362,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param poePriority PoE priority. enum: `low`, `high`
+         * @param poePriority Only if `mode`!=`dynamic`. PoE priority for ports using this port usage
          * 
          * @return builder
          * 
@@ -1356,7 +1372,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param portAuth Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
+         * @param portAuth Only if `mode`!=`dynamic`. 802.1X authentication mode for this port usage
          * 
          * @return builder
          * 
@@ -1367,7 +1383,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param portAuth Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
+         * @param portAuth Only if `mode`!=`dynamic`. 802.1X authentication mode for this port usage
          * 
          * @return builder
          * 
@@ -1419,7 +1435,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param resetDefaultWhen Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `linkDown`, `none` (let the DPC port keep at the current port usage)
+         * @param resetDefaultWhen Only if `mode`==`dynamic`. Condition that resets a dynamic port to the default port usage
          * 
          * @return builder
          * 
@@ -1430,7 +1446,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param resetDefaultWhen Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `linkDown`, `none` (let the DPC port keep at the current port usage)
+         * @param resetDefaultWhen Only if `mode`==`dynamic`. Condition that resets a dynamic port to the default port usage
          * 
          * @return builder
          * 
@@ -1440,7 +1456,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param rules Only if `mode`==`dynamic`
+         * @param rules Only if `mode`==`dynamic`. Dynamic matching rules that select the port usage to apply
          * 
          * @return builder
          * 
@@ -1451,7 +1467,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param rules Only if `mode`==`dynamic`
+         * @param rules Only if `mode`==`dynamic`. Dynamic matching rules that select the port usage to apply
          * 
          * @return builder
          * 
@@ -1461,7 +1477,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param rules Only if `mode`==`dynamic`
+         * @param rules Only if `mode`==`dynamic`. Dynamic matching rules that select the port usage to apply
          * 
          * @return builder
          * 
@@ -1492,7 +1508,28 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param serverRejectNetwork Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. When radius server reject / fails
+         * @param serverFailRetryInterval Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Interval, in seconds. Sets the wait time before retrying authentication after RADIUS failure to reduce client flapping. Range 120-65535
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverFailRetryInterval(@Nullable Output<Integer> serverFailRetryInterval) {
+            $.serverFailRetryInterval = serverFailRetryInterval;
+            return this;
+        }
+
+        /**
+         * @param serverFailRetryInterval Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Interval, in seconds. Sets the wait time before retrying authentication after RADIUS failure to reduce client flapping. Range 120-65535
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverFailRetryInterval(Integer serverFailRetryInterval) {
+            return serverFailRetryInterval(Output.of(serverFailRetryInterval));
+        }
+
+        /**
+         * @param serverRejectNetwork Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. When RADIUS server reject / fails
          * 
          * @return builder
          * 
@@ -1503,7 +1540,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param serverRejectNetwork Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. When radius server reject / fails
+         * @param serverRejectNetwork Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. When RADIUS server reject / fails
          * 
          * @return builder
          * 
@@ -1513,7 +1550,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param speed Only if `mode`!=`dynamic`, Port speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+         * @param speed Only if `mode`!=`dynamic`. Link speed for this port usage
          * 
          * @return builder
          * 
@@ -1524,7 +1561,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param speed Only if `mode`!=`dynamic`, Port speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+         * @param speed Only if `mode`!=`dynamic`. Link speed for this port usage
          * 
          * @return builder
          * 
@@ -1534,7 +1571,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param stormControl Switch storm control. Only if `mode`!=`dynamic`
+         * @param stormControl Only if `mode`!=`dynamic`. Storm-control settings for this port usage
          * 
          * @return builder
          * 
@@ -1545,7 +1582,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param stormControl Switch storm control. Only if `mode`!=`dynamic`
+         * @param stormControl Only if `mode`!=`dynamic`. Storm-control settings for this port usage
          * 
          * @return builder
          * 

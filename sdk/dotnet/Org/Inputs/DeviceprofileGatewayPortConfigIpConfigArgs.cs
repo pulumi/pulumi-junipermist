@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _dns;
 
         /// <summary>
-        /// Except for out-of_band interface (vme/em0/fxp0)
+        /// Resolver server IP addresses used by this interface, except on out-of-band interfaces such as vme, em0, or fxp0
         /// </summary>
         public InputList<string> Dns
         {
@@ -28,7 +28,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _dnsSuffixes;
 
         /// <summary>
-        /// Except for out-of_band interface (vme/em0/fxp0)
+        /// DNS search suffixes used by this interface, except on out-of-band interfaces such as vme, em0, or fxp0
         /// </summary>
         public InputList<string> DnsSuffixes
         {
@@ -37,7 +37,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. "192.168.1.1") or a Variable (i.e. "{{myvar}}")
+        /// Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP address (i.e. "192.168.1.1") or a Variable (i.e. "{{myvar}}")
         /// </summary>
         [Input("gateway")]
         public Input<string>? Gateway { get; set; }
@@ -49,7 +49,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? Gateway6 { get; set; }
 
         /// <summary>
-        /// Interface IP Address (i.e. "192.168.1.8") or a Variable (i.e. "{{myvar}}")
+        /// Interface IP address (i.e. "192.168.1.8") or a Variable (i.e. "{{myvar}}")
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
@@ -82,7 +82,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private Input<string>? _poserPassword;
 
         /// <summary>
-        /// If `Type`==`Pppoe`
+        /// Password used for PPPoE when `Type`==`Pppoe`
         /// </summary>
         public Input<string>? PoserPassword
         {
@@ -95,25 +95,25 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// if `Type`==`Pppoe`. enum: `Chap`, `None`, `Pap`
+        /// Authentication protocol used for PPPoE when `Type`==`Pppoe`
         /// </summary>
         [Input("pppoeAuth")]
         public Input<string>? PppoeAuth { get; set; }
 
         /// <summary>
-        /// If `Type`==`Pppoe`
+        /// Username used for PPPoE when `Type`==`Pppoe`
         /// </summary>
         [Input("pppoeUsername")]
         public Input<string>? PppoeUsername { get; set; }
 
         /// <summary>
-        /// enum: `Dhcp`, `Pppoe`, `Static`
+        /// IPv4 assignment mode for this gateway port interface
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// enum: `Autoconf`, `Dhcp`, `Static`
+        /// IPv6 assignment mode for this gateway port interface
         /// </summary>
         [Input("type6")]
         public Input<string>? Type6 { get; set; }

@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingWiredPma {
+    /**
+     * @return Whether PMA is enabled for Wired Assurance
+     * 
+     */
     private @Nullable Boolean enabled;
 
     private SettingWiredPma() {}
+    /**
+     * @return Whether PMA is enabled for Wired Assurance
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }

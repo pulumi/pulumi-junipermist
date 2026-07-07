@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworktemplateAclTags {
     /**
-     * @return ARP / IPv6. Default is `any`
+     * @return Layer 2 EtherTypes matched by this ACL tag; defaults to `any`
      * 
      */
     private @Nullable List<String> etherTypes;
@@ -29,9 +29,7 @@ public final class NetworktemplateAclTags {
      */
     private @Nullable Integer gbpTag;
     /**
-     * @return Required if
-     * - `type`==`mac`
-     * - `type`==`staticGbp` if from matching mac
+     * @return Client or resource MAC addresses matched by this ACL tag
      * 
      */
     private @Nullable List<String> macs;
@@ -46,7 +44,7 @@ public final class NetworktemplateAclTags {
      */
     private @Nullable String network;
     /**
-     * @return Required if `type`==`portUsage`
+     * @return Required if `type`==`portUsage`. Switch port usage name matched by this ACL tag
      * 
      */
     private @Nullable String portUsage;
@@ -59,37 +57,24 @@ public final class NetworktemplateAclTags {
      */
     private @Nullable String radiusGroup;
     /**
-     * @return If `type`==`resource`, `type`==`radiusGroup`, `type`==`portUsage` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
+     * @return Layer 4 protocol and destination-port constraints for this ACL tag
      * 
      */
     private @Nullable List<NetworktemplateAclTagsSpec> specs;
     /**
-     * @return If
-     * - `type`==`subnet`
-     * - `type`==`resource` (optional. default is `any`)
-     * - `type`==`staticGbp` if from matching subnet
+     * @return IP subnets matched by this ACL tag
      * 
      */
     private @Nullable List<String> subnets;
     /**
-     * @return enum:
-     *   * `any`: matching anything not identified
-     *   * `dynamicGbp`: from the gbpTag received from RADIUS
-     *   * `gbpResource`: can only be used in `dstTags`
-     *   * `mac`
-     *   * `network`
-     *   * `portUsage`
-     *   * `radiusGroup`
-     *   * `resource`: can only be used in `dstTags`
-     *   * `staticGbp`: applying gbp tag against matching conditions
-     *   * `subnet`&#39;
+     * @return Classifier type that determines which ACL tag fields are evaluated
      * 
      */
     private String type;
 
     private NetworktemplateAclTags() {}
     /**
-     * @return ARP / IPv6. Default is `any`
+     * @return Layer 2 EtherTypes matched by this ACL tag; defaults to `any`
      * 
      */
     public List<String> etherTypes() {
@@ -106,9 +91,7 @@ public final class NetworktemplateAclTags {
         return Optional.ofNullable(this.gbpTag);
     }
     /**
-     * @return Required if
-     * - `type`==`mac`
-     * - `type`==`staticGbp` if from matching mac
+     * @return Client or resource MAC addresses matched by this ACL tag
      * 
      */
     public List<String> macs() {
@@ -127,7 +110,7 @@ public final class NetworktemplateAclTags {
         return Optional.ofNullable(this.network);
     }
     /**
-     * @return Required if `type`==`portUsage`
+     * @return Required if `type`==`portUsage`. Switch port usage name matched by this ACL tag
      * 
      */
     public Optional<String> portUsage() {
@@ -144,34 +127,21 @@ public final class NetworktemplateAclTags {
         return Optional.ofNullable(this.radiusGroup);
     }
     /**
-     * @return If `type`==`resource`, `type`==`radiusGroup`, `type`==`portUsage` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
+     * @return Layer 4 protocol and destination-port constraints for this ACL tag
      * 
      */
     public List<NetworktemplateAclTagsSpec> specs() {
         return this.specs == null ? List.of() : this.specs;
     }
     /**
-     * @return If
-     * - `type`==`subnet`
-     * - `type`==`resource` (optional. default is `any`)
-     * - `type`==`staticGbp` if from matching subnet
+     * @return IP subnets matched by this ACL tag
      * 
      */
     public List<String> subnets() {
         return this.subnets == null ? List.of() : this.subnets;
     }
     /**
-     * @return enum:
-     *   * `any`: matching anything not identified
-     *   * `dynamicGbp`: from the gbpTag received from RADIUS
-     *   * `gbpResource`: can only be used in `dstTags`
-     *   * `mac`
-     *   * `network`
-     *   * `portUsage`
-     *   * `radiusGroup`
-     *   * `resource`: can only be used in `dstTags`
-     *   * `staticGbp`: applying gbp tag against matching conditions
-     *   * `subnet`&#39;
+     * @return Classifier type that determines which ACL tag fields are evaluated
      * 
      */
     public String type() {

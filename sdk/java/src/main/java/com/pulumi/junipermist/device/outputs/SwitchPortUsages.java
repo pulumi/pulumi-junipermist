@@ -67,12 +67,12 @@ public final class SwitchPortUsages {
      */
     private @Nullable Boolean disabled;
     /**
-     * @return Only if `mode`!=`dynamic`. Link connection mode. enum: `auto`, `full`, `half`
+     * @return Only if `mode`!=`dynamic`. Link duplex mode for this port usage
      * 
      */
     private @Nullable String duplex;
     /**
-     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Networks or VLANs that RADIUS can return for dynamic VLAN assignment
      * 
      */
     private @Nullable List<String> dynamicVlanNetworks;
@@ -112,7 +112,7 @@ public final class SwitchPortUsages {
      */
     private @Nullable Boolean macAuthPreferred;
     /**
-     * @return Only if `mode`!=`dynamic` and `enableMacAuth` ==`true`. This type is ignored if mistNac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
+     * @return Only if `mode`!=`dynamic` and `enableMacAuth`==`true`. MAC authentication protocol to use; ignored if Mist NAC is enabled
      * 
      */
     private @Nullable String macAuthProtocol;
@@ -122,7 +122,7 @@ public final class SwitchPortUsages {
      */
     private @Nullable String macLimit;
     /**
-     * @return `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
+     * @return Switching mode for this port usage
      * 
      */
     private @Nullable String mode;
@@ -132,7 +132,7 @@ public final class SwitchPortUsages {
      */
     private @Nullable String mtu;
     /**
-     * @return Only if `mode`==`trunk`, the list of network/vlans
+     * @return Only if `mode`==`trunk`. Network or VLAN names to trunk
      * 
      */
     private @Nullable List<String> networks;
@@ -152,12 +152,12 @@ public final class SwitchPortUsages {
      */
     private @Nullable Boolean poeKeepStateWhenReboot;
     /**
-     * @return PoE priority. enum: `low`, `high`
+     * @return Only if `mode`!=`dynamic`. PoE priority for ports using this port usage
      * 
      */
     private @Nullable String poePriority;
     /**
-     * @return Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
+     * @return Only if `mode`!=`dynamic`. 802.1X authentication mode for this port usage
      * 
      */
     private @Nullable String portAuth;
@@ -172,12 +172,12 @@ public final class SwitchPortUsages {
      */
     private @Nullable String reauthInterval;
     /**
-     * @return Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `linkDown`, `none` (let the DPC port keep at the current port usage)
+     * @return Only if `mode`==`dynamic`. Condition that resets a dynamic port to the default port usage
      * 
      */
     private @Nullable String resetDefaultWhen;
     /**
-     * @return Only if `mode`==`dynamic`
+     * @return Only if `mode`==`dynamic`. Dynamic matching rules that select the port usage to apply
      * 
      */
     private @Nullable List<SwitchPortUsagesRule> rules;
@@ -187,17 +187,22 @@ public final class SwitchPortUsages {
      */
     private @Nullable String serverFailNetwork;
     /**
-     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. When radius server reject / fails
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Interval, in seconds. Sets the wait time before retrying authentication after RADIUS failure to reduce client flapping. Range 120-65535
+     * 
+     */
+    private @Nullable Integer serverFailRetryInterval;
+    /**
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. When RADIUS server reject / fails
      * 
      */
     private @Nullable String serverRejectNetwork;
     /**
-     * @return Only if `mode`!=`dynamic`, Port speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+     * @return Only if `mode`!=`dynamic`. Link speed for this port usage
      * 
      */
     private @Nullable String speed;
     /**
-     * @return Switch storm control. Only if `mode`!=`dynamic`
+     * @return Only if `mode`!=`dynamic`. Storm-control settings for this port usage
      * 
      */
     private @Nullable SwitchPortUsagesStormControl stormControl;
@@ -309,14 +314,14 @@ public final class SwitchPortUsages {
         return Optional.ofNullable(this.disabled);
     }
     /**
-     * @return Only if `mode`!=`dynamic`. Link connection mode. enum: `auto`, `full`, `half`
+     * @return Only if `mode`!=`dynamic`. Link duplex mode for this port usage
      * 
      */
     public Optional<String> duplex() {
         return Optional.ofNullable(this.duplex);
     }
     /**
-     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Networks or VLANs that RADIUS can return for dynamic VLAN assignment
      * 
      */
     public List<String> dynamicVlanNetworks() {
@@ -372,7 +377,7 @@ public final class SwitchPortUsages {
         return Optional.ofNullable(this.macAuthPreferred);
     }
     /**
-     * @return Only if `mode`!=`dynamic` and `enableMacAuth` ==`true`. This type is ignored if mistNac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
+     * @return Only if `mode`!=`dynamic` and `enableMacAuth`==`true`. MAC authentication protocol to use; ignored if Mist NAC is enabled
      * 
      */
     public Optional<String> macAuthProtocol() {
@@ -386,7 +391,7 @@ public final class SwitchPortUsages {
         return Optional.ofNullable(this.macLimit);
     }
     /**
-     * @return `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
+     * @return Switching mode for this port usage
      * 
      */
     public Optional<String> mode() {
@@ -400,7 +405,7 @@ public final class SwitchPortUsages {
         return Optional.ofNullable(this.mtu);
     }
     /**
-     * @return Only if `mode`==`trunk`, the list of network/vlans
+     * @return Only if `mode`==`trunk`. Network or VLAN names to trunk
      * 
      */
     public List<String> networks() {
@@ -428,14 +433,14 @@ public final class SwitchPortUsages {
         return Optional.ofNullable(this.poeKeepStateWhenReboot);
     }
     /**
-     * @return PoE priority. enum: `low`, `high`
+     * @return Only if `mode`!=`dynamic`. PoE priority for ports using this port usage
      * 
      */
     public Optional<String> poePriority() {
         return Optional.ofNullable(this.poePriority);
     }
     /**
-     * @return Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
+     * @return Only if `mode`!=`dynamic`. 802.1X authentication mode for this port usage
      * 
      */
     public Optional<String> portAuth() {
@@ -456,14 +461,14 @@ public final class SwitchPortUsages {
         return Optional.ofNullable(this.reauthInterval);
     }
     /**
-     * @return Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `linkDown`, `none` (let the DPC port keep at the current port usage)
+     * @return Only if `mode`==`dynamic`. Condition that resets a dynamic port to the default port usage
      * 
      */
     public Optional<String> resetDefaultWhen() {
         return Optional.ofNullable(this.resetDefaultWhen);
     }
     /**
-     * @return Only if `mode`==`dynamic`
+     * @return Only if `mode`==`dynamic`. Dynamic matching rules that select the port usage to apply
      * 
      */
     public List<SwitchPortUsagesRule> rules() {
@@ -477,21 +482,28 @@ public final class SwitchPortUsages {
         return Optional.ofNullable(this.serverFailNetwork);
     }
     /**
-     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. When radius server reject / fails
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Interval, in seconds. Sets the wait time before retrying authentication after RADIUS failure to reduce client flapping. Range 120-65535
+     * 
+     */
+    public Optional<Integer> serverFailRetryInterval() {
+        return Optional.ofNullable(this.serverFailRetryInterval);
+    }
+    /**
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. When RADIUS server reject / fails
      * 
      */
     public Optional<String> serverRejectNetwork() {
         return Optional.ofNullable(this.serverRejectNetwork);
     }
     /**
-     * @return Only if `mode`!=`dynamic`, Port speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+     * @return Only if `mode`!=`dynamic`. Link speed for this port usage
      * 
      */
     public Optional<String> speed() {
         return Optional.ofNullable(this.speed);
     }
     /**
-     * @return Switch storm control. Only if `mode`!=`dynamic`
+     * @return Only if `mode`!=`dynamic`. Storm-control settings for this port usage
      * 
      */
     public Optional<SwitchPortUsagesStormControl> stormControl() {
@@ -590,6 +602,7 @@ public final class SwitchPortUsages {
         private @Nullable String resetDefaultWhen;
         private @Nullable List<SwitchPortUsagesRule> rules;
         private @Nullable String serverFailNetwork;
+        private @Nullable Integer serverFailRetryInterval;
         private @Nullable String serverRejectNetwork;
         private @Nullable String speed;
         private @Nullable SwitchPortUsagesStormControl stormControl;
@@ -637,6 +650,7 @@ public final class SwitchPortUsages {
     	      this.resetDefaultWhen = defaults.resetDefaultWhen;
     	      this.rules = defaults.rules;
     	      this.serverFailNetwork = defaults.serverFailNetwork;
+    	      this.serverFailRetryInterval = defaults.serverFailRetryInterval;
     	      this.serverRejectNetwork = defaults.serverRejectNetwork;
     	      this.speed = defaults.speed;
     	      this.stormControl = defaults.stormControl;
@@ -863,6 +877,12 @@ public final class SwitchPortUsages {
             return this;
         }
         @CustomType.Setter
+        public Builder serverFailRetryInterval(@Nullable Integer serverFailRetryInterval) {
+
+            this.serverFailRetryInterval = serverFailRetryInterval;
+            return this;
+        }
+        @CustomType.Setter
         public Builder serverRejectNetwork(@Nullable String serverRejectNetwork) {
 
             this.serverRejectNetwork = serverRejectNetwork;
@@ -958,6 +978,7 @@ public final class SwitchPortUsages {
             _resultValue.resetDefaultWhen = resetDefaultWhen;
             _resultValue.rules = rules;
             _resultValue.serverFailNetwork = serverFailNetwork;
+            _resultValue.serverFailRetryInterval = serverFailRetryInterval;
             _resultValue.serverRejectNetwork = serverRejectNetwork;
             _resultValue.speed = speed;
             _resultValue.stormControl = stormControl;

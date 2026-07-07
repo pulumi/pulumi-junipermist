@@ -15,16 +15,32 @@ public final class NetworktemplateRemoteSyslogArchiveArgs extends com.pulumi.res
 
     public static final NetworktemplateRemoteSyslogArchiveArgs Empty = new NetworktemplateRemoteSyslogArchiveArgs();
 
+    /**
+     * Number of archived syslog files to retain
+     * 
+     */
     @Import(name="files")
     private @Nullable Output<String> files;
 
+    /**
+     * @return Number of archived syslog files to retain
+     * 
+     */
     public Optional<Output<String>> files() {
         return Optional.ofNullable(this.files);
     }
 
+    /**
+     * Maximum size of each archived syslog file, such as 5m
+     * 
+     */
     @Import(name="size")
     private @Nullable Output<String> size;
 
+    /**
+     * @return Maximum size of each archived syslog file, such as 5m
+     * 
+     */
     public Optional<Output<String>> size() {
         return Optional.ofNullable(this.size);
     }
@@ -54,20 +70,44 @@ public final class NetworktemplateRemoteSyslogArchiveArgs extends com.pulumi.res
             $ = new NetworktemplateRemoteSyslogArchiveArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param files Number of archived syslog files to retain
+         * 
+         * @return builder
+         * 
+         */
         public Builder files(@Nullable Output<String> files) {
             $.files = files;
             return this;
         }
 
+        /**
+         * @param files Number of archived syslog files to retain
+         * 
+         * @return builder
+         * 
+         */
         public Builder files(String files) {
             return files(Output.of(files));
         }
 
+        /**
+         * @param size Maximum size of each archived syslog file, such as 5m
+         * 
+         * @return builder
+         * 
+         */
         public Builder size(@Nullable Output<String> size) {
             $.size = size;
             return this;
         }
 
+        /**
+         * @param size Maximum size of each archived syslog file, such as 5m
+         * 
+         * @return builder
+         * 
+         */
         public Builder size(String size) {
             return size(Output.of(size));
         }

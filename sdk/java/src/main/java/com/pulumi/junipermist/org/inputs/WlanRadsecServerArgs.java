@@ -16,16 +16,32 @@ public final class WlanRadsecServerArgs extends com.pulumi.resources.ResourceArg
 
     public static final WlanRadsecServerArgs Empty = new WlanRadsecServerArgs();
 
+    /**
+     * Address or hostname of the RadSec server
+     * 
+     */
     @Import(name="host")
     private @Nullable Output<String> host;
 
+    /**
+     * @return Address or hostname of the RadSec server
+     * 
+     */
     public Optional<Output<String>> host() {
         return Optional.ofNullable(this.host);
     }
 
+    /**
+     * TCP port used by the RadSec server
+     * 
+     */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
+    /**
+     * @return TCP port used by the RadSec server
+     * 
+     */
     public Optional<Output<Integer>> port() {
         return Optional.ofNullable(this.port);
     }
@@ -55,20 +71,44 @@ public final class WlanRadsecServerArgs extends com.pulumi.resources.ResourceArg
             $ = new WlanRadsecServerArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param host Address or hostname of the RadSec server
+         * 
+         * @return builder
+         * 
+         */
         public Builder host(@Nullable Output<String> host) {
             $.host = host;
             return this;
         }
 
+        /**
+         * @param host Address or hostname of the RadSec server
+         * 
+         * @return builder
+         * 
+         */
         public Builder host(String host) {
             return host(Output.of(host));
         }
 
+        /**
+         * @param port TCP port used by the RadSec server
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(@Nullable Output<Integer> port) {
             $.port = port;
             return this;
         }
 
+        /**
+         * @param port TCP port used by the RadSec server
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(Integer port) {
             return port(Output.of(port));
         }

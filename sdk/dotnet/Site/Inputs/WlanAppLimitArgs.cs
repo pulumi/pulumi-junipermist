@@ -25,6 +25,9 @@ namespace Pulumi.JuniperMist.Site.Inputs
             set => _apps = value;
         }
 
+        /// <summary>
+        /// Whether application bandwidth limits are enabled for this WLAN
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

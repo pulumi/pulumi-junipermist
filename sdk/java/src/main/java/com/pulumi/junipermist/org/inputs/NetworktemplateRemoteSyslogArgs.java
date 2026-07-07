@@ -22,88 +22,152 @@ public final class NetworktemplateRemoteSyslogArgs extends com.pulumi.resources.
 
     public static final NetworktemplateRemoteSyslogArgs Empty = new NetworktemplateRemoteSyslogArgs();
 
+    /**
+     * Retention settings for generated syslog archive files
+     * 
+     */
     @Import(name="archive")
     private @Nullable Output<NetworktemplateRemoteSyslogArchiveArgs> archive;
 
+    /**
+     * @return Retention settings for generated syslog archive files
+     * 
+     */
     public Optional<Output<NetworktemplateRemoteSyslogArchiveArgs>> archive() {
         return Optional.ofNullable(this.archive);
     }
 
+    /**
+     * CA certificates used to verify TLS syslog servers
+     * 
+     */
     @Import(name="cacerts")
     private @Nullable Output<List<String>> cacerts;
 
+    /**
+     * @return CA certificates used to verify TLS syslog servers
+     * 
+     */
     public Optional<Output<List<String>>> cacerts() {
         return Optional.ofNullable(this.cacerts);
     }
 
+    /**
+     * Log forwarding filters for console messages sent to remote syslog
+     * 
+     */
     @Import(name="console")
     private @Nullable Output<NetworktemplateRemoteSyslogConsoleArgs> console;
 
+    /**
+     * @return Log forwarding filters for console messages sent to remote syslog
+     * 
+     */
     public Optional<Output<NetworktemplateRemoteSyslogConsoleArgs>> console() {
         return Optional.ofNullable(this.console);
     }
 
+    /**
+     * Whether remote syslog forwarding is enabled
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether remote syslog forwarding is enabled
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * Local syslog file definitions to generate and forward
+     * 
+     */
     @Import(name="files")
     private @Nullable Output<List<NetworktemplateRemoteSyslogFileArgs>> files;
 
+    /**
+     * @return Local syslog file definitions to generate and forward
+     * 
+     */
     public Optional<Output<List<NetworktemplateRemoteSyslogFileArgs>>> files() {
         return Optional.ofNullable(this.files);
     }
 
     /**
-     * If sourceAddress is configured, will use the vlan firstly otherwise use source_ip
+     * Source network used for syslog traffic. If `sourceAddress` is configured, Mist uses the VLAN first; otherwise it uses `sourceIp`
      * 
      */
     @Import(name="network")
     private @Nullable Output<String> network;
 
     /**
-     * @return If sourceAddress is configured, will use the vlan firstly otherwise use source_ip
+     * @return Source network used for syslog traffic. If `sourceAddress` is configured, Mist uses the VLAN first; otherwise it uses `sourceIp`
      * 
      */
     public Optional<Output<String>> network() {
         return Optional.ofNullable(this.network);
     }
 
+    /**
+     * Whether each log entry is sent to all configured remote syslog servers
+     * 
+     */
     @Import(name="sendToAllServers")
     private @Nullable Output<Boolean> sendToAllServers;
 
+    /**
+     * @return Whether each log entry is sent to all configured remote syslog servers
+     * 
+     */
     public Optional<Output<Boolean>> sendToAllServers() {
         return Optional.ofNullable(this.sendToAllServers);
     }
 
+    /**
+     * Remote syslog server destinations
+     * 
+     */
     @Import(name="servers")
     private @Nullable Output<List<NetworktemplateRemoteSyslogServerArgs>> servers;
 
+    /**
+     * @return Remote syslog server destinations
+     * 
+     */
     public Optional<Output<List<NetworktemplateRemoteSyslogServerArgs>>> servers() {
         return Optional.ofNullable(this.servers);
     }
 
     /**
-     * enum: `millisecond`, `year`, `year millisecond`
+     * Timestamp format used in forwarded syslog messages
      * 
      */
     @Import(name="timeFormat")
     private @Nullable Output<String> timeFormat;
 
     /**
-     * @return enum: `millisecond`, `year`, `year millisecond`
+     * @return Timestamp format used in forwarded syslog messages
      * 
      */
     public Optional<Output<String>> timeFormat() {
         return Optional.ofNullable(this.timeFormat);
     }
 
+    /**
+     * User-specific syslog logging rules
+     * 
+     */
     @Import(name="users")
     private @Nullable Output<List<NetworktemplateRemoteSyslogUserArgs>> users;
 
+    /**
+     * @return User-specific syslog logging rules
+     * 
+     */
     public Optional<Output<List<NetworktemplateRemoteSyslogUserArgs>>> users() {
         return Optional.ofNullable(this.users);
     }
@@ -141,61 +205,133 @@ public final class NetworktemplateRemoteSyslogArgs extends com.pulumi.resources.
             $ = new NetworktemplateRemoteSyslogArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param archive Retention settings for generated syslog archive files
+         * 
+         * @return builder
+         * 
+         */
         public Builder archive(@Nullable Output<NetworktemplateRemoteSyslogArchiveArgs> archive) {
             $.archive = archive;
             return this;
         }
 
+        /**
+         * @param archive Retention settings for generated syslog archive files
+         * 
+         * @return builder
+         * 
+         */
         public Builder archive(NetworktemplateRemoteSyslogArchiveArgs archive) {
             return archive(Output.of(archive));
         }
 
+        /**
+         * @param cacerts CA certificates used to verify TLS syslog servers
+         * 
+         * @return builder
+         * 
+         */
         public Builder cacerts(@Nullable Output<List<String>> cacerts) {
             $.cacerts = cacerts;
             return this;
         }
 
+        /**
+         * @param cacerts CA certificates used to verify TLS syslog servers
+         * 
+         * @return builder
+         * 
+         */
         public Builder cacerts(List<String> cacerts) {
             return cacerts(Output.of(cacerts));
         }
 
+        /**
+         * @param cacerts CA certificates used to verify TLS syslog servers
+         * 
+         * @return builder
+         * 
+         */
         public Builder cacerts(String... cacerts) {
             return cacerts(List.of(cacerts));
         }
 
+        /**
+         * @param console Log forwarding filters for console messages sent to remote syslog
+         * 
+         * @return builder
+         * 
+         */
         public Builder console(@Nullable Output<NetworktemplateRemoteSyslogConsoleArgs> console) {
             $.console = console;
             return this;
         }
 
+        /**
+         * @param console Log forwarding filters for console messages sent to remote syslog
+         * 
+         * @return builder
+         * 
+         */
         public Builder console(NetworktemplateRemoteSyslogConsoleArgs console) {
             return console(Output.of(console));
         }
 
+        /**
+         * @param enabled Whether remote syslog forwarding is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether remote syslog forwarding is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param files Local syslog file definitions to generate and forward
+         * 
+         * @return builder
+         * 
+         */
         public Builder files(@Nullable Output<List<NetworktemplateRemoteSyslogFileArgs>> files) {
             $.files = files;
             return this;
         }
 
+        /**
+         * @param files Local syslog file definitions to generate and forward
+         * 
+         * @return builder
+         * 
+         */
         public Builder files(List<NetworktemplateRemoteSyslogFileArgs> files) {
             return files(Output.of(files));
         }
 
+        /**
+         * @param files Local syslog file definitions to generate and forward
+         * 
+         * @return builder
+         * 
+         */
         public Builder files(NetworktemplateRemoteSyslogFileArgs... files) {
             return files(List.of(files));
         }
 
         /**
-         * @param network If sourceAddress is configured, will use the vlan firstly otherwise use source_ip
+         * @param network Source network used for syslog traffic. If `sourceAddress` is configured, Mist uses the VLAN first; otherwise it uses `sourceIp`
          * 
          * @return builder
          * 
@@ -206,7 +342,7 @@ public final class NetworktemplateRemoteSyslogArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param network If sourceAddress is configured, will use the vlan firstly otherwise use source_ip
+         * @param network Source network used for syslog traffic. If `sourceAddress` is configured, Mist uses the VLAN first; otherwise it uses `sourceIp`
          * 
          * @return builder
          * 
@@ -215,30 +351,60 @@ public final class NetworktemplateRemoteSyslogArgs extends com.pulumi.resources.
             return network(Output.of(network));
         }
 
+        /**
+         * @param sendToAllServers Whether each log entry is sent to all configured remote syslog servers
+         * 
+         * @return builder
+         * 
+         */
         public Builder sendToAllServers(@Nullable Output<Boolean> sendToAllServers) {
             $.sendToAllServers = sendToAllServers;
             return this;
         }
 
+        /**
+         * @param sendToAllServers Whether each log entry is sent to all configured remote syslog servers
+         * 
+         * @return builder
+         * 
+         */
         public Builder sendToAllServers(Boolean sendToAllServers) {
             return sendToAllServers(Output.of(sendToAllServers));
         }
 
+        /**
+         * @param servers Remote syslog server destinations
+         * 
+         * @return builder
+         * 
+         */
         public Builder servers(@Nullable Output<List<NetworktemplateRemoteSyslogServerArgs>> servers) {
             $.servers = servers;
             return this;
         }
 
+        /**
+         * @param servers Remote syslog server destinations
+         * 
+         * @return builder
+         * 
+         */
         public Builder servers(List<NetworktemplateRemoteSyslogServerArgs> servers) {
             return servers(Output.of(servers));
         }
 
+        /**
+         * @param servers Remote syslog server destinations
+         * 
+         * @return builder
+         * 
+         */
         public Builder servers(NetworktemplateRemoteSyslogServerArgs... servers) {
             return servers(List.of(servers));
         }
 
         /**
-         * @param timeFormat enum: `millisecond`, `year`, `year millisecond`
+         * @param timeFormat Timestamp format used in forwarded syslog messages
          * 
          * @return builder
          * 
@@ -249,7 +415,7 @@ public final class NetworktemplateRemoteSyslogArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param timeFormat enum: `millisecond`, `year`, `year millisecond`
+         * @param timeFormat Timestamp format used in forwarded syslog messages
          * 
          * @return builder
          * 
@@ -258,15 +424,33 @@ public final class NetworktemplateRemoteSyslogArgs extends com.pulumi.resources.
             return timeFormat(Output.of(timeFormat));
         }
 
+        /**
+         * @param users User-specific syslog logging rules
+         * 
+         * @return builder
+         * 
+         */
         public Builder users(@Nullable Output<List<NetworktemplateRemoteSyslogUserArgs>> users) {
             $.users = users;
             return this;
         }
 
+        /**
+         * @param users User-specific syslog logging rules
+         * 
+         * @return builder
+         * 
+         */
         public Builder users(List<NetworktemplateRemoteSyslogUserArgs> users) {
             return users(Output.of(users));
         }
 
+        /**
+         * @param users User-specific syslog logging rules
+         * 
+         * @return builder
+         * 
+         */
         public Builder users(NetworktemplateRemoteSyslogUserArgs... users) {
             return users(List.of(users));
         }

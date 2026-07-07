@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewayRoutingPolicies {
     /**
-     * @return zero or more criteria/filter can be specified to match the term, all criteria have to be met
+     * @return Ordered terms evaluated by this gateway routing policy
      * 
      */
     private @Nullable List<GatewayRoutingPoliciesTerm> terms;
 
     private GatewayRoutingPolicies() {}
     /**
-     * @return zero or more criteria/filter can be specified to match the term, all criteria have to be met
+     * @return Ordered terms evaluated by this gateway routing policy
      * 
      */
     public List<GatewayRoutingPoliciesTerm> terms() {

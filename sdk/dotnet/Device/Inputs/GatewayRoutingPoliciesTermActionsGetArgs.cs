@@ -12,11 +12,18 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class GatewayRoutingPoliciesTermActionsGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to accept routes that match this term
+        /// </summary>
         [Input("accept")]
         public Input<bool>? Accept { get; set; }
 
         [Input("addCommunities")]
         private InputList<string>? _addCommunities;
+
+        /// <summary>
+        /// BGP communities to add to routes that match this term
+        /// </summary>
         public InputList<string> AddCommunities
         {
             get => _addCommunities ?? (_addCommunities = new InputList<string>());
@@ -27,7 +34,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _addTargetVrfs;
 
         /// <summary>
-        /// For SSR, hub decides how VRF routes are leaked on spoke
+        /// SSR target VRFs to add when leaking routes from hub to spoke
         /// </summary>
         public InputList<string> AddTargetVrfs
         {
@@ -39,7 +46,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _communities;
 
         /// <summary>
-        /// When used as export policy, optional
+        /// BGP communities to set when this term is used as an export policy
         /// </summary>
         public InputList<string> Communities
         {
@@ -51,7 +58,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _excludeAsPaths;
 
         /// <summary>
-        /// When used as export policy, optional. To exclude certain AS
+        /// AS path values to exclude when this term is used as an export policy
         /// </summary>
         public InputList<string> ExcludeAsPaths
         {
@@ -61,6 +68,10 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
         [Input("excludeCommunities")]
         private InputList<string>? _excludeCommunities;
+
+        /// <summary>
+        /// BGP communities to exclude from routes that match this term
+        /// </summary>
         public InputList<string> ExcludeCommunities
         {
             get => _excludeCommunities ?? (_excludeCommunities = new InputList<string>());
@@ -71,7 +82,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _exportCommunities;
 
         /// <summary>
-        /// When used as export policy, optional
+        /// BGP communities allowed for export when this term is used as an export policy
         /// </summary>
         public InputList<string> ExportCommunities
         {
@@ -80,7 +91,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// Optional, for an import policy, LocalPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+        /// Preference value to set when this term is used as an import policy
         /// </summary>
         [Input("localPreference")]
         public Input<string>? LocalPreference { get; set; }
@@ -89,7 +100,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _prependAsPaths;
 
         /// <summary>
-        /// When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
+        /// AS path values to prepend when this term is used as an export policy
         /// </summary>
         public InputList<string> PrependAsPaths
         {
