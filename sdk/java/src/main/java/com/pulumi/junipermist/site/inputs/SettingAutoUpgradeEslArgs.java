@@ -48,14 +48,14 @@ public final class SettingAutoUpgradeEslArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+     * Weekly ESL auto-upgrade day for the maintenance window
      * 
      */
     @Import(name="dayOfWeek")
     private @Nullable Output<String> dayOfWeek;
 
     /**
-     * @return enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+     * @return Weekly ESL auto-upgrade day for the maintenance window
      * 
      */
     public Optional<Output<String>> dayOfWeek() {
@@ -92,9 +92,17 @@ public final class SettingAutoUpgradeEslArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.timeOfDay);
     }
 
+    /**
+     * ESL firmware version used for auto-upgrade
+     * 
+     */
     @Import(name="version")
     private @Nullable Output<String> version;
 
+    /**
+     * @return ESL firmware version used for auto-upgrade
+     * 
+     */
     public Optional<Output<String>> version() {
         return Optional.ofNullable(this.version);
     }
@@ -171,7 +179,7 @@ public final class SettingAutoUpgradeEslArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param dayOfWeek enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+         * @param dayOfWeek Weekly ESL auto-upgrade day for the maintenance window
          * 
          * @return builder
          * 
@@ -182,7 +190,7 @@ public final class SettingAutoUpgradeEslArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param dayOfWeek enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+         * @param dayOfWeek Weekly ESL auto-upgrade day for the maintenance window
          * 
          * @return builder
          * 
@@ -233,11 +241,23 @@ public final class SettingAutoUpgradeEslArgs extends com.pulumi.resources.Resour
             return timeOfDay(Output.of(timeOfDay));
         }
 
+        /**
+         * @param version ESL firmware version used for auto-upgrade
+         * 
+         * @return builder
+         * 
+         */
         public Builder version(@Nullable Output<String> version) {
             $.version = version;
             return this;
         }
 
+        /**
+         * @param version ESL firmware version used for auto-upgrade
+         * 
+         * @return builder
+         * 
+         */
         public Builder version(String version) {
             return version(Output.of(version));
         }

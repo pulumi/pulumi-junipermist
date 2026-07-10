@@ -205,6 +205,11 @@ export type Mxedge = import("./mxedge").Mxedge;
 export const Mxedge: typeof import("./mxedge").Mxedge = null as any;
 utilities.lazyLoad(exports, ["Mxedge"], () => require("./mxedge"));
 
+export { MxtunnelArgs, MxtunnelState } from "./mxtunnel";
+export type Mxtunnel = import("./mxtunnel").Mxtunnel;
+export const Mxtunnel: typeof import("./mxtunnel").Mxtunnel = null as any;
+utilities.lazyLoad(exports, ["Mxtunnel"], () => require("./mxtunnel"));
+
 export { NacEndpointArgs, NacEndpointState } from "./nacEndpoint";
 export type NacEndpoint = import("./nacEndpoint").NacEndpoint;
 export const NacEndpoint: typeof import("./nacEndpoint").NacEndpoint = null as any;
@@ -363,6 +368,8 @@ const _module = {
                 return new Mxcluster(name, <any>undefined, { urn })
             case "junipermist:org/mxedge:Mxedge":
                 return new Mxedge(name, <any>undefined, { urn })
+            case "junipermist:org/mxtunnel:Mxtunnel":
+                return new Mxtunnel(name, <any>undefined, { urn })
             case "junipermist:org/nacEndpoint:NacEndpoint":
                 return new NacEndpoint(name, <any>undefined, { urn })
             case "junipermist:org/nacPortal:NacPortal":
@@ -432,6 +439,7 @@ pulumi.runtime.registerResourceModule("junipermist", "org/idpprofile", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/inventory", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/mxcluster", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/mxedge", _module)
+pulumi.runtime.registerResourceModule("junipermist", "org/mxtunnel", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/nacEndpoint", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/nacPortal", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/nacPortalImage", _module)

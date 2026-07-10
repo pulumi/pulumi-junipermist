@@ -47,14 +47,14 @@ public final class SettingOccupancyArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Minimum duration
+     * Minimum dwell duration before a client or asset is counted in occupancy analytics
      * 
      */
     @Import(name="minDuration")
     private @Nullable Output<Integer> minDuration;
 
     /**
-     * @return Minimum duration
+     * @return Minimum dwell duration before a client or asset is counted in occupancy analytics
      * 
      */
     public Optional<Output<Integer>> minDuration() {
@@ -162,7 +162,7 @@ public final class SettingOccupancyArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param minDuration Minimum duration
+         * @param minDuration Minimum dwell duration before a client or asset is counted in occupancy analytics
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class SettingOccupancyArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param minDuration Minimum duration
+         * @param minDuration Minimum dwell duration before a client or asset is counted in occupancy analytics
          * 
          * @return builder
          * 

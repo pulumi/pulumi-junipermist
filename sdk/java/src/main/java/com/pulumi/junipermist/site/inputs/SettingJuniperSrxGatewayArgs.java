@@ -15,23 +15,47 @@ public final class SettingJuniperSrxGatewayArgs extends com.pulumi.resources.Res
 
     public static final SettingJuniperSrxGatewayArgs Empty = new SettingJuniperSrxGatewayArgs();
 
+    /**
+     * Authentication key used to access the Juniper SRX gateway API
+     * 
+     */
     @Import(name="apiKey")
     private @Nullable Output<String> apiKey;
 
+    /**
+     * @return Authentication key used to access the Juniper SRX gateway API
+     * 
+     */
     public Optional<Output<String>> apiKey() {
         return Optional.ofNullable(this.apiKey);
     }
 
+    /**
+     * Authentication password used to access the Juniper SRX gateway API
+     * 
+     */
     @Import(name="apiPassword")
     private @Nullable Output<String> apiPassword;
 
+    /**
+     * @return Authentication password used to access the Juniper SRX gateway API
+     * 
+     */
     public Optional<Output<String>> apiPassword() {
         return Optional.ofNullable(this.apiPassword);
     }
 
+    /**
+     * Base URL for the Juniper SRX gateway API
+     * 
+     */
     @Import(name="apiUrl")
     private @Nullable Output<String> apiUrl;
 
+    /**
+     * @return Base URL for the Juniper SRX gateway API
+     * 
+     */
     public Optional<Output<String>> apiUrl() {
         return Optional.ofNullable(this.apiUrl);
     }
@@ -62,29 +86,65 @@ public final class SettingJuniperSrxGatewayArgs extends com.pulumi.resources.Res
             $ = new SettingJuniperSrxGatewayArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param apiKey Authentication key used to access the Juniper SRX gateway API
+         * 
+         * @return builder
+         * 
+         */
         public Builder apiKey(@Nullable Output<String> apiKey) {
             $.apiKey = apiKey;
             return this;
         }
 
+        /**
+         * @param apiKey Authentication key used to access the Juniper SRX gateway API
+         * 
+         * @return builder
+         * 
+         */
         public Builder apiKey(String apiKey) {
             return apiKey(Output.of(apiKey));
         }
 
+        /**
+         * @param apiPassword Authentication password used to access the Juniper SRX gateway API
+         * 
+         * @return builder
+         * 
+         */
         public Builder apiPassword(@Nullable Output<String> apiPassword) {
             $.apiPassword = apiPassword;
             return this;
         }
 
+        /**
+         * @param apiPassword Authentication password used to access the Juniper SRX gateway API
+         * 
+         * @return builder
+         * 
+         */
         public Builder apiPassword(String apiPassword) {
             return apiPassword(Output.of(apiPassword));
         }
 
+        /**
+         * @param apiUrl Base URL for the Juniper SRX gateway API
+         * 
+         * @return builder
+         * 
+         */
         public Builder apiUrl(@Nullable Output<String> apiUrl) {
             $.apiUrl = apiUrl;
             return this;
         }
 
+        /**
+         * @param apiUrl Base URL for the Juniper SRX gateway API
+         * 
+         * @return builder
+         * 
+         */
         public Builder apiUrl(String apiUrl) {
             return apiUrl(Output.of(apiUrl));
         }

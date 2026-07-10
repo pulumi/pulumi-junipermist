@@ -19,14 +19,14 @@ public final class SettingZoneOccupancyAlertArgs extends com.pulumi.resources.Re
     public static final SettingZoneOccupancyAlertArgs Empty = new SettingZoneOccupancyAlertArgs();
 
     /**
-     * List of email addresses to send email notifications when the alert threshold is reached
+     * Notification email recipients for zone occupancy alerts
      * 
      */
     @Import(name="emailNotifiers")
     private @Nullable Output<List<String>> emailNotifiers;
 
     /**
-     * @return List of email addresses to send email notifications when the alert threshold is reached
+     * @return Notification email recipients for zone occupancy alerts
      * 
      */
     public Optional<Output<List<String>>> emailNotifiers() {
@@ -90,7 +90,7 @@ public final class SettingZoneOccupancyAlertArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param emailNotifiers List of email addresses to send email notifications when the alert threshold is reached
+         * @param emailNotifiers Notification email recipients for zone occupancy alerts
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class SettingZoneOccupancyAlertArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param emailNotifiers List of email addresses to send email notifications when the alert threshold is reached
+         * @param emailNotifiers Notification email recipients for zone occupancy alerts
          * 
          * @return builder
          * 
@@ -111,7 +111,7 @@ public final class SettingZoneOccupancyAlertArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param emailNotifiers List of email addresses to send email notifications when the alert threshold is reached
+         * @param emailNotifiers Notification email recipients for zone occupancy alerts
          * 
          * @return builder
          * 

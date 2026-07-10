@@ -11,31 +11,63 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingRtsa {
+    /**
+     * @return Whether app wake-up support is enabled for managed mobility
+     * 
+     */
     private @Nullable Boolean appWaking;
+    /**
+     * @return Whether dead reckoning is disabled for managed mobility
+     * 
+     */
     private @Nullable Boolean disableDeadReckoning;
+    /**
+     * @return Whether pressure sensor use is disabled for managed mobility
+     * 
+     */
     private @Nullable Boolean disablePressureSensor;
+    /**
+     * @return Whether managed mobility features are enabled
+     * 
+     */
     private @Nullable Boolean enabled;
     /**
-     * @return Asset tracking related
+     * @return Whether BLE asset tracking is enabled for managed mobility
      * 
      */
     private @Nullable Boolean trackAsset;
 
     private SettingRtsa() {}
+    /**
+     * @return Whether app wake-up support is enabled for managed mobility
+     * 
+     */
     public Optional<Boolean> appWaking() {
         return Optional.ofNullable(this.appWaking);
     }
+    /**
+     * @return Whether dead reckoning is disabled for managed mobility
+     * 
+     */
     public Optional<Boolean> disableDeadReckoning() {
         return Optional.ofNullable(this.disableDeadReckoning);
     }
+    /**
+     * @return Whether pressure sensor use is disabled for managed mobility
+     * 
+     */
     public Optional<Boolean> disablePressureSensor() {
         return Optional.ofNullable(this.disablePressureSensor);
     }
+    /**
+     * @return Whether managed mobility features are enabled
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Asset tracking related
+     * @return Whether BLE asset tracking is enabled for managed mobility
      * 
      */
     public Optional<Boolean> trackAsset() {

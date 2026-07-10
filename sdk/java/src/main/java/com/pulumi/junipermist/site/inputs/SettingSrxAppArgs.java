@@ -15,9 +15,17 @@ public final class SettingSrxAppArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SettingSrxAppArgs Empty = new SettingSrxAppArgs();
 
+    /**
+     * Whether Juniper SRX application visibility is enabled
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether Juniper SRX application visibility is enabled
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -46,11 +54,23 @@ public final class SettingSrxAppArgs extends com.pulumi.resources.ResourceArgs {
             $ = new SettingSrxAppArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Whether Juniper SRX application visibility is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether Juniper SRX application visibility is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

@@ -12,11 +12,18 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class SettingCriticalUrlMonitoringGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether critical URL monitoring is enabled
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         [Input("monitors")]
         private InputList<Inputs.SettingCriticalUrlMonitoringMonitorGetArgs>? _monitors;
+
+        /// <summary>
+        /// Critical URLs monitored for site health latency
+        /// </summary>
         public InputList<Inputs.SettingCriticalUrlMonitoringMonitorGetArgs> Monitors
         {
             get => _monitors ?? (_monitors = new InputList<Inputs.SettingCriticalUrlMonitoringMonitorGetArgs>());

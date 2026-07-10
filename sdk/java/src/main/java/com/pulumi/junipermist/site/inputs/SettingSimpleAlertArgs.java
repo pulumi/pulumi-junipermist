@@ -17,23 +17,47 @@ public final class SettingSimpleAlertArgs extends com.pulumi.resources.ResourceA
 
     public static final SettingSimpleAlertArgs Empty = new SettingSimpleAlertArgs();
 
+    /**
+     * Thresholds for ARP failure heuristic alerts
+     * 
+     */
     @Import(name="arpFailure")
     private @Nullable Output<SettingSimpleAlertArpFailureArgs> arpFailure;
 
+    /**
+     * @return Thresholds for ARP failure heuristic alerts
+     * 
+     */
     public Optional<Output<SettingSimpleAlertArpFailureArgs>> arpFailure() {
         return Optional.ofNullable(this.arpFailure);
     }
 
+    /**
+     * Thresholds for DHCP failure heuristic alerts
+     * 
+     */
     @Import(name="dhcpFailure")
     private @Nullable Output<SettingSimpleAlertDhcpFailureArgs> dhcpFailure;
 
+    /**
+     * @return Thresholds for DHCP failure heuristic alerts
+     * 
+     */
     public Optional<Output<SettingSimpleAlertDhcpFailureArgs>> dhcpFailure() {
         return Optional.ofNullable(this.dhcpFailure);
     }
 
+    /**
+     * Thresholds for DNS failure heuristic alerts
+     * 
+     */
     @Import(name="dnsFailure")
     private @Nullable Output<SettingSimpleAlertDnsFailureArgs> dnsFailure;
 
+    /**
+     * @return Thresholds for DNS failure heuristic alerts
+     * 
+     */
     public Optional<Output<SettingSimpleAlertDnsFailureArgs>> dnsFailure() {
         return Optional.ofNullable(this.dnsFailure);
     }
@@ -64,29 +88,65 @@ public final class SettingSimpleAlertArgs extends com.pulumi.resources.ResourceA
             $ = new SettingSimpleAlertArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param arpFailure Thresholds for ARP failure heuristic alerts
+         * 
+         * @return builder
+         * 
+         */
         public Builder arpFailure(@Nullable Output<SettingSimpleAlertArpFailureArgs> arpFailure) {
             $.arpFailure = arpFailure;
             return this;
         }
 
+        /**
+         * @param arpFailure Thresholds for ARP failure heuristic alerts
+         * 
+         * @return builder
+         * 
+         */
         public Builder arpFailure(SettingSimpleAlertArpFailureArgs arpFailure) {
             return arpFailure(Output.of(arpFailure));
         }
 
+        /**
+         * @param dhcpFailure Thresholds for DHCP failure heuristic alerts
+         * 
+         * @return builder
+         * 
+         */
         public Builder dhcpFailure(@Nullable Output<SettingSimpleAlertDhcpFailureArgs> dhcpFailure) {
             $.dhcpFailure = dhcpFailure;
             return this;
         }
 
+        /**
+         * @param dhcpFailure Thresholds for DHCP failure heuristic alerts
+         * 
+         * @return builder
+         * 
+         */
         public Builder dhcpFailure(SettingSimpleAlertDhcpFailureArgs dhcpFailure) {
             return dhcpFailure(Output.of(dhcpFailure));
         }
 
+        /**
+         * @param dnsFailure Thresholds for DNS failure heuristic alerts
+         * 
+         * @return builder
+         * 
+         */
         public Builder dnsFailure(@Nullable Output<SettingSimpleAlertDnsFailureArgs> dnsFailure) {
             $.dnsFailure = dnsFailure;
             return this;
         }
 
+        /**
+         * @param dnsFailure Thresholds for DNS failure heuristic alerts
+         * 
+         * @return builder
+         * 
+         */
         public Builder dnsFailure(SettingSimpleAlertDnsFailureArgs dnsFailure) {
             return dnsFailure(Output.of(dnsFailure));
         }

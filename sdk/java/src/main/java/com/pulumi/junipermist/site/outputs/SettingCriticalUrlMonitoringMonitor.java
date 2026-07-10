@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingCriticalUrlMonitoringMonitor {
+    /**
+     * @return Monitored HTTP or HTTPS URL used for site health latency
+     * 
+     */
     private @Nullable String url;
+    /**
+     * @return Source VLAN ID used to run the critical URL monitor
+     * 
+     */
     private @Nullable String vlanId;
 
     private SettingCriticalUrlMonitoringMonitor() {}
+    /**
+     * @return Monitored HTTP or HTTPS URL used for site health latency
+     * 
+     */
     public Optional<String> url() {
         return Optional.ofNullable(this.url);
     }
+    /**
+     * @return Source VLAN ID used to run the critical URL monitor
+     * 
+     */
     public Optional<String> vlanId() {
         return Optional.ofNullable(this.vlanId);
     }

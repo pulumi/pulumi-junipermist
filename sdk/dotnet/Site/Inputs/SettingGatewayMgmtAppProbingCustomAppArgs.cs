@@ -15,6 +15,9 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("address")]
         public Input<string>? Address { get; set; }
 
+        /// <summary>
+        /// Category label used for this custom application probe
+        /// </summary>
         [Input("appType")]
         public Input<string>? AppType { get; set; }
 
@@ -32,23 +35,32 @@ namespace Pulumi.JuniperMist.Site.Inputs
             set => _hostnames = value;
         }
 
+        /// <summary>
+        /// Stable key used to identify this custom application probe
+        /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
+        /// <summary>
+        /// Display name for this custom application probe
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// Gateway network used as the source context for this probe
+        /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// If `Protocol`==`Icmp`
+        /// If `Protocol`==`Icmp`. ICMP packet size used by this custom app probe
         /// </summary>
         [Input("packetSize")]
         public Input<int>? PacketSize { get; set; }
 
         /// <summary>
-        /// enum: `Http`, `Icmp`
+        /// Probe protocol used by this custom application definition
         /// </summary>
         [Input("protocol", required: true)]
         public Input<string> Protocol { get; set; } = null!;
@@ -56,6 +68,9 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("url")]
         public Input<string>? Url { get; set; }
 
+        /// <summary>
+        /// Gateway VRF used as the source context for this probe
+        /// </summary>
         [Input("vrf")]
         public Input<string>? Vrf { get; set; }
 

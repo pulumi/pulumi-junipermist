@@ -12,19 +12,27 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingConfigPushPolicyPushWindow {
+    /**
+     * @return Whether configuration pushes are limited to the configured push window
+     * 
+     */
     private @Nullable Boolean enabled;
     /**
-     * @return Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+     * @return Day-of-week hour ranges when configuration pushes are allowed
      * 
      */
     private @Nullable SettingConfigPushPolicyPushWindowHours hours;
 
     private SettingConfigPushPolicyPushWindow() {}
+    /**
+     * @return Whether configuration pushes are limited to the configured push window
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+     * @return Day-of-week hour ranges when configuration pushes are allowed
      * 
      */
     public Optional<SettingConfigPushPolicyPushWindowHours> hours() {

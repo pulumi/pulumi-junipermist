@@ -15,9 +15,17 @@ public final class SettingWidsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SettingWidsArgs Empty = new SettingWidsArgs();
 
+    /**
+     * Detection settings for repeated authentication failures
+     * 
+     */
     @Import(name="repeatedAuthFailures")
     private @Nullable Output<SettingWidsRepeatedAuthFailuresArgs> repeatedAuthFailures;
 
+    /**
+     * @return Detection settings for repeated authentication failures
+     * 
+     */
     public Optional<Output<SettingWidsRepeatedAuthFailuresArgs>> repeatedAuthFailures() {
         return Optional.ofNullable(this.repeatedAuthFailures);
     }
@@ -46,11 +54,23 @@ public final class SettingWidsArgs extends com.pulumi.resources.ResourceArgs {
             $ = new SettingWidsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param repeatedAuthFailures Detection settings for repeated authentication failures
+         * 
+         * @return builder
+         * 
+         */
         public Builder repeatedAuthFailures(@Nullable Output<SettingWidsRepeatedAuthFailuresArgs> repeatedAuthFailures) {
             $.repeatedAuthFailures = repeatedAuthFailures;
             return this;
         }
 
+        /**
+         * @param repeatedAuthFailures Detection settings for repeated authentication failures
+         * 
+         * @return builder
+         * 
+         */
         public Builder repeatedAuthFailures(SettingWidsRepeatedAuthFailuresArgs repeatedAuthFailures) {
             return repeatedAuthFailures(Output.of(repeatedAuthFailures));
         }

@@ -19,56 +19,72 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingSyntheticTest {
     /**
-     * @return enum: `auto`, `high`, `low`
+     * @return Overall aggressiveness level for synthetic test probes
      * 
      */
     private @Nullable String aggressiveness;
     /**
-     * @return Custom probes to be used for synthetic tests
+     * @return Custom synthetic probe definitions keyed by probe name
      * 
      */
     private @Nullable Map<String,SettingSyntheticTestCustomProbes> customProbes;
+    /**
+     * @return Whether synthetic tests are disabled
+     * 
+     */
     private @Nullable Boolean disabled;
     /**
-     * @return List of networks to be used for synthetic tests
+     * @return LAN network probe groups used by synthetic tests
      * 
      */
     private @Nullable List<SettingSyntheticTestLanNetwork> lanNetworks;
     /**
+     * @return Deprecated VLAN-based synthetic test settings
+     * 
      * @deprecated
      * This attribute is deprecated.
      * 
      */
     @Deprecated /* This attribute is deprecated. */
     private @Nullable List<SettingSyntheticTestVlan> vlans;
+    /**
+     * @return WAN speedtest settings for synthetic tests
+     * 
+     */
     private @Nullable SettingSyntheticTestWanSpeedtest wanSpeedtest;
 
     private SettingSyntheticTest() {}
     /**
-     * @return enum: `auto`, `high`, `low`
+     * @return Overall aggressiveness level for synthetic test probes
      * 
      */
     public Optional<String> aggressiveness() {
         return Optional.ofNullable(this.aggressiveness);
     }
     /**
-     * @return Custom probes to be used for synthetic tests
+     * @return Custom synthetic probe definitions keyed by probe name
      * 
      */
     public Map<String,SettingSyntheticTestCustomProbes> customProbes() {
         return this.customProbes == null ? Map.of() : this.customProbes;
     }
+    /**
+     * @return Whether synthetic tests are disabled
+     * 
+     */
     public Optional<Boolean> disabled() {
         return Optional.ofNullable(this.disabled);
     }
     /**
-     * @return List of networks to be used for synthetic tests
+     * @return LAN network probe groups used by synthetic tests
      * 
      */
     public List<SettingSyntheticTestLanNetwork> lanNetworks() {
         return this.lanNetworks == null ? List.of() : this.lanNetworks;
     }
     /**
+     * @return Deprecated VLAN-based synthetic test settings
+     * 
      * @deprecated
      * This attribute is deprecated.
      * 
@@ -77,6 +93,10 @@ public final class SettingSyntheticTest {
     public List<SettingSyntheticTestVlan> vlans() {
         return this.vlans == null ? List.of() : this.vlans;
     }
+    /**
+     * @return WAN speedtest settings for synthetic tests
+     * 
+     */
     public Optional<SettingSyntheticTestWanSpeedtest> wanSpeedtest() {
         return Optional.ofNullable(this.wanSpeedtest);
     }

@@ -14,31 +14,31 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class SettingConfigPushPolicyPushWindowHours
     {
         /// <summary>
-        /// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        /// Operating hour range for Friday
         /// </summary>
         public readonly string? Fri;
         /// <summary>
-        /// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        /// Operating hour range for Monday
         /// </summary>
         public readonly string? Mon;
         /// <summary>
-        /// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        /// Operating hour range for Saturday
         /// </summary>
         public readonly string? Sat;
         /// <summary>
-        /// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        /// Operating hour range for Sunday
         /// </summary>
         public readonly string? Sun;
         /// <summary>
-        /// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        /// Operating hour range for Thursday
         /// </summary>
         public readonly string? Thu;
         /// <summary>
-        /// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        /// Operating hour range for Tuesday
         /// </summary>
         public readonly string? Tue;
         /// <summary>
-        /// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        /// Operating hour range for Wednesday
         /// </summary>
         public readonly string? Wed;
 

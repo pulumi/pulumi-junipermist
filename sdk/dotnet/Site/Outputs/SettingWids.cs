@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class SettingWids
     {
+        /// <summary>
+        /// Detection settings for repeated authentication failures
+        /// </summary>
         public readonly Outputs.SettingWidsRepeatedAuthFailures? RepeatedAuthFailures;
 
         [OutputConstructor]

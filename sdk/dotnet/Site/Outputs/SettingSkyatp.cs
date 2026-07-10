@@ -13,9 +13,12 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class SettingSkyatp
     {
+        /// <summary>
+        /// Whether Sky ATP is enabled for the site
+        /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Whether to send IP-MAC mapping to SkyATP
+        /// Whether IP-to-MAC mappings are sent to Sky ATP
         /// </summary>
         public readonly bool? SendIpMacMapping;
 

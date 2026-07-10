@@ -19,14 +19,14 @@ public final class SettingEngagementArgs extends com.pulumi.resources.ResourceAr
     public static final SettingEngagementArgs Empty = new SettingEngagementArgs();
 
     /**
-     * Name associated to each tag
+     * Display labels for dwell-time visit categories
      * 
      */
     @Import(name="dwellTagNames")
     private @Nullable Output<SettingEngagementDwellTagNamesArgs> dwellTagNames;
 
     /**
-     * @return Name associated to each tag
+     * @return Display labels for dwell-time visit categories
      * 
      */
     public Optional<Output<SettingEngagementDwellTagNamesArgs>> dwellTagNames() {
@@ -34,14 +34,14 @@ public final class SettingEngagementArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * add tags to visits within the duration (in seconds)
+     * Visit duration ranges used to assign engagement categories
      * 
      */
     @Import(name="dwellTags")
     private @Nullable Output<SettingEngagementDwellTagsArgs> dwellTags;
 
     /**
-     * @return add tags to visits within the duration (in seconds)
+     * @return Visit duration ranges used to assign engagement categories
      * 
      */
     public Optional<Output<SettingEngagementDwellTagsArgs>> dwellTags() {
@@ -49,14 +49,14 @@ public final class SettingEngagementArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+     * Schedule during which engagement analytics rules apply
      * 
      */
     @Import(name="hours")
     private @Nullable Output<SettingEngagementHoursArgs> hours;
 
     /**
-     * @return Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+     * @return Schedule during which engagement analytics rules apply
      * 
      */
     public Optional<Output<SettingEngagementHoursArgs>> hours() {
@@ -64,14 +64,14 @@ public final class SettingEngagementArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Max time, default is 43200(12h), max is 68400 (18h)
+     * Maximum dwell time in seconds considered by engagement analytics
      * 
      */
     @Import(name="maxDwell")
     private @Nullable Output<Integer> maxDwell;
 
     /**
-     * @return Max time, default is 43200(12h), max is 68400 (18h)
+     * @return Maximum dwell time in seconds considered by engagement analytics
      * 
      */
     public Optional<Output<Integer>> maxDwell() {
@@ -79,14 +79,14 @@ public final class SettingEngagementArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * min time
+     * Minimum dwell time in seconds for engagement analytics
      * 
      */
     @Import(name="minDwell")
     private @Nullable Output<Integer> minDwell;
 
     /**
-     * @return min time
+     * @return Minimum dwell time in seconds for engagement analytics
      * 
      */
     public Optional<Output<Integer>> minDwell() {
@@ -122,7 +122,7 @@ public final class SettingEngagementArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dwellTagNames Name associated to each tag
+         * @param dwellTagNames Display labels for dwell-time visit categories
          * 
          * @return builder
          * 
@@ -133,7 +133,7 @@ public final class SettingEngagementArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dwellTagNames Name associated to each tag
+         * @param dwellTagNames Display labels for dwell-time visit categories
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class SettingEngagementArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dwellTags add tags to visits within the duration (in seconds)
+         * @param dwellTags Visit duration ranges used to assign engagement categories
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class SettingEngagementArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dwellTags add tags to visits within the duration (in seconds)
+         * @param dwellTags Visit duration ranges used to assign engagement categories
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class SettingEngagementArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param hours Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+         * @param hours Schedule during which engagement analytics rules apply
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class SettingEngagementArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param hours Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+         * @param hours Schedule during which engagement analytics rules apply
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class SettingEngagementArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param maxDwell Max time, default is 43200(12h), max is 68400 (18h)
+         * @param maxDwell Maximum dwell time in seconds considered by engagement analytics
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class SettingEngagementArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param maxDwell Max time, default is 43200(12h), max is 68400 (18h)
+         * @param maxDwell Maximum dwell time in seconds considered by engagement analytics
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class SettingEngagementArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param minDwell min time
+         * @param minDwell Minimum dwell time in seconds for engagement analytics
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class SettingEngagementArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param minDwell min time
+         * @param minDwell Minimum dwell time in seconds for engagement analytics
          * 
          * @return builder
          * 

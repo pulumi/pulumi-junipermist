@@ -13,6 +13,440 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetIdpprofilesOrgIdpprofileOverwrite struct {
+	// enum:
+	//   * alert (default)
+	//   * drop: silently dropping packets
+	//   * close: notify client/server to close connection
+	Action   string                                       `pulumi:"action"`
+	Matching GetIdpprofilesOrgIdpprofileOverwriteMatching `pulumi:"matching"`
+	Name     string                                       `pulumi:"name"`
+}
+
+// GetIdpprofilesOrgIdpprofileOverwriteInput is an input type that accepts GetIdpprofilesOrgIdpprofileOverwriteArgs and GetIdpprofilesOrgIdpprofileOverwriteOutput values.
+// You can construct a concrete instance of `GetIdpprofilesOrgIdpprofileOverwriteInput` via:
+//
+//	GetIdpprofilesOrgIdpprofileOverwriteArgs{...}
+type GetIdpprofilesOrgIdpprofileOverwriteInput interface {
+	pulumi.Input
+
+	ToGetIdpprofilesOrgIdpprofileOverwriteOutput() GetIdpprofilesOrgIdpprofileOverwriteOutput
+	ToGetIdpprofilesOrgIdpprofileOverwriteOutputWithContext(context.Context) GetIdpprofilesOrgIdpprofileOverwriteOutput
+}
+
+type GetIdpprofilesOrgIdpprofileOverwriteArgs struct {
+	// enum:
+	//   * alert (default)
+	//   * drop: silently dropping packets
+	//   * close: notify client/server to close connection
+	Action   pulumi.StringInput                                `pulumi:"action"`
+	Matching GetIdpprofilesOrgIdpprofileOverwriteMatchingInput `pulumi:"matching"`
+	Name     pulumi.StringInput                                `pulumi:"name"`
+}
+
+func (GetIdpprofilesOrgIdpprofileOverwriteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpprofilesOrgIdpprofileOverwrite)(nil)).Elem()
+}
+
+func (i GetIdpprofilesOrgIdpprofileOverwriteArgs) ToGetIdpprofilesOrgIdpprofileOverwriteOutput() GetIdpprofilesOrgIdpprofileOverwriteOutput {
+	return i.ToGetIdpprofilesOrgIdpprofileOverwriteOutputWithContext(context.Background())
+}
+
+func (i GetIdpprofilesOrgIdpprofileOverwriteArgs) ToGetIdpprofilesOrgIdpprofileOverwriteOutputWithContext(ctx context.Context) GetIdpprofilesOrgIdpprofileOverwriteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpprofilesOrgIdpprofileOverwriteOutput)
+}
+
+// GetIdpprofilesOrgIdpprofileOverwriteArrayInput is an input type that accepts GetIdpprofilesOrgIdpprofileOverwriteArray and GetIdpprofilesOrgIdpprofileOverwriteArrayOutput values.
+// You can construct a concrete instance of `GetIdpprofilesOrgIdpprofileOverwriteArrayInput` via:
+//
+//	GetIdpprofilesOrgIdpprofileOverwriteArray{ GetIdpprofilesOrgIdpprofileOverwriteArgs{...} }
+type GetIdpprofilesOrgIdpprofileOverwriteArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpprofilesOrgIdpprofileOverwriteArrayOutput() GetIdpprofilesOrgIdpprofileOverwriteArrayOutput
+	ToGetIdpprofilesOrgIdpprofileOverwriteArrayOutputWithContext(context.Context) GetIdpprofilesOrgIdpprofileOverwriteArrayOutput
+}
+
+type GetIdpprofilesOrgIdpprofileOverwriteArray []GetIdpprofilesOrgIdpprofileOverwriteInput
+
+func (GetIdpprofilesOrgIdpprofileOverwriteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpprofilesOrgIdpprofileOverwrite)(nil)).Elem()
+}
+
+func (i GetIdpprofilesOrgIdpprofileOverwriteArray) ToGetIdpprofilesOrgIdpprofileOverwriteArrayOutput() GetIdpprofilesOrgIdpprofileOverwriteArrayOutput {
+	return i.ToGetIdpprofilesOrgIdpprofileOverwriteArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpprofilesOrgIdpprofileOverwriteArray) ToGetIdpprofilesOrgIdpprofileOverwriteArrayOutputWithContext(ctx context.Context) GetIdpprofilesOrgIdpprofileOverwriteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpprofilesOrgIdpprofileOverwriteArrayOutput)
+}
+
+type GetIdpprofilesOrgIdpprofileOverwriteOutput struct{ *pulumi.OutputState }
+
+func (GetIdpprofilesOrgIdpprofileOverwriteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpprofilesOrgIdpprofileOverwrite)(nil)).Elem()
+}
+
+func (o GetIdpprofilesOrgIdpprofileOverwriteOutput) ToGetIdpprofilesOrgIdpprofileOverwriteOutput() GetIdpprofilesOrgIdpprofileOverwriteOutput {
+	return o
+}
+
+func (o GetIdpprofilesOrgIdpprofileOverwriteOutput) ToGetIdpprofilesOrgIdpprofileOverwriteOutputWithContext(ctx context.Context) GetIdpprofilesOrgIdpprofileOverwriteOutput {
+	return o
+}
+
+// enum:
+//   - alert (default)
+//   - drop: silently dropping packets
+//   - close: notify client/server to close connection
+func (o GetIdpprofilesOrgIdpprofileOverwriteOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpprofilesOrgIdpprofileOverwrite) string { return v.Action }).(pulumi.StringOutput)
+}
+
+func (o GetIdpprofilesOrgIdpprofileOverwriteOutput) Matching() GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput {
+	return o.ApplyT(func(v GetIdpprofilesOrgIdpprofileOverwrite) GetIdpprofilesOrgIdpprofileOverwriteMatching {
+		return v.Matching
+	}).(GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput)
+}
+
+func (o GetIdpprofilesOrgIdpprofileOverwriteOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpprofilesOrgIdpprofileOverwrite) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetIdpprofilesOrgIdpprofileOverwriteArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpprofilesOrgIdpprofileOverwriteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpprofilesOrgIdpprofileOverwrite)(nil)).Elem()
+}
+
+func (o GetIdpprofilesOrgIdpprofileOverwriteArrayOutput) ToGetIdpprofilesOrgIdpprofileOverwriteArrayOutput() GetIdpprofilesOrgIdpprofileOverwriteArrayOutput {
+	return o
+}
+
+func (o GetIdpprofilesOrgIdpprofileOverwriteArrayOutput) ToGetIdpprofilesOrgIdpprofileOverwriteArrayOutputWithContext(ctx context.Context) GetIdpprofilesOrgIdpprofileOverwriteArrayOutput {
+	return o
+}
+
+func (o GetIdpprofilesOrgIdpprofileOverwriteArrayOutput) Index(i pulumi.IntInput) GetIdpprofilesOrgIdpprofileOverwriteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpprofilesOrgIdpprofileOverwrite {
+		return vs[0].([]GetIdpprofilesOrgIdpprofileOverwrite)[vs[1].(int)]
+	}).(GetIdpprofilesOrgIdpprofileOverwriteOutput)
+}
+
+type GetIdpprofilesOrgIdpprofileOverwriteMatching struct {
+	AttackNames []string `pulumi:"attackNames"`
+	DstSubnets  []string `pulumi:"dstSubnets"`
+	Severities  []string `pulumi:"severities"`
+}
+
+// GetIdpprofilesOrgIdpprofileOverwriteMatchingInput is an input type that accepts GetIdpprofilesOrgIdpprofileOverwriteMatchingArgs and GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput values.
+// You can construct a concrete instance of `GetIdpprofilesOrgIdpprofileOverwriteMatchingInput` via:
+//
+//	GetIdpprofilesOrgIdpprofileOverwriteMatchingArgs{...}
+type GetIdpprofilesOrgIdpprofileOverwriteMatchingInput interface {
+	pulumi.Input
+
+	ToGetIdpprofilesOrgIdpprofileOverwriteMatchingOutput() GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput
+	ToGetIdpprofilesOrgIdpprofileOverwriteMatchingOutputWithContext(context.Context) GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput
+}
+
+type GetIdpprofilesOrgIdpprofileOverwriteMatchingArgs struct {
+	AttackNames pulumi.StringArrayInput `pulumi:"attackNames"`
+	DstSubnets  pulumi.StringArrayInput `pulumi:"dstSubnets"`
+	Severities  pulumi.StringArrayInput `pulumi:"severities"`
+}
+
+func (GetIdpprofilesOrgIdpprofileOverwriteMatchingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpprofilesOrgIdpprofileOverwriteMatching)(nil)).Elem()
+}
+
+func (i GetIdpprofilesOrgIdpprofileOverwriteMatchingArgs) ToGetIdpprofilesOrgIdpprofileOverwriteMatchingOutput() GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput {
+	return i.ToGetIdpprofilesOrgIdpprofileOverwriteMatchingOutputWithContext(context.Background())
+}
+
+func (i GetIdpprofilesOrgIdpprofileOverwriteMatchingArgs) ToGetIdpprofilesOrgIdpprofileOverwriteMatchingOutputWithContext(ctx context.Context) GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput)
+}
+
+type GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput struct{ *pulumi.OutputState }
+
+func (GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpprofilesOrgIdpprofileOverwriteMatching)(nil)).Elem()
+}
+
+func (o GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput) ToGetIdpprofilesOrgIdpprofileOverwriteMatchingOutput() GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput {
+	return o
+}
+
+func (o GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput) ToGetIdpprofilesOrgIdpprofileOverwriteMatchingOutputWithContext(ctx context.Context) GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput {
+	return o
+}
+
+func (o GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput) AttackNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIdpprofilesOrgIdpprofileOverwriteMatching) []string { return v.AttackNames }).(pulumi.StringArrayOutput)
+}
+
+func (o GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput) DstSubnets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIdpprofilesOrgIdpprofileOverwriteMatching) []string { return v.DstSubnets }).(pulumi.StringArrayOutput)
+}
+
+func (o GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput) Severities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIdpprofilesOrgIdpprofileOverwriteMatching) []string { return v.Severities }).(pulumi.StringArrayOutput)
+}
+
+type GetInventoryOrgInventory struct {
+	// Only if `type`==`switch` or `type`==`gateway`, whether the switch/gateway is adopted
+	Adopted bool `pulumi:"adopted"`
+	// For Virtual Chassis only, the MAC Address of the FPC0
+	ChassisMac string `pulumi:"chassisMac"`
+	// For Virtual Chassis only, the Serial Number of the FPC0
+	ChassisSerial string `pulumi:"chassisSerial"`
+	// Device claim code
+	ClaimCode string `pulumi:"claimCode"`
+	// Whether the device is connected
+	Connected bool `pulumi:"connected"`
+	// Deviceprofile id if assigned, null if not assigned
+	DeviceprofileId string `pulumi:"deviceprofileId"`
+	// Hostname reported by the device
+	Hostname string `pulumi:"hostname"`
+	// Device hardware revision number
+	HwRev string `pulumi:"hwRev"`
+	// Unique ID of the object instance in the Mist Organization
+	Id  string `pulumi:"id"`
+	Jsi bool   `pulumi:"jsi"`
+	// Device MAC address
+	Mac string `pulumi:"mac"`
+	// Device model
+	Model string `pulumi:"model"`
+	// Device name if configured
+	Name  string `pulumi:"name"`
+	OrgId string `pulumi:"orgId"`
+	// Device serial
+	Serial string `pulumi:"serial"`
+	// Site ID where the device is assigned to
+	SiteId string `pulumi:"siteId"`
+	// Device stock keeping unit
+	Sku string `pulumi:"sku"`
+	// enum: `ap`, `gateway`, `switch`
+	Type string `pulumi:"type"`
+	// If `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Cluster, MAC Address of the Cluster
+	VcMac string `pulumi:"vcMac"`
+}
+
+// GetInventoryOrgInventoryInput is an input type that accepts GetInventoryOrgInventoryArgs and GetInventoryOrgInventoryOutput values.
+// You can construct a concrete instance of `GetInventoryOrgInventoryInput` via:
+//
+//	GetInventoryOrgInventoryArgs{...}
+type GetInventoryOrgInventoryInput interface {
+	pulumi.Input
+
+	ToGetInventoryOrgInventoryOutput() GetInventoryOrgInventoryOutput
+	ToGetInventoryOrgInventoryOutputWithContext(context.Context) GetInventoryOrgInventoryOutput
+}
+
+type GetInventoryOrgInventoryArgs struct {
+	// Only if `type`==`switch` or `type`==`gateway`, whether the switch/gateway is adopted
+	Adopted pulumi.BoolInput `pulumi:"adopted"`
+	// For Virtual Chassis only, the MAC Address of the FPC0
+	ChassisMac pulumi.StringInput `pulumi:"chassisMac"`
+	// For Virtual Chassis only, the Serial Number of the FPC0
+	ChassisSerial pulumi.StringInput `pulumi:"chassisSerial"`
+	// Device claim code
+	ClaimCode pulumi.StringInput `pulumi:"claimCode"`
+	// Whether the device is connected
+	Connected pulumi.BoolInput `pulumi:"connected"`
+	// Deviceprofile id if assigned, null if not assigned
+	DeviceprofileId pulumi.StringInput `pulumi:"deviceprofileId"`
+	// Hostname reported by the device
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// Device hardware revision number
+	HwRev pulumi.StringInput `pulumi:"hwRev"`
+	// Unique ID of the object instance in the Mist Organization
+	Id  pulumi.StringInput `pulumi:"id"`
+	Jsi pulumi.BoolInput   `pulumi:"jsi"`
+	// Device MAC address
+	Mac pulumi.StringInput `pulumi:"mac"`
+	// Device model
+	Model pulumi.StringInput `pulumi:"model"`
+	// Device name if configured
+	Name  pulumi.StringInput `pulumi:"name"`
+	OrgId pulumi.StringInput `pulumi:"orgId"`
+	// Device serial
+	Serial pulumi.StringInput `pulumi:"serial"`
+	// Site ID where the device is assigned to
+	SiteId pulumi.StringInput `pulumi:"siteId"`
+	// Device stock keeping unit
+	Sku pulumi.StringInput `pulumi:"sku"`
+	// enum: `ap`, `gateway`, `switch`
+	Type pulumi.StringInput `pulumi:"type"`
+	// If `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Cluster, MAC Address of the Cluster
+	VcMac pulumi.StringInput `pulumi:"vcMac"`
+}
+
+func (GetInventoryOrgInventoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInventoryOrgInventory)(nil)).Elem()
+}
+
+func (i GetInventoryOrgInventoryArgs) ToGetInventoryOrgInventoryOutput() GetInventoryOrgInventoryOutput {
+	return i.ToGetInventoryOrgInventoryOutputWithContext(context.Background())
+}
+
+func (i GetInventoryOrgInventoryArgs) ToGetInventoryOrgInventoryOutputWithContext(ctx context.Context) GetInventoryOrgInventoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInventoryOrgInventoryOutput)
+}
+
+// GetInventoryOrgInventoryArrayInput is an input type that accepts GetInventoryOrgInventoryArray and GetInventoryOrgInventoryArrayOutput values.
+// You can construct a concrete instance of `GetInventoryOrgInventoryArrayInput` via:
+//
+//	GetInventoryOrgInventoryArray{ GetInventoryOrgInventoryArgs{...} }
+type GetInventoryOrgInventoryArrayInput interface {
+	pulumi.Input
+
+	ToGetInventoryOrgInventoryArrayOutput() GetInventoryOrgInventoryArrayOutput
+	ToGetInventoryOrgInventoryArrayOutputWithContext(context.Context) GetInventoryOrgInventoryArrayOutput
+}
+
+type GetInventoryOrgInventoryArray []GetInventoryOrgInventoryInput
+
+func (GetInventoryOrgInventoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInventoryOrgInventory)(nil)).Elem()
+}
+
+func (i GetInventoryOrgInventoryArray) ToGetInventoryOrgInventoryArrayOutput() GetInventoryOrgInventoryArrayOutput {
+	return i.ToGetInventoryOrgInventoryArrayOutputWithContext(context.Background())
+}
+
+func (i GetInventoryOrgInventoryArray) ToGetInventoryOrgInventoryArrayOutputWithContext(ctx context.Context) GetInventoryOrgInventoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInventoryOrgInventoryArrayOutput)
+}
+
+type GetInventoryOrgInventoryOutput struct{ *pulumi.OutputState }
+
+func (GetInventoryOrgInventoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInventoryOrgInventory)(nil)).Elem()
+}
+
+func (o GetInventoryOrgInventoryOutput) ToGetInventoryOrgInventoryOutput() GetInventoryOrgInventoryOutput {
+	return o
+}
+
+func (o GetInventoryOrgInventoryOutput) ToGetInventoryOrgInventoryOutputWithContext(ctx context.Context) GetInventoryOrgInventoryOutput {
+	return o
+}
+
+// Only if `type`==`switch` or `type`==`gateway`, whether the switch/gateway is adopted
+func (o GetInventoryOrgInventoryOutput) Adopted() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInventoryOrgInventory) bool { return v.Adopted }).(pulumi.BoolOutput)
+}
+
+// For Virtual Chassis only, the MAC Address of the FPC0
+func (o GetInventoryOrgInventoryOutput) ChassisMac() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.ChassisMac }).(pulumi.StringOutput)
+}
+
+// For Virtual Chassis only, the Serial Number of the FPC0
+func (o GetInventoryOrgInventoryOutput) ChassisSerial() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.ChassisSerial }).(pulumi.StringOutput)
+}
+
+// Device claim code
+func (o GetInventoryOrgInventoryOutput) ClaimCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.ClaimCode }).(pulumi.StringOutput)
+}
+
+// Whether the device is connected
+func (o GetInventoryOrgInventoryOutput) Connected() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInventoryOrgInventory) bool { return v.Connected }).(pulumi.BoolOutput)
+}
+
+// Deviceprofile id if assigned, null if not assigned
+func (o GetInventoryOrgInventoryOutput) DeviceprofileId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.DeviceprofileId }).(pulumi.StringOutput)
+}
+
+// Hostname reported by the device
+func (o GetInventoryOrgInventoryOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Device hardware revision number
+func (o GetInventoryOrgInventoryOutput) HwRev() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.HwRev }).(pulumi.StringOutput)
+}
+
+// Unique ID of the object instance in the Mist Organization
+func (o GetInventoryOrgInventoryOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetInventoryOrgInventoryOutput) Jsi() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInventoryOrgInventory) bool { return v.Jsi }).(pulumi.BoolOutput)
+}
+
+// Device MAC address
+func (o GetInventoryOrgInventoryOutput) Mac() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.Mac }).(pulumi.StringOutput)
+}
+
+// Device model
+func (o GetInventoryOrgInventoryOutput) Model() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.Model }).(pulumi.StringOutput)
+}
+
+// Device name if configured
+func (o GetInventoryOrgInventoryOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetInventoryOrgInventoryOutput) OrgId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.OrgId }).(pulumi.StringOutput)
+}
+
+// Device serial
+func (o GetInventoryOrgInventoryOutput) Serial() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.Serial }).(pulumi.StringOutput)
+}
+
+// Site ID where the device is assigned to
+func (o GetInventoryOrgInventoryOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.SiteId }).(pulumi.StringOutput)
+}
+
+// Device stock keeping unit
+func (o GetInventoryOrgInventoryOutput) Sku() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.Sku }).(pulumi.StringOutput)
+}
+
+// enum: `ap`, `gateway`, `switch`
+func (o GetInventoryOrgInventoryOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// If `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Cluster, MAC Address of the Cluster
+func (o GetInventoryOrgInventoryOutput) VcMac() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.VcMac }).(pulumi.StringOutput)
+}
+
+type GetInventoryOrgInventoryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInventoryOrgInventoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInventoryOrgInventory)(nil)).Elem()
+}
+
+func (o GetInventoryOrgInventoryArrayOutput) ToGetInventoryOrgInventoryArrayOutput() GetInventoryOrgInventoryArrayOutput {
+	return o
+}
+
+func (o GetInventoryOrgInventoryArrayOutput) ToGetInventoryOrgInventoryArrayOutputWithContext(ctx context.Context) GetInventoryOrgInventoryArrayOutput {
+	return o
+}
+
+func (o GetInventoryOrgInventoryArrayOutput) Index(i pulumi.IntInput) GetInventoryOrgInventoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInventoryOrgInventory {
+		return vs[0].([]GetInventoryOrgInventory)[vs[1].(int)]
+	}).(GetInventoryOrgInventoryOutput)
+}
+
 type GetNacEndpointsOrgUsermac struct {
 	// Unique ID of the object instance in the Mist Organization
 	Id     string   `pulumi:"id"`
@@ -9355,6 +9789,11 @@ func (o GetWxtagsOrgWxtagSpecArrayOutput) Index(i pulumi.IntInput) GetWxtagsOrgW
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpprofilesOrgIdpprofileOverwriteInput)(nil)).Elem(), GetIdpprofilesOrgIdpprofileOverwriteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpprofilesOrgIdpprofileOverwriteArrayInput)(nil)).Elem(), GetIdpprofilesOrgIdpprofileOverwriteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpprofilesOrgIdpprofileOverwriteMatchingInput)(nil)).Elem(), GetIdpprofilesOrgIdpprofileOverwriteMatchingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInventoryOrgInventoryInput)(nil)).Elem(), GetInventoryOrgInventoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInventoryOrgInventoryArrayInput)(nil)).Elem(), GetInventoryOrgInventoryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNacEndpointsOrgUsermacInput)(nil)).Elem(), GetNacEndpointsOrgUsermacArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNacEndpointsOrgUsermacArrayInput)(nil)).Elem(), GetNacEndpointsOrgUsermacArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNacrulesOrgNacruleInput)(nil)).Elem(), GetNacrulesOrgNacruleArgs{})
@@ -9457,6 +9896,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWxtagsOrgWxtagArrayInput)(nil)).Elem(), GetWxtagsOrgWxtagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWxtagsOrgWxtagSpecInput)(nil)).Elem(), GetWxtagsOrgWxtagSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWxtagsOrgWxtagSpecArrayInput)(nil)).Elem(), GetWxtagsOrgWxtagSpecArray{})
+	pulumi.RegisterOutputType(GetIdpprofilesOrgIdpprofileOverwriteOutput{})
+	pulumi.RegisterOutputType(GetIdpprofilesOrgIdpprofileOverwriteArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput{})
+	pulumi.RegisterOutputType(GetInventoryOrgInventoryOutput{})
+	pulumi.RegisterOutputType(GetInventoryOrgInventoryArrayOutput{})
 	pulumi.RegisterOutputType(GetNacEndpointsOrgUsermacOutput{})
 	pulumi.RegisterOutputType(GetNacEndpointsOrgUsermacArrayOutput{})
 	pulumi.RegisterOutputType(GetNacrulesOrgNacruleOutput{})

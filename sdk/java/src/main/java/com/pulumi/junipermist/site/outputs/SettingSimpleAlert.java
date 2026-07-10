@@ -13,17 +13,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingSimpleAlert {
+    /**
+     * @return Thresholds for ARP failure heuristic alerts
+     * 
+     */
     private @Nullable SettingSimpleAlertArpFailure arpFailure;
+    /**
+     * @return Thresholds for DHCP failure heuristic alerts
+     * 
+     */
     private @Nullable SettingSimpleAlertDhcpFailure dhcpFailure;
+    /**
+     * @return Thresholds for DNS failure heuristic alerts
+     * 
+     */
     private @Nullable SettingSimpleAlertDnsFailure dnsFailure;
 
     private SettingSimpleAlert() {}
+    /**
+     * @return Thresholds for ARP failure heuristic alerts
+     * 
+     */
     public Optional<SettingSimpleAlertArpFailure> arpFailure() {
         return Optional.ofNullable(this.arpFailure);
     }
+    /**
+     * @return Thresholds for DHCP failure heuristic alerts
+     * 
+     */
     public Optional<SettingSimpleAlertDhcpFailure> dhcpFailure() {
         return Optional.ofNullable(this.dhcpFailure);
     }
+    /**
+     * @return Thresholds for DNS failure heuristic alerts
+     * 
+     */
     public Optional<SettingSimpleAlertDnsFailure> dnsFailure() {
         return Optional.ofNullable(this.dnsFailure);
     }

@@ -13,9 +13,12 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class SettingIotproxy
     {
+        /// <summary>
+        /// Whether the site IoT proxy is enabled
+        /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Visionline integration settings for IoT proxy
+        /// Site access-control integration settings for Visionline
         /// </summary>
         public readonly Outputs.SettingIotproxyVisionline? Visionline;
 

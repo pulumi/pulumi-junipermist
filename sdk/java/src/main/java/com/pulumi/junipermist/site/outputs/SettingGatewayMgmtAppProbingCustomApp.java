@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingGatewayMgmtAppProbingCustomApp {
     private @Nullable String address;
+    /**
+     * @return Category label used for this custom application probe
+     * 
+     */
     private @Nullable String appType;
     /**
      * @return Only 1 entry is allowed:
@@ -23,26 +27,46 @@ public final class SettingGatewayMgmtAppProbingCustomApp {
      * 
      */
     private List<String> hostnames;
+    /**
+     * @return Stable key used to identify this custom application probe
+     * 
+     */
     private @Nullable String key;
+    /**
+     * @return Display name for this custom application probe
+     * 
+     */
     private String name;
+    /**
+     * @return Gateway network used as the source context for this probe
+     * 
+     */
     private @Nullable String network;
     /**
-     * @return If `protocol`==`icmp`
+     * @return If `protocol`==`icmp`. ICMP packet size used by this custom app probe
      * 
      */
     private @Nullable Integer packetSize;
     /**
-     * @return enum: `http`, `icmp`
+     * @return Probe protocol used by this custom application definition
      * 
      */
     private String protocol;
     private @Nullable String url;
+    /**
+     * @return Gateway VRF used as the source context for this probe
+     * 
+     */
     private @Nullable String vrf;
 
     private SettingGatewayMgmtAppProbingCustomApp() {}
     public Optional<String> address() {
         return Optional.ofNullable(this.address);
     }
+    /**
+     * @return Category label used for this custom application probe
+     * 
+     */
     public Optional<String> appType() {
         return Optional.ofNullable(this.appType);
     }
@@ -55,24 +79,36 @@ public final class SettingGatewayMgmtAppProbingCustomApp {
     public List<String> hostnames() {
         return this.hostnames;
     }
+    /**
+     * @return Stable key used to identify this custom application probe
+     * 
+     */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
+    /**
+     * @return Display name for this custom application probe
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Gateway network used as the source context for this probe
+     * 
+     */
     public Optional<String> network() {
         return Optional.ofNullable(this.network);
     }
     /**
-     * @return If `protocol`==`icmp`
+     * @return If `protocol`==`icmp`. ICMP packet size used by this custom app probe
      * 
      */
     public Optional<Integer> packetSize() {
         return Optional.ofNullable(this.packetSize);
     }
     /**
-     * @return enum: `http`, `icmp`
+     * @return Probe protocol used by this custom application definition
      * 
      */
     public String protocol() {
@@ -81,6 +117,10 @@ public final class SettingGatewayMgmtAppProbingCustomApp {
     public Optional<String> url() {
         return Optional.ofNullable(this.url);
     }
+    /**
+     * @return Gateway VRF used as the source context for this probe
+     * 
+     */
     public Optional<String> vrf() {
         return Optional.ofNullable(this.vrf);
     }

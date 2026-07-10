@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputList<string>? _emailNotifiers;
 
         /// <summary>
-        /// List of email addresses to send email notifications when the alert threshold is reached
+        /// Notification email recipients for zone occupancy alerts
         /// </summary>
         public InputList<string> EmailNotifiers
         {

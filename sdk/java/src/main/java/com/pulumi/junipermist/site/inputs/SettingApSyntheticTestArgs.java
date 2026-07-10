@@ -17,14 +17,14 @@ public final class SettingApSyntheticTestArgs extends com.pulumi.resources.Resou
     public static final SettingApSyntheticTestArgs Empty = new SettingApSyntheticTestArgs();
 
     /**
-     * List or Comma separated list of additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
+     * VLAN IDs included in addition to the default VLAN set for AP synthetic tests
      * 
      */
     @Import(name="additionalVlanIds")
     private @Nullable Output<List<String>> additionalVlanIds;
 
     /**
-     * @return List or Comma separated list of additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
+     * @return VLAN IDs included in addition to the default VLAN set for AP synthetic tests
      * 
      */
     public Optional<Output<List<String>>> additionalVlanIds() {
@@ -56,7 +56,7 @@ public final class SettingApSyntheticTestArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param additionalVlanIds List or Comma separated list of additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
+         * @param additionalVlanIds VLAN IDs included in addition to the default VLAN set for AP synthetic tests
          * 
          * @return builder
          * 
@@ -67,7 +67,7 @@ public final class SettingApSyntheticTestArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param additionalVlanIds List or Comma separated list of additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
+         * @param additionalVlanIds VLAN IDs included in addition to the default VLAN set for AP synthetic tests
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class SettingApSyntheticTestArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param additionalVlanIds List or Comma separated list of additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
+         * @param additionalVlanIds VLAN IDs included in addition to the default VLAN set for AP synthetic tests
          * 
          * @return builder
          * 

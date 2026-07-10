@@ -12,15 +12,21 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class SettingSimpleAlertDnsFailureGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Number of distinct clients that must encounter DNS failures before alerting
+        /// </summary>
         [Input("clientCount")]
         public Input<int>? ClientCount { get; set; }
 
         /// <summary>
-        /// failing within minutes
+        /// Time window in minutes for evaluating DNS failures
         /// </summary>
         [Input("duration")]
         public Input<int>? Duration { get; set; }
 
+        /// <summary>
+        /// Number of DNS failure incidents required within the duration window
+        /// </summary>
         [Input("incidentCount")]
         public Input<int>? IncidentCount { get; set; }
 

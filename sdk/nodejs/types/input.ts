@@ -12568,6 +12568,59 @@ export namespace org {
         tunterm?: pulumi.Input<string | undefined>;
     }
 
+    export interface MxtunnelAutoPreemption {
+        /**
+         * Scheduled weekday for auto preemption
+         */
+        dayOfWeek?: pulumi.Input<string | undefined>;
+        /**
+         * Whether auto preemption is enabled
+         */
+        enabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * Scheduled time of day for auto preemption
+         */
+        timeOfDay?: pulumi.Input<string | undefined>;
+    }
+
+    export interface MxtunnelIpsec {
+        /**
+         * Name server addresses advertised for IPsec tunnel clients
+         */
+        dnsServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Search suffixes advertised for IPsec tunnel clients
+         */
+        dnsSuffixes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Whether IPsec support is enabled for this Mist Tunnel
+         */
+        enabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * Additional routes advertised for the IPsec tunnel
+         */
+        extraRoutes?: pulumi.Input<pulumi.Input<inputs.org.MxtunnelIpsecExtraRoute>[] | undefined>;
+        /**
+         * Whether split tunneling is enabled for IPsec clients
+         */
+        splitTunnel?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether IPsec termination uses Mist Edge
+         */
+        useMxedge?: pulumi.Input<boolean | undefined>;
+    }
+
+    export interface MxtunnelIpsecExtraRoute {
+        /**
+         * Route destination CIDR for the IPsec extra route
+         */
+        dest?: pulumi.Input<string | undefined>;
+        /**
+         * Route next-hop IPv4 address for the IPsec extra route
+         */
+        nextHop?: pulumi.Input<string | undefined>;
+    }
+
     export interface NacPortalPortal {
         /**
          * Mode presented by the NAC guest portal for user authentication
@@ -19268,18 +19321,18 @@ export namespace site {
 
     export interface SettingApSyntheticTest {
         /**
-         * List or Comma separated list of additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
+         * VLAN IDs included in addition to the default VLAN set for AP synthetic tests
          */
         additionalVlanIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 
     export interface SettingAutoUpgrade {
         /**
-         * Custom versions for different models. Property key is the model name (e.g. "AP41")
+         * Per-AP-model firmware versions or channels used for auto-upgrade
          */
         customVersions?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
         /**
-         * enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+         * Weekly AP auto-upgrade day for the maintenance window
          */
         dayOfWeek?: pulumi.Input<string | undefined>;
         /**
@@ -19291,7 +19344,7 @@ export namespace site {
          */
         timeOfDay?: pulumi.Input<string | undefined>;
         /**
-         * desired version. enum: `beta`, `custom`, `stable`
+         * Firmware release channel or custom version used for AP auto-upgrade
          */
         version?: pulumi.Input<string | undefined>;
     }
@@ -19306,7 +19359,7 @@ export namespace site {
          */
         customVersions?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
         /**
-         * enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+         * Weekly ESL auto-upgrade day for the maintenance window
          */
         dayOfWeek?: pulumi.Input<string | undefined>;
         /**
@@ -19317,6 +19370,9 @@ export namespace site {
          * `any` / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
          */
         timeOfDay?: pulumi.Input<string | undefined>;
+        /**
+         * ESL firmware version used for auto-upgrade
+         */
         version?: pulumi.Input<string | undefined>;
     }
 
@@ -19330,11 +19386,11 @@ export namespace site {
          */
         beaconRate?: pulumi.Input<number | undefined>;
         /**
-         * enum: `custom`, `default`
+         * Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate
          */
         beaconRateMode?: pulumi.Input<string | undefined>;
         /**
-         * List of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
+         * AP BLE beam numbers disabled for location advertisements
          */
         beamDisableds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
         /**
@@ -19353,6 +19409,9 @@ export namespace site {
          * Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
          */
         eddystoneUidAdvPower?: pulumi.Input<number | undefined>;
+        /**
+         * BLE beams used to transmit Eddystone-UID advertisements, expressed as ranges such as `2-4,7`
+         */
         eddystoneUidBeams?: pulumi.Input<string | undefined>;
         /**
          * Only if `beaconEnabled`==`false`, Whether Eddystone-UID beacon is enabled
@@ -19367,20 +19426,23 @@ export namespace site {
          */
         eddystoneUidInstance?: pulumi.Input<string | undefined>;
         /**
-         * Eddystone-UID namespace
+         * Eddystone-UID namespace broadcast by the AP, as a 10-byte hex string
          */
         eddystoneUidNamespace?: pulumi.Input<string | undefined>;
         /**
          * Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
          */
         eddystoneUrlAdvPower?: pulumi.Input<number | undefined>;
+        /**
+         * BLE beams used to transmit Eddystone-URL advertisements, expressed as ranges such as `2-4,7`
+         */
         eddystoneUrlBeams?: pulumi.Input<string | undefined>;
         /**
          * Only if `beaconEnabled`==`false`, Whether Eddystone-URL beacon is enabled
          */
         eddystoneUrlEnabled?: pulumi.Input<boolean | undefined>;
         /**
-         * Frequency (msec) of data emit by Eddystone-UID beacon
+         * Frequency (msec) of data emitted by Eddystone-URL beacon
          */
         eddystoneUrlFreqMsec?: pulumi.Input<number | undefined>;
         /**
@@ -19391,6 +19453,9 @@ export namespace site {
          * Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
          */
         ibeaconAdvPower?: pulumi.Input<number | undefined>;
+        /**
+         * BLE beams used to transmit iBeacon advertisements, expressed as ranges such as `2-4,7`
+         */
         ibeaconBeams?: pulumi.Input<string | undefined>;
         /**
          * Can be enabled if `beaconEnabled`==`true`, whether to send iBeacon
@@ -19401,11 +19466,11 @@ export namespace site {
          */
         ibeaconFreqMsec?: pulumi.Input<number | undefined>;
         /**
-         * Major number for iBeacon
+         * iBeacon major value broadcast by the AP
          */
         ibeaconMajor?: pulumi.Input<number | undefined>;
         /**
-         * Minor number for iBeacon
+         * iBeacon minor value broadcast by the AP
          */
         ibeaconMinor?: pulumi.Input<number | undefined>;
         /**
@@ -19417,7 +19482,7 @@ export namespace site {
          */
         power?: pulumi.Input<number | undefined>;
         /**
-         * enum: `custom`, `default`
+         * Transmit power mode for BLE beacons; use custom to set `power`
          */
         powerMode?: pulumi.Input<string | undefined>;
     }
@@ -19428,79 +19493,94 @@ export namespace site {
          */
         noPush?: pulumi.Input<boolean | undefined>;
         /**
-         * If enabled, new config will only be pushed to device within the specified time window
+         * Allowed time window during which configuration pushes may run
          */
         pushWindow?: pulumi.Input<inputs.site.SettingConfigPushPolicyPushWindow | undefined>;
     }
 
     export interface SettingConfigPushPolicyPushWindow {
+        /**
+         * Whether configuration pushes are limited to the configured push window
+         */
         enabled?: pulumi.Input<boolean | undefined>;
         /**
-         * Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+         * Day-of-week hour ranges when configuration pushes are allowed
          */
         hours?: pulumi.Input<inputs.site.SettingConfigPushPolicyPushWindowHours | undefined>;
     }
 
     export interface SettingConfigPushPolicyPushWindowHours {
         /**
-         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         * Operating hour range for Friday
          */
         fri?: pulumi.Input<string | undefined>;
         /**
-         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         * Operating hour range for Monday
          */
         mon?: pulumi.Input<string | undefined>;
         /**
-         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         * Operating hour range for Saturday
          */
         sat?: pulumi.Input<string | undefined>;
         /**
-         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         * Operating hour range for Sunday
          */
         sun?: pulumi.Input<string | undefined>;
         /**
-         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         * Operating hour range for Thursday
          */
         thu?: pulumi.Input<string | undefined>;
         /**
-         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         * Operating hour range for Tuesday
          */
         tue?: pulumi.Input<string | undefined>;
         /**
-         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         * Operating hour range for Wednesday
          */
         wed?: pulumi.Input<string | undefined>;
     }
 
     export interface SettingCriticalUrlMonitoring {
+        /**
+         * Whether critical URL monitoring is enabled
+         */
         enabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * Critical URLs monitored for site health latency
+         */
         monitors?: pulumi.Input<pulumi.Input<inputs.site.SettingCriticalUrlMonitoringMonitor>[] | undefined>;
     }
 
     export interface SettingCriticalUrlMonitoringMonitor {
+        /**
+         * Monitored HTTP or HTTPS URL used for site health latency
+         */
         url?: pulumi.Input<string | undefined>;
+        /**
+         * Source VLAN ID used to run the critical URL monitor
+         */
         vlanId?: pulumi.Input<string | undefined>;
     }
 
     export interface SettingEngagement {
         /**
-         * Name associated to each tag
+         * Display labels for dwell-time visit categories
          */
         dwellTagNames?: pulumi.Input<inputs.site.SettingEngagementDwellTagNames | undefined>;
         /**
-         * add tags to visits within the duration (in seconds)
+         * Visit duration ranges used to assign engagement categories
          */
         dwellTags?: pulumi.Input<inputs.site.SettingEngagementDwellTags | undefined>;
         /**
-         * Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+         * Schedule during which engagement analytics rules apply
          */
         hours?: pulumi.Input<inputs.site.SettingEngagementHours | undefined>;
         /**
-         * Max time, default is 43200(12h), max is 68400 (18h)
+         * Maximum dwell time in seconds considered by engagement analytics
          */
         maxDwell?: pulumi.Input<number | undefined>;
         /**
-         * min time
+         * Minimum dwell time in seconds for engagement analytics
          */
         minDwell?: pulumi.Input<number | undefined>;
     }
@@ -19545,45 +19625,51 @@ export namespace site {
 
     export interface SettingEngagementHours {
         /**
-         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         * Operating hour range for Friday
          */
         fri?: pulumi.Input<string | undefined>;
         /**
-         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         * Operating hour range for Monday
          */
         mon?: pulumi.Input<string | undefined>;
         /**
-         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         * Operating hour range for Saturday
          */
         sat?: pulumi.Input<string | undefined>;
         /**
-         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         * Operating hour range for Sunday
          */
         sun?: pulumi.Input<string | undefined>;
         /**
-         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         * Operating hour range for Thursday
          */
         thu?: pulumi.Input<string | undefined>;
         /**
-         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         * Operating hour range for Tuesday
          */
         tue?: pulumi.Input<string | undefined>;
         /**
-         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         * Operating hour range for Wednesday
          */
         wed?: pulumi.Input<string | undefined>;
     }
 
     export interface SettingGatewayMgmt {
         /**
-         * For SSR only, as direct root access is not allowed
+         * SSR-only SSH public keys for administrative access
          */
         adminSshkeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Application probing configuration for gateway monitoring
+         */
         appProbing?: pulumi.Input<inputs.site.SettingGatewayMgmtAppProbing | undefined>;
         /**
          * Consumes uplink bandwidth, requires WA license
          */
         appUsage?: pulumi.Input<boolean | undefined>;
+        /**
+         * Schedule for automatic security signature updates
+         */
         autoSignatureUpdate?: pulumi.Input<inputs.site.SettingGatewayMgmtAutoSignatureUpdate | undefined>;
         /**
          * Rollback timer for commit confirmed
@@ -19601,34 +19687,56 @@ export namespace site {
          * For SSR and SRX, disable usb interface
          */
         disableUsb?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether FIPS mode is enabled on the gateway
+         */
         fipsEnabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * IPv4 probe targets used for gateway connectivity checks
+         */
         probeHosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * IPv6 probe targets used for gateway connectivity checks
+         */
         probeHostsv6s?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
-         * Restrict inbound-traffic to host
-         * when enabled, all traffic that is not essential to our operation will be dropped 
-         * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
+         * Control-plane protection settings for the gateway
          */
         protectRe?: pulumi.Input<inputs.site.SettingGatewayMgmtProtectRe | undefined>;
         /**
-         * SRX only
+         * SRX only. Root password for local gateway access
          */
         rootPassword?: pulumi.Input<string | undefined>;
+        /**
+         * IPv4 source address used for gateway security log traffic
+         */
         securityLogSourceAddress?: pulumi.Input<string | undefined>;
+        /**
+         * Source interface used for gateway security log traffic
+         */
         securityLogSourceInterface?: pulumi.Input<string | undefined>;
     }
 
     export interface SettingGatewayMgmtAppProbing {
         /**
-         * APp-keys from List Applications
+         * Predefined application keys to probe
          */
         apps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * User-defined application probe definitions
+         */
         customApps?: pulumi.Input<pulumi.Input<inputs.site.SettingGatewayMgmtAppProbingCustomApp>[] | undefined>;
+        /**
+         * Whether gateway application probing is enabled
+         */
         enabled?: pulumi.Input<boolean | undefined>;
     }
 
     export interface SettingGatewayMgmtAppProbingCustomApp {
         address?: pulumi.Input<string | undefined>;
+        /**
+         * Category label used for this custom application probe
+         */
         appType?: pulumi.Input<string | undefined>;
         /**
          * Only 1 entry is allowed:
@@ -19636,26 +19744,41 @@ export namespace site {
          *     * if `protocol`==`icmp`: IP Address (e.g. `1.2.3.4`)
          */
         hostnames: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Stable key used to identify this custom application probe
+         */
         key?: pulumi.Input<string | undefined>;
+        /**
+         * Display name for this custom application probe
+         */
         name: pulumi.Input<string>;
+        /**
+         * Gateway network used as the source context for this probe
+         */
         network?: pulumi.Input<string | undefined>;
         /**
-         * If `protocol`==`icmp`
+         * If `protocol`==`icmp`. ICMP packet size used by this custom app probe
          */
         packetSize?: pulumi.Input<number | undefined>;
         /**
-         * enum: `http`, `icmp`
+         * Probe protocol used by this custom application definition
          */
         protocol: pulumi.Input<string>;
         url?: pulumi.Input<string | undefined>;
+        /**
+         * Gateway VRF used as the source context for this probe
+         */
         vrf?: pulumi.Input<string | undefined>;
     }
 
     export interface SettingGatewayMgmtAutoSignatureUpdate {
         /**
-         * enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+         * Scheduled weekday for automatic signature updates
          */
         dayOfWeek?: pulumi.Input<string | undefined>;
+        /**
+         * Whether automatic security signature updates are enabled
+         */
         enable?: pulumi.Input<boolean | undefined>;
         /**
          * Optional, Mist will decide the timing
@@ -19668,6 +19791,9 @@ export namespace site {
          * optionally, services we'll allow. enum: `icmp`, `ssh`
          */
         allowedServices?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Additional ACL entries allowed by the Protect RE policy
+         */
         customs?: pulumi.Input<pulumi.Input<inputs.site.SettingGatewayMgmtProtectReCustom>[] | undefined>;
         /**
          * When enabled, all traffic that is not essential to our operation will be dropped
@@ -19680,7 +19806,7 @@ export namespace site {
          */
         hitCount?: pulumi.Input<boolean | undefined>;
         /**
-         * host/subnets we'll allow traffic to/from
+         * Trusted host or subnet entries allowed by the Protect RE policy
          */
         trustedHosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
@@ -19694,13 +19820,19 @@ export namespace site {
          * enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
          */
         protocol?: pulumi.Input<string | undefined>;
+        /**
+         * Source subnets matched by this custom Protect RE ACL
+         */
         subnets: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface SettingIotproxy {
+        /**
+         * Whether the site IoT proxy is enabled
+         */
         enabled?: pulumi.Input<boolean | undefined>;
         /**
-         * Visionline integration settings for IoT proxy
+         * Site access-control integration settings for Visionline
          */
         visionline?: pulumi.Input<inputs.site.SettingIotproxyVisionline | undefined>;
     }
@@ -19710,13 +19842,20 @@ export namespace site {
          * Access ID for the Visionline service
          */
         accessId?: pulumi.Input<string | undefined>;
+        /**
+         * PEM-encoded CA certificates used to verify the Visionline collector's TLS certificate. Required when the collector uses a self-signed certificate
+         */
+        cacerts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Whether the Visionline integration is enabled
+         */
         enabled?: pulumi.Input<boolean | undefined>;
         /**
-         * Hostname or IP of the Visionline collector
+         * Collector hostname or IP address for Visionline
          */
         host?: pulumi.Input<string | undefined>;
         /**
-         * Password for the Visionline service
+         * Visionline service password used by the IoT proxy
          */
         password?: pulumi.Input<string | undefined>;
         /**
@@ -19724,26 +19863,38 @@ export namespace site {
          */
         port?: pulumi.Input<number | undefined>;
         /**
-         * Username for the Visionline service
+         * Visionline service username used by the IoT proxy
          */
         username?: pulumi.Input<string | undefined>;
     }
 
     export interface SettingJuniperSrx {
         /**
-         * auto_upgrade device first time it is onboarded
+         * SRX auto-upgrade settings applied when SRX devices are onboarded
          */
         autoUpgrade?: pulumi.Input<inputs.site.SettingJuniperSrxAutoUpgrade | undefined>;
+        /**
+         * SRX gateways integrated with this site
+         */
         gateways?: pulumi.Input<pulumi.Input<inputs.site.SettingJuniperSrxGateway>[] | undefined>;
+        /**
+         * Whether Mist NAC user information is sent to Juniper SRX gateways
+         */
         sendMistNacUserInfo?: pulumi.Input<boolean | undefined>;
     }
 
     export interface SettingJuniperSrxAutoUpgrade {
         /**
-         * Property key is the SRX Hardware model (e.g. "SRX4600")
+         * Per-SRX-model firmware versions to deploy instead of the default version
          */
         customVersions?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+        /**
+         * Whether SRX auto-upgrade is enabled for newly onboarded devices
+         */
         enabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to take a snapshot during the SRX upgrade process
+         */
         snapshot?: pulumi.Input<boolean | undefined>;
         /**
          * Firmware version to deploy (e.g. 23.4R2-S5.5). Optional, used when customVersions not specified
@@ -19752,30 +19903,322 @@ export namespace site {
     }
 
     export interface SettingJuniperSrxGateway {
+        /**
+         * Authentication key used to access the Juniper SRX gateway API
+         */
         apiKey?: pulumi.Input<string | undefined>;
+        /**
+         * Authentication password used to access the Juniper SRX gateway API
+         */
         apiPassword?: pulumi.Input<string | undefined>;
+        /**
+         * Base URL for the Juniper SRX gateway API
+         */
         apiUrl?: pulumi.Input<string | undefined>;
     }
 
     export interface SettingLed {
+        /**
+         * Indicator LED brightness level from 0 to 255
+         */
         brightness?: pulumi.Input<number | undefined>;
+        /**
+         * Whether the AP indicator LED is enabled
+         */
         enabled?: pulumi.Input<boolean | undefined>;
     }
 
     export interface SettingMarvis {
+        /**
+         * Automatic remediation operations controlled by Marvis
+         */
         autoOperations?: pulumi.Input<inputs.site.SettingMarvisAutoOperations | undefined>;
     }
 
     export interface SettingMarvisAutoOperations {
+        /**
+         * Whether Marvis may remediate AP insufficient-capacity issues automatically
+         */
         apInsufficientCapacity?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether Marvis may remediate AP loop issues automatically
+         */
         apLoop?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether Marvis may remediate AP non-compliance automatically
+         */
         apNonCompliant?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether Marvis may bounce switch ports for abnormal PoE clients
+         */
         bouncePortForAbnormalPoeClient?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether Marvis may disable a port when DDOS protocol violations are detected
+         */
         disablePortWhenDdosProtocolViolation?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether Marvis may disable a port when a rogue DHCP server is detected
+         */
         disablePortWhenRogueDhcpServerDetected?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether Marvis may remediate non-compliant gateways automatically
+         */
         gatewayNonCompliant?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether Marvis may remediate misconfigured switch ports automatically
+         */
         switchMisconfiguredPort?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether Marvis may remediate stuck switch ports automatically
+         */
         switchPortStuck?: pulumi.Input<boolean | undefined>;
+    }
+
+    export interface SettingMxedgeMgmt {
+        /**
+         * Whether the Mist Edge automatically reverts configuration changes if connectivity is lost
+         */
+        configAutoRevert?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether FIPS mode is enabled on the Mist Edge
+         */
+        fipsEnabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * Password for the Mist service account on the Mist Edge
+         */
+        mistPassword?: pulumi.Input<string | undefined>;
+        /**
+         * IPv4 address assignment mode for out-of-band management
+         */
+        oobIpType?: pulumi.Input<string | undefined>;
+        /**
+         * IPv6 address assignment mode for out-of-band management
+         */
+        oobIpType6?: pulumi.Input<string | undefined>;
+        /**
+         * Root account password for the Mist Edge
+         */
+        rootPassword?: pulumi.Input<string | undefined>;
+    }
+
+    export interface SettingMxtunnels {
+        /**
+         * Additional named Mist Tunnel definitions configured for the site
+         */
+        additionalMxtunnels?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.SettingMxtunnelsAdditionalMxtunnels>} | undefined>;
+        /**
+         * AP source subnets allowed to establish Mist Tunnels
+         */
+        apSubnets?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Preemption behavior for restoring preferred tunnel peers after failover
+         */
+        autoPreemption?: pulumi.Input<inputs.site.SettingMxtunnelsAutoPreemption | undefined>;
+        /**
+         * Tunnel peer clusters used by APs for this site Mist Tunnel
+         */
+        clusters?: pulumi.Input<pulumi.Input<inputs.site.SettingMxtunnelsCluster>[] | undefined>;
+        /**
+         * Timestamp when the site Mist Tunnel configuration was created
+         */
+        createdTime?: pulumi.Input<number | undefined>;
+        /**
+         * Whether site Mist Tunnel tunneling is enabled
+         */
+        enabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether this Mist Tunnel configuration is scoped to a site
+         */
+        forSite?: pulumi.Input<boolean | undefined>;
+        /**
+         * In seconds, used as heartbeat to detect if a tunnel is alive. AP will try another peer after missing N hellos specified by hello_retries
+         */
+        helloInterval?: pulumi.Input<number | undefined>;
+        /**
+         * Number of missed hello heartbeats before an AP tries another tunnel peer
+         */
+        helloRetries?: pulumi.Input<number | undefined>;
+        /**
+         * Tunnel peer hostnames or IP addresses reachable from APs
+         */
+        hosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Unique value identifying the site Mist Tunnel configuration
+         */
+        id?: pulumi.Input<string | undefined>;
+        /**
+         * Timestamp when the site Mist Tunnel configuration was last modified
+         */
+        modifiedTime?: pulumi.Input<number | undefined>;
+        /**
+         * 0 to enable MTU, 552-1500 to start MTU with a lower MTU
+         */
+        mtu?: pulumi.Input<number | undefined>;
+        /**
+         * Identifier of the org that owns the site Mist Tunnel configuration
+         */
+        orgId?: pulumi.Input<string | undefined>;
+        /**
+         * Encapsulation protocol used for the site Mist Tunnel
+         */
+        protocol?: pulumi.Input<string | undefined>;
+        /**
+         * TLS-secured RADIUS proxy settings for the site Mist Tunnel
+         */
+        radsec?: pulumi.Input<inputs.site.SettingMxtunnelsRadsec | undefined>;
+        /**
+         * Identifier of the site that owns this Mist Tunnel configuration
+         */
+        siteId?: pulumi.Input<string | undefined>;
+        /**
+         * List of VLAN IDs carried by this site Mist Tunnel
+         */
+        vlanIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    }
+
+    export interface SettingMxtunnelsAdditionalMxtunnels {
+        /**
+         * In seconds, used as heartbeat to detect if a tunnel is alive. AP will try another peer after missing N hellos specified by hello_retries
+         */
+        helloInterval?: pulumi.Input<number | undefined>;
+        /**
+         * Number of missed hello heartbeats before an AP tries another tunnel peer
+         */
+        helloRetries?: pulumi.Input<number | undefined>;
+        /**
+         * Encapsulation protocol used for this additional Mist Tunnel
+         */
+        protocol?: pulumi.Input<string | undefined>;
+        /**
+         * Tunnel peer clusters used by APs for this additional Mist Tunnel
+         */
+        tuntermClusters?: pulumi.Input<pulumi.Input<inputs.site.SettingMxtunnelsAdditionalMxtunnelsTuntermCluster>[] | undefined>;
+        /**
+         * List of VLAN IDs carried by this additional Mist Tunnel
+         */
+        vlanIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    }
+
+    export interface SettingMxtunnelsAdditionalMxtunnelsTuntermCluster {
+        /**
+         * Peer cluster name used in the site Mist Tunnel configuration
+         */
+        name?: pulumi.Input<string | undefined>;
+        /**
+         * Tunnel termination hostnames or IP addresses in this peer cluster
+         */
+        tuntermHosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
+    export interface SettingMxtunnelsAutoPreemption {
+        /**
+         * Scheduled weekday for auto preemption
+         */
+        dayOfWeek?: pulumi.Input<string | undefined>;
+        /**
+         * Whether auto preemption is enabled
+         */
+        enabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * Scheduled time of day for auto preemption
+         */
+        timeOfDay?: pulumi.Input<string | undefined>;
+    }
+
+    export interface SettingMxtunnelsCluster {
+        /**
+         * Peer cluster name used in the site Mist Tunnel configuration
+         */
+        name?: pulumi.Input<string | undefined>;
+        /**
+         * Tunnel termination hostnames or IP addresses in this peer cluster
+         */
+        tuntermHosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
+    export interface SettingMxtunnelsRadsec {
+        /**
+         * RADIUS accounting servers used by the site Mist Tunnel RadSec proxy
+         */
+        acctServers?: pulumi.Input<pulumi.Input<inputs.site.SettingMxtunnelsRadsecAcctServer>[] | undefined>;
+        /**
+         * RADIUS authentication servers used by the site Mist Tunnel RadSec proxy
+         */
+        authServers?: pulumi.Input<pulumi.Input<inputs.site.SettingMxtunnelsRadsecAuthServer>[] | undefined>;
+        /**
+         * Whether RadSec proxying is enabled for this site Mist Tunnel
+         */
+        enabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether RadSec proxying uses Mist Edge
+         */
+        useMxedge?: pulumi.Input<boolean | undefined>;
+    }
+
+    export interface SettingMxtunnelsRadsecAcctServer {
+        /**
+         * Address or hostname of the RADIUS accounting server
+         */
+        host: pulumi.Input<string>;
+        /**
+         * Whether RADIUS keywrap is enabled for messages sent to this accounting server
+         */
+        keywrapEnabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * Encoding format for RADIUS keywrap KEK and MACK values
+         */
+        keywrapFormat?: pulumi.Input<string | undefined>;
+        /**
+         * RADIUS keywrap key encryption key (KEK)
+         */
+        keywrapKek?: pulumi.Input<string | undefined>;
+        /**
+         * RADIUS keywrap message authentication code key (MACK)
+         */
+        keywrapMack?: pulumi.Input<string | undefined>;
+        /**
+         * UDP port used by the RADIUS accounting server
+         */
+        port?: pulumi.Input<string | undefined>;
+        /**
+         * Shared secret used with this RADIUS accounting server
+         */
+        secret: pulumi.Input<string>;
+    }
+
+    export interface SettingMxtunnelsRadsecAuthServer {
+        /**
+         * Address or hostname of the RADIUS authentication server
+         */
+        host: pulumi.Input<string>;
+        /**
+         * Whether RADIUS keywrap is enabled for messages sent to this authentication server
+         */
+        keywrapEnabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * Encoding format for RADIUS keywrap KEK and MACK values
+         */
+        keywrapFormat?: pulumi.Input<string | undefined>;
+        /**
+         * RADIUS keywrap key encryption key (KEK)
+         */
+        keywrapKek?: pulumi.Input<string | undefined>;
+        /**
+         * RADIUS keywrap message authentication code key (MACK)
+         */
+        keywrapMack?: pulumi.Input<string | undefined>;
+        /**
+         * UDP port used by the RADIUS authentication server
+         */
+        port?: pulumi.Input<string | undefined>;
+        /**
+         * Whether to require Message-Authenticator in requests
+         */
+        requireMessageAuthenticator?: pulumi.Input<boolean | undefined>;
+        /**
+         * Shared secret used with this RADIUS authentication server
+         */
+        secret: pulumi.Input<string>;
     }
 
     export interface SettingOccupancy {
@@ -19788,7 +20231,7 @@ export namespace site {
          */
         clientsEnabled?: pulumi.Input<boolean | undefined>;
         /**
-         * Minimum duration
+         * Minimum dwell duration before a client or asset is counted in occupancy analytics
          */
         minDuration?: pulumi.Input<number | undefined>;
         /**
@@ -19802,13 +20245,19 @@ export namespace site {
     }
 
     export interface SettingProxy {
+        /**
+         * Whether this proxy configuration is disabled
+         */
         disabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * Proxy URL used to reach Mist
+         */
         url?: pulumi.Input<string | undefined>;
     }
 
     export interface SettingRogue {
         /**
-         * list of VLAN IDs on which rogue APs are ignored
+         * VLAN IDs allowed by the rogue detection policy
          */
         allowedVlanIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
         /**
@@ -19836,78 +20285,120 @@ export namespace site {
          */
         minRssi?: pulumi.Input<number | undefined>;
         /**
-         * list of BSSIDs to whitelist. Ex: "cc-:8e-:6f-:d4-:bf-:16", "cc-8e-6f-d4-bf-16", "cc-73-*", "cc:82:*"
+         * BSSID values or wildcard patterns excluded from rogue detection
          */
         whitelistedBssids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
-         * List of SSIDs to whitelist
+         * SSID names excluded from rogue detection
          */
         whitelistedSsids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 
     export interface SettingRtsa {
+        /**
+         * Whether app wake-up support is enabled for managed mobility
+         */
         appWaking?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether dead reckoning is disabled for managed mobility
+         */
         disableDeadReckoning?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether pressure sensor use is disabled for managed mobility
+         */
         disablePressureSensor?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether managed mobility features are enabled
+         */
         enabled?: pulumi.Input<boolean | undefined>;
         /**
-         * Asset tracking related
+         * Whether BLE asset tracking is enabled for managed mobility
          */
         trackAsset?: pulumi.Input<boolean | undefined>;
     }
 
     export interface SettingSimpleAlert {
+        /**
+         * Thresholds for ARP failure heuristic alerts
+         */
         arpFailure?: pulumi.Input<inputs.site.SettingSimpleAlertArpFailure | undefined>;
+        /**
+         * Thresholds for DHCP failure heuristic alerts
+         */
         dhcpFailure?: pulumi.Input<inputs.site.SettingSimpleAlertDhcpFailure | undefined>;
+        /**
+         * Thresholds for DNS failure heuristic alerts
+         */
         dnsFailure?: pulumi.Input<inputs.site.SettingSimpleAlertDnsFailure | undefined>;
     }
 
     export interface SettingSimpleAlertArpFailure {
+        /**
+         * Number of distinct clients that must encounter ARP failures before alerting
+         */
         clientCount?: pulumi.Input<number | undefined>;
         /**
-         * failing within minutes
+         * Time window in minutes for evaluating ARP failures
          */
         duration?: pulumi.Input<number | undefined>;
+        /**
+         * Number of ARP failure incidents required within the duration window
+         */
         incidentCount?: pulumi.Input<number | undefined>;
     }
 
     export interface SettingSimpleAlertDhcpFailure {
+        /**
+         * Number of distinct clients that must encounter DHCP failures before alerting
+         */
         clientCount?: pulumi.Input<number | undefined>;
         /**
-         * failing within minutes
+         * Time window in minutes for evaluating DHCP failures
          */
         duration?: pulumi.Input<number | undefined>;
+        /**
+         * Number of DHCP failure incidents required within the duration window
+         */
         incidentCount?: pulumi.Input<number | undefined>;
     }
 
     export interface SettingSimpleAlertDnsFailure {
+        /**
+         * Number of distinct clients that must encounter DNS failures before alerting
+         */
         clientCount?: pulumi.Input<number | undefined>;
         /**
-         * failing within minutes
+         * Time window in minutes for evaluating DNS failures
          */
         duration?: pulumi.Input<number | undefined>;
+        /**
+         * Number of DNS failure incidents required within the duration window
+         */
         incidentCount?: pulumi.Input<number | undefined>;
     }
 
     export interface SettingSkyatp {
+        /**
+         * Whether Sky ATP is enabled for the site
+         */
         enabled?: pulumi.Input<boolean | undefined>;
         /**
-         * Whether to send IP-MAC mapping to SkyATP
+         * Whether IP-to-MAC mappings are sent to Sky ATP
          */
         sendIpMacMapping?: pulumi.Input<boolean | undefined>;
     }
 
     export interface SettingSleThresholds {
         /**
-         * Capacity, in %
+         * Threshold percentage for capacity SLE scoring
          */
         capacity?: pulumi.Input<number | undefined>;
         /**
-         * Coverage, in dBm
+         * RSSI threshold for coverage SLE scoring, in dBm
          */
         coverage?: pulumi.Input<number | undefined>;
         /**
-         * Throughput, in Mbps
+         * Minimum throughput threshold for SLE scoring, in Mbps
          */
         throughput?: pulumi.Input<number | undefined>;
         /**
@@ -19917,41 +20408,47 @@ export namespace site {
     }
 
     export interface SettingSrxApp {
+        /**
+         * Whether Juniper SRX application visibility is enabled
+         */
         enabled?: pulumi.Input<boolean | undefined>;
     }
 
     export interface SettingSsr {
         /**
-         * auto_upgrade device first time it is onboarded
+         * Automatic SSR firmware upgrade settings for newly onboarded devices
          */
         autoUpgrade?: pulumi.Input<inputs.site.SettingSsrAutoUpgrade | undefined>;
         /**
-         * List of Conductor IP Addresses or Hosts to be used by the SSR Devices
+         * IP addresses or hostnames of conductors used by SSR devices
          */
         conductorHosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
-         * Token to be used by the SSR Devices to connect to the Conductor
+         * Registration token used by SSR devices to connect to the conductor
          */
         conductorToken?: pulumi.Input<string | undefined>;
         /**
-         * Disable stats collection on SSR devices
+         * Whether stats collection is disabled on SSR devices
          */
         disableStats?: pulumi.Input<boolean | undefined>;
         /**
-         * SSR proxy configuration to talk to Mist
+         * Network proxy settings used by SSR devices to reach Mist
          */
         proxy?: pulumi.Input<inputs.site.SettingSsrProxy | undefined>;
     }
 
     export interface SettingSsrAutoUpgrade {
         /**
-         * upgrade channel to follow. enum: `alpha`, `beta`, `stable`
+         * Firmware release channel used for SSR auto-upgrade
          */
         channel?: pulumi.Input<string | undefined>;
         /**
-         * Property key is the SSR model (e.g. "SSR130").
+         * Per-model SSR firmware versions used for auto-upgrade
          */
         customVersions?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+        /**
+         * Whether SSR auto-upgrade is enabled for newly onboarded devices
+         */
         enabled?: pulumi.Input<boolean | undefined>;
         /**
          * Firmware version to deploy (e.g. 6.3.0-107.r1). Optional, used when customVersions not specified
@@ -19960,34 +20457,48 @@ export namespace site {
     }
 
     export interface SettingSsrProxy {
+        /**
+         * Whether the SSR proxy configuration is disabled
+         */
         disabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * Proxy URL that SSR devices use to reach Mist
+         */
         url?: pulumi.Input<string | undefined>;
     }
 
     export interface SettingSyntheticTest {
         /**
-         * enum: `auto`, `high`, `low`
+         * Overall aggressiveness level for synthetic test probes
          */
         aggressiveness?: pulumi.Input<string | undefined>;
         /**
-         * Custom probes to be used for synthetic tests
+         * Custom synthetic probe definitions keyed by probe name
          */
         customProbes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.SettingSyntheticTestCustomProbes>} | undefined>;
+        /**
+         * Whether synthetic tests are disabled
+         */
         disabled?: pulumi.Input<boolean | undefined>;
         /**
-         * List of networks to be used for synthetic tests
+         * LAN network probe groups used by synthetic tests
          */
         lanNetworks?: pulumi.Input<pulumi.Input<inputs.site.SettingSyntheticTestLanNetwork>[] | undefined>;
         /**
+         * Deprecated VLAN-based synthetic test settings
+         *
          * @deprecated This attribute is deprecated.
          */
         vlans?: pulumi.Input<pulumi.Input<inputs.site.SettingSyntheticTestVlan>[] | undefined>;
+        /**
+         * WAN speedtest settings for synthetic tests
+         */
         wanSpeedtest?: pulumi.Input<inputs.site.SettingSyntheticTestWanSpeedtest | undefined>;
     }
 
     export interface SettingSyntheticTestCustomProbes {
         /**
-         * enum: `auto`, `high`, `low`
+         * Probe aggressiveness level for this custom synthetic probe
          */
         aggressiveness?: pulumi.Input<string | undefined>;
         /**
@@ -19995,28 +20506,30 @@ export namespace site {
          */
         target?: pulumi.Input<string | undefined>;
         /**
-         * In milliseconds
+         * Response-time threshold for this custom probe, in milliseconds
          */
         threshold?: pulumi.Input<number | undefined>;
         /**
-         * enum: `application`, `curl`, `icmp`, `reachability`, `tcp`
+         * Probe type used by this custom synthetic probe
          */
         type?: pulumi.Input<string | undefined>;
     }
 
     export interface SettingSyntheticTestLanNetwork {
         /**
-         * List of networks to be used for synthetic tests
+         * LAN network names where synthetic probes are run
          */
         networks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
-         * app name comes from `customProbes` above or /const/synthetic_test_probes
+         * Synthetic probe names to run on the listed LAN networks
          */
         probes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 
     export interface SettingSyntheticTestVlan {
         /**
+         * Deprecated custom URLs tested by VLAN-based synthetic probes
+         *
          * @deprecated This attribute is deprecated.
          */
         customTestUrls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -20025,18 +20538,84 @@ export namespace site {
          */
         disabled?: pulumi.Input<boolean | undefined>;
         /**
-         * app name comes from `customProbes` above or /const/synthetic_test_probes
+         * Synthetic probe names to run for the listed VLANs
          */
         probes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * VLAN identifiers where synthetic probes are run
+         */
         vlanIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 
     export interface SettingSyntheticTestWanSpeedtest {
+        /**
+         * Whether scheduled WAN speedtests are enabled
+         */
         enabled?: pulumi.Input<boolean | undefined>;
         /**
-         * `any` / HH:MM (24-hour format)
+         * Scheduled time of day for WAN speedtests
          */
         timeOfDay?: pulumi.Input<string | undefined>;
+    }
+
+    export interface SettingTuntermMonitoring {
+        /**
+         * Can be ip, ipv6, hostname
+         */
+        host?: pulumi.Input<string | undefined>;
+        /**
+         * When `protocol`==`tcp`, TCP port checked by the monitoring probe
+         */
+        port?: pulumi.Input<number | undefined>;
+        /**
+         * Monitoring method used for this tunnel termination check
+         */
+        protocol?: pulumi.Input<string | undefined>;
+        /**
+         * Optional source for the monitoring check, vlanId configured in tunterm_other_ip_configs
+         */
+        srcVlanId?: pulumi.Input<number | undefined>;
+        /**
+         * Maximum time for this monitoring check, in seconds
+         */
+        timeout?: pulumi.Input<number | undefined>;
+    }
+
+    export interface SettingTuntermMulticastConfig {
+        /**
+         * Multicast DNS forwarding settings for tunneled VLANs
+         */
+        mdns?: pulumi.Input<inputs.site.SettingTuntermMulticastConfigMdns | undefined>;
+        /**
+         * Whether all multicast traffic is forwarded through tunnel termination
+         */
+        multicastAll?: pulumi.Input<boolean | undefined>;
+        /**
+         * Simple Service Discovery Protocol forwarding settings for tunneled VLANs
+         */
+        ssdp?: pulumi.Input<inputs.site.SettingTuntermMulticastConfigSsdp | undefined>;
+    }
+
+    export interface SettingTuntermMulticastConfigMdns {
+        /**
+         * Whether mDNS multicast forwarding is enabled
+         */
+        enabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * VLAN IDs where mDNS multicast forwarding is enabled
+         */
+        vlanIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    }
+
+    export interface SettingTuntermMulticastConfigSsdp {
+        /**
+         * Whether SSDP multicast forwarding is enabled
+         */
+        enabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * VLAN IDs where SSDP multicast forwarding is enabled
+         */
+        vlanIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     }
 
     export interface SettingUplinkPortConfig {
@@ -20071,14 +20650,23 @@ export namespace site {
     }
 
     export interface SettingVsInstance {
+        /**
+         * List of network names included in this virtual-switch instance
+         */
         networks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 
     export interface SettingWanVna {
+        /**
+         * Whether WAN VNA is enabled for the site
+         */
         enabled?: pulumi.Input<boolean | undefined>;
     }
 
     export interface SettingWids {
+        /**
+         * Detection settings for repeated authentication failures
+         */
         repeatedAuthFailures?: pulumi.Input<inputs.site.SettingWidsRepeatedAuthFailures | undefined>;
     }
 
@@ -20094,16 +20682,25 @@ export namespace site {
     }
 
     export interface SettingWifi {
+        /**
+         * Whether Cisco compatibility features are enabled for site Wi-Fi
+         */
         ciscoEnabled?: pulumi.Input<boolean | undefined>;
         /**
          * Whether to disable 11k
          */
         disable11k?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether AP radios are disabled when AP power is constrained
+         */
         disableRadiosWhenPowerConstrained?: pulumi.Input<boolean | undefined>;
         /**
          * When proxyArp is enabled, check for arp spoofing.
          */
         enableArpSpoofCheck?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether shared radio scanning is enabled for site Wi-Fi
+         */
         enableSharedRadioScanning?: pulumi.Input<boolean | undefined>;
         /**
          * Enable Wi-Fi feature (using SUB-MAN license)
@@ -20138,18 +20735,21 @@ export namespace site {
          */
         meshSsid?: pulumi.Input<string | undefined>;
         /**
-         * enum: `default`, `disabled`, `enabled`
+         * ARP proxy mode for site Wi-Fi
          */
         proxyArp?: pulumi.Input<string | undefined>;
     }
 
     export interface SettingWiredVna {
+        /**
+         * Whether Wired VNA is enabled for the site
+         */
         enabled?: pulumi.Input<boolean | undefined>;
     }
 
     export interface SettingZoneOccupancyAlert {
         /**
-         * List of email addresses to send email notifications when the alert threshold is reached
+         * Notification email recipients for zone occupancy alerts
          */
         emailNotifiers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**

@@ -14,10 +14,16 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class SettingJuniperSrxAutoUpgrade
     {
         /// <summary>
-        /// Property key is the SRX Hardware model (e.g. "SRX4600")
+        /// Per-SRX-model firmware versions to deploy instead of the default version
         /// </summary>
         public readonly ImmutableDictionary<string, string>? CustomVersions;
+        /// <summary>
+        /// Whether SRX auto-upgrade is enabled for newly onboarded devices
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// Whether to take a snapshot during the SRX upgrade process
+        /// </summary>
         public readonly bool? Snapshot;
         /// <summary>
         /// Firmware version to deploy (e.g. 23.4R2-S5.5). Optional, used when CustomVersions not specified

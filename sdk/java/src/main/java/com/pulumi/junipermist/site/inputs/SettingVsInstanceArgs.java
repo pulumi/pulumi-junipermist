@@ -16,9 +16,17 @@ public final class SettingVsInstanceArgs extends com.pulumi.resources.ResourceAr
 
     public static final SettingVsInstanceArgs Empty = new SettingVsInstanceArgs();
 
+    /**
+     * List of network names included in this virtual-switch instance
+     * 
+     */
     @Import(name="networks")
     private @Nullable Output<List<String>> networks;
 
+    /**
+     * @return List of network names included in this virtual-switch instance
+     * 
+     */
     public Optional<Output<List<String>>> networks() {
         return Optional.ofNullable(this.networks);
     }
@@ -47,15 +55,33 @@ public final class SettingVsInstanceArgs extends com.pulumi.resources.ResourceAr
             $ = new SettingVsInstanceArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param networks List of network names included in this virtual-switch instance
+         * 
+         * @return builder
+         * 
+         */
         public Builder networks(@Nullable Output<List<String>> networks) {
             $.networks = networks;
             return this;
         }
 
+        /**
+         * @param networks List of network names included in this virtual-switch instance
+         * 
+         * @return builder
+         * 
+         */
         public Builder networks(List<String> networks) {
             return networks(Output.of(networks));
         }
 
+        /**
+         * @param networks List of network names included in this virtual-switch instance
+         * 
+         * @return builder
+         * 
+         */
         public Builder networks(String... networks) {
             return networks(List.of(networks));
         }

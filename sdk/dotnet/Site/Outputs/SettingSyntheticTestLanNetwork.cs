@@ -14,11 +14,11 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class SettingSyntheticTestLanNetwork
     {
         /// <summary>
-        /// List of networks to be used for synthetic tests
+        /// LAN network names where synthetic probes are run
         /// </summary>
         public readonly ImmutableArray<string> Networks;
         /// <summary>
-        /// app name comes from `CustomProbes` above or /const/synthetic_test_probes
+        /// Synthetic probe names to run on the listed LAN networks
         /// </summary>
         public readonly ImmutableArray<string> Probes;
 

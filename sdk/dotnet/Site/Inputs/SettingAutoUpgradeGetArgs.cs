@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputMap<string>? _customVersions;
 
         /// <summary>
-        /// Custom versions for different models. Property key is the model name (e.g. "AP41")
+        /// Per-AP-model firmware versions or channels used for auto-upgrade
         /// </summary>
         public InputMap<string> CustomVersions
         {
@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// enum: `Any`, `Fri`, `Mon`, `Sat`, `Sun`, `Thu`, `Tue`, `Wed`
+        /// Weekly AP auto-upgrade day for the maintenance window
         /// </summary>
         [Input("dayOfWeek")]
         public Input<string>? DayOfWeek { get; set; }
@@ -43,7 +43,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? TimeOfDay { get; set; }
 
         /// <summary>
-        /// desired version. enum: `Beta`, `Custom`, `Stable`
+        /// Firmware release channel or custom version used for AP auto-upgrade
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

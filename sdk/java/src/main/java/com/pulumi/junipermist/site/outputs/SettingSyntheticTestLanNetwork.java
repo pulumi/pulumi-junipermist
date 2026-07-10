@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingSyntheticTestLanNetwork {
     /**
-     * @return List of networks to be used for synthetic tests
+     * @return LAN network names where synthetic probes are run
      * 
      */
     private @Nullable List<String> networks;
     /**
-     * @return app name comes from `customProbes` above or /const/synthetic_test_probes
+     * @return Synthetic probe names to run on the listed LAN networks
      * 
      */
     private @Nullable List<String> probes;
 
     private SettingSyntheticTestLanNetwork() {}
     /**
-     * @return List of networks to be used for synthetic tests
+     * @return LAN network names where synthetic probes are run
      * 
      */
     public List<String> networks() {
         return this.networks == null ? List.of() : this.networks;
     }
     /**
-     * @return app name comes from `customProbes` above or /const/synthetic_test_probes
+     * @return Synthetic probe names to run on the listed LAN networks
      * 
      */
     public List<String> probes() {

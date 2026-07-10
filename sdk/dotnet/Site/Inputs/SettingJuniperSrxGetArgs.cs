@@ -13,19 +13,26 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class SettingJuniperSrxGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// auto_upgrade device first time it is onboarded
+        /// SRX auto-upgrade settings applied when SRX devices are onboarded
         /// </summary>
         [Input("autoUpgrade")]
         public Input<Inputs.SettingJuniperSrxAutoUpgradeGetArgs>? AutoUpgrade { get; set; }
 
         [Input("gateways")]
         private InputList<Inputs.SettingJuniperSrxGatewayGetArgs>? _gateways;
+
+        /// <summary>
+        /// SRX gateways integrated with this site
+        /// </summary>
         public InputList<Inputs.SettingJuniperSrxGatewayGetArgs> Gateways
         {
             get => _gateways ?? (_gateways = new InputList<Inputs.SettingJuniperSrxGatewayGetArgs>());
             set => _gateways = value;
         }
 
+        /// <summary>
+        /// Whether Mist NAC user information is sent to Juniper SRX gateways
+        /// </summary>
         [Input("sendMistNacUserInfo")]
         public Input<bool>? SendMistNacUserInfo { get; set; }
 

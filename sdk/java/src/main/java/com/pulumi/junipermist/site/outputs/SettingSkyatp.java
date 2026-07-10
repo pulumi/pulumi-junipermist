@@ -11,19 +11,27 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingSkyatp {
+    /**
+     * @return Whether Sky ATP is enabled for the site
+     * 
+     */
     private @Nullable Boolean enabled;
     /**
-     * @return Whether to send IP-MAC mapping to SkyATP
+     * @return Whether IP-to-MAC mappings are sent to Sky ATP
      * 
      */
     private @Nullable Boolean sendIpMacMapping;
 
     private SettingSkyatp() {}
+    /**
+     * @return Whether Sky ATP is enabled for the site
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Whether to send IP-MAC mapping to SkyATP
+     * @return Whether IP-to-MAC mappings are sent to Sky ATP
      * 
      */
     public Optional<Boolean> sendIpMacMapping() {

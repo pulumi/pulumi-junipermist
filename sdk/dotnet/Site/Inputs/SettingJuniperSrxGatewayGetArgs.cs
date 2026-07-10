@@ -12,12 +12,21 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class SettingJuniperSrxGatewayGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Authentication key used to access the Juniper SRX gateway API
+        /// </summary>
         [Input("apiKey")]
         public Input<string>? ApiKey { get; set; }
 
+        /// <summary>
+        /// Authentication password used to access the Juniper SRX gateway API
+        /// </summary>
         [Input("apiPassword")]
         public Input<string>? ApiPassword { get; set; }
 
+        /// <summary>
+        /// Base URL for the Juniper SRX gateway API
+        /// </summary>
         [Input("apiUrl")]
         public Input<string>? ApiUrl { get; set; }
 

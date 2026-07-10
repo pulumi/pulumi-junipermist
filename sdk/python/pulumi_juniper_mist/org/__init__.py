@@ -46,6 +46,7 @@ from .idpprofile import *
 from .inventory import *
 from .mxcluster import *
 from .mxedge import *
+from .mxtunnel import *
 from .nac_endpoint import *
 from .nac_portal import *
 from .nac_portal_image import *

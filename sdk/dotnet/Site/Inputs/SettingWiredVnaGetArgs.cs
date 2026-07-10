@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class SettingWiredVnaGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether Wired VNA is enabled for the site
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

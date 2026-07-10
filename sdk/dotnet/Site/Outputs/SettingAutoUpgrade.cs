@@ -14,11 +14,11 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class SettingAutoUpgrade
     {
         /// <summary>
-        /// Custom versions for different models. Property key is the model name (e.g. "AP41")
+        /// Per-AP-model firmware versions or channels used for auto-upgrade
         /// </summary>
         public readonly ImmutableDictionary<string, string>? CustomVersions;
         /// <summary>
-        /// enum: `Any`, `Fri`, `Mon`, `Sat`, `Sun`, `Thu`, `Tue`, `Wed`
+        /// Weekly AP auto-upgrade day for the maintenance window
         /// </summary>
         public readonly string? DayOfWeek;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? TimeOfDay;
         /// <summary>
-        /// desired version. enum: `Beta`, `Custom`, `Stable`
+        /// Firmware release channel or custom version used for AP auto-upgrade
         /// </summary>
         public readonly string? Version;
 

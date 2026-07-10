@@ -11,25 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingSimpleAlertDnsFailure {
+    /**
+     * @return Number of distinct clients that must encounter DNS failures before alerting
+     * 
+     */
     private @Nullable Integer clientCount;
     /**
-     * @return failing within minutes
+     * @return Time window in minutes for evaluating DNS failures
      * 
      */
     private @Nullable Integer duration;
+    /**
+     * @return Number of DNS failure incidents required within the duration window
+     * 
+     */
     private @Nullable Integer incidentCount;
 
     private SettingSimpleAlertDnsFailure() {}
+    /**
+     * @return Number of distinct clients that must encounter DNS failures before alerting
+     * 
+     */
     public Optional<Integer> clientCount() {
         return Optional.ofNullable(this.clientCount);
     }
     /**
-     * @return failing within minutes
+     * @return Time window in minutes for evaluating DNS failures
      * 
      */
     public Optional<Integer> duration() {
         return Optional.ofNullable(this.duration);
     }
+    /**
+     * @return Number of DNS failure incidents required within the duration window
+     * 
+     */
     public Optional<Integer> incidentCount() {
         return Optional.ofNullable(this.incidentCount);
     }

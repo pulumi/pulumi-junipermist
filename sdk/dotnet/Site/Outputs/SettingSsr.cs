@@ -14,23 +14,23 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class SettingSsr
     {
         /// <summary>
-        /// auto_upgrade device first time it is onboarded
+        /// Automatic SSR firmware upgrade settings for newly onboarded devices
         /// </summary>
         public readonly Outputs.SettingSsrAutoUpgrade? AutoUpgrade;
         /// <summary>
-        /// List of Conductor IP Addresses or Hosts to be used by the SSR Devices
+        /// IP addresses or hostnames of conductors used by SSR devices
         /// </summary>
         public readonly ImmutableArray<string> ConductorHosts;
         /// <summary>
-        /// Token to be used by the SSR Devices to connect to the Conductor
+        /// Registration token used by SSR devices to connect to the conductor
         /// </summary>
         public readonly string? ConductorToken;
         /// <summary>
-        /// Disable stats collection on SSR devices
+        /// Whether stats collection is disabled on SSR devices
         /// </summary>
         public readonly bool? DisableStats;
         /// <summary>
-        /// SSR proxy configuration to talk to Mist
+        /// Network proxy settings used by SSR devices to reach Mist
         /// </summary>
         public readonly Outputs.SettingSsrProxy? Proxy;
 

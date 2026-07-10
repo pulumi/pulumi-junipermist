@@ -16,14 +16,14 @@ public final class SettingSleThresholdsArgs extends com.pulumi.resources.Resourc
     public static final SettingSleThresholdsArgs Empty = new SettingSleThresholdsArgs();
 
     /**
-     * Capacity, in %
+     * Threshold percentage for capacity SLE scoring
      * 
      */
     @Import(name="capacity")
     private @Nullable Output<Integer> capacity;
 
     /**
-     * @return Capacity, in %
+     * @return Threshold percentage for capacity SLE scoring
      * 
      */
     public Optional<Output<Integer>> capacity() {
@@ -31,14 +31,14 @@ public final class SettingSleThresholdsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Coverage, in dBm
+     * RSSI threshold for coverage SLE scoring, in dBm
      * 
      */
     @Import(name="coverage")
     private @Nullable Output<Integer> coverage;
 
     /**
-     * @return Coverage, in dBm
+     * @return RSSI threshold for coverage SLE scoring, in dBm
      * 
      */
     public Optional<Output<Integer>> coverage() {
@@ -46,14 +46,14 @@ public final class SettingSleThresholdsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Throughput, in Mbps
+     * Minimum throughput threshold for SLE scoring, in Mbps
      * 
      */
     @Import(name="throughput")
     private @Nullable Output<Integer> throughput;
 
     /**
-     * @return Throughput, in Mbps
+     * @return Minimum throughput threshold for SLE scoring, in Mbps
      * 
      */
     public Optional<Output<Integer>> throughput() {
@@ -103,7 +103,7 @@ public final class SettingSleThresholdsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param capacity Capacity, in %
+         * @param capacity Threshold percentage for capacity SLE scoring
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class SettingSleThresholdsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param capacity Capacity, in %
+         * @param capacity Threshold percentage for capacity SLE scoring
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class SettingSleThresholdsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param coverage Coverage, in dBm
+         * @param coverage RSSI threshold for coverage SLE scoring, in dBm
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class SettingSleThresholdsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param coverage Coverage, in dBm
+         * @param coverage RSSI threshold for coverage SLE scoring, in dBm
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class SettingSleThresholdsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param throughput Throughput, in Mbps
+         * @param throughput Minimum throughput threshold for SLE scoring, in Mbps
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class SettingSleThresholdsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param throughput Throughput, in Mbps
+         * @param throughput Minimum throughput threshold for SLE scoring, in Mbps
          * 
          * @return builder
          * 

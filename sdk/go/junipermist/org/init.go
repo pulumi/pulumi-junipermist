@@ -49,6 +49,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Mxcluster{}
 	case "junipermist:org/mxedge:Mxedge":
 		r = &Mxedge{}
+	case "junipermist:org/mxtunnel:Mxtunnel":
+		r = &Mxtunnel{}
 	case "junipermist:org/nacEndpoint:NacEndpoint":
 		r = &NacEndpoint{}
 	case "junipermist:org/nacPortal:NacPortal":
@@ -180,6 +182,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"junipermist",
 		"org/mxedge",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"junipermist",
+		"org/mxtunnel",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

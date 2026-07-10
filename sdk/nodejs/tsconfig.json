@@ -83,6 +83,7 @@
         "org/inventory.ts",
         "org/mxcluster.ts",
         "org/mxedge.ts",
+        "org/mxtunnel.ts",
         "org/nacEndpoint.ts",
         "org/nacPortal.ts",
         "org/nacPortalImage.ts",

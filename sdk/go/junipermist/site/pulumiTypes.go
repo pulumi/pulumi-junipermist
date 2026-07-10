@@ -12164,7 +12164,7 @@ func (o SettingAnalyticPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type SettingApSyntheticTest struct {
-	// List or Comma separated list of additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
+	// VLAN IDs included in addition to the default VLAN set for AP synthetic tests
 	AdditionalVlanIds []string `pulumi:"additionalVlanIds"`
 }
 
@@ -12180,7 +12180,7 @@ type SettingApSyntheticTestInput interface {
 }
 
 type SettingApSyntheticTestArgs struct {
-	// List or Comma separated list of additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
+	// VLAN IDs included in addition to the default VLAN set for AP synthetic tests
 	AdditionalVlanIds pulumi.StringArrayInput `pulumi:"additionalVlanIds"`
 }
 
@@ -12261,7 +12261,7 @@ func (o SettingApSyntheticTestOutput) ToSettingApSyntheticTestPtrOutputWithConte
 	}).(SettingApSyntheticTestPtrOutput)
 }
 
-// List or Comma separated list of additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
+// VLAN IDs included in addition to the default VLAN set for AP synthetic tests
 func (o SettingApSyntheticTestOutput) AdditionalVlanIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SettingApSyntheticTest) []string { return v.AdditionalVlanIds }).(pulumi.StringArrayOutput)
 }
@@ -12290,7 +12290,7 @@ func (o SettingApSyntheticTestPtrOutput) Elem() SettingApSyntheticTestOutput {
 	}).(SettingApSyntheticTestOutput)
 }
 
-// List or Comma separated list of additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
+// VLAN IDs included in addition to the default VLAN set for AP synthetic tests
 func (o SettingApSyntheticTestPtrOutput) AdditionalVlanIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SettingApSyntheticTest) []string {
 		if v == nil {
@@ -12301,15 +12301,15 @@ func (o SettingApSyntheticTestPtrOutput) AdditionalVlanIds() pulumi.StringArrayO
 }
 
 type SettingAutoUpgrade struct {
-	// Custom versions for different models. Property key is the model name (e.g. "AP41")
+	// Per-AP-model firmware versions or channels used for auto-upgrade
 	CustomVersions map[string]string `pulumi:"customVersions"`
-	// enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+	// Weekly AP auto-upgrade day for the maintenance window
 	DayOfWeek *string `pulumi:"dayOfWeek"`
 	// Whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)
 	Enabled *bool `pulumi:"enabled"`
 	// `any` / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
 	TimeOfDay *string `pulumi:"timeOfDay"`
-	// desired version. enum: `beta`, `custom`, `stable`
+	// Firmware release channel or custom version used for AP auto-upgrade
 	Version *string `pulumi:"version"`
 }
 
@@ -12325,15 +12325,15 @@ type SettingAutoUpgradeInput interface {
 }
 
 type SettingAutoUpgradeArgs struct {
-	// Custom versions for different models. Property key is the model name (e.g. "AP41")
+	// Per-AP-model firmware versions or channels used for auto-upgrade
 	CustomVersions pulumi.StringMapInput `pulumi:"customVersions"`
-	// enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+	// Weekly AP auto-upgrade day for the maintenance window
 	DayOfWeek pulumi.StringPtrInput `pulumi:"dayOfWeek"`
 	// Whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// `any` / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
 	TimeOfDay pulumi.StringPtrInput `pulumi:"timeOfDay"`
-	// desired version. enum: `beta`, `custom`, `stable`
+	// Firmware release channel or custom version used for AP auto-upgrade
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -12414,12 +12414,12 @@ func (o SettingAutoUpgradeOutput) ToSettingAutoUpgradePtrOutputWithContext(ctx c
 	}).(SettingAutoUpgradePtrOutput)
 }
 
-// Custom versions for different models. Property key is the model name (e.g. "AP41")
+// Per-AP-model firmware versions or channels used for auto-upgrade
 func (o SettingAutoUpgradeOutput) CustomVersions() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SettingAutoUpgrade) map[string]string { return v.CustomVersions }).(pulumi.StringMapOutput)
 }
 
-// enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+// Weekly AP auto-upgrade day for the maintenance window
 func (o SettingAutoUpgradeOutput) DayOfWeek() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingAutoUpgrade) *string { return v.DayOfWeek }).(pulumi.StringPtrOutput)
 }
@@ -12434,7 +12434,7 @@ func (o SettingAutoUpgradeOutput) TimeOfDay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingAutoUpgrade) *string { return v.TimeOfDay }).(pulumi.StringPtrOutput)
 }
 
-// desired version. enum: `beta`, `custom`, `stable`
+// Firmware release channel or custom version used for AP auto-upgrade
 func (o SettingAutoUpgradeOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingAutoUpgrade) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -12463,7 +12463,7 @@ func (o SettingAutoUpgradePtrOutput) Elem() SettingAutoUpgradeOutput {
 	}).(SettingAutoUpgradeOutput)
 }
 
-// Custom versions for different models. Property key is the model name (e.g. "AP41")
+// Per-AP-model firmware versions or channels used for auto-upgrade
 func (o SettingAutoUpgradePtrOutput) CustomVersions() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *SettingAutoUpgrade) map[string]string {
 		if v == nil {
@@ -12473,7 +12473,7 @@ func (o SettingAutoUpgradePtrOutput) CustomVersions() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+// Weekly AP auto-upgrade day for the maintenance window
 func (o SettingAutoUpgradePtrOutput) DayOfWeek() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingAutoUpgrade) *string {
 		if v == nil {
@@ -12503,7 +12503,7 @@ func (o SettingAutoUpgradePtrOutput) TimeOfDay() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// desired version. enum: `beta`, `custom`, `stable`
+// Firmware release channel or custom version used for AP auto-upgrade
 func (o SettingAutoUpgradePtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingAutoUpgrade) *string {
 		if v == nil {
@@ -12518,13 +12518,14 @@ type SettingAutoUpgradeEsl struct {
 	AllowDowngrade *bool `pulumi:"allowDowngrade"`
 	// Custom versions for different models. Property key is the model name (e.g. "AP41")
 	CustomVersions map[string]string `pulumi:"customVersions"`
-	// enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+	// Weekly ESL auto-upgrade day for the maintenance window
 	DayOfWeek *string `pulumi:"dayOfWeek"`
 	// Whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)
 	Enabled *bool `pulumi:"enabled"`
 	// `any` / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
 	TimeOfDay *string `pulumi:"timeOfDay"`
-	Version   *string `pulumi:"version"`
+	// ESL firmware version used for auto-upgrade
+	Version *string `pulumi:"version"`
 }
 
 // SettingAutoUpgradeEslInput is an input type that accepts SettingAutoUpgradeEslArgs and SettingAutoUpgradeEslOutput values.
@@ -12543,13 +12544,14 @@ type SettingAutoUpgradeEslArgs struct {
 	AllowDowngrade pulumi.BoolPtrInput `pulumi:"allowDowngrade"`
 	// Custom versions for different models. Property key is the model name (e.g. "AP41")
 	CustomVersions pulumi.StringMapInput `pulumi:"customVersions"`
-	// enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+	// Weekly ESL auto-upgrade day for the maintenance window
 	DayOfWeek pulumi.StringPtrInput `pulumi:"dayOfWeek"`
 	// Whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// `any` / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
 	TimeOfDay pulumi.StringPtrInput `pulumi:"timeOfDay"`
-	Version   pulumi.StringPtrInput `pulumi:"version"`
+	// ESL firmware version used for auto-upgrade
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (SettingAutoUpgradeEslArgs) ElementType() reflect.Type {
@@ -12639,7 +12641,7 @@ func (o SettingAutoUpgradeEslOutput) CustomVersions() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SettingAutoUpgradeEsl) map[string]string { return v.CustomVersions }).(pulumi.StringMapOutput)
 }
 
-// enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+// Weekly ESL auto-upgrade day for the maintenance window
 func (o SettingAutoUpgradeEslOutput) DayOfWeek() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingAutoUpgradeEsl) *string { return v.DayOfWeek }).(pulumi.StringPtrOutput)
 }
@@ -12654,6 +12656,7 @@ func (o SettingAutoUpgradeEslOutput) TimeOfDay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingAutoUpgradeEsl) *string { return v.TimeOfDay }).(pulumi.StringPtrOutput)
 }
 
+// ESL firmware version used for auto-upgrade
 func (o SettingAutoUpgradeEslOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingAutoUpgradeEsl) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -12702,7 +12705,7 @@ func (o SettingAutoUpgradeEslPtrOutput) CustomVersions() pulumi.StringMapOutput 
 	}).(pulumi.StringMapOutput)
 }
 
-// enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+// Weekly ESL auto-upgrade day for the maintenance window
 func (o SettingAutoUpgradeEslPtrOutput) DayOfWeek() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingAutoUpgradeEsl) *string {
 		if v == nil {
@@ -12732,6 +12735,7 @@ func (o SettingAutoUpgradeEslPtrOutput) TimeOfDay() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// ESL firmware version used for auto-upgrade
 func (o SettingAutoUpgradeEslPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingAutoUpgradeEsl) *string {
 		if v == nil {
@@ -12746,9 +12750,9 @@ type SettingBleConfig struct {
 	BeaconEnabled *bool `pulumi:"beaconEnabled"`
 	// Required if `beaconRateMode`==`custom`, 1-10, in number-beacons-per-second
 	BeaconRate *int `pulumi:"beaconRate"`
-	// enum: `custom`, `default`
+	// Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate
 	BeaconRateMode *string `pulumi:"beaconRateMode"`
-	// List of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
+	// AP BLE beam numbers disabled for location advertisements
 	BeamDisableds []int `pulumi:"beamDisableds"`
 	// Can be enabled if `beaconEnabled`==`true`, whether to send custom packet
 	CustomBlePacketEnabled *bool `pulumi:"customBlePacketEnabled"`
@@ -12757,41 +12761,44 @@ type SettingBleConfig struct {
 	// Frequency (msec) of data emitted by custom ble beacon
 	CustomBlePacketFreqMsec *int `pulumi:"customBlePacketFreqMsec"`
 	// Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
-	EddystoneUidAdvPower *int    `pulumi:"eddystoneUidAdvPower"`
-	EddystoneUidBeams    *string `pulumi:"eddystoneUidBeams"`
+	EddystoneUidAdvPower *int `pulumi:"eddystoneUidAdvPower"`
+	// BLE beams used to transmit Eddystone-UID advertisements, expressed as ranges such as `2-4,7`
+	EddystoneUidBeams *string `pulumi:"eddystoneUidBeams"`
 	// Only if `beaconEnabled`==`false`, Whether Eddystone-UID beacon is enabled
 	EddystoneUidEnabled *bool `pulumi:"eddystoneUidEnabled"`
 	// Frequency (msec) of data emit by Eddystone-UID beacon
 	EddystoneUidFreqMsec *int `pulumi:"eddystoneUidFreqMsec"`
 	// Eddystone-UID instance for the device
 	EddystoneUidInstance *string `pulumi:"eddystoneUidInstance"`
-	// Eddystone-UID namespace
+	// Eddystone-UID namespace broadcast by the AP, as a 10-byte hex string
 	EddystoneUidNamespace *string `pulumi:"eddystoneUidNamespace"`
 	// Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
-	EddystoneUrlAdvPower *int    `pulumi:"eddystoneUrlAdvPower"`
-	EddystoneUrlBeams    *string `pulumi:"eddystoneUrlBeams"`
+	EddystoneUrlAdvPower *int `pulumi:"eddystoneUrlAdvPower"`
+	// BLE beams used to transmit Eddystone-URL advertisements, expressed as ranges such as `2-4,7`
+	EddystoneUrlBeams *string `pulumi:"eddystoneUrlBeams"`
 	// Only if `beaconEnabled`==`false`, Whether Eddystone-URL beacon is enabled
 	EddystoneUrlEnabled *bool `pulumi:"eddystoneUrlEnabled"`
-	// Frequency (msec) of data emit by Eddystone-UID beacon
+	// Frequency (msec) of data emitted by Eddystone-URL beacon
 	EddystoneUrlFreqMsec *int `pulumi:"eddystoneUrlFreqMsec"`
 	// URL pointed by Eddystone-URL beacon
 	EddystoneUrlUrl *string `pulumi:"eddystoneUrlUrl"`
 	// Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
-	IbeaconAdvPower *int    `pulumi:"ibeaconAdvPower"`
-	IbeaconBeams    *string `pulumi:"ibeaconBeams"`
+	IbeaconAdvPower *int `pulumi:"ibeaconAdvPower"`
+	// BLE beams used to transmit iBeacon advertisements, expressed as ranges such as `2-4,7`
+	IbeaconBeams *string `pulumi:"ibeaconBeams"`
 	// Can be enabled if `beaconEnabled`==`true`, whether to send iBeacon
 	IbeaconEnabled *bool `pulumi:"ibeaconEnabled"`
 	// Frequency (msec) of data emit for iBeacon
 	IbeaconFreqMsec *int `pulumi:"ibeaconFreqMsec"`
-	// Major number for iBeacon
+	// iBeacon major value broadcast by the AP
 	IbeaconMajor *int `pulumi:"ibeaconMajor"`
-	// Minor number for iBeacon
+	// iBeacon minor value broadcast by the AP
 	IbeaconMinor *int `pulumi:"ibeaconMinor"`
 	// Optional, if not specified, the same UUID as the beacon will be used
 	IbeaconUuid *string `pulumi:"ibeaconUuid"`
 	// Required if `powerMode`==`custom`; else use `powerMode` as default
 	Power *int `pulumi:"power"`
-	// enum: `custom`, `default`
+	// Transmit power mode for BLE beacons; use custom to set `power`
 	PowerMode *string `pulumi:"powerMode"`
 }
 
@@ -12811,9 +12818,9 @@ type SettingBleConfigArgs struct {
 	BeaconEnabled pulumi.BoolPtrInput `pulumi:"beaconEnabled"`
 	// Required if `beaconRateMode`==`custom`, 1-10, in number-beacons-per-second
 	BeaconRate pulumi.IntPtrInput `pulumi:"beaconRate"`
-	// enum: `custom`, `default`
+	// Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate
 	BeaconRateMode pulumi.StringPtrInput `pulumi:"beaconRateMode"`
-	// List of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
+	// AP BLE beam numbers disabled for location advertisements
 	BeamDisableds pulumi.IntArrayInput `pulumi:"beamDisableds"`
 	// Can be enabled if `beaconEnabled`==`true`, whether to send custom packet
 	CustomBlePacketEnabled pulumi.BoolPtrInput `pulumi:"customBlePacketEnabled"`
@@ -12822,41 +12829,44 @@ type SettingBleConfigArgs struct {
 	// Frequency (msec) of data emitted by custom ble beacon
 	CustomBlePacketFreqMsec pulumi.IntPtrInput `pulumi:"customBlePacketFreqMsec"`
 	// Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
-	EddystoneUidAdvPower pulumi.IntPtrInput    `pulumi:"eddystoneUidAdvPower"`
-	EddystoneUidBeams    pulumi.StringPtrInput `pulumi:"eddystoneUidBeams"`
+	EddystoneUidAdvPower pulumi.IntPtrInput `pulumi:"eddystoneUidAdvPower"`
+	// BLE beams used to transmit Eddystone-UID advertisements, expressed as ranges such as `2-4,7`
+	EddystoneUidBeams pulumi.StringPtrInput `pulumi:"eddystoneUidBeams"`
 	// Only if `beaconEnabled`==`false`, Whether Eddystone-UID beacon is enabled
 	EddystoneUidEnabled pulumi.BoolPtrInput `pulumi:"eddystoneUidEnabled"`
 	// Frequency (msec) of data emit by Eddystone-UID beacon
 	EddystoneUidFreqMsec pulumi.IntPtrInput `pulumi:"eddystoneUidFreqMsec"`
 	// Eddystone-UID instance for the device
 	EddystoneUidInstance pulumi.StringPtrInput `pulumi:"eddystoneUidInstance"`
-	// Eddystone-UID namespace
+	// Eddystone-UID namespace broadcast by the AP, as a 10-byte hex string
 	EddystoneUidNamespace pulumi.StringPtrInput `pulumi:"eddystoneUidNamespace"`
 	// Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
-	EddystoneUrlAdvPower pulumi.IntPtrInput    `pulumi:"eddystoneUrlAdvPower"`
-	EddystoneUrlBeams    pulumi.StringPtrInput `pulumi:"eddystoneUrlBeams"`
+	EddystoneUrlAdvPower pulumi.IntPtrInput `pulumi:"eddystoneUrlAdvPower"`
+	// BLE beams used to transmit Eddystone-URL advertisements, expressed as ranges such as `2-4,7`
+	EddystoneUrlBeams pulumi.StringPtrInput `pulumi:"eddystoneUrlBeams"`
 	// Only if `beaconEnabled`==`false`, Whether Eddystone-URL beacon is enabled
 	EddystoneUrlEnabled pulumi.BoolPtrInput `pulumi:"eddystoneUrlEnabled"`
-	// Frequency (msec) of data emit by Eddystone-UID beacon
+	// Frequency (msec) of data emitted by Eddystone-URL beacon
 	EddystoneUrlFreqMsec pulumi.IntPtrInput `pulumi:"eddystoneUrlFreqMsec"`
 	// URL pointed by Eddystone-URL beacon
 	EddystoneUrlUrl pulumi.StringPtrInput `pulumi:"eddystoneUrlUrl"`
 	// Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
-	IbeaconAdvPower pulumi.IntPtrInput    `pulumi:"ibeaconAdvPower"`
-	IbeaconBeams    pulumi.StringPtrInput `pulumi:"ibeaconBeams"`
+	IbeaconAdvPower pulumi.IntPtrInput `pulumi:"ibeaconAdvPower"`
+	// BLE beams used to transmit iBeacon advertisements, expressed as ranges such as `2-4,7`
+	IbeaconBeams pulumi.StringPtrInput `pulumi:"ibeaconBeams"`
 	// Can be enabled if `beaconEnabled`==`true`, whether to send iBeacon
 	IbeaconEnabled pulumi.BoolPtrInput `pulumi:"ibeaconEnabled"`
 	// Frequency (msec) of data emit for iBeacon
 	IbeaconFreqMsec pulumi.IntPtrInput `pulumi:"ibeaconFreqMsec"`
-	// Major number for iBeacon
+	// iBeacon major value broadcast by the AP
 	IbeaconMajor pulumi.IntPtrInput `pulumi:"ibeaconMajor"`
-	// Minor number for iBeacon
+	// iBeacon minor value broadcast by the AP
 	IbeaconMinor pulumi.IntPtrInput `pulumi:"ibeaconMinor"`
 	// Optional, if not specified, the same UUID as the beacon will be used
 	IbeaconUuid pulumi.StringPtrInput `pulumi:"ibeaconUuid"`
 	// Required if `powerMode`==`custom`; else use `powerMode` as default
 	Power pulumi.IntPtrInput `pulumi:"power"`
-	// enum: `custom`, `default`
+	// Transmit power mode for BLE beacons; use custom to set `power`
 	PowerMode pulumi.StringPtrInput `pulumi:"powerMode"`
 }
 
@@ -12947,12 +12957,12 @@ func (o SettingBleConfigOutput) BeaconRate() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingBleConfig) *int { return v.BeaconRate }).(pulumi.IntPtrOutput)
 }
 
-// enum: `custom`, `default`
+// Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate
 func (o SettingBleConfigOutput) BeaconRateMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingBleConfig) *string { return v.BeaconRateMode }).(pulumi.StringPtrOutput)
 }
 
-// List of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
+// AP BLE beam numbers disabled for location advertisements
 func (o SettingBleConfigOutput) BeamDisableds() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v SettingBleConfig) []int { return v.BeamDisableds }).(pulumi.IntArrayOutput)
 }
@@ -12977,6 +12987,7 @@ func (o SettingBleConfigOutput) EddystoneUidAdvPower() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingBleConfig) *int { return v.EddystoneUidAdvPower }).(pulumi.IntPtrOutput)
 }
 
+// BLE beams used to transmit Eddystone-UID advertisements, expressed as ranges such as `2-4,7`
 func (o SettingBleConfigOutput) EddystoneUidBeams() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingBleConfig) *string { return v.EddystoneUidBeams }).(pulumi.StringPtrOutput)
 }
@@ -12996,7 +13007,7 @@ func (o SettingBleConfigOutput) EddystoneUidInstance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingBleConfig) *string { return v.EddystoneUidInstance }).(pulumi.StringPtrOutput)
 }
 
-// Eddystone-UID namespace
+// Eddystone-UID namespace broadcast by the AP, as a 10-byte hex string
 func (o SettingBleConfigOutput) EddystoneUidNamespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingBleConfig) *string { return v.EddystoneUidNamespace }).(pulumi.StringPtrOutput)
 }
@@ -13006,6 +13017,7 @@ func (o SettingBleConfigOutput) EddystoneUrlAdvPower() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingBleConfig) *int { return v.EddystoneUrlAdvPower }).(pulumi.IntPtrOutput)
 }
 
+// BLE beams used to transmit Eddystone-URL advertisements, expressed as ranges such as `2-4,7`
 func (o SettingBleConfigOutput) EddystoneUrlBeams() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingBleConfig) *string { return v.EddystoneUrlBeams }).(pulumi.StringPtrOutput)
 }
@@ -13015,7 +13027,7 @@ func (o SettingBleConfigOutput) EddystoneUrlEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingBleConfig) *bool { return v.EddystoneUrlEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Frequency (msec) of data emit by Eddystone-UID beacon
+// Frequency (msec) of data emitted by Eddystone-URL beacon
 func (o SettingBleConfigOutput) EddystoneUrlFreqMsec() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingBleConfig) *int { return v.EddystoneUrlFreqMsec }).(pulumi.IntPtrOutput)
 }
@@ -13030,6 +13042,7 @@ func (o SettingBleConfigOutput) IbeaconAdvPower() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingBleConfig) *int { return v.IbeaconAdvPower }).(pulumi.IntPtrOutput)
 }
 
+// BLE beams used to transmit iBeacon advertisements, expressed as ranges such as `2-4,7`
 func (o SettingBleConfigOutput) IbeaconBeams() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingBleConfig) *string { return v.IbeaconBeams }).(pulumi.StringPtrOutput)
 }
@@ -13044,12 +13057,12 @@ func (o SettingBleConfigOutput) IbeaconFreqMsec() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingBleConfig) *int { return v.IbeaconFreqMsec }).(pulumi.IntPtrOutput)
 }
 
-// Major number for iBeacon
+// iBeacon major value broadcast by the AP
 func (o SettingBleConfigOutput) IbeaconMajor() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingBleConfig) *int { return v.IbeaconMajor }).(pulumi.IntPtrOutput)
 }
 
-// Minor number for iBeacon
+// iBeacon minor value broadcast by the AP
 func (o SettingBleConfigOutput) IbeaconMinor() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingBleConfig) *int { return v.IbeaconMinor }).(pulumi.IntPtrOutput)
 }
@@ -13064,7 +13077,7 @@ func (o SettingBleConfigOutput) Power() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingBleConfig) *int { return v.Power }).(pulumi.IntPtrOutput)
 }
 
-// enum: `custom`, `default`
+// Transmit power mode for BLE beacons; use custom to set `power`
 func (o SettingBleConfigOutput) PowerMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingBleConfig) *string { return v.PowerMode }).(pulumi.StringPtrOutput)
 }
@@ -13113,7 +13126,7 @@ func (o SettingBleConfigPtrOutput) BeaconRate() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// enum: `custom`, `default`
+// Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate
 func (o SettingBleConfigPtrOutput) BeaconRateMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingBleConfig) *string {
 		if v == nil {
@@ -13123,7 +13136,7 @@ func (o SettingBleConfigPtrOutput) BeaconRateMode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// List of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
+// AP BLE beam numbers disabled for location advertisements
 func (o SettingBleConfigPtrOutput) BeamDisableds() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *SettingBleConfig) []int {
 		if v == nil {
@@ -13173,6 +13186,7 @@ func (o SettingBleConfigPtrOutput) EddystoneUidAdvPower() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// BLE beams used to transmit Eddystone-UID advertisements, expressed as ranges such as `2-4,7`
 func (o SettingBleConfigPtrOutput) EddystoneUidBeams() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingBleConfig) *string {
 		if v == nil {
@@ -13212,7 +13226,7 @@ func (o SettingBleConfigPtrOutput) EddystoneUidInstance() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Eddystone-UID namespace
+// Eddystone-UID namespace broadcast by the AP, as a 10-byte hex string
 func (o SettingBleConfigPtrOutput) EddystoneUidNamespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingBleConfig) *string {
 		if v == nil {
@@ -13232,6 +13246,7 @@ func (o SettingBleConfigPtrOutput) EddystoneUrlAdvPower() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// BLE beams used to transmit Eddystone-URL advertisements, expressed as ranges such as `2-4,7`
 func (o SettingBleConfigPtrOutput) EddystoneUrlBeams() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingBleConfig) *string {
 		if v == nil {
@@ -13251,7 +13266,7 @@ func (o SettingBleConfigPtrOutput) EddystoneUrlEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Frequency (msec) of data emit by Eddystone-UID beacon
+// Frequency (msec) of data emitted by Eddystone-URL beacon
 func (o SettingBleConfigPtrOutput) EddystoneUrlFreqMsec() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SettingBleConfig) *int {
 		if v == nil {
@@ -13281,6 +13296,7 @@ func (o SettingBleConfigPtrOutput) IbeaconAdvPower() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// BLE beams used to transmit iBeacon advertisements, expressed as ranges such as `2-4,7`
 func (o SettingBleConfigPtrOutput) IbeaconBeams() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingBleConfig) *string {
 		if v == nil {
@@ -13310,7 +13326,7 @@ func (o SettingBleConfigPtrOutput) IbeaconFreqMsec() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Major number for iBeacon
+// iBeacon major value broadcast by the AP
 func (o SettingBleConfigPtrOutput) IbeaconMajor() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SettingBleConfig) *int {
 		if v == nil {
@@ -13320,7 +13336,7 @@ func (o SettingBleConfigPtrOutput) IbeaconMajor() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Minor number for iBeacon
+// iBeacon minor value broadcast by the AP
 func (o SettingBleConfigPtrOutput) IbeaconMinor() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SettingBleConfig) *int {
 		if v == nil {
@@ -13350,7 +13366,7 @@ func (o SettingBleConfigPtrOutput) Power() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// enum: `custom`, `default`
+// Transmit power mode for BLE beacons; use custom to set `power`
 func (o SettingBleConfigPtrOutput) PowerMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingBleConfig) *string {
 		if v == nil {
@@ -13363,7 +13379,7 @@ func (o SettingBleConfigPtrOutput) PowerMode() pulumi.StringPtrOutput {
 type SettingConfigPushPolicy struct {
 	// Stop any new config from being pushed to the device
 	NoPush *bool `pulumi:"noPush"`
-	// If enabled, new config will only be pushed to device within the specified time window
+	// Allowed time window during which configuration pushes may run
 	PushWindow *SettingConfigPushPolicyPushWindow `pulumi:"pushWindow"`
 }
 
@@ -13381,7 +13397,7 @@ type SettingConfigPushPolicyInput interface {
 type SettingConfigPushPolicyArgs struct {
 	// Stop any new config from being pushed to the device
 	NoPush pulumi.BoolPtrInput `pulumi:"noPush"`
-	// If enabled, new config will only be pushed to device within the specified time window
+	// Allowed time window during which configuration pushes may run
 	PushWindow SettingConfigPushPolicyPushWindowPtrInput `pulumi:"pushWindow"`
 }
 
@@ -13467,7 +13483,7 @@ func (o SettingConfigPushPolicyOutput) NoPush() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingConfigPushPolicy) *bool { return v.NoPush }).(pulumi.BoolPtrOutput)
 }
 
-// If enabled, new config will only be pushed to device within the specified time window
+// Allowed time window during which configuration pushes may run
 func (o SettingConfigPushPolicyOutput) PushWindow() SettingConfigPushPolicyPushWindowPtrOutput {
 	return o.ApplyT(func(v SettingConfigPushPolicy) *SettingConfigPushPolicyPushWindow { return v.PushWindow }).(SettingConfigPushPolicyPushWindowPtrOutput)
 }
@@ -13506,7 +13522,7 @@ func (o SettingConfigPushPolicyPtrOutput) NoPush() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// If enabled, new config will only be pushed to device within the specified time window
+// Allowed time window during which configuration pushes may run
 func (o SettingConfigPushPolicyPtrOutput) PushWindow() SettingConfigPushPolicyPushWindowPtrOutput {
 	return o.ApplyT(func(v *SettingConfigPushPolicy) *SettingConfigPushPolicyPushWindow {
 		if v == nil {
@@ -13517,8 +13533,9 @@ func (o SettingConfigPushPolicyPtrOutput) PushWindow() SettingConfigPushPolicyPu
 }
 
 type SettingConfigPushPolicyPushWindow struct {
+	// Whether configuration pushes are limited to the configured push window
 	Enabled *bool `pulumi:"enabled"`
-	// Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+	// Day-of-week hour ranges when configuration pushes are allowed
 	Hours *SettingConfigPushPolicyPushWindowHours `pulumi:"hours"`
 }
 
@@ -13534,8 +13551,9 @@ type SettingConfigPushPolicyPushWindowInput interface {
 }
 
 type SettingConfigPushPolicyPushWindowArgs struct {
+	// Whether configuration pushes are limited to the configured push window
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+	// Day-of-week hour ranges when configuration pushes are allowed
 	Hours SettingConfigPushPolicyPushWindowHoursPtrInput `pulumi:"hours"`
 }
 
@@ -13616,11 +13634,12 @@ func (o SettingConfigPushPolicyPushWindowOutput) ToSettingConfigPushPolicyPushWi
 	}).(SettingConfigPushPolicyPushWindowPtrOutput)
 }
 
+// Whether configuration pushes are limited to the configured push window
 func (o SettingConfigPushPolicyPushWindowOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingConfigPushPolicyPushWindow) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+// Day-of-week hour ranges when configuration pushes are allowed
 func (o SettingConfigPushPolicyPushWindowOutput) Hours() SettingConfigPushPolicyPushWindowHoursPtrOutput {
 	return o.ApplyT(func(v SettingConfigPushPolicyPushWindow) *SettingConfigPushPolicyPushWindowHours { return v.Hours }).(SettingConfigPushPolicyPushWindowHoursPtrOutput)
 }
@@ -13649,6 +13668,7 @@ func (o SettingConfigPushPolicyPushWindowPtrOutput) Elem() SettingConfigPushPoli
 	}).(SettingConfigPushPolicyPushWindowOutput)
 }
 
+// Whether configuration pushes are limited to the configured push window
 func (o SettingConfigPushPolicyPushWindowPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingConfigPushPolicyPushWindow) *bool {
 		if v == nil {
@@ -13658,7 +13678,7 @@ func (o SettingConfigPushPolicyPushWindowPtrOutput) Enabled() pulumi.BoolPtrOutp
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+// Day-of-week hour ranges when configuration pushes are allowed
 func (o SettingConfigPushPolicyPushWindowPtrOutput) Hours() SettingConfigPushPolicyPushWindowHoursPtrOutput {
 	return o.ApplyT(func(v *SettingConfigPushPolicyPushWindow) *SettingConfigPushPolicyPushWindowHours {
 		if v == nil {
@@ -13669,19 +13689,19 @@ func (o SettingConfigPushPolicyPushWindowPtrOutput) Hours() SettingConfigPushPol
 }
 
 type SettingConfigPushPolicyPushWindowHours struct {
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Friday
 	Fri *string `pulumi:"fri"`
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Monday
 	Mon *string `pulumi:"mon"`
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Saturday
 	Sat *string `pulumi:"sat"`
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Sunday
 	Sun *string `pulumi:"sun"`
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Thursday
 	Thu *string `pulumi:"thu"`
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Tuesday
 	Tue *string `pulumi:"tue"`
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Wednesday
 	Wed *string `pulumi:"wed"`
 }
 
@@ -13697,19 +13717,19 @@ type SettingConfigPushPolicyPushWindowHoursInput interface {
 }
 
 type SettingConfigPushPolicyPushWindowHoursArgs struct {
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Friday
 	Fri pulumi.StringPtrInput `pulumi:"fri"`
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Monday
 	Mon pulumi.StringPtrInput `pulumi:"mon"`
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Saturday
 	Sat pulumi.StringPtrInput `pulumi:"sat"`
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Sunday
 	Sun pulumi.StringPtrInput `pulumi:"sun"`
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Thursday
 	Thu pulumi.StringPtrInput `pulumi:"thu"`
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Tuesday
 	Tue pulumi.StringPtrInput `pulumi:"tue"`
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Wednesday
 	Wed pulumi.StringPtrInput `pulumi:"wed"`
 }
 
@@ -13790,37 +13810,37 @@ func (o SettingConfigPushPolicyPushWindowHoursOutput) ToSettingConfigPushPolicyP
 	}).(SettingConfigPushPolicyPushWindowHoursPtrOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Friday
 func (o SettingConfigPushPolicyPushWindowHoursOutput) Fri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingConfigPushPolicyPushWindowHours) *string { return v.Fri }).(pulumi.StringPtrOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Monday
 func (o SettingConfigPushPolicyPushWindowHoursOutput) Mon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingConfigPushPolicyPushWindowHours) *string { return v.Mon }).(pulumi.StringPtrOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Saturday
 func (o SettingConfigPushPolicyPushWindowHoursOutput) Sat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingConfigPushPolicyPushWindowHours) *string { return v.Sat }).(pulumi.StringPtrOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Sunday
 func (o SettingConfigPushPolicyPushWindowHoursOutput) Sun() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingConfigPushPolicyPushWindowHours) *string { return v.Sun }).(pulumi.StringPtrOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Thursday
 func (o SettingConfigPushPolicyPushWindowHoursOutput) Thu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingConfigPushPolicyPushWindowHours) *string { return v.Thu }).(pulumi.StringPtrOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Tuesday
 func (o SettingConfigPushPolicyPushWindowHoursOutput) Tue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingConfigPushPolicyPushWindowHours) *string { return v.Tue }).(pulumi.StringPtrOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Wednesday
 func (o SettingConfigPushPolicyPushWindowHoursOutput) Wed() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingConfigPushPolicyPushWindowHours) *string { return v.Wed }).(pulumi.StringPtrOutput)
 }
@@ -13849,7 +13869,7 @@ func (o SettingConfigPushPolicyPushWindowHoursPtrOutput) Elem() SettingConfigPus
 	}).(SettingConfigPushPolicyPushWindowHoursOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Friday
 func (o SettingConfigPushPolicyPushWindowHoursPtrOutput) Fri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingConfigPushPolicyPushWindowHours) *string {
 		if v == nil {
@@ -13859,7 +13879,7 @@ func (o SettingConfigPushPolicyPushWindowHoursPtrOutput) Fri() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Monday
 func (o SettingConfigPushPolicyPushWindowHoursPtrOutput) Mon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingConfigPushPolicyPushWindowHours) *string {
 		if v == nil {
@@ -13869,7 +13889,7 @@ func (o SettingConfigPushPolicyPushWindowHoursPtrOutput) Mon() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Saturday
 func (o SettingConfigPushPolicyPushWindowHoursPtrOutput) Sat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingConfigPushPolicyPushWindowHours) *string {
 		if v == nil {
@@ -13879,7 +13899,7 @@ func (o SettingConfigPushPolicyPushWindowHoursPtrOutput) Sat() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Sunday
 func (o SettingConfigPushPolicyPushWindowHoursPtrOutput) Sun() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingConfigPushPolicyPushWindowHours) *string {
 		if v == nil {
@@ -13889,7 +13909,7 @@ func (o SettingConfigPushPolicyPushWindowHoursPtrOutput) Sun() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Thursday
 func (o SettingConfigPushPolicyPushWindowHoursPtrOutput) Thu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingConfigPushPolicyPushWindowHours) *string {
 		if v == nil {
@@ -13899,7 +13919,7 @@ func (o SettingConfigPushPolicyPushWindowHoursPtrOutput) Thu() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Tuesday
 func (o SettingConfigPushPolicyPushWindowHoursPtrOutput) Tue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingConfigPushPolicyPushWindowHours) *string {
 		if v == nil {
@@ -13909,7 +13929,7 @@ func (o SettingConfigPushPolicyPushWindowHoursPtrOutput) Tue() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Wednesday
 func (o SettingConfigPushPolicyPushWindowHoursPtrOutput) Wed() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingConfigPushPolicyPushWindowHours) *string {
 		if v == nil {
@@ -13920,7 +13940,9 @@ func (o SettingConfigPushPolicyPushWindowHoursPtrOutput) Wed() pulumi.StringPtrO
 }
 
 type SettingCriticalUrlMonitoring struct {
-	Enabled  *bool                                 `pulumi:"enabled"`
+	// Whether critical URL monitoring is enabled
+	Enabled *bool `pulumi:"enabled"`
+	// Critical URLs monitored for site health latency
 	Monitors []SettingCriticalUrlMonitoringMonitor `pulumi:"monitors"`
 }
 
@@ -13936,7 +13958,9 @@ type SettingCriticalUrlMonitoringInput interface {
 }
 
 type SettingCriticalUrlMonitoringArgs struct {
-	Enabled  pulumi.BoolPtrInput                           `pulumi:"enabled"`
+	// Whether critical URL monitoring is enabled
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Critical URLs monitored for site health latency
 	Monitors SettingCriticalUrlMonitoringMonitorArrayInput `pulumi:"monitors"`
 }
 
@@ -14017,10 +14041,12 @@ func (o SettingCriticalUrlMonitoringOutput) ToSettingCriticalUrlMonitoringPtrOut
 	}).(SettingCriticalUrlMonitoringPtrOutput)
 }
 
+// Whether critical URL monitoring is enabled
 func (o SettingCriticalUrlMonitoringOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingCriticalUrlMonitoring) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Critical URLs monitored for site health latency
 func (o SettingCriticalUrlMonitoringOutput) Monitors() SettingCriticalUrlMonitoringMonitorArrayOutput {
 	return o.ApplyT(func(v SettingCriticalUrlMonitoring) []SettingCriticalUrlMonitoringMonitor { return v.Monitors }).(SettingCriticalUrlMonitoringMonitorArrayOutput)
 }
@@ -14049,6 +14075,7 @@ func (o SettingCriticalUrlMonitoringPtrOutput) Elem() SettingCriticalUrlMonitori
 	}).(SettingCriticalUrlMonitoringOutput)
 }
 
+// Whether critical URL monitoring is enabled
 func (o SettingCriticalUrlMonitoringPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingCriticalUrlMonitoring) *bool {
 		if v == nil {
@@ -14058,6 +14085,7 @@ func (o SettingCriticalUrlMonitoringPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Critical URLs monitored for site health latency
 func (o SettingCriticalUrlMonitoringPtrOutput) Monitors() SettingCriticalUrlMonitoringMonitorArrayOutput {
 	return o.ApplyT(func(v *SettingCriticalUrlMonitoring) []SettingCriticalUrlMonitoringMonitor {
 		if v == nil {
@@ -14068,7 +14096,9 @@ func (o SettingCriticalUrlMonitoringPtrOutput) Monitors() SettingCriticalUrlMoni
 }
 
 type SettingCriticalUrlMonitoringMonitor struct {
-	Url    *string `pulumi:"url"`
+	// Monitored HTTP or HTTPS URL used for site health latency
+	Url *string `pulumi:"url"`
+	// Source VLAN ID used to run the critical URL monitor
 	VlanId *string `pulumi:"vlanId"`
 }
 
@@ -14084,7 +14114,9 @@ type SettingCriticalUrlMonitoringMonitorInput interface {
 }
 
 type SettingCriticalUrlMonitoringMonitorArgs struct {
-	Url    pulumi.StringPtrInput `pulumi:"url"`
+	// Monitored HTTP or HTTPS URL used for site health latency
+	Url pulumi.StringPtrInput `pulumi:"url"`
+	// Source VLAN ID used to run the critical URL monitor
 	VlanId pulumi.StringPtrInput `pulumi:"vlanId"`
 }
 
@@ -14139,10 +14171,12 @@ func (o SettingCriticalUrlMonitoringMonitorOutput) ToSettingCriticalUrlMonitorin
 	return o
 }
 
+// Monitored HTTP or HTTPS URL used for site health latency
 func (o SettingCriticalUrlMonitoringMonitorOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingCriticalUrlMonitoringMonitor) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
 
+// Source VLAN ID used to run the critical URL monitor
 func (o SettingCriticalUrlMonitoringMonitorOutput) VlanId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingCriticalUrlMonitoringMonitor) *string { return v.VlanId }).(pulumi.StringPtrOutput)
 }
@@ -14168,15 +14202,15 @@ func (o SettingCriticalUrlMonitoringMonitorArrayOutput) Index(i pulumi.IntInput)
 }
 
 type SettingEngagement struct {
-	// Name associated to each tag
+	// Display labels for dwell-time visit categories
 	DwellTagNames *SettingEngagementDwellTagNames `pulumi:"dwellTagNames"`
-	// add tags to visits within the duration (in seconds)
+	// Visit duration ranges used to assign engagement categories
 	DwellTags *SettingEngagementDwellTags `pulumi:"dwellTags"`
-	// Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+	// Schedule during which engagement analytics rules apply
 	Hours *SettingEngagementHours `pulumi:"hours"`
-	// Max time, default is 43200(12h), max is 68400 (18h)
+	// Maximum dwell time in seconds considered by engagement analytics
 	MaxDwell *int `pulumi:"maxDwell"`
-	// min time
+	// Minimum dwell time in seconds for engagement analytics
 	MinDwell *int `pulumi:"minDwell"`
 }
 
@@ -14192,15 +14226,15 @@ type SettingEngagementInput interface {
 }
 
 type SettingEngagementArgs struct {
-	// Name associated to each tag
+	// Display labels for dwell-time visit categories
 	DwellTagNames SettingEngagementDwellTagNamesPtrInput `pulumi:"dwellTagNames"`
-	// add tags to visits within the duration (in seconds)
+	// Visit duration ranges used to assign engagement categories
 	DwellTags SettingEngagementDwellTagsPtrInput `pulumi:"dwellTags"`
-	// Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+	// Schedule during which engagement analytics rules apply
 	Hours SettingEngagementHoursPtrInput `pulumi:"hours"`
-	// Max time, default is 43200(12h), max is 68400 (18h)
+	// Maximum dwell time in seconds considered by engagement analytics
 	MaxDwell pulumi.IntPtrInput `pulumi:"maxDwell"`
-	// min time
+	// Minimum dwell time in seconds for engagement analytics
 	MinDwell pulumi.IntPtrInput `pulumi:"minDwell"`
 }
 
@@ -14281,27 +14315,27 @@ func (o SettingEngagementOutput) ToSettingEngagementPtrOutputWithContext(ctx con
 	}).(SettingEngagementPtrOutput)
 }
 
-// Name associated to each tag
+// Display labels for dwell-time visit categories
 func (o SettingEngagementOutput) DwellTagNames() SettingEngagementDwellTagNamesPtrOutput {
 	return o.ApplyT(func(v SettingEngagement) *SettingEngagementDwellTagNames { return v.DwellTagNames }).(SettingEngagementDwellTagNamesPtrOutput)
 }
 
-// add tags to visits within the duration (in seconds)
+// Visit duration ranges used to assign engagement categories
 func (o SettingEngagementOutput) DwellTags() SettingEngagementDwellTagsPtrOutput {
 	return o.ApplyT(func(v SettingEngagement) *SettingEngagementDwellTags { return v.DwellTags }).(SettingEngagementDwellTagsPtrOutput)
 }
 
-// Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+// Schedule during which engagement analytics rules apply
 func (o SettingEngagementOutput) Hours() SettingEngagementHoursPtrOutput {
 	return o.ApplyT(func(v SettingEngagement) *SettingEngagementHours { return v.Hours }).(SettingEngagementHoursPtrOutput)
 }
 
-// Max time, default is 43200(12h), max is 68400 (18h)
+// Maximum dwell time in seconds considered by engagement analytics
 func (o SettingEngagementOutput) MaxDwell() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingEngagement) *int { return v.MaxDwell }).(pulumi.IntPtrOutput)
 }
 
-// min time
+// Minimum dwell time in seconds for engagement analytics
 func (o SettingEngagementOutput) MinDwell() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingEngagement) *int { return v.MinDwell }).(pulumi.IntPtrOutput)
 }
@@ -14330,7 +14364,7 @@ func (o SettingEngagementPtrOutput) Elem() SettingEngagementOutput {
 	}).(SettingEngagementOutput)
 }
 
-// Name associated to each tag
+// Display labels for dwell-time visit categories
 func (o SettingEngagementPtrOutput) DwellTagNames() SettingEngagementDwellTagNamesPtrOutput {
 	return o.ApplyT(func(v *SettingEngagement) *SettingEngagementDwellTagNames {
 		if v == nil {
@@ -14340,7 +14374,7 @@ func (o SettingEngagementPtrOutput) DwellTagNames() SettingEngagementDwellTagNam
 	}).(SettingEngagementDwellTagNamesPtrOutput)
 }
 
-// add tags to visits within the duration (in seconds)
+// Visit duration ranges used to assign engagement categories
 func (o SettingEngagementPtrOutput) DwellTags() SettingEngagementDwellTagsPtrOutput {
 	return o.ApplyT(func(v *SettingEngagement) *SettingEngagementDwellTags {
 		if v == nil {
@@ -14350,7 +14384,7 @@ func (o SettingEngagementPtrOutput) DwellTags() SettingEngagementDwellTagsPtrOut
 	}).(SettingEngagementDwellTagsPtrOutput)
 }
 
-// Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+// Schedule during which engagement analytics rules apply
 func (o SettingEngagementPtrOutput) Hours() SettingEngagementHoursPtrOutput {
 	return o.ApplyT(func(v *SettingEngagement) *SettingEngagementHours {
 		if v == nil {
@@ -14360,7 +14394,7 @@ func (o SettingEngagementPtrOutput) Hours() SettingEngagementHoursPtrOutput {
 	}).(SettingEngagementHoursPtrOutput)
 }
 
-// Max time, default is 43200(12h), max is 68400 (18h)
+// Maximum dwell time in seconds considered by engagement analytics
 func (o SettingEngagementPtrOutput) MaxDwell() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SettingEngagement) *int {
 		if v == nil {
@@ -14370,7 +14404,7 @@ func (o SettingEngagementPtrOutput) MaxDwell() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// min time
+// Minimum dwell time in seconds for engagement analytics
 func (o SettingEngagementPtrOutput) MinDwell() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SettingEngagement) *int {
 		if v == nil {
@@ -14769,19 +14803,19 @@ func (o SettingEngagementDwellTagsPtrOutput) Stationed() pulumi.StringPtrOutput 
 }
 
 type SettingEngagementHours struct {
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Friday
 	Fri *string `pulumi:"fri"`
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Monday
 	Mon *string `pulumi:"mon"`
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Saturday
 	Sat *string `pulumi:"sat"`
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Sunday
 	Sun *string `pulumi:"sun"`
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Thursday
 	Thu *string `pulumi:"thu"`
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Tuesday
 	Tue *string `pulumi:"tue"`
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Wednesday
 	Wed *string `pulumi:"wed"`
 }
 
@@ -14797,19 +14831,19 @@ type SettingEngagementHoursInput interface {
 }
 
 type SettingEngagementHoursArgs struct {
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Friday
 	Fri pulumi.StringPtrInput `pulumi:"fri"`
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Monday
 	Mon pulumi.StringPtrInput `pulumi:"mon"`
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Saturday
 	Sat pulumi.StringPtrInput `pulumi:"sat"`
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Sunday
 	Sun pulumi.StringPtrInput `pulumi:"sun"`
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Thursday
 	Thu pulumi.StringPtrInput `pulumi:"thu"`
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Tuesday
 	Tue pulumi.StringPtrInput `pulumi:"tue"`
-	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	// Operating hour range for Wednesday
 	Wed pulumi.StringPtrInput `pulumi:"wed"`
 }
 
@@ -14890,37 +14924,37 @@ func (o SettingEngagementHoursOutput) ToSettingEngagementHoursPtrOutputWithConte
 	}).(SettingEngagementHoursPtrOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Friday
 func (o SettingEngagementHoursOutput) Fri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingEngagementHours) *string { return v.Fri }).(pulumi.StringPtrOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Monday
 func (o SettingEngagementHoursOutput) Mon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingEngagementHours) *string { return v.Mon }).(pulumi.StringPtrOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Saturday
 func (o SettingEngagementHoursOutput) Sat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingEngagementHours) *string { return v.Sat }).(pulumi.StringPtrOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Sunday
 func (o SettingEngagementHoursOutput) Sun() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingEngagementHours) *string { return v.Sun }).(pulumi.StringPtrOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Thursday
 func (o SettingEngagementHoursOutput) Thu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingEngagementHours) *string { return v.Thu }).(pulumi.StringPtrOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Tuesday
 func (o SettingEngagementHoursOutput) Tue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingEngagementHours) *string { return v.Tue }).(pulumi.StringPtrOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Wednesday
 func (o SettingEngagementHoursOutput) Wed() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingEngagementHours) *string { return v.Wed }).(pulumi.StringPtrOutput)
 }
@@ -14949,7 +14983,7 @@ func (o SettingEngagementHoursPtrOutput) Elem() SettingEngagementHoursOutput {
 	}).(SettingEngagementHoursOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Friday
 func (o SettingEngagementHoursPtrOutput) Fri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingEngagementHours) *string {
 		if v == nil {
@@ -14959,7 +14993,7 @@ func (o SettingEngagementHoursPtrOutput) Fri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Monday
 func (o SettingEngagementHoursPtrOutput) Mon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingEngagementHours) *string {
 		if v == nil {
@@ -14969,7 +15003,7 @@ func (o SettingEngagementHoursPtrOutput) Mon() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Saturday
 func (o SettingEngagementHoursPtrOutput) Sat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingEngagementHours) *string {
 		if v == nil {
@@ -14979,7 +15013,7 @@ func (o SettingEngagementHoursPtrOutput) Sat() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Sunday
 func (o SettingEngagementHoursPtrOutput) Sun() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingEngagementHours) *string {
 		if v == nil {
@@ -14989,7 +15023,7 @@ func (o SettingEngagementHoursPtrOutput) Sun() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Thursday
 func (o SettingEngagementHoursPtrOutput) Thu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingEngagementHours) *string {
 		if v == nil {
@@ -14999,7 +15033,7 @@ func (o SettingEngagementHoursPtrOutput) Thu() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Tuesday
 func (o SettingEngagementHoursPtrOutput) Tue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingEngagementHours) *string {
 		if v == nil {
@@ -15009,7 +15043,7 @@ func (o SettingEngagementHoursPtrOutput) Tue() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+// Operating hour range for Wednesday
 func (o SettingEngagementHoursPtrOutput) Wed() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingEngagementHours) *string {
 		if v == nil {
@@ -15020,11 +15054,13 @@ func (o SettingEngagementHoursPtrOutput) Wed() pulumi.StringPtrOutput {
 }
 
 type SettingGatewayMgmt struct {
-	// For SSR only, as direct root access is not allowed
-	AdminSshkeys []string                      `pulumi:"adminSshkeys"`
-	AppProbing   *SettingGatewayMgmtAppProbing `pulumi:"appProbing"`
+	// SSR-only SSH public keys for administrative access
+	AdminSshkeys []string `pulumi:"adminSshkeys"`
+	// Application probing configuration for gateway monitoring
+	AppProbing *SettingGatewayMgmtAppProbing `pulumi:"appProbing"`
 	// Consumes uplink bandwidth, requires WA license
-	AppUsage            *bool                                  `pulumi:"appUsage"`
+	AppUsage *bool `pulumi:"appUsage"`
+	// Schedule for automatic security signature updates
 	AutoSignatureUpdate *SettingGatewayMgmtAutoSignatureUpdate `pulumi:"autoSignatureUpdate"`
 	// Rollback timer for commit confirmed
 	ConfigRevertTimer *int `pulumi:"configRevertTimer"`
@@ -15033,17 +15069,20 @@ type SettingGatewayMgmt struct {
 	// For SSR and SRX, disable management interface
 	DisableOob *bool `pulumi:"disableOob"`
 	// For SSR and SRX, disable usb interface
-	DisableUsb    *bool    `pulumi:"disableUsb"`
-	FipsEnabled   *bool    `pulumi:"fipsEnabled"`
-	ProbeHosts    []string `pulumi:"probeHosts"`
+	DisableUsb *bool `pulumi:"disableUsb"`
+	// Whether FIPS mode is enabled on the gateway
+	FipsEnabled *bool `pulumi:"fipsEnabled"`
+	// IPv4 probe targets used for gateway connectivity checks
+	ProbeHosts []string `pulumi:"probeHosts"`
+	// IPv6 probe targets used for gateway connectivity checks
 	ProbeHostsv6s []string `pulumi:"probeHostsv6s"`
-	// Restrict inbound-traffic to host
-	// when enabled, all traffic that is not essential to our operation will be dropped
-	// e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
+	// Control-plane protection settings for the gateway
 	ProtectRe *SettingGatewayMgmtProtectRe `pulumi:"protectRe"`
-	// SRX only
-	RootPassword               *string `pulumi:"rootPassword"`
-	SecurityLogSourceAddress   *string `pulumi:"securityLogSourceAddress"`
+	// SRX only. Root password for local gateway access
+	RootPassword *string `pulumi:"rootPassword"`
+	// IPv4 source address used for gateway security log traffic
+	SecurityLogSourceAddress *string `pulumi:"securityLogSourceAddress"`
+	// Source interface used for gateway security log traffic
 	SecurityLogSourceInterface *string `pulumi:"securityLogSourceInterface"`
 }
 
@@ -15059,11 +15098,13 @@ type SettingGatewayMgmtInput interface {
 }
 
 type SettingGatewayMgmtArgs struct {
-	// For SSR only, as direct root access is not allowed
-	AdminSshkeys pulumi.StringArrayInput              `pulumi:"adminSshkeys"`
-	AppProbing   SettingGatewayMgmtAppProbingPtrInput `pulumi:"appProbing"`
+	// SSR-only SSH public keys for administrative access
+	AdminSshkeys pulumi.StringArrayInput `pulumi:"adminSshkeys"`
+	// Application probing configuration for gateway monitoring
+	AppProbing SettingGatewayMgmtAppProbingPtrInput `pulumi:"appProbing"`
 	// Consumes uplink bandwidth, requires WA license
-	AppUsage            pulumi.BoolPtrInput                           `pulumi:"appUsage"`
+	AppUsage pulumi.BoolPtrInput `pulumi:"appUsage"`
+	// Schedule for automatic security signature updates
 	AutoSignatureUpdate SettingGatewayMgmtAutoSignatureUpdatePtrInput `pulumi:"autoSignatureUpdate"`
 	// Rollback timer for commit confirmed
 	ConfigRevertTimer pulumi.IntPtrInput `pulumi:"configRevertTimer"`
@@ -15072,17 +15113,20 @@ type SettingGatewayMgmtArgs struct {
 	// For SSR and SRX, disable management interface
 	DisableOob pulumi.BoolPtrInput `pulumi:"disableOob"`
 	// For SSR and SRX, disable usb interface
-	DisableUsb    pulumi.BoolPtrInput     `pulumi:"disableUsb"`
-	FipsEnabled   pulumi.BoolPtrInput     `pulumi:"fipsEnabled"`
-	ProbeHosts    pulumi.StringArrayInput `pulumi:"probeHosts"`
+	DisableUsb pulumi.BoolPtrInput `pulumi:"disableUsb"`
+	// Whether FIPS mode is enabled on the gateway
+	FipsEnabled pulumi.BoolPtrInput `pulumi:"fipsEnabled"`
+	// IPv4 probe targets used for gateway connectivity checks
+	ProbeHosts pulumi.StringArrayInput `pulumi:"probeHosts"`
+	// IPv6 probe targets used for gateway connectivity checks
 	ProbeHostsv6s pulumi.StringArrayInput `pulumi:"probeHostsv6s"`
-	// Restrict inbound-traffic to host
-	// when enabled, all traffic that is not essential to our operation will be dropped
-	// e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
+	// Control-plane protection settings for the gateway
 	ProtectRe SettingGatewayMgmtProtectRePtrInput `pulumi:"protectRe"`
-	// SRX only
-	RootPassword               pulumi.StringPtrInput `pulumi:"rootPassword"`
-	SecurityLogSourceAddress   pulumi.StringPtrInput `pulumi:"securityLogSourceAddress"`
+	// SRX only. Root password for local gateway access
+	RootPassword pulumi.StringPtrInput `pulumi:"rootPassword"`
+	// IPv4 source address used for gateway security log traffic
+	SecurityLogSourceAddress pulumi.StringPtrInput `pulumi:"securityLogSourceAddress"`
+	// Source interface used for gateway security log traffic
 	SecurityLogSourceInterface pulumi.StringPtrInput `pulumi:"securityLogSourceInterface"`
 }
 
@@ -15163,11 +15207,12 @@ func (o SettingGatewayMgmtOutput) ToSettingGatewayMgmtPtrOutputWithContext(ctx c
 	}).(SettingGatewayMgmtPtrOutput)
 }
 
-// For SSR only, as direct root access is not allowed
+// SSR-only SSH public keys for administrative access
 func (o SettingGatewayMgmtOutput) AdminSshkeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SettingGatewayMgmt) []string { return v.AdminSshkeys }).(pulumi.StringArrayOutput)
 }
 
+// Application probing configuration for gateway monitoring
 func (o SettingGatewayMgmtOutput) AppProbing() SettingGatewayMgmtAppProbingPtrOutput {
 	return o.ApplyT(func(v SettingGatewayMgmt) *SettingGatewayMgmtAppProbing { return v.AppProbing }).(SettingGatewayMgmtAppProbingPtrOutput)
 }
@@ -15177,6 +15222,7 @@ func (o SettingGatewayMgmtOutput) AppUsage() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingGatewayMgmt) *bool { return v.AppUsage }).(pulumi.BoolPtrOutput)
 }
 
+// Schedule for automatic security signature updates
 func (o SettingGatewayMgmtOutput) AutoSignatureUpdate() SettingGatewayMgmtAutoSignatureUpdatePtrOutput {
 	return o.ApplyT(func(v SettingGatewayMgmt) *SettingGatewayMgmtAutoSignatureUpdate { return v.AutoSignatureUpdate }).(SettingGatewayMgmtAutoSignatureUpdatePtrOutput)
 }
@@ -15201,34 +15247,37 @@ func (o SettingGatewayMgmtOutput) DisableUsb() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingGatewayMgmt) *bool { return v.DisableUsb }).(pulumi.BoolPtrOutput)
 }
 
+// Whether FIPS mode is enabled on the gateway
 func (o SettingGatewayMgmtOutput) FipsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingGatewayMgmt) *bool { return v.FipsEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// IPv4 probe targets used for gateway connectivity checks
 func (o SettingGatewayMgmtOutput) ProbeHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SettingGatewayMgmt) []string { return v.ProbeHosts }).(pulumi.StringArrayOutput)
 }
 
+// IPv6 probe targets used for gateway connectivity checks
 func (o SettingGatewayMgmtOutput) ProbeHostsv6s() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SettingGatewayMgmt) []string { return v.ProbeHostsv6s }).(pulumi.StringArrayOutput)
 }
 
-// Restrict inbound-traffic to host
-// when enabled, all traffic that is not essential to our operation will be dropped
-// e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
+// Control-plane protection settings for the gateway
 func (o SettingGatewayMgmtOutput) ProtectRe() SettingGatewayMgmtProtectRePtrOutput {
 	return o.ApplyT(func(v SettingGatewayMgmt) *SettingGatewayMgmtProtectRe { return v.ProtectRe }).(SettingGatewayMgmtProtectRePtrOutput)
 }
 
-// SRX only
+// SRX only. Root password for local gateway access
 func (o SettingGatewayMgmtOutput) RootPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingGatewayMgmt) *string { return v.RootPassword }).(pulumi.StringPtrOutput)
 }
 
+// IPv4 source address used for gateway security log traffic
 func (o SettingGatewayMgmtOutput) SecurityLogSourceAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingGatewayMgmt) *string { return v.SecurityLogSourceAddress }).(pulumi.StringPtrOutput)
 }
 
+// Source interface used for gateway security log traffic
 func (o SettingGatewayMgmtOutput) SecurityLogSourceInterface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingGatewayMgmt) *string { return v.SecurityLogSourceInterface }).(pulumi.StringPtrOutput)
 }
@@ -15257,7 +15306,7 @@ func (o SettingGatewayMgmtPtrOutput) Elem() SettingGatewayMgmtOutput {
 	}).(SettingGatewayMgmtOutput)
 }
 
-// For SSR only, as direct root access is not allowed
+// SSR-only SSH public keys for administrative access
 func (o SettingGatewayMgmtPtrOutput) AdminSshkeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SettingGatewayMgmt) []string {
 		if v == nil {
@@ -15267,6 +15316,7 @@ func (o SettingGatewayMgmtPtrOutput) AdminSshkeys() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// Application probing configuration for gateway monitoring
 func (o SettingGatewayMgmtPtrOutput) AppProbing() SettingGatewayMgmtAppProbingPtrOutput {
 	return o.ApplyT(func(v *SettingGatewayMgmt) *SettingGatewayMgmtAppProbing {
 		if v == nil {
@@ -15286,6 +15336,7 @@ func (o SettingGatewayMgmtPtrOutput) AppUsage() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Schedule for automatic security signature updates
 func (o SettingGatewayMgmtPtrOutput) AutoSignatureUpdate() SettingGatewayMgmtAutoSignatureUpdatePtrOutput {
 	return o.ApplyT(func(v *SettingGatewayMgmt) *SettingGatewayMgmtAutoSignatureUpdate {
 		if v == nil {
@@ -15335,6 +15386,7 @@ func (o SettingGatewayMgmtPtrOutput) DisableUsb() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Whether FIPS mode is enabled on the gateway
 func (o SettingGatewayMgmtPtrOutput) FipsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingGatewayMgmt) *bool {
 		if v == nil {
@@ -15344,6 +15396,7 @@ func (o SettingGatewayMgmtPtrOutput) FipsEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// IPv4 probe targets used for gateway connectivity checks
 func (o SettingGatewayMgmtPtrOutput) ProbeHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SettingGatewayMgmt) []string {
 		if v == nil {
@@ -15353,6 +15406,7 @@ func (o SettingGatewayMgmtPtrOutput) ProbeHosts() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// IPv6 probe targets used for gateway connectivity checks
 func (o SettingGatewayMgmtPtrOutput) ProbeHostsv6s() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SettingGatewayMgmt) []string {
 		if v == nil {
@@ -15362,9 +15416,7 @@ func (o SettingGatewayMgmtPtrOutput) ProbeHostsv6s() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Restrict inbound-traffic to host
-// when enabled, all traffic that is not essential to our operation will be dropped
-// e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
+// Control-plane protection settings for the gateway
 func (o SettingGatewayMgmtPtrOutput) ProtectRe() SettingGatewayMgmtProtectRePtrOutput {
 	return o.ApplyT(func(v *SettingGatewayMgmt) *SettingGatewayMgmtProtectRe {
 		if v == nil {
@@ -15374,7 +15426,7 @@ func (o SettingGatewayMgmtPtrOutput) ProtectRe() SettingGatewayMgmtProtectRePtrO
 	}).(SettingGatewayMgmtProtectRePtrOutput)
 }
 
-// SRX only
+// SRX only. Root password for local gateway access
 func (o SettingGatewayMgmtPtrOutput) RootPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingGatewayMgmt) *string {
 		if v == nil {
@@ -15384,6 +15436,7 @@ func (o SettingGatewayMgmtPtrOutput) RootPassword() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// IPv4 source address used for gateway security log traffic
 func (o SettingGatewayMgmtPtrOutput) SecurityLogSourceAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingGatewayMgmt) *string {
 		if v == nil {
@@ -15393,6 +15446,7 @@ func (o SettingGatewayMgmtPtrOutput) SecurityLogSourceAddress() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// Source interface used for gateway security log traffic
 func (o SettingGatewayMgmtPtrOutput) SecurityLogSourceInterface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingGatewayMgmt) *string {
 		if v == nil {
@@ -15403,10 +15457,12 @@ func (o SettingGatewayMgmtPtrOutput) SecurityLogSourceInterface() pulumi.StringP
 }
 
 type SettingGatewayMgmtAppProbing struct {
-	// APp-keys from List Applications
-	Apps       []string                                `pulumi:"apps"`
+	// Predefined application keys to probe
+	Apps []string `pulumi:"apps"`
+	// User-defined application probe definitions
 	CustomApps []SettingGatewayMgmtAppProbingCustomApp `pulumi:"customApps"`
-	Enabled    *bool                                   `pulumi:"enabled"`
+	// Whether gateway application probing is enabled
+	Enabled *bool `pulumi:"enabled"`
 }
 
 // SettingGatewayMgmtAppProbingInput is an input type that accepts SettingGatewayMgmtAppProbingArgs and SettingGatewayMgmtAppProbingOutput values.
@@ -15421,10 +15477,12 @@ type SettingGatewayMgmtAppProbingInput interface {
 }
 
 type SettingGatewayMgmtAppProbingArgs struct {
-	// APp-keys from List Applications
-	Apps       pulumi.StringArrayInput                         `pulumi:"apps"`
+	// Predefined application keys to probe
+	Apps pulumi.StringArrayInput `pulumi:"apps"`
+	// User-defined application probe definitions
 	CustomApps SettingGatewayMgmtAppProbingCustomAppArrayInput `pulumi:"customApps"`
-	Enabled    pulumi.BoolPtrInput                             `pulumi:"enabled"`
+	// Whether gateway application probing is enabled
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
 func (SettingGatewayMgmtAppProbingArgs) ElementType() reflect.Type {
@@ -15504,15 +15562,17 @@ func (o SettingGatewayMgmtAppProbingOutput) ToSettingGatewayMgmtAppProbingPtrOut
 	}).(SettingGatewayMgmtAppProbingPtrOutput)
 }
 
-// APp-keys from List Applications
+// Predefined application keys to probe
 func (o SettingGatewayMgmtAppProbingOutput) Apps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SettingGatewayMgmtAppProbing) []string { return v.Apps }).(pulumi.StringArrayOutput)
 }
 
+// User-defined application probe definitions
 func (o SettingGatewayMgmtAppProbingOutput) CustomApps() SettingGatewayMgmtAppProbingCustomAppArrayOutput {
 	return o.ApplyT(func(v SettingGatewayMgmtAppProbing) []SettingGatewayMgmtAppProbingCustomApp { return v.CustomApps }).(SettingGatewayMgmtAppProbingCustomAppArrayOutput)
 }
 
+// Whether gateway application probing is enabled
 func (o SettingGatewayMgmtAppProbingOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingGatewayMgmtAppProbing) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -15541,7 +15601,7 @@ func (o SettingGatewayMgmtAppProbingPtrOutput) Elem() SettingGatewayMgmtAppProbi
 	}).(SettingGatewayMgmtAppProbingOutput)
 }
 
-// APp-keys from List Applications
+// Predefined application keys to probe
 func (o SettingGatewayMgmtAppProbingPtrOutput) Apps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SettingGatewayMgmtAppProbing) []string {
 		if v == nil {
@@ -15551,6 +15611,7 @@ func (o SettingGatewayMgmtAppProbingPtrOutput) Apps() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// User-defined application probe definitions
 func (o SettingGatewayMgmtAppProbingPtrOutput) CustomApps() SettingGatewayMgmtAppProbingCustomAppArrayOutput {
 	return o.ApplyT(func(v *SettingGatewayMgmtAppProbing) []SettingGatewayMgmtAppProbingCustomApp {
 		if v == nil {
@@ -15560,6 +15621,7 @@ func (o SettingGatewayMgmtAppProbingPtrOutput) CustomApps() SettingGatewayMgmtAp
 	}).(SettingGatewayMgmtAppProbingCustomAppArrayOutput)
 }
 
+// Whether gateway application probing is enabled
 func (o SettingGatewayMgmtAppProbingPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingGatewayMgmtAppProbing) *bool {
 		if v == nil {
@@ -15571,20 +15633,25 @@ func (o SettingGatewayMgmtAppProbingPtrOutput) Enabled() pulumi.BoolPtrOutput {
 
 type SettingGatewayMgmtAppProbingCustomApp struct {
 	Address *string `pulumi:"address"`
+	// Category label used for this custom application probe
 	AppType *string `pulumi:"appType"`
 	// Only 1 entry is allowed:
 	//     * if `protocol`==`http`: URL (e.g. `http://test.com` or `https://test.com`)
 	//     * if `protocol`==`icmp`: IP Address (e.g. `1.2.3.4`)
 	Hostnames []string `pulumi:"hostnames"`
-	Key       *string  `pulumi:"key"`
-	Name      string   `pulumi:"name"`
-	Network   *string  `pulumi:"network"`
-	// If `protocol`==`icmp`
+	// Stable key used to identify this custom application probe
+	Key *string `pulumi:"key"`
+	// Display name for this custom application probe
+	Name string `pulumi:"name"`
+	// Gateway network used as the source context for this probe
+	Network *string `pulumi:"network"`
+	// If `protocol`==`icmp`. ICMP packet size used by this custom app probe
 	PacketSize *int `pulumi:"packetSize"`
-	// enum: `http`, `icmp`
+	// Probe protocol used by this custom application definition
 	Protocol string  `pulumi:"protocol"`
 	Url      *string `pulumi:"url"`
-	Vrf      *string `pulumi:"vrf"`
+	// Gateway VRF used as the source context for this probe
+	Vrf *string `pulumi:"vrf"`
 }
 
 // SettingGatewayMgmtAppProbingCustomAppInput is an input type that accepts SettingGatewayMgmtAppProbingCustomAppArgs and SettingGatewayMgmtAppProbingCustomAppOutput values.
@@ -15600,20 +15667,25 @@ type SettingGatewayMgmtAppProbingCustomAppInput interface {
 
 type SettingGatewayMgmtAppProbingCustomAppArgs struct {
 	Address pulumi.StringPtrInput `pulumi:"address"`
+	// Category label used for this custom application probe
 	AppType pulumi.StringPtrInput `pulumi:"appType"`
 	// Only 1 entry is allowed:
 	//     * if `protocol`==`http`: URL (e.g. `http://test.com` or `https://test.com`)
 	//     * if `protocol`==`icmp`: IP Address (e.g. `1.2.3.4`)
 	Hostnames pulumi.StringArrayInput `pulumi:"hostnames"`
-	Key       pulumi.StringPtrInput   `pulumi:"key"`
-	Name      pulumi.StringInput      `pulumi:"name"`
-	Network   pulumi.StringPtrInput   `pulumi:"network"`
-	// If `protocol`==`icmp`
+	// Stable key used to identify this custom application probe
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Display name for this custom application probe
+	Name pulumi.StringInput `pulumi:"name"`
+	// Gateway network used as the source context for this probe
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// If `protocol`==`icmp`. ICMP packet size used by this custom app probe
 	PacketSize pulumi.IntPtrInput `pulumi:"packetSize"`
-	// enum: `http`, `icmp`
+	// Probe protocol used by this custom application definition
 	Protocol pulumi.StringInput    `pulumi:"protocol"`
 	Url      pulumi.StringPtrInput `pulumi:"url"`
-	Vrf      pulumi.StringPtrInput `pulumi:"vrf"`
+	// Gateway VRF used as the source context for this probe
+	Vrf pulumi.StringPtrInput `pulumi:"vrf"`
 }
 
 func (SettingGatewayMgmtAppProbingCustomAppArgs) ElementType() reflect.Type {
@@ -15671,6 +15743,7 @@ func (o SettingGatewayMgmtAppProbingCustomAppOutput) Address() pulumi.StringPtrO
 	return o.ApplyT(func(v SettingGatewayMgmtAppProbingCustomApp) *string { return v.Address }).(pulumi.StringPtrOutput)
 }
 
+// Category label used for this custom application probe
 func (o SettingGatewayMgmtAppProbingCustomAppOutput) AppType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingGatewayMgmtAppProbingCustomApp) *string { return v.AppType }).(pulumi.StringPtrOutput)
 }
@@ -15682,24 +15755,27 @@ func (o SettingGatewayMgmtAppProbingCustomAppOutput) Hostnames() pulumi.StringAr
 	return o.ApplyT(func(v SettingGatewayMgmtAppProbingCustomApp) []string { return v.Hostnames }).(pulumi.StringArrayOutput)
 }
 
+// Stable key used to identify this custom application probe
 func (o SettingGatewayMgmtAppProbingCustomAppOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingGatewayMgmtAppProbingCustomApp) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
+// Display name for this custom application probe
 func (o SettingGatewayMgmtAppProbingCustomAppOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v SettingGatewayMgmtAppProbingCustomApp) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Gateway network used as the source context for this probe
 func (o SettingGatewayMgmtAppProbingCustomAppOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingGatewayMgmtAppProbingCustomApp) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
 
-// If `protocol`==`icmp`
+// If `protocol`==`icmp`. ICMP packet size used by this custom app probe
 func (o SettingGatewayMgmtAppProbingCustomAppOutput) PacketSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingGatewayMgmtAppProbingCustomApp) *int { return v.PacketSize }).(pulumi.IntPtrOutput)
 }
 
-// enum: `http`, `icmp`
+// Probe protocol used by this custom application definition
 func (o SettingGatewayMgmtAppProbingCustomAppOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v SettingGatewayMgmtAppProbingCustomApp) string { return v.Protocol }).(pulumi.StringOutput)
 }
@@ -15708,6 +15784,7 @@ func (o SettingGatewayMgmtAppProbingCustomAppOutput) Url() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v SettingGatewayMgmtAppProbingCustomApp) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
 
+// Gateway VRF used as the source context for this probe
 func (o SettingGatewayMgmtAppProbingCustomAppOutput) Vrf() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingGatewayMgmtAppProbingCustomApp) *string { return v.Vrf }).(pulumi.StringPtrOutput)
 }
@@ -15733,9 +15810,10 @@ func (o SettingGatewayMgmtAppProbingCustomAppArrayOutput) Index(i pulumi.IntInpu
 }
 
 type SettingGatewayMgmtAutoSignatureUpdate struct {
-	// enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+	// Scheduled weekday for automatic signature updates
 	DayOfWeek *string `pulumi:"dayOfWeek"`
-	Enable    *bool   `pulumi:"enable"`
+	// Whether automatic security signature updates are enabled
+	Enable *bool `pulumi:"enable"`
 	// Optional, Mist will decide the timing
 	TimeOfDay *string `pulumi:"timeOfDay"`
 }
@@ -15752,9 +15830,10 @@ type SettingGatewayMgmtAutoSignatureUpdateInput interface {
 }
 
 type SettingGatewayMgmtAutoSignatureUpdateArgs struct {
-	// enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+	// Scheduled weekday for automatic signature updates
 	DayOfWeek pulumi.StringPtrInput `pulumi:"dayOfWeek"`
-	Enable    pulumi.BoolPtrInput   `pulumi:"enable"`
+	// Whether automatic security signature updates are enabled
+	Enable pulumi.BoolPtrInput `pulumi:"enable"`
 	// Optional, Mist will decide the timing
 	TimeOfDay pulumi.StringPtrInput `pulumi:"timeOfDay"`
 }
@@ -15836,11 +15915,12 @@ func (o SettingGatewayMgmtAutoSignatureUpdateOutput) ToSettingGatewayMgmtAutoSig
 	}).(SettingGatewayMgmtAutoSignatureUpdatePtrOutput)
 }
 
-// enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+// Scheduled weekday for automatic signature updates
 func (o SettingGatewayMgmtAutoSignatureUpdateOutput) DayOfWeek() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingGatewayMgmtAutoSignatureUpdate) *string { return v.DayOfWeek }).(pulumi.StringPtrOutput)
 }
 
+// Whether automatic security signature updates are enabled
 func (o SettingGatewayMgmtAutoSignatureUpdateOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingGatewayMgmtAutoSignatureUpdate) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
@@ -15874,7 +15954,7 @@ func (o SettingGatewayMgmtAutoSignatureUpdatePtrOutput) Elem() SettingGatewayMgm
 	}).(SettingGatewayMgmtAutoSignatureUpdateOutput)
 }
 
-// enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+// Scheduled weekday for automatic signature updates
 func (o SettingGatewayMgmtAutoSignatureUpdatePtrOutput) DayOfWeek() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingGatewayMgmtAutoSignatureUpdate) *string {
 		if v == nil {
@@ -15884,6 +15964,7 @@ func (o SettingGatewayMgmtAutoSignatureUpdatePtrOutput) DayOfWeek() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whether automatic security signature updates are enabled
 func (o SettingGatewayMgmtAutoSignatureUpdatePtrOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingGatewayMgmtAutoSignatureUpdate) *bool {
 		if v == nil {
@@ -15905,15 +15986,16 @@ func (o SettingGatewayMgmtAutoSignatureUpdatePtrOutput) TimeOfDay() pulumi.Strin
 
 type SettingGatewayMgmtProtectRe struct {
 	// optionally, services we'll allow. enum: `icmp`, `ssh`
-	AllowedServices []string                            `pulumi:"allowedServices"`
-	Customs         []SettingGatewayMgmtProtectReCustom `pulumi:"customs"`
+	AllowedServices []string `pulumi:"allowedServices"`
+	// Additional ACL entries allowed by the Protect RE policy
+	Customs []SettingGatewayMgmtProtectReCustom `pulumi:"customs"`
 	// When enabled, all traffic that is not essential to our operation will be dropped
 	// e.g. ntp / dns / traffic to mist will be allowed by default
 	//      if dhcpd is enabled, we'll make sure it works
 	Enabled *bool `pulumi:"enabled"`
 	// Whether to enable hit count for Protect_RE policy
 	HitCount *bool `pulumi:"hitCount"`
-	// host/subnets we'll allow traffic to/from
+	// Trusted host or subnet entries allowed by the Protect RE policy
 	TrustedHosts []string `pulumi:"trustedHosts"`
 }
 
@@ -15930,15 +16012,16 @@ type SettingGatewayMgmtProtectReInput interface {
 
 type SettingGatewayMgmtProtectReArgs struct {
 	// optionally, services we'll allow. enum: `icmp`, `ssh`
-	AllowedServices pulumi.StringArrayInput                     `pulumi:"allowedServices"`
-	Customs         SettingGatewayMgmtProtectReCustomArrayInput `pulumi:"customs"`
+	AllowedServices pulumi.StringArrayInput `pulumi:"allowedServices"`
+	// Additional ACL entries allowed by the Protect RE policy
+	Customs SettingGatewayMgmtProtectReCustomArrayInput `pulumi:"customs"`
 	// When enabled, all traffic that is not essential to our operation will be dropped
 	// e.g. ntp / dns / traffic to mist will be allowed by default
 	//      if dhcpd is enabled, we'll make sure it works
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// Whether to enable hit count for Protect_RE policy
 	HitCount pulumi.BoolPtrInput `pulumi:"hitCount"`
-	// host/subnets we'll allow traffic to/from
+	// Trusted host or subnet entries allowed by the Protect RE policy
 	TrustedHosts pulumi.StringArrayInput `pulumi:"trustedHosts"`
 }
 
@@ -16024,6 +16107,7 @@ func (o SettingGatewayMgmtProtectReOutput) AllowedServices() pulumi.StringArrayO
 	return o.ApplyT(func(v SettingGatewayMgmtProtectRe) []string { return v.AllowedServices }).(pulumi.StringArrayOutput)
 }
 
+// Additional ACL entries allowed by the Protect RE policy
 func (o SettingGatewayMgmtProtectReOutput) Customs() SettingGatewayMgmtProtectReCustomArrayOutput {
 	return o.ApplyT(func(v SettingGatewayMgmtProtectRe) []SettingGatewayMgmtProtectReCustom { return v.Customs }).(SettingGatewayMgmtProtectReCustomArrayOutput)
 }
@@ -16041,7 +16125,7 @@ func (o SettingGatewayMgmtProtectReOutput) HitCount() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingGatewayMgmtProtectRe) *bool { return v.HitCount }).(pulumi.BoolPtrOutput)
 }
 
-// host/subnets we'll allow traffic to/from
+// Trusted host or subnet entries allowed by the Protect RE policy
 func (o SettingGatewayMgmtProtectReOutput) TrustedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SettingGatewayMgmtProtectRe) []string { return v.TrustedHosts }).(pulumi.StringArrayOutput)
 }
@@ -16080,6 +16164,7 @@ func (o SettingGatewayMgmtProtectRePtrOutput) AllowedServices() pulumi.StringArr
 	}).(pulumi.StringArrayOutput)
 }
 
+// Additional ACL entries allowed by the Protect RE policy
 func (o SettingGatewayMgmtProtectRePtrOutput) Customs() SettingGatewayMgmtProtectReCustomArrayOutput {
 	return o.ApplyT(func(v *SettingGatewayMgmtProtectRe) []SettingGatewayMgmtProtectReCustom {
 		if v == nil {
@@ -16112,7 +16197,7 @@ func (o SettingGatewayMgmtProtectRePtrOutput) HitCount() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// host/subnets we'll allow traffic to/from
+// Trusted host or subnet entries allowed by the Protect RE policy
 func (o SettingGatewayMgmtProtectRePtrOutput) TrustedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SettingGatewayMgmtProtectRe) []string {
 		if v == nil {
@@ -16126,8 +16211,9 @@ type SettingGatewayMgmtProtectReCustom struct {
 	// matched dst port, "0" means any. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
 	PortRange *string `pulumi:"portRange"`
 	// enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
-	Protocol *string  `pulumi:"protocol"`
-	Subnets  []string `pulumi:"subnets"`
+	Protocol *string `pulumi:"protocol"`
+	// Source subnets matched by this custom Protect RE ACL
+	Subnets []string `pulumi:"subnets"`
 }
 
 // SettingGatewayMgmtProtectReCustomInput is an input type that accepts SettingGatewayMgmtProtectReCustomArgs and SettingGatewayMgmtProtectReCustomOutput values.
@@ -16145,8 +16231,9 @@ type SettingGatewayMgmtProtectReCustomArgs struct {
 	// matched dst port, "0" means any. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
 	PortRange pulumi.StringPtrInput `pulumi:"portRange"`
 	// enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
-	Protocol pulumi.StringPtrInput   `pulumi:"protocol"`
-	Subnets  pulumi.StringArrayInput `pulumi:"subnets"`
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+	// Source subnets matched by this custom Protect RE ACL
+	Subnets pulumi.StringArrayInput `pulumi:"subnets"`
 }
 
 func (SettingGatewayMgmtProtectReCustomArgs) ElementType() reflect.Type {
@@ -16210,6 +16297,7 @@ func (o SettingGatewayMgmtProtectReCustomOutput) Protocol() pulumi.StringPtrOutp
 	return o.ApplyT(func(v SettingGatewayMgmtProtectReCustom) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
+// Source subnets matched by this custom Protect RE ACL
 func (o SettingGatewayMgmtProtectReCustomOutput) Subnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SettingGatewayMgmtProtectReCustom) []string { return v.Subnets }).(pulumi.StringArrayOutput)
 }
@@ -16235,8 +16323,9 @@ func (o SettingGatewayMgmtProtectReCustomArrayOutput) Index(i pulumi.IntInput) S
 }
 
 type SettingIotproxy struct {
+	// Whether the site IoT proxy is enabled
 	Enabled *bool `pulumi:"enabled"`
-	// Visionline integration settings for IoT proxy
+	// Site access-control integration settings for Visionline
 	Visionline *SettingIotproxyVisionline `pulumi:"visionline"`
 }
 
@@ -16252,8 +16341,9 @@ type SettingIotproxyInput interface {
 }
 
 type SettingIotproxyArgs struct {
+	// Whether the site IoT proxy is enabled
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// Visionline integration settings for IoT proxy
+	// Site access-control integration settings for Visionline
 	Visionline SettingIotproxyVisionlinePtrInput `pulumi:"visionline"`
 }
 
@@ -16334,11 +16424,12 @@ func (o SettingIotproxyOutput) ToSettingIotproxyPtrOutputWithContext(ctx context
 	}).(SettingIotproxyPtrOutput)
 }
 
+// Whether the site IoT proxy is enabled
 func (o SettingIotproxyOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingIotproxy) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Visionline integration settings for IoT proxy
+// Site access-control integration settings for Visionline
 func (o SettingIotproxyOutput) Visionline() SettingIotproxyVisionlinePtrOutput {
 	return o.ApplyT(func(v SettingIotproxy) *SettingIotproxyVisionline { return v.Visionline }).(SettingIotproxyVisionlinePtrOutput)
 }
@@ -16367,6 +16458,7 @@ func (o SettingIotproxyPtrOutput) Elem() SettingIotproxyOutput {
 	}).(SettingIotproxyOutput)
 }
 
+// Whether the site IoT proxy is enabled
 func (o SettingIotproxyPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingIotproxy) *bool {
 		if v == nil {
@@ -16376,7 +16468,7 @@ func (o SettingIotproxyPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Visionline integration settings for IoT proxy
+// Site access-control integration settings for Visionline
 func (o SettingIotproxyPtrOutput) Visionline() SettingIotproxyVisionlinePtrOutput {
 	return o.ApplyT(func(v *SettingIotproxy) *SettingIotproxyVisionline {
 		if v == nil {
@@ -16389,14 +16481,17 @@ func (o SettingIotproxyPtrOutput) Visionline() SettingIotproxyVisionlinePtrOutpu
 type SettingIotproxyVisionline struct {
 	// Access ID for the Visionline service
 	AccessId *string `pulumi:"accessId"`
-	Enabled  *bool   `pulumi:"enabled"`
-	// Hostname or IP of the Visionline collector
+	// PEM-encoded CA certificates used to verify the Visionline collector's TLS certificate. Required when the collector uses a self-signed certificate
+	Cacerts []string `pulumi:"cacerts"`
+	// Whether the Visionline integration is enabled
+	Enabled *bool `pulumi:"enabled"`
+	// Collector hostname or IP address for Visionline
 	Host *string `pulumi:"host"`
-	// Password for the Visionline service
+	// Visionline service password used by the IoT proxy
 	Password *string `pulumi:"password"`
 	// TCP port of the Visionline collector
 	Port *int `pulumi:"port"`
-	// Username for the Visionline service
+	// Visionline service username used by the IoT proxy
 	Username *string `pulumi:"username"`
 }
 
@@ -16414,14 +16509,17 @@ type SettingIotproxyVisionlineInput interface {
 type SettingIotproxyVisionlineArgs struct {
 	// Access ID for the Visionline service
 	AccessId pulumi.StringPtrInput `pulumi:"accessId"`
-	Enabled  pulumi.BoolPtrInput   `pulumi:"enabled"`
-	// Hostname or IP of the Visionline collector
+	// PEM-encoded CA certificates used to verify the Visionline collector's TLS certificate. Required when the collector uses a self-signed certificate
+	Cacerts pulumi.StringArrayInput `pulumi:"cacerts"`
+	// Whether the Visionline integration is enabled
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Collector hostname or IP address for Visionline
 	Host pulumi.StringPtrInput `pulumi:"host"`
-	// Password for the Visionline service
+	// Visionline service password used by the IoT proxy
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// TCP port of the Visionline collector
 	Port pulumi.IntPtrInput `pulumi:"port"`
-	// Username for the Visionline service
+	// Visionline service username used by the IoT proxy
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
@@ -16507,16 +16605,22 @@ func (o SettingIotproxyVisionlineOutput) AccessId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingIotproxyVisionline) *string { return v.AccessId }).(pulumi.StringPtrOutput)
 }
 
+// PEM-encoded CA certificates used to verify the Visionline collector's TLS certificate. Required when the collector uses a self-signed certificate
+func (o SettingIotproxyVisionlineOutput) Cacerts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SettingIotproxyVisionline) []string { return v.Cacerts }).(pulumi.StringArrayOutput)
+}
+
+// Whether the Visionline integration is enabled
 func (o SettingIotproxyVisionlineOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingIotproxyVisionline) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Hostname or IP of the Visionline collector
+// Collector hostname or IP address for Visionline
 func (o SettingIotproxyVisionlineOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingIotproxyVisionline) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
-// Password for the Visionline service
+// Visionline service password used by the IoT proxy
 func (o SettingIotproxyVisionlineOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingIotproxyVisionline) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
@@ -16526,7 +16630,7 @@ func (o SettingIotproxyVisionlineOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingIotproxyVisionline) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// Username for the Visionline service
+// Visionline service username used by the IoT proxy
 func (o SettingIotproxyVisionlineOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingIotproxyVisionline) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -16565,6 +16669,17 @@ func (o SettingIotproxyVisionlinePtrOutput) AccessId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// PEM-encoded CA certificates used to verify the Visionline collector's TLS certificate. Required when the collector uses a self-signed certificate
+func (o SettingIotproxyVisionlinePtrOutput) Cacerts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SettingIotproxyVisionline) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Cacerts
+	}).(pulumi.StringArrayOutput)
+}
+
+// Whether the Visionline integration is enabled
 func (o SettingIotproxyVisionlinePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingIotproxyVisionline) *bool {
 		if v == nil {
@@ -16574,7 +16689,7 @@ func (o SettingIotproxyVisionlinePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Hostname or IP of the Visionline collector
+// Collector hostname or IP address for Visionline
 func (o SettingIotproxyVisionlinePtrOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingIotproxyVisionline) *string {
 		if v == nil {
@@ -16584,7 +16699,7 @@ func (o SettingIotproxyVisionlinePtrOutput) Host() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Password for the Visionline service
+// Visionline service password used by the IoT proxy
 func (o SettingIotproxyVisionlinePtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingIotproxyVisionline) *string {
 		if v == nil {
@@ -16604,7 +16719,7 @@ func (o SettingIotproxyVisionlinePtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Username for the Visionline service
+// Visionline service username used by the IoT proxy
 func (o SettingIotproxyVisionlinePtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingIotproxyVisionline) *string {
 		if v == nil {
@@ -16615,10 +16730,12 @@ func (o SettingIotproxyVisionlinePtrOutput) Username() pulumi.StringPtrOutput {
 }
 
 type SettingJuniperSrx struct {
-	// auto_upgrade device first time it is onboarded
-	AutoUpgrade         *SettingJuniperSrxAutoUpgrade `pulumi:"autoUpgrade"`
-	Gateways            []SettingJuniperSrxGateway    `pulumi:"gateways"`
-	SendMistNacUserInfo *bool                         `pulumi:"sendMistNacUserInfo"`
+	// SRX auto-upgrade settings applied when SRX devices are onboarded
+	AutoUpgrade *SettingJuniperSrxAutoUpgrade `pulumi:"autoUpgrade"`
+	// SRX gateways integrated with this site
+	Gateways []SettingJuniperSrxGateway `pulumi:"gateways"`
+	// Whether Mist NAC user information is sent to Juniper SRX gateways
+	SendMistNacUserInfo *bool `pulumi:"sendMistNacUserInfo"`
 }
 
 // SettingJuniperSrxInput is an input type that accepts SettingJuniperSrxArgs and SettingJuniperSrxOutput values.
@@ -16633,10 +16750,12 @@ type SettingJuniperSrxInput interface {
 }
 
 type SettingJuniperSrxArgs struct {
-	// auto_upgrade device first time it is onboarded
-	AutoUpgrade         SettingJuniperSrxAutoUpgradePtrInput `pulumi:"autoUpgrade"`
-	Gateways            SettingJuniperSrxGatewayArrayInput   `pulumi:"gateways"`
-	SendMistNacUserInfo pulumi.BoolPtrInput                  `pulumi:"sendMistNacUserInfo"`
+	// SRX auto-upgrade settings applied when SRX devices are onboarded
+	AutoUpgrade SettingJuniperSrxAutoUpgradePtrInput `pulumi:"autoUpgrade"`
+	// SRX gateways integrated with this site
+	Gateways SettingJuniperSrxGatewayArrayInput `pulumi:"gateways"`
+	// Whether Mist NAC user information is sent to Juniper SRX gateways
+	SendMistNacUserInfo pulumi.BoolPtrInput `pulumi:"sendMistNacUserInfo"`
 }
 
 func (SettingJuniperSrxArgs) ElementType() reflect.Type {
@@ -16716,15 +16835,17 @@ func (o SettingJuniperSrxOutput) ToSettingJuniperSrxPtrOutputWithContext(ctx con
 	}).(SettingJuniperSrxPtrOutput)
 }
 
-// auto_upgrade device first time it is onboarded
+// SRX auto-upgrade settings applied when SRX devices are onboarded
 func (o SettingJuniperSrxOutput) AutoUpgrade() SettingJuniperSrxAutoUpgradePtrOutput {
 	return o.ApplyT(func(v SettingJuniperSrx) *SettingJuniperSrxAutoUpgrade { return v.AutoUpgrade }).(SettingJuniperSrxAutoUpgradePtrOutput)
 }
 
+// SRX gateways integrated with this site
 func (o SettingJuniperSrxOutput) Gateways() SettingJuniperSrxGatewayArrayOutput {
 	return o.ApplyT(func(v SettingJuniperSrx) []SettingJuniperSrxGateway { return v.Gateways }).(SettingJuniperSrxGatewayArrayOutput)
 }
 
+// Whether Mist NAC user information is sent to Juniper SRX gateways
 func (o SettingJuniperSrxOutput) SendMistNacUserInfo() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingJuniperSrx) *bool { return v.SendMistNacUserInfo }).(pulumi.BoolPtrOutput)
 }
@@ -16753,7 +16874,7 @@ func (o SettingJuniperSrxPtrOutput) Elem() SettingJuniperSrxOutput {
 	}).(SettingJuniperSrxOutput)
 }
 
-// auto_upgrade device first time it is onboarded
+// SRX auto-upgrade settings applied when SRX devices are onboarded
 func (o SettingJuniperSrxPtrOutput) AutoUpgrade() SettingJuniperSrxAutoUpgradePtrOutput {
 	return o.ApplyT(func(v *SettingJuniperSrx) *SettingJuniperSrxAutoUpgrade {
 		if v == nil {
@@ -16763,6 +16884,7 @@ func (o SettingJuniperSrxPtrOutput) AutoUpgrade() SettingJuniperSrxAutoUpgradePt
 	}).(SettingJuniperSrxAutoUpgradePtrOutput)
 }
 
+// SRX gateways integrated with this site
 func (o SettingJuniperSrxPtrOutput) Gateways() SettingJuniperSrxGatewayArrayOutput {
 	return o.ApplyT(func(v *SettingJuniperSrx) []SettingJuniperSrxGateway {
 		if v == nil {
@@ -16772,6 +16894,7 @@ func (o SettingJuniperSrxPtrOutput) Gateways() SettingJuniperSrxGatewayArrayOutp
 	}).(SettingJuniperSrxGatewayArrayOutput)
 }
 
+// Whether Mist NAC user information is sent to Juniper SRX gateways
 func (o SettingJuniperSrxPtrOutput) SendMistNacUserInfo() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingJuniperSrx) *bool {
 		if v == nil {
@@ -16782,10 +16905,12 @@ func (o SettingJuniperSrxPtrOutput) SendMistNacUserInfo() pulumi.BoolPtrOutput {
 }
 
 type SettingJuniperSrxAutoUpgrade struct {
-	// Property key is the SRX Hardware model (e.g. "SRX4600")
+	// Per-SRX-model firmware versions to deploy instead of the default version
 	CustomVersions map[string]string `pulumi:"customVersions"`
-	Enabled        *bool             `pulumi:"enabled"`
-	Snapshot       *bool             `pulumi:"snapshot"`
+	// Whether SRX auto-upgrade is enabled for newly onboarded devices
+	Enabled *bool `pulumi:"enabled"`
+	// Whether to take a snapshot during the SRX upgrade process
+	Snapshot *bool `pulumi:"snapshot"`
 	// Firmware version to deploy (e.g. 23.4R2-S5.5). Optional, used when customVersions not specified
 	Version *string `pulumi:"version"`
 }
@@ -16802,10 +16927,12 @@ type SettingJuniperSrxAutoUpgradeInput interface {
 }
 
 type SettingJuniperSrxAutoUpgradeArgs struct {
-	// Property key is the SRX Hardware model (e.g. "SRX4600")
+	// Per-SRX-model firmware versions to deploy instead of the default version
 	CustomVersions pulumi.StringMapInput `pulumi:"customVersions"`
-	Enabled        pulumi.BoolPtrInput   `pulumi:"enabled"`
-	Snapshot       pulumi.BoolPtrInput   `pulumi:"snapshot"`
+	// Whether SRX auto-upgrade is enabled for newly onboarded devices
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Whether to take a snapshot during the SRX upgrade process
+	Snapshot pulumi.BoolPtrInput `pulumi:"snapshot"`
 	// Firmware version to deploy (e.g. 23.4R2-S5.5). Optional, used when customVersions not specified
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
@@ -16887,15 +17014,17 @@ func (o SettingJuniperSrxAutoUpgradeOutput) ToSettingJuniperSrxAutoUpgradePtrOut
 	}).(SettingJuniperSrxAutoUpgradePtrOutput)
 }
 
-// Property key is the SRX Hardware model (e.g. "SRX4600")
+// Per-SRX-model firmware versions to deploy instead of the default version
 func (o SettingJuniperSrxAutoUpgradeOutput) CustomVersions() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SettingJuniperSrxAutoUpgrade) map[string]string { return v.CustomVersions }).(pulumi.StringMapOutput)
 }
 
+// Whether SRX auto-upgrade is enabled for newly onboarded devices
 func (o SettingJuniperSrxAutoUpgradeOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingJuniperSrxAutoUpgrade) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Whether to take a snapshot during the SRX upgrade process
 func (o SettingJuniperSrxAutoUpgradeOutput) Snapshot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingJuniperSrxAutoUpgrade) *bool { return v.Snapshot }).(pulumi.BoolPtrOutput)
 }
@@ -16929,7 +17058,7 @@ func (o SettingJuniperSrxAutoUpgradePtrOutput) Elem() SettingJuniperSrxAutoUpgra
 	}).(SettingJuniperSrxAutoUpgradeOutput)
 }
 
-// Property key is the SRX Hardware model (e.g. "SRX4600")
+// Per-SRX-model firmware versions to deploy instead of the default version
 func (o SettingJuniperSrxAutoUpgradePtrOutput) CustomVersions() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *SettingJuniperSrxAutoUpgrade) map[string]string {
 		if v == nil {
@@ -16939,6 +17068,7 @@ func (o SettingJuniperSrxAutoUpgradePtrOutput) CustomVersions() pulumi.StringMap
 	}).(pulumi.StringMapOutput)
 }
 
+// Whether SRX auto-upgrade is enabled for newly onboarded devices
 func (o SettingJuniperSrxAutoUpgradePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingJuniperSrxAutoUpgrade) *bool {
 		if v == nil {
@@ -16948,6 +17078,7 @@ func (o SettingJuniperSrxAutoUpgradePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Whether to take a snapshot during the SRX upgrade process
 func (o SettingJuniperSrxAutoUpgradePtrOutput) Snapshot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingJuniperSrxAutoUpgrade) *bool {
 		if v == nil {
@@ -16968,9 +17099,12 @@ func (o SettingJuniperSrxAutoUpgradePtrOutput) Version() pulumi.StringPtrOutput 
 }
 
 type SettingJuniperSrxGateway struct {
-	ApiKey      *string `pulumi:"apiKey"`
+	// Authentication key used to access the Juniper SRX gateway API
+	ApiKey *string `pulumi:"apiKey"`
+	// Authentication password used to access the Juniper SRX gateway API
 	ApiPassword *string `pulumi:"apiPassword"`
-	ApiUrl      *string `pulumi:"apiUrl"`
+	// Base URL for the Juniper SRX gateway API
+	ApiUrl *string `pulumi:"apiUrl"`
 }
 
 // SettingJuniperSrxGatewayInput is an input type that accepts SettingJuniperSrxGatewayArgs and SettingJuniperSrxGatewayOutput values.
@@ -16985,9 +17119,12 @@ type SettingJuniperSrxGatewayInput interface {
 }
 
 type SettingJuniperSrxGatewayArgs struct {
-	ApiKey      pulumi.StringPtrInput `pulumi:"apiKey"`
+	// Authentication key used to access the Juniper SRX gateway API
+	ApiKey pulumi.StringPtrInput `pulumi:"apiKey"`
+	// Authentication password used to access the Juniper SRX gateway API
 	ApiPassword pulumi.StringPtrInput `pulumi:"apiPassword"`
-	ApiUrl      pulumi.StringPtrInput `pulumi:"apiUrl"`
+	// Base URL for the Juniper SRX gateway API
+	ApiUrl pulumi.StringPtrInput `pulumi:"apiUrl"`
 }
 
 func (SettingJuniperSrxGatewayArgs) ElementType() reflect.Type {
@@ -17041,14 +17178,17 @@ func (o SettingJuniperSrxGatewayOutput) ToSettingJuniperSrxGatewayOutputWithCont
 	return o
 }
 
+// Authentication key used to access the Juniper SRX gateway API
 func (o SettingJuniperSrxGatewayOutput) ApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingJuniperSrxGateway) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
 }
 
+// Authentication password used to access the Juniper SRX gateway API
 func (o SettingJuniperSrxGatewayOutput) ApiPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingJuniperSrxGateway) *string { return v.ApiPassword }).(pulumi.StringPtrOutput)
 }
 
+// Base URL for the Juniper SRX gateway API
 func (o SettingJuniperSrxGatewayOutput) ApiUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingJuniperSrxGateway) *string { return v.ApiUrl }).(pulumi.StringPtrOutput)
 }
@@ -17074,8 +17214,10 @@ func (o SettingJuniperSrxGatewayArrayOutput) Index(i pulumi.IntInput) SettingJun
 }
 
 type SettingLed struct {
-	Brightness *int  `pulumi:"brightness"`
-	Enabled    *bool `pulumi:"enabled"`
+	// Indicator LED brightness level from 0 to 255
+	Brightness *int `pulumi:"brightness"`
+	// Whether the AP indicator LED is enabled
+	Enabled *bool `pulumi:"enabled"`
 }
 
 // SettingLedInput is an input type that accepts SettingLedArgs and SettingLedOutput values.
@@ -17090,8 +17232,10 @@ type SettingLedInput interface {
 }
 
 type SettingLedArgs struct {
-	Brightness pulumi.IntPtrInput  `pulumi:"brightness"`
-	Enabled    pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Indicator LED brightness level from 0 to 255
+	Brightness pulumi.IntPtrInput `pulumi:"brightness"`
+	// Whether the AP indicator LED is enabled
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
 func (SettingLedArgs) ElementType() reflect.Type {
@@ -17171,10 +17315,12 @@ func (o SettingLedOutput) ToSettingLedPtrOutputWithContext(ctx context.Context) 
 	}).(SettingLedPtrOutput)
 }
 
+// Indicator LED brightness level from 0 to 255
 func (o SettingLedOutput) Brightness() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingLed) *int { return v.Brightness }).(pulumi.IntPtrOutput)
 }
 
+// Whether the AP indicator LED is enabled
 func (o SettingLedOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingLed) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -17203,6 +17349,7 @@ func (o SettingLedPtrOutput) Elem() SettingLedOutput {
 	}).(SettingLedOutput)
 }
 
+// Indicator LED brightness level from 0 to 255
 func (o SettingLedPtrOutput) Brightness() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SettingLed) *int {
 		if v == nil {
@@ -17212,6 +17359,7 @@ func (o SettingLedPtrOutput) Brightness() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Whether the AP indicator LED is enabled
 func (o SettingLedPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingLed) *bool {
 		if v == nil {
@@ -17222,6 +17370,7 @@ func (o SettingLedPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type SettingMarvis struct {
+	// Automatic remediation operations controlled by Marvis
 	AutoOperations *SettingMarvisAutoOperations `pulumi:"autoOperations"`
 }
 
@@ -17237,6 +17386,7 @@ type SettingMarvisInput interface {
 }
 
 type SettingMarvisArgs struct {
+	// Automatic remediation operations controlled by Marvis
 	AutoOperations SettingMarvisAutoOperationsPtrInput `pulumi:"autoOperations"`
 }
 
@@ -17317,6 +17467,7 @@ func (o SettingMarvisOutput) ToSettingMarvisPtrOutputWithContext(ctx context.Con
 	}).(SettingMarvisPtrOutput)
 }
 
+// Automatic remediation operations controlled by Marvis
 func (o SettingMarvisOutput) AutoOperations() SettingMarvisAutoOperationsPtrOutput {
 	return o.ApplyT(func(v SettingMarvis) *SettingMarvisAutoOperations { return v.AutoOperations }).(SettingMarvisAutoOperationsPtrOutput)
 }
@@ -17345,6 +17496,7 @@ func (o SettingMarvisPtrOutput) Elem() SettingMarvisOutput {
 	}).(SettingMarvisOutput)
 }
 
+// Automatic remediation operations controlled by Marvis
 func (o SettingMarvisPtrOutput) AutoOperations() SettingMarvisAutoOperationsPtrOutput {
 	return o.ApplyT(func(v *SettingMarvis) *SettingMarvisAutoOperations {
 		if v == nil {
@@ -17355,15 +17507,24 @@ func (o SettingMarvisPtrOutput) AutoOperations() SettingMarvisAutoOperationsPtrO
 }
 
 type SettingMarvisAutoOperations struct {
-	ApInsufficientCapacity                 *bool `pulumi:"apInsufficientCapacity"`
-	ApLoop                                 *bool `pulumi:"apLoop"`
-	ApNonCompliant                         *bool `pulumi:"apNonCompliant"`
-	BouncePortForAbnormalPoeClient         *bool `pulumi:"bouncePortForAbnormalPoeClient"`
-	DisablePortWhenDdosProtocolViolation   *bool `pulumi:"disablePortWhenDdosProtocolViolation"`
+	// Whether Marvis may remediate AP insufficient-capacity issues automatically
+	ApInsufficientCapacity *bool `pulumi:"apInsufficientCapacity"`
+	// Whether Marvis may remediate AP loop issues automatically
+	ApLoop *bool `pulumi:"apLoop"`
+	// Whether Marvis may remediate AP non-compliance automatically
+	ApNonCompliant *bool `pulumi:"apNonCompliant"`
+	// Whether Marvis may bounce switch ports for abnormal PoE clients
+	BouncePortForAbnormalPoeClient *bool `pulumi:"bouncePortForAbnormalPoeClient"`
+	// Whether Marvis may disable a port when DDOS protocol violations are detected
+	DisablePortWhenDdosProtocolViolation *bool `pulumi:"disablePortWhenDdosProtocolViolation"`
+	// Whether Marvis may disable a port when a rogue DHCP server is detected
 	DisablePortWhenRogueDhcpServerDetected *bool `pulumi:"disablePortWhenRogueDhcpServerDetected"`
-	GatewayNonCompliant                    *bool `pulumi:"gatewayNonCompliant"`
-	SwitchMisconfiguredPort                *bool `pulumi:"switchMisconfiguredPort"`
-	SwitchPortStuck                        *bool `pulumi:"switchPortStuck"`
+	// Whether Marvis may remediate non-compliant gateways automatically
+	GatewayNonCompliant *bool `pulumi:"gatewayNonCompliant"`
+	// Whether Marvis may remediate misconfigured switch ports automatically
+	SwitchMisconfiguredPort *bool `pulumi:"switchMisconfiguredPort"`
+	// Whether Marvis may remediate stuck switch ports automatically
+	SwitchPortStuck *bool `pulumi:"switchPortStuck"`
 }
 
 // SettingMarvisAutoOperationsInput is an input type that accepts SettingMarvisAutoOperationsArgs and SettingMarvisAutoOperationsOutput values.
@@ -17378,15 +17539,24 @@ type SettingMarvisAutoOperationsInput interface {
 }
 
 type SettingMarvisAutoOperationsArgs struct {
-	ApInsufficientCapacity                 pulumi.BoolPtrInput `pulumi:"apInsufficientCapacity"`
-	ApLoop                                 pulumi.BoolPtrInput `pulumi:"apLoop"`
-	ApNonCompliant                         pulumi.BoolPtrInput `pulumi:"apNonCompliant"`
-	BouncePortForAbnormalPoeClient         pulumi.BoolPtrInput `pulumi:"bouncePortForAbnormalPoeClient"`
-	DisablePortWhenDdosProtocolViolation   pulumi.BoolPtrInput `pulumi:"disablePortWhenDdosProtocolViolation"`
+	// Whether Marvis may remediate AP insufficient-capacity issues automatically
+	ApInsufficientCapacity pulumi.BoolPtrInput `pulumi:"apInsufficientCapacity"`
+	// Whether Marvis may remediate AP loop issues automatically
+	ApLoop pulumi.BoolPtrInput `pulumi:"apLoop"`
+	// Whether Marvis may remediate AP non-compliance automatically
+	ApNonCompliant pulumi.BoolPtrInput `pulumi:"apNonCompliant"`
+	// Whether Marvis may bounce switch ports for abnormal PoE clients
+	BouncePortForAbnormalPoeClient pulumi.BoolPtrInput `pulumi:"bouncePortForAbnormalPoeClient"`
+	// Whether Marvis may disable a port when DDOS protocol violations are detected
+	DisablePortWhenDdosProtocolViolation pulumi.BoolPtrInput `pulumi:"disablePortWhenDdosProtocolViolation"`
+	// Whether Marvis may disable a port when a rogue DHCP server is detected
 	DisablePortWhenRogueDhcpServerDetected pulumi.BoolPtrInput `pulumi:"disablePortWhenRogueDhcpServerDetected"`
-	GatewayNonCompliant                    pulumi.BoolPtrInput `pulumi:"gatewayNonCompliant"`
-	SwitchMisconfiguredPort                pulumi.BoolPtrInput `pulumi:"switchMisconfiguredPort"`
-	SwitchPortStuck                        pulumi.BoolPtrInput `pulumi:"switchPortStuck"`
+	// Whether Marvis may remediate non-compliant gateways automatically
+	GatewayNonCompliant pulumi.BoolPtrInput `pulumi:"gatewayNonCompliant"`
+	// Whether Marvis may remediate misconfigured switch ports automatically
+	SwitchMisconfiguredPort pulumi.BoolPtrInput `pulumi:"switchMisconfiguredPort"`
+	// Whether Marvis may remediate stuck switch ports automatically
+	SwitchPortStuck pulumi.BoolPtrInput `pulumi:"switchPortStuck"`
 }
 
 func (SettingMarvisAutoOperationsArgs) ElementType() reflect.Type {
@@ -17466,38 +17636,47 @@ func (o SettingMarvisAutoOperationsOutput) ToSettingMarvisAutoOperationsPtrOutpu
 	}).(SettingMarvisAutoOperationsPtrOutput)
 }
 
+// Whether Marvis may remediate AP insufficient-capacity issues automatically
 func (o SettingMarvisAutoOperationsOutput) ApInsufficientCapacity() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingMarvisAutoOperations) *bool { return v.ApInsufficientCapacity }).(pulumi.BoolPtrOutput)
 }
 
+// Whether Marvis may remediate AP loop issues automatically
 func (o SettingMarvisAutoOperationsOutput) ApLoop() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingMarvisAutoOperations) *bool { return v.ApLoop }).(pulumi.BoolPtrOutput)
 }
 
+// Whether Marvis may remediate AP non-compliance automatically
 func (o SettingMarvisAutoOperationsOutput) ApNonCompliant() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingMarvisAutoOperations) *bool { return v.ApNonCompliant }).(pulumi.BoolPtrOutput)
 }
 
+// Whether Marvis may bounce switch ports for abnormal PoE clients
 func (o SettingMarvisAutoOperationsOutput) BouncePortForAbnormalPoeClient() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingMarvisAutoOperations) *bool { return v.BouncePortForAbnormalPoeClient }).(pulumi.BoolPtrOutput)
 }
 
+// Whether Marvis may disable a port when DDOS protocol violations are detected
 func (o SettingMarvisAutoOperationsOutput) DisablePortWhenDdosProtocolViolation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingMarvisAutoOperations) *bool { return v.DisablePortWhenDdosProtocolViolation }).(pulumi.BoolPtrOutput)
 }
 
+// Whether Marvis may disable a port when a rogue DHCP server is detected
 func (o SettingMarvisAutoOperationsOutput) DisablePortWhenRogueDhcpServerDetected() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingMarvisAutoOperations) *bool { return v.DisablePortWhenRogueDhcpServerDetected }).(pulumi.BoolPtrOutput)
 }
 
+// Whether Marvis may remediate non-compliant gateways automatically
 func (o SettingMarvisAutoOperationsOutput) GatewayNonCompliant() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingMarvisAutoOperations) *bool { return v.GatewayNonCompliant }).(pulumi.BoolPtrOutput)
 }
 
+// Whether Marvis may remediate misconfigured switch ports automatically
 func (o SettingMarvisAutoOperationsOutput) SwitchMisconfiguredPort() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingMarvisAutoOperations) *bool { return v.SwitchMisconfiguredPort }).(pulumi.BoolPtrOutput)
 }
 
+// Whether Marvis may remediate stuck switch ports automatically
 func (o SettingMarvisAutoOperationsOutput) SwitchPortStuck() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingMarvisAutoOperations) *bool { return v.SwitchPortStuck }).(pulumi.BoolPtrOutput)
 }
@@ -17526,6 +17705,7 @@ func (o SettingMarvisAutoOperationsPtrOutput) Elem() SettingMarvisAutoOperations
 	}).(SettingMarvisAutoOperationsOutput)
 }
 
+// Whether Marvis may remediate AP insufficient-capacity issues automatically
 func (o SettingMarvisAutoOperationsPtrOutput) ApInsufficientCapacity() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingMarvisAutoOperations) *bool {
 		if v == nil {
@@ -17535,6 +17715,7 @@ func (o SettingMarvisAutoOperationsPtrOutput) ApInsufficientCapacity() pulumi.Bo
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Whether Marvis may remediate AP loop issues automatically
 func (o SettingMarvisAutoOperationsPtrOutput) ApLoop() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingMarvisAutoOperations) *bool {
 		if v == nil {
@@ -17544,6 +17725,7 @@ func (o SettingMarvisAutoOperationsPtrOutput) ApLoop() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Whether Marvis may remediate AP non-compliance automatically
 func (o SettingMarvisAutoOperationsPtrOutput) ApNonCompliant() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingMarvisAutoOperations) *bool {
 		if v == nil {
@@ -17553,6 +17735,7 @@ func (o SettingMarvisAutoOperationsPtrOutput) ApNonCompliant() pulumi.BoolPtrOut
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Whether Marvis may bounce switch ports for abnormal PoE clients
 func (o SettingMarvisAutoOperationsPtrOutput) BouncePortForAbnormalPoeClient() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingMarvisAutoOperations) *bool {
 		if v == nil {
@@ -17562,6 +17745,7 @@ func (o SettingMarvisAutoOperationsPtrOutput) BouncePortForAbnormalPoeClient() p
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Whether Marvis may disable a port when DDOS protocol violations are detected
 func (o SettingMarvisAutoOperationsPtrOutput) DisablePortWhenDdosProtocolViolation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingMarvisAutoOperations) *bool {
 		if v == nil {
@@ -17571,6 +17755,7 @@ func (o SettingMarvisAutoOperationsPtrOutput) DisablePortWhenDdosProtocolViolati
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Whether Marvis may disable a port when a rogue DHCP server is detected
 func (o SettingMarvisAutoOperationsPtrOutput) DisablePortWhenRogueDhcpServerDetected() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingMarvisAutoOperations) *bool {
 		if v == nil {
@@ -17580,6 +17765,7 @@ func (o SettingMarvisAutoOperationsPtrOutput) DisablePortWhenRogueDhcpServerDete
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Whether Marvis may remediate non-compliant gateways automatically
 func (o SettingMarvisAutoOperationsPtrOutput) GatewayNonCompliant() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingMarvisAutoOperations) *bool {
 		if v == nil {
@@ -17589,6 +17775,7 @@ func (o SettingMarvisAutoOperationsPtrOutput) GatewayNonCompliant() pulumi.BoolP
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Whether Marvis may remediate misconfigured switch ports automatically
 func (o SettingMarvisAutoOperationsPtrOutput) SwitchMisconfiguredPort() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingMarvisAutoOperations) *bool {
 		if v == nil {
@@ -17598,6 +17785,7 @@ func (o SettingMarvisAutoOperationsPtrOutput) SwitchMisconfiguredPort() pulumi.B
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Whether Marvis may remediate stuck switch ports automatically
 func (o SettingMarvisAutoOperationsPtrOutput) SwitchPortStuck() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingMarvisAutoOperations) *bool {
 		if v == nil {
@@ -17607,12 +17795,1731 @@ func (o SettingMarvisAutoOperationsPtrOutput) SwitchPortStuck() pulumi.BoolPtrOu
 	}).(pulumi.BoolPtrOutput)
 }
 
+type SettingMxedgeMgmt struct {
+	// Whether the Mist Edge automatically reverts configuration changes if connectivity is lost
+	ConfigAutoRevert *bool `pulumi:"configAutoRevert"`
+	// Whether FIPS mode is enabled on the Mist Edge
+	FipsEnabled *bool `pulumi:"fipsEnabled"`
+	// Password for the Mist service account on the Mist Edge
+	MistPassword *string `pulumi:"mistPassword"`
+	// IPv4 address assignment mode for out-of-band management
+	OobIpType *string `pulumi:"oobIpType"`
+	// IPv6 address assignment mode for out-of-band management
+	OobIpType6 *string `pulumi:"oobIpType6"`
+	// Root account password for the Mist Edge
+	RootPassword *string `pulumi:"rootPassword"`
+}
+
+// SettingMxedgeMgmtInput is an input type that accepts SettingMxedgeMgmtArgs and SettingMxedgeMgmtOutput values.
+// You can construct a concrete instance of `SettingMxedgeMgmtInput` via:
+//
+//	SettingMxedgeMgmtArgs{...}
+type SettingMxedgeMgmtInput interface {
+	pulumi.Input
+
+	ToSettingMxedgeMgmtOutput() SettingMxedgeMgmtOutput
+	ToSettingMxedgeMgmtOutputWithContext(context.Context) SettingMxedgeMgmtOutput
+}
+
+type SettingMxedgeMgmtArgs struct {
+	// Whether the Mist Edge automatically reverts configuration changes if connectivity is lost
+	ConfigAutoRevert pulumi.BoolPtrInput `pulumi:"configAutoRevert"`
+	// Whether FIPS mode is enabled on the Mist Edge
+	FipsEnabled pulumi.BoolPtrInput `pulumi:"fipsEnabled"`
+	// Password for the Mist service account on the Mist Edge
+	MistPassword pulumi.StringPtrInput `pulumi:"mistPassword"`
+	// IPv4 address assignment mode for out-of-band management
+	OobIpType pulumi.StringPtrInput `pulumi:"oobIpType"`
+	// IPv6 address assignment mode for out-of-band management
+	OobIpType6 pulumi.StringPtrInput `pulumi:"oobIpType6"`
+	// Root account password for the Mist Edge
+	RootPassword pulumi.StringPtrInput `pulumi:"rootPassword"`
+}
+
+func (SettingMxedgeMgmtArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingMxedgeMgmt)(nil)).Elem()
+}
+
+func (i SettingMxedgeMgmtArgs) ToSettingMxedgeMgmtOutput() SettingMxedgeMgmtOutput {
+	return i.ToSettingMxedgeMgmtOutputWithContext(context.Background())
+}
+
+func (i SettingMxedgeMgmtArgs) ToSettingMxedgeMgmtOutputWithContext(ctx context.Context) SettingMxedgeMgmtOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxedgeMgmtOutput)
+}
+
+func (i SettingMxedgeMgmtArgs) ToSettingMxedgeMgmtPtrOutput() SettingMxedgeMgmtPtrOutput {
+	return i.ToSettingMxedgeMgmtPtrOutputWithContext(context.Background())
+}
+
+func (i SettingMxedgeMgmtArgs) ToSettingMxedgeMgmtPtrOutputWithContext(ctx context.Context) SettingMxedgeMgmtPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxedgeMgmtOutput).ToSettingMxedgeMgmtPtrOutputWithContext(ctx)
+}
+
+// SettingMxedgeMgmtPtrInput is an input type that accepts SettingMxedgeMgmtArgs, SettingMxedgeMgmtPtr and SettingMxedgeMgmtPtrOutput values.
+// You can construct a concrete instance of `SettingMxedgeMgmtPtrInput` via:
+//
+//	        SettingMxedgeMgmtArgs{...}
+//
+//	or:
+//
+//	        nil
+type SettingMxedgeMgmtPtrInput interface {
+	pulumi.Input
+
+	ToSettingMxedgeMgmtPtrOutput() SettingMxedgeMgmtPtrOutput
+	ToSettingMxedgeMgmtPtrOutputWithContext(context.Context) SettingMxedgeMgmtPtrOutput
+}
+
+type settingMxedgeMgmtPtrType SettingMxedgeMgmtArgs
+
+func SettingMxedgeMgmtPtr(v *SettingMxedgeMgmtArgs) SettingMxedgeMgmtPtrInput {
+	return (*settingMxedgeMgmtPtrType)(v)
+}
+
+func (*settingMxedgeMgmtPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingMxedgeMgmt)(nil)).Elem()
+}
+
+func (i *settingMxedgeMgmtPtrType) ToSettingMxedgeMgmtPtrOutput() SettingMxedgeMgmtPtrOutput {
+	return i.ToSettingMxedgeMgmtPtrOutputWithContext(context.Background())
+}
+
+func (i *settingMxedgeMgmtPtrType) ToSettingMxedgeMgmtPtrOutputWithContext(ctx context.Context) SettingMxedgeMgmtPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxedgeMgmtPtrOutput)
+}
+
+type SettingMxedgeMgmtOutput struct{ *pulumi.OutputState }
+
+func (SettingMxedgeMgmtOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingMxedgeMgmt)(nil)).Elem()
+}
+
+func (o SettingMxedgeMgmtOutput) ToSettingMxedgeMgmtOutput() SettingMxedgeMgmtOutput {
+	return o
+}
+
+func (o SettingMxedgeMgmtOutput) ToSettingMxedgeMgmtOutputWithContext(ctx context.Context) SettingMxedgeMgmtOutput {
+	return o
+}
+
+func (o SettingMxedgeMgmtOutput) ToSettingMxedgeMgmtPtrOutput() SettingMxedgeMgmtPtrOutput {
+	return o.ToSettingMxedgeMgmtPtrOutputWithContext(context.Background())
+}
+
+func (o SettingMxedgeMgmtOutput) ToSettingMxedgeMgmtPtrOutputWithContext(ctx context.Context) SettingMxedgeMgmtPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingMxedgeMgmt) *SettingMxedgeMgmt {
+		return &v
+	}).(SettingMxedgeMgmtPtrOutput)
+}
+
+// Whether the Mist Edge automatically reverts configuration changes if connectivity is lost
+func (o SettingMxedgeMgmtOutput) ConfigAutoRevert() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingMxedgeMgmt) *bool { return v.ConfigAutoRevert }).(pulumi.BoolPtrOutput)
+}
+
+// Whether FIPS mode is enabled on the Mist Edge
+func (o SettingMxedgeMgmtOutput) FipsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingMxedgeMgmt) *bool { return v.FipsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Password for the Mist service account on the Mist Edge
+func (o SettingMxedgeMgmtOutput) MistPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMxedgeMgmt) *string { return v.MistPassword }).(pulumi.StringPtrOutput)
+}
+
+// IPv4 address assignment mode for out-of-band management
+func (o SettingMxedgeMgmtOutput) OobIpType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMxedgeMgmt) *string { return v.OobIpType }).(pulumi.StringPtrOutput)
+}
+
+// IPv6 address assignment mode for out-of-band management
+func (o SettingMxedgeMgmtOutput) OobIpType6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMxedgeMgmt) *string { return v.OobIpType6 }).(pulumi.StringPtrOutput)
+}
+
+// Root account password for the Mist Edge
+func (o SettingMxedgeMgmtOutput) RootPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMxedgeMgmt) *string { return v.RootPassword }).(pulumi.StringPtrOutput)
+}
+
+type SettingMxedgeMgmtPtrOutput struct{ *pulumi.OutputState }
+
+func (SettingMxedgeMgmtPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingMxedgeMgmt)(nil)).Elem()
+}
+
+func (o SettingMxedgeMgmtPtrOutput) ToSettingMxedgeMgmtPtrOutput() SettingMxedgeMgmtPtrOutput {
+	return o
+}
+
+func (o SettingMxedgeMgmtPtrOutput) ToSettingMxedgeMgmtPtrOutputWithContext(ctx context.Context) SettingMxedgeMgmtPtrOutput {
+	return o
+}
+
+func (o SettingMxedgeMgmtPtrOutput) Elem() SettingMxedgeMgmtOutput {
+	return o.ApplyT(func(v *SettingMxedgeMgmt) SettingMxedgeMgmt {
+		if v != nil {
+			return *v
+		}
+		var ret SettingMxedgeMgmt
+		return ret
+	}).(SettingMxedgeMgmtOutput)
+}
+
+// Whether the Mist Edge automatically reverts configuration changes if connectivity is lost
+func (o SettingMxedgeMgmtPtrOutput) ConfigAutoRevert() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingMxedgeMgmt) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigAutoRevert
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether FIPS mode is enabled on the Mist Edge
+func (o SettingMxedgeMgmtPtrOutput) FipsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingMxedgeMgmt) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FipsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Password for the Mist service account on the Mist Edge
+func (o SettingMxedgeMgmtPtrOutput) MistPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingMxedgeMgmt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MistPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// IPv4 address assignment mode for out-of-band management
+func (o SettingMxedgeMgmtPtrOutput) OobIpType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingMxedgeMgmt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OobIpType
+	}).(pulumi.StringPtrOutput)
+}
+
+// IPv6 address assignment mode for out-of-band management
+func (o SettingMxedgeMgmtPtrOutput) OobIpType6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingMxedgeMgmt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OobIpType6
+	}).(pulumi.StringPtrOutput)
+}
+
+// Root account password for the Mist Edge
+func (o SettingMxedgeMgmtPtrOutput) RootPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingMxedgeMgmt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RootPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+type SettingMxtunnels struct {
+	// Additional named Mist Tunnel definitions configured for the site
+	AdditionalMxtunnels map[string]SettingMxtunnelsAdditionalMxtunnels `pulumi:"additionalMxtunnels"`
+	// AP source subnets allowed to establish Mist Tunnels
+	ApSubnets []string `pulumi:"apSubnets"`
+	// Preemption behavior for restoring preferred tunnel peers after failover
+	AutoPreemption *SettingMxtunnelsAutoPreemption `pulumi:"autoPreemption"`
+	// Tunnel peer clusters used by APs for this site Mist Tunnel
+	Clusters []SettingMxtunnelsCluster `pulumi:"clusters"`
+	// Timestamp when the site Mist Tunnel configuration was created
+	CreatedTime *float64 `pulumi:"createdTime"`
+	// Whether site Mist Tunnel tunneling is enabled
+	Enabled *bool `pulumi:"enabled"`
+	// Whether this Mist Tunnel configuration is scoped to a site
+	ForSite *bool `pulumi:"forSite"`
+	// In seconds, used as heartbeat to detect if a tunnel is alive. AP will try another peer after missing N hellos specified by hello_retries
+	HelloInterval *int `pulumi:"helloInterval"`
+	// Number of missed hello heartbeats before an AP tries another tunnel peer
+	HelloRetries *int `pulumi:"helloRetries"`
+	// Tunnel peer hostnames or IP addresses reachable from APs
+	Hosts []string `pulumi:"hosts"`
+	// Unique value identifying the site Mist Tunnel configuration
+	Id *string `pulumi:"id"`
+	// Timestamp when the site Mist Tunnel configuration was last modified
+	ModifiedTime *float64 `pulumi:"modifiedTime"`
+	// 0 to enable MTU, 552-1500 to start MTU with a lower MTU
+	Mtu *int `pulumi:"mtu"`
+	// Identifier of the org that owns the site Mist Tunnel configuration
+	OrgId *string `pulumi:"orgId"`
+	// Encapsulation protocol used for the site Mist Tunnel
+	Protocol *string `pulumi:"protocol"`
+	// TLS-secured RADIUS proxy settings for the site Mist Tunnel
+	Radsec *SettingMxtunnelsRadsec `pulumi:"radsec"`
+	// Identifier of the site that owns this Mist Tunnel configuration
+	SiteId *string `pulumi:"siteId"`
+	// List of VLAN IDs carried by this site Mist Tunnel
+	VlanIds []int `pulumi:"vlanIds"`
+}
+
+// SettingMxtunnelsInput is an input type that accepts SettingMxtunnelsArgs and SettingMxtunnelsOutput values.
+// You can construct a concrete instance of `SettingMxtunnelsInput` via:
+//
+//	SettingMxtunnelsArgs{...}
+type SettingMxtunnelsInput interface {
+	pulumi.Input
+
+	ToSettingMxtunnelsOutput() SettingMxtunnelsOutput
+	ToSettingMxtunnelsOutputWithContext(context.Context) SettingMxtunnelsOutput
+}
+
+type SettingMxtunnelsArgs struct {
+	// Additional named Mist Tunnel definitions configured for the site
+	AdditionalMxtunnels SettingMxtunnelsAdditionalMxtunnelsMapInput `pulumi:"additionalMxtunnels"`
+	// AP source subnets allowed to establish Mist Tunnels
+	ApSubnets pulumi.StringArrayInput `pulumi:"apSubnets"`
+	// Preemption behavior for restoring preferred tunnel peers after failover
+	AutoPreemption SettingMxtunnelsAutoPreemptionPtrInput `pulumi:"autoPreemption"`
+	// Tunnel peer clusters used by APs for this site Mist Tunnel
+	Clusters SettingMxtunnelsClusterArrayInput `pulumi:"clusters"`
+	// Timestamp when the site Mist Tunnel configuration was created
+	CreatedTime pulumi.Float64PtrInput `pulumi:"createdTime"`
+	// Whether site Mist Tunnel tunneling is enabled
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Whether this Mist Tunnel configuration is scoped to a site
+	ForSite pulumi.BoolPtrInput `pulumi:"forSite"`
+	// In seconds, used as heartbeat to detect if a tunnel is alive. AP will try another peer after missing N hellos specified by hello_retries
+	HelloInterval pulumi.IntPtrInput `pulumi:"helloInterval"`
+	// Number of missed hello heartbeats before an AP tries another tunnel peer
+	HelloRetries pulumi.IntPtrInput `pulumi:"helloRetries"`
+	// Tunnel peer hostnames or IP addresses reachable from APs
+	Hosts pulumi.StringArrayInput `pulumi:"hosts"`
+	// Unique value identifying the site Mist Tunnel configuration
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Timestamp when the site Mist Tunnel configuration was last modified
+	ModifiedTime pulumi.Float64PtrInput `pulumi:"modifiedTime"`
+	// 0 to enable MTU, 552-1500 to start MTU with a lower MTU
+	Mtu pulumi.IntPtrInput `pulumi:"mtu"`
+	// Identifier of the org that owns the site Mist Tunnel configuration
+	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
+	// Encapsulation protocol used for the site Mist Tunnel
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+	// TLS-secured RADIUS proxy settings for the site Mist Tunnel
+	Radsec SettingMxtunnelsRadsecPtrInput `pulumi:"radsec"`
+	// Identifier of the site that owns this Mist Tunnel configuration
+	SiteId pulumi.StringPtrInput `pulumi:"siteId"`
+	// List of VLAN IDs carried by this site Mist Tunnel
+	VlanIds pulumi.IntArrayInput `pulumi:"vlanIds"`
+}
+
+func (SettingMxtunnelsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingMxtunnels)(nil)).Elem()
+}
+
+func (i SettingMxtunnelsArgs) ToSettingMxtunnelsOutput() SettingMxtunnelsOutput {
+	return i.ToSettingMxtunnelsOutputWithContext(context.Background())
+}
+
+func (i SettingMxtunnelsArgs) ToSettingMxtunnelsOutputWithContext(ctx context.Context) SettingMxtunnelsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelsOutput)
+}
+
+func (i SettingMxtunnelsArgs) ToSettingMxtunnelsPtrOutput() SettingMxtunnelsPtrOutput {
+	return i.ToSettingMxtunnelsPtrOutputWithContext(context.Background())
+}
+
+func (i SettingMxtunnelsArgs) ToSettingMxtunnelsPtrOutputWithContext(ctx context.Context) SettingMxtunnelsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelsOutput).ToSettingMxtunnelsPtrOutputWithContext(ctx)
+}
+
+// SettingMxtunnelsPtrInput is an input type that accepts SettingMxtunnelsArgs, SettingMxtunnelsPtr and SettingMxtunnelsPtrOutput values.
+// You can construct a concrete instance of `SettingMxtunnelsPtrInput` via:
+//
+//	        SettingMxtunnelsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SettingMxtunnelsPtrInput interface {
+	pulumi.Input
+
+	ToSettingMxtunnelsPtrOutput() SettingMxtunnelsPtrOutput
+	ToSettingMxtunnelsPtrOutputWithContext(context.Context) SettingMxtunnelsPtrOutput
+}
+
+type settingMxtunnelsPtrType SettingMxtunnelsArgs
+
+func SettingMxtunnelsPtr(v *SettingMxtunnelsArgs) SettingMxtunnelsPtrInput {
+	return (*settingMxtunnelsPtrType)(v)
+}
+
+func (*settingMxtunnelsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingMxtunnels)(nil)).Elem()
+}
+
+func (i *settingMxtunnelsPtrType) ToSettingMxtunnelsPtrOutput() SettingMxtunnelsPtrOutput {
+	return i.ToSettingMxtunnelsPtrOutputWithContext(context.Background())
+}
+
+func (i *settingMxtunnelsPtrType) ToSettingMxtunnelsPtrOutputWithContext(ctx context.Context) SettingMxtunnelsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelsPtrOutput)
+}
+
+type SettingMxtunnelsOutput struct{ *pulumi.OutputState }
+
+func (SettingMxtunnelsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingMxtunnels)(nil)).Elem()
+}
+
+func (o SettingMxtunnelsOutput) ToSettingMxtunnelsOutput() SettingMxtunnelsOutput {
+	return o
+}
+
+func (o SettingMxtunnelsOutput) ToSettingMxtunnelsOutputWithContext(ctx context.Context) SettingMxtunnelsOutput {
+	return o
+}
+
+func (o SettingMxtunnelsOutput) ToSettingMxtunnelsPtrOutput() SettingMxtunnelsPtrOutput {
+	return o.ToSettingMxtunnelsPtrOutputWithContext(context.Background())
+}
+
+func (o SettingMxtunnelsOutput) ToSettingMxtunnelsPtrOutputWithContext(ctx context.Context) SettingMxtunnelsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingMxtunnels) *SettingMxtunnels {
+		return &v
+	}).(SettingMxtunnelsPtrOutput)
+}
+
+// Additional named Mist Tunnel definitions configured for the site
+func (o SettingMxtunnelsOutput) AdditionalMxtunnels() SettingMxtunnelsAdditionalMxtunnelsMapOutput {
+	return o.ApplyT(func(v SettingMxtunnels) map[string]SettingMxtunnelsAdditionalMxtunnels { return v.AdditionalMxtunnels }).(SettingMxtunnelsAdditionalMxtunnelsMapOutput)
+}
+
+// AP source subnets allowed to establish Mist Tunnels
+func (o SettingMxtunnelsOutput) ApSubnets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SettingMxtunnels) []string { return v.ApSubnets }).(pulumi.StringArrayOutput)
+}
+
+// Preemption behavior for restoring preferred tunnel peers after failover
+func (o SettingMxtunnelsOutput) AutoPreemption() SettingMxtunnelsAutoPreemptionPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnels) *SettingMxtunnelsAutoPreemption { return v.AutoPreemption }).(SettingMxtunnelsAutoPreemptionPtrOutput)
+}
+
+// Tunnel peer clusters used by APs for this site Mist Tunnel
+func (o SettingMxtunnelsOutput) Clusters() SettingMxtunnelsClusterArrayOutput {
+	return o.ApplyT(func(v SettingMxtunnels) []SettingMxtunnelsCluster { return v.Clusters }).(SettingMxtunnelsClusterArrayOutput)
+}
+
+// Timestamp when the site Mist Tunnel configuration was created
+func (o SettingMxtunnelsOutput) CreatedTime() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SettingMxtunnels) *float64 { return v.CreatedTime }).(pulumi.Float64PtrOutput)
+}
+
+// Whether site Mist Tunnel tunneling is enabled
+func (o SettingMxtunnelsOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnels) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Whether this Mist Tunnel configuration is scoped to a site
+func (o SettingMxtunnelsOutput) ForSite() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnels) *bool { return v.ForSite }).(pulumi.BoolPtrOutput)
+}
+
+// In seconds, used as heartbeat to detect if a tunnel is alive. AP will try another peer after missing N hellos specified by hello_retries
+func (o SettingMxtunnelsOutput) HelloInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnels) *int { return v.HelloInterval }).(pulumi.IntPtrOutput)
+}
+
+// Number of missed hello heartbeats before an AP tries another tunnel peer
+func (o SettingMxtunnelsOutput) HelloRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnels) *int { return v.HelloRetries }).(pulumi.IntPtrOutput)
+}
+
+// Tunnel peer hostnames or IP addresses reachable from APs
+func (o SettingMxtunnelsOutput) Hosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SettingMxtunnels) []string { return v.Hosts }).(pulumi.StringArrayOutput)
+}
+
+// Unique value identifying the site Mist Tunnel configuration
+func (o SettingMxtunnelsOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnels) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp when the site Mist Tunnel configuration was last modified
+func (o SettingMxtunnelsOutput) ModifiedTime() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SettingMxtunnels) *float64 { return v.ModifiedTime }).(pulumi.Float64PtrOutput)
+}
+
+// 0 to enable MTU, 552-1500 to start MTU with a lower MTU
+func (o SettingMxtunnelsOutput) Mtu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnels) *int { return v.Mtu }).(pulumi.IntPtrOutput)
+}
+
+// Identifier of the org that owns the site Mist Tunnel configuration
+func (o SettingMxtunnelsOutput) OrgId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnels) *string { return v.OrgId }).(pulumi.StringPtrOutput)
+}
+
+// Encapsulation protocol used for the site Mist Tunnel
+func (o SettingMxtunnelsOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnels) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// TLS-secured RADIUS proxy settings for the site Mist Tunnel
+func (o SettingMxtunnelsOutput) Radsec() SettingMxtunnelsRadsecPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnels) *SettingMxtunnelsRadsec { return v.Radsec }).(SettingMxtunnelsRadsecPtrOutput)
+}
+
+// Identifier of the site that owns this Mist Tunnel configuration
+func (o SettingMxtunnelsOutput) SiteId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnels) *string { return v.SiteId }).(pulumi.StringPtrOutput)
+}
+
+// List of VLAN IDs carried by this site Mist Tunnel
+func (o SettingMxtunnelsOutput) VlanIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v SettingMxtunnels) []int { return v.VlanIds }).(pulumi.IntArrayOutput)
+}
+
+type SettingMxtunnelsPtrOutput struct{ *pulumi.OutputState }
+
+func (SettingMxtunnelsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingMxtunnels)(nil)).Elem()
+}
+
+func (o SettingMxtunnelsPtrOutput) ToSettingMxtunnelsPtrOutput() SettingMxtunnelsPtrOutput {
+	return o
+}
+
+func (o SettingMxtunnelsPtrOutput) ToSettingMxtunnelsPtrOutputWithContext(ctx context.Context) SettingMxtunnelsPtrOutput {
+	return o
+}
+
+func (o SettingMxtunnelsPtrOutput) Elem() SettingMxtunnelsOutput {
+	return o.ApplyT(func(v *SettingMxtunnels) SettingMxtunnels {
+		if v != nil {
+			return *v
+		}
+		var ret SettingMxtunnels
+		return ret
+	}).(SettingMxtunnelsOutput)
+}
+
+// Additional named Mist Tunnel definitions configured for the site
+func (o SettingMxtunnelsPtrOutput) AdditionalMxtunnels() SettingMxtunnelsAdditionalMxtunnelsMapOutput {
+	return o.ApplyT(func(v *SettingMxtunnels) map[string]SettingMxtunnelsAdditionalMxtunnels {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalMxtunnels
+	}).(SettingMxtunnelsAdditionalMxtunnelsMapOutput)
+}
+
+// AP source subnets allowed to establish Mist Tunnels
+func (o SettingMxtunnelsPtrOutput) ApSubnets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SettingMxtunnels) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ApSubnets
+	}).(pulumi.StringArrayOutput)
+}
+
+// Preemption behavior for restoring preferred tunnel peers after failover
+func (o SettingMxtunnelsPtrOutput) AutoPreemption() SettingMxtunnelsAutoPreemptionPtrOutput {
+	return o.ApplyT(func(v *SettingMxtunnels) *SettingMxtunnelsAutoPreemption {
+		if v == nil {
+			return nil
+		}
+		return v.AutoPreemption
+	}).(SettingMxtunnelsAutoPreemptionPtrOutput)
+}
+
+// Tunnel peer clusters used by APs for this site Mist Tunnel
+func (o SettingMxtunnelsPtrOutput) Clusters() SettingMxtunnelsClusterArrayOutput {
+	return o.ApplyT(func(v *SettingMxtunnels) []SettingMxtunnelsCluster {
+		if v == nil {
+			return nil
+		}
+		return v.Clusters
+	}).(SettingMxtunnelsClusterArrayOutput)
+}
+
+// Timestamp when the site Mist Tunnel configuration was created
+func (o SettingMxtunnelsPtrOutput) CreatedTime() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SettingMxtunnels) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedTime
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Whether site Mist Tunnel tunneling is enabled
+func (o SettingMxtunnelsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingMxtunnels) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether this Mist Tunnel configuration is scoped to a site
+func (o SettingMxtunnelsPtrOutput) ForSite() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingMxtunnels) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ForSite
+	}).(pulumi.BoolPtrOutput)
+}
+
+// In seconds, used as heartbeat to detect if a tunnel is alive. AP will try another peer after missing N hellos specified by hello_retries
+func (o SettingMxtunnelsPtrOutput) HelloInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SettingMxtunnels) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HelloInterval
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of missed hello heartbeats before an AP tries another tunnel peer
+func (o SettingMxtunnelsPtrOutput) HelloRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SettingMxtunnels) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HelloRetries
+	}).(pulumi.IntPtrOutput)
+}
+
+// Tunnel peer hostnames or IP addresses reachable from APs
+func (o SettingMxtunnelsPtrOutput) Hosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SettingMxtunnels) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Hosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// Unique value identifying the site Mist Tunnel configuration
+func (o SettingMxtunnelsPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingMxtunnels) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Timestamp when the site Mist Tunnel configuration was last modified
+func (o SettingMxtunnelsPtrOutput) ModifiedTime() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SettingMxtunnels) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ModifiedTime
+	}).(pulumi.Float64PtrOutput)
+}
+
+// 0 to enable MTU, 552-1500 to start MTU with a lower MTU
+func (o SettingMxtunnelsPtrOutput) Mtu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SettingMxtunnels) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Mtu
+	}).(pulumi.IntPtrOutput)
+}
+
+// Identifier of the org that owns the site Mist Tunnel configuration
+func (o SettingMxtunnelsPtrOutput) OrgId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingMxtunnels) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OrgId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Encapsulation protocol used for the site Mist Tunnel
+func (o SettingMxtunnelsPtrOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingMxtunnels) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Protocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// TLS-secured RADIUS proxy settings for the site Mist Tunnel
+func (o SettingMxtunnelsPtrOutput) Radsec() SettingMxtunnelsRadsecPtrOutput {
+	return o.ApplyT(func(v *SettingMxtunnels) *SettingMxtunnelsRadsec {
+		if v == nil {
+			return nil
+		}
+		return v.Radsec
+	}).(SettingMxtunnelsRadsecPtrOutput)
+}
+
+// Identifier of the site that owns this Mist Tunnel configuration
+func (o SettingMxtunnelsPtrOutput) SiteId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingMxtunnels) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SiteId
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of VLAN IDs carried by this site Mist Tunnel
+func (o SettingMxtunnelsPtrOutput) VlanIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *SettingMxtunnels) []int {
+		if v == nil {
+			return nil
+		}
+		return v.VlanIds
+	}).(pulumi.IntArrayOutput)
+}
+
+type SettingMxtunnelsAdditionalMxtunnels struct {
+	// In seconds, used as heartbeat to detect if a tunnel is alive. AP will try another peer after missing N hellos specified by hello_retries
+	HelloInterval *int `pulumi:"helloInterval"`
+	// Number of missed hello heartbeats before an AP tries another tunnel peer
+	HelloRetries *int `pulumi:"helloRetries"`
+	// Encapsulation protocol used for this additional Mist Tunnel
+	Protocol *string `pulumi:"protocol"`
+	// Tunnel peer clusters used by APs for this additional Mist Tunnel
+	TuntermClusters []SettingMxtunnelsAdditionalMxtunnelsTuntermCluster `pulumi:"tuntermClusters"`
+	// List of VLAN IDs carried by this additional Mist Tunnel
+	VlanIds []int `pulumi:"vlanIds"`
+}
+
+// SettingMxtunnelsAdditionalMxtunnelsInput is an input type that accepts SettingMxtunnelsAdditionalMxtunnelsArgs and SettingMxtunnelsAdditionalMxtunnelsOutput values.
+// You can construct a concrete instance of `SettingMxtunnelsAdditionalMxtunnelsInput` via:
+//
+//	SettingMxtunnelsAdditionalMxtunnelsArgs{...}
+type SettingMxtunnelsAdditionalMxtunnelsInput interface {
+	pulumi.Input
+
+	ToSettingMxtunnelsAdditionalMxtunnelsOutput() SettingMxtunnelsAdditionalMxtunnelsOutput
+	ToSettingMxtunnelsAdditionalMxtunnelsOutputWithContext(context.Context) SettingMxtunnelsAdditionalMxtunnelsOutput
+}
+
+type SettingMxtunnelsAdditionalMxtunnelsArgs struct {
+	// In seconds, used as heartbeat to detect if a tunnel is alive. AP will try another peer after missing N hellos specified by hello_retries
+	HelloInterval pulumi.IntPtrInput `pulumi:"helloInterval"`
+	// Number of missed hello heartbeats before an AP tries another tunnel peer
+	HelloRetries pulumi.IntPtrInput `pulumi:"helloRetries"`
+	// Encapsulation protocol used for this additional Mist Tunnel
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+	// Tunnel peer clusters used by APs for this additional Mist Tunnel
+	TuntermClusters SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayInput `pulumi:"tuntermClusters"`
+	// List of VLAN IDs carried by this additional Mist Tunnel
+	VlanIds pulumi.IntArrayInput `pulumi:"vlanIds"`
+}
+
+func (SettingMxtunnelsAdditionalMxtunnelsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingMxtunnelsAdditionalMxtunnels)(nil)).Elem()
+}
+
+func (i SettingMxtunnelsAdditionalMxtunnelsArgs) ToSettingMxtunnelsAdditionalMxtunnelsOutput() SettingMxtunnelsAdditionalMxtunnelsOutput {
+	return i.ToSettingMxtunnelsAdditionalMxtunnelsOutputWithContext(context.Background())
+}
+
+func (i SettingMxtunnelsAdditionalMxtunnelsArgs) ToSettingMxtunnelsAdditionalMxtunnelsOutputWithContext(ctx context.Context) SettingMxtunnelsAdditionalMxtunnelsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelsAdditionalMxtunnelsOutput)
+}
+
+// SettingMxtunnelsAdditionalMxtunnelsMapInput is an input type that accepts SettingMxtunnelsAdditionalMxtunnelsMap and SettingMxtunnelsAdditionalMxtunnelsMapOutput values.
+// You can construct a concrete instance of `SettingMxtunnelsAdditionalMxtunnelsMapInput` via:
+//
+//	SettingMxtunnelsAdditionalMxtunnelsMap{ "key": SettingMxtunnelsAdditionalMxtunnelsArgs{...} }
+type SettingMxtunnelsAdditionalMxtunnelsMapInput interface {
+	pulumi.Input
+
+	ToSettingMxtunnelsAdditionalMxtunnelsMapOutput() SettingMxtunnelsAdditionalMxtunnelsMapOutput
+	ToSettingMxtunnelsAdditionalMxtunnelsMapOutputWithContext(context.Context) SettingMxtunnelsAdditionalMxtunnelsMapOutput
+}
+
+type SettingMxtunnelsAdditionalMxtunnelsMap map[string]SettingMxtunnelsAdditionalMxtunnelsInput
+
+func (SettingMxtunnelsAdditionalMxtunnelsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SettingMxtunnelsAdditionalMxtunnels)(nil)).Elem()
+}
+
+func (i SettingMxtunnelsAdditionalMxtunnelsMap) ToSettingMxtunnelsAdditionalMxtunnelsMapOutput() SettingMxtunnelsAdditionalMxtunnelsMapOutput {
+	return i.ToSettingMxtunnelsAdditionalMxtunnelsMapOutputWithContext(context.Background())
+}
+
+func (i SettingMxtunnelsAdditionalMxtunnelsMap) ToSettingMxtunnelsAdditionalMxtunnelsMapOutputWithContext(ctx context.Context) SettingMxtunnelsAdditionalMxtunnelsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelsAdditionalMxtunnelsMapOutput)
+}
+
+type SettingMxtunnelsAdditionalMxtunnelsOutput struct{ *pulumi.OutputState }
+
+func (SettingMxtunnelsAdditionalMxtunnelsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingMxtunnelsAdditionalMxtunnels)(nil)).Elem()
+}
+
+func (o SettingMxtunnelsAdditionalMxtunnelsOutput) ToSettingMxtunnelsAdditionalMxtunnelsOutput() SettingMxtunnelsAdditionalMxtunnelsOutput {
+	return o
+}
+
+func (o SettingMxtunnelsAdditionalMxtunnelsOutput) ToSettingMxtunnelsAdditionalMxtunnelsOutputWithContext(ctx context.Context) SettingMxtunnelsAdditionalMxtunnelsOutput {
+	return o
+}
+
+// In seconds, used as heartbeat to detect if a tunnel is alive. AP will try another peer after missing N hellos specified by hello_retries
+func (o SettingMxtunnelsAdditionalMxtunnelsOutput) HelloInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelsAdditionalMxtunnels) *int { return v.HelloInterval }).(pulumi.IntPtrOutput)
+}
+
+// Number of missed hello heartbeats before an AP tries another tunnel peer
+func (o SettingMxtunnelsAdditionalMxtunnelsOutput) HelloRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelsAdditionalMxtunnels) *int { return v.HelloRetries }).(pulumi.IntPtrOutput)
+}
+
+// Encapsulation protocol used for this additional Mist Tunnel
+func (o SettingMxtunnelsAdditionalMxtunnelsOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelsAdditionalMxtunnels) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// Tunnel peer clusters used by APs for this additional Mist Tunnel
+func (o SettingMxtunnelsAdditionalMxtunnelsOutput) TuntermClusters() SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutput {
+	return o.ApplyT(func(v SettingMxtunnelsAdditionalMxtunnels) []SettingMxtunnelsAdditionalMxtunnelsTuntermCluster {
+		return v.TuntermClusters
+	}).(SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutput)
+}
+
+// List of VLAN IDs carried by this additional Mist Tunnel
+func (o SettingMxtunnelsAdditionalMxtunnelsOutput) VlanIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v SettingMxtunnelsAdditionalMxtunnels) []int { return v.VlanIds }).(pulumi.IntArrayOutput)
+}
+
+type SettingMxtunnelsAdditionalMxtunnelsMapOutput struct{ *pulumi.OutputState }
+
+func (SettingMxtunnelsAdditionalMxtunnelsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SettingMxtunnelsAdditionalMxtunnels)(nil)).Elem()
+}
+
+func (o SettingMxtunnelsAdditionalMxtunnelsMapOutput) ToSettingMxtunnelsAdditionalMxtunnelsMapOutput() SettingMxtunnelsAdditionalMxtunnelsMapOutput {
+	return o
+}
+
+func (o SettingMxtunnelsAdditionalMxtunnelsMapOutput) ToSettingMxtunnelsAdditionalMxtunnelsMapOutputWithContext(ctx context.Context) SettingMxtunnelsAdditionalMxtunnelsMapOutput {
+	return o
+}
+
+func (o SettingMxtunnelsAdditionalMxtunnelsMapOutput) MapIndex(k pulumi.StringInput) SettingMxtunnelsAdditionalMxtunnelsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SettingMxtunnelsAdditionalMxtunnels {
+		return vs[0].(map[string]SettingMxtunnelsAdditionalMxtunnels)[vs[1].(string)]
+	}).(SettingMxtunnelsAdditionalMxtunnelsOutput)
+}
+
+type SettingMxtunnelsAdditionalMxtunnelsTuntermCluster struct {
+	// Peer cluster name used in the site Mist Tunnel configuration
+	Name *string `pulumi:"name"`
+	// Tunnel termination hostnames or IP addresses in this peer cluster
+	TuntermHosts []string `pulumi:"tuntermHosts"`
+}
+
+// SettingMxtunnelsAdditionalMxtunnelsTuntermClusterInput is an input type that accepts SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArgs and SettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput values.
+// You can construct a concrete instance of `SettingMxtunnelsAdditionalMxtunnelsTuntermClusterInput` via:
+//
+//	SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArgs{...}
+type SettingMxtunnelsAdditionalMxtunnelsTuntermClusterInput interface {
+	pulumi.Input
+
+	ToSettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput() SettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput
+	ToSettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutputWithContext(context.Context) SettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput
+}
+
+type SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArgs struct {
+	// Peer cluster name used in the site Mist Tunnel configuration
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Tunnel termination hostnames or IP addresses in this peer cluster
+	TuntermHosts pulumi.StringArrayInput `pulumi:"tuntermHosts"`
+}
+
+func (SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingMxtunnelsAdditionalMxtunnelsTuntermCluster)(nil)).Elem()
+}
+
+func (i SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArgs) ToSettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput() SettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput {
+	return i.ToSettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutputWithContext(context.Background())
+}
+
+func (i SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArgs) ToSettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutputWithContext(ctx context.Context) SettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput)
+}
+
+// SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayInput is an input type that accepts SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArray and SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutput values.
+// You can construct a concrete instance of `SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayInput` via:
+//
+//	SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArray{ SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArgs{...} }
+type SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayInput interface {
+	pulumi.Input
+
+	ToSettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutput() SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutput
+	ToSettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutputWithContext(context.Context) SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutput
+}
+
+type SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArray []SettingMxtunnelsAdditionalMxtunnelsTuntermClusterInput
+
+func (SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SettingMxtunnelsAdditionalMxtunnelsTuntermCluster)(nil)).Elem()
+}
+
+func (i SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArray) ToSettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutput() SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutput {
+	return i.ToSettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutputWithContext(context.Background())
+}
+
+func (i SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArray) ToSettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutputWithContext(ctx context.Context) SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutput)
+}
+
+type SettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput struct{ *pulumi.OutputState }
+
+func (SettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingMxtunnelsAdditionalMxtunnelsTuntermCluster)(nil)).Elem()
+}
+
+func (o SettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput) ToSettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput() SettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput {
+	return o
+}
+
+func (o SettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput) ToSettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutputWithContext(ctx context.Context) SettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput {
+	return o
+}
+
+// Peer cluster name used in the site Mist Tunnel configuration
+func (o SettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelsAdditionalMxtunnelsTuntermCluster) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Tunnel termination hostnames or IP addresses in this peer cluster
+func (o SettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput) TuntermHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SettingMxtunnelsAdditionalMxtunnelsTuntermCluster) []string { return v.TuntermHosts }).(pulumi.StringArrayOutput)
+}
+
+type SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutput struct{ *pulumi.OutputState }
+
+func (SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SettingMxtunnelsAdditionalMxtunnelsTuntermCluster)(nil)).Elem()
+}
+
+func (o SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutput) ToSettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutput() SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutput {
+	return o
+}
+
+func (o SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutput) ToSettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutputWithContext(ctx context.Context) SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutput {
+	return o
+}
+
+func (o SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutput) Index(i pulumi.IntInput) SettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SettingMxtunnelsAdditionalMxtunnelsTuntermCluster {
+		return vs[0].([]SettingMxtunnelsAdditionalMxtunnelsTuntermCluster)[vs[1].(int)]
+	}).(SettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput)
+}
+
+type SettingMxtunnelsAutoPreemption struct {
+	// Scheduled weekday for auto preemption
+	DayOfWeek *string `pulumi:"dayOfWeek"`
+	// Whether auto preemption is enabled
+	Enabled *bool `pulumi:"enabled"`
+	// Scheduled time of day for auto preemption
+	TimeOfDay *string `pulumi:"timeOfDay"`
+}
+
+// SettingMxtunnelsAutoPreemptionInput is an input type that accepts SettingMxtunnelsAutoPreemptionArgs and SettingMxtunnelsAutoPreemptionOutput values.
+// You can construct a concrete instance of `SettingMxtunnelsAutoPreemptionInput` via:
+//
+//	SettingMxtunnelsAutoPreemptionArgs{...}
+type SettingMxtunnelsAutoPreemptionInput interface {
+	pulumi.Input
+
+	ToSettingMxtunnelsAutoPreemptionOutput() SettingMxtunnelsAutoPreemptionOutput
+	ToSettingMxtunnelsAutoPreemptionOutputWithContext(context.Context) SettingMxtunnelsAutoPreemptionOutput
+}
+
+type SettingMxtunnelsAutoPreemptionArgs struct {
+	// Scheduled weekday for auto preemption
+	DayOfWeek pulumi.StringPtrInput `pulumi:"dayOfWeek"`
+	// Whether auto preemption is enabled
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Scheduled time of day for auto preemption
+	TimeOfDay pulumi.StringPtrInput `pulumi:"timeOfDay"`
+}
+
+func (SettingMxtunnelsAutoPreemptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingMxtunnelsAutoPreemption)(nil)).Elem()
+}
+
+func (i SettingMxtunnelsAutoPreemptionArgs) ToSettingMxtunnelsAutoPreemptionOutput() SettingMxtunnelsAutoPreemptionOutput {
+	return i.ToSettingMxtunnelsAutoPreemptionOutputWithContext(context.Background())
+}
+
+func (i SettingMxtunnelsAutoPreemptionArgs) ToSettingMxtunnelsAutoPreemptionOutputWithContext(ctx context.Context) SettingMxtunnelsAutoPreemptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelsAutoPreemptionOutput)
+}
+
+func (i SettingMxtunnelsAutoPreemptionArgs) ToSettingMxtunnelsAutoPreemptionPtrOutput() SettingMxtunnelsAutoPreemptionPtrOutput {
+	return i.ToSettingMxtunnelsAutoPreemptionPtrOutputWithContext(context.Background())
+}
+
+func (i SettingMxtunnelsAutoPreemptionArgs) ToSettingMxtunnelsAutoPreemptionPtrOutputWithContext(ctx context.Context) SettingMxtunnelsAutoPreemptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelsAutoPreemptionOutput).ToSettingMxtunnelsAutoPreemptionPtrOutputWithContext(ctx)
+}
+
+// SettingMxtunnelsAutoPreemptionPtrInput is an input type that accepts SettingMxtunnelsAutoPreemptionArgs, SettingMxtunnelsAutoPreemptionPtr and SettingMxtunnelsAutoPreemptionPtrOutput values.
+// You can construct a concrete instance of `SettingMxtunnelsAutoPreemptionPtrInput` via:
+//
+//	        SettingMxtunnelsAutoPreemptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type SettingMxtunnelsAutoPreemptionPtrInput interface {
+	pulumi.Input
+
+	ToSettingMxtunnelsAutoPreemptionPtrOutput() SettingMxtunnelsAutoPreemptionPtrOutput
+	ToSettingMxtunnelsAutoPreemptionPtrOutputWithContext(context.Context) SettingMxtunnelsAutoPreemptionPtrOutput
+}
+
+type settingMxtunnelsAutoPreemptionPtrType SettingMxtunnelsAutoPreemptionArgs
+
+func SettingMxtunnelsAutoPreemptionPtr(v *SettingMxtunnelsAutoPreemptionArgs) SettingMxtunnelsAutoPreemptionPtrInput {
+	return (*settingMxtunnelsAutoPreemptionPtrType)(v)
+}
+
+func (*settingMxtunnelsAutoPreemptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingMxtunnelsAutoPreemption)(nil)).Elem()
+}
+
+func (i *settingMxtunnelsAutoPreemptionPtrType) ToSettingMxtunnelsAutoPreemptionPtrOutput() SettingMxtunnelsAutoPreemptionPtrOutput {
+	return i.ToSettingMxtunnelsAutoPreemptionPtrOutputWithContext(context.Background())
+}
+
+func (i *settingMxtunnelsAutoPreemptionPtrType) ToSettingMxtunnelsAutoPreemptionPtrOutputWithContext(ctx context.Context) SettingMxtunnelsAutoPreemptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelsAutoPreemptionPtrOutput)
+}
+
+type SettingMxtunnelsAutoPreemptionOutput struct{ *pulumi.OutputState }
+
+func (SettingMxtunnelsAutoPreemptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingMxtunnelsAutoPreemption)(nil)).Elem()
+}
+
+func (o SettingMxtunnelsAutoPreemptionOutput) ToSettingMxtunnelsAutoPreemptionOutput() SettingMxtunnelsAutoPreemptionOutput {
+	return o
+}
+
+func (o SettingMxtunnelsAutoPreemptionOutput) ToSettingMxtunnelsAutoPreemptionOutputWithContext(ctx context.Context) SettingMxtunnelsAutoPreemptionOutput {
+	return o
+}
+
+func (o SettingMxtunnelsAutoPreemptionOutput) ToSettingMxtunnelsAutoPreemptionPtrOutput() SettingMxtunnelsAutoPreemptionPtrOutput {
+	return o.ToSettingMxtunnelsAutoPreemptionPtrOutputWithContext(context.Background())
+}
+
+func (o SettingMxtunnelsAutoPreemptionOutput) ToSettingMxtunnelsAutoPreemptionPtrOutputWithContext(ctx context.Context) SettingMxtunnelsAutoPreemptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingMxtunnelsAutoPreemption) *SettingMxtunnelsAutoPreemption {
+		return &v
+	}).(SettingMxtunnelsAutoPreemptionPtrOutput)
+}
+
+// Scheduled weekday for auto preemption
+func (o SettingMxtunnelsAutoPreemptionOutput) DayOfWeek() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelsAutoPreemption) *string { return v.DayOfWeek }).(pulumi.StringPtrOutput)
+}
+
+// Whether auto preemption is enabled
+func (o SettingMxtunnelsAutoPreemptionOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelsAutoPreemption) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Scheduled time of day for auto preemption
+func (o SettingMxtunnelsAutoPreemptionOutput) TimeOfDay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelsAutoPreemption) *string { return v.TimeOfDay }).(pulumi.StringPtrOutput)
+}
+
+type SettingMxtunnelsAutoPreemptionPtrOutput struct{ *pulumi.OutputState }
+
+func (SettingMxtunnelsAutoPreemptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingMxtunnelsAutoPreemption)(nil)).Elem()
+}
+
+func (o SettingMxtunnelsAutoPreemptionPtrOutput) ToSettingMxtunnelsAutoPreemptionPtrOutput() SettingMxtunnelsAutoPreemptionPtrOutput {
+	return o
+}
+
+func (o SettingMxtunnelsAutoPreemptionPtrOutput) ToSettingMxtunnelsAutoPreemptionPtrOutputWithContext(ctx context.Context) SettingMxtunnelsAutoPreemptionPtrOutput {
+	return o
+}
+
+func (o SettingMxtunnelsAutoPreemptionPtrOutput) Elem() SettingMxtunnelsAutoPreemptionOutput {
+	return o.ApplyT(func(v *SettingMxtunnelsAutoPreemption) SettingMxtunnelsAutoPreemption {
+		if v != nil {
+			return *v
+		}
+		var ret SettingMxtunnelsAutoPreemption
+		return ret
+	}).(SettingMxtunnelsAutoPreemptionOutput)
+}
+
+// Scheduled weekday for auto preemption
+func (o SettingMxtunnelsAutoPreemptionPtrOutput) DayOfWeek() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingMxtunnelsAutoPreemption) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DayOfWeek
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether auto preemption is enabled
+func (o SettingMxtunnelsAutoPreemptionPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingMxtunnelsAutoPreemption) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Scheduled time of day for auto preemption
+func (o SettingMxtunnelsAutoPreemptionPtrOutput) TimeOfDay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingMxtunnelsAutoPreemption) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeOfDay
+	}).(pulumi.StringPtrOutput)
+}
+
+type SettingMxtunnelsCluster struct {
+	// Peer cluster name used in the site Mist Tunnel configuration
+	Name *string `pulumi:"name"`
+	// Tunnel termination hostnames or IP addresses in this peer cluster
+	TuntermHosts []string `pulumi:"tuntermHosts"`
+}
+
+// SettingMxtunnelsClusterInput is an input type that accepts SettingMxtunnelsClusterArgs and SettingMxtunnelsClusterOutput values.
+// You can construct a concrete instance of `SettingMxtunnelsClusterInput` via:
+//
+//	SettingMxtunnelsClusterArgs{...}
+type SettingMxtunnelsClusterInput interface {
+	pulumi.Input
+
+	ToSettingMxtunnelsClusterOutput() SettingMxtunnelsClusterOutput
+	ToSettingMxtunnelsClusterOutputWithContext(context.Context) SettingMxtunnelsClusterOutput
+}
+
+type SettingMxtunnelsClusterArgs struct {
+	// Peer cluster name used in the site Mist Tunnel configuration
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Tunnel termination hostnames or IP addresses in this peer cluster
+	TuntermHosts pulumi.StringArrayInput `pulumi:"tuntermHosts"`
+}
+
+func (SettingMxtunnelsClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingMxtunnelsCluster)(nil)).Elem()
+}
+
+func (i SettingMxtunnelsClusterArgs) ToSettingMxtunnelsClusterOutput() SettingMxtunnelsClusterOutput {
+	return i.ToSettingMxtunnelsClusterOutputWithContext(context.Background())
+}
+
+func (i SettingMxtunnelsClusterArgs) ToSettingMxtunnelsClusterOutputWithContext(ctx context.Context) SettingMxtunnelsClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelsClusterOutput)
+}
+
+// SettingMxtunnelsClusterArrayInput is an input type that accepts SettingMxtunnelsClusterArray and SettingMxtunnelsClusterArrayOutput values.
+// You can construct a concrete instance of `SettingMxtunnelsClusterArrayInput` via:
+//
+//	SettingMxtunnelsClusterArray{ SettingMxtunnelsClusterArgs{...} }
+type SettingMxtunnelsClusterArrayInput interface {
+	pulumi.Input
+
+	ToSettingMxtunnelsClusterArrayOutput() SettingMxtunnelsClusterArrayOutput
+	ToSettingMxtunnelsClusterArrayOutputWithContext(context.Context) SettingMxtunnelsClusterArrayOutput
+}
+
+type SettingMxtunnelsClusterArray []SettingMxtunnelsClusterInput
+
+func (SettingMxtunnelsClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SettingMxtunnelsCluster)(nil)).Elem()
+}
+
+func (i SettingMxtunnelsClusterArray) ToSettingMxtunnelsClusterArrayOutput() SettingMxtunnelsClusterArrayOutput {
+	return i.ToSettingMxtunnelsClusterArrayOutputWithContext(context.Background())
+}
+
+func (i SettingMxtunnelsClusterArray) ToSettingMxtunnelsClusterArrayOutputWithContext(ctx context.Context) SettingMxtunnelsClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelsClusterArrayOutput)
+}
+
+type SettingMxtunnelsClusterOutput struct{ *pulumi.OutputState }
+
+func (SettingMxtunnelsClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingMxtunnelsCluster)(nil)).Elem()
+}
+
+func (o SettingMxtunnelsClusterOutput) ToSettingMxtunnelsClusterOutput() SettingMxtunnelsClusterOutput {
+	return o
+}
+
+func (o SettingMxtunnelsClusterOutput) ToSettingMxtunnelsClusterOutputWithContext(ctx context.Context) SettingMxtunnelsClusterOutput {
+	return o
+}
+
+// Peer cluster name used in the site Mist Tunnel configuration
+func (o SettingMxtunnelsClusterOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelsCluster) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Tunnel termination hostnames or IP addresses in this peer cluster
+func (o SettingMxtunnelsClusterOutput) TuntermHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SettingMxtunnelsCluster) []string { return v.TuntermHosts }).(pulumi.StringArrayOutput)
+}
+
+type SettingMxtunnelsClusterArrayOutput struct{ *pulumi.OutputState }
+
+func (SettingMxtunnelsClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SettingMxtunnelsCluster)(nil)).Elem()
+}
+
+func (o SettingMxtunnelsClusterArrayOutput) ToSettingMxtunnelsClusterArrayOutput() SettingMxtunnelsClusterArrayOutput {
+	return o
+}
+
+func (o SettingMxtunnelsClusterArrayOutput) ToSettingMxtunnelsClusterArrayOutputWithContext(ctx context.Context) SettingMxtunnelsClusterArrayOutput {
+	return o
+}
+
+func (o SettingMxtunnelsClusterArrayOutput) Index(i pulumi.IntInput) SettingMxtunnelsClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SettingMxtunnelsCluster {
+		return vs[0].([]SettingMxtunnelsCluster)[vs[1].(int)]
+	}).(SettingMxtunnelsClusterOutput)
+}
+
+type SettingMxtunnelsRadsec struct {
+	// RADIUS accounting servers used by the site Mist Tunnel RadSec proxy
+	AcctServers []SettingMxtunnelsRadsecAcctServer `pulumi:"acctServers"`
+	// RADIUS authentication servers used by the site Mist Tunnel RadSec proxy
+	AuthServers []SettingMxtunnelsRadsecAuthServer `pulumi:"authServers"`
+	// Whether RadSec proxying is enabled for this site Mist Tunnel
+	Enabled *bool `pulumi:"enabled"`
+	// Whether RadSec proxying uses Mist Edge
+	UseMxedge *bool `pulumi:"useMxedge"`
+}
+
+// SettingMxtunnelsRadsecInput is an input type that accepts SettingMxtunnelsRadsecArgs and SettingMxtunnelsRadsecOutput values.
+// You can construct a concrete instance of `SettingMxtunnelsRadsecInput` via:
+//
+//	SettingMxtunnelsRadsecArgs{...}
+type SettingMxtunnelsRadsecInput interface {
+	pulumi.Input
+
+	ToSettingMxtunnelsRadsecOutput() SettingMxtunnelsRadsecOutput
+	ToSettingMxtunnelsRadsecOutputWithContext(context.Context) SettingMxtunnelsRadsecOutput
+}
+
+type SettingMxtunnelsRadsecArgs struct {
+	// RADIUS accounting servers used by the site Mist Tunnel RadSec proxy
+	AcctServers SettingMxtunnelsRadsecAcctServerArrayInput `pulumi:"acctServers"`
+	// RADIUS authentication servers used by the site Mist Tunnel RadSec proxy
+	AuthServers SettingMxtunnelsRadsecAuthServerArrayInput `pulumi:"authServers"`
+	// Whether RadSec proxying is enabled for this site Mist Tunnel
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Whether RadSec proxying uses Mist Edge
+	UseMxedge pulumi.BoolPtrInput `pulumi:"useMxedge"`
+}
+
+func (SettingMxtunnelsRadsecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingMxtunnelsRadsec)(nil)).Elem()
+}
+
+func (i SettingMxtunnelsRadsecArgs) ToSettingMxtunnelsRadsecOutput() SettingMxtunnelsRadsecOutput {
+	return i.ToSettingMxtunnelsRadsecOutputWithContext(context.Background())
+}
+
+func (i SettingMxtunnelsRadsecArgs) ToSettingMxtunnelsRadsecOutputWithContext(ctx context.Context) SettingMxtunnelsRadsecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelsRadsecOutput)
+}
+
+func (i SettingMxtunnelsRadsecArgs) ToSettingMxtunnelsRadsecPtrOutput() SettingMxtunnelsRadsecPtrOutput {
+	return i.ToSettingMxtunnelsRadsecPtrOutputWithContext(context.Background())
+}
+
+func (i SettingMxtunnelsRadsecArgs) ToSettingMxtunnelsRadsecPtrOutputWithContext(ctx context.Context) SettingMxtunnelsRadsecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelsRadsecOutput).ToSettingMxtunnelsRadsecPtrOutputWithContext(ctx)
+}
+
+// SettingMxtunnelsRadsecPtrInput is an input type that accepts SettingMxtunnelsRadsecArgs, SettingMxtunnelsRadsecPtr and SettingMxtunnelsRadsecPtrOutput values.
+// You can construct a concrete instance of `SettingMxtunnelsRadsecPtrInput` via:
+//
+//	        SettingMxtunnelsRadsecArgs{...}
+//
+//	or:
+//
+//	        nil
+type SettingMxtunnelsRadsecPtrInput interface {
+	pulumi.Input
+
+	ToSettingMxtunnelsRadsecPtrOutput() SettingMxtunnelsRadsecPtrOutput
+	ToSettingMxtunnelsRadsecPtrOutputWithContext(context.Context) SettingMxtunnelsRadsecPtrOutput
+}
+
+type settingMxtunnelsRadsecPtrType SettingMxtunnelsRadsecArgs
+
+func SettingMxtunnelsRadsecPtr(v *SettingMxtunnelsRadsecArgs) SettingMxtunnelsRadsecPtrInput {
+	return (*settingMxtunnelsRadsecPtrType)(v)
+}
+
+func (*settingMxtunnelsRadsecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingMxtunnelsRadsec)(nil)).Elem()
+}
+
+func (i *settingMxtunnelsRadsecPtrType) ToSettingMxtunnelsRadsecPtrOutput() SettingMxtunnelsRadsecPtrOutput {
+	return i.ToSettingMxtunnelsRadsecPtrOutputWithContext(context.Background())
+}
+
+func (i *settingMxtunnelsRadsecPtrType) ToSettingMxtunnelsRadsecPtrOutputWithContext(ctx context.Context) SettingMxtunnelsRadsecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelsRadsecPtrOutput)
+}
+
+type SettingMxtunnelsRadsecOutput struct{ *pulumi.OutputState }
+
+func (SettingMxtunnelsRadsecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingMxtunnelsRadsec)(nil)).Elem()
+}
+
+func (o SettingMxtunnelsRadsecOutput) ToSettingMxtunnelsRadsecOutput() SettingMxtunnelsRadsecOutput {
+	return o
+}
+
+func (o SettingMxtunnelsRadsecOutput) ToSettingMxtunnelsRadsecOutputWithContext(ctx context.Context) SettingMxtunnelsRadsecOutput {
+	return o
+}
+
+func (o SettingMxtunnelsRadsecOutput) ToSettingMxtunnelsRadsecPtrOutput() SettingMxtunnelsRadsecPtrOutput {
+	return o.ToSettingMxtunnelsRadsecPtrOutputWithContext(context.Background())
+}
+
+func (o SettingMxtunnelsRadsecOutput) ToSettingMxtunnelsRadsecPtrOutputWithContext(ctx context.Context) SettingMxtunnelsRadsecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingMxtunnelsRadsec) *SettingMxtunnelsRadsec {
+		return &v
+	}).(SettingMxtunnelsRadsecPtrOutput)
+}
+
+// RADIUS accounting servers used by the site Mist Tunnel RadSec proxy
+func (o SettingMxtunnelsRadsecOutput) AcctServers() SettingMxtunnelsRadsecAcctServerArrayOutput {
+	return o.ApplyT(func(v SettingMxtunnelsRadsec) []SettingMxtunnelsRadsecAcctServer { return v.AcctServers }).(SettingMxtunnelsRadsecAcctServerArrayOutput)
+}
+
+// RADIUS authentication servers used by the site Mist Tunnel RadSec proxy
+func (o SettingMxtunnelsRadsecOutput) AuthServers() SettingMxtunnelsRadsecAuthServerArrayOutput {
+	return o.ApplyT(func(v SettingMxtunnelsRadsec) []SettingMxtunnelsRadsecAuthServer { return v.AuthServers }).(SettingMxtunnelsRadsecAuthServerArrayOutput)
+}
+
+// Whether RadSec proxying is enabled for this site Mist Tunnel
+func (o SettingMxtunnelsRadsecOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelsRadsec) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Whether RadSec proxying uses Mist Edge
+func (o SettingMxtunnelsRadsecOutput) UseMxedge() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelsRadsec) *bool { return v.UseMxedge }).(pulumi.BoolPtrOutput)
+}
+
+type SettingMxtunnelsRadsecPtrOutput struct{ *pulumi.OutputState }
+
+func (SettingMxtunnelsRadsecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingMxtunnelsRadsec)(nil)).Elem()
+}
+
+func (o SettingMxtunnelsRadsecPtrOutput) ToSettingMxtunnelsRadsecPtrOutput() SettingMxtunnelsRadsecPtrOutput {
+	return o
+}
+
+func (o SettingMxtunnelsRadsecPtrOutput) ToSettingMxtunnelsRadsecPtrOutputWithContext(ctx context.Context) SettingMxtunnelsRadsecPtrOutput {
+	return o
+}
+
+func (o SettingMxtunnelsRadsecPtrOutput) Elem() SettingMxtunnelsRadsecOutput {
+	return o.ApplyT(func(v *SettingMxtunnelsRadsec) SettingMxtunnelsRadsec {
+		if v != nil {
+			return *v
+		}
+		var ret SettingMxtunnelsRadsec
+		return ret
+	}).(SettingMxtunnelsRadsecOutput)
+}
+
+// RADIUS accounting servers used by the site Mist Tunnel RadSec proxy
+func (o SettingMxtunnelsRadsecPtrOutput) AcctServers() SettingMxtunnelsRadsecAcctServerArrayOutput {
+	return o.ApplyT(func(v *SettingMxtunnelsRadsec) []SettingMxtunnelsRadsecAcctServer {
+		if v == nil {
+			return nil
+		}
+		return v.AcctServers
+	}).(SettingMxtunnelsRadsecAcctServerArrayOutput)
+}
+
+// RADIUS authentication servers used by the site Mist Tunnel RadSec proxy
+func (o SettingMxtunnelsRadsecPtrOutput) AuthServers() SettingMxtunnelsRadsecAuthServerArrayOutput {
+	return o.ApplyT(func(v *SettingMxtunnelsRadsec) []SettingMxtunnelsRadsecAuthServer {
+		if v == nil {
+			return nil
+		}
+		return v.AuthServers
+	}).(SettingMxtunnelsRadsecAuthServerArrayOutput)
+}
+
+// Whether RadSec proxying is enabled for this site Mist Tunnel
+func (o SettingMxtunnelsRadsecPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingMxtunnelsRadsec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether RadSec proxying uses Mist Edge
+func (o SettingMxtunnelsRadsecPtrOutput) UseMxedge() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingMxtunnelsRadsec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseMxedge
+	}).(pulumi.BoolPtrOutput)
+}
+
+type SettingMxtunnelsRadsecAcctServer struct {
+	// Address or hostname of the RADIUS accounting server
+	Host string `pulumi:"host"`
+	// Whether RADIUS keywrap is enabled for messages sent to this accounting server
+	KeywrapEnabled *bool `pulumi:"keywrapEnabled"`
+	// Encoding format for RADIUS keywrap KEK and MACK values
+	KeywrapFormat *string `pulumi:"keywrapFormat"`
+	// RADIUS keywrap key encryption key (KEK)
+	KeywrapKek *string `pulumi:"keywrapKek"`
+	// RADIUS keywrap message authentication code key (MACK)
+	KeywrapMack *string `pulumi:"keywrapMack"`
+	// UDP port used by the RADIUS accounting server
+	Port *string `pulumi:"port"`
+	// Shared secret used with this RADIUS accounting server
+	Secret string `pulumi:"secret"`
+}
+
+// SettingMxtunnelsRadsecAcctServerInput is an input type that accepts SettingMxtunnelsRadsecAcctServerArgs and SettingMxtunnelsRadsecAcctServerOutput values.
+// You can construct a concrete instance of `SettingMxtunnelsRadsecAcctServerInput` via:
+//
+//	SettingMxtunnelsRadsecAcctServerArgs{...}
+type SettingMxtunnelsRadsecAcctServerInput interface {
+	pulumi.Input
+
+	ToSettingMxtunnelsRadsecAcctServerOutput() SettingMxtunnelsRadsecAcctServerOutput
+	ToSettingMxtunnelsRadsecAcctServerOutputWithContext(context.Context) SettingMxtunnelsRadsecAcctServerOutput
+}
+
+type SettingMxtunnelsRadsecAcctServerArgs struct {
+	// Address or hostname of the RADIUS accounting server
+	Host pulumi.StringInput `pulumi:"host"`
+	// Whether RADIUS keywrap is enabled for messages sent to this accounting server
+	KeywrapEnabled pulumi.BoolPtrInput `pulumi:"keywrapEnabled"`
+	// Encoding format for RADIUS keywrap KEK and MACK values
+	KeywrapFormat pulumi.StringPtrInput `pulumi:"keywrapFormat"`
+	// RADIUS keywrap key encryption key (KEK)
+	KeywrapKek pulumi.StringPtrInput `pulumi:"keywrapKek"`
+	// RADIUS keywrap message authentication code key (MACK)
+	KeywrapMack pulumi.StringPtrInput `pulumi:"keywrapMack"`
+	// UDP port used by the RADIUS accounting server
+	Port pulumi.StringPtrInput `pulumi:"port"`
+	// Shared secret used with this RADIUS accounting server
+	Secret pulumi.StringInput `pulumi:"secret"`
+}
+
+func (SettingMxtunnelsRadsecAcctServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingMxtunnelsRadsecAcctServer)(nil)).Elem()
+}
+
+func (i SettingMxtunnelsRadsecAcctServerArgs) ToSettingMxtunnelsRadsecAcctServerOutput() SettingMxtunnelsRadsecAcctServerOutput {
+	return i.ToSettingMxtunnelsRadsecAcctServerOutputWithContext(context.Background())
+}
+
+func (i SettingMxtunnelsRadsecAcctServerArgs) ToSettingMxtunnelsRadsecAcctServerOutputWithContext(ctx context.Context) SettingMxtunnelsRadsecAcctServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelsRadsecAcctServerOutput)
+}
+
+// SettingMxtunnelsRadsecAcctServerArrayInput is an input type that accepts SettingMxtunnelsRadsecAcctServerArray and SettingMxtunnelsRadsecAcctServerArrayOutput values.
+// You can construct a concrete instance of `SettingMxtunnelsRadsecAcctServerArrayInput` via:
+//
+//	SettingMxtunnelsRadsecAcctServerArray{ SettingMxtunnelsRadsecAcctServerArgs{...} }
+type SettingMxtunnelsRadsecAcctServerArrayInput interface {
+	pulumi.Input
+
+	ToSettingMxtunnelsRadsecAcctServerArrayOutput() SettingMxtunnelsRadsecAcctServerArrayOutput
+	ToSettingMxtunnelsRadsecAcctServerArrayOutputWithContext(context.Context) SettingMxtunnelsRadsecAcctServerArrayOutput
+}
+
+type SettingMxtunnelsRadsecAcctServerArray []SettingMxtunnelsRadsecAcctServerInput
+
+func (SettingMxtunnelsRadsecAcctServerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SettingMxtunnelsRadsecAcctServer)(nil)).Elem()
+}
+
+func (i SettingMxtunnelsRadsecAcctServerArray) ToSettingMxtunnelsRadsecAcctServerArrayOutput() SettingMxtunnelsRadsecAcctServerArrayOutput {
+	return i.ToSettingMxtunnelsRadsecAcctServerArrayOutputWithContext(context.Background())
+}
+
+func (i SettingMxtunnelsRadsecAcctServerArray) ToSettingMxtunnelsRadsecAcctServerArrayOutputWithContext(ctx context.Context) SettingMxtunnelsRadsecAcctServerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelsRadsecAcctServerArrayOutput)
+}
+
+type SettingMxtunnelsRadsecAcctServerOutput struct{ *pulumi.OutputState }
+
+func (SettingMxtunnelsRadsecAcctServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingMxtunnelsRadsecAcctServer)(nil)).Elem()
+}
+
+func (o SettingMxtunnelsRadsecAcctServerOutput) ToSettingMxtunnelsRadsecAcctServerOutput() SettingMxtunnelsRadsecAcctServerOutput {
+	return o
+}
+
+func (o SettingMxtunnelsRadsecAcctServerOutput) ToSettingMxtunnelsRadsecAcctServerOutputWithContext(ctx context.Context) SettingMxtunnelsRadsecAcctServerOutput {
+	return o
+}
+
+// Address or hostname of the RADIUS accounting server
+func (o SettingMxtunnelsRadsecAcctServerOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v SettingMxtunnelsRadsecAcctServer) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Whether RADIUS keywrap is enabled for messages sent to this accounting server
+func (o SettingMxtunnelsRadsecAcctServerOutput) KeywrapEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelsRadsecAcctServer) *bool { return v.KeywrapEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Encoding format for RADIUS keywrap KEK and MACK values
+func (o SettingMxtunnelsRadsecAcctServerOutput) KeywrapFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelsRadsecAcctServer) *string { return v.KeywrapFormat }).(pulumi.StringPtrOutput)
+}
+
+// RADIUS keywrap key encryption key (KEK)
+func (o SettingMxtunnelsRadsecAcctServerOutput) KeywrapKek() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelsRadsecAcctServer) *string { return v.KeywrapKek }).(pulumi.StringPtrOutput)
+}
+
+// RADIUS keywrap message authentication code key (MACK)
+func (o SettingMxtunnelsRadsecAcctServerOutput) KeywrapMack() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelsRadsecAcctServer) *string { return v.KeywrapMack }).(pulumi.StringPtrOutput)
+}
+
+// UDP port used by the RADIUS accounting server
+func (o SettingMxtunnelsRadsecAcctServerOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelsRadsecAcctServer) *string { return v.Port }).(pulumi.StringPtrOutput)
+}
+
+// Shared secret used with this RADIUS accounting server
+func (o SettingMxtunnelsRadsecAcctServerOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v SettingMxtunnelsRadsecAcctServer) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+type SettingMxtunnelsRadsecAcctServerArrayOutput struct{ *pulumi.OutputState }
+
+func (SettingMxtunnelsRadsecAcctServerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SettingMxtunnelsRadsecAcctServer)(nil)).Elem()
+}
+
+func (o SettingMxtunnelsRadsecAcctServerArrayOutput) ToSettingMxtunnelsRadsecAcctServerArrayOutput() SettingMxtunnelsRadsecAcctServerArrayOutput {
+	return o
+}
+
+func (o SettingMxtunnelsRadsecAcctServerArrayOutput) ToSettingMxtunnelsRadsecAcctServerArrayOutputWithContext(ctx context.Context) SettingMxtunnelsRadsecAcctServerArrayOutput {
+	return o
+}
+
+func (o SettingMxtunnelsRadsecAcctServerArrayOutput) Index(i pulumi.IntInput) SettingMxtunnelsRadsecAcctServerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SettingMxtunnelsRadsecAcctServer {
+		return vs[0].([]SettingMxtunnelsRadsecAcctServer)[vs[1].(int)]
+	}).(SettingMxtunnelsRadsecAcctServerOutput)
+}
+
+type SettingMxtunnelsRadsecAuthServer struct {
+	// Address or hostname of the RADIUS authentication server
+	Host string `pulumi:"host"`
+	// Whether RADIUS keywrap is enabled for messages sent to this authentication server
+	KeywrapEnabled *bool `pulumi:"keywrapEnabled"`
+	// Encoding format for RADIUS keywrap KEK and MACK values
+	KeywrapFormat *string `pulumi:"keywrapFormat"`
+	// RADIUS keywrap key encryption key (KEK)
+	KeywrapKek *string `pulumi:"keywrapKek"`
+	// RADIUS keywrap message authentication code key (MACK)
+	KeywrapMack *string `pulumi:"keywrapMack"`
+	// UDP port used by the RADIUS authentication server
+	Port *string `pulumi:"port"`
+	// Whether to require Message-Authenticator in requests
+	RequireMessageAuthenticator *bool `pulumi:"requireMessageAuthenticator"`
+	// Shared secret used with this RADIUS authentication server
+	Secret string `pulumi:"secret"`
+}
+
+// SettingMxtunnelsRadsecAuthServerInput is an input type that accepts SettingMxtunnelsRadsecAuthServerArgs and SettingMxtunnelsRadsecAuthServerOutput values.
+// You can construct a concrete instance of `SettingMxtunnelsRadsecAuthServerInput` via:
+//
+//	SettingMxtunnelsRadsecAuthServerArgs{...}
+type SettingMxtunnelsRadsecAuthServerInput interface {
+	pulumi.Input
+
+	ToSettingMxtunnelsRadsecAuthServerOutput() SettingMxtunnelsRadsecAuthServerOutput
+	ToSettingMxtunnelsRadsecAuthServerOutputWithContext(context.Context) SettingMxtunnelsRadsecAuthServerOutput
+}
+
+type SettingMxtunnelsRadsecAuthServerArgs struct {
+	// Address or hostname of the RADIUS authentication server
+	Host pulumi.StringInput `pulumi:"host"`
+	// Whether RADIUS keywrap is enabled for messages sent to this authentication server
+	KeywrapEnabled pulumi.BoolPtrInput `pulumi:"keywrapEnabled"`
+	// Encoding format for RADIUS keywrap KEK and MACK values
+	KeywrapFormat pulumi.StringPtrInput `pulumi:"keywrapFormat"`
+	// RADIUS keywrap key encryption key (KEK)
+	KeywrapKek pulumi.StringPtrInput `pulumi:"keywrapKek"`
+	// RADIUS keywrap message authentication code key (MACK)
+	KeywrapMack pulumi.StringPtrInput `pulumi:"keywrapMack"`
+	// UDP port used by the RADIUS authentication server
+	Port pulumi.StringPtrInput `pulumi:"port"`
+	// Whether to require Message-Authenticator in requests
+	RequireMessageAuthenticator pulumi.BoolPtrInput `pulumi:"requireMessageAuthenticator"`
+	// Shared secret used with this RADIUS authentication server
+	Secret pulumi.StringInput `pulumi:"secret"`
+}
+
+func (SettingMxtunnelsRadsecAuthServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingMxtunnelsRadsecAuthServer)(nil)).Elem()
+}
+
+func (i SettingMxtunnelsRadsecAuthServerArgs) ToSettingMxtunnelsRadsecAuthServerOutput() SettingMxtunnelsRadsecAuthServerOutput {
+	return i.ToSettingMxtunnelsRadsecAuthServerOutputWithContext(context.Background())
+}
+
+func (i SettingMxtunnelsRadsecAuthServerArgs) ToSettingMxtunnelsRadsecAuthServerOutputWithContext(ctx context.Context) SettingMxtunnelsRadsecAuthServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelsRadsecAuthServerOutput)
+}
+
+// SettingMxtunnelsRadsecAuthServerArrayInput is an input type that accepts SettingMxtunnelsRadsecAuthServerArray and SettingMxtunnelsRadsecAuthServerArrayOutput values.
+// You can construct a concrete instance of `SettingMxtunnelsRadsecAuthServerArrayInput` via:
+//
+//	SettingMxtunnelsRadsecAuthServerArray{ SettingMxtunnelsRadsecAuthServerArgs{...} }
+type SettingMxtunnelsRadsecAuthServerArrayInput interface {
+	pulumi.Input
+
+	ToSettingMxtunnelsRadsecAuthServerArrayOutput() SettingMxtunnelsRadsecAuthServerArrayOutput
+	ToSettingMxtunnelsRadsecAuthServerArrayOutputWithContext(context.Context) SettingMxtunnelsRadsecAuthServerArrayOutput
+}
+
+type SettingMxtunnelsRadsecAuthServerArray []SettingMxtunnelsRadsecAuthServerInput
+
+func (SettingMxtunnelsRadsecAuthServerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SettingMxtunnelsRadsecAuthServer)(nil)).Elem()
+}
+
+func (i SettingMxtunnelsRadsecAuthServerArray) ToSettingMxtunnelsRadsecAuthServerArrayOutput() SettingMxtunnelsRadsecAuthServerArrayOutput {
+	return i.ToSettingMxtunnelsRadsecAuthServerArrayOutputWithContext(context.Background())
+}
+
+func (i SettingMxtunnelsRadsecAuthServerArray) ToSettingMxtunnelsRadsecAuthServerArrayOutputWithContext(ctx context.Context) SettingMxtunnelsRadsecAuthServerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelsRadsecAuthServerArrayOutput)
+}
+
+type SettingMxtunnelsRadsecAuthServerOutput struct{ *pulumi.OutputState }
+
+func (SettingMxtunnelsRadsecAuthServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingMxtunnelsRadsecAuthServer)(nil)).Elem()
+}
+
+func (o SettingMxtunnelsRadsecAuthServerOutput) ToSettingMxtunnelsRadsecAuthServerOutput() SettingMxtunnelsRadsecAuthServerOutput {
+	return o
+}
+
+func (o SettingMxtunnelsRadsecAuthServerOutput) ToSettingMxtunnelsRadsecAuthServerOutputWithContext(ctx context.Context) SettingMxtunnelsRadsecAuthServerOutput {
+	return o
+}
+
+// Address or hostname of the RADIUS authentication server
+func (o SettingMxtunnelsRadsecAuthServerOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v SettingMxtunnelsRadsecAuthServer) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Whether RADIUS keywrap is enabled for messages sent to this authentication server
+func (o SettingMxtunnelsRadsecAuthServerOutput) KeywrapEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelsRadsecAuthServer) *bool { return v.KeywrapEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Encoding format for RADIUS keywrap KEK and MACK values
+func (o SettingMxtunnelsRadsecAuthServerOutput) KeywrapFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelsRadsecAuthServer) *string { return v.KeywrapFormat }).(pulumi.StringPtrOutput)
+}
+
+// RADIUS keywrap key encryption key (KEK)
+func (o SettingMxtunnelsRadsecAuthServerOutput) KeywrapKek() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelsRadsecAuthServer) *string { return v.KeywrapKek }).(pulumi.StringPtrOutput)
+}
+
+// RADIUS keywrap message authentication code key (MACK)
+func (o SettingMxtunnelsRadsecAuthServerOutput) KeywrapMack() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelsRadsecAuthServer) *string { return v.KeywrapMack }).(pulumi.StringPtrOutput)
+}
+
+// UDP port used by the RADIUS authentication server
+func (o SettingMxtunnelsRadsecAuthServerOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelsRadsecAuthServer) *string { return v.Port }).(pulumi.StringPtrOutput)
+}
+
+// Whether to require Message-Authenticator in requests
+func (o SettingMxtunnelsRadsecAuthServerOutput) RequireMessageAuthenticator() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelsRadsecAuthServer) *bool { return v.RequireMessageAuthenticator }).(pulumi.BoolPtrOutput)
+}
+
+// Shared secret used with this RADIUS authentication server
+func (o SettingMxtunnelsRadsecAuthServerOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v SettingMxtunnelsRadsecAuthServer) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+type SettingMxtunnelsRadsecAuthServerArrayOutput struct{ *pulumi.OutputState }
+
+func (SettingMxtunnelsRadsecAuthServerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SettingMxtunnelsRadsecAuthServer)(nil)).Elem()
+}
+
+func (o SettingMxtunnelsRadsecAuthServerArrayOutput) ToSettingMxtunnelsRadsecAuthServerArrayOutput() SettingMxtunnelsRadsecAuthServerArrayOutput {
+	return o
+}
+
+func (o SettingMxtunnelsRadsecAuthServerArrayOutput) ToSettingMxtunnelsRadsecAuthServerArrayOutputWithContext(ctx context.Context) SettingMxtunnelsRadsecAuthServerArrayOutput {
+	return o
+}
+
+func (o SettingMxtunnelsRadsecAuthServerArrayOutput) Index(i pulumi.IntInput) SettingMxtunnelsRadsecAuthServerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SettingMxtunnelsRadsecAuthServer {
+		return vs[0].([]SettingMxtunnelsRadsecAuthServer)[vs[1].(int)]
+	}).(SettingMxtunnelsRadsecAuthServerOutput)
+}
+
 type SettingOccupancy struct {
 	// Indicate whether named BLE assets should be included in the zone occupancy calculation
 	AssetsEnabled *bool `pulumi:"assetsEnabled"`
 	// Indicate whether connected Wi-Fi clients should be included in the zone occupancy calculation
 	ClientsEnabled *bool `pulumi:"clientsEnabled"`
-	// Minimum duration
+	// Minimum dwell duration before a client or asset is counted in occupancy analytics
 	MinDuration *int `pulumi:"minDuration"`
 	// Indicate whether SDK clients should be included in the zone occupancy calculation
 	SdkclientsEnabled *bool `pulumi:"sdkclientsEnabled"`
@@ -17636,7 +19543,7 @@ type SettingOccupancyArgs struct {
 	AssetsEnabled pulumi.BoolPtrInput `pulumi:"assetsEnabled"`
 	// Indicate whether connected Wi-Fi clients should be included in the zone occupancy calculation
 	ClientsEnabled pulumi.BoolPtrInput `pulumi:"clientsEnabled"`
-	// Minimum duration
+	// Minimum dwell duration before a client or asset is counted in occupancy analytics
 	MinDuration pulumi.IntPtrInput `pulumi:"minDuration"`
 	// Indicate whether SDK clients should be included in the zone occupancy calculation
 	SdkclientsEnabled pulumi.BoolPtrInput `pulumi:"sdkclientsEnabled"`
@@ -17731,7 +19638,7 @@ func (o SettingOccupancyOutput) ClientsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingOccupancy) *bool { return v.ClientsEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Minimum duration
+// Minimum dwell duration before a client or asset is counted in occupancy analytics
 func (o SettingOccupancyOutput) MinDuration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingOccupancy) *int { return v.MinDuration }).(pulumi.IntPtrOutput)
 }
@@ -17790,7 +19697,7 @@ func (o SettingOccupancyPtrOutput) ClientsEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Minimum duration
+// Minimum dwell duration before a client or asset is counted in occupancy analytics
 func (o SettingOccupancyPtrOutput) MinDuration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SettingOccupancy) *int {
 		if v == nil {
@@ -17821,8 +19728,10 @@ func (o SettingOccupancyPtrOutput) UnconnectedClientsEnabled() pulumi.BoolPtrOut
 }
 
 type SettingProxy struct {
-	Disabled *bool   `pulumi:"disabled"`
-	Url      *string `pulumi:"url"`
+	// Whether this proxy configuration is disabled
+	Disabled *bool `pulumi:"disabled"`
+	// Proxy URL used to reach Mist
+	Url *string `pulumi:"url"`
 }
 
 // SettingProxyInput is an input type that accepts SettingProxyArgs and SettingProxyOutput values.
@@ -17837,8 +19746,10 @@ type SettingProxyInput interface {
 }
 
 type SettingProxyArgs struct {
-	Disabled pulumi.BoolPtrInput   `pulumi:"disabled"`
-	Url      pulumi.StringPtrInput `pulumi:"url"`
+	// Whether this proxy configuration is disabled
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// Proxy URL used to reach Mist
+	Url pulumi.StringPtrInput `pulumi:"url"`
 }
 
 func (SettingProxyArgs) ElementType() reflect.Type {
@@ -17918,10 +19829,12 @@ func (o SettingProxyOutput) ToSettingProxyPtrOutputWithContext(ctx context.Conte
 	}).(SettingProxyPtrOutput)
 }
 
+// Whether this proxy configuration is disabled
 func (o SettingProxyOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingProxy) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
+// Proxy URL used to reach Mist
 func (o SettingProxyOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingProxy) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
@@ -17950,6 +19863,7 @@ func (o SettingProxyPtrOutput) Elem() SettingProxyOutput {
 	}).(SettingProxyOutput)
 }
 
+// Whether this proxy configuration is disabled
 func (o SettingProxyPtrOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingProxy) *bool {
 		if v == nil {
@@ -17959,6 +19873,7 @@ func (o SettingProxyPtrOutput) Disabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Proxy URL used to reach Mist
 func (o SettingProxyPtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingProxy) *string {
 		if v == nil {
@@ -17969,7 +19884,7 @@ func (o SettingProxyPtrOutput) Url() pulumi.StringPtrOutput {
 }
 
 type SettingRogue struct {
-	// list of VLAN IDs on which rogue APs are ignored
+	// VLAN IDs allowed by the rogue detection policy
 	AllowedVlanIds []int `pulumi:"allowedVlanIds"`
 	// Whether rogue detection is enabled
 	Enabled *bool `pulumi:"enabled"`
@@ -17983,9 +19898,9 @@ type SettingRogue struct {
 	MinRogueRssi *int `pulumi:"minRogueRssi"`
 	// Minimum RSSI for an AP to be considered neighbor (ignoring APs that’s far away)
 	MinRssi *int `pulumi:"minRssi"`
-	// list of BSSIDs to whitelist. Ex: "cc-:8e-:6f-:d4-:bf-:16", "cc-8e-6f-d4-bf-16", "cc-73-*", "cc:82:*"
+	// BSSID values or wildcard patterns excluded from rogue detection
 	WhitelistedBssids []string `pulumi:"whitelistedBssids"`
-	// List of SSIDs to whitelist
+	// SSID names excluded from rogue detection
 	WhitelistedSsids []string `pulumi:"whitelistedSsids"`
 }
 
@@ -18001,7 +19916,7 @@ type SettingRogueInput interface {
 }
 
 type SettingRogueArgs struct {
-	// list of VLAN IDs on which rogue APs are ignored
+	// VLAN IDs allowed by the rogue detection policy
 	AllowedVlanIds pulumi.IntArrayInput `pulumi:"allowedVlanIds"`
 	// Whether rogue detection is enabled
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
@@ -18015,9 +19930,9 @@ type SettingRogueArgs struct {
 	MinRogueRssi pulumi.IntPtrInput `pulumi:"minRogueRssi"`
 	// Minimum RSSI for an AP to be considered neighbor (ignoring APs that’s far away)
 	MinRssi pulumi.IntPtrInput `pulumi:"minRssi"`
-	// list of BSSIDs to whitelist. Ex: "cc-:8e-:6f-:d4-:bf-:16", "cc-8e-6f-d4-bf-16", "cc-73-*", "cc:82:*"
+	// BSSID values or wildcard patterns excluded from rogue detection
 	WhitelistedBssids pulumi.StringArrayInput `pulumi:"whitelistedBssids"`
-	// List of SSIDs to whitelist
+	// SSID names excluded from rogue detection
 	WhitelistedSsids pulumi.StringArrayInput `pulumi:"whitelistedSsids"`
 }
 
@@ -18098,7 +20013,7 @@ func (o SettingRogueOutput) ToSettingRoguePtrOutputWithContext(ctx context.Conte
 	}).(SettingRoguePtrOutput)
 }
 
-// list of VLAN IDs on which rogue APs are ignored
+// VLAN IDs allowed by the rogue detection policy
 func (o SettingRogueOutput) AllowedVlanIds() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v SettingRogue) []int { return v.AllowedVlanIds }).(pulumi.IntArrayOutput)
 }
@@ -18133,12 +20048,12 @@ func (o SettingRogueOutput) MinRssi() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingRogue) *int { return v.MinRssi }).(pulumi.IntPtrOutput)
 }
 
-// list of BSSIDs to whitelist. Ex: "cc-:8e-:6f-:d4-:bf-:16", "cc-8e-6f-d4-bf-16", "cc-73-*", "cc:82:*"
+// BSSID values or wildcard patterns excluded from rogue detection
 func (o SettingRogueOutput) WhitelistedBssids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SettingRogue) []string { return v.WhitelistedBssids }).(pulumi.StringArrayOutput)
 }
 
-// List of SSIDs to whitelist
+// SSID names excluded from rogue detection
 func (o SettingRogueOutput) WhitelistedSsids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SettingRogue) []string { return v.WhitelistedSsids }).(pulumi.StringArrayOutput)
 }
@@ -18167,7 +20082,7 @@ func (o SettingRoguePtrOutput) Elem() SettingRogueOutput {
 	}).(SettingRogueOutput)
 }
 
-// list of VLAN IDs on which rogue APs are ignored
+// VLAN IDs allowed by the rogue detection policy
 func (o SettingRoguePtrOutput) AllowedVlanIds() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *SettingRogue) []int {
 		if v == nil {
@@ -18237,7 +20152,7 @@ func (o SettingRoguePtrOutput) MinRssi() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// list of BSSIDs to whitelist. Ex: "cc-:8e-:6f-:d4-:bf-:16", "cc-8e-6f-d4-bf-16", "cc-73-*", "cc:82:*"
+// BSSID values or wildcard patterns excluded from rogue detection
 func (o SettingRoguePtrOutput) WhitelistedBssids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SettingRogue) []string {
 		if v == nil {
@@ -18247,7 +20162,7 @@ func (o SettingRoguePtrOutput) WhitelistedBssids() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// List of SSIDs to whitelist
+// SSID names excluded from rogue detection
 func (o SettingRoguePtrOutput) WhitelistedSsids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SettingRogue) []string {
 		if v == nil {
@@ -18258,11 +20173,15 @@ func (o SettingRoguePtrOutput) WhitelistedSsids() pulumi.StringArrayOutput {
 }
 
 type SettingRtsa struct {
-	AppWaking             *bool `pulumi:"appWaking"`
-	DisableDeadReckoning  *bool `pulumi:"disableDeadReckoning"`
+	// Whether app wake-up support is enabled for managed mobility
+	AppWaking *bool `pulumi:"appWaking"`
+	// Whether dead reckoning is disabled for managed mobility
+	DisableDeadReckoning *bool `pulumi:"disableDeadReckoning"`
+	// Whether pressure sensor use is disabled for managed mobility
 	DisablePressureSensor *bool `pulumi:"disablePressureSensor"`
-	Enabled               *bool `pulumi:"enabled"`
-	// Asset tracking related
+	// Whether managed mobility features are enabled
+	Enabled *bool `pulumi:"enabled"`
+	// Whether BLE asset tracking is enabled for managed mobility
 	TrackAsset *bool `pulumi:"trackAsset"`
 }
 
@@ -18278,11 +20197,15 @@ type SettingRtsaInput interface {
 }
 
 type SettingRtsaArgs struct {
-	AppWaking             pulumi.BoolPtrInput `pulumi:"appWaking"`
-	DisableDeadReckoning  pulumi.BoolPtrInput `pulumi:"disableDeadReckoning"`
+	// Whether app wake-up support is enabled for managed mobility
+	AppWaking pulumi.BoolPtrInput `pulumi:"appWaking"`
+	// Whether dead reckoning is disabled for managed mobility
+	DisableDeadReckoning pulumi.BoolPtrInput `pulumi:"disableDeadReckoning"`
+	// Whether pressure sensor use is disabled for managed mobility
 	DisablePressureSensor pulumi.BoolPtrInput `pulumi:"disablePressureSensor"`
-	Enabled               pulumi.BoolPtrInput `pulumi:"enabled"`
-	// Asset tracking related
+	// Whether managed mobility features are enabled
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Whether BLE asset tracking is enabled for managed mobility
 	TrackAsset pulumi.BoolPtrInput `pulumi:"trackAsset"`
 }
 
@@ -18363,23 +20286,27 @@ func (o SettingRtsaOutput) ToSettingRtsaPtrOutputWithContext(ctx context.Context
 	}).(SettingRtsaPtrOutput)
 }
 
+// Whether app wake-up support is enabled for managed mobility
 func (o SettingRtsaOutput) AppWaking() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingRtsa) *bool { return v.AppWaking }).(pulumi.BoolPtrOutput)
 }
 
+// Whether dead reckoning is disabled for managed mobility
 func (o SettingRtsaOutput) DisableDeadReckoning() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingRtsa) *bool { return v.DisableDeadReckoning }).(pulumi.BoolPtrOutput)
 }
 
+// Whether pressure sensor use is disabled for managed mobility
 func (o SettingRtsaOutput) DisablePressureSensor() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingRtsa) *bool { return v.DisablePressureSensor }).(pulumi.BoolPtrOutput)
 }
 
+// Whether managed mobility features are enabled
 func (o SettingRtsaOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingRtsa) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Asset tracking related
+// Whether BLE asset tracking is enabled for managed mobility
 func (o SettingRtsaOutput) TrackAsset() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingRtsa) *bool { return v.TrackAsset }).(pulumi.BoolPtrOutput)
 }
@@ -18408,6 +20335,7 @@ func (o SettingRtsaPtrOutput) Elem() SettingRtsaOutput {
 	}).(SettingRtsaOutput)
 }
 
+// Whether app wake-up support is enabled for managed mobility
 func (o SettingRtsaPtrOutput) AppWaking() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingRtsa) *bool {
 		if v == nil {
@@ -18417,6 +20345,7 @@ func (o SettingRtsaPtrOutput) AppWaking() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Whether dead reckoning is disabled for managed mobility
 func (o SettingRtsaPtrOutput) DisableDeadReckoning() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingRtsa) *bool {
 		if v == nil {
@@ -18426,6 +20355,7 @@ func (o SettingRtsaPtrOutput) DisableDeadReckoning() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Whether pressure sensor use is disabled for managed mobility
 func (o SettingRtsaPtrOutput) DisablePressureSensor() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingRtsa) *bool {
 		if v == nil {
@@ -18435,6 +20365,7 @@ func (o SettingRtsaPtrOutput) DisablePressureSensor() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Whether managed mobility features are enabled
 func (o SettingRtsaPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingRtsa) *bool {
 		if v == nil {
@@ -18444,7 +20375,7 @@ func (o SettingRtsaPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Asset tracking related
+// Whether BLE asset tracking is enabled for managed mobility
 func (o SettingRtsaPtrOutput) TrackAsset() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingRtsa) *bool {
 		if v == nil {
@@ -18455,9 +20386,12 @@ func (o SettingRtsaPtrOutput) TrackAsset() pulumi.BoolPtrOutput {
 }
 
 type SettingSimpleAlert struct {
-	ArpFailure  *SettingSimpleAlertArpFailure  `pulumi:"arpFailure"`
+	// Thresholds for ARP failure heuristic alerts
+	ArpFailure *SettingSimpleAlertArpFailure `pulumi:"arpFailure"`
+	// Thresholds for DHCP failure heuristic alerts
 	DhcpFailure *SettingSimpleAlertDhcpFailure `pulumi:"dhcpFailure"`
-	DnsFailure  *SettingSimpleAlertDnsFailure  `pulumi:"dnsFailure"`
+	// Thresholds for DNS failure heuristic alerts
+	DnsFailure *SettingSimpleAlertDnsFailure `pulumi:"dnsFailure"`
 }
 
 // SettingSimpleAlertInput is an input type that accepts SettingSimpleAlertArgs and SettingSimpleAlertOutput values.
@@ -18472,9 +20406,12 @@ type SettingSimpleAlertInput interface {
 }
 
 type SettingSimpleAlertArgs struct {
-	ArpFailure  SettingSimpleAlertArpFailurePtrInput  `pulumi:"arpFailure"`
+	// Thresholds for ARP failure heuristic alerts
+	ArpFailure SettingSimpleAlertArpFailurePtrInput `pulumi:"arpFailure"`
+	// Thresholds for DHCP failure heuristic alerts
 	DhcpFailure SettingSimpleAlertDhcpFailurePtrInput `pulumi:"dhcpFailure"`
-	DnsFailure  SettingSimpleAlertDnsFailurePtrInput  `pulumi:"dnsFailure"`
+	// Thresholds for DNS failure heuristic alerts
+	DnsFailure SettingSimpleAlertDnsFailurePtrInput `pulumi:"dnsFailure"`
 }
 
 func (SettingSimpleAlertArgs) ElementType() reflect.Type {
@@ -18554,14 +20491,17 @@ func (o SettingSimpleAlertOutput) ToSettingSimpleAlertPtrOutputWithContext(ctx c
 	}).(SettingSimpleAlertPtrOutput)
 }
 
+// Thresholds for ARP failure heuristic alerts
 func (o SettingSimpleAlertOutput) ArpFailure() SettingSimpleAlertArpFailurePtrOutput {
 	return o.ApplyT(func(v SettingSimpleAlert) *SettingSimpleAlertArpFailure { return v.ArpFailure }).(SettingSimpleAlertArpFailurePtrOutput)
 }
 
+// Thresholds for DHCP failure heuristic alerts
 func (o SettingSimpleAlertOutput) DhcpFailure() SettingSimpleAlertDhcpFailurePtrOutput {
 	return o.ApplyT(func(v SettingSimpleAlert) *SettingSimpleAlertDhcpFailure { return v.DhcpFailure }).(SettingSimpleAlertDhcpFailurePtrOutput)
 }
 
+// Thresholds for DNS failure heuristic alerts
 func (o SettingSimpleAlertOutput) DnsFailure() SettingSimpleAlertDnsFailurePtrOutput {
 	return o.ApplyT(func(v SettingSimpleAlert) *SettingSimpleAlertDnsFailure { return v.DnsFailure }).(SettingSimpleAlertDnsFailurePtrOutput)
 }
@@ -18590,6 +20530,7 @@ func (o SettingSimpleAlertPtrOutput) Elem() SettingSimpleAlertOutput {
 	}).(SettingSimpleAlertOutput)
 }
 
+// Thresholds for ARP failure heuristic alerts
 func (o SettingSimpleAlertPtrOutput) ArpFailure() SettingSimpleAlertArpFailurePtrOutput {
 	return o.ApplyT(func(v *SettingSimpleAlert) *SettingSimpleAlertArpFailure {
 		if v == nil {
@@ -18599,6 +20540,7 @@ func (o SettingSimpleAlertPtrOutput) ArpFailure() SettingSimpleAlertArpFailurePt
 	}).(SettingSimpleAlertArpFailurePtrOutput)
 }
 
+// Thresholds for DHCP failure heuristic alerts
 func (o SettingSimpleAlertPtrOutput) DhcpFailure() SettingSimpleAlertDhcpFailurePtrOutput {
 	return o.ApplyT(func(v *SettingSimpleAlert) *SettingSimpleAlertDhcpFailure {
 		if v == nil {
@@ -18608,6 +20550,7 @@ func (o SettingSimpleAlertPtrOutput) DhcpFailure() SettingSimpleAlertDhcpFailure
 	}).(SettingSimpleAlertDhcpFailurePtrOutput)
 }
 
+// Thresholds for DNS failure heuristic alerts
 func (o SettingSimpleAlertPtrOutput) DnsFailure() SettingSimpleAlertDnsFailurePtrOutput {
 	return o.ApplyT(func(v *SettingSimpleAlert) *SettingSimpleAlertDnsFailure {
 		if v == nil {
@@ -18618,9 +20561,11 @@ func (o SettingSimpleAlertPtrOutput) DnsFailure() SettingSimpleAlertDnsFailurePt
 }
 
 type SettingSimpleAlertArpFailure struct {
+	// Number of distinct clients that must encounter ARP failures before alerting
 	ClientCount *int `pulumi:"clientCount"`
-	// failing within minutes
-	Duration      *int `pulumi:"duration"`
+	// Time window in minutes for evaluating ARP failures
+	Duration *int `pulumi:"duration"`
+	// Number of ARP failure incidents required within the duration window
 	IncidentCount *int `pulumi:"incidentCount"`
 }
 
@@ -18636,9 +20581,11 @@ type SettingSimpleAlertArpFailureInput interface {
 }
 
 type SettingSimpleAlertArpFailureArgs struct {
+	// Number of distinct clients that must encounter ARP failures before alerting
 	ClientCount pulumi.IntPtrInput `pulumi:"clientCount"`
-	// failing within minutes
-	Duration      pulumi.IntPtrInput `pulumi:"duration"`
+	// Time window in minutes for evaluating ARP failures
+	Duration pulumi.IntPtrInput `pulumi:"duration"`
+	// Number of ARP failure incidents required within the duration window
 	IncidentCount pulumi.IntPtrInput `pulumi:"incidentCount"`
 }
 
@@ -18719,15 +20666,17 @@ func (o SettingSimpleAlertArpFailureOutput) ToSettingSimpleAlertArpFailurePtrOut
 	}).(SettingSimpleAlertArpFailurePtrOutput)
 }
 
+// Number of distinct clients that must encounter ARP failures before alerting
 func (o SettingSimpleAlertArpFailureOutput) ClientCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingSimpleAlertArpFailure) *int { return v.ClientCount }).(pulumi.IntPtrOutput)
 }
 
-// failing within minutes
+// Time window in minutes for evaluating ARP failures
 func (o SettingSimpleAlertArpFailureOutput) Duration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingSimpleAlertArpFailure) *int { return v.Duration }).(pulumi.IntPtrOutput)
 }
 
+// Number of ARP failure incidents required within the duration window
 func (o SettingSimpleAlertArpFailureOutput) IncidentCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingSimpleAlertArpFailure) *int { return v.IncidentCount }).(pulumi.IntPtrOutput)
 }
@@ -18756,6 +20705,7 @@ func (o SettingSimpleAlertArpFailurePtrOutput) Elem() SettingSimpleAlertArpFailu
 	}).(SettingSimpleAlertArpFailureOutput)
 }
 
+// Number of distinct clients that must encounter ARP failures before alerting
 func (o SettingSimpleAlertArpFailurePtrOutput) ClientCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SettingSimpleAlertArpFailure) *int {
 		if v == nil {
@@ -18765,7 +20715,7 @@ func (o SettingSimpleAlertArpFailurePtrOutput) ClientCount() pulumi.IntPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
-// failing within minutes
+// Time window in minutes for evaluating ARP failures
 func (o SettingSimpleAlertArpFailurePtrOutput) Duration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SettingSimpleAlertArpFailure) *int {
 		if v == nil {
@@ -18775,6 +20725,7 @@ func (o SettingSimpleAlertArpFailurePtrOutput) Duration() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Number of ARP failure incidents required within the duration window
 func (o SettingSimpleAlertArpFailurePtrOutput) IncidentCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SettingSimpleAlertArpFailure) *int {
 		if v == nil {
@@ -18785,9 +20736,11 @@ func (o SettingSimpleAlertArpFailurePtrOutput) IncidentCount() pulumi.IntPtrOutp
 }
 
 type SettingSimpleAlertDhcpFailure struct {
+	// Number of distinct clients that must encounter DHCP failures before alerting
 	ClientCount *int `pulumi:"clientCount"`
-	// failing within minutes
-	Duration      *int `pulumi:"duration"`
+	// Time window in minutes for evaluating DHCP failures
+	Duration *int `pulumi:"duration"`
+	// Number of DHCP failure incidents required within the duration window
 	IncidentCount *int `pulumi:"incidentCount"`
 }
 
@@ -18803,9 +20756,11 @@ type SettingSimpleAlertDhcpFailureInput interface {
 }
 
 type SettingSimpleAlertDhcpFailureArgs struct {
+	// Number of distinct clients that must encounter DHCP failures before alerting
 	ClientCount pulumi.IntPtrInput `pulumi:"clientCount"`
-	// failing within minutes
-	Duration      pulumi.IntPtrInput `pulumi:"duration"`
+	// Time window in minutes for evaluating DHCP failures
+	Duration pulumi.IntPtrInput `pulumi:"duration"`
+	// Number of DHCP failure incidents required within the duration window
 	IncidentCount pulumi.IntPtrInput `pulumi:"incidentCount"`
 }
 
@@ -18886,15 +20841,17 @@ func (o SettingSimpleAlertDhcpFailureOutput) ToSettingSimpleAlertDhcpFailurePtrO
 	}).(SettingSimpleAlertDhcpFailurePtrOutput)
 }
 
+// Number of distinct clients that must encounter DHCP failures before alerting
 func (o SettingSimpleAlertDhcpFailureOutput) ClientCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingSimpleAlertDhcpFailure) *int { return v.ClientCount }).(pulumi.IntPtrOutput)
 }
 
-// failing within minutes
+// Time window in minutes for evaluating DHCP failures
 func (o SettingSimpleAlertDhcpFailureOutput) Duration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingSimpleAlertDhcpFailure) *int { return v.Duration }).(pulumi.IntPtrOutput)
 }
 
+// Number of DHCP failure incidents required within the duration window
 func (o SettingSimpleAlertDhcpFailureOutput) IncidentCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingSimpleAlertDhcpFailure) *int { return v.IncidentCount }).(pulumi.IntPtrOutput)
 }
@@ -18923,6 +20880,7 @@ func (o SettingSimpleAlertDhcpFailurePtrOutput) Elem() SettingSimpleAlertDhcpFai
 	}).(SettingSimpleAlertDhcpFailureOutput)
 }
 
+// Number of distinct clients that must encounter DHCP failures before alerting
 func (o SettingSimpleAlertDhcpFailurePtrOutput) ClientCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SettingSimpleAlertDhcpFailure) *int {
 		if v == nil {
@@ -18932,7 +20890,7 @@ func (o SettingSimpleAlertDhcpFailurePtrOutput) ClientCount() pulumi.IntPtrOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
-// failing within minutes
+// Time window in minutes for evaluating DHCP failures
 func (o SettingSimpleAlertDhcpFailurePtrOutput) Duration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SettingSimpleAlertDhcpFailure) *int {
 		if v == nil {
@@ -18942,6 +20900,7 @@ func (o SettingSimpleAlertDhcpFailurePtrOutput) Duration() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Number of DHCP failure incidents required within the duration window
 func (o SettingSimpleAlertDhcpFailurePtrOutput) IncidentCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SettingSimpleAlertDhcpFailure) *int {
 		if v == nil {
@@ -18952,9 +20911,11 @@ func (o SettingSimpleAlertDhcpFailurePtrOutput) IncidentCount() pulumi.IntPtrOut
 }
 
 type SettingSimpleAlertDnsFailure struct {
+	// Number of distinct clients that must encounter DNS failures before alerting
 	ClientCount *int `pulumi:"clientCount"`
-	// failing within minutes
-	Duration      *int `pulumi:"duration"`
+	// Time window in minutes for evaluating DNS failures
+	Duration *int `pulumi:"duration"`
+	// Number of DNS failure incidents required within the duration window
 	IncidentCount *int `pulumi:"incidentCount"`
 }
 
@@ -18970,9 +20931,11 @@ type SettingSimpleAlertDnsFailureInput interface {
 }
 
 type SettingSimpleAlertDnsFailureArgs struct {
+	// Number of distinct clients that must encounter DNS failures before alerting
 	ClientCount pulumi.IntPtrInput `pulumi:"clientCount"`
-	// failing within minutes
-	Duration      pulumi.IntPtrInput `pulumi:"duration"`
+	// Time window in minutes for evaluating DNS failures
+	Duration pulumi.IntPtrInput `pulumi:"duration"`
+	// Number of DNS failure incidents required within the duration window
 	IncidentCount pulumi.IntPtrInput `pulumi:"incidentCount"`
 }
 
@@ -19053,15 +21016,17 @@ func (o SettingSimpleAlertDnsFailureOutput) ToSettingSimpleAlertDnsFailurePtrOut
 	}).(SettingSimpleAlertDnsFailurePtrOutput)
 }
 
+// Number of distinct clients that must encounter DNS failures before alerting
 func (o SettingSimpleAlertDnsFailureOutput) ClientCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingSimpleAlertDnsFailure) *int { return v.ClientCount }).(pulumi.IntPtrOutput)
 }
 
-// failing within minutes
+// Time window in minutes for evaluating DNS failures
 func (o SettingSimpleAlertDnsFailureOutput) Duration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingSimpleAlertDnsFailure) *int { return v.Duration }).(pulumi.IntPtrOutput)
 }
 
+// Number of DNS failure incidents required within the duration window
 func (o SettingSimpleAlertDnsFailureOutput) IncidentCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingSimpleAlertDnsFailure) *int { return v.IncidentCount }).(pulumi.IntPtrOutput)
 }
@@ -19090,6 +21055,7 @@ func (o SettingSimpleAlertDnsFailurePtrOutput) Elem() SettingSimpleAlertDnsFailu
 	}).(SettingSimpleAlertDnsFailureOutput)
 }
 
+// Number of distinct clients that must encounter DNS failures before alerting
 func (o SettingSimpleAlertDnsFailurePtrOutput) ClientCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SettingSimpleAlertDnsFailure) *int {
 		if v == nil {
@@ -19099,7 +21065,7 @@ func (o SettingSimpleAlertDnsFailurePtrOutput) ClientCount() pulumi.IntPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
-// failing within minutes
+// Time window in minutes for evaluating DNS failures
 func (o SettingSimpleAlertDnsFailurePtrOutput) Duration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SettingSimpleAlertDnsFailure) *int {
 		if v == nil {
@@ -19109,6 +21075,7 @@ func (o SettingSimpleAlertDnsFailurePtrOutput) Duration() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Number of DNS failure incidents required within the duration window
 func (o SettingSimpleAlertDnsFailurePtrOutput) IncidentCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SettingSimpleAlertDnsFailure) *int {
 		if v == nil {
@@ -19119,8 +21086,9 @@ func (o SettingSimpleAlertDnsFailurePtrOutput) IncidentCount() pulumi.IntPtrOutp
 }
 
 type SettingSkyatp struct {
+	// Whether Sky ATP is enabled for the site
 	Enabled *bool `pulumi:"enabled"`
-	// Whether to send IP-MAC mapping to SkyATP
+	// Whether IP-to-MAC mappings are sent to Sky ATP
 	SendIpMacMapping *bool `pulumi:"sendIpMacMapping"`
 }
 
@@ -19136,8 +21104,9 @@ type SettingSkyatpInput interface {
 }
 
 type SettingSkyatpArgs struct {
+	// Whether Sky ATP is enabled for the site
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// Whether to send IP-MAC mapping to SkyATP
+	// Whether IP-to-MAC mappings are sent to Sky ATP
 	SendIpMacMapping pulumi.BoolPtrInput `pulumi:"sendIpMacMapping"`
 }
 
@@ -19218,11 +21187,12 @@ func (o SettingSkyatpOutput) ToSettingSkyatpPtrOutputWithContext(ctx context.Con
 	}).(SettingSkyatpPtrOutput)
 }
 
+// Whether Sky ATP is enabled for the site
 func (o SettingSkyatpOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingSkyatp) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Whether to send IP-MAC mapping to SkyATP
+// Whether IP-to-MAC mappings are sent to Sky ATP
 func (o SettingSkyatpOutput) SendIpMacMapping() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingSkyatp) *bool { return v.SendIpMacMapping }).(pulumi.BoolPtrOutput)
 }
@@ -19251,6 +21221,7 @@ func (o SettingSkyatpPtrOutput) Elem() SettingSkyatpOutput {
 	}).(SettingSkyatpOutput)
 }
 
+// Whether Sky ATP is enabled for the site
 func (o SettingSkyatpPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingSkyatp) *bool {
 		if v == nil {
@@ -19260,7 +21231,7 @@ func (o SettingSkyatpPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether to send IP-MAC mapping to SkyATP
+// Whether IP-to-MAC mappings are sent to Sky ATP
 func (o SettingSkyatpPtrOutput) SendIpMacMapping() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingSkyatp) *bool {
 		if v == nil {
@@ -19271,11 +21242,11 @@ func (o SettingSkyatpPtrOutput) SendIpMacMapping() pulumi.BoolPtrOutput {
 }
 
 type SettingSleThresholds struct {
-	// Capacity, in %
+	// Threshold percentage for capacity SLE scoring
 	Capacity *int `pulumi:"capacity"`
-	// Coverage, in dBm
+	// RSSI threshold for coverage SLE scoring, in dBm
 	Coverage *int `pulumi:"coverage"`
-	// Throughput, in Mbps
+	// Minimum throughput threshold for SLE scoring, in Mbps
 	Throughput *int `pulumi:"throughput"`
 	// Time to connect, in seconds
 	Timetoconnect *int `pulumi:"timetoconnect"`
@@ -19293,11 +21264,11 @@ type SettingSleThresholdsInput interface {
 }
 
 type SettingSleThresholdsArgs struct {
-	// Capacity, in %
+	// Threshold percentage for capacity SLE scoring
 	Capacity pulumi.IntPtrInput `pulumi:"capacity"`
-	// Coverage, in dBm
+	// RSSI threshold for coverage SLE scoring, in dBm
 	Coverage pulumi.IntPtrInput `pulumi:"coverage"`
-	// Throughput, in Mbps
+	// Minimum throughput threshold for SLE scoring, in Mbps
 	Throughput pulumi.IntPtrInput `pulumi:"throughput"`
 	// Time to connect, in seconds
 	Timetoconnect pulumi.IntPtrInput `pulumi:"timetoconnect"`
@@ -19380,17 +21351,17 @@ func (o SettingSleThresholdsOutput) ToSettingSleThresholdsPtrOutputWithContext(c
 	}).(SettingSleThresholdsPtrOutput)
 }
 
-// Capacity, in %
+// Threshold percentage for capacity SLE scoring
 func (o SettingSleThresholdsOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingSleThresholds) *int { return v.Capacity }).(pulumi.IntPtrOutput)
 }
 
-// Coverage, in dBm
+// RSSI threshold for coverage SLE scoring, in dBm
 func (o SettingSleThresholdsOutput) Coverage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingSleThresholds) *int { return v.Coverage }).(pulumi.IntPtrOutput)
 }
 
-// Throughput, in Mbps
+// Minimum throughput threshold for SLE scoring, in Mbps
 func (o SettingSleThresholdsOutput) Throughput() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingSleThresholds) *int { return v.Throughput }).(pulumi.IntPtrOutput)
 }
@@ -19424,7 +21395,7 @@ func (o SettingSleThresholdsPtrOutput) Elem() SettingSleThresholdsOutput {
 	}).(SettingSleThresholdsOutput)
 }
 
-// Capacity, in %
+// Threshold percentage for capacity SLE scoring
 func (o SettingSleThresholdsPtrOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SettingSleThresholds) *int {
 		if v == nil {
@@ -19434,7 +21405,7 @@ func (o SettingSleThresholdsPtrOutput) Capacity() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Coverage, in dBm
+// RSSI threshold for coverage SLE scoring, in dBm
 func (o SettingSleThresholdsPtrOutput) Coverage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SettingSleThresholds) *int {
 		if v == nil {
@@ -19444,7 +21415,7 @@ func (o SettingSleThresholdsPtrOutput) Coverage() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Throughput, in Mbps
+// Minimum throughput threshold for SLE scoring, in Mbps
 func (o SettingSleThresholdsPtrOutput) Throughput() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SettingSleThresholds) *int {
 		if v == nil {
@@ -19465,6 +21436,7 @@ func (o SettingSleThresholdsPtrOutput) Timetoconnect() pulumi.IntPtrOutput {
 }
 
 type SettingSrxApp struct {
+	// Whether Juniper SRX application visibility is enabled
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -19480,6 +21452,7 @@ type SettingSrxAppInput interface {
 }
 
 type SettingSrxAppArgs struct {
+	// Whether Juniper SRX application visibility is enabled
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -19560,6 +21533,7 @@ func (o SettingSrxAppOutput) ToSettingSrxAppPtrOutputWithContext(ctx context.Con
 	}).(SettingSrxAppPtrOutput)
 }
 
+// Whether Juniper SRX application visibility is enabled
 func (o SettingSrxAppOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingSrxApp) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -19588,6 +21562,7 @@ func (o SettingSrxAppPtrOutput) Elem() SettingSrxAppOutput {
 	}).(SettingSrxAppOutput)
 }
 
+// Whether Juniper SRX application visibility is enabled
 func (o SettingSrxAppPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingSrxApp) *bool {
 		if v == nil {
@@ -19598,15 +21573,15 @@ func (o SettingSrxAppPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type SettingSsr struct {
-	// auto_upgrade device first time it is onboarded
+	// Automatic SSR firmware upgrade settings for newly onboarded devices
 	AutoUpgrade *SettingSsrAutoUpgrade `pulumi:"autoUpgrade"`
-	// List of Conductor IP Addresses or Hosts to be used by the SSR Devices
+	// IP addresses or hostnames of conductors used by SSR devices
 	ConductorHosts []string `pulumi:"conductorHosts"`
-	// Token to be used by the SSR Devices to connect to the Conductor
+	// Registration token used by SSR devices to connect to the conductor
 	ConductorToken *string `pulumi:"conductorToken"`
-	// Disable stats collection on SSR devices
+	// Whether stats collection is disabled on SSR devices
 	DisableStats *bool `pulumi:"disableStats"`
-	// SSR proxy configuration to talk to Mist
+	// Network proxy settings used by SSR devices to reach Mist
 	Proxy *SettingSsrProxy `pulumi:"proxy"`
 }
 
@@ -19622,15 +21597,15 @@ type SettingSsrInput interface {
 }
 
 type SettingSsrArgs struct {
-	// auto_upgrade device first time it is onboarded
+	// Automatic SSR firmware upgrade settings for newly onboarded devices
 	AutoUpgrade SettingSsrAutoUpgradePtrInput `pulumi:"autoUpgrade"`
-	// List of Conductor IP Addresses or Hosts to be used by the SSR Devices
+	// IP addresses or hostnames of conductors used by SSR devices
 	ConductorHosts pulumi.StringArrayInput `pulumi:"conductorHosts"`
-	// Token to be used by the SSR Devices to connect to the Conductor
+	// Registration token used by SSR devices to connect to the conductor
 	ConductorToken pulumi.StringPtrInput `pulumi:"conductorToken"`
-	// Disable stats collection on SSR devices
+	// Whether stats collection is disabled on SSR devices
 	DisableStats pulumi.BoolPtrInput `pulumi:"disableStats"`
-	// SSR proxy configuration to talk to Mist
+	// Network proxy settings used by SSR devices to reach Mist
 	Proxy SettingSsrProxyPtrInput `pulumi:"proxy"`
 }
 
@@ -19711,27 +21686,27 @@ func (o SettingSsrOutput) ToSettingSsrPtrOutputWithContext(ctx context.Context) 
 	}).(SettingSsrPtrOutput)
 }
 
-// auto_upgrade device first time it is onboarded
+// Automatic SSR firmware upgrade settings for newly onboarded devices
 func (o SettingSsrOutput) AutoUpgrade() SettingSsrAutoUpgradePtrOutput {
 	return o.ApplyT(func(v SettingSsr) *SettingSsrAutoUpgrade { return v.AutoUpgrade }).(SettingSsrAutoUpgradePtrOutput)
 }
 
-// List of Conductor IP Addresses or Hosts to be used by the SSR Devices
+// IP addresses or hostnames of conductors used by SSR devices
 func (o SettingSsrOutput) ConductorHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SettingSsr) []string { return v.ConductorHosts }).(pulumi.StringArrayOutput)
 }
 
-// Token to be used by the SSR Devices to connect to the Conductor
+// Registration token used by SSR devices to connect to the conductor
 func (o SettingSsrOutput) ConductorToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingSsr) *string { return v.ConductorToken }).(pulumi.StringPtrOutput)
 }
 
-// Disable stats collection on SSR devices
+// Whether stats collection is disabled on SSR devices
 func (o SettingSsrOutput) DisableStats() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingSsr) *bool { return v.DisableStats }).(pulumi.BoolPtrOutput)
 }
 
-// SSR proxy configuration to talk to Mist
+// Network proxy settings used by SSR devices to reach Mist
 func (o SettingSsrOutput) Proxy() SettingSsrProxyPtrOutput {
 	return o.ApplyT(func(v SettingSsr) *SettingSsrProxy { return v.Proxy }).(SettingSsrProxyPtrOutput)
 }
@@ -19760,7 +21735,7 @@ func (o SettingSsrPtrOutput) Elem() SettingSsrOutput {
 	}).(SettingSsrOutput)
 }
 
-// auto_upgrade device first time it is onboarded
+// Automatic SSR firmware upgrade settings for newly onboarded devices
 func (o SettingSsrPtrOutput) AutoUpgrade() SettingSsrAutoUpgradePtrOutput {
 	return o.ApplyT(func(v *SettingSsr) *SettingSsrAutoUpgrade {
 		if v == nil {
@@ -19770,7 +21745,7 @@ func (o SettingSsrPtrOutput) AutoUpgrade() SettingSsrAutoUpgradePtrOutput {
 	}).(SettingSsrAutoUpgradePtrOutput)
 }
 
-// List of Conductor IP Addresses or Hosts to be used by the SSR Devices
+// IP addresses or hostnames of conductors used by SSR devices
 func (o SettingSsrPtrOutput) ConductorHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SettingSsr) []string {
 		if v == nil {
@@ -19780,7 +21755,7 @@ func (o SettingSsrPtrOutput) ConductorHosts() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Token to be used by the SSR Devices to connect to the Conductor
+// Registration token used by SSR devices to connect to the conductor
 func (o SettingSsrPtrOutput) ConductorToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingSsr) *string {
 		if v == nil {
@@ -19790,7 +21765,7 @@ func (o SettingSsrPtrOutput) ConductorToken() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Disable stats collection on SSR devices
+// Whether stats collection is disabled on SSR devices
 func (o SettingSsrPtrOutput) DisableStats() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingSsr) *bool {
 		if v == nil {
@@ -19800,7 +21775,7 @@ func (o SettingSsrPtrOutput) DisableStats() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// SSR proxy configuration to talk to Mist
+// Network proxy settings used by SSR devices to reach Mist
 func (o SettingSsrPtrOutput) Proxy() SettingSsrProxyPtrOutput {
 	return o.ApplyT(func(v *SettingSsr) *SettingSsrProxy {
 		if v == nil {
@@ -19811,11 +21786,12 @@ func (o SettingSsrPtrOutput) Proxy() SettingSsrProxyPtrOutput {
 }
 
 type SettingSsrAutoUpgrade struct {
-	// upgrade channel to follow. enum: `alpha`, `beta`, `stable`
+	// Firmware release channel used for SSR auto-upgrade
 	Channel *string `pulumi:"channel"`
-	// Property key is the SSR model (e.g. "SSR130").
+	// Per-model SSR firmware versions used for auto-upgrade
 	CustomVersions map[string]string `pulumi:"customVersions"`
-	Enabled        *bool             `pulumi:"enabled"`
+	// Whether SSR auto-upgrade is enabled for newly onboarded devices
+	Enabled *bool `pulumi:"enabled"`
 	// Firmware version to deploy (e.g. 6.3.0-107.r1). Optional, used when customVersions not specified
 	Version *string `pulumi:"version"`
 }
@@ -19832,11 +21808,12 @@ type SettingSsrAutoUpgradeInput interface {
 }
 
 type SettingSsrAutoUpgradeArgs struct {
-	// upgrade channel to follow. enum: `alpha`, `beta`, `stable`
+	// Firmware release channel used for SSR auto-upgrade
 	Channel pulumi.StringPtrInput `pulumi:"channel"`
-	// Property key is the SSR model (e.g. "SSR130").
+	// Per-model SSR firmware versions used for auto-upgrade
 	CustomVersions pulumi.StringMapInput `pulumi:"customVersions"`
-	Enabled        pulumi.BoolPtrInput   `pulumi:"enabled"`
+	// Whether SSR auto-upgrade is enabled for newly onboarded devices
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// Firmware version to deploy (e.g. 6.3.0-107.r1). Optional, used when customVersions not specified
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
@@ -19918,16 +21895,17 @@ func (o SettingSsrAutoUpgradeOutput) ToSettingSsrAutoUpgradePtrOutputWithContext
 	}).(SettingSsrAutoUpgradePtrOutput)
 }
 
-// upgrade channel to follow. enum: `alpha`, `beta`, `stable`
+// Firmware release channel used for SSR auto-upgrade
 func (o SettingSsrAutoUpgradeOutput) Channel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingSsrAutoUpgrade) *string { return v.Channel }).(pulumi.StringPtrOutput)
 }
 
-// Property key is the SSR model (e.g. "SSR130").
+// Per-model SSR firmware versions used for auto-upgrade
 func (o SettingSsrAutoUpgradeOutput) CustomVersions() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SettingSsrAutoUpgrade) map[string]string { return v.CustomVersions }).(pulumi.StringMapOutput)
 }
 
+// Whether SSR auto-upgrade is enabled for newly onboarded devices
 func (o SettingSsrAutoUpgradeOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingSsrAutoUpgrade) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -19961,7 +21939,7 @@ func (o SettingSsrAutoUpgradePtrOutput) Elem() SettingSsrAutoUpgradeOutput {
 	}).(SettingSsrAutoUpgradeOutput)
 }
 
-// upgrade channel to follow. enum: `alpha`, `beta`, `stable`
+// Firmware release channel used for SSR auto-upgrade
 func (o SettingSsrAutoUpgradePtrOutput) Channel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingSsrAutoUpgrade) *string {
 		if v == nil {
@@ -19971,7 +21949,7 @@ func (o SettingSsrAutoUpgradePtrOutput) Channel() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Property key is the SSR model (e.g. "SSR130").
+// Per-model SSR firmware versions used for auto-upgrade
 func (o SettingSsrAutoUpgradePtrOutput) CustomVersions() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *SettingSsrAutoUpgrade) map[string]string {
 		if v == nil {
@@ -19981,6 +21959,7 @@ func (o SettingSsrAutoUpgradePtrOutput) CustomVersions() pulumi.StringMapOutput 
 	}).(pulumi.StringMapOutput)
 }
 
+// Whether SSR auto-upgrade is enabled for newly onboarded devices
 func (o SettingSsrAutoUpgradePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingSsrAutoUpgrade) *bool {
 		if v == nil {
@@ -20001,8 +21980,10 @@ func (o SettingSsrAutoUpgradePtrOutput) Version() pulumi.StringPtrOutput {
 }
 
 type SettingSsrProxy struct {
-	Disabled *bool   `pulumi:"disabled"`
-	Url      *string `pulumi:"url"`
+	// Whether the SSR proxy configuration is disabled
+	Disabled *bool `pulumi:"disabled"`
+	// Proxy URL that SSR devices use to reach Mist
+	Url *string `pulumi:"url"`
 }
 
 // SettingSsrProxyInput is an input type that accepts SettingSsrProxyArgs and SettingSsrProxyOutput values.
@@ -20017,8 +21998,10 @@ type SettingSsrProxyInput interface {
 }
 
 type SettingSsrProxyArgs struct {
-	Disabled pulumi.BoolPtrInput   `pulumi:"disabled"`
-	Url      pulumi.StringPtrInput `pulumi:"url"`
+	// Whether the SSR proxy configuration is disabled
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// Proxy URL that SSR devices use to reach Mist
+	Url pulumi.StringPtrInput `pulumi:"url"`
 }
 
 func (SettingSsrProxyArgs) ElementType() reflect.Type {
@@ -20098,10 +22081,12 @@ func (o SettingSsrProxyOutput) ToSettingSsrProxyPtrOutputWithContext(ctx context
 	}).(SettingSsrProxyPtrOutput)
 }
 
+// Whether the SSR proxy configuration is disabled
 func (o SettingSsrProxyOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingSsrProxy) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
+// Proxy URL that SSR devices use to reach Mist
 func (o SettingSsrProxyOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingSsrProxy) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
@@ -20130,6 +22115,7 @@ func (o SettingSsrProxyPtrOutput) Elem() SettingSsrProxyOutput {
 	}).(SettingSsrProxyOutput)
 }
 
+// Whether the SSR proxy configuration is disabled
 func (o SettingSsrProxyPtrOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingSsrProxy) *bool {
 		if v == nil {
@@ -20139,6 +22125,7 @@ func (o SettingSsrProxyPtrOutput) Disabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Proxy URL that SSR devices use to reach Mist
 func (o SettingSsrProxyPtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingSsrProxy) *string {
 		if v == nil {
@@ -20149,15 +22136,19 @@ func (o SettingSsrProxyPtrOutput) Url() pulumi.StringPtrOutput {
 }
 
 type SettingSyntheticTest struct {
-	// enum: `auto`, `high`, `low`
+	// Overall aggressiveness level for synthetic test probes
 	Aggressiveness *string `pulumi:"aggressiveness"`
-	// Custom probes to be used for synthetic tests
+	// Custom synthetic probe definitions keyed by probe name
 	CustomProbes map[string]SettingSyntheticTestCustomProbes `pulumi:"customProbes"`
-	Disabled     *bool                                       `pulumi:"disabled"`
-	// List of networks to be used for synthetic tests
+	// Whether synthetic tests are disabled
+	Disabled *bool `pulumi:"disabled"`
+	// LAN network probe groups used by synthetic tests
 	LanNetworks []SettingSyntheticTestLanNetwork `pulumi:"lanNetworks"`
+	// Deprecated VLAN-based synthetic test settings
+	//
 	// Deprecated: This attribute is deprecated.
-	Vlans        []SettingSyntheticTestVlan        `pulumi:"vlans"`
+	Vlans []SettingSyntheticTestVlan `pulumi:"vlans"`
+	// WAN speedtest settings for synthetic tests
 	WanSpeedtest *SettingSyntheticTestWanSpeedtest `pulumi:"wanSpeedtest"`
 }
 
@@ -20173,15 +22164,19 @@ type SettingSyntheticTestInput interface {
 }
 
 type SettingSyntheticTestArgs struct {
-	// enum: `auto`, `high`, `low`
+	// Overall aggressiveness level for synthetic test probes
 	Aggressiveness pulumi.StringPtrInput `pulumi:"aggressiveness"`
-	// Custom probes to be used for synthetic tests
+	// Custom synthetic probe definitions keyed by probe name
 	CustomProbes SettingSyntheticTestCustomProbesMapInput `pulumi:"customProbes"`
-	Disabled     pulumi.BoolPtrInput                      `pulumi:"disabled"`
-	// List of networks to be used for synthetic tests
+	// Whether synthetic tests are disabled
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// LAN network probe groups used by synthetic tests
 	LanNetworks SettingSyntheticTestLanNetworkArrayInput `pulumi:"lanNetworks"`
+	// Deprecated VLAN-based synthetic test settings
+	//
 	// Deprecated: This attribute is deprecated.
-	Vlans        SettingSyntheticTestVlanArrayInput       `pulumi:"vlans"`
+	Vlans SettingSyntheticTestVlanArrayInput `pulumi:"vlans"`
+	// WAN speedtest settings for synthetic tests
 	WanSpeedtest SettingSyntheticTestWanSpeedtestPtrInput `pulumi:"wanSpeedtest"`
 }
 
@@ -20262,30 +22257,34 @@ func (o SettingSyntheticTestOutput) ToSettingSyntheticTestPtrOutputWithContext(c
 	}).(SettingSyntheticTestPtrOutput)
 }
 
-// enum: `auto`, `high`, `low`
+// Overall aggressiveness level for synthetic test probes
 func (o SettingSyntheticTestOutput) Aggressiveness() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingSyntheticTest) *string { return v.Aggressiveness }).(pulumi.StringPtrOutput)
 }
 
-// Custom probes to be used for synthetic tests
+// Custom synthetic probe definitions keyed by probe name
 func (o SettingSyntheticTestOutput) CustomProbes() SettingSyntheticTestCustomProbesMapOutput {
 	return o.ApplyT(func(v SettingSyntheticTest) map[string]SettingSyntheticTestCustomProbes { return v.CustomProbes }).(SettingSyntheticTestCustomProbesMapOutput)
 }
 
+// Whether synthetic tests are disabled
 func (o SettingSyntheticTestOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingSyntheticTest) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// List of networks to be used for synthetic tests
+// LAN network probe groups used by synthetic tests
 func (o SettingSyntheticTestOutput) LanNetworks() SettingSyntheticTestLanNetworkArrayOutput {
 	return o.ApplyT(func(v SettingSyntheticTest) []SettingSyntheticTestLanNetwork { return v.LanNetworks }).(SettingSyntheticTestLanNetworkArrayOutput)
 }
 
+// Deprecated VLAN-based synthetic test settings
+//
 // Deprecated: This attribute is deprecated.
 func (o SettingSyntheticTestOutput) Vlans() SettingSyntheticTestVlanArrayOutput {
 	return o.ApplyT(func(v SettingSyntheticTest) []SettingSyntheticTestVlan { return v.Vlans }).(SettingSyntheticTestVlanArrayOutput)
 }
 
+// WAN speedtest settings for synthetic tests
 func (o SettingSyntheticTestOutput) WanSpeedtest() SettingSyntheticTestWanSpeedtestPtrOutput {
 	return o.ApplyT(func(v SettingSyntheticTest) *SettingSyntheticTestWanSpeedtest { return v.WanSpeedtest }).(SettingSyntheticTestWanSpeedtestPtrOutput)
 }
@@ -20314,7 +22313,7 @@ func (o SettingSyntheticTestPtrOutput) Elem() SettingSyntheticTestOutput {
 	}).(SettingSyntheticTestOutput)
 }
 
-// enum: `auto`, `high`, `low`
+// Overall aggressiveness level for synthetic test probes
 func (o SettingSyntheticTestPtrOutput) Aggressiveness() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingSyntheticTest) *string {
 		if v == nil {
@@ -20324,7 +22323,7 @@ func (o SettingSyntheticTestPtrOutput) Aggressiveness() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Custom probes to be used for synthetic tests
+// Custom synthetic probe definitions keyed by probe name
 func (o SettingSyntheticTestPtrOutput) CustomProbes() SettingSyntheticTestCustomProbesMapOutput {
 	return o.ApplyT(func(v *SettingSyntheticTest) map[string]SettingSyntheticTestCustomProbes {
 		if v == nil {
@@ -20334,6 +22333,7 @@ func (o SettingSyntheticTestPtrOutput) CustomProbes() SettingSyntheticTestCustom
 	}).(SettingSyntheticTestCustomProbesMapOutput)
 }
 
+// Whether synthetic tests are disabled
 func (o SettingSyntheticTestPtrOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingSyntheticTest) *bool {
 		if v == nil {
@@ -20343,7 +22343,7 @@ func (o SettingSyntheticTestPtrOutput) Disabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// List of networks to be used for synthetic tests
+// LAN network probe groups used by synthetic tests
 func (o SettingSyntheticTestPtrOutput) LanNetworks() SettingSyntheticTestLanNetworkArrayOutput {
 	return o.ApplyT(func(v *SettingSyntheticTest) []SettingSyntheticTestLanNetwork {
 		if v == nil {
@@ -20353,6 +22353,8 @@ func (o SettingSyntheticTestPtrOutput) LanNetworks() SettingSyntheticTestLanNetw
 	}).(SettingSyntheticTestLanNetworkArrayOutput)
 }
 
+// Deprecated VLAN-based synthetic test settings
+//
 // Deprecated: This attribute is deprecated.
 func (o SettingSyntheticTestPtrOutput) Vlans() SettingSyntheticTestVlanArrayOutput {
 	return o.ApplyT(func(v *SettingSyntheticTest) []SettingSyntheticTestVlan {
@@ -20363,6 +22365,7 @@ func (o SettingSyntheticTestPtrOutput) Vlans() SettingSyntheticTestVlanArrayOutp
 	}).(SettingSyntheticTestVlanArrayOutput)
 }
 
+// WAN speedtest settings for synthetic tests
 func (o SettingSyntheticTestPtrOutput) WanSpeedtest() SettingSyntheticTestWanSpeedtestPtrOutput {
 	return o.ApplyT(func(v *SettingSyntheticTest) *SettingSyntheticTestWanSpeedtest {
 		if v == nil {
@@ -20373,13 +22376,13 @@ func (o SettingSyntheticTestPtrOutput) WanSpeedtest() SettingSyntheticTestWanSpe
 }
 
 type SettingSyntheticTestCustomProbes struct {
-	// enum: `auto`, `high`, `low`
+	// Probe aggressiveness level for this custom synthetic probe
 	Aggressiveness *string `pulumi:"aggressiveness"`
 	// Can be URL (e.g. http://x.com, https://x.com:8080/path/to/resource), IP address, or IP:port combination
 	Target *string `pulumi:"target"`
-	// In milliseconds
+	// Response-time threshold for this custom probe, in milliseconds
 	Threshold *int `pulumi:"threshold"`
-	// enum: `application`, `curl`, `icmp`, `reachability`, `tcp`
+	// Probe type used by this custom synthetic probe
 	Type *string `pulumi:"type"`
 }
 
@@ -20395,13 +22398,13 @@ type SettingSyntheticTestCustomProbesInput interface {
 }
 
 type SettingSyntheticTestCustomProbesArgs struct {
-	// enum: `auto`, `high`, `low`
+	// Probe aggressiveness level for this custom synthetic probe
 	Aggressiveness pulumi.StringPtrInput `pulumi:"aggressiveness"`
 	// Can be URL (e.g. http://x.com, https://x.com:8080/path/to/resource), IP address, or IP:port combination
 	Target pulumi.StringPtrInput `pulumi:"target"`
-	// In milliseconds
+	// Response-time threshold for this custom probe, in milliseconds
 	Threshold pulumi.IntPtrInput `pulumi:"threshold"`
-	// enum: `application`, `curl`, `icmp`, `reachability`, `tcp`
+	// Probe type used by this custom synthetic probe
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -20456,7 +22459,7 @@ func (o SettingSyntheticTestCustomProbesOutput) ToSettingSyntheticTestCustomProb
 	return o
 }
 
-// enum: `auto`, `high`, `low`
+// Probe aggressiveness level for this custom synthetic probe
 func (o SettingSyntheticTestCustomProbesOutput) Aggressiveness() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingSyntheticTestCustomProbes) *string { return v.Aggressiveness }).(pulumi.StringPtrOutput)
 }
@@ -20466,12 +22469,12 @@ func (o SettingSyntheticTestCustomProbesOutput) Target() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v SettingSyntheticTestCustomProbes) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
 
-// In milliseconds
+// Response-time threshold for this custom probe, in milliseconds
 func (o SettingSyntheticTestCustomProbesOutput) Threshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingSyntheticTestCustomProbes) *int { return v.Threshold }).(pulumi.IntPtrOutput)
 }
 
-// enum: `application`, `curl`, `icmp`, `reachability`, `tcp`
+// Probe type used by this custom synthetic probe
 func (o SettingSyntheticTestCustomProbesOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingSyntheticTestCustomProbes) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -20497,9 +22500,9 @@ func (o SettingSyntheticTestCustomProbesMapOutput) MapIndex(k pulumi.StringInput
 }
 
 type SettingSyntheticTestLanNetwork struct {
-	// List of networks to be used for synthetic tests
+	// LAN network names where synthetic probes are run
 	Networks []string `pulumi:"networks"`
-	// app name comes from `customProbes` above or /const/synthetic_test_probes
+	// Synthetic probe names to run on the listed LAN networks
 	Probes []string `pulumi:"probes"`
 }
 
@@ -20515,9 +22518,9 @@ type SettingSyntheticTestLanNetworkInput interface {
 }
 
 type SettingSyntheticTestLanNetworkArgs struct {
-	// List of networks to be used for synthetic tests
+	// LAN network names where synthetic probes are run
 	Networks pulumi.StringArrayInput `pulumi:"networks"`
-	// app name comes from `customProbes` above or /const/synthetic_test_probes
+	// Synthetic probe names to run on the listed LAN networks
 	Probes pulumi.StringArrayInput `pulumi:"probes"`
 }
 
@@ -20572,12 +22575,12 @@ func (o SettingSyntheticTestLanNetworkOutput) ToSettingSyntheticTestLanNetworkOu
 	return o
 }
 
-// List of networks to be used for synthetic tests
+// LAN network names where synthetic probes are run
 func (o SettingSyntheticTestLanNetworkOutput) Networks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SettingSyntheticTestLanNetwork) []string { return v.Networks }).(pulumi.StringArrayOutput)
 }
 
-// app name comes from `customProbes` above or /const/synthetic_test_probes
+// Synthetic probe names to run on the listed LAN networks
 func (o SettingSyntheticTestLanNetworkOutput) Probes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SettingSyntheticTestLanNetwork) []string { return v.Probes }).(pulumi.StringArrayOutput)
 }
@@ -20603,12 +22606,15 @@ func (o SettingSyntheticTestLanNetworkArrayOutput) Index(i pulumi.IntInput) Sett
 }
 
 type SettingSyntheticTestVlan struct {
+	// Deprecated custom URLs tested by VLAN-based synthetic probes
+	//
 	// Deprecated: This attribute is deprecated.
 	CustomTestUrls []string `pulumi:"customTestUrls"`
 	// For some vlans where we don't want this to run
 	Disabled *bool `pulumi:"disabled"`
-	// app name comes from `customProbes` above or /const/synthetic_test_probes
-	Probes  []string `pulumi:"probes"`
+	// Synthetic probe names to run for the listed VLANs
+	Probes []string `pulumi:"probes"`
+	// VLAN identifiers where synthetic probes are run
 	VlanIds []string `pulumi:"vlanIds"`
 }
 
@@ -20624,12 +22630,15 @@ type SettingSyntheticTestVlanInput interface {
 }
 
 type SettingSyntheticTestVlanArgs struct {
+	// Deprecated custom URLs tested by VLAN-based synthetic probes
+	//
 	// Deprecated: This attribute is deprecated.
 	CustomTestUrls pulumi.StringArrayInput `pulumi:"customTestUrls"`
 	// For some vlans where we don't want this to run
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
-	// app name comes from `customProbes` above or /const/synthetic_test_probes
-	Probes  pulumi.StringArrayInput `pulumi:"probes"`
+	// Synthetic probe names to run for the listed VLANs
+	Probes pulumi.StringArrayInput `pulumi:"probes"`
+	// VLAN identifiers where synthetic probes are run
 	VlanIds pulumi.StringArrayInput `pulumi:"vlanIds"`
 }
 
@@ -20684,6 +22693,8 @@ func (o SettingSyntheticTestVlanOutput) ToSettingSyntheticTestVlanOutputWithCont
 	return o
 }
 
+// Deprecated custom URLs tested by VLAN-based synthetic probes
+//
 // Deprecated: This attribute is deprecated.
 func (o SettingSyntheticTestVlanOutput) CustomTestUrls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SettingSyntheticTestVlan) []string { return v.CustomTestUrls }).(pulumi.StringArrayOutput)
@@ -20694,11 +22705,12 @@ func (o SettingSyntheticTestVlanOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingSyntheticTestVlan) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// app name comes from `customProbes` above or /const/synthetic_test_probes
+// Synthetic probe names to run for the listed VLANs
 func (o SettingSyntheticTestVlanOutput) Probes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SettingSyntheticTestVlan) []string { return v.Probes }).(pulumi.StringArrayOutput)
 }
 
+// VLAN identifiers where synthetic probes are run
 func (o SettingSyntheticTestVlanOutput) VlanIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SettingSyntheticTestVlan) []string { return v.VlanIds }).(pulumi.StringArrayOutput)
 }
@@ -20724,8 +22736,9 @@ func (o SettingSyntheticTestVlanArrayOutput) Index(i pulumi.IntInput) SettingSyn
 }
 
 type SettingSyntheticTestWanSpeedtest struct {
+	// Whether scheduled WAN speedtests are enabled
 	Enabled *bool `pulumi:"enabled"`
-	// `any` / HH:MM (24-hour format)
+	// Scheduled time of day for WAN speedtests
 	TimeOfDay *string `pulumi:"timeOfDay"`
 }
 
@@ -20741,8 +22754,9 @@ type SettingSyntheticTestWanSpeedtestInput interface {
 }
 
 type SettingSyntheticTestWanSpeedtestArgs struct {
+	// Whether scheduled WAN speedtests are enabled
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// `any` / HH:MM (24-hour format)
+	// Scheduled time of day for WAN speedtests
 	TimeOfDay pulumi.StringPtrInput `pulumi:"timeOfDay"`
 }
 
@@ -20823,11 +22837,12 @@ func (o SettingSyntheticTestWanSpeedtestOutput) ToSettingSyntheticTestWanSpeedte
 	}).(SettingSyntheticTestWanSpeedtestPtrOutput)
 }
 
+// Whether scheduled WAN speedtests are enabled
 func (o SettingSyntheticTestWanSpeedtestOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingSyntheticTestWanSpeedtest) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// `any` / HH:MM (24-hour format)
+// Scheduled time of day for WAN speedtests
 func (o SettingSyntheticTestWanSpeedtestOutput) TimeOfDay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingSyntheticTestWanSpeedtest) *string { return v.TimeOfDay }).(pulumi.StringPtrOutput)
 }
@@ -20856,6 +22871,7 @@ func (o SettingSyntheticTestWanSpeedtestPtrOutput) Elem() SettingSyntheticTestWa
 	}).(SettingSyntheticTestWanSpeedtestOutput)
 }
 
+// Whether scheduled WAN speedtests are enabled
 func (o SettingSyntheticTestWanSpeedtestPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingSyntheticTestWanSpeedtest) *bool {
 		if v == nil {
@@ -20865,7 +22881,7 @@ func (o SettingSyntheticTestWanSpeedtestPtrOutput) Enabled() pulumi.BoolPtrOutpu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// `any` / HH:MM (24-hour format)
+// Scheduled time of day for WAN speedtests
 func (o SettingSyntheticTestWanSpeedtestPtrOutput) TimeOfDay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingSyntheticTestWanSpeedtest) *string {
 		if v == nil {
@@ -20873,6 +22889,626 @@ func (o SettingSyntheticTestWanSpeedtestPtrOutput) TimeOfDay() pulumi.StringPtrO
 		}
 		return v.TimeOfDay
 	}).(pulumi.StringPtrOutput)
+}
+
+type SettingTuntermMonitoring struct {
+	// Can be ip, ipv6, hostname
+	Host *string `pulumi:"host"`
+	// When `protocol`==`tcp`, TCP port checked by the monitoring probe
+	Port *int `pulumi:"port"`
+	// Monitoring method used for this tunnel termination check
+	Protocol *string `pulumi:"protocol"`
+	// Optional source for the monitoring check, vlanId configured in tunterm_other_ip_configs
+	SrcVlanId *int `pulumi:"srcVlanId"`
+	// Maximum time for this monitoring check, in seconds
+	Timeout *int `pulumi:"timeout"`
+}
+
+// SettingTuntermMonitoringInput is an input type that accepts SettingTuntermMonitoringArgs and SettingTuntermMonitoringOutput values.
+// You can construct a concrete instance of `SettingTuntermMonitoringInput` via:
+//
+//	SettingTuntermMonitoringArgs{...}
+type SettingTuntermMonitoringInput interface {
+	pulumi.Input
+
+	ToSettingTuntermMonitoringOutput() SettingTuntermMonitoringOutput
+	ToSettingTuntermMonitoringOutputWithContext(context.Context) SettingTuntermMonitoringOutput
+}
+
+type SettingTuntermMonitoringArgs struct {
+	// Can be ip, ipv6, hostname
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// When `protocol`==`tcp`, TCP port checked by the monitoring probe
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Monitoring method used for this tunnel termination check
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+	// Optional source for the monitoring check, vlanId configured in tunterm_other_ip_configs
+	SrcVlanId pulumi.IntPtrInput `pulumi:"srcVlanId"`
+	// Maximum time for this monitoring check, in seconds
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
+}
+
+func (SettingTuntermMonitoringArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingTuntermMonitoring)(nil)).Elem()
+}
+
+func (i SettingTuntermMonitoringArgs) ToSettingTuntermMonitoringOutput() SettingTuntermMonitoringOutput {
+	return i.ToSettingTuntermMonitoringOutputWithContext(context.Background())
+}
+
+func (i SettingTuntermMonitoringArgs) ToSettingTuntermMonitoringOutputWithContext(ctx context.Context) SettingTuntermMonitoringOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingTuntermMonitoringOutput)
+}
+
+// SettingTuntermMonitoringArrayInput is an input type that accepts SettingTuntermMonitoringArray and SettingTuntermMonitoringArrayOutput values.
+// You can construct a concrete instance of `SettingTuntermMonitoringArrayInput` via:
+//
+//	SettingTuntermMonitoringArray{ SettingTuntermMonitoringArgs{...} }
+type SettingTuntermMonitoringArrayInput interface {
+	pulumi.Input
+
+	ToSettingTuntermMonitoringArrayOutput() SettingTuntermMonitoringArrayOutput
+	ToSettingTuntermMonitoringArrayOutputWithContext(context.Context) SettingTuntermMonitoringArrayOutput
+}
+
+type SettingTuntermMonitoringArray []SettingTuntermMonitoringInput
+
+func (SettingTuntermMonitoringArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SettingTuntermMonitoring)(nil)).Elem()
+}
+
+func (i SettingTuntermMonitoringArray) ToSettingTuntermMonitoringArrayOutput() SettingTuntermMonitoringArrayOutput {
+	return i.ToSettingTuntermMonitoringArrayOutputWithContext(context.Background())
+}
+
+func (i SettingTuntermMonitoringArray) ToSettingTuntermMonitoringArrayOutputWithContext(ctx context.Context) SettingTuntermMonitoringArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingTuntermMonitoringArrayOutput)
+}
+
+type SettingTuntermMonitoringOutput struct{ *pulumi.OutputState }
+
+func (SettingTuntermMonitoringOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingTuntermMonitoring)(nil)).Elem()
+}
+
+func (o SettingTuntermMonitoringOutput) ToSettingTuntermMonitoringOutput() SettingTuntermMonitoringOutput {
+	return o
+}
+
+func (o SettingTuntermMonitoringOutput) ToSettingTuntermMonitoringOutputWithContext(ctx context.Context) SettingTuntermMonitoringOutput {
+	return o
+}
+
+// Can be ip, ipv6, hostname
+func (o SettingTuntermMonitoringOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingTuntermMonitoring) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// When `protocol`==`tcp`, TCP port checked by the monitoring probe
+func (o SettingTuntermMonitoringOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SettingTuntermMonitoring) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Monitoring method used for this tunnel termination check
+func (o SettingTuntermMonitoringOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingTuntermMonitoring) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// Optional source for the monitoring check, vlanId configured in tunterm_other_ip_configs
+func (o SettingTuntermMonitoringOutput) SrcVlanId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SettingTuntermMonitoring) *int { return v.SrcVlanId }).(pulumi.IntPtrOutput)
+}
+
+// Maximum time for this monitoring check, in seconds
+func (o SettingTuntermMonitoringOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SettingTuntermMonitoring) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
+type SettingTuntermMonitoringArrayOutput struct{ *pulumi.OutputState }
+
+func (SettingTuntermMonitoringArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SettingTuntermMonitoring)(nil)).Elem()
+}
+
+func (o SettingTuntermMonitoringArrayOutput) ToSettingTuntermMonitoringArrayOutput() SettingTuntermMonitoringArrayOutput {
+	return o
+}
+
+func (o SettingTuntermMonitoringArrayOutput) ToSettingTuntermMonitoringArrayOutputWithContext(ctx context.Context) SettingTuntermMonitoringArrayOutput {
+	return o
+}
+
+func (o SettingTuntermMonitoringArrayOutput) Index(i pulumi.IntInput) SettingTuntermMonitoringOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SettingTuntermMonitoring {
+		return vs[0].([]SettingTuntermMonitoring)[vs[1].(int)]
+	}).(SettingTuntermMonitoringOutput)
+}
+
+type SettingTuntermMulticastConfig struct {
+	// Multicast DNS forwarding settings for tunneled VLANs
+	Mdns *SettingTuntermMulticastConfigMdns `pulumi:"mdns"`
+	// Whether all multicast traffic is forwarded through tunnel termination
+	MulticastAll *bool `pulumi:"multicastAll"`
+	// Simple Service Discovery Protocol forwarding settings for tunneled VLANs
+	Ssdp *SettingTuntermMulticastConfigSsdp `pulumi:"ssdp"`
+}
+
+// SettingTuntermMulticastConfigInput is an input type that accepts SettingTuntermMulticastConfigArgs and SettingTuntermMulticastConfigOutput values.
+// You can construct a concrete instance of `SettingTuntermMulticastConfigInput` via:
+//
+//	SettingTuntermMulticastConfigArgs{...}
+type SettingTuntermMulticastConfigInput interface {
+	pulumi.Input
+
+	ToSettingTuntermMulticastConfigOutput() SettingTuntermMulticastConfigOutput
+	ToSettingTuntermMulticastConfigOutputWithContext(context.Context) SettingTuntermMulticastConfigOutput
+}
+
+type SettingTuntermMulticastConfigArgs struct {
+	// Multicast DNS forwarding settings for tunneled VLANs
+	Mdns SettingTuntermMulticastConfigMdnsPtrInput `pulumi:"mdns"`
+	// Whether all multicast traffic is forwarded through tunnel termination
+	MulticastAll pulumi.BoolPtrInput `pulumi:"multicastAll"`
+	// Simple Service Discovery Protocol forwarding settings for tunneled VLANs
+	Ssdp SettingTuntermMulticastConfigSsdpPtrInput `pulumi:"ssdp"`
+}
+
+func (SettingTuntermMulticastConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingTuntermMulticastConfig)(nil)).Elem()
+}
+
+func (i SettingTuntermMulticastConfigArgs) ToSettingTuntermMulticastConfigOutput() SettingTuntermMulticastConfigOutput {
+	return i.ToSettingTuntermMulticastConfigOutputWithContext(context.Background())
+}
+
+func (i SettingTuntermMulticastConfigArgs) ToSettingTuntermMulticastConfigOutputWithContext(ctx context.Context) SettingTuntermMulticastConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingTuntermMulticastConfigOutput)
+}
+
+func (i SettingTuntermMulticastConfigArgs) ToSettingTuntermMulticastConfigPtrOutput() SettingTuntermMulticastConfigPtrOutput {
+	return i.ToSettingTuntermMulticastConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SettingTuntermMulticastConfigArgs) ToSettingTuntermMulticastConfigPtrOutputWithContext(ctx context.Context) SettingTuntermMulticastConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingTuntermMulticastConfigOutput).ToSettingTuntermMulticastConfigPtrOutputWithContext(ctx)
+}
+
+// SettingTuntermMulticastConfigPtrInput is an input type that accepts SettingTuntermMulticastConfigArgs, SettingTuntermMulticastConfigPtr and SettingTuntermMulticastConfigPtrOutput values.
+// You can construct a concrete instance of `SettingTuntermMulticastConfigPtrInput` via:
+//
+//	        SettingTuntermMulticastConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SettingTuntermMulticastConfigPtrInput interface {
+	pulumi.Input
+
+	ToSettingTuntermMulticastConfigPtrOutput() SettingTuntermMulticastConfigPtrOutput
+	ToSettingTuntermMulticastConfigPtrOutputWithContext(context.Context) SettingTuntermMulticastConfigPtrOutput
+}
+
+type settingTuntermMulticastConfigPtrType SettingTuntermMulticastConfigArgs
+
+func SettingTuntermMulticastConfigPtr(v *SettingTuntermMulticastConfigArgs) SettingTuntermMulticastConfigPtrInput {
+	return (*settingTuntermMulticastConfigPtrType)(v)
+}
+
+func (*settingTuntermMulticastConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingTuntermMulticastConfig)(nil)).Elem()
+}
+
+func (i *settingTuntermMulticastConfigPtrType) ToSettingTuntermMulticastConfigPtrOutput() SettingTuntermMulticastConfigPtrOutput {
+	return i.ToSettingTuntermMulticastConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *settingTuntermMulticastConfigPtrType) ToSettingTuntermMulticastConfigPtrOutputWithContext(ctx context.Context) SettingTuntermMulticastConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingTuntermMulticastConfigPtrOutput)
+}
+
+type SettingTuntermMulticastConfigOutput struct{ *pulumi.OutputState }
+
+func (SettingTuntermMulticastConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingTuntermMulticastConfig)(nil)).Elem()
+}
+
+func (o SettingTuntermMulticastConfigOutput) ToSettingTuntermMulticastConfigOutput() SettingTuntermMulticastConfigOutput {
+	return o
+}
+
+func (o SettingTuntermMulticastConfigOutput) ToSettingTuntermMulticastConfigOutputWithContext(ctx context.Context) SettingTuntermMulticastConfigOutput {
+	return o
+}
+
+func (o SettingTuntermMulticastConfigOutput) ToSettingTuntermMulticastConfigPtrOutput() SettingTuntermMulticastConfigPtrOutput {
+	return o.ToSettingTuntermMulticastConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SettingTuntermMulticastConfigOutput) ToSettingTuntermMulticastConfigPtrOutputWithContext(ctx context.Context) SettingTuntermMulticastConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingTuntermMulticastConfig) *SettingTuntermMulticastConfig {
+		return &v
+	}).(SettingTuntermMulticastConfigPtrOutput)
+}
+
+// Multicast DNS forwarding settings for tunneled VLANs
+func (o SettingTuntermMulticastConfigOutput) Mdns() SettingTuntermMulticastConfigMdnsPtrOutput {
+	return o.ApplyT(func(v SettingTuntermMulticastConfig) *SettingTuntermMulticastConfigMdns { return v.Mdns }).(SettingTuntermMulticastConfigMdnsPtrOutput)
+}
+
+// Whether all multicast traffic is forwarded through tunnel termination
+func (o SettingTuntermMulticastConfigOutput) MulticastAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingTuntermMulticastConfig) *bool { return v.MulticastAll }).(pulumi.BoolPtrOutput)
+}
+
+// Simple Service Discovery Protocol forwarding settings for tunneled VLANs
+func (o SettingTuntermMulticastConfigOutput) Ssdp() SettingTuntermMulticastConfigSsdpPtrOutput {
+	return o.ApplyT(func(v SettingTuntermMulticastConfig) *SettingTuntermMulticastConfigSsdp { return v.Ssdp }).(SettingTuntermMulticastConfigSsdpPtrOutput)
+}
+
+type SettingTuntermMulticastConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SettingTuntermMulticastConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingTuntermMulticastConfig)(nil)).Elem()
+}
+
+func (o SettingTuntermMulticastConfigPtrOutput) ToSettingTuntermMulticastConfigPtrOutput() SettingTuntermMulticastConfigPtrOutput {
+	return o
+}
+
+func (o SettingTuntermMulticastConfigPtrOutput) ToSettingTuntermMulticastConfigPtrOutputWithContext(ctx context.Context) SettingTuntermMulticastConfigPtrOutput {
+	return o
+}
+
+func (o SettingTuntermMulticastConfigPtrOutput) Elem() SettingTuntermMulticastConfigOutput {
+	return o.ApplyT(func(v *SettingTuntermMulticastConfig) SettingTuntermMulticastConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SettingTuntermMulticastConfig
+		return ret
+	}).(SettingTuntermMulticastConfigOutput)
+}
+
+// Multicast DNS forwarding settings for tunneled VLANs
+func (o SettingTuntermMulticastConfigPtrOutput) Mdns() SettingTuntermMulticastConfigMdnsPtrOutput {
+	return o.ApplyT(func(v *SettingTuntermMulticastConfig) *SettingTuntermMulticastConfigMdns {
+		if v == nil {
+			return nil
+		}
+		return v.Mdns
+	}).(SettingTuntermMulticastConfigMdnsPtrOutput)
+}
+
+// Whether all multicast traffic is forwarded through tunnel termination
+func (o SettingTuntermMulticastConfigPtrOutput) MulticastAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingTuntermMulticastConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MulticastAll
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Simple Service Discovery Protocol forwarding settings for tunneled VLANs
+func (o SettingTuntermMulticastConfigPtrOutput) Ssdp() SettingTuntermMulticastConfigSsdpPtrOutput {
+	return o.ApplyT(func(v *SettingTuntermMulticastConfig) *SettingTuntermMulticastConfigSsdp {
+		if v == nil {
+			return nil
+		}
+		return v.Ssdp
+	}).(SettingTuntermMulticastConfigSsdpPtrOutput)
+}
+
+type SettingTuntermMulticastConfigMdns struct {
+	// Whether mDNS multicast forwarding is enabled
+	Enabled *bool `pulumi:"enabled"`
+	// VLAN IDs where mDNS multicast forwarding is enabled
+	VlanIds []int `pulumi:"vlanIds"`
+}
+
+// SettingTuntermMulticastConfigMdnsInput is an input type that accepts SettingTuntermMulticastConfigMdnsArgs and SettingTuntermMulticastConfigMdnsOutput values.
+// You can construct a concrete instance of `SettingTuntermMulticastConfigMdnsInput` via:
+//
+//	SettingTuntermMulticastConfigMdnsArgs{...}
+type SettingTuntermMulticastConfigMdnsInput interface {
+	pulumi.Input
+
+	ToSettingTuntermMulticastConfigMdnsOutput() SettingTuntermMulticastConfigMdnsOutput
+	ToSettingTuntermMulticastConfigMdnsOutputWithContext(context.Context) SettingTuntermMulticastConfigMdnsOutput
+}
+
+type SettingTuntermMulticastConfigMdnsArgs struct {
+	// Whether mDNS multicast forwarding is enabled
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// VLAN IDs where mDNS multicast forwarding is enabled
+	VlanIds pulumi.IntArrayInput `pulumi:"vlanIds"`
+}
+
+func (SettingTuntermMulticastConfigMdnsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingTuntermMulticastConfigMdns)(nil)).Elem()
+}
+
+func (i SettingTuntermMulticastConfigMdnsArgs) ToSettingTuntermMulticastConfigMdnsOutput() SettingTuntermMulticastConfigMdnsOutput {
+	return i.ToSettingTuntermMulticastConfigMdnsOutputWithContext(context.Background())
+}
+
+func (i SettingTuntermMulticastConfigMdnsArgs) ToSettingTuntermMulticastConfigMdnsOutputWithContext(ctx context.Context) SettingTuntermMulticastConfigMdnsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingTuntermMulticastConfigMdnsOutput)
+}
+
+func (i SettingTuntermMulticastConfigMdnsArgs) ToSettingTuntermMulticastConfigMdnsPtrOutput() SettingTuntermMulticastConfigMdnsPtrOutput {
+	return i.ToSettingTuntermMulticastConfigMdnsPtrOutputWithContext(context.Background())
+}
+
+func (i SettingTuntermMulticastConfigMdnsArgs) ToSettingTuntermMulticastConfigMdnsPtrOutputWithContext(ctx context.Context) SettingTuntermMulticastConfigMdnsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingTuntermMulticastConfigMdnsOutput).ToSettingTuntermMulticastConfigMdnsPtrOutputWithContext(ctx)
+}
+
+// SettingTuntermMulticastConfigMdnsPtrInput is an input type that accepts SettingTuntermMulticastConfigMdnsArgs, SettingTuntermMulticastConfigMdnsPtr and SettingTuntermMulticastConfigMdnsPtrOutput values.
+// You can construct a concrete instance of `SettingTuntermMulticastConfigMdnsPtrInput` via:
+//
+//	        SettingTuntermMulticastConfigMdnsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SettingTuntermMulticastConfigMdnsPtrInput interface {
+	pulumi.Input
+
+	ToSettingTuntermMulticastConfigMdnsPtrOutput() SettingTuntermMulticastConfigMdnsPtrOutput
+	ToSettingTuntermMulticastConfigMdnsPtrOutputWithContext(context.Context) SettingTuntermMulticastConfigMdnsPtrOutput
+}
+
+type settingTuntermMulticastConfigMdnsPtrType SettingTuntermMulticastConfigMdnsArgs
+
+func SettingTuntermMulticastConfigMdnsPtr(v *SettingTuntermMulticastConfigMdnsArgs) SettingTuntermMulticastConfigMdnsPtrInput {
+	return (*settingTuntermMulticastConfigMdnsPtrType)(v)
+}
+
+func (*settingTuntermMulticastConfigMdnsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingTuntermMulticastConfigMdns)(nil)).Elem()
+}
+
+func (i *settingTuntermMulticastConfigMdnsPtrType) ToSettingTuntermMulticastConfigMdnsPtrOutput() SettingTuntermMulticastConfigMdnsPtrOutput {
+	return i.ToSettingTuntermMulticastConfigMdnsPtrOutputWithContext(context.Background())
+}
+
+func (i *settingTuntermMulticastConfigMdnsPtrType) ToSettingTuntermMulticastConfigMdnsPtrOutputWithContext(ctx context.Context) SettingTuntermMulticastConfigMdnsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingTuntermMulticastConfigMdnsPtrOutput)
+}
+
+type SettingTuntermMulticastConfigMdnsOutput struct{ *pulumi.OutputState }
+
+func (SettingTuntermMulticastConfigMdnsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingTuntermMulticastConfigMdns)(nil)).Elem()
+}
+
+func (o SettingTuntermMulticastConfigMdnsOutput) ToSettingTuntermMulticastConfigMdnsOutput() SettingTuntermMulticastConfigMdnsOutput {
+	return o
+}
+
+func (o SettingTuntermMulticastConfigMdnsOutput) ToSettingTuntermMulticastConfigMdnsOutputWithContext(ctx context.Context) SettingTuntermMulticastConfigMdnsOutput {
+	return o
+}
+
+func (o SettingTuntermMulticastConfigMdnsOutput) ToSettingTuntermMulticastConfigMdnsPtrOutput() SettingTuntermMulticastConfigMdnsPtrOutput {
+	return o.ToSettingTuntermMulticastConfigMdnsPtrOutputWithContext(context.Background())
+}
+
+func (o SettingTuntermMulticastConfigMdnsOutput) ToSettingTuntermMulticastConfigMdnsPtrOutputWithContext(ctx context.Context) SettingTuntermMulticastConfigMdnsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingTuntermMulticastConfigMdns) *SettingTuntermMulticastConfigMdns {
+		return &v
+	}).(SettingTuntermMulticastConfigMdnsPtrOutput)
+}
+
+// Whether mDNS multicast forwarding is enabled
+func (o SettingTuntermMulticastConfigMdnsOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingTuntermMulticastConfigMdns) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// VLAN IDs where mDNS multicast forwarding is enabled
+func (o SettingTuntermMulticastConfigMdnsOutput) VlanIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v SettingTuntermMulticastConfigMdns) []int { return v.VlanIds }).(pulumi.IntArrayOutput)
+}
+
+type SettingTuntermMulticastConfigMdnsPtrOutput struct{ *pulumi.OutputState }
+
+func (SettingTuntermMulticastConfigMdnsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingTuntermMulticastConfigMdns)(nil)).Elem()
+}
+
+func (o SettingTuntermMulticastConfigMdnsPtrOutput) ToSettingTuntermMulticastConfigMdnsPtrOutput() SettingTuntermMulticastConfigMdnsPtrOutput {
+	return o
+}
+
+func (o SettingTuntermMulticastConfigMdnsPtrOutput) ToSettingTuntermMulticastConfigMdnsPtrOutputWithContext(ctx context.Context) SettingTuntermMulticastConfigMdnsPtrOutput {
+	return o
+}
+
+func (o SettingTuntermMulticastConfigMdnsPtrOutput) Elem() SettingTuntermMulticastConfigMdnsOutput {
+	return o.ApplyT(func(v *SettingTuntermMulticastConfigMdns) SettingTuntermMulticastConfigMdns {
+		if v != nil {
+			return *v
+		}
+		var ret SettingTuntermMulticastConfigMdns
+		return ret
+	}).(SettingTuntermMulticastConfigMdnsOutput)
+}
+
+// Whether mDNS multicast forwarding is enabled
+func (o SettingTuntermMulticastConfigMdnsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingTuntermMulticastConfigMdns) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// VLAN IDs where mDNS multicast forwarding is enabled
+func (o SettingTuntermMulticastConfigMdnsPtrOutput) VlanIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *SettingTuntermMulticastConfigMdns) []int {
+		if v == nil {
+			return nil
+		}
+		return v.VlanIds
+	}).(pulumi.IntArrayOutput)
+}
+
+type SettingTuntermMulticastConfigSsdp struct {
+	// Whether SSDP multicast forwarding is enabled
+	Enabled *bool `pulumi:"enabled"`
+	// VLAN IDs where SSDP multicast forwarding is enabled
+	VlanIds []int `pulumi:"vlanIds"`
+}
+
+// SettingTuntermMulticastConfigSsdpInput is an input type that accepts SettingTuntermMulticastConfigSsdpArgs and SettingTuntermMulticastConfigSsdpOutput values.
+// You can construct a concrete instance of `SettingTuntermMulticastConfigSsdpInput` via:
+//
+//	SettingTuntermMulticastConfigSsdpArgs{...}
+type SettingTuntermMulticastConfigSsdpInput interface {
+	pulumi.Input
+
+	ToSettingTuntermMulticastConfigSsdpOutput() SettingTuntermMulticastConfigSsdpOutput
+	ToSettingTuntermMulticastConfigSsdpOutputWithContext(context.Context) SettingTuntermMulticastConfigSsdpOutput
+}
+
+type SettingTuntermMulticastConfigSsdpArgs struct {
+	// Whether SSDP multicast forwarding is enabled
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// VLAN IDs where SSDP multicast forwarding is enabled
+	VlanIds pulumi.IntArrayInput `pulumi:"vlanIds"`
+}
+
+func (SettingTuntermMulticastConfigSsdpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingTuntermMulticastConfigSsdp)(nil)).Elem()
+}
+
+func (i SettingTuntermMulticastConfigSsdpArgs) ToSettingTuntermMulticastConfigSsdpOutput() SettingTuntermMulticastConfigSsdpOutput {
+	return i.ToSettingTuntermMulticastConfigSsdpOutputWithContext(context.Background())
+}
+
+func (i SettingTuntermMulticastConfigSsdpArgs) ToSettingTuntermMulticastConfigSsdpOutputWithContext(ctx context.Context) SettingTuntermMulticastConfigSsdpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingTuntermMulticastConfigSsdpOutput)
+}
+
+func (i SettingTuntermMulticastConfigSsdpArgs) ToSettingTuntermMulticastConfigSsdpPtrOutput() SettingTuntermMulticastConfigSsdpPtrOutput {
+	return i.ToSettingTuntermMulticastConfigSsdpPtrOutputWithContext(context.Background())
+}
+
+func (i SettingTuntermMulticastConfigSsdpArgs) ToSettingTuntermMulticastConfigSsdpPtrOutputWithContext(ctx context.Context) SettingTuntermMulticastConfigSsdpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingTuntermMulticastConfigSsdpOutput).ToSettingTuntermMulticastConfigSsdpPtrOutputWithContext(ctx)
+}
+
+// SettingTuntermMulticastConfigSsdpPtrInput is an input type that accepts SettingTuntermMulticastConfigSsdpArgs, SettingTuntermMulticastConfigSsdpPtr and SettingTuntermMulticastConfigSsdpPtrOutput values.
+// You can construct a concrete instance of `SettingTuntermMulticastConfigSsdpPtrInput` via:
+//
+//	        SettingTuntermMulticastConfigSsdpArgs{...}
+//
+//	or:
+//
+//	        nil
+type SettingTuntermMulticastConfigSsdpPtrInput interface {
+	pulumi.Input
+
+	ToSettingTuntermMulticastConfigSsdpPtrOutput() SettingTuntermMulticastConfigSsdpPtrOutput
+	ToSettingTuntermMulticastConfigSsdpPtrOutputWithContext(context.Context) SettingTuntermMulticastConfigSsdpPtrOutput
+}
+
+type settingTuntermMulticastConfigSsdpPtrType SettingTuntermMulticastConfigSsdpArgs
+
+func SettingTuntermMulticastConfigSsdpPtr(v *SettingTuntermMulticastConfigSsdpArgs) SettingTuntermMulticastConfigSsdpPtrInput {
+	return (*settingTuntermMulticastConfigSsdpPtrType)(v)
+}
+
+func (*settingTuntermMulticastConfigSsdpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingTuntermMulticastConfigSsdp)(nil)).Elem()
+}
+
+func (i *settingTuntermMulticastConfigSsdpPtrType) ToSettingTuntermMulticastConfigSsdpPtrOutput() SettingTuntermMulticastConfigSsdpPtrOutput {
+	return i.ToSettingTuntermMulticastConfigSsdpPtrOutputWithContext(context.Background())
+}
+
+func (i *settingTuntermMulticastConfigSsdpPtrType) ToSettingTuntermMulticastConfigSsdpPtrOutputWithContext(ctx context.Context) SettingTuntermMulticastConfigSsdpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingTuntermMulticastConfigSsdpPtrOutput)
+}
+
+type SettingTuntermMulticastConfigSsdpOutput struct{ *pulumi.OutputState }
+
+func (SettingTuntermMulticastConfigSsdpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingTuntermMulticastConfigSsdp)(nil)).Elem()
+}
+
+func (o SettingTuntermMulticastConfigSsdpOutput) ToSettingTuntermMulticastConfigSsdpOutput() SettingTuntermMulticastConfigSsdpOutput {
+	return o
+}
+
+func (o SettingTuntermMulticastConfigSsdpOutput) ToSettingTuntermMulticastConfigSsdpOutputWithContext(ctx context.Context) SettingTuntermMulticastConfigSsdpOutput {
+	return o
+}
+
+func (o SettingTuntermMulticastConfigSsdpOutput) ToSettingTuntermMulticastConfigSsdpPtrOutput() SettingTuntermMulticastConfigSsdpPtrOutput {
+	return o.ToSettingTuntermMulticastConfigSsdpPtrOutputWithContext(context.Background())
+}
+
+func (o SettingTuntermMulticastConfigSsdpOutput) ToSettingTuntermMulticastConfigSsdpPtrOutputWithContext(ctx context.Context) SettingTuntermMulticastConfigSsdpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingTuntermMulticastConfigSsdp) *SettingTuntermMulticastConfigSsdp {
+		return &v
+	}).(SettingTuntermMulticastConfigSsdpPtrOutput)
+}
+
+// Whether SSDP multicast forwarding is enabled
+func (o SettingTuntermMulticastConfigSsdpOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingTuntermMulticastConfigSsdp) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// VLAN IDs where SSDP multicast forwarding is enabled
+func (o SettingTuntermMulticastConfigSsdpOutput) VlanIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v SettingTuntermMulticastConfigSsdp) []int { return v.VlanIds }).(pulumi.IntArrayOutput)
+}
+
+type SettingTuntermMulticastConfigSsdpPtrOutput struct{ *pulumi.OutputState }
+
+func (SettingTuntermMulticastConfigSsdpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingTuntermMulticastConfigSsdp)(nil)).Elem()
+}
+
+func (o SettingTuntermMulticastConfigSsdpPtrOutput) ToSettingTuntermMulticastConfigSsdpPtrOutput() SettingTuntermMulticastConfigSsdpPtrOutput {
+	return o
+}
+
+func (o SettingTuntermMulticastConfigSsdpPtrOutput) ToSettingTuntermMulticastConfigSsdpPtrOutputWithContext(ctx context.Context) SettingTuntermMulticastConfigSsdpPtrOutput {
+	return o
+}
+
+func (o SettingTuntermMulticastConfigSsdpPtrOutput) Elem() SettingTuntermMulticastConfigSsdpOutput {
+	return o.ApplyT(func(v *SettingTuntermMulticastConfigSsdp) SettingTuntermMulticastConfigSsdp {
+		if v != nil {
+			return *v
+		}
+		var ret SettingTuntermMulticastConfigSsdp
+		return ret
+	}).(SettingTuntermMulticastConfigSsdpOutput)
+}
+
+// Whether SSDP multicast forwarding is enabled
+func (o SettingTuntermMulticastConfigSsdpPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingTuntermMulticastConfigSsdp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// VLAN IDs where SSDP multicast forwarding is enabled
+func (o SettingTuntermMulticastConfigSsdpPtrOutput) VlanIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *SettingTuntermMulticastConfigSsdp) []int {
+		if v == nil {
+			return nil
+		}
+		return v.VlanIds
+	}).(pulumi.IntArrayOutput)
 }
 
 type SettingUplinkPortConfig struct {
@@ -21281,6 +23917,7 @@ func (o SettingVnaPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type SettingVsInstance struct {
+	// List of network names included in this virtual-switch instance
 	Networks []string `pulumi:"networks"`
 }
 
@@ -21296,6 +23933,7 @@ type SettingVsInstanceInput interface {
 }
 
 type SettingVsInstanceArgs struct {
+	// List of network names included in this virtual-switch instance
 	Networks pulumi.StringArrayInput `pulumi:"networks"`
 }
 
@@ -21350,6 +23988,7 @@ func (o SettingVsInstanceOutput) ToSettingVsInstanceOutputWithContext(ctx contex
 	return o
 }
 
+// List of network names included in this virtual-switch instance
 func (o SettingVsInstanceOutput) Networks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SettingVsInstance) []string { return v.Networks }).(pulumi.StringArrayOutput)
 }
@@ -21375,6 +24014,7 @@ func (o SettingVsInstanceMapOutput) MapIndex(k pulumi.StringInput) SettingVsInst
 }
 
 type SettingWanVna struct {
+	// Whether WAN VNA is enabled for the site
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -21390,6 +24030,7 @@ type SettingWanVnaInput interface {
 }
 
 type SettingWanVnaArgs struct {
+	// Whether WAN VNA is enabled for the site
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -21470,6 +24111,7 @@ func (o SettingWanVnaOutput) ToSettingWanVnaPtrOutputWithContext(ctx context.Con
 	}).(SettingWanVnaPtrOutput)
 }
 
+// Whether WAN VNA is enabled for the site
 func (o SettingWanVnaOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingWanVna) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -21498,6 +24140,7 @@ func (o SettingWanVnaPtrOutput) Elem() SettingWanVnaOutput {
 	}).(SettingWanVnaOutput)
 }
 
+// Whether WAN VNA is enabled for the site
 func (o SettingWanVnaPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingWanVna) *bool {
 		if v == nil {
@@ -21508,6 +24151,7 @@ func (o SettingWanVnaPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type SettingWids struct {
+	// Detection settings for repeated authentication failures
 	RepeatedAuthFailures *SettingWidsRepeatedAuthFailures `pulumi:"repeatedAuthFailures"`
 }
 
@@ -21523,6 +24167,7 @@ type SettingWidsInput interface {
 }
 
 type SettingWidsArgs struct {
+	// Detection settings for repeated authentication failures
 	RepeatedAuthFailures SettingWidsRepeatedAuthFailuresPtrInput `pulumi:"repeatedAuthFailures"`
 }
 
@@ -21603,6 +24248,7 @@ func (o SettingWidsOutput) ToSettingWidsPtrOutputWithContext(ctx context.Context
 	}).(SettingWidsPtrOutput)
 }
 
+// Detection settings for repeated authentication failures
 func (o SettingWidsOutput) RepeatedAuthFailures() SettingWidsRepeatedAuthFailuresPtrOutput {
 	return o.ApplyT(func(v SettingWids) *SettingWidsRepeatedAuthFailures { return v.RepeatedAuthFailures }).(SettingWidsRepeatedAuthFailuresPtrOutput)
 }
@@ -21631,6 +24277,7 @@ func (o SettingWidsPtrOutput) Elem() SettingWidsOutput {
 	}).(SettingWidsOutput)
 }
 
+// Detection settings for repeated authentication failures
 func (o SettingWidsPtrOutput) RepeatedAuthFailures() SettingWidsRepeatedAuthFailuresPtrOutput {
 	return o.ApplyT(func(v *SettingWids) *SettingWidsRepeatedAuthFailures {
 		if v == nil {
@@ -21797,12 +24444,15 @@ func (o SettingWidsRepeatedAuthFailuresPtrOutput) Threshold() pulumi.IntPtrOutpu
 }
 
 type SettingWifi struct {
+	// Whether Cisco compatibility features are enabled for site Wi-Fi
 	CiscoEnabled *bool `pulumi:"ciscoEnabled"`
 	// Whether to disable 11k
-	Disable11k                        *bool `pulumi:"disable11k"`
+	Disable11k *bool `pulumi:"disable11k"`
+	// Whether AP radios are disabled when AP power is constrained
 	DisableRadiosWhenPowerConstrained *bool `pulumi:"disableRadiosWhenPowerConstrained"`
 	// When proxyArp is enabled, check for arp spoofing.
-	EnableArpSpoofCheck       *bool `pulumi:"enableArpSpoofCheck"`
+	EnableArpSpoofCheck *bool `pulumi:"enableArpSpoofCheck"`
+	// Whether shared radio scanning is enabled for site Wi-Fi
 	EnableSharedRadioScanning *bool `pulumi:"enableSharedRadioScanning"`
 	// Enable Wi-Fi feature (using SUB-MAN license)
 	Enabled *bool `pulumi:"enabled"`
@@ -21820,7 +24470,7 @@ type SettingWifi struct {
 	MeshPsk *string `pulumi:"meshPsk"`
 	// Optional ssid of mesh networking, default is based on site_id
 	MeshSsid *string `pulumi:"meshSsid"`
-	// enum: `default`, `disabled`, `enabled`
+	// ARP proxy mode for site Wi-Fi
 	ProxyArp *string `pulumi:"proxyArp"`
 }
 
@@ -21836,12 +24486,15 @@ type SettingWifiInput interface {
 }
 
 type SettingWifiArgs struct {
+	// Whether Cisco compatibility features are enabled for site Wi-Fi
 	CiscoEnabled pulumi.BoolPtrInput `pulumi:"ciscoEnabled"`
 	// Whether to disable 11k
-	Disable11k                        pulumi.BoolPtrInput `pulumi:"disable11k"`
+	Disable11k pulumi.BoolPtrInput `pulumi:"disable11k"`
+	// Whether AP radios are disabled when AP power is constrained
 	DisableRadiosWhenPowerConstrained pulumi.BoolPtrInput `pulumi:"disableRadiosWhenPowerConstrained"`
 	// When proxyArp is enabled, check for arp spoofing.
-	EnableArpSpoofCheck       pulumi.BoolPtrInput `pulumi:"enableArpSpoofCheck"`
+	EnableArpSpoofCheck pulumi.BoolPtrInput `pulumi:"enableArpSpoofCheck"`
+	// Whether shared radio scanning is enabled for site Wi-Fi
 	EnableSharedRadioScanning pulumi.BoolPtrInput `pulumi:"enableSharedRadioScanning"`
 	// Enable Wi-Fi feature (using SUB-MAN license)
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
@@ -21859,7 +24512,7 @@ type SettingWifiArgs struct {
 	MeshPsk pulumi.StringPtrInput `pulumi:"meshPsk"`
 	// Optional ssid of mesh networking, default is based on site_id
 	MeshSsid pulumi.StringPtrInput `pulumi:"meshSsid"`
-	// enum: `default`, `disabled`, `enabled`
+	// ARP proxy mode for site Wi-Fi
 	ProxyArp pulumi.StringPtrInput `pulumi:"proxyArp"`
 }
 
@@ -21940,6 +24593,7 @@ func (o SettingWifiOutput) ToSettingWifiPtrOutputWithContext(ctx context.Context
 	}).(SettingWifiPtrOutput)
 }
 
+// Whether Cisco compatibility features are enabled for site Wi-Fi
 func (o SettingWifiOutput) CiscoEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingWifi) *bool { return v.CiscoEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -21949,6 +24603,7 @@ func (o SettingWifiOutput) Disable11k() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingWifi) *bool { return v.Disable11k }).(pulumi.BoolPtrOutput)
 }
 
+// Whether AP radios are disabled when AP power is constrained
 func (o SettingWifiOutput) DisableRadiosWhenPowerConstrained() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingWifi) *bool { return v.DisableRadiosWhenPowerConstrained }).(pulumi.BoolPtrOutput)
 }
@@ -21958,6 +24613,7 @@ func (o SettingWifiOutput) EnableArpSpoofCheck() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingWifi) *bool { return v.EnableArpSpoofCheck }).(pulumi.BoolPtrOutput)
 }
 
+// Whether shared radio scanning is enabled for site Wi-Fi
 func (o SettingWifiOutput) EnableSharedRadioScanning() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingWifi) *bool { return v.EnableSharedRadioScanning }).(pulumi.BoolPtrOutput)
 }
@@ -22002,7 +24658,7 @@ func (o SettingWifiOutput) MeshSsid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingWifi) *string { return v.MeshSsid }).(pulumi.StringPtrOutput)
 }
 
-// enum: `default`, `disabled`, `enabled`
+// ARP proxy mode for site Wi-Fi
 func (o SettingWifiOutput) ProxyArp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingWifi) *string { return v.ProxyArp }).(pulumi.StringPtrOutput)
 }
@@ -22031,6 +24687,7 @@ func (o SettingWifiPtrOutput) Elem() SettingWifiOutput {
 	}).(SettingWifiOutput)
 }
 
+// Whether Cisco compatibility features are enabled for site Wi-Fi
 func (o SettingWifiPtrOutput) CiscoEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingWifi) *bool {
 		if v == nil {
@@ -22050,6 +24707,7 @@ func (o SettingWifiPtrOutput) Disable11k() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Whether AP radios are disabled when AP power is constrained
 func (o SettingWifiPtrOutput) DisableRadiosWhenPowerConstrained() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingWifi) *bool {
 		if v == nil {
@@ -22069,6 +24727,7 @@ func (o SettingWifiPtrOutput) EnableArpSpoofCheck() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Whether shared radio scanning is enabled for site Wi-Fi
 func (o SettingWifiPtrOutput) EnableSharedRadioScanning() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingWifi) *bool {
 		if v == nil {
@@ -22158,7 +24817,7 @@ func (o SettingWifiPtrOutput) MeshSsid() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// enum: `default`, `disabled`, `enabled`
+// ARP proxy mode for site Wi-Fi
 func (o SettingWifiPtrOutput) ProxyArp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingWifi) *string {
 		if v == nil {
@@ -22169,6 +24828,7 @@ func (o SettingWifiPtrOutput) ProxyArp() pulumi.StringPtrOutput {
 }
 
 type SettingWiredVna struct {
+	// Whether Wired VNA is enabled for the site
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -22184,6 +24844,7 @@ type SettingWiredVnaInput interface {
 }
 
 type SettingWiredVnaArgs struct {
+	// Whether Wired VNA is enabled for the site
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -22264,6 +24925,7 @@ func (o SettingWiredVnaOutput) ToSettingWiredVnaPtrOutputWithContext(ctx context
 	}).(SettingWiredVnaPtrOutput)
 }
 
+// Whether Wired VNA is enabled for the site
 func (o SettingWiredVnaOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingWiredVna) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -22292,6 +24954,7 @@ func (o SettingWiredVnaPtrOutput) Elem() SettingWiredVnaOutput {
 	}).(SettingWiredVnaOutput)
 }
 
+// Whether Wired VNA is enabled for the site
 func (o SettingWiredVnaPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingWiredVna) *bool {
 		if v == nil {
@@ -22302,7 +24965,7 @@ func (o SettingWiredVnaPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type SettingZoneOccupancyAlert struct {
-	// List of email addresses to send email notifications when the alert threshold is reached
+	// Notification email recipients for zone occupancy alerts
 	EmailNotifiers []string `pulumi:"emailNotifiers"`
 	// Indicate whether zone occupancy alert is enabled for the site
 	Enabled *bool `pulumi:"enabled"`
@@ -22322,7 +24985,7 @@ type SettingZoneOccupancyAlertInput interface {
 }
 
 type SettingZoneOccupancyAlertArgs struct {
-	// List of email addresses to send email notifications when the alert threshold is reached
+	// Notification email recipients for zone occupancy alerts
 	EmailNotifiers pulumi.StringArrayInput `pulumi:"emailNotifiers"`
 	// Indicate whether zone occupancy alert is enabled for the site
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
@@ -22407,7 +25070,7 @@ func (o SettingZoneOccupancyAlertOutput) ToSettingZoneOccupancyAlertPtrOutputWit
 	}).(SettingZoneOccupancyAlertPtrOutput)
 }
 
-// List of email addresses to send email notifications when the alert threshold is reached
+// Notification email recipients for zone occupancy alerts
 func (o SettingZoneOccupancyAlertOutput) EmailNotifiers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SettingZoneOccupancyAlert) []string { return v.EmailNotifiers }).(pulumi.StringArrayOutput)
 }
@@ -22446,7 +25109,7 @@ func (o SettingZoneOccupancyAlertPtrOutput) Elem() SettingZoneOccupancyAlertOutp
 	}).(SettingZoneOccupancyAlertOutput)
 }
 
-// List of email addresses to send email notifications when the alert threshold is reached
+// Notification email recipients for zone occupancy alerts
 func (o SettingZoneOccupancyAlertPtrOutput) EmailNotifiers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SettingZoneOccupancyAlert) []string {
 		if v == nil {
@@ -37813,6 +40476,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingMarvisPtrInput)(nil)).Elem(), SettingMarvisArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingMarvisAutoOperationsInput)(nil)).Elem(), SettingMarvisAutoOperationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingMarvisAutoOperationsPtrInput)(nil)).Elem(), SettingMarvisAutoOperationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxedgeMgmtInput)(nil)).Elem(), SettingMxedgeMgmtArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxedgeMgmtPtrInput)(nil)).Elem(), SettingMxedgeMgmtArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelsInput)(nil)).Elem(), SettingMxtunnelsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelsPtrInput)(nil)).Elem(), SettingMxtunnelsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelsAdditionalMxtunnelsInput)(nil)).Elem(), SettingMxtunnelsAdditionalMxtunnelsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelsAdditionalMxtunnelsMapInput)(nil)).Elem(), SettingMxtunnelsAdditionalMxtunnelsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelsAdditionalMxtunnelsTuntermClusterInput)(nil)).Elem(), SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayInput)(nil)).Elem(), SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelsAutoPreemptionInput)(nil)).Elem(), SettingMxtunnelsAutoPreemptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelsAutoPreemptionPtrInput)(nil)).Elem(), SettingMxtunnelsAutoPreemptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelsClusterInput)(nil)).Elem(), SettingMxtunnelsClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelsClusterArrayInput)(nil)).Elem(), SettingMxtunnelsClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelsRadsecInput)(nil)).Elem(), SettingMxtunnelsRadsecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelsRadsecPtrInput)(nil)).Elem(), SettingMxtunnelsRadsecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelsRadsecAcctServerInput)(nil)).Elem(), SettingMxtunnelsRadsecAcctServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelsRadsecAcctServerArrayInput)(nil)).Elem(), SettingMxtunnelsRadsecAcctServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelsRadsecAuthServerInput)(nil)).Elem(), SettingMxtunnelsRadsecAuthServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelsRadsecAuthServerArrayInput)(nil)).Elem(), SettingMxtunnelsRadsecAuthServerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingOccupancyInput)(nil)).Elem(), SettingOccupancyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingOccupancyPtrInput)(nil)).Elem(), SettingOccupancyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingProxyInput)(nil)).Elem(), SettingProxyArgs{})
@@ -37851,6 +40532,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingSyntheticTestVlanArrayInput)(nil)).Elem(), SettingSyntheticTestVlanArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingSyntheticTestWanSpeedtestInput)(nil)).Elem(), SettingSyntheticTestWanSpeedtestArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingSyntheticTestWanSpeedtestPtrInput)(nil)).Elem(), SettingSyntheticTestWanSpeedtestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingTuntermMonitoringInput)(nil)).Elem(), SettingTuntermMonitoringArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingTuntermMonitoringArrayInput)(nil)).Elem(), SettingTuntermMonitoringArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingTuntermMulticastConfigInput)(nil)).Elem(), SettingTuntermMulticastConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingTuntermMulticastConfigPtrInput)(nil)).Elem(), SettingTuntermMulticastConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingTuntermMulticastConfigMdnsInput)(nil)).Elem(), SettingTuntermMulticastConfigMdnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingTuntermMulticastConfigMdnsPtrInput)(nil)).Elem(), SettingTuntermMulticastConfigMdnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingTuntermMulticastConfigSsdpInput)(nil)).Elem(), SettingTuntermMulticastConfigSsdpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingTuntermMulticastConfigSsdpPtrInput)(nil)).Elem(), SettingTuntermMulticastConfigSsdpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingUplinkPortConfigInput)(nil)).Elem(), SettingUplinkPortConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingUplinkPortConfigPtrInput)(nil)).Elem(), SettingUplinkPortConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingVarsAnnotationsInput)(nil)).Elem(), SettingVarsAnnotationsArgs{})
@@ -38183,6 +40872,24 @@ func init() {
 	pulumi.RegisterOutputType(SettingMarvisPtrOutput{})
 	pulumi.RegisterOutputType(SettingMarvisAutoOperationsOutput{})
 	pulumi.RegisterOutputType(SettingMarvisAutoOperationsPtrOutput{})
+	pulumi.RegisterOutputType(SettingMxedgeMgmtOutput{})
+	pulumi.RegisterOutputType(SettingMxedgeMgmtPtrOutput{})
+	pulumi.RegisterOutputType(SettingMxtunnelsOutput{})
+	pulumi.RegisterOutputType(SettingMxtunnelsPtrOutput{})
+	pulumi.RegisterOutputType(SettingMxtunnelsAdditionalMxtunnelsOutput{})
+	pulumi.RegisterOutputType(SettingMxtunnelsAdditionalMxtunnelsMapOutput{})
+	pulumi.RegisterOutputType(SettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput{})
+	pulumi.RegisterOutputType(SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutput{})
+	pulumi.RegisterOutputType(SettingMxtunnelsAutoPreemptionOutput{})
+	pulumi.RegisterOutputType(SettingMxtunnelsAutoPreemptionPtrOutput{})
+	pulumi.RegisterOutputType(SettingMxtunnelsClusterOutput{})
+	pulumi.RegisterOutputType(SettingMxtunnelsClusterArrayOutput{})
+	pulumi.RegisterOutputType(SettingMxtunnelsRadsecOutput{})
+	pulumi.RegisterOutputType(SettingMxtunnelsRadsecPtrOutput{})
+	pulumi.RegisterOutputType(SettingMxtunnelsRadsecAcctServerOutput{})
+	pulumi.RegisterOutputType(SettingMxtunnelsRadsecAcctServerArrayOutput{})
+	pulumi.RegisterOutputType(SettingMxtunnelsRadsecAuthServerOutput{})
+	pulumi.RegisterOutputType(SettingMxtunnelsRadsecAuthServerArrayOutput{})
 	pulumi.RegisterOutputType(SettingOccupancyOutput{})
 	pulumi.RegisterOutputType(SettingOccupancyPtrOutput{})
 	pulumi.RegisterOutputType(SettingProxyOutput{})
@@ -38221,6 +40928,14 @@ func init() {
 	pulumi.RegisterOutputType(SettingSyntheticTestVlanArrayOutput{})
 	pulumi.RegisterOutputType(SettingSyntheticTestWanSpeedtestOutput{})
 	pulumi.RegisterOutputType(SettingSyntheticTestWanSpeedtestPtrOutput{})
+	pulumi.RegisterOutputType(SettingTuntermMonitoringOutput{})
+	pulumi.RegisterOutputType(SettingTuntermMonitoringArrayOutput{})
+	pulumi.RegisterOutputType(SettingTuntermMulticastConfigOutput{})
+	pulumi.RegisterOutputType(SettingTuntermMulticastConfigPtrOutput{})
+	pulumi.RegisterOutputType(SettingTuntermMulticastConfigMdnsOutput{})
+	pulumi.RegisterOutputType(SettingTuntermMulticastConfigMdnsPtrOutput{})
+	pulumi.RegisterOutputType(SettingTuntermMulticastConfigSsdpOutput{})
+	pulumi.RegisterOutputType(SettingTuntermMulticastConfigSsdpPtrOutput{})
 	pulumi.RegisterOutputType(SettingUplinkPortConfigOutput{})
 	pulumi.RegisterOutputType(SettingUplinkPortConfigPtrOutput{})
 	pulumi.RegisterOutputType(SettingVarsAnnotationsOutput{})

@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class SettingSsrGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// auto_upgrade device first time it is onboarded
+        /// Automatic SSR firmware upgrade settings for newly onboarded devices
         /// </summary>
         [Input("autoUpgrade")]
         public Input<Inputs.SettingSsrAutoUpgradeGetArgs>? AutoUpgrade { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputList<string>? _conductorHosts;
 
         /// <summary>
-        /// List of Conductor IP Addresses or Hosts to be used by the SSR Devices
+        /// IP addresses or hostnames of conductors used by SSR devices
         /// </summary>
         public InputList<string> ConductorHosts
         {
@@ -34,7 +34,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private Input<string>? _conductorToken;
 
         /// <summary>
-        /// Token to be used by the SSR Devices to connect to the Conductor
+        /// Registration token used by SSR devices to connect to the conductor
         /// </summary>
         public Input<string>? ConductorToken
         {
@@ -47,13 +47,13 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// Disable stats collection on SSR devices
+        /// Whether stats collection is disabled on SSR devices
         /// </summary>
         [Input("disableStats")]
         public Input<bool>? DisableStats { get; set; }
 
         /// <summary>
-        /// SSR proxy configuration to talk to Mist
+        /// Network proxy settings used by SSR devices to reach Mist
         /// </summary>
         [Input("proxy")]
         public Input<Inputs.SettingSsrProxyGetArgs>? Proxy { get; set; }

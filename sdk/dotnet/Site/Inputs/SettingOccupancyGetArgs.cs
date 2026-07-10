@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<bool>? ClientsEnabled { get; set; }
 
         /// <summary>
-        /// Minimum duration
+        /// Minimum dwell duration before a client or asset is counted in occupancy analytics
         /// </summary>
         [Input("minDuration")]
         public Input<int>? MinDuration { get; set; }

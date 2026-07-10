@@ -18,6 +18,8 @@ import com.pulumi.junipermist.site.inputs.SettingIotproxyArgs;
 import com.pulumi.junipermist.site.inputs.SettingJuniperSrxArgs;
 import com.pulumi.junipermist.site.inputs.SettingLedArgs;
 import com.pulumi.junipermist.site.inputs.SettingMarvisArgs;
+import com.pulumi.junipermist.site.inputs.SettingMxedgeMgmtArgs;
+import com.pulumi.junipermist.site.inputs.SettingMxtunnelsArgs;
 import com.pulumi.junipermist.site.inputs.SettingOccupancyArgs;
 import com.pulumi.junipermist.site.inputs.SettingProxyArgs;
 import com.pulumi.junipermist.site.inputs.SettingRogueArgs;
@@ -28,6 +30,8 @@ import com.pulumi.junipermist.site.inputs.SettingSleThresholdsArgs;
 import com.pulumi.junipermist.site.inputs.SettingSrxAppArgs;
 import com.pulumi.junipermist.site.inputs.SettingSsrArgs;
 import com.pulumi.junipermist.site.inputs.SettingSyntheticTestArgs;
+import com.pulumi.junipermist.site.inputs.SettingTuntermMonitoringArgs;
+import com.pulumi.junipermist.site.inputs.SettingTuntermMulticastConfigArgs;
 import com.pulumi.junipermist.site.inputs.SettingUplinkPortConfigArgs;
 import com.pulumi.junipermist.site.inputs.SettingVarsAnnotationsArgs;
 import com.pulumi.junipermist.site.inputs.SettingVnaArgs;
@@ -66,22 +70,30 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.allowMist);
     }
 
+    /**
+     * Advanced analytics configuration for the site
+     * 
+     */
     @Import(name="analytic")
     private @Nullable Output<SettingAnalyticArgs> analytic;
 
+    /**
+     * @return Advanced analytics configuration for the site
+     * 
+     */
     public Optional<Output<SettingAnalyticArgs>> analytic() {
         return Optional.ofNullable(this.analytic);
     }
 
     /**
-     * AP Synthetic Test configuration
+     * Synthetic test configuration for APs at the site
      * 
      */
     @Import(name="apSyntheticTest")
     private @Nullable Output<SettingApSyntheticTestArgs> apSyntheticTest;
 
     /**
-     * @return AP Synthetic Test configuration
+     * @return Synthetic test configuration for APs at the site
      * 
      */
     public Optional<Output<SettingApSyntheticTestArgs>> apSyntheticTest() {
@@ -104,14 +116,14 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Auto Upgrade Settings
+     * Automatic AP firmware upgrade settings for the site. Overrides org setting when provided.
      * 
      */
     @Import(name="autoUpgrade")
     private @Nullable Output<SettingAutoUpgradeArgs> autoUpgrade;
 
     /**
-     * @return Auto Upgrade Settings
+     * @return Automatic AP firmware upgrade settings for the site. Overrides org setting when provided.
      * 
      */
     public Optional<Output<SettingAutoUpgradeArgs>> autoUpgrade() {
@@ -119,14 +131,14 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware upgrade
+     * Automatic ESL firmware upgrade settings for the site
      * 
      */
     @Import(name="autoUpgradeEsl")
     private @Nullable Output<SettingAutoUpgradeEslArgs> autoUpgradeEsl;
 
     /**
-     * @return auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware upgrade
+     * @return Automatic ESL firmware upgrade settings for the site
      * 
      */
     public Optional<Output<SettingAutoUpgradeEslArgs>> autoUpgradeEsl() {
@@ -148,22 +160,30 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.bgpNeighborUpdownThreshold);
     }
 
+    /**
+     * Read-only URL for the site blacklist file
+     * 
+     */
     @Import(name="blacklistUrl")
     private @Nullable Output<String> blacklistUrl;
 
+    /**
+     * @return Read-only URL for the site blacklist file
+     * 
+     */
     public Optional<Output<String>> blacklistUrl() {
         return Optional.ofNullable(this.blacklistUrl);
     }
 
     /**
-     * BLE AP settings
+     * Bluetooth Low Energy configuration applied to APs at the site
      * 
      */
     @Import(name="bleConfig")
     private @Nullable Output<SettingBleConfigArgs> bleConfig;
 
     /**
-     * @return BLE AP settings
+     * @return Bluetooth Low Energy configuration applied to APs at the site
      * 
      */
     public Optional<Output<SettingBleConfigArgs>> bleConfig() {
@@ -186,14 +206,14 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Mist also uses some heuristic rules to prevent destructive configs from being pushed
+     * Policy controlling how site configuration pushes are applied
      * 
      */
     @Import(name="configPushPolicy")
     private @Nullable Output<SettingConfigPushPolicyArgs> configPushPolicy;
 
     /**
-     * @return Mist also uses some heuristic rules to prevent destructive configs from being pushed
+     * @return Policy controlling how site configuration pushes are applied
      * 
      */
     public Optional<Output<SettingConfigPushPolicyArgs>> configPushPolicy() {
@@ -201,14 +221,14 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * You can define some URLs that&#39;s critical to site operations the latency will be captured and considered for site health
+     * Monitoring configuration for critical URLs at the site
      * 
      */
     @Import(name="criticalUrlMonitoring")
     private @Nullable Output<SettingCriticalUrlMonitoringArgs> criticalUrlMonitoring;
 
     /**
-     * @return You can define some URLs that&#39;s critical to site operations the latency will be captured and considered for site health
+     * @return Monitoring configuration for critical URLs at the site
      * 
      */
     public Optional<Output<SettingCriticalUrlMonitoringArgs>> criticalUrlMonitoring() {
@@ -230,22 +250,30 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.deviceUpdownThreshold);
     }
 
+    /**
+     * Whether UNII-4 channels are enabled for the site
+     * 
+     */
     @Import(name="enableUnii4")
     private @Nullable Output<Boolean> enableUnii4;
 
+    /**
+     * @return Whether UNII-4 channels are enabled for the site
+     * 
+     */
     public Optional<Output<Boolean>> enableUnii4() {
         return Optional.ofNullable(this.enableUnii4);
     }
 
     /**
-     * **Note**: if hours does not exist, it&#39;s treated as everyday of the week, 00:00-23:59. Currently, we don&#39;t allow multiple ranges for the same day
+     * Dwell-time analytics rules for the site
      * 
      */
     @Import(name="engagement")
     private @Nullable Output<SettingEngagementArgs> engagement;
 
     /**
-     * @return **Note**: if hours does not exist, it&#39;s treated as everyday of the week, 00:00-23:59. Currently, we don&#39;t allow multiple ranges for the same day
+     * @return Dwell-time analytics rules for the site
      * 
      */
     public Optional<Output<SettingEngagementArgs>> engagement() {
@@ -253,14 +281,14 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Gateway Management settings
+     * Management access settings for gateways at the site
      * 
      */
     @Import(name="gatewayMgmt")
     private @Nullable Output<SettingGatewayMgmtArgs> gatewayMgmt;
 
     /**
-     * @return Gateway Management settings
+     * @return Management access settings for gateways at the site
      * 
      */
     public Optional<Output<SettingGatewayMgmtArgs>> gatewayMgmt() {
@@ -298,58 +326,104 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * IoT proxy configuration for the site
+     * Proxy settings for IoT traffic at the site
      * 
      */
     @Import(name="iotproxy")
     private @Nullable Output<SettingIotproxyArgs> iotproxy;
 
     /**
-     * @return IoT proxy configuration for the site
+     * @return Proxy settings for IoT traffic at the site
      * 
      */
     public Optional<Output<SettingIotproxyArgs>> iotproxy() {
         return Optional.ofNullable(this.iotproxy);
     }
 
+    /**
+     * SRX integration settings for the site
+     * 
+     */
     @Import(name="juniperSrx")
     private @Nullable Output<SettingJuniperSrxArgs> juniperSrx;
 
+    /**
+     * @return SRX integration settings for the site
+     * 
+     */
     public Optional<Output<SettingJuniperSrxArgs>> juniperSrx() {
         return Optional.ofNullable(this.juniperSrx);
     }
 
     /**
-     * LED AP settings
+     * AP LED behavior configured for the site
      * 
      */
     @Import(name="led")
     private @Nullable Output<SettingLedArgs> led;
 
     /**
-     * @return LED AP settings
+     * @return AP LED behavior configured for the site
      * 
      */
     public Optional<Output<SettingLedArgs>> led() {
         return Optional.ofNullable(this.led);
     }
 
+    /**
+     * AI assistant settings for Marvis at the site
+     * 
+     */
     @Import(name="marvis")
     private @Nullable Output<SettingMarvisArgs> marvis;
 
+    /**
+     * @return AI assistant settings for Marvis at the site
+     * 
+     */
     public Optional<Output<SettingMarvisArgs>> marvis() {
         return Optional.ofNullable(this.marvis);
     }
 
     /**
-     * Occupancy Analytics settings
+     * Mist Edge management access settings for the site
+     * 
+     */
+    @Import(name="mxedgeMgmt")
+    private @Nullable Output<SettingMxedgeMgmtArgs> mxedgeMgmt;
+
+    /**
+     * @return Mist Edge management access settings for the site
+     * 
+     */
+    public Optional<Output<SettingMxedgeMgmtArgs>> mxedgeMgmt() {
+        return Optional.ofNullable(this.mxedgeMgmt);
+    }
+
+    /**
+     * Site Mist Tunnel configuration
+     * 
+     */
+    @Import(name="mxtunnels")
+    private @Nullable Output<SettingMxtunnelsArgs> mxtunnels;
+
+    /**
+     * @return Site Mist Tunnel configuration
+     * 
+     */
+    public Optional<Output<SettingMxtunnelsArgs>> mxtunnels() {
+        return Optional.ofNullable(this.mxtunnels);
+    }
+
+    /**
+     * Analytics settings for site occupancy
      * 
      */
     @Import(name="occupancy")
     private @Nullable Output<SettingOccupancyArgs> occupancy;
 
     /**
-     * @return Occupancy Analytics settings
+     * @return Analytics settings for site occupancy
      * 
      */
     public Optional<Output<SettingOccupancyArgs>> occupancy() {
@@ -372,14 +446,14 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Proxy Configuration to talk to Mist
+     * Network proxy settings for devices at the site
      * 
      */
     @Import(name="proxy")
     private @Nullable Output<SettingProxyArgs> proxy;
 
     /**
-     * @return Proxy Configuration to talk to Mist
+     * @return Network proxy settings for devices at the site
      * 
      */
     public Optional<Output<SettingProxyArgs>> proxy() {
@@ -417,14 +491,14 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Rogue site settings
+     * AP threat detection settings for the site
      * 
      */
     @Import(name="rogue")
     private @Nullable Output<SettingRogueArgs> rogue;
 
     /**
-     * @return Rogue site settings
+     * @return AP threat detection settings for the site
      * 
      */
     public Optional<Output<SettingRogueArgs>> rogue() {
@@ -432,14 +506,14 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Managed mobility
+     * Managed mobility and asset tracking settings for the site
      * 
      */
     @Import(name="rtsa")
     private @Nullable Output<SettingRtsaArgs> rtsa;
 
     /**
-     * @return Managed mobility
+     * @return Managed mobility and asset tracking settings for the site
      * 
      */
     public Optional<Output<SettingRtsaArgs>> rtsa() {
@@ -447,66 +521,106 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute window, there are more than Y distinct client encountering over X failures
+     * Threshold alert settings for the site
      * 
      */
     @Import(name="simpleAlert")
     private @Nullable Output<SettingSimpleAlertArgs> simpleAlert;
 
     /**
-     * @return Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute window, there are more than Y distinct client encountering over X failures
+     * @return Threshold alert settings for the site
      * 
      */
     public Optional<Output<SettingSimpleAlertArgs>> simpleAlert() {
         return Optional.ofNullable(this.simpleAlert);
     }
 
+    /**
+     * Identifier of the site these settings apply to
+     * 
+     */
     @Import(name="siteId")
     private @Nullable Output<String> siteId;
 
+    /**
+     * @return Identifier of the site these settings apply to
+     * 
+     */
     public Optional<Output<String>> siteId() {
         return Optional.ofNullable(this.siteId);
     }
 
+    /**
+     * Threat intelligence settings from Sky ATP for the site
+     * 
+     */
     @Import(name="skyatp")
     private @Nullable Output<SettingSkyatpArgs> skyatp;
 
+    /**
+     * @return Threat intelligence settings from Sky ATP for the site
+     * 
+     */
     public Optional<Output<SettingSkyatpArgs>> skyatp() {
         return Optional.ofNullable(this.skyatp);
     }
 
+    /**
+     * Service level expectation threshold settings for the site
+     * 
+     */
     @Import(name="sleThresholds")
     private @Nullable Output<SettingSleThresholdsArgs> sleThresholds;
 
+    /**
+     * @return Service level expectation threshold settings for the site
+     * 
+     */
     public Optional<Output<SettingSleThresholdsArgs>> sleThresholds() {
         return Optional.ofNullable(this.sleThresholds);
     }
 
+    /**
+     * Juniper SRX application visibility settings for the site
+     * 
+     */
     @Import(name="srxApp")
     private @Nullable Output<SettingSrxAppArgs> srxApp;
 
+    /**
+     * @return Juniper SRX application visibility settings for the site
+     * 
+     */
     public Optional<Output<SettingSrxAppArgs>> srxApp() {
         return Optional.ofNullable(this.srxApp);
     }
 
     /**
-     * When limitSshAccess = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see Org:Setting)
+     * Public SSH keys configured for the site
      * 
      */
     @Import(name="sshKeys")
     private @Nullable Output<List<String>> sshKeys;
 
     /**
-     * @return When limitSshAccess = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see Org:Setting)
+     * @return Public SSH keys configured for the site
      * 
      */
     public Optional<Output<List<String>>> sshKeys() {
         return Optional.ofNullable(this.sshKeys);
     }
 
+    /**
+     * Session Smart Router settings for the site
+     * 
+     */
     @Import(name="ssr")
     private @Nullable Output<SettingSsrArgs> ssr;
 
+    /**
+     * @return Session Smart Router settings for the site
+     * 
+     */
     public Optional<Output<SettingSsrArgs>> ssr() {
         return Optional.ofNullable(this.ssr);
     }
@@ -526,9 +640,17 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.switchUpdownThreshold);
     }
 
+    /**
+     * Active monitoring test configuration for the site
+     * 
+     */
     @Import(name="syntheticTest")
     private @Nullable Output<SettingSyntheticTestArgs> syntheticTest;
 
+    /**
+     * @return Active monitoring test configuration for the site
+     * 
+     */
     public Optional<Output<SettingSyntheticTestArgs>> syntheticTest() {
         return Optional.ofNullable(this.syntheticTest);
     }
@@ -549,14 +671,59 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * AP Uplink port configuration
+     * Whether tunnel termination monitoring is disabled for the site
+     * 
+     */
+    @Import(name="tuntermMonitoringDisabled")
+    private @Nullable Output<Boolean> tuntermMonitoringDisabled;
+
+    /**
+     * @return Whether tunnel termination monitoring is disabled for the site
+     * 
+     */
+    public Optional<Output<Boolean>> tuntermMonitoringDisabled() {
+        return Optional.ofNullable(this.tuntermMonitoringDisabled);
+    }
+
+    /**
+     * Tunnel termination monitoring settings for the site
+     * 
+     */
+    @Import(name="tuntermMonitorings")
+    private @Nullable Output<List<SettingTuntermMonitoringArgs>> tuntermMonitorings;
+
+    /**
+     * @return Tunnel termination monitoring settings for the site
+     * 
+     */
+    public Optional<Output<List<SettingTuntermMonitoringArgs>>> tuntermMonitorings() {
+        return Optional.ofNullable(this.tuntermMonitorings);
+    }
+
+    /**
+     * Multicast settings for tunnel termination at the site
+     * 
+     */
+    @Import(name="tuntermMulticastConfig")
+    private @Nullable Output<SettingTuntermMulticastConfigArgs> tuntermMulticastConfig;
+
+    /**
+     * @return Multicast settings for tunnel termination at the site
+     * 
+     */
+    public Optional<Output<SettingTuntermMulticastConfigArgs>> tuntermMulticastConfig() {
+        return Optional.ofNullable(this.tuntermMulticastConfig);
+    }
+
+    /**
+     * AP uplink port configuration for the site
      * 
      */
     @Import(name="uplinkPortConfig")
     private @Nullable Output<SettingUplinkPortConfigArgs> uplinkPortConfig;
 
     /**
-     * @return AP Uplink port configuration
+     * @return AP uplink port configuration for the site
      * 
      */
     public Optional<Output<SettingUplinkPortConfigArgs>> uplinkPortConfig() {
@@ -564,14 +731,14 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Template variables defined for the site
      * 
      */
     @Import(name="vars")
     private @Nullable Output<Map<String,String>> vars;
 
     /**
-     * @return Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * @return Template variables defined for the site
      * 
      */
     public Optional<Output<Map<String,String>>> vars() {
@@ -579,23 +746,31 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+     * Metadata annotations for site template variables
      * 
      */
     @Import(name="varsAnnotations")
     private @Nullable Output<Map<String,SettingVarsAnnotationsArgs>> varsAnnotations;
 
     /**
-     * @return Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+     * @return Metadata annotations for site template variables
      * 
      */
     public Optional<Output<Map<String,SettingVarsAnnotationsArgs>>> varsAnnotations() {
         return Optional.ofNullable(this.varsAnnotations);
     }
 
+    /**
+     * Virtual Network Assistant settings for the site
+     * 
+     */
     @Import(name="vna")
     private @Nullable Output<SettingVnaArgs> vna;
 
+    /**
+     * @return Virtual Network Assistant settings for the site
+     * 
+     */
     public Optional<Output<SettingVnaArgs>> vna() {
         return Optional.ofNullable(this.vna);
     }
@@ -631,50 +806,74 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
+     * EX9200 virtual switch instance definitions for the site
      * 
      */
     @Import(name="vsInstance")
     private @Nullable Output<Map<String,SettingVsInstanceArgs>> vsInstance;
 
     /**
-     * @return Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
+     * @return EX9200 virtual switch instance definitions for the site
      * 
      */
     public Optional<Output<Map<String,SettingVsInstanceArgs>>> vsInstance() {
         return Optional.ofNullable(this.vsInstance);
     }
 
+    /**
+     * Virtual Network Assistant settings for WAN experiences at the site
+     * 
+     */
     @Import(name="wanVna")
     private @Nullable Output<SettingWanVnaArgs> wanVna;
 
+    /**
+     * @return Virtual Network Assistant settings for WAN experiences at the site
+     * 
+     */
     public Optional<Output<SettingWanVnaArgs>> wanVna() {
         return Optional.ofNullable(this.wanVna);
     }
 
+    /**
+     * Read-only URL for the watched station list file
+     * 
+     */
     @Import(name="watchedStationUrl")
     private @Nullable Output<String> watchedStationUrl;
 
+    /**
+     * @return Read-only URL for the watched station list file
+     * 
+     */
     public Optional<Output<String>> watchedStationUrl() {
         return Optional.ofNullable(this.watchedStationUrl);
     }
 
+    /**
+     * Read-only URL for the site whitelist file
+     * 
+     */
     @Import(name="whitelistUrl")
     private @Nullable Output<String> whitelistUrl;
 
+    /**
+     * @return Read-only URL for the site whitelist file
+     * 
+     */
     public Optional<Output<String>> whitelistUrl() {
         return Optional.ofNullable(this.whitelistUrl);
     }
 
     /**
-     * WIDS site settings
+     * Wireless intrusion detection settings for the site
      * 
      */
     @Import(name="wids")
     private @Nullable Output<SettingWidsArgs> wids;
 
     /**
-     * @return WIDS site settings
+     * @return Wireless intrusion detection settings for the site
      * 
      */
     public Optional<Output<SettingWidsArgs>> wids() {
@@ -682,36 +881,44 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Wi-Fi site settings
+     * Wireless LAN configuration settings for the site
      * 
      */
     @Import(name="wifi")
     private @Nullable Output<SettingWifiArgs> wifi;
 
     /**
-     * @return Wi-Fi site settings
+     * @return Wireless LAN configuration settings for the site
      * 
      */
     public Optional<Output<SettingWifiArgs>> wifi() {
         return Optional.ofNullable(this.wifi);
     }
 
+    /**
+     * Virtual Network Assistant settings for wired experiences at the site
+     * 
+     */
     @Import(name="wiredVna")
     private @Nullable Output<SettingWiredVnaArgs> wiredVna;
 
+    /**
+     * @return Virtual Network Assistant settings for wired experiences at the site
+     * 
+     */
     public Optional<Output<SettingWiredVnaArgs>> wiredVna() {
         return Optional.ofNullable(this.wiredVna);
     }
 
     /**
-     * Zone Occupancy alert site settings
+     * Occupancy alert settings for site zones
      * 
      */
     @Import(name="zoneOccupancyAlert")
     private @Nullable Output<SettingZoneOccupancyAlertArgs> zoneOccupancyAlert;
 
     /**
-     * @return Zone Occupancy alert site settings
+     * @return Occupancy alert settings for site zones
      * 
      */
     public Optional<Output<SettingZoneOccupancyAlertArgs>> zoneOccupancyAlert() {
@@ -743,6 +950,8 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         this.juniperSrx = $.juniperSrx;
         this.led = $.led;
         this.marvis = $.marvis;
+        this.mxedgeMgmt = $.mxedgeMgmt;
+        this.mxtunnels = $.mxtunnels;
         this.occupancy = $.occupancy;
         this.persistConfigOnDevice = $.persistConfigOnDevice;
         this.proxy = $.proxy;
@@ -760,6 +969,9 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         this.switchUpdownThreshold = $.switchUpdownThreshold;
         this.syntheticTest = $.syntheticTest;
         this.trackAnonymousDevices = $.trackAnonymousDevices;
+        this.tuntermMonitoringDisabled = $.tuntermMonitoringDisabled;
+        this.tuntermMonitorings = $.tuntermMonitorings;
+        this.tuntermMulticastConfig = $.tuntermMulticastConfig;
         this.uplinkPortConfig = $.uplinkPortConfig;
         this.vars = $.vars;
         this.varsAnnotations = $.varsAnnotations;
@@ -815,17 +1027,29 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
             return allowMist(Output.of(allowMist));
         }
 
+        /**
+         * @param analytic Advanced analytics configuration for the site
+         * 
+         * @return builder
+         * 
+         */
         public Builder analytic(@Nullable Output<SettingAnalyticArgs> analytic) {
             $.analytic = analytic;
             return this;
         }
 
+        /**
+         * @param analytic Advanced analytics configuration for the site
+         * 
+         * @return builder
+         * 
+         */
         public Builder analytic(SettingAnalyticArgs analytic) {
             return analytic(Output.of(analytic));
         }
 
         /**
-         * @param apSyntheticTest AP Synthetic Test configuration
+         * @param apSyntheticTest Synthetic test configuration for APs at the site
          * 
          * @return builder
          * 
@@ -836,7 +1060,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apSyntheticTest AP Synthetic Test configuration
+         * @param apSyntheticTest Synthetic test configuration for APs at the site
          * 
          * @return builder
          * 
@@ -867,7 +1091,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoUpgrade Auto Upgrade Settings
+         * @param autoUpgrade Automatic AP firmware upgrade settings for the site. Overrides org setting when provided.
          * 
          * @return builder
          * 
@@ -878,7 +1102,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoUpgrade Auto Upgrade Settings
+         * @param autoUpgrade Automatic AP firmware upgrade settings for the site. Overrides org setting when provided.
          * 
          * @return builder
          * 
@@ -888,7 +1112,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoUpgradeEsl auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware upgrade
+         * @param autoUpgradeEsl Automatic ESL firmware upgrade settings for the site
          * 
          * @return builder
          * 
@@ -899,7 +1123,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoUpgradeEsl auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware upgrade
+         * @param autoUpgradeEsl Automatic ESL firmware upgrade settings for the site
          * 
          * @return builder
          * 
@@ -929,17 +1153,29 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
             return bgpNeighborUpdownThreshold(Output.of(bgpNeighborUpdownThreshold));
         }
 
+        /**
+         * @param blacklistUrl Read-only URL for the site blacklist file
+         * 
+         * @return builder
+         * 
+         */
         public Builder blacklistUrl(@Nullable Output<String> blacklistUrl) {
             $.blacklistUrl = blacklistUrl;
             return this;
         }
 
+        /**
+         * @param blacklistUrl Read-only URL for the site blacklist file
+         * 
+         * @return builder
+         * 
+         */
         public Builder blacklistUrl(String blacklistUrl) {
             return blacklistUrl(Output.of(blacklistUrl));
         }
 
         /**
-         * @param bleConfig BLE AP settings
+         * @param bleConfig Bluetooth Low Energy configuration applied to APs at the site
          * 
          * @return builder
          * 
@@ -950,7 +1186,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bleConfig BLE AP settings
+         * @param bleConfig Bluetooth Low Energy configuration applied to APs at the site
          * 
          * @return builder
          * 
@@ -981,7 +1217,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configPushPolicy Mist also uses some heuristic rules to prevent destructive configs from being pushed
+         * @param configPushPolicy Policy controlling how site configuration pushes are applied
          * 
          * @return builder
          * 
@@ -992,7 +1228,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configPushPolicy Mist also uses some heuristic rules to prevent destructive configs from being pushed
+         * @param configPushPolicy Policy controlling how site configuration pushes are applied
          * 
          * @return builder
          * 
@@ -1002,7 +1238,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param criticalUrlMonitoring You can define some URLs that&#39;s critical to site operations the latency will be captured and considered for site health
+         * @param criticalUrlMonitoring Monitoring configuration for critical URLs at the site
          * 
          * @return builder
          * 
@@ -1013,7 +1249,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param criticalUrlMonitoring You can define some URLs that&#39;s critical to site operations the latency will be captured and considered for site health
+         * @param criticalUrlMonitoring Monitoring configuration for critical URLs at the site
          * 
          * @return builder
          * 
@@ -1043,17 +1279,29 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
             return deviceUpdownThreshold(Output.of(deviceUpdownThreshold));
         }
 
+        /**
+         * @param enableUnii4 Whether UNII-4 channels are enabled for the site
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableUnii4(@Nullable Output<Boolean> enableUnii4) {
             $.enableUnii4 = enableUnii4;
             return this;
         }
 
+        /**
+         * @param enableUnii4 Whether UNII-4 channels are enabled for the site
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableUnii4(Boolean enableUnii4) {
             return enableUnii4(Output.of(enableUnii4));
         }
 
         /**
-         * @param engagement **Note**: if hours does not exist, it&#39;s treated as everyday of the week, 00:00-23:59. Currently, we don&#39;t allow multiple ranges for the same day
+         * @param engagement Dwell-time analytics rules for the site
          * 
          * @return builder
          * 
@@ -1064,7 +1312,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param engagement **Note**: if hours does not exist, it&#39;s treated as everyday of the week, 00:00-23:59. Currently, we don&#39;t allow multiple ranges for the same day
+         * @param engagement Dwell-time analytics rules for the site
          * 
          * @return builder
          * 
@@ -1074,7 +1322,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gatewayMgmt Gateway Management settings
+         * @param gatewayMgmt Management access settings for gateways at the site
          * 
          * @return builder
          * 
@@ -1085,7 +1333,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gatewayMgmt Gateway Management settings
+         * @param gatewayMgmt Management access settings for gateways at the site
          * 
          * @return builder
          * 
@@ -1137,7 +1385,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param iotproxy IoT proxy configuration for the site
+         * @param iotproxy Proxy settings for IoT traffic at the site
          * 
          * @return builder
          * 
@@ -1148,7 +1396,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param iotproxy IoT proxy configuration for the site
+         * @param iotproxy Proxy settings for IoT traffic at the site
          * 
          * @return builder
          * 
@@ -1157,17 +1405,29 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
             return iotproxy(Output.of(iotproxy));
         }
 
+        /**
+         * @param juniperSrx SRX integration settings for the site
+         * 
+         * @return builder
+         * 
+         */
         public Builder juniperSrx(@Nullable Output<SettingJuniperSrxArgs> juniperSrx) {
             $.juniperSrx = juniperSrx;
             return this;
         }
 
+        /**
+         * @param juniperSrx SRX integration settings for the site
+         * 
+         * @return builder
+         * 
+         */
         public Builder juniperSrx(SettingJuniperSrxArgs juniperSrx) {
             return juniperSrx(Output.of(juniperSrx));
         }
 
         /**
-         * @param led LED AP settings
+         * @param led AP LED behavior configured for the site
          * 
          * @return builder
          * 
@@ -1178,7 +1438,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param led LED AP settings
+         * @param led AP LED behavior configured for the site
          * 
          * @return builder
          * 
@@ -1187,17 +1447,71 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
             return led(Output.of(led));
         }
 
+        /**
+         * @param marvis AI assistant settings for Marvis at the site
+         * 
+         * @return builder
+         * 
+         */
         public Builder marvis(@Nullable Output<SettingMarvisArgs> marvis) {
             $.marvis = marvis;
             return this;
         }
 
+        /**
+         * @param marvis AI assistant settings for Marvis at the site
+         * 
+         * @return builder
+         * 
+         */
         public Builder marvis(SettingMarvisArgs marvis) {
             return marvis(Output.of(marvis));
         }
 
         /**
-         * @param occupancy Occupancy Analytics settings
+         * @param mxedgeMgmt Mist Edge management access settings for the site
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mxedgeMgmt(@Nullable Output<SettingMxedgeMgmtArgs> mxedgeMgmt) {
+            $.mxedgeMgmt = mxedgeMgmt;
+            return this;
+        }
+
+        /**
+         * @param mxedgeMgmt Mist Edge management access settings for the site
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mxedgeMgmt(SettingMxedgeMgmtArgs mxedgeMgmt) {
+            return mxedgeMgmt(Output.of(mxedgeMgmt));
+        }
+
+        /**
+         * @param mxtunnels Site Mist Tunnel configuration
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mxtunnels(@Nullable Output<SettingMxtunnelsArgs> mxtunnels) {
+            $.mxtunnels = mxtunnels;
+            return this;
+        }
+
+        /**
+         * @param mxtunnels Site Mist Tunnel configuration
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mxtunnels(SettingMxtunnelsArgs mxtunnels) {
+            return mxtunnels(Output.of(mxtunnels));
+        }
+
+        /**
+         * @param occupancy Analytics settings for site occupancy
          * 
          * @return builder
          * 
@@ -1208,7 +1522,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param occupancy Occupancy Analytics settings
+         * @param occupancy Analytics settings for site occupancy
          * 
          * @return builder
          * 
@@ -1239,7 +1553,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxy Proxy Configuration to talk to Mist
+         * @param proxy Network proxy settings for devices at the site
          * 
          * @return builder
          * 
@@ -1250,7 +1564,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxy Proxy Configuration to talk to Mist
+         * @param proxy Network proxy settings for devices at the site
          * 
          * @return builder
          * 
@@ -1302,7 +1616,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rogue Rogue site settings
+         * @param rogue AP threat detection settings for the site
          * 
          * @return builder
          * 
@@ -1313,7 +1627,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rogue Rogue site settings
+         * @param rogue AP threat detection settings for the site
          * 
          * @return builder
          * 
@@ -1323,7 +1637,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rtsa Managed mobility
+         * @param rtsa Managed mobility and asset tracking settings for the site
          * 
          * @return builder
          * 
@@ -1334,7 +1648,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rtsa Managed mobility
+         * @param rtsa Managed mobility and asset tracking settings for the site
          * 
          * @return builder
          * 
@@ -1344,7 +1658,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param simpleAlert Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute window, there are more than Y distinct client encountering over X failures
+         * @param simpleAlert Threshold alert settings for the site
          * 
          * @return builder
          * 
@@ -1355,7 +1669,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param simpleAlert Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute window, there are more than Y distinct client encountering over X failures
+         * @param simpleAlert Threshold alert settings for the site
          * 
          * @return builder
          * 
@@ -1364,44 +1678,92 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
             return simpleAlert(Output.of(simpleAlert));
         }
 
+        /**
+         * @param siteId Identifier of the site these settings apply to
+         * 
+         * @return builder
+         * 
+         */
         public Builder siteId(@Nullable Output<String> siteId) {
             $.siteId = siteId;
             return this;
         }
 
+        /**
+         * @param siteId Identifier of the site these settings apply to
+         * 
+         * @return builder
+         * 
+         */
         public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
         }
 
+        /**
+         * @param skyatp Threat intelligence settings from Sky ATP for the site
+         * 
+         * @return builder
+         * 
+         */
         public Builder skyatp(@Nullable Output<SettingSkyatpArgs> skyatp) {
             $.skyatp = skyatp;
             return this;
         }
 
+        /**
+         * @param skyatp Threat intelligence settings from Sky ATP for the site
+         * 
+         * @return builder
+         * 
+         */
         public Builder skyatp(SettingSkyatpArgs skyatp) {
             return skyatp(Output.of(skyatp));
         }
 
+        /**
+         * @param sleThresholds Service level expectation threshold settings for the site
+         * 
+         * @return builder
+         * 
+         */
         public Builder sleThresholds(@Nullable Output<SettingSleThresholdsArgs> sleThresholds) {
             $.sleThresholds = sleThresholds;
             return this;
         }
 
+        /**
+         * @param sleThresholds Service level expectation threshold settings for the site
+         * 
+         * @return builder
+         * 
+         */
         public Builder sleThresholds(SettingSleThresholdsArgs sleThresholds) {
             return sleThresholds(Output.of(sleThresholds));
         }
 
+        /**
+         * @param srxApp Juniper SRX application visibility settings for the site
+         * 
+         * @return builder
+         * 
+         */
         public Builder srxApp(@Nullable Output<SettingSrxAppArgs> srxApp) {
             $.srxApp = srxApp;
             return this;
         }
 
+        /**
+         * @param srxApp Juniper SRX application visibility settings for the site
+         * 
+         * @return builder
+         * 
+         */
         public Builder srxApp(SettingSrxAppArgs srxApp) {
             return srxApp(Output.of(srxApp));
         }
 
         /**
-         * @param sshKeys When limitSshAccess = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see Org:Setting)
+         * @param sshKeys Public SSH keys configured for the site
          * 
          * @return builder
          * 
@@ -1412,7 +1774,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sshKeys When limitSshAccess = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see Org:Setting)
+         * @param sshKeys Public SSH keys configured for the site
          * 
          * @return builder
          * 
@@ -1422,7 +1784,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sshKeys When limitSshAccess = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see Org:Setting)
+         * @param sshKeys Public SSH keys configured for the site
          * 
          * @return builder
          * 
@@ -1431,11 +1793,23 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
             return sshKeys(List.of(sshKeys));
         }
 
+        /**
+         * @param ssr Session Smart Router settings for the site
+         * 
+         * @return builder
+         * 
+         */
         public Builder ssr(@Nullable Output<SettingSsrArgs> ssr) {
             $.ssr = ssr;
             return this;
         }
 
+        /**
+         * @param ssr Session Smart Router settings for the site
+         * 
+         * @return builder
+         * 
+         */
         public Builder ssr(SettingSsrArgs ssr) {
             return ssr(Output.of(ssr));
         }
@@ -1461,11 +1835,23 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
             return switchUpdownThreshold(Output.of(switchUpdownThreshold));
         }
 
+        /**
+         * @param syntheticTest Active monitoring test configuration for the site
+         * 
+         * @return builder
+         * 
+         */
         public Builder syntheticTest(@Nullable Output<SettingSyntheticTestArgs> syntheticTest) {
             $.syntheticTest = syntheticTest;
             return this;
         }
 
+        /**
+         * @param syntheticTest Active monitoring test configuration for the site
+         * 
+         * @return builder
+         * 
+         */
         public Builder syntheticTest(SettingSyntheticTestArgs syntheticTest) {
             return syntheticTest(Output.of(syntheticTest));
         }
@@ -1492,7 +1878,80 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uplinkPortConfig AP Uplink port configuration
+         * @param tuntermMonitoringDisabled Whether tunnel termination monitoring is disabled for the site
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tuntermMonitoringDisabled(@Nullable Output<Boolean> tuntermMonitoringDisabled) {
+            $.tuntermMonitoringDisabled = tuntermMonitoringDisabled;
+            return this;
+        }
+
+        /**
+         * @param tuntermMonitoringDisabled Whether tunnel termination monitoring is disabled for the site
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tuntermMonitoringDisabled(Boolean tuntermMonitoringDisabled) {
+            return tuntermMonitoringDisabled(Output.of(tuntermMonitoringDisabled));
+        }
+
+        /**
+         * @param tuntermMonitorings Tunnel termination monitoring settings for the site
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tuntermMonitorings(@Nullable Output<List<SettingTuntermMonitoringArgs>> tuntermMonitorings) {
+            $.tuntermMonitorings = tuntermMonitorings;
+            return this;
+        }
+
+        /**
+         * @param tuntermMonitorings Tunnel termination monitoring settings for the site
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tuntermMonitorings(List<SettingTuntermMonitoringArgs> tuntermMonitorings) {
+            return tuntermMonitorings(Output.of(tuntermMonitorings));
+        }
+
+        /**
+         * @param tuntermMonitorings Tunnel termination monitoring settings for the site
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tuntermMonitorings(SettingTuntermMonitoringArgs... tuntermMonitorings) {
+            return tuntermMonitorings(List.of(tuntermMonitorings));
+        }
+
+        /**
+         * @param tuntermMulticastConfig Multicast settings for tunnel termination at the site
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tuntermMulticastConfig(@Nullable Output<SettingTuntermMulticastConfigArgs> tuntermMulticastConfig) {
+            $.tuntermMulticastConfig = tuntermMulticastConfig;
+            return this;
+        }
+
+        /**
+         * @param tuntermMulticastConfig Multicast settings for tunnel termination at the site
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tuntermMulticastConfig(SettingTuntermMulticastConfigArgs tuntermMulticastConfig) {
+            return tuntermMulticastConfig(Output.of(tuntermMulticastConfig));
+        }
+
+        /**
+         * @param uplinkPortConfig AP uplink port configuration for the site
          * 
          * @return builder
          * 
@@ -1503,7 +1962,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uplinkPortConfig AP Uplink port configuration
+         * @param uplinkPortConfig AP uplink port configuration for the site
          * 
          * @return builder
          * 
@@ -1513,7 +1972,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vars Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+         * @param vars Template variables defined for the site
          * 
          * @return builder
          * 
@@ -1524,7 +1983,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vars Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+         * @param vars Template variables defined for the site
          * 
          * @return builder
          * 
@@ -1534,7 +1993,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param varsAnnotations Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+         * @param varsAnnotations Metadata annotations for site template variables
          * 
          * @return builder
          * 
@@ -1545,7 +2004,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param varsAnnotations Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+         * @param varsAnnotations Metadata annotations for site template variables
          * 
          * @return builder
          * 
@@ -1554,11 +2013,23 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
             return varsAnnotations(Output.of(varsAnnotations));
         }
 
+        /**
+         * @param vna Virtual Network Assistant settings for the site
+         * 
+         * @return builder
+         * 
+         */
         public Builder vna(@Nullable Output<SettingVnaArgs> vna) {
             $.vna = vna;
             return this;
         }
 
+        /**
+         * @param vna Virtual Network Assistant settings for the site
+         * 
+         * @return builder
+         * 
+         */
         public Builder vna(SettingVnaArgs vna) {
             return vna(Output.of(vna));
         }
@@ -1606,7 +2077,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vsInstance Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
+         * @param vsInstance EX9200 virtual switch instance definitions for the site
          * 
          * @return builder
          * 
@@ -1617,7 +2088,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vsInstance Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
+         * @param vsInstance EX9200 virtual switch instance definitions for the site
          * 
          * @return builder
          * 
@@ -1626,35 +2097,71 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
             return vsInstance(Output.of(vsInstance));
         }
 
+        /**
+         * @param wanVna Virtual Network Assistant settings for WAN experiences at the site
+         * 
+         * @return builder
+         * 
+         */
         public Builder wanVna(@Nullable Output<SettingWanVnaArgs> wanVna) {
             $.wanVna = wanVna;
             return this;
         }
 
+        /**
+         * @param wanVna Virtual Network Assistant settings for WAN experiences at the site
+         * 
+         * @return builder
+         * 
+         */
         public Builder wanVna(SettingWanVnaArgs wanVna) {
             return wanVna(Output.of(wanVna));
         }
 
+        /**
+         * @param watchedStationUrl Read-only URL for the watched station list file
+         * 
+         * @return builder
+         * 
+         */
         public Builder watchedStationUrl(@Nullable Output<String> watchedStationUrl) {
             $.watchedStationUrl = watchedStationUrl;
             return this;
         }
 
+        /**
+         * @param watchedStationUrl Read-only URL for the watched station list file
+         * 
+         * @return builder
+         * 
+         */
         public Builder watchedStationUrl(String watchedStationUrl) {
             return watchedStationUrl(Output.of(watchedStationUrl));
         }
 
+        /**
+         * @param whitelistUrl Read-only URL for the site whitelist file
+         * 
+         * @return builder
+         * 
+         */
         public Builder whitelistUrl(@Nullable Output<String> whitelistUrl) {
             $.whitelistUrl = whitelistUrl;
             return this;
         }
 
+        /**
+         * @param whitelistUrl Read-only URL for the site whitelist file
+         * 
+         * @return builder
+         * 
+         */
         public Builder whitelistUrl(String whitelistUrl) {
             return whitelistUrl(Output.of(whitelistUrl));
         }
 
         /**
-         * @param wids WIDS site settings
+         * @param wids Wireless intrusion detection settings for the site
          * 
          * @return builder
          * 
@@ -1665,7 +2172,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param wids WIDS site settings
+         * @param wids Wireless intrusion detection settings for the site
          * 
          * @return builder
          * 
@@ -1675,7 +2182,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param wifi Wi-Fi site settings
+         * @param wifi Wireless LAN configuration settings for the site
          * 
          * @return builder
          * 
@@ -1686,7 +2193,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param wifi Wi-Fi site settings
+         * @param wifi Wireless LAN configuration settings for the site
          * 
          * @return builder
          * 
@@ -1695,17 +2202,29 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
             return wifi(Output.of(wifi));
         }
 
+        /**
+         * @param wiredVna Virtual Network Assistant settings for wired experiences at the site
+         * 
+         * @return builder
+         * 
+         */
         public Builder wiredVna(@Nullable Output<SettingWiredVnaArgs> wiredVna) {
             $.wiredVna = wiredVna;
             return this;
         }
 
+        /**
+         * @param wiredVna Virtual Network Assistant settings for wired experiences at the site
+         * 
+         * @return builder
+         * 
+         */
         public Builder wiredVna(SettingWiredVnaArgs wiredVna) {
             return wiredVna(Output.of(wiredVna));
         }
 
         /**
-         * @param zoneOccupancyAlert Zone Occupancy alert site settings
+         * @param zoneOccupancyAlert Occupancy alert settings for site zones
          * 
          * @return builder
          * 
@@ -1716,7 +2235,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneOccupancyAlert Zone Occupancy alert site settings
+         * @param zoneOccupancyAlert Occupancy alert settings for site zones
          * 
          * @return builder
          * 

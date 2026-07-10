@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -32,22 +33,45 @@ public final class SettingIotproxyVisionlineArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.accessId);
     }
 
+    /**
+     * PEM-encoded CA certificates used to verify the Visionline collector&#39;s TLS certificate. Required when the collector uses a self-signed certificate
+     * 
+     */
+    @Import(name="cacerts")
+    private @Nullable Output<List<String>> cacerts;
+
+    /**
+     * @return PEM-encoded CA certificates used to verify the Visionline collector&#39;s TLS certificate. Required when the collector uses a self-signed certificate
+     * 
+     */
+    public Optional<Output<List<String>>> cacerts() {
+        return Optional.ofNullable(this.cacerts);
+    }
+
+    /**
+     * Whether the Visionline integration is enabled
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether the Visionline integration is enabled
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
     /**
-     * Hostname or IP of the Visionline collector
+     * Collector hostname or IP address for Visionline
      * 
      */
     @Import(name="host")
     private @Nullable Output<String> host;
 
     /**
-     * @return Hostname or IP of the Visionline collector
+     * @return Collector hostname or IP address for Visionline
      * 
      */
     public Optional<Output<String>> host() {
@@ -55,14 +79,14 @@ public final class SettingIotproxyVisionlineArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Password for the Visionline service
+     * Visionline service password used by the IoT proxy
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return Password for the Visionline service
+     * @return Visionline service password used by the IoT proxy
      * 
      */
     public Optional<Output<String>> password() {
@@ -85,14 +109,14 @@ public final class SettingIotproxyVisionlineArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Username for the Visionline service
+     * Visionline service username used by the IoT proxy
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return Username for the Visionline service
+     * @return Visionline service username used by the IoT proxy
      * 
      */
     public Optional<Output<String>> username() {
@@ -103,6 +127,7 @@ public final class SettingIotproxyVisionlineArgs extends com.pulumi.resources.Re
 
     private SettingIotproxyVisionlineArgs(SettingIotproxyVisionlineArgs $) {
         this.accessId = $.accessId;
+        this.cacerts = $.cacerts;
         this.enabled = $.enabled;
         this.host = $.host;
         this.password = $.password;
@@ -149,17 +174,60 @@ public final class SettingIotproxyVisionlineArgs extends com.pulumi.resources.Re
             return accessId(Output.of(accessId));
         }
 
+        /**
+         * @param cacerts PEM-encoded CA certificates used to verify the Visionline collector&#39;s TLS certificate. Required when the collector uses a self-signed certificate
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cacerts(@Nullable Output<List<String>> cacerts) {
+            $.cacerts = cacerts;
+            return this;
+        }
+
+        /**
+         * @param cacerts PEM-encoded CA certificates used to verify the Visionline collector&#39;s TLS certificate. Required when the collector uses a self-signed certificate
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cacerts(List<String> cacerts) {
+            return cacerts(Output.of(cacerts));
+        }
+
+        /**
+         * @param cacerts PEM-encoded CA certificates used to verify the Visionline collector&#39;s TLS certificate. Required when the collector uses a self-signed certificate
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cacerts(String... cacerts) {
+            return cacerts(List.of(cacerts));
+        }
+
+        /**
+         * @param enabled Whether the Visionline integration is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether the Visionline integration is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
         /**
-         * @param host Hostname or IP of the Visionline collector
+         * @param host Collector hostname or IP address for Visionline
          * 
          * @return builder
          * 
@@ -170,7 +238,7 @@ public final class SettingIotproxyVisionlineArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param host Hostname or IP of the Visionline collector
+         * @param host Collector hostname or IP address for Visionline
          * 
          * @return builder
          * 
@@ -180,7 +248,7 @@ public final class SettingIotproxyVisionlineArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param password Password for the Visionline service
+         * @param password Visionline service password used by the IoT proxy
          * 
          * @return builder
          * 
@@ -191,7 +259,7 @@ public final class SettingIotproxyVisionlineArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param password Password for the Visionline service
+         * @param password Visionline service password used by the IoT proxy
          * 
          * @return builder
          * 
@@ -222,7 +290,7 @@ public final class SettingIotproxyVisionlineArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param username Username for the Visionline service
+         * @param username Visionline service username used by the IoT proxy
          * 
          * @return builder
          * 
@@ -233,7 +301,7 @@ public final class SettingIotproxyVisionlineArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param username Username for the Visionline service
+         * @param username Visionline service username used by the IoT proxy
          * 
          * @return builder
          * 

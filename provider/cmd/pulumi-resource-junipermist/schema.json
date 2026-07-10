@@ -1076,7 +1076,6 @@
                         "bandwidth",
                         "channel",
                         "disabled",
-                        "power",
                         "preamble"
                     ]
                 }
@@ -1146,7 +1145,6 @@
                         "bandwidth",
                         "channel",
                         "disabled",
-                        "power",
                         "preamble"
                     ]
                 }
@@ -1216,7 +1214,6 @@
                         "bandwidth",
                         "channel",
                         "disabled",
-                        "power",
                         "preamble"
                     ]
                 }
@@ -1290,7 +1287,6 @@
                         "bandwidth",
                         "channel",
                         "disabled",
-                        "power",
                         "preamble",
                         "standardPower"
                     ]
@@ -14368,7 +14364,6 @@
                         "bandwidth",
                         "channel",
                         "disabled",
-                        "power",
                         "preamble"
                     ]
                 }
@@ -14438,7 +14433,6 @@
                         "bandwidth",
                         "channel",
                         "disabled",
-                        "power",
                         "preamble"
                     ]
                 }
@@ -14508,7 +14502,6 @@
                         "bandwidth",
                         "channel",
                         "disabled",
-                        "power",
                         "preamble"
                     ]
                 }
@@ -14582,7 +14575,6 @@
                         "bandwidth",
                         "channel",
                         "disabled",
-                        "power",
                         "preamble",
                         "standardPower"
                     ]
@@ -23141,6 +23133,74 @@
                     ]
                 }
             }
+        },
+        "junipermist:org/MxtunnelAutoPreemption:MxtunnelAutoPreemption": {
+            "properties": {
+                "dayOfWeek": {
+                    "type": "string",
+                    "description": "Scheduled weekday for auto preemption\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether auto preemption is enabled\n"
+                },
+                "timeOfDay": {
+                    "type": "string",
+                    "description": "Scheduled time of day for auto preemption\n"
+                }
+            },
+            "type": "object"
+        },
+        "junipermist:org/MxtunnelIpsec:MxtunnelIpsec": {
+            "properties": {
+                "dnsServers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Name server addresses advertised for IPsec tunnel clients\n"
+                },
+                "dnsSuffixes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Search suffixes advertised for IPsec tunnel clients\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether IPsec support is enabled for this Mist Tunnel\n"
+                },
+                "extraRoutes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/junipermist:org/MxtunnelIpsecExtraRoute:MxtunnelIpsecExtraRoute"
+                    },
+                    "description": "Additional routes advertised for the IPsec tunnel\n"
+                },
+                "splitTunnel": {
+                    "type": "boolean",
+                    "description": "Whether split tunneling is enabled for IPsec clients\n"
+                },
+                "useMxedge": {
+                    "type": "boolean",
+                    "description": "Whether IPsec termination uses Mist Edge\n"
+                }
+            },
+            "type": "object"
+        },
+        "junipermist:org/MxtunnelIpsecExtraRoute:MxtunnelIpsecExtraRoute": {
+            "properties": {
+                "dest": {
+                    "type": "string",
+                    "description": "Route destination CIDR for the IPsec extra route\n"
+                },
+                "nextHop": {
+                    "type": "string",
+                    "description": "Route next-hop IPv4 address for the IPsec extra route\n"
+                }
+            },
+            "type": "object"
         },
         "junipermist:org/NacPortalPortal:NacPortalPortal": {
             "properties": {
@@ -37236,7 +37296,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List or Comma separated list of additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses\n"
+                    "description": "VLAN IDs included in addition to the default VLAN set for AP synthetic tests\n"
                 }
             },
             "type": "object"
@@ -37248,11 +37308,11 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Custom versions for different models. Property key is the model name (e.g. \"AP41\")\n"
+                    "description": "Per-AP-model firmware versions or channels used for auto-upgrade\n"
                 },
                 "dayOfWeek": {
                     "type": "string",
-                    "description": "enum: \u003cspan pulumi-lang-nodejs=\"`any`\" pulumi-lang-dotnet=\"`Any`\" pulumi-lang-go=\"`any`\" pulumi-lang-python=\"`any`\" pulumi-lang-yaml=\"`any`\" pulumi-lang-java=\"`any`\" pulumi-lang-hcl=\"`any`\"\u003e`any`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`fri`\" pulumi-lang-dotnet=\"`Fri`\" pulumi-lang-go=\"`fri`\" pulumi-lang-python=\"`fri`\" pulumi-lang-yaml=\"`fri`\" pulumi-lang-java=\"`fri`\" pulumi-lang-hcl=\"`fri`\"\u003e`fri`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`mon`\" pulumi-lang-dotnet=\"`Mon`\" pulumi-lang-go=\"`mon`\" pulumi-lang-python=\"`mon`\" pulumi-lang-yaml=\"`mon`\" pulumi-lang-java=\"`mon`\" pulumi-lang-hcl=\"`mon`\"\u003e`mon`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sat`\" pulumi-lang-dotnet=\"`Sat`\" pulumi-lang-go=\"`sat`\" pulumi-lang-python=\"`sat`\" pulumi-lang-yaml=\"`sat`\" pulumi-lang-java=\"`sat`\" pulumi-lang-hcl=\"`sat`\"\u003e`sat`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sun`\" pulumi-lang-dotnet=\"`Sun`\" pulumi-lang-go=\"`sun`\" pulumi-lang-python=\"`sun`\" pulumi-lang-yaml=\"`sun`\" pulumi-lang-java=\"`sun`\" pulumi-lang-hcl=\"`sun`\"\u003e`sun`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`thu`\" pulumi-lang-dotnet=\"`Thu`\" pulumi-lang-go=\"`thu`\" pulumi-lang-python=\"`thu`\" pulumi-lang-yaml=\"`thu`\" pulumi-lang-java=\"`thu`\" pulumi-lang-hcl=\"`thu`\"\u003e`thu`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`tue`\" pulumi-lang-dotnet=\"`Tue`\" pulumi-lang-go=\"`tue`\" pulumi-lang-python=\"`tue`\" pulumi-lang-yaml=\"`tue`\" pulumi-lang-java=\"`tue`\" pulumi-lang-hcl=\"`tue`\"\u003e`tue`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`wed`\" pulumi-lang-dotnet=\"`Wed`\" pulumi-lang-go=\"`wed`\" pulumi-lang-python=\"`wed`\" pulumi-lang-yaml=\"`wed`\" pulumi-lang-java=\"`wed`\" pulumi-lang-hcl=\"`wed`\"\u003e`wed`\u003c/span\u003e\n"
+                    "description": "Weekly AP auto-upgrade day for the maintenance window\n"
                 },
                 "enabled": {
                     "type": "boolean",
@@ -37264,7 +37324,7 @@
                 },
                 "version": {
                     "type": "string",
-                    "description": "desired version. enum: \u003cspan pulumi-lang-nodejs=\"`beta`\" pulumi-lang-dotnet=\"`Beta`\" pulumi-lang-go=\"`beta`\" pulumi-lang-python=\"`beta`\" pulumi-lang-yaml=\"`beta`\" pulumi-lang-java=\"`beta`\" pulumi-lang-hcl=\"`beta`\"\u003e`beta`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`custom`\" pulumi-lang-dotnet=\"`Custom`\" pulumi-lang-go=\"`custom`\" pulumi-lang-python=\"`custom`\" pulumi-lang-yaml=\"`custom`\" pulumi-lang-java=\"`custom`\" pulumi-lang-hcl=\"`custom`\"\u003e`custom`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`stable`\" pulumi-lang-dotnet=\"`Stable`\" pulumi-lang-go=\"`stable`\" pulumi-lang-python=\"`stable`\" pulumi-lang-yaml=\"`stable`\" pulumi-lang-java=\"`stable`\" pulumi-lang-hcl=\"`stable`\"\u003e`stable`\u003c/span\u003e\n"
+                    "description": "Firmware release channel or custom version used for AP auto-upgrade\n"
                 }
             },
             "type": "object",
@@ -37293,7 +37353,7 @@
                 },
                 "dayOfWeek": {
                     "type": "string",
-                    "description": "enum: \u003cspan pulumi-lang-nodejs=\"`any`\" pulumi-lang-dotnet=\"`Any`\" pulumi-lang-go=\"`any`\" pulumi-lang-python=\"`any`\" pulumi-lang-yaml=\"`any`\" pulumi-lang-java=\"`any`\" pulumi-lang-hcl=\"`any`\"\u003e`any`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`fri`\" pulumi-lang-dotnet=\"`Fri`\" pulumi-lang-go=\"`fri`\" pulumi-lang-python=\"`fri`\" pulumi-lang-yaml=\"`fri`\" pulumi-lang-java=\"`fri`\" pulumi-lang-hcl=\"`fri`\"\u003e`fri`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`mon`\" pulumi-lang-dotnet=\"`Mon`\" pulumi-lang-go=\"`mon`\" pulumi-lang-python=\"`mon`\" pulumi-lang-yaml=\"`mon`\" pulumi-lang-java=\"`mon`\" pulumi-lang-hcl=\"`mon`\"\u003e`mon`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sat`\" pulumi-lang-dotnet=\"`Sat`\" pulumi-lang-go=\"`sat`\" pulumi-lang-python=\"`sat`\" pulumi-lang-yaml=\"`sat`\" pulumi-lang-java=\"`sat`\" pulumi-lang-hcl=\"`sat`\"\u003e`sat`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sun`\" pulumi-lang-dotnet=\"`Sun`\" pulumi-lang-go=\"`sun`\" pulumi-lang-python=\"`sun`\" pulumi-lang-yaml=\"`sun`\" pulumi-lang-java=\"`sun`\" pulumi-lang-hcl=\"`sun`\"\u003e`sun`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`thu`\" pulumi-lang-dotnet=\"`Thu`\" pulumi-lang-go=\"`thu`\" pulumi-lang-python=\"`thu`\" pulumi-lang-yaml=\"`thu`\" pulumi-lang-java=\"`thu`\" pulumi-lang-hcl=\"`thu`\"\u003e`thu`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`tue`\" pulumi-lang-dotnet=\"`Tue`\" pulumi-lang-go=\"`tue`\" pulumi-lang-python=\"`tue`\" pulumi-lang-yaml=\"`tue`\" pulumi-lang-java=\"`tue`\" pulumi-lang-hcl=\"`tue`\"\u003e`tue`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`wed`\" pulumi-lang-dotnet=\"`Wed`\" pulumi-lang-go=\"`wed`\" pulumi-lang-python=\"`wed`\" pulumi-lang-yaml=\"`wed`\" pulumi-lang-java=\"`wed`\" pulumi-lang-hcl=\"`wed`\"\u003e`wed`\u003c/span\u003e\n"
+                    "description": "Weekly ESL auto-upgrade day for the maintenance window\n"
                 },
                 "enabled": {
                     "type": "boolean",
@@ -37304,7 +37364,8 @@
                     "description": "\u003cspan pulumi-lang-nodejs=\"`any`\" pulumi-lang-dotnet=\"`Any`\" pulumi-lang-go=\"`any`\" pulumi-lang-python=\"`any`\" pulumi-lang-yaml=\"`any`\" pulumi-lang-java=\"`any`\" pulumi-lang-hcl=\"`any`\"\u003e`any`\u003c/span\u003e / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time\n"
                 },
                 "version": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "ESL firmware version used for auto-upgrade\n"
                 }
             },
             "type": "object",
@@ -37329,14 +37390,14 @@
                 },
                 "beaconRateMode": {
                     "type": "string",
-                    "description": "enum: \u003cspan pulumi-lang-nodejs=\"`custom`\" pulumi-lang-dotnet=\"`Custom`\" pulumi-lang-go=\"`custom`\" pulumi-lang-python=\"`custom`\" pulumi-lang-yaml=\"`custom`\" pulumi-lang-java=\"`custom`\" pulumi-lang-hcl=\"`custom`\"\u003e`custom`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\" pulumi-lang-hcl=\"`default`\"\u003e`default`\u003c/span\u003e\n"
+                    "description": "Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate\n"
                 },
                 "beamDisableds": {
                     "type": "array",
                     "items": {
                         "type": "integer"
                     },
-                    "description": "List of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)\n"
+                    "description": "AP BLE beam numbers disabled for location advertisements\n"
                 },
                 "customBlePacketEnabled": {
                     "type": "boolean",
@@ -37355,7 +37416,8 @@
                     "description": "Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default\n"
                 },
                 "eddystoneUidBeams": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "BLE beams used to transmit Eddystone-UID advertisements, expressed as ranges such as `2-4,7`\n"
                 },
                 "eddystoneUidEnabled": {
                     "type": "boolean",
@@ -37371,14 +37433,15 @@
                 },
                 "eddystoneUidNamespace": {
                     "type": "string",
-                    "description": "Eddystone-UID namespace\n"
+                    "description": "Eddystone-UID namespace broadcast by the AP, as a 10-byte hex string\n"
                 },
                 "eddystoneUrlAdvPower": {
                     "type": "integer",
                     "description": "Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default\n"
                 },
                 "eddystoneUrlBeams": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "BLE beams used to transmit Eddystone-URL advertisements, expressed as ranges such as `2-4,7`\n"
                 },
                 "eddystoneUrlEnabled": {
                     "type": "boolean",
@@ -37386,7 +37449,7 @@
                 },
                 "eddystoneUrlFreqMsec": {
                     "type": "integer",
-                    "description": "Frequency (msec) of data emit by Eddystone-UID beacon\n"
+                    "description": "Frequency (msec) of data emitted by Eddystone-URL beacon\n"
                 },
                 "eddystoneUrlUrl": {
                     "type": "string",
@@ -37397,7 +37460,8 @@
                     "description": "Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default\n"
                 },
                 "ibeaconBeams": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "BLE beams used to transmit iBeacon advertisements, expressed as ranges such as `2-4,7`\n"
                 },
                 "ibeaconEnabled": {
                     "type": "boolean",
@@ -37409,11 +37473,11 @@
                 },
                 "ibeaconMajor": {
                     "type": "integer",
-                    "description": "Major number for iBeacon\n"
+                    "description": "iBeacon major value broadcast by the AP\n"
                 },
                 "ibeaconMinor": {
                     "type": "integer",
-                    "description": "Minor number for iBeacon\n"
+                    "description": "iBeacon minor value broadcast by the AP\n"
                 },
                 "ibeaconUuid": {
                     "type": "string",
@@ -37425,7 +37489,7 @@
                 },
                 "powerMode": {
                     "type": "string",
-                    "description": "enum: \u003cspan pulumi-lang-nodejs=\"`custom`\" pulumi-lang-dotnet=\"`Custom`\" pulumi-lang-go=\"`custom`\" pulumi-lang-python=\"`custom`\" pulumi-lang-yaml=\"`custom`\" pulumi-lang-java=\"`custom`\" pulumi-lang-hcl=\"`custom`\"\u003e`custom`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\" pulumi-lang-hcl=\"`default`\"\u003e`default`\u003c/span\u003e\n"
+                    "description": "Transmit power mode for BLE beacons; use custom to set \u003cspan pulumi-lang-nodejs=\"`power`\" pulumi-lang-dotnet=\"`Power`\" pulumi-lang-go=\"`power`\" pulumi-lang-python=\"`power`\" pulumi-lang-yaml=\"`power`\" pulumi-lang-java=\"`power`\" pulumi-lang-hcl=\"`power`\"\u003e`power`\u003c/span\u003e\n"
                 }
             },
             "type": "object",
@@ -37469,7 +37533,7 @@
                 },
                 "pushWindow": {
                     "$ref": "#/types/junipermist:site/SettingConfigPushPolicyPushWindow:SettingConfigPushPolicyPushWindow",
-                    "description": "If enabled, new config will only be pushed to device within the specified time window\n"
+                    "description": "Allowed time window during which configuration pushes may run\n"
                 }
             },
             "type": "object",
@@ -37484,11 +37548,12 @@
         "junipermist:site/SettingConfigPushPolicyPushWindow:SettingConfigPushPolicyPushWindow": {
             "properties": {
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether configuration pushes are limited to the configured push window\n"
                 },
                 "hours": {
                     "$ref": "#/types/junipermist:site/SettingConfigPushPolicyPushWindowHours:SettingConfigPushPolicyPushWindowHours",
-                    "description": "Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)\n"
+                    "description": "Day-of-week hour ranges when configuration pushes are allowed\n"
                 }
             },
             "type": "object",
@@ -37504,31 +37569,31 @@
             "properties": {
                 "fri": {
                     "type": "string",
-                    "description": "Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.\n"
+                    "description": "Operating hour range for Friday\n"
                 },
                 "mon": {
                     "type": "string",
-                    "description": "Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.\n"
+                    "description": "Operating hour range for Monday\n"
                 },
                 "sat": {
                     "type": "string",
-                    "description": "Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.\n"
+                    "description": "Operating hour range for Saturday\n"
                 },
                 "sun": {
                     "type": "string",
-                    "description": "Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.\n"
+                    "description": "Operating hour range for Sunday\n"
                 },
                 "thu": {
                     "type": "string",
-                    "description": "Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.\n"
+                    "description": "Operating hour range for Thursday\n"
                 },
                 "tue": {
                     "type": "string",
-                    "description": "Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.\n"
+                    "description": "Operating hour range for Tuesday\n"
                 },
                 "wed": {
                     "type": "string",
-                    "description": "Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.\n"
+                    "description": "Operating hour range for Wednesday\n"
                 }
             },
             "type": "object",
@@ -37549,13 +37614,15 @@
         "junipermist:site/SettingCriticalUrlMonitoring:SettingCriticalUrlMonitoring": {
             "properties": {
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether critical URL monitoring is enabled\n"
                 },
                 "monitors": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/junipermist:site/SettingCriticalUrlMonitoringMonitor:SettingCriticalUrlMonitoringMonitor"
-                    }
+                    },
+                    "description": "Critical URLs monitored for site health latency\n"
                 }
             },
             "type": "object",
@@ -37571,10 +37638,12 @@
         "junipermist:site/SettingCriticalUrlMonitoringMonitor:SettingCriticalUrlMonitoringMonitor": {
             "properties": {
                 "url": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Monitored HTTP or HTTPS URL used for site health latency\n"
                 },
                 "vlanId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Source VLAN ID used to run the critical URL monitor\n"
                 }
             },
             "type": "object"
@@ -37583,23 +37652,23 @@
             "properties": {
                 "dwellTagNames": {
                     "$ref": "#/types/junipermist:site/SettingEngagementDwellTagNames:SettingEngagementDwellTagNames",
-                    "description": "Name associated to each tag\n"
+                    "description": "Display labels for dwell-time visit categories\n"
                 },
                 "dwellTags": {
                     "$ref": "#/types/junipermist:site/SettingEngagementDwellTags:SettingEngagementDwellTags",
-                    "description": "add tags to visits within the duration (in seconds)\n"
+                    "description": "Visit duration ranges used to assign engagement categories\n"
                 },
                 "hours": {
                     "$ref": "#/types/junipermist:site/SettingEngagementHours:SettingEngagementHours",
-                    "description": "Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)\n"
+                    "description": "Schedule during which engagement analytics rules apply\n"
                 },
                 "maxDwell": {
                     "type": "integer",
-                    "description": "Max time, default is 43200(12h), max is 68400 (18h)\n"
+                    "description": "Maximum dwell time in seconds considered by engagement analytics\n"
                 },
                 "minDwell": {
                     "type": "integer",
-                    "description": "min time\n"
+                    "description": "Minimum dwell time in seconds for engagement analytics\n"
                 }
             },
             "type": "object"
@@ -37670,31 +37739,31 @@
             "properties": {
                 "fri": {
                     "type": "string",
-                    "description": "Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.\n"
+                    "description": "Operating hour range for Friday\n"
                 },
                 "mon": {
                     "type": "string",
-                    "description": "Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.\n"
+                    "description": "Operating hour range for Monday\n"
                 },
                 "sat": {
                     "type": "string",
-                    "description": "Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.\n"
+                    "description": "Operating hour range for Saturday\n"
                 },
                 "sun": {
                     "type": "string",
-                    "description": "Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.\n"
+                    "description": "Operating hour range for Sunday\n"
                 },
                 "thu": {
                     "type": "string",
-                    "description": "Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.\n"
+                    "description": "Operating hour range for Thursday\n"
                 },
                 "tue": {
                     "type": "string",
-                    "description": "Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.\n"
+                    "description": "Operating hour range for Tuesday\n"
                 },
                 "wed": {
                     "type": "string",
-                    "description": "Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.\n"
+                    "description": "Operating hour range for Wednesday\n"
                 }
             },
             "type": "object"
@@ -37706,17 +37775,19 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "For SSR only, as direct root access is not allowed\n"
+                    "description": "SSR-only SSH public keys for administrative access\n"
                 },
                 "appProbing": {
-                    "$ref": "#/types/junipermist:site/SettingGatewayMgmtAppProbing:SettingGatewayMgmtAppProbing"
+                    "$ref": "#/types/junipermist:site/SettingGatewayMgmtAppProbing:SettingGatewayMgmtAppProbing",
+                    "description": "Application probing configuration for gateway monitoring\n"
                 },
                 "appUsage": {
                     "type": "boolean",
                     "description": "Consumes uplink bandwidth, requires WA license\n"
                 },
                 "autoSignatureUpdate": {
-                    "$ref": "#/types/junipermist:site/SettingGatewayMgmtAutoSignatureUpdate:SettingGatewayMgmtAutoSignatureUpdate"
+                    "$ref": "#/types/junipermist:site/SettingGatewayMgmtAutoSignatureUpdate:SettingGatewayMgmtAutoSignatureUpdate",
+                    "description": "Schedule for automatic security signature updates\n"
                 },
                 "configRevertTimer": {
                     "type": "integer",
@@ -37735,34 +37806,39 @@
                     "description": "For SSR and SRX, disable usb interface\n"
                 },
                 "fipsEnabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether FIPS mode is enabled on the gateway\n"
                 },
                 "probeHosts": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "IPv4 probe targets used for gateway connectivity checks\n"
                 },
                 "probeHostsv6s": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "IPv6 probe targets used for gateway connectivity checks\n"
                 },
                 "protectRe": {
                     "$ref": "#/types/junipermist:site/SettingGatewayMgmtProtectRe:SettingGatewayMgmtProtectRe",
-                    "description": "Restrict inbound-traffic to host\nwhen enabled, all traffic that is not essential to our operation will be dropped \ne.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works\n"
+                    "description": "Control-plane protection settings for the gateway\n"
                 },
                 "rootPassword": {
                     "type": "string",
-                    "description": "SRX only\n",
+                    "description": "SRX only. Root password for local gateway access\n",
                     "secret": true
                 },
                 "securityLogSourceAddress": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "IPv4 source address used for gateway security log traffic\n"
                 },
                 "securityLogSourceInterface": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Source interface used for gateway security log traffic\n"
                 }
             },
             "type": "object",
@@ -37784,16 +37860,18 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "APp-keys from List Applications\n"
+                    "description": "Predefined application keys to probe\n"
                 },
                 "customApps": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/junipermist:site/SettingGatewayMgmtAppProbingCustomApp:SettingGatewayMgmtAppProbingCustomApp"
-                    }
+                    },
+                    "description": "User-defined application probe definitions\n"
                 },
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether gateway application probing is enabled\n"
                 }
             },
             "type": "object"
@@ -37804,7 +37882,8 @@
                     "type": "string"
                 },
                 "appType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Category label used for this custom application probe\n"
                 },
                 "hostnames": {
                     "type": "array",
@@ -37814,27 +37893,31 @@
                     "description": "Only 1 entry is allowed:\n    * if \u003cspan pulumi-lang-nodejs=\"`protocol`\" pulumi-lang-dotnet=\"`Protocol`\" pulumi-lang-go=\"`protocol`\" pulumi-lang-python=\"`protocol`\" pulumi-lang-yaml=\"`protocol`\" pulumi-lang-java=\"`protocol`\" pulumi-lang-hcl=\"`protocol`\"\u003e`protocol`\u003c/span\u003e==\u003cspan pulumi-lang-nodejs=\"`http`\" pulumi-lang-dotnet=\"`Http`\" pulumi-lang-go=\"`http`\" pulumi-lang-python=\"`http`\" pulumi-lang-yaml=\"`http`\" pulumi-lang-java=\"`http`\" pulumi-lang-hcl=\"`http`\"\u003e`http`\u003c/span\u003e: URL (e.g. `http://test.com` or `https://test.com`)\n    * if \u003cspan pulumi-lang-nodejs=\"`protocol`\" pulumi-lang-dotnet=\"`Protocol`\" pulumi-lang-go=\"`protocol`\" pulumi-lang-python=\"`protocol`\" pulumi-lang-yaml=\"`protocol`\" pulumi-lang-java=\"`protocol`\" pulumi-lang-hcl=\"`protocol`\"\u003e`protocol`\u003c/span\u003e==\u003cspan pulumi-lang-nodejs=\"`icmp`\" pulumi-lang-dotnet=\"`Icmp`\" pulumi-lang-go=\"`icmp`\" pulumi-lang-python=\"`icmp`\" pulumi-lang-yaml=\"`icmp`\" pulumi-lang-java=\"`icmp`\" pulumi-lang-hcl=\"`icmp`\"\u003e`icmp`\u003c/span\u003e: IP Address (e.g. `1.2.3.4`)\n"
                 },
                 "key": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Stable key used to identify this custom application probe\n"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Display name for this custom application probe\n"
                 },
                 "network": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Gateway network used as the source context for this probe\n"
                 },
                 "packetSize": {
                     "type": "integer",
-                    "description": "If \u003cspan pulumi-lang-nodejs=\"`protocol`\" pulumi-lang-dotnet=\"`Protocol`\" pulumi-lang-go=\"`protocol`\" pulumi-lang-python=\"`protocol`\" pulumi-lang-yaml=\"`protocol`\" pulumi-lang-java=\"`protocol`\" pulumi-lang-hcl=\"`protocol`\"\u003e`protocol`\u003c/span\u003e==\u003cspan pulumi-lang-nodejs=\"`icmp`\" pulumi-lang-dotnet=\"`Icmp`\" pulumi-lang-go=\"`icmp`\" pulumi-lang-python=\"`icmp`\" pulumi-lang-yaml=\"`icmp`\" pulumi-lang-java=\"`icmp`\" pulumi-lang-hcl=\"`icmp`\"\u003e`icmp`\u003c/span\u003e\n"
+                    "description": "If \u003cspan pulumi-lang-nodejs=\"`protocol`\" pulumi-lang-dotnet=\"`Protocol`\" pulumi-lang-go=\"`protocol`\" pulumi-lang-python=\"`protocol`\" pulumi-lang-yaml=\"`protocol`\" pulumi-lang-java=\"`protocol`\" pulumi-lang-hcl=\"`protocol`\"\u003e`protocol`\u003c/span\u003e==\u003cspan pulumi-lang-nodejs=\"`icmp`\" pulumi-lang-dotnet=\"`Icmp`\" pulumi-lang-go=\"`icmp`\" pulumi-lang-python=\"`icmp`\" pulumi-lang-yaml=\"`icmp`\" pulumi-lang-java=\"`icmp`\" pulumi-lang-hcl=\"`icmp`\"\u003e`icmp`\u003c/span\u003e. ICMP packet size used by this custom app probe\n"
                 },
                 "protocol": {
                     "type": "string",
-                    "description": "enum: \u003cspan pulumi-lang-nodejs=\"`http`\" pulumi-lang-dotnet=\"`Http`\" pulumi-lang-go=\"`http`\" pulumi-lang-python=\"`http`\" pulumi-lang-yaml=\"`http`\" pulumi-lang-java=\"`http`\" pulumi-lang-hcl=\"`http`\"\u003e`http`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`icmp`\" pulumi-lang-dotnet=\"`Icmp`\" pulumi-lang-go=\"`icmp`\" pulumi-lang-python=\"`icmp`\" pulumi-lang-yaml=\"`icmp`\" pulumi-lang-java=\"`icmp`\" pulumi-lang-hcl=\"`icmp`\"\u003e`icmp`\u003c/span\u003e\n"
+                    "description": "Probe protocol used by this custom application definition\n"
                 },
                 "url": {
                     "type": "string"
                 },
                 "vrf": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Gateway VRF used as the source context for this probe\n"
                 }
             },
             "type": "object",
@@ -37860,10 +37943,11 @@
             "properties": {
                 "dayOfWeek": {
                     "type": "string",
-                    "description": "enum: \u003cspan pulumi-lang-nodejs=\"`any`\" pulumi-lang-dotnet=\"`Any`\" pulumi-lang-go=\"`any`\" pulumi-lang-python=\"`any`\" pulumi-lang-yaml=\"`any`\" pulumi-lang-java=\"`any`\" pulumi-lang-hcl=\"`any`\"\u003e`any`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`fri`\" pulumi-lang-dotnet=\"`Fri`\" pulumi-lang-go=\"`fri`\" pulumi-lang-python=\"`fri`\" pulumi-lang-yaml=\"`fri`\" pulumi-lang-java=\"`fri`\" pulumi-lang-hcl=\"`fri`\"\u003e`fri`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`mon`\" pulumi-lang-dotnet=\"`Mon`\" pulumi-lang-go=\"`mon`\" pulumi-lang-python=\"`mon`\" pulumi-lang-yaml=\"`mon`\" pulumi-lang-java=\"`mon`\" pulumi-lang-hcl=\"`mon`\"\u003e`mon`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sat`\" pulumi-lang-dotnet=\"`Sat`\" pulumi-lang-go=\"`sat`\" pulumi-lang-python=\"`sat`\" pulumi-lang-yaml=\"`sat`\" pulumi-lang-java=\"`sat`\" pulumi-lang-hcl=\"`sat`\"\u003e`sat`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sun`\" pulumi-lang-dotnet=\"`Sun`\" pulumi-lang-go=\"`sun`\" pulumi-lang-python=\"`sun`\" pulumi-lang-yaml=\"`sun`\" pulumi-lang-java=\"`sun`\" pulumi-lang-hcl=\"`sun`\"\u003e`sun`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`thu`\" pulumi-lang-dotnet=\"`Thu`\" pulumi-lang-go=\"`thu`\" pulumi-lang-python=\"`thu`\" pulumi-lang-yaml=\"`thu`\" pulumi-lang-java=\"`thu`\" pulumi-lang-hcl=\"`thu`\"\u003e`thu`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`tue`\" pulumi-lang-dotnet=\"`Tue`\" pulumi-lang-go=\"`tue`\" pulumi-lang-python=\"`tue`\" pulumi-lang-yaml=\"`tue`\" pulumi-lang-java=\"`tue`\" pulumi-lang-hcl=\"`tue`\"\u003e`tue`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`wed`\" pulumi-lang-dotnet=\"`Wed`\" pulumi-lang-go=\"`wed`\" pulumi-lang-python=\"`wed`\" pulumi-lang-yaml=\"`wed`\" pulumi-lang-java=\"`wed`\" pulumi-lang-hcl=\"`wed`\"\u003e`wed`\u003c/span\u003e\n"
+                    "description": "Scheduled weekday for automatic signature updates\n"
                 },
                 "enable": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether automatic security signature updates are enabled\n"
                 },
                 "timeOfDay": {
                     "type": "string",
@@ -37893,7 +37977,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/junipermist:site/SettingGatewayMgmtProtectReCustom:SettingGatewayMgmtProtectReCustom"
-                    }
+                    },
+                    "description": "Additional ACL entries allowed by the Protect RE policy\n"
                 },
                 "enabled": {
                     "type": "boolean",
@@ -37908,7 +37993,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "host/subnets we'll allow traffic to/from\n"
+                    "description": "Trusted host or subnet entries allowed by the Protect RE policy\n"
                 }
             },
             "type": "object",
@@ -37938,7 +38023,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Source subnets matched by this custom Protect RE ACL\n"
                 }
             },
             "type": "object",
@@ -37958,11 +38044,12 @@
         "junipermist:site/SettingIotproxy:SettingIotproxy": {
             "properties": {
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether the site IoT proxy is enabled\n"
                 },
                 "visionline": {
                     "$ref": "#/types/junipermist:site/SettingIotproxyVisionline:SettingIotproxyVisionline",
-                    "description": "Visionline integration settings for IoT proxy\n"
+                    "description": "Site access-control integration settings for Visionline\n"
                 }
             },
             "type": "object",
@@ -37980,16 +38067,24 @@
                     "type": "string",
                     "description": "Access ID for the Visionline service\n"
                 },
+                "cacerts": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "PEM-encoded CA certificates used to verify the Visionline collector's TLS certificate. Required when the collector uses a self-signed certificate\n"
+                },
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether the Visionline integration is enabled\n"
                 },
                 "host": {
                     "type": "string",
-                    "description": "Hostname or IP of the Visionline collector\n"
+                    "description": "Collector hostname or IP address for Visionline\n"
                 },
                 "password": {
                     "type": "string",
-                    "description": "Password for the Visionline service\n",
+                    "description": "Visionline service password used by the IoT proxy\n",
                     "secret": true
                 },
                 "port": {
@@ -37998,7 +38093,7 @@
                 },
                 "username": {
                     "type": "string",
-                    "description": "Username for the Visionline service\n"
+                    "description": "Visionline service username used by the IoT proxy\n"
                 }
             },
             "type": "object",
@@ -38015,16 +38110,18 @@
             "properties": {
                 "autoUpgrade": {
                     "$ref": "#/types/junipermist:site/SettingJuniperSrxAutoUpgrade:SettingJuniperSrxAutoUpgrade",
-                    "description": "auto_upgrade device first time it is onboarded\n"
+                    "description": "SRX auto-upgrade settings applied when SRX devices are onboarded\n"
                 },
                 "gateways": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/junipermist:site/SettingJuniperSrxGateway:SettingJuniperSrxGateway"
-                    }
+                    },
+                    "description": "SRX gateways integrated with this site\n"
                 },
                 "sendMistNacUserInfo": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether Mist NAC user information is sent to Juniper SRX gateways\n"
                 }
             },
             "type": "object"
@@ -38036,13 +38133,15 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Property key is the SRX Hardware model (e.g. \"SRX4600\")\n"
+                    "description": "Per-SRX-model firmware versions to deploy instead of the default version\n"
                 },
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether SRX auto-upgrade is enabled for newly onboarded devices\n"
                 },
                 "snapshot": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether to take a snapshot during the SRX upgrade process\n"
                 },
                 "version": {
                     "type": "string",
@@ -38054,13 +38153,16 @@
         "junipermist:site/SettingJuniperSrxGateway:SettingJuniperSrxGateway": {
             "properties": {
                 "apiKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Authentication key used to access the Juniper SRX gateway API\n"
                 },
                 "apiPassword": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Authentication password used to access the Juniper SRX gateway API\n"
                 },
                 "apiUrl": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Base URL for the Juniper SRX gateway API\n"
                 }
             },
             "type": "object"
@@ -38068,10 +38170,12 @@
         "junipermist:site/SettingLed:SettingLed": {
             "properties": {
                 "brightness": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Indicator LED brightness level from 0 to 255\n"
                 },
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether the AP indicator LED is enabled\n"
                 }
             },
             "type": "object",
@@ -38087,7 +38191,8 @@
         "junipermist:site/SettingMarvis:SettingMarvis": {
             "properties": {
                 "autoOperations": {
-                    "$ref": "#/types/junipermist:site/SettingMarvisAutoOperations:SettingMarvisAutoOperations"
+                    "$ref": "#/types/junipermist:site/SettingMarvisAutoOperations:SettingMarvisAutoOperations",
+                    "description": "Automatic remediation operations controlled by Marvis\n"
                 }
             },
             "type": "object"
@@ -38095,31 +38200,40 @@
         "junipermist:site/SettingMarvisAutoOperations:SettingMarvisAutoOperations": {
             "properties": {
                 "apInsufficientCapacity": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether Marvis may remediate AP insufficient-capacity issues automatically\n"
                 },
                 "apLoop": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether Marvis may remediate AP loop issues automatically\n"
                 },
                 "apNonCompliant": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether Marvis may remediate AP non-compliance automatically\n"
                 },
                 "bouncePortForAbnormalPoeClient": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether Marvis may bounce switch ports for abnormal PoE clients\n"
                 },
                 "disablePortWhenDdosProtocolViolation": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether Marvis may disable a port when DDOS protocol violations are detected\n"
                 },
                 "disablePortWhenRogueDhcpServerDetected": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether Marvis may disable a port when a rogue DHCP server is detected\n"
                 },
                 "gatewayNonCompliant": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether Marvis may remediate non-compliant gateways automatically\n"
                 },
                 "switchMisconfiguredPort": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether Marvis may remediate misconfigured switch ports automatically\n"
                 },
                 "switchPortStuck": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether Marvis may remediate stuck switch ports automatically\n"
                 }
             },
             "type": "object",
@@ -38139,6 +38253,364 @@
                 }
             }
         },
+        "junipermist:site/SettingMxedgeMgmt:SettingMxedgeMgmt": {
+            "properties": {
+                "configAutoRevert": {
+                    "type": "boolean",
+                    "description": "Whether the Mist Edge automatically reverts configuration changes if connectivity is lost\n"
+                },
+                "fipsEnabled": {
+                    "type": "boolean",
+                    "description": "Whether FIPS mode is enabled on the Mist Edge\n"
+                },
+                "mistPassword": {
+                    "type": "string",
+                    "description": "Password for the Mist service account on the Mist Edge\n",
+                    "secret": true
+                },
+                "oobIpType": {
+                    "type": "string",
+                    "description": "IPv4 address assignment mode for out-of-band management\n"
+                },
+                "oobIpType6": {
+                    "type": "string",
+                    "description": "IPv6 address assignment mode for out-of-band management\n"
+                },
+                "rootPassword": {
+                    "type": "string",
+                    "description": "Root account password for the Mist Edge\n",
+                    "secret": true
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "configAutoRevert",
+                        "fipsEnabled",
+                        "oobIpType",
+                        "oobIpType6"
+                    ]
+                }
+            }
+        },
+        "junipermist:site/SettingMxtunnels:SettingMxtunnels": {
+            "properties": {
+                "additionalMxtunnels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:site/SettingMxtunnelsAdditionalMxtunnels:SettingMxtunnelsAdditionalMxtunnels"
+                    },
+                    "description": "Additional named Mist Tunnel definitions configured for the site\n"
+                },
+                "apSubnets": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "AP source subnets allowed to establish Mist Tunnels\n"
+                },
+                "autoPreemption": {
+                    "$ref": "#/types/junipermist:site/SettingMxtunnelsAutoPreemption:SettingMxtunnelsAutoPreemption",
+                    "description": "Preemption behavior for restoring preferred tunnel peers after failover\n"
+                },
+                "clusters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/junipermist:site/SettingMxtunnelsCluster:SettingMxtunnelsCluster"
+                    },
+                    "description": "Tunnel peer clusters used by APs for this site Mist Tunnel\n"
+                },
+                "createdTime": {
+                    "type": "number",
+                    "description": "Timestamp when the site Mist Tunnel configuration was created\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether site Mist Tunnel tunneling is enabled\n"
+                },
+                "forSite": {
+                    "type": "boolean",
+                    "description": "Whether this Mist Tunnel configuration is scoped to a site\n"
+                },
+                "helloInterval": {
+                    "type": "integer",
+                    "description": "In seconds, used as heartbeat to detect if a tunnel is alive. AP will try another peer after missing N hellos specified by hello_retries\n"
+                },
+                "helloRetries": {
+                    "type": "integer",
+                    "description": "Number of missed hello heartbeats before an AP tries another tunnel peer\n"
+                },
+                "hosts": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tunnel peer hostnames or IP addresses reachable from APs\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique value identifying the site Mist Tunnel configuration\n"
+                },
+                "modifiedTime": {
+                    "type": "number",
+                    "description": "Timestamp when the site Mist Tunnel configuration was last modified\n"
+                },
+                "mtu": {
+                    "type": "integer",
+                    "description": "0 to enable MTU, 552-1500 to start MTU with a lower MTU\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Identifier of the org that owns the site Mist Tunnel configuration\n"
+                },
+                "protocol": {
+                    "type": "string",
+                    "description": "Encapsulation protocol used for the site Mist Tunnel\n"
+                },
+                "radsec": {
+                    "$ref": "#/types/junipermist:site/SettingMxtunnelsRadsec:SettingMxtunnelsRadsec",
+                    "description": "TLS-secured RADIUS proxy settings for the site Mist Tunnel\n"
+                },
+                "siteId": {
+                    "type": "string",
+                    "description": "Identifier of the site that owns this Mist Tunnel configuration\n"
+                },
+                "vlanIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "List of VLAN IDs carried by this site Mist Tunnel\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "protocol"
+                    ]
+                }
+            }
+        },
+        "junipermist:site/SettingMxtunnelsAdditionalMxtunnels:SettingMxtunnelsAdditionalMxtunnels": {
+            "properties": {
+                "helloInterval": {
+                    "type": "integer",
+                    "description": "In seconds, used as heartbeat to detect if a tunnel is alive. AP will try another peer after missing N hellos specified by hello_retries\n"
+                },
+                "helloRetries": {
+                    "type": "integer",
+                    "description": "Number of missed hello heartbeats before an AP tries another tunnel peer\n"
+                },
+                "protocol": {
+                    "type": "string",
+                    "description": "Encapsulation protocol used for this additional Mist Tunnel\n"
+                },
+                "tuntermClusters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/junipermist:site/SettingMxtunnelsAdditionalMxtunnelsTuntermCluster:SettingMxtunnelsAdditionalMxtunnelsTuntermCluster"
+                    },
+                    "description": "Tunnel peer clusters used by APs for this additional Mist Tunnel\n"
+                },
+                "vlanIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "List of VLAN IDs carried by this additional Mist Tunnel\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "helloInterval",
+                        "helloRetries"
+                    ]
+                }
+            }
+        },
+        "junipermist:site/SettingMxtunnelsAdditionalMxtunnelsTuntermCluster:SettingMxtunnelsAdditionalMxtunnelsTuntermCluster": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Peer cluster name used in the site Mist Tunnel configuration\n"
+                },
+                "tuntermHosts": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tunnel termination hostnames or IP addresses in this peer cluster\n"
+                }
+            },
+            "type": "object"
+        },
+        "junipermist:site/SettingMxtunnelsAutoPreemption:SettingMxtunnelsAutoPreemption": {
+            "properties": {
+                "dayOfWeek": {
+                    "type": "string",
+                    "description": "Scheduled weekday for auto preemption\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether auto preemption is enabled\n"
+                },
+                "timeOfDay": {
+                    "type": "string",
+                    "description": "Scheduled time of day for auto preemption\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "timeOfDay"
+                    ]
+                }
+            }
+        },
+        "junipermist:site/SettingMxtunnelsCluster:SettingMxtunnelsCluster": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Peer cluster name used in the site Mist Tunnel configuration\n"
+                },
+                "tuntermHosts": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tunnel termination hostnames or IP addresses in this peer cluster\n"
+                }
+            },
+            "type": "object"
+        },
+        "junipermist:site/SettingMxtunnelsRadsec:SettingMxtunnelsRadsec": {
+            "properties": {
+                "acctServers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/junipermist:site/SettingMxtunnelsRadsecAcctServer:SettingMxtunnelsRadsecAcctServer"
+                    },
+                    "description": "RADIUS accounting servers used by the site Mist Tunnel RadSec proxy\n"
+                },
+                "authServers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/junipermist:site/SettingMxtunnelsRadsecAuthServer:SettingMxtunnelsRadsecAuthServer"
+                    },
+                    "description": "RADIUS authentication servers used by the site Mist Tunnel RadSec proxy\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether RadSec proxying is enabled for this site Mist Tunnel\n"
+                },
+                "useMxedge": {
+                    "type": "boolean",
+                    "description": "Whether RadSec proxying uses Mist Edge\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "enabled"
+                    ]
+                }
+            }
+        },
+        "junipermist:site/SettingMxtunnelsRadsecAcctServer:SettingMxtunnelsRadsecAcctServer": {
+            "properties": {
+                "host": {
+                    "type": "string",
+                    "description": "Address or hostname of the RADIUS accounting server\n"
+                },
+                "keywrapEnabled": {
+                    "type": "boolean",
+                    "description": "Whether RADIUS keywrap is enabled for messages sent to this accounting server\n"
+                },
+                "keywrapFormat": {
+                    "type": "string",
+                    "description": "Encoding format for RADIUS keywrap KEK and MACK values\n"
+                },
+                "keywrapKek": {
+                    "type": "string",
+                    "description": "RADIUS keywrap key encryption key (KEK)\n"
+                },
+                "keywrapMack": {
+                    "type": "string",
+                    "description": "RADIUS keywrap message authentication code key (MACK)\n"
+                },
+                "port": {
+                    "type": "string",
+                    "description": "UDP port used by the RADIUS accounting server\n"
+                },
+                "secret": {
+                    "type": "string",
+                    "description": "Shared secret used with this RADIUS accounting server\n",
+                    "secret": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "host",
+                "secret"
+            ]
+        },
+        "junipermist:site/SettingMxtunnelsRadsecAuthServer:SettingMxtunnelsRadsecAuthServer": {
+            "properties": {
+                "host": {
+                    "type": "string",
+                    "description": "Address or hostname of the RADIUS authentication server\n"
+                },
+                "keywrapEnabled": {
+                    "type": "boolean",
+                    "description": "Whether RADIUS keywrap is enabled for messages sent to this authentication server\n"
+                },
+                "keywrapFormat": {
+                    "type": "string",
+                    "description": "Encoding format for RADIUS keywrap KEK and MACK values\n"
+                },
+                "keywrapKek": {
+                    "type": "string",
+                    "description": "RADIUS keywrap key encryption key (KEK)\n"
+                },
+                "keywrapMack": {
+                    "type": "string",
+                    "description": "RADIUS keywrap message authentication code key (MACK)\n"
+                },
+                "port": {
+                    "type": "string",
+                    "description": "UDP port used by the RADIUS authentication server\n"
+                },
+                "requireMessageAuthenticator": {
+                    "type": "boolean",
+                    "description": "Whether to require Message-Authenticator in requests\n"
+                },
+                "secret": {
+                    "type": "string",
+                    "description": "Shared secret used with this RADIUS authentication server\n",
+                    "secret": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "host",
+                "secret"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "host",
+                        "requireMessageAuthenticator",
+                        "secret"
+                    ]
+                }
+            }
+        },
         "junipermist:site/SettingOccupancy:SettingOccupancy": {
             "properties": {
                 "assetsEnabled": {
@@ -38151,7 +38623,7 @@
                 },
                 "minDuration": {
                     "type": "integer",
-                    "description": "Minimum duration\n"
+                    "description": "Minimum dwell duration before a client or asset is counted in occupancy analytics\n"
                 },
                 "sdkclientsEnabled": {
                     "type": "boolean",
@@ -38177,10 +38649,12 @@
         "junipermist:site/SettingProxy:SettingProxy": {
             "properties": {
                 "disabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether this proxy configuration is disabled\n"
                 },
                 "url": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Proxy URL used to reach Mist\n"
                 }
             },
             "type": "object",
@@ -38199,7 +38673,7 @@
                     "items": {
                         "type": "integer"
                     },
-                    "description": "list of VLAN IDs on which rogue APs are ignored\n"
+                    "description": "VLAN IDs allowed by the rogue detection policy\n"
                 },
                 "enabled": {
                     "type": "boolean",
@@ -38230,14 +38704,14 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "list of BSSIDs to whitelist. Ex: \"cc-:8e-:6f-:d4-:bf-:16\", \"cc-8e-6f-d4-bf-16\", \"cc-73-*\", \"cc:82:*\"\n"
+                    "description": "BSSID values or wildcard patterns excluded from rogue detection\n"
                 },
                 "whitelistedSsids": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of SSIDs to whitelist\n"
+                    "description": "SSID names excluded from rogue detection\n"
                 }
             },
             "type": "object",
@@ -38258,20 +38732,24 @@
         "junipermist:site/SettingRtsa:SettingRtsa": {
             "properties": {
                 "appWaking": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether app wake-up support is enabled for managed mobility\n"
                 },
                 "disableDeadReckoning": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether dead reckoning is disabled for managed mobility\n"
                 },
                 "disablePressureSensor": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether pressure sensor use is disabled for managed mobility\n"
                 },
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether managed mobility features are enabled\n"
                 },
                 "trackAsset": {
                     "type": "boolean",
-                    "description": "Asset tracking related\n"
+                    "description": "Whether BLE asset tracking is enabled for managed mobility\n"
                 }
             },
             "type": "object",
@@ -38287,13 +38765,16 @@
         "junipermist:site/SettingSimpleAlert:SettingSimpleAlert": {
             "properties": {
                 "arpFailure": {
-                    "$ref": "#/types/junipermist:site/SettingSimpleAlertArpFailure:SettingSimpleAlertArpFailure"
+                    "$ref": "#/types/junipermist:site/SettingSimpleAlertArpFailure:SettingSimpleAlertArpFailure",
+                    "description": "Thresholds for ARP failure heuristic alerts\n"
                 },
                 "dhcpFailure": {
-                    "$ref": "#/types/junipermist:site/SettingSimpleAlertDhcpFailure:SettingSimpleAlertDhcpFailure"
+                    "$ref": "#/types/junipermist:site/SettingSimpleAlertDhcpFailure:SettingSimpleAlertDhcpFailure",
+                    "description": "Thresholds for DHCP failure heuristic alerts\n"
                 },
                 "dnsFailure": {
-                    "$ref": "#/types/junipermist:site/SettingSimpleAlertDnsFailure:SettingSimpleAlertDnsFailure"
+                    "$ref": "#/types/junipermist:site/SettingSimpleAlertDnsFailure:SettingSimpleAlertDnsFailure",
+                    "description": "Thresholds for DNS failure heuristic alerts\n"
                 }
             },
             "type": "object"
@@ -38301,14 +38782,16 @@
         "junipermist:site/SettingSimpleAlertArpFailure:SettingSimpleAlertArpFailure": {
             "properties": {
                 "clientCount": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Number of distinct clients that must encounter ARP failures before alerting\n"
                 },
                 "duration": {
                     "type": "integer",
-                    "description": "failing within minutes\n"
+                    "description": "Time window in minutes for evaluating ARP failures\n"
                 },
                 "incidentCount": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Number of ARP failure incidents required within the duration window\n"
                 }
             },
             "type": "object",
@@ -38325,14 +38808,16 @@
         "junipermist:site/SettingSimpleAlertDhcpFailure:SettingSimpleAlertDhcpFailure": {
             "properties": {
                 "clientCount": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Number of distinct clients that must encounter DHCP failures before alerting\n"
                 },
                 "duration": {
                     "type": "integer",
-                    "description": "failing within minutes\n"
+                    "description": "Time window in minutes for evaluating DHCP failures\n"
                 },
                 "incidentCount": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Number of DHCP failure incidents required within the duration window\n"
                 }
             },
             "type": "object",
@@ -38349,14 +38834,16 @@
         "junipermist:site/SettingSimpleAlertDnsFailure:SettingSimpleAlertDnsFailure": {
             "properties": {
                 "clientCount": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Number of distinct clients that must encounter DNS failures before alerting\n"
                 },
                 "duration": {
                     "type": "integer",
-                    "description": "failing within minutes\n"
+                    "description": "Time window in minutes for evaluating DNS failures\n"
                 },
                 "incidentCount": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Number of DNS failure incidents required within the duration window\n"
                 }
             },
             "type": "object",
@@ -38373,11 +38860,12 @@
         "junipermist:site/SettingSkyatp:SettingSkyatp": {
             "properties": {
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether Sky ATP is enabled for the site\n"
                 },
                 "sendIpMacMapping": {
                     "type": "boolean",
-                    "description": "Whether to send IP-MAC mapping to SkyATP\n"
+                    "description": "Whether IP-to-MAC mappings are sent to Sky ATP\n"
                 }
             },
             "type": "object",
@@ -38393,15 +38881,15 @@
             "properties": {
                 "capacity": {
                     "type": "integer",
-                    "description": "Capacity, in %\n"
+                    "description": "Threshold percentage for capacity SLE scoring\n"
                 },
                 "coverage": {
                     "type": "integer",
-                    "description": "Coverage, in dBm\n"
+                    "description": "RSSI threshold for coverage SLE scoring, in dBm\n"
                 },
                 "throughput": {
                     "type": "integer",
-                    "description": "Throughput, in Mbps\n"
+                    "description": "Minimum throughput threshold for SLE scoring, in Mbps\n"
                 },
                 "timetoconnect": {
                     "type": "integer",
@@ -38423,7 +38911,8 @@
         "junipermist:site/SettingSrxApp:SettingSrxApp": {
             "properties": {
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether Juniper SRX application visibility is enabled\n"
                 }
             },
             "type": "object",
@@ -38439,27 +38928,27 @@
             "properties": {
                 "autoUpgrade": {
                     "$ref": "#/types/junipermist:site/SettingSsrAutoUpgrade:SettingSsrAutoUpgrade",
-                    "description": "auto_upgrade device first time it is onboarded\n"
+                    "description": "Automatic SSR firmware upgrade settings for newly onboarded devices\n"
                 },
                 "conductorHosts": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of Conductor IP Addresses or Hosts to be used by the SSR Devices\n"
+                    "description": "IP addresses or hostnames of conductors used by SSR devices\n"
                 },
                 "conductorToken": {
                     "type": "string",
-                    "description": "Token to be used by the SSR Devices to connect to the Conductor\n",
+                    "description": "Registration token used by SSR devices to connect to the conductor\n",
                     "secret": true
                 },
                 "disableStats": {
                     "type": "boolean",
-                    "description": "Disable stats collection on SSR devices\n"
+                    "description": "Whether stats collection is disabled on SSR devices\n"
                 },
                 "proxy": {
                     "$ref": "#/types/junipermist:site/SettingSsrProxy:SettingSsrProxy",
-                    "description": "SSR proxy configuration to talk to Mist\n"
+                    "description": "Network proxy settings used by SSR devices to reach Mist\n"
                 }
             },
             "type": "object"
@@ -38468,17 +38957,18 @@
             "properties": {
                 "channel": {
                     "type": "string",
-                    "description": "upgrade channel to follow. enum: \u003cspan pulumi-lang-nodejs=\"`alpha`\" pulumi-lang-dotnet=\"`Alpha`\" pulumi-lang-go=\"`alpha`\" pulumi-lang-python=\"`alpha`\" pulumi-lang-yaml=\"`alpha`\" pulumi-lang-java=\"`alpha`\" pulumi-lang-hcl=\"`alpha`\"\u003e`alpha`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`beta`\" pulumi-lang-dotnet=\"`Beta`\" pulumi-lang-go=\"`beta`\" pulumi-lang-python=\"`beta`\" pulumi-lang-yaml=\"`beta`\" pulumi-lang-java=\"`beta`\" pulumi-lang-hcl=\"`beta`\"\u003e`beta`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`stable`\" pulumi-lang-dotnet=\"`Stable`\" pulumi-lang-go=\"`stable`\" pulumi-lang-python=\"`stable`\" pulumi-lang-yaml=\"`stable`\" pulumi-lang-java=\"`stable`\" pulumi-lang-hcl=\"`stable`\"\u003e`stable`\u003c/span\u003e\n"
+                    "description": "Firmware release channel used for SSR auto-upgrade\n"
                 },
                 "customVersions": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Property key is the SSR model (e.g. \"SSR130\").\n"
+                    "description": "Per-model SSR firmware versions used for auto-upgrade\n"
                 },
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether SSR auto-upgrade is enabled for newly onboarded devices\n"
                 },
                 "version": {
                     "type": "string",
@@ -38490,10 +38980,12 @@
         "junipermist:site/SettingSsrProxy:SettingSsrProxy": {
             "properties": {
                 "disabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether the SSR proxy configuration is disabled\n"
                 },
                 "url": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Proxy URL that SSR devices use to reach Mist\n"
                 }
             },
             "type": "object",
@@ -38509,34 +39001,37 @@
             "properties": {
                 "aggressiveness": {
                     "type": "string",
-                    "description": "enum: \u003cspan pulumi-lang-nodejs=\"`auto`\" pulumi-lang-dotnet=\"`Auto`\" pulumi-lang-go=\"`auto`\" pulumi-lang-python=\"`auto`\" pulumi-lang-yaml=\"`auto`\" pulumi-lang-java=\"`auto`\" pulumi-lang-hcl=\"`auto`\"\u003e`auto`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`high`\" pulumi-lang-dotnet=\"`High`\" pulumi-lang-go=\"`high`\" pulumi-lang-python=\"`high`\" pulumi-lang-yaml=\"`high`\" pulumi-lang-java=\"`high`\" pulumi-lang-hcl=\"`high`\"\u003e`high`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`low`\" pulumi-lang-dotnet=\"`Low`\" pulumi-lang-go=\"`low`\" pulumi-lang-python=\"`low`\" pulumi-lang-yaml=\"`low`\" pulumi-lang-java=\"`low`\" pulumi-lang-hcl=\"`low`\"\u003e`low`\u003c/span\u003e\n"
+                    "description": "Overall aggressiveness level for synthetic test probes\n"
                 },
                 "customProbes": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:site/SettingSyntheticTestCustomProbes:SettingSyntheticTestCustomProbes"
                     },
-                    "description": "Custom probes to be used for synthetic tests\n"
+                    "description": "Custom synthetic probe definitions keyed by probe name\n"
                 },
                 "disabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether synthetic tests are disabled\n"
                 },
                 "lanNetworks": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/junipermist:site/SettingSyntheticTestLanNetwork:SettingSyntheticTestLanNetwork"
                     },
-                    "description": "List of networks to be used for synthetic tests\n"
+                    "description": "LAN network probe groups used by synthetic tests\n"
                 },
                 "vlans": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/junipermist:site/SettingSyntheticTestVlan:SettingSyntheticTestVlan"
                     },
+                    "description": "Deprecated VLAN-based synthetic test settings\n",
                     "deprecationMessage": "This attribute is deprecated."
                 },
                 "wanSpeedtest": {
-                    "$ref": "#/types/junipermist:site/SettingSyntheticTestWanSpeedtest:SettingSyntheticTestWanSpeedtest"
+                    "$ref": "#/types/junipermist:site/SettingSyntheticTestWanSpeedtest:SettingSyntheticTestWanSpeedtest",
+                    "description": "WAN speedtest settings for synthetic tests\n"
                 }
             },
             "type": "object"
@@ -38545,7 +39040,7 @@
             "properties": {
                 "aggressiveness": {
                     "type": "string",
-                    "description": "enum: \u003cspan pulumi-lang-nodejs=\"`auto`\" pulumi-lang-dotnet=\"`Auto`\" pulumi-lang-go=\"`auto`\" pulumi-lang-python=\"`auto`\" pulumi-lang-yaml=\"`auto`\" pulumi-lang-java=\"`auto`\" pulumi-lang-hcl=\"`auto`\"\u003e`auto`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`high`\" pulumi-lang-dotnet=\"`High`\" pulumi-lang-go=\"`high`\" pulumi-lang-python=\"`high`\" pulumi-lang-yaml=\"`high`\" pulumi-lang-java=\"`high`\" pulumi-lang-hcl=\"`high`\"\u003e`high`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`low`\" pulumi-lang-dotnet=\"`Low`\" pulumi-lang-go=\"`low`\" pulumi-lang-python=\"`low`\" pulumi-lang-yaml=\"`low`\" pulumi-lang-java=\"`low`\" pulumi-lang-hcl=\"`low`\"\u003e`low`\u003c/span\u003e\n"
+                    "description": "Probe aggressiveness level for this custom synthetic probe\n"
                 },
                 "target": {
                     "type": "string",
@@ -38553,11 +39048,11 @@
                 },
                 "threshold": {
                     "type": "integer",
-                    "description": "In milliseconds\n"
+                    "description": "Response-time threshold for this custom probe, in milliseconds\n"
                 },
                 "type": {
                     "type": "string",
-                    "description": "enum: \u003cspan pulumi-lang-nodejs=\"`application`\" pulumi-lang-dotnet=\"`Application`\" pulumi-lang-go=\"`application`\" pulumi-lang-python=\"`application`\" pulumi-lang-yaml=\"`application`\" pulumi-lang-java=\"`application`\" pulumi-lang-hcl=\"`application`\"\u003e`application`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`curl`\" pulumi-lang-dotnet=\"`Curl`\" pulumi-lang-go=\"`curl`\" pulumi-lang-python=\"`curl`\" pulumi-lang-yaml=\"`curl`\" pulumi-lang-java=\"`curl`\" pulumi-lang-hcl=\"`curl`\"\u003e`curl`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`icmp`\" pulumi-lang-dotnet=\"`Icmp`\" pulumi-lang-go=\"`icmp`\" pulumi-lang-python=\"`icmp`\" pulumi-lang-yaml=\"`icmp`\" pulumi-lang-java=\"`icmp`\" pulumi-lang-hcl=\"`icmp`\"\u003e`icmp`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`reachability`\" pulumi-lang-dotnet=\"`Reachability`\" pulumi-lang-go=\"`reachability`\" pulumi-lang-python=\"`reachability`\" pulumi-lang-yaml=\"`reachability`\" pulumi-lang-java=\"`reachability`\" pulumi-lang-hcl=\"`reachability`\"\u003e`reachability`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`tcp`\" pulumi-lang-dotnet=\"`Tcp`\" pulumi-lang-go=\"`tcp`\" pulumi-lang-python=\"`tcp`\" pulumi-lang-yaml=\"`tcp`\" pulumi-lang-java=\"`tcp`\" pulumi-lang-hcl=\"`tcp`\"\u003e`tcp`\u003c/span\u003e\n"
+                    "description": "Probe type used by this custom synthetic probe\n"
                 }
             },
             "type": "object",
@@ -38577,14 +39072,14 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of networks to be used for synthetic tests\n"
+                    "description": "LAN network names where synthetic probes are run\n"
                 },
                 "probes": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "app name comes from \u003cspan pulumi-lang-nodejs=\"`customProbes`\" pulumi-lang-dotnet=\"`CustomProbes`\" pulumi-lang-go=\"`customProbes`\" pulumi-lang-python=\"`custom_probes`\" pulumi-lang-yaml=\"`customProbes`\" pulumi-lang-java=\"`customProbes`\" pulumi-lang-hcl=\"`custom_probes`\"\u003e`customProbes`\u003c/span\u003e above or /const/synthetic_test_probes\n"
+                    "description": "Synthetic probe names to run on the listed LAN networks\n"
                 }
             },
             "type": "object"
@@ -38596,6 +39091,7 @@
                     "items": {
                         "type": "string"
                     },
+                    "description": "Deprecated custom URLs tested by VLAN-based synthetic probes\n",
                     "deprecationMessage": "This attribute is deprecated."
                 },
                 "disabled": {
@@ -38607,13 +39103,14 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "app name comes from \u003cspan pulumi-lang-nodejs=\"`customProbes`\" pulumi-lang-dotnet=\"`CustomProbes`\" pulumi-lang-go=\"`customProbes`\" pulumi-lang-python=\"`custom_probes`\" pulumi-lang-yaml=\"`customProbes`\" pulumi-lang-java=\"`customProbes`\" pulumi-lang-hcl=\"`custom_probes`\"\u003e`customProbes`\u003c/span\u003e above or /const/synthetic_test_probes\n"
+                    "description": "Synthetic probe names to run for the listed VLANs\n"
                 },
                 "vlanIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "VLAN identifiers where synthetic probes are run\n"
                 }
             },
             "type": "object",
@@ -38628,11 +39125,12 @@
         "junipermist:site/SettingSyntheticTestWanSpeedtest:SettingSyntheticTestWanSpeedtest": {
             "properties": {
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether scheduled WAN speedtests are enabled\n"
                 },
                 "timeOfDay": {
                     "type": "string",
-                    "description": "\u003cspan pulumi-lang-nodejs=\"`any`\" pulumi-lang-dotnet=\"`Any`\" pulumi-lang-go=\"`any`\" pulumi-lang-python=\"`any`\" pulumi-lang-yaml=\"`any`\" pulumi-lang-java=\"`any`\" pulumi-lang-hcl=\"`any`\"\u003e`any`\u003c/span\u003e / HH:MM (24-hour format)\n"
+                    "description": "Scheduled time of day for WAN speedtests\n"
                 }
             },
             "type": "object",
@@ -38643,6 +39141,80 @@
                     ]
                 }
             }
+        },
+        "junipermist:site/SettingTuntermMonitoring:SettingTuntermMonitoring": {
+            "properties": {
+                "host": {
+                    "type": "string",
+                    "description": "Can be ip, ipv6, hostname\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "When \u003cspan pulumi-lang-nodejs=\"`protocol`\" pulumi-lang-dotnet=\"`Protocol`\" pulumi-lang-go=\"`protocol`\" pulumi-lang-python=\"`protocol`\" pulumi-lang-yaml=\"`protocol`\" pulumi-lang-java=\"`protocol`\" pulumi-lang-hcl=\"`protocol`\"\u003e`protocol`\u003c/span\u003e==\u003cspan pulumi-lang-nodejs=\"`tcp`\" pulumi-lang-dotnet=\"`Tcp`\" pulumi-lang-go=\"`tcp`\" pulumi-lang-python=\"`tcp`\" pulumi-lang-yaml=\"`tcp`\" pulumi-lang-java=\"`tcp`\" pulumi-lang-hcl=\"`tcp`\"\u003e`tcp`\u003c/span\u003e, TCP port checked by the monitoring probe\n"
+                },
+                "protocol": {
+                    "type": "string",
+                    "description": "Monitoring method used for this tunnel termination check\n"
+                },
+                "srcVlanId": {
+                    "type": "integer",
+                    "description": "Optional source for the monitoring check,\u003cspan pulumi-lang-nodejs=\" vlanId \" pulumi-lang-dotnet=\" VlanId \" pulumi-lang-go=\" vlanId \" pulumi-lang-python=\" vlan_id \" pulumi-lang-yaml=\" vlanId \" pulumi-lang-java=\" vlanId \" pulumi-lang-hcl=\" vlan_id \"\u003e vlanId \u003c/span\u003econfigured in tunterm_other_ip_configs\n"
+                },
+                "timeout": {
+                    "type": "integer",
+                    "description": "Maximum time for this monitoring check, in seconds\n"
+                }
+            },
+            "type": "object"
+        },
+        "junipermist:site/SettingTuntermMulticastConfig:SettingTuntermMulticastConfig": {
+            "properties": {
+                "mdns": {
+                    "$ref": "#/types/junipermist:site/SettingTuntermMulticastConfigMdns:SettingTuntermMulticastConfigMdns",
+                    "description": "Multicast DNS forwarding settings for tunneled VLANs\n"
+                },
+                "multicastAll": {
+                    "type": "boolean",
+                    "description": "Whether all multicast traffic is forwarded through tunnel termination\n"
+                },
+                "ssdp": {
+                    "$ref": "#/types/junipermist:site/SettingTuntermMulticastConfigSsdp:SettingTuntermMulticastConfigSsdp",
+                    "description": "Simple Service Discovery Protocol forwarding settings for tunneled VLANs\n"
+                }
+            },
+            "type": "object"
+        },
+        "junipermist:site/SettingTuntermMulticastConfigMdns:SettingTuntermMulticastConfigMdns": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether mDNS multicast forwarding is enabled\n"
+                },
+                "vlanIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "VLAN IDs where mDNS multicast forwarding is enabled\n"
+                }
+            },
+            "type": "object"
+        },
+        "junipermist:site/SettingTuntermMulticastConfigSsdp:SettingTuntermMulticastConfigSsdp": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether SSDP multicast forwarding is enabled\n"
+                },
+                "vlanIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "VLAN IDs where SSDP multicast forwarding is enabled\n"
+                }
+            },
+            "type": "object"
         },
         "junipermist:site/SettingUplinkPortConfig:SettingUplinkPortConfig": {
             "properties": {
@@ -38706,7 +39278,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of network names included in this virtual-switch instance\n"
                 }
             },
             "type": "object",
@@ -38721,7 +39294,8 @@
         "junipermist:site/SettingWanVna:SettingWanVna": {
             "properties": {
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether WAN VNA is enabled for the site\n"
                 }
             },
             "type": "object",
@@ -38736,7 +39310,8 @@
         "junipermist:site/SettingWids:SettingWids": {
             "properties": {
                 "repeatedAuthFailures": {
-                    "$ref": "#/types/junipermist:site/SettingWidsRepeatedAuthFailures:SettingWidsRepeatedAuthFailures"
+                    "$ref": "#/types/junipermist:site/SettingWidsRepeatedAuthFailures:SettingWidsRepeatedAuthFailures",
+                    "description": "Detection settings for repeated authentication failures\n"
                 }
             },
             "type": "object"
@@ -38757,21 +39332,24 @@
         "junipermist:site/SettingWifi:SettingWifi": {
             "properties": {
                 "ciscoEnabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether Cisco compatibility features are enabled for site Wi-Fi\n"
                 },
                 "disable11k": {
                     "type": "boolean",
                     "description": "Whether to disable 11k\n"
                 },
                 "disableRadiosWhenPowerConstrained": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether AP radios are disabled when AP power is constrained\n"
                 },
                 "enableArpSpoofCheck": {
                     "type": "boolean",
                     "description": "When\u003cspan pulumi-lang-nodejs=\" proxyArp \" pulumi-lang-dotnet=\" ProxyArp \" pulumi-lang-go=\" proxyArp \" pulumi-lang-python=\" proxy_arp \" pulumi-lang-yaml=\" proxyArp \" pulumi-lang-java=\" proxyArp \" pulumi-lang-hcl=\" proxy_arp \"\u003e proxyArp \u003c/span\u003eis enabled, check for arp spoofing.\n"
                 },
                 "enableSharedRadioScanning": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether shared radio scanning is enabled for site Wi-Fi\n"
                 },
                 "enabled": {
                     "type": "boolean",
@@ -38808,7 +39386,7 @@
                 },
                 "proxyArp": {
                     "type": "string",
-                    "description": "enum: \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\" pulumi-lang-hcl=\"`default`\"\u003e`default`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`disabled`\" pulumi-lang-dotnet=\"`Disabled`\" pulumi-lang-go=\"`disabled`\" pulumi-lang-python=\"`disabled`\" pulumi-lang-yaml=\"`disabled`\" pulumi-lang-java=\"`disabled`\" pulumi-lang-hcl=\"`disabled`\"\u003e`disabled`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`enabled`\" pulumi-lang-dotnet=\"`Enabled`\" pulumi-lang-go=\"`enabled`\" pulumi-lang-python=\"`enabled`\" pulumi-lang-yaml=\"`enabled`\" pulumi-lang-java=\"`enabled`\" pulumi-lang-hcl=\"`enabled`\"\u003e`enabled`\u003c/span\u003e\n"
+                    "description": "ARP proxy mode for site Wi-Fi\n"
                 }
             },
             "type": "object",
@@ -38827,7 +39405,8 @@
         "junipermist:site/SettingWiredVna:SettingWiredVna": {
             "properties": {
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether Wired VNA is enabled for the site\n"
                 }
             },
             "type": "object",
@@ -38846,7 +39425,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of email addresses to send email notifications when the alert threshold is reached\n"
+                    "description": "Notification email recipients for zone occupancy alerts\n"
                 },
                 "enabled": {
                     "type": "boolean",
@@ -49685,6 +50264,185 @@
                 "type": "object"
             }
         },
+        "junipermist:org/mxtunnel:Mxtunnel": {
+            "description": "This resource manages Mist Tunnels in the Mist Organization.\n\nA Mist Tunnel (MxTunnel) defines tunneling configuration used to carry AP user VLANs to Mist Edge clusters.\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as junipermist from \"@pulumi/juniper-mist\";\n\nconst mxtunnelOne = new junipermist.org.Mxtunnel(\"mxtunnel_one\", {\n    orgId: terraformTest.id,\n    name: \"mxtunnel_one\",\n    protocol: \"udp\",\n    helloInterval: 60,\n    helloRetries: 7,\n    mtu: 0,\n    vlanIds: [\n        10,\n        20,\n        30,\n    ],\n    mxclusterIds: [mxclusterOne.id],\n    autoPreemption: {\n        enabled: true,\n        dayOfWeek: \"mon\",\n        timeOfDay: \"02:00\",\n    },\n    ipsec: {\n        enabled: true,\n        splitTunnel: true,\n        useMxedge: true,\n        dnsServers: [\n            \"8.8.8.8\",\n            \"8.8.4.4\",\n        ],\n        dnsSuffixes: [\"corp.example.com\"],\n        extraRoutes: [{\n            dest: \"10.0.0.0/8\",\n            nextHop: \"192.168.1.1\",\n        }],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_juniper_mist as junipermist\n\nmxtunnel_one = junipermist.org.Mxtunnel(\"mxtunnel_one\",\n    org_id=terraform_test[\"id\"],\n    name=\"mxtunnel_one\",\n    protocol=\"udp\",\n    hello_interval=60,\n    hello_retries=7,\n    mtu=0,\n    vlan_ids=[\n        10,\n        20,\n        30,\n    ],\n    mxcluster_ids=[mxcluster_one[\"id\"]],\n    auto_preemption={\n        \"enabled\": True,\n        \"day_of_week\": \"mon\",\n        \"time_of_day\": \"02:00\",\n    },\n    ipsec={\n        \"enabled\": True,\n        \"split_tunnel\": True,\n        \"use_mxedge\": True,\n        \"dns_servers\": [\n            \"8.8.8.8\",\n            \"8.8.4.4\",\n        ],\n        \"dns_suffixes\": [\"corp.example.com\"],\n        \"extra_routes\": [{\n            \"dest\": \"10.0.0.0/8\",\n            \"next_hop\": \"192.168.1.1\",\n        }],\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing JuniperMist = Pulumi.JuniperMist;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mxtunnelOne = new JuniperMist.Org.Mxtunnel(\"mxtunnel_one\", new()\n    {\n        OrgId = terraformTest.Id,\n        Name = \"mxtunnel_one\",\n        Protocol = \"udp\",\n        HelloInterval = 60,\n        HelloRetries = 7,\n        Mtu = 0,\n        VlanIds = new[]\n        {\n            10,\n            20,\n            30,\n        },\n        MxclusterIds = new[]\n        {\n            mxclusterOne.Id,\n        },\n        AutoPreemption = new JuniperMist.Org.Inputs.MxtunnelAutoPreemptionArgs\n        {\n            Enabled = true,\n            DayOfWeek = \"mon\",\n            TimeOfDay = \"02:00\",\n        },\n        Ipsec = new JuniperMist.Org.Inputs.MxtunnelIpsecArgs\n        {\n            Enabled = true,\n            SplitTunnel = true,\n            UseMxedge = true,\n            DnsServers = new[]\n            {\n                \"8.8.8.8\",\n                \"8.8.4.4\",\n            },\n            DnsSuffixes = new[]\n            {\n                \"corp.example.com\",\n            },\n            ExtraRoutes = new[]\n            {\n                new JuniperMist.Org.Inputs.MxtunnelIpsecExtraRouteArgs\n                {\n                    Dest = \"10.0.0.0/8\",\n                    NextHop = \"192.168.1.1\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/org\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := org.NewMxtunnel(ctx, \"mxtunnel_one\", \u0026org.MxtunnelArgs{\n\t\t\tOrgId:         pulumi.Any(terraformTest.Id),\n\t\t\tName:          pulumi.String(\"mxtunnel_one\"),\n\t\t\tProtocol:      pulumi.String(\"udp\"),\n\t\t\tHelloInterval: pulumi.Int(60),\n\t\t\tHelloRetries:  pulumi.Int(7),\n\t\t\tMtu:           pulumi.Int(0),\n\t\t\tVlanIds: pulumi.IntArray{\n\t\t\t\tpulumi.Int(10),\n\t\t\t\tpulumi.Int(20),\n\t\t\t\tpulumi.Int(30),\n\t\t\t},\n\t\t\tMxclusterIds: pulumi.StringArray{\n\t\t\t\tmxclusterOne.Id,\n\t\t\t},\n\t\t\tAutoPreemption: \u0026org.MxtunnelAutoPreemptionArgs{\n\t\t\t\tEnabled:   pulumi.Bool(true),\n\t\t\t\tDayOfWeek: pulumi.String(\"mon\"),\n\t\t\t\tTimeOfDay: pulumi.String(\"02:00\"),\n\t\t\t},\n\t\t\tIpsec: \u0026org.MxtunnelIpsecArgs{\n\t\t\t\tEnabled:     pulumi.Bool(true),\n\t\t\t\tSplitTunnel: pulumi.Bool(true),\n\t\t\t\tUseMxedge:   pulumi.Bool(true),\n\t\t\t\tDnsServers: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"8.8.8.8\"),\n\t\t\t\t\tpulumi.String(\"8.8.4.4\"),\n\t\t\t\t},\n\t\t\t\tDnsSuffixes: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"corp.example.com\"),\n\t\t\t\t},\n\t\t\t\tExtraRoutes: org.MxtunnelIpsecExtraRouteArray{\n\t\t\t\t\t\u0026org.MxtunnelIpsecExtraRouteArgs{\n\t\t\t\t\t\tDest:    pulumi.String(\"10.0.0.0/8\"),\n\t\t\t\t\t\tNextHop: pulumi.String(\"192.168.1.1\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    junipermist = {\n      source = \"pulumi/junipermist\"\n    }\n  }\n}\n\nresource \"junipermist_org_mxtunnel\" \"mxtunnel_one\" {\n  org_id         = terraformTest.id\n  name           = \"mxtunnel_one\"\n  protocol       = \"udp\"\n  hello_interval = 60\n  hello_retries  = 7\n  mtu            = 0\n  vlan_ids       = [10, 20, 30]\n  mxcluster_ids  = [mxclusterOne.id]\n  auto_preemption = {\n    enabled     = true\n    day_of_week = \"mon\"\n    time_of_day = \"02:00\"\n  }\n  ipsec = {\n    enabled      = true\n    split_tunnel = true\n    use_mxedge   = true\n    dns_servers  = [\"8.8.8.8\", \"8.8.4.4\"]\n    dns_suffixes = [\"corp.example.com\"]\n    extra_routes = [{\n      \"dest\"    = \"10.0.0.0/8\"\n      \"nextHop\" = \"192.168.1.1\"\n    }]\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.junipermist.org.Mxtunnel;\nimport com.pulumi.junipermist.org.MxtunnelArgs;\nimport com.pulumi.junipermist.org.inputs.MxtunnelAutoPreemptionArgs;\nimport com.pulumi.junipermist.org.inputs.MxtunnelIpsecArgs;\nimport com.pulumi.junipermist.org.inputs.MxtunnelIpsecExtraRouteArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mxtunnelOne = new Mxtunnel(\"mxtunnelOne\", MxtunnelArgs.builder()\n            .orgId(terraformTest.id())\n            .name(\"mxtunnel_one\")\n            .protocol(\"udp\")\n            .helloInterval(60)\n            .helloRetries(7)\n            .mtu(0)\n            .vlanIds(            \n                10,\n                20,\n                30)\n            .mxclusterIds(mxclusterOne.id())\n            .autoPreemption(MxtunnelAutoPreemptionArgs.builder()\n                .enabled(true)\n                .dayOfWeek(\"mon\")\n                .timeOfDay(\"02:00\")\n                .build())\n            .ipsec(MxtunnelIpsecArgs.builder()\n                .enabled(true)\n                .splitTunnel(true)\n                .useMxedge(true)\n                .dnsServers(                \n                    \"8.8.8.8\",\n                    \"8.8.4.4\")\n                .dnsSuffixes(\"corp.example.com\")\n                .extraRoutes(MxtunnelIpsecExtraRouteArgs.builder()\n                    .dest(\"10.0.0.0/8\")\n                    .nextHop(\"192.168.1.1\")\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mxtunnelOne:\n    type: junipermist:org:Mxtunnel\n    name: mxtunnel_one\n    properties:\n      orgId: ${terraformTest.id}\n      name: mxtunnel_one\n      protocol: udp\n      helloInterval: 60\n      helloRetries: 7\n      mtu: 0\n      vlanIds:\n        - 10\n        - 20\n        - 30\n      mxclusterIds:\n        - ${mxclusterOne.id}\n      autoPreemption:\n        enabled: true\n        dayOfWeek: mon\n        timeOfDay: 02:00\n      ipsec:\n        enabled: true\n        splitTunnel: true\n        useMxedge: true\n        dnsServers:\n          - 8.8.8.8\n          - 8.8.4.4\n        dnsSuffixes:\n          - corp.example.com\n        extraRoutes:\n          - dest: 10.0.0.0/8\n            nextHop: 192.168.1.1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nUsing `pulumi import`, import \u003cspan pulumi-lang-nodejs=\"`junipermist.org.Mxtunnel`\" pulumi-lang-dotnet=\"`junipermist.org.Mxtunnel`\" pulumi-lang-go=\"`org.Mxtunnel`\" pulumi-lang-python=\"`org.Mxtunnel`\" pulumi-lang-yaml=\"`junipermist.org.Mxtunnel`\" pulumi-lang-java=\"`junipermist.org.Mxtunnel`\" pulumi-lang-hcl=\"`mist_org_mxtunnel`\"\u003e`junipermist.org.Mxtunnel`\u003c/span\u003e with:\nMist Org MxTunnel can be imported by specifying the\u003cspan pulumi-lang-nodejs=\" orgId \" pulumi-lang-dotnet=\" OrgId \" pulumi-lang-go=\" orgId \" pulumi-lang-python=\" org_id \" pulumi-lang-yaml=\" orgId \" pulumi-lang-java=\" orgId \" pulumi-lang-hcl=\" org_id \"\u003e orgId \u003c/span\u003eand the\u003cspan pulumi-lang-nodejs=\" mxtunnelId\n\" pulumi-lang-dotnet=\" MxtunnelId\n\" pulumi-lang-go=\" mxtunnelId\n\" pulumi-lang-python=\" mxtunnel_id\n\" pulumi-lang-yaml=\" mxtunnelId\n\" pulumi-lang-java=\" mxtunnelId\n\" pulumi-lang-hcl=\" mxtunnel_id\n\"\u003e mxtunnelId\n\u003c/span\u003e\n```sh\n$ pulumi import junipermist:org/mxtunnel:Mxtunnel mxtunnel_one 17f90707-aebe-4274-af42-f42952a665a3.d3c42998-9012-4859-9743-6a9f30d68218\n```\n\n",
+            "properties": {
+                "anchorMxtunnelIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "IDs of anchor Mist Tunnels used for edge-to-edge tunnel formation\n"
+                },
+                "autoPreemption": {
+                    "$ref": "#/types/junipermist:org/MxtunnelAutoPreemption:MxtunnelAutoPreemption",
+                    "description": "Preemption behavior for restoring preferred tunnel peers after failover\n"
+                },
+                "helloInterval": {
+                    "type": "integer",
+                    "description": "In seconds, used as heartbeat to detect if a tunnel is alive. AP will try another peer after missing N hellos specified by \u003cspan pulumi-lang-nodejs=\"`helloRetries`\" pulumi-lang-dotnet=\"`HelloRetries`\" pulumi-lang-go=\"`helloRetries`\" pulumi-lang-python=\"`hello_retries`\" pulumi-lang-yaml=\"`helloRetries`\" pulumi-lang-java=\"`helloRetries`\" pulumi-lang-hcl=\"`hello_retries`\"\u003e`helloRetries`\u003c/span\u003e.\n"
+                },
+                "helloRetries": {
+                    "type": "integer",
+                    "description": "Number of missed hello heartbeats before an AP tries another tunnel peer\n"
+                },
+                "ipsec": {
+                    "$ref": "#/types/junipermist:org/MxtunnelIpsec:MxtunnelIpsec",
+                    "description": "Security settings for IPsec support on this Mist Tunnel\n"
+                },
+                "mtu": {
+                    "type": "integer",
+                    "description": "0 to enable PMTU, 552-1500 to start PMTU with a lower MTU\n"
+                },
+                "mxclusterIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Mist Edge cluster IDs that host this Mist Tunnel\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Display name of the Mist Tunnel\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Identifier of the org that owns the Mist Tunnel\n"
+                },
+                "protocol": {
+                    "type": "string",
+                    "description": "Encapsulation protocol used for the Mist Tunnel\n"
+                },
+                "vlanIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "List of VLAN IDs carried by this Mist Tunnel\n"
+                }
+            },
+            "required": [
+                "name",
+                "orgId"
+            ],
+            "inputProperties": {
+                "anchorMxtunnelIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "IDs of anchor Mist Tunnels used for edge-to-edge tunnel formation\n"
+                },
+                "autoPreemption": {
+                    "$ref": "#/types/junipermist:org/MxtunnelAutoPreemption:MxtunnelAutoPreemption",
+                    "description": "Preemption behavior for restoring preferred tunnel peers after failover\n"
+                },
+                "helloInterval": {
+                    "type": "integer",
+                    "description": "In seconds, used as heartbeat to detect if a tunnel is alive. AP will try another peer after missing N hellos specified by \u003cspan pulumi-lang-nodejs=\"`helloRetries`\" pulumi-lang-dotnet=\"`HelloRetries`\" pulumi-lang-go=\"`helloRetries`\" pulumi-lang-python=\"`hello_retries`\" pulumi-lang-yaml=\"`helloRetries`\" pulumi-lang-java=\"`helloRetries`\" pulumi-lang-hcl=\"`hello_retries`\"\u003e`helloRetries`\u003c/span\u003e.\n"
+                },
+                "helloRetries": {
+                    "type": "integer",
+                    "description": "Number of missed hello heartbeats before an AP tries another tunnel peer\n"
+                },
+                "ipsec": {
+                    "$ref": "#/types/junipermist:org/MxtunnelIpsec:MxtunnelIpsec",
+                    "description": "Security settings for IPsec support on this Mist Tunnel\n"
+                },
+                "mtu": {
+                    "type": "integer",
+                    "description": "0 to enable PMTU, 552-1500 to start PMTU with a lower MTU\n"
+                },
+                "mxclusterIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Mist Edge cluster IDs that host this Mist Tunnel\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Display name of the Mist Tunnel\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Identifier of the org that owns the Mist Tunnel\n"
+                },
+                "protocol": {
+                    "type": "string",
+                    "description": "Encapsulation protocol used for the Mist Tunnel\n"
+                },
+                "vlanIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "List of VLAN IDs carried by this Mist Tunnel\n"
+                }
+            },
+            "requiredInputs": [
+                "orgId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Mxtunnel resources.\n",
+                "properties": {
+                    "anchorMxtunnelIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "IDs of anchor Mist Tunnels used for edge-to-edge tunnel formation\n"
+                    },
+                    "autoPreemption": {
+                        "$ref": "#/types/junipermist:org/MxtunnelAutoPreemption:MxtunnelAutoPreemption",
+                        "description": "Preemption behavior for restoring preferred tunnel peers after failover\n"
+                    },
+                    "helloInterval": {
+                        "type": "integer",
+                        "description": "In seconds, used as heartbeat to detect if a tunnel is alive. AP will try another peer after missing N hellos specified by \u003cspan pulumi-lang-nodejs=\"`helloRetries`\" pulumi-lang-dotnet=\"`HelloRetries`\" pulumi-lang-go=\"`helloRetries`\" pulumi-lang-python=\"`hello_retries`\" pulumi-lang-yaml=\"`helloRetries`\" pulumi-lang-java=\"`helloRetries`\" pulumi-lang-hcl=\"`hello_retries`\"\u003e`helloRetries`\u003c/span\u003e.\n"
+                    },
+                    "helloRetries": {
+                        "type": "integer",
+                        "description": "Number of missed hello heartbeats before an AP tries another tunnel peer\n"
+                    },
+                    "ipsec": {
+                        "$ref": "#/types/junipermist:org/MxtunnelIpsec:MxtunnelIpsec",
+                        "description": "Security settings for IPsec support on this Mist Tunnel\n"
+                    },
+                    "mtu": {
+                        "type": "integer",
+                        "description": "0 to enable PMTU, 552-1500 to start PMTU with a lower MTU\n"
+                    },
+                    "mxclusterIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Mist Edge cluster IDs that host this Mist Tunnel\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Display name of the Mist Tunnel\n"
+                    },
+                    "orgId": {
+                        "type": "string",
+                        "description": "Identifier of the org that owns the Mist Tunnel\n"
+                    },
+                    "protocol": {
+                        "type": "string",
+                        "description": "Encapsulation protocol used for the Mist Tunnel\n"
+                    },
+                    "vlanIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "description": "List of VLAN IDs carried by this Mist Tunnel\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "junipermist:org/nacEndpoint:NacEndpoint": {
             "description": "This resource manages the NAC Endpoints (User MACs).\n\nNAC Endpoints (User MACs) provide a database of endpoints identified by their MAC addresses. They can be used assign each endpoint with various attributes, such as name, VLAN, role and client label.  Once an endpoint is labeled, the label name can be used to create \u003cspan pulumi-lang-nodejs=\"`junipermist.org.Nactag`\" pulumi-lang-dotnet=\"`junipermist.org.Nactag`\" pulumi-lang-go=\"`org.Nactag`\" pulumi-lang-python=\"`org.Nactag`\" pulumi-lang-yaml=\"`junipermist.org.Nactag`\" pulumi-lang-java=\"`junipermist.org.Nactag`\" pulumi-lang-hcl=\"`mist_org_nactag`\"\u003e`junipermist.org.Nactag`\u003c/span\u003e resource as match criteria.\n\nThe \u003cspan pulumi-lang-nodejs=\"`junipermist.org.Nactag`\" pulumi-lang-dotnet=\"`junipermist.org.Nactag`\" pulumi-lang-go=\"`org.Nactag`\" pulumi-lang-python=\"`org.Nactag`\" pulumi-lang-yaml=\"`junipermist.org.Nactag`\" pulumi-lang-java=\"`junipermist.org.Nactag`\" pulumi-lang-hcl=\"`mist_org_nactag`\"\u003e`junipermist.org.Nactag`\u003c/span\u003e resource can be used to create Tags regrouping one or multiple endpoint MAC Addresses, but the use of the User MACs provides additional features:\n* possibility to assign specific attributes, like a Name, a Radius Group, a VLAN ID, ...\n* possibility to assign one or multiple Tags (Labels) to a User MAC\n* improved management for large list of MAC Addresses\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as junipermist from \"@pulumi/juniper-mist\";\n\nconst endpointOne = new junipermist.org.NacEndpoint(\"endpoint_one\", {\n    mac: \"921b638445cd\",\n    labels: [\n        \"byod\",\n        \"flr1\",\n    ],\n    vlan: \"30\",\n    notes: \"mac address refers to Canon printers\",\n    name: \"endpoint_one\",\n    radiusGroup: \"VIP\",\n});\n```\n```python\nimport pulumi\nimport pulumi_juniper_mist as junipermist\n\nendpoint_one = junipermist.org.NacEndpoint(\"endpoint_one\",\n    mac=\"921b638445cd\",\n    labels=[\n        \"byod\",\n        \"flr1\",\n    ],\n    vlan=\"30\",\n    notes=\"mac address refers to Canon printers\",\n    name=\"endpoint_one\",\n    radius_group=\"VIP\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing JuniperMist = Pulumi.JuniperMist;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var endpointOne = new JuniperMist.Org.NacEndpoint(\"endpoint_one\", new()\n    {\n        Mac = \"921b638445cd\",\n        Labels = new[]\n        {\n            \"byod\",\n            \"flr1\",\n        },\n        Vlan = \"30\",\n        Notes = \"mac address refers to Canon printers\",\n        Name = \"endpoint_one\",\n        RadiusGroup = \"VIP\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/org\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := org.NewNacEndpoint(ctx, \"endpoint_one\", \u0026org.NacEndpointArgs{\n\t\t\tMac: pulumi.String(\"921b638445cd\"),\n\t\t\tLabels: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"byod\"),\n\t\t\t\tpulumi.String(\"flr1\"),\n\t\t\t},\n\t\t\tVlan:        pulumi.String(\"30\"),\n\t\t\tNotes:       pulumi.String(\"mac address refers to Canon printers\"),\n\t\t\tName:        pulumi.String(\"endpoint_one\"),\n\t\t\tRadiusGroup: pulumi.String(\"VIP\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    junipermist = {\n      source = \"pulumi/junipermist\"\n    }\n  }\n}\n\nresource \"junipermist_org_nacendpoint\" \"endpoint_one\" {\n  mac          = \"921b638445cd\"\n  labels       = [\"byod\", \"flr1\"]\n  vlan         = \"30\"\n  notes        = \"mac address refers to Canon printers\"\n  name         = \"endpoint_one\"\n  radius_group = \"VIP\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.junipermist.org.NacEndpoint;\nimport com.pulumi.junipermist.org.NacEndpointArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var endpointOne = new NacEndpoint(\"endpointOne\", NacEndpointArgs.builder()\n            .mac(\"921b638445cd\")\n            .labels(            \n                \"byod\",\n                \"flr1\")\n            .vlan(\"30\")\n            .notes(\"mac address refers to Canon printers\")\n            .name(\"endpoint_one\")\n            .radiusGroup(\"VIP\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  endpointOne:\n    type: junipermist:org:NacEndpoint\n    name: endpoint_one\n    properties:\n      mac: 921b638445cd\n      labels:\n        - byod\n        - flr1\n      vlan: '30'\n      notes: mac address refers to Canon printers\n      name: endpoint_one\n      radiusGroup: VIP\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nUsing `pulumi import`, import \u003cspan pulumi-lang-nodejs=\"`junipermist.org.NacEndpoint`\" pulumi-lang-dotnet=\"`junipermist.org.NacEndpoint`\" pulumi-lang-go=\"`org.NacEndpoint`\" pulumi-lang-python=\"`org.NacEndpoint`\" pulumi-lang-yaml=\"`junipermist.org.NacEndpoint`\" pulumi-lang-java=\"`junipermist.org.NacEndpoint`\" pulumi-lang-hcl=\"`mist_org_nac_endpoint`\"\u003e`junipermist.org.NacEndpoint`\u003c/span\u003e with:\nNAC Endpoint can be imported by specifying the\u003cspan pulumi-lang-nodejs=\" orgId \" pulumi-lang-dotnet=\" OrgId \" pulumi-lang-go=\" orgId \" pulumi-lang-python=\" org_id \" pulumi-lang-yaml=\" orgId \" pulumi-lang-java=\" orgId \" pulumi-lang-hcl=\" org_id \"\u003e orgId \u003c/span\u003eand the\u003cspan pulumi-lang-nodejs=\" nacEndpointId\n\" pulumi-lang-dotnet=\" NacEndpointId\n\" pulumi-lang-go=\" nacEndpointId\n\" pulumi-lang-python=\" nac_endpoint_id\n\" pulumi-lang-yaml=\" nacEndpointId\n\" pulumi-lang-java=\" nacEndpointId\n\" pulumi-lang-hcl=\" nac_endpoint_id\n\"\u003e nacEndpointId\n\u003c/span\u003e\n```sh\n$ pulumi import junipermist:org/nacEndpoint:NacEndpoint endpoint_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309\n```\n\n",
             "properties": {
@@ -56953,11 +57711,12 @@
                     "description": "whether to allow Mist to look at this org"
                 },
                 "analytic": {
-                    "$ref": "#/types/junipermist:site/SettingAnalytic:SettingAnalytic"
+                    "$ref": "#/types/junipermist:site/SettingAnalytic:SettingAnalytic",
+                    "description": "Advanced analytics configuration for the site"
                 },
                 "apSyntheticTest": {
                     "$ref": "#/types/junipermist:site/SettingApSyntheticTest:SettingApSyntheticTest",
-                    "description": "AP Synthetic Test configuration"
+                    "description": "Synthetic test configuration for APs at the site"
                 },
                 "apUpdownThreshold": {
                     "type": "integer",
@@ -56965,22 +57724,23 @@
                 },
                 "autoUpgrade": {
                     "$ref": "#/types/junipermist:site/SettingAutoUpgrade:SettingAutoUpgrade",
-                    "description": "Auto Upgrade Settings"
+                    "description": "Automatic AP firmware upgrade settings for the site. Overrides org setting when provided."
                 },
                 "autoUpgradeEsl": {
                     "$ref": "#/types/junipermist:site/SettingAutoUpgradeEsl:SettingAutoUpgradeEsl",
-                    "description": "auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware upgrade"
+                    "description": "Automatic ESL firmware upgrade settings for the site"
                 },
                 "bgpNeighborUpdownThreshold": {
                     "type": "integer",
                     "description": "enable threshold-based bgp neighbor down delivery."
                 },
                 "blacklistUrl": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Read-only URL for the site blacklist file"
                 },
                 "bleConfig": {
                     "$ref": "#/types/junipermist:site/SettingBleConfig:SettingBleConfig",
-                    "description": "BLE AP settings"
+                    "description": "Bluetooth Low Energy configuration applied to APs at the site"
                 },
                 "configAutoRevert": {
                     "type": "boolean",
@@ -56988,26 +57748,27 @@
                 },
                 "configPushPolicy": {
                     "$ref": "#/types/junipermist:site/SettingConfigPushPolicy:SettingConfigPushPolicy",
-                    "description": "Mist also uses some heuristic rules to prevent destructive configs from being pushed"
+                    "description": "Policy controlling how site configuration pushes are applied"
                 },
                 "criticalUrlMonitoring": {
                     "$ref": "#/types/junipermist:site/SettingCriticalUrlMonitoring:SettingCriticalUrlMonitoring",
-                    "description": "You can define some URLs that's critical to site operations the latency will be captured and considered for site health"
+                    "description": "Monitoring configuration for critical URLs at the site"
                 },
                 "deviceUpdownThreshold": {
                     "type": "integer",
                     "description": "By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following"
                 },
                 "enableUnii4": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether UNII-4 channels are enabled for the site"
                 },
                 "engagement": {
                     "$ref": "#/types/junipermist:site/SettingEngagement:SettingEngagement",
-                    "description": "**Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple ranges for the same day"
+                    "description": "Dwell-time analytics rules for the site"
                 },
                 "gatewayMgmt": {
                     "$ref": "#/types/junipermist:site/SettingGatewayMgmt:SettingGatewayMgmt",
-                    "description": "Gateway Management settings"
+                    "description": "Management access settings for gateways at the site"
                 },
                 "gatewayTunnelUpdownThreshold": {
                     "type": "integer",
@@ -57019,21 +57780,31 @@
                 },
                 "iotproxy": {
                     "$ref": "#/types/junipermist:site/SettingIotproxy:SettingIotproxy",
-                    "description": "IoT proxy configuration for the site"
+                    "description": "Proxy settings for IoT traffic at the site"
                 },
                 "juniperSrx": {
-                    "$ref": "#/types/junipermist:site/SettingJuniperSrx:SettingJuniperSrx"
+                    "$ref": "#/types/junipermist:site/SettingJuniperSrx:SettingJuniperSrx",
+                    "description": "SRX integration settings for the site"
                 },
                 "led": {
                     "$ref": "#/types/junipermist:site/SettingLed:SettingLed",
-                    "description": "LED AP settings"
+                    "description": "AP LED behavior configured for the site"
                 },
                 "marvis": {
-                    "$ref": "#/types/junipermist:site/SettingMarvis:SettingMarvis"
+                    "$ref": "#/types/junipermist:site/SettingMarvis:SettingMarvis",
+                    "description": "AI assistant settings for Marvis at the site"
+                },
+                "mxedgeMgmt": {
+                    "$ref": "#/types/junipermist:site/SettingMxedgeMgmt:SettingMxedgeMgmt",
+                    "description": "Mist Edge management access settings for the site"
+                },
+                "mxtunnels": {
+                    "$ref": "#/types/junipermist:site/SettingMxtunnels:SettingMxtunnels",
+                    "description": "Site Mist Tunnel configuration"
                 },
                 "occupancy": {
                     "$ref": "#/types/junipermist:site/SettingOccupancy:SettingOccupancy",
-                    "description": "Occupancy Analytics settings"
+                    "description": "Analytics settings for site occupancy"
                 },
                 "persistConfigOnDevice": {
                     "type": "boolean",
@@ -57041,7 +57812,7 @@
                 },
                 "proxy": {
                     "$ref": "#/types/junipermist:site/SettingProxy:SettingProxy",
-                    "description": "Proxy Configuration to talk to Mist"
+                    "description": "Network proxy settings for devices at the site"
                 },
                 "removeExistingConfigs": {
                     "type": "boolean",
@@ -57053,69 +57824,91 @@
                 },
                 "rogue": {
                     "$ref": "#/types/junipermist:site/SettingRogue:SettingRogue",
-                    "description": "Rogue site settings"
+                    "description": "AP threat detection settings for the site"
                 },
                 "rtsa": {
                     "$ref": "#/types/junipermist:site/SettingRtsa:SettingRtsa",
-                    "description": "Managed mobility"
+                    "description": "Managed mobility and asset tracking settings for the site"
                 },
                 "simpleAlert": {
                     "$ref": "#/types/junipermist:site/SettingSimpleAlert:SettingSimpleAlert",
-                    "description": "Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute window, there are more than Y distinct client encountering over X failures"
+                    "description": "Threshold alert settings for the site"
                 },
                 "siteId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Identifier of the site these settings apply to"
                 },
                 "skyatp": {
-                    "$ref": "#/types/junipermist:site/SettingSkyatp:SettingSkyatp"
+                    "$ref": "#/types/junipermist:site/SettingSkyatp:SettingSkyatp",
+                    "description": "Threat intelligence settings from Sky ATP for the site"
                 },
                 "sleThresholds": {
-                    "$ref": "#/types/junipermist:site/SettingSleThresholds:SettingSleThresholds"
+                    "$ref": "#/types/junipermist:site/SettingSleThresholds:SettingSleThresholds",
+                    "description": "Service level expectation threshold settings for the site"
                 },
                 "srxApp": {
-                    "$ref": "#/types/junipermist:site/SettingSrxApp:SettingSrxApp"
+                    "$ref": "#/types/junipermist:site/SettingSrxApp:SettingSrxApp",
+                    "description": "Juniper SRX application visibility settings for the site"
                 },
                 "sshKeys": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "When\u003cspan pulumi-lang-nodejs=\" limitSshAccess \" pulumi-lang-dotnet=\" LimitSshAccess \" pulumi-lang-go=\" limitSshAccess \" pulumi-lang-python=\" limit_ssh_access \" pulumi-lang-yaml=\" limitSshAccess \" pulumi-lang-java=\" limitSshAccess \" pulumi-lang-hcl=\" limit_ssh_access \"\u003e limitSshAccess \u003c/span\u003e= true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see Org:Setting)"
+                    "description": "Public SSH keys configured for the site"
                 },
                 "ssr": {
-                    "$ref": "#/types/junipermist:site/SettingSsr:SettingSsr"
+                    "$ref": "#/types/junipermist:site/SettingSsr:SettingSsr",
+                    "description": "Session Smart Router settings for the site"
                 },
                 "switchUpdownThreshold": {
                     "type": "integer",
                     "description": "Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and \u003cspan pulumi-lang-nodejs=\"`deviceUpdownThreshold`\" pulumi-lang-dotnet=\"`DeviceUpdownThreshold`\" pulumi-lang-go=\"`deviceUpdownThreshold`\" pulumi-lang-python=\"`device_updown_threshold`\" pulumi-lang-yaml=\"`deviceUpdownThreshold`\" pulumi-lang-java=\"`deviceUpdownThreshold`\" pulumi-lang-hcl=\"`device_updown_threshold`\"\u003e`deviceUpdownThreshold`\u003c/span\u003e is ignored."
                 },
                 "syntheticTest": {
-                    "$ref": "#/types/junipermist:site/SettingSyntheticTest:SettingSyntheticTest"
+                    "$ref": "#/types/junipermist:site/SettingSyntheticTest:SettingSyntheticTest",
+                    "description": "Active monitoring test configuration for the site"
                 },
                 "trackAnonymousDevices": {
                     "type": "boolean",
                     "description": "Whether to track anonymous BLE assets (requires ‘track_asset’  enabled)"
                 },
+                "tuntermMonitoringDisabled": {
+                    "type": "boolean",
+                    "description": "Whether tunnel termination monitoring is disabled for the site"
+                },
+                "tuntermMonitorings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/junipermist:site/SettingTuntermMonitoring:SettingTuntermMonitoring"
+                    },
+                    "description": "Tunnel termination monitoring settings for the site"
+                },
+                "tuntermMulticastConfig": {
+                    "$ref": "#/types/junipermist:site/SettingTuntermMulticastConfig:SettingTuntermMulticastConfig",
+                    "description": "Multicast settings for tunnel termination at the site"
+                },
                 "uplinkPortConfig": {
                     "$ref": "#/types/junipermist:site/SettingUplinkPortConfig:SettingUplinkPortConfig",
-                    "description": "AP Uplink port configuration"
+                    "description": "AP uplink port configuration for the site"
                 },
                 "vars": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Dictionary of name-\u003evalue, the vars can then be used in Wlans. This can overwrite those from Site Vars"
+                    "description": "Template variables defined for the site"
                 },
                 "varsAnnotations": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:site/SettingVarsAnnotations:SettingVarsAnnotations"
                     },
-                    "description": "Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete."
+                    "description": "Metadata annotations for site template variables"
                 },
                 "vna": {
-                    "$ref": "#/types/junipermist:site/SettingVna:SettingVna"
+                    "$ref": "#/types/junipermist:site/SettingVna:SettingVna",
+                    "description": "Virtual Network Assistant settings for the site"
                 },
                 "vpnPathUpdownThreshold": {
                     "type": "integer",
@@ -57130,31 +57923,35 @@
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:site/SettingVsInstance:SettingVsInstance"
                     },
-                    "description": "Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name"
+                    "description": "EX9200 virtual switch instance definitions for the site"
                 },
                 "wanVna": {
-                    "$ref": "#/types/junipermist:site/SettingWanVna:SettingWanVna"
+                    "$ref": "#/types/junipermist:site/SettingWanVna:SettingWanVna",
+                    "description": "Virtual Network Assistant settings for WAN experiences at the site"
                 },
                 "watchedStationUrl": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Read-only URL for the watched station list file"
                 },
                 "whitelistUrl": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Read-only URL for the site whitelist file"
                 },
                 "wids": {
                     "$ref": "#/types/junipermist:site/SettingWids:SettingWids",
-                    "description": "WIDS site settings"
+                    "description": "Wireless intrusion detection settings for the site"
                 },
                 "wifi": {
                     "$ref": "#/types/junipermist:site/SettingWifi:SettingWifi",
-                    "description": "Wi-Fi site settings"
+                    "description": "Wireless LAN configuration settings for the site"
                 },
                 "wiredVna": {
-                    "$ref": "#/types/junipermist:site/SettingWiredVna:SettingWiredVna"
+                    "$ref": "#/types/junipermist:site/SettingWiredVna:SettingWiredVna",
+                    "description": "Virtual Network Assistant settings for wired experiences at the site"
                 },
                 "zoneOccupancyAlert": {
                     "$ref": "#/types/junipermist:site/SettingZoneOccupancyAlert:SettingZoneOccupancyAlert",
-                    "description": "Zone Occupancy alert site settings"
+                    "description": "Occupancy alert settings for site zones"
                 }
             },
             "required": [
@@ -57187,11 +57984,12 @@
                     "description": "whether to allow Mist to look at this org"
                 },
                 "analytic": {
-                    "$ref": "#/types/junipermist:site/SettingAnalytic:SettingAnalytic"
+                    "$ref": "#/types/junipermist:site/SettingAnalytic:SettingAnalytic",
+                    "description": "Advanced analytics configuration for the site"
                 },
                 "apSyntheticTest": {
                     "$ref": "#/types/junipermist:site/SettingApSyntheticTest:SettingApSyntheticTest",
-                    "description": "AP Synthetic Test configuration"
+                    "description": "Synthetic test configuration for APs at the site"
                 },
                 "apUpdownThreshold": {
                     "type": "integer",
@@ -57199,11 +57997,11 @@
                 },
                 "autoUpgrade": {
                     "$ref": "#/types/junipermist:site/SettingAutoUpgrade:SettingAutoUpgrade",
-                    "description": "Auto Upgrade Settings"
+                    "description": "Automatic AP firmware upgrade settings for the site. Overrides org setting when provided."
                 },
                 "autoUpgradeEsl": {
                     "$ref": "#/types/junipermist:site/SettingAutoUpgradeEsl:SettingAutoUpgradeEsl",
-                    "description": "auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware upgrade"
+                    "description": "Automatic ESL firmware upgrade settings for the site"
                 },
                 "bgpNeighborUpdownThreshold": {
                     "type": "integer",
@@ -57211,7 +58009,7 @@
                 },
                 "bleConfig": {
                     "$ref": "#/types/junipermist:site/SettingBleConfig:SettingBleConfig",
-                    "description": "BLE AP settings"
+                    "description": "Bluetooth Low Energy configuration applied to APs at the site"
                 },
                 "configAutoRevert": {
                     "type": "boolean",
@@ -57219,26 +58017,27 @@
                 },
                 "configPushPolicy": {
                     "$ref": "#/types/junipermist:site/SettingConfigPushPolicy:SettingConfigPushPolicy",
-                    "description": "Mist also uses some heuristic rules to prevent destructive configs from being pushed"
+                    "description": "Policy controlling how site configuration pushes are applied"
                 },
                 "criticalUrlMonitoring": {
                     "$ref": "#/types/junipermist:site/SettingCriticalUrlMonitoring:SettingCriticalUrlMonitoring",
-                    "description": "You can define some URLs that's critical to site operations the latency will be captured and considered for site health"
+                    "description": "Monitoring configuration for critical URLs at the site"
                 },
                 "deviceUpdownThreshold": {
                     "type": "integer",
                     "description": "By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following"
                 },
                 "enableUnii4": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether UNII-4 channels are enabled for the site"
                 },
                 "engagement": {
                     "$ref": "#/types/junipermist:site/SettingEngagement:SettingEngagement",
-                    "description": "**Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple ranges for the same day"
+                    "description": "Dwell-time analytics rules for the site"
                 },
                 "gatewayMgmt": {
                     "$ref": "#/types/junipermist:site/SettingGatewayMgmt:SettingGatewayMgmt",
-                    "description": "Gateway Management settings"
+                    "description": "Management access settings for gateways at the site"
                 },
                 "gatewayTunnelUpdownThreshold": {
                     "type": "integer",
@@ -57250,21 +58049,31 @@
                 },
                 "iotproxy": {
                     "$ref": "#/types/junipermist:site/SettingIotproxy:SettingIotproxy",
-                    "description": "IoT proxy configuration for the site"
+                    "description": "Proxy settings for IoT traffic at the site"
                 },
                 "juniperSrx": {
-                    "$ref": "#/types/junipermist:site/SettingJuniperSrx:SettingJuniperSrx"
+                    "$ref": "#/types/junipermist:site/SettingJuniperSrx:SettingJuniperSrx",
+                    "description": "SRX integration settings for the site"
                 },
                 "led": {
                     "$ref": "#/types/junipermist:site/SettingLed:SettingLed",
-                    "description": "LED AP settings"
+                    "description": "AP LED behavior configured for the site"
                 },
                 "marvis": {
-                    "$ref": "#/types/junipermist:site/SettingMarvis:SettingMarvis"
+                    "$ref": "#/types/junipermist:site/SettingMarvis:SettingMarvis",
+                    "description": "AI assistant settings for Marvis at the site"
+                },
+                "mxedgeMgmt": {
+                    "$ref": "#/types/junipermist:site/SettingMxedgeMgmt:SettingMxedgeMgmt",
+                    "description": "Mist Edge management access settings for the site"
+                },
+                "mxtunnels": {
+                    "$ref": "#/types/junipermist:site/SettingMxtunnels:SettingMxtunnels",
+                    "description": "Site Mist Tunnel configuration"
                 },
                 "occupancy": {
                     "$ref": "#/types/junipermist:site/SettingOccupancy:SettingOccupancy",
-                    "description": "Occupancy Analytics settings"
+                    "description": "Analytics settings for site occupancy"
                 },
                 "persistConfigOnDevice": {
                     "type": "boolean",
@@ -57272,7 +58081,7 @@
                 },
                 "proxy": {
                     "$ref": "#/types/junipermist:site/SettingProxy:SettingProxy",
-                    "description": "Proxy Configuration to talk to Mist"
+                    "description": "Network proxy settings for devices at the site"
                 },
                 "removeExistingConfigs": {
                     "type": "boolean",
@@ -57284,69 +58093,91 @@
                 },
                 "rogue": {
                     "$ref": "#/types/junipermist:site/SettingRogue:SettingRogue",
-                    "description": "Rogue site settings"
+                    "description": "AP threat detection settings for the site"
                 },
                 "rtsa": {
                     "$ref": "#/types/junipermist:site/SettingRtsa:SettingRtsa",
-                    "description": "Managed mobility"
+                    "description": "Managed mobility and asset tracking settings for the site"
                 },
                 "simpleAlert": {
                     "$ref": "#/types/junipermist:site/SettingSimpleAlert:SettingSimpleAlert",
-                    "description": "Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute window, there are more than Y distinct client encountering over X failures"
+                    "description": "Threshold alert settings for the site"
                 },
                 "siteId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Identifier of the site these settings apply to"
                 },
                 "skyatp": {
-                    "$ref": "#/types/junipermist:site/SettingSkyatp:SettingSkyatp"
+                    "$ref": "#/types/junipermist:site/SettingSkyatp:SettingSkyatp",
+                    "description": "Threat intelligence settings from Sky ATP for the site"
                 },
                 "sleThresholds": {
-                    "$ref": "#/types/junipermist:site/SettingSleThresholds:SettingSleThresholds"
+                    "$ref": "#/types/junipermist:site/SettingSleThresholds:SettingSleThresholds",
+                    "description": "Service level expectation threshold settings for the site"
                 },
                 "srxApp": {
-                    "$ref": "#/types/junipermist:site/SettingSrxApp:SettingSrxApp"
+                    "$ref": "#/types/junipermist:site/SettingSrxApp:SettingSrxApp",
+                    "description": "Juniper SRX application visibility settings for the site"
                 },
                 "sshKeys": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "When\u003cspan pulumi-lang-nodejs=\" limitSshAccess \" pulumi-lang-dotnet=\" LimitSshAccess \" pulumi-lang-go=\" limitSshAccess \" pulumi-lang-python=\" limit_ssh_access \" pulumi-lang-yaml=\" limitSshAccess \" pulumi-lang-java=\" limitSshAccess \" pulumi-lang-hcl=\" limit_ssh_access \"\u003e limitSshAccess \u003c/span\u003e= true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see Org:Setting)"
+                    "description": "Public SSH keys configured for the site"
                 },
                 "ssr": {
-                    "$ref": "#/types/junipermist:site/SettingSsr:SettingSsr"
+                    "$ref": "#/types/junipermist:site/SettingSsr:SettingSsr",
+                    "description": "Session Smart Router settings for the site"
                 },
                 "switchUpdownThreshold": {
                     "type": "integer",
                     "description": "Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and \u003cspan pulumi-lang-nodejs=\"`deviceUpdownThreshold`\" pulumi-lang-dotnet=\"`DeviceUpdownThreshold`\" pulumi-lang-go=\"`deviceUpdownThreshold`\" pulumi-lang-python=\"`device_updown_threshold`\" pulumi-lang-yaml=\"`deviceUpdownThreshold`\" pulumi-lang-java=\"`deviceUpdownThreshold`\" pulumi-lang-hcl=\"`device_updown_threshold`\"\u003e`deviceUpdownThreshold`\u003c/span\u003e is ignored."
                 },
                 "syntheticTest": {
-                    "$ref": "#/types/junipermist:site/SettingSyntheticTest:SettingSyntheticTest"
+                    "$ref": "#/types/junipermist:site/SettingSyntheticTest:SettingSyntheticTest",
+                    "description": "Active monitoring test configuration for the site"
                 },
                 "trackAnonymousDevices": {
                     "type": "boolean",
                     "description": "Whether to track anonymous BLE assets (requires ‘track_asset’  enabled)"
                 },
+                "tuntermMonitoringDisabled": {
+                    "type": "boolean",
+                    "description": "Whether tunnel termination monitoring is disabled for the site"
+                },
+                "tuntermMonitorings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/junipermist:site/SettingTuntermMonitoring:SettingTuntermMonitoring"
+                    },
+                    "description": "Tunnel termination monitoring settings for the site"
+                },
+                "tuntermMulticastConfig": {
+                    "$ref": "#/types/junipermist:site/SettingTuntermMulticastConfig:SettingTuntermMulticastConfig",
+                    "description": "Multicast settings for tunnel termination at the site"
+                },
                 "uplinkPortConfig": {
                     "$ref": "#/types/junipermist:site/SettingUplinkPortConfig:SettingUplinkPortConfig",
-                    "description": "AP Uplink port configuration"
+                    "description": "AP uplink port configuration for the site"
                 },
                 "vars": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Dictionary of name-\u003evalue, the vars can then be used in Wlans. This can overwrite those from Site Vars"
+                    "description": "Template variables defined for the site"
                 },
                 "varsAnnotations": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:site/SettingVarsAnnotations:SettingVarsAnnotations"
                     },
-                    "description": "Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete."
+                    "description": "Metadata annotations for site template variables"
                 },
                 "vna": {
-                    "$ref": "#/types/junipermist:site/SettingVna:SettingVna"
+                    "$ref": "#/types/junipermist:site/SettingVna:SettingVna",
+                    "description": "Virtual Network Assistant settings for the site"
                 },
                 "vpnPathUpdownThreshold": {
                     "type": "integer",
@@ -57361,25 +58192,27 @@
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:site/SettingVsInstance:SettingVsInstance"
                     },
-                    "description": "Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name"
+                    "description": "EX9200 virtual switch instance definitions for the site"
                 },
                 "wanVna": {
-                    "$ref": "#/types/junipermist:site/SettingWanVna:SettingWanVna"
+                    "$ref": "#/types/junipermist:site/SettingWanVna:SettingWanVna",
+                    "description": "Virtual Network Assistant settings for WAN experiences at the site"
                 },
                 "wids": {
                     "$ref": "#/types/junipermist:site/SettingWids:SettingWids",
-                    "description": "WIDS site settings"
+                    "description": "Wireless intrusion detection settings for the site"
                 },
                 "wifi": {
                     "$ref": "#/types/junipermist:site/SettingWifi:SettingWifi",
-                    "description": "Wi-Fi site settings"
+                    "description": "Wireless LAN configuration settings for the site"
                 },
                 "wiredVna": {
-                    "$ref": "#/types/junipermist:site/SettingWiredVna:SettingWiredVna"
+                    "$ref": "#/types/junipermist:site/SettingWiredVna:SettingWiredVna",
+                    "description": "Virtual Network Assistant settings for wired experiences at the site"
                 },
                 "zoneOccupancyAlert": {
                     "$ref": "#/types/junipermist:site/SettingZoneOccupancyAlert:SettingZoneOccupancyAlert",
-                    "description": "Zone Occupancy alert site settings"
+                    "description": "Occupancy alert settings for site zones"
                 }
             },
             "requiredInputs": [
@@ -57393,11 +58226,12 @@
                         "description": "whether to allow Mist to look at this org"
                     },
                     "analytic": {
-                        "$ref": "#/types/junipermist:site/SettingAnalytic:SettingAnalytic"
+                        "$ref": "#/types/junipermist:site/SettingAnalytic:SettingAnalytic",
+                        "description": "Advanced analytics configuration for the site"
                     },
                     "apSyntheticTest": {
                         "$ref": "#/types/junipermist:site/SettingApSyntheticTest:SettingApSyntheticTest",
-                        "description": "AP Synthetic Test configuration"
+                        "description": "Synthetic test configuration for APs at the site"
                     },
                     "apUpdownThreshold": {
                         "type": "integer",
@@ -57405,22 +58239,23 @@
                     },
                     "autoUpgrade": {
                         "$ref": "#/types/junipermist:site/SettingAutoUpgrade:SettingAutoUpgrade",
-                        "description": "Auto Upgrade Settings"
+                        "description": "Automatic AP firmware upgrade settings for the site. Overrides org setting when provided."
                     },
                     "autoUpgradeEsl": {
                         "$ref": "#/types/junipermist:site/SettingAutoUpgradeEsl:SettingAutoUpgradeEsl",
-                        "description": "auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware upgrade"
+                        "description": "Automatic ESL firmware upgrade settings for the site"
                     },
                     "bgpNeighborUpdownThreshold": {
                         "type": "integer",
                         "description": "enable threshold-based bgp neighbor down delivery."
                     },
                     "blacklistUrl": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Read-only URL for the site blacklist file"
                     },
                     "bleConfig": {
                         "$ref": "#/types/junipermist:site/SettingBleConfig:SettingBleConfig",
-                        "description": "BLE AP settings"
+                        "description": "Bluetooth Low Energy configuration applied to APs at the site"
                     },
                     "configAutoRevert": {
                         "type": "boolean",
@@ -57428,26 +58263,27 @@
                     },
                     "configPushPolicy": {
                         "$ref": "#/types/junipermist:site/SettingConfigPushPolicy:SettingConfigPushPolicy",
-                        "description": "Mist also uses some heuristic rules to prevent destructive configs from being pushed"
+                        "description": "Policy controlling how site configuration pushes are applied"
                     },
                     "criticalUrlMonitoring": {
                         "$ref": "#/types/junipermist:site/SettingCriticalUrlMonitoring:SettingCriticalUrlMonitoring",
-                        "description": "You can define some URLs that's critical to site operations the latency will be captured and considered for site health"
+                        "description": "Monitoring configuration for critical URLs at the site"
                     },
                     "deviceUpdownThreshold": {
                         "type": "integer",
                         "description": "By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following"
                     },
                     "enableUnii4": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Whether UNII-4 channels are enabled for the site"
                     },
                     "engagement": {
                         "$ref": "#/types/junipermist:site/SettingEngagement:SettingEngagement",
-                        "description": "**Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple ranges for the same day"
+                        "description": "Dwell-time analytics rules for the site"
                     },
                     "gatewayMgmt": {
                         "$ref": "#/types/junipermist:site/SettingGatewayMgmt:SettingGatewayMgmt",
-                        "description": "Gateway Management settings"
+                        "description": "Management access settings for gateways at the site"
                     },
                     "gatewayTunnelUpdownThreshold": {
                         "type": "integer",
@@ -57459,21 +58295,31 @@
                     },
                     "iotproxy": {
                         "$ref": "#/types/junipermist:site/SettingIotproxy:SettingIotproxy",
-                        "description": "IoT proxy configuration for the site"
+                        "description": "Proxy settings for IoT traffic at the site"
                     },
                     "juniperSrx": {
-                        "$ref": "#/types/junipermist:site/SettingJuniperSrx:SettingJuniperSrx"
+                        "$ref": "#/types/junipermist:site/SettingJuniperSrx:SettingJuniperSrx",
+                        "description": "SRX integration settings for the site"
                     },
                     "led": {
                         "$ref": "#/types/junipermist:site/SettingLed:SettingLed",
-                        "description": "LED AP settings"
+                        "description": "AP LED behavior configured for the site"
                     },
                     "marvis": {
-                        "$ref": "#/types/junipermist:site/SettingMarvis:SettingMarvis"
+                        "$ref": "#/types/junipermist:site/SettingMarvis:SettingMarvis",
+                        "description": "AI assistant settings for Marvis at the site"
+                    },
+                    "mxedgeMgmt": {
+                        "$ref": "#/types/junipermist:site/SettingMxedgeMgmt:SettingMxedgeMgmt",
+                        "description": "Mist Edge management access settings for the site"
+                    },
+                    "mxtunnels": {
+                        "$ref": "#/types/junipermist:site/SettingMxtunnels:SettingMxtunnels",
+                        "description": "Site Mist Tunnel configuration"
                     },
                     "occupancy": {
                         "$ref": "#/types/junipermist:site/SettingOccupancy:SettingOccupancy",
-                        "description": "Occupancy Analytics settings"
+                        "description": "Analytics settings for site occupancy"
                     },
                     "persistConfigOnDevice": {
                         "type": "boolean",
@@ -57481,7 +58327,7 @@
                     },
                     "proxy": {
                         "$ref": "#/types/junipermist:site/SettingProxy:SettingProxy",
-                        "description": "Proxy Configuration to talk to Mist"
+                        "description": "Network proxy settings for devices at the site"
                     },
                     "removeExistingConfigs": {
                         "type": "boolean",
@@ -57493,69 +58339,91 @@
                     },
                     "rogue": {
                         "$ref": "#/types/junipermist:site/SettingRogue:SettingRogue",
-                        "description": "Rogue site settings"
+                        "description": "AP threat detection settings for the site"
                     },
                     "rtsa": {
                         "$ref": "#/types/junipermist:site/SettingRtsa:SettingRtsa",
-                        "description": "Managed mobility"
+                        "description": "Managed mobility and asset tracking settings for the site"
                     },
                     "simpleAlert": {
                         "$ref": "#/types/junipermist:site/SettingSimpleAlert:SettingSimpleAlert",
-                        "description": "Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute window, there are more than Y distinct client encountering over X failures"
+                        "description": "Threshold alert settings for the site"
                     },
                     "siteId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Identifier of the site these settings apply to"
                     },
                     "skyatp": {
-                        "$ref": "#/types/junipermist:site/SettingSkyatp:SettingSkyatp"
+                        "$ref": "#/types/junipermist:site/SettingSkyatp:SettingSkyatp",
+                        "description": "Threat intelligence settings from Sky ATP for the site"
                     },
                     "sleThresholds": {
-                        "$ref": "#/types/junipermist:site/SettingSleThresholds:SettingSleThresholds"
+                        "$ref": "#/types/junipermist:site/SettingSleThresholds:SettingSleThresholds",
+                        "description": "Service level expectation threshold settings for the site"
                     },
                     "srxApp": {
-                        "$ref": "#/types/junipermist:site/SettingSrxApp:SettingSrxApp"
+                        "$ref": "#/types/junipermist:site/SettingSrxApp:SettingSrxApp",
+                        "description": "Juniper SRX application visibility settings for the site"
                     },
                     "sshKeys": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "When\u003cspan pulumi-lang-nodejs=\" limitSshAccess \" pulumi-lang-dotnet=\" LimitSshAccess \" pulumi-lang-go=\" limitSshAccess \" pulumi-lang-python=\" limit_ssh_access \" pulumi-lang-yaml=\" limitSshAccess \" pulumi-lang-java=\" limitSshAccess \" pulumi-lang-hcl=\" limit_ssh_access \"\u003e limitSshAccess \u003c/span\u003e= true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see Org:Setting)"
+                        "description": "Public SSH keys configured for the site"
                     },
                     "ssr": {
-                        "$ref": "#/types/junipermist:site/SettingSsr:SettingSsr"
+                        "$ref": "#/types/junipermist:site/SettingSsr:SettingSsr",
+                        "description": "Session Smart Router settings for the site"
                     },
                     "switchUpdownThreshold": {
                         "type": "integer",
                         "description": "Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and \u003cspan pulumi-lang-nodejs=\"`deviceUpdownThreshold`\" pulumi-lang-dotnet=\"`DeviceUpdownThreshold`\" pulumi-lang-go=\"`deviceUpdownThreshold`\" pulumi-lang-python=\"`device_updown_threshold`\" pulumi-lang-yaml=\"`deviceUpdownThreshold`\" pulumi-lang-java=\"`deviceUpdownThreshold`\" pulumi-lang-hcl=\"`device_updown_threshold`\"\u003e`deviceUpdownThreshold`\u003c/span\u003e is ignored."
                     },
                     "syntheticTest": {
-                        "$ref": "#/types/junipermist:site/SettingSyntheticTest:SettingSyntheticTest"
+                        "$ref": "#/types/junipermist:site/SettingSyntheticTest:SettingSyntheticTest",
+                        "description": "Active monitoring test configuration for the site"
                     },
                     "trackAnonymousDevices": {
                         "type": "boolean",
                         "description": "Whether to track anonymous BLE assets (requires ‘track_asset’  enabled)"
                     },
+                    "tuntermMonitoringDisabled": {
+                        "type": "boolean",
+                        "description": "Whether tunnel termination monitoring is disabled for the site"
+                    },
+                    "tuntermMonitorings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/junipermist:site/SettingTuntermMonitoring:SettingTuntermMonitoring"
+                        },
+                        "description": "Tunnel termination monitoring settings for the site"
+                    },
+                    "tuntermMulticastConfig": {
+                        "$ref": "#/types/junipermist:site/SettingTuntermMulticastConfig:SettingTuntermMulticastConfig",
+                        "description": "Multicast settings for tunnel termination at the site"
+                    },
                     "uplinkPortConfig": {
                         "$ref": "#/types/junipermist:site/SettingUplinkPortConfig:SettingUplinkPortConfig",
-                        "description": "AP Uplink port configuration"
+                        "description": "AP uplink port configuration for the site"
                     },
                     "vars": {
                         "type": "object",
                         "additionalProperties": {
                             "type": "string"
                         },
-                        "description": "Dictionary of name-\u003evalue, the vars can then be used in Wlans. This can overwrite those from Site Vars"
+                        "description": "Template variables defined for the site"
                     },
                     "varsAnnotations": {
                         "type": "object",
                         "additionalProperties": {
                             "$ref": "#/types/junipermist:site/SettingVarsAnnotations:SettingVarsAnnotations"
                         },
-                        "description": "Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete."
+                        "description": "Metadata annotations for site template variables"
                     },
                     "vna": {
-                        "$ref": "#/types/junipermist:site/SettingVna:SettingVna"
+                        "$ref": "#/types/junipermist:site/SettingVna:SettingVna",
+                        "description": "Virtual Network Assistant settings for the site"
                     },
                     "vpnPathUpdownThreshold": {
                         "type": "integer",
@@ -57570,31 +58438,35 @@
                         "additionalProperties": {
                             "$ref": "#/types/junipermist:site/SettingVsInstance:SettingVsInstance"
                         },
-                        "description": "Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name"
+                        "description": "EX9200 virtual switch instance definitions for the site"
                     },
                     "wanVna": {
-                        "$ref": "#/types/junipermist:site/SettingWanVna:SettingWanVna"
+                        "$ref": "#/types/junipermist:site/SettingWanVna:SettingWanVna",
+                        "description": "Virtual Network Assistant settings for WAN experiences at the site"
                     },
                     "watchedStationUrl": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Read-only URL for the watched station list file"
                     },
                     "whitelistUrl": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Read-only URL for the site whitelist file"
                     },
                     "wids": {
                         "$ref": "#/types/junipermist:site/SettingWids:SettingWids",
-                        "description": "WIDS site settings"
+                        "description": "Wireless intrusion detection settings for the site"
                     },
                     "wifi": {
                         "$ref": "#/types/junipermist:site/SettingWifi:SettingWifi",
-                        "description": "Wi-Fi site settings"
+                        "description": "Wireless LAN configuration settings for the site"
                     },
                     "wiredVna": {
-                        "$ref": "#/types/junipermist:site/SettingWiredVna:SettingWiredVna"
+                        "$ref": "#/types/junipermist:site/SettingWiredVna:SettingWiredVna",
+                        "description": "Virtual Network Assistant settings for wired experiences at the site"
                     },
                     "zoneOccupancyAlert": {
                         "$ref": "#/types/junipermist:site/SettingZoneOccupancyAlert:SettingZoneOccupancyAlert",
-                        "description": "Zone Occupancy alert site settings"
+                        "description": "Occupancy alert settings for site zones"
                     }
                 },
                 "type": "object"

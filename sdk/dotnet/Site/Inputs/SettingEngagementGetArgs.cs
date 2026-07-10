@@ -13,31 +13,31 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class SettingEngagementGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name associated to each tag
+        /// Display labels for dwell-time visit categories
         /// </summary>
         [Input("dwellTagNames")]
         public Input<Inputs.SettingEngagementDwellTagNamesGetArgs>? DwellTagNames { get; set; }
 
         /// <summary>
-        /// add tags to visits within the duration (in seconds)
+        /// Visit duration ranges used to assign engagement categories
         /// </summary>
         [Input("dwellTags")]
         public Input<Inputs.SettingEngagementDwellTagsGetArgs>? DwellTags { get; set; }
 
         /// <summary>
-        /// Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+        /// Schedule during which engagement analytics rules apply
         /// </summary>
         [Input("hours")]
         public Input<Inputs.SettingEngagementHoursGetArgs>? Hours { get; set; }
 
         /// <summary>
-        /// Max time, default is 43200(12h), max is 68400 (18h)
+        /// Maximum dwell time in seconds considered by engagement analytics
         /// </summary>
         [Input("maxDwell")]
         public Input<int>? MaxDwell { get; set; }
 
         /// <summary>
-        /// min time
+        /// Minimum dwell time in seconds for engagement analytics
         /// </summary>
         [Input("minDwell")]
         public Input<int>? MinDwell { get; set; }

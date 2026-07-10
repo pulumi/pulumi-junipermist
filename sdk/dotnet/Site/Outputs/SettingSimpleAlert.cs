@@ -13,8 +13,17 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class SettingSimpleAlert
     {
+        /// <summary>
+        /// Thresholds for ARP failure heuristic alerts
+        /// </summary>
         public readonly Outputs.SettingSimpleAlertArpFailure? ArpFailure;
+        /// <summary>
+        /// Thresholds for DHCP failure heuristic alerts
+        /// </summary>
         public readonly Outputs.SettingSimpleAlertDhcpFailure? DhcpFailure;
+        /// <summary>
+        /// Thresholds for DNS failure heuristic alerts
+        /// </summary>
         public readonly Outputs.SettingSimpleAlertDnsFailure? DnsFailure;
 
         [OutputConstructor]

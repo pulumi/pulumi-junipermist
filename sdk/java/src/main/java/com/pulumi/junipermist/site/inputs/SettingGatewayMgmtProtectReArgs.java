@@ -33,9 +33,17 @@ public final class SettingGatewayMgmtProtectReArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.allowedServices);
     }
 
+    /**
+     * Additional ACL entries allowed by the Protect RE policy
+     * 
+     */
     @Import(name="customs")
     private @Nullable Output<List<SettingGatewayMgmtProtectReCustomArgs>> customs;
 
+    /**
+     * @return Additional ACL entries allowed by the Protect RE policy
+     * 
+     */
     public Optional<Output<List<SettingGatewayMgmtProtectReCustomArgs>>> customs() {
         return Optional.ofNullable(this.customs);
     }
@@ -75,14 +83,14 @@ public final class SettingGatewayMgmtProtectReArgs extends com.pulumi.resources.
     }
 
     /**
-     * host/subnets we&#39;ll allow traffic to/from
+     * Trusted host or subnet entries allowed by the Protect RE policy
      * 
      */
     @Import(name="trustedHosts")
     private @Nullable Output<List<String>> trustedHosts;
 
     /**
-     * @return host/subnets we&#39;ll allow traffic to/from
+     * @return Trusted host or subnet entries allowed by the Protect RE policy
      * 
      */
     public Optional<Output<List<String>>> trustedHosts() {
@@ -148,15 +156,33 @@ public final class SettingGatewayMgmtProtectReArgs extends com.pulumi.resources.
             return allowedServices(List.of(allowedServices));
         }
 
+        /**
+         * @param customs Additional ACL entries allowed by the Protect RE policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder customs(@Nullable Output<List<SettingGatewayMgmtProtectReCustomArgs>> customs) {
             $.customs = customs;
             return this;
         }
 
+        /**
+         * @param customs Additional ACL entries allowed by the Protect RE policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder customs(List<SettingGatewayMgmtProtectReCustomArgs> customs) {
             return customs(Output.of(customs));
         }
 
+        /**
+         * @param customs Additional ACL entries allowed by the Protect RE policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder customs(SettingGatewayMgmtProtectReCustomArgs... customs) {
             return customs(List.of(customs));
         }
@@ -208,7 +234,7 @@ public final class SettingGatewayMgmtProtectReArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param trustedHosts host/subnets we&#39;ll allow traffic to/from
+         * @param trustedHosts Trusted host or subnet entries allowed by the Protect RE policy
          * 
          * @return builder
          * 
@@ -219,7 +245,7 @@ public final class SettingGatewayMgmtProtectReArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param trustedHosts host/subnets we&#39;ll allow traffic to/from
+         * @param trustedHosts Trusted host or subnet entries allowed by the Protect RE policy
          * 
          * @return builder
          * 
@@ -229,7 +255,7 @@ public final class SettingGatewayMgmtProtectReArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param trustedHosts host/subnets we&#39;ll allow traffic to/from
+         * @param trustedHosts Trusted host or subnet entries allowed by the Protect RE policy
          * 
          * @return builder
          * 

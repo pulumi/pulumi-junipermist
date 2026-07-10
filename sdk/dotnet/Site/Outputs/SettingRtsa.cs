@@ -13,12 +13,24 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class SettingRtsa
     {
+        /// <summary>
+        /// Whether app wake-up support is enabled for managed mobility
+        /// </summary>
         public readonly bool? AppWaking;
+        /// <summary>
+        /// Whether dead reckoning is disabled for managed mobility
+        /// </summary>
         public readonly bool? DisableDeadReckoning;
+        /// <summary>
+        /// Whether pressure sensor use is disabled for managed mobility
+        /// </summary>
         public readonly bool? DisablePressureSensor;
+        /// <summary>
+        /// Whether managed mobility features are enabled
+        /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Asset tracking related
+        /// Whether BLE asset tracking is enabled for managed mobility
         /// </summary>
         public readonly bool? TrackAsset;
 

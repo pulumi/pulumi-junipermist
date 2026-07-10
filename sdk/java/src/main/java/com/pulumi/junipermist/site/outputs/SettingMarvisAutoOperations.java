@@ -11,41 +11,113 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingMarvisAutoOperations {
+    /**
+     * @return Whether Marvis may remediate AP insufficient-capacity issues automatically
+     * 
+     */
     private @Nullable Boolean apInsufficientCapacity;
+    /**
+     * @return Whether Marvis may remediate AP loop issues automatically
+     * 
+     */
     private @Nullable Boolean apLoop;
+    /**
+     * @return Whether Marvis may remediate AP non-compliance automatically
+     * 
+     */
     private @Nullable Boolean apNonCompliant;
+    /**
+     * @return Whether Marvis may bounce switch ports for abnormal PoE clients
+     * 
+     */
     private @Nullable Boolean bouncePortForAbnormalPoeClient;
+    /**
+     * @return Whether Marvis may disable a port when DDOS protocol violations are detected
+     * 
+     */
     private @Nullable Boolean disablePortWhenDdosProtocolViolation;
+    /**
+     * @return Whether Marvis may disable a port when a rogue DHCP server is detected
+     * 
+     */
     private @Nullable Boolean disablePortWhenRogueDhcpServerDetected;
+    /**
+     * @return Whether Marvis may remediate non-compliant gateways automatically
+     * 
+     */
     private @Nullable Boolean gatewayNonCompliant;
+    /**
+     * @return Whether Marvis may remediate misconfigured switch ports automatically
+     * 
+     */
     private @Nullable Boolean switchMisconfiguredPort;
+    /**
+     * @return Whether Marvis may remediate stuck switch ports automatically
+     * 
+     */
     private @Nullable Boolean switchPortStuck;
 
     private SettingMarvisAutoOperations() {}
+    /**
+     * @return Whether Marvis may remediate AP insufficient-capacity issues automatically
+     * 
+     */
     public Optional<Boolean> apInsufficientCapacity() {
         return Optional.ofNullable(this.apInsufficientCapacity);
     }
+    /**
+     * @return Whether Marvis may remediate AP loop issues automatically
+     * 
+     */
     public Optional<Boolean> apLoop() {
         return Optional.ofNullable(this.apLoop);
     }
+    /**
+     * @return Whether Marvis may remediate AP non-compliance automatically
+     * 
+     */
     public Optional<Boolean> apNonCompliant() {
         return Optional.ofNullable(this.apNonCompliant);
     }
+    /**
+     * @return Whether Marvis may bounce switch ports for abnormal PoE clients
+     * 
+     */
     public Optional<Boolean> bouncePortForAbnormalPoeClient() {
         return Optional.ofNullable(this.bouncePortForAbnormalPoeClient);
     }
+    /**
+     * @return Whether Marvis may disable a port when DDOS protocol violations are detected
+     * 
+     */
     public Optional<Boolean> disablePortWhenDdosProtocolViolation() {
         return Optional.ofNullable(this.disablePortWhenDdosProtocolViolation);
     }
+    /**
+     * @return Whether Marvis may disable a port when a rogue DHCP server is detected
+     * 
+     */
     public Optional<Boolean> disablePortWhenRogueDhcpServerDetected() {
         return Optional.ofNullable(this.disablePortWhenRogueDhcpServerDetected);
     }
+    /**
+     * @return Whether Marvis may remediate non-compliant gateways automatically
+     * 
+     */
     public Optional<Boolean> gatewayNonCompliant() {
         return Optional.ofNullable(this.gatewayNonCompliant);
     }
+    /**
+     * @return Whether Marvis may remediate misconfigured switch ports automatically
+     * 
+     */
     public Optional<Boolean> switchMisconfiguredPort() {
         return Optional.ofNullable(this.switchMisconfiguredPort);
     }
+    /**
+     * @return Whether Marvis may remediate stuck switch ports automatically
+     * 
+     */
     public Optional<Boolean> switchPortStuck() {
         return Optional.ofNullable(this.switchPortStuck);
     }

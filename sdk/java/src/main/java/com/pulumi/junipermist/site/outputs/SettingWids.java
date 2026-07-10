@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingWids {
+    /**
+     * @return Detection settings for repeated authentication failures
+     * 
+     */
     private @Nullable SettingWidsRepeatedAuthFailures repeatedAuthFailures;
 
     private SettingWids() {}
+    /**
+     * @return Detection settings for repeated authentication failures
+     * 
+     */
     public Optional<SettingWidsRepeatedAuthFailures> repeatedAuthFailures() {
         return Optional.ofNullable(this.repeatedAuthFailures);
     }

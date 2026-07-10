@@ -11,25 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingSimpleAlertArpFailure {
+    /**
+     * @return Number of distinct clients that must encounter ARP failures before alerting
+     * 
+     */
     private @Nullable Integer clientCount;
     /**
-     * @return failing within minutes
+     * @return Time window in minutes for evaluating ARP failures
      * 
      */
     private @Nullable Integer duration;
+    /**
+     * @return Number of ARP failure incidents required within the duration window
+     * 
+     */
     private @Nullable Integer incidentCount;
 
     private SettingSimpleAlertArpFailure() {}
+    /**
+     * @return Number of distinct clients that must encounter ARP failures before alerting
+     * 
+     */
     public Optional<Integer> clientCount() {
         return Optional.ofNullable(this.clientCount);
     }
     /**
-     * @return failing within minutes
+     * @return Time window in minutes for evaluating ARP failures
      * 
      */
     public Optional<Integer> duration() {
         return Optional.ofNullable(this.duration);
     }
+    /**
+     * @return Number of ARP failure incidents required within the duration window
+     * 
+     */
     public Optional<Integer> incidentCount() {
         return Optional.ofNullable(this.incidentCount);
     }

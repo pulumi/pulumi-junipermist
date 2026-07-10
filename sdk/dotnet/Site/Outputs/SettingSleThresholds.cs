@@ -14,15 +14,15 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class SettingSleThresholds
     {
         /// <summary>
-        /// Capacity, in %
+        /// Threshold percentage for capacity SLE scoring
         /// </summary>
         public readonly int? Capacity;
         /// <summary>
-        /// Coverage, in dBm
+        /// RSSI threshold for coverage SLE scoring, in dBm
         /// </summary>
         public readonly int? Coverage;
         /// <summary>
-        /// Throughput, in Mbps
+        /// Minimum throughput threshold for SLE scoring, in Mbps
         /// </summary>
         public readonly int? Throughput;
         /// <summary>

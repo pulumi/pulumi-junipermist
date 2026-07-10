@@ -12,20 +12,32 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class SettingRtsaArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether app wake-up support is enabled for managed mobility
+        /// </summary>
         [Input("appWaking")]
         public Input<bool>? AppWaking { get; set; }
 
+        /// <summary>
+        /// Whether dead reckoning is disabled for managed mobility
+        /// </summary>
         [Input("disableDeadReckoning")]
         public Input<bool>? DisableDeadReckoning { get; set; }
 
+        /// <summary>
+        /// Whether pressure sensor use is disabled for managed mobility
+        /// </summary>
         [Input("disablePressureSensor")]
         public Input<bool>? DisablePressureSensor { get; set; }
 
+        /// <summary>
+        /// Whether managed mobility features are enabled
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Asset tracking related
+        /// Whether BLE asset tracking is enabled for managed mobility
         /// </summary>
         [Input("trackAsset")]
         public Input<bool>? TrackAsset { get; set; }

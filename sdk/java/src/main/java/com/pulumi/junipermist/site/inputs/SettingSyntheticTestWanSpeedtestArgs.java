@@ -16,22 +16,30 @@ public final class SettingSyntheticTestWanSpeedtestArgs extends com.pulumi.resou
 
     public static final SettingSyntheticTestWanSpeedtestArgs Empty = new SettingSyntheticTestWanSpeedtestArgs();
 
+    /**
+     * Whether scheduled WAN speedtests are enabled
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether scheduled WAN speedtests are enabled
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
     /**
-     * `any` / HH:MM (24-hour format)
+     * Scheduled time of day for WAN speedtests
      * 
      */
     @Import(name="timeOfDay")
     private @Nullable Output<String> timeOfDay;
 
     /**
-     * @return `any` / HH:MM (24-hour format)
+     * @return Scheduled time of day for WAN speedtests
      * 
      */
     public Optional<Output<String>> timeOfDay() {
@@ -63,17 +71,29 @@ public final class SettingSyntheticTestWanSpeedtestArgs extends com.pulumi.resou
             $ = new SettingSyntheticTestWanSpeedtestArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Whether scheduled WAN speedtests are enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether scheduled WAN speedtests are enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
         /**
-         * @param timeOfDay `any` / HH:MM (24-hour format)
+         * @param timeOfDay Scheduled time of day for WAN speedtests
          * 
          * @return builder
          * 
@@ -84,7 +104,7 @@ public final class SettingSyntheticTestWanSpeedtestArgs extends com.pulumi.resou
         }
 
         /**
-         * @param timeOfDay `any` / HH:MM (24-hour format)
+         * @param timeOfDay Scheduled time of day for WAN speedtests
          * 
          * @return builder
          * 

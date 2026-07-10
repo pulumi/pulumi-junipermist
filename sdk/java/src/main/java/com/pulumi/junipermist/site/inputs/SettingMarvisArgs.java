@@ -15,9 +15,17 @@ public final class SettingMarvisArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SettingMarvisArgs Empty = new SettingMarvisArgs();
 
+    /**
+     * Automatic remediation operations controlled by Marvis
+     * 
+     */
     @Import(name="autoOperations")
     private @Nullable Output<SettingMarvisAutoOperationsArgs> autoOperations;
 
+    /**
+     * @return Automatic remediation operations controlled by Marvis
+     * 
+     */
     public Optional<Output<SettingMarvisAutoOperationsArgs>> autoOperations() {
         return Optional.ofNullable(this.autoOperations);
     }
@@ -46,11 +54,23 @@ public final class SettingMarvisArgs extends com.pulumi.resources.ResourceArgs {
             $ = new SettingMarvisArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param autoOperations Automatic remediation operations controlled by Marvis
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoOperations(@Nullable Output<SettingMarvisAutoOperationsArgs> autoOperations) {
             $.autoOperations = autoOperations;
             return this;
         }
 
+        /**
+         * @param autoOperations Automatic remediation operations controlled by Marvis
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoOperations(SettingMarvisAutoOperationsArgs autoOperations) {
             return autoOperations(Output.of(autoOperations));
         }

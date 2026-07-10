@@ -948,7 +948,7 @@ export namespace device {
         /**
          * Radio Tx power, in dBm. Can be an integer 0-25 for static power configuration, or `null` or unset for auto power mode
          */
-        power: number;
+        power?: number;
         /**
          * When power=null/unset, max tx power to use, HW-specific values will be used if not set
          */
@@ -999,7 +999,7 @@ export namespace device {
         /**
          * Radio Tx power, in dBm. Can be an integer 0-25 for static power configuration, or `null` or unset for auto power mode
          */
-        power: number;
+        power?: number;
         /**
          * When power=null/unset, max tx power to use, HW-specific values will be used if not set
          */
@@ -1050,7 +1050,7 @@ export namespace device {
         /**
          * Radio Tx power, in dBm. Can be an integer 0-25 for static power configuration, or `null` or unset for auto power mode
          */
-        power: number;
+        power?: number;
         /**
          * When power=null/unset, max tx power to use, HW-specific values will be used if not set
          */
@@ -1101,7 +1101,7 @@ export namespace device {
         /**
          * Radio Tx power, in dBm. Can be an integer 0-25 for static power configuration, or `null` or unset for auto power mode
          */
-        power: number;
+        power?: number;
         /**
          * When power=null/unset, max tx power to use, HW-specific values will be used if not set
          */
@@ -8712,7 +8712,7 @@ export namespace org {
         /**
          * Radio Tx power, in dBm. Can be an integer 0-25 for static power configuration, or `null` or unset for auto power mode
          */
-        power: number;
+        power?: number;
         /**
          * When power=null/unset, max tx power to use, HW-specific values will be used if not set
          */
@@ -8763,7 +8763,7 @@ export namespace org {
         /**
          * Radio Tx power, in dBm. Can be an integer 0-25 for static power configuration, or `null` or unset for auto power mode
          */
-        power: number;
+        power?: number;
         /**
          * When power=null/unset, max tx power to use, HW-specific values will be used if not set
          */
@@ -8814,7 +8814,7 @@ export namespace org {
         /**
          * Radio Tx power, in dBm. Can be an integer 0-25 for static power configuration, or `null` or unset for auto power mode
          */
-        power: number;
+        power?: number;
         /**
          * When power=null/unset, max tx power to use, HW-specific values will be used if not set
          */
@@ -8865,7 +8865,7 @@ export namespace org {
         /**
          * Radio Tx power, in dBm. Can be an integer 0-25 for static power configuration, or `null` or unset for auto power mode
          */
-        power: number;
+        power?: number;
         /**
          * When power=null/unset, max tx power to use, HW-specific values will be used if not set
          */
@@ -17771,6 +17771,59 @@ export namespace org {
         tunterm: string;
     }
 
+    export interface MxtunnelAutoPreemption {
+        /**
+         * Scheduled weekday for auto preemption
+         */
+        dayOfWeek?: string;
+        /**
+         * Whether auto preemption is enabled
+         */
+        enabled?: boolean;
+        /**
+         * Scheduled time of day for auto preemption
+         */
+        timeOfDay?: string;
+    }
+
+    export interface MxtunnelIpsec {
+        /**
+         * Name server addresses advertised for IPsec tunnel clients
+         */
+        dnsServers?: string[];
+        /**
+         * Search suffixes advertised for IPsec tunnel clients
+         */
+        dnsSuffixes?: string[];
+        /**
+         * Whether IPsec support is enabled for this Mist Tunnel
+         */
+        enabled?: boolean;
+        /**
+         * Additional routes advertised for the IPsec tunnel
+         */
+        extraRoutes?: outputs.org.MxtunnelIpsecExtraRoute[];
+        /**
+         * Whether split tunneling is enabled for IPsec clients
+         */
+        splitTunnel?: boolean;
+        /**
+         * Whether IPsec termination uses Mist Edge
+         */
+        useMxedge?: boolean;
+    }
+
+    export interface MxtunnelIpsecExtraRoute {
+        /**
+         * Route destination CIDR for the IPsec extra route
+         */
+        dest?: string;
+        /**
+         * Route next-hop IPv4 address for the IPsec extra route
+         */
+        nextHop?: string;
+    }
+
     export interface NacPortalPortal {
         /**
          * Mode presented by the NAC guest portal for user authentication
@@ -25852,18 +25905,18 @@ export namespace site {
 
     export interface SettingApSyntheticTest {
         /**
-         * List or Comma separated list of additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
+         * VLAN IDs included in addition to the default VLAN set for AP synthetic tests
          */
         additionalVlanIds?: string[];
     }
 
     export interface SettingAutoUpgrade {
         /**
-         * Custom versions for different models. Property key is the model name (e.g. "AP41")
+         * Per-AP-model firmware versions or channels used for auto-upgrade
          */
         customVersions: {[key: string]: string};
         /**
-         * enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+         * Weekly AP auto-upgrade day for the maintenance window
          */
         dayOfWeek?: string;
         /**
@@ -25875,7 +25928,7 @@ export namespace site {
          */
         timeOfDay?: string;
         /**
-         * desired version. enum: `beta`, `custom`, `stable`
+         * Firmware release channel or custom version used for AP auto-upgrade
          */
         version: string;
     }
@@ -25890,7 +25943,7 @@ export namespace site {
          */
         customVersions?: {[key: string]: string};
         /**
-         * enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+         * Weekly ESL auto-upgrade day for the maintenance window
          */
         dayOfWeek?: string;
         /**
@@ -25901,6 +25954,9 @@ export namespace site {
          * `any` / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
          */
         timeOfDay?: string;
+        /**
+         * ESL firmware version used for auto-upgrade
+         */
         version?: string;
     }
 
@@ -25914,11 +25970,11 @@ export namespace site {
          */
         beaconRate?: number;
         /**
-         * enum: `custom`, `default`
+         * Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate
          */
         beaconRateMode: string;
         /**
-         * List of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
+         * AP BLE beam numbers disabled for location advertisements
          */
         beamDisableds?: number[];
         /**
@@ -25937,6 +25993,9 @@ export namespace site {
          * Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
          */
         eddystoneUidAdvPower: number;
+        /**
+         * BLE beams used to transmit Eddystone-UID advertisements, expressed as ranges such as `2-4,7`
+         */
         eddystoneUidBeams: string;
         /**
          * Only if `beaconEnabled`==`false`, Whether Eddystone-UID beacon is enabled
@@ -25951,20 +26010,23 @@ export namespace site {
          */
         eddystoneUidInstance: string;
         /**
-         * Eddystone-UID namespace
+         * Eddystone-UID namespace broadcast by the AP, as a 10-byte hex string
          */
         eddystoneUidNamespace: string;
         /**
          * Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
          */
         eddystoneUrlAdvPower: number;
+        /**
+         * BLE beams used to transmit Eddystone-URL advertisements, expressed as ranges such as `2-4,7`
+         */
         eddystoneUrlBeams: string;
         /**
          * Only if `beaconEnabled`==`false`, Whether Eddystone-URL beacon is enabled
          */
         eddystoneUrlEnabled: boolean;
         /**
-         * Frequency (msec) of data emit by Eddystone-UID beacon
+         * Frequency (msec) of data emitted by Eddystone-URL beacon
          */
         eddystoneUrlFreqMsec: number;
         /**
@@ -25975,6 +26037,9 @@ export namespace site {
          * Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
          */
         ibeaconAdvPower: number;
+        /**
+         * BLE beams used to transmit iBeacon advertisements, expressed as ranges such as `2-4,7`
+         */
         ibeaconBeams: string;
         /**
          * Can be enabled if `beaconEnabled`==`true`, whether to send iBeacon
@@ -25985,11 +26050,11 @@ export namespace site {
          */
         ibeaconFreqMsec: number;
         /**
-         * Major number for iBeacon
+         * iBeacon major value broadcast by the AP
          */
         ibeaconMajor: number;
         /**
-         * Minor number for iBeacon
+         * iBeacon minor value broadcast by the AP
          */
         ibeaconMinor: number;
         /**
@@ -26001,7 +26066,7 @@ export namespace site {
          */
         power: number;
         /**
-         * enum: `custom`, `default`
+         * Transmit power mode for BLE beacons; use custom to set `power`
          */
         powerMode: string;
     }
@@ -26012,79 +26077,94 @@ export namespace site {
          */
         noPush: boolean;
         /**
-         * If enabled, new config will only be pushed to device within the specified time window
+         * Allowed time window during which configuration pushes may run
          */
         pushWindow?: outputs.site.SettingConfigPushPolicyPushWindow;
     }
 
     export interface SettingConfigPushPolicyPushWindow {
+        /**
+         * Whether configuration pushes are limited to the configured push window
+         */
         enabled: boolean;
         /**
-         * Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+         * Day-of-week hour ranges when configuration pushes are allowed
          */
         hours?: outputs.site.SettingConfigPushPolicyPushWindowHours;
     }
 
     export interface SettingConfigPushPolicyPushWindowHours {
         /**
-         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         * Operating hour range for Friday
          */
         fri: string;
         /**
-         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         * Operating hour range for Monday
          */
         mon: string;
         /**
-         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         * Operating hour range for Saturday
          */
         sat: string;
         /**
-         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         * Operating hour range for Sunday
          */
         sun: string;
         /**
-         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         * Operating hour range for Thursday
          */
         thu: string;
         /**
-         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         * Operating hour range for Tuesday
          */
         tue: string;
         /**
-         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         * Operating hour range for Wednesday
          */
         wed: string;
     }
 
     export interface SettingCriticalUrlMonitoring {
+        /**
+         * Whether critical URL monitoring is enabled
+         */
         enabled: boolean;
+        /**
+         * Critical URLs monitored for site health latency
+         */
         monitors: outputs.site.SettingCriticalUrlMonitoringMonitor[];
     }
 
     export interface SettingCriticalUrlMonitoringMonitor {
+        /**
+         * Monitored HTTP or HTTPS URL used for site health latency
+         */
         url?: string;
+        /**
+         * Source VLAN ID used to run the critical URL monitor
+         */
         vlanId?: string;
     }
 
     export interface SettingEngagement {
         /**
-         * Name associated to each tag
+         * Display labels for dwell-time visit categories
          */
         dwellTagNames?: outputs.site.SettingEngagementDwellTagNames;
         /**
-         * add tags to visits within the duration (in seconds)
+         * Visit duration ranges used to assign engagement categories
          */
         dwellTags?: outputs.site.SettingEngagementDwellTags;
         /**
-         * Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+         * Schedule during which engagement analytics rules apply
          */
         hours?: outputs.site.SettingEngagementHours;
         /**
-         * Max time, default is 43200(12h), max is 68400 (18h)
+         * Maximum dwell time in seconds considered by engagement analytics
          */
         maxDwell?: number;
         /**
-         * min time
+         * Minimum dwell time in seconds for engagement analytics
          */
         minDwell?: number;
     }
@@ -26129,45 +26209,51 @@ export namespace site {
 
     export interface SettingEngagementHours {
         /**
-         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         * Operating hour range for Friday
          */
         fri?: string;
         /**
-         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         * Operating hour range for Monday
          */
         mon?: string;
         /**
-         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         * Operating hour range for Saturday
          */
         sat?: string;
         /**
-         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         * Operating hour range for Sunday
          */
         sun?: string;
         /**
-         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         * Operating hour range for Thursday
          */
         thu?: string;
         /**
-         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         * Operating hour range for Tuesday
          */
         tue?: string;
         /**
-         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         * Operating hour range for Wednesday
          */
         wed?: string;
     }
 
     export interface SettingGatewayMgmt {
         /**
-         * For SSR only, as direct root access is not allowed
+         * SSR-only SSH public keys for administrative access
          */
         adminSshkeys: string[];
+        /**
+         * Application probing configuration for gateway monitoring
+         */
         appProbing?: outputs.site.SettingGatewayMgmtAppProbing;
         /**
          * Consumes uplink bandwidth, requires WA license
          */
         appUsage?: boolean;
+        /**
+         * Schedule for automatic security signature updates
+         */
         autoSignatureUpdate?: outputs.site.SettingGatewayMgmtAutoSignatureUpdate;
         /**
          * Rollback timer for commit confirmed
@@ -26185,34 +26271,56 @@ export namespace site {
          * For SSR and SRX, disable usb interface
          */
         disableUsb?: boolean;
+        /**
+         * Whether FIPS mode is enabled on the gateway
+         */
         fipsEnabled?: boolean;
+        /**
+         * IPv4 probe targets used for gateway connectivity checks
+         */
         probeHosts: string[];
+        /**
+         * IPv6 probe targets used for gateway connectivity checks
+         */
         probeHostsv6s: string[];
         /**
-         * Restrict inbound-traffic to host
-         * when enabled, all traffic that is not essential to our operation will be dropped 
-         * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
+         * Control-plane protection settings for the gateway
          */
         protectRe?: outputs.site.SettingGatewayMgmtProtectRe;
         /**
-         * SRX only
+         * SRX only. Root password for local gateway access
          */
         rootPassword?: string;
+        /**
+         * IPv4 source address used for gateway security log traffic
+         */
         securityLogSourceAddress?: string;
+        /**
+         * Source interface used for gateway security log traffic
+         */
         securityLogSourceInterface: string;
     }
 
     export interface SettingGatewayMgmtAppProbing {
         /**
-         * APp-keys from List Applications
+         * Predefined application keys to probe
          */
         apps?: string[];
+        /**
+         * User-defined application probe definitions
+         */
         customApps?: outputs.site.SettingGatewayMgmtAppProbingCustomApp[];
+        /**
+         * Whether gateway application probing is enabled
+         */
         enabled?: boolean;
     }
 
     export interface SettingGatewayMgmtAppProbingCustomApp {
         address: string;
+        /**
+         * Category label used for this custom application probe
+         */
         appType?: string;
         /**
          * Only 1 entry is allowed:
@@ -26220,26 +26328,41 @@ export namespace site {
          *     * if `protocol`==`icmp`: IP Address (e.g. `1.2.3.4`)
          */
         hostnames: string[];
+        /**
+         * Stable key used to identify this custom application probe
+         */
         key: string;
+        /**
+         * Display name for this custom application probe
+         */
         name: string;
+        /**
+         * Gateway network used as the source context for this probe
+         */
         network?: string;
         /**
-         * If `protocol`==`icmp`
+         * If `protocol`==`icmp`. ICMP packet size used by this custom app probe
          */
         packetSize?: number;
         /**
-         * enum: `http`, `icmp`
+         * Probe protocol used by this custom application definition
          */
         protocol: string;
         url: string;
+        /**
+         * Gateway VRF used as the source context for this probe
+         */
         vrf?: string;
     }
 
     export interface SettingGatewayMgmtAutoSignatureUpdate {
         /**
-         * enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+         * Scheduled weekday for automatic signature updates
          */
         dayOfWeek: string;
+        /**
+         * Whether automatic security signature updates are enabled
+         */
         enable: boolean;
         /**
          * Optional, Mist will decide the timing
@@ -26252,6 +26375,9 @@ export namespace site {
          * optionally, services we'll allow. enum: `icmp`, `ssh`
          */
         allowedServices: string[];
+        /**
+         * Additional ACL entries allowed by the Protect RE policy
+         */
         customs: outputs.site.SettingGatewayMgmtProtectReCustom[];
         /**
          * When enabled, all traffic that is not essential to our operation will be dropped
@@ -26264,7 +26390,7 @@ export namespace site {
          */
         hitCount: boolean;
         /**
-         * host/subnets we'll allow traffic to/from
+         * Trusted host or subnet entries allowed by the Protect RE policy
          */
         trustedHosts: string[];
     }
@@ -26278,13 +26404,19 @@ export namespace site {
          * enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
          */
         protocol: string;
+        /**
+         * Source subnets matched by this custom Protect RE ACL
+         */
         subnets: string[];
     }
 
     export interface SettingIotproxy {
+        /**
+         * Whether the site IoT proxy is enabled
+         */
         enabled: boolean;
         /**
-         * Visionline integration settings for IoT proxy
+         * Site access-control integration settings for Visionline
          */
         visionline?: outputs.site.SettingIotproxyVisionline;
     }
@@ -26294,13 +26426,20 @@ export namespace site {
          * Access ID for the Visionline service
          */
         accessId?: string;
+        /**
+         * PEM-encoded CA certificates used to verify the Visionline collector's TLS certificate. Required when the collector uses a self-signed certificate
+         */
+        cacerts?: string[];
+        /**
+         * Whether the Visionline integration is enabled
+         */
         enabled: boolean;
         /**
-         * Hostname or IP of the Visionline collector
+         * Collector hostname or IP address for Visionline
          */
         host?: string;
         /**
-         * Password for the Visionline service
+         * Visionline service password used by the IoT proxy
          */
         password?: string;
         /**
@@ -26308,26 +26447,38 @@ export namespace site {
          */
         port: number;
         /**
-         * Username for the Visionline service
+         * Visionline service username used by the IoT proxy
          */
         username?: string;
     }
 
     export interface SettingJuniperSrx {
         /**
-         * auto_upgrade device first time it is onboarded
+         * SRX auto-upgrade settings applied when SRX devices are onboarded
          */
         autoUpgrade?: outputs.site.SettingJuniperSrxAutoUpgrade;
+        /**
+         * SRX gateways integrated with this site
+         */
         gateways?: outputs.site.SettingJuniperSrxGateway[];
+        /**
+         * Whether Mist NAC user information is sent to Juniper SRX gateways
+         */
         sendMistNacUserInfo?: boolean;
     }
 
     export interface SettingJuniperSrxAutoUpgrade {
         /**
-         * Property key is the SRX Hardware model (e.g. "SRX4600")
+         * Per-SRX-model firmware versions to deploy instead of the default version
          */
         customVersions?: {[key: string]: string};
+        /**
+         * Whether SRX auto-upgrade is enabled for newly onboarded devices
+         */
         enabled?: boolean;
+        /**
+         * Whether to take a snapshot during the SRX upgrade process
+         */
         snapshot?: boolean;
         /**
          * Firmware version to deploy (e.g. 23.4R2-S5.5). Optional, used when customVersions not specified
@@ -26336,30 +26487,322 @@ export namespace site {
     }
 
     export interface SettingJuniperSrxGateway {
+        /**
+         * Authentication key used to access the Juniper SRX gateway API
+         */
         apiKey?: string;
+        /**
+         * Authentication password used to access the Juniper SRX gateway API
+         */
         apiPassword?: string;
+        /**
+         * Base URL for the Juniper SRX gateway API
+         */
         apiUrl?: string;
     }
 
     export interface SettingLed {
+        /**
+         * Indicator LED brightness level from 0 to 255
+         */
         brightness: number;
+        /**
+         * Whether the AP indicator LED is enabled
+         */
         enabled: boolean;
     }
 
     export interface SettingMarvis {
+        /**
+         * Automatic remediation operations controlled by Marvis
+         */
         autoOperations?: outputs.site.SettingMarvisAutoOperations;
     }
 
     export interface SettingMarvisAutoOperations {
+        /**
+         * Whether Marvis may remediate AP insufficient-capacity issues automatically
+         */
         apInsufficientCapacity: boolean;
+        /**
+         * Whether Marvis may remediate AP loop issues automatically
+         */
         apLoop: boolean;
+        /**
+         * Whether Marvis may remediate AP non-compliance automatically
+         */
         apNonCompliant: boolean;
+        /**
+         * Whether Marvis may bounce switch ports for abnormal PoE clients
+         */
         bouncePortForAbnormalPoeClient: boolean;
+        /**
+         * Whether Marvis may disable a port when DDOS protocol violations are detected
+         */
         disablePortWhenDdosProtocolViolation: boolean;
+        /**
+         * Whether Marvis may disable a port when a rogue DHCP server is detected
+         */
         disablePortWhenRogueDhcpServerDetected: boolean;
+        /**
+         * Whether Marvis may remediate non-compliant gateways automatically
+         */
         gatewayNonCompliant: boolean;
+        /**
+         * Whether Marvis may remediate misconfigured switch ports automatically
+         */
         switchMisconfiguredPort: boolean;
+        /**
+         * Whether Marvis may remediate stuck switch ports automatically
+         */
         switchPortStuck: boolean;
+    }
+
+    export interface SettingMxedgeMgmt {
+        /**
+         * Whether the Mist Edge automatically reverts configuration changes if connectivity is lost
+         */
+        configAutoRevert: boolean;
+        /**
+         * Whether FIPS mode is enabled on the Mist Edge
+         */
+        fipsEnabled: boolean;
+        /**
+         * Password for the Mist service account on the Mist Edge
+         */
+        mistPassword?: string;
+        /**
+         * IPv4 address assignment mode for out-of-band management
+         */
+        oobIpType: string;
+        /**
+         * IPv6 address assignment mode for out-of-band management
+         */
+        oobIpType6: string;
+        /**
+         * Root account password for the Mist Edge
+         */
+        rootPassword?: string;
+    }
+
+    export interface SettingMxtunnels {
+        /**
+         * Additional named Mist Tunnel definitions configured for the site
+         */
+        additionalMxtunnels?: {[key: string]: outputs.site.SettingMxtunnelsAdditionalMxtunnels};
+        /**
+         * AP source subnets allowed to establish Mist Tunnels
+         */
+        apSubnets?: string[];
+        /**
+         * Preemption behavior for restoring preferred tunnel peers after failover
+         */
+        autoPreemption?: outputs.site.SettingMxtunnelsAutoPreemption;
+        /**
+         * Tunnel peer clusters used by APs for this site Mist Tunnel
+         */
+        clusters?: outputs.site.SettingMxtunnelsCluster[];
+        /**
+         * Timestamp when the site Mist Tunnel configuration was created
+         */
+        createdTime?: number;
+        /**
+         * Whether site Mist Tunnel tunneling is enabled
+         */
+        enabled?: boolean;
+        /**
+         * Whether this Mist Tunnel configuration is scoped to a site
+         */
+        forSite?: boolean;
+        /**
+         * In seconds, used as heartbeat to detect if a tunnel is alive. AP will try another peer after missing N hellos specified by hello_retries
+         */
+        helloInterval?: number;
+        /**
+         * Number of missed hello heartbeats before an AP tries another tunnel peer
+         */
+        helloRetries?: number;
+        /**
+         * Tunnel peer hostnames or IP addresses reachable from APs
+         */
+        hosts?: string[];
+        /**
+         * Unique value identifying the site Mist Tunnel configuration
+         */
+        id?: string;
+        /**
+         * Timestamp when the site Mist Tunnel configuration was last modified
+         */
+        modifiedTime?: number;
+        /**
+         * 0 to enable MTU, 552-1500 to start MTU with a lower MTU
+         */
+        mtu?: number;
+        /**
+         * Identifier of the org that owns the site Mist Tunnel configuration
+         */
+        orgId?: string;
+        /**
+         * Encapsulation protocol used for the site Mist Tunnel
+         */
+        protocol: string;
+        /**
+         * TLS-secured RADIUS proxy settings for the site Mist Tunnel
+         */
+        radsec?: outputs.site.SettingMxtunnelsRadsec;
+        /**
+         * Identifier of the site that owns this Mist Tunnel configuration
+         */
+        siteId?: string;
+        /**
+         * List of VLAN IDs carried by this site Mist Tunnel
+         */
+        vlanIds?: number[];
+    }
+
+    export interface SettingMxtunnelsAdditionalMxtunnels {
+        /**
+         * In seconds, used as heartbeat to detect if a tunnel is alive. AP will try another peer after missing N hellos specified by hello_retries
+         */
+        helloInterval: number;
+        /**
+         * Number of missed hello heartbeats before an AP tries another tunnel peer
+         */
+        helloRetries: number;
+        /**
+         * Encapsulation protocol used for this additional Mist Tunnel
+         */
+        protocol?: string;
+        /**
+         * Tunnel peer clusters used by APs for this additional Mist Tunnel
+         */
+        tuntermClusters?: outputs.site.SettingMxtunnelsAdditionalMxtunnelsTuntermCluster[];
+        /**
+         * List of VLAN IDs carried by this additional Mist Tunnel
+         */
+        vlanIds?: number[];
+    }
+
+    export interface SettingMxtunnelsAdditionalMxtunnelsTuntermCluster {
+        /**
+         * Peer cluster name used in the site Mist Tunnel configuration
+         */
+        name?: string;
+        /**
+         * Tunnel termination hostnames or IP addresses in this peer cluster
+         */
+        tuntermHosts?: string[];
+    }
+
+    export interface SettingMxtunnelsAutoPreemption {
+        /**
+         * Scheduled weekday for auto preemption
+         */
+        dayOfWeek?: string;
+        /**
+         * Whether auto preemption is enabled
+         */
+        enabled?: boolean;
+        /**
+         * Scheduled time of day for auto preemption
+         */
+        timeOfDay: string;
+    }
+
+    export interface SettingMxtunnelsCluster {
+        /**
+         * Peer cluster name used in the site Mist Tunnel configuration
+         */
+        name?: string;
+        /**
+         * Tunnel termination hostnames or IP addresses in this peer cluster
+         */
+        tuntermHosts?: string[];
+    }
+
+    export interface SettingMxtunnelsRadsec {
+        /**
+         * RADIUS accounting servers used by the site Mist Tunnel RadSec proxy
+         */
+        acctServers?: outputs.site.SettingMxtunnelsRadsecAcctServer[];
+        /**
+         * RADIUS authentication servers used by the site Mist Tunnel RadSec proxy
+         */
+        authServers?: outputs.site.SettingMxtunnelsRadsecAuthServer[];
+        /**
+         * Whether RadSec proxying is enabled for this site Mist Tunnel
+         */
+        enabled: boolean;
+        /**
+         * Whether RadSec proxying uses Mist Edge
+         */
+        useMxedge?: boolean;
+    }
+
+    export interface SettingMxtunnelsRadsecAcctServer {
+        /**
+         * Address or hostname of the RADIUS accounting server
+         */
+        host: string;
+        /**
+         * Whether RADIUS keywrap is enabled for messages sent to this accounting server
+         */
+        keywrapEnabled?: boolean;
+        /**
+         * Encoding format for RADIUS keywrap KEK and MACK values
+         */
+        keywrapFormat?: string;
+        /**
+         * RADIUS keywrap key encryption key (KEK)
+         */
+        keywrapKek?: string;
+        /**
+         * RADIUS keywrap message authentication code key (MACK)
+         */
+        keywrapMack?: string;
+        /**
+         * UDP port used by the RADIUS accounting server
+         */
+        port?: string;
+        /**
+         * Shared secret used with this RADIUS accounting server
+         */
+        secret: string;
+    }
+
+    export interface SettingMxtunnelsRadsecAuthServer {
+        /**
+         * Address or hostname of the RADIUS authentication server
+         */
+        host: string;
+        /**
+         * Whether RADIUS keywrap is enabled for messages sent to this authentication server
+         */
+        keywrapEnabled?: boolean;
+        /**
+         * Encoding format for RADIUS keywrap KEK and MACK values
+         */
+        keywrapFormat?: string;
+        /**
+         * RADIUS keywrap key encryption key (KEK)
+         */
+        keywrapKek?: string;
+        /**
+         * RADIUS keywrap message authentication code key (MACK)
+         */
+        keywrapMack?: string;
+        /**
+         * UDP port used by the RADIUS authentication server
+         */
+        port?: string;
+        /**
+         * Whether to require Message-Authenticator in requests
+         */
+        requireMessageAuthenticator: boolean;
+        /**
+         * Shared secret used with this RADIUS authentication server
+         */
+        secret: string;
     }
 
     export interface SettingOccupancy {
@@ -26372,7 +26815,7 @@ export namespace site {
          */
         clientsEnabled: boolean;
         /**
-         * Minimum duration
+         * Minimum dwell duration before a client or asset is counted in occupancy analytics
          */
         minDuration?: number;
         /**
@@ -26386,13 +26829,19 @@ export namespace site {
     }
 
     export interface SettingProxy {
+        /**
+         * Whether this proxy configuration is disabled
+         */
         disabled: boolean;
+        /**
+         * Proxy URL used to reach Mist
+         */
         url?: string;
     }
 
     export interface SettingRogue {
         /**
-         * list of VLAN IDs on which rogue APs are ignored
+         * VLAN IDs allowed by the rogue detection policy
          */
         allowedVlanIds: number[];
         /**
@@ -26420,78 +26869,120 @@ export namespace site {
          */
         minRssi: number;
         /**
-         * list of BSSIDs to whitelist. Ex: "cc-:8e-:6f-:d4-:bf-:16", "cc-8e-6f-d4-bf-16", "cc-73-*", "cc:82:*"
+         * BSSID values or wildcard patterns excluded from rogue detection
          */
         whitelistedBssids: string[];
         /**
-         * List of SSIDs to whitelist
+         * SSID names excluded from rogue detection
          */
         whitelistedSsids: string[];
     }
 
     export interface SettingRtsa {
+        /**
+         * Whether app wake-up support is enabled for managed mobility
+         */
         appWaking: boolean;
+        /**
+         * Whether dead reckoning is disabled for managed mobility
+         */
         disableDeadReckoning?: boolean;
+        /**
+         * Whether pressure sensor use is disabled for managed mobility
+         */
         disablePressureSensor?: boolean;
+        /**
+         * Whether managed mobility features are enabled
+         */
         enabled?: boolean;
         /**
-         * Asset tracking related
+         * Whether BLE asset tracking is enabled for managed mobility
          */
         trackAsset: boolean;
     }
 
     export interface SettingSimpleAlert {
+        /**
+         * Thresholds for ARP failure heuristic alerts
+         */
         arpFailure?: outputs.site.SettingSimpleAlertArpFailure;
+        /**
+         * Thresholds for DHCP failure heuristic alerts
+         */
         dhcpFailure?: outputs.site.SettingSimpleAlertDhcpFailure;
+        /**
+         * Thresholds for DNS failure heuristic alerts
+         */
         dnsFailure?: outputs.site.SettingSimpleAlertDnsFailure;
     }
 
     export interface SettingSimpleAlertArpFailure {
+        /**
+         * Number of distinct clients that must encounter ARP failures before alerting
+         */
         clientCount: number;
         /**
-         * failing within minutes
+         * Time window in minutes for evaluating ARP failures
          */
         duration: number;
+        /**
+         * Number of ARP failure incidents required within the duration window
+         */
         incidentCount: number;
     }
 
     export interface SettingSimpleAlertDhcpFailure {
+        /**
+         * Number of distinct clients that must encounter DHCP failures before alerting
+         */
         clientCount: number;
         /**
-         * failing within minutes
+         * Time window in minutes for evaluating DHCP failures
          */
         duration: number;
+        /**
+         * Number of DHCP failure incidents required within the duration window
+         */
         incidentCount: number;
     }
 
     export interface SettingSimpleAlertDnsFailure {
+        /**
+         * Number of distinct clients that must encounter DNS failures before alerting
+         */
         clientCount: number;
         /**
-         * failing within minutes
+         * Time window in minutes for evaluating DNS failures
          */
         duration: number;
+        /**
+         * Number of DNS failure incidents required within the duration window
+         */
         incidentCount: number;
     }
 
     export interface SettingSkyatp {
+        /**
+         * Whether Sky ATP is enabled for the site
+         */
         enabled?: boolean;
         /**
-         * Whether to send IP-MAC mapping to SkyATP
+         * Whether IP-to-MAC mappings are sent to Sky ATP
          */
         sendIpMacMapping: boolean;
     }
 
     export interface SettingSleThresholds {
         /**
-         * Capacity, in %
+         * Threshold percentage for capacity SLE scoring
          */
         capacity: number;
         /**
-         * Coverage, in dBm
+         * RSSI threshold for coverage SLE scoring, in dBm
          */
         coverage: number;
         /**
-         * Throughput, in Mbps
+         * Minimum throughput threshold for SLE scoring, in Mbps
          */
         throughput: number;
         /**
@@ -26501,41 +26992,47 @@ export namespace site {
     }
 
     export interface SettingSrxApp {
+        /**
+         * Whether Juniper SRX application visibility is enabled
+         */
         enabled: boolean;
     }
 
     export interface SettingSsr {
         /**
-         * auto_upgrade device first time it is onboarded
+         * Automatic SSR firmware upgrade settings for newly onboarded devices
          */
         autoUpgrade?: outputs.site.SettingSsrAutoUpgrade;
         /**
-         * List of Conductor IP Addresses or Hosts to be used by the SSR Devices
+         * IP addresses or hostnames of conductors used by SSR devices
          */
         conductorHosts?: string[];
         /**
-         * Token to be used by the SSR Devices to connect to the Conductor
+         * Registration token used by SSR devices to connect to the conductor
          */
         conductorToken?: string;
         /**
-         * Disable stats collection on SSR devices
+         * Whether stats collection is disabled on SSR devices
          */
         disableStats?: boolean;
         /**
-         * SSR proxy configuration to talk to Mist
+         * Network proxy settings used by SSR devices to reach Mist
          */
         proxy?: outputs.site.SettingSsrProxy;
     }
 
     export interface SettingSsrAutoUpgrade {
         /**
-         * upgrade channel to follow. enum: `alpha`, `beta`, `stable`
+         * Firmware release channel used for SSR auto-upgrade
          */
         channel?: string;
         /**
-         * Property key is the SSR model (e.g. "SSR130").
+         * Per-model SSR firmware versions used for auto-upgrade
          */
         customVersions?: {[key: string]: string};
+        /**
+         * Whether SSR auto-upgrade is enabled for newly onboarded devices
+         */
         enabled?: boolean;
         /**
          * Firmware version to deploy (e.g. 6.3.0-107.r1). Optional, used when customVersions not specified
@@ -26544,34 +27041,48 @@ export namespace site {
     }
 
     export interface SettingSsrProxy {
+        /**
+         * Whether the SSR proxy configuration is disabled
+         */
         disabled: boolean;
+        /**
+         * Proxy URL that SSR devices use to reach Mist
+         */
         url?: string;
     }
 
     export interface SettingSyntheticTest {
         /**
-         * enum: `auto`, `high`, `low`
+         * Overall aggressiveness level for synthetic test probes
          */
         aggressiveness?: string;
         /**
-         * Custom probes to be used for synthetic tests
+         * Custom synthetic probe definitions keyed by probe name
          */
         customProbes?: {[key: string]: outputs.site.SettingSyntheticTestCustomProbes};
+        /**
+         * Whether synthetic tests are disabled
+         */
         disabled?: boolean;
         /**
-         * List of networks to be used for synthetic tests
+         * LAN network probe groups used by synthetic tests
          */
         lanNetworks?: outputs.site.SettingSyntheticTestLanNetwork[];
         /**
+         * Deprecated VLAN-based synthetic test settings
+         *
          * @deprecated This attribute is deprecated.
          */
         vlans?: outputs.site.SettingSyntheticTestVlan[];
+        /**
+         * WAN speedtest settings for synthetic tests
+         */
         wanSpeedtest?: outputs.site.SettingSyntheticTestWanSpeedtest;
     }
 
     export interface SettingSyntheticTestCustomProbes {
         /**
-         * enum: `auto`, `high`, `low`
+         * Probe aggressiveness level for this custom synthetic probe
          */
         aggressiveness: string;
         /**
@@ -26579,28 +27090,30 @@ export namespace site {
          */
         target?: string;
         /**
-         * In milliseconds
+         * Response-time threshold for this custom probe, in milliseconds
          */
         threshold?: number;
         /**
-         * enum: `application`, `curl`, `icmp`, `reachability`, `tcp`
+         * Probe type used by this custom synthetic probe
          */
         type: string;
     }
 
     export interface SettingSyntheticTestLanNetwork {
         /**
-         * List of networks to be used for synthetic tests
+         * LAN network names where synthetic probes are run
          */
         networks?: string[];
         /**
-         * app name comes from `customProbes` above or /const/synthetic_test_probes
+         * Synthetic probe names to run on the listed LAN networks
          */
         probes?: string[];
     }
 
     export interface SettingSyntheticTestVlan {
         /**
+         * Deprecated custom URLs tested by VLAN-based synthetic probes
+         *
          * @deprecated This attribute is deprecated.
          */
         customTestUrls?: string[];
@@ -26609,18 +27122,84 @@ export namespace site {
          */
         disabled: boolean;
         /**
-         * app name comes from `customProbes` above or /const/synthetic_test_probes
+         * Synthetic probe names to run for the listed VLANs
          */
         probes?: string[];
+        /**
+         * VLAN identifiers where synthetic probes are run
+         */
         vlanIds?: string[];
     }
 
     export interface SettingSyntheticTestWanSpeedtest {
+        /**
+         * Whether scheduled WAN speedtests are enabled
+         */
         enabled?: boolean;
         /**
-         * `any` / HH:MM (24-hour format)
+         * Scheduled time of day for WAN speedtests
          */
         timeOfDay: string;
+    }
+
+    export interface SettingTuntermMonitoring {
+        /**
+         * Can be ip, ipv6, hostname
+         */
+        host?: string;
+        /**
+         * When `protocol`==`tcp`, TCP port checked by the monitoring probe
+         */
+        port?: number;
+        /**
+         * Monitoring method used for this tunnel termination check
+         */
+        protocol?: string;
+        /**
+         * Optional source for the monitoring check, vlanId configured in tunterm_other_ip_configs
+         */
+        srcVlanId?: number;
+        /**
+         * Maximum time for this monitoring check, in seconds
+         */
+        timeout?: number;
+    }
+
+    export interface SettingTuntermMulticastConfig {
+        /**
+         * Multicast DNS forwarding settings for tunneled VLANs
+         */
+        mdns?: outputs.site.SettingTuntermMulticastConfigMdns;
+        /**
+         * Whether all multicast traffic is forwarded through tunnel termination
+         */
+        multicastAll?: boolean;
+        /**
+         * Simple Service Discovery Protocol forwarding settings for tunneled VLANs
+         */
+        ssdp?: outputs.site.SettingTuntermMulticastConfigSsdp;
+    }
+
+    export interface SettingTuntermMulticastConfigMdns {
+        /**
+         * Whether mDNS multicast forwarding is enabled
+         */
+        enabled?: boolean;
+        /**
+         * VLAN IDs where mDNS multicast forwarding is enabled
+         */
+        vlanIds?: number[];
+    }
+
+    export interface SettingTuntermMulticastConfigSsdp {
+        /**
+         * Whether SSDP multicast forwarding is enabled
+         */
+        enabled?: boolean;
+        /**
+         * VLAN IDs where SSDP multicast forwarding is enabled
+         */
+        vlanIds?: number[];
     }
 
     export interface SettingUplinkPortConfig {
@@ -26655,14 +27234,23 @@ export namespace site {
     }
 
     export interface SettingVsInstance {
+        /**
+         * List of network names included in this virtual-switch instance
+         */
         networks: string[];
     }
 
     export interface SettingWanVna {
+        /**
+         * Whether WAN VNA is enabled for the site
+         */
         enabled: boolean;
     }
 
     export interface SettingWids {
+        /**
+         * Detection settings for repeated authentication failures
+         */
         repeatedAuthFailures?: outputs.site.SettingWidsRepeatedAuthFailures;
     }
 
@@ -26678,16 +27266,25 @@ export namespace site {
     }
 
     export interface SettingWifi {
+        /**
+         * Whether Cisco compatibility features are enabled for site Wi-Fi
+         */
         ciscoEnabled?: boolean;
         /**
          * Whether to disable 11k
          */
         disable11k?: boolean;
+        /**
+         * Whether AP radios are disabled when AP power is constrained
+         */
         disableRadiosWhenPowerConstrained?: boolean;
         /**
          * When proxyArp is enabled, check for arp spoofing.
          */
         enableArpSpoofCheck?: boolean;
+        /**
+         * Whether shared radio scanning is enabled for site Wi-Fi
+         */
         enableSharedRadioScanning?: boolean;
         /**
          * Enable Wi-Fi feature (using SUB-MAN license)
@@ -26722,18 +27319,21 @@ export namespace site {
          */
         meshSsid?: string;
         /**
-         * enum: `default`, `disabled`, `enabled`
+         * ARP proxy mode for site Wi-Fi
          */
         proxyArp?: string;
     }
 
     export interface SettingWiredVna {
+        /**
+         * Whether Wired VNA is enabled for the site
+         */
         enabled: boolean;
     }
 
     export interface SettingZoneOccupancyAlert {
         /**
-         * List of email addresses to send email notifications when the alert threshold is reached
+         * Notification email recipients for zone occupancy alerts
          */
         emailNotifiers: string[];
         /**

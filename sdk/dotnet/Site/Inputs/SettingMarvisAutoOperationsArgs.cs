@@ -12,30 +12,57 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class SettingMarvisAutoOperationsArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether Marvis may remediate AP insufficient-capacity issues automatically
+        /// </summary>
         [Input("apInsufficientCapacity")]
         public Input<bool>? ApInsufficientCapacity { get; set; }
 
+        /// <summary>
+        /// Whether Marvis may remediate AP loop issues automatically
+        /// </summary>
         [Input("apLoop")]
         public Input<bool>? ApLoop { get; set; }
 
+        /// <summary>
+        /// Whether Marvis may remediate AP non-compliance automatically
+        /// </summary>
         [Input("apNonCompliant")]
         public Input<bool>? ApNonCompliant { get; set; }
 
+        /// <summary>
+        /// Whether Marvis may bounce switch ports for abnormal PoE clients
+        /// </summary>
         [Input("bouncePortForAbnormalPoeClient")]
         public Input<bool>? BouncePortForAbnormalPoeClient { get; set; }
 
+        /// <summary>
+        /// Whether Marvis may disable a port when DDOS protocol violations are detected
+        /// </summary>
         [Input("disablePortWhenDdosProtocolViolation")]
         public Input<bool>? DisablePortWhenDdosProtocolViolation { get; set; }
 
+        /// <summary>
+        /// Whether Marvis may disable a port when a rogue DHCP server is detected
+        /// </summary>
         [Input("disablePortWhenRogueDhcpServerDetected")]
         public Input<bool>? DisablePortWhenRogueDhcpServerDetected { get; set; }
 
+        /// <summary>
+        /// Whether Marvis may remediate non-compliant gateways automatically
+        /// </summary>
         [Input("gatewayNonCompliant")]
         public Input<bool>? GatewayNonCompliant { get; set; }
 
+        /// <summary>
+        /// Whether Marvis may remediate misconfigured switch ports automatically
+        /// </summary>
         [Input("switchMisconfiguredPort")]
         public Input<bool>? SwitchMisconfiguredPort { get; set; }
 
+        /// <summary>
+        /// Whether Marvis may remediate stuck switch ports automatically
+        /// </summary>
         [Input("switchPortStuck")]
         public Input<bool>? SwitchPortStuck { get; set; }
 

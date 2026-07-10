@@ -13,9 +13,12 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class SettingConfigPushPolicyPushWindow
     {
+        /// <summary>
+        /// Whether configuration pushes are limited to the configured push window
+        /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+        /// Day-of-week hour ranges when configuration pushes are allowed
         /// </summary>
         public readonly Outputs.SettingConfigPushPolicyPushWindowHours? Hours;
 

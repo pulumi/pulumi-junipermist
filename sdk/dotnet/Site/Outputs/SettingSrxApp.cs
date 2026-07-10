@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class SettingSrxApp
     {
+        /// <summary>
+        /// Whether Juniper SRX application visibility is enabled
+        /// </summary>
         public readonly bool? Enabled;
 
         [OutputConstructor]

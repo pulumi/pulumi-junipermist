@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class SettingMarvis
     {
+        /// <summary>
+        /// Automatic remediation operations controlled by Marvis
+        /// </summary>
         public readonly Outputs.SettingMarvisAutoOperations? AutoOperations;
 
         [OutputConstructor]

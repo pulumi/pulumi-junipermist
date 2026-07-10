@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class SettingSrxAppArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether Juniper SRX application visibility is enabled
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

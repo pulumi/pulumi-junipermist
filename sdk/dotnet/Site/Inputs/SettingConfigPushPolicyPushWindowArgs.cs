@@ -12,11 +12,14 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class SettingConfigPushPolicyPushWindowArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether configuration pushes are limited to the configured push window
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+        /// Day-of-week hour ranges when configuration pushes are allowed
         /// </summary>
         [Input("hours")]
         public Input<Inputs.SettingConfigPushPolicyPushWindowHoursArgs>? Hours { get; set; }

@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputMap<string>? _customVersions;
 
         /// <summary>
-        /// Property key is the SRX Hardware model (e.g. "SRX4600")
+        /// Per-SRX-model firmware versions to deploy instead of the default version
         /// </summary>
         public InputMap<string> CustomVersions
         {
@@ -24,9 +24,15 @@ namespace Pulumi.JuniperMist.Site.Inputs
             set => _customVersions = value;
         }
 
+        /// <summary>
+        /// Whether SRX auto-upgrade is enabled for newly onboarded devices
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// Whether to take a snapshot during the SRX upgrade process
+        /// </summary>
         [Input("snapshot")]
         public Input<bool>? Snapshot { get; set; }
 

@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputList<string>? _apps;
 
         /// <summary>
-        /// APp-keys from List Applications
+        /// Predefined application keys to probe
         /// </summary>
         public InputList<string> Apps
         {
@@ -26,12 +26,19 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
         [Input("customApps")]
         private InputList<Inputs.SettingGatewayMgmtAppProbingCustomAppArgs>? _customApps;
+
+        /// <summary>
+        /// User-defined application probe definitions
+        /// </summary>
         public InputList<Inputs.SettingGatewayMgmtAppProbingCustomAppArgs> CustomApps
         {
             get => _customApps ?? (_customApps = new InputList<Inputs.SettingGatewayMgmtAppProbingCustomAppArgs>());
             set => _customApps = value;
         }
 
+        /// <summary>
+        /// Whether gateway application probing is enabled
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

@@ -18,7 +18,7 @@ public final class SettingConfigPushPolicy {
      */
     private @Nullable Boolean noPush;
     /**
-     * @return If enabled, new config will only be pushed to device within the specified time window
+     * @return Allowed time window during which configuration pushes may run
      * 
      */
     private @Nullable SettingConfigPushPolicyPushWindow pushWindow;
@@ -32,7 +32,7 @@ public final class SettingConfigPushPolicy {
         return Optional.ofNullable(this.noPush);
     }
     /**
-     * @return If enabled, new config will only be pushed to device within the specified time window
+     * @return Allowed time window during which configuration pushes may run
      * 
      */
     public Optional<SettingConfigPushPolicyPushWindow> pushWindow() {

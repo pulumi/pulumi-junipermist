@@ -14,10 +14,16 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class SettingJuniperSrx
     {
         /// <summary>
-        /// auto_upgrade device first time it is onboarded
+        /// SRX auto-upgrade settings applied when SRX devices are onboarded
         /// </summary>
         public readonly Outputs.SettingJuniperSrxAutoUpgrade? AutoUpgrade;
+        /// <summary>
+        /// SRX gateways integrated with this site
+        /// </summary>
         public readonly ImmutableArray<Outputs.SettingJuniperSrxGateway> Gateways;
+        /// <summary>
+        /// Whether Mist NAC user information is sent to Juniper SRX gateways
+        /// </summary>
         public readonly bool? SendMistNacUserInfo;
 
         [OutputConstructor]

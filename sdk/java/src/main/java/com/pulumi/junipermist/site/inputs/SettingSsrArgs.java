@@ -20,14 +20,14 @@ public final class SettingSsrArgs extends com.pulumi.resources.ResourceArgs {
     public static final SettingSsrArgs Empty = new SettingSsrArgs();
 
     /**
-     * auto_upgrade device first time it is onboarded
+     * Automatic SSR firmware upgrade settings for newly onboarded devices
      * 
      */
     @Import(name="autoUpgrade")
     private @Nullable Output<SettingSsrAutoUpgradeArgs> autoUpgrade;
 
     /**
-     * @return auto_upgrade device first time it is onboarded
+     * @return Automatic SSR firmware upgrade settings for newly onboarded devices
      * 
      */
     public Optional<Output<SettingSsrAutoUpgradeArgs>> autoUpgrade() {
@@ -35,14 +35,14 @@ public final class SettingSsrArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of Conductor IP Addresses or Hosts to be used by the SSR Devices
+     * IP addresses or hostnames of conductors used by SSR devices
      * 
      */
     @Import(name="conductorHosts")
     private @Nullable Output<List<String>> conductorHosts;
 
     /**
-     * @return List of Conductor IP Addresses or Hosts to be used by the SSR Devices
+     * @return IP addresses or hostnames of conductors used by SSR devices
      * 
      */
     public Optional<Output<List<String>>> conductorHosts() {
@@ -50,14 +50,14 @@ public final class SettingSsrArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Token to be used by the SSR Devices to connect to the Conductor
+     * Registration token used by SSR devices to connect to the conductor
      * 
      */
     @Import(name="conductorToken")
     private @Nullable Output<String> conductorToken;
 
     /**
-     * @return Token to be used by the SSR Devices to connect to the Conductor
+     * @return Registration token used by SSR devices to connect to the conductor
      * 
      */
     public Optional<Output<String>> conductorToken() {
@@ -65,14 +65,14 @@ public final class SettingSsrArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Disable stats collection on SSR devices
+     * Whether stats collection is disabled on SSR devices
      * 
      */
     @Import(name="disableStats")
     private @Nullable Output<Boolean> disableStats;
 
     /**
-     * @return Disable stats collection on SSR devices
+     * @return Whether stats collection is disabled on SSR devices
      * 
      */
     public Optional<Output<Boolean>> disableStats() {
@@ -80,14 +80,14 @@ public final class SettingSsrArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * SSR proxy configuration to talk to Mist
+     * Network proxy settings used by SSR devices to reach Mist
      * 
      */
     @Import(name="proxy")
     private @Nullable Output<SettingSsrProxyArgs> proxy;
 
     /**
-     * @return SSR proxy configuration to talk to Mist
+     * @return Network proxy settings used by SSR devices to reach Mist
      * 
      */
     public Optional<Output<SettingSsrProxyArgs>> proxy() {
@@ -123,7 +123,7 @@ public final class SettingSsrArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoUpgrade auto_upgrade device first time it is onboarded
+         * @param autoUpgrade Automatic SSR firmware upgrade settings for newly onboarded devices
          * 
          * @return builder
          * 
@@ -134,7 +134,7 @@ public final class SettingSsrArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoUpgrade auto_upgrade device first time it is onboarded
+         * @param autoUpgrade Automatic SSR firmware upgrade settings for newly onboarded devices
          * 
          * @return builder
          * 
@@ -144,7 +144,7 @@ public final class SettingSsrArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param conductorHosts List of Conductor IP Addresses or Hosts to be used by the SSR Devices
+         * @param conductorHosts IP addresses or hostnames of conductors used by SSR devices
          * 
          * @return builder
          * 
@@ -155,7 +155,7 @@ public final class SettingSsrArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param conductorHosts List of Conductor IP Addresses or Hosts to be used by the SSR Devices
+         * @param conductorHosts IP addresses or hostnames of conductors used by SSR devices
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class SettingSsrArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param conductorHosts List of Conductor IP Addresses or Hosts to be used by the SSR Devices
+         * @param conductorHosts IP addresses or hostnames of conductors used by SSR devices
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class SettingSsrArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param conductorToken Token to be used by the SSR Devices to connect to the Conductor
+         * @param conductorToken Registration token used by SSR devices to connect to the conductor
          * 
          * @return builder
          * 
@@ -186,7 +186,7 @@ public final class SettingSsrArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param conductorToken Token to be used by the SSR Devices to connect to the Conductor
+         * @param conductorToken Registration token used by SSR devices to connect to the conductor
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class SettingSsrArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disableStats Disable stats collection on SSR devices
+         * @param disableStats Whether stats collection is disabled on SSR devices
          * 
          * @return builder
          * 
@@ -207,7 +207,7 @@ public final class SettingSsrArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disableStats Disable stats collection on SSR devices
+         * @param disableStats Whether stats collection is disabled on SSR devices
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class SettingSsrArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxy SSR proxy configuration to talk to Mist
+         * @param proxy Network proxy settings used by SSR devices to reach Mist
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class SettingSsrArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxy SSR proxy configuration to talk to Mist
+         * @param proxy Network proxy settings used by SSR devices to reach Mist
          * 
          * @return builder
          * 

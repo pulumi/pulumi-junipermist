@@ -23,7 +23,7 @@ public final class SettingOccupancy {
      */
     private @Nullable Boolean clientsEnabled;
     /**
-     * @return Minimum duration
+     * @return Minimum dwell duration before a client or asset is counted in occupancy analytics
      * 
      */
     private @Nullable Integer minDuration;
@@ -54,7 +54,7 @@ public final class SettingOccupancy {
         return Optional.ofNullable(this.clientsEnabled);
     }
     /**
-     * @return Minimum duration
+     * @return Minimum dwell duration before a client or asset is counted in occupancy analytics
      * 
      */
     public Optional<Integer> minDuration() {

@@ -22,11 +22,11 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly int? BeaconRate;
         /// <summary>
-        /// enum: `Custom`, `Default`
+        /// Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate
         /// </summary>
         public readonly string? BeaconRateMode;
         /// <summary>
-        /// List of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
+        /// AP BLE beam numbers disabled for location advertisements
         /// </summary>
         public readonly ImmutableArray<int> BeamDisableds;
         /// <summary>
@@ -45,6 +45,9 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
         /// </summary>
         public readonly int? EddystoneUidAdvPower;
+        /// <summary>
+        /// BLE beams used to transmit Eddystone-UID advertisements, expressed as ranges such as `2-4,7`
+        /// </summary>
         public readonly string? EddystoneUidBeams;
         /// <summary>
         /// Only if `BeaconEnabled`==`False`, Whether Eddystone-UID beacon is enabled
@@ -59,20 +62,23 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? EddystoneUidInstance;
         /// <summary>
-        /// Eddystone-UID namespace
+        /// Eddystone-UID namespace broadcast by the AP, as a 10-byte hex string
         /// </summary>
         public readonly string? EddystoneUidNamespace;
         /// <summary>
         /// Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
         /// </summary>
         public readonly int? EddystoneUrlAdvPower;
+        /// <summary>
+        /// BLE beams used to transmit Eddystone-URL advertisements, expressed as ranges such as `2-4,7`
+        /// </summary>
         public readonly string? EddystoneUrlBeams;
         /// <summary>
         /// Only if `BeaconEnabled`==`False`, Whether Eddystone-URL beacon is enabled
         /// </summary>
         public readonly bool? EddystoneUrlEnabled;
         /// <summary>
-        /// Frequency (msec) of data emit by Eddystone-UID beacon
+        /// Frequency (msec) of data emitted by Eddystone-URL beacon
         /// </summary>
         public readonly int? EddystoneUrlFreqMsec;
         /// <summary>
@@ -83,6 +89,9 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
         /// </summary>
         public readonly int? IbeaconAdvPower;
+        /// <summary>
+        /// BLE beams used to transmit iBeacon advertisements, expressed as ranges such as `2-4,7`
+        /// </summary>
         public readonly string? IbeaconBeams;
         /// <summary>
         /// Can be enabled if `BeaconEnabled`==`True`, whether to send iBeacon
@@ -93,11 +102,11 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly int? IbeaconFreqMsec;
         /// <summary>
-        /// Major number for iBeacon
+        /// iBeacon major value broadcast by the AP
         /// </summary>
         public readonly int? IbeaconMajor;
         /// <summary>
-        /// Minor number for iBeacon
+        /// iBeacon minor value broadcast by the AP
         /// </summary>
         public readonly int? IbeaconMinor;
         /// <summary>
@@ -109,7 +118,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly int? Power;
         /// <summary>
-        /// enum: `Custom`, `Default`
+        /// Transmit power mode for BLE beacons; use custom to set `Power`
         /// </summary>
         public readonly string? PowerMode;
 

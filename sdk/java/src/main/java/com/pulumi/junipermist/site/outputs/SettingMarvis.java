@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingMarvis {
+    /**
+     * @return Automatic remediation operations controlled by Marvis
+     * 
+     */
     private @Nullable SettingMarvisAutoOperations autoOperations;
 
     private SettingMarvis() {}
+    /**
+     * @return Automatic remediation operations controlled by Marvis
+     * 
+     */
     public Optional<SettingMarvisAutoOperations> autoOperations() {
         return Optional.ofNullable(this.autoOperations);
     }

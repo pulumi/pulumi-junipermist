@@ -18,30 +18,46 @@ public final class SettingJuniperSrxAutoUpgradeArgs extends com.pulumi.resources
     public static final SettingJuniperSrxAutoUpgradeArgs Empty = new SettingJuniperSrxAutoUpgradeArgs();
 
     /**
-     * Property key is the SRX Hardware model (e.g. &#34;SRX4600&#34;)
+     * Per-SRX-model firmware versions to deploy instead of the default version
      * 
      */
     @Import(name="customVersions")
     private @Nullable Output<Map<String,String>> customVersions;
 
     /**
-     * @return Property key is the SRX Hardware model (e.g. &#34;SRX4600&#34;)
+     * @return Per-SRX-model firmware versions to deploy instead of the default version
      * 
      */
     public Optional<Output<Map<String,String>>> customVersions() {
         return Optional.ofNullable(this.customVersions);
     }
 
+    /**
+     * Whether SRX auto-upgrade is enabled for newly onboarded devices
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether SRX auto-upgrade is enabled for newly onboarded devices
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * Whether to take a snapshot during the SRX upgrade process
+     * 
+     */
     @Import(name="snapshot")
     private @Nullable Output<Boolean> snapshot;
 
+    /**
+     * @return Whether to take a snapshot during the SRX upgrade process
+     * 
+     */
     public Optional<Output<Boolean>> snapshot() {
         return Optional.ofNullable(this.snapshot);
     }
@@ -89,7 +105,7 @@ public final class SettingJuniperSrxAutoUpgradeArgs extends com.pulumi.resources
         }
 
         /**
-         * @param customVersions Property key is the SRX Hardware model (e.g. &#34;SRX4600&#34;)
+         * @param customVersions Per-SRX-model firmware versions to deploy instead of the default version
          * 
          * @return builder
          * 
@@ -100,7 +116,7 @@ public final class SettingJuniperSrxAutoUpgradeArgs extends com.pulumi.resources
         }
 
         /**
-         * @param customVersions Property key is the SRX Hardware model (e.g. &#34;SRX4600&#34;)
+         * @param customVersions Per-SRX-model firmware versions to deploy instead of the default version
          * 
          * @return builder
          * 
@@ -109,20 +125,44 @@ public final class SettingJuniperSrxAutoUpgradeArgs extends com.pulumi.resources
             return customVersions(Output.of(customVersions));
         }
 
+        /**
+         * @param enabled Whether SRX auto-upgrade is enabled for newly onboarded devices
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether SRX auto-upgrade is enabled for newly onboarded devices
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param snapshot Whether to take a snapshot during the SRX upgrade process
+         * 
+         * @return builder
+         * 
+         */
         public Builder snapshot(@Nullable Output<Boolean> snapshot) {
             $.snapshot = snapshot;
             return this;
         }
 
+        /**
+         * @param snapshot Whether to take a snapshot during the SRX upgrade process
+         * 
+         * @return builder
+         * 
+         */
         public Builder snapshot(Boolean snapshot) {
             return snapshot(Output.of(snapshot));
         }

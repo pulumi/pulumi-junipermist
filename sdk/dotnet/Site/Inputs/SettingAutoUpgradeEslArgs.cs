@@ -31,7 +31,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// enum: `Any`, `Fri`, `Mon`, `Sat`, `Sun`, `Thu`, `Tue`, `Wed`
+        /// Weekly ESL auto-upgrade day for the maintenance window
         /// </summary>
         [Input("dayOfWeek")]
         public Input<string>? DayOfWeek { get; set; }
@@ -48,6 +48,9 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("timeOfDay")]
         public Input<string>? TimeOfDay { get; set; }
 
+        /// <summary>
+        /// ESL firmware version used for auto-upgrade
+        /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 

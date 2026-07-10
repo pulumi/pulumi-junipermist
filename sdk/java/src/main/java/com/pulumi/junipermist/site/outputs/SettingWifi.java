@@ -12,18 +12,30 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingWifi {
+    /**
+     * @return Whether Cisco compatibility features are enabled for site Wi-Fi
+     * 
+     */
     private @Nullable Boolean ciscoEnabled;
     /**
      * @return Whether to disable 11k
      * 
      */
     private @Nullable Boolean disable11k;
+    /**
+     * @return Whether AP radios are disabled when AP power is constrained
+     * 
+     */
     private @Nullable Boolean disableRadiosWhenPowerConstrained;
     /**
      * @return When proxyArp is enabled, check for arp spoofing.
      * 
      */
     private @Nullable Boolean enableArpSpoofCheck;
+    /**
+     * @return Whether shared radio scanning is enabled for site Wi-Fi
+     * 
+     */
     private @Nullable Boolean enableSharedRadioScanning;
     /**
      * @return Enable Wi-Fi feature (using SUB-MAN license)
@@ -66,12 +78,16 @@ public final class SettingWifi {
      */
     private @Nullable String meshSsid;
     /**
-     * @return enum: `default`, `disabled`, `enabled`
+     * @return ARP proxy mode for site Wi-Fi
      * 
      */
     private @Nullable String proxyArp;
 
     private SettingWifi() {}
+    /**
+     * @return Whether Cisco compatibility features are enabled for site Wi-Fi
+     * 
+     */
     public Optional<Boolean> ciscoEnabled() {
         return Optional.ofNullable(this.ciscoEnabled);
     }
@@ -82,6 +98,10 @@ public final class SettingWifi {
     public Optional<Boolean> disable11k() {
         return Optional.ofNullable(this.disable11k);
     }
+    /**
+     * @return Whether AP radios are disabled when AP power is constrained
+     * 
+     */
     public Optional<Boolean> disableRadiosWhenPowerConstrained() {
         return Optional.ofNullable(this.disableRadiosWhenPowerConstrained);
     }
@@ -92,6 +112,10 @@ public final class SettingWifi {
     public Optional<Boolean> enableArpSpoofCheck() {
         return Optional.ofNullable(this.enableArpSpoofCheck);
     }
+    /**
+     * @return Whether shared radio scanning is enabled for site Wi-Fi
+     * 
+     */
     public Optional<Boolean> enableSharedRadioScanning() {
         return Optional.ofNullable(this.enableSharedRadioScanning);
     }
@@ -152,7 +176,7 @@ public final class SettingWifi {
         return Optional.ofNullable(this.meshSsid);
     }
     /**
-     * @return enum: `default`, `disabled`, `enabled`
+     * @return ARP proxy mode for site Wi-Fi
      * 
      */
     public Optional<String> proxyArp() {

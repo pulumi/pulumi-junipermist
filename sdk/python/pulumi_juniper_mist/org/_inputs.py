@@ -611,6 +611,12 @@ __all__ = [
     'MxedgeTuntermSwitchConfigArgsDict',
     'MxedgeVersionsArgs',
     'MxedgeVersionsArgsDict',
+    'MxtunnelAutoPreemptionArgs',
+    'MxtunnelAutoPreemptionArgsDict',
+    'MxtunnelIpsecArgs',
+    'MxtunnelIpsecArgsDict',
+    'MxtunnelIpsecExtraRouteArgs',
+    'MxtunnelIpsecExtraRouteArgsDict',
     'NacPortalPortalArgs',
     'NacPortalPortalArgsDict',
     'NacPortalSsoArgs',
@@ -35992,6 +35998,253 @@ class MxedgeVersionsArgs:
     @tunterm.setter
     def tunterm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tunterm", value)
+
+
+class MxtunnelAutoPreemptionArgsDict(TypedDict):
+    day_of_week: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Scheduled weekday for auto preemption
+    """
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether auto preemption is enabled
+    """
+    time_of_day: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Scheduled time of day for auto preemption
+    """
+
+@pulumi.input_type
+class MxtunnelAutoPreemptionArgs:
+    def __init__(__self__, *,
+                 day_of_week: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 time_of_day: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] day_of_week: Scheduled weekday for auto preemption
+        :param pulumi.Input[_builtins.bool] enabled: Whether auto preemption is enabled
+        :param pulumi.Input[_builtins.str] time_of_day: Scheduled time of day for auto preemption
+        """
+        if day_of_week is not None:
+            pulumi.set(__self__, "day_of_week", day_of_week)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if time_of_day is not None:
+            pulumi.set(__self__, "time_of_day", time_of_day)
+
+    @_builtins.property
+    @pulumi.getter(name="dayOfWeek")
+    def day_of_week(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Scheduled weekday for auto preemption
+        """
+        return pulumi.get(self, "day_of_week")
+
+    @day_of_week.setter
+    def day_of_week(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "day_of_week", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether auto preemption is enabled
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timeOfDay")
+    def time_of_day(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Scheduled time of day for auto preemption
+        """
+        return pulumi.get(self, "time_of_day")
+
+    @time_of_day.setter
+    def time_of_day(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "time_of_day", value)
+
+
+class MxtunnelIpsecArgsDict(TypedDict):
+    dns_servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Name server addresses advertised for IPsec tunnel clients
+    """
+    dns_suffixes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Search suffixes advertised for IPsec tunnel clients
+    """
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether IPsec support is enabled for this Mist Tunnel
+    """
+    extra_routes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['MxtunnelIpsecExtraRouteArgsDict']]]]]
+    """
+    Additional routes advertised for the IPsec tunnel
+    """
+    split_tunnel: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether split tunneling is enabled for IPsec clients
+    """
+    use_mxedge: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether IPsec termination uses Mist Edge
+    """
+
+@pulumi.input_type
+class MxtunnelIpsecArgs:
+    def __init__(__self__, *,
+                 dns_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dns_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 extra_routes: pulumi.Input[Optional[Sequence[pulumi.Input['MxtunnelIpsecExtraRouteArgs']]]] = None,
+                 split_tunnel: pulumi.Input[Optional[_builtins.bool]] = None,
+                 use_mxedge: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Name server addresses advertised for IPsec tunnel clients
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Search suffixes advertised for IPsec tunnel clients
+        :param pulumi.Input[_builtins.bool] enabled: Whether IPsec support is enabled for this Mist Tunnel
+        :param pulumi.Input[Sequence[pulumi.Input['MxtunnelIpsecExtraRouteArgs']]] extra_routes: Additional routes advertised for the IPsec tunnel
+        :param pulumi.Input[_builtins.bool] split_tunnel: Whether split tunneling is enabled for IPsec clients
+        :param pulumi.Input[_builtins.bool] use_mxedge: Whether IPsec termination uses Mist Edge
+        """
+        if dns_servers is not None:
+            pulumi.set(__self__, "dns_servers", dns_servers)
+        if dns_suffixes is not None:
+            pulumi.set(__self__, "dns_suffixes", dns_suffixes)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if extra_routes is not None:
+            pulumi.set(__self__, "extra_routes", extra_routes)
+        if split_tunnel is not None:
+            pulumi.set(__self__, "split_tunnel", split_tunnel)
+        if use_mxedge is not None:
+            pulumi.set(__self__, "use_mxedge", use_mxedge)
+
+    @_builtins.property
+    @pulumi.getter(name="dnsServers")
+    def dns_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Name server addresses advertised for IPsec tunnel clients
+        """
+        return pulumi.get(self, "dns_servers")
+
+    @dns_servers.setter
+    def dns_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "dns_servers", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dnsSuffixes")
+    def dns_suffixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Search suffixes advertised for IPsec tunnel clients
+        """
+        return pulumi.get(self, "dns_suffixes")
+
+    @dns_suffixes.setter
+    def dns_suffixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "dns_suffixes", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether IPsec support is enabled for this Mist Tunnel
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="extraRoutes")
+    def extra_routes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MxtunnelIpsecExtraRouteArgs']]]]:
+        """
+        Additional routes advertised for the IPsec tunnel
+        """
+        return pulumi.get(self, "extra_routes")
+
+    @extra_routes.setter
+    def extra_routes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MxtunnelIpsecExtraRouteArgs']]]]):
+        pulumi.set(self, "extra_routes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="splitTunnel")
+    def split_tunnel(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether split tunneling is enabled for IPsec clients
+        """
+        return pulumi.get(self, "split_tunnel")
+
+    @split_tunnel.setter
+    def split_tunnel(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "split_tunnel", value)
+
+    @_builtins.property
+    @pulumi.getter(name="useMxedge")
+    def use_mxedge(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether IPsec termination uses Mist Edge
+        """
+        return pulumi.get(self, "use_mxedge")
+
+    @use_mxedge.setter
+    def use_mxedge(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "use_mxedge", value)
+
+
+class MxtunnelIpsecExtraRouteArgsDict(TypedDict):
+    dest: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Route destination CIDR for the IPsec extra route
+    """
+    next_hop: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Route next-hop IPv4 address for the IPsec extra route
+    """
+
+@pulumi.input_type
+class MxtunnelIpsecExtraRouteArgs:
+    def __init__(__self__, *,
+                 dest: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] dest: Route destination CIDR for the IPsec extra route
+        :param pulumi.Input[_builtins.str] next_hop: Route next-hop IPv4 address for the IPsec extra route
+        """
+        if dest is not None:
+            pulumi.set(__self__, "dest", dest)
+        if next_hop is not None:
+            pulumi.set(__self__, "next_hop", next_hop)
+
+    @_builtins.property
+    @pulumi.getter
+    def dest(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Route destination CIDR for the IPsec extra route
+        """
+        return pulumi.get(self, "dest")
+
+    @dest.setter
+    def dest(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "dest", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nextHop")
+    def next_hop(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Route next-hop IPv4 address for the IPsec extra route
+        """
+        return pulumi.get(self, "next_hop")
+
+    @next_hop.setter
+    def next_hop(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "next_hop", value)
 
 
 class NacPortalPortalArgsDict(TypedDict):
