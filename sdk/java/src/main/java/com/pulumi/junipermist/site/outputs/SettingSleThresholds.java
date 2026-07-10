@@ -12,17 +12,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingSleThresholds {
     /**
-     * @return Capacity, in %
+     * @return Threshold percentage for capacity SLE scoring
      * 
      */
     private @Nullable Integer capacity;
     /**
-     * @return Coverage, in dBm
+     * @return RSSI threshold for coverage SLE scoring, in dBm
      * 
      */
     private @Nullable Integer coverage;
     /**
-     * @return Throughput, in Mbps
+     * @return Minimum throughput threshold for SLE scoring, in Mbps
      * 
      */
     private @Nullable Integer throughput;
@@ -34,21 +34,21 @@ public final class SettingSleThresholds {
 
     private SettingSleThresholds() {}
     /**
-     * @return Capacity, in %
+     * @return Threshold percentage for capacity SLE scoring
      * 
      */
     public Optional<Integer> capacity() {
         return Optional.ofNullable(this.capacity);
     }
     /**
-     * @return Coverage, in dBm
+     * @return RSSI threshold for coverage SLE scoring, in dBm
      * 
      */
     public Optional<Integer> coverage() {
         return Optional.ofNullable(this.coverage);
     }
     /**
-     * @return Throughput, in Mbps
+     * @return Minimum throughput threshold for SLE scoring, in Mbps
      * 
      */
     public Optional<Integer> throughput() {

@@ -15,43 +15,75 @@ public final class SettingRtsaArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SettingRtsaArgs Empty = new SettingRtsaArgs();
 
+    /**
+     * Whether app wake-up support is enabled for managed mobility
+     * 
+     */
     @Import(name="appWaking")
     private @Nullable Output<Boolean> appWaking;
 
+    /**
+     * @return Whether app wake-up support is enabled for managed mobility
+     * 
+     */
     public Optional<Output<Boolean>> appWaking() {
         return Optional.ofNullable(this.appWaking);
     }
 
+    /**
+     * Whether dead reckoning is disabled for managed mobility
+     * 
+     */
     @Import(name="disableDeadReckoning")
     private @Nullable Output<Boolean> disableDeadReckoning;
 
+    /**
+     * @return Whether dead reckoning is disabled for managed mobility
+     * 
+     */
     public Optional<Output<Boolean>> disableDeadReckoning() {
         return Optional.ofNullable(this.disableDeadReckoning);
     }
 
+    /**
+     * Whether pressure sensor use is disabled for managed mobility
+     * 
+     */
     @Import(name="disablePressureSensor")
     private @Nullable Output<Boolean> disablePressureSensor;
 
+    /**
+     * @return Whether pressure sensor use is disabled for managed mobility
+     * 
+     */
     public Optional<Output<Boolean>> disablePressureSensor() {
         return Optional.ofNullable(this.disablePressureSensor);
     }
 
+    /**
+     * Whether managed mobility features are enabled
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether managed mobility features are enabled
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
     /**
-     * Asset tracking related
+     * Whether BLE asset tracking is enabled for managed mobility
      * 
      */
     @Import(name="trackAsset")
     private @Nullable Output<Boolean> trackAsset;
 
     /**
-     * @return Asset tracking related
+     * @return Whether BLE asset tracking is enabled for managed mobility
      * 
      */
     public Optional<Output<Boolean>> trackAsset() {
@@ -86,44 +118,92 @@ public final class SettingRtsaArgs extends com.pulumi.resources.ResourceArgs {
             $ = new SettingRtsaArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param appWaking Whether app wake-up support is enabled for managed mobility
+         * 
+         * @return builder
+         * 
+         */
         public Builder appWaking(@Nullable Output<Boolean> appWaking) {
             $.appWaking = appWaking;
             return this;
         }
 
+        /**
+         * @param appWaking Whether app wake-up support is enabled for managed mobility
+         * 
+         * @return builder
+         * 
+         */
         public Builder appWaking(Boolean appWaking) {
             return appWaking(Output.of(appWaking));
         }
 
+        /**
+         * @param disableDeadReckoning Whether dead reckoning is disabled for managed mobility
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableDeadReckoning(@Nullable Output<Boolean> disableDeadReckoning) {
             $.disableDeadReckoning = disableDeadReckoning;
             return this;
         }
 
+        /**
+         * @param disableDeadReckoning Whether dead reckoning is disabled for managed mobility
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableDeadReckoning(Boolean disableDeadReckoning) {
             return disableDeadReckoning(Output.of(disableDeadReckoning));
         }
 
+        /**
+         * @param disablePressureSensor Whether pressure sensor use is disabled for managed mobility
+         * 
+         * @return builder
+         * 
+         */
         public Builder disablePressureSensor(@Nullable Output<Boolean> disablePressureSensor) {
             $.disablePressureSensor = disablePressureSensor;
             return this;
         }
 
+        /**
+         * @param disablePressureSensor Whether pressure sensor use is disabled for managed mobility
+         * 
+         * @return builder
+         * 
+         */
         public Builder disablePressureSensor(Boolean disablePressureSensor) {
             return disablePressureSensor(Output.of(disablePressureSensor));
         }
 
+        /**
+         * @param enabled Whether managed mobility features are enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether managed mobility features are enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
         /**
-         * @param trackAsset Asset tracking related
+         * @param trackAsset Whether BLE asset tracking is enabled for managed mobility
          * 
          * @return builder
          * 
@@ -134,7 +214,7 @@ public final class SettingRtsaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param trackAsset Asset tracking related
+         * @param trackAsset Whether BLE asset tracking is enabled for managed mobility
          * 
          * @return builder
          * 

@@ -12,9 +12,15 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class SettingCriticalUrlMonitoringMonitorArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Monitored HTTP or HTTPS URL used for site health latency
+        /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
 
+        /// <summary>
+        /// Source VLAN ID used to run the critical URL monitor
+        /// </summary>
         [Input("vlanId")]
         public Input<string>? VlanId { get; set; }
 

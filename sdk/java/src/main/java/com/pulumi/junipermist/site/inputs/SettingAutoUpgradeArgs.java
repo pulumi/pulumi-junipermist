@@ -18,14 +18,14 @@ public final class SettingAutoUpgradeArgs extends com.pulumi.resources.ResourceA
     public static final SettingAutoUpgradeArgs Empty = new SettingAutoUpgradeArgs();
 
     /**
-     * Custom versions for different models. Property key is the model name (e.g. &#34;AP41&#34;)
+     * Per-AP-model firmware versions or channels used for auto-upgrade
      * 
      */
     @Import(name="customVersions")
     private @Nullable Output<Map<String,String>> customVersions;
 
     /**
-     * @return Custom versions for different models. Property key is the model name (e.g. &#34;AP41&#34;)
+     * @return Per-AP-model firmware versions or channels used for auto-upgrade
      * 
      */
     public Optional<Output<Map<String,String>>> customVersions() {
@@ -33,14 +33,14 @@ public final class SettingAutoUpgradeArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+     * Weekly AP auto-upgrade day for the maintenance window
      * 
      */
     @Import(name="dayOfWeek")
     private @Nullable Output<String> dayOfWeek;
 
     /**
-     * @return enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+     * @return Weekly AP auto-upgrade day for the maintenance window
      * 
      */
     public Optional<Output<String>> dayOfWeek() {
@@ -78,14 +78,14 @@ public final class SettingAutoUpgradeArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * desired version. enum: `beta`, `custom`, `stable`
+     * Firmware release channel or custom version used for AP auto-upgrade
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return desired version. enum: `beta`, `custom`, `stable`
+     * @return Firmware release channel or custom version used for AP auto-upgrade
      * 
      */
     public Optional<Output<String>> version() {
@@ -121,7 +121,7 @@ public final class SettingAutoUpgradeArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param customVersions Custom versions for different models. Property key is the model name (e.g. &#34;AP41&#34;)
+         * @param customVersions Per-AP-model firmware versions or channels used for auto-upgrade
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class SettingAutoUpgradeArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param customVersions Custom versions for different models. Property key is the model name (e.g. &#34;AP41&#34;)
+         * @param customVersions Per-AP-model firmware versions or channels used for auto-upgrade
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class SettingAutoUpgradeArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param dayOfWeek enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+         * @param dayOfWeek Weekly AP auto-upgrade day for the maintenance window
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class SettingAutoUpgradeArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param dayOfWeek enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+         * @param dayOfWeek Weekly AP auto-upgrade day for the maintenance window
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class SettingAutoUpgradeArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param version desired version. enum: `beta`, `custom`, `stable`
+         * @param version Firmware release channel or custom version used for AP auto-upgrade
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class SettingAutoUpgradeArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param version desired version. enum: `beta`, `custom`, `stable`
+         * @param version Firmware release channel or custom version used for AP auto-upgrade
          * 
          * @return builder
          * 

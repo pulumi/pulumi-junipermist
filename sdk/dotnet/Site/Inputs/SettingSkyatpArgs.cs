@@ -12,11 +12,14 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class SettingSkyatpArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether Sky ATP is enabled for the site
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Whether to send IP-MAC mapping to SkyATP
+        /// Whether IP-to-MAC mappings are sent to Sky ATP
         /// </summary>
         [Input("sendIpMacMapping")]
         public Input<bool>? SendIpMacMapping { get; set; }

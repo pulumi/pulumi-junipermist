@@ -15,62 +15,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingEngagement {
     /**
-     * @return Name associated to each tag
+     * @return Display labels for dwell-time visit categories
      * 
      */
     private @Nullable SettingEngagementDwellTagNames dwellTagNames;
     /**
-     * @return add tags to visits within the duration (in seconds)
+     * @return Visit duration ranges used to assign engagement categories
      * 
      */
     private @Nullable SettingEngagementDwellTags dwellTags;
     /**
-     * @return Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+     * @return Schedule during which engagement analytics rules apply
      * 
      */
     private @Nullable SettingEngagementHours hours;
     /**
-     * @return Max time, default is 43200(12h), max is 68400 (18h)
+     * @return Maximum dwell time in seconds considered by engagement analytics
      * 
      */
     private @Nullable Integer maxDwell;
     /**
-     * @return min time
+     * @return Minimum dwell time in seconds for engagement analytics
      * 
      */
     private @Nullable Integer minDwell;
 
     private SettingEngagement() {}
     /**
-     * @return Name associated to each tag
+     * @return Display labels for dwell-time visit categories
      * 
      */
     public Optional<SettingEngagementDwellTagNames> dwellTagNames() {
         return Optional.ofNullable(this.dwellTagNames);
     }
     /**
-     * @return add tags to visits within the duration (in seconds)
+     * @return Visit duration ranges used to assign engagement categories
      * 
      */
     public Optional<SettingEngagementDwellTags> dwellTags() {
         return Optional.ofNullable(this.dwellTags);
     }
     /**
-     * @return Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+     * @return Schedule during which engagement analytics rules apply
      * 
      */
     public Optional<SettingEngagementHours> hours() {
         return Optional.ofNullable(this.hours);
     }
     /**
-     * @return Max time, default is 43200(12h), max is 68400 (18h)
+     * @return Maximum dwell time in seconds considered by engagement analytics
      * 
      */
     public Optional<Integer> maxDwell() {
         return Optional.ofNullable(this.maxDwell);
     }
     /**
-     * @return min time
+     * @return Minimum dwell time in seconds for engagement analytics
      * 
      */
     public Optional<Integer> minDwell() {

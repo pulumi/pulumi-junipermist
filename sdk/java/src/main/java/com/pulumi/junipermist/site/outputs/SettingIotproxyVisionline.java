@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,14 +19,23 @@ public final class SettingIotproxyVisionline {
      * 
      */
     private @Nullable String accessId;
+    /**
+     * @return PEM-encoded CA certificates used to verify the Visionline collector&#39;s TLS certificate. Required when the collector uses a self-signed certificate
+     * 
+     */
+    private @Nullable List<String> cacerts;
+    /**
+     * @return Whether the Visionline integration is enabled
+     * 
+     */
     private @Nullable Boolean enabled;
     /**
-     * @return Hostname or IP of the Visionline collector
+     * @return Collector hostname or IP address for Visionline
      * 
      */
     private @Nullable String host;
     /**
-     * @return Password for the Visionline service
+     * @return Visionline service password used by the IoT proxy
      * 
      */
     private @Nullable String password;
@@ -35,7 +45,7 @@ public final class SettingIotproxyVisionline {
      */
     private @Nullable Integer port;
     /**
-     * @return Username for the Visionline service
+     * @return Visionline service username used by the IoT proxy
      * 
      */
     private @Nullable String username;
@@ -48,18 +58,29 @@ public final class SettingIotproxyVisionline {
     public Optional<String> accessId() {
         return Optional.ofNullable(this.accessId);
     }
+    /**
+     * @return PEM-encoded CA certificates used to verify the Visionline collector&#39;s TLS certificate. Required when the collector uses a self-signed certificate
+     * 
+     */
+    public List<String> cacerts() {
+        return this.cacerts == null ? List.of() : this.cacerts;
+    }
+    /**
+     * @return Whether the Visionline integration is enabled
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Hostname or IP of the Visionline collector
+     * @return Collector hostname or IP address for Visionline
      * 
      */
     public Optional<String> host() {
         return Optional.ofNullable(this.host);
     }
     /**
-     * @return Password for the Visionline service
+     * @return Visionline service password used by the IoT proxy
      * 
      */
     public Optional<String> password() {
@@ -73,7 +94,7 @@ public final class SettingIotproxyVisionline {
         return Optional.ofNullable(this.port);
     }
     /**
-     * @return Username for the Visionline service
+     * @return Visionline service username used by the IoT proxy
      * 
      */
     public Optional<String> username() {
@@ -90,6 +111,7 @@ public final class SettingIotproxyVisionline {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String accessId;
+        private @Nullable List<String> cacerts;
         private @Nullable Boolean enabled;
         private @Nullable String host;
         private @Nullable String password;
@@ -99,6 +121,7 @@ public final class SettingIotproxyVisionline {
         public Builder(SettingIotproxyVisionline defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessId = defaults.accessId;
+    	      this.cacerts = defaults.cacerts;
     	      this.enabled = defaults.enabled;
     	      this.host = defaults.host;
     	      this.password = defaults.password;
@@ -111,6 +134,15 @@ public final class SettingIotproxyVisionline {
 
             this.accessId = accessId;
             return this;
+        }
+        @CustomType.Setter
+        public Builder cacerts(@Nullable List<String> cacerts) {
+
+            this.cacerts = cacerts;
+            return this;
+        }
+        public Builder cacerts(String... cacerts) {
+            return cacerts(List.of(cacerts));
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
@@ -145,6 +177,7 @@ public final class SettingIotproxyVisionline {
         public SettingIotproxyVisionline build() {
             final var _resultValue = new SettingIotproxyVisionline();
             _resultValue.accessId = accessId;
+            _resultValue.cacerts = cacerts;
             _resultValue.enabled = enabled;
             _resultValue.host = host;
             _resultValue.password = password;

@@ -14,14 +14,20 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class SettingGatewayMgmt
     {
         /// <summary>
-        /// For SSR only, as direct root access is not allowed
+        /// SSR-only SSH public keys for administrative access
         /// </summary>
         public readonly ImmutableArray<string> AdminSshkeys;
+        /// <summary>
+        /// Application probing configuration for gateway monitoring
+        /// </summary>
         public readonly Outputs.SettingGatewayMgmtAppProbing? AppProbing;
         /// <summary>
         /// Consumes uplink bandwidth, requires WA license
         /// </summary>
         public readonly bool? AppUsage;
+        /// <summary>
+        /// Schedule for automatic security signature updates
+        /// </summary>
         public readonly Outputs.SettingGatewayMgmtAutoSignatureUpdate? AutoSignatureUpdate;
         /// <summary>
         /// Rollback timer for commit confirmed
@@ -39,20 +45,33 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// For SSR and SRX, disable usb interface
         /// </summary>
         public readonly bool? DisableUsb;
+        /// <summary>
+        /// Whether FIPS mode is enabled on the gateway
+        /// </summary>
         public readonly bool? FipsEnabled;
+        /// <summary>
+        /// IPv4 probe targets used for gateway connectivity checks
+        /// </summary>
         public readonly ImmutableArray<string> ProbeHosts;
+        /// <summary>
+        /// IPv6 probe targets used for gateway connectivity checks
+        /// </summary>
         public readonly ImmutableArray<string> ProbeHostsv6s;
         /// <summary>
-        /// Restrict inbound-traffic to host
-        /// when enabled, all traffic that is not essential to our operation will be dropped 
-        /// e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
+        /// Control-plane protection settings for the gateway
         /// </summary>
         public readonly Outputs.SettingGatewayMgmtProtectRe? ProtectRe;
         /// <summary>
-        /// SRX only
+        /// SRX only. Root password for local gateway access
         /// </summary>
         public readonly string? RootPassword;
+        /// <summary>
+        /// IPv4 source address used for gateway security log traffic
+        /// </summary>
         public readonly string? SecurityLogSourceAddress;
+        /// <summary>
+        /// Source interface used for gateway security log traffic
+        /// </summary>
         public readonly string? SecurityLogSourceInterface;
 
         [OutputConstructor]

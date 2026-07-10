@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingLed {
+    /**
+     * @return Indicator LED brightness level from 0 to 255
+     * 
+     */
     private @Nullable Integer brightness;
+    /**
+     * @return Whether the AP indicator LED is enabled
+     * 
+     */
     private @Nullable Boolean enabled;
 
     private SettingLed() {}
+    /**
+     * @return Indicator LED brightness level from 0 to 255
+     * 
+     */
     public Optional<Integer> brightness() {
         return Optional.ofNullable(this.brightness);
     }
+    /**
+     * @return Whether the AP indicator LED is enabled
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }

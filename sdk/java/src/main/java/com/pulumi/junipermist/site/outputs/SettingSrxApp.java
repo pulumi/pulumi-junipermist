@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingSrxApp {
+    /**
+     * @return Whether Juniper SRX application visibility is enabled
+     * 
+     */
     private @Nullable Boolean enabled;
 
     private SettingSrxApp() {}
+    /**
+     * @return Whether Juniper SRX application visibility is enabled
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }

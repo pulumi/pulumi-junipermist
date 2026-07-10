@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly bool? NoPush;
         /// <summary>
-        /// If enabled, new config will only be pushed to device within the specified time window
+        /// Allowed time window during which configuration pushes may run
         /// </summary>
         public readonly Outputs.SettingConfigPushPolicyPushWindow? PushWindow;
 

@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingRogue {
     /**
-     * @return list of VLAN IDs on which rogue APs are ignored
+     * @return VLAN IDs allowed by the rogue detection policy
      * 
      */
     private @Nullable List<Integer> allowedVlanIds;
@@ -50,19 +50,19 @@ public final class SettingRogue {
      */
     private @Nullable Integer minRssi;
     /**
-     * @return list of BSSIDs to whitelist. Ex: &#34;cc-:8e-:6f-:d4-:bf-:16&#34;, &#34;cc-8e-6f-d4-bf-16&#34;, &#34;cc-73-*&#34;, &#34;cc:82:*&#34;
+     * @return BSSID values or wildcard patterns excluded from rogue detection
      * 
      */
     private @Nullable List<String> whitelistedBssids;
     /**
-     * @return List of SSIDs to whitelist
+     * @return SSID names excluded from rogue detection
      * 
      */
     private @Nullable List<String> whitelistedSsids;
 
     private SettingRogue() {}
     /**
-     * @return list of VLAN IDs on which rogue APs are ignored
+     * @return VLAN IDs allowed by the rogue detection policy
      * 
      */
     public List<Integer> allowedVlanIds() {
@@ -111,14 +111,14 @@ public final class SettingRogue {
         return Optional.ofNullable(this.minRssi);
     }
     /**
-     * @return list of BSSIDs to whitelist. Ex: &#34;cc-:8e-:6f-:d4-:bf-:16&#34;, &#34;cc-8e-6f-d4-bf-16&#34;, &#34;cc-73-*&#34;, &#34;cc:82:*&#34;
+     * @return BSSID values or wildcard patterns excluded from rogue detection
      * 
      */
     public List<String> whitelistedBssids() {
         return this.whitelistedBssids == null ? List.of() : this.whitelistedBssids;
     }
     /**
-     * @return List of SSIDs to whitelist
+     * @return SSID names excluded from rogue detection
      * 
      */
     public List<String> whitelistedSsids() {

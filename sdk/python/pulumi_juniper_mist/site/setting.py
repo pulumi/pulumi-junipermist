@@ -43,6 +43,8 @@ class SettingArgs:
                  juniper_srx: pulumi.Input[Optional['SettingJuniperSrxArgs']] = None,
                  led: pulumi.Input[Optional['SettingLedArgs']] = None,
                  marvis: pulumi.Input[Optional['SettingMarvisArgs']] = None,
+                 mxedge_mgmt: pulumi.Input[Optional['SettingMxedgeMgmtArgs']] = None,
+                 mxtunnels: pulumi.Input[Optional['SettingMxtunnelsArgs']] = None,
                  occupancy: pulumi.Input[Optional['SettingOccupancyArgs']] = None,
                  persist_config_on_device: pulumi.Input[Optional[_builtins.bool]] = None,
                  proxy: pulumi.Input[Optional['SettingProxyArgs']] = None,
@@ -59,6 +61,9 @@ class SettingArgs:
                  switch_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  synthetic_test: pulumi.Input[Optional['SettingSyntheticTestArgs']] = None,
                  track_anonymous_devices: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tunterm_monitoring_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tunterm_monitorings: pulumi.Input[Optional[Sequence[pulumi.Input['SettingTuntermMonitoringArgs']]]] = None,
+                 tunterm_multicast_config: pulumi.Input[Optional['SettingTuntermMulticastConfigArgs']] = None,
                  uplink_port_config: pulumi.Input[Optional['SettingUplinkPortConfigArgs']] = None,
                  vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vars_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input['SettingVarsAnnotationsArgs']]]] = None,
@@ -74,43 +79,61 @@ class SettingArgs:
         """
         The set of arguments for constructing a Setting resource.
 
+        :param pulumi.Input[_builtins.str] site_id: Identifier of the site these settings apply to
         :param pulumi.Input[_builtins.bool] allow_mist: whether to allow Mist to look at this org
-        :param pulumi.Input['SettingApSyntheticTestArgs'] ap_synthetic_test: AP Synthetic Test configuration
+        :param pulumi.Input['SettingAnalyticArgs'] analytic: Advanced analytics configuration for the site
+        :param pulumi.Input['SettingApSyntheticTestArgs'] ap_synthetic_test: Synthetic test configuration for APs at the site
         :param pulumi.Input[_builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
-        :param pulumi.Input['SettingAutoUpgradeArgs'] auto_upgrade: Auto Upgrade Settings
-        :param pulumi.Input['SettingAutoUpgradeEslArgs'] auto_upgrade_esl: auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware upgrade
+        :param pulumi.Input['SettingAutoUpgradeArgs'] auto_upgrade: Automatic AP firmware upgrade settings for the site. Overrides org setting when provided.
+        :param pulumi.Input['SettingAutoUpgradeEslArgs'] auto_upgrade_esl: Automatic ESL firmware upgrade settings for the site
         :param pulumi.Input[_builtins.int] bgp_neighbor_updown_threshold: enable threshold-based bgp neighbor down delivery.
-        :param pulumi.Input['SettingBleConfigArgs'] ble_config: BLE AP settings
+        :param pulumi.Input['SettingBleConfigArgs'] ble_config: Bluetooth Low Energy configuration applied to APs at the site
         :param pulumi.Input[_builtins.bool] config_auto_revert: Whether to enable ap auto config revert
-        :param pulumi.Input['SettingConfigPushPolicyArgs'] config_push_policy: Mist also uses some heuristic rules to prevent destructive configs from being pushed
-        :param pulumi.Input['SettingCriticalUrlMonitoringArgs'] critical_url_monitoring: You can define some URLs that's critical to site operations the latency will be captured and considered for site health
+        :param pulumi.Input['SettingConfigPushPolicyArgs'] config_push_policy: Policy controlling how site configuration pushes are applied
+        :param pulumi.Input['SettingCriticalUrlMonitoringArgs'] critical_url_monitoring: Monitoring configuration for critical URLs at the site
         :param pulumi.Input[_builtins.int] device_updown_threshold: By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following
-        :param pulumi.Input['SettingEngagementArgs'] engagement: **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple ranges for the same day
-        :param pulumi.Input['SettingGatewayMgmtArgs'] gateway_mgmt: Gateway Management settings
+        :param pulumi.Input[_builtins.bool] enable_unii4: Whether UNII-4 channels are enabled for the site
+        :param pulumi.Input['SettingEngagementArgs'] engagement: Dwell-time analytics rules for the site
+        :param pulumi.Input['SettingGatewayMgmtArgs'] gateway_mgmt: Management access settings for gateways at the site
         :param pulumi.Input[_builtins.int] gateway_tunnel_updown_threshold: enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
         :param pulumi.Input[_builtins.int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `device_updown_threshold` is ignored.
-        :param pulumi.Input['SettingIotproxyArgs'] iotproxy: IoT proxy configuration for the site
-        :param pulumi.Input['SettingLedArgs'] led: LED AP settings
-        :param pulumi.Input['SettingOccupancyArgs'] occupancy: Occupancy Analytics settings
+        :param pulumi.Input['SettingIotproxyArgs'] iotproxy: Proxy settings for IoT traffic at the site
+        :param pulumi.Input['SettingJuniperSrxArgs'] juniper_srx: SRX integration settings for the site
+        :param pulumi.Input['SettingLedArgs'] led: AP LED behavior configured for the site
+        :param pulumi.Input['SettingMarvisArgs'] marvis: AI assistant settings for Marvis at the site
+        :param pulumi.Input['SettingMxedgeMgmtArgs'] mxedge_mgmt: Mist Edge management access settings for the site
+        :param pulumi.Input['SettingMxtunnelsArgs'] mxtunnels: Site Mist Tunnel configuration
+        :param pulumi.Input['SettingOccupancyArgs'] occupancy: Analytics settings for site occupancy
         :param pulumi.Input[_builtins.bool] persist_config_on_device: Whether to store the config on AP
-        :param pulumi.Input['SettingProxyArgs'] proxy: Proxy Configuration to talk to Mist
+        :param pulumi.Input['SettingProxyArgs'] proxy: Network proxy settings for devices at the site
         :param pulumi.Input[_builtins.bool] remove_existing_configs: By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
         :param pulumi.Input[_builtins.bool] report_gatt: Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name, serial number, battery %, temperature, humidity)
-        :param pulumi.Input['SettingRogueArgs'] rogue: Rogue site settings
-        :param pulumi.Input['SettingRtsaArgs'] rtsa: Managed mobility
-        :param pulumi.Input['SettingSimpleAlertArgs'] simple_alert: Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute window, there are more than Y distinct client encountering over X failures
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssh_keys: When limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see Org:Setting)
+        :param pulumi.Input['SettingRogueArgs'] rogue: AP threat detection settings for the site
+        :param pulumi.Input['SettingRtsaArgs'] rtsa: Managed mobility and asset tracking settings for the site
+        :param pulumi.Input['SettingSimpleAlertArgs'] simple_alert: Threshold alert settings for the site
+        :param pulumi.Input['SettingSkyatpArgs'] skyatp: Threat intelligence settings from Sky ATP for the site
+        :param pulumi.Input['SettingSleThresholdsArgs'] sle_thresholds: Service level expectation threshold settings for the site
+        :param pulumi.Input['SettingSrxAppArgs'] srx_app: Juniper SRX application visibility settings for the site
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssh_keys: Public SSH keys configured for the site
+        :param pulumi.Input['SettingSsrArgs'] ssr: Session Smart Router settings for the site
         :param pulumi.Input[_builtins.int] switch_updown_threshold: Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
+        :param pulumi.Input['SettingSyntheticTestArgs'] synthetic_test: Active monitoring test configuration for the site
         :param pulumi.Input[_builtins.bool] track_anonymous_devices: Whether to track anonymous BLE assets (requires ‘track_asset’  enabled)
-        :param pulumi.Input['SettingUplinkPortConfigArgs'] uplink_port_config: AP Uplink port configuration
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
-        :param pulumi.Input[Mapping[str, pulumi.Input['SettingVarsAnnotationsArgs']]] vars_annotations: Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+        :param pulumi.Input[_builtins.bool] tunterm_monitoring_disabled: Whether tunnel termination monitoring is disabled for the site
+        :param pulumi.Input[Sequence[pulumi.Input['SettingTuntermMonitoringArgs']]] tunterm_monitorings: Tunnel termination monitoring settings for the site
+        :param pulumi.Input['SettingTuntermMulticastConfigArgs'] tunterm_multicast_config: Multicast settings for tunnel termination at the site
+        :param pulumi.Input['SettingUplinkPortConfigArgs'] uplink_port_config: AP uplink port configuration for the site
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Template variables defined for the site
+        :param pulumi.Input[Mapping[str, pulumi.Input['SettingVarsAnnotationsArgs']]] vars_annotations: Metadata annotations for site template variables
+        :param pulumi.Input['SettingVnaArgs'] vna: Virtual Network Assistant settings for the site
         :param pulumi.Input[_builtins.int] vpn_path_updown_threshold: enable threshold-based vpn path down delivery.
         :param pulumi.Input[_builtins.int] vpn_peer_updown_threshold: enable threshold-based vpn peer down delivery.
-        :param pulumi.Input[Mapping[str, pulumi.Input['SettingVsInstanceArgs']]] vs_instance: Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
-        :param pulumi.Input['SettingWidsArgs'] wids: WIDS site settings
-        :param pulumi.Input['SettingWifiArgs'] wifi: Wi-Fi site settings
-        :param pulumi.Input['SettingZoneOccupancyAlertArgs'] zone_occupancy_alert: Zone Occupancy alert site settings
+        :param pulumi.Input[Mapping[str, pulumi.Input['SettingVsInstanceArgs']]] vs_instance: EX9200 virtual switch instance definitions for the site
+        :param pulumi.Input['SettingWanVnaArgs'] wan_vna: Virtual Network Assistant settings for WAN experiences at the site
+        :param pulumi.Input['SettingWidsArgs'] wids: Wireless intrusion detection settings for the site
+        :param pulumi.Input['SettingWifiArgs'] wifi: Wireless LAN configuration settings for the site
+        :param pulumi.Input['SettingWiredVnaArgs'] wired_vna: Virtual Network Assistant settings for wired experiences at the site
+        :param pulumi.Input['SettingZoneOccupancyAlertArgs'] zone_occupancy_alert: Occupancy alert settings for site zones
         """
         pulumi.set(__self__, "site_id", site_id)
         if allow_mist is not None:
@@ -155,6 +178,10 @@ class SettingArgs:
             pulumi.set(__self__, "led", led)
         if marvis is not None:
             pulumi.set(__self__, "marvis", marvis)
+        if mxedge_mgmt is not None:
+            pulumi.set(__self__, "mxedge_mgmt", mxedge_mgmt)
+        if mxtunnels is not None:
+            pulumi.set(__self__, "mxtunnels", mxtunnels)
         if occupancy is not None:
             pulumi.set(__self__, "occupancy", occupancy)
         if persist_config_on_device is not None:
@@ -187,6 +214,12 @@ class SettingArgs:
             pulumi.set(__self__, "synthetic_test", synthetic_test)
         if track_anonymous_devices is not None:
             pulumi.set(__self__, "track_anonymous_devices", track_anonymous_devices)
+        if tunterm_monitoring_disabled is not None:
+            pulumi.set(__self__, "tunterm_monitoring_disabled", tunterm_monitoring_disabled)
+        if tunterm_monitorings is not None:
+            pulumi.set(__self__, "tunterm_monitorings", tunterm_monitorings)
+        if tunterm_multicast_config is not None:
+            pulumi.set(__self__, "tunterm_multicast_config", tunterm_multicast_config)
         if uplink_port_config is not None:
             pulumi.set(__self__, "uplink_port_config", uplink_port_config)
         if vars is not None:
@@ -215,6 +248,9 @@ class SettingArgs:
     @_builtins.property
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Identifier of the site these settings apply to
+        """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
@@ -236,6 +272,9 @@ class SettingArgs:
     @_builtins.property
     @pulumi.getter
     def analytic(self) -> pulumi.Input[Optional['SettingAnalyticArgs']]:
+        """
+        Advanced analytics configuration for the site
+        """
         return pulumi.get(self, "analytic")
 
     @analytic.setter
@@ -246,7 +285,7 @@ class SettingArgs:
     @pulumi.getter(name="apSyntheticTest")
     def ap_synthetic_test(self) -> pulumi.Input[Optional['SettingApSyntheticTestArgs']]:
         """
-        AP Synthetic Test configuration
+        Synthetic test configuration for APs at the site
         """
         return pulumi.get(self, "ap_synthetic_test")
 
@@ -270,7 +309,7 @@ class SettingArgs:
     @pulumi.getter(name="autoUpgrade")
     def auto_upgrade(self) -> pulumi.Input[Optional['SettingAutoUpgradeArgs']]:
         """
-        Auto Upgrade Settings
+        Automatic AP firmware upgrade settings for the site. Overrides org setting when provided.
         """
         return pulumi.get(self, "auto_upgrade")
 
@@ -282,7 +321,7 @@ class SettingArgs:
     @pulumi.getter(name="autoUpgradeEsl")
     def auto_upgrade_esl(self) -> pulumi.Input[Optional['SettingAutoUpgradeEslArgs']]:
         """
-        auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware upgrade
+        Automatic ESL firmware upgrade settings for the site
         """
         return pulumi.get(self, "auto_upgrade_esl")
 
@@ -306,7 +345,7 @@ class SettingArgs:
     @pulumi.getter(name="bleConfig")
     def ble_config(self) -> pulumi.Input[Optional['SettingBleConfigArgs']]:
         """
-        BLE AP settings
+        Bluetooth Low Energy configuration applied to APs at the site
         """
         return pulumi.get(self, "ble_config")
 
@@ -330,7 +369,7 @@ class SettingArgs:
     @pulumi.getter(name="configPushPolicy")
     def config_push_policy(self) -> pulumi.Input[Optional['SettingConfigPushPolicyArgs']]:
         """
-        Mist also uses some heuristic rules to prevent destructive configs from being pushed
+        Policy controlling how site configuration pushes are applied
         """
         return pulumi.get(self, "config_push_policy")
 
@@ -342,7 +381,7 @@ class SettingArgs:
     @pulumi.getter(name="criticalUrlMonitoring")
     def critical_url_monitoring(self) -> pulumi.Input[Optional['SettingCriticalUrlMonitoringArgs']]:
         """
-        You can define some URLs that's critical to site operations the latency will be captured and considered for site health
+        Monitoring configuration for critical URLs at the site
         """
         return pulumi.get(self, "critical_url_monitoring")
 
@@ -365,6 +404,9 @@ class SettingArgs:
     @_builtins.property
     @pulumi.getter(name="enableUnii4")
     def enable_unii4(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether UNII-4 channels are enabled for the site
+        """
         return pulumi.get(self, "enable_unii4")
 
     @enable_unii4.setter
@@ -375,7 +417,7 @@ class SettingArgs:
     @pulumi.getter
     def engagement(self) -> pulumi.Input[Optional['SettingEngagementArgs']]:
         """
-        **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple ranges for the same day
+        Dwell-time analytics rules for the site
         """
         return pulumi.get(self, "engagement")
 
@@ -387,7 +429,7 @@ class SettingArgs:
     @pulumi.getter(name="gatewayMgmt")
     def gateway_mgmt(self) -> pulumi.Input[Optional['SettingGatewayMgmtArgs']]:
         """
-        Gateway Management settings
+        Management access settings for gateways at the site
         """
         return pulumi.get(self, "gateway_mgmt")
 
@@ -423,7 +465,7 @@ class SettingArgs:
     @pulumi.getter
     def iotproxy(self) -> pulumi.Input[Optional['SettingIotproxyArgs']]:
         """
-        IoT proxy configuration for the site
+        Proxy settings for IoT traffic at the site
         """
         return pulumi.get(self, "iotproxy")
 
@@ -434,6 +476,9 @@ class SettingArgs:
     @_builtins.property
     @pulumi.getter(name="juniperSrx")
     def juniper_srx(self) -> pulumi.Input[Optional['SettingJuniperSrxArgs']]:
+        """
+        SRX integration settings for the site
+        """
         return pulumi.get(self, "juniper_srx")
 
     @juniper_srx.setter
@@ -444,7 +489,7 @@ class SettingArgs:
     @pulumi.getter
     def led(self) -> pulumi.Input[Optional['SettingLedArgs']]:
         """
-        LED AP settings
+        AP LED behavior configured for the site
         """
         return pulumi.get(self, "led")
 
@@ -455,6 +500,9 @@ class SettingArgs:
     @_builtins.property
     @pulumi.getter
     def marvis(self) -> pulumi.Input[Optional['SettingMarvisArgs']]:
+        """
+        AI assistant settings for Marvis at the site
+        """
         return pulumi.get(self, "marvis")
 
     @marvis.setter
@@ -462,10 +510,34 @@ class SettingArgs:
         pulumi.set(self, "marvis", value)
 
     @_builtins.property
+    @pulumi.getter(name="mxedgeMgmt")
+    def mxedge_mgmt(self) -> pulumi.Input[Optional['SettingMxedgeMgmtArgs']]:
+        """
+        Mist Edge management access settings for the site
+        """
+        return pulumi.get(self, "mxedge_mgmt")
+
+    @mxedge_mgmt.setter
+    def mxedge_mgmt(self, value: pulumi.Input[Optional['SettingMxedgeMgmtArgs']]):
+        pulumi.set(self, "mxedge_mgmt", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def mxtunnels(self) -> pulumi.Input[Optional['SettingMxtunnelsArgs']]:
+        """
+        Site Mist Tunnel configuration
+        """
+        return pulumi.get(self, "mxtunnels")
+
+    @mxtunnels.setter
+    def mxtunnels(self, value: pulumi.Input[Optional['SettingMxtunnelsArgs']]):
+        pulumi.set(self, "mxtunnels", value)
+
+    @_builtins.property
     @pulumi.getter
     def occupancy(self) -> pulumi.Input[Optional['SettingOccupancyArgs']]:
         """
-        Occupancy Analytics settings
+        Analytics settings for site occupancy
         """
         return pulumi.get(self, "occupancy")
 
@@ -489,7 +561,7 @@ class SettingArgs:
     @pulumi.getter
     def proxy(self) -> pulumi.Input[Optional['SettingProxyArgs']]:
         """
-        Proxy Configuration to talk to Mist
+        Network proxy settings for devices at the site
         """
         return pulumi.get(self, "proxy")
 
@@ -525,7 +597,7 @@ class SettingArgs:
     @pulumi.getter
     def rogue(self) -> pulumi.Input[Optional['SettingRogueArgs']]:
         """
-        Rogue site settings
+        AP threat detection settings for the site
         """
         return pulumi.get(self, "rogue")
 
@@ -537,7 +609,7 @@ class SettingArgs:
     @pulumi.getter
     def rtsa(self) -> pulumi.Input[Optional['SettingRtsaArgs']]:
         """
-        Managed mobility
+        Managed mobility and asset tracking settings for the site
         """
         return pulumi.get(self, "rtsa")
 
@@ -549,7 +621,7 @@ class SettingArgs:
     @pulumi.getter(name="simpleAlert")
     def simple_alert(self) -> pulumi.Input[Optional['SettingSimpleAlertArgs']]:
         """
-        Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute window, there are more than Y distinct client encountering over X failures
+        Threshold alert settings for the site
         """
         return pulumi.get(self, "simple_alert")
 
@@ -560,6 +632,9 @@ class SettingArgs:
     @_builtins.property
     @pulumi.getter
     def skyatp(self) -> pulumi.Input[Optional['SettingSkyatpArgs']]:
+        """
+        Threat intelligence settings from Sky ATP for the site
+        """
         return pulumi.get(self, "skyatp")
 
     @skyatp.setter
@@ -569,6 +644,9 @@ class SettingArgs:
     @_builtins.property
     @pulumi.getter(name="sleThresholds")
     def sle_thresholds(self) -> pulumi.Input[Optional['SettingSleThresholdsArgs']]:
+        """
+        Service level expectation threshold settings for the site
+        """
         return pulumi.get(self, "sle_thresholds")
 
     @sle_thresholds.setter
@@ -578,6 +656,9 @@ class SettingArgs:
     @_builtins.property
     @pulumi.getter(name="srxApp")
     def srx_app(self) -> pulumi.Input[Optional['SettingSrxAppArgs']]:
+        """
+        Juniper SRX application visibility settings for the site
+        """
         return pulumi.get(self, "srx_app")
 
     @srx_app.setter
@@ -588,7 +669,7 @@ class SettingArgs:
     @pulumi.getter(name="sshKeys")
     def ssh_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        When limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see Org:Setting)
+        Public SSH keys configured for the site
         """
         return pulumi.get(self, "ssh_keys")
 
@@ -599,6 +680,9 @@ class SettingArgs:
     @_builtins.property
     @pulumi.getter
     def ssr(self) -> pulumi.Input[Optional['SettingSsrArgs']]:
+        """
+        Session Smart Router settings for the site
+        """
         return pulumi.get(self, "ssr")
 
     @ssr.setter
@@ -620,6 +704,9 @@ class SettingArgs:
     @_builtins.property
     @pulumi.getter(name="syntheticTest")
     def synthetic_test(self) -> pulumi.Input[Optional['SettingSyntheticTestArgs']]:
+        """
+        Active monitoring test configuration for the site
+        """
         return pulumi.get(self, "synthetic_test")
 
     @synthetic_test.setter
@@ -639,10 +726,46 @@ class SettingArgs:
         pulumi.set(self, "track_anonymous_devices", value)
 
     @_builtins.property
+    @pulumi.getter(name="tuntermMonitoringDisabled")
+    def tunterm_monitoring_disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether tunnel termination monitoring is disabled for the site
+        """
+        return pulumi.get(self, "tunterm_monitoring_disabled")
+
+    @tunterm_monitoring_disabled.setter
+    def tunterm_monitoring_disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "tunterm_monitoring_disabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tuntermMonitorings")
+    def tunterm_monitorings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SettingTuntermMonitoringArgs']]]]:
+        """
+        Tunnel termination monitoring settings for the site
+        """
+        return pulumi.get(self, "tunterm_monitorings")
+
+    @tunterm_monitorings.setter
+    def tunterm_monitorings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SettingTuntermMonitoringArgs']]]]):
+        pulumi.set(self, "tunterm_monitorings", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tuntermMulticastConfig")
+    def tunterm_multicast_config(self) -> pulumi.Input[Optional['SettingTuntermMulticastConfigArgs']]:
+        """
+        Multicast settings for tunnel termination at the site
+        """
+        return pulumi.get(self, "tunterm_multicast_config")
+
+    @tunterm_multicast_config.setter
+    def tunterm_multicast_config(self, value: pulumi.Input[Optional['SettingTuntermMulticastConfigArgs']]):
+        pulumi.set(self, "tunterm_multicast_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="uplinkPortConfig")
     def uplink_port_config(self) -> pulumi.Input[Optional['SettingUplinkPortConfigArgs']]:
         """
-        AP Uplink port configuration
+        AP uplink port configuration for the site
         """
         return pulumi.get(self, "uplink_port_config")
 
@@ -654,7 +777,7 @@ class SettingArgs:
     @pulumi.getter
     def vars(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        Template variables defined for the site
         """
         return pulumi.get(self, "vars")
 
@@ -666,7 +789,7 @@ class SettingArgs:
     @pulumi.getter(name="varsAnnotations")
     def vars_annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SettingVarsAnnotationsArgs']]]]:
         """
-        Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+        Metadata annotations for site template variables
         """
         return pulumi.get(self, "vars_annotations")
 
@@ -677,6 +800,9 @@ class SettingArgs:
     @_builtins.property
     @pulumi.getter
     def vna(self) -> pulumi.Input[Optional['SettingVnaArgs']]:
+        """
+        Virtual Network Assistant settings for the site
+        """
         return pulumi.get(self, "vna")
 
     @vna.setter
@@ -711,7 +837,7 @@ class SettingArgs:
     @pulumi.getter(name="vsInstance")
     def vs_instance(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SettingVsInstanceArgs']]]]:
         """
-        Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
+        EX9200 virtual switch instance definitions for the site
         """
         return pulumi.get(self, "vs_instance")
 
@@ -722,6 +848,9 @@ class SettingArgs:
     @_builtins.property
     @pulumi.getter(name="wanVna")
     def wan_vna(self) -> pulumi.Input[Optional['SettingWanVnaArgs']]:
+        """
+        Virtual Network Assistant settings for WAN experiences at the site
+        """
         return pulumi.get(self, "wan_vna")
 
     @wan_vna.setter
@@ -732,7 +861,7 @@ class SettingArgs:
     @pulumi.getter
     def wids(self) -> pulumi.Input[Optional['SettingWidsArgs']]:
         """
-        WIDS site settings
+        Wireless intrusion detection settings for the site
         """
         return pulumi.get(self, "wids")
 
@@ -744,7 +873,7 @@ class SettingArgs:
     @pulumi.getter
     def wifi(self) -> pulumi.Input[Optional['SettingWifiArgs']]:
         """
-        Wi-Fi site settings
+        Wireless LAN configuration settings for the site
         """
         return pulumi.get(self, "wifi")
 
@@ -755,6 +884,9 @@ class SettingArgs:
     @_builtins.property
     @pulumi.getter(name="wiredVna")
     def wired_vna(self) -> pulumi.Input[Optional['SettingWiredVnaArgs']]:
+        """
+        Virtual Network Assistant settings for wired experiences at the site
+        """
         return pulumi.get(self, "wired_vna")
 
     @wired_vna.setter
@@ -765,7 +897,7 @@ class SettingArgs:
     @pulumi.getter(name="zoneOccupancyAlert")
     def zone_occupancy_alert(self) -> pulumi.Input[Optional['SettingZoneOccupancyAlertArgs']]:
         """
-        Zone Occupancy alert site settings
+        Occupancy alert settings for site zones
         """
         return pulumi.get(self, "zone_occupancy_alert")
 
@@ -799,6 +931,8 @@ class _SettingState:
                  juniper_srx: pulumi.Input[Optional['SettingJuniperSrxArgs']] = None,
                  led: pulumi.Input[Optional['SettingLedArgs']] = None,
                  marvis: pulumi.Input[Optional['SettingMarvisArgs']] = None,
+                 mxedge_mgmt: pulumi.Input[Optional['SettingMxedgeMgmtArgs']] = None,
+                 mxtunnels: pulumi.Input[Optional['SettingMxtunnelsArgs']] = None,
                  occupancy: pulumi.Input[Optional['SettingOccupancyArgs']] = None,
                  persist_config_on_device: pulumi.Input[Optional[_builtins.bool]] = None,
                  proxy: pulumi.Input[Optional['SettingProxyArgs']] = None,
@@ -816,6 +950,9 @@ class _SettingState:
                  switch_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  synthetic_test: pulumi.Input[Optional['SettingSyntheticTestArgs']] = None,
                  track_anonymous_devices: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tunterm_monitoring_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tunterm_monitorings: pulumi.Input[Optional[Sequence[pulumi.Input['SettingTuntermMonitoringArgs']]]] = None,
+                 tunterm_multicast_config: pulumi.Input[Optional['SettingTuntermMulticastConfigArgs']] = None,
                  uplink_port_config: pulumi.Input[Optional['SettingUplinkPortConfigArgs']] = None,
                  vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vars_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input['SettingVarsAnnotationsArgs']]]] = None,
@@ -834,42 +971,63 @@ class _SettingState:
         Input properties used for looking up and filtering Setting resources.
 
         :param pulumi.Input[_builtins.bool] allow_mist: whether to allow Mist to look at this org
-        :param pulumi.Input['SettingApSyntheticTestArgs'] ap_synthetic_test: AP Synthetic Test configuration
+        :param pulumi.Input['SettingAnalyticArgs'] analytic: Advanced analytics configuration for the site
+        :param pulumi.Input['SettingApSyntheticTestArgs'] ap_synthetic_test: Synthetic test configuration for APs at the site
         :param pulumi.Input[_builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
-        :param pulumi.Input['SettingAutoUpgradeArgs'] auto_upgrade: Auto Upgrade Settings
-        :param pulumi.Input['SettingAutoUpgradeEslArgs'] auto_upgrade_esl: auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware upgrade
+        :param pulumi.Input['SettingAutoUpgradeArgs'] auto_upgrade: Automatic AP firmware upgrade settings for the site. Overrides org setting when provided.
+        :param pulumi.Input['SettingAutoUpgradeEslArgs'] auto_upgrade_esl: Automatic ESL firmware upgrade settings for the site
         :param pulumi.Input[_builtins.int] bgp_neighbor_updown_threshold: enable threshold-based bgp neighbor down delivery.
-        :param pulumi.Input['SettingBleConfigArgs'] ble_config: BLE AP settings
+        :param pulumi.Input[_builtins.str] blacklist_url: Read-only URL for the site blacklist file
+        :param pulumi.Input['SettingBleConfigArgs'] ble_config: Bluetooth Low Energy configuration applied to APs at the site
         :param pulumi.Input[_builtins.bool] config_auto_revert: Whether to enable ap auto config revert
-        :param pulumi.Input['SettingConfigPushPolicyArgs'] config_push_policy: Mist also uses some heuristic rules to prevent destructive configs from being pushed
-        :param pulumi.Input['SettingCriticalUrlMonitoringArgs'] critical_url_monitoring: You can define some URLs that's critical to site operations the latency will be captured and considered for site health
+        :param pulumi.Input['SettingConfigPushPolicyArgs'] config_push_policy: Policy controlling how site configuration pushes are applied
+        :param pulumi.Input['SettingCriticalUrlMonitoringArgs'] critical_url_monitoring: Monitoring configuration for critical URLs at the site
         :param pulumi.Input[_builtins.int] device_updown_threshold: By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following
-        :param pulumi.Input['SettingEngagementArgs'] engagement: **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple ranges for the same day
-        :param pulumi.Input['SettingGatewayMgmtArgs'] gateway_mgmt: Gateway Management settings
+        :param pulumi.Input[_builtins.bool] enable_unii4: Whether UNII-4 channels are enabled for the site
+        :param pulumi.Input['SettingEngagementArgs'] engagement: Dwell-time analytics rules for the site
+        :param pulumi.Input['SettingGatewayMgmtArgs'] gateway_mgmt: Management access settings for gateways at the site
         :param pulumi.Input[_builtins.int] gateway_tunnel_updown_threshold: enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
         :param pulumi.Input[_builtins.int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `device_updown_threshold` is ignored.
-        :param pulumi.Input['SettingIotproxyArgs'] iotproxy: IoT proxy configuration for the site
-        :param pulumi.Input['SettingLedArgs'] led: LED AP settings
-        :param pulumi.Input['SettingOccupancyArgs'] occupancy: Occupancy Analytics settings
+        :param pulumi.Input['SettingIotproxyArgs'] iotproxy: Proxy settings for IoT traffic at the site
+        :param pulumi.Input['SettingJuniperSrxArgs'] juniper_srx: SRX integration settings for the site
+        :param pulumi.Input['SettingLedArgs'] led: AP LED behavior configured for the site
+        :param pulumi.Input['SettingMarvisArgs'] marvis: AI assistant settings for Marvis at the site
+        :param pulumi.Input['SettingMxedgeMgmtArgs'] mxedge_mgmt: Mist Edge management access settings for the site
+        :param pulumi.Input['SettingMxtunnelsArgs'] mxtunnels: Site Mist Tunnel configuration
+        :param pulumi.Input['SettingOccupancyArgs'] occupancy: Analytics settings for site occupancy
         :param pulumi.Input[_builtins.bool] persist_config_on_device: Whether to store the config on AP
-        :param pulumi.Input['SettingProxyArgs'] proxy: Proxy Configuration to talk to Mist
+        :param pulumi.Input['SettingProxyArgs'] proxy: Network proxy settings for devices at the site
         :param pulumi.Input[_builtins.bool] remove_existing_configs: By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
         :param pulumi.Input[_builtins.bool] report_gatt: Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name, serial number, battery %, temperature, humidity)
-        :param pulumi.Input['SettingRogueArgs'] rogue: Rogue site settings
-        :param pulumi.Input['SettingRtsaArgs'] rtsa: Managed mobility
-        :param pulumi.Input['SettingSimpleAlertArgs'] simple_alert: Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute window, there are more than Y distinct client encountering over X failures
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssh_keys: When limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see Org:Setting)
+        :param pulumi.Input['SettingRogueArgs'] rogue: AP threat detection settings for the site
+        :param pulumi.Input['SettingRtsaArgs'] rtsa: Managed mobility and asset tracking settings for the site
+        :param pulumi.Input['SettingSimpleAlertArgs'] simple_alert: Threshold alert settings for the site
+        :param pulumi.Input[_builtins.str] site_id: Identifier of the site these settings apply to
+        :param pulumi.Input['SettingSkyatpArgs'] skyatp: Threat intelligence settings from Sky ATP for the site
+        :param pulumi.Input['SettingSleThresholdsArgs'] sle_thresholds: Service level expectation threshold settings for the site
+        :param pulumi.Input['SettingSrxAppArgs'] srx_app: Juniper SRX application visibility settings for the site
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssh_keys: Public SSH keys configured for the site
+        :param pulumi.Input['SettingSsrArgs'] ssr: Session Smart Router settings for the site
         :param pulumi.Input[_builtins.int] switch_updown_threshold: Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
+        :param pulumi.Input['SettingSyntheticTestArgs'] synthetic_test: Active monitoring test configuration for the site
         :param pulumi.Input[_builtins.bool] track_anonymous_devices: Whether to track anonymous BLE assets (requires ‘track_asset’  enabled)
-        :param pulumi.Input['SettingUplinkPortConfigArgs'] uplink_port_config: AP Uplink port configuration
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
-        :param pulumi.Input[Mapping[str, pulumi.Input['SettingVarsAnnotationsArgs']]] vars_annotations: Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+        :param pulumi.Input[_builtins.bool] tunterm_monitoring_disabled: Whether tunnel termination monitoring is disabled for the site
+        :param pulumi.Input[Sequence[pulumi.Input['SettingTuntermMonitoringArgs']]] tunterm_monitorings: Tunnel termination monitoring settings for the site
+        :param pulumi.Input['SettingTuntermMulticastConfigArgs'] tunterm_multicast_config: Multicast settings for tunnel termination at the site
+        :param pulumi.Input['SettingUplinkPortConfigArgs'] uplink_port_config: AP uplink port configuration for the site
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Template variables defined for the site
+        :param pulumi.Input[Mapping[str, pulumi.Input['SettingVarsAnnotationsArgs']]] vars_annotations: Metadata annotations for site template variables
+        :param pulumi.Input['SettingVnaArgs'] vna: Virtual Network Assistant settings for the site
         :param pulumi.Input[_builtins.int] vpn_path_updown_threshold: enable threshold-based vpn path down delivery.
         :param pulumi.Input[_builtins.int] vpn_peer_updown_threshold: enable threshold-based vpn peer down delivery.
-        :param pulumi.Input[Mapping[str, pulumi.Input['SettingVsInstanceArgs']]] vs_instance: Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
-        :param pulumi.Input['SettingWidsArgs'] wids: WIDS site settings
-        :param pulumi.Input['SettingWifiArgs'] wifi: Wi-Fi site settings
-        :param pulumi.Input['SettingZoneOccupancyAlertArgs'] zone_occupancy_alert: Zone Occupancy alert site settings
+        :param pulumi.Input[Mapping[str, pulumi.Input['SettingVsInstanceArgs']]] vs_instance: EX9200 virtual switch instance definitions for the site
+        :param pulumi.Input['SettingWanVnaArgs'] wan_vna: Virtual Network Assistant settings for WAN experiences at the site
+        :param pulumi.Input[_builtins.str] watched_station_url: Read-only URL for the watched station list file
+        :param pulumi.Input[_builtins.str] whitelist_url: Read-only URL for the site whitelist file
+        :param pulumi.Input['SettingWidsArgs'] wids: Wireless intrusion detection settings for the site
+        :param pulumi.Input['SettingWifiArgs'] wifi: Wireless LAN configuration settings for the site
+        :param pulumi.Input['SettingWiredVnaArgs'] wired_vna: Virtual Network Assistant settings for wired experiences at the site
+        :param pulumi.Input['SettingZoneOccupancyAlertArgs'] zone_occupancy_alert: Occupancy alert settings for site zones
         """
         if allow_mist is not None:
             pulumi.set(__self__, "allow_mist", allow_mist)
@@ -915,6 +1073,10 @@ class _SettingState:
             pulumi.set(__self__, "led", led)
         if marvis is not None:
             pulumi.set(__self__, "marvis", marvis)
+        if mxedge_mgmt is not None:
+            pulumi.set(__self__, "mxedge_mgmt", mxedge_mgmt)
+        if mxtunnels is not None:
+            pulumi.set(__self__, "mxtunnels", mxtunnels)
         if occupancy is not None:
             pulumi.set(__self__, "occupancy", occupancy)
         if persist_config_on_device is not None:
@@ -949,6 +1111,12 @@ class _SettingState:
             pulumi.set(__self__, "synthetic_test", synthetic_test)
         if track_anonymous_devices is not None:
             pulumi.set(__self__, "track_anonymous_devices", track_anonymous_devices)
+        if tunterm_monitoring_disabled is not None:
+            pulumi.set(__self__, "tunterm_monitoring_disabled", tunterm_monitoring_disabled)
+        if tunterm_monitorings is not None:
+            pulumi.set(__self__, "tunterm_monitorings", tunterm_monitorings)
+        if tunterm_multicast_config is not None:
+            pulumi.set(__self__, "tunterm_multicast_config", tunterm_multicast_config)
         if uplink_port_config is not None:
             pulumi.set(__self__, "uplink_port_config", uplink_port_config)
         if vars is not None:
@@ -993,6 +1161,9 @@ class _SettingState:
     @_builtins.property
     @pulumi.getter
     def analytic(self) -> pulumi.Input[Optional['SettingAnalyticArgs']]:
+        """
+        Advanced analytics configuration for the site
+        """
         return pulumi.get(self, "analytic")
 
     @analytic.setter
@@ -1003,7 +1174,7 @@ class _SettingState:
     @pulumi.getter(name="apSyntheticTest")
     def ap_synthetic_test(self) -> pulumi.Input[Optional['SettingApSyntheticTestArgs']]:
         """
-        AP Synthetic Test configuration
+        Synthetic test configuration for APs at the site
         """
         return pulumi.get(self, "ap_synthetic_test")
 
@@ -1027,7 +1198,7 @@ class _SettingState:
     @pulumi.getter(name="autoUpgrade")
     def auto_upgrade(self) -> pulumi.Input[Optional['SettingAutoUpgradeArgs']]:
         """
-        Auto Upgrade Settings
+        Automatic AP firmware upgrade settings for the site. Overrides org setting when provided.
         """
         return pulumi.get(self, "auto_upgrade")
 
@@ -1039,7 +1210,7 @@ class _SettingState:
     @pulumi.getter(name="autoUpgradeEsl")
     def auto_upgrade_esl(self) -> pulumi.Input[Optional['SettingAutoUpgradeEslArgs']]:
         """
-        auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware upgrade
+        Automatic ESL firmware upgrade settings for the site
         """
         return pulumi.get(self, "auto_upgrade_esl")
 
@@ -1062,6 +1233,9 @@ class _SettingState:
     @_builtins.property
     @pulumi.getter(name="blacklistUrl")
     def blacklist_url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Read-only URL for the site blacklist file
+        """
         return pulumi.get(self, "blacklist_url")
 
     @blacklist_url.setter
@@ -1072,7 +1246,7 @@ class _SettingState:
     @pulumi.getter(name="bleConfig")
     def ble_config(self) -> pulumi.Input[Optional['SettingBleConfigArgs']]:
         """
-        BLE AP settings
+        Bluetooth Low Energy configuration applied to APs at the site
         """
         return pulumi.get(self, "ble_config")
 
@@ -1096,7 +1270,7 @@ class _SettingState:
     @pulumi.getter(name="configPushPolicy")
     def config_push_policy(self) -> pulumi.Input[Optional['SettingConfigPushPolicyArgs']]:
         """
-        Mist also uses some heuristic rules to prevent destructive configs from being pushed
+        Policy controlling how site configuration pushes are applied
         """
         return pulumi.get(self, "config_push_policy")
 
@@ -1108,7 +1282,7 @@ class _SettingState:
     @pulumi.getter(name="criticalUrlMonitoring")
     def critical_url_monitoring(self) -> pulumi.Input[Optional['SettingCriticalUrlMonitoringArgs']]:
         """
-        You can define some URLs that's critical to site operations the latency will be captured and considered for site health
+        Monitoring configuration for critical URLs at the site
         """
         return pulumi.get(self, "critical_url_monitoring")
 
@@ -1131,6 +1305,9 @@ class _SettingState:
     @_builtins.property
     @pulumi.getter(name="enableUnii4")
     def enable_unii4(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether UNII-4 channels are enabled for the site
+        """
         return pulumi.get(self, "enable_unii4")
 
     @enable_unii4.setter
@@ -1141,7 +1318,7 @@ class _SettingState:
     @pulumi.getter
     def engagement(self) -> pulumi.Input[Optional['SettingEngagementArgs']]:
         """
-        **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple ranges for the same day
+        Dwell-time analytics rules for the site
         """
         return pulumi.get(self, "engagement")
 
@@ -1153,7 +1330,7 @@ class _SettingState:
     @pulumi.getter(name="gatewayMgmt")
     def gateway_mgmt(self) -> pulumi.Input[Optional['SettingGatewayMgmtArgs']]:
         """
-        Gateway Management settings
+        Management access settings for gateways at the site
         """
         return pulumi.get(self, "gateway_mgmt")
 
@@ -1189,7 +1366,7 @@ class _SettingState:
     @pulumi.getter
     def iotproxy(self) -> pulumi.Input[Optional['SettingIotproxyArgs']]:
         """
-        IoT proxy configuration for the site
+        Proxy settings for IoT traffic at the site
         """
         return pulumi.get(self, "iotproxy")
 
@@ -1200,6 +1377,9 @@ class _SettingState:
     @_builtins.property
     @pulumi.getter(name="juniperSrx")
     def juniper_srx(self) -> pulumi.Input[Optional['SettingJuniperSrxArgs']]:
+        """
+        SRX integration settings for the site
+        """
         return pulumi.get(self, "juniper_srx")
 
     @juniper_srx.setter
@@ -1210,7 +1390,7 @@ class _SettingState:
     @pulumi.getter
     def led(self) -> pulumi.Input[Optional['SettingLedArgs']]:
         """
-        LED AP settings
+        AP LED behavior configured for the site
         """
         return pulumi.get(self, "led")
 
@@ -1221,6 +1401,9 @@ class _SettingState:
     @_builtins.property
     @pulumi.getter
     def marvis(self) -> pulumi.Input[Optional['SettingMarvisArgs']]:
+        """
+        AI assistant settings for Marvis at the site
+        """
         return pulumi.get(self, "marvis")
 
     @marvis.setter
@@ -1228,10 +1411,34 @@ class _SettingState:
         pulumi.set(self, "marvis", value)
 
     @_builtins.property
+    @pulumi.getter(name="mxedgeMgmt")
+    def mxedge_mgmt(self) -> pulumi.Input[Optional['SettingMxedgeMgmtArgs']]:
+        """
+        Mist Edge management access settings for the site
+        """
+        return pulumi.get(self, "mxedge_mgmt")
+
+    @mxedge_mgmt.setter
+    def mxedge_mgmt(self, value: pulumi.Input[Optional['SettingMxedgeMgmtArgs']]):
+        pulumi.set(self, "mxedge_mgmt", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def mxtunnels(self) -> pulumi.Input[Optional['SettingMxtunnelsArgs']]:
+        """
+        Site Mist Tunnel configuration
+        """
+        return pulumi.get(self, "mxtunnels")
+
+    @mxtunnels.setter
+    def mxtunnels(self, value: pulumi.Input[Optional['SettingMxtunnelsArgs']]):
+        pulumi.set(self, "mxtunnels", value)
+
+    @_builtins.property
     @pulumi.getter
     def occupancy(self) -> pulumi.Input[Optional['SettingOccupancyArgs']]:
         """
-        Occupancy Analytics settings
+        Analytics settings for site occupancy
         """
         return pulumi.get(self, "occupancy")
 
@@ -1255,7 +1462,7 @@ class _SettingState:
     @pulumi.getter
     def proxy(self) -> pulumi.Input[Optional['SettingProxyArgs']]:
         """
-        Proxy Configuration to talk to Mist
+        Network proxy settings for devices at the site
         """
         return pulumi.get(self, "proxy")
 
@@ -1291,7 +1498,7 @@ class _SettingState:
     @pulumi.getter
     def rogue(self) -> pulumi.Input[Optional['SettingRogueArgs']]:
         """
-        Rogue site settings
+        AP threat detection settings for the site
         """
         return pulumi.get(self, "rogue")
 
@@ -1303,7 +1510,7 @@ class _SettingState:
     @pulumi.getter
     def rtsa(self) -> pulumi.Input[Optional['SettingRtsaArgs']]:
         """
-        Managed mobility
+        Managed mobility and asset tracking settings for the site
         """
         return pulumi.get(self, "rtsa")
 
@@ -1315,7 +1522,7 @@ class _SettingState:
     @pulumi.getter(name="simpleAlert")
     def simple_alert(self) -> pulumi.Input[Optional['SettingSimpleAlertArgs']]:
         """
-        Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute window, there are more than Y distinct client encountering over X failures
+        Threshold alert settings for the site
         """
         return pulumi.get(self, "simple_alert")
 
@@ -1326,6 +1533,9 @@ class _SettingState:
     @_builtins.property
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Identifier of the site these settings apply to
+        """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
@@ -1335,6 +1545,9 @@ class _SettingState:
     @_builtins.property
     @pulumi.getter
     def skyatp(self) -> pulumi.Input[Optional['SettingSkyatpArgs']]:
+        """
+        Threat intelligence settings from Sky ATP for the site
+        """
         return pulumi.get(self, "skyatp")
 
     @skyatp.setter
@@ -1344,6 +1557,9 @@ class _SettingState:
     @_builtins.property
     @pulumi.getter(name="sleThresholds")
     def sle_thresholds(self) -> pulumi.Input[Optional['SettingSleThresholdsArgs']]:
+        """
+        Service level expectation threshold settings for the site
+        """
         return pulumi.get(self, "sle_thresholds")
 
     @sle_thresholds.setter
@@ -1353,6 +1569,9 @@ class _SettingState:
     @_builtins.property
     @pulumi.getter(name="srxApp")
     def srx_app(self) -> pulumi.Input[Optional['SettingSrxAppArgs']]:
+        """
+        Juniper SRX application visibility settings for the site
+        """
         return pulumi.get(self, "srx_app")
 
     @srx_app.setter
@@ -1363,7 +1582,7 @@ class _SettingState:
     @pulumi.getter(name="sshKeys")
     def ssh_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        When limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see Org:Setting)
+        Public SSH keys configured for the site
         """
         return pulumi.get(self, "ssh_keys")
 
@@ -1374,6 +1593,9 @@ class _SettingState:
     @_builtins.property
     @pulumi.getter
     def ssr(self) -> pulumi.Input[Optional['SettingSsrArgs']]:
+        """
+        Session Smart Router settings for the site
+        """
         return pulumi.get(self, "ssr")
 
     @ssr.setter
@@ -1395,6 +1617,9 @@ class _SettingState:
     @_builtins.property
     @pulumi.getter(name="syntheticTest")
     def synthetic_test(self) -> pulumi.Input[Optional['SettingSyntheticTestArgs']]:
+        """
+        Active monitoring test configuration for the site
+        """
         return pulumi.get(self, "synthetic_test")
 
     @synthetic_test.setter
@@ -1414,10 +1639,46 @@ class _SettingState:
         pulumi.set(self, "track_anonymous_devices", value)
 
     @_builtins.property
+    @pulumi.getter(name="tuntermMonitoringDisabled")
+    def tunterm_monitoring_disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether tunnel termination monitoring is disabled for the site
+        """
+        return pulumi.get(self, "tunterm_monitoring_disabled")
+
+    @tunterm_monitoring_disabled.setter
+    def tunterm_monitoring_disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "tunterm_monitoring_disabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tuntermMonitorings")
+    def tunterm_monitorings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SettingTuntermMonitoringArgs']]]]:
+        """
+        Tunnel termination monitoring settings for the site
+        """
+        return pulumi.get(self, "tunterm_monitorings")
+
+    @tunterm_monitorings.setter
+    def tunterm_monitorings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SettingTuntermMonitoringArgs']]]]):
+        pulumi.set(self, "tunterm_monitorings", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tuntermMulticastConfig")
+    def tunterm_multicast_config(self) -> pulumi.Input[Optional['SettingTuntermMulticastConfigArgs']]:
+        """
+        Multicast settings for tunnel termination at the site
+        """
+        return pulumi.get(self, "tunterm_multicast_config")
+
+    @tunterm_multicast_config.setter
+    def tunterm_multicast_config(self, value: pulumi.Input[Optional['SettingTuntermMulticastConfigArgs']]):
+        pulumi.set(self, "tunterm_multicast_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="uplinkPortConfig")
     def uplink_port_config(self) -> pulumi.Input[Optional['SettingUplinkPortConfigArgs']]:
         """
-        AP Uplink port configuration
+        AP uplink port configuration for the site
         """
         return pulumi.get(self, "uplink_port_config")
 
@@ -1429,7 +1690,7 @@ class _SettingState:
     @pulumi.getter
     def vars(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        Template variables defined for the site
         """
         return pulumi.get(self, "vars")
 
@@ -1441,7 +1702,7 @@ class _SettingState:
     @pulumi.getter(name="varsAnnotations")
     def vars_annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SettingVarsAnnotationsArgs']]]]:
         """
-        Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+        Metadata annotations for site template variables
         """
         return pulumi.get(self, "vars_annotations")
 
@@ -1452,6 +1713,9 @@ class _SettingState:
     @_builtins.property
     @pulumi.getter
     def vna(self) -> pulumi.Input[Optional['SettingVnaArgs']]:
+        """
+        Virtual Network Assistant settings for the site
+        """
         return pulumi.get(self, "vna")
 
     @vna.setter
@@ -1486,7 +1750,7 @@ class _SettingState:
     @pulumi.getter(name="vsInstance")
     def vs_instance(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SettingVsInstanceArgs']]]]:
         """
-        Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
+        EX9200 virtual switch instance definitions for the site
         """
         return pulumi.get(self, "vs_instance")
 
@@ -1497,6 +1761,9 @@ class _SettingState:
     @_builtins.property
     @pulumi.getter(name="wanVna")
     def wan_vna(self) -> pulumi.Input[Optional['SettingWanVnaArgs']]:
+        """
+        Virtual Network Assistant settings for WAN experiences at the site
+        """
         return pulumi.get(self, "wan_vna")
 
     @wan_vna.setter
@@ -1506,6 +1773,9 @@ class _SettingState:
     @_builtins.property
     @pulumi.getter(name="watchedStationUrl")
     def watched_station_url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Read-only URL for the watched station list file
+        """
         return pulumi.get(self, "watched_station_url")
 
     @watched_station_url.setter
@@ -1515,6 +1785,9 @@ class _SettingState:
     @_builtins.property
     @pulumi.getter(name="whitelistUrl")
     def whitelist_url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Read-only URL for the site whitelist file
+        """
         return pulumi.get(self, "whitelist_url")
 
     @whitelist_url.setter
@@ -1525,7 +1798,7 @@ class _SettingState:
     @pulumi.getter
     def wids(self) -> pulumi.Input[Optional['SettingWidsArgs']]:
         """
-        WIDS site settings
+        Wireless intrusion detection settings for the site
         """
         return pulumi.get(self, "wids")
 
@@ -1537,7 +1810,7 @@ class _SettingState:
     @pulumi.getter
     def wifi(self) -> pulumi.Input[Optional['SettingWifiArgs']]:
         """
-        Wi-Fi site settings
+        Wireless LAN configuration settings for the site
         """
         return pulumi.get(self, "wifi")
 
@@ -1548,6 +1821,9 @@ class _SettingState:
     @_builtins.property
     @pulumi.getter(name="wiredVna")
     def wired_vna(self) -> pulumi.Input[Optional['SettingWiredVnaArgs']]:
+        """
+        Virtual Network Assistant settings for wired experiences at the site
+        """
         return pulumi.get(self, "wired_vna")
 
     @wired_vna.setter
@@ -1558,7 +1834,7 @@ class _SettingState:
     @pulumi.getter(name="zoneOccupancyAlert")
     def zone_occupancy_alert(self) -> pulumi.Input[Optional['SettingZoneOccupancyAlertArgs']]:
         """
-        Zone Occupancy alert site settings
+        Occupancy alert settings for site zones
         """
         return pulumi.get(self, "zone_occupancy_alert")
 
@@ -1594,6 +1870,8 @@ class Setting(pulumi.CustomResource):
                  juniper_srx: pulumi.Input[Optional[Union['SettingJuniperSrxArgs', 'SettingJuniperSrxArgsDict']]] = None,
                  led: pulumi.Input[Optional[Union['SettingLedArgs', 'SettingLedArgsDict']]] = None,
                  marvis: pulumi.Input[Optional[Union['SettingMarvisArgs', 'SettingMarvisArgsDict']]] = None,
+                 mxedge_mgmt: pulumi.Input[Optional[Union['SettingMxedgeMgmtArgs', 'SettingMxedgeMgmtArgsDict']]] = None,
+                 mxtunnels: pulumi.Input[Optional[Union['SettingMxtunnelsArgs', 'SettingMxtunnelsArgsDict']]] = None,
                  occupancy: pulumi.Input[Optional[Union['SettingOccupancyArgs', 'SettingOccupancyArgsDict']]] = None,
                  persist_config_on_device: pulumi.Input[Optional[_builtins.bool]] = None,
                  proxy: pulumi.Input[Optional[Union['SettingProxyArgs', 'SettingProxyArgsDict']]] = None,
@@ -1611,6 +1889,9 @@ class Setting(pulumi.CustomResource):
                  switch_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  synthetic_test: pulumi.Input[Optional[Union['SettingSyntheticTestArgs', 'SettingSyntheticTestArgsDict']]] = None,
                  track_anonymous_devices: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tunterm_monitoring_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tunterm_monitorings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SettingTuntermMonitoringArgs', 'SettingTuntermMonitoringArgsDict']]]]] = None,
+                 tunterm_multicast_config: pulumi.Input[Optional[Union['SettingTuntermMulticastConfigArgs', 'SettingTuntermMulticastConfigArgsDict']]] = None,
                  uplink_port_config: pulumi.Input[Optional[Union['SettingUplinkPortConfigArgs', 'SettingUplinkPortConfigArgsDict']]] = None,
                  vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vars_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SettingVarsAnnotationsArgs', 'SettingVarsAnnotationsArgsDict']]]]] = None,
@@ -1674,42 +1955,60 @@ class Setting(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_mist: whether to allow Mist to look at this org
-        :param pulumi.Input[Union['SettingApSyntheticTestArgs', 'SettingApSyntheticTestArgsDict']] ap_synthetic_test: AP Synthetic Test configuration
+        :param pulumi.Input[Union['SettingAnalyticArgs', 'SettingAnalyticArgsDict']] analytic: Advanced analytics configuration for the site
+        :param pulumi.Input[Union['SettingApSyntheticTestArgs', 'SettingApSyntheticTestArgsDict']] ap_synthetic_test: Synthetic test configuration for APs at the site
         :param pulumi.Input[_builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
-        :param pulumi.Input[Union['SettingAutoUpgradeArgs', 'SettingAutoUpgradeArgsDict']] auto_upgrade: Auto Upgrade Settings
-        :param pulumi.Input[Union['SettingAutoUpgradeEslArgs', 'SettingAutoUpgradeEslArgsDict']] auto_upgrade_esl: auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware upgrade
+        :param pulumi.Input[Union['SettingAutoUpgradeArgs', 'SettingAutoUpgradeArgsDict']] auto_upgrade: Automatic AP firmware upgrade settings for the site. Overrides org setting when provided.
+        :param pulumi.Input[Union['SettingAutoUpgradeEslArgs', 'SettingAutoUpgradeEslArgsDict']] auto_upgrade_esl: Automatic ESL firmware upgrade settings for the site
         :param pulumi.Input[_builtins.int] bgp_neighbor_updown_threshold: enable threshold-based bgp neighbor down delivery.
-        :param pulumi.Input[Union['SettingBleConfigArgs', 'SettingBleConfigArgsDict']] ble_config: BLE AP settings
+        :param pulumi.Input[Union['SettingBleConfigArgs', 'SettingBleConfigArgsDict']] ble_config: Bluetooth Low Energy configuration applied to APs at the site
         :param pulumi.Input[_builtins.bool] config_auto_revert: Whether to enable ap auto config revert
-        :param pulumi.Input[Union['SettingConfigPushPolicyArgs', 'SettingConfigPushPolicyArgsDict']] config_push_policy: Mist also uses some heuristic rules to prevent destructive configs from being pushed
-        :param pulumi.Input[Union['SettingCriticalUrlMonitoringArgs', 'SettingCriticalUrlMonitoringArgsDict']] critical_url_monitoring: You can define some URLs that's critical to site operations the latency will be captured and considered for site health
+        :param pulumi.Input[Union['SettingConfigPushPolicyArgs', 'SettingConfigPushPolicyArgsDict']] config_push_policy: Policy controlling how site configuration pushes are applied
+        :param pulumi.Input[Union['SettingCriticalUrlMonitoringArgs', 'SettingCriticalUrlMonitoringArgsDict']] critical_url_monitoring: Monitoring configuration for critical URLs at the site
         :param pulumi.Input[_builtins.int] device_updown_threshold: By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following
-        :param pulumi.Input[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']] engagement: **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple ranges for the same day
-        :param pulumi.Input[Union['SettingGatewayMgmtArgs', 'SettingGatewayMgmtArgsDict']] gateway_mgmt: Gateway Management settings
+        :param pulumi.Input[_builtins.bool] enable_unii4: Whether UNII-4 channels are enabled for the site
+        :param pulumi.Input[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']] engagement: Dwell-time analytics rules for the site
+        :param pulumi.Input[Union['SettingGatewayMgmtArgs', 'SettingGatewayMgmtArgsDict']] gateway_mgmt: Management access settings for gateways at the site
         :param pulumi.Input[_builtins.int] gateway_tunnel_updown_threshold: enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
         :param pulumi.Input[_builtins.int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `device_updown_threshold` is ignored.
-        :param pulumi.Input[Union['SettingIotproxyArgs', 'SettingIotproxyArgsDict']] iotproxy: IoT proxy configuration for the site
-        :param pulumi.Input[Union['SettingLedArgs', 'SettingLedArgsDict']] led: LED AP settings
-        :param pulumi.Input[Union['SettingOccupancyArgs', 'SettingOccupancyArgsDict']] occupancy: Occupancy Analytics settings
+        :param pulumi.Input[Union['SettingIotproxyArgs', 'SettingIotproxyArgsDict']] iotproxy: Proxy settings for IoT traffic at the site
+        :param pulumi.Input[Union['SettingJuniperSrxArgs', 'SettingJuniperSrxArgsDict']] juniper_srx: SRX integration settings for the site
+        :param pulumi.Input[Union['SettingLedArgs', 'SettingLedArgsDict']] led: AP LED behavior configured for the site
+        :param pulumi.Input[Union['SettingMarvisArgs', 'SettingMarvisArgsDict']] marvis: AI assistant settings for Marvis at the site
+        :param pulumi.Input[Union['SettingMxedgeMgmtArgs', 'SettingMxedgeMgmtArgsDict']] mxedge_mgmt: Mist Edge management access settings for the site
+        :param pulumi.Input[Union['SettingMxtunnelsArgs', 'SettingMxtunnelsArgsDict']] mxtunnels: Site Mist Tunnel configuration
+        :param pulumi.Input[Union['SettingOccupancyArgs', 'SettingOccupancyArgsDict']] occupancy: Analytics settings for site occupancy
         :param pulumi.Input[_builtins.bool] persist_config_on_device: Whether to store the config on AP
-        :param pulumi.Input[Union['SettingProxyArgs', 'SettingProxyArgsDict']] proxy: Proxy Configuration to talk to Mist
+        :param pulumi.Input[Union['SettingProxyArgs', 'SettingProxyArgsDict']] proxy: Network proxy settings for devices at the site
         :param pulumi.Input[_builtins.bool] remove_existing_configs: By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
         :param pulumi.Input[_builtins.bool] report_gatt: Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name, serial number, battery %, temperature, humidity)
-        :param pulumi.Input[Union['SettingRogueArgs', 'SettingRogueArgsDict']] rogue: Rogue site settings
-        :param pulumi.Input[Union['SettingRtsaArgs', 'SettingRtsaArgsDict']] rtsa: Managed mobility
-        :param pulumi.Input[Union['SettingSimpleAlertArgs', 'SettingSimpleAlertArgsDict']] simple_alert: Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute window, there are more than Y distinct client encountering over X failures
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssh_keys: When limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see Org:Setting)
+        :param pulumi.Input[Union['SettingRogueArgs', 'SettingRogueArgsDict']] rogue: AP threat detection settings for the site
+        :param pulumi.Input[Union['SettingRtsaArgs', 'SettingRtsaArgsDict']] rtsa: Managed mobility and asset tracking settings for the site
+        :param pulumi.Input[Union['SettingSimpleAlertArgs', 'SettingSimpleAlertArgsDict']] simple_alert: Threshold alert settings for the site
+        :param pulumi.Input[_builtins.str] site_id: Identifier of the site these settings apply to
+        :param pulumi.Input[Union['SettingSkyatpArgs', 'SettingSkyatpArgsDict']] skyatp: Threat intelligence settings from Sky ATP for the site
+        :param pulumi.Input[Union['SettingSleThresholdsArgs', 'SettingSleThresholdsArgsDict']] sle_thresholds: Service level expectation threshold settings for the site
+        :param pulumi.Input[Union['SettingSrxAppArgs', 'SettingSrxAppArgsDict']] srx_app: Juniper SRX application visibility settings for the site
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssh_keys: Public SSH keys configured for the site
+        :param pulumi.Input[Union['SettingSsrArgs', 'SettingSsrArgsDict']] ssr: Session Smart Router settings for the site
         :param pulumi.Input[_builtins.int] switch_updown_threshold: Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
+        :param pulumi.Input[Union['SettingSyntheticTestArgs', 'SettingSyntheticTestArgsDict']] synthetic_test: Active monitoring test configuration for the site
         :param pulumi.Input[_builtins.bool] track_anonymous_devices: Whether to track anonymous BLE assets (requires ‘track_asset’  enabled)
-        :param pulumi.Input[Union['SettingUplinkPortConfigArgs', 'SettingUplinkPortConfigArgsDict']] uplink_port_config: AP Uplink port configuration
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SettingVarsAnnotationsArgs', 'SettingVarsAnnotationsArgsDict']]]] vars_annotations: Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+        :param pulumi.Input[_builtins.bool] tunterm_monitoring_disabled: Whether tunnel termination monitoring is disabled for the site
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SettingTuntermMonitoringArgs', 'SettingTuntermMonitoringArgsDict']]]] tunterm_monitorings: Tunnel termination monitoring settings for the site
+        :param pulumi.Input[Union['SettingTuntermMulticastConfigArgs', 'SettingTuntermMulticastConfigArgsDict']] tunterm_multicast_config: Multicast settings for tunnel termination at the site
+        :param pulumi.Input[Union['SettingUplinkPortConfigArgs', 'SettingUplinkPortConfigArgsDict']] uplink_port_config: AP uplink port configuration for the site
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Template variables defined for the site
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SettingVarsAnnotationsArgs', 'SettingVarsAnnotationsArgsDict']]]] vars_annotations: Metadata annotations for site template variables
+        :param pulumi.Input[Union['SettingVnaArgs', 'SettingVnaArgsDict']] vna: Virtual Network Assistant settings for the site
         :param pulumi.Input[_builtins.int] vpn_path_updown_threshold: enable threshold-based vpn path down delivery.
         :param pulumi.Input[_builtins.int] vpn_peer_updown_threshold: enable threshold-based vpn peer down delivery.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SettingVsInstanceArgs', 'SettingVsInstanceArgsDict']]]] vs_instance: Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
-        :param pulumi.Input[Union['SettingWidsArgs', 'SettingWidsArgsDict']] wids: WIDS site settings
-        :param pulumi.Input[Union['SettingWifiArgs', 'SettingWifiArgsDict']] wifi: Wi-Fi site settings
-        :param pulumi.Input[Union['SettingZoneOccupancyAlertArgs', 'SettingZoneOccupancyAlertArgsDict']] zone_occupancy_alert: Zone Occupancy alert site settings
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SettingVsInstanceArgs', 'SettingVsInstanceArgsDict']]]] vs_instance: EX9200 virtual switch instance definitions for the site
+        :param pulumi.Input[Union['SettingWanVnaArgs', 'SettingWanVnaArgsDict']] wan_vna: Virtual Network Assistant settings for WAN experiences at the site
+        :param pulumi.Input[Union['SettingWidsArgs', 'SettingWidsArgsDict']] wids: Wireless intrusion detection settings for the site
+        :param pulumi.Input[Union['SettingWifiArgs', 'SettingWifiArgsDict']] wifi: Wireless LAN configuration settings for the site
+        :param pulumi.Input[Union['SettingWiredVnaArgs', 'SettingWiredVnaArgsDict']] wired_vna: Virtual Network Assistant settings for wired experiences at the site
+        :param pulumi.Input[Union['SettingZoneOccupancyAlertArgs', 'SettingZoneOccupancyAlertArgsDict']] zone_occupancy_alert: Occupancy alert settings for site zones
         """
         ...
     @overload
@@ -1800,6 +2099,8 @@ class Setting(pulumi.CustomResource):
                  juniper_srx: pulumi.Input[Optional[Union['SettingJuniperSrxArgs', 'SettingJuniperSrxArgsDict']]] = None,
                  led: pulumi.Input[Optional[Union['SettingLedArgs', 'SettingLedArgsDict']]] = None,
                  marvis: pulumi.Input[Optional[Union['SettingMarvisArgs', 'SettingMarvisArgsDict']]] = None,
+                 mxedge_mgmt: pulumi.Input[Optional[Union['SettingMxedgeMgmtArgs', 'SettingMxedgeMgmtArgsDict']]] = None,
+                 mxtunnels: pulumi.Input[Optional[Union['SettingMxtunnelsArgs', 'SettingMxtunnelsArgsDict']]] = None,
                  occupancy: pulumi.Input[Optional[Union['SettingOccupancyArgs', 'SettingOccupancyArgsDict']]] = None,
                  persist_config_on_device: pulumi.Input[Optional[_builtins.bool]] = None,
                  proxy: pulumi.Input[Optional[Union['SettingProxyArgs', 'SettingProxyArgsDict']]] = None,
@@ -1817,6 +2118,9 @@ class Setting(pulumi.CustomResource):
                  switch_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  synthetic_test: pulumi.Input[Optional[Union['SettingSyntheticTestArgs', 'SettingSyntheticTestArgsDict']]] = None,
                  track_anonymous_devices: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tunterm_monitoring_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tunterm_monitorings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SettingTuntermMonitoringArgs', 'SettingTuntermMonitoringArgsDict']]]]] = None,
+                 tunterm_multicast_config: pulumi.Input[Optional[Union['SettingTuntermMulticastConfigArgs', 'SettingTuntermMulticastConfigArgsDict']]] = None,
                  uplink_port_config: pulumi.Input[Optional[Union['SettingUplinkPortConfigArgs', 'SettingUplinkPortConfigArgsDict']]] = None,
                  vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vars_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SettingVarsAnnotationsArgs', 'SettingVarsAnnotationsArgsDict']]]]] = None,
@@ -1859,6 +2163,8 @@ class Setting(pulumi.CustomResource):
             __props__.__dict__["juniper_srx"] = juniper_srx
             __props__.__dict__["led"] = led
             __props__.__dict__["marvis"] = marvis
+            __props__.__dict__["mxedge_mgmt"] = mxedge_mgmt
+            __props__.__dict__["mxtunnels"] = mxtunnels
             __props__.__dict__["occupancy"] = occupancy
             __props__.__dict__["persist_config_on_device"] = persist_config_on_device
             __props__.__dict__["proxy"] = proxy
@@ -1878,6 +2184,9 @@ class Setting(pulumi.CustomResource):
             __props__.__dict__["switch_updown_threshold"] = switch_updown_threshold
             __props__.__dict__["synthetic_test"] = synthetic_test
             __props__.__dict__["track_anonymous_devices"] = track_anonymous_devices
+            __props__.__dict__["tunterm_monitoring_disabled"] = tunterm_monitoring_disabled
+            __props__.__dict__["tunterm_monitorings"] = tunterm_monitorings
+            __props__.__dict__["tunterm_multicast_config"] = tunterm_multicast_config
             __props__.__dict__["uplink_port_config"] = uplink_port_config
             __props__.__dict__["vars"] = vars
             __props__.__dict__["vars_annotations"] = vars_annotations
@@ -1925,6 +2234,8 @@ class Setting(pulumi.CustomResource):
             juniper_srx: pulumi.Input[Optional[Union['SettingJuniperSrxArgs', 'SettingJuniperSrxArgsDict']]] = None,
             led: pulumi.Input[Optional[Union['SettingLedArgs', 'SettingLedArgsDict']]] = None,
             marvis: pulumi.Input[Optional[Union['SettingMarvisArgs', 'SettingMarvisArgsDict']]] = None,
+            mxedge_mgmt: pulumi.Input[Optional[Union['SettingMxedgeMgmtArgs', 'SettingMxedgeMgmtArgsDict']]] = None,
+            mxtunnels: pulumi.Input[Optional[Union['SettingMxtunnelsArgs', 'SettingMxtunnelsArgsDict']]] = None,
             occupancy: pulumi.Input[Optional[Union['SettingOccupancyArgs', 'SettingOccupancyArgsDict']]] = None,
             persist_config_on_device: pulumi.Input[Optional[_builtins.bool]] = None,
             proxy: pulumi.Input[Optional[Union['SettingProxyArgs', 'SettingProxyArgsDict']]] = None,
@@ -1942,6 +2253,9 @@ class Setting(pulumi.CustomResource):
             switch_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
             synthetic_test: pulumi.Input[Optional[Union['SettingSyntheticTestArgs', 'SettingSyntheticTestArgsDict']]] = None,
             track_anonymous_devices: pulumi.Input[Optional[_builtins.bool]] = None,
+            tunterm_monitoring_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            tunterm_monitorings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SettingTuntermMonitoringArgs', 'SettingTuntermMonitoringArgsDict']]]]] = None,
+            tunterm_multicast_config: pulumi.Input[Optional[Union['SettingTuntermMulticastConfigArgs', 'SettingTuntermMulticastConfigArgsDict']]] = None,
             uplink_port_config: pulumi.Input[Optional[Union['SettingUplinkPortConfigArgs', 'SettingUplinkPortConfigArgsDict']]] = None,
             vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             vars_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SettingVarsAnnotationsArgs', 'SettingVarsAnnotationsArgsDict']]]]] = None,
@@ -1964,42 +2278,63 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_mist: whether to allow Mist to look at this org
-        :param pulumi.Input[Union['SettingApSyntheticTestArgs', 'SettingApSyntheticTestArgsDict']] ap_synthetic_test: AP Synthetic Test configuration
+        :param pulumi.Input[Union['SettingAnalyticArgs', 'SettingAnalyticArgsDict']] analytic: Advanced analytics configuration for the site
+        :param pulumi.Input[Union['SettingApSyntheticTestArgs', 'SettingApSyntheticTestArgsDict']] ap_synthetic_test: Synthetic test configuration for APs at the site
         :param pulumi.Input[_builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
-        :param pulumi.Input[Union['SettingAutoUpgradeArgs', 'SettingAutoUpgradeArgsDict']] auto_upgrade: Auto Upgrade Settings
-        :param pulumi.Input[Union['SettingAutoUpgradeEslArgs', 'SettingAutoUpgradeEslArgsDict']] auto_upgrade_esl: auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware upgrade
+        :param pulumi.Input[Union['SettingAutoUpgradeArgs', 'SettingAutoUpgradeArgsDict']] auto_upgrade: Automatic AP firmware upgrade settings for the site. Overrides org setting when provided.
+        :param pulumi.Input[Union['SettingAutoUpgradeEslArgs', 'SettingAutoUpgradeEslArgsDict']] auto_upgrade_esl: Automatic ESL firmware upgrade settings for the site
         :param pulumi.Input[_builtins.int] bgp_neighbor_updown_threshold: enable threshold-based bgp neighbor down delivery.
-        :param pulumi.Input[Union['SettingBleConfigArgs', 'SettingBleConfigArgsDict']] ble_config: BLE AP settings
+        :param pulumi.Input[_builtins.str] blacklist_url: Read-only URL for the site blacklist file
+        :param pulumi.Input[Union['SettingBleConfigArgs', 'SettingBleConfigArgsDict']] ble_config: Bluetooth Low Energy configuration applied to APs at the site
         :param pulumi.Input[_builtins.bool] config_auto_revert: Whether to enable ap auto config revert
-        :param pulumi.Input[Union['SettingConfigPushPolicyArgs', 'SettingConfigPushPolicyArgsDict']] config_push_policy: Mist also uses some heuristic rules to prevent destructive configs from being pushed
-        :param pulumi.Input[Union['SettingCriticalUrlMonitoringArgs', 'SettingCriticalUrlMonitoringArgsDict']] critical_url_monitoring: You can define some URLs that's critical to site operations the latency will be captured and considered for site health
+        :param pulumi.Input[Union['SettingConfigPushPolicyArgs', 'SettingConfigPushPolicyArgsDict']] config_push_policy: Policy controlling how site configuration pushes are applied
+        :param pulumi.Input[Union['SettingCriticalUrlMonitoringArgs', 'SettingCriticalUrlMonitoringArgsDict']] critical_url_monitoring: Monitoring configuration for critical URLs at the site
         :param pulumi.Input[_builtins.int] device_updown_threshold: By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following
-        :param pulumi.Input[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']] engagement: **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple ranges for the same day
-        :param pulumi.Input[Union['SettingGatewayMgmtArgs', 'SettingGatewayMgmtArgsDict']] gateway_mgmt: Gateway Management settings
+        :param pulumi.Input[_builtins.bool] enable_unii4: Whether UNII-4 channels are enabled for the site
+        :param pulumi.Input[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']] engagement: Dwell-time analytics rules for the site
+        :param pulumi.Input[Union['SettingGatewayMgmtArgs', 'SettingGatewayMgmtArgsDict']] gateway_mgmt: Management access settings for gateways at the site
         :param pulumi.Input[_builtins.int] gateway_tunnel_updown_threshold: enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
         :param pulumi.Input[_builtins.int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `device_updown_threshold` is ignored.
-        :param pulumi.Input[Union['SettingIotproxyArgs', 'SettingIotproxyArgsDict']] iotproxy: IoT proxy configuration for the site
-        :param pulumi.Input[Union['SettingLedArgs', 'SettingLedArgsDict']] led: LED AP settings
-        :param pulumi.Input[Union['SettingOccupancyArgs', 'SettingOccupancyArgsDict']] occupancy: Occupancy Analytics settings
+        :param pulumi.Input[Union['SettingIotproxyArgs', 'SettingIotproxyArgsDict']] iotproxy: Proxy settings for IoT traffic at the site
+        :param pulumi.Input[Union['SettingJuniperSrxArgs', 'SettingJuniperSrxArgsDict']] juniper_srx: SRX integration settings for the site
+        :param pulumi.Input[Union['SettingLedArgs', 'SettingLedArgsDict']] led: AP LED behavior configured for the site
+        :param pulumi.Input[Union['SettingMarvisArgs', 'SettingMarvisArgsDict']] marvis: AI assistant settings for Marvis at the site
+        :param pulumi.Input[Union['SettingMxedgeMgmtArgs', 'SettingMxedgeMgmtArgsDict']] mxedge_mgmt: Mist Edge management access settings for the site
+        :param pulumi.Input[Union['SettingMxtunnelsArgs', 'SettingMxtunnelsArgsDict']] mxtunnels: Site Mist Tunnel configuration
+        :param pulumi.Input[Union['SettingOccupancyArgs', 'SettingOccupancyArgsDict']] occupancy: Analytics settings for site occupancy
         :param pulumi.Input[_builtins.bool] persist_config_on_device: Whether to store the config on AP
-        :param pulumi.Input[Union['SettingProxyArgs', 'SettingProxyArgsDict']] proxy: Proxy Configuration to talk to Mist
+        :param pulumi.Input[Union['SettingProxyArgs', 'SettingProxyArgsDict']] proxy: Network proxy settings for devices at the site
         :param pulumi.Input[_builtins.bool] remove_existing_configs: By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
         :param pulumi.Input[_builtins.bool] report_gatt: Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name, serial number, battery %, temperature, humidity)
-        :param pulumi.Input[Union['SettingRogueArgs', 'SettingRogueArgsDict']] rogue: Rogue site settings
-        :param pulumi.Input[Union['SettingRtsaArgs', 'SettingRtsaArgsDict']] rtsa: Managed mobility
-        :param pulumi.Input[Union['SettingSimpleAlertArgs', 'SettingSimpleAlertArgsDict']] simple_alert: Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute window, there are more than Y distinct client encountering over X failures
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssh_keys: When limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see Org:Setting)
+        :param pulumi.Input[Union['SettingRogueArgs', 'SettingRogueArgsDict']] rogue: AP threat detection settings for the site
+        :param pulumi.Input[Union['SettingRtsaArgs', 'SettingRtsaArgsDict']] rtsa: Managed mobility and asset tracking settings for the site
+        :param pulumi.Input[Union['SettingSimpleAlertArgs', 'SettingSimpleAlertArgsDict']] simple_alert: Threshold alert settings for the site
+        :param pulumi.Input[_builtins.str] site_id: Identifier of the site these settings apply to
+        :param pulumi.Input[Union['SettingSkyatpArgs', 'SettingSkyatpArgsDict']] skyatp: Threat intelligence settings from Sky ATP for the site
+        :param pulumi.Input[Union['SettingSleThresholdsArgs', 'SettingSleThresholdsArgsDict']] sle_thresholds: Service level expectation threshold settings for the site
+        :param pulumi.Input[Union['SettingSrxAppArgs', 'SettingSrxAppArgsDict']] srx_app: Juniper SRX application visibility settings for the site
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssh_keys: Public SSH keys configured for the site
+        :param pulumi.Input[Union['SettingSsrArgs', 'SettingSsrArgsDict']] ssr: Session Smart Router settings for the site
         :param pulumi.Input[_builtins.int] switch_updown_threshold: Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
+        :param pulumi.Input[Union['SettingSyntheticTestArgs', 'SettingSyntheticTestArgsDict']] synthetic_test: Active monitoring test configuration for the site
         :param pulumi.Input[_builtins.bool] track_anonymous_devices: Whether to track anonymous BLE assets (requires ‘track_asset’  enabled)
-        :param pulumi.Input[Union['SettingUplinkPortConfigArgs', 'SettingUplinkPortConfigArgsDict']] uplink_port_config: AP Uplink port configuration
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SettingVarsAnnotationsArgs', 'SettingVarsAnnotationsArgsDict']]]] vars_annotations: Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+        :param pulumi.Input[_builtins.bool] tunterm_monitoring_disabled: Whether tunnel termination monitoring is disabled for the site
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SettingTuntermMonitoringArgs', 'SettingTuntermMonitoringArgsDict']]]] tunterm_monitorings: Tunnel termination monitoring settings for the site
+        :param pulumi.Input[Union['SettingTuntermMulticastConfigArgs', 'SettingTuntermMulticastConfigArgsDict']] tunterm_multicast_config: Multicast settings for tunnel termination at the site
+        :param pulumi.Input[Union['SettingUplinkPortConfigArgs', 'SettingUplinkPortConfigArgsDict']] uplink_port_config: AP uplink port configuration for the site
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Template variables defined for the site
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SettingVarsAnnotationsArgs', 'SettingVarsAnnotationsArgsDict']]]] vars_annotations: Metadata annotations for site template variables
+        :param pulumi.Input[Union['SettingVnaArgs', 'SettingVnaArgsDict']] vna: Virtual Network Assistant settings for the site
         :param pulumi.Input[_builtins.int] vpn_path_updown_threshold: enable threshold-based vpn path down delivery.
         :param pulumi.Input[_builtins.int] vpn_peer_updown_threshold: enable threshold-based vpn peer down delivery.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SettingVsInstanceArgs', 'SettingVsInstanceArgsDict']]]] vs_instance: Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
-        :param pulumi.Input[Union['SettingWidsArgs', 'SettingWidsArgsDict']] wids: WIDS site settings
-        :param pulumi.Input[Union['SettingWifiArgs', 'SettingWifiArgsDict']] wifi: Wi-Fi site settings
-        :param pulumi.Input[Union['SettingZoneOccupancyAlertArgs', 'SettingZoneOccupancyAlertArgsDict']] zone_occupancy_alert: Zone Occupancy alert site settings
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SettingVsInstanceArgs', 'SettingVsInstanceArgsDict']]]] vs_instance: EX9200 virtual switch instance definitions for the site
+        :param pulumi.Input[Union['SettingWanVnaArgs', 'SettingWanVnaArgsDict']] wan_vna: Virtual Network Assistant settings for WAN experiences at the site
+        :param pulumi.Input[_builtins.str] watched_station_url: Read-only URL for the watched station list file
+        :param pulumi.Input[_builtins.str] whitelist_url: Read-only URL for the site whitelist file
+        :param pulumi.Input[Union['SettingWidsArgs', 'SettingWidsArgsDict']] wids: Wireless intrusion detection settings for the site
+        :param pulumi.Input[Union['SettingWifiArgs', 'SettingWifiArgsDict']] wifi: Wireless LAN configuration settings for the site
+        :param pulumi.Input[Union['SettingWiredVnaArgs', 'SettingWiredVnaArgsDict']] wired_vna: Virtual Network Assistant settings for wired experiences at the site
+        :param pulumi.Input[Union['SettingZoneOccupancyAlertArgs', 'SettingZoneOccupancyAlertArgsDict']] zone_occupancy_alert: Occupancy alert settings for site zones
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -2027,6 +2362,8 @@ class Setting(pulumi.CustomResource):
         __props__.__dict__["juniper_srx"] = juniper_srx
         __props__.__dict__["led"] = led
         __props__.__dict__["marvis"] = marvis
+        __props__.__dict__["mxedge_mgmt"] = mxedge_mgmt
+        __props__.__dict__["mxtunnels"] = mxtunnels
         __props__.__dict__["occupancy"] = occupancy
         __props__.__dict__["persist_config_on_device"] = persist_config_on_device
         __props__.__dict__["proxy"] = proxy
@@ -2044,6 +2381,9 @@ class Setting(pulumi.CustomResource):
         __props__.__dict__["switch_updown_threshold"] = switch_updown_threshold
         __props__.__dict__["synthetic_test"] = synthetic_test
         __props__.__dict__["track_anonymous_devices"] = track_anonymous_devices
+        __props__.__dict__["tunterm_monitoring_disabled"] = tunterm_monitoring_disabled
+        __props__.__dict__["tunterm_monitorings"] = tunterm_monitorings
+        __props__.__dict__["tunterm_multicast_config"] = tunterm_multicast_config
         __props__.__dict__["uplink_port_config"] = uplink_port_config
         __props__.__dict__["vars"] = vars
         __props__.__dict__["vars_annotations"] = vars_annotations
@@ -2071,13 +2411,16 @@ class Setting(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def analytic(self) -> pulumi.Output['outputs.SettingAnalytic']:
+        """
+        Advanced analytics configuration for the site
+        """
         return pulumi.get(self, "analytic")
 
     @_builtins.property
     @pulumi.getter(name="apSyntheticTest")
     def ap_synthetic_test(self) -> pulumi.Output[Optional['outputs.SettingApSyntheticTest']]:
         """
-        AP Synthetic Test configuration
+        Synthetic test configuration for APs at the site
         """
         return pulumi.get(self, "ap_synthetic_test")
 
@@ -2093,7 +2436,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="autoUpgrade")
     def auto_upgrade(self) -> pulumi.Output['outputs.SettingAutoUpgrade']:
         """
-        Auto Upgrade Settings
+        Automatic AP firmware upgrade settings for the site. Overrides org setting when provided.
         """
         return pulumi.get(self, "auto_upgrade")
 
@@ -2101,7 +2444,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="autoUpgradeEsl")
     def auto_upgrade_esl(self) -> pulumi.Output[Optional['outputs.SettingAutoUpgradeEsl']]:
         """
-        auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware upgrade
+        Automatic ESL firmware upgrade settings for the site
         """
         return pulumi.get(self, "auto_upgrade_esl")
 
@@ -2116,13 +2459,16 @@ class Setting(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="blacklistUrl")
     def blacklist_url(self) -> pulumi.Output[_builtins.str]:
+        """
+        Read-only URL for the site blacklist file
+        """
         return pulumi.get(self, "blacklist_url")
 
     @_builtins.property
     @pulumi.getter(name="bleConfig")
     def ble_config(self) -> pulumi.Output[Optional['outputs.SettingBleConfig']]:
         """
-        BLE AP settings
+        Bluetooth Low Energy configuration applied to APs at the site
         """
         return pulumi.get(self, "ble_config")
 
@@ -2138,7 +2484,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="configPushPolicy")
     def config_push_policy(self) -> pulumi.Output[Optional['outputs.SettingConfigPushPolicy']]:
         """
-        Mist also uses some heuristic rules to prevent destructive configs from being pushed
+        Policy controlling how site configuration pushes are applied
         """
         return pulumi.get(self, "config_push_policy")
 
@@ -2146,7 +2492,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="criticalUrlMonitoring")
     def critical_url_monitoring(self) -> pulumi.Output[Optional['outputs.SettingCriticalUrlMonitoring']]:
         """
-        You can define some URLs that's critical to site operations the latency will be captured and considered for site health
+        Monitoring configuration for critical URLs at the site
         """
         return pulumi.get(self, "critical_url_monitoring")
 
@@ -2161,13 +2507,16 @@ class Setting(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="enableUnii4")
     def enable_unii4(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether UNII-4 channels are enabled for the site
+        """
         return pulumi.get(self, "enable_unii4")
 
     @_builtins.property
     @pulumi.getter
     def engagement(self) -> pulumi.Output['outputs.SettingEngagement']:
         """
-        **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple ranges for the same day
+        Dwell-time analytics rules for the site
         """
         return pulumi.get(self, "engagement")
 
@@ -2175,7 +2524,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="gatewayMgmt")
     def gateway_mgmt(self) -> pulumi.Output['outputs.SettingGatewayMgmt']:
         """
-        Gateway Management settings
+        Management access settings for gateways at the site
         """
         return pulumi.get(self, "gateway_mgmt")
 
@@ -2199,33 +2548,55 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter
     def iotproxy(self) -> pulumi.Output[Optional['outputs.SettingIotproxy']]:
         """
-        IoT proxy configuration for the site
+        Proxy settings for IoT traffic at the site
         """
         return pulumi.get(self, "iotproxy")
 
     @_builtins.property
     @pulumi.getter(name="juniperSrx")
     def juniper_srx(self) -> pulumi.Output[Optional['outputs.SettingJuniperSrx']]:
+        """
+        SRX integration settings for the site
+        """
         return pulumi.get(self, "juniper_srx")
 
     @_builtins.property
     @pulumi.getter
     def led(self) -> pulumi.Output['outputs.SettingLed']:
         """
-        LED AP settings
+        AP LED behavior configured for the site
         """
         return pulumi.get(self, "led")
 
     @_builtins.property
     @pulumi.getter
     def marvis(self) -> pulumi.Output[Optional['outputs.SettingMarvis']]:
+        """
+        AI assistant settings for Marvis at the site
+        """
         return pulumi.get(self, "marvis")
+
+    @_builtins.property
+    @pulumi.getter(name="mxedgeMgmt")
+    def mxedge_mgmt(self) -> pulumi.Output[Optional['outputs.SettingMxedgeMgmt']]:
+        """
+        Mist Edge management access settings for the site
+        """
+        return pulumi.get(self, "mxedge_mgmt")
+
+    @_builtins.property
+    @pulumi.getter
+    def mxtunnels(self) -> pulumi.Output[Optional['outputs.SettingMxtunnels']]:
+        """
+        Site Mist Tunnel configuration
+        """
+        return pulumi.get(self, "mxtunnels")
 
     @_builtins.property
     @pulumi.getter
     def occupancy(self) -> pulumi.Output['outputs.SettingOccupancy']:
         """
-        Occupancy Analytics settings
+        Analytics settings for site occupancy
         """
         return pulumi.get(self, "occupancy")
 
@@ -2241,7 +2612,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter
     def proxy(self) -> pulumi.Output[Optional['outputs.SettingProxy']]:
         """
-        Proxy Configuration to talk to Mist
+        Network proxy settings for devices at the site
         """
         return pulumi.get(self, "proxy")
 
@@ -2265,7 +2636,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter
     def rogue(self) -> pulumi.Output['outputs.SettingRogue']:
         """
-        Rogue site settings
+        AP threat detection settings for the site
         """
         return pulumi.get(self, "rogue")
 
@@ -2273,7 +2644,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter
     def rtsa(self) -> pulumi.Output['outputs.SettingRtsa']:
         """
-        Managed mobility
+        Managed mobility and asset tracking settings for the site
         """
         return pulumi.get(self, "rtsa")
 
@@ -2281,41 +2652,56 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="simpleAlert")
     def simple_alert(self) -> pulumi.Output[Optional['outputs.SettingSimpleAlert']]:
         """
-        Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute window, there are more than Y distinct client encountering over X failures
+        Threshold alert settings for the site
         """
         return pulumi.get(self, "simple_alert")
 
     @_builtins.property
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Identifier of the site these settings apply to
+        """
         return pulumi.get(self, "site_id")
 
     @_builtins.property
     @pulumi.getter
     def skyatp(self) -> pulumi.Output[Optional['outputs.SettingSkyatp']]:
+        """
+        Threat intelligence settings from Sky ATP for the site
+        """
         return pulumi.get(self, "skyatp")
 
     @_builtins.property
     @pulumi.getter(name="sleThresholds")
     def sle_thresholds(self) -> pulumi.Output[Optional['outputs.SettingSleThresholds']]:
+        """
+        Service level expectation threshold settings for the site
+        """
         return pulumi.get(self, "sle_thresholds")
 
     @_builtins.property
     @pulumi.getter(name="srxApp")
     def srx_app(self) -> pulumi.Output[Optional['outputs.SettingSrxApp']]:
+        """
+        Juniper SRX application visibility settings for the site
+        """
         return pulumi.get(self, "srx_app")
 
     @_builtins.property
     @pulumi.getter(name="sshKeys")
     def ssh_keys(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        When limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see Org:Setting)
+        Public SSH keys configured for the site
         """
         return pulumi.get(self, "ssh_keys")
 
     @_builtins.property
     @pulumi.getter
     def ssr(self) -> pulumi.Output[Optional['outputs.SettingSsr']]:
+        """
+        Session Smart Router settings for the site
+        """
         return pulumi.get(self, "ssr")
 
     @_builtins.property
@@ -2329,6 +2715,9 @@ class Setting(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="syntheticTest")
     def synthetic_test(self) -> pulumi.Output['outputs.SettingSyntheticTest']:
+        """
+        Active monitoring test configuration for the site
+        """
         return pulumi.get(self, "synthetic_test")
 
     @_builtins.property
@@ -2340,10 +2729,34 @@ class Setting(pulumi.CustomResource):
         return pulumi.get(self, "track_anonymous_devices")
 
     @_builtins.property
+    @pulumi.getter(name="tuntermMonitoringDisabled")
+    def tunterm_monitoring_disabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether tunnel termination monitoring is disabled for the site
+        """
+        return pulumi.get(self, "tunterm_monitoring_disabled")
+
+    @_builtins.property
+    @pulumi.getter(name="tuntermMonitorings")
+    def tunterm_monitorings(self) -> pulumi.Output[Optional[Sequence['outputs.SettingTuntermMonitoring']]]:
+        """
+        Tunnel termination monitoring settings for the site
+        """
+        return pulumi.get(self, "tunterm_monitorings")
+
+    @_builtins.property
+    @pulumi.getter(name="tuntermMulticastConfig")
+    def tunterm_multicast_config(self) -> pulumi.Output[Optional['outputs.SettingTuntermMulticastConfig']]:
+        """
+        Multicast settings for tunnel termination at the site
+        """
+        return pulumi.get(self, "tunterm_multicast_config")
+
+    @_builtins.property
     @pulumi.getter(name="uplinkPortConfig")
     def uplink_port_config(self) -> pulumi.Output['outputs.SettingUplinkPortConfig']:
         """
-        AP Uplink port configuration
+        AP uplink port configuration for the site
         """
         return pulumi.get(self, "uplink_port_config")
 
@@ -2351,7 +2764,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter
     def vars(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
-        Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        Template variables defined for the site
         """
         return pulumi.get(self, "vars")
 
@@ -2359,13 +2772,16 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="varsAnnotations")
     def vars_annotations(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.SettingVarsAnnotations']]]:
         """
-        Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+        Metadata annotations for site template variables
         """
         return pulumi.get(self, "vars_annotations")
 
     @_builtins.property
     @pulumi.getter
     def vna(self) -> pulumi.Output[Optional['outputs.SettingVna']]:
+        """
+        Virtual Network Assistant settings for the site
+        """
         return pulumi.get(self, "vna")
 
     @_builtins.property
@@ -2388,30 +2804,39 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="vsInstance")
     def vs_instance(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.SettingVsInstance']]]:
         """
-        Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
+        EX9200 virtual switch instance definitions for the site
         """
         return pulumi.get(self, "vs_instance")
 
     @_builtins.property
     @pulumi.getter(name="wanVna")
     def wan_vna(self) -> pulumi.Output[Optional['outputs.SettingWanVna']]:
+        """
+        Virtual Network Assistant settings for WAN experiences at the site
+        """
         return pulumi.get(self, "wan_vna")
 
     @_builtins.property
     @pulumi.getter(name="watchedStationUrl")
     def watched_station_url(self) -> pulumi.Output[_builtins.str]:
+        """
+        Read-only URL for the watched station list file
+        """
         return pulumi.get(self, "watched_station_url")
 
     @_builtins.property
     @pulumi.getter(name="whitelistUrl")
     def whitelist_url(self) -> pulumi.Output[_builtins.str]:
+        """
+        Read-only URL for the site whitelist file
+        """
         return pulumi.get(self, "whitelist_url")
 
     @_builtins.property
     @pulumi.getter
     def wids(self) -> pulumi.Output['outputs.SettingWids']:
         """
-        WIDS site settings
+        Wireless intrusion detection settings for the site
         """
         return pulumi.get(self, "wids")
 
@@ -2419,20 +2844,23 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter
     def wifi(self) -> pulumi.Output['outputs.SettingWifi']:
         """
-        Wi-Fi site settings
+        Wireless LAN configuration settings for the site
         """
         return pulumi.get(self, "wifi")
 
     @_builtins.property
     @pulumi.getter(name="wiredVna")
     def wired_vna(self) -> pulumi.Output[Optional['outputs.SettingWiredVna']]:
+        """
+        Virtual Network Assistant settings for wired experiences at the site
+        """
         return pulumi.get(self, "wired_vna")
 
     @_builtins.property
     @pulumi.getter(name="zoneOccupancyAlert")
     def zone_occupancy_alert(self) -> pulumi.Output['outputs.SettingZoneOccupancyAlert']:
         """
-        Zone Occupancy alert site settings
+        Occupancy alert settings for site zones
         """
         return pulumi.get(self, "zone_occupancy_alert")
 

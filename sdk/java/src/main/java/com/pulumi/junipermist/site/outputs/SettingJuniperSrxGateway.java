@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingJuniperSrxGateway {
+    /**
+     * @return Authentication key used to access the Juniper SRX gateway API
+     * 
+     */
     private @Nullable String apiKey;
+    /**
+     * @return Authentication password used to access the Juniper SRX gateway API
+     * 
+     */
     private @Nullable String apiPassword;
+    /**
+     * @return Base URL for the Juniper SRX gateway API
+     * 
+     */
     private @Nullable String apiUrl;
 
     private SettingJuniperSrxGateway() {}
+    /**
+     * @return Authentication key used to access the Juniper SRX gateway API
+     * 
+     */
     public Optional<String> apiKey() {
         return Optional.ofNullable(this.apiKey);
     }
+    /**
+     * @return Authentication password used to access the Juniper SRX gateway API
+     * 
+     */
     public Optional<String> apiPassword() {
         return Optional.ofNullable(this.apiPassword);
     }
+    /**
+     * @return Base URL for the Juniper SRX gateway API
+     * 
+     */
     public Optional<String> apiUrl() {
         return Optional.ofNullable(this.apiUrl);
     }

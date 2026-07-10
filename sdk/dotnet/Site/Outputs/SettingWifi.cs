@@ -13,16 +13,25 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class SettingWifi
     {
+        /// <summary>
+        /// Whether Cisco compatibility features are enabled for site Wi-Fi
+        /// </summary>
         public readonly bool? CiscoEnabled;
         /// <summary>
         /// Whether to disable 11k
         /// </summary>
         public readonly bool? Disable11k;
+        /// <summary>
+        /// Whether AP radios are disabled when AP power is constrained
+        /// </summary>
         public readonly bool? DisableRadiosWhenPowerConstrained;
         /// <summary>
         /// When ProxyArp is enabled, check for arp spoofing.
         /// </summary>
         public readonly bool? EnableArpSpoofCheck;
+        /// <summary>
+        /// Whether shared radio scanning is enabled for site Wi-Fi
+        /// </summary>
         public readonly bool? EnableSharedRadioScanning;
         /// <summary>
         /// Enable Wi-Fi feature (using SUB-MAN license)
@@ -57,7 +66,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? MeshSsid;
         /// <summary>
-        /// enum: `Default`, `Disabled`, `Enabled`
+        /// ARP proxy mode for site Wi-Fi
         /// </summary>
         public readonly string? ProxyArp;
 

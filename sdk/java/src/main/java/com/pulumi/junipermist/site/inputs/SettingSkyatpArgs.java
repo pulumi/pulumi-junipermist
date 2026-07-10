@@ -15,22 +15,30 @@ public final class SettingSkyatpArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SettingSkyatpArgs Empty = new SettingSkyatpArgs();
 
+    /**
+     * Whether Sky ATP is enabled for the site
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether Sky ATP is enabled for the site
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
     /**
-     * Whether to send IP-MAC mapping to SkyATP
+     * Whether IP-to-MAC mappings are sent to Sky ATP
      * 
      */
     @Import(name="sendIpMacMapping")
     private @Nullable Output<Boolean> sendIpMacMapping;
 
     /**
-     * @return Whether to send IP-MAC mapping to SkyATP
+     * @return Whether IP-to-MAC mappings are sent to Sky ATP
      * 
      */
     public Optional<Output<Boolean>> sendIpMacMapping() {
@@ -62,17 +70,29 @@ public final class SettingSkyatpArgs extends com.pulumi.resources.ResourceArgs {
             $ = new SettingSkyatpArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Whether Sky ATP is enabled for the site
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether Sky ATP is enabled for the site
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
         /**
-         * @param sendIpMacMapping Whether to send IP-MAC mapping to SkyATP
+         * @param sendIpMacMapping Whether IP-to-MAC mappings are sent to Sky ATP
          * 
          * @return builder
          * 
@@ -83,7 +103,7 @@ public final class SettingSkyatpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sendIpMacMapping Whether to send IP-MAC mapping to SkyATP
+         * @param sendIpMacMapping Whether IP-to-MAC mappings are sent to Sky ATP
          * 
          * @return builder
          * 

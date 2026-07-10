@@ -13,7 +13,13 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class SettingCriticalUrlMonitoringMonitor
     {
+        /// <summary>
+        /// Monitored HTTP or HTTPS URL used for site health latency
+        /// </summary>
         public readonly string? Url;
+        /// <summary>
+        /// Source VLAN ID used to run the critical URL monitor
+        /// </summary>
         public readonly string? VlanId;
 
         [OutputConstructor]

@@ -12,12 +12,21 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class SettingSimpleAlertArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Thresholds for ARP failure heuristic alerts
+        /// </summary>
         [Input("arpFailure")]
         public Input<Inputs.SettingSimpleAlertArpFailureArgs>? ArpFailure { get; set; }
 
+        /// <summary>
+        /// Thresholds for DHCP failure heuristic alerts
+        /// </summary>
         [Input("dhcpFailure")]
         public Input<Inputs.SettingSimpleAlertDhcpFailureArgs>? DhcpFailure { get; set; }
 
+        /// <summary>
+        /// Thresholds for DNS failure heuristic alerts
+        /// </summary>
         [Input("dnsFailure")]
         public Input<Inputs.SettingSimpleAlertDnsFailureArgs>? DnsFailure { get; set; }
 

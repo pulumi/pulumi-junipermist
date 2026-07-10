@@ -14,6 +14,10 @@ namespace Pulumi.JuniperMist.Site.Inputs
     {
         [Input("customTestUrls")]
         private InputList<string>? _customTestUrls;
+
+        /// <summary>
+        /// Deprecated custom URLs tested by VLAN-based synthetic probes
+        /// </summary>
         [Obsolete(@"This attribute is deprecated.")]
         public InputList<string> CustomTestUrls
         {
@@ -31,7 +35,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputList<string>? _probes;
 
         /// <summary>
-        /// app name comes from `CustomProbes` above or /const/synthetic_test_probes
+        /// Synthetic probe names to run for the listed VLANs
         /// </summary>
         public InputList<string> Probes
         {
@@ -41,6 +45,10 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
         [Input("vlanIds")]
         private InputList<string>? _vlanIds;
+
+        /// <summary>
+        /// VLAN identifiers where synthetic probes are run
+        /// </summary>
         public InputList<string> VlanIds
         {
             get => _vlanIds ?? (_vlanIds = new InputList<string>());

@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class SettingWiredVna
     {
+        /// <summary>
+        /// Whether Wired VNA is enabled for the site
+        /// </summary>
         public readonly bool? Enabled;
 
         [OutputConstructor]

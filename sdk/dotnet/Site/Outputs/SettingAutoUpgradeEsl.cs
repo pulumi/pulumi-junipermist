@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? CustomVersions;
         /// <summary>
-        /// enum: `Any`, `Fri`, `Mon`, `Sat`, `Sun`, `Thu`, `Tue`, `Wed`
+        /// Weekly ESL auto-upgrade day for the maintenance window
         /// </summary>
         public readonly string? DayOfWeek;
         /// <summary>
@@ -33,6 +33,9 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// `Any` / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
         /// </summary>
         public readonly string? TimeOfDay;
+        /// <summary>
+        /// ESL firmware version used for auto-upgrade
+        /// </summary>
         public readonly string? Version;
 
         [OutputConstructor]

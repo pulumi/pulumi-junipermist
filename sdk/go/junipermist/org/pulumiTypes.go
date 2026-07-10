@@ -53020,6 +53020,519 @@ func (o MxedgeVersionsPtrOutput) Tunterm() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type MxtunnelAutoPreemption struct {
+	// Scheduled weekday for auto preemption
+	DayOfWeek *string `pulumi:"dayOfWeek"`
+	// Whether auto preemption is enabled
+	Enabled *bool `pulumi:"enabled"`
+	// Scheduled time of day for auto preemption
+	TimeOfDay *string `pulumi:"timeOfDay"`
+}
+
+// MxtunnelAutoPreemptionInput is an input type that accepts MxtunnelAutoPreemptionArgs and MxtunnelAutoPreemptionOutput values.
+// You can construct a concrete instance of `MxtunnelAutoPreemptionInput` via:
+//
+//	MxtunnelAutoPreemptionArgs{...}
+type MxtunnelAutoPreemptionInput interface {
+	pulumi.Input
+
+	ToMxtunnelAutoPreemptionOutput() MxtunnelAutoPreemptionOutput
+	ToMxtunnelAutoPreemptionOutputWithContext(context.Context) MxtunnelAutoPreemptionOutput
+}
+
+type MxtunnelAutoPreemptionArgs struct {
+	// Scheduled weekday for auto preemption
+	DayOfWeek pulumi.StringPtrInput `pulumi:"dayOfWeek"`
+	// Whether auto preemption is enabled
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Scheduled time of day for auto preemption
+	TimeOfDay pulumi.StringPtrInput `pulumi:"timeOfDay"`
+}
+
+func (MxtunnelAutoPreemptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxtunnelAutoPreemption)(nil)).Elem()
+}
+
+func (i MxtunnelAutoPreemptionArgs) ToMxtunnelAutoPreemptionOutput() MxtunnelAutoPreemptionOutput {
+	return i.ToMxtunnelAutoPreemptionOutputWithContext(context.Background())
+}
+
+func (i MxtunnelAutoPreemptionArgs) ToMxtunnelAutoPreemptionOutputWithContext(ctx context.Context) MxtunnelAutoPreemptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxtunnelAutoPreemptionOutput)
+}
+
+func (i MxtunnelAutoPreemptionArgs) ToMxtunnelAutoPreemptionPtrOutput() MxtunnelAutoPreemptionPtrOutput {
+	return i.ToMxtunnelAutoPreemptionPtrOutputWithContext(context.Background())
+}
+
+func (i MxtunnelAutoPreemptionArgs) ToMxtunnelAutoPreemptionPtrOutputWithContext(ctx context.Context) MxtunnelAutoPreemptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxtunnelAutoPreemptionOutput).ToMxtunnelAutoPreemptionPtrOutputWithContext(ctx)
+}
+
+// MxtunnelAutoPreemptionPtrInput is an input type that accepts MxtunnelAutoPreemptionArgs, MxtunnelAutoPreemptionPtr and MxtunnelAutoPreemptionPtrOutput values.
+// You can construct a concrete instance of `MxtunnelAutoPreemptionPtrInput` via:
+//
+//	        MxtunnelAutoPreemptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type MxtunnelAutoPreemptionPtrInput interface {
+	pulumi.Input
+
+	ToMxtunnelAutoPreemptionPtrOutput() MxtunnelAutoPreemptionPtrOutput
+	ToMxtunnelAutoPreemptionPtrOutputWithContext(context.Context) MxtunnelAutoPreemptionPtrOutput
+}
+
+type mxtunnelAutoPreemptionPtrType MxtunnelAutoPreemptionArgs
+
+func MxtunnelAutoPreemptionPtr(v *MxtunnelAutoPreemptionArgs) MxtunnelAutoPreemptionPtrInput {
+	return (*mxtunnelAutoPreemptionPtrType)(v)
+}
+
+func (*mxtunnelAutoPreemptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxtunnelAutoPreemption)(nil)).Elem()
+}
+
+func (i *mxtunnelAutoPreemptionPtrType) ToMxtunnelAutoPreemptionPtrOutput() MxtunnelAutoPreemptionPtrOutput {
+	return i.ToMxtunnelAutoPreemptionPtrOutputWithContext(context.Background())
+}
+
+func (i *mxtunnelAutoPreemptionPtrType) ToMxtunnelAutoPreemptionPtrOutputWithContext(ctx context.Context) MxtunnelAutoPreemptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxtunnelAutoPreemptionPtrOutput)
+}
+
+type MxtunnelAutoPreemptionOutput struct{ *pulumi.OutputState }
+
+func (MxtunnelAutoPreemptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxtunnelAutoPreemption)(nil)).Elem()
+}
+
+func (o MxtunnelAutoPreemptionOutput) ToMxtunnelAutoPreemptionOutput() MxtunnelAutoPreemptionOutput {
+	return o
+}
+
+func (o MxtunnelAutoPreemptionOutput) ToMxtunnelAutoPreemptionOutputWithContext(ctx context.Context) MxtunnelAutoPreemptionOutput {
+	return o
+}
+
+func (o MxtunnelAutoPreemptionOutput) ToMxtunnelAutoPreemptionPtrOutput() MxtunnelAutoPreemptionPtrOutput {
+	return o.ToMxtunnelAutoPreemptionPtrOutputWithContext(context.Background())
+}
+
+func (o MxtunnelAutoPreemptionOutput) ToMxtunnelAutoPreemptionPtrOutputWithContext(ctx context.Context) MxtunnelAutoPreemptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MxtunnelAutoPreemption) *MxtunnelAutoPreemption {
+		return &v
+	}).(MxtunnelAutoPreemptionPtrOutput)
+}
+
+// Scheduled weekday for auto preemption
+func (o MxtunnelAutoPreemptionOutput) DayOfWeek() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxtunnelAutoPreemption) *string { return v.DayOfWeek }).(pulumi.StringPtrOutput)
+}
+
+// Whether auto preemption is enabled
+func (o MxtunnelAutoPreemptionOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MxtunnelAutoPreemption) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Scheduled time of day for auto preemption
+func (o MxtunnelAutoPreemptionOutput) TimeOfDay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxtunnelAutoPreemption) *string { return v.TimeOfDay }).(pulumi.StringPtrOutput)
+}
+
+type MxtunnelAutoPreemptionPtrOutput struct{ *pulumi.OutputState }
+
+func (MxtunnelAutoPreemptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxtunnelAutoPreemption)(nil)).Elem()
+}
+
+func (o MxtunnelAutoPreemptionPtrOutput) ToMxtunnelAutoPreemptionPtrOutput() MxtunnelAutoPreemptionPtrOutput {
+	return o
+}
+
+func (o MxtunnelAutoPreemptionPtrOutput) ToMxtunnelAutoPreemptionPtrOutputWithContext(ctx context.Context) MxtunnelAutoPreemptionPtrOutput {
+	return o
+}
+
+func (o MxtunnelAutoPreemptionPtrOutput) Elem() MxtunnelAutoPreemptionOutput {
+	return o.ApplyT(func(v *MxtunnelAutoPreemption) MxtunnelAutoPreemption {
+		if v != nil {
+			return *v
+		}
+		var ret MxtunnelAutoPreemption
+		return ret
+	}).(MxtunnelAutoPreemptionOutput)
+}
+
+// Scheduled weekday for auto preemption
+func (o MxtunnelAutoPreemptionPtrOutput) DayOfWeek() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MxtunnelAutoPreemption) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DayOfWeek
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether auto preemption is enabled
+func (o MxtunnelAutoPreemptionPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MxtunnelAutoPreemption) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Scheduled time of day for auto preemption
+func (o MxtunnelAutoPreemptionPtrOutput) TimeOfDay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MxtunnelAutoPreemption) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeOfDay
+	}).(pulumi.StringPtrOutput)
+}
+
+type MxtunnelIpsec struct {
+	// Name server addresses advertised for IPsec tunnel clients
+	DnsServers []string `pulumi:"dnsServers"`
+	// Search suffixes advertised for IPsec tunnel clients
+	DnsSuffixes []string `pulumi:"dnsSuffixes"`
+	// Whether IPsec support is enabled for this Mist Tunnel
+	Enabled *bool `pulumi:"enabled"`
+	// Additional routes advertised for the IPsec tunnel
+	ExtraRoutes []MxtunnelIpsecExtraRoute `pulumi:"extraRoutes"`
+	// Whether split tunneling is enabled for IPsec clients
+	SplitTunnel *bool `pulumi:"splitTunnel"`
+	// Whether IPsec termination uses Mist Edge
+	UseMxedge *bool `pulumi:"useMxedge"`
+}
+
+// MxtunnelIpsecInput is an input type that accepts MxtunnelIpsecArgs and MxtunnelIpsecOutput values.
+// You can construct a concrete instance of `MxtunnelIpsecInput` via:
+//
+//	MxtunnelIpsecArgs{...}
+type MxtunnelIpsecInput interface {
+	pulumi.Input
+
+	ToMxtunnelIpsecOutput() MxtunnelIpsecOutput
+	ToMxtunnelIpsecOutputWithContext(context.Context) MxtunnelIpsecOutput
+}
+
+type MxtunnelIpsecArgs struct {
+	// Name server addresses advertised for IPsec tunnel clients
+	DnsServers pulumi.StringArrayInput `pulumi:"dnsServers"`
+	// Search suffixes advertised for IPsec tunnel clients
+	DnsSuffixes pulumi.StringArrayInput `pulumi:"dnsSuffixes"`
+	// Whether IPsec support is enabled for this Mist Tunnel
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Additional routes advertised for the IPsec tunnel
+	ExtraRoutes MxtunnelIpsecExtraRouteArrayInput `pulumi:"extraRoutes"`
+	// Whether split tunneling is enabled for IPsec clients
+	SplitTunnel pulumi.BoolPtrInput `pulumi:"splitTunnel"`
+	// Whether IPsec termination uses Mist Edge
+	UseMxedge pulumi.BoolPtrInput `pulumi:"useMxedge"`
+}
+
+func (MxtunnelIpsecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxtunnelIpsec)(nil)).Elem()
+}
+
+func (i MxtunnelIpsecArgs) ToMxtunnelIpsecOutput() MxtunnelIpsecOutput {
+	return i.ToMxtunnelIpsecOutputWithContext(context.Background())
+}
+
+func (i MxtunnelIpsecArgs) ToMxtunnelIpsecOutputWithContext(ctx context.Context) MxtunnelIpsecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxtunnelIpsecOutput)
+}
+
+func (i MxtunnelIpsecArgs) ToMxtunnelIpsecPtrOutput() MxtunnelIpsecPtrOutput {
+	return i.ToMxtunnelIpsecPtrOutputWithContext(context.Background())
+}
+
+func (i MxtunnelIpsecArgs) ToMxtunnelIpsecPtrOutputWithContext(ctx context.Context) MxtunnelIpsecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxtunnelIpsecOutput).ToMxtunnelIpsecPtrOutputWithContext(ctx)
+}
+
+// MxtunnelIpsecPtrInput is an input type that accepts MxtunnelIpsecArgs, MxtunnelIpsecPtr and MxtunnelIpsecPtrOutput values.
+// You can construct a concrete instance of `MxtunnelIpsecPtrInput` via:
+//
+//	        MxtunnelIpsecArgs{...}
+//
+//	or:
+//
+//	        nil
+type MxtunnelIpsecPtrInput interface {
+	pulumi.Input
+
+	ToMxtunnelIpsecPtrOutput() MxtunnelIpsecPtrOutput
+	ToMxtunnelIpsecPtrOutputWithContext(context.Context) MxtunnelIpsecPtrOutput
+}
+
+type mxtunnelIpsecPtrType MxtunnelIpsecArgs
+
+func MxtunnelIpsecPtr(v *MxtunnelIpsecArgs) MxtunnelIpsecPtrInput {
+	return (*mxtunnelIpsecPtrType)(v)
+}
+
+func (*mxtunnelIpsecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxtunnelIpsec)(nil)).Elem()
+}
+
+func (i *mxtunnelIpsecPtrType) ToMxtunnelIpsecPtrOutput() MxtunnelIpsecPtrOutput {
+	return i.ToMxtunnelIpsecPtrOutputWithContext(context.Background())
+}
+
+func (i *mxtunnelIpsecPtrType) ToMxtunnelIpsecPtrOutputWithContext(ctx context.Context) MxtunnelIpsecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxtunnelIpsecPtrOutput)
+}
+
+type MxtunnelIpsecOutput struct{ *pulumi.OutputState }
+
+func (MxtunnelIpsecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxtunnelIpsec)(nil)).Elem()
+}
+
+func (o MxtunnelIpsecOutput) ToMxtunnelIpsecOutput() MxtunnelIpsecOutput {
+	return o
+}
+
+func (o MxtunnelIpsecOutput) ToMxtunnelIpsecOutputWithContext(ctx context.Context) MxtunnelIpsecOutput {
+	return o
+}
+
+func (o MxtunnelIpsecOutput) ToMxtunnelIpsecPtrOutput() MxtunnelIpsecPtrOutput {
+	return o.ToMxtunnelIpsecPtrOutputWithContext(context.Background())
+}
+
+func (o MxtunnelIpsecOutput) ToMxtunnelIpsecPtrOutputWithContext(ctx context.Context) MxtunnelIpsecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MxtunnelIpsec) *MxtunnelIpsec {
+		return &v
+	}).(MxtunnelIpsecPtrOutput)
+}
+
+// Name server addresses advertised for IPsec tunnel clients
+func (o MxtunnelIpsecOutput) DnsServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MxtunnelIpsec) []string { return v.DnsServers }).(pulumi.StringArrayOutput)
+}
+
+// Search suffixes advertised for IPsec tunnel clients
+func (o MxtunnelIpsecOutput) DnsSuffixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MxtunnelIpsec) []string { return v.DnsSuffixes }).(pulumi.StringArrayOutput)
+}
+
+// Whether IPsec support is enabled for this Mist Tunnel
+func (o MxtunnelIpsecOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MxtunnelIpsec) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Additional routes advertised for the IPsec tunnel
+func (o MxtunnelIpsecOutput) ExtraRoutes() MxtunnelIpsecExtraRouteArrayOutput {
+	return o.ApplyT(func(v MxtunnelIpsec) []MxtunnelIpsecExtraRoute { return v.ExtraRoutes }).(MxtunnelIpsecExtraRouteArrayOutput)
+}
+
+// Whether split tunneling is enabled for IPsec clients
+func (o MxtunnelIpsecOutput) SplitTunnel() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MxtunnelIpsec) *bool { return v.SplitTunnel }).(pulumi.BoolPtrOutput)
+}
+
+// Whether IPsec termination uses Mist Edge
+func (o MxtunnelIpsecOutput) UseMxedge() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MxtunnelIpsec) *bool { return v.UseMxedge }).(pulumi.BoolPtrOutput)
+}
+
+type MxtunnelIpsecPtrOutput struct{ *pulumi.OutputState }
+
+func (MxtunnelIpsecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxtunnelIpsec)(nil)).Elem()
+}
+
+func (o MxtunnelIpsecPtrOutput) ToMxtunnelIpsecPtrOutput() MxtunnelIpsecPtrOutput {
+	return o
+}
+
+func (o MxtunnelIpsecPtrOutput) ToMxtunnelIpsecPtrOutputWithContext(ctx context.Context) MxtunnelIpsecPtrOutput {
+	return o
+}
+
+func (o MxtunnelIpsecPtrOutput) Elem() MxtunnelIpsecOutput {
+	return o.ApplyT(func(v *MxtunnelIpsec) MxtunnelIpsec {
+		if v != nil {
+			return *v
+		}
+		var ret MxtunnelIpsec
+		return ret
+	}).(MxtunnelIpsecOutput)
+}
+
+// Name server addresses advertised for IPsec tunnel clients
+func (o MxtunnelIpsecPtrOutput) DnsServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MxtunnelIpsec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DnsServers
+	}).(pulumi.StringArrayOutput)
+}
+
+// Search suffixes advertised for IPsec tunnel clients
+func (o MxtunnelIpsecPtrOutput) DnsSuffixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MxtunnelIpsec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DnsSuffixes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Whether IPsec support is enabled for this Mist Tunnel
+func (o MxtunnelIpsecPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MxtunnelIpsec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Additional routes advertised for the IPsec tunnel
+func (o MxtunnelIpsecPtrOutput) ExtraRoutes() MxtunnelIpsecExtraRouteArrayOutput {
+	return o.ApplyT(func(v *MxtunnelIpsec) []MxtunnelIpsecExtraRoute {
+		if v == nil {
+			return nil
+		}
+		return v.ExtraRoutes
+	}).(MxtunnelIpsecExtraRouteArrayOutput)
+}
+
+// Whether split tunneling is enabled for IPsec clients
+func (o MxtunnelIpsecPtrOutput) SplitTunnel() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MxtunnelIpsec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SplitTunnel
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether IPsec termination uses Mist Edge
+func (o MxtunnelIpsecPtrOutput) UseMxedge() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MxtunnelIpsec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseMxedge
+	}).(pulumi.BoolPtrOutput)
+}
+
+type MxtunnelIpsecExtraRoute struct {
+	// Route destination CIDR for the IPsec extra route
+	Dest *string `pulumi:"dest"`
+	// Route next-hop IPv4 address for the IPsec extra route
+	NextHop *string `pulumi:"nextHop"`
+}
+
+// MxtunnelIpsecExtraRouteInput is an input type that accepts MxtunnelIpsecExtraRouteArgs and MxtunnelIpsecExtraRouteOutput values.
+// You can construct a concrete instance of `MxtunnelIpsecExtraRouteInput` via:
+//
+//	MxtunnelIpsecExtraRouteArgs{...}
+type MxtunnelIpsecExtraRouteInput interface {
+	pulumi.Input
+
+	ToMxtunnelIpsecExtraRouteOutput() MxtunnelIpsecExtraRouteOutput
+	ToMxtunnelIpsecExtraRouteOutputWithContext(context.Context) MxtunnelIpsecExtraRouteOutput
+}
+
+type MxtunnelIpsecExtraRouteArgs struct {
+	// Route destination CIDR for the IPsec extra route
+	Dest pulumi.StringPtrInput `pulumi:"dest"`
+	// Route next-hop IPv4 address for the IPsec extra route
+	NextHop pulumi.StringPtrInput `pulumi:"nextHop"`
+}
+
+func (MxtunnelIpsecExtraRouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxtunnelIpsecExtraRoute)(nil)).Elem()
+}
+
+func (i MxtunnelIpsecExtraRouteArgs) ToMxtunnelIpsecExtraRouteOutput() MxtunnelIpsecExtraRouteOutput {
+	return i.ToMxtunnelIpsecExtraRouteOutputWithContext(context.Background())
+}
+
+func (i MxtunnelIpsecExtraRouteArgs) ToMxtunnelIpsecExtraRouteOutputWithContext(ctx context.Context) MxtunnelIpsecExtraRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxtunnelIpsecExtraRouteOutput)
+}
+
+// MxtunnelIpsecExtraRouteArrayInput is an input type that accepts MxtunnelIpsecExtraRouteArray and MxtunnelIpsecExtraRouteArrayOutput values.
+// You can construct a concrete instance of `MxtunnelIpsecExtraRouteArrayInput` via:
+//
+//	MxtunnelIpsecExtraRouteArray{ MxtunnelIpsecExtraRouteArgs{...} }
+type MxtunnelIpsecExtraRouteArrayInput interface {
+	pulumi.Input
+
+	ToMxtunnelIpsecExtraRouteArrayOutput() MxtunnelIpsecExtraRouteArrayOutput
+	ToMxtunnelIpsecExtraRouteArrayOutputWithContext(context.Context) MxtunnelIpsecExtraRouteArrayOutput
+}
+
+type MxtunnelIpsecExtraRouteArray []MxtunnelIpsecExtraRouteInput
+
+func (MxtunnelIpsecExtraRouteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MxtunnelIpsecExtraRoute)(nil)).Elem()
+}
+
+func (i MxtunnelIpsecExtraRouteArray) ToMxtunnelIpsecExtraRouteArrayOutput() MxtunnelIpsecExtraRouteArrayOutput {
+	return i.ToMxtunnelIpsecExtraRouteArrayOutputWithContext(context.Background())
+}
+
+func (i MxtunnelIpsecExtraRouteArray) ToMxtunnelIpsecExtraRouteArrayOutputWithContext(ctx context.Context) MxtunnelIpsecExtraRouteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxtunnelIpsecExtraRouteArrayOutput)
+}
+
+type MxtunnelIpsecExtraRouteOutput struct{ *pulumi.OutputState }
+
+func (MxtunnelIpsecExtraRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxtunnelIpsecExtraRoute)(nil)).Elem()
+}
+
+func (o MxtunnelIpsecExtraRouteOutput) ToMxtunnelIpsecExtraRouteOutput() MxtunnelIpsecExtraRouteOutput {
+	return o
+}
+
+func (o MxtunnelIpsecExtraRouteOutput) ToMxtunnelIpsecExtraRouteOutputWithContext(ctx context.Context) MxtunnelIpsecExtraRouteOutput {
+	return o
+}
+
+// Route destination CIDR for the IPsec extra route
+func (o MxtunnelIpsecExtraRouteOutput) Dest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxtunnelIpsecExtraRoute) *string { return v.Dest }).(pulumi.StringPtrOutput)
+}
+
+// Route next-hop IPv4 address for the IPsec extra route
+func (o MxtunnelIpsecExtraRouteOutput) NextHop() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxtunnelIpsecExtraRoute) *string { return v.NextHop }).(pulumi.StringPtrOutput)
+}
+
+type MxtunnelIpsecExtraRouteArrayOutput struct{ *pulumi.OutputState }
+
+func (MxtunnelIpsecExtraRouteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MxtunnelIpsecExtraRoute)(nil)).Elem()
+}
+
+func (o MxtunnelIpsecExtraRouteArrayOutput) ToMxtunnelIpsecExtraRouteArrayOutput() MxtunnelIpsecExtraRouteArrayOutput {
+	return o
+}
+
+func (o MxtunnelIpsecExtraRouteArrayOutput) ToMxtunnelIpsecExtraRouteArrayOutputWithContext(ctx context.Context) MxtunnelIpsecExtraRouteArrayOutput {
+	return o
+}
+
+func (o MxtunnelIpsecExtraRouteArrayOutput) Index(i pulumi.IntInput) MxtunnelIpsecExtraRouteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MxtunnelIpsecExtraRoute {
+		return vs[0].([]MxtunnelIpsecExtraRoute)[vs[1].(int)]
+	}).(MxtunnelIpsecExtraRouteOutput)
+}
+
 type NacPortalPortal struct {
 	// Mode presented by the NAC guest portal for user authentication
 	Auth *string `pulumi:"auth"`
@@ -91218,440 +91731,6 @@ func (o GetIdpprofilesOrgIdpprofileArrayOutput) Index(i pulumi.IntInput) GetIdpp
 	}).(GetIdpprofilesOrgIdpprofileOutput)
 }
 
-type GetIdpprofilesOrgIdpprofileOverwrite struct {
-	// enum:
-	//   * alert (default)
-	//   * drop: silently dropping packets
-	//   * close: notify client/server to close connection
-	Action   string                                       `pulumi:"action"`
-	Matching GetIdpprofilesOrgIdpprofileOverwriteMatching `pulumi:"matching"`
-	Name     string                                       `pulumi:"name"`
-}
-
-// GetIdpprofilesOrgIdpprofileOverwriteInput is an input type that accepts GetIdpprofilesOrgIdpprofileOverwriteArgs and GetIdpprofilesOrgIdpprofileOverwriteOutput values.
-// You can construct a concrete instance of `GetIdpprofilesOrgIdpprofileOverwriteInput` via:
-//
-//	GetIdpprofilesOrgIdpprofileOverwriteArgs{...}
-type GetIdpprofilesOrgIdpprofileOverwriteInput interface {
-	pulumi.Input
-
-	ToGetIdpprofilesOrgIdpprofileOverwriteOutput() GetIdpprofilesOrgIdpprofileOverwriteOutput
-	ToGetIdpprofilesOrgIdpprofileOverwriteOutputWithContext(context.Context) GetIdpprofilesOrgIdpprofileOverwriteOutput
-}
-
-type GetIdpprofilesOrgIdpprofileOverwriteArgs struct {
-	// enum:
-	//   * alert (default)
-	//   * drop: silently dropping packets
-	//   * close: notify client/server to close connection
-	Action   pulumi.StringInput                                `pulumi:"action"`
-	Matching GetIdpprofilesOrgIdpprofileOverwriteMatchingInput `pulumi:"matching"`
-	Name     pulumi.StringInput                                `pulumi:"name"`
-}
-
-func (GetIdpprofilesOrgIdpprofileOverwriteArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetIdpprofilesOrgIdpprofileOverwrite)(nil)).Elem()
-}
-
-func (i GetIdpprofilesOrgIdpprofileOverwriteArgs) ToGetIdpprofilesOrgIdpprofileOverwriteOutput() GetIdpprofilesOrgIdpprofileOverwriteOutput {
-	return i.ToGetIdpprofilesOrgIdpprofileOverwriteOutputWithContext(context.Background())
-}
-
-func (i GetIdpprofilesOrgIdpprofileOverwriteArgs) ToGetIdpprofilesOrgIdpprofileOverwriteOutputWithContext(ctx context.Context) GetIdpprofilesOrgIdpprofileOverwriteOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetIdpprofilesOrgIdpprofileOverwriteOutput)
-}
-
-// GetIdpprofilesOrgIdpprofileOverwriteArrayInput is an input type that accepts GetIdpprofilesOrgIdpprofileOverwriteArray and GetIdpprofilesOrgIdpprofileOverwriteArrayOutput values.
-// You can construct a concrete instance of `GetIdpprofilesOrgIdpprofileOverwriteArrayInput` via:
-//
-//	GetIdpprofilesOrgIdpprofileOverwriteArray{ GetIdpprofilesOrgIdpprofileOverwriteArgs{...} }
-type GetIdpprofilesOrgIdpprofileOverwriteArrayInput interface {
-	pulumi.Input
-
-	ToGetIdpprofilesOrgIdpprofileOverwriteArrayOutput() GetIdpprofilesOrgIdpprofileOverwriteArrayOutput
-	ToGetIdpprofilesOrgIdpprofileOverwriteArrayOutputWithContext(context.Context) GetIdpprofilesOrgIdpprofileOverwriteArrayOutput
-}
-
-type GetIdpprofilesOrgIdpprofileOverwriteArray []GetIdpprofilesOrgIdpprofileOverwriteInput
-
-func (GetIdpprofilesOrgIdpprofileOverwriteArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetIdpprofilesOrgIdpprofileOverwrite)(nil)).Elem()
-}
-
-func (i GetIdpprofilesOrgIdpprofileOverwriteArray) ToGetIdpprofilesOrgIdpprofileOverwriteArrayOutput() GetIdpprofilesOrgIdpprofileOverwriteArrayOutput {
-	return i.ToGetIdpprofilesOrgIdpprofileOverwriteArrayOutputWithContext(context.Background())
-}
-
-func (i GetIdpprofilesOrgIdpprofileOverwriteArray) ToGetIdpprofilesOrgIdpprofileOverwriteArrayOutputWithContext(ctx context.Context) GetIdpprofilesOrgIdpprofileOverwriteArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetIdpprofilesOrgIdpprofileOverwriteArrayOutput)
-}
-
-type GetIdpprofilesOrgIdpprofileOverwriteOutput struct{ *pulumi.OutputState }
-
-func (GetIdpprofilesOrgIdpprofileOverwriteOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetIdpprofilesOrgIdpprofileOverwrite)(nil)).Elem()
-}
-
-func (o GetIdpprofilesOrgIdpprofileOverwriteOutput) ToGetIdpprofilesOrgIdpprofileOverwriteOutput() GetIdpprofilesOrgIdpprofileOverwriteOutput {
-	return o
-}
-
-func (o GetIdpprofilesOrgIdpprofileOverwriteOutput) ToGetIdpprofilesOrgIdpprofileOverwriteOutputWithContext(ctx context.Context) GetIdpprofilesOrgIdpprofileOverwriteOutput {
-	return o
-}
-
-// enum:
-//   - alert (default)
-//   - drop: silently dropping packets
-//   - close: notify client/server to close connection
-func (o GetIdpprofilesOrgIdpprofileOverwriteOutput) Action() pulumi.StringOutput {
-	return o.ApplyT(func(v GetIdpprofilesOrgIdpprofileOverwrite) string { return v.Action }).(pulumi.StringOutput)
-}
-
-func (o GetIdpprofilesOrgIdpprofileOverwriteOutput) Matching() GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput {
-	return o.ApplyT(func(v GetIdpprofilesOrgIdpprofileOverwrite) GetIdpprofilesOrgIdpprofileOverwriteMatching {
-		return v.Matching
-	}).(GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput)
-}
-
-func (o GetIdpprofilesOrgIdpprofileOverwriteOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetIdpprofilesOrgIdpprofileOverwrite) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type GetIdpprofilesOrgIdpprofileOverwriteArrayOutput struct{ *pulumi.OutputState }
-
-func (GetIdpprofilesOrgIdpprofileOverwriteArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetIdpprofilesOrgIdpprofileOverwrite)(nil)).Elem()
-}
-
-func (o GetIdpprofilesOrgIdpprofileOverwriteArrayOutput) ToGetIdpprofilesOrgIdpprofileOverwriteArrayOutput() GetIdpprofilesOrgIdpprofileOverwriteArrayOutput {
-	return o
-}
-
-func (o GetIdpprofilesOrgIdpprofileOverwriteArrayOutput) ToGetIdpprofilesOrgIdpprofileOverwriteArrayOutputWithContext(ctx context.Context) GetIdpprofilesOrgIdpprofileOverwriteArrayOutput {
-	return o
-}
-
-func (o GetIdpprofilesOrgIdpprofileOverwriteArrayOutput) Index(i pulumi.IntInput) GetIdpprofilesOrgIdpprofileOverwriteOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpprofilesOrgIdpprofileOverwrite {
-		return vs[0].([]GetIdpprofilesOrgIdpprofileOverwrite)[vs[1].(int)]
-	}).(GetIdpprofilesOrgIdpprofileOverwriteOutput)
-}
-
-type GetIdpprofilesOrgIdpprofileOverwriteMatching struct {
-	AttackNames []string `pulumi:"attackNames"`
-	DstSubnets  []string `pulumi:"dstSubnets"`
-	Severities  []string `pulumi:"severities"`
-}
-
-// GetIdpprofilesOrgIdpprofileOverwriteMatchingInput is an input type that accepts GetIdpprofilesOrgIdpprofileOverwriteMatchingArgs and GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput values.
-// You can construct a concrete instance of `GetIdpprofilesOrgIdpprofileOverwriteMatchingInput` via:
-//
-//	GetIdpprofilesOrgIdpprofileOverwriteMatchingArgs{...}
-type GetIdpprofilesOrgIdpprofileOverwriteMatchingInput interface {
-	pulumi.Input
-
-	ToGetIdpprofilesOrgIdpprofileOverwriteMatchingOutput() GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput
-	ToGetIdpprofilesOrgIdpprofileOverwriteMatchingOutputWithContext(context.Context) GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput
-}
-
-type GetIdpprofilesOrgIdpprofileOverwriteMatchingArgs struct {
-	AttackNames pulumi.StringArrayInput `pulumi:"attackNames"`
-	DstSubnets  pulumi.StringArrayInput `pulumi:"dstSubnets"`
-	Severities  pulumi.StringArrayInput `pulumi:"severities"`
-}
-
-func (GetIdpprofilesOrgIdpprofileOverwriteMatchingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetIdpprofilesOrgIdpprofileOverwriteMatching)(nil)).Elem()
-}
-
-func (i GetIdpprofilesOrgIdpprofileOverwriteMatchingArgs) ToGetIdpprofilesOrgIdpprofileOverwriteMatchingOutput() GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput {
-	return i.ToGetIdpprofilesOrgIdpprofileOverwriteMatchingOutputWithContext(context.Background())
-}
-
-func (i GetIdpprofilesOrgIdpprofileOverwriteMatchingArgs) ToGetIdpprofilesOrgIdpprofileOverwriteMatchingOutputWithContext(ctx context.Context) GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput)
-}
-
-type GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput struct{ *pulumi.OutputState }
-
-func (GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetIdpprofilesOrgIdpprofileOverwriteMatching)(nil)).Elem()
-}
-
-func (o GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput) ToGetIdpprofilesOrgIdpprofileOverwriteMatchingOutput() GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput {
-	return o
-}
-
-func (o GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput) ToGetIdpprofilesOrgIdpprofileOverwriteMatchingOutputWithContext(ctx context.Context) GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput {
-	return o
-}
-
-func (o GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput) AttackNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetIdpprofilesOrgIdpprofileOverwriteMatching) []string { return v.AttackNames }).(pulumi.StringArrayOutput)
-}
-
-func (o GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput) DstSubnets() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetIdpprofilesOrgIdpprofileOverwriteMatching) []string { return v.DstSubnets }).(pulumi.StringArrayOutput)
-}
-
-func (o GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput) Severities() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetIdpprofilesOrgIdpprofileOverwriteMatching) []string { return v.Severities }).(pulumi.StringArrayOutput)
-}
-
-type GetInventoryOrgInventory struct {
-	// Only if `type`==`switch` or `type`==`gateway`, whether the switch/gateway is adopted
-	Adopted bool `pulumi:"adopted"`
-	// For Virtual Chassis only, the MAC Address of the FPC0
-	ChassisMac string `pulumi:"chassisMac"`
-	// For Virtual Chassis only, the Serial Number of the FPC0
-	ChassisSerial string `pulumi:"chassisSerial"`
-	// Device claim code
-	ClaimCode string `pulumi:"claimCode"`
-	// Whether the device is connected
-	Connected bool `pulumi:"connected"`
-	// Deviceprofile id if assigned, null if not assigned
-	DeviceprofileId string `pulumi:"deviceprofileId"`
-	// Hostname reported by the device
-	Hostname string `pulumi:"hostname"`
-	// Device hardware revision number
-	HwRev string `pulumi:"hwRev"`
-	// Unique ID of the object instance in the Mist Organization
-	Id  string `pulumi:"id"`
-	Jsi bool   `pulumi:"jsi"`
-	// Device MAC address
-	Mac string `pulumi:"mac"`
-	// Device model
-	Model string `pulumi:"model"`
-	// Device name if configured
-	Name  string `pulumi:"name"`
-	OrgId string `pulumi:"orgId"`
-	// Device serial
-	Serial string `pulumi:"serial"`
-	// Site ID where the device is assigned to
-	SiteId string `pulumi:"siteId"`
-	// Device stock keeping unit
-	Sku string `pulumi:"sku"`
-	// enum: `ap`, `gateway`, `switch`
-	Type string `pulumi:"type"`
-	// If `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Cluster, MAC Address of the Cluster
-	VcMac string `pulumi:"vcMac"`
-}
-
-// GetInventoryOrgInventoryInput is an input type that accepts GetInventoryOrgInventoryArgs and GetInventoryOrgInventoryOutput values.
-// You can construct a concrete instance of `GetInventoryOrgInventoryInput` via:
-//
-//	GetInventoryOrgInventoryArgs{...}
-type GetInventoryOrgInventoryInput interface {
-	pulumi.Input
-
-	ToGetInventoryOrgInventoryOutput() GetInventoryOrgInventoryOutput
-	ToGetInventoryOrgInventoryOutputWithContext(context.Context) GetInventoryOrgInventoryOutput
-}
-
-type GetInventoryOrgInventoryArgs struct {
-	// Only if `type`==`switch` or `type`==`gateway`, whether the switch/gateway is adopted
-	Adopted pulumi.BoolInput `pulumi:"adopted"`
-	// For Virtual Chassis only, the MAC Address of the FPC0
-	ChassisMac pulumi.StringInput `pulumi:"chassisMac"`
-	// For Virtual Chassis only, the Serial Number of the FPC0
-	ChassisSerial pulumi.StringInput `pulumi:"chassisSerial"`
-	// Device claim code
-	ClaimCode pulumi.StringInput `pulumi:"claimCode"`
-	// Whether the device is connected
-	Connected pulumi.BoolInput `pulumi:"connected"`
-	// Deviceprofile id if assigned, null if not assigned
-	DeviceprofileId pulumi.StringInput `pulumi:"deviceprofileId"`
-	// Hostname reported by the device
-	Hostname pulumi.StringInput `pulumi:"hostname"`
-	// Device hardware revision number
-	HwRev pulumi.StringInput `pulumi:"hwRev"`
-	// Unique ID of the object instance in the Mist Organization
-	Id  pulumi.StringInput `pulumi:"id"`
-	Jsi pulumi.BoolInput   `pulumi:"jsi"`
-	// Device MAC address
-	Mac pulumi.StringInput `pulumi:"mac"`
-	// Device model
-	Model pulumi.StringInput `pulumi:"model"`
-	// Device name if configured
-	Name  pulumi.StringInput `pulumi:"name"`
-	OrgId pulumi.StringInput `pulumi:"orgId"`
-	// Device serial
-	Serial pulumi.StringInput `pulumi:"serial"`
-	// Site ID where the device is assigned to
-	SiteId pulumi.StringInput `pulumi:"siteId"`
-	// Device stock keeping unit
-	Sku pulumi.StringInput `pulumi:"sku"`
-	// enum: `ap`, `gateway`, `switch`
-	Type pulumi.StringInput `pulumi:"type"`
-	// If `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Cluster, MAC Address of the Cluster
-	VcMac pulumi.StringInput `pulumi:"vcMac"`
-}
-
-func (GetInventoryOrgInventoryArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInventoryOrgInventory)(nil)).Elem()
-}
-
-func (i GetInventoryOrgInventoryArgs) ToGetInventoryOrgInventoryOutput() GetInventoryOrgInventoryOutput {
-	return i.ToGetInventoryOrgInventoryOutputWithContext(context.Background())
-}
-
-func (i GetInventoryOrgInventoryArgs) ToGetInventoryOrgInventoryOutputWithContext(ctx context.Context) GetInventoryOrgInventoryOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInventoryOrgInventoryOutput)
-}
-
-// GetInventoryOrgInventoryArrayInput is an input type that accepts GetInventoryOrgInventoryArray and GetInventoryOrgInventoryArrayOutput values.
-// You can construct a concrete instance of `GetInventoryOrgInventoryArrayInput` via:
-//
-//	GetInventoryOrgInventoryArray{ GetInventoryOrgInventoryArgs{...} }
-type GetInventoryOrgInventoryArrayInput interface {
-	pulumi.Input
-
-	ToGetInventoryOrgInventoryArrayOutput() GetInventoryOrgInventoryArrayOutput
-	ToGetInventoryOrgInventoryArrayOutputWithContext(context.Context) GetInventoryOrgInventoryArrayOutput
-}
-
-type GetInventoryOrgInventoryArray []GetInventoryOrgInventoryInput
-
-func (GetInventoryOrgInventoryArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetInventoryOrgInventory)(nil)).Elem()
-}
-
-func (i GetInventoryOrgInventoryArray) ToGetInventoryOrgInventoryArrayOutput() GetInventoryOrgInventoryArrayOutput {
-	return i.ToGetInventoryOrgInventoryArrayOutputWithContext(context.Background())
-}
-
-func (i GetInventoryOrgInventoryArray) ToGetInventoryOrgInventoryArrayOutputWithContext(ctx context.Context) GetInventoryOrgInventoryArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInventoryOrgInventoryArrayOutput)
-}
-
-type GetInventoryOrgInventoryOutput struct{ *pulumi.OutputState }
-
-func (GetInventoryOrgInventoryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInventoryOrgInventory)(nil)).Elem()
-}
-
-func (o GetInventoryOrgInventoryOutput) ToGetInventoryOrgInventoryOutput() GetInventoryOrgInventoryOutput {
-	return o
-}
-
-func (o GetInventoryOrgInventoryOutput) ToGetInventoryOrgInventoryOutputWithContext(ctx context.Context) GetInventoryOrgInventoryOutput {
-	return o
-}
-
-// Only if `type`==`switch` or `type`==`gateway`, whether the switch/gateway is adopted
-func (o GetInventoryOrgInventoryOutput) Adopted() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetInventoryOrgInventory) bool { return v.Adopted }).(pulumi.BoolOutput)
-}
-
-// For Virtual Chassis only, the MAC Address of the FPC0
-func (o GetInventoryOrgInventoryOutput) ChassisMac() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.ChassisMac }).(pulumi.StringOutput)
-}
-
-// For Virtual Chassis only, the Serial Number of the FPC0
-func (o GetInventoryOrgInventoryOutput) ChassisSerial() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.ChassisSerial }).(pulumi.StringOutput)
-}
-
-// Device claim code
-func (o GetInventoryOrgInventoryOutput) ClaimCode() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.ClaimCode }).(pulumi.StringOutput)
-}
-
-// Whether the device is connected
-func (o GetInventoryOrgInventoryOutput) Connected() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetInventoryOrgInventory) bool { return v.Connected }).(pulumi.BoolOutput)
-}
-
-// Deviceprofile id if assigned, null if not assigned
-func (o GetInventoryOrgInventoryOutput) DeviceprofileId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.DeviceprofileId }).(pulumi.StringOutput)
-}
-
-// Hostname reported by the device
-func (o GetInventoryOrgInventoryOutput) Hostname() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.Hostname }).(pulumi.StringOutput)
-}
-
-// Device hardware revision number
-func (o GetInventoryOrgInventoryOutput) HwRev() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.HwRev }).(pulumi.StringOutput)
-}
-
-// Unique ID of the object instance in the Mist Organization
-func (o GetInventoryOrgInventoryOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.Id }).(pulumi.StringOutput)
-}
-
-func (o GetInventoryOrgInventoryOutput) Jsi() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetInventoryOrgInventory) bool { return v.Jsi }).(pulumi.BoolOutput)
-}
-
-// Device MAC address
-func (o GetInventoryOrgInventoryOutput) Mac() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.Mac }).(pulumi.StringOutput)
-}
-
-// Device model
-func (o GetInventoryOrgInventoryOutput) Model() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.Model }).(pulumi.StringOutput)
-}
-
-// Device name if configured
-func (o GetInventoryOrgInventoryOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o GetInventoryOrgInventoryOutput) OrgId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.OrgId }).(pulumi.StringOutput)
-}
-
-// Device serial
-func (o GetInventoryOrgInventoryOutput) Serial() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.Serial }).(pulumi.StringOutput)
-}
-
-// Site ID where the device is assigned to
-func (o GetInventoryOrgInventoryOutput) SiteId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.SiteId }).(pulumi.StringOutput)
-}
-
-// Device stock keeping unit
-func (o GetInventoryOrgInventoryOutput) Sku() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.Sku }).(pulumi.StringOutput)
-}
-
-// enum: `ap`, `gateway`, `switch`
-func (o GetInventoryOrgInventoryOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// If `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Cluster, MAC Address of the Cluster
-func (o GetInventoryOrgInventoryOutput) VcMac() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.VcMac }).(pulumi.StringOutput)
-}
-
-type GetInventoryOrgInventoryArrayOutput struct{ *pulumi.OutputState }
-
-func (GetInventoryOrgInventoryArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetInventoryOrgInventory)(nil)).Elem()
-}
-
-func (o GetInventoryOrgInventoryArrayOutput) ToGetInventoryOrgInventoryArrayOutput() GetInventoryOrgInventoryArrayOutput {
-	return o
-}
-
-func (o GetInventoryOrgInventoryArrayOutput) ToGetInventoryOrgInventoryArrayOutputWithContext(ctx context.Context) GetInventoryOrgInventoryArrayOutput {
-	return o
-}
-
-func (o GetInventoryOrgInventoryArrayOutput) Index(i pulumi.IntInput) GetInventoryOrgInventoryOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInventoryOrgInventory {
-		return vs[0].([]GetInventoryOrgInventory)[vs[1].(int)]
-	}).(GetInventoryOrgInventoryOutput)
-}
-
 type MxclusterTuntermMonitoringArrayArray []MxclusterTuntermMonitoringArrayInput
 
 func (MxclusterTuntermMonitoringArrayArray) ElementType() reflect.Type {
@@ -92339,6 +92418,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeTuntermSwitchConfigMapInput)(nil)).Elem(), MxedgeTuntermSwitchConfigMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeVersionsInput)(nil)).Elem(), MxedgeVersionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeVersionsPtrInput)(nil)).Elem(), MxedgeVersionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxtunnelAutoPreemptionInput)(nil)).Elem(), MxtunnelAutoPreemptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxtunnelAutoPreemptionPtrInput)(nil)).Elem(), MxtunnelAutoPreemptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxtunnelIpsecInput)(nil)).Elem(), MxtunnelIpsecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxtunnelIpsecPtrInput)(nil)).Elem(), MxtunnelIpsecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxtunnelIpsecExtraRouteInput)(nil)).Elem(), MxtunnelIpsecExtraRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxtunnelIpsecExtraRouteArrayInput)(nil)).Elem(), MxtunnelIpsecExtraRouteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NacPortalPortalInput)(nil)).Elem(), NacPortalPortalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NacPortalPortalPtrInput)(nil)).Elem(), NacPortalPortalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NacPortalSsoInput)(nil)).Elem(), NacPortalSsoArgs{})
@@ -92732,11 +92817,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaytemplatesOrgGatewaytemplateArrayInput)(nil)).Elem(), GetGatewaytemplatesOrgGatewaytemplateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpprofilesOrgIdpprofileInput)(nil)).Elem(), GetIdpprofilesOrgIdpprofileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpprofilesOrgIdpprofileArrayInput)(nil)).Elem(), GetIdpprofilesOrgIdpprofileArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpprofilesOrgIdpprofileOverwriteInput)(nil)).Elem(), GetIdpprofilesOrgIdpprofileOverwriteArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpprofilesOrgIdpprofileOverwriteArrayInput)(nil)).Elem(), GetIdpprofilesOrgIdpprofileOverwriteArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpprofilesOrgIdpprofileOverwriteMatchingInput)(nil)).Elem(), GetIdpprofilesOrgIdpprofileOverwriteMatchingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetInventoryOrgInventoryInput)(nil)).Elem(), GetInventoryOrgInventoryArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetInventoryOrgInventoryArrayInput)(nil)).Elem(), GetInventoryOrgInventoryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MxclusterTuntermMonitoringArrayArrayInput)(nil)).Elem(), MxclusterTuntermMonitoringArrayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeTuntermMonitoringArrayArrayInput)(nil)).Elem(), MxedgeTuntermMonitoringArrayArray{})
 	pulumi.RegisterOutputType(AlarmtemplateDeliveryOutput{})
@@ -93335,6 +93415,12 @@ func init() {
 	pulumi.RegisterOutputType(MxedgeTuntermSwitchConfigMapOutput{})
 	pulumi.RegisterOutputType(MxedgeVersionsOutput{})
 	pulumi.RegisterOutputType(MxedgeVersionsPtrOutput{})
+	pulumi.RegisterOutputType(MxtunnelAutoPreemptionOutput{})
+	pulumi.RegisterOutputType(MxtunnelAutoPreemptionPtrOutput{})
+	pulumi.RegisterOutputType(MxtunnelIpsecOutput{})
+	pulumi.RegisterOutputType(MxtunnelIpsecPtrOutput{})
+	pulumi.RegisterOutputType(MxtunnelIpsecExtraRouteOutput{})
+	pulumi.RegisterOutputType(MxtunnelIpsecExtraRouteArrayOutput{})
 	pulumi.RegisterOutputType(NacPortalPortalOutput{})
 	pulumi.RegisterOutputType(NacPortalPortalPtrOutput{})
 	pulumi.RegisterOutputType(NacPortalSsoOutput{})
@@ -93728,11 +93814,6 @@ func init() {
 	pulumi.RegisterOutputType(GetGatewaytemplatesOrgGatewaytemplateArrayOutput{})
 	pulumi.RegisterOutputType(GetIdpprofilesOrgIdpprofileOutput{})
 	pulumi.RegisterOutputType(GetIdpprofilesOrgIdpprofileArrayOutput{})
-	pulumi.RegisterOutputType(GetIdpprofilesOrgIdpprofileOverwriteOutput{})
-	pulumi.RegisterOutputType(GetIdpprofilesOrgIdpprofileOverwriteArrayOutput{})
-	pulumi.RegisterOutputType(GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput{})
-	pulumi.RegisterOutputType(GetInventoryOrgInventoryOutput{})
-	pulumi.RegisterOutputType(GetInventoryOrgInventoryArrayOutput{})
 	pulumi.RegisterOutputType(MxclusterTuntermMonitoringArrayArrayOutput{})
 	pulumi.RegisterOutputType(MxedgeTuntermMonitoringArrayArrayOutput{})
 }

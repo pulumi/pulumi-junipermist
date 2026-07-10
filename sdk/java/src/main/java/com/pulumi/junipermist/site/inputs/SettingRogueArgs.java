@@ -19,14 +19,14 @@ public final class SettingRogueArgs extends com.pulumi.resources.ResourceArgs {
     public static final SettingRogueArgs Empty = new SettingRogueArgs();
 
     /**
-     * list of VLAN IDs on which rogue APs are ignored
+     * VLAN IDs allowed by the rogue detection policy
      * 
      */
     @Import(name="allowedVlanIds")
     private @Nullable Output<List<Integer>> allowedVlanIds;
 
     /**
-     * @return list of VLAN IDs on which rogue APs are ignored
+     * @return VLAN IDs allowed by the rogue detection policy
      * 
      */
     public Optional<Output<List<Integer>>> allowedVlanIds() {
@@ -124,14 +124,14 @@ public final class SettingRogueArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * list of BSSIDs to whitelist. Ex: &#34;cc-:8e-:6f-:d4-:bf-:16&#34;, &#34;cc-8e-6f-d4-bf-16&#34;, &#34;cc-73-*&#34;, &#34;cc:82:*&#34;
+     * BSSID values or wildcard patterns excluded from rogue detection
      * 
      */
     @Import(name="whitelistedBssids")
     private @Nullable Output<List<String>> whitelistedBssids;
 
     /**
-     * @return list of BSSIDs to whitelist. Ex: &#34;cc-:8e-:6f-:d4-:bf-:16&#34;, &#34;cc-8e-6f-d4-bf-16&#34;, &#34;cc-73-*&#34;, &#34;cc:82:*&#34;
+     * @return BSSID values or wildcard patterns excluded from rogue detection
      * 
      */
     public Optional<Output<List<String>>> whitelistedBssids() {
@@ -139,14 +139,14 @@ public final class SettingRogueArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of SSIDs to whitelist
+     * SSID names excluded from rogue detection
      * 
      */
     @Import(name="whitelistedSsids")
     private @Nullable Output<List<String>> whitelistedSsids;
 
     /**
-     * @return List of SSIDs to whitelist
+     * @return SSID names excluded from rogue detection
      * 
      */
     public Optional<Output<List<String>>> whitelistedSsids() {
@@ -186,7 +186,7 @@ public final class SettingRogueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowedVlanIds list of VLAN IDs on which rogue APs are ignored
+         * @param allowedVlanIds VLAN IDs allowed by the rogue detection policy
          * 
          * @return builder
          * 
@@ -197,7 +197,7 @@ public final class SettingRogueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowedVlanIds list of VLAN IDs on which rogue APs are ignored
+         * @param allowedVlanIds VLAN IDs allowed by the rogue detection policy
          * 
          * @return builder
          * 
@@ -207,7 +207,7 @@ public final class SettingRogueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowedVlanIds list of VLAN IDs on which rogue APs are ignored
+         * @param allowedVlanIds VLAN IDs allowed by the rogue detection policy
          * 
          * @return builder
          * 
@@ -343,7 +343,7 @@ public final class SettingRogueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param whitelistedBssids list of BSSIDs to whitelist. Ex: &#34;cc-:8e-:6f-:d4-:bf-:16&#34;, &#34;cc-8e-6f-d4-bf-16&#34;, &#34;cc-73-*&#34;, &#34;cc:82:*&#34;
+         * @param whitelistedBssids BSSID values or wildcard patterns excluded from rogue detection
          * 
          * @return builder
          * 
@@ -354,7 +354,7 @@ public final class SettingRogueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param whitelistedBssids list of BSSIDs to whitelist. Ex: &#34;cc-:8e-:6f-:d4-:bf-:16&#34;, &#34;cc-8e-6f-d4-bf-16&#34;, &#34;cc-73-*&#34;, &#34;cc:82:*&#34;
+         * @param whitelistedBssids BSSID values or wildcard patterns excluded from rogue detection
          * 
          * @return builder
          * 
@@ -364,7 +364,7 @@ public final class SettingRogueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param whitelistedBssids list of BSSIDs to whitelist. Ex: &#34;cc-:8e-:6f-:d4-:bf-:16&#34;, &#34;cc-8e-6f-d4-bf-16&#34;, &#34;cc-73-*&#34;, &#34;cc:82:*&#34;
+         * @param whitelistedBssids BSSID values or wildcard patterns excluded from rogue detection
          * 
          * @return builder
          * 
@@ -374,7 +374,7 @@ public final class SettingRogueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param whitelistedSsids List of SSIDs to whitelist
+         * @param whitelistedSsids SSID names excluded from rogue detection
          * 
          * @return builder
          * 
@@ -385,7 +385,7 @@ public final class SettingRogueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param whitelistedSsids List of SSIDs to whitelist
+         * @param whitelistedSsids SSID names excluded from rogue detection
          * 
          * @return builder
          * 
@@ -395,7 +395,7 @@ public final class SettingRogueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param whitelistedSsids List of SSIDs to whitelist
+         * @param whitelistedSsids SSID names excluded from rogue detection
          * 
          * @return builder
          * 

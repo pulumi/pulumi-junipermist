@@ -14,15 +14,19 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingSsrAutoUpgrade {
     /**
-     * @return upgrade channel to follow. enum: `alpha`, `beta`, `stable`
+     * @return Firmware release channel used for SSR auto-upgrade
      * 
      */
     private @Nullable String channel;
     /**
-     * @return Property key is the SSR model (e.g. &#34;SSR130&#34;).
+     * @return Per-model SSR firmware versions used for auto-upgrade
      * 
      */
     private @Nullable Map<String,String> customVersions;
+    /**
+     * @return Whether SSR auto-upgrade is enabled for newly onboarded devices
+     * 
+     */
     private @Nullable Boolean enabled;
     /**
      * @return Firmware version to deploy (e.g. 6.3.0-107.r1). Optional, used when customVersions not specified
@@ -32,19 +36,23 @@ public final class SettingSsrAutoUpgrade {
 
     private SettingSsrAutoUpgrade() {}
     /**
-     * @return upgrade channel to follow. enum: `alpha`, `beta`, `stable`
+     * @return Firmware release channel used for SSR auto-upgrade
      * 
      */
     public Optional<String> channel() {
         return Optional.ofNullable(this.channel);
     }
     /**
-     * @return Property key is the SSR model (e.g. &#34;SSR130&#34;).
+     * @return Per-model SSR firmware versions used for auto-upgrade
      * 
      */
     public Map<String,String> customVersions() {
         return this.customVersions == null ? Map.of() : this.customVersions;
     }
+    /**
+     * @return Whether SSR auto-upgrade is enabled for newly onboarded devices
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }

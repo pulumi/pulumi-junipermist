@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingWanVna {
+    /**
+     * @return Whether WAN VNA is enabled for the site
+     * 
+     */
     private @Nullable Boolean enabled;
 
     private SettingWanVna() {}
+    /**
+     * @return Whether WAN VNA is enabled for the site
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }

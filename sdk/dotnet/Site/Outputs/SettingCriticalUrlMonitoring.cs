@@ -13,7 +13,13 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class SettingCriticalUrlMonitoring
     {
+        /// <summary>
+        /// Whether critical URL monitoring is enabled
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// Critical URLs monitored for site health latency
+        /// </summary>
         public readonly ImmutableArray<Outputs.SettingCriticalUrlMonitoringMonitor> Monitors;
 
         [OutputConstructor]

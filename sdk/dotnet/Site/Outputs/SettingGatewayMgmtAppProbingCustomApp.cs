@@ -14,6 +14,9 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class SettingGatewayMgmtAppProbingCustomApp
     {
         public readonly string? Address;
+        /// <summary>
+        /// Category label used for this custom application probe
+        /// </summary>
         public readonly string? AppType;
         /// <summary>
         /// Only 1 entry is allowed:
@@ -21,18 +24,30 @@ namespace Pulumi.JuniperMist.Site.Outputs
         ///     * if `Protocol`==`Icmp`: IP Address (e.g. `1.2.3.4`)
         /// </summary>
         public readonly ImmutableArray<string> Hostnames;
+        /// <summary>
+        /// Stable key used to identify this custom application probe
+        /// </summary>
         public readonly string? Key;
+        /// <summary>
+        /// Display name for this custom application probe
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Gateway network used as the source context for this probe
+        /// </summary>
         public readonly string? Network;
         /// <summary>
-        /// If `Protocol`==`Icmp`
+        /// If `Protocol`==`Icmp`. ICMP packet size used by this custom app probe
         /// </summary>
         public readonly int? PacketSize;
         /// <summary>
-        /// enum: `Http`, `Icmp`
+        /// Probe protocol used by this custom application definition
         /// </summary>
         public readonly string Protocol;
         public readonly string? Url;
+        /// <summary>
+        /// Gateway VRF used as the source context for this probe
+        /// </summary>
         public readonly string? Vrf;
 
         [OutputConstructor]

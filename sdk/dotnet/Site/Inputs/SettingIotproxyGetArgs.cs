@@ -12,11 +12,14 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class SettingIotproxyGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether the site IoT proxy is enabled
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Visionline integration settings for IoT proxy
+        /// Site access-control integration settings for Visionline
         /// </summary>
         [Input("visionline")]
         public Input<Inputs.SettingIotproxyVisionlineGetArgs>? Visionline { get; set; }

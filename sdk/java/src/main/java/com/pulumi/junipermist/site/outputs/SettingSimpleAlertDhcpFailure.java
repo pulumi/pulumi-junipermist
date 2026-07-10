@@ -11,25 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingSimpleAlertDhcpFailure {
+    /**
+     * @return Number of distinct clients that must encounter DHCP failures before alerting
+     * 
+     */
     private @Nullable Integer clientCount;
     /**
-     * @return failing within minutes
+     * @return Time window in minutes for evaluating DHCP failures
      * 
      */
     private @Nullable Integer duration;
+    /**
+     * @return Number of DHCP failure incidents required within the duration window
+     * 
+     */
     private @Nullable Integer incidentCount;
 
     private SettingSimpleAlertDhcpFailure() {}
+    /**
+     * @return Number of distinct clients that must encounter DHCP failures before alerting
+     * 
+     */
     public Optional<Integer> clientCount() {
         return Optional.ofNullable(this.clientCount);
     }
     /**
-     * @return failing within minutes
+     * @return Time window in minutes for evaluating DHCP failures
      * 
      */
     public Optional<Integer> duration() {
         return Optional.ofNullable(this.duration);
     }
+    /**
+     * @return Number of DHCP failure incidents required within the duration window
+     * 
+     */
     public Optional<Integer> incidentCount() {
         return Optional.ofNullable(this.incidentCount);
     }

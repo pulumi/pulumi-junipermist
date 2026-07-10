@@ -13,11 +13,17 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class SettingSimpleAlertArpFailure
     {
+        /// <summary>
+        /// Number of distinct clients that must encounter ARP failures before alerting
+        /// </summary>
         public readonly int? ClientCount;
         /// <summary>
-        /// failing within minutes
+        /// Time window in minutes for evaluating ARP failures
         /// </summary>
         public readonly int? Duration;
+        /// <summary>
+        /// Number of ARP failure incidents required within the duration window
+        /// </summary>
         public readonly int? IncidentCount;
 
         [OutputConstructor]

@@ -16,9 +16,17 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SettingWifiArgs Empty = new SettingWifiArgs();
 
+    /**
+     * Whether Cisco compatibility features are enabled for site Wi-Fi
+     * 
+     */
     @Import(name="ciscoEnabled")
     private @Nullable Output<Boolean> ciscoEnabled;
 
+    /**
+     * @return Whether Cisco compatibility features are enabled for site Wi-Fi
+     * 
+     */
     public Optional<Output<Boolean>> ciscoEnabled() {
         return Optional.ofNullable(this.ciscoEnabled);
     }
@@ -38,9 +46,17 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.disable11k);
     }
 
+    /**
+     * Whether AP radios are disabled when AP power is constrained
+     * 
+     */
     @Import(name="disableRadiosWhenPowerConstrained")
     private @Nullable Output<Boolean> disableRadiosWhenPowerConstrained;
 
+    /**
+     * @return Whether AP radios are disabled when AP power is constrained
+     * 
+     */
     public Optional<Output<Boolean>> disableRadiosWhenPowerConstrained() {
         return Optional.ofNullable(this.disableRadiosWhenPowerConstrained);
     }
@@ -60,9 +76,17 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.enableArpSpoofCheck);
     }
 
+    /**
+     * Whether shared radio scanning is enabled for site Wi-Fi
+     * 
+     */
     @Import(name="enableSharedRadioScanning")
     private @Nullable Output<Boolean> enableSharedRadioScanning;
 
+    /**
+     * @return Whether shared radio scanning is enabled for site Wi-Fi
+     * 
+     */
     public Optional<Output<Boolean>> enableSharedRadioScanning() {
         return Optional.ofNullable(this.enableSharedRadioScanning);
     }
@@ -188,14 +212,14 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * enum: `default`, `disabled`, `enabled`
+     * ARP proxy mode for site Wi-Fi
      * 
      */
     @Import(name="proxyArp")
     private @Nullable Output<String> proxyArp;
 
     /**
-     * @return enum: `default`, `disabled`, `enabled`
+     * @return ARP proxy mode for site Wi-Fi
      * 
      */
     public Optional<Output<String>> proxyArp() {
@@ -239,11 +263,23 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
             $ = new SettingWifiArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ciscoEnabled Whether Cisco compatibility features are enabled for site Wi-Fi
+         * 
+         * @return builder
+         * 
+         */
         public Builder ciscoEnabled(@Nullable Output<Boolean> ciscoEnabled) {
             $.ciscoEnabled = ciscoEnabled;
             return this;
         }
 
+        /**
+         * @param ciscoEnabled Whether Cisco compatibility features are enabled for site Wi-Fi
+         * 
+         * @return builder
+         * 
+         */
         public Builder ciscoEnabled(Boolean ciscoEnabled) {
             return ciscoEnabled(Output.of(ciscoEnabled));
         }
@@ -269,11 +305,23 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
             return disable11k(Output.of(disable11k));
         }
 
+        /**
+         * @param disableRadiosWhenPowerConstrained Whether AP radios are disabled when AP power is constrained
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableRadiosWhenPowerConstrained(@Nullable Output<Boolean> disableRadiosWhenPowerConstrained) {
             $.disableRadiosWhenPowerConstrained = disableRadiosWhenPowerConstrained;
             return this;
         }
 
+        /**
+         * @param disableRadiosWhenPowerConstrained Whether AP radios are disabled when AP power is constrained
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableRadiosWhenPowerConstrained(Boolean disableRadiosWhenPowerConstrained) {
             return disableRadiosWhenPowerConstrained(Output.of(disableRadiosWhenPowerConstrained));
         }
@@ -299,11 +347,23 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
             return enableArpSpoofCheck(Output.of(enableArpSpoofCheck));
         }
 
+        /**
+         * @param enableSharedRadioScanning Whether shared radio scanning is enabled for site Wi-Fi
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableSharedRadioScanning(@Nullable Output<Boolean> enableSharedRadioScanning) {
             $.enableSharedRadioScanning = enableSharedRadioScanning;
             return this;
         }
 
+        /**
+         * @param enableSharedRadioScanning Whether shared radio scanning is enabled for site Wi-Fi
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableSharedRadioScanning(Boolean enableSharedRadioScanning) {
             return enableSharedRadioScanning(Output.of(enableSharedRadioScanning));
         }
@@ -477,7 +537,7 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxyArp enum: `default`, `disabled`, `enabled`
+         * @param proxyArp ARP proxy mode for site Wi-Fi
          * 
          * @return builder
          * 
@@ -488,7 +548,7 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxyArp enum: `default`, `disabled`, `enabled`
+         * @param proxyArp ARP proxy mode for site Wi-Fi
          * 
          * @return builder
          * 

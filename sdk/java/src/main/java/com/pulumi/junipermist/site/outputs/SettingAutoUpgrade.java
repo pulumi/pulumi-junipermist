@@ -14,12 +14,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingAutoUpgrade {
     /**
-     * @return Custom versions for different models. Property key is the model name (e.g. &#34;AP41&#34;)
+     * @return Per-AP-model firmware versions or channels used for auto-upgrade
      * 
      */
     private @Nullable Map<String,String> customVersions;
     /**
-     * @return enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+     * @return Weekly AP auto-upgrade day for the maintenance window
      * 
      */
     private @Nullable String dayOfWeek;
@@ -34,21 +34,21 @@ public final class SettingAutoUpgrade {
      */
     private @Nullable String timeOfDay;
     /**
-     * @return desired version. enum: `beta`, `custom`, `stable`
+     * @return Firmware release channel or custom version used for AP auto-upgrade
      * 
      */
     private @Nullable String version;
 
     private SettingAutoUpgrade() {}
     /**
-     * @return Custom versions for different models. Property key is the model name (e.g. &#34;AP41&#34;)
+     * @return Per-AP-model firmware versions or channels used for auto-upgrade
      * 
      */
     public Map<String,String> customVersions() {
         return this.customVersions == null ? Map.of() : this.customVersions;
     }
     /**
-     * @return enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+     * @return Weekly AP auto-upgrade day for the maintenance window
      * 
      */
     public Optional<String> dayOfWeek() {
@@ -69,7 +69,7 @@ public final class SettingAutoUpgrade {
         return Optional.ofNullable(this.timeOfDay);
     }
     /**
-     * @return desired version. enum: `beta`, `custom`, `stable`
+     * @return Firmware release channel or custom version used for AP auto-upgrade
      * 
      */
     public Optional<String> version() {

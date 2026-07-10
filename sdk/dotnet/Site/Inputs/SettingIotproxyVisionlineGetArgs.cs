@@ -18,11 +18,26 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("accessId")]
         public Input<string>? AccessId { get; set; }
 
+        [Input("cacerts")]
+        private InputList<string>? _cacerts;
+
+        /// <summary>
+        /// PEM-encoded CA certificates used to verify the Visionline collector's TLS certificate. Required when the collector uses a self-signed certificate
+        /// </summary>
+        public InputList<string> Cacerts
+        {
+            get => _cacerts ?? (_cacerts = new InputList<string>());
+            set => _cacerts = value;
+        }
+
+        /// <summary>
+        /// Whether the Visionline integration is enabled
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Hostname or IP of the Visionline collector
+        /// Collector hostname or IP address for Visionline
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
@@ -31,7 +46,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private Input<string>? _password;
 
         /// <summary>
-        /// Password for the Visionline service
+        /// Visionline service password used by the IoT proxy
         /// </summary>
         public Input<string>? Password
         {
@@ -50,7 +65,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// Username for the Visionline service
+        /// Visionline service username used by the IoT proxy
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

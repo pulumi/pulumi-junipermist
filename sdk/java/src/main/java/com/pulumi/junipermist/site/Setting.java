@@ -23,6 +23,8 @@ import com.pulumi.junipermist.site.outputs.SettingIotproxy;
 import com.pulumi.junipermist.site.outputs.SettingJuniperSrx;
 import com.pulumi.junipermist.site.outputs.SettingLed;
 import com.pulumi.junipermist.site.outputs.SettingMarvis;
+import com.pulumi.junipermist.site.outputs.SettingMxedgeMgmt;
+import com.pulumi.junipermist.site.outputs.SettingMxtunnels;
 import com.pulumi.junipermist.site.outputs.SettingOccupancy;
 import com.pulumi.junipermist.site.outputs.SettingProxy;
 import com.pulumi.junipermist.site.outputs.SettingRogue;
@@ -33,6 +35,8 @@ import com.pulumi.junipermist.site.outputs.SettingSleThresholds;
 import com.pulumi.junipermist.site.outputs.SettingSrxApp;
 import com.pulumi.junipermist.site.outputs.SettingSsr;
 import com.pulumi.junipermist.site.outputs.SettingSyntheticTest;
+import com.pulumi.junipermist.site.outputs.SettingTuntermMonitoring;
+import com.pulumi.junipermist.site.outputs.SettingTuntermMulticastConfig;
 import com.pulumi.junipermist.site.outputs.SettingUplinkPortConfig;
 import com.pulumi.junipermist.site.outputs.SettingVarsAnnotations;
 import com.pulumi.junipermist.site.outputs.SettingVna;
@@ -139,21 +143,29 @@ public class Setting extends com.pulumi.resources.CustomResource {
     public Output<Boolean> allowMist() {
         return this.allowMist;
     }
+    /**
+     * Advanced analytics configuration for the site
+     * 
+     */
     @Export(name="analytic", refs={SettingAnalytic.class}, tree="[0]")
     private Output<SettingAnalytic> analytic;
 
+    /**
+     * @return Advanced analytics configuration for the site
+     * 
+     */
     public Output<SettingAnalytic> analytic() {
         return this.analytic;
     }
     /**
-     * AP Synthetic Test configuration
+     * Synthetic test configuration for APs at the site
      * 
      */
     @Export(name="apSyntheticTest", refs={SettingApSyntheticTest.class}, tree="[0]")
     private Output</* @Nullable */ SettingApSyntheticTest> apSyntheticTest;
 
     /**
-     * @return AP Synthetic Test configuration
+     * @return Synthetic test configuration for APs at the site
      * 
      */
     public Output<Optional<SettingApSyntheticTest>> apSyntheticTest() {
@@ -174,28 +186,28 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.apUpdownThreshold);
     }
     /**
-     * Auto Upgrade Settings
+     * Automatic AP firmware upgrade settings for the site. Overrides org setting when provided.
      * 
      */
     @Export(name="autoUpgrade", refs={SettingAutoUpgrade.class}, tree="[0]")
     private Output<SettingAutoUpgrade> autoUpgrade;
 
     /**
-     * @return Auto Upgrade Settings
+     * @return Automatic AP firmware upgrade settings for the site. Overrides org setting when provided.
      * 
      */
     public Output<SettingAutoUpgrade> autoUpgrade() {
         return this.autoUpgrade;
     }
     /**
-     * auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware upgrade
+     * Automatic ESL firmware upgrade settings for the site
      * 
      */
     @Export(name="autoUpgradeEsl", refs={SettingAutoUpgradeEsl.class}, tree="[0]")
     private Output</* @Nullable */ SettingAutoUpgradeEsl> autoUpgradeEsl;
 
     /**
-     * @return auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware upgrade
+     * @return Automatic ESL firmware upgrade settings for the site
      * 
      */
     public Output<Optional<SettingAutoUpgradeEsl>> autoUpgradeEsl() {
@@ -215,21 +227,29 @@ public class Setting extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> bgpNeighborUpdownThreshold() {
         return Codegen.optional(this.bgpNeighborUpdownThreshold);
     }
+    /**
+     * Read-only URL for the site blacklist file
+     * 
+     */
     @Export(name="blacklistUrl", refs={String.class}, tree="[0]")
     private Output<String> blacklistUrl;
 
+    /**
+     * @return Read-only URL for the site blacklist file
+     * 
+     */
     public Output<String> blacklistUrl() {
         return this.blacklistUrl;
     }
     /**
-     * BLE AP settings
+     * Bluetooth Low Energy configuration applied to APs at the site
      * 
      */
     @Export(name="bleConfig", refs={SettingBleConfig.class}, tree="[0]")
     private Output</* @Nullable */ SettingBleConfig> bleConfig;
 
     /**
-     * @return BLE AP settings
+     * @return Bluetooth Low Energy configuration applied to APs at the site
      * 
      */
     public Output<Optional<SettingBleConfig>> bleConfig() {
@@ -250,28 +270,28 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return this.configAutoRevert;
     }
     /**
-     * Mist also uses some heuristic rules to prevent destructive configs from being pushed
+     * Policy controlling how site configuration pushes are applied
      * 
      */
     @Export(name="configPushPolicy", refs={SettingConfigPushPolicy.class}, tree="[0]")
     private Output</* @Nullable */ SettingConfigPushPolicy> configPushPolicy;
 
     /**
-     * @return Mist also uses some heuristic rules to prevent destructive configs from being pushed
+     * @return Policy controlling how site configuration pushes are applied
      * 
      */
     public Output<Optional<SettingConfigPushPolicy>> configPushPolicy() {
         return Codegen.optional(this.configPushPolicy);
     }
     /**
-     * You can define some URLs that&#39;s critical to site operations the latency will be captured and considered for site health
+     * Monitoring configuration for critical URLs at the site
      * 
      */
     @Export(name="criticalUrlMonitoring", refs={SettingCriticalUrlMonitoring.class}, tree="[0]")
     private Output</* @Nullable */ SettingCriticalUrlMonitoring> criticalUrlMonitoring;
 
     /**
-     * @return You can define some URLs that&#39;s critical to site operations the latency will be captured and considered for site health
+     * @return Monitoring configuration for critical URLs at the site
      * 
      */
     public Output<Optional<SettingCriticalUrlMonitoring>> criticalUrlMonitoring() {
@@ -291,35 +311,43 @@ public class Setting extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> deviceUpdownThreshold() {
         return Codegen.optional(this.deviceUpdownThreshold);
     }
+    /**
+     * Whether UNII-4 channels are enabled for the site
+     * 
+     */
     @Export(name="enableUnii4", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableUnii4;
 
+    /**
+     * @return Whether UNII-4 channels are enabled for the site
+     * 
+     */
     public Output<Boolean> enableUnii4() {
         return this.enableUnii4;
     }
     /**
-     * **Note**: if hours does not exist, it&#39;s treated as everyday of the week, 00:00-23:59. Currently, we don&#39;t allow multiple ranges for the same day
+     * Dwell-time analytics rules for the site
      * 
      */
     @Export(name="engagement", refs={SettingEngagement.class}, tree="[0]")
     private Output<SettingEngagement> engagement;
 
     /**
-     * @return **Note**: if hours does not exist, it&#39;s treated as everyday of the week, 00:00-23:59. Currently, we don&#39;t allow multiple ranges for the same day
+     * @return Dwell-time analytics rules for the site
      * 
      */
     public Output<SettingEngagement> engagement() {
         return this.engagement;
     }
     /**
-     * Gateway Management settings
+     * Management access settings for gateways at the site
      * 
      */
     @Export(name="gatewayMgmt", refs={SettingGatewayMgmt.class}, tree="[0]")
     private Output<SettingGatewayMgmt> gatewayMgmt;
 
     /**
-     * @return Gateway Management settings
+     * @return Management access settings for gateways at the site
      * 
      */
     public Output<SettingGatewayMgmt> gatewayMgmt() {
@@ -354,54 +382,98 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.gatewayUpdownThreshold);
     }
     /**
-     * IoT proxy configuration for the site
+     * Proxy settings for IoT traffic at the site
      * 
      */
     @Export(name="iotproxy", refs={SettingIotproxy.class}, tree="[0]")
     private Output</* @Nullable */ SettingIotproxy> iotproxy;
 
     /**
-     * @return IoT proxy configuration for the site
+     * @return Proxy settings for IoT traffic at the site
      * 
      */
     public Output<Optional<SettingIotproxy>> iotproxy() {
         return Codegen.optional(this.iotproxy);
     }
+    /**
+     * SRX integration settings for the site
+     * 
+     */
     @Export(name="juniperSrx", refs={SettingJuniperSrx.class}, tree="[0]")
     private Output</* @Nullable */ SettingJuniperSrx> juniperSrx;
 
+    /**
+     * @return SRX integration settings for the site
+     * 
+     */
     public Output<Optional<SettingJuniperSrx>> juniperSrx() {
         return Codegen.optional(this.juniperSrx);
     }
     /**
-     * LED AP settings
+     * AP LED behavior configured for the site
      * 
      */
     @Export(name="led", refs={SettingLed.class}, tree="[0]")
     private Output<SettingLed> led;
 
     /**
-     * @return LED AP settings
+     * @return AP LED behavior configured for the site
      * 
      */
     public Output<SettingLed> led() {
         return this.led;
     }
+    /**
+     * AI assistant settings for Marvis at the site
+     * 
+     */
     @Export(name="marvis", refs={SettingMarvis.class}, tree="[0]")
     private Output</* @Nullable */ SettingMarvis> marvis;
 
+    /**
+     * @return AI assistant settings for Marvis at the site
+     * 
+     */
     public Output<Optional<SettingMarvis>> marvis() {
         return Codegen.optional(this.marvis);
     }
     /**
-     * Occupancy Analytics settings
+     * Mist Edge management access settings for the site
+     * 
+     */
+    @Export(name="mxedgeMgmt", refs={SettingMxedgeMgmt.class}, tree="[0]")
+    private Output</* @Nullable */ SettingMxedgeMgmt> mxedgeMgmt;
+
+    /**
+     * @return Mist Edge management access settings for the site
+     * 
+     */
+    public Output<Optional<SettingMxedgeMgmt>> mxedgeMgmt() {
+        return Codegen.optional(this.mxedgeMgmt);
+    }
+    /**
+     * Site Mist Tunnel configuration
+     * 
+     */
+    @Export(name="mxtunnels", refs={SettingMxtunnels.class}, tree="[0]")
+    private Output</* @Nullable */ SettingMxtunnels> mxtunnels;
+
+    /**
+     * @return Site Mist Tunnel configuration
+     * 
+     */
+    public Output<Optional<SettingMxtunnels>> mxtunnels() {
+        return Codegen.optional(this.mxtunnels);
+    }
+    /**
+     * Analytics settings for site occupancy
      * 
      */
     @Export(name="occupancy", refs={SettingOccupancy.class}, tree="[0]")
     private Output<SettingOccupancy> occupancy;
 
     /**
-     * @return Occupancy Analytics settings
+     * @return Analytics settings for site occupancy
      * 
      */
     public Output<SettingOccupancy> occupancy() {
@@ -422,14 +494,14 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return this.persistConfigOnDevice;
     }
     /**
-     * Proxy Configuration to talk to Mist
+     * Network proxy settings for devices at the site
      * 
      */
     @Export(name="proxy", refs={SettingProxy.class}, tree="[0]")
     private Output</* @Nullable */ SettingProxy> proxy;
 
     /**
-     * @return Proxy Configuration to talk to Mist
+     * @return Network proxy settings for devices at the site
      * 
      */
     public Output<Optional<SettingProxy>> proxy() {
@@ -464,88 +536,128 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.reportGatt);
     }
     /**
-     * Rogue site settings
+     * AP threat detection settings for the site
      * 
      */
     @Export(name="rogue", refs={SettingRogue.class}, tree="[0]")
     private Output<SettingRogue> rogue;
 
     /**
-     * @return Rogue site settings
+     * @return AP threat detection settings for the site
      * 
      */
     public Output<SettingRogue> rogue() {
         return this.rogue;
     }
     /**
-     * Managed mobility
+     * Managed mobility and asset tracking settings for the site
      * 
      */
     @Export(name="rtsa", refs={SettingRtsa.class}, tree="[0]")
     private Output<SettingRtsa> rtsa;
 
     /**
-     * @return Managed mobility
+     * @return Managed mobility and asset tracking settings for the site
      * 
      */
     public Output<SettingRtsa> rtsa() {
         return this.rtsa;
     }
     /**
-     * Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute window, there are more than Y distinct client encountering over X failures
+     * Threshold alert settings for the site
      * 
      */
     @Export(name="simpleAlert", refs={SettingSimpleAlert.class}, tree="[0]")
     private Output</* @Nullable */ SettingSimpleAlert> simpleAlert;
 
     /**
-     * @return Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute window, there are more than Y distinct client encountering over X failures
+     * @return Threshold alert settings for the site
      * 
      */
     public Output<Optional<SettingSimpleAlert>> simpleAlert() {
         return Codegen.optional(this.simpleAlert);
     }
+    /**
+     * Identifier of the site these settings apply to
+     * 
+     */
     @Export(name="siteId", refs={String.class}, tree="[0]")
     private Output<String> siteId;
 
+    /**
+     * @return Identifier of the site these settings apply to
+     * 
+     */
     public Output<String> siteId() {
         return this.siteId;
     }
+    /**
+     * Threat intelligence settings from Sky ATP for the site
+     * 
+     */
     @Export(name="skyatp", refs={SettingSkyatp.class}, tree="[0]")
     private Output</* @Nullable */ SettingSkyatp> skyatp;
 
+    /**
+     * @return Threat intelligence settings from Sky ATP for the site
+     * 
+     */
     public Output<Optional<SettingSkyatp>> skyatp() {
         return Codegen.optional(this.skyatp);
     }
+    /**
+     * Service level expectation threshold settings for the site
+     * 
+     */
     @Export(name="sleThresholds", refs={SettingSleThresholds.class}, tree="[0]")
     private Output</* @Nullable */ SettingSleThresholds> sleThresholds;
 
+    /**
+     * @return Service level expectation threshold settings for the site
+     * 
+     */
     public Output<Optional<SettingSleThresholds>> sleThresholds() {
         return Codegen.optional(this.sleThresholds);
     }
+    /**
+     * Juniper SRX application visibility settings for the site
+     * 
+     */
     @Export(name="srxApp", refs={SettingSrxApp.class}, tree="[0]")
     private Output</* @Nullable */ SettingSrxApp> srxApp;
 
+    /**
+     * @return Juniper SRX application visibility settings for the site
+     * 
+     */
     public Output<Optional<SettingSrxApp>> srxApp() {
         return Codegen.optional(this.srxApp);
     }
     /**
-     * When limitSshAccess = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see Org:Setting)
+     * Public SSH keys configured for the site
      * 
      */
     @Export(name="sshKeys", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> sshKeys;
 
     /**
-     * @return When limitSshAccess = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see Org:Setting)
+     * @return Public SSH keys configured for the site
      * 
      */
     public Output<List<String>> sshKeys() {
         return this.sshKeys;
     }
+    /**
+     * Session Smart Router settings for the site
+     * 
+     */
     @Export(name="ssr", refs={SettingSsr.class}, tree="[0]")
     private Output</* @Nullable */ SettingSsr> ssr;
 
+    /**
+     * @return Session Smart Router settings for the site
+     * 
+     */
     public Output<Optional<SettingSsr>> ssr() {
         return Codegen.optional(this.ssr);
     }
@@ -563,9 +675,17 @@ public class Setting extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> switchUpdownThreshold() {
         return Codegen.optional(this.switchUpdownThreshold);
     }
+    /**
+     * Active monitoring test configuration for the site
+     * 
+     */
     @Export(name="syntheticTest", refs={SettingSyntheticTest.class}, tree="[0]")
     private Output<SettingSyntheticTest> syntheticTest;
 
+    /**
+     * @return Active monitoring test configuration for the site
+     * 
+     */
     public Output<SettingSyntheticTest> syntheticTest() {
         return this.syntheticTest;
     }
@@ -584,50 +704,100 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.trackAnonymousDevices);
     }
     /**
-     * AP Uplink port configuration
+     * Whether tunnel termination monitoring is disabled for the site
+     * 
+     */
+    @Export(name="tuntermMonitoringDisabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> tuntermMonitoringDisabled;
+
+    /**
+     * @return Whether tunnel termination monitoring is disabled for the site
+     * 
+     */
+    public Output<Optional<Boolean>> tuntermMonitoringDisabled() {
+        return Codegen.optional(this.tuntermMonitoringDisabled);
+    }
+    /**
+     * Tunnel termination monitoring settings for the site
+     * 
+     */
+    @Export(name="tuntermMonitorings", refs={List.class,SettingTuntermMonitoring.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<SettingTuntermMonitoring>> tuntermMonitorings;
+
+    /**
+     * @return Tunnel termination monitoring settings for the site
+     * 
+     */
+    public Output<Optional<List<SettingTuntermMonitoring>>> tuntermMonitorings() {
+        return Codegen.optional(this.tuntermMonitorings);
+    }
+    /**
+     * Multicast settings for tunnel termination at the site
+     * 
+     */
+    @Export(name="tuntermMulticastConfig", refs={SettingTuntermMulticastConfig.class}, tree="[0]")
+    private Output</* @Nullable */ SettingTuntermMulticastConfig> tuntermMulticastConfig;
+
+    /**
+     * @return Multicast settings for tunnel termination at the site
+     * 
+     */
+    public Output<Optional<SettingTuntermMulticastConfig>> tuntermMulticastConfig() {
+        return Codegen.optional(this.tuntermMulticastConfig);
+    }
+    /**
+     * AP uplink port configuration for the site
      * 
      */
     @Export(name="uplinkPortConfig", refs={SettingUplinkPortConfig.class}, tree="[0]")
     private Output<SettingUplinkPortConfig> uplinkPortConfig;
 
     /**
-     * @return AP Uplink port configuration
+     * @return AP uplink port configuration for the site
      * 
      */
     public Output<SettingUplinkPortConfig> uplinkPortConfig() {
         return this.uplinkPortConfig;
     }
     /**
-     * Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Template variables defined for the site
      * 
      */
     @Export(name="vars", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> vars;
 
     /**
-     * @return Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * @return Template variables defined for the site
      * 
      */
     public Output<Optional<Map<String,String>>> vars() {
         return Codegen.optional(this.vars);
     }
     /**
-     * Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+     * Metadata annotations for site template variables
      * 
      */
     @Export(name="varsAnnotations", refs={Map.class,String.class,SettingVarsAnnotations.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,SettingVarsAnnotations>> varsAnnotations;
 
     /**
-     * @return Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+     * @return Metadata annotations for site template variables
      * 
      */
     public Output<Optional<Map<String,SettingVarsAnnotations>>> varsAnnotations() {
         return Codegen.optional(this.varsAnnotations);
     }
+    /**
+     * Virtual Network Assistant settings for the site
+     * 
+     */
     @Export(name="vna", refs={SettingVna.class}, tree="[0]")
     private Output</* @Nullable */ SettingVna> vna;
 
+    /**
+     * @return Virtual Network Assistant settings for the site
+     * 
+     */
     public Output<Optional<SettingVna>> vna() {
         return Codegen.optional(this.vna);
     }
@@ -660,80 +830,112 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.vpnPeerUpdownThreshold);
     }
     /**
-     * Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
+     * EX9200 virtual switch instance definitions for the site
      * 
      */
     @Export(name="vsInstance", refs={Map.class,String.class,SettingVsInstance.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,SettingVsInstance>> vsInstance;
 
     /**
-     * @return Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
+     * @return EX9200 virtual switch instance definitions for the site
      * 
      */
     public Output<Optional<Map<String,SettingVsInstance>>> vsInstance() {
         return Codegen.optional(this.vsInstance);
     }
+    /**
+     * Virtual Network Assistant settings for WAN experiences at the site
+     * 
+     */
     @Export(name="wanVna", refs={SettingWanVna.class}, tree="[0]")
     private Output</* @Nullable */ SettingWanVna> wanVna;
 
+    /**
+     * @return Virtual Network Assistant settings for WAN experiences at the site
+     * 
+     */
     public Output<Optional<SettingWanVna>> wanVna() {
         return Codegen.optional(this.wanVna);
     }
+    /**
+     * Read-only URL for the watched station list file
+     * 
+     */
     @Export(name="watchedStationUrl", refs={String.class}, tree="[0]")
     private Output<String> watchedStationUrl;
 
+    /**
+     * @return Read-only URL for the watched station list file
+     * 
+     */
     public Output<String> watchedStationUrl() {
         return this.watchedStationUrl;
     }
+    /**
+     * Read-only URL for the site whitelist file
+     * 
+     */
     @Export(name="whitelistUrl", refs={String.class}, tree="[0]")
     private Output<String> whitelistUrl;
 
+    /**
+     * @return Read-only URL for the site whitelist file
+     * 
+     */
     public Output<String> whitelistUrl() {
         return this.whitelistUrl;
     }
     /**
-     * WIDS site settings
+     * Wireless intrusion detection settings for the site
      * 
      */
     @Export(name="wids", refs={SettingWids.class}, tree="[0]")
     private Output<SettingWids> wids;
 
     /**
-     * @return WIDS site settings
+     * @return Wireless intrusion detection settings for the site
      * 
      */
     public Output<SettingWids> wids() {
         return this.wids;
     }
     /**
-     * Wi-Fi site settings
+     * Wireless LAN configuration settings for the site
      * 
      */
     @Export(name="wifi", refs={SettingWifi.class}, tree="[0]")
     private Output<SettingWifi> wifi;
 
     /**
-     * @return Wi-Fi site settings
+     * @return Wireless LAN configuration settings for the site
      * 
      */
     public Output<SettingWifi> wifi() {
         return this.wifi;
     }
+    /**
+     * Virtual Network Assistant settings for wired experiences at the site
+     * 
+     */
     @Export(name="wiredVna", refs={SettingWiredVna.class}, tree="[0]")
     private Output</* @Nullable */ SettingWiredVna> wiredVna;
 
+    /**
+     * @return Virtual Network Assistant settings for wired experiences at the site
+     * 
+     */
     public Output<Optional<SettingWiredVna>> wiredVna() {
         return Codegen.optional(this.wiredVna);
     }
     /**
-     * Zone Occupancy alert site settings
+     * Occupancy alert settings for site zones
      * 
      */
     @Export(name="zoneOccupancyAlert", refs={SettingZoneOccupancyAlert.class}, tree="[0]")
     private Output<SettingZoneOccupancyAlert> zoneOccupancyAlert;
 
     /**
-     * @return Zone Occupancy alert site settings
+     * @return Occupancy alert settings for site zones
      * 
      */
     public Output<SettingZoneOccupancyAlert> zoneOccupancyAlert() {

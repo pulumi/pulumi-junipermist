@@ -19,30 +19,46 @@ public final class SettingJuniperSrxArgs extends com.pulumi.resources.ResourceAr
     public static final SettingJuniperSrxArgs Empty = new SettingJuniperSrxArgs();
 
     /**
-     * auto_upgrade device first time it is onboarded
+     * SRX auto-upgrade settings applied when SRX devices are onboarded
      * 
      */
     @Import(name="autoUpgrade")
     private @Nullable Output<SettingJuniperSrxAutoUpgradeArgs> autoUpgrade;
 
     /**
-     * @return auto_upgrade device first time it is onboarded
+     * @return SRX auto-upgrade settings applied when SRX devices are onboarded
      * 
      */
     public Optional<Output<SettingJuniperSrxAutoUpgradeArgs>> autoUpgrade() {
         return Optional.ofNullable(this.autoUpgrade);
     }
 
+    /**
+     * SRX gateways integrated with this site
+     * 
+     */
     @Import(name="gateways")
     private @Nullable Output<List<SettingJuniperSrxGatewayArgs>> gateways;
 
+    /**
+     * @return SRX gateways integrated with this site
+     * 
+     */
     public Optional<Output<List<SettingJuniperSrxGatewayArgs>>> gateways() {
         return Optional.ofNullable(this.gateways);
     }
 
+    /**
+     * Whether Mist NAC user information is sent to Juniper SRX gateways
+     * 
+     */
     @Import(name="sendMistNacUserInfo")
     private @Nullable Output<Boolean> sendMistNacUserInfo;
 
+    /**
+     * @return Whether Mist NAC user information is sent to Juniper SRX gateways
+     * 
+     */
     public Optional<Output<Boolean>> sendMistNacUserInfo() {
         return Optional.ofNullable(this.sendMistNacUserInfo);
     }
@@ -74,7 +90,7 @@ public final class SettingJuniperSrxArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param autoUpgrade auto_upgrade device first time it is onboarded
+         * @param autoUpgrade SRX auto-upgrade settings applied when SRX devices are onboarded
          * 
          * @return builder
          * 
@@ -85,7 +101,7 @@ public final class SettingJuniperSrxArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param autoUpgrade auto_upgrade device first time it is onboarded
+         * @param autoUpgrade SRX auto-upgrade settings applied when SRX devices are onboarded
          * 
          * @return builder
          * 
@@ -94,24 +110,54 @@ public final class SettingJuniperSrxArgs extends com.pulumi.resources.ResourceAr
             return autoUpgrade(Output.of(autoUpgrade));
         }
 
+        /**
+         * @param gateways SRX gateways integrated with this site
+         * 
+         * @return builder
+         * 
+         */
         public Builder gateways(@Nullable Output<List<SettingJuniperSrxGatewayArgs>> gateways) {
             $.gateways = gateways;
             return this;
         }
 
+        /**
+         * @param gateways SRX gateways integrated with this site
+         * 
+         * @return builder
+         * 
+         */
         public Builder gateways(List<SettingJuniperSrxGatewayArgs> gateways) {
             return gateways(Output.of(gateways));
         }
 
+        /**
+         * @param gateways SRX gateways integrated with this site
+         * 
+         * @return builder
+         * 
+         */
         public Builder gateways(SettingJuniperSrxGatewayArgs... gateways) {
             return gateways(List.of(gateways));
         }
 
+        /**
+         * @param sendMistNacUserInfo Whether Mist NAC user information is sent to Juniper SRX gateways
+         * 
+         * @return builder
+         * 
+         */
         public Builder sendMistNacUserInfo(@Nullable Output<Boolean> sendMistNacUserInfo) {
             $.sendMistNacUserInfo = sendMistNacUserInfo;
             return this;
         }
 
+        /**
+         * @param sendMistNacUserInfo Whether Mist NAC user information is sent to Juniper SRX gateways
+         * 
+         * @return builder
+         * 
+         */
         public Builder sendMistNacUserInfo(Boolean sendMistNacUserInfo) {
             return sendMistNacUserInfo(Output.of(sendMistNacUserInfo));
         }

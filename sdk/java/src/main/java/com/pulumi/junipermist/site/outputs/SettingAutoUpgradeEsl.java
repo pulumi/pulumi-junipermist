@@ -24,7 +24,7 @@ public final class SettingAutoUpgradeEsl {
      */
     private @Nullable Map<String,String> customVersions;
     /**
-     * @return enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+     * @return Weekly ESL auto-upgrade day for the maintenance window
      * 
      */
     private @Nullable String dayOfWeek;
@@ -38,6 +38,10 @@ public final class SettingAutoUpgradeEsl {
      * 
      */
     private @Nullable String timeOfDay;
+    /**
+     * @return ESL firmware version used for auto-upgrade
+     * 
+     */
     private @Nullable String version;
 
     private SettingAutoUpgradeEsl() {}
@@ -56,7 +60,7 @@ public final class SettingAutoUpgradeEsl {
         return this.customVersions == null ? Map.of() : this.customVersions;
     }
     /**
-     * @return enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+     * @return Weekly ESL auto-upgrade day for the maintenance window
      * 
      */
     public Optional<String> dayOfWeek() {
@@ -76,6 +80,10 @@ public final class SettingAutoUpgradeEsl {
     public Optional<String> timeOfDay() {
         return Optional.ofNullable(this.timeOfDay);
     }
+    /**
+     * @return ESL firmware version used for auto-upgrade
+     * 
+     */
     public Optional<String> version() {
         return Optional.ofNullable(this.version);
     }

@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class SettingWanVnaArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether WAN VNA is enabled for the site
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

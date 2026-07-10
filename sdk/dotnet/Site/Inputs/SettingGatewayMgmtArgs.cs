@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputList<string>? _adminSshkeys;
 
         /// <summary>
-        /// For SSR only, as direct root access is not allowed
+        /// SSR-only SSH public keys for administrative access
         /// </summary>
         public InputList<string> AdminSshkeys
         {
@@ -24,6 +24,9 @@ namespace Pulumi.JuniperMist.Site.Inputs
             set => _adminSshkeys = value;
         }
 
+        /// <summary>
+        /// Application probing configuration for gateway monitoring
+        /// </summary>
         [Input("appProbing")]
         public Input<Inputs.SettingGatewayMgmtAppProbingArgs>? AppProbing { get; set; }
 
@@ -33,6 +36,9 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("appUsage")]
         public Input<bool>? AppUsage { get; set; }
 
+        /// <summary>
+        /// Schedule for automatic security signature updates
+        /// </summary>
         [Input("autoSignatureUpdate")]
         public Input<Inputs.SettingGatewayMgmtAutoSignatureUpdateArgs>? AutoSignatureUpdate { get; set; }
 
@@ -60,11 +66,18 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("disableUsb")]
         public Input<bool>? DisableUsb { get; set; }
 
+        /// <summary>
+        /// Whether FIPS mode is enabled on the gateway
+        /// </summary>
         [Input("fipsEnabled")]
         public Input<bool>? FipsEnabled { get; set; }
 
         [Input("probeHosts")]
         private InputList<string>? _probeHosts;
+
+        /// <summary>
+        /// IPv4 probe targets used for gateway connectivity checks
+        /// </summary>
         public InputList<string> ProbeHosts
         {
             get => _probeHosts ?? (_probeHosts = new InputList<string>());
@@ -73,6 +86,10 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
         [Input("probeHostsv6s")]
         private InputList<string>? _probeHostsv6s;
+
+        /// <summary>
+        /// IPv6 probe targets used for gateway connectivity checks
+        /// </summary>
         public InputList<string> ProbeHostsv6s
         {
             get => _probeHostsv6s ?? (_probeHostsv6s = new InputList<string>());
@@ -80,9 +97,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// Restrict inbound-traffic to host
-        /// when enabled, all traffic that is not essential to our operation will be dropped 
-        /// e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
+        /// Control-plane protection settings for the gateway
         /// </summary>
         [Input("protectRe")]
         public Input<Inputs.SettingGatewayMgmtProtectReArgs>? ProtectRe { get; set; }
@@ -91,7 +106,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private Input<string>? _rootPassword;
 
         /// <summary>
-        /// SRX only
+        /// SRX only. Root password for local gateway access
         /// </summary>
         public Input<string>? RootPassword
         {
@@ -103,9 +118,15 @@ namespace Pulumi.JuniperMist.Site.Inputs
             }
         }
 
+        /// <summary>
+        /// IPv4 source address used for gateway security log traffic
+        /// </summary>
         [Input("securityLogSourceAddress")]
         public Input<string>? SecurityLogSourceAddress { get; set; }
 
+        /// <summary>
+        /// Source interface used for gateway security log traffic
+        /// </summary>
         [Input("securityLogSourceInterface")]
         public Input<string>? SecurityLogSourceInterface { get; set; }
 

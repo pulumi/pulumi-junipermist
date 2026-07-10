@@ -32,14 +32,14 @@ public final class SettingConfigPushPolicyArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * If enabled, new config will only be pushed to device within the specified time window
+     * Allowed time window during which configuration pushes may run
      * 
      */
     @Import(name="pushWindow")
     private @Nullable Output<SettingConfigPushPolicyPushWindowArgs> pushWindow;
 
     /**
-     * @return If enabled, new config will only be pushed to device within the specified time window
+     * @return Allowed time window during which configuration pushes may run
      * 
      */
     public Optional<Output<SettingConfigPushPolicyPushWindowArgs>> pushWindow() {
@@ -93,7 +93,7 @@ public final class SettingConfigPushPolicyArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param pushWindow If enabled, new config will only be pushed to device within the specified time window
+         * @param pushWindow Allowed time window during which configuration pushes may run
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class SettingConfigPushPolicyArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param pushWindow If enabled, new config will only be pushed to device within the specified time window
+         * @param pushWindow Allowed time window during which configuration pushes may run
          * 
          * @return builder
          * 

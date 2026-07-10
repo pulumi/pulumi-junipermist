@@ -223,6 +223,24 @@ __all__ = [
     'SettingMarvisArgsDict',
     'SettingMarvisAutoOperationsArgs',
     'SettingMarvisAutoOperationsArgsDict',
+    'SettingMxedgeMgmtArgs',
+    'SettingMxedgeMgmtArgsDict',
+    'SettingMxtunnelsArgs',
+    'SettingMxtunnelsArgsDict',
+    'SettingMxtunnelsAdditionalMxtunnelsArgs',
+    'SettingMxtunnelsAdditionalMxtunnelsArgsDict',
+    'SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArgs',
+    'SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArgsDict',
+    'SettingMxtunnelsAutoPreemptionArgs',
+    'SettingMxtunnelsAutoPreemptionArgsDict',
+    'SettingMxtunnelsClusterArgs',
+    'SettingMxtunnelsClusterArgsDict',
+    'SettingMxtunnelsRadsecArgs',
+    'SettingMxtunnelsRadsecArgsDict',
+    'SettingMxtunnelsRadsecAcctServerArgs',
+    'SettingMxtunnelsRadsecAcctServerArgsDict',
+    'SettingMxtunnelsRadsecAuthServerArgs',
+    'SettingMxtunnelsRadsecAuthServerArgsDict',
     'SettingOccupancyArgs',
     'SettingOccupancyArgsDict',
     'SettingProxyArgs',
@@ -261,6 +279,14 @@ __all__ = [
     'SettingSyntheticTestVlanArgsDict',
     'SettingSyntheticTestWanSpeedtestArgs',
     'SettingSyntheticTestWanSpeedtestArgsDict',
+    'SettingTuntermMonitoringArgs',
+    'SettingTuntermMonitoringArgsDict',
+    'SettingTuntermMulticastConfigArgs',
+    'SettingTuntermMulticastConfigArgsDict',
+    'SettingTuntermMulticastConfigMdnsArgs',
+    'SettingTuntermMulticastConfigMdnsArgsDict',
+    'SettingTuntermMulticastConfigSsdpArgs',
+    'SettingTuntermMulticastConfigSsdpArgsDict',
     'SettingUplinkPortConfigArgs',
     'SettingUplinkPortConfigArgsDict',
     'SettingVarsAnnotationsArgs',
@@ -8239,7 +8265,7 @@ class SettingAnalyticArgs:
 class SettingApSyntheticTestArgsDict(TypedDict):
     additional_vlan_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
-    List or Comma separated list of additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
+    VLAN IDs included in addition to the default VLAN set for AP synthetic tests
     """
 
 @pulumi.input_type
@@ -8247,7 +8273,7 @@ class SettingApSyntheticTestArgs:
     def __init__(__self__, *,
                  additional_vlan_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_vlan_ids: List or Comma separated list of additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_vlan_ids: VLAN IDs included in addition to the default VLAN set for AP synthetic tests
         """
         if additional_vlan_ids is not None:
             pulumi.set(__self__, "additional_vlan_ids", additional_vlan_ids)
@@ -8256,7 +8282,7 @@ class SettingApSyntheticTestArgs:
     @pulumi.getter(name="additionalVlanIds")
     def additional_vlan_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List or Comma separated list of additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
+        VLAN IDs included in addition to the default VLAN set for AP synthetic tests
         """
         return pulumi.get(self, "additional_vlan_ids")
 
@@ -8268,11 +8294,11 @@ class SettingApSyntheticTestArgs:
 class SettingAutoUpgradeArgsDict(TypedDict):
     custom_versions: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
-    Custom versions for different models. Property key is the model name (e.g. "AP41")
+    Per-AP-model firmware versions or channels used for auto-upgrade
     """
     day_of_week: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+    Weekly AP auto-upgrade day for the maintenance window
     """
     enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
@@ -8284,7 +8310,7 @@ class SettingAutoUpgradeArgsDict(TypedDict):
     """
     version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    desired version. enum: `beta`, `custom`, `stable`
+    Firmware release channel or custom version used for AP auto-upgrade
     """
 
 @pulumi.input_type
@@ -8296,11 +8322,11 @@ class SettingAutoUpgradeArgs:
                  time_of_day: pulumi.Input[Optional[_builtins.str]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_versions: Custom versions for different models. Property key is the model name (e.g. "AP41")
-        :param pulumi.Input[_builtins.str] day_of_week: enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_versions: Per-AP-model firmware versions or channels used for auto-upgrade
+        :param pulumi.Input[_builtins.str] day_of_week: Weekly AP auto-upgrade day for the maintenance window
         :param pulumi.Input[_builtins.bool] enabled: Whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)
         :param pulumi.Input[_builtins.str] time_of_day: `any` / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
-        :param pulumi.Input[_builtins.str] version: desired version. enum: `beta`, `custom`, `stable`
+        :param pulumi.Input[_builtins.str] version: Firmware release channel or custom version used for AP auto-upgrade
         """
         if custom_versions is not None:
             pulumi.set(__self__, "custom_versions", custom_versions)
@@ -8317,7 +8343,7 @@ class SettingAutoUpgradeArgs:
     @pulumi.getter(name="customVersions")
     def custom_versions(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Custom versions for different models. Property key is the model name (e.g. "AP41")
+        Per-AP-model firmware versions or channels used for auto-upgrade
         """
         return pulumi.get(self, "custom_versions")
 
@@ -8329,7 +8355,7 @@ class SettingAutoUpgradeArgs:
     @pulumi.getter(name="dayOfWeek")
     def day_of_week(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+        Weekly AP auto-upgrade day for the maintenance window
         """
         return pulumi.get(self, "day_of_week")
 
@@ -8365,7 +8391,7 @@ class SettingAutoUpgradeArgs:
     @pulumi.getter
     def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        desired version. enum: `beta`, `custom`, `stable`
+        Firmware release channel or custom version used for AP auto-upgrade
         """
         return pulumi.get(self, "version")
 
@@ -8385,7 +8411,7 @@ class SettingAutoUpgradeEslArgsDict(TypedDict):
     """
     day_of_week: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+    Weekly ESL auto-upgrade day for the maintenance window
     """
     enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
@@ -8396,6 +8422,9 @@ class SettingAutoUpgradeEslArgsDict(TypedDict):
     `any` / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
     """
     version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    ESL firmware version used for auto-upgrade
+    """
 
 @pulumi.input_type
 class SettingAutoUpgradeEslArgs:
@@ -8409,9 +8438,10 @@ class SettingAutoUpgradeEslArgs:
         """
         :param pulumi.Input[_builtins.bool] allow_downgrade: If true, it will allow downgrade to a lower version
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_versions: Custom versions for different models. Property key is the model name (e.g. "AP41")
-        :param pulumi.Input[_builtins.str] day_of_week: enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+        :param pulumi.Input[_builtins.str] day_of_week: Weekly ESL auto-upgrade day for the maintenance window
         :param pulumi.Input[_builtins.bool] enabled: Whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)
         :param pulumi.Input[_builtins.str] time_of_day: `any` / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
+        :param pulumi.Input[_builtins.str] version: ESL firmware version used for auto-upgrade
         """
         if allow_downgrade is not None:
             pulumi.set(__self__, "allow_downgrade", allow_downgrade)
@@ -8454,7 +8484,7 @@ class SettingAutoUpgradeEslArgs:
     @pulumi.getter(name="dayOfWeek")
     def day_of_week(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+        Weekly ESL auto-upgrade day for the maintenance window
         """
         return pulumi.get(self, "day_of_week")
 
@@ -8489,6 +8519,9 @@ class SettingAutoUpgradeEslArgs:
     @_builtins.property
     @pulumi.getter
     def version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        ESL firmware version used for auto-upgrade
+        """
         return pulumi.get(self, "version")
 
     @version.setter
@@ -8507,11 +8540,11 @@ class SettingBleConfigArgsDict(TypedDict):
     """
     beacon_rate_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    enum: `custom`, `default`
+    Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate
     """
     beam_disableds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
     """
-    List of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
+    AP BLE beam numbers disabled for location advertisements
     """
     custom_ble_packet_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
@@ -8530,6 +8563,9 @@ class SettingBleConfigArgsDict(TypedDict):
     Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
     """
     eddystone_uid_beams: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    BLE beams used to transmit Eddystone-UID advertisements, expressed as ranges such as `2-4,7`
+    """
     eddystone_uid_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Only if `beacon_enabled`==`false`, Whether Eddystone-UID beacon is enabled
@@ -8544,20 +8580,23 @@ class SettingBleConfigArgsDict(TypedDict):
     """
     eddystone_uid_namespace: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Eddystone-UID namespace
+    Eddystone-UID namespace broadcast by the AP, as a 10-byte hex string
     """
     eddystone_url_adv_power: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
     """
     eddystone_url_beams: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    BLE beams used to transmit Eddystone-URL advertisements, expressed as ranges such as `2-4,7`
+    """
     eddystone_url_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Only if `beacon_enabled`==`false`, Whether Eddystone-URL beacon is enabled
     """
     eddystone_url_freq_msec: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    Frequency (msec) of data emit by Eddystone-UID beacon
+    Frequency (msec) of data emitted by Eddystone-URL beacon
     """
     eddystone_url_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -8568,6 +8607,9 @@ class SettingBleConfigArgsDict(TypedDict):
     Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
     """
     ibeacon_beams: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    BLE beams used to transmit iBeacon advertisements, expressed as ranges such as `2-4,7`
+    """
     ibeacon_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Can be enabled if `beacon_enabled`==`true`, whether to send iBeacon
@@ -8578,11 +8620,11 @@ class SettingBleConfigArgsDict(TypedDict):
     """
     ibeacon_major: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    Major number for iBeacon
+    iBeacon major value broadcast by the AP
     """
     ibeacon_minor: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    Minor number for iBeacon
+    iBeacon minor value broadcast by the AP
     """
     ibeacon_uuid: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -8594,7 +8636,7 @@ class SettingBleConfigArgsDict(TypedDict):
     """
     power_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    enum: `custom`, `default`
+    Transmit power mode for BLE beacons; use custom to set `power`
     """
 
 @pulumi.input_type
@@ -8630,28 +8672,31 @@ class SettingBleConfigArgs:
         """
         :param pulumi.Input[_builtins.bool] beacon_enabled: Whether Mist beacons is enabled
         :param pulumi.Input[_builtins.int] beacon_rate: Required if `beacon_rate_mode`==`custom`, 1-10, in number-beacons-per-second
-        :param pulumi.Input[_builtins.str] beacon_rate_mode: enum: `custom`, `default`
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] beam_disableds: List of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
+        :param pulumi.Input[_builtins.str] beacon_rate_mode: Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] beam_disableds: AP BLE beam numbers disabled for location advertisements
         :param pulumi.Input[_builtins.bool] custom_ble_packet_enabled: Can be enabled if `beacon_enabled`==`true`, whether to send custom packet
         :param pulumi.Input[_builtins.str] custom_ble_packet_frame: The custom frame to be sent out in this beacon. The frame must be a hexstring
         :param pulumi.Input[_builtins.int] custom_ble_packet_freq_msec: Frequency (msec) of data emitted by custom ble beacon
         :param pulumi.Input[_builtins.int] eddystone_uid_adv_power: Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+        :param pulumi.Input[_builtins.str] eddystone_uid_beams: BLE beams used to transmit Eddystone-UID advertisements, expressed as ranges such as `2-4,7`
         :param pulumi.Input[_builtins.bool] eddystone_uid_enabled: Only if `beacon_enabled`==`false`, Whether Eddystone-UID beacon is enabled
         :param pulumi.Input[_builtins.int] eddystone_uid_freq_msec: Frequency (msec) of data emit by Eddystone-UID beacon
         :param pulumi.Input[_builtins.str] eddystone_uid_instance: Eddystone-UID instance for the device
-        :param pulumi.Input[_builtins.str] eddystone_uid_namespace: Eddystone-UID namespace
+        :param pulumi.Input[_builtins.str] eddystone_uid_namespace: Eddystone-UID namespace broadcast by the AP, as a 10-byte hex string
         :param pulumi.Input[_builtins.int] eddystone_url_adv_power: Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+        :param pulumi.Input[_builtins.str] eddystone_url_beams: BLE beams used to transmit Eddystone-URL advertisements, expressed as ranges such as `2-4,7`
         :param pulumi.Input[_builtins.bool] eddystone_url_enabled: Only if `beacon_enabled`==`false`, Whether Eddystone-URL beacon is enabled
-        :param pulumi.Input[_builtins.int] eddystone_url_freq_msec: Frequency (msec) of data emit by Eddystone-UID beacon
+        :param pulumi.Input[_builtins.int] eddystone_url_freq_msec: Frequency (msec) of data emitted by Eddystone-URL beacon
         :param pulumi.Input[_builtins.str] eddystone_url_url: URL pointed by Eddystone-URL beacon
         :param pulumi.Input[_builtins.int] ibeacon_adv_power: Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+        :param pulumi.Input[_builtins.str] ibeacon_beams: BLE beams used to transmit iBeacon advertisements, expressed as ranges such as `2-4,7`
         :param pulumi.Input[_builtins.bool] ibeacon_enabled: Can be enabled if `beacon_enabled`==`true`, whether to send iBeacon
         :param pulumi.Input[_builtins.int] ibeacon_freq_msec: Frequency (msec) of data emit for iBeacon
-        :param pulumi.Input[_builtins.int] ibeacon_major: Major number for iBeacon
-        :param pulumi.Input[_builtins.int] ibeacon_minor: Minor number for iBeacon
+        :param pulumi.Input[_builtins.int] ibeacon_major: iBeacon major value broadcast by the AP
+        :param pulumi.Input[_builtins.int] ibeacon_minor: iBeacon minor value broadcast by the AP
         :param pulumi.Input[_builtins.str] ibeacon_uuid: Optional, if not specified, the same UUID as the beacon will be used
         :param pulumi.Input[_builtins.int] power: Required if `power_mode`==`custom`; else use `power_mode` as default
-        :param pulumi.Input[_builtins.str] power_mode: enum: `custom`, `default`
+        :param pulumi.Input[_builtins.str] power_mode: Transmit power mode for BLE beacons; use custom to set `power`
         """
         if beacon_enabled is not None:
             pulumi.set(__self__, "beacon_enabled", beacon_enabled)
@@ -8736,7 +8781,7 @@ class SettingBleConfigArgs:
     @pulumi.getter(name="beaconRateMode")
     def beacon_rate_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        enum: `custom`, `default`
+        Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate
         """
         return pulumi.get(self, "beacon_rate_mode")
 
@@ -8748,7 +8793,7 @@ class SettingBleConfigArgs:
     @pulumi.getter(name="beamDisableds")
     def beam_disableds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
-        List of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
+        AP BLE beam numbers disabled for location advertisements
         """
         return pulumi.get(self, "beam_disableds")
 
@@ -8807,6 +8852,9 @@ class SettingBleConfigArgs:
     @_builtins.property
     @pulumi.getter(name="eddystoneUidBeams")
     def eddystone_uid_beams(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        BLE beams used to transmit Eddystone-UID advertisements, expressed as ranges such as `2-4,7`
+        """
         return pulumi.get(self, "eddystone_uid_beams")
 
     @eddystone_uid_beams.setter
@@ -8853,7 +8901,7 @@ class SettingBleConfigArgs:
     @pulumi.getter(name="eddystoneUidNamespace")
     def eddystone_uid_namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Eddystone-UID namespace
+        Eddystone-UID namespace broadcast by the AP, as a 10-byte hex string
         """
         return pulumi.get(self, "eddystone_uid_namespace")
 
@@ -8876,6 +8924,9 @@ class SettingBleConfigArgs:
     @_builtins.property
     @pulumi.getter(name="eddystoneUrlBeams")
     def eddystone_url_beams(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        BLE beams used to transmit Eddystone-URL advertisements, expressed as ranges such as `2-4,7`
+        """
         return pulumi.get(self, "eddystone_url_beams")
 
     @eddystone_url_beams.setter
@@ -8898,7 +8949,7 @@ class SettingBleConfigArgs:
     @pulumi.getter(name="eddystoneUrlFreqMsec")
     def eddystone_url_freq_msec(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Frequency (msec) of data emit by Eddystone-UID beacon
+        Frequency (msec) of data emitted by Eddystone-URL beacon
         """
         return pulumi.get(self, "eddystone_url_freq_msec")
 
@@ -8933,6 +8984,9 @@ class SettingBleConfigArgs:
     @_builtins.property
     @pulumi.getter(name="ibeaconBeams")
     def ibeacon_beams(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        BLE beams used to transmit iBeacon advertisements, expressed as ranges such as `2-4,7`
+        """
         return pulumi.get(self, "ibeacon_beams")
 
     @ibeacon_beams.setter
@@ -8967,7 +9021,7 @@ class SettingBleConfigArgs:
     @pulumi.getter(name="ibeaconMajor")
     def ibeacon_major(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Major number for iBeacon
+        iBeacon major value broadcast by the AP
         """
         return pulumi.get(self, "ibeacon_major")
 
@@ -8979,7 +9033,7 @@ class SettingBleConfigArgs:
     @pulumi.getter(name="ibeaconMinor")
     def ibeacon_minor(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Minor number for iBeacon
+        iBeacon minor value broadcast by the AP
         """
         return pulumi.get(self, "ibeacon_minor")
 
@@ -9015,7 +9069,7 @@ class SettingBleConfigArgs:
     @pulumi.getter(name="powerMode")
     def power_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        enum: `custom`, `default`
+        Transmit power mode for BLE beacons; use custom to set `power`
         """
         return pulumi.get(self, "power_mode")
 
@@ -9031,7 +9085,7 @@ class SettingConfigPushPolicyArgsDict(TypedDict):
     """
     push_window: NotRequired[pulumi.Input[Optional['SettingConfigPushPolicyPushWindowArgsDict']]]
     """
-    If enabled, new config will only be pushed to device within the specified time window
+    Allowed time window during which configuration pushes may run
     """
 
 @pulumi.input_type
@@ -9041,7 +9095,7 @@ class SettingConfigPushPolicyArgs:
                  push_window: pulumi.Input[Optional['SettingConfigPushPolicyPushWindowArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] no_push: Stop any new config from being pushed to the device
-        :param pulumi.Input['SettingConfigPushPolicyPushWindowArgs'] push_window: If enabled, new config will only be pushed to device within the specified time window
+        :param pulumi.Input['SettingConfigPushPolicyPushWindowArgs'] push_window: Allowed time window during which configuration pushes may run
         """
         if no_push is not None:
             pulumi.set(__self__, "no_push", no_push)
@@ -9064,7 +9118,7 @@ class SettingConfigPushPolicyArgs:
     @pulumi.getter(name="pushWindow")
     def push_window(self) -> pulumi.Input[Optional['SettingConfigPushPolicyPushWindowArgs']]:
         """
-        If enabled, new config will only be pushed to device within the specified time window
+        Allowed time window during which configuration pushes may run
         """
         return pulumi.get(self, "push_window")
 
@@ -9075,9 +9129,12 @@ class SettingConfigPushPolicyArgs:
 
 class SettingConfigPushPolicyPushWindowArgsDict(TypedDict):
     enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether configuration pushes are limited to the configured push window
+    """
     hours: NotRequired[pulumi.Input[Optional['SettingConfigPushPolicyPushWindowHoursArgsDict']]]
     """
-    Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+    Day-of-week hour ranges when configuration pushes are allowed
     """
 
 @pulumi.input_type
@@ -9086,7 +9143,8 @@ class SettingConfigPushPolicyPushWindowArgs:
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  hours: pulumi.Input[Optional['SettingConfigPushPolicyPushWindowHoursArgs']] = None):
         """
-        :param pulumi.Input['SettingConfigPushPolicyPushWindowHoursArgs'] hours: Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+        :param pulumi.Input[_builtins.bool] enabled: Whether configuration pushes are limited to the configured push window
+        :param pulumi.Input['SettingConfigPushPolicyPushWindowHoursArgs'] hours: Day-of-week hour ranges when configuration pushes are allowed
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -9096,6 +9154,9 @@ class SettingConfigPushPolicyPushWindowArgs:
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether configuration pushes are limited to the configured push window
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -9106,7 +9167,7 @@ class SettingConfigPushPolicyPushWindowArgs:
     @pulumi.getter
     def hours(self) -> pulumi.Input[Optional['SettingConfigPushPolicyPushWindowHoursArgs']]:
         """
-        Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+        Day-of-week hour ranges when configuration pushes are allowed
         """
         return pulumi.get(self, "hours")
 
@@ -9118,31 +9179,31 @@ class SettingConfigPushPolicyPushWindowArgs:
 class SettingConfigPushPolicyPushWindowHoursArgsDict(TypedDict):
     fri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+    Operating hour range for Friday
     """
     mon: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+    Operating hour range for Monday
     """
     sat: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+    Operating hour range for Saturday
     """
     sun: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+    Operating hour range for Sunday
     """
     thu: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+    Operating hour range for Thursday
     """
     tue: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+    Operating hour range for Tuesday
     """
     wed: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+    Operating hour range for Wednesday
     """
 
 @pulumi.input_type
@@ -9156,13 +9217,13 @@ class SettingConfigPushPolicyPushWindowHoursArgs:
                  tue: pulumi.Input[Optional[_builtins.str]] = None,
                  wed: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] fri: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
-        :param pulumi.Input[_builtins.str] mon: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
-        :param pulumi.Input[_builtins.str] sat: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
-        :param pulumi.Input[_builtins.str] sun: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
-        :param pulumi.Input[_builtins.str] thu: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
-        :param pulumi.Input[_builtins.str] tue: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
-        :param pulumi.Input[_builtins.str] wed: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        :param pulumi.Input[_builtins.str] fri: Operating hour range for Friday
+        :param pulumi.Input[_builtins.str] mon: Operating hour range for Monday
+        :param pulumi.Input[_builtins.str] sat: Operating hour range for Saturday
+        :param pulumi.Input[_builtins.str] sun: Operating hour range for Sunday
+        :param pulumi.Input[_builtins.str] thu: Operating hour range for Thursday
+        :param pulumi.Input[_builtins.str] tue: Operating hour range for Tuesday
+        :param pulumi.Input[_builtins.str] wed: Operating hour range for Wednesday
         """
         if fri is not None:
             pulumi.set(__self__, "fri", fri)
@@ -9183,7 +9244,7 @@ class SettingConfigPushPolicyPushWindowHoursArgs:
     @pulumi.getter
     def fri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        Operating hour range for Friday
         """
         return pulumi.get(self, "fri")
 
@@ -9195,7 +9256,7 @@ class SettingConfigPushPolicyPushWindowHoursArgs:
     @pulumi.getter
     def mon(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        Operating hour range for Monday
         """
         return pulumi.get(self, "mon")
 
@@ -9207,7 +9268,7 @@ class SettingConfigPushPolicyPushWindowHoursArgs:
     @pulumi.getter
     def sat(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        Operating hour range for Saturday
         """
         return pulumi.get(self, "sat")
 
@@ -9219,7 +9280,7 @@ class SettingConfigPushPolicyPushWindowHoursArgs:
     @pulumi.getter
     def sun(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        Operating hour range for Sunday
         """
         return pulumi.get(self, "sun")
 
@@ -9231,7 +9292,7 @@ class SettingConfigPushPolicyPushWindowHoursArgs:
     @pulumi.getter
     def thu(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        Operating hour range for Thursday
         """
         return pulumi.get(self, "thu")
 
@@ -9243,7 +9304,7 @@ class SettingConfigPushPolicyPushWindowHoursArgs:
     @pulumi.getter
     def tue(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        Operating hour range for Tuesday
         """
         return pulumi.get(self, "tue")
 
@@ -9255,7 +9316,7 @@ class SettingConfigPushPolicyPushWindowHoursArgs:
     @pulumi.getter
     def wed(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        Operating hour range for Wednesday
         """
         return pulumi.get(self, "wed")
 
@@ -9266,13 +9327,23 @@ class SettingConfigPushPolicyPushWindowHoursArgs:
 
 class SettingCriticalUrlMonitoringArgsDict(TypedDict):
     enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether critical URL monitoring is enabled
+    """
     monitors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SettingCriticalUrlMonitoringMonitorArgsDict']]]]]
+    """
+    Critical URLs monitored for site health latency
+    """
 
 @pulumi.input_type
 class SettingCriticalUrlMonitoringArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  monitors: pulumi.Input[Optional[Sequence[pulumi.Input['SettingCriticalUrlMonitoringMonitorArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Whether critical URL monitoring is enabled
+        :param pulumi.Input[Sequence[pulumi.Input['SettingCriticalUrlMonitoringMonitorArgs']]] monitors: Critical URLs monitored for site health latency
+        """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if monitors is not None:
@@ -9281,6 +9352,9 @@ class SettingCriticalUrlMonitoringArgs:
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether critical URL monitoring is enabled
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -9290,6 +9364,9 @@ class SettingCriticalUrlMonitoringArgs:
     @_builtins.property
     @pulumi.getter
     def monitors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SettingCriticalUrlMonitoringMonitorArgs']]]]:
+        """
+        Critical URLs monitored for site health latency
+        """
         return pulumi.get(self, "monitors")
 
     @monitors.setter
@@ -9299,13 +9376,23 @@ class SettingCriticalUrlMonitoringArgs:
 
 class SettingCriticalUrlMonitoringMonitorArgsDict(TypedDict):
     url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Monitored HTTP or HTTPS URL used for site health latency
+    """
     vlan_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Source VLAN ID used to run the critical URL monitor
+    """
 
 @pulumi.input_type
 class SettingCriticalUrlMonitoringMonitorArgs:
     def __init__(__self__, *,
                  url: pulumi.Input[Optional[_builtins.str]] = None,
                  vlan_id: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] url: Monitored HTTP or HTTPS URL used for site health latency
+        :param pulumi.Input[_builtins.str] vlan_id: Source VLAN ID used to run the critical URL monitor
+        """
         if url is not None:
             pulumi.set(__self__, "url", url)
         if vlan_id is not None:
@@ -9314,6 +9401,9 @@ class SettingCriticalUrlMonitoringMonitorArgs:
     @_builtins.property
     @pulumi.getter
     def url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Monitored HTTP or HTTPS URL used for site health latency
+        """
         return pulumi.get(self, "url")
 
     @url.setter
@@ -9323,6 +9413,9 @@ class SettingCriticalUrlMonitoringMonitorArgs:
     @_builtins.property
     @pulumi.getter(name="vlanId")
     def vlan_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Source VLAN ID used to run the critical URL monitor
+        """
         return pulumi.get(self, "vlan_id")
 
     @vlan_id.setter
@@ -9333,23 +9426,23 @@ class SettingCriticalUrlMonitoringMonitorArgs:
 class SettingEngagementArgsDict(TypedDict):
     dwell_tag_names: NotRequired[pulumi.Input[Optional['SettingEngagementDwellTagNamesArgsDict']]]
     """
-    Name associated to each tag
+    Display labels for dwell-time visit categories
     """
     dwell_tags: NotRequired[pulumi.Input[Optional['SettingEngagementDwellTagsArgsDict']]]
     """
-    add tags to visits within the duration (in seconds)
+    Visit duration ranges used to assign engagement categories
     """
     hours: NotRequired[pulumi.Input[Optional['SettingEngagementHoursArgsDict']]]
     """
-    Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+    Schedule during which engagement analytics rules apply
     """
     max_dwell: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    Max time, default is 43200(12h), max is 68400 (18h)
+    Maximum dwell time in seconds considered by engagement analytics
     """
     min_dwell: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    min time
+    Minimum dwell time in seconds for engagement analytics
     """
 
 @pulumi.input_type
@@ -9361,11 +9454,11 @@ class SettingEngagementArgs:
                  max_dwell: pulumi.Input[Optional[_builtins.int]] = None,
                  min_dwell: pulumi.Input[Optional[_builtins.int]] = None):
         """
-        :param pulumi.Input['SettingEngagementDwellTagNamesArgs'] dwell_tag_names: Name associated to each tag
-        :param pulumi.Input['SettingEngagementDwellTagsArgs'] dwell_tags: add tags to visits within the duration (in seconds)
-        :param pulumi.Input['SettingEngagementHoursArgs'] hours: Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
-        :param pulumi.Input[_builtins.int] max_dwell: Max time, default is 43200(12h), max is 68400 (18h)
-        :param pulumi.Input[_builtins.int] min_dwell: min time
+        :param pulumi.Input['SettingEngagementDwellTagNamesArgs'] dwell_tag_names: Display labels for dwell-time visit categories
+        :param pulumi.Input['SettingEngagementDwellTagsArgs'] dwell_tags: Visit duration ranges used to assign engagement categories
+        :param pulumi.Input['SettingEngagementHoursArgs'] hours: Schedule during which engagement analytics rules apply
+        :param pulumi.Input[_builtins.int] max_dwell: Maximum dwell time in seconds considered by engagement analytics
+        :param pulumi.Input[_builtins.int] min_dwell: Minimum dwell time in seconds for engagement analytics
         """
         if dwell_tag_names is not None:
             pulumi.set(__self__, "dwell_tag_names", dwell_tag_names)
@@ -9382,7 +9475,7 @@ class SettingEngagementArgs:
     @pulumi.getter(name="dwellTagNames")
     def dwell_tag_names(self) -> pulumi.Input[Optional['SettingEngagementDwellTagNamesArgs']]:
         """
-        Name associated to each tag
+        Display labels for dwell-time visit categories
         """
         return pulumi.get(self, "dwell_tag_names")
 
@@ -9394,7 +9487,7 @@ class SettingEngagementArgs:
     @pulumi.getter(name="dwellTags")
     def dwell_tags(self) -> pulumi.Input[Optional['SettingEngagementDwellTagsArgs']]:
         """
-        add tags to visits within the duration (in seconds)
+        Visit duration ranges used to assign engagement categories
         """
         return pulumi.get(self, "dwell_tags")
 
@@ -9406,7 +9499,7 @@ class SettingEngagementArgs:
     @pulumi.getter
     def hours(self) -> pulumi.Input[Optional['SettingEngagementHoursArgs']]:
         """
-        Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+        Schedule during which engagement analytics rules apply
         """
         return pulumi.get(self, "hours")
 
@@ -9418,7 +9511,7 @@ class SettingEngagementArgs:
     @pulumi.getter(name="maxDwell")
     def max_dwell(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Max time, default is 43200(12h), max is 68400 (18h)
+        Maximum dwell time in seconds considered by engagement analytics
         """
         return pulumi.get(self, "max_dwell")
 
@@ -9430,7 +9523,7 @@ class SettingEngagementArgs:
     @pulumi.getter(name="minDwell")
     def min_dwell(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        min time
+        Minimum dwell time in seconds for engagement analytics
         """
         return pulumi.get(self, "min_dwell")
 
@@ -9620,31 +9713,31 @@ class SettingEngagementDwellTagsArgs:
 class SettingEngagementHoursArgsDict(TypedDict):
     fri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+    Operating hour range for Friday
     """
     mon: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+    Operating hour range for Monday
     """
     sat: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+    Operating hour range for Saturday
     """
     sun: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+    Operating hour range for Sunday
     """
     thu: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+    Operating hour range for Thursday
     """
     tue: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+    Operating hour range for Tuesday
     """
     wed: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+    Operating hour range for Wednesday
     """
 
 @pulumi.input_type
@@ -9658,13 +9751,13 @@ class SettingEngagementHoursArgs:
                  tue: pulumi.Input[Optional[_builtins.str]] = None,
                  wed: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] fri: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
-        :param pulumi.Input[_builtins.str] mon: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
-        :param pulumi.Input[_builtins.str] sat: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
-        :param pulumi.Input[_builtins.str] sun: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
-        :param pulumi.Input[_builtins.str] thu: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
-        :param pulumi.Input[_builtins.str] tue: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
-        :param pulumi.Input[_builtins.str] wed: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        :param pulumi.Input[_builtins.str] fri: Operating hour range for Friday
+        :param pulumi.Input[_builtins.str] mon: Operating hour range for Monday
+        :param pulumi.Input[_builtins.str] sat: Operating hour range for Saturday
+        :param pulumi.Input[_builtins.str] sun: Operating hour range for Sunday
+        :param pulumi.Input[_builtins.str] thu: Operating hour range for Thursday
+        :param pulumi.Input[_builtins.str] tue: Operating hour range for Tuesday
+        :param pulumi.Input[_builtins.str] wed: Operating hour range for Wednesday
         """
         if fri is not None:
             pulumi.set(__self__, "fri", fri)
@@ -9685,7 +9778,7 @@ class SettingEngagementHoursArgs:
     @pulumi.getter
     def fri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        Operating hour range for Friday
         """
         return pulumi.get(self, "fri")
 
@@ -9697,7 +9790,7 @@ class SettingEngagementHoursArgs:
     @pulumi.getter
     def mon(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        Operating hour range for Monday
         """
         return pulumi.get(self, "mon")
 
@@ -9709,7 +9802,7 @@ class SettingEngagementHoursArgs:
     @pulumi.getter
     def sat(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        Operating hour range for Saturday
         """
         return pulumi.get(self, "sat")
 
@@ -9721,7 +9814,7 @@ class SettingEngagementHoursArgs:
     @pulumi.getter
     def sun(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        Operating hour range for Sunday
         """
         return pulumi.get(self, "sun")
 
@@ -9733,7 +9826,7 @@ class SettingEngagementHoursArgs:
     @pulumi.getter
     def thu(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        Operating hour range for Thursday
         """
         return pulumi.get(self, "thu")
 
@@ -9745,7 +9838,7 @@ class SettingEngagementHoursArgs:
     @pulumi.getter
     def tue(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        Operating hour range for Tuesday
         """
         return pulumi.get(self, "tue")
 
@@ -9757,7 +9850,7 @@ class SettingEngagementHoursArgs:
     @pulumi.getter
     def wed(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        Operating hour range for Wednesday
         """
         return pulumi.get(self, "wed")
 
@@ -9769,14 +9862,20 @@ class SettingEngagementHoursArgs:
 class SettingGatewayMgmtArgsDict(TypedDict):
     admin_sshkeys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
-    For SSR only, as direct root access is not allowed
+    SSR-only SSH public keys for administrative access
     """
     app_probing: NotRequired[pulumi.Input[Optional['SettingGatewayMgmtAppProbingArgsDict']]]
+    """
+    Application probing configuration for gateway monitoring
+    """
     app_usage: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Consumes uplink bandwidth, requires WA license
     """
     auto_signature_update: NotRequired[pulumi.Input[Optional['SettingGatewayMgmtAutoSignatureUpdateArgsDict']]]
+    """
+    Schedule for automatic security signature updates
+    """
     config_revert_timer: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Rollback timer for commit confirmed
@@ -9794,20 +9893,33 @@ class SettingGatewayMgmtArgsDict(TypedDict):
     For SSR and SRX, disable usb interface
     """
     fips_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether FIPS mode is enabled on the gateway
+    """
     probe_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    IPv4 probe targets used for gateway connectivity checks
+    """
     probe_hostsv6s: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    IPv6 probe targets used for gateway connectivity checks
+    """
     protect_re: NotRequired[pulumi.Input[Optional['SettingGatewayMgmtProtectReArgsDict']]]
     """
-    Restrict inbound-traffic to host
-    when enabled, all traffic that is not essential to our operation will be dropped 
-    e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
+    Control-plane protection settings for the gateway
     """
     root_password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    SRX only
+    SRX only. Root password for local gateway access
     """
     security_log_source_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    IPv4 source address used for gateway security log traffic
+    """
     security_log_source_interface: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Source interface used for gateway security log traffic
+    """
 
 @pulumi.input_type
 class SettingGatewayMgmtArgs:
@@ -9828,16 +9940,21 @@ class SettingGatewayMgmtArgs:
                  security_log_source_address: pulumi.Input[Optional[_builtins.str]] = None,
                  security_log_source_interface: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] admin_sshkeys: For SSR only, as direct root access is not allowed
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] admin_sshkeys: SSR-only SSH public keys for administrative access
+        :param pulumi.Input['SettingGatewayMgmtAppProbingArgs'] app_probing: Application probing configuration for gateway monitoring
         :param pulumi.Input[_builtins.bool] app_usage: Consumes uplink bandwidth, requires WA license
+        :param pulumi.Input['SettingGatewayMgmtAutoSignatureUpdateArgs'] auto_signature_update: Schedule for automatic security signature updates
         :param pulumi.Input[_builtins.int] config_revert_timer: Rollback timer for commit confirmed
         :param pulumi.Input[_builtins.bool] disable_console: For SSR and SRX, disable console port
         :param pulumi.Input[_builtins.bool] disable_oob: For SSR and SRX, disable management interface
         :param pulumi.Input[_builtins.bool] disable_usb: For SSR and SRX, disable usb interface
-        :param pulumi.Input['SettingGatewayMgmtProtectReArgs'] protect_re: Restrict inbound-traffic to host
-               when enabled, all traffic that is not essential to our operation will be dropped 
-               e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
-        :param pulumi.Input[_builtins.str] root_password: SRX only
+        :param pulumi.Input[_builtins.bool] fips_enabled: Whether FIPS mode is enabled on the gateway
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] probe_hosts: IPv4 probe targets used for gateway connectivity checks
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] probe_hostsv6s: IPv6 probe targets used for gateway connectivity checks
+        :param pulumi.Input['SettingGatewayMgmtProtectReArgs'] protect_re: Control-plane protection settings for the gateway
+        :param pulumi.Input[_builtins.str] root_password: SRX only. Root password for local gateway access
+        :param pulumi.Input[_builtins.str] security_log_source_address: IPv4 source address used for gateway security log traffic
+        :param pulumi.Input[_builtins.str] security_log_source_interface: Source interface used for gateway security log traffic
         """
         if admin_sshkeys is not None:
             pulumi.set(__self__, "admin_sshkeys", admin_sshkeys)
@@ -9874,7 +9991,7 @@ class SettingGatewayMgmtArgs:
     @pulumi.getter(name="adminSshkeys")
     def admin_sshkeys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        For SSR only, as direct root access is not allowed
+        SSR-only SSH public keys for administrative access
         """
         return pulumi.get(self, "admin_sshkeys")
 
@@ -9885,6 +10002,9 @@ class SettingGatewayMgmtArgs:
     @_builtins.property
     @pulumi.getter(name="appProbing")
     def app_probing(self) -> pulumi.Input[Optional['SettingGatewayMgmtAppProbingArgs']]:
+        """
+        Application probing configuration for gateway monitoring
+        """
         return pulumi.get(self, "app_probing")
 
     @app_probing.setter
@@ -9906,6 +10026,9 @@ class SettingGatewayMgmtArgs:
     @_builtins.property
     @pulumi.getter(name="autoSignatureUpdate")
     def auto_signature_update(self) -> pulumi.Input[Optional['SettingGatewayMgmtAutoSignatureUpdateArgs']]:
+        """
+        Schedule for automatic security signature updates
+        """
         return pulumi.get(self, "auto_signature_update")
 
     @auto_signature_update.setter
@@ -9963,6 +10086,9 @@ class SettingGatewayMgmtArgs:
     @_builtins.property
     @pulumi.getter(name="fipsEnabled")
     def fips_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether FIPS mode is enabled on the gateway
+        """
         return pulumi.get(self, "fips_enabled")
 
     @fips_enabled.setter
@@ -9972,6 +10098,9 @@ class SettingGatewayMgmtArgs:
     @_builtins.property
     @pulumi.getter(name="probeHosts")
     def probe_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        IPv4 probe targets used for gateway connectivity checks
+        """
         return pulumi.get(self, "probe_hosts")
 
     @probe_hosts.setter
@@ -9981,6 +10110,9 @@ class SettingGatewayMgmtArgs:
     @_builtins.property
     @pulumi.getter(name="probeHostsv6s")
     def probe_hostsv6s(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        IPv6 probe targets used for gateway connectivity checks
+        """
         return pulumi.get(self, "probe_hostsv6s")
 
     @probe_hostsv6s.setter
@@ -9991,9 +10123,7 @@ class SettingGatewayMgmtArgs:
     @pulumi.getter(name="protectRe")
     def protect_re(self) -> pulumi.Input[Optional['SettingGatewayMgmtProtectReArgs']]:
         """
-        Restrict inbound-traffic to host
-        when enabled, all traffic that is not essential to our operation will be dropped 
-        e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
+        Control-plane protection settings for the gateway
         """
         return pulumi.get(self, "protect_re")
 
@@ -10005,7 +10135,7 @@ class SettingGatewayMgmtArgs:
     @pulumi.getter(name="rootPassword")
     def root_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        SRX only
+        SRX only. Root password for local gateway access
         """
         return pulumi.get(self, "root_password")
 
@@ -10016,6 +10146,9 @@ class SettingGatewayMgmtArgs:
     @_builtins.property
     @pulumi.getter(name="securityLogSourceAddress")
     def security_log_source_address(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        IPv4 source address used for gateway security log traffic
+        """
         return pulumi.get(self, "security_log_source_address")
 
     @security_log_source_address.setter
@@ -10025,6 +10158,9 @@ class SettingGatewayMgmtArgs:
     @_builtins.property
     @pulumi.getter(name="securityLogSourceInterface")
     def security_log_source_interface(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Source interface used for gateway security log traffic
+        """
         return pulumi.get(self, "security_log_source_interface")
 
     @security_log_source_interface.setter
@@ -10035,10 +10171,16 @@ class SettingGatewayMgmtArgs:
 class SettingGatewayMgmtAppProbingArgsDict(TypedDict):
     apps: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
-    APp-keys from List Applications
+    Predefined application keys to probe
     """
     custom_apps: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SettingGatewayMgmtAppProbingCustomAppArgsDict']]]]]
+    """
+    User-defined application probe definitions
+    """
     enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether gateway application probing is enabled
+    """
 
 @pulumi.input_type
 class SettingGatewayMgmtAppProbingArgs:
@@ -10047,7 +10189,9 @@ class SettingGatewayMgmtAppProbingArgs:
                  custom_apps: pulumi.Input[Optional[Sequence[pulumi.Input['SettingGatewayMgmtAppProbingCustomAppArgs']]]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] apps: APp-keys from List Applications
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] apps: Predefined application keys to probe
+        :param pulumi.Input[Sequence[pulumi.Input['SettingGatewayMgmtAppProbingCustomAppArgs']]] custom_apps: User-defined application probe definitions
+        :param pulumi.Input[_builtins.bool] enabled: Whether gateway application probing is enabled
         """
         if apps is not None:
             pulumi.set(__self__, "apps", apps)
@@ -10060,7 +10204,7 @@ class SettingGatewayMgmtAppProbingArgs:
     @pulumi.getter
     def apps(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        APp-keys from List Applications
+        Predefined application keys to probe
         """
         return pulumi.get(self, "apps")
 
@@ -10071,6 +10215,9 @@ class SettingGatewayMgmtAppProbingArgs:
     @_builtins.property
     @pulumi.getter(name="customApps")
     def custom_apps(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SettingGatewayMgmtAppProbingCustomAppArgs']]]]:
+        """
+        User-defined application probe definitions
+        """
         return pulumi.get(self, "custom_apps")
 
     @custom_apps.setter
@@ -10080,6 +10227,9 @@ class SettingGatewayMgmtAppProbingArgs:
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether gateway application probing is enabled
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -10095,20 +10245,35 @@ class SettingGatewayMgmtAppProbingCustomAppArgsDict(TypedDict):
         * if `protocol`==`icmp`: IP Address (e.g. `1.2.3.4`)
     """
     name: pulumi.Input[_builtins.str]
+    """
+    Display name for this custom application probe
+    """
     protocol: pulumi.Input[_builtins.str]
     """
-    enum: `http`, `icmp`
+    Probe protocol used by this custom application definition
     """
     address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     app_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Category label used for this custom application probe
+    """
     key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Stable key used to identify this custom application probe
+    """
     network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Gateway network used as the source context for this probe
+    """
     packet_size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    If `protocol`==`icmp`
+    If `protocol`==`icmp`. ICMP packet size used by this custom app probe
     """
     url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     vrf: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Gateway VRF used as the source context for this probe
+    """
 
 @pulumi.input_type
 class SettingGatewayMgmtAppProbingCustomAppArgs:
@@ -10127,8 +10292,13 @@ class SettingGatewayMgmtAppProbingCustomAppArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hostnames: Only 1 entry is allowed:
                    * if `protocol`==`http`: URL (e.g. `http://test.com` or `https://test.com`)
                    * if `protocol`==`icmp`: IP Address (e.g. `1.2.3.4`)
-        :param pulumi.Input[_builtins.str] protocol: enum: `http`, `icmp`
-        :param pulumi.Input[_builtins.int] packet_size: If `protocol`==`icmp`
+        :param pulumi.Input[_builtins.str] name: Display name for this custom application probe
+        :param pulumi.Input[_builtins.str] protocol: Probe protocol used by this custom application definition
+        :param pulumi.Input[_builtins.str] app_type: Category label used for this custom application probe
+        :param pulumi.Input[_builtins.str] key: Stable key used to identify this custom application probe
+        :param pulumi.Input[_builtins.str] network: Gateway network used as the source context for this probe
+        :param pulumi.Input[_builtins.int] packet_size: If `protocol`==`icmp`. ICMP packet size used by this custom app probe
+        :param pulumi.Input[_builtins.str] vrf: Gateway VRF used as the source context for this probe
         """
         pulumi.set(__self__, "hostnames", hostnames)
         pulumi.set(__self__, "name", name)
@@ -10165,6 +10335,9 @@ class SettingGatewayMgmtAppProbingCustomAppArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Display name for this custom application probe
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -10175,7 +10348,7 @@ class SettingGatewayMgmtAppProbingCustomAppArgs:
     @pulumi.getter
     def protocol(self) -> pulumi.Input[_builtins.str]:
         """
-        enum: `http`, `icmp`
+        Probe protocol used by this custom application definition
         """
         return pulumi.get(self, "protocol")
 
@@ -10195,6 +10368,9 @@ class SettingGatewayMgmtAppProbingCustomAppArgs:
     @_builtins.property
     @pulumi.getter(name="appType")
     def app_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Category label used for this custom application probe
+        """
         return pulumi.get(self, "app_type")
 
     @app_type.setter
@@ -10204,6 +10380,9 @@ class SettingGatewayMgmtAppProbingCustomAppArgs:
     @_builtins.property
     @pulumi.getter
     def key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Stable key used to identify this custom application probe
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -10213,6 +10392,9 @@ class SettingGatewayMgmtAppProbingCustomAppArgs:
     @_builtins.property
     @pulumi.getter
     def network(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Gateway network used as the source context for this probe
+        """
         return pulumi.get(self, "network")
 
     @network.setter
@@ -10223,7 +10405,7 @@ class SettingGatewayMgmtAppProbingCustomAppArgs:
     @pulumi.getter(name="packetSize")
     def packet_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        If `protocol`==`icmp`
+        If `protocol`==`icmp`. ICMP packet size used by this custom app probe
         """
         return pulumi.get(self, "packet_size")
 
@@ -10243,6 +10425,9 @@ class SettingGatewayMgmtAppProbingCustomAppArgs:
     @_builtins.property
     @pulumi.getter
     def vrf(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Gateway VRF used as the source context for this probe
+        """
         return pulumi.get(self, "vrf")
 
     @vrf.setter
@@ -10253,9 +10438,12 @@ class SettingGatewayMgmtAppProbingCustomAppArgs:
 class SettingGatewayMgmtAutoSignatureUpdateArgsDict(TypedDict):
     day_of_week: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+    Scheduled weekday for automatic signature updates
     """
     enable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether automatic security signature updates are enabled
+    """
     time_of_day: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional, Mist will decide the timing
@@ -10268,7 +10456,8 @@ class SettingGatewayMgmtAutoSignatureUpdateArgs:
                  enable: pulumi.Input[Optional[_builtins.bool]] = None,
                  time_of_day: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] day_of_week: enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+        :param pulumi.Input[_builtins.str] day_of_week: Scheduled weekday for automatic signature updates
+        :param pulumi.Input[_builtins.bool] enable: Whether automatic security signature updates are enabled
         :param pulumi.Input[_builtins.str] time_of_day: Optional, Mist will decide the timing
         """
         if day_of_week is not None:
@@ -10282,7 +10471,7 @@ class SettingGatewayMgmtAutoSignatureUpdateArgs:
     @pulumi.getter(name="dayOfWeek")
     def day_of_week(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+        Scheduled weekday for automatic signature updates
         """
         return pulumi.get(self, "day_of_week")
 
@@ -10293,6 +10482,9 @@ class SettingGatewayMgmtAutoSignatureUpdateArgs:
     @_builtins.property
     @pulumi.getter
     def enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether automatic security signature updates are enabled
+        """
         return pulumi.get(self, "enable")
 
     @enable.setter
@@ -10318,6 +10510,9 @@ class SettingGatewayMgmtProtectReArgsDict(TypedDict):
     optionally, services we'll allow. enum: `icmp`, `ssh`
     """
     customs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SettingGatewayMgmtProtectReCustomArgsDict']]]]]
+    """
+    Additional ACL entries allowed by the Protect RE policy
+    """
     enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     When enabled, all traffic that is not essential to our operation will be dropped
@@ -10330,7 +10525,7 @@ class SettingGatewayMgmtProtectReArgsDict(TypedDict):
     """
     trusted_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
-    host/subnets we'll allow traffic to/from
+    Trusted host or subnet entries allowed by the Protect RE policy
     """
 
 @pulumi.input_type
@@ -10343,11 +10538,12 @@ class SettingGatewayMgmtProtectReArgs:
                  trusted_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_services: optionally, services we'll allow. enum: `icmp`, `ssh`
+        :param pulumi.Input[Sequence[pulumi.Input['SettingGatewayMgmtProtectReCustomArgs']]] customs: Additional ACL entries allowed by the Protect RE policy
         :param pulumi.Input[_builtins.bool] enabled: When enabled, all traffic that is not essential to our operation will be dropped
                e.g. ntp / dns / traffic to mist will be allowed by default
                     if dhcpd is enabled, we'll make sure it works
         :param pulumi.Input[_builtins.bool] hit_count: Whether to enable hit count for Protect_RE policy
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] trusted_hosts: host/subnets we'll allow traffic to/from
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] trusted_hosts: Trusted host or subnet entries allowed by the Protect RE policy
         """
         if allowed_services is not None:
             pulumi.set(__self__, "allowed_services", allowed_services)
@@ -10375,6 +10571,9 @@ class SettingGatewayMgmtProtectReArgs:
     @_builtins.property
     @pulumi.getter
     def customs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SettingGatewayMgmtProtectReCustomArgs']]]]:
+        """
+        Additional ACL entries allowed by the Protect RE policy
+        """
         return pulumi.get(self, "customs")
 
     @customs.setter
@@ -10411,7 +10610,7 @@ class SettingGatewayMgmtProtectReArgs:
     @pulumi.getter(name="trustedHosts")
     def trusted_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        host/subnets we'll allow traffic to/from
+        Trusted host or subnet entries allowed by the Protect RE policy
         """
         return pulumi.get(self, "trusted_hosts")
 
@@ -10422,6 +10621,9 @@ class SettingGatewayMgmtProtectReArgs:
 
 class SettingGatewayMgmtProtectReCustomArgsDict(TypedDict):
     subnets: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Source subnets matched by this custom Protect RE ACL
+    """
     port_range: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     matched dst port, "0" means any. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
@@ -10438,6 +10640,7 @@ class SettingGatewayMgmtProtectReCustomArgs:
                  port_range: pulumi.Input[Optional[_builtins.str]] = None,
                  protocol: pulumi.Input[Optional[_builtins.str]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] subnets: Source subnets matched by this custom Protect RE ACL
         :param pulumi.Input[_builtins.str] port_range: matched dst port, "0" means any. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
         :param pulumi.Input[_builtins.str] protocol: enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
         """
@@ -10450,6 +10653,9 @@ class SettingGatewayMgmtProtectReCustomArgs:
     @_builtins.property
     @pulumi.getter
     def subnets(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        Source subnets matched by this custom Protect RE ACL
+        """
         return pulumi.get(self, "subnets")
 
     @subnets.setter
@@ -10483,9 +10689,12 @@ class SettingGatewayMgmtProtectReCustomArgs:
 
 class SettingIotproxyArgsDict(TypedDict):
     enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether the site IoT proxy is enabled
+    """
     visionline: NotRequired[pulumi.Input[Optional['SettingIotproxyVisionlineArgsDict']]]
     """
-    Visionline integration settings for IoT proxy
+    Site access-control integration settings for Visionline
     """
 
 @pulumi.input_type
@@ -10494,7 +10703,8 @@ class SettingIotproxyArgs:
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  visionline: pulumi.Input[Optional['SettingIotproxyVisionlineArgs']] = None):
         """
-        :param pulumi.Input['SettingIotproxyVisionlineArgs'] visionline: Visionline integration settings for IoT proxy
+        :param pulumi.Input[_builtins.bool] enabled: Whether the site IoT proxy is enabled
+        :param pulumi.Input['SettingIotproxyVisionlineArgs'] visionline: Site access-control integration settings for Visionline
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -10504,6 +10714,9 @@ class SettingIotproxyArgs:
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the site IoT proxy is enabled
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -10514,7 +10727,7 @@ class SettingIotproxyArgs:
     @pulumi.getter
     def visionline(self) -> pulumi.Input[Optional['SettingIotproxyVisionlineArgs']]:
         """
-        Visionline integration settings for IoT proxy
+        Site access-control integration settings for Visionline
         """
         return pulumi.get(self, "visionline")
 
@@ -10528,14 +10741,21 @@ class SettingIotproxyVisionlineArgsDict(TypedDict):
     """
     Access ID for the Visionline service
     """
+    cacerts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    PEM-encoded CA certificates used to verify the Visionline collector's TLS certificate. Required when the collector uses a self-signed certificate
+    """
     enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether the Visionline integration is enabled
+    """
     host: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Hostname or IP of the Visionline collector
+    Collector hostname or IP address for Visionline
     """
     password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Password for the Visionline service
+    Visionline service password used by the IoT proxy
     """
     port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -10543,13 +10763,14 @@ class SettingIotproxyVisionlineArgsDict(TypedDict):
     """
     username: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Username for the Visionline service
+    Visionline service username used by the IoT proxy
     """
 
 @pulumi.input_type
 class SettingIotproxyVisionlineArgs:
     def __init__(__self__, *,
                  access_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cacerts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  host: pulumi.Input[Optional[_builtins.str]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
@@ -10557,13 +10778,17 @@ class SettingIotproxyVisionlineArgs:
                  username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] access_id: Access ID for the Visionline service
-        :param pulumi.Input[_builtins.str] host: Hostname or IP of the Visionline collector
-        :param pulumi.Input[_builtins.str] password: Password for the Visionline service
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cacerts: PEM-encoded CA certificates used to verify the Visionline collector's TLS certificate. Required when the collector uses a self-signed certificate
+        :param pulumi.Input[_builtins.bool] enabled: Whether the Visionline integration is enabled
+        :param pulumi.Input[_builtins.str] host: Collector hostname or IP address for Visionline
+        :param pulumi.Input[_builtins.str] password: Visionline service password used by the IoT proxy
         :param pulumi.Input[_builtins.int] port: TCP port of the Visionline collector
-        :param pulumi.Input[_builtins.str] username: Username for the Visionline service
+        :param pulumi.Input[_builtins.str] username: Visionline service username used by the IoT proxy
         """
         if access_id is not None:
             pulumi.set(__self__, "access_id", access_id)
+        if cacerts is not None:
+            pulumi.set(__self__, "cacerts", cacerts)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if host is not None:
@@ -10589,7 +10814,22 @@ class SettingIotproxyVisionlineArgs:
 
     @_builtins.property
     @pulumi.getter
+    def cacerts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        PEM-encoded CA certificates used to verify the Visionline collector's TLS certificate. Required when the collector uses a self-signed certificate
+        """
+        return pulumi.get(self, "cacerts")
+
+    @cacerts.setter
+    def cacerts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "cacerts", value)
+
+    @_builtins.property
+    @pulumi.getter
     def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the Visionline integration is enabled
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -10600,7 +10840,7 @@ class SettingIotproxyVisionlineArgs:
     @pulumi.getter
     def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Hostname or IP of the Visionline collector
+        Collector hostname or IP address for Visionline
         """
         return pulumi.get(self, "host")
 
@@ -10612,7 +10852,7 @@ class SettingIotproxyVisionlineArgs:
     @pulumi.getter
     def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Password for the Visionline service
+        Visionline service password used by the IoT proxy
         """
         return pulumi.get(self, "password")
 
@@ -10636,7 +10876,7 @@ class SettingIotproxyVisionlineArgs:
     @pulumi.getter
     def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Username for the Visionline service
+        Visionline service username used by the IoT proxy
         """
         return pulumi.get(self, "username")
 
@@ -10648,10 +10888,16 @@ class SettingIotproxyVisionlineArgs:
 class SettingJuniperSrxArgsDict(TypedDict):
     auto_upgrade: NotRequired[pulumi.Input[Optional['SettingJuniperSrxAutoUpgradeArgsDict']]]
     """
-    auto_upgrade device first time it is onboarded
+    SRX auto-upgrade settings applied when SRX devices are onboarded
     """
     gateways: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SettingJuniperSrxGatewayArgsDict']]]]]
+    """
+    SRX gateways integrated with this site
+    """
     send_mist_nac_user_info: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether Mist NAC user information is sent to Juniper SRX gateways
+    """
 
 @pulumi.input_type
 class SettingJuniperSrxArgs:
@@ -10660,7 +10906,9 @@ class SettingJuniperSrxArgs:
                  gateways: pulumi.Input[Optional[Sequence[pulumi.Input['SettingJuniperSrxGatewayArgs']]]] = None,
                  send_mist_nac_user_info: pulumi.Input[Optional[_builtins.bool]] = None):
         """
-        :param pulumi.Input['SettingJuniperSrxAutoUpgradeArgs'] auto_upgrade: auto_upgrade device first time it is onboarded
+        :param pulumi.Input['SettingJuniperSrxAutoUpgradeArgs'] auto_upgrade: SRX auto-upgrade settings applied when SRX devices are onboarded
+        :param pulumi.Input[Sequence[pulumi.Input['SettingJuniperSrxGatewayArgs']]] gateways: SRX gateways integrated with this site
+        :param pulumi.Input[_builtins.bool] send_mist_nac_user_info: Whether Mist NAC user information is sent to Juniper SRX gateways
         """
         if auto_upgrade is not None:
             pulumi.set(__self__, "auto_upgrade", auto_upgrade)
@@ -10673,7 +10921,7 @@ class SettingJuniperSrxArgs:
     @pulumi.getter(name="autoUpgrade")
     def auto_upgrade(self) -> pulumi.Input[Optional['SettingJuniperSrxAutoUpgradeArgs']]:
         """
-        auto_upgrade device first time it is onboarded
+        SRX auto-upgrade settings applied when SRX devices are onboarded
         """
         return pulumi.get(self, "auto_upgrade")
 
@@ -10684,6 +10932,9 @@ class SettingJuniperSrxArgs:
     @_builtins.property
     @pulumi.getter
     def gateways(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SettingJuniperSrxGatewayArgs']]]]:
+        """
+        SRX gateways integrated with this site
+        """
         return pulumi.get(self, "gateways")
 
     @gateways.setter
@@ -10693,6 +10944,9 @@ class SettingJuniperSrxArgs:
     @_builtins.property
     @pulumi.getter(name="sendMistNacUserInfo")
     def send_mist_nac_user_info(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether Mist NAC user information is sent to Juniper SRX gateways
+        """
         return pulumi.get(self, "send_mist_nac_user_info")
 
     @send_mist_nac_user_info.setter
@@ -10703,10 +10957,16 @@ class SettingJuniperSrxArgs:
 class SettingJuniperSrxAutoUpgradeArgsDict(TypedDict):
     custom_versions: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
-    Property key is the SRX Hardware model (e.g. "SRX4600")
+    Per-SRX-model firmware versions to deploy instead of the default version
     """
     enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether SRX auto-upgrade is enabled for newly onboarded devices
+    """
     snapshot: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to take a snapshot during the SRX upgrade process
+    """
     version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Firmware version to deploy (e.g. 23.4R2-S5.5). Optional, used when custom_versions not specified
@@ -10720,7 +10980,9 @@ class SettingJuniperSrxAutoUpgradeArgs:
                  snapshot: pulumi.Input[Optional[_builtins.bool]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_versions: Property key is the SRX Hardware model (e.g. "SRX4600")
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_versions: Per-SRX-model firmware versions to deploy instead of the default version
+        :param pulumi.Input[_builtins.bool] enabled: Whether SRX auto-upgrade is enabled for newly onboarded devices
+        :param pulumi.Input[_builtins.bool] snapshot: Whether to take a snapshot during the SRX upgrade process
         :param pulumi.Input[_builtins.str] version: Firmware version to deploy (e.g. 23.4R2-S5.5). Optional, used when custom_versions not specified
         """
         if custom_versions is not None:
@@ -10736,7 +10998,7 @@ class SettingJuniperSrxAutoUpgradeArgs:
     @pulumi.getter(name="customVersions")
     def custom_versions(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Property key is the SRX Hardware model (e.g. "SRX4600")
+        Per-SRX-model firmware versions to deploy instead of the default version
         """
         return pulumi.get(self, "custom_versions")
 
@@ -10747,6 +11009,9 @@ class SettingJuniperSrxAutoUpgradeArgs:
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether SRX auto-upgrade is enabled for newly onboarded devices
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -10756,6 +11021,9 @@ class SettingJuniperSrxAutoUpgradeArgs:
     @_builtins.property
     @pulumi.getter
     def snapshot(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to take a snapshot during the SRX upgrade process
+        """
         return pulumi.get(self, "snapshot")
 
     @snapshot.setter
@@ -10777,8 +11045,17 @@ class SettingJuniperSrxAutoUpgradeArgs:
 
 class SettingJuniperSrxGatewayArgsDict(TypedDict):
     api_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Authentication key used to access the Juniper SRX gateway API
+    """
     api_password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Authentication password used to access the Juniper SRX gateway API
+    """
     api_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Base URL for the Juniper SRX gateway API
+    """
 
 @pulumi.input_type
 class SettingJuniperSrxGatewayArgs:
@@ -10786,6 +11063,11 @@ class SettingJuniperSrxGatewayArgs:
                  api_key: pulumi.Input[Optional[_builtins.str]] = None,
                  api_password: pulumi.Input[Optional[_builtins.str]] = None,
                  api_url: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] api_key: Authentication key used to access the Juniper SRX gateway API
+        :param pulumi.Input[_builtins.str] api_password: Authentication password used to access the Juniper SRX gateway API
+        :param pulumi.Input[_builtins.str] api_url: Base URL for the Juniper SRX gateway API
+        """
         if api_key is not None:
             pulumi.set(__self__, "api_key", api_key)
         if api_password is not None:
@@ -10796,6 +11078,9 @@ class SettingJuniperSrxGatewayArgs:
     @_builtins.property
     @pulumi.getter(name="apiKey")
     def api_key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Authentication key used to access the Juniper SRX gateway API
+        """
         return pulumi.get(self, "api_key")
 
     @api_key.setter
@@ -10805,6 +11090,9 @@ class SettingJuniperSrxGatewayArgs:
     @_builtins.property
     @pulumi.getter(name="apiPassword")
     def api_password(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Authentication password used to access the Juniper SRX gateway API
+        """
         return pulumi.get(self, "api_password")
 
     @api_password.setter
@@ -10814,6 +11102,9 @@ class SettingJuniperSrxGatewayArgs:
     @_builtins.property
     @pulumi.getter(name="apiUrl")
     def api_url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Base URL for the Juniper SRX gateway API
+        """
         return pulumi.get(self, "api_url")
 
     @api_url.setter
@@ -10823,13 +11114,23 @@ class SettingJuniperSrxGatewayArgs:
 
 class SettingLedArgsDict(TypedDict):
     brightness: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Indicator LED brightness level from 0 to 255
+    """
     enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether the AP indicator LED is enabled
+    """
 
 @pulumi.input_type
 class SettingLedArgs:
     def __init__(__self__, *,
                  brightness: pulumi.Input[Optional[_builtins.int]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.int] brightness: Indicator LED brightness level from 0 to 255
+        :param pulumi.Input[_builtins.bool] enabled: Whether the AP indicator LED is enabled
+        """
         if brightness is not None:
             pulumi.set(__self__, "brightness", brightness)
         if enabled is not None:
@@ -10838,6 +11139,9 @@ class SettingLedArgs:
     @_builtins.property
     @pulumi.getter
     def brightness(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Indicator LED brightness level from 0 to 255
+        """
         return pulumi.get(self, "brightness")
 
     @brightness.setter
@@ -10847,6 +11151,9 @@ class SettingLedArgs:
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the AP indicator LED is enabled
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -10856,17 +11163,26 @@ class SettingLedArgs:
 
 class SettingMarvisArgsDict(TypedDict):
     auto_operations: NotRequired[pulumi.Input[Optional['SettingMarvisAutoOperationsArgsDict']]]
+    """
+    Automatic remediation operations controlled by Marvis
+    """
 
 @pulumi.input_type
 class SettingMarvisArgs:
     def __init__(__self__, *,
                  auto_operations: pulumi.Input[Optional['SettingMarvisAutoOperationsArgs']] = None):
+        """
+        :param pulumi.Input['SettingMarvisAutoOperationsArgs'] auto_operations: Automatic remediation operations controlled by Marvis
+        """
         if auto_operations is not None:
             pulumi.set(__self__, "auto_operations", auto_operations)
 
     @_builtins.property
     @pulumi.getter(name="autoOperations")
     def auto_operations(self) -> pulumi.Input[Optional['SettingMarvisAutoOperationsArgs']]:
+        """
+        Automatic remediation operations controlled by Marvis
+        """
         return pulumi.get(self, "auto_operations")
 
     @auto_operations.setter
@@ -10876,14 +11192,41 @@ class SettingMarvisArgs:
 
 class SettingMarvisAutoOperationsArgsDict(TypedDict):
     ap_insufficient_capacity: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether Marvis may remediate AP insufficient-capacity issues automatically
+    """
     ap_loop: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether Marvis may remediate AP loop issues automatically
+    """
     ap_non_compliant: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether Marvis may remediate AP non-compliance automatically
+    """
     bounce_port_for_abnormal_poe_client: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether Marvis may bounce switch ports for abnormal PoE clients
+    """
     disable_port_when_ddos_protocol_violation: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether Marvis may disable a port when DDOS protocol violations are detected
+    """
     disable_port_when_rogue_dhcp_server_detected: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether Marvis may disable a port when a rogue DHCP server is detected
+    """
     gateway_non_compliant: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether Marvis may remediate non-compliant gateways automatically
+    """
     switch_misconfigured_port: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether Marvis may remediate misconfigured switch ports automatically
+    """
     switch_port_stuck: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether Marvis may remediate stuck switch ports automatically
+    """
 
 @pulumi.input_type
 class SettingMarvisAutoOperationsArgs:
@@ -10897,6 +11240,17 @@ class SettingMarvisAutoOperationsArgs:
                  gateway_non_compliant: pulumi.Input[Optional[_builtins.bool]] = None,
                  switch_misconfigured_port: pulumi.Input[Optional[_builtins.bool]] = None,
                  switch_port_stuck: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] ap_insufficient_capacity: Whether Marvis may remediate AP insufficient-capacity issues automatically
+        :param pulumi.Input[_builtins.bool] ap_loop: Whether Marvis may remediate AP loop issues automatically
+        :param pulumi.Input[_builtins.bool] ap_non_compliant: Whether Marvis may remediate AP non-compliance automatically
+        :param pulumi.Input[_builtins.bool] bounce_port_for_abnormal_poe_client: Whether Marvis may bounce switch ports for abnormal PoE clients
+        :param pulumi.Input[_builtins.bool] disable_port_when_ddos_protocol_violation: Whether Marvis may disable a port when DDOS protocol violations are detected
+        :param pulumi.Input[_builtins.bool] disable_port_when_rogue_dhcp_server_detected: Whether Marvis may disable a port when a rogue DHCP server is detected
+        :param pulumi.Input[_builtins.bool] gateway_non_compliant: Whether Marvis may remediate non-compliant gateways automatically
+        :param pulumi.Input[_builtins.bool] switch_misconfigured_port: Whether Marvis may remediate misconfigured switch ports automatically
+        :param pulumi.Input[_builtins.bool] switch_port_stuck: Whether Marvis may remediate stuck switch ports automatically
+        """
         if ap_insufficient_capacity is not None:
             pulumi.set(__self__, "ap_insufficient_capacity", ap_insufficient_capacity)
         if ap_loop is not None:
@@ -10919,6 +11273,9 @@ class SettingMarvisAutoOperationsArgs:
     @_builtins.property
     @pulumi.getter(name="apInsufficientCapacity")
     def ap_insufficient_capacity(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether Marvis may remediate AP insufficient-capacity issues automatically
+        """
         return pulumi.get(self, "ap_insufficient_capacity")
 
     @ap_insufficient_capacity.setter
@@ -10928,6 +11285,9 @@ class SettingMarvisAutoOperationsArgs:
     @_builtins.property
     @pulumi.getter(name="apLoop")
     def ap_loop(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether Marvis may remediate AP loop issues automatically
+        """
         return pulumi.get(self, "ap_loop")
 
     @ap_loop.setter
@@ -10937,6 +11297,9 @@ class SettingMarvisAutoOperationsArgs:
     @_builtins.property
     @pulumi.getter(name="apNonCompliant")
     def ap_non_compliant(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether Marvis may remediate AP non-compliance automatically
+        """
         return pulumi.get(self, "ap_non_compliant")
 
     @ap_non_compliant.setter
@@ -10946,6 +11309,9 @@ class SettingMarvisAutoOperationsArgs:
     @_builtins.property
     @pulumi.getter(name="bouncePortForAbnormalPoeClient")
     def bounce_port_for_abnormal_poe_client(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether Marvis may bounce switch ports for abnormal PoE clients
+        """
         return pulumi.get(self, "bounce_port_for_abnormal_poe_client")
 
     @bounce_port_for_abnormal_poe_client.setter
@@ -10955,6 +11321,9 @@ class SettingMarvisAutoOperationsArgs:
     @_builtins.property
     @pulumi.getter(name="disablePortWhenDdosProtocolViolation")
     def disable_port_when_ddos_protocol_violation(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether Marvis may disable a port when DDOS protocol violations are detected
+        """
         return pulumi.get(self, "disable_port_when_ddos_protocol_violation")
 
     @disable_port_when_ddos_protocol_violation.setter
@@ -10964,6 +11333,9 @@ class SettingMarvisAutoOperationsArgs:
     @_builtins.property
     @pulumi.getter(name="disablePortWhenRogueDhcpServerDetected")
     def disable_port_when_rogue_dhcp_server_detected(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether Marvis may disable a port when a rogue DHCP server is detected
+        """
         return pulumi.get(self, "disable_port_when_rogue_dhcp_server_detected")
 
     @disable_port_when_rogue_dhcp_server_detected.setter
@@ -10973,6 +11345,9 @@ class SettingMarvisAutoOperationsArgs:
     @_builtins.property
     @pulumi.getter(name="gatewayNonCompliant")
     def gateway_non_compliant(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether Marvis may remediate non-compliant gateways automatically
+        """
         return pulumi.get(self, "gateway_non_compliant")
 
     @gateway_non_compliant.setter
@@ -10982,6 +11357,9 @@ class SettingMarvisAutoOperationsArgs:
     @_builtins.property
     @pulumi.getter(name="switchMisconfiguredPort")
     def switch_misconfigured_port(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether Marvis may remediate misconfigured switch ports automatically
+        """
         return pulumi.get(self, "switch_misconfigured_port")
 
     @switch_misconfigured_port.setter
@@ -10991,11 +11369,1191 @@ class SettingMarvisAutoOperationsArgs:
     @_builtins.property
     @pulumi.getter(name="switchPortStuck")
     def switch_port_stuck(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether Marvis may remediate stuck switch ports automatically
+        """
         return pulumi.get(self, "switch_port_stuck")
 
     @switch_port_stuck.setter
     def switch_port_stuck(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "switch_port_stuck", value)
+
+
+class SettingMxedgeMgmtArgsDict(TypedDict):
+    config_auto_revert: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether the Mist Edge automatically reverts configuration changes if connectivity is lost
+    """
+    fips_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether FIPS mode is enabled on the Mist Edge
+    """
+    mist_password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Password for the Mist service account on the Mist Edge
+    """
+    oob_ip_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    IPv4 address assignment mode for out-of-band management
+    """
+    oob_ip_type6: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    IPv6 address assignment mode for out-of-band management
+    """
+    root_password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Root account password for the Mist Edge
+    """
+
+@pulumi.input_type
+class SettingMxedgeMgmtArgs:
+    def __init__(__self__, *,
+                 config_auto_revert: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fips_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mist_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 oob_ip_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 oob_ip_type6: pulumi.Input[Optional[_builtins.str]] = None,
+                 root_password: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] config_auto_revert: Whether the Mist Edge automatically reverts configuration changes if connectivity is lost
+        :param pulumi.Input[_builtins.bool] fips_enabled: Whether FIPS mode is enabled on the Mist Edge
+        :param pulumi.Input[_builtins.str] mist_password: Password for the Mist service account on the Mist Edge
+        :param pulumi.Input[_builtins.str] oob_ip_type: IPv4 address assignment mode for out-of-band management
+        :param pulumi.Input[_builtins.str] oob_ip_type6: IPv6 address assignment mode for out-of-band management
+        :param pulumi.Input[_builtins.str] root_password: Root account password for the Mist Edge
+        """
+        if config_auto_revert is not None:
+            pulumi.set(__self__, "config_auto_revert", config_auto_revert)
+        if fips_enabled is not None:
+            pulumi.set(__self__, "fips_enabled", fips_enabled)
+        if mist_password is not None:
+            pulumi.set(__self__, "mist_password", mist_password)
+        if oob_ip_type is not None:
+            pulumi.set(__self__, "oob_ip_type", oob_ip_type)
+        if oob_ip_type6 is not None:
+            pulumi.set(__self__, "oob_ip_type6", oob_ip_type6)
+        if root_password is not None:
+            pulumi.set(__self__, "root_password", root_password)
+
+    @_builtins.property
+    @pulumi.getter(name="configAutoRevert")
+    def config_auto_revert(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the Mist Edge automatically reverts configuration changes if connectivity is lost
+        """
+        return pulumi.get(self, "config_auto_revert")
+
+    @config_auto_revert.setter
+    def config_auto_revert(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "config_auto_revert", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fipsEnabled")
+    def fips_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether FIPS mode is enabled on the Mist Edge
+        """
+        return pulumi.get(self, "fips_enabled")
+
+    @fips_enabled.setter
+    def fips_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "fips_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mistPassword")
+    def mist_password(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Password for the Mist service account on the Mist Edge
+        """
+        return pulumi.get(self, "mist_password")
+
+    @mist_password.setter
+    def mist_password(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "mist_password", value)
+
+    @_builtins.property
+    @pulumi.getter(name="oobIpType")
+    def oob_ip_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        IPv4 address assignment mode for out-of-band management
+        """
+        return pulumi.get(self, "oob_ip_type")
+
+    @oob_ip_type.setter
+    def oob_ip_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "oob_ip_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="oobIpType6")
+    def oob_ip_type6(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        IPv6 address assignment mode for out-of-band management
+        """
+        return pulumi.get(self, "oob_ip_type6")
+
+    @oob_ip_type6.setter
+    def oob_ip_type6(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "oob_ip_type6", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rootPassword")
+    def root_password(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Root account password for the Mist Edge
+        """
+        return pulumi.get(self, "root_password")
+
+    @root_password.setter
+    def root_password(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "root_password", value)
+
+
+class SettingMxtunnelsArgsDict(TypedDict):
+    additional_mxtunnels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['SettingMxtunnelsAdditionalMxtunnelsArgsDict']]]]]
+    """
+    Additional named Mist Tunnel definitions configured for the site
+    """
+    ap_subnets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    AP source subnets allowed to establish Mist Tunnels
+    """
+    auto_preemption: NotRequired[pulumi.Input[Optional['SettingMxtunnelsAutoPreemptionArgsDict']]]
+    """
+    Preemption behavior for restoring preferred tunnel peers after failover
+    """
+    clusters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelsClusterArgsDict']]]]]
+    """
+    Tunnel peer clusters used by APs for this site Mist Tunnel
+    """
+    created_time: NotRequired[pulumi.Input[Optional[_builtins.float]]]
+    """
+    Timestamp when the site Mist Tunnel configuration was created
+    """
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether site Mist Tunnel tunneling is enabled
+    """
+    for_site: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether this Mist Tunnel configuration is scoped to a site
+    """
+    hello_interval: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    In seconds, used as heartbeat to detect if a tunnel is alive. AP will try another peer after missing N hellos specified by hello_retries
+    """
+    hello_retries: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Number of missed hello heartbeats before an AP tries another tunnel peer
+    """
+    hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Tunnel peer hostnames or IP addresses reachable from APs
+    """
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Unique value identifying the site Mist Tunnel configuration
+    """
+    modified_time: NotRequired[pulumi.Input[Optional[_builtins.float]]]
+    """
+    Timestamp when the site Mist Tunnel configuration was last modified
+    """
+    mtu: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    0 to enable MTU, 552-1500 to start MTU with a lower MTU
+    """
+    org_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Identifier of the org that owns the site Mist Tunnel configuration
+    """
+    protocol: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Encapsulation protocol used for the site Mist Tunnel
+    """
+    radsec: NotRequired[pulumi.Input[Optional['SettingMxtunnelsRadsecArgsDict']]]
+    """
+    TLS-secured RADIUS proxy settings for the site Mist Tunnel
+    """
+    site_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Identifier of the site that owns this Mist Tunnel configuration
+    """
+    vlan_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
+    """
+    List of VLAN IDs carried by this site Mist Tunnel
+    """
+
+@pulumi.input_type
+class SettingMxtunnelsArgs:
+    def __init__(__self__, *,
+                 additional_mxtunnels: pulumi.Input[Optional[Mapping[str, pulumi.Input['SettingMxtunnelsAdditionalMxtunnelsArgs']]]] = None,
+                 ap_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 auto_preemption: pulumi.Input[Optional['SettingMxtunnelsAutoPreemptionArgs']] = None,
+                 clusters: pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelsClusterArgs']]]] = None,
+                 created_time: pulumi.Input[Optional[_builtins.float]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 for_site: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hello_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 hello_retries: pulumi.Input[Optional[_builtins.int]] = None,
+                 hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 id: pulumi.Input[Optional[_builtins.str]] = None,
+                 modified_time: pulumi.Input[Optional[_builtins.float]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 radsec: pulumi.Input[Optional['SettingMxtunnelsRadsecArgs']] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vlan_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input['SettingMxtunnelsAdditionalMxtunnelsArgs']]] additional_mxtunnels: Additional named Mist Tunnel definitions configured for the site
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ap_subnets: AP source subnets allowed to establish Mist Tunnels
+        :param pulumi.Input['SettingMxtunnelsAutoPreemptionArgs'] auto_preemption: Preemption behavior for restoring preferred tunnel peers after failover
+        :param pulumi.Input[Sequence[pulumi.Input['SettingMxtunnelsClusterArgs']]] clusters: Tunnel peer clusters used by APs for this site Mist Tunnel
+        :param pulumi.Input[_builtins.float] created_time: Timestamp when the site Mist Tunnel configuration was created
+        :param pulumi.Input[_builtins.bool] enabled: Whether site Mist Tunnel tunneling is enabled
+        :param pulumi.Input[_builtins.bool] for_site: Whether this Mist Tunnel configuration is scoped to a site
+        :param pulumi.Input[_builtins.int] hello_interval: In seconds, used as heartbeat to detect if a tunnel is alive. AP will try another peer after missing N hellos specified by hello_retries
+        :param pulumi.Input[_builtins.int] hello_retries: Number of missed hello heartbeats before an AP tries another tunnel peer
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hosts: Tunnel peer hostnames or IP addresses reachable from APs
+        :param pulumi.Input[_builtins.str] id: Unique value identifying the site Mist Tunnel configuration
+        :param pulumi.Input[_builtins.float] modified_time: Timestamp when the site Mist Tunnel configuration was last modified
+        :param pulumi.Input[_builtins.int] mtu: 0 to enable MTU, 552-1500 to start MTU with a lower MTU
+        :param pulumi.Input[_builtins.str] org_id: Identifier of the org that owns the site Mist Tunnel configuration
+        :param pulumi.Input[_builtins.str] protocol: Encapsulation protocol used for the site Mist Tunnel
+        :param pulumi.Input['SettingMxtunnelsRadsecArgs'] radsec: TLS-secured RADIUS proxy settings for the site Mist Tunnel
+        :param pulumi.Input[_builtins.str] site_id: Identifier of the site that owns this Mist Tunnel configuration
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] vlan_ids: List of VLAN IDs carried by this site Mist Tunnel
+        """
+        if additional_mxtunnels is not None:
+            pulumi.set(__self__, "additional_mxtunnels", additional_mxtunnels)
+        if ap_subnets is not None:
+            pulumi.set(__self__, "ap_subnets", ap_subnets)
+        if auto_preemption is not None:
+            pulumi.set(__self__, "auto_preemption", auto_preemption)
+        if clusters is not None:
+            pulumi.set(__self__, "clusters", clusters)
+        if created_time is not None:
+            pulumi.set(__self__, "created_time", created_time)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if for_site is not None:
+            pulumi.set(__self__, "for_site", for_site)
+        if hello_interval is not None:
+            pulumi.set(__self__, "hello_interval", hello_interval)
+        if hello_retries is not None:
+            pulumi.set(__self__, "hello_retries", hello_retries)
+        if hosts is not None:
+            pulumi.set(__self__, "hosts", hosts)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if modified_time is not None:
+            pulumi.set(__self__, "modified_time", modified_time)
+        if mtu is not None:
+            pulumi.set(__self__, "mtu", mtu)
+        if org_id is not None:
+            pulumi.set(__self__, "org_id", org_id)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if radsec is not None:
+            pulumi.set(__self__, "radsec", radsec)
+        if site_id is not None:
+            pulumi.set(__self__, "site_id", site_id)
+        if vlan_ids is not None:
+            pulumi.set(__self__, "vlan_ids", vlan_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="additionalMxtunnels")
+    def additional_mxtunnels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SettingMxtunnelsAdditionalMxtunnelsArgs']]]]:
+        """
+        Additional named Mist Tunnel definitions configured for the site
+        """
+        return pulumi.get(self, "additional_mxtunnels")
+
+    @additional_mxtunnels.setter
+    def additional_mxtunnels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['SettingMxtunnelsAdditionalMxtunnelsArgs']]]]):
+        pulumi.set(self, "additional_mxtunnels", value)
+
+    @_builtins.property
+    @pulumi.getter(name="apSubnets")
+    def ap_subnets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        AP source subnets allowed to establish Mist Tunnels
+        """
+        return pulumi.get(self, "ap_subnets")
+
+    @ap_subnets.setter
+    def ap_subnets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "ap_subnets", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoPreemption")
+    def auto_preemption(self) -> pulumi.Input[Optional['SettingMxtunnelsAutoPreemptionArgs']]:
+        """
+        Preemption behavior for restoring preferred tunnel peers after failover
+        """
+        return pulumi.get(self, "auto_preemption")
+
+    @auto_preemption.setter
+    def auto_preemption(self, value: pulumi.Input[Optional['SettingMxtunnelsAutoPreemptionArgs']]):
+        pulumi.set(self, "auto_preemption", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def clusters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelsClusterArgs']]]]:
+        """
+        Tunnel peer clusters used by APs for this site Mist Tunnel
+        """
+        return pulumi.get(self, "clusters")
+
+    @clusters.setter
+    def clusters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelsClusterArgs']]]]):
+        pulumi.set(self, "clusters", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdTime")
+    def created_time(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        Timestamp when the site Mist Tunnel configuration was created
+        """
+        return pulumi.get(self, "created_time")
+
+    @created_time.setter
+    def created_time(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "created_time", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether site Mist Tunnel tunneling is enabled
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="forSite")
+    def for_site(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether this Mist Tunnel configuration is scoped to a site
+        """
+        return pulumi.get(self, "for_site")
+
+    @for_site.setter
+    def for_site(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "for_site", value)
+
+    @_builtins.property
+    @pulumi.getter(name="helloInterval")
+    def hello_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        In seconds, used as heartbeat to detect if a tunnel is alive. AP will try another peer after missing N hellos specified by hello_retries
+        """
+        return pulumi.get(self, "hello_interval")
+
+    @hello_interval.setter
+    def hello_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "hello_interval", value)
+
+    @_builtins.property
+    @pulumi.getter(name="helloRetries")
+    def hello_retries(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Number of missed hello heartbeats before an AP tries another tunnel peer
+        """
+        return pulumi.get(self, "hello_retries")
+
+    @hello_retries.setter
+    def hello_retries(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "hello_retries", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Tunnel peer hostnames or IP addresses reachable from APs
+        """
+        return pulumi.get(self, "hosts")
+
+    @hosts.setter
+    def hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "hosts", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Unique value identifying the site Mist Tunnel configuration
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="modifiedTime")
+    def modified_time(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        Timestamp when the site Mist Tunnel configuration was last modified
+        """
+        return pulumi.get(self, "modified_time")
+
+    @modified_time.setter
+    def modified_time(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "modified_time", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def mtu(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        0 to enable MTU, 552-1500 to start MTU with a lower MTU
+        """
+        return pulumi.get(self, "mtu")
+
+    @mtu.setter
+    def mtu(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "mtu", value)
+
+    @_builtins.property
+    @pulumi.getter(name="orgId")
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Identifier of the org that owns the site Mist Tunnel configuration
+        """
+        return pulumi.get(self, "org_id")
+
+    @org_id.setter
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "org_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Encapsulation protocol used for the site Mist Tunnel
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "protocol", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def radsec(self) -> pulumi.Input[Optional['SettingMxtunnelsRadsecArgs']]:
+        """
+        TLS-secured RADIUS proxy settings for the site Mist Tunnel
+        """
+        return pulumi.get(self, "radsec")
+
+    @radsec.setter
+    def radsec(self, value: pulumi.Input[Optional['SettingMxtunnelsRadsecArgs']]):
+        pulumi.set(self, "radsec", value)
+
+    @_builtins.property
+    @pulumi.getter(name="siteId")
+    def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Identifier of the site that owns this Mist Tunnel configuration
+        """
+        return pulumi.get(self, "site_id")
+
+    @site_id.setter
+    def site_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "site_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vlanIds")
+    def vlan_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
+        """
+        List of VLAN IDs carried by this site Mist Tunnel
+        """
+        return pulumi.get(self, "vlan_ids")
+
+    @vlan_ids.setter
+    def vlan_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
+        pulumi.set(self, "vlan_ids", value)
+
+
+class SettingMxtunnelsAdditionalMxtunnelsArgsDict(TypedDict):
+    hello_interval: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    In seconds, used as heartbeat to detect if a tunnel is alive. AP will try another peer after missing N hellos specified by hello_retries
+    """
+    hello_retries: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Number of missed hello heartbeats before an AP tries another tunnel peer
+    """
+    protocol: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Encapsulation protocol used for this additional Mist Tunnel
+    """
+    tunterm_clusters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArgsDict']]]]]
+    """
+    Tunnel peer clusters used by APs for this additional Mist Tunnel
+    """
+    vlan_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
+    """
+    List of VLAN IDs carried by this additional Mist Tunnel
+    """
+
+@pulumi.input_type
+class SettingMxtunnelsAdditionalMxtunnelsArgs:
+    def __init__(__self__, *,
+                 hello_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 hello_retries: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 tunterm_clusters: pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArgs']]]] = None,
+                 vlan_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None):
+        """
+        :param pulumi.Input[_builtins.int] hello_interval: In seconds, used as heartbeat to detect if a tunnel is alive. AP will try another peer after missing N hellos specified by hello_retries
+        :param pulumi.Input[_builtins.int] hello_retries: Number of missed hello heartbeats before an AP tries another tunnel peer
+        :param pulumi.Input[_builtins.str] protocol: Encapsulation protocol used for this additional Mist Tunnel
+        :param pulumi.Input[Sequence[pulumi.Input['SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArgs']]] tunterm_clusters: Tunnel peer clusters used by APs for this additional Mist Tunnel
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] vlan_ids: List of VLAN IDs carried by this additional Mist Tunnel
+        """
+        if hello_interval is not None:
+            pulumi.set(__self__, "hello_interval", hello_interval)
+        if hello_retries is not None:
+            pulumi.set(__self__, "hello_retries", hello_retries)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if tunterm_clusters is not None:
+            pulumi.set(__self__, "tunterm_clusters", tunterm_clusters)
+        if vlan_ids is not None:
+            pulumi.set(__self__, "vlan_ids", vlan_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="helloInterval")
+    def hello_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        In seconds, used as heartbeat to detect if a tunnel is alive. AP will try another peer after missing N hellos specified by hello_retries
+        """
+        return pulumi.get(self, "hello_interval")
+
+    @hello_interval.setter
+    def hello_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "hello_interval", value)
+
+    @_builtins.property
+    @pulumi.getter(name="helloRetries")
+    def hello_retries(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Number of missed hello heartbeats before an AP tries another tunnel peer
+        """
+        return pulumi.get(self, "hello_retries")
+
+    @hello_retries.setter
+    def hello_retries(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "hello_retries", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Encapsulation protocol used for this additional Mist Tunnel
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "protocol", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tuntermClusters")
+    def tunterm_clusters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArgs']]]]:
+        """
+        Tunnel peer clusters used by APs for this additional Mist Tunnel
+        """
+        return pulumi.get(self, "tunterm_clusters")
+
+    @tunterm_clusters.setter
+    def tunterm_clusters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArgs']]]]):
+        pulumi.set(self, "tunterm_clusters", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vlanIds")
+    def vlan_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
+        """
+        List of VLAN IDs carried by this additional Mist Tunnel
+        """
+        return pulumi.get(self, "vlan_ids")
+
+    @vlan_ids.setter
+    def vlan_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
+        pulumi.set(self, "vlan_ids", value)
+
+
+class SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Peer cluster name used in the site Mist Tunnel configuration
+    """
+    tunterm_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Tunnel termination hostnames or IP addresses in this peer cluster
+    """
+
+@pulumi.input_type
+class SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tunterm_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Peer cluster name used in the site Mist Tunnel configuration
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tunterm_hosts: Tunnel termination hostnames or IP addresses in this peer cluster
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if tunterm_hosts is not None:
+            pulumi.set(__self__, "tunterm_hosts", tunterm_hosts)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Peer cluster name used in the site Mist Tunnel configuration
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tuntermHosts")
+    def tunterm_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Tunnel termination hostnames or IP addresses in this peer cluster
+        """
+        return pulumi.get(self, "tunterm_hosts")
+
+    @tunterm_hosts.setter
+    def tunterm_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tunterm_hosts", value)
+
+
+class SettingMxtunnelsAutoPreemptionArgsDict(TypedDict):
+    day_of_week: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Scheduled weekday for auto preemption
+    """
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether auto preemption is enabled
+    """
+    time_of_day: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Scheduled time of day for auto preemption
+    """
+
+@pulumi.input_type
+class SettingMxtunnelsAutoPreemptionArgs:
+    def __init__(__self__, *,
+                 day_of_week: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 time_of_day: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] day_of_week: Scheduled weekday for auto preemption
+        :param pulumi.Input[_builtins.bool] enabled: Whether auto preemption is enabled
+        :param pulumi.Input[_builtins.str] time_of_day: Scheduled time of day for auto preemption
+        """
+        if day_of_week is not None:
+            pulumi.set(__self__, "day_of_week", day_of_week)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if time_of_day is not None:
+            pulumi.set(__self__, "time_of_day", time_of_day)
+
+    @_builtins.property
+    @pulumi.getter(name="dayOfWeek")
+    def day_of_week(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Scheduled weekday for auto preemption
+        """
+        return pulumi.get(self, "day_of_week")
+
+    @day_of_week.setter
+    def day_of_week(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "day_of_week", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether auto preemption is enabled
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timeOfDay")
+    def time_of_day(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Scheduled time of day for auto preemption
+        """
+        return pulumi.get(self, "time_of_day")
+
+    @time_of_day.setter
+    def time_of_day(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "time_of_day", value)
+
+
+class SettingMxtunnelsClusterArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Peer cluster name used in the site Mist Tunnel configuration
+    """
+    tunterm_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Tunnel termination hostnames or IP addresses in this peer cluster
+    """
+
+@pulumi.input_type
+class SettingMxtunnelsClusterArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tunterm_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Peer cluster name used in the site Mist Tunnel configuration
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tunterm_hosts: Tunnel termination hostnames or IP addresses in this peer cluster
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if tunterm_hosts is not None:
+            pulumi.set(__self__, "tunterm_hosts", tunterm_hosts)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Peer cluster name used in the site Mist Tunnel configuration
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tuntermHosts")
+    def tunterm_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Tunnel termination hostnames or IP addresses in this peer cluster
+        """
+        return pulumi.get(self, "tunterm_hosts")
+
+    @tunterm_hosts.setter
+    def tunterm_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tunterm_hosts", value)
+
+
+class SettingMxtunnelsRadsecArgsDict(TypedDict):
+    acct_servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelsRadsecAcctServerArgsDict']]]]]
+    """
+    RADIUS accounting servers used by the site Mist Tunnel RadSec proxy
+    """
+    auth_servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelsRadsecAuthServerArgsDict']]]]]
+    """
+    RADIUS authentication servers used by the site Mist Tunnel RadSec proxy
+    """
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether RadSec proxying is enabled for this site Mist Tunnel
+    """
+    use_mxedge: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether RadSec proxying uses Mist Edge
+    """
+
+@pulumi.input_type
+class SettingMxtunnelsRadsecArgs:
+    def __init__(__self__, *,
+                 acct_servers: pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelsRadsecAcctServerArgs']]]] = None,
+                 auth_servers: pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelsRadsecAuthServerArgs']]]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 use_mxedge: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['SettingMxtunnelsRadsecAcctServerArgs']]] acct_servers: RADIUS accounting servers used by the site Mist Tunnel RadSec proxy
+        :param pulumi.Input[Sequence[pulumi.Input['SettingMxtunnelsRadsecAuthServerArgs']]] auth_servers: RADIUS authentication servers used by the site Mist Tunnel RadSec proxy
+        :param pulumi.Input[_builtins.bool] enabled: Whether RadSec proxying is enabled for this site Mist Tunnel
+        :param pulumi.Input[_builtins.bool] use_mxedge: Whether RadSec proxying uses Mist Edge
+        """
+        if acct_servers is not None:
+            pulumi.set(__self__, "acct_servers", acct_servers)
+        if auth_servers is not None:
+            pulumi.set(__self__, "auth_servers", auth_servers)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if use_mxedge is not None:
+            pulumi.set(__self__, "use_mxedge", use_mxedge)
+
+    @_builtins.property
+    @pulumi.getter(name="acctServers")
+    def acct_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelsRadsecAcctServerArgs']]]]:
+        """
+        RADIUS accounting servers used by the site Mist Tunnel RadSec proxy
+        """
+        return pulumi.get(self, "acct_servers")
+
+    @acct_servers.setter
+    def acct_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelsRadsecAcctServerArgs']]]]):
+        pulumi.set(self, "acct_servers", value)
+
+    @_builtins.property
+    @pulumi.getter(name="authServers")
+    def auth_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelsRadsecAuthServerArgs']]]]:
+        """
+        RADIUS authentication servers used by the site Mist Tunnel RadSec proxy
+        """
+        return pulumi.get(self, "auth_servers")
+
+    @auth_servers.setter
+    def auth_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelsRadsecAuthServerArgs']]]]):
+        pulumi.set(self, "auth_servers", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether RadSec proxying is enabled for this site Mist Tunnel
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="useMxedge")
+    def use_mxedge(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether RadSec proxying uses Mist Edge
+        """
+        return pulumi.get(self, "use_mxedge")
+
+    @use_mxedge.setter
+    def use_mxedge(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "use_mxedge", value)
+
+
+class SettingMxtunnelsRadsecAcctServerArgsDict(TypedDict):
+    host: pulumi.Input[_builtins.str]
+    """
+    Address or hostname of the RADIUS accounting server
+    """
+    secret: pulumi.Input[_builtins.str]
+    """
+    Shared secret used with this RADIUS accounting server
+    """
+    keywrap_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether RADIUS keywrap is enabled for messages sent to this accounting server
+    """
+    keywrap_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Encoding format for RADIUS keywrap KEK and MACK values
+    """
+    keywrap_kek: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    RADIUS keywrap key encryption key (KEK)
+    """
+    keywrap_mack: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    RADIUS keywrap message authentication code key (MACK)
+    """
+    port: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    UDP port used by the RADIUS accounting server
+    """
+
+@pulumi.input_type
+class SettingMxtunnelsRadsecAcctServerArgs:
+    def __init__(__self__, *,
+                 host: pulumi.Input[_builtins.str],
+                 secret: pulumi.Input[_builtins.str],
+                 keywrap_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 keywrap_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 keywrap_kek: pulumi.Input[Optional[_builtins.str]] = None,
+                 keywrap_mack: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] host: Address or hostname of the RADIUS accounting server
+        :param pulumi.Input[_builtins.str] secret: Shared secret used with this RADIUS accounting server
+        :param pulumi.Input[_builtins.bool] keywrap_enabled: Whether RADIUS keywrap is enabled for messages sent to this accounting server
+        :param pulumi.Input[_builtins.str] keywrap_format: Encoding format for RADIUS keywrap KEK and MACK values
+        :param pulumi.Input[_builtins.str] keywrap_kek: RADIUS keywrap key encryption key (KEK)
+        :param pulumi.Input[_builtins.str] keywrap_mack: RADIUS keywrap message authentication code key (MACK)
+        :param pulumi.Input[_builtins.str] port: UDP port used by the RADIUS accounting server
+        """
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "secret", secret)
+        if keywrap_enabled is not None:
+            pulumi.set(__self__, "keywrap_enabled", keywrap_enabled)
+        if keywrap_format is not None:
+            pulumi.set(__self__, "keywrap_format", keywrap_format)
+        if keywrap_kek is not None:
+            pulumi.set(__self__, "keywrap_kek", keywrap_kek)
+        if keywrap_mack is not None:
+            pulumi.set(__self__, "keywrap_mack", keywrap_mack)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> pulumi.Input[_builtins.str]:
+        """
+        Address or hostname of the RADIUS accounting server
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "host", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def secret(self) -> pulumi.Input[_builtins.str]:
+        """
+        Shared secret used with this RADIUS accounting server
+        """
+        return pulumi.get(self, "secret")
+
+    @secret.setter
+    def secret(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "secret", value)
+
+    @_builtins.property
+    @pulumi.getter(name="keywrapEnabled")
+    def keywrap_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether RADIUS keywrap is enabled for messages sent to this accounting server
+        """
+        return pulumi.get(self, "keywrap_enabled")
+
+    @keywrap_enabled.setter
+    def keywrap_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "keywrap_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="keywrapFormat")
+    def keywrap_format(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Encoding format for RADIUS keywrap KEK and MACK values
+        """
+        return pulumi.get(self, "keywrap_format")
+
+    @keywrap_format.setter
+    def keywrap_format(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "keywrap_format", value)
+
+    @_builtins.property
+    @pulumi.getter(name="keywrapKek")
+    def keywrap_kek(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        RADIUS keywrap key encryption key (KEK)
+        """
+        return pulumi.get(self, "keywrap_kek")
+
+    @keywrap_kek.setter
+    def keywrap_kek(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "keywrap_kek", value)
+
+    @_builtins.property
+    @pulumi.getter(name="keywrapMack")
+    def keywrap_mack(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        RADIUS keywrap message authentication code key (MACK)
+        """
+        return pulumi.get(self, "keywrap_mack")
+
+    @keywrap_mack.setter
+    def keywrap_mack(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "keywrap_mack", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        UDP port used by the RADIUS accounting server
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "port", value)
+
+
+class SettingMxtunnelsRadsecAuthServerArgsDict(TypedDict):
+    host: pulumi.Input[_builtins.str]
+    """
+    Address or hostname of the RADIUS authentication server
+    """
+    secret: pulumi.Input[_builtins.str]
+    """
+    Shared secret used with this RADIUS authentication server
+    """
+    keywrap_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether RADIUS keywrap is enabled for messages sent to this authentication server
+    """
+    keywrap_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Encoding format for RADIUS keywrap KEK and MACK values
+    """
+    keywrap_kek: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    RADIUS keywrap key encryption key (KEK)
+    """
+    keywrap_mack: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    RADIUS keywrap message authentication code key (MACK)
+    """
+    port: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    UDP port used by the RADIUS authentication server
+    """
+    require_message_authenticator: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to require Message-Authenticator in requests
+    """
+
+@pulumi.input_type
+class SettingMxtunnelsRadsecAuthServerArgs:
+    def __init__(__self__, *,
+                 host: pulumi.Input[_builtins.str],
+                 secret: pulumi.Input[_builtins.str],
+                 keywrap_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 keywrap_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 keywrap_kek: pulumi.Input[Optional[_builtins.str]] = None,
+                 keywrap_mack: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.str]] = None,
+                 require_message_authenticator: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.str] host: Address or hostname of the RADIUS authentication server
+        :param pulumi.Input[_builtins.str] secret: Shared secret used with this RADIUS authentication server
+        :param pulumi.Input[_builtins.bool] keywrap_enabled: Whether RADIUS keywrap is enabled for messages sent to this authentication server
+        :param pulumi.Input[_builtins.str] keywrap_format: Encoding format for RADIUS keywrap KEK and MACK values
+        :param pulumi.Input[_builtins.str] keywrap_kek: RADIUS keywrap key encryption key (KEK)
+        :param pulumi.Input[_builtins.str] keywrap_mack: RADIUS keywrap message authentication code key (MACK)
+        :param pulumi.Input[_builtins.str] port: UDP port used by the RADIUS authentication server
+        :param pulumi.Input[_builtins.bool] require_message_authenticator: Whether to require Message-Authenticator in requests
+        """
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "secret", secret)
+        if keywrap_enabled is not None:
+            pulumi.set(__self__, "keywrap_enabled", keywrap_enabled)
+        if keywrap_format is not None:
+            pulumi.set(__self__, "keywrap_format", keywrap_format)
+        if keywrap_kek is not None:
+            pulumi.set(__self__, "keywrap_kek", keywrap_kek)
+        if keywrap_mack is not None:
+            pulumi.set(__self__, "keywrap_mack", keywrap_mack)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if require_message_authenticator is not None:
+            pulumi.set(__self__, "require_message_authenticator", require_message_authenticator)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> pulumi.Input[_builtins.str]:
+        """
+        Address or hostname of the RADIUS authentication server
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "host", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def secret(self) -> pulumi.Input[_builtins.str]:
+        """
+        Shared secret used with this RADIUS authentication server
+        """
+        return pulumi.get(self, "secret")
+
+    @secret.setter
+    def secret(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "secret", value)
+
+    @_builtins.property
+    @pulumi.getter(name="keywrapEnabled")
+    def keywrap_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether RADIUS keywrap is enabled for messages sent to this authentication server
+        """
+        return pulumi.get(self, "keywrap_enabled")
+
+    @keywrap_enabled.setter
+    def keywrap_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "keywrap_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="keywrapFormat")
+    def keywrap_format(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Encoding format for RADIUS keywrap KEK and MACK values
+        """
+        return pulumi.get(self, "keywrap_format")
+
+    @keywrap_format.setter
+    def keywrap_format(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "keywrap_format", value)
+
+    @_builtins.property
+    @pulumi.getter(name="keywrapKek")
+    def keywrap_kek(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        RADIUS keywrap key encryption key (KEK)
+        """
+        return pulumi.get(self, "keywrap_kek")
+
+    @keywrap_kek.setter
+    def keywrap_kek(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "keywrap_kek", value)
+
+    @_builtins.property
+    @pulumi.getter(name="keywrapMack")
+    def keywrap_mack(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        RADIUS keywrap message authentication code key (MACK)
+        """
+        return pulumi.get(self, "keywrap_mack")
+
+    @keywrap_mack.setter
+    def keywrap_mack(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "keywrap_mack", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        UDP port used by the RADIUS authentication server
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="requireMessageAuthenticator")
+    def require_message_authenticator(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to require Message-Authenticator in requests
+        """
+        return pulumi.get(self, "require_message_authenticator")
+
+    @require_message_authenticator.setter
+    def require_message_authenticator(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "require_message_authenticator", value)
 
 
 class SettingOccupancyArgsDict(TypedDict):
@@ -11009,7 +12567,7 @@ class SettingOccupancyArgsDict(TypedDict):
     """
     min_duration: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    Minimum duration
+    Minimum dwell duration before a client or asset is counted in occupancy analytics
     """
     sdkclients_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
@@ -11031,7 +12589,7 @@ class SettingOccupancyArgs:
         """
         :param pulumi.Input[_builtins.bool] assets_enabled: Indicate whether named BLE assets should be included in the zone occupancy calculation
         :param pulumi.Input[_builtins.bool] clients_enabled: Indicate whether connected Wi-Fi clients should be included in the zone occupancy calculation
-        :param pulumi.Input[_builtins.int] min_duration: Minimum duration
+        :param pulumi.Input[_builtins.int] min_duration: Minimum dwell duration before a client or asset is counted in occupancy analytics
         :param pulumi.Input[_builtins.bool] sdkclients_enabled: Indicate whether SDK clients should be included in the zone occupancy calculation
         :param pulumi.Input[_builtins.bool] unconnected_clients_enabled: Indicate whether unconnected Wi-Fi clients should be included in the zone occupancy calculation
         """
@@ -11074,7 +12632,7 @@ class SettingOccupancyArgs:
     @pulumi.getter(name="minDuration")
     def min_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Minimum duration
+        Minimum dwell duration before a client or asset is counted in occupancy analytics
         """
         return pulumi.get(self, "min_duration")
 
@@ -11109,13 +12667,23 @@ class SettingOccupancyArgs:
 
 class SettingProxyArgsDict(TypedDict):
     disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether this proxy configuration is disabled
+    """
     url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Proxy URL used to reach Mist
+    """
 
 @pulumi.input_type
 class SettingProxyArgs:
     def __init__(__self__, *,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  url: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] disabled: Whether this proxy configuration is disabled
+        :param pulumi.Input[_builtins.str] url: Proxy URL used to reach Mist
+        """
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if url is not None:
@@ -11124,6 +12692,9 @@ class SettingProxyArgs:
     @_builtins.property
     @pulumi.getter
     def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether this proxy configuration is disabled
+        """
         return pulumi.get(self, "disabled")
 
     @disabled.setter
@@ -11133,6 +12704,9 @@ class SettingProxyArgs:
     @_builtins.property
     @pulumi.getter
     def url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Proxy URL used to reach Mist
+        """
         return pulumi.get(self, "url")
 
     @url.setter
@@ -11143,7 +12717,7 @@ class SettingProxyArgs:
 class SettingRogueArgsDict(TypedDict):
     allowed_vlan_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
     """
-    list of VLAN IDs on which rogue APs are ignored
+    VLAN IDs allowed by the rogue detection policy
     """
     enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
@@ -11171,11 +12745,11 @@ class SettingRogueArgsDict(TypedDict):
     """
     whitelisted_bssids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
-    list of BSSIDs to whitelist. Ex: "cc-:8e-:6f-:d4-:bf-:16", "cc-8e-6f-d4-bf-16", "cc-73-*", "cc:82:*"
+    BSSID values or wildcard patterns excluded from rogue detection
     """
     whitelisted_ssids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
-    List of SSIDs to whitelist
+    SSID names excluded from rogue detection
     """
 
 @pulumi.input_type
@@ -11191,15 +12765,15 @@ class SettingRogueArgs:
                  whitelisted_bssids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  whitelisted_ssids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] allowed_vlan_ids: list of VLAN IDs on which rogue APs are ignored
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] allowed_vlan_ids: VLAN IDs allowed by the rogue detection policy
         :param pulumi.Input[_builtins.bool] enabled: Whether rogue detection is enabled
         :param pulumi.Input[_builtins.bool] honeypot_enabled: Whether honeypot detection is enabled
         :param pulumi.Input[_builtins.int] min_duration: Minimum duration for a bssid to be considered neighbor
         :param pulumi.Input[_builtins.int] min_rogue_duration: Minimum duration for a bssid to be considered rogue
         :param pulumi.Input[_builtins.int] min_rogue_rssi: Minimum RSSI for an AP to be considered rogue
         :param pulumi.Input[_builtins.int] min_rssi: Minimum RSSI for an AP to be considered neighbor (ignoring APs that’s far away)
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] whitelisted_bssids: list of BSSIDs to whitelist. Ex: "cc-:8e-:6f-:d4-:bf-:16", "cc-8e-6f-d4-bf-16", "cc-73-*", "cc:82:*"
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] whitelisted_ssids: List of SSIDs to whitelist
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] whitelisted_bssids: BSSID values or wildcard patterns excluded from rogue detection
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] whitelisted_ssids: SSID names excluded from rogue detection
         """
         if allowed_vlan_ids is not None:
             pulumi.set(__self__, "allowed_vlan_ids", allowed_vlan_ids)
@@ -11224,7 +12798,7 @@ class SettingRogueArgs:
     @pulumi.getter(name="allowedVlanIds")
     def allowed_vlan_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
-        list of VLAN IDs on which rogue APs are ignored
+        VLAN IDs allowed by the rogue detection policy
         """
         return pulumi.get(self, "allowed_vlan_ids")
 
@@ -11308,7 +12882,7 @@ class SettingRogueArgs:
     @pulumi.getter(name="whitelistedBssids")
     def whitelisted_bssids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        list of BSSIDs to whitelist. Ex: "cc-:8e-:6f-:d4-:bf-:16", "cc-8e-6f-d4-bf-16", "cc-73-*", "cc:82:*"
+        BSSID values or wildcard patterns excluded from rogue detection
         """
         return pulumi.get(self, "whitelisted_bssids")
 
@@ -11320,7 +12894,7 @@ class SettingRogueArgs:
     @pulumi.getter(name="whitelistedSsids")
     def whitelisted_ssids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of SSIDs to whitelist
+        SSID names excluded from rogue detection
         """
         return pulumi.get(self, "whitelisted_ssids")
 
@@ -11331,12 +12905,24 @@ class SettingRogueArgs:
 
 class SettingRtsaArgsDict(TypedDict):
     app_waking: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether app wake-up support is enabled for managed mobility
+    """
     disable_dead_reckoning: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether dead reckoning is disabled for managed mobility
+    """
     disable_pressure_sensor: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether pressure sensor use is disabled for managed mobility
+    """
     enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether managed mobility features are enabled
+    """
     track_asset: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Asset tracking related
+    Whether BLE asset tracking is enabled for managed mobility
     """
 
 @pulumi.input_type
@@ -11348,7 +12934,11 @@ class SettingRtsaArgs:
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  track_asset: pulumi.Input[Optional[_builtins.bool]] = None):
         """
-        :param pulumi.Input[_builtins.bool] track_asset: Asset tracking related
+        :param pulumi.Input[_builtins.bool] app_waking: Whether app wake-up support is enabled for managed mobility
+        :param pulumi.Input[_builtins.bool] disable_dead_reckoning: Whether dead reckoning is disabled for managed mobility
+        :param pulumi.Input[_builtins.bool] disable_pressure_sensor: Whether pressure sensor use is disabled for managed mobility
+        :param pulumi.Input[_builtins.bool] enabled: Whether managed mobility features are enabled
+        :param pulumi.Input[_builtins.bool] track_asset: Whether BLE asset tracking is enabled for managed mobility
         """
         if app_waking is not None:
             pulumi.set(__self__, "app_waking", app_waking)
@@ -11364,6 +12954,9 @@ class SettingRtsaArgs:
     @_builtins.property
     @pulumi.getter(name="appWaking")
     def app_waking(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether app wake-up support is enabled for managed mobility
+        """
         return pulumi.get(self, "app_waking")
 
     @app_waking.setter
@@ -11373,6 +12966,9 @@ class SettingRtsaArgs:
     @_builtins.property
     @pulumi.getter(name="disableDeadReckoning")
     def disable_dead_reckoning(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether dead reckoning is disabled for managed mobility
+        """
         return pulumi.get(self, "disable_dead_reckoning")
 
     @disable_dead_reckoning.setter
@@ -11382,6 +12978,9 @@ class SettingRtsaArgs:
     @_builtins.property
     @pulumi.getter(name="disablePressureSensor")
     def disable_pressure_sensor(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether pressure sensor use is disabled for managed mobility
+        """
         return pulumi.get(self, "disable_pressure_sensor")
 
     @disable_pressure_sensor.setter
@@ -11391,6 +12990,9 @@ class SettingRtsaArgs:
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether managed mobility features are enabled
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -11401,7 +13003,7 @@ class SettingRtsaArgs:
     @pulumi.getter(name="trackAsset")
     def track_asset(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Asset tracking related
+        Whether BLE asset tracking is enabled for managed mobility
         """
         return pulumi.get(self, "track_asset")
 
@@ -11412,8 +13014,17 @@ class SettingRtsaArgs:
 
 class SettingSimpleAlertArgsDict(TypedDict):
     arp_failure: NotRequired[pulumi.Input[Optional['SettingSimpleAlertArpFailureArgsDict']]]
+    """
+    Thresholds for ARP failure heuristic alerts
+    """
     dhcp_failure: NotRequired[pulumi.Input[Optional['SettingSimpleAlertDhcpFailureArgsDict']]]
+    """
+    Thresholds for DHCP failure heuristic alerts
+    """
     dns_failure: NotRequired[pulumi.Input[Optional['SettingSimpleAlertDnsFailureArgsDict']]]
+    """
+    Thresholds for DNS failure heuristic alerts
+    """
 
 @pulumi.input_type
 class SettingSimpleAlertArgs:
@@ -11421,6 +13032,11 @@ class SettingSimpleAlertArgs:
                  arp_failure: pulumi.Input[Optional['SettingSimpleAlertArpFailureArgs']] = None,
                  dhcp_failure: pulumi.Input[Optional['SettingSimpleAlertDhcpFailureArgs']] = None,
                  dns_failure: pulumi.Input[Optional['SettingSimpleAlertDnsFailureArgs']] = None):
+        """
+        :param pulumi.Input['SettingSimpleAlertArpFailureArgs'] arp_failure: Thresholds for ARP failure heuristic alerts
+        :param pulumi.Input['SettingSimpleAlertDhcpFailureArgs'] dhcp_failure: Thresholds for DHCP failure heuristic alerts
+        :param pulumi.Input['SettingSimpleAlertDnsFailureArgs'] dns_failure: Thresholds for DNS failure heuristic alerts
+        """
         if arp_failure is not None:
             pulumi.set(__self__, "arp_failure", arp_failure)
         if dhcp_failure is not None:
@@ -11431,6 +13047,9 @@ class SettingSimpleAlertArgs:
     @_builtins.property
     @pulumi.getter(name="arpFailure")
     def arp_failure(self) -> pulumi.Input[Optional['SettingSimpleAlertArpFailureArgs']]:
+        """
+        Thresholds for ARP failure heuristic alerts
+        """
         return pulumi.get(self, "arp_failure")
 
     @arp_failure.setter
@@ -11440,6 +13059,9 @@ class SettingSimpleAlertArgs:
     @_builtins.property
     @pulumi.getter(name="dhcpFailure")
     def dhcp_failure(self) -> pulumi.Input[Optional['SettingSimpleAlertDhcpFailureArgs']]:
+        """
+        Thresholds for DHCP failure heuristic alerts
+        """
         return pulumi.get(self, "dhcp_failure")
 
     @dhcp_failure.setter
@@ -11449,6 +13071,9 @@ class SettingSimpleAlertArgs:
     @_builtins.property
     @pulumi.getter(name="dnsFailure")
     def dns_failure(self) -> pulumi.Input[Optional['SettingSimpleAlertDnsFailureArgs']]:
+        """
+        Thresholds for DNS failure heuristic alerts
+        """
         return pulumi.get(self, "dns_failure")
 
     @dns_failure.setter
@@ -11458,11 +13083,17 @@ class SettingSimpleAlertArgs:
 
 class SettingSimpleAlertArpFailureArgsDict(TypedDict):
     client_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Number of distinct clients that must encounter ARP failures before alerting
+    """
     duration: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    failing within minutes
+    Time window in minutes for evaluating ARP failures
     """
     incident_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Number of ARP failure incidents required within the duration window
+    """
 
 @pulumi.input_type
 class SettingSimpleAlertArpFailureArgs:
@@ -11471,7 +13102,9 @@ class SettingSimpleAlertArpFailureArgs:
                  duration: pulumi.Input[Optional[_builtins.int]] = None,
                  incident_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
-        :param pulumi.Input[_builtins.int] duration: failing within minutes
+        :param pulumi.Input[_builtins.int] client_count: Number of distinct clients that must encounter ARP failures before alerting
+        :param pulumi.Input[_builtins.int] duration: Time window in minutes for evaluating ARP failures
+        :param pulumi.Input[_builtins.int] incident_count: Number of ARP failure incidents required within the duration window
         """
         if client_count is not None:
             pulumi.set(__self__, "client_count", client_count)
@@ -11483,6 +13116,9 @@ class SettingSimpleAlertArpFailureArgs:
     @_builtins.property
     @pulumi.getter(name="clientCount")
     def client_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Number of distinct clients that must encounter ARP failures before alerting
+        """
         return pulumi.get(self, "client_count")
 
     @client_count.setter
@@ -11493,7 +13129,7 @@ class SettingSimpleAlertArpFailureArgs:
     @pulumi.getter
     def duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        failing within minutes
+        Time window in minutes for evaluating ARP failures
         """
         return pulumi.get(self, "duration")
 
@@ -11504,6 +13140,9 @@ class SettingSimpleAlertArpFailureArgs:
     @_builtins.property
     @pulumi.getter(name="incidentCount")
     def incident_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Number of ARP failure incidents required within the duration window
+        """
         return pulumi.get(self, "incident_count")
 
     @incident_count.setter
@@ -11513,11 +13152,17 @@ class SettingSimpleAlertArpFailureArgs:
 
 class SettingSimpleAlertDhcpFailureArgsDict(TypedDict):
     client_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Number of distinct clients that must encounter DHCP failures before alerting
+    """
     duration: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    failing within minutes
+    Time window in minutes for evaluating DHCP failures
     """
     incident_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Number of DHCP failure incidents required within the duration window
+    """
 
 @pulumi.input_type
 class SettingSimpleAlertDhcpFailureArgs:
@@ -11526,7 +13171,9 @@ class SettingSimpleAlertDhcpFailureArgs:
                  duration: pulumi.Input[Optional[_builtins.int]] = None,
                  incident_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
-        :param pulumi.Input[_builtins.int] duration: failing within minutes
+        :param pulumi.Input[_builtins.int] client_count: Number of distinct clients that must encounter DHCP failures before alerting
+        :param pulumi.Input[_builtins.int] duration: Time window in minutes for evaluating DHCP failures
+        :param pulumi.Input[_builtins.int] incident_count: Number of DHCP failure incidents required within the duration window
         """
         if client_count is not None:
             pulumi.set(__self__, "client_count", client_count)
@@ -11538,6 +13185,9 @@ class SettingSimpleAlertDhcpFailureArgs:
     @_builtins.property
     @pulumi.getter(name="clientCount")
     def client_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Number of distinct clients that must encounter DHCP failures before alerting
+        """
         return pulumi.get(self, "client_count")
 
     @client_count.setter
@@ -11548,7 +13198,7 @@ class SettingSimpleAlertDhcpFailureArgs:
     @pulumi.getter
     def duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        failing within minutes
+        Time window in minutes for evaluating DHCP failures
         """
         return pulumi.get(self, "duration")
 
@@ -11559,6 +13209,9 @@ class SettingSimpleAlertDhcpFailureArgs:
     @_builtins.property
     @pulumi.getter(name="incidentCount")
     def incident_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Number of DHCP failure incidents required within the duration window
+        """
         return pulumi.get(self, "incident_count")
 
     @incident_count.setter
@@ -11568,11 +13221,17 @@ class SettingSimpleAlertDhcpFailureArgs:
 
 class SettingSimpleAlertDnsFailureArgsDict(TypedDict):
     client_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Number of distinct clients that must encounter DNS failures before alerting
+    """
     duration: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    failing within minutes
+    Time window in minutes for evaluating DNS failures
     """
     incident_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Number of DNS failure incidents required within the duration window
+    """
 
 @pulumi.input_type
 class SettingSimpleAlertDnsFailureArgs:
@@ -11581,7 +13240,9 @@ class SettingSimpleAlertDnsFailureArgs:
                  duration: pulumi.Input[Optional[_builtins.int]] = None,
                  incident_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
-        :param pulumi.Input[_builtins.int] duration: failing within minutes
+        :param pulumi.Input[_builtins.int] client_count: Number of distinct clients that must encounter DNS failures before alerting
+        :param pulumi.Input[_builtins.int] duration: Time window in minutes for evaluating DNS failures
+        :param pulumi.Input[_builtins.int] incident_count: Number of DNS failure incidents required within the duration window
         """
         if client_count is not None:
             pulumi.set(__self__, "client_count", client_count)
@@ -11593,6 +13254,9 @@ class SettingSimpleAlertDnsFailureArgs:
     @_builtins.property
     @pulumi.getter(name="clientCount")
     def client_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Number of distinct clients that must encounter DNS failures before alerting
+        """
         return pulumi.get(self, "client_count")
 
     @client_count.setter
@@ -11603,7 +13267,7 @@ class SettingSimpleAlertDnsFailureArgs:
     @pulumi.getter
     def duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        failing within minutes
+        Time window in minutes for evaluating DNS failures
         """
         return pulumi.get(self, "duration")
 
@@ -11614,6 +13278,9 @@ class SettingSimpleAlertDnsFailureArgs:
     @_builtins.property
     @pulumi.getter(name="incidentCount")
     def incident_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Number of DNS failure incidents required within the duration window
+        """
         return pulumi.get(self, "incident_count")
 
     @incident_count.setter
@@ -11623,9 +13290,12 @@ class SettingSimpleAlertDnsFailureArgs:
 
 class SettingSkyatpArgsDict(TypedDict):
     enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether Sky ATP is enabled for the site
+    """
     send_ip_mac_mapping: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Whether to send IP-MAC mapping to SkyATP
+    Whether IP-to-MAC mappings are sent to Sky ATP
     """
 
 @pulumi.input_type
@@ -11634,7 +13304,8 @@ class SettingSkyatpArgs:
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  send_ip_mac_mapping: pulumi.Input[Optional[_builtins.bool]] = None):
         """
-        :param pulumi.Input[_builtins.bool] send_ip_mac_mapping: Whether to send IP-MAC mapping to SkyATP
+        :param pulumi.Input[_builtins.bool] enabled: Whether Sky ATP is enabled for the site
+        :param pulumi.Input[_builtins.bool] send_ip_mac_mapping: Whether IP-to-MAC mappings are sent to Sky ATP
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -11644,6 +13315,9 @@ class SettingSkyatpArgs:
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether Sky ATP is enabled for the site
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -11654,7 +13328,7 @@ class SettingSkyatpArgs:
     @pulumi.getter(name="sendIpMacMapping")
     def send_ip_mac_mapping(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether to send IP-MAC mapping to SkyATP
+        Whether IP-to-MAC mappings are sent to Sky ATP
         """
         return pulumi.get(self, "send_ip_mac_mapping")
 
@@ -11666,15 +13340,15 @@ class SettingSkyatpArgs:
 class SettingSleThresholdsArgsDict(TypedDict):
     capacity: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    Capacity, in %
+    Threshold percentage for capacity SLE scoring
     """
     coverage: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    Coverage, in dBm
+    RSSI threshold for coverage SLE scoring, in dBm
     """
     throughput: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    Throughput, in Mbps
+    Minimum throughput threshold for SLE scoring, in Mbps
     """
     timetoconnect: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -11689,9 +13363,9 @@ class SettingSleThresholdsArgs:
                  throughput: pulumi.Input[Optional[_builtins.int]] = None,
                  timetoconnect: pulumi.Input[Optional[_builtins.int]] = None):
         """
-        :param pulumi.Input[_builtins.int] capacity: Capacity, in %
-        :param pulumi.Input[_builtins.int] coverage: Coverage, in dBm
-        :param pulumi.Input[_builtins.int] throughput: Throughput, in Mbps
+        :param pulumi.Input[_builtins.int] capacity: Threshold percentage for capacity SLE scoring
+        :param pulumi.Input[_builtins.int] coverage: RSSI threshold for coverage SLE scoring, in dBm
+        :param pulumi.Input[_builtins.int] throughput: Minimum throughput threshold for SLE scoring, in Mbps
         :param pulumi.Input[_builtins.int] timetoconnect: Time to connect, in seconds
         """
         if capacity is not None:
@@ -11707,7 +13381,7 @@ class SettingSleThresholdsArgs:
     @pulumi.getter
     def capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Capacity, in %
+        Threshold percentage for capacity SLE scoring
         """
         return pulumi.get(self, "capacity")
 
@@ -11719,7 +13393,7 @@ class SettingSleThresholdsArgs:
     @pulumi.getter
     def coverage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Coverage, in dBm
+        RSSI threshold for coverage SLE scoring, in dBm
         """
         return pulumi.get(self, "coverage")
 
@@ -11731,7 +13405,7 @@ class SettingSleThresholdsArgs:
     @pulumi.getter
     def throughput(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Throughput, in Mbps
+        Minimum throughput threshold for SLE scoring, in Mbps
         """
         return pulumi.get(self, "throughput")
 
@@ -11754,17 +13428,26 @@ class SettingSleThresholdsArgs:
 
 class SettingSrxAppArgsDict(TypedDict):
     enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether Juniper SRX application visibility is enabled
+    """
 
 @pulumi.input_type
 class SettingSrxAppArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Whether Juniper SRX application visibility is enabled
+        """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
 
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether Juniper SRX application visibility is enabled
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -11775,23 +13458,23 @@ class SettingSrxAppArgs:
 class SettingSsrArgsDict(TypedDict):
     auto_upgrade: NotRequired[pulumi.Input[Optional['SettingSsrAutoUpgradeArgsDict']]]
     """
-    auto_upgrade device first time it is onboarded
+    Automatic SSR firmware upgrade settings for newly onboarded devices
     """
     conductor_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
-    List of Conductor IP Addresses or Hosts to be used by the SSR Devices
+    IP addresses or hostnames of conductors used by SSR devices
     """
     conductor_token: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Token to be used by the SSR Devices to connect to the Conductor
+    Registration token used by SSR devices to connect to the conductor
     """
     disable_stats: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Disable stats collection on SSR devices
+    Whether stats collection is disabled on SSR devices
     """
     proxy: NotRequired[pulumi.Input[Optional['SettingSsrProxyArgsDict']]]
     """
-    SSR proxy configuration to talk to Mist
+    Network proxy settings used by SSR devices to reach Mist
     """
 
 @pulumi.input_type
@@ -11803,11 +13486,11 @@ class SettingSsrArgs:
                  disable_stats: pulumi.Input[Optional[_builtins.bool]] = None,
                  proxy: pulumi.Input[Optional['SettingSsrProxyArgs']] = None):
         """
-        :param pulumi.Input['SettingSsrAutoUpgradeArgs'] auto_upgrade: auto_upgrade device first time it is onboarded
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] conductor_hosts: List of Conductor IP Addresses or Hosts to be used by the SSR Devices
-        :param pulumi.Input[_builtins.str] conductor_token: Token to be used by the SSR Devices to connect to the Conductor
-        :param pulumi.Input[_builtins.bool] disable_stats: Disable stats collection on SSR devices
-        :param pulumi.Input['SettingSsrProxyArgs'] proxy: SSR proxy configuration to talk to Mist
+        :param pulumi.Input['SettingSsrAutoUpgradeArgs'] auto_upgrade: Automatic SSR firmware upgrade settings for newly onboarded devices
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] conductor_hosts: IP addresses or hostnames of conductors used by SSR devices
+        :param pulumi.Input[_builtins.str] conductor_token: Registration token used by SSR devices to connect to the conductor
+        :param pulumi.Input[_builtins.bool] disable_stats: Whether stats collection is disabled on SSR devices
+        :param pulumi.Input['SettingSsrProxyArgs'] proxy: Network proxy settings used by SSR devices to reach Mist
         """
         if auto_upgrade is not None:
             pulumi.set(__self__, "auto_upgrade", auto_upgrade)
@@ -11824,7 +13507,7 @@ class SettingSsrArgs:
     @pulumi.getter(name="autoUpgrade")
     def auto_upgrade(self) -> pulumi.Input[Optional['SettingSsrAutoUpgradeArgs']]:
         """
-        auto_upgrade device first time it is onboarded
+        Automatic SSR firmware upgrade settings for newly onboarded devices
         """
         return pulumi.get(self, "auto_upgrade")
 
@@ -11836,7 +13519,7 @@ class SettingSsrArgs:
     @pulumi.getter(name="conductorHosts")
     def conductor_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of Conductor IP Addresses or Hosts to be used by the SSR Devices
+        IP addresses or hostnames of conductors used by SSR devices
         """
         return pulumi.get(self, "conductor_hosts")
 
@@ -11848,7 +13531,7 @@ class SettingSsrArgs:
     @pulumi.getter(name="conductorToken")
     def conductor_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Token to be used by the SSR Devices to connect to the Conductor
+        Registration token used by SSR devices to connect to the conductor
         """
         return pulumi.get(self, "conductor_token")
 
@@ -11860,7 +13543,7 @@ class SettingSsrArgs:
     @pulumi.getter(name="disableStats")
     def disable_stats(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Disable stats collection on SSR devices
+        Whether stats collection is disabled on SSR devices
         """
         return pulumi.get(self, "disable_stats")
 
@@ -11872,7 +13555,7 @@ class SettingSsrArgs:
     @pulumi.getter
     def proxy(self) -> pulumi.Input[Optional['SettingSsrProxyArgs']]:
         """
-        SSR proxy configuration to talk to Mist
+        Network proxy settings used by SSR devices to reach Mist
         """
         return pulumi.get(self, "proxy")
 
@@ -11884,13 +13567,16 @@ class SettingSsrArgs:
 class SettingSsrAutoUpgradeArgsDict(TypedDict):
     channel: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    upgrade channel to follow. enum: `alpha`, `beta`, `stable`
+    Firmware release channel used for SSR auto-upgrade
     """
     custom_versions: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
-    Property key is the SSR model (e.g. "SSR130").
+    Per-model SSR firmware versions used for auto-upgrade
     """
     enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether SSR auto-upgrade is enabled for newly onboarded devices
+    """
     version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Firmware version to deploy (e.g. 6.3.0-107.r1). Optional, used when custom_versions not specified
@@ -11904,8 +13590,9 @@ class SettingSsrAutoUpgradeArgs:
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] channel: upgrade channel to follow. enum: `alpha`, `beta`, `stable`
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_versions: Property key is the SSR model (e.g. "SSR130").
+        :param pulumi.Input[_builtins.str] channel: Firmware release channel used for SSR auto-upgrade
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_versions: Per-model SSR firmware versions used for auto-upgrade
+        :param pulumi.Input[_builtins.bool] enabled: Whether SSR auto-upgrade is enabled for newly onboarded devices
         :param pulumi.Input[_builtins.str] version: Firmware version to deploy (e.g. 6.3.0-107.r1). Optional, used when custom_versions not specified
         """
         if channel is not None:
@@ -11921,7 +13608,7 @@ class SettingSsrAutoUpgradeArgs:
     @pulumi.getter
     def channel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        upgrade channel to follow. enum: `alpha`, `beta`, `stable`
+        Firmware release channel used for SSR auto-upgrade
         """
         return pulumi.get(self, "channel")
 
@@ -11933,7 +13620,7 @@ class SettingSsrAutoUpgradeArgs:
     @pulumi.getter(name="customVersions")
     def custom_versions(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Property key is the SSR model (e.g. "SSR130").
+        Per-model SSR firmware versions used for auto-upgrade
         """
         return pulumi.get(self, "custom_versions")
 
@@ -11944,6 +13631,9 @@ class SettingSsrAutoUpgradeArgs:
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether SSR auto-upgrade is enabled for newly onboarded devices
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -11965,13 +13655,23 @@ class SettingSsrAutoUpgradeArgs:
 
 class SettingSsrProxyArgsDict(TypedDict):
     disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether the SSR proxy configuration is disabled
+    """
     url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Proxy URL that SSR devices use to reach Mist
+    """
 
 @pulumi.input_type
 class SettingSsrProxyArgs:
     def __init__(__self__, *,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  url: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] disabled: Whether the SSR proxy configuration is disabled
+        :param pulumi.Input[_builtins.str] url: Proxy URL that SSR devices use to reach Mist
+        """
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if url is not None:
@@ -11980,6 +13680,9 @@ class SettingSsrProxyArgs:
     @_builtins.property
     @pulumi.getter
     def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the SSR proxy configuration is disabled
+        """
         return pulumi.get(self, "disabled")
 
     @disabled.setter
@@ -11989,6 +13692,9 @@ class SettingSsrProxyArgs:
     @_builtins.property
     @pulumi.getter
     def url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Proxy URL that SSR devices use to reach Mist
+        """
         return pulumi.get(self, "url")
 
     @url.setter
@@ -11999,19 +13705,28 @@ class SettingSsrProxyArgs:
 class SettingSyntheticTestArgsDict(TypedDict):
     aggressiveness: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    enum: `auto`, `high`, `low`
+    Overall aggressiveness level for synthetic test probes
     """
     custom_probes: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['SettingSyntheticTestCustomProbesArgsDict']]]]]
     """
-    Custom probes to be used for synthetic tests
+    Custom synthetic probe definitions keyed by probe name
     """
     disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether synthetic tests are disabled
+    """
     lan_networks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SettingSyntheticTestLanNetworkArgsDict']]]]]
     """
-    List of networks to be used for synthetic tests
+    LAN network probe groups used by synthetic tests
     """
     vlans: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SettingSyntheticTestVlanArgsDict']]]]]
+    """
+    Deprecated VLAN-based synthetic test settings
+    """
     wan_speedtest: NotRequired[pulumi.Input[Optional['SettingSyntheticTestWanSpeedtestArgsDict']]]
+    """
+    WAN speedtest settings for synthetic tests
+    """
 
 @pulumi.input_type
 class SettingSyntheticTestArgs:
@@ -12023,9 +13738,12 @@ class SettingSyntheticTestArgs:
                  vlans: pulumi.Input[Optional[Sequence[pulumi.Input['SettingSyntheticTestVlanArgs']]]] = None,
                  wan_speedtest: pulumi.Input[Optional['SettingSyntheticTestWanSpeedtestArgs']] = None):
         """
-        :param pulumi.Input[_builtins.str] aggressiveness: enum: `auto`, `high`, `low`
-        :param pulumi.Input[Mapping[str, pulumi.Input['SettingSyntheticTestCustomProbesArgs']]] custom_probes: Custom probes to be used for synthetic tests
-        :param pulumi.Input[Sequence[pulumi.Input['SettingSyntheticTestLanNetworkArgs']]] lan_networks: List of networks to be used for synthetic tests
+        :param pulumi.Input[_builtins.str] aggressiveness: Overall aggressiveness level for synthetic test probes
+        :param pulumi.Input[Mapping[str, pulumi.Input['SettingSyntheticTestCustomProbesArgs']]] custom_probes: Custom synthetic probe definitions keyed by probe name
+        :param pulumi.Input[_builtins.bool] disabled: Whether synthetic tests are disabled
+        :param pulumi.Input[Sequence[pulumi.Input['SettingSyntheticTestLanNetworkArgs']]] lan_networks: LAN network probe groups used by synthetic tests
+        :param pulumi.Input[Sequence[pulumi.Input['SettingSyntheticTestVlanArgs']]] vlans: Deprecated VLAN-based synthetic test settings
+        :param pulumi.Input['SettingSyntheticTestWanSpeedtestArgs'] wan_speedtest: WAN speedtest settings for synthetic tests
         """
         if aggressiveness is not None:
             pulumi.set(__self__, "aggressiveness", aggressiveness)
@@ -12047,7 +13765,7 @@ class SettingSyntheticTestArgs:
     @pulumi.getter
     def aggressiveness(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        enum: `auto`, `high`, `low`
+        Overall aggressiveness level for synthetic test probes
         """
         return pulumi.get(self, "aggressiveness")
 
@@ -12059,7 +13777,7 @@ class SettingSyntheticTestArgs:
     @pulumi.getter(name="customProbes")
     def custom_probes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SettingSyntheticTestCustomProbesArgs']]]]:
         """
-        Custom probes to be used for synthetic tests
+        Custom synthetic probe definitions keyed by probe name
         """
         return pulumi.get(self, "custom_probes")
 
@@ -12070,6 +13788,9 @@ class SettingSyntheticTestArgs:
     @_builtins.property
     @pulumi.getter
     def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether synthetic tests are disabled
+        """
         return pulumi.get(self, "disabled")
 
     @disabled.setter
@@ -12080,7 +13801,7 @@ class SettingSyntheticTestArgs:
     @pulumi.getter(name="lanNetworks")
     def lan_networks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SettingSyntheticTestLanNetworkArgs']]]]:
         """
-        List of networks to be used for synthetic tests
+        LAN network probe groups used by synthetic tests
         """
         return pulumi.get(self, "lan_networks")
 
@@ -12092,6 +13813,9 @@ class SettingSyntheticTestArgs:
     @pulumi.getter
     @_utilities.deprecated("""This attribute is deprecated.""")
     def vlans(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SettingSyntheticTestVlanArgs']]]]:
+        """
+        Deprecated VLAN-based synthetic test settings
+        """
         return pulumi.get(self, "vlans")
 
     @vlans.setter
@@ -12101,6 +13825,9 @@ class SettingSyntheticTestArgs:
     @_builtins.property
     @pulumi.getter(name="wanSpeedtest")
     def wan_speedtest(self) -> pulumi.Input[Optional['SettingSyntheticTestWanSpeedtestArgs']]:
+        """
+        WAN speedtest settings for synthetic tests
+        """
         return pulumi.get(self, "wan_speedtest")
 
     @wan_speedtest.setter
@@ -12111,7 +13838,7 @@ class SettingSyntheticTestArgs:
 class SettingSyntheticTestCustomProbesArgsDict(TypedDict):
     aggressiveness: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    enum: `auto`, `high`, `low`
+    Probe aggressiveness level for this custom synthetic probe
     """
     target: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -12119,11 +13846,11 @@ class SettingSyntheticTestCustomProbesArgsDict(TypedDict):
     """
     threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    In milliseconds
+    Response-time threshold for this custom probe, in milliseconds
     """
     type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    enum: `application`, `curl`, `icmp`, `reachability`, `tcp`
+    Probe type used by this custom synthetic probe
     """
 
 @pulumi.input_type
@@ -12134,10 +13861,10 @@ class SettingSyntheticTestCustomProbesArgs:
                  threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] aggressiveness: enum: `auto`, `high`, `low`
+        :param pulumi.Input[_builtins.str] aggressiveness: Probe aggressiveness level for this custom synthetic probe
         :param pulumi.Input[_builtins.str] target: Can be URL (e.g. http://x.com, https://x.com:8080/path/to/resource), IP address, or IP:port combination
-        :param pulumi.Input[_builtins.int] threshold: In milliseconds
-        :param pulumi.Input[_builtins.str] type: enum: `application`, `curl`, `icmp`, `reachability`, `tcp`
+        :param pulumi.Input[_builtins.int] threshold: Response-time threshold for this custom probe, in milliseconds
+        :param pulumi.Input[_builtins.str] type: Probe type used by this custom synthetic probe
         """
         if aggressiveness is not None:
             pulumi.set(__self__, "aggressiveness", aggressiveness)
@@ -12152,7 +13879,7 @@ class SettingSyntheticTestCustomProbesArgs:
     @pulumi.getter
     def aggressiveness(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        enum: `auto`, `high`, `low`
+        Probe aggressiveness level for this custom synthetic probe
         """
         return pulumi.get(self, "aggressiveness")
 
@@ -12176,7 +13903,7 @@ class SettingSyntheticTestCustomProbesArgs:
     @pulumi.getter
     def threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        In milliseconds
+        Response-time threshold for this custom probe, in milliseconds
         """
         return pulumi.get(self, "threshold")
 
@@ -12188,7 +13915,7 @@ class SettingSyntheticTestCustomProbesArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        enum: `application`, `curl`, `icmp`, `reachability`, `tcp`
+        Probe type used by this custom synthetic probe
         """
         return pulumi.get(self, "type")
 
@@ -12200,11 +13927,11 @@ class SettingSyntheticTestCustomProbesArgs:
 class SettingSyntheticTestLanNetworkArgsDict(TypedDict):
     networks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
-    List of networks to be used for synthetic tests
+    LAN network names where synthetic probes are run
     """
     probes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
-    app name comes from `custom_probes` above or /const/synthetic_test_probes
+    Synthetic probe names to run on the listed LAN networks
     """
 
 @pulumi.input_type
@@ -12213,8 +13940,8 @@ class SettingSyntheticTestLanNetworkArgs:
                  networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  probes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] networks: List of networks to be used for synthetic tests
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] probes: app name comes from `custom_probes` above or /const/synthetic_test_probes
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] networks: LAN network names where synthetic probes are run
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] probes: Synthetic probe names to run on the listed LAN networks
         """
         if networks is not None:
             pulumi.set(__self__, "networks", networks)
@@ -12225,7 +13952,7 @@ class SettingSyntheticTestLanNetworkArgs:
     @pulumi.getter
     def networks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of networks to be used for synthetic tests
+        LAN network names where synthetic probes are run
         """
         return pulumi.get(self, "networks")
 
@@ -12237,7 +13964,7 @@ class SettingSyntheticTestLanNetworkArgs:
     @pulumi.getter
     def probes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        app name comes from `custom_probes` above or /const/synthetic_test_probes
+        Synthetic probe names to run on the listed LAN networks
         """
         return pulumi.get(self, "probes")
 
@@ -12248,15 +13975,21 @@ class SettingSyntheticTestLanNetworkArgs:
 
 class SettingSyntheticTestVlanArgsDict(TypedDict):
     custom_test_urls: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Deprecated custom URLs tested by VLAN-based synthetic probes
+    """
     disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     For some vlans where we don't want this to run
     """
     probes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
-    app name comes from `custom_probes` above or /const/synthetic_test_probes
+    Synthetic probe names to run for the listed VLANs
     """
     vlan_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    VLAN identifiers where synthetic probes are run
+    """
 
 @pulumi.input_type
 class SettingSyntheticTestVlanArgs:
@@ -12266,8 +13999,10 @@ class SettingSyntheticTestVlanArgs:
                  probes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  vlan_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_test_urls: Deprecated custom URLs tested by VLAN-based synthetic probes
         :param pulumi.Input[_builtins.bool] disabled: For some vlans where we don't want this to run
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] probes: app name comes from `custom_probes` above or /const/synthetic_test_probes
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] probes: Synthetic probe names to run for the listed VLANs
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vlan_ids: VLAN identifiers where synthetic probes are run
         """
         if custom_test_urls is not None:
             warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
@@ -12285,6 +14020,9 @@ class SettingSyntheticTestVlanArgs:
     @pulumi.getter(name="customTestUrls")
     @_utilities.deprecated("""This attribute is deprecated.""")
     def custom_test_urls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Deprecated custom URLs tested by VLAN-based synthetic probes
+        """
         return pulumi.get(self, "custom_test_urls")
 
     @custom_test_urls.setter
@@ -12307,7 +14045,7 @@ class SettingSyntheticTestVlanArgs:
     @pulumi.getter
     def probes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        app name comes from `custom_probes` above or /const/synthetic_test_probes
+        Synthetic probe names to run for the listed VLANs
         """
         return pulumi.get(self, "probes")
 
@@ -12318,6 +14056,9 @@ class SettingSyntheticTestVlanArgs:
     @_builtins.property
     @pulumi.getter(name="vlanIds")
     def vlan_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        VLAN identifiers where synthetic probes are run
+        """
         return pulumi.get(self, "vlan_ids")
 
     @vlan_ids.setter
@@ -12327,9 +14068,12 @@ class SettingSyntheticTestVlanArgs:
 
 class SettingSyntheticTestWanSpeedtestArgsDict(TypedDict):
     enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether scheduled WAN speedtests are enabled
+    """
     time_of_day: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    `any` / HH:MM (24-hour format)
+    Scheduled time of day for WAN speedtests
     """
 
 @pulumi.input_type
@@ -12338,7 +14082,8 @@ class SettingSyntheticTestWanSpeedtestArgs:
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  time_of_day: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] time_of_day: `any` / HH:MM (24-hour format)
+        :param pulumi.Input[_builtins.bool] enabled: Whether scheduled WAN speedtests are enabled
+        :param pulumi.Input[_builtins.str] time_of_day: Scheduled time of day for WAN speedtests
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -12348,6 +14093,9 @@ class SettingSyntheticTestWanSpeedtestArgs:
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether scheduled WAN speedtests are enabled
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -12358,13 +14106,289 @@ class SettingSyntheticTestWanSpeedtestArgs:
     @pulumi.getter(name="timeOfDay")
     def time_of_day(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        `any` / HH:MM (24-hour format)
+        Scheduled time of day for WAN speedtests
         """
         return pulumi.get(self, "time_of_day")
 
     @time_of_day.setter
     def time_of_day(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "time_of_day", value)
+
+
+class SettingTuntermMonitoringArgsDict(TypedDict):
+    host: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Can be ip, ipv6, hostname
+    """
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    When `protocol`==`tcp`, TCP port checked by the monitoring probe
+    """
+    protocol: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Monitoring method used for this tunnel termination check
+    """
+    src_vlan_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Optional source for the monitoring check, vlan_id configured in tunterm_other_ip_configs
+    """
+    timeout: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Maximum time for this monitoring check, in seconds
+    """
+
+@pulumi.input_type
+class SettingTuntermMonitoringArgs:
+    def __init__(__self__, *,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 src_vlan_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] host: Can be ip, ipv6, hostname
+        :param pulumi.Input[_builtins.int] port: When `protocol`==`tcp`, TCP port checked by the monitoring probe
+        :param pulumi.Input[_builtins.str] protocol: Monitoring method used for this tunnel termination check
+        :param pulumi.Input[_builtins.int] src_vlan_id: Optional source for the monitoring check, vlan_id configured in tunterm_other_ip_configs
+        :param pulumi.Input[_builtins.int] timeout: Maximum time for this monitoring check, in seconds
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if src_vlan_id is not None:
+            pulumi.set(__self__, "src_vlan_id", src_vlan_id)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Can be ip, ipv6, hostname
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "host", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        When `protocol`==`tcp`, TCP port checked by the monitoring probe
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Monitoring method used for this tunnel termination check
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "protocol", value)
+
+    @_builtins.property
+    @pulumi.getter(name="srcVlanId")
+    def src_vlan_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Optional source for the monitoring check, vlan_id configured in tunterm_other_ip_configs
+        """
+        return pulumi.get(self, "src_vlan_id")
+
+    @src_vlan_id.setter
+    def src_vlan_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "src_vlan_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum time for this monitoring check, in seconds
+        """
+        return pulumi.get(self, "timeout")
+
+    @timeout.setter
+    def timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "timeout", value)
+
+
+class SettingTuntermMulticastConfigArgsDict(TypedDict):
+    mdns: NotRequired[pulumi.Input[Optional['SettingTuntermMulticastConfigMdnsArgsDict']]]
+    """
+    Multicast DNS forwarding settings for tunneled VLANs
+    """
+    multicast_all: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether all multicast traffic is forwarded through tunnel termination
+    """
+    ssdp: NotRequired[pulumi.Input[Optional['SettingTuntermMulticastConfigSsdpArgsDict']]]
+    """
+    Simple Service Discovery Protocol forwarding settings for tunneled VLANs
+    """
+
+@pulumi.input_type
+class SettingTuntermMulticastConfigArgs:
+    def __init__(__self__, *,
+                 mdns: pulumi.Input[Optional['SettingTuntermMulticastConfigMdnsArgs']] = None,
+                 multicast_all: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ssdp: pulumi.Input[Optional['SettingTuntermMulticastConfigSsdpArgs']] = None):
+        """
+        :param pulumi.Input['SettingTuntermMulticastConfigMdnsArgs'] mdns: Multicast DNS forwarding settings for tunneled VLANs
+        :param pulumi.Input[_builtins.bool] multicast_all: Whether all multicast traffic is forwarded through tunnel termination
+        :param pulumi.Input['SettingTuntermMulticastConfigSsdpArgs'] ssdp: Simple Service Discovery Protocol forwarding settings for tunneled VLANs
+        """
+        if mdns is not None:
+            pulumi.set(__self__, "mdns", mdns)
+        if multicast_all is not None:
+            pulumi.set(__self__, "multicast_all", multicast_all)
+        if ssdp is not None:
+            pulumi.set(__self__, "ssdp", ssdp)
+
+    @_builtins.property
+    @pulumi.getter
+    def mdns(self) -> pulumi.Input[Optional['SettingTuntermMulticastConfigMdnsArgs']]:
+        """
+        Multicast DNS forwarding settings for tunneled VLANs
+        """
+        return pulumi.get(self, "mdns")
+
+    @mdns.setter
+    def mdns(self, value: pulumi.Input[Optional['SettingTuntermMulticastConfigMdnsArgs']]):
+        pulumi.set(self, "mdns", value)
+
+    @_builtins.property
+    @pulumi.getter(name="multicastAll")
+    def multicast_all(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether all multicast traffic is forwarded through tunnel termination
+        """
+        return pulumi.get(self, "multicast_all")
+
+    @multicast_all.setter
+    def multicast_all(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "multicast_all", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ssdp(self) -> pulumi.Input[Optional['SettingTuntermMulticastConfigSsdpArgs']]:
+        """
+        Simple Service Discovery Protocol forwarding settings for tunneled VLANs
+        """
+        return pulumi.get(self, "ssdp")
+
+    @ssdp.setter
+    def ssdp(self, value: pulumi.Input[Optional['SettingTuntermMulticastConfigSsdpArgs']]):
+        pulumi.set(self, "ssdp", value)
+
+
+class SettingTuntermMulticastConfigMdnsArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether mDNS multicast forwarding is enabled
+    """
+    vlan_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
+    """
+    VLAN IDs where mDNS multicast forwarding is enabled
+    """
+
+@pulumi.input_type
+class SettingTuntermMulticastConfigMdnsArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vlan_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Whether mDNS multicast forwarding is enabled
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] vlan_ids: VLAN IDs where mDNS multicast forwarding is enabled
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if vlan_ids is not None:
+            pulumi.set(__self__, "vlan_ids", vlan_ids)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether mDNS multicast forwarding is enabled
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vlanIds")
+    def vlan_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
+        """
+        VLAN IDs where mDNS multicast forwarding is enabled
+        """
+        return pulumi.get(self, "vlan_ids")
+
+    @vlan_ids.setter
+    def vlan_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
+        pulumi.set(self, "vlan_ids", value)
+
+
+class SettingTuntermMulticastConfigSsdpArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether SSDP multicast forwarding is enabled
+    """
+    vlan_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
+    """
+    VLAN IDs where SSDP multicast forwarding is enabled
+    """
+
+@pulumi.input_type
+class SettingTuntermMulticastConfigSsdpArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vlan_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Whether SSDP multicast forwarding is enabled
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] vlan_ids: VLAN IDs where SSDP multicast forwarding is enabled
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if vlan_ids is not None:
+            pulumi.set(__self__, "vlan_ids", vlan_ids)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether SSDP multicast forwarding is enabled
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vlanIds")
+    def vlan_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
+        """
+        VLAN IDs where SSDP multicast forwarding is enabled
+        """
+        return pulumi.get(self, "vlan_ids")
+
+    @vlan_ids.setter
+    def vlan_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
+        pulumi.set(self, "vlan_ids", value)
 
 
 class SettingUplinkPortConfigArgsDict(TypedDict):
@@ -12502,17 +14526,26 @@ class SettingVnaArgs:
 
 class SettingVsInstanceArgsDict(TypedDict):
     networks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    List of network names included in this virtual-switch instance
+    """
 
 @pulumi.input_type
 class SettingVsInstanceArgs:
     def __init__(__self__, *,
                  networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] networks: List of network names included in this virtual-switch instance
+        """
         if networks is not None:
             pulumi.set(__self__, "networks", networks)
 
     @_builtins.property
     @pulumi.getter
     def networks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of network names included in this virtual-switch instance
+        """
         return pulumi.get(self, "networks")
 
     @networks.setter
@@ -12522,17 +14555,26 @@ class SettingVsInstanceArgs:
 
 class SettingWanVnaArgsDict(TypedDict):
     enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether WAN VNA is enabled for the site
+    """
 
 @pulumi.input_type
 class SettingWanVnaArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Whether WAN VNA is enabled for the site
+        """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
 
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether WAN VNA is enabled for the site
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -12542,17 +14584,26 @@ class SettingWanVnaArgs:
 
 class SettingWidsArgsDict(TypedDict):
     repeated_auth_failures: NotRequired[pulumi.Input[Optional['SettingWidsRepeatedAuthFailuresArgsDict']]]
+    """
+    Detection settings for repeated authentication failures
+    """
 
 @pulumi.input_type
 class SettingWidsArgs:
     def __init__(__self__, *,
                  repeated_auth_failures: pulumi.Input[Optional['SettingWidsRepeatedAuthFailuresArgs']] = None):
+        """
+        :param pulumi.Input['SettingWidsRepeatedAuthFailuresArgs'] repeated_auth_failures: Detection settings for repeated authentication failures
+        """
         if repeated_auth_failures is not None:
             pulumi.set(__self__, "repeated_auth_failures", repeated_auth_failures)
 
     @_builtins.property
     @pulumi.getter(name="repeatedAuthFailures")
     def repeated_auth_failures(self) -> pulumi.Input[Optional['SettingWidsRepeatedAuthFailuresArgs']]:
+        """
+        Detection settings for repeated authentication failures
+        """
         return pulumi.get(self, "repeated_auth_failures")
 
     @repeated_auth_failures.setter
@@ -12611,16 +14662,25 @@ class SettingWidsRepeatedAuthFailuresArgs:
 
 class SettingWifiArgsDict(TypedDict):
     cisco_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether Cisco compatibility features are enabled for site Wi-Fi
+    """
     disable11k: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to disable 11k
     """
     disable_radios_when_power_constrained: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether AP radios are disabled when AP power is constrained
+    """
     enable_arp_spoof_check: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     When proxy_arp is enabled, check for arp spoofing.
     """
     enable_shared_radio_scanning: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether shared radio scanning is enabled for site Wi-Fi
+    """
     enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable Wi-Fi feature (using SUB-MAN license)
@@ -12655,7 +14715,7 @@ class SettingWifiArgsDict(TypedDict):
     """
     proxy_arp: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    enum: `default`, `disabled`, `enabled`
+    ARP proxy mode for site Wi-Fi
     """
 
 @pulumi.input_type
@@ -12676,8 +14736,11 @@ class SettingWifiArgs:
                  mesh_ssid: pulumi.Input[Optional[_builtins.str]] = None,
                  proxy_arp: pulumi.Input[Optional[_builtins.str]] = None):
         """
+        :param pulumi.Input[_builtins.bool] cisco_enabled: Whether Cisco compatibility features are enabled for site Wi-Fi
         :param pulumi.Input[_builtins.bool] disable11k: Whether to disable 11k
+        :param pulumi.Input[_builtins.bool] disable_radios_when_power_constrained: Whether AP radios are disabled when AP power is constrained
         :param pulumi.Input[_builtins.bool] enable_arp_spoof_check: When proxy_arp is enabled, check for arp spoofing.
+        :param pulumi.Input[_builtins.bool] enable_shared_radio_scanning: Whether shared radio scanning is enabled for site Wi-Fi
         :param pulumi.Input[_builtins.bool] enabled: Enable Wi-Fi feature (using SUB-MAN license)
         :param pulumi.Input[_builtins.bool] locate_connected: Whether to locate connected clients
         :param pulumi.Input[_builtins.bool] locate_unconnected: Whether to locate unconnected clients
@@ -12686,7 +14749,7 @@ class SettingWifiArgs:
         :param pulumi.Input[_builtins.bool] mesh_enabled: Whether to enable Mesh feature for the site
         :param pulumi.Input[_builtins.str] mesh_psk: Optional passphrase of mesh networking, default is generated randomly
         :param pulumi.Input[_builtins.str] mesh_ssid: Optional ssid of mesh networking, default is based on site_id
-        :param pulumi.Input[_builtins.str] proxy_arp: enum: `default`, `disabled`, `enabled`
+        :param pulumi.Input[_builtins.str] proxy_arp: ARP proxy mode for site Wi-Fi
         """
         if cisco_enabled is not None:
             pulumi.set(__self__, "cisco_enabled", cisco_enabled)
@@ -12720,6 +14783,9 @@ class SettingWifiArgs:
     @_builtins.property
     @pulumi.getter(name="ciscoEnabled")
     def cisco_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether Cisco compatibility features are enabled for site Wi-Fi
+        """
         return pulumi.get(self, "cisco_enabled")
 
     @cisco_enabled.setter
@@ -12741,6 +14807,9 @@ class SettingWifiArgs:
     @_builtins.property
     @pulumi.getter(name="disableRadiosWhenPowerConstrained")
     def disable_radios_when_power_constrained(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether AP radios are disabled when AP power is constrained
+        """
         return pulumi.get(self, "disable_radios_when_power_constrained")
 
     @disable_radios_when_power_constrained.setter
@@ -12762,6 +14831,9 @@ class SettingWifiArgs:
     @_builtins.property
     @pulumi.getter(name="enableSharedRadioScanning")
     def enable_shared_radio_scanning(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether shared radio scanning is enabled for site Wi-Fi
+        """
         return pulumi.get(self, "enable_shared_radio_scanning")
 
     @enable_shared_radio_scanning.setter
@@ -12868,7 +14940,7 @@ class SettingWifiArgs:
     @pulumi.getter(name="proxyArp")
     def proxy_arp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        enum: `default`, `disabled`, `enabled`
+        ARP proxy mode for site Wi-Fi
         """
         return pulumi.get(self, "proxy_arp")
 
@@ -12879,17 +14951,26 @@ class SettingWifiArgs:
 
 class SettingWiredVnaArgsDict(TypedDict):
     enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether Wired VNA is enabled for the site
+    """
 
 @pulumi.input_type
 class SettingWiredVnaArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Whether Wired VNA is enabled for the site
+        """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
 
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether Wired VNA is enabled for the site
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -12900,7 +14981,7 @@ class SettingWiredVnaArgs:
 class SettingZoneOccupancyAlertArgsDict(TypedDict):
     email_notifiers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
-    List of email addresses to send email notifications when the alert threshold is reached
+    Notification email recipients for zone occupancy alerts
     """
     enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
@@ -12918,7 +14999,7 @@ class SettingZoneOccupancyAlertArgs:
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  threshold: pulumi.Input[Optional[_builtins.int]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] email_notifiers: List of email addresses to send email notifications when the alert threshold is reached
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] email_notifiers: Notification email recipients for zone occupancy alerts
         :param pulumi.Input[_builtins.bool] enabled: Indicate whether zone occupancy alert is enabled for the site
         :param pulumi.Input[_builtins.int] threshold: Sending zone-occupancy-alert webhook message only if a zone stays non-compliant (i.e. actual occupancy > occupancy_limit) for a minimum duration specified in the threshold, in minutes
         """
@@ -12933,7 +15014,7 @@ class SettingZoneOccupancyAlertArgs:
     @pulumi.getter(name="emailNotifiers")
     def email_notifiers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of email addresses to send email notifications when the alert threshold is reached
+        Notification email recipients for zone occupancy alerts
         """
         return pulumi.get(self, "email_notifiers")
 

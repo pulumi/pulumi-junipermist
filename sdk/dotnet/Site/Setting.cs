@@ -75,11 +75,14 @@ namespace Pulumi.JuniperMist.Site
         [Output("allowMist")]
         public Output<bool> AllowMist { get; private set; } = null!;
 
+        /// <summary>
+        /// Advanced analytics configuration for the site
+        /// </summary>
         [Output("analytic")]
         public Output<Outputs.SettingAnalytic> Analytic { get; private set; } = null!;
 
         /// <summary>
-        /// AP Synthetic Test configuration
+        /// Synthetic test configuration for APs at the site
         /// </summary>
         [Output("apSyntheticTest")]
         public Output<Outputs.SettingApSyntheticTest?> ApSyntheticTest { get; private set; } = null!;
@@ -91,13 +94,13 @@ namespace Pulumi.JuniperMist.Site
         public Output<int?> ApUpdownThreshold { get; private set; } = null!;
 
         /// <summary>
-        /// Auto Upgrade Settings
+        /// Automatic AP firmware upgrade settings for the site. Overrides org setting when provided.
         /// </summary>
         [Output("autoUpgrade")]
         public Output<Outputs.SettingAutoUpgrade> AutoUpgrade { get; private set; } = null!;
 
         /// <summary>
-        /// auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware upgrade
+        /// Automatic ESL firmware upgrade settings for the site
         /// </summary>
         [Output("autoUpgradeEsl")]
         public Output<Outputs.SettingAutoUpgradeEsl?> AutoUpgradeEsl { get; private set; } = null!;
@@ -108,11 +111,14 @@ namespace Pulumi.JuniperMist.Site
         [Output("bgpNeighborUpdownThreshold")]
         public Output<int?> BgpNeighborUpdownThreshold { get; private set; } = null!;
 
+        /// <summary>
+        /// Read-only URL for the site blacklist file
+        /// </summary>
         [Output("blacklistUrl")]
         public Output<string> BlacklistUrl { get; private set; } = null!;
 
         /// <summary>
-        /// BLE AP settings
+        /// Bluetooth Low Energy configuration applied to APs at the site
         /// </summary>
         [Output("bleConfig")]
         public Output<Outputs.SettingBleConfig?> BleConfig { get; private set; } = null!;
@@ -124,13 +130,13 @@ namespace Pulumi.JuniperMist.Site
         public Output<bool> ConfigAutoRevert { get; private set; } = null!;
 
         /// <summary>
-        /// Mist also uses some heuristic rules to prevent destructive configs from being pushed
+        /// Policy controlling how site configuration pushes are applied
         /// </summary>
         [Output("configPushPolicy")]
         public Output<Outputs.SettingConfigPushPolicy?> ConfigPushPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// You can define some URLs that's critical to site operations the latency will be captured and considered for site health
+        /// Monitoring configuration for critical URLs at the site
         /// </summary>
         [Output("criticalUrlMonitoring")]
         public Output<Outputs.SettingCriticalUrlMonitoring?> CriticalUrlMonitoring { get; private set; } = null!;
@@ -141,17 +147,20 @@ namespace Pulumi.JuniperMist.Site
         [Output("deviceUpdownThreshold")]
         public Output<int?> DeviceUpdownThreshold { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether UNII-4 channels are enabled for the site
+        /// </summary>
         [Output("enableUnii4")]
         public Output<bool> EnableUnii4 { get; private set; } = null!;
 
         /// <summary>
-        /// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple ranges for the same day
+        /// Dwell-time analytics rules for the site
         /// </summary>
         [Output("engagement")]
         public Output<Outputs.SettingEngagement> Engagement { get; private set; } = null!;
 
         /// <summary>
-        /// Gateway Management settings
+        /// Management access settings for gateways at the site
         /// </summary>
         [Output("gatewayMgmt")]
         public Output<Outputs.SettingGatewayMgmt> GatewayMgmt { get; private set; } = null!;
@@ -169,25 +178,43 @@ namespace Pulumi.JuniperMist.Site
         public Output<int?> GatewayUpdownThreshold { get; private set; } = null!;
 
         /// <summary>
-        /// IoT proxy configuration for the site
+        /// Proxy settings for IoT traffic at the site
         /// </summary>
         [Output("iotproxy")]
         public Output<Outputs.SettingIotproxy?> Iotproxy { get; private set; } = null!;
 
+        /// <summary>
+        /// SRX integration settings for the site
+        /// </summary>
         [Output("juniperSrx")]
         public Output<Outputs.SettingJuniperSrx?> JuniperSrx { get; private set; } = null!;
 
         /// <summary>
-        /// LED AP settings
+        /// AP LED behavior configured for the site
         /// </summary>
         [Output("led")]
         public Output<Outputs.SettingLed> Led { get; private set; } = null!;
 
+        /// <summary>
+        /// AI assistant settings for Marvis at the site
+        /// </summary>
         [Output("marvis")]
         public Output<Outputs.SettingMarvis?> Marvis { get; private set; } = null!;
 
         /// <summary>
-        /// Occupancy Analytics settings
+        /// Mist Edge management access settings for the site
+        /// </summary>
+        [Output("mxedgeMgmt")]
+        public Output<Outputs.SettingMxedgeMgmt?> MxedgeMgmt { get; private set; } = null!;
+
+        /// <summary>
+        /// Site Mist Tunnel configuration
+        /// </summary>
+        [Output("mxtunnels")]
+        public Output<Outputs.SettingMxtunnels?> Mxtunnels { get; private set; } = null!;
+
+        /// <summary>
+        /// Analytics settings for site occupancy
         /// </summary>
         [Output("occupancy")]
         public Output<Outputs.SettingOccupancy> Occupancy { get; private set; } = null!;
@@ -199,7 +226,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<bool> PersistConfigOnDevice { get; private set; } = null!;
 
         /// <summary>
-        /// Proxy Configuration to talk to Mist
+        /// Network proxy settings for devices at the site
         /// </summary>
         [Output("proxy")]
         public Output<Outputs.SettingProxy?> Proxy { get; private set; } = null!;
@@ -217,41 +244,56 @@ namespace Pulumi.JuniperMist.Site
         public Output<bool?> ReportGatt { get; private set; } = null!;
 
         /// <summary>
-        /// Rogue site settings
+        /// AP threat detection settings for the site
         /// </summary>
         [Output("rogue")]
         public Output<Outputs.SettingRogue> Rogue { get; private set; } = null!;
 
         /// <summary>
-        /// Managed mobility
+        /// Managed mobility and asset tracking settings for the site
         /// </summary>
         [Output("rtsa")]
         public Output<Outputs.SettingRtsa> Rtsa { get; private set; } = null!;
 
         /// <summary>
-        /// Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute window, there are more than Y distinct client encountering over X failures
+        /// Threshold alert settings for the site
         /// </summary>
         [Output("simpleAlert")]
         public Output<Outputs.SettingSimpleAlert?> SimpleAlert { get; private set; } = null!;
 
+        /// <summary>
+        /// Identifier of the site these settings apply to
+        /// </summary>
         [Output("siteId")]
         public Output<string> SiteId { get; private set; } = null!;
 
+        /// <summary>
+        /// Threat intelligence settings from Sky ATP for the site
+        /// </summary>
         [Output("skyatp")]
         public Output<Outputs.SettingSkyatp?> Skyatp { get; private set; } = null!;
 
+        /// <summary>
+        /// Service level expectation threshold settings for the site
+        /// </summary>
         [Output("sleThresholds")]
         public Output<Outputs.SettingSleThresholds?> SleThresholds { get; private set; } = null!;
 
+        /// <summary>
+        /// Juniper SRX application visibility settings for the site
+        /// </summary>
         [Output("srxApp")]
         public Output<Outputs.SettingSrxApp?> SrxApp { get; private set; } = null!;
 
         /// <summary>
-        /// When LimitSshAccess = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see Org:Setting)
+        /// Public SSH keys configured for the site
         /// </summary>
         [Output("sshKeys")]
         public Output<ImmutableArray<string>> SshKeys { get; private set; } = null!;
 
+        /// <summary>
+        /// Session Smart Router settings for the site
+        /// </summary>
         [Output("ssr")]
         public Output<Outputs.SettingSsr?> Ssr { get; private set; } = null!;
 
@@ -261,6 +303,9 @@ namespace Pulumi.JuniperMist.Site
         [Output("switchUpdownThreshold")]
         public Output<int?> SwitchUpdownThreshold { get; private set; } = null!;
 
+        /// <summary>
+        /// Active monitoring test configuration for the site
+        /// </summary>
         [Output("syntheticTest")]
         public Output<Outputs.SettingSyntheticTest> SyntheticTest { get; private set; } = null!;
 
@@ -271,23 +316,44 @@ namespace Pulumi.JuniperMist.Site
         public Output<bool?> TrackAnonymousDevices { get; private set; } = null!;
 
         /// <summary>
-        /// AP Uplink port configuration
+        /// Whether tunnel termination monitoring is disabled for the site
+        /// </summary>
+        [Output("tuntermMonitoringDisabled")]
+        public Output<bool?> TuntermMonitoringDisabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Tunnel termination monitoring settings for the site
+        /// </summary>
+        [Output("tuntermMonitorings")]
+        public Output<ImmutableArray<Outputs.SettingTuntermMonitoring>> TuntermMonitorings { get; private set; } = null!;
+
+        /// <summary>
+        /// Multicast settings for tunnel termination at the site
+        /// </summary>
+        [Output("tuntermMulticastConfig")]
+        public Output<Outputs.SettingTuntermMulticastConfig?> TuntermMulticastConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// AP uplink port configuration for the site
         /// </summary>
         [Output("uplinkPortConfig")]
         public Output<Outputs.SettingUplinkPortConfig> UplinkPortConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        /// Template variables defined for the site
         /// </summary>
         [Output("vars")]
         public Output<ImmutableDictionary<string, string>?> Vars { get; private set; } = null!;
 
         /// <summary>
-        /// Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+        /// Metadata annotations for site template variables
         /// </summary>
         [Output("varsAnnotations")]
         public Output<ImmutableDictionary<string, Outputs.SettingVarsAnnotations>?> VarsAnnotations { get; private set; } = null!;
 
+        /// <summary>
+        /// Virtual Network Assistant settings for the site
+        /// </summary>
         [Output("vna")]
         public Output<Outputs.SettingVna?> Vna { get; private set; } = null!;
 
@@ -304,37 +370,49 @@ namespace Pulumi.JuniperMist.Site
         public Output<int?> VpnPeerUpdownThreshold { get; private set; } = null!;
 
         /// <summary>
-        /// Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
+        /// EX9200 virtual switch instance definitions for the site
         /// </summary>
         [Output("vsInstance")]
         public Output<ImmutableDictionary<string, Outputs.SettingVsInstance>?> VsInstance { get; private set; } = null!;
 
+        /// <summary>
+        /// Virtual Network Assistant settings for WAN experiences at the site
+        /// </summary>
         [Output("wanVna")]
         public Output<Outputs.SettingWanVna?> WanVna { get; private set; } = null!;
 
+        /// <summary>
+        /// Read-only URL for the watched station list file
+        /// </summary>
         [Output("watchedStationUrl")]
         public Output<string> WatchedStationUrl { get; private set; } = null!;
 
+        /// <summary>
+        /// Read-only URL for the site whitelist file
+        /// </summary>
         [Output("whitelistUrl")]
         public Output<string> WhitelistUrl { get; private set; } = null!;
 
         /// <summary>
-        /// WIDS site settings
+        /// Wireless intrusion detection settings for the site
         /// </summary>
         [Output("wids")]
         public Output<Outputs.SettingWids> Wids { get; private set; } = null!;
 
         /// <summary>
-        /// Wi-Fi site settings
+        /// Wireless LAN configuration settings for the site
         /// </summary>
         [Output("wifi")]
         public Output<Outputs.SettingWifi> Wifi { get; private set; } = null!;
 
+        /// <summary>
+        /// Virtual Network Assistant settings for wired experiences at the site
+        /// </summary>
         [Output("wiredVna")]
         public Output<Outputs.SettingWiredVna?> WiredVna { get; private set; } = null!;
 
         /// <summary>
-        /// Zone Occupancy alert site settings
+        /// Occupancy alert settings for site zones
         /// </summary>
         [Output("zoneOccupancyAlert")]
         public Output<Outputs.SettingZoneOccupancyAlert> ZoneOccupancyAlert { get; private set; } = null!;
@@ -392,11 +470,14 @@ namespace Pulumi.JuniperMist.Site
         [Input("allowMist")]
         public Input<bool>? AllowMist { get; set; }
 
+        /// <summary>
+        /// Advanced analytics configuration for the site
+        /// </summary>
         [Input("analytic")]
         public Input<Inputs.SettingAnalyticArgs>? Analytic { get; set; }
 
         /// <summary>
-        /// AP Synthetic Test configuration
+        /// Synthetic test configuration for APs at the site
         /// </summary>
         [Input("apSyntheticTest")]
         public Input<Inputs.SettingApSyntheticTestArgs>? ApSyntheticTest { get; set; }
@@ -408,13 +489,13 @@ namespace Pulumi.JuniperMist.Site
         public Input<int>? ApUpdownThreshold { get; set; }
 
         /// <summary>
-        /// Auto Upgrade Settings
+        /// Automatic AP firmware upgrade settings for the site. Overrides org setting when provided.
         /// </summary>
         [Input("autoUpgrade")]
         public Input<Inputs.SettingAutoUpgradeArgs>? AutoUpgrade { get; set; }
 
         /// <summary>
-        /// auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware upgrade
+        /// Automatic ESL firmware upgrade settings for the site
         /// </summary>
         [Input("autoUpgradeEsl")]
         public Input<Inputs.SettingAutoUpgradeEslArgs>? AutoUpgradeEsl { get; set; }
@@ -426,7 +507,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<int>? BgpNeighborUpdownThreshold { get; set; }
 
         /// <summary>
-        /// BLE AP settings
+        /// Bluetooth Low Energy configuration applied to APs at the site
         /// </summary>
         [Input("bleConfig")]
         public Input<Inputs.SettingBleConfigArgs>? BleConfig { get; set; }
@@ -438,13 +519,13 @@ namespace Pulumi.JuniperMist.Site
         public Input<bool>? ConfigAutoRevert { get; set; }
 
         /// <summary>
-        /// Mist also uses some heuristic rules to prevent destructive configs from being pushed
+        /// Policy controlling how site configuration pushes are applied
         /// </summary>
         [Input("configPushPolicy")]
         public Input<Inputs.SettingConfigPushPolicyArgs>? ConfigPushPolicy { get; set; }
 
         /// <summary>
-        /// You can define some URLs that's critical to site operations the latency will be captured and considered for site health
+        /// Monitoring configuration for critical URLs at the site
         /// </summary>
         [Input("criticalUrlMonitoring")]
         public Input<Inputs.SettingCriticalUrlMonitoringArgs>? CriticalUrlMonitoring { get; set; }
@@ -455,17 +536,20 @@ namespace Pulumi.JuniperMist.Site
         [Input("deviceUpdownThreshold")]
         public Input<int>? DeviceUpdownThreshold { get; set; }
 
+        /// <summary>
+        /// Whether UNII-4 channels are enabled for the site
+        /// </summary>
         [Input("enableUnii4")]
         public Input<bool>? EnableUnii4 { get; set; }
 
         /// <summary>
-        /// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple ranges for the same day
+        /// Dwell-time analytics rules for the site
         /// </summary>
         [Input("engagement")]
         public Input<Inputs.SettingEngagementArgs>? Engagement { get; set; }
 
         /// <summary>
-        /// Gateway Management settings
+        /// Management access settings for gateways at the site
         /// </summary>
         [Input("gatewayMgmt")]
         public Input<Inputs.SettingGatewayMgmtArgs>? GatewayMgmt { get; set; }
@@ -483,25 +567,43 @@ namespace Pulumi.JuniperMist.Site
         public Input<int>? GatewayUpdownThreshold { get; set; }
 
         /// <summary>
-        /// IoT proxy configuration for the site
+        /// Proxy settings for IoT traffic at the site
         /// </summary>
         [Input("iotproxy")]
         public Input<Inputs.SettingIotproxyArgs>? Iotproxy { get; set; }
 
+        /// <summary>
+        /// SRX integration settings for the site
+        /// </summary>
         [Input("juniperSrx")]
         public Input<Inputs.SettingJuniperSrxArgs>? JuniperSrx { get; set; }
 
         /// <summary>
-        /// LED AP settings
+        /// AP LED behavior configured for the site
         /// </summary>
         [Input("led")]
         public Input<Inputs.SettingLedArgs>? Led { get; set; }
 
+        /// <summary>
+        /// AI assistant settings for Marvis at the site
+        /// </summary>
         [Input("marvis")]
         public Input<Inputs.SettingMarvisArgs>? Marvis { get; set; }
 
         /// <summary>
-        /// Occupancy Analytics settings
+        /// Mist Edge management access settings for the site
+        /// </summary>
+        [Input("mxedgeMgmt")]
+        public Input<Inputs.SettingMxedgeMgmtArgs>? MxedgeMgmt { get; set; }
+
+        /// <summary>
+        /// Site Mist Tunnel configuration
+        /// </summary>
+        [Input("mxtunnels")]
+        public Input<Inputs.SettingMxtunnelsArgs>? Mxtunnels { get; set; }
+
+        /// <summary>
+        /// Analytics settings for site occupancy
         /// </summary>
         [Input("occupancy")]
         public Input<Inputs.SettingOccupancyArgs>? Occupancy { get; set; }
@@ -513,7 +615,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<bool>? PersistConfigOnDevice { get; set; }
 
         /// <summary>
-        /// Proxy Configuration to talk to Mist
+        /// Network proxy settings for devices at the site
         /// </summary>
         [Input("proxy")]
         public Input<Inputs.SettingProxyArgs>? Proxy { get; set; }
@@ -531,32 +633,44 @@ namespace Pulumi.JuniperMist.Site
         public Input<bool>? ReportGatt { get; set; }
 
         /// <summary>
-        /// Rogue site settings
+        /// AP threat detection settings for the site
         /// </summary>
         [Input("rogue")]
         public Input<Inputs.SettingRogueArgs>? Rogue { get; set; }
 
         /// <summary>
-        /// Managed mobility
+        /// Managed mobility and asset tracking settings for the site
         /// </summary>
         [Input("rtsa")]
         public Input<Inputs.SettingRtsaArgs>? Rtsa { get; set; }
 
         /// <summary>
-        /// Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute window, there are more than Y distinct client encountering over X failures
+        /// Threshold alert settings for the site
         /// </summary>
         [Input("simpleAlert")]
         public Input<Inputs.SettingSimpleAlertArgs>? SimpleAlert { get; set; }
 
+        /// <summary>
+        /// Identifier of the site these settings apply to
+        /// </summary>
         [Input("siteId", required: true)]
         public Input<string> SiteId { get; set; } = null!;
 
+        /// <summary>
+        /// Threat intelligence settings from Sky ATP for the site
+        /// </summary>
         [Input("skyatp")]
         public Input<Inputs.SettingSkyatpArgs>? Skyatp { get; set; }
 
+        /// <summary>
+        /// Service level expectation threshold settings for the site
+        /// </summary>
         [Input("sleThresholds")]
         public Input<Inputs.SettingSleThresholdsArgs>? SleThresholds { get; set; }
 
+        /// <summary>
+        /// Juniper SRX application visibility settings for the site
+        /// </summary>
         [Input("srxApp")]
         public Input<Inputs.SettingSrxAppArgs>? SrxApp { get; set; }
 
@@ -564,7 +678,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _sshKeys;
 
         /// <summary>
-        /// When LimitSshAccess = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see Org:Setting)
+        /// Public SSH keys configured for the site
         /// </summary>
         public InputList<string> SshKeys
         {
@@ -572,6 +686,9 @@ namespace Pulumi.JuniperMist.Site
             set => _sshKeys = value;
         }
 
+        /// <summary>
+        /// Session Smart Router settings for the site
+        /// </summary>
         [Input("ssr")]
         public Input<Inputs.SettingSsrArgs>? Ssr { get; set; }
 
@@ -581,6 +698,9 @@ namespace Pulumi.JuniperMist.Site
         [Input("switchUpdownThreshold")]
         public Input<int>? SwitchUpdownThreshold { get; set; }
 
+        /// <summary>
+        /// Active monitoring test configuration for the site
+        /// </summary>
         [Input("syntheticTest")]
         public Input<Inputs.SettingSyntheticTestArgs>? SyntheticTest { get; set; }
 
@@ -591,7 +711,31 @@ namespace Pulumi.JuniperMist.Site
         public Input<bool>? TrackAnonymousDevices { get; set; }
 
         /// <summary>
-        /// AP Uplink port configuration
+        /// Whether tunnel termination monitoring is disabled for the site
+        /// </summary>
+        [Input("tuntermMonitoringDisabled")]
+        public Input<bool>? TuntermMonitoringDisabled { get; set; }
+
+        [Input("tuntermMonitorings")]
+        private InputList<Inputs.SettingTuntermMonitoringArgs>? _tuntermMonitorings;
+
+        /// <summary>
+        /// Tunnel termination monitoring settings for the site
+        /// </summary>
+        public InputList<Inputs.SettingTuntermMonitoringArgs> TuntermMonitorings
+        {
+            get => _tuntermMonitorings ?? (_tuntermMonitorings = new InputList<Inputs.SettingTuntermMonitoringArgs>());
+            set => _tuntermMonitorings = value;
+        }
+
+        /// <summary>
+        /// Multicast settings for tunnel termination at the site
+        /// </summary>
+        [Input("tuntermMulticastConfig")]
+        public Input<Inputs.SettingTuntermMulticastConfigArgs>? TuntermMulticastConfig { get; set; }
+
+        /// <summary>
+        /// AP uplink port configuration for the site
         /// </summary>
         [Input("uplinkPortConfig")]
         public Input<Inputs.SettingUplinkPortConfigArgs>? UplinkPortConfig { get; set; }
@@ -600,7 +744,7 @@ namespace Pulumi.JuniperMist.Site
         private InputMap<string>? _vars;
 
         /// <summary>
-        /// Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        /// Template variables defined for the site
         /// </summary>
         public InputMap<string> Vars
         {
@@ -612,7 +756,7 @@ namespace Pulumi.JuniperMist.Site
         private InputMap<Inputs.SettingVarsAnnotationsArgs>? _varsAnnotations;
 
         /// <summary>
-        /// Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+        /// Metadata annotations for site template variables
         /// </summary>
         public InputMap<Inputs.SettingVarsAnnotationsArgs> VarsAnnotations
         {
@@ -620,6 +764,9 @@ namespace Pulumi.JuniperMist.Site
             set => _varsAnnotations = value;
         }
 
+        /// <summary>
+        /// Virtual Network Assistant settings for the site
+        /// </summary>
         [Input("vna")]
         public Input<Inputs.SettingVnaArgs>? Vna { get; set; }
 
@@ -639,7 +786,7 @@ namespace Pulumi.JuniperMist.Site
         private InputMap<Inputs.SettingVsInstanceArgs>? _vsInstance;
 
         /// <summary>
-        /// Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
+        /// EX9200 virtual switch instance definitions for the site
         /// </summary>
         public InputMap<Inputs.SettingVsInstanceArgs> VsInstance
         {
@@ -647,26 +794,32 @@ namespace Pulumi.JuniperMist.Site
             set => _vsInstance = value;
         }
 
+        /// <summary>
+        /// Virtual Network Assistant settings for WAN experiences at the site
+        /// </summary>
         [Input("wanVna")]
         public Input<Inputs.SettingWanVnaArgs>? WanVna { get; set; }
 
         /// <summary>
-        /// WIDS site settings
+        /// Wireless intrusion detection settings for the site
         /// </summary>
         [Input("wids")]
         public Input<Inputs.SettingWidsArgs>? Wids { get; set; }
 
         /// <summary>
-        /// Wi-Fi site settings
+        /// Wireless LAN configuration settings for the site
         /// </summary>
         [Input("wifi")]
         public Input<Inputs.SettingWifiArgs>? Wifi { get; set; }
 
+        /// <summary>
+        /// Virtual Network Assistant settings for wired experiences at the site
+        /// </summary>
         [Input("wiredVna")]
         public Input<Inputs.SettingWiredVnaArgs>? WiredVna { get; set; }
 
         /// <summary>
-        /// Zone Occupancy alert site settings
+        /// Occupancy alert settings for site zones
         /// </summary>
         [Input("zoneOccupancyAlert")]
         public Input<Inputs.SettingZoneOccupancyAlertArgs>? ZoneOccupancyAlert { get; set; }
@@ -685,11 +838,14 @@ namespace Pulumi.JuniperMist.Site
         [Input("allowMist")]
         public Input<bool>? AllowMist { get; set; }
 
+        /// <summary>
+        /// Advanced analytics configuration for the site
+        /// </summary>
         [Input("analytic")]
         public Input<Inputs.SettingAnalyticGetArgs>? Analytic { get; set; }
 
         /// <summary>
-        /// AP Synthetic Test configuration
+        /// Synthetic test configuration for APs at the site
         /// </summary>
         [Input("apSyntheticTest")]
         public Input<Inputs.SettingApSyntheticTestGetArgs>? ApSyntheticTest { get; set; }
@@ -701,13 +857,13 @@ namespace Pulumi.JuniperMist.Site
         public Input<int>? ApUpdownThreshold { get; set; }
 
         /// <summary>
-        /// Auto Upgrade Settings
+        /// Automatic AP firmware upgrade settings for the site. Overrides org setting when provided.
         /// </summary>
         [Input("autoUpgrade")]
         public Input<Inputs.SettingAutoUpgradeGetArgs>? AutoUpgrade { get; set; }
 
         /// <summary>
-        /// auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware upgrade
+        /// Automatic ESL firmware upgrade settings for the site
         /// </summary>
         [Input("autoUpgradeEsl")]
         public Input<Inputs.SettingAutoUpgradeEslGetArgs>? AutoUpgradeEsl { get; set; }
@@ -718,11 +874,14 @@ namespace Pulumi.JuniperMist.Site
         [Input("bgpNeighborUpdownThreshold")]
         public Input<int>? BgpNeighborUpdownThreshold { get; set; }
 
+        /// <summary>
+        /// Read-only URL for the site blacklist file
+        /// </summary>
         [Input("blacklistUrl")]
         public Input<string>? BlacklistUrl { get; set; }
 
         /// <summary>
-        /// BLE AP settings
+        /// Bluetooth Low Energy configuration applied to APs at the site
         /// </summary>
         [Input("bleConfig")]
         public Input<Inputs.SettingBleConfigGetArgs>? BleConfig { get; set; }
@@ -734,13 +893,13 @@ namespace Pulumi.JuniperMist.Site
         public Input<bool>? ConfigAutoRevert { get; set; }
 
         /// <summary>
-        /// Mist also uses some heuristic rules to prevent destructive configs from being pushed
+        /// Policy controlling how site configuration pushes are applied
         /// </summary>
         [Input("configPushPolicy")]
         public Input<Inputs.SettingConfigPushPolicyGetArgs>? ConfigPushPolicy { get; set; }
 
         /// <summary>
-        /// You can define some URLs that's critical to site operations the latency will be captured and considered for site health
+        /// Monitoring configuration for critical URLs at the site
         /// </summary>
         [Input("criticalUrlMonitoring")]
         public Input<Inputs.SettingCriticalUrlMonitoringGetArgs>? CriticalUrlMonitoring { get; set; }
@@ -751,17 +910,20 @@ namespace Pulumi.JuniperMist.Site
         [Input("deviceUpdownThreshold")]
         public Input<int>? DeviceUpdownThreshold { get; set; }
 
+        /// <summary>
+        /// Whether UNII-4 channels are enabled for the site
+        /// </summary>
         [Input("enableUnii4")]
         public Input<bool>? EnableUnii4 { get; set; }
 
         /// <summary>
-        /// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple ranges for the same day
+        /// Dwell-time analytics rules for the site
         /// </summary>
         [Input("engagement")]
         public Input<Inputs.SettingEngagementGetArgs>? Engagement { get; set; }
 
         /// <summary>
-        /// Gateway Management settings
+        /// Management access settings for gateways at the site
         /// </summary>
         [Input("gatewayMgmt")]
         public Input<Inputs.SettingGatewayMgmtGetArgs>? GatewayMgmt { get; set; }
@@ -779,25 +941,43 @@ namespace Pulumi.JuniperMist.Site
         public Input<int>? GatewayUpdownThreshold { get; set; }
 
         /// <summary>
-        /// IoT proxy configuration for the site
+        /// Proxy settings for IoT traffic at the site
         /// </summary>
         [Input("iotproxy")]
         public Input<Inputs.SettingIotproxyGetArgs>? Iotproxy { get; set; }
 
+        /// <summary>
+        /// SRX integration settings for the site
+        /// </summary>
         [Input("juniperSrx")]
         public Input<Inputs.SettingJuniperSrxGetArgs>? JuniperSrx { get; set; }
 
         /// <summary>
-        /// LED AP settings
+        /// AP LED behavior configured for the site
         /// </summary>
         [Input("led")]
         public Input<Inputs.SettingLedGetArgs>? Led { get; set; }
 
+        /// <summary>
+        /// AI assistant settings for Marvis at the site
+        /// </summary>
         [Input("marvis")]
         public Input<Inputs.SettingMarvisGetArgs>? Marvis { get; set; }
 
         /// <summary>
-        /// Occupancy Analytics settings
+        /// Mist Edge management access settings for the site
+        /// </summary>
+        [Input("mxedgeMgmt")]
+        public Input<Inputs.SettingMxedgeMgmtGetArgs>? MxedgeMgmt { get; set; }
+
+        /// <summary>
+        /// Site Mist Tunnel configuration
+        /// </summary>
+        [Input("mxtunnels")]
+        public Input<Inputs.SettingMxtunnelsGetArgs>? Mxtunnels { get; set; }
+
+        /// <summary>
+        /// Analytics settings for site occupancy
         /// </summary>
         [Input("occupancy")]
         public Input<Inputs.SettingOccupancyGetArgs>? Occupancy { get; set; }
@@ -809,7 +989,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<bool>? PersistConfigOnDevice { get; set; }
 
         /// <summary>
-        /// Proxy Configuration to talk to Mist
+        /// Network proxy settings for devices at the site
         /// </summary>
         [Input("proxy")]
         public Input<Inputs.SettingProxyGetArgs>? Proxy { get; set; }
@@ -827,32 +1007,44 @@ namespace Pulumi.JuniperMist.Site
         public Input<bool>? ReportGatt { get; set; }
 
         /// <summary>
-        /// Rogue site settings
+        /// AP threat detection settings for the site
         /// </summary>
         [Input("rogue")]
         public Input<Inputs.SettingRogueGetArgs>? Rogue { get; set; }
 
         /// <summary>
-        /// Managed mobility
+        /// Managed mobility and asset tracking settings for the site
         /// </summary>
         [Input("rtsa")]
         public Input<Inputs.SettingRtsaGetArgs>? Rtsa { get; set; }
 
         /// <summary>
-        /// Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute window, there are more than Y distinct client encountering over X failures
+        /// Threshold alert settings for the site
         /// </summary>
         [Input("simpleAlert")]
         public Input<Inputs.SettingSimpleAlertGetArgs>? SimpleAlert { get; set; }
 
+        /// <summary>
+        /// Identifier of the site these settings apply to
+        /// </summary>
         [Input("siteId")]
         public Input<string>? SiteId { get; set; }
 
+        /// <summary>
+        /// Threat intelligence settings from Sky ATP for the site
+        /// </summary>
         [Input("skyatp")]
         public Input<Inputs.SettingSkyatpGetArgs>? Skyatp { get; set; }
 
+        /// <summary>
+        /// Service level expectation threshold settings for the site
+        /// </summary>
         [Input("sleThresholds")]
         public Input<Inputs.SettingSleThresholdsGetArgs>? SleThresholds { get; set; }
 
+        /// <summary>
+        /// Juniper SRX application visibility settings for the site
+        /// </summary>
         [Input("srxApp")]
         public Input<Inputs.SettingSrxAppGetArgs>? SrxApp { get; set; }
 
@@ -860,7 +1052,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _sshKeys;
 
         /// <summary>
-        /// When LimitSshAccess = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see Org:Setting)
+        /// Public SSH keys configured for the site
         /// </summary>
         public InputList<string> SshKeys
         {
@@ -868,6 +1060,9 @@ namespace Pulumi.JuniperMist.Site
             set => _sshKeys = value;
         }
 
+        /// <summary>
+        /// Session Smart Router settings for the site
+        /// </summary>
         [Input("ssr")]
         public Input<Inputs.SettingSsrGetArgs>? Ssr { get; set; }
 
@@ -877,6 +1072,9 @@ namespace Pulumi.JuniperMist.Site
         [Input("switchUpdownThreshold")]
         public Input<int>? SwitchUpdownThreshold { get; set; }
 
+        /// <summary>
+        /// Active monitoring test configuration for the site
+        /// </summary>
         [Input("syntheticTest")]
         public Input<Inputs.SettingSyntheticTestGetArgs>? SyntheticTest { get; set; }
 
@@ -887,7 +1085,31 @@ namespace Pulumi.JuniperMist.Site
         public Input<bool>? TrackAnonymousDevices { get; set; }
 
         /// <summary>
-        /// AP Uplink port configuration
+        /// Whether tunnel termination monitoring is disabled for the site
+        /// </summary>
+        [Input("tuntermMonitoringDisabled")]
+        public Input<bool>? TuntermMonitoringDisabled { get; set; }
+
+        [Input("tuntermMonitorings")]
+        private InputList<Inputs.SettingTuntermMonitoringGetArgs>? _tuntermMonitorings;
+
+        /// <summary>
+        /// Tunnel termination monitoring settings for the site
+        /// </summary>
+        public InputList<Inputs.SettingTuntermMonitoringGetArgs> TuntermMonitorings
+        {
+            get => _tuntermMonitorings ?? (_tuntermMonitorings = new InputList<Inputs.SettingTuntermMonitoringGetArgs>());
+            set => _tuntermMonitorings = value;
+        }
+
+        /// <summary>
+        /// Multicast settings for tunnel termination at the site
+        /// </summary>
+        [Input("tuntermMulticastConfig")]
+        public Input<Inputs.SettingTuntermMulticastConfigGetArgs>? TuntermMulticastConfig { get; set; }
+
+        /// <summary>
+        /// AP uplink port configuration for the site
         /// </summary>
         [Input("uplinkPortConfig")]
         public Input<Inputs.SettingUplinkPortConfigGetArgs>? UplinkPortConfig { get; set; }
@@ -896,7 +1118,7 @@ namespace Pulumi.JuniperMist.Site
         private InputMap<string>? _vars;
 
         /// <summary>
-        /// Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        /// Template variables defined for the site
         /// </summary>
         public InputMap<string> Vars
         {
@@ -908,7 +1130,7 @@ namespace Pulumi.JuniperMist.Site
         private InputMap<Inputs.SettingVarsAnnotationsGetArgs>? _varsAnnotations;
 
         /// <summary>
-        /// Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+        /// Metadata annotations for site template variables
         /// </summary>
         public InputMap<Inputs.SettingVarsAnnotationsGetArgs> VarsAnnotations
         {
@@ -916,6 +1138,9 @@ namespace Pulumi.JuniperMist.Site
             set => _varsAnnotations = value;
         }
 
+        /// <summary>
+        /// Virtual Network Assistant settings for the site
+        /// </summary>
         [Input("vna")]
         public Input<Inputs.SettingVnaGetArgs>? Vna { get; set; }
 
@@ -935,7 +1160,7 @@ namespace Pulumi.JuniperMist.Site
         private InputMap<Inputs.SettingVsInstanceGetArgs>? _vsInstance;
 
         /// <summary>
-        /// Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
+        /// EX9200 virtual switch instance definitions for the site
         /// </summary>
         public InputMap<Inputs.SettingVsInstanceGetArgs> VsInstance
         {
@@ -943,32 +1168,44 @@ namespace Pulumi.JuniperMist.Site
             set => _vsInstance = value;
         }
 
+        /// <summary>
+        /// Virtual Network Assistant settings for WAN experiences at the site
+        /// </summary>
         [Input("wanVna")]
         public Input<Inputs.SettingWanVnaGetArgs>? WanVna { get; set; }
 
+        /// <summary>
+        /// Read-only URL for the watched station list file
+        /// </summary>
         [Input("watchedStationUrl")]
         public Input<string>? WatchedStationUrl { get; set; }
 
+        /// <summary>
+        /// Read-only URL for the site whitelist file
+        /// </summary>
         [Input("whitelistUrl")]
         public Input<string>? WhitelistUrl { get; set; }
 
         /// <summary>
-        /// WIDS site settings
+        /// Wireless intrusion detection settings for the site
         /// </summary>
         [Input("wids")]
         public Input<Inputs.SettingWidsGetArgs>? Wids { get; set; }
 
         /// <summary>
-        /// Wi-Fi site settings
+        /// Wireless LAN configuration settings for the site
         /// </summary>
         [Input("wifi")]
         public Input<Inputs.SettingWifiGetArgs>? Wifi { get; set; }
 
+        /// <summary>
+        /// Virtual Network Assistant settings for wired experiences at the site
+        /// </summary>
         [Input("wiredVna")]
         public Input<Inputs.SettingWiredVnaGetArgs>? WiredVna { get; set; }
 
         /// <summary>
-        /// Zone Occupancy alert site settings
+        /// Occupancy alert settings for site zones
         /// </summary>
         [Input("zoneOccupancyAlert")]
         public Input<Inputs.SettingZoneOccupancyAlertGetArgs>? ZoneOccupancyAlert { get; set; }

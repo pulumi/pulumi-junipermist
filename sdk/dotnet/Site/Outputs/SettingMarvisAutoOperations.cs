@@ -13,14 +13,41 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class SettingMarvisAutoOperations
     {
+        /// <summary>
+        /// Whether Marvis may remediate AP insufficient-capacity issues automatically
+        /// </summary>
         public readonly bool? ApInsufficientCapacity;
+        /// <summary>
+        /// Whether Marvis may remediate AP loop issues automatically
+        /// </summary>
         public readonly bool? ApLoop;
+        /// <summary>
+        /// Whether Marvis may remediate AP non-compliance automatically
+        /// </summary>
         public readonly bool? ApNonCompliant;
+        /// <summary>
+        /// Whether Marvis may bounce switch ports for abnormal PoE clients
+        /// </summary>
         public readonly bool? BouncePortForAbnormalPoeClient;
+        /// <summary>
+        /// Whether Marvis may disable a port when DDOS protocol violations are detected
+        /// </summary>
         public readonly bool? DisablePortWhenDdosProtocolViolation;
+        /// <summary>
+        /// Whether Marvis may disable a port when a rogue DHCP server is detected
+        /// </summary>
         public readonly bool? DisablePortWhenRogueDhcpServerDetected;
+        /// <summary>
+        /// Whether Marvis may remediate non-compliant gateways automatically
+        /// </summary>
         public readonly bool? GatewayNonCompliant;
+        /// <summary>
+        /// Whether Marvis may remediate misconfigured switch ports automatically
+        /// </summary>
         public readonly bool? SwitchMisconfiguredPort;
+        /// <summary>
+        /// Whether Marvis may remediate stuck switch ports automatically
+        /// </summary>
         public readonly bool? SwitchPortStuck;
 
         [OutputConstructor]

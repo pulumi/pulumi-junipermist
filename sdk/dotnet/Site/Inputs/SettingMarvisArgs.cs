@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class SettingMarvisArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Automatic remediation operations controlled by Marvis
+        /// </summary>
         [Input("autoOperations")]
         public Input<Inputs.SettingMarvisAutoOperationsArgs>? AutoOperations { get; set; }
 

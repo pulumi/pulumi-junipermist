@@ -13,7 +13,13 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class SettingLed
     {
+        /// <summary>
+        /// Indicator LED brightness level from 0 to 255
+        /// </summary>
         public readonly int? Brightness;
+        /// <summary>
+        /// Whether the AP indicator LED is enabled
+        /// </summary>
         public readonly bool? Enabled;
 
         [OutputConstructor]

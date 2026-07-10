@@ -13,8 +13,17 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class SettingJuniperSrxGateway
     {
+        /// <summary>
+        /// Authentication key used to access the Juniper SRX gateway API
+        /// </summary>
         public readonly string? ApiKey;
+        /// <summary>
+        /// Authentication password used to access the Juniper SRX gateway API
+        /// </summary>
         public readonly string? ApiPassword;
+        /// <summary>
+        /// Base URL for the Juniper SRX gateway API
+        /// </summary>
         public readonly string? ApiUrl;
 
         [OutputConstructor]

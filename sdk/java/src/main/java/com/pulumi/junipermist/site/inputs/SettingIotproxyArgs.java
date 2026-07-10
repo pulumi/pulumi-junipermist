@@ -16,22 +16,30 @@ public final class SettingIotproxyArgs extends com.pulumi.resources.ResourceArgs
 
     public static final SettingIotproxyArgs Empty = new SettingIotproxyArgs();
 
+    /**
+     * Whether the site IoT proxy is enabled
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether the site IoT proxy is enabled
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
     /**
-     * Visionline integration settings for IoT proxy
+     * Site access-control integration settings for Visionline
      * 
      */
     @Import(name="visionline")
     private @Nullable Output<SettingIotproxyVisionlineArgs> visionline;
 
     /**
-     * @return Visionline integration settings for IoT proxy
+     * @return Site access-control integration settings for Visionline
      * 
      */
     public Optional<Output<SettingIotproxyVisionlineArgs>> visionline() {
@@ -63,17 +71,29 @@ public final class SettingIotproxyArgs extends com.pulumi.resources.ResourceArgs
             $ = new SettingIotproxyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Whether the site IoT proxy is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether the site IoT proxy is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
         /**
-         * @param visionline Visionline integration settings for IoT proxy
+         * @param visionline Site access-control integration settings for Visionline
          * 
          * @return builder
          * 
@@ -84,7 +104,7 @@ public final class SettingIotproxyArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param visionline Visionline integration settings for IoT proxy
+         * @param visionline Site access-control integration settings for Visionline
          * 
          * @return builder
          * 

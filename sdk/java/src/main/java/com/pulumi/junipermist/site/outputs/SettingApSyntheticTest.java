@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingApSyntheticTest {
     /**
-     * @return List or Comma separated list of additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
+     * @return VLAN IDs included in addition to the default VLAN set for AP synthetic tests
      * 
      */
     private @Nullable List<String> additionalVlanIds;
 
     private SettingApSyntheticTest() {}
     /**
-     * @return List or Comma separated list of additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
+     * @return VLAN IDs included in addition to the default VLAN set for AP synthetic tests
      * 
      */
     public List<String> additionalVlanIds() {

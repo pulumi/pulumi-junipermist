@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class SettingWanVna
     {
+        /// <summary>
+        /// Whether WAN VNA is enabled for the site
+        /// </summary>
         public readonly bool? Enabled;
 
         [OutputConstructor]

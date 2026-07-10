@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class SettingApSyntheticTest
     {
         /// <summary>
-        /// List or Comma separated list of additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
+        /// VLAN IDs included in addition to the default VLAN set for AP synthetic tests
         /// </summary>
         public readonly ImmutableArray<string> AdditionalVlanIds;
 

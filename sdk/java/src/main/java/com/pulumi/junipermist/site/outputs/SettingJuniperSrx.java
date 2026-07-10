@@ -15,24 +15,40 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingJuniperSrx {
     /**
-     * @return auto_upgrade device first time it is onboarded
+     * @return SRX auto-upgrade settings applied when SRX devices are onboarded
      * 
      */
     private @Nullable SettingJuniperSrxAutoUpgrade autoUpgrade;
+    /**
+     * @return SRX gateways integrated with this site
+     * 
+     */
     private @Nullable List<SettingJuniperSrxGateway> gateways;
+    /**
+     * @return Whether Mist NAC user information is sent to Juniper SRX gateways
+     * 
+     */
     private @Nullable Boolean sendMistNacUserInfo;
 
     private SettingJuniperSrx() {}
     /**
-     * @return auto_upgrade device first time it is onboarded
+     * @return SRX auto-upgrade settings applied when SRX devices are onboarded
      * 
      */
     public Optional<SettingJuniperSrxAutoUpgrade> autoUpgrade() {
         return Optional.ofNullable(this.autoUpgrade);
     }
+    /**
+     * @return SRX gateways integrated with this site
+     * 
+     */
     public List<SettingJuniperSrxGateway> gateways() {
         return this.gateways == null ? List.of() : this.gateways;
     }
+    /**
+     * @return Whether Mist NAC user information is sent to Juniper SRX gateways
+     * 
+     */
     public Optional<Boolean> sendMistNacUserInfo() {
         return Optional.ofNullable(this.sendMistNacUserInfo);
     }

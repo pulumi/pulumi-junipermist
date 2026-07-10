@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly bool? ClientsEnabled;
         /// <summary>
-        /// Minimum duration
+        /// Minimum dwell duration before a client or asset is counted in occupancy analytics
         /// </summary>
         public readonly int? MinDuration;
         /// <summary>

@@ -14,9 +14,12 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class SettingGatewayMgmtAutoSignatureUpdate
     {
         /// <summary>
-        /// enum: `Any`, `Fri`, `Mon`, `Sat`, `Sun`, `Thu`, `Tue`, `Wed`
+        /// Scheduled weekday for automatic signature updates
         /// </summary>
         public readonly string? DayOfWeek;
+        /// <summary>
+        /// Whether automatic security signature updates are enabled
+        /// </summary>
         public readonly bool? Enable;
         /// <summary>
         /// Optional, Mist will decide the timing

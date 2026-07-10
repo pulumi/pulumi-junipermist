@@ -85,9 +85,12 @@ export class Setting extends pulumi.CustomResource {
      * whether to allow Mist to look at this org
      */
     declare public readonly allowMist: pulumi.Output<boolean>;
+    /**
+     * Advanced analytics configuration for the site
+     */
     declare public readonly analytic: pulumi.Output<outputs.site.SettingAnalytic>;
     /**
-     * AP Synthetic Test configuration
+     * Synthetic test configuration for APs at the site
      */
     declare public readonly apSyntheticTest: pulumi.Output<outputs.site.SettingApSyntheticTest | undefined>;
     /**
@@ -95,20 +98,23 @@ export class Setting extends pulumi.CustomResource {
      */
     declare public readonly apUpdownThreshold: pulumi.Output<number | undefined>;
     /**
-     * Auto Upgrade Settings
+     * Automatic AP firmware upgrade settings for the site. Overrides org setting when provided.
      */
     declare public readonly autoUpgrade: pulumi.Output<outputs.site.SettingAutoUpgrade>;
     /**
-     * auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware upgrade
+     * Automatic ESL firmware upgrade settings for the site
      */
     declare public readonly autoUpgradeEsl: pulumi.Output<outputs.site.SettingAutoUpgradeEsl | undefined>;
     /**
      * enable threshold-based bgp neighbor down delivery.
      */
     declare public readonly bgpNeighborUpdownThreshold: pulumi.Output<number | undefined>;
+    /**
+     * Read-only URL for the site blacklist file
+     */
     declare public /*out*/ readonly blacklistUrl: pulumi.Output<string>;
     /**
-     * BLE AP settings
+     * Bluetooth Low Energy configuration applied to APs at the site
      */
     declare public readonly bleConfig: pulumi.Output<outputs.site.SettingBleConfig | undefined>;
     /**
@@ -116,24 +122,27 @@ export class Setting extends pulumi.CustomResource {
      */
     declare public readonly configAutoRevert: pulumi.Output<boolean>;
     /**
-     * Mist also uses some heuristic rules to prevent destructive configs from being pushed
+     * Policy controlling how site configuration pushes are applied
      */
     declare public readonly configPushPolicy: pulumi.Output<outputs.site.SettingConfigPushPolicy | undefined>;
     /**
-     * You can define some URLs that's critical to site operations the latency will be captured and considered for site health
+     * Monitoring configuration for critical URLs at the site
      */
     declare public readonly criticalUrlMonitoring: pulumi.Output<outputs.site.SettingCriticalUrlMonitoring | undefined>;
     /**
      * By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following
      */
     declare public readonly deviceUpdownThreshold: pulumi.Output<number | undefined>;
+    /**
+     * Whether UNII-4 channels are enabled for the site
+     */
     declare public readonly enableUnii4: pulumi.Output<boolean>;
     /**
-     * **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple ranges for the same day
+     * Dwell-time analytics rules for the site
      */
     declare public readonly engagement: pulumi.Output<outputs.site.SettingEngagement>;
     /**
-     * Gateway Management settings
+     * Management access settings for gateways at the site
      */
     declare public readonly gatewayMgmt: pulumi.Output<outputs.site.SettingGatewayMgmt>;
     /**
@@ -145,17 +154,31 @@ export class Setting extends pulumi.CustomResource {
      */
     declare public readonly gatewayUpdownThreshold: pulumi.Output<number | undefined>;
     /**
-     * IoT proxy configuration for the site
+     * Proxy settings for IoT traffic at the site
      */
     declare public readonly iotproxy: pulumi.Output<outputs.site.SettingIotproxy | undefined>;
+    /**
+     * SRX integration settings for the site
+     */
     declare public readonly juniperSrx: pulumi.Output<outputs.site.SettingJuniperSrx | undefined>;
     /**
-     * LED AP settings
+     * AP LED behavior configured for the site
      */
     declare public readonly led: pulumi.Output<outputs.site.SettingLed>;
+    /**
+     * AI assistant settings for Marvis at the site
+     */
     declare public readonly marvis: pulumi.Output<outputs.site.SettingMarvis | undefined>;
     /**
-     * Occupancy Analytics settings
+     * Mist Edge management access settings for the site
+     */
+    declare public readonly mxedgeMgmt: pulumi.Output<outputs.site.SettingMxedgeMgmt | undefined>;
+    /**
+     * Site Mist Tunnel configuration
+     */
+    declare public readonly mxtunnels: pulumi.Output<outputs.site.SettingMxtunnels | undefined>;
+    /**
+     * Analytics settings for site occupancy
      */
     declare public readonly occupancy: pulumi.Output<outputs.site.SettingOccupancy>;
     /**
@@ -163,7 +186,7 @@ export class Setting extends pulumi.CustomResource {
      */
     declare public readonly persistConfigOnDevice: pulumi.Output<boolean>;
     /**
-     * Proxy Configuration to talk to Mist
+     * Network proxy settings for devices at the site
      */
     declare public readonly proxy: pulumi.Output<outputs.site.SettingProxy | undefined>;
     /**
@@ -175,47 +198,80 @@ export class Setting extends pulumi.CustomResource {
      */
     declare public readonly reportGatt: pulumi.Output<boolean | undefined>;
     /**
-     * Rogue site settings
+     * AP threat detection settings for the site
      */
     declare public readonly rogue: pulumi.Output<outputs.site.SettingRogue>;
     /**
-     * Managed mobility
+     * Managed mobility and asset tracking settings for the site
      */
     declare public readonly rtsa: pulumi.Output<outputs.site.SettingRtsa>;
     /**
-     * Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute window, there are more than Y distinct client encountering over X failures
+     * Threshold alert settings for the site
      */
     declare public readonly simpleAlert: pulumi.Output<outputs.site.SettingSimpleAlert | undefined>;
+    /**
+     * Identifier of the site these settings apply to
+     */
     declare public readonly siteId: pulumi.Output<string>;
+    /**
+     * Threat intelligence settings from Sky ATP for the site
+     */
     declare public readonly skyatp: pulumi.Output<outputs.site.SettingSkyatp | undefined>;
+    /**
+     * Service level expectation threshold settings for the site
+     */
     declare public readonly sleThresholds: pulumi.Output<outputs.site.SettingSleThresholds | undefined>;
+    /**
+     * Juniper SRX application visibility settings for the site
+     */
     declare public readonly srxApp: pulumi.Output<outputs.site.SettingSrxApp | undefined>;
     /**
-     * When limitSshAccess = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see Org:Setting)
+     * Public SSH keys configured for the site
      */
     declare public readonly sshKeys: pulumi.Output<string[]>;
+    /**
+     * Session Smart Router settings for the site
+     */
     declare public readonly ssr: pulumi.Output<outputs.site.SettingSsr | undefined>;
     /**
      * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `deviceUpdownThreshold` is ignored.
      */
     declare public readonly switchUpdownThreshold: pulumi.Output<number | undefined>;
+    /**
+     * Active monitoring test configuration for the site
+     */
     declare public readonly syntheticTest: pulumi.Output<outputs.site.SettingSyntheticTest>;
     /**
      * Whether to track anonymous BLE assets (requires ‘track_asset’  enabled)
      */
     declare public readonly trackAnonymousDevices: pulumi.Output<boolean | undefined>;
     /**
-     * AP Uplink port configuration
+     * Whether tunnel termination monitoring is disabled for the site
+     */
+    declare public readonly tuntermMonitoringDisabled: pulumi.Output<boolean | undefined>;
+    /**
+     * Tunnel termination monitoring settings for the site
+     */
+    declare public readonly tuntermMonitorings: pulumi.Output<outputs.site.SettingTuntermMonitoring[] | undefined>;
+    /**
+     * Multicast settings for tunnel termination at the site
+     */
+    declare public readonly tuntermMulticastConfig: pulumi.Output<outputs.site.SettingTuntermMulticastConfig | undefined>;
+    /**
+     * AP uplink port configuration for the site
      */
     declare public readonly uplinkPortConfig: pulumi.Output<outputs.site.SettingUplinkPortConfig>;
     /**
-     * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Template variables defined for the site
      */
     declare public readonly vars: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+     * Metadata annotations for site template variables
      */
     declare public readonly varsAnnotations: pulumi.Output<{[key: string]: outputs.site.SettingVarsAnnotations} | undefined>;
+    /**
+     * Virtual Network Assistant settings for the site
+     */
     declare public readonly vna: pulumi.Output<outputs.site.SettingVna | undefined>;
     /**
      * enable threshold-based vpn path down delivery.
@@ -226,23 +282,35 @@ export class Setting extends pulumi.CustomResource {
      */
     declare public readonly vpnPeerUpdownThreshold: pulumi.Output<number | undefined>;
     /**
-     * Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
+     * EX9200 virtual switch instance definitions for the site
      */
     declare public readonly vsInstance: pulumi.Output<{[key: string]: outputs.site.SettingVsInstance} | undefined>;
+    /**
+     * Virtual Network Assistant settings for WAN experiences at the site
+     */
     declare public readonly wanVna: pulumi.Output<outputs.site.SettingWanVna | undefined>;
+    /**
+     * Read-only URL for the watched station list file
+     */
     declare public /*out*/ readonly watchedStationUrl: pulumi.Output<string>;
+    /**
+     * Read-only URL for the site whitelist file
+     */
     declare public /*out*/ readonly whitelistUrl: pulumi.Output<string>;
     /**
-     * WIDS site settings
+     * Wireless intrusion detection settings for the site
      */
     declare public readonly wids: pulumi.Output<outputs.site.SettingWids>;
     /**
-     * Wi-Fi site settings
+     * Wireless LAN configuration settings for the site
      */
     declare public readonly wifi: pulumi.Output<outputs.site.SettingWifi>;
+    /**
+     * Virtual Network Assistant settings for wired experiences at the site
+     */
     declare public readonly wiredVna: pulumi.Output<outputs.site.SettingWiredVna | undefined>;
     /**
-     * Zone Occupancy alert site settings
+     * Occupancy alert settings for site zones
      */
     declare public readonly zoneOccupancyAlert: pulumi.Output<outputs.site.SettingZoneOccupancyAlert>;
 
@@ -281,6 +349,8 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["juniperSrx"] = state?.juniperSrx;
             resourceInputs["led"] = state?.led;
             resourceInputs["marvis"] = state?.marvis;
+            resourceInputs["mxedgeMgmt"] = state?.mxedgeMgmt;
+            resourceInputs["mxtunnels"] = state?.mxtunnels;
             resourceInputs["occupancy"] = state?.occupancy;
             resourceInputs["persistConfigOnDevice"] = state?.persistConfigOnDevice;
             resourceInputs["proxy"] = state?.proxy;
@@ -298,6 +368,9 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["switchUpdownThreshold"] = state?.switchUpdownThreshold;
             resourceInputs["syntheticTest"] = state?.syntheticTest;
             resourceInputs["trackAnonymousDevices"] = state?.trackAnonymousDevices;
+            resourceInputs["tuntermMonitoringDisabled"] = state?.tuntermMonitoringDisabled;
+            resourceInputs["tuntermMonitorings"] = state?.tuntermMonitorings;
+            resourceInputs["tuntermMulticastConfig"] = state?.tuntermMulticastConfig;
             resourceInputs["uplinkPortConfig"] = state?.uplinkPortConfig;
             resourceInputs["vars"] = state?.vars;
             resourceInputs["varsAnnotations"] = state?.varsAnnotations;
@@ -338,6 +411,8 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["juniperSrx"] = args?.juniperSrx;
             resourceInputs["led"] = args?.led;
             resourceInputs["marvis"] = args?.marvis;
+            resourceInputs["mxedgeMgmt"] = args?.mxedgeMgmt;
+            resourceInputs["mxtunnels"] = args?.mxtunnels;
             resourceInputs["occupancy"] = args?.occupancy;
             resourceInputs["persistConfigOnDevice"] = args?.persistConfigOnDevice;
             resourceInputs["proxy"] = args?.proxy;
@@ -355,6 +430,9 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["switchUpdownThreshold"] = args?.switchUpdownThreshold;
             resourceInputs["syntheticTest"] = args?.syntheticTest;
             resourceInputs["trackAnonymousDevices"] = args?.trackAnonymousDevices;
+            resourceInputs["tuntermMonitoringDisabled"] = args?.tuntermMonitoringDisabled;
+            resourceInputs["tuntermMonitorings"] = args?.tuntermMonitorings;
+            resourceInputs["tuntermMulticastConfig"] = args?.tuntermMulticastConfig;
             resourceInputs["uplinkPortConfig"] = args?.uplinkPortConfig;
             resourceInputs["vars"] = args?.vars;
             resourceInputs["varsAnnotations"] = args?.varsAnnotations;
@@ -384,9 +462,12 @@ export interface SettingState {
      * whether to allow Mist to look at this org
      */
     allowMist?: pulumi.Input<boolean | undefined>;
+    /**
+     * Advanced analytics configuration for the site
+     */
     analytic?: pulumi.Input<inputs.site.SettingAnalytic | undefined>;
     /**
-     * AP Synthetic Test configuration
+     * Synthetic test configuration for APs at the site
      */
     apSyntheticTest?: pulumi.Input<inputs.site.SettingApSyntheticTest | undefined>;
     /**
@@ -394,20 +475,23 @@ export interface SettingState {
      */
     apUpdownThreshold?: pulumi.Input<number | undefined>;
     /**
-     * Auto Upgrade Settings
+     * Automatic AP firmware upgrade settings for the site. Overrides org setting when provided.
      */
     autoUpgrade?: pulumi.Input<inputs.site.SettingAutoUpgrade | undefined>;
     /**
-     * auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware upgrade
+     * Automatic ESL firmware upgrade settings for the site
      */
     autoUpgradeEsl?: pulumi.Input<inputs.site.SettingAutoUpgradeEsl | undefined>;
     /**
      * enable threshold-based bgp neighbor down delivery.
      */
     bgpNeighborUpdownThreshold?: pulumi.Input<number | undefined>;
+    /**
+     * Read-only URL for the site blacklist file
+     */
     blacklistUrl?: pulumi.Input<string | undefined>;
     /**
-     * BLE AP settings
+     * Bluetooth Low Energy configuration applied to APs at the site
      */
     bleConfig?: pulumi.Input<inputs.site.SettingBleConfig | undefined>;
     /**
@@ -415,24 +499,27 @@ export interface SettingState {
      */
     configAutoRevert?: pulumi.Input<boolean | undefined>;
     /**
-     * Mist also uses some heuristic rules to prevent destructive configs from being pushed
+     * Policy controlling how site configuration pushes are applied
      */
     configPushPolicy?: pulumi.Input<inputs.site.SettingConfigPushPolicy | undefined>;
     /**
-     * You can define some URLs that's critical to site operations the latency will be captured and considered for site health
+     * Monitoring configuration for critical URLs at the site
      */
     criticalUrlMonitoring?: pulumi.Input<inputs.site.SettingCriticalUrlMonitoring | undefined>;
     /**
      * By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following
      */
     deviceUpdownThreshold?: pulumi.Input<number | undefined>;
+    /**
+     * Whether UNII-4 channels are enabled for the site
+     */
     enableUnii4?: pulumi.Input<boolean | undefined>;
     /**
-     * **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple ranges for the same day
+     * Dwell-time analytics rules for the site
      */
     engagement?: pulumi.Input<inputs.site.SettingEngagement | undefined>;
     /**
-     * Gateway Management settings
+     * Management access settings for gateways at the site
      */
     gatewayMgmt?: pulumi.Input<inputs.site.SettingGatewayMgmt | undefined>;
     /**
@@ -444,17 +531,31 @@ export interface SettingState {
      */
     gatewayUpdownThreshold?: pulumi.Input<number | undefined>;
     /**
-     * IoT proxy configuration for the site
+     * Proxy settings for IoT traffic at the site
      */
     iotproxy?: pulumi.Input<inputs.site.SettingIotproxy | undefined>;
+    /**
+     * SRX integration settings for the site
+     */
     juniperSrx?: pulumi.Input<inputs.site.SettingJuniperSrx | undefined>;
     /**
-     * LED AP settings
+     * AP LED behavior configured for the site
      */
     led?: pulumi.Input<inputs.site.SettingLed | undefined>;
+    /**
+     * AI assistant settings for Marvis at the site
+     */
     marvis?: pulumi.Input<inputs.site.SettingMarvis | undefined>;
     /**
-     * Occupancy Analytics settings
+     * Mist Edge management access settings for the site
+     */
+    mxedgeMgmt?: pulumi.Input<inputs.site.SettingMxedgeMgmt | undefined>;
+    /**
+     * Site Mist Tunnel configuration
+     */
+    mxtunnels?: pulumi.Input<inputs.site.SettingMxtunnels | undefined>;
+    /**
+     * Analytics settings for site occupancy
      */
     occupancy?: pulumi.Input<inputs.site.SettingOccupancy | undefined>;
     /**
@@ -462,7 +563,7 @@ export interface SettingState {
      */
     persistConfigOnDevice?: pulumi.Input<boolean | undefined>;
     /**
-     * Proxy Configuration to talk to Mist
+     * Network proxy settings for devices at the site
      */
     proxy?: pulumi.Input<inputs.site.SettingProxy | undefined>;
     /**
@@ -474,47 +575,80 @@ export interface SettingState {
      */
     reportGatt?: pulumi.Input<boolean | undefined>;
     /**
-     * Rogue site settings
+     * AP threat detection settings for the site
      */
     rogue?: pulumi.Input<inputs.site.SettingRogue | undefined>;
     /**
-     * Managed mobility
+     * Managed mobility and asset tracking settings for the site
      */
     rtsa?: pulumi.Input<inputs.site.SettingRtsa | undefined>;
     /**
-     * Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute window, there are more than Y distinct client encountering over X failures
+     * Threshold alert settings for the site
      */
     simpleAlert?: pulumi.Input<inputs.site.SettingSimpleAlert | undefined>;
+    /**
+     * Identifier of the site these settings apply to
+     */
     siteId?: pulumi.Input<string | undefined>;
+    /**
+     * Threat intelligence settings from Sky ATP for the site
+     */
     skyatp?: pulumi.Input<inputs.site.SettingSkyatp | undefined>;
+    /**
+     * Service level expectation threshold settings for the site
+     */
     sleThresholds?: pulumi.Input<inputs.site.SettingSleThresholds | undefined>;
+    /**
+     * Juniper SRX application visibility settings for the site
+     */
     srxApp?: pulumi.Input<inputs.site.SettingSrxApp | undefined>;
     /**
-     * When limitSshAccess = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see Org:Setting)
+     * Public SSH keys configured for the site
      */
     sshKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Session Smart Router settings for the site
+     */
     ssr?: pulumi.Input<inputs.site.SettingSsr | undefined>;
     /**
      * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `deviceUpdownThreshold` is ignored.
      */
     switchUpdownThreshold?: pulumi.Input<number | undefined>;
+    /**
+     * Active monitoring test configuration for the site
+     */
     syntheticTest?: pulumi.Input<inputs.site.SettingSyntheticTest | undefined>;
     /**
      * Whether to track anonymous BLE assets (requires ‘track_asset’  enabled)
      */
     trackAnonymousDevices?: pulumi.Input<boolean | undefined>;
     /**
-     * AP Uplink port configuration
+     * Whether tunnel termination monitoring is disabled for the site
+     */
+    tuntermMonitoringDisabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Tunnel termination monitoring settings for the site
+     */
+    tuntermMonitorings?: pulumi.Input<pulumi.Input<inputs.site.SettingTuntermMonitoring>[] | undefined>;
+    /**
+     * Multicast settings for tunnel termination at the site
+     */
+    tuntermMulticastConfig?: pulumi.Input<inputs.site.SettingTuntermMulticastConfig | undefined>;
+    /**
+     * AP uplink port configuration for the site
      */
     uplinkPortConfig?: pulumi.Input<inputs.site.SettingUplinkPortConfig | undefined>;
     /**
-     * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Template variables defined for the site
      */
     vars?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+     * Metadata annotations for site template variables
      */
     varsAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.SettingVarsAnnotations>} | undefined>;
+    /**
+     * Virtual Network Assistant settings for the site
+     */
     vna?: pulumi.Input<inputs.site.SettingVna | undefined>;
     /**
      * enable threshold-based vpn path down delivery.
@@ -525,23 +659,35 @@ export interface SettingState {
      */
     vpnPeerUpdownThreshold?: pulumi.Input<number | undefined>;
     /**
-     * Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
+     * EX9200 virtual switch instance definitions for the site
      */
     vsInstance?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.SettingVsInstance>} | undefined>;
+    /**
+     * Virtual Network Assistant settings for WAN experiences at the site
+     */
     wanVna?: pulumi.Input<inputs.site.SettingWanVna | undefined>;
+    /**
+     * Read-only URL for the watched station list file
+     */
     watchedStationUrl?: pulumi.Input<string | undefined>;
+    /**
+     * Read-only URL for the site whitelist file
+     */
     whitelistUrl?: pulumi.Input<string | undefined>;
     /**
-     * WIDS site settings
+     * Wireless intrusion detection settings for the site
      */
     wids?: pulumi.Input<inputs.site.SettingWids | undefined>;
     /**
-     * Wi-Fi site settings
+     * Wireless LAN configuration settings for the site
      */
     wifi?: pulumi.Input<inputs.site.SettingWifi | undefined>;
+    /**
+     * Virtual Network Assistant settings for wired experiences at the site
+     */
     wiredVna?: pulumi.Input<inputs.site.SettingWiredVna | undefined>;
     /**
-     * Zone Occupancy alert site settings
+     * Occupancy alert settings for site zones
      */
     zoneOccupancyAlert?: pulumi.Input<inputs.site.SettingZoneOccupancyAlert | undefined>;
 }
@@ -554,9 +700,12 @@ export interface SettingArgs {
      * whether to allow Mist to look at this org
      */
     allowMist?: pulumi.Input<boolean | undefined>;
+    /**
+     * Advanced analytics configuration for the site
+     */
     analytic?: pulumi.Input<inputs.site.SettingAnalytic | undefined>;
     /**
-     * AP Synthetic Test configuration
+     * Synthetic test configuration for APs at the site
      */
     apSyntheticTest?: pulumi.Input<inputs.site.SettingApSyntheticTest | undefined>;
     /**
@@ -564,11 +713,11 @@ export interface SettingArgs {
      */
     apUpdownThreshold?: pulumi.Input<number | undefined>;
     /**
-     * Auto Upgrade Settings
+     * Automatic AP firmware upgrade settings for the site. Overrides org setting when provided.
      */
     autoUpgrade?: pulumi.Input<inputs.site.SettingAutoUpgrade | undefined>;
     /**
-     * auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware upgrade
+     * Automatic ESL firmware upgrade settings for the site
      */
     autoUpgradeEsl?: pulumi.Input<inputs.site.SettingAutoUpgradeEsl | undefined>;
     /**
@@ -576,7 +725,7 @@ export interface SettingArgs {
      */
     bgpNeighborUpdownThreshold?: pulumi.Input<number | undefined>;
     /**
-     * BLE AP settings
+     * Bluetooth Low Energy configuration applied to APs at the site
      */
     bleConfig?: pulumi.Input<inputs.site.SettingBleConfig | undefined>;
     /**
@@ -584,24 +733,27 @@ export interface SettingArgs {
      */
     configAutoRevert?: pulumi.Input<boolean | undefined>;
     /**
-     * Mist also uses some heuristic rules to prevent destructive configs from being pushed
+     * Policy controlling how site configuration pushes are applied
      */
     configPushPolicy?: pulumi.Input<inputs.site.SettingConfigPushPolicy | undefined>;
     /**
-     * You can define some URLs that's critical to site operations the latency will be captured and considered for site health
+     * Monitoring configuration for critical URLs at the site
      */
     criticalUrlMonitoring?: pulumi.Input<inputs.site.SettingCriticalUrlMonitoring | undefined>;
     /**
      * By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following
      */
     deviceUpdownThreshold?: pulumi.Input<number | undefined>;
+    /**
+     * Whether UNII-4 channels are enabled for the site
+     */
     enableUnii4?: pulumi.Input<boolean | undefined>;
     /**
-     * **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple ranges for the same day
+     * Dwell-time analytics rules for the site
      */
     engagement?: pulumi.Input<inputs.site.SettingEngagement | undefined>;
     /**
-     * Gateway Management settings
+     * Management access settings for gateways at the site
      */
     gatewayMgmt?: pulumi.Input<inputs.site.SettingGatewayMgmt | undefined>;
     /**
@@ -613,17 +765,31 @@ export interface SettingArgs {
      */
     gatewayUpdownThreshold?: pulumi.Input<number | undefined>;
     /**
-     * IoT proxy configuration for the site
+     * Proxy settings for IoT traffic at the site
      */
     iotproxy?: pulumi.Input<inputs.site.SettingIotproxy | undefined>;
+    /**
+     * SRX integration settings for the site
+     */
     juniperSrx?: pulumi.Input<inputs.site.SettingJuniperSrx | undefined>;
     /**
-     * LED AP settings
+     * AP LED behavior configured for the site
      */
     led?: pulumi.Input<inputs.site.SettingLed | undefined>;
+    /**
+     * AI assistant settings for Marvis at the site
+     */
     marvis?: pulumi.Input<inputs.site.SettingMarvis | undefined>;
     /**
-     * Occupancy Analytics settings
+     * Mist Edge management access settings for the site
+     */
+    mxedgeMgmt?: pulumi.Input<inputs.site.SettingMxedgeMgmt | undefined>;
+    /**
+     * Site Mist Tunnel configuration
+     */
+    mxtunnels?: pulumi.Input<inputs.site.SettingMxtunnels | undefined>;
+    /**
+     * Analytics settings for site occupancy
      */
     occupancy?: pulumi.Input<inputs.site.SettingOccupancy | undefined>;
     /**
@@ -631,7 +797,7 @@ export interface SettingArgs {
      */
     persistConfigOnDevice?: pulumi.Input<boolean | undefined>;
     /**
-     * Proxy Configuration to talk to Mist
+     * Network proxy settings for devices at the site
      */
     proxy?: pulumi.Input<inputs.site.SettingProxy | undefined>;
     /**
@@ -643,47 +809,80 @@ export interface SettingArgs {
      */
     reportGatt?: pulumi.Input<boolean | undefined>;
     /**
-     * Rogue site settings
+     * AP threat detection settings for the site
      */
     rogue?: pulumi.Input<inputs.site.SettingRogue | undefined>;
     /**
-     * Managed mobility
+     * Managed mobility and asset tracking settings for the site
      */
     rtsa?: pulumi.Input<inputs.site.SettingRtsa | undefined>;
     /**
-     * Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute window, there are more than Y distinct client encountering over X failures
+     * Threshold alert settings for the site
      */
     simpleAlert?: pulumi.Input<inputs.site.SettingSimpleAlert | undefined>;
+    /**
+     * Identifier of the site these settings apply to
+     */
     siteId: pulumi.Input<string>;
+    /**
+     * Threat intelligence settings from Sky ATP for the site
+     */
     skyatp?: pulumi.Input<inputs.site.SettingSkyatp | undefined>;
+    /**
+     * Service level expectation threshold settings for the site
+     */
     sleThresholds?: pulumi.Input<inputs.site.SettingSleThresholds | undefined>;
+    /**
+     * Juniper SRX application visibility settings for the site
+     */
     srxApp?: pulumi.Input<inputs.site.SettingSrxApp | undefined>;
     /**
-     * When limitSshAccess = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see Org:Setting)
+     * Public SSH keys configured for the site
      */
     sshKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Session Smart Router settings for the site
+     */
     ssr?: pulumi.Input<inputs.site.SettingSsr | undefined>;
     /**
      * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `deviceUpdownThreshold` is ignored.
      */
     switchUpdownThreshold?: pulumi.Input<number | undefined>;
+    /**
+     * Active monitoring test configuration for the site
+     */
     syntheticTest?: pulumi.Input<inputs.site.SettingSyntheticTest | undefined>;
     /**
      * Whether to track anonymous BLE assets (requires ‘track_asset’  enabled)
      */
     trackAnonymousDevices?: pulumi.Input<boolean | undefined>;
     /**
-     * AP Uplink port configuration
+     * Whether tunnel termination monitoring is disabled for the site
+     */
+    tuntermMonitoringDisabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Tunnel termination monitoring settings for the site
+     */
+    tuntermMonitorings?: pulumi.Input<pulumi.Input<inputs.site.SettingTuntermMonitoring>[] | undefined>;
+    /**
+     * Multicast settings for tunnel termination at the site
+     */
+    tuntermMulticastConfig?: pulumi.Input<inputs.site.SettingTuntermMulticastConfig | undefined>;
+    /**
+     * AP uplink port configuration for the site
      */
     uplinkPortConfig?: pulumi.Input<inputs.site.SettingUplinkPortConfig | undefined>;
     /**
-     * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Template variables defined for the site
      */
     vars?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+     * Metadata annotations for site template variables
      */
     varsAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.SettingVarsAnnotations>} | undefined>;
+    /**
+     * Virtual Network Assistant settings for the site
+     */
     vna?: pulumi.Input<inputs.site.SettingVna | undefined>;
     /**
      * enable threshold-based vpn path down delivery.
@@ -694,21 +893,27 @@ export interface SettingArgs {
      */
     vpnPeerUpdownThreshold?: pulumi.Input<number | undefined>;
     /**
-     * Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
+     * EX9200 virtual switch instance definitions for the site
      */
     vsInstance?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.SettingVsInstance>} | undefined>;
+    /**
+     * Virtual Network Assistant settings for WAN experiences at the site
+     */
     wanVna?: pulumi.Input<inputs.site.SettingWanVna | undefined>;
     /**
-     * WIDS site settings
+     * Wireless intrusion detection settings for the site
      */
     wids?: pulumi.Input<inputs.site.SettingWids | undefined>;
     /**
-     * Wi-Fi site settings
+     * Wireless LAN configuration settings for the site
      */
     wifi?: pulumi.Input<inputs.site.SettingWifi | undefined>;
+    /**
+     * Virtual Network Assistant settings for wired experiences at the site
+     */
     wiredVna?: pulumi.Input<inputs.site.SettingWiredVna | undefined>;
     /**
-     * Zone Occupancy alert site settings
+     * Occupancy alert settings for site zones
      */
     zoneOccupancyAlert?: pulumi.Input<inputs.site.SettingZoneOccupancyAlert | undefined>;
 }

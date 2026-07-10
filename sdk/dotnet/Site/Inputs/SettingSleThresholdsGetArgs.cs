@@ -13,19 +13,19 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class SettingSleThresholdsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Capacity, in %
+        /// Threshold percentage for capacity SLE scoring
         /// </summary>
         [Input("capacity")]
         public Input<int>? Capacity { get; set; }
 
         /// <summary>
-        /// Coverage, in dBm
+        /// RSSI threshold for coverage SLE scoring, in dBm
         /// </summary>
         [Input("coverage")]
         public Input<int>? Coverage { get; set; }
 
         /// <summary>
-        /// Throughput, in Mbps
+        /// Minimum throughput threshold for SLE scoring, in Mbps
         /// </summary>
         [Input("throughput")]
         public Input<int>? Throughput { get; set; }

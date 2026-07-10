@@ -12,19 +12,27 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingIotproxy {
+    /**
+     * @return Whether the site IoT proxy is enabled
+     * 
+     */
     private @Nullable Boolean enabled;
     /**
-     * @return Visionline integration settings for IoT proxy
+     * @return Site access-control integration settings for Visionline
      * 
      */
     private @Nullable SettingIotproxyVisionline visionline;
 
     private SettingIotproxy() {}
+    /**
+     * @return Whether the site IoT proxy is enabled
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Visionline integration settings for IoT proxy
+     * @return Site access-control integration settings for Visionline
      * 
      */
     public Optional<SettingIotproxyVisionline> visionline() {

@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputList<string>? _additionalVlanIds;
 
         /// <summary>
-        /// List or Comma separated list of additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
+        /// VLAN IDs included in addition to the default VLAN set for AP synthetic tests
         /// </summary>
         public InputList<string> AdditionalVlanIds
         {

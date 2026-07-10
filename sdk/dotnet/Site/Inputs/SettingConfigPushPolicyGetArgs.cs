@@ -19,7 +19,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<bool>? NoPush { get; set; }
 
         /// <summary>
-        /// If enabled, new config will only be pushed to device within the specified time window
+        /// Allowed time window during which configuration pushes may run
         /// </summary>
         [Input("pushWindow")]
         public Input<Inputs.SettingConfigPushPolicyPushWindowGetArgs>? PushWindow { get; set; }

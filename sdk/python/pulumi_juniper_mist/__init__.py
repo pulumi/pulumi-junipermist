@@ -209,6 +209,14 @@ _utilities.register(
  },
  {
   "pkg": "junipermist",
+  "mod": "org/mxtunnel",
+  "fqn": "pulumi_juniper_mist.org",
+  "classes": {
+   "junipermist:org/mxtunnel:Mxtunnel": "Mxtunnel"
+  }
+ },
+ {
+  "pkg": "junipermist",
   "mod": "org/nacEndpoint",
   "fqn": "pulumi_juniper_mist.org",
   "classes": {

@@ -13,11 +13,17 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class SettingSimpleAlertDhcpFailure
     {
+        /// <summary>
+        /// Number of distinct clients that must encounter DHCP failures before alerting
+        /// </summary>
         public readonly int? ClientCount;
         /// <summary>
-        /// failing within minutes
+        /// Time window in minutes for evaluating DHCP failures
         /// </summary>
         public readonly int? Duration;
+        /// <summary>
+        /// Number of DHCP failure incidents required within the duration window
+        /// </summary>
         public readonly int? IncidentCount;
 
         [OutputConstructor]

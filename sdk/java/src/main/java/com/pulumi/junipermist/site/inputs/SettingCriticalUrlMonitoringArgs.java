@@ -17,16 +17,32 @@ public final class SettingCriticalUrlMonitoringArgs extends com.pulumi.resources
 
     public static final SettingCriticalUrlMonitoringArgs Empty = new SettingCriticalUrlMonitoringArgs();
 
+    /**
+     * Whether critical URL monitoring is enabled
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether critical URL monitoring is enabled
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * Critical URLs monitored for site health latency
+     * 
+     */
     @Import(name="monitors")
     private @Nullable Output<List<SettingCriticalUrlMonitoringMonitorArgs>> monitors;
 
+    /**
+     * @return Critical URLs monitored for site health latency
+     * 
+     */
     public Optional<Output<List<SettingCriticalUrlMonitoringMonitorArgs>>> monitors() {
         return Optional.ofNullable(this.monitors);
     }
@@ -56,24 +72,54 @@ public final class SettingCriticalUrlMonitoringArgs extends com.pulumi.resources
             $ = new SettingCriticalUrlMonitoringArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Whether critical URL monitoring is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether critical URL monitoring is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param monitors Critical URLs monitored for site health latency
+         * 
+         * @return builder
+         * 
+         */
         public Builder monitors(@Nullable Output<List<SettingCriticalUrlMonitoringMonitorArgs>> monitors) {
             $.monitors = monitors;
             return this;
         }
 
+        /**
+         * @param monitors Critical URLs monitored for site health latency
+         * 
+         * @return builder
+         * 
+         */
         public Builder monitors(List<SettingCriticalUrlMonitoringMonitorArgs> monitors) {
             return monitors(Output.of(monitors));
         }
 
+        /**
+         * @param monitors Critical URLs monitored for site health latency
+         * 
+         * @return builder
+         * 
+         */
         public Builder monitors(SettingCriticalUrlMonitoringMonitorArgs... monitors) {
             return monitors(List.of(monitors));
         }

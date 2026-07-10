@@ -13,11 +13,17 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class SettingSimpleAlertDnsFailure
     {
+        /// <summary>
+        /// Number of distinct clients that must encounter DNS failures before alerting
+        /// </summary>
         public readonly int? ClientCount;
         /// <summary>
-        /// failing within minutes
+        /// Time window in minutes for evaluating DNS failures
         /// </summary>
         public readonly int? Duration;
+        /// <summary>
+        /// Number of DNS failure incidents required within the duration window
+        /// </summary>
         public readonly int? IncidentCount;
 
         [OutputConstructor]

@@ -17,14 +17,14 @@ public final class SettingSyntheticTestLanNetworkArgs extends com.pulumi.resourc
     public static final SettingSyntheticTestLanNetworkArgs Empty = new SettingSyntheticTestLanNetworkArgs();
 
     /**
-     * List of networks to be used for synthetic tests
+     * LAN network names where synthetic probes are run
      * 
      */
     @Import(name="networks")
     private @Nullable Output<List<String>> networks;
 
     /**
-     * @return List of networks to be used for synthetic tests
+     * @return LAN network names where synthetic probes are run
      * 
      */
     public Optional<Output<List<String>>> networks() {
@@ -32,14 +32,14 @@ public final class SettingSyntheticTestLanNetworkArgs extends com.pulumi.resourc
     }
 
     /**
-     * app name comes from `customProbes` above or /const/synthetic_test_probes
+     * Synthetic probe names to run on the listed LAN networks
      * 
      */
     @Import(name="probes")
     private @Nullable Output<List<String>> probes;
 
     /**
-     * @return app name comes from `customProbes` above or /const/synthetic_test_probes
+     * @return Synthetic probe names to run on the listed LAN networks
      * 
      */
     public Optional<Output<List<String>>> probes() {
@@ -72,7 +72,7 @@ public final class SettingSyntheticTestLanNetworkArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param networks List of networks to be used for synthetic tests
+         * @param networks LAN network names where synthetic probes are run
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class SettingSyntheticTestLanNetworkArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param networks List of networks to be used for synthetic tests
+         * @param networks LAN network names where synthetic probes are run
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class SettingSyntheticTestLanNetworkArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param networks List of networks to be used for synthetic tests
+         * @param networks LAN network names where synthetic probes are run
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class SettingSyntheticTestLanNetworkArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param probes app name comes from `customProbes` above or /const/synthetic_test_probes
+         * @param probes Synthetic probe names to run on the listed LAN networks
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class SettingSyntheticTestLanNetworkArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param probes app name comes from `customProbes` above or /const/synthetic_test_probes
+         * @param probes Synthetic probe names to run on the listed LAN networks
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class SettingSyntheticTestLanNetworkArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param probes app name comes from `customProbes` above or /const/synthetic_test_probes
+         * @param probes Synthetic probe names to run on the listed LAN networks
          * 
          * @return builder
          * 

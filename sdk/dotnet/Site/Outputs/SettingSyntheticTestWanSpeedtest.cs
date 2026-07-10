@@ -13,9 +13,12 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class SettingSyntheticTestWanSpeedtest
     {
+        /// <summary>
+        /// Whether scheduled WAN speedtests are enabled
+        /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// `Any` / HH:MM (24-hour format)
+        /// Scheduled time of day for WAN speedtests
         /// </summary>
         public readonly string? TimeOfDay;
 

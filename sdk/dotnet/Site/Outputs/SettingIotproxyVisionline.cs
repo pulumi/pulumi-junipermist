@@ -17,13 +17,20 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// Access ID for the Visionline service
         /// </summary>
         public readonly string? AccessId;
+        /// <summary>
+        /// PEM-encoded CA certificates used to verify the Visionline collector's TLS certificate. Required when the collector uses a self-signed certificate
+        /// </summary>
+        public readonly ImmutableArray<string> Cacerts;
+        /// <summary>
+        /// Whether the Visionline integration is enabled
+        /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Hostname or IP of the Visionline collector
+        /// Collector hostname or IP address for Visionline
         /// </summary>
         public readonly string? Host;
         /// <summary>
-        /// Password for the Visionline service
+        /// Visionline service password used by the IoT proxy
         /// </summary>
         public readonly string? Password;
         /// <summary>
@@ -31,13 +38,15 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly int? Port;
         /// <summary>
-        /// Username for the Visionline service
+        /// Visionline service username used by the IoT proxy
         /// </summary>
         public readonly string? Username;
 
         [OutputConstructor]
         private SettingIotproxyVisionline(
             string? accessId,
+
+            ImmutableArray<string> cacerts,
 
             bool? enabled,
 
@@ -50,6 +59,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
             string? username)
         {
             AccessId = accessId;
+            Cacerts = cacerts;
             Enabled = enabled;
             Host = host;
             Password = password;

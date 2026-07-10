@@ -15,16 +15,32 @@ public final class SettingCriticalUrlMonitoringMonitorArgs extends com.pulumi.re
 
     public static final SettingCriticalUrlMonitoringMonitorArgs Empty = new SettingCriticalUrlMonitoringMonitorArgs();
 
+    /**
+     * Monitored HTTP or HTTPS URL used for site health latency
+     * 
+     */
     @Import(name="url")
     private @Nullable Output<String> url;
 
+    /**
+     * @return Monitored HTTP or HTTPS URL used for site health latency
+     * 
+     */
     public Optional<Output<String>> url() {
         return Optional.ofNullable(this.url);
     }
 
+    /**
+     * Source VLAN ID used to run the critical URL monitor
+     * 
+     */
     @Import(name="vlanId")
     private @Nullable Output<String> vlanId;
 
+    /**
+     * @return Source VLAN ID used to run the critical URL monitor
+     * 
+     */
     public Optional<Output<String>> vlanId() {
         return Optional.ofNullable(this.vlanId);
     }
@@ -54,20 +70,44 @@ public final class SettingCriticalUrlMonitoringMonitorArgs extends com.pulumi.re
             $ = new SettingCriticalUrlMonitoringMonitorArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param url Monitored HTTP or HTTPS URL used for site health latency
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(@Nullable Output<String> url) {
             $.url = url;
             return this;
         }
 
+        /**
+         * @param url Monitored HTTP or HTTPS URL used for site health latency
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(String url) {
             return url(Output.of(url));
         }
 
+        /**
+         * @param vlanId Source VLAN ID used to run the critical URL monitor
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlanId(@Nullable Output<String> vlanId) {
             $.vlanId = vlanId;
             return this;
         }
 
+        /**
+         * @param vlanId Source VLAN ID used to run the critical URL monitor
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlanId(String vlanId) {
             return vlanId(Output.of(vlanId));
         }

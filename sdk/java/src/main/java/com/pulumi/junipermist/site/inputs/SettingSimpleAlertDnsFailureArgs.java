@@ -15,31 +15,47 @@ public final class SettingSimpleAlertDnsFailureArgs extends com.pulumi.resources
 
     public static final SettingSimpleAlertDnsFailureArgs Empty = new SettingSimpleAlertDnsFailureArgs();
 
+    /**
+     * Number of distinct clients that must encounter DNS failures before alerting
+     * 
+     */
     @Import(name="clientCount")
     private @Nullable Output<Integer> clientCount;
 
+    /**
+     * @return Number of distinct clients that must encounter DNS failures before alerting
+     * 
+     */
     public Optional<Output<Integer>> clientCount() {
         return Optional.ofNullable(this.clientCount);
     }
 
     /**
-     * failing within minutes
+     * Time window in minutes for evaluating DNS failures
      * 
      */
     @Import(name="duration")
     private @Nullable Output<Integer> duration;
 
     /**
-     * @return failing within minutes
+     * @return Time window in minutes for evaluating DNS failures
      * 
      */
     public Optional<Output<Integer>> duration() {
         return Optional.ofNullable(this.duration);
     }
 
+    /**
+     * Number of DNS failure incidents required within the duration window
+     * 
+     */
     @Import(name="incidentCount")
     private @Nullable Output<Integer> incidentCount;
 
+    /**
+     * @return Number of DNS failure incidents required within the duration window
+     * 
+     */
     public Optional<Output<Integer>> incidentCount() {
         return Optional.ofNullable(this.incidentCount);
     }
@@ -70,17 +86,29 @@ public final class SettingSimpleAlertDnsFailureArgs extends com.pulumi.resources
             $ = new SettingSimpleAlertDnsFailureArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param clientCount Number of distinct clients that must encounter DNS failures before alerting
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientCount(@Nullable Output<Integer> clientCount) {
             $.clientCount = clientCount;
             return this;
         }
 
+        /**
+         * @param clientCount Number of distinct clients that must encounter DNS failures before alerting
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientCount(Integer clientCount) {
             return clientCount(Output.of(clientCount));
         }
 
         /**
-         * @param duration failing within minutes
+         * @param duration Time window in minutes for evaluating DNS failures
          * 
          * @return builder
          * 
@@ -91,7 +119,7 @@ public final class SettingSimpleAlertDnsFailureArgs extends com.pulumi.resources
         }
 
         /**
-         * @param duration failing within minutes
+         * @param duration Time window in minutes for evaluating DNS failures
          * 
          * @return builder
          * 
@@ -100,11 +128,23 @@ public final class SettingSimpleAlertDnsFailureArgs extends com.pulumi.resources
             return duration(Output.of(duration));
         }
 
+        /**
+         * @param incidentCount Number of DNS failure incidents required within the duration window
+         * 
+         * @return builder
+         * 
+         */
         public Builder incidentCount(@Nullable Output<Integer> incidentCount) {
             $.incidentCount = incidentCount;
             return this;
         }
 
+        /**
+         * @param incidentCount Number of DNS failure incidents required within the duration window
+         * 
+         * @return builder
+         * 
+         */
         public Builder incidentCount(Integer incidentCount) {
             return incidentCount(Output.of(incidentCount));
         }

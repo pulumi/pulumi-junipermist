@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class SettingWidsArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Detection settings for repeated authentication failures
+        /// </summary>
         [Input("repeatedAuthFailures")]
         public Input<Inputs.SettingWidsRepeatedAuthFailuresArgs>? RepeatedAuthFailures { get; set; }
 

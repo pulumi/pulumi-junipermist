@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class SettingWifiGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether Cisco compatibility features are enabled for site Wi-Fi
+        /// </summary>
         [Input("ciscoEnabled")]
         public Input<bool>? CiscoEnabled { get; set; }
 
@@ -21,6 +24,9 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("disable11k")]
         public Input<bool>? Disable11k { get; set; }
 
+        /// <summary>
+        /// Whether AP radios are disabled when AP power is constrained
+        /// </summary>
         [Input("disableRadiosWhenPowerConstrained")]
         public Input<bool>? DisableRadiosWhenPowerConstrained { get; set; }
 
@@ -30,6 +36,9 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("enableArpSpoofCheck")]
         public Input<bool>? EnableArpSpoofCheck { get; set; }
 
+        /// <summary>
+        /// Whether shared radio scanning is enabled for site Wi-Fi
+        /// </summary>
         [Input("enableSharedRadioScanning")]
         public Input<bool>? EnableSharedRadioScanning { get; set; }
 
@@ -92,7 +101,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? MeshSsid { get; set; }
 
         /// <summary>
-        /// enum: `Default`, `Disabled`, `Enabled`
+        /// ARP proxy mode for site Wi-Fi
         /// </summary>
         [Input("proxyArp")]
         public Input<string>? ProxyArp { get; set; }

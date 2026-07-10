@@ -15,65 +15,137 @@ public final class SettingMarvisAutoOperationsArgs extends com.pulumi.resources.
 
     public static final SettingMarvisAutoOperationsArgs Empty = new SettingMarvisAutoOperationsArgs();
 
+    /**
+     * Whether Marvis may remediate AP insufficient-capacity issues automatically
+     * 
+     */
     @Import(name="apInsufficientCapacity")
     private @Nullable Output<Boolean> apInsufficientCapacity;
 
+    /**
+     * @return Whether Marvis may remediate AP insufficient-capacity issues automatically
+     * 
+     */
     public Optional<Output<Boolean>> apInsufficientCapacity() {
         return Optional.ofNullable(this.apInsufficientCapacity);
     }
 
+    /**
+     * Whether Marvis may remediate AP loop issues automatically
+     * 
+     */
     @Import(name="apLoop")
     private @Nullable Output<Boolean> apLoop;
 
+    /**
+     * @return Whether Marvis may remediate AP loop issues automatically
+     * 
+     */
     public Optional<Output<Boolean>> apLoop() {
         return Optional.ofNullable(this.apLoop);
     }
 
+    /**
+     * Whether Marvis may remediate AP non-compliance automatically
+     * 
+     */
     @Import(name="apNonCompliant")
     private @Nullable Output<Boolean> apNonCompliant;
 
+    /**
+     * @return Whether Marvis may remediate AP non-compliance automatically
+     * 
+     */
     public Optional<Output<Boolean>> apNonCompliant() {
         return Optional.ofNullable(this.apNonCompliant);
     }
 
+    /**
+     * Whether Marvis may bounce switch ports for abnormal PoE clients
+     * 
+     */
     @Import(name="bouncePortForAbnormalPoeClient")
     private @Nullable Output<Boolean> bouncePortForAbnormalPoeClient;
 
+    /**
+     * @return Whether Marvis may bounce switch ports for abnormal PoE clients
+     * 
+     */
     public Optional<Output<Boolean>> bouncePortForAbnormalPoeClient() {
         return Optional.ofNullable(this.bouncePortForAbnormalPoeClient);
     }
 
+    /**
+     * Whether Marvis may disable a port when DDOS protocol violations are detected
+     * 
+     */
     @Import(name="disablePortWhenDdosProtocolViolation")
     private @Nullable Output<Boolean> disablePortWhenDdosProtocolViolation;
 
+    /**
+     * @return Whether Marvis may disable a port when DDOS protocol violations are detected
+     * 
+     */
     public Optional<Output<Boolean>> disablePortWhenDdosProtocolViolation() {
         return Optional.ofNullable(this.disablePortWhenDdosProtocolViolation);
     }
 
+    /**
+     * Whether Marvis may disable a port when a rogue DHCP server is detected
+     * 
+     */
     @Import(name="disablePortWhenRogueDhcpServerDetected")
     private @Nullable Output<Boolean> disablePortWhenRogueDhcpServerDetected;
 
+    /**
+     * @return Whether Marvis may disable a port when a rogue DHCP server is detected
+     * 
+     */
     public Optional<Output<Boolean>> disablePortWhenRogueDhcpServerDetected() {
         return Optional.ofNullable(this.disablePortWhenRogueDhcpServerDetected);
     }
 
+    /**
+     * Whether Marvis may remediate non-compliant gateways automatically
+     * 
+     */
     @Import(name="gatewayNonCompliant")
     private @Nullable Output<Boolean> gatewayNonCompliant;
 
+    /**
+     * @return Whether Marvis may remediate non-compliant gateways automatically
+     * 
+     */
     public Optional<Output<Boolean>> gatewayNonCompliant() {
         return Optional.ofNullable(this.gatewayNonCompliant);
     }
 
+    /**
+     * Whether Marvis may remediate misconfigured switch ports automatically
+     * 
+     */
     @Import(name="switchMisconfiguredPort")
     private @Nullable Output<Boolean> switchMisconfiguredPort;
 
+    /**
+     * @return Whether Marvis may remediate misconfigured switch ports automatically
+     * 
+     */
     public Optional<Output<Boolean>> switchMisconfiguredPort() {
         return Optional.ofNullable(this.switchMisconfiguredPort);
     }
 
+    /**
+     * Whether Marvis may remediate stuck switch ports automatically
+     * 
+     */
     @Import(name="switchPortStuck")
     private @Nullable Output<Boolean> switchPortStuck;
 
+    /**
+     * @return Whether Marvis may remediate stuck switch ports automatically
+     * 
+     */
     public Optional<Output<Boolean>> switchPortStuck() {
         return Optional.ofNullable(this.switchPortStuck);
     }
@@ -110,83 +182,191 @@ public final class SettingMarvisAutoOperationsArgs extends com.pulumi.resources.
             $ = new SettingMarvisAutoOperationsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param apInsufficientCapacity Whether Marvis may remediate AP insufficient-capacity issues automatically
+         * 
+         * @return builder
+         * 
+         */
         public Builder apInsufficientCapacity(@Nullable Output<Boolean> apInsufficientCapacity) {
             $.apInsufficientCapacity = apInsufficientCapacity;
             return this;
         }
 
+        /**
+         * @param apInsufficientCapacity Whether Marvis may remediate AP insufficient-capacity issues automatically
+         * 
+         * @return builder
+         * 
+         */
         public Builder apInsufficientCapacity(Boolean apInsufficientCapacity) {
             return apInsufficientCapacity(Output.of(apInsufficientCapacity));
         }
 
+        /**
+         * @param apLoop Whether Marvis may remediate AP loop issues automatically
+         * 
+         * @return builder
+         * 
+         */
         public Builder apLoop(@Nullable Output<Boolean> apLoop) {
             $.apLoop = apLoop;
             return this;
         }
 
+        /**
+         * @param apLoop Whether Marvis may remediate AP loop issues automatically
+         * 
+         * @return builder
+         * 
+         */
         public Builder apLoop(Boolean apLoop) {
             return apLoop(Output.of(apLoop));
         }
 
+        /**
+         * @param apNonCompliant Whether Marvis may remediate AP non-compliance automatically
+         * 
+         * @return builder
+         * 
+         */
         public Builder apNonCompliant(@Nullable Output<Boolean> apNonCompliant) {
             $.apNonCompliant = apNonCompliant;
             return this;
         }
 
+        /**
+         * @param apNonCompliant Whether Marvis may remediate AP non-compliance automatically
+         * 
+         * @return builder
+         * 
+         */
         public Builder apNonCompliant(Boolean apNonCompliant) {
             return apNonCompliant(Output.of(apNonCompliant));
         }
 
+        /**
+         * @param bouncePortForAbnormalPoeClient Whether Marvis may bounce switch ports for abnormal PoE clients
+         * 
+         * @return builder
+         * 
+         */
         public Builder bouncePortForAbnormalPoeClient(@Nullable Output<Boolean> bouncePortForAbnormalPoeClient) {
             $.bouncePortForAbnormalPoeClient = bouncePortForAbnormalPoeClient;
             return this;
         }
 
+        /**
+         * @param bouncePortForAbnormalPoeClient Whether Marvis may bounce switch ports for abnormal PoE clients
+         * 
+         * @return builder
+         * 
+         */
         public Builder bouncePortForAbnormalPoeClient(Boolean bouncePortForAbnormalPoeClient) {
             return bouncePortForAbnormalPoeClient(Output.of(bouncePortForAbnormalPoeClient));
         }
 
+        /**
+         * @param disablePortWhenDdosProtocolViolation Whether Marvis may disable a port when DDOS protocol violations are detected
+         * 
+         * @return builder
+         * 
+         */
         public Builder disablePortWhenDdosProtocolViolation(@Nullable Output<Boolean> disablePortWhenDdosProtocolViolation) {
             $.disablePortWhenDdosProtocolViolation = disablePortWhenDdosProtocolViolation;
             return this;
         }
 
+        /**
+         * @param disablePortWhenDdosProtocolViolation Whether Marvis may disable a port when DDOS protocol violations are detected
+         * 
+         * @return builder
+         * 
+         */
         public Builder disablePortWhenDdosProtocolViolation(Boolean disablePortWhenDdosProtocolViolation) {
             return disablePortWhenDdosProtocolViolation(Output.of(disablePortWhenDdosProtocolViolation));
         }
 
+        /**
+         * @param disablePortWhenRogueDhcpServerDetected Whether Marvis may disable a port when a rogue DHCP server is detected
+         * 
+         * @return builder
+         * 
+         */
         public Builder disablePortWhenRogueDhcpServerDetected(@Nullable Output<Boolean> disablePortWhenRogueDhcpServerDetected) {
             $.disablePortWhenRogueDhcpServerDetected = disablePortWhenRogueDhcpServerDetected;
             return this;
         }
 
+        /**
+         * @param disablePortWhenRogueDhcpServerDetected Whether Marvis may disable a port when a rogue DHCP server is detected
+         * 
+         * @return builder
+         * 
+         */
         public Builder disablePortWhenRogueDhcpServerDetected(Boolean disablePortWhenRogueDhcpServerDetected) {
             return disablePortWhenRogueDhcpServerDetected(Output.of(disablePortWhenRogueDhcpServerDetected));
         }
 
+        /**
+         * @param gatewayNonCompliant Whether Marvis may remediate non-compliant gateways automatically
+         * 
+         * @return builder
+         * 
+         */
         public Builder gatewayNonCompliant(@Nullable Output<Boolean> gatewayNonCompliant) {
             $.gatewayNonCompliant = gatewayNonCompliant;
             return this;
         }
 
+        /**
+         * @param gatewayNonCompliant Whether Marvis may remediate non-compliant gateways automatically
+         * 
+         * @return builder
+         * 
+         */
         public Builder gatewayNonCompliant(Boolean gatewayNonCompliant) {
             return gatewayNonCompliant(Output.of(gatewayNonCompliant));
         }
 
+        /**
+         * @param switchMisconfiguredPort Whether Marvis may remediate misconfigured switch ports automatically
+         * 
+         * @return builder
+         * 
+         */
         public Builder switchMisconfiguredPort(@Nullable Output<Boolean> switchMisconfiguredPort) {
             $.switchMisconfiguredPort = switchMisconfiguredPort;
             return this;
         }
 
+        /**
+         * @param switchMisconfiguredPort Whether Marvis may remediate misconfigured switch ports automatically
+         * 
+         * @return builder
+         * 
+         */
         public Builder switchMisconfiguredPort(Boolean switchMisconfiguredPort) {
             return switchMisconfiguredPort(Output.of(switchMisconfiguredPort));
         }
 
+        /**
+         * @param switchPortStuck Whether Marvis may remediate stuck switch ports automatically
+         * 
+         * @return builder
+         * 
+         */
         public Builder switchPortStuck(@Nullable Output<Boolean> switchPortStuck) {
             $.switchPortStuck = switchPortStuck;
             return this;
         }
 
+        /**
+         * @param switchPortStuck Whether Marvis may remediate stuck switch ports automatically
+         * 
+         * @return builder
+         * 
+         */
         public Builder switchPortStuck(Boolean switchPortStuck) {
             return switchPortStuck(Output.of(switchPortStuck));
         }

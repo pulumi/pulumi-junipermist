@@ -22,23 +22,31 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
     public static final SettingGatewayMgmtArgs Empty = new SettingGatewayMgmtArgs();
 
     /**
-     * For SSR only, as direct root access is not allowed
+     * SSR-only SSH public keys for administrative access
      * 
      */
     @Import(name="adminSshkeys")
     private @Nullable Output<List<String>> adminSshkeys;
 
     /**
-     * @return For SSR only, as direct root access is not allowed
+     * @return SSR-only SSH public keys for administrative access
      * 
      */
     public Optional<Output<List<String>>> adminSshkeys() {
         return Optional.ofNullable(this.adminSshkeys);
     }
 
+    /**
+     * Application probing configuration for gateway monitoring
+     * 
+     */
     @Import(name="appProbing")
     private @Nullable Output<SettingGatewayMgmtAppProbingArgs> appProbing;
 
+    /**
+     * @return Application probing configuration for gateway monitoring
+     * 
+     */
     public Optional<Output<SettingGatewayMgmtAppProbingArgs>> appProbing() {
         return Optional.ofNullable(this.appProbing);
     }
@@ -58,9 +66,17 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.appUsage);
     }
 
+    /**
+     * Schedule for automatic security signature updates
+     * 
+     */
     @Import(name="autoSignatureUpdate")
     private @Nullable Output<SettingGatewayMgmtAutoSignatureUpdateArgs> autoSignatureUpdate;
 
+    /**
+     * @return Schedule for automatic security signature updates
+     * 
+     */
     public Optional<Output<SettingGatewayMgmtAutoSignatureUpdateArgs>> autoSignatureUpdate() {
         return Optional.ofNullable(this.autoSignatureUpdate);
     }
@@ -125,40 +141,60 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.disableUsb);
     }
 
+    /**
+     * Whether FIPS mode is enabled on the gateway
+     * 
+     */
     @Import(name="fipsEnabled")
     private @Nullable Output<Boolean> fipsEnabled;
 
+    /**
+     * @return Whether FIPS mode is enabled on the gateway
+     * 
+     */
     public Optional<Output<Boolean>> fipsEnabled() {
         return Optional.ofNullable(this.fipsEnabled);
     }
 
+    /**
+     * IPv4 probe targets used for gateway connectivity checks
+     * 
+     */
     @Import(name="probeHosts")
     private @Nullable Output<List<String>> probeHosts;
 
+    /**
+     * @return IPv4 probe targets used for gateway connectivity checks
+     * 
+     */
     public Optional<Output<List<String>>> probeHosts() {
         return Optional.ofNullable(this.probeHosts);
     }
 
+    /**
+     * IPv6 probe targets used for gateway connectivity checks
+     * 
+     */
     @Import(name="probeHostsv6s")
     private @Nullable Output<List<String>> probeHostsv6s;
 
+    /**
+     * @return IPv6 probe targets used for gateway connectivity checks
+     * 
+     */
     public Optional<Output<List<String>>> probeHostsv6s() {
         return Optional.ofNullable(this.probeHostsv6s);
     }
 
     /**
-     * Restrict inbound-traffic to host
-     * when enabled, all traffic that is not essential to our operation will be dropped
-     * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we&#39;ll make sure it works
+     * Control-plane protection settings for the gateway
      * 
      */
     @Import(name="protectRe")
     private @Nullable Output<SettingGatewayMgmtProtectReArgs> protectRe;
 
     /**
-     * @return Restrict inbound-traffic to host
-     * when enabled, all traffic that is not essential to our operation will be dropped
-     * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we&#39;ll make sure it works
+     * @return Control-plane protection settings for the gateway
      * 
      */
     public Optional<Output<SettingGatewayMgmtProtectReArgs>> protectRe() {
@@ -166,30 +202,46 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * SRX only
+     * SRX only. Root password for local gateway access
      * 
      */
     @Import(name="rootPassword")
     private @Nullable Output<String> rootPassword;
 
     /**
-     * @return SRX only
+     * @return SRX only. Root password for local gateway access
      * 
      */
     public Optional<Output<String>> rootPassword() {
         return Optional.ofNullable(this.rootPassword);
     }
 
+    /**
+     * IPv4 source address used for gateway security log traffic
+     * 
+     */
     @Import(name="securityLogSourceAddress")
     private @Nullable Output<String> securityLogSourceAddress;
 
+    /**
+     * @return IPv4 source address used for gateway security log traffic
+     * 
+     */
     public Optional<Output<String>> securityLogSourceAddress() {
         return Optional.ofNullable(this.securityLogSourceAddress);
     }
 
+    /**
+     * Source interface used for gateway security log traffic
+     * 
+     */
     @Import(name="securityLogSourceInterface")
     private @Nullable Output<String> securityLogSourceInterface;
 
+    /**
+     * @return Source interface used for gateway security log traffic
+     * 
+     */
     public Optional<Output<String>> securityLogSourceInterface() {
         return Optional.ofNullable(this.securityLogSourceInterface);
     }
@@ -233,7 +285,7 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param adminSshkeys For SSR only, as direct root access is not allowed
+         * @param adminSshkeys SSR-only SSH public keys for administrative access
          * 
          * @return builder
          * 
@@ -244,7 +296,7 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param adminSshkeys For SSR only, as direct root access is not allowed
+         * @param adminSshkeys SSR-only SSH public keys for administrative access
          * 
          * @return builder
          * 
@@ -254,7 +306,7 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param adminSshkeys For SSR only, as direct root access is not allowed
+         * @param adminSshkeys SSR-only SSH public keys for administrative access
          * 
          * @return builder
          * 
@@ -263,11 +315,23 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
             return adminSshkeys(List.of(adminSshkeys));
         }
 
+        /**
+         * @param appProbing Application probing configuration for gateway monitoring
+         * 
+         * @return builder
+         * 
+         */
         public Builder appProbing(@Nullable Output<SettingGatewayMgmtAppProbingArgs> appProbing) {
             $.appProbing = appProbing;
             return this;
         }
 
+        /**
+         * @param appProbing Application probing configuration for gateway monitoring
+         * 
+         * @return builder
+         * 
+         */
         public Builder appProbing(SettingGatewayMgmtAppProbingArgs appProbing) {
             return appProbing(Output.of(appProbing));
         }
@@ -293,11 +357,23 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
             return appUsage(Output.of(appUsage));
         }
 
+        /**
+         * @param autoSignatureUpdate Schedule for automatic security signature updates
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoSignatureUpdate(@Nullable Output<SettingGatewayMgmtAutoSignatureUpdateArgs> autoSignatureUpdate) {
             $.autoSignatureUpdate = autoSignatureUpdate;
             return this;
         }
 
+        /**
+         * @param autoSignatureUpdate Schedule for automatic security signature updates
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoSignatureUpdate(SettingGatewayMgmtAutoSignatureUpdateArgs autoSignatureUpdate) {
             return autoSignatureUpdate(Output.of(autoSignatureUpdate));
         }
@@ -386,45 +462,91 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
             return disableUsb(Output.of(disableUsb));
         }
 
+        /**
+         * @param fipsEnabled Whether FIPS mode is enabled on the gateway
+         * 
+         * @return builder
+         * 
+         */
         public Builder fipsEnabled(@Nullable Output<Boolean> fipsEnabled) {
             $.fipsEnabled = fipsEnabled;
             return this;
         }
 
+        /**
+         * @param fipsEnabled Whether FIPS mode is enabled on the gateway
+         * 
+         * @return builder
+         * 
+         */
         public Builder fipsEnabled(Boolean fipsEnabled) {
             return fipsEnabled(Output.of(fipsEnabled));
         }
 
+        /**
+         * @param probeHosts IPv4 probe targets used for gateway connectivity checks
+         * 
+         * @return builder
+         * 
+         */
         public Builder probeHosts(@Nullable Output<List<String>> probeHosts) {
             $.probeHosts = probeHosts;
             return this;
         }
 
+        /**
+         * @param probeHosts IPv4 probe targets used for gateway connectivity checks
+         * 
+         * @return builder
+         * 
+         */
         public Builder probeHosts(List<String> probeHosts) {
             return probeHosts(Output.of(probeHosts));
         }
 
+        /**
+         * @param probeHosts IPv4 probe targets used for gateway connectivity checks
+         * 
+         * @return builder
+         * 
+         */
         public Builder probeHosts(String... probeHosts) {
             return probeHosts(List.of(probeHosts));
         }
 
+        /**
+         * @param probeHostsv6s IPv6 probe targets used for gateway connectivity checks
+         * 
+         * @return builder
+         * 
+         */
         public Builder probeHostsv6s(@Nullable Output<List<String>> probeHostsv6s) {
             $.probeHostsv6s = probeHostsv6s;
             return this;
         }
 
+        /**
+         * @param probeHostsv6s IPv6 probe targets used for gateway connectivity checks
+         * 
+         * @return builder
+         * 
+         */
         public Builder probeHostsv6s(List<String> probeHostsv6s) {
             return probeHostsv6s(Output.of(probeHostsv6s));
         }
 
+        /**
+         * @param probeHostsv6s IPv6 probe targets used for gateway connectivity checks
+         * 
+         * @return builder
+         * 
+         */
         public Builder probeHostsv6s(String... probeHostsv6s) {
             return probeHostsv6s(List.of(probeHostsv6s));
         }
 
         /**
-         * @param protectRe Restrict inbound-traffic to host
-         * when enabled, all traffic that is not essential to our operation will be dropped
-         * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we&#39;ll make sure it works
+         * @param protectRe Control-plane protection settings for the gateway
          * 
          * @return builder
          * 
@@ -435,9 +557,7 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param protectRe Restrict inbound-traffic to host
-         * when enabled, all traffic that is not essential to our operation will be dropped
-         * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we&#39;ll make sure it works
+         * @param protectRe Control-plane protection settings for the gateway
          * 
          * @return builder
          * 
@@ -447,7 +567,7 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param rootPassword SRX only
+         * @param rootPassword SRX only. Root password for local gateway access
          * 
          * @return builder
          * 
@@ -458,7 +578,7 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param rootPassword SRX only
+         * @param rootPassword SRX only. Root password for local gateway access
          * 
          * @return builder
          * 
@@ -467,20 +587,44 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
             return rootPassword(Output.of(rootPassword));
         }
 
+        /**
+         * @param securityLogSourceAddress IPv4 source address used for gateway security log traffic
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityLogSourceAddress(@Nullable Output<String> securityLogSourceAddress) {
             $.securityLogSourceAddress = securityLogSourceAddress;
             return this;
         }
 
+        /**
+         * @param securityLogSourceAddress IPv4 source address used for gateway security log traffic
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityLogSourceAddress(String securityLogSourceAddress) {
             return securityLogSourceAddress(Output.of(securityLogSourceAddress));
         }
 
+        /**
+         * @param securityLogSourceInterface Source interface used for gateway security log traffic
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityLogSourceInterface(@Nullable Output<String> securityLogSourceInterface) {
             $.securityLogSourceInterface = securityLogSourceInterface;
             return this;
         }
 
+        /**
+         * @param securityLogSourceInterface Source interface used for gateway security log traffic
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityLogSourceInterface(String securityLogSourceInterface) {
             return securityLogSourceInterface(Output.of(securityLogSourceInterface));
         }

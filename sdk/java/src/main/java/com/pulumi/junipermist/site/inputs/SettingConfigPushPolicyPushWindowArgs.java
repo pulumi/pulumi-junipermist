@@ -16,22 +16,30 @@ public final class SettingConfigPushPolicyPushWindowArgs extends com.pulumi.reso
 
     public static final SettingConfigPushPolicyPushWindowArgs Empty = new SettingConfigPushPolicyPushWindowArgs();
 
+    /**
+     * Whether configuration pushes are limited to the configured push window
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether configuration pushes are limited to the configured push window
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
     /**
-     * Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+     * Day-of-week hour ranges when configuration pushes are allowed
      * 
      */
     @Import(name="hours")
     private @Nullable Output<SettingConfigPushPolicyPushWindowHoursArgs> hours;
 
     /**
-     * @return Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+     * @return Day-of-week hour ranges when configuration pushes are allowed
      * 
      */
     public Optional<Output<SettingConfigPushPolicyPushWindowHoursArgs>> hours() {
@@ -63,17 +71,29 @@ public final class SettingConfigPushPolicyPushWindowArgs extends com.pulumi.reso
             $ = new SettingConfigPushPolicyPushWindowArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Whether configuration pushes are limited to the configured push window
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether configuration pushes are limited to the configured push window
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
         /**
-         * @param hours Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+         * @param hours Day-of-week hour ranges when configuration pushes are allowed
          * 
          * @return builder
          * 
@@ -84,7 +104,7 @@ public final class SettingConfigPushPolicyPushWindowArgs extends com.pulumi.reso
         }
 
         /**
-         * @param hours Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+         * @param hours Day-of-week hour ranges when configuration pushes are allowed
          * 
          * @return builder
          * 

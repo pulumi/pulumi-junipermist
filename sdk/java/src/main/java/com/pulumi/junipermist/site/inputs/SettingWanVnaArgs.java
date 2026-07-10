@@ -15,9 +15,17 @@ public final class SettingWanVnaArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SettingWanVnaArgs Empty = new SettingWanVnaArgs();
 
+    /**
+     * Whether WAN VNA is enabled for the site
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether WAN VNA is enabled for the site
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -46,11 +54,23 @@ public final class SettingWanVnaArgs extends com.pulumi.resources.ResourceArgs {
             $ = new SettingWanVnaArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Whether WAN VNA is enabled for the site
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether WAN VNA is enabled for the site
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

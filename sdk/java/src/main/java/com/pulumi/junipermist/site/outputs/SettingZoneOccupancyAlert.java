@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingZoneOccupancyAlert {
     /**
-     * @return List of email addresses to send email notifications when the alert threshold is reached
+     * @return Notification email recipients for zone occupancy alerts
      * 
      */
     private @Nullable List<String> emailNotifiers;
@@ -32,7 +32,7 @@ public final class SettingZoneOccupancyAlert {
 
     private SettingZoneOccupancyAlert() {}
     /**
-     * @return List of email addresses to send email notifications when the alert threshold is reached
+     * @return Notification email recipients for zone occupancy alerts
      * 
      */
     public List<String> emailNotifiers() {

@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputList<int>? _allowedVlanIds;
 
         /// <summary>
-        /// list of VLAN IDs on which rogue APs are ignored
+        /// VLAN IDs allowed by the rogue detection policy
         /// </summary>
         public InputList<int> AllowedVlanIds
         {
@@ -64,7 +64,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputList<string>? _whitelistedBssids;
 
         /// <summary>
-        /// list of BSSIDs to whitelist. Ex: "cc-:8e-:6f-:d4-:bf-:16", "cc-8e-6f-d4-bf-16", "cc-73-*", "cc:82:*"
+        /// BSSID values or wildcard patterns excluded from rogue detection
         /// </summary>
         public InputList<string> WhitelistedBssids
         {
@@ -76,7 +76,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputList<string>? _whitelistedSsids;
 
         /// <summary>
-        /// List of SSIDs to whitelist
+        /// SSID names excluded from rogue detection
         /// </summary>
         public InputList<string> WhitelistedSsids
         {

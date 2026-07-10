@@ -19,6 +19,10 @@ public final class SettingGatewayMgmtProtectRe {
      * 
      */
     private @Nullable List<String> allowedServices;
+    /**
+     * @return Additional ACL entries allowed by the Protect RE policy
+     * 
+     */
     private @Nullable List<SettingGatewayMgmtProtectReCustom> customs;
     /**
      * @return When enabled, all traffic that is not essential to our operation will be dropped
@@ -33,7 +37,7 @@ public final class SettingGatewayMgmtProtectRe {
      */
     private @Nullable Boolean hitCount;
     /**
-     * @return host/subnets we&#39;ll allow traffic to/from
+     * @return Trusted host or subnet entries allowed by the Protect RE policy
      * 
      */
     private @Nullable List<String> trustedHosts;
@@ -46,6 +50,10 @@ public final class SettingGatewayMgmtProtectRe {
     public List<String> allowedServices() {
         return this.allowedServices == null ? List.of() : this.allowedServices;
     }
+    /**
+     * @return Additional ACL entries allowed by the Protect RE policy
+     * 
+     */
     public List<SettingGatewayMgmtProtectReCustom> customs() {
         return this.customs == null ? List.of() : this.customs;
     }
@@ -66,7 +74,7 @@ public final class SettingGatewayMgmtProtectRe {
         return Optional.ofNullable(this.hitCount);
     }
     /**
-     * @return host/subnets we&#39;ll allow traffic to/from
+     * @return Trusted host or subnet entries allowed by the Protect RE policy
      * 
      */
     public List<String> trustedHosts() {
