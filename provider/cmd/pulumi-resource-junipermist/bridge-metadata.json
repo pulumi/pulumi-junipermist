@@ -2472,6 +2472,33 @@
                     }
                 }
             },
+            "mist_org_mxtunnel": {
+                "current": "junipermist:org/mxtunnel:Mxtunnel",
+                "fields": {
+                    "anchor_mxtunnel_ids": {
+                        "maxItemsOne": false
+                    },
+                    "ipsec": {
+                        "fields": {
+                            "dns_servers": {
+                                "maxItemsOne": false
+                            },
+                            "dns_suffix": {
+                                "maxItemsOne": false
+                            },
+                            "extra_routes": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "mxcluster_ids": {
+                        "maxItemsOne": false
+                    },
+                    "vlan_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "mist_org_nac_endpoint": {
                 "current": "junipermist:org/nacEndpoint:NacEndpoint",
                 "fields": {
@@ -3984,9 +4011,72 @@
                             }
                         }
                     },
+                    "iotproxy": {
+                        "fields": {
+                            "visionline": {
+                                "fields": {
+                                    "cacerts": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "juniper_srx": {
                         "fields": {
                             "gateways": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "mxtunnels": {
+                        "fields": {
+                            "additional_mxtunnels": {
+                                "elem": {
+                                    "fields": {
+                                        "tunterm_clusters": {
+                                            "maxItemsOne": false,
+                                            "elem": {
+                                                "fields": {
+                                                    "tunterm_hosts": {
+                                                        "maxItemsOne": false
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "vlan_ids": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            },
+                            "ap_subnets": {
+                                "maxItemsOne": false
+                            },
+                            "clusters": {
+                                "maxItemsOne": false,
+                                "elem": {
+                                    "fields": {
+                                        "tunterm_hosts": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            },
+                            "hosts": {
+                                "maxItemsOne": false
+                            },
+                            "radsec": {
+                                "fields": {
+                                    "acct_servers": {
+                                        "maxItemsOne": false
+                                    },
+                                    "auth_servers": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            },
+                            "vlan_ids": {
                                 "maxItemsOne": false
                             }
                         }
@@ -4042,6 +4132,27 @@
                                         "vlan_ids": {
                                             "maxItemsOne": false
                                         }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "tunterm_monitoring": {
+                        "maxItemsOne": false
+                    },
+                    "tunterm_multicast_config": {
+                        "fields": {
+                            "mdns": {
+                                "fields": {
+                                    "vlan_ids": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            },
+                            "ssdp": {
+                                "fields": {
+                                    "vlan_ids": {
+                                        "maxItemsOne": false
                                     }
                                 }
                             }
@@ -5563,6 +5674,7 @@
             "mist_org_inventory": {},
             "mist_org_mxcluster": {},
             "mist_org_mxedge": {},
+            "mist_org_mxtunnel": {},
             "mist_org_nac_endpoint": {},
             "mist_org_nac_portal": {},
             "mist_org_nac_portal_image": {},
