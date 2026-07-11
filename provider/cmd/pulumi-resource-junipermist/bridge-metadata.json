@@ -4029,7 +4029,7 @@
                             }
                         }
                     },
-                    "mxtunnels": {
+                    "mxtunnel": {
                         "fields": {
                             "additional_mxtunnels": {
                                 "elem": {
