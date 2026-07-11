@@ -121,14 +121,14 @@ __all__ = [
     'SettingMarvis',
     'SettingMarvisAutoOperations',
     'SettingMxedgeMgmt',
-    'SettingMxtunnels',
-    'SettingMxtunnelsAdditionalMxtunnels',
-    'SettingMxtunnelsAdditionalMxtunnelsTuntermCluster',
-    'SettingMxtunnelsAutoPreemption',
-    'SettingMxtunnelsCluster',
-    'SettingMxtunnelsRadsec',
-    'SettingMxtunnelsRadsecAcctServer',
-    'SettingMxtunnelsRadsecAuthServer',
+    'SettingMxtunnel',
+    'SettingMxtunnelAdditionalMxtunnels',
+    'SettingMxtunnelAdditionalMxtunnelsTuntermCluster',
+    'SettingMxtunnelAutoPreemption',
+    'SettingMxtunnelCluster',
+    'SettingMxtunnelRadsec',
+    'SettingMxtunnelRadsecAcctServer',
+    'SettingMxtunnelRadsecAuthServer',
     'SettingOccupancy',
     'SettingProxy',
     'SettingRogue',
@@ -8804,7 +8804,7 @@ class SettingMxedgeMgmt(dict):
 
 
 @pulumi.output_type
-class SettingMxtunnels(dict):
+class SettingMxtunnel(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8832,21 +8832,21 @@ class SettingMxtunnels(dict):
             suggest = "vlan_ids"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SettingMxtunnels. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in SettingMxtunnel. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        SettingMxtunnels.__key_warning(key)
+        SettingMxtunnel.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        SettingMxtunnels.__key_warning(key)
+        SettingMxtunnel.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 additional_mxtunnels: Optional[Mapping[str, 'outputs.SettingMxtunnelsAdditionalMxtunnels']] = None,
+                 additional_mxtunnels: Optional[Mapping[str, 'outputs.SettingMxtunnelAdditionalMxtunnels']] = None,
                  ap_subnets: Optional[Sequence[_builtins.str]] = None,
-                 auto_preemption: Optional['outputs.SettingMxtunnelsAutoPreemption'] = None,
-                 clusters: Optional[Sequence['outputs.SettingMxtunnelsCluster']] = None,
+                 auto_preemption: Optional['outputs.SettingMxtunnelAutoPreemption'] = None,
+                 clusters: Optional[Sequence['outputs.SettingMxtunnelCluster']] = None,
                  created_time: Optional[_builtins.float] = None,
                  enabled: Optional[_builtins.bool] = None,
                  for_site: Optional[_builtins.bool] = None,
@@ -8858,14 +8858,14 @@ class SettingMxtunnels(dict):
                  mtu: Optional[_builtins.int] = None,
                  org_id: Optional[_builtins.str] = None,
                  protocol: Optional[_builtins.str] = None,
-                 radsec: Optional['outputs.SettingMxtunnelsRadsec'] = None,
+                 radsec: Optional['outputs.SettingMxtunnelRadsec'] = None,
                  site_id: Optional[_builtins.str] = None,
                  vlan_ids: Optional[Sequence[_builtins.int]] = None):
         """
-        :param Mapping[str, 'SettingMxtunnelsAdditionalMxtunnelsArgs'] additional_mxtunnels: Additional named Mist Tunnel definitions configured for the site
+        :param Mapping[str, 'SettingMxtunnelAdditionalMxtunnelsArgs'] additional_mxtunnels: Additional named Mist Tunnel definitions configured for the site
         :param Sequence[_builtins.str] ap_subnets: AP source subnets allowed to establish Mist Tunnels
-        :param 'SettingMxtunnelsAutoPreemptionArgs' auto_preemption: Preemption behavior for restoring preferred tunnel peers after failover
-        :param Sequence['SettingMxtunnelsClusterArgs'] clusters: Tunnel peer clusters used by APs for this site Mist Tunnel
+        :param 'SettingMxtunnelAutoPreemptionArgs' auto_preemption: Preemption behavior for restoring preferred tunnel peers after failover
+        :param Sequence['SettingMxtunnelClusterArgs'] clusters: Tunnel peer clusters used by APs for this site Mist Tunnel
         :param _builtins.float created_time: Timestamp when the site Mist Tunnel configuration was created
         :param _builtins.bool enabled: Whether site Mist Tunnel tunneling is enabled
         :param _builtins.bool for_site: Whether this Mist Tunnel configuration is scoped to a site
@@ -8877,7 +8877,7 @@ class SettingMxtunnels(dict):
         :param _builtins.int mtu: 0 to enable MTU, 552-1500 to start MTU with a lower MTU
         :param _builtins.str org_id: Identifier of the org that owns the site Mist Tunnel configuration
         :param _builtins.str protocol: Encapsulation protocol used for the site Mist Tunnel
-        :param 'SettingMxtunnelsRadsecArgs' radsec: TLS-secured RADIUS proxy settings for the site Mist Tunnel
+        :param 'SettingMxtunnelRadsecArgs' radsec: TLS-secured RADIUS proxy settings for the site Mist Tunnel
         :param _builtins.str site_id: Identifier of the site that owns this Mist Tunnel configuration
         :param Sequence[_builtins.int] vlan_ids: List of VLAN IDs carried by this site Mist Tunnel
         """
@@ -8920,7 +8920,7 @@ class SettingMxtunnels(dict):
 
     @_builtins.property
     @pulumi.getter(name="additionalMxtunnels")
-    def additional_mxtunnels(self) -> Optional[Mapping[str, 'outputs.SettingMxtunnelsAdditionalMxtunnels']]:
+    def additional_mxtunnels(self) -> Optional[Mapping[str, 'outputs.SettingMxtunnelAdditionalMxtunnels']]:
         """
         Additional named Mist Tunnel definitions configured for the site
         """
@@ -8936,7 +8936,7 @@ class SettingMxtunnels(dict):
 
     @_builtins.property
     @pulumi.getter(name="autoPreemption")
-    def auto_preemption(self) -> Optional['outputs.SettingMxtunnelsAutoPreemption']:
+    def auto_preemption(self) -> Optional['outputs.SettingMxtunnelAutoPreemption']:
         """
         Preemption behavior for restoring preferred tunnel peers after failover
         """
@@ -8944,7 +8944,7 @@ class SettingMxtunnels(dict):
 
     @_builtins.property
     @pulumi.getter
-    def clusters(self) -> Optional[Sequence['outputs.SettingMxtunnelsCluster']]:
+    def clusters(self) -> Optional[Sequence['outputs.SettingMxtunnelCluster']]:
         """
         Tunnel peer clusters used by APs for this site Mist Tunnel
         """
@@ -9040,7 +9040,7 @@ class SettingMxtunnels(dict):
 
     @_builtins.property
     @pulumi.getter
-    def radsec(self) -> Optional['outputs.SettingMxtunnelsRadsec']:
+    def radsec(self) -> Optional['outputs.SettingMxtunnelRadsec']:
         """
         TLS-secured RADIUS proxy settings for the site Mist Tunnel
         """
@@ -9064,7 +9064,7 @@ class SettingMxtunnels(dict):
 
 
 @pulumi.output_type
-class SettingMxtunnelsAdditionalMxtunnels(dict):
+class SettingMxtunnelAdditionalMxtunnels(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9078,27 +9078,27 @@ class SettingMxtunnelsAdditionalMxtunnels(dict):
             suggest = "vlan_ids"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SettingMxtunnelsAdditionalMxtunnels. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in SettingMxtunnelAdditionalMxtunnels. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        SettingMxtunnelsAdditionalMxtunnels.__key_warning(key)
+        SettingMxtunnelAdditionalMxtunnels.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        SettingMxtunnelsAdditionalMxtunnels.__key_warning(key)
+        SettingMxtunnelAdditionalMxtunnels.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
                  hello_interval: Optional[_builtins.int] = None,
                  hello_retries: Optional[_builtins.int] = None,
                  protocol: Optional[_builtins.str] = None,
-                 tunterm_clusters: Optional[Sequence['outputs.SettingMxtunnelsAdditionalMxtunnelsTuntermCluster']] = None,
+                 tunterm_clusters: Optional[Sequence['outputs.SettingMxtunnelAdditionalMxtunnelsTuntermCluster']] = None,
                  vlan_ids: Optional[Sequence[_builtins.int]] = None):
         """
         :param _builtins.int hello_interval: In seconds, used as heartbeat to detect if a tunnel is alive. AP will try another peer after missing N hellos specified by hello_retries
         :param _builtins.int hello_retries: Number of missed hello heartbeats before an AP tries another tunnel peer
         :param _builtins.str protocol: Encapsulation protocol used for this additional Mist Tunnel
-        :param Sequence['SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArgs'] tunterm_clusters: Tunnel peer clusters used by APs for this additional Mist Tunnel
+        :param Sequence['SettingMxtunnelAdditionalMxtunnelsTuntermClusterArgs'] tunterm_clusters: Tunnel peer clusters used by APs for this additional Mist Tunnel
         :param Sequence[_builtins.int] vlan_ids: List of VLAN IDs carried by this additional Mist Tunnel
         """
         if hello_interval is not None:
@@ -9138,7 +9138,7 @@ class SettingMxtunnelsAdditionalMxtunnels(dict):
 
     @_builtins.property
     @pulumi.getter(name="tuntermClusters")
-    def tunterm_clusters(self) -> Optional[Sequence['outputs.SettingMxtunnelsAdditionalMxtunnelsTuntermCluster']]:
+    def tunterm_clusters(self) -> Optional[Sequence['outputs.SettingMxtunnelAdditionalMxtunnelsTuntermCluster']]:
         """
         Tunnel peer clusters used by APs for this additional Mist Tunnel
         """
@@ -9154,7 +9154,7 @@ class SettingMxtunnelsAdditionalMxtunnels(dict):
 
 
 @pulumi.output_type
-class SettingMxtunnelsAdditionalMxtunnelsTuntermCluster(dict):
+class SettingMxtunnelAdditionalMxtunnelsTuntermCluster(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9162,14 +9162,14 @@ class SettingMxtunnelsAdditionalMxtunnelsTuntermCluster(dict):
             suggest = "tunterm_hosts"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SettingMxtunnelsAdditionalMxtunnelsTuntermCluster. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in SettingMxtunnelAdditionalMxtunnelsTuntermCluster. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        SettingMxtunnelsAdditionalMxtunnelsTuntermCluster.__key_warning(key)
+        SettingMxtunnelAdditionalMxtunnelsTuntermCluster.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        SettingMxtunnelsAdditionalMxtunnelsTuntermCluster.__key_warning(key)
+        SettingMxtunnelAdditionalMxtunnelsTuntermCluster.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -9202,7 +9202,7 @@ class SettingMxtunnelsAdditionalMxtunnelsTuntermCluster(dict):
 
 
 @pulumi.output_type
-class SettingMxtunnelsAutoPreemption(dict):
+class SettingMxtunnelAutoPreemption(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9212,14 +9212,14 @@ class SettingMxtunnelsAutoPreemption(dict):
             suggest = "time_of_day"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SettingMxtunnelsAutoPreemption. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in SettingMxtunnelAutoPreemption. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        SettingMxtunnelsAutoPreemption.__key_warning(key)
+        SettingMxtunnelAutoPreemption.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        SettingMxtunnelsAutoPreemption.__key_warning(key)
+        SettingMxtunnelAutoPreemption.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -9264,7 +9264,7 @@ class SettingMxtunnelsAutoPreemption(dict):
 
 
 @pulumi.output_type
-class SettingMxtunnelsCluster(dict):
+class SettingMxtunnelCluster(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9272,14 +9272,14 @@ class SettingMxtunnelsCluster(dict):
             suggest = "tunterm_hosts"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SettingMxtunnelsCluster. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in SettingMxtunnelCluster. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        SettingMxtunnelsCluster.__key_warning(key)
+        SettingMxtunnelCluster.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        SettingMxtunnelsCluster.__key_warning(key)
+        SettingMxtunnelCluster.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -9312,7 +9312,7 @@ class SettingMxtunnelsCluster(dict):
 
 
 @pulumi.output_type
-class SettingMxtunnelsRadsec(dict):
+class SettingMxtunnelRadsec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9324,24 +9324,24 @@ class SettingMxtunnelsRadsec(dict):
             suggest = "use_mxedge"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SettingMxtunnelsRadsec. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in SettingMxtunnelRadsec. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        SettingMxtunnelsRadsec.__key_warning(key)
+        SettingMxtunnelRadsec.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        SettingMxtunnelsRadsec.__key_warning(key)
+        SettingMxtunnelRadsec.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 acct_servers: Optional[Sequence['outputs.SettingMxtunnelsRadsecAcctServer']] = None,
-                 auth_servers: Optional[Sequence['outputs.SettingMxtunnelsRadsecAuthServer']] = None,
+                 acct_servers: Optional[Sequence['outputs.SettingMxtunnelRadsecAcctServer']] = None,
+                 auth_servers: Optional[Sequence['outputs.SettingMxtunnelRadsecAuthServer']] = None,
                  enabled: Optional[_builtins.bool] = None,
                  use_mxedge: Optional[_builtins.bool] = None):
         """
-        :param Sequence['SettingMxtunnelsRadsecAcctServerArgs'] acct_servers: RADIUS accounting servers used by the site Mist Tunnel RadSec proxy
-        :param Sequence['SettingMxtunnelsRadsecAuthServerArgs'] auth_servers: RADIUS authentication servers used by the site Mist Tunnel RadSec proxy
+        :param Sequence['SettingMxtunnelRadsecAcctServerArgs'] acct_servers: RADIUS accounting servers used by the site Mist Tunnel RadSec proxy
+        :param Sequence['SettingMxtunnelRadsecAuthServerArgs'] auth_servers: RADIUS authentication servers used by the site Mist Tunnel RadSec proxy
         :param _builtins.bool enabled: Whether RadSec proxying is enabled for this site Mist Tunnel
         :param _builtins.bool use_mxedge: Whether RadSec proxying uses Mist Edge
         """
@@ -9356,7 +9356,7 @@ class SettingMxtunnelsRadsec(dict):
 
     @_builtins.property
     @pulumi.getter(name="acctServers")
-    def acct_servers(self) -> Optional[Sequence['outputs.SettingMxtunnelsRadsecAcctServer']]:
+    def acct_servers(self) -> Optional[Sequence['outputs.SettingMxtunnelRadsecAcctServer']]:
         """
         RADIUS accounting servers used by the site Mist Tunnel RadSec proxy
         """
@@ -9364,7 +9364,7 @@ class SettingMxtunnelsRadsec(dict):
 
     @_builtins.property
     @pulumi.getter(name="authServers")
-    def auth_servers(self) -> Optional[Sequence['outputs.SettingMxtunnelsRadsecAuthServer']]:
+    def auth_servers(self) -> Optional[Sequence['outputs.SettingMxtunnelRadsecAuthServer']]:
         """
         RADIUS authentication servers used by the site Mist Tunnel RadSec proxy
         """
@@ -9388,7 +9388,7 @@ class SettingMxtunnelsRadsec(dict):
 
 
 @pulumi.output_type
-class SettingMxtunnelsRadsecAcctServer(dict):
+class SettingMxtunnelRadsecAcctServer(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9402,14 +9402,14 @@ class SettingMxtunnelsRadsecAcctServer(dict):
             suggest = "keywrap_mack"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SettingMxtunnelsRadsecAcctServer. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in SettingMxtunnelRadsecAcctServer. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        SettingMxtunnelsRadsecAcctServer.__key_warning(key)
+        SettingMxtunnelRadsecAcctServer.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        SettingMxtunnelsRadsecAcctServer.__key_warning(key)
+        SettingMxtunnelRadsecAcctServer.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -9500,7 +9500,7 @@ class SettingMxtunnelsRadsecAcctServer(dict):
 
 
 @pulumi.output_type
-class SettingMxtunnelsRadsecAuthServer(dict):
+class SettingMxtunnelRadsecAuthServer(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9516,14 +9516,14 @@ class SettingMxtunnelsRadsecAuthServer(dict):
             suggest = "require_message_authenticator"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SettingMxtunnelsRadsecAuthServer. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in SettingMxtunnelRadsecAuthServer. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        SettingMxtunnelsRadsecAuthServer.__key_warning(key)
+        SettingMxtunnelRadsecAuthServer.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        SettingMxtunnelsRadsecAuthServer.__key_warning(key)
+        SettingMxtunnelRadsecAuthServer.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,

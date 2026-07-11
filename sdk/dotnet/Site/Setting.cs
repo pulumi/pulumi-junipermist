@@ -210,8 +210,8 @@ namespace Pulumi.JuniperMist.Site
         /// <summary>
         /// Site Mist Tunnel configuration
         /// </summary>
-        [Output("mxtunnels")]
-        public Output<Outputs.SettingMxtunnels?> Mxtunnels { get; private set; } = null!;
+        [Output("mxtunnel")]
+        public Output<Outputs.SettingMxtunnel?> Mxtunnel { get; private set; } = null!;
 
         /// <summary>
         /// Analytics settings for site occupancy
@@ -599,8 +599,8 @@ namespace Pulumi.JuniperMist.Site
         /// <summary>
         /// Site Mist Tunnel configuration
         /// </summary>
-        [Input("mxtunnels")]
-        public Input<Inputs.SettingMxtunnelsArgs>? Mxtunnels { get; set; }
+        [Input("mxtunnel")]
+        public Input<Inputs.SettingMxtunnelArgs>? Mxtunnel { get; set; }
 
         /// <summary>
         /// Analytics settings for site occupancy
@@ -973,8 +973,8 @@ namespace Pulumi.JuniperMist.Site
         /// <summary>
         /// Site Mist Tunnel configuration
         /// </summary>
-        [Input("mxtunnels")]
-        public Input<Inputs.SettingMxtunnelsGetArgs>? Mxtunnels { get; set; }
+        [Input("mxtunnel")]
+        public Input<Inputs.SettingMxtunnelGetArgs>? Mxtunnel { get; set; }
 
         /// <summary>
         /// Analytics settings for site occupancy

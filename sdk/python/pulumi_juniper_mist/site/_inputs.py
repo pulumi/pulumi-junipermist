@@ -225,22 +225,22 @@ __all__ = [
     'SettingMarvisAutoOperationsArgsDict',
     'SettingMxedgeMgmtArgs',
     'SettingMxedgeMgmtArgsDict',
-    'SettingMxtunnelsArgs',
-    'SettingMxtunnelsArgsDict',
-    'SettingMxtunnelsAdditionalMxtunnelsArgs',
-    'SettingMxtunnelsAdditionalMxtunnelsArgsDict',
-    'SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArgs',
-    'SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArgsDict',
-    'SettingMxtunnelsAutoPreemptionArgs',
-    'SettingMxtunnelsAutoPreemptionArgsDict',
-    'SettingMxtunnelsClusterArgs',
-    'SettingMxtunnelsClusterArgsDict',
-    'SettingMxtunnelsRadsecArgs',
-    'SettingMxtunnelsRadsecArgsDict',
-    'SettingMxtunnelsRadsecAcctServerArgs',
-    'SettingMxtunnelsRadsecAcctServerArgsDict',
-    'SettingMxtunnelsRadsecAuthServerArgs',
-    'SettingMxtunnelsRadsecAuthServerArgsDict',
+    'SettingMxtunnelArgs',
+    'SettingMxtunnelArgsDict',
+    'SettingMxtunnelAdditionalMxtunnelsArgs',
+    'SettingMxtunnelAdditionalMxtunnelsArgsDict',
+    'SettingMxtunnelAdditionalMxtunnelsTuntermClusterArgs',
+    'SettingMxtunnelAdditionalMxtunnelsTuntermClusterArgsDict',
+    'SettingMxtunnelAutoPreemptionArgs',
+    'SettingMxtunnelAutoPreemptionArgsDict',
+    'SettingMxtunnelClusterArgs',
+    'SettingMxtunnelClusterArgsDict',
+    'SettingMxtunnelRadsecArgs',
+    'SettingMxtunnelRadsecArgsDict',
+    'SettingMxtunnelRadsecAcctServerArgs',
+    'SettingMxtunnelRadsecAcctServerArgsDict',
+    'SettingMxtunnelRadsecAuthServerArgs',
+    'SettingMxtunnelRadsecAuthServerArgsDict',
     'SettingOccupancyArgs',
     'SettingOccupancyArgsDict',
     'SettingProxyArgs',
@@ -11508,8 +11508,8 @@ class SettingMxedgeMgmtArgs:
         pulumi.set(self, "root_password", value)
 
 
-class SettingMxtunnelsArgsDict(TypedDict):
-    additional_mxtunnels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['SettingMxtunnelsAdditionalMxtunnelsArgsDict']]]]]
+class SettingMxtunnelArgsDict(TypedDict):
+    additional_mxtunnels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['SettingMxtunnelAdditionalMxtunnelsArgsDict']]]]]
     """
     Additional named Mist Tunnel definitions configured for the site
     """
@@ -11517,11 +11517,11 @@ class SettingMxtunnelsArgsDict(TypedDict):
     """
     AP source subnets allowed to establish Mist Tunnels
     """
-    auto_preemption: NotRequired[pulumi.Input[Optional['SettingMxtunnelsAutoPreemptionArgsDict']]]
+    auto_preemption: NotRequired[pulumi.Input[Optional['SettingMxtunnelAutoPreemptionArgsDict']]]
     """
     Preemption behavior for restoring preferred tunnel peers after failover
     """
-    clusters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelsClusterArgsDict']]]]]
+    clusters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelClusterArgsDict']]]]]
     """
     Tunnel peer clusters used by APs for this site Mist Tunnel
     """
@@ -11569,7 +11569,7 @@ class SettingMxtunnelsArgsDict(TypedDict):
     """
     Encapsulation protocol used for the site Mist Tunnel
     """
-    radsec: NotRequired[pulumi.Input[Optional['SettingMxtunnelsRadsecArgsDict']]]
+    radsec: NotRequired[pulumi.Input[Optional['SettingMxtunnelRadsecArgsDict']]]
     """
     TLS-secured RADIUS proxy settings for the site Mist Tunnel
     """
@@ -11583,12 +11583,12 @@ class SettingMxtunnelsArgsDict(TypedDict):
     """
 
 @pulumi.input_type
-class SettingMxtunnelsArgs:
+class SettingMxtunnelArgs:
     def __init__(__self__, *,
-                 additional_mxtunnels: pulumi.Input[Optional[Mapping[str, pulumi.Input['SettingMxtunnelsAdditionalMxtunnelsArgs']]]] = None,
+                 additional_mxtunnels: pulumi.Input[Optional[Mapping[str, pulumi.Input['SettingMxtunnelAdditionalMxtunnelsArgs']]]] = None,
                  ap_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 auto_preemption: pulumi.Input[Optional['SettingMxtunnelsAutoPreemptionArgs']] = None,
-                 clusters: pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelsClusterArgs']]]] = None,
+                 auto_preemption: pulumi.Input[Optional['SettingMxtunnelAutoPreemptionArgs']] = None,
+                 clusters: pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelClusterArgs']]]] = None,
                  created_time: pulumi.Input[Optional[_builtins.float]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  for_site: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -11600,14 +11600,14 @@ class SettingMxtunnelsArgs:
                  mtu: pulumi.Input[Optional[_builtins.int]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  protocol: pulumi.Input[Optional[_builtins.str]] = None,
-                 radsec: pulumi.Input[Optional['SettingMxtunnelsRadsecArgs']] = None,
+                 radsec: pulumi.Input[Optional['SettingMxtunnelRadsecArgs']] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vlan_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None):
         """
-        :param pulumi.Input[Mapping[str, pulumi.Input['SettingMxtunnelsAdditionalMxtunnelsArgs']]] additional_mxtunnels: Additional named Mist Tunnel definitions configured for the site
+        :param pulumi.Input[Mapping[str, pulumi.Input['SettingMxtunnelAdditionalMxtunnelsArgs']]] additional_mxtunnels: Additional named Mist Tunnel definitions configured for the site
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ap_subnets: AP source subnets allowed to establish Mist Tunnels
-        :param pulumi.Input['SettingMxtunnelsAutoPreemptionArgs'] auto_preemption: Preemption behavior for restoring preferred tunnel peers after failover
-        :param pulumi.Input[Sequence[pulumi.Input['SettingMxtunnelsClusterArgs']]] clusters: Tunnel peer clusters used by APs for this site Mist Tunnel
+        :param pulumi.Input['SettingMxtunnelAutoPreemptionArgs'] auto_preemption: Preemption behavior for restoring preferred tunnel peers after failover
+        :param pulumi.Input[Sequence[pulumi.Input['SettingMxtunnelClusterArgs']]] clusters: Tunnel peer clusters used by APs for this site Mist Tunnel
         :param pulumi.Input[_builtins.float] created_time: Timestamp when the site Mist Tunnel configuration was created
         :param pulumi.Input[_builtins.bool] enabled: Whether site Mist Tunnel tunneling is enabled
         :param pulumi.Input[_builtins.bool] for_site: Whether this Mist Tunnel configuration is scoped to a site
@@ -11619,7 +11619,7 @@ class SettingMxtunnelsArgs:
         :param pulumi.Input[_builtins.int] mtu: 0 to enable MTU, 552-1500 to start MTU with a lower MTU
         :param pulumi.Input[_builtins.str] org_id: Identifier of the org that owns the site Mist Tunnel configuration
         :param pulumi.Input[_builtins.str] protocol: Encapsulation protocol used for the site Mist Tunnel
-        :param pulumi.Input['SettingMxtunnelsRadsecArgs'] radsec: TLS-secured RADIUS proxy settings for the site Mist Tunnel
+        :param pulumi.Input['SettingMxtunnelRadsecArgs'] radsec: TLS-secured RADIUS proxy settings for the site Mist Tunnel
         :param pulumi.Input[_builtins.str] site_id: Identifier of the site that owns this Mist Tunnel configuration
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] vlan_ids: List of VLAN IDs carried by this site Mist Tunnel
         """
@@ -11662,14 +11662,14 @@ class SettingMxtunnelsArgs:
 
     @_builtins.property
     @pulumi.getter(name="additionalMxtunnels")
-    def additional_mxtunnels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SettingMxtunnelsAdditionalMxtunnelsArgs']]]]:
+    def additional_mxtunnels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SettingMxtunnelAdditionalMxtunnelsArgs']]]]:
         """
         Additional named Mist Tunnel definitions configured for the site
         """
         return pulumi.get(self, "additional_mxtunnels")
 
     @additional_mxtunnels.setter
-    def additional_mxtunnels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['SettingMxtunnelsAdditionalMxtunnelsArgs']]]]):
+    def additional_mxtunnels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['SettingMxtunnelAdditionalMxtunnelsArgs']]]]):
         pulumi.set(self, "additional_mxtunnels", value)
 
     @_builtins.property
@@ -11686,26 +11686,26 @@ class SettingMxtunnelsArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoPreemption")
-    def auto_preemption(self) -> pulumi.Input[Optional['SettingMxtunnelsAutoPreemptionArgs']]:
+    def auto_preemption(self) -> pulumi.Input[Optional['SettingMxtunnelAutoPreemptionArgs']]:
         """
         Preemption behavior for restoring preferred tunnel peers after failover
         """
         return pulumi.get(self, "auto_preemption")
 
     @auto_preemption.setter
-    def auto_preemption(self, value: pulumi.Input[Optional['SettingMxtunnelsAutoPreemptionArgs']]):
+    def auto_preemption(self, value: pulumi.Input[Optional['SettingMxtunnelAutoPreemptionArgs']]):
         pulumi.set(self, "auto_preemption", value)
 
     @_builtins.property
     @pulumi.getter
-    def clusters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelsClusterArgs']]]]:
+    def clusters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelClusterArgs']]]]:
         """
         Tunnel peer clusters used by APs for this site Mist Tunnel
         """
         return pulumi.get(self, "clusters")
 
     @clusters.setter
-    def clusters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelsClusterArgs']]]]):
+    def clusters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelClusterArgs']]]]):
         pulumi.set(self, "clusters", value)
 
     @_builtins.property
@@ -11842,14 +11842,14 @@ class SettingMxtunnelsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def radsec(self) -> pulumi.Input[Optional['SettingMxtunnelsRadsecArgs']]:
+    def radsec(self) -> pulumi.Input[Optional['SettingMxtunnelRadsecArgs']]:
         """
         TLS-secured RADIUS proxy settings for the site Mist Tunnel
         """
         return pulumi.get(self, "radsec")
 
     @radsec.setter
-    def radsec(self, value: pulumi.Input[Optional['SettingMxtunnelsRadsecArgs']]):
+    def radsec(self, value: pulumi.Input[Optional['SettingMxtunnelRadsecArgs']]):
         pulumi.set(self, "radsec", value)
 
     @_builtins.property
@@ -11877,7 +11877,7 @@ class SettingMxtunnelsArgs:
         pulumi.set(self, "vlan_ids", value)
 
 
-class SettingMxtunnelsAdditionalMxtunnelsArgsDict(TypedDict):
+class SettingMxtunnelAdditionalMxtunnelsArgsDict(TypedDict):
     hello_interval: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     In seconds, used as heartbeat to detect if a tunnel is alive. AP will try another peer after missing N hellos specified by hello_retries
@@ -11890,7 +11890,7 @@ class SettingMxtunnelsAdditionalMxtunnelsArgsDict(TypedDict):
     """
     Encapsulation protocol used for this additional Mist Tunnel
     """
-    tunterm_clusters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArgsDict']]]]]
+    tunterm_clusters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelAdditionalMxtunnelsTuntermClusterArgsDict']]]]]
     """
     Tunnel peer clusters used by APs for this additional Mist Tunnel
     """
@@ -11900,18 +11900,18 @@ class SettingMxtunnelsAdditionalMxtunnelsArgsDict(TypedDict):
     """
 
 @pulumi.input_type
-class SettingMxtunnelsAdditionalMxtunnelsArgs:
+class SettingMxtunnelAdditionalMxtunnelsArgs:
     def __init__(__self__, *,
                  hello_interval: pulumi.Input[Optional[_builtins.int]] = None,
                  hello_retries: pulumi.Input[Optional[_builtins.int]] = None,
                  protocol: pulumi.Input[Optional[_builtins.str]] = None,
-                 tunterm_clusters: pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArgs']]]] = None,
+                 tunterm_clusters: pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelAdditionalMxtunnelsTuntermClusterArgs']]]] = None,
                  vlan_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None):
         """
         :param pulumi.Input[_builtins.int] hello_interval: In seconds, used as heartbeat to detect if a tunnel is alive. AP will try another peer after missing N hellos specified by hello_retries
         :param pulumi.Input[_builtins.int] hello_retries: Number of missed hello heartbeats before an AP tries another tunnel peer
         :param pulumi.Input[_builtins.str] protocol: Encapsulation protocol used for this additional Mist Tunnel
-        :param pulumi.Input[Sequence[pulumi.Input['SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArgs']]] tunterm_clusters: Tunnel peer clusters used by APs for this additional Mist Tunnel
+        :param pulumi.Input[Sequence[pulumi.Input['SettingMxtunnelAdditionalMxtunnelsTuntermClusterArgs']]] tunterm_clusters: Tunnel peer clusters used by APs for this additional Mist Tunnel
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] vlan_ids: List of VLAN IDs carried by this additional Mist Tunnel
         """
         if hello_interval is not None:
@@ -11963,14 +11963,14 @@ class SettingMxtunnelsAdditionalMxtunnelsArgs:
 
     @_builtins.property
     @pulumi.getter(name="tuntermClusters")
-    def tunterm_clusters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArgs']]]]:
+    def tunterm_clusters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelAdditionalMxtunnelsTuntermClusterArgs']]]]:
         """
         Tunnel peer clusters used by APs for this additional Mist Tunnel
         """
         return pulumi.get(self, "tunterm_clusters")
 
     @tunterm_clusters.setter
-    def tunterm_clusters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArgs']]]]):
+    def tunterm_clusters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelAdditionalMxtunnelsTuntermClusterArgs']]]]):
         pulumi.set(self, "tunterm_clusters", value)
 
     @_builtins.property
@@ -11986,7 +11986,7 @@ class SettingMxtunnelsAdditionalMxtunnelsArgs:
         pulumi.set(self, "vlan_ids", value)
 
 
-class SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArgsDict(TypedDict):
+class SettingMxtunnelAdditionalMxtunnelsTuntermClusterArgsDict(TypedDict):
     name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Peer cluster name used in the site Mist Tunnel configuration
@@ -11997,7 +11997,7 @@ class SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArgsDict(TypedDict):
     """
 
 @pulumi.input_type
-class SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArgs:
+class SettingMxtunnelAdditionalMxtunnelsTuntermClusterArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  tunterm_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
@@ -12035,7 +12035,7 @@ class SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArgs:
         pulumi.set(self, "tunterm_hosts", value)
 
 
-class SettingMxtunnelsAutoPreemptionArgsDict(TypedDict):
+class SettingMxtunnelAutoPreemptionArgsDict(TypedDict):
     day_of_week: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Scheduled weekday for auto preemption
@@ -12050,7 +12050,7 @@ class SettingMxtunnelsAutoPreemptionArgsDict(TypedDict):
     """
 
 @pulumi.input_type
-class SettingMxtunnelsAutoPreemptionArgs:
+class SettingMxtunnelAutoPreemptionArgs:
     def __init__(__self__, *,
                  day_of_week: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -12104,7 +12104,7 @@ class SettingMxtunnelsAutoPreemptionArgs:
         pulumi.set(self, "time_of_day", value)
 
 
-class SettingMxtunnelsClusterArgsDict(TypedDict):
+class SettingMxtunnelClusterArgsDict(TypedDict):
     name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Peer cluster name used in the site Mist Tunnel configuration
@@ -12115,7 +12115,7 @@ class SettingMxtunnelsClusterArgsDict(TypedDict):
     """
 
 @pulumi.input_type
-class SettingMxtunnelsClusterArgs:
+class SettingMxtunnelClusterArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  tunterm_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
@@ -12153,12 +12153,12 @@ class SettingMxtunnelsClusterArgs:
         pulumi.set(self, "tunterm_hosts", value)
 
 
-class SettingMxtunnelsRadsecArgsDict(TypedDict):
-    acct_servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelsRadsecAcctServerArgsDict']]]]]
+class SettingMxtunnelRadsecArgsDict(TypedDict):
+    acct_servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelRadsecAcctServerArgsDict']]]]]
     """
     RADIUS accounting servers used by the site Mist Tunnel RadSec proxy
     """
-    auth_servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelsRadsecAuthServerArgsDict']]]]]
+    auth_servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelRadsecAuthServerArgsDict']]]]]
     """
     RADIUS authentication servers used by the site Mist Tunnel RadSec proxy
     """
@@ -12172,15 +12172,15 @@ class SettingMxtunnelsRadsecArgsDict(TypedDict):
     """
 
 @pulumi.input_type
-class SettingMxtunnelsRadsecArgs:
+class SettingMxtunnelRadsecArgs:
     def __init__(__self__, *,
-                 acct_servers: pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelsRadsecAcctServerArgs']]]] = None,
-                 auth_servers: pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelsRadsecAuthServerArgs']]]] = None,
+                 acct_servers: pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelRadsecAcctServerArgs']]]] = None,
+                 auth_servers: pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelRadsecAuthServerArgs']]]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  use_mxedge: pulumi.Input[Optional[_builtins.bool]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['SettingMxtunnelsRadsecAcctServerArgs']]] acct_servers: RADIUS accounting servers used by the site Mist Tunnel RadSec proxy
-        :param pulumi.Input[Sequence[pulumi.Input['SettingMxtunnelsRadsecAuthServerArgs']]] auth_servers: RADIUS authentication servers used by the site Mist Tunnel RadSec proxy
+        :param pulumi.Input[Sequence[pulumi.Input['SettingMxtunnelRadsecAcctServerArgs']]] acct_servers: RADIUS accounting servers used by the site Mist Tunnel RadSec proxy
+        :param pulumi.Input[Sequence[pulumi.Input['SettingMxtunnelRadsecAuthServerArgs']]] auth_servers: RADIUS authentication servers used by the site Mist Tunnel RadSec proxy
         :param pulumi.Input[_builtins.bool] enabled: Whether RadSec proxying is enabled for this site Mist Tunnel
         :param pulumi.Input[_builtins.bool] use_mxedge: Whether RadSec proxying uses Mist Edge
         """
@@ -12195,26 +12195,26 @@ class SettingMxtunnelsRadsecArgs:
 
     @_builtins.property
     @pulumi.getter(name="acctServers")
-    def acct_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelsRadsecAcctServerArgs']]]]:
+    def acct_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelRadsecAcctServerArgs']]]]:
         """
         RADIUS accounting servers used by the site Mist Tunnel RadSec proxy
         """
         return pulumi.get(self, "acct_servers")
 
     @acct_servers.setter
-    def acct_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelsRadsecAcctServerArgs']]]]):
+    def acct_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelRadsecAcctServerArgs']]]]):
         pulumi.set(self, "acct_servers", value)
 
     @_builtins.property
     @pulumi.getter(name="authServers")
-    def auth_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelsRadsecAuthServerArgs']]]]:
+    def auth_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelRadsecAuthServerArgs']]]]:
         """
         RADIUS authentication servers used by the site Mist Tunnel RadSec proxy
         """
         return pulumi.get(self, "auth_servers")
 
     @auth_servers.setter
-    def auth_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelsRadsecAuthServerArgs']]]]):
+    def auth_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SettingMxtunnelRadsecAuthServerArgs']]]]):
         pulumi.set(self, "auth_servers", value)
 
     @_builtins.property
@@ -12242,7 +12242,7 @@ class SettingMxtunnelsRadsecArgs:
         pulumi.set(self, "use_mxedge", value)
 
 
-class SettingMxtunnelsRadsecAcctServerArgsDict(TypedDict):
+class SettingMxtunnelRadsecAcctServerArgsDict(TypedDict):
     host: pulumi.Input[_builtins.str]
     """
     Address or hostname of the RADIUS accounting server
@@ -12273,7 +12273,7 @@ class SettingMxtunnelsRadsecAcctServerArgsDict(TypedDict):
     """
 
 @pulumi.input_type
-class SettingMxtunnelsRadsecAcctServerArgs:
+class SettingMxtunnelRadsecAcctServerArgs:
     def __init__(__self__, *,
                  host: pulumi.Input[_builtins.str],
                  secret: pulumi.Input[_builtins.str],
@@ -12389,7 +12389,7 @@ class SettingMxtunnelsRadsecAcctServerArgs:
         pulumi.set(self, "port", value)
 
 
-class SettingMxtunnelsRadsecAuthServerArgsDict(TypedDict):
+class SettingMxtunnelRadsecAuthServerArgsDict(TypedDict):
     host: pulumi.Input[_builtins.str]
     """
     Address or hostname of the RADIUS authentication server
@@ -12424,7 +12424,7 @@ class SettingMxtunnelsRadsecAuthServerArgsDict(TypedDict):
     """
 
 @pulumi.input_type
-class SettingMxtunnelsRadsecAuthServerArgs:
+class SettingMxtunnelRadsecAuthServerArgs:
     def __init__(__self__, *,
                  host: pulumi.Input[_builtins.str],
                  secret: pulumi.Input[_builtins.str],

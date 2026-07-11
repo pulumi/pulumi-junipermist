@@ -38294,12 +38294,12 @@
                 }
             }
         },
-        "junipermist:site/SettingMxtunnels:SettingMxtunnels": {
+        "junipermist:site/SettingMxtunnel:SettingMxtunnel": {
             "properties": {
                 "additionalMxtunnels": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "#/types/junipermist:site/SettingMxtunnelsAdditionalMxtunnels:SettingMxtunnelsAdditionalMxtunnels"
+                        "$ref": "#/types/junipermist:site/SettingMxtunnelAdditionalMxtunnels:SettingMxtunnelAdditionalMxtunnels"
                     },
                     "description": "Additional named Mist Tunnel definitions configured for the site\n"
                 },
@@ -38311,13 +38311,13 @@
                     "description": "AP source subnets allowed to establish Mist Tunnels\n"
                 },
                 "autoPreemption": {
-                    "$ref": "#/types/junipermist:site/SettingMxtunnelsAutoPreemption:SettingMxtunnelsAutoPreemption",
+                    "$ref": "#/types/junipermist:site/SettingMxtunnelAutoPreemption:SettingMxtunnelAutoPreemption",
                     "description": "Preemption behavior for restoring preferred tunnel peers after failover\n"
                 },
                 "clusters": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/junipermist:site/SettingMxtunnelsCluster:SettingMxtunnelsCluster"
+                        "$ref": "#/types/junipermist:site/SettingMxtunnelCluster:SettingMxtunnelCluster"
                     },
                     "description": "Tunnel peer clusters used by APs for this site Mist Tunnel\n"
                 },
@@ -38369,7 +38369,7 @@
                     "description": "Encapsulation protocol used for the site Mist Tunnel\n"
                 },
                 "radsec": {
-                    "$ref": "#/types/junipermist:site/SettingMxtunnelsRadsec:SettingMxtunnelsRadsec",
+                    "$ref": "#/types/junipermist:site/SettingMxtunnelRadsec:SettingMxtunnelRadsec",
                     "description": "TLS-secured RADIUS proxy settings for the site Mist Tunnel\n"
                 },
                 "siteId": {
@@ -38388,12 +38388,15 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "helloInterval",
+                        "helloRetries",
+                        "mtu",
                         "protocol"
                     ]
                 }
             }
         },
-        "junipermist:site/SettingMxtunnelsAdditionalMxtunnels:SettingMxtunnelsAdditionalMxtunnels": {
+        "junipermist:site/SettingMxtunnelAdditionalMxtunnels:SettingMxtunnelAdditionalMxtunnels": {
             "properties": {
                 "helloInterval": {
                     "type": "integer",
@@ -38410,7 +38413,7 @@
                 "tuntermClusters": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/junipermist:site/SettingMxtunnelsAdditionalMxtunnelsTuntermCluster:SettingMxtunnelsAdditionalMxtunnelsTuntermCluster"
+                        "$ref": "#/types/junipermist:site/SettingMxtunnelAdditionalMxtunnelsTuntermCluster:SettingMxtunnelAdditionalMxtunnelsTuntermCluster"
                     },
                     "description": "Tunnel peer clusters used by APs for this additional Mist Tunnel\n"
                 },
@@ -38432,7 +38435,7 @@
                 }
             }
         },
-        "junipermist:site/SettingMxtunnelsAdditionalMxtunnelsTuntermCluster:SettingMxtunnelsAdditionalMxtunnelsTuntermCluster": {
+        "junipermist:site/SettingMxtunnelAdditionalMxtunnelsTuntermCluster:SettingMxtunnelAdditionalMxtunnelsTuntermCluster": {
             "properties": {
                 "name": {
                     "type": "string",
@@ -38448,7 +38451,7 @@
             },
             "type": "object"
         },
-        "junipermist:site/SettingMxtunnelsAutoPreemption:SettingMxtunnelsAutoPreemption": {
+        "junipermist:site/SettingMxtunnelAutoPreemption:SettingMxtunnelAutoPreemption": {
             "properties": {
                 "dayOfWeek": {
                     "type": "string",
@@ -38467,12 +38470,13 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "enabled",
                         "timeOfDay"
                     ]
                 }
             }
         },
-        "junipermist:site/SettingMxtunnelsCluster:SettingMxtunnelsCluster": {
+        "junipermist:site/SettingMxtunnelCluster:SettingMxtunnelCluster": {
             "properties": {
                 "name": {
                     "type": "string",
@@ -38488,19 +38492,19 @@
             },
             "type": "object"
         },
-        "junipermist:site/SettingMxtunnelsRadsec:SettingMxtunnelsRadsec": {
+        "junipermist:site/SettingMxtunnelRadsec:SettingMxtunnelRadsec": {
             "properties": {
                 "acctServers": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/junipermist:site/SettingMxtunnelsRadsecAcctServer:SettingMxtunnelsRadsecAcctServer"
+                        "$ref": "#/types/junipermist:site/SettingMxtunnelRadsecAcctServer:SettingMxtunnelRadsecAcctServer"
                     },
                     "description": "RADIUS accounting servers used by the site Mist Tunnel RadSec proxy\n"
                 },
                 "authServers": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/junipermist:site/SettingMxtunnelsRadsecAuthServer:SettingMxtunnelsRadsecAuthServer"
+                        "$ref": "#/types/junipermist:site/SettingMxtunnelRadsecAuthServer:SettingMxtunnelRadsecAuthServer"
                     },
                     "description": "RADIUS authentication servers used by the site Mist Tunnel RadSec proxy\n"
                 },
@@ -38522,7 +38526,7 @@
                 }
             }
         },
-        "junipermist:site/SettingMxtunnelsRadsecAcctServer:SettingMxtunnelsRadsecAcctServer": {
+        "junipermist:site/SettingMxtunnelRadsecAcctServer:SettingMxtunnelRadsecAcctServer": {
             "properties": {
                 "host": {
                     "type": "string",
@@ -38560,7 +38564,7 @@
                 "secret"
             ]
         },
-        "junipermist:site/SettingMxtunnelsRadsecAuthServer:SettingMxtunnelsRadsecAuthServer": {
+        "junipermist:site/SettingMxtunnelRadsecAuthServer:SettingMxtunnelRadsecAuthServer": {
             "properties": {
                 "host": {
                     "type": "string",
@@ -57798,8 +57802,8 @@
                     "$ref": "#/types/junipermist:site/SettingMxedgeMgmt:SettingMxedgeMgmt",
                     "description": "Mist Edge management access settings for the site"
                 },
-                "mxtunnels": {
-                    "$ref": "#/types/junipermist:site/SettingMxtunnels:SettingMxtunnels",
+                "mxtunnel": {
+                    "$ref": "#/types/junipermist:site/SettingMxtunnel:SettingMxtunnel",
                     "description": "Site Mist Tunnel configuration"
                 },
                 "occupancy": {
@@ -58067,8 +58071,8 @@
                     "$ref": "#/types/junipermist:site/SettingMxedgeMgmt:SettingMxedgeMgmt",
                     "description": "Mist Edge management access settings for the site"
                 },
-                "mxtunnels": {
-                    "$ref": "#/types/junipermist:site/SettingMxtunnels:SettingMxtunnels",
+                "mxtunnel": {
+                    "$ref": "#/types/junipermist:site/SettingMxtunnel:SettingMxtunnel",
                     "description": "Site Mist Tunnel configuration"
                 },
                 "occupancy": {
@@ -58313,8 +58317,8 @@
                         "$ref": "#/types/junipermist:site/SettingMxedgeMgmt:SettingMxedgeMgmt",
                         "description": "Mist Edge management access settings for the site"
                     },
-                    "mxtunnels": {
-                        "$ref": "#/types/junipermist:site/SettingMxtunnels:SettingMxtunnels",
+                    "mxtunnel": {
+                        "$ref": "#/types/junipermist:site/SettingMxtunnel:SettingMxtunnel",
                         "description": "Site Mist Tunnel configuration"
                     },
                     "occupancy": {

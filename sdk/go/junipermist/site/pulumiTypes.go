@@ -18027,15 +18027,15 @@ func (o SettingMxedgeMgmtPtrOutput) RootPassword() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type SettingMxtunnels struct {
+type SettingMxtunnel struct {
 	// Additional named Mist Tunnel definitions configured for the site
-	AdditionalMxtunnels map[string]SettingMxtunnelsAdditionalMxtunnels `pulumi:"additionalMxtunnels"`
+	AdditionalMxtunnels map[string]SettingMxtunnelAdditionalMxtunnels `pulumi:"additionalMxtunnels"`
 	// AP source subnets allowed to establish Mist Tunnels
 	ApSubnets []string `pulumi:"apSubnets"`
 	// Preemption behavior for restoring preferred tunnel peers after failover
-	AutoPreemption *SettingMxtunnelsAutoPreemption `pulumi:"autoPreemption"`
+	AutoPreemption *SettingMxtunnelAutoPreemption `pulumi:"autoPreemption"`
 	// Tunnel peer clusters used by APs for this site Mist Tunnel
-	Clusters []SettingMxtunnelsCluster `pulumi:"clusters"`
+	Clusters []SettingMxtunnelCluster `pulumi:"clusters"`
 	// Timestamp when the site Mist Tunnel configuration was created
 	CreatedTime *float64 `pulumi:"createdTime"`
 	// Whether site Mist Tunnel tunneling is enabled
@@ -18059,33 +18059,33 @@ type SettingMxtunnels struct {
 	// Encapsulation protocol used for the site Mist Tunnel
 	Protocol *string `pulumi:"protocol"`
 	// TLS-secured RADIUS proxy settings for the site Mist Tunnel
-	Radsec *SettingMxtunnelsRadsec `pulumi:"radsec"`
+	Radsec *SettingMxtunnelRadsec `pulumi:"radsec"`
 	// Identifier of the site that owns this Mist Tunnel configuration
 	SiteId *string `pulumi:"siteId"`
 	// List of VLAN IDs carried by this site Mist Tunnel
 	VlanIds []int `pulumi:"vlanIds"`
 }
 
-// SettingMxtunnelsInput is an input type that accepts SettingMxtunnelsArgs and SettingMxtunnelsOutput values.
-// You can construct a concrete instance of `SettingMxtunnelsInput` via:
+// SettingMxtunnelInput is an input type that accepts SettingMxtunnelArgs and SettingMxtunnelOutput values.
+// You can construct a concrete instance of `SettingMxtunnelInput` via:
 //
-//	SettingMxtunnelsArgs{...}
-type SettingMxtunnelsInput interface {
+//	SettingMxtunnelArgs{...}
+type SettingMxtunnelInput interface {
 	pulumi.Input
 
-	ToSettingMxtunnelsOutput() SettingMxtunnelsOutput
-	ToSettingMxtunnelsOutputWithContext(context.Context) SettingMxtunnelsOutput
+	ToSettingMxtunnelOutput() SettingMxtunnelOutput
+	ToSettingMxtunnelOutputWithContext(context.Context) SettingMxtunnelOutput
 }
 
-type SettingMxtunnelsArgs struct {
+type SettingMxtunnelArgs struct {
 	// Additional named Mist Tunnel definitions configured for the site
-	AdditionalMxtunnels SettingMxtunnelsAdditionalMxtunnelsMapInput `pulumi:"additionalMxtunnels"`
+	AdditionalMxtunnels SettingMxtunnelAdditionalMxtunnelsMapInput `pulumi:"additionalMxtunnels"`
 	// AP source subnets allowed to establish Mist Tunnels
 	ApSubnets pulumi.StringArrayInput `pulumi:"apSubnets"`
 	// Preemption behavior for restoring preferred tunnel peers after failover
-	AutoPreemption SettingMxtunnelsAutoPreemptionPtrInput `pulumi:"autoPreemption"`
+	AutoPreemption SettingMxtunnelAutoPreemptionPtrInput `pulumi:"autoPreemption"`
 	// Tunnel peer clusters used by APs for this site Mist Tunnel
-	Clusters SettingMxtunnelsClusterArrayInput `pulumi:"clusters"`
+	Clusters SettingMxtunnelClusterArrayInput `pulumi:"clusters"`
 	// Timestamp when the site Mist Tunnel configuration was created
 	CreatedTime pulumi.Float64PtrInput `pulumi:"createdTime"`
 	// Whether site Mist Tunnel tunneling is enabled
@@ -18109,217 +18109,217 @@ type SettingMxtunnelsArgs struct {
 	// Encapsulation protocol used for the site Mist Tunnel
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
 	// TLS-secured RADIUS proxy settings for the site Mist Tunnel
-	Radsec SettingMxtunnelsRadsecPtrInput `pulumi:"radsec"`
+	Radsec SettingMxtunnelRadsecPtrInput `pulumi:"radsec"`
 	// Identifier of the site that owns this Mist Tunnel configuration
 	SiteId pulumi.StringPtrInput `pulumi:"siteId"`
 	// List of VLAN IDs carried by this site Mist Tunnel
 	VlanIds pulumi.IntArrayInput `pulumi:"vlanIds"`
 }
 
-func (SettingMxtunnelsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SettingMxtunnels)(nil)).Elem()
+func (SettingMxtunnelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingMxtunnel)(nil)).Elem()
 }
 
-func (i SettingMxtunnelsArgs) ToSettingMxtunnelsOutput() SettingMxtunnelsOutput {
-	return i.ToSettingMxtunnelsOutputWithContext(context.Background())
+func (i SettingMxtunnelArgs) ToSettingMxtunnelOutput() SettingMxtunnelOutput {
+	return i.ToSettingMxtunnelOutputWithContext(context.Background())
 }
 
-func (i SettingMxtunnelsArgs) ToSettingMxtunnelsOutputWithContext(ctx context.Context) SettingMxtunnelsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelsOutput)
+func (i SettingMxtunnelArgs) ToSettingMxtunnelOutputWithContext(ctx context.Context) SettingMxtunnelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelOutput)
 }
 
-func (i SettingMxtunnelsArgs) ToSettingMxtunnelsPtrOutput() SettingMxtunnelsPtrOutput {
-	return i.ToSettingMxtunnelsPtrOutputWithContext(context.Background())
+func (i SettingMxtunnelArgs) ToSettingMxtunnelPtrOutput() SettingMxtunnelPtrOutput {
+	return i.ToSettingMxtunnelPtrOutputWithContext(context.Background())
 }
 
-func (i SettingMxtunnelsArgs) ToSettingMxtunnelsPtrOutputWithContext(ctx context.Context) SettingMxtunnelsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelsOutput).ToSettingMxtunnelsPtrOutputWithContext(ctx)
+func (i SettingMxtunnelArgs) ToSettingMxtunnelPtrOutputWithContext(ctx context.Context) SettingMxtunnelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelOutput).ToSettingMxtunnelPtrOutputWithContext(ctx)
 }
 
-// SettingMxtunnelsPtrInput is an input type that accepts SettingMxtunnelsArgs, SettingMxtunnelsPtr and SettingMxtunnelsPtrOutput values.
-// You can construct a concrete instance of `SettingMxtunnelsPtrInput` via:
+// SettingMxtunnelPtrInput is an input type that accepts SettingMxtunnelArgs, SettingMxtunnelPtr and SettingMxtunnelPtrOutput values.
+// You can construct a concrete instance of `SettingMxtunnelPtrInput` via:
 //
-//	        SettingMxtunnelsArgs{...}
+//	        SettingMxtunnelArgs{...}
 //
 //	or:
 //
 //	        nil
-type SettingMxtunnelsPtrInput interface {
+type SettingMxtunnelPtrInput interface {
 	pulumi.Input
 
-	ToSettingMxtunnelsPtrOutput() SettingMxtunnelsPtrOutput
-	ToSettingMxtunnelsPtrOutputWithContext(context.Context) SettingMxtunnelsPtrOutput
+	ToSettingMxtunnelPtrOutput() SettingMxtunnelPtrOutput
+	ToSettingMxtunnelPtrOutputWithContext(context.Context) SettingMxtunnelPtrOutput
 }
 
-type settingMxtunnelsPtrType SettingMxtunnelsArgs
+type settingMxtunnelPtrType SettingMxtunnelArgs
 
-func SettingMxtunnelsPtr(v *SettingMxtunnelsArgs) SettingMxtunnelsPtrInput {
-	return (*settingMxtunnelsPtrType)(v)
+func SettingMxtunnelPtr(v *SettingMxtunnelArgs) SettingMxtunnelPtrInput {
+	return (*settingMxtunnelPtrType)(v)
 }
 
-func (*settingMxtunnelsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SettingMxtunnels)(nil)).Elem()
+func (*settingMxtunnelPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingMxtunnel)(nil)).Elem()
 }
 
-func (i *settingMxtunnelsPtrType) ToSettingMxtunnelsPtrOutput() SettingMxtunnelsPtrOutput {
-	return i.ToSettingMxtunnelsPtrOutputWithContext(context.Background())
+func (i *settingMxtunnelPtrType) ToSettingMxtunnelPtrOutput() SettingMxtunnelPtrOutput {
+	return i.ToSettingMxtunnelPtrOutputWithContext(context.Background())
 }
 
-func (i *settingMxtunnelsPtrType) ToSettingMxtunnelsPtrOutputWithContext(ctx context.Context) SettingMxtunnelsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelsPtrOutput)
+func (i *settingMxtunnelPtrType) ToSettingMxtunnelPtrOutputWithContext(ctx context.Context) SettingMxtunnelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelPtrOutput)
 }
 
-type SettingMxtunnelsOutput struct{ *pulumi.OutputState }
+type SettingMxtunnelOutput struct{ *pulumi.OutputState }
 
-func (SettingMxtunnelsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SettingMxtunnels)(nil)).Elem()
+func (SettingMxtunnelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingMxtunnel)(nil)).Elem()
 }
 
-func (o SettingMxtunnelsOutput) ToSettingMxtunnelsOutput() SettingMxtunnelsOutput {
+func (o SettingMxtunnelOutput) ToSettingMxtunnelOutput() SettingMxtunnelOutput {
 	return o
 }
 
-func (o SettingMxtunnelsOutput) ToSettingMxtunnelsOutputWithContext(ctx context.Context) SettingMxtunnelsOutput {
+func (o SettingMxtunnelOutput) ToSettingMxtunnelOutputWithContext(ctx context.Context) SettingMxtunnelOutput {
 	return o
 }
 
-func (o SettingMxtunnelsOutput) ToSettingMxtunnelsPtrOutput() SettingMxtunnelsPtrOutput {
-	return o.ToSettingMxtunnelsPtrOutputWithContext(context.Background())
+func (o SettingMxtunnelOutput) ToSettingMxtunnelPtrOutput() SettingMxtunnelPtrOutput {
+	return o.ToSettingMxtunnelPtrOutputWithContext(context.Background())
 }
 
-func (o SettingMxtunnelsOutput) ToSettingMxtunnelsPtrOutputWithContext(ctx context.Context) SettingMxtunnelsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingMxtunnels) *SettingMxtunnels {
+func (o SettingMxtunnelOutput) ToSettingMxtunnelPtrOutputWithContext(ctx context.Context) SettingMxtunnelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingMxtunnel) *SettingMxtunnel {
 		return &v
-	}).(SettingMxtunnelsPtrOutput)
+	}).(SettingMxtunnelPtrOutput)
 }
 
 // Additional named Mist Tunnel definitions configured for the site
-func (o SettingMxtunnelsOutput) AdditionalMxtunnels() SettingMxtunnelsAdditionalMxtunnelsMapOutput {
-	return o.ApplyT(func(v SettingMxtunnels) map[string]SettingMxtunnelsAdditionalMxtunnels { return v.AdditionalMxtunnels }).(SettingMxtunnelsAdditionalMxtunnelsMapOutput)
+func (o SettingMxtunnelOutput) AdditionalMxtunnels() SettingMxtunnelAdditionalMxtunnelsMapOutput {
+	return o.ApplyT(func(v SettingMxtunnel) map[string]SettingMxtunnelAdditionalMxtunnels { return v.AdditionalMxtunnels }).(SettingMxtunnelAdditionalMxtunnelsMapOutput)
 }
 
 // AP source subnets allowed to establish Mist Tunnels
-func (o SettingMxtunnelsOutput) ApSubnets() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SettingMxtunnels) []string { return v.ApSubnets }).(pulumi.StringArrayOutput)
+func (o SettingMxtunnelOutput) ApSubnets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SettingMxtunnel) []string { return v.ApSubnets }).(pulumi.StringArrayOutput)
 }
 
 // Preemption behavior for restoring preferred tunnel peers after failover
-func (o SettingMxtunnelsOutput) AutoPreemption() SettingMxtunnelsAutoPreemptionPtrOutput {
-	return o.ApplyT(func(v SettingMxtunnels) *SettingMxtunnelsAutoPreemption { return v.AutoPreemption }).(SettingMxtunnelsAutoPreemptionPtrOutput)
+func (o SettingMxtunnelOutput) AutoPreemption() SettingMxtunnelAutoPreemptionPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnel) *SettingMxtunnelAutoPreemption { return v.AutoPreemption }).(SettingMxtunnelAutoPreemptionPtrOutput)
 }
 
 // Tunnel peer clusters used by APs for this site Mist Tunnel
-func (o SettingMxtunnelsOutput) Clusters() SettingMxtunnelsClusterArrayOutput {
-	return o.ApplyT(func(v SettingMxtunnels) []SettingMxtunnelsCluster { return v.Clusters }).(SettingMxtunnelsClusterArrayOutput)
+func (o SettingMxtunnelOutput) Clusters() SettingMxtunnelClusterArrayOutput {
+	return o.ApplyT(func(v SettingMxtunnel) []SettingMxtunnelCluster { return v.Clusters }).(SettingMxtunnelClusterArrayOutput)
 }
 
 // Timestamp when the site Mist Tunnel configuration was created
-func (o SettingMxtunnelsOutput) CreatedTime() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v SettingMxtunnels) *float64 { return v.CreatedTime }).(pulumi.Float64PtrOutput)
+func (o SettingMxtunnelOutput) CreatedTime() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SettingMxtunnel) *float64 { return v.CreatedTime }).(pulumi.Float64PtrOutput)
 }
 
 // Whether site Mist Tunnel tunneling is enabled
-func (o SettingMxtunnelsOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SettingMxtunnels) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+func (o SettingMxtunnelOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnel) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
 // Whether this Mist Tunnel configuration is scoped to a site
-func (o SettingMxtunnelsOutput) ForSite() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SettingMxtunnels) *bool { return v.ForSite }).(pulumi.BoolPtrOutput)
+func (o SettingMxtunnelOutput) ForSite() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnel) *bool { return v.ForSite }).(pulumi.BoolPtrOutput)
 }
 
 // In seconds, used as heartbeat to detect if a tunnel is alive. AP will try another peer after missing N hellos specified by hello_retries
-func (o SettingMxtunnelsOutput) HelloInterval() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SettingMxtunnels) *int { return v.HelloInterval }).(pulumi.IntPtrOutput)
+func (o SettingMxtunnelOutput) HelloInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnel) *int { return v.HelloInterval }).(pulumi.IntPtrOutput)
 }
 
 // Number of missed hello heartbeats before an AP tries another tunnel peer
-func (o SettingMxtunnelsOutput) HelloRetries() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SettingMxtunnels) *int { return v.HelloRetries }).(pulumi.IntPtrOutput)
+func (o SettingMxtunnelOutput) HelloRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnel) *int { return v.HelloRetries }).(pulumi.IntPtrOutput)
 }
 
 // Tunnel peer hostnames or IP addresses reachable from APs
-func (o SettingMxtunnelsOutput) Hosts() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SettingMxtunnels) []string { return v.Hosts }).(pulumi.StringArrayOutput)
+func (o SettingMxtunnelOutput) Hosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SettingMxtunnel) []string { return v.Hosts }).(pulumi.StringArrayOutput)
 }
 
 // Unique value identifying the site Mist Tunnel configuration
-func (o SettingMxtunnelsOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SettingMxtunnels) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o SettingMxtunnelOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnel) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // Timestamp when the site Mist Tunnel configuration was last modified
-func (o SettingMxtunnelsOutput) ModifiedTime() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v SettingMxtunnels) *float64 { return v.ModifiedTime }).(pulumi.Float64PtrOutput)
+func (o SettingMxtunnelOutput) ModifiedTime() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SettingMxtunnel) *float64 { return v.ModifiedTime }).(pulumi.Float64PtrOutput)
 }
 
 // 0 to enable MTU, 552-1500 to start MTU with a lower MTU
-func (o SettingMxtunnelsOutput) Mtu() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SettingMxtunnels) *int { return v.Mtu }).(pulumi.IntPtrOutput)
+func (o SettingMxtunnelOutput) Mtu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnel) *int { return v.Mtu }).(pulumi.IntPtrOutput)
 }
 
 // Identifier of the org that owns the site Mist Tunnel configuration
-func (o SettingMxtunnelsOutput) OrgId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SettingMxtunnels) *string { return v.OrgId }).(pulumi.StringPtrOutput)
+func (o SettingMxtunnelOutput) OrgId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnel) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
 // Encapsulation protocol used for the site Mist Tunnel
-func (o SettingMxtunnelsOutput) Protocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SettingMxtunnels) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+func (o SettingMxtunnelOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnel) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
 // TLS-secured RADIUS proxy settings for the site Mist Tunnel
-func (o SettingMxtunnelsOutput) Radsec() SettingMxtunnelsRadsecPtrOutput {
-	return o.ApplyT(func(v SettingMxtunnels) *SettingMxtunnelsRadsec { return v.Radsec }).(SettingMxtunnelsRadsecPtrOutput)
+func (o SettingMxtunnelOutput) Radsec() SettingMxtunnelRadsecPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnel) *SettingMxtunnelRadsec { return v.Radsec }).(SettingMxtunnelRadsecPtrOutput)
 }
 
 // Identifier of the site that owns this Mist Tunnel configuration
-func (o SettingMxtunnelsOutput) SiteId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SettingMxtunnels) *string { return v.SiteId }).(pulumi.StringPtrOutput)
+func (o SettingMxtunnelOutput) SiteId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnel) *string { return v.SiteId }).(pulumi.StringPtrOutput)
 }
 
 // List of VLAN IDs carried by this site Mist Tunnel
-func (o SettingMxtunnelsOutput) VlanIds() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v SettingMxtunnels) []int { return v.VlanIds }).(pulumi.IntArrayOutput)
+func (o SettingMxtunnelOutput) VlanIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v SettingMxtunnel) []int { return v.VlanIds }).(pulumi.IntArrayOutput)
 }
 
-type SettingMxtunnelsPtrOutput struct{ *pulumi.OutputState }
+type SettingMxtunnelPtrOutput struct{ *pulumi.OutputState }
 
-func (SettingMxtunnelsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SettingMxtunnels)(nil)).Elem()
+func (SettingMxtunnelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingMxtunnel)(nil)).Elem()
 }
 
-func (o SettingMxtunnelsPtrOutput) ToSettingMxtunnelsPtrOutput() SettingMxtunnelsPtrOutput {
+func (o SettingMxtunnelPtrOutput) ToSettingMxtunnelPtrOutput() SettingMxtunnelPtrOutput {
 	return o
 }
 
-func (o SettingMxtunnelsPtrOutput) ToSettingMxtunnelsPtrOutputWithContext(ctx context.Context) SettingMxtunnelsPtrOutput {
+func (o SettingMxtunnelPtrOutput) ToSettingMxtunnelPtrOutputWithContext(ctx context.Context) SettingMxtunnelPtrOutput {
 	return o
 }
 
-func (o SettingMxtunnelsPtrOutput) Elem() SettingMxtunnelsOutput {
-	return o.ApplyT(func(v *SettingMxtunnels) SettingMxtunnels {
+func (o SettingMxtunnelPtrOutput) Elem() SettingMxtunnelOutput {
+	return o.ApplyT(func(v *SettingMxtunnel) SettingMxtunnel {
 		if v != nil {
 			return *v
 		}
-		var ret SettingMxtunnels
+		var ret SettingMxtunnel
 		return ret
-	}).(SettingMxtunnelsOutput)
+	}).(SettingMxtunnelOutput)
 }
 
 // Additional named Mist Tunnel definitions configured for the site
-func (o SettingMxtunnelsPtrOutput) AdditionalMxtunnels() SettingMxtunnelsAdditionalMxtunnelsMapOutput {
-	return o.ApplyT(func(v *SettingMxtunnels) map[string]SettingMxtunnelsAdditionalMxtunnels {
+func (o SettingMxtunnelPtrOutput) AdditionalMxtunnels() SettingMxtunnelAdditionalMxtunnelsMapOutput {
+	return o.ApplyT(func(v *SettingMxtunnel) map[string]SettingMxtunnelAdditionalMxtunnels {
 		if v == nil {
 			return nil
 		}
 		return v.AdditionalMxtunnels
-	}).(SettingMxtunnelsAdditionalMxtunnelsMapOutput)
+	}).(SettingMxtunnelAdditionalMxtunnelsMapOutput)
 }
 
 // AP source subnets allowed to establish Mist Tunnels
-func (o SettingMxtunnelsPtrOutput) ApSubnets() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *SettingMxtunnels) []string {
+func (o SettingMxtunnelPtrOutput) ApSubnets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SettingMxtunnel) []string {
 		if v == nil {
 			return nil
 		}
@@ -18328,28 +18328,28 @@ func (o SettingMxtunnelsPtrOutput) ApSubnets() pulumi.StringArrayOutput {
 }
 
 // Preemption behavior for restoring preferred tunnel peers after failover
-func (o SettingMxtunnelsPtrOutput) AutoPreemption() SettingMxtunnelsAutoPreemptionPtrOutput {
-	return o.ApplyT(func(v *SettingMxtunnels) *SettingMxtunnelsAutoPreemption {
+func (o SettingMxtunnelPtrOutput) AutoPreemption() SettingMxtunnelAutoPreemptionPtrOutput {
+	return o.ApplyT(func(v *SettingMxtunnel) *SettingMxtunnelAutoPreemption {
 		if v == nil {
 			return nil
 		}
 		return v.AutoPreemption
-	}).(SettingMxtunnelsAutoPreemptionPtrOutput)
+	}).(SettingMxtunnelAutoPreemptionPtrOutput)
 }
 
 // Tunnel peer clusters used by APs for this site Mist Tunnel
-func (o SettingMxtunnelsPtrOutput) Clusters() SettingMxtunnelsClusterArrayOutput {
-	return o.ApplyT(func(v *SettingMxtunnels) []SettingMxtunnelsCluster {
+func (o SettingMxtunnelPtrOutput) Clusters() SettingMxtunnelClusterArrayOutput {
+	return o.ApplyT(func(v *SettingMxtunnel) []SettingMxtunnelCluster {
 		if v == nil {
 			return nil
 		}
 		return v.Clusters
-	}).(SettingMxtunnelsClusterArrayOutput)
+	}).(SettingMxtunnelClusterArrayOutput)
 }
 
 // Timestamp when the site Mist Tunnel configuration was created
-func (o SettingMxtunnelsPtrOutput) CreatedTime() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *SettingMxtunnels) *float64 {
+func (o SettingMxtunnelPtrOutput) CreatedTime() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SettingMxtunnel) *float64 {
 		if v == nil {
 			return nil
 		}
@@ -18358,8 +18358,8 @@ func (o SettingMxtunnelsPtrOutput) CreatedTime() pulumi.Float64PtrOutput {
 }
 
 // Whether site Mist Tunnel tunneling is enabled
-func (o SettingMxtunnelsPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SettingMxtunnels) *bool {
+func (o SettingMxtunnelPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingMxtunnel) *bool {
 		if v == nil {
 			return nil
 		}
@@ -18368,8 +18368,8 @@ func (o SettingMxtunnelsPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 // Whether this Mist Tunnel configuration is scoped to a site
-func (o SettingMxtunnelsPtrOutput) ForSite() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SettingMxtunnels) *bool {
+func (o SettingMxtunnelPtrOutput) ForSite() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingMxtunnel) *bool {
 		if v == nil {
 			return nil
 		}
@@ -18378,8 +18378,8 @@ func (o SettingMxtunnelsPtrOutput) ForSite() pulumi.BoolPtrOutput {
 }
 
 // In seconds, used as heartbeat to detect if a tunnel is alive. AP will try another peer after missing N hellos specified by hello_retries
-func (o SettingMxtunnelsPtrOutput) HelloInterval() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SettingMxtunnels) *int {
+func (o SettingMxtunnelPtrOutput) HelloInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SettingMxtunnel) *int {
 		if v == nil {
 			return nil
 		}
@@ -18388,8 +18388,8 @@ func (o SettingMxtunnelsPtrOutput) HelloInterval() pulumi.IntPtrOutput {
 }
 
 // Number of missed hello heartbeats before an AP tries another tunnel peer
-func (o SettingMxtunnelsPtrOutput) HelloRetries() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SettingMxtunnels) *int {
+func (o SettingMxtunnelPtrOutput) HelloRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SettingMxtunnel) *int {
 		if v == nil {
 			return nil
 		}
@@ -18398,8 +18398,8 @@ func (o SettingMxtunnelsPtrOutput) HelloRetries() pulumi.IntPtrOutput {
 }
 
 // Tunnel peer hostnames or IP addresses reachable from APs
-func (o SettingMxtunnelsPtrOutput) Hosts() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *SettingMxtunnels) []string {
+func (o SettingMxtunnelPtrOutput) Hosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SettingMxtunnel) []string {
 		if v == nil {
 			return nil
 		}
@@ -18408,8 +18408,8 @@ func (o SettingMxtunnelsPtrOutput) Hosts() pulumi.StringArrayOutput {
 }
 
 // Unique value identifying the site Mist Tunnel configuration
-func (o SettingMxtunnelsPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SettingMxtunnels) *string {
+func (o SettingMxtunnelPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingMxtunnel) *string {
 		if v == nil {
 			return nil
 		}
@@ -18418,8 +18418,8 @@ func (o SettingMxtunnelsPtrOutput) Id() pulumi.StringPtrOutput {
 }
 
 // Timestamp when the site Mist Tunnel configuration was last modified
-func (o SettingMxtunnelsPtrOutput) ModifiedTime() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *SettingMxtunnels) *float64 {
+func (o SettingMxtunnelPtrOutput) ModifiedTime() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SettingMxtunnel) *float64 {
 		if v == nil {
 			return nil
 		}
@@ -18428,8 +18428,8 @@ func (o SettingMxtunnelsPtrOutput) ModifiedTime() pulumi.Float64PtrOutput {
 }
 
 // 0 to enable MTU, 552-1500 to start MTU with a lower MTU
-func (o SettingMxtunnelsPtrOutput) Mtu() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SettingMxtunnels) *int {
+func (o SettingMxtunnelPtrOutput) Mtu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SettingMxtunnel) *int {
 		if v == nil {
 			return nil
 		}
@@ -18438,8 +18438,8 @@ func (o SettingMxtunnelsPtrOutput) Mtu() pulumi.IntPtrOutput {
 }
 
 // Identifier of the org that owns the site Mist Tunnel configuration
-func (o SettingMxtunnelsPtrOutput) OrgId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SettingMxtunnels) *string {
+func (o SettingMxtunnelPtrOutput) OrgId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingMxtunnel) *string {
 		if v == nil {
 			return nil
 		}
@@ -18448,8 +18448,8 @@ func (o SettingMxtunnelsPtrOutput) OrgId() pulumi.StringPtrOutput {
 }
 
 // Encapsulation protocol used for the site Mist Tunnel
-func (o SettingMxtunnelsPtrOutput) Protocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SettingMxtunnels) *string {
+func (o SettingMxtunnelPtrOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingMxtunnel) *string {
 		if v == nil {
 			return nil
 		}
@@ -18458,18 +18458,18 @@ func (o SettingMxtunnelsPtrOutput) Protocol() pulumi.StringPtrOutput {
 }
 
 // TLS-secured RADIUS proxy settings for the site Mist Tunnel
-func (o SettingMxtunnelsPtrOutput) Radsec() SettingMxtunnelsRadsecPtrOutput {
-	return o.ApplyT(func(v *SettingMxtunnels) *SettingMxtunnelsRadsec {
+func (o SettingMxtunnelPtrOutput) Radsec() SettingMxtunnelRadsecPtrOutput {
+	return o.ApplyT(func(v *SettingMxtunnel) *SettingMxtunnelRadsec {
 		if v == nil {
 			return nil
 		}
 		return v.Radsec
-	}).(SettingMxtunnelsRadsecPtrOutput)
+	}).(SettingMxtunnelRadsecPtrOutput)
 }
 
 // Identifier of the site that owns this Mist Tunnel configuration
-func (o SettingMxtunnelsPtrOutput) SiteId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SettingMxtunnels) *string {
+func (o SettingMxtunnelPtrOutput) SiteId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingMxtunnel) *string {
 		if v == nil {
 			return nil
 		}
@@ -18478,8 +18478,8 @@ func (o SettingMxtunnelsPtrOutput) SiteId() pulumi.StringPtrOutput {
 }
 
 // List of VLAN IDs carried by this site Mist Tunnel
-func (o SettingMxtunnelsPtrOutput) VlanIds() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v *SettingMxtunnels) []int {
+func (o SettingMxtunnelPtrOutput) VlanIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *SettingMxtunnel) []int {
 		if v == nil {
 			return nil
 		}
@@ -18487,7 +18487,7 @@ func (o SettingMxtunnelsPtrOutput) VlanIds() pulumi.IntArrayOutput {
 	}).(pulumi.IntArrayOutput)
 }
 
-type SettingMxtunnelsAdditionalMxtunnels struct {
+type SettingMxtunnelAdditionalMxtunnels struct {
 	// In seconds, used as heartbeat to detect if a tunnel is alive. AP will try another peer after missing N hellos specified by hello_retries
 	HelloInterval *int `pulumi:"helloInterval"`
 	// Number of missed hello heartbeats before an AP tries another tunnel peer
@@ -18495,23 +18495,23 @@ type SettingMxtunnelsAdditionalMxtunnels struct {
 	// Encapsulation protocol used for this additional Mist Tunnel
 	Protocol *string `pulumi:"protocol"`
 	// Tunnel peer clusters used by APs for this additional Mist Tunnel
-	TuntermClusters []SettingMxtunnelsAdditionalMxtunnelsTuntermCluster `pulumi:"tuntermClusters"`
+	TuntermClusters []SettingMxtunnelAdditionalMxtunnelsTuntermCluster `pulumi:"tuntermClusters"`
 	// List of VLAN IDs carried by this additional Mist Tunnel
 	VlanIds []int `pulumi:"vlanIds"`
 }
 
-// SettingMxtunnelsAdditionalMxtunnelsInput is an input type that accepts SettingMxtunnelsAdditionalMxtunnelsArgs and SettingMxtunnelsAdditionalMxtunnelsOutput values.
-// You can construct a concrete instance of `SettingMxtunnelsAdditionalMxtunnelsInput` via:
+// SettingMxtunnelAdditionalMxtunnelsInput is an input type that accepts SettingMxtunnelAdditionalMxtunnelsArgs and SettingMxtunnelAdditionalMxtunnelsOutput values.
+// You can construct a concrete instance of `SettingMxtunnelAdditionalMxtunnelsInput` via:
 //
-//	SettingMxtunnelsAdditionalMxtunnelsArgs{...}
-type SettingMxtunnelsAdditionalMxtunnelsInput interface {
+//	SettingMxtunnelAdditionalMxtunnelsArgs{...}
+type SettingMxtunnelAdditionalMxtunnelsInput interface {
 	pulumi.Input
 
-	ToSettingMxtunnelsAdditionalMxtunnelsOutput() SettingMxtunnelsAdditionalMxtunnelsOutput
-	ToSettingMxtunnelsAdditionalMxtunnelsOutputWithContext(context.Context) SettingMxtunnelsAdditionalMxtunnelsOutput
+	ToSettingMxtunnelAdditionalMxtunnelsOutput() SettingMxtunnelAdditionalMxtunnelsOutput
+	ToSettingMxtunnelAdditionalMxtunnelsOutputWithContext(context.Context) SettingMxtunnelAdditionalMxtunnelsOutput
 }
 
-type SettingMxtunnelsAdditionalMxtunnelsArgs struct {
+type SettingMxtunnelAdditionalMxtunnelsArgs struct {
 	// In seconds, used as heartbeat to detect if a tunnel is alive. AP will try another peer after missing N hellos specified by hello_retries
 	HelloInterval pulumi.IntPtrInput `pulumi:"helloInterval"`
 	// Number of missed hello heartbeats before an AP tries another tunnel peer
@@ -18519,216 +18519,216 @@ type SettingMxtunnelsAdditionalMxtunnelsArgs struct {
 	// Encapsulation protocol used for this additional Mist Tunnel
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
 	// Tunnel peer clusters used by APs for this additional Mist Tunnel
-	TuntermClusters SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayInput `pulumi:"tuntermClusters"`
+	TuntermClusters SettingMxtunnelAdditionalMxtunnelsTuntermClusterArrayInput `pulumi:"tuntermClusters"`
 	// List of VLAN IDs carried by this additional Mist Tunnel
 	VlanIds pulumi.IntArrayInput `pulumi:"vlanIds"`
 }
 
-func (SettingMxtunnelsAdditionalMxtunnelsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SettingMxtunnelsAdditionalMxtunnels)(nil)).Elem()
+func (SettingMxtunnelAdditionalMxtunnelsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingMxtunnelAdditionalMxtunnels)(nil)).Elem()
 }
 
-func (i SettingMxtunnelsAdditionalMxtunnelsArgs) ToSettingMxtunnelsAdditionalMxtunnelsOutput() SettingMxtunnelsAdditionalMxtunnelsOutput {
-	return i.ToSettingMxtunnelsAdditionalMxtunnelsOutputWithContext(context.Background())
+func (i SettingMxtunnelAdditionalMxtunnelsArgs) ToSettingMxtunnelAdditionalMxtunnelsOutput() SettingMxtunnelAdditionalMxtunnelsOutput {
+	return i.ToSettingMxtunnelAdditionalMxtunnelsOutputWithContext(context.Background())
 }
 
-func (i SettingMxtunnelsAdditionalMxtunnelsArgs) ToSettingMxtunnelsAdditionalMxtunnelsOutputWithContext(ctx context.Context) SettingMxtunnelsAdditionalMxtunnelsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelsAdditionalMxtunnelsOutput)
+func (i SettingMxtunnelAdditionalMxtunnelsArgs) ToSettingMxtunnelAdditionalMxtunnelsOutputWithContext(ctx context.Context) SettingMxtunnelAdditionalMxtunnelsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelAdditionalMxtunnelsOutput)
 }
 
-// SettingMxtunnelsAdditionalMxtunnelsMapInput is an input type that accepts SettingMxtunnelsAdditionalMxtunnelsMap and SettingMxtunnelsAdditionalMxtunnelsMapOutput values.
-// You can construct a concrete instance of `SettingMxtunnelsAdditionalMxtunnelsMapInput` via:
+// SettingMxtunnelAdditionalMxtunnelsMapInput is an input type that accepts SettingMxtunnelAdditionalMxtunnelsMap and SettingMxtunnelAdditionalMxtunnelsMapOutput values.
+// You can construct a concrete instance of `SettingMxtunnelAdditionalMxtunnelsMapInput` via:
 //
-//	SettingMxtunnelsAdditionalMxtunnelsMap{ "key": SettingMxtunnelsAdditionalMxtunnelsArgs{...} }
-type SettingMxtunnelsAdditionalMxtunnelsMapInput interface {
+//	SettingMxtunnelAdditionalMxtunnelsMap{ "key": SettingMxtunnelAdditionalMxtunnelsArgs{...} }
+type SettingMxtunnelAdditionalMxtunnelsMapInput interface {
 	pulumi.Input
 
-	ToSettingMxtunnelsAdditionalMxtunnelsMapOutput() SettingMxtunnelsAdditionalMxtunnelsMapOutput
-	ToSettingMxtunnelsAdditionalMxtunnelsMapOutputWithContext(context.Context) SettingMxtunnelsAdditionalMxtunnelsMapOutput
+	ToSettingMxtunnelAdditionalMxtunnelsMapOutput() SettingMxtunnelAdditionalMxtunnelsMapOutput
+	ToSettingMxtunnelAdditionalMxtunnelsMapOutputWithContext(context.Context) SettingMxtunnelAdditionalMxtunnelsMapOutput
 }
 
-type SettingMxtunnelsAdditionalMxtunnelsMap map[string]SettingMxtunnelsAdditionalMxtunnelsInput
+type SettingMxtunnelAdditionalMxtunnelsMap map[string]SettingMxtunnelAdditionalMxtunnelsInput
 
-func (SettingMxtunnelsAdditionalMxtunnelsMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SettingMxtunnelsAdditionalMxtunnels)(nil)).Elem()
+func (SettingMxtunnelAdditionalMxtunnelsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SettingMxtunnelAdditionalMxtunnels)(nil)).Elem()
 }
 
-func (i SettingMxtunnelsAdditionalMxtunnelsMap) ToSettingMxtunnelsAdditionalMxtunnelsMapOutput() SettingMxtunnelsAdditionalMxtunnelsMapOutput {
-	return i.ToSettingMxtunnelsAdditionalMxtunnelsMapOutputWithContext(context.Background())
+func (i SettingMxtunnelAdditionalMxtunnelsMap) ToSettingMxtunnelAdditionalMxtunnelsMapOutput() SettingMxtunnelAdditionalMxtunnelsMapOutput {
+	return i.ToSettingMxtunnelAdditionalMxtunnelsMapOutputWithContext(context.Background())
 }
 
-func (i SettingMxtunnelsAdditionalMxtunnelsMap) ToSettingMxtunnelsAdditionalMxtunnelsMapOutputWithContext(ctx context.Context) SettingMxtunnelsAdditionalMxtunnelsMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelsAdditionalMxtunnelsMapOutput)
+func (i SettingMxtunnelAdditionalMxtunnelsMap) ToSettingMxtunnelAdditionalMxtunnelsMapOutputWithContext(ctx context.Context) SettingMxtunnelAdditionalMxtunnelsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelAdditionalMxtunnelsMapOutput)
 }
 
-type SettingMxtunnelsAdditionalMxtunnelsOutput struct{ *pulumi.OutputState }
+type SettingMxtunnelAdditionalMxtunnelsOutput struct{ *pulumi.OutputState }
 
-func (SettingMxtunnelsAdditionalMxtunnelsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SettingMxtunnelsAdditionalMxtunnels)(nil)).Elem()
+func (SettingMxtunnelAdditionalMxtunnelsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingMxtunnelAdditionalMxtunnels)(nil)).Elem()
 }
 
-func (o SettingMxtunnelsAdditionalMxtunnelsOutput) ToSettingMxtunnelsAdditionalMxtunnelsOutput() SettingMxtunnelsAdditionalMxtunnelsOutput {
+func (o SettingMxtunnelAdditionalMxtunnelsOutput) ToSettingMxtunnelAdditionalMxtunnelsOutput() SettingMxtunnelAdditionalMxtunnelsOutput {
 	return o
 }
 
-func (o SettingMxtunnelsAdditionalMxtunnelsOutput) ToSettingMxtunnelsAdditionalMxtunnelsOutputWithContext(ctx context.Context) SettingMxtunnelsAdditionalMxtunnelsOutput {
+func (o SettingMxtunnelAdditionalMxtunnelsOutput) ToSettingMxtunnelAdditionalMxtunnelsOutputWithContext(ctx context.Context) SettingMxtunnelAdditionalMxtunnelsOutput {
 	return o
 }
 
 // In seconds, used as heartbeat to detect if a tunnel is alive. AP will try another peer after missing N hellos specified by hello_retries
-func (o SettingMxtunnelsAdditionalMxtunnelsOutput) HelloInterval() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SettingMxtunnelsAdditionalMxtunnels) *int { return v.HelloInterval }).(pulumi.IntPtrOutput)
+func (o SettingMxtunnelAdditionalMxtunnelsOutput) HelloInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelAdditionalMxtunnels) *int { return v.HelloInterval }).(pulumi.IntPtrOutput)
 }
 
 // Number of missed hello heartbeats before an AP tries another tunnel peer
-func (o SettingMxtunnelsAdditionalMxtunnelsOutput) HelloRetries() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SettingMxtunnelsAdditionalMxtunnels) *int { return v.HelloRetries }).(pulumi.IntPtrOutput)
+func (o SettingMxtunnelAdditionalMxtunnelsOutput) HelloRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelAdditionalMxtunnels) *int { return v.HelloRetries }).(pulumi.IntPtrOutput)
 }
 
 // Encapsulation protocol used for this additional Mist Tunnel
-func (o SettingMxtunnelsAdditionalMxtunnelsOutput) Protocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SettingMxtunnelsAdditionalMxtunnels) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+func (o SettingMxtunnelAdditionalMxtunnelsOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelAdditionalMxtunnels) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
 // Tunnel peer clusters used by APs for this additional Mist Tunnel
-func (o SettingMxtunnelsAdditionalMxtunnelsOutput) TuntermClusters() SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutput {
-	return o.ApplyT(func(v SettingMxtunnelsAdditionalMxtunnels) []SettingMxtunnelsAdditionalMxtunnelsTuntermCluster {
+func (o SettingMxtunnelAdditionalMxtunnelsOutput) TuntermClusters() SettingMxtunnelAdditionalMxtunnelsTuntermClusterArrayOutput {
+	return o.ApplyT(func(v SettingMxtunnelAdditionalMxtunnels) []SettingMxtunnelAdditionalMxtunnelsTuntermCluster {
 		return v.TuntermClusters
-	}).(SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutput)
+	}).(SettingMxtunnelAdditionalMxtunnelsTuntermClusterArrayOutput)
 }
 
 // List of VLAN IDs carried by this additional Mist Tunnel
-func (o SettingMxtunnelsAdditionalMxtunnelsOutput) VlanIds() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v SettingMxtunnelsAdditionalMxtunnels) []int { return v.VlanIds }).(pulumi.IntArrayOutput)
+func (o SettingMxtunnelAdditionalMxtunnelsOutput) VlanIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v SettingMxtunnelAdditionalMxtunnels) []int { return v.VlanIds }).(pulumi.IntArrayOutput)
 }
 
-type SettingMxtunnelsAdditionalMxtunnelsMapOutput struct{ *pulumi.OutputState }
+type SettingMxtunnelAdditionalMxtunnelsMapOutput struct{ *pulumi.OutputState }
 
-func (SettingMxtunnelsAdditionalMxtunnelsMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SettingMxtunnelsAdditionalMxtunnels)(nil)).Elem()
+func (SettingMxtunnelAdditionalMxtunnelsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SettingMxtunnelAdditionalMxtunnels)(nil)).Elem()
 }
 
-func (o SettingMxtunnelsAdditionalMxtunnelsMapOutput) ToSettingMxtunnelsAdditionalMxtunnelsMapOutput() SettingMxtunnelsAdditionalMxtunnelsMapOutput {
+func (o SettingMxtunnelAdditionalMxtunnelsMapOutput) ToSettingMxtunnelAdditionalMxtunnelsMapOutput() SettingMxtunnelAdditionalMxtunnelsMapOutput {
 	return o
 }
 
-func (o SettingMxtunnelsAdditionalMxtunnelsMapOutput) ToSettingMxtunnelsAdditionalMxtunnelsMapOutputWithContext(ctx context.Context) SettingMxtunnelsAdditionalMxtunnelsMapOutput {
+func (o SettingMxtunnelAdditionalMxtunnelsMapOutput) ToSettingMxtunnelAdditionalMxtunnelsMapOutputWithContext(ctx context.Context) SettingMxtunnelAdditionalMxtunnelsMapOutput {
 	return o
 }
 
-func (o SettingMxtunnelsAdditionalMxtunnelsMapOutput) MapIndex(k pulumi.StringInput) SettingMxtunnelsAdditionalMxtunnelsOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SettingMxtunnelsAdditionalMxtunnels {
-		return vs[0].(map[string]SettingMxtunnelsAdditionalMxtunnels)[vs[1].(string)]
-	}).(SettingMxtunnelsAdditionalMxtunnelsOutput)
+func (o SettingMxtunnelAdditionalMxtunnelsMapOutput) MapIndex(k pulumi.StringInput) SettingMxtunnelAdditionalMxtunnelsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SettingMxtunnelAdditionalMxtunnels {
+		return vs[0].(map[string]SettingMxtunnelAdditionalMxtunnels)[vs[1].(string)]
+	}).(SettingMxtunnelAdditionalMxtunnelsOutput)
 }
 
-type SettingMxtunnelsAdditionalMxtunnelsTuntermCluster struct {
+type SettingMxtunnelAdditionalMxtunnelsTuntermCluster struct {
 	// Peer cluster name used in the site Mist Tunnel configuration
 	Name *string `pulumi:"name"`
 	// Tunnel termination hostnames or IP addresses in this peer cluster
 	TuntermHosts []string `pulumi:"tuntermHosts"`
 }
 
-// SettingMxtunnelsAdditionalMxtunnelsTuntermClusterInput is an input type that accepts SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArgs and SettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput values.
-// You can construct a concrete instance of `SettingMxtunnelsAdditionalMxtunnelsTuntermClusterInput` via:
+// SettingMxtunnelAdditionalMxtunnelsTuntermClusterInput is an input type that accepts SettingMxtunnelAdditionalMxtunnelsTuntermClusterArgs and SettingMxtunnelAdditionalMxtunnelsTuntermClusterOutput values.
+// You can construct a concrete instance of `SettingMxtunnelAdditionalMxtunnelsTuntermClusterInput` via:
 //
-//	SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArgs{...}
-type SettingMxtunnelsAdditionalMxtunnelsTuntermClusterInput interface {
+//	SettingMxtunnelAdditionalMxtunnelsTuntermClusterArgs{...}
+type SettingMxtunnelAdditionalMxtunnelsTuntermClusterInput interface {
 	pulumi.Input
 
-	ToSettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput() SettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput
-	ToSettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutputWithContext(context.Context) SettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput
+	ToSettingMxtunnelAdditionalMxtunnelsTuntermClusterOutput() SettingMxtunnelAdditionalMxtunnelsTuntermClusterOutput
+	ToSettingMxtunnelAdditionalMxtunnelsTuntermClusterOutputWithContext(context.Context) SettingMxtunnelAdditionalMxtunnelsTuntermClusterOutput
 }
 
-type SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArgs struct {
+type SettingMxtunnelAdditionalMxtunnelsTuntermClusterArgs struct {
 	// Peer cluster name used in the site Mist Tunnel configuration
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Tunnel termination hostnames or IP addresses in this peer cluster
 	TuntermHosts pulumi.StringArrayInput `pulumi:"tuntermHosts"`
 }
 
-func (SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SettingMxtunnelsAdditionalMxtunnelsTuntermCluster)(nil)).Elem()
+func (SettingMxtunnelAdditionalMxtunnelsTuntermClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingMxtunnelAdditionalMxtunnelsTuntermCluster)(nil)).Elem()
 }
 
-func (i SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArgs) ToSettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput() SettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput {
-	return i.ToSettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutputWithContext(context.Background())
+func (i SettingMxtunnelAdditionalMxtunnelsTuntermClusterArgs) ToSettingMxtunnelAdditionalMxtunnelsTuntermClusterOutput() SettingMxtunnelAdditionalMxtunnelsTuntermClusterOutput {
+	return i.ToSettingMxtunnelAdditionalMxtunnelsTuntermClusterOutputWithContext(context.Background())
 }
 
-func (i SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArgs) ToSettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutputWithContext(ctx context.Context) SettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput)
+func (i SettingMxtunnelAdditionalMxtunnelsTuntermClusterArgs) ToSettingMxtunnelAdditionalMxtunnelsTuntermClusterOutputWithContext(ctx context.Context) SettingMxtunnelAdditionalMxtunnelsTuntermClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelAdditionalMxtunnelsTuntermClusterOutput)
 }
 
-// SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayInput is an input type that accepts SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArray and SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutput values.
-// You can construct a concrete instance of `SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayInput` via:
+// SettingMxtunnelAdditionalMxtunnelsTuntermClusterArrayInput is an input type that accepts SettingMxtunnelAdditionalMxtunnelsTuntermClusterArray and SettingMxtunnelAdditionalMxtunnelsTuntermClusterArrayOutput values.
+// You can construct a concrete instance of `SettingMxtunnelAdditionalMxtunnelsTuntermClusterArrayInput` via:
 //
-//	SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArray{ SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArgs{...} }
-type SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayInput interface {
+//	SettingMxtunnelAdditionalMxtunnelsTuntermClusterArray{ SettingMxtunnelAdditionalMxtunnelsTuntermClusterArgs{...} }
+type SettingMxtunnelAdditionalMxtunnelsTuntermClusterArrayInput interface {
 	pulumi.Input
 
-	ToSettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutput() SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutput
-	ToSettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutputWithContext(context.Context) SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutput
+	ToSettingMxtunnelAdditionalMxtunnelsTuntermClusterArrayOutput() SettingMxtunnelAdditionalMxtunnelsTuntermClusterArrayOutput
+	ToSettingMxtunnelAdditionalMxtunnelsTuntermClusterArrayOutputWithContext(context.Context) SettingMxtunnelAdditionalMxtunnelsTuntermClusterArrayOutput
 }
 
-type SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArray []SettingMxtunnelsAdditionalMxtunnelsTuntermClusterInput
+type SettingMxtunnelAdditionalMxtunnelsTuntermClusterArray []SettingMxtunnelAdditionalMxtunnelsTuntermClusterInput
 
-func (SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SettingMxtunnelsAdditionalMxtunnelsTuntermCluster)(nil)).Elem()
+func (SettingMxtunnelAdditionalMxtunnelsTuntermClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SettingMxtunnelAdditionalMxtunnelsTuntermCluster)(nil)).Elem()
 }
 
-func (i SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArray) ToSettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutput() SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutput {
-	return i.ToSettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutputWithContext(context.Background())
+func (i SettingMxtunnelAdditionalMxtunnelsTuntermClusterArray) ToSettingMxtunnelAdditionalMxtunnelsTuntermClusterArrayOutput() SettingMxtunnelAdditionalMxtunnelsTuntermClusterArrayOutput {
+	return i.ToSettingMxtunnelAdditionalMxtunnelsTuntermClusterArrayOutputWithContext(context.Background())
 }
 
-func (i SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArray) ToSettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutputWithContext(ctx context.Context) SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutput)
+func (i SettingMxtunnelAdditionalMxtunnelsTuntermClusterArray) ToSettingMxtunnelAdditionalMxtunnelsTuntermClusterArrayOutputWithContext(ctx context.Context) SettingMxtunnelAdditionalMxtunnelsTuntermClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelAdditionalMxtunnelsTuntermClusterArrayOutput)
 }
 
-type SettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput struct{ *pulumi.OutputState }
+type SettingMxtunnelAdditionalMxtunnelsTuntermClusterOutput struct{ *pulumi.OutputState }
 
-func (SettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SettingMxtunnelsAdditionalMxtunnelsTuntermCluster)(nil)).Elem()
+func (SettingMxtunnelAdditionalMxtunnelsTuntermClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingMxtunnelAdditionalMxtunnelsTuntermCluster)(nil)).Elem()
 }
 
-func (o SettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput) ToSettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput() SettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput {
+func (o SettingMxtunnelAdditionalMxtunnelsTuntermClusterOutput) ToSettingMxtunnelAdditionalMxtunnelsTuntermClusterOutput() SettingMxtunnelAdditionalMxtunnelsTuntermClusterOutput {
 	return o
 }
 
-func (o SettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput) ToSettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutputWithContext(ctx context.Context) SettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput {
+func (o SettingMxtunnelAdditionalMxtunnelsTuntermClusterOutput) ToSettingMxtunnelAdditionalMxtunnelsTuntermClusterOutputWithContext(ctx context.Context) SettingMxtunnelAdditionalMxtunnelsTuntermClusterOutput {
 	return o
 }
 
 // Peer cluster name used in the site Mist Tunnel configuration
-func (o SettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SettingMxtunnelsAdditionalMxtunnelsTuntermCluster) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o SettingMxtunnelAdditionalMxtunnelsTuntermClusterOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelAdditionalMxtunnelsTuntermCluster) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Tunnel termination hostnames or IP addresses in this peer cluster
-func (o SettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput) TuntermHosts() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SettingMxtunnelsAdditionalMxtunnelsTuntermCluster) []string { return v.TuntermHosts }).(pulumi.StringArrayOutput)
+func (o SettingMxtunnelAdditionalMxtunnelsTuntermClusterOutput) TuntermHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SettingMxtunnelAdditionalMxtunnelsTuntermCluster) []string { return v.TuntermHosts }).(pulumi.StringArrayOutput)
 }
 
-type SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutput struct{ *pulumi.OutputState }
+type SettingMxtunnelAdditionalMxtunnelsTuntermClusterArrayOutput struct{ *pulumi.OutputState }
 
-func (SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SettingMxtunnelsAdditionalMxtunnelsTuntermCluster)(nil)).Elem()
+func (SettingMxtunnelAdditionalMxtunnelsTuntermClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SettingMxtunnelAdditionalMxtunnelsTuntermCluster)(nil)).Elem()
 }
 
-func (o SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutput) ToSettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutput() SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutput {
+func (o SettingMxtunnelAdditionalMxtunnelsTuntermClusterArrayOutput) ToSettingMxtunnelAdditionalMxtunnelsTuntermClusterArrayOutput() SettingMxtunnelAdditionalMxtunnelsTuntermClusterArrayOutput {
 	return o
 }
 
-func (o SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutput) ToSettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutputWithContext(ctx context.Context) SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutput {
+func (o SettingMxtunnelAdditionalMxtunnelsTuntermClusterArrayOutput) ToSettingMxtunnelAdditionalMxtunnelsTuntermClusterArrayOutputWithContext(ctx context.Context) SettingMxtunnelAdditionalMxtunnelsTuntermClusterArrayOutput {
 	return o
 }
 
-func (o SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutput) Index(i pulumi.IntInput) SettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SettingMxtunnelsAdditionalMxtunnelsTuntermCluster {
-		return vs[0].([]SettingMxtunnelsAdditionalMxtunnelsTuntermCluster)[vs[1].(int)]
-	}).(SettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput)
+func (o SettingMxtunnelAdditionalMxtunnelsTuntermClusterArrayOutput) Index(i pulumi.IntInput) SettingMxtunnelAdditionalMxtunnelsTuntermClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SettingMxtunnelAdditionalMxtunnelsTuntermCluster {
+		return vs[0].([]SettingMxtunnelAdditionalMxtunnelsTuntermCluster)[vs[1].(int)]
+	}).(SettingMxtunnelAdditionalMxtunnelsTuntermClusterOutput)
 }
 
-type SettingMxtunnelsAutoPreemption struct {
+type SettingMxtunnelAutoPreemption struct {
 	// Scheduled weekday for auto preemption
 	DayOfWeek *string `pulumi:"dayOfWeek"`
 	// Whether auto preemption is enabled
@@ -18737,18 +18737,18 @@ type SettingMxtunnelsAutoPreemption struct {
 	TimeOfDay *string `pulumi:"timeOfDay"`
 }
 
-// SettingMxtunnelsAutoPreemptionInput is an input type that accepts SettingMxtunnelsAutoPreemptionArgs and SettingMxtunnelsAutoPreemptionOutput values.
-// You can construct a concrete instance of `SettingMxtunnelsAutoPreemptionInput` via:
+// SettingMxtunnelAutoPreemptionInput is an input type that accepts SettingMxtunnelAutoPreemptionArgs and SettingMxtunnelAutoPreemptionOutput values.
+// You can construct a concrete instance of `SettingMxtunnelAutoPreemptionInput` via:
 //
-//	SettingMxtunnelsAutoPreemptionArgs{...}
-type SettingMxtunnelsAutoPreemptionInput interface {
+//	SettingMxtunnelAutoPreemptionArgs{...}
+type SettingMxtunnelAutoPreemptionInput interface {
 	pulumi.Input
 
-	ToSettingMxtunnelsAutoPreemptionOutput() SettingMxtunnelsAutoPreemptionOutput
-	ToSettingMxtunnelsAutoPreemptionOutputWithContext(context.Context) SettingMxtunnelsAutoPreemptionOutput
+	ToSettingMxtunnelAutoPreemptionOutput() SettingMxtunnelAutoPreemptionOutput
+	ToSettingMxtunnelAutoPreemptionOutputWithContext(context.Context) SettingMxtunnelAutoPreemptionOutput
 }
 
-type SettingMxtunnelsAutoPreemptionArgs struct {
+type SettingMxtunnelAutoPreemptionArgs struct {
 	// Scheduled weekday for auto preemption
 	DayOfWeek pulumi.StringPtrInput `pulumi:"dayOfWeek"`
 	// Whether auto preemption is enabled
@@ -18757,125 +18757,125 @@ type SettingMxtunnelsAutoPreemptionArgs struct {
 	TimeOfDay pulumi.StringPtrInput `pulumi:"timeOfDay"`
 }
 
-func (SettingMxtunnelsAutoPreemptionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SettingMxtunnelsAutoPreemption)(nil)).Elem()
+func (SettingMxtunnelAutoPreemptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingMxtunnelAutoPreemption)(nil)).Elem()
 }
 
-func (i SettingMxtunnelsAutoPreemptionArgs) ToSettingMxtunnelsAutoPreemptionOutput() SettingMxtunnelsAutoPreemptionOutput {
-	return i.ToSettingMxtunnelsAutoPreemptionOutputWithContext(context.Background())
+func (i SettingMxtunnelAutoPreemptionArgs) ToSettingMxtunnelAutoPreemptionOutput() SettingMxtunnelAutoPreemptionOutput {
+	return i.ToSettingMxtunnelAutoPreemptionOutputWithContext(context.Background())
 }
 
-func (i SettingMxtunnelsAutoPreemptionArgs) ToSettingMxtunnelsAutoPreemptionOutputWithContext(ctx context.Context) SettingMxtunnelsAutoPreemptionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelsAutoPreemptionOutput)
+func (i SettingMxtunnelAutoPreemptionArgs) ToSettingMxtunnelAutoPreemptionOutputWithContext(ctx context.Context) SettingMxtunnelAutoPreemptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelAutoPreemptionOutput)
 }
 
-func (i SettingMxtunnelsAutoPreemptionArgs) ToSettingMxtunnelsAutoPreemptionPtrOutput() SettingMxtunnelsAutoPreemptionPtrOutput {
-	return i.ToSettingMxtunnelsAutoPreemptionPtrOutputWithContext(context.Background())
+func (i SettingMxtunnelAutoPreemptionArgs) ToSettingMxtunnelAutoPreemptionPtrOutput() SettingMxtunnelAutoPreemptionPtrOutput {
+	return i.ToSettingMxtunnelAutoPreemptionPtrOutputWithContext(context.Background())
 }
 
-func (i SettingMxtunnelsAutoPreemptionArgs) ToSettingMxtunnelsAutoPreemptionPtrOutputWithContext(ctx context.Context) SettingMxtunnelsAutoPreemptionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelsAutoPreemptionOutput).ToSettingMxtunnelsAutoPreemptionPtrOutputWithContext(ctx)
+func (i SettingMxtunnelAutoPreemptionArgs) ToSettingMxtunnelAutoPreemptionPtrOutputWithContext(ctx context.Context) SettingMxtunnelAutoPreemptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelAutoPreemptionOutput).ToSettingMxtunnelAutoPreemptionPtrOutputWithContext(ctx)
 }
 
-// SettingMxtunnelsAutoPreemptionPtrInput is an input type that accepts SettingMxtunnelsAutoPreemptionArgs, SettingMxtunnelsAutoPreemptionPtr and SettingMxtunnelsAutoPreemptionPtrOutput values.
-// You can construct a concrete instance of `SettingMxtunnelsAutoPreemptionPtrInput` via:
+// SettingMxtunnelAutoPreemptionPtrInput is an input type that accepts SettingMxtunnelAutoPreemptionArgs, SettingMxtunnelAutoPreemptionPtr and SettingMxtunnelAutoPreemptionPtrOutput values.
+// You can construct a concrete instance of `SettingMxtunnelAutoPreemptionPtrInput` via:
 //
-//	        SettingMxtunnelsAutoPreemptionArgs{...}
+//	        SettingMxtunnelAutoPreemptionArgs{...}
 //
 //	or:
 //
 //	        nil
-type SettingMxtunnelsAutoPreemptionPtrInput interface {
+type SettingMxtunnelAutoPreemptionPtrInput interface {
 	pulumi.Input
 
-	ToSettingMxtunnelsAutoPreemptionPtrOutput() SettingMxtunnelsAutoPreemptionPtrOutput
-	ToSettingMxtunnelsAutoPreemptionPtrOutputWithContext(context.Context) SettingMxtunnelsAutoPreemptionPtrOutput
+	ToSettingMxtunnelAutoPreemptionPtrOutput() SettingMxtunnelAutoPreemptionPtrOutput
+	ToSettingMxtunnelAutoPreemptionPtrOutputWithContext(context.Context) SettingMxtunnelAutoPreemptionPtrOutput
 }
 
-type settingMxtunnelsAutoPreemptionPtrType SettingMxtunnelsAutoPreemptionArgs
+type settingMxtunnelAutoPreemptionPtrType SettingMxtunnelAutoPreemptionArgs
 
-func SettingMxtunnelsAutoPreemptionPtr(v *SettingMxtunnelsAutoPreemptionArgs) SettingMxtunnelsAutoPreemptionPtrInput {
-	return (*settingMxtunnelsAutoPreemptionPtrType)(v)
+func SettingMxtunnelAutoPreemptionPtr(v *SettingMxtunnelAutoPreemptionArgs) SettingMxtunnelAutoPreemptionPtrInput {
+	return (*settingMxtunnelAutoPreemptionPtrType)(v)
 }
 
-func (*settingMxtunnelsAutoPreemptionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SettingMxtunnelsAutoPreemption)(nil)).Elem()
+func (*settingMxtunnelAutoPreemptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingMxtunnelAutoPreemption)(nil)).Elem()
 }
 
-func (i *settingMxtunnelsAutoPreemptionPtrType) ToSettingMxtunnelsAutoPreemptionPtrOutput() SettingMxtunnelsAutoPreemptionPtrOutput {
-	return i.ToSettingMxtunnelsAutoPreemptionPtrOutputWithContext(context.Background())
+func (i *settingMxtunnelAutoPreemptionPtrType) ToSettingMxtunnelAutoPreemptionPtrOutput() SettingMxtunnelAutoPreemptionPtrOutput {
+	return i.ToSettingMxtunnelAutoPreemptionPtrOutputWithContext(context.Background())
 }
 
-func (i *settingMxtunnelsAutoPreemptionPtrType) ToSettingMxtunnelsAutoPreemptionPtrOutputWithContext(ctx context.Context) SettingMxtunnelsAutoPreemptionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelsAutoPreemptionPtrOutput)
+func (i *settingMxtunnelAutoPreemptionPtrType) ToSettingMxtunnelAutoPreemptionPtrOutputWithContext(ctx context.Context) SettingMxtunnelAutoPreemptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelAutoPreemptionPtrOutput)
 }
 
-type SettingMxtunnelsAutoPreemptionOutput struct{ *pulumi.OutputState }
+type SettingMxtunnelAutoPreemptionOutput struct{ *pulumi.OutputState }
 
-func (SettingMxtunnelsAutoPreemptionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SettingMxtunnelsAutoPreemption)(nil)).Elem()
+func (SettingMxtunnelAutoPreemptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingMxtunnelAutoPreemption)(nil)).Elem()
 }
 
-func (o SettingMxtunnelsAutoPreemptionOutput) ToSettingMxtunnelsAutoPreemptionOutput() SettingMxtunnelsAutoPreemptionOutput {
+func (o SettingMxtunnelAutoPreemptionOutput) ToSettingMxtunnelAutoPreemptionOutput() SettingMxtunnelAutoPreemptionOutput {
 	return o
 }
 
-func (o SettingMxtunnelsAutoPreemptionOutput) ToSettingMxtunnelsAutoPreemptionOutputWithContext(ctx context.Context) SettingMxtunnelsAutoPreemptionOutput {
+func (o SettingMxtunnelAutoPreemptionOutput) ToSettingMxtunnelAutoPreemptionOutputWithContext(ctx context.Context) SettingMxtunnelAutoPreemptionOutput {
 	return o
 }
 
-func (o SettingMxtunnelsAutoPreemptionOutput) ToSettingMxtunnelsAutoPreemptionPtrOutput() SettingMxtunnelsAutoPreemptionPtrOutput {
-	return o.ToSettingMxtunnelsAutoPreemptionPtrOutputWithContext(context.Background())
+func (o SettingMxtunnelAutoPreemptionOutput) ToSettingMxtunnelAutoPreemptionPtrOutput() SettingMxtunnelAutoPreemptionPtrOutput {
+	return o.ToSettingMxtunnelAutoPreemptionPtrOutputWithContext(context.Background())
 }
 
-func (o SettingMxtunnelsAutoPreemptionOutput) ToSettingMxtunnelsAutoPreemptionPtrOutputWithContext(ctx context.Context) SettingMxtunnelsAutoPreemptionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingMxtunnelsAutoPreemption) *SettingMxtunnelsAutoPreemption {
+func (o SettingMxtunnelAutoPreemptionOutput) ToSettingMxtunnelAutoPreemptionPtrOutputWithContext(ctx context.Context) SettingMxtunnelAutoPreemptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingMxtunnelAutoPreemption) *SettingMxtunnelAutoPreemption {
 		return &v
-	}).(SettingMxtunnelsAutoPreemptionPtrOutput)
+	}).(SettingMxtunnelAutoPreemptionPtrOutput)
 }
 
 // Scheduled weekday for auto preemption
-func (o SettingMxtunnelsAutoPreemptionOutput) DayOfWeek() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SettingMxtunnelsAutoPreemption) *string { return v.DayOfWeek }).(pulumi.StringPtrOutput)
+func (o SettingMxtunnelAutoPreemptionOutput) DayOfWeek() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelAutoPreemption) *string { return v.DayOfWeek }).(pulumi.StringPtrOutput)
 }
 
 // Whether auto preemption is enabled
-func (o SettingMxtunnelsAutoPreemptionOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SettingMxtunnelsAutoPreemption) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+func (o SettingMxtunnelAutoPreemptionOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelAutoPreemption) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
 // Scheduled time of day for auto preemption
-func (o SettingMxtunnelsAutoPreemptionOutput) TimeOfDay() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SettingMxtunnelsAutoPreemption) *string { return v.TimeOfDay }).(pulumi.StringPtrOutput)
+func (o SettingMxtunnelAutoPreemptionOutput) TimeOfDay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelAutoPreemption) *string { return v.TimeOfDay }).(pulumi.StringPtrOutput)
 }
 
-type SettingMxtunnelsAutoPreemptionPtrOutput struct{ *pulumi.OutputState }
+type SettingMxtunnelAutoPreemptionPtrOutput struct{ *pulumi.OutputState }
 
-func (SettingMxtunnelsAutoPreemptionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SettingMxtunnelsAutoPreemption)(nil)).Elem()
+func (SettingMxtunnelAutoPreemptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingMxtunnelAutoPreemption)(nil)).Elem()
 }
 
-func (o SettingMxtunnelsAutoPreemptionPtrOutput) ToSettingMxtunnelsAutoPreemptionPtrOutput() SettingMxtunnelsAutoPreemptionPtrOutput {
+func (o SettingMxtunnelAutoPreemptionPtrOutput) ToSettingMxtunnelAutoPreemptionPtrOutput() SettingMxtunnelAutoPreemptionPtrOutput {
 	return o
 }
 
-func (o SettingMxtunnelsAutoPreemptionPtrOutput) ToSettingMxtunnelsAutoPreemptionPtrOutputWithContext(ctx context.Context) SettingMxtunnelsAutoPreemptionPtrOutput {
+func (o SettingMxtunnelAutoPreemptionPtrOutput) ToSettingMxtunnelAutoPreemptionPtrOutputWithContext(ctx context.Context) SettingMxtunnelAutoPreemptionPtrOutput {
 	return o
 }
 
-func (o SettingMxtunnelsAutoPreemptionPtrOutput) Elem() SettingMxtunnelsAutoPreemptionOutput {
-	return o.ApplyT(func(v *SettingMxtunnelsAutoPreemption) SettingMxtunnelsAutoPreemption {
+func (o SettingMxtunnelAutoPreemptionPtrOutput) Elem() SettingMxtunnelAutoPreemptionOutput {
+	return o.ApplyT(func(v *SettingMxtunnelAutoPreemption) SettingMxtunnelAutoPreemption {
 		if v != nil {
 			return *v
 		}
-		var ret SettingMxtunnelsAutoPreemption
+		var ret SettingMxtunnelAutoPreemption
 		return ret
-	}).(SettingMxtunnelsAutoPreemptionOutput)
+	}).(SettingMxtunnelAutoPreemptionOutput)
 }
 
 // Scheduled weekday for auto preemption
-func (o SettingMxtunnelsAutoPreemptionPtrOutput) DayOfWeek() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SettingMxtunnelsAutoPreemption) *string {
+func (o SettingMxtunnelAutoPreemptionPtrOutput) DayOfWeek() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingMxtunnelAutoPreemption) *string {
 		if v == nil {
 			return nil
 		}
@@ -18884,8 +18884,8 @@ func (o SettingMxtunnelsAutoPreemptionPtrOutput) DayOfWeek() pulumi.StringPtrOut
 }
 
 // Whether auto preemption is enabled
-func (o SettingMxtunnelsAutoPreemptionPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SettingMxtunnelsAutoPreemption) *bool {
+func (o SettingMxtunnelAutoPreemptionPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingMxtunnelAutoPreemption) *bool {
 		if v == nil {
 			return nil
 		}
@@ -18894,8 +18894,8 @@ func (o SettingMxtunnelsAutoPreemptionPtrOutput) Enabled() pulumi.BoolPtrOutput 
 }
 
 // Scheduled time of day for auto preemption
-func (o SettingMxtunnelsAutoPreemptionPtrOutput) TimeOfDay() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SettingMxtunnelsAutoPreemption) *string {
+func (o SettingMxtunnelAutoPreemptionPtrOutput) TimeOfDay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingMxtunnelAutoPreemption) *string {
 		if v == nil {
 			return nil
 		}
@@ -18903,289 +18903,289 @@ func (o SettingMxtunnelsAutoPreemptionPtrOutput) TimeOfDay() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-type SettingMxtunnelsCluster struct {
+type SettingMxtunnelCluster struct {
 	// Peer cluster name used in the site Mist Tunnel configuration
 	Name *string `pulumi:"name"`
 	// Tunnel termination hostnames or IP addresses in this peer cluster
 	TuntermHosts []string `pulumi:"tuntermHosts"`
 }
 
-// SettingMxtunnelsClusterInput is an input type that accepts SettingMxtunnelsClusterArgs and SettingMxtunnelsClusterOutput values.
-// You can construct a concrete instance of `SettingMxtunnelsClusterInput` via:
+// SettingMxtunnelClusterInput is an input type that accepts SettingMxtunnelClusterArgs and SettingMxtunnelClusterOutput values.
+// You can construct a concrete instance of `SettingMxtunnelClusterInput` via:
 //
-//	SettingMxtunnelsClusterArgs{...}
-type SettingMxtunnelsClusterInput interface {
+//	SettingMxtunnelClusterArgs{...}
+type SettingMxtunnelClusterInput interface {
 	pulumi.Input
 
-	ToSettingMxtunnelsClusterOutput() SettingMxtunnelsClusterOutput
-	ToSettingMxtunnelsClusterOutputWithContext(context.Context) SettingMxtunnelsClusterOutput
+	ToSettingMxtunnelClusterOutput() SettingMxtunnelClusterOutput
+	ToSettingMxtunnelClusterOutputWithContext(context.Context) SettingMxtunnelClusterOutput
 }
 
-type SettingMxtunnelsClusterArgs struct {
+type SettingMxtunnelClusterArgs struct {
 	// Peer cluster name used in the site Mist Tunnel configuration
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Tunnel termination hostnames or IP addresses in this peer cluster
 	TuntermHosts pulumi.StringArrayInput `pulumi:"tuntermHosts"`
 }
 
-func (SettingMxtunnelsClusterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SettingMxtunnelsCluster)(nil)).Elem()
+func (SettingMxtunnelClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingMxtunnelCluster)(nil)).Elem()
 }
 
-func (i SettingMxtunnelsClusterArgs) ToSettingMxtunnelsClusterOutput() SettingMxtunnelsClusterOutput {
-	return i.ToSettingMxtunnelsClusterOutputWithContext(context.Background())
+func (i SettingMxtunnelClusterArgs) ToSettingMxtunnelClusterOutput() SettingMxtunnelClusterOutput {
+	return i.ToSettingMxtunnelClusterOutputWithContext(context.Background())
 }
 
-func (i SettingMxtunnelsClusterArgs) ToSettingMxtunnelsClusterOutputWithContext(ctx context.Context) SettingMxtunnelsClusterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelsClusterOutput)
+func (i SettingMxtunnelClusterArgs) ToSettingMxtunnelClusterOutputWithContext(ctx context.Context) SettingMxtunnelClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelClusterOutput)
 }
 
-// SettingMxtunnelsClusterArrayInput is an input type that accepts SettingMxtunnelsClusterArray and SettingMxtunnelsClusterArrayOutput values.
-// You can construct a concrete instance of `SettingMxtunnelsClusterArrayInput` via:
+// SettingMxtunnelClusterArrayInput is an input type that accepts SettingMxtunnelClusterArray and SettingMxtunnelClusterArrayOutput values.
+// You can construct a concrete instance of `SettingMxtunnelClusterArrayInput` via:
 //
-//	SettingMxtunnelsClusterArray{ SettingMxtunnelsClusterArgs{...} }
-type SettingMxtunnelsClusterArrayInput interface {
+//	SettingMxtunnelClusterArray{ SettingMxtunnelClusterArgs{...} }
+type SettingMxtunnelClusterArrayInput interface {
 	pulumi.Input
 
-	ToSettingMxtunnelsClusterArrayOutput() SettingMxtunnelsClusterArrayOutput
-	ToSettingMxtunnelsClusterArrayOutputWithContext(context.Context) SettingMxtunnelsClusterArrayOutput
+	ToSettingMxtunnelClusterArrayOutput() SettingMxtunnelClusterArrayOutput
+	ToSettingMxtunnelClusterArrayOutputWithContext(context.Context) SettingMxtunnelClusterArrayOutput
 }
 
-type SettingMxtunnelsClusterArray []SettingMxtunnelsClusterInput
+type SettingMxtunnelClusterArray []SettingMxtunnelClusterInput
 
-func (SettingMxtunnelsClusterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SettingMxtunnelsCluster)(nil)).Elem()
+func (SettingMxtunnelClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SettingMxtunnelCluster)(nil)).Elem()
 }
 
-func (i SettingMxtunnelsClusterArray) ToSettingMxtunnelsClusterArrayOutput() SettingMxtunnelsClusterArrayOutput {
-	return i.ToSettingMxtunnelsClusterArrayOutputWithContext(context.Background())
+func (i SettingMxtunnelClusterArray) ToSettingMxtunnelClusterArrayOutput() SettingMxtunnelClusterArrayOutput {
+	return i.ToSettingMxtunnelClusterArrayOutputWithContext(context.Background())
 }
 
-func (i SettingMxtunnelsClusterArray) ToSettingMxtunnelsClusterArrayOutputWithContext(ctx context.Context) SettingMxtunnelsClusterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelsClusterArrayOutput)
+func (i SettingMxtunnelClusterArray) ToSettingMxtunnelClusterArrayOutputWithContext(ctx context.Context) SettingMxtunnelClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelClusterArrayOutput)
 }
 
-type SettingMxtunnelsClusterOutput struct{ *pulumi.OutputState }
+type SettingMxtunnelClusterOutput struct{ *pulumi.OutputState }
 
-func (SettingMxtunnelsClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SettingMxtunnelsCluster)(nil)).Elem()
+func (SettingMxtunnelClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingMxtunnelCluster)(nil)).Elem()
 }
 
-func (o SettingMxtunnelsClusterOutput) ToSettingMxtunnelsClusterOutput() SettingMxtunnelsClusterOutput {
+func (o SettingMxtunnelClusterOutput) ToSettingMxtunnelClusterOutput() SettingMxtunnelClusterOutput {
 	return o
 }
 
-func (o SettingMxtunnelsClusterOutput) ToSettingMxtunnelsClusterOutputWithContext(ctx context.Context) SettingMxtunnelsClusterOutput {
+func (o SettingMxtunnelClusterOutput) ToSettingMxtunnelClusterOutputWithContext(ctx context.Context) SettingMxtunnelClusterOutput {
 	return o
 }
 
 // Peer cluster name used in the site Mist Tunnel configuration
-func (o SettingMxtunnelsClusterOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SettingMxtunnelsCluster) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o SettingMxtunnelClusterOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelCluster) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Tunnel termination hostnames or IP addresses in this peer cluster
-func (o SettingMxtunnelsClusterOutput) TuntermHosts() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SettingMxtunnelsCluster) []string { return v.TuntermHosts }).(pulumi.StringArrayOutput)
+func (o SettingMxtunnelClusterOutput) TuntermHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SettingMxtunnelCluster) []string { return v.TuntermHosts }).(pulumi.StringArrayOutput)
 }
 
-type SettingMxtunnelsClusterArrayOutput struct{ *pulumi.OutputState }
+type SettingMxtunnelClusterArrayOutput struct{ *pulumi.OutputState }
 
-func (SettingMxtunnelsClusterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SettingMxtunnelsCluster)(nil)).Elem()
+func (SettingMxtunnelClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SettingMxtunnelCluster)(nil)).Elem()
 }
 
-func (o SettingMxtunnelsClusterArrayOutput) ToSettingMxtunnelsClusterArrayOutput() SettingMxtunnelsClusterArrayOutput {
+func (o SettingMxtunnelClusterArrayOutput) ToSettingMxtunnelClusterArrayOutput() SettingMxtunnelClusterArrayOutput {
 	return o
 }
 
-func (o SettingMxtunnelsClusterArrayOutput) ToSettingMxtunnelsClusterArrayOutputWithContext(ctx context.Context) SettingMxtunnelsClusterArrayOutput {
+func (o SettingMxtunnelClusterArrayOutput) ToSettingMxtunnelClusterArrayOutputWithContext(ctx context.Context) SettingMxtunnelClusterArrayOutput {
 	return o
 }
 
-func (o SettingMxtunnelsClusterArrayOutput) Index(i pulumi.IntInput) SettingMxtunnelsClusterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SettingMxtunnelsCluster {
-		return vs[0].([]SettingMxtunnelsCluster)[vs[1].(int)]
-	}).(SettingMxtunnelsClusterOutput)
+func (o SettingMxtunnelClusterArrayOutput) Index(i pulumi.IntInput) SettingMxtunnelClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SettingMxtunnelCluster {
+		return vs[0].([]SettingMxtunnelCluster)[vs[1].(int)]
+	}).(SettingMxtunnelClusterOutput)
 }
 
-type SettingMxtunnelsRadsec struct {
+type SettingMxtunnelRadsec struct {
 	// RADIUS accounting servers used by the site Mist Tunnel RadSec proxy
-	AcctServers []SettingMxtunnelsRadsecAcctServer `pulumi:"acctServers"`
+	AcctServers []SettingMxtunnelRadsecAcctServer `pulumi:"acctServers"`
 	// RADIUS authentication servers used by the site Mist Tunnel RadSec proxy
-	AuthServers []SettingMxtunnelsRadsecAuthServer `pulumi:"authServers"`
+	AuthServers []SettingMxtunnelRadsecAuthServer `pulumi:"authServers"`
 	// Whether RadSec proxying is enabled for this site Mist Tunnel
 	Enabled *bool `pulumi:"enabled"`
 	// Whether RadSec proxying uses Mist Edge
 	UseMxedge *bool `pulumi:"useMxedge"`
 }
 
-// SettingMxtunnelsRadsecInput is an input type that accepts SettingMxtunnelsRadsecArgs and SettingMxtunnelsRadsecOutput values.
-// You can construct a concrete instance of `SettingMxtunnelsRadsecInput` via:
+// SettingMxtunnelRadsecInput is an input type that accepts SettingMxtunnelRadsecArgs and SettingMxtunnelRadsecOutput values.
+// You can construct a concrete instance of `SettingMxtunnelRadsecInput` via:
 //
-//	SettingMxtunnelsRadsecArgs{...}
-type SettingMxtunnelsRadsecInput interface {
+//	SettingMxtunnelRadsecArgs{...}
+type SettingMxtunnelRadsecInput interface {
 	pulumi.Input
 
-	ToSettingMxtunnelsRadsecOutput() SettingMxtunnelsRadsecOutput
-	ToSettingMxtunnelsRadsecOutputWithContext(context.Context) SettingMxtunnelsRadsecOutput
+	ToSettingMxtunnelRadsecOutput() SettingMxtunnelRadsecOutput
+	ToSettingMxtunnelRadsecOutputWithContext(context.Context) SettingMxtunnelRadsecOutput
 }
 
-type SettingMxtunnelsRadsecArgs struct {
+type SettingMxtunnelRadsecArgs struct {
 	// RADIUS accounting servers used by the site Mist Tunnel RadSec proxy
-	AcctServers SettingMxtunnelsRadsecAcctServerArrayInput `pulumi:"acctServers"`
+	AcctServers SettingMxtunnelRadsecAcctServerArrayInput `pulumi:"acctServers"`
 	// RADIUS authentication servers used by the site Mist Tunnel RadSec proxy
-	AuthServers SettingMxtunnelsRadsecAuthServerArrayInput `pulumi:"authServers"`
+	AuthServers SettingMxtunnelRadsecAuthServerArrayInput `pulumi:"authServers"`
 	// Whether RadSec proxying is enabled for this site Mist Tunnel
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// Whether RadSec proxying uses Mist Edge
 	UseMxedge pulumi.BoolPtrInput `pulumi:"useMxedge"`
 }
 
-func (SettingMxtunnelsRadsecArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SettingMxtunnelsRadsec)(nil)).Elem()
+func (SettingMxtunnelRadsecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingMxtunnelRadsec)(nil)).Elem()
 }
 
-func (i SettingMxtunnelsRadsecArgs) ToSettingMxtunnelsRadsecOutput() SettingMxtunnelsRadsecOutput {
-	return i.ToSettingMxtunnelsRadsecOutputWithContext(context.Background())
+func (i SettingMxtunnelRadsecArgs) ToSettingMxtunnelRadsecOutput() SettingMxtunnelRadsecOutput {
+	return i.ToSettingMxtunnelRadsecOutputWithContext(context.Background())
 }
 
-func (i SettingMxtunnelsRadsecArgs) ToSettingMxtunnelsRadsecOutputWithContext(ctx context.Context) SettingMxtunnelsRadsecOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelsRadsecOutput)
+func (i SettingMxtunnelRadsecArgs) ToSettingMxtunnelRadsecOutputWithContext(ctx context.Context) SettingMxtunnelRadsecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelRadsecOutput)
 }
 
-func (i SettingMxtunnelsRadsecArgs) ToSettingMxtunnelsRadsecPtrOutput() SettingMxtunnelsRadsecPtrOutput {
-	return i.ToSettingMxtunnelsRadsecPtrOutputWithContext(context.Background())
+func (i SettingMxtunnelRadsecArgs) ToSettingMxtunnelRadsecPtrOutput() SettingMxtunnelRadsecPtrOutput {
+	return i.ToSettingMxtunnelRadsecPtrOutputWithContext(context.Background())
 }
 
-func (i SettingMxtunnelsRadsecArgs) ToSettingMxtunnelsRadsecPtrOutputWithContext(ctx context.Context) SettingMxtunnelsRadsecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelsRadsecOutput).ToSettingMxtunnelsRadsecPtrOutputWithContext(ctx)
+func (i SettingMxtunnelRadsecArgs) ToSettingMxtunnelRadsecPtrOutputWithContext(ctx context.Context) SettingMxtunnelRadsecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelRadsecOutput).ToSettingMxtunnelRadsecPtrOutputWithContext(ctx)
 }
 
-// SettingMxtunnelsRadsecPtrInput is an input type that accepts SettingMxtunnelsRadsecArgs, SettingMxtunnelsRadsecPtr and SettingMxtunnelsRadsecPtrOutput values.
-// You can construct a concrete instance of `SettingMxtunnelsRadsecPtrInput` via:
+// SettingMxtunnelRadsecPtrInput is an input type that accepts SettingMxtunnelRadsecArgs, SettingMxtunnelRadsecPtr and SettingMxtunnelRadsecPtrOutput values.
+// You can construct a concrete instance of `SettingMxtunnelRadsecPtrInput` via:
 //
-//	        SettingMxtunnelsRadsecArgs{...}
+//	        SettingMxtunnelRadsecArgs{...}
 //
 //	or:
 //
 //	        nil
-type SettingMxtunnelsRadsecPtrInput interface {
+type SettingMxtunnelRadsecPtrInput interface {
 	pulumi.Input
 
-	ToSettingMxtunnelsRadsecPtrOutput() SettingMxtunnelsRadsecPtrOutput
-	ToSettingMxtunnelsRadsecPtrOutputWithContext(context.Context) SettingMxtunnelsRadsecPtrOutput
+	ToSettingMxtunnelRadsecPtrOutput() SettingMxtunnelRadsecPtrOutput
+	ToSettingMxtunnelRadsecPtrOutputWithContext(context.Context) SettingMxtunnelRadsecPtrOutput
 }
 
-type settingMxtunnelsRadsecPtrType SettingMxtunnelsRadsecArgs
+type settingMxtunnelRadsecPtrType SettingMxtunnelRadsecArgs
 
-func SettingMxtunnelsRadsecPtr(v *SettingMxtunnelsRadsecArgs) SettingMxtunnelsRadsecPtrInput {
-	return (*settingMxtunnelsRadsecPtrType)(v)
+func SettingMxtunnelRadsecPtr(v *SettingMxtunnelRadsecArgs) SettingMxtunnelRadsecPtrInput {
+	return (*settingMxtunnelRadsecPtrType)(v)
 }
 
-func (*settingMxtunnelsRadsecPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SettingMxtunnelsRadsec)(nil)).Elem()
+func (*settingMxtunnelRadsecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingMxtunnelRadsec)(nil)).Elem()
 }
 
-func (i *settingMxtunnelsRadsecPtrType) ToSettingMxtunnelsRadsecPtrOutput() SettingMxtunnelsRadsecPtrOutput {
-	return i.ToSettingMxtunnelsRadsecPtrOutputWithContext(context.Background())
+func (i *settingMxtunnelRadsecPtrType) ToSettingMxtunnelRadsecPtrOutput() SettingMxtunnelRadsecPtrOutput {
+	return i.ToSettingMxtunnelRadsecPtrOutputWithContext(context.Background())
 }
 
-func (i *settingMxtunnelsRadsecPtrType) ToSettingMxtunnelsRadsecPtrOutputWithContext(ctx context.Context) SettingMxtunnelsRadsecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelsRadsecPtrOutput)
+func (i *settingMxtunnelRadsecPtrType) ToSettingMxtunnelRadsecPtrOutputWithContext(ctx context.Context) SettingMxtunnelRadsecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelRadsecPtrOutput)
 }
 
-type SettingMxtunnelsRadsecOutput struct{ *pulumi.OutputState }
+type SettingMxtunnelRadsecOutput struct{ *pulumi.OutputState }
 
-func (SettingMxtunnelsRadsecOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SettingMxtunnelsRadsec)(nil)).Elem()
+func (SettingMxtunnelRadsecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingMxtunnelRadsec)(nil)).Elem()
 }
 
-func (o SettingMxtunnelsRadsecOutput) ToSettingMxtunnelsRadsecOutput() SettingMxtunnelsRadsecOutput {
+func (o SettingMxtunnelRadsecOutput) ToSettingMxtunnelRadsecOutput() SettingMxtunnelRadsecOutput {
 	return o
 }
 
-func (o SettingMxtunnelsRadsecOutput) ToSettingMxtunnelsRadsecOutputWithContext(ctx context.Context) SettingMxtunnelsRadsecOutput {
+func (o SettingMxtunnelRadsecOutput) ToSettingMxtunnelRadsecOutputWithContext(ctx context.Context) SettingMxtunnelRadsecOutput {
 	return o
 }
 
-func (o SettingMxtunnelsRadsecOutput) ToSettingMxtunnelsRadsecPtrOutput() SettingMxtunnelsRadsecPtrOutput {
-	return o.ToSettingMxtunnelsRadsecPtrOutputWithContext(context.Background())
+func (o SettingMxtunnelRadsecOutput) ToSettingMxtunnelRadsecPtrOutput() SettingMxtunnelRadsecPtrOutput {
+	return o.ToSettingMxtunnelRadsecPtrOutputWithContext(context.Background())
 }
 
-func (o SettingMxtunnelsRadsecOutput) ToSettingMxtunnelsRadsecPtrOutputWithContext(ctx context.Context) SettingMxtunnelsRadsecPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingMxtunnelsRadsec) *SettingMxtunnelsRadsec {
+func (o SettingMxtunnelRadsecOutput) ToSettingMxtunnelRadsecPtrOutputWithContext(ctx context.Context) SettingMxtunnelRadsecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingMxtunnelRadsec) *SettingMxtunnelRadsec {
 		return &v
-	}).(SettingMxtunnelsRadsecPtrOutput)
+	}).(SettingMxtunnelRadsecPtrOutput)
 }
 
 // RADIUS accounting servers used by the site Mist Tunnel RadSec proxy
-func (o SettingMxtunnelsRadsecOutput) AcctServers() SettingMxtunnelsRadsecAcctServerArrayOutput {
-	return o.ApplyT(func(v SettingMxtunnelsRadsec) []SettingMxtunnelsRadsecAcctServer { return v.AcctServers }).(SettingMxtunnelsRadsecAcctServerArrayOutput)
+func (o SettingMxtunnelRadsecOutput) AcctServers() SettingMxtunnelRadsecAcctServerArrayOutput {
+	return o.ApplyT(func(v SettingMxtunnelRadsec) []SettingMxtunnelRadsecAcctServer { return v.AcctServers }).(SettingMxtunnelRadsecAcctServerArrayOutput)
 }
 
 // RADIUS authentication servers used by the site Mist Tunnel RadSec proxy
-func (o SettingMxtunnelsRadsecOutput) AuthServers() SettingMxtunnelsRadsecAuthServerArrayOutput {
-	return o.ApplyT(func(v SettingMxtunnelsRadsec) []SettingMxtunnelsRadsecAuthServer { return v.AuthServers }).(SettingMxtunnelsRadsecAuthServerArrayOutput)
+func (o SettingMxtunnelRadsecOutput) AuthServers() SettingMxtunnelRadsecAuthServerArrayOutput {
+	return o.ApplyT(func(v SettingMxtunnelRadsec) []SettingMxtunnelRadsecAuthServer { return v.AuthServers }).(SettingMxtunnelRadsecAuthServerArrayOutput)
 }
 
 // Whether RadSec proxying is enabled for this site Mist Tunnel
-func (o SettingMxtunnelsRadsecOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SettingMxtunnelsRadsec) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+func (o SettingMxtunnelRadsecOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelRadsec) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
 // Whether RadSec proxying uses Mist Edge
-func (o SettingMxtunnelsRadsecOutput) UseMxedge() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SettingMxtunnelsRadsec) *bool { return v.UseMxedge }).(pulumi.BoolPtrOutput)
+func (o SettingMxtunnelRadsecOutput) UseMxedge() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelRadsec) *bool { return v.UseMxedge }).(pulumi.BoolPtrOutput)
 }
 
-type SettingMxtunnelsRadsecPtrOutput struct{ *pulumi.OutputState }
+type SettingMxtunnelRadsecPtrOutput struct{ *pulumi.OutputState }
 
-func (SettingMxtunnelsRadsecPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SettingMxtunnelsRadsec)(nil)).Elem()
+func (SettingMxtunnelRadsecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingMxtunnelRadsec)(nil)).Elem()
 }
 
-func (o SettingMxtunnelsRadsecPtrOutput) ToSettingMxtunnelsRadsecPtrOutput() SettingMxtunnelsRadsecPtrOutput {
+func (o SettingMxtunnelRadsecPtrOutput) ToSettingMxtunnelRadsecPtrOutput() SettingMxtunnelRadsecPtrOutput {
 	return o
 }
 
-func (o SettingMxtunnelsRadsecPtrOutput) ToSettingMxtunnelsRadsecPtrOutputWithContext(ctx context.Context) SettingMxtunnelsRadsecPtrOutput {
+func (o SettingMxtunnelRadsecPtrOutput) ToSettingMxtunnelRadsecPtrOutputWithContext(ctx context.Context) SettingMxtunnelRadsecPtrOutput {
 	return o
 }
 
-func (o SettingMxtunnelsRadsecPtrOutput) Elem() SettingMxtunnelsRadsecOutput {
-	return o.ApplyT(func(v *SettingMxtunnelsRadsec) SettingMxtunnelsRadsec {
+func (o SettingMxtunnelRadsecPtrOutput) Elem() SettingMxtunnelRadsecOutput {
+	return o.ApplyT(func(v *SettingMxtunnelRadsec) SettingMxtunnelRadsec {
 		if v != nil {
 			return *v
 		}
-		var ret SettingMxtunnelsRadsec
+		var ret SettingMxtunnelRadsec
 		return ret
-	}).(SettingMxtunnelsRadsecOutput)
+	}).(SettingMxtunnelRadsecOutput)
 }
 
 // RADIUS accounting servers used by the site Mist Tunnel RadSec proxy
-func (o SettingMxtunnelsRadsecPtrOutput) AcctServers() SettingMxtunnelsRadsecAcctServerArrayOutput {
-	return o.ApplyT(func(v *SettingMxtunnelsRadsec) []SettingMxtunnelsRadsecAcctServer {
+func (o SettingMxtunnelRadsecPtrOutput) AcctServers() SettingMxtunnelRadsecAcctServerArrayOutput {
+	return o.ApplyT(func(v *SettingMxtunnelRadsec) []SettingMxtunnelRadsecAcctServer {
 		if v == nil {
 			return nil
 		}
 		return v.AcctServers
-	}).(SettingMxtunnelsRadsecAcctServerArrayOutput)
+	}).(SettingMxtunnelRadsecAcctServerArrayOutput)
 }
 
 // RADIUS authentication servers used by the site Mist Tunnel RadSec proxy
-func (o SettingMxtunnelsRadsecPtrOutput) AuthServers() SettingMxtunnelsRadsecAuthServerArrayOutput {
-	return o.ApplyT(func(v *SettingMxtunnelsRadsec) []SettingMxtunnelsRadsecAuthServer {
+func (o SettingMxtunnelRadsecPtrOutput) AuthServers() SettingMxtunnelRadsecAuthServerArrayOutput {
+	return o.ApplyT(func(v *SettingMxtunnelRadsec) []SettingMxtunnelRadsecAuthServer {
 		if v == nil {
 			return nil
 		}
 		return v.AuthServers
-	}).(SettingMxtunnelsRadsecAuthServerArrayOutput)
+	}).(SettingMxtunnelRadsecAuthServerArrayOutput)
 }
 
 // Whether RadSec proxying is enabled for this site Mist Tunnel
-func (o SettingMxtunnelsRadsecPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SettingMxtunnelsRadsec) *bool {
+func (o SettingMxtunnelRadsecPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingMxtunnelRadsec) *bool {
 		if v == nil {
 			return nil
 		}
@@ -19194,8 +19194,8 @@ func (o SettingMxtunnelsRadsecPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 // Whether RadSec proxying uses Mist Edge
-func (o SettingMxtunnelsRadsecPtrOutput) UseMxedge() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SettingMxtunnelsRadsec) *bool {
+func (o SettingMxtunnelRadsecPtrOutput) UseMxedge() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingMxtunnelRadsec) *bool {
 		if v == nil {
 			return nil
 		}
@@ -19203,7 +19203,7 @@ func (o SettingMxtunnelsRadsecPtrOutput) UseMxedge() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-type SettingMxtunnelsRadsecAcctServer struct {
+type SettingMxtunnelRadsecAcctServer struct {
 	// Address or hostname of the RADIUS accounting server
 	Host string `pulumi:"host"`
 	// Whether RADIUS keywrap is enabled for messages sent to this accounting server
@@ -19220,18 +19220,18 @@ type SettingMxtunnelsRadsecAcctServer struct {
 	Secret string `pulumi:"secret"`
 }
 
-// SettingMxtunnelsRadsecAcctServerInput is an input type that accepts SettingMxtunnelsRadsecAcctServerArgs and SettingMxtunnelsRadsecAcctServerOutput values.
-// You can construct a concrete instance of `SettingMxtunnelsRadsecAcctServerInput` via:
+// SettingMxtunnelRadsecAcctServerInput is an input type that accepts SettingMxtunnelRadsecAcctServerArgs and SettingMxtunnelRadsecAcctServerOutput values.
+// You can construct a concrete instance of `SettingMxtunnelRadsecAcctServerInput` via:
 //
-//	SettingMxtunnelsRadsecAcctServerArgs{...}
-type SettingMxtunnelsRadsecAcctServerInput interface {
+//	SettingMxtunnelRadsecAcctServerArgs{...}
+type SettingMxtunnelRadsecAcctServerInput interface {
 	pulumi.Input
 
-	ToSettingMxtunnelsRadsecAcctServerOutput() SettingMxtunnelsRadsecAcctServerOutput
-	ToSettingMxtunnelsRadsecAcctServerOutputWithContext(context.Context) SettingMxtunnelsRadsecAcctServerOutput
+	ToSettingMxtunnelRadsecAcctServerOutput() SettingMxtunnelRadsecAcctServerOutput
+	ToSettingMxtunnelRadsecAcctServerOutputWithContext(context.Context) SettingMxtunnelRadsecAcctServerOutput
 }
 
-type SettingMxtunnelsRadsecAcctServerArgs struct {
+type SettingMxtunnelRadsecAcctServerArgs struct {
 	// Address or hostname of the RADIUS accounting server
 	Host pulumi.StringInput `pulumi:"host"`
 	// Whether RADIUS keywrap is enabled for messages sent to this accounting server
@@ -19248,113 +19248,113 @@ type SettingMxtunnelsRadsecAcctServerArgs struct {
 	Secret pulumi.StringInput `pulumi:"secret"`
 }
 
-func (SettingMxtunnelsRadsecAcctServerArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SettingMxtunnelsRadsecAcctServer)(nil)).Elem()
+func (SettingMxtunnelRadsecAcctServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingMxtunnelRadsecAcctServer)(nil)).Elem()
 }
 
-func (i SettingMxtunnelsRadsecAcctServerArgs) ToSettingMxtunnelsRadsecAcctServerOutput() SettingMxtunnelsRadsecAcctServerOutput {
-	return i.ToSettingMxtunnelsRadsecAcctServerOutputWithContext(context.Background())
+func (i SettingMxtunnelRadsecAcctServerArgs) ToSettingMxtunnelRadsecAcctServerOutput() SettingMxtunnelRadsecAcctServerOutput {
+	return i.ToSettingMxtunnelRadsecAcctServerOutputWithContext(context.Background())
 }
 
-func (i SettingMxtunnelsRadsecAcctServerArgs) ToSettingMxtunnelsRadsecAcctServerOutputWithContext(ctx context.Context) SettingMxtunnelsRadsecAcctServerOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelsRadsecAcctServerOutput)
+func (i SettingMxtunnelRadsecAcctServerArgs) ToSettingMxtunnelRadsecAcctServerOutputWithContext(ctx context.Context) SettingMxtunnelRadsecAcctServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelRadsecAcctServerOutput)
 }
 
-// SettingMxtunnelsRadsecAcctServerArrayInput is an input type that accepts SettingMxtunnelsRadsecAcctServerArray and SettingMxtunnelsRadsecAcctServerArrayOutput values.
-// You can construct a concrete instance of `SettingMxtunnelsRadsecAcctServerArrayInput` via:
+// SettingMxtunnelRadsecAcctServerArrayInput is an input type that accepts SettingMxtunnelRadsecAcctServerArray and SettingMxtunnelRadsecAcctServerArrayOutput values.
+// You can construct a concrete instance of `SettingMxtunnelRadsecAcctServerArrayInput` via:
 //
-//	SettingMxtunnelsRadsecAcctServerArray{ SettingMxtunnelsRadsecAcctServerArgs{...} }
-type SettingMxtunnelsRadsecAcctServerArrayInput interface {
+//	SettingMxtunnelRadsecAcctServerArray{ SettingMxtunnelRadsecAcctServerArgs{...} }
+type SettingMxtunnelRadsecAcctServerArrayInput interface {
 	pulumi.Input
 
-	ToSettingMxtunnelsRadsecAcctServerArrayOutput() SettingMxtunnelsRadsecAcctServerArrayOutput
-	ToSettingMxtunnelsRadsecAcctServerArrayOutputWithContext(context.Context) SettingMxtunnelsRadsecAcctServerArrayOutput
+	ToSettingMxtunnelRadsecAcctServerArrayOutput() SettingMxtunnelRadsecAcctServerArrayOutput
+	ToSettingMxtunnelRadsecAcctServerArrayOutputWithContext(context.Context) SettingMxtunnelRadsecAcctServerArrayOutput
 }
 
-type SettingMxtunnelsRadsecAcctServerArray []SettingMxtunnelsRadsecAcctServerInput
+type SettingMxtunnelRadsecAcctServerArray []SettingMxtunnelRadsecAcctServerInput
 
-func (SettingMxtunnelsRadsecAcctServerArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SettingMxtunnelsRadsecAcctServer)(nil)).Elem()
+func (SettingMxtunnelRadsecAcctServerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SettingMxtunnelRadsecAcctServer)(nil)).Elem()
 }
 
-func (i SettingMxtunnelsRadsecAcctServerArray) ToSettingMxtunnelsRadsecAcctServerArrayOutput() SettingMxtunnelsRadsecAcctServerArrayOutput {
-	return i.ToSettingMxtunnelsRadsecAcctServerArrayOutputWithContext(context.Background())
+func (i SettingMxtunnelRadsecAcctServerArray) ToSettingMxtunnelRadsecAcctServerArrayOutput() SettingMxtunnelRadsecAcctServerArrayOutput {
+	return i.ToSettingMxtunnelRadsecAcctServerArrayOutputWithContext(context.Background())
 }
 
-func (i SettingMxtunnelsRadsecAcctServerArray) ToSettingMxtunnelsRadsecAcctServerArrayOutputWithContext(ctx context.Context) SettingMxtunnelsRadsecAcctServerArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelsRadsecAcctServerArrayOutput)
+func (i SettingMxtunnelRadsecAcctServerArray) ToSettingMxtunnelRadsecAcctServerArrayOutputWithContext(ctx context.Context) SettingMxtunnelRadsecAcctServerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelRadsecAcctServerArrayOutput)
 }
 
-type SettingMxtunnelsRadsecAcctServerOutput struct{ *pulumi.OutputState }
+type SettingMxtunnelRadsecAcctServerOutput struct{ *pulumi.OutputState }
 
-func (SettingMxtunnelsRadsecAcctServerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SettingMxtunnelsRadsecAcctServer)(nil)).Elem()
+func (SettingMxtunnelRadsecAcctServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingMxtunnelRadsecAcctServer)(nil)).Elem()
 }
 
-func (o SettingMxtunnelsRadsecAcctServerOutput) ToSettingMxtunnelsRadsecAcctServerOutput() SettingMxtunnelsRadsecAcctServerOutput {
+func (o SettingMxtunnelRadsecAcctServerOutput) ToSettingMxtunnelRadsecAcctServerOutput() SettingMxtunnelRadsecAcctServerOutput {
 	return o
 }
 
-func (o SettingMxtunnelsRadsecAcctServerOutput) ToSettingMxtunnelsRadsecAcctServerOutputWithContext(ctx context.Context) SettingMxtunnelsRadsecAcctServerOutput {
+func (o SettingMxtunnelRadsecAcctServerOutput) ToSettingMxtunnelRadsecAcctServerOutputWithContext(ctx context.Context) SettingMxtunnelRadsecAcctServerOutput {
 	return o
 }
 
 // Address or hostname of the RADIUS accounting server
-func (o SettingMxtunnelsRadsecAcctServerOutput) Host() pulumi.StringOutput {
-	return o.ApplyT(func(v SettingMxtunnelsRadsecAcctServer) string { return v.Host }).(pulumi.StringOutput)
+func (o SettingMxtunnelRadsecAcctServerOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v SettingMxtunnelRadsecAcctServer) string { return v.Host }).(pulumi.StringOutput)
 }
 
 // Whether RADIUS keywrap is enabled for messages sent to this accounting server
-func (o SettingMxtunnelsRadsecAcctServerOutput) KeywrapEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SettingMxtunnelsRadsecAcctServer) *bool { return v.KeywrapEnabled }).(pulumi.BoolPtrOutput)
+func (o SettingMxtunnelRadsecAcctServerOutput) KeywrapEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelRadsecAcctServer) *bool { return v.KeywrapEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Encoding format for RADIUS keywrap KEK and MACK values
-func (o SettingMxtunnelsRadsecAcctServerOutput) KeywrapFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SettingMxtunnelsRadsecAcctServer) *string { return v.KeywrapFormat }).(pulumi.StringPtrOutput)
+func (o SettingMxtunnelRadsecAcctServerOutput) KeywrapFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelRadsecAcctServer) *string { return v.KeywrapFormat }).(pulumi.StringPtrOutput)
 }
 
 // RADIUS keywrap key encryption key (KEK)
-func (o SettingMxtunnelsRadsecAcctServerOutput) KeywrapKek() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SettingMxtunnelsRadsecAcctServer) *string { return v.KeywrapKek }).(pulumi.StringPtrOutput)
+func (o SettingMxtunnelRadsecAcctServerOutput) KeywrapKek() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelRadsecAcctServer) *string { return v.KeywrapKek }).(pulumi.StringPtrOutput)
 }
 
 // RADIUS keywrap message authentication code key (MACK)
-func (o SettingMxtunnelsRadsecAcctServerOutput) KeywrapMack() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SettingMxtunnelsRadsecAcctServer) *string { return v.KeywrapMack }).(pulumi.StringPtrOutput)
+func (o SettingMxtunnelRadsecAcctServerOutput) KeywrapMack() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelRadsecAcctServer) *string { return v.KeywrapMack }).(pulumi.StringPtrOutput)
 }
 
 // UDP port used by the RADIUS accounting server
-func (o SettingMxtunnelsRadsecAcctServerOutput) Port() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SettingMxtunnelsRadsecAcctServer) *string { return v.Port }).(pulumi.StringPtrOutput)
+func (o SettingMxtunnelRadsecAcctServerOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelRadsecAcctServer) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
 // Shared secret used with this RADIUS accounting server
-func (o SettingMxtunnelsRadsecAcctServerOutput) Secret() pulumi.StringOutput {
-	return o.ApplyT(func(v SettingMxtunnelsRadsecAcctServer) string { return v.Secret }).(pulumi.StringOutput)
+func (o SettingMxtunnelRadsecAcctServerOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v SettingMxtunnelRadsecAcctServer) string { return v.Secret }).(pulumi.StringOutput)
 }
 
-type SettingMxtunnelsRadsecAcctServerArrayOutput struct{ *pulumi.OutputState }
+type SettingMxtunnelRadsecAcctServerArrayOutput struct{ *pulumi.OutputState }
 
-func (SettingMxtunnelsRadsecAcctServerArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SettingMxtunnelsRadsecAcctServer)(nil)).Elem()
+func (SettingMxtunnelRadsecAcctServerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SettingMxtunnelRadsecAcctServer)(nil)).Elem()
 }
 
-func (o SettingMxtunnelsRadsecAcctServerArrayOutput) ToSettingMxtunnelsRadsecAcctServerArrayOutput() SettingMxtunnelsRadsecAcctServerArrayOutput {
+func (o SettingMxtunnelRadsecAcctServerArrayOutput) ToSettingMxtunnelRadsecAcctServerArrayOutput() SettingMxtunnelRadsecAcctServerArrayOutput {
 	return o
 }
 
-func (o SettingMxtunnelsRadsecAcctServerArrayOutput) ToSettingMxtunnelsRadsecAcctServerArrayOutputWithContext(ctx context.Context) SettingMxtunnelsRadsecAcctServerArrayOutput {
+func (o SettingMxtunnelRadsecAcctServerArrayOutput) ToSettingMxtunnelRadsecAcctServerArrayOutputWithContext(ctx context.Context) SettingMxtunnelRadsecAcctServerArrayOutput {
 	return o
 }
 
-func (o SettingMxtunnelsRadsecAcctServerArrayOutput) Index(i pulumi.IntInput) SettingMxtunnelsRadsecAcctServerOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SettingMxtunnelsRadsecAcctServer {
-		return vs[0].([]SettingMxtunnelsRadsecAcctServer)[vs[1].(int)]
-	}).(SettingMxtunnelsRadsecAcctServerOutput)
+func (o SettingMxtunnelRadsecAcctServerArrayOutput) Index(i pulumi.IntInput) SettingMxtunnelRadsecAcctServerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SettingMxtunnelRadsecAcctServer {
+		return vs[0].([]SettingMxtunnelRadsecAcctServer)[vs[1].(int)]
+	}).(SettingMxtunnelRadsecAcctServerOutput)
 }
 
-type SettingMxtunnelsRadsecAuthServer struct {
+type SettingMxtunnelRadsecAuthServer struct {
 	// Address or hostname of the RADIUS authentication server
 	Host string `pulumi:"host"`
 	// Whether RADIUS keywrap is enabled for messages sent to this authentication server
@@ -19373,18 +19373,18 @@ type SettingMxtunnelsRadsecAuthServer struct {
 	Secret string `pulumi:"secret"`
 }
 
-// SettingMxtunnelsRadsecAuthServerInput is an input type that accepts SettingMxtunnelsRadsecAuthServerArgs and SettingMxtunnelsRadsecAuthServerOutput values.
-// You can construct a concrete instance of `SettingMxtunnelsRadsecAuthServerInput` via:
+// SettingMxtunnelRadsecAuthServerInput is an input type that accepts SettingMxtunnelRadsecAuthServerArgs and SettingMxtunnelRadsecAuthServerOutput values.
+// You can construct a concrete instance of `SettingMxtunnelRadsecAuthServerInput` via:
 //
-//	SettingMxtunnelsRadsecAuthServerArgs{...}
-type SettingMxtunnelsRadsecAuthServerInput interface {
+//	SettingMxtunnelRadsecAuthServerArgs{...}
+type SettingMxtunnelRadsecAuthServerInput interface {
 	pulumi.Input
 
-	ToSettingMxtunnelsRadsecAuthServerOutput() SettingMxtunnelsRadsecAuthServerOutput
-	ToSettingMxtunnelsRadsecAuthServerOutputWithContext(context.Context) SettingMxtunnelsRadsecAuthServerOutput
+	ToSettingMxtunnelRadsecAuthServerOutput() SettingMxtunnelRadsecAuthServerOutput
+	ToSettingMxtunnelRadsecAuthServerOutputWithContext(context.Context) SettingMxtunnelRadsecAuthServerOutput
 }
 
-type SettingMxtunnelsRadsecAuthServerArgs struct {
+type SettingMxtunnelRadsecAuthServerArgs struct {
 	// Address or hostname of the RADIUS authentication server
 	Host pulumi.StringInput `pulumi:"host"`
 	// Whether RADIUS keywrap is enabled for messages sent to this authentication server
@@ -19403,115 +19403,115 @@ type SettingMxtunnelsRadsecAuthServerArgs struct {
 	Secret pulumi.StringInput `pulumi:"secret"`
 }
 
-func (SettingMxtunnelsRadsecAuthServerArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SettingMxtunnelsRadsecAuthServer)(nil)).Elem()
+func (SettingMxtunnelRadsecAuthServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingMxtunnelRadsecAuthServer)(nil)).Elem()
 }
 
-func (i SettingMxtunnelsRadsecAuthServerArgs) ToSettingMxtunnelsRadsecAuthServerOutput() SettingMxtunnelsRadsecAuthServerOutput {
-	return i.ToSettingMxtunnelsRadsecAuthServerOutputWithContext(context.Background())
+func (i SettingMxtunnelRadsecAuthServerArgs) ToSettingMxtunnelRadsecAuthServerOutput() SettingMxtunnelRadsecAuthServerOutput {
+	return i.ToSettingMxtunnelRadsecAuthServerOutputWithContext(context.Background())
 }
 
-func (i SettingMxtunnelsRadsecAuthServerArgs) ToSettingMxtunnelsRadsecAuthServerOutputWithContext(ctx context.Context) SettingMxtunnelsRadsecAuthServerOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelsRadsecAuthServerOutput)
+func (i SettingMxtunnelRadsecAuthServerArgs) ToSettingMxtunnelRadsecAuthServerOutputWithContext(ctx context.Context) SettingMxtunnelRadsecAuthServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelRadsecAuthServerOutput)
 }
 
-// SettingMxtunnelsRadsecAuthServerArrayInput is an input type that accepts SettingMxtunnelsRadsecAuthServerArray and SettingMxtunnelsRadsecAuthServerArrayOutput values.
-// You can construct a concrete instance of `SettingMxtunnelsRadsecAuthServerArrayInput` via:
+// SettingMxtunnelRadsecAuthServerArrayInput is an input type that accepts SettingMxtunnelRadsecAuthServerArray and SettingMxtunnelRadsecAuthServerArrayOutput values.
+// You can construct a concrete instance of `SettingMxtunnelRadsecAuthServerArrayInput` via:
 //
-//	SettingMxtunnelsRadsecAuthServerArray{ SettingMxtunnelsRadsecAuthServerArgs{...} }
-type SettingMxtunnelsRadsecAuthServerArrayInput interface {
+//	SettingMxtunnelRadsecAuthServerArray{ SettingMxtunnelRadsecAuthServerArgs{...} }
+type SettingMxtunnelRadsecAuthServerArrayInput interface {
 	pulumi.Input
 
-	ToSettingMxtunnelsRadsecAuthServerArrayOutput() SettingMxtunnelsRadsecAuthServerArrayOutput
-	ToSettingMxtunnelsRadsecAuthServerArrayOutputWithContext(context.Context) SettingMxtunnelsRadsecAuthServerArrayOutput
+	ToSettingMxtunnelRadsecAuthServerArrayOutput() SettingMxtunnelRadsecAuthServerArrayOutput
+	ToSettingMxtunnelRadsecAuthServerArrayOutputWithContext(context.Context) SettingMxtunnelRadsecAuthServerArrayOutput
 }
 
-type SettingMxtunnelsRadsecAuthServerArray []SettingMxtunnelsRadsecAuthServerInput
+type SettingMxtunnelRadsecAuthServerArray []SettingMxtunnelRadsecAuthServerInput
 
-func (SettingMxtunnelsRadsecAuthServerArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SettingMxtunnelsRadsecAuthServer)(nil)).Elem()
+func (SettingMxtunnelRadsecAuthServerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SettingMxtunnelRadsecAuthServer)(nil)).Elem()
 }
 
-func (i SettingMxtunnelsRadsecAuthServerArray) ToSettingMxtunnelsRadsecAuthServerArrayOutput() SettingMxtunnelsRadsecAuthServerArrayOutput {
-	return i.ToSettingMxtunnelsRadsecAuthServerArrayOutputWithContext(context.Background())
+func (i SettingMxtunnelRadsecAuthServerArray) ToSettingMxtunnelRadsecAuthServerArrayOutput() SettingMxtunnelRadsecAuthServerArrayOutput {
+	return i.ToSettingMxtunnelRadsecAuthServerArrayOutputWithContext(context.Background())
 }
 
-func (i SettingMxtunnelsRadsecAuthServerArray) ToSettingMxtunnelsRadsecAuthServerArrayOutputWithContext(ctx context.Context) SettingMxtunnelsRadsecAuthServerArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelsRadsecAuthServerArrayOutput)
+func (i SettingMxtunnelRadsecAuthServerArray) ToSettingMxtunnelRadsecAuthServerArrayOutputWithContext(ctx context.Context) SettingMxtunnelRadsecAuthServerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMxtunnelRadsecAuthServerArrayOutput)
 }
 
-type SettingMxtunnelsRadsecAuthServerOutput struct{ *pulumi.OutputState }
+type SettingMxtunnelRadsecAuthServerOutput struct{ *pulumi.OutputState }
 
-func (SettingMxtunnelsRadsecAuthServerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SettingMxtunnelsRadsecAuthServer)(nil)).Elem()
+func (SettingMxtunnelRadsecAuthServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingMxtunnelRadsecAuthServer)(nil)).Elem()
 }
 
-func (o SettingMxtunnelsRadsecAuthServerOutput) ToSettingMxtunnelsRadsecAuthServerOutput() SettingMxtunnelsRadsecAuthServerOutput {
+func (o SettingMxtunnelRadsecAuthServerOutput) ToSettingMxtunnelRadsecAuthServerOutput() SettingMxtunnelRadsecAuthServerOutput {
 	return o
 }
 
-func (o SettingMxtunnelsRadsecAuthServerOutput) ToSettingMxtunnelsRadsecAuthServerOutputWithContext(ctx context.Context) SettingMxtunnelsRadsecAuthServerOutput {
+func (o SettingMxtunnelRadsecAuthServerOutput) ToSettingMxtunnelRadsecAuthServerOutputWithContext(ctx context.Context) SettingMxtunnelRadsecAuthServerOutput {
 	return o
 }
 
 // Address or hostname of the RADIUS authentication server
-func (o SettingMxtunnelsRadsecAuthServerOutput) Host() pulumi.StringOutput {
-	return o.ApplyT(func(v SettingMxtunnelsRadsecAuthServer) string { return v.Host }).(pulumi.StringOutput)
+func (o SettingMxtunnelRadsecAuthServerOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v SettingMxtunnelRadsecAuthServer) string { return v.Host }).(pulumi.StringOutput)
 }
 
 // Whether RADIUS keywrap is enabled for messages sent to this authentication server
-func (o SettingMxtunnelsRadsecAuthServerOutput) KeywrapEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SettingMxtunnelsRadsecAuthServer) *bool { return v.KeywrapEnabled }).(pulumi.BoolPtrOutput)
+func (o SettingMxtunnelRadsecAuthServerOutput) KeywrapEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelRadsecAuthServer) *bool { return v.KeywrapEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Encoding format for RADIUS keywrap KEK and MACK values
-func (o SettingMxtunnelsRadsecAuthServerOutput) KeywrapFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SettingMxtunnelsRadsecAuthServer) *string { return v.KeywrapFormat }).(pulumi.StringPtrOutput)
+func (o SettingMxtunnelRadsecAuthServerOutput) KeywrapFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelRadsecAuthServer) *string { return v.KeywrapFormat }).(pulumi.StringPtrOutput)
 }
 
 // RADIUS keywrap key encryption key (KEK)
-func (o SettingMxtunnelsRadsecAuthServerOutput) KeywrapKek() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SettingMxtunnelsRadsecAuthServer) *string { return v.KeywrapKek }).(pulumi.StringPtrOutput)
+func (o SettingMxtunnelRadsecAuthServerOutput) KeywrapKek() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelRadsecAuthServer) *string { return v.KeywrapKek }).(pulumi.StringPtrOutput)
 }
 
 // RADIUS keywrap message authentication code key (MACK)
-func (o SettingMxtunnelsRadsecAuthServerOutput) KeywrapMack() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SettingMxtunnelsRadsecAuthServer) *string { return v.KeywrapMack }).(pulumi.StringPtrOutput)
+func (o SettingMxtunnelRadsecAuthServerOutput) KeywrapMack() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelRadsecAuthServer) *string { return v.KeywrapMack }).(pulumi.StringPtrOutput)
 }
 
 // UDP port used by the RADIUS authentication server
-func (o SettingMxtunnelsRadsecAuthServerOutput) Port() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SettingMxtunnelsRadsecAuthServer) *string { return v.Port }).(pulumi.StringPtrOutput)
+func (o SettingMxtunnelRadsecAuthServerOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelRadsecAuthServer) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
 // Whether to require Message-Authenticator in requests
-func (o SettingMxtunnelsRadsecAuthServerOutput) RequireMessageAuthenticator() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SettingMxtunnelsRadsecAuthServer) *bool { return v.RequireMessageAuthenticator }).(pulumi.BoolPtrOutput)
+func (o SettingMxtunnelRadsecAuthServerOutput) RequireMessageAuthenticator() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingMxtunnelRadsecAuthServer) *bool { return v.RequireMessageAuthenticator }).(pulumi.BoolPtrOutput)
 }
 
 // Shared secret used with this RADIUS authentication server
-func (o SettingMxtunnelsRadsecAuthServerOutput) Secret() pulumi.StringOutput {
-	return o.ApplyT(func(v SettingMxtunnelsRadsecAuthServer) string { return v.Secret }).(pulumi.StringOutput)
+func (o SettingMxtunnelRadsecAuthServerOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v SettingMxtunnelRadsecAuthServer) string { return v.Secret }).(pulumi.StringOutput)
 }
 
-type SettingMxtunnelsRadsecAuthServerArrayOutput struct{ *pulumi.OutputState }
+type SettingMxtunnelRadsecAuthServerArrayOutput struct{ *pulumi.OutputState }
 
-func (SettingMxtunnelsRadsecAuthServerArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SettingMxtunnelsRadsecAuthServer)(nil)).Elem()
+func (SettingMxtunnelRadsecAuthServerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SettingMxtunnelRadsecAuthServer)(nil)).Elem()
 }
 
-func (o SettingMxtunnelsRadsecAuthServerArrayOutput) ToSettingMxtunnelsRadsecAuthServerArrayOutput() SettingMxtunnelsRadsecAuthServerArrayOutput {
+func (o SettingMxtunnelRadsecAuthServerArrayOutput) ToSettingMxtunnelRadsecAuthServerArrayOutput() SettingMxtunnelRadsecAuthServerArrayOutput {
 	return o
 }
 
-func (o SettingMxtunnelsRadsecAuthServerArrayOutput) ToSettingMxtunnelsRadsecAuthServerArrayOutputWithContext(ctx context.Context) SettingMxtunnelsRadsecAuthServerArrayOutput {
+func (o SettingMxtunnelRadsecAuthServerArrayOutput) ToSettingMxtunnelRadsecAuthServerArrayOutputWithContext(ctx context.Context) SettingMxtunnelRadsecAuthServerArrayOutput {
 	return o
 }
 
-func (o SettingMxtunnelsRadsecAuthServerArrayOutput) Index(i pulumi.IntInput) SettingMxtunnelsRadsecAuthServerOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SettingMxtunnelsRadsecAuthServer {
-		return vs[0].([]SettingMxtunnelsRadsecAuthServer)[vs[1].(int)]
-	}).(SettingMxtunnelsRadsecAuthServerOutput)
+func (o SettingMxtunnelRadsecAuthServerArrayOutput) Index(i pulumi.IntInput) SettingMxtunnelRadsecAuthServerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SettingMxtunnelRadsecAuthServer {
+		return vs[0].([]SettingMxtunnelRadsecAuthServer)[vs[1].(int)]
+	}).(SettingMxtunnelRadsecAuthServerOutput)
 }
 
 type SettingOccupancy struct {
@@ -40478,22 +40478,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingMarvisAutoOperationsPtrInput)(nil)).Elem(), SettingMarvisAutoOperationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxedgeMgmtInput)(nil)).Elem(), SettingMxedgeMgmtArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxedgeMgmtPtrInput)(nil)).Elem(), SettingMxedgeMgmtArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelsInput)(nil)).Elem(), SettingMxtunnelsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelsPtrInput)(nil)).Elem(), SettingMxtunnelsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelsAdditionalMxtunnelsInput)(nil)).Elem(), SettingMxtunnelsAdditionalMxtunnelsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelsAdditionalMxtunnelsMapInput)(nil)).Elem(), SettingMxtunnelsAdditionalMxtunnelsMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelsAdditionalMxtunnelsTuntermClusterInput)(nil)).Elem(), SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayInput)(nil)).Elem(), SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelsAutoPreemptionInput)(nil)).Elem(), SettingMxtunnelsAutoPreemptionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelsAutoPreemptionPtrInput)(nil)).Elem(), SettingMxtunnelsAutoPreemptionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelsClusterInput)(nil)).Elem(), SettingMxtunnelsClusterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelsClusterArrayInput)(nil)).Elem(), SettingMxtunnelsClusterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelsRadsecInput)(nil)).Elem(), SettingMxtunnelsRadsecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelsRadsecPtrInput)(nil)).Elem(), SettingMxtunnelsRadsecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelsRadsecAcctServerInput)(nil)).Elem(), SettingMxtunnelsRadsecAcctServerArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelsRadsecAcctServerArrayInput)(nil)).Elem(), SettingMxtunnelsRadsecAcctServerArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelsRadsecAuthServerInput)(nil)).Elem(), SettingMxtunnelsRadsecAuthServerArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelsRadsecAuthServerArrayInput)(nil)).Elem(), SettingMxtunnelsRadsecAuthServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelInput)(nil)).Elem(), SettingMxtunnelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelPtrInput)(nil)).Elem(), SettingMxtunnelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelAdditionalMxtunnelsInput)(nil)).Elem(), SettingMxtunnelAdditionalMxtunnelsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelAdditionalMxtunnelsMapInput)(nil)).Elem(), SettingMxtunnelAdditionalMxtunnelsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelAdditionalMxtunnelsTuntermClusterInput)(nil)).Elem(), SettingMxtunnelAdditionalMxtunnelsTuntermClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelAdditionalMxtunnelsTuntermClusterArrayInput)(nil)).Elem(), SettingMxtunnelAdditionalMxtunnelsTuntermClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelAutoPreemptionInput)(nil)).Elem(), SettingMxtunnelAutoPreemptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelAutoPreemptionPtrInput)(nil)).Elem(), SettingMxtunnelAutoPreemptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelClusterInput)(nil)).Elem(), SettingMxtunnelClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelClusterArrayInput)(nil)).Elem(), SettingMxtunnelClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelRadsecInput)(nil)).Elem(), SettingMxtunnelRadsecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelRadsecPtrInput)(nil)).Elem(), SettingMxtunnelRadsecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelRadsecAcctServerInput)(nil)).Elem(), SettingMxtunnelRadsecAcctServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelRadsecAcctServerArrayInput)(nil)).Elem(), SettingMxtunnelRadsecAcctServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelRadsecAuthServerInput)(nil)).Elem(), SettingMxtunnelRadsecAuthServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingMxtunnelRadsecAuthServerArrayInput)(nil)).Elem(), SettingMxtunnelRadsecAuthServerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingOccupancyInput)(nil)).Elem(), SettingOccupancyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingOccupancyPtrInput)(nil)).Elem(), SettingOccupancyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingProxyInput)(nil)).Elem(), SettingProxyArgs{})
@@ -40874,22 +40874,22 @@ func init() {
 	pulumi.RegisterOutputType(SettingMarvisAutoOperationsPtrOutput{})
 	pulumi.RegisterOutputType(SettingMxedgeMgmtOutput{})
 	pulumi.RegisterOutputType(SettingMxedgeMgmtPtrOutput{})
-	pulumi.RegisterOutputType(SettingMxtunnelsOutput{})
-	pulumi.RegisterOutputType(SettingMxtunnelsPtrOutput{})
-	pulumi.RegisterOutputType(SettingMxtunnelsAdditionalMxtunnelsOutput{})
-	pulumi.RegisterOutputType(SettingMxtunnelsAdditionalMxtunnelsMapOutput{})
-	pulumi.RegisterOutputType(SettingMxtunnelsAdditionalMxtunnelsTuntermClusterOutput{})
-	pulumi.RegisterOutputType(SettingMxtunnelsAdditionalMxtunnelsTuntermClusterArrayOutput{})
-	pulumi.RegisterOutputType(SettingMxtunnelsAutoPreemptionOutput{})
-	pulumi.RegisterOutputType(SettingMxtunnelsAutoPreemptionPtrOutput{})
-	pulumi.RegisterOutputType(SettingMxtunnelsClusterOutput{})
-	pulumi.RegisterOutputType(SettingMxtunnelsClusterArrayOutput{})
-	pulumi.RegisterOutputType(SettingMxtunnelsRadsecOutput{})
-	pulumi.RegisterOutputType(SettingMxtunnelsRadsecPtrOutput{})
-	pulumi.RegisterOutputType(SettingMxtunnelsRadsecAcctServerOutput{})
-	pulumi.RegisterOutputType(SettingMxtunnelsRadsecAcctServerArrayOutput{})
-	pulumi.RegisterOutputType(SettingMxtunnelsRadsecAuthServerOutput{})
-	pulumi.RegisterOutputType(SettingMxtunnelsRadsecAuthServerArrayOutput{})
+	pulumi.RegisterOutputType(SettingMxtunnelOutput{})
+	pulumi.RegisterOutputType(SettingMxtunnelPtrOutput{})
+	pulumi.RegisterOutputType(SettingMxtunnelAdditionalMxtunnelsOutput{})
+	pulumi.RegisterOutputType(SettingMxtunnelAdditionalMxtunnelsMapOutput{})
+	pulumi.RegisterOutputType(SettingMxtunnelAdditionalMxtunnelsTuntermClusterOutput{})
+	pulumi.RegisterOutputType(SettingMxtunnelAdditionalMxtunnelsTuntermClusterArrayOutput{})
+	pulumi.RegisterOutputType(SettingMxtunnelAutoPreemptionOutput{})
+	pulumi.RegisterOutputType(SettingMxtunnelAutoPreemptionPtrOutput{})
+	pulumi.RegisterOutputType(SettingMxtunnelClusterOutput{})
+	pulumi.RegisterOutputType(SettingMxtunnelClusterArrayOutput{})
+	pulumi.RegisterOutputType(SettingMxtunnelRadsecOutput{})
+	pulumi.RegisterOutputType(SettingMxtunnelRadsecPtrOutput{})
+	pulumi.RegisterOutputType(SettingMxtunnelRadsecAcctServerOutput{})
+	pulumi.RegisterOutputType(SettingMxtunnelRadsecAcctServerArrayOutput{})
+	pulumi.RegisterOutputType(SettingMxtunnelRadsecAuthServerOutput{})
+	pulumi.RegisterOutputType(SettingMxtunnelRadsecAuthServerArrayOutput{})
 	pulumi.RegisterOutputType(SettingOccupancyOutput{})
 	pulumi.RegisterOutputType(SettingOccupancyPtrOutput{})
 	pulumi.RegisterOutputType(SettingProxyOutput{})

@@ -44,7 +44,7 @@ class SettingArgs:
                  led: pulumi.Input[Optional['SettingLedArgs']] = None,
                  marvis: pulumi.Input[Optional['SettingMarvisArgs']] = None,
                  mxedge_mgmt: pulumi.Input[Optional['SettingMxedgeMgmtArgs']] = None,
-                 mxtunnels: pulumi.Input[Optional['SettingMxtunnelsArgs']] = None,
+                 mxtunnel: pulumi.Input[Optional['SettingMxtunnelArgs']] = None,
                  occupancy: pulumi.Input[Optional['SettingOccupancyArgs']] = None,
                  persist_config_on_device: pulumi.Input[Optional[_builtins.bool]] = None,
                  proxy: pulumi.Input[Optional['SettingProxyArgs']] = None,
@@ -102,7 +102,7 @@ class SettingArgs:
         :param pulumi.Input['SettingLedArgs'] led: AP LED behavior configured for the site
         :param pulumi.Input['SettingMarvisArgs'] marvis: AI assistant settings for Marvis at the site
         :param pulumi.Input['SettingMxedgeMgmtArgs'] mxedge_mgmt: Mist Edge management access settings for the site
-        :param pulumi.Input['SettingMxtunnelsArgs'] mxtunnels: Site Mist Tunnel configuration
+        :param pulumi.Input['SettingMxtunnelArgs'] mxtunnel: Site Mist Tunnel configuration
         :param pulumi.Input['SettingOccupancyArgs'] occupancy: Analytics settings for site occupancy
         :param pulumi.Input[_builtins.bool] persist_config_on_device: Whether to store the config on AP
         :param pulumi.Input['SettingProxyArgs'] proxy: Network proxy settings for devices at the site
@@ -180,8 +180,8 @@ class SettingArgs:
             pulumi.set(__self__, "marvis", marvis)
         if mxedge_mgmt is not None:
             pulumi.set(__self__, "mxedge_mgmt", mxedge_mgmt)
-        if mxtunnels is not None:
-            pulumi.set(__self__, "mxtunnels", mxtunnels)
+        if mxtunnel is not None:
+            pulumi.set(__self__, "mxtunnel", mxtunnel)
         if occupancy is not None:
             pulumi.set(__self__, "occupancy", occupancy)
         if persist_config_on_device is not None:
@@ -523,15 +523,15 @@ class SettingArgs:
 
     @_builtins.property
     @pulumi.getter
-    def mxtunnels(self) -> pulumi.Input[Optional['SettingMxtunnelsArgs']]:
+    def mxtunnel(self) -> pulumi.Input[Optional['SettingMxtunnelArgs']]:
         """
         Site Mist Tunnel configuration
         """
-        return pulumi.get(self, "mxtunnels")
+        return pulumi.get(self, "mxtunnel")
 
-    @mxtunnels.setter
-    def mxtunnels(self, value: pulumi.Input[Optional['SettingMxtunnelsArgs']]):
-        pulumi.set(self, "mxtunnels", value)
+    @mxtunnel.setter
+    def mxtunnel(self, value: pulumi.Input[Optional['SettingMxtunnelArgs']]):
+        pulumi.set(self, "mxtunnel", value)
 
     @_builtins.property
     @pulumi.getter
@@ -932,7 +932,7 @@ class _SettingState:
                  led: pulumi.Input[Optional['SettingLedArgs']] = None,
                  marvis: pulumi.Input[Optional['SettingMarvisArgs']] = None,
                  mxedge_mgmt: pulumi.Input[Optional['SettingMxedgeMgmtArgs']] = None,
-                 mxtunnels: pulumi.Input[Optional['SettingMxtunnelsArgs']] = None,
+                 mxtunnel: pulumi.Input[Optional['SettingMxtunnelArgs']] = None,
                  occupancy: pulumi.Input[Optional['SettingOccupancyArgs']] = None,
                  persist_config_on_device: pulumi.Input[Optional[_builtins.bool]] = None,
                  proxy: pulumi.Input[Optional['SettingProxyArgs']] = None,
@@ -993,7 +993,7 @@ class _SettingState:
         :param pulumi.Input['SettingLedArgs'] led: AP LED behavior configured for the site
         :param pulumi.Input['SettingMarvisArgs'] marvis: AI assistant settings for Marvis at the site
         :param pulumi.Input['SettingMxedgeMgmtArgs'] mxedge_mgmt: Mist Edge management access settings for the site
-        :param pulumi.Input['SettingMxtunnelsArgs'] mxtunnels: Site Mist Tunnel configuration
+        :param pulumi.Input['SettingMxtunnelArgs'] mxtunnel: Site Mist Tunnel configuration
         :param pulumi.Input['SettingOccupancyArgs'] occupancy: Analytics settings for site occupancy
         :param pulumi.Input[_builtins.bool] persist_config_on_device: Whether to store the config on AP
         :param pulumi.Input['SettingProxyArgs'] proxy: Network proxy settings for devices at the site
@@ -1075,8 +1075,8 @@ class _SettingState:
             pulumi.set(__self__, "marvis", marvis)
         if mxedge_mgmt is not None:
             pulumi.set(__self__, "mxedge_mgmt", mxedge_mgmt)
-        if mxtunnels is not None:
-            pulumi.set(__self__, "mxtunnels", mxtunnels)
+        if mxtunnel is not None:
+            pulumi.set(__self__, "mxtunnel", mxtunnel)
         if occupancy is not None:
             pulumi.set(__self__, "occupancy", occupancy)
         if persist_config_on_device is not None:
@@ -1424,15 +1424,15 @@ class _SettingState:
 
     @_builtins.property
     @pulumi.getter
-    def mxtunnels(self) -> pulumi.Input[Optional['SettingMxtunnelsArgs']]:
+    def mxtunnel(self) -> pulumi.Input[Optional['SettingMxtunnelArgs']]:
         """
         Site Mist Tunnel configuration
         """
-        return pulumi.get(self, "mxtunnels")
+        return pulumi.get(self, "mxtunnel")
 
-    @mxtunnels.setter
-    def mxtunnels(self, value: pulumi.Input[Optional['SettingMxtunnelsArgs']]):
-        pulumi.set(self, "mxtunnels", value)
+    @mxtunnel.setter
+    def mxtunnel(self, value: pulumi.Input[Optional['SettingMxtunnelArgs']]):
+        pulumi.set(self, "mxtunnel", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1871,7 +1871,7 @@ class Setting(pulumi.CustomResource):
                  led: pulumi.Input[Optional[Union['SettingLedArgs', 'SettingLedArgsDict']]] = None,
                  marvis: pulumi.Input[Optional[Union['SettingMarvisArgs', 'SettingMarvisArgsDict']]] = None,
                  mxedge_mgmt: pulumi.Input[Optional[Union['SettingMxedgeMgmtArgs', 'SettingMxedgeMgmtArgsDict']]] = None,
-                 mxtunnels: pulumi.Input[Optional[Union['SettingMxtunnelsArgs', 'SettingMxtunnelsArgsDict']]] = None,
+                 mxtunnel: pulumi.Input[Optional[Union['SettingMxtunnelArgs', 'SettingMxtunnelArgsDict']]] = None,
                  occupancy: pulumi.Input[Optional[Union['SettingOccupancyArgs', 'SettingOccupancyArgsDict']]] = None,
                  persist_config_on_device: pulumi.Input[Optional[_builtins.bool]] = None,
                  proxy: pulumi.Input[Optional[Union['SettingProxyArgs', 'SettingProxyArgsDict']]] = None,
@@ -1976,7 +1976,7 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[Union['SettingLedArgs', 'SettingLedArgsDict']] led: AP LED behavior configured for the site
         :param pulumi.Input[Union['SettingMarvisArgs', 'SettingMarvisArgsDict']] marvis: AI assistant settings for Marvis at the site
         :param pulumi.Input[Union['SettingMxedgeMgmtArgs', 'SettingMxedgeMgmtArgsDict']] mxedge_mgmt: Mist Edge management access settings for the site
-        :param pulumi.Input[Union['SettingMxtunnelsArgs', 'SettingMxtunnelsArgsDict']] mxtunnels: Site Mist Tunnel configuration
+        :param pulumi.Input[Union['SettingMxtunnelArgs', 'SettingMxtunnelArgsDict']] mxtunnel: Site Mist Tunnel configuration
         :param pulumi.Input[Union['SettingOccupancyArgs', 'SettingOccupancyArgsDict']] occupancy: Analytics settings for site occupancy
         :param pulumi.Input[_builtins.bool] persist_config_on_device: Whether to store the config on AP
         :param pulumi.Input[Union['SettingProxyArgs', 'SettingProxyArgsDict']] proxy: Network proxy settings for devices at the site
@@ -2100,7 +2100,7 @@ class Setting(pulumi.CustomResource):
                  led: pulumi.Input[Optional[Union['SettingLedArgs', 'SettingLedArgsDict']]] = None,
                  marvis: pulumi.Input[Optional[Union['SettingMarvisArgs', 'SettingMarvisArgsDict']]] = None,
                  mxedge_mgmt: pulumi.Input[Optional[Union['SettingMxedgeMgmtArgs', 'SettingMxedgeMgmtArgsDict']]] = None,
-                 mxtunnels: pulumi.Input[Optional[Union['SettingMxtunnelsArgs', 'SettingMxtunnelsArgsDict']]] = None,
+                 mxtunnel: pulumi.Input[Optional[Union['SettingMxtunnelArgs', 'SettingMxtunnelArgsDict']]] = None,
                  occupancy: pulumi.Input[Optional[Union['SettingOccupancyArgs', 'SettingOccupancyArgsDict']]] = None,
                  persist_config_on_device: pulumi.Input[Optional[_builtins.bool]] = None,
                  proxy: pulumi.Input[Optional[Union['SettingProxyArgs', 'SettingProxyArgsDict']]] = None,
@@ -2164,7 +2164,7 @@ class Setting(pulumi.CustomResource):
             __props__.__dict__["led"] = led
             __props__.__dict__["marvis"] = marvis
             __props__.__dict__["mxedge_mgmt"] = mxedge_mgmt
-            __props__.__dict__["mxtunnels"] = mxtunnels
+            __props__.__dict__["mxtunnel"] = mxtunnel
             __props__.__dict__["occupancy"] = occupancy
             __props__.__dict__["persist_config_on_device"] = persist_config_on_device
             __props__.__dict__["proxy"] = proxy
@@ -2235,7 +2235,7 @@ class Setting(pulumi.CustomResource):
             led: pulumi.Input[Optional[Union['SettingLedArgs', 'SettingLedArgsDict']]] = None,
             marvis: pulumi.Input[Optional[Union['SettingMarvisArgs', 'SettingMarvisArgsDict']]] = None,
             mxedge_mgmt: pulumi.Input[Optional[Union['SettingMxedgeMgmtArgs', 'SettingMxedgeMgmtArgsDict']]] = None,
-            mxtunnels: pulumi.Input[Optional[Union['SettingMxtunnelsArgs', 'SettingMxtunnelsArgsDict']]] = None,
+            mxtunnel: pulumi.Input[Optional[Union['SettingMxtunnelArgs', 'SettingMxtunnelArgsDict']]] = None,
             occupancy: pulumi.Input[Optional[Union['SettingOccupancyArgs', 'SettingOccupancyArgsDict']]] = None,
             persist_config_on_device: pulumi.Input[Optional[_builtins.bool]] = None,
             proxy: pulumi.Input[Optional[Union['SettingProxyArgs', 'SettingProxyArgsDict']]] = None,
@@ -2300,7 +2300,7 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[Union['SettingLedArgs', 'SettingLedArgsDict']] led: AP LED behavior configured for the site
         :param pulumi.Input[Union['SettingMarvisArgs', 'SettingMarvisArgsDict']] marvis: AI assistant settings for Marvis at the site
         :param pulumi.Input[Union['SettingMxedgeMgmtArgs', 'SettingMxedgeMgmtArgsDict']] mxedge_mgmt: Mist Edge management access settings for the site
-        :param pulumi.Input[Union['SettingMxtunnelsArgs', 'SettingMxtunnelsArgsDict']] mxtunnels: Site Mist Tunnel configuration
+        :param pulumi.Input[Union['SettingMxtunnelArgs', 'SettingMxtunnelArgsDict']] mxtunnel: Site Mist Tunnel configuration
         :param pulumi.Input[Union['SettingOccupancyArgs', 'SettingOccupancyArgsDict']] occupancy: Analytics settings for site occupancy
         :param pulumi.Input[_builtins.bool] persist_config_on_device: Whether to store the config on AP
         :param pulumi.Input[Union['SettingProxyArgs', 'SettingProxyArgsDict']] proxy: Network proxy settings for devices at the site
@@ -2363,7 +2363,7 @@ class Setting(pulumi.CustomResource):
         __props__.__dict__["led"] = led
         __props__.__dict__["marvis"] = marvis
         __props__.__dict__["mxedge_mgmt"] = mxedge_mgmt
-        __props__.__dict__["mxtunnels"] = mxtunnels
+        __props__.__dict__["mxtunnel"] = mxtunnel
         __props__.__dict__["occupancy"] = occupancy
         __props__.__dict__["persist_config_on_device"] = persist_config_on_device
         __props__.__dict__["proxy"] = proxy
@@ -2586,11 +2586,11 @@ class Setting(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def mxtunnels(self) -> pulumi.Output[Optional['outputs.SettingMxtunnels']]:
+    def mxtunnel(self) -> pulumi.Output[Optional['outputs.SettingMxtunnel']]:
         """
         Site Mist Tunnel configuration
         """
-        return pulumi.get(self, "mxtunnels")
+        return pulumi.get(self, "mxtunnel")
 
     @_builtins.property
     @pulumi.getter
