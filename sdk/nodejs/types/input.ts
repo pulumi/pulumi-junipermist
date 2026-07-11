@@ -20001,11 +20001,11 @@ export namespace site {
         rootPassword?: pulumi.Input<string | undefined>;
     }
 
-    export interface SettingMxtunnels {
+    export interface SettingMxtunnel {
         /**
          * Additional named Mist Tunnel definitions configured for the site
          */
-        additionalMxtunnels?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.SettingMxtunnelsAdditionalMxtunnels>} | undefined>;
+        additionalMxtunnels?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.SettingMxtunnelAdditionalMxtunnels>} | undefined>;
         /**
          * AP source subnets allowed to establish Mist Tunnels
          */
@@ -20013,11 +20013,11 @@ export namespace site {
         /**
          * Preemption behavior for restoring preferred tunnel peers after failover
          */
-        autoPreemption?: pulumi.Input<inputs.site.SettingMxtunnelsAutoPreemption | undefined>;
+        autoPreemption?: pulumi.Input<inputs.site.SettingMxtunnelAutoPreemption | undefined>;
         /**
          * Tunnel peer clusters used by APs for this site Mist Tunnel
          */
-        clusters?: pulumi.Input<pulumi.Input<inputs.site.SettingMxtunnelsCluster>[] | undefined>;
+        clusters?: pulumi.Input<pulumi.Input<inputs.site.SettingMxtunnelCluster>[] | undefined>;
         /**
          * Timestamp when the site Mist Tunnel configuration was created
          */
@@ -20065,7 +20065,7 @@ export namespace site {
         /**
          * TLS-secured RADIUS proxy settings for the site Mist Tunnel
          */
-        radsec?: pulumi.Input<inputs.site.SettingMxtunnelsRadsec | undefined>;
+        radsec?: pulumi.Input<inputs.site.SettingMxtunnelRadsec | undefined>;
         /**
          * Identifier of the site that owns this Mist Tunnel configuration
          */
@@ -20076,7 +20076,7 @@ export namespace site {
         vlanIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     }
 
-    export interface SettingMxtunnelsAdditionalMxtunnels {
+    export interface SettingMxtunnelAdditionalMxtunnels {
         /**
          * In seconds, used as heartbeat to detect if a tunnel is alive. AP will try another peer after missing N hellos specified by hello_retries
          */
@@ -20092,14 +20092,14 @@ export namespace site {
         /**
          * Tunnel peer clusters used by APs for this additional Mist Tunnel
          */
-        tuntermClusters?: pulumi.Input<pulumi.Input<inputs.site.SettingMxtunnelsAdditionalMxtunnelsTuntermCluster>[] | undefined>;
+        tuntermClusters?: pulumi.Input<pulumi.Input<inputs.site.SettingMxtunnelAdditionalMxtunnelsTuntermCluster>[] | undefined>;
         /**
          * List of VLAN IDs carried by this additional Mist Tunnel
          */
         vlanIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     }
 
-    export interface SettingMxtunnelsAdditionalMxtunnelsTuntermCluster {
+    export interface SettingMxtunnelAdditionalMxtunnelsTuntermCluster {
         /**
          * Peer cluster name used in the site Mist Tunnel configuration
          */
@@ -20110,7 +20110,7 @@ export namespace site {
         tuntermHosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 
-    export interface SettingMxtunnelsAutoPreemption {
+    export interface SettingMxtunnelAutoPreemption {
         /**
          * Scheduled weekday for auto preemption
          */
@@ -20125,7 +20125,7 @@ export namespace site {
         timeOfDay?: pulumi.Input<string | undefined>;
     }
 
-    export interface SettingMxtunnelsCluster {
+    export interface SettingMxtunnelCluster {
         /**
          * Peer cluster name used in the site Mist Tunnel configuration
          */
@@ -20136,15 +20136,15 @@ export namespace site {
         tuntermHosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 
-    export interface SettingMxtunnelsRadsec {
+    export interface SettingMxtunnelRadsec {
         /**
          * RADIUS accounting servers used by the site Mist Tunnel RadSec proxy
          */
-        acctServers?: pulumi.Input<pulumi.Input<inputs.site.SettingMxtunnelsRadsecAcctServer>[] | undefined>;
+        acctServers?: pulumi.Input<pulumi.Input<inputs.site.SettingMxtunnelRadsecAcctServer>[] | undefined>;
         /**
          * RADIUS authentication servers used by the site Mist Tunnel RadSec proxy
          */
-        authServers?: pulumi.Input<pulumi.Input<inputs.site.SettingMxtunnelsRadsecAuthServer>[] | undefined>;
+        authServers?: pulumi.Input<pulumi.Input<inputs.site.SettingMxtunnelRadsecAuthServer>[] | undefined>;
         /**
          * Whether RadSec proxying is enabled for this site Mist Tunnel
          */
@@ -20155,7 +20155,7 @@ export namespace site {
         useMxedge?: pulumi.Input<boolean | undefined>;
     }
 
-    export interface SettingMxtunnelsRadsecAcctServer {
+    export interface SettingMxtunnelRadsecAcctServer {
         /**
          * Address or hostname of the RADIUS accounting server
          */
@@ -20186,7 +20186,7 @@ export namespace site {
         secret: pulumi.Input<string>;
     }
 
-    export interface SettingMxtunnelsRadsecAuthServer {
+    export interface SettingMxtunnelRadsecAuthServer {
         /**
          * Address or hostname of the RADIUS authentication server
          */

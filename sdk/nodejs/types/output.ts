@@ -26585,11 +26585,11 @@ export namespace site {
         rootPassword?: string;
     }
 
-    export interface SettingMxtunnels {
+    export interface SettingMxtunnel {
         /**
          * Additional named Mist Tunnel definitions configured for the site
          */
-        additionalMxtunnels?: {[key: string]: outputs.site.SettingMxtunnelsAdditionalMxtunnels};
+        additionalMxtunnels?: {[key: string]: outputs.site.SettingMxtunnelAdditionalMxtunnels};
         /**
          * AP source subnets allowed to establish Mist Tunnels
          */
@@ -26597,11 +26597,11 @@ export namespace site {
         /**
          * Preemption behavior for restoring preferred tunnel peers after failover
          */
-        autoPreemption?: outputs.site.SettingMxtunnelsAutoPreemption;
+        autoPreemption?: outputs.site.SettingMxtunnelAutoPreemption;
         /**
          * Tunnel peer clusters used by APs for this site Mist Tunnel
          */
-        clusters?: outputs.site.SettingMxtunnelsCluster[];
+        clusters?: outputs.site.SettingMxtunnelCluster[];
         /**
          * Timestamp when the site Mist Tunnel configuration was created
          */
@@ -26617,11 +26617,11 @@ export namespace site {
         /**
          * In seconds, used as heartbeat to detect if a tunnel is alive. AP will try another peer after missing N hellos specified by hello_retries
          */
-        helloInterval?: number;
+        helloInterval: number;
         /**
          * Number of missed hello heartbeats before an AP tries another tunnel peer
          */
-        helloRetries?: number;
+        helloRetries: number;
         /**
          * Tunnel peer hostnames or IP addresses reachable from APs
          */
@@ -26637,7 +26637,7 @@ export namespace site {
         /**
          * 0 to enable MTU, 552-1500 to start MTU with a lower MTU
          */
-        mtu?: number;
+        mtu: number;
         /**
          * Identifier of the org that owns the site Mist Tunnel configuration
          */
@@ -26649,7 +26649,7 @@ export namespace site {
         /**
          * TLS-secured RADIUS proxy settings for the site Mist Tunnel
          */
-        radsec?: outputs.site.SettingMxtunnelsRadsec;
+        radsec?: outputs.site.SettingMxtunnelRadsec;
         /**
          * Identifier of the site that owns this Mist Tunnel configuration
          */
@@ -26660,7 +26660,7 @@ export namespace site {
         vlanIds?: number[];
     }
 
-    export interface SettingMxtunnelsAdditionalMxtunnels {
+    export interface SettingMxtunnelAdditionalMxtunnels {
         /**
          * In seconds, used as heartbeat to detect if a tunnel is alive. AP will try another peer after missing N hellos specified by hello_retries
          */
@@ -26676,14 +26676,14 @@ export namespace site {
         /**
          * Tunnel peer clusters used by APs for this additional Mist Tunnel
          */
-        tuntermClusters?: outputs.site.SettingMxtunnelsAdditionalMxtunnelsTuntermCluster[];
+        tuntermClusters?: outputs.site.SettingMxtunnelAdditionalMxtunnelsTuntermCluster[];
         /**
          * List of VLAN IDs carried by this additional Mist Tunnel
          */
         vlanIds?: number[];
     }
 
-    export interface SettingMxtunnelsAdditionalMxtunnelsTuntermCluster {
+    export interface SettingMxtunnelAdditionalMxtunnelsTuntermCluster {
         /**
          * Peer cluster name used in the site Mist Tunnel configuration
          */
@@ -26694,7 +26694,7 @@ export namespace site {
         tuntermHosts?: string[];
     }
 
-    export interface SettingMxtunnelsAutoPreemption {
+    export interface SettingMxtunnelAutoPreemption {
         /**
          * Scheduled weekday for auto preemption
          */
@@ -26702,14 +26702,14 @@ export namespace site {
         /**
          * Whether auto preemption is enabled
          */
-        enabled?: boolean;
+        enabled: boolean;
         /**
          * Scheduled time of day for auto preemption
          */
         timeOfDay: string;
     }
 
-    export interface SettingMxtunnelsCluster {
+    export interface SettingMxtunnelCluster {
         /**
          * Peer cluster name used in the site Mist Tunnel configuration
          */
@@ -26720,15 +26720,15 @@ export namespace site {
         tuntermHosts?: string[];
     }
 
-    export interface SettingMxtunnelsRadsec {
+    export interface SettingMxtunnelRadsec {
         /**
          * RADIUS accounting servers used by the site Mist Tunnel RadSec proxy
          */
-        acctServers?: outputs.site.SettingMxtunnelsRadsecAcctServer[];
+        acctServers?: outputs.site.SettingMxtunnelRadsecAcctServer[];
         /**
          * RADIUS authentication servers used by the site Mist Tunnel RadSec proxy
          */
-        authServers?: outputs.site.SettingMxtunnelsRadsecAuthServer[];
+        authServers?: outputs.site.SettingMxtunnelRadsecAuthServer[];
         /**
          * Whether RadSec proxying is enabled for this site Mist Tunnel
          */
@@ -26739,7 +26739,7 @@ export namespace site {
         useMxedge?: boolean;
     }
 
-    export interface SettingMxtunnelsRadsecAcctServer {
+    export interface SettingMxtunnelRadsecAcctServer {
         /**
          * Address or hostname of the RADIUS accounting server
          */
@@ -26770,7 +26770,7 @@ export namespace site {
         secret: string;
     }
 
-    export interface SettingMxtunnelsRadsecAuthServer {
+    export interface SettingMxtunnelRadsecAuthServer {
         /**
          * Address or hostname of the RADIUS authentication server
          */

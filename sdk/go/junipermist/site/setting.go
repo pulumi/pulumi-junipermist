@@ -122,7 +122,7 @@ type Setting struct {
 	// Mist Edge management access settings for the site
 	MxedgeMgmt SettingMxedgeMgmtPtrOutput `pulumi:"mxedgeMgmt"`
 	// Site Mist Tunnel configuration
-	Mxtunnels SettingMxtunnelsPtrOutput `pulumi:"mxtunnels"`
+	Mxtunnel SettingMxtunnelPtrOutput `pulumi:"mxtunnel"`
 	// Analytics settings for site occupancy
 	Occupancy SettingOccupancyOutput `pulumi:"occupancy"`
 	// Whether to store the config on AP
@@ -273,7 +273,7 @@ type settingState struct {
 	// Mist Edge management access settings for the site
 	MxedgeMgmt *SettingMxedgeMgmt `pulumi:"mxedgeMgmt"`
 	// Site Mist Tunnel configuration
-	Mxtunnels *SettingMxtunnels `pulumi:"mxtunnels"`
+	Mxtunnel *SettingMxtunnel `pulumi:"mxtunnel"`
 	// Analytics settings for site occupancy
 	Occupancy *SettingOccupancy `pulumi:"occupancy"`
 	// Whether to store the config on AP
@@ -392,7 +392,7 @@ type SettingState struct {
 	// Mist Edge management access settings for the site
 	MxedgeMgmt SettingMxedgeMgmtPtrInput
 	// Site Mist Tunnel configuration
-	Mxtunnels SettingMxtunnelsPtrInput
+	Mxtunnel SettingMxtunnelPtrInput
 	// Analytics settings for site occupancy
 	Occupancy SettingOccupancyPtrInput
 	// Whether to store the config on AP
@@ -513,7 +513,7 @@ type settingArgs struct {
 	// Mist Edge management access settings for the site
 	MxedgeMgmt *SettingMxedgeMgmt `pulumi:"mxedgeMgmt"`
 	// Site Mist Tunnel configuration
-	Mxtunnels *SettingMxtunnels `pulumi:"mxtunnels"`
+	Mxtunnel *SettingMxtunnel `pulumi:"mxtunnel"`
 	// Analytics settings for site occupancy
 	Occupancy *SettingOccupancy `pulumi:"occupancy"`
 	// Whether to store the config on AP
@@ -627,7 +627,7 @@ type SettingArgs struct {
 	// Mist Edge management access settings for the site
 	MxedgeMgmt SettingMxedgeMgmtPtrInput
 	// Site Mist Tunnel configuration
-	Mxtunnels SettingMxtunnelsPtrInput
+	Mxtunnel SettingMxtunnelPtrInput
 	// Analytics settings for site occupancy
 	Occupancy SettingOccupancyPtrInput
 	// Whether to store the config on AP
@@ -897,8 +897,8 @@ func (o SettingOutput) MxedgeMgmt() SettingMxedgeMgmtPtrOutput {
 }
 
 // Site Mist Tunnel configuration
-func (o SettingOutput) Mxtunnels() SettingMxtunnelsPtrOutput {
-	return o.ApplyT(func(v *Setting) SettingMxtunnelsPtrOutput { return v.Mxtunnels }).(SettingMxtunnelsPtrOutput)
+func (o SettingOutput) Mxtunnel() SettingMxtunnelPtrOutput {
+	return o.ApplyT(func(v *Setting) SettingMxtunnelPtrOutput { return v.Mxtunnel }).(SettingMxtunnelPtrOutput)
 }
 
 // Analytics settings for site occupancy

@@ -19,7 +19,7 @@ import com.pulumi.junipermist.site.inputs.SettingJuniperSrxArgs;
 import com.pulumi.junipermist.site.inputs.SettingLedArgs;
 import com.pulumi.junipermist.site.inputs.SettingMarvisArgs;
 import com.pulumi.junipermist.site.inputs.SettingMxedgeMgmtArgs;
-import com.pulumi.junipermist.site.inputs.SettingMxtunnelsArgs;
+import com.pulumi.junipermist.site.inputs.SettingMxtunnelArgs;
 import com.pulumi.junipermist.site.inputs.SettingOccupancyArgs;
 import com.pulumi.junipermist.site.inputs.SettingProxyArgs;
 import com.pulumi.junipermist.site.inputs.SettingRogueArgs;
@@ -404,15 +404,15 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
      * Site Mist Tunnel configuration
      * 
      */
-    @Import(name="mxtunnels")
-    private @Nullable Output<SettingMxtunnelsArgs> mxtunnels;
+    @Import(name="mxtunnel")
+    private @Nullable Output<SettingMxtunnelArgs> mxtunnel;
 
     /**
      * @return Site Mist Tunnel configuration
      * 
      */
-    public Optional<Output<SettingMxtunnelsArgs>> mxtunnels() {
-        return Optional.ofNullable(this.mxtunnels);
+    public Optional<Output<SettingMxtunnelArgs>> mxtunnel() {
+        return Optional.ofNullable(this.mxtunnel);
     }
 
     /**
@@ -951,7 +951,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         this.led = $.led;
         this.marvis = $.marvis;
         this.mxedgeMgmt = $.mxedgeMgmt;
-        this.mxtunnels = $.mxtunnels;
+        this.mxtunnel = $.mxtunnel;
         this.occupancy = $.occupancy;
         this.persistConfigOnDevice = $.persistConfigOnDevice;
         this.proxy = $.proxy;
@@ -1490,24 +1490,24 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mxtunnels Site Mist Tunnel configuration
+         * @param mxtunnel Site Mist Tunnel configuration
          * 
          * @return builder
          * 
          */
-        public Builder mxtunnels(@Nullable Output<SettingMxtunnelsArgs> mxtunnels) {
-            $.mxtunnels = mxtunnels;
+        public Builder mxtunnel(@Nullable Output<SettingMxtunnelArgs> mxtunnel) {
+            $.mxtunnel = mxtunnel;
             return this;
         }
 
         /**
-         * @param mxtunnels Site Mist Tunnel configuration
+         * @param mxtunnel Site Mist Tunnel configuration
          * 
          * @return builder
          * 
          */
-        public Builder mxtunnels(SettingMxtunnelsArgs mxtunnels) {
-            return mxtunnels(Output.of(mxtunnels));
+        public Builder mxtunnel(SettingMxtunnelArgs mxtunnel) {
+            return mxtunnel(Output.of(mxtunnel));
         }
 
         /**

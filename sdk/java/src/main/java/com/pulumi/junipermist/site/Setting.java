@@ -24,7 +24,7 @@ import com.pulumi.junipermist.site.outputs.SettingJuniperSrx;
 import com.pulumi.junipermist.site.outputs.SettingLed;
 import com.pulumi.junipermist.site.outputs.SettingMarvis;
 import com.pulumi.junipermist.site.outputs.SettingMxedgeMgmt;
-import com.pulumi.junipermist.site.outputs.SettingMxtunnels;
+import com.pulumi.junipermist.site.outputs.SettingMxtunnel;
 import com.pulumi.junipermist.site.outputs.SettingOccupancy;
 import com.pulumi.junipermist.site.outputs.SettingProxy;
 import com.pulumi.junipermist.site.outputs.SettingRogue;
@@ -455,15 +455,15 @@ public class Setting extends com.pulumi.resources.CustomResource {
      * Site Mist Tunnel configuration
      * 
      */
-    @Export(name="mxtunnels", refs={SettingMxtunnels.class}, tree="[0]")
-    private Output</* @Nullable */ SettingMxtunnels> mxtunnels;
+    @Export(name="mxtunnel", refs={SettingMxtunnel.class}, tree="[0]")
+    private Output</* @Nullable */ SettingMxtunnel> mxtunnel;
 
     /**
      * @return Site Mist Tunnel configuration
      * 
      */
-    public Output<Optional<SettingMxtunnels>> mxtunnels() {
-        return Codegen.optional(this.mxtunnels);
+    public Output<Optional<SettingMxtunnel>> mxtunnel() {
+        return Codegen.optional(this.mxtunnel);
     }
     /**
      * Analytics settings for site occupancy

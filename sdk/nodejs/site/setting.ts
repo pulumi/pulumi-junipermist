@@ -176,7 +176,7 @@ export class Setting extends pulumi.CustomResource {
     /**
      * Site Mist Tunnel configuration
      */
-    declare public readonly mxtunnels: pulumi.Output<outputs.site.SettingMxtunnels | undefined>;
+    declare public readonly mxtunnel: pulumi.Output<outputs.site.SettingMxtunnel | undefined>;
     /**
      * Analytics settings for site occupancy
      */
@@ -350,7 +350,7 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["led"] = state?.led;
             resourceInputs["marvis"] = state?.marvis;
             resourceInputs["mxedgeMgmt"] = state?.mxedgeMgmt;
-            resourceInputs["mxtunnels"] = state?.mxtunnels;
+            resourceInputs["mxtunnel"] = state?.mxtunnel;
             resourceInputs["occupancy"] = state?.occupancy;
             resourceInputs["persistConfigOnDevice"] = state?.persistConfigOnDevice;
             resourceInputs["proxy"] = state?.proxy;
@@ -412,7 +412,7 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["led"] = args?.led;
             resourceInputs["marvis"] = args?.marvis;
             resourceInputs["mxedgeMgmt"] = args?.mxedgeMgmt;
-            resourceInputs["mxtunnels"] = args?.mxtunnels;
+            resourceInputs["mxtunnel"] = args?.mxtunnel;
             resourceInputs["occupancy"] = args?.occupancy;
             resourceInputs["persistConfigOnDevice"] = args?.persistConfigOnDevice;
             resourceInputs["proxy"] = args?.proxy;
@@ -553,7 +553,7 @@ export interface SettingState {
     /**
      * Site Mist Tunnel configuration
      */
-    mxtunnels?: pulumi.Input<inputs.site.SettingMxtunnels | undefined>;
+    mxtunnel?: pulumi.Input<inputs.site.SettingMxtunnel | undefined>;
     /**
      * Analytics settings for site occupancy
      */
@@ -787,7 +787,7 @@ export interface SettingArgs {
     /**
      * Site Mist Tunnel configuration
      */
-    mxtunnels?: pulumi.Input<inputs.site.SettingMxtunnels | undefined>;
+    mxtunnel?: pulumi.Input<inputs.site.SettingMxtunnel | undefined>;
     /**
      * Analytics settings for site occupancy
      */
