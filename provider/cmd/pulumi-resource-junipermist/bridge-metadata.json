@@ -288,9 +288,6 @@
                                 "networks": {
                                     "maxItemsOne": false
                                 },
-                                "reth_nodes": {
-                                    "maxItemsOne": false
-                                },
                                 "traffic_shaping": {
                                     "fields": {
                                         "class_percentages": {
@@ -316,6 +313,19 @@
                                 },
                                 "wan_probe_override": {
                                     "fields": {
+                                        "hostnames": {
+                                            "maxItemsOne": false
+                                        },
+                                        "http": {
+                                            "fields": {
+                                                "accepted_status_codes": {
+                                                    "maxItemsOne": false
+                                                },
+                                                "urls": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        },
                                         "ip6s": {
                                             "maxItemsOne": false
                                         },
@@ -471,7 +481,26 @@
                                         "hosts": {
                                             "maxItemsOne": false
                                         },
+                                        "internal_ip6s": {
+                                            "maxItemsOne": false
+                                        },
                                         "internal_ips": {
+                                            "maxItemsOne": false
+                                        },
+                                        "probe_hostnames": {
+                                            "maxItemsOne": false
+                                        },
+                                        "probe_http": {
+                                            "fields": {
+                                                "accepted_status_codes": {
+                                                    "maxItemsOne": false
+                                                },
+                                                "urls": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        },
+                                        "probe_ip6s": {
                                             "maxItemsOne": false
                                         },
                                         "probe_ips": {
@@ -493,7 +522,26 @@
                                         "hosts": {
                                             "maxItemsOne": false
                                         },
+                                        "internal_ip6s": {
+                                            "maxItemsOne": false
+                                        },
                                         "internal_ips": {
+                                            "maxItemsOne": false
+                                        },
+                                        "probe_hostnames": {
+                                            "maxItemsOne": false
+                                        },
+                                        "probe_http": {
+                                            "fields": {
+                                                "accepted_status_codes": {
+                                                    "maxItemsOne": false
+                                                },
+                                                "urls": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        },
+                                        "probe_ip6s": {
                                             "maxItemsOne": false
                                         },
                                         "probe_ips": {
@@ -825,6 +873,9 @@
                                         "maxItemsOne": false,
                                         "elem": {
                                             "fields": {
+                                                "categories": {
+                                                    "maxItemsOne": false
+                                                },
                                                 "contents": {
                                                     "maxItemsOne": false
                                                 }
@@ -1230,9 +1281,6 @@
                                 "networks": {
                                     "maxItemsOne": false
                                 },
-                                "reth_nodes": {
-                                    "maxItemsOne": false
-                                },
                                 "traffic_shaping": {
                                     "fields": {
                                         "class_percentages": {
@@ -1258,6 +1306,19 @@
                                 },
                                 "wan_probe_override": {
                                     "fields": {
+                                        "hostnames": {
+                                            "maxItemsOne": false
+                                        },
+                                        "http": {
+                                            "fields": {
+                                                "accepted_status_codes": {
+                                                    "maxItemsOne": false
+                                                },
+                                                "urls": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        },
                                         "ip6s": {
                                             "maxItemsOne": false
                                         },
@@ -1402,7 +1463,26 @@
                                         "hosts": {
                                             "maxItemsOne": false
                                         },
+                                        "internal_ip6s": {
+                                            "maxItemsOne": false
+                                        },
                                         "internal_ips": {
+                                            "maxItemsOne": false
+                                        },
+                                        "probe_hostnames": {
+                                            "maxItemsOne": false
+                                        },
+                                        "probe_http": {
+                                            "fields": {
+                                                "accepted_status_codes": {
+                                                    "maxItemsOne": false
+                                                },
+                                                "urls": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        },
+                                        "probe_ip6s": {
                                             "maxItemsOne": false
                                         },
                                         "probe_ips": {
@@ -1424,7 +1504,26 @@
                                         "hosts": {
                                             "maxItemsOne": false
                                         },
+                                        "internal_ip6s": {
+                                            "maxItemsOne": false
+                                        },
                                         "internal_ips": {
+                                            "maxItemsOne": false
+                                        },
+                                        "probe_hostnames": {
+                                            "maxItemsOne": false
+                                        },
+                                        "probe_http": {
+                                            "fields": {
+                                                "accepted_status_codes": {
+                                                    "maxItemsOne": false
+                                                },
+                                                "urls": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        },
+                                        "probe_ip6s": {
                                             "maxItemsOne": false
                                         },
                                         "probe_ips": {
@@ -1724,6 +1823,9 @@
                                         "maxItemsOne": false,
                                         "elem": {
                                             "fields": {
+                                                "categories": {
+                                                    "maxItemsOne": false
+                                                },
                                                 "contents": {
                                                     "maxItemsOne": false
                                                 }
@@ -2061,9 +2163,6 @@
                                 "networks": {
                                     "maxItemsOne": false
                                 },
-                                "reth_nodes": {
-                                    "maxItemsOne": false
-                                },
                                 "traffic_shaping": {
                                     "fields": {
                                         "class_percentages": {
@@ -2089,6 +2188,19 @@
                                 },
                                 "wan_probe_override": {
                                     "fields": {
+                                        "hostnames": {
+                                            "maxItemsOne": false
+                                        },
+                                        "http": {
+                                            "fields": {
+                                                "accepted_status_codes": {
+                                                    "maxItemsOne": false
+                                                },
+                                                "urls": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        },
                                         "ip6s": {
                                             "maxItemsOne": false
                                         },
@@ -2233,7 +2345,26 @@
                                         "hosts": {
                                             "maxItemsOne": false
                                         },
+                                        "internal_ip6s": {
+                                            "maxItemsOne": false
+                                        },
                                         "internal_ips": {
+                                            "maxItemsOne": false
+                                        },
+                                        "probe_hostnames": {
+                                            "maxItemsOne": false
+                                        },
+                                        "probe_http": {
+                                            "fields": {
+                                                "accepted_status_codes": {
+                                                    "maxItemsOne": false
+                                                },
+                                                "urls": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        },
+                                        "probe_ip6s": {
                                             "maxItemsOne": false
                                         },
                                         "probe_ips": {
@@ -2255,7 +2386,26 @@
                                         "hosts": {
                                             "maxItemsOne": false
                                         },
+                                        "internal_ip6s": {
+                                            "maxItemsOne": false
+                                        },
                                         "internal_ips": {
+                                            "maxItemsOne": false
+                                        },
+                                        "probe_hostnames": {
+                                            "maxItemsOne": false
+                                        },
+                                        "probe_http": {
+                                            "fields": {
+                                                "accepted_status_codes": {
+                                                    "maxItemsOne": false
+                                                },
+                                                "urls": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        },
+                                        "probe_ip6s": {
                                             "maxItemsOne": false
                                         },
                                         "probe_ips": {
@@ -2503,6 +2653,9 @@
                 "current": "junipermist:org/nacEndpoint:NacEndpoint",
                 "fields": {
                     "labels": {
+                        "maxItemsOne": false
+                    },
+                    "site_ids": {
                         "maxItemsOne": false
                     }
                 }
@@ -2887,6 +3040,9 @@
                                         "maxItemsOne": false,
                                         "elem": {
                                             "fields": {
+                                                "categories": {
+                                                    "maxItemsOne": false
+                                                },
                                                 "contents": {
                                                     "maxItemsOne": false
                                                 }
@@ -3025,6 +3181,9 @@
                 "fields": {
                     "macs": {
                         "maxItemsOne": false
+                    },
+                    "usermac_labels": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -3146,6 +3305,9 @@
                         }
                     },
                     "cacerts": {
+                        "maxItemsOne": false
+                    },
+                    "cacerts_configs": {
                         "maxItemsOne": false
                     },
                     "installer": {
@@ -3281,6 +3443,18 @@
                     "oauth2_scopes": {
                         "maxItemsOne": false
                     },
+                    "rules": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "matching": {
+                                    "elem": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "topics": {
                         "maxItemsOne": false
                     }
@@ -3349,6 +3523,13 @@
                     },
                     "coa_servers": {
                         "maxItemsOne": false
+                    },
+                    "dynamic_psk": {
+                        "fields": {
+                            "local_vlan_ids": {
+                                "maxItemsOne": false
+                            }
+                        }
                     },
                     "dynamic_vlan": {
                         "fields": {
@@ -3801,6 +3982,9 @@
                                         "maxItemsOne": false,
                                         "elem": {
                                             "fields": {
+                                                "categories": {
+                                                    "maxItemsOne": false
+                                                },
                                                 "contents": {
                                                     "maxItemsOne": false
                                                 }
@@ -3935,7 +4119,12 @@
                 }
             },
             "mist_site_psk": {
-                "current": "junipermist:site/psk:Psk"
+                "current": "junipermist:site/psk:Psk",
+                "fields": {
+                    "usermac_labels": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "mist_site_setting": {
                 "current": "junipermist:site/setting:Setting",
@@ -4185,6 +4374,18 @@
                     "oauth2_scopes": {
                         "maxItemsOne": false
                     },
+                    "rules": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "matching": {
+                                    "elem": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "topics": {
                         "maxItemsOne": false
                     }
@@ -4253,6 +4454,13 @@
                     },
                     "coa_servers": {
                         "maxItemsOne": false
+                    },
+                    "dynamic_psk": {
+                        "fields": {
+                            "local_vlan_ids": {
+                                "maxItemsOne": false
+                            }
+                        }
                     },
                     "dynamic_vlan": {
                         "fields": {
