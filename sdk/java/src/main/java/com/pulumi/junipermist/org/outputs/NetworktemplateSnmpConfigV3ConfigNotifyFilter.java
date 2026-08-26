@@ -14,6 +14,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworktemplateSnmpConfigV3ConfigNotifyFilter {
     /**
+     * @return CX only. List of SNMP trap group categories included in this filter profile. See https://www.juniper.net/documentation/software/topics/task/configuration/snmp-trap-groups-configuring-junos-nm.html for valid category names.
+     * 
+     */
+    private @Nullable List<String> categories;
+    /**
      * @return OID filter rules in this notification filter profile
      * 
      */
@@ -25,6 +30,13 @@ public final class NetworktemplateSnmpConfigV3ConfigNotifyFilter {
     private @Nullable String profileName;
 
     private NetworktemplateSnmpConfigV3ConfigNotifyFilter() {}
+    /**
+     * @return CX only. List of SNMP trap group categories included in this filter profile. See https://www.juniper.net/documentation/software/topics/task/configuration/snmp-trap-groups-configuring-junos-nm.html for valid category names.
+     * 
+     */
+    public List<String> categories() {
+        return this.categories == null ? List.of() : this.categories;
+    }
     /**
      * @return OID filter rules in this notification filter profile
      * 
@@ -49,15 +61,26 @@ public final class NetworktemplateSnmpConfigV3ConfigNotifyFilter {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> categories;
         private @Nullable List<NetworktemplateSnmpConfigV3ConfigNotifyFilterContent> contents;
         private @Nullable String profileName;
         public Builder() {}
         public Builder(NetworktemplateSnmpConfigV3ConfigNotifyFilter defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.categories = defaults.categories;
     	      this.contents = defaults.contents;
     	      this.profileName = defaults.profileName;
         }
 
+        @CustomType.Setter
+        public Builder categories(@Nullable List<String> categories) {
+
+            this.categories = categories;
+            return this;
+        }
+        public Builder categories(String... categories) {
+            return categories(List.of(categories));
+        }
         @CustomType.Setter
         public Builder contents(@Nullable List<NetworktemplateSnmpConfigV3ConfigNotifyFilterContent> contents) {
 
@@ -75,6 +98,7 @@ public final class NetworktemplateSnmpConfigV3ConfigNotifyFilter {
         }
         public NetworktemplateSnmpConfigV3ConfigNotifyFilter build() {
             final var _resultValue = new NetworktemplateSnmpConfigV3ConfigNotifyFilter();
+            _resultValue.categories = categories;
             _resultValue.contents = contents;
             _resultValue.profileName = profileName;
             return _resultValue;

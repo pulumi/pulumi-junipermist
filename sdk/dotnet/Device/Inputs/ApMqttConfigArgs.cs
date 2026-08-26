@@ -31,6 +31,12 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? BrokerProto { get; set; }
 
         /// <summary>
+        /// Optional catch-all MQTT topic; BLE advertisements matching no AssetFilter are published here
+        /// </summary>
+        [Input("defaultTopic")]
+        public Input<string>? DefaultTopic { get; set; }
+
+        /// <summary>
         /// Whether to enable MQTT publishing
         /// </summary>
         [Input("enabled")]

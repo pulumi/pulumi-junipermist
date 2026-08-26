@@ -18,14 +18,14 @@ public final class DeviceprofileGatewayRoutingPoliciesTermActionsArgs extends co
     public static final DeviceprofileGatewayRoutingPoliciesTermActionsArgs Empty = new DeviceprofileGatewayRoutingPoliciesTermActionsArgs();
 
     /**
-     * Whether to accept routes that match this term
+     * Whether to accept routes that match this term. Precedence is `accept` &gt; `nextTerm` &gt; `nextPolicy`; routes are rejected if all three are false
      * 
      */
     @Import(name="accept")
     private @Nullable Output<Boolean> accept;
 
     /**
-     * @return Whether to accept routes that match this term
+     * @return Whether to accept routes that match this term. Precedence is `accept` &gt; `nextTerm` &gt; `nextPolicy`; routes are rejected if all three are false
      * 
      */
     public Optional<Output<Boolean>> accept() {
@@ -138,6 +138,36 @@ public final class DeviceprofileGatewayRoutingPoliciesTermActionsArgs extends co
     }
 
     /**
+     * When true, continue evaluating the next routing policy in the chain after this term matches; default is false
+     * 
+     */
+    @Import(name="nextPolicy")
+    private @Nullable Output<Boolean> nextPolicy;
+
+    /**
+     * @return When true, continue evaluating the next routing policy in the chain after this term matches; default is false
+     * 
+     */
+    public Optional<Output<Boolean>> nextPolicy() {
+        return Optional.ofNullable(this.nextPolicy);
+    }
+
+    /**
+     * When true, continue evaluating the next term in the same routing policy after this term matches; default is false
+     * 
+     */
+    @Import(name="nextTerm")
+    private @Nullable Output<Boolean> nextTerm;
+
+    /**
+     * @return When true, continue evaluating the next term in the same routing policy after this term matches; default is false
+     * 
+     */
+    public Optional<Output<Boolean>> nextTerm() {
+        return Optional.ofNullable(this.nextTerm);
+    }
+
+    /**
      * AS path values to prepend when this term is used as an export policy
      * 
      */
@@ -163,6 +193,8 @@ public final class DeviceprofileGatewayRoutingPoliciesTermActionsArgs extends co
         this.excludeCommunities = $.excludeCommunities;
         this.exportCommunities = $.exportCommunities;
         this.localPreference = $.localPreference;
+        this.nextPolicy = $.nextPolicy;
+        this.nextTerm = $.nextTerm;
         this.prependAsPaths = $.prependAsPaths;
     }
 
@@ -185,7 +217,7 @@ public final class DeviceprofileGatewayRoutingPoliciesTermActionsArgs extends co
         }
 
         /**
-         * @param accept Whether to accept routes that match this term
+         * @param accept Whether to accept routes that match this term. Precedence is `accept` &gt; `nextTerm` &gt; `nextPolicy`; routes are rejected if all three are false
          * 
          * @return builder
          * 
@@ -196,7 +228,7 @@ public final class DeviceprofileGatewayRoutingPoliciesTermActionsArgs extends co
         }
 
         /**
-         * @param accept Whether to accept routes that match this term
+         * @param accept Whether to accept routes that match this term. Precedence is `accept` &gt; `nextTerm` &gt; `nextPolicy`; routes are rejected if all three are false
          * 
          * @return builder
          * 
@@ -410,6 +442,48 @@ public final class DeviceprofileGatewayRoutingPoliciesTermActionsArgs extends co
          */
         public Builder localPreference(String localPreference) {
             return localPreference(Output.of(localPreference));
+        }
+
+        /**
+         * @param nextPolicy When true, continue evaluating the next routing policy in the chain after this term matches; default is false
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nextPolicy(@Nullable Output<Boolean> nextPolicy) {
+            $.nextPolicy = nextPolicy;
+            return this;
+        }
+
+        /**
+         * @param nextPolicy When true, continue evaluating the next routing policy in the chain after this term matches; default is false
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nextPolicy(Boolean nextPolicy) {
+            return nextPolicy(Output.of(nextPolicy));
+        }
+
+        /**
+         * @param nextTerm When true, continue evaluating the next term in the same routing policy after this term matches; default is false
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nextTerm(@Nullable Output<Boolean> nextTerm) {
+            $.nextTerm = nextTerm;
+            return this;
+        }
+
+        /**
+         * @param nextTerm When true, continue evaluating the next term in the same routing policy after this term matches; default is false
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nextTerm(Boolean nextTerm) {
+            return nextTerm(Output.of(nextTerm));
         }
 
         /**

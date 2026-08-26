@@ -14,9 +14,12 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupContent
     {
         /// <summary>
-        /// Refer to GroupName under access
+        /// VACM group name referenced by this mapping
         /// </summary>
         public readonly string? Group;
+        /// <summary>
+        /// Name of the SNMP security principal mapped to a VACM group
+        /// </summary>
         public readonly string? SecurityName;
 
         [OutputConstructor]

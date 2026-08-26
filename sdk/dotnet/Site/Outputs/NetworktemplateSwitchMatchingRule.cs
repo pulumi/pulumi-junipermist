@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class NetworktemplateSwitchMatchingRule
     {
         /// <summary>
-        /// additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        /// Additional Junos CLI commands applied when this matching rule matches
         /// </summary>
         public readonly ImmutableArray<string> AdditionalConfigCmds;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? DefaultPortUsage;
         /// <summary>
-        /// In-Band Management interface configuration
+        /// In-band management IP configuration applied when this matching rule matches
         /// </summary>
         public readonly Outputs.NetworktemplateSwitchMatchingRuleIpConfig? IpConfig;
         /// <summary>
@@ -46,17 +46,20 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Out-of-Band Management interface configuration
+        /// Out-of-band management IP configuration applied when this matching rule matches
         /// </summary>
         public readonly Outputs.NetworktemplateSwitchMatchingRuleOobIpConfig? OobIpConfig;
         /// <summary>
-        /// Property key is the port name or range (e.g. "ge-0/0/0-10")
+        /// Per-port wired configuration applied when this matching rule matches
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.NetworktemplateSwitchMatchingRulePortConfig>? PortConfig;
         /// <summary>
-        /// Property key is the port mirroring instance name. `PortMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+        /// Port mirroring configuration applied when this matching rule matches
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.NetworktemplateSwitchMatchingRulePortMirroring>? PortMirroring;
+        /// <summary>
+        /// Spanning Tree Protocol configuration applied when this matching rule matches
+        /// </summary>
         public readonly Outputs.NetworktemplateSwitchMatchingRuleStpConfig? StpConfig;
 
         [OutputConstructor]

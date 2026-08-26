@@ -30,8 +30,17 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("isolation")]
         public Input<bool>? Isolation { get; set; }
 
+        /// <summary>
+        /// Required when `Isolation`==`True`. Unique VLAN ID used for client isolation
+        /// </summary>
         [Input("isolationVlanId")]
         public Input<string>? IsolationVlanId { get; set; }
+
+        /// <summary>
+        /// Multicast (IGMP snooping) settings for this VLAN
+        /// </summary>
+        [Input("multicast")]
+        public Input<Inputs.NetworktemplateNetworksMulticastGetArgs>? Multicast { get; set; }
 
         /// <summary>
         /// Optional for pure switching, required when L3 / routing features are used
@@ -45,6 +54,9 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("subnet6")]
         public Input<string>? Subnet6 { get; set; }
 
+        /// <summary>
+        /// VLAN identifier for this switch network
+        /// </summary>
         [Input("vlanId", required: true)]
         public Input<string> VlanId { get; set; } = null!;
 

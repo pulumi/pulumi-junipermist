@@ -13,14 +13,20 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class NetworktemplateSnmpConfigV2cConfig
     {
+        /// <summary>
+        /// Access level for the SNMPv2c community
+        /// </summary>
         public readonly string? Authorization;
         /// <summary>
-        /// Client_list_name here should refer to ClientList above
+        /// SNMP client list name referenced by this community
         /// </summary>
         public readonly string? ClientListName;
+        /// <summary>
+        /// SNMPv2c community string name
+        /// </summary>
         public readonly string? CommunityName;
         /// <summary>
-        /// View name here should be defined in views above
+        /// SNMP view name that must be defined in the views list
         /// </summary>
         public readonly string? View;
 

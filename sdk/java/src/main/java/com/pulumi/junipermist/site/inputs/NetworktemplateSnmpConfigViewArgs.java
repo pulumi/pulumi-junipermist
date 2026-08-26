@@ -17,30 +17,46 @@ public final class NetworktemplateSnmpConfigViewArgs extends com.pulumi.resource
     public static final NetworktemplateSnmpConfigViewArgs Empty = new NetworktemplateSnmpConfigViewArgs();
 
     /**
-     * If the root oid configured is included
+     * Whether the root OID is included in this SNMP view
      * 
      */
     @Import(name="include")
     private @Nullable Output<Boolean> include;
 
     /**
-     * @return If the root oid configured is included
+     * @return Whether the root OID is included in this SNMP view
      * 
      */
     public Optional<Output<Boolean>> include() {
         return Optional.ofNullable(this.include);
     }
 
+    /**
+     * Root OID for this SNMP view
+     * 
+     */
     @Import(name="oid")
     private @Nullable Output<String> oid;
 
+    /**
+     * @return Root OID for this SNMP view
+     * 
+     */
     public Optional<Output<String>> oid() {
         return Optional.ofNullable(this.oid);
     }
 
+    /**
+     * Name of the SNMP MIB view definition
+     * 
+     */
     @Import(name="viewName")
     private @Nullable Output<String> viewName;
 
+    /**
+     * @return Name of the SNMP MIB view definition
+     * 
+     */
     public Optional<Output<String>> viewName() {
         return Optional.ofNullable(this.viewName);
     }
@@ -72,7 +88,7 @@ public final class NetworktemplateSnmpConfigViewArgs extends com.pulumi.resource
         }
 
         /**
-         * @param include If the root oid configured is included
+         * @param include Whether the root OID is included in this SNMP view
          * 
          * @return builder
          * 
@@ -83,7 +99,7 @@ public final class NetworktemplateSnmpConfigViewArgs extends com.pulumi.resource
         }
 
         /**
-         * @param include If the root oid configured is included
+         * @param include Whether the root OID is included in this SNMP view
          * 
          * @return builder
          * 
@@ -92,20 +108,44 @@ public final class NetworktemplateSnmpConfigViewArgs extends com.pulumi.resource
             return include(Output.of(include));
         }
 
+        /**
+         * @param oid Root OID for this SNMP view
+         * 
+         * @return builder
+         * 
+         */
         public Builder oid(@Nullable Output<String> oid) {
             $.oid = oid;
             return this;
         }
 
+        /**
+         * @param oid Root OID for this SNMP view
+         * 
+         * @return builder
+         * 
+         */
         public Builder oid(String oid) {
             return oid(Output.of(oid));
         }
 
+        /**
+         * @param viewName Name of the SNMP MIB view definition
+         * 
+         * @return builder
+         * 
+         */
         public Builder viewName(@Nullable Output<String> viewName) {
             $.viewName = viewName;
             return this;
         }
 
+        /**
+         * @param viewName Name of the SNMP MIB view definition
+         * 
+         * @return builder
+         * 
+         */
         public Builder viewName(String viewName) {
             return viewName(Output.of(viewName));
         }

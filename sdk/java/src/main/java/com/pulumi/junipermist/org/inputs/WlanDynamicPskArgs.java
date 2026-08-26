@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -77,6 +78,21 @@ public final class WlanDynamicPskArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * VLANs to be bridged locally when forwarding to mxtunnel or site mxedge
+     * 
+     */
+    @Import(name="localVlanIds")
+    private @Nullable Output<List<String>> localVlanIds;
+
+    /**
+     * @return VLANs to be bridged locally when forwarding to mxtunnel or site mxedge
+     * 
+     */
+    public Optional<Output<List<String>>> localVlanIds() {
+        return Optional.ofNullable(this.localVlanIds);
+    }
+
+    /**
      * Origin used to retrieve per-user PSKs
      * 
      */
@@ -98,6 +114,7 @@ public final class WlanDynamicPskArgs extends com.pulumi.resources.ResourceArgs 
         this.defaultVlanId = $.defaultVlanId;
         this.enabled = $.enabled;
         this.forceLookup = $.forceLookup;
+        this.localVlanIds = $.localVlanIds;
         this.source = $.source;
     }
 
@@ -201,6 +218,37 @@ public final class WlanDynamicPskArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder forceLookup(Boolean forceLookup) {
             return forceLookup(Output.of(forceLookup));
+        }
+
+        /**
+         * @param localVlanIds VLANs to be bridged locally when forwarding to mxtunnel or site mxedge
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localVlanIds(@Nullable Output<List<String>> localVlanIds) {
+            $.localVlanIds = localVlanIds;
+            return this;
+        }
+
+        /**
+         * @param localVlanIds VLANs to be bridged locally when forwarding to mxtunnel or site mxedge
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localVlanIds(List<String> localVlanIds) {
+            return localVlanIds(Output.of(localVlanIds));
+        }
+
+        /**
+         * @param localVlanIds VLANs to be bridged locally when forwarding to mxtunnel or site mxedge
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localVlanIds(String... localVlanIds) {
+            return localVlanIds(List.of(localVlanIds));
         }
 
         /**

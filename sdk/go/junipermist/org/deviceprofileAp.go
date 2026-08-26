@@ -108,6 +108,8 @@ type DeviceprofileAp struct {
 	UplinkPortConfig DeviceprofileApUplinkPortConfigPtrOutput `pulumi:"uplinkPortConfig"`
 	// Legacy USB integration defaults in this AP profile
 	UsbConfig DeviceprofileApUsbConfigPtrOutput `pulumi:"usbConfig"`
+	// UWB RTLS / OMLOX asset-visibility settings; overrides the site-level `uwbConfig` and is overridden by device-level `uwbConfig`
+	UwbConfig DeviceprofileApUwbConfigPtrOutput `pulumi:"uwbConfig"`
 	// Variable values provided by this AP device profile
 	Vars pulumi.StringMapOutput `pulumi:"vars"`
 	// Zigbee radio and network defaults in this AP profile
@@ -195,6 +197,8 @@ type deviceprofileApState struct {
 	UplinkPortConfig *DeviceprofileApUplinkPortConfig `pulumi:"uplinkPortConfig"`
 	// Legacy USB integration defaults in this AP profile
 	UsbConfig *DeviceprofileApUsbConfig `pulumi:"usbConfig"`
+	// UWB RTLS / OMLOX asset-visibility settings; overrides the site-level `uwbConfig` and is overridden by device-level `uwbConfig`
+	UwbConfig *DeviceprofileApUwbConfig `pulumi:"uwbConfig"`
 	// Variable values provided by this AP device profile
 	Vars map[string]string `pulumi:"vars"`
 	// Zigbee radio and network defaults in this AP profile
@@ -250,6 +254,8 @@ type DeviceprofileApState struct {
 	UplinkPortConfig DeviceprofileApUplinkPortConfigPtrInput
 	// Legacy USB integration defaults in this AP profile
 	UsbConfig DeviceprofileApUsbConfigPtrInput
+	// UWB RTLS / OMLOX asset-visibility settings; overrides the site-level `uwbConfig` and is overridden by device-level `uwbConfig`
+	UwbConfig DeviceprofileApUwbConfigPtrInput
 	// Variable values provided by this AP device profile
 	Vars pulumi.StringMapInput
 	// Zigbee radio and network defaults in this AP profile
@@ -307,6 +313,8 @@ type deviceprofileApArgs struct {
 	UplinkPortConfig *DeviceprofileApUplinkPortConfig `pulumi:"uplinkPortConfig"`
 	// Legacy USB integration defaults in this AP profile
 	UsbConfig *DeviceprofileApUsbConfig `pulumi:"usbConfig"`
+	// UWB RTLS / OMLOX asset-visibility settings; overrides the site-level `uwbConfig` and is overridden by device-level `uwbConfig`
+	UwbConfig *DeviceprofileApUwbConfig `pulumi:"uwbConfig"`
 	// Variable values provided by this AP device profile
 	Vars map[string]string `pulumi:"vars"`
 	// Zigbee radio and network defaults in this AP profile
@@ -361,6 +369,8 @@ type DeviceprofileApArgs struct {
 	UplinkPortConfig DeviceprofileApUplinkPortConfigPtrInput
 	// Legacy USB integration defaults in this AP profile
 	UsbConfig DeviceprofileApUsbConfigPtrInput
+	// UWB RTLS / OMLOX asset-visibility settings; overrides the site-level `uwbConfig` and is overridden by device-level `uwbConfig`
+	UwbConfig DeviceprofileApUwbConfigPtrInput
 	// Variable values provided by this AP device profile
 	Vars pulumi.StringMapInput
 	// Zigbee radio and network defaults in this AP profile
@@ -572,6 +582,11 @@ func (o DeviceprofileApOutput) UplinkPortConfig() DeviceprofileApUplinkPortConfi
 // Legacy USB integration defaults in this AP profile
 func (o DeviceprofileApOutput) UsbConfig() DeviceprofileApUsbConfigPtrOutput {
 	return o.ApplyT(func(v *DeviceprofileAp) DeviceprofileApUsbConfigPtrOutput { return v.UsbConfig }).(DeviceprofileApUsbConfigPtrOutput)
+}
+
+// UWB RTLS / OMLOX asset-visibility settings; overrides the site-level `uwbConfig` and is overridden by device-level `uwbConfig`
+func (o DeviceprofileApOutput) UwbConfig() DeviceprofileApUwbConfigPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileAp) DeviceprofileApUwbConfigPtrOutput { return v.UwbConfig }).(DeviceprofileApUwbConfigPtrOutput)
 }
 
 // Variable values provided by this AP device profile

@@ -2618,6 +2618,8 @@ type ApMqttConfig struct {
 	BrokerPort *int `pulumi:"brokerPort"`
 	// MQTT broker transport protocol
 	BrokerProto *string `pulumi:"brokerProto"`
+	// Optional catch-all MQTT topic; BLE advertisements matching no AssetFilter are published here
+	DefaultTopic *string `pulumi:"defaultTopic"`
 	// Whether to enable MQTT publishing
 	Enabled *bool `pulumi:"enabled"`
 	// Payload format for published messages
@@ -2646,6 +2648,8 @@ type ApMqttConfigArgs struct {
 	BrokerPort pulumi.IntPtrInput `pulumi:"brokerPort"`
 	// MQTT broker transport protocol
 	BrokerProto pulumi.StringPtrInput `pulumi:"brokerProto"`
+	// Optional catch-all MQTT topic; BLE advertisements matching no AssetFilter are published here
+	DefaultTopic pulumi.StringPtrInput `pulumi:"defaultTopic"`
 	// Whether to enable MQTT publishing
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// Payload format for published messages
@@ -2748,6 +2752,11 @@ func (o ApMqttConfigOutput) BrokerProto() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApMqttConfig) *string { return v.BrokerProto }).(pulumi.StringPtrOutput)
 }
 
+// Optional catch-all MQTT topic; BLE advertisements matching no AssetFilter are published here
+func (o ApMqttConfigOutput) DefaultTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApMqttConfig) *string { return v.DefaultTopic }).(pulumi.StringPtrOutput)
+}
+
 // Whether to enable MQTT publishing
 func (o ApMqttConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ApMqttConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -2822,6 +2831,16 @@ func (o ApMqttConfigPtrOutput) BrokerProto() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional catch-all MQTT topic; BLE advertisements matching no AssetFilter are published here
+func (o ApMqttConfigPtrOutput) DefaultTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApMqttConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultTopic
+	}).(pulumi.StringPtrOutput)
+}
+
 // Whether to enable MQTT publishing
 func (o ApMqttConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ApMqttConfig) *bool {
@@ -2879,7 +2898,7 @@ type ApPortConfig struct {
 	MistNac *ApPortConfigMistNac `pulumi:"mistNac"`
 	// If `forwarding`==`mxtunnel`, vlanIds comes from mxtunnel
 	MxTunnelId *string `pulumi:"mxTunnelId"`
-	// If `forwarding`==`siteMxedge`, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+	// If `forwarding`==`siteMxedge`, vlanIds comes from siteMxedge (`mxtunnel` under site setting)
 	MxtunnelName *string `pulumi:"mxtunnelName"`
 	// Authentication mode for this AP Ethernet port
 	PortAuth *string `pulumi:"portAuth"`
@@ -2891,7 +2910,7 @@ type ApPortConfig struct {
 	Radsec *ApPortConfigRadsec `pulumi:"radsec"`
 	// Optional to specify the VLAN ID for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `siteMxedge`.
 	//   * if vlanId is not specified then it will use first one in vlan_ids[] of the mxtunnel.
-	//   * if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+	//   * if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnel` under site setting)
 	VlanId *int `pulumi:"vlanId"`
 	// If `forwarding`==`limited`, comma separated list of additional VLAN IDs allowed on this port
 	VlanIds *string `pulumi:"vlanIds"`
@@ -2929,7 +2948,7 @@ type ApPortConfigArgs struct {
 	MistNac ApPortConfigMistNacPtrInput `pulumi:"mistNac"`
 	// If `forwarding`==`mxtunnel`, vlanIds comes from mxtunnel
 	MxTunnelId pulumi.StringPtrInput `pulumi:"mxTunnelId"`
-	// If `forwarding`==`siteMxedge`, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+	// If `forwarding`==`siteMxedge`, vlanIds comes from siteMxedge (`mxtunnel` under site setting)
 	MxtunnelName pulumi.StringPtrInput `pulumi:"mxtunnelName"`
 	// Authentication mode for this AP Ethernet port
 	PortAuth pulumi.StringPtrInput `pulumi:"portAuth"`
@@ -2941,7 +2960,7 @@ type ApPortConfigArgs struct {
 	Radsec ApPortConfigRadsecPtrInput `pulumi:"radsec"`
 	// Optional to specify the VLAN ID for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `siteMxedge`.
 	//   * if vlanId is not specified then it will use first one in vlan_ids[] of the mxtunnel.
-	//   * if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+	//   * if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnel` under site setting)
 	VlanId pulumi.IntPtrInput `pulumi:"vlanId"`
 	// If `forwarding`==`limited`, comma separated list of additional VLAN IDs allowed on this port
 	VlanIds pulumi.StringPtrInput `pulumi:"vlanIds"`
@@ -3042,7 +3061,7 @@ func (o ApPortConfigOutput) MxTunnelId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApPortConfig) *string { return v.MxTunnelId }).(pulumi.StringPtrOutput)
 }
 
-// If `forwarding`==`siteMxedge`, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+// If `forwarding`==`siteMxedge`, vlanIds comes from siteMxedge (`mxtunnel` under site setting)
 func (o ApPortConfigOutput) MxtunnelName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApPortConfig) *string { return v.MxtunnelName }).(pulumi.StringPtrOutput)
 }
@@ -3069,7 +3088,7 @@ func (o ApPortConfigOutput) Radsec() ApPortConfigRadsecPtrOutput {
 
 // Optional to specify the VLAN ID for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `siteMxedge`.
 //   - if vlanId is not specified then it will use first one in vlan_ids[] of the mxtunnel.
-//   - if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+//   - if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnel` under site setting)
 func (o ApPortConfigOutput) VlanId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApPortConfig) *int { return v.VlanId }).(pulumi.IntPtrOutput)
 }
@@ -6980,6 +6999,219 @@ func (o ApUsbConfigPtrOutput) VlanId() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type ApUwbConfig struct {
+	// Whether UWB RTLS integration is enabled
+	Enabled *bool `pulumi:"enabled"`
+	// RTLS server hostname or IP address
+	Host *string `pulumi:"host"`
+	// RTLS server port number
+	Port *int `pulumi:"port"`
+	// UWB time slot assigned to this AP, 0–15
+	Slot *int `pulumi:"slot"`
+	// UWB integration type. enum: `zigpos`
+	Type *string `pulumi:"type"`
+}
+
+// ApUwbConfigInput is an input type that accepts ApUwbConfigArgs and ApUwbConfigOutput values.
+// You can construct a concrete instance of `ApUwbConfigInput` via:
+//
+//	ApUwbConfigArgs{...}
+type ApUwbConfigInput interface {
+	pulumi.Input
+
+	ToApUwbConfigOutput() ApUwbConfigOutput
+	ToApUwbConfigOutputWithContext(context.Context) ApUwbConfigOutput
+}
+
+type ApUwbConfigArgs struct {
+	// Whether UWB RTLS integration is enabled
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// RTLS server hostname or IP address
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// RTLS server port number
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// UWB time slot assigned to this AP, 0–15
+	Slot pulumi.IntPtrInput `pulumi:"slot"`
+	// UWB integration type. enum: `zigpos`
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (ApUwbConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApUwbConfig)(nil)).Elem()
+}
+
+func (i ApUwbConfigArgs) ToApUwbConfigOutput() ApUwbConfigOutput {
+	return i.ToApUwbConfigOutputWithContext(context.Background())
+}
+
+func (i ApUwbConfigArgs) ToApUwbConfigOutputWithContext(ctx context.Context) ApUwbConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApUwbConfigOutput)
+}
+
+func (i ApUwbConfigArgs) ToApUwbConfigPtrOutput() ApUwbConfigPtrOutput {
+	return i.ToApUwbConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ApUwbConfigArgs) ToApUwbConfigPtrOutputWithContext(ctx context.Context) ApUwbConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApUwbConfigOutput).ToApUwbConfigPtrOutputWithContext(ctx)
+}
+
+// ApUwbConfigPtrInput is an input type that accepts ApUwbConfigArgs, ApUwbConfigPtr and ApUwbConfigPtrOutput values.
+// You can construct a concrete instance of `ApUwbConfigPtrInput` via:
+//
+//	        ApUwbConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApUwbConfigPtrInput interface {
+	pulumi.Input
+
+	ToApUwbConfigPtrOutput() ApUwbConfigPtrOutput
+	ToApUwbConfigPtrOutputWithContext(context.Context) ApUwbConfigPtrOutput
+}
+
+type apUwbConfigPtrType ApUwbConfigArgs
+
+func ApUwbConfigPtr(v *ApUwbConfigArgs) ApUwbConfigPtrInput {
+	return (*apUwbConfigPtrType)(v)
+}
+
+func (*apUwbConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApUwbConfig)(nil)).Elem()
+}
+
+func (i *apUwbConfigPtrType) ToApUwbConfigPtrOutput() ApUwbConfigPtrOutput {
+	return i.ToApUwbConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *apUwbConfigPtrType) ToApUwbConfigPtrOutputWithContext(ctx context.Context) ApUwbConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApUwbConfigPtrOutput)
+}
+
+type ApUwbConfigOutput struct{ *pulumi.OutputState }
+
+func (ApUwbConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApUwbConfig)(nil)).Elem()
+}
+
+func (o ApUwbConfigOutput) ToApUwbConfigOutput() ApUwbConfigOutput {
+	return o
+}
+
+func (o ApUwbConfigOutput) ToApUwbConfigOutputWithContext(ctx context.Context) ApUwbConfigOutput {
+	return o
+}
+
+func (o ApUwbConfigOutput) ToApUwbConfigPtrOutput() ApUwbConfigPtrOutput {
+	return o.ToApUwbConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ApUwbConfigOutput) ToApUwbConfigPtrOutputWithContext(ctx context.Context) ApUwbConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApUwbConfig) *ApUwbConfig {
+		return &v
+	}).(ApUwbConfigPtrOutput)
+}
+
+// Whether UWB RTLS integration is enabled
+func (o ApUwbConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApUwbConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// RTLS server hostname or IP address
+func (o ApUwbConfigOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApUwbConfig) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// RTLS server port number
+func (o ApUwbConfigOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApUwbConfig) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// UWB time slot assigned to this AP, 0–15
+func (o ApUwbConfigOutput) Slot() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApUwbConfig) *int { return v.Slot }).(pulumi.IntPtrOutput)
+}
+
+// UWB integration type. enum: `zigpos`
+func (o ApUwbConfigOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApUwbConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type ApUwbConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ApUwbConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApUwbConfig)(nil)).Elem()
+}
+
+func (o ApUwbConfigPtrOutput) ToApUwbConfigPtrOutput() ApUwbConfigPtrOutput {
+	return o
+}
+
+func (o ApUwbConfigPtrOutput) ToApUwbConfigPtrOutputWithContext(ctx context.Context) ApUwbConfigPtrOutput {
+	return o
+}
+
+func (o ApUwbConfigPtrOutput) Elem() ApUwbConfigOutput {
+	return o.ApplyT(func(v *ApUwbConfig) ApUwbConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ApUwbConfig
+		return ret
+	}).(ApUwbConfigOutput)
+}
+
+// Whether UWB RTLS integration is enabled
+func (o ApUwbConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApUwbConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// RTLS server hostname or IP address
+func (o ApUwbConfigPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApUwbConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// RTLS server port number
+func (o ApUwbConfigPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApUwbConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// UWB time slot assigned to this AP, 0–15
+func (o ApUwbConfigPtrOutput) Slot() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApUwbConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Slot
+	}).(pulumi.IntPtrOutput)
+}
+
+// UWB integration type. enum: `zigpos`
+func (o ApUwbConfigPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApUwbConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 type ApZigbeeConfig struct {
 	// Join policy for new Zigbee devices on this AP
 	AllowJoin *string `pulumi:"allowJoin"`
@@ -8668,6 +8900,8 @@ type GatewayGatewayMgmt struct {
 	ConfigRevertTimer *int `pulumi:"configRevertTimer"`
 	// For SSR and SRX, disable console port
 	DisableConsole *bool `pulumi:"disableConsole"`
+	// For SRX only, disable IDP packet capture
+	DisableIdpPcap *bool `pulumi:"disableIdpPcap"`
 	// For SSR and SRX, disable management interface
 	DisableOob *bool `pulumi:"disableOob"`
 	// For SSR and SRX, disable usb interface
@@ -8712,6 +8946,8 @@ type GatewayGatewayMgmtArgs struct {
 	ConfigRevertTimer pulumi.IntPtrInput `pulumi:"configRevertTimer"`
 	// For SSR and SRX, disable console port
 	DisableConsole pulumi.BoolPtrInput `pulumi:"disableConsole"`
+	// For SRX only, disable IDP packet capture
+	DisableIdpPcap pulumi.BoolPtrInput `pulumi:"disableIdpPcap"`
 	// For SSR and SRX, disable management interface
 	DisableOob pulumi.BoolPtrInput `pulumi:"disableOob"`
 	// For SSR and SRX, disable usb interface
@@ -8837,6 +9073,11 @@ func (o GatewayGatewayMgmtOutput) ConfigRevertTimer() pulumi.IntPtrOutput {
 // For SSR and SRX, disable console port
 func (o GatewayGatewayMgmtOutput) DisableConsole() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GatewayGatewayMgmt) *bool { return v.DisableConsole }).(pulumi.BoolPtrOutput)
+}
+
+// For SRX only, disable IDP packet capture
+func (o GatewayGatewayMgmtOutput) DisableIdpPcap() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewayGatewayMgmt) *bool { return v.DisableIdpPcap }).(pulumi.BoolPtrOutput)
 }
 
 // For SSR and SRX, disable management interface
@@ -8965,6 +9206,16 @@ func (o GatewayGatewayMgmtPtrOutput) DisableConsole() pulumi.BoolPtrOutput {
 			return nil
 		}
 		return v.DisableConsole
+	}).(pulumi.BoolPtrOutput)
+}
+
+// For SRX only, disable IDP packet capture
+func (o GatewayGatewayMgmtPtrOutput) DisableIdpPcap() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GatewayGatewayMgmt) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableIdpPcap
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -13111,8 +13362,6 @@ type GatewayPortConfig struct {
 	RethIdx *string `pulumi:"rethIdx"`
 	// If HA mode. Node associated with the redundant Ethernet interface
 	RethNode *string `pulumi:"rethNode"`
-	// If HA mode and for SSR only. Per-network node assignment used for VLAN-based redundancy
-	RethNodes []string `pulumi:"rethNodes"`
 	// Link speed configured on the port
 	Speed *string `pulumi:"speed"`
 	// When SSR is running as VM, this is required on certain hosting platforms
@@ -13221,8 +13470,6 @@ type GatewayPortConfigArgs struct {
 	RethIdx pulumi.StringPtrInput `pulumi:"rethIdx"`
 	// If HA mode. Node associated with the redundant Ethernet interface
 	RethNode pulumi.StringPtrInput `pulumi:"rethNode"`
-	// If HA mode and for SSR only. Per-network node assignment used for VLAN-based redundancy
-	RethNodes pulumi.StringArrayInput `pulumi:"rethNodes"`
 	// Link speed configured on the port
 	Speed pulumi.StringPtrInput `pulumi:"speed"`
 	// When SSR is running as VM, this is required on certain hosting platforms
@@ -13458,11 +13705,6 @@ func (o GatewayPortConfigOutput) RethIdx() pulumi.StringPtrOutput {
 // If HA mode. Node associated with the redundant Ethernet interface
 func (o GatewayPortConfigOutput) RethNode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayPortConfig) *string { return v.RethNode }).(pulumi.StringPtrOutput)
-}
-
-// If HA mode and for SSR only. Per-network node assignment used for VLAN-based redundancy
-func (o GatewayPortConfigOutput) RethNodes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GatewayPortConfig) []string { return v.RethNodes }).(pulumi.StringArrayOutput)
 }
 
 // Link speed configured on the port
@@ -14632,6 +14874,10 @@ func (o GatewayPortConfigWanExtraRoutesMapOutput) MapIndex(k pulumi.StringInput)
 }
 
 type GatewayPortConfigWanProbeOverride struct {
+	// List of hostnames used as probe destinations; applicable for both IPv4 and IPv6
+	Hostnames []string `pulumi:"hostnames"`
+	// HTTP probe settings; success from any ICMP or HTTP probe indicates the WAN is up
+	Http *GatewayPortConfigWanProbeOverrideHttp `pulumi:"http"`
 	// List of IPv6 probe host addresses used by this WAN override
 	Ip6s []string `pulumi:"ip6s"`
 	// List of IPv4 probe host addresses used by this WAN override
@@ -14652,6 +14898,10 @@ type GatewayPortConfigWanProbeOverrideInput interface {
 }
 
 type GatewayPortConfigWanProbeOverrideArgs struct {
+	// List of hostnames used as probe destinations; applicable for both IPv4 and IPv6
+	Hostnames pulumi.StringArrayInput `pulumi:"hostnames"`
+	// HTTP probe settings; success from any ICMP or HTTP probe indicates the WAN is up
+	Http GatewayPortConfigWanProbeOverrideHttpPtrInput `pulumi:"http"`
 	// List of IPv6 probe host addresses used by this WAN override
 	Ip6s pulumi.StringArrayInput `pulumi:"ip6s"`
 	// List of IPv4 probe host addresses used by this WAN override
@@ -14737,6 +14987,16 @@ func (o GatewayPortConfigWanProbeOverrideOutput) ToGatewayPortConfigWanProbeOver
 	}).(GatewayPortConfigWanProbeOverridePtrOutput)
 }
 
+// List of hostnames used as probe destinations; applicable for both IPv4 and IPv6
+func (o GatewayPortConfigWanProbeOverrideOutput) Hostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GatewayPortConfigWanProbeOverride) []string { return v.Hostnames }).(pulumi.StringArrayOutput)
+}
+
+// HTTP probe settings; success from any ICMP or HTTP probe indicates the WAN is up
+func (o GatewayPortConfigWanProbeOverrideOutput) Http() GatewayPortConfigWanProbeOverrideHttpPtrOutput {
+	return o.ApplyT(func(v GatewayPortConfigWanProbeOverride) *GatewayPortConfigWanProbeOverrideHttp { return v.Http }).(GatewayPortConfigWanProbeOverrideHttpPtrOutput)
+}
+
 // List of IPv6 probe host addresses used by this WAN override
 func (o GatewayPortConfigWanProbeOverrideOutput) Ip6s() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewayPortConfigWanProbeOverride) []string { return v.Ip6s }).(pulumi.StringArrayOutput)
@@ -14776,6 +15036,26 @@ func (o GatewayPortConfigWanProbeOverridePtrOutput) Elem() GatewayPortConfigWanP
 	}).(GatewayPortConfigWanProbeOverrideOutput)
 }
 
+// List of hostnames used as probe destinations; applicable for both IPv4 and IPv6
+func (o GatewayPortConfigWanProbeOverridePtrOutput) Hostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GatewayPortConfigWanProbeOverride) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Hostnames
+	}).(pulumi.StringArrayOutput)
+}
+
+// HTTP probe settings; success from any ICMP or HTTP probe indicates the WAN is up
+func (o GatewayPortConfigWanProbeOverridePtrOutput) Http() GatewayPortConfigWanProbeOverrideHttpPtrOutput {
+	return o.ApplyT(func(v *GatewayPortConfigWanProbeOverride) *GatewayPortConfigWanProbeOverrideHttp {
+		if v == nil {
+			return nil
+		}
+		return v.Http
+	}).(GatewayPortConfigWanProbeOverrideHttpPtrOutput)
+}
+
 // List of IPv6 probe host addresses used by this WAN override
 func (o GatewayPortConfigWanProbeOverridePtrOutput) Ip6s() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GatewayPortConfigWanProbeOverride) []string {
@@ -14804,6 +15084,162 @@ func (o GatewayPortConfigWanProbeOverridePtrOutput) ProbeProfile() pulumi.String
 		}
 		return v.ProbeProfile
 	}).(pulumi.StringPtrOutput)
+}
+
+type GatewayPortConfigWanProbeOverrideHttp struct {
+	// HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+	AcceptedStatusCodes []int `pulumi:"acceptedStatusCodes"`
+	// HTTP or HTTPS URLs to probe
+	Urls []string `pulumi:"urls"`
+}
+
+// GatewayPortConfigWanProbeOverrideHttpInput is an input type that accepts GatewayPortConfigWanProbeOverrideHttpArgs and GatewayPortConfigWanProbeOverrideHttpOutput values.
+// You can construct a concrete instance of `GatewayPortConfigWanProbeOverrideHttpInput` via:
+//
+//	GatewayPortConfigWanProbeOverrideHttpArgs{...}
+type GatewayPortConfigWanProbeOverrideHttpInput interface {
+	pulumi.Input
+
+	ToGatewayPortConfigWanProbeOverrideHttpOutput() GatewayPortConfigWanProbeOverrideHttpOutput
+	ToGatewayPortConfigWanProbeOverrideHttpOutputWithContext(context.Context) GatewayPortConfigWanProbeOverrideHttpOutput
+}
+
+type GatewayPortConfigWanProbeOverrideHttpArgs struct {
+	// HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+	AcceptedStatusCodes pulumi.IntArrayInput `pulumi:"acceptedStatusCodes"`
+	// HTTP or HTTPS URLs to probe
+	Urls pulumi.StringArrayInput `pulumi:"urls"`
+}
+
+func (GatewayPortConfigWanProbeOverrideHttpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayPortConfigWanProbeOverrideHttp)(nil)).Elem()
+}
+
+func (i GatewayPortConfigWanProbeOverrideHttpArgs) ToGatewayPortConfigWanProbeOverrideHttpOutput() GatewayPortConfigWanProbeOverrideHttpOutput {
+	return i.ToGatewayPortConfigWanProbeOverrideHttpOutputWithContext(context.Background())
+}
+
+func (i GatewayPortConfigWanProbeOverrideHttpArgs) ToGatewayPortConfigWanProbeOverrideHttpOutputWithContext(ctx context.Context) GatewayPortConfigWanProbeOverrideHttpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayPortConfigWanProbeOverrideHttpOutput)
+}
+
+func (i GatewayPortConfigWanProbeOverrideHttpArgs) ToGatewayPortConfigWanProbeOverrideHttpPtrOutput() GatewayPortConfigWanProbeOverrideHttpPtrOutput {
+	return i.ToGatewayPortConfigWanProbeOverrideHttpPtrOutputWithContext(context.Background())
+}
+
+func (i GatewayPortConfigWanProbeOverrideHttpArgs) ToGatewayPortConfigWanProbeOverrideHttpPtrOutputWithContext(ctx context.Context) GatewayPortConfigWanProbeOverrideHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayPortConfigWanProbeOverrideHttpOutput).ToGatewayPortConfigWanProbeOverrideHttpPtrOutputWithContext(ctx)
+}
+
+// GatewayPortConfigWanProbeOverrideHttpPtrInput is an input type that accepts GatewayPortConfigWanProbeOverrideHttpArgs, GatewayPortConfigWanProbeOverrideHttpPtr and GatewayPortConfigWanProbeOverrideHttpPtrOutput values.
+// You can construct a concrete instance of `GatewayPortConfigWanProbeOverrideHttpPtrInput` via:
+//
+//	        GatewayPortConfigWanProbeOverrideHttpArgs{...}
+//
+//	or:
+//
+//	        nil
+type GatewayPortConfigWanProbeOverrideHttpPtrInput interface {
+	pulumi.Input
+
+	ToGatewayPortConfigWanProbeOverrideHttpPtrOutput() GatewayPortConfigWanProbeOverrideHttpPtrOutput
+	ToGatewayPortConfigWanProbeOverrideHttpPtrOutputWithContext(context.Context) GatewayPortConfigWanProbeOverrideHttpPtrOutput
+}
+
+type gatewayPortConfigWanProbeOverrideHttpPtrType GatewayPortConfigWanProbeOverrideHttpArgs
+
+func GatewayPortConfigWanProbeOverrideHttpPtr(v *GatewayPortConfigWanProbeOverrideHttpArgs) GatewayPortConfigWanProbeOverrideHttpPtrInput {
+	return (*gatewayPortConfigWanProbeOverrideHttpPtrType)(v)
+}
+
+func (*gatewayPortConfigWanProbeOverrideHttpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayPortConfigWanProbeOverrideHttp)(nil)).Elem()
+}
+
+func (i *gatewayPortConfigWanProbeOverrideHttpPtrType) ToGatewayPortConfigWanProbeOverrideHttpPtrOutput() GatewayPortConfigWanProbeOverrideHttpPtrOutput {
+	return i.ToGatewayPortConfigWanProbeOverrideHttpPtrOutputWithContext(context.Background())
+}
+
+func (i *gatewayPortConfigWanProbeOverrideHttpPtrType) ToGatewayPortConfigWanProbeOverrideHttpPtrOutputWithContext(ctx context.Context) GatewayPortConfigWanProbeOverrideHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayPortConfigWanProbeOverrideHttpPtrOutput)
+}
+
+type GatewayPortConfigWanProbeOverrideHttpOutput struct{ *pulumi.OutputState }
+
+func (GatewayPortConfigWanProbeOverrideHttpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayPortConfigWanProbeOverrideHttp)(nil)).Elem()
+}
+
+func (o GatewayPortConfigWanProbeOverrideHttpOutput) ToGatewayPortConfigWanProbeOverrideHttpOutput() GatewayPortConfigWanProbeOverrideHttpOutput {
+	return o
+}
+
+func (o GatewayPortConfigWanProbeOverrideHttpOutput) ToGatewayPortConfigWanProbeOverrideHttpOutputWithContext(ctx context.Context) GatewayPortConfigWanProbeOverrideHttpOutput {
+	return o
+}
+
+func (o GatewayPortConfigWanProbeOverrideHttpOutput) ToGatewayPortConfigWanProbeOverrideHttpPtrOutput() GatewayPortConfigWanProbeOverrideHttpPtrOutput {
+	return o.ToGatewayPortConfigWanProbeOverrideHttpPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayPortConfigWanProbeOverrideHttpOutput) ToGatewayPortConfigWanProbeOverrideHttpPtrOutputWithContext(ctx context.Context) GatewayPortConfigWanProbeOverrideHttpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayPortConfigWanProbeOverrideHttp) *GatewayPortConfigWanProbeOverrideHttp {
+		return &v
+	}).(GatewayPortConfigWanProbeOverrideHttpPtrOutput)
+}
+
+// HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+func (o GatewayPortConfigWanProbeOverrideHttpOutput) AcceptedStatusCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GatewayPortConfigWanProbeOverrideHttp) []int { return v.AcceptedStatusCodes }).(pulumi.IntArrayOutput)
+}
+
+// HTTP or HTTPS URLs to probe
+func (o GatewayPortConfigWanProbeOverrideHttpOutput) Urls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GatewayPortConfigWanProbeOverrideHttp) []string { return v.Urls }).(pulumi.StringArrayOutput)
+}
+
+type GatewayPortConfigWanProbeOverrideHttpPtrOutput struct{ *pulumi.OutputState }
+
+func (GatewayPortConfigWanProbeOverrideHttpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayPortConfigWanProbeOverrideHttp)(nil)).Elem()
+}
+
+func (o GatewayPortConfigWanProbeOverrideHttpPtrOutput) ToGatewayPortConfigWanProbeOverrideHttpPtrOutput() GatewayPortConfigWanProbeOverrideHttpPtrOutput {
+	return o
+}
+
+func (o GatewayPortConfigWanProbeOverrideHttpPtrOutput) ToGatewayPortConfigWanProbeOverrideHttpPtrOutputWithContext(ctx context.Context) GatewayPortConfigWanProbeOverrideHttpPtrOutput {
+	return o
+}
+
+func (o GatewayPortConfigWanProbeOverrideHttpPtrOutput) Elem() GatewayPortConfigWanProbeOverrideHttpOutput {
+	return o.ApplyT(func(v *GatewayPortConfigWanProbeOverrideHttp) GatewayPortConfigWanProbeOverrideHttp {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayPortConfigWanProbeOverrideHttp
+		return ret
+	}).(GatewayPortConfigWanProbeOverrideHttpOutput)
+}
+
+// HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+func (o GatewayPortConfigWanProbeOverrideHttpPtrOutput) AcceptedStatusCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *GatewayPortConfigWanProbeOverrideHttp) []int {
+		if v == nil {
+			return nil
+		}
+		return v.AcceptedStatusCodes
+	}).(pulumi.IntArrayOutput)
+}
+
+// HTTP or HTTPS URLs to probe
+func (o GatewayPortConfigWanProbeOverrideHttpPtrOutput) Urls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GatewayPortConfigWanProbeOverrideHttp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Urls
+	}).(pulumi.StringArrayOutput)
 }
 
 type GatewayPortConfigWanSourceNat struct {
@@ -15535,7 +15971,7 @@ func (o GatewayRoutingPoliciesTermArrayOutput) Index(i pulumi.IntInput) GatewayR
 }
 
 type GatewayRoutingPoliciesTermActions struct {
-	// Whether to accept routes that match this term
+	// Whether to accept routes that match this term. Precedence is `accept` > `nextTerm` > `nextPolicy`; routes are rejected if all three are false
 	Accept *bool `pulumi:"accept"`
 	// BGP communities to add to routes that match this term
 	AddCommunities []string `pulumi:"addCommunities"`
@@ -15551,6 +15987,10 @@ type GatewayRoutingPoliciesTermActions struct {
 	ExportCommunities []string `pulumi:"exportCommunities"`
 	// Preference value to set when this term is used as an import policy
 	LocalPreference *string `pulumi:"localPreference"`
+	// When true, continue evaluating the next routing policy in the chain after this term matches; default is false
+	NextPolicy *bool `pulumi:"nextPolicy"`
+	// When true, continue evaluating the next term in the same routing policy after this term matches; default is false
+	NextTerm *bool `pulumi:"nextTerm"`
 	// AS path values to prepend when this term is used as an export policy
 	PrependAsPaths []string `pulumi:"prependAsPaths"`
 }
@@ -15567,7 +16007,7 @@ type GatewayRoutingPoliciesTermActionsInput interface {
 }
 
 type GatewayRoutingPoliciesTermActionsArgs struct {
-	// Whether to accept routes that match this term
+	// Whether to accept routes that match this term. Precedence is `accept` > `nextTerm` > `nextPolicy`; routes are rejected if all three are false
 	Accept pulumi.BoolPtrInput `pulumi:"accept"`
 	// BGP communities to add to routes that match this term
 	AddCommunities pulumi.StringArrayInput `pulumi:"addCommunities"`
@@ -15583,6 +16023,10 @@ type GatewayRoutingPoliciesTermActionsArgs struct {
 	ExportCommunities pulumi.StringArrayInput `pulumi:"exportCommunities"`
 	// Preference value to set when this term is used as an import policy
 	LocalPreference pulumi.StringPtrInput `pulumi:"localPreference"`
+	// When true, continue evaluating the next routing policy in the chain after this term matches; default is false
+	NextPolicy pulumi.BoolPtrInput `pulumi:"nextPolicy"`
+	// When true, continue evaluating the next term in the same routing policy after this term matches; default is false
+	NextTerm pulumi.BoolPtrInput `pulumi:"nextTerm"`
 	// AS path values to prepend when this term is used as an export policy
 	PrependAsPaths pulumi.StringArrayInput `pulumi:"prependAsPaths"`
 }
@@ -15664,7 +16108,7 @@ func (o GatewayRoutingPoliciesTermActionsOutput) ToGatewayRoutingPoliciesTermAct
 	}).(GatewayRoutingPoliciesTermActionsPtrOutput)
 }
 
-// Whether to accept routes that match this term
+// Whether to accept routes that match this term. Precedence is `accept` > `nextTerm` > `nextPolicy`; routes are rejected if all three are false
 func (o GatewayRoutingPoliciesTermActionsOutput) Accept() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GatewayRoutingPoliciesTermActions) *bool { return v.Accept }).(pulumi.BoolPtrOutput)
 }
@@ -15704,6 +16148,16 @@ func (o GatewayRoutingPoliciesTermActionsOutput) LocalPreference() pulumi.String
 	return o.ApplyT(func(v GatewayRoutingPoliciesTermActions) *string { return v.LocalPreference }).(pulumi.StringPtrOutput)
 }
 
+// When true, continue evaluating the next routing policy in the chain after this term matches; default is false
+func (o GatewayRoutingPoliciesTermActionsOutput) NextPolicy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewayRoutingPoliciesTermActions) *bool { return v.NextPolicy }).(pulumi.BoolPtrOutput)
+}
+
+// When true, continue evaluating the next term in the same routing policy after this term matches; default is false
+func (o GatewayRoutingPoliciesTermActionsOutput) NextTerm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewayRoutingPoliciesTermActions) *bool { return v.NextTerm }).(pulumi.BoolPtrOutput)
+}
+
 // AS path values to prepend when this term is used as an export policy
 func (o GatewayRoutingPoliciesTermActionsOutput) PrependAsPaths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewayRoutingPoliciesTermActions) []string { return v.PrependAsPaths }).(pulumi.StringArrayOutput)
@@ -15733,7 +16187,7 @@ func (o GatewayRoutingPoliciesTermActionsPtrOutput) Elem() GatewayRoutingPolicie
 	}).(GatewayRoutingPoliciesTermActionsOutput)
 }
 
-// Whether to accept routes that match this term
+// Whether to accept routes that match this term. Precedence is `accept` > `nextTerm` > `nextPolicy`; routes are rejected if all three are false
 func (o GatewayRoutingPoliciesTermActionsPtrOutput) Accept() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GatewayRoutingPoliciesTermActions) *bool {
 		if v == nil {
@@ -15811,6 +16265,26 @@ func (o GatewayRoutingPoliciesTermActionsPtrOutput) LocalPreference() pulumi.Str
 		}
 		return v.LocalPreference
 	}).(pulumi.StringPtrOutput)
+}
+
+// When true, continue evaluating the next routing policy in the chain after this term matches; default is false
+func (o GatewayRoutingPoliciesTermActionsPtrOutput) NextPolicy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GatewayRoutingPoliciesTermActions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NextPolicy
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When true, continue evaluating the next term in the same routing policy after this term matches; default is false
+func (o GatewayRoutingPoliciesTermActionsPtrOutput) NextTerm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GatewayRoutingPoliciesTermActions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NextTerm
+	}).(pulumi.BoolPtrOutput)
 }
 
 // AS path values to prepend when this term is used as an export policy
@@ -19612,8 +20086,16 @@ func (o GatewayTunnelConfigsIpsecProposalArrayOutput) Index(i pulumi.IntInput) G
 type GatewayTunnelConfigsPrimary struct {
 	// Remote gateway host addresses for this tunnel node
 	Hosts []string `pulumi:"hosts"`
+	// IPv6 addresses configured on this tunnel node
+	InternalIp6s []string `pulumi:"internalIp6s"`
 	// Internal IP addresses configured on this tunnel node
 	InternalIps []string `pulumi:"internalIps"`
+	// Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+	ProbeHostnames []string `pulumi:"probeHostnames"`
+	// HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+	ProbeHttp *GatewayTunnelConfigsPrimaryProbeHttp `pulumi:"probeHttp"`
+	// IPv6 ICMP probe addresses used to monitor this tunnel node
+	ProbeIp6s []string `pulumi:"probeIp6s"`
 	// Health-check IP addresses used to monitor this tunnel node
 	ProbeIps []string `pulumi:"probeIps"`
 	// IKE identities expected from this tunnel node
@@ -19636,8 +20118,16 @@ type GatewayTunnelConfigsPrimaryInput interface {
 type GatewayTunnelConfigsPrimaryArgs struct {
 	// Remote gateway host addresses for this tunnel node
 	Hosts pulumi.StringArrayInput `pulumi:"hosts"`
+	// IPv6 addresses configured on this tunnel node
+	InternalIp6s pulumi.StringArrayInput `pulumi:"internalIp6s"`
 	// Internal IP addresses configured on this tunnel node
 	InternalIps pulumi.StringArrayInput `pulumi:"internalIps"`
+	// Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+	ProbeHostnames pulumi.StringArrayInput `pulumi:"probeHostnames"`
+	// HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+	ProbeHttp GatewayTunnelConfigsPrimaryProbeHttpPtrInput `pulumi:"probeHttp"`
+	// IPv6 ICMP probe addresses used to monitor this tunnel node
+	ProbeIp6s pulumi.StringArrayInput `pulumi:"probeIp6s"`
 	// Health-check IP addresses used to monitor this tunnel node
 	ProbeIps pulumi.StringArrayInput `pulumi:"probeIps"`
 	// IKE identities expected from this tunnel node
@@ -19728,9 +20218,29 @@ func (o GatewayTunnelConfigsPrimaryOutput) Hosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewayTunnelConfigsPrimary) []string { return v.Hosts }).(pulumi.StringArrayOutput)
 }
 
+// IPv6 addresses configured on this tunnel node
+func (o GatewayTunnelConfigsPrimaryOutput) InternalIp6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GatewayTunnelConfigsPrimary) []string { return v.InternalIp6s }).(pulumi.StringArrayOutput)
+}
+
 // Internal IP addresses configured on this tunnel node
 func (o GatewayTunnelConfigsPrimaryOutput) InternalIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewayTunnelConfigsPrimary) []string { return v.InternalIps }).(pulumi.StringArrayOutput)
+}
+
+// Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+func (o GatewayTunnelConfigsPrimaryOutput) ProbeHostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GatewayTunnelConfigsPrimary) []string { return v.ProbeHostnames }).(pulumi.StringArrayOutput)
+}
+
+// HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+func (o GatewayTunnelConfigsPrimaryOutput) ProbeHttp() GatewayTunnelConfigsPrimaryProbeHttpPtrOutput {
+	return o.ApplyT(func(v GatewayTunnelConfigsPrimary) *GatewayTunnelConfigsPrimaryProbeHttp { return v.ProbeHttp }).(GatewayTunnelConfigsPrimaryProbeHttpPtrOutput)
+}
+
+// IPv6 ICMP probe addresses used to monitor this tunnel node
+func (o GatewayTunnelConfigsPrimaryOutput) ProbeIp6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GatewayTunnelConfigsPrimary) []string { return v.ProbeIp6s }).(pulumi.StringArrayOutput)
 }
 
 // Health-check IP addresses used to monitor this tunnel node
@@ -19782,6 +20292,16 @@ func (o GatewayTunnelConfigsPrimaryPtrOutput) Hosts() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// IPv6 addresses configured on this tunnel node
+func (o GatewayTunnelConfigsPrimaryPtrOutput) InternalIp6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GatewayTunnelConfigsPrimary) []string {
+		if v == nil {
+			return nil
+		}
+		return v.InternalIp6s
+	}).(pulumi.StringArrayOutput)
+}
+
 // Internal IP addresses configured on this tunnel node
 func (o GatewayTunnelConfigsPrimaryPtrOutput) InternalIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GatewayTunnelConfigsPrimary) []string {
@@ -19789,6 +20309,36 @@ func (o GatewayTunnelConfigsPrimaryPtrOutput) InternalIps() pulumi.StringArrayOu
 			return nil
 		}
 		return v.InternalIps
+	}).(pulumi.StringArrayOutput)
+}
+
+// Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+func (o GatewayTunnelConfigsPrimaryPtrOutput) ProbeHostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GatewayTunnelConfigsPrimary) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ProbeHostnames
+	}).(pulumi.StringArrayOutput)
+}
+
+// HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+func (o GatewayTunnelConfigsPrimaryPtrOutput) ProbeHttp() GatewayTunnelConfigsPrimaryProbeHttpPtrOutput {
+	return o.ApplyT(func(v *GatewayTunnelConfigsPrimary) *GatewayTunnelConfigsPrimaryProbeHttp {
+		if v == nil {
+			return nil
+		}
+		return v.ProbeHttp
+	}).(GatewayTunnelConfigsPrimaryProbeHttpPtrOutput)
+}
+
+// IPv6 ICMP probe addresses used to monitor this tunnel node
+func (o GatewayTunnelConfigsPrimaryPtrOutput) ProbeIp6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GatewayTunnelConfigsPrimary) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ProbeIp6s
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -19819,6 +20369,162 @@ func (o GatewayTunnelConfigsPrimaryPtrOutput) WanNames() pulumi.StringArrayOutpu
 			return nil
 		}
 		return v.WanNames
+	}).(pulumi.StringArrayOutput)
+}
+
+type GatewayTunnelConfigsPrimaryProbeHttp struct {
+	// HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+	AcceptedStatusCodes []int `pulumi:"acceptedStatusCodes"`
+	// HTTP or HTTPS URLs to probe
+	Urls []string `pulumi:"urls"`
+}
+
+// GatewayTunnelConfigsPrimaryProbeHttpInput is an input type that accepts GatewayTunnelConfigsPrimaryProbeHttpArgs and GatewayTunnelConfigsPrimaryProbeHttpOutput values.
+// You can construct a concrete instance of `GatewayTunnelConfigsPrimaryProbeHttpInput` via:
+//
+//	GatewayTunnelConfigsPrimaryProbeHttpArgs{...}
+type GatewayTunnelConfigsPrimaryProbeHttpInput interface {
+	pulumi.Input
+
+	ToGatewayTunnelConfigsPrimaryProbeHttpOutput() GatewayTunnelConfigsPrimaryProbeHttpOutput
+	ToGatewayTunnelConfigsPrimaryProbeHttpOutputWithContext(context.Context) GatewayTunnelConfigsPrimaryProbeHttpOutput
+}
+
+type GatewayTunnelConfigsPrimaryProbeHttpArgs struct {
+	// HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+	AcceptedStatusCodes pulumi.IntArrayInput `pulumi:"acceptedStatusCodes"`
+	// HTTP or HTTPS URLs to probe
+	Urls pulumi.StringArrayInput `pulumi:"urls"`
+}
+
+func (GatewayTunnelConfigsPrimaryProbeHttpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayTunnelConfigsPrimaryProbeHttp)(nil)).Elem()
+}
+
+func (i GatewayTunnelConfigsPrimaryProbeHttpArgs) ToGatewayTunnelConfigsPrimaryProbeHttpOutput() GatewayTunnelConfigsPrimaryProbeHttpOutput {
+	return i.ToGatewayTunnelConfigsPrimaryProbeHttpOutputWithContext(context.Background())
+}
+
+func (i GatewayTunnelConfigsPrimaryProbeHttpArgs) ToGatewayTunnelConfigsPrimaryProbeHttpOutputWithContext(ctx context.Context) GatewayTunnelConfigsPrimaryProbeHttpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayTunnelConfigsPrimaryProbeHttpOutput)
+}
+
+func (i GatewayTunnelConfigsPrimaryProbeHttpArgs) ToGatewayTunnelConfigsPrimaryProbeHttpPtrOutput() GatewayTunnelConfigsPrimaryProbeHttpPtrOutput {
+	return i.ToGatewayTunnelConfigsPrimaryProbeHttpPtrOutputWithContext(context.Background())
+}
+
+func (i GatewayTunnelConfigsPrimaryProbeHttpArgs) ToGatewayTunnelConfigsPrimaryProbeHttpPtrOutputWithContext(ctx context.Context) GatewayTunnelConfigsPrimaryProbeHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayTunnelConfigsPrimaryProbeHttpOutput).ToGatewayTunnelConfigsPrimaryProbeHttpPtrOutputWithContext(ctx)
+}
+
+// GatewayTunnelConfigsPrimaryProbeHttpPtrInput is an input type that accepts GatewayTunnelConfigsPrimaryProbeHttpArgs, GatewayTunnelConfigsPrimaryProbeHttpPtr and GatewayTunnelConfigsPrimaryProbeHttpPtrOutput values.
+// You can construct a concrete instance of `GatewayTunnelConfigsPrimaryProbeHttpPtrInput` via:
+//
+//	        GatewayTunnelConfigsPrimaryProbeHttpArgs{...}
+//
+//	or:
+//
+//	        nil
+type GatewayTunnelConfigsPrimaryProbeHttpPtrInput interface {
+	pulumi.Input
+
+	ToGatewayTunnelConfigsPrimaryProbeHttpPtrOutput() GatewayTunnelConfigsPrimaryProbeHttpPtrOutput
+	ToGatewayTunnelConfigsPrimaryProbeHttpPtrOutputWithContext(context.Context) GatewayTunnelConfigsPrimaryProbeHttpPtrOutput
+}
+
+type gatewayTunnelConfigsPrimaryProbeHttpPtrType GatewayTunnelConfigsPrimaryProbeHttpArgs
+
+func GatewayTunnelConfigsPrimaryProbeHttpPtr(v *GatewayTunnelConfigsPrimaryProbeHttpArgs) GatewayTunnelConfigsPrimaryProbeHttpPtrInput {
+	return (*gatewayTunnelConfigsPrimaryProbeHttpPtrType)(v)
+}
+
+func (*gatewayTunnelConfigsPrimaryProbeHttpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayTunnelConfigsPrimaryProbeHttp)(nil)).Elem()
+}
+
+func (i *gatewayTunnelConfigsPrimaryProbeHttpPtrType) ToGatewayTunnelConfigsPrimaryProbeHttpPtrOutput() GatewayTunnelConfigsPrimaryProbeHttpPtrOutput {
+	return i.ToGatewayTunnelConfigsPrimaryProbeHttpPtrOutputWithContext(context.Background())
+}
+
+func (i *gatewayTunnelConfigsPrimaryProbeHttpPtrType) ToGatewayTunnelConfigsPrimaryProbeHttpPtrOutputWithContext(ctx context.Context) GatewayTunnelConfigsPrimaryProbeHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayTunnelConfigsPrimaryProbeHttpPtrOutput)
+}
+
+type GatewayTunnelConfigsPrimaryProbeHttpOutput struct{ *pulumi.OutputState }
+
+func (GatewayTunnelConfigsPrimaryProbeHttpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayTunnelConfigsPrimaryProbeHttp)(nil)).Elem()
+}
+
+func (o GatewayTunnelConfigsPrimaryProbeHttpOutput) ToGatewayTunnelConfigsPrimaryProbeHttpOutput() GatewayTunnelConfigsPrimaryProbeHttpOutput {
+	return o
+}
+
+func (o GatewayTunnelConfigsPrimaryProbeHttpOutput) ToGatewayTunnelConfigsPrimaryProbeHttpOutputWithContext(ctx context.Context) GatewayTunnelConfigsPrimaryProbeHttpOutput {
+	return o
+}
+
+func (o GatewayTunnelConfigsPrimaryProbeHttpOutput) ToGatewayTunnelConfigsPrimaryProbeHttpPtrOutput() GatewayTunnelConfigsPrimaryProbeHttpPtrOutput {
+	return o.ToGatewayTunnelConfigsPrimaryProbeHttpPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayTunnelConfigsPrimaryProbeHttpOutput) ToGatewayTunnelConfigsPrimaryProbeHttpPtrOutputWithContext(ctx context.Context) GatewayTunnelConfigsPrimaryProbeHttpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayTunnelConfigsPrimaryProbeHttp) *GatewayTunnelConfigsPrimaryProbeHttp {
+		return &v
+	}).(GatewayTunnelConfigsPrimaryProbeHttpPtrOutput)
+}
+
+// HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+func (o GatewayTunnelConfigsPrimaryProbeHttpOutput) AcceptedStatusCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GatewayTunnelConfigsPrimaryProbeHttp) []int { return v.AcceptedStatusCodes }).(pulumi.IntArrayOutput)
+}
+
+// HTTP or HTTPS URLs to probe
+func (o GatewayTunnelConfigsPrimaryProbeHttpOutput) Urls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GatewayTunnelConfigsPrimaryProbeHttp) []string { return v.Urls }).(pulumi.StringArrayOutput)
+}
+
+type GatewayTunnelConfigsPrimaryProbeHttpPtrOutput struct{ *pulumi.OutputState }
+
+func (GatewayTunnelConfigsPrimaryProbeHttpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayTunnelConfigsPrimaryProbeHttp)(nil)).Elem()
+}
+
+func (o GatewayTunnelConfigsPrimaryProbeHttpPtrOutput) ToGatewayTunnelConfigsPrimaryProbeHttpPtrOutput() GatewayTunnelConfigsPrimaryProbeHttpPtrOutput {
+	return o
+}
+
+func (o GatewayTunnelConfigsPrimaryProbeHttpPtrOutput) ToGatewayTunnelConfigsPrimaryProbeHttpPtrOutputWithContext(ctx context.Context) GatewayTunnelConfigsPrimaryProbeHttpPtrOutput {
+	return o
+}
+
+func (o GatewayTunnelConfigsPrimaryProbeHttpPtrOutput) Elem() GatewayTunnelConfigsPrimaryProbeHttpOutput {
+	return o.ApplyT(func(v *GatewayTunnelConfigsPrimaryProbeHttp) GatewayTunnelConfigsPrimaryProbeHttp {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayTunnelConfigsPrimaryProbeHttp
+		return ret
+	}).(GatewayTunnelConfigsPrimaryProbeHttpOutput)
+}
+
+// HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+func (o GatewayTunnelConfigsPrimaryProbeHttpPtrOutput) AcceptedStatusCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *GatewayTunnelConfigsPrimaryProbeHttp) []int {
+		if v == nil {
+			return nil
+		}
+		return v.AcceptedStatusCodes
+	}).(pulumi.IntArrayOutput)
+}
+
+// HTTP or HTTPS URLs to probe
+func (o GatewayTunnelConfigsPrimaryProbeHttpPtrOutput) Urls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GatewayTunnelConfigsPrimaryProbeHttp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Urls
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -20019,8 +20725,16 @@ func (o GatewayTunnelConfigsProbePtrOutput) Type() pulumi.StringPtrOutput {
 type GatewayTunnelConfigsSecondary struct {
 	// Remote gateway host addresses for this tunnel node
 	Hosts []string `pulumi:"hosts"`
+	// IPv6 addresses configured on this tunnel node
+	InternalIp6s []string `pulumi:"internalIp6s"`
 	// Internal IP addresses configured on this tunnel node
 	InternalIps []string `pulumi:"internalIps"`
+	// Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+	ProbeHostnames []string `pulumi:"probeHostnames"`
+	// HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+	ProbeHttp *GatewayTunnelConfigsSecondaryProbeHttp `pulumi:"probeHttp"`
+	// IPv6 ICMP probe addresses used to monitor this tunnel node
+	ProbeIp6s []string `pulumi:"probeIp6s"`
 	// Health-check IP addresses used to monitor this tunnel node
 	ProbeIps []string `pulumi:"probeIps"`
 	// IKE identities expected from this tunnel node
@@ -20043,8 +20757,16 @@ type GatewayTunnelConfigsSecondaryInput interface {
 type GatewayTunnelConfigsSecondaryArgs struct {
 	// Remote gateway host addresses for this tunnel node
 	Hosts pulumi.StringArrayInput `pulumi:"hosts"`
+	// IPv6 addresses configured on this tunnel node
+	InternalIp6s pulumi.StringArrayInput `pulumi:"internalIp6s"`
 	// Internal IP addresses configured on this tunnel node
 	InternalIps pulumi.StringArrayInput `pulumi:"internalIps"`
+	// Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+	ProbeHostnames pulumi.StringArrayInput `pulumi:"probeHostnames"`
+	// HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+	ProbeHttp GatewayTunnelConfigsSecondaryProbeHttpPtrInput `pulumi:"probeHttp"`
+	// IPv6 ICMP probe addresses used to monitor this tunnel node
+	ProbeIp6s pulumi.StringArrayInput `pulumi:"probeIp6s"`
 	// Health-check IP addresses used to monitor this tunnel node
 	ProbeIps pulumi.StringArrayInput `pulumi:"probeIps"`
 	// IKE identities expected from this tunnel node
@@ -20135,9 +20857,29 @@ func (o GatewayTunnelConfigsSecondaryOutput) Hosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewayTunnelConfigsSecondary) []string { return v.Hosts }).(pulumi.StringArrayOutput)
 }
 
+// IPv6 addresses configured on this tunnel node
+func (o GatewayTunnelConfigsSecondaryOutput) InternalIp6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GatewayTunnelConfigsSecondary) []string { return v.InternalIp6s }).(pulumi.StringArrayOutput)
+}
+
 // Internal IP addresses configured on this tunnel node
 func (o GatewayTunnelConfigsSecondaryOutput) InternalIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewayTunnelConfigsSecondary) []string { return v.InternalIps }).(pulumi.StringArrayOutput)
+}
+
+// Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+func (o GatewayTunnelConfigsSecondaryOutput) ProbeHostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GatewayTunnelConfigsSecondary) []string { return v.ProbeHostnames }).(pulumi.StringArrayOutput)
+}
+
+// HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+func (o GatewayTunnelConfigsSecondaryOutput) ProbeHttp() GatewayTunnelConfigsSecondaryProbeHttpPtrOutput {
+	return o.ApplyT(func(v GatewayTunnelConfigsSecondary) *GatewayTunnelConfigsSecondaryProbeHttp { return v.ProbeHttp }).(GatewayTunnelConfigsSecondaryProbeHttpPtrOutput)
+}
+
+// IPv6 ICMP probe addresses used to monitor this tunnel node
+func (o GatewayTunnelConfigsSecondaryOutput) ProbeIp6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GatewayTunnelConfigsSecondary) []string { return v.ProbeIp6s }).(pulumi.StringArrayOutput)
 }
 
 // Health-check IP addresses used to monitor this tunnel node
@@ -20189,6 +20931,16 @@ func (o GatewayTunnelConfigsSecondaryPtrOutput) Hosts() pulumi.StringArrayOutput
 	}).(pulumi.StringArrayOutput)
 }
 
+// IPv6 addresses configured on this tunnel node
+func (o GatewayTunnelConfigsSecondaryPtrOutput) InternalIp6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GatewayTunnelConfigsSecondary) []string {
+		if v == nil {
+			return nil
+		}
+		return v.InternalIp6s
+	}).(pulumi.StringArrayOutput)
+}
+
 // Internal IP addresses configured on this tunnel node
 func (o GatewayTunnelConfigsSecondaryPtrOutput) InternalIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GatewayTunnelConfigsSecondary) []string {
@@ -20196,6 +20948,36 @@ func (o GatewayTunnelConfigsSecondaryPtrOutput) InternalIps() pulumi.StringArray
 			return nil
 		}
 		return v.InternalIps
+	}).(pulumi.StringArrayOutput)
+}
+
+// Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+func (o GatewayTunnelConfigsSecondaryPtrOutput) ProbeHostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GatewayTunnelConfigsSecondary) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ProbeHostnames
+	}).(pulumi.StringArrayOutput)
+}
+
+// HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+func (o GatewayTunnelConfigsSecondaryPtrOutput) ProbeHttp() GatewayTunnelConfigsSecondaryProbeHttpPtrOutput {
+	return o.ApplyT(func(v *GatewayTunnelConfigsSecondary) *GatewayTunnelConfigsSecondaryProbeHttp {
+		if v == nil {
+			return nil
+		}
+		return v.ProbeHttp
+	}).(GatewayTunnelConfigsSecondaryProbeHttpPtrOutput)
+}
+
+// IPv6 ICMP probe addresses used to monitor this tunnel node
+func (o GatewayTunnelConfigsSecondaryPtrOutput) ProbeIp6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GatewayTunnelConfigsSecondary) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ProbeIp6s
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -20226,6 +21008,162 @@ func (o GatewayTunnelConfigsSecondaryPtrOutput) WanNames() pulumi.StringArrayOut
 			return nil
 		}
 		return v.WanNames
+	}).(pulumi.StringArrayOutput)
+}
+
+type GatewayTunnelConfigsSecondaryProbeHttp struct {
+	// HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+	AcceptedStatusCodes []int `pulumi:"acceptedStatusCodes"`
+	// HTTP or HTTPS URLs to probe
+	Urls []string `pulumi:"urls"`
+}
+
+// GatewayTunnelConfigsSecondaryProbeHttpInput is an input type that accepts GatewayTunnelConfigsSecondaryProbeHttpArgs and GatewayTunnelConfigsSecondaryProbeHttpOutput values.
+// You can construct a concrete instance of `GatewayTunnelConfigsSecondaryProbeHttpInput` via:
+//
+//	GatewayTunnelConfigsSecondaryProbeHttpArgs{...}
+type GatewayTunnelConfigsSecondaryProbeHttpInput interface {
+	pulumi.Input
+
+	ToGatewayTunnelConfigsSecondaryProbeHttpOutput() GatewayTunnelConfigsSecondaryProbeHttpOutput
+	ToGatewayTunnelConfigsSecondaryProbeHttpOutputWithContext(context.Context) GatewayTunnelConfigsSecondaryProbeHttpOutput
+}
+
+type GatewayTunnelConfigsSecondaryProbeHttpArgs struct {
+	// HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+	AcceptedStatusCodes pulumi.IntArrayInput `pulumi:"acceptedStatusCodes"`
+	// HTTP or HTTPS URLs to probe
+	Urls pulumi.StringArrayInput `pulumi:"urls"`
+}
+
+func (GatewayTunnelConfigsSecondaryProbeHttpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayTunnelConfigsSecondaryProbeHttp)(nil)).Elem()
+}
+
+func (i GatewayTunnelConfigsSecondaryProbeHttpArgs) ToGatewayTunnelConfigsSecondaryProbeHttpOutput() GatewayTunnelConfigsSecondaryProbeHttpOutput {
+	return i.ToGatewayTunnelConfigsSecondaryProbeHttpOutputWithContext(context.Background())
+}
+
+func (i GatewayTunnelConfigsSecondaryProbeHttpArgs) ToGatewayTunnelConfigsSecondaryProbeHttpOutputWithContext(ctx context.Context) GatewayTunnelConfigsSecondaryProbeHttpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayTunnelConfigsSecondaryProbeHttpOutput)
+}
+
+func (i GatewayTunnelConfigsSecondaryProbeHttpArgs) ToGatewayTunnelConfigsSecondaryProbeHttpPtrOutput() GatewayTunnelConfigsSecondaryProbeHttpPtrOutput {
+	return i.ToGatewayTunnelConfigsSecondaryProbeHttpPtrOutputWithContext(context.Background())
+}
+
+func (i GatewayTunnelConfigsSecondaryProbeHttpArgs) ToGatewayTunnelConfigsSecondaryProbeHttpPtrOutputWithContext(ctx context.Context) GatewayTunnelConfigsSecondaryProbeHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayTunnelConfigsSecondaryProbeHttpOutput).ToGatewayTunnelConfigsSecondaryProbeHttpPtrOutputWithContext(ctx)
+}
+
+// GatewayTunnelConfigsSecondaryProbeHttpPtrInput is an input type that accepts GatewayTunnelConfigsSecondaryProbeHttpArgs, GatewayTunnelConfigsSecondaryProbeHttpPtr and GatewayTunnelConfigsSecondaryProbeHttpPtrOutput values.
+// You can construct a concrete instance of `GatewayTunnelConfigsSecondaryProbeHttpPtrInput` via:
+//
+//	        GatewayTunnelConfigsSecondaryProbeHttpArgs{...}
+//
+//	or:
+//
+//	        nil
+type GatewayTunnelConfigsSecondaryProbeHttpPtrInput interface {
+	pulumi.Input
+
+	ToGatewayTunnelConfigsSecondaryProbeHttpPtrOutput() GatewayTunnelConfigsSecondaryProbeHttpPtrOutput
+	ToGatewayTunnelConfigsSecondaryProbeHttpPtrOutputWithContext(context.Context) GatewayTunnelConfigsSecondaryProbeHttpPtrOutput
+}
+
+type gatewayTunnelConfigsSecondaryProbeHttpPtrType GatewayTunnelConfigsSecondaryProbeHttpArgs
+
+func GatewayTunnelConfigsSecondaryProbeHttpPtr(v *GatewayTunnelConfigsSecondaryProbeHttpArgs) GatewayTunnelConfigsSecondaryProbeHttpPtrInput {
+	return (*gatewayTunnelConfigsSecondaryProbeHttpPtrType)(v)
+}
+
+func (*gatewayTunnelConfigsSecondaryProbeHttpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayTunnelConfigsSecondaryProbeHttp)(nil)).Elem()
+}
+
+func (i *gatewayTunnelConfigsSecondaryProbeHttpPtrType) ToGatewayTunnelConfigsSecondaryProbeHttpPtrOutput() GatewayTunnelConfigsSecondaryProbeHttpPtrOutput {
+	return i.ToGatewayTunnelConfigsSecondaryProbeHttpPtrOutputWithContext(context.Background())
+}
+
+func (i *gatewayTunnelConfigsSecondaryProbeHttpPtrType) ToGatewayTunnelConfigsSecondaryProbeHttpPtrOutputWithContext(ctx context.Context) GatewayTunnelConfigsSecondaryProbeHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayTunnelConfigsSecondaryProbeHttpPtrOutput)
+}
+
+type GatewayTunnelConfigsSecondaryProbeHttpOutput struct{ *pulumi.OutputState }
+
+func (GatewayTunnelConfigsSecondaryProbeHttpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayTunnelConfigsSecondaryProbeHttp)(nil)).Elem()
+}
+
+func (o GatewayTunnelConfigsSecondaryProbeHttpOutput) ToGatewayTunnelConfigsSecondaryProbeHttpOutput() GatewayTunnelConfigsSecondaryProbeHttpOutput {
+	return o
+}
+
+func (o GatewayTunnelConfigsSecondaryProbeHttpOutput) ToGatewayTunnelConfigsSecondaryProbeHttpOutputWithContext(ctx context.Context) GatewayTunnelConfigsSecondaryProbeHttpOutput {
+	return o
+}
+
+func (o GatewayTunnelConfigsSecondaryProbeHttpOutput) ToGatewayTunnelConfigsSecondaryProbeHttpPtrOutput() GatewayTunnelConfigsSecondaryProbeHttpPtrOutput {
+	return o.ToGatewayTunnelConfigsSecondaryProbeHttpPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayTunnelConfigsSecondaryProbeHttpOutput) ToGatewayTunnelConfigsSecondaryProbeHttpPtrOutputWithContext(ctx context.Context) GatewayTunnelConfigsSecondaryProbeHttpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayTunnelConfigsSecondaryProbeHttp) *GatewayTunnelConfigsSecondaryProbeHttp {
+		return &v
+	}).(GatewayTunnelConfigsSecondaryProbeHttpPtrOutput)
+}
+
+// HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+func (o GatewayTunnelConfigsSecondaryProbeHttpOutput) AcceptedStatusCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GatewayTunnelConfigsSecondaryProbeHttp) []int { return v.AcceptedStatusCodes }).(pulumi.IntArrayOutput)
+}
+
+// HTTP or HTTPS URLs to probe
+func (o GatewayTunnelConfigsSecondaryProbeHttpOutput) Urls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GatewayTunnelConfigsSecondaryProbeHttp) []string { return v.Urls }).(pulumi.StringArrayOutput)
+}
+
+type GatewayTunnelConfigsSecondaryProbeHttpPtrOutput struct{ *pulumi.OutputState }
+
+func (GatewayTunnelConfigsSecondaryProbeHttpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayTunnelConfigsSecondaryProbeHttp)(nil)).Elem()
+}
+
+func (o GatewayTunnelConfigsSecondaryProbeHttpPtrOutput) ToGatewayTunnelConfigsSecondaryProbeHttpPtrOutput() GatewayTunnelConfigsSecondaryProbeHttpPtrOutput {
+	return o
+}
+
+func (o GatewayTunnelConfigsSecondaryProbeHttpPtrOutput) ToGatewayTunnelConfigsSecondaryProbeHttpPtrOutputWithContext(ctx context.Context) GatewayTunnelConfigsSecondaryProbeHttpPtrOutput {
+	return o
+}
+
+func (o GatewayTunnelConfigsSecondaryProbeHttpPtrOutput) Elem() GatewayTunnelConfigsSecondaryProbeHttpOutput {
+	return o.ApplyT(func(v *GatewayTunnelConfigsSecondaryProbeHttp) GatewayTunnelConfigsSecondaryProbeHttp {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayTunnelConfigsSecondaryProbeHttp
+		return ret
+	}).(GatewayTunnelConfigsSecondaryProbeHttpOutput)
+}
+
+// HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+func (o GatewayTunnelConfigsSecondaryProbeHttpPtrOutput) AcceptedStatusCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *GatewayTunnelConfigsSecondaryProbeHttp) []int {
+		if v == nil {
+			return nil
+		}
+		return v.AcceptedStatusCodes
+	}).(pulumi.IntArrayOutput)
+}
+
+// HTTP or HTTPS URLs to probe
+func (o GatewayTunnelConfigsSecondaryProbeHttpPtrOutput) Urls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GatewayTunnelConfigsSecondaryProbeHttp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Urls
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -21555,6 +22493,8 @@ func (o GatewayVrfInstancesMapOutput) MapIndex(k pulumi.StringInput) GatewayVrfI
 type SwitchAclPolicy struct {
 	// Destination tag actions evaluated for sources matching this ACL policy
 	Actions []SwitchAclPolicyAction `pulumi:"actions"`
+	// Whether this ACL policy is disabled
+	Disabled *bool `pulumi:"disabled"`
 	// Display name of the ACL policy
 	Name *string `pulumi:"name"`
 	// Source ACL tags that select traffic for this ACL policy
@@ -21575,6 +22515,8 @@ type SwitchAclPolicyInput interface {
 type SwitchAclPolicyArgs struct {
 	// Destination tag actions evaluated for sources matching this ACL policy
 	Actions SwitchAclPolicyActionArrayInput `pulumi:"actions"`
+	// Whether this ACL policy is disabled
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// Display name of the ACL policy
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Source ACL tags that select traffic for this ACL policy
@@ -21635,6 +22577,11 @@ func (o SwitchAclPolicyOutput) ToSwitchAclPolicyOutputWithContext(ctx context.Co
 // Destination tag actions evaluated for sources matching this ACL policy
 func (o SwitchAclPolicyOutput) Actions() SwitchAclPolicyActionArrayOutput {
 	return o.ApplyT(func(v SwitchAclPolicy) []SwitchAclPolicyAction { return v.Actions }).(SwitchAclPolicyActionArrayOutput)
+}
+
+// Whether this ACL policy is disabled
+func (o SwitchAclPolicyOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchAclPolicy) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
 // Display name of the ACL policy
@@ -21794,6 +22741,7 @@ type SwitchAclTags struct {
 	PortUsage *string `pulumi:"portUsage"`
 	// Required if:
 	//   * `type`==`radiusGroup`
+	//   * `type`==`arubaUserRole`
 	//   * `type`==`staticGbp`
 	//     if from matching radius_group
 	RadiusGroup *string `pulumi:"radiusGroup"`
@@ -21837,6 +22785,7 @@ type SwitchAclTagsArgs struct {
 	PortUsage pulumi.StringPtrInput `pulumi:"portUsage"`
 	// Required if:
 	//   * `type`==`radiusGroup`
+	//   * `type`==`arubaUserRole`
 	//   * `type`==`staticGbp`
 	//     if from matching radius_group
 	RadiusGroup pulumi.StringPtrInput `pulumi:"radiusGroup"`
@@ -21934,6 +22883,7 @@ func (o SwitchAclTagsOutput) PortUsage() pulumi.StringPtrOutput {
 
 // Required if:
 //   - `type`==`radiusGroup`
+//   - `type`==`arubaUserRole`
 //   - `type`==`staticGbp`
 //     if from matching radius_group
 func (o SwitchAclTagsOutput) RadiusGroup() pulumi.StringPtrOutput {
@@ -24883,6 +25833,8 @@ type SwitchNetworks struct {
 	Isolation *bool `pulumi:"isolation"`
 	// Required when `isolation`==`true`. Unique VLAN ID used for client isolation
 	IsolationVlanId *string `pulumi:"isolationVlanId"`
+	// Multicast (IGMP snooping) settings for this VLAN
+	Multicast *SwitchNetworksMulticast `pulumi:"multicast"`
 	// Optional for pure switching, required when L3 / routing features are used
 	Subnet *string `pulumi:"subnet"`
 	// Optional for pure switching, required when L3 / routing features are used
@@ -24911,6 +25863,8 @@ type SwitchNetworksArgs struct {
 	Isolation pulumi.BoolPtrInput `pulumi:"isolation"`
 	// Required when `isolation`==`true`. Unique VLAN ID used for client isolation
 	IsolationVlanId pulumi.StringPtrInput `pulumi:"isolationVlanId"`
+	// Multicast (IGMP snooping) settings for this VLAN
+	Multicast SwitchNetworksMulticastPtrInput `pulumi:"multicast"`
 	// Optional for pure switching, required when L3 / routing features are used
 	Subnet pulumi.StringPtrInput `pulumi:"subnet"`
 	// Optional for pure switching, required when L3 / routing features are used
@@ -24990,6 +25944,11 @@ func (o SwitchNetworksOutput) IsolationVlanId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchNetworks) *string { return v.IsolationVlanId }).(pulumi.StringPtrOutput)
 }
 
+// Multicast (IGMP snooping) settings for this VLAN
+func (o SwitchNetworksOutput) Multicast() SwitchNetworksMulticastPtrOutput {
+	return o.ApplyT(func(v SwitchNetworks) *SwitchNetworksMulticast { return v.Multicast }).(SwitchNetworksMulticastPtrOutput)
+}
+
 // Optional for pure switching, required when L3 / routing features are used
 func (o SwitchNetworksOutput) Subnet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchNetworks) *string { return v.Subnet }).(pulumi.StringPtrOutput)
@@ -25023,6 +25982,162 @@ func (o SwitchNetworksMapOutput) MapIndex(k pulumi.StringInput) SwitchNetworksOu
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SwitchNetworks {
 		return vs[0].(map[string]SwitchNetworks)[vs[1].(string)]
 	}).(SwitchNetworksOutput)
+}
+
+type SwitchNetworksMulticast struct {
+	// Whether to enable IGMP snooping on this VLAN
+	Enabled *bool `pulumi:"enabled"`
+	// IGMP version. '2' (default, ASM/IGMPv2) / '3' (SSM/IGMPv3)
+	IgmpVersion *string `pulumi:"igmpVersion"`
+}
+
+// SwitchNetworksMulticastInput is an input type that accepts SwitchNetworksMulticastArgs and SwitchNetworksMulticastOutput values.
+// You can construct a concrete instance of `SwitchNetworksMulticastInput` via:
+//
+//	SwitchNetworksMulticastArgs{...}
+type SwitchNetworksMulticastInput interface {
+	pulumi.Input
+
+	ToSwitchNetworksMulticastOutput() SwitchNetworksMulticastOutput
+	ToSwitchNetworksMulticastOutputWithContext(context.Context) SwitchNetworksMulticastOutput
+}
+
+type SwitchNetworksMulticastArgs struct {
+	// Whether to enable IGMP snooping on this VLAN
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// IGMP version. '2' (default, ASM/IGMPv2) / '3' (SSM/IGMPv3)
+	IgmpVersion pulumi.StringPtrInput `pulumi:"igmpVersion"`
+}
+
+func (SwitchNetworksMulticastArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SwitchNetworksMulticast)(nil)).Elem()
+}
+
+func (i SwitchNetworksMulticastArgs) ToSwitchNetworksMulticastOutput() SwitchNetworksMulticastOutput {
+	return i.ToSwitchNetworksMulticastOutputWithContext(context.Background())
+}
+
+func (i SwitchNetworksMulticastArgs) ToSwitchNetworksMulticastOutputWithContext(ctx context.Context) SwitchNetworksMulticastOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SwitchNetworksMulticastOutput)
+}
+
+func (i SwitchNetworksMulticastArgs) ToSwitchNetworksMulticastPtrOutput() SwitchNetworksMulticastPtrOutput {
+	return i.ToSwitchNetworksMulticastPtrOutputWithContext(context.Background())
+}
+
+func (i SwitchNetworksMulticastArgs) ToSwitchNetworksMulticastPtrOutputWithContext(ctx context.Context) SwitchNetworksMulticastPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SwitchNetworksMulticastOutput).ToSwitchNetworksMulticastPtrOutputWithContext(ctx)
+}
+
+// SwitchNetworksMulticastPtrInput is an input type that accepts SwitchNetworksMulticastArgs, SwitchNetworksMulticastPtr and SwitchNetworksMulticastPtrOutput values.
+// You can construct a concrete instance of `SwitchNetworksMulticastPtrInput` via:
+//
+//	        SwitchNetworksMulticastArgs{...}
+//
+//	or:
+//
+//	        nil
+type SwitchNetworksMulticastPtrInput interface {
+	pulumi.Input
+
+	ToSwitchNetworksMulticastPtrOutput() SwitchNetworksMulticastPtrOutput
+	ToSwitchNetworksMulticastPtrOutputWithContext(context.Context) SwitchNetworksMulticastPtrOutput
+}
+
+type switchNetworksMulticastPtrType SwitchNetworksMulticastArgs
+
+func SwitchNetworksMulticastPtr(v *SwitchNetworksMulticastArgs) SwitchNetworksMulticastPtrInput {
+	return (*switchNetworksMulticastPtrType)(v)
+}
+
+func (*switchNetworksMulticastPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SwitchNetworksMulticast)(nil)).Elem()
+}
+
+func (i *switchNetworksMulticastPtrType) ToSwitchNetworksMulticastPtrOutput() SwitchNetworksMulticastPtrOutput {
+	return i.ToSwitchNetworksMulticastPtrOutputWithContext(context.Background())
+}
+
+func (i *switchNetworksMulticastPtrType) ToSwitchNetworksMulticastPtrOutputWithContext(ctx context.Context) SwitchNetworksMulticastPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SwitchNetworksMulticastPtrOutput)
+}
+
+type SwitchNetworksMulticastOutput struct{ *pulumi.OutputState }
+
+func (SwitchNetworksMulticastOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SwitchNetworksMulticast)(nil)).Elem()
+}
+
+func (o SwitchNetworksMulticastOutput) ToSwitchNetworksMulticastOutput() SwitchNetworksMulticastOutput {
+	return o
+}
+
+func (o SwitchNetworksMulticastOutput) ToSwitchNetworksMulticastOutputWithContext(ctx context.Context) SwitchNetworksMulticastOutput {
+	return o
+}
+
+func (o SwitchNetworksMulticastOutput) ToSwitchNetworksMulticastPtrOutput() SwitchNetworksMulticastPtrOutput {
+	return o.ToSwitchNetworksMulticastPtrOutputWithContext(context.Background())
+}
+
+func (o SwitchNetworksMulticastOutput) ToSwitchNetworksMulticastPtrOutputWithContext(ctx context.Context) SwitchNetworksMulticastPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SwitchNetworksMulticast) *SwitchNetworksMulticast {
+		return &v
+	}).(SwitchNetworksMulticastPtrOutput)
+}
+
+// Whether to enable IGMP snooping on this VLAN
+func (o SwitchNetworksMulticastOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchNetworksMulticast) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// IGMP version. '2' (default, ASM/IGMPv2) / '3' (SSM/IGMPv3)
+func (o SwitchNetworksMulticastOutput) IgmpVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchNetworksMulticast) *string { return v.IgmpVersion }).(pulumi.StringPtrOutput)
+}
+
+type SwitchNetworksMulticastPtrOutput struct{ *pulumi.OutputState }
+
+func (SwitchNetworksMulticastPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SwitchNetworksMulticast)(nil)).Elem()
+}
+
+func (o SwitchNetworksMulticastPtrOutput) ToSwitchNetworksMulticastPtrOutput() SwitchNetworksMulticastPtrOutput {
+	return o
+}
+
+func (o SwitchNetworksMulticastPtrOutput) ToSwitchNetworksMulticastPtrOutputWithContext(ctx context.Context) SwitchNetworksMulticastPtrOutput {
+	return o
+}
+
+func (o SwitchNetworksMulticastPtrOutput) Elem() SwitchNetworksMulticastOutput {
+	return o.ApplyT(func(v *SwitchNetworksMulticast) SwitchNetworksMulticast {
+		if v != nil {
+			return *v
+		}
+		var ret SwitchNetworksMulticast
+		return ret
+	}).(SwitchNetworksMulticastOutput)
+}
+
+// Whether to enable IGMP snooping on this VLAN
+func (o SwitchNetworksMulticastPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SwitchNetworksMulticast) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// IGMP version. '2' (default, ASM/IGMPv2) / '3' (SSM/IGMPv3)
+func (o SwitchNetworksMulticastPtrOutput) IgmpVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SwitchNetworksMulticast) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IgmpVersion
+	}).(pulumi.StringPtrOutput)
 }
 
 type SwitchOobIpConfig struct {
@@ -31458,6 +32573,8 @@ func (o SwitchSnmpConfigV3ConfigNotifyArrayOutput) Index(i pulumi.IntInput) Swit
 }
 
 type SwitchSnmpConfigV3ConfigNotifyFilter struct {
+	// CX only. List of SNMP trap group categories included in this filter profile. See https://www.juniper.net/documentation/software/topics/task/configuration/snmp-trap-groups-configuring-junos-nm.html for valid category names.
+	Categories []string `pulumi:"categories"`
 	// OID filter rules in this notification filter profile
 	Contents []SwitchSnmpConfigV3ConfigNotifyFilterContent `pulumi:"contents"`
 	// Notification filter profile name
@@ -31476,6 +32593,8 @@ type SwitchSnmpConfigV3ConfigNotifyFilterInput interface {
 }
 
 type SwitchSnmpConfigV3ConfigNotifyFilterArgs struct {
+	// CX only. List of SNMP trap group categories included in this filter profile. See https://www.juniper.net/documentation/software/topics/task/configuration/snmp-trap-groups-configuring-junos-nm.html for valid category names.
+	Categories pulumi.StringArrayInput `pulumi:"categories"`
 	// OID filter rules in this notification filter profile
 	Contents SwitchSnmpConfigV3ConfigNotifyFilterContentArrayInput `pulumi:"contents"`
 	// Notification filter profile name
@@ -31531,6 +32650,11 @@ func (o SwitchSnmpConfigV3ConfigNotifyFilterOutput) ToSwitchSnmpConfigV3ConfigNo
 
 func (o SwitchSnmpConfigV3ConfigNotifyFilterOutput) ToSwitchSnmpConfigV3ConfigNotifyFilterOutputWithContext(ctx context.Context) SwitchSnmpConfigV3ConfigNotifyFilterOutput {
 	return o
+}
+
+// CX only. List of SNMP trap group categories included in this filter profile. See https://www.juniper.net/documentation/software/topics/task/configuration/snmp-trap-groups-configuring-junos-nm.html for valid category names.
+func (o SwitchSnmpConfigV3ConfigNotifyFilterOutput) Categories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SwitchSnmpConfigV3ConfigNotifyFilter) []string { return v.Categories }).(pulumi.StringArrayOutput)
 }
 
 // OID filter rules in this notification filter profile
@@ -34861,6 +35985,8 @@ type SwitchVrfInstances struct {
 	ExtraRoutes map[string]SwitchVrfInstancesExtraRoutes `pulumi:"extraRoutes"`
 	// Additional IPv6 static routes configured for this VRF instance
 	ExtraRoutes6 map[string]SwitchVrfInstancesExtraRoutes6 `pulumi:"extraRoutes6"`
+	// Multicast configuration for this VRF instance. PIM is automatically enabled when any network in this VRF has `multicast.enabled`==`true`
+	MulticastConfig *SwitchVrfInstancesMulticastConfig `pulumi:"multicastConfig"`
 	// Names of switch networks included in this VRF instance
 	Networks []string `pulumi:"networks"`
 }
@@ -34885,6 +36011,8 @@ type SwitchVrfInstancesArgs struct {
 	ExtraRoutes SwitchVrfInstancesExtraRoutesMapInput `pulumi:"extraRoutes"`
 	// Additional IPv6 static routes configured for this VRF instance
 	ExtraRoutes6 SwitchVrfInstancesExtraRoutes6MapInput `pulumi:"extraRoutes6"`
+	// Multicast configuration for this VRF instance. PIM is automatically enabled when any network in this VRF has `multicast.enabled`==`true`
+	MulticastConfig SwitchVrfInstancesMulticastConfigPtrInput `pulumi:"multicastConfig"`
 	// Names of switch networks included in this VRF instance
 	Networks pulumi.StringArrayInput `pulumi:"networks"`
 }
@@ -34958,6 +36086,11 @@ func (o SwitchVrfInstancesOutput) ExtraRoutes() SwitchVrfInstancesExtraRoutesMap
 // Additional IPv6 static routes configured for this VRF instance
 func (o SwitchVrfInstancesOutput) ExtraRoutes6() SwitchVrfInstancesExtraRoutes6MapOutput {
 	return o.ApplyT(func(v SwitchVrfInstances) map[string]SwitchVrfInstancesExtraRoutes6 { return v.ExtraRoutes6 }).(SwitchVrfInstancesExtraRoutes6MapOutput)
+}
+
+// Multicast configuration for this VRF instance. PIM is automatically enabled when any network in this VRF has `multicast.enabled`==`true`
+func (o SwitchVrfInstancesOutput) MulticastConfig() SwitchVrfInstancesMulticastConfigPtrOutput {
+	return o.ApplyT(func(v SwitchVrfInstances) *SwitchVrfInstancesMulticastConfig { return v.MulticastConfig }).(SwitchVrfInstancesMulticastConfigPtrOutput)
 }
 
 // Names of switch networks included in this VRF instance
@@ -35177,6 +36310,200 @@ func (o SwitchVrfInstancesExtraRoutesMapOutput) MapIndex(k pulumi.StringInput) S
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SwitchVrfInstancesExtraRoutes {
 		return vs[0].(map[string]SwitchVrfInstancesExtraRoutes)[vs[1].(string)]
 	}).(SwitchVrfInstancesExtraRoutesOutput)
+}
+
+type SwitchVrfInstancesMulticastConfig struct {
+	// When `true`, auto-generates a shared RP on `isL3Border` devices (ERB/IPClos topologies only)
+	AnycastRp *bool `pulumi:"anycastRp"`
+	// RP address used when `anycastRp`==`false`. If the address matches a device SVI, it is configured as a local RP; otherwise a static RP is configured
+	RpIp *string `pulumi:"rpIp"`
+	// SBD IRB subnet; Mist auto-assigns per-device IPs from this range (EVPN eOISM only)
+	SbdSubnet *string `pulumi:"sbdSubnet"`
+	// Supplemental Bridge Domain VLAN ID (EVPN topology / eOISM only)
+	SbdVlanId *int `pulumi:"sbdVlanId"`
+}
+
+// SwitchVrfInstancesMulticastConfigInput is an input type that accepts SwitchVrfInstancesMulticastConfigArgs and SwitchVrfInstancesMulticastConfigOutput values.
+// You can construct a concrete instance of `SwitchVrfInstancesMulticastConfigInput` via:
+//
+//	SwitchVrfInstancesMulticastConfigArgs{...}
+type SwitchVrfInstancesMulticastConfigInput interface {
+	pulumi.Input
+
+	ToSwitchVrfInstancesMulticastConfigOutput() SwitchVrfInstancesMulticastConfigOutput
+	ToSwitchVrfInstancesMulticastConfigOutputWithContext(context.Context) SwitchVrfInstancesMulticastConfigOutput
+}
+
+type SwitchVrfInstancesMulticastConfigArgs struct {
+	// When `true`, auto-generates a shared RP on `isL3Border` devices (ERB/IPClos topologies only)
+	AnycastRp pulumi.BoolPtrInput `pulumi:"anycastRp"`
+	// RP address used when `anycastRp`==`false`. If the address matches a device SVI, it is configured as a local RP; otherwise a static RP is configured
+	RpIp pulumi.StringPtrInput `pulumi:"rpIp"`
+	// SBD IRB subnet; Mist auto-assigns per-device IPs from this range (EVPN eOISM only)
+	SbdSubnet pulumi.StringPtrInput `pulumi:"sbdSubnet"`
+	// Supplemental Bridge Domain VLAN ID (EVPN topology / eOISM only)
+	SbdVlanId pulumi.IntPtrInput `pulumi:"sbdVlanId"`
+}
+
+func (SwitchVrfInstancesMulticastConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SwitchVrfInstancesMulticastConfig)(nil)).Elem()
+}
+
+func (i SwitchVrfInstancesMulticastConfigArgs) ToSwitchVrfInstancesMulticastConfigOutput() SwitchVrfInstancesMulticastConfigOutput {
+	return i.ToSwitchVrfInstancesMulticastConfigOutputWithContext(context.Background())
+}
+
+func (i SwitchVrfInstancesMulticastConfigArgs) ToSwitchVrfInstancesMulticastConfigOutputWithContext(ctx context.Context) SwitchVrfInstancesMulticastConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SwitchVrfInstancesMulticastConfigOutput)
+}
+
+func (i SwitchVrfInstancesMulticastConfigArgs) ToSwitchVrfInstancesMulticastConfigPtrOutput() SwitchVrfInstancesMulticastConfigPtrOutput {
+	return i.ToSwitchVrfInstancesMulticastConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SwitchVrfInstancesMulticastConfigArgs) ToSwitchVrfInstancesMulticastConfigPtrOutputWithContext(ctx context.Context) SwitchVrfInstancesMulticastConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SwitchVrfInstancesMulticastConfigOutput).ToSwitchVrfInstancesMulticastConfigPtrOutputWithContext(ctx)
+}
+
+// SwitchVrfInstancesMulticastConfigPtrInput is an input type that accepts SwitchVrfInstancesMulticastConfigArgs, SwitchVrfInstancesMulticastConfigPtr and SwitchVrfInstancesMulticastConfigPtrOutput values.
+// You can construct a concrete instance of `SwitchVrfInstancesMulticastConfigPtrInput` via:
+//
+//	        SwitchVrfInstancesMulticastConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SwitchVrfInstancesMulticastConfigPtrInput interface {
+	pulumi.Input
+
+	ToSwitchVrfInstancesMulticastConfigPtrOutput() SwitchVrfInstancesMulticastConfigPtrOutput
+	ToSwitchVrfInstancesMulticastConfigPtrOutputWithContext(context.Context) SwitchVrfInstancesMulticastConfigPtrOutput
+}
+
+type switchVrfInstancesMulticastConfigPtrType SwitchVrfInstancesMulticastConfigArgs
+
+func SwitchVrfInstancesMulticastConfigPtr(v *SwitchVrfInstancesMulticastConfigArgs) SwitchVrfInstancesMulticastConfigPtrInput {
+	return (*switchVrfInstancesMulticastConfigPtrType)(v)
+}
+
+func (*switchVrfInstancesMulticastConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SwitchVrfInstancesMulticastConfig)(nil)).Elem()
+}
+
+func (i *switchVrfInstancesMulticastConfigPtrType) ToSwitchVrfInstancesMulticastConfigPtrOutput() SwitchVrfInstancesMulticastConfigPtrOutput {
+	return i.ToSwitchVrfInstancesMulticastConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *switchVrfInstancesMulticastConfigPtrType) ToSwitchVrfInstancesMulticastConfigPtrOutputWithContext(ctx context.Context) SwitchVrfInstancesMulticastConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SwitchVrfInstancesMulticastConfigPtrOutput)
+}
+
+type SwitchVrfInstancesMulticastConfigOutput struct{ *pulumi.OutputState }
+
+func (SwitchVrfInstancesMulticastConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SwitchVrfInstancesMulticastConfig)(nil)).Elem()
+}
+
+func (o SwitchVrfInstancesMulticastConfigOutput) ToSwitchVrfInstancesMulticastConfigOutput() SwitchVrfInstancesMulticastConfigOutput {
+	return o
+}
+
+func (o SwitchVrfInstancesMulticastConfigOutput) ToSwitchVrfInstancesMulticastConfigOutputWithContext(ctx context.Context) SwitchVrfInstancesMulticastConfigOutput {
+	return o
+}
+
+func (o SwitchVrfInstancesMulticastConfigOutput) ToSwitchVrfInstancesMulticastConfigPtrOutput() SwitchVrfInstancesMulticastConfigPtrOutput {
+	return o.ToSwitchVrfInstancesMulticastConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SwitchVrfInstancesMulticastConfigOutput) ToSwitchVrfInstancesMulticastConfigPtrOutputWithContext(ctx context.Context) SwitchVrfInstancesMulticastConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SwitchVrfInstancesMulticastConfig) *SwitchVrfInstancesMulticastConfig {
+		return &v
+	}).(SwitchVrfInstancesMulticastConfigPtrOutput)
+}
+
+// When `true`, auto-generates a shared RP on `isL3Border` devices (ERB/IPClos topologies only)
+func (o SwitchVrfInstancesMulticastConfigOutput) AnycastRp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchVrfInstancesMulticastConfig) *bool { return v.AnycastRp }).(pulumi.BoolPtrOutput)
+}
+
+// RP address used when `anycastRp`==`false`. If the address matches a device SVI, it is configured as a local RP; otherwise a static RP is configured
+func (o SwitchVrfInstancesMulticastConfigOutput) RpIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchVrfInstancesMulticastConfig) *string { return v.RpIp }).(pulumi.StringPtrOutput)
+}
+
+// SBD IRB subnet; Mist auto-assigns per-device IPs from this range (EVPN eOISM only)
+func (o SwitchVrfInstancesMulticastConfigOutput) SbdSubnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchVrfInstancesMulticastConfig) *string { return v.SbdSubnet }).(pulumi.StringPtrOutput)
+}
+
+// Supplemental Bridge Domain VLAN ID (EVPN topology / eOISM only)
+func (o SwitchVrfInstancesMulticastConfigOutput) SbdVlanId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SwitchVrfInstancesMulticastConfig) *int { return v.SbdVlanId }).(pulumi.IntPtrOutput)
+}
+
+type SwitchVrfInstancesMulticastConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SwitchVrfInstancesMulticastConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SwitchVrfInstancesMulticastConfig)(nil)).Elem()
+}
+
+func (o SwitchVrfInstancesMulticastConfigPtrOutput) ToSwitchVrfInstancesMulticastConfigPtrOutput() SwitchVrfInstancesMulticastConfigPtrOutput {
+	return o
+}
+
+func (o SwitchVrfInstancesMulticastConfigPtrOutput) ToSwitchVrfInstancesMulticastConfigPtrOutputWithContext(ctx context.Context) SwitchVrfInstancesMulticastConfigPtrOutput {
+	return o
+}
+
+func (o SwitchVrfInstancesMulticastConfigPtrOutput) Elem() SwitchVrfInstancesMulticastConfigOutput {
+	return o.ApplyT(func(v *SwitchVrfInstancesMulticastConfig) SwitchVrfInstancesMulticastConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SwitchVrfInstancesMulticastConfig
+		return ret
+	}).(SwitchVrfInstancesMulticastConfigOutput)
+}
+
+// When `true`, auto-generates a shared RP on `isL3Border` devices (ERB/IPClos topologies only)
+func (o SwitchVrfInstancesMulticastConfigPtrOutput) AnycastRp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SwitchVrfInstancesMulticastConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AnycastRp
+	}).(pulumi.BoolPtrOutput)
+}
+
+// RP address used when `anycastRp`==`false`. If the address matches a device SVI, it is configured as a local RP; otherwise a static RP is configured
+func (o SwitchVrfInstancesMulticastConfigPtrOutput) RpIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SwitchVrfInstancesMulticastConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RpIp
+	}).(pulumi.StringPtrOutput)
+}
+
+// SBD IRB subnet; Mist auto-assigns per-device IPs from this range (EVPN eOISM only)
+func (o SwitchVrfInstancesMulticastConfigPtrOutput) SbdSubnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SwitchVrfInstancesMulticastConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SbdSubnet
+	}).(pulumi.StringPtrOutput)
+}
+
+// Supplemental Bridge Domain VLAN ID (EVPN topology / eOISM only)
+func (o SwitchVrfInstancesMulticastConfigPtrOutput) SbdVlanId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SwitchVrfInstancesMulticastConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SbdVlanId
+	}).(pulumi.IntPtrOutput)
 }
 
 type SwitchVrrpConfig struct {
@@ -50096,6 +51423,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApUplinkPortConfigPtrInput)(nil)).Elem(), ApUplinkPortConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApUsbConfigInput)(nil)).Elem(), ApUsbConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApUsbConfigPtrInput)(nil)).Elem(), ApUsbConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApUwbConfigInput)(nil)).Elem(), ApUwbConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApUwbConfigPtrInput)(nil)).Elem(), ApUwbConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApZigbeeConfigInput)(nil)).Elem(), ApZigbeeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApZigbeeConfigPtrInput)(nil)).Elem(), ApZigbeeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayBgpConfigInput)(nil)).Elem(), GatewayBgpConfigArgs{})
@@ -50186,6 +51515,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayPortConfigWanExtraRoutesMapInput)(nil)).Elem(), GatewayPortConfigWanExtraRoutesMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayPortConfigWanProbeOverrideInput)(nil)).Elem(), GatewayPortConfigWanProbeOverrideArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayPortConfigWanProbeOverridePtrInput)(nil)).Elem(), GatewayPortConfigWanProbeOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayPortConfigWanProbeOverrideHttpInput)(nil)).Elem(), GatewayPortConfigWanProbeOverrideHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayPortConfigWanProbeOverrideHttpPtrInput)(nil)).Elem(), GatewayPortConfigWanProbeOverrideHttpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayPortConfigWanSourceNatInput)(nil)).Elem(), GatewayPortConfigWanSourceNatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayPortConfigWanSourceNatPtrInput)(nil)).Elem(), GatewayPortConfigWanSourceNatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayPortMirroringInput)(nil)).Elem(), GatewayPortMirroringArgs{})
@@ -50244,10 +51575,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayTunnelConfigsIpsecProposalArrayInput)(nil)).Elem(), GatewayTunnelConfigsIpsecProposalArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayTunnelConfigsPrimaryInput)(nil)).Elem(), GatewayTunnelConfigsPrimaryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayTunnelConfigsPrimaryPtrInput)(nil)).Elem(), GatewayTunnelConfigsPrimaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayTunnelConfigsPrimaryProbeHttpInput)(nil)).Elem(), GatewayTunnelConfigsPrimaryProbeHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayTunnelConfigsPrimaryProbeHttpPtrInput)(nil)).Elem(), GatewayTunnelConfigsPrimaryProbeHttpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayTunnelConfigsProbeInput)(nil)).Elem(), GatewayTunnelConfigsProbeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayTunnelConfigsProbePtrInput)(nil)).Elem(), GatewayTunnelConfigsProbeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayTunnelConfigsSecondaryInput)(nil)).Elem(), GatewayTunnelConfigsSecondaryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayTunnelConfigsSecondaryPtrInput)(nil)).Elem(), GatewayTunnelConfigsSecondaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayTunnelConfigsSecondaryProbeHttpInput)(nil)).Elem(), GatewayTunnelConfigsSecondaryProbeHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayTunnelConfigsSecondaryProbeHttpPtrInput)(nil)).Elem(), GatewayTunnelConfigsSecondaryProbeHttpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayTunnelProviderOptionsInput)(nil)).Elem(), GatewayTunnelProviderOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayTunnelProviderOptionsPtrInput)(nil)).Elem(), GatewayTunnelProviderOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayTunnelProviderOptionsJseInput)(nil)).Elem(), GatewayTunnelProviderOptionsJseArgs{})
@@ -50304,6 +51639,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchMistNacPtrInput)(nil)).Elem(), SwitchMistNacArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchNetworksInput)(nil)).Elem(), SwitchNetworksArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchNetworksMapInput)(nil)).Elem(), SwitchNetworksMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SwitchNetworksMulticastInput)(nil)).Elem(), SwitchNetworksMulticastArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SwitchNetworksMulticastPtrInput)(nil)).Elem(), SwitchNetworksMulticastArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchOobIpConfigInput)(nil)).Elem(), SwitchOobIpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchOobIpConfigPtrInput)(nil)).Elem(), SwitchOobIpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchOspfAreasInput)(nil)).Elem(), SwitchOspfAreasArgs{})
@@ -50428,6 +51765,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchVrfInstancesExtraRoutes6MapInput)(nil)).Elem(), SwitchVrfInstancesExtraRoutes6Map{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchVrfInstancesExtraRoutesInput)(nil)).Elem(), SwitchVrfInstancesExtraRoutesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchVrfInstancesExtraRoutesMapInput)(nil)).Elem(), SwitchVrfInstancesExtraRoutesMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SwitchVrfInstancesMulticastConfigInput)(nil)).Elem(), SwitchVrfInstancesMulticastConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SwitchVrfInstancesMulticastConfigPtrInput)(nil)).Elem(), SwitchVrfInstancesMulticastConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchVrrpConfigInput)(nil)).Elem(), SwitchVrrpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchVrrpConfigPtrInput)(nil)).Elem(), SwitchVrrpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchVrrpConfigGroupsInput)(nil)).Elem(), SwitchVrrpConfigGroupsArgs{})
@@ -50653,6 +51992,8 @@ func init() {
 	pulumi.RegisterOutputType(ApUplinkPortConfigPtrOutput{})
 	pulumi.RegisterOutputType(ApUsbConfigOutput{})
 	pulumi.RegisterOutputType(ApUsbConfigPtrOutput{})
+	pulumi.RegisterOutputType(ApUwbConfigOutput{})
+	pulumi.RegisterOutputType(ApUwbConfigPtrOutput{})
 	pulumi.RegisterOutputType(ApZigbeeConfigOutput{})
 	pulumi.RegisterOutputType(ApZigbeeConfigPtrOutput{})
 	pulumi.RegisterOutputType(GatewayBgpConfigOutput{})
@@ -50743,6 +52084,8 @@ func init() {
 	pulumi.RegisterOutputType(GatewayPortConfigWanExtraRoutesMapOutput{})
 	pulumi.RegisterOutputType(GatewayPortConfigWanProbeOverrideOutput{})
 	pulumi.RegisterOutputType(GatewayPortConfigWanProbeOverridePtrOutput{})
+	pulumi.RegisterOutputType(GatewayPortConfigWanProbeOverrideHttpOutput{})
+	pulumi.RegisterOutputType(GatewayPortConfigWanProbeOverrideHttpPtrOutput{})
 	pulumi.RegisterOutputType(GatewayPortConfigWanSourceNatOutput{})
 	pulumi.RegisterOutputType(GatewayPortConfigWanSourceNatPtrOutput{})
 	pulumi.RegisterOutputType(GatewayPortMirroringOutput{})
@@ -50801,10 +52144,14 @@ func init() {
 	pulumi.RegisterOutputType(GatewayTunnelConfigsIpsecProposalArrayOutput{})
 	pulumi.RegisterOutputType(GatewayTunnelConfigsPrimaryOutput{})
 	pulumi.RegisterOutputType(GatewayTunnelConfigsPrimaryPtrOutput{})
+	pulumi.RegisterOutputType(GatewayTunnelConfigsPrimaryProbeHttpOutput{})
+	pulumi.RegisterOutputType(GatewayTunnelConfigsPrimaryProbeHttpPtrOutput{})
 	pulumi.RegisterOutputType(GatewayTunnelConfigsProbeOutput{})
 	pulumi.RegisterOutputType(GatewayTunnelConfigsProbePtrOutput{})
 	pulumi.RegisterOutputType(GatewayTunnelConfigsSecondaryOutput{})
 	pulumi.RegisterOutputType(GatewayTunnelConfigsSecondaryPtrOutput{})
+	pulumi.RegisterOutputType(GatewayTunnelConfigsSecondaryProbeHttpOutput{})
+	pulumi.RegisterOutputType(GatewayTunnelConfigsSecondaryProbeHttpPtrOutput{})
 	pulumi.RegisterOutputType(GatewayTunnelProviderOptionsOutput{})
 	pulumi.RegisterOutputType(GatewayTunnelProviderOptionsPtrOutput{})
 	pulumi.RegisterOutputType(GatewayTunnelProviderOptionsJseOutput{})
@@ -50861,6 +52208,8 @@ func init() {
 	pulumi.RegisterOutputType(SwitchMistNacPtrOutput{})
 	pulumi.RegisterOutputType(SwitchNetworksOutput{})
 	pulumi.RegisterOutputType(SwitchNetworksMapOutput{})
+	pulumi.RegisterOutputType(SwitchNetworksMulticastOutput{})
+	pulumi.RegisterOutputType(SwitchNetworksMulticastPtrOutput{})
 	pulumi.RegisterOutputType(SwitchOobIpConfigOutput{})
 	pulumi.RegisterOutputType(SwitchOobIpConfigPtrOutput{})
 	pulumi.RegisterOutputType(SwitchOspfAreasOutput{})
@@ -50985,6 +52334,8 @@ func init() {
 	pulumi.RegisterOutputType(SwitchVrfInstancesExtraRoutes6MapOutput{})
 	pulumi.RegisterOutputType(SwitchVrfInstancesExtraRoutesOutput{})
 	pulumi.RegisterOutputType(SwitchVrfInstancesExtraRoutesMapOutput{})
+	pulumi.RegisterOutputType(SwitchVrfInstancesMulticastConfigOutput{})
+	pulumi.RegisterOutputType(SwitchVrfInstancesMulticastConfigPtrOutput{})
 	pulumi.RegisterOutputType(SwitchVrrpConfigOutput{})
 	pulumi.RegisterOutputType(SwitchVrrpConfigPtrOutput{})
 	pulumi.RegisterOutputType(SwitchVrrpConfigGroupsOutput{})

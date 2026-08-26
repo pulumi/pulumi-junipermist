@@ -14,6 +14,10 @@ namespace Pulumi.JuniperMist.Site.Inputs
     {
         [Input("contents")]
         private InputList<Inputs.NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupContentGetArgs>? _contents;
+
+        /// <summary>
+        /// VACM security-name to group mapping entries
+        /// </summary>
         public InputList<Inputs.NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupContentGetArgs> Contents
         {
             get => _contents ?? (_contents = new InputList<Inputs.NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupContentGetArgs>());
@@ -21,7 +25,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// enum: `Usm`, `V1`, `V2c`
+        /// Required security model for these VACM group mappings
         /// </summary>
         [Input("securityModel")]
         public Input<string>? SecurityModel { get; set; }

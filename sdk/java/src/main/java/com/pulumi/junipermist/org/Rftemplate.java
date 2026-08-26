@@ -228,6 +228,20 @@ public class Rftemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.countryCode);
     }
     /**
+     * Whether U-NII-4 channels (169, 173, 177) are enabled
+     * 
+     */
+    @Export(name="enableUnii4", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> enableUnii4;
+
+    /**
+     * @return Whether U-NII-4 channels (169, 173, 177) are enabled
+     * 
+     */
+    public Output<Optional<Boolean>> enableUnii4() {
+        return Codegen.optional(this.enableUnii4);
+    }
+    /**
      * overwrites for a specific model. If a band is specified, it will shadow the default. Property key is the model name (e.g. &#34;AP63&#34;)
      * 
      */

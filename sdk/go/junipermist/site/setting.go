@@ -102,7 +102,7 @@ type Setting struct {
 	// By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following
 	DeviceUpdownThreshold pulumi.IntPtrOutput `pulumi:"deviceUpdownThreshold"`
 	// Whether UNII-4 channels are enabled for the site
-	EnableUnii4 pulumi.BoolOutput `pulumi:"enableUnii4"`
+	EnableUnii4 pulumi.BoolPtrOutput `pulumi:"enableUnii4"`
 	// Dwell-time analytics rules for the site
 	Engagement SettingEngagementOutput `pulumi:"engagement"`
 	// Management access settings for gateways at the site
@@ -165,6 +165,8 @@ type Setting struct {
 	TuntermMulticastConfig SettingTuntermMulticastConfigPtrOutput `pulumi:"tuntermMulticastConfig"`
 	// AP uplink port configuration for the site
 	UplinkPortConfig SettingUplinkPortConfigOutput `pulumi:"uplinkPortConfig"`
+	// UWB RTLS (OMLOX asset visibility) settings for the site, only effective on AP models with a UWB radio and in countries where the UWB radio is permitted. Overridden by the device profile and device-level settings
+	UwbConfig SettingUwbConfigPtrOutput `pulumi:"uwbConfig"`
 	// Template variables defined for the site
 	Vars pulumi.StringMapOutput `pulumi:"vars"`
 	// Metadata annotations for site template variables
@@ -316,6 +318,8 @@ type settingState struct {
 	TuntermMulticastConfig *SettingTuntermMulticastConfig `pulumi:"tuntermMulticastConfig"`
 	// AP uplink port configuration for the site
 	UplinkPortConfig *SettingUplinkPortConfig `pulumi:"uplinkPortConfig"`
+	// UWB RTLS (OMLOX asset visibility) settings for the site, only effective on AP models with a UWB radio and in countries where the UWB radio is permitted. Overridden by the device profile and device-level settings
+	UwbConfig *SettingUwbConfig `pulumi:"uwbConfig"`
 	// Template variables defined for the site
 	Vars map[string]string `pulumi:"vars"`
 	// Metadata annotations for site template variables
@@ -435,6 +439,8 @@ type SettingState struct {
 	TuntermMulticastConfig SettingTuntermMulticastConfigPtrInput
 	// AP uplink port configuration for the site
 	UplinkPortConfig SettingUplinkPortConfigPtrInput
+	// UWB RTLS (OMLOX asset visibility) settings for the site, only effective on AP models with a UWB radio and in countries where the UWB radio is permitted. Overridden by the device profile and device-level settings
+	UwbConfig SettingUwbConfigPtrInput
 	// Template variables defined for the site
 	Vars pulumi.StringMapInput
 	// Metadata annotations for site template variables
@@ -556,6 +562,8 @@ type settingArgs struct {
 	TuntermMulticastConfig *SettingTuntermMulticastConfig `pulumi:"tuntermMulticastConfig"`
 	// AP uplink port configuration for the site
 	UplinkPortConfig *SettingUplinkPortConfig `pulumi:"uplinkPortConfig"`
+	// UWB RTLS (OMLOX asset visibility) settings for the site, only effective on AP models with a UWB radio and in countries where the UWB radio is permitted. Overridden by the device profile and device-level settings
+	UwbConfig *SettingUwbConfig `pulumi:"uwbConfig"`
 	// Template variables defined for the site
 	Vars map[string]string `pulumi:"vars"`
 	// Metadata annotations for site template variables
@@ -670,6 +678,8 @@ type SettingArgs struct {
 	TuntermMulticastConfig SettingTuntermMulticastConfigPtrInput
 	// AP uplink port configuration for the site
 	UplinkPortConfig SettingUplinkPortConfigPtrInput
+	// UWB RTLS (OMLOX asset visibility) settings for the site, only effective on AP models with a UWB radio and in countries where the UWB radio is permitted. Overridden by the device profile and device-level settings
+	UwbConfig SettingUwbConfigPtrInput
 	// Template variables defined for the site
 	Vars pulumi.StringMapInput
 	// Metadata annotations for site template variables
@@ -847,8 +857,8 @@ func (o SettingOutput) DeviceUpdownThreshold() pulumi.IntPtrOutput {
 }
 
 // Whether UNII-4 channels are enabled for the site
-func (o SettingOutput) EnableUnii4() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Setting) pulumi.BoolOutput { return v.EnableUnii4 }).(pulumi.BoolOutput)
+func (o SettingOutput) EnableUnii4() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Setting) pulumi.BoolPtrOutput { return v.EnableUnii4 }).(pulumi.BoolPtrOutput)
 }
 
 // Dwell-time analytics rules for the site
@@ -1004,6 +1014,11 @@ func (o SettingOutput) TuntermMulticastConfig() SettingTuntermMulticastConfigPtr
 // AP uplink port configuration for the site
 func (o SettingOutput) UplinkPortConfig() SettingUplinkPortConfigOutput {
 	return o.ApplyT(func(v *Setting) SettingUplinkPortConfigOutput { return v.UplinkPortConfig }).(SettingUplinkPortConfigOutput)
+}
+
+// UWB RTLS (OMLOX asset visibility) settings for the site, only effective on AP models with a UWB radio and in countries where the UWB radio is permitted. Overridden by the device profile and device-level settings
+func (o SettingOutput) UwbConfig() SettingUwbConfigPtrOutput {
+	return o.ApplyT(func(v *Setting) SettingUwbConfigPtrOutput { return v.UwbConfig }).(SettingUwbConfigPtrOutput)
 }
 
 // Template variables defined for the site

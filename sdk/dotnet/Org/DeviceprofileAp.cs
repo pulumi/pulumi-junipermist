@@ -197,6 +197,12 @@ namespace Pulumi.JuniperMist.Org
         public Output<Outputs.DeviceprofileApUsbConfig?> UsbConfig { get; private set; } = null!;
 
         /// <summary>
+        /// UWB RTLS / OMLOX asset-visibility settings; overrides the site-level `UwbConfig` and is overridden by device-level `UwbConfig`
+        /// </summary>
+        [Output("uwbConfig")]
+        public Output<Outputs.DeviceprofileApUwbConfig?> UwbConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Variable values provided by this AP device profile
         /// </summary>
         [Output("vars")]
@@ -405,6 +411,12 @@ namespace Pulumi.JuniperMist.Org
         [Input("usbConfig")]
         public Input<Inputs.DeviceprofileApUsbConfigArgs>? UsbConfig { get; set; }
 
+        /// <summary>
+        /// UWB RTLS / OMLOX asset-visibility settings; overrides the site-level `UwbConfig` and is overridden by device-level `UwbConfig`
+        /// </summary>
+        [Input("uwbConfig")]
+        public Input<Inputs.DeviceprofileApUwbConfigArgs>? UwbConfig { get; set; }
+
         [Input("vars")]
         private InputMap<string>? _vars;
 
@@ -586,6 +598,12 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         [Input("usbConfig")]
         public Input<Inputs.DeviceprofileApUsbConfigGetArgs>? UsbConfig { get; set; }
+
+        /// <summary>
+        /// UWB RTLS / OMLOX asset-visibility settings; overrides the site-level `UwbConfig` and is overridden by device-level `UwbConfig`
+        /// </summary>
+        [Input("uwbConfig")]
+        public Input<Inputs.DeviceprofileApUwbConfigGetArgs>? UwbConfig { get; set; }
 
         [Input("vars")]
         private InputMap<string>? _vars;

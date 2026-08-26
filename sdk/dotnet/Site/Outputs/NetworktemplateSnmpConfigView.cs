@@ -14,10 +14,16 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class NetworktemplateSnmpConfigView
     {
         /// <summary>
-        /// If the root oid configured is included
+        /// Whether the root OID is included in this SNMP view
         /// </summary>
         public readonly bool? Include;
+        /// <summary>
+        /// Root OID for this SNMP view
+        /// </summary>
         public readonly string? Oid;
+        /// <summary>
+        /// Name of the SNMP MIB view definition
+        /// </summary>
         public readonly string? ViewName;
 
         [OutputConstructor]

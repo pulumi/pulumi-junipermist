@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -77,6 +79,10 @@ export class Webhook extends pulumi.CustomResource {
     }
 
     /**
+     * Default action applied when none of the `rules` match the incoming event
+     */
+    declare public readonly defaultAction: pulumi.Output<string | undefined>;
+    /**
      * Whether webhook is enabled
      */
     declare public readonly enabled: pulumi.Output<boolean>;
@@ -121,6 +127,10 @@ export class Webhook extends pulumi.CustomResource {
      */
     declare public readonly orgId: pulumi.Output<string>;
     /**
+     * Optional filtering rules to override `topics`. Each rule permits or blocks events for a topic, optionally based on event payload matching criteria
+     */
+    declare public readonly rules: pulumi.Output<outputs.org.WebhookRule[] | undefined>;
+    /**
      * Only if `type`=`http-post`
      */
     declare public readonly secret: pulumi.Output<string | undefined>;
@@ -162,6 +172,7 @@ export class Webhook extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WebhookState | undefined;
+            resourceInputs["defaultAction"] = state?.defaultAction;
             resourceInputs["enabled"] = state?.enabled;
             resourceInputs["headers"] = state?.headers;
             resourceInputs["name"] = state?.name;
@@ -173,6 +184,7 @@ export class Webhook extends pulumi.CustomResource {
             resourceInputs["oauth2TokenUrl"] = state?.oauth2TokenUrl;
             resourceInputs["oauth2Username"] = state?.oauth2Username;
             resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["rules"] = state?.rules;
             resourceInputs["secret"] = state?.secret;
             resourceInputs["singleEventPerMessage"] = state?.singleEventPerMessage;
             resourceInputs["splunkToken"] = state?.splunkToken;
@@ -191,6 +203,7 @@ export class Webhook extends pulumi.CustomResource {
             if (args?.url === undefined && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
+            resourceInputs["defaultAction"] = args?.defaultAction;
             resourceInputs["enabled"] = args?.enabled;
             resourceInputs["headers"] = args?.headers;
             resourceInputs["name"] = args?.name;
@@ -202,6 +215,7 @@ export class Webhook extends pulumi.CustomResource {
             resourceInputs["oauth2TokenUrl"] = args?.oauth2TokenUrl;
             resourceInputs["oauth2Username"] = args?.oauth2Username;
             resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["rules"] = args?.rules;
             resourceInputs["secret"] = args?.secret ? pulumi.secret(args.secret) : undefined;
             resourceInputs["singleEventPerMessage"] = args?.singleEventPerMessage;
             resourceInputs["splunkToken"] = args?.splunkToken ? pulumi.secret(args.splunkToken) : undefined;
@@ -221,6 +235,10 @@ export class Webhook extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Webhook resources.
  */
 export interface WebhookState {
+    /**
+     * Default action applied when none of the `rules` match the incoming event
+     */
+    defaultAction?: pulumi.Input<string | undefined>;
     /**
      * Whether webhook is enabled
      */
@@ -266,6 +284,10 @@ export interface WebhookState {
      */
     orgId?: pulumi.Input<string | undefined>;
     /**
+     * Optional filtering rules to override `topics`. Each rule permits or blocks events for a topic, optionally based on event payload matching criteria
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.org.WebhookRule>[] | undefined>;
+    /**
      * Only if `type`=`http-post`
      */
     secret?: pulumi.Input<string | undefined>;
@@ -299,6 +321,10 @@ export interface WebhookState {
  * The set of arguments for constructing a Webhook resource.
  */
 export interface WebhookArgs {
+    /**
+     * Default action applied when none of the `rules` match the incoming event
+     */
+    defaultAction?: pulumi.Input<string | undefined>;
     /**
      * Whether webhook is enabled
      */
@@ -343,6 +369,10 @@ export interface WebhookArgs {
      * Organization that owns the webhook
      */
     orgId: pulumi.Input<string>;
+    /**
+     * Optional filtering rules to override `topics`. Each rule permits or blocks events for a topic, optionally based on event payload matching criteria
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.org.WebhookRule>[] | undefined>;
     /**
      * Only if `type`=`http-post`
      */

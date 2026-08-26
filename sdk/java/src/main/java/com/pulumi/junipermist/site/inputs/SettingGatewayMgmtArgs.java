@@ -112,6 +112,21 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * For SRX only, disable IDP packet capture
+     * 
+     */
+    @Import(name="disableIdpPcap")
+    private @Nullable Output<Boolean> disableIdpPcap;
+
+    /**
+     * @return For SRX only, disable IDP packet capture
+     * 
+     */
+    public Optional<Output<Boolean>> disableIdpPcap() {
+        return Optional.ofNullable(this.disableIdpPcap);
+    }
+
+    /**
      * For SSR and SRX, disable management interface
      * 
      */
@@ -255,6 +270,7 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
         this.autoSignatureUpdate = $.autoSignatureUpdate;
         this.configRevertTimer = $.configRevertTimer;
         this.disableConsole = $.disableConsole;
+        this.disableIdpPcap = $.disableIdpPcap;
         this.disableOob = $.disableOob;
         this.disableUsb = $.disableUsb;
         this.fipsEnabled = $.fipsEnabled;
@@ -418,6 +434,27 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
          */
         public Builder disableConsole(Boolean disableConsole) {
             return disableConsole(Output.of(disableConsole));
+        }
+
+        /**
+         * @param disableIdpPcap For SRX only, disable IDP packet capture
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableIdpPcap(@Nullable Output<Boolean> disableIdpPcap) {
+            $.disableIdpPcap = disableIdpPcap;
+            return this;
+        }
+
+        /**
+         * @param disableIdpPcap For SRX only, disable IDP packet capture
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableIdpPcap(Boolean disableIdpPcap) {
+            return disableIdpPcap(Output.of(disableIdpPcap));
         }
 
         /**

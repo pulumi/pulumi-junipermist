@@ -12,14 +12,33 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class NetworktemplateSnmpConfigV3ConfigNotifyFilterGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("categories")]
+        private InputList<string>? _categories;
+
+        /// <summary>
+        /// CX only. List of SNMP trap group categories included in this filter profile. See https://www.juniper.net/documentation/software/topics/task/configuration/snmp-trap-groups-configuring-junos-nm.html for valid category names.
+        /// </summary>
+        public InputList<string> Categories
+        {
+            get => _categories ?? (_categories = new InputList<string>());
+            set => _categories = value;
+        }
+
         [Input("contents")]
         private InputList<Inputs.NetworktemplateSnmpConfigV3ConfigNotifyFilterContentGetArgs>? _contents;
+
+        /// <summary>
+        /// OID filter rules in this notification filter profile
+        /// </summary>
         public InputList<Inputs.NetworktemplateSnmpConfigV3ConfigNotifyFilterContentGetArgs> Contents
         {
             get => _contents ?? (_contents = new InputList<Inputs.NetworktemplateSnmpConfigV3ConfigNotifyFilterContentGetArgs>());
             set => _contents = value;
         }
 
+        /// <summary>
+        /// Notification filter profile name
+        /// </summary>
         [Input("profileName")]
         public Input<string>? ProfileName { get; set; }
 

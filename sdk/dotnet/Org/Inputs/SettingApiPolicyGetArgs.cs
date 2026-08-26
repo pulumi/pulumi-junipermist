@@ -13,6 +13,12 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class SettingApiPolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Optional. When `True`, Org API tokens without their own `SrcIps` also respect the org policy `SrcIps`. Default is `False`.
+        /// </summary>
+        [Input("enforceSrcIpsForTokens")]
+        public Input<bool>? EnforceSrcIpsForTokens { get; set; }
+
+        /// <summary>
         /// By default, API hides password/secrets when the user doesn't have write access
         ///   * `True`: API will hide passwords/secrets for all users
         ///   * `False`: API will hide passwords/secrets for read-only users

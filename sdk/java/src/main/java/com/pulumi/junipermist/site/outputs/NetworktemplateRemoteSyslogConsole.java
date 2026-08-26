@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NetworktemplateRemoteSyslogConsole {
+    /**
+     * @return Syslog facilities and severities forwarded from console logs
+     * 
+     */
     private @Nullable List<NetworktemplateRemoteSyslogConsoleContent> contents;
 
     private NetworktemplateRemoteSyslogConsole() {}
+    /**
+     * @return Syslog facilities and severities forwarded from console logs
+     * 
+     */
     public List<NetworktemplateRemoteSyslogConsoleContent> contents() {
         return this.contents == null ? List.of() : this.contents;
     }

@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class NetworktemplateRemoteSyslogConsole
     {
+        /// <summary>
+        /// Syslog facilities and severities forwarded from console logs
+        /// </summary>
         public readonly ImmutableArray<Outputs.NetworktemplateRemoteSyslogConsoleContent> Contents;
 
         [OutputConstructor]

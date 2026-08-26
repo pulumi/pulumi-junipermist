@@ -63,6 +63,21 @@ public final class ApMqttConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Optional catch-all MQTT topic; BLE advertisements matching no AssetFilter are published here
+     * 
+     */
+    @Import(name="defaultTopic")
+    private @Nullable Output<String> defaultTopic;
+
+    /**
+     * @return Optional catch-all MQTT topic; BLE advertisements matching no AssetFilter are published here
+     * 
+     */
+    public Optional<Output<String>> defaultTopic() {
+        return Optional.ofNullable(this.defaultTopic);
+    }
+
+    /**
      * Whether to enable MQTT publishing
      * 
      */
@@ -128,6 +143,7 @@ public final class ApMqttConfigArgs extends com.pulumi.resources.ResourceArgs {
         this.brokerHost = $.brokerHost;
         this.brokerPort = $.brokerPort;
         this.brokerProto = $.brokerProto;
+        this.defaultTopic = $.defaultTopic;
         this.enabled = $.enabled;
         this.format = $.format;
         this.password = $.password;
@@ -213,6 +229,27 @@ public final class ApMqttConfigArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder brokerProto(String brokerProto) {
             return brokerProto(Output.of(brokerProto));
+        }
+
+        /**
+         * @param defaultTopic Optional catch-all MQTT topic; BLE advertisements matching no AssetFilter are published here
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultTopic(@Nullable Output<String> defaultTopic) {
+            $.defaultTopic = defaultTopic;
+            return this;
+        }
+
+        /**
+         * @param defaultTopic Optional catch-all MQTT topic; BLE advertisements matching no AssetFilter are published here
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultTopic(String defaultTopic) {
+            return defaultTopic(Output.of(defaultTopic));
         }
 
         /**

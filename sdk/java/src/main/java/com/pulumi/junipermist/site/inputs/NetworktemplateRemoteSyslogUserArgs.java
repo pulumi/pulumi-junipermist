@@ -17,23 +17,47 @@ public final class NetworktemplateRemoteSyslogUserArgs extends com.pulumi.resour
 
     public static final NetworktemplateRemoteSyslogUserArgs Empty = new NetworktemplateRemoteSyslogUserArgs();
 
+    /**
+     * Syslog facilities and severities logged for this user rule
+     * 
+     */
     @Import(name="contents")
     private @Nullable Output<List<NetworktemplateRemoteSyslogUserContentArgs>> contents;
 
+    /**
+     * @return Syslog facilities and severities logged for this user rule
+     * 
+     */
     public Optional<Output<List<NetworktemplateRemoteSyslogUserContentArgs>>> contents() {
         return Optional.ofNullable(this.contents);
     }
 
+    /**
+     * Expression used to filter user log messages
+     * 
+     */
     @Import(name="match")
     private @Nullable Output<String> match;
 
+    /**
+     * @return Expression used to filter user log messages
+     * 
+     */
     public Optional<Output<String>> match() {
         return Optional.ofNullable(this.match);
     }
 
+    /**
+     * Account name or wildcard matched by this syslog rule
+     * 
+     */
     @Import(name="user")
     private @Nullable Output<String> user;
 
+    /**
+     * @return Account name or wildcard matched by this syslog rule
+     * 
+     */
     public Optional<Output<String>> user() {
         return Optional.ofNullable(this.user);
     }
@@ -64,33 +88,75 @@ public final class NetworktemplateRemoteSyslogUserArgs extends com.pulumi.resour
             $ = new NetworktemplateRemoteSyslogUserArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param contents Syslog facilities and severities logged for this user rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder contents(@Nullable Output<List<NetworktemplateRemoteSyslogUserContentArgs>> contents) {
             $.contents = contents;
             return this;
         }
 
+        /**
+         * @param contents Syslog facilities and severities logged for this user rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder contents(List<NetworktemplateRemoteSyslogUserContentArgs> contents) {
             return contents(Output.of(contents));
         }
 
+        /**
+         * @param contents Syslog facilities and severities logged for this user rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder contents(NetworktemplateRemoteSyslogUserContentArgs... contents) {
             return contents(List.of(contents));
         }
 
+        /**
+         * @param match Expression used to filter user log messages
+         * 
+         * @return builder
+         * 
+         */
         public Builder match(@Nullable Output<String> match) {
             $.match = match;
             return this;
         }
 
+        /**
+         * @param match Expression used to filter user log messages
+         * 
+         * @return builder
+         * 
+         */
         public Builder match(String match) {
             return match(Output.of(match));
         }
 
+        /**
+         * @param user Account name or wildcard matched by this syslog rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder user(@Nullable Output<String> user) {
             $.user = user;
             return this;
         }
 
+        /**
+         * @param user Account name or wildcard matched by this syslog rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder user(String user) {
             return user(Output.of(user));
         }

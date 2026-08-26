@@ -15,22 +15,30 @@ public final class NetworktemplateSwitchMgmtLocalAccountsArgs extends com.pulumi
 
     public static final NetworktemplateSwitchMgmtLocalAccountsArgs Empty = new NetworktemplateSwitchMgmtLocalAccountsArgs();
 
+    /**
+     * Local password for the switch user account
+     * 
+     */
     @Import(name="password")
     private @Nullable Output<String> password;
 
+    /**
+     * @return Local password for the switch user account
+     * 
+     */
     public Optional<Output<String>> password() {
         return Optional.ofNullable(this.password);
     }
 
     /**
-     * enum: `admin`, `helpdesk`, `none`, `read`
+     * Access role granted to the local switch user account
      * 
      */
     @Import(name="role")
     private @Nullable Output<String> role;
 
     /**
-     * @return enum: `admin`, `helpdesk`, `none`, `read`
+     * @return Access role granted to the local switch user account
      * 
      */
     public Optional<Output<String>> role() {
@@ -62,17 +70,29 @@ public final class NetworktemplateSwitchMgmtLocalAccountsArgs extends com.pulumi
             $ = new NetworktemplateSwitchMgmtLocalAccountsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param password Local password for the switch user account
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
         }
 
+        /**
+         * @param password Local password for the switch user account
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(String password) {
             return password(Output.of(password));
         }
 
         /**
-         * @param role enum: `admin`, `helpdesk`, `none`, `read`
+         * @param role Access role granted to the local switch user account
          * 
          * @return builder
          * 
@@ -83,7 +103,7 @@ public final class NetworktemplateSwitchMgmtLocalAccountsArgs extends com.pulumi
         }
 
         /**
-         * @param role enum: `admin`, `helpdesk`, `none`, `read`
+         * @param role Access role granted to the local switch user account
          * 
          * @return builder
          * 

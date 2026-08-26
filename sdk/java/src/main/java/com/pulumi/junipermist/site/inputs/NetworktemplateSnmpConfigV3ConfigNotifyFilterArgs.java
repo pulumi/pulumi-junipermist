@@ -17,16 +17,47 @@ public final class NetworktemplateSnmpConfigV3ConfigNotifyFilterArgs extends com
 
     public static final NetworktemplateSnmpConfigV3ConfigNotifyFilterArgs Empty = new NetworktemplateSnmpConfigV3ConfigNotifyFilterArgs();
 
+    /**
+     * CX only. List of SNMP trap group categories included in this filter profile. See https://www.juniper.net/documentation/software/topics/task/configuration/snmp-trap-groups-configuring-junos-nm.html for valid category names.
+     * 
+     */
+    @Import(name="categories")
+    private @Nullable Output<List<String>> categories;
+
+    /**
+     * @return CX only. List of SNMP trap group categories included in this filter profile. See https://www.juniper.net/documentation/software/topics/task/configuration/snmp-trap-groups-configuring-junos-nm.html for valid category names.
+     * 
+     */
+    public Optional<Output<List<String>>> categories() {
+        return Optional.ofNullable(this.categories);
+    }
+
+    /**
+     * OID filter rules in this notification filter profile
+     * 
+     */
     @Import(name="contents")
     private @Nullable Output<List<NetworktemplateSnmpConfigV3ConfigNotifyFilterContentArgs>> contents;
 
+    /**
+     * @return OID filter rules in this notification filter profile
+     * 
+     */
     public Optional<Output<List<NetworktemplateSnmpConfigV3ConfigNotifyFilterContentArgs>>> contents() {
         return Optional.ofNullable(this.contents);
     }
 
+    /**
+     * Notification filter profile name
+     * 
+     */
     @Import(name="profileName")
     private @Nullable Output<String> profileName;
 
+    /**
+     * @return Notification filter profile name
+     * 
+     */
     public Optional<Output<String>> profileName() {
         return Optional.ofNullable(this.profileName);
     }
@@ -34,6 +65,7 @@ public final class NetworktemplateSnmpConfigV3ConfigNotifyFilterArgs extends com
     private NetworktemplateSnmpConfigV3ConfigNotifyFilterArgs() {}
 
     private NetworktemplateSnmpConfigV3ConfigNotifyFilterArgs(NetworktemplateSnmpConfigV3ConfigNotifyFilterArgs $) {
+        this.categories = $.categories;
         this.contents = $.contents;
         this.profileName = $.profileName;
     }
@@ -56,24 +88,85 @@ public final class NetworktemplateSnmpConfigV3ConfigNotifyFilterArgs extends com
             $ = new NetworktemplateSnmpConfigV3ConfigNotifyFilterArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param categories CX only. List of SNMP trap group categories included in this filter profile. See https://www.juniper.net/documentation/software/topics/task/configuration/snmp-trap-groups-configuring-junos-nm.html for valid category names.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder categories(@Nullable Output<List<String>> categories) {
+            $.categories = categories;
+            return this;
+        }
+
+        /**
+         * @param categories CX only. List of SNMP trap group categories included in this filter profile. See https://www.juniper.net/documentation/software/topics/task/configuration/snmp-trap-groups-configuring-junos-nm.html for valid category names.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder categories(List<String> categories) {
+            return categories(Output.of(categories));
+        }
+
+        /**
+         * @param categories CX only. List of SNMP trap group categories included in this filter profile. See https://www.juniper.net/documentation/software/topics/task/configuration/snmp-trap-groups-configuring-junos-nm.html for valid category names.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder categories(String... categories) {
+            return categories(List.of(categories));
+        }
+
+        /**
+         * @param contents OID filter rules in this notification filter profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder contents(@Nullable Output<List<NetworktemplateSnmpConfigV3ConfigNotifyFilterContentArgs>> contents) {
             $.contents = contents;
             return this;
         }
 
+        /**
+         * @param contents OID filter rules in this notification filter profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder contents(List<NetworktemplateSnmpConfigV3ConfigNotifyFilterContentArgs> contents) {
             return contents(Output.of(contents));
         }
 
+        /**
+         * @param contents OID filter rules in this notification filter profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder contents(NetworktemplateSnmpConfigV3ConfigNotifyFilterContentArgs... contents) {
             return contents(List.of(contents));
         }
 
+        /**
+         * @param profileName Notification filter profile name
+         * 
+         * @return builder
+         * 
+         */
         public Builder profileName(@Nullable Output<String> profileName) {
             $.profileName = profileName;
             return this;
         }
 
+        /**
+         * @param profileName Notification filter profile name
+         * 
+         * @return builder
+         * 
+         */
         public Builder profileName(String profileName) {
             return profileName(Output.of(profileName));
         }

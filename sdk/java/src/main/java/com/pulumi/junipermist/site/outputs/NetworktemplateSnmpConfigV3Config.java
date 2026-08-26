@@ -17,29 +17,77 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NetworktemplateSnmpConfigV3Config {
+    /**
+     * @return SNMPv3 notification definitions used for traps and informs
+     * 
+     */
     private @Nullable List<NetworktemplateSnmpConfigV3ConfigNotify> notifies;
+    /**
+     * @return SNMPv3 notification filter profiles
+     * 
+     */
     private @Nullable List<NetworktemplateSnmpConfigV3ConfigNotifyFilter> notifyFilters;
+    /**
+     * @return SNMPv3 notification target addresses
+     * 
+     */
     private @Nullable List<NetworktemplateSnmpConfigV3ConfigTargetAddress> targetAddresses;
+    /**
+     * @return SNMPv3 target parameter profiles
+     * 
+     */
     private @Nullable List<NetworktemplateSnmpConfigV3ConfigTargetParameter> targetParameters;
+    /**
+     * @return SNMPv3 USM engine configurations
+     * 
+     */
     private @Nullable List<NetworktemplateSnmpConfigV3ConfigUsm> usms;
+    /**
+     * @return SNMPv3 VACM access control configuration
+     * 
+     */
     private @Nullable NetworktemplateSnmpConfigV3ConfigVacm vacm;
 
     private NetworktemplateSnmpConfigV3Config() {}
+    /**
+     * @return SNMPv3 notification definitions used for traps and informs
+     * 
+     */
     public List<NetworktemplateSnmpConfigV3ConfigNotify> notifies() {
         return this.notifies == null ? List.of() : this.notifies;
     }
+    /**
+     * @return SNMPv3 notification filter profiles
+     * 
+     */
     public List<NetworktemplateSnmpConfigV3ConfigNotifyFilter> notifyFilters() {
         return this.notifyFilters == null ? List.of() : this.notifyFilters;
     }
+    /**
+     * @return SNMPv3 notification target addresses
+     * 
+     */
     public List<NetworktemplateSnmpConfigV3ConfigTargetAddress> targetAddresses() {
         return this.targetAddresses == null ? List.of() : this.targetAddresses;
     }
+    /**
+     * @return SNMPv3 target parameter profiles
+     * 
+     */
     public List<NetworktemplateSnmpConfigV3ConfigTargetParameter> targetParameters() {
         return this.targetParameters == null ? List.of() : this.targetParameters;
     }
+    /**
+     * @return SNMPv3 USM engine configurations
+     * 
+     */
     public List<NetworktemplateSnmpConfigV3ConfigUsm> usms() {
         return this.usms == null ? List.of() : this.usms;
     }
+    /**
+     * @return SNMPv3 VACM access control configuration
+     * 
+     */
     public Optional<NetworktemplateSnmpConfigV3ConfigVacm> vacm() {
         return Optional.ofNullable(this.vacm);
     }

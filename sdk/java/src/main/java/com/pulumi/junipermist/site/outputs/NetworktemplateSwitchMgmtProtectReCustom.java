@@ -23,6 +23,10 @@ public final class NetworktemplateSwitchMgmtProtectReCustom {
      * 
      */
     private @Nullable String protocol;
+    /**
+     * @return Source subnets matched by this custom Protect RE ACL
+     * 
+     */
     private List<String> subnets;
 
     private NetworktemplateSwitchMgmtProtectReCustom() {}
@@ -40,6 +44,10 @@ public final class NetworktemplateSwitchMgmtProtectReCustom {
     public Optional<String> protocol() {
         return Optional.ofNullable(this.protocol);
     }
+    /**
+     * @return Source subnets matched by this custom Protect RE ACL
+     * 
+     */
     public List<String> subnets() {
         return this.subnets;
     }

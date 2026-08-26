@@ -151,7 +151,7 @@ namespace Pulumi.JuniperMist.Site
         /// Whether UNII-4 channels are enabled for the site
         /// </summary>
         [Output("enableUnii4")]
-        public Output<bool> EnableUnii4 { get; private set; } = null!;
+        public Output<bool?> EnableUnii4 { get; private set; } = null!;
 
         /// <summary>
         /// Dwell-time analytics rules for the site
@@ -338,6 +338,12 @@ namespace Pulumi.JuniperMist.Site
         /// </summary>
         [Output("uplinkPortConfig")]
         public Output<Outputs.SettingUplinkPortConfig> UplinkPortConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// UWB RTLS (OMLOX asset visibility) settings for the site, only effective on AP models with a UWB radio and in countries where the UWB radio is permitted. Overridden by the device profile and device-level settings
+        /// </summary>
+        [Output("uwbConfig")]
+        public Output<Outputs.SettingUwbConfig?> UwbConfig { get; private set; } = null!;
 
         /// <summary>
         /// Template variables defined for the site
@@ -740,6 +746,12 @@ namespace Pulumi.JuniperMist.Site
         [Input("uplinkPortConfig")]
         public Input<Inputs.SettingUplinkPortConfigArgs>? UplinkPortConfig { get; set; }
 
+        /// <summary>
+        /// UWB RTLS (OMLOX asset visibility) settings for the site, only effective on AP models with a UWB radio and in countries where the UWB radio is permitted. Overridden by the device profile and device-level settings
+        /// </summary>
+        [Input("uwbConfig")]
+        public Input<Inputs.SettingUwbConfigArgs>? UwbConfig { get; set; }
+
         [Input("vars")]
         private InputMap<string>? _vars;
 
@@ -1113,6 +1125,12 @@ namespace Pulumi.JuniperMist.Site
         /// </summary>
         [Input("uplinkPortConfig")]
         public Input<Inputs.SettingUplinkPortConfigGetArgs>? UplinkPortConfig { get; set; }
+
+        /// <summary>
+        /// UWB RTLS (OMLOX asset visibility) settings for the site, only effective on AP models with a UWB radio and in countries where the UWB radio is permitted. Overridden by the device profile and device-level settings
+        /// </summary>
+        [Input("uwbConfig")]
+        public Input<Inputs.SettingUwbConfigGetArgs>? UwbConfig { get; set; }
 
         [Input("vars")]
         private InputMap<string>? _vars;

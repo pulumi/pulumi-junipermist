@@ -16,44 +16,60 @@ public final class NetworktemplateSnmpConfigTrapGroupArgs extends com.pulumi.res
 
     public static final NetworktemplateSnmpConfigTrapGroupArgs Empty = new NetworktemplateSnmpConfigTrapGroupArgs();
 
+    /**
+     * Trap categories included in this SNMP trap group
+     * 
+     */
     @Import(name="categories")
     private @Nullable Output<List<String>> categories;
 
+    /**
+     * @return Trap categories included in this SNMP trap group
+     * 
+     */
     public Optional<Output<List<String>>> categories() {
         return Optional.ofNullable(this.categories);
     }
 
     /**
-     * Categories list can refer to https://www.juniper.net/documentation/software/topics/task/configuration/snmp_trap-groups-configuring-junos-nm.html
+     * Trap group name for this SNMP trap group
      * 
      */
     @Import(name="groupName")
     private @Nullable Output<String> groupName;
 
     /**
-     * @return Categories list can refer to https://www.juniper.net/documentation/software/topics/task/configuration/snmp_trap-groups-configuring-junos-nm.html
+     * @return Trap group name for this SNMP trap group
      * 
      */
     public Optional<Output<String>> groupName() {
         return Optional.ofNullable(this.groupName);
     }
 
+    /**
+     * Trap target addresses for this SNMP trap group
+     * 
+     */
     @Import(name="targets")
     private @Nullable Output<List<String>> targets;
 
+    /**
+     * @return Trap target addresses for this SNMP trap group
+     * 
+     */
     public Optional<Output<List<String>>> targets() {
         return Optional.ofNullable(this.targets);
     }
 
     /**
-     * enum: `all`, `v1`, `v2`
+     * SNMP trap protocol version used by this group
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return enum: `all`, `v1`, `v2`
+     * @return SNMP trap protocol version used by this group
      * 
      */
     public Optional<Output<String>> version() {
@@ -87,21 +103,39 @@ public final class NetworktemplateSnmpConfigTrapGroupArgs extends com.pulumi.res
             $ = new NetworktemplateSnmpConfigTrapGroupArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param categories Trap categories included in this SNMP trap group
+         * 
+         * @return builder
+         * 
+         */
         public Builder categories(@Nullable Output<List<String>> categories) {
             $.categories = categories;
             return this;
         }
 
+        /**
+         * @param categories Trap categories included in this SNMP trap group
+         * 
+         * @return builder
+         * 
+         */
         public Builder categories(List<String> categories) {
             return categories(Output.of(categories));
         }
 
+        /**
+         * @param categories Trap categories included in this SNMP trap group
+         * 
+         * @return builder
+         * 
+         */
         public Builder categories(String... categories) {
             return categories(List.of(categories));
         }
 
         /**
-         * @param groupName Categories list can refer to https://www.juniper.net/documentation/software/topics/task/configuration/snmp_trap-groups-configuring-junos-nm.html
+         * @param groupName Trap group name for this SNMP trap group
          * 
          * @return builder
          * 
@@ -112,7 +146,7 @@ public final class NetworktemplateSnmpConfigTrapGroupArgs extends com.pulumi.res
         }
 
         /**
-         * @param groupName Categories list can refer to https://www.juniper.net/documentation/software/topics/task/configuration/snmp_trap-groups-configuring-junos-nm.html
+         * @param groupName Trap group name for this SNMP trap group
          * 
          * @return builder
          * 
@@ -121,21 +155,39 @@ public final class NetworktemplateSnmpConfigTrapGroupArgs extends com.pulumi.res
             return groupName(Output.of(groupName));
         }
 
+        /**
+         * @param targets Trap target addresses for this SNMP trap group
+         * 
+         * @return builder
+         * 
+         */
         public Builder targets(@Nullable Output<List<String>> targets) {
             $.targets = targets;
             return this;
         }
 
+        /**
+         * @param targets Trap target addresses for this SNMP trap group
+         * 
+         * @return builder
+         * 
+         */
         public Builder targets(List<String> targets) {
             return targets(Output.of(targets));
         }
 
+        /**
+         * @param targets Trap target addresses for this SNMP trap group
+         * 
+         * @return builder
+         * 
+         */
         public Builder targets(String... targets) {
             return targets(List.of(targets));
         }
 
         /**
-         * @param version enum: `all`, `v1`, `v2`
+         * @param version SNMP trap protocol version used by this group
          * 
          * @return builder
          * 
@@ -146,7 +198,7 @@ public final class NetworktemplateSnmpConfigTrapGroupArgs extends com.pulumi.res
         }
 
         /**
-         * @param version enum: `all`, `v1`, `v2`
+         * @param version SNMP trap protocol version used by this group
          * 
          * @return builder
          * 

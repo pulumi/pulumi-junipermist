@@ -17,22 +17,30 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupArgs exte
 
     public static final NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupArgs Empty = new NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupArgs();
 
+    /**
+     * VACM security-name to group mapping entries
+     * 
+     */
     @Import(name="contents")
     private @Nullable Output<List<NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupContentArgs>> contents;
 
+    /**
+     * @return VACM security-name to group mapping entries
+     * 
+     */
     public Optional<Output<List<NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupContentArgs>>> contents() {
         return Optional.ofNullable(this.contents);
     }
 
     /**
-     * enum: `usm`, `v1`, `v2c`
+     * Required security model for these VACM group mappings
      * 
      */
     @Import(name="securityModel")
     private @Nullable Output<String> securityModel;
 
     /**
-     * @return enum: `usm`, `v1`, `v2c`
+     * @return Required security model for these VACM group mappings
      * 
      */
     public Optional<Output<String>> securityModel() {
@@ -64,21 +72,39 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupArgs exte
             $ = new NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param contents VACM security-name to group mapping entries
+         * 
+         * @return builder
+         * 
+         */
         public Builder contents(@Nullable Output<List<NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupContentArgs>> contents) {
             $.contents = contents;
             return this;
         }
 
+        /**
+         * @param contents VACM security-name to group mapping entries
+         * 
+         * @return builder
+         * 
+         */
         public Builder contents(List<NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupContentArgs> contents) {
             return contents(Output.of(contents));
         }
 
+        /**
+         * @param contents VACM security-name to group mapping entries
+         * 
+         * @return builder
+         * 
+         */
         public Builder contents(NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupContentArgs... contents) {
             return contents(List.of(contents));
         }
 
         /**
-         * @param securityModel enum: `usm`, `v1`, `v2c`
+         * @param securityModel Required security model for these VACM group mappings
          * 
          * @return builder
          * 
@@ -89,7 +115,7 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupArgs exte
         }
 
         /**
-         * @param securityModel enum: `usm`, `v1`, `v2c`
+         * @param securityModel Required security model for these VACM group mappings
          * 
          * @return builder
          * 

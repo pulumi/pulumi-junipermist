@@ -71,6 +71,12 @@ namespace Pulumi.JuniperMist.Site
         public Output<ImmutableArray<string>> AssetfilterIds { get; private set; } = null!;
 
         /// <summary>
+        /// Default action applied when none of the `Rules` match the incoming event
+        /// </summary>
+        [Output("defaultAction")]
+        public Output<string?> DefaultAction { get; private set; } = null!;
+
+        /// <summary>
         /// Whether webhook is enabled
         /// </summary>
         [Output("enabled")]
@@ -135,6 +141,12 @@ namespace Pulumi.JuniperMist.Site
         /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional filtering rules to override `Topics`. Each rule permits or blocks events for a topic, optionally based on event payload matching criteria
+        /// </summary>
+        [Output("rules")]
+        public Output<ImmutableArray<Outputs.WebhookRule>> Rules { get; private set; } = null!;
 
         /// <summary>
         /// Only if `Type`=`http-post`
@@ -251,6 +263,12 @@ namespace Pulumi.JuniperMist.Site
         }
 
         /// <summary>
+        /// Default action applied when none of the `Rules` match the incoming event
+        /// </summary>
+        [Input("defaultAction")]
+        public Input<string>? DefaultAction { get; set; }
+
+        /// <summary>
         /// Whether webhook is enabled
         /// </summary>
         [Input("enabled")]
@@ -341,6 +359,18 @@ namespace Pulumi.JuniperMist.Site
         /// </summary>
         [Input("oauth2Username")]
         public Input<string>? Oauth2Username { get; set; }
+
+        [Input("rules")]
+        private InputList<Inputs.WebhookRuleArgs>? _rules;
+
+        /// <summary>
+        /// Optional filtering rules to override `Topics`. Each rule permits or blocks events for a topic, optionally based on event payload matching criteria
+        /// </summary>
+        public InputList<Inputs.WebhookRuleArgs> Rules
+        {
+            get => _rules ?? (_rules = new InputList<Inputs.WebhookRuleArgs>());
+            set => _rules = value;
+        }
 
         [Input("secret")]
         private Input<string>? _secret;
@@ -435,6 +465,12 @@ namespace Pulumi.JuniperMist.Site
             get => _assetfilterIds ?? (_assetfilterIds = new InputList<string>());
             set => _assetfilterIds = value;
         }
+
+        /// <summary>
+        /// Default action applied when none of the `Rules` match the incoming event
+        /// </summary>
+        [Input("defaultAction")]
+        public Input<string>? DefaultAction { get; set; }
 
         /// <summary>
         /// Whether webhook is enabled
@@ -533,6 +569,18 @@ namespace Pulumi.JuniperMist.Site
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
+
+        [Input("rules")]
+        private InputList<Inputs.WebhookRuleGetArgs>? _rules;
+
+        /// <summary>
+        /// Optional filtering rules to override `Topics`. Each rule permits or blocks events for a topic, optionally based on event payload matching criteria
+        /// </summary>
+        public InputList<Inputs.WebhookRuleGetArgs> Rules
+        {
+            get => _rules ?? (_rules = new InputList<Inputs.WebhookRuleGetArgs>());
+            set => _rules = value;
+        }
 
         [Input("secret")]
         private Input<string>? _secret;

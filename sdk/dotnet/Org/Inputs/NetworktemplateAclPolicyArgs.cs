@@ -25,6 +25,12 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
+        /// Whether this ACL policy is disabled
+        /// </summary>
+        [Input("disabled")]
+        public Input<bool>? Disabled { get; set; }
+
+        /// <summary>
         /// Display name of the ACL policy
         /// </summary>
         [Input("name")]

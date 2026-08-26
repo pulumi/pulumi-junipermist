@@ -12,9 +12,9 @@ import com.pulumi.junipermist.org.SettingArgs;
 import com.pulumi.junipermist.org.inputs.SettingState;
 import com.pulumi.junipermist.org.outputs.SettingApiPolicy;
 import com.pulumi.junipermist.org.outputs.SettingAutoUpgrade;
+import com.pulumi.junipermist.org.outputs.SettingCacertsConfig;
 import com.pulumi.junipermist.org.outputs.SettingCelona;
 import com.pulumi.junipermist.org.outputs.SettingCloudshark;
-import com.pulumi.junipermist.org.outputs.SettingCradlepoint;
 import com.pulumi.junipermist.org.outputs.SettingDeviceCert;
 import com.pulumi.junipermist.org.outputs.SettingInstaller;
 import com.pulumi.junipermist.org.outputs.SettingJcloud;
@@ -203,18 +203,32 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoUpgrade);
     }
     /**
-     * CA certificates used by organization-level RADIUS and RADSec settings
+     * Legacy CA certificate list used to verify client certificates. If `cacertsConfigs` is provided and non-empty, this field is ignored.
      * 
      */
     @Export(name="cacerts", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> cacerts;
 
     /**
-     * @return CA certificates used by organization-level RADIUS and RADSec settings
+     * @return Legacy CA certificate list used to verify client certificates. If `cacertsConfigs` is provided and non-empty, this field is ignored.
      * 
      */
     public Output<List<String>> cacerts() {
         return this.cacerts;
+    }
+    /**
+     * Preferred per-issuer CA certificate configuration with optional OCSP and CRL settings. When provided and non-empty, `cacerts` is ignored.
+     * 
+     */
+    @Export(name="cacertsConfigs", refs={List.class,SettingCacertsConfig.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<SettingCacertsConfig>> cacertsConfigs;
+
+    /**
+     * @return Preferred per-issuer CA certificate configuration with optional OCSP and CRL settings. When provided and non-empty, `cacerts` is ignored.
+     * 
+     */
+    public Output<Optional<List<SettingCacertsConfig>>> cacertsConfigs() {
+        return Codegen.optional(this.cacertsConfigs);
     }
     /**
      * Integration settings for Celona
@@ -243,20 +257,6 @@ public class Setting extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<SettingCloudshark>> cloudshark() {
         return Codegen.optional(this.cloudshark);
-    }
-    /**
-     * Integration settings for Cradlepoint devices
-     * 
-     */
-    @Export(name="cradlepoint", refs={SettingCradlepoint.class}, tree="[0]")
-    private Output<SettingCradlepoint> cradlepoint;
-
-    /**
-     * @return Integration settings for Cradlepoint devices
-     * 
-     */
-    public Output<SettingCradlepoint> cradlepoint() {
-        return this.cradlepoint;
     }
     /**
      * Common device certificate used by organization settings

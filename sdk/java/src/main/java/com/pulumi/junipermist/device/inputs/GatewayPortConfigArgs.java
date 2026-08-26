@@ -478,21 +478,6 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * If HA mode and for SSR only. Per-network node assignment used for VLAN-based redundancy
-     * 
-     */
-    @Import(name="rethNodes")
-    private @Nullable Output<List<String>> rethNodes;
-
-    /**
-     * @return If HA mode and for SSR only. Per-network node assignment used for VLAN-based redundancy
-     * 
-     */
-    public Optional<Output<List<String>>> rethNodes() {
-        return Optional.ofNullable(this.rethNodes);
-    }
-
-    /**
      * Link speed configured on the port
      * 
      */
@@ -780,7 +765,6 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         this.redundantGroup = $.redundantGroup;
         this.rethIdx = $.rethIdx;
         this.rethNode = $.rethNode;
-        this.rethNodes = $.rethNodes;
         this.speed = $.speed;
         this.ssrNoVirtualMac = $.ssrNoVirtualMac;
         this.svrPortRange = $.svrPortRange;
@@ -1456,37 +1440,6 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder rethNode(String rethNode) {
             return rethNode(Output.of(rethNode));
-        }
-
-        /**
-         * @param rethNodes If HA mode and for SSR only. Per-network node assignment used for VLAN-based redundancy
-         * 
-         * @return builder
-         * 
-         */
-        public Builder rethNodes(@Nullable Output<List<String>> rethNodes) {
-            $.rethNodes = rethNodes;
-            return this;
-        }
-
-        /**
-         * @param rethNodes If HA mode and for SSR only. Per-network node assignment used for VLAN-based redundancy
-         * 
-         * @return builder
-         * 
-         */
-        public Builder rethNodes(List<String> rethNodes) {
-            return rethNodes(Output.of(rethNodes));
-        }
-
-        /**
-         * @param rethNodes If HA mode and for SSR only. Per-network node assignment used for VLAN-based redundancy
-         * 
-         * @return builder
-         * 
-         */
-        public Builder rethNodes(String... rethNodes) {
-            return rethNodes(List.of(rethNodes));
         }
 
         /**

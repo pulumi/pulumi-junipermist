@@ -19,6 +19,7 @@ import com.pulumi.junipermist.org.inputs.DeviceprofileApPwrConfigArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileApRadioConfigArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileApUplinkPortConfigArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileApUsbConfigArgs;
+import com.pulumi.junipermist.org.inputs.DeviceprofileApUwbConfigArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileApZigbeeConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -394,6 +395,21 @@ public final class DeviceprofileApState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * UWB RTLS / OMLOX asset-visibility settings; overrides the site-level `uwbConfig` and is overridden by device-level `uwbConfig`
+     * 
+     */
+    @Import(name="uwbConfig")
+    private @Nullable Output<DeviceprofileApUwbConfigArgs> uwbConfig;
+
+    /**
+     * @return UWB RTLS / OMLOX asset-visibility settings; overrides the site-level `uwbConfig` and is overridden by device-level `uwbConfig`
+     * 
+     */
+    public Optional<Output<DeviceprofileApUwbConfigArgs>> uwbConfig() {
+        return Optional.ofNullable(this.uwbConfig);
+    }
+
+    /**
      * Variable values provided by this AP device profile
      * 
      */
@@ -450,6 +466,7 @@ public final class DeviceprofileApState extends com.pulumi.resources.ResourceArg
         this.type = $.type;
         this.uplinkPortConfig = $.uplinkPortConfig;
         this.usbConfig = $.usbConfig;
+        this.uwbConfig = $.uwbConfig;
         this.vars = $.vars;
         this.zigbeeConfig = $.zigbeeConfig;
     }
@@ -984,6 +1001,27 @@ public final class DeviceprofileApState extends com.pulumi.resources.ResourceArg
          */
         public Builder usbConfig(DeviceprofileApUsbConfigArgs usbConfig) {
             return usbConfig(Output.of(usbConfig));
+        }
+
+        /**
+         * @param uwbConfig UWB RTLS / OMLOX asset-visibility settings; overrides the site-level `uwbConfig` and is overridden by device-level `uwbConfig`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uwbConfig(@Nullable Output<DeviceprofileApUwbConfigArgs> uwbConfig) {
+            $.uwbConfig = uwbConfig;
+            return this;
+        }
+
+        /**
+         * @param uwbConfig UWB RTLS / OMLOX asset-visibility settings; overrides the site-level `uwbConfig` and is overridden by device-level `uwbConfig`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uwbConfig(DeviceprofileApUwbConfigArgs uwbConfig) {
+            return uwbConfig(Output.of(uwbConfig));
         }
 
         /**

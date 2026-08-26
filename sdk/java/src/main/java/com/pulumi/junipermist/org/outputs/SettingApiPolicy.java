@@ -14,6 +14,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingApiPolicy {
     /**
+     * @return Optional. When `true`, Org API tokens without their own `srcIps` also respect the org policy `srcIps`. Default is `false`.
+     * 
+     */
+    private @Nullable Boolean enforceSrcIpsForTokens;
+    /**
      * @return By default, API hides password/secrets when the user doesn&#39;t have write access
      *   * `true`: API will hide passwords/secrets for all users
      *   * `false`: API will hide passwords/secrets for read-only users
@@ -27,6 +32,13 @@ public final class SettingApiPolicy {
     private @Nullable List<String> srcIps;
 
     private SettingApiPolicy() {}
+    /**
+     * @return Optional. When `true`, Org API tokens without their own `srcIps` also respect the org policy `srcIps`. Default is `false`.
+     * 
+     */
+    public Optional<Boolean> enforceSrcIpsForTokens() {
+        return Optional.ofNullable(this.enforceSrcIpsForTokens);
+    }
     /**
      * @return By default, API hides password/secrets when the user doesn&#39;t have write access
      *   * `true`: API will hide passwords/secrets for all users
@@ -53,15 +65,23 @@ public final class SettingApiPolicy {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean enforceSrcIpsForTokens;
         private @Nullable Boolean noReveal;
         private @Nullable List<String> srcIps;
         public Builder() {}
         public Builder(SettingApiPolicy defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.enforceSrcIpsForTokens = defaults.enforceSrcIpsForTokens;
     	      this.noReveal = defaults.noReveal;
     	      this.srcIps = defaults.srcIps;
         }
 
+        @CustomType.Setter
+        public Builder enforceSrcIpsForTokens(@Nullable Boolean enforceSrcIpsForTokens) {
+
+            this.enforceSrcIpsForTokens = enforceSrcIpsForTokens;
+            return this;
+        }
         @CustomType.Setter
         public Builder noReveal(@Nullable Boolean noReveal) {
 
@@ -79,6 +99,7 @@ public final class SettingApiPolicy {
         }
         public SettingApiPolicy build() {
             final var _resultValue = new SettingApiPolicy();
+            _resultValue.enforceSrcIpsForTokens = enforceSrcIpsForTokens;
             _resultValue.noReveal = noReveal;
             _resultValue.srcIps = srcIps;
             return _resultValue;

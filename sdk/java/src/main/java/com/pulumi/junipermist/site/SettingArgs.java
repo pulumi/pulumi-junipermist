@@ -34,6 +34,7 @@ import com.pulumi.junipermist.site.inputs.SettingSyntheticTestArgs;
 import com.pulumi.junipermist.site.inputs.SettingTuntermMonitoringArgs;
 import com.pulumi.junipermist.site.inputs.SettingTuntermMulticastConfigArgs;
 import com.pulumi.junipermist.site.inputs.SettingUplinkPortConfigArgs;
+import com.pulumi.junipermist.site.inputs.SettingUwbConfigArgs;
 import com.pulumi.junipermist.site.inputs.SettingVarsAnnotationsArgs;
 import com.pulumi.junipermist.site.inputs.SettingVnaArgs;
 import com.pulumi.junipermist.site.inputs.SettingVsInstanceArgs;
@@ -717,6 +718,21 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * UWB RTLS (OMLOX asset visibility) settings for the site, only effective on AP models with a UWB radio and in countries where the UWB radio is permitted. Overridden by the device profile and device-level settings
+     * 
+     */
+    @Import(name="uwbConfig")
+    private @Nullable Output<SettingUwbConfigArgs> uwbConfig;
+
+    /**
+     * @return UWB RTLS (OMLOX asset visibility) settings for the site, only effective on AP models with a UWB radio and in countries where the UWB radio is permitted. Overridden by the device profile and device-level settings
+     * 
+     */
+    public Optional<Output<SettingUwbConfigArgs>> uwbConfig() {
+        return Optional.ofNullable(this.uwbConfig);
+    }
+
+    /**
      * Template variables defined for the site
      * 
      */
@@ -928,6 +944,7 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         this.tuntermMonitorings = $.tuntermMonitorings;
         this.tuntermMulticastConfig = $.tuntermMulticastConfig;
         this.uplinkPortConfig = $.uplinkPortConfig;
+        this.uwbConfig = $.uwbConfig;
         this.vars = $.vars;
         this.varsAnnotations = $.varsAnnotations;
         this.vna = $.vna;
@@ -1901,6 +1918,27 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder uplinkPortConfig(SettingUplinkPortConfigArgs uplinkPortConfig) {
             return uplinkPortConfig(Output.of(uplinkPortConfig));
+        }
+
+        /**
+         * @param uwbConfig UWB RTLS (OMLOX asset visibility) settings for the site, only effective on AP models with a UWB radio and in countries where the UWB radio is permitted. Overridden by the device profile and device-level settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uwbConfig(@Nullable Output<SettingUwbConfigArgs> uwbConfig) {
+            $.uwbConfig = uwbConfig;
+            return this;
+        }
+
+        /**
+         * @param uwbConfig UWB RTLS (OMLOX asset visibility) settings for the site, only effective on AP models with a UWB radio and in countries where the UWB radio is permitted. Overridden by the device profile and device-level settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uwbConfig(SettingUwbConfigArgs uwbConfig) {
+            return uwbConfig(Output.of(uwbConfig));
         }
 
         /**

@@ -189,6 +189,12 @@ namespace Pulumi.JuniperMist.Org
         public Output<Outputs.NetworktemplateMistNac?> MistNac { get; private set; } = null!;
 
         /// <summary>
+        /// Multicast settings for networks in the master VRF (not assigned to any vrf_instances); PIM is automatically enabled when any master-VRF network has `multicast.enabled`==`True`
+        /// </summary>
+        [Output("multicastConfig")]
+        public Output<Outputs.NetworktemplateMulticastConfig?> MulticastConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Display name of the network template
         /// </summary>
         [Output("name")]
@@ -438,6 +444,12 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         [Input("mistNac")]
         public Input<Inputs.NetworktemplateMistNacArgs>? MistNac { get; set; }
+
+        /// <summary>
+        /// Multicast settings for networks in the master VRF (not assigned to any vrf_instances); PIM is automatically enabled when any master-VRF network has `multicast.enabled`==`True`
+        /// </summary>
+        [Input("multicastConfig")]
+        public Input<Inputs.NetworktemplateMulticastConfigArgs>? MulticastConfig { get; set; }
 
         /// <summary>
         /// Display name of the network template
@@ -692,6 +704,12 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         [Input("mistNac")]
         public Input<Inputs.NetworktemplateMistNacGetArgs>? MistNac { get; set; }
+
+        /// <summary>
+        /// Multicast settings for networks in the master VRF (not assigned to any vrf_instances); PIM is automatically enabled when any master-VRF network has `multicast.enabled`==`True`
+        /// </summary>
+        [Input("multicastConfig")]
+        public Input<Inputs.NetworktemplateMulticastConfigGetArgs>? MulticastConfig { get; set; }
 
         /// <summary>
         /// Display name of the network template

@@ -2760,6 +2760,8 @@ type DeviceprofileApMqttConfig struct {
 	BrokerPort *int `pulumi:"brokerPort"`
 	// MQTT broker transport protocol
 	BrokerProto *string `pulumi:"brokerProto"`
+	// Optional catch-all MQTT topic; BLE advertisements matching no AssetFilter are published here
+	DefaultTopic *string `pulumi:"defaultTopic"`
 	// Whether to enable MQTT publishing
 	Enabled *bool `pulumi:"enabled"`
 	// Payload format for published messages
@@ -2788,6 +2790,8 @@ type DeviceprofileApMqttConfigArgs struct {
 	BrokerPort pulumi.IntPtrInput `pulumi:"brokerPort"`
 	// MQTT broker transport protocol
 	BrokerProto pulumi.StringPtrInput `pulumi:"brokerProto"`
+	// Optional catch-all MQTT topic; BLE advertisements matching no AssetFilter are published here
+	DefaultTopic pulumi.StringPtrInput `pulumi:"defaultTopic"`
 	// Whether to enable MQTT publishing
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// Payload format for published messages
@@ -2890,6 +2894,11 @@ func (o DeviceprofileApMqttConfigOutput) BrokerProto() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceprofileApMqttConfig) *string { return v.BrokerProto }).(pulumi.StringPtrOutput)
 }
 
+// Optional catch-all MQTT topic; BLE advertisements matching no AssetFilter are published here
+func (o DeviceprofileApMqttConfigOutput) DefaultTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApMqttConfig) *string { return v.DefaultTopic }).(pulumi.StringPtrOutput)
+}
+
 // Whether to enable MQTT publishing
 func (o DeviceprofileApMqttConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DeviceprofileApMqttConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -2964,6 +2973,16 @@ func (o DeviceprofileApMqttConfigPtrOutput) BrokerProto() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional catch-all MQTT topic; BLE advertisements matching no AssetFilter are published here
+func (o DeviceprofileApMqttConfigPtrOutput) DefaultTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileApMqttConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultTopic
+	}).(pulumi.StringPtrOutput)
+}
+
 // Whether to enable MQTT publishing
 func (o DeviceprofileApMqttConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DeviceprofileApMqttConfig) *bool {
@@ -3021,7 +3040,7 @@ type DeviceprofileApPortConfig struct {
 	MistNac *DeviceprofileApPortConfigMistNac `pulumi:"mistNac"`
 	// If `forwarding`==`mxtunnel`, vlanIds comes from mxtunnel
 	MxTunnelId *string `pulumi:"mxTunnelId"`
-	// If `forwarding`==`siteMxedge`, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+	// If `forwarding`==`siteMxedge`, vlanIds comes from siteMxedge (`mxtunnel` under site setting)
 	MxtunnelName *string `pulumi:"mxtunnelName"`
 	// Authentication mode for this AP Ethernet port
 	PortAuth *string `pulumi:"portAuth"`
@@ -3033,7 +3052,7 @@ type DeviceprofileApPortConfig struct {
 	Radsec *DeviceprofileApPortConfigRadsec `pulumi:"radsec"`
 	// Optional to specify the VLAN ID for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `siteMxedge`.
 	//   * if vlanId is not specified then it will use first one in vlan_ids[] of the mxtunnel.
-	//   * if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+	//   * if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnel` under site setting)
 	VlanId *int `pulumi:"vlanId"`
 	// If `forwarding`==`limited`, comma separated list of additional VLAN IDs allowed on this port
 	VlanIds *string `pulumi:"vlanIds"`
@@ -3071,7 +3090,7 @@ type DeviceprofileApPortConfigArgs struct {
 	MistNac DeviceprofileApPortConfigMistNacPtrInput `pulumi:"mistNac"`
 	// If `forwarding`==`mxtunnel`, vlanIds comes from mxtunnel
 	MxTunnelId pulumi.StringPtrInput `pulumi:"mxTunnelId"`
-	// If `forwarding`==`siteMxedge`, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+	// If `forwarding`==`siteMxedge`, vlanIds comes from siteMxedge (`mxtunnel` under site setting)
 	MxtunnelName pulumi.StringPtrInput `pulumi:"mxtunnelName"`
 	// Authentication mode for this AP Ethernet port
 	PortAuth pulumi.StringPtrInput `pulumi:"portAuth"`
@@ -3083,7 +3102,7 @@ type DeviceprofileApPortConfigArgs struct {
 	Radsec DeviceprofileApPortConfigRadsecPtrInput `pulumi:"radsec"`
 	// Optional to specify the VLAN ID for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `siteMxedge`.
 	//   * if vlanId is not specified then it will use first one in vlan_ids[] of the mxtunnel.
-	//   * if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+	//   * if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnel` under site setting)
 	VlanId pulumi.IntPtrInput `pulumi:"vlanId"`
 	// If `forwarding`==`limited`, comma separated list of additional VLAN IDs allowed on this port
 	VlanIds pulumi.StringPtrInput `pulumi:"vlanIds"`
@@ -3184,7 +3203,7 @@ func (o DeviceprofileApPortConfigOutput) MxTunnelId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceprofileApPortConfig) *string { return v.MxTunnelId }).(pulumi.StringPtrOutput)
 }
 
-// If `forwarding`==`siteMxedge`, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+// If `forwarding`==`siteMxedge`, vlanIds comes from siteMxedge (`mxtunnel` under site setting)
 func (o DeviceprofileApPortConfigOutput) MxtunnelName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceprofileApPortConfig) *string { return v.MxtunnelName }).(pulumi.StringPtrOutput)
 }
@@ -3211,7 +3230,7 @@ func (o DeviceprofileApPortConfigOutput) Radsec() DeviceprofileApPortConfigRadse
 
 // Optional to specify the VLAN ID for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `siteMxedge`.
 //   - if vlanId is not specified then it will use first one in vlan_ids[] of the mxtunnel.
-//   - if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+//   - if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnel` under site setting)
 func (o DeviceprofileApPortConfigOutput) VlanId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DeviceprofileApPortConfig) *int { return v.VlanId }).(pulumi.IntPtrOutput)
 }
@@ -7124,6 +7143,219 @@ func (o DeviceprofileApUsbConfigPtrOutput) VlanId() pulumi.IntPtrOutput {
 		}
 		return v.VlanId
 	}).(pulumi.IntPtrOutput)
+}
+
+type DeviceprofileApUwbConfig struct {
+	// Whether UWB RTLS integration is enabled
+	Enabled *bool `pulumi:"enabled"`
+	// RTLS server hostname or IP address
+	Host *string `pulumi:"host"`
+	// RTLS server port number
+	Port *int `pulumi:"port"`
+	// UWB time slot assigned to this AP, 0–15
+	Slot *int `pulumi:"slot"`
+	// UWB integration type. enum: `zigpos`
+	Type *string `pulumi:"type"`
+}
+
+// DeviceprofileApUwbConfigInput is an input type that accepts DeviceprofileApUwbConfigArgs and DeviceprofileApUwbConfigOutput values.
+// You can construct a concrete instance of `DeviceprofileApUwbConfigInput` via:
+//
+//	DeviceprofileApUwbConfigArgs{...}
+type DeviceprofileApUwbConfigInput interface {
+	pulumi.Input
+
+	ToDeviceprofileApUwbConfigOutput() DeviceprofileApUwbConfigOutput
+	ToDeviceprofileApUwbConfigOutputWithContext(context.Context) DeviceprofileApUwbConfigOutput
+}
+
+type DeviceprofileApUwbConfigArgs struct {
+	// Whether UWB RTLS integration is enabled
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// RTLS server hostname or IP address
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// RTLS server port number
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// UWB time slot assigned to this AP, 0–15
+	Slot pulumi.IntPtrInput `pulumi:"slot"`
+	// UWB integration type. enum: `zigpos`
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (DeviceprofileApUwbConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileApUwbConfig)(nil)).Elem()
+}
+
+func (i DeviceprofileApUwbConfigArgs) ToDeviceprofileApUwbConfigOutput() DeviceprofileApUwbConfigOutput {
+	return i.ToDeviceprofileApUwbConfigOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileApUwbConfigArgs) ToDeviceprofileApUwbConfigOutputWithContext(ctx context.Context) DeviceprofileApUwbConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileApUwbConfigOutput)
+}
+
+func (i DeviceprofileApUwbConfigArgs) ToDeviceprofileApUwbConfigPtrOutput() DeviceprofileApUwbConfigPtrOutput {
+	return i.ToDeviceprofileApUwbConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileApUwbConfigArgs) ToDeviceprofileApUwbConfigPtrOutputWithContext(ctx context.Context) DeviceprofileApUwbConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileApUwbConfigOutput).ToDeviceprofileApUwbConfigPtrOutputWithContext(ctx)
+}
+
+// DeviceprofileApUwbConfigPtrInput is an input type that accepts DeviceprofileApUwbConfigArgs, DeviceprofileApUwbConfigPtr and DeviceprofileApUwbConfigPtrOutput values.
+// You can construct a concrete instance of `DeviceprofileApUwbConfigPtrInput` via:
+//
+//	        DeviceprofileApUwbConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeviceprofileApUwbConfigPtrInput interface {
+	pulumi.Input
+
+	ToDeviceprofileApUwbConfigPtrOutput() DeviceprofileApUwbConfigPtrOutput
+	ToDeviceprofileApUwbConfigPtrOutputWithContext(context.Context) DeviceprofileApUwbConfigPtrOutput
+}
+
+type deviceprofileApUwbConfigPtrType DeviceprofileApUwbConfigArgs
+
+func DeviceprofileApUwbConfigPtr(v *DeviceprofileApUwbConfigArgs) DeviceprofileApUwbConfigPtrInput {
+	return (*deviceprofileApUwbConfigPtrType)(v)
+}
+
+func (*deviceprofileApUwbConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceprofileApUwbConfig)(nil)).Elem()
+}
+
+func (i *deviceprofileApUwbConfigPtrType) ToDeviceprofileApUwbConfigPtrOutput() DeviceprofileApUwbConfigPtrOutput {
+	return i.ToDeviceprofileApUwbConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *deviceprofileApUwbConfigPtrType) ToDeviceprofileApUwbConfigPtrOutputWithContext(ctx context.Context) DeviceprofileApUwbConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileApUwbConfigPtrOutput)
+}
+
+type DeviceprofileApUwbConfigOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileApUwbConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileApUwbConfig)(nil)).Elem()
+}
+
+func (o DeviceprofileApUwbConfigOutput) ToDeviceprofileApUwbConfigOutput() DeviceprofileApUwbConfigOutput {
+	return o
+}
+
+func (o DeviceprofileApUwbConfigOutput) ToDeviceprofileApUwbConfigOutputWithContext(ctx context.Context) DeviceprofileApUwbConfigOutput {
+	return o
+}
+
+func (o DeviceprofileApUwbConfigOutput) ToDeviceprofileApUwbConfigPtrOutput() DeviceprofileApUwbConfigPtrOutput {
+	return o.ToDeviceprofileApUwbConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DeviceprofileApUwbConfigOutput) ToDeviceprofileApUwbConfigPtrOutputWithContext(ctx context.Context) DeviceprofileApUwbConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeviceprofileApUwbConfig) *DeviceprofileApUwbConfig {
+		return &v
+	}).(DeviceprofileApUwbConfigPtrOutput)
+}
+
+// Whether UWB RTLS integration is enabled
+func (o DeviceprofileApUwbConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApUwbConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// RTLS server hostname or IP address
+func (o DeviceprofileApUwbConfigOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApUwbConfig) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// RTLS server port number
+func (o DeviceprofileApUwbConfigOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApUwbConfig) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// UWB time slot assigned to this AP, 0–15
+func (o DeviceprofileApUwbConfigOutput) Slot() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApUwbConfig) *int { return v.Slot }).(pulumi.IntPtrOutput)
+}
+
+// UWB integration type. enum: `zigpos`
+func (o DeviceprofileApUwbConfigOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApUwbConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type DeviceprofileApUwbConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileApUwbConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceprofileApUwbConfig)(nil)).Elem()
+}
+
+func (o DeviceprofileApUwbConfigPtrOutput) ToDeviceprofileApUwbConfigPtrOutput() DeviceprofileApUwbConfigPtrOutput {
+	return o
+}
+
+func (o DeviceprofileApUwbConfigPtrOutput) ToDeviceprofileApUwbConfigPtrOutputWithContext(ctx context.Context) DeviceprofileApUwbConfigPtrOutput {
+	return o
+}
+
+func (o DeviceprofileApUwbConfigPtrOutput) Elem() DeviceprofileApUwbConfigOutput {
+	return o.ApplyT(func(v *DeviceprofileApUwbConfig) DeviceprofileApUwbConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DeviceprofileApUwbConfig
+		return ret
+	}).(DeviceprofileApUwbConfigOutput)
+}
+
+// Whether UWB RTLS integration is enabled
+func (o DeviceprofileApUwbConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileApUwbConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// RTLS server hostname or IP address
+func (o DeviceprofileApUwbConfigPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileApUwbConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// RTLS server port number
+func (o DeviceprofileApUwbConfigPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileApUwbConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// UWB time slot assigned to this AP, 0–15
+func (o DeviceprofileApUwbConfigPtrOutput) Slot() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileApUwbConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Slot
+	}).(pulumi.IntPtrOutput)
+}
+
+// UWB integration type. enum: `zigpos`
+func (o DeviceprofileApUwbConfigPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileApUwbConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 type DeviceprofileApZigbeeConfig struct {
@@ -11904,8 +12136,6 @@ type DeviceprofileGatewayPortConfig struct {
 	RethIdx *string `pulumi:"rethIdx"`
 	// If HA mode. Node associated with the redundant Ethernet interface
 	RethNode *string `pulumi:"rethNode"`
-	// If HA mode and for SSR only. Per-network node assignment used for VLAN-based redundancy
-	RethNodes []string `pulumi:"rethNodes"`
 	// Link speed configured on the port
 	Speed *string `pulumi:"speed"`
 	// When SSR is running as VM, this is required on certain hosting platforms
@@ -12014,8 +12244,6 @@ type DeviceprofileGatewayPortConfigArgs struct {
 	RethIdx pulumi.StringPtrInput `pulumi:"rethIdx"`
 	// If HA mode. Node associated with the redundant Ethernet interface
 	RethNode pulumi.StringPtrInput `pulumi:"rethNode"`
-	// If HA mode and for SSR only. Per-network node assignment used for VLAN-based redundancy
-	RethNodes pulumi.StringArrayInput `pulumi:"rethNodes"`
 	// Link speed configured on the port
 	Speed pulumi.StringPtrInput `pulumi:"speed"`
 	// When SSR is running as VM, this is required on certain hosting platforms
@@ -12251,11 +12479,6 @@ func (o DeviceprofileGatewayPortConfigOutput) RethIdx() pulumi.StringPtrOutput {
 // If HA mode. Node associated with the redundant Ethernet interface
 func (o DeviceprofileGatewayPortConfigOutput) RethNode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceprofileGatewayPortConfig) *string { return v.RethNode }).(pulumi.StringPtrOutput)
-}
-
-// If HA mode and for SSR only. Per-network node assignment used for VLAN-based redundancy
-func (o DeviceprofileGatewayPortConfigOutput) RethNodes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v DeviceprofileGatewayPortConfig) []string { return v.RethNodes }).(pulumi.StringArrayOutput)
 }
 
 // Link speed configured on the port
@@ -13439,6 +13662,10 @@ func (o DeviceprofileGatewayPortConfigWanExtraRoutesMapOutput) MapIndex(k pulumi
 }
 
 type DeviceprofileGatewayPortConfigWanProbeOverride struct {
+	// List of hostnames used as probe destinations; applicable for both IPv4 and IPv6
+	Hostnames []string `pulumi:"hostnames"`
+	// HTTP probe settings; success from any ICMP or HTTP probe indicates the WAN is up
+	Http *DeviceprofileGatewayPortConfigWanProbeOverrideHttp `pulumi:"http"`
 	// List of IPv6 probe host addresses used by this WAN override
 	Ip6s []string `pulumi:"ip6s"`
 	// List of IPv4 probe host addresses used by this WAN override
@@ -13459,6 +13686,10 @@ type DeviceprofileGatewayPortConfigWanProbeOverrideInput interface {
 }
 
 type DeviceprofileGatewayPortConfigWanProbeOverrideArgs struct {
+	// List of hostnames used as probe destinations; applicable for both IPv4 and IPv6
+	Hostnames pulumi.StringArrayInput `pulumi:"hostnames"`
+	// HTTP probe settings; success from any ICMP or HTTP probe indicates the WAN is up
+	Http DeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrInput `pulumi:"http"`
 	// List of IPv6 probe host addresses used by this WAN override
 	Ip6s pulumi.StringArrayInput `pulumi:"ip6s"`
 	// List of IPv4 probe host addresses used by this WAN override
@@ -13544,6 +13775,18 @@ func (o DeviceprofileGatewayPortConfigWanProbeOverrideOutput) ToDeviceprofileGat
 	}).(DeviceprofileGatewayPortConfigWanProbeOverridePtrOutput)
 }
 
+// List of hostnames used as probe destinations; applicable for both IPv4 and IPv6
+func (o DeviceprofileGatewayPortConfigWanProbeOverrideOutput) Hostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayPortConfigWanProbeOverride) []string { return v.Hostnames }).(pulumi.StringArrayOutput)
+}
+
+// HTTP probe settings; success from any ICMP or HTTP probe indicates the WAN is up
+func (o DeviceprofileGatewayPortConfigWanProbeOverrideOutput) Http() DeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayPortConfigWanProbeOverride) *DeviceprofileGatewayPortConfigWanProbeOverrideHttp {
+		return v.Http
+	}).(DeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrOutput)
+}
+
 // List of IPv6 probe host addresses used by this WAN override
 func (o DeviceprofileGatewayPortConfigWanProbeOverrideOutput) Ip6s() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DeviceprofileGatewayPortConfigWanProbeOverride) []string { return v.Ip6s }).(pulumi.StringArrayOutput)
@@ -13583,6 +13826,26 @@ func (o DeviceprofileGatewayPortConfigWanProbeOverridePtrOutput) Elem() Devicepr
 	}).(DeviceprofileGatewayPortConfigWanProbeOverrideOutput)
 }
 
+// List of hostnames used as probe destinations; applicable for both IPv4 and IPv6
+func (o DeviceprofileGatewayPortConfigWanProbeOverridePtrOutput) Hostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayPortConfigWanProbeOverride) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Hostnames
+	}).(pulumi.StringArrayOutput)
+}
+
+// HTTP probe settings; success from any ICMP or HTTP probe indicates the WAN is up
+func (o DeviceprofileGatewayPortConfigWanProbeOverridePtrOutput) Http() DeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayPortConfigWanProbeOverride) *DeviceprofileGatewayPortConfigWanProbeOverrideHttp {
+		if v == nil {
+			return nil
+		}
+		return v.Http
+	}).(DeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrOutput)
+}
+
 // List of IPv6 probe host addresses used by this WAN override
 func (o DeviceprofileGatewayPortConfigWanProbeOverridePtrOutput) Ip6s() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DeviceprofileGatewayPortConfigWanProbeOverride) []string {
@@ -13611,6 +13874,162 @@ func (o DeviceprofileGatewayPortConfigWanProbeOverridePtrOutput) ProbeProfile() 
 		}
 		return v.ProbeProfile
 	}).(pulumi.StringPtrOutput)
+}
+
+type DeviceprofileGatewayPortConfigWanProbeOverrideHttp struct {
+	// HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+	AcceptedStatusCodes []int `pulumi:"acceptedStatusCodes"`
+	// HTTP or HTTPS URLs to probe
+	Urls []string `pulumi:"urls"`
+}
+
+// DeviceprofileGatewayPortConfigWanProbeOverrideHttpInput is an input type that accepts DeviceprofileGatewayPortConfigWanProbeOverrideHttpArgs and DeviceprofileGatewayPortConfigWanProbeOverrideHttpOutput values.
+// You can construct a concrete instance of `DeviceprofileGatewayPortConfigWanProbeOverrideHttpInput` via:
+//
+//	DeviceprofileGatewayPortConfigWanProbeOverrideHttpArgs{...}
+type DeviceprofileGatewayPortConfigWanProbeOverrideHttpInput interface {
+	pulumi.Input
+
+	ToDeviceprofileGatewayPortConfigWanProbeOverrideHttpOutput() DeviceprofileGatewayPortConfigWanProbeOverrideHttpOutput
+	ToDeviceprofileGatewayPortConfigWanProbeOverrideHttpOutputWithContext(context.Context) DeviceprofileGatewayPortConfigWanProbeOverrideHttpOutput
+}
+
+type DeviceprofileGatewayPortConfigWanProbeOverrideHttpArgs struct {
+	// HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+	AcceptedStatusCodes pulumi.IntArrayInput `pulumi:"acceptedStatusCodes"`
+	// HTTP or HTTPS URLs to probe
+	Urls pulumi.StringArrayInput `pulumi:"urls"`
+}
+
+func (DeviceprofileGatewayPortConfigWanProbeOverrideHttpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileGatewayPortConfigWanProbeOverrideHttp)(nil)).Elem()
+}
+
+func (i DeviceprofileGatewayPortConfigWanProbeOverrideHttpArgs) ToDeviceprofileGatewayPortConfigWanProbeOverrideHttpOutput() DeviceprofileGatewayPortConfigWanProbeOverrideHttpOutput {
+	return i.ToDeviceprofileGatewayPortConfigWanProbeOverrideHttpOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileGatewayPortConfigWanProbeOverrideHttpArgs) ToDeviceprofileGatewayPortConfigWanProbeOverrideHttpOutputWithContext(ctx context.Context) DeviceprofileGatewayPortConfigWanProbeOverrideHttpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileGatewayPortConfigWanProbeOverrideHttpOutput)
+}
+
+func (i DeviceprofileGatewayPortConfigWanProbeOverrideHttpArgs) ToDeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrOutput() DeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrOutput {
+	return i.ToDeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileGatewayPortConfigWanProbeOverrideHttpArgs) ToDeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrOutputWithContext(ctx context.Context) DeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileGatewayPortConfigWanProbeOverrideHttpOutput).ToDeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrOutputWithContext(ctx)
+}
+
+// DeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrInput is an input type that accepts DeviceprofileGatewayPortConfigWanProbeOverrideHttpArgs, DeviceprofileGatewayPortConfigWanProbeOverrideHttpPtr and DeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrOutput values.
+// You can construct a concrete instance of `DeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrInput` via:
+//
+//	        DeviceprofileGatewayPortConfigWanProbeOverrideHttpArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrInput interface {
+	pulumi.Input
+
+	ToDeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrOutput() DeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrOutput
+	ToDeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrOutputWithContext(context.Context) DeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrOutput
+}
+
+type deviceprofileGatewayPortConfigWanProbeOverrideHttpPtrType DeviceprofileGatewayPortConfigWanProbeOverrideHttpArgs
+
+func DeviceprofileGatewayPortConfigWanProbeOverrideHttpPtr(v *DeviceprofileGatewayPortConfigWanProbeOverrideHttpArgs) DeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrInput {
+	return (*deviceprofileGatewayPortConfigWanProbeOverrideHttpPtrType)(v)
+}
+
+func (*deviceprofileGatewayPortConfigWanProbeOverrideHttpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceprofileGatewayPortConfigWanProbeOverrideHttp)(nil)).Elem()
+}
+
+func (i *deviceprofileGatewayPortConfigWanProbeOverrideHttpPtrType) ToDeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrOutput() DeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrOutput {
+	return i.ToDeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrOutputWithContext(context.Background())
+}
+
+func (i *deviceprofileGatewayPortConfigWanProbeOverrideHttpPtrType) ToDeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrOutputWithContext(ctx context.Context) DeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrOutput)
+}
+
+type DeviceprofileGatewayPortConfigWanProbeOverrideHttpOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileGatewayPortConfigWanProbeOverrideHttpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileGatewayPortConfigWanProbeOverrideHttp)(nil)).Elem()
+}
+
+func (o DeviceprofileGatewayPortConfigWanProbeOverrideHttpOutput) ToDeviceprofileGatewayPortConfigWanProbeOverrideHttpOutput() DeviceprofileGatewayPortConfigWanProbeOverrideHttpOutput {
+	return o
+}
+
+func (o DeviceprofileGatewayPortConfigWanProbeOverrideHttpOutput) ToDeviceprofileGatewayPortConfigWanProbeOverrideHttpOutputWithContext(ctx context.Context) DeviceprofileGatewayPortConfigWanProbeOverrideHttpOutput {
+	return o
+}
+
+func (o DeviceprofileGatewayPortConfigWanProbeOverrideHttpOutput) ToDeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrOutput() DeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrOutput {
+	return o.ToDeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrOutputWithContext(context.Background())
+}
+
+func (o DeviceprofileGatewayPortConfigWanProbeOverrideHttpOutput) ToDeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrOutputWithContext(ctx context.Context) DeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeviceprofileGatewayPortConfigWanProbeOverrideHttp) *DeviceprofileGatewayPortConfigWanProbeOverrideHttp {
+		return &v
+	}).(DeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrOutput)
+}
+
+// HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+func (o DeviceprofileGatewayPortConfigWanProbeOverrideHttpOutput) AcceptedStatusCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayPortConfigWanProbeOverrideHttp) []int { return v.AcceptedStatusCodes }).(pulumi.IntArrayOutput)
+}
+
+// HTTP or HTTPS URLs to probe
+func (o DeviceprofileGatewayPortConfigWanProbeOverrideHttpOutput) Urls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayPortConfigWanProbeOverrideHttp) []string { return v.Urls }).(pulumi.StringArrayOutput)
+}
+
+type DeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceprofileGatewayPortConfigWanProbeOverrideHttp)(nil)).Elem()
+}
+
+func (o DeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrOutput) ToDeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrOutput() DeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrOutput {
+	return o
+}
+
+func (o DeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrOutput) ToDeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrOutputWithContext(ctx context.Context) DeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrOutput {
+	return o
+}
+
+func (o DeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrOutput) Elem() DeviceprofileGatewayPortConfigWanProbeOverrideHttpOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayPortConfigWanProbeOverrideHttp) DeviceprofileGatewayPortConfigWanProbeOverrideHttp {
+		if v != nil {
+			return *v
+		}
+		var ret DeviceprofileGatewayPortConfigWanProbeOverrideHttp
+		return ret
+	}).(DeviceprofileGatewayPortConfigWanProbeOverrideHttpOutput)
+}
+
+// HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+func (o DeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrOutput) AcceptedStatusCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayPortConfigWanProbeOverrideHttp) []int {
+		if v == nil {
+			return nil
+		}
+		return v.AcceptedStatusCodes
+	}).(pulumi.IntArrayOutput)
+}
+
+// HTTP or HTTPS URLs to probe
+func (o DeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrOutput) Urls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayPortConfigWanProbeOverrideHttp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Urls
+	}).(pulumi.StringArrayOutput)
 }
 
 type DeviceprofileGatewayPortConfigWanSourceNat struct {
@@ -13996,7 +14415,7 @@ func (o DeviceprofileGatewayRoutingPoliciesTermArrayOutput) Index(i pulumi.IntIn
 }
 
 type DeviceprofileGatewayRoutingPoliciesTermActions struct {
-	// Whether to accept routes that match this term
+	// Whether to accept routes that match this term. Precedence is `accept` > `nextTerm` > `nextPolicy`; routes are rejected if all three are false
 	Accept *bool `pulumi:"accept"`
 	// BGP communities to add to routes that match this term
 	AddCommunities []string `pulumi:"addCommunities"`
@@ -14012,6 +14431,10 @@ type DeviceprofileGatewayRoutingPoliciesTermActions struct {
 	ExportCommunities []string `pulumi:"exportCommunities"`
 	// Preference value to set when this term is used as an import policy
 	LocalPreference *string `pulumi:"localPreference"`
+	// When true, continue evaluating the next routing policy in the chain after this term matches; default is false
+	NextPolicy *bool `pulumi:"nextPolicy"`
+	// When true, continue evaluating the next term in the same routing policy after this term matches; default is false
+	NextTerm *bool `pulumi:"nextTerm"`
 	// AS path values to prepend when this term is used as an export policy
 	PrependAsPaths []string `pulumi:"prependAsPaths"`
 }
@@ -14028,7 +14451,7 @@ type DeviceprofileGatewayRoutingPoliciesTermActionsInput interface {
 }
 
 type DeviceprofileGatewayRoutingPoliciesTermActionsArgs struct {
-	// Whether to accept routes that match this term
+	// Whether to accept routes that match this term. Precedence is `accept` > `nextTerm` > `nextPolicy`; routes are rejected if all three are false
 	Accept pulumi.BoolPtrInput `pulumi:"accept"`
 	// BGP communities to add to routes that match this term
 	AddCommunities pulumi.StringArrayInput `pulumi:"addCommunities"`
@@ -14044,6 +14467,10 @@ type DeviceprofileGatewayRoutingPoliciesTermActionsArgs struct {
 	ExportCommunities pulumi.StringArrayInput `pulumi:"exportCommunities"`
 	// Preference value to set when this term is used as an import policy
 	LocalPreference pulumi.StringPtrInput `pulumi:"localPreference"`
+	// When true, continue evaluating the next routing policy in the chain after this term matches; default is false
+	NextPolicy pulumi.BoolPtrInput `pulumi:"nextPolicy"`
+	// When true, continue evaluating the next term in the same routing policy after this term matches; default is false
+	NextTerm pulumi.BoolPtrInput `pulumi:"nextTerm"`
 	// AS path values to prepend when this term is used as an export policy
 	PrependAsPaths pulumi.StringArrayInput `pulumi:"prependAsPaths"`
 }
@@ -14125,7 +14552,7 @@ func (o DeviceprofileGatewayRoutingPoliciesTermActionsOutput) ToDeviceprofileGat
 	}).(DeviceprofileGatewayRoutingPoliciesTermActionsPtrOutput)
 }
 
-// Whether to accept routes that match this term
+// Whether to accept routes that match this term. Precedence is `accept` > `nextTerm` > `nextPolicy`; routes are rejected if all three are false
 func (o DeviceprofileGatewayRoutingPoliciesTermActionsOutput) Accept() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DeviceprofileGatewayRoutingPoliciesTermActions) *bool { return v.Accept }).(pulumi.BoolPtrOutput)
 }
@@ -14165,6 +14592,16 @@ func (o DeviceprofileGatewayRoutingPoliciesTermActionsOutput) LocalPreference() 
 	return o.ApplyT(func(v DeviceprofileGatewayRoutingPoliciesTermActions) *string { return v.LocalPreference }).(pulumi.StringPtrOutput)
 }
 
+// When true, continue evaluating the next routing policy in the chain after this term matches; default is false
+func (o DeviceprofileGatewayRoutingPoliciesTermActionsOutput) NextPolicy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayRoutingPoliciesTermActions) *bool { return v.NextPolicy }).(pulumi.BoolPtrOutput)
+}
+
+// When true, continue evaluating the next term in the same routing policy after this term matches; default is false
+func (o DeviceprofileGatewayRoutingPoliciesTermActionsOutput) NextTerm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayRoutingPoliciesTermActions) *bool { return v.NextTerm }).(pulumi.BoolPtrOutput)
+}
+
 // AS path values to prepend when this term is used as an export policy
 func (o DeviceprofileGatewayRoutingPoliciesTermActionsOutput) PrependAsPaths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DeviceprofileGatewayRoutingPoliciesTermActions) []string { return v.PrependAsPaths }).(pulumi.StringArrayOutput)
@@ -14194,7 +14631,7 @@ func (o DeviceprofileGatewayRoutingPoliciesTermActionsPtrOutput) Elem() Devicepr
 	}).(DeviceprofileGatewayRoutingPoliciesTermActionsOutput)
 }
 
-// Whether to accept routes that match this term
+// Whether to accept routes that match this term. Precedence is `accept` > `nextTerm` > `nextPolicy`; routes are rejected if all three are false
 func (o DeviceprofileGatewayRoutingPoliciesTermActionsPtrOutput) Accept() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DeviceprofileGatewayRoutingPoliciesTermActions) *bool {
 		if v == nil {
@@ -14272,6 +14709,26 @@ func (o DeviceprofileGatewayRoutingPoliciesTermActionsPtrOutput) LocalPreference
 		}
 		return v.LocalPreference
 	}).(pulumi.StringPtrOutput)
+}
+
+// When true, continue evaluating the next routing policy in the chain after this term matches; default is false
+func (o DeviceprofileGatewayRoutingPoliciesTermActionsPtrOutput) NextPolicy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayRoutingPoliciesTermActions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NextPolicy
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When true, continue evaluating the next term in the same routing policy after this term matches; default is false
+func (o DeviceprofileGatewayRoutingPoliciesTermActionsPtrOutput) NextTerm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayRoutingPoliciesTermActions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NextTerm
+	}).(pulumi.BoolPtrOutput)
 }
 
 // AS path values to prepend when this term is used as an export policy
@@ -18091,8 +18548,16 @@ func (o DeviceprofileGatewayTunnelConfigsIpsecProposalArrayOutput) Index(i pulum
 type DeviceprofileGatewayTunnelConfigsPrimary struct {
 	// Remote gateway host addresses for this tunnel node
 	Hosts []string `pulumi:"hosts"`
+	// IPv6 addresses configured on this tunnel node
+	InternalIp6s []string `pulumi:"internalIp6s"`
 	// Internal IP addresses configured on this tunnel node
 	InternalIps []string `pulumi:"internalIps"`
+	// Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+	ProbeHostnames []string `pulumi:"probeHostnames"`
+	// HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+	ProbeHttp *DeviceprofileGatewayTunnelConfigsPrimaryProbeHttp `pulumi:"probeHttp"`
+	// IPv6 ICMP probe addresses used to monitor this tunnel node
+	ProbeIp6s []string `pulumi:"probeIp6s"`
 	// Health-check IP addresses used to monitor this tunnel node
 	ProbeIps []string `pulumi:"probeIps"`
 	// IKE identities expected from this tunnel node
@@ -18115,8 +18580,16 @@ type DeviceprofileGatewayTunnelConfigsPrimaryInput interface {
 type DeviceprofileGatewayTunnelConfigsPrimaryArgs struct {
 	// Remote gateway host addresses for this tunnel node
 	Hosts pulumi.StringArrayInput `pulumi:"hosts"`
+	// IPv6 addresses configured on this tunnel node
+	InternalIp6s pulumi.StringArrayInput `pulumi:"internalIp6s"`
 	// Internal IP addresses configured on this tunnel node
 	InternalIps pulumi.StringArrayInput `pulumi:"internalIps"`
+	// Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+	ProbeHostnames pulumi.StringArrayInput `pulumi:"probeHostnames"`
+	// HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+	ProbeHttp DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrInput `pulumi:"probeHttp"`
+	// IPv6 ICMP probe addresses used to monitor this tunnel node
+	ProbeIp6s pulumi.StringArrayInput `pulumi:"probeIp6s"`
 	// Health-check IP addresses used to monitor this tunnel node
 	ProbeIps pulumi.StringArrayInput `pulumi:"probeIps"`
 	// IKE identities expected from this tunnel node
@@ -18207,9 +18680,31 @@ func (o DeviceprofileGatewayTunnelConfigsPrimaryOutput) Hosts() pulumi.StringArr
 	return o.ApplyT(func(v DeviceprofileGatewayTunnelConfigsPrimary) []string { return v.Hosts }).(pulumi.StringArrayOutput)
 }
 
+// IPv6 addresses configured on this tunnel node
+func (o DeviceprofileGatewayTunnelConfigsPrimaryOutput) InternalIp6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayTunnelConfigsPrimary) []string { return v.InternalIp6s }).(pulumi.StringArrayOutput)
+}
+
 // Internal IP addresses configured on this tunnel node
 func (o DeviceprofileGatewayTunnelConfigsPrimaryOutput) InternalIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DeviceprofileGatewayTunnelConfigsPrimary) []string { return v.InternalIps }).(pulumi.StringArrayOutput)
+}
+
+// Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+func (o DeviceprofileGatewayTunnelConfigsPrimaryOutput) ProbeHostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayTunnelConfigsPrimary) []string { return v.ProbeHostnames }).(pulumi.StringArrayOutput)
+}
+
+// HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+func (o DeviceprofileGatewayTunnelConfigsPrimaryOutput) ProbeHttp() DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayTunnelConfigsPrimary) *DeviceprofileGatewayTunnelConfigsPrimaryProbeHttp {
+		return v.ProbeHttp
+	}).(DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrOutput)
+}
+
+// IPv6 ICMP probe addresses used to monitor this tunnel node
+func (o DeviceprofileGatewayTunnelConfigsPrimaryOutput) ProbeIp6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayTunnelConfigsPrimary) []string { return v.ProbeIp6s }).(pulumi.StringArrayOutput)
 }
 
 // Health-check IP addresses used to monitor this tunnel node
@@ -18261,6 +18756,16 @@ func (o DeviceprofileGatewayTunnelConfigsPrimaryPtrOutput) Hosts() pulumi.String
 	}).(pulumi.StringArrayOutput)
 }
 
+// IPv6 addresses configured on this tunnel node
+func (o DeviceprofileGatewayTunnelConfigsPrimaryPtrOutput) InternalIp6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayTunnelConfigsPrimary) []string {
+		if v == nil {
+			return nil
+		}
+		return v.InternalIp6s
+	}).(pulumi.StringArrayOutput)
+}
+
 // Internal IP addresses configured on this tunnel node
 func (o DeviceprofileGatewayTunnelConfigsPrimaryPtrOutput) InternalIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DeviceprofileGatewayTunnelConfigsPrimary) []string {
@@ -18268,6 +18773,36 @@ func (o DeviceprofileGatewayTunnelConfigsPrimaryPtrOutput) InternalIps() pulumi.
 			return nil
 		}
 		return v.InternalIps
+	}).(pulumi.StringArrayOutput)
+}
+
+// Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+func (o DeviceprofileGatewayTunnelConfigsPrimaryPtrOutput) ProbeHostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayTunnelConfigsPrimary) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ProbeHostnames
+	}).(pulumi.StringArrayOutput)
+}
+
+// HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+func (o DeviceprofileGatewayTunnelConfigsPrimaryPtrOutput) ProbeHttp() DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayTunnelConfigsPrimary) *DeviceprofileGatewayTunnelConfigsPrimaryProbeHttp {
+		if v == nil {
+			return nil
+		}
+		return v.ProbeHttp
+	}).(DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrOutput)
+}
+
+// IPv6 ICMP probe addresses used to monitor this tunnel node
+func (o DeviceprofileGatewayTunnelConfigsPrimaryPtrOutput) ProbeIp6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayTunnelConfigsPrimary) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ProbeIp6s
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -18298,6 +18833,162 @@ func (o DeviceprofileGatewayTunnelConfigsPrimaryPtrOutput) WanNames() pulumi.Str
 			return nil
 		}
 		return v.WanNames
+	}).(pulumi.StringArrayOutput)
+}
+
+type DeviceprofileGatewayTunnelConfigsPrimaryProbeHttp struct {
+	// HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+	AcceptedStatusCodes []int `pulumi:"acceptedStatusCodes"`
+	// HTTP or HTTPS URLs to probe
+	Urls []string `pulumi:"urls"`
+}
+
+// DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpInput is an input type that accepts DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpArgs and DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpOutput values.
+// You can construct a concrete instance of `DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpInput` via:
+//
+//	DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpArgs{...}
+type DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpInput interface {
+	pulumi.Input
+
+	ToDeviceprofileGatewayTunnelConfigsPrimaryProbeHttpOutput() DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpOutput
+	ToDeviceprofileGatewayTunnelConfigsPrimaryProbeHttpOutputWithContext(context.Context) DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpOutput
+}
+
+type DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpArgs struct {
+	// HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+	AcceptedStatusCodes pulumi.IntArrayInput `pulumi:"acceptedStatusCodes"`
+	// HTTP or HTTPS URLs to probe
+	Urls pulumi.StringArrayInput `pulumi:"urls"`
+}
+
+func (DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileGatewayTunnelConfigsPrimaryProbeHttp)(nil)).Elem()
+}
+
+func (i DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpArgs) ToDeviceprofileGatewayTunnelConfigsPrimaryProbeHttpOutput() DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpOutput {
+	return i.ToDeviceprofileGatewayTunnelConfigsPrimaryProbeHttpOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpArgs) ToDeviceprofileGatewayTunnelConfigsPrimaryProbeHttpOutputWithContext(ctx context.Context) DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpOutput)
+}
+
+func (i DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpArgs) ToDeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrOutput() DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrOutput {
+	return i.ToDeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpArgs) ToDeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrOutputWithContext(ctx context.Context) DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpOutput).ToDeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrOutputWithContext(ctx)
+}
+
+// DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrInput is an input type that accepts DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpArgs, DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtr and DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrOutput values.
+// You can construct a concrete instance of `DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrInput` via:
+//
+//	        DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrInput interface {
+	pulumi.Input
+
+	ToDeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrOutput() DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrOutput
+	ToDeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrOutputWithContext(context.Context) DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrOutput
+}
+
+type deviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrType DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpArgs
+
+func DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtr(v *DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpArgs) DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrInput {
+	return (*deviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrType)(v)
+}
+
+func (*deviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceprofileGatewayTunnelConfigsPrimaryProbeHttp)(nil)).Elem()
+}
+
+func (i *deviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrType) ToDeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrOutput() DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrOutput {
+	return i.ToDeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrOutputWithContext(context.Background())
+}
+
+func (i *deviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrType) ToDeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrOutputWithContext(ctx context.Context) DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrOutput)
+}
+
+type DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileGatewayTunnelConfigsPrimaryProbeHttp)(nil)).Elem()
+}
+
+func (o DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpOutput) ToDeviceprofileGatewayTunnelConfigsPrimaryProbeHttpOutput() DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpOutput {
+	return o
+}
+
+func (o DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpOutput) ToDeviceprofileGatewayTunnelConfigsPrimaryProbeHttpOutputWithContext(ctx context.Context) DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpOutput {
+	return o
+}
+
+func (o DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpOutput) ToDeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrOutput() DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrOutput {
+	return o.ToDeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrOutputWithContext(context.Background())
+}
+
+func (o DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpOutput) ToDeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrOutputWithContext(ctx context.Context) DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeviceprofileGatewayTunnelConfigsPrimaryProbeHttp) *DeviceprofileGatewayTunnelConfigsPrimaryProbeHttp {
+		return &v
+	}).(DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrOutput)
+}
+
+// HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+func (o DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpOutput) AcceptedStatusCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayTunnelConfigsPrimaryProbeHttp) []int { return v.AcceptedStatusCodes }).(pulumi.IntArrayOutput)
+}
+
+// HTTP or HTTPS URLs to probe
+func (o DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpOutput) Urls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayTunnelConfigsPrimaryProbeHttp) []string { return v.Urls }).(pulumi.StringArrayOutput)
+}
+
+type DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceprofileGatewayTunnelConfigsPrimaryProbeHttp)(nil)).Elem()
+}
+
+func (o DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrOutput) ToDeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrOutput() DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrOutput {
+	return o
+}
+
+func (o DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrOutput) ToDeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrOutputWithContext(ctx context.Context) DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrOutput {
+	return o
+}
+
+func (o DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrOutput) Elem() DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayTunnelConfigsPrimaryProbeHttp) DeviceprofileGatewayTunnelConfigsPrimaryProbeHttp {
+		if v != nil {
+			return *v
+		}
+		var ret DeviceprofileGatewayTunnelConfigsPrimaryProbeHttp
+		return ret
+	}).(DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpOutput)
+}
+
+// HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+func (o DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrOutput) AcceptedStatusCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayTunnelConfigsPrimaryProbeHttp) []int {
+		if v == nil {
+			return nil
+		}
+		return v.AcceptedStatusCodes
+	}).(pulumi.IntArrayOutput)
+}
+
+// HTTP or HTTPS URLs to probe
+func (o DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrOutput) Urls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayTunnelConfigsPrimaryProbeHttp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Urls
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -18498,8 +19189,16 @@ func (o DeviceprofileGatewayTunnelConfigsProbePtrOutput) Type() pulumi.StringPtr
 type DeviceprofileGatewayTunnelConfigsSecondary struct {
 	// Remote gateway host addresses for this tunnel node
 	Hosts []string `pulumi:"hosts"`
+	// IPv6 addresses configured on this tunnel node
+	InternalIp6s []string `pulumi:"internalIp6s"`
 	// Internal IP addresses configured on this tunnel node
 	InternalIps []string `pulumi:"internalIps"`
+	// Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+	ProbeHostnames []string `pulumi:"probeHostnames"`
+	// HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+	ProbeHttp *DeviceprofileGatewayTunnelConfigsSecondaryProbeHttp `pulumi:"probeHttp"`
+	// IPv6 ICMP probe addresses used to monitor this tunnel node
+	ProbeIp6s []string `pulumi:"probeIp6s"`
 	// Health-check IP addresses used to monitor this tunnel node
 	ProbeIps []string `pulumi:"probeIps"`
 	// IKE identities expected from this tunnel node
@@ -18522,8 +19221,16 @@ type DeviceprofileGatewayTunnelConfigsSecondaryInput interface {
 type DeviceprofileGatewayTunnelConfigsSecondaryArgs struct {
 	// Remote gateway host addresses for this tunnel node
 	Hosts pulumi.StringArrayInput `pulumi:"hosts"`
+	// IPv6 addresses configured on this tunnel node
+	InternalIp6s pulumi.StringArrayInput `pulumi:"internalIp6s"`
 	// Internal IP addresses configured on this tunnel node
 	InternalIps pulumi.StringArrayInput `pulumi:"internalIps"`
+	// Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+	ProbeHostnames pulumi.StringArrayInput `pulumi:"probeHostnames"`
+	// HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+	ProbeHttp DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrInput `pulumi:"probeHttp"`
+	// IPv6 ICMP probe addresses used to monitor this tunnel node
+	ProbeIp6s pulumi.StringArrayInput `pulumi:"probeIp6s"`
 	// Health-check IP addresses used to monitor this tunnel node
 	ProbeIps pulumi.StringArrayInput `pulumi:"probeIps"`
 	// IKE identities expected from this tunnel node
@@ -18614,9 +19321,31 @@ func (o DeviceprofileGatewayTunnelConfigsSecondaryOutput) Hosts() pulumi.StringA
 	return o.ApplyT(func(v DeviceprofileGatewayTunnelConfigsSecondary) []string { return v.Hosts }).(pulumi.StringArrayOutput)
 }
 
+// IPv6 addresses configured on this tunnel node
+func (o DeviceprofileGatewayTunnelConfigsSecondaryOutput) InternalIp6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayTunnelConfigsSecondary) []string { return v.InternalIp6s }).(pulumi.StringArrayOutput)
+}
+
 // Internal IP addresses configured on this tunnel node
 func (o DeviceprofileGatewayTunnelConfigsSecondaryOutput) InternalIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DeviceprofileGatewayTunnelConfigsSecondary) []string { return v.InternalIps }).(pulumi.StringArrayOutput)
+}
+
+// Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+func (o DeviceprofileGatewayTunnelConfigsSecondaryOutput) ProbeHostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayTunnelConfigsSecondary) []string { return v.ProbeHostnames }).(pulumi.StringArrayOutput)
+}
+
+// HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+func (o DeviceprofileGatewayTunnelConfigsSecondaryOutput) ProbeHttp() DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayTunnelConfigsSecondary) *DeviceprofileGatewayTunnelConfigsSecondaryProbeHttp {
+		return v.ProbeHttp
+	}).(DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrOutput)
+}
+
+// IPv6 ICMP probe addresses used to monitor this tunnel node
+func (o DeviceprofileGatewayTunnelConfigsSecondaryOutput) ProbeIp6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayTunnelConfigsSecondary) []string { return v.ProbeIp6s }).(pulumi.StringArrayOutput)
 }
 
 // Health-check IP addresses used to monitor this tunnel node
@@ -18668,6 +19397,16 @@ func (o DeviceprofileGatewayTunnelConfigsSecondaryPtrOutput) Hosts() pulumi.Stri
 	}).(pulumi.StringArrayOutput)
 }
 
+// IPv6 addresses configured on this tunnel node
+func (o DeviceprofileGatewayTunnelConfigsSecondaryPtrOutput) InternalIp6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayTunnelConfigsSecondary) []string {
+		if v == nil {
+			return nil
+		}
+		return v.InternalIp6s
+	}).(pulumi.StringArrayOutput)
+}
+
 // Internal IP addresses configured on this tunnel node
 func (o DeviceprofileGatewayTunnelConfigsSecondaryPtrOutput) InternalIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DeviceprofileGatewayTunnelConfigsSecondary) []string {
@@ -18675,6 +19414,36 @@ func (o DeviceprofileGatewayTunnelConfigsSecondaryPtrOutput) InternalIps() pulum
 			return nil
 		}
 		return v.InternalIps
+	}).(pulumi.StringArrayOutput)
+}
+
+// Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+func (o DeviceprofileGatewayTunnelConfigsSecondaryPtrOutput) ProbeHostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayTunnelConfigsSecondary) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ProbeHostnames
+	}).(pulumi.StringArrayOutput)
+}
+
+// HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+func (o DeviceprofileGatewayTunnelConfigsSecondaryPtrOutput) ProbeHttp() DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayTunnelConfigsSecondary) *DeviceprofileGatewayTunnelConfigsSecondaryProbeHttp {
+		if v == nil {
+			return nil
+		}
+		return v.ProbeHttp
+	}).(DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrOutput)
+}
+
+// IPv6 ICMP probe addresses used to monitor this tunnel node
+func (o DeviceprofileGatewayTunnelConfigsSecondaryPtrOutput) ProbeIp6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayTunnelConfigsSecondary) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ProbeIp6s
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -18705,6 +19474,162 @@ func (o DeviceprofileGatewayTunnelConfigsSecondaryPtrOutput) WanNames() pulumi.S
 			return nil
 		}
 		return v.WanNames
+	}).(pulumi.StringArrayOutput)
+}
+
+type DeviceprofileGatewayTunnelConfigsSecondaryProbeHttp struct {
+	// HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+	AcceptedStatusCodes []int `pulumi:"acceptedStatusCodes"`
+	// HTTP or HTTPS URLs to probe
+	Urls []string `pulumi:"urls"`
+}
+
+// DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpInput is an input type that accepts DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpArgs and DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpOutput values.
+// You can construct a concrete instance of `DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpInput` via:
+//
+//	DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpArgs{...}
+type DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpInput interface {
+	pulumi.Input
+
+	ToDeviceprofileGatewayTunnelConfigsSecondaryProbeHttpOutput() DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpOutput
+	ToDeviceprofileGatewayTunnelConfigsSecondaryProbeHttpOutputWithContext(context.Context) DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpOutput
+}
+
+type DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpArgs struct {
+	// HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+	AcceptedStatusCodes pulumi.IntArrayInput `pulumi:"acceptedStatusCodes"`
+	// HTTP or HTTPS URLs to probe
+	Urls pulumi.StringArrayInput `pulumi:"urls"`
+}
+
+func (DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileGatewayTunnelConfigsSecondaryProbeHttp)(nil)).Elem()
+}
+
+func (i DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpArgs) ToDeviceprofileGatewayTunnelConfigsSecondaryProbeHttpOutput() DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpOutput {
+	return i.ToDeviceprofileGatewayTunnelConfigsSecondaryProbeHttpOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpArgs) ToDeviceprofileGatewayTunnelConfigsSecondaryProbeHttpOutputWithContext(ctx context.Context) DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpOutput)
+}
+
+func (i DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpArgs) ToDeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrOutput() DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrOutput {
+	return i.ToDeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpArgs) ToDeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrOutputWithContext(ctx context.Context) DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpOutput).ToDeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrOutputWithContext(ctx)
+}
+
+// DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrInput is an input type that accepts DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpArgs, DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtr and DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrOutput values.
+// You can construct a concrete instance of `DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrInput` via:
+//
+//	        DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrInput interface {
+	pulumi.Input
+
+	ToDeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrOutput() DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrOutput
+	ToDeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrOutputWithContext(context.Context) DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrOutput
+}
+
+type deviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrType DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpArgs
+
+func DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtr(v *DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpArgs) DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrInput {
+	return (*deviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrType)(v)
+}
+
+func (*deviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceprofileGatewayTunnelConfigsSecondaryProbeHttp)(nil)).Elem()
+}
+
+func (i *deviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrType) ToDeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrOutput() DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrOutput {
+	return i.ToDeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrOutputWithContext(context.Background())
+}
+
+func (i *deviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrType) ToDeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrOutputWithContext(ctx context.Context) DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrOutput)
+}
+
+type DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileGatewayTunnelConfigsSecondaryProbeHttp)(nil)).Elem()
+}
+
+func (o DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpOutput) ToDeviceprofileGatewayTunnelConfigsSecondaryProbeHttpOutput() DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpOutput {
+	return o
+}
+
+func (o DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpOutput) ToDeviceprofileGatewayTunnelConfigsSecondaryProbeHttpOutputWithContext(ctx context.Context) DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpOutput {
+	return o
+}
+
+func (o DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpOutput) ToDeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrOutput() DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrOutput {
+	return o.ToDeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrOutputWithContext(context.Background())
+}
+
+func (o DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpOutput) ToDeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrOutputWithContext(ctx context.Context) DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeviceprofileGatewayTunnelConfigsSecondaryProbeHttp) *DeviceprofileGatewayTunnelConfigsSecondaryProbeHttp {
+		return &v
+	}).(DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrOutput)
+}
+
+// HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+func (o DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpOutput) AcceptedStatusCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayTunnelConfigsSecondaryProbeHttp) []int { return v.AcceptedStatusCodes }).(pulumi.IntArrayOutput)
+}
+
+// HTTP or HTTPS URLs to probe
+func (o DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpOutput) Urls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayTunnelConfigsSecondaryProbeHttp) []string { return v.Urls }).(pulumi.StringArrayOutput)
+}
+
+type DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceprofileGatewayTunnelConfigsSecondaryProbeHttp)(nil)).Elem()
+}
+
+func (o DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrOutput) ToDeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrOutput() DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrOutput {
+	return o
+}
+
+func (o DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrOutput) ToDeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrOutputWithContext(ctx context.Context) DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrOutput {
+	return o
+}
+
+func (o DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrOutput) Elem() DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayTunnelConfigsSecondaryProbeHttp) DeviceprofileGatewayTunnelConfigsSecondaryProbeHttp {
+		if v != nil {
+			return *v
+		}
+		var ret DeviceprofileGatewayTunnelConfigsSecondaryProbeHttp
+		return ret
+	}).(DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpOutput)
+}
+
+// HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+func (o DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrOutput) AcceptedStatusCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayTunnelConfigsSecondaryProbeHttp) []int {
+		if v == nil {
+			return nil
+		}
+		return v.AcceptedStatusCodes
+	}).(pulumi.IntArrayOutput)
+}
+
+// HTTP or HTTPS URLs to probe
+func (o DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrOutput) Urls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayTunnelConfigsSecondaryProbeHttp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Urls
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -20048,6 +20973,8 @@ func (o DeviceprofileGatewayVrfInstancesMapOutput) MapIndex(k pulumi.StringInput
 type DeviceprofileSwitchAclPolicy struct {
 	// Destination tag actions evaluated for sources matching this ACL policy
 	Actions []DeviceprofileSwitchAclPolicyAction `pulumi:"actions"`
+	// Whether this ACL policy is disabled
+	Disabled *bool `pulumi:"disabled"`
 	// Display name of the ACL policy
 	Name *string `pulumi:"name"`
 	// Source ACL tags that select traffic for this ACL policy
@@ -20068,6 +20995,8 @@ type DeviceprofileSwitchAclPolicyInput interface {
 type DeviceprofileSwitchAclPolicyArgs struct {
 	// Destination tag actions evaluated for sources matching this ACL policy
 	Actions DeviceprofileSwitchAclPolicyActionArrayInput `pulumi:"actions"`
+	// Whether this ACL policy is disabled
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// Display name of the ACL policy
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Source ACL tags that select traffic for this ACL policy
@@ -20128,6 +21057,11 @@ func (o DeviceprofileSwitchAclPolicyOutput) ToDeviceprofileSwitchAclPolicyOutput
 // Destination tag actions evaluated for sources matching this ACL policy
 func (o DeviceprofileSwitchAclPolicyOutput) Actions() DeviceprofileSwitchAclPolicyActionArrayOutput {
 	return o.ApplyT(func(v DeviceprofileSwitchAclPolicy) []DeviceprofileSwitchAclPolicyAction { return v.Actions }).(DeviceprofileSwitchAclPolicyActionArrayOutput)
+}
+
+// Whether this ACL policy is disabled
+func (o DeviceprofileSwitchAclPolicyOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeviceprofileSwitchAclPolicy) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
 // Display name of the ACL policy
@@ -20287,6 +21221,7 @@ type DeviceprofileSwitchAclTags struct {
 	PortUsage *string `pulumi:"portUsage"`
 	// Required if:
 	//   * `type`==`radiusGroup`
+	//   * `type`==`arubaUserRole`
 	//   * `type`==`staticGbp`
 	//     if from matching radius_group
 	RadiusGroup *string `pulumi:"radiusGroup"`
@@ -20330,6 +21265,7 @@ type DeviceprofileSwitchAclTagsArgs struct {
 	PortUsage pulumi.StringPtrInput `pulumi:"portUsage"`
 	// Required if:
 	//   * `type`==`radiusGroup`
+	//   * `type`==`arubaUserRole`
 	//   * `type`==`staticGbp`
 	//     if from matching radius_group
 	RadiusGroup pulumi.StringPtrInput `pulumi:"radiusGroup"`
@@ -20427,6 +21363,7 @@ func (o DeviceprofileSwitchAclTagsOutput) PortUsage() pulumi.StringPtrOutput {
 
 // Required if:
 //   - `type`==`radiusGroup`
+//   - `type`==`arubaUserRole`
 //   - `type`==`staticGbp`
 //     if from matching radius_group
 func (o DeviceprofileSwitchAclTagsOutput) RadiusGroup() pulumi.StringPtrOutput {
@@ -22709,6 +23646,8 @@ type DeviceprofileSwitchNetworks struct {
 	Isolation *bool `pulumi:"isolation"`
 	// Required when `isolation`==`true`. Unique VLAN ID used for client isolation
 	IsolationVlanId *string `pulumi:"isolationVlanId"`
+	// Multicast (IGMP snooping) settings for this VLAN
+	Multicast *DeviceprofileSwitchNetworksMulticast `pulumi:"multicast"`
 	// Optional for pure switching, required when L3 / routing features are used
 	Subnet *string `pulumi:"subnet"`
 	// Optional for pure switching, required when L3 / routing features are used
@@ -22737,6 +23676,8 @@ type DeviceprofileSwitchNetworksArgs struct {
 	Isolation pulumi.BoolPtrInput `pulumi:"isolation"`
 	// Required when `isolation`==`true`. Unique VLAN ID used for client isolation
 	IsolationVlanId pulumi.StringPtrInput `pulumi:"isolationVlanId"`
+	// Multicast (IGMP snooping) settings for this VLAN
+	Multicast DeviceprofileSwitchNetworksMulticastPtrInput `pulumi:"multicast"`
 	// Optional for pure switching, required when L3 / routing features are used
 	Subnet pulumi.StringPtrInput `pulumi:"subnet"`
 	// Optional for pure switching, required when L3 / routing features are used
@@ -22816,6 +23757,11 @@ func (o DeviceprofileSwitchNetworksOutput) IsolationVlanId() pulumi.StringPtrOut
 	return o.ApplyT(func(v DeviceprofileSwitchNetworks) *string { return v.IsolationVlanId }).(pulumi.StringPtrOutput)
 }
 
+// Multicast (IGMP snooping) settings for this VLAN
+func (o DeviceprofileSwitchNetworksOutput) Multicast() DeviceprofileSwitchNetworksMulticastPtrOutput {
+	return o.ApplyT(func(v DeviceprofileSwitchNetworks) *DeviceprofileSwitchNetworksMulticast { return v.Multicast }).(DeviceprofileSwitchNetworksMulticastPtrOutput)
+}
+
 // Optional for pure switching, required when L3 / routing features are used
 func (o DeviceprofileSwitchNetworksOutput) Subnet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceprofileSwitchNetworks) *string { return v.Subnet }).(pulumi.StringPtrOutput)
@@ -22849,6 +23795,162 @@ func (o DeviceprofileSwitchNetworksMapOutput) MapIndex(k pulumi.StringInput) Dev
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DeviceprofileSwitchNetworks {
 		return vs[0].(map[string]DeviceprofileSwitchNetworks)[vs[1].(string)]
 	}).(DeviceprofileSwitchNetworksOutput)
+}
+
+type DeviceprofileSwitchNetworksMulticast struct {
+	// Whether to enable IGMP snooping on this VLAN
+	Enabled *bool `pulumi:"enabled"`
+	// IGMP version. '2' (default, ASM/IGMPv2) / '3' (SSM/IGMPv3)
+	IgmpVersion *string `pulumi:"igmpVersion"`
+}
+
+// DeviceprofileSwitchNetworksMulticastInput is an input type that accepts DeviceprofileSwitchNetworksMulticastArgs and DeviceprofileSwitchNetworksMulticastOutput values.
+// You can construct a concrete instance of `DeviceprofileSwitchNetworksMulticastInput` via:
+//
+//	DeviceprofileSwitchNetworksMulticastArgs{...}
+type DeviceprofileSwitchNetworksMulticastInput interface {
+	pulumi.Input
+
+	ToDeviceprofileSwitchNetworksMulticastOutput() DeviceprofileSwitchNetworksMulticastOutput
+	ToDeviceprofileSwitchNetworksMulticastOutputWithContext(context.Context) DeviceprofileSwitchNetworksMulticastOutput
+}
+
+type DeviceprofileSwitchNetworksMulticastArgs struct {
+	// Whether to enable IGMP snooping on this VLAN
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// IGMP version. '2' (default, ASM/IGMPv2) / '3' (SSM/IGMPv3)
+	IgmpVersion pulumi.StringPtrInput `pulumi:"igmpVersion"`
+}
+
+func (DeviceprofileSwitchNetworksMulticastArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileSwitchNetworksMulticast)(nil)).Elem()
+}
+
+func (i DeviceprofileSwitchNetworksMulticastArgs) ToDeviceprofileSwitchNetworksMulticastOutput() DeviceprofileSwitchNetworksMulticastOutput {
+	return i.ToDeviceprofileSwitchNetworksMulticastOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileSwitchNetworksMulticastArgs) ToDeviceprofileSwitchNetworksMulticastOutputWithContext(ctx context.Context) DeviceprofileSwitchNetworksMulticastOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileSwitchNetworksMulticastOutput)
+}
+
+func (i DeviceprofileSwitchNetworksMulticastArgs) ToDeviceprofileSwitchNetworksMulticastPtrOutput() DeviceprofileSwitchNetworksMulticastPtrOutput {
+	return i.ToDeviceprofileSwitchNetworksMulticastPtrOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileSwitchNetworksMulticastArgs) ToDeviceprofileSwitchNetworksMulticastPtrOutputWithContext(ctx context.Context) DeviceprofileSwitchNetworksMulticastPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileSwitchNetworksMulticastOutput).ToDeviceprofileSwitchNetworksMulticastPtrOutputWithContext(ctx)
+}
+
+// DeviceprofileSwitchNetworksMulticastPtrInput is an input type that accepts DeviceprofileSwitchNetworksMulticastArgs, DeviceprofileSwitchNetworksMulticastPtr and DeviceprofileSwitchNetworksMulticastPtrOutput values.
+// You can construct a concrete instance of `DeviceprofileSwitchNetworksMulticastPtrInput` via:
+//
+//	        DeviceprofileSwitchNetworksMulticastArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeviceprofileSwitchNetworksMulticastPtrInput interface {
+	pulumi.Input
+
+	ToDeviceprofileSwitchNetworksMulticastPtrOutput() DeviceprofileSwitchNetworksMulticastPtrOutput
+	ToDeviceprofileSwitchNetworksMulticastPtrOutputWithContext(context.Context) DeviceprofileSwitchNetworksMulticastPtrOutput
+}
+
+type deviceprofileSwitchNetworksMulticastPtrType DeviceprofileSwitchNetworksMulticastArgs
+
+func DeviceprofileSwitchNetworksMulticastPtr(v *DeviceprofileSwitchNetworksMulticastArgs) DeviceprofileSwitchNetworksMulticastPtrInput {
+	return (*deviceprofileSwitchNetworksMulticastPtrType)(v)
+}
+
+func (*deviceprofileSwitchNetworksMulticastPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceprofileSwitchNetworksMulticast)(nil)).Elem()
+}
+
+func (i *deviceprofileSwitchNetworksMulticastPtrType) ToDeviceprofileSwitchNetworksMulticastPtrOutput() DeviceprofileSwitchNetworksMulticastPtrOutput {
+	return i.ToDeviceprofileSwitchNetworksMulticastPtrOutputWithContext(context.Background())
+}
+
+func (i *deviceprofileSwitchNetworksMulticastPtrType) ToDeviceprofileSwitchNetworksMulticastPtrOutputWithContext(ctx context.Context) DeviceprofileSwitchNetworksMulticastPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileSwitchNetworksMulticastPtrOutput)
+}
+
+type DeviceprofileSwitchNetworksMulticastOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileSwitchNetworksMulticastOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileSwitchNetworksMulticast)(nil)).Elem()
+}
+
+func (o DeviceprofileSwitchNetworksMulticastOutput) ToDeviceprofileSwitchNetworksMulticastOutput() DeviceprofileSwitchNetworksMulticastOutput {
+	return o
+}
+
+func (o DeviceprofileSwitchNetworksMulticastOutput) ToDeviceprofileSwitchNetworksMulticastOutputWithContext(ctx context.Context) DeviceprofileSwitchNetworksMulticastOutput {
+	return o
+}
+
+func (o DeviceprofileSwitchNetworksMulticastOutput) ToDeviceprofileSwitchNetworksMulticastPtrOutput() DeviceprofileSwitchNetworksMulticastPtrOutput {
+	return o.ToDeviceprofileSwitchNetworksMulticastPtrOutputWithContext(context.Background())
+}
+
+func (o DeviceprofileSwitchNetworksMulticastOutput) ToDeviceprofileSwitchNetworksMulticastPtrOutputWithContext(ctx context.Context) DeviceprofileSwitchNetworksMulticastPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeviceprofileSwitchNetworksMulticast) *DeviceprofileSwitchNetworksMulticast {
+		return &v
+	}).(DeviceprofileSwitchNetworksMulticastPtrOutput)
+}
+
+// Whether to enable IGMP snooping on this VLAN
+func (o DeviceprofileSwitchNetworksMulticastOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeviceprofileSwitchNetworksMulticast) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// IGMP version. '2' (default, ASM/IGMPv2) / '3' (SSM/IGMPv3)
+func (o DeviceprofileSwitchNetworksMulticastOutput) IgmpVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileSwitchNetworksMulticast) *string { return v.IgmpVersion }).(pulumi.StringPtrOutput)
+}
+
+type DeviceprofileSwitchNetworksMulticastPtrOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileSwitchNetworksMulticastPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceprofileSwitchNetworksMulticast)(nil)).Elem()
+}
+
+func (o DeviceprofileSwitchNetworksMulticastPtrOutput) ToDeviceprofileSwitchNetworksMulticastPtrOutput() DeviceprofileSwitchNetworksMulticastPtrOutput {
+	return o
+}
+
+func (o DeviceprofileSwitchNetworksMulticastPtrOutput) ToDeviceprofileSwitchNetworksMulticastPtrOutputWithContext(ctx context.Context) DeviceprofileSwitchNetworksMulticastPtrOutput {
+	return o
+}
+
+func (o DeviceprofileSwitchNetworksMulticastPtrOutput) Elem() DeviceprofileSwitchNetworksMulticastOutput {
+	return o.ApplyT(func(v *DeviceprofileSwitchNetworksMulticast) DeviceprofileSwitchNetworksMulticast {
+		if v != nil {
+			return *v
+		}
+		var ret DeviceprofileSwitchNetworksMulticast
+		return ret
+	}).(DeviceprofileSwitchNetworksMulticastOutput)
+}
+
+// Whether to enable IGMP snooping on this VLAN
+func (o DeviceprofileSwitchNetworksMulticastPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileSwitchNetworksMulticast) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// IGMP version. '2' (default, ASM/IGMPv2) / '3' (SSM/IGMPv3)
+func (o DeviceprofileSwitchNetworksMulticastPtrOutput) IgmpVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileSwitchNetworksMulticast) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IgmpVersion
+	}).(pulumi.StringPtrOutput)
 }
 
 type DeviceprofileSwitchOobIpConfig struct {
@@ -28852,6 +29954,8 @@ func (o DeviceprofileSwitchSnmpConfigV3ConfigNotifyArrayOutput) Index(i pulumi.I
 }
 
 type DeviceprofileSwitchSnmpConfigV3ConfigNotifyFilter struct {
+	// CX only. List of SNMP trap group categories included in this filter profile. See https://www.juniper.net/documentation/software/topics/task/configuration/snmp-trap-groups-configuring-junos-nm.html for valid category names.
+	Categories []string `pulumi:"categories"`
 	// OID filter rules in this notification filter profile
 	Contents []DeviceprofileSwitchSnmpConfigV3ConfigNotifyFilterContent `pulumi:"contents"`
 	// Notification filter profile name
@@ -28870,6 +29974,8 @@ type DeviceprofileSwitchSnmpConfigV3ConfigNotifyFilterInput interface {
 }
 
 type DeviceprofileSwitchSnmpConfigV3ConfigNotifyFilterArgs struct {
+	// CX only. List of SNMP trap group categories included in this filter profile. See https://www.juniper.net/documentation/software/topics/task/configuration/snmp-trap-groups-configuring-junos-nm.html for valid category names.
+	Categories pulumi.StringArrayInput `pulumi:"categories"`
 	// OID filter rules in this notification filter profile
 	Contents DeviceprofileSwitchSnmpConfigV3ConfigNotifyFilterContentArrayInput `pulumi:"contents"`
 	// Notification filter profile name
@@ -28925,6 +30031,11 @@ func (o DeviceprofileSwitchSnmpConfigV3ConfigNotifyFilterOutput) ToDeviceprofile
 
 func (o DeviceprofileSwitchSnmpConfigV3ConfigNotifyFilterOutput) ToDeviceprofileSwitchSnmpConfigV3ConfigNotifyFilterOutputWithContext(ctx context.Context) DeviceprofileSwitchSnmpConfigV3ConfigNotifyFilterOutput {
 	return o
+}
+
+// CX only. List of SNMP trap group categories included in this filter profile. See https://www.juniper.net/documentation/software/topics/task/configuration/snmp-trap-groups-configuring-junos-nm.html for valid category names.
+func (o DeviceprofileSwitchSnmpConfigV3ConfigNotifyFilterOutput) Categories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeviceprofileSwitchSnmpConfigV3ConfigNotifyFilter) []string { return v.Categories }).(pulumi.StringArrayOutput)
 }
 
 // OID filter rules in this notification filter profile
@@ -31996,6 +33107,8 @@ type DeviceprofileSwitchVrfInstances struct {
 	ExtraRoutes map[string]DeviceprofileSwitchVrfInstancesExtraRoutes `pulumi:"extraRoutes"`
 	// Additional IPv6 static routes configured for this VRF instance
 	ExtraRoutes6 map[string]DeviceprofileSwitchVrfInstancesExtraRoutes6 `pulumi:"extraRoutes6"`
+	// Multicast configuration for this VRF instance. PIM is automatically enabled when any network in this VRF has `multicast.enabled`==`true`
+	MulticastConfig *DeviceprofileSwitchVrfInstancesMulticastConfig `pulumi:"multicastConfig"`
 	// Names of switch networks included in this VRF instance
 	Networks []string `pulumi:"networks"`
 }
@@ -32020,6 +33133,8 @@ type DeviceprofileSwitchVrfInstancesArgs struct {
 	ExtraRoutes DeviceprofileSwitchVrfInstancesExtraRoutesMapInput `pulumi:"extraRoutes"`
 	// Additional IPv6 static routes configured for this VRF instance
 	ExtraRoutes6 DeviceprofileSwitchVrfInstancesExtraRoutes6MapInput `pulumi:"extraRoutes6"`
+	// Multicast configuration for this VRF instance. PIM is automatically enabled when any network in this VRF has `multicast.enabled`==`true`
+	MulticastConfig DeviceprofileSwitchVrfInstancesMulticastConfigPtrInput `pulumi:"multicastConfig"`
 	// Names of switch networks included in this VRF instance
 	Networks pulumi.StringArrayInput `pulumi:"networks"`
 }
@@ -32097,6 +33212,13 @@ func (o DeviceprofileSwitchVrfInstancesOutput) ExtraRoutes6() DeviceprofileSwitc
 	return o.ApplyT(func(v DeviceprofileSwitchVrfInstances) map[string]DeviceprofileSwitchVrfInstancesExtraRoutes6 {
 		return v.ExtraRoutes6
 	}).(DeviceprofileSwitchVrfInstancesExtraRoutes6MapOutput)
+}
+
+// Multicast configuration for this VRF instance. PIM is automatically enabled when any network in this VRF has `multicast.enabled`==`true`
+func (o DeviceprofileSwitchVrfInstancesOutput) MulticastConfig() DeviceprofileSwitchVrfInstancesMulticastConfigPtrOutput {
+	return o.ApplyT(func(v DeviceprofileSwitchVrfInstances) *DeviceprofileSwitchVrfInstancesMulticastConfig {
+		return v.MulticastConfig
+	}).(DeviceprofileSwitchVrfInstancesMulticastConfigPtrOutput)
 }
 
 // Names of switch networks included in this VRF instance
@@ -32316,6 +33438,200 @@ func (o DeviceprofileSwitchVrfInstancesExtraRoutesMapOutput) MapIndex(k pulumi.S
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DeviceprofileSwitchVrfInstancesExtraRoutes {
 		return vs[0].(map[string]DeviceprofileSwitchVrfInstancesExtraRoutes)[vs[1].(string)]
 	}).(DeviceprofileSwitchVrfInstancesExtraRoutesOutput)
+}
+
+type DeviceprofileSwitchVrfInstancesMulticastConfig struct {
+	// When `true`, auto-generates a shared RP on `isL3Border` devices (ERB/IPClos topologies only)
+	AnycastRp *bool `pulumi:"anycastRp"`
+	// RP address used when `anycastRp`==`false`. If the address matches a device SVI, it is configured as a local RP; otherwise a static RP is configured
+	RpIp *string `pulumi:"rpIp"`
+	// SBD IRB subnet; Mist auto-assigns per-device IPs from this range (EVPN eOISM only)
+	SbdSubnet *string `pulumi:"sbdSubnet"`
+	// Supplemental Bridge Domain VLAN ID (EVPN topology / eOISM only)
+	SbdVlanId *int `pulumi:"sbdVlanId"`
+}
+
+// DeviceprofileSwitchVrfInstancesMulticastConfigInput is an input type that accepts DeviceprofileSwitchVrfInstancesMulticastConfigArgs and DeviceprofileSwitchVrfInstancesMulticastConfigOutput values.
+// You can construct a concrete instance of `DeviceprofileSwitchVrfInstancesMulticastConfigInput` via:
+//
+//	DeviceprofileSwitchVrfInstancesMulticastConfigArgs{...}
+type DeviceprofileSwitchVrfInstancesMulticastConfigInput interface {
+	pulumi.Input
+
+	ToDeviceprofileSwitchVrfInstancesMulticastConfigOutput() DeviceprofileSwitchVrfInstancesMulticastConfigOutput
+	ToDeviceprofileSwitchVrfInstancesMulticastConfigOutputWithContext(context.Context) DeviceprofileSwitchVrfInstancesMulticastConfigOutput
+}
+
+type DeviceprofileSwitchVrfInstancesMulticastConfigArgs struct {
+	// When `true`, auto-generates a shared RP on `isL3Border` devices (ERB/IPClos topologies only)
+	AnycastRp pulumi.BoolPtrInput `pulumi:"anycastRp"`
+	// RP address used when `anycastRp`==`false`. If the address matches a device SVI, it is configured as a local RP; otherwise a static RP is configured
+	RpIp pulumi.StringPtrInput `pulumi:"rpIp"`
+	// SBD IRB subnet; Mist auto-assigns per-device IPs from this range (EVPN eOISM only)
+	SbdSubnet pulumi.StringPtrInput `pulumi:"sbdSubnet"`
+	// Supplemental Bridge Domain VLAN ID (EVPN topology / eOISM only)
+	SbdVlanId pulumi.IntPtrInput `pulumi:"sbdVlanId"`
+}
+
+func (DeviceprofileSwitchVrfInstancesMulticastConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileSwitchVrfInstancesMulticastConfig)(nil)).Elem()
+}
+
+func (i DeviceprofileSwitchVrfInstancesMulticastConfigArgs) ToDeviceprofileSwitchVrfInstancesMulticastConfigOutput() DeviceprofileSwitchVrfInstancesMulticastConfigOutput {
+	return i.ToDeviceprofileSwitchVrfInstancesMulticastConfigOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileSwitchVrfInstancesMulticastConfigArgs) ToDeviceprofileSwitchVrfInstancesMulticastConfigOutputWithContext(ctx context.Context) DeviceprofileSwitchVrfInstancesMulticastConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileSwitchVrfInstancesMulticastConfigOutput)
+}
+
+func (i DeviceprofileSwitchVrfInstancesMulticastConfigArgs) ToDeviceprofileSwitchVrfInstancesMulticastConfigPtrOutput() DeviceprofileSwitchVrfInstancesMulticastConfigPtrOutput {
+	return i.ToDeviceprofileSwitchVrfInstancesMulticastConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileSwitchVrfInstancesMulticastConfigArgs) ToDeviceprofileSwitchVrfInstancesMulticastConfigPtrOutputWithContext(ctx context.Context) DeviceprofileSwitchVrfInstancesMulticastConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileSwitchVrfInstancesMulticastConfigOutput).ToDeviceprofileSwitchVrfInstancesMulticastConfigPtrOutputWithContext(ctx)
+}
+
+// DeviceprofileSwitchVrfInstancesMulticastConfigPtrInput is an input type that accepts DeviceprofileSwitchVrfInstancesMulticastConfigArgs, DeviceprofileSwitchVrfInstancesMulticastConfigPtr and DeviceprofileSwitchVrfInstancesMulticastConfigPtrOutput values.
+// You can construct a concrete instance of `DeviceprofileSwitchVrfInstancesMulticastConfigPtrInput` via:
+//
+//	        DeviceprofileSwitchVrfInstancesMulticastConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeviceprofileSwitchVrfInstancesMulticastConfigPtrInput interface {
+	pulumi.Input
+
+	ToDeviceprofileSwitchVrfInstancesMulticastConfigPtrOutput() DeviceprofileSwitchVrfInstancesMulticastConfigPtrOutput
+	ToDeviceprofileSwitchVrfInstancesMulticastConfigPtrOutputWithContext(context.Context) DeviceprofileSwitchVrfInstancesMulticastConfigPtrOutput
+}
+
+type deviceprofileSwitchVrfInstancesMulticastConfigPtrType DeviceprofileSwitchVrfInstancesMulticastConfigArgs
+
+func DeviceprofileSwitchVrfInstancesMulticastConfigPtr(v *DeviceprofileSwitchVrfInstancesMulticastConfigArgs) DeviceprofileSwitchVrfInstancesMulticastConfigPtrInput {
+	return (*deviceprofileSwitchVrfInstancesMulticastConfigPtrType)(v)
+}
+
+func (*deviceprofileSwitchVrfInstancesMulticastConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceprofileSwitchVrfInstancesMulticastConfig)(nil)).Elem()
+}
+
+func (i *deviceprofileSwitchVrfInstancesMulticastConfigPtrType) ToDeviceprofileSwitchVrfInstancesMulticastConfigPtrOutput() DeviceprofileSwitchVrfInstancesMulticastConfigPtrOutput {
+	return i.ToDeviceprofileSwitchVrfInstancesMulticastConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *deviceprofileSwitchVrfInstancesMulticastConfigPtrType) ToDeviceprofileSwitchVrfInstancesMulticastConfigPtrOutputWithContext(ctx context.Context) DeviceprofileSwitchVrfInstancesMulticastConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileSwitchVrfInstancesMulticastConfigPtrOutput)
+}
+
+type DeviceprofileSwitchVrfInstancesMulticastConfigOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileSwitchVrfInstancesMulticastConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileSwitchVrfInstancesMulticastConfig)(nil)).Elem()
+}
+
+func (o DeviceprofileSwitchVrfInstancesMulticastConfigOutput) ToDeviceprofileSwitchVrfInstancesMulticastConfigOutput() DeviceprofileSwitchVrfInstancesMulticastConfigOutput {
+	return o
+}
+
+func (o DeviceprofileSwitchVrfInstancesMulticastConfigOutput) ToDeviceprofileSwitchVrfInstancesMulticastConfigOutputWithContext(ctx context.Context) DeviceprofileSwitchVrfInstancesMulticastConfigOutput {
+	return o
+}
+
+func (o DeviceprofileSwitchVrfInstancesMulticastConfigOutput) ToDeviceprofileSwitchVrfInstancesMulticastConfigPtrOutput() DeviceprofileSwitchVrfInstancesMulticastConfigPtrOutput {
+	return o.ToDeviceprofileSwitchVrfInstancesMulticastConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DeviceprofileSwitchVrfInstancesMulticastConfigOutput) ToDeviceprofileSwitchVrfInstancesMulticastConfigPtrOutputWithContext(ctx context.Context) DeviceprofileSwitchVrfInstancesMulticastConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeviceprofileSwitchVrfInstancesMulticastConfig) *DeviceprofileSwitchVrfInstancesMulticastConfig {
+		return &v
+	}).(DeviceprofileSwitchVrfInstancesMulticastConfigPtrOutput)
+}
+
+// When `true`, auto-generates a shared RP on `isL3Border` devices (ERB/IPClos topologies only)
+func (o DeviceprofileSwitchVrfInstancesMulticastConfigOutput) AnycastRp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeviceprofileSwitchVrfInstancesMulticastConfig) *bool { return v.AnycastRp }).(pulumi.BoolPtrOutput)
+}
+
+// RP address used when `anycastRp`==`false`. If the address matches a device SVI, it is configured as a local RP; otherwise a static RP is configured
+func (o DeviceprofileSwitchVrfInstancesMulticastConfigOutput) RpIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileSwitchVrfInstancesMulticastConfig) *string { return v.RpIp }).(pulumi.StringPtrOutput)
+}
+
+// SBD IRB subnet; Mist auto-assigns per-device IPs from this range (EVPN eOISM only)
+func (o DeviceprofileSwitchVrfInstancesMulticastConfigOutput) SbdSubnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileSwitchVrfInstancesMulticastConfig) *string { return v.SbdSubnet }).(pulumi.StringPtrOutput)
+}
+
+// Supplemental Bridge Domain VLAN ID (EVPN topology / eOISM only)
+func (o DeviceprofileSwitchVrfInstancesMulticastConfigOutput) SbdVlanId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeviceprofileSwitchVrfInstancesMulticastConfig) *int { return v.SbdVlanId }).(pulumi.IntPtrOutput)
+}
+
+type DeviceprofileSwitchVrfInstancesMulticastConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileSwitchVrfInstancesMulticastConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceprofileSwitchVrfInstancesMulticastConfig)(nil)).Elem()
+}
+
+func (o DeviceprofileSwitchVrfInstancesMulticastConfigPtrOutput) ToDeviceprofileSwitchVrfInstancesMulticastConfigPtrOutput() DeviceprofileSwitchVrfInstancesMulticastConfigPtrOutput {
+	return o
+}
+
+func (o DeviceprofileSwitchVrfInstancesMulticastConfigPtrOutput) ToDeviceprofileSwitchVrfInstancesMulticastConfigPtrOutputWithContext(ctx context.Context) DeviceprofileSwitchVrfInstancesMulticastConfigPtrOutput {
+	return o
+}
+
+func (o DeviceprofileSwitchVrfInstancesMulticastConfigPtrOutput) Elem() DeviceprofileSwitchVrfInstancesMulticastConfigOutput {
+	return o.ApplyT(func(v *DeviceprofileSwitchVrfInstancesMulticastConfig) DeviceprofileSwitchVrfInstancesMulticastConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DeviceprofileSwitchVrfInstancesMulticastConfig
+		return ret
+	}).(DeviceprofileSwitchVrfInstancesMulticastConfigOutput)
+}
+
+// When `true`, auto-generates a shared RP on `isL3Border` devices (ERB/IPClos topologies only)
+func (o DeviceprofileSwitchVrfInstancesMulticastConfigPtrOutput) AnycastRp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileSwitchVrfInstancesMulticastConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AnycastRp
+	}).(pulumi.BoolPtrOutput)
+}
+
+// RP address used when `anycastRp`==`false`. If the address matches a device SVI, it is configured as a local RP; otherwise a static RP is configured
+func (o DeviceprofileSwitchVrfInstancesMulticastConfigPtrOutput) RpIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileSwitchVrfInstancesMulticastConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RpIp
+	}).(pulumi.StringPtrOutput)
+}
+
+// SBD IRB subnet; Mist auto-assigns per-device IPs from this range (EVPN eOISM only)
+func (o DeviceprofileSwitchVrfInstancesMulticastConfigPtrOutput) SbdSubnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileSwitchVrfInstancesMulticastConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SbdSubnet
+	}).(pulumi.StringPtrOutput)
+}
+
+// Supplemental Bridge Domain VLAN ID (EVPN topology / eOISM only)
+func (o DeviceprofileSwitchVrfInstancesMulticastConfigPtrOutput) SbdVlanId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileSwitchVrfInstancesMulticastConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SbdVlanId
+	}).(pulumi.IntPtrOutput)
 }
 
 type DeviceprofileSwitchVrrpConfig struct {
@@ -34991,6 +36307,8 @@ type GatewaytemplateGatewayMgmt struct {
 	ConfigRevertTimer *int `pulumi:"configRevertTimer"`
 	// For SSR and SRX, disable console port
 	DisableConsole *bool `pulumi:"disableConsole"`
+	// For SRX only, disable IDP packet capture
+	DisableIdpPcap *bool `pulumi:"disableIdpPcap"`
 	// For SSR and SRX, disable management interface
 	DisableOob *bool `pulumi:"disableOob"`
 	// For SSR and SRX, disable usb interface
@@ -35035,6 +36353,8 @@ type GatewaytemplateGatewayMgmtArgs struct {
 	ConfigRevertTimer pulumi.IntPtrInput `pulumi:"configRevertTimer"`
 	// For SSR and SRX, disable console port
 	DisableConsole pulumi.BoolPtrInput `pulumi:"disableConsole"`
+	// For SRX only, disable IDP packet capture
+	DisableIdpPcap pulumi.BoolPtrInput `pulumi:"disableIdpPcap"`
 	// For SSR and SRX, disable management interface
 	DisableOob pulumi.BoolPtrInput `pulumi:"disableOob"`
 	// For SSR and SRX, disable usb interface
@@ -35164,6 +36484,11 @@ func (o GatewaytemplateGatewayMgmtOutput) DisableConsole() pulumi.BoolPtrOutput 
 	return o.ApplyT(func(v GatewaytemplateGatewayMgmt) *bool { return v.DisableConsole }).(pulumi.BoolPtrOutput)
 }
 
+// For SRX only, disable IDP packet capture
+func (o GatewaytemplateGatewayMgmtOutput) DisableIdpPcap() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewaytemplateGatewayMgmt) *bool { return v.DisableIdpPcap }).(pulumi.BoolPtrOutput)
+}
+
 // For SSR and SRX, disable management interface
 func (o GatewaytemplateGatewayMgmtOutput) DisableOob() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GatewaytemplateGatewayMgmt) *bool { return v.DisableOob }).(pulumi.BoolPtrOutput)
@@ -35290,6 +36615,16 @@ func (o GatewaytemplateGatewayMgmtPtrOutput) DisableConsole() pulumi.BoolPtrOutp
 			return nil
 		}
 		return v.DisableConsole
+	}).(pulumi.BoolPtrOutput)
+}
+
+// For SRX only, disable IDP packet capture
+func (o GatewaytemplateGatewayMgmtPtrOutput) DisableIdpPcap() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GatewaytemplateGatewayMgmt) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableIdpPcap
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -39437,8 +40772,6 @@ type GatewaytemplatePortConfig struct {
 	RethIdx *string `pulumi:"rethIdx"`
 	// If HA mode. Node associated with the redundant Ethernet interface
 	RethNode *string `pulumi:"rethNode"`
-	// If HA mode and for SSR only. Per-network node assignment used for VLAN-based redundancy
-	RethNodes []string `pulumi:"rethNodes"`
 	// Link speed configured on the port
 	Speed *string `pulumi:"speed"`
 	// When SSR is running as VM, this is required on certain hosting platforms
@@ -39547,8 +40880,6 @@ type GatewaytemplatePortConfigArgs struct {
 	RethIdx pulumi.StringPtrInput `pulumi:"rethIdx"`
 	// If HA mode. Node associated with the redundant Ethernet interface
 	RethNode pulumi.StringPtrInput `pulumi:"rethNode"`
-	// If HA mode and for SSR only. Per-network node assignment used for VLAN-based redundancy
-	RethNodes pulumi.StringArrayInput `pulumi:"rethNodes"`
 	// Link speed configured on the port
 	Speed pulumi.StringPtrInput `pulumi:"speed"`
 	// When SSR is running as VM, this is required on certain hosting platforms
@@ -39784,11 +41115,6 @@ func (o GatewaytemplatePortConfigOutput) RethIdx() pulumi.StringPtrOutput {
 // If HA mode. Node associated with the redundant Ethernet interface
 func (o GatewaytemplatePortConfigOutput) RethNode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewaytemplatePortConfig) *string { return v.RethNode }).(pulumi.StringPtrOutput)
-}
-
-// If HA mode and for SSR only. Per-network node assignment used for VLAN-based redundancy
-func (o GatewaytemplatePortConfigOutput) RethNodes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GatewaytemplatePortConfig) []string { return v.RethNodes }).(pulumi.StringArrayOutput)
 }
 
 // Link speed configured on the port
@@ -40966,6 +42292,10 @@ func (o GatewaytemplatePortConfigWanExtraRoutesMapOutput) MapIndex(k pulumi.Stri
 }
 
 type GatewaytemplatePortConfigWanProbeOverride struct {
+	// List of hostnames used as probe destinations; applicable for both IPv4 and IPv6
+	Hostnames []string `pulumi:"hostnames"`
+	// HTTP probe settings; success from any ICMP or HTTP probe indicates the WAN is up
+	Http *GatewaytemplatePortConfigWanProbeOverrideHttp `pulumi:"http"`
 	// List of IPv6 probe host addresses used by this WAN override
 	Ip6s []string `pulumi:"ip6s"`
 	// List of IPv4 probe host addresses used by this WAN override
@@ -40986,6 +42316,10 @@ type GatewaytemplatePortConfigWanProbeOverrideInput interface {
 }
 
 type GatewaytemplatePortConfigWanProbeOverrideArgs struct {
+	// List of hostnames used as probe destinations; applicable for both IPv4 and IPv6
+	Hostnames pulumi.StringArrayInput `pulumi:"hostnames"`
+	// HTTP probe settings; success from any ICMP or HTTP probe indicates the WAN is up
+	Http GatewaytemplatePortConfigWanProbeOverrideHttpPtrInput `pulumi:"http"`
 	// List of IPv6 probe host addresses used by this WAN override
 	Ip6s pulumi.StringArrayInput `pulumi:"ip6s"`
 	// List of IPv4 probe host addresses used by this WAN override
@@ -41071,6 +42405,18 @@ func (o GatewaytemplatePortConfigWanProbeOverrideOutput) ToGatewaytemplatePortCo
 	}).(GatewaytemplatePortConfigWanProbeOverridePtrOutput)
 }
 
+// List of hostnames used as probe destinations; applicable for both IPv4 and IPv6
+func (o GatewaytemplatePortConfigWanProbeOverrideOutput) Hostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GatewaytemplatePortConfigWanProbeOverride) []string { return v.Hostnames }).(pulumi.StringArrayOutput)
+}
+
+// HTTP probe settings; success from any ICMP or HTTP probe indicates the WAN is up
+func (o GatewaytemplatePortConfigWanProbeOverrideOutput) Http() GatewaytemplatePortConfigWanProbeOverrideHttpPtrOutput {
+	return o.ApplyT(func(v GatewaytemplatePortConfigWanProbeOverride) *GatewaytemplatePortConfigWanProbeOverrideHttp {
+		return v.Http
+	}).(GatewaytemplatePortConfigWanProbeOverrideHttpPtrOutput)
+}
+
 // List of IPv6 probe host addresses used by this WAN override
 func (o GatewaytemplatePortConfigWanProbeOverrideOutput) Ip6s() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewaytemplatePortConfigWanProbeOverride) []string { return v.Ip6s }).(pulumi.StringArrayOutput)
@@ -41110,6 +42456,26 @@ func (o GatewaytemplatePortConfigWanProbeOverridePtrOutput) Elem() Gatewaytempla
 	}).(GatewaytemplatePortConfigWanProbeOverrideOutput)
 }
 
+// List of hostnames used as probe destinations; applicable for both IPv4 and IPv6
+func (o GatewaytemplatePortConfigWanProbeOverridePtrOutput) Hostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GatewaytemplatePortConfigWanProbeOverride) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Hostnames
+	}).(pulumi.StringArrayOutput)
+}
+
+// HTTP probe settings; success from any ICMP or HTTP probe indicates the WAN is up
+func (o GatewaytemplatePortConfigWanProbeOverridePtrOutput) Http() GatewaytemplatePortConfigWanProbeOverrideHttpPtrOutput {
+	return o.ApplyT(func(v *GatewaytemplatePortConfigWanProbeOverride) *GatewaytemplatePortConfigWanProbeOverrideHttp {
+		if v == nil {
+			return nil
+		}
+		return v.Http
+	}).(GatewaytemplatePortConfigWanProbeOverrideHttpPtrOutput)
+}
+
 // List of IPv6 probe host addresses used by this WAN override
 func (o GatewaytemplatePortConfigWanProbeOverridePtrOutput) Ip6s() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GatewaytemplatePortConfigWanProbeOverride) []string {
@@ -41138,6 +42504,162 @@ func (o GatewaytemplatePortConfigWanProbeOverridePtrOutput) ProbeProfile() pulum
 		}
 		return v.ProbeProfile
 	}).(pulumi.StringPtrOutput)
+}
+
+type GatewaytemplatePortConfigWanProbeOverrideHttp struct {
+	// HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+	AcceptedStatusCodes []int `pulumi:"acceptedStatusCodes"`
+	// HTTP or HTTPS URLs to probe
+	Urls []string `pulumi:"urls"`
+}
+
+// GatewaytemplatePortConfigWanProbeOverrideHttpInput is an input type that accepts GatewaytemplatePortConfigWanProbeOverrideHttpArgs and GatewaytemplatePortConfigWanProbeOverrideHttpOutput values.
+// You can construct a concrete instance of `GatewaytemplatePortConfigWanProbeOverrideHttpInput` via:
+//
+//	GatewaytemplatePortConfigWanProbeOverrideHttpArgs{...}
+type GatewaytemplatePortConfigWanProbeOverrideHttpInput interface {
+	pulumi.Input
+
+	ToGatewaytemplatePortConfigWanProbeOverrideHttpOutput() GatewaytemplatePortConfigWanProbeOverrideHttpOutput
+	ToGatewaytemplatePortConfigWanProbeOverrideHttpOutputWithContext(context.Context) GatewaytemplatePortConfigWanProbeOverrideHttpOutput
+}
+
+type GatewaytemplatePortConfigWanProbeOverrideHttpArgs struct {
+	// HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+	AcceptedStatusCodes pulumi.IntArrayInput `pulumi:"acceptedStatusCodes"`
+	// HTTP or HTTPS URLs to probe
+	Urls pulumi.StringArrayInput `pulumi:"urls"`
+}
+
+func (GatewaytemplatePortConfigWanProbeOverrideHttpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewaytemplatePortConfigWanProbeOverrideHttp)(nil)).Elem()
+}
+
+func (i GatewaytemplatePortConfigWanProbeOverrideHttpArgs) ToGatewaytemplatePortConfigWanProbeOverrideHttpOutput() GatewaytemplatePortConfigWanProbeOverrideHttpOutput {
+	return i.ToGatewaytemplatePortConfigWanProbeOverrideHttpOutputWithContext(context.Background())
+}
+
+func (i GatewaytemplatePortConfigWanProbeOverrideHttpArgs) ToGatewaytemplatePortConfigWanProbeOverrideHttpOutputWithContext(ctx context.Context) GatewaytemplatePortConfigWanProbeOverrideHttpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewaytemplatePortConfigWanProbeOverrideHttpOutput)
+}
+
+func (i GatewaytemplatePortConfigWanProbeOverrideHttpArgs) ToGatewaytemplatePortConfigWanProbeOverrideHttpPtrOutput() GatewaytemplatePortConfigWanProbeOverrideHttpPtrOutput {
+	return i.ToGatewaytemplatePortConfigWanProbeOverrideHttpPtrOutputWithContext(context.Background())
+}
+
+func (i GatewaytemplatePortConfigWanProbeOverrideHttpArgs) ToGatewaytemplatePortConfigWanProbeOverrideHttpPtrOutputWithContext(ctx context.Context) GatewaytemplatePortConfigWanProbeOverrideHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewaytemplatePortConfigWanProbeOverrideHttpOutput).ToGatewaytemplatePortConfigWanProbeOverrideHttpPtrOutputWithContext(ctx)
+}
+
+// GatewaytemplatePortConfigWanProbeOverrideHttpPtrInput is an input type that accepts GatewaytemplatePortConfigWanProbeOverrideHttpArgs, GatewaytemplatePortConfigWanProbeOverrideHttpPtr and GatewaytemplatePortConfigWanProbeOverrideHttpPtrOutput values.
+// You can construct a concrete instance of `GatewaytemplatePortConfigWanProbeOverrideHttpPtrInput` via:
+//
+//	        GatewaytemplatePortConfigWanProbeOverrideHttpArgs{...}
+//
+//	or:
+//
+//	        nil
+type GatewaytemplatePortConfigWanProbeOverrideHttpPtrInput interface {
+	pulumi.Input
+
+	ToGatewaytemplatePortConfigWanProbeOverrideHttpPtrOutput() GatewaytemplatePortConfigWanProbeOverrideHttpPtrOutput
+	ToGatewaytemplatePortConfigWanProbeOverrideHttpPtrOutputWithContext(context.Context) GatewaytemplatePortConfigWanProbeOverrideHttpPtrOutput
+}
+
+type gatewaytemplatePortConfigWanProbeOverrideHttpPtrType GatewaytemplatePortConfigWanProbeOverrideHttpArgs
+
+func GatewaytemplatePortConfigWanProbeOverrideHttpPtr(v *GatewaytemplatePortConfigWanProbeOverrideHttpArgs) GatewaytemplatePortConfigWanProbeOverrideHttpPtrInput {
+	return (*gatewaytemplatePortConfigWanProbeOverrideHttpPtrType)(v)
+}
+
+func (*gatewaytemplatePortConfigWanProbeOverrideHttpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewaytemplatePortConfigWanProbeOverrideHttp)(nil)).Elem()
+}
+
+func (i *gatewaytemplatePortConfigWanProbeOverrideHttpPtrType) ToGatewaytemplatePortConfigWanProbeOverrideHttpPtrOutput() GatewaytemplatePortConfigWanProbeOverrideHttpPtrOutput {
+	return i.ToGatewaytemplatePortConfigWanProbeOverrideHttpPtrOutputWithContext(context.Background())
+}
+
+func (i *gatewaytemplatePortConfigWanProbeOverrideHttpPtrType) ToGatewaytemplatePortConfigWanProbeOverrideHttpPtrOutputWithContext(ctx context.Context) GatewaytemplatePortConfigWanProbeOverrideHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewaytemplatePortConfigWanProbeOverrideHttpPtrOutput)
+}
+
+type GatewaytemplatePortConfigWanProbeOverrideHttpOutput struct{ *pulumi.OutputState }
+
+func (GatewaytemplatePortConfigWanProbeOverrideHttpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewaytemplatePortConfigWanProbeOverrideHttp)(nil)).Elem()
+}
+
+func (o GatewaytemplatePortConfigWanProbeOverrideHttpOutput) ToGatewaytemplatePortConfigWanProbeOverrideHttpOutput() GatewaytemplatePortConfigWanProbeOverrideHttpOutput {
+	return o
+}
+
+func (o GatewaytemplatePortConfigWanProbeOverrideHttpOutput) ToGatewaytemplatePortConfigWanProbeOverrideHttpOutputWithContext(ctx context.Context) GatewaytemplatePortConfigWanProbeOverrideHttpOutput {
+	return o
+}
+
+func (o GatewaytemplatePortConfigWanProbeOverrideHttpOutput) ToGatewaytemplatePortConfigWanProbeOverrideHttpPtrOutput() GatewaytemplatePortConfigWanProbeOverrideHttpPtrOutput {
+	return o.ToGatewaytemplatePortConfigWanProbeOverrideHttpPtrOutputWithContext(context.Background())
+}
+
+func (o GatewaytemplatePortConfigWanProbeOverrideHttpOutput) ToGatewaytemplatePortConfigWanProbeOverrideHttpPtrOutputWithContext(ctx context.Context) GatewaytemplatePortConfigWanProbeOverrideHttpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewaytemplatePortConfigWanProbeOverrideHttp) *GatewaytemplatePortConfigWanProbeOverrideHttp {
+		return &v
+	}).(GatewaytemplatePortConfigWanProbeOverrideHttpPtrOutput)
+}
+
+// HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+func (o GatewaytemplatePortConfigWanProbeOverrideHttpOutput) AcceptedStatusCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GatewaytemplatePortConfigWanProbeOverrideHttp) []int { return v.AcceptedStatusCodes }).(pulumi.IntArrayOutput)
+}
+
+// HTTP or HTTPS URLs to probe
+func (o GatewaytemplatePortConfigWanProbeOverrideHttpOutput) Urls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GatewaytemplatePortConfigWanProbeOverrideHttp) []string { return v.Urls }).(pulumi.StringArrayOutput)
+}
+
+type GatewaytemplatePortConfigWanProbeOverrideHttpPtrOutput struct{ *pulumi.OutputState }
+
+func (GatewaytemplatePortConfigWanProbeOverrideHttpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewaytemplatePortConfigWanProbeOverrideHttp)(nil)).Elem()
+}
+
+func (o GatewaytemplatePortConfigWanProbeOverrideHttpPtrOutput) ToGatewaytemplatePortConfigWanProbeOverrideHttpPtrOutput() GatewaytemplatePortConfigWanProbeOverrideHttpPtrOutput {
+	return o
+}
+
+func (o GatewaytemplatePortConfigWanProbeOverrideHttpPtrOutput) ToGatewaytemplatePortConfigWanProbeOverrideHttpPtrOutputWithContext(ctx context.Context) GatewaytemplatePortConfigWanProbeOverrideHttpPtrOutput {
+	return o
+}
+
+func (o GatewaytemplatePortConfigWanProbeOverrideHttpPtrOutput) Elem() GatewaytemplatePortConfigWanProbeOverrideHttpOutput {
+	return o.ApplyT(func(v *GatewaytemplatePortConfigWanProbeOverrideHttp) GatewaytemplatePortConfigWanProbeOverrideHttp {
+		if v != nil {
+			return *v
+		}
+		var ret GatewaytemplatePortConfigWanProbeOverrideHttp
+		return ret
+	}).(GatewaytemplatePortConfigWanProbeOverrideHttpOutput)
+}
+
+// HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+func (o GatewaytemplatePortConfigWanProbeOverrideHttpPtrOutput) AcceptedStatusCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *GatewaytemplatePortConfigWanProbeOverrideHttp) []int {
+		if v == nil {
+			return nil
+		}
+		return v.AcceptedStatusCodes
+	}).(pulumi.IntArrayOutput)
+}
+
+// HTTP or HTTPS URLs to probe
+func (o GatewaytemplatePortConfigWanProbeOverrideHttpPtrOutput) Urls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GatewaytemplatePortConfigWanProbeOverrideHttp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Urls
+	}).(pulumi.StringArrayOutput)
 }
 
 type GatewaytemplatePortConfigWanSourceNat struct {
@@ -41523,7 +43045,7 @@ func (o GatewaytemplateRoutingPoliciesTermArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GatewaytemplateRoutingPoliciesTermActions struct {
-	// Whether to accept routes that match this term
+	// Whether to accept routes that match this term. Precedence is `accept` > `nextTerm` > `nextPolicy`; routes are rejected if all three are false
 	Accept *bool `pulumi:"accept"`
 	// BGP communities to add to routes that match this term
 	AddCommunities []string `pulumi:"addCommunities"`
@@ -41539,6 +43061,10 @@ type GatewaytemplateRoutingPoliciesTermActions struct {
 	ExportCommunities []string `pulumi:"exportCommunities"`
 	// Preference value to set when this term is used as an import policy
 	LocalPreference *string `pulumi:"localPreference"`
+	// When true, continue evaluating the next routing policy in the chain after this term matches; default is false
+	NextPolicy *bool `pulumi:"nextPolicy"`
+	// When true, continue evaluating the next term in the same routing policy after this term matches; default is false
+	NextTerm *bool `pulumi:"nextTerm"`
 	// AS path values to prepend when this term is used as an export policy
 	PrependAsPaths []string `pulumi:"prependAsPaths"`
 }
@@ -41555,7 +43081,7 @@ type GatewaytemplateRoutingPoliciesTermActionsInput interface {
 }
 
 type GatewaytemplateRoutingPoliciesTermActionsArgs struct {
-	// Whether to accept routes that match this term
+	// Whether to accept routes that match this term. Precedence is `accept` > `nextTerm` > `nextPolicy`; routes are rejected if all three are false
 	Accept pulumi.BoolPtrInput `pulumi:"accept"`
 	// BGP communities to add to routes that match this term
 	AddCommunities pulumi.StringArrayInput `pulumi:"addCommunities"`
@@ -41571,6 +43097,10 @@ type GatewaytemplateRoutingPoliciesTermActionsArgs struct {
 	ExportCommunities pulumi.StringArrayInput `pulumi:"exportCommunities"`
 	// Preference value to set when this term is used as an import policy
 	LocalPreference pulumi.StringPtrInput `pulumi:"localPreference"`
+	// When true, continue evaluating the next routing policy in the chain after this term matches; default is false
+	NextPolicy pulumi.BoolPtrInput `pulumi:"nextPolicy"`
+	// When true, continue evaluating the next term in the same routing policy after this term matches; default is false
+	NextTerm pulumi.BoolPtrInput `pulumi:"nextTerm"`
 	// AS path values to prepend when this term is used as an export policy
 	PrependAsPaths pulumi.StringArrayInput `pulumi:"prependAsPaths"`
 }
@@ -41652,7 +43182,7 @@ func (o GatewaytemplateRoutingPoliciesTermActionsOutput) ToGatewaytemplateRoutin
 	}).(GatewaytemplateRoutingPoliciesTermActionsPtrOutput)
 }
 
-// Whether to accept routes that match this term
+// Whether to accept routes that match this term. Precedence is `accept` > `nextTerm` > `nextPolicy`; routes are rejected if all three are false
 func (o GatewaytemplateRoutingPoliciesTermActionsOutput) Accept() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GatewaytemplateRoutingPoliciesTermActions) *bool { return v.Accept }).(pulumi.BoolPtrOutput)
 }
@@ -41692,6 +43222,16 @@ func (o GatewaytemplateRoutingPoliciesTermActionsOutput) LocalPreference() pulum
 	return o.ApplyT(func(v GatewaytemplateRoutingPoliciesTermActions) *string { return v.LocalPreference }).(pulumi.StringPtrOutput)
 }
 
+// When true, continue evaluating the next routing policy in the chain after this term matches; default is false
+func (o GatewaytemplateRoutingPoliciesTermActionsOutput) NextPolicy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewaytemplateRoutingPoliciesTermActions) *bool { return v.NextPolicy }).(pulumi.BoolPtrOutput)
+}
+
+// When true, continue evaluating the next term in the same routing policy after this term matches; default is false
+func (o GatewaytemplateRoutingPoliciesTermActionsOutput) NextTerm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewaytemplateRoutingPoliciesTermActions) *bool { return v.NextTerm }).(pulumi.BoolPtrOutput)
+}
+
 // AS path values to prepend when this term is used as an export policy
 func (o GatewaytemplateRoutingPoliciesTermActionsOutput) PrependAsPaths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewaytemplateRoutingPoliciesTermActions) []string { return v.PrependAsPaths }).(pulumi.StringArrayOutput)
@@ -41721,7 +43261,7 @@ func (o GatewaytemplateRoutingPoliciesTermActionsPtrOutput) Elem() Gatewaytempla
 	}).(GatewaytemplateRoutingPoliciesTermActionsOutput)
 }
 
-// Whether to accept routes that match this term
+// Whether to accept routes that match this term. Precedence is `accept` > `nextTerm` > `nextPolicy`; routes are rejected if all three are false
 func (o GatewaytemplateRoutingPoliciesTermActionsPtrOutput) Accept() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GatewaytemplateRoutingPoliciesTermActions) *bool {
 		if v == nil {
@@ -41799,6 +43339,26 @@ func (o GatewaytemplateRoutingPoliciesTermActionsPtrOutput) LocalPreference() pu
 		}
 		return v.LocalPreference
 	}).(pulumi.StringPtrOutput)
+}
+
+// When true, continue evaluating the next routing policy in the chain after this term matches; default is false
+func (o GatewaytemplateRoutingPoliciesTermActionsPtrOutput) NextPolicy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GatewaytemplateRoutingPoliciesTermActions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NextPolicy
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When true, continue evaluating the next term in the same routing policy after this term matches; default is false
+func (o GatewaytemplateRoutingPoliciesTermActionsPtrOutput) NextTerm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GatewaytemplateRoutingPoliciesTermActions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NextTerm
+	}).(pulumi.BoolPtrOutput)
 }
 
 // AS path values to prepend when this term is used as an export policy
@@ -45610,8 +47170,16 @@ func (o GatewaytemplateTunnelConfigsIpsecProposalArrayOutput) Index(i pulumi.Int
 type GatewaytemplateTunnelConfigsPrimary struct {
 	// Remote gateway host addresses for this tunnel node
 	Hosts []string `pulumi:"hosts"`
+	// IPv6 addresses configured on this tunnel node
+	InternalIp6s []string `pulumi:"internalIp6s"`
 	// Internal IP addresses configured on this tunnel node
 	InternalIps []string `pulumi:"internalIps"`
+	// Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+	ProbeHostnames []string `pulumi:"probeHostnames"`
+	// HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+	ProbeHttp *GatewaytemplateTunnelConfigsPrimaryProbeHttp `pulumi:"probeHttp"`
+	// IPv6 ICMP probe addresses used to monitor this tunnel node
+	ProbeIp6s []string `pulumi:"probeIp6s"`
 	// Health-check IP addresses used to monitor this tunnel node
 	ProbeIps []string `pulumi:"probeIps"`
 	// IKE identities expected from this tunnel node
@@ -45634,8 +47202,16 @@ type GatewaytemplateTunnelConfigsPrimaryInput interface {
 type GatewaytemplateTunnelConfigsPrimaryArgs struct {
 	// Remote gateway host addresses for this tunnel node
 	Hosts pulumi.StringArrayInput `pulumi:"hosts"`
+	// IPv6 addresses configured on this tunnel node
+	InternalIp6s pulumi.StringArrayInput `pulumi:"internalIp6s"`
 	// Internal IP addresses configured on this tunnel node
 	InternalIps pulumi.StringArrayInput `pulumi:"internalIps"`
+	// Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+	ProbeHostnames pulumi.StringArrayInput `pulumi:"probeHostnames"`
+	// HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+	ProbeHttp GatewaytemplateTunnelConfigsPrimaryProbeHttpPtrInput `pulumi:"probeHttp"`
+	// IPv6 ICMP probe addresses used to monitor this tunnel node
+	ProbeIp6s pulumi.StringArrayInput `pulumi:"probeIp6s"`
 	// Health-check IP addresses used to monitor this tunnel node
 	ProbeIps pulumi.StringArrayInput `pulumi:"probeIps"`
 	// IKE identities expected from this tunnel node
@@ -45726,9 +47302,31 @@ func (o GatewaytemplateTunnelConfigsPrimaryOutput) Hosts() pulumi.StringArrayOut
 	return o.ApplyT(func(v GatewaytemplateTunnelConfigsPrimary) []string { return v.Hosts }).(pulumi.StringArrayOutput)
 }
 
+// IPv6 addresses configured on this tunnel node
+func (o GatewaytemplateTunnelConfigsPrimaryOutput) InternalIp6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GatewaytemplateTunnelConfigsPrimary) []string { return v.InternalIp6s }).(pulumi.StringArrayOutput)
+}
+
 // Internal IP addresses configured on this tunnel node
 func (o GatewaytemplateTunnelConfigsPrimaryOutput) InternalIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewaytemplateTunnelConfigsPrimary) []string { return v.InternalIps }).(pulumi.StringArrayOutput)
+}
+
+// Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+func (o GatewaytemplateTunnelConfigsPrimaryOutput) ProbeHostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GatewaytemplateTunnelConfigsPrimary) []string { return v.ProbeHostnames }).(pulumi.StringArrayOutput)
+}
+
+// HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+func (o GatewaytemplateTunnelConfigsPrimaryOutput) ProbeHttp() GatewaytemplateTunnelConfigsPrimaryProbeHttpPtrOutput {
+	return o.ApplyT(func(v GatewaytemplateTunnelConfigsPrimary) *GatewaytemplateTunnelConfigsPrimaryProbeHttp {
+		return v.ProbeHttp
+	}).(GatewaytemplateTunnelConfigsPrimaryProbeHttpPtrOutput)
+}
+
+// IPv6 ICMP probe addresses used to monitor this tunnel node
+func (o GatewaytemplateTunnelConfigsPrimaryOutput) ProbeIp6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GatewaytemplateTunnelConfigsPrimary) []string { return v.ProbeIp6s }).(pulumi.StringArrayOutput)
 }
 
 // Health-check IP addresses used to monitor this tunnel node
@@ -45780,6 +47378,16 @@ func (o GatewaytemplateTunnelConfigsPrimaryPtrOutput) Hosts() pulumi.StringArray
 	}).(pulumi.StringArrayOutput)
 }
 
+// IPv6 addresses configured on this tunnel node
+func (o GatewaytemplateTunnelConfigsPrimaryPtrOutput) InternalIp6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GatewaytemplateTunnelConfigsPrimary) []string {
+		if v == nil {
+			return nil
+		}
+		return v.InternalIp6s
+	}).(pulumi.StringArrayOutput)
+}
+
 // Internal IP addresses configured on this tunnel node
 func (o GatewaytemplateTunnelConfigsPrimaryPtrOutput) InternalIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GatewaytemplateTunnelConfigsPrimary) []string {
@@ -45787,6 +47395,36 @@ func (o GatewaytemplateTunnelConfigsPrimaryPtrOutput) InternalIps() pulumi.Strin
 			return nil
 		}
 		return v.InternalIps
+	}).(pulumi.StringArrayOutput)
+}
+
+// Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+func (o GatewaytemplateTunnelConfigsPrimaryPtrOutput) ProbeHostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GatewaytemplateTunnelConfigsPrimary) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ProbeHostnames
+	}).(pulumi.StringArrayOutput)
+}
+
+// HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+func (o GatewaytemplateTunnelConfigsPrimaryPtrOutput) ProbeHttp() GatewaytemplateTunnelConfigsPrimaryProbeHttpPtrOutput {
+	return o.ApplyT(func(v *GatewaytemplateTunnelConfigsPrimary) *GatewaytemplateTunnelConfigsPrimaryProbeHttp {
+		if v == nil {
+			return nil
+		}
+		return v.ProbeHttp
+	}).(GatewaytemplateTunnelConfigsPrimaryProbeHttpPtrOutput)
+}
+
+// IPv6 ICMP probe addresses used to monitor this tunnel node
+func (o GatewaytemplateTunnelConfigsPrimaryPtrOutput) ProbeIp6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GatewaytemplateTunnelConfigsPrimary) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ProbeIp6s
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -45817,6 +47455,162 @@ func (o GatewaytemplateTunnelConfigsPrimaryPtrOutput) WanNames() pulumi.StringAr
 			return nil
 		}
 		return v.WanNames
+	}).(pulumi.StringArrayOutput)
+}
+
+type GatewaytemplateTunnelConfigsPrimaryProbeHttp struct {
+	// HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+	AcceptedStatusCodes []int `pulumi:"acceptedStatusCodes"`
+	// HTTP or HTTPS URLs to probe
+	Urls []string `pulumi:"urls"`
+}
+
+// GatewaytemplateTunnelConfigsPrimaryProbeHttpInput is an input type that accepts GatewaytemplateTunnelConfigsPrimaryProbeHttpArgs and GatewaytemplateTunnelConfigsPrimaryProbeHttpOutput values.
+// You can construct a concrete instance of `GatewaytemplateTunnelConfigsPrimaryProbeHttpInput` via:
+//
+//	GatewaytemplateTunnelConfigsPrimaryProbeHttpArgs{...}
+type GatewaytemplateTunnelConfigsPrimaryProbeHttpInput interface {
+	pulumi.Input
+
+	ToGatewaytemplateTunnelConfigsPrimaryProbeHttpOutput() GatewaytemplateTunnelConfigsPrimaryProbeHttpOutput
+	ToGatewaytemplateTunnelConfigsPrimaryProbeHttpOutputWithContext(context.Context) GatewaytemplateTunnelConfigsPrimaryProbeHttpOutput
+}
+
+type GatewaytemplateTunnelConfigsPrimaryProbeHttpArgs struct {
+	// HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+	AcceptedStatusCodes pulumi.IntArrayInput `pulumi:"acceptedStatusCodes"`
+	// HTTP or HTTPS URLs to probe
+	Urls pulumi.StringArrayInput `pulumi:"urls"`
+}
+
+func (GatewaytemplateTunnelConfigsPrimaryProbeHttpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewaytemplateTunnelConfigsPrimaryProbeHttp)(nil)).Elem()
+}
+
+func (i GatewaytemplateTunnelConfigsPrimaryProbeHttpArgs) ToGatewaytemplateTunnelConfigsPrimaryProbeHttpOutput() GatewaytemplateTunnelConfigsPrimaryProbeHttpOutput {
+	return i.ToGatewaytemplateTunnelConfigsPrimaryProbeHttpOutputWithContext(context.Background())
+}
+
+func (i GatewaytemplateTunnelConfigsPrimaryProbeHttpArgs) ToGatewaytemplateTunnelConfigsPrimaryProbeHttpOutputWithContext(ctx context.Context) GatewaytemplateTunnelConfigsPrimaryProbeHttpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewaytemplateTunnelConfigsPrimaryProbeHttpOutput)
+}
+
+func (i GatewaytemplateTunnelConfigsPrimaryProbeHttpArgs) ToGatewaytemplateTunnelConfigsPrimaryProbeHttpPtrOutput() GatewaytemplateTunnelConfigsPrimaryProbeHttpPtrOutput {
+	return i.ToGatewaytemplateTunnelConfigsPrimaryProbeHttpPtrOutputWithContext(context.Background())
+}
+
+func (i GatewaytemplateTunnelConfigsPrimaryProbeHttpArgs) ToGatewaytemplateTunnelConfigsPrimaryProbeHttpPtrOutputWithContext(ctx context.Context) GatewaytemplateTunnelConfigsPrimaryProbeHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewaytemplateTunnelConfigsPrimaryProbeHttpOutput).ToGatewaytemplateTunnelConfigsPrimaryProbeHttpPtrOutputWithContext(ctx)
+}
+
+// GatewaytemplateTunnelConfigsPrimaryProbeHttpPtrInput is an input type that accepts GatewaytemplateTunnelConfigsPrimaryProbeHttpArgs, GatewaytemplateTunnelConfigsPrimaryProbeHttpPtr and GatewaytemplateTunnelConfigsPrimaryProbeHttpPtrOutput values.
+// You can construct a concrete instance of `GatewaytemplateTunnelConfigsPrimaryProbeHttpPtrInput` via:
+//
+//	        GatewaytemplateTunnelConfigsPrimaryProbeHttpArgs{...}
+//
+//	or:
+//
+//	        nil
+type GatewaytemplateTunnelConfigsPrimaryProbeHttpPtrInput interface {
+	pulumi.Input
+
+	ToGatewaytemplateTunnelConfigsPrimaryProbeHttpPtrOutput() GatewaytemplateTunnelConfigsPrimaryProbeHttpPtrOutput
+	ToGatewaytemplateTunnelConfigsPrimaryProbeHttpPtrOutputWithContext(context.Context) GatewaytemplateTunnelConfigsPrimaryProbeHttpPtrOutput
+}
+
+type gatewaytemplateTunnelConfigsPrimaryProbeHttpPtrType GatewaytemplateTunnelConfigsPrimaryProbeHttpArgs
+
+func GatewaytemplateTunnelConfigsPrimaryProbeHttpPtr(v *GatewaytemplateTunnelConfigsPrimaryProbeHttpArgs) GatewaytemplateTunnelConfigsPrimaryProbeHttpPtrInput {
+	return (*gatewaytemplateTunnelConfigsPrimaryProbeHttpPtrType)(v)
+}
+
+func (*gatewaytemplateTunnelConfigsPrimaryProbeHttpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewaytemplateTunnelConfigsPrimaryProbeHttp)(nil)).Elem()
+}
+
+func (i *gatewaytemplateTunnelConfigsPrimaryProbeHttpPtrType) ToGatewaytemplateTunnelConfigsPrimaryProbeHttpPtrOutput() GatewaytemplateTunnelConfigsPrimaryProbeHttpPtrOutput {
+	return i.ToGatewaytemplateTunnelConfigsPrimaryProbeHttpPtrOutputWithContext(context.Background())
+}
+
+func (i *gatewaytemplateTunnelConfigsPrimaryProbeHttpPtrType) ToGatewaytemplateTunnelConfigsPrimaryProbeHttpPtrOutputWithContext(ctx context.Context) GatewaytemplateTunnelConfigsPrimaryProbeHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewaytemplateTunnelConfigsPrimaryProbeHttpPtrOutput)
+}
+
+type GatewaytemplateTunnelConfigsPrimaryProbeHttpOutput struct{ *pulumi.OutputState }
+
+func (GatewaytemplateTunnelConfigsPrimaryProbeHttpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewaytemplateTunnelConfigsPrimaryProbeHttp)(nil)).Elem()
+}
+
+func (o GatewaytemplateTunnelConfigsPrimaryProbeHttpOutput) ToGatewaytemplateTunnelConfigsPrimaryProbeHttpOutput() GatewaytemplateTunnelConfigsPrimaryProbeHttpOutput {
+	return o
+}
+
+func (o GatewaytemplateTunnelConfigsPrimaryProbeHttpOutput) ToGatewaytemplateTunnelConfigsPrimaryProbeHttpOutputWithContext(ctx context.Context) GatewaytemplateTunnelConfigsPrimaryProbeHttpOutput {
+	return o
+}
+
+func (o GatewaytemplateTunnelConfigsPrimaryProbeHttpOutput) ToGatewaytemplateTunnelConfigsPrimaryProbeHttpPtrOutput() GatewaytemplateTunnelConfigsPrimaryProbeHttpPtrOutput {
+	return o.ToGatewaytemplateTunnelConfigsPrimaryProbeHttpPtrOutputWithContext(context.Background())
+}
+
+func (o GatewaytemplateTunnelConfigsPrimaryProbeHttpOutput) ToGatewaytemplateTunnelConfigsPrimaryProbeHttpPtrOutputWithContext(ctx context.Context) GatewaytemplateTunnelConfigsPrimaryProbeHttpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewaytemplateTunnelConfigsPrimaryProbeHttp) *GatewaytemplateTunnelConfigsPrimaryProbeHttp {
+		return &v
+	}).(GatewaytemplateTunnelConfigsPrimaryProbeHttpPtrOutput)
+}
+
+// HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+func (o GatewaytemplateTunnelConfigsPrimaryProbeHttpOutput) AcceptedStatusCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GatewaytemplateTunnelConfigsPrimaryProbeHttp) []int { return v.AcceptedStatusCodes }).(pulumi.IntArrayOutput)
+}
+
+// HTTP or HTTPS URLs to probe
+func (o GatewaytemplateTunnelConfigsPrimaryProbeHttpOutput) Urls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GatewaytemplateTunnelConfigsPrimaryProbeHttp) []string { return v.Urls }).(pulumi.StringArrayOutput)
+}
+
+type GatewaytemplateTunnelConfigsPrimaryProbeHttpPtrOutput struct{ *pulumi.OutputState }
+
+func (GatewaytemplateTunnelConfigsPrimaryProbeHttpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewaytemplateTunnelConfigsPrimaryProbeHttp)(nil)).Elem()
+}
+
+func (o GatewaytemplateTunnelConfigsPrimaryProbeHttpPtrOutput) ToGatewaytemplateTunnelConfigsPrimaryProbeHttpPtrOutput() GatewaytemplateTunnelConfigsPrimaryProbeHttpPtrOutput {
+	return o
+}
+
+func (o GatewaytemplateTunnelConfigsPrimaryProbeHttpPtrOutput) ToGatewaytemplateTunnelConfigsPrimaryProbeHttpPtrOutputWithContext(ctx context.Context) GatewaytemplateTunnelConfigsPrimaryProbeHttpPtrOutput {
+	return o
+}
+
+func (o GatewaytemplateTunnelConfigsPrimaryProbeHttpPtrOutput) Elem() GatewaytemplateTunnelConfigsPrimaryProbeHttpOutput {
+	return o.ApplyT(func(v *GatewaytemplateTunnelConfigsPrimaryProbeHttp) GatewaytemplateTunnelConfigsPrimaryProbeHttp {
+		if v != nil {
+			return *v
+		}
+		var ret GatewaytemplateTunnelConfigsPrimaryProbeHttp
+		return ret
+	}).(GatewaytemplateTunnelConfigsPrimaryProbeHttpOutput)
+}
+
+// HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+func (o GatewaytemplateTunnelConfigsPrimaryProbeHttpPtrOutput) AcceptedStatusCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *GatewaytemplateTunnelConfigsPrimaryProbeHttp) []int {
+		if v == nil {
+			return nil
+		}
+		return v.AcceptedStatusCodes
+	}).(pulumi.IntArrayOutput)
+}
+
+// HTTP or HTTPS URLs to probe
+func (o GatewaytemplateTunnelConfigsPrimaryProbeHttpPtrOutput) Urls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GatewaytemplateTunnelConfigsPrimaryProbeHttp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Urls
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -46017,8 +47811,16 @@ func (o GatewaytemplateTunnelConfigsProbePtrOutput) Type() pulumi.StringPtrOutpu
 type GatewaytemplateTunnelConfigsSecondary struct {
 	// Remote gateway host addresses for this tunnel node
 	Hosts []string `pulumi:"hosts"`
+	// IPv6 addresses configured on this tunnel node
+	InternalIp6s []string `pulumi:"internalIp6s"`
 	// Internal IP addresses configured on this tunnel node
 	InternalIps []string `pulumi:"internalIps"`
+	// Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+	ProbeHostnames []string `pulumi:"probeHostnames"`
+	// HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+	ProbeHttp *GatewaytemplateTunnelConfigsSecondaryProbeHttp `pulumi:"probeHttp"`
+	// IPv6 ICMP probe addresses used to monitor this tunnel node
+	ProbeIp6s []string `pulumi:"probeIp6s"`
 	// Health-check IP addresses used to monitor this tunnel node
 	ProbeIps []string `pulumi:"probeIps"`
 	// IKE identities expected from this tunnel node
@@ -46041,8 +47843,16 @@ type GatewaytemplateTunnelConfigsSecondaryInput interface {
 type GatewaytemplateTunnelConfigsSecondaryArgs struct {
 	// Remote gateway host addresses for this tunnel node
 	Hosts pulumi.StringArrayInput `pulumi:"hosts"`
+	// IPv6 addresses configured on this tunnel node
+	InternalIp6s pulumi.StringArrayInput `pulumi:"internalIp6s"`
 	// Internal IP addresses configured on this tunnel node
 	InternalIps pulumi.StringArrayInput `pulumi:"internalIps"`
+	// Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+	ProbeHostnames pulumi.StringArrayInput `pulumi:"probeHostnames"`
+	// HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+	ProbeHttp GatewaytemplateTunnelConfigsSecondaryProbeHttpPtrInput `pulumi:"probeHttp"`
+	// IPv6 ICMP probe addresses used to monitor this tunnel node
+	ProbeIp6s pulumi.StringArrayInput `pulumi:"probeIp6s"`
 	// Health-check IP addresses used to monitor this tunnel node
 	ProbeIps pulumi.StringArrayInput `pulumi:"probeIps"`
 	// IKE identities expected from this tunnel node
@@ -46133,9 +47943,31 @@ func (o GatewaytemplateTunnelConfigsSecondaryOutput) Hosts() pulumi.StringArrayO
 	return o.ApplyT(func(v GatewaytemplateTunnelConfigsSecondary) []string { return v.Hosts }).(pulumi.StringArrayOutput)
 }
 
+// IPv6 addresses configured on this tunnel node
+func (o GatewaytemplateTunnelConfigsSecondaryOutput) InternalIp6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GatewaytemplateTunnelConfigsSecondary) []string { return v.InternalIp6s }).(pulumi.StringArrayOutput)
+}
+
 // Internal IP addresses configured on this tunnel node
 func (o GatewaytemplateTunnelConfigsSecondaryOutput) InternalIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewaytemplateTunnelConfigsSecondary) []string { return v.InternalIps }).(pulumi.StringArrayOutput)
+}
+
+// Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+func (o GatewaytemplateTunnelConfigsSecondaryOutput) ProbeHostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GatewaytemplateTunnelConfigsSecondary) []string { return v.ProbeHostnames }).(pulumi.StringArrayOutput)
+}
+
+// HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+func (o GatewaytemplateTunnelConfigsSecondaryOutput) ProbeHttp() GatewaytemplateTunnelConfigsSecondaryProbeHttpPtrOutput {
+	return o.ApplyT(func(v GatewaytemplateTunnelConfigsSecondary) *GatewaytemplateTunnelConfigsSecondaryProbeHttp {
+		return v.ProbeHttp
+	}).(GatewaytemplateTunnelConfigsSecondaryProbeHttpPtrOutput)
+}
+
+// IPv6 ICMP probe addresses used to monitor this tunnel node
+func (o GatewaytemplateTunnelConfigsSecondaryOutput) ProbeIp6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GatewaytemplateTunnelConfigsSecondary) []string { return v.ProbeIp6s }).(pulumi.StringArrayOutput)
 }
 
 // Health-check IP addresses used to monitor this tunnel node
@@ -46187,6 +48019,16 @@ func (o GatewaytemplateTunnelConfigsSecondaryPtrOutput) Hosts() pulumi.StringArr
 	}).(pulumi.StringArrayOutput)
 }
 
+// IPv6 addresses configured on this tunnel node
+func (o GatewaytemplateTunnelConfigsSecondaryPtrOutput) InternalIp6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GatewaytemplateTunnelConfigsSecondary) []string {
+		if v == nil {
+			return nil
+		}
+		return v.InternalIp6s
+	}).(pulumi.StringArrayOutput)
+}
+
 // Internal IP addresses configured on this tunnel node
 func (o GatewaytemplateTunnelConfigsSecondaryPtrOutput) InternalIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GatewaytemplateTunnelConfigsSecondary) []string {
@@ -46194,6 +48036,36 @@ func (o GatewaytemplateTunnelConfigsSecondaryPtrOutput) InternalIps() pulumi.Str
 			return nil
 		}
 		return v.InternalIps
+	}).(pulumi.StringArrayOutput)
+}
+
+// Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+func (o GatewaytemplateTunnelConfigsSecondaryPtrOutput) ProbeHostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GatewaytemplateTunnelConfigsSecondary) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ProbeHostnames
+	}).(pulumi.StringArrayOutput)
+}
+
+// HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+func (o GatewaytemplateTunnelConfigsSecondaryPtrOutput) ProbeHttp() GatewaytemplateTunnelConfigsSecondaryProbeHttpPtrOutput {
+	return o.ApplyT(func(v *GatewaytemplateTunnelConfigsSecondary) *GatewaytemplateTunnelConfigsSecondaryProbeHttp {
+		if v == nil {
+			return nil
+		}
+		return v.ProbeHttp
+	}).(GatewaytemplateTunnelConfigsSecondaryProbeHttpPtrOutput)
+}
+
+// IPv6 ICMP probe addresses used to monitor this tunnel node
+func (o GatewaytemplateTunnelConfigsSecondaryPtrOutput) ProbeIp6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GatewaytemplateTunnelConfigsSecondary) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ProbeIp6s
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -46224,6 +48096,162 @@ func (o GatewaytemplateTunnelConfigsSecondaryPtrOutput) WanNames() pulumi.String
 			return nil
 		}
 		return v.WanNames
+	}).(pulumi.StringArrayOutput)
+}
+
+type GatewaytemplateTunnelConfigsSecondaryProbeHttp struct {
+	// HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+	AcceptedStatusCodes []int `pulumi:"acceptedStatusCodes"`
+	// HTTP or HTTPS URLs to probe
+	Urls []string `pulumi:"urls"`
+}
+
+// GatewaytemplateTunnelConfigsSecondaryProbeHttpInput is an input type that accepts GatewaytemplateTunnelConfigsSecondaryProbeHttpArgs and GatewaytemplateTunnelConfigsSecondaryProbeHttpOutput values.
+// You can construct a concrete instance of `GatewaytemplateTunnelConfigsSecondaryProbeHttpInput` via:
+//
+//	GatewaytemplateTunnelConfigsSecondaryProbeHttpArgs{...}
+type GatewaytemplateTunnelConfigsSecondaryProbeHttpInput interface {
+	pulumi.Input
+
+	ToGatewaytemplateTunnelConfigsSecondaryProbeHttpOutput() GatewaytemplateTunnelConfigsSecondaryProbeHttpOutput
+	ToGatewaytemplateTunnelConfigsSecondaryProbeHttpOutputWithContext(context.Context) GatewaytemplateTunnelConfigsSecondaryProbeHttpOutput
+}
+
+type GatewaytemplateTunnelConfigsSecondaryProbeHttpArgs struct {
+	// HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+	AcceptedStatusCodes pulumi.IntArrayInput `pulumi:"acceptedStatusCodes"`
+	// HTTP or HTTPS URLs to probe
+	Urls pulumi.StringArrayInput `pulumi:"urls"`
+}
+
+func (GatewaytemplateTunnelConfigsSecondaryProbeHttpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewaytemplateTunnelConfigsSecondaryProbeHttp)(nil)).Elem()
+}
+
+func (i GatewaytemplateTunnelConfigsSecondaryProbeHttpArgs) ToGatewaytemplateTunnelConfigsSecondaryProbeHttpOutput() GatewaytemplateTunnelConfigsSecondaryProbeHttpOutput {
+	return i.ToGatewaytemplateTunnelConfigsSecondaryProbeHttpOutputWithContext(context.Background())
+}
+
+func (i GatewaytemplateTunnelConfigsSecondaryProbeHttpArgs) ToGatewaytemplateTunnelConfigsSecondaryProbeHttpOutputWithContext(ctx context.Context) GatewaytemplateTunnelConfigsSecondaryProbeHttpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewaytemplateTunnelConfigsSecondaryProbeHttpOutput)
+}
+
+func (i GatewaytemplateTunnelConfigsSecondaryProbeHttpArgs) ToGatewaytemplateTunnelConfigsSecondaryProbeHttpPtrOutput() GatewaytemplateTunnelConfigsSecondaryProbeHttpPtrOutput {
+	return i.ToGatewaytemplateTunnelConfigsSecondaryProbeHttpPtrOutputWithContext(context.Background())
+}
+
+func (i GatewaytemplateTunnelConfigsSecondaryProbeHttpArgs) ToGatewaytemplateTunnelConfigsSecondaryProbeHttpPtrOutputWithContext(ctx context.Context) GatewaytemplateTunnelConfigsSecondaryProbeHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewaytemplateTunnelConfigsSecondaryProbeHttpOutput).ToGatewaytemplateTunnelConfigsSecondaryProbeHttpPtrOutputWithContext(ctx)
+}
+
+// GatewaytemplateTunnelConfigsSecondaryProbeHttpPtrInput is an input type that accepts GatewaytemplateTunnelConfigsSecondaryProbeHttpArgs, GatewaytemplateTunnelConfigsSecondaryProbeHttpPtr and GatewaytemplateTunnelConfigsSecondaryProbeHttpPtrOutput values.
+// You can construct a concrete instance of `GatewaytemplateTunnelConfigsSecondaryProbeHttpPtrInput` via:
+//
+//	        GatewaytemplateTunnelConfigsSecondaryProbeHttpArgs{...}
+//
+//	or:
+//
+//	        nil
+type GatewaytemplateTunnelConfigsSecondaryProbeHttpPtrInput interface {
+	pulumi.Input
+
+	ToGatewaytemplateTunnelConfigsSecondaryProbeHttpPtrOutput() GatewaytemplateTunnelConfigsSecondaryProbeHttpPtrOutput
+	ToGatewaytemplateTunnelConfigsSecondaryProbeHttpPtrOutputWithContext(context.Context) GatewaytemplateTunnelConfigsSecondaryProbeHttpPtrOutput
+}
+
+type gatewaytemplateTunnelConfigsSecondaryProbeHttpPtrType GatewaytemplateTunnelConfigsSecondaryProbeHttpArgs
+
+func GatewaytemplateTunnelConfigsSecondaryProbeHttpPtr(v *GatewaytemplateTunnelConfigsSecondaryProbeHttpArgs) GatewaytemplateTunnelConfigsSecondaryProbeHttpPtrInput {
+	return (*gatewaytemplateTunnelConfigsSecondaryProbeHttpPtrType)(v)
+}
+
+func (*gatewaytemplateTunnelConfigsSecondaryProbeHttpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewaytemplateTunnelConfigsSecondaryProbeHttp)(nil)).Elem()
+}
+
+func (i *gatewaytemplateTunnelConfigsSecondaryProbeHttpPtrType) ToGatewaytemplateTunnelConfigsSecondaryProbeHttpPtrOutput() GatewaytemplateTunnelConfigsSecondaryProbeHttpPtrOutput {
+	return i.ToGatewaytemplateTunnelConfigsSecondaryProbeHttpPtrOutputWithContext(context.Background())
+}
+
+func (i *gatewaytemplateTunnelConfigsSecondaryProbeHttpPtrType) ToGatewaytemplateTunnelConfigsSecondaryProbeHttpPtrOutputWithContext(ctx context.Context) GatewaytemplateTunnelConfigsSecondaryProbeHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewaytemplateTunnelConfigsSecondaryProbeHttpPtrOutput)
+}
+
+type GatewaytemplateTunnelConfigsSecondaryProbeHttpOutput struct{ *pulumi.OutputState }
+
+func (GatewaytemplateTunnelConfigsSecondaryProbeHttpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewaytemplateTunnelConfigsSecondaryProbeHttp)(nil)).Elem()
+}
+
+func (o GatewaytemplateTunnelConfigsSecondaryProbeHttpOutput) ToGatewaytemplateTunnelConfigsSecondaryProbeHttpOutput() GatewaytemplateTunnelConfigsSecondaryProbeHttpOutput {
+	return o
+}
+
+func (o GatewaytemplateTunnelConfigsSecondaryProbeHttpOutput) ToGatewaytemplateTunnelConfigsSecondaryProbeHttpOutputWithContext(ctx context.Context) GatewaytemplateTunnelConfigsSecondaryProbeHttpOutput {
+	return o
+}
+
+func (o GatewaytemplateTunnelConfigsSecondaryProbeHttpOutput) ToGatewaytemplateTunnelConfigsSecondaryProbeHttpPtrOutput() GatewaytemplateTunnelConfigsSecondaryProbeHttpPtrOutput {
+	return o.ToGatewaytemplateTunnelConfigsSecondaryProbeHttpPtrOutputWithContext(context.Background())
+}
+
+func (o GatewaytemplateTunnelConfigsSecondaryProbeHttpOutput) ToGatewaytemplateTunnelConfigsSecondaryProbeHttpPtrOutputWithContext(ctx context.Context) GatewaytemplateTunnelConfigsSecondaryProbeHttpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewaytemplateTunnelConfigsSecondaryProbeHttp) *GatewaytemplateTunnelConfigsSecondaryProbeHttp {
+		return &v
+	}).(GatewaytemplateTunnelConfigsSecondaryProbeHttpPtrOutput)
+}
+
+// HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+func (o GatewaytemplateTunnelConfigsSecondaryProbeHttpOutput) AcceptedStatusCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GatewaytemplateTunnelConfigsSecondaryProbeHttp) []int { return v.AcceptedStatusCodes }).(pulumi.IntArrayOutput)
+}
+
+// HTTP or HTTPS URLs to probe
+func (o GatewaytemplateTunnelConfigsSecondaryProbeHttpOutput) Urls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GatewaytemplateTunnelConfigsSecondaryProbeHttp) []string { return v.Urls }).(pulumi.StringArrayOutput)
+}
+
+type GatewaytemplateTunnelConfigsSecondaryProbeHttpPtrOutput struct{ *pulumi.OutputState }
+
+func (GatewaytemplateTunnelConfigsSecondaryProbeHttpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewaytemplateTunnelConfigsSecondaryProbeHttp)(nil)).Elem()
+}
+
+func (o GatewaytemplateTunnelConfigsSecondaryProbeHttpPtrOutput) ToGatewaytemplateTunnelConfigsSecondaryProbeHttpPtrOutput() GatewaytemplateTunnelConfigsSecondaryProbeHttpPtrOutput {
+	return o
+}
+
+func (o GatewaytemplateTunnelConfigsSecondaryProbeHttpPtrOutput) ToGatewaytemplateTunnelConfigsSecondaryProbeHttpPtrOutputWithContext(ctx context.Context) GatewaytemplateTunnelConfigsSecondaryProbeHttpPtrOutput {
+	return o
+}
+
+func (o GatewaytemplateTunnelConfigsSecondaryProbeHttpPtrOutput) Elem() GatewaytemplateTunnelConfigsSecondaryProbeHttpOutput {
+	return o.ApplyT(func(v *GatewaytemplateTunnelConfigsSecondaryProbeHttp) GatewaytemplateTunnelConfigsSecondaryProbeHttp {
+		if v != nil {
+			return *v
+		}
+		var ret GatewaytemplateTunnelConfigsSecondaryProbeHttp
+		return ret
+	}).(GatewaytemplateTunnelConfigsSecondaryProbeHttpOutput)
+}
+
+// HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+func (o GatewaytemplateTunnelConfigsSecondaryProbeHttpPtrOutput) AcceptedStatusCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *GatewaytemplateTunnelConfigsSecondaryProbeHttp) []int {
+		if v == nil {
+			return nil
+		}
+		return v.AcceptedStatusCodes
+	}).(pulumi.IntArrayOutput)
+}
+
+// HTTP or HTTPS URLs to probe
+func (o GatewaytemplateTunnelConfigsSecondaryProbeHttpPtrOutput) Urls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GatewaytemplateTunnelConfigsSecondaryProbeHttp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Urls
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -56309,6 +58337,8 @@ func (o NetworkVpnAccessStaticNatMapOutput) MapIndex(k pulumi.StringInput) Netwo
 type NetworktemplateAclPolicy struct {
 	// Destination tag actions evaluated for sources matching this ACL policy
 	Actions []NetworktemplateAclPolicyAction `pulumi:"actions"`
+	// Whether this ACL policy is disabled
+	Disabled *bool `pulumi:"disabled"`
 	// Display name of the ACL policy
 	Name *string `pulumi:"name"`
 	// Source ACL tags that select traffic for this ACL policy
@@ -56329,6 +58359,8 @@ type NetworktemplateAclPolicyInput interface {
 type NetworktemplateAclPolicyArgs struct {
 	// Destination tag actions evaluated for sources matching this ACL policy
 	Actions NetworktemplateAclPolicyActionArrayInput `pulumi:"actions"`
+	// Whether this ACL policy is disabled
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// Display name of the ACL policy
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Source ACL tags that select traffic for this ACL policy
@@ -56389,6 +58421,11 @@ func (o NetworktemplateAclPolicyOutput) ToNetworktemplateAclPolicyOutputWithCont
 // Destination tag actions evaluated for sources matching this ACL policy
 func (o NetworktemplateAclPolicyOutput) Actions() NetworktemplateAclPolicyActionArrayOutput {
 	return o.ApplyT(func(v NetworktemplateAclPolicy) []NetworktemplateAclPolicyAction { return v.Actions }).(NetworktemplateAclPolicyActionArrayOutput)
+}
+
+// Whether this ACL policy is disabled
+func (o NetworktemplateAclPolicyOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworktemplateAclPolicy) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
 // Display name of the ACL policy
@@ -56548,6 +58585,7 @@ type NetworktemplateAclTags struct {
 	PortUsage *string `pulumi:"portUsage"`
 	// Required if:
 	//   * `type`==`radiusGroup`
+	//   * `type`==`arubaUserRole`
 	//   * `type`==`staticGbp`
 	//     if from matching radius_group
 	RadiusGroup *string `pulumi:"radiusGroup"`
@@ -56591,6 +58629,7 @@ type NetworktemplateAclTagsArgs struct {
 	PortUsage pulumi.StringPtrInput `pulumi:"portUsage"`
 	// Required if:
 	//   * `type`==`radiusGroup`
+	//   * `type`==`arubaUserRole`
 	//   * `type`==`staticGbp`
 	//     if from matching radius_group
 	RadiusGroup pulumi.StringPtrInput `pulumi:"radiusGroup"`
@@ -56688,6 +58727,7 @@ func (o NetworktemplateAclTagsOutput) PortUsage() pulumi.StringPtrOutput {
 
 // Required if:
 //   - `type`==`radiusGroup`
+//   - `type`==`arubaUserRole`
 //   - `type`==`staticGbp`
 //     if from matching radius_group
 func (o NetworktemplateAclTagsOutput) RadiusGroup() pulumi.StringPtrOutput {
@@ -58006,6 +60046,200 @@ func (o NetworktemplateMistNacPtrOutput) Network() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type NetworktemplateMulticastConfig struct {
+	// When `true`, auto-generates a shared RP on `isL3Border` devices (ERB/IPClos topologies only)
+	AnycastRp *bool `pulumi:"anycastRp"`
+	// RP address used when `anycastRp`==`false`. If the address matches a device SVI, it is configured as a local RP; otherwise a static RP is configured
+	RpIp *string `pulumi:"rpIp"`
+	// SBD IRB subnet; Mist auto-assigns per-device IPs from this range (EVPN eOISM only)
+	SbdSubnet *string `pulumi:"sbdSubnet"`
+	// Supplemental Bridge Domain VLAN ID (EVPN topology / eOISM only)
+	SbdVlanId *int `pulumi:"sbdVlanId"`
+}
+
+// NetworktemplateMulticastConfigInput is an input type that accepts NetworktemplateMulticastConfigArgs and NetworktemplateMulticastConfigOutput values.
+// You can construct a concrete instance of `NetworktemplateMulticastConfigInput` via:
+//
+//	NetworktemplateMulticastConfigArgs{...}
+type NetworktemplateMulticastConfigInput interface {
+	pulumi.Input
+
+	ToNetworktemplateMulticastConfigOutput() NetworktemplateMulticastConfigOutput
+	ToNetworktemplateMulticastConfigOutputWithContext(context.Context) NetworktemplateMulticastConfigOutput
+}
+
+type NetworktemplateMulticastConfigArgs struct {
+	// When `true`, auto-generates a shared RP on `isL3Border` devices (ERB/IPClos topologies only)
+	AnycastRp pulumi.BoolPtrInput `pulumi:"anycastRp"`
+	// RP address used when `anycastRp`==`false`. If the address matches a device SVI, it is configured as a local RP; otherwise a static RP is configured
+	RpIp pulumi.StringPtrInput `pulumi:"rpIp"`
+	// SBD IRB subnet; Mist auto-assigns per-device IPs from this range (EVPN eOISM only)
+	SbdSubnet pulumi.StringPtrInput `pulumi:"sbdSubnet"`
+	// Supplemental Bridge Domain VLAN ID (EVPN topology / eOISM only)
+	SbdVlanId pulumi.IntPtrInput `pulumi:"sbdVlanId"`
+}
+
+func (NetworktemplateMulticastConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworktemplateMulticastConfig)(nil)).Elem()
+}
+
+func (i NetworktemplateMulticastConfigArgs) ToNetworktemplateMulticastConfigOutput() NetworktemplateMulticastConfigOutput {
+	return i.ToNetworktemplateMulticastConfigOutputWithContext(context.Background())
+}
+
+func (i NetworktemplateMulticastConfigArgs) ToNetworktemplateMulticastConfigOutputWithContext(ctx context.Context) NetworktemplateMulticastConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateMulticastConfigOutput)
+}
+
+func (i NetworktemplateMulticastConfigArgs) ToNetworktemplateMulticastConfigPtrOutput() NetworktemplateMulticastConfigPtrOutput {
+	return i.ToNetworktemplateMulticastConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NetworktemplateMulticastConfigArgs) ToNetworktemplateMulticastConfigPtrOutputWithContext(ctx context.Context) NetworktemplateMulticastConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateMulticastConfigOutput).ToNetworktemplateMulticastConfigPtrOutputWithContext(ctx)
+}
+
+// NetworktemplateMulticastConfigPtrInput is an input type that accepts NetworktemplateMulticastConfigArgs, NetworktemplateMulticastConfigPtr and NetworktemplateMulticastConfigPtrOutput values.
+// You can construct a concrete instance of `NetworktemplateMulticastConfigPtrInput` via:
+//
+//	        NetworktemplateMulticastConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type NetworktemplateMulticastConfigPtrInput interface {
+	pulumi.Input
+
+	ToNetworktemplateMulticastConfigPtrOutput() NetworktemplateMulticastConfigPtrOutput
+	ToNetworktemplateMulticastConfigPtrOutputWithContext(context.Context) NetworktemplateMulticastConfigPtrOutput
+}
+
+type networktemplateMulticastConfigPtrType NetworktemplateMulticastConfigArgs
+
+func NetworktemplateMulticastConfigPtr(v *NetworktemplateMulticastConfigArgs) NetworktemplateMulticastConfigPtrInput {
+	return (*networktemplateMulticastConfigPtrType)(v)
+}
+
+func (*networktemplateMulticastConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworktemplateMulticastConfig)(nil)).Elem()
+}
+
+func (i *networktemplateMulticastConfigPtrType) ToNetworktemplateMulticastConfigPtrOutput() NetworktemplateMulticastConfigPtrOutput {
+	return i.ToNetworktemplateMulticastConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *networktemplateMulticastConfigPtrType) ToNetworktemplateMulticastConfigPtrOutputWithContext(ctx context.Context) NetworktemplateMulticastConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateMulticastConfigPtrOutput)
+}
+
+type NetworktemplateMulticastConfigOutput struct{ *pulumi.OutputState }
+
+func (NetworktemplateMulticastConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworktemplateMulticastConfig)(nil)).Elem()
+}
+
+func (o NetworktemplateMulticastConfigOutput) ToNetworktemplateMulticastConfigOutput() NetworktemplateMulticastConfigOutput {
+	return o
+}
+
+func (o NetworktemplateMulticastConfigOutput) ToNetworktemplateMulticastConfigOutputWithContext(ctx context.Context) NetworktemplateMulticastConfigOutput {
+	return o
+}
+
+func (o NetworktemplateMulticastConfigOutput) ToNetworktemplateMulticastConfigPtrOutput() NetworktemplateMulticastConfigPtrOutput {
+	return o.ToNetworktemplateMulticastConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NetworktemplateMulticastConfigOutput) ToNetworktemplateMulticastConfigPtrOutputWithContext(ctx context.Context) NetworktemplateMulticastConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworktemplateMulticastConfig) *NetworktemplateMulticastConfig {
+		return &v
+	}).(NetworktemplateMulticastConfigPtrOutput)
+}
+
+// When `true`, auto-generates a shared RP on `isL3Border` devices (ERB/IPClos topologies only)
+func (o NetworktemplateMulticastConfigOutput) AnycastRp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworktemplateMulticastConfig) *bool { return v.AnycastRp }).(pulumi.BoolPtrOutput)
+}
+
+// RP address used when `anycastRp`==`false`. If the address matches a device SVI, it is configured as a local RP; otherwise a static RP is configured
+func (o NetworktemplateMulticastConfigOutput) RpIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplateMulticastConfig) *string { return v.RpIp }).(pulumi.StringPtrOutput)
+}
+
+// SBD IRB subnet; Mist auto-assigns per-device IPs from this range (EVPN eOISM only)
+func (o NetworktemplateMulticastConfigOutput) SbdSubnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplateMulticastConfig) *string { return v.SbdSubnet }).(pulumi.StringPtrOutput)
+}
+
+// Supplemental Bridge Domain VLAN ID (EVPN topology / eOISM only)
+func (o NetworktemplateMulticastConfigOutput) SbdVlanId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NetworktemplateMulticastConfig) *int { return v.SbdVlanId }).(pulumi.IntPtrOutput)
+}
+
+type NetworktemplateMulticastConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworktemplateMulticastConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworktemplateMulticastConfig)(nil)).Elem()
+}
+
+func (o NetworktemplateMulticastConfigPtrOutput) ToNetworktemplateMulticastConfigPtrOutput() NetworktemplateMulticastConfigPtrOutput {
+	return o
+}
+
+func (o NetworktemplateMulticastConfigPtrOutput) ToNetworktemplateMulticastConfigPtrOutputWithContext(ctx context.Context) NetworktemplateMulticastConfigPtrOutput {
+	return o
+}
+
+func (o NetworktemplateMulticastConfigPtrOutput) Elem() NetworktemplateMulticastConfigOutput {
+	return o.ApplyT(func(v *NetworktemplateMulticastConfig) NetworktemplateMulticastConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NetworktemplateMulticastConfig
+		return ret
+	}).(NetworktemplateMulticastConfigOutput)
+}
+
+// When `true`, auto-generates a shared RP on `isL3Border` devices (ERB/IPClos topologies only)
+func (o NetworktemplateMulticastConfigPtrOutput) AnycastRp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworktemplateMulticastConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AnycastRp
+	}).(pulumi.BoolPtrOutput)
+}
+
+// RP address used when `anycastRp`==`false`. If the address matches a device SVI, it is configured as a local RP; otherwise a static RP is configured
+func (o NetworktemplateMulticastConfigPtrOutput) RpIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworktemplateMulticastConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RpIp
+	}).(pulumi.StringPtrOutput)
+}
+
+// SBD IRB subnet; Mist auto-assigns per-device IPs from this range (EVPN eOISM only)
+func (o NetworktemplateMulticastConfigPtrOutput) SbdSubnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworktemplateMulticastConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SbdSubnet
+	}).(pulumi.StringPtrOutput)
+}
+
+// Supplemental Bridge Domain VLAN ID (EVPN topology / eOISM only)
+func (o NetworktemplateMulticastConfigPtrOutput) SbdVlanId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NetworktemplateMulticastConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SbdVlanId
+	}).(pulumi.IntPtrOutput)
+}
+
 type NetworktemplateNetworks struct {
 	// Only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
 	Gateway *string `pulumi:"gateway"`
@@ -58015,6 +60249,8 @@ type NetworktemplateNetworks struct {
 	Isolation *bool `pulumi:"isolation"`
 	// Required when `isolation`==`true`. Unique VLAN ID used for client isolation
 	IsolationVlanId *string `pulumi:"isolationVlanId"`
+	// Multicast (IGMP snooping) settings for this VLAN
+	Multicast *NetworktemplateNetworksMulticast `pulumi:"multicast"`
 	// Optional for pure switching, required when L3 / routing features are used
 	Subnet *string `pulumi:"subnet"`
 	// Optional for pure switching, required when L3 / routing features are used
@@ -58043,6 +60279,8 @@ type NetworktemplateNetworksArgs struct {
 	Isolation pulumi.BoolPtrInput `pulumi:"isolation"`
 	// Required when `isolation`==`true`. Unique VLAN ID used for client isolation
 	IsolationVlanId pulumi.StringPtrInput `pulumi:"isolationVlanId"`
+	// Multicast (IGMP snooping) settings for this VLAN
+	Multicast NetworktemplateNetworksMulticastPtrInput `pulumi:"multicast"`
 	// Optional for pure switching, required when L3 / routing features are used
 	Subnet pulumi.StringPtrInput `pulumi:"subnet"`
 	// Optional for pure switching, required when L3 / routing features are used
@@ -58122,6 +60360,11 @@ func (o NetworktemplateNetworksOutput) IsolationVlanId() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v NetworktemplateNetworks) *string { return v.IsolationVlanId }).(pulumi.StringPtrOutput)
 }
 
+// Multicast (IGMP snooping) settings for this VLAN
+func (o NetworktemplateNetworksOutput) Multicast() NetworktemplateNetworksMulticastPtrOutput {
+	return o.ApplyT(func(v NetworktemplateNetworks) *NetworktemplateNetworksMulticast { return v.Multicast }).(NetworktemplateNetworksMulticastPtrOutput)
+}
+
 // Optional for pure switching, required when L3 / routing features are used
 func (o NetworktemplateNetworksOutput) Subnet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateNetworks) *string { return v.Subnet }).(pulumi.StringPtrOutput)
@@ -58155,6 +60398,162 @@ func (o NetworktemplateNetworksMapOutput) MapIndex(k pulumi.StringInput) Network
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NetworktemplateNetworks {
 		return vs[0].(map[string]NetworktemplateNetworks)[vs[1].(string)]
 	}).(NetworktemplateNetworksOutput)
+}
+
+type NetworktemplateNetworksMulticast struct {
+	// Whether to enable IGMP snooping on this VLAN
+	Enabled *bool `pulumi:"enabled"`
+	// IGMP version. '2' (default, ASM/IGMPv2) / '3' (SSM/IGMPv3)
+	IgmpVersion *string `pulumi:"igmpVersion"`
+}
+
+// NetworktemplateNetworksMulticastInput is an input type that accepts NetworktemplateNetworksMulticastArgs and NetworktemplateNetworksMulticastOutput values.
+// You can construct a concrete instance of `NetworktemplateNetworksMulticastInput` via:
+//
+//	NetworktemplateNetworksMulticastArgs{...}
+type NetworktemplateNetworksMulticastInput interface {
+	pulumi.Input
+
+	ToNetworktemplateNetworksMulticastOutput() NetworktemplateNetworksMulticastOutput
+	ToNetworktemplateNetworksMulticastOutputWithContext(context.Context) NetworktemplateNetworksMulticastOutput
+}
+
+type NetworktemplateNetworksMulticastArgs struct {
+	// Whether to enable IGMP snooping on this VLAN
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// IGMP version. '2' (default, ASM/IGMPv2) / '3' (SSM/IGMPv3)
+	IgmpVersion pulumi.StringPtrInput `pulumi:"igmpVersion"`
+}
+
+func (NetworktemplateNetworksMulticastArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworktemplateNetworksMulticast)(nil)).Elem()
+}
+
+func (i NetworktemplateNetworksMulticastArgs) ToNetworktemplateNetworksMulticastOutput() NetworktemplateNetworksMulticastOutput {
+	return i.ToNetworktemplateNetworksMulticastOutputWithContext(context.Background())
+}
+
+func (i NetworktemplateNetworksMulticastArgs) ToNetworktemplateNetworksMulticastOutputWithContext(ctx context.Context) NetworktemplateNetworksMulticastOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateNetworksMulticastOutput)
+}
+
+func (i NetworktemplateNetworksMulticastArgs) ToNetworktemplateNetworksMulticastPtrOutput() NetworktemplateNetworksMulticastPtrOutput {
+	return i.ToNetworktemplateNetworksMulticastPtrOutputWithContext(context.Background())
+}
+
+func (i NetworktemplateNetworksMulticastArgs) ToNetworktemplateNetworksMulticastPtrOutputWithContext(ctx context.Context) NetworktemplateNetworksMulticastPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateNetworksMulticastOutput).ToNetworktemplateNetworksMulticastPtrOutputWithContext(ctx)
+}
+
+// NetworktemplateNetworksMulticastPtrInput is an input type that accepts NetworktemplateNetworksMulticastArgs, NetworktemplateNetworksMulticastPtr and NetworktemplateNetworksMulticastPtrOutput values.
+// You can construct a concrete instance of `NetworktemplateNetworksMulticastPtrInput` via:
+//
+//	        NetworktemplateNetworksMulticastArgs{...}
+//
+//	or:
+//
+//	        nil
+type NetworktemplateNetworksMulticastPtrInput interface {
+	pulumi.Input
+
+	ToNetworktemplateNetworksMulticastPtrOutput() NetworktemplateNetworksMulticastPtrOutput
+	ToNetworktemplateNetworksMulticastPtrOutputWithContext(context.Context) NetworktemplateNetworksMulticastPtrOutput
+}
+
+type networktemplateNetworksMulticastPtrType NetworktemplateNetworksMulticastArgs
+
+func NetworktemplateNetworksMulticastPtr(v *NetworktemplateNetworksMulticastArgs) NetworktemplateNetworksMulticastPtrInput {
+	return (*networktemplateNetworksMulticastPtrType)(v)
+}
+
+func (*networktemplateNetworksMulticastPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworktemplateNetworksMulticast)(nil)).Elem()
+}
+
+func (i *networktemplateNetworksMulticastPtrType) ToNetworktemplateNetworksMulticastPtrOutput() NetworktemplateNetworksMulticastPtrOutput {
+	return i.ToNetworktemplateNetworksMulticastPtrOutputWithContext(context.Background())
+}
+
+func (i *networktemplateNetworksMulticastPtrType) ToNetworktemplateNetworksMulticastPtrOutputWithContext(ctx context.Context) NetworktemplateNetworksMulticastPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateNetworksMulticastPtrOutput)
+}
+
+type NetworktemplateNetworksMulticastOutput struct{ *pulumi.OutputState }
+
+func (NetworktemplateNetworksMulticastOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworktemplateNetworksMulticast)(nil)).Elem()
+}
+
+func (o NetworktemplateNetworksMulticastOutput) ToNetworktemplateNetworksMulticastOutput() NetworktemplateNetworksMulticastOutput {
+	return o
+}
+
+func (o NetworktemplateNetworksMulticastOutput) ToNetworktemplateNetworksMulticastOutputWithContext(ctx context.Context) NetworktemplateNetworksMulticastOutput {
+	return o
+}
+
+func (o NetworktemplateNetworksMulticastOutput) ToNetworktemplateNetworksMulticastPtrOutput() NetworktemplateNetworksMulticastPtrOutput {
+	return o.ToNetworktemplateNetworksMulticastPtrOutputWithContext(context.Background())
+}
+
+func (o NetworktemplateNetworksMulticastOutput) ToNetworktemplateNetworksMulticastPtrOutputWithContext(ctx context.Context) NetworktemplateNetworksMulticastPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworktemplateNetworksMulticast) *NetworktemplateNetworksMulticast {
+		return &v
+	}).(NetworktemplateNetworksMulticastPtrOutput)
+}
+
+// Whether to enable IGMP snooping on this VLAN
+func (o NetworktemplateNetworksMulticastOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworktemplateNetworksMulticast) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// IGMP version. '2' (default, ASM/IGMPv2) / '3' (SSM/IGMPv3)
+func (o NetworktemplateNetworksMulticastOutput) IgmpVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplateNetworksMulticast) *string { return v.IgmpVersion }).(pulumi.StringPtrOutput)
+}
+
+type NetworktemplateNetworksMulticastPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworktemplateNetworksMulticastPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworktemplateNetworksMulticast)(nil)).Elem()
+}
+
+func (o NetworktemplateNetworksMulticastPtrOutput) ToNetworktemplateNetworksMulticastPtrOutput() NetworktemplateNetworksMulticastPtrOutput {
+	return o
+}
+
+func (o NetworktemplateNetworksMulticastPtrOutput) ToNetworktemplateNetworksMulticastPtrOutputWithContext(ctx context.Context) NetworktemplateNetworksMulticastPtrOutput {
+	return o
+}
+
+func (o NetworktemplateNetworksMulticastPtrOutput) Elem() NetworktemplateNetworksMulticastOutput {
+	return o.ApplyT(func(v *NetworktemplateNetworksMulticast) NetworktemplateNetworksMulticast {
+		if v != nil {
+			return *v
+		}
+		var ret NetworktemplateNetworksMulticast
+		return ret
+	}).(NetworktemplateNetworksMulticastOutput)
+}
+
+// Whether to enable IGMP snooping on this VLAN
+func (o NetworktemplateNetworksMulticastPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworktemplateNetworksMulticast) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// IGMP version. '2' (default, ASM/IGMPv2) / '3' (SSM/IGMPv3)
+func (o NetworktemplateNetworksMulticastPtrOutput) IgmpVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworktemplateNetworksMulticast) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IgmpVersion
+	}).(pulumi.StringPtrOutput)
 }
 
 type NetworktemplateOspfAreas struct {
@@ -63482,6 +65881,8 @@ func (o NetworktemplateSnmpConfigV3ConfigNotifyArrayOutput) Index(i pulumi.IntIn
 }
 
 type NetworktemplateSnmpConfigV3ConfigNotifyFilter struct {
+	// CX only. List of SNMP trap group categories included in this filter profile. See https://www.juniper.net/documentation/software/topics/task/configuration/snmp-trap-groups-configuring-junos-nm.html for valid category names.
+	Categories []string `pulumi:"categories"`
 	// OID filter rules in this notification filter profile
 	Contents []NetworktemplateSnmpConfigV3ConfigNotifyFilterContent `pulumi:"contents"`
 	// Notification filter profile name
@@ -63500,6 +65901,8 @@ type NetworktemplateSnmpConfigV3ConfigNotifyFilterInput interface {
 }
 
 type NetworktemplateSnmpConfigV3ConfigNotifyFilterArgs struct {
+	// CX only. List of SNMP trap group categories included in this filter profile. See https://www.juniper.net/documentation/software/topics/task/configuration/snmp-trap-groups-configuring-junos-nm.html for valid category names.
+	Categories pulumi.StringArrayInput `pulumi:"categories"`
 	// OID filter rules in this notification filter profile
 	Contents NetworktemplateSnmpConfigV3ConfigNotifyFilterContentArrayInput `pulumi:"contents"`
 	// Notification filter profile name
@@ -63555,6 +65958,11 @@ func (o NetworktemplateSnmpConfigV3ConfigNotifyFilterOutput) ToNetworktemplateSn
 
 func (o NetworktemplateSnmpConfigV3ConfigNotifyFilterOutput) ToNetworktemplateSnmpConfigV3ConfigNotifyFilterOutputWithContext(ctx context.Context) NetworktemplateSnmpConfigV3ConfigNotifyFilterOutput {
 	return o
+}
+
+// CX only. List of SNMP trap group categories included in this filter profile. See https://www.juniper.net/documentation/software/topics/task/configuration/snmp-trap-groups-configuring-junos-nm.html for valid category names.
+func (o NetworktemplateSnmpConfigV3ConfigNotifyFilterOutput) Categories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigNotifyFilter) []string { return v.Categories }).(pulumi.StringArrayOutput)
 }
 
 // OID filter rules in this notification filter profile
@@ -67720,6 +70128,8 @@ type NetworktemplateVrfInstances struct {
 	ExtraRoutes map[string]NetworktemplateVrfInstancesExtraRoutes `pulumi:"extraRoutes"`
 	// Additional IPv6 static routes configured for this VRF instance
 	ExtraRoutes6 map[string]NetworktemplateVrfInstancesExtraRoutes6 `pulumi:"extraRoutes6"`
+	// Multicast configuration for this VRF instance. PIM is automatically enabled when any network in this VRF has `multicast.enabled`==`true`
+	MulticastConfig *NetworktemplateVrfInstancesMulticastConfig `pulumi:"multicastConfig"`
 	// Names of switch networks included in this VRF instance
 	Networks []string `pulumi:"networks"`
 }
@@ -67744,6 +70154,8 @@ type NetworktemplateVrfInstancesArgs struct {
 	ExtraRoutes NetworktemplateVrfInstancesExtraRoutesMapInput `pulumi:"extraRoutes"`
 	// Additional IPv6 static routes configured for this VRF instance
 	ExtraRoutes6 NetworktemplateVrfInstancesExtraRoutes6MapInput `pulumi:"extraRoutes6"`
+	// Multicast configuration for this VRF instance. PIM is automatically enabled when any network in this VRF has `multicast.enabled`==`true`
+	MulticastConfig NetworktemplateVrfInstancesMulticastConfigPtrInput `pulumi:"multicastConfig"`
 	// Names of switch networks included in this VRF instance
 	Networks pulumi.StringArrayInput `pulumi:"networks"`
 }
@@ -67821,6 +70233,13 @@ func (o NetworktemplateVrfInstancesOutput) ExtraRoutes6() NetworktemplateVrfInst
 	return o.ApplyT(func(v NetworktemplateVrfInstances) map[string]NetworktemplateVrfInstancesExtraRoutes6 {
 		return v.ExtraRoutes6
 	}).(NetworktemplateVrfInstancesExtraRoutes6MapOutput)
+}
+
+// Multicast configuration for this VRF instance. PIM is automatically enabled when any network in this VRF has `multicast.enabled`==`true`
+func (o NetworktemplateVrfInstancesOutput) MulticastConfig() NetworktemplateVrfInstancesMulticastConfigPtrOutput {
+	return o.ApplyT(func(v NetworktemplateVrfInstances) *NetworktemplateVrfInstancesMulticastConfig {
+		return v.MulticastConfig
+	}).(NetworktemplateVrfInstancesMulticastConfigPtrOutput)
 }
 
 // Names of switch networks included in this VRF instance
@@ -68040,6 +70459,200 @@ func (o NetworktemplateVrfInstancesExtraRoutesMapOutput) MapIndex(k pulumi.Strin
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NetworktemplateVrfInstancesExtraRoutes {
 		return vs[0].(map[string]NetworktemplateVrfInstancesExtraRoutes)[vs[1].(string)]
 	}).(NetworktemplateVrfInstancesExtraRoutesOutput)
+}
+
+type NetworktemplateVrfInstancesMulticastConfig struct {
+	// When `true`, auto-generates a shared RP on `isL3Border` devices (ERB/IPClos topologies only)
+	AnycastRp *bool `pulumi:"anycastRp"`
+	// RP address used when `anycastRp`==`false`. If the address matches a device SVI, it is configured as a local RP; otherwise a static RP is configured
+	RpIp *string `pulumi:"rpIp"`
+	// SBD IRB subnet; Mist auto-assigns per-device IPs from this range (EVPN eOISM only)
+	SbdSubnet *string `pulumi:"sbdSubnet"`
+	// Supplemental Bridge Domain VLAN ID (EVPN topology / eOISM only)
+	SbdVlanId *int `pulumi:"sbdVlanId"`
+}
+
+// NetworktemplateVrfInstancesMulticastConfigInput is an input type that accepts NetworktemplateVrfInstancesMulticastConfigArgs and NetworktemplateVrfInstancesMulticastConfigOutput values.
+// You can construct a concrete instance of `NetworktemplateVrfInstancesMulticastConfigInput` via:
+//
+//	NetworktemplateVrfInstancesMulticastConfigArgs{...}
+type NetworktemplateVrfInstancesMulticastConfigInput interface {
+	pulumi.Input
+
+	ToNetworktemplateVrfInstancesMulticastConfigOutput() NetworktemplateVrfInstancesMulticastConfigOutput
+	ToNetworktemplateVrfInstancesMulticastConfigOutputWithContext(context.Context) NetworktemplateVrfInstancesMulticastConfigOutput
+}
+
+type NetworktemplateVrfInstancesMulticastConfigArgs struct {
+	// When `true`, auto-generates a shared RP on `isL3Border` devices (ERB/IPClos topologies only)
+	AnycastRp pulumi.BoolPtrInput `pulumi:"anycastRp"`
+	// RP address used when `anycastRp`==`false`. If the address matches a device SVI, it is configured as a local RP; otherwise a static RP is configured
+	RpIp pulumi.StringPtrInput `pulumi:"rpIp"`
+	// SBD IRB subnet; Mist auto-assigns per-device IPs from this range (EVPN eOISM only)
+	SbdSubnet pulumi.StringPtrInput `pulumi:"sbdSubnet"`
+	// Supplemental Bridge Domain VLAN ID (EVPN topology / eOISM only)
+	SbdVlanId pulumi.IntPtrInput `pulumi:"sbdVlanId"`
+}
+
+func (NetworktemplateVrfInstancesMulticastConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworktemplateVrfInstancesMulticastConfig)(nil)).Elem()
+}
+
+func (i NetworktemplateVrfInstancesMulticastConfigArgs) ToNetworktemplateVrfInstancesMulticastConfigOutput() NetworktemplateVrfInstancesMulticastConfigOutput {
+	return i.ToNetworktemplateVrfInstancesMulticastConfigOutputWithContext(context.Background())
+}
+
+func (i NetworktemplateVrfInstancesMulticastConfigArgs) ToNetworktemplateVrfInstancesMulticastConfigOutputWithContext(ctx context.Context) NetworktemplateVrfInstancesMulticastConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateVrfInstancesMulticastConfigOutput)
+}
+
+func (i NetworktemplateVrfInstancesMulticastConfigArgs) ToNetworktemplateVrfInstancesMulticastConfigPtrOutput() NetworktemplateVrfInstancesMulticastConfigPtrOutput {
+	return i.ToNetworktemplateVrfInstancesMulticastConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NetworktemplateVrfInstancesMulticastConfigArgs) ToNetworktemplateVrfInstancesMulticastConfigPtrOutputWithContext(ctx context.Context) NetworktemplateVrfInstancesMulticastConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateVrfInstancesMulticastConfigOutput).ToNetworktemplateVrfInstancesMulticastConfigPtrOutputWithContext(ctx)
+}
+
+// NetworktemplateVrfInstancesMulticastConfigPtrInput is an input type that accepts NetworktemplateVrfInstancesMulticastConfigArgs, NetworktemplateVrfInstancesMulticastConfigPtr and NetworktemplateVrfInstancesMulticastConfigPtrOutput values.
+// You can construct a concrete instance of `NetworktemplateVrfInstancesMulticastConfigPtrInput` via:
+//
+//	        NetworktemplateVrfInstancesMulticastConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type NetworktemplateVrfInstancesMulticastConfigPtrInput interface {
+	pulumi.Input
+
+	ToNetworktemplateVrfInstancesMulticastConfigPtrOutput() NetworktemplateVrfInstancesMulticastConfigPtrOutput
+	ToNetworktemplateVrfInstancesMulticastConfigPtrOutputWithContext(context.Context) NetworktemplateVrfInstancesMulticastConfigPtrOutput
+}
+
+type networktemplateVrfInstancesMulticastConfigPtrType NetworktemplateVrfInstancesMulticastConfigArgs
+
+func NetworktemplateVrfInstancesMulticastConfigPtr(v *NetworktemplateVrfInstancesMulticastConfigArgs) NetworktemplateVrfInstancesMulticastConfigPtrInput {
+	return (*networktemplateVrfInstancesMulticastConfigPtrType)(v)
+}
+
+func (*networktemplateVrfInstancesMulticastConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworktemplateVrfInstancesMulticastConfig)(nil)).Elem()
+}
+
+func (i *networktemplateVrfInstancesMulticastConfigPtrType) ToNetworktemplateVrfInstancesMulticastConfigPtrOutput() NetworktemplateVrfInstancesMulticastConfigPtrOutput {
+	return i.ToNetworktemplateVrfInstancesMulticastConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *networktemplateVrfInstancesMulticastConfigPtrType) ToNetworktemplateVrfInstancesMulticastConfigPtrOutputWithContext(ctx context.Context) NetworktemplateVrfInstancesMulticastConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateVrfInstancesMulticastConfigPtrOutput)
+}
+
+type NetworktemplateVrfInstancesMulticastConfigOutput struct{ *pulumi.OutputState }
+
+func (NetworktemplateVrfInstancesMulticastConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworktemplateVrfInstancesMulticastConfig)(nil)).Elem()
+}
+
+func (o NetworktemplateVrfInstancesMulticastConfigOutput) ToNetworktemplateVrfInstancesMulticastConfigOutput() NetworktemplateVrfInstancesMulticastConfigOutput {
+	return o
+}
+
+func (o NetworktemplateVrfInstancesMulticastConfigOutput) ToNetworktemplateVrfInstancesMulticastConfigOutputWithContext(ctx context.Context) NetworktemplateVrfInstancesMulticastConfigOutput {
+	return o
+}
+
+func (o NetworktemplateVrfInstancesMulticastConfigOutput) ToNetworktemplateVrfInstancesMulticastConfigPtrOutput() NetworktemplateVrfInstancesMulticastConfigPtrOutput {
+	return o.ToNetworktemplateVrfInstancesMulticastConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NetworktemplateVrfInstancesMulticastConfigOutput) ToNetworktemplateVrfInstancesMulticastConfigPtrOutputWithContext(ctx context.Context) NetworktemplateVrfInstancesMulticastConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworktemplateVrfInstancesMulticastConfig) *NetworktemplateVrfInstancesMulticastConfig {
+		return &v
+	}).(NetworktemplateVrfInstancesMulticastConfigPtrOutput)
+}
+
+// When `true`, auto-generates a shared RP on `isL3Border` devices (ERB/IPClos topologies only)
+func (o NetworktemplateVrfInstancesMulticastConfigOutput) AnycastRp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworktemplateVrfInstancesMulticastConfig) *bool { return v.AnycastRp }).(pulumi.BoolPtrOutput)
+}
+
+// RP address used when `anycastRp`==`false`. If the address matches a device SVI, it is configured as a local RP; otherwise a static RP is configured
+func (o NetworktemplateVrfInstancesMulticastConfigOutput) RpIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplateVrfInstancesMulticastConfig) *string { return v.RpIp }).(pulumi.StringPtrOutput)
+}
+
+// SBD IRB subnet; Mist auto-assigns per-device IPs from this range (EVPN eOISM only)
+func (o NetworktemplateVrfInstancesMulticastConfigOutput) SbdSubnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplateVrfInstancesMulticastConfig) *string { return v.SbdSubnet }).(pulumi.StringPtrOutput)
+}
+
+// Supplemental Bridge Domain VLAN ID (EVPN topology / eOISM only)
+func (o NetworktemplateVrfInstancesMulticastConfigOutput) SbdVlanId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NetworktemplateVrfInstancesMulticastConfig) *int { return v.SbdVlanId }).(pulumi.IntPtrOutput)
+}
+
+type NetworktemplateVrfInstancesMulticastConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworktemplateVrfInstancesMulticastConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworktemplateVrfInstancesMulticastConfig)(nil)).Elem()
+}
+
+func (o NetworktemplateVrfInstancesMulticastConfigPtrOutput) ToNetworktemplateVrfInstancesMulticastConfigPtrOutput() NetworktemplateVrfInstancesMulticastConfigPtrOutput {
+	return o
+}
+
+func (o NetworktemplateVrfInstancesMulticastConfigPtrOutput) ToNetworktemplateVrfInstancesMulticastConfigPtrOutputWithContext(ctx context.Context) NetworktemplateVrfInstancesMulticastConfigPtrOutput {
+	return o
+}
+
+func (o NetworktemplateVrfInstancesMulticastConfigPtrOutput) Elem() NetworktemplateVrfInstancesMulticastConfigOutput {
+	return o.ApplyT(func(v *NetworktemplateVrfInstancesMulticastConfig) NetworktemplateVrfInstancesMulticastConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NetworktemplateVrfInstancesMulticastConfig
+		return ret
+	}).(NetworktemplateVrfInstancesMulticastConfigOutput)
+}
+
+// When `true`, auto-generates a shared RP on `isL3Border` devices (ERB/IPClos topologies only)
+func (o NetworktemplateVrfInstancesMulticastConfigPtrOutput) AnycastRp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworktemplateVrfInstancesMulticastConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AnycastRp
+	}).(pulumi.BoolPtrOutput)
+}
+
+// RP address used when `anycastRp`==`false`. If the address matches a device SVI, it is configured as a local RP; otherwise a static RP is configured
+func (o NetworktemplateVrfInstancesMulticastConfigPtrOutput) RpIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworktemplateVrfInstancesMulticastConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RpIp
+	}).(pulumi.StringPtrOutput)
+}
+
+// SBD IRB subnet; Mist auto-assigns per-device IPs from this range (EVPN eOISM only)
+func (o NetworktemplateVrfInstancesMulticastConfigPtrOutput) SbdSubnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworktemplateVrfInstancesMulticastConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SbdSubnet
+	}).(pulumi.StringPtrOutput)
+}
+
+// Supplemental Bridge Domain VLAN ID (EVPN topology / eOISM only)
+func (o NetworktemplateVrfInstancesMulticastConfigPtrOutput) SbdVlanId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NetworktemplateVrfInstancesMulticastConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SbdVlanId
+	}).(pulumi.IntPtrOutput)
 }
 
 type RftemplateBand24 struct {
@@ -71772,6 +74385,8 @@ func (o ServicepolicySslProxyPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type SettingApiPolicy struct {
+	// Optional. When `true`, Org API tokens without their own `srcIps` also respect the org policy `srcIps`. Default is `false`.
+	EnforceSrcIpsForTokens *bool `pulumi:"enforceSrcIpsForTokens"`
 	// By default, API hides password/secrets when the user doesn't have write access
 	//   * `true`: API will hide passwords/secrets for all users
 	//   * `false`: API will hide passwords/secrets for read-only users
@@ -71792,6 +74407,8 @@ type SettingApiPolicyInput interface {
 }
 
 type SettingApiPolicyArgs struct {
+	// Optional. When `true`, Org API tokens without their own `srcIps` also respect the org policy `srcIps`. Default is `false`.
+	EnforceSrcIpsForTokens pulumi.BoolPtrInput `pulumi:"enforceSrcIpsForTokens"`
 	// By default, API hides password/secrets when the user doesn't have write access
 	//   * `true`: API will hide passwords/secrets for all users
 	//   * `false`: API will hide passwords/secrets for read-only users
@@ -71877,6 +74494,11 @@ func (o SettingApiPolicyOutput) ToSettingApiPolicyPtrOutputWithContext(ctx conte
 	}).(SettingApiPolicyPtrOutput)
 }
 
+// Optional. When `true`, Org API tokens without their own `srcIps` also respect the org policy `srcIps`. Default is `false`.
+func (o SettingApiPolicyOutput) EnforceSrcIpsForTokens() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingApiPolicy) *bool { return v.EnforceSrcIpsForTokens }).(pulumi.BoolPtrOutput)
+}
+
 // By default, API hides password/secrets when the user doesn't have write access
 //   - `true`: API will hide passwords/secrets for all users
 //   - `false`: API will hide passwords/secrets for read-only users
@@ -71911,6 +74533,16 @@ func (o SettingApiPolicyPtrOutput) Elem() SettingApiPolicyOutput {
 		var ret SettingApiPolicy
 		return ret
 	}).(SettingApiPolicyOutput)
+}
+
+// Optional. When `true`, Org API tokens without their own `srcIps` also respect the org policy `srcIps`. Default is `false`.
+func (o SettingApiPolicyPtrOutput) EnforceSrcIpsForTokens() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingApiPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnforceSrcIpsForTokens
+	}).(pulumi.BoolPtrOutput)
 }
 
 // By default, API hides password/secrets when the user doesn't have write access
@@ -72146,6 +74778,148 @@ func (o SettingAutoUpgradePtrOutput) Version() pulumi.StringPtrOutput {
 		}
 		return v.Version
 	}).(pulumi.StringPtrOutput)
+}
+
+type SettingCacertsConfig struct {
+	// PEM-encoded CA certificate
+	Cert string `pulumi:"cert"`
+	// Whether CRL checks are enabled. When true, CRL from AIA is used if available unless `crlUrl` is set.
+	CrlEnabled *bool `pulumi:"crlEnabled"`
+	// Optional override URL for the certificate CRL distribution point
+	CrlUrl *string `pulumi:"crlUrl"`
+	// Optional user-friendly label for the CA issuer configuration
+	Name *string `pulumi:"name"`
+	// Whether OCSP checks are enabled. When true, OCSP responder from AIA is used if available unless `ocspUrl` is set.
+	OcspEnabled *bool `pulumi:"ocspEnabled"`
+	// Optional override URL for the OCSP responder
+	OcspUrl *string `pulumi:"ocspUrl"`
+}
+
+// SettingCacertsConfigInput is an input type that accepts SettingCacertsConfigArgs and SettingCacertsConfigOutput values.
+// You can construct a concrete instance of `SettingCacertsConfigInput` via:
+//
+//	SettingCacertsConfigArgs{...}
+type SettingCacertsConfigInput interface {
+	pulumi.Input
+
+	ToSettingCacertsConfigOutput() SettingCacertsConfigOutput
+	ToSettingCacertsConfigOutputWithContext(context.Context) SettingCacertsConfigOutput
+}
+
+type SettingCacertsConfigArgs struct {
+	// PEM-encoded CA certificate
+	Cert pulumi.StringInput `pulumi:"cert"`
+	// Whether CRL checks are enabled. When true, CRL from AIA is used if available unless `crlUrl` is set.
+	CrlEnabled pulumi.BoolPtrInput `pulumi:"crlEnabled"`
+	// Optional override URL for the certificate CRL distribution point
+	CrlUrl pulumi.StringPtrInput `pulumi:"crlUrl"`
+	// Optional user-friendly label for the CA issuer configuration
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Whether OCSP checks are enabled. When true, OCSP responder from AIA is used if available unless `ocspUrl` is set.
+	OcspEnabled pulumi.BoolPtrInput `pulumi:"ocspEnabled"`
+	// Optional override URL for the OCSP responder
+	OcspUrl pulumi.StringPtrInput `pulumi:"ocspUrl"`
+}
+
+func (SettingCacertsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingCacertsConfig)(nil)).Elem()
+}
+
+func (i SettingCacertsConfigArgs) ToSettingCacertsConfigOutput() SettingCacertsConfigOutput {
+	return i.ToSettingCacertsConfigOutputWithContext(context.Background())
+}
+
+func (i SettingCacertsConfigArgs) ToSettingCacertsConfigOutputWithContext(ctx context.Context) SettingCacertsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingCacertsConfigOutput)
+}
+
+// SettingCacertsConfigArrayInput is an input type that accepts SettingCacertsConfigArray and SettingCacertsConfigArrayOutput values.
+// You can construct a concrete instance of `SettingCacertsConfigArrayInput` via:
+//
+//	SettingCacertsConfigArray{ SettingCacertsConfigArgs{...} }
+type SettingCacertsConfigArrayInput interface {
+	pulumi.Input
+
+	ToSettingCacertsConfigArrayOutput() SettingCacertsConfigArrayOutput
+	ToSettingCacertsConfigArrayOutputWithContext(context.Context) SettingCacertsConfigArrayOutput
+}
+
+type SettingCacertsConfigArray []SettingCacertsConfigInput
+
+func (SettingCacertsConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SettingCacertsConfig)(nil)).Elem()
+}
+
+func (i SettingCacertsConfigArray) ToSettingCacertsConfigArrayOutput() SettingCacertsConfigArrayOutput {
+	return i.ToSettingCacertsConfigArrayOutputWithContext(context.Background())
+}
+
+func (i SettingCacertsConfigArray) ToSettingCacertsConfigArrayOutputWithContext(ctx context.Context) SettingCacertsConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingCacertsConfigArrayOutput)
+}
+
+type SettingCacertsConfigOutput struct{ *pulumi.OutputState }
+
+func (SettingCacertsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingCacertsConfig)(nil)).Elem()
+}
+
+func (o SettingCacertsConfigOutput) ToSettingCacertsConfigOutput() SettingCacertsConfigOutput {
+	return o
+}
+
+func (o SettingCacertsConfigOutput) ToSettingCacertsConfigOutputWithContext(ctx context.Context) SettingCacertsConfigOutput {
+	return o
+}
+
+// PEM-encoded CA certificate
+func (o SettingCacertsConfigOutput) Cert() pulumi.StringOutput {
+	return o.ApplyT(func(v SettingCacertsConfig) string { return v.Cert }).(pulumi.StringOutput)
+}
+
+// Whether CRL checks are enabled. When true, CRL from AIA is used if available unless `crlUrl` is set.
+func (o SettingCacertsConfigOutput) CrlEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingCacertsConfig) *bool { return v.CrlEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Optional override URL for the certificate CRL distribution point
+func (o SettingCacertsConfigOutput) CrlUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingCacertsConfig) *string { return v.CrlUrl }).(pulumi.StringPtrOutput)
+}
+
+// Optional user-friendly label for the CA issuer configuration
+func (o SettingCacertsConfigOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingCacertsConfig) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Whether OCSP checks are enabled. When true, OCSP responder from AIA is used if available unless `ocspUrl` is set.
+func (o SettingCacertsConfigOutput) OcspEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingCacertsConfig) *bool { return v.OcspEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Optional override URL for the OCSP responder
+func (o SettingCacertsConfigOutput) OcspUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingCacertsConfig) *string { return v.OcspUrl }).(pulumi.StringPtrOutput)
+}
+
+type SettingCacertsConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (SettingCacertsConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SettingCacertsConfig)(nil)).Elem()
+}
+
+func (o SettingCacertsConfigArrayOutput) ToSettingCacertsConfigArrayOutput() SettingCacertsConfigArrayOutput {
+	return o
+}
+
+func (o SettingCacertsConfigArrayOutput) ToSettingCacertsConfigArrayOutputWithContext(ctx context.Context) SettingCacertsConfigArrayOutput {
+	return o
+}
+
+func (o SettingCacertsConfigArrayOutput) Index(i pulumi.IntInput) SettingCacertsConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SettingCacertsConfig {
+		return vs[0].([]SettingCacertsConfig)[vs[1].(int)]
+	}).(SettingCacertsConfigOutput)
 }
 
 type SettingCelona struct {
@@ -72458,219 +75232,6 @@ func (o SettingCloudsharkPtrOutput) Url() pulumi.StringPtrOutput {
 		}
 		return v.Url
 	}).(pulumi.StringPtrOutput)
-}
-
-type SettingCradlepoint struct {
-	// Cradlepoint API ID used by Mist for the integration
-	CpApiId *string `pulumi:"cpApiId"`
-	// Cradlepoint API key paired with the Cradlepoint API ID
-	CpApiKey *string `pulumi:"cpApiKey"`
-	// Cradlepoint ECM API ID used by Mist for the integration
-	EcmApiId *string `pulumi:"ecmApiId"`
-	// Cradlepoint ECM API key paired with the ECM API ID
-	EcmApiKey *string `pulumi:"ecmApiKey"`
-	// Whether Mist uses Cradlepoint LLDP data to link routers to Mist sites and devices
-	EnableLldp *bool `pulumi:"enableLldp"`
-}
-
-// SettingCradlepointInput is an input type that accepts SettingCradlepointArgs and SettingCradlepointOutput values.
-// You can construct a concrete instance of `SettingCradlepointInput` via:
-//
-//	SettingCradlepointArgs{...}
-type SettingCradlepointInput interface {
-	pulumi.Input
-
-	ToSettingCradlepointOutput() SettingCradlepointOutput
-	ToSettingCradlepointOutputWithContext(context.Context) SettingCradlepointOutput
-}
-
-type SettingCradlepointArgs struct {
-	// Cradlepoint API ID used by Mist for the integration
-	CpApiId pulumi.StringPtrInput `pulumi:"cpApiId"`
-	// Cradlepoint API key paired with the Cradlepoint API ID
-	CpApiKey pulumi.StringPtrInput `pulumi:"cpApiKey"`
-	// Cradlepoint ECM API ID used by Mist for the integration
-	EcmApiId pulumi.StringPtrInput `pulumi:"ecmApiId"`
-	// Cradlepoint ECM API key paired with the ECM API ID
-	EcmApiKey pulumi.StringPtrInput `pulumi:"ecmApiKey"`
-	// Whether Mist uses Cradlepoint LLDP data to link routers to Mist sites and devices
-	EnableLldp pulumi.BoolPtrInput `pulumi:"enableLldp"`
-}
-
-func (SettingCradlepointArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SettingCradlepoint)(nil)).Elem()
-}
-
-func (i SettingCradlepointArgs) ToSettingCradlepointOutput() SettingCradlepointOutput {
-	return i.ToSettingCradlepointOutputWithContext(context.Background())
-}
-
-func (i SettingCradlepointArgs) ToSettingCradlepointOutputWithContext(ctx context.Context) SettingCradlepointOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SettingCradlepointOutput)
-}
-
-func (i SettingCradlepointArgs) ToSettingCradlepointPtrOutput() SettingCradlepointPtrOutput {
-	return i.ToSettingCradlepointPtrOutputWithContext(context.Background())
-}
-
-func (i SettingCradlepointArgs) ToSettingCradlepointPtrOutputWithContext(ctx context.Context) SettingCradlepointPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SettingCradlepointOutput).ToSettingCradlepointPtrOutputWithContext(ctx)
-}
-
-// SettingCradlepointPtrInput is an input type that accepts SettingCradlepointArgs, SettingCradlepointPtr and SettingCradlepointPtrOutput values.
-// You can construct a concrete instance of `SettingCradlepointPtrInput` via:
-//
-//	        SettingCradlepointArgs{...}
-//
-//	or:
-//
-//	        nil
-type SettingCradlepointPtrInput interface {
-	pulumi.Input
-
-	ToSettingCradlepointPtrOutput() SettingCradlepointPtrOutput
-	ToSettingCradlepointPtrOutputWithContext(context.Context) SettingCradlepointPtrOutput
-}
-
-type settingCradlepointPtrType SettingCradlepointArgs
-
-func SettingCradlepointPtr(v *SettingCradlepointArgs) SettingCradlepointPtrInput {
-	return (*settingCradlepointPtrType)(v)
-}
-
-func (*settingCradlepointPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SettingCradlepoint)(nil)).Elem()
-}
-
-func (i *settingCradlepointPtrType) ToSettingCradlepointPtrOutput() SettingCradlepointPtrOutput {
-	return i.ToSettingCradlepointPtrOutputWithContext(context.Background())
-}
-
-func (i *settingCradlepointPtrType) ToSettingCradlepointPtrOutputWithContext(ctx context.Context) SettingCradlepointPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SettingCradlepointPtrOutput)
-}
-
-type SettingCradlepointOutput struct{ *pulumi.OutputState }
-
-func (SettingCradlepointOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SettingCradlepoint)(nil)).Elem()
-}
-
-func (o SettingCradlepointOutput) ToSettingCradlepointOutput() SettingCradlepointOutput {
-	return o
-}
-
-func (o SettingCradlepointOutput) ToSettingCradlepointOutputWithContext(ctx context.Context) SettingCradlepointOutput {
-	return o
-}
-
-func (o SettingCradlepointOutput) ToSettingCradlepointPtrOutput() SettingCradlepointPtrOutput {
-	return o.ToSettingCradlepointPtrOutputWithContext(context.Background())
-}
-
-func (o SettingCradlepointOutput) ToSettingCradlepointPtrOutputWithContext(ctx context.Context) SettingCradlepointPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingCradlepoint) *SettingCradlepoint {
-		return &v
-	}).(SettingCradlepointPtrOutput)
-}
-
-// Cradlepoint API ID used by Mist for the integration
-func (o SettingCradlepointOutput) CpApiId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SettingCradlepoint) *string { return v.CpApiId }).(pulumi.StringPtrOutput)
-}
-
-// Cradlepoint API key paired with the Cradlepoint API ID
-func (o SettingCradlepointOutput) CpApiKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SettingCradlepoint) *string { return v.CpApiKey }).(pulumi.StringPtrOutput)
-}
-
-// Cradlepoint ECM API ID used by Mist for the integration
-func (o SettingCradlepointOutput) EcmApiId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SettingCradlepoint) *string { return v.EcmApiId }).(pulumi.StringPtrOutput)
-}
-
-// Cradlepoint ECM API key paired with the ECM API ID
-func (o SettingCradlepointOutput) EcmApiKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SettingCradlepoint) *string { return v.EcmApiKey }).(pulumi.StringPtrOutput)
-}
-
-// Whether Mist uses Cradlepoint LLDP data to link routers to Mist sites and devices
-func (o SettingCradlepointOutput) EnableLldp() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SettingCradlepoint) *bool { return v.EnableLldp }).(pulumi.BoolPtrOutput)
-}
-
-type SettingCradlepointPtrOutput struct{ *pulumi.OutputState }
-
-func (SettingCradlepointPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SettingCradlepoint)(nil)).Elem()
-}
-
-func (o SettingCradlepointPtrOutput) ToSettingCradlepointPtrOutput() SettingCradlepointPtrOutput {
-	return o
-}
-
-func (o SettingCradlepointPtrOutput) ToSettingCradlepointPtrOutputWithContext(ctx context.Context) SettingCradlepointPtrOutput {
-	return o
-}
-
-func (o SettingCradlepointPtrOutput) Elem() SettingCradlepointOutput {
-	return o.ApplyT(func(v *SettingCradlepoint) SettingCradlepoint {
-		if v != nil {
-			return *v
-		}
-		var ret SettingCradlepoint
-		return ret
-	}).(SettingCradlepointOutput)
-}
-
-// Cradlepoint API ID used by Mist for the integration
-func (o SettingCradlepointPtrOutput) CpApiId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SettingCradlepoint) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CpApiId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Cradlepoint API key paired with the Cradlepoint API ID
-func (o SettingCradlepointPtrOutput) CpApiKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SettingCradlepoint) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CpApiKey
-	}).(pulumi.StringPtrOutput)
-}
-
-// Cradlepoint ECM API ID used by Mist for the integration
-func (o SettingCradlepointPtrOutput) EcmApiId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SettingCradlepoint) *string {
-		if v == nil {
-			return nil
-		}
-		return v.EcmApiId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Cradlepoint ECM API key paired with the ECM API ID
-func (o SettingCradlepointPtrOutput) EcmApiKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SettingCradlepoint) *string {
-		if v == nil {
-			return nil
-		}
-		return v.EcmApiKey
-	}).(pulumi.StringPtrOutput)
-}
-
-// Whether Mist uses Cradlepoint LLDP data to link routers to Mist sites and devices
-func (o SettingCradlepointPtrOutput) EnableLldp() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SettingCradlepoint) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EnableLldp
-	}).(pulumi.BoolPtrOutput)
 }
 
 type SettingDeviceCert struct {
@@ -75069,6 +77630,8 @@ type SettingMistNac struct {
 	DisableRsaeAlgorithms *bool `pulumi:"disableRsaeAlgorithms"`
 	// eap ssl security level, see https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_set_security_level.html#DEFAULT-CALLBACK-BEHAVIOUR
 	EapSslSecurityLevel *int `pulumi:"eapSslSecurityLevel"`
+	// Enable EAP-MD5 for MAB. WARNING: Not FIPS compliant, use only if required for legacy device support.
+	EnableEapMd5ForMab *bool `pulumi:"enableEapMd5ForMab"`
 	// By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliance NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, Mist Edge clusters that have mistNac enabled
 	EuOnly *bool `pulumi:"euOnly"`
 	// Client fingerprinting settings used by Mist NAC
@@ -75087,7 +77650,7 @@ type SettingMistNac struct {
 	UseIpVersion *string `pulumi:"useIpVersion"`
 	// By default, NAS devices (switches/aps) and proxies(mxedge) are configured to use port TCP2083(RadSec) to reach mist-nac. Set `useSslPort`==`true` to override that port with TCP43 (ssl), This is an org level setting that is applicable to wlans, switch_templates, and mxedgeClusters that have mist-nac enabled
 	UseSslPort *bool `pulumi:"useSslPort"`
-	// Allow customer to configure an expiry time for usermacs by attaching a Quarantine label to those which have been inactive for the configured period of time (in days). 0 means no expiry
+	// Allow customer to configure an expiry time for usermacs by attaching an `inactiveEndpoint` label to those which have been inactive for the configured period of time (in days). 0 means no expiry
 	UsermacExpiry *int `pulumi:"usermacExpiry"`
 }
 
@@ -75113,6 +77676,8 @@ type SettingMistNacArgs struct {
 	DisableRsaeAlgorithms pulumi.BoolPtrInput `pulumi:"disableRsaeAlgorithms"`
 	// eap ssl security level, see https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_set_security_level.html#DEFAULT-CALLBACK-BEHAVIOUR
 	EapSslSecurityLevel pulumi.IntPtrInput `pulumi:"eapSslSecurityLevel"`
+	// Enable EAP-MD5 for MAB. WARNING: Not FIPS compliant, use only if required for legacy device support.
+	EnableEapMd5ForMab pulumi.BoolPtrInput `pulumi:"enableEapMd5ForMab"`
 	// By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliance NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, Mist Edge clusters that have mistNac enabled
 	EuOnly pulumi.BoolPtrInput `pulumi:"euOnly"`
 	// Client fingerprinting settings used by Mist NAC
@@ -75131,7 +77696,7 @@ type SettingMistNacArgs struct {
 	UseIpVersion pulumi.StringPtrInput `pulumi:"useIpVersion"`
 	// By default, NAS devices (switches/aps) and proxies(mxedge) are configured to use port TCP2083(RadSec) to reach mist-nac. Set `useSslPort`==`true` to override that port with TCP43 (ssl), This is an org level setting that is applicable to wlans, switch_templates, and mxedgeClusters that have mist-nac enabled
 	UseSslPort pulumi.BoolPtrInput `pulumi:"useSslPort"`
-	// Allow customer to configure an expiry time for usermacs by attaching a Quarantine label to those which have been inactive for the configured period of time (in days). 0 means no expiry
+	// Allow customer to configure an expiry time for usermacs by attaching an `inactiveEndpoint` label to those which have been inactive for the configured period of time (in days). 0 means no expiry
 	UsermacExpiry pulumi.IntPtrInput `pulumi:"usermacExpiry"`
 }
 
@@ -75237,6 +77802,11 @@ func (o SettingMistNacOutput) EapSslSecurityLevel() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingMistNac) *int { return v.EapSslSecurityLevel }).(pulumi.IntPtrOutput)
 }
 
+// Enable EAP-MD5 for MAB. WARNING: Not FIPS compliant, use only if required for legacy device support.
+func (o SettingMistNacOutput) EnableEapMd5ForMab() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingMistNac) *bool { return v.EnableEapMd5ForMab }).(pulumi.BoolPtrOutput)
+}
+
 // By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliance NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, Mist Edge clusters that have mistNac enabled
 func (o SettingMistNacOutput) EuOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingMistNac) *bool { return v.EuOnly }).(pulumi.BoolPtrOutput)
@@ -75282,7 +77852,7 @@ func (o SettingMistNacOutput) UseSslPort() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingMistNac) *bool { return v.UseSslPort }).(pulumi.BoolPtrOutput)
 }
 
-// Allow customer to configure an expiry time for usermacs by attaching a Quarantine label to those which have been inactive for the configured period of time (in days). 0 means no expiry
+// Allow customer to configure an expiry time for usermacs by attaching an `inactiveEndpoint` label to those which have been inactive for the configured period of time (in days). 0 means no expiry
 func (o SettingMistNacOutput) UsermacExpiry() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingMistNac) *int { return v.UsermacExpiry }).(pulumi.IntPtrOutput)
 }
@@ -75359,6 +77929,16 @@ func (o SettingMistNacPtrOutput) EapSslSecurityLevel() pulumi.IntPtrOutput {
 		}
 		return v.EapSslSecurityLevel
 	}).(pulumi.IntPtrOutput)
+}
+
+// Enable EAP-MD5 for MAB. WARNING: Not FIPS compliant, use only if required for legacy device support.
+func (o SettingMistNacPtrOutput) EnableEapMd5ForMab() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingMistNac) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableEapMd5ForMab
+	}).(pulumi.BoolPtrOutput)
 }
 
 // By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliance NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, Mist Edge clusters that have mistNac enabled
@@ -75451,7 +78031,7 @@ func (o SettingMistNacPtrOutput) UseSslPort() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Allow customer to configure an expiry time for usermacs by attaching a Quarantine label to those which have been inactive for the configured period of time (in days). 0 means no expiry
+// Allow customer to configure an expiry time for usermacs by attaching an `inactiveEndpoint` label to those which have been inactive for the configured period of time (in days). 0 means no expiry
 func (o SettingMistNacPtrOutput) UsermacExpiry() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SettingMistNac) *int {
 		if v == nil {
@@ -80002,6 +82582,121 @@ func (o VpnPathsTrafficShapingPtrOutput) MaxTxKbps() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type WebhookRule struct {
+	// Action applied when the rule matches the incoming event
+	Action *string `pulumi:"action"`
+	// Optional event payload matching criteria. Property key is the event field name and the value is the list of accepted values
+	Matching map[string][]string `pulumi:"matching"`
+	// Webhook topic this rule applies to
+	Topic string `pulumi:"topic"`
+}
+
+// WebhookRuleInput is an input type that accepts WebhookRuleArgs and WebhookRuleOutput values.
+// You can construct a concrete instance of `WebhookRuleInput` via:
+//
+//	WebhookRuleArgs{...}
+type WebhookRuleInput interface {
+	pulumi.Input
+
+	ToWebhookRuleOutput() WebhookRuleOutput
+	ToWebhookRuleOutputWithContext(context.Context) WebhookRuleOutput
+}
+
+type WebhookRuleArgs struct {
+	// Action applied when the rule matches the incoming event
+	Action pulumi.StringPtrInput `pulumi:"action"`
+	// Optional event payload matching criteria. Property key is the event field name and the value is the list of accepted values
+	Matching pulumi.StringArrayMapInput `pulumi:"matching"`
+	// Webhook topic this rule applies to
+	Topic pulumi.StringInput `pulumi:"topic"`
+}
+
+func (WebhookRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhookRule)(nil)).Elem()
+}
+
+func (i WebhookRuleArgs) ToWebhookRuleOutput() WebhookRuleOutput {
+	return i.ToWebhookRuleOutputWithContext(context.Background())
+}
+
+func (i WebhookRuleArgs) ToWebhookRuleOutputWithContext(ctx context.Context) WebhookRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookRuleOutput)
+}
+
+// WebhookRuleArrayInput is an input type that accepts WebhookRuleArray and WebhookRuleArrayOutput values.
+// You can construct a concrete instance of `WebhookRuleArrayInput` via:
+//
+//	WebhookRuleArray{ WebhookRuleArgs{...} }
+type WebhookRuleArrayInput interface {
+	pulumi.Input
+
+	ToWebhookRuleArrayOutput() WebhookRuleArrayOutput
+	ToWebhookRuleArrayOutputWithContext(context.Context) WebhookRuleArrayOutput
+}
+
+type WebhookRuleArray []WebhookRuleInput
+
+func (WebhookRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WebhookRule)(nil)).Elem()
+}
+
+func (i WebhookRuleArray) ToWebhookRuleArrayOutput() WebhookRuleArrayOutput {
+	return i.ToWebhookRuleArrayOutputWithContext(context.Background())
+}
+
+func (i WebhookRuleArray) ToWebhookRuleArrayOutputWithContext(ctx context.Context) WebhookRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookRuleArrayOutput)
+}
+
+type WebhookRuleOutput struct{ *pulumi.OutputState }
+
+func (WebhookRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhookRule)(nil)).Elem()
+}
+
+func (o WebhookRuleOutput) ToWebhookRuleOutput() WebhookRuleOutput {
+	return o
+}
+
+func (o WebhookRuleOutput) ToWebhookRuleOutputWithContext(ctx context.Context) WebhookRuleOutput {
+	return o
+}
+
+// Action applied when the rule matches the incoming event
+func (o WebhookRuleOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebhookRule) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// Optional event payload matching criteria. Property key is the event field name and the value is the list of accepted values
+func (o WebhookRuleOutput) Matching() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v WebhookRule) map[string][]string { return v.Matching }).(pulumi.StringArrayMapOutput)
+}
+
+// Webhook topic this rule applies to
+func (o WebhookRuleOutput) Topic() pulumi.StringOutput {
+	return o.ApplyT(func(v WebhookRule) string { return v.Topic }).(pulumi.StringOutput)
+}
+
+type WebhookRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (WebhookRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WebhookRule)(nil)).Elem()
+}
+
+func (o WebhookRuleArrayOutput) ToWebhookRuleArrayOutput() WebhookRuleArrayOutput {
+	return o
+}
+
+func (o WebhookRuleArrayOutput) ToWebhookRuleArrayOutputWithContext(ctx context.Context) WebhookRuleArrayOutput {
+	return o
+}
+
+func (o WebhookRuleArrayOutput) Index(i pulumi.IntInput) WebhookRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WebhookRule {
+		return vs[0].([]WebhookRule)[vs[1].(int)]
+	}).(WebhookRuleOutput)
+}
+
 type WlanAcctServer struct {
 	// Address or hostname of the RADIUS accounting server
 	Host string `pulumi:"host"`
@@ -82298,6 +84993,8 @@ type WlanDynamicPsk struct {
 	Enabled *bool `pulumi:"enabled"`
 	// When 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
 	ForceLookup *bool `pulumi:"forceLookup"`
+	// VLANs to be bridged locally when forwarding to mxtunnel or site mxedge
+	LocalVlanIds []string `pulumi:"localVlanIds"`
 	// Origin used to retrieve per-user PSKs
 	Source *string `pulumi:"source"`
 }
@@ -82322,6 +85019,8 @@ type WlanDynamicPskArgs struct {
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// When 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
 	ForceLookup pulumi.BoolPtrInput `pulumi:"forceLookup"`
+	// VLANs to be bridged locally when forwarding to mxtunnel or site mxedge
+	LocalVlanIds pulumi.StringArrayInput `pulumi:"localVlanIds"`
 	// Origin used to retrieve per-user PSKs
 	Source pulumi.StringPtrInput `pulumi:"source"`
 }
@@ -82423,6 +85122,11 @@ func (o WlanDynamicPskOutput) ForceLookup() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanDynamicPsk) *bool { return v.ForceLookup }).(pulumi.BoolPtrOutput)
 }
 
+// VLANs to be bridged locally when forwarding to mxtunnel or site mxedge
+func (o WlanDynamicPskOutput) LocalVlanIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WlanDynamicPsk) []string { return v.LocalVlanIds }).(pulumi.StringArrayOutput)
+}
+
 // Origin used to retrieve per-user PSKs
 func (o WlanDynamicPskOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanDynamicPsk) *string { return v.Source }).(pulumi.StringPtrOutput)
@@ -82490,6 +85194,16 @@ func (o WlanDynamicPskPtrOutput) ForceLookup() pulumi.BoolPtrOutput {
 		}
 		return v.ForceLookup
 	}).(pulumi.BoolPtrOutput)
+}
+
+// VLANs to be bridged locally when forwarding to mxtunnel or site mxedge
+func (o WlanDynamicPskPtrOutput) LocalVlanIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WlanDynamicPsk) []string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalVlanIds
+	}).(pulumi.StringArrayOutput)
 }
 
 // Origin used to retrieve per-user PSKs
@@ -90286,1451 +93000,6 @@ func (o GetAlarmtemplatesOrgAlarmtemplateArrayOutput) Index(i pulumi.IntInput) G
 	}).(GetAlarmtemplatesOrgAlarmtemplateOutput)
 }
 
-type GetAlarmtemplatesOrgAlarmtemplateDelivery struct {
-	// List of additional email string to deliver the alarms via emails
-	AdditionalEmails []string `pulumi:"additionalEmails"`
-	// Whether to enable the alarm delivery via emails or not
-	Enabled bool `pulumi:"enabled"`
-	// Whether to deliver the alarms via emails to Org admins or not
-	ToOrgAdmins bool `pulumi:"toOrgAdmins"`
-	// Whether to deliver the alarms via emails to Site admins or not
-	ToSiteAdmins bool `pulumi:"toSiteAdmins"`
-}
-
-// GetAlarmtemplatesOrgAlarmtemplateDeliveryInput is an input type that accepts GetAlarmtemplatesOrgAlarmtemplateDeliveryArgs and GetAlarmtemplatesOrgAlarmtemplateDeliveryOutput values.
-// You can construct a concrete instance of `GetAlarmtemplatesOrgAlarmtemplateDeliveryInput` via:
-//
-//	GetAlarmtemplatesOrgAlarmtemplateDeliveryArgs{...}
-type GetAlarmtemplatesOrgAlarmtemplateDeliveryInput interface {
-	pulumi.Input
-
-	ToGetAlarmtemplatesOrgAlarmtemplateDeliveryOutput() GetAlarmtemplatesOrgAlarmtemplateDeliveryOutput
-	ToGetAlarmtemplatesOrgAlarmtemplateDeliveryOutputWithContext(context.Context) GetAlarmtemplatesOrgAlarmtemplateDeliveryOutput
-}
-
-type GetAlarmtemplatesOrgAlarmtemplateDeliveryArgs struct {
-	// List of additional email string to deliver the alarms via emails
-	AdditionalEmails pulumi.StringArrayInput `pulumi:"additionalEmails"`
-	// Whether to enable the alarm delivery via emails or not
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// Whether to deliver the alarms via emails to Org admins or not
-	ToOrgAdmins pulumi.BoolInput `pulumi:"toOrgAdmins"`
-	// Whether to deliver the alarms via emails to Site admins or not
-	ToSiteAdmins pulumi.BoolInput `pulumi:"toSiteAdmins"`
-}
-
-func (GetAlarmtemplatesOrgAlarmtemplateDeliveryArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAlarmtemplatesOrgAlarmtemplateDelivery)(nil)).Elem()
-}
-
-func (i GetAlarmtemplatesOrgAlarmtemplateDeliveryArgs) ToGetAlarmtemplatesOrgAlarmtemplateDeliveryOutput() GetAlarmtemplatesOrgAlarmtemplateDeliveryOutput {
-	return i.ToGetAlarmtemplatesOrgAlarmtemplateDeliveryOutputWithContext(context.Background())
-}
-
-func (i GetAlarmtemplatesOrgAlarmtemplateDeliveryArgs) ToGetAlarmtemplatesOrgAlarmtemplateDeliveryOutputWithContext(ctx context.Context) GetAlarmtemplatesOrgAlarmtemplateDeliveryOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAlarmtemplatesOrgAlarmtemplateDeliveryOutput)
-}
-
-type GetAlarmtemplatesOrgAlarmtemplateDeliveryOutput struct{ *pulumi.OutputState }
-
-func (GetAlarmtemplatesOrgAlarmtemplateDeliveryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAlarmtemplatesOrgAlarmtemplateDelivery)(nil)).Elem()
-}
-
-func (o GetAlarmtemplatesOrgAlarmtemplateDeliveryOutput) ToGetAlarmtemplatesOrgAlarmtemplateDeliveryOutput() GetAlarmtemplatesOrgAlarmtemplateDeliveryOutput {
-	return o
-}
-
-func (o GetAlarmtemplatesOrgAlarmtemplateDeliveryOutput) ToGetAlarmtemplatesOrgAlarmtemplateDeliveryOutputWithContext(ctx context.Context) GetAlarmtemplatesOrgAlarmtemplateDeliveryOutput {
-	return o
-}
-
-// List of additional email string to deliver the alarms via emails
-func (o GetAlarmtemplatesOrgAlarmtemplateDeliveryOutput) AdditionalEmails() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetAlarmtemplatesOrgAlarmtemplateDelivery) []string { return v.AdditionalEmails }).(pulumi.StringArrayOutput)
-}
-
-// Whether to enable the alarm delivery via emails or not
-func (o GetAlarmtemplatesOrgAlarmtemplateDeliveryOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetAlarmtemplatesOrgAlarmtemplateDelivery) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// Whether to deliver the alarms via emails to Org admins or not
-func (o GetAlarmtemplatesOrgAlarmtemplateDeliveryOutput) ToOrgAdmins() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetAlarmtemplatesOrgAlarmtemplateDelivery) bool { return v.ToOrgAdmins }).(pulumi.BoolOutput)
-}
-
-// Whether to deliver the alarms via emails to Site admins or not
-func (o GetAlarmtemplatesOrgAlarmtemplateDeliveryOutput) ToSiteAdmins() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetAlarmtemplatesOrgAlarmtemplateDelivery) bool { return v.ToSiteAdmins }).(pulumi.BoolOutput)
-}
-
-type GetAlarmtemplatesOrgAlarmtemplateRules struct {
-	// Delivery object to configure the alarm delivery
-	Delivery GetAlarmtemplatesOrgAlarmtemplateRulesDelivery `pulumi:"delivery"`
-	Enabled  bool                                           `pulumi:"enabled"`
-}
-
-// GetAlarmtemplatesOrgAlarmtemplateRulesInput is an input type that accepts GetAlarmtemplatesOrgAlarmtemplateRulesArgs and GetAlarmtemplatesOrgAlarmtemplateRulesOutput values.
-// You can construct a concrete instance of `GetAlarmtemplatesOrgAlarmtemplateRulesInput` via:
-//
-//	GetAlarmtemplatesOrgAlarmtemplateRulesArgs{...}
-type GetAlarmtemplatesOrgAlarmtemplateRulesInput interface {
-	pulumi.Input
-
-	ToGetAlarmtemplatesOrgAlarmtemplateRulesOutput() GetAlarmtemplatesOrgAlarmtemplateRulesOutput
-	ToGetAlarmtemplatesOrgAlarmtemplateRulesOutputWithContext(context.Context) GetAlarmtemplatesOrgAlarmtemplateRulesOutput
-}
-
-type GetAlarmtemplatesOrgAlarmtemplateRulesArgs struct {
-	// Delivery object to configure the alarm delivery
-	Delivery GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryInput `pulumi:"delivery"`
-	Enabled  pulumi.BoolInput                                    `pulumi:"enabled"`
-}
-
-func (GetAlarmtemplatesOrgAlarmtemplateRulesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAlarmtemplatesOrgAlarmtemplateRules)(nil)).Elem()
-}
-
-func (i GetAlarmtemplatesOrgAlarmtemplateRulesArgs) ToGetAlarmtemplatesOrgAlarmtemplateRulesOutput() GetAlarmtemplatesOrgAlarmtemplateRulesOutput {
-	return i.ToGetAlarmtemplatesOrgAlarmtemplateRulesOutputWithContext(context.Background())
-}
-
-func (i GetAlarmtemplatesOrgAlarmtemplateRulesArgs) ToGetAlarmtemplatesOrgAlarmtemplateRulesOutputWithContext(ctx context.Context) GetAlarmtemplatesOrgAlarmtemplateRulesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAlarmtemplatesOrgAlarmtemplateRulesOutput)
-}
-
-// GetAlarmtemplatesOrgAlarmtemplateRulesMapInput is an input type that accepts GetAlarmtemplatesOrgAlarmtemplateRulesMap and GetAlarmtemplatesOrgAlarmtemplateRulesMapOutput values.
-// You can construct a concrete instance of `GetAlarmtemplatesOrgAlarmtemplateRulesMapInput` via:
-//
-//	GetAlarmtemplatesOrgAlarmtemplateRulesMap{ "key": GetAlarmtemplatesOrgAlarmtemplateRulesArgs{...} }
-type GetAlarmtemplatesOrgAlarmtemplateRulesMapInput interface {
-	pulumi.Input
-
-	ToGetAlarmtemplatesOrgAlarmtemplateRulesMapOutput() GetAlarmtemplatesOrgAlarmtemplateRulesMapOutput
-	ToGetAlarmtemplatesOrgAlarmtemplateRulesMapOutputWithContext(context.Context) GetAlarmtemplatesOrgAlarmtemplateRulesMapOutput
-}
-
-type GetAlarmtemplatesOrgAlarmtemplateRulesMap map[string]GetAlarmtemplatesOrgAlarmtemplateRulesInput
-
-func (GetAlarmtemplatesOrgAlarmtemplateRulesMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetAlarmtemplatesOrgAlarmtemplateRules)(nil)).Elem()
-}
-
-func (i GetAlarmtemplatesOrgAlarmtemplateRulesMap) ToGetAlarmtemplatesOrgAlarmtemplateRulesMapOutput() GetAlarmtemplatesOrgAlarmtemplateRulesMapOutput {
-	return i.ToGetAlarmtemplatesOrgAlarmtemplateRulesMapOutputWithContext(context.Background())
-}
-
-func (i GetAlarmtemplatesOrgAlarmtemplateRulesMap) ToGetAlarmtemplatesOrgAlarmtemplateRulesMapOutputWithContext(ctx context.Context) GetAlarmtemplatesOrgAlarmtemplateRulesMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAlarmtemplatesOrgAlarmtemplateRulesMapOutput)
-}
-
-type GetAlarmtemplatesOrgAlarmtemplateRulesOutput struct{ *pulumi.OutputState }
-
-func (GetAlarmtemplatesOrgAlarmtemplateRulesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAlarmtemplatesOrgAlarmtemplateRules)(nil)).Elem()
-}
-
-func (o GetAlarmtemplatesOrgAlarmtemplateRulesOutput) ToGetAlarmtemplatesOrgAlarmtemplateRulesOutput() GetAlarmtemplatesOrgAlarmtemplateRulesOutput {
-	return o
-}
-
-func (o GetAlarmtemplatesOrgAlarmtemplateRulesOutput) ToGetAlarmtemplatesOrgAlarmtemplateRulesOutputWithContext(ctx context.Context) GetAlarmtemplatesOrgAlarmtemplateRulesOutput {
-	return o
-}
-
-// Delivery object to configure the alarm delivery
-func (o GetAlarmtemplatesOrgAlarmtemplateRulesOutput) Delivery() GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput {
-	return o.ApplyT(func(v GetAlarmtemplatesOrgAlarmtemplateRules) GetAlarmtemplatesOrgAlarmtemplateRulesDelivery {
-		return v.Delivery
-	}).(GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput)
-}
-
-func (o GetAlarmtemplatesOrgAlarmtemplateRulesOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetAlarmtemplatesOrgAlarmtemplateRules) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-type GetAlarmtemplatesOrgAlarmtemplateRulesMapOutput struct{ *pulumi.OutputState }
-
-func (GetAlarmtemplatesOrgAlarmtemplateRulesMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetAlarmtemplatesOrgAlarmtemplateRules)(nil)).Elem()
-}
-
-func (o GetAlarmtemplatesOrgAlarmtemplateRulesMapOutput) ToGetAlarmtemplatesOrgAlarmtemplateRulesMapOutput() GetAlarmtemplatesOrgAlarmtemplateRulesMapOutput {
-	return o
-}
-
-func (o GetAlarmtemplatesOrgAlarmtemplateRulesMapOutput) ToGetAlarmtemplatesOrgAlarmtemplateRulesMapOutputWithContext(ctx context.Context) GetAlarmtemplatesOrgAlarmtemplateRulesMapOutput {
-	return o
-}
-
-func (o GetAlarmtemplatesOrgAlarmtemplateRulesMapOutput) MapIndex(k pulumi.StringInput) GetAlarmtemplatesOrgAlarmtemplateRulesOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetAlarmtemplatesOrgAlarmtemplateRules {
-		return vs[0].(map[string]GetAlarmtemplatesOrgAlarmtemplateRules)[vs[1].(string)]
-	}).(GetAlarmtemplatesOrgAlarmtemplateRulesOutput)
-}
-
-type GetAlarmtemplatesOrgAlarmtemplateRulesDelivery struct {
-	// List of additional email string to deliver the alarms via emails
-	AdditionalEmails []string `pulumi:"additionalEmails"`
-	// Whether to enable the alarm delivery via emails or not
-	Enabled bool `pulumi:"enabled"`
-	// Whether to deliver the alarms via emails to Org admins or not
-	ToOrgAdmins bool `pulumi:"toOrgAdmins"`
-	// Whether to deliver the alarms via emails to Site admins or not
-	ToSiteAdmins bool `pulumi:"toSiteAdmins"`
-}
-
-// GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryInput is an input type that accepts GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryArgs and GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput values.
-// You can construct a concrete instance of `GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryInput` via:
-//
-//	GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryArgs{...}
-type GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryInput interface {
-	pulumi.Input
-
-	ToGetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput() GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput
-	ToGetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutputWithContext(context.Context) GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput
-}
-
-type GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryArgs struct {
-	// List of additional email string to deliver the alarms via emails
-	AdditionalEmails pulumi.StringArrayInput `pulumi:"additionalEmails"`
-	// Whether to enable the alarm delivery via emails or not
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// Whether to deliver the alarms via emails to Org admins or not
-	ToOrgAdmins pulumi.BoolInput `pulumi:"toOrgAdmins"`
-	// Whether to deliver the alarms via emails to Site admins or not
-	ToSiteAdmins pulumi.BoolInput `pulumi:"toSiteAdmins"`
-}
-
-func (GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAlarmtemplatesOrgAlarmtemplateRulesDelivery)(nil)).Elem()
-}
-
-func (i GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryArgs) ToGetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput() GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput {
-	return i.ToGetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutputWithContext(context.Background())
-}
-
-func (i GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryArgs) ToGetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutputWithContext(ctx context.Context) GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput)
-}
-
-type GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput struct{ *pulumi.OutputState }
-
-func (GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAlarmtemplatesOrgAlarmtemplateRulesDelivery)(nil)).Elem()
-}
-
-func (o GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput) ToGetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput() GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput {
-	return o
-}
-
-func (o GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput) ToGetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutputWithContext(ctx context.Context) GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput {
-	return o
-}
-
-// List of additional email string to deliver the alarms via emails
-func (o GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput) AdditionalEmails() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetAlarmtemplatesOrgAlarmtemplateRulesDelivery) []string { return v.AdditionalEmails }).(pulumi.StringArrayOutput)
-}
-
-// Whether to enable the alarm delivery via emails or not
-func (o GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetAlarmtemplatesOrgAlarmtemplateRulesDelivery) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// Whether to deliver the alarms via emails to Org admins or not
-func (o GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput) ToOrgAdmins() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetAlarmtemplatesOrgAlarmtemplateRulesDelivery) bool { return v.ToOrgAdmins }).(pulumi.BoolOutput)
-}
-
-// Whether to deliver the alarms via emails to Site admins or not
-func (o GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput) ToSiteAdmins() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetAlarmtemplatesOrgAlarmtemplateRulesDelivery) bool { return v.ToSiteAdmins }).(pulumi.BoolOutput)
-}
-
-type GetAvprofilesOrgAvprofile struct {
-	// When the object has been created, in epoch
-	CreatedTime float64 `pulumi:"createdTime"`
-	// enum: `block`, `log-and-permit`, `permit`
-	FallbackAction string `pulumi:"fallbackAction"`
-	// Unique ID of the object instance in the Mist Organization
-	Id string `pulumi:"id"`
-	// In KB
-	MaxFilesize    int      `pulumi:"maxFilesize"`
-	MimeWhitelists []string `pulumi:"mimeWhitelists"`
-	// When the object has been modified for the last time, in epoch
-	ModifiedTime float64 `pulumi:"modifiedTime"`
-	Name         string  `pulumi:"name"`
-	OrgId        string  `pulumi:"orgId"`
-	// List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
-	Protocols     []string `pulumi:"protocols"`
-	UrlWhitelists []string `pulumi:"urlWhitelists"`
-}
-
-// GetAvprofilesOrgAvprofileInput is an input type that accepts GetAvprofilesOrgAvprofileArgs and GetAvprofilesOrgAvprofileOutput values.
-// You can construct a concrete instance of `GetAvprofilesOrgAvprofileInput` via:
-//
-//	GetAvprofilesOrgAvprofileArgs{...}
-type GetAvprofilesOrgAvprofileInput interface {
-	pulumi.Input
-
-	ToGetAvprofilesOrgAvprofileOutput() GetAvprofilesOrgAvprofileOutput
-	ToGetAvprofilesOrgAvprofileOutputWithContext(context.Context) GetAvprofilesOrgAvprofileOutput
-}
-
-type GetAvprofilesOrgAvprofileArgs struct {
-	// When the object has been created, in epoch
-	CreatedTime pulumi.Float64Input `pulumi:"createdTime"`
-	// enum: `block`, `log-and-permit`, `permit`
-	FallbackAction pulumi.StringInput `pulumi:"fallbackAction"`
-	// Unique ID of the object instance in the Mist Organization
-	Id pulumi.StringInput `pulumi:"id"`
-	// In KB
-	MaxFilesize    pulumi.IntInput         `pulumi:"maxFilesize"`
-	MimeWhitelists pulumi.StringArrayInput `pulumi:"mimeWhitelists"`
-	// When the object has been modified for the last time, in epoch
-	ModifiedTime pulumi.Float64Input `pulumi:"modifiedTime"`
-	Name         pulumi.StringInput  `pulumi:"name"`
-	OrgId        pulumi.StringInput  `pulumi:"orgId"`
-	// List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
-	Protocols     pulumi.StringArrayInput `pulumi:"protocols"`
-	UrlWhitelists pulumi.StringArrayInput `pulumi:"urlWhitelists"`
-}
-
-func (GetAvprofilesOrgAvprofileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAvprofilesOrgAvprofile)(nil)).Elem()
-}
-
-func (i GetAvprofilesOrgAvprofileArgs) ToGetAvprofilesOrgAvprofileOutput() GetAvprofilesOrgAvprofileOutput {
-	return i.ToGetAvprofilesOrgAvprofileOutputWithContext(context.Background())
-}
-
-func (i GetAvprofilesOrgAvprofileArgs) ToGetAvprofilesOrgAvprofileOutputWithContext(ctx context.Context) GetAvprofilesOrgAvprofileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAvprofilesOrgAvprofileOutput)
-}
-
-// GetAvprofilesOrgAvprofileArrayInput is an input type that accepts GetAvprofilesOrgAvprofileArray and GetAvprofilesOrgAvprofileArrayOutput values.
-// You can construct a concrete instance of `GetAvprofilesOrgAvprofileArrayInput` via:
-//
-//	GetAvprofilesOrgAvprofileArray{ GetAvprofilesOrgAvprofileArgs{...} }
-type GetAvprofilesOrgAvprofileArrayInput interface {
-	pulumi.Input
-
-	ToGetAvprofilesOrgAvprofileArrayOutput() GetAvprofilesOrgAvprofileArrayOutput
-	ToGetAvprofilesOrgAvprofileArrayOutputWithContext(context.Context) GetAvprofilesOrgAvprofileArrayOutput
-}
-
-type GetAvprofilesOrgAvprofileArray []GetAvprofilesOrgAvprofileInput
-
-func (GetAvprofilesOrgAvprofileArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAvprofilesOrgAvprofile)(nil)).Elem()
-}
-
-func (i GetAvprofilesOrgAvprofileArray) ToGetAvprofilesOrgAvprofileArrayOutput() GetAvprofilesOrgAvprofileArrayOutput {
-	return i.ToGetAvprofilesOrgAvprofileArrayOutputWithContext(context.Background())
-}
-
-func (i GetAvprofilesOrgAvprofileArray) ToGetAvprofilesOrgAvprofileArrayOutputWithContext(ctx context.Context) GetAvprofilesOrgAvprofileArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAvprofilesOrgAvprofileArrayOutput)
-}
-
-type GetAvprofilesOrgAvprofileOutput struct{ *pulumi.OutputState }
-
-func (GetAvprofilesOrgAvprofileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAvprofilesOrgAvprofile)(nil)).Elem()
-}
-
-func (o GetAvprofilesOrgAvprofileOutput) ToGetAvprofilesOrgAvprofileOutput() GetAvprofilesOrgAvprofileOutput {
-	return o
-}
-
-func (o GetAvprofilesOrgAvprofileOutput) ToGetAvprofilesOrgAvprofileOutputWithContext(ctx context.Context) GetAvprofilesOrgAvprofileOutput {
-	return o
-}
-
-// When the object has been created, in epoch
-func (o GetAvprofilesOrgAvprofileOutput) CreatedTime() pulumi.Float64Output {
-	return o.ApplyT(func(v GetAvprofilesOrgAvprofile) float64 { return v.CreatedTime }).(pulumi.Float64Output)
-}
-
-// enum: `block`, `log-and-permit`, `permit`
-func (o GetAvprofilesOrgAvprofileOutput) FallbackAction() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAvprofilesOrgAvprofile) string { return v.FallbackAction }).(pulumi.StringOutput)
-}
-
-// Unique ID of the object instance in the Mist Organization
-func (o GetAvprofilesOrgAvprofileOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAvprofilesOrgAvprofile) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// In KB
-func (o GetAvprofilesOrgAvprofileOutput) MaxFilesize() pulumi.IntOutput {
-	return o.ApplyT(func(v GetAvprofilesOrgAvprofile) int { return v.MaxFilesize }).(pulumi.IntOutput)
-}
-
-func (o GetAvprofilesOrgAvprofileOutput) MimeWhitelists() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetAvprofilesOrgAvprofile) []string { return v.MimeWhitelists }).(pulumi.StringArrayOutput)
-}
-
-// When the object has been modified for the last time, in epoch
-func (o GetAvprofilesOrgAvprofileOutput) ModifiedTime() pulumi.Float64Output {
-	return o.ApplyT(func(v GetAvprofilesOrgAvprofile) float64 { return v.ModifiedTime }).(pulumi.Float64Output)
-}
-
-func (o GetAvprofilesOrgAvprofileOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAvprofilesOrgAvprofile) string { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o GetAvprofilesOrgAvprofileOutput) OrgId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAvprofilesOrgAvprofile) string { return v.OrgId }).(pulumi.StringOutput)
-}
-
-// List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
-func (o GetAvprofilesOrgAvprofileOutput) Protocols() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetAvprofilesOrgAvprofile) []string { return v.Protocols }).(pulumi.StringArrayOutput)
-}
-
-func (o GetAvprofilesOrgAvprofileOutput) UrlWhitelists() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetAvprofilesOrgAvprofile) []string { return v.UrlWhitelists }).(pulumi.StringArrayOutput)
-}
-
-type GetAvprofilesOrgAvprofileArrayOutput struct{ *pulumi.OutputState }
-
-func (GetAvprofilesOrgAvprofileArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAvprofilesOrgAvprofile)(nil)).Elem()
-}
-
-func (o GetAvprofilesOrgAvprofileArrayOutput) ToGetAvprofilesOrgAvprofileArrayOutput() GetAvprofilesOrgAvprofileArrayOutput {
-	return o
-}
-
-func (o GetAvprofilesOrgAvprofileArrayOutput) ToGetAvprofilesOrgAvprofileArrayOutputWithContext(ctx context.Context) GetAvprofilesOrgAvprofileArrayOutput {
-	return o
-}
-
-func (o GetAvprofilesOrgAvprofileArrayOutput) Index(i pulumi.IntInput) GetAvprofilesOrgAvprofileOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAvprofilesOrgAvprofile {
-		return vs[0].([]GetAvprofilesOrgAvprofile)[vs[1].(int)]
-	}).(GetAvprofilesOrgAvprofileOutput)
-}
-
-type GetDeviceprofilesApDeviceprofile struct {
-	CreatedTime  float64 `pulumi:"createdTime"`
-	Id           string  `pulumi:"id"`
-	ModifiedTime float64 `pulumi:"modifiedTime"`
-	Name         string  `pulumi:"name"`
-	OrgId        string  `pulumi:"orgId"`
-}
-
-// GetDeviceprofilesApDeviceprofileInput is an input type that accepts GetDeviceprofilesApDeviceprofileArgs and GetDeviceprofilesApDeviceprofileOutput values.
-// You can construct a concrete instance of `GetDeviceprofilesApDeviceprofileInput` via:
-//
-//	GetDeviceprofilesApDeviceprofileArgs{...}
-type GetDeviceprofilesApDeviceprofileInput interface {
-	pulumi.Input
-
-	ToGetDeviceprofilesApDeviceprofileOutput() GetDeviceprofilesApDeviceprofileOutput
-	ToGetDeviceprofilesApDeviceprofileOutputWithContext(context.Context) GetDeviceprofilesApDeviceprofileOutput
-}
-
-type GetDeviceprofilesApDeviceprofileArgs struct {
-	CreatedTime  pulumi.Float64Input `pulumi:"createdTime"`
-	Id           pulumi.StringInput  `pulumi:"id"`
-	ModifiedTime pulumi.Float64Input `pulumi:"modifiedTime"`
-	Name         pulumi.StringInput  `pulumi:"name"`
-	OrgId        pulumi.StringInput  `pulumi:"orgId"`
-}
-
-func (GetDeviceprofilesApDeviceprofileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDeviceprofilesApDeviceprofile)(nil)).Elem()
-}
-
-func (i GetDeviceprofilesApDeviceprofileArgs) ToGetDeviceprofilesApDeviceprofileOutput() GetDeviceprofilesApDeviceprofileOutput {
-	return i.ToGetDeviceprofilesApDeviceprofileOutputWithContext(context.Background())
-}
-
-func (i GetDeviceprofilesApDeviceprofileArgs) ToGetDeviceprofilesApDeviceprofileOutputWithContext(ctx context.Context) GetDeviceprofilesApDeviceprofileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDeviceprofilesApDeviceprofileOutput)
-}
-
-// GetDeviceprofilesApDeviceprofileArrayInput is an input type that accepts GetDeviceprofilesApDeviceprofileArray and GetDeviceprofilesApDeviceprofileArrayOutput values.
-// You can construct a concrete instance of `GetDeviceprofilesApDeviceprofileArrayInput` via:
-//
-//	GetDeviceprofilesApDeviceprofileArray{ GetDeviceprofilesApDeviceprofileArgs{...} }
-type GetDeviceprofilesApDeviceprofileArrayInput interface {
-	pulumi.Input
-
-	ToGetDeviceprofilesApDeviceprofileArrayOutput() GetDeviceprofilesApDeviceprofileArrayOutput
-	ToGetDeviceprofilesApDeviceprofileArrayOutputWithContext(context.Context) GetDeviceprofilesApDeviceprofileArrayOutput
-}
-
-type GetDeviceprofilesApDeviceprofileArray []GetDeviceprofilesApDeviceprofileInput
-
-func (GetDeviceprofilesApDeviceprofileArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDeviceprofilesApDeviceprofile)(nil)).Elem()
-}
-
-func (i GetDeviceprofilesApDeviceprofileArray) ToGetDeviceprofilesApDeviceprofileArrayOutput() GetDeviceprofilesApDeviceprofileArrayOutput {
-	return i.ToGetDeviceprofilesApDeviceprofileArrayOutputWithContext(context.Background())
-}
-
-func (i GetDeviceprofilesApDeviceprofileArray) ToGetDeviceprofilesApDeviceprofileArrayOutputWithContext(ctx context.Context) GetDeviceprofilesApDeviceprofileArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDeviceprofilesApDeviceprofileArrayOutput)
-}
-
-type GetDeviceprofilesApDeviceprofileOutput struct{ *pulumi.OutputState }
-
-func (GetDeviceprofilesApDeviceprofileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDeviceprofilesApDeviceprofile)(nil)).Elem()
-}
-
-func (o GetDeviceprofilesApDeviceprofileOutput) ToGetDeviceprofilesApDeviceprofileOutput() GetDeviceprofilesApDeviceprofileOutput {
-	return o
-}
-
-func (o GetDeviceprofilesApDeviceprofileOutput) ToGetDeviceprofilesApDeviceprofileOutputWithContext(ctx context.Context) GetDeviceprofilesApDeviceprofileOutput {
-	return o
-}
-
-func (o GetDeviceprofilesApDeviceprofileOutput) CreatedTime() pulumi.Float64Output {
-	return o.ApplyT(func(v GetDeviceprofilesApDeviceprofile) float64 { return v.CreatedTime }).(pulumi.Float64Output)
-}
-
-func (o GetDeviceprofilesApDeviceprofileOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDeviceprofilesApDeviceprofile) string { return v.Id }).(pulumi.StringOutput)
-}
-
-func (o GetDeviceprofilesApDeviceprofileOutput) ModifiedTime() pulumi.Float64Output {
-	return o.ApplyT(func(v GetDeviceprofilesApDeviceprofile) float64 { return v.ModifiedTime }).(pulumi.Float64Output)
-}
-
-func (o GetDeviceprofilesApDeviceprofileOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDeviceprofilesApDeviceprofile) string { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o GetDeviceprofilesApDeviceprofileOutput) OrgId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDeviceprofilesApDeviceprofile) string { return v.OrgId }).(pulumi.StringOutput)
-}
-
-type GetDeviceprofilesApDeviceprofileArrayOutput struct{ *pulumi.OutputState }
-
-func (GetDeviceprofilesApDeviceprofileArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDeviceprofilesApDeviceprofile)(nil)).Elem()
-}
-
-func (o GetDeviceprofilesApDeviceprofileArrayOutput) ToGetDeviceprofilesApDeviceprofileArrayOutput() GetDeviceprofilesApDeviceprofileArrayOutput {
-	return o
-}
-
-func (o GetDeviceprofilesApDeviceprofileArrayOutput) ToGetDeviceprofilesApDeviceprofileArrayOutputWithContext(ctx context.Context) GetDeviceprofilesApDeviceprofileArrayOutput {
-	return o
-}
-
-func (o GetDeviceprofilesApDeviceprofileArrayOutput) Index(i pulumi.IntInput) GetDeviceprofilesApDeviceprofileOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDeviceprofilesApDeviceprofile {
-		return vs[0].([]GetDeviceprofilesApDeviceprofile)[vs[1].(int)]
-	}).(GetDeviceprofilesApDeviceprofileOutput)
-}
-
-type GetDeviceprofilesGatewayDeviceprofile struct {
-	CreatedTime  float64 `pulumi:"createdTime"`
-	Id           string  `pulumi:"id"`
-	ModifiedTime float64 `pulumi:"modifiedTime"`
-	Name         string  `pulumi:"name"`
-	OrgId        string  `pulumi:"orgId"`
-}
-
-// GetDeviceprofilesGatewayDeviceprofileInput is an input type that accepts GetDeviceprofilesGatewayDeviceprofileArgs and GetDeviceprofilesGatewayDeviceprofileOutput values.
-// You can construct a concrete instance of `GetDeviceprofilesGatewayDeviceprofileInput` via:
-//
-//	GetDeviceprofilesGatewayDeviceprofileArgs{...}
-type GetDeviceprofilesGatewayDeviceprofileInput interface {
-	pulumi.Input
-
-	ToGetDeviceprofilesGatewayDeviceprofileOutput() GetDeviceprofilesGatewayDeviceprofileOutput
-	ToGetDeviceprofilesGatewayDeviceprofileOutputWithContext(context.Context) GetDeviceprofilesGatewayDeviceprofileOutput
-}
-
-type GetDeviceprofilesGatewayDeviceprofileArgs struct {
-	CreatedTime  pulumi.Float64Input `pulumi:"createdTime"`
-	Id           pulumi.StringInput  `pulumi:"id"`
-	ModifiedTime pulumi.Float64Input `pulumi:"modifiedTime"`
-	Name         pulumi.StringInput  `pulumi:"name"`
-	OrgId        pulumi.StringInput  `pulumi:"orgId"`
-}
-
-func (GetDeviceprofilesGatewayDeviceprofileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDeviceprofilesGatewayDeviceprofile)(nil)).Elem()
-}
-
-func (i GetDeviceprofilesGatewayDeviceprofileArgs) ToGetDeviceprofilesGatewayDeviceprofileOutput() GetDeviceprofilesGatewayDeviceprofileOutput {
-	return i.ToGetDeviceprofilesGatewayDeviceprofileOutputWithContext(context.Background())
-}
-
-func (i GetDeviceprofilesGatewayDeviceprofileArgs) ToGetDeviceprofilesGatewayDeviceprofileOutputWithContext(ctx context.Context) GetDeviceprofilesGatewayDeviceprofileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDeviceprofilesGatewayDeviceprofileOutput)
-}
-
-// GetDeviceprofilesGatewayDeviceprofileArrayInput is an input type that accepts GetDeviceprofilesGatewayDeviceprofileArray and GetDeviceprofilesGatewayDeviceprofileArrayOutput values.
-// You can construct a concrete instance of `GetDeviceprofilesGatewayDeviceprofileArrayInput` via:
-//
-//	GetDeviceprofilesGatewayDeviceprofileArray{ GetDeviceprofilesGatewayDeviceprofileArgs{...} }
-type GetDeviceprofilesGatewayDeviceprofileArrayInput interface {
-	pulumi.Input
-
-	ToGetDeviceprofilesGatewayDeviceprofileArrayOutput() GetDeviceprofilesGatewayDeviceprofileArrayOutput
-	ToGetDeviceprofilesGatewayDeviceprofileArrayOutputWithContext(context.Context) GetDeviceprofilesGatewayDeviceprofileArrayOutput
-}
-
-type GetDeviceprofilesGatewayDeviceprofileArray []GetDeviceprofilesGatewayDeviceprofileInput
-
-func (GetDeviceprofilesGatewayDeviceprofileArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDeviceprofilesGatewayDeviceprofile)(nil)).Elem()
-}
-
-func (i GetDeviceprofilesGatewayDeviceprofileArray) ToGetDeviceprofilesGatewayDeviceprofileArrayOutput() GetDeviceprofilesGatewayDeviceprofileArrayOutput {
-	return i.ToGetDeviceprofilesGatewayDeviceprofileArrayOutputWithContext(context.Background())
-}
-
-func (i GetDeviceprofilesGatewayDeviceprofileArray) ToGetDeviceprofilesGatewayDeviceprofileArrayOutputWithContext(ctx context.Context) GetDeviceprofilesGatewayDeviceprofileArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDeviceprofilesGatewayDeviceprofileArrayOutput)
-}
-
-type GetDeviceprofilesGatewayDeviceprofileOutput struct{ *pulumi.OutputState }
-
-func (GetDeviceprofilesGatewayDeviceprofileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDeviceprofilesGatewayDeviceprofile)(nil)).Elem()
-}
-
-func (o GetDeviceprofilesGatewayDeviceprofileOutput) ToGetDeviceprofilesGatewayDeviceprofileOutput() GetDeviceprofilesGatewayDeviceprofileOutput {
-	return o
-}
-
-func (o GetDeviceprofilesGatewayDeviceprofileOutput) ToGetDeviceprofilesGatewayDeviceprofileOutputWithContext(ctx context.Context) GetDeviceprofilesGatewayDeviceprofileOutput {
-	return o
-}
-
-func (o GetDeviceprofilesGatewayDeviceprofileOutput) CreatedTime() pulumi.Float64Output {
-	return o.ApplyT(func(v GetDeviceprofilesGatewayDeviceprofile) float64 { return v.CreatedTime }).(pulumi.Float64Output)
-}
-
-func (o GetDeviceprofilesGatewayDeviceprofileOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDeviceprofilesGatewayDeviceprofile) string { return v.Id }).(pulumi.StringOutput)
-}
-
-func (o GetDeviceprofilesGatewayDeviceprofileOutput) ModifiedTime() pulumi.Float64Output {
-	return o.ApplyT(func(v GetDeviceprofilesGatewayDeviceprofile) float64 { return v.ModifiedTime }).(pulumi.Float64Output)
-}
-
-func (o GetDeviceprofilesGatewayDeviceprofileOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDeviceprofilesGatewayDeviceprofile) string { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o GetDeviceprofilesGatewayDeviceprofileOutput) OrgId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDeviceprofilesGatewayDeviceprofile) string { return v.OrgId }).(pulumi.StringOutput)
-}
-
-type GetDeviceprofilesGatewayDeviceprofileArrayOutput struct{ *pulumi.OutputState }
-
-func (GetDeviceprofilesGatewayDeviceprofileArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDeviceprofilesGatewayDeviceprofile)(nil)).Elem()
-}
-
-func (o GetDeviceprofilesGatewayDeviceprofileArrayOutput) ToGetDeviceprofilesGatewayDeviceprofileArrayOutput() GetDeviceprofilesGatewayDeviceprofileArrayOutput {
-	return o
-}
-
-func (o GetDeviceprofilesGatewayDeviceprofileArrayOutput) ToGetDeviceprofilesGatewayDeviceprofileArrayOutputWithContext(ctx context.Context) GetDeviceprofilesGatewayDeviceprofileArrayOutput {
-	return o
-}
-
-func (o GetDeviceprofilesGatewayDeviceprofileArrayOutput) Index(i pulumi.IntInput) GetDeviceprofilesGatewayDeviceprofileOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDeviceprofilesGatewayDeviceprofile {
-		return vs[0].([]GetDeviceprofilesGatewayDeviceprofile)[vs[1].(int)]
-	}).(GetDeviceprofilesGatewayDeviceprofileOutput)
-}
-
-type GetEvpnTopologiesOrgEvpnTopology struct {
-	// When the object has been created, in epoch
-	CreatedTime float64 `pulumi:"createdTime"`
-	// EVPN Options
-	EvpnOptions GetEvpnTopologiesOrgEvpnTopologyEvpnOptions `pulumi:"evpnOptions"`
-	// Unique ID of the object instance in the Mist Organization
-	Id string `pulumi:"id"`
-	// When the object has been modified for the last time, in epoch
-	ModifiedTime float64 `pulumi:"modifiedTime"`
-	Name         string  `pulumi:"name"`
-	OrgId        string  `pulumi:"orgId"`
-	// Property key is the pod number
-	PodNames map[string]string `pulumi:"podNames"`
-}
-
-// GetEvpnTopologiesOrgEvpnTopologyInput is an input type that accepts GetEvpnTopologiesOrgEvpnTopologyArgs and GetEvpnTopologiesOrgEvpnTopologyOutput values.
-// You can construct a concrete instance of `GetEvpnTopologiesOrgEvpnTopologyInput` via:
-//
-//	GetEvpnTopologiesOrgEvpnTopologyArgs{...}
-type GetEvpnTopologiesOrgEvpnTopologyInput interface {
-	pulumi.Input
-
-	ToGetEvpnTopologiesOrgEvpnTopologyOutput() GetEvpnTopologiesOrgEvpnTopologyOutput
-	ToGetEvpnTopologiesOrgEvpnTopologyOutputWithContext(context.Context) GetEvpnTopologiesOrgEvpnTopologyOutput
-}
-
-type GetEvpnTopologiesOrgEvpnTopologyArgs struct {
-	// When the object has been created, in epoch
-	CreatedTime pulumi.Float64Input `pulumi:"createdTime"`
-	// EVPN Options
-	EvpnOptions GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsInput `pulumi:"evpnOptions"`
-	// Unique ID of the object instance in the Mist Organization
-	Id pulumi.StringInput `pulumi:"id"`
-	// When the object has been modified for the last time, in epoch
-	ModifiedTime pulumi.Float64Input `pulumi:"modifiedTime"`
-	Name         pulumi.StringInput  `pulumi:"name"`
-	OrgId        pulumi.StringInput  `pulumi:"orgId"`
-	// Property key is the pod number
-	PodNames pulumi.StringMapInput `pulumi:"podNames"`
-}
-
-func (GetEvpnTopologiesOrgEvpnTopologyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetEvpnTopologiesOrgEvpnTopology)(nil)).Elem()
-}
-
-func (i GetEvpnTopologiesOrgEvpnTopologyArgs) ToGetEvpnTopologiesOrgEvpnTopologyOutput() GetEvpnTopologiesOrgEvpnTopologyOutput {
-	return i.ToGetEvpnTopologiesOrgEvpnTopologyOutputWithContext(context.Background())
-}
-
-func (i GetEvpnTopologiesOrgEvpnTopologyArgs) ToGetEvpnTopologiesOrgEvpnTopologyOutputWithContext(ctx context.Context) GetEvpnTopologiesOrgEvpnTopologyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetEvpnTopologiesOrgEvpnTopologyOutput)
-}
-
-// GetEvpnTopologiesOrgEvpnTopologyArrayInput is an input type that accepts GetEvpnTopologiesOrgEvpnTopologyArray and GetEvpnTopologiesOrgEvpnTopologyArrayOutput values.
-// You can construct a concrete instance of `GetEvpnTopologiesOrgEvpnTopologyArrayInput` via:
-//
-//	GetEvpnTopologiesOrgEvpnTopologyArray{ GetEvpnTopologiesOrgEvpnTopologyArgs{...} }
-type GetEvpnTopologiesOrgEvpnTopologyArrayInput interface {
-	pulumi.Input
-
-	ToGetEvpnTopologiesOrgEvpnTopologyArrayOutput() GetEvpnTopologiesOrgEvpnTopologyArrayOutput
-	ToGetEvpnTopologiesOrgEvpnTopologyArrayOutputWithContext(context.Context) GetEvpnTopologiesOrgEvpnTopologyArrayOutput
-}
-
-type GetEvpnTopologiesOrgEvpnTopologyArray []GetEvpnTopologiesOrgEvpnTopologyInput
-
-func (GetEvpnTopologiesOrgEvpnTopologyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetEvpnTopologiesOrgEvpnTopology)(nil)).Elem()
-}
-
-func (i GetEvpnTopologiesOrgEvpnTopologyArray) ToGetEvpnTopologiesOrgEvpnTopologyArrayOutput() GetEvpnTopologiesOrgEvpnTopologyArrayOutput {
-	return i.ToGetEvpnTopologiesOrgEvpnTopologyArrayOutputWithContext(context.Background())
-}
-
-func (i GetEvpnTopologiesOrgEvpnTopologyArray) ToGetEvpnTopologiesOrgEvpnTopologyArrayOutputWithContext(ctx context.Context) GetEvpnTopologiesOrgEvpnTopologyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetEvpnTopologiesOrgEvpnTopologyArrayOutput)
-}
-
-type GetEvpnTopologiesOrgEvpnTopologyOutput struct{ *pulumi.OutputState }
-
-func (GetEvpnTopologiesOrgEvpnTopologyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetEvpnTopologiesOrgEvpnTopology)(nil)).Elem()
-}
-
-func (o GetEvpnTopologiesOrgEvpnTopologyOutput) ToGetEvpnTopologiesOrgEvpnTopologyOutput() GetEvpnTopologiesOrgEvpnTopologyOutput {
-	return o
-}
-
-func (o GetEvpnTopologiesOrgEvpnTopologyOutput) ToGetEvpnTopologiesOrgEvpnTopologyOutputWithContext(ctx context.Context) GetEvpnTopologiesOrgEvpnTopologyOutput {
-	return o
-}
-
-// When the object has been created, in epoch
-func (o GetEvpnTopologiesOrgEvpnTopologyOutput) CreatedTime() pulumi.Float64Output {
-	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopology) float64 { return v.CreatedTime }).(pulumi.Float64Output)
-}
-
-// EVPN Options
-func (o GetEvpnTopologiesOrgEvpnTopologyOutput) EvpnOptions() GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput {
-	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopology) GetEvpnTopologiesOrgEvpnTopologyEvpnOptions {
-		return v.EvpnOptions
-	}).(GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput)
-}
-
-// Unique ID of the object instance in the Mist Organization
-func (o GetEvpnTopologiesOrgEvpnTopologyOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopology) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// When the object has been modified for the last time, in epoch
-func (o GetEvpnTopologiesOrgEvpnTopologyOutput) ModifiedTime() pulumi.Float64Output {
-	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopology) float64 { return v.ModifiedTime }).(pulumi.Float64Output)
-}
-
-func (o GetEvpnTopologiesOrgEvpnTopologyOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopology) string { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o GetEvpnTopologiesOrgEvpnTopologyOutput) OrgId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopology) string { return v.OrgId }).(pulumi.StringOutput)
-}
-
-// Property key is the pod number
-func (o GetEvpnTopologiesOrgEvpnTopologyOutput) PodNames() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopology) map[string]string { return v.PodNames }).(pulumi.StringMapOutput)
-}
-
-type GetEvpnTopologiesOrgEvpnTopologyArrayOutput struct{ *pulumi.OutputState }
-
-func (GetEvpnTopologiesOrgEvpnTopologyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetEvpnTopologiesOrgEvpnTopology)(nil)).Elem()
-}
-
-func (o GetEvpnTopologiesOrgEvpnTopologyArrayOutput) ToGetEvpnTopologiesOrgEvpnTopologyArrayOutput() GetEvpnTopologiesOrgEvpnTopologyArrayOutput {
-	return o
-}
-
-func (o GetEvpnTopologiesOrgEvpnTopologyArrayOutput) ToGetEvpnTopologiesOrgEvpnTopologyArrayOutputWithContext(ctx context.Context) GetEvpnTopologiesOrgEvpnTopologyArrayOutput {
-	return o
-}
-
-func (o GetEvpnTopologiesOrgEvpnTopologyArrayOutput) Index(i pulumi.IntInput) GetEvpnTopologiesOrgEvpnTopologyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEvpnTopologiesOrgEvpnTopology {
-		return vs[0].([]GetEvpnTopologiesOrgEvpnTopology)[vs[1].(int)]
-	}).(GetEvpnTopologiesOrgEvpnTopologyOutput)
-}
-
-type GetEvpnTopologiesOrgEvpnTopologyEvpnOptions struct {
-	// Optional, for dhcp*relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server*id-overrides
-	AutoLoopbackSubnet string `pulumi:"autoLoopbackSubnet"`
-	// Optional, for dhcp*relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server*id-overrides
-	AutoLoopbackSubnet6 string `pulumi:"autoLoopbackSubnet6"`
-	// Optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
-	AutoRouterIdSubnet string `pulumi:"autoRouterIdSubnet"`
-	// Optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
-	AutoRouterIdSubnet6 string `pulumi:"autoRouterIdSubnet6"`
-	// Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routedAt` != `core`, whether to do virtual-gateway at core as well
-	CoreAsBorder bool `pulumi:"coreAsBorder"`
-	// if the mangement traffic goes inbnd, during installation, only the border/core switches are connected to the Internet to allow initial configuration to be pushed down and leave the downstream access switches stay in the Factory Default state enabling inband-ztp allows upstream switches to use LLDP to assign IP and gives Internet to downstream switches in that state
-	EnableInbandZtp bool                                               `pulumi:"enableInbandZtp"`
-	Overlay         GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlay `pulumi:"overlay"`
-	// Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address's v4*mac. If enabled, 00-00-5e-00-0X-YY will be used (where XX=vlan*id/256, YY=vlan_id%256)
-	PerVlanVgaV4Mac bool `pulumi:"perVlanVgaV4Mac"`
-	// Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-02-01 as the virtual-gateway-address's v6*mac. If enabled, 00-00-5e-00-1X-YY will be used (where XX=vlan*id/256, YY=vlan_id%256)
-	PerVlanVgaV6Mac bool `pulumi:"perVlanVgaV6Mac"`
-	// optional, where virtual-gateway should reside. enum: `core`, `distribution`, `edge`
-	RoutedAt string                                              `pulumi:"routedAt"`
-	Underlay GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlay `pulumi:"underlay"`
-	// Optional, for EX9200 only to segregate virtual-switches
-	VsInstances map[string]GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstances `pulumi:"vsInstances"`
-}
-
-// GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsInput is an input type that accepts GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsArgs and GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput values.
-// You can construct a concrete instance of `GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsInput` via:
-//
-//	GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsArgs{...}
-type GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsInput interface {
-	pulumi.Input
-
-	ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput() GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput
-	ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutputWithContext(context.Context) GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput
-}
-
-type GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsArgs struct {
-	// Optional, for dhcp*relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server*id-overrides
-	AutoLoopbackSubnet pulumi.StringInput `pulumi:"autoLoopbackSubnet"`
-	// Optional, for dhcp*relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server*id-overrides
-	AutoLoopbackSubnet6 pulumi.StringInput `pulumi:"autoLoopbackSubnet6"`
-	// Optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
-	AutoRouterIdSubnet pulumi.StringInput `pulumi:"autoRouterIdSubnet"`
-	// Optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
-	AutoRouterIdSubnet6 pulumi.StringInput `pulumi:"autoRouterIdSubnet6"`
-	// Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routedAt` != `core`, whether to do virtual-gateway at core as well
-	CoreAsBorder pulumi.BoolInput `pulumi:"coreAsBorder"`
-	// if the mangement traffic goes inbnd, during installation, only the border/core switches are connected to the Internet to allow initial configuration to be pushed down and leave the downstream access switches stay in the Factory Default state enabling inband-ztp allows upstream switches to use LLDP to assign IP and gives Internet to downstream switches in that state
-	EnableInbandZtp pulumi.BoolInput                                        `pulumi:"enableInbandZtp"`
-	Overlay         GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayInput `pulumi:"overlay"`
-	// Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address's v4*mac. If enabled, 00-00-5e-00-0X-YY will be used (where XX=vlan*id/256, YY=vlan_id%256)
-	PerVlanVgaV4Mac pulumi.BoolInput `pulumi:"perVlanVgaV4Mac"`
-	// Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-02-01 as the virtual-gateway-address's v6*mac. If enabled, 00-00-5e-00-1X-YY will be used (where XX=vlan*id/256, YY=vlan_id%256)
-	PerVlanVgaV6Mac pulumi.BoolInput `pulumi:"perVlanVgaV6Mac"`
-	// optional, where virtual-gateway should reside. enum: `core`, `distribution`, `edge`
-	RoutedAt pulumi.StringInput                                       `pulumi:"routedAt"`
-	Underlay GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayInput `pulumi:"underlay"`
-	// Optional, for EX9200 only to segregate virtual-switches
-	VsInstances GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapInput `pulumi:"vsInstances"`
-}
-
-func (GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetEvpnTopologiesOrgEvpnTopologyEvpnOptions)(nil)).Elem()
-}
-
-func (i GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsArgs) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput() GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput {
-	return i.ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutputWithContext(context.Background())
-}
-
-func (i GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsArgs) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutputWithContext(ctx context.Context) GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput)
-}
-
-type GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput struct{ *pulumi.OutputState }
-
-func (GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetEvpnTopologiesOrgEvpnTopologyEvpnOptions)(nil)).Elem()
-}
-
-func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput() GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput {
-	return o
-}
-
-func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutputWithContext(ctx context.Context) GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput {
-	return o
-}
-
-// Optional, for dhcp*relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server*id-overrides
-func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput) AutoLoopbackSubnet() pulumi.StringOutput {
-	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopologyEvpnOptions) string { return v.AutoLoopbackSubnet }).(pulumi.StringOutput)
-}
-
-// Optional, for dhcp*relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server*id-overrides
-func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput) AutoLoopbackSubnet6() pulumi.StringOutput {
-	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopologyEvpnOptions) string { return v.AutoLoopbackSubnet6 }).(pulumi.StringOutput)
-}
-
-// Optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
-func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput) AutoRouterIdSubnet() pulumi.StringOutput {
-	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopologyEvpnOptions) string { return v.AutoRouterIdSubnet }).(pulumi.StringOutput)
-}
-
-// Optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
-func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput) AutoRouterIdSubnet6() pulumi.StringOutput {
-	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopologyEvpnOptions) string { return v.AutoRouterIdSubnet6 }).(pulumi.StringOutput)
-}
-
-// Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routedAt` != `core`, whether to do virtual-gateway at core as well
-func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput) CoreAsBorder() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopologyEvpnOptions) bool { return v.CoreAsBorder }).(pulumi.BoolOutput)
-}
-
-// if the mangement traffic goes inbnd, during installation, only the border/core switches are connected to the Internet to allow initial configuration to be pushed down and leave the downstream access switches stay in the Factory Default state enabling inband-ztp allows upstream switches to use LLDP to assign IP and gives Internet to downstream switches in that state
-func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput) EnableInbandZtp() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopologyEvpnOptions) bool { return v.EnableInbandZtp }).(pulumi.BoolOutput)
-}
-
-func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput) Overlay() GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutput {
-	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopologyEvpnOptions) GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlay {
-		return v.Overlay
-	}).(GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutput)
-}
-
-// Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address's v4*mac. If enabled, 00-00-5e-00-0X-YY will be used (where XX=vlan*id/256, YY=vlan_id%256)
-func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput) PerVlanVgaV4Mac() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopologyEvpnOptions) bool { return v.PerVlanVgaV4Mac }).(pulumi.BoolOutput)
-}
-
-// Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-02-01 as the virtual-gateway-address's v6*mac. If enabled, 00-00-5e-00-1X-YY will be used (where XX=vlan*id/256, YY=vlan_id%256)
-func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput) PerVlanVgaV6Mac() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopologyEvpnOptions) bool { return v.PerVlanVgaV6Mac }).(pulumi.BoolOutput)
-}
-
-// optional, where virtual-gateway should reside. enum: `core`, `distribution`, `edge`
-func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput) RoutedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopologyEvpnOptions) string { return v.RoutedAt }).(pulumi.StringOutput)
-}
-
-func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput) Underlay() GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput {
-	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopologyEvpnOptions) GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlay {
-		return v.Underlay
-	}).(GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput)
-}
-
-// Optional, for EX9200 only to segregate virtual-switches
-func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput) VsInstances() GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutput {
-	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopologyEvpnOptions) map[string]GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstances {
-		return v.VsInstances
-	}).(GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutput)
-}
-
-type GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlay struct {
-	// Overlay BGP Local AS Number
-	As int `pulumi:"as"`
-}
-
-// GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayInput is an input type that accepts GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayArgs and GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutput values.
-// You can construct a concrete instance of `GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayInput` via:
-//
-//	GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayArgs{...}
-type GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayInput interface {
-	pulumi.Input
-
-	ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutput() GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutput
-	ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutputWithContext(context.Context) GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutput
-}
-
-type GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayArgs struct {
-	// Overlay BGP Local AS Number
-	As pulumi.IntInput `pulumi:"as"`
-}
-
-func (GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlay)(nil)).Elem()
-}
-
-func (i GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayArgs) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutput() GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutput {
-	return i.ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutputWithContext(context.Background())
-}
-
-func (i GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayArgs) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutputWithContext(ctx context.Context) GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutput)
-}
-
-type GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutput struct{ *pulumi.OutputState }
-
-func (GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlay)(nil)).Elem()
-}
-
-func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutput) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutput() GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutput {
-	return o
-}
-
-func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutput) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutputWithContext(ctx context.Context) GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutput {
-	return o
-}
-
-// Overlay BGP Local AS Number
-func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutput) As() pulumi.IntOutput {
-	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlay) int { return v.As }).(pulumi.IntOutput)
-}
-
-type GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlay struct {
-	// Underlay BGP Base AS Number
-	AsBase         int    `pulumi:"asBase"`
-	RoutedIdPrefix string `pulumi:"routedIdPrefix"`
-	// Underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6
-	Subnet string `pulumi:"subnet"`
-	// If v6 is desired for underlay
-	UseIpv6 bool `pulumi:"useIpv6"`
-}
-
-// GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayInput is an input type that accepts GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayArgs and GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput values.
-// You can construct a concrete instance of `GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayInput` via:
-//
-//	GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayArgs{...}
-type GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayInput interface {
-	pulumi.Input
-
-	ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput() GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput
-	ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutputWithContext(context.Context) GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput
-}
-
-type GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayArgs struct {
-	// Underlay BGP Base AS Number
-	AsBase         pulumi.IntInput    `pulumi:"asBase"`
-	RoutedIdPrefix pulumi.StringInput `pulumi:"routedIdPrefix"`
-	// Underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6
-	Subnet pulumi.StringInput `pulumi:"subnet"`
-	// If v6 is desired for underlay
-	UseIpv6 pulumi.BoolInput `pulumi:"useIpv6"`
-}
-
-func (GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlay)(nil)).Elem()
-}
-
-func (i GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayArgs) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput() GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput {
-	return i.ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutputWithContext(context.Background())
-}
-
-func (i GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayArgs) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutputWithContext(ctx context.Context) GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput)
-}
-
-type GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput struct{ *pulumi.OutputState }
-
-func (GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlay)(nil)).Elem()
-}
-
-func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput() GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput {
-	return o
-}
-
-func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutputWithContext(ctx context.Context) GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput {
-	return o
-}
-
-// Underlay BGP Base AS Number
-func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput) AsBase() pulumi.IntOutput {
-	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlay) int { return v.AsBase }).(pulumi.IntOutput)
-}
-
-func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput) RoutedIdPrefix() pulumi.StringOutput {
-	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlay) string { return v.RoutedIdPrefix }).(pulumi.StringOutput)
-}
-
-// Underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6
-func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput) Subnet() pulumi.StringOutput {
-	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlay) string { return v.Subnet }).(pulumi.StringOutput)
-}
-
-// If v6 is desired for underlay
-func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput) UseIpv6() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlay) bool { return v.UseIpv6 }).(pulumi.BoolOutput)
-}
-
-type GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstances struct {
-	Networks []string `pulumi:"networks"`
-}
-
-// GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesInput is an input type that accepts GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesArgs and GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutput values.
-// You can construct a concrete instance of `GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesInput` via:
-//
-//	GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesArgs{...}
-type GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesInput interface {
-	pulumi.Input
-
-	ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutput() GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutput
-	ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutputWithContext(context.Context) GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutput
-}
-
-type GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesArgs struct {
-	Networks pulumi.StringArrayInput `pulumi:"networks"`
-}
-
-func (GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstances)(nil)).Elem()
-}
-
-func (i GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesArgs) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutput() GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutput {
-	return i.ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutputWithContext(context.Background())
-}
-
-func (i GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesArgs) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutputWithContext(ctx context.Context) GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutput)
-}
-
-// GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapInput is an input type that accepts GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMap and GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutput values.
-// You can construct a concrete instance of `GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapInput` via:
-//
-//	GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMap{ "key": GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesArgs{...} }
-type GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapInput interface {
-	pulumi.Input
-
-	ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutput() GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutput
-	ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutputWithContext(context.Context) GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutput
-}
-
-type GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMap map[string]GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesInput
-
-func (GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstances)(nil)).Elem()
-}
-
-func (i GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMap) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutput() GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutput {
-	return i.ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutputWithContext(context.Background())
-}
-
-func (i GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMap) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutputWithContext(ctx context.Context) GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutput)
-}
-
-type GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutput struct{ *pulumi.OutputState }
-
-func (GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstances)(nil)).Elem()
-}
-
-func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutput) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutput() GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutput {
-	return o
-}
-
-func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutput) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutputWithContext(ctx context.Context) GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutput {
-	return o
-}
-
-func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutput) Networks() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstances) []string { return v.Networks }).(pulumi.StringArrayOutput)
-}
-
-type GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutput struct{ *pulumi.OutputState }
-
-func (GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstances)(nil)).Elem()
-}
-
-func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutput) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutput() GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutput {
-	return o
-}
-
-func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutput) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutputWithContext(ctx context.Context) GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutput {
-	return o
-}
-
-func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutput) MapIndex(k pulumi.StringInput) GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstances {
-		return vs[0].(map[string]GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstances)[vs[1].(string)]
-	}).(GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutput)
-}
-
-type GetGatewaytemplatesOrgGatewaytemplate struct {
-	CreatedTime  float64 `pulumi:"createdTime"`
-	Id           string  `pulumi:"id"`
-	ModifiedTime float64 `pulumi:"modifiedTime"`
-	Name         string  `pulumi:"name"`
-	OrgId        string  `pulumi:"orgId"`
-}
-
-// GetGatewaytemplatesOrgGatewaytemplateInput is an input type that accepts GetGatewaytemplatesOrgGatewaytemplateArgs and GetGatewaytemplatesOrgGatewaytemplateOutput values.
-// You can construct a concrete instance of `GetGatewaytemplatesOrgGatewaytemplateInput` via:
-//
-//	GetGatewaytemplatesOrgGatewaytemplateArgs{...}
-type GetGatewaytemplatesOrgGatewaytemplateInput interface {
-	pulumi.Input
-
-	ToGetGatewaytemplatesOrgGatewaytemplateOutput() GetGatewaytemplatesOrgGatewaytemplateOutput
-	ToGetGatewaytemplatesOrgGatewaytemplateOutputWithContext(context.Context) GetGatewaytemplatesOrgGatewaytemplateOutput
-}
-
-type GetGatewaytemplatesOrgGatewaytemplateArgs struct {
-	CreatedTime  pulumi.Float64Input `pulumi:"createdTime"`
-	Id           pulumi.StringInput  `pulumi:"id"`
-	ModifiedTime pulumi.Float64Input `pulumi:"modifiedTime"`
-	Name         pulumi.StringInput  `pulumi:"name"`
-	OrgId        pulumi.StringInput  `pulumi:"orgId"`
-}
-
-func (GetGatewaytemplatesOrgGatewaytemplateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGatewaytemplatesOrgGatewaytemplate)(nil)).Elem()
-}
-
-func (i GetGatewaytemplatesOrgGatewaytemplateArgs) ToGetGatewaytemplatesOrgGatewaytemplateOutput() GetGatewaytemplatesOrgGatewaytemplateOutput {
-	return i.ToGetGatewaytemplatesOrgGatewaytemplateOutputWithContext(context.Background())
-}
-
-func (i GetGatewaytemplatesOrgGatewaytemplateArgs) ToGetGatewaytemplatesOrgGatewaytemplateOutputWithContext(ctx context.Context) GetGatewaytemplatesOrgGatewaytemplateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaytemplatesOrgGatewaytemplateOutput)
-}
-
-// GetGatewaytemplatesOrgGatewaytemplateArrayInput is an input type that accepts GetGatewaytemplatesOrgGatewaytemplateArray and GetGatewaytemplatesOrgGatewaytemplateArrayOutput values.
-// You can construct a concrete instance of `GetGatewaytemplatesOrgGatewaytemplateArrayInput` via:
-//
-//	GetGatewaytemplatesOrgGatewaytemplateArray{ GetGatewaytemplatesOrgGatewaytemplateArgs{...} }
-type GetGatewaytemplatesOrgGatewaytemplateArrayInput interface {
-	pulumi.Input
-
-	ToGetGatewaytemplatesOrgGatewaytemplateArrayOutput() GetGatewaytemplatesOrgGatewaytemplateArrayOutput
-	ToGetGatewaytemplatesOrgGatewaytemplateArrayOutputWithContext(context.Context) GetGatewaytemplatesOrgGatewaytemplateArrayOutput
-}
-
-type GetGatewaytemplatesOrgGatewaytemplateArray []GetGatewaytemplatesOrgGatewaytemplateInput
-
-func (GetGatewaytemplatesOrgGatewaytemplateArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGatewaytemplatesOrgGatewaytemplate)(nil)).Elem()
-}
-
-func (i GetGatewaytemplatesOrgGatewaytemplateArray) ToGetGatewaytemplatesOrgGatewaytemplateArrayOutput() GetGatewaytemplatesOrgGatewaytemplateArrayOutput {
-	return i.ToGetGatewaytemplatesOrgGatewaytemplateArrayOutputWithContext(context.Background())
-}
-
-func (i GetGatewaytemplatesOrgGatewaytemplateArray) ToGetGatewaytemplatesOrgGatewaytemplateArrayOutputWithContext(ctx context.Context) GetGatewaytemplatesOrgGatewaytemplateArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaytemplatesOrgGatewaytemplateArrayOutput)
-}
-
-type GetGatewaytemplatesOrgGatewaytemplateOutput struct{ *pulumi.OutputState }
-
-func (GetGatewaytemplatesOrgGatewaytemplateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGatewaytemplatesOrgGatewaytemplate)(nil)).Elem()
-}
-
-func (o GetGatewaytemplatesOrgGatewaytemplateOutput) ToGetGatewaytemplatesOrgGatewaytemplateOutput() GetGatewaytemplatesOrgGatewaytemplateOutput {
-	return o
-}
-
-func (o GetGatewaytemplatesOrgGatewaytemplateOutput) ToGetGatewaytemplatesOrgGatewaytemplateOutputWithContext(ctx context.Context) GetGatewaytemplatesOrgGatewaytemplateOutput {
-	return o
-}
-
-func (o GetGatewaytemplatesOrgGatewaytemplateOutput) CreatedTime() pulumi.Float64Output {
-	return o.ApplyT(func(v GetGatewaytemplatesOrgGatewaytemplate) float64 { return v.CreatedTime }).(pulumi.Float64Output)
-}
-
-func (o GetGatewaytemplatesOrgGatewaytemplateOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGatewaytemplatesOrgGatewaytemplate) string { return v.Id }).(pulumi.StringOutput)
-}
-
-func (o GetGatewaytemplatesOrgGatewaytemplateOutput) ModifiedTime() pulumi.Float64Output {
-	return o.ApplyT(func(v GetGatewaytemplatesOrgGatewaytemplate) float64 { return v.ModifiedTime }).(pulumi.Float64Output)
-}
-
-func (o GetGatewaytemplatesOrgGatewaytemplateOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGatewaytemplatesOrgGatewaytemplate) string { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o GetGatewaytemplatesOrgGatewaytemplateOutput) OrgId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGatewaytemplatesOrgGatewaytemplate) string { return v.OrgId }).(pulumi.StringOutput)
-}
-
-type GetGatewaytemplatesOrgGatewaytemplateArrayOutput struct{ *pulumi.OutputState }
-
-func (GetGatewaytemplatesOrgGatewaytemplateArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGatewaytemplatesOrgGatewaytemplate)(nil)).Elem()
-}
-
-func (o GetGatewaytemplatesOrgGatewaytemplateArrayOutput) ToGetGatewaytemplatesOrgGatewaytemplateArrayOutput() GetGatewaytemplatesOrgGatewaytemplateArrayOutput {
-	return o
-}
-
-func (o GetGatewaytemplatesOrgGatewaytemplateArrayOutput) ToGetGatewaytemplatesOrgGatewaytemplateArrayOutputWithContext(ctx context.Context) GetGatewaytemplatesOrgGatewaytemplateArrayOutput {
-	return o
-}
-
-func (o GetGatewaytemplatesOrgGatewaytemplateArrayOutput) Index(i pulumi.IntInput) GetGatewaytemplatesOrgGatewaytemplateOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewaytemplatesOrgGatewaytemplate {
-		return vs[0].([]GetGatewaytemplatesOrgGatewaytemplate)[vs[1].(int)]
-	}).(GetGatewaytemplatesOrgGatewaytemplateOutput)
-}
-
-type GetIdpprofilesOrgIdpprofile struct {
-	// enum: `critical`, `standard`, `strict`
-	BaseProfile string `pulumi:"baseProfile"`
-	// When the object has been created, in epoch
-	CreatedTime float64 `pulumi:"createdTime"`
-	// Unique ID of the object instance in the Mist Organization
-	Id string `pulumi:"id"`
-	// When the object has been modified for the last time, in epoch
-	ModifiedTime float64                                `pulumi:"modifiedTime"`
-	Name         string                                 `pulumi:"name"`
-	OrgId        string                                 `pulumi:"orgId"`
-	Overwrites   []GetIdpprofilesOrgIdpprofileOverwrite `pulumi:"overwrites"`
-}
-
-// GetIdpprofilesOrgIdpprofileInput is an input type that accepts GetIdpprofilesOrgIdpprofileArgs and GetIdpprofilesOrgIdpprofileOutput values.
-// You can construct a concrete instance of `GetIdpprofilesOrgIdpprofileInput` via:
-//
-//	GetIdpprofilesOrgIdpprofileArgs{...}
-type GetIdpprofilesOrgIdpprofileInput interface {
-	pulumi.Input
-
-	ToGetIdpprofilesOrgIdpprofileOutput() GetIdpprofilesOrgIdpprofileOutput
-	ToGetIdpprofilesOrgIdpprofileOutputWithContext(context.Context) GetIdpprofilesOrgIdpprofileOutput
-}
-
-type GetIdpprofilesOrgIdpprofileArgs struct {
-	// enum: `critical`, `standard`, `strict`
-	BaseProfile pulumi.StringInput `pulumi:"baseProfile"`
-	// When the object has been created, in epoch
-	CreatedTime pulumi.Float64Input `pulumi:"createdTime"`
-	// Unique ID of the object instance in the Mist Organization
-	Id pulumi.StringInput `pulumi:"id"`
-	// When the object has been modified for the last time, in epoch
-	ModifiedTime pulumi.Float64Input                            `pulumi:"modifiedTime"`
-	Name         pulumi.StringInput                             `pulumi:"name"`
-	OrgId        pulumi.StringInput                             `pulumi:"orgId"`
-	Overwrites   GetIdpprofilesOrgIdpprofileOverwriteArrayInput `pulumi:"overwrites"`
-}
-
-func (GetIdpprofilesOrgIdpprofileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetIdpprofilesOrgIdpprofile)(nil)).Elem()
-}
-
-func (i GetIdpprofilesOrgIdpprofileArgs) ToGetIdpprofilesOrgIdpprofileOutput() GetIdpprofilesOrgIdpprofileOutput {
-	return i.ToGetIdpprofilesOrgIdpprofileOutputWithContext(context.Background())
-}
-
-func (i GetIdpprofilesOrgIdpprofileArgs) ToGetIdpprofilesOrgIdpprofileOutputWithContext(ctx context.Context) GetIdpprofilesOrgIdpprofileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetIdpprofilesOrgIdpprofileOutput)
-}
-
-// GetIdpprofilesOrgIdpprofileArrayInput is an input type that accepts GetIdpprofilesOrgIdpprofileArray and GetIdpprofilesOrgIdpprofileArrayOutput values.
-// You can construct a concrete instance of `GetIdpprofilesOrgIdpprofileArrayInput` via:
-//
-//	GetIdpprofilesOrgIdpprofileArray{ GetIdpprofilesOrgIdpprofileArgs{...} }
-type GetIdpprofilesOrgIdpprofileArrayInput interface {
-	pulumi.Input
-
-	ToGetIdpprofilesOrgIdpprofileArrayOutput() GetIdpprofilesOrgIdpprofileArrayOutput
-	ToGetIdpprofilesOrgIdpprofileArrayOutputWithContext(context.Context) GetIdpprofilesOrgIdpprofileArrayOutput
-}
-
-type GetIdpprofilesOrgIdpprofileArray []GetIdpprofilesOrgIdpprofileInput
-
-func (GetIdpprofilesOrgIdpprofileArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetIdpprofilesOrgIdpprofile)(nil)).Elem()
-}
-
-func (i GetIdpprofilesOrgIdpprofileArray) ToGetIdpprofilesOrgIdpprofileArrayOutput() GetIdpprofilesOrgIdpprofileArrayOutput {
-	return i.ToGetIdpprofilesOrgIdpprofileArrayOutputWithContext(context.Background())
-}
-
-func (i GetIdpprofilesOrgIdpprofileArray) ToGetIdpprofilesOrgIdpprofileArrayOutputWithContext(ctx context.Context) GetIdpprofilesOrgIdpprofileArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetIdpprofilesOrgIdpprofileArrayOutput)
-}
-
-type GetIdpprofilesOrgIdpprofileOutput struct{ *pulumi.OutputState }
-
-func (GetIdpprofilesOrgIdpprofileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetIdpprofilesOrgIdpprofile)(nil)).Elem()
-}
-
-func (o GetIdpprofilesOrgIdpprofileOutput) ToGetIdpprofilesOrgIdpprofileOutput() GetIdpprofilesOrgIdpprofileOutput {
-	return o
-}
-
-func (o GetIdpprofilesOrgIdpprofileOutput) ToGetIdpprofilesOrgIdpprofileOutputWithContext(ctx context.Context) GetIdpprofilesOrgIdpprofileOutput {
-	return o
-}
-
-// enum: `critical`, `standard`, `strict`
-func (o GetIdpprofilesOrgIdpprofileOutput) BaseProfile() pulumi.StringOutput {
-	return o.ApplyT(func(v GetIdpprofilesOrgIdpprofile) string { return v.BaseProfile }).(pulumi.StringOutput)
-}
-
-// When the object has been created, in epoch
-func (o GetIdpprofilesOrgIdpprofileOutput) CreatedTime() pulumi.Float64Output {
-	return o.ApplyT(func(v GetIdpprofilesOrgIdpprofile) float64 { return v.CreatedTime }).(pulumi.Float64Output)
-}
-
-// Unique ID of the object instance in the Mist Organization
-func (o GetIdpprofilesOrgIdpprofileOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetIdpprofilesOrgIdpprofile) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// When the object has been modified for the last time, in epoch
-func (o GetIdpprofilesOrgIdpprofileOutput) ModifiedTime() pulumi.Float64Output {
-	return o.ApplyT(func(v GetIdpprofilesOrgIdpprofile) float64 { return v.ModifiedTime }).(pulumi.Float64Output)
-}
-
-func (o GetIdpprofilesOrgIdpprofileOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetIdpprofilesOrgIdpprofile) string { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o GetIdpprofilesOrgIdpprofileOutput) OrgId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetIdpprofilesOrgIdpprofile) string { return v.OrgId }).(pulumi.StringOutput)
-}
-
-func (o GetIdpprofilesOrgIdpprofileOutput) Overwrites() GetIdpprofilesOrgIdpprofileOverwriteArrayOutput {
-	return o.ApplyT(func(v GetIdpprofilesOrgIdpprofile) []GetIdpprofilesOrgIdpprofileOverwrite { return v.Overwrites }).(GetIdpprofilesOrgIdpprofileOverwriteArrayOutput)
-}
-
-type GetIdpprofilesOrgIdpprofileArrayOutput struct{ *pulumi.OutputState }
-
-func (GetIdpprofilesOrgIdpprofileArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetIdpprofilesOrgIdpprofile)(nil)).Elem()
-}
-
-func (o GetIdpprofilesOrgIdpprofileArrayOutput) ToGetIdpprofilesOrgIdpprofileArrayOutput() GetIdpprofilesOrgIdpprofileArrayOutput {
-	return o
-}
-
-func (o GetIdpprofilesOrgIdpprofileArrayOutput) ToGetIdpprofilesOrgIdpprofileArrayOutputWithContext(ctx context.Context) GetIdpprofilesOrgIdpprofileArrayOutput {
-	return o
-}
-
-func (o GetIdpprofilesOrgIdpprofileArrayOutput) Index(i pulumi.IntInput) GetIdpprofilesOrgIdpprofileOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpprofilesOrgIdpprofile {
-		return vs[0].([]GetIdpprofilesOrgIdpprofile)[vs[1].(int)]
-	}).(GetIdpprofilesOrgIdpprofileOutput)
-}
-
 type MxclusterTuntermMonitoringArrayArray []MxclusterTuntermMonitoringArrayInput
 
 func (MxclusterTuntermMonitoringArrayArray) ElementType() reflect.Type {
@@ -91880,6 +93149,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileApUplinkPortConfigPtrInput)(nil)).Elem(), DeviceprofileApUplinkPortConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileApUsbConfigInput)(nil)).Elem(), DeviceprofileApUsbConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileApUsbConfigPtrInput)(nil)).Elem(), DeviceprofileApUsbConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileApUwbConfigInput)(nil)).Elem(), DeviceprofileApUwbConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileApUwbConfigPtrInput)(nil)).Elem(), DeviceprofileApUwbConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileApZigbeeConfigInput)(nil)).Elem(), DeviceprofileApZigbeeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileApZigbeeConfigPtrInput)(nil)).Elem(), DeviceprofileApZigbeeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayBgpConfigInput)(nil)).Elem(), DeviceprofileGatewayBgpConfigArgs{})
@@ -91956,6 +93227,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayPortConfigWanExtraRoutesMapInput)(nil)).Elem(), DeviceprofileGatewayPortConfigWanExtraRoutesMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayPortConfigWanProbeOverrideInput)(nil)).Elem(), DeviceprofileGatewayPortConfigWanProbeOverrideArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayPortConfigWanProbeOverridePtrInput)(nil)).Elem(), DeviceprofileGatewayPortConfigWanProbeOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayPortConfigWanProbeOverrideHttpInput)(nil)).Elem(), DeviceprofileGatewayPortConfigWanProbeOverrideHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrInput)(nil)).Elem(), DeviceprofileGatewayPortConfigWanProbeOverrideHttpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayPortConfigWanSourceNatInput)(nil)).Elem(), DeviceprofileGatewayPortConfigWanSourceNatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayPortConfigWanSourceNatPtrInput)(nil)).Elem(), DeviceprofileGatewayPortConfigWanSourceNatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayRoutingPoliciesInput)(nil)).Elem(), DeviceprofileGatewayRoutingPoliciesArgs{})
@@ -92010,10 +93283,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayTunnelConfigsIpsecProposalArrayInput)(nil)).Elem(), DeviceprofileGatewayTunnelConfigsIpsecProposalArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayTunnelConfigsPrimaryInput)(nil)).Elem(), DeviceprofileGatewayTunnelConfigsPrimaryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayTunnelConfigsPrimaryPtrInput)(nil)).Elem(), DeviceprofileGatewayTunnelConfigsPrimaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpInput)(nil)).Elem(), DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrInput)(nil)).Elem(), DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayTunnelConfigsProbeInput)(nil)).Elem(), DeviceprofileGatewayTunnelConfigsProbeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayTunnelConfigsProbePtrInput)(nil)).Elem(), DeviceprofileGatewayTunnelConfigsProbeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayTunnelConfigsSecondaryInput)(nil)).Elem(), DeviceprofileGatewayTunnelConfigsSecondaryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayTunnelConfigsSecondaryPtrInput)(nil)).Elem(), DeviceprofileGatewayTunnelConfigsSecondaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpInput)(nil)).Elem(), DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrInput)(nil)).Elem(), DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayTunnelProviderOptionsInput)(nil)).Elem(), DeviceprofileGatewayTunnelProviderOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayTunnelProviderOptionsPtrInput)(nil)).Elem(), DeviceprofileGatewayTunnelProviderOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayTunnelProviderOptionsJseInput)(nil)).Elem(), DeviceprofileGatewayTunnelProviderOptionsJseArgs{})
@@ -92066,6 +93343,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileSwitchMistNacPtrInput)(nil)).Elem(), DeviceprofileSwitchMistNacArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileSwitchNetworksInput)(nil)).Elem(), DeviceprofileSwitchNetworksArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileSwitchNetworksMapInput)(nil)).Elem(), DeviceprofileSwitchNetworksMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileSwitchNetworksMulticastInput)(nil)).Elem(), DeviceprofileSwitchNetworksMulticastArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileSwitchNetworksMulticastPtrInput)(nil)).Elem(), DeviceprofileSwitchNetworksMulticastArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileSwitchOobIpConfigInput)(nil)).Elem(), DeviceprofileSwitchOobIpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileSwitchOobIpConfigPtrInput)(nil)).Elem(), DeviceprofileSwitchOobIpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileSwitchOspfAreasInput)(nil)).Elem(), DeviceprofileSwitchOspfAreasArgs{})
@@ -92180,6 +93459,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileSwitchVrfInstancesExtraRoutes6MapInput)(nil)).Elem(), DeviceprofileSwitchVrfInstancesExtraRoutes6Map{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileSwitchVrfInstancesExtraRoutesInput)(nil)).Elem(), DeviceprofileSwitchVrfInstancesExtraRoutesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileSwitchVrfInstancesExtraRoutesMapInput)(nil)).Elem(), DeviceprofileSwitchVrfInstancesExtraRoutesMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileSwitchVrfInstancesMulticastConfigInput)(nil)).Elem(), DeviceprofileSwitchVrfInstancesMulticastConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileSwitchVrfInstancesMulticastConfigPtrInput)(nil)).Elem(), DeviceprofileSwitchVrfInstancesMulticastConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileSwitchVrrpConfigInput)(nil)).Elem(), DeviceprofileSwitchVrrpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileSwitchVrrpConfigPtrInput)(nil)).Elem(), DeviceprofileSwitchVrrpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileSwitchVrrpConfigGroupsInput)(nil)).Elem(), DeviceprofileSwitchVrrpConfigGroupsArgs{})
@@ -92280,6 +93561,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplatePortConfigWanExtraRoutesMapInput)(nil)).Elem(), GatewaytemplatePortConfigWanExtraRoutesMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplatePortConfigWanProbeOverrideInput)(nil)).Elem(), GatewaytemplatePortConfigWanProbeOverrideArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplatePortConfigWanProbeOverridePtrInput)(nil)).Elem(), GatewaytemplatePortConfigWanProbeOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplatePortConfigWanProbeOverrideHttpInput)(nil)).Elem(), GatewaytemplatePortConfigWanProbeOverrideHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplatePortConfigWanProbeOverrideHttpPtrInput)(nil)).Elem(), GatewaytemplatePortConfigWanProbeOverrideHttpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplatePortConfigWanSourceNatInput)(nil)).Elem(), GatewaytemplatePortConfigWanSourceNatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplatePortConfigWanSourceNatPtrInput)(nil)).Elem(), GatewaytemplatePortConfigWanSourceNatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateRoutingPoliciesInput)(nil)).Elem(), GatewaytemplateRoutingPoliciesArgs{})
@@ -92334,10 +93617,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateTunnelConfigsIpsecProposalArrayInput)(nil)).Elem(), GatewaytemplateTunnelConfigsIpsecProposalArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateTunnelConfigsPrimaryInput)(nil)).Elem(), GatewaytemplateTunnelConfigsPrimaryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateTunnelConfigsPrimaryPtrInput)(nil)).Elem(), GatewaytemplateTunnelConfigsPrimaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateTunnelConfigsPrimaryProbeHttpInput)(nil)).Elem(), GatewaytemplateTunnelConfigsPrimaryProbeHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateTunnelConfigsPrimaryProbeHttpPtrInput)(nil)).Elem(), GatewaytemplateTunnelConfigsPrimaryProbeHttpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateTunnelConfigsProbeInput)(nil)).Elem(), GatewaytemplateTunnelConfigsProbeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateTunnelConfigsProbePtrInput)(nil)).Elem(), GatewaytemplateTunnelConfigsProbeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateTunnelConfigsSecondaryInput)(nil)).Elem(), GatewaytemplateTunnelConfigsSecondaryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateTunnelConfigsSecondaryPtrInput)(nil)).Elem(), GatewaytemplateTunnelConfigsSecondaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateTunnelConfigsSecondaryProbeHttpInput)(nil)).Elem(), GatewaytemplateTunnelConfigsSecondaryProbeHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateTunnelConfigsSecondaryProbeHttpPtrInput)(nil)).Elem(), GatewaytemplateTunnelConfigsSecondaryProbeHttpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateTunnelProviderOptionsInput)(nil)).Elem(), GatewaytemplateTunnelProviderOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateTunnelProviderOptionsPtrInput)(nil)).Elem(), GatewaytemplateTunnelProviderOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateTunnelProviderOptionsJseInput)(nil)).Elem(), GatewaytemplateTunnelProviderOptionsJseArgs{})
@@ -92480,8 +93767,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateExtraRoutesNextQualifiedMapInput)(nil)).Elem(), NetworktemplateExtraRoutesNextQualifiedMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateMistNacInput)(nil)).Elem(), NetworktemplateMistNacArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateMistNacPtrInput)(nil)).Elem(), NetworktemplateMistNacArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateMulticastConfigInput)(nil)).Elem(), NetworktemplateMulticastConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateMulticastConfigPtrInput)(nil)).Elem(), NetworktemplateMulticastConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateNetworksInput)(nil)).Elem(), NetworktemplateNetworksArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateNetworksMapInput)(nil)).Elem(), NetworktemplateNetworksMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateNetworksMulticastInput)(nil)).Elem(), NetworktemplateNetworksMulticastArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateNetworksMulticastPtrInput)(nil)).Elem(), NetworktemplateNetworksMulticastArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateOspfAreasInput)(nil)).Elem(), NetworktemplateOspfAreasArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateOspfAreasMapInput)(nil)).Elem(), NetworktemplateOspfAreasMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateOspfAreasNetworksInput)(nil)).Elem(), NetworktemplateOspfAreasNetworksArgs{})
@@ -92602,6 +93893,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateVrfInstancesExtraRoutes6MapInput)(nil)).Elem(), NetworktemplateVrfInstancesExtraRoutes6Map{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateVrfInstancesExtraRoutesInput)(nil)).Elem(), NetworktemplateVrfInstancesExtraRoutesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateVrfInstancesExtraRoutesMapInput)(nil)).Elem(), NetworktemplateVrfInstancesExtraRoutesMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateVrfInstancesMulticastConfigInput)(nil)).Elem(), NetworktemplateVrfInstancesMulticastConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateVrfInstancesMulticastConfigPtrInput)(nil)).Elem(), NetworktemplateVrfInstancesMulticastConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RftemplateBand24Input)(nil)).Elem(), RftemplateBand24Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RftemplateBand24PtrInput)(nil)).Elem(), RftemplateBand24Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RftemplateBand5Input)(nil)).Elem(), RftemplateBand5Args{})
@@ -92638,12 +93931,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingApiPolicyPtrInput)(nil)).Elem(), SettingApiPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingAutoUpgradeInput)(nil)).Elem(), SettingAutoUpgradeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingAutoUpgradePtrInput)(nil)).Elem(), SettingAutoUpgradeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingCacertsConfigInput)(nil)).Elem(), SettingCacertsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingCacertsConfigArrayInput)(nil)).Elem(), SettingCacertsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingCelonaInput)(nil)).Elem(), SettingCelonaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingCelonaPtrInput)(nil)).Elem(), SettingCelonaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingCloudsharkInput)(nil)).Elem(), SettingCloudsharkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingCloudsharkPtrInput)(nil)).Elem(), SettingCloudsharkArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SettingCradlepointInput)(nil)).Elem(), SettingCradlepointArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SettingCradlepointPtrInput)(nil)).Elem(), SettingCradlepointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingDeviceCertInput)(nil)).Elem(), SettingDeviceCertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingDeviceCertPtrInput)(nil)).Elem(), SettingDeviceCertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingInstallerInput)(nil)).Elem(), SettingInstallerArgs{})
@@ -92734,6 +94027,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VpnPathsPeerPathsMapInput)(nil)).Elem(), VpnPathsPeerPathsMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpnPathsTrafficShapingInput)(nil)).Elem(), VpnPathsTrafficShapingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpnPathsTrafficShapingPtrInput)(nil)).Elem(), VpnPathsTrafficShapingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebhookRuleInput)(nil)).Elem(), WebhookRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebhookRuleArrayInput)(nil)).Elem(), WebhookRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WlanAcctServerInput)(nil)).Elem(), WlanAcctServerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WlanAcctServerArrayInput)(nil)).Elem(), WlanAcctServerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WlanAirwatchInput)(nil)).Elem(), WlanAirwatchArgs{})
@@ -92796,27 +94091,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WxtagSpecArrayInput)(nil)).Elem(), WxtagSpecArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmtemplatesOrgAlarmtemplateInput)(nil)).Elem(), GetAlarmtemplatesOrgAlarmtemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmtemplatesOrgAlarmtemplateArrayInput)(nil)).Elem(), GetAlarmtemplatesOrgAlarmtemplateArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmtemplatesOrgAlarmtemplateDeliveryInput)(nil)).Elem(), GetAlarmtemplatesOrgAlarmtemplateDeliveryArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmtemplatesOrgAlarmtemplateRulesInput)(nil)).Elem(), GetAlarmtemplatesOrgAlarmtemplateRulesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmtemplatesOrgAlarmtemplateRulesMapInput)(nil)).Elem(), GetAlarmtemplatesOrgAlarmtemplateRulesMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryInput)(nil)).Elem(), GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAvprofilesOrgAvprofileInput)(nil)).Elem(), GetAvprofilesOrgAvprofileArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAvprofilesOrgAvprofileArrayInput)(nil)).Elem(), GetAvprofilesOrgAvprofileArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDeviceprofilesApDeviceprofileInput)(nil)).Elem(), GetDeviceprofilesApDeviceprofileArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDeviceprofilesApDeviceprofileArrayInput)(nil)).Elem(), GetDeviceprofilesApDeviceprofileArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDeviceprofilesGatewayDeviceprofileInput)(nil)).Elem(), GetDeviceprofilesGatewayDeviceprofileArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDeviceprofilesGatewayDeviceprofileArrayInput)(nil)).Elem(), GetDeviceprofilesGatewayDeviceprofileArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetEvpnTopologiesOrgEvpnTopologyInput)(nil)).Elem(), GetEvpnTopologiesOrgEvpnTopologyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetEvpnTopologiesOrgEvpnTopologyArrayInput)(nil)).Elem(), GetEvpnTopologiesOrgEvpnTopologyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsInput)(nil)).Elem(), GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayInput)(nil)).Elem(), GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayInput)(nil)).Elem(), GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesInput)(nil)).Elem(), GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapInput)(nil)).Elem(), GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaytemplatesOrgGatewaytemplateInput)(nil)).Elem(), GetGatewaytemplatesOrgGatewaytemplateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaytemplatesOrgGatewaytemplateArrayInput)(nil)).Elem(), GetGatewaytemplatesOrgGatewaytemplateArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpprofilesOrgIdpprofileInput)(nil)).Elem(), GetIdpprofilesOrgIdpprofileArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpprofilesOrgIdpprofileArrayInput)(nil)).Elem(), GetIdpprofilesOrgIdpprofileArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MxclusterTuntermMonitoringArrayArrayInput)(nil)).Elem(), MxclusterTuntermMonitoringArrayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeTuntermMonitoringArrayArrayInput)(nil)).Elem(), MxedgeTuntermMonitoringArrayArray{})
 	pulumi.RegisterOutputType(AlarmtemplateDeliveryOutput{})
@@ -92877,6 +94151,8 @@ func init() {
 	pulumi.RegisterOutputType(DeviceprofileApUplinkPortConfigPtrOutput{})
 	pulumi.RegisterOutputType(DeviceprofileApUsbConfigOutput{})
 	pulumi.RegisterOutputType(DeviceprofileApUsbConfigPtrOutput{})
+	pulumi.RegisterOutputType(DeviceprofileApUwbConfigOutput{})
+	pulumi.RegisterOutputType(DeviceprofileApUwbConfigPtrOutput{})
 	pulumi.RegisterOutputType(DeviceprofileApZigbeeConfigOutput{})
 	pulumi.RegisterOutputType(DeviceprofileApZigbeeConfigPtrOutput{})
 	pulumi.RegisterOutputType(DeviceprofileGatewayBgpConfigOutput{})
@@ -92953,6 +94229,8 @@ func init() {
 	pulumi.RegisterOutputType(DeviceprofileGatewayPortConfigWanExtraRoutesMapOutput{})
 	pulumi.RegisterOutputType(DeviceprofileGatewayPortConfigWanProbeOverrideOutput{})
 	pulumi.RegisterOutputType(DeviceprofileGatewayPortConfigWanProbeOverridePtrOutput{})
+	pulumi.RegisterOutputType(DeviceprofileGatewayPortConfigWanProbeOverrideHttpOutput{})
+	pulumi.RegisterOutputType(DeviceprofileGatewayPortConfigWanProbeOverrideHttpPtrOutput{})
 	pulumi.RegisterOutputType(DeviceprofileGatewayPortConfigWanSourceNatOutput{})
 	pulumi.RegisterOutputType(DeviceprofileGatewayPortConfigWanSourceNatPtrOutput{})
 	pulumi.RegisterOutputType(DeviceprofileGatewayRoutingPoliciesOutput{})
@@ -93007,10 +94285,14 @@ func init() {
 	pulumi.RegisterOutputType(DeviceprofileGatewayTunnelConfigsIpsecProposalArrayOutput{})
 	pulumi.RegisterOutputType(DeviceprofileGatewayTunnelConfigsPrimaryOutput{})
 	pulumi.RegisterOutputType(DeviceprofileGatewayTunnelConfigsPrimaryPtrOutput{})
+	pulumi.RegisterOutputType(DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpOutput{})
+	pulumi.RegisterOutputType(DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpPtrOutput{})
 	pulumi.RegisterOutputType(DeviceprofileGatewayTunnelConfigsProbeOutput{})
 	pulumi.RegisterOutputType(DeviceprofileGatewayTunnelConfigsProbePtrOutput{})
 	pulumi.RegisterOutputType(DeviceprofileGatewayTunnelConfigsSecondaryOutput{})
 	pulumi.RegisterOutputType(DeviceprofileGatewayTunnelConfigsSecondaryPtrOutput{})
+	pulumi.RegisterOutputType(DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpOutput{})
+	pulumi.RegisterOutputType(DeviceprofileGatewayTunnelConfigsSecondaryProbeHttpPtrOutput{})
 	pulumi.RegisterOutputType(DeviceprofileGatewayTunnelProviderOptionsOutput{})
 	pulumi.RegisterOutputType(DeviceprofileGatewayTunnelProviderOptionsPtrOutput{})
 	pulumi.RegisterOutputType(DeviceprofileGatewayTunnelProviderOptionsJseOutput{})
@@ -93063,6 +94345,8 @@ func init() {
 	pulumi.RegisterOutputType(DeviceprofileSwitchMistNacPtrOutput{})
 	pulumi.RegisterOutputType(DeviceprofileSwitchNetworksOutput{})
 	pulumi.RegisterOutputType(DeviceprofileSwitchNetworksMapOutput{})
+	pulumi.RegisterOutputType(DeviceprofileSwitchNetworksMulticastOutput{})
+	pulumi.RegisterOutputType(DeviceprofileSwitchNetworksMulticastPtrOutput{})
 	pulumi.RegisterOutputType(DeviceprofileSwitchOobIpConfigOutput{})
 	pulumi.RegisterOutputType(DeviceprofileSwitchOobIpConfigPtrOutput{})
 	pulumi.RegisterOutputType(DeviceprofileSwitchOspfAreasOutput{})
@@ -93177,6 +94461,8 @@ func init() {
 	pulumi.RegisterOutputType(DeviceprofileSwitchVrfInstancesExtraRoutes6MapOutput{})
 	pulumi.RegisterOutputType(DeviceprofileSwitchVrfInstancesExtraRoutesOutput{})
 	pulumi.RegisterOutputType(DeviceprofileSwitchVrfInstancesExtraRoutesMapOutput{})
+	pulumi.RegisterOutputType(DeviceprofileSwitchVrfInstancesMulticastConfigOutput{})
+	pulumi.RegisterOutputType(DeviceprofileSwitchVrfInstancesMulticastConfigPtrOutput{})
 	pulumi.RegisterOutputType(DeviceprofileSwitchVrrpConfigOutput{})
 	pulumi.RegisterOutputType(DeviceprofileSwitchVrrpConfigPtrOutput{})
 	pulumi.RegisterOutputType(DeviceprofileSwitchVrrpConfigGroupsOutput{})
@@ -93277,6 +94563,8 @@ func init() {
 	pulumi.RegisterOutputType(GatewaytemplatePortConfigWanExtraRoutesMapOutput{})
 	pulumi.RegisterOutputType(GatewaytemplatePortConfigWanProbeOverrideOutput{})
 	pulumi.RegisterOutputType(GatewaytemplatePortConfigWanProbeOverridePtrOutput{})
+	pulumi.RegisterOutputType(GatewaytemplatePortConfigWanProbeOverrideHttpOutput{})
+	pulumi.RegisterOutputType(GatewaytemplatePortConfigWanProbeOverrideHttpPtrOutput{})
 	pulumi.RegisterOutputType(GatewaytemplatePortConfigWanSourceNatOutput{})
 	pulumi.RegisterOutputType(GatewaytemplatePortConfigWanSourceNatPtrOutput{})
 	pulumi.RegisterOutputType(GatewaytemplateRoutingPoliciesOutput{})
@@ -93331,10 +94619,14 @@ func init() {
 	pulumi.RegisterOutputType(GatewaytemplateTunnelConfigsIpsecProposalArrayOutput{})
 	pulumi.RegisterOutputType(GatewaytemplateTunnelConfigsPrimaryOutput{})
 	pulumi.RegisterOutputType(GatewaytemplateTunnelConfigsPrimaryPtrOutput{})
+	pulumi.RegisterOutputType(GatewaytemplateTunnelConfigsPrimaryProbeHttpOutput{})
+	pulumi.RegisterOutputType(GatewaytemplateTunnelConfigsPrimaryProbeHttpPtrOutput{})
 	pulumi.RegisterOutputType(GatewaytemplateTunnelConfigsProbeOutput{})
 	pulumi.RegisterOutputType(GatewaytemplateTunnelConfigsProbePtrOutput{})
 	pulumi.RegisterOutputType(GatewaytemplateTunnelConfigsSecondaryOutput{})
 	pulumi.RegisterOutputType(GatewaytemplateTunnelConfigsSecondaryPtrOutput{})
+	pulumi.RegisterOutputType(GatewaytemplateTunnelConfigsSecondaryProbeHttpOutput{})
+	pulumi.RegisterOutputType(GatewaytemplateTunnelConfigsSecondaryProbeHttpPtrOutput{})
 	pulumi.RegisterOutputType(GatewaytemplateTunnelProviderOptionsOutput{})
 	pulumi.RegisterOutputType(GatewaytemplateTunnelProviderOptionsPtrOutput{})
 	pulumi.RegisterOutputType(GatewaytemplateTunnelProviderOptionsJseOutput{})
@@ -93477,8 +94769,12 @@ func init() {
 	pulumi.RegisterOutputType(NetworktemplateExtraRoutesNextQualifiedMapOutput{})
 	pulumi.RegisterOutputType(NetworktemplateMistNacOutput{})
 	pulumi.RegisterOutputType(NetworktemplateMistNacPtrOutput{})
+	pulumi.RegisterOutputType(NetworktemplateMulticastConfigOutput{})
+	pulumi.RegisterOutputType(NetworktemplateMulticastConfigPtrOutput{})
 	pulumi.RegisterOutputType(NetworktemplateNetworksOutput{})
 	pulumi.RegisterOutputType(NetworktemplateNetworksMapOutput{})
+	pulumi.RegisterOutputType(NetworktemplateNetworksMulticastOutput{})
+	pulumi.RegisterOutputType(NetworktemplateNetworksMulticastPtrOutput{})
 	pulumi.RegisterOutputType(NetworktemplateOspfAreasOutput{})
 	pulumi.RegisterOutputType(NetworktemplateOspfAreasMapOutput{})
 	pulumi.RegisterOutputType(NetworktemplateOspfAreasNetworksOutput{})
@@ -93599,6 +94895,8 @@ func init() {
 	pulumi.RegisterOutputType(NetworktemplateVrfInstancesExtraRoutes6MapOutput{})
 	pulumi.RegisterOutputType(NetworktemplateVrfInstancesExtraRoutesOutput{})
 	pulumi.RegisterOutputType(NetworktemplateVrfInstancesExtraRoutesMapOutput{})
+	pulumi.RegisterOutputType(NetworktemplateVrfInstancesMulticastConfigOutput{})
+	pulumi.RegisterOutputType(NetworktemplateVrfInstancesMulticastConfigPtrOutput{})
 	pulumi.RegisterOutputType(RftemplateBand24Output{})
 	pulumi.RegisterOutputType(RftemplateBand24PtrOutput{})
 	pulumi.RegisterOutputType(RftemplateBand5Output{})
@@ -93635,12 +94933,12 @@ func init() {
 	pulumi.RegisterOutputType(SettingApiPolicyPtrOutput{})
 	pulumi.RegisterOutputType(SettingAutoUpgradeOutput{})
 	pulumi.RegisterOutputType(SettingAutoUpgradePtrOutput{})
+	pulumi.RegisterOutputType(SettingCacertsConfigOutput{})
+	pulumi.RegisterOutputType(SettingCacertsConfigArrayOutput{})
 	pulumi.RegisterOutputType(SettingCelonaOutput{})
 	pulumi.RegisterOutputType(SettingCelonaPtrOutput{})
 	pulumi.RegisterOutputType(SettingCloudsharkOutput{})
 	pulumi.RegisterOutputType(SettingCloudsharkPtrOutput{})
-	pulumi.RegisterOutputType(SettingCradlepointOutput{})
-	pulumi.RegisterOutputType(SettingCradlepointPtrOutput{})
 	pulumi.RegisterOutputType(SettingDeviceCertOutput{})
 	pulumi.RegisterOutputType(SettingDeviceCertPtrOutput{})
 	pulumi.RegisterOutputType(SettingInstallerOutput{})
@@ -93731,6 +95029,8 @@ func init() {
 	pulumi.RegisterOutputType(VpnPathsPeerPathsMapOutput{})
 	pulumi.RegisterOutputType(VpnPathsTrafficShapingOutput{})
 	pulumi.RegisterOutputType(VpnPathsTrafficShapingPtrOutput{})
+	pulumi.RegisterOutputType(WebhookRuleOutput{})
+	pulumi.RegisterOutputType(WebhookRuleArrayOutput{})
 	pulumi.RegisterOutputType(WlanAcctServerOutput{})
 	pulumi.RegisterOutputType(WlanAcctServerArrayOutput{})
 	pulumi.RegisterOutputType(WlanAirwatchOutput{})
@@ -93793,27 +95093,6 @@ func init() {
 	pulumi.RegisterOutputType(WxtagSpecArrayOutput{})
 	pulumi.RegisterOutputType(GetAlarmtemplatesOrgAlarmtemplateOutput{})
 	pulumi.RegisterOutputType(GetAlarmtemplatesOrgAlarmtemplateArrayOutput{})
-	pulumi.RegisterOutputType(GetAlarmtemplatesOrgAlarmtemplateDeliveryOutput{})
-	pulumi.RegisterOutputType(GetAlarmtemplatesOrgAlarmtemplateRulesOutput{})
-	pulumi.RegisterOutputType(GetAlarmtemplatesOrgAlarmtemplateRulesMapOutput{})
-	pulumi.RegisterOutputType(GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput{})
-	pulumi.RegisterOutputType(GetAvprofilesOrgAvprofileOutput{})
-	pulumi.RegisterOutputType(GetAvprofilesOrgAvprofileArrayOutput{})
-	pulumi.RegisterOutputType(GetDeviceprofilesApDeviceprofileOutput{})
-	pulumi.RegisterOutputType(GetDeviceprofilesApDeviceprofileArrayOutput{})
-	pulumi.RegisterOutputType(GetDeviceprofilesGatewayDeviceprofileOutput{})
-	pulumi.RegisterOutputType(GetDeviceprofilesGatewayDeviceprofileArrayOutput{})
-	pulumi.RegisterOutputType(GetEvpnTopologiesOrgEvpnTopologyOutput{})
-	pulumi.RegisterOutputType(GetEvpnTopologiesOrgEvpnTopologyArrayOutput{})
-	pulumi.RegisterOutputType(GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput{})
-	pulumi.RegisterOutputType(GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutput{})
-	pulumi.RegisterOutputType(GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput{})
-	pulumi.RegisterOutputType(GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutput{})
-	pulumi.RegisterOutputType(GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutput{})
-	pulumi.RegisterOutputType(GetGatewaytemplatesOrgGatewaytemplateOutput{})
-	pulumi.RegisterOutputType(GetGatewaytemplatesOrgGatewaytemplateArrayOutput{})
-	pulumi.RegisterOutputType(GetIdpprofilesOrgIdpprofileOutput{})
-	pulumi.RegisterOutputType(GetIdpprofilesOrgIdpprofileArrayOutput{})
 	pulumi.RegisterOutputType(MxclusterTuntermMonitoringArrayArrayOutput{})
 	pulumi.RegisterOutputType(MxedgeTuntermMonitoringArrayArrayOutput{})
 }

@@ -26,6 +26,7 @@ import com.pulumi.junipermist.device.outputs.ApPwrConfig;
 import com.pulumi.junipermist.device.outputs.ApRadioConfig;
 import com.pulumi.junipermist.device.outputs.ApUplinkPortConfig;
 import com.pulumi.junipermist.device.outputs.ApUsbConfig;
+import com.pulumi.junipermist.device.outputs.ApUwbConfig;
 import com.pulumi.junipermist.device.outputs.ApZigbeeConfig;
 import java.lang.Boolean;
 import java.lang.Double;
@@ -184,6 +185,20 @@ public class Ap extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> disableModule() {
         return this.disableModule;
+    }
+    /**
+     * Whether U-NII-4 channels (169, 173, 177) are enabled on this access point
+     * 
+     */
+    @Export(name="enableUnii4", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> enableUnii4;
+
+    /**
+     * @return Whether U-NII-4 channels (169, 173, 177) are enabled on this access point
+     * 
+     */
+    public Output<Optional<Boolean>> enableUnii4() {
+        return Codegen.optional(this.enableUnii4);
     }
     /**
      * Electronic shelf label integration settings for this access point
@@ -590,6 +605,20 @@ public class Ap extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ApUsbConfig>> usbConfig() {
         return Codegen.optional(this.usbConfig);
+    }
+    /**
+     * UWB RTLS / OMLOX asset-visibility settings; overrides the device profile and site-level `uwbConfig`
+     * 
+     */
+    @Export(name="uwbConfig", refs={ApUwbConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ApUwbConfig> uwbConfig;
+
+    /**
+     * @return UWB RTLS / OMLOX asset-visibility settings; overrides the device profile and site-level `uwbConfig`
+     * 
+     */
+    public Output<Optional<ApUwbConfig>> uwbConfig() {
+        return Codegen.optional(this.uwbConfig);
     }
     /**
      * Variable values that override site variables for this access point

@@ -21,14 +21,28 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public InputMap<string> AuthKeys
         {
             get => _authKeys ?? (_authKeys = new InputMap<string>());
-            set => _authKeys = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _authKeys = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
+
+        [Input("authPassword")]
+        private Input<string>? _authPassword;
 
         /// <summary>
         /// Required if `AuthType`==`Password`, the password, max length is 8
         /// </summary>
-        [Input("authPassword")]
-        public Input<string>? AuthPassword { get; set; }
+        public Input<string>? AuthPassword
+        {
+            get => _authPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _authPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Authentication method used by this OSPF network

@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NetworktemplateExtraRoutesNextQualified {
+    /**
+     * @return Route metric for this qualified IPv4 next hop
+     * 
+     */
     private @Nullable Integer metric;
+    /**
+     * @return Route preference for this qualified IPv4 next hop
+     * 
+     */
     private @Nullable Integer preference;
 
     private NetworktemplateExtraRoutesNextQualified() {}
+    /**
+     * @return Route metric for this qualified IPv4 next hop
+     * 
+     */
     public Optional<Integer> metric() {
         return Optional.ofNullable(this.metric);
     }
+    /**
+     * @return Route preference for this qualified IPv4 next hop
+     * 
+     */
     public Optional<Integer> preference() {
         return Optional.ofNullable(this.preference);
     }

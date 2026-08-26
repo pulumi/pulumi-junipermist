@@ -6,6 +6,7 @@ package com.pulumi.junipermist.site.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.junipermist.site.inputs.NetworktemplateAclPolicyActionArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -18,44 +19,59 @@ public final class NetworktemplateAclPolicyArgs extends com.pulumi.resources.Res
     public static final NetworktemplateAclPolicyArgs Empty = new NetworktemplateAclPolicyArgs();
 
     /**
-     * ACL Policy Actions:
-     *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-     *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+     * Destination tag actions evaluated for sources matching this ACL policy
      * 
      */
     @Import(name="actions")
     private @Nullable Output<List<NetworktemplateAclPolicyActionArgs>> actions;
 
     /**
-     * @return ACL Policy Actions:
-     *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-     *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+     * @return Destination tag actions evaluated for sources matching this ACL policy
      * 
      */
     public Optional<Output<List<NetworktemplateAclPolicyActionArgs>>> actions() {
         return Optional.ofNullable(this.actions);
     }
 
+    /**
+     * Whether this ACL policy is disabled
+     * 
+     */
+    @Import(name="disabled")
+    private @Nullable Output<Boolean> disabled;
+
+    /**
+     * @return Whether this ACL policy is disabled
+     * 
+     */
+    public Optional<Output<Boolean>> disabled() {
+        return Optional.ofNullable(this.disabled);
+    }
+
+    /**
+     * Display name of the ACL policy
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Display name of the ACL policy
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
     /**
-     * ACL Policy Source Tags:
-     *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-     *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+     * Source ACL tags that select traffic for this ACL policy
      * 
      */
     @Import(name="srcTags")
     private @Nullable Output<List<String>> srcTags;
 
     /**
-     * @return ACL Policy Source Tags:
-     *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-     *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+     * @return Source ACL tags that select traffic for this ACL policy
      * 
      */
     public Optional<Output<List<String>>> srcTags() {
@@ -66,6 +82,7 @@ public final class NetworktemplateAclPolicyArgs extends com.pulumi.resources.Res
 
     private NetworktemplateAclPolicyArgs(NetworktemplateAclPolicyArgs $) {
         this.actions = $.actions;
+        this.disabled = $.disabled;
         this.name = $.name;
         this.srcTags = $.srcTags;
     }
@@ -89,9 +106,7 @@ public final class NetworktemplateAclPolicyArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param actions ACL Policy Actions:
-         *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-         *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+         * @param actions Destination tag actions evaluated for sources matching this ACL policy
          * 
          * @return builder
          * 
@@ -102,9 +117,7 @@ public final class NetworktemplateAclPolicyArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param actions ACL Policy Actions:
-         *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-         *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+         * @param actions Destination tag actions evaluated for sources matching this ACL policy
          * 
          * @return builder
          * 
@@ -114,9 +127,7 @@ public final class NetworktemplateAclPolicyArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param actions ACL Policy Actions:
-         *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-         *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+         * @param actions Destination tag actions evaluated for sources matching this ACL policy
          * 
          * @return builder
          * 
@@ -125,19 +136,50 @@ public final class NetworktemplateAclPolicyArgs extends com.pulumi.resources.Res
             return actions(List.of(actions));
         }
 
+        /**
+         * @param disabled Whether this ACL policy is disabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disabled(@Nullable Output<Boolean> disabled) {
+            $.disabled = disabled;
+            return this;
+        }
+
+        /**
+         * @param disabled Whether this ACL policy is disabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disabled(Boolean disabled) {
+            return disabled(Output.of(disabled));
+        }
+
+        /**
+         * @param name Display name of the ACL policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Display name of the ACL policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
         /**
-         * @param srcTags ACL Policy Source Tags:
-         *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-         *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+         * @param srcTags Source ACL tags that select traffic for this ACL policy
          * 
          * @return builder
          * 
@@ -148,9 +190,7 @@ public final class NetworktemplateAclPolicyArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param srcTags ACL Policy Source Tags:
-         *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-         *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+         * @param srcTags Source ACL tags that select traffic for this ACL policy
          * 
          * @return builder
          * 
@@ -160,9 +200,7 @@ public final class NetworktemplateAclPolicyArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param srcTags ACL Policy Source Tags:
-         *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-         *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+         * @param srcTags Source ACL tags that select traffic for this ACL policy
          * 
          * @return builder
          * 

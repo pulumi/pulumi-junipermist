@@ -5,6 +5,7 @@ package com.pulumi.junipermist.site.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.junipermist.site.inputs.WebhookRuleArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -31,6 +32,21 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<String>>> assetfilterIds() {
         return Optional.ofNullable(this.assetfilterIds);
+    }
+
+    /**
+     * Default action applied when none of the `rules` match the incoming event
+     * 
+     */
+    @Import(name="defaultAction")
+    private @Nullable Output<String> defaultAction;
+
+    /**
+     * @return Default action applied when none of the `rules` match the incoming event
+     * 
+     */
+    public Optional<Output<String>> defaultAction() {
+        return Optional.ofNullable(this.defaultAction);
     }
 
     /**
@@ -199,6 +215,21 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Optional filtering rules to override `topics`. Each rule permits or blocks events for a topic, optionally based on event payload matching criteria
+     * 
+     */
+    @Import(name="rules")
+    private @Nullable Output<List<WebhookRuleArgs>> rules;
+
+    /**
+     * @return Optional filtering rules to override `topics`. Each rule permits or blocks events for a topic, optionally based on event payload matching criteria
+     * 
+     */
+    public Optional<Output<List<WebhookRuleArgs>>> rules() {
+        return Optional.ofNullable(this.rules);
+    }
+
+    /**
      * Only if `type`=`http-post`
      * 
      */
@@ -322,6 +353,7 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
 
     private WebhookState(WebhookState $) {
         this.assetfilterIds = $.assetfilterIds;
+        this.defaultAction = $.defaultAction;
         this.enabled = $.enabled;
         this.headers = $.headers;
         this.name = $.name;
@@ -333,6 +365,7 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
         this.oauth2TokenUrl = $.oauth2TokenUrl;
         this.oauth2Username = $.oauth2Username;
         this.orgId = $.orgId;
+        this.rules = $.rules;
         this.secret = $.secret;
         this.singleEventPerMessage = $.singleEventPerMessage;
         this.siteId = $.siteId;
@@ -390,6 +423,27 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder assetfilterIds(String... assetfilterIds) {
             return assetfilterIds(List.of(assetfilterIds));
+        }
+
+        /**
+         * @param defaultAction Default action applied when none of the `rules` match the incoming event
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultAction(@Nullable Output<String> defaultAction) {
+            $.defaultAction = defaultAction;
+            return this;
+        }
+
+        /**
+         * @param defaultAction Default action applied when none of the `rules` match the incoming event
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultAction(String defaultAction) {
+            return defaultAction(Output.of(defaultAction));
         }
 
         /**
@@ -631,6 +685,37 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
+        }
+
+        /**
+         * @param rules Optional filtering rules to override `topics`. Each rule permits or blocks events for a topic, optionally based on event payload matching criteria
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rules(@Nullable Output<List<WebhookRuleArgs>> rules) {
+            $.rules = rules;
+            return this;
+        }
+
+        /**
+         * @param rules Optional filtering rules to override `topics`. Each rule permits or blocks events for a topic, optionally based on event payload matching criteria
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rules(List<WebhookRuleArgs> rules) {
+            return rules(Output.of(rules));
+        }
+
+        /**
+         * @param rules Optional filtering rules to override `topics`. Each rule permits or blocks events for a topic, optionally based on event payload matching criteria
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rules(WebhookRuleArgs... rules) {
+            return rules(List.of(rules));
         }
 
         /**

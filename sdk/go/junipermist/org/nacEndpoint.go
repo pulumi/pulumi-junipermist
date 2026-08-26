@@ -77,6 +77,8 @@ type NacEndpoint struct {
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// RADIUS group associated with this user MAC entry
 	RadiusGroup pulumi.StringOutput `pulumi:"radiusGroup"`
+	// Optional list of site IDs this user MAC entry is scoped to
+	SiteIds pulumi.StringArrayOutput `pulumi:"siteIds"`
 	// Network VLAN value associated with this user MAC entry
 	Vlan pulumi.StringOutput `pulumi:"vlan"`
 }
@@ -128,6 +130,8 @@ type nacEndpointState struct {
 	OrgId *string `pulumi:"orgId"`
 	// RADIUS group associated with this user MAC entry
 	RadiusGroup *string `pulumi:"radiusGroup"`
+	// Optional list of site IDs this user MAC entry is scoped to
+	SiteIds []string `pulumi:"siteIds"`
 	// Network VLAN value associated with this user MAC entry
 	Vlan *string `pulumi:"vlan"`
 }
@@ -144,6 +148,8 @@ type NacEndpointState struct {
 	OrgId pulumi.StringPtrInput
 	// RADIUS group associated with this user MAC entry
 	RadiusGroup pulumi.StringPtrInput
+	// Optional list of site IDs this user MAC entry is scoped to
+	SiteIds pulumi.StringArrayInput
 	// Network VLAN value associated with this user MAC entry
 	Vlan pulumi.StringPtrInput
 }
@@ -164,6 +170,8 @@ type nacEndpointArgs struct {
 	OrgId string  `pulumi:"orgId"`
 	// RADIUS group associated with this user MAC entry
 	RadiusGroup *string `pulumi:"radiusGroup"`
+	// Optional list of site IDs this user MAC entry is scoped to
+	SiteIds []string `pulumi:"siteIds"`
 	// Network VLAN value associated with this user MAC entry
 	Vlan *string `pulumi:"vlan"`
 }
@@ -181,6 +189,8 @@ type NacEndpointArgs struct {
 	OrgId pulumi.StringInput
 	// RADIUS group associated with this user MAC entry
 	RadiusGroup pulumi.StringPtrInput
+	// Optional list of site IDs this user MAC entry is scoped to
+	SiteIds pulumi.StringArrayInput
 	// Network VLAN value associated with this user MAC entry
 	Vlan pulumi.StringPtrInput
 }
@@ -299,6 +309,11 @@ func (o NacEndpointOutput) OrgId() pulumi.StringOutput {
 // RADIUS group associated with this user MAC entry
 func (o NacEndpointOutput) RadiusGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v *NacEndpoint) pulumi.StringOutput { return v.RadiusGroup }).(pulumi.StringOutput)
+}
+
+// Optional list of site IDs this user MAC entry is scoped to
+func (o NacEndpointOutput) SiteIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NacEndpoint) pulumi.StringArrayOutput { return v.SiteIds }).(pulumi.StringArrayOutput)
 }
 
 // Network VLAN value associated with this user MAC entry

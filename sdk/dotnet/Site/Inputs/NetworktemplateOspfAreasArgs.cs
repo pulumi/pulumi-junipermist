@@ -12,11 +12,18 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class NetworktemplateOspfAreasArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether loopback interfaces are included in this OSPF area
+        /// </summary>
         [Input("includeLoopback")]
         public Input<bool>? IncludeLoopback { get; set; }
 
         [Input("networks", required: true)]
         private InputMap<Inputs.NetworktemplateOspfAreasNetworksArgs>? _networks;
+
+        /// <summary>
+        /// OSPF network settings keyed by network name
+        /// </summary>
         public InputMap<Inputs.NetworktemplateOspfAreasNetworksArgs> Networks
         {
             get => _networks ?? (_networks = new InputMap<Inputs.NetworktemplateOspfAreasNetworksArgs>());
@@ -24,7 +31,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// OSPF type. enum: `Default`, `Nssa`, `Stub`
+        /// Area type for this OSPF area
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -160,6 +160,21 @@ public final class RftemplateArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether U-NII-4 channels (169, 173, 177) are enabled
+     * 
+     */
+    @Import(name="enableUnii4")
+    private @Nullable Output<Boolean> enableUnii4;
+
+    /**
+     * @return Whether U-NII-4 channels (169, 173, 177) are enabled
+     * 
+     */
+    public Optional<Output<Boolean>> enableUnii4() {
+        return Optional.ofNullable(this.enableUnii4);
+    }
+
+    /**
      * overwrites for a specific model. If a band is specified, it will shadow the default. Property key is the model name (e.g. &#34;AP63&#34;)
      * 
      */
@@ -231,6 +246,7 @@ public final class RftemplateArgs extends com.pulumi.resources.ResourceArgs {
         this.band5On24Radio = $.band5On24Radio;
         this.band6 = $.band6;
         this.countryCode = $.countryCode;
+        this.enableUnii4 = $.enableUnii4;
         this.modelSpecific = $.modelSpecific;
         this.name = $.name;
         this.orgId = $.orgId;
@@ -442,6 +458,27 @@ public final class RftemplateArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder countryCode(String countryCode) {
             return countryCode(Output.of(countryCode));
+        }
+
+        /**
+         * @param enableUnii4 Whether U-NII-4 channels (169, 173, 177) are enabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableUnii4(@Nullable Output<Boolean> enableUnii4) {
+            $.enableUnii4 = enableUnii4;
+            return this;
+        }
+
+        /**
+         * @param enableUnii4 Whether U-NII-4 channels (169, 173, 177) are enabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableUnii4(Boolean enableUnii4) {
+            return enableUnii4(Output.of(enableUnii4));
         }
 
         /**

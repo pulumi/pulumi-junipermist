@@ -5,6 +5,7 @@ package com.pulumi.junipermist.org.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayPortConfigWanProbeOverrideHttpArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -15,6 +16,36 @@ import javax.annotation.Nullable;
 public final class DeviceprofileGatewayPortConfigWanProbeOverrideArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DeviceprofileGatewayPortConfigWanProbeOverrideArgs Empty = new DeviceprofileGatewayPortConfigWanProbeOverrideArgs();
+
+    /**
+     * List of hostnames used as probe destinations; applicable for both IPv4 and IPv6
+     * 
+     */
+    @Import(name="hostnames")
+    private @Nullable Output<List<String>> hostnames;
+
+    /**
+     * @return List of hostnames used as probe destinations; applicable for both IPv4 and IPv6
+     * 
+     */
+    public Optional<Output<List<String>>> hostnames() {
+        return Optional.ofNullable(this.hostnames);
+    }
+
+    /**
+     * HTTP probe settings; success from any ICMP or HTTP probe indicates the WAN is up
+     * 
+     */
+    @Import(name="http")
+    private @Nullable Output<DeviceprofileGatewayPortConfigWanProbeOverrideHttpArgs> http;
+
+    /**
+     * @return HTTP probe settings; success from any ICMP or HTTP probe indicates the WAN is up
+     * 
+     */
+    public Optional<Output<DeviceprofileGatewayPortConfigWanProbeOverrideHttpArgs>> http() {
+        return Optional.ofNullable(this.http);
+    }
 
     /**
      * List of IPv6 probe host addresses used by this WAN override
@@ -64,6 +95,8 @@ public final class DeviceprofileGatewayPortConfigWanProbeOverrideArgs extends co
     private DeviceprofileGatewayPortConfigWanProbeOverrideArgs() {}
 
     private DeviceprofileGatewayPortConfigWanProbeOverrideArgs(DeviceprofileGatewayPortConfigWanProbeOverrideArgs $) {
+        this.hostnames = $.hostnames;
+        this.http = $.http;
         this.ip6s = $.ip6s;
         this.ips = $.ips;
         this.probeProfile = $.probeProfile;
@@ -85,6 +118,58 @@ public final class DeviceprofileGatewayPortConfigWanProbeOverrideArgs extends co
 
         public Builder(DeviceprofileGatewayPortConfigWanProbeOverrideArgs defaults) {
             $ = new DeviceprofileGatewayPortConfigWanProbeOverrideArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param hostnames List of hostnames used as probe destinations; applicable for both IPv4 and IPv6
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostnames(@Nullable Output<List<String>> hostnames) {
+            $.hostnames = hostnames;
+            return this;
+        }
+
+        /**
+         * @param hostnames List of hostnames used as probe destinations; applicable for both IPv4 and IPv6
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostnames(List<String> hostnames) {
+            return hostnames(Output.of(hostnames));
+        }
+
+        /**
+         * @param hostnames List of hostnames used as probe destinations; applicable for both IPv4 and IPv6
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostnames(String... hostnames) {
+            return hostnames(List.of(hostnames));
+        }
+
+        /**
+         * @param http HTTP probe settings; success from any ICMP or HTTP probe indicates the WAN is up
+         * 
+         * @return builder
+         * 
+         */
+        public Builder http(@Nullable Output<DeviceprofileGatewayPortConfigWanProbeOverrideHttpArgs> http) {
+            $.http = http;
+            return this;
+        }
+
+        /**
+         * @param http HTTP probe settings; success from any ICMP or HTTP probe indicates the WAN is up
+         * 
+         * @return builder
+         * 
+         */
+        public Builder http(DeviceprofileGatewayPortConfigWanProbeOverrideHttpArgs http) {
+            return http(Output.of(http));
         }
 
         /**

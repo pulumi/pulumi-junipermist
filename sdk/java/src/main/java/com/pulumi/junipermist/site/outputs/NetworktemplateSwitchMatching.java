@@ -13,6 +13,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NetworktemplateSwitchMatching {
+    /**
+     * @return Whether custom switch matching rules are enabled
+     * 
+     */
     private @Nullable Boolean enable;
     /**
      * @return list of rules to define custom switch configuration based on different criteria. Each list must have at least one of `matchModel`, `matchName` or `matchRole` must be defined
@@ -21,6 +25,10 @@ public final class NetworktemplateSwitchMatching {
     private @Nullable List<NetworktemplateSwitchMatchingRule> rules;
 
     private NetworktemplateSwitchMatching() {}
+    /**
+     * @return Whether custom switch matching rules are enabled
+     * 
+     */
     public Optional<Boolean> enable() {
         return Optional.ofNullable(this.enable);
     }

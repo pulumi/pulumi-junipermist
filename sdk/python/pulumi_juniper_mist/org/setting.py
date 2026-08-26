@@ -26,6 +26,7 @@ class SettingArgs:
                  api_policy: pulumi.Input[Optional['SettingApiPolicyArgs']] = None,
                  auto_upgrade: pulumi.Input[Optional['SettingAutoUpgradeArgs']] = None,
                  cacerts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cacerts_configs: pulumi.Input[Optional[Sequence[pulumi.Input['SettingCacertsConfigArgs']]]] = None,
                  celona: pulumi.Input[Optional['SettingCelonaArgs']] = None,
                  cloudshark: pulumi.Input[Optional['SettingCloudsharkArgs']] = None,
                  device_cert: pulumi.Input[Optional['SettingDeviceCertArgs']] = None,
@@ -64,7 +65,8 @@ class SettingArgs:
         :param pulumi.Input[_builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
         :param pulumi.Input['SettingApiPolicyArgs'] api_policy: Policy for hiding API secrets and passwords in responses
         :param pulumi.Input['SettingAutoUpgradeArgs'] auto_upgrade: AP automatic firmware upgrade policy for the organization
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cacerts: CA certificates used by organization-level RADIUS and RADSec settings
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cacerts: Legacy CA certificate list used to verify client certificates. If `cacerts_configs` is provided and non-empty, this field is ignored.
+        :param pulumi.Input[Sequence[pulumi.Input['SettingCacertsConfigArgs']]] cacerts_configs: Preferred per-issuer CA certificate configuration with optional OCSP and CRL settings. When provided and non-empty, `cacerts` is ignored.
         :param pulumi.Input['SettingCelonaArgs'] celona: Integration settings for Celona
         :param pulumi.Input['SettingCloudsharkArgs'] cloudshark: Packet capture integration settings for CloudShark
         :param pulumi.Input['SettingDeviceCertArgs'] device_cert: Common device certificate used by organization settings
@@ -108,6 +110,8 @@ class SettingArgs:
             pulumi.set(__self__, "auto_upgrade", auto_upgrade)
         if cacerts is not None:
             pulumi.set(__self__, "cacerts", cacerts)
+        if cacerts_configs is not None:
+            pulumi.set(__self__, "cacerts_configs", cacerts_configs)
         if celona is not None:
             pulumi.set(__self__, "celona", celona)
         if cloudshark is not None:
@@ -223,13 +227,25 @@ class SettingArgs:
     @pulumi.getter
     def cacerts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        CA certificates used by organization-level RADIUS and RADSec settings
+        Legacy CA certificate list used to verify client certificates. If `cacerts_configs` is provided and non-empty, this field is ignored.
         """
         return pulumi.get(self, "cacerts")
 
     @cacerts.setter
     def cacerts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "cacerts", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cacertsConfigs")
+    def cacerts_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SettingCacertsConfigArgs']]]]:
+        """
+        Preferred per-issuer CA certificate configuration with optional OCSP and CRL settings. When provided and non-empty, `cacerts` is ignored.
+        """
+        return pulumi.get(self, "cacerts_configs")
+
+    @cacerts_configs.setter
+    def cacerts_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SettingCacertsConfigArgs']]]]):
+        pulumi.set(self, "cacerts_configs", value)
 
     @_builtins.property
     @pulumi.getter
@@ -614,9 +630,9 @@ class _SettingState:
                  api_policy: pulumi.Input[Optional['SettingApiPolicyArgs']] = None,
                  auto_upgrade: pulumi.Input[Optional['SettingAutoUpgradeArgs']] = None,
                  cacerts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cacerts_configs: pulumi.Input[Optional[Sequence[pulumi.Input['SettingCacertsConfigArgs']]]] = None,
                  celona: pulumi.Input[Optional['SettingCelonaArgs']] = None,
                  cloudshark: pulumi.Input[Optional['SettingCloudsharkArgs']] = None,
-                 cradlepoint: pulumi.Input[Optional['SettingCradlepointArgs']] = None,
                  device_cert: pulumi.Input[Optional['SettingDeviceCertArgs']] = None,
                  device_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  disable_pcap: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -656,10 +672,10 @@ class _SettingState:
         :param pulumi.Input[_builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
         :param pulumi.Input['SettingApiPolicyArgs'] api_policy: Policy for hiding API secrets and passwords in responses
         :param pulumi.Input['SettingAutoUpgradeArgs'] auto_upgrade: AP automatic firmware upgrade policy for the organization
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cacerts: CA certificates used by organization-level RADIUS and RADSec settings
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cacerts: Legacy CA certificate list used to verify client certificates. If `cacerts_configs` is provided and non-empty, this field is ignored.
+        :param pulumi.Input[Sequence[pulumi.Input['SettingCacertsConfigArgs']]] cacerts_configs: Preferred per-issuer CA certificate configuration with optional OCSP and CRL settings. When provided and non-empty, `cacerts` is ignored.
         :param pulumi.Input['SettingCelonaArgs'] celona: Integration settings for Celona
         :param pulumi.Input['SettingCloudsharkArgs'] cloudshark: Packet capture integration settings for CloudShark
-        :param pulumi.Input['SettingCradlepointArgs'] cradlepoint: Integration settings for Cradlepoint devices
         :param pulumi.Input['SettingDeviceCertArgs'] device_cert: Common device certificate used by organization settings
         :param pulumi.Input[_builtins.int] device_updown_threshold: Enable threshold-based device down delivery via
                  * device-updowns webhooks topic, 
@@ -705,12 +721,12 @@ class _SettingState:
             pulumi.set(__self__, "auto_upgrade", auto_upgrade)
         if cacerts is not None:
             pulumi.set(__self__, "cacerts", cacerts)
+        if cacerts_configs is not None:
+            pulumi.set(__self__, "cacerts_configs", cacerts_configs)
         if celona is not None:
             pulumi.set(__self__, "celona", celona)
         if cloudshark is not None:
             pulumi.set(__self__, "cloudshark", cloudshark)
-        if cradlepoint is not None:
-            pulumi.set(__self__, "cradlepoint", cradlepoint)
         if device_cert is not None:
             pulumi.set(__self__, "device_cert", device_cert)
         if device_updown_threshold is not None:
@@ -828,13 +844,25 @@ class _SettingState:
     @pulumi.getter
     def cacerts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        CA certificates used by organization-level RADIUS and RADSec settings
+        Legacy CA certificate list used to verify client certificates. If `cacerts_configs` is provided and non-empty, this field is ignored.
         """
         return pulumi.get(self, "cacerts")
 
     @cacerts.setter
     def cacerts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "cacerts", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cacertsConfigs")
+    def cacerts_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SettingCacertsConfigArgs']]]]:
+        """
+        Preferred per-issuer CA certificate configuration with optional OCSP and CRL settings. When provided and non-empty, `cacerts` is ignored.
+        """
+        return pulumi.get(self, "cacerts_configs")
+
+    @cacerts_configs.setter
+    def cacerts_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SettingCacertsConfigArgs']]]]):
+        pulumi.set(self, "cacerts_configs", value)
 
     @_builtins.property
     @pulumi.getter
@@ -859,18 +887,6 @@ class _SettingState:
     @cloudshark.setter
     def cloudshark(self, value: pulumi.Input[Optional['SettingCloudsharkArgs']]):
         pulumi.set(self, "cloudshark", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def cradlepoint(self) -> pulumi.Input[Optional['SettingCradlepointArgs']]:
-        """
-        Integration settings for Cradlepoint devices
-        """
-        return pulumi.get(self, "cradlepoint")
-
-    @cradlepoint.setter
-    def cradlepoint(self, value: pulumi.Input[Optional['SettingCradlepointArgs']]):
-        pulumi.set(self, "cradlepoint", value)
 
     @_builtins.property
     @pulumi.getter(name="deviceCert")
@@ -1269,6 +1285,7 @@ class Setting(pulumi.CustomResource):
                  api_policy: pulumi.Input[Optional[Union['SettingApiPolicyArgs', 'SettingApiPolicyArgsDict']]] = None,
                  auto_upgrade: pulumi.Input[Optional[Union['SettingAutoUpgradeArgs', 'SettingAutoUpgradeArgsDict']]] = None,
                  cacerts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cacerts_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SettingCacertsConfigArgs', 'SettingCacertsConfigArgsDict']]]]] = None,
                  celona: pulumi.Input[Optional[Union['SettingCelonaArgs', 'SettingCelonaArgsDict']]] = None,
                  cloudshark: pulumi.Input[Optional[Union['SettingCloudsharkArgs', 'SettingCloudsharkArgsDict']]] = None,
                  device_cert: pulumi.Input[Optional[Union['SettingDeviceCertArgs', 'SettingDeviceCertArgsDict']]] = None,
@@ -1380,7 +1397,8 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
         :param pulumi.Input[Union['SettingApiPolicyArgs', 'SettingApiPolicyArgsDict']] api_policy: Policy for hiding API secrets and passwords in responses
         :param pulumi.Input[Union['SettingAutoUpgradeArgs', 'SettingAutoUpgradeArgsDict']] auto_upgrade: AP automatic firmware upgrade policy for the organization
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cacerts: CA certificates used by organization-level RADIUS and RADSec settings
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cacerts: Legacy CA certificate list used to verify client certificates. If `cacerts_configs` is provided and non-empty, this field is ignored.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SettingCacertsConfigArgs', 'SettingCacertsConfigArgsDict']]]] cacerts_configs: Preferred per-issuer CA certificate configuration with optional OCSP and CRL settings. When provided and non-empty, `cacerts` is ignored.
         :param pulumi.Input[Union['SettingCelonaArgs', 'SettingCelonaArgsDict']] celona: Integration settings for Celona
         :param pulumi.Input[Union['SettingCloudsharkArgs', 'SettingCloudsharkArgsDict']] cloudshark: Packet capture integration settings for CloudShark
         :param pulumi.Input[Union['SettingDeviceCertArgs', 'SettingDeviceCertArgsDict']] device_cert: Common device certificate used by organization settings
@@ -1514,6 +1532,7 @@ class Setting(pulumi.CustomResource):
                  api_policy: pulumi.Input[Optional[Union['SettingApiPolicyArgs', 'SettingApiPolicyArgsDict']]] = None,
                  auto_upgrade: pulumi.Input[Optional[Union['SettingAutoUpgradeArgs', 'SettingAutoUpgradeArgsDict']]] = None,
                  cacerts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cacerts_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SettingCacertsConfigArgs', 'SettingCacertsConfigArgsDict']]]]] = None,
                  celona: pulumi.Input[Optional[Union['SettingCelonaArgs', 'SettingCelonaArgsDict']]] = None,
                  cloudshark: pulumi.Input[Optional[Union['SettingCloudsharkArgs', 'SettingCloudsharkArgsDict']]] = None,
                  device_cert: pulumi.Input[Optional[Union['SettingDeviceCertArgs', 'SettingDeviceCertArgsDict']]] = None,
@@ -1559,6 +1578,7 @@ class Setting(pulumi.CustomResource):
             __props__.__dict__["api_policy"] = api_policy
             __props__.__dict__["auto_upgrade"] = auto_upgrade
             __props__.__dict__["cacerts"] = cacerts
+            __props__.__dict__["cacerts_configs"] = cacerts_configs
             __props__.__dict__["celona"] = celona
             __props__.__dict__["cloudshark"] = cloudshark
             __props__.__dict__["device_cert"] = device_cert
@@ -1594,7 +1614,6 @@ class Setting(pulumi.CustomResource):
             __props__.__dict__["wired_pma"] = wired_pma
             __props__.__dict__["wireless_pma"] = wireless_pma
             __props__.__dict__["allow_mist"] = None
-            __props__.__dict__["cradlepoint"] = None
             __props__.__dict__["juniper"] = None
             __props__.__dict__["pcap"] = None
         super(Setting, __self__).__init__(
@@ -1612,9 +1631,9 @@ class Setting(pulumi.CustomResource):
             api_policy: pulumi.Input[Optional[Union['SettingApiPolicyArgs', 'SettingApiPolicyArgsDict']]] = None,
             auto_upgrade: pulumi.Input[Optional[Union['SettingAutoUpgradeArgs', 'SettingAutoUpgradeArgsDict']]] = None,
             cacerts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            cacerts_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SettingCacertsConfigArgs', 'SettingCacertsConfigArgsDict']]]]] = None,
             celona: pulumi.Input[Optional[Union['SettingCelonaArgs', 'SettingCelonaArgsDict']]] = None,
             cloudshark: pulumi.Input[Optional[Union['SettingCloudsharkArgs', 'SettingCloudsharkArgsDict']]] = None,
-            cradlepoint: pulumi.Input[Optional[Union['SettingCradlepointArgs', 'SettingCradlepointArgsDict']]] = None,
             device_cert: pulumi.Input[Optional[Union['SettingDeviceCertArgs', 'SettingDeviceCertArgsDict']]] = None,
             device_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
             disable_pcap: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1658,10 +1677,10 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
         :param pulumi.Input[Union['SettingApiPolicyArgs', 'SettingApiPolicyArgsDict']] api_policy: Policy for hiding API secrets and passwords in responses
         :param pulumi.Input[Union['SettingAutoUpgradeArgs', 'SettingAutoUpgradeArgsDict']] auto_upgrade: AP automatic firmware upgrade policy for the organization
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cacerts: CA certificates used by organization-level RADIUS and RADSec settings
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cacerts: Legacy CA certificate list used to verify client certificates. If `cacerts_configs` is provided and non-empty, this field is ignored.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SettingCacertsConfigArgs', 'SettingCacertsConfigArgsDict']]]] cacerts_configs: Preferred per-issuer CA certificate configuration with optional OCSP and CRL settings. When provided and non-empty, `cacerts` is ignored.
         :param pulumi.Input[Union['SettingCelonaArgs', 'SettingCelonaArgsDict']] celona: Integration settings for Celona
         :param pulumi.Input[Union['SettingCloudsharkArgs', 'SettingCloudsharkArgsDict']] cloudshark: Packet capture integration settings for CloudShark
-        :param pulumi.Input[Union['SettingCradlepointArgs', 'SettingCradlepointArgsDict']] cradlepoint: Integration settings for Cradlepoint devices
         :param pulumi.Input[Union['SettingDeviceCertArgs', 'SettingDeviceCertArgsDict']] device_cert: Common device certificate used by organization settings
         :param pulumi.Input[_builtins.int] device_updown_threshold: Enable threshold-based device down delivery via
                  * device-updowns webhooks topic, 
@@ -1706,9 +1725,9 @@ class Setting(pulumi.CustomResource):
         __props__.__dict__["api_policy"] = api_policy
         __props__.__dict__["auto_upgrade"] = auto_upgrade
         __props__.__dict__["cacerts"] = cacerts
+        __props__.__dict__["cacerts_configs"] = cacerts_configs
         __props__.__dict__["celona"] = celona
         __props__.__dict__["cloudshark"] = cloudshark
-        __props__.__dict__["cradlepoint"] = cradlepoint
         __props__.__dict__["device_cert"] = device_cert
         __props__.__dict__["device_updown_threshold"] = device_updown_threshold
         __props__.__dict__["disable_pcap"] = disable_pcap
@@ -1779,9 +1798,17 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter
     def cacerts(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        CA certificates used by organization-level RADIUS and RADSec settings
+        Legacy CA certificate list used to verify client certificates. If `cacerts_configs` is provided and non-empty, this field is ignored.
         """
         return pulumi.get(self, "cacerts")
+
+    @_builtins.property
+    @pulumi.getter(name="cacertsConfigs")
+    def cacerts_configs(self) -> pulumi.Output[Optional[Sequence['outputs.SettingCacertsConfig']]]:
+        """
+        Preferred per-issuer CA certificate configuration with optional OCSP and CRL settings. When provided and non-empty, `cacerts` is ignored.
+        """
+        return pulumi.get(self, "cacerts_configs")
 
     @_builtins.property
     @pulumi.getter
@@ -1798,14 +1825,6 @@ class Setting(pulumi.CustomResource):
         Packet capture integration settings for CloudShark
         """
         return pulumi.get(self, "cloudshark")
-
-    @_builtins.property
-    @pulumi.getter
-    def cradlepoint(self) -> pulumi.Output['outputs.SettingCradlepoint']:
-        """
-        Integration settings for Cradlepoint devices
-        """
-        return pulumi.get(self, "cradlepoint")
 
     @_builtins.property
     @pulumi.getter(name="deviceCert")

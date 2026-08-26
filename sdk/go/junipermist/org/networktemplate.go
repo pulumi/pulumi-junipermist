@@ -138,6 +138,8 @@ type Networktemplate struct {
 	ExtraRoutes6 NetworktemplateExtraRoutes6MapOutput `pulumi:"extraRoutes6"`
 	// Mist NAC defaults applied by this network template
 	MistNac NetworktemplateMistNacPtrOutput `pulumi:"mistNac"`
+	// Multicast settings for networks in the master VRF (not assigned to any vrf_instances); PIM is automatically enabled when any master-VRF network has `multicast.enabled`==`true`
+	MulticastConfig NetworktemplateMulticastConfigPtrOutput `pulumi:"multicastConfig"`
 	// Display name of the network template
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Layer 3 networks configured by this network template
@@ -225,6 +227,8 @@ type networktemplateState struct {
 	ExtraRoutes6 map[string]NetworktemplateExtraRoutes6 `pulumi:"extraRoutes6"`
 	// Mist NAC defaults applied by this network template
 	MistNac *NetworktemplateMistNac `pulumi:"mistNac"`
+	// Multicast settings for networks in the master VRF (not assigned to any vrf_instances); PIM is automatically enabled when any master-VRF network has `multicast.enabled`==`true`
+	MulticastConfig *NetworktemplateMulticastConfig `pulumi:"multicastConfig"`
 	// Display name of the network template
 	Name *string `pulumi:"name"`
 	// Layer 3 networks configured by this network template
@@ -280,6 +284,8 @@ type NetworktemplateState struct {
 	ExtraRoutes6 NetworktemplateExtraRoutes6MapInput
 	// Mist NAC defaults applied by this network template
 	MistNac NetworktemplateMistNacPtrInput
+	// Multicast settings for networks in the master VRF (not assigned to any vrf_instances); PIM is automatically enabled when any master-VRF network has `multicast.enabled`==`true`
+	MulticastConfig NetworktemplateMulticastConfigPtrInput
 	// Display name of the network template
 	Name pulumi.StringPtrInput
 	// Layer 3 networks configured by this network template
@@ -339,6 +345,8 @@ type networktemplateArgs struct {
 	ExtraRoutes6 map[string]NetworktemplateExtraRoutes6 `pulumi:"extraRoutes6"`
 	// Mist NAC defaults applied by this network template
 	MistNac *NetworktemplateMistNac `pulumi:"mistNac"`
+	// Multicast settings for networks in the master VRF (not assigned to any vrf_instances); PIM is automatically enabled when any master-VRF network has `multicast.enabled`==`true`
+	MulticastConfig *NetworktemplateMulticastConfig `pulumi:"multicastConfig"`
 	// Display name of the network template
 	Name *string `pulumi:"name"`
 	// Layer 3 networks configured by this network template
@@ -395,6 +403,8 @@ type NetworktemplateArgs struct {
 	ExtraRoutes6 NetworktemplateExtraRoutes6MapInput
 	// Mist NAC defaults applied by this network template
 	MistNac NetworktemplateMistNacPtrInput
+	// Multicast settings for networks in the master VRF (not assigned to any vrf_instances); PIM is automatically enabled when any master-VRF network has `multicast.enabled`==`true`
+	MulticastConfig NetworktemplateMulticastConfigPtrInput
 	// Display name of the network template
 	Name pulumi.StringPtrInput
 	// Layer 3 networks configured by this network template
@@ -564,6 +574,11 @@ func (o NetworktemplateOutput) ExtraRoutes6() NetworktemplateExtraRoutes6MapOutp
 // Mist NAC defaults applied by this network template
 func (o NetworktemplateOutput) MistNac() NetworktemplateMistNacPtrOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateMistNacPtrOutput { return v.MistNac }).(NetworktemplateMistNacPtrOutput)
+}
+
+// Multicast settings for networks in the master VRF (not assigned to any vrf_instances); PIM is automatically enabled when any master-VRF network has `multicast.enabled`==`true`
+func (o NetworktemplateOutput) MulticastConfig() NetworktemplateMulticastConfigPtrOutput {
+	return o.ApplyT(func(v *Networktemplate) NetworktemplateMulticastConfigPtrOutput { return v.MulticastConfig }).(NetworktemplateMulticastConfigPtrOutput)
 }
 
 // Display name of the network template

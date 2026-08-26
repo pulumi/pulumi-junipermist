@@ -95,8 +95,10 @@ type Psk struct {
 	Role pulumi.StringPtrOutput `pulumi:"role"`
 	// WLAN SSID where this PSK can be used
 	Ssid pulumi.StringOutput `pulumi:"ssid"`
-	// Binding mode for this PSK, enum: `macs`, `multi`, `single`
+	// Binding mode for this PSK, enum: `macs`, `multi`, `single`, `usermacLabels`
 	Usage pulumi.StringOutput `pulumi:"usage"`
+	// Usermac labels allowed when `usage`==`usermacLabels`; this list is capped at 100 entries
+	UsermacLabels pulumi.StringArrayOutput `pulumi:"usermacLabels"`
 	// VLAN ID returned for clients using this PSK
 	VlanId pulumi.StringPtrOutput `pulumi:"vlanId"`
 	// VLAN name to be assigned. Optional, `vlanId` takes precedence if both are provided
@@ -183,8 +185,10 @@ type pskState struct {
 	Role *string `pulumi:"role"`
 	// WLAN SSID where this PSK can be used
 	Ssid *string `pulumi:"ssid"`
-	// Binding mode for this PSK, enum: `macs`, `multi`, `single`
+	// Binding mode for this PSK, enum: `macs`, `multi`, `single`, `usermacLabels`
 	Usage *string `pulumi:"usage"`
+	// Usermac labels allowed when `usage`==`usermacLabels`; this list is capped at 100 entries
+	UsermacLabels []string `pulumi:"usermacLabels"`
 	// VLAN ID returned for clients using this PSK
 	VlanId *string `pulumi:"vlanId"`
 	// VLAN name to be assigned. Optional, `vlanId` takes precedence if both are provided
@@ -222,8 +226,10 @@ type PskState struct {
 	Role pulumi.StringPtrInput
 	// WLAN SSID where this PSK can be used
 	Ssid pulumi.StringPtrInput
-	// Binding mode for this PSK, enum: `macs`, `multi`, `single`
+	// Binding mode for this PSK, enum: `macs`, `multi`, `single`, `usermacLabels`
 	Usage pulumi.StringPtrInput
+	// Usermac labels allowed when `usage`==`usermacLabels`; this list is capped at 100 entries
+	UsermacLabels pulumi.StringArrayInput
 	// VLAN ID returned for clients using this PSK
 	VlanId pulumi.StringPtrInput
 	// VLAN name to be assigned. Optional, `vlanId` takes precedence if both are provided
@@ -265,8 +271,10 @@ type pskArgs struct {
 	Role *string `pulumi:"role"`
 	// WLAN SSID where this PSK can be used
 	Ssid string `pulumi:"ssid"`
-	// Binding mode for this PSK, enum: `macs`, `multi`, `single`
+	// Binding mode for this PSK, enum: `macs`, `multi`, `single`, `usermacLabels`
 	Usage *string `pulumi:"usage"`
+	// Usermac labels allowed when `usage`==`usermacLabels`; this list is capped at 100 entries
+	UsermacLabels []string `pulumi:"usermacLabels"`
 	// VLAN ID returned for clients using this PSK
 	VlanId *string `pulumi:"vlanId"`
 	// VLAN name to be assigned. Optional, `vlanId` takes precedence if both are provided
@@ -305,8 +313,10 @@ type PskArgs struct {
 	Role pulumi.StringPtrInput
 	// WLAN SSID where this PSK can be used
 	Ssid pulumi.StringInput
-	// Binding mode for this PSK, enum: `macs`, `multi`, `single`
+	// Binding mode for this PSK, enum: `macs`, `multi`, `single`, `usermacLabels`
 	Usage pulumi.StringPtrInput
+	// Usermac labels allowed when `usage`==`usermacLabels`; this list is capped at 100 entries
+	UsermacLabels pulumi.StringArrayInput
 	// VLAN ID returned for clients using this PSK
 	VlanId pulumi.StringPtrInput
 	// VLAN name to be assigned. Optional, `vlanId` takes precedence if both are provided
@@ -475,9 +485,14 @@ func (o PskOutput) Ssid() pulumi.StringOutput {
 	return o.ApplyT(func(v *Psk) pulumi.StringOutput { return v.Ssid }).(pulumi.StringOutput)
 }
 
-// Binding mode for this PSK, enum: `macs`, `multi`, `single`
+// Binding mode for this PSK, enum: `macs`, `multi`, `single`, `usermacLabels`
 func (o PskOutput) Usage() pulumi.StringOutput {
 	return o.ApplyT(func(v *Psk) pulumi.StringOutput { return v.Usage }).(pulumi.StringOutput)
+}
+
+// Usermac labels allowed when `usage`==`usermacLabels`; this list is capped at 100 entries
+func (o PskOutput) UsermacLabels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Psk) pulumi.StringArrayOutput { return v.UsermacLabels }).(pulumi.StringArrayOutput)
 }
 
 // VLAN ID returned for clients using this PSK

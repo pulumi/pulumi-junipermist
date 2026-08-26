@@ -5,6 +5,7 @@ package com.pulumi.junipermist.site.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.junipermist.site.outputs.NetworktemplateAclPolicyAction;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -14,38 +15,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworktemplateAclPolicy {
     /**
-     * @return ACL Policy Actions:
-     *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-     *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+     * @return Destination tag actions evaluated for sources matching this ACL policy
      * 
      */
     private @Nullable List<NetworktemplateAclPolicyAction> actions;
+    /**
+     * @return Whether this ACL policy is disabled
+     * 
+     */
+    private @Nullable Boolean disabled;
+    /**
+     * @return Display name of the ACL policy
+     * 
+     */
     private @Nullable String name;
     /**
-     * @return ACL Policy Source Tags:
-     *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-     *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+     * @return Source ACL tags that select traffic for this ACL policy
      * 
      */
     private @Nullable List<String> srcTags;
 
     private NetworktemplateAclPolicy() {}
     /**
-     * @return ACL Policy Actions:
-     *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-     *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+     * @return Destination tag actions evaluated for sources matching this ACL policy
      * 
      */
     public List<NetworktemplateAclPolicyAction> actions() {
         return this.actions == null ? List.of() : this.actions;
     }
+    /**
+     * @return Whether this ACL policy is disabled
+     * 
+     */
+    public Optional<Boolean> disabled() {
+        return Optional.ofNullable(this.disabled);
+    }
+    /**
+     * @return Display name of the ACL policy
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return ACL Policy Source Tags:
-     *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-     *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+     * @return Source ACL tags that select traffic for this ACL policy
      * 
      */
     public List<String> srcTags() {
@@ -62,12 +75,14 @@ public final class NetworktemplateAclPolicy {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<NetworktemplateAclPolicyAction> actions;
+        private @Nullable Boolean disabled;
         private @Nullable String name;
         private @Nullable List<String> srcTags;
         public Builder() {}
         public Builder(NetworktemplateAclPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.actions = defaults.actions;
+    	      this.disabled = defaults.disabled;
     	      this.name = defaults.name;
     	      this.srcTags = defaults.srcTags;
         }
@@ -80,6 +95,12 @@ public final class NetworktemplateAclPolicy {
         }
         public Builder actions(NetworktemplateAclPolicyAction... actions) {
             return actions(List.of(actions));
+        }
+        @CustomType.Setter
+        public Builder disabled(@Nullable Boolean disabled) {
+
+            this.disabled = disabled;
+            return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
@@ -99,6 +120,7 @@ public final class NetworktemplateAclPolicy {
         public NetworktemplateAclPolicy build() {
             final var _resultValue = new NetworktemplateAclPolicy();
             _resultValue.actions = actions;
+            _resultValue.disabled = disabled;
             _resultValue.name = name;
             _resultValue.srcTags = srcTags;
             return _resultValue;

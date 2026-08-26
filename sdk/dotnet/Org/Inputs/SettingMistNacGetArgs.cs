@@ -49,6 +49,12 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<int>? EapSslSecurityLevel { get; set; }
 
         /// <summary>
+        /// Enable EAP-MD5 for MAB. WARNING: Not FIPS compliant, use only if required for legacy device support.
+        /// </summary>
+        [Input("enableEapMd5ForMab")]
+        public Input<bool>? EnableEapMd5ForMab { get; set; }
+
+        /// <summary>
         /// By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliance NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, Mist Edge clusters that have MistNac enabled
         /// </summary>
         [Input("euOnly")]
@@ -109,7 +115,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? UseSslPort { get; set; }
 
         /// <summary>
-        /// Allow customer to configure an expiry time for usermacs by attaching a Quarantine label to those which have been inactive for the configured period of time (in days). 0 means no expiry
+        /// Allow customer to configure an expiry time for usermacs by attaching an `InactiveEndpoint` label to those which have been inactive for the configured period of time (in days). 0 means no expiry
         /// </summary>
         [Input("usermacExpiry")]
         public Input<int>? UsermacExpiry { get; set; }

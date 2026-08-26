@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NetworktemplateRemoteSyslogFileArchive {
+    /**
+     * @return Number of archived syslog files to retain
+     * 
+     */
     private @Nullable String files;
+    /**
+     * @return Maximum size of each archived syslog file, such as 5m
+     * 
+     */
     private @Nullable String size;
 
     private NetworktemplateRemoteSyslogFileArchive() {}
+    /**
+     * @return Number of archived syslog files to retain
+     * 
+     */
     public Optional<String> files() {
         return Optional.ofNullable(this.files);
     }
+    /**
+     * @return Maximum size of each archived syslog file, such as 5m
+     * 
+     */
     public Optional<String> size() {
         return Optional.ofNullable(this.size);
     }

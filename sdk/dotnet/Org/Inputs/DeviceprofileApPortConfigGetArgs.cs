@@ -61,7 +61,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? MxTunnelId { get; set; }
 
         /// <summary>
-        /// If `Forwarding`==`SiteMxedge`, VlanIds comes from SiteMxedge (`Mxtunnels` under site setting)
+        /// If `Forwarding`==`SiteMxedge`, VlanIds comes from SiteMxedge (`Mxtunnel` under site setting)
         /// </summary>
         [Input("mxtunnelName")]
         public Input<string>? MxtunnelName { get; set; }
@@ -93,7 +93,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         /// <summary>
         /// Optional to specify the VLAN ID for a tunnel if forwarding is for `Wxtunnel`, `Mxtunnel` or `SiteMxedge`.
         ///   * if VlanId is not specified then it will use first one in vlan_ids[] of the mxtunnel.
-        ///   * if forwarding == site_mxedge, VlanIds comes from SiteMxedge (`Mxtunnels` under site setting)
+        ///   * if forwarding == site_mxedge, VlanIds comes from SiteMxedge (`Mxtunnel` under site setting)
         /// </summary>
         [Input("vlanId")]
         public Input<int>? VlanId { get; set; }

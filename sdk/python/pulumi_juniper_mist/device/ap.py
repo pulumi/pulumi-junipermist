@@ -32,6 +32,7 @@ class ApArgs:
                  disable_eth2: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_eth3: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_module: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_unii4: pulumi.Input[Optional[_builtins.bool]] = None,
                  esl_config: pulumi.Input[Optional['ApEslConfigArgs']] = None,
                  flow_control: pulumi.Input[Optional[_builtins.bool]] = None,
                  height: pulumi.Input[Optional[_builtins.float]] = None,
@@ -52,6 +53,7 @@ class ApArgs:
                  radio_config: pulumi.Input[Optional['ApRadioConfigArgs']] = None,
                  uplink_port_config: pulumi.Input[Optional['ApUplinkPortConfigArgs']] = None,
                  usb_config: pulumi.Input[Optional['ApUsbConfigArgs']] = None,
+                 uwb_config: pulumi.Input[Optional['ApUwbConfigArgs']] = None,
                  vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  x: pulumi.Input[Optional[_builtins.float]] = None,
                  y: pulumi.Input[Optional[_builtins.float]] = None,
@@ -69,6 +71,7 @@ class ApArgs:
         :param pulumi.Input[_builtins.bool] disable_eth2: Whether to disable eth2 port
         :param pulumi.Input[_builtins.bool] disable_eth3: Whether to disable eth3 port
         :param pulumi.Input[_builtins.bool] disable_module: Whether to disable module port
+        :param pulumi.Input[_builtins.bool] enable_unii4: Whether U-NII-4 channels (169, 173, 177) are enabled on this access point
         :param pulumi.Input['ApEslConfigArgs'] esl_config: Electronic shelf label integration settings for this access point
         :param pulumi.Input[_builtins.bool] flow_control: For some AP models, flow_control can be enabled to address some switch compatibility issue
         :param pulumi.Input[_builtins.float] height: Installation height of the AP, in meters
@@ -89,6 +92,7 @@ class ApArgs:
         :param pulumi.Input['ApRadioConfigArgs'] radio_config: Radio configuration overrides for this access point
         :param pulumi.Input['ApUplinkPortConfigArgs'] uplink_port_config: Authentication and failover behavior for AP uplink ports
         :param pulumi.Input['ApUsbConfigArgs'] usb_config: Legacy USB integration settings for this access point
+        :param pulumi.Input['ApUwbConfigArgs'] uwb_config: UWB RTLS / OMLOX asset-visibility settings; overrides the device profile and site-level `uwb_config`
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Variable values that override site variables for this access point
         :param pulumi.Input[_builtins.float] x: Horizontal map position of the AP, in pixels
         :param pulumi.Input[_builtins.float] y: Vertical map position of the AP, in pixels
@@ -114,6 +118,8 @@ class ApArgs:
             pulumi.set(__self__, "disable_eth3", disable_eth3)
         if disable_module is not None:
             pulumi.set(__self__, "disable_module", disable_module)
+        if enable_unii4 is not None:
+            pulumi.set(__self__, "enable_unii4", enable_unii4)
         if esl_config is not None:
             pulumi.set(__self__, "esl_config", esl_config)
         if flow_control is not None:
@@ -154,6 +160,8 @@ class ApArgs:
             pulumi.set(__self__, "uplink_port_config", uplink_port_config)
         if usb_config is not None:
             pulumi.set(__self__, "usb_config", usb_config)
+        if uwb_config is not None:
+            pulumi.set(__self__, "uwb_config", uwb_config)
         if vars is not None:
             pulumi.set(__self__, "vars", vars)
         if x is not None:
@@ -291,6 +299,18 @@ class ApArgs:
     @disable_module.setter
     def disable_module(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_module", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableUnii4")
+    def enable_unii4(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether U-NII-4 channels (169, 173, 177) are enabled on this access point
+        """
+        return pulumi.get(self, "enable_unii4")
+
+    @enable_unii4.setter
+    def enable_unii4(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_unii4", value)
 
     @_builtins.property
     @pulumi.getter(name="eslConfig")
@@ -533,6 +553,18 @@ class ApArgs:
         pulumi.set(self, "usb_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="uwbConfig")
+    def uwb_config(self) -> pulumi.Input[Optional['ApUwbConfigArgs']]:
+        """
+        UWB RTLS / OMLOX asset-visibility settings; overrides the device profile and site-level `uwb_config`
+        """
+        return pulumi.get(self, "uwb_config")
+
+    @uwb_config.setter
+    def uwb_config(self, value: pulumi.Input[Optional['ApUwbConfigArgs']]):
+        pulumi.set(self, "uwb_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def vars(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -594,6 +626,7 @@ class _ApState:
                  disable_eth2: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_eth3: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_module: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_unii4: pulumi.Input[Optional[_builtins.bool]] = None,
                  esl_config: pulumi.Input[Optional['ApEslConfigArgs']] = None,
                  flow_control: pulumi.Input[Optional[_builtins.bool]] = None,
                  height: pulumi.Input[Optional[_builtins.float]] = None,
@@ -623,6 +656,7 @@ class _ApState:
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  uplink_port_config: pulumi.Input[Optional['ApUplinkPortConfigArgs']] = None,
                  usb_config: pulumi.Input[Optional['ApUsbConfigArgs']] = None,
+                 uwb_config: pulumi.Input[Optional['ApUwbConfigArgs']] = None,
                  vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  x: pulumi.Input[Optional[_builtins.float]] = None,
                  y: pulumi.Input[Optional[_builtins.float]] = None,
@@ -639,6 +673,7 @@ class _ApState:
         :param pulumi.Input[_builtins.bool] disable_eth2: Whether to disable eth2 port
         :param pulumi.Input[_builtins.bool] disable_eth3: Whether to disable eth3 port
         :param pulumi.Input[_builtins.bool] disable_module: Whether to disable module port
+        :param pulumi.Input[_builtins.bool] enable_unii4: Whether U-NII-4 channels (169, 173, 177) are enabled on this access point
         :param pulumi.Input['ApEslConfigArgs'] esl_config: Electronic shelf label integration settings for this access point
         :param pulumi.Input[_builtins.bool] flow_control: For some AP models, flow_control can be enabled to address some switch compatibility issue
         :param pulumi.Input[_builtins.float] height: Installation height of the AP, in meters
@@ -668,6 +703,7 @@ class _ApState:
         :param pulumi.Input[_builtins.str] type: Device type discriminator for access point records
         :param pulumi.Input['ApUplinkPortConfigArgs'] uplink_port_config: Authentication and failover behavior for AP uplink ports
         :param pulumi.Input['ApUsbConfigArgs'] usb_config: Legacy USB integration settings for this access point
+        :param pulumi.Input['ApUwbConfigArgs'] uwb_config: UWB RTLS / OMLOX asset-visibility settings; overrides the device profile and site-level `uwb_config`
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Variable values that override site variables for this access point
         :param pulumi.Input[_builtins.float] x: Horizontal map position of the AP, in pixels
         :param pulumi.Input[_builtins.float] y: Vertical map position of the AP, in pixels
@@ -693,6 +729,8 @@ class _ApState:
             pulumi.set(__self__, "disable_eth3", disable_eth3)
         if disable_module is not None:
             pulumi.set(__self__, "disable_module", disable_module)
+        if enable_unii4 is not None:
+            pulumi.set(__self__, "enable_unii4", enable_unii4)
         if esl_config is not None:
             pulumi.set(__self__, "esl_config", esl_config)
         if flow_control is not None:
@@ -751,6 +789,8 @@ class _ApState:
             pulumi.set(__self__, "uplink_port_config", uplink_port_config)
         if usb_config is not None:
             pulumi.set(__self__, "usb_config", usb_config)
+        if uwb_config is not None:
+            pulumi.set(__self__, "uwb_config", uwb_config)
         if vars is not None:
             pulumi.set(__self__, "vars", vars)
         if x is not None:
@@ -876,6 +916,18 @@ class _ApState:
     @disable_module.setter
     def disable_module(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_module", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableUnii4")
+    def enable_unii4(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether U-NII-4 channels (169, 173, 177) are enabled on this access point
+        """
+        return pulumi.get(self, "enable_unii4")
+
+    @enable_unii4.setter
+    def enable_unii4(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_unii4", value)
 
     @_builtins.property
     @pulumi.getter(name="eslConfig")
@@ -1226,6 +1278,18 @@ class _ApState:
         pulumi.set(self, "usb_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="uwbConfig")
+    def uwb_config(self) -> pulumi.Input[Optional['ApUwbConfigArgs']]:
+        """
+        UWB RTLS / OMLOX asset-visibility settings; overrides the device profile and site-level `uwb_config`
+        """
+        return pulumi.get(self, "uwb_config")
+
+    @uwb_config.setter
+    def uwb_config(self, value: pulumi.Input[Optional['ApUwbConfigArgs']]):
+        pulumi.set(self, "uwb_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def vars(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -1290,6 +1354,7 @@ class Ap(pulumi.CustomResource):
                  disable_eth2: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_eth3: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_module: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_unii4: pulumi.Input[Optional[_builtins.bool]] = None,
                  esl_config: pulumi.Input[Optional[Union['ApEslConfigArgs', 'ApEslConfigArgsDict']]] = None,
                  flow_control: pulumi.Input[Optional[_builtins.bool]] = None,
                  height: pulumi.Input[Optional[_builtins.float]] = None,
@@ -1311,6 +1376,7 @@ class Ap(pulumi.CustomResource):
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  uplink_port_config: pulumi.Input[Optional[Union['ApUplinkPortConfigArgs', 'ApUplinkPortConfigArgsDict']]] = None,
                  usb_config: pulumi.Input[Optional[Union['ApUsbConfigArgs', 'ApUsbConfigArgsDict']]] = None,
+                 uwb_config: pulumi.Input[Optional[Union['ApUwbConfigArgs', 'ApUwbConfigArgsDict']]] = None,
                  vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  x: pulumi.Input[Optional[_builtins.float]] = None,
                  y: pulumi.Input[Optional[_builtins.float]] = None,
@@ -1342,6 +1408,7 @@ class Ap(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] disable_eth2: Whether to disable eth2 port
         :param pulumi.Input[_builtins.bool] disable_eth3: Whether to disable eth3 port
         :param pulumi.Input[_builtins.bool] disable_module: Whether to disable module port
+        :param pulumi.Input[_builtins.bool] enable_unii4: Whether U-NII-4 channels (169, 173, 177) are enabled on this access point
         :param pulumi.Input[Union['ApEslConfigArgs', 'ApEslConfigArgsDict']] esl_config: Electronic shelf label integration settings for this access point
         :param pulumi.Input[_builtins.bool] flow_control: For some AP models, flow_control can be enabled to address some switch compatibility issue
         :param pulumi.Input[_builtins.float] height: Installation height of the AP, in meters
@@ -1363,6 +1430,7 @@ class Ap(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] site_id: Site where this access point is assigned
         :param pulumi.Input[Union['ApUplinkPortConfigArgs', 'ApUplinkPortConfigArgsDict']] uplink_port_config: Authentication and failover behavior for AP uplink ports
         :param pulumi.Input[Union['ApUsbConfigArgs', 'ApUsbConfigArgsDict']] usb_config: Legacy USB integration settings for this access point
+        :param pulumi.Input[Union['ApUwbConfigArgs', 'ApUwbConfigArgsDict']] uwb_config: UWB RTLS / OMLOX asset-visibility settings; overrides the device profile and site-level `uwb_config`
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Variable values that override site variables for this access point
         :param pulumi.Input[_builtins.float] x: Horizontal map position of the AP, in pixels
         :param pulumi.Input[_builtins.float] y: Vertical map position of the AP, in pixels
@@ -1414,6 +1482,7 @@ class Ap(pulumi.CustomResource):
                  disable_eth2: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_eth3: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_module: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_unii4: pulumi.Input[Optional[_builtins.bool]] = None,
                  esl_config: pulumi.Input[Optional[Union['ApEslConfigArgs', 'ApEslConfigArgsDict']]] = None,
                  flow_control: pulumi.Input[Optional[_builtins.bool]] = None,
                  height: pulumi.Input[Optional[_builtins.float]] = None,
@@ -1435,6 +1504,7 @@ class Ap(pulumi.CustomResource):
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  uplink_port_config: pulumi.Input[Optional[Union['ApUplinkPortConfigArgs', 'ApUplinkPortConfigArgsDict']]] = None,
                  usb_config: pulumi.Input[Optional[Union['ApUsbConfigArgs', 'ApUsbConfigArgsDict']]] = None,
+                 uwb_config: pulumi.Input[Optional[Union['ApUwbConfigArgs', 'ApUwbConfigArgsDict']]] = None,
                  vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  x: pulumi.Input[Optional[_builtins.float]] = None,
                  y: pulumi.Input[Optional[_builtins.float]] = None,
@@ -1460,6 +1530,7 @@ class Ap(pulumi.CustomResource):
             __props__.__dict__["disable_eth2"] = disable_eth2
             __props__.__dict__["disable_eth3"] = disable_eth3
             __props__.__dict__["disable_module"] = disable_module
+            __props__.__dict__["enable_unii4"] = enable_unii4
             __props__.__dict__["esl_config"] = esl_config
             __props__.__dict__["flow_control"] = flow_control
             __props__.__dict__["height"] = height
@@ -1483,6 +1554,7 @@ class Ap(pulumi.CustomResource):
             __props__.__dict__["site_id"] = site_id
             __props__.__dict__["uplink_port_config"] = uplink_port_config
             __props__.__dict__["usb_config"] = usb_config
+            __props__.__dict__["uwb_config"] = uwb_config
             __props__.__dict__["vars"] = vars
             __props__.__dict__["x"] = x
             __props__.__dict__["y"] = y
@@ -1515,6 +1587,7 @@ class Ap(pulumi.CustomResource):
             disable_eth2: pulumi.Input[Optional[_builtins.bool]] = None,
             disable_eth3: pulumi.Input[Optional[_builtins.bool]] = None,
             disable_module: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_unii4: pulumi.Input[Optional[_builtins.bool]] = None,
             esl_config: pulumi.Input[Optional[Union['ApEslConfigArgs', 'ApEslConfigArgsDict']]] = None,
             flow_control: pulumi.Input[Optional[_builtins.bool]] = None,
             height: pulumi.Input[Optional[_builtins.float]] = None,
@@ -1544,6 +1617,7 @@ class Ap(pulumi.CustomResource):
             type: pulumi.Input[Optional[_builtins.str]] = None,
             uplink_port_config: pulumi.Input[Optional[Union['ApUplinkPortConfigArgs', 'ApUplinkPortConfigArgsDict']]] = None,
             usb_config: pulumi.Input[Optional[Union['ApUsbConfigArgs', 'ApUsbConfigArgsDict']]] = None,
+            uwb_config: pulumi.Input[Optional[Union['ApUwbConfigArgs', 'ApUwbConfigArgsDict']]] = None,
             vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             x: pulumi.Input[Optional[_builtins.float]] = None,
             y: pulumi.Input[Optional[_builtins.float]] = None,
@@ -1564,6 +1638,7 @@ class Ap(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] disable_eth2: Whether to disable eth2 port
         :param pulumi.Input[_builtins.bool] disable_eth3: Whether to disable eth3 port
         :param pulumi.Input[_builtins.bool] disable_module: Whether to disable module port
+        :param pulumi.Input[_builtins.bool] enable_unii4: Whether U-NII-4 channels (169, 173, 177) are enabled on this access point
         :param pulumi.Input[Union['ApEslConfigArgs', 'ApEslConfigArgsDict']] esl_config: Electronic shelf label integration settings for this access point
         :param pulumi.Input[_builtins.bool] flow_control: For some AP models, flow_control can be enabled to address some switch compatibility issue
         :param pulumi.Input[_builtins.float] height: Installation height of the AP, in meters
@@ -1593,6 +1668,7 @@ class Ap(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] type: Device type discriminator for access point records
         :param pulumi.Input[Union['ApUplinkPortConfigArgs', 'ApUplinkPortConfigArgsDict']] uplink_port_config: Authentication and failover behavior for AP uplink ports
         :param pulumi.Input[Union['ApUsbConfigArgs', 'ApUsbConfigArgsDict']] usb_config: Legacy USB integration settings for this access point
+        :param pulumi.Input[Union['ApUwbConfigArgs', 'ApUwbConfigArgsDict']] uwb_config: UWB RTLS / OMLOX asset-visibility settings; overrides the device profile and site-level `uwb_config`
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Variable values that override site variables for this access point
         :param pulumi.Input[_builtins.float] x: Horizontal map position of the AP, in pixels
         :param pulumi.Input[_builtins.float] y: Vertical map position of the AP, in pixels
@@ -1612,6 +1688,7 @@ class Ap(pulumi.CustomResource):
         __props__.__dict__["disable_eth2"] = disable_eth2
         __props__.__dict__["disable_eth3"] = disable_eth3
         __props__.__dict__["disable_module"] = disable_module
+        __props__.__dict__["enable_unii4"] = enable_unii4
         __props__.__dict__["esl_config"] = esl_config
         __props__.__dict__["flow_control"] = flow_control
         __props__.__dict__["height"] = height
@@ -1641,6 +1718,7 @@ class Ap(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         __props__.__dict__["uplink_port_config"] = uplink_port_config
         __props__.__dict__["usb_config"] = usb_config
+        __props__.__dict__["uwb_config"] = uwb_config
         __props__.__dict__["vars"] = vars
         __props__.__dict__["x"] = x
         __props__.__dict__["y"] = y
@@ -1723,6 +1801,14 @@ class Ap(pulumi.CustomResource):
         Whether to disable module port
         """
         return pulumi.get(self, "disable_module")
+
+    @_builtins.property
+    @pulumi.getter(name="enableUnii4")
+    def enable_unii4(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether U-NII-4 channels (169, 173, 177) are enabled on this access point
+        """
+        return pulumi.get(self, "enable_unii4")
 
     @_builtins.property
     @pulumi.getter(name="eslConfig")
@@ -1955,6 +2041,14 @@ class Ap(pulumi.CustomResource):
         Legacy USB integration settings for this access point
         """
         return pulumi.get(self, "usb_config")
+
+    @_builtins.property
+    @pulumi.getter(name="uwbConfig")
+    def uwb_config(self) -> pulumi.Output[Optional['outputs.ApUwbConfig']]:
+        """
+        UWB RTLS / OMLOX asset-visibility settings; overrides the device profile and site-level `uwb_config`
+        """
+        return pulumi.get(self, "uwb_config")
 
     @_builtins.property
     @pulumi.getter

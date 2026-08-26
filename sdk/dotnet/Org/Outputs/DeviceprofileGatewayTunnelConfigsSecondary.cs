@@ -18,9 +18,25 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Hosts;
         /// <summary>
+        /// IPv6 addresses configured on this tunnel node
+        /// </summary>
+        public readonly ImmutableArray<string> InternalIp6s;
+        /// <summary>
         /// Internal IP addresses configured on this tunnel node
         /// </summary>
         public readonly ImmutableArray<string> InternalIps;
+        /// <summary>
+        /// Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+        /// </summary>
+        public readonly ImmutableArray<string> ProbeHostnames;
+        /// <summary>
+        /// HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+        /// </summary>
+        public readonly Outputs.DeviceprofileGatewayTunnelConfigsSecondaryProbeHttp? ProbeHttp;
+        /// <summary>
+        /// IPv6 ICMP probe addresses used to monitor this tunnel node
+        /// </summary>
+        public readonly ImmutableArray<string> ProbeIp6s;
         /// <summary>
         /// Health-check IP addresses used to monitor this tunnel node
         /// </summary>
@@ -38,7 +54,15 @@ namespace Pulumi.JuniperMist.Org.Outputs
         private DeviceprofileGatewayTunnelConfigsSecondary(
             ImmutableArray<string> hosts,
 
+            ImmutableArray<string> internalIp6s,
+
             ImmutableArray<string> internalIps,
+
+            ImmutableArray<string> probeHostnames,
+
+            Outputs.DeviceprofileGatewayTunnelConfigsSecondaryProbeHttp? probeHttp,
+
+            ImmutableArray<string> probeIp6s,
 
             ImmutableArray<string> probeIps,
 
@@ -47,7 +71,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
             ImmutableArray<string> wanNames)
         {
             Hosts = hosts;
+            InternalIp6s = internalIp6s;
             InternalIps = internalIps;
+            ProbeHostnames = probeHostnames;
+            ProbeHttp = probeHttp;
+            ProbeIp6s = probeIp6s;
             ProbeIps = probeIps;
             RemoteIds = remoteIds;
             WanNames = wanNames;

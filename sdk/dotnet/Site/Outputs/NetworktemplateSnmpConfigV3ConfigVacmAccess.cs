@@ -13,7 +13,13 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class NetworktemplateSnmpConfigV3ConfigVacmAccess
     {
+        /// <summary>
+        /// SNMP VACM group name
+        /// </summary>
         public readonly string? GroupName;
+        /// <summary>
+        /// Context prefix rules for this VACM group
+        /// </summary>
         public readonly ImmutableArray<Outputs.NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixList> PrefixLists;
 
         [OutputConstructor]

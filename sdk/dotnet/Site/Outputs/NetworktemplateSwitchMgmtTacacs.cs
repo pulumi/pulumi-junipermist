@@ -13,16 +13,25 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class NetworktemplateSwitchMgmtTacacs
     {
+        /// <summary>
+        /// TACACS+ accounting servers used for switch management sessions
+        /// </summary>
         public readonly ImmutableArray<Outputs.NetworktemplateSwitchMgmtTacacsAcctServer> AcctServers;
         /// <summary>
-        /// enum: `Admin`, `Helpdesk`, `None`, `Read`
+        /// Default switch-management role to use for TACACS+ logins
         /// </summary>
         public readonly string? DefaultRole;
+        /// <summary>
+        /// Whether TACACS+ is enabled for switch management authentication
+        /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Which network the TACACS server resides
+        /// Source network used for connectivity to the TACACS+ servers
         /// </summary>
         public readonly string? Network;
+        /// <summary>
+        /// TACACS+ authentication servers used for switch management logins
+        /// </summary>
         public readonly ImmutableArray<Outputs.NetworktemplateSwitchMgmtTacacsTacplusServer> TacplusServers;
 
         [OutputConstructor]

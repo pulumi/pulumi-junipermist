@@ -189,6 +189,20 @@ public class NacPortal extends com.pulumi.resources.CustomResource {
         return this.eapType;
     }
     /**
+     * Whether location data collection is enabled for devices onboarding through this NAC portal
+     * 
+     */
+    @Export(name="enableLocation", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> enableLocation;
+
+    /**
+     * @return Whether location data collection is enabled for devices onboarding through this NAC portal
+     * 
+     */
+    public Output<Optional<Boolean>> enableLocation() {
+        return Codegen.optional(this.enableLocation);
+    }
+    /**
      * Model, version, fingering, events (connecting, disconnect, roaming), which ap
      * 
      */

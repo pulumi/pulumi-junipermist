@@ -13,9 +13,12 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class NetworktemplateRoutingPoliciesTermActions
     {
+        /// <summary>
+        /// Whether to accept routes that match this term
+        /// </summary>
         public readonly bool? Accept;
         /// <summary>
-        /// When used as export policy, optional
+        /// BGP communities to set when this term is used as an export policy
         /// </summary>
         public readonly ImmutableArray<string> Communities;
         /// <summary>
@@ -23,7 +26,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? LocalPreference;
         /// <summary>
-        /// When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
+        /// AS path values to prepend when this term is used as an export policy
         /// </summary>
         public readonly ImmutableArray<string> PrependAsPaths;
 

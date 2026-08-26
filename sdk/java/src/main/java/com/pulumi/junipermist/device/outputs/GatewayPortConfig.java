@@ -174,11 +174,6 @@ public final class GatewayPortConfig {
      */
     private @Nullable String rethNode;
     /**
-     * @return If HA mode and for SSR only. Per-network node assignment used for VLAN-based redundancy
-     * 
-     */
-    private @Nullable List<String> rethNodes;
-    /**
      * @return Link speed configured on the port
      * 
      */
@@ -476,13 +471,6 @@ public final class GatewayPortConfig {
         return Optional.ofNullable(this.rethNode);
     }
     /**
-     * @return If HA mode and for SSR only. Per-network node assignment used for VLAN-based redundancy
-     * 
-     */
-    public List<String> rethNodes() {
-        return this.rethNodes == null ? List.of() : this.rethNodes;
-    }
-    /**
      * @return Link speed configured on the port
      * 
      */
@@ -641,7 +629,6 @@ public final class GatewayPortConfig {
         private @Nullable Integer redundantGroup;
         private @Nullable String rethIdx;
         private @Nullable String rethNode;
-        private @Nullable List<String> rethNodes;
         private @Nullable String speed;
         private @Nullable Boolean ssrNoVirtualMac;
         private @Nullable String svrPortRange;
@@ -692,7 +679,6 @@ public final class GatewayPortConfig {
     	      this.redundantGroup = defaults.redundantGroup;
     	      this.rethIdx = defaults.rethIdx;
     	      this.rethNode = defaults.rethNode;
-    	      this.rethNodes = defaults.rethNodes;
     	      this.speed = defaults.speed;
     	      this.ssrNoVirtualMac = defaults.ssrNoVirtualMac;
     	      this.svrPortRange = defaults.svrPortRange;
@@ -896,15 +882,6 @@ public final class GatewayPortConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder rethNodes(@Nullable List<String> rethNodes) {
-
-            this.rethNodes = rethNodes;
-            return this;
-        }
-        public Builder rethNodes(String... rethNodes) {
-            return rethNodes(List.of(rethNodes));
-        }
-        @CustomType.Setter
         public Builder speed(@Nullable String speed) {
 
             this.speed = speed;
@@ -1043,7 +1020,6 @@ public final class GatewayPortConfig {
             _resultValue.redundantGroup = redundantGroup;
             _resultValue.rethIdx = rethIdx;
             _resultValue.rethNode = rethNode;
-            _resultValue.rethNodes = rethNodes;
             _resultValue.speed = speed;
             _resultValue.ssrNoVirtualMac = ssrNoVirtualMac;
             _resultValue.svrPortRange = svrPortRange;

@@ -13,21 +13,45 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class NetworktemplateRemoteSyslog
     {
+        /// <summary>
+        /// Retention settings for generated syslog archive files
+        /// </summary>
         public readonly Outputs.NetworktemplateRemoteSyslogArchive? Archive;
+        /// <summary>
+        /// CA certificates used to verify TLS syslog servers
+        /// </summary>
         public readonly ImmutableArray<string> Cacerts;
+        /// <summary>
+        /// Log forwarding filters for console messages sent to remote syslog
+        /// </summary>
         public readonly Outputs.NetworktemplateRemoteSyslogConsole? Console;
+        /// <summary>
+        /// Whether remote syslog forwarding is enabled
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// Local syslog file definitions to generate and forward
+        /// </summary>
         public readonly ImmutableArray<Outputs.NetworktemplateRemoteSyslogFile> Files;
         /// <summary>
-        /// If SourceAddress is configured, will use the vlan firstly otherwise use source_ip
+        /// Source network used for syslog traffic. If `SourceAddress` is configured, Mist uses the VLAN first; otherwise it uses `SourceIp`
         /// </summary>
         public readonly string? Network;
+        /// <summary>
+        /// Whether each log entry is sent to all configured remote syslog servers
+        /// </summary>
         public readonly bool? SendToAllServers;
+        /// <summary>
+        /// Remote syslog server destinations
+        /// </summary>
         public readonly ImmutableArray<Outputs.NetworktemplateRemoteSyslogServer> Servers;
         /// <summary>
-        /// enum: `Millisecond`, `Year`, `year millisecond`
+        /// Timestamp format used in forwarded syslog messages
         /// </summary>
         public readonly string? TimeFormat;
+        /// <summary>
+        /// User-specific syslog logging rules
+        /// </summary>
         public readonly ImmutableArray<Outputs.NetworktemplateRemoteSyslogUser> Users;
 
         [OutputConstructor]

@@ -35,6 +35,7 @@ class PskArgs:
                  old_passphrase: pulumi.Input[Optional[_builtins.str]] = None,
                  role: pulumi.Input[Optional[_builtins.str]] = None,
                  usage: pulumi.Input[Optional[_builtins.str]] = None,
+                 usermac_labels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  vlan_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vlan_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -55,7 +56,8 @@ class PskArgs:
         :param pulumi.Input[_builtins.bool] notify_on_create_or_edit: If set to true, notification will be sent when psk is created or edited
         :param pulumi.Input[_builtins.str] old_passphrase: previous passphrase of the PSK if it has been rotated
         :param pulumi.Input[_builtins.str] role: Client role applied to users authenticated with this PSK
-        :param pulumi.Input[_builtins.str] usage: Binding mode for this PSK, enum: `macs`, `multi`, `single`
+        :param pulumi.Input[_builtins.str] usage: Binding mode for this PSK, enum: `macs`, `multi`, `single`, `usermac_labels`
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] usermac_labels: Usermac labels allowed when `usage`==`usermac_labels`; this list is capped at 100 entries
         :param pulumi.Input[_builtins.str] vlan_id: VLAN ID returned for clients using this PSK
         :param pulumi.Input[_builtins.str] vlan_name: VLAN name to be assigned. Optional, `vlan_id` takes precedence if both are provided
         """
@@ -88,6 +90,8 @@ class PskArgs:
             pulumi.set(__self__, "role", role)
         if usage is not None:
             pulumi.set(__self__, "usage", usage)
+        if usermac_labels is not None:
+            pulumi.set(__self__, "usermac_labels", usermac_labels)
         if vlan_id is not None:
             pulumi.set(__self__, "vlan_id", vlan_id)
         if vlan_name is not None:
@@ -277,13 +281,25 @@ class PskArgs:
     @pulumi.getter
     def usage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Binding mode for this PSK, enum: `macs`, `multi`, `single`
+        Binding mode for this PSK, enum: `macs`, `multi`, `single`, `usermac_labels`
         """
         return pulumi.get(self, "usage")
 
     @usage.setter
     def usage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "usage", value)
+
+    @_builtins.property
+    @pulumi.getter(name="usermacLabels")
+    def usermac_labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Usermac labels allowed when `usage`==`usermac_labels`; this list is capped at 100 entries
+        """
+        return pulumi.get(self, "usermac_labels")
+
+    @usermac_labels.setter
+    def usermac_labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "usermac_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="vlanId")
@@ -329,6 +345,7 @@ class _PskState:
                  role: pulumi.Input[Optional[_builtins.str]] = None,
                  ssid: pulumi.Input[Optional[_builtins.str]] = None,
                  usage: pulumi.Input[Optional[_builtins.str]] = None,
+                 usermac_labels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  vlan_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vlan_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -349,7 +366,8 @@ class _PskState:
         :param pulumi.Input[_builtins.str] passphrase: PSK passphrase, 8-63 characters or 64 hexadecimal characters
         :param pulumi.Input[_builtins.str] role: Client role applied to users authenticated with this PSK
         :param pulumi.Input[_builtins.str] ssid: WLAN SSID where this PSK can be used
-        :param pulumi.Input[_builtins.str] usage: Binding mode for this PSK, enum: `macs`, `multi`, `single`
+        :param pulumi.Input[_builtins.str] usage: Binding mode for this PSK, enum: `macs`, `multi`, `single`, `usermac_labels`
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] usermac_labels: Usermac labels allowed when `usage`==`usermac_labels`; this list is capped at 100 entries
         :param pulumi.Input[_builtins.str] vlan_id: VLAN ID returned for clients using this PSK
         :param pulumi.Input[_builtins.str] vlan_name: VLAN name to be assigned. Optional, `vlan_id` takes precedence if both are provided
         """
@@ -385,6 +403,8 @@ class _PskState:
             pulumi.set(__self__, "ssid", ssid)
         if usage is not None:
             pulumi.set(__self__, "usage", usage)
+        if usermac_labels is not None:
+            pulumi.set(__self__, "usermac_labels", usermac_labels)
         if vlan_id is not None:
             pulumi.set(__self__, "vlan_id", vlan_id)
         if vlan_name is not None:
@@ -574,13 +594,25 @@ class _PskState:
     @pulumi.getter
     def usage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Binding mode for this PSK, enum: `macs`, `multi`, `single`
+        Binding mode for this PSK, enum: `macs`, `multi`, `single`, `usermac_labels`
         """
         return pulumi.get(self, "usage")
 
     @usage.setter
     def usage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "usage", value)
+
+    @_builtins.property
+    @pulumi.getter(name="usermacLabels")
+    def usermac_labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Usermac labels allowed when `usage`==`usermac_labels`; this list is capped at 100 entries
+        """
+        return pulumi.get(self, "usermac_labels")
+
+    @usermac_labels.setter
+    def usermac_labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "usermac_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="vlanId")
@@ -629,6 +661,7 @@ class Psk(pulumi.CustomResource):
                  role: pulumi.Input[Optional[_builtins.str]] = None,
                  ssid: pulumi.Input[Optional[_builtins.str]] = None,
                  usage: pulumi.Input[Optional[_builtins.str]] = None,
+                 usermac_labels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  vlan_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vlan_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -686,7 +719,8 @@ class Psk(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] passphrase: PSK passphrase, 8-63 characters or 64 hexadecimal characters
         :param pulumi.Input[_builtins.str] role: Client role applied to users authenticated with this PSK
         :param pulumi.Input[_builtins.str] ssid: WLAN SSID where this PSK can be used
-        :param pulumi.Input[_builtins.str] usage: Binding mode for this PSK, enum: `macs`, `multi`, `single`
+        :param pulumi.Input[_builtins.str] usage: Binding mode for this PSK, enum: `macs`, `multi`, `single`, `usermac_labels`
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] usermac_labels: Usermac labels allowed when `usage`==`usermac_labels`; this list is capped at 100 entries
         :param pulumi.Input[_builtins.str] vlan_id: VLAN ID returned for clients using this PSK
         :param pulumi.Input[_builtins.str] vlan_name: VLAN name to be assigned. Optional, `vlan_id` takes precedence if both are provided
         """
@@ -764,6 +798,7 @@ class Psk(pulumi.CustomResource):
                  role: pulumi.Input[Optional[_builtins.str]] = None,
                  ssid: pulumi.Input[Optional[_builtins.str]] = None,
                  usage: pulumi.Input[Optional[_builtins.str]] = None,
+                 usermac_labels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  vlan_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vlan_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -797,6 +832,7 @@ class Psk(pulumi.CustomResource):
                 raise TypeError("Missing required property 'ssid'")
             __props__.__dict__["ssid"] = ssid
             __props__.__dict__["usage"] = usage
+            __props__.__dict__["usermac_labels"] = usermac_labels
             __props__.__dict__["vlan_id"] = vlan_id
             __props__.__dict__["vlan_name"] = vlan_name
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["oldPassphrase", "passphrase"])
@@ -827,6 +863,7 @@ class Psk(pulumi.CustomResource):
             role: pulumi.Input[Optional[_builtins.str]] = None,
             ssid: pulumi.Input[Optional[_builtins.str]] = None,
             usage: pulumi.Input[Optional[_builtins.str]] = None,
+            usermac_labels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             vlan_id: pulumi.Input[Optional[_builtins.str]] = None,
             vlan_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'Psk':
         """
@@ -851,7 +888,8 @@ class Psk(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] passphrase: PSK passphrase, 8-63 characters or 64 hexadecimal characters
         :param pulumi.Input[_builtins.str] role: Client role applied to users authenticated with this PSK
         :param pulumi.Input[_builtins.str] ssid: WLAN SSID where this PSK can be used
-        :param pulumi.Input[_builtins.str] usage: Binding mode for this PSK, enum: `macs`, `multi`, `single`
+        :param pulumi.Input[_builtins.str] usage: Binding mode for this PSK, enum: `macs`, `multi`, `single`, `usermac_labels`
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] usermac_labels: Usermac labels allowed when `usage`==`usermac_labels`; this list is capped at 100 entries
         :param pulumi.Input[_builtins.str] vlan_id: VLAN ID returned for clients using this PSK
         :param pulumi.Input[_builtins.str] vlan_name: VLAN name to be assigned. Optional, `vlan_id` takes precedence if both are provided
         """
@@ -875,6 +913,7 @@ class Psk(pulumi.CustomResource):
         __props__.__dict__["role"] = role
         __props__.__dict__["ssid"] = ssid
         __props__.__dict__["usage"] = usage
+        __props__.__dict__["usermac_labels"] = usermac_labels
         __props__.__dict__["vlan_id"] = vlan_id
         __props__.__dict__["vlan_name"] = vlan_name
         return Psk(resource_name, opts=opts, __props__=__props__)
@@ -1003,9 +1042,17 @@ class Psk(pulumi.CustomResource):
     @pulumi.getter
     def usage(self) -> pulumi.Output[_builtins.str]:
         """
-        Binding mode for this PSK, enum: `macs`, `multi`, `single`
+        Binding mode for this PSK, enum: `macs`, `multi`, `single`, `usermac_labels`
         """
         return pulumi.get(self, "usage")
+
+    @_builtins.property
+    @pulumi.getter(name="usermacLabels")
+    def usermac_labels(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        Usermac labels allowed when `usage`==`usermac_labels`; this list is capped at 100 entries
+        """
+        return pulumi.get(self, "usermac_labels")
 
     @_builtins.property
     @pulumi.getter(name="vlanId")

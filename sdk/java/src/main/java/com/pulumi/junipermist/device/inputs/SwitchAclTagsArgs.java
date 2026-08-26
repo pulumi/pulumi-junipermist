@@ -113,6 +113,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Required if:
      *   * `type`==`radiusGroup`
+     *   * `type`==`arubaUserRole`
      *   * `type`==`staticGbp`
      *     if from matching radius_group
      * 
@@ -123,6 +124,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Required if:
      *   * `type`==`radiusGroup`
+     *   * `type`==`arubaUserRole`
      *   * `type`==`staticGbp`
      *     if from matching radius_group
      * 
@@ -352,6 +354,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param radiusGroup Required if:
          *   * `type`==`radiusGroup`
+         *   * `type`==`arubaUserRole`
          *   * `type`==`staticGbp`
          *     if from matching radius_group
          * 
@@ -366,6 +369,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param radiusGroup Required if:
          *   * `type`==`radiusGroup`
+         *   * `type`==`arubaUserRole`
          *   * `type`==`staticGbp`
          *     if from matching radius_group
          * 

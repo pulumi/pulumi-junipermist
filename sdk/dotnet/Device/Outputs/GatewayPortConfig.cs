@@ -134,10 +134,6 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? RethNode;
         /// <summary>
-        /// If HA mode and for SSR only. Per-network node assignment used for VLAN-based redundancy
-        /// </summary>
-        public readonly ImmutableArray<string> RethNodes;
-        /// <summary>
         /// Link speed configured on the port
         /// </summary>
         public readonly string? Speed;
@@ -268,8 +264,6 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             string? rethNode,
 
-            ImmutableArray<string> rethNodes,
-
             string? speed,
 
             bool? ssrNoVirtualMac,
@@ -334,7 +328,6 @@ namespace Pulumi.JuniperMist.Device.Outputs
             RedundantGroup = redundantGroup;
             RethIdx = rethIdx;
             RethNode = rethNode;
-            RethNodes = rethNodes;
             Speed = speed;
             SsrNoVirtualMac = ssrNoVirtualMac;
             SvrPortRange = svrPortRange;

@@ -21,42 +21,74 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public InputMap<string> AuthKeys
         {
             get => _authKeys ?? (_authKeys = new InputMap<string>());
-            set => _authKeys = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _authKeys = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
+
+        [Input("authPassword")]
+        private Input<string>? _authPassword;
 
         /// <summary>
         /// Required if `AuthType`==`Password`, the password, max length is 8
         /// </summary>
-        [Input("authPassword")]
-        public Input<string>? AuthPassword { get; set; }
+        public Input<string>? AuthPassword
+        {
+            get => _authPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _authPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
-        /// auth type. enum: `Md5`, `None`, `Password`
+        /// Authentication method used by this OSPF network
         /// </summary>
         [Input("authType")]
         public Input<string>? AuthType { get; set; }
 
+        /// <summary>
+        /// Minimum BFD interval for this OSPF network, in milliseconds
+        /// </summary>
         [Input("bfdMinimumInterval")]
         public Input<int>? BfdMinimumInterval { get; set; }
 
+        /// <summary>
+        /// OSPF dead interval for this network, in seconds
+        /// </summary>
         [Input("deadInterval")]
         public Input<int>? DeadInterval { get; set; }
 
+        /// <summary>
+        /// Routing policy used to export routes from this OSPF network
+        /// </summary>
         [Input("exportPolicy")]
         public Input<string>? ExportPolicy { get; set; }
 
+        /// <summary>
+        /// OSPF hello interval for this network, in seconds
+        /// </summary>
         [Input("helloInterval")]
         public Input<int>? HelloInterval { get; set; }
 
+        /// <summary>
+        /// Routing policy used to import routes for this OSPF network
+        /// </summary>
         [Input("importPolicy")]
         public Input<string>? ImportPolicy { get; set; }
 
         /// <summary>
-        /// interface type (nbma = non-broadcast multi-access). enum: `Broadcast`, `Nbma`, `P2mp`, `P2p`
+        /// OSPF interface type used for this network
         /// </summary>
         [Input("interfaceType")]
         public Input<string>? InterfaceType { get; set; }
 
+        /// <summary>
+        /// OSPF metric assigned to this network
+        /// </summary>
         [Input("metric")]
         public Input<int>? Metric { get; set; }
 

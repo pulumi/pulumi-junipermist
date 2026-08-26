@@ -92,6 +92,12 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> RadiusGroup { get; private set; } = null!;
 
         /// <summary>
+        /// Optional list of site IDs this user MAC entry is scoped to
+        /// </summary>
+        [Output("siteIds")]
+        public Output<ImmutableArray<string>> SiteIds { get; private set; } = null!;
+
+        /// <summary>
         /// Network VLAN value associated with this user MAC entry
         /// </summary>
         [Output("vlan")]
@@ -183,6 +189,18 @@ namespace Pulumi.JuniperMist.Org
         [Input("radiusGroup")]
         public Input<string>? RadiusGroup { get; set; }
 
+        [Input("siteIds")]
+        private InputList<string>? _siteIds;
+
+        /// <summary>
+        /// Optional list of site IDs this user MAC entry is scoped to
+        /// </summary>
+        public InputList<string> SiteIds
+        {
+            get => _siteIds ?? (_siteIds = new InputList<string>());
+            set => _siteIds = value;
+        }
+
         /// <summary>
         /// Network VLAN value associated with this user MAC entry
         /// </summary>
@@ -235,6 +253,18 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         [Input("radiusGroup")]
         public Input<string>? RadiusGroup { get; set; }
+
+        [Input("siteIds")]
+        private InputList<string>? _siteIds;
+
+        /// <summary>
+        /// Optional list of site IDs this user MAC entry is scoped to
+        /// </summary>
+        public InputList<string> SiteIds
+        {
+            get => _siteIds ?? (_siteIds = new InputList<string>());
+            set => _siteIds = value;
+        }
 
         /// <summary>
         /// Network VLAN value associated with this user MAC entry

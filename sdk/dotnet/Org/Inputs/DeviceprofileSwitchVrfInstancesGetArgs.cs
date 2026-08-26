@@ -48,6 +48,12 @@ namespace Pulumi.JuniperMist.Org.Inputs
             set => _extraRoutes6 = value;
         }
 
+        /// <summary>
+        /// Multicast configuration for this VRF instance. PIM is automatically enabled when any network in this VRF has `multicast.enabled`==`True`
+        /// </summary>
+        [Input("multicastConfig")]
+        public Input<Inputs.DeviceprofileSwitchVrfInstancesMulticastConfigGetArgs>? MulticastConfig { get; set; }
+
         [Input("networks")]
         private InputList<string>? _networks;
 

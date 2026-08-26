@@ -32,6 +32,7 @@ __all__ = [
     'NetworktemplateExtraRoutesNextQualified',
     'NetworktemplateMistNac',
     'NetworktemplateNetworks',
+    'NetworktemplateNetworksMulticast',
     'NetworktemplateOspfAreas',
     'NetworktemplateOspfAreasNetworks',
     'NetworktemplatePortMirroring',
@@ -92,6 +93,7 @@ __all__ = [
     'NetworktemplateVrfInstances',
     'NetworktemplateVrfInstancesExtraRoutes6',
     'NetworktemplateVrfInstancesExtraRoutes',
+    'NetworktemplateVrfInstancesMulticastConfig',
     'SettingAnalytic',
     'SettingApSyntheticTest',
     'SettingAutoUpgrade',
@@ -153,6 +155,7 @@ __all__ = [
     'SettingTuntermMulticastConfigMdns',
     'SettingTuntermMulticastConfigSsdp',
     'SettingUplinkPortConfig',
+    'SettingUwbConfig',
     'SettingVarsAnnotations',
     'SettingVna',
     'SettingVsInstance',
@@ -162,6 +165,7 @@ __all__ = [
     'SettingWifi',
     'SettingWiredVna',
     'SettingZoneOccupancyAlert',
+    'WebhookRule',
     'WlanAcctServer',
     'WlanAirwatch',
     'WlanAppLimit',
@@ -811,18 +815,19 @@ class NetworktemplateAclPolicy(dict):
 
     def __init__(__self__, *,
                  actions: Optional[Sequence['outputs.NetworktemplateAclPolicyAction']] = None,
+                 disabled: Optional[_builtins.bool] = None,
                  name: Optional[_builtins.str] = None,
                  src_tags: Optional[Sequence[_builtins.str]] = None):
         """
-        :param Sequence['NetworktemplateAclPolicyActionArgs'] actions: ACL Policy Actions:
-                 - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
-                 - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
-        :param Sequence[_builtins.str] src_tags: ACL Policy Source Tags:
-                 - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
-                 - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+        :param Sequence['NetworktemplateAclPolicyActionArgs'] actions: Destination tag actions evaluated for sources matching this ACL policy
+        :param _builtins.bool disabled: Whether this ACL policy is disabled
+        :param _builtins.str name: Display name of the ACL policy
+        :param Sequence[_builtins.str] src_tags: Source ACL tags that select traffic for this ACL policy
         """
         if actions is not None:
             pulumi.set(__self__, "actions", actions)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if src_tags is not None:
@@ -832,24 +837,31 @@ class NetworktemplateAclPolicy(dict):
     @pulumi.getter
     def actions(self) -> Optional[Sequence['outputs.NetworktemplateAclPolicyAction']]:
         """
-        ACL Policy Actions:
-          - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
-          - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+        Destination tag actions evaluated for sources matching this ACL policy
         """
         return pulumi.get(self, "actions")
 
     @_builtins.property
     @pulumi.getter
+    def disabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether this ACL policy is disabled
+        """
+        return pulumi.get(self, "disabled")
+
+    @_builtins.property
+    @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
+        """
+        Display name of the ACL policy
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="srcTags")
     def src_tags(self) -> Optional[Sequence[_builtins.str]]:
         """
-        ACL Policy Source Tags:
-          - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
-          - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+        Source ACL tags that select traffic for this ACL policy
         """
         return pulumi.get(self, "src_tags")
 
@@ -877,7 +889,8 @@ class NetworktemplateAclPolicyAction(dict):
                  dst_tag: _builtins.str,
                  action: Optional[_builtins.str] = None):
         """
-        :param _builtins.str action: enum: `allow`, `deny`
+        :param _builtins.str dst_tag: Destination ACL tag matched by this policy action
+        :param _builtins.str action: Allow or deny decision applied to traffic matching the destination tag
         """
         pulumi.set(__self__, "dst_tag", dst_tag)
         if action is not None:
@@ -886,13 +899,16 @@ class NetworktemplateAclPolicyAction(dict):
     @_builtins.property
     @pulumi.getter(name="dstTag")
     def dst_tag(self) -> _builtins.str:
+        """
+        Destination ACL tag matched by this policy action
+        """
         return pulumi.get(self, "dst_tag")
 
     @_builtins.property
     @pulumi.getter
     def action(self) -> Optional[_builtins.str]:
         """
-        enum: `allow`, `deny`
+        Allow or deny decision applied to traffic matching the destination tag
         """
         return pulumi.get(self, "action")
 
@@ -933,41 +949,27 @@ class NetworktemplateAclTags(dict):
                  specs: Optional[Sequence['outputs.NetworktemplateAclTagsSpec']] = None,
                  subnets: Optional[Sequence[_builtins.str]] = None):
         """
-        :param _builtins.str type: enum: 
-                 * `any`: matching anything not identified
-                 * `dynamic_gbp`: from the gbp_tag received from RADIUS
-                 * `gbp_resource`: can only be used in `dst_tags`
-                 * `mac`
-                 * `network`
-                 * `port_usage`
-                 * `radius_group`
-                 * `resource`: can only be used in `dst_tags`
-                 * `static_gbp`: applying gbp tag against matching conditions
-                 * `subnet`'
-        :param Sequence[_builtins.str] ether_types: ARP / IPv6. Default is `any`
+        :param _builtins.str type: Classifier type that determines which ACL tag fields are evaluated
+        :param Sequence[_builtins.str] ether_types: Layer 2 EtherTypes matched by this ACL tag; defaults to `any`
         :param _builtins.int gbp_tag: Required if
                  - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
                  - `type`==`gbp_resource`
                  - `type`==`static_gbp` (applying gbp tag against matching conditions)
-        :param Sequence[_builtins.str] macs: Required if 
-               - `type`==`mac`
-               - `type`==`static_gbp` if from matching mac
+        :param Sequence[_builtins.str] macs: Client or resource MAC addresses matched by this ACL tag
         :param _builtins.str network: If:
                  * `type`==`mac` (optional. default is `any`)
                  * `type`==`subnet` (optional. default is `any`)
                  * `type`==`network`
                  * `type`==`resource` (optional. default is `any`)
                  * `type`==`static_gbp` if from matching network (vlan)
-        :param _builtins.str port_usage: Required if `type`==`port_usage`
+        :param _builtins.str port_usage: Required if `type`==`port_usage`. Switch port usage name matched by this ACL tag
         :param _builtins.str radius_group: Required if:
                  * `type`==`radius_group`
+                 * `type`==`aruba_user_role`
                  * `type`==`static_gbp`
                if from matching radius_group
-        :param Sequence['NetworktemplateAclTagsSpecArgs'] specs: If `type`==`resource`, `type`==`radius_group`, `type`==`port_usage` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
-        :param Sequence[_builtins.str] subnets: If 
-               - `type`==`subnet` 
-               - `type`==`resource` (optional. default is `any`)
-               - `type`==`static_gbp` if from matching subnet
+        :param Sequence['NetworktemplateAclTagsSpecArgs'] specs: Layer 4 protocol and destination-port constraints for this ACL tag
+        :param Sequence[_builtins.str] subnets: IP subnets matched by this ACL tag
         """
         pulumi.set(__self__, "type", type)
         if ether_types is not None:
@@ -991,17 +993,7 @@ class NetworktemplateAclTags(dict):
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        enum: 
-          * `any`: matching anything not identified
-          * `dynamic_gbp`: from the gbp_tag received from RADIUS
-          * `gbp_resource`: can only be used in `dst_tags`
-          * `mac`
-          * `network`
-          * `port_usage`
-          * `radius_group`
-          * `resource`: can only be used in `dst_tags`
-          * `static_gbp`: applying gbp tag against matching conditions
-          * `subnet`'
+        Classifier type that determines which ACL tag fields are evaluated
         """
         return pulumi.get(self, "type")
 
@@ -1009,7 +1001,7 @@ class NetworktemplateAclTags(dict):
     @pulumi.getter(name="etherTypes")
     def ether_types(self) -> Optional[Sequence[_builtins.str]]:
         """
-        ARP / IPv6. Default is `any`
+        Layer 2 EtherTypes matched by this ACL tag; defaults to `any`
         """
         return pulumi.get(self, "ether_types")
 
@@ -1028,9 +1020,7 @@ class NetworktemplateAclTags(dict):
     @pulumi.getter
     def macs(self) -> Optional[Sequence[_builtins.str]]:
         """
-        Required if 
-        - `type`==`mac`
-        - `type`==`static_gbp` if from matching mac
+        Client or resource MAC addresses matched by this ACL tag
         """
         return pulumi.get(self, "macs")
 
@@ -1051,7 +1041,7 @@ class NetworktemplateAclTags(dict):
     @pulumi.getter(name="portUsage")
     def port_usage(self) -> Optional[_builtins.str]:
         """
-        Required if `type`==`port_usage`
+        Required if `type`==`port_usage`. Switch port usage name matched by this ACL tag
         """
         return pulumi.get(self, "port_usage")
 
@@ -1061,6 +1051,7 @@ class NetworktemplateAclTags(dict):
         """
         Required if:
           * `type`==`radius_group`
+          * `type`==`aruba_user_role`
           * `type`==`static_gbp`
         if from matching radius_group
         """
@@ -1070,7 +1061,7 @@ class NetworktemplateAclTags(dict):
     @pulumi.getter
     def specs(self) -> Optional[Sequence['outputs.NetworktemplateAclTagsSpec']]:
         """
-        If `type`==`resource`, `type`==`radius_group`, `type`==`port_usage` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
+        Layer 4 protocol and destination-port constraints for this ACL tag
         """
         return pulumi.get(self, "specs")
 
@@ -1078,10 +1069,7 @@ class NetworktemplateAclTags(dict):
     @pulumi.getter
     def subnets(self) -> Optional[Sequence[_builtins.str]]:
         """
-        If 
-        - `type`==`subnet` 
-        - `type`==`resource` (optional. default is `any`)
-        - `type`==`static_gbp` if from matching subnet
+        IP subnets matched by this ACL tag
         """
         return pulumi.get(self, "subnets")
 
@@ -1164,9 +1152,11 @@ class NetworktemplateDhcpSnooping(dict):
                  enabled: Optional[_builtins.bool] = None,
                  networks: Optional[Sequence[_builtins.str]] = None):
         """
+        :param _builtins.bool all_networks: Whether DHCP snooping applies to all configured networks
         :param _builtins.bool enable_arp_spoof_check: Enable for dynamic ARP inspection check
         :param _builtins.bool enable_ip_source_guard: Enable for check for forging source IP address
-        :param Sequence[_builtins.str] networks: If `all_networks`==`false`, list of network with DHCP snooping enabled
+        :param _builtins.bool enabled: Whether DHCP snooping is enabled
+        :param Sequence[_builtins.str] networks: Network names with DHCP snooping enabled when `all_networks`==`false`
         """
         if all_networks is not None:
             pulumi.set(__self__, "all_networks", all_networks)
@@ -1182,6 +1172,9 @@ class NetworktemplateDhcpSnooping(dict):
     @_builtins.property
     @pulumi.getter(name="allNetworks")
     def all_networks(self) -> Optional[_builtins.bool]:
+        """
+        Whether DHCP snooping applies to all configured networks
+        """
         return pulumi.get(self, "all_networks")
 
     @_builtins.property
@@ -1203,13 +1196,16 @@ class NetworktemplateDhcpSnooping(dict):
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether DHCP snooping is enabled
+        """
         return pulumi.get(self, "enabled")
 
     @_builtins.property
     @pulumi.getter
     def networks(self) -> Optional[Sequence[_builtins.str]]:
         """
-        If `all_networks`==`false`, list of network with DHCP snooping enabled
+        Network names with DHCP snooping enabled when `all_networks`==`false`
         """
         return pulumi.get(self, "networks")
 
@@ -1243,8 +1239,12 @@ class NetworktemplateExtraRoutes6(dict):
                  no_resolve: Optional[_builtins.bool] = None,
                  preference: Optional[_builtins.int] = None):
         """
-        :param _builtins.str via: Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
-        :param _builtins.bool discard: This takes precedence
+        :param _builtins.str via: Next-hop IPv6 address or ECMP next-hop IPv6 addresses for the route
+        :param _builtins.bool discard: Whether to install a discard route; this takes precedence over next-hop settings
+        :param _builtins.int metric: Route metric for the IPv6 static route
+        :param Mapping[str, 'NetworktemplateExtraRoutes6NextQualifiedArgs'] next_qualified: Qualified next-hop settings keyed by IPv6 next-hop address
+        :param _builtins.bool no_resolve: Whether to prevent recursive next-hop resolution for the IPv6 static route
+        :param _builtins.int preference: Route preference for the IPv6 static route
         """
         pulumi.set(__self__, "via", via)
         if discard is not None:
@@ -1262,7 +1262,7 @@ class NetworktemplateExtraRoutes6(dict):
     @pulumi.getter
     def via(self) -> _builtins.str:
         """
-        Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
+        Next-hop IPv6 address or ECMP next-hop IPv6 addresses for the route
         """
         return pulumi.get(self, "via")
 
@@ -1270,28 +1270,40 @@ class NetworktemplateExtraRoutes6(dict):
     @pulumi.getter
     def discard(self) -> Optional[_builtins.bool]:
         """
-        This takes precedence
+        Whether to install a discard route; this takes precedence over next-hop settings
         """
         return pulumi.get(self, "discard")
 
     @_builtins.property
     @pulumi.getter
     def metric(self) -> Optional[_builtins.int]:
+        """
+        Route metric for the IPv6 static route
+        """
         return pulumi.get(self, "metric")
 
     @_builtins.property
     @pulumi.getter(name="nextQualified")
     def next_qualified(self) -> Optional[Mapping[str, 'outputs.NetworktemplateExtraRoutes6NextQualified']]:
+        """
+        Qualified next-hop settings keyed by IPv6 next-hop address
+        """
         return pulumi.get(self, "next_qualified")
 
     @_builtins.property
     @pulumi.getter(name="noResolve")
     def no_resolve(self) -> Optional[_builtins.bool]:
+        """
+        Whether to prevent recursive next-hop resolution for the IPv6 static route
+        """
         return pulumi.get(self, "no_resolve")
 
     @_builtins.property
     @pulumi.getter
     def preference(self) -> Optional[_builtins.int]:
+        """
+        Route preference for the IPv6 static route
+        """
         return pulumi.get(self, "preference")
 
 
@@ -1300,6 +1312,10 @@ class NetworktemplateExtraRoutes6NextQualified(dict):
     def __init__(__self__, *,
                  metric: Optional[_builtins.int] = None,
                  preference: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int metric: Route metric for this qualified IPv6 next hop
+        :param _builtins.int preference: Route preference for this qualified IPv6 next hop
+        """
         if metric is not None:
             pulumi.set(__self__, "metric", metric)
         if preference is not None:
@@ -1308,11 +1324,17 @@ class NetworktemplateExtraRoutes6NextQualified(dict):
     @_builtins.property
     @pulumi.getter
     def metric(self) -> Optional[_builtins.int]:
+        """
+        Route metric for this qualified IPv6 next hop
+        """
         return pulumi.get(self, "metric")
 
     @_builtins.property
     @pulumi.getter
     def preference(self) -> Optional[_builtins.int]:
+        """
+        Route preference for this qualified IPv6 next hop
+        """
         return pulumi.get(self, "preference")
 
 
@@ -1345,8 +1367,12 @@ class NetworktemplateExtraRoutes(dict):
                  no_resolve: Optional[_builtins.bool] = None,
                  preference: Optional[_builtins.int] = None):
         """
-        :param _builtins.str via: Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
-        :param _builtins.bool discard: This takes precedence
+        :param _builtins.str via: Next-hop IPv4 address or ECMP next-hop IPv4 addresses for the route
+        :param _builtins.bool discard: Whether to install a discard route; this takes precedence over next-hop settings
+        :param _builtins.int metric: Route metric for the IPv4 static route
+        :param Mapping[str, 'NetworktemplateExtraRoutesNextQualifiedArgs'] next_qualified: Qualified next-hop settings keyed by IPv4 next-hop address
+        :param _builtins.bool no_resolve: Whether to prevent recursive next-hop resolution for the IPv4 static route
+        :param _builtins.int preference: Route preference for the IPv4 static route
         """
         pulumi.set(__self__, "via", via)
         if discard is not None:
@@ -1364,7 +1390,7 @@ class NetworktemplateExtraRoutes(dict):
     @pulumi.getter
     def via(self) -> _builtins.str:
         """
-        Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
+        Next-hop IPv4 address or ECMP next-hop IPv4 addresses for the route
         """
         return pulumi.get(self, "via")
 
@@ -1372,28 +1398,40 @@ class NetworktemplateExtraRoutes(dict):
     @pulumi.getter
     def discard(self) -> Optional[_builtins.bool]:
         """
-        This takes precedence
+        Whether to install a discard route; this takes precedence over next-hop settings
         """
         return pulumi.get(self, "discard")
 
     @_builtins.property
     @pulumi.getter
     def metric(self) -> Optional[_builtins.int]:
+        """
+        Route metric for the IPv4 static route
+        """
         return pulumi.get(self, "metric")
 
     @_builtins.property
     @pulumi.getter(name="nextQualified")
     def next_qualified(self) -> Optional[Mapping[str, 'outputs.NetworktemplateExtraRoutesNextQualified']]:
+        """
+        Qualified next-hop settings keyed by IPv4 next-hop address
+        """
         return pulumi.get(self, "next_qualified")
 
     @_builtins.property
     @pulumi.getter(name="noResolve")
     def no_resolve(self) -> Optional[_builtins.bool]:
+        """
+        Whether to prevent recursive next-hop resolution for the IPv4 static route
+        """
         return pulumi.get(self, "no_resolve")
 
     @_builtins.property
     @pulumi.getter
     def preference(self) -> Optional[_builtins.int]:
+        """
+        Route preference for the IPv4 static route
+        """
         return pulumi.get(self, "preference")
 
 
@@ -1402,6 +1440,10 @@ class NetworktemplateExtraRoutesNextQualified(dict):
     def __init__(__self__, *,
                  metric: Optional[_builtins.int] = None,
                  preference: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int metric: Route metric for this qualified IPv4 next hop
+        :param _builtins.int preference: Route preference for this qualified IPv4 next hop
+        """
         if metric is not None:
             pulumi.set(__self__, "metric", metric)
         if preference is not None:
@@ -1410,11 +1452,17 @@ class NetworktemplateExtraRoutesNextQualified(dict):
     @_builtins.property
     @pulumi.getter
     def metric(self) -> Optional[_builtins.int]:
+        """
+        Route metric for this qualified IPv4 next hop
+        """
         return pulumi.get(self, "metric")
 
     @_builtins.property
     @pulumi.getter
     def preference(self) -> Optional[_builtins.int]:
+        """
+        Route preference for this qualified IPv4 next hop
+        """
         return pulumi.get(self, "preference")
 
 
@@ -1423,6 +1471,10 @@ class NetworktemplateMistNac(dict):
     def __init__(__self__, *,
                  enabled: Optional[_builtins.bool] = None,
                  network: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool enabled: Whether Mist NAC RadSec is enabled for the switch
+        :param _builtins.str network: Switch network used for Mist NAC RadSec connectivity
+        """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if network is not None:
@@ -1431,11 +1483,17 @@ class NetworktemplateMistNac(dict):
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether Mist NAC RadSec is enabled for the switch
+        """
         return pulumi.get(self, "enabled")
 
     @_builtins.property
     @pulumi.getter
     def network(self) -> Optional[_builtins.str]:
+        """
+        Switch network used for Mist NAC RadSec connectivity
+        """
         return pulumi.get(self, "network")
 
 
@@ -1466,12 +1524,16 @@ class NetworktemplateNetworks(dict):
                  gateway6: Optional[_builtins.str] = None,
                  isolation: Optional[_builtins.bool] = None,
                  isolation_vlan_id: Optional[_builtins.str] = None,
+                 multicast: Optional['outputs.NetworktemplateNetworksMulticast'] = None,
                  subnet: Optional[_builtins.str] = None,
                  subnet6: Optional[_builtins.str] = None):
         """
+        :param _builtins.str vlan_id: VLAN identifier for this switch network
         :param _builtins.str gateway: Only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
         :param _builtins.str gateway6: Only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
         :param _builtins.bool isolation: whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required). NOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set. See also `inter_isolation_network_link` and `community_vlan_id` in port_usage
+        :param _builtins.str isolation_vlan_id: Required when `isolation`==`true`. Unique VLAN ID used for client isolation
+        :param 'NetworktemplateNetworksMulticastArgs' multicast: Multicast (IGMP snooping) settings for this VLAN
         :param _builtins.str subnet: Optional for pure switching, required when L3 / routing features are used
         :param _builtins.str subnet6: Optional for pure switching, required when L3 / routing features are used
         """
@@ -1484,6 +1546,8 @@ class NetworktemplateNetworks(dict):
             pulumi.set(__self__, "isolation", isolation)
         if isolation_vlan_id is not None:
             pulumi.set(__self__, "isolation_vlan_id", isolation_vlan_id)
+        if multicast is not None:
+            pulumi.set(__self__, "multicast", multicast)
         if subnet is not None:
             pulumi.set(__self__, "subnet", subnet)
         if subnet6 is not None:
@@ -1492,6 +1556,9 @@ class NetworktemplateNetworks(dict):
     @_builtins.property
     @pulumi.getter(name="vlanId")
     def vlan_id(self) -> _builtins.str:
+        """
+        VLAN identifier for this switch network
+        """
         return pulumi.get(self, "vlan_id")
 
     @_builtins.property
@@ -1521,7 +1588,18 @@ class NetworktemplateNetworks(dict):
     @_builtins.property
     @pulumi.getter(name="isolationVlanId")
     def isolation_vlan_id(self) -> Optional[_builtins.str]:
+        """
+        Required when `isolation`==`true`. Unique VLAN ID used for client isolation
+        """
         return pulumi.get(self, "isolation_vlan_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def multicast(self) -> Optional['outputs.NetworktemplateNetworksMulticast']:
+        """
+        Multicast (IGMP snooping) settings for this VLAN
+        """
+        return pulumi.get(self, "multicast")
 
     @_builtins.property
     @pulumi.getter
@@ -1538,6 +1616,54 @@ class NetworktemplateNetworks(dict):
         Optional for pure switching, required when L3 / routing features are used
         """
         return pulumi.get(self, "subnet6")
+
+
+@pulumi.output_type
+class NetworktemplateNetworksMulticast(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "igmpVersion":
+            suggest = "igmp_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworktemplateNetworksMulticast. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworktemplateNetworksMulticast.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworktemplateNetworksMulticast.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None,
+                 igmp_version: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool enabled: Whether to enable IGMP snooping on this VLAN
+        :param _builtins.str igmp_version: IGMP version. '2' (default, ASM/IGMPv2) / '3' (SSM/IGMPv3)
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if igmp_version is not None:
+            pulumi.set(__self__, "igmp_version", igmp_version)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether to enable IGMP snooping on this VLAN
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="igmpVersion")
+    def igmp_version(self) -> Optional[_builtins.str]:
+        """
+        IGMP version. '2' (default, ASM/IGMPv2) / '3' (SSM/IGMPv3)
+        """
+        return pulumi.get(self, "igmp_version")
 
 
 @pulumi.output_type
@@ -1564,7 +1690,9 @@ class NetworktemplateOspfAreas(dict):
                  include_loopback: Optional[_builtins.bool] = None,
                  type: Optional[_builtins.str] = None):
         """
-        :param _builtins.str type: OSPF type. enum: `default`, `nssa`, `stub`
+        :param Mapping[str, 'NetworktemplateOspfAreasNetworksArgs'] networks: OSPF network settings keyed by network name
+        :param _builtins.bool include_loopback: Whether loopback interfaces are included in this OSPF area
+        :param _builtins.str type: Area type for this OSPF area
         """
         pulumi.set(__self__, "networks", networks)
         if include_loopback is not None:
@@ -1575,18 +1703,24 @@ class NetworktemplateOspfAreas(dict):
     @_builtins.property
     @pulumi.getter
     def networks(self) -> Mapping[str, 'outputs.NetworktemplateOspfAreasNetworks']:
+        """
+        OSPF network settings keyed by network name
+        """
         return pulumi.get(self, "networks")
 
     @_builtins.property
     @pulumi.getter(name="includeLoopback")
     def include_loopback(self) -> Optional[_builtins.bool]:
+        """
+        Whether loopback interfaces are included in this OSPF area
+        """
         return pulumi.get(self, "include_loopback")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
         """
-        OSPF type. enum: `default`, `nssa`, `stub`
+        Area type for this OSPF area
         """
         return pulumi.get(self, "type")
 
@@ -1644,8 +1778,14 @@ class NetworktemplateOspfAreasNetworks(dict):
         """
         :param Mapping[str, _builtins.str] auth_keys: Required if `auth_type`==`md5`. Property key is the key number
         :param _builtins.str auth_password: Required if `auth_type`==`password`, the password, max length is 8
-        :param _builtins.str auth_type: auth type. enum: `md5`, `none`, `password`
-        :param _builtins.str interface_type: interface type (nbma = non-broadcast multi-access). enum: `broadcast`, `nbma`, `p2mp`, `p2p`
+        :param _builtins.str auth_type: Authentication method used by this OSPF network
+        :param _builtins.int bfd_minimum_interval: Minimum BFD interval for this OSPF network, in milliseconds
+        :param _builtins.int dead_interval: OSPF dead interval for this network, in seconds
+        :param _builtins.str export_policy: Routing policy used to export routes from this OSPF network
+        :param _builtins.int hello_interval: OSPF hello interval for this network, in seconds
+        :param _builtins.str import_policy: Routing policy used to import routes for this OSPF network
+        :param _builtins.str interface_type: OSPF interface type used for this network
+        :param _builtins.int metric: OSPF metric assigned to this network
         :param _builtins.bool no_readvertise_to_overlay: By default, we'll re-advertise all learned OSPF routes toward overlay
         :param _builtins.bool passive: Whether to send OSPF-Hello
         """
@@ -1694,46 +1834,64 @@ class NetworktemplateOspfAreasNetworks(dict):
     @pulumi.getter(name="authType")
     def auth_type(self) -> Optional[_builtins.str]:
         """
-        auth type. enum: `md5`, `none`, `password`
+        Authentication method used by this OSPF network
         """
         return pulumi.get(self, "auth_type")
 
     @_builtins.property
     @pulumi.getter(name="bfdMinimumInterval")
     def bfd_minimum_interval(self) -> Optional[_builtins.int]:
+        """
+        Minimum BFD interval for this OSPF network, in milliseconds
+        """
         return pulumi.get(self, "bfd_minimum_interval")
 
     @_builtins.property
     @pulumi.getter(name="deadInterval")
     def dead_interval(self) -> Optional[_builtins.int]:
+        """
+        OSPF dead interval for this network, in seconds
+        """
         return pulumi.get(self, "dead_interval")
 
     @_builtins.property
     @pulumi.getter(name="exportPolicy")
     def export_policy(self) -> Optional[_builtins.str]:
+        """
+        Routing policy used to export routes from this OSPF network
+        """
         return pulumi.get(self, "export_policy")
 
     @_builtins.property
     @pulumi.getter(name="helloInterval")
     def hello_interval(self) -> Optional[_builtins.int]:
+        """
+        OSPF hello interval for this network, in seconds
+        """
         return pulumi.get(self, "hello_interval")
 
     @_builtins.property
     @pulumi.getter(name="importPolicy")
     def import_policy(self) -> Optional[_builtins.str]:
+        """
+        Routing policy used to import routes for this OSPF network
+        """
         return pulumi.get(self, "import_policy")
 
     @_builtins.property
     @pulumi.getter(name="interfaceType")
     def interface_type(self) -> Optional[_builtins.str]:
         """
-        interface type (nbma = non-broadcast multi-access). enum: `broadcast`, `nbma`, `p2mp`, `p2p`
+        OSPF interface type used for this network
         """
         return pulumi.get(self, "interface_type")
 
     @_builtins.property
     @pulumi.getter
     def metric(self) -> Optional[_builtins.int]:
+        """
+        OSPF metric assigned to this network
+        """
         return pulumi.get(self, "metric")
 
     @_builtins.property
@@ -1790,9 +1948,9 @@ class NetworktemplatePortMirroring(dict):
                  output_network: Optional[_builtins.str] = None,
                  output_port_id: Optional[_builtins.str] = None):
         """
-        :param Sequence[_builtins.str] input_networks_ingresses: At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
-        :param Sequence[_builtins.str] input_port_ids_egresses: At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
-        :param Sequence[_builtins.str] input_port_ids_ingresses: At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
+        :param Sequence[_builtins.str] input_networks_ingresses: At least one mirror input source should be specified. Networks whose ingress traffic is mirrored
+        :param Sequence[_builtins.str] input_port_ids_egresses: At least one mirror input source should be specified. Switch ports whose egress traffic is mirrored
+        :param Sequence[_builtins.str] input_port_ids_ingresses: At least one mirror input source should be specified. Switch ports whose ingress traffic is mirrored
         :param _builtins.str output_ip_address: Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
         :param _builtins.str output_network: Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
         :param _builtins.str output_port_id: Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
@@ -1814,7 +1972,7 @@ class NetworktemplatePortMirroring(dict):
     @pulumi.getter(name="inputNetworksIngresses")
     def input_networks_ingresses(self) -> Optional[Sequence[_builtins.str]]:
         """
-        At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
+        At least one mirror input source should be specified. Networks whose ingress traffic is mirrored
         """
         return pulumi.get(self, "input_networks_ingresses")
 
@@ -1822,7 +1980,7 @@ class NetworktemplatePortMirroring(dict):
     @pulumi.getter(name="inputPortIdsEgresses")
     def input_port_ids_egresses(self) -> Optional[Sequence[_builtins.str]]:
         """
-        At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
+        At least one mirror input source should be specified. Switch ports whose egress traffic is mirrored
         """
         return pulumi.get(self, "input_port_ids_egresses")
 
@@ -1830,7 +1988,7 @@ class NetworktemplatePortMirroring(dict):
     @pulumi.getter(name="inputPortIdsIngresses")
     def input_port_ids_ingresses(self) -> Optional[Sequence[_builtins.str]]:
         """
-        At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
+        At least one mirror input source should be specified. Switch ports whose ingress traffic is mirrored
         """
         return pulumi.get(self, "input_port_ids_ingresses")
 
@@ -1918,6 +2076,8 @@ class NetworktemplatePortUsages(dict):
             suggest = "reset_default_when"
         elif key == "serverFailNetwork":
             suggest = "server_fail_network"
+        elif key == "serverFailRetryInterval":
+            suggest = "server_fail_retry_interval"
         elif key == "serverRejectNetwork":
             suggest = "server_reject_network"
         elif key == "stormControl":
@@ -1985,6 +2145,7 @@ class NetworktemplatePortUsages(dict):
                  reset_default_when: Optional[_builtins.str] = None,
                  rules: Optional[Sequence['outputs.NetworktemplatePortUsagesRule']] = None,
                  server_fail_network: Optional[_builtins.str] = None,
+                 server_fail_retry_interval: Optional[_builtins.int] = None,
                  server_reject_network: Optional[_builtins.str] = None,
                  speed: Optional[_builtins.str] = None,
                  storm_control: Optional['outputs.NetworktemplatePortUsagesStormControl'] = None,
@@ -2007,8 +2168,8 @@ class NetworktemplatePortUsages(dict):
         :param _builtins.str description: Only if `mode`!=`dynamic`
         :param _builtins.bool disable_autoneg: Only if `mode`!=`dynamic`. If speed and duplex are specified, whether to disable autonegotiation
         :param _builtins.bool disabled: Only if `mode`!=`dynamic`. Whether the port is disabled
-        :param _builtins.str duplex: Only if `mode`!=`dynamic`. Link connection mode. enum: `auto`, `full`, `half`
-        :param Sequence[_builtins.str] dynamic_vlan_networks: Only if `mode`!=`dynamic` and `port_auth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
+        :param _builtins.str duplex: Only if `mode`!=`dynamic`. Link duplex mode for this port usage
+        :param Sequence[_builtins.str] dynamic_vlan_networks: Only if `mode`!=`dynamic` and `port_auth`==`dot1x`. Networks or VLANs that RADIUS can return for dynamic VLAN assignment
         :param _builtins.bool enable_mac_auth: Only if `mode`!=`dynamic` and `port_auth`==`dot1x`. Whether to enable MAC Auth
         :param _builtins.bool enable_qos: Only if `mode`!=`dynamic`
         :param _builtins.str guest_network: Only if `mode`!=`dynamic` and `port_auth`==`dot1x`. Which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
@@ -2016,24 +2177,25 @@ class NetworktemplatePortUsages(dict):
         :param _builtins.bool inter_switch_link: Only if `mode`!=`dynamic`. `inter_switch_link` is used together with `isolation` under networks. NOTE: `inter_switch_link` works only between Juniper devices. This has to be applied to both ports connected together
         :param _builtins.bool mac_auth_only: Only if `mode`!=`dynamic` and `enable_mac_auth`==`true`
         :param _builtins.bool mac_auth_preferred: Only if `mode`!=`dynamic` + `enable_mac_auth`==`true` + `mac_auth_only`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer mac_auth over dot1x.
-        :param _builtins.str mac_auth_protocol: Only if `mode`!=`dynamic` and `enable_mac_auth` ==`true`. This type is ignored if mist_nac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
+        :param _builtins.str mac_auth_protocol: Only if `mode`!=`dynamic` and `enable_mac_auth`==`true`. MAC authentication protocol to use; ignored if Mist NAC is enabled
         :param _builtins.str mac_limit: Only if `mode`!=`dynamic` max number of mac addresses, default is 0 for unlimited, otherwise range is 1 to 16383 (upper bound constrained by platform)
-        :param _builtins.str mode: `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
+        :param _builtins.str mode: Switching mode for this port usage
         :param _builtins.str mtu: Only if `mode`!=`dynamic` media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. Value between 256 and 9216, default value is 1514.
-        :param Sequence[_builtins.str] networks: Only if `mode`==`trunk`, the list of network/vlans
+        :param Sequence[_builtins.str] networks: Only if `mode`==`trunk`. Network or VLAN names to trunk
         :param _builtins.bool persist_mac: Only if `mode`==`access` and `port_auth`!=`dot1x`. Whether the port should retain dynamically learned MAC addresses
         :param _builtins.bool poe_disabled: Only if `mode`!=`dynamic`. Whether PoE capabilities are disabled for a port
         :param _builtins.bool poe_keep_state_when_reboot: Only if `mode`!=`dynamic`. Whether Perpetual PoE is enabled; keeps PoE state across reboots
-        :param _builtins.str poe_priority: PoE priority. enum: `low`, `high`
-        :param _builtins.str port_auth: Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
+        :param _builtins.str poe_priority: Only if `mode`!=`dynamic`. PoE priority for ports using this port usage
+        :param _builtins.str port_auth: Only if `mode`!=`dynamic`. 802.1X authentication mode for this port usage
         :param _builtins.str port_network: Only if `mode`!=`dynamic`. Native network/vlan for untagged traffic
         :param _builtins.str reauth_interval: Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
-        :param _builtins.str reset_default_when: Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `link_down`, `none` (let the DPC port keep at the current port usage)
-        :param Sequence['NetworktemplatePortUsagesRuleArgs'] rules: Only if `mode`==`dynamic`
+        :param _builtins.str reset_default_when: Only if `mode`==`dynamic`. Condition that resets a dynamic port to the default port usage
+        :param Sequence['NetworktemplatePortUsagesRuleArgs'] rules: Only if `mode`==`dynamic`. Dynamic matching rules that select the port usage to apply
         :param _builtins.str server_fail_network: Only if `mode`!=`dynamic` and `port_auth`==`dot1x`. Sets server fail fallback vlan
-        :param _builtins.str server_reject_network: Only if `mode`!=`dynamic` and `port_auth`==`dot1x`. When radius server reject / fails
-        :param _builtins.str speed: Only if `mode`!=`dynamic`, Port speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
-        :param 'NetworktemplatePortUsagesStormControlArgs' storm_control: Switch storm control. Only if `mode`!=`dynamic`
+        :param _builtins.int server_fail_retry_interval: Only if `mode`!=`dynamic` and `port_auth`==`dot1x`. Interval, in seconds. Sets the wait time before retrying authentication after RADIUS failure to reduce client flapping. Range 120-65535
+        :param _builtins.str server_reject_network: Only if `mode`!=`dynamic` and `port_auth`==`dot1x`. When RADIUS server reject / fails
+        :param _builtins.str speed: Only if `mode`!=`dynamic`. Link speed for this port usage
+        :param 'NetworktemplatePortUsagesStormControlArgs' storm_control: Only if `mode`!=`dynamic`. Storm-control settings for this port usage
         :param _builtins.bool stp_disable: Only if `mode`!=`dynamic` and `stp_required`==`false`. Drop bridge protocol data units (BPDUs ) that enter any interface or a specified interface
         :param _builtins.bool stp_edge: Only if `mode`!=`dynamic`. When enabled, the port is not expected to receive BPDU frames
         :param _builtins.bool stp_no_root_port: Only if `mode`!=`dynamic`
@@ -2111,6 +2273,8 @@ class NetworktemplatePortUsages(dict):
             pulumi.set(__self__, "rules", rules)
         if server_fail_network is not None:
             pulumi.set(__self__, "server_fail_network", server_fail_network)
+        if server_fail_retry_interval is not None:
+            pulumi.set(__self__, "server_fail_retry_interval", server_fail_retry_interval)
         if server_reject_network is not None:
             pulumi.set(__self__, "server_reject_network", server_reject_network)
         if speed is not None:
@@ -2218,7 +2382,7 @@ class NetworktemplatePortUsages(dict):
     @pulumi.getter
     def duplex(self) -> Optional[_builtins.str]:
         """
-        Only if `mode`!=`dynamic`. Link connection mode. enum: `auto`, `full`, `half`
+        Only if `mode`!=`dynamic`. Link duplex mode for this port usage
         """
         return pulumi.get(self, "duplex")
 
@@ -2226,7 +2390,7 @@ class NetworktemplatePortUsages(dict):
     @pulumi.getter(name="dynamicVlanNetworks")
     def dynamic_vlan_networks(self) -> Optional[Sequence[_builtins.str]]:
         """
-        Only if `mode`!=`dynamic` and `port_auth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
+        Only if `mode`!=`dynamic` and `port_auth`==`dot1x`. Networks or VLANs that RADIUS can return for dynamic VLAN assignment
         """
         return pulumi.get(self, "dynamic_vlan_networks")
 
@@ -2290,7 +2454,7 @@ class NetworktemplatePortUsages(dict):
     @pulumi.getter(name="macAuthProtocol")
     def mac_auth_protocol(self) -> Optional[_builtins.str]:
         """
-        Only if `mode`!=`dynamic` and `enable_mac_auth` ==`true`. This type is ignored if mist_nac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
+        Only if `mode`!=`dynamic` and `enable_mac_auth`==`true`. MAC authentication protocol to use; ignored if Mist NAC is enabled
         """
         return pulumi.get(self, "mac_auth_protocol")
 
@@ -2306,7 +2470,7 @@ class NetworktemplatePortUsages(dict):
     @pulumi.getter
     def mode(self) -> Optional[_builtins.str]:
         """
-        `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
+        Switching mode for this port usage
         """
         return pulumi.get(self, "mode")
 
@@ -2322,7 +2486,7 @@ class NetworktemplatePortUsages(dict):
     @pulumi.getter
     def networks(self) -> Optional[Sequence[_builtins.str]]:
         """
-        Only if `mode`==`trunk`, the list of network/vlans
+        Only if `mode`==`trunk`. Network or VLAN names to trunk
         """
         return pulumi.get(self, "networks")
 
@@ -2354,7 +2518,7 @@ class NetworktemplatePortUsages(dict):
     @pulumi.getter(name="poePriority")
     def poe_priority(self) -> Optional[_builtins.str]:
         """
-        PoE priority. enum: `low`, `high`
+        Only if `mode`!=`dynamic`. PoE priority for ports using this port usage
         """
         return pulumi.get(self, "poe_priority")
 
@@ -2362,7 +2526,7 @@ class NetworktemplatePortUsages(dict):
     @pulumi.getter(name="portAuth")
     def port_auth(self) -> Optional[_builtins.str]:
         """
-        Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
+        Only if `mode`!=`dynamic`. 802.1X authentication mode for this port usage
         """
         return pulumi.get(self, "port_auth")
 
@@ -2386,7 +2550,7 @@ class NetworktemplatePortUsages(dict):
     @pulumi.getter(name="resetDefaultWhen")
     def reset_default_when(self) -> Optional[_builtins.str]:
         """
-        Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `link_down`, `none` (let the DPC port keep at the current port usage)
+        Only if `mode`==`dynamic`. Condition that resets a dynamic port to the default port usage
         """
         return pulumi.get(self, "reset_default_when")
 
@@ -2394,7 +2558,7 @@ class NetworktemplatePortUsages(dict):
     @pulumi.getter
     def rules(self) -> Optional[Sequence['outputs.NetworktemplatePortUsagesRule']]:
         """
-        Only if `mode`==`dynamic`
+        Only if `mode`==`dynamic`. Dynamic matching rules that select the port usage to apply
         """
         return pulumi.get(self, "rules")
 
@@ -2407,10 +2571,18 @@ class NetworktemplatePortUsages(dict):
         return pulumi.get(self, "server_fail_network")
 
     @_builtins.property
+    @pulumi.getter(name="serverFailRetryInterval")
+    def server_fail_retry_interval(self) -> Optional[_builtins.int]:
+        """
+        Only if `mode`!=`dynamic` and `port_auth`==`dot1x`. Interval, in seconds. Sets the wait time before retrying authentication after RADIUS failure to reduce client flapping. Range 120-65535
+        """
+        return pulumi.get(self, "server_fail_retry_interval")
+
+    @_builtins.property
     @pulumi.getter(name="serverRejectNetwork")
     def server_reject_network(self) -> Optional[_builtins.str]:
         """
-        Only if `mode`!=`dynamic` and `port_auth`==`dot1x`. When radius server reject / fails
+        Only if `mode`!=`dynamic` and `port_auth`==`dot1x`. When RADIUS server reject / fails
         """
         return pulumi.get(self, "server_reject_network")
 
@@ -2418,7 +2590,7 @@ class NetworktemplatePortUsages(dict):
     @pulumi.getter
     def speed(self) -> Optional[_builtins.str]:
         """
-        Only if `mode`!=`dynamic`, Port speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+        Only if `mode`!=`dynamic`. Link speed for this port usage
         """
         return pulumi.get(self, "speed")
 
@@ -2426,7 +2598,7 @@ class NetworktemplatePortUsages(dict):
     @pulumi.getter(name="stormControl")
     def storm_control(self) -> Optional['outputs.NetworktemplatePortUsagesStormControl']:
         """
-        Switch storm control. Only if `mode`!=`dynamic`
+        Only if `mode`!=`dynamic`. Storm-control settings for this port usage
         """
         return pulumi.get(self, "storm_control")
 
@@ -2522,13 +2694,14 @@ class NetworktemplatePortUsagesRule(dict):
                  expression: Optional[_builtins.str] = None,
                  usage: Optional[_builtins.str] = None):
         """
-        :param _builtins.str src: enum: `link_peermac`, `lldp_chassis_id`, `lldp_hardware_revision`, `lldp_manufacturer_name`, `lldp_oui`, `lldp_serial_number`, `lldp_system_description`, `lldp_system_name`, `radius_dynamicfilter`, `radius_usermac`, `radius_username`
+        :param _builtins.str src: Source attribute evaluated by this dynamic rule
         :param _builtins.str description: Optional description of the rule
-        :param Sequence[_builtins.str] equals_anies: Use `equals_any` to match any item in a list
+        :param _builtins.str equals: Exact value that the selected source attribute must match
+        :param Sequence[_builtins.str] equals_anies: List of values where any match satisfies this dynamic rule
         :param _builtins.str expression: "[0:3]":"abcdef" > "abc"
                "split(.)[1]": "a.b.c" > "b"
                "split(-)[1][0:3]: "a1234-b5678-c90" > "b56"
-        :param _builtins.str usage: `port_usage` name
+        :param _builtins.str usage: Port usage name to apply when this dynamic rule matches
         """
         pulumi.set(__self__, "src", src)
         if description is not None:
@@ -2546,7 +2719,7 @@ class NetworktemplatePortUsagesRule(dict):
     @pulumi.getter
     def src(self) -> _builtins.str:
         """
-        enum: `link_peermac`, `lldp_chassis_id`, `lldp_hardware_revision`, `lldp_manufacturer_name`, `lldp_oui`, `lldp_serial_number`, `lldp_system_description`, `lldp_system_name`, `radius_dynamicfilter`, `radius_usermac`, `radius_username`
+        Source attribute evaluated by this dynamic rule
         """
         return pulumi.get(self, "src")
 
@@ -2561,13 +2734,16 @@ class NetworktemplatePortUsagesRule(dict):
     @_builtins.property
     @pulumi.getter
     def equals(self) -> Optional[_builtins.str]:
+        """
+        Exact value that the selected source attribute must match
+        """
         return pulumi.get(self, "equals")
 
     @_builtins.property
     @pulumi.getter(name="equalsAnies")
     def equals_anies(self) -> Optional[Sequence[_builtins.str]]:
         """
-        Use `equals_any` to match any item in a list
+        List of values where any match satisfies this dynamic rule
         """
         return pulumi.get(self, "equals_anies")
 
@@ -2585,7 +2761,7 @@ class NetworktemplatePortUsagesRule(dict):
     @pulumi.getter
     def usage(self) -> Optional[_builtins.str]:
         """
-        `port_usage` name
+        Port usage name to apply when this dynamic rule matches
         """
         return pulumi.get(self, "usage")
 
@@ -2747,12 +2923,18 @@ class NetworktemplateRadiusConfig(dict):
                  network: Optional[_builtins.str] = None,
                  source_ip: Optional[_builtins.str] = None):
         """
-        :param _builtins.int acct_interim_interval: How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
-        :param _builtins.str auth_server_selection: enum: `ordered`, `unordered`
-        :param _builtins.int auth_servers_retries: Radius auth session retries
-        :param _builtins.int auth_servers_timeout: Radius auth session timeout
+        :param _builtins.bool acct_immediate_update: Whether immediate RADIUS accounting updates are sent
+        :param _builtins.int acct_interim_interval: How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled
+        :param Sequence['NetworktemplateRadiusConfigAcctServerArgs'] acct_servers: RADIUS accounting servers used by this switch configuration
+        :param _builtins.str auth_server_selection: Selection strategy for RADIUS authentication servers
+        :param Sequence['NetworktemplateRadiusConfigAuthServerArgs'] auth_servers: RADIUS authentication servers used by this switch configuration
+        :param _builtins.int auth_servers_retries: RADIUS auth session retries
+        :param _builtins.int auth_servers_timeout: RADIUS auth session timeout
+        :param _builtins.bool coa_enabled: Whether RADIUS Change of Authorization (CoA) is enabled
+        :param _builtins.str coa_port: UDP port used for RADIUS Change of Authorization (CoA)
+        :param _builtins.bool fast_dot1x_timers: Whether fast 802.1X timers are enabled for RADIUS authentication
         :param _builtins.str network: Use `network`or `source_ip`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
-        :param _builtins.str source_ip: Use `network`or `source_ip`
+        :param _builtins.str source_ip: Use `network` or `source_ip`. Explicit source IP address for RADIUS traffic
         """
         if acct_immediate_update is not None:
             pulumi.set(__self__, "acct_immediate_update", acct_immediate_update)
@@ -2782,39 +2964,48 @@ class NetworktemplateRadiusConfig(dict):
     @_builtins.property
     @pulumi.getter(name="acctImmediateUpdate")
     def acct_immediate_update(self) -> Optional[_builtins.bool]:
+        """
+        Whether immediate RADIUS accounting updates are sent
+        """
         return pulumi.get(self, "acct_immediate_update")
 
     @_builtins.property
     @pulumi.getter(name="acctInterimInterval")
     def acct_interim_interval(self) -> Optional[_builtins.int]:
         """
-        How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+        How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled
         """
         return pulumi.get(self, "acct_interim_interval")
 
     @_builtins.property
     @pulumi.getter(name="acctServers")
     def acct_servers(self) -> Optional[Sequence['outputs.NetworktemplateRadiusConfigAcctServer']]:
+        """
+        RADIUS accounting servers used by this switch configuration
+        """
         return pulumi.get(self, "acct_servers")
 
     @_builtins.property
     @pulumi.getter(name="authServerSelection")
     def auth_server_selection(self) -> Optional[_builtins.str]:
         """
-        enum: `ordered`, `unordered`
+        Selection strategy for RADIUS authentication servers
         """
         return pulumi.get(self, "auth_server_selection")
 
     @_builtins.property
     @pulumi.getter(name="authServers")
     def auth_servers(self) -> Optional[Sequence['outputs.NetworktemplateRadiusConfigAuthServer']]:
+        """
+        RADIUS authentication servers used by this switch configuration
+        """
         return pulumi.get(self, "auth_servers")
 
     @_builtins.property
     @pulumi.getter(name="authServersRetries")
     def auth_servers_retries(self) -> Optional[_builtins.int]:
         """
-        Radius auth session retries
+        RADIUS auth session retries
         """
         return pulumi.get(self, "auth_servers_retries")
 
@@ -2822,23 +3013,32 @@ class NetworktemplateRadiusConfig(dict):
     @pulumi.getter(name="authServersTimeout")
     def auth_servers_timeout(self) -> Optional[_builtins.int]:
         """
-        Radius auth session timeout
+        RADIUS auth session timeout
         """
         return pulumi.get(self, "auth_servers_timeout")
 
     @_builtins.property
     @pulumi.getter(name="coaEnabled")
     def coa_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether RADIUS Change of Authorization (CoA) is enabled
+        """
         return pulumi.get(self, "coa_enabled")
 
     @_builtins.property
     @pulumi.getter(name="coaPort")
     def coa_port(self) -> Optional[_builtins.str]:
+        """
+        UDP port used for RADIUS Change of Authorization (CoA)
+        """
         return pulumi.get(self, "coa_port")
 
     @_builtins.property
     @pulumi.getter(name="fastDot1xTimers")
     def fast_dot1x_timers(self) -> Optional[_builtins.bool]:
+        """
+        Whether fast 802.1X timers are enabled for RADIUS authentication
+        """
         return pulumi.get(self, "fast_dot1x_timers")
 
     @_builtins.property
@@ -2853,7 +3053,7 @@ class NetworktemplateRadiusConfig(dict):
     @pulumi.getter(name="sourceIp")
     def source_ip(self) -> Optional[_builtins.str]:
         """
-        Use `network`or `source_ip`
+        Use `network` or `source_ip`. Explicit source IP address for RADIUS traffic
         """
         return pulumi.get(self, "source_ip")
 
@@ -2892,9 +3092,13 @@ class NetworktemplateRadiusConfigAcctServer(dict):
                  keywrap_mack: Optional[_builtins.str] = None,
                  port: Optional[_builtins.str] = None):
         """
-        :param _builtins.str host: IP/ hostname of RADIUS server
-        :param _builtins.str secret: Secret of RADIUS server
-        :param _builtins.str keywrap_format: enum: `ascii`, `hex`
+        :param _builtins.str host: Address or hostname of the RADIUS accounting server
+        :param _builtins.str secret: Shared secret used with this RADIUS accounting server
+        :param _builtins.bool keywrap_enabled: Whether RADIUS keywrap is enabled for messages sent to this accounting server
+        :param _builtins.str keywrap_format: Encoding format for RADIUS keywrap KEK and MACK values
+        :param _builtins.str keywrap_kek: RADIUS keywrap key encryption key (KEK)
+        :param _builtins.str keywrap_mack: RADIUS keywrap message authentication code key (MACK)
+        :param _builtins.str port: UDP port used by the RADIUS accounting server
         """
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "secret", secret)
@@ -2913,7 +3117,7 @@ class NetworktemplateRadiusConfigAcctServer(dict):
     @pulumi.getter
     def host(self) -> _builtins.str:
         """
-        IP/ hostname of RADIUS server
+        Address or hostname of the RADIUS accounting server
         """
         return pulumi.get(self, "host")
 
@@ -2921,36 +3125,48 @@ class NetworktemplateRadiusConfigAcctServer(dict):
     @pulumi.getter
     def secret(self) -> _builtins.str:
         """
-        Secret of RADIUS server
+        Shared secret used with this RADIUS accounting server
         """
         return pulumi.get(self, "secret")
 
     @_builtins.property
     @pulumi.getter(name="keywrapEnabled")
     def keywrap_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether RADIUS keywrap is enabled for messages sent to this accounting server
+        """
         return pulumi.get(self, "keywrap_enabled")
 
     @_builtins.property
     @pulumi.getter(name="keywrapFormat")
     def keywrap_format(self) -> Optional[_builtins.str]:
         """
-        enum: `ascii`, `hex`
+        Encoding format for RADIUS keywrap KEK and MACK values
         """
         return pulumi.get(self, "keywrap_format")
 
     @_builtins.property
     @pulumi.getter(name="keywrapKek")
     def keywrap_kek(self) -> Optional[_builtins.str]:
+        """
+        RADIUS keywrap key encryption key (KEK)
+        """
         return pulumi.get(self, "keywrap_kek")
 
     @_builtins.property
     @pulumi.getter(name="keywrapMack")
     def keywrap_mack(self) -> Optional[_builtins.str]:
+        """
+        RADIUS keywrap message authentication code key (MACK)
+        """
         return pulumi.get(self, "keywrap_mack")
 
     @_builtins.property
     @pulumi.getter
     def port(self) -> Optional[_builtins.str]:
+        """
+        UDP port used by the RADIUS accounting server
+        """
         return pulumi.get(self, "port")
 
 
@@ -2991,9 +3207,13 @@ class NetworktemplateRadiusConfigAuthServer(dict):
                  port: Optional[_builtins.str] = None,
                  require_message_authenticator: Optional[_builtins.bool] = None):
         """
-        :param _builtins.str host: IP/ hostname of RADIUS server
-        :param _builtins.str secret: Secret of RADIUS server
-        :param _builtins.str keywrap_format: enum: `ascii`, `hex`
+        :param _builtins.str host: Address or hostname of the RADIUS authentication server
+        :param _builtins.str secret: Shared secret used with this RADIUS authentication server
+        :param _builtins.bool keywrap_enabled: Whether RADIUS keywrap is enabled for messages sent to this authentication server
+        :param _builtins.str keywrap_format: Encoding format for RADIUS keywrap KEK and MACK values
+        :param _builtins.str keywrap_kek: RADIUS keywrap key encryption key (KEK)
+        :param _builtins.str keywrap_mack: RADIUS keywrap message authentication code key (MACK)
+        :param _builtins.str port: UDP port used by the RADIUS authentication server
         :param _builtins.bool require_message_authenticator: Whether to require Message-Authenticator in requests
         """
         pulumi.set(__self__, "host", host)
@@ -3015,7 +3235,7 @@ class NetworktemplateRadiusConfigAuthServer(dict):
     @pulumi.getter
     def host(self) -> _builtins.str:
         """
-        IP/ hostname of RADIUS server
+        Address or hostname of the RADIUS authentication server
         """
         return pulumi.get(self, "host")
 
@@ -3023,36 +3243,48 @@ class NetworktemplateRadiusConfigAuthServer(dict):
     @pulumi.getter
     def secret(self) -> _builtins.str:
         """
-        Secret of RADIUS server
+        Shared secret used with this RADIUS authentication server
         """
         return pulumi.get(self, "secret")
 
     @_builtins.property
     @pulumi.getter(name="keywrapEnabled")
     def keywrap_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether RADIUS keywrap is enabled for messages sent to this authentication server
+        """
         return pulumi.get(self, "keywrap_enabled")
 
     @_builtins.property
     @pulumi.getter(name="keywrapFormat")
     def keywrap_format(self) -> Optional[_builtins.str]:
         """
-        enum: `ascii`, `hex`
+        Encoding format for RADIUS keywrap KEK and MACK values
         """
         return pulumi.get(self, "keywrap_format")
 
     @_builtins.property
     @pulumi.getter(name="keywrapKek")
     def keywrap_kek(self) -> Optional[_builtins.str]:
+        """
+        RADIUS keywrap key encryption key (KEK)
+        """
         return pulumi.get(self, "keywrap_kek")
 
     @_builtins.property
     @pulumi.getter(name="keywrapMack")
     def keywrap_mack(self) -> Optional[_builtins.str]:
+        """
+        RADIUS keywrap message authentication code key (MACK)
+        """
         return pulumi.get(self, "keywrap_mack")
 
     @_builtins.property
     @pulumi.getter
     def port(self) -> Optional[_builtins.str]:
+        """
+        UDP port used by the RADIUS authentication server
+        """
         return pulumi.get(self, "port")
 
     @_builtins.property
@@ -3097,8 +3329,16 @@ class NetworktemplateRemoteSyslog(dict):
                  time_format: Optional[_builtins.str] = None,
                  users: Optional[Sequence['outputs.NetworktemplateRemoteSyslogUser']] = None):
         """
-        :param _builtins.str network: If source_address is configured, will use the vlan firstly otherwise use source_ip
-        :param _builtins.str time_format: enum: `millisecond`, `year`, `year millisecond`
+        :param 'NetworktemplateRemoteSyslogArchiveArgs' archive: Retention settings for generated syslog archive files
+        :param Sequence[_builtins.str] cacerts: CA certificates used to verify TLS syslog servers
+        :param 'NetworktemplateRemoteSyslogConsoleArgs' console: Log forwarding filters for console messages sent to remote syslog
+        :param _builtins.bool enabled: Whether remote syslog forwarding is enabled
+        :param Sequence['NetworktemplateRemoteSyslogFileArgs'] files: Local syslog file definitions to generate and forward
+        :param _builtins.str network: Source network used for syslog traffic. If `source_address` is configured, Mist uses the VLAN first; otherwise it uses `source_ip`
+        :param _builtins.bool send_to_all_servers: Whether each log entry is sent to all configured remote syslog servers
+        :param Sequence['NetworktemplateRemoteSyslogServerArgs'] servers: Remote syslog server destinations
+        :param _builtins.str time_format: Timestamp format used in forwarded syslog messages
+        :param Sequence['NetworktemplateRemoteSyslogUserArgs'] users: User-specific syslog logging rules
         """
         if archive is not None:
             pulumi.set(__self__, "archive", archive)
@@ -3124,57 +3364,81 @@ class NetworktemplateRemoteSyslog(dict):
     @_builtins.property
     @pulumi.getter
     def archive(self) -> Optional['outputs.NetworktemplateRemoteSyslogArchive']:
+        """
+        Retention settings for generated syslog archive files
+        """
         return pulumi.get(self, "archive")
 
     @_builtins.property
     @pulumi.getter
     def cacerts(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        CA certificates used to verify TLS syslog servers
+        """
         return pulumi.get(self, "cacerts")
 
     @_builtins.property
     @pulumi.getter
     def console(self) -> Optional['outputs.NetworktemplateRemoteSyslogConsole']:
+        """
+        Log forwarding filters for console messages sent to remote syslog
+        """
         return pulumi.get(self, "console")
 
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether remote syslog forwarding is enabled
+        """
         return pulumi.get(self, "enabled")
 
     @_builtins.property
     @pulumi.getter
     def files(self) -> Optional[Sequence['outputs.NetworktemplateRemoteSyslogFile']]:
+        """
+        Local syslog file definitions to generate and forward
+        """
         return pulumi.get(self, "files")
 
     @_builtins.property
     @pulumi.getter
     def network(self) -> Optional[_builtins.str]:
         """
-        If source_address is configured, will use the vlan firstly otherwise use source_ip
+        Source network used for syslog traffic. If `source_address` is configured, Mist uses the VLAN first; otherwise it uses `source_ip`
         """
         return pulumi.get(self, "network")
 
     @_builtins.property
     @pulumi.getter(name="sendToAllServers")
     def send_to_all_servers(self) -> Optional[_builtins.bool]:
+        """
+        Whether each log entry is sent to all configured remote syslog servers
+        """
         return pulumi.get(self, "send_to_all_servers")
 
     @_builtins.property
     @pulumi.getter
     def servers(self) -> Optional[Sequence['outputs.NetworktemplateRemoteSyslogServer']]:
+        """
+        Remote syslog server destinations
+        """
         return pulumi.get(self, "servers")
 
     @_builtins.property
     @pulumi.getter(name="timeFormat")
     def time_format(self) -> Optional[_builtins.str]:
         """
-        enum: `millisecond`, `year`, `year millisecond`
+        Timestamp format used in forwarded syslog messages
         """
         return pulumi.get(self, "time_format")
 
     @_builtins.property
     @pulumi.getter
     def users(self) -> Optional[Sequence['outputs.NetworktemplateRemoteSyslogUser']]:
+        """
+        User-specific syslog logging rules
+        """
         return pulumi.get(self, "users")
 
 
@@ -3183,6 +3447,10 @@ class NetworktemplateRemoteSyslogArchive(dict):
     def __init__(__self__, *,
                  files: Optional[_builtins.str] = None,
                  size: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str files: Number of archived syslog files to retain
+        :param _builtins.str size: Maximum size of each archived syslog file, such as 5m
+        """
         if files is not None:
             pulumi.set(__self__, "files", files)
         if size is not None:
@@ -3191,11 +3459,17 @@ class NetworktemplateRemoteSyslogArchive(dict):
     @_builtins.property
     @pulumi.getter
     def files(self) -> Optional[_builtins.str]:
+        """
+        Number of archived syslog files to retain
+        """
         return pulumi.get(self, "files")
 
     @_builtins.property
     @pulumi.getter
     def size(self) -> Optional[_builtins.str]:
+        """
+        Maximum size of each archived syslog file, such as 5m
+        """
         return pulumi.get(self, "size")
 
 
@@ -3203,12 +3477,18 @@ class NetworktemplateRemoteSyslogArchive(dict):
 class NetworktemplateRemoteSyslogConsole(dict):
     def __init__(__self__, *,
                  contents: Optional[Sequence['outputs.NetworktemplateRemoteSyslogConsoleContent']] = None):
+        """
+        :param Sequence['NetworktemplateRemoteSyslogConsoleContentArgs'] contents: Syslog facilities and severities forwarded from console logs
+        """
         if contents is not None:
             pulumi.set(__self__, "contents", contents)
 
     @_builtins.property
     @pulumi.getter
     def contents(self) -> Optional[Sequence['outputs.NetworktemplateRemoteSyslogConsoleContent']]:
+        """
+        Syslog facilities and severities forwarded from console logs
+        """
         return pulumi.get(self, "contents")
 
 
@@ -3218,8 +3498,8 @@ class NetworktemplateRemoteSyslogConsoleContent(dict):
                  facility: Optional[_builtins.str] = None,
                  severity: Optional[_builtins.str] = None):
         """
-        :param _builtins.str facility: enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`
-        :param _builtins.str severity: enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
+        :param _builtins.str facility: Syslog facility to match for this selector
+        :param _builtins.str severity: Syslog severity to match for this selector
         """
         if facility is not None:
             pulumi.set(__self__, "facility", facility)
@@ -3230,7 +3510,7 @@ class NetworktemplateRemoteSyslogConsoleContent(dict):
     @pulumi.getter
     def facility(self) -> Optional[_builtins.str]:
         """
-        enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`
+        Syslog facility to match for this selector
         """
         return pulumi.get(self, "facility")
 
@@ -3238,7 +3518,7 @@ class NetworktemplateRemoteSyslogConsoleContent(dict):
     @pulumi.getter
     def severity(self) -> Optional[_builtins.str]:
         """
-        enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
+        Syslog severity to match for this selector
         """
         return pulumi.get(self, "severity")
 
@@ -3275,7 +3555,13 @@ class NetworktemplateRemoteSyslogFile(dict):
                  match: Optional[_builtins.str] = None,
                  structured_data: Optional[_builtins.bool] = None):
         """
-        :param _builtins.bool enable_tls: Only if `protocol`==`tcp`
+        :param 'NetworktemplateRemoteSyslogFileArchiveArgs' archive: Retention settings for this generated syslog file
+        :param Sequence['NetworktemplateRemoteSyslogFileContentArgs'] contents: Syslog facilities and severities written to this file
+        :param _builtins.bool enable_tls: Only if `protocol`==`tcp`, enable TLS for this syslog file destination
+        :param _builtins.bool explicit_priority: Whether to include explicit syslog priority values in file output
+        :param _builtins.str file: Generated syslog file name
+        :param _builtins.str match: Expression used to filter log messages written to this file
+        :param _builtins.bool structured_data: Whether to include structured syslog data in file output
         """
         if archive is not None:
             pulumi.set(__self__, "archive", archive)
@@ -3295,39 +3581,57 @@ class NetworktemplateRemoteSyslogFile(dict):
     @_builtins.property
     @pulumi.getter
     def archive(self) -> Optional['outputs.NetworktemplateRemoteSyslogFileArchive']:
+        """
+        Retention settings for this generated syslog file
+        """
         return pulumi.get(self, "archive")
 
     @_builtins.property
     @pulumi.getter
     def contents(self) -> Optional[Sequence['outputs.NetworktemplateRemoteSyslogFileContent']]:
+        """
+        Syslog facilities and severities written to this file
+        """
         return pulumi.get(self, "contents")
 
     @_builtins.property
     @pulumi.getter(name="enableTls")
     def enable_tls(self) -> Optional[_builtins.bool]:
         """
-        Only if `protocol`==`tcp`
+        Only if `protocol`==`tcp`, enable TLS for this syslog file destination
         """
         return pulumi.get(self, "enable_tls")
 
     @_builtins.property
     @pulumi.getter(name="explicitPriority")
     def explicit_priority(self) -> Optional[_builtins.bool]:
+        """
+        Whether to include explicit syslog priority values in file output
+        """
         return pulumi.get(self, "explicit_priority")
 
     @_builtins.property
     @pulumi.getter
     def file(self) -> Optional[_builtins.str]:
+        """
+        Generated syslog file name
+        """
         return pulumi.get(self, "file")
 
     @_builtins.property
     @pulumi.getter
     def match(self) -> Optional[_builtins.str]:
+        """
+        Expression used to filter log messages written to this file
+        """
         return pulumi.get(self, "match")
 
     @_builtins.property
     @pulumi.getter(name="structuredData")
     def structured_data(self) -> Optional[_builtins.bool]:
+        """
+        Whether to include structured syslog data in file output
+        """
         return pulumi.get(self, "structured_data")
 
 
@@ -3336,6 +3640,10 @@ class NetworktemplateRemoteSyslogFileArchive(dict):
     def __init__(__self__, *,
                  files: Optional[_builtins.str] = None,
                  size: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str files: Number of archived syslog files to retain
+        :param _builtins.str size: Maximum size of each archived syslog file, such as 5m
+        """
         if files is not None:
             pulumi.set(__self__, "files", files)
         if size is not None:
@@ -3344,11 +3652,17 @@ class NetworktemplateRemoteSyslogFileArchive(dict):
     @_builtins.property
     @pulumi.getter
     def files(self) -> Optional[_builtins.str]:
+        """
+        Number of archived syslog files to retain
+        """
         return pulumi.get(self, "files")
 
     @_builtins.property
     @pulumi.getter
     def size(self) -> Optional[_builtins.str]:
+        """
+        Maximum size of each archived syslog file, such as 5m
+        """
         return pulumi.get(self, "size")
 
 
@@ -3358,8 +3672,8 @@ class NetworktemplateRemoteSyslogFileContent(dict):
                  facility: Optional[_builtins.str] = None,
                  severity: Optional[_builtins.str] = None):
         """
-        :param _builtins.str facility: enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`
-        :param _builtins.str severity: enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
+        :param _builtins.str facility: Syslog facility to match for this selector
+        :param _builtins.str severity: Syslog severity to match for this selector
         """
         if facility is not None:
             pulumi.set(__self__, "facility", facility)
@@ -3370,7 +3684,7 @@ class NetworktemplateRemoteSyslogFileContent(dict):
     @pulumi.getter
     def facility(self) -> Optional[_builtins.str]:
         """
-        enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`
+        Syslog facility to match for this selector
         """
         return pulumi.get(self, "facility")
 
@@ -3378,7 +3692,7 @@ class NetworktemplateRemoteSyslogFileContent(dict):
     @pulumi.getter
     def severity(self) -> Optional[_builtins.str]:
         """
-        enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
+        Syslog severity to match for this selector
         """
         return pulumi.get(self, "severity")
 
@@ -3425,11 +3739,19 @@ class NetworktemplateRemoteSyslogServer(dict):
                  structured_data: Optional[_builtins.bool] = None,
                  tag: Optional[_builtins.str] = None):
         """
-        :param _builtins.str facility: enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`
-        :param _builtins.str protocol: enum: `tcp`, `udp`
-        :param _builtins.str server_name: Name of the server
-        :param _builtins.str severity: enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
-        :param _builtins.str source_address: If source_address is configured, will use the vlan firstly otherwise use source_ip
+        :param Sequence['NetworktemplateRemoteSyslogServerContentArgs'] contents: Syslog facilities and severities sent to this server
+        :param _builtins.bool explicit_priority: Whether to include explicit syslog priority values in messages sent to this server
+        :param _builtins.str facility: Default syslog facility for messages sent to this server
+        :param _builtins.str host: Address or hostname of the remote syslog server
+        :param _builtins.str match: Expression used to filter log messages sent to this server
+        :param _builtins.str port: Network port used by the remote syslog server
+        :param _builtins.str protocol: Transport protocol used for this remote syslog server
+        :param _builtins.str routing_instance: Routing instance used to reach this remote syslog server
+        :param _builtins.str server_name: TLS server name used when verifying the remote syslog server certificate
+        :param _builtins.str severity: Default syslog severity for messages sent to this server
+        :param _builtins.str source_address: Source address for syslog traffic. If configured, Mist uses the VLAN first; otherwise it uses `source_ip`
+        :param _builtins.bool structured_data: Whether to include structured syslog data in messages sent to this server
+        :param _builtins.str tag: Syslog tag value added to messages sent to this server
         """
         if contents is not None:
             pulumi.set(__self__, "contents", contents)
@@ -3461,54 +3783,72 @@ class NetworktemplateRemoteSyslogServer(dict):
     @_builtins.property
     @pulumi.getter
     def contents(self) -> Optional[Sequence['outputs.NetworktemplateRemoteSyslogServerContent']]:
+        """
+        Syslog facilities and severities sent to this server
+        """
         return pulumi.get(self, "contents")
 
     @_builtins.property
     @pulumi.getter(name="explicitPriority")
     def explicit_priority(self) -> Optional[_builtins.bool]:
+        """
+        Whether to include explicit syslog priority values in messages sent to this server
+        """
         return pulumi.get(self, "explicit_priority")
 
     @_builtins.property
     @pulumi.getter
     def facility(self) -> Optional[_builtins.str]:
         """
-        enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`
+        Default syslog facility for messages sent to this server
         """
         return pulumi.get(self, "facility")
 
     @_builtins.property
     @pulumi.getter
     def host(self) -> Optional[_builtins.str]:
+        """
+        Address or hostname of the remote syslog server
+        """
         return pulumi.get(self, "host")
 
     @_builtins.property
     @pulumi.getter
     def match(self) -> Optional[_builtins.str]:
+        """
+        Expression used to filter log messages sent to this server
+        """
         return pulumi.get(self, "match")
 
     @_builtins.property
     @pulumi.getter
     def port(self) -> Optional[_builtins.str]:
+        """
+        Network port used by the remote syslog server
+        """
         return pulumi.get(self, "port")
 
     @_builtins.property
     @pulumi.getter
     def protocol(self) -> Optional[_builtins.str]:
         """
-        enum: `tcp`, `udp`
+        Transport protocol used for this remote syslog server
         """
         return pulumi.get(self, "protocol")
 
     @_builtins.property
     @pulumi.getter(name="routingInstance")
     def routing_instance(self) -> Optional[_builtins.str]:
+        """
+        Routing instance used to reach this remote syslog server
+        """
         return pulumi.get(self, "routing_instance")
 
     @_builtins.property
     @pulumi.getter(name="serverName")
     def server_name(self) -> Optional[_builtins.str]:
         """
-        Name of the server
+        TLS server name used when verifying the remote syslog server certificate
         """
         return pulumi.get(self, "server_name")
 
@@ -3516,7 +3856,7 @@ class NetworktemplateRemoteSyslogServer(dict):
     @pulumi.getter
     def severity(self) -> Optional[_builtins.str]:
         """
-        enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
+        Default syslog severity for messages sent to this server
         """
         return pulumi.get(self, "severity")
 
@@ -3524,18 +3864,24 @@ class NetworktemplateRemoteSyslogServer(dict):
     @pulumi.getter(name="sourceAddress")
     def source_address(self) -> Optional[_builtins.str]:
         """
-        If source_address is configured, will use the vlan firstly otherwise use source_ip
+        Source address for syslog traffic. If configured, Mist uses the VLAN first; otherwise it uses `source_ip`
         """
         return pulumi.get(self, "source_address")
 
     @_builtins.property
     @pulumi.getter(name="structuredData")
     def structured_data(self) -> Optional[_builtins.bool]:
+        """
+        Whether to include structured syslog data in messages sent to this server
+        """
         return pulumi.get(self, "structured_data")
 
     @_builtins.property
     @pulumi.getter
     def tag(self) -> Optional[_builtins.str]:
+        """
+        Syslog tag value added to messages sent to this server
+        """
         return pulumi.get(self, "tag")
 
 
@@ -3545,8 +3891,8 @@ class NetworktemplateRemoteSyslogServerContent(dict):
                  facility: Optional[_builtins.str] = None,
                  severity: Optional[_builtins.str] = None):
         """
-        :param _builtins.str facility: enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`
-        :param _builtins.str severity: enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
+        :param _builtins.str facility: Syslog facility to match for this selector
+        :param _builtins.str severity: Syslog severity to match for this selector
         """
         if facility is not None:
             pulumi.set(__self__, "facility", facility)
@@ -3557,7 +3903,7 @@ class NetworktemplateRemoteSyslogServerContent(dict):
     @pulumi.getter
     def facility(self) -> Optional[_builtins.str]:
         """
-        enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`
+        Syslog facility to match for this selector
         """
         return pulumi.get(self, "facility")
 
@@ -3565,7 +3911,7 @@ class NetworktemplateRemoteSyslogServerContent(dict):
     @pulumi.getter
     def severity(self) -> Optional[_builtins.str]:
         """
-        enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
+        Syslog severity to match for this selector
         """
         return pulumi.get(self, "severity")
 
@@ -3576,6 +3922,11 @@ class NetworktemplateRemoteSyslogUser(dict):
                  contents: Optional[Sequence['outputs.NetworktemplateRemoteSyslogUserContent']] = None,
                  match: Optional[_builtins.str] = None,
                  user: Optional[_builtins.str] = None):
+        """
+        :param Sequence['NetworktemplateRemoteSyslogUserContentArgs'] contents: Syslog facilities and severities logged for this user rule
+        :param _builtins.str match: Expression used to filter user log messages
+        :param _builtins.str user: Account name or wildcard matched by this syslog rule
+        """
         if contents is not None:
             pulumi.set(__self__, "contents", contents)
         if match is not None:
@@ -3586,16 +3937,25 @@ class NetworktemplateRemoteSyslogUser(dict):
     @_builtins.property
     @pulumi.getter
     def contents(self) -> Optional[Sequence['outputs.NetworktemplateRemoteSyslogUserContent']]:
+        """
+        Syslog facilities and severities logged for this user rule
+        """
         return pulumi.get(self, "contents")
 
     @_builtins.property
     @pulumi.getter
     def match(self) -> Optional[_builtins.str]:
+        """
+        Expression used to filter user log messages
+        """
         return pulumi.get(self, "match")
 
     @_builtins.property
     @pulumi.getter
     def user(self) -> Optional[_builtins.str]:
+        """
+        Account name or wildcard matched by this syslog rule
+        """
         return pulumi.get(self, "user")
 
 
@@ -3605,8 +3965,8 @@ class NetworktemplateRemoteSyslogUserContent(dict):
                  facility: Optional[_builtins.str] = None,
                  severity: Optional[_builtins.str] = None):
         """
-        :param _builtins.str facility: enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`
-        :param _builtins.str severity: enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
+        :param _builtins.str facility: Syslog facility to match for this selector
+        :param _builtins.str severity: Syslog severity to match for this selector
         """
         if facility is not None:
             pulumi.set(__self__, "facility", facility)
@@ -3617,7 +3977,7 @@ class NetworktemplateRemoteSyslogUserContent(dict):
     @pulumi.getter
     def facility(self) -> Optional[_builtins.str]:
         """
-        enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`
+        Syslog facility to match for this selector
         """
         return pulumi.get(self, "facility")
 
@@ -3625,7 +3985,7 @@ class NetworktemplateRemoteSyslogUserContent(dict):
     @pulumi.getter
     def severity(self) -> Optional[_builtins.str]:
         """
-        enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
+        Syslog severity to match for this selector
         """
         return pulumi.get(self, "severity")
 
@@ -3635,7 +3995,7 @@ class NetworktemplateRoutingPolicies(dict):
     def __init__(__self__, *,
                  terms: Optional[Sequence['outputs.NetworktemplateRoutingPoliciesTerm']] = None):
         """
-        :param Sequence['NetworktemplateRoutingPoliciesTermArgs'] terms: at least criteria/filter must be specified to match the term, all criteria have to be met
+        :param Sequence['NetworktemplateRoutingPoliciesTermArgs'] terms: Ordered terms evaluated by this switch routing policy
         """
         if terms is not None:
             pulumi.set(__self__, "terms", terms)
@@ -3644,7 +4004,7 @@ class NetworktemplateRoutingPolicies(dict):
     @pulumi.getter
     def terms(self) -> Optional[Sequence['outputs.NetworktemplateRoutingPoliciesTerm']]:
         """
-        at least criteria/filter must be specified to match the term, all criteria have to be met
+        Ordered terms evaluated by this switch routing policy
         """
         return pulumi.get(self, "terms")
 
@@ -3656,8 +4016,9 @@ class NetworktemplateRoutingPoliciesTerm(dict):
                  actions: Optional['outputs.NetworktemplateRoutingPoliciesTermActions'] = None,
                  matching: Optional['outputs.NetworktemplateRoutingPoliciesTermMatching'] = None):
         """
-        :param 'NetworktemplateRoutingPoliciesTermActionsArgs' actions: When used as import policy
-        :param 'NetworktemplateRoutingPoliciesTermMatchingArgs' matching: zero or more criteria/filter can be specified to match the term, all criteria have to be met
+        :param _builtins.str name: Display name of the switch routing policy term
+        :param 'NetworktemplateRoutingPoliciesTermActionsArgs' actions: Policy actions applied when this routing policy term matches
+        :param 'NetworktemplateRoutingPoliciesTermMatchingArgs' matching: Route match criteria that must be satisfied before actions are applied
         """
         pulumi.set(__self__, "name", name)
         if actions is not None:
@@ -3668,13 +4029,16 @@ class NetworktemplateRoutingPoliciesTerm(dict):
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
+        """
+        Display name of the switch routing policy term
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def actions(self) -> Optional['outputs.NetworktemplateRoutingPoliciesTermActions']:
         """
-        When used as import policy
+        Policy actions applied when this routing policy term matches
         """
         return pulumi.get(self, "actions")
 
@@ -3682,7 +4046,7 @@ class NetworktemplateRoutingPoliciesTerm(dict):
     @pulumi.getter
     def matching(self) -> Optional['outputs.NetworktemplateRoutingPoliciesTermMatching']:
         """
-        zero or more criteria/filter can be specified to match the term, all criteria have to be met
+        Route match criteria that must be satisfied before actions are applied
         """
         return pulumi.get(self, "matching")
 
@@ -3714,9 +4078,10 @@ class NetworktemplateRoutingPoliciesTermActions(dict):
                  local_preference: Optional[_builtins.str] = None,
                  prepend_as_paths: Optional[Sequence[_builtins.str]] = None):
         """
-        :param Sequence[_builtins.str] communities: When used as export policy, optional
+        :param _builtins.bool accept: Whether to accept routes that match this term
+        :param Sequence[_builtins.str] communities: BGP communities to set when this term is used as an export policy
         :param _builtins.str local_preference: Optional, for an import policy, local_preference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
-        :param Sequence[_builtins.str] prepend_as_paths: When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
+        :param Sequence[_builtins.str] prepend_as_paths: AS path values to prepend when this term is used as an export policy
         """
         if accept is not None:
             pulumi.set(__self__, "accept", accept)
@@ -3730,13 +4095,16 @@ class NetworktemplateRoutingPoliciesTermActions(dict):
     @_builtins.property
     @pulumi.getter
     def accept(self) -> Optional[_builtins.bool]:
+        """
+        Whether to accept routes that match this term
+        """
         return pulumi.get(self, "accept")
 
     @_builtins.property
     @pulumi.getter
     def communities(self) -> Optional[Sequence[_builtins.str]]:
         """
-        When used as export policy, optional
+        BGP communities to set when this term is used as an export policy
         """
         return pulumi.get(self, "communities")
 
@@ -3752,7 +4120,7 @@ class NetworktemplateRoutingPoliciesTermActions(dict):
     @pulumi.getter(name="prependAsPaths")
     def prepend_as_paths(self) -> Optional[Sequence[_builtins.str]]:
         """
-        When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
+        AS path values to prepend when this term is used as an export policy
         """
         return pulumi.get(self, "prepend_as_paths")
 
@@ -3783,7 +4151,8 @@ class NetworktemplateRoutingPoliciesTermMatching(dict):
                  protocols: Optional[Sequence[_builtins.str]] = None):
         """
         :param Sequence[_builtins.str] as_paths: BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
-        :param Sequence[_builtins.str] prefixes: zero or more criteria/filter can be specified to match the term, all criteria have to be met
+        :param Sequence[_builtins.str] communities: BGP communities that routes must match
+        :param Sequence[_builtins.str] prefixes: Route prefixes that routes must match
         :param Sequence[_builtins.str] protocols: enum: `bgp`, `direct`, `evpn`, `ospf`, `static`
         """
         if as_paths is not None:
@@ -3806,13 +4175,16 @@ class NetworktemplateRoutingPoliciesTermMatching(dict):
     @_builtins.property
     @pulumi.getter
     def communities(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        BGP communities that routes must match
+        """
         return pulumi.get(self, "communities")
 
     @_builtins.property
     @pulumi.getter
     def prefixes(self) -> Optional[Sequence[_builtins.str]]:
         """
-        zero or more criteria/filter can be specified to match the term, all criteria have to be met
+        Route prefixes that routes must match
         """
         return pulumi.get(self, "prefixes")
 
@@ -3869,7 +4241,19 @@ class NetworktemplateSnmpConfig(dict):
                  v3_config: Optional['outputs.NetworktemplateSnmpConfigV3Config'] = None,
                  views: Optional[Sequence['outputs.NetworktemplateSnmpConfigView']] = None):
         """
-        :param _builtins.str engine_id_type: enum: `local`, `use_mac_address`
+        :param Sequence['NetworktemplateSnmpConfigClientListArgs'] client_lists: SNMP client allowlists that can be referenced by communities
+        :param _builtins.str contact: Administrative contact string advertised through SNMP
+        :param _builtins.str description: Device description string advertised through SNMP
+        :param _builtins.bool enabled: Whether SNMP is enabled
+        :param _builtins.str engine_id: SNMP engine ID used for SNMPv3
+        :param _builtins.str engine_id_type: Method used to derive the SNMP engine ID
+        :param _builtins.str location: Physical location string advertised through SNMP
+        :param _builtins.str name: System name advertised through SNMP
+        :param _builtins.str network: Management network used for SNMP traffic
+        :param Sequence['NetworktemplateSnmpConfigTrapGroupArgs'] trap_groups: SNMP trap group definitions
+        :param Sequence['NetworktemplateSnmpConfigV2cConfigArgs'] v2c_configs: SNMPv2c community configuration entries for this SNMP profile
+        :param 'NetworktemplateSnmpConfigV3ConfigArgs' v3_config: SNMPv3 user, VACM, notify, and target configuration
+        :param Sequence['NetworktemplateSnmpConfigViewArgs'] views: SNMP MIB view definitions
         """
         if client_lists is not None:
             pulumi.set(__self__, "client_lists", client_lists)
@@ -3901,69 +4285,105 @@ class NetworktemplateSnmpConfig(dict):
     @_builtins.property
     @pulumi.getter(name="clientLists")
     def client_lists(self) -> Optional[Sequence['outputs.NetworktemplateSnmpConfigClientList']]:
+        """
+        SNMP client allowlists that can be referenced by communities
+        """
         return pulumi.get(self, "client_lists")
 
     @_builtins.property
     @pulumi.getter
     def contact(self) -> Optional[_builtins.str]:
+        """
+        Administrative contact string advertised through SNMP
+        """
         return pulumi.get(self, "contact")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
+        """
+        Device description string advertised through SNMP
+        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether SNMP is enabled
+        """
         return pulumi.get(self, "enabled")
 
     @_builtins.property
     @pulumi.getter(name="engineId")
     def engine_id(self) -> Optional[_builtins.str]:
+        """
+        SNMP engine ID used for SNMPv3
+        """
         return pulumi.get(self, "engine_id")
 
     @_builtins.property
     @pulumi.getter(name="engineIdType")
     def engine_id_type(self) -> Optional[_builtins.str]:
         """
-        enum: `local`, `use_mac_address`
+        Method used to derive the SNMP engine ID
         """
         return pulumi.get(self, "engine_id_type")
 
     @_builtins.property
     @pulumi.getter
     def location(self) -> Optional[_builtins.str]:
+        """
+        Physical location string advertised through SNMP
+        """
         return pulumi.get(self, "location")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
+        """
+        System name advertised through SNMP
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def network(self) -> Optional[_builtins.str]:
+        """
+        Management network used for SNMP traffic
+        """
         return pulumi.get(self, "network")
 
     @_builtins.property
     @pulumi.getter(name="trapGroups")
     def trap_groups(self) -> Optional[Sequence['outputs.NetworktemplateSnmpConfigTrapGroup']]:
+        """
+        SNMP trap group definitions
+        """
         return pulumi.get(self, "trap_groups")
 
     @_builtins.property
     @pulumi.getter(name="v2cConfigs")
     def v2c_configs(self) -> Optional[Sequence['outputs.NetworktemplateSnmpConfigV2cConfig']]:
+        """
+        SNMPv2c community configuration entries for this SNMP profile
+        """
         return pulumi.get(self, "v2c_configs")
 
     @_builtins.property
     @pulumi.getter(name="v3Config")
     def v3_config(self) -> Optional['outputs.NetworktemplateSnmpConfigV3Config']:
+        """
+        SNMPv3 user, VACM, notify, and target configuration
+        """
         return pulumi.get(self, "v3_config")
 
     @_builtins.property
     @pulumi.getter
     def views(self) -> Optional[Sequence['outputs.NetworktemplateSnmpConfigView']]:
+        """
+        SNMP MIB view definitions
+        """
         return pulumi.get(self, "views")
 
 
@@ -3989,6 +4409,10 @@ class NetworktemplateSnmpConfigClientList(dict):
     def __init__(__self__, *,
                  client_list_name: Optional[_builtins.str] = None,
                  clients: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str client_list_name: Name of the SNMP client list
+        :param Sequence[_builtins.str] clients: SNMP client IP addresses or CIDR ranges allowed by this list
+        """
         if client_list_name is not None:
             pulumi.set(__self__, "client_list_name", client_list_name)
         if clients is not None:
@@ -3997,11 +4421,17 @@ class NetworktemplateSnmpConfigClientList(dict):
     @_builtins.property
     @pulumi.getter(name="clientListName")
     def client_list_name(self) -> Optional[_builtins.str]:
+        """
+        Name of the SNMP client list
+        """
         return pulumi.get(self, "client_list_name")
 
     @_builtins.property
     @pulumi.getter
     def clients(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        SNMP client IP addresses or CIDR ranges allowed by this list
+        """
         return pulumi.get(self, "clients")
 
 
@@ -4030,8 +4460,10 @@ class NetworktemplateSnmpConfigTrapGroup(dict):
                  targets: Optional[Sequence[_builtins.str]] = None,
                  version: Optional[_builtins.str] = None):
         """
-        :param _builtins.str group_name: Categories list can refer to https://www.juniper.net/documentation/software/topics/task/configuration/snmp_trap-groups-configuring-junos-nm.html
-        :param _builtins.str version: enum: `all`, `v1`, `v2`
+        :param Sequence[_builtins.str] categories: Trap categories included in this SNMP trap group
+        :param _builtins.str group_name: Trap group name for this SNMP trap group
+        :param Sequence[_builtins.str] targets: Trap target addresses for this SNMP trap group
+        :param _builtins.str version: SNMP trap protocol version used by this group
         """
         if categories is not None:
             pulumi.set(__self__, "categories", categories)
@@ -4045,26 +4477,32 @@ class NetworktemplateSnmpConfigTrapGroup(dict):
     @_builtins.property
     @pulumi.getter
     def categories(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Trap categories included in this SNMP trap group
+        """
         return pulumi.get(self, "categories")
 
     @_builtins.property
     @pulumi.getter(name="groupName")
     def group_name(self) -> Optional[_builtins.str]:
         """
-        Categories list can refer to https://www.juniper.net/documentation/software/topics/task/configuration/snmp_trap-groups-configuring-junos-nm.html
+        Trap group name for this SNMP trap group
         """
         return pulumi.get(self, "group_name")
 
     @_builtins.property
     @pulumi.getter
     def targets(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Trap target addresses for this SNMP trap group
+        """
         return pulumi.get(self, "targets")
 
     @_builtins.property
     @pulumi.getter
     def version(self) -> Optional[_builtins.str]:
         """
-        enum: `all`, `v1`, `v2`
+        SNMP trap protocol version used by this group
         """
         return pulumi.get(self, "version")
 
@@ -4096,8 +4534,10 @@ class NetworktemplateSnmpConfigV2cConfig(dict):
                  community_name: Optional[_builtins.str] = None,
                  view: Optional[_builtins.str] = None):
         """
-        :param _builtins.str client_list_name: Client_list_name here should refer to client_list above
-        :param _builtins.str view: View name here should be defined in views above
+        :param _builtins.str authorization: Access level for the SNMPv2c community
+        :param _builtins.str client_list_name: SNMP client list name referenced by this community
+        :param _builtins.str community_name: SNMPv2c community string name
+        :param _builtins.str view: SNMP view name that must be defined in the views list
         """
         if authorization is not None:
             pulumi.set(__self__, "authorization", authorization)
@@ -4111,26 +4551,32 @@ class NetworktemplateSnmpConfigV2cConfig(dict):
     @_builtins.property
     @pulumi.getter
     def authorization(self) -> Optional[_builtins.str]:
+        """
+        Access level for the SNMPv2c community
+        """
         return pulumi.get(self, "authorization")
 
     @_builtins.property
     @pulumi.getter(name="clientListName")
     def client_list_name(self) -> Optional[_builtins.str]:
         """
-        Client_list_name here should refer to client_list above
+        SNMP client list name referenced by this community
         """
         return pulumi.get(self, "client_list_name")
 
     @_builtins.property
     @pulumi.getter(name="communityName")
     def community_name(self) -> Optional[_builtins.str]:
+        """
+        SNMPv2c community string name
+        """
         return pulumi.get(self, "community_name")
 
     @_builtins.property
     @pulumi.getter
     def view(self) -> Optional[_builtins.str]:
         """
-        View name here should be defined in views above
+        SNMP view name that must be defined in the views list
         """
         return pulumi.get(self, "view")
 
@@ -4165,6 +4611,14 @@ class NetworktemplateSnmpConfigV3Config(dict):
                  target_parameters: Optional[Sequence['outputs.NetworktemplateSnmpConfigV3ConfigTargetParameter']] = None,
                  usms: Optional[Sequence['outputs.NetworktemplateSnmpConfigV3ConfigUsm']] = None,
                  vacm: Optional['outputs.NetworktemplateSnmpConfigV3ConfigVacm'] = None):
+        """
+        :param Sequence['NetworktemplateSnmpConfigV3ConfigNotifyArgs'] notifies: SNMPv3 notification definitions used for traps and informs
+        :param Sequence['NetworktemplateSnmpConfigV3ConfigNotifyFilterArgs'] notify_filters: SNMPv3 notification filter profiles
+        :param Sequence['NetworktemplateSnmpConfigV3ConfigTargetAddressArgs'] target_addresses: SNMPv3 notification target addresses
+        :param Sequence['NetworktemplateSnmpConfigV3ConfigTargetParameterArgs'] target_parameters: SNMPv3 target parameter profiles
+        :param Sequence['NetworktemplateSnmpConfigV3ConfigUsmArgs'] usms: SNMPv3 USM engine configurations
+        :param 'NetworktemplateSnmpConfigV3ConfigVacmArgs' vacm: SNMPv3 VACM access control configuration
+        """
         if notifies is not None:
             pulumi.set(__self__, "notifies", notifies)
         if notify_filters is not None:
@@ -4181,31 +4635,49 @@ class NetworktemplateSnmpConfigV3Config(dict):
     @_builtins.property
     @pulumi.getter
     def notifies(self) -> Optional[Sequence['outputs.NetworktemplateSnmpConfigV3ConfigNotify']]:
+        """
+        SNMPv3 notification definitions used for traps and informs
+        """
         return pulumi.get(self, "notifies")
 
     @_builtins.property
     @pulumi.getter(name="notifyFilters")
     def notify_filters(self) -> Optional[Sequence['outputs.NetworktemplateSnmpConfigV3ConfigNotifyFilter']]:
+        """
+        SNMPv3 notification filter profiles
+        """
         return pulumi.get(self, "notify_filters")
 
     @_builtins.property
     @pulumi.getter(name="targetAddresses")
     def target_addresses(self) -> Optional[Sequence['outputs.NetworktemplateSnmpConfigV3ConfigTargetAddress']]:
+        """
+        SNMPv3 notification target addresses
+        """
         return pulumi.get(self, "target_addresses")
 
     @_builtins.property
     @pulumi.getter(name="targetParameters")
     def target_parameters(self) -> Optional[Sequence['outputs.NetworktemplateSnmpConfigV3ConfigTargetParameter']]:
+        """
+        SNMPv3 target parameter profiles
+        """
         return pulumi.get(self, "target_parameters")
 
     @_builtins.property
     @pulumi.getter
     def usms(self) -> Optional[Sequence['outputs.NetworktemplateSnmpConfigV3ConfigUsm']]:
+        """
+        SNMPv3 USM engine configurations
+        """
         return pulumi.get(self, "usms")
 
     @_builtins.property
     @pulumi.getter
     def vacm(self) -> Optional['outputs.NetworktemplateSnmpConfigV3ConfigVacm']:
+        """
+        SNMPv3 VACM access control configuration
+        """
         return pulumi.get(self, "vacm")
 
 
@@ -4216,7 +4688,9 @@ class NetworktemplateSnmpConfigV3ConfigNotify(dict):
                  tag: _builtins.str,
                  type: _builtins.str):
         """
-        :param _builtins.str type: enum: `inform`, `trap`
+        :param _builtins.str name: Identifier for this SNMPv3 notification definition
+        :param _builtins.str tag: Notification tag used to select target addresses
+        :param _builtins.str type: Delivery mode for this SNMPv3 notification, such as trap or inform
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "tag", tag)
@@ -4225,18 +4699,24 @@ class NetworktemplateSnmpConfigV3ConfigNotify(dict):
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
+        """
+        Identifier for this SNMPv3 notification definition
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def tag(self) -> _builtins.str:
+        """
+        Notification tag used to select target addresses
+        """
         return pulumi.get(self, "tag")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        enum: `inform`, `trap`
+        Delivery mode for this SNMPv3 notification, such as trap or inform
         """
         return pulumi.get(self, "type")
 
@@ -4261,8 +4741,16 @@ class NetworktemplateSnmpConfigV3ConfigNotifyFilter(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 categories: Optional[Sequence[_builtins.str]] = None,
                  contents: Optional[Sequence['outputs.NetworktemplateSnmpConfigV3ConfigNotifyFilterContent']] = None,
                  profile_name: Optional[_builtins.str] = None):
+        """
+        :param Sequence[_builtins.str] categories: CX only. List of SNMP trap group categories included in this filter profile. See https://www.juniper.net/documentation/software/topics/task/configuration/snmp-trap-groups-configuring-junos-nm.html for valid category names.
+        :param Sequence['NetworktemplateSnmpConfigV3ConfigNotifyFilterContentArgs'] contents: OID filter rules in this notification filter profile
+        :param _builtins.str profile_name: Notification filter profile name
+        """
+        if categories is not None:
+            pulumi.set(__self__, "categories", categories)
         if contents is not None:
             pulumi.set(__self__, "contents", contents)
         if profile_name is not None:
@@ -4270,12 +4758,26 @@ class NetworktemplateSnmpConfigV3ConfigNotifyFilter(dict):
 
     @_builtins.property
     @pulumi.getter
+    def categories(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        CX only. List of SNMP trap group categories included in this filter profile. See https://www.juniper.net/documentation/software/topics/task/configuration/snmp-trap-groups-configuring-junos-nm.html for valid category names.
+        """
+        return pulumi.get(self, "categories")
+
+    @_builtins.property
+    @pulumi.getter
     def contents(self) -> Optional[Sequence['outputs.NetworktemplateSnmpConfigV3ConfigNotifyFilterContent']]:
+        """
+        OID filter rules in this notification filter profile
+        """
         return pulumi.get(self, "contents")
 
     @_builtins.property
     @pulumi.getter(name="profileName")
     def profile_name(self) -> Optional[_builtins.str]:
+        """
+        Notification filter profile name
+        """
         return pulumi.get(self, "profile_name")
 
 
@@ -4284,6 +4786,10 @@ class NetworktemplateSnmpConfigV3ConfigNotifyFilterContent(dict):
     def __init__(__self__, *,
                  oid: _builtins.str,
                  include: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str oid: Matched OID subtree for this notification filter rule
+        :param _builtins.bool include: Whether the matching OID subtree is included
+        """
         pulumi.set(__self__, "oid", oid)
         if include is not None:
             pulumi.set(__self__, "include", include)
@@ -4291,11 +4797,17 @@ class NetworktemplateSnmpConfigV3ConfigNotifyFilterContent(dict):
     @_builtins.property
     @pulumi.getter
     def oid(self) -> _builtins.str:
+        """
+        Matched OID subtree for this notification filter rule
+        """
         return pulumi.get(self, "oid")
 
     @_builtins.property
     @pulumi.getter
     def include(self) -> Optional[_builtins.bool]:
+        """
+        Whether the matching OID subtree is included
+        """
         return pulumi.get(self, "include")
 
 
@@ -4332,8 +4844,12 @@ class NetworktemplateSnmpConfigV3ConfigTargetAddress(dict):
                  tag_list: Optional[_builtins.str] = None,
                  target_parameters: Optional[_builtins.str] = None):
         """
-        :param _builtins.str tag_list: Refer to notify tag, can be multiple with blank
-        :param _builtins.str target_parameters: Refer to notify target parameters name
+        :param _builtins.str address: IP address or hostname of the SNMP target
+        :param _builtins.str address_mask: Mask applied to the SNMP target address
+        :param _builtins.str target_address_name: Name of the SNMP target address entry
+        :param _builtins.str port: UDP port used by the SNMP target
+        :param _builtins.str tag_list: Set of notification tags for this target address; use spaces between multiple tags
+        :param _builtins.str target_parameters: Target parameter profile referenced by this target address
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "address_mask", address_mask)
@@ -4348,28 +4864,40 @@ class NetworktemplateSnmpConfigV3ConfigTargetAddress(dict):
     @_builtins.property
     @pulumi.getter
     def address(self) -> _builtins.str:
+        """
+        IP address or hostname of the SNMP target
+        """
         return pulumi.get(self, "address")
 
     @_builtins.property
     @pulumi.getter(name="addressMask")
     def address_mask(self) -> _builtins.str:
+        """
+        Mask applied to the SNMP target address
+        """
         return pulumi.get(self, "address_mask")
 
     @_builtins.property
     @pulumi.getter(name="targetAddressName")
     def target_address_name(self) -> _builtins.str:
+        """
+        Name of the SNMP target address entry
+        """
         return pulumi.get(self, "target_address_name")
 
     @_builtins.property
     @pulumi.getter
     def port(self) -> Optional[_builtins.str]:
+        """
+        UDP port used by the SNMP target
+        """
         return pulumi.get(self, "port")
 
     @_builtins.property
     @pulumi.getter(name="tagList")
     def tag_list(self) -> Optional[_builtins.str]:
         """
-        Refer to notify tag, can be multiple with blank
+        Set of notification tags for this target address; use spaces between multiple tags
         """
         return pulumi.get(self, "tag_list")
 
@@ -4377,7 +4905,7 @@ class NetworktemplateSnmpConfigV3ConfigTargetAddress(dict):
     @pulumi.getter(name="targetParameters")
     def target_parameters(self) -> Optional[_builtins.str]:
         """
-        Refer to notify target parameters name
+        Target parameter profile referenced by this target address
         """
         return pulumi.get(self, "target_parameters")
 
@@ -4417,11 +4945,12 @@ class NetworktemplateSnmpConfigV3ConfigTargetParameter(dict):
                  security_model: Optional[_builtins.str] = None,
                  security_name: Optional[_builtins.str] = None):
         """
-        :param _builtins.str message_processing_model: enum: `v1`, `v2c`, `v3`
-        :param _builtins.str notify_filter: Refer to profile-name in notify_filter
-        :param _builtins.str security_level: enum: `authentication`, `none`, `privacy`
-        :param _builtins.str security_model: enum: `usm`, `v1`, `v2c`
-        :param _builtins.str security_name: Refer to security_name in usm
+        :param _builtins.str message_processing_model: SNMP message processing model used by this target parameter profile
+        :param _builtins.str name: Target parameter profile name
+        :param _builtins.str notify_filter: Notification filter profile referenced by this target parameter profile
+        :param _builtins.str security_level: Required security level for this target parameter profile
+        :param _builtins.str security_model: Required security model for this target parameter profile
+        :param _builtins.str security_name: USM security name referenced by this target parameter profile
         """
         pulumi.set(__self__, "message_processing_model", message_processing_model)
         pulumi.set(__self__, "name", name)
@@ -4438,20 +4967,23 @@ class NetworktemplateSnmpConfigV3ConfigTargetParameter(dict):
     @pulumi.getter(name="messageProcessingModel")
     def message_processing_model(self) -> _builtins.str:
         """
-        enum: `v1`, `v2c`, `v3`
+        SNMP message processing model used by this target parameter profile
         """
         return pulumi.get(self, "message_processing_model")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
+        """
+        Target parameter profile name
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="notifyFilter")
     def notify_filter(self) -> Optional[_builtins.str]:
         """
-        Refer to profile-name in notify_filter
+        Notification filter profile referenced by this target parameter profile
         """
         return pulumi.get(self, "notify_filter")
 
@@ -4459,7 +4991,7 @@ class NetworktemplateSnmpConfigV3ConfigTargetParameter(dict):
     @pulumi.getter(name="securityLevel")
     def security_level(self) -> Optional[_builtins.str]:
         """
-        enum: `authentication`, `none`, `privacy`
+        Required security level for this target parameter profile
         """
         return pulumi.get(self, "security_level")
 
@@ -4467,7 +4999,7 @@ class NetworktemplateSnmpConfigV3ConfigTargetParameter(dict):
     @pulumi.getter(name="securityModel")
     def security_model(self) -> Optional[_builtins.str]:
         """
-        enum: `usm`, `v1`, `v2c`
+        Required security model for this target parameter profile
         """
         return pulumi.get(self, "security_model")
 
@@ -4475,7 +5007,7 @@ class NetworktemplateSnmpConfigV3ConfigTargetParameter(dict):
     @pulumi.getter(name="securityName")
     def security_name(self) -> Optional[_builtins.str]:
         """
-        Refer to security_name in usm
+        USM security name referenced by this target parameter profile
         """
         return pulumi.get(self, "security_name")
 
@@ -4506,8 +5038,9 @@ class NetworktemplateSnmpConfigV3ConfigUsm(dict):
                  remote_engine_id: Optional[_builtins.str] = None,
                  users: Optional[Sequence['outputs.NetworktemplateSnmpConfigV3ConfigUsmUser']] = None):
         """
-        :param _builtins.str engine_type: enum: `local_engine`, `remote_engine`
+        :param _builtins.str engine_type: SNMP engine type used for this USM configuration
         :param _builtins.str remote_engine_id: Required only if `engine_type`==`remote_engine`
+        :param Sequence['NetworktemplateSnmpConfigV3ConfigUsmUserArgs'] users: SNMPv3 USM users for this engine
         """
         pulumi.set(__self__, "engine_type", engine_type)
         if remote_engine_id is not None:
@@ -4519,7 +5052,7 @@ class NetworktemplateSnmpConfigV3ConfigUsm(dict):
     @pulumi.getter(name="engineType")
     def engine_type(self) -> _builtins.str:
         """
-        enum: `local_engine`, `remote_engine`
+        SNMP engine type used for this USM configuration
         """
         return pulumi.get(self, "engine_type")
 
@@ -4534,6 +5067,9 @@ class NetworktemplateSnmpConfigV3ConfigUsm(dict):
     @_builtins.property
     @pulumi.getter
     def users(self) -> Optional[Sequence['outputs.NetworktemplateSnmpConfigV3ConfigUsmUser']]:
+        """
+        SNMPv3 USM users for this engine
+        """
         return pulumi.get(self, "users")
 
 
@@ -4570,9 +5106,10 @@ class NetworktemplateSnmpConfigV3ConfigUsmUser(dict):
                  name: Optional[_builtins.str] = None):
         """
         :param _builtins.str authentication_password: Not required if `authentication_type`==`authentication-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
-        :param _builtins.str authentication_type: sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authentication-md5`, `authentication-none`, `authentication-sha`, `authentication-sha224`, `authentication-sha256`, `authentication-sha384`, `authentication-sha512`
+        :param _builtins.str authentication_type: Authentication protocol used by this SNMPv3 USM user
         :param _builtins.str encryption_password: Not required if `encryption_type`==`privacy-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters
-        :param _builtins.str encryption_type: enum: `privacy-3des`, `privacy-aes128`, `privacy-des`, `privacy-none`
+        :param _builtins.str encryption_type: Privacy protocol used by this SNMPv3 USM user
+        :param _builtins.str name: Username for the SNMPv3 USM user
         """
         if authentication_password is not None:
             pulumi.set(__self__, "authentication_password", authentication_password)
@@ -4597,7 +5134,7 @@ class NetworktemplateSnmpConfigV3ConfigUsmUser(dict):
     @pulumi.getter(name="authenticationType")
     def authentication_type(self) -> Optional[_builtins.str]:
         """
-        sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authentication-md5`, `authentication-none`, `authentication-sha`, `authentication-sha224`, `authentication-sha256`, `authentication-sha384`, `authentication-sha512`
+        Authentication protocol used by this SNMPv3 USM user
         """
         return pulumi.get(self, "authentication_type")
 
@@ -4613,13 +5150,16 @@ class NetworktemplateSnmpConfigV3ConfigUsmUser(dict):
     @pulumi.getter(name="encryptionType")
     def encryption_type(self) -> Optional[_builtins.str]:
         """
-        enum: `privacy-3des`, `privacy-aes128`, `privacy-des`, `privacy-none`
+        Privacy protocol used by this SNMPv3 USM user
         """
         return pulumi.get(self, "encryption_type")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
+        """
+        Username for the SNMPv3 USM user
+        """
         return pulumi.get(self, "name")
 
 
@@ -4645,6 +5185,10 @@ class NetworktemplateSnmpConfigV3ConfigVacm(dict):
     def __init__(__self__, *,
                  accesses: Optional[Sequence['outputs.NetworktemplateSnmpConfigV3ConfigVacmAccess']] = None,
                  security_to_group: Optional['outputs.NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroup'] = None):
+        """
+        :param Sequence['NetworktemplateSnmpConfigV3ConfigVacmAccessArgs'] accesses: VACM access rules for SNMPv3
+        :param 'NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupArgs' security_to_group: VACM security-name to group mappings
+        """
         if accesses is not None:
             pulumi.set(__self__, "accesses", accesses)
         if security_to_group is not None:
@@ -4653,11 +5197,17 @@ class NetworktemplateSnmpConfigV3ConfigVacm(dict):
     @_builtins.property
     @pulumi.getter
     def accesses(self) -> Optional[Sequence['outputs.NetworktemplateSnmpConfigV3ConfigVacmAccess']]:
+        """
+        VACM access rules for SNMPv3
+        """
         return pulumi.get(self, "accesses")
 
     @_builtins.property
     @pulumi.getter(name="securityToGroup")
     def security_to_group(self) -> Optional['outputs.NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroup']:
+        """
+        VACM security-name to group mappings
+        """
         return pulumi.get(self, "security_to_group")
 
 
@@ -4685,6 +5235,10 @@ class NetworktemplateSnmpConfigV3ConfigVacmAccess(dict):
     def __init__(__self__, *,
                  group_name: Optional[_builtins.str] = None,
                  prefix_lists: Optional[Sequence['outputs.NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixList']] = None):
+        """
+        :param _builtins.str group_name: SNMP VACM group name
+        :param Sequence['NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs'] prefix_lists: Context prefix rules for this VACM group
+        """
         if group_name is not None:
             pulumi.set(__self__, "group_name", group_name)
         if prefix_lists is not None:
@@ -4693,11 +5247,17 @@ class NetworktemplateSnmpConfigV3ConfigVacmAccess(dict):
     @_builtins.property
     @pulumi.getter(name="groupName")
     def group_name(self) -> Optional[_builtins.str]:
+        """
+        SNMP VACM group name
+        """
         return pulumi.get(self, "group_name")
 
     @_builtins.property
     @pulumi.getter(name="prefixLists")
     def prefix_lists(self) -> Optional[Sequence['outputs.NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixList']]:
+        """
+        Context prefix rules for this VACM group
+        """
         return pulumi.get(self, "prefix_lists")
 
 
@@ -4739,13 +5299,13 @@ class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixList(dict):
                  type: Optional[_builtins.str] = None,
                  write_view: Optional[_builtins.str] = None):
         """
-        :param _builtins.str context_prefix: Only required if `type`==`context_prefix`
-        :param _builtins.str notify_view: Refer to view name
-        :param _builtins.str read_view: Refer to view name
-        :param _builtins.str security_level: enum: `authentication`, `none`, `privacy`
-        :param _builtins.str security_model: enum: `any`, `usm`, `v1`, `v2c`
-        :param _builtins.str type: enum: `context_prefix`, `default_context_prefix`
-        :param _builtins.str write_view: Refer to view name
+        :param _builtins.str context_prefix: Context prefix for this VACM access rule. Required only if `type`==`context_prefix`
+        :param _builtins.str notify_view: Notify view name referenced by this VACM access rule
+        :param _builtins.str read_view: Read view name referenced by this VACM access rule
+        :param _builtins.str security_level: Required security level for this VACM access rule
+        :param _builtins.str security_model: Required security model for this VACM access rule
+        :param _builtins.str type: VACM context matching type for this access rule
+        :param _builtins.str write_view: Write view name referenced by this VACM access rule
         """
         if context_prefix is not None:
             pulumi.set(__self__, "context_prefix", context_prefix)
@@ -4766,7 +5326,7 @@ class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixList(dict):
     @pulumi.getter(name="contextPrefix")
     def context_prefix(self) -> Optional[_builtins.str]:
         """
-        Only required if `type`==`context_prefix`
+        Context prefix for this VACM access rule. Required only if `type`==`context_prefix`
         """
         return pulumi.get(self, "context_prefix")
 
@@ -4774,7 +5334,7 @@ class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixList(dict):
     @pulumi.getter(name="notifyView")
     def notify_view(self) -> Optional[_builtins.str]:
         """
-        Refer to view name
+        Notify view name referenced by this VACM access rule
         """
         return pulumi.get(self, "notify_view")
 
@@ -4782,7 +5342,7 @@ class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixList(dict):
     @pulumi.getter(name="readView")
     def read_view(self) -> Optional[_builtins.str]:
         """
-        Refer to view name
+        Read view name referenced by this VACM access rule
         """
         return pulumi.get(self, "read_view")
 
@@ -4790,7 +5350,7 @@ class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixList(dict):
     @pulumi.getter(name="securityLevel")
     def security_level(self) -> Optional[_builtins.str]:
         """
-        enum: `authentication`, `none`, `privacy`
+        Required security level for this VACM access rule
         """
         return pulumi.get(self, "security_level")
 
@@ -4798,7 +5358,7 @@ class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixList(dict):
     @pulumi.getter(name="securityModel")
     def security_model(self) -> Optional[_builtins.str]:
         """
-        enum: `any`, `usm`, `v1`, `v2c`
+        Required security model for this VACM access rule
         """
         return pulumi.get(self, "security_model")
 
@@ -4806,7 +5366,7 @@ class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixList(dict):
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
         """
-        enum: `context_prefix`, `default_context_prefix`
+        VACM context matching type for this access rule
         """
         return pulumi.get(self, "type")
 
@@ -4814,7 +5374,7 @@ class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixList(dict):
     @pulumi.getter(name="writeView")
     def write_view(self) -> Optional[_builtins.str]:
         """
-        Refer to view name
+        Write view name referenced by this VACM access rule
         """
         return pulumi.get(self, "write_view")
 
@@ -4842,7 +5402,8 @@ class NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroup(dict):
                  contents: Optional[Sequence['outputs.NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupContent']] = None,
                  security_model: Optional[_builtins.str] = None):
         """
-        :param _builtins.str security_model: enum: `usm`, `v1`, `v2c`
+        :param Sequence['NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupContentArgs'] contents: VACM security-name to group mapping entries
+        :param _builtins.str security_model: Required security model for these VACM group mappings
         """
         if contents is not None:
             pulumi.set(__self__, "contents", contents)
@@ -4852,13 +5413,16 @@ class NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroup(dict):
     @_builtins.property
     @pulumi.getter
     def contents(self) -> Optional[Sequence['outputs.NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupContent']]:
+        """
+        VACM security-name to group mapping entries
+        """
         return pulumi.get(self, "contents")
 
     @_builtins.property
     @pulumi.getter(name="securityModel")
     def security_model(self) -> Optional[_builtins.str]:
         """
-        enum: `usm`, `v1`, `v2c`
+        Required security model for these VACM group mappings
         """
         return pulumi.get(self, "security_model")
 
@@ -4886,7 +5450,8 @@ class NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupContent(dict):
                  group: Optional[_builtins.str] = None,
                  security_name: Optional[_builtins.str] = None):
         """
-        :param _builtins.str group: Refer to group_name under access
+        :param _builtins.str group: VACM group name referenced by this mapping
+        :param _builtins.str security_name: Name of the SNMP security principal mapped to a VACM group
         """
         if group is not None:
             pulumi.set(__self__, "group", group)
@@ -4897,13 +5462,16 @@ class NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupContent(dict):
     @pulumi.getter
     def group(self) -> Optional[_builtins.str]:
         """
-        Refer to group_name under access
+        VACM group name referenced by this mapping
         """
         return pulumi.get(self, "group")
 
     @_builtins.property
     @pulumi.getter(name="securityName")
     def security_name(self) -> Optional[_builtins.str]:
+        """
+        Name of the SNMP security principal mapped to a VACM group
+        """
         return pulumi.get(self, "security_name")
 
 
@@ -4931,7 +5499,9 @@ class NetworktemplateSnmpConfigView(dict):
                  oid: Optional[_builtins.str] = None,
                  view_name: Optional[_builtins.str] = None):
         """
-        :param _builtins.bool include: If the root oid configured is included
+        :param _builtins.bool include: Whether the root OID is included in this SNMP view
+        :param _builtins.str oid: Root OID for this SNMP view
+        :param _builtins.str view_name: Name of the SNMP MIB view definition
         """
         if include is not None:
             pulumi.set(__self__, "include", include)
@@ -4944,18 +5514,24 @@ class NetworktemplateSnmpConfigView(dict):
     @pulumi.getter
     def include(self) -> Optional[_builtins.bool]:
         """
-        If the root oid configured is included
+        Whether the root OID is included in this SNMP view
         """
         return pulumi.get(self, "include")
 
     @_builtins.property
     @pulumi.getter
     def oid(self) -> Optional[_builtins.str]:
+        """
+        Root OID for this SNMP view
+        """
         return pulumi.get(self, "oid")
 
     @_builtins.property
     @pulumi.getter(name="viewName")
     def view_name(self) -> Optional[_builtins.str]:
+        """
+        Name of the SNMP MIB view definition
+        """
         return pulumi.get(self, "view_name")
 
 
@@ -4965,6 +5541,7 @@ class NetworktemplateSwitchMatching(dict):
                  enable: Optional[_builtins.bool] = None,
                  rules: Optional[Sequence['outputs.NetworktemplateSwitchMatchingRule']] = None):
         """
+        :param _builtins.bool enable: Whether custom switch matching rules are enabled
         :param Sequence['NetworktemplateSwitchMatchingRuleArgs'] rules: list of rules to define custom switch configuration based on different criteria. Each list must have at least one of `match_model`, `match_name` or `match_role` must be defined
         """
         if enable is not None:
@@ -4975,6 +5552,9 @@ class NetworktemplateSwitchMatching(dict):
     @_builtins.property
     @pulumi.getter
     def enable(self) -> Optional[_builtins.bool]:
+        """
+        Whether custom switch matching rules are enabled
+        """
         return pulumi.get(self, "enable")
 
     @_builtins.property
@@ -5039,17 +5619,18 @@ class NetworktemplateSwitchMatchingRule(dict):
                  port_mirroring: Optional[Mapping[str, 'outputs.NetworktemplateSwitchMatchingRulePortMirroring']] = None,
                  stp_config: Optional['outputs.NetworktemplateSwitchMatchingRuleStpConfig'] = None):
         """
-        :param Sequence[_builtins.str] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        :param Sequence[_builtins.str] additional_config_cmds: Additional Junos CLI commands applied when this matching rule matches
         :param _builtins.str default_port_usage: Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
-        :param 'NetworktemplateSwitchMatchingRuleIpConfigArgs' ip_config: In-Band Management interface configuration
+        :param 'NetworktemplateSwitchMatchingRuleIpConfigArgs' ip_config: In-band management IP configuration applied when this matching rule matches
         :param _builtins.str match_model: string the switch model must start with to use this rule. It is possible to combine with the `match_name` and `match_role` attributes
         :param _builtins.str match_name: string the switch name must start with to use this rule. Use the `match_name_offset` to indicate the first character of the switch name to compare to. It is possible to combine with the `match_model` and `match_role` attributes
         :param _builtins.int match_name_offset: first character of the switch name to compare to the `match_name` value
         :param _builtins.str match_role: string the switch role must start with to use this rule. It is possible to combine with the `match_name` and `match_model` attributes
         :param _builtins.str name: Rule name. WARNING: the name `default` is reserved and can only be used for the last rule in the list
-        :param 'NetworktemplateSwitchMatchingRuleOobIpConfigArgs' oob_ip_config: Out-of-Band Management interface configuration
-        :param Mapping[str, 'NetworktemplateSwitchMatchingRulePortConfigArgs'] port_config: Property key is the port name or range (e.g. "ge-0/0/0-10")
-        :param Mapping[str, 'NetworktemplateSwitchMatchingRulePortMirroringArgs'] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+        :param 'NetworktemplateSwitchMatchingRuleOobIpConfigArgs' oob_ip_config: Out-of-band management IP configuration applied when this matching rule matches
+        :param Mapping[str, 'NetworktemplateSwitchMatchingRulePortConfigArgs'] port_config: Per-port wired configuration applied when this matching rule matches
+        :param Mapping[str, 'NetworktemplateSwitchMatchingRulePortMirroringArgs'] port_mirroring: Port mirroring configuration applied when this matching rule matches
+        :param 'NetworktemplateSwitchMatchingRuleStpConfigArgs' stp_config: Spanning Tree Protocol configuration applied when this matching rule matches
         """
         if additional_config_cmds is not None:
             pulumi.set(__self__, "additional_config_cmds", additional_config_cmds)
@@ -5080,7 +5661,7 @@ class NetworktemplateSwitchMatchingRule(dict):
     @pulumi.getter(name="additionalConfigCmds")
     def additional_config_cmds(self) -> Optional[Sequence[_builtins.str]]:
         """
-        additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        Additional Junos CLI commands applied when this matching rule matches
         """
         return pulumi.get(self, "additional_config_cmds")
 
@@ -5096,7 +5677,7 @@ class NetworktemplateSwitchMatchingRule(dict):
     @pulumi.getter(name="ipConfig")
     def ip_config(self) -> Optional['outputs.NetworktemplateSwitchMatchingRuleIpConfig']:
         """
-        In-Band Management interface configuration
+        In-band management IP configuration applied when this matching rule matches
         """
         return pulumi.get(self, "ip_config")
 
@@ -5144,7 +5725,7 @@ class NetworktemplateSwitchMatchingRule(dict):
     @pulumi.getter(name="oobIpConfig")
     def oob_ip_config(self) -> Optional['outputs.NetworktemplateSwitchMatchingRuleOobIpConfig']:
         """
-        Out-of-Band Management interface configuration
+        Out-of-band management IP configuration applied when this matching rule matches
         """
         return pulumi.get(self, "oob_ip_config")
 
@@ -5152,7 +5733,7 @@ class NetworktemplateSwitchMatchingRule(dict):
     @pulumi.getter(name="portConfig")
     def port_config(self) -> Optional[Mapping[str, 'outputs.NetworktemplateSwitchMatchingRulePortConfig']]:
         """
-        Property key is the port name or range (e.g. "ge-0/0/0-10")
+        Per-port wired configuration applied when this matching rule matches
         """
         return pulumi.get(self, "port_config")
 
@@ -5160,13 +5741,16 @@ class NetworktemplateSwitchMatchingRule(dict):
     @pulumi.getter(name="portMirroring")
     def port_mirroring(self) -> Optional[Mapping[str, 'outputs.NetworktemplateSwitchMatchingRulePortMirroring']]:
         """
-        Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+        Port mirroring configuration applied when this matching rule matches
         """
         return pulumi.get(self, "port_mirroring")
 
     @_builtins.property
     @pulumi.getter(name="stpConfig")
     def stp_config(self) -> Optional['outputs.NetworktemplateSwitchMatchingRuleStpConfig']:
+        """
+        Spanning Tree Protocol configuration applied when this matching rule matches
+        """
         return pulumi.get(self, "stp_config")
 
 
@@ -5177,7 +5761,7 @@ class NetworktemplateSwitchMatchingRuleIpConfig(dict):
                  type: Optional[_builtins.str] = None):
         """
         :param _builtins.str network: VLAN Name for the management interface
-        :param _builtins.str type: enum: `dhcp`, `static`
+        :param _builtins.str type: IP assignment mode for in-band switch management
         """
         if network is not None:
             pulumi.set(__self__, "network", network)
@@ -5196,7 +5780,7 @@ class NetworktemplateSwitchMatchingRuleIpConfig(dict):
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
         """
-        enum: `dhcp`, `static`
+        IP assignment mode for in-band switch management
         """
         return pulumi.get(self, "type")
 
@@ -5227,7 +5811,7 @@ class NetworktemplateSwitchMatchingRuleOobIpConfig(dict):
                  use_mgmt_vrf: Optional[_builtins.bool] = None,
                  use_mgmt_vrf_for_host_out: Optional[_builtins.bool] = None):
         """
-        :param _builtins.str type: enum: `dhcp`, `static`
+        :param _builtins.str type: IP assignment mode for out-of-band switch management
         :param _builtins.bool use_mgmt_vrf: If supported on the platform. If enabled, DNS will be using this routing-instance, too
         :param _builtins.bool use_mgmt_vrf_for_host_out: For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
         """
@@ -5242,7 +5826,7 @@ class NetworktemplateSwitchMatchingRuleOobIpConfig(dict):
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
         """
-        enum: `dhcp`, `static`
+        IP assignment mode for out-of-band switch management
         """
         return pulumi.get(self, "type")
 
@@ -5274,6 +5858,8 @@ class NetworktemplateSwitchMatchingRulePortConfig(dict):
             suggest = "ae_idx"
         elif key == "aeLacpForceUp":
             suggest = "ae_lacp_force_up"
+        elif key == "aeLacpPassive":
+            suggest = "ae_lacp_passive"
         elif key == "aeLacpSlow":
             suggest = "ae_lacp_slow"
         elif key == "disableAutoneg":
@@ -5303,6 +5889,7 @@ class NetworktemplateSwitchMatchingRulePortConfig(dict):
                  ae_disable_lacp: Optional[_builtins.bool] = None,
                  ae_idx: Optional[_builtins.int] = None,
                  ae_lacp_force_up: Optional[_builtins.bool] = None,
+                 ae_lacp_passive: Optional[_builtins.bool] = None,
                  ae_lacp_slow: Optional[_builtins.bool] = None,
                  aggregated: Optional[_builtins.bool] = None,
                  critical: Optional[_builtins.bool] = None,
@@ -5322,16 +5909,21 @@ class NetworktemplateSwitchMatchingRulePortConfig(dict):
         :param _builtins.bool ae_disable_lacp: To disable LACP support for the AE interface
         :param _builtins.int ae_idx: Users could force to use the designated AE name
         :param _builtins.bool ae_lacp_force_up: If `aggregated`==`true`, sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
+        :param _builtins.bool ae_lacp_passive: If `aggregated`==`true`, sets LACP to passive mode on this AE interface; by default, active (fast) mode is used
         :param _builtins.bool ae_lacp_slow: To use slow timeout
+        :param _builtins.bool aggregated: Whether this port is configured as an aggregated Ethernet member
         :param _builtins.bool critical: To generate port up/down alarm
+        :param _builtins.str description: Human-readable description for this Junos port
         :param _builtins.bool disable_autoneg: If `speed` and `duplex` are specified, whether to disable autonegotiation
-        :param _builtins.str duplex: enum: `auto`, `full`, `half`
+        :param _builtins.str duplex: Link duplex mode for this Junos port
         :param _builtins.str dynamic_usage: Enable dynamic usage for this port. Set to `dynamic` to enable.
+        :param _builtins.bool esilag: Whether this Junos port participates in an ESI-LAG
         :param _builtins.int mtu: Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
         :param Sequence[_builtins.str] networks: List of network names. Required if `usage`==`inet`
         :param _builtins.bool no_local_overwrite: Prevent helpdesk to override the port config
+        :param _builtins.bool poe_disabled: Whether PoE capabilities are disabled for this Junos port
         :param _builtins.str port_network: Required if `usage`==`vlan_tunnel`. Q-in-Q tunneling using All-in-one bundling. This also enables standard L2PT for interfaces that are not encapsulation tunnel interfaces and uses MAC rewrite operation. [View more information](https://www.juniper.net/documentation/us/en/software/junos/multicast-l2/topics/topic-map/q-in-q.html#id-understanding-qinq-tunneling-and-vlan-translation)
-        :param _builtins.str speed: enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+        :param _builtins.str speed: Link speed for this Junos port
         """
         pulumi.set(__self__, "usage", usage)
         if ae_disable_lacp is not None:
@@ -5340,6 +5932,8 @@ class NetworktemplateSwitchMatchingRulePortConfig(dict):
             pulumi.set(__self__, "ae_idx", ae_idx)
         if ae_lacp_force_up is not None:
             pulumi.set(__self__, "ae_lacp_force_up", ae_lacp_force_up)
+        if ae_lacp_passive is not None:
+            pulumi.set(__self__, "ae_lacp_passive", ae_lacp_passive)
         if ae_lacp_slow is not None:
             pulumi.set(__self__, "ae_lacp_slow", ae_lacp_slow)
         if aggregated is not None:
@@ -5402,6 +5996,14 @@ class NetworktemplateSwitchMatchingRulePortConfig(dict):
         return pulumi.get(self, "ae_lacp_force_up")
 
     @_builtins.property
+    @pulumi.getter(name="aeLacpPassive")
+    def ae_lacp_passive(self) -> Optional[_builtins.bool]:
+        """
+        If `aggregated`==`true`, sets LACP to passive mode on this AE interface; by default, active (fast) mode is used
+        """
+        return pulumi.get(self, "ae_lacp_passive")
+
+    @_builtins.property
     @pulumi.getter(name="aeLacpSlow")
     def ae_lacp_slow(self) -> Optional[_builtins.bool]:
         """
@@ -5412,6 +6014,9 @@ class NetworktemplateSwitchMatchingRulePortConfig(dict):
     @_builtins.property
     @pulumi.getter
     def aggregated(self) -> Optional[_builtins.bool]:
+        """
+        Whether this port is configured as an aggregated Ethernet member
+        """
         return pulumi.get(self, "aggregated")
 
     @_builtins.property
@@ -5425,6 +6030,9 @@ class NetworktemplateSwitchMatchingRulePortConfig(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
+        """
+        Human-readable description for this Junos port
+        """
         return pulumi.get(self, "description")
 
     @_builtins.property
@@ -5439,7 +6047,7 @@ class NetworktemplateSwitchMatchingRulePortConfig(dict):
     @pulumi.getter
     def duplex(self) -> Optional[_builtins.str]:
         """
-        enum: `auto`, `full`, `half`
+        Link duplex mode for this Junos port
         """
         return pulumi.get(self, "duplex")
 
@@ -5454,6 +6062,9 @@ class NetworktemplateSwitchMatchingRulePortConfig(dict):
     @_builtins.property
     @pulumi.getter
     def esilag(self) -> Optional[_builtins.bool]:
+        """
+        Whether this Junos port participates in an ESI-LAG
+        """
         return pulumi.get(self, "esilag")
 
     @_builtins.property
@@ -5483,6 +6094,9 @@ class NetworktemplateSwitchMatchingRulePortConfig(dict):
     @_builtins.property
     @pulumi.getter(name="poeDisabled")
     def poe_disabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether PoE capabilities are disabled for this Junos port
+        """
         return pulumi.get(self, "poe_disabled")
 
     @_builtins.property
@@ -5497,7 +6111,7 @@ class NetworktemplateSwitchMatchingRulePortConfig(dict):
     @pulumi.getter
     def speed(self) -> Optional[_builtins.str]:
         """
-        enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+        Link speed for this Junos port
         """
         return pulumi.get(self, "speed")
 
@@ -5539,9 +6153,9 @@ class NetworktemplateSwitchMatchingRulePortMirroring(dict):
                  output_network: Optional[_builtins.str] = None,
                  output_port_id: Optional[_builtins.str] = None):
         """
-        :param Sequence[_builtins.str] input_networks_ingresses: At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
-        :param Sequence[_builtins.str] input_port_ids_egresses: At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
-        :param Sequence[_builtins.str] input_port_ids_ingresses: At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
+        :param Sequence[_builtins.str] input_networks_ingresses: At least one mirror input source should be specified. Networks whose ingress traffic is mirrored
+        :param Sequence[_builtins.str] input_port_ids_egresses: At least one mirror input source should be specified. Switch ports whose egress traffic is mirrored
+        :param Sequence[_builtins.str] input_port_ids_ingresses: At least one mirror input source should be specified. Switch ports whose ingress traffic is mirrored
         :param _builtins.str output_ip_address: Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
         :param _builtins.str output_network: Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
         :param _builtins.str output_port_id: Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
@@ -5563,7 +6177,7 @@ class NetworktemplateSwitchMatchingRulePortMirroring(dict):
     @pulumi.getter(name="inputNetworksIngresses")
     def input_networks_ingresses(self) -> Optional[Sequence[_builtins.str]]:
         """
-        At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
+        At least one mirror input source should be specified. Networks whose ingress traffic is mirrored
         """
         return pulumi.get(self, "input_networks_ingresses")
 
@@ -5571,7 +6185,7 @@ class NetworktemplateSwitchMatchingRulePortMirroring(dict):
     @pulumi.getter(name="inputPortIdsEgresses")
     def input_port_ids_egresses(self) -> Optional[Sequence[_builtins.str]]:
         """
-        At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
+        At least one mirror input source should be specified. Switch ports whose egress traffic is mirrored
         """
         return pulumi.get(self, "input_port_ids_egresses")
 
@@ -5579,7 +6193,7 @@ class NetworktemplateSwitchMatchingRulePortMirroring(dict):
     @pulumi.getter(name="inputPortIdsIngresses")
     def input_port_ids_ingresses(self) -> Optional[Sequence[_builtins.str]]:
         """
-        At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
+        At least one mirror input source should be specified. Switch ports whose ingress traffic is mirrored
         """
         return pulumi.get(self, "input_port_ids_ingresses")
 
@@ -5706,19 +6320,21 @@ class NetworktemplateSwitchMgmt(dict):
                  tacacs: Optional['outputs.NetworktemplateSwitchMgmtTacacs'] = None,
                  use_mxedge_proxy: Optional[_builtins.bool] = None):
         """
-        :param _builtins.int ap_affinity_threshold: AP_affinity_threshold ap_affinity_threshold can be added as a field under site/setting. By default, this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+        :param _builtins.int ap_affinity_threshold: AP affinity threshold for switch management. If set in both site settings and organization settings, the site setting value is used.
         :param _builtins.str cli_banner: Set Banners for switches. Allows markup formatting
         :param _builtins.int cli_idle_timeout: Sets timeout for switches
         :param _builtins.int config_revert_timer: Rollback timer for commit confirmed
         :param _builtins.bool dhcp_option_fqdn: Enable to provide the FQDN with DHCP option 81
-        :param Mapping[str, 'NetworktemplateSwitchMgmtLocalAccountsArgs'] local_accounts: Property key is the user name. For Local user authentication
-        :param _builtins.str mxedge_proxy_host: IP Address or FQDN of the Mist Edge used to proxy the switch management traffic to the Mist Cloud
+        :param _builtins.bool disable_oob_down_alarm: Whether to suppress alarms when the switch out-of-band management interface is down
+        :param _builtins.bool fips_enabled: Whether FIPS mode is enabled on the switch
+        :param Mapping[str, 'NetworktemplateSwitchMgmtLocalAccountsArgs'] local_accounts: Local switch user accounts keyed by username
+        :param _builtins.str mxedge_proxy_host: IP address or FQDN of the Mist Edge used to proxy the switch management traffic to the Mist Cloud
         :param _builtins.str mxedge_proxy_port: Mist Edge port used to proxy the switch management traffic to the Mist Cloud. Value in range 1-65535
-        :param 'NetworktemplateSwitchMgmtProtectReArgs' protect_re: Restrict inbound-traffic to host
-               when enabled, all traffic that is not essential to our operation will be dropped 
-               e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
+        :param 'NetworktemplateSwitchMgmtProtectReArgs' protect_re: Control-plane protection settings for the switch
         :param _builtins.bool remove_existing_configs: By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
-        :param _builtins.bool use_mxedge_proxy: To use mxedge as proxy
+        :param _builtins.str root_password: Root password for local switch access
+        :param 'NetworktemplateSwitchMgmtTacacsArgs' tacacs: Management authentication settings using TACACS+
+        :param _builtins.bool use_mxedge_proxy: Whether to use Mist Edge as a proxy for switch management traffic
         """
         if ap_affinity_threshold is not None:
             pulumi.set(__self__, "ap_affinity_threshold", ap_affinity_threshold)
@@ -5755,7 +6371,7 @@ class NetworktemplateSwitchMgmt(dict):
     @pulumi.getter(name="apAffinityThreshold")
     def ap_affinity_threshold(self) -> Optional[_builtins.int]:
         """
-        AP_affinity_threshold ap_affinity_threshold can be added as a field under site/setting. By default, this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+        AP affinity threshold for switch management. If set in both site settings and organization settings, the site setting value is used.
         """
         return pulumi.get(self, "ap_affinity_threshold")
 
@@ -5794,18 +6410,24 @@ class NetworktemplateSwitchMgmt(dict):
     @_builtins.property
     @pulumi.getter(name="disableOobDownAlarm")
     def disable_oob_down_alarm(self) -> Optional[_builtins.bool]:
+        """
+        Whether to suppress alarms when the switch out-of-band management interface is down
+        """
         return pulumi.get(self, "disable_oob_down_alarm")
 
     @_builtins.property
     @pulumi.getter(name="fipsEnabled")
     def fips_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether FIPS mode is enabled on the switch
+        """
         return pulumi.get(self, "fips_enabled")
 
     @_builtins.property
     @pulumi.getter(name="localAccounts")
     def local_accounts(self) -> Optional[Mapping[str, 'outputs.NetworktemplateSwitchMgmtLocalAccounts']]:
         """
-        Property key is the user name. For Local user authentication
+        Local switch user accounts keyed by username
         """
         return pulumi.get(self, "local_accounts")
 
@@ -5813,7 +6435,7 @@ class NetworktemplateSwitchMgmt(dict):
     @pulumi.getter(name="mxedgeProxyHost")
     def mxedge_proxy_host(self) -> Optional[_builtins.str]:
         """
-        IP Address or FQDN of the Mist Edge used to proxy the switch management traffic to the Mist Cloud
+        IP address or FQDN of the Mist Edge used to proxy the switch management traffic to the Mist Cloud
         """
         return pulumi.get(self, "mxedge_proxy_host")
 
@@ -5829,9 +6451,7 @@ class NetworktemplateSwitchMgmt(dict):
     @pulumi.getter(name="protectRe")
     def protect_re(self) -> Optional['outputs.NetworktemplateSwitchMgmtProtectRe']:
         """
-        Restrict inbound-traffic to host
-        when enabled, all traffic that is not essential to our operation will be dropped 
-        e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
+        Control-plane protection settings for the switch
         """
         return pulumi.get(self, "protect_re")
 
@@ -5846,18 +6466,24 @@ class NetworktemplateSwitchMgmt(dict):
     @_builtins.property
     @pulumi.getter(name="rootPassword")
     def root_password(self) -> Optional[_builtins.str]:
+        """
+        Root password for local switch access
+        """
         return pulumi.get(self, "root_password")
 
     @_builtins.property
     @pulumi.getter
     def tacacs(self) -> Optional['outputs.NetworktemplateSwitchMgmtTacacs']:
+        """
+        Management authentication settings using TACACS+
+        """
         return pulumi.get(self, "tacacs")
 
     @_builtins.property
     @pulumi.getter(name="useMxedgeProxy")
     def use_mxedge_proxy(self) -> Optional[_builtins.bool]:
         """
-        To use mxedge as proxy
+        Whether to use Mist Edge as a proxy for switch management traffic
         """
         return pulumi.get(self, "use_mxedge_proxy")
 
@@ -5868,7 +6494,8 @@ class NetworktemplateSwitchMgmtLocalAccounts(dict):
                  password: Optional[_builtins.str] = None,
                  role: Optional[_builtins.str] = None):
         """
-        :param _builtins.str role: enum: `admin`, `helpdesk`, `none`, `read`
+        :param _builtins.str password: Local password for the switch user account
+        :param _builtins.str role: Access role granted to the local switch user account
         """
         if password is not None:
             pulumi.set(__self__, "password", password)
@@ -5878,13 +6505,16 @@ class NetworktemplateSwitchMgmtLocalAccounts(dict):
     @_builtins.property
     @pulumi.getter
     def password(self) -> Optional[_builtins.str]:
+        """
+        Local password for the switch user account
+        """
         return pulumi.get(self, "password")
 
     @_builtins.property
     @pulumi.getter
     def role(self) -> Optional[_builtins.str]:
         """
-        enum: `admin`, `helpdesk`, `none`, `read`
+        Access role granted to the local switch user account
         """
         return pulumi.get(self, "role")
 
@@ -5920,11 +6550,12 @@ class NetworktemplateSwitchMgmtProtectRe(dict):
                  trusted_hosts: Optional[Sequence[_builtins.str]] = None):
         """
         :param Sequence[_builtins.str] allowed_services: optionally, services we'll allow. enum: `icmp`, `ssh`
+        :param Sequence['NetworktemplateSwitchMgmtProtectReCustomArgs'] customs: Additional ACL entries allowed by the Protect RE policy
         :param _builtins.bool enabled: When enabled, all traffic that is not essential to our operation will be dropped
                e.g. ntp / dns / traffic to mist will be allowed by default
                     if dhcpd is enabled, we'll make sure it works
         :param _builtins.bool hit_count: Whether to enable hit count for Protect_RE policy
-        :param Sequence[_builtins.str] trusted_hosts: host/subnets we'll allow traffic to/from
+        :param Sequence[_builtins.str] trusted_hosts: Trusted host or subnet entries allowed by the Protect RE policy
         """
         if allowed_services is not None:
             pulumi.set(__self__, "allowed_services", allowed_services)
@@ -5948,6 +6579,9 @@ class NetworktemplateSwitchMgmtProtectRe(dict):
     @_builtins.property
     @pulumi.getter
     def customs(self) -> Optional[Sequence['outputs.NetworktemplateSwitchMgmtProtectReCustom']]:
+        """
+        Additional ACL entries allowed by the Protect RE policy
+        """
         return pulumi.get(self, "customs")
 
     @_builtins.property
@@ -5972,7 +6606,7 @@ class NetworktemplateSwitchMgmtProtectRe(dict):
     @pulumi.getter(name="trustedHosts")
     def trusted_hosts(self) -> Optional[Sequence[_builtins.str]]:
         """
-        host/subnets we'll allow traffic to/from
+        Trusted host or subnet entries allowed by the Protect RE policy
         """
         return pulumi.get(self, "trusted_hosts")
 
@@ -6001,6 +6635,7 @@ class NetworktemplateSwitchMgmtProtectReCustom(dict):
                  port_range: Optional[_builtins.str] = None,
                  protocol: Optional[_builtins.str] = None):
         """
+        :param Sequence[_builtins.str] subnets: Source subnets matched by this custom Protect RE ACL
         :param _builtins.str port_range: matched dst port, "0" means any. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
         :param _builtins.str protocol: enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
         """
@@ -6013,6 +6648,9 @@ class NetworktemplateSwitchMgmtProtectReCustom(dict):
     @_builtins.property
     @pulumi.getter
     def subnets(self) -> Sequence[_builtins.str]:
+        """
+        Source subnets matched by this custom Protect RE ACL
+        """
         return pulumi.get(self, "subnets")
 
     @_builtins.property
@@ -6062,8 +6700,11 @@ class NetworktemplateSwitchMgmtTacacs(dict):
                  network: Optional[_builtins.str] = None,
                  tacplus_servers: Optional[Sequence['outputs.NetworktemplateSwitchMgmtTacacsTacplusServer']] = None):
         """
-        :param _builtins.str default_role: enum: `admin`, `helpdesk`, `none`, `read`
-        :param _builtins.str network: Which network the TACACS server resides
+        :param Sequence['NetworktemplateSwitchMgmtTacacsAcctServerArgs'] acct_servers: TACACS+ accounting servers used for switch management sessions
+        :param _builtins.str default_role: Default switch-management role to use for TACACS+ logins
+        :param _builtins.bool enabled: Whether TACACS+ is enabled for switch management authentication
+        :param _builtins.str network: Source network used for connectivity to the TACACS+ servers
+        :param Sequence['NetworktemplateSwitchMgmtTacacsTacplusServerArgs'] tacplus_servers: TACACS+ authentication servers used for switch management logins
         """
         if acct_servers is not None:
             pulumi.set(__self__, "acct_servers", acct_servers)
@@ -6079,32 +6720,41 @@ class NetworktemplateSwitchMgmtTacacs(dict):
     @_builtins.property
     @pulumi.getter(name="acctServers")
     def acct_servers(self) -> Optional[Sequence['outputs.NetworktemplateSwitchMgmtTacacsAcctServer']]:
+        """
+        TACACS+ accounting servers used for switch management sessions
+        """
         return pulumi.get(self, "acct_servers")
 
     @_builtins.property
     @pulumi.getter(name="defaultRole")
     def default_role(self) -> Optional[_builtins.str]:
         """
-        enum: `admin`, `helpdesk`, `none`, `read`
+        Default switch-management role to use for TACACS+ logins
         """
         return pulumi.get(self, "default_role")
 
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether TACACS+ is enabled for switch management authentication
+        """
         return pulumi.get(self, "enabled")
 
     @_builtins.property
     @pulumi.getter
     def network(self) -> Optional[_builtins.str]:
         """
-        Which network the TACACS server resides
+        Source network used for connectivity to the TACACS+ servers
         """
         return pulumi.get(self, "network")
 
     @_builtins.property
     @pulumi.getter(name="tacplusServers")
     def tacplus_servers(self) -> Optional[Sequence['outputs.NetworktemplateSwitchMgmtTacacsTacplusServer']]:
+        """
+        TACACS+ authentication servers used for switch management logins
+        """
         return pulumi.get(self, "tacplus_servers")
 
 
@@ -6115,6 +6765,12 @@ class NetworktemplateSwitchMgmtTacacsAcctServer(dict):
                  port: Optional[_builtins.str] = None,
                  secret: Optional[_builtins.str] = None,
                  timeout: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str host: Address or hostname of the TACACS+ accounting server
+        :param _builtins.str port: TCP port used by the TACACS+ accounting server
+        :param _builtins.str secret: Shared secret used with this TACACS+ accounting server
+        :param _builtins.int timeout: TACACS+ accounting server timeout, in seconds
+        """
         if host is not None:
             pulumi.set(__self__, "host", host)
         if port is not None:
@@ -6127,21 +6783,33 @@ class NetworktemplateSwitchMgmtTacacsAcctServer(dict):
     @_builtins.property
     @pulumi.getter
     def host(self) -> Optional[_builtins.str]:
+        """
+        Address or hostname of the TACACS+ accounting server
+        """
         return pulumi.get(self, "host")
 
     @_builtins.property
     @pulumi.getter
     def port(self) -> Optional[_builtins.str]:
+        """
+        TCP port used by the TACACS+ accounting server
+        """
         return pulumi.get(self, "port")
 
     @_builtins.property
     @pulumi.getter
     def secret(self) -> Optional[_builtins.str]:
+        """
+        Shared secret used with this TACACS+ accounting server
+        """
         return pulumi.get(self, "secret")
 
     @_builtins.property
     @pulumi.getter
     def timeout(self) -> Optional[_builtins.int]:
+        """
+        TACACS+ accounting server timeout, in seconds
+        """
         return pulumi.get(self, "timeout")
 
 
@@ -6152,6 +6820,12 @@ class NetworktemplateSwitchMgmtTacacsTacplusServer(dict):
                  port: Optional[_builtins.str] = None,
                  secret: Optional[_builtins.str] = None,
                  timeout: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str host: Address or hostname of the TACACS+ authentication server
+        :param _builtins.str port: TCP port used by the TACACS+ authentication server
+        :param _builtins.str secret: Shared secret used with this TACACS+ authentication server
+        :param _builtins.int timeout: TACACS+ authentication server timeout, in seconds
+        """
         if host is not None:
             pulumi.set(__self__, "host", host)
         if port is not None:
@@ -6164,21 +6838,33 @@ class NetworktemplateSwitchMgmtTacacsTacplusServer(dict):
     @_builtins.property
     @pulumi.getter
     def host(self) -> Optional[_builtins.str]:
+        """
+        Address or hostname of the TACACS+ authentication server
+        """
         return pulumi.get(self, "host")
 
     @_builtins.property
     @pulumi.getter
     def port(self) -> Optional[_builtins.str]:
+        """
+        TCP port used by the TACACS+ authentication server
+        """
         return pulumi.get(self, "port")
 
     @_builtins.property
     @pulumi.getter
     def secret(self) -> Optional[_builtins.str]:
+        """
+        Shared secret used with this TACACS+ authentication server
+        """
         return pulumi.get(self, "secret")
 
     @_builtins.property
     @pulumi.getter
     def timeout(self) -> Optional[_builtins.int]:
+        """
+        TACACS+ authentication server timeout, in seconds
+        """
         return pulumi.get(self, "timeout")
 
 
@@ -6214,6 +6900,8 @@ class NetworktemplateVrfInstances(dict):
             suggest = "extra_routes"
         elif key == "extraRoutes6":
             suggest = "extra_routes6"
+        elif key == "multicastConfig":
+            suggest = "multicast_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in NetworktemplateVrfInstances. Access the value via the '{suggest}' property getter instead.")
@@ -6231,10 +6919,15 @@ class NetworktemplateVrfInstances(dict):
                  evpn_auto_loopback_subnet6: Optional[_builtins.str] = None,
                  extra_routes: Optional[Mapping[str, 'outputs.NetworktemplateVrfInstancesExtraRoutes']] = None,
                  extra_routes6: Optional[Mapping[str, 'outputs.NetworktemplateVrfInstancesExtraRoutes6']] = None,
+                 multicast_config: Optional['outputs.NetworktemplateVrfInstancesMulticastConfig'] = None,
                  networks: Optional[Sequence[_builtins.str]] = None):
         """
-        :param Mapping[str, 'NetworktemplateVrfInstancesExtraRoutesArgs'] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8")
-        :param Mapping[str, 'NetworktemplateVrfInstancesExtraRoutes6Args'] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+        :param _builtins.str evpn_auto_loopback_subnet: IPv4 subnet used for automatic EVPN loopback addresses in this VRF instance
+        :param _builtins.str evpn_auto_loopback_subnet6: IPv6 subnet used for automatic EVPN loopback addresses in this VRF instance
+        :param Mapping[str, 'NetworktemplateVrfInstancesExtraRoutesArgs'] extra_routes: Additional IPv4 static routes configured for this VRF instance
+        :param Mapping[str, 'NetworktemplateVrfInstancesExtraRoutes6Args'] extra_routes6: Additional IPv6 static routes configured for this VRF instance
+        :param 'NetworktemplateVrfInstancesMulticastConfigArgs' multicast_config: Multicast configuration for this VRF instance. PIM is automatically enabled when any network in this VRF has `multicast.enabled`==`true`
+        :param Sequence[_builtins.str] networks: Names of switch networks included in this VRF instance
         """
         if evpn_auto_loopback_subnet is not None:
             pulumi.set(__self__, "evpn_auto_loopback_subnet", evpn_auto_loopback_subnet)
@@ -6244,24 +6937,32 @@ class NetworktemplateVrfInstances(dict):
             pulumi.set(__self__, "extra_routes", extra_routes)
         if extra_routes6 is not None:
             pulumi.set(__self__, "extra_routes6", extra_routes6)
+        if multicast_config is not None:
+            pulumi.set(__self__, "multicast_config", multicast_config)
         if networks is not None:
             pulumi.set(__self__, "networks", networks)
 
     @_builtins.property
     @pulumi.getter(name="evpnAutoLoopbackSubnet")
     def evpn_auto_loopback_subnet(self) -> Optional[_builtins.str]:
+        """
+        IPv4 subnet used for automatic EVPN loopback addresses in this VRF instance
+        """
         return pulumi.get(self, "evpn_auto_loopback_subnet")
 
     @_builtins.property
     @pulumi.getter(name="evpnAutoLoopbackSubnet6")
     def evpn_auto_loopback_subnet6(self) -> Optional[_builtins.str]:
+        """
+        IPv6 subnet used for automatic EVPN loopback addresses in this VRF instance
+        """
         return pulumi.get(self, "evpn_auto_loopback_subnet6")
 
     @_builtins.property
     @pulumi.getter(name="extraRoutes")
     def extra_routes(self) -> Optional[Mapping[str, 'outputs.NetworktemplateVrfInstancesExtraRoutes']]:
         """
-        Property key is the destination CIDR (e.g. "10.0.0.0/8")
+        Additional IPv4 static routes configured for this VRF instance
         """
         return pulumi.get(self, "extra_routes")
 
@@ -6269,13 +6970,24 @@ class NetworktemplateVrfInstances(dict):
     @pulumi.getter(name="extraRoutes6")
     def extra_routes6(self) -> Optional[Mapping[str, 'outputs.NetworktemplateVrfInstancesExtraRoutes6']]:
         """
-        Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+        Additional IPv6 static routes configured for this VRF instance
         """
         return pulumi.get(self, "extra_routes6")
 
     @_builtins.property
+    @pulumi.getter(name="multicastConfig")
+    def multicast_config(self) -> Optional['outputs.NetworktemplateVrfInstancesMulticastConfig']:
+        """
+        Multicast configuration for this VRF instance. PIM is automatically enabled when any network in this VRF has `multicast.enabled`==`true`
+        """
+        return pulumi.get(self, "multicast_config")
+
+    @_builtins.property
     @pulumi.getter
     def networks(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Names of switch networks included in this VRF instance
+        """
         return pulumi.get(self, "networks")
 
 
@@ -6284,7 +6996,7 @@ class NetworktemplateVrfInstancesExtraRoutes6(dict):
     def __init__(__self__, *,
                  via: Optional[_builtins.str] = None):
         """
-        :param _builtins.str via: Next-hop address
+        :param _builtins.str via: IPv6 next-hop address for this VRF extra route
         """
         if via is not None:
             pulumi.set(__self__, "via", via)
@@ -6293,7 +7005,7 @@ class NetworktemplateVrfInstancesExtraRoutes6(dict):
     @pulumi.getter
     def via(self) -> Optional[_builtins.str]:
         """
-        Next-hop address
+        IPv6 next-hop address for this VRF extra route
         """
         return pulumi.get(self, "via")
 
@@ -6303,7 +7015,7 @@ class NetworktemplateVrfInstancesExtraRoutes(dict):
     def __init__(__self__, *,
                  via: _builtins.str):
         """
-        :param _builtins.str via: Next-hop address
+        :param _builtins.str via: IPv4 next-hop address for this VRF extra route
         """
         pulumi.set(__self__, "via", via)
 
@@ -6311,9 +7023,87 @@ class NetworktemplateVrfInstancesExtraRoutes(dict):
     @pulumi.getter
     def via(self) -> _builtins.str:
         """
-        Next-hop address
+        IPv4 next-hop address for this VRF extra route
         """
         return pulumi.get(self, "via")
+
+
+@pulumi.output_type
+class NetworktemplateVrfInstancesMulticastConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "anycastRp":
+            suggest = "anycast_rp"
+        elif key == "rpIp":
+            suggest = "rp_ip"
+        elif key == "sbdSubnet":
+            suggest = "sbd_subnet"
+        elif key == "sbdVlanId":
+            suggest = "sbd_vlan_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworktemplateVrfInstancesMulticastConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworktemplateVrfInstancesMulticastConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworktemplateVrfInstancesMulticastConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 anycast_rp: Optional[_builtins.bool] = None,
+                 rp_ip: Optional[_builtins.str] = None,
+                 sbd_subnet: Optional[_builtins.str] = None,
+                 sbd_vlan_id: Optional[_builtins.int] = None):
+        """
+        :param _builtins.bool anycast_rp: When `true`, auto-generates a shared RP on `is_l3_border` devices (ERB/IPClos topologies only)
+        :param _builtins.str rp_ip: RP address used when `anycast_rp`==`false`. If the address matches a device SVI, it is configured as a local RP; otherwise a static RP is configured
+        :param _builtins.str sbd_subnet: SBD IRB subnet; Mist auto-assigns per-device IPs from this range (EVPN eOISM only)
+        :param _builtins.int sbd_vlan_id: Supplemental Bridge Domain VLAN ID (EVPN topology / eOISM only)
+        """
+        if anycast_rp is not None:
+            pulumi.set(__self__, "anycast_rp", anycast_rp)
+        if rp_ip is not None:
+            pulumi.set(__self__, "rp_ip", rp_ip)
+        if sbd_subnet is not None:
+            pulumi.set(__self__, "sbd_subnet", sbd_subnet)
+        if sbd_vlan_id is not None:
+            pulumi.set(__self__, "sbd_vlan_id", sbd_vlan_id)
+
+    @_builtins.property
+    @pulumi.getter(name="anycastRp")
+    def anycast_rp(self) -> Optional[_builtins.bool]:
+        """
+        When `true`, auto-generates a shared RP on `is_l3_border` devices (ERB/IPClos topologies only)
+        """
+        return pulumi.get(self, "anycast_rp")
+
+    @_builtins.property
+    @pulumi.getter(name="rpIp")
+    def rp_ip(self) -> Optional[_builtins.str]:
+        """
+        RP address used when `anycast_rp`==`false`. If the address matches a device SVI, it is configured as a local RP; otherwise a static RP is configured
+        """
+        return pulumi.get(self, "rp_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="sbdSubnet")
+    def sbd_subnet(self) -> Optional[_builtins.str]:
+        """
+        SBD IRB subnet; Mist auto-assigns per-device IPs from this range (EVPN eOISM only)
+        """
+        return pulumi.get(self, "sbd_subnet")
+
+    @_builtins.property
+    @pulumi.getter(name="sbdVlanId")
+    def sbd_vlan_id(self) -> Optional[_builtins.int]:
+        """
+        Supplemental Bridge Domain VLAN ID (EVPN topology / eOISM only)
+        """
+        return pulumi.get(self, "sbd_vlan_id")
 
 
 @pulumi.output_type
@@ -7518,6 +8308,8 @@ class SettingGatewayMgmt(dict):
             suggest = "config_revert_timer"
         elif key == "disableConsole":
             suggest = "disable_console"
+        elif key == "disableIdpPcap":
+            suggest = "disable_idp_pcap"
         elif key == "disableOob":
             suggest = "disable_oob"
         elif key == "disableUsb":
@@ -7555,6 +8347,7 @@ class SettingGatewayMgmt(dict):
                  auto_signature_update: Optional['outputs.SettingGatewayMgmtAutoSignatureUpdate'] = None,
                  config_revert_timer: Optional[_builtins.int] = None,
                  disable_console: Optional[_builtins.bool] = None,
+                 disable_idp_pcap: Optional[_builtins.bool] = None,
                  disable_oob: Optional[_builtins.bool] = None,
                  disable_usb: Optional[_builtins.bool] = None,
                  fips_enabled: Optional[_builtins.bool] = None,
@@ -7571,6 +8364,7 @@ class SettingGatewayMgmt(dict):
         :param 'SettingGatewayMgmtAutoSignatureUpdateArgs' auto_signature_update: Schedule for automatic security signature updates
         :param _builtins.int config_revert_timer: Rollback timer for commit confirmed
         :param _builtins.bool disable_console: For SSR and SRX, disable console port
+        :param _builtins.bool disable_idp_pcap: For SRX only, disable IDP packet capture
         :param _builtins.bool disable_oob: For SSR and SRX, disable management interface
         :param _builtins.bool disable_usb: For SSR and SRX, disable usb interface
         :param _builtins.bool fips_enabled: Whether FIPS mode is enabled on the gateway
@@ -7593,6 +8387,8 @@ class SettingGatewayMgmt(dict):
             pulumi.set(__self__, "config_revert_timer", config_revert_timer)
         if disable_console is not None:
             pulumi.set(__self__, "disable_console", disable_console)
+        if disable_idp_pcap is not None:
+            pulumi.set(__self__, "disable_idp_pcap", disable_idp_pcap)
         if disable_oob is not None:
             pulumi.set(__self__, "disable_oob", disable_oob)
         if disable_usb is not None:
@@ -7659,6 +8455,14 @@ class SettingGatewayMgmt(dict):
         For SSR and SRX, disable console port
         """
         return pulumi.get(self, "disable_console")
+
+    @_builtins.property
+    @pulumi.getter(name="disableIdpPcap")
+    def disable_idp_pcap(self) -> Optional[_builtins.bool]:
+        """
+        For SRX only, disable IDP packet capture
+        """
+        return pulumi.get(self, "disable_idp_pcap")
 
     @_builtins.property
     @pulumi.getter(name="disableOob")
@@ -11148,6 +11952,73 @@ class SettingUplinkPortConfig(dict):
 
 
 @pulumi.output_type
+class SettingUwbConfig(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None,
+                 host: Optional[_builtins.str] = None,
+                 port: Optional[_builtins.int] = None,
+                 slot: Optional[_builtins.int] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool enabled: Whether UWB RTLS integration is enabled
+        :param _builtins.str host: RTLS server hostname or IP address
+        :param _builtins.int port: RTLS server port number
+        :param _builtins.int slot: UWB time slot assigned to this AP, 0–15
+        :param _builtins.str type: UWB integration type. enum: `zigpos`
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if slot is not None:
+            pulumi.set(__self__, "slot", slot)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether UWB RTLS integration is enabled
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> Optional[_builtins.str]:
+        """
+        RTLS server hostname or IP address
+        """
+        return pulumi.get(self, "host")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[_builtins.int]:
+        """
+        RTLS server port number
+        """
+        return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter
+    def slot(self) -> Optional[_builtins.int]:
+        """
+        UWB time slot assigned to this AP, 0–15
+        """
+        return pulumi.get(self, "slot")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        UWB integration type. enum: `zigpos`
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
 class SettingVarsAnnotations(dict):
     def __init__(__self__, *,
                  note: Optional[_builtins.str] = None,
@@ -11597,6 +12468,48 @@ class SettingZoneOccupancyAlert(dict):
         Sending zone-occupancy-alert webhook message only if a zone stays non-compliant (i.e. actual occupancy > occupancy_limit) for a minimum duration specified in the threshold, in minutes
         """
         return pulumi.get(self, "threshold")
+
+
+@pulumi.output_type
+class WebhookRule(dict):
+    def __init__(__self__, *,
+                 topic: _builtins.str,
+                 action: Optional[_builtins.str] = None,
+                 matching: Optional[Mapping[str, Sequence[_builtins.str]]] = None):
+        """
+        :param _builtins.str topic: Webhook topic this rule applies to
+        :param _builtins.str action: Action applied when the rule matches the incoming event
+        :param Mapping[str, Sequence[_builtins.str]] matching: Optional event payload matching criteria. Property key is the event field name and the value is the list of accepted values
+        """
+        pulumi.set(__self__, "topic", topic)
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if matching is not None:
+            pulumi.set(__self__, "matching", matching)
+
+    @_builtins.property
+    @pulumi.getter
+    def topic(self) -> _builtins.str:
+        """
+        Webhook topic this rule applies to
+        """
+        return pulumi.get(self, "topic")
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> Optional[_builtins.str]:
+        """
+        Action applied when the rule matches the incoming event
+        """
+        return pulumi.get(self, "action")
+
+    @_builtins.property
+    @pulumi.getter
+    def matching(self) -> Optional[Mapping[str, Sequence[_builtins.str]]]:
+        """
+        Optional event payload matching criteria. Property key is the event field name and the value is the list of accepted values
+        """
+        return pulumi.get(self, "matching")
 
 
 @pulumi.output_type
@@ -12727,6 +13640,8 @@ class WlanDynamicPsk(dict):
             suggest = "default_vlan_id"
         elif key == "forceLookup":
             suggest = "force_lookup"
+        elif key == "localVlanIds":
+            suggest = "local_vlan_ids"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in WlanDynamicPsk. Access the value via the '{suggest}' property getter instead.")
@@ -12744,12 +13659,14 @@ class WlanDynamicPsk(dict):
                  default_vlan_id: Optional[_builtins.str] = None,
                  enabled: Optional[_builtins.bool] = None,
                  force_lookup: Optional[_builtins.bool] = None,
+                 local_vlan_ids: Optional[Sequence[_builtins.str]] = None,
                  source: Optional[_builtins.str] = None):
         """
         :param _builtins.str default_psk: Default PSK to use if cloud WLC is not available, 8-63 characters
         :param _builtins.str default_vlan_id: Default VLAN ID used when dynamic PSK lookup does not return a VLAN
         :param _builtins.bool enabled: Whether dynamic PSK is enabled for this WLAN
         :param _builtins.bool force_lookup: When 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
+        :param Sequence[_builtins.str] local_vlan_ids: VLANs to be bridged locally when forwarding to mxtunnel or site mxedge
         :param _builtins.str source: Origin used to retrieve per-user PSKs
         """
         if default_psk is not None:
@@ -12760,6 +13677,8 @@ class WlanDynamicPsk(dict):
             pulumi.set(__self__, "enabled", enabled)
         if force_lookup is not None:
             pulumi.set(__self__, "force_lookup", force_lookup)
+        if local_vlan_ids is not None:
+            pulumi.set(__self__, "local_vlan_ids", local_vlan_ids)
         if source is not None:
             pulumi.set(__self__, "source", source)
 
@@ -12794,6 +13713,14 @@ class WlanDynamicPsk(dict):
         When 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
         """
         return pulumi.get(self, "force_lookup")
+
+    @_builtins.property
+    @pulumi.getter(name="localVlanIds")
+    def local_vlan_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        VLANs to be bridged locally when forwarding to mxtunnel or site mxedge
+        """
+        return pulumi.get(self, "local_vlan_ids")
 
     @_builtins.property
     @pulumi.getter

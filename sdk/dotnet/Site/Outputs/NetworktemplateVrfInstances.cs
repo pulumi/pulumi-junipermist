@@ -13,16 +13,29 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class NetworktemplateVrfInstances
     {
+        /// <summary>
+        /// IPv4 subnet used for automatic EVPN loopback addresses in this VRF instance
+        /// </summary>
         public readonly string? EvpnAutoLoopbackSubnet;
+        /// <summary>
+        /// IPv6 subnet used for automatic EVPN loopback addresses in this VRF instance
+        /// </summary>
         public readonly string? EvpnAutoLoopbackSubnet6;
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+        /// Additional IPv4 static routes configured for this VRF instance
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.NetworktemplateVrfInstancesExtraRoutes>? ExtraRoutes;
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+        /// Additional IPv6 static routes configured for this VRF instance
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.NetworktemplateVrfInstancesExtraRoutes6>? ExtraRoutes6;
+        /// <summary>
+        /// Multicast configuration for this VRF instance. PIM is automatically enabled when any network in this VRF has `multicast.enabled`==`True`
+        /// </summary>
+        public readonly Outputs.NetworktemplateVrfInstancesMulticastConfig? MulticastConfig;
+        /// <summary>
+        /// Names of switch networks included in this VRF instance
+        /// </summary>
         public readonly ImmutableArray<string> Networks;
 
         [OutputConstructor]
@@ -35,12 +48,15 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             ImmutableDictionary<string, Outputs.NetworktemplateVrfInstancesExtraRoutes6>? extraRoutes6,
 
+            Outputs.NetworktemplateVrfInstancesMulticastConfig? multicastConfig,
+
             ImmutableArray<string> networks)
         {
             EvpnAutoLoopbackSubnet = evpnAutoLoopbackSubnet;
             EvpnAutoLoopbackSubnet6 = evpnAutoLoopbackSubnet6;
             ExtraRoutes = extraRoutes;
             ExtraRoutes6 = extraRoutes6;
+            MulticastConfig = multicastConfig;
             Networks = networks;
         }
     }

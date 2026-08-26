@@ -44,6 +44,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// <summary>
         /// Required if:
         ///   * `Type`==`RadiusGroup`
+        ///   * `Type`==`ArubaUserRole`
         ///   * `Type`==`StaticGbp`
         /// if from matching radius_group
         /// </summary>

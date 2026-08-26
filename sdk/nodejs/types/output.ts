@@ -533,6 +533,10 @@ export namespace device {
          */
         brokerProto?: string;
         /**
+         * Optional catch-all MQTT topic; BLE advertisements matching no AssetFilter are published here
+         */
+        defaultTopic?: string;
+        /**
          * Whether to enable MQTT publishing
          */
         enabled?: boolean;
@@ -584,7 +588,7 @@ export namespace device {
          */
         mxTunnelId: string;
         /**
-         * If `forwarding`==`siteMxedge`, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+         * If `forwarding`==`siteMxedge`, vlanIds comes from siteMxedge (`mxtunnel` under site setting)
          */
         mxtunnelName: string;
         /**
@@ -606,7 +610,7 @@ export namespace device {
         /**
          * Optional to specify the VLAN ID for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `siteMxedge`.
          *   * if vlanId is not specified then it will use first one in vlan_ids[] of the mxtunnel.
-         *   * if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+         *   * if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnel` under site setting)
          */
         vlanId?: number;
         /**
@@ -1166,6 +1170,29 @@ export namespace device {
         vlanId?: number;
     }
 
+    export interface ApUwbConfig {
+        /**
+         * Whether UWB RTLS integration is enabled
+         */
+        enabled?: boolean;
+        /**
+         * RTLS server hostname or IP address
+         */
+        host?: string;
+        /**
+         * RTLS server port number
+         */
+        port?: number;
+        /**
+         * UWB time slot assigned to this AP, 0–15
+         */
+        slot?: number;
+        /**
+         * UWB integration type. enum: `zigpos`
+         */
+        type?: string;
+    }
+
     export interface ApZigbeeConfig {
         /**
          * Join policy for new Zigbee devices on this AP
@@ -1488,6 +1515,10 @@ export namespace device {
          * For SSR and SRX, disable console port
          */
         disableConsole?: boolean;
+        /**
+         * For SRX only, disable IDP packet capture
+         */
+        disableIdpPcap?: boolean;
         /**
          * For SSR and SRX, disable management interface
          */
@@ -1850,11 +1881,11 @@ export namespace device {
         /**
          * If the network will only be the source of the multicast traffic, IGMP can be disabled
          */
-        disableIgmp: boolean;
+        disableIgmp?: boolean;
         /**
          * Whether multicast support is enabled for this network
          */
-        enabled: boolean;
+        enabled?: boolean;
         /**
          * Multicast group-to-RP mappings for this network
          */
@@ -2207,10 +2238,6 @@ export namespace device {
          */
         rethNode?: string;
         /**
-         * If HA mode and for SSR only. Per-network node assignment used for VLAN-based redundancy
-         */
-        rethNodes?: string[];
-        /**
          * Link speed configured on the port
          */
         speed?: string;
@@ -2408,6 +2435,14 @@ export namespace device {
 
     export interface GatewayPortConfigWanProbeOverride {
         /**
+         * List of hostnames used as probe destinations; applicable for both IPv4 and IPv6
+         */
+        hostnames?: string[];
+        /**
+         * HTTP probe settings; success from any ICMP or HTTP probe indicates the WAN is up
+         */
+        http?: outputs.device.GatewayPortConfigWanProbeOverrideHttp;
+        /**
          * List of IPv6 probe host addresses used by this WAN override
          */
         ip6s?: string[];
@@ -2419,6 +2454,17 @@ export namespace device {
          * WAN probe profile used for health checks on this port
          */
         probeProfile?: string;
+    }
+
+    export interface GatewayPortConfigWanProbeOverrideHttp {
+        /**
+         * HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+         */
+        acceptedStatusCodes?: number[];
+        /**
+         * HTTP or HTTPS URLs to probe
+         */
+        urls?: string[];
     }
 
     export interface GatewayPortConfigWanSourceNat {
@@ -2486,7 +2532,7 @@ export namespace device {
 
     export interface GatewayRoutingPoliciesTermActions {
         /**
-         * Whether to accept routes that match this term
+         * Whether to accept routes that match this term. Precedence is `accept` > `nextTerm` > `nextPolicy`; routes are rejected if all three are false
          */
         accept?: boolean;
         /**
@@ -2517,6 +2563,14 @@ export namespace device {
          * Preference value to set when this term is used as an import policy
          */
         localPreference?: string;
+        /**
+         * When true, continue evaluating the next routing policy in the chain after this term matches; default is false
+         */
+        nextPolicy?: boolean;
+        /**
+         * When true, continue evaluating the next term in the same routing policy after this term matches; default is false
+         */
+        nextTerm?: boolean;
         /**
          * AS path values to prepend when this term is used as an export policy
          */
@@ -2963,9 +3017,25 @@ export namespace device {
          */
         hosts: string[];
         /**
+         * IPv6 addresses configured on this tunnel node
+         */
+        internalIp6s?: string[];
+        /**
          * Internal IP addresses configured on this tunnel node
          */
         internalIps?: string[];
+        /**
+         * Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+         */
+        probeHostnames?: string[];
+        /**
+         * HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+         */
+        probeHttp?: outputs.device.GatewayTunnelConfigsPrimaryProbeHttp;
+        /**
+         * IPv6 ICMP probe addresses used to monitor this tunnel node
+         */
+        probeIp6s?: string[];
         /**
          * Health-check IP addresses used to monitor this tunnel node
          */
@@ -2978,6 +3048,17 @@ export namespace device {
          * Interface names that source tunnel traffic for this node
          */
         wanNames: string[];
+    }
+
+    export interface GatewayTunnelConfigsPrimaryProbeHttp {
+        /**
+         * HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+         */
+        acceptedStatusCodes?: number[];
+        /**
+         * HTTP or HTTPS URLs to probe
+         */
+        urls?: string[];
     }
 
     export interface GatewayTunnelConfigsProbe {
@@ -3005,9 +3086,25 @@ export namespace device {
          */
         hosts: string[];
         /**
+         * IPv6 addresses configured on this tunnel node
+         */
+        internalIp6s?: string[];
+        /**
          * Internal IP addresses configured on this tunnel node
          */
         internalIps?: string[];
+        /**
+         * Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+         */
+        probeHostnames?: string[];
+        /**
+         * HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+         */
+        probeHttp?: outputs.device.GatewayTunnelConfigsSecondaryProbeHttp;
+        /**
+         * IPv6 ICMP probe addresses used to monitor this tunnel node
+         */
+        probeIp6s?: string[];
         /**
          * Health-check IP addresses used to monitor this tunnel node
          */
@@ -3020,6 +3117,17 @@ export namespace device {
          * Interface names that source tunnel traffic for this node
          */
         wanNames: string[];
+    }
+
+    export interface GatewayTunnelConfigsSecondaryProbeHttp {
+        /**
+         * HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+         */
+        acceptedStatusCodes?: number[];
+        /**
+         * HTTP or HTTPS URLs to probe
+         */
+        urls?: string[];
     }
 
     export interface GatewayTunnelProviderOptions {
@@ -5775,6 +5883,10 @@ export namespace device {
          */
         actions?: outputs.device.SwitchAclPolicyAction[];
         /**
+         * Whether this ACL policy is disabled
+         */
+        disabled?: boolean;
+        /**
          * Display name of the ACL policy
          */
         name?: string;
@@ -5827,6 +5939,7 @@ export namespace device {
         /**
          * Required if:
          *   * `type`==`radiusGroup`
+         *   * `type`==`arubaUserRole`
          *   * `type`==`staticGbp`
          * if from matching radius_group
          */
@@ -6371,6 +6484,10 @@ export namespace device {
          */
         isolationVlanId?: string;
         /**
+         * Multicast (IGMP snooping) settings for this VLAN
+         */
+        multicast?: outputs.device.SwitchNetworksMulticast;
+        /**
          * Optional for pure switching, required when L3 / routing features are used
          */
         subnet?: string;
@@ -6382,6 +6499,17 @@ export namespace device {
          * VLAN identifier for this switch network
          */
         vlanId: string;
+    }
+
+    export interface SwitchNetworksMulticast {
+        /**
+         * Whether to enable IGMP snooping on this VLAN
+         */
+        enabled?: boolean;
+        /**
+         * IGMP version. '2' (default, ASM/IGMPv2) / '3' (SSM/IGMPv3)
+         */
+        igmpVersion?: string;
     }
 
     export interface SwitchOobIpConfig {
@@ -7464,6 +7592,10 @@ export namespace device {
 
     export interface SwitchSnmpConfigV3ConfigNotifyFilter {
         /**
+         * CX only. List of SNMP trap group categories included in this filter profile. See https://www.juniper.net/documentation/software/topics/task/configuration/snmp-trap-groups-configuring-junos-nm.html for valid category names.
+         */
+        categories?: string[];
+        /**
          * OID filter rules in this notification filter profile
          */
         contents?: outputs.device.SwitchSnmpConfigV3ConfigNotifyFilterContent[];
@@ -7899,6 +8031,10 @@ export namespace device {
          */
         extraRoutes6?: {[key: string]: outputs.device.SwitchVrfInstancesExtraRoutes6};
         /**
+         * Multicast configuration for this VRF instance. PIM is automatically enabled when any network in this VRF has `multicast.enabled`==`true`
+         */
+        multicastConfig?: outputs.device.SwitchVrfInstancesMulticastConfig;
+        /**
          * Names of switch networks included in this VRF instance
          */
         networks?: string[];
@@ -7916,6 +8052,25 @@ export namespace device {
          * IPv6 next-hop address for this VRF extra route
          */
         via?: string;
+    }
+
+    export interface SwitchVrfInstancesMulticastConfig {
+        /**
+         * When `true`, auto-generates a shared RP on `isL3Border` devices (ERB/IPClos topologies only)
+         */
+        anycastRp?: boolean;
+        /**
+         * RP address used when `anycastRp`==`false`. If the address matches a device SVI, it is configured as a local RP; otherwise a static RP is configured
+         */
+        rpIp?: string;
+        /**
+         * SBD IRB subnet; Mist auto-assigns per-device IPs from this range (EVPN eOISM only)
+         */
+        sbdSubnet?: string;
+        /**
+         * Supplemental Bridge Domain VLAN ID (EVPN topology / eOISM only)
+         */
+        sbdVlanId?: number;
     }
 
     export interface SwitchVrrpConfig {
@@ -8297,6 +8452,10 @@ export namespace org {
          */
         brokerProto?: string;
         /**
+         * Optional catch-all MQTT topic; BLE advertisements matching no AssetFilter are published here
+         */
+        defaultTopic?: string;
+        /**
          * Whether to enable MQTT publishing
          */
         enabled?: boolean;
@@ -8348,7 +8507,7 @@ export namespace org {
          */
         mxTunnelId: string;
         /**
-         * If `forwarding`==`siteMxedge`, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+         * If `forwarding`==`siteMxedge`, vlanIds comes from siteMxedge (`mxtunnel` under site setting)
          */
         mxtunnelName: string;
         /**
@@ -8370,7 +8529,7 @@ export namespace org {
         /**
          * Optional to specify the VLAN ID for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `siteMxedge`.
          *   * if vlanId is not specified then it will use first one in vlan_ids[] of the mxtunnel.
-         *   * if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+         *   * if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnel` under site setting)
          */
         vlanId?: number;
         /**
@@ -8930,6 +9089,29 @@ export namespace org {
         vlanId?: number;
     }
 
+    export interface DeviceprofileApUwbConfig {
+        /**
+         * Whether UWB RTLS integration is enabled
+         */
+        enabled?: boolean;
+        /**
+         * RTLS server hostname or IP address
+         */
+        host?: string;
+        /**
+         * RTLS server port number
+         */
+        port?: number;
+        /**
+         * UWB time slot assigned to this AP, 0–15
+         */
+        slot?: number;
+        /**
+         * UWB integration type. enum: `zigpos`
+         */
+        type?: string;
+    }
+
     export interface DeviceprofileApZigbeeConfig {
         /**
          * Join policy for new Zigbee devices on this AP
@@ -9416,7 +9598,7 @@ export namespace org {
         /**
          * If the network will only be the source of the multicast traffic, IGMP can be disabled
          */
-        disableIgmp: boolean;
+        disableIgmp?: boolean;
         /**
          * Whether multicast support is enabled for this network
          */
@@ -9773,10 +9955,6 @@ export namespace org {
          */
         rethNode?: string;
         /**
-         * If HA mode and for SSR only. Per-network node assignment used for VLAN-based redundancy
-         */
-        rethNodes?: string[];
-        /**
          * Link speed configured on the port
          */
         speed?: string;
@@ -9974,6 +10152,14 @@ export namespace org {
 
     export interface DeviceprofileGatewayPortConfigWanProbeOverride {
         /**
+         * List of hostnames used as probe destinations; applicable for both IPv4 and IPv6
+         */
+        hostnames?: string[];
+        /**
+         * HTTP probe settings; success from any ICMP or HTTP probe indicates the WAN is up
+         */
+        http?: outputs.org.DeviceprofileGatewayPortConfigWanProbeOverrideHttp;
+        /**
          * List of IPv6 probe host addresses used by this WAN override
          */
         ip6s?: string[];
@@ -9985,6 +10171,17 @@ export namespace org {
          * WAN probe profile used for health checks on this port
          */
         probeProfile?: string;
+    }
+
+    export interface DeviceprofileGatewayPortConfigWanProbeOverrideHttp {
+        /**
+         * HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+         */
+        acceptedStatusCodes?: number[];
+        /**
+         * HTTP or HTTPS URLs to probe
+         */
+        urls?: string[];
     }
 
     export interface DeviceprofileGatewayPortConfigWanSourceNat {
@@ -10022,7 +10219,7 @@ export namespace org {
 
     export interface DeviceprofileGatewayRoutingPoliciesTermActions {
         /**
-         * Whether to accept routes that match this term
+         * Whether to accept routes that match this term. Precedence is `accept` > `nextTerm` > `nextPolicy`; routes are rejected if all three are false
          */
         accept?: boolean;
         /**
@@ -10053,6 +10250,14 @@ export namespace org {
          * Preference value to set when this term is used as an import policy
          */
         localPreference?: string;
+        /**
+         * When true, continue evaluating the next routing policy in the chain after this term matches; default is false
+         */
+        nextPolicy?: boolean;
+        /**
+         * When true, continue evaluating the next term in the same routing policy after this term matches; default is false
+         */
+        nextTerm?: boolean;
         /**
          * AS path values to prepend when this term is used as an export policy
          */
@@ -10499,9 +10704,25 @@ export namespace org {
          */
         hosts: string[];
         /**
+         * IPv6 addresses configured on this tunnel node
+         */
+        internalIp6s?: string[];
+        /**
          * Internal IP addresses configured on this tunnel node
          */
         internalIps?: string[];
+        /**
+         * Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+         */
+        probeHostnames?: string[];
+        /**
+         * HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+         */
+        probeHttp?: outputs.org.DeviceprofileGatewayTunnelConfigsPrimaryProbeHttp;
+        /**
+         * IPv6 ICMP probe addresses used to monitor this tunnel node
+         */
+        probeIp6s?: string[];
         /**
          * Health-check IP addresses used to monitor this tunnel node
          */
@@ -10514,6 +10735,17 @@ export namespace org {
          * Interface names that source tunnel traffic for this node
          */
         wanNames: string[];
+    }
+
+    export interface DeviceprofileGatewayTunnelConfigsPrimaryProbeHttp {
+        /**
+         * HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+         */
+        acceptedStatusCodes?: number[];
+        /**
+         * HTTP or HTTPS URLs to probe
+         */
+        urls?: string[];
     }
 
     export interface DeviceprofileGatewayTunnelConfigsProbe {
@@ -10541,9 +10773,25 @@ export namespace org {
          */
         hosts: string[];
         /**
+         * IPv6 addresses configured on this tunnel node
+         */
+        internalIp6s?: string[];
+        /**
          * Internal IP addresses configured on this tunnel node
          */
         internalIps?: string[];
+        /**
+         * Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+         */
+        probeHostnames?: string[];
+        /**
+         * HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+         */
+        probeHttp?: outputs.org.DeviceprofileGatewayTunnelConfigsSecondaryProbeHttp;
+        /**
+         * IPv6 ICMP probe addresses used to monitor this tunnel node
+         */
+        probeIp6s?: string[];
         /**
          * Health-check IP addresses used to monitor this tunnel node
          */
@@ -10556,6 +10804,17 @@ export namespace org {
          * Interface names that source tunnel traffic for this node
          */
         wanNames: string[];
+    }
+
+    export interface DeviceprofileGatewayTunnelConfigsSecondaryProbeHttp {
+        /**
+         * HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+         */
+        acceptedStatusCodes?: number[];
+        /**
+         * HTTP or HTTPS URLs to probe
+         */
+        urls?: string[];
     }
 
     export interface DeviceprofileGatewayTunnelProviderOptions {
@@ -10733,6 +10992,10 @@ export namespace org {
          */
         actions?: outputs.org.DeviceprofileSwitchAclPolicyAction[];
         /**
+         * Whether this ACL policy is disabled
+         */
+        disabled?: boolean;
+        /**
          * Display name of the ACL policy
          */
         name?: string;
@@ -10785,6 +11048,7 @@ export namespace org {
         /**
          * Required if:
          *   * `type`==`radiusGroup`
+         *   * `type`==`arubaUserRole`
          *   * `type`==`staticGbp`
          * if from matching radius_group
          */
@@ -11119,6 +11383,10 @@ export namespace org {
          */
         isolationVlanId?: string;
         /**
+         * Multicast (IGMP snooping) settings for this VLAN
+         */
+        multicast?: outputs.org.DeviceprofileSwitchNetworksMulticast;
+        /**
          * Optional for pure switching, required when L3 / routing features are used
          */
         subnet?: string;
@@ -11130,6 +11398,17 @@ export namespace org {
          * VLAN identifier for this switch network
          */
         vlanId: string;
+    }
+
+    export interface DeviceprofileSwitchNetworksMulticast {
+        /**
+         * Whether to enable IGMP snooping on this VLAN
+         */
+        enabled?: boolean;
+        /**
+         * IGMP version. '2' (default, ASM/IGMPv2) / '3' (SSM/IGMPv3)
+         */
+        igmpVersion?: string;
     }
 
     export interface DeviceprofileSwitchOobIpConfig {
@@ -12147,6 +12426,10 @@ export namespace org {
 
     export interface DeviceprofileSwitchSnmpConfigV3ConfigNotifyFilter {
         /**
+         * CX only. List of SNMP trap group categories included in this filter profile. See https://www.juniper.net/documentation/software/topics/task/configuration/snmp-trap-groups-configuring-junos-nm.html for valid category names.
+         */
+        categories?: string[];
+        /**
          * OID filter rules in this notification filter profile
          */
         contents?: outputs.org.DeviceprofileSwitchSnmpConfigV3ConfigNotifyFilterContent[];
@@ -12556,6 +12839,10 @@ export namespace org {
          */
         extraRoutes6?: {[key: string]: outputs.org.DeviceprofileSwitchVrfInstancesExtraRoutes6};
         /**
+         * Multicast configuration for this VRF instance. PIM is automatically enabled when any network in this VRF has `multicast.enabled`==`true`
+         */
+        multicastConfig?: outputs.org.DeviceprofileSwitchVrfInstancesMulticastConfig;
+        /**
          * Names of switch networks included in this VRF instance
          */
         networks?: string[];
@@ -12573,6 +12860,25 @@ export namespace org {
          * IPv6 next-hop address for this VRF extra route
          */
         via?: string;
+    }
+
+    export interface DeviceprofileSwitchVrfInstancesMulticastConfig {
+        /**
+         * When `true`, auto-generates a shared RP on `isL3Border` devices (ERB/IPClos topologies only)
+         */
+        anycastRp?: boolean;
+        /**
+         * RP address used when `anycastRp`==`false`. If the address matches a device SVI, it is configured as a local RP; otherwise a static RP is configured
+         */
+        rpIp?: string;
+        /**
+         * SBD IRB subnet; Mist auto-assigns per-device IPs from this range (EVPN eOISM only)
+         */
+        sbdSubnet?: string;
+        /**
+         * Supplemental Bridge Domain VLAN ID (EVPN topology / eOISM only)
+         */
+        sbdVlanId?: number;
     }
 
     export interface DeviceprofileSwitchVrrpConfig {
@@ -13036,6 +13342,10 @@ export namespace org {
          */
         disableConsole: boolean;
         /**
+         * For SRX only, disable IDP packet capture
+         */
+        disableIdpPcap?: boolean;
+        /**
          * For SSR and SRX, disable management interface
          */
         disableOob: boolean;
@@ -13393,7 +13703,7 @@ export namespace org {
         /**
          * If the network will only be the source of the multicast traffic, IGMP can be disabled
          */
-        disableIgmp: boolean;
+        disableIgmp?: boolean;
         /**
          * Whether multicast support is enabled for this network
          */
@@ -13750,10 +14060,6 @@ export namespace org {
          */
         rethNode?: string;
         /**
-         * If HA mode and for SSR only. Per-network node assignment used for VLAN-based redundancy
-         */
-        rethNodes?: string[];
-        /**
          * Link speed configured on the port
          */
         speed?: string;
@@ -13951,6 +14257,14 @@ export namespace org {
 
     export interface GatewaytemplatePortConfigWanProbeOverride {
         /**
+         * List of hostnames used as probe destinations; applicable for both IPv4 and IPv6
+         */
+        hostnames?: string[];
+        /**
+         * HTTP probe settings; success from any ICMP or HTTP probe indicates the WAN is up
+         */
+        http?: outputs.org.GatewaytemplatePortConfigWanProbeOverrideHttp;
+        /**
          * List of IPv6 probe host addresses used by this WAN override
          */
         ip6s?: string[];
@@ -13962,6 +14276,17 @@ export namespace org {
          * WAN probe profile used for health checks on this port
          */
         probeProfile?: string;
+    }
+
+    export interface GatewaytemplatePortConfigWanProbeOverrideHttp {
+        /**
+         * HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+         */
+        acceptedStatusCodes?: number[];
+        /**
+         * HTTP or HTTPS URLs to probe
+         */
+        urls?: string[];
     }
 
     export interface GatewaytemplatePortConfigWanSourceNat {
@@ -13999,7 +14324,7 @@ export namespace org {
 
     export interface GatewaytemplateRoutingPoliciesTermActions {
         /**
-         * Whether to accept routes that match this term
+         * Whether to accept routes that match this term. Precedence is `accept` > `nextTerm` > `nextPolicy`; routes are rejected if all three are false
          */
         accept?: boolean;
         /**
@@ -14030,6 +14355,14 @@ export namespace org {
          * Preference value to set when this term is used as an import policy
          */
         localPreference?: string;
+        /**
+         * When true, continue evaluating the next routing policy in the chain after this term matches; default is false
+         */
+        nextPolicy?: boolean;
+        /**
+         * When true, continue evaluating the next term in the same routing policy after this term matches; default is false
+         */
+        nextTerm?: boolean;
         /**
          * AS path values to prepend when this term is used as an export policy
          */
@@ -14476,9 +14809,25 @@ export namespace org {
          */
         hosts: string[];
         /**
+         * IPv6 addresses configured on this tunnel node
+         */
+        internalIp6s?: string[];
+        /**
          * Internal IP addresses configured on this tunnel node
          */
         internalIps?: string[];
+        /**
+         * Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+         */
+        probeHostnames?: string[];
+        /**
+         * HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+         */
+        probeHttp?: outputs.org.GatewaytemplateTunnelConfigsPrimaryProbeHttp;
+        /**
+         * IPv6 ICMP probe addresses used to monitor this tunnel node
+         */
+        probeIp6s?: string[];
         /**
          * Health-check IP addresses used to monitor this tunnel node
          */
@@ -14491,6 +14840,17 @@ export namespace org {
          * Interface names that source tunnel traffic for this node
          */
         wanNames: string[];
+    }
+
+    export interface GatewaytemplateTunnelConfigsPrimaryProbeHttp {
+        /**
+         * HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+         */
+        acceptedStatusCodes?: number[];
+        /**
+         * HTTP or HTTPS URLs to probe
+         */
+        urls?: string[];
     }
 
     export interface GatewaytemplateTunnelConfigsProbe {
@@ -14518,9 +14878,25 @@ export namespace org {
          */
         hosts: string[];
         /**
+         * IPv6 addresses configured on this tunnel node
+         */
+        internalIp6s?: string[];
+        /**
          * Internal IP addresses configured on this tunnel node
          */
         internalIps?: string[];
+        /**
+         * Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+         */
+        probeHostnames?: string[];
+        /**
+         * HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+         */
+        probeHttp?: outputs.org.GatewaytemplateTunnelConfigsSecondaryProbeHttp;
+        /**
+         * IPv6 ICMP probe addresses used to monitor this tunnel node
+         */
+        probeIp6s?: string[];
         /**
          * Health-check IP addresses used to monitor this tunnel node
          */
@@ -14533,6 +14909,17 @@ export namespace org {
          * Interface names that source tunnel traffic for this node
          */
         wanNames: string[];
+    }
+
+    export interface GatewaytemplateTunnelConfigsSecondaryProbeHttp {
+        /**
+         * HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+         */
+        acceptedStatusCodes?: number[];
+        /**
+         * HTTP or HTTPS URLs to probe
+         */
+        urls?: string[];
     }
 
     export interface GatewaytemplateTunnelProviderOptions {
@@ -18055,11 +18442,11 @@ export namespace org {
         /**
          * If the network will only be the source of the multicast traffic, IGMP can be disabled
          */
-        disableIgmp: boolean;
+        disableIgmp?: boolean;
         /**
          * Whether multicast support is enabled for this network
          */
-        enabled: boolean;
+        enabled?: boolean;
         /**
          * Multicast group-to-RP mappings for this network
          */
@@ -18178,6 +18565,10 @@ export namespace org {
          */
         actions?: outputs.org.NetworktemplateAclPolicyAction[];
         /**
+         * Whether this ACL policy is disabled
+         */
+        disabled?: boolean;
+        /**
          * Display name of the ACL policy
          */
         name?: string;
@@ -18230,6 +18621,7 @@ export namespace org {
         /**
          * Required if:
          *   * `type`==`radiusGroup`
+         *   * `type`==`arubaUserRole`
          *   * `type`==`staticGbp`
          * if from matching radius_group
          */
@@ -18431,6 +18823,25 @@ export namespace org {
         network?: string;
     }
 
+    export interface NetworktemplateMulticastConfig {
+        /**
+         * When `true`, auto-generates a shared RP on `isL3Border` devices (ERB/IPClos topologies only)
+         */
+        anycastRp?: boolean;
+        /**
+         * RP address used when `anycastRp`==`false`. If the address matches a device SVI, it is configured as a local RP; otherwise a static RP is configured
+         */
+        rpIp?: string;
+        /**
+         * SBD IRB subnet; Mist auto-assigns per-device IPs from this range (EVPN eOISM only)
+         */
+        sbdSubnet?: string;
+        /**
+         * Supplemental Bridge Domain VLAN ID (EVPN topology / eOISM only)
+         */
+        sbdVlanId?: number;
+    }
+
     export interface NetworktemplateNetworks {
         /**
          * Only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
@@ -18449,6 +18860,10 @@ export namespace org {
          */
         isolationVlanId?: string;
         /**
+         * Multicast (IGMP snooping) settings for this VLAN
+         */
+        multicast?: outputs.org.NetworktemplateNetworksMulticast;
+        /**
          * Optional for pure switching, required when L3 / routing features are used
          */
         subnet?: string;
@@ -18460,6 +18875,17 @@ export namespace org {
          * VLAN identifier for this switch network
          */
         vlanId: string;
+    }
+
+    export interface NetworktemplateNetworksMulticast {
+        /**
+         * Whether to enable IGMP snooping on this VLAN
+         */
+        enabled?: boolean;
+        /**
+         * IGMP version. '2' (default, ASM/IGMPv2) / '3' (SSM/IGMPv3)
+         */
+        igmpVersion?: string;
     }
 
     export interface NetworktemplateOspfAreas {
@@ -19340,6 +19766,10 @@ export namespace org {
 
     export interface NetworktemplateSnmpConfigV3ConfigNotifyFilter {
         /**
+         * CX only. List of SNMP trap group categories included in this filter profile. See https://www.juniper.net/documentation/software/topics/task/configuration/snmp-trap-groups-configuring-junos-nm.html for valid category names.
+         */
+        categories?: string[];
+        /**
          * OID filter rules in this notification filter profile
          */
         contents?: outputs.org.NetworktemplateSnmpConfigV3ConfigNotifyFilterContent[];
@@ -19943,6 +20373,10 @@ export namespace org {
          */
         extraRoutes6?: {[key: string]: outputs.org.NetworktemplateVrfInstancesExtraRoutes6};
         /**
+         * Multicast configuration for this VRF instance. PIM is automatically enabled when any network in this VRF has `multicast.enabled`==`true`
+         */
+        multicastConfig?: outputs.org.NetworktemplateVrfInstancesMulticastConfig;
+        /**
          * Names of switch networks included in this VRF instance
          */
         networks?: string[];
@@ -19960,6 +20394,25 @@ export namespace org {
          * IPv6 next-hop address for this VRF extra route
          */
         via?: string;
+    }
+
+    export interface NetworktemplateVrfInstancesMulticastConfig {
+        /**
+         * When `true`, auto-generates a shared RP on `isL3Border` devices (ERB/IPClos topologies only)
+         */
+        anycastRp?: boolean;
+        /**
+         * RP address used when `anycastRp`==`false`. If the address matches a device SVI, it is configured as a local RP; otherwise a static RP is configured
+         */
+        rpIp?: string;
+        /**
+         * SBD IRB subnet; Mist auto-assigns per-device IPs from this range (EVPN eOISM only)
+         */
+        sbdSubnet?: string;
+        /**
+         * Supplemental Bridge Domain VLAN ID (EVPN topology / eOISM only)
+         */
+        sbdVlanId?: number;
     }
 
     export interface RftemplateBand24 {
@@ -20448,6 +20901,10 @@ export namespace org {
 
     export interface SettingApiPolicy {
         /**
+         * Optional. When `true`, Org API tokens without their own `srcIps` also respect the org policy `srcIps`. Default is `false`.
+         */
+        enforceSrcIpsForTokens: boolean;
+        /**
          * By default, API hides password/secrets when the user doesn't have write access
          *   * `true`: API will hide passwords/secrets for all users
          *   * `false`: API will hide passwords/secrets for read-only users
@@ -20482,6 +20939,33 @@ export namespace org {
         version: string;
     }
 
+    export interface SettingCacertsConfig {
+        /**
+         * PEM-encoded CA certificate
+         */
+        cert: string;
+        /**
+         * Whether CRL checks are enabled. When true, CRL from AIA is used if available unless `crlUrl` is set.
+         */
+        crlEnabled?: boolean;
+        /**
+         * Optional override URL for the certificate CRL distribution point
+         */
+        crlUrl?: string;
+        /**
+         * Optional user-friendly label for the CA issuer configuration
+         */
+        name?: string;
+        /**
+         * Whether OCSP checks are enabled. When true, OCSP responder from AIA is used if available unless `ocspUrl` is set.
+         */
+        ocspEnabled?: boolean;
+        /**
+         * Optional override URL for the OCSP responder
+         */
+        ocspUrl?: string;
+    }
+
     export interface SettingCelona {
         /**
          * Credential used by Mist for the Celona integration
@@ -20502,29 +20986,6 @@ export namespace org {
          * CloudShark Enterprise URL, if using a self-hosted CS Enterprise instance
          */
         url: string;
-    }
-
-    export interface SettingCradlepoint {
-        /**
-         * Cradlepoint API ID used by Mist for the integration
-         */
-        cpApiId: string;
-        /**
-         * Cradlepoint API key paired with the Cradlepoint API ID
-         */
-        cpApiKey: string;
-        /**
-         * Cradlepoint ECM API ID used by Mist for the integration
-         */
-        ecmApiId: string;
-        /**
-         * Cradlepoint ECM API key paired with the ECM API ID
-         */
-        ecmApiKey: string;
-        /**
-         * Whether Mist uses Cradlepoint LLDP data to link routers to Mist sites and devices
-         */
-        enableLldp: boolean;
     }
 
     export interface SettingDeviceCert {
@@ -20734,6 +21195,10 @@ export namespace org {
          */
         eapSslSecurityLevel?: number;
         /**
+         * Enable EAP-MD5 for MAB. WARNING: Not FIPS compliant, use only if required for legacy device support.
+         */
+        enableEapMd5ForMab?: boolean;
+        /**
          * By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliance NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, Mist Edge clusters that have mistNac enabled
          */
         euOnly: boolean;
@@ -20770,7 +21235,7 @@ export namespace org {
          */
         useSslPort?: boolean;
         /**
-         * Allow customer to configure an expiry time for usermacs by attaching a Quarantine label to those which have been inactive for the configured period of time (in days). 0 means no expiry
+         * Allow customer to configure an expiry time for usermacs by attaching an `inactiveEndpoint` label to those which have been inactive for the configured period of time (in days). 0 means no expiry
          */
         usermacExpiry: number;
     }
@@ -21206,6 +21671,21 @@ export namespace org {
         maxTxKbps?: number;
     }
 
+    export interface WebhookRule {
+        /**
+         * Action applied when the rule matches the incoming event
+         */
+        action?: string;
+        /**
+         * Optional event payload matching criteria. Property key is the event field name and the value is the list of accepted values
+         */
+        matching?: {[key: string]: string[]};
+        /**
+         * Webhook topic this rule applies to
+         */
+        topic: string;
+    }
+
     export interface WlanAcctServer {
         /**
          * Address or hostname of the RADIUS accounting server
@@ -21524,6 +22004,10 @@ export namespace org {
          * When 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
          */
         forceLookup: boolean;
+        /**
+         * VLANs to be bridged locally when forwarding to mxtunnel or site mxedge
+         */
+        localVlanIds?: string[];
         /**
          * Origin used to retrieve per-user PSKs
          */
@@ -24601,31 +25085,37 @@ export namespace site {
 
     export interface NetworktemplateAclPolicy {
         /**
-         * ACL Policy Actions:
-         *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-         *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+         * Destination tag actions evaluated for sources matching this ACL policy
          */
         actions?: outputs.site.NetworktemplateAclPolicyAction[];
+        /**
+         * Whether this ACL policy is disabled
+         */
+        disabled?: boolean;
+        /**
+         * Display name of the ACL policy
+         */
         name?: string;
         /**
-         * ACL Policy Source Tags:
-         *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-         *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+         * Source ACL tags that select traffic for this ACL policy
          */
         srcTags?: string[];
     }
 
     export interface NetworktemplateAclPolicyAction {
         /**
-         * enum: `allow`, `deny`
+         * Allow or deny decision applied to traffic matching the destination tag
          */
         action?: string;
+        /**
+         * Destination ACL tag matched by this policy action
+         */
         dstTag: string;
     }
 
     export interface NetworktemplateAclTags {
         /**
-         * ARP / IPv6. Default is `any`
+         * Layer 2 EtherTypes matched by this ACL tag; defaults to `any`
          */
         etherTypes?: string[];
         /**
@@ -24636,9 +25126,7 @@ export namespace site {
          */
         gbpTag?: number;
         /**
-         * Required if 
-         * - `type`==`mac`
-         * - `type`==`staticGbp` if from matching mac
+         * Client or resource MAC addresses matched by this ACL tag
          */
         macs?: string[];
         /**
@@ -24651,39 +25139,27 @@ export namespace site {
          */
         network?: string;
         /**
-         * Required if `type`==`portUsage`
+         * Required if `type`==`portUsage`. Switch port usage name matched by this ACL tag
          */
         portUsage?: string;
         /**
          * Required if:
          *   * `type`==`radiusGroup`
+         *   * `type`==`arubaUserRole`
          *   * `type`==`staticGbp`
          * if from matching radius_group
          */
         radiusGroup?: string;
         /**
-         * If `type`==`resource`, `type`==`radiusGroup`, `type`==`portUsage` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
+         * Layer 4 protocol and destination-port constraints for this ACL tag
          */
         specs?: outputs.site.NetworktemplateAclTagsSpec[];
         /**
-         * If 
-         * - `type`==`subnet` 
-         * - `type`==`resource` (optional. default is `any`)
-         * - `type`==`staticGbp` if from matching subnet
+         * IP subnets matched by this ACL tag
          */
         subnets?: string[];
         /**
-         * enum: 
-         *   * `any`: matching anything not identified
-         *   * `dynamicGbp`: from the gbpTag received from RADIUS
-         *   * `gbpResource`: can only be used in `dstTags`
-         *   * `mac`
-         *   * `network`
-         *   * `portUsage`
-         *   * `radiusGroup`
-         *   * `resource`: can only be used in `dstTags`
-         *   * `staticGbp`: applying gbp tag against matching conditions
-         *   * `subnet`'
+         * Classifier type that determines which ACL tag fields are evaluated
          */
         type: string;
     }
@@ -24700,6 +25176,9 @@ export namespace site {
     }
 
     export interface NetworktemplateDhcpSnooping {
+        /**
+         * Whether DHCP snooping applies to all configured networks
+         */
         allNetworks?: boolean;
         /**
          * Enable for dynamic ARP inspection check
@@ -24709,55 +25188,100 @@ export namespace site {
          * Enable for check for forging source IP address
          */
         enableIpSourceGuard?: boolean;
+        /**
+         * Whether DHCP snooping is enabled
+         */
         enabled?: boolean;
         /**
-         * If `allNetworks`==`false`, list of network with DHCP snooping enabled
+         * Network names with DHCP snooping enabled when `allNetworks`==`false`
          */
         networks?: string[];
     }
 
     export interface NetworktemplateExtraRoutes {
         /**
-         * This takes precedence
+         * Whether to install a discard route; this takes precedence over next-hop settings
          */
         discard?: boolean;
+        /**
+         * Route metric for the IPv4 static route
+         */
         metric?: number;
+        /**
+         * Qualified next-hop settings keyed by IPv4 next-hop address
+         */
         nextQualified?: {[key: string]: outputs.site.NetworktemplateExtraRoutesNextQualified};
+        /**
+         * Whether to prevent recursive next-hop resolution for the IPv4 static route
+         */
         noResolve?: boolean;
+        /**
+         * Route preference for the IPv4 static route
+         */
         preference?: number;
         /**
-         * Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
+         * Next-hop IPv4 address or ECMP next-hop IPv4 addresses for the route
          */
         via: string;
     }
 
     export interface NetworktemplateExtraRoutes6 {
         /**
-         * This takes precedence
+         * Whether to install a discard route; this takes precedence over next-hop settings
          */
         discard?: boolean;
+        /**
+         * Route metric for the IPv6 static route
+         */
         metric?: number;
+        /**
+         * Qualified next-hop settings keyed by IPv6 next-hop address
+         */
         nextQualified?: {[key: string]: outputs.site.NetworktemplateExtraRoutes6NextQualified};
+        /**
+         * Whether to prevent recursive next-hop resolution for the IPv6 static route
+         */
         noResolve?: boolean;
+        /**
+         * Route preference for the IPv6 static route
+         */
         preference?: number;
         /**
-         * Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
+         * Next-hop IPv6 address or ECMP next-hop IPv6 addresses for the route
          */
         via: string;
     }
 
     export interface NetworktemplateExtraRoutes6NextQualified {
+        /**
+         * Route metric for this qualified IPv6 next hop
+         */
         metric?: number;
+        /**
+         * Route preference for this qualified IPv6 next hop
+         */
         preference?: number;
     }
 
     export interface NetworktemplateExtraRoutesNextQualified {
+        /**
+         * Route metric for this qualified IPv4 next hop
+         */
         metric?: number;
+        /**
+         * Route preference for this qualified IPv4 next hop
+         */
         preference?: number;
     }
 
     export interface NetworktemplateMistNac {
+        /**
+         * Whether Mist NAC RadSec is enabled for the switch
+         */
         enabled?: boolean;
+        /**
+         * Switch network used for Mist NAC RadSec connectivity
+         */
         network?: string;
     }
 
@@ -24774,7 +25298,14 @@ export namespace site {
          * whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required). NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set. See also `interIsolationNetworkLink` and `communityVlanId` in port_usage
          */
         isolation?: boolean;
+        /**
+         * Required when `isolation`==`true`. Unique VLAN ID used for client isolation
+         */
         isolationVlanId?: string;
+        /**
+         * Multicast (IGMP snooping) settings for this VLAN
+         */
+        multicast?: outputs.site.NetworktemplateNetworksMulticast;
         /**
          * Optional for pure switching, required when L3 / routing features are used
          */
@@ -24783,14 +25314,34 @@ export namespace site {
          * Optional for pure switching, required when L3 / routing features are used
          */
         subnet6?: string;
+        /**
+         * VLAN identifier for this switch network
+         */
         vlanId: string;
     }
 
+    export interface NetworktemplateNetworksMulticast {
+        /**
+         * Whether to enable IGMP snooping on this VLAN
+         */
+        enabled?: boolean;
+        /**
+         * IGMP version. '2' (default, ASM/IGMPv2) / '3' (SSM/IGMPv3)
+         */
+        igmpVersion?: string;
+    }
+
     export interface NetworktemplateOspfAreas {
+        /**
+         * Whether loopback interfaces are included in this OSPF area
+         */
         includeLoopback: boolean;
+        /**
+         * OSPF network settings keyed by network name
+         */
         networks: {[key: string]: outputs.site.NetworktemplateOspfAreasNetworks};
         /**
-         * OSPF type. enum: `default`, `nssa`, `stub`
+         * Area type for this OSPF area
          */
         type: string;
     }
@@ -24805,18 +25356,36 @@ export namespace site {
          */
         authPassword?: string;
         /**
-         * auth type. enum: `md5`, `none`, `password`
+         * Authentication method used by this OSPF network
          */
         authType?: string;
+        /**
+         * Minimum BFD interval for this OSPF network, in milliseconds
+         */
         bfdMinimumInterval?: number;
+        /**
+         * OSPF dead interval for this network, in seconds
+         */
         deadInterval?: number;
+        /**
+         * Routing policy used to export routes from this OSPF network
+         */
         exportPolicy?: string;
+        /**
+         * OSPF hello interval for this network, in seconds
+         */
         helloInterval?: number;
+        /**
+         * Routing policy used to import routes for this OSPF network
+         */
         importPolicy?: string;
         /**
-         * interface type (nbma = non-broadcast multi-access). enum: `broadcast`, `nbma`, `p2mp`, `p2p`
+         * OSPF interface type used for this network
          */
         interfaceType: string;
+        /**
+         * OSPF metric assigned to this network
+         */
         metric?: number;
         /**
          * By default, we'll re-advertise all learned OSPF routes toward overlay
@@ -24830,15 +25399,15 @@ export namespace site {
 
     export interface NetworktemplatePortMirroring {
         /**
-         * At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or `inputNetworksIngress ` should be specified
+         * At least one mirror input source should be specified. Networks whose ingress traffic is mirrored
          */
         inputNetworksIngresses: string[];
         /**
-         * At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or `inputNetworksIngress ` should be specified
+         * At least one mirror input source should be specified. Switch ports whose egress traffic is mirrored
          */
         inputPortIdsEgresses: string[];
         /**
-         * At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or `inputNetworksIngress ` should be specified
+         * At least one mirror input source should be specified. Switch ports whose ingress traffic is mirrored
          */
         inputPortIdsIngresses: string[];
         /**
@@ -24897,11 +25466,11 @@ export namespace site {
          */
         disabled?: boolean;
         /**
-         * Only if `mode`!=`dynamic`. Link connection mode. enum: `auto`, `full`, `half`
+         * Only if `mode`!=`dynamic`. Link duplex mode for this port usage
          */
         duplex?: string;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Networks or VLANs that RADIUS can return for dynamic VLAN assignment
          */
         dynamicVlanNetworks?: string[];
         /**
@@ -24933,7 +25502,7 @@ export namespace site {
          */
         macAuthPreferred?: boolean;
         /**
-         * Only if `mode`!=`dynamic` and `enableMacAuth` ==`true`. This type is ignored if mistNac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
+         * Only if `mode`!=`dynamic` and `enableMacAuth`==`true`. MAC authentication protocol to use; ignored if Mist NAC is enabled
          */
         macAuthProtocol?: string;
         /**
@@ -24941,7 +25510,7 @@ export namespace site {
          */
         macLimit?: string;
         /**
-         * `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
+         * Switching mode for this port usage
          */
         mode?: string;
         /**
@@ -24949,7 +25518,7 @@ export namespace site {
          */
         mtu?: string;
         /**
-         * Only if `mode`==`trunk`, the list of network/vlans
+         * Only if `mode`==`trunk`. Network or VLAN names to trunk
          */
         networks: string[];
         /**
@@ -24963,13 +25532,13 @@ export namespace site {
         /**
          * Only if `mode`!=`dynamic`. Whether Perpetual PoE is enabled; keeps PoE state across reboots
          */
-        poeKeepStateWhenReboot?: boolean;
+        poeKeepStateWhenReboot: boolean;
         /**
-         * PoE priority. enum: `low`, `high`
+         * Only if `mode`!=`dynamic`. PoE priority for ports using this port usage
          */
         poePriority?: string;
         /**
-         * Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
+         * Only if `mode`!=`dynamic`. 802.1X authentication mode for this port usage
          */
         portAuth?: string;
         /**
@@ -24981,11 +25550,11 @@ export namespace site {
          */
         reauthInterval?: string;
         /**
-         * Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `linkDown`, `none` (let the DPC port keep at the current port usage)
+         * Only if `mode`==`dynamic`. Condition that resets a dynamic port to the default port usage
          */
         resetDefaultWhen?: string;
         /**
-         * Only if `mode`==`dynamic`
+         * Only if `mode`==`dynamic`. Dynamic matching rules that select the port usage to apply
          */
         rules?: outputs.site.NetworktemplatePortUsagesRule[];
         /**
@@ -24993,15 +25562,19 @@ export namespace site {
          */
         serverFailNetwork?: string;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. When radius server reject / fails
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Interval, in seconds. Sets the wait time before retrying authentication after RADIUS failure to reduce client flapping. Range 120-65535
+         */
+        serverFailRetryInterval: number;
+        /**
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. When RADIUS server reject / fails
          */
         serverRejectNetwork?: string;
         /**
-         * Only if `mode`!=`dynamic`, Port speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+         * Only if `mode`!=`dynamic`. Link speed for this port usage
          */
         speed?: string;
         /**
-         * Switch storm control. Only if `mode`!=`dynamic`
+         * Only if `mode`!=`dynamic`. Storm-control settings for this port usage
          */
         stormControl?: outputs.site.NetworktemplatePortUsagesStormControl;
         /**
@@ -25043,9 +25616,12 @@ export namespace site {
          * Optional description of the rule
          */
         description?: string;
+        /**
+         * Exact value that the selected source attribute must match
+         */
         equals?: string;
         /**
-         * Use `equalsAny` to match any item in a list
+         * List of values where any match satisfies this dynamic rule
          */
         equalsAnies?: string[];
         /**
@@ -25055,11 +25631,11 @@ export namespace site {
          */
         expression?: string;
         /**
-         * enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemDescription`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
+         * Source attribute evaluated by this dynamic rule
          */
         src: string;
         /**
-         * `portUsage` name
+         * Port usage name to apply when this dynamic rule matches
          */
         usage?: string;
     }
@@ -25092,230 +25668,368 @@ export namespace site {
     }
 
     export interface NetworktemplateRadiusConfig {
+        /**
+         * Whether immediate RADIUS accounting updates are sent
+         */
         acctImmediateUpdate?: boolean;
         /**
-         * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+         * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled
          */
         acctInterimInterval: number;
+        /**
+         * RADIUS accounting servers used by this switch configuration
+         */
         acctServers?: outputs.site.NetworktemplateRadiusConfigAcctServer[];
         /**
-         * enum: `ordered`, `unordered`
+         * Selection strategy for RADIUS authentication servers
          */
         authServerSelection: string;
+        /**
+         * RADIUS authentication servers used by this switch configuration
+         */
         authServers?: outputs.site.NetworktemplateRadiusConfigAuthServer[];
         /**
-         * Radius auth session retries
+         * RADIUS auth session retries
          */
         authServersRetries: number;
         /**
-         * Radius auth session timeout
+         * RADIUS auth session timeout
          */
         authServersTimeout: number;
+        /**
+         * Whether RADIUS Change of Authorization (CoA) is enabled
+         */
         coaEnabled: boolean;
+        /**
+         * UDP port used for RADIUS Change of Authorization (CoA)
+         */
         coaPort: string;
+        /**
+         * Whether fast 802.1X timers are enabled for RADIUS authentication
+         */
         fastDot1xTimers: boolean;
         /**
          * Use `network`or `sourceIp`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
          */
         network?: string;
         /**
-         * Use `network`or `sourceIp`
+         * Use `network` or `sourceIp`. Explicit source IP address for RADIUS traffic
          */
         sourceIp?: string;
     }
 
     export interface NetworktemplateRadiusConfigAcctServer {
         /**
-         * IP/ hostname of RADIUS server
+         * Address or hostname of the RADIUS accounting server
          */
         host: string;
+        /**
+         * Whether RADIUS keywrap is enabled for messages sent to this accounting server
+         */
         keywrapEnabled?: boolean;
         /**
-         * enum: `ascii`, `hex`
+         * Encoding format for RADIUS keywrap KEK and MACK values
          */
         keywrapFormat?: string;
+        /**
+         * RADIUS keywrap key encryption key (KEK)
+         */
         keywrapKek?: string;
+        /**
+         * RADIUS keywrap message authentication code key (MACK)
+         */
         keywrapMack?: string;
+        /**
+         * UDP port used by the RADIUS accounting server
+         */
         port?: string;
         /**
-         * Secret of RADIUS server
+         * Shared secret used with this RADIUS accounting server
          */
         secret: string;
     }
 
     export interface NetworktemplateRadiusConfigAuthServer {
         /**
-         * IP/ hostname of RADIUS server
+         * Address or hostname of the RADIUS authentication server
          */
         host: string;
+        /**
+         * Whether RADIUS keywrap is enabled for messages sent to this authentication server
+         */
         keywrapEnabled?: boolean;
         /**
-         * enum: `ascii`, `hex`
+         * Encoding format for RADIUS keywrap KEK and MACK values
          */
         keywrapFormat?: string;
+        /**
+         * RADIUS keywrap key encryption key (KEK)
+         */
         keywrapKek?: string;
+        /**
+         * RADIUS keywrap message authentication code key (MACK)
+         */
         keywrapMack?: string;
+        /**
+         * UDP port used by the RADIUS authentication server
+         */
         port?: string;
         /**
          * Whether to require Message-Authenticator in requests
          */
         requireMessageAuthenticator?: boolean;
         /**
-         * Secret of RADIUS server
+         * Shared secret used with this RADIUS authentication server
          */
         secret: string;
     }
 
     export interface NetworktemplateRemoteSyslog {
+        /**
+         * Retention settings for generated syslog archive files
+         */
         archive?: outputs.site.NetworktemplateRemoteSyslogArchive;
+        /**
+         * CA certificates used to verify TLS syslog servers
+         */
         cacerts?: string[];
+        /**
+         * Log forwarding filters for console messages sent to remote syslog
+         */
         console?: outputs.site.NetworktemplateRemoteSyslogConsole;
+        /**
+         * Whether remote syslog forwarding is enabled
+         */
         enabled: boolean;
+        /**
+         * Local syslog file definitions to generate and forward
+         */
         files?: outputs.site.NetworktemplateRemoteSyslogFile[];
         /**
-         * If sourceAddress is configured, will use the vlan firstly otherwise use source_ip
+         * Source network used for syslog traffic. If `sourceAddress` is configured, Mist uses the VLAN first; otherwise it uses `sourceIp`
          */
         network?: string;
+        /**
+         * Whether each log entry is sent to all configured remote syslog servers
+         */
         sendToAllServers?: boolean;
+        /**
+         * Remote syslog server destinations
+         */
         servers?: outputs.site.NetworktemplateRemoteSyslogServer[];
         /**
-         * enum: `millisecond`, `year`, `year millisecond`
+         * Timestamp format used in forwarded syslog messages
          */
         timeFormat?: string;
+        /**
+         * User-specific syslog logging rules
+         */
         users?: outputs.site.NetworktemplateRemoteSyslogUser[];
     }
 
     export interface NetworktemplateRemoteSyslogArchive {
+        /**
+         * Number of archived syslog files to retain
+         */
         files?: string;
+        /**
+         * Maximum size of each archived syslog file, such as 5m
+         */
         size?: string;
     }
 
     export interface NetworktemplateRemoteSyslogConsole {
+        /**
+         * Syslog facilities and severities forwarded from console logs
+         */
         contents?: outputs.site.NetworktemplateRemoteSyslogConsoleContent[];
     }
 
     export interface NetworktemplateRemoteSyslogConsoleContent {
         /**
-         * enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`
+         * Syslog facility to match for this selector
          */
         facility: string;
         /**
-         * enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
+         * Syslog severity to match for this selector
          */
         severity: string;
     }
 
     export interface NetworktemplateRemoteSyslogFile {
+        /**
+         * Retention settings for this generated syslog file
+         */
         archive?: outputs.site.NetworktemplateRemoteSyslogFileArchive;
+        /**
+         * Syslog facilities and severities written to this file
+         */
         contents?: outputs.site.NetworktemplateRemoteSyslogFileContent[];
         /**
-         * Only if `protocol`==`tcp`
+         * Only if `protocol`==`tcp`, enable TLS for this syslog file destination
          */
         enableTls?: boolean;
+        /**
+         * Whether to include explicit syslog priority values in file output
+         */
         explicitPriority?: boolean;
+        /**
+         * Generated syslog file name
+         */
         file?: string;
+        /**
+         * Expression used to filter log messages written to this file
+         */
         match?: string;
+        /**
+         * Whether to include structured syslog data in file output
+         */
         structuredData?: boolean;
     }
 
     export interface NetworktemplateRemoteSyslogFileArchive {
+        /**
+         * Number of archived syslog files to retain
+         */
         files?: string;
+        /**
+         * Maximum size of each archived syslog file, such as 5m
+         */
         size?: string;
     }
 
     export interface NetworktemplateRemoteSyslogFileContent {
         /**
-         * enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`
+         * Syslog facility to match for this selector
          */
         facility: string;
         /**
-         * enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
+         * Syslog severity to match for this selector
          */
         severity: string;
     }
 
     export interface NetworktemplateRemoteSyslogServer {
+        /**
+         * Syslog facilities and severities sent to this server
+         */
         contents?: outputs.site.NetworktemplateRemoteSyslogServerContent[];
+        /**
+         * Whether to include explicit syslog priority values in messages sent to this server
+         */
         explicitPriority?: boolean;
         /**
-         * enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`
+         * Default syslog facility for messages sent to this server
          */
         facility: string;
+        /**
+         * Address or hostname of the remote syslog server
+         */
         host?: string;
+        /**
+         * Expression used to filter log messages sent to this server
+         */
         match?: string;
+        /**
+         * Network port used by the remote syslog server
+         */
         port?: string;
         /**
-         * enum: `tcp`, `udp`
+         * Transport protocol used for this remote syslog server
          */
         protocol: string;
+        /**
+         * Routing instance used to reach this remote syslog server
+         */
         routingInstance?: string;
         /**
-         * Name of the server
+         * TLS server name used when verifying the remote syslog server certificate
          */
         serverName?: string;
         /**
-         * enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
+         * Default syslog severity for messages sent to this server
          */
         severity: string;
         /**
-         * If sourceAddress is configured, will use the vlan firstly otherwise use source_ip
+         * Source address for syslog traffic. If configured, Mist uses the VLAN first; otherwise it uses `sourceIp`
          */
         sourceAddress?: string;
+        /**
+         * Whether to include structured syslog data in messages sent to this server
+         */
         structuredData?: boolean;
+        /**
+         * Syslog tag value added to messages sent to this server
+         */
         tag?: string;
     }
 
     export interface NetworktemplateRemoteSyslogServerContent {
         /**
-         * enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`
+         * Syslog facility to match for this selector
          */
         facility: string;
         /**
-         * enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
+         * Syslog severity to match for this selector
          */
         severity: string;
     }
 
     export interface NetworktemplateRemoteSyslogUser {
+        /**
+         * Syslog facilities and severities logged for this user rule
+         */
         contents?: outputs.site.NetworktemplateRemoteSyslogUserContent[];
+        /**
+         * Expression used to filter user log messages
+         */
         match?: string;
+        /**
+         * Account name or wildcard matched by this syslog rule
+         */
         user?: string;
     }
 
     export interface NetworktemplateRemoteSyslogUserContent {
         /**
-         * enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`
+         * Syslog facility to match for this selector
          */
         facility: string;
         /**
-         * enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
+         * Syslog severity to match for this selector
          */
         severity: string;
     }
 
     export interface NetworktemplateRoutingPolicies {
         /**
-         * at least criteria/filter must be specified to match the term, all criteria have to be met
+         * Ordered terms evaluated by this switch routing policy
          */
         terms?: outputs.site.NetworktemplateRoutingPoliciesTerm[];
     }
 
     export interface NetworktemplateRoutingPoliciesTerm {
         /**
-         * When used as import policy
+         * Policy actions applied when this routing policy term matches
          */
         actions?: outputs.site.NetworktemplateRoutingPoliciesTermActions;
         /**
-         * zero or more criteria/filter can be specified to match the term, all criteria have to be met
+         * Route match criteria that must be satisfied before actions are applied
          */
         matching?: outputs.site.NetworktemplateRoutingPoliciesTermMatching;
+        /**
+         * Display name of the switch routing policy term
+         */
         name: string;
     }
 
     export interface NetworktemplateRoutingPoliciesTermActions {
+        /**
+         * Whether to accept routes that match this term
+         */
         accept?: boolean;
         /**
-         * When used as export policy, optional
+         * BGP communities to set when this term is used as an export policy
          */
         communities?: string[];
         /**
@@ -25323,7 +26037,7 @@ export namespace site {
          */
         localPreference?: string;
         /**
-         * When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
+         * AS path values to prepend when this term is used as an export policy
          */
         prependAsPaths?: string[];
     }
@@ -25333,9 +26047,12 @@ export namespace site {
          * BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
          */
         asPaths?: string[];
+        /**
+         * BGP communities that routes must match
+         */
         communities?: string[];
         /**
-         * zero or more criteria/filter can be specified to match the term, all criteria have to be met
+         * Route prefixes that routes must match
          */
         prefixes?: string[];
         /**
@@ -25345,131 +26062,243 @@ export namespace site {
     }
 
     export interface NetworktemplateSnmpConfig {
+        /**
+         * SNMP client allowlists that can be referenced by communities
+         */
         clientLists?: outputs.site.NetworktemplateSnmpConfigClientList[];
+        /**
+         * Administrative contact string advertised through SNMP
+         */
         contact?: string;
+        /**
+         * Device description string advertised through SNMP
+         */
         description?: string;
+        /**
+         * Whether SNMP is enabled
+         */
         enabled: boolean;
+        /**
+         * SNMP engine ID used for SNMPv3
+         */
         engineId?: string;
         /**
-         * enum: `local`, `useMacAddress`
+         * Method used to derive the SNMP engine ID
          */
         engineIdType: string;
+        /**
+         * Physical location string advertised through SNMP
+         */
         location?: string;
+        /**
+         * System name advertised through SNMP
+         */
         name?: string;
+        /**
+         * Management network used for SNMP traffic
+         */
         network?: string;
+        /**
+         * SNMP trap group definitions
+         */
         trapGroups?: outputs.site.NetworktemplateSnmpConfigTrapGroup[];
+        /**
+         * SNMPv2c community configuration entries for this SNMP profile
+         */
         v2cConfigs?: outputs.site.NetworktemplateSnmpConfigV2cConfig[];
+        /**
+         * SNMPv3 user, VACM, notify, and target configuration
+         */
         v3Config?: outputs.site.NetworktemplateSnmpConfigV3Config;
+        /**
+         * SNMP MIB view definitions
+         */
         views?: outputs.site.NetworktemplateSnmpConfigView[];
     }
 
     export interface NetworktemplateSnmpConfigClientList {
+        /**
+         * Name of the SNMP client list
+         */
         clientListName?: string;
+        /**
+         * SNMP client IP addresses or CIDR ranges allowed by this list
+         */
         clients?: string[];
     }
 
     export interface NetworktemplateSnmpConfigTrapGroup {
+        /**
+         * Trap categories included in this SNMP trap group
+         */
         categories?: string[];
         /**
-         * Categories list can refer to https://www.juniper.net/documentation/software/topics/task/configuration/snmp_trap-groups-configuring-junos-nm.html
+         * Trap group name for this SNMP trap group
          */
         groupName?: string;
+        /**
+         * Trap target addresses for this SNMP trap group
+         */
         targets?: string[];
         /**
-         * enum: `all`, `v1`, `v2`
+         * SNMP trap protocol version used by this group
          */
         version: string;
     }
 
     export interface NetworktemplateSnmpConfigV2cConfig {
+        /**
+         * Access level for the SNMPv2c community
+         */
         authorization?: string;
         /**
-         * Client_list_name here should refer to clientList above
+         * SNMP client list name referenced by this community
          */
         clientListName?: string;
+        /**
+         * SNMPv2c community string name
+         */
         communityName?: string;
         /**
-         * View name here should be defined in views above
+         * SNMP view name that must be defined in the views list
          */
         view?: string;
     }
 
     export interface NetworktemplateSnmpConfigV3Config {
+        /**
+         * SNMPv3 notification definitions used for traps and informs
+         */
         notifies?: outputs.site.NetworktemplateSnmpConfigV3ConfigNotify[];
+        /**
+         * SNMPv3 notification filter profiles
+         */
         notifyFilters?: outputs.site.NetworktemplateSnmpConfigV3ConfigNotifyFilter[];
+        /**
+         * SNMPv3 notification target addresses
+         */
         targetAddresses?: outputs.site.NetworktemplateSnmpConfigV3ConfigTargetAddress[];
+        /**
+         * SNMPv3 target parameter profiles
+         */
         targetParameters?: outputs.site.NetworktemplateSnmpConfigV3ConfigTargetParameter[];
+        /**
+         * SNMPv3 USM engine configurations
+         */
         usms?: outputs.site.NetworktemplateSnmpConfigV3ConfigUsm[];
+        /**
+         * SNMPv3 VACM access control configuration
+         */
         vacm?: outputs.site.NetworktemplateSnmpConfigV3ConfigVacm;
     }
 
     export interface NetworktemplateSnmpConfigV3ConfigNotify {
+        /**
+         * Identifier for this SNMPv3 notification definition
+         */
         name: string;
+        /**
+         * Notification tag used to select target addresses
+         */
         tag: string;
         /**
-         * enum: `inform`, `trap`
+         * Delivery mode for this SNMPv3 notification, such as trap or inform
          */
         type: string;
     }
 
     export interface NetworktemplateSnmpConfigV3ConfigNotifyFilter {
+        /**
+         * CX only. List of SNMP trap group categories included in this filter profile. See https://www.juniper.net/documentation/software/topics/task/configuration/snmp-trap-groups-configuring-junos-nm.html for valid category names.
+         */
+        categories?: string[];
+        /**
+         * OID filter rules in this notification filter profile
+         */
         contents?: outputs.site.NetworktemplateSnmpConfigV3ConfigNotifyFilterContent[];
+        /**
+         * Notification filter profile name
+         */
         profileName?: string;
     }
 
     export interface NetworktemplateSnmpConfigV3ConfigNotifyFilterContent {
+        /**
+         * Whether the matching OID subtree is included
+         */
         include?: boolean;
+        /**
+         * Matched OID subtree for this notification filter rule
+         */
         oid: string;
     }
 
     export interface NetworktemplateSnmpConfigV3ConfigTargetAddress {
+        /**
+         * IP address or hostname of the SNMP target
+         */
         address: string;
+        /**
+         * Mask applied to the SNMP target address
+         */
         addressMask: string;
+        /**
+         * UDP port used by the SNMP target
+         */
         port: string;
         /**
-         * Refer to notify tag, can be multiple with blank
+         * Set of notification tags for this target address; use spaces between multiple tags
          */
         tagList?: string;
+        /**
+         * Name of the SNMP target address entry
+         */
         targetAddressName: string;
         /**
-         * Refer to notify target parameters name
+         * Target parameter profile referenced by this target address
          */
         targetParameters?: string;
     }
 
     export interface NetworktemplateSnmpConfigV3ConfigTargetParameter {
         /**
-         * enum: `v1`, `v2c`, `v3`
+         * SNMP message processing model used by this target parameter profile
          */
         messageProcessingModel: string;
+        /**
+         * Target parameter profile name
+         */
         name: string;
         /**
-         * Refer to profile-name in notify_filter
+         * Notification filter profile referenced by this target parameter profile
          */
         notifyFilter?: string;
         /**
-         * enum: `authentication`, `none`, `privacy`
+         * Required security level for this target parameter profile
          */
         securityLevel?: string;
         /**
-         * enum: `usm`, `v1`, `v2c`
+         * Required security model for this target parameter profile
          */
         securityModel?: string;
         /**
-         * Refer to securityName in usm
+         * USM security name referenced by this target parameter profile
          */
         securityName?: string;
     }
 
     export interface NetworktemplateSnmpConfigV3ConfigUsm {
         /**
-         * enum: `localEngine`, `remoteEngine`
+         * SNMP engine type used for this USM configuration
          */
         engineType: string;
         /**
          * Required only if `engineType`==`remoteEngine`
          */
         remoteEngineId?: string;
+        /**
+         * SNMPv3 USM users for this engine
+         */
         users?: outputs.site.NetworktemplateSnmpConfigV3ConfigUsmUser[];
     }
 
@@ -25479,7 +26308,7 @@ export namespace site {
          */
         authenticationPassword?: string;
         /**
-         * sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authentication-md5`, `authentication-none`, `authentication-sha`, `authentication-sha224`, `authentication-sha256`, `authentication-sha384`, `authentication-sha512`
+         * Authentication protocol used by this SNMPv3 USM user
          */
         authenticationType?: string;
         /**
@@ -25487,79 +26316,109 @@ export namespace site {
          */
         encryptionPassword?: string;
         /**
-         * enum: `privacy-3des`, `privacy-aes128`, `privacy-des`, `privacy-none`
+         * Privacy protocol used by this SNMPv3 USM user
          */
         encryptionType?: string;
+        /**
+         * Username for the SNMPv3 USM user
+         */
         name?: string;
     }
 
     export interface NetworktemplateSnmpConfigV3ConfigVacm {
+        /**
+         * VACM access rules for SNMPv3
+         */
         accesses?: outputs.site.NetworktemplateSnmpConfigV3ConfigVacmAccess[];
+        /**
+         * VACM security-name to group mappings
+         */
         securityToGroup?: outputs.site.NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroup;
     }
 
     export interface NetworktemplateSnmpConfigV3ConfigVacmAccess {
+        /**
+         * SNMP VACM group name
+         */
         groupName?: string;
+        /**
+         * Context prefix rules for this VACM group
+         */
         prefixLists?: outputs.site.NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixList[];
     }
 
     export interface NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixList {
         /**
-         * Only required if `type`==`contextPrefix`
+         * Context prefix for this VACM access rule. Required only if `type`==`contextPrefix`
          */
         contextPrefix?: string;
         /**
-         * Refer to view name
+         * Notify view name referenced by this VACM access rule
          */
         notifyView?: string;
         /**
-         * Refer to view name
+         * Read view name referenced by this VACM access rule
          */
         readView?: string;
         /**
-         * enum: `authentication`, `none`, `privacy`
+         * Required security level for this VACM access rule
          */
         securityLevel?: string;
         /**
-         * enum: `any`, `usm`, `v1`, `v2c`
+         * Required security model for this VACM access rule
          */
         securityModel?: string;
         /**
-         * enum: `contextPrefix`, `defaultContextPrefix`
+         * VACM context matching type for this access rule
          */
         type?: string;
         /**
-         * Refer to view name
+         * Write view name referenced by this VACM access rule
          */
         writeView?: string;
     }
 
     export interface NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroup {
+        /**
+         * VACM security-name to group mapping entries
+         */
         contents?: outputs.site.NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupContent[];
         /**
-         * enum: `usm`, `v1`, `v2c`
+         * Required security model for these VACM group mappings
          */
         securityModel?: string;
     }
 
     export interface NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupContent {
         /**
-         * Refer to groupName under access
+         * VACM group name referenced by this mapping
          */
         group?: string;
+        /**
+         * Name of the SNMP security principal mapped to a VACM group
+         */
         securityName?: string;
     }
 
     export interface NetworktemplateSnmpConfigView {
         /**
-         * If the root oid configured is included
+         * Whether the root OID is included in this SNMP view
          */
         include?: boolean;
+        /**
+         * Root OID for this SNMP view
+         */
         oid?: string;
+        /**
+         * Name of the SNMP MIB view definition
+         */
         viewName?: string;
     }
 
     export interface NetworktemplateSwitchMatching {
+        /**
+         * Whether custom switch matching rules are enabled
+         */
         enable?: boolean;
         /**
          * list of rules to define custom switch configuration based on different criteria. Each list must have at least one of `matchModel`, `matchName` or `matchRole` must be defined
@@ -25569,7 +26428,7 @@ export namespace site {
 
     export interface NetworktemplateSwitchMatchingRule {
         /**
-         * additional CLI commands to append to the generated Junos config. **Note**: no check is done
+         * Additional Junos CLI commands applied when this matching rule matches
          */
         additionalConfigCmds?: string[];
         /**
@@ -25577,7 +26436,7 @@ export namespace site {
          */
         defaultPortUsage: string;
         /**
-         * In-Band Management interface configuration
+         * In-band management IP configuration applied when this matching rule matches
          */
         ipConfig?: outputs.site.NetworktemplateSwitchMatchingRuleIpConfig;
         /**
@@ -25601,17 +26460,20 @@ export namespace site {
          */
         name?: string;
         /**
-         * Out-of-Band Management interface configuration
+         * Out-of-band management IP configuration applied when this matching rule matches
          */
         oobIpConfig?: outputs.site.NetworktemplateSwitchMatchingRuleOobIpConfig;
         /**
-         * Property key is the port name or range (e.g. "ge-0/0/0-10")
+         * Per-port wired configuration applied when this matching rule matches
          */
         portConfig?: {[key: string]: outputs.site.NetworktemplateSwitchMatchingRulePortConfig};
         /**
-         * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+         * Port mirroring configuration applied when this matching rule matches
          */
         portMirroring?: {[key: string]: outputs.site.NetworktemplateSwitchMatchingRulePortMirroring};
+        /**
+         * Spanning Tree Protocol configuration applied when this matching rule matches
+         */
         stpConfig?: outputs.site.NetworktemplateSwitchMatchingRuleStpConfig;
     }
 
@@ -25621,14 +26483,14 @@ export namespace site {
          */
         network?: string;
         /**
-         * enum: `dhcp`, `static`
+         * IP assignment mode for in-band switch management
          */
         type: string;
     }
 
     export interface NetworktemplateSwitchMatchingRuleOobIpConfig {
         /**
-         * enum: `dhcp`, `static`
+         * IP assignment mode for out-of-band switch management
          */
         type: string;
         /**
@@ -25653,29 +26515,42 @@ export namespace site {
         /**
          * If `aggregated`==`true`, sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
          */
-        aeLacpForceUp?: boolean;
+        aeLacpForceUp: boolean;
+        /**
+         * If `aggregated`==`true`, sets LACP to passive mode on this AE interface; by default, active (fast) mode is used
+         */
+        aeLacpPassive: boolean;
         /**
          * To use slow timeout
          */
         aeLacpSlow?: boolean;
+        /**
+         * Whether this port is configured as an aggregated Ethernet member
+         */
         aggregated?: boolean;
         /**
          * To generate port up/down alarm
          */
         critical: boolean;
+        /**
+         * Human-readable description for this Junos port
+         */
         description?: string;
         /**
          * If `speed` and `duplex` are specified, whether to disable autonegotiation
          */
         disableAutoneg?: boolean;
         /**
-         * enum: `auto`, `full`, `half`
+         * Link duplex mode for this Junos port
          */
         duplex?: string;
         /**
          * Enable dynamic usage for this port. Set to `dynamic` to enable.
          */
         dynamicUsage?: string;
+        /**
+         * Whether this Junos port participates in an ESI-LAG
+         */
         esilag?: boolean;
         /**
          * Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
@@ -25689,13 +26564,16 @@ export namespace site {
          * Prevent helpdesk to override the port config
          */
         noLocalOverwrite: boolean;
+        /**
+         * Whether PoE capabilities are disabled for this Junos port
+         */
         poeDisabled?: boolean;
         /**
          * Required if `usage`==`vlanTunnel`. Q-in-Q tunneling using All-in-one bundling. This also enables standard L2PT for interfaces that are not encapsulation tunnel interfaces and uses MAC rewrite operation. [View more information](https://www.juniper.net/documentation/us/en/software/junos/multicast-l2/topics/topic-map/q-in-q.html#id-understanding-qinq-tunneling-and-vlan-translation)
          */
         portNetwork?: string;
         /**
-         * enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+         * Link speed for this Junos port
          */
         speed?: string;
         /**
@@ -25706,15 +26584,15 @@ export namespace site {
 
     export interface NetworktemplateSwitchMatchingRulePortMirroring {
         /**
-         * At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or `inputNetworksIngress ` should be specified
+         * At least one mirror input source should be specified. Networks whose ingress traffic is mirrored
          */
         inputNetworksIngresses: string[];
         /**
-         * At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or `inputNetworksIngress ` should be specified
+         * At least one mirror input source should be specified. Switch ports whose egress traffic is mirrored
          */
         inputPortIdsEgresses: string[];
         /**
-         * At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or `inputNetworksIngress ` should be specified
+         * At least one mirror input source should be specified. Switch ports whose ingress traffic is mirrored
          */
         inputPortIdsIngresses: string[];
         /**
@@ -25740,7 +26618,7 @@ export namespace site {
 
     export interface NetworktemplateSwitchMgmt {
         /**
-         * AP_affinity_threshold apAffinityThreshold can be added as a field under site/setting. By default, this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+         * AP affinity threshold for switch management. If set in both site settings and organization settings, the site setting value is used.
          */
         apAffinityThreshold?: number;
         /**
@@ -25759,14 +26637,20 @@ export namespace site {
          * Enable to provide the FQDN with DHCP option 81
          */
         dhcpOptionFqdn?: boolean;
+        /**
+         * Whether to suppress alarms when the switch out-of-band management interface is down
+         */
         disableOobDownAlarm?: boolean;
+        /**
+         * Whether FIPS mode is enabled on the switch
+         */
         fipsEnabled?: boolean;
         /**
-         * Property key is the user name. For Local user authentication
+         * Local switch user accounts keyed by username
          */
         localAccounts?: {[key: string]: outputs.site.NetworktemplateSwitchMgmtLocalAccounts};
         /**
-         * IP Address or FQDN of the Mist Edge used to proxy the switch management traffic to the Mist Cloud
+         * IP address or FQDN of the Mist Edge used to proxy the switch management traffic to the Mist Cloud
          */
         mxedgeProxyHost?: string;
         /**
@@ -25774,27 +26658,34 @@ export namespace site {
          */
         mxedgeProxyPort?: string;
         /**
-         * Restrict inbound-traffic to host
-         * when enabled, all traffic that is not essential to our operation will be dropped 
-         * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
+         * Control-plane protection settings for the switch
          */
         protectRe?: outputs.site.NetworktemplateSwitchMgmtProtectRe;
         /**
          * By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
          */
         removeExistingConfigs?: boolean;
+        /**
+         * Root password for local switch access
+         */
         rootPassword?: string;
+        /**
+         * Management authentication settings using TACACS+
+         */
         tacacs?: outputs.site.NetworktemplateSwitchMgmtTacacs;
         /**
-         * To use mxedge as proxy
+         * Whether to use Mist Edge as a proxy for switch management traffic
          */
         useMxedgeProxy: boolean;
     }
 
     export interface NetworktemplateSwitchMgmtLocalAccounts {
+        /**
+         * Local password for the switch user account
+         */
         password?: string;
         /**
-         * enum: `admin`, `helpdesk`, `none`, `read`
+         * Access role granted to the local switch user account
          */
         role: string;
     }
@@ -25804,6 +26695,9 @@ export namespace site {
          * optionally, services we'll allow. enum: `icmp`, `ssh`
          */
         allowedServices: string[];
+        /**
+         * Additional ACL entries allowed by the Protect RE policy
+         */
         customs: outputs.site.NetworktemplateSwitchMgmtProtectReCustom[];
         /**
          * When enabled, all traffic that is not essential to our operation will be dropped
@@ -25816,7 +26710,7 @@ export namespace site {
          */
         hitCount: boolean;
         /**
-         * host/subnets we'll allow traffic to/from
+         * Trusted host or subnet entries allowed by the Protect RE policy
          */
         trustedHosts: string[];
     }
@@ -25830,34 +26724,70 @@ export namespace site {
          * enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
          */
         protocol: string;
+        /**
+         * Source subnets matched by this custom Protect RE ACL
+         */
         subnets: string[];
     }
 
     export interface NetworktemplateSwitchMgmtTacacs {
+        /**
+         * TACACS+ accounting servers used for switch management sessions
+         */
         acctServers?: outputs.site.NetworktemplateSwitchMgmtTacacsAcctServer[];
         /**
-         * enum: `admin`, `helpdesk`, `none`, `read`
+         * Default switch-management role to use for TACACS+ logins
          */
         defaultRole?: string;
+        /**
+         * Whether TACACS+ is enabled for switch management authentication
+         */
         enabled?: boolean;
         /**
-         * Which network the TACACS server resides
+         * Source network used for connectivity to the TACACS+ servers
          */
         network?: string;
+        /**
+         * TACACS+ authentication servers used for switch management logins
+         */
         tacplusServers?: outputs.site.NetworktemplateSwitchMgmtTacacsTacplusServer[];
     }
 
     export interface NetworktemplateSwitchMgmtTacacsAcctServer {
+        /**
+         * Address or hostname of the TACACS+ accounting server
+         */
         host?: string;
+        /**
+         * TCP port used by the TACACS+ accounting server
+         */
         port?: string;
+        /**
+         * Shared secret used with this TACACS+ accounting server
+         */
         secret?: string;
+        /**
+         * TACACS+ accounting server timeout, in seconds
+         */
         timeout: number;
     }
 
     export interface NetworktemplateSwitchMgmtTacacsTacplusServer {
+        /**
+         * Address or hostname of the TACACS+ authentication server
+         */
         host?: string;
+        /**
+         * TCP port used by the TACACS+ authentication server
+         */
         port?: string;
+        /**
+         * Shared secret used with this TACACS+ authentication server
+         */
         secret?: string;
+        /**
+         * TACACS+ authentication server timeout, in seconds
+         */
         timeout: number;
     }
 
@@ -25869,31 +26799,63 @@ export namespace site {
     }
 
     export interface NetworktemplateVrfInstances {
+        /**
+         * IPv4 subnet used for automatic EVPN loopback addresses in this VRF instance
+         */
         evpnAutoLoopbackSubnet?: string;
+        /**
+         * IPv6 subnet used for automatic EVPN loopback addresses in this VRF instance
+         */
         evpnAutoLoopbackSubnet6?: string;
         /**
-         * Property key is the destination CIDR (e.g. "10.0.0.0/8")
+         * Additional IPv4 static routes configured for this VRF instance
          */
         extraRoutes?: {[key: string]: outputs.site.NetworktemplateVrfInstancesExtraRoutes};
         /**
-         * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+         * Additional IPv6 static routes configured for this VRF instance
          */
         extraRoutes6?: {[key: string]: outputs.site.NetworktemplateVrfInstancesExtraRoutes6};
+        /**
+         * Multicast configuration for this VRF instance. PIM is automatically enabled when any network in this VRF has `multicast.enabled`==`true`
+         */
+        multicastConfig?: outputs.site.NetworktemplateVrfInstancesMulticastConfig;
+        /**
+         * Names of switch networks included in this VRF instance
+         */
         networks?: string[];
     }
 
     export interface NetworktemplateVrfInstancesExtraRoutes {
         /**
-         * Next-hop address
+         * IPv4 next-hop address for this VRF extra route
          */
         via: string;
     }
 
     export interface NetworktemplateVrfInstancesExtraRoutes6 {
         /**
-         * Next-hop address
+         * IPv6 next-hop address for this VRF extra route
          */
         via?: string;
+    }
+
+    export interface NetworktemplateVrfInstancesMulticastConfig {
+        /**
+         * When `true`, auto-generates a shared RP on `isL3Border` devices (ERB/IPClos topologies only)
+         */
+        anycastRp?: boolean;
+        /**
+         * RP address used when `anycastRp`==`false`. If the address matches a device SVI, it is configured as a local RP; otherwise a static RP is configured
+         */
+        rpIp?: string;
+        /**
+         * SBD IRB subnet; Mist auto-assigns per-device IPs from this range (EVPN eOISM only)
+         */
+        sbdSubnet?: string;
+        /**
+         * Supplemental Bridge Domain VLAN ID (EVPN topology / eOISM only)
+         */
+        sbdVlanId?: number;
     }
 
     export interface SettingAnalytic {
@@ -26263,6 +27225,10 @@ export namespace site {
          * For SSR and SRX, disable console port
          */
         disableConsole?: boolean;
+        /**
+         * For SRX only, disable IDP packet capture
+         */
+        disableIdpPcap?: boolean;
         /**
          * For SSR and SRX, disable management interface
          */
@@ -27213,6 +28179,29 @@ export namespace site {
         keepWlansUpIfDown: boolean;
     }
 
+    export interface SettingUwbConfig {
+        /**
+         * Whether UWB RTLS integration is enabled
+         */
+        enabled?: boolean;
+        /**
+         * RTLS server hostname or IP address
+         */
+        host?: string;
+        /**
+         * RTLS server port number
+         */
+        port?: number;
+        /**
+         * UWB time slot assigned to this AP, 0–15
+         */
+        slot?: number;
+        /**
+         * UWB integration type. enum: `zigpos`
+         */
+        type?: string;
+    }
+
     export interface SettingVarsAnnotations {
         /**
          * User-provided note to describe what this var was created for
@@ -27344,6 +28333,21 @@ export namespace site {
          * Sending zone-occupancy-alert webhook message only if a zone stays non-compliant (i.e. actual occupancy > occupancy_limit) for a minimum duration specified in the threshold, in minutes
          */
         threshold: number;
+    }
+
+    export interface WebhookRule {
+        /**
+         * Action applied when the rule matches the incoming event
+         */
+        action?: string;
+        /**
+         * Optional event payload matching criteria. Property key is the event field name and the value is the list of accepted values
+         */
+        matching?: {[key: string]: string[]};
+        /**
+         * Webhook topic this rule applies to
+         */
+        topic: string;
     }
 
     export interface WlanAcctServer {
@@ -27664,6 +28668,10 @@ export namespace site {
          * When 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
          */
         forceLookup: boolean;
+        /**
+         * VLANs to be bridged locally when forwarding to mxtunnel or site mxedge
+         */
+        localVlanIds?: string[];
         /**
          * Origin used to retrieve per-user PSKs
          */

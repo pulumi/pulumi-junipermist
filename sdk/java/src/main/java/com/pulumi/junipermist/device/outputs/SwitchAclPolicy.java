@@ -5,6 +5,7 @@ package com.pulumi.junipermist.device.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.junipermist.device.outputs.SwitchAclPolicyAction;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -18,6 +19,11 @@ public final class SwitchAclPolicy {
      * 
      */
     private @Nullable List<SwitchAclPolicyAction> actions;
+    /**
+     * @return Whether this ACL policy is disabled
+     * 
+     */
+    private @Nullable Boolean disabled;
     /**
      * @return Display name of the ACL policy
      * 
@@ -36,6 +42,13 @@ public final class SwitchAclPolicy {
      */
     public List<SwitchAclPolicyAction> actions() {
         return this.actions == null ? List.of() : this.actions;
+    }
+    /**
+     * @return Whether this ACL policy is disabled
+     * 
+     */
+    public Optional<Boolean> disabled() {
+        return Optional.ofNullable(this.disabled);
     }
     /**
      * @return Display name of the ACL policy
@@ -62,12 +75,14 @@ public final class SwitchAclPolicy {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<SwitchAclPolicyAction> actions;
+        private @Nullable Boolean disabled;
         private @Nullable String name;
         private @Nullable List<String> srcTags;
         public Builder() {}
         public Builder(SwitchAclPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.actions = defaults.actions;
+    	      this.disabled = defaults.disabled;
     	      this.name = defaults.name;
     	      this.srcTags = defaults.srcTags;
         }
@@ -80,6 +95,12 @@ public final class SwitchAclPolicy {
         }
         public Builder actions(SwitchAclPolicyAction... actions) {
             return actions(List.of(actions));
+        }
+        @CustomType.Setter
+        public Builder disabled(@Nullable Boolean disabled) {
+
+            this.disabled = disabled;
+            return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
@@ -99,6 +120,7 @@ public final class SwitchAclPolicy {
         public SwitchAclPolicy build() {
             final var _resultValue = new SwitchAclPolicy();
             _resultValue.actions = actions;
+            _resultValue.disabled = disabled;
             _resultValue.name = name;
             _resultValue.srcTags = srcTags;
             return _resultValue;

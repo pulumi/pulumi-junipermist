@@ -13,24 +13,40 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworktemplateSnmpConfigView {
     /**
-     * @return If the root oid configured is included
+     * @return Whether the root OID is included in this SNMP view
      * 
      */
     private @Nullable Boolean include;
+    /**
+     * @return Root OID for this SNMP view
+     * 
+     */
     private @Nullable String oid;
+    /**
+     * @return Name of the SNMP MIB view definition
+     * 
+     */
     private @Nullable String viewName;
 
     private NetworktemplateSnmpConfigView() {}
     /**
-     * @return If the root oid configured is included
+     * @return Whether the root OID is included in this SNMP view
      * 
      */
     public Optional<Boolean> include() {
         return Optional.ofNullable(this.include);
     }
+    /**
+     * @return Root OID for this SNMP view
+     * 
+     */
     public Optional<String> oid() {
         return Optional.ofNullable(this.oid);
     }
+    /**
+     * @return Name of the SNMP MIB view definition
+     * 
+     */
     public Optional<String> viewName() {
         return Optional.ofNullable(this.viewName);
     }

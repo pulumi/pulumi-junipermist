@@ -44,6 +44,11 @@ public final class SettingMistNac {
      */
     private @Nullable Integer eapSslSecurityLevel;
     /**
+     * @return Enable EAP-MD5 for MAB. WARNING: Not FIPS compliant, use only if required for legacy device support.
+     * 
+     */
+    private @Nullable Boolean enableEapMd5ForMab;
+    /**
      * @return By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliance NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, Mist Edge clusters that have mistNac enabled
      * 
      */
@@ -89,7 +94,7 @@ public final class SettingMistNac {
      */
     private @Nullable Boolean useSslPort;
     /**
-     * @return Allow customer to configure an expiry time for usermacs by attaching a Quarantine label to those which have been inactive for the configured period of time (in days). 0 means no expiry
+     * @return Allow customer to configure an expiry time for usermacs by attaching an `inactiveEndpoint` label to those which have been inactive for the configured period of time (in days). 0 means no expiry
      * 
      */
     private @Nullable Integer usermacExpiry;
@@ -129,6 +134,13 @@ public final class SettingMistNac {
      */
     public Optional<Integer> eapSslSecurityLevel() {
         return Optional.ofNullable(this.eapSslSecurityLevel);
+    }
+    /**
+     * @return Enable EAP-MD5 for MAB. WARNING: Not FIPS compliant, use only if required for legacy device support.
+     * 
+     */
+    public Optional<Boolean> enableEapMd5ForMab() {
+        return Optional.ofNullable(this.enableEapMd5ForMab);
     }
     /**
      * @return By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliance NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, Mist Edge clusters that have mistNac enabled
@@ -194,7 +206,7 @@ public final class SettingMistNac {
         return Optional.ofNullable(this.useSslPort);
     }
     /**
-     * @return Allow customer to configure an expiry time for usermacs by attaching a Quarantine label to those which have been inactive for the configured period of time (in days). 0 means no expiry
+     * @return Allow customer to configure an expiry time for usermacs by attaching an `inactiveEndpoint` label to those which have been inactive for the configured period of time (in days). 0 means no expiry
      * 
      */
     public Optional<Integer> usermacExpiry() {
@@ -215,6 +227,7 @@ public final class SettingMistNac {
         private @Nullable String defaultIdpId;
         private @Nullable Boolean disableRsaeAlgorithms;
         private @Nullable Integer eapSslSecurityLevel;
+        private @Nullable Boolean enableEapMd5ForMab;
         private @Nullable Boolean euOnly;
         private @Nullable SettingMistNacFingerprinting fingerprinting;
         private @Nullable String idpMachineCertLookupField;
@@ -233,6 +246,7 @@ public final class SettingMistNac {
     	      this.defaultIdpId = defaults.defaultIdpId;
     	      this.disableRsaeAlgorithms = defaults.disableRsaeAlgorithms;
     	      this.eapSslSecurityLevel = defaults.eapSslSecurityLevel;
+    	      this.enableEapMd5ForMab = defaults.enableEapMd5ForMab;
     	      this.euOnly = defaults.euOnly;
     	      this.fingerprinting = defaults.fingerprinting;
     	      this.idpMachineCertLookupField = defaults.idpMachineCertLookupField;
@@ -276,6 +290,12 @@ public final class SettingMistNac {
         public Builder eapSslSecurityLevel(@Nullable Integer eapSslSecurityLevel) {
 
             this.eapSslSecurityLevel = eapSslSecurityLevel;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableEapMd5ForMab(@Nullable Boolean enableEapMd5ForMab) {
+
+            this.enableEapMd5ForMab = enableEapMd5ForMab;
             return this;
         }
         @CustomType.Setter
@@ -348,6 +368,7 @@ public final class SettingMistNac {
             _resultValue.defaultIdpId = defaultIdpId;
             _resultValue.disableRsaeAlgorithms = disableRsaeAlgorithms;
             _resultValue.eapSslSecurityLevel = eapSslSecurityLevel;
+            _resultValue.enableEapMd5ForMab = enableEapMd5ForMab;
             _resultValue.euOnly = euOnly;
             _resultValue.fingerprinting = fingerprinting;
             _resultValue.idpMachineCertLookupField = idpMachineCertLookupField;

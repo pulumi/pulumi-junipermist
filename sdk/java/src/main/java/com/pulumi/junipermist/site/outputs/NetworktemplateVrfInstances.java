@@ -6,6 +6,7 @@ package com.pulumi.junipermist.site.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.junipermist.site.outputs.NetworktemplateVrfInstancesExtraRoutes6;
 import com.pulumi.junipermist.site.outputs.NetworktemplateVrfInstancesExtraRoutes;
+import com.pulumi.junipermist.site.outputs.NetworktemplateVrfInstancesMulticastConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -15,41 +16,77 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NetworktemplateVrfInstances {
+    /**
+     * @return IPv4 subnet used for automatic EVPN loopback addresses in this VRF instance
+     * 
+     */
     private @Nullable String evpnAutoLoopbackSubnet;
+    /**
+     * @return IPv6 subnet used for automatic EVPN loopback addresses in this VRF instance
+     * 
+     */
     private @Nullable String evpnAutoLoopbackSubnet6;
     /**
-     * @return Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+     * @return Additional IPv4 static routes configured for this VRF instance
      * 
      */
     private @Nullable Map<String,NetworktemplateVrfInstancesExtraRoutes> extraRoutes;
     /**
-     * @return Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+     * @return Additional IPv6 static routes configured for this VRF instance
      * 
      */
     private @Nullable Map<String,NetworktemplateVrfInstancesExtraRoutes6> extraRoutes6;
+    /**
+     * @return Multicast configuration for this VRF instance. PIM is automatically enabled when any network in this VRF has `multicast.enabled`==`true`
+     * 
+     */
+    private @Nullable NetworktemplateVrfInstancesMulticastConfig multicastConfig;
+    /**
+     * @return Names of switch networks included in this VRF instance
+     * 
+     */
     private @Nullable List<String> networks;
 
     private NetworktemplateVrfInstances() {}
+    /**
+     * @return IPv4 subnet used for automatic EVPN loopback addresses in this VRF instance
+     * 
+     */
     public Optional<String> evpnAutoLoopbackSubnet() {
         return Optional.ofNullable(this.evpnAutoLoopbackSubnet);
     }
+    /**
+     * @return IPv6 subnet used for automatic EVPN loopback addresses in this VRF instance
+     * 
+     */
     public Optional<String> evpnAutoLoopbackSubnet6() {
         return Optional.ofNullable(this.evpnAutoLoopbackSubnet6);
     }
     /**
-     * @return Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+     * @return Additional IPv4 static routes configured for this VRF instance
      * 
      */
     public Map<String,NetworktemplateVrfInstancesExtraRoutes> extraRoutes() {
         return this.extraRoutes == null ? Map.of() : this.extraRoutes;
     }
     /**
-     * @return Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+     * @return Additional IPv6 static routes configured for this VRF instance
      * 
      */
     public Map<String,NetworktemplateVrfInstancesExtraRoutes6> extraRoutes6() {
         return this.extraRoutes6 == null ? Map.of() : this.extraRoutes6;
     }
+    /**
+     * @return Multicast configuration for this VRF instance. PIM is automatically enabled when any network in this VRF has `multicast.enabled`==`true`
+     * 
+     */
+    public Optional<NetworktemplateVrfInstancesMulticastConfig> multicastConfig() {
+        return Optional.ofNullable(this.multicastConfig);
+    }
+    /**
+     * @return Names of switch networks included in this VRF instance
+     * 
+     */
     public List<String> networks() {
         return this.networks == null ? List.of() : this.networks;
     }
@@ -67,6 +104,7 @@ public final class NetworktemplateVrfInstances {
         private @Nullable String evpnAutoLoopbackSubnet6;
         private @Nullable Map<String,NetworktemplateVrfInstancesExtraRoutes> extraRoutes;
         private @Nullable Map<String,NetworktemplateVrfInstancesExtraRoutes6> extraRoutes6;
+        private @Nullable NetworktemplateVrfInstancesMulticastConfig multicastConfig;
         private @Nullable List<String> networks;
         public Builder() {}
         public Builder(NetworktemplateVrfInstances defaults) {
@@ -75,6 +113,7 @@ public final class NetworktemplateVrfInstances {
     	      this.evpnAutoLoopbackSubnet6 = defaults.evpnAutoLoopbackSubnet6;
     	      this.extraRoutes = defaults.extraRoutes;
     	      this.extraRoutes6 = defaults.extraRoutes6;
+    	      this.multicastConfig = defaults.multicastConfig;
     	      this.networks = defaults.networks;
         }
 
@@ -103,6 +142,12 @@ public final class NetworktemplateVrfInstances {
             return this;
         }
         @CustomType.Setter
+        public Builder multicastConfig(@Nullable NetworktemplateVrfInstancesMulticastConfig multicastConfig) {
+
+            this.multicastConfig = multicastConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder networks(@Nullable List<String> networks) {
 
             this.networks = networks;
@@ -117,6 +162,7 @@ public final class NetworktemplateVrfInstances {
             _resultValue.evpnAutoLoopbackSubnet6 = evpnAutoLoopbackSubnet6;
             _resultValue.extraRoutes = extraRoutes;
             _resultValue.extraRoutes6 = extraRoutes6;
+            _resultValue.multicastConfig = multicastConfig;
             _resultValue.networks = networks;
             return _resultValue;
         }

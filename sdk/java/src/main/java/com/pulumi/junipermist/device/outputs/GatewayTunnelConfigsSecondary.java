@@ -5,9 +5,11 @@ package com.pulumi.junipermist.device.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.junipermist.device.outputs.GatewayTunnelConfigsSecondaryProbeHttp;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -18,10 +20,30 @@ public final class GatewayTunnelConfigsSecondary {
      */
     private List<String> hosts;
     /**
+     * @return IPv6 addresses configured on this tunnel node
+     * 
+     */
+    private @Nullable List<String> internalIp6s;
+    /**
      * @return Internal IP addresses configured on this tunnel node
      * 
      */
     private @Nullable List<String> internalIps;
+    /**
+     * @return Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+     * 
+     */
+    private @Nullable List<String> probeHostnames;
+    /**
+     * @return HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+     * 
+     */
+    private @Nullable GatewayTunnelConfigsSecondaryProbeHttp probeHttp;
+    /**
+     * @return IPv6 ICMP probe addresses used to monitor this tunnel node
+     * 
+     */
+    private @Nullable List<String> probeIp6s;
     /**
      * @return Health-check IP addresses used to monitor this tunnel node
      * 
@@ -47,11 +69,39 @@ public final class GatewayTunnelConfigsSecondary {
         return this.hosts;
     }
     /**
+     * @return IPv6 addresses configured on this tunnel node
+     * 
+     */
+    public List<String> internalIp6s() {
+        return this.internalIp6s == null ? List.of() : this.internalIp6s;
+    }
+    /**
      * @return Internal IP addresses configured on this tunnel node
      * 
      */
     public List<String> internalIps() {
         return this.internalIps == null ? List.of() : this.internalIps;
+    }
+    /**
+     * @return Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+     * 
+     */
+    public List<String> probeHostnames() {
+        return this.probeHostnames == null ? List.of() : this.probeHostnames;
+    }
+    /**
+     * @return HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+     * 
+     */
+    public Optional<GatewayTunnelConfigsSecondaryProbeHttp> probeHttp() {
+        return Optional.ofNullable(this.probeHttp);
+    }
+    /**
+     * @return IPv6 ICMP probe addresses used to monitor this tunnel node
+     * 
+     */
+    public List<String> probeIp6s() {
+        return this.probeIp6s == null ? List.of() : this.probeIp6s;
     }
     /**
      * @return Health-check IP addresses used to monitor this tunnel node
@@ -85,7 +135,11 @@ public final class GatewayTunnelConfigsSecondary {
     @CustomType.Builder
     public static final class Builder {
         private List<String> hosts;
+        private @Nullable List<String> internalIp6s;
         private @Nullable List<String> internalIps;
+        private @Nullable List<String> probeHostnames;
+        private @Nullable GatewayTunnelConfigsSecondaryProbeHttp probeHttp;
+        private @Nullable List<String> probeIp6s;
         private @Nullable List<String> probeIps;
         private @Nullable List<String> remoteIds;
         private List<String> wanNames;
@@ -93,7 +147,11 @@ public final class GatewayTunnelConfigsSecondary {
         public Builder(GatewayTunnelConfigsSecondary defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.hosts = defaults.hosts;
+    	      this.internalIp6s = defaults.internalIp6s;
     	      this.internalIps = defaults.internalIps;
+    	      this.probeHostnames = defaults.probeHostnames;
+    	      this.probeHttp = defaults.probeHttp;
+    	      this.probeIp6s = defaults.probeIp6s;
     	      this.probeIps = defaults.probeIps;
     	      this.remoteIds = defaults.remoteIds;
     	      this.wanNames = defaults.wanNames;
@@ -111,6 +169,15 @@ public final class GatewayTunnelConfigsSecondary {
             return hosts(List.of(hosts));
         }
         @CustomType.Setter
+        public Builder internalIp6s(@Nullable List<String> internalIp6s) {
+
+            this.internalIp6s = internalIp6s;
+            return this;
+        }
+        public Builder internalIp6s(String... internalIp6s) {
+            return internalIp6s(List.of(internalIp6s));
+        }
+        @CustomType.Setter
         public Builder internalIps(@Nullable List<String> internalIps) {
 
             this.internalIps = internalIps;
@@ -118,6 +185,30 @@ public final class GatewayTunnelConfigsSecondary {
         }
         public Builder internalIps(String... internalIps) {
             return internalIps(List.of(internalIps));
+        }
+        @CustomType.Setter
+        public Builder probeHostnames(@Nullable List<String> probeHostnames) {
+
+            this.probeHostnames = probeHostnames;
+            return this;
+        }
+        public Builder probeHostnames(String... probeHostnames) {
+            return probeHostnames(List.of(probeHostnames));
+        }
+        @CustomType.Setter
+        public Builder probeHttp(@Nullable GatewayTunnelConfigsSecondaryProbeHttp probeHttp) {
+
+            this.probeHttp = probeHttp;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder probeIp6s(@Nullable List<String> probeIp6s) {
+
+            this.probeIp6s = probeIp6s;
+            return this;
+        }
+        public Builder probeIp6s(String... probeIp6s) {
+            return probeIp6s(List.of(probeIp6s));
         }
         @CustomType.Setter
         public Builder probeIps(@Nullable List<String> probeIps) {
@@ -151,7 +242,11 @@ public final class GatewayTunnelConfigsSecondary {
         public GatewayTunnelConfigsSecondary build() {
             final var _resultValue = new GatewayTunnelConfigsSecondary();
             _resultValue.hosts = hosts;
+            _resultValue.internalIp6s = internalIp6s;
             _resultValue.internalIps = internalIps;
+            _resultValue.probeHostnames = probeHostnames;
+            _resultValue.probeHttp = probeHttp;
+            _resultValue.probeIp6s = probeIp6s;
             _resultValue.probeIps = probeIps;
             _resultValue.remoteIds = remoteIds;
             _resultValue.wanNames = wanNames;

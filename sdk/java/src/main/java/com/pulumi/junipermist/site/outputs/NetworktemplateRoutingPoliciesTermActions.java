@@ -13,9 +13,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NetworktemplateRoutingPoliciesTermActions {
+    /**
+     * @return Whether to accept routes that match this term
+     * 
+     */
     private @Nullable Boolean accept;
     /**
-     * @return When used as export policy, optional
+     * @return BGP communities to set when this term is used as an export policy
      * 
      */
     private @Nullable List<String> communities;
@@ -25,17 +29,21 @@ public final class NetworktemplateRoutingPoliciesTermActions {
      */
     private @Nullable String localPreference;
     /**
-     * @return When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
+     * @return AS path values to prepend when this term is used as an export policy
      * 
      */
     private @Nullable List<String> prependAsPaths;
 
     private NetworktemplateRoutingPoliciesTermActions() {}
+    /**
+     * @return Whether to accept routes that match this term
+     * 
+     */
     public Optional<Boolean> accept() {
         return Optional.ofNullable(this.accept);
     }
     /**
-     * @return When used as export policy, optional
+     * @return BGP communities to set when this term is used as an export policy
      * 
      */
     public List<String> communities() {
@@ -49,7 +57,7 @@ public final class NetworktemplateRoutingPoliciesTermActions {
         return Optional.ofNullable(this.localPreference);
     }
     /**
-     * @return When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
+     * @return AS path values to prepend when this term is used as an export policy
      * 
      */
     public List<String> prependAsPaths() {

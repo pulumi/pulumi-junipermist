@@ -25,7 +25,14 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// whether to stop clients to talk to each other, default is false (when enabled, a unique IsolationVlanId is required). NOTE: this features requires uplink device to also a be Juniper device and `InterSwitchLink` to be set. See also `InterIsolationNetworkLink` and `CommunityVlanId` in port_usage
         /// </summary>
         public readonly bool? Isolation;
+        /// <summary>
+        /// Required when `Isolation`==`True`. Unique VLAN ID used for client isolation
+        /// </summary>
         public readonly string? IsolationVlanId;
+        /// <summary>
+        /// Multicast (IGMP snooping) settings for this VLAN
+        /// </summary>
+        public readonly Outputs.NetworktemplateNetworksMulticast? Multicast;
         /// <summary>
         /// Optional for pure switching, required when L3 / routing features are used
         /// </summary>
@@ -34,6 +41,9 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// Optional for pure switching, required when L3 / routing features are used
         /// </summary>
         public readonly string? Subnet6;
+        /// <summary>
+        /// VLAN identifier for this switch network
+        /// </summary>
         public readonly string VlanId;
 
         [OutputConstructor]
@@ -46,6 +56,8 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             string? isolationVlanId,
 
+            Outputs.NetworktemplateNetworksMulticast? multicast,
+
             string? subnet,
 
             string? subnet6,
@@ -56,6 +68,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
             Gateway6 = gateway6;
             Isolation = isolation;
             IsolationVlanId = isolationVlanId;
+            Multicast = multicast;
             Subnet = subnet;
             Subnet6 = subnet6;
             VlanId = vlanId;

@@ -24,6 +24,7 @@ import com.pulumi.junipermist.org.outputs.DeviceprofileApPwrConfig;
 import com.pulumi.junipermist.org.outputs.DeviceprofileApRadioConfig;
 import com.pulumi.junipermist.org.outputs.DeviceprofileApUplinkPortConfig;
 import com.pulumi.junipermist.org.outputs.DeviceprofileApUsbConfig;
+import com.pulumi.junipermist.org.outputs.DeviceprofileApUwbConfig;
 import com.pulumi.junipermist.org.outputs.DeviceprofileApZigbeeConfig;
 import java.lang.Boolean;
 import java.lang.String;
@@ -425,6 +426,20 @@ public class DeviceprofileAp extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<DeviceprofileApUsbConfig>> usbConfig() {
         return Codegen.optional(this.usbConfig);
+    }
+    /**
+     * UWB RTLS / OMLOX asset-visibility settings; overrides the site-level `uwbConfig` and is overridden by device-level `uwbConfig`
+     * 
+     */
+    @Export(name="uwbConfig", refs={DeviceprofileApUwbConfig.class}, tree="[0]")
+    private Output</* @Nullable */ DeviceprofileApUwbConfig> uwbConfig;
+
+    /**
+     * @return UWB RTLS / OMLOX asset-visibility settings; overrides the site-level `uwbConfig` and is overridden by device-level `uwbConfig`
+     * 
+     */
+    public Output<Optional<DeviceprofileApUwbConfig>> uwbConfig() {
+        return Codegen.optional(this.uwbConfig);
     }
     /**
      * Variable values provided by this AP device profile

@@ -92,6 +92,10 @@ export class NacEndpoint extends pulumi.CustomResource {
      */
     declare public readonly radiusGroup: pulumi.Output<string>;
     /**
+     * Optional list of site IDs this user MAC entry is scoped to
+     */
+    declare public readonly siteIds: pulumi.Output<string[] | undefined>;
+    /**
      * Network VLAN value associated with this user MAC entry
      */
     declare public readonly vlan: pulumi.Output<string>;
@@ -115,6 +119,7 @@ export class NacEndpoint extends pulumi.CustomResource {
             resourceInputs["notes"] = state?.notes;
             resourceInputs["orgId"] = state?.orgId;
             resourceInputs["radiusGroup"] = state?.radiusGroup;
+            resourceInputs["siteIds"] = state?.siteIds;
             resourceInputs["vlan"] = state?.vlan;
         } else {
             const args = argsOrState as NacEndpointArgs | undefined;
@@ -130,6 +135,7 @@ export class NacEndpoint extends pulumi.CustomResource {
             resourceInputs["notes"] = args?.notes;
             resourceInputs["orgId"] = args?.orgId;
             resourceInputs["radiusGroup"] = args?.radiusGroup;
+            resourceInputs["siteIds"] = args?.siteIds;
             resourceInputs["vlan"] = args?.vlan;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -163,6 +169,10 @@ export interface NacEndpointState {
      */
     radiusGroup?: pulumi.Input<string | undefined>;
     /**
+     * Optional list of site IDs this user MAC entry is scoped to
+     */
+    siteIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
      * Network VLAN value associated with this user MAC entry
      */
     vlan?: pulumi.Input<string | undefined>;
@@ -193,6 +203,10 @@ export interface NacEndpointArgs {
      * RADIUS group associated with this user MAC entry
      */
     radiusGroup?: pulumi.Input<string | undefined>;
+    /**
+     * Optional list of site IDs this user MAC entry is scoped to
+     */
+    siteIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Network VLAN value associated with this user MAC entry
      */

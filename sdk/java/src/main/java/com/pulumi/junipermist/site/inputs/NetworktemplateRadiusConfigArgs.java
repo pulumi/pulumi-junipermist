@@ -20,66 +20,90 @@ public final class NetworktemplateRadiusConfigArgs extends com.pulumi.resources.
 
     public static final NetworktemplateRadiusConfigArgs Empty = new NetworktemplateRadiusConfigArgs();
 
+    /**
+     * Whether immediate RADIUS accounting updates are sent
+     * 
+     */
     @Import(name="acctImmediateUpdate")
     private @Nullable Output<Boolean> acctImmediateUpdate;
 
+    /**
+     * @return Whether immediate RADIUS accounting updates are sent
+     * 
+     */
     public Optional<Output<Boolean>> acctImmediateUpdate() {
         return Optional.ofNullable(this.acctImmediateUpdate);
     }
 
     /**
-     * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+     * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled
      * 
      */
     @Import(name="acctInterimInterval")
     private @Nullable Output<Integer> acctInterimInterval;
 
     /**
-     * @return How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+     * @return How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled
      * 
      */
     public Optional<Output<Integer>> acctInterimInterval() {
         return Optional.ofNullable(this.acctInterimInterval);
     }
 
+    /**
+     * RADIUS accounting servers used by this switch configuration
+     * 
+     */
     @Import(name="acctServers")
     private @Nullable Output<List<NetworktemplateRadiusConfigAcctServerArgs>> acctServers;
 
+    /**
+     * @return RADIUS accounting servers used by this switch configuration
+     * 
+     */
     public Optional<Output<List<NetworktemplateRadiusConfigAcctServerArgs>>> acctServers() {
         return Optional.ofNullable(this.acctServers);
     }
 
     /**
-     * enum: `ordered`, `unordered`
+     * Selection strategy for RADIUS authentication servers
      * 
      */
     @Import(name="authServerSelection")
     private @Nullable Output<String> authServerSelection;
 
     /**
-     * @return enum: `ordered`, `unordered`
+     * @return Selection strategy for RADIUS authentication servers
      * 
      */
     public Optional<Output<String>> authServerSelection() {
         return Optional.ofNullable(this.authServerSelection);
     }
 
+    /**
+     * RADIUS authentication servers used by this switch configuration
+     * 
+     */
     @Import(name="authServers")
     private @Nullable Output<List<NetworktemplateRadiusConfigAuthServerArgs>> authServers;
 
+    /**
+     * @return RADIUS authentication servers used by this switch configuration
+     * 
+     */
     public Optional<Output<List<NetworktemplateRadiusConfigAuthServerArgs>>> authServers() {
         return Optional.ofNullable(this.authServers);
     }
 
     /**
-     * Radius auth session retries
+     * RADIUS auth session retries
      * 
      */
     @Import(name="authServersRetries")
     private @Nullable Output<Integer> authServersRetries;
 
     /**
-     * @return Radius auth session retries
+     * @return RADIUS auth session retries
      * 
      */
     public Optional<Output<Integer>> authServersRetries() {
@@ -87,37 +111,61 @@ public final class NetworktemplateRadiusConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Radius auth session timeout
+     * RADIUS auth session timeout
      * 
      */
     @Import(name="authServersTimeout")
     private @Nullable Output<Integer> authServersTimeout;
 
     /**
-     * @return Radius auth session timeout
+     * @return RADIUS auth session timeout
      * 
      */
     public Optional<Output<Integer>> authServersTimeout() {
         return Optional.ofNullable(this.authServersTimeout);
     }
 
+    /**
+     * Whether RADIUS Change of Authorization (CoA) is enabled
+     * 
+     */
     @Import(name="coaEnabled")
     private @Nullable Output<Boolean> coaEnabled;
 
+    /**
+     * @return Whether RADIUS Change of Authorization (CoA) is enabled
+     * 
+     */
     public Optional<Output<Boolean>> coaEnabled() {
         return Optional.ofNullable(this.coaEnabled);
     }
 
+    /**
+     * UDP port used for RADIUS Change of Authorization (CoA)
+     * 
+     */
     @Import(name="coaPort")
     private @Nullable Output<String> coaPort;
 
+    /**
+     * @return UDP port used for RADIUS Change of Authorization (CoA)
+     * 
+     */
     public Optional<Output<String>> coaPort() {
         return Optional.ofNullable(this.coaPort);
     }
 
+    /**
+     * Whether fast 802.1X timers are enabled for RADIUS authentication
+     * 
+     */
     @Import(name="fastDot1xTimers")
     private @Nullable Output<Boolean> fastDot1xTimers;
 
+    /**
+     * @return Whether fast 802.1X timers are enabled for RADIUS authentication
+     * 
+     */
     public Optional<Output<Boolean>> fastDot1xTimers() {
         return Optional.ofNullable(this.fastDot1xTimers);
     }
@@ -138,14 +186,14 @@ public final class NetworktemplateRadiusConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Use `network`or `sourceIp`
+     * Use `network` or `sourceIp`. Explicit source IP address for RADIUS traffic
      * 
      */
     @Import(name="sourceIp")
     private @Nullable Output<String> sourceIp;
 
     /**
-     * @return Use `network`or `sourceIp`
+     * @return Use `network` or `sourceIp`. Explicit source IP address for RADIUS traffic
      * 
      */
     public Optional<Output<String>> sourceIp() {
@@ -187,17 +235,29 @@ public final class NetworktemplateRadiusConfigArgs extends com.pulumi.resources.
             $ = new NetworktemplateRadiusConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param acctImmediateUpdate Whether immediate RADIUS accounting updates are sent
+         * 
+         * @return builder
+         * 
+         */
         public Builder acctImmediateUpdate(@Nullable Output<Boolean> acctImmediateUpdate) {
             $.acctImmediateUpdate = acctImmediateUpdate;
             return this;
         }
 
+        /**
+         * @param acctImmediateUpdate Whether immediate RADIUS accounting updates are sent
+         * 
+         * @return builder
+         * 
+         */
         public Builder acctImmediateUpdate(Boolean acctImmediateUpdate) {
             return acctImmediateUpdate(Output.of(acctImmediateUpdate));
         }
 
         /**
-         * @param acctInterimInterval How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+         * @param acctInterimInterval How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled
          * 
          * @return builder
          * 
@@ -208,7 +268,7 @@ public final class NetworktemplateRadiusConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param acctInterimInterval How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+         * @param acctInterimInterval How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled
          * 
          * @return builder
          * 
@@ -217,21 +277,39 @@ public final class NetworktemplateRadiusConfigArgs extends com.pulumi.resources.
             return acctInterimInterval(Output.of(acctInterimInterval));
         }
 
+        /**
+         * @param acctServers RADIUS accounting servers used by this switch configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder acctServers(@Nullable Output<List<NetworktemplateRadiusConfigAcctServerArgs>> acctServers) {
             $.acctServers = acctServers;
             return this;
         }
 
+        /**
+         * @param acctServers RADIUS accounting servers used by this switch configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder acctServers(List<NetworktemplateRadiusConfigAcctServerArgs> acctServers) {
             return acctServers(Output.of(acctServers));
         }
 
+        /**
+         * @param acctServers RADIUS accounting servers used by this switch configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder acctServers(NetworktemplateRadiusConfigAcctServerArgs... acctServers) {
             return acctServers(List.of(acctServers));
         }
 
         /**
-         * @param authServerSelection enum: `ordered`, `unordered`
+         * @param authServerSelection Selection strategy for RADIUS authentication servers
          * 
          * @return builder
          * 
@@ -242,7 +320,7 @@ public final class NetworktemplateRadiusConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param authServerSelection enum: `ordered`, `unordered`
+         * @param authServerSelection Selection strategy for RADIUS authentication servers
          * 
          * @return builder
          * 
@@ -251,21 +329,39 @@ public final class NetworktemplateRadiusConfigArgs extends com.pulumi.resources.
             return authServerSelection(Output.of(authServerSelection));
         }
 
+        /**
+         * @param authServers RADIUS authentication servers used by this switch configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder authServers(@Nullable Output<List<NetworktemplateRadiusConfigAuthServerArgs>> authServers) {
             $.authServers = authServers;
             return this;
         }
 
+        /**
+         * @param authServers RADIUS authentication servers used by this switch configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder authServers(List<NetworktemplateRadiusConfigAuthServerArgs> authServers) {
             return authServers(Output.of(authServers));
         }
 
+        /**
+         * @param authServers RADIUS authentication servers used by this switch configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder authServers(NetworktemplateRadiusConfigAuthServerArgs... authServers) {
             return authServers(List.of(authServers));
         }
 
         /**
-         * @param authServersRetries Radius auth session retries
+         * @param authServersRetries RADIUS auth session retries
          * 
          * @return builder
          * 
@@ -276,7 +372,7 @@ public final class NetworktemplateRadiusConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param authServersRetries Radius auth session retries
+         * @param authServersRetries RADIUS auth session retries
          * 
          * @return builder
          * 
@@ -286,7 +382,7 @@ public final class NetworktemplateRadiusConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param authServersTimeout Radius auth session timeout
+         * @param authServersTimeout RADIUS auth session timeout
          * 
          * @return builder
          * 
@@ -297,7 +393,7 @@ public final class NetworktemplateRadiusConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param authServersTimeout Radius auth session timeout
+         * @param authServersTimeout RADIUS auth session timeout
          * 
          * @return builder
          * 
@@ -306,29 +402,65 @@ public final class NetworktemplateRadiusConfigArgs extends com.pulumi.resources.
             return authServersTimeout(Output.of(authServersTimeout));
         }
 
+        /**
+         * @param coaEnabled Whether RADIUS Change of Authorization (CoA) is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder coaEnabled(@Nullable Output<Boolean> coaEnabled) {
             $.coaEnabled = coaEnabled;
             return this;
         }
 
+        /**
+         * @param coaEnabled Whether RADIUS Change of Authorization (CoA) is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder coaEnabled(Boolean coaEnabled) {
             return coaEnabled(Output.of(coaEnabled));
         }
 
+        /**
+         * @param coaPort UDP port used for RADIUS Change of Authorization (CoA)
+         * 
+         * @return builder
+         * 
+         */
         public Builder coaPort(@Nullable Output<String> coaPort) {
             $.coaPort = coaPort;
             return this;
         }
 
+        /**
+         * @param coaPort UDP port used for RADIUS Change of Authorization (CoA)
+         * 
+         * @return builder
+         * 
+         */
         public Builder coaPort(String coaPort) {
             return coaPort(Output.of(coaPort));
         }
 
+        /**
+         * @param fastDot1xTimers Whether fast 802.1X timers are enabled for RADIUS authentication
+         * 
+         * @return builder
+         * 
+         */
         public Builder fastDot1xTimers(@Nullable Output<Boolean> fastDot1xTimers) {
             $.fastDot1xTimers = fastDot1xTimers;
             return this;
         }
 
+        /**
+         * @param fastDot1xTimers Whether fast 802.1X timers are enabled for RADIUS authentication
+         * 
+         * @return builder
+         * 
+         */
         public Builder fastDot1xTimers(Boolean fastDot1xTimers) {
             return fastDot1xTimers(Output.of(fastDot1xTimers));
         }
@@ -355,7 +487,7 @@ public final class NetworktemplateRadiusConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sourceIp Use `network`or `sourceIp`
+         * @param sourceIp Use `network` or `sourceIp`. Explicit source IP address for RADIUS traffic
          * 
          * @return builder
          * 
@@ -366,7 +498,7 @@ public final class NetworktemplateRadiusConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sourceIp Use `network`or `sourceIp`
+         * @param sourceIp Use `network` or `sourceIp`. Explicit source IP address for RADIUS traffic
          * 
          * @return builder
          * 

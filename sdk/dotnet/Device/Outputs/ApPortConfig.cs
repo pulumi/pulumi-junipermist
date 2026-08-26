@@ -46,7 +46,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? MxTunnelId;
         /// <summary>
-        /// If `Forwarding`==`SiteMxedge`, VlanIds comes from SiteMxedge (`Mxtunnels` under site setting)
+        /// If `Forwarding`==`SiteMxedge`, VlanIds comes from SiteMxedge (`Mxtunnel` under site setting)
         /// </summary>
         public readonly string? MxtunnelName;
         /// <summary>
@@ -68,7 +68,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// <summary>
         /// Optional to specify the VLAN ID for a tunnel if forwarding is for `Wxtunnel`, `Mxtunnel` or `SiteMxedge`.
         ///   * if VlanId is not specified then it will use first one in vlan_ids[] of the mxtunnel.
-        ///   * if forwarding == site_mxedge, VlanIds comes from SiteMxedge (`Mxtunnels` under site setting)
+        ///   * if forwarding == site_mxedge, VlanIds comes from SiteMxedge (`Mxtunnel` under site setting)
         /// </summary>
         public readonly int? VlanId;
         /// <summary>

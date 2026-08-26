@@ -13,66 +13,74 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworktemplateSnmpConfigV3ConfigTargetParameter {
     /**
-     * @return enum: `v1`, `v2c`, `v3`
+     * @return SNMP message processing model used by this target parameter profile
      * 
      */
     private String messageProcessingModel;
+    /**
+     * @return Target parameter profile name
+     * 
+     */
     private String name;
     /**
-     * @return Refer to profile-name in notify_filter
+     * @return Notification filter profile referenced by this target parameter profile
      * 
      */
     private @Nullable String notifyFilter;
     /**
-     * @return enum: `authentication`, `none`, `privacy`
+     * @return Required security level for this target parameter profile
      * 
      */
     private @Nullable String securityLevel;
     /**
-     * @return enum: `usm`, `v1`, `v2c`
+     * @return Required security model for this target parameter profile
      * 
      */
     private @Nullable String securityModel;
     /**
-     * @return Refer to securityName in usm
+     * @return USM security name referenced by this target parameter profile
      * 
      */
     private @Nullable String securityName;
 
     private NetworktemplateSnmpConfigV3ConfigTargetParameter() {}
     /**
-     * @return enum: `v1`, `v2c`, `v3`
+     * @return SNMP message processing model used by this target parameter profile
      * 
      */
     public String messageProcessingModel() {
         return this.messageProcessingModel;
     }
+    /**
+     * @return Target parameter profile name
+     * 
+     */
     public String name() {
         return this.name;
     }
     /**
-     * @return Refer to profile-name in notify_filter
+     * @return Notification filter profile referenced by this target parameter profile
      * 
      */
     public Optional<String> notifyFilter() {
         return Optional.ofNullable(this.notifyFilter);
     }
     /**
-     * @return enum: `authentication`, `none`, `privacy`
+     * @return Required security level for this target parameter profile
      * 
      */
     public Optional<String> securityLevel() {
         return Optional.ofNullable(this.securityLevel);
     }
     /**
-     * @return enum: `usm`, `v1`, `v2c`
+     * @return Required security model for this target parameter profile
      * 
      */
     public Optional<String> securityModel() {
         return Optional.ofNullable(this.securityModel);
     }
     /**
-     * @return Refer to securityName in usm
+     * @return USM security name referenced by this target parameter profile
      * 
      */
     public Optional<String> securityName() {

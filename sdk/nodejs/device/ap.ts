@@ -86,6 +86,10 @@ export class Ap extends pulumi.CustomResource {
      */
     declare public readonly disableModule: pulumi.Output<boolean>;
     /**
+     * Whether U-NII-4 channels (169, 173, 177) are enabled on this access point
+     */
+    declare public readonly enableUnii4: pulumi.Output<boolean | undefined>;
+    /**
      * Electronic shelf label integration settings for this access point
      */
     declare public readonly eslConfig: pulumi.Output<outputs.device.ApEslConfig | undefined>;
@@ -202,6 +206,10 @@ export class Ap extends pulumi.CustomResource {
      */
     declare public readonly usbConfig: pulumi.Output<outputs.device.ApUsbConfig | undefined>;
     /**
+     * UWB RTLS / OMLOX asset-visibility settings; overrides the device profile and site-level `uwbConfig`
+     */
+    declare public readonly uwbConfig: pulumi.Output<outputs.device.ApUwbConfig | undefined>;
+    /**
      * Variable values that override site variables for this access point
      */
     declare public readonly vars: pulumi.Output<{[key: string]: string} | undefined>;
@@ -241,6 +249,7 @@ export class Ap extends pulumi.CustomResource {
             resourceInputs["disableEth2"] = state?.disableEth2;
             resourceInputs["disableEth3"] = state?.disableEth3;
             resourceInputs["disableModule"] = state?.disableModule;
+            resourceInputs["enableUnii4"] = state?.enableUnii4;
             resourceInputs["eslConfig"] = state?.eslConfig;
             resourceInputs["flowControl"] = state?.flowControl;
             resourceInputs["height"] = state?.height;
@@ -270,6 +279,7 @@ export class Ap extends pulumi.CustomResource {
             resourceInputs["type"] = state?.type;
             resourceInputs["uplinkPortConfig"] = state?.uplinkPortConfig;
             resourceInputs["usbConfig"] = state?.usbConfig;
+            resourceInputs["uwbConfig"] = state?.uwbConfig;
             resourceInputs["vars"] = state?.vars;
             resourceInputs["x"] = state?.x;
             resourceInputs["y"] = state?.y;
@@ -292,6 +302,7 @@ export class Ap extends pulumi.CustomResource {
             resourceInputs["disableEth2"] = args?.disableEth2;
             resourceInputs["disableEth3"] = args?.disableEth3;
             resourceInputs["disableModule"] = args?.disableModule;
+            resourceInputs["enableUnii4"] = args?.enableUnii4;
             resourceInputs["eslConfig"] = args?.eslConfig;
             resourceInputs["flowControl"] = args?.flowControl;
             resourceInputs["height"] = args?.height;
@@ -313,6 +324,7 @@ export class Ap extends pulumi.CustomResource {
             resourceInputs["siteId"] = args?.siteId;
             resourceInputs["uplinkPortConfig"] = args?.uplinkPortConfig;
             resourceInputs["usbConfig"] = args?.usbConfig;
+            resourceInputs["uwbConfig"] = args?.uwbConfig;
             resourceInputs["vars"] = args?.vars;
             resourceInputs["x"] = args?.x;
             resourceInputs["y"] = args?.y;
@@ -372,6 +384,10 @@ export interface ApState {
      * Whether to disable module port
      */
     disableModule?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether U-NII-4 channels (169, 173, 177) are enabled on this access point
+     */
+    enableUnii4?: pulumi.Input<boolean | undefined>;
     /**
      * Electronic shelf label integration settings for this access point
      */
@@ -489,6 +505,10 @@ export interface ApState {
      */
     usbConfig?: pulumi.Input<inputs.device.ApUsbConfig | undefined>;
     /**
+     * UWB RTLS / OMLOX asset-visibility settings; overrides the device profile and site-level `uwbConfig`
+     */
+    uwbConfig?: pulumi.Input<inputs.device.ApUwbConfig | undefined>;
+    /**
      * Variable values that override site variables for this access point
      */
     vars?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
@@ -547,6 +567,10 @@ export interface ApArgs {
      * Whether to disable module port
      */
     disableModule?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether U-NII-4 channels (169, 173, 177) are enabled on this access point
+     */
+    enableUnii4?: pulumi.Input<boolean | undefined>;
     /**
      * Electronic shelf label integration settings for this access point
      */
@@ -631,6 +655,10 @@ export interface ApArgs {
      * Legacy USB integration settings for this access point
      */
     usbConfig?: pulumi.Input<inputs.device.ApUsbConfig | undefined>;
+    /**
+     * UWB RTLS / OMLOX asset-visibility settings; overrides the device profile and site-level `uwbConfig`
+     */
+    uwbConfig?: pulumi.Input<inputs.device.ApUwbConfig | undefined>;
     /**
      * Variable values that override site variables for this access point
      */

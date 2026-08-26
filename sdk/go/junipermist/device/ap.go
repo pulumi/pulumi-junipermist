@@ -46,6 +46,8 @@ type Ap struct {
 	DisableEth3 pulumi.BoolOutput `pulumi:"disableEth3"`
 	// Whether to disable module port
 	DisableModule pulumi.BoolOutput `pulumi:"disableModule"`
+	// Whether U-NII-4 channels (169, 173, 177) are enabled on this access point
+	EnableUnii4 pulumi.BoolPtrOutput `pulumi:"enableUnii4"`
 	// Electronic shelf label integration settings for this access point
 	EslConfig ApEslConfigPtrOutput `pulumi:"eslConfig"`
 	// For some AP models, flowControl can be enabled to address some switch compatibility issue
@@ -104,6 +106,8 @@ type Ap struct {
 	UplinkPortConfig ApUplinkPortConfigPtrOutput `pulumi:"uplinkPortConfig"`
 	// Legacy USB integration settings for this access point
 	UsbConfig ApUsbConfigPtrOutput `pulumi:"usbConfig"`
+	// UWB RTLS / OMLOX asset-visibility settings; overrides the device profile and site-level `uwbConfig`
+	UwbConfig ApUwbConfigPtrOutput `pulumi:"uwbConfig"`
 	// Variable values that override site variables for this access point
 	Vars pulumi.StringMapOutput `pulumi:"vars"`
 	// Horizontal map position of the AP, in pixels
@@ -169,6 +173,8 @@ type apState struct {
 	DisableEth3 *bool `pulumi:"disableEth3"`
 	// Whether to disable module port
 	DisableModule *bool `pulumi:"disableModule"`
+	// Whether U-NII-4 channels (169, 173, 177) are enabled on this access point
+	EnableUnii4 *bool `pulumi:"enableUnii4"`
 	// Electronic shelf label integration settings for this access point
 	EslConfig *ApEslConfig `pulumi:"eslConfig"`
 	// For some AP models, flowControl can be enabled to address some switch compatibility issue
@@ -227,6 +233,8 @@ type apState struct {
 	UplinkPortConfig *ApUplinkPortConfig `pulumi:"uplinkPortConfig"`
 	// Legacy USB integration settings for this access point
 	UsbConfig *ApUsbConfig `pulumi:"usbConfig"`
+	// UWB RTLS / OMLOX asset-visibility settings; overrides the device profile and site-level `uwbConfig`
+	UwbConfig *ApUwbConfig `pulumi:"uwbConfig"`
 	// Variable values that override site variables for this access point
 	Vars map[string]string `pulumi:"vars"`
 	// Horizontal map position of the AP, in pixels
@@ -257,6 +265,8 @@ type ApState struct {
 	DisableEth3 pulumi.BoolPtrInput
 	// Whether to disable module port
 	DisableModule pulumi.BoolPtrInput
+	// Whether U-NII-4 channels (169, 173, 177) are enabled on this access point
+	EnableUnii4 pulumi.BoolPtrInput
 	// Electronic shelf label integration settings for this access point
 	EslConfig ApEslConfigPtrInput
 	// For some AP models, flowControl can be enabled to address some switch compatibility issue
@@ -315,6 +325,8 @@ type ApState struct {
 	UplinkPortConfig ApUplinkPortConfigPtrInput
 	// Legacy USB integration settings for this access point
 	UsbConfig ApUsbConfigPtrInput
+	// UWB RTLS / OMLOX asset-visibility settings; overrides the device profile and site-level `uwbConfig`
+	UwbConfig ApUwbConfigPtrInput
 	// Variable values that override site variables for this access point
 	Vars pulumi.StringMapInput
 	// Horizontal map position of the AP, in pixels
@@ -349,6 +361,8 @@ type apArgs struct {
 	DisableEth3 *bool `pulumi:"disableEth3"`
 	// Whether to disable module port
 	DisableModule *bool `pulumi:"disableModule"`
+	// Whether U-NII-4 channels (169, 173, 177) are enabled on this access point
+	EnableUnii4 *bool `pulumi:"enableUnii4"`
 	// Electronic shelf label integration settings for this access point
 	EslConfig *ApEslConfig `pulumi:"eslConfig"`
 	// For some AP models, flowControl can be enabled to address some switch compatibility issue
@@ -391,6 +405,8 @@ type apArgs struct {
 	UplinkPortConfig *ApUplinkPortConfig `pulumi:"uplinkPortConfig"`
 	// Legacy USB integration settings for this access point
 	UsbConfig *ApUsbConfig `pulumi:"usbConfig"`
+	// UWB RTLS / OMLOX asset-visibility settings; overrides the device profile and site-level `uwbConfig`
+	UwbConfig *ApUwbConfig `pulumi:"uwbConfig"`
 	// Variable values that override site variables for this access point
 	Vars map[string]string `pulumi:"vars"`
 	// Horizontal map position of the AP, in pixels
@@ -422,6 +438,8 @@ type ApArgs struct {
 	DisableEth3 pulumi.BoolPtrInput
 	// Whether to disable module port
 	DisableModule pulumi.BoolPtrInput
+	// Whether U-NII-4 channels (169, 173, 177) are enabled on this access point
+	EnableUnii4 pulumi.BoolPtrInput
 	// Electronic shelf label integration settings for this access point
 	EslConfig ApEslConfigPtrInput
 	// For some AP models, flowControl can be enabled to address some switch compatibility issue
@@ -464,6 +482,8 @@ type ApArgs struct {
 	UplinkPortConfig ApUplinkPortConfigPtrInput
 	// Legacy USB integration settings for this access point
 	UsbConfig ApUsbConfigPtrInput
+	// UWB RTLS / OMLOX asset-visibility settings; overrides the device profile and site-level `uwbConfig`
+	UwbConfig ApUwbConfigPtrInput
 	// Variable values that override site variables for this access point
 	Vars pulumi.StringMapInput
 	// Horizontal map position of the AP, in pixels
@@ -610,6 +630,11 @@ func (o ApOutput) DisableModule() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Ap) pulumi.BoolOutput { return v.DisableModule }).(pulumi.BoolOutput)
 }
 
+// Whether U-NII-4 channels (169, 173, 177) are enabled on this access point
+func (o ApOutput) EnableUnii4() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Ap) pulumi.BoolPtrOutput { return v.EnableUnii4 }).(pulumi.BoolPtrOutput)
+}
+
 // Electronic shelf label integration settings for this access point
 func (o ApOutput) EslConfig() ApEslConfigPtrOutput {
 	return o.ApplyT(func(v *Ap) ApEslConfigPtrOutput { return v.EslConfig }).(ApEslConfigPtrOutput)
@@ -753,6 +778,11 @@ func (o ApOutput) UplinkPortConfig() ApUplinkPortConfigPtrOutput {
 // Legacy USB integration settings for this access point
 func (o ApOutput) UsbConfig() ApUsbConfigPtrOutput {
 	return o.ApplyT(func(v *Ap) ApUsbConfigPtrOutput { return v.UsbConfig }).(ApUsbConfigPtrOutput)
+}
+
+// UWB RTLS / OMLOX asset-visibility settings; overrides the device profile and site-level `uwbConfig`
+func (o ApOutput) UwbConfig() ApUwbConfigPtrOutput {
+	return o.ApplyT(func(v *Ap) ApUwbConfigPtrOutput { return v.UwbConfig }).(ApUwbConfigPtrOutput)
 }
 
 // Variable values that override site variables for this access point

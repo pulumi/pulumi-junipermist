@@ -130,6 +130,12 @@ namespace Pulumi.JuniperMist.Org
         public Output<string?> CountryCode { get; private set; } = null!;
 
         /// <summary>
+        /// Whether U-NII-4 channels (169, 173, 177) are enabled
+        /// </summary>
+        [Output("enableUnii4")]
+        public Output<bool?> EnableUnii4 { get; private set; } = null!;
+
+        /// <summary>
         /// overwrites for a specific model. If a band is specified, it will shadow the default. Property key is the model name (e.g. "AP63")
         /// </summary>
         [Output("modelSpecific")]
@@ -254,6 +260,12 @@ namespace Pulumi.JuniperMist.Org
         [Input("countryCode")]
         public Input<string>? CountryCode { get; set; }
 
+        /// <summary>
+        /// Whether U-NII-4 channels (169, 173, 177) are enabled
+        /// </summary>
+        [Input("enableUnii4")]
+        public Input<bool>? EnableUnii4 { get; set; }
+
         [Input("modelSpecific")]
         private InputMap<Inputs.RftemplateModelSpecificArgs>? _modelSpecific;
 
@@ -345,6 +357,12 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         [Input("countryCode")]
         public Input<string>? CountryCode { get; set; }
+
+        /// <summary>
+        /// Whether U-NII-4 channels (169, 173, 177) are enabled
+        /// </summary>
+        [Input("enableUnii4")]
+        public Input<bool>? EnableUnii4 { get; set; }
 
         [Input("modelSpecific")]
         private InputMap<Inputs.RftemplateModelSpecificGetArgs>? _modelSpecific;

@@ -13,6 +13,1451 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetAlarmtemplatesOrgAlarmtemplateDelivery struct {
+	// List of additional email string to deliver the alarms via emails
+	AdditionalEmails []string `pulumi:"additionalEmails"`
+	// Whether to enable the alarm delivery via emails or not
+	Enabled bool `pulumi:"enabled"`
+	// Whether to deliver the alarms via emails to Org admins or not
+	ToOrgAdmins bool `pulumi:"toOrgAdmins"`
+	// Whether to deliver the alarms via emails to Site admins or not
+	ToSiteAdmins bool `pulumi:"toSiteAdmins"`
+}
+
+// GetAlarmtemplatesOrgAlarmtemplateDeliveryInput is an input type that accepts GetAlarmtemplatesOrgAlarmtemplateDeliveryArgs and GetAlarmtemplatesOrgAlarmtemplateDeliveryOutput values.
+// You can construct a concrete instance of `GetAlarmtemplatesOrgAlarmtemplateDeliveryInput` via:
+//
+//	GetAlarmtemplatesOrgAlarmtemplateDeliveryArgs{...}
+type GetAlarmtemplatesOrgAlarmtemplateDeliveryInput interface {
+	pulumi.Input
+
+	ToGetAlarmtemplatesOrgAlarmtemplateDeliveryOutput() GetAlarmtemplatesOrgAlarmtemplateDeliveryOutput
+	ToGetAlarmtemplatesOrgAlarmtemplateDeliveryOutputWithContext(context.Context) GetAlarmtemplatesOrgAlarmtemplateDeliveryOutput
+}
+
+type GetAlarmtemplatesOrgAlarmtemplateDeliveryArgs struct {
+	// List of additional email string to deliver the alarms via emails
+	AdditionalEmails pulumi.StringArrayInput `pulumi:"additionalEmails"`
+	// Whether to enable the alarm delivery via emails or not
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Whether to deliver the alarms via emails to Org admins or not
+	ToOrgAdmins pulumi.BoolInput `pulumi:"toOrgAdmins"`
+	// Whether to deliver the alarms via emails to Site admins or not
+	ToSiteAdmins pulumi.BoolInput `pulumi:"toSiteAdmins"`
+}
+
+func (GetAlarmtemplatesOrgAlarmtemplateDeliveryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlarmtemplatesOrgAlarmtemplateDelivery)(nil)).Elem()
+}
+
+func (i GetAlarmtemplatesOrgAlarmtemplateDeliveryArgs) ToGetAlarmtemplatesOrgAlarmtemplateDeliveryOutput() GetAlarmtemplatesOrgAlarmtemplateDeliveryOutput {
+	return i.ToGetAlarmtemplatesOrgAlarmtemplateDeliveryOutputWithContext(context.Background())
+}
+
+func (i GetAlarmtemplatesOrgAlarmtemplateDeliveryArgs) ToGetAlarmtemplatesOrgAlarmtemplateDeliveryOutputWithContext(ctx context.Context) GetAlarmtemplatesOrgAlarmtemplateDeliveryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlarmtemplatesOrgAlarmtemplateDeliveryOutput)
+}
+
+type GetAlarmtemplatesOrgAlarmtemplateDeliveryOutput struct{ *pulumi.OutputState }
+
+func (GetAlarmtemplatesOrgAlarmtemplateDeliveryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlarmtemplatesOrgAlarmtemplateDelivery)(nil)).Elem()
+}
+
+func (o GetAlarmtemplatesOrgAlarmtemplateDeliveryOutput) ToGetAlarmtemplatesOrgAlarmtemplateDeliveryOutput() GetAlarmtemplatesOrgAlarmtemplateDeliveryOutput {
+	return o
+}
+
+func (o GetAlarmtemplatesOrgAlarmtemplateDeliveryOutput) ToGetAlarmtemplatesOrgAlarmtemplateDeliveryOutputWithContext(ctx context.Context) GetAlarmtemplatesOrgAlarmtemplateDeliveryOutput {
+	return o
+}
+
+// List of additional email string to deliver the alarms via emails
+func (o GetAlarmtemplatesOrgAlarmtemplateDeliveryOutput) AdditionalEmails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAlarmtemplatesOrgAlarmtemplateDelivery) []string { return v.AdditionalEmails }).(pulumi.StringArrayOutput)
+}
+
+// Whether to enable the alarm delivery via emails or not
+func (o GetAlarmtemplatesOrgAlarmtemplateDeliveryOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlarmtemplatesOrgAlarmtemplateDelivery) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Whether to deliver the alarms via emails to Org admins or not
+func (o GetAlarmtemplatesOrgAlarmtemplateDeliveryOutput) ToOrgAdmins() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlarmtemplatesOrgAlarmtemplateDelivery) bool { return v.ToOrgAdmins }).(pulumi.BoolOutput)
+}
+
+// Whether to deliver the alarms via emails to Site admins or not
+func (o GetAlarmtemplatesOrgAlarmtemplateDeliveryOutput) ToSiteAdmins() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlarmtemplatesOrgAlarmtemplateDelivery) bool { return v.ToSiteAdmins }).(pulumi.BoolOutput)
+}
+
+type GetAlarmtemplatesOrgAlarmtemplateRules struct {
+	// Delivery object to configure the alarm delivery
+	Delivery GetAlarmtemplatesOrgAlarmtemplateRulesDelivery `pulumi:"delivery"`
+	Enabled  bool                                           `pulumi:"enabled"`
+}
+
+// GetAlarmtemplatesOrgAlarmtemplateRulesInput is an input type that accepts GetAlarmtemplatesOrgAlarmtemplateRulesArgs and GetAlarmtemplatesOrgAlarmtemplateRulesOutput values.
+// You can construct a concrete instance of `GetAlarmtemplatesOrgAlarmtemplateRulesInput` via:
+//
+//	GetAlarmtemplatesOrgAlarmtemplateRulesArgs{...}
+type GetAlarmtemplatesOrgAlarmtemplateRulesInput interface {
+	pulumi.Input
+
+	ToGetAlarmtemplatesOrgAlarmtemplateRulesOutput() GetAlarmtemplatesOrgAlarmtemplateRulesOutput
+	ToGetAlarmtemplatesOrgAlarmtemplateRulesOutputWithContext(context.Context) GetAlarmtemplatesOrgAlarmtemplateRulesOutput
+}
+
+type GetAlarmtemplatesOrgAlarmtemplateRulesArgs struct {
+	// Delivery object to configure the alarm delivery
+	Delivery GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryInput `pulumi:"delivery"`
+	Enabled  pulumi.BoolInput                                    `pulumi:"enabled"`
+}
+
+func (GetAlarmtemplatesOrgAlarmtemplateRulesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlarmtemplatesOrgAlarmtemplateRules)(nil)).Elem()
+}
+
+func (i GetAlarmtemplatesOrgAlarmtemplateRulesArgs) ToGetAlarmtemplatesOrgAlarmtemplateRulesOutput() GetAlarmtemplatesOrgAlarmtemplateRulesOutput {
+	return i.ToGetAlarmtemplatesOrgAlarmtemplateRulesOutputWithContext(context.Background())
+}
+
+func (i GetAlarmtemplatesOrgAlarmtemplateRulesArgs) ToGetAlarmtemplatesOrgAlarmtemplateRulesOutputWithContext(ctx context.Context) GetAlarmtemplatesOrgAlarmtemplateRulesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlarmtemplatesOrgAlarmtemplateRulesOutput)
+}
+
+// GetAlarmtemplatesOrgAlarmtemplateRulesMapInput is an input type that accepts GetAlarmtemplatesOrgAlarmtemplateRulesMap and GetAlarmtemplatesOrgAlarmtemplateRulesMapOutput values.
+// You can construct a concrete instance of `GetAlarmtemplatesOrgAlarmtemplateRulesMapInput` via:
+//
+//	GetAlarmtemplatesOrgAlarmtemplateRulesMap{ "key": GetAlarmtemplatesOrgAlarmtemplateRulesArgs{...} }
+type GetAlarmtemplatesOrgAlarmtemplateRulesMapInput interface {
+	pulumi.Input
+
+	ToGetAlarmtemplatesOrgAlarmtemplateRulesMapOutput() GetAlarmtemplatesOrgAlarmtemplateRulesMapOutput
+	ToGetAlarmtemplatesOrgAlarmtemplateRulesMapOutputWithContext(context.Context) GetAlarmtemplatesOrgAlarmtemplateRulesMapOutput
+}
+
+type GetAlarmtemplatesOrgAlarmtemplateRulesMap map[string]GetAlarmtemplatesOrgAlarmtemplateRulesInput
+
+func (GetAlarmtemplatesOrgAlarmtemplateRulesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetAlarmtemplatesOrgAlarmtemplateRules)(nil)).Elem()
+}
+
+func (i GetAlarmtemplatesOrgAlarmtemplateRulesMap) ToGetAlarmtemplatesOrgAlarmtemplateRulesMapOutput() GetAlarmtemplatesOrgAlarmtemplateRulesMapOutput {
+	return i.ToGetAlarmtemplatesOrgAlarmtemplateRulesMapOutputWithContext(context.Background())
+}
+
+func (i GetAlarmtemplatesOrgAlarmtemplateRulesMap) ToGetAlarmtemplatesOrgAlarmtemplateRulesMapOutputWithContext(ctx context.Context) GetAlarmtemplatesOrgAlarmtemplateRulesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlarmtemplatesOrgAlarmtemplateRulesMapOutput)
+}
+
+type GetAlarmtemplatesOrgAlarmtemplateRulesOutput struct{ *pulumi.OutputState }
+
+func (GetAlarmtemplatesOrgAlarmtemplateRulesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlarmtemplatesOrgAlarmtemplateRules)(nil)).Elem()
+}
+
+func (o GetAlarmtemplatesOrgAlarmtemplateRulesOutput) ToGetAlarmtemplatesOrgAlarmtemplateRulesOutput() GetAlarmtemplatesOrgAlarmtemplateRulesOutput {
+	return o
+}
+
+func (o GetAlarmtemplatesOrgAlarmtemplateRulesOutput) ToGetAlarmtemplatesOrgAlarmtemplateRulesOutputWithContext(ctx context.Context) GetAlarmtemplatesOrgAlarmtemplateRulesOutput {
+	return o
+}
+
+// Delivery object to configure the alarm delivery
+func (o GetAlarmtemplatesOrgAlarmtemplateRulesOutput) Delivery() GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput {
+	return o.ApplyT(func(v GetAlarmtemplatesOrgAlarmtemplateRules) GetAlarmtemplatesOrgAlarmtemplateRulesDelivery {
+		return v.Delivery
+	}).(GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput)
+}
+
+func (o GetAlarmtemplatesOrgAlarmtemplateRulesOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlarmtemplatesOrgAlarmtemplateRules) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetAlarmtemplatesOrgAlarmtemplateRulesMapOutput struct{ *pulumi.OutputState }
+
+func (GetAlarmtemplatesOrgAlarmtemplateRulesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetAlarmtemplatesOrgAlarmtemplateRules)(nil)).Elem()
+}
+
+func (o GetAlarmtemplatesOrgAlarmtemplateRulesMapOutput) ToGetAlarmtemplatesOrgAlarmtemplateRulesMapOutput() GetAlarmtemplatesOrgAlarmtemplateRulesMapOutput {
+	return o
+}
+
+func (o GetAlarmtemplatesOrgAlarmtemplateRulesMapOutput) ToGetAlarmtemplatesOrgAlarmtemplateRulesMapOutputWithContext(ctx context.Context) GetAlarmtemplatesOrgAlarmtemplateRulesMapOutput {
+	return o
+}
+
+func (o GetAlarmtemplatesOrgAlarmtemplateRulesMapOutput) MapIndex(k pulumi.StringInput) GetAlarmtemplatesOrgAlarmtemplateRulesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetAlarmtemplatesOrgAlarmtemplateRules {
+		return vs[0].(map[string]GetAlarmtemplatesOrgAlarmtemplateRules)[vs[1].(string)]
+	}).(GetAlarmtemplatesOrgAlarmtemplateRulesOutput)
+}
+
+type GetAlarmtemplatesOrgAlarmtemplateRulesDelivery struct {
+	// List of additional email string to deliver the alarms via emails
+	AdditionalEmails []string `pulumi:"additionalEmails"`
+	// Whether to enable the alarm delivery via emails or not
+	Enabled bool `pulumi:"enabled"`
+	// Whether to deliver the alarms via emails to Org admins or not
+	ToOrgAdmins bool `pulumi:"toOrgAdmins"`
+	// Whether to deliver the alarms via emails to Site admins or not
+	ToSiteAdmins bool `pulumi:"toSiteAdmins"`
+}
+
+// GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryInput is an input type that accepts GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryArgs and GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput values.
+// You can construct a concrete instance of `GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryInput` via:
+//
+//	GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryArgs{...}
+type GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryInput interface {
+	pulumi.Input
+
+	ToGetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput() GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput
+	ToGetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutputWithContext(context.Context) GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput
+}
+
+type GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryArgs struct {
+	// List of additional email string to deliver the alarms via emails
+	AdditionalEmails pulumi.StringArrayInput `pulumi:"additionalEmails"`
+	// Whether to enable the alarm delivery via emails or not
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Whether to deliver the alarms via emails to Org admins or not
+	ToOrgAdmins pulumi.BoolInput `pulumi:"toOrgAdmins"`
+	// Whether to deliver the alarms via emails to Site admins or not
+	ToSiteAdmins pulumi.BoolInput `pulumi:"toSiteAdmins"`
+}
+
+func (GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlarmtemplatesOrgAlarmtemplateRulesDelivery)(nil)).Elem()
+}
+
+func (i GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryArgs) ToGetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput() GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput {
+	return i.ToGetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutputWithContext(context.Background())
+}
+
+func (i GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryArgs) ToGetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutputWithContext(ctx context.Context) GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput)
+}
+
+type GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput struct{ *pulumi.OutputState }
+
+func (GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlarmtemplatesOrgAlarmtemplateRulesDelivery)(nil)).Elem()
+}
+
+func (o GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput) ToGetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput() GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput {
+	return o
+}
+
+func (o GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput) ToGetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutputWithContext(ctx context.Context) GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput {
+	return o
+}
+
+// List of additional email string to deliver the alarms via emails
+func (o GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput) AdditionalEmails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAlarmtemplatesOrgAlarmtemplateRulesDelivery) []string { return v.AdditionalEmails }).(pulumi.StringArrayOutput)
+}
+
+// Whether to enable the alarm delivery via emails or not
+func (o GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlarmtemplatesOrgAlarmtemplateRulesDelivery) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Whether to deliver the alarms via emails to Org admins or not
+func (o GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput) ToOrgAdmins() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlarmtemplatesOrgAlarmtemplateRulesDelivery) bool { return v.ToOrgAdmins }).(pulumi.BoolOutput)
+}
+
+// Whether to deliver the alarms via emails to Site admins or not
+func (o GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput) ToSiteAdmins() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlarmtemplatesOrgAlarmtemplateRulesDelivery) bool { return v.ToSiteAdmins }).(pulumi.BoolOutput)
+}
+
+type GetAvprofilesOrgAvprofile struct {
+	// When the object has been created, in epoch
+	CreatedTime float64 `pulumi:"createdTime"`
+	// enum: `block`, `log-and-permit`, `permit`
+	FallbackAction string `pulumi:"fallbackAction"`
+	// Unique ID of the object instance in the Mist Organization
+	Id string `pulumi:"id"`
+	// In KB
+	MaxFilesize    int      `pulumi:"maxFilesize"`
+	MimeWhitelists []string `pulumi:"mimeWhitelists"`
+	// When the object has been modified for the last time, in epoch
+	ModifiedTime float64 `pulumi:"modifiedTime"`
+	Name         string  `pulumi:"name"`
+	OrgId        string  `pulumi:"orgId"`
+	// List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
+	Protocols     []string `pulumi:"protocols"`
+	UrlWhitelists []string `pulumi:"urlWhitelists"`
+}
+
+// GetAvprofilesOrgAvprofileInput is an input type that accepts GetAvprofilesOrgAvprofileArgs and GetAvprofilesOrgAvprofileOutput values.
+// You can construct a concrete instance of `GetAvprofilesOrgAvprofileInput` via:
+//
+//	GetAvprofilesOrgAvprofileArgs{...}
+type GetAvprofilesOrgAvprofileInput interface {
+	pulumi.Input
+
+	ToGetAvprofilesOrgAvprofileOutput() GetAvprofilesOrgAvprofileOutput
+	ToGetAvprofilesOrgAvprofileOutputWithContext(context.Context) GetAvprofilesOrgAvprofileOutput
+}
+
+type GetAvprofilesOrgAvprofileArgs struct {
+	// When the object has been created, in epoch
+	CreatedTime pulumi.Float64Input `pulumi:"createdTime"`
+	// enum: `block`, `log-and-permit`, `permit`
+	FallbackAction pulumi.StringInput `pulumi:"fallbackAction"`
+	// Unique ID of the object instance in the Mist Organization
+	Id pulumi.StringInput `pulumi:"id"`
+	// In KB
+	MaxFilesize    pulumi.IntInput         `pulumi:"maxFilesize"`
+	MimeWhitelists pulumi.StringArrayInput `pulumi:"mimeWhitelists"`
+	// When the object has been modified for the last time, in epoch
+	ModifiedTime pulumi.Float64Input `pulumi:"modifiedTime"`
+	Name         pulumi.StringInput  `pulumi:"name"`
+	OrgId        pulumi.StringInput  `pulumi:"orgId"`
+	// List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
+	Protocols     pulumi.StringArrayInput `pulumi:"protocols"`
+	UrlWhitelists pulumi.StringArrayInput `pulumi:"urlWhitelists"`
+}
+
+func (GetAvprofilesOrgAvprofileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAvprofilesOrgAvprofile)(nil)).Elem()
+}
+
+func (i GetAvprofilesOrgAvprofileArgs) ToGetAvprofilesOrgAvprofileOutput() GetAvprofilesOrgAvprofileOutput {
+	return i.ToGetAvprofilesOrgAvprofileOutputWithContext(context.Background())
+}
+
+func (i GetAvprofilesOrgAvprofileArgs) ToGetAvprofilesOrgAvprofileOutputWithContext(ctx context.Context) GetAvprofilesOrgAvprofileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAvprofilesOrgAvprofileOutput)
+}
+
+// GetAvprofilesOrgAvprofileArrayInput is an input type that accepts GetAvprofilesOrgAvprofileArray and GetAvprofilesOrgAvprofileArrayOutput values.
+// You can construct a concrete instance of `GetAvprofilesOrgAvprofileArrayInput` via:
+//
+//	GetAvprofilesOrgAvprofileArray{ GetAvprofilesOrgAvprofileArgs{...} }
+type GetAvprofilesOrgAvprofileArrayInput interface {
+	pulumi.Input
+
+	ToGetAvprofilesOrgAvprofileArrayOutput() GetAvprofilesOrgAvprofileArrayOutput
+	ToGetAvprofilesOrgAvprofileArrayOutputWithContext(context.Context) GetAvprofilesOrgAvprofileArrayOutput
+}
+
+type GetAvprofilesOrgAvprofileArray []GetAvprofilesOrgAvprofileInput
+
+func (GetAvprofilesOrgAvprofileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAvprofilesOrgAvprofile)(nil)).Elem()
+}
+
+func (i GetAvprofilesOrgAvprofileArray) ToGetAvprofilesOrgAvprofileArrayOutput() GetAvprofilesOrgAvprofileArrayOutput {
+	return i.ToGetAvprofilesOrgAvprofileArrayOutputWithContext(context.Background())
+}
+
+func (i GetAvprofilesOrgAvprofileArray) ToGetAvprofilesOrgAvprofileArrayOutputWithContext(ctx context.Context) GetAvprofilesOrgAvprofileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAvprofilesOrgAvprofileArrayOutput)
+}
+
+type GetAvprofilesOrgAvprofileOutput struct{ *pulumi.OutputState }
+
+func (GetAvprofilesOrgAvprofileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAvprofilesOrgAvprofile)(nil)).Elem()
+}
+
+func (o GetAvprofilesOrgAvprofileOutput) ToGetAvprofilesOrgAvprofileOutput() GetAvprofilesOrgAvprofileOutput {
+	return o
+}
+
+func (o GetAvprofilesOrgAvprofileOutput) ToGetAvprofilesOrgAvprofileOutputWithContext(ctx context.Context) GetAvprofilesOrgAvprofileOutput {
+	return o
+}
+
+// When the object has been created, in epoch
+func (o GetAvprofilesOrgAvprofileOutput) CreatedTime() pulumi.Float64Output {
+	return o.ApplyT(func(v GetAvprofilesOrgAvprofile) float64 { return v.CreatedTime }).(pulumi.Float64Output)
+}
+
+// enum: `block`, `log-and-permit`, `permit`
+func (o GetAvprofilesOrgAvprofileOutput) FallbackAction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAvprofilesOrgAvprofile) string { return v.FallbackAction }).(pulumi.StringOutput)
+}
+
+// Unique ID of the object instance in the Mist Organization
+func (o GetAvprofilesOrgAvprofileOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAvprofilesOrgAvprofile) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// In KB
+func (o GetAvprofilesOrgAvprofileOutput) MaxFilesize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAvprofilesOrgAvprofile) int { return v.MaxFilesize }).(pulumi.IntOutput)
+}
+
+func (o GetAvprofilesOrgAvprofileOutput) MimeWhitelists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAvprofilesOrgAvprofile) []string { return v.MimeWhitelists }).(pulumi.StringArrayOutput)
+}
+
+// When the object has been modified for the last time, in epoch
+func (o GetAvprofilesOrgAvprofileOutput) ModifiedTime() pulumi.Float64Output {
+	return o.ApplyT(func(v GetAvprofilesOrgAvprofile) float64 { return v.ModifiedTime }).(pulumi.Float64Output)
+}
+
+func (o GetAvprofilesOrgAvprofileOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAvprofilesOrgAvprofile) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetAvprofilesOrgAvprofileOutput) OrgId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAvprofilesOrgAvprofile) string { return v.OrgId }).(pulumi.StringOutput)
+}
+
+// List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
+func (o GetAvprofilesOrgAvprofileOutput) Protocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAvprofilesOrgAvprofile) []string { return v.Protocols }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAvprofilesOrgAvprofileOutput) UrlWhitelists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAvprofilesOrgAvprofile) []string { return v.UrlWhitelists }).(pulumi.StringArrayOutput)
+}
+
+type GetAvprofilesOrgAvprofileArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAvprofilesOrgAvprofileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAvprofilesOrgAvprofile)(nil)).Elem()
+}
+
+func (o GetAvprofilesOrgAvprofileArrayOutput) ToGetAvprofilesOrgAvprofileArrayOutput() GetAvprofilesOrgAvprofileArrayOutput {
+	return o
+}
+
+func (o GetAvprofilesOrgAvprofileArrayOutput) ToGetAvprofilesOrgAvprofileArrayOutputWithContext(ctx context.Context) GetAvprofilesOrgAvprofileArrayOutput {
+	return o
+}
+
+func (o GetAvprofilesOrgAvprofileArrayOutput) Index(i pulumi.IntInput) GetAvprofilesOrgAvprofileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAvprofilesOrgAvprofile {
+		return vs[0].([]GetAvprofilesOrgAvprofile)[vs[1].(int)]
+	}).(GetAvprofilesOrgAvprofileOutput)
+}
+
+type GetDeviceprofilesApDeviceprofile struct {
+	CreatedTime  float64 `pulumi:"createdTime"`
+	Id           string  `pulumi:"id"`
+	ModifiedTime float64 `pulumi:"modifiedTime"`
+	Name         string  `pulumi:"name"`
+	OrgId        string  `pulumi:"orgId"`
+}
+
+// GetDeviceprofilesApDeviceprofileInput is an input type that accepts GetDeviceprofilesApDeviceprofileArgs and GetDeviceprofilesApDeviceprofileOutput values.
+// You can construct a concrete instance of `GetDeviceprofilesApDeviceprofileInput` via:
+//
+//	GetDeviceprofilesApDeviceprofileArgs{...}
+type GetDeviceprofilesApDeviceprofileInput interface {
+	pulumi.Input
+
+	ToGetDeviceprofilesApDeviceprofileOutput() GetDeviceprofilesApDeviceprofileOutput
+	ToGetDeviceprofilesApDeviceprofileOutputWithContext(context.Context) GetDeviceprofilesApDeviceprofileOutput
+}
+
+type GetDeviceprofilesApDeviceprofileArgs struct {
+	CreatedTime  pulumi.Float64Input `pulumi:"createdTime"`
+	Id           pulumi.StringInput  `pulumi:"id"`
+	ModifiedTime pulumi.Float64Input `pulumi:"modifiedTime"`
+	Name         pulumi.StringInput  `pulumi:"name"`
+	OrgId        pulumi.StringInput  `pulumi:"orgId"`
+}
+
+func (GetDeviceprofilesApDeviceprofileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDeviceprofilesApDeviceprofile)(nil)).Elem()
+}
+
+func (i GetDeviceprofilesApDeviceprofileArgs) ToGetDeviceprofilesApDeviceprofileOutput() GetDeviceprofilesApDeviceprofileOutput {
+	return i.ToGetDeviceprofilesApDeviceprofileOutputWithContext(context.Background())
+}
+
+func (i GetDeviceprofilesApDeviceprofileArgs) ToGetDeviceprofilesApDeviceprofileOutputWithContext(ctx context.Context) GetDeviceprofilesApDeviceprofileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDeviceprofilesApDeviceprofileOutput)
+}
+
+// GetDeviceprofilesApDeviceprofileArrayInput is an input type that accepts GetDeviceprofilesApDeviceprofileArray and GetDeviceprofilesApDeviceprofileArrayOutput values.
+// You can construct a concrete instance of `GetDeviceprofilesApDeviceprofileArrayInput` via:
+//
+//	GetDeviceprofilesApDeviceprofileArray{ GetDeviceprofilesApDeviceprofileArgs{...} }
+type GetDeviceprofilesApDeviceprofileArrayInput interface {
+	pulumi.Input
+
+	ToGetDeviceprofilesApDeviceprofileArrayOutput() GetDeviceprofilesApDeviceprofileArrayOutput
+	ToGetDeviceprofilesApDeviceprofileArrayOutputWithContext(context.Context) GetDeviceprofilesApDeviceprofileArrayOutput
+}
+
+type GetDeviceprofilesApDeviceprofileArray []GetDeviceprofilesApDeviceprofileInput
+
+func (GetDeviceprofilesApDeviceprofileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDeviceprofilesApDeviceprofile)(nil)).Elem()
+}
+
+func (i GetDeviceprofilesApDeviceprofileArray) ToGetDeviceprofilesApDeviceprofileArrayOutput() GetDeviceprofilesApDeviceprofileArrayOutput {
+	return i.ToGetDeviceprofilesApDeviceprofileArrayOutputWithContext(context.Background())
+}
+
+func (i GetDeviceprofilesApDeviceprofileArray) ToGetDeviceprofilesApDeviceprofileArrayOutputWithContext(ctx context.Context) GetDeviceprofilesApDeviceprofileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDeviceprofilesApDeviceprofileArrayOutput)
+}
+
+type GetDeviceprofilesApDeviceprofileOutput struct{ *pulumi.OutputState }
+
+func (GetDeviceprofilesApDeviceprofileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDeviceprofilesApDeviceprofile)(nil)).Elem()
+}
+
+func (o GetDeviceprofilesApDeviceprofileOutput) ToGetDeviceprofilesApDeviceprofileOutput() GetDeviceprofilesApDeviceprofileOutput {
+	return o
+}
+
+func (o GetDeviceprofilesApDeviceprofileOutput) ToGetDeviceprofilesApDeviceprofileOutputWithContext(ctx context.Context) GetDeviceprofilesApDeviceprofileOutput {
+	return o
+}
+
+func (o GetDeviceprofilesApDeviceprofileOutput) CreatedTime() pulumi.Float64Output {
+	return o.ApplyT(func(v GetDeviceprofilesApDeviceprofile) float64 { return v.CreatedTime }).(pulumi.Float64Output)
+}
+
+func (o GetDeviceprofilesApDeviceprofileOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDeviceprofilesApDeviceprofile) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetDeviceprofilesApDeviceprofileOutput) ModifiedTime() pulumi.Float64Output {
+	return o.ApplyT(func(v GetDeviceprofilesApDeviceprofile) float64 { return v.ModifiedTime }).(pulumi.Float64Output)
+}
+
+func (o GetDeviceprofilesApDeviceprofileOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDeviceprofilesApDeviceprofile) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetDeviceprofilesApDeviceprofileOutput) OrgId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDeviceprofilesApDeviceprofile) string { return v.OrgId }).(pulumi.StringOutput)
+}
+
+type GetDeviceprofilesApDeviceprofileArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDeviceprofilesApDeviceprofileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDeviceprofilesApDeviceprofile)(nil)).Elem()
+}
+
+func (o GetDeviceprofilesApDeviceprofileArrayOutput) ToGetDeviceprofilesApDeviceprofileArrayOutput() GetDeviceprofilesApDeviceprofileArrayOutput {
+	return o
+}
+
+func (o GetDeviceprofilesApDeviceprofileArrayOutput) ToGetDeviceprofilesApDeviceprofileArrayOutputWithContext(ctx context.Context) GetDeviceprofilesApDeviceprofileArrayOutput {
+	return o
+}
+
+func (o GetDeviceprofilesApDeviceprofileArrayOutput) Index(i pulumi.IntInput) GetDeviceprofilesApDeviceprofileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDeviceprofilesApDeviceprofile {
+		return vs[0].([]GetDeviceprofilesApDeviceprofile)[vs[1].(int)]
+	}).(GetDeviceprofilesApDeviceprofileOutput)
+}
+
+type GetDeviceprofilesGatewayDeviceprofile struct {
+	CreatedTime  float64 `pulumi:"createdTime"`
+	Id           string  `pulumi:"id"`
+	ModifiedTime float64 `pulumi:"modifiedTime"`
+	Name         string  `pulumi:"name"`
+	OrgId        string  `pulumi:"orgId"`
+}
+
+// GetDeviceprofilesGatewayDeviceprofileInput is an input type that accepts GetDeviceprofilesGatewayDeviceprofileArgs and GetDeviceprofilesGatewayDeviceprofileOutput values.
+// You can construct a concrete instance of `GetDeviceprofilesGatewayDeviceprofileInput` via:
+//
+//	GetDeviceprofilesGatewayDeviceprofileArgs{...}
+type GetDeviceprofilesGatewayDeviceprofileInput interface {
+	pulumi.Input
+
+	ToGetDeviceprofilesGatewayDeviceprofileOutput() GetDeviceprofilesGatewayDeviceprofileOutput
+	ToGetDeviceprofilesGatewayDeviceprofileOutputWithContext(context.Context) GetDeviceprofilesGatewayDeviceprofileOutput
+}
+
+type GetDeviceprofilesGatewayDeviceprofileArgs struct {
+	CreatedTime  pulumi.Float64Input `pulumi:"createdTime"`
+	Id           pulumi.StringInput  `pulumi:"id"`
+	ModifiedTime pulumi.Float64Input `pulumi:"modifiedTime"`
+	Name         pulumi.StringInput  `pulumi:"name"`
+	OrgId        pulumi.StringInput  `pulumi:"orgId"`
+}
+
+func (GetDeviceprofilesGatewayDeviceprofileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDeviceprofilesGatewayDeviceprofile)(nil)).Elem()
+}
+
+func (i GetDeviceprofilesGatewayDeviceprofileArgs) ToGetDeviceprofilesGatewayDeviceprofileOutput() GetDeviceprofilesGatewayDeviceprofileOutput {
+	return i.ToGetDeviceprofilesGatewayDeviceprofileOutputWithContext(context.Background())
+}
+
+func (i GetDeviceprofilesGatewayDeviceprofileArgs) ToGetDeviceprofilesGatewayDeviceprofileOutputWithContext(ctx context.Context) GetDeviceprofilesGatewayDeviceprofileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDeviceprofilesGatewayDeviceprofileOutput)
+}
+
+// GetDeviceprofilesGatewayDeviceprofileArrayInput is an input type that accepts GetDeviceprofilesGatewayDeviceprofileArray and GetDeviceprofilesGatewayDeviceprofileArrayOutput values.
+// You can construct a concrete instance of `GetDeviceprofilesGatewayDeviceprofileArrayInput` via:
+//
+//	GetDeviceprofilesGatewayDeviceprofileArray{ GetDeviceprofilesGatewayDeviceprofileArgs{...} }
+type GetDeviceprofilesGatewayDeviceprofileArrayInput interface {
+	pulumi.Input
+
+	ToGetDeviceprofilesGatewayDeviceprofileArrayOutput() GetDeviceprofilesGatewayDeviceprofileArrayOutput
+	ToGetDeviceprofilesGatewayDeviceprofileArrayOutputWithContext(context.Context) GetDeviceprofilesGatewayDeviceprofileArrayOutput
+}
+
+type GetDeviceprofilesGatewayDeviceprofileArray []GetDeviceprofilesGatewayDeviceprofileInput
+
+func (GetDeviceprofilesGatewayDeviceprofileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDeviceprofilesGatewayDeviceprofile)(nil)).Elem()
+}
+
+func (i GetDeviceprofilesGatewayDeviceprofileArray) ToGetDeviceprofilesGatewayDeviceprofileArrayOutput() GetDeviceprofilesGatewayDeviceprofileArrayOutput {
+	return i.ToGetDeviceprofilesGatewayDeviceprofileArrayOutputWithContext(context.Background())
+}
+
+func (i GetDeviceprofilesGatewayDeviceprofileArray) ToGetDeviceprofilesGatewayDeviceprofileArrayOutputWithContext(ctx context.Context) GetDeviceprofilesGatewayDeviceprofileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDeviceprofilesGatewayDeviceprofileArrayOutput)
+}
+
+type GetDeviceprofilesGatewayDeviceprofileOutput struct{ *pulumi.OutputState }
+
+func (GetDeviceprofilesGatewayDeviceprofileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDeviceprofilesGatewayDeviceprofile)(nil)).Elem()
+}
+
+func (o GetDeviceprofilesGatewayDeviceprofileOutput) ToGetDeviceprofilesGatewayDeviceprofileOutput() GetDeviceprofilesGatewayDeviceprofileOutput {
+	return o
+}
+
+func (o GetDeviceprofilesGatewayDeviceprofileOutput) ToGetDeviceprofilesGatewayDeviceprofileOutputWithContext(ctx context.Context) GetDeviceprofilesGatewayDeviceprofileOutput {
+	return o
+}
+
+func (o GetDeviceprofilesGatewayDeviceprofileOutput) CreatedTime() pulumi.Float64Output {
+	return o.ApplyT(func(v GetDeviceprofilesGatewayDeviceprofile) float64 { return v.CreatedTime }).(pulumi.Float64Output)
+}
+
+func (o GetDeviceprofilesGatewayDeviceprofileOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDeviceprofilesGatewayDeviceprofile) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetDeviceprofilesGatewayDeviceprofileOutput) ModifiedTime() pulumi.Float64Output {
+	return o.ApplyT(func(v GetDeviceprofilesGatewayDeviceprofile) float64 { return v.ModifiedTime }).(pulumi.Float64Output)
+}
+
+func (o GetDeviceprofilesGatewayDeviceprofileOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDeviceprofilesGatewayDeviceprofile) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetDeviceprofilesGatewayDeviceprofileOutput) OrgId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDeviceprofilesGatewayDeviceprofile) string { return v.OrgId }).(pulumi.StringOutput)
+}
+
+type GetDeviceprofilesGatewayDeviceprofileArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDeviceprofilesGatewayDeviceprofileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDeviceprofilesGatewayDeviceprofile)(nil)).Elem()
+}
+
+func (o GetDeviceprofilesGatewayDeviceprofileArrayOutput) ToGetDeviceprofilesGatewayDeviceprofileArrayOutput() GetDeviceprofilesGatewayDeviceprofileArrayOutput {
+	return o
+}
+
+func (o GetDeviceprofilesGatewayDeviceprofileArrayOutput) ToGetDeviceprofilesGatewayDeviceprofileArrayOutputWithContext(ctx context.Context) GetDeviceprofilesGatewayDeviceprofileArrayOutput {
+	return o
+}
+
+func (o GetDeviceprofilesGatewayDeviceprofileArrayOutput) Index(i pulumi.IntInput) GetDeviceprofilesGatewayDeviceprofileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDeviceprofilesGatewayDeviceprofile {
+		return vs[0].([]GetDeviceprofilesGatewayDeviceprofile)[vs[1].(int)]
+	}).(GetDeviceprofilesGatewayDeviceprofileOutput)
+}
+
+type GetEvpnTopologiesOrgEvpnTopology struct {
+	// When the object has been created, in epoch
+	CreatedTime float64 `pulumi:"createdTime"`
+	// EVPN Options
+	EvpnOptions GetEvpnTopologiesOrgEvpnTopologyEvpnOptions `pulumi:"evpnOptions"`
+	// Unique ID of the object instance in the Mist Organization
+	Id string `pulumi:"id"`
+	// When the object has been modified for the last time, in epoch
+	ModifiedTime float64 `pulumi:"modifiedTime"`
+	Name         string  `pulumi:"name"`
+	OrgId        string  `pulumi:"orgId"`
+	// Property key is the pod number
+	PodNames map[string]string `pulumi:"podNames"`
+}
+
+// GetEvpnTopologiesOrgEvpnTopologyInput is an input type that accepts GetEvpnTopologiesOrgEvpnTopologyArgs and GetEvpnTopologiesOrgEvpnTopologyOutput values.
+// You can construct a concrete instance of `GetEvpnTopologiesOrgEvpnTopologyInput` via:
+//
+//	GetEvpnTopologiesOrgEvpnTopologyArgs{...}
+type GetEvpnTopologiesOrgEvpnTopologyInput interface {
+	pulumi.Input
+
+	ToGetEvpnTopologiesOrgEvpnTopologyOutput() GetEvpnTopologiesOrgEvpnTopologyOutput
+	ToGetEvpnTopologiesOrgEvpnTopologyOutputWithContext(context.Context) GetEvpnTopologiesOrgEvpnTopologyOutput
+}
+
+type GetEvpnTopologiesOrgEvpnTopologyArgs struct {
+	// When the object has been created, in epoch
+	CreatedTime pulumi.Float64Input `pulumi:"createdTime"`
+	// EVPN Options
+	EvpnOptions GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsInput `pulumi:"evpnOptions"`
+	// Unique ID of the object instance in the Mist Organization
+	Id pulumi.StringInput `pulumi:"id"`
+	// When the object has been modified for the last time, in epoch
+	ModifiedTime pulumi.Float64Input `pulumi:"modifiedTime"`
+	Name         pulumi.StringInput  `pulumi:"name"`
+	OrgId        pulumi.StringInput  `pulumi:"orgId"`
+	// Property key is the pod number
+	PodNames pulumi.StringMapInput `pulumi:"podNames"`
+}
+
+func (GetEvpnTopologiesOrgEvpnTopologyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEvpnTopologiesOrgEvpnTopology)(nil)).Elem()
+}
+
+func (i GetEvpnTopologiesOrgEvpnTopologyArgs) ToGetEvpnTopologiesOrgEvpnTopologyOutput() GetEvpnTopologiesOrgEvpnTopologyOutput {
+	return i.ToGetEvpnTopologiesOrgEvpnTopologyOutputWithContext(context.Background())
+}
+
+func (i GetEvpnTopologiesOrgEvpnTopologyArgs) ToGetEvpnTopologiesOrgEvpnTopologyOutputWithContext(ctx context.Context) GetEvpnTopologiesOrgEvpnTopologyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEvpnTopologiesOrgEvpnTopologyOutput)
+}
+
+// GetEvpnTopologiesOrgEvpnTopologyArrayInput is an input type that accepts GetEvpnTopologiesOrgEvpnTopologyArray and GetEvpnTopologiesOrgEvpnTopologyArrayOutput values.
+// You can construct a concrete instance of `GetEvpnTopologiesOrgEvpnTopologyArrayInput` via:
+//
+//	GetEvpnTopologiesOrgEvpnTopologyArray{ GetEvpnTopologiesOrgEvpnTopologyArgs{...} }
+type GetEvpnTopologiesOrgEvpnTopologyArrayInput interface {
+	pulumi.Input
+
+	ToGetEvpnTopologiesOrgEvpnTopologyArrayOutput() GetEvpnTopologiesOrgEvpnTopologyArrayOutput
+	ToGetEvpnTopologiesOrgEvpnTopologyArrayOutputWithContext(context.Context) GetEvpnTopologiesOrgEvpnTopologyArrayOutput
+}
+
+type GetEvpnTopologiesOrgEvpnTopologyArray []GetEvpnTopologiesOrgEvpnTopologyInput
+
+func (GetEvpnTopologiesOrgEvpnTopologyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEvpnTopologiesOrgEvpnTopology)(nil)).Elem()
+}
+
+func (i GetEvpnTopologiesOrgEvpnTopologyArray) ToGetEvpnTopologiesOrgEvpnTopologyArrayOutput() GetEvpnTopologiesOrgEvpnTopologyArrayOutput {
+	return i.ToGetEvpnTopologiesOrgEvpnTopologyArrayOutputWithContext(context.Background())
+}
+
+func (i GetEvpnTopologiesOrgEvpnTopologyArray) ToGetEvpnTopologiesOrgEvpnTopologyArrayOutputWithContext(ctx context.Context) GetEvpnTopologiesOrgEvpnTopologyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEvpnTopologiesOrgEvpnTopologyArrayOutput)
+}
+
+type GetEvpnTopologiesOrgEvpnTopologyOutput struct{ *pulumi.OutputState }
+
+func (GetEvpnTopologiesOrgEvpnTopologyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEvpnTopologiesOrgEvpnTopology)(nil)).Elem()
+}
+
+func (o GetEvpnTopologiesOrgEvpnTopologyOutput) ToGetEvpnTopologiesOrgEvpnTopologyOutput() GetEvpnTopologiesOrgEvpnTopologyOutput {
+	return o
+}
+
+func (o GetEvpnTopologiesOrgEvpnTopologyOutput) ToGetEvpnTopologiesOrgEvpnTopologyOutputWithContext(ctx context.Context) GetEvpnTopologiesOrgEvpnTopologyOutput {
+	return o
+}
+
+// When the object has been created, in epoch
+func (o GetEvpnTopologiesOrgEvpnTopologyOutput) CreatedTime() pulumi.Float64Output {
+	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopology) float64 { return v.CreatedTime }).(pulumi.Float64Output)
+}
+
+// EVPN Options
+func (o GetEvpnTopologiesOrgEvpnTopologyOutput) EvpnOptions() GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput {
+	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopology) GetEvpnTopologiesOrgEvpnTopologyEvpnOptions {
+		return v.EvpnOptions
+	}).(GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput)
+}
+
+// Unique ID of the object instance in the Mist Organization
+func (o GetEvpnTopologiesOrgEvpnTopologyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopology) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// When the object has been modified for the last time, in epoch
+func (o GetEvpnTopologiesOrgEvpnTopologyOutput) ModifiedTime() pulumi.Float64Output {
+	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopology) float64 { return v.ModifiedTime }).(pulumi.Float64Output)
+}
+
+func (o GetEvpnTopologiesOrgEvpnTopologyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopology) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetEvpnTopologiesOrgEvpnTopologyOutput) OrgId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopology) string { return v.OrgId }).(pulumi.StringOutput)
+}
+
+// Property key is the pod number
+func (o GetEvpnTopologiesOrgEvpnTopologyOutput) PodNames() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopology) map[string]string { return v.PodNames }).(pulumi.StringMapOutput)
+}
+
+type GetEvpnTopologiesOrgEvpnTopologyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEvpnTopologiesOrgEvpnTopologyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEvpnTopologiesOrgEvpnTopology)(nil)).Elem()
+}
+
+func (o GetEvpnTopologiesOrgEvpnTopologyArrayOutput) ToGetEvpnTopologiesOrgEvpnTopologyArrayOutput() GetEvpnTopologiesOrgEvpnTopologyArrayOutput {
+	return o
+}
+
+func (o GetEvpnTopologiesOrgEvpnTopologyArrayOutput) ToGetEvpnTopologiesOrgEvpnTopologyArrayOutputWithContext(ctx context.Context) GetEvpnTopologiesOrgEvpnTopologyArrayOutput {
+	return o
+}
+
+func (o GetEvpnTopologiesOrgEvpnTopologyArrayOutput) Index(i pulumi.IntInput) GetEvpnTopologiesOrgEvpnTopologyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEvpnTopologiesOrgEvpnTopology {
+		return vs[0].([]GetEvpnTopologiesOrgEvpnTopology)[vs[1].(int)]
+	}).(GetEvpnTopologiesOrgEvpnTopologyOutput)
+}
+
+type GetEvpnTopologiesOrgEvpnTopologyEvpnOptions struct {
+	// Optional, for dhcp*relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server*id-overrides
+	AutoLoopbackSubnet string `pulumi:"autoLoopbackSubnet"`
+	// Optional, for dhcp*relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server*id-overrides
+	AutoLoopbackSubnet6 string `pulumi:"autoLoopbackSubnet6"`
+	// Optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
+	AutoRouterIdSubnet string `pulumi:"autoRouterIdSubnet"`
+	// Optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
+	AutoRouterIdSubnet6 string `pulumi:"autoRouterIdSubnet6"`
+	// Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routedAt` != `core`, whether to do virtual-gateway at core as well
+	CoreAsBorder bool `pulumi:"coreAsBorder"`
+	// if the mangement traffic goes inbnd, during installation, only the border/core switches are connected to the Internet to allow initial configuration to be pushed down and leave the downstream access switches stay in the Factory Default state enabling inband-ztp allows upstream switches to use LLDP to assign IP and gives Internet to downstream switches in that state
+	EnableInbandZtp bool                                               `pulumi:"enableInbandZtp"`
+	Overlay         GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlay `pulumi:"overlay"`
+	// Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address's v4*mac. If enabled, 00-00-5e-00-0X-YY will be used (where XX=vlan*id/256, YY=vlan_id%256)
+	PerVlanVgaV4Mac bool `pulumi:"perVlanVgaV4Mac"`
+	// Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-02-01 as the virtual-gateway-address's v6*mac. If enabled, 00-00-5e-00-1X-YY will be used (where XX=vlan*id/256, YY=vlan_id%256)
+	PerVlanVgaV6Mac bool `pulumi:"perVlanVgaV6Mac"`
+	// optional, where virtual-gateway should reside. enum: `core`, `distribution`, `edge`
+	RoutedAt string                                              `pulumi:"routedAt"`
+	Underlay GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlay `pulumi:"underlay"`
+	// Optional, for EX9200 only to segregate virtual-switches
+	VsInstances map[string]GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstances `pulumi:"vsInstances"`
+}
+
+// GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsInput is an input type that accepts GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsArgs and GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput values.
+// You can construct a concrete instance of `GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsInput` via:
+//
+//	GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsArgs{...}
+type GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsInput interface {
+	pulumi.Input
+
+	ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput() GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput
+	ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutputWithContext(context.Context) GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput
+}
+
+type GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsArgs struct {
+	// Optional, for dhcp*relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server*id-overrides
+	AutoLoopbackSubnet pulumi.StringInput `pulumi:"autoLoopbackSubnet"`
+	// Optional, for dhcp*relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server*id-overrides
+	AutoLoopbackSubnet6 pulumi.StringInput `pulumi:"autoLoopbackSubnet6"`
+	// Optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
+	AutoRouterIdSubnet pulumi.StringInput `pulumi:"autoRouterIdSubnet"`
+	// Optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
+	AutoRouterIdSubnet6 pulumi.StringInput `pulumi:"autoRouterIdSubnet6"`
+	// Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routedAt` != `core`, whether to do virtual-gateway at core as well
+	CoreAsBorder pulumi.BoolInput `pulumi:"coreAsBorder"`
+	// if the mangement traffic goes inbnd, during installation, only the border/core switches are connected to the Internet to allow initial configuration to be pushed down and leave the downstream access switches stay in the Factory Default state enabling inband-ztp allows upstream switches to use LLDP to assign IP and gives Internet to downstream switches in that state
+	EnableInbandZtp pulumi.BoolInput                                        `pulumi:"enableInbandZtp"`
+	Overlay         GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayInput `pulumi:"overlay"`
+	// Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address's v4*mac. If enabled, 00-00-5e-00-0X-YY will be used (where XX=vlan*id/256, YY=vlan_id%256)
+	PerVlanVgaV4Mac pulumi.BoolInput `pulumi:"perVlanVgaV4Mac"`
+	// Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-02-01 as the virtual-gateway-address's v6*mac. If enabled, 00-00-5e-00-1X-YY will be used (where XX=vlan*id/256, YY=vlan_id%256)
+	PerVlanVgaV6Mac pulumi.BoolInput `pulumi:"perVlanVgaV6Mac"`
+	// optional, where virtual-gateway should reside. enum: `core`, `distribution`, `edge`
+	RoutedAt pulumi.StringInput                                       `pulumi:"routedAt"`
+	Underlay GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayInput `pulumi:"underlay"`
+	// Optional, for EX9200 only to segregate virtual-switches
+	VsInstances GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapInput `pulumi:"vsInstances"`
+}
+
+func (GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEvpnTopologiesOrgEvpnTopologyEvpnOptions)(nil)).Elem()
+}
+
+func (i GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsArgs) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput() GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput {
+	return i.ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutputWithContext(context.Background())
+}
+
+func (i GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsArgs) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutputWithContext(ctx context.Context) GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput)
+}
+
+type GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput struct{ *pulumi.OutputState }
+
+func (GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEvpnTopologiesOrgEvpnTopologyEvpnOptions)(nil)).Elem()
+}
+
+func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput() GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput {
+	return o
+}
+
+func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutputWithContext(ctx context.Context) GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput {
+	return o
+}
+
+// Optional, for dhcp*relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server*id-overrides
+func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput) AutoLoopbackSubnet() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopologyEvpnOptions) string { return v.AutoLoopbackSubnet }).(pulumi.StringOutput)
+}
+
+// Optional, for dhcp*relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server*id-overrides
+func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput) AutoLoopbackSubnet6() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopologyEvpnOptions) string { return v.AutoLoopbackSubnet6 }).(pulumi.StringOutput)
+}
+
+// Optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
+func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput) AutoRouterIdSubnet() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopologyEvpnOptions) string { return v.AutoRouterIdSubnet }).(pulumi.StringOutput)
+}
+
+// Optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
+func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput) AutoRouterIdSubnet6() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopologyEvpnOptions) string { return v.AutoRouterIdSubnet6 }).(pulumi.StringOutput)
+}
+
+// Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routedAt` != `core`, whether to do virtual-gateway at core as well
+func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput) CoreAsBorder() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopologyEvpnOptions) bool { return v.CoreAsBorder }).(pulumi.BoolOutput)
+}
+
+// if the mangement traffic goes inbnd, during installation, only the border/core switches are connected to the Internet to allow initial configuration to be pushed down and leave the downstream access switches stay in the Factory Default state enabling inband-ztp allows upstream switches to use LLDP to assign IP and gives Internet to downstream switches in that state
+func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput) EnableInbandZtp() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopologyEvpnOptions) bool { return v.EnableInbandZtp }).(pulumi.BoolOutput)
+}
+
+func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput) Overlay() GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutput {
+	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopologyEvpnOptions) GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlay {
+		return v.Overlay
+	}).(GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutput)
+}
+
+// Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address's v4*mac. If enabled, 00-00-5e-00-0X-YY will be used (where XX=vlan*id/256, YY=vlan_id%256)
+func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput) PerVlanVgaV4Mac() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopologyEvpnOptions) bool { return v.PerVlanVgaV4Mac }).(pulumi.BoolOutput)
+}
+
+// Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-02-01 as the virtual-gateway-address's v6*mac. If enabled, 00-00-5e-00-1X-YY will be used (where XX=vlan*id/256, YY=vlan_id%256)
+func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput) PerVlanVgaV6Mac() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopologyEvpnOptions) bool { return v.PerVlanVgaV6Mac }).(pulumi.BoolOutput)
+}
+
+// optional, where virtual-gateway should reside. enum: `core`, `distribution`, `edge`
+func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput) RoutedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopologyEvpnOptions) string { return v.RoutedAt }).(pulumi.StringOutput)
+}
+
+func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput) Underlay() GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput {
+	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopologyEvpnOptions) GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlay {
+		return v.Underlay
+	}).(GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput)
+}
+
+// Optional, for EX9200 only to segregate virtual-switches
+func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput) VsInstances() GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutput {
+	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopologyEvpnOptions) map[string]GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstances {
+		return v.VsInstances
+	}).(GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutput)
+}
+
+type GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlay struct {
+	// Overlay BGP Local AS Number
+	As int `pulumi:"as"`
+}
+
+// GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayInput is an input type that accepts GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayArgs and GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutput values.
+// You can construct a concrete instance of `GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayInput` via:
+//
+//	GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayArgs{...}
+type GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayInput interface {
+	pulumi.Input
+
+	ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutput() GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutput
+	ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutputWithContext(context.Context) GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutput
+}
+
+type GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayArgs struct {
+	// Overlay BGP Local AS Number
+	As pulumi.IntInput `pulumi:"as"`
+}
+
+func (GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlay)(nil)).Elem()
+}
+
+func (i GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayArgs) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutput() GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutput {
+	return i.ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutputWithContext(context.Background())
+}
+
+func (i GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayArgs) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutputWithContext(ctx context.Context) GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutput)
+}
+
+type GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutput struct{ *pulumi.OutputState }
+
+func (GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlay)(nil)).Elem()
+}
+
+func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutput) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutput() GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutput {
+	return o
+}
+
+func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutput) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutputWithContext(ctx context.Context) GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutput {
+	return o
+}
+
+// Overlay BGP Local AS Number
+func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutput) As() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlay) int { return v.As }).(pulumi.IntOutput)
+}
+
+type GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlay struct {
+	// Underlay BGP Base AS Number
+	AsBase         int    `pulumi:"asBase"`
+	RoutedIdPrefix string `pulumi:"routedIdPrefix"`
+	// Underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6
+	Subnet string `pulumi:"subnet"`
+	// If v6 is desired for underlay
+	UseIpv6 bool `pulumi:"useIpv6"`
+}
+
+// GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayInput is an input type that accepts GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayArgs and GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput values.
+// You can construct a concrete instance of `GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayInput` via:
+//
+//	GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayArgs{...}
+type GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayInput interface {
+	pulumi.Input
+
+	ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput() GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput
+	ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutputWithContext(context.Context) GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput
+}
+
+type GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayArgs struct {
+	// Underlay BGP Base AS Number
+	AsBase         pulumi.IntInput    `pulumi:"asBase"`
+	RoutedIdPrefix pulumi.StringInput `pulumi:"routedIdPrefix"`
+	// Underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6
+	Subnet pulumi.StringInput `pulumi:"subnet"`
+	// If v6 is desired for underlay
+	UseIpv6 pulumi.BoolInput `pulumi:"useIpv6"`
+}
+
+func (GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlay)(nil)).Elem()
+}
+
+func (i GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayArgs) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput() GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput {
+	return i.ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutputWithContext(context.Background())
+}
+
+func (i GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayArgs) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutputWithContext(ctx context.Context) GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput)
+}
+
+type GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput struct{ *pulumi.OutputState }
+
+func (GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlay)(nil)).Elem()
+}
+
+func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput() GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput {
+	return o
+}
+
+func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutputWithContext(ctx context.Context) GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput {
+	return o
+}
+
+// Underlay BGP Base AS Number
+func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput) AsBase() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlay) int { return v.AsBase }).(pulumi.IntOutput)
+}
+
+func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput) RoutedIdPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlay) string { return v.RoutedIdPrefix }).(pulumi.StringOutput)
+}
+
+// Underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6
+func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput) Subnet() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlay) string { return v.Subnet }).(pulumi.StringOutput)
+}
+
+// If v6 is desired for underlay
+func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput) UseIpv6() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlay) bool { return v.UseIpv6 }).(pulumi.BoolOutput)
+}
+
+type GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstances struct {
+	Networks []string `pulumi:"networks"`
+}
+
+// GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesInput is an input type that accepts GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesArgs and GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutput values.
+// You can construct a concrete instance of `GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesInput` via:
+//
+//	GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesArgs{...}
+type GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesInput interface {
+	pulumi.Input
+
+	ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutput() GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutput
+	ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutputWithContext(context.Context) GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutput
+}
+
+type GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesArgs struct {
+	Networks pulumi.StringArrayInput `pulumi:"networks"`
+}
+
+func (GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstances)(nil)).Elem()
+}
+
+func (i GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesArgs) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutput() GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutput {
+	return i.ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutputWithContext(context.Background())
+}
+
+func (i GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesArgs) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutputWithContext(ctx context.Context) GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutput)
+}
+
+// GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapInput is an input type that accepts GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMap and GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutput values.
+// You can construct a concrete instance of `GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapInput` via:
+//
+//	GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMap{ "key": GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesArgs{...} }
+type GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapInput interface {
+	pulumi.Input
+
+	ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutput() GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutput
+	ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutputWithContext(context.Context) GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutput
+}
+
+type GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMap map[string]GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesInput
+
+func (GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstances)(nil)).Elem()
+}
+
+func (i GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMap) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutput() GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutput {
+	return i.ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutputWithContext(context.Background())
+}
+
+func (i GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMap) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutputWithContext(ctx context.Context) GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutput)
+}
+
+type GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutput struct{ *pulumi.OutputState }
+
+func (GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstances)(nil)).Elem()
+}
+
+func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutput) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutput() GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutput {
+	return o
+}
+
+func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutput) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutputWithContext(ctx context.Context) GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutput {
+	return o
+}
+
+func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutput) Networks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstances) []string { return v.Networks }).(pulumi.StringArrayOutput)
+}
+
+type GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutput struct{ *pulumi.OutputState }
+
+func (GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstances)(nil)).Elem()
+}
+
+func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutput) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutput() GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutput {
+	return o
+}
+
+func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutput) ToGetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutputWithContext(ctx context.Context) GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutput {
+	return o
+}
+
+func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutput) MapIndex(k pulumi.StringInput) GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstances {
+		return vs[0].(map[string]GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstances)[vs[1].(string)]
+	}).(GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutput)
+}
+
+type GetGatewaytemplatesOrgGatewaytemplate struct {
+	CreatedTime  float64 `pulumi:"createdTime"`
+	Id           string  `pulumi:"id"`
+	ModifiedTime float64 `pulumi:"modifiedTime"`
+	Name         string  `pulumi:"name"`
+	OrgId        string  `pulumi:"orgId"`
+}
+
+// GetGatewaytemplatesOrgGatewaytemplateInput is an input type that accepts GetGatewaytemplatesOrgGatewaytemplateArgs and GetGatewaytemplatesOrgGatewaytemplateOutput values.
+// You can construct a concrete instance of `GetGatewaytemplatesOrgGatewaytemplateInput` via:
+//
+//	GetGatewaytemplatesOrgGatewaytemplateArgs{...}
+type GetGatewaytemplatesOrgGatewaytemplateInput interface {
+	pulumi.Input
+
+	ToGetGatewaytemplatesOrgGatewaytemplateOutput() GetGatewaytemplatesOrgGatewaytemplateOutput
+	ToGetGatewaytemplatesOrgGatewaytemplateOutputWithContext(context.Context) GetGatewaytemplatesOrgGatewaytemplateOutput
+}
+
+type GetGatewaytemplatesOrgGatewaytemplateArgs struct {
+	CreatedTime  pulumi.Float64Input `pulumi:"createdTime"`
+	Id           pulumi.StringInput  `pulumi:"id"`
+	ModifiedTime pulumi.Float64Input `pulumi:"modifiedTime"`
+	Name         pulumi.StringInput  `pulumi:"name"`
+	OrgId        pulumi.StringInput  `pulumi:"orgId"`
+}
+
+func (GetGatewaytemplatesOrgGatewaytemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewaytemplatesOrgGatewaytemplate)(nil)).Elem()
+}
+
+func (i GetGatewaytemplatesOrgGatewaytemplateArgs) ToGetGatewaytemplatesOrgGatewaytemplateOutput() GetGatewaytemplatesOrgGatewaytemplateOutput {
+	return i.ToGetGatewaytemplatesOrgGatewaytemplateOutputWithContext(context.Background())
+}
+
+func (i GetGatewaytemplatesOrgGatewaytemplateArgs) ToGetGatewaytemplatesOrgGatewaytemplateOutputWithContext(ctx context.Context) GetGatewaytemplatesOrgGatewaytemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaytemplatesOrgGatewaytemplateOutput)
+}
+
+// GetGatewaytemplatesOrgGatewaytemplateArrayInput is an input type that accepts GetGatewaytemplatesOrgGatewaytemplateArray and GetGatewaytemplatesOrgGatewaytemplateArrayOutput values.
+// You can construct a concrete instance of `GetGatewaytemplatesOrgGatewaytemplateArrayInput` via:
+//
+//	GetGatewaytemplatesOrgGatewaytemplateArray{ GetGatewaytemplatesOrgGatewaytemplateArgs{...} }
+type GetGatewaytemplatesOrgGatewaytemplateArrayInput interface {
+	pulumi.Input
+
+	ToGetGatewaytemplatesOrgGatewaytemplateArrayOutput() GetGatewaytemplatesOrgGatewaytemplateArrayOutput
+	ToGetGatewaytemplatesOrgGatewaytemplateArrayOutputWithContext(context.Context) GetGatewaytemplatesOrgGatewaytemplateArrayOutput
+}
+
+type GetGatewaytemplatesOrgGatewaytemplateArray []GetGatewaytemplatesOrgGatewaytemplateInput
+
+func (GetGatewaytemplatesOrgGatewaytemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewaytemplatesOrgGatewaytemplate)(nil)).Elem()
+}
+
+func (i GetGatewaytemplatesOrgGatewaytemplateArray) ToGetGatewaytemplatesOrgGatewaytemplateArrayOutput() GetGatewaytemplatesOrgGatewaytemplateArrayOutput {
+	return i.ToGetGatewaytemplatesOrgGatewaytemplateArrayOutputWithContext(context.Background())
+}
+
+func (i GetGatewaytemplatesOrgGatewaytemplateArray) ToGetGatewaytemplatesOrgGatewaytemplateArrayOutputWithContext(ctx context.Context) GetGatewaytemplatesOrgGatewaytemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaytemplatesOrgGatewaytemplateArrayOutput)
+}
+
+type GetGatewaytemplatesOrgGatewaytemplateOutput struct{ *pulumi.OutputState }
+
+func (GetGatewaytemplatesOrgGatewaytemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewaytemplatesOrgGatewaytemplate)(nil)).Elem()
+}
+
+func (o GetGatewaytemplatesOrgGatewaytemplateOutput) ToGetGatewaytemplatesOrgGatewaytemplateOutput() GetGatewaytemplatesOrgGatewaytemplateOutput {
+	return o
+}
+
+func (o GetGatewaytemplatesOrgGatewaytemplateOutput) ToGetGatewaytemplatesOrgGatewaytemplateOutputWithContext(ctx context.Context) GetGatewaytemplatesOrgGatewaytemplateOutput {
+	return o
+}
+
+func (o GetGatewaytemplatesOrgGatewaytemplateOutput) CreatedTime() pulumi.Float64Output {
+	return o.ApplyT(func(v GetGatewaytemplatesOrgGatewaytemplate) float64 { return v.CreatedTime }).(pulumi.Float64Output)
+}
+
+func (o GetGatewaytemplatesOrgGatewaytemplateOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaytemplatesOrgGatewaytemplate) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetGatewaytemplatesOrgGatewaytemplateOutput) ModifiedTime() pulumi.Float64Output {
+	return o.ApplyT(func(v GetGatewaytemplatesOrgGatewaytemplate) float64 { return v.ModifiedTime }).(pulumi.Float64Output)
+}
+
+func (o GetGatewaytemplatesOrgGatewaytemplateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaytemplatesOrgGatewaytemplate) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetGatewaytemplatesOrgGatewaytemplateOutput) OrgId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaytemplatesOrgGatewaytemplate) string { return v.OrgId }).(pulumi.StringOutput)
+}
+
+type GetGatewaytemplatesOrgGatewaytemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGatewaytemplatesOrgGatewaytemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewaytemplatesOrgGatewaytemplate)(nil)).Elem()
+}
+
+func (o GetGatewaytemplatesOrgGatewaytemplateArrayOutput) ToGetGatewaytemplatesOrgGatewaytemplateArrayOutput() GetGatewaytemplatesOrgGatewaytemplateArrayOutput {
+	return o
+}
+
+func (o GetGatewaytemplatesOrgGatewaytemplateArrayOutput) ToGetGatewaytemplatesOrgGatewaytemplateArrayOutputWithContext(ctx context.Context) GetGatewaytemplatesOrgGatewaytemplateArrayOutput {
+	return o
+}
+
+func (o GetGatewaytemplatesOrgGatewaytemplateArrayOutput) Index(i pulumi.IntInput) GetGatewaytemplatesOrgGatewaytemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewaytemplatesOrgGatewaytemplate {
+		return vs[0].([]GetGatewaytemplatesOrgGatewaytemplate)[vs[1].(int)]
+	}).(GetGatewaytemplatesOrgGatewaytemplateOutput)
+}
+
+type GetIdpprofilesOrgIdpprofile struct {
+	// enum: `critical`, `standard`, `strict`
+	BaseProfile string `pulumi:"baseProfile"`
+	// When the object has been created, in epoch
+	CreatedTime float64 `pulumi:"createdTime"`
+	// Unique ID of the object instance in the Mist Organization
+	Id string `pulumi:"id"`
+	// When the object has been modified for the last time, in epoch
+	ModifiedTime float64                                `pulumi:"modifiedTime"`
+	Name         string                                 `pulumi:"name"`
+	OrgId        string                                 `pulumi:"orgId"`
+	Overwrites   []GetIdpprofilesOrgIdpprofileOverwrite `pulumi:"overwrites"`
+}
+
+// GetIdpprofilesOrgIdpprofileInput is an input type that accepts GetIdpprofilesOrgIdpprofileArgs and GetIdpprofilesOrgIdpprofileOutput values.
+// You can construct a concrete instance of `GetIdpprofilesOrgIdpprofileInput` via:
+//
+//	GetIdpprofilesOrgIdpprofileArgs{...}
+type GetIdpprofilesOrgIdpprofileInput interface {
+	pulumi.Input
+
+	ToGetIdpprofilesOrgIdpprofileOutput() GetIdpprofilesOrgIdpprofileOutput
+	ToGetIdpprofilesOrgIdpprofileOutputWithContext(context.Context) GetIdpprofilesOrgIdpprofileOutput
+}
+
+type GetIdpprofilesOrgIdpprofileArgs struct {
+	// enum: `critical`, `standard`, `strict`
+	BaseProfile pulumi.StringInput `pulumi:"baseProfile"`
+	// When the object has been created, in epoch
+	CreatedTime pulumi.Float64Input `pulumi:"createdTime"`
+	// Unique ID of the object instance in the Mist Organization
+	Id pulumi.StringInput `pulumi:"id"`
+	// When the object has been modified for the last time, in epoch
+	ModifiedTime pulumi.Float64Input                            `pulumi:"modifiedTime"`
+	Name         pulumi.StringInput                             `pulumi:"name"`
+	OrgId        pulumi.StringInput                             `pulumi:"orgId"`
+	Overwrites   GetIdpprofilesOrgIdpprofileOverwriteArrayInput `pulumi:"overwrites"`
+}
+
+func (GetIdpprofilesOrgIdpprofileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpprofilesOrgIdpprofile)(nil)).Elem()
+}
+
+func (i GetIdpprofilesOrgIdpprofileArgs) ToGetIdpprofilesOrgIdpprofileOutput() GetIdpprofilesOrgIdpprofileOutput {
+	return i.ToGetIdpprofilesOrgIdpprofileOutputWithContext(context.Background())
+}
+
+func (i GetIdpprofilesOrgIdpprofileArgs) ToGetIdpprofilesOrgIdpprofileOutputWithContext(ctx context.Context) GetIdpprofilesOrgIdpprofileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpprofilesOrgIdpprofileOutput)
+}
+
+// GetIdpprofilesOrgIdpprofileArrayInput is an input type that accepts GetIdpprofilesOrgIdpprofileArray and GetIdpprofilesOrgIdpprofileArrayOutput values.
+// You can construct a concrete instance of `GetIdpprofilesOrgIdpprofileArrayInput` via:
+//
+//	GetIdpprofilesOrgIdpprofileArray{ GetIdpprofilesOrgIdpprofileArgs{...} }
+type GetIdpprofilesOrgIdpprofileArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpprofilesOrgIdpprofileArrayOutput() GetIdpprofilesOrgIdpprofileArrayOutput
+	ToGetIdpprofilesOrgIdpprofileArrayOutputWithContext(context.Context) GetIdpprofilesOrgIdpprofileArrayOutput
+}
+
+type GetIdpprofilesOrgIdpprofileArray []GetIdpprofilesOrgIdpprofileInput
+
+func (GetIdpprofilesOrgIdpprofileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpprofilesOrgIdpprofile)(nil)).Elem()
+}
+
+func (i GetIdpprofilesOrgIdpprofileArray) ToGetIdpprofilesOrgIdpprofileArrayOutput() GetIdpprofilesOrgIdpprofileArrayOutput {
+	return i.ToGetIdpprofilesOrgIdpprofileArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpprofilesOrgIdpprofileArray) ToGetIdpprofilesOrgIdpprofileArrayOutputWithContext(ctx context.Context) GetIdpprofilesOrgIdpprofileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpprofilesOrgIdpprofileArrayOutput)
+}
+
+type GetIdpprofilesOrgIdpprofileOutput struct{ *pulumi.OutputState }
+
+func (GetIdpprofilesOrgIdpprofileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpprofilesOrgIdpprofile)(nil)).Elem()
+}
+
+func (o GetIdpprofilesOrgIdpprofileOutput) ToGetIdpprofilesOrgIdpprofileOutput() GetIdpprofilesOrgIdpprofileOutput {
+	return o
+}
+
+func (o GetIdpprofilesOrgIdpprofileOutput) ToGetIdpprofilesOrgIdpprofileOutputWithContext(ctx context.Context) GetIdpprofilesOrgIdpprofileOutput {
+	return o
+}
+
+// enum: `critical`, `standard`, `strict`
+func (o GetIdpprofilesOrgIdpprofileOutput) BaseProfile() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpprofilesOrgIdpprofile) string { return v.BaseProfile }).(pulumi.StringOutput)
+}
+
+// When the object has been created, in epoch
+func (o GetIdpprofilesOrgIdpprofileOutput) CreatedTime() pulumi.Float64Output {
+	return o.ApplyT(func(v GetIdpprofilesOrgIdpprofile) float64 { return v.CreatedTime }).(pulumi.Float64Output)
+}
+
+// Unique ID of the object instance in the Mist Organization
+func (o GetIdpprofilesOrgIdpprofileOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpprofilesOrgIdpprofile) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// When the object has been modified for the last time, in epoch
+func (o GetIdpprofilesOrgIdpprofileOutput) ModifiedTime() pulumi.Float64Output {
+	return o.ApplyT(func(v GetIdpprofilesOrgIdpprofile) float64 { return v.ModifiedTime }).(pulumi.Float64Output)
+}
+
+func (o GetIdpprofilesOrgIdpprofileOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpprofilesOrgIdpprofile) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetIdpprofilesOrgIdpprofileOutput) OrgId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpprofilesOrgIdpprofile) string { return v.OrgId }).(pulumi.StringOutput)
+}
+
+func (o GetIdpprofilesOrgIdpprofileOutput) Overwrites() GetIdpprofilesOrgIdpprofileOverwriteArrayOutput {
+	return o.ApplyT(func(v GetIdpprofilesOrgIdpprofile) []GetIdpprofilesOrgIdpprofileOverwrite { return v.Overwrites }).(GetIdpprofilesOrgIdpprofileOverwriteArrayOutput)
+}
+
+type GetIdpprofilesOrgIdpprofileArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpprofilesOrgIdpprofileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpprofilesOrgIdpprofile)(nil)).Elem()
+}
+
+func (o GetIdpprofilesOrgIdpprofileArrayOutput) ToGetIdpprofilesOrgIdpprofileArrayOutput() GetIdpprofilesOrgIdpprofileArrayOutput {
+	return o
+}
+
+func (o GetIdpprofilesOrgIdpprofileArrayOutput) ToGetIdpprofilesOrgIdpprofileArrayOutputWithContext(ctx context.Context) GetIdpprofilesOrgIdpprofileArrayOutput {
+	return o
+}
+
+func (o GetIdpprofilesOrgIdpprofileArrayOutput) Index(i pulumi.IntInput) GetIdpprofilesOrgIdpprofileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpprofilesOrgIdpprofile {
+		return vs[0].([]GetIdpprofilesOrgIdpprofile)[vs[1].(int)]
+	}).(GetIdpprofilesOrgIdpprofileOutput)
+}
+
 type GetIdpprofilesOrgIdpprofileOverwrite struct {
 	// enum:
 	//   * alert (default)
@@ -9789,6 +11234,27 @@ func (o GetWxtagsOrgWxtagSpecArrayOutput) Index(i pulumi.IntInput) GetWxtagsOrgW
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmtemplatesOrgAlarmtemplateDeliveryInput)(nil)).Elem(), GetAlarmtemplatesOrgAlarmtemplateDeliveryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmtemplatesOrgAlarmtemplateRulesInput)(nil)).Elem(), GetAlarmtemplatesOrgAlarmtemplateRulesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmtemplatesOrgAlarmtemplateRulesMapInput)(nil)).Elem(), GetAlarmtemplatesOrgAlarmtemplateRulesMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryInput)(nil)).Elem(), GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAvprofilesOrgAvprofileInput)(nil)).Elem(), GetAvprofilesOrgAvprofileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAvprofilesOrgAvprofileArrayInput)(nil)).Elem(), GetAvprofilesOrgAvprofileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDeviceprofilesApDeviceprofileInput)(nil)).Elem(), GetDeviceprofilesApDeviceprofileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDeviceprofilesApDeviceprofileArrayInput)(nil)).Elem(), GetDeviceprofilesApDeviceprofileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDeviceprofilesGatewayDeviceprofileInput)(nil)).Elem(), GetDeviceprofilesGatewayDeviceprofileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDeviceprofilesGatewayDeviceprofileArrayInput)(nil)).Elem(), GetDeviceprofilesGatewayDeviceprofileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEvpnTopologiesOrgEvpnTopologyInput)(nil)).Elem(), GetEvpnTopologiesOrgEvpnTopologyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEvpnTopologiesOrgEvpnTopologyArrayInput)(nil)).Elem(), GetEvpnTopologiesOrgEvpnTopologyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsInput)(nil)).Elem(), GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayInput)(nil)).Elem(), GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayInput)(nil)).Elem(), GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesInput)(nil)).Elem(), GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapInput)(nil)).Elem(), GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaytemplatesOrgGatewaytemplateInput)(nil)).Elem(), GetGatewaytemplatesOrgGatewaytemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaytemplatesOrgGatewaytemplateArrayInput)(nil)).Elem(), GetGatewaytemplatesOrgGatewaytemplateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpprofilesOrgIdpprofileInput)(nil)).Elem(), GetIdpprofilesOrgIdpprofileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpprofilesOrgIdpprofileArrayInput)(nil)).Elem(), GetIdpprofilesOrgIdpprofileArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpprofilesOrgIdpprofileOverwriteInput)(nil)).Elem(), GetIdpprofilesOrgIdpprofileOverwriteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpprofilesOrgIdpprofileOverwriteArrayInput)(nil)).Elem(), GetIdpprofilesOrgIdpprofileOverwriteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpprofilesOrgIdpprofileOverwriteMatchingInput)(nil)).Elem(), GetIdpprofilesOrgIdpprofileOverwriteMatchingArgs{})
@@ -9896,6 +11362,27 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWxtagsOrgWxtagArrayInput)(nil)).Elem(), GetWxtagsOrgWxtagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWxtagsOrgWxtagSpecInput)(nil)).Elem(), GetWxtagsOrgWxtagSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWxtagsOrgWxtagSpecArrayInput)(nil)).Elem(), GetWxtagsOrgWxtagSpecArray{})
+	pulumi.RegisterOutputType(GetAlarmtemplatesOrgAlarmtemplateDeliveryOutput{})
+	pulumi.RegisterOutputType(GetAlarmtemplatesOrgAlarmtemplateRulesOutput{})
+	pulumi.RegisterOutputType(GetAlarmtemplatesOrgAlarmtemplateRulesMapOutput{})
+	pulumi.RegisterOutputType(GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput{})
+	pulumi.RegisterOutputType(GetAvprofilesOrgAvprofileOutput{})
+	pulumi.RegisterOutputType(GetAvprofilesOrgAvprofileArrayOutput{})
+	pulumi.RegisterOutputType(GetDeviceprofilesApDeviceprofileOutput{})
+	pulumi.RegisterOutputType(GetDeviceprofilesApDeviceprofileArrayOutput{})
+	pulumi.RegisterOutputType(GetDeviceprofilesGatewayDeviceprofileOutput{})
+	pulumi.RegisterOutputType(GetDeviceprofilesGatewayDeviceprofileArrayOutput{})
+	pulumi.RegisterOutputType(GetEvpnTopologiesOrgEvpnTopologyOutput{})
+	pulumi.RegisterOutputType(GetEvpnTopologiesOrgEvpnTopologyArrayOutput{})
+	pulumi.RegisterOutputType(GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput{})
+	pulumi.RegisterOutputType(GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutput{})
+	pulumi.RegisterOutputType(GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayOutput{})
+	pulumi.RegisterOutputType(GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesOutput{})
+	pulumi.RegisterOutputType(GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstancesMapOutput{})
+	pulumi.RegisterOutputType(GetGatewaytemplatesOrgGatewaytemplateOutput{})
+	pulumi.RegisterOutputType(GetGatewaytemplatesOrgGatewaytemplateArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpprofilesOrgIdpprofileOutput{})
+	pulumi.RegisterOutputType(GetIdpprofilesOrgIdpprofileArrayOutput{})
 	pulumi.RegisterOutputType(GetIdpprofilesOrgIdpprofileOverwriteOutput{})
 	pulumi.RegisterOutputType(GetIdpprofilesOrgIdpprofileOverwriteArrayOutput{})
 	pulumi.RegisterOutputType(GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput{})

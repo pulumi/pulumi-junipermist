@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.junipermist.Utilities;
 import com.pulumi.junipermist.org.WebhookArgs;
 import com.pulumi.junipermist.org.inputs.WebhookState;
+import com.pulumi.junipermist.org.outputs.WebhookRule;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -85,6 +86,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="junipermist:org/webhook:Webhook")
 public class Webhook extends com.pulumi.resources.CustomResource {
+    /**
+     * Default action applied when none of the `rules` match the incoming event
+     * 
+     */
+    @Export(name="defaultAction", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> defaultAction;
+
+    /**
+     * @return Default action applied when none of the `rules` match the incoming event
+     * 
+     */
+    public Output<Optional<String>> defaultAction() {
+        return Codegen.optional(this.defaultAction);
+    }
     /**
      * Whether webhook is enabled
      * 
@@ -238,6 +253,20 @@ public class Webhook extends com.pulumi.resources.CustomResource {
      */
     public Output<String> orgId() {
         return this.orgId;
+    }
+    /**
+     * Optional filtering rules to override `topics`. Each rule permits or blocks events for a topic, optionally based on event payload matching criteria
+     * 
+     */
+    @Export(name="rules", refs={List.class,WebhookRule.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<WebhookRule>> rules;
+
+    /**
+     * @return Optional filtering rules to override `topics`. Each rule permits or blocks events for a topic, optionally based on event payload matching criteria
+     * 
+     */
+    public Output<Optional<List<WebhookRule>>> rules() {
+        return Codegen.optional(this.rules);
     }
     /**
      * Only if `type`=`http-post`

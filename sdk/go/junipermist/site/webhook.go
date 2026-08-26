@@ -74,6 +74,8 @@ type Webhook struct {
 
 	// Asset filter identifiers used to restrict `asset-raw-rssi` webhook events
 	AssetfilterIds pulumi.StringArrayOutput `pulumi:"assetfilterIds"`
+	// Default action applied when none of the `rules` match the incoming event
+	DefaultAction pulumi.StringPtrOutput `pulumi:"defaultAction"`
 	// Whether webhook is enabled
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
@@ -96,6 +98,8 @@ type Webhook struct {
 	Oauth2Username pulumi.StringPtrOutput `pulumi:"oauth2Username"`
 	// Organization that owns the webhook
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
+	// Optional filtering rules to override `topics`. Each rule permits or blocks events for a topic, optionally based on event payload matching criteria
+	Rules WebhookRuleArrayOutput `pulumi:"rules"`
 	// Only if `type`=`http-post`
 	Secret pulumi.StringPtrOutput `pulumi:"secret"`
 	// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
@@ -174,6 +178,8 @@ func GetWebhook(ctx *pulumi.Context,
 type webhookState struct {
 	// Asset filter identifiers used to restrict `asset-raw-rssi` webhook events
 	AssetfilterIds []string `pulumi:"assetfilterIds"`
+	// Default action applied when none of the `rules` match the incoming event
+	DefaultAction *string `pulumi:"defaultAction"`
 	// Whether webhook is enabled
 	Enabled *bool `pulumi:"enabled"`
 	// If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
@@ -196,6 +202,8 @@ type webhookState struct {
 	Oauth2Username *string `pulumi:"oauth2Username"`
 	// Organization that owns the webhook
 	OrgId *string `pulumi:"orgId"`
+	// Optional filtering rules to override `topics`. Each rule permits or blocks events for a topic, optionally based on event payload matching criteria
+	Rules []WebhookRule `pulumi:"rules"`
 	// Only if `type`=`http-post`
 	Secret *string `pulumi:"secret"`
 	// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
@@ -217,6 +225,8 @@ type webhookState struct {
 type WebhookState struct {
 	// Asset filter identifiers used to restrict `asset-raw-rssi` webhook events
 	AssetfilterIds pulumi.StringArrayInput
+	// Default action applied when none of the `rules` match the incoming event
+	DefaultAction pulumi.StringPtrInput
 	// Whether webhook is enabled
 	Enabled pulumi.BoolPtrInput
 	// If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
@@ -239,6 +249,8 @@ type WebhookState struct {
 	Oauth2Username pulumi.StringPtrInput
 	// Organization that owns the webhook
 	OrgId pulumi.StringPtrInput
+	// Optional filtering rules to override `topics`. Each rule permits or blocks events for a topic, optionally based on event payload matching criteria
+	Rules WebhookRuleArrayInput
 	// Only if `type`=`http-post`
 	Secret pulumi.StringPtrInput
 	// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
@@ -264,6 +276,8 @@ func (WebhookState) ElementType() reflect.Type {
 type webhookArgs struct {
 	// Asset filter identifiers used to restrict `asset-raw-rssi` webhook events
 	AssetfilterIds []string `pulumi:"assetfilterIds"`
+	// Default action applied when none of the `rules` match the incoming event
+	DefaultAction *string `pulumi:"defaultAction"`
 	// Whether webhook is enabled
 	Enabled *bool `pulumi:"enabled"`
 	// If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
@@ -284,6 +298,8 @@ type webhookArgs struct {
 	Oauth2TokenUrl *string `pulumi:"oauth2TokenUrl"`
 	// Required when `oauth2GrantType`==`password`; username used for the OAuth2 token request
 	Oauth2Username *string `pulumi:"oauth2Username"`
+	// Optional filtering rules to override `topics`. Each rule permits or blocks events for a topic, optionally based on event payload matching criteria
+	Rules []WebhookRule `pulumi:"rules"`
 	// Only if `type`=`http-post`
 	Secret *string `pulumi:"secret"`
 	// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
@@ -306,6 +322,8 @@ type webhookArgs struct {
 type WebhookArgs struct {
 	// Asset filter identifiers used to restrict `asset-raw-rssi` webhook events
 	AssetfilterIds pulumi.StringArrayInput
+	// Default action applied when none of the `rules` match the incoming event
+	DefaultAction pulumi.StringPtrInput
 	// Whether webhook is enabled
 	Enabled pulumi.BoolPtrInput
 	// If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
@@ -326,6 +344,8 @@ type WebhookArgs struct {
 	Oauth2TokenUrl pulumi.StringPtrInput
 	// Required when `oauth2GrantType`==`password`; username used for the OAuth2 token request
 	Oauth2Username pulumi.StringPtrInput
+	// Optional filtering rules to override `topics`. Each rule permits or blocks events for a topic, optionally based on event payload matching criteria
+	Rules WebhookRuleArrayInput
 	// Only if `type`=`http-post`
 	Secret pulumi.StringPtrInput
 	// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
@@ -436,6 +456,11 @@ func (o WebhookOutput) AssetfilterIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.StringArrayOutput { return v.AssetfilterIds }).(pulumi.StringArrayOutput)
 }
 
+// Default action applied when none of the `rules` match the incoming event
+func (o WebhookOutput) DefaultAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Webhook) pulumi.StringPtrOutput { return v.DefaultAction }).(pulumi.StringPtrOutput)
+}
+
 // Whether webhook is enabled
 func (o WebhookOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
@@ -489,6 +514,11 @@ func (o WebhookOutput) Oauth2Username() pulumi.StringPtrOutput {
 // Organization that owns the webhook
 func (o WebhookOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
+}
+
+// Optional filtering rules to override `topics`. Each rule permits or blocks events for a topic, optionally based on event payload matching criteria
+func (o WebhookOutput) Rules() WebhookRuleArrayOutput {
+	return o.ApplyT(func(v *Webhook) WebhookRuleArrayOutput { return v.Rules }).(WebhookRuleArrayOutput)
 }
 
 // Only if `type`=`http-post`

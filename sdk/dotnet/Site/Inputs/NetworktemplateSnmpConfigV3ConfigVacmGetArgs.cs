@@ -14,12 +14,19 @@ namespace Pulumi.JuniperMist.Site.Inputs
     {
         [Input("accesses")]
         private InputList<Inputs.NetworktemplateSnmpConfigV3ConfigVacmAccessGetArgs>? _accesses;
+
+        /// <summary>
+        /// VACM access rules for SNMPv3
+        /// </summary>
         public InputList<Inputs.NetworktemplateSnmpConfigV3ConfigVacmAccessGetArgs> Accesses
         {
             get => _accesses ?? (_accesses = new InputList<Inputs.NetworktemplateSnmpConfigV3ConfigVacmAccessGetArgs>());
             set => _accesses = value;
         }
 
+        /// <summary>
+        /// VACM security-name to group mappings
+        /// </summary>
         [Input("securityToGroup")]
         public Input<Inputs.NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupGetArgs>? SecurityToGroup { get; set; }
 

@@ -13,33 +13,57 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class NetworktemplateRemoteSyslogServer
     {
+        /// <summary>
+        /// Syslog facilities and severities sent to this server
+        /// </summary>
         public readonly ImmutableArray<Outputs.NetworktemplateRemoteSyslogServerContent> Contents;
+        /// <summary>
+        /// Whether to include explicit syslog priority values in messages sent to this server
+        /// </summary>
         public readonly bool? ExplicitPriority;
         /// <summary>
-        /// enum: `Any`, `Authorization`, `change-log`, `Config`, `conflict-log`, `Daemon`, `Dfc`, `External`, `Firewall`, `Ftp`, `interactive-commands`, `Kernel`, `Ntp`, `Pfe`, `Security`, `User`
+        /// Default syslog facility for messages sent to this server
         /// </summary>
         public readonly string? Facility;
+        /// <summary>
+        /// Address or hostname of the remote syslog server
+        /// </summary>
         public readonly string? Host;
+        /// <summary>
+        /// Expression used to filter log messages sent to this server
+        /// </summary>
         public readonly string? Match;
+        /// <summary>
+        /// Network port used by the remote syslog server
+        /// </summary>
         public readonly string? Port;
         /// <summary>
-        /// enum: `Tcp`, `Udp`
+        /// Transport protocol used for this remote syslog server
         /// </summary>
         public readonly string? Protocol;
+        /// <summary>
+        /// Routing instance used to reach this remote syslog server
+        /// </summary>
         public readonly string? RoutingInstance;
         /// <summary>
-        /// Name of the server
+        /// TLS server name used when verifying the remote syslog server certificate
         /// </summary>
         public readonly string? ServerName;
         /// <summary>
-        /// enum: `Alert`, `Any`, `Critical`, `Emergency`, `Error`, `Info`, `Notice`, `Warning`
+        /// Default syslog severity for messages sent to this server
         /// </summary>
         public readonly string? Severity;
         /// <summary>
-        /// If SourceAddress is configured, will use the vlan firstly otherwise use source_ip
+        /// Source address for syslog traffic. If configured, Mist uses the VLAN first; otherwise it uses `SourceIp`
         /// </summary>
         public readonly string? SourceAddress;
+        /// <summary>
+        /// Whether to include structured syslog data in messages sent to this server
+        /// </summary>
         public readonly bool? StructuredData;
+        /// <summary>
+        /// Syslog tag value added to messages sent to this server
+        /// </summary>
         public readonly string? Tag;
 
         [OutputConstructor]

@@ -13,17 +13,20 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class NetworktemplateRoutingPoliciesTermGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// When used as import policy
+        /// Policy actions applied when this routing policy term matches
         /// </summary>
         [Input("actions")]
         public Input<Inputs.NetworktemplateRoutingPoliciesTermActionsGetArgs>? Actions { get; set; }
 
         /// <summary>
-        /// zero or more criteria/filter can be specified to match the term, all criteria have to be met
+        /// Route match criteria that must be satisfied before actions are applied
         /// </summary>
         [Input("matching")]
         public Input<Inputs.NetworktemplateRoutingPoliciesTermMatchingGetArgs>? Matching { get; set; }
 
+        /// <summary>
+        /// Display name of the switch routing policy term
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 

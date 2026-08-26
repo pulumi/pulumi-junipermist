@@ -98,6 +98,21 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Enable EAP-MD5 for MAB. WARNING: Not FIPS compliant, use only if required for legacy device support.
+     * 
+     */
+    @Import(name="enableEapMd5ForMab")
+    private @Nullable Output<Boolean> enableEapMd5ForMab;
+
+    /**
+     * @return Enable EAP-MD5 for MAB. WARNING: Not FIPS compliant, use only if required for legacy device support.
+     * 
+     */
+    public Optional<Output<Boolean>> enableEapMd5ForMab() {
+        return Optional.ofNullable(this.enableEapMd5ForMab);
+    }
+
+    /**
      * By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliance NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, Mist Edge clusters that have mistNac enabled
      * 
      */
@@ -233,14 +248,14 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Allow customer to configure an expiry time for usermacs by attaching a Quarantine label to those which have been inactive for the configured period of time (in days). 0 means no expiry
+     * Allow customer to configure an expiry time for usermacs by attaching an `inactiveEndpoint` label to those which have been inactive for the configured period of time (in days). 0 means no expiry
      * 
      */
     @Import(name="usermacExpiry")
     private @Nullable Output<Integer> usermacExpiry;
 
     /**
-     * @return Allow customer to configure an expiry time for usermacs by attaching a Quarantine label to those which have been inactive for the configured period of time (in days). 0 means no expiry
+     * @return Allow customer to configure an expiry time for usermacs by attaching an `inactiveEndpoint` label to those which have been inactive for the configured period of time (in days). 0 means no expiry
      * 
      */
     public Optional<Output<Integer>> usermacExpiry() {
@@ -255,6 +270,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         this.defaultIdpId = $.defaultIdpId;
         this.disableRsaeAlgorithms = $.disableRsaeAlgorithms;
         this.eapSslSecurityLevel = $.eapSslSecurityLevel;
+        this.enableEapMd5ForMab = $.enableEapMd5ForMab;
         this.euOnly = $.euOnly;
         this.fingerprinting = $.fingerprinting;
         this.idpMachineCertLookupField = $.idpMachineCertLookupField;
@@ -398,6 +414,27 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder eapSslSecurityLevel(Integer eapSslSecurityLevel) {
             return eapSslSecurityLevel(Output.of(eapSslSecurityLevel));
+        }
+
+        /**
+         * @param enableEapMd5ForMab Enable EAP-MD5 for MAB. WARNING: Not FIPS compliant, use only if required for legacy device support.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableEapMd5ForMab(@Nullable Output<Boolean> enableEapMd5ForMab) {
+            $.enableEapMd5ForMab = enableEapMd5ForMab;
+            return this;
+        }
+
+        /**
+         * @param enableEapMd5ForMab Enable EAP-MD5 for MAB. WARNING: Not FIPS compliant, use only if required for legacy device support.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableEapMd5ForMab(Boolean enableEapMd5ForMab) {
+            return enableEapMd5ForMab(Output.of(enableEapMd5ForMab));
         }
 
         /**
@@ -600,7 +637,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param usermacExpiry Allow customer to configure an expiry time for usermacs by attaching a Quarantine label to those which have been inactive for the configured period of time (in days). 0 means no expiry
+         * @param usermacExpiry Allow customer to configure an expiry time for usermacs by attaching an `inactiveEndpoint` label to those which have been inactive for the configured period of time (in days). 0 means no expiry
          * 
          * @return builder
          * 
@@ -611,7 +648,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param usermacExpiry Allow customer to configure an expiry time for usermacs by attaching a Quarantine label to those which have been inactive for the configured period of time (in days). 0 means no expiry
+         * @param usermacExpiry Allow customer to configure an expiry time for usermacs by attaching an `inactiveEndpoint` label to those which have been inactive for the configured period of time (in days). 0 means no expiry
          * 
          * @return builder
          * 

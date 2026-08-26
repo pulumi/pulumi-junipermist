@@ -245,18 +245,33 @@ public final class PskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Binding mode for this PSK, enum: `macs`, `multi`, `single`
+     * Binding mode for this PSK, enum: `macs`, `multi`, `single`, `usermacLabels`
      * 
      */
     @Import(name="usage")
     private @Nullable Output<String> usage;
 
     /**
-     * @return Binding mode for this PSK, enum: `macs`, `multi`, `single`
+     * @return Binding mode for this PSK, enum: `macs`, `multi`, `single`, `usermacLabels`
      * 
      */
     public Optional<Output<String>> usage() {
         return Optional.ofNullable(this.usage);
+    }
+
+    /**
+     * Usermac labels allowed when `usage`==`usermacLabels`; this list is capped at 100 entries
+     * 
+     */
+    @Import(name="usermacLabels")
+    private @Nullable Output<List<String>> usermacLabels;
+
+    /**
+     * @return Usermac labels allowed when `usage`==`usermacLabels`; this list is capped at 100 entries
+     * 
+     */
+    public Optional<Output<List<String>>> usermacLabels() {
+        return Optional.ofNullable(this.usermacLabels);
     }
 
     /**
@@ -308,6 +323,7 @@ public final class PskArgs extends com.pulumi.resources.ResourceArgs {
         this.role = $.role;
         this.ssid = $.ssid;
         this.usage = $.usage;
+        this.usermacLabels = $.usermacLabels;
         this.vlanId = $.vlanId;
         this.vlanName = $.vlanName;
     }
@@ -656,7 +672,7 @@ public final class PskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param usage Binding mode for this PSK, enum: `macs`, `multi`, `single`
+         * @param usage Binding mode for this PSK, enum: `macs`, `multi`, `single`, `usermacLabels`
          * 
          * @return builder
          * 
@@ -667,13 +683,44 @@ public final class PskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param usage Binding mode for this PSK, enum: `macs`, `multi`, `single`
+         * @param usage Binding mode for this PSK, enum: `macs`, `multi`, `single`, `usermacLabels`
          * 
          * @return builder
          * 
          */
         public Builder usage(String usage) {
             return usage(Output.of(usage));
+        }
+
+        /**
+         * @param usermacLabels Usermac labels allowed when `usage`==`usermacLabels`; this list is capped at 100 entries
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usermacLabels(@Nullable Output<List<String>> usermacLabels) {
+            $.usermacLabels = usermacLabels;
+            return this;
+        }
+
+        /**
+         * @param usermacLabels Usermac labels allowed when `usage`==`usermacLabels`; this list is capped at 100 entries
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usermacLabels(List<String> usermacLabels) {
+            return usermacLabels(Output.of(usermacLabels));
+        }
+
+        /**
+         * @param usermacLabels Usermac labels allowed when `usage`==`usermacLabels`; this list is capped at 100 entries
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usermacLabels(String... usermacLabels) {
+            return usermacLabels(List.of(usermacLabels));
         }
 
         /**

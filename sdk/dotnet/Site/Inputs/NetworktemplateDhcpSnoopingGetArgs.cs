@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class NetworktemplateDhcpSnoopingGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether DHCP snooping applies to all configured networks
+        /// </summary>
         [Input("allNetworks")]
         public Input<bool>? AllNetworks { get; set; }
 
@@ -27,6 +30,9 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("enableIpSourceGuard")]
         public Input<bool>? EnableIpSourceGuard { get; set; }
 
+        /// <summary>
+        /// Whether DHCP snooping is enabled
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
@@ -34,7 +40,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputList<string>? _networks;
 
         /// <summary>
-        /// If `AllNetworks`==`False`, list of network with DHCP snooping enabled
+        /// Network names with DHCP snooping enabled when `AllNetworks`==`False`
         /// </summary>
         public InputList<string> Networks
         {

@@ -98,6 +98,8 @@ type Rftemplate struct {
 	Band6 RftemplateBand6PtrOutput `pulumi:"band6"`
 	// Optional, country code to use. If specified, this gets applied to all sites using the RF Template
 	CountryCode pulumi.StringPtrOutput `pulumi:"countryCode"`
+	// Whether U-NII-4 channels (169, 173, 177) are enabled
+	EnableUnii4 pulumi.BoolPtrOutput `pulumi:"enableUnii4"`
 	// overwrites for a specific model. If a band is specified, it will shadow the default. Property key is the model name (e.g. "AP63")
 	ModelSpecific RftemplateModelSpecificMapOutput `pulumi:"modelSpecific"`
 	// The name of the RF template
@@ -159,6 +161,8 @@ type rftemplateState struct {
 	Band6 *RftemplateBand6 `pulumi:"band6"`
 	// Optional, country code to use. If specified, this gets applied to all sites using the RF Template
 	CountryCode *string `pulumi:"countryCode"`
+	// Whether U-NII-4 channels (169, 173, 177) are enabled
+	EnableUnii4 *bool `pulumi:"enableUnii4"`
 	// overwrites for a specific model. If a band is specified, it will shadow the default. Property key is the model name (e.g. "AP63")
 	ModelSpecific map[string]RftemplateModelSpecific `pulumi:"modelSpecific"`
 	// The name of the RF template
@@ -188,6 +192,8 @@ type RftemplateState struct {
 	Band6 RftemplateBand6PtrInput
 	// Optional, country code to use. If specified, this gets applied to all sites using the RF Template
 	CountryCode pulumi.StringPtrInput
+	// Whether U-NII-4 channels (169, 173, 177) are enabled
+	EnableUnii4 pulumi.BoolPtrInput
 	// overwrites for a specific model. If a band is specified, it will shadow the default. Property key is the model name (e.g. "AP63")
 	ModelSpecific RftemplateModelSpecificMapInput
 	// The name of the RF template
@@ -221,6 +227,8 @@ type rftemplateArgs struct {
 	Band6 *RftemplateBand6 `pulumi:"band6"`
 	// Optional, country code to use. If specified, this gets applied to all sites using the RF Template
 	CountryCode *string `pulumi:"countryCode"`
+	// Whether U-NII-4 channels (169, 173, 177) are enabled
+	EnableUnii4 *bool `pulumi:"enableUnii4"`
 	// overwrites for a specific model. If a band is specified, it will shadow the default. Property key is the model name (e.g. "AP63")
 	ModelSpecific map[string]RftemplateModelSpecific `pulumi:"modelSpecific"`
 	// The name of the RF template
@@ -251,6 +259,8 @@ type RftemplateArgs struct {
 	Band6 RftemplateBand6PtrInput
 	// Optional, country code to use. If specified, this gets applied to all sites using the RF Template
 	CountryCode pulumi.StringPtrInput
+	// Whether U-NII-4 channels (169, 173, 177) are enabled
+	EnableUnii4 pulumi.BoolPtrInput
 	// overwrites for a specific model. If a band is specified, it will shadow the default. Property key is the model name (e.g. "AP63")
 	ModelSpecific RftemplateModelSpecificMapInput
 	// The name of the RF template
@@ -391,6 +401,11 @@ func (o RftemplateOutput) Band6() RftemplateBand6PtrOutput {
 // Optional, country code to use. If specified, this gets applied to all sites using the RF Template
 func (o RftemplateOutput) CountryCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Rftemplate) pulumi.StringPtrOutput { return v.CountryCode }).(pulumi.StringPtrOutput)
+}
+
+// Whether U-NII-4 channels (169, 173, 177) are enabled
+func (o RftemplateOutput) EnableUnii4() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Rftemplate) pulumi.BoolPtrOutput { return v.EnableUnii4 }).(pulumi.BoolPtrOutput)
 }
 
 // overwrites for a specific model. If a band is specified, it will shadow the default. Property key is the model name (e.g. "AP63")

@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class DeviceprofileGatewayRoutingPoliciesTermActions
     {
         /// <summary>
-        /// Whether to accept routes that match this term
+        /// Whether to accept routes that match this term. Precedence is `Accept` &gt; `NextTerm` &gt; `NextPolicy`; routes are rejected if all three are false
         /// </summary>
         public readonly bool? Accept;
         /// <summary>
@@ -46,6 +46,14 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? LocalPreference;
         /// <summary>
+        /// When true, continue evaluating the next routing policy in the chain after this term matches; default is false
+        /// </summary>
+        public readonly bool? NextPolicy;
+        /// <summary>
+        /// When true, continue evaluating the next term in the same routing policy after this term matches; default is false
+        /// </summary>
+        public readonly bool? NextTerm;
+        /// <summary>
         /// AS path values to prepend when this term is used as an export policy
         /// </summary>
         public readonly ImmutableArray<string> PrependAsPaths;
@@ -68,6 +76,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             string? localPreference,
 
+            bool? nextPolicy,
+
+            bool? nextTerm,
+
             ImmutableArray<string> prependAsPaths)
         {
             Accept = accept;
@@ -78,6 +90,8 @@ namespace Pulumi.JuniperMist.Org.Outputs
             ExcludeCommunities = excludeCommunities;
             ExportCommunities = exportCommunities;
             LocalPreference = localPreference;
+            NextPolicy = nextPolicy;
+            NextTerm = nextTerm;
             PrependAsPaths = prependAsPaths;
         }
     }

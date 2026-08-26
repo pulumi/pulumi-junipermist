@@ -14,6 +14,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class SettingApiPolicy
     {
         /// <summary>
+        /// Optional. When `True`, Org API tokens without their own `SrcIps` also respect the org policy `SrcIps`. Default is `False`.
+        /// </summary>
+        public readonly bool? EnforceSrcIpsForTokens;
+        /// <summary>
         /// By default, API hides password/secrets when the user doesn't have write access
         ///   * `True`: API will hide passwords/secrets for all users
         ///   * `False`: API will hide passwords/secrets for read-only users
@@ -26,10 +30,13 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
         [OutputConstructor]
         private SettingApiPolicy(
+            bool? enforceSrcIpsForTokens,
+
             bool? noReveal,
 
             ImmutableArray<string> srcIps)
         {
+            EnforceSrcIpsForTokens = enforceSrcIpsForTokens;
             NoReveal = noReveal;
             SrcIps = srcIps;
         }

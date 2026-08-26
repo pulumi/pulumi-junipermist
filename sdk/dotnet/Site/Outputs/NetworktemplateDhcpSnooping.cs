@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class NetworktemplateDhcpSnooping
     {
+        /// <summary>
+        /// Whether DHCP snooping applies to all configured networks
+        /// </summary>
         public readonly bool? AllNetworks;
         /// <summary>
         /// Enable for dynamic ARP inspection check
@@ -22,9 +25,12 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// Enable for check for forging source IP address
         /// </summary>
         public readonly bool? EnableIpSourceGuard;
+        /// <summary>
+        /// Whether DHCP snooping is enabled
+        /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// If `AllNetworks`==`False`, list of network with DHCP snooping enabled
+        /// Network names with DHCP snooping enabled when `AllNetworks`==`False`
         /// </summary>
         public readonly ImmutableArray<string> Networks;
 

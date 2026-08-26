@@ -12,9 +12,15 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class NetworktemplateRemoteSyslogArchiveGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Number of archived syslog files to retain
+        /// </summary>
         [Input("files")]
         public Input<string>? Files { get; set; }
 
+        /// <summary>
+        /// Maximum size of each archived syslog file, such as 5m
+        /// </summary>
         [Input("size")]
         public Input<string>? Size { get; set; }
 

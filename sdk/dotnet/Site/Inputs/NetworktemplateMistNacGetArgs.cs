@@ -12,9 +12,15 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class NetworktemplateMistNacGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether Mist NAC RadSec is enabled for the switch
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// Switch network used for Mist NAC RadSec connectivity
+        /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
 

@@ -55,6 +55,12 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? DisableConsole { get; set; }
 
         /// <summary>
+        /// For SRX only, disable IDP packet capture
+        /// </summary>
+        [Input("disableIdpPcap")]
+        public Input<bool>? DisableIdpPcap { get; set; }
+
+        /// <summary>
         /// For SSR and SRX, disable management interface
         /// </summary>
         [Input("disableOob")]

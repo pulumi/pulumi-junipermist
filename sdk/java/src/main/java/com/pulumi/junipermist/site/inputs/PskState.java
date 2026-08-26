@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -243,6 +244,21 @@ public final class PskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Usermac labels allowed when `usage`==`usermacLabels`; this list is capped at 100 entries
+     * 
+     */
+    @Import(name="usermacLabels")
+    private @Nullable Output<List<String>> usermacLabels;
+
+    /**
+     * @return Usermac labels allowed when `usage`==`usermacLabels`; this list is capped at 100 entries
+     * 
+     */
+    public Optional<Output<List<String>>> usermacLabels() {
+        return Optional.ofNullable(this.usermacLabels);
+    }
+
+    /**
      * VLAN ID returned for clients using this PSK
      * 
      */
@@ -290,6 +306,7 @@ public final class PskState extends com.pulumi.resources.ResourceArgs {
         this.siteId = $.siteId;
         this.ssid = $.ssid;
         this.usage = $.usage;
+        this.usermacLabels = $.usermacLabels;
         this.vlanId = $.vlanId;
         this.vlanName = $.vlanName;
     }
@@ -625,6 +642,37 @@ public final class PskState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder usage(String usage) {
             return usage(Output.of(usage));
+        }
+
+        /**
+         * @param usermacLabels Usermac labels allowed when `usage`==`usermacLabels`; this list is capped at 100 entries
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usermacLabels(@Nullable Output<List<String>> usermacLabels) {
+            $.usermacLabels = usermacLabels;
+            return this;
+        }
+
+        /**
+         * @param usermacLabels Usermac labels allowed when `usage`==`usermacLabels`; this list is capped at 100 entries
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usermacLabels(List<String> usermacLabels) {
+            return usermacLabels(Output.of(usermacLabels));
+        }
+
+        /**
+         * @param usermacLabels Usermac labels allowed when `usage`==`usermacLabels`; this list is capped at 100 entries
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usermacLabels(String... usermacLabels) {
+            return usermacLabels(List.of(usermacLabels));
         }
 
         /**

@@ -46,6 +46,18 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("forceLookup")]
         public Input<bool>? ForceLookup { get; set; }
 
+        [Input("localVlanIds")]
+        private InputList<string>? _localVlanIds;
+
+        /// <summary>
+        /// VLANs to be bridged locally when forwarding to mxtunnel or site mxedge
+        /// </summary>
+        public InputList<string> LocalVlanIds
+        {
+            get => _localVlanIds ?? (_localVlanIds = new InputList<string>());
+            set => _localVlanIds = value;
+        }
+
         /// <summary>
         /// Origin used to retrieve per-user PSKs
         /// </summary>

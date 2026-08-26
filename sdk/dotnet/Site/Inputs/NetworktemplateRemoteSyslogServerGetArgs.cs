@@ -14,60 +14,85 @@ namespace Pulumi.JuniperMist.Site.Inputs
     {
         [Input("contents")]
         private InputList<Inputs.NetworktemplateRemoteSyslogServerContentGetArgs>? _contents;
+
+        /// <summary>
+        /// Syslog facilities and severities sent to this server
+        /// </summary>
         public InputList<Inputs.NetworktemplateRemoteSyslogServerContentGetArgs> Contents
         {
             get => _contents ?? (_contents = new InputList<Inputs.NetworktemplateRemoteSyslogServerContentGetArgs>());
             set => _contents = value;
         }
 
+        /// <summary>
+        /// Whether to include explicit syslog priority values in messages sent to this server
+        /// </summary>
         [Input("explicitPriority")]
         public Input<bool>? ExplicitPriority { get; set; }
 
         /// <summary>
-        /// enum: `Any`, `Authorization`, `change-log`, `Config`, `conflict-log`, `Daemon`, `Dfc`, `External`, `Firewall`, `Ftp`, `interactive-commands`, `Kernel`, `Ntp`, `Pfe`, `Security`, `User`
+        /// Default syslog facility for messages sent to this server
         /// </summary>
         [Input("facility")]
         public Input<string>? Facility { get; set; }
 
+        /// <summary>
+        /// Address or hostname of the remote syslog server
+        /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
 
+        /// <summary>
+        /// Expression used to filter log messages sent to this server
+        /// </summary>
         [Input("match")]
         public Input<string>? Match { get; set; }
 
+        /// <summary>
+        /// Network port used by the remote syslog server
+        /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
 
         /// <summary>
-        /// enum: `Tcp`, `Udp`
+        /// Transport protocol used for this remote syslog server
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 
+        /// <summary>
+        /// Routing instance used to reach this remote syslog server
+        /// </summary>
         [Input("routingInstance")]
         public Input<string>? RoutingInstance { get; set; }
 
         /// <summary>
-        /// Name of the server
+        /// TLS server name used when verifying the remote syslog server certificate
         /// </summary>
         [Input("serverName")]
         public Input<string>? ServerName { get; set; }
 
         /// <summary>
-        /// enum: `Alert`, `Any`, `Critical`, `Emergency`, `Error`, `Info`, `Notice`, `Warning`
+        /// Default syslog severity for messages sent to this server
         /// </summary>
         [Input("severity")]
         public Input<string>? Severity { get; set; }
 
         /// <summary>
-        /// If SourceAddress is configured, will use the vlan firstly otherwise use source_ip
+        /// Source address for syslog traffic. If configured, Mist uses the VLAN first; otherwise it uses `SourceIp`
         /// </summary>
         [Input("sourceAddress")]
         public Input<string>? SourceAddress { get; set; }
 
+        /// <summary>
+        /// Whether to include structured syslog data in messages sent to this server
+        /// </summary>
         [Input("structuredData")]
         public Input<bool>? StructuredData { get; set; }
 
+        /// <summary>
+        /// Syslog tag value added to messages sent to this server
+        /// </summary>
         [Input("tag")]
         public Input<string>? Tag { get; set; }
 
