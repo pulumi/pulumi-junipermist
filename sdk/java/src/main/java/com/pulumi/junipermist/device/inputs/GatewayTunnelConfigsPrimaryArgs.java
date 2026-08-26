@@ -6,6 +6,7 @@ package com.pulumi.junipermist.device.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.junipermist.device.inputs.GatewayTunnelConfigsPrimaryProbeHttpArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -33,6 +34,21 @@ public final class GatewayTunnelConfigsPrimaryArgs extends com.pulumi.resources.
     }
 
     /**
+     * IPv6 addresses configured on this tunnel node
+     * 
+     */
+    @Import(name="internalIp6s")
+    private @Nullable Output<List<String>> internalIp6s;
+
+    /**
+     * @return IPv6 addresses configured on this tunnel node
+     * 
+     */
+    public Optional<Output<List<String>>> internalIp6s() {
+        return Optional.ofNullable(this.internalIp6s);
+    }
+
+    /**
      * Internal IP addresses configured on this tunnel node
      * 
      */
@@ -45,6 +61,51 @@ public final class GatewayTunnelConfigsPrimaryArgs extends com.pulumi.resources.
      */
     public Optional<Output<List<String>>> internalIps() {
         return Optional.ofNullable(this.internalIps);
+    }
+
+    /**
+     * Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+     * 
+     */
+    @Import(name="probeHostnames")
+    private @Nullable Output<List<String>> probeHostnames;
+
+    /**
+     * @return Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+     * 
+     */
+    public Optional<Output<List<String>>> probeHostnames() {
+        return Optional.ofNullable(this.probeHostnames);
+    }
+
+    /**
+     * HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+     * 
+     */
+    @Import(name="probeHttp")
+    private @Nullable Output<GatewayTunnelConfigsPrimaryProbeHttpArgs> probeHttp;
+
+    /**
+     * @return HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+     * 
+     */
+    public Optional<Output<GatewayTunnelConfigsPrimaryProbeHttpArgs>> probeHttp() {
+        return Optional.ofNullable(this.probeHttp);
+    }
+
+    /**
+     * IPv6 ICMP probe addresses used to monitor this tunnel node
+     * 
+     */
+    @Import(name="probeIp6s")
+    private @Nullable Output<List<String>> probeIp6s;
+
+    /**
+     * @return IPv6 ICMP probe addresses used to monitor this tunnel node
+     * 
+     */
+    public Optional<Output<List<String>>> probeIp6s() {
+        return Optional.ofNullable(this.probeIp6s);
     }
 
     /**
@@ -96,7 +157,11 @@ public final class GatewayTunnelConfigsPrimaryArgs extends com.pulumi.resources.
 
     private GatewayTunnelConfigsPrimaryArgs(GatewayTunnelConfigsPrimaryArgs $) {
         this.hosts = $.hosts;
+        this.internalIp6s = $.internalIp6s;
         this.internalIps = $.internalIps;
+        this.probeHostnames = $.probeHostnames;
+        this.probeHttp = $.probeHttp;
+        this.probeIp6s = $.probeIp6s;
         this.probeIps = $.probeIps;
         this.remoteIds = $.remoteIds;
         this.wanNames = $.wanNames;
@@ -152,6 +217,37 @@ public final class GatewayTunnelConfigsPrimaryArgs extends com.pulumi.resources.
         }
 
         /**
+         * @param internalIp6s IPv6 addresses configured on this tunnel node
+         * 
+         * @return builder
+         * 
+         */
+        public Builder internalIp6s(@Nullable Output<List<String>> internalIp6s) {
+            $.internalIp6s = internalIp6s;
+            return this;
+        }
+
+        /**
+         * @param internalIp6s IPv6 addresses configured on this tunnel node
+         * 
+         * @return builder
+         * 
+         */
+        public Builder internalIp6s(List<String> internalIp6s) {
+            return internalIp6s(Output.of(internalIp6s));
+        }
+
+        /**
+         * @param internalIp6s IPv6 addresses configured on this tunnel node
+         * 
+         * @return builder
+         * 
+         */
+        public Builder internalIp6s(String... internalIp6s) {
+            return internalIp6s(List.of(internalIp6s));
+        }
+
+        /**
          * @param internalIps Internal IP addresses configured on this tunnel node
          * 
          * @return builder
@@ -180,6 +276,89 @@ public final class GatewayTunnelConfigsPrimaryArgs extends com.pulumi.resources.
          */
         public Builder internalIps(String... internalIps) {
             return internalIps(List.of(internalIps));
+        }
+
+        /**
+         * @param probeHostnames Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+         * 
+         * @return builder
+         * 
+         */
+        public Builder probeHostnames(@Nullable Output<List<String>> probeHostnames) {
+            $.probeHostnames = probeHostnames;
+            return this;
+        }
+
+        /**
+         * @param probeHostnames Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+         * 
+         * @return builder
+         * 
+         */
+        public Builder probeHostnames(List<String> probeHostnames) {
+            return probeHostnames(Output.of(probeHostnames));
+        }
+
+        /**
+         * @param probeHostnames Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+         * 
+         * @return builder
+         * 
+         */
+        public Builder probeHostnames(String... probeHostnames) {
+            return probeHostnames(List.of(probeHostnames));
+        }
+
+        /**
+         * @param probeHttp HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+         * 
+         * @return builder
+         * 
+         */
+        public Builder probeHttp(@Nullable Output<GatewayTunnelConfigsPrimaryProbeHttpArgs> probeHttp) {
+            $.probeHttp = probeHttp;
+            return this;
+        }
+
+        /**
+         * @param probeHttp HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+         * 
+         * @return builder
+         * 
+         */
+        public Builder probeHttp(GatewayTunnelConfigsPrimaryProbeHttpArgs probeHttp) {
+            return probeHttp(Output.of(probeHttp));
+        }
+
+        /**
+         * @param probeIp6s IPv6 ICMP probe addresses used to monitor this tunnel node
+         * 
+         * @return builder
+         * 
+         */
+        public Builder probeIp6s(@Nullable Output<List<String>> probeIp6s) {
+            $.probeIp6s = probeIp6s;
+            return this;
+        }
+
+        /**
+         * @param probeIp6s IPv6 ICMP probe addresses used to monitor this tunnel node
+         * 
+         * @return builder
+         * 
+         */
+        public Builder probeIp6s(List<String> probeIp6s) {
+            return probeIp6s(Output.of(probeIp6s));
+        }
+
+        /**
+         * @param probeIp6s IPv6 ICMP probe addresses used to monitor this tunnel node
+         * 
+         * @return builder
+         * 
+         */
+        public Builder probeIp6s(String... probeIp6s) {
+            return probeIp6s(List.of(probeIp6s));
         }
 
         /**

@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewayRoutingPoliciesTermActions {
     /**
-     * @return Whether to accept routes that match this term
+     * @return Whether to accept routes that match this term. Precedence is `accept` &gt; `nextTerm` &gt; `nextPolicy`; routes are rejected if all three are false
      * 
      */
     private @Nullable Boolean accept;
@@ -54,6 +54,16 @@ public final class GatewayRoutingPoliciesTermActions {
      */
     private @Nullable String localPreference;
     /**
+     * @return When true, continue evaluating the next routing policy in the chain after this term matches; default is false
+     * 
+     */
+    private @Nullable Boolean nextPolicy;
+    /**
+     * @return When true, continue evaluating the next term in the same routing policy after this term matches; default is false
+     * 
+     */
+    private @Nullable Boolean nextTerm;
+    /**
      * @return AS path values to prepend when this term is used as an export policy
      * 
      */
@@ -61,7 +71,7 @@ public final class GatewayRoutingPoliciesTermActions {
 
     private GatewayRoutingPoliciesTermActions() {}
     /**
-     * @return Whether to accept routes that match this term
+     * @return Whether to accept routes that match this term. Precedence is `accept` &gt; `nextTerm` &gt; `nextPolicy`; routes are rejected if all three are false
      * 
      */
     public Optional<Boolean> accept() {
@@ -117,6 +127,20 @@ public final class GatewayRoutingPoliciesTermActions {
         return Optional.ofNullable(this.localPreference);
     }
     /**
+     * @return When true, continue evaluating the next routing policy in the chain after this term matches; default is false
+     * 
+     */
+    public Optional<Boolean> nextPolicy() {
+        return Optional.ofNullable(this.nextPolicy);
+    }
+    /**
+     * @return When true, continue evaluating the next term in the same routing policy after this term matches; default is false
+     * 
+     */
+    public Optional<Boolean> nextTerm() {
+        return Optional.ofNullable(this.nextTerm);
+    }
+    /**
      * @return AS path values to prepend when this term is used as an export policy
      * 
      */
@@ -141,6 +165,8 @@ public final class GatewayRoutingPoliciesTermActions {
         private @Nullable List<String> excludeCommunities;
         private @Nullable List<String> exportCommunities;
         private @Nullable String localPreference;
+        private @Nullable Boolean nextPolicy;
+        private @Nullable Boolean nextTerm;
         private @Nullable List<String> prependAsPaths;
         public Builder() {}
         public Builder(GatewayRoutingPoliciesTermActions defaults) {
@@ -153,6 +179,8 @@ public final class GatewayRoutingPoliciesTermActions {
     	      this.excludeCommunities = defaults.excludeCommunities;
     	      this.exportCommunities = defaults.exportCommunities;
     	      this.localPreference = defaults.localPreference;
+    	      this.nextPolicy = defaults.nextPolicy;
+    	      this.nextTerm = defaults.nextTerm;
     	      this.prependAsPaths = defaults.prependAsPaths;
         }
 
@@ -223,6 +251,18 @@ public final class GatewayRoutingPoliciesTermActions {
             return this;
         }
         @CustomType.Setter
+        public Builder nextPolicy(@Nullable Boolean nextPolicy) {
+
+            this.nextPolicy = nextPolicy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder nextTerm(@Nullable Boolean nextTerm) {
+
+            this.nextTerm = nextTerm;
+            return this;
+        }
+        @CustomType.Setter
         public Builder prependAsPaths(@Nullable List<String> prependAsPaths) {
 
             this.prependAsPaths = prependAsPaths;
@@ -241,6 +281,8 @@ public final class GatewayRoutingPoliciesTermActions {
             _resultValue.excludeCommunities = excludeCommunities;
             _resultValue.exportCommunities = exportCommunities;
             _resultValue.localPreference = localPreference;
+            _resultValue.nextPolicy = nextPolicy;
+            _resultValue.nextTerm = nextTerm;
             _resultValue.prependAsPaths = prependAsPaths;
             return _resultValue;
         }

@@ -14,6 +14,10 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class SwitchSnmpConfigV3ConfigNotifyFilter
     {
         /// <summary>
+        /// CX only. List of SNMP trap group categories included in this filter profile. See https://www.juniper.net/documentation/software/topics/task/configuration/snmp-trap-groups-configuring-junos-nm.html for valid category names.
+        /// </summary>
+        public readonly ImmutableArray<string> Categories;
+        /// <summary>
         /// OID filter rules in this notification filter profile
         /// </summary>
         public readonly ImmutableArray<Outputs.SwitchSnmpConfigV3ConfigNotifyFilterContent> Contents;
@@ -24,10 +28,13 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
         [OutputConstructor]
         private SwitchSnmpConfigV3ConfigNotifyFilter(
+            ImmutableArray<string> categories,
+
             ImmutableArray<Outputs.SwitchSnmpConfigV3ConfigNotifyFilterContent> contents,
 
             string? profileName)
         {
+            Categories = categories;
             Contents = contents;
             ProfileName = profileName;
         }

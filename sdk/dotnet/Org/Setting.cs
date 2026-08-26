@@ -28,12 +28,12 @@ namespace Pulumi.JuniperMist.Org
     ///     {
     ///         OrgId = terraformTestMistOrg.Id,
     ///         ApUpdownThreshold = 10,
-    ///         Cradlepoint = new JuniperMist.Org.Inputs.SettingCradlepointArgs
+    ///         Cradlepoint = 
     ///         {
-    ///             CpApiId = "cp_api_id_test",
-    ///             CpApiKey = "secret",
-    ///             EcmApiId = "ecm_api_id_test",
-    ///             EcmApiKey = "secret",
+    ///             { "cpApiId", "cp_api_id_test" },
+    ///             { "cpApiKey", "secret" },
+    ///             { "ecmApiId", "ecm_api_id_test" },
+    ///             { "ecmApiKey", "secret" },
     ///         },
     ///         DeviceUpdownThreshold = 10,
     ///         DisablePcap = false,
@@ -130,10 +130,16 @@ namespace Pulumi.JuniperMist.Org
         public Output<Outputs.SettingAutoUpgrade?> AutoUpgrade { get; private set; } = null!;
 
         /// <summary>
-        /// CA certificates used by organization-level RADIUS and RADSec settings
+        /// Legacy CA certificate list used to verify client certificates. If `CacertsConfigs` is provided and non-empty, this field is ignored.
         /// </summary>
         [Output("cacerts")]
         public Output<ImmutableArray<string>> Cacerts { get; private set; } = null!;
+
+        /// <summary>
+        /// Preferred per-issuer CA certificate configuration with optional OCSP and CRL settings. When provided and non-empty, `Cacerts` is ignored.
+        /// </summary>
+        [Output("cacertsConfigs")]
+        public Output<ImmutableArray<Outputs.SettingCacertsConfig>> CacertsConfigs { get; private set; } = null!;
 
         /// <summary>
         /// Integration settings for Celona
@@ -146,12 +152,6 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         [Output("cloudshark")]
         public Output<Outputs.SettingCloudshark?> Cloudshark { get; private set; } = null!;
-
-        /// <summary>
-        /// Integration settings for Cradlepoint devices
-        /// </summary>
-        [Output("cradlepoint")]
-        public Output<Outputs.SettingCradlepoint> Cradlepoint { get; private set; } = null!;
 
         /// <summary>
         /// Common device certificate used by organization settings
@@ -416,12 +416,24 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _cacerts;
 
         /// <summary>
-        /// CA certificates used by organization-level RADIUS and RADSec settings
+        /// Legacy CA certificate list used to verify client certificates. If `CacertsConfigs` is provided and non-empty, this field is ignored.
         /// </summary>
         public InputList<string> Cacerts
         {
             get => _cacerts ?? (_cacerts = new InputList<string>());
             set => _cacerts = value;
+        }
+
+        [Input("cacertsConfigs")]
+        private InputList<Inputs.SettingCacertsConfigArgs>? _cacertsConfigs;
+
+        /// <summary>
+        /// Preferred per-issuer CA certificate configuration with optional OCSP and CRL settings. When provided and non-empty, `Cacerts` is ignored.
+        /// </summary>
+        public InputList<Inputs.SettingCacertsConfigArgs> CacertsConfigs
+        {
+            get => _cacertsConfigs ?? (_cacertsConfigs = new InputList<Inputs.SettingCacertsConfigArgs>());
+            set => _cacertsConfigs = value;
         }
 
         /// <summary>
@@ -660,12 +672,24 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _cacerts;
 
         /// <summary>
-        /// CA certificates used by organization-level RADIUS and RADSec settings
+        /// Legacy CA certificate list used to verify client certificates. If `CacertsConfigs` is provided and non-empty, this field is ignored.
         /// </summary>
         public InputList<string> Cacerts
         {
             get => _cacerts ?? (_cacerts = new InputList<string>());
             set => _cacerts = value;
+        }
+
+        [Input("cacertsConfigs")]
+        private InputList<Inputs.SettingCacertsConfigGetArgs>? _cacertsConfigs;
+
+        /// <summary>
+        /// Preferred per-issuer CA certificate configuration with optional OCSP and CRL settings. When provided and non-empty, `Cacerts` is ignored.
+        /// </summary>
+        public InputList<Inputs.SettingCacertsConfigGetArgs> CacertsConfigs
+        {
+            get => _cacertsConfigs ?? (_cacertsConfigs = new InputList<Inputs.SettingCacertsConfigGetArgs>());
+            set => _cacertsConfigs = value;
         }
 
         /// <summary>
@@ -679,12 +703,6 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         [Input("cloudshark")]
         public Input<Inputs.SettingCloudsharkGetArgs>? Cloudshark { get; set; }
-
-        /// <summary>
-        /// Integration settings for Cradlepoint devices
-        /// </summary>
-        [Input("cradlepoint")]
-        public Input<Inputs.SettingCradlepointGetArgs>? Cradlepoint { get; set; }
 
         /// <summary>
         /// Common device certificate used by organization settings

@@ -29,7 +29,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authentication-md5`, `authentication-none`, `authentication-sha`, `authentication-sha224`, `authentication-sha256`, `authentication-sha384`, `authentication-sha512`
+        /// Authentication protocol used by this SNMPv3 USM user
         /// </summary>
         [Input("authenticationType")]
         public Input<string>? AuthenticationType { get; set; }
@@ -51,11 +51,14 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// enum: `privacy-3des`, `privacy-aes128`, `privacy-des`, `privacy-none`
+        /// Privacy protocol used by this SNMPv3 USM user
         /// </summary>
         [Input("encryptionType")]
         public Input<string>? EncryptionType { get; set; }
 
+        /// <summary>
+        /// Username for the SNMPv3 USM user
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworktemplateSwitchMatchingRuleOobIpConfig {
     /**
-     * @return enum: `dhcp`, `static`
+     * @return IP assignment mode for out-of-band switch management
      * 
      */
     private @Nullable String type;
@@ -30,7 +30,7 @@ public final class NetworktemplateSwitchMatchingRuleOobIpConfig {
 
     private NetworktemplateSwitchMatchingRuleOobIpConfig() {}
     /**
-     * @return enum: `dhcp`, `static`
+     * @return IP assignment mode for out-of-band switch management
      * 
      */
     public Optional<String> type() {

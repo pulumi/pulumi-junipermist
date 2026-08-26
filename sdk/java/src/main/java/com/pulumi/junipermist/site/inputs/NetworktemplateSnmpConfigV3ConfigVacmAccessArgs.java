@@ -17,16 +17,32 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessArgs extends com.p
 
     public static final NetworktemplateSnmpConfigV3ConfigVacmAccessArgs Empty = new NetworktemplateSnmpConfigV3ConfigVacmAccessArgs();
 
+    /**
+     * SNMP VACM group name
+     * 
+     */
     @Import(name="groupName")
     private @Nullable Output<String> groupName;
 
+    /**
+     * @return SNMP VACM group name
+     * 
+     */
     public Optional<Output<String>> groupName() {
         return Optional.ofNullable(this.groupName);
     }
 
+    /**
+     * Context prefix rules for this VACM group
+     * 
+     */
     @Import(name="prefixLists")
     private @Nullable Output<List<NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs>> prefixLists;
 
+    /**
+     * @return Context prefix rules for this VACM group
+     * 
+     */
     public Optional<Output<List<NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs>>> prefixLists() {
         return Optional.ofNullable(this.prefixLists);
     }
@@ -56,24 +72,54 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessArgs extends com.p
             $ = new NetworktemplateSnmpConfigV3ConfigVacmAccessArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param groupName SNMP VACM group name
+         * 
+         * @return builder
+         * 
+         */
         public Builder groupName(@Nullable Output<String> groupName) {
             $.groupName = groupName;
             return this;
         }
 
+        /**
+         * @param groupName SNMP VACM group name
+         * 
+         * @return builder
+         * 
+         */
         public Builder groupName(String groupName) {
             return groupName(Output.of(groupName));
         }
 
+        /**
+         * @param prefixLists Context prefix rules for this VACM group
+         * 
+         * @return builder
+         * 
+         */
         public Builder prefixLists(@Nullable Output<List<NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs>> prefixLists) {
             $.prefixLists = prefixLists;
             return this;
         }
 
+        /**
+         * @param prefixLists Context prefix rules for this VACM group
+         * 
+         * @return builder
+         * 
+         */
         public Builder prefixLists(List<NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs> prefixLists) {
             return prefixLists(Output.of(prefixLists));
         }
 
+        /**
+         * @param prefixLists Context prefix rules for this VACM group
+         * 
+         * @return builder
+         * 
+         */
         public Builder prefixLists(NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs... prefixLists) {
             return prefixLists(List.of(prefixLists));
         }

@@ -113,6 +113,7 @@ public final class DeviceprofileSwitchAclTagsArgs extends com.pulumi.resources.R
     /**
      * Required if:
      *   * `type`==`radiusGroup`
+     *   * `type`==`arubaUserRole`
      *   * `type`==`staticGbp`
      *     if from matching radius_group
      * 
@@ -123,6 +124,7 @@ public final class DeviceprofileSwitchAclTagsArgs extends com.pulumi.resources.R
     /**
      * @return Required if:
      *   * `type`==`radiusGroup`
+     *   * `type`==`arubaUserRole`
      *   * `type`==`staticGbp`
      *     if from matching radius_group
      * 
@@ -352,6 +354,7 @@ public final class DeviceprofileSwitchAclTagsArgs extends com.pulumi.resources.R
         /**
          * @param radiusGroup Required if:
          *   * `type`==`radiusGroup`
+         *   * `type`==`arubaUserRole`
          *   * `type`==`staticGbp`
          *     if from matching radius_group
          * 
@@ -366,6 +369,7 @@ public final class DeviceprofileSwitchAclTagsArgs extends com.pulumi.resources.R
         /**
          * @param radiusGroup Required if:
          *   * `type`==`radiusGroup`
+         *   * `type`==`arubaUserRole`
          *   * `type`==`staticGbp`
          *     if from matching radius_group
          * 

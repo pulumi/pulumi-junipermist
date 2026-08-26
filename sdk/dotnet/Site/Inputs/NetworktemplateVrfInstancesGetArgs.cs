@@ -12,9 +12,15 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class NetworktemplateVrfInstancesGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// IPv4 subnet used for automatic EVPN loopback addresses in this VRF instance
+        /// </summary>
         [Input("evpnAutoLoopbackSubnet")]
         public Input<string>? EvpnAutoLoopbackSubnet { get; set; }
 
+        /// <summary>
+        /// IPv6 subnet used for automatic EVPN loopback addresses in this VRF instance
+        /// </summary>
         [Input("evpnAutoLoopbackSubnet6")]
         public Input<string>? EvpnAutoLoopbackSubnet6 { get; set; }
 
@@ -22,7 +28,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputMap<Inputs.NetworktemplateVrfInstancesExtraRoutesGetArgs>? _extraRoutes;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+        /// Additional IPv4 static routes configured for this VRF instance
         /// </summary>
         public InputMap<Inputs.NetworktemplateVrfInstancesExtraRoutesGetArgs> ExtraRoutes
         {
@@ -34,7 +40,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputMap<Inputs.NetworktemplateVrfInstancesExtraRoutes6GetArgs>? _extraRoutes6;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+        /// Additional IPv6 static routes configured for this VRF instance
         /// </summary>
         public InputMap<Inputs.NetworktemplateVrfInstancesExtraRoutes6GetArgs> ExtraRoutes6
         {
@@ -42,8 +48,18 @@ namespace Pulumi.JuniperMist.Site.Inputs
             set => _extraRoutes6 = value;
         }
 
+        /// <summary>
+        /// Multicast configuration for this VRF instance. PIM is automatically enabled when any network in this VRF has `multicast.enabled`==`True`
+        /// </summary>
+        [Input("multicastConfig")]
+        public Input<Inputs.NetworktemplateVrfInstancesMulticastConfigGetArgs>? MulticastConfig { get; set; }
+
         [Input("networks")]
         private InputList<string>? _networks;
+
+        /// <summary>
+        /// Names of switch networks included in this VRF instance
+        /// </summary>
         public InputList<string> Networks
         {
             get => _networks ?? (_networks = new InputList<string>());

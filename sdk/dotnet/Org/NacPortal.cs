@@ -132,6 +132,12 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> EapType { get; private set; } = null!;
 
         /// <summary>
+        /// Whether location data collection is enabled for devices onboarding through this NAC portal
+        /// </summary>
+        [Output("enableLocation")]
+        public Output<bool?> EnableLocation { get; private set; } = null!;
+
+        /// <summary>
         /// Model, version, fingering, events (connecting, disconnect, roaming), which ap
         /// </summary>
         [Output("enableTelemetry")]
@@ -281,6 +287,12 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? EapType { get; set; }
 
         /// <summary>
+        /// Whether location data collection is enabled for devices onboarding through this NAC portal
+        /// </summary>
+        [Input("enableLocation")]
+        public Input<bool>? EnableLocation { get; set; }
+
+        /// <summary>
         /// Model, version, fingering, events (connecting, disconnect, roaming), which ap
         /// </summary>
         [Input("enableTelemetry")]
@@ -389,6 +401,12 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         [Input("eapType")]
         public Input<string>? EapType { get; set; }
+
+        /// <summary>
+        /// Whether location data collection is enabled for devices onboarding through this NAC portal
+        /// </summary>
+        [Input("enableLocation")]
+        public Input<bool>? EnableLocation { get; set; }
 
         /// <summary>
         /// Model, version, fingering, events (connecting, disconnect, roaming), which ap

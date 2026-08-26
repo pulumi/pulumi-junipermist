@@ -13,6 +13,7 @@ import com.pulumi.junipermist.org.inputs.NetworktemplateDhcpSnoopingArgs;
 import com.pulumi.junipermist.org.inputs.NetworktemplateExtraRoutes6Args;
 import com.pulumi.junipermist.org.inputs.NetworktemplateExtraRoutesArgs;
 import com.pulumi.junipermist.org.inputs.NetworktemplateMistNacArgs;
+import com.pulumi.junipermist.org.inputs.NetworktemplateMulticastConfigArgs;
 import com.pulumi.junipermist.org.inputs.NetworktemplateNetworksArgs;
 import com.pulumi.junipermist.org.inputs.NetworktemplateOspfAreasArgs;
 import com.pulumi.junipermist.org.inputs.NetworktemplatePortMirroringArgs;
@@ -186,6 +187,21 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<NetworktemplateMistNacArgs>> mistNac() {
         return Optional.ofNullable(this.mistNac);
+    }
+
+    /**
+     * Multicast settings for networks in the master VRF (not assigned to any vrf_instances); PIM is automatically enabled when any master-VRF network has `multicast.enabled`==`true`
+     * 
+     */
+    @Import(name="multicastConfig")
+    private @Nullable Output<NetworktemplateMulticastConfigArgs> multicastConfig;
+
+    /**
+     * @return Multicast settings for networks in the master VRF (not assigned to any vrf_instances); PIM is automatically enabled when any master-VRF network has `multicast.enabled`==`true`
+     * 
+     */
+    public Optional<Output<NetworktemplateMulticastConfigArgs>> multicastConfig() {
+        return Optional.ofNullable(this.multicastConfig);
     }
 
     /**
@@ -441,6 +457,7 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
         this.extraRoutes = $.extraRoutes;
         this.extraRoutes6 = $.extraRoutes6;
         this.mistNac = $.mistNac;
+        this.multicastConfig = $.multicastConfig;
         this.name = $.name;
         this.networks = $.networks;
         this.ntpServers = $.ntpServers;
@@ -725,6 +742,27 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder mistNac(NetworktemplateMistNacArgs mistNac) {
             return mistNac(Output.of(mistNac));
+        }
+
+        /**
+         * @param multicastConfig Multicast settings for networks in the master VRF (not assigned to any vrf_instances); PIM is automatically enabled when any master-VRF network has `multicast.enabled`==`true`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multicastConfig(@Nullable Output<NetworktemplateMulticastConfigArgs> multicastConfig) {
+            $.multicastConfig = multicastConfig;
+            return this;
+        }
+
+        /**
+         * @param multicastConfig Multicast settings for networks in the master VRF (not assigned to any vrf_instances); PIM is automatically enabled when any master-VRF network has `multicast.enabled`==`true`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multicastConfig(NetworktemplateMulticastConfigArgs multicastConfig) {
+            return multicastConfig(Output.of(multicastConfig));
         }
 
         /**

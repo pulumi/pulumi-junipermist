@@ -147,10 +147,16 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> Ssid { get; private set; } = null!;
 
         /// <summary>
-        /// Binding mode for this PSK, enum: `Macs`, `Multi`, `Single`
+        /// Binding mode for this PSK, enum: `Macs`, `Multi`, `Single`, `UsermacLabels`
         /// </summary>
         [Output("usage")]
         public Output<string> Usage { get; private set; } = null!;
+
+        /// <summary>
+        /// Usermac labels allowed when `Usage`==`UsermacLabels`; this list is capped at 100 entries
+        /// </summary>
+        [Output("usermacLabels")]
+        public Output<ImmutableArray<string>> UsermacLabels { get; private set; } = null!;
 
         /// <summary>
         /// VLAN ID returned for clients using this PSK
@@ -333,10 +339,22 @@ namespace Pulumi.JuniperMist.Org
         public Input<string> Ssid { get; set; } = null!;
 
         /// <summary>
-        /// Binding mode for this PSK, enum: `Macs`, `Multi`, `Single`
+        /// Binding mode for this PSK, enum: `Macs`, `Multi`, `Single`, `UsermacLabels`
         /// </summary>
         [Input("usage")]
         public Input<string>? Usage { get; set; }
+
+        [Input("usermacLabels")]
+        private InputList<string>? _usermacLabels;
+
+        /// <summary>
+        /// Usermac labels allowed when `Usage`==`UsermacLabels`; this list is capped at 100 entries
+        /// </summary>
+        public InputList<string> UsermacLabels
+        {
+            get => _usermacLabels ?? (_usermacLabels = new InputList<string>());
+            set => _usermacLabels = value;
+        }
 
         /// <summary>
         /// VLAN ID returned for clients using this PSK
@@ -475,10 +493,22 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? Ssid { get; set; }
 
         /// <summary>
-        /// Binding mode for this PSK, enum: `Macs`, `Multi`, `Single`
+        /// Binding mode for this PSK, enum: `Macs`, `Multi`, `Single`, `UsermacLabels`
         /// </summary>
         [Input("usage")]
         public Input<string>? Usage { get; set; }
+
+        [Input("usermacLabels")]
+        private InputList<string>? _usermacLabels;
+
+        /// <summary>
+        /// Usermac labels allowed when `Usage`==`UsermacLabels`; this list is capped at 100 entries
+        /// </summary>
+        public InputList<string> UsermacLabels
+        {
+            get => _usermacLabels ?? (_usermacLabels = new InputList<string>());
+            set => _usermacLabels = value;
+        }
 
         /// <summary>
         /// VLAN ID returned for clients using this PSK

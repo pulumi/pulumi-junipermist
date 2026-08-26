@@ -65,6 +65,7 @@ class SettingArgs:
                  tunterm_monitorings: pulumi.Input[Optional[Sequence[pulumi.Input['SettingTuntermMonitoringArgs']]]] = None,
                  tunterm_multicast_config: pulumi.Input[Optional['SettingTuntermMulticastConfigArgs']] = None,
                  uplink_port_config: pulumi.Input[Optional['SettingUplinkPortConfigArgs']] = None,
+                 uwb_config: pulumi.Input[Optional['SettingUwbConfigArgs']] = None,
                  vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vars_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input['SettingVarsAnnotationsArgs']]]] = None,
                  vna: pulumi.Input[Optional['SettingVnaArgs']] = None,
@@ -123,6 +124,7 @@ class SettingArgs:
         :param pulumi.Input[Sequence[pulumi.Input['SettingTuntermMonitoringArgs']]] tunterm_monitorings: Tunnel termination monitoring settings for the site
         :param pulumi.Input['SettingTuntermMulticastConfigArgs'] tunterm_multicast_config: Multicast settings for tunnel termination at the site
         :param pulumi.Input['SettingUplinkPortConfigArgs'] uplink_port_config: AP uplink port configuration for the site
+        :param pulumi.Input['SettingUwbConfigArgs'] uwb_config: UWB RTLS (OMLOX asset visibility) settings for the site, only effective on AP models with a UWB radio and in countries where the UWB radio is permitted. Overridden by the device profile and device-level settings
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Template variables defined for the site
         :param pulumi.Input[Mapping[str, pulumi.Input['SettingVarsAnnotationsArgs']]] vars_annotations: Metadata annotations for site template variables
         :param pulumi.Input['SettingVnaArgs'] vna: Virtual Network Assistant settings for the site
@@ -222,6 +224,8 @@ class SettingArgs:
             pulumi.set(__self__, "tunterm_multicast_config", tunterm_multicast_config)
         if uplink_port_config is not None:
             pulumi.set(__self__, "uplink_port_config", uplink_port_config)
+        if uwb_config is not None:
+            pulumi.set(__self__, "uwb_config", uwb_config)
         if vars is not None:
             pulumi.set(__self__, "vars", vars)
         if vars_annotations is not None:
@@ -774,6 +778,18 @@ class SettingArgs:
         pulumi.set(self, "uplink_port_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="uwbConfig")
+    def uwb_config(self) -> pulumi.Input[Optional['SettingUwbConfigArgs']]:
+        """
+        UWB RTLS (OMLOX asset visibility) settings for the site, only effective on AP models with a UWB radio and in countries where the UWB radio is permitted. Overridden by the device profile and device-level settings
+        """
+        return pulumi.get(self, "uwb_config")
+
+    @uwb_config.setter
+    def uwb_config(self, value: pulumi.Input[Optional['SettingUwbConfigArgs']]):
+        pulumi.set(self, "uwb_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def vars(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -954,6 +970,7 @@ class _SettingState:
                  tunterm_monitorings: pulumi.Input[Optional[Sequence[pulumi.Input['SettingTuntermMonitoringArgs']]]] = None,
                  tunterm_multicast_config: pulumi.Input[Optional['SettingTuntermMulticastConfigArgs']] = None,
                  uplink_port_config: pulumi.Input[Optional['SettingUplinkPortConfigArgs']] = None,
+                 uwb_config: pulumi.Input[Optional['SettingUwbConfigArgs']] = None,
                  vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vars_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input['SettingVarsAnnotationsArgs']]]] = None,
                  vna: pulumi.Input[Optional['SettingVnaArgs']] = None,
@@ -1015,6 +1032,7 @@ class _SettingState:
         :param pulumi.Input[Sequence[pulumi.Input['SettingTuntermMonitoringArgs']]] tunterm_monitorings: Tunnel termination monitoring settings for the site
         :param pulumi.Input['SettingTuntermMulticastConfigArgs'] tunterm_multicast_config: Multicast settings for tunnel termination at the site
         :param pulumi.Input['SettingUplinkPortConfigArgs'] uplink_port_config: AP uplink port configuration for the site
+        :param pulumi.Input['SettingUwbConfigArgs'] uwb_config: UWB RTLS (OMLOX asset visibility) settings for the site, only effective on AP models with a UWB radio and in countries where the UWB radio is permitted. Overridden by the device profile and device-level settings
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Template variables defined for the site
         :param pulumi.Input[Mapping[str, pulumi.Input['SettingVarsAnnotationsArgs']]] vars_annotations: Metadata annotations for site template variables
         :param pulumi.Input['SettingVnaArgs'] vna: Virtual Network Assistant settings for the site
@@ -1119,6 +1137,8 @@ class _SettingState:
             pulumi.set(__self__, "tunterm_multicast_config", tunterm_multicast_config)
         if uplink_port_config is not None:
             pulumi.set(__self__, "uplink_port_config", uplink_port_config)
+        if uwb_config is not None:
+            pulumi.set(__self__, "uwb_config", uwb_config)
         if vars is not None:
             pulumi.set(__self__, "vars", vars)
         if vars_annotations is not None:
@@ -1687,6 +1707,18 @@ class _SettingState:
         pulumi.set(self, "uplink_port_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="uwbConfig")
+    def uwb_config(self) -> pulumi.Input[Optional['SettingUwbConfigArgs']]:
+        """
+        UWB RTLS (OMLOX asset visibility) settings for the site, only effective on AP models with a UWB radio and in countries where the UWB radio is permitted. Overridden by the device profile and device-level settings
+        """
+        return pulumi.get(self, "uwb_config")
+
+    @uwb_config.setter
+    def uwb_config(self, value: pulumi.Input[Optional['SettingUwbConfigArgs']]):
+        pulumi.set(self, "uwb_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def vars(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -1893,6 +1925,7 @@ class Setting(pulumi.CustomResource):
                  tunterm_monitorings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SettingTuntermMonitoringArgs', 'SettingTuntermMonitoringArgsDict']]]]] = None,
                  tunterm_multicast_config: pulumi.Input[Optional[Union['SettingTuntermMulticastConfigArgs', 'SettingTuntermMulticastConfigArgsDict']]] = None,
                  uplink_port_config: pulumi.Input[Optional[Union['SettingUplinkPortConfigArgs', 'SettingUplinkPortConfigArgsDict']]] = None,
+                 uwb_config: pulumi.Input[Optional[Union['SettingUwbConfigArgs', 'SettingUwbConfigArgsDict']]] = None,
                  vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vars_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SettingVarsAnnotationsArgs', 'SettingVarsAnnotationsArgsDict']]]]] = None,
                  vna: pulumi.Input[Optional[Union['SettingVnaArgs', 'SettingVnaArgsDict']]] = None,
@@ -1998,6 +2031,7 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['SettingTuntermMonitoringArgs', 'SettingTuntermMonitoringArgsDict']]]] tunterm_monitorings: Tunnel termination monitoring settings for the site
         :param pulumi.Input[Union['SettingTuntermMulticastConfigArgs', 'SettingTuntermMulticastConfigArgsDict']] tunterm_multicast_config: Multicast settings for tunnel termination at the site
         :param pulumi.Input[Union['SettingUplinkPortConfigArgs', 'SettingUplinkPortConfigArgsDict']] uplink_port_config: AP uplink port configuration for the site
+        :param pulumi.Input[Union['SettingUwbConfigArgs', 'SettingUwbConfigArgsDict']] uwb_config: UWB RTLS (OMLOX asset visibility) settings for the site, only effective on AP models with a UWB radio and in countries where the UWB radio is permitted. Overridden by the device profile and device-level settings
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Template variables defined for the site
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SettingVarsAnnotationsArgs', 'SettingVarsAnnotationsArgsDict']]]] vars_annotations: Metadata annotations for site template variables
         :param pulumi.Input[Union['SettingVnaArgs', 'SettingVnaArgsDict']] vna: Virtual Network Assistant settings for the site
@@ -2122,6 +2156,7 @@ class Setting(pulumi.CustomResource):
                  tunterm_monitorings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SettingTuntermMonitoringArgs', 'SettingTuntermMonitoringArgsDict']]]]] = None,
                  tunterm_multicast_config: pulumi.Input[Optional[Union['SettingTuntermMulticastConfigArgs', 'SettingTuntermMulticastConfigArgsDict']]] = None,
                  uplink_port_config: pulumi.Input[Optional[Union['SettingUplinkPortConfigArgs', 'SettingUplinkPortConfigArgsDict']]] = None,
+                 uwb_config: pulumi.Input[Optional[Union['SettingUwbConfigArgs', 'SettingUwbConfigArgsDict']]] = None,
                  vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vars_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SettingVarsAnnotationsArgs', 'SettingVarsAnnotationsArgsDict']]]]] = None,
                  vna: pulumi.Input[Optional[Union['SettingVnaArgs', 'SettingVnaArgsDict']]] = None,
@@ -2188,6 +2223,7 @@ class Setting(pulumi.CustomResource):
             __props__.__dict__["tunterm_monitorings"] = tunterm_monitorings
             __props__.__dict__["tunterm_multicast_config"] = tunterm_multicast_config
             __props__.__dict__["uplink_port_config"] = uplink_port_config
+            __props__.__dict__["uwb_config"] = uwb_config
             __props__.__dict__["vars"] = vars
             __props__.__dict__["vars_annotations"] = vars_annotations
             __props__.__dict__["vna"] = vna
@@ -2257,6 +2293,7 @@ class Setting(pulumi.CustomResource):
             tunterm_monitorings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SettingTuntermMonitoringArgs', 'SettingTuntermMonitoringArgsDict']]]]] = None,
             tunterm_multicast_config: pulumi.Input[Optional[Union['SettingTuntermMulticastConfigArgs', 'SettingTuntermMulticastConfigArgsDict']]] = None,
             uplink_port_config: pulumi.Input[Optional[Union['SettingUplinkPortConfigArgs', 'SettingUplinkPortConfigArgsDict']]] = None,
+            uwb_config: pulumi.Input[Optional[Union['SettingUwbConfigArgs', 'SettingUwbConfigArgsDict']]] = None,
             vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             vars_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SettingVarsAnnotationsArgs', 'SettingVarsAnnotationsArgsDict']]]]] = None,
             vna: pulumi.Input[Optional[Union['SettingVnaArgs', 'SettingVnaArgsDict']]] = None,
@@ -2322,6 +2359,7 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['SettingTuntermMonitoringArgs', 'SettingTuntermMonitoringArgsDict']]]] tunterm_monitorings: Tunnel termination monitoring settings for the site
         :param pulumi.Input[Union['SettingTuntermMulticastConfigArgs', 'SettingTuntermMulticastConfigArgsDict']] tunterm_multicast_config: Multicast settings for tunnel termination at the site
         :param pulumi.Input[Union['SettingUplinkPortConfigArgs', 'SettingUplinkPortConfigArgsDict']] uplink_port_config: AP uplink port configuration for the site
+        :param pulumi.Input[Union['SettingUwbConfigArgs', 'SettingUwbConfigArgsDict']] uwb_config: UWB RTLS (OMLOX asset visibility) settings for the site, only effective on AP models with a UWB radio and in countries where the UWB radio is permitted. Overridden by the device profile and device-level settings
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Template variables defined for the site
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SettingVarsAnnotationsArgs', 'SettingVarsAnnotationsArgsDict']]]] vars_annotations: Metadata annotations for site template variables
         :param pulumi.Input[Union['SettingVnaArgs', 'SettingVnaArgsDict']] vna: Virtual Network Assistant settings for the site
@@ -2385,6 +2423,7 @@ class Setting(pulumi.CustomResource):
         __props__.__dict__["tunterm_monitorings"] = tunterm_monitorings
         __props__.__dict__["tunterm_multicast_config"] = tunterm_multicast_config
         __props__.__dict__["uplink_port_config"] = uplink_port_config
+        __props__.__dict__["uwb_config"] = uwb_config
         __props__.__dict__["vars"] = vars
         __props__.__dict__["vars_annotations"] = vars_annotations
         __props__.__dict__["vna"] = vna
@@ -2506,7 +2545,7 @@ class Setting(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="enableUnii4")
-    def enable_unii4(self) -> pulumi.Output[_builtins.bool]:
+    def enable_unii4(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
         Whether UNII-4 channels are enabled for the site
         """
@@ -2759,6 +2798,14 @@ class Setting(pulumi.CustomResource):
         AP uplink port configuration for the site
         """
         return pulumi.get(self, "uplink_port_config")
+
+    @_builtins.property
+    @pulumi.getter(name="uwbConfig")
+    def uwb_config(self) -> pulumi.Output[Optional['outputs.SettingUwbConfig']]:
+        """
+        UWB RTLS (OMLOX asset visibility) settings for the site, only effective on AP models with a UWB radio and in countries where the UWB radio is permitted. Overridden by the device profile and device-level settings
+        """
+        return pulumi.get(self, "uwb_config")
 
     @_builtins.property
     @pulumi.getter

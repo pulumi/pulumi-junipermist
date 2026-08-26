@@ -30,6 +30,10 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly bool? ForceLookup;
         /// <summary>
+        /// VLANs to be bridged locally when forwarding to mxtunnel or site mxedge
+        /// </summary>
+        public readonly ImmutableArray<string> LocalVlanIds;
+        /// <summary>
         /// Origin used to retrieve per-user PSKs
         /// </summary>
         public readonly string? Source;
@@ -44,12 +48,15 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             bool? forceLookup,
 
+            ImmutableArray<string> localVlanIds,
+
             string? source)
         {
             DefaultPsk = defaultPsk;
             DefaultVlanId = defaultVlanId;
             Enabled = enabled;
             ForceLookup = forceLookup;
+            LocalVlanIds = localVlanIds;
             Source = source;
         }
     }

@@ -84,6 +84,12 @@ namespace Pulumi.JuniperMist.Device
         public Output<bool> DisableModule { get; private set; } = null!;
 
         /// <summary>
+        /// Whether U-NII-4 channels (169, 173, 177) are enabled on this access point
+        /// </summary>
+        [Output("enableUnii4")]
+        public Output<bool?> EnableUnii4 { get; private set; } = null!;
+
+        /// <summary>
         /// Electronic shelf label integration settings for this access point
         /// </summary>
         [Output("eslConfig")]
@@ -258,6 +264,12 @@ namespace Pulumi.JuniperMist.Device
         public Output<Outputs.ApUsbConfig?> UsbConfig { get; private set; } = null!;
 
         /// <summary>
+        /// UWB RTLS / OMLOX asset-visibility settings; overrides the device profile and site-level `UwbConfig`
+        /// </summary>
+        [Output("uwbConfig")]
+        public Output<Outputs.ApUwbConfig?> UwbConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Variable values that override site variables for this access point
         /// </summary>
         [Output("vars")]
@@ -384,6 +396,12 @@ namespace Pulumi.JuniperMist.Device
         /// </summary>
         [Input("disableModule")]
         public Input<bool>? DisableModule { get; set; }
+
+        /// <summary>
+        /// Whether U-NII-4 channels (169, 173, 177) are enabled on this access point
+        /// </summary>
+        [Input("enableUnii4")]
+        public Input<bool>? EnableUnii4 { get; set; }
 
         /// <summary>
         /// Electronic shelf label integration settings for this access point
@@ -523,6 +541,12 @@ namespace Pulumi.JuniperMist.Device
         [Input("usbConfig")]
         public Input<Inputs.ApUsbConfigArgs>? UsbConfig { get; set; }
 
+        /// <summary>
+        /// UWB RTLS / OMLOX asset-visibility settings; overrides the device profile and site-level `UwbConfig`
+        /// </summary>
+        [Input("uwbConfig")]
+        public Input<Inputs.ApUwbConfigArgs>? UwbConfig { get; set; }
+
         [Input("vars")]
         private InputMap<string>? _vars;
 
@@ -617,6 +641,12 @@ namespace Pulumi.JuniperMist.Device
         /// </summary>
         [Input("disableModule")]
         public Input<bool>? DisableModule { get; set; }
+
+        /// <summary>
+        /// Whether U-NII-4 channels (169, 173, 177) are enabled on this access point
+        /// </summary>
+        [Input("enableUnii4")]
+        public Input<bool>? EnableUnii4 { get; set; }
 
         /// <summary>
         /// Electronic shelf label integration settings for this access point
@@ -803,6 +833,12 @@ namespace Pulumi.JuniperMist.Device
         /// </summary>
         [Input("usbConfig")]
         public Input<Inputs.ApUsbConfigGetArgs>? UsbConfig { get; set; }
+
+        /// <summary>
+        /// UWB RTLS / OMLOX asset-visibility settings; overrides the device profile and site-level `UwbConfig`
+        /// </summary>
+        [Input("uwbConfig")]
+        public Input<Inputs.ApUwbConfigGetArgs>? UwbConfig { get; set; }
 
         [Input("vars")]
         private InputMap<string>? _vars;

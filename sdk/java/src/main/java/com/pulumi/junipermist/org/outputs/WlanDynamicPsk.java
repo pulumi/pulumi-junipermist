@@ -6,6 +6,7 @@ package com.pulumi.junipermist.org.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -32,6 +33,11 @@ public final class WlanDynamicPsk {
      * 
      */
     private @Nullable Boolean forceLookup;
+    /**
+     * @return VLANs to be bridged locally when forwarding to mxtunnel or site mxedge
+     * 
+     */
+    private @Nullable List<String> localVlanIds;
     /**
      * @return Origin used to retrieve per-user PSKs
      * 
@@ -68,6 +74,13 @@ public final class WlanDynamicPsk {
         return Optional.ofNullable(this.forceLookup);
     }
     /**
+     * @return VLANs to be bridged locally when forwarding to mxtunnel or site mxedge
+     * 
+     */
+    public List<String> localVlanIds() {
+        return this.localVlanIds == null ? List.of() : this.localVlanIds;
+    }
+    /**
      * @return Origin used to retrieve per-user PSKs
      * 
      */
@@ -88,6 +101,7 @@ public final class WlanDynamicPsk {
         private @Nullable String defaultVlanId;
         private @Nullable Boolean enabled;
         private @Nullable Boolean forceLookup;
+        private @Nullable List<String> localVlanIds;
         private @Nullable String source;
         public Builder() {}
         public Builder(WlanDynamicPsk defaults) {
@@ -96,6 +110,7 @@ public final class WlanDynamicPsk {
     	      this.defaultVlanId = defaults.defaultVlanId;
     	      this.enabled = defaults.enabled;
     	      this.forceLookup = defaults.forceLookup;
+    	      this.localVlanIds = defaults.localVlanIds;
     	      this.source = defaults.source;
         }
 
@@ -124,6 +139,15 @@ public final class WlanDynamicPsk {
             return this;
         }
         @CustomType.Setter
+        public Builder localVlanIds(@Nullable List<String> localVlanIds) {
+
+            this.localVlanIds = localVlanIds;
+            return this;
+        }
+        public Builder localVlanIds(String... localVlanIds) {
+            return localVlanIds(List.of(localVlanIds));
+        }
+        @CustomType.Setter
         public Builder source(@Nullable String source) {
 
             this.source = source;
@@ -135,6 +159,7 @@ public final class WlanDynamicPsk {
             _resultValue.defaultVlanId = defaultVlanId;
             _resultValue.enabled = enabled;
             _resultValue.forceLookup = forceLookup;
+            _resultValue.localVlanIds = localVlanIds;
             _resultValue.source = source;
             return _resultValue;
         }

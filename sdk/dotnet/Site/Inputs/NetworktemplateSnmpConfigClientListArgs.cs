@@ -12,11 +12,18 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class NetworktemplateSnmpConfigClientListArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Name of the SNMP client list
+        /// </summary>
         [Input("clientListName")]
         public Input<string>? ClientListName { get; set; }
 
         [Input("clients")]
         private InputList<string>? _clients;
+
+        /// <summary>
+        /// SNMP client IP addresses or CIDR ranges allowed by this list
+        /// </summary>
         public InputList<string> Clients
         {
             get => _clients ?? (_clients = new InputList<string>());

@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class DeviceprofileGatewayRoutingPoliciesTermActionsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to accept routes that match this term
+        /// Whether to accept routes that match this term. Precedence is `Accept` &gt; `NextTerm` &gt; `NextPolicy`; routes are rejected if all three are false
         /// </summary>
         [Input("accept")]
         public Input<bool>? Accept { get; set; }
@@ -95,6 +95,18 @@ namespace Pulumi.JuniperMist.Org.Inputs
         /// </summary>
         [Input("localPreference")]
         public Input<string>? LocalPreference { get; set; }
+
+        /// <summary>
+        /// When true, continue evaluating the next routing policy in the chain after this term matches; default is false
+        /// </summary>
+        [Input("nextPolicy")]
+        public Input<bool>? NextPolicy { get; set; }
+
+        /// <summary>
+        /// When true, continue evaluating the next term in the same routing policy after this term matches; default is false
+        /// </summary>
+        [Input("nextTerm")]
+        public Input<bool>? NextTerm { get; set; }
 
         [Input("prependAsPaths")]
         private InputList<string>? _prependAsPaths;

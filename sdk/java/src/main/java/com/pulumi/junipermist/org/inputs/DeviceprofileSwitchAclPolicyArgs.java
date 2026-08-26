@@ -6,6 +6,7 @@ package com.pulumi.junipermist.org.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.junipermist.org.inputs.DeviceprofileSwitchAclPolicyActionArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -30,6 +31,21 @@ public final class DeviceprofileSwitchAclPolicyArgs extends com.pulumi.resources
      */
     public Optional<Output<List<DeviceprofileSwitchAclPolicyActionArgs>>> actions() {
         return Optional.ofNullable(this.actions);
+    }
+
+    /**
+     * Whether this ACL policy is disabled
+     * 
+     */
+    @Import(name="disabled")
+    private @Nullable Output<Boolean> disabled;
+
+    /**
+     * @return Whether this ACL policy is disabled
+     * 
+     */
+    public Optional<Output<Boolean>> disabled() {
+        return Optional.ofNullable(this.disabled);
     }
 
     /**
@@ -66,6 +82,7 @@ public final class DeviceprofileSwitchAclPolicyArgs extends com.pulumi.resources
 
     private DeviceprofileSwitchAclPolicyArgs(DeviceprofileSwitchAclPolicyArgs $) {
         this.actions = $.actions;
+        this.disabled = $.disabled;
         this.name = $.name;
         this.srcTags = $.srcTags;
     }
@@ -117,6 +134,27 @@ public final class DeviceprofileSwitchAclPolicyArgs extends com.pulumi.resources
          */
         public Builder actions(DeviceprofileSwitchAclPolicyActionArgs... actions) {
             return actions(List.of(actions));
+        }
+
+        /**
+         * @param disabled Whether this ACL policy is disabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disabled(@Nullable Output<Boolean> disabled) {
+            $.disabled = disabled;
+            return this;
+        }
+
+        /**
+         * @param disabled Whether this ACL policy is disabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disabled(Boolean disabled) {
+            return disabled(Output.of(disabled));
         }
 
         /**

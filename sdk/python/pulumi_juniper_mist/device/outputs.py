@@ -44,6 +44,7 @@ __all__ = [
     'ApRadioConfigBand6',
     'ApUplinkPortConfig',
     'ApUsbConfig',
+    'ApUwbConfig',
     'ApZigbeeConfig',
     'GatewayBgpConfig',
     'GatewayBgpConfigNeighbors',
@@ -89,6 +90,7 @@ __all__ = [
     'GatewayPortConfigWanExtraRoutes6',
     'GatewayPortConfigWanExtraRoutes',
     'GatewayPortConfigWanProbeOverride',
+    'GatewayPortConfigWanProbeOverrideHttp',
     'GatewayPortConfigWanSourceNat',
     'GatewayPortMirroring',
     'GatewayPortMirroringPortMirror',
@@ -118,8 +120,10 @@ __all__ = [
     'GatewayTunnelConfigsIkeProposal',
     'GatewayTunnelConfigsIpsecProposal',
     'GatewayTunnelConfigsPrimary',
+    'GatewayTunnelConfigsPrimaryProbeHttp',
     'GatewayTunnelConfigsProbe',
     'GatewayTunnelConfigsSecondary',
+    'GatewayTunnelConfigsSecondaryProbeHttp',
     'GatewayTunnelProviderOptions',
     'GatewayTunnelProviderOptionsJse',
     'GatewayTunnelProviderOptionsPrisma',
@@ -148,6 +152,7 @@ __all__ = [
     'SwitchLocalPortConfigStormControl',
     'SwitchMistNac',
     'SwitchNetworks',
+    'SwitchNetworksMulticast',
     'SwitchOobIpConfig',
     'SwitchOspfAreas',
     'SwitchOspfAreasNetworks',
@@ -210,6 +215,7 @@ __all__ = [
     'SwitchVrfInstances',
     'SwitchVrfInstancesExtraRoutes6',
     'SwitchVrfInstancesExtraRoutes',
+    'SwitchVrfInstancesMulticastConfig',
     'SwitchVrrpConfig',
     'SwitchVrrpConfigGroups',
     'BaseLatlng',
@@ -1374,6 +1380,8 @@ class ApMqttConfig(dict):
             suggest = "broker_port"
         elif key == "brokerProto":
             suggest = "broker_proto"
+        elif key == "defaultTopic":
+            suggest = "default_topic"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ApMqttConfig. Access the value via the '{suggest}' property getter instead.")
@@ -1390,6 +1398,7 @@ class ApMqttConfig(dict):
                  broker_host: Optional[_builtins.str] = None,
                  broker_port: Optional[_builtins.int] = None,
                  broker_proto: Optional[_builtins.str] = None,
+                 default_topic: Optional[_builtins.str] = None,
                  enabled: Optional[_builtins.bool] = None,
                  format: Optional[_builtins.str] = None,
                  password: Optional[_builtins.str] = None,
@@ -1398,6 +1407,7 @@ class ApMqttConfig(dict):
         :param _builtins.str broker_host: MQTT broker hostname or IP address; required when `enabled` is `true`
         :param _builtins.int broker_port: MQTT broker port; defaults to `1883` for `tcp` and `8883` for `ssl`
         :param _builtins.str broker_proto: MQTT broker transport protocol
+        :param _builtins.str default_topic: Optional catch-all MQTT topic; BLE advertisements matching no AssetFilter are published here
         :param _builtins.bool enabled: Whether to enable MQTT publishing
         :param _builtins.str format: Payload format for published messages
         :param _builtins.str password: Optional MQTT password; masked in GET responses
@@ -1409,6 +1419,8 @@ class ApMqttConfig(dict):
             pulumi.set(__self__, "broker_port", broker_port)
         if broker_proto is not None:
             pulumi.set(__self__, "broker_proto", broker_proto)
+        if default_topic is not None:
+            pulumi.set(__self__, "default_topic", default_topic)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if format is not None:
@@ -1441,6 +1453,14 @@ class ApMqttConfig(dict):
         MQTT broker transport protocol
         """
         return pulumi.get(self, "broker_proto")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultTopic")
+    def default_topic(self) -> Optional[_builtins.str]:
+        """
+        Optional catch-all MQTT topic; BLE advertisements matching no AssetFilter are published here
+        """
+        return pulumi.get(self, "default_topic")
 
     @_builtins.property
     @pulumi.getter
@@ -1547,14 +1567,14 @@ class ApPortConfig(dict):
         :param _builtins.str mac_auth_protocol: Protocol used for MAC authentication when `enable_mac_auth` is `true`
         :param 'ApPortConfigMistNacArgs' mist_nac: Juniper Mist NAC settings used by AP port authentication
         :param _builtins.str mx_tunnel_id: If `forwarding`==`mxtunnel`, vlan_ids comes from mxtunnel
-        :param _builtins.str mxtunnel_name: If `forwarding`==`site_mxedge`, vlan_ids comes from site_mxedge (`mxtunnels` under site setting)
+        :param _builtins.str mxtunnel_name: If `forwarding`==`site_mxedge`, vlan_ids comes from site_mxedge (`mxtunnel` under site setting)
         :param _builtins.str port_auth: Authentication mode for this AP Ethernet port
         :param _builtins.int port_vlan_id: If `forwarding`==`limited`. VLAN ID allowed on this AP Ethernet port
         :param 'ApPortConfigRadiusConfigArgs' radius_config: RADIUS authentication and accounting settings for this AP port
         :param 'ApPortConfigRadsecArgs' radsec: TLS-secured RADIUS settings for this AP port
         :param _builtins.int vlan_id: Optional to specify the VLAN ID for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `site_mxedge`.
                  * if vlan_id is not specified then it will use first one in vlan_ids[] of the mxtunnel.
-                 * if forwarding == site_mxedge, vlan_ids comes from site_mxedge (`mxtunnels` under site setting)
+                 * if forwarding == site_mxedge, vlan_ids comes from site_mxedge (`mxtunnel` under site setting)
         :param _builtins.str vlan_ids: If `forwarding`==`limited`, comma separated list of additional VLAN IDs allowed on this port
         :param _builtins.str wxtunnel_id: If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
         :param _builtins.str wxtunnel_remote_id: If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
@@ -1662,7 +1682,7 @@ class ApPortConfig(dict):
     @pulumi.getter(name="mxtunnelName")
     def mxtunnel_name(self) -> Optional[_builtins.str]:
         """
-        If `forwarding`==`site_mxedge`, vlan_ids comes from site_mxedge (`mxtunnels` under site setting)
+        If `forwarding`==`site_mxedge`, vlan_ids comes from site_mxedge (`mxtunnel` under site setting)
         """
         return pulumi.get(self, "mxtunnel_name")
 
@@ -1704,7 +1724,7 @@ class ApPortConfig(dict):
         """
         Optional to specify the VLAN ID for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `site_mxedge`.
           * if vlan_id is not specified then it will use first one in vlan_ids[] of the mxtunnel.
-          * if forwarding == site_mxedge, vlan_ids comes from site_mxedge (`mxtunnels` under site setting)
+          * if forwarding == site_mxedge, vlan_ids comes from site_mxedge (`mxtunnel` under site setting)
         """
         return pulumi.get(self, "vlan_id")
 
@@ -3677,6 +3697,73 @@ class ApUsbConfig(dict):
 
 
 @pulumi.output_type
+class ApUwbConfig(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None,
+                 host: Optional[_builtins.str] = None,
+                 port: Optional[_builtins.int] = None,
+                 slot: Optional[_builtins.int] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool enabled: Whether UWB RTLS integration is enabled
+        :param _builtins.str host: RTLS server hostname or IP address
+        :param _builtins.int port: RTLS server port number
+        :param _builtins.int slot: UWB time slot assigned to this AP, 0–15
+        :param _builtins.str type: UWB integration type. enum: `zigpos`
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if slot is not None:
+            pulumi.set(__self__, "slot", slot)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether UWB RTLS integration is enabled
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> Optional[_builtins.str]:
+        """
+        RTLS server hostname or IP address
+        """
+        return pulumi.get(self, "host")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[_builtins.int]:
+        """
+        RTLS server port number
+        """
+        return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter
+    def slot(self) -> Optional[_builtins.int]:
+        """
+        UWB time slot assigned to this AP, 0–15
+        """
+        return pulumi.get(self, "slot")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        UWB integration type. enum: `zigpos`
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
 class ApZigbeeConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -4648,6 +4735,8 @@ class GatewayGatewayMgmt(dict):
             suggest = "config_revert_timer"
         elif key == "disableConsole":
             suggest = "disable_console"
+        elif key == "disableIdpPcap":
+            suggest = "disable_idp_pcap"
         elif key == "disableOob":
             suggest = "disable_oob"
         elif key == "disableUsb":
@@ -4685,6 +4774,7 @@ class GatewayGatewayMgmt(dict):
                  auto_signature_update: Optional['outputs.GatewayGatewayMgmtAutoSignatureUpdate'] = None,
                  config_revert_timer: Optional[_builtins.int] = None,
                  disable_console: Optional[_builtins.bool] = None,
+                 disable_idp_pcap: Optional[_builtins.bool] = None,
                  disable_oob: Optional[_builtins.bool] = None,
                  disable_usb: Optional[_builtins.bool] = None,
                  fips_enabled: Optional[_builtins.bool] = None,
@@ -4701,6 +4791,7 @@ class GatewayGatewayMgmt(dict):
         :param 'GatewayGatewayMgmtAutoSignatureUpdateArgs' auto_signature_update: Schedule for automatic security signature updates
         :param _builtins.int config_revert_timer: Rollback timer for commit confirmed
         :param _builtins.bool disable_console: For SSR and SRX, disable console port
+        :param _builtins.bool disable_idp_pcap: For SRX only, disable IDP packet capture
         :param _builtins.bool disable_oob: For SSR and SRX, disable management interface
         :param _builtins.bool disable_usb: For SSR and SRX, disable usb interface
         :param _builtins.bool fips_enabled: Whether FIPS mode is enabled on the gateway
@@ -4723,6 +4814,8 @@ class GatewayGatewayMgmt(dict):
             pulumi.set(__self__, "config_revert_timer", config_revert_timer)
         if disable_console is not None:
             pulumi.set(__self__, "disable_console", disable_console)
+        if disable_idp_pcap is not None:
+            pulumi.set(__self__, "disable_idp_pcap", disable_idp_pcap)
         if disable_oob is not None:
             pulumi.set(__self__, "disable_oob", disable_oob)
         if disable_usb is not None:
@@ -4789,6 +4882,14 @@ class GatewayGatewayMgmt(dict):
         For SSR and SRX, disable console port
         """
         return pulumi.get(self, "disable_console")
+
+    @_builtins.property
+    @pulumi.getter(name="disableIdpPcap")
+    def disable_idp_pcap(self) -> Optional[_builtins.bool]:
+        """
+        For SRX only, disable IDP packet capture
+        """
+        return pulumi.get(self, "disable_idp_pcap")
 
     @_builtins.property
     @pulumi.getter(name="disableOob")
@@ -6951,8 +7052,6 @@ class GatewayPortConfig(dict):
             suggest = "reth_idx"
         elif key == "rethNode":
             suggest = "reth_node"
-        elif key == "rethNodes":
-            suggest = "reth_nodes"
         elif key == "ssrNoVirtualMac":
             suggest = "ssr_no_virtual_mac"
         elif key == "svrPortRange":
@@ -7027,7 +7126,6 @@ class GatewayPortConfig(dict):
                  redundant_group: Optional[_builtins.int] = None,
                  reth_idx: Optional[_builtins.str] = None,
                  reth_node: Optional[_builtins.str] = None,
-                 reth_nodes: Optional[Sequence[_builtins.str]] = None,
                  speed: Optional[_builtins.str] = None,
                  ssr_no_virtual_mac: Optional[_builtins.bool] = None,
                  svr_port_range: Optional[_builtins.str] = None,
@@ -7076,7 +7174,6 @@ class GatewayPortConfig(dict):
         :param _builtins.int redundant_group: If HA mode, SRX Only - support redundancy-group. 1-128 for physical SRX, 1-64 for virtual SRX
         :param _builtins.str reth_idx: For SRX only and if HA Mode
         :param _builtins.str reth_node: If HA mode. Node associated with the redundant Ethernet interface
-        :param Sequence[_builtins.str] reth_nodes: If HA mode and for SSR only. Per-network node assignment used for VLAN-based redundancy
         :param _builtins.str speed: Link speed configured on the port
         :param _builtins.bool ssr_no_virtual_mac: When SSR is running as VM, this is required on certain hosting platforms
         :param _builtins.str svr_port_range: For SSR only. Port range configured on the interface
@@ -7155,8 +7252,6 @@ class GatewayPortConfig(dict):
             pulumi.set(__self__, "reth_idx", reth_idx)
         if reth_node is not None:
             pulumi.set(__self__, "reth_node", reth_node)
-        if reth_nodes is not None:
-            pulumi.set(__self__, "reth_nodes", reth_nodes)
         if speed is not None:
             pulumi.set(__self__, "speed", speed)
         if ssr_no_virtual_mac is not None:
@@ -7437,14 +7532,6 @@ class GatewayPortConfig(dict):
         If HA mode. Node associated with the redundant Ethernet interface
         """
         return pulumi.get(self, "reth_node")
-
-    @_builtins.property
-    @pulumi.getter(name="rethNodes")
-    def reth_nodes(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        If HA mode and for SSR only. Per-network node assignment used for VLAN-based redundancy
-        """
-        return pulumi.get(self, "reth_nodes")
 
     @_builtins.property
     @pulumi.getter
@@ -8043,20 +8130,44 @@ class GatewayPortConfigWanProbeOverride(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 hostnames: Optional[Sequence[_builtins.str]] = None,
+                 http: Optional['outputs.GatewayPortConfigWanProbeOverrideHttp'] = None,
                  ip6s: Optional[Sequence[_builtins.str]] = None,
                  ips: Optional[Sequence[_builtins.str]] = None,
                  probe_profile: Optional[_builtins.str] = None):
         """
+        :param Sequence[_builtins.str] hostnames: List of hostnames used as probe destinations; applicable for both IPv4 and IPv6
+        :param 'GatewayPortConfigWanProbeOverrideHttpArgs' http: HTTP probe settings; success from any ICMP or HTTP probe indicates the WAN is up
         :param Sequence[_builtins.str] ip6s: List of IPv6 probe host addresses used by this WAN override
         :param Sequence[_builtins.str] ips: List of IPv4 probe host addresses used by this WAN override
         :param _builtins.str probe_profile: WAN probe profile used for health checks on this port
         """
+        if hostnames is not None:
+            pulumi.set(__self__, "hostnames", hostnames)
+        if http is not None:
+            pulumi.set(__self__, "http", http)
         if ip6s is not None:
             pulumi.set(__self__, "ip6s", ip6s)
         if ips is not None:
             pulumi.set(__self__, "ips", ips)
         if probe_profile is not None:
             pulumi.set(__self__, "probe_profile", probe_profile)
+
+    @_builtins.property
+    @pulumi.getter
+    def hostnames(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of hostnames used as probe destinations; applicable for both IPv4 and IPv6
+        """
+        return pulumi.get(self, "hostnames")
+
+    @_builtins.property
+    @pulumi.getter
+    def http(self) -> Optional['outputs.GatewayPortConfigWanProbeOverrideHttp']:
+        """
+        HTTP probe settings; success from any ICMP or HTTP probe indicates the WAN is up
+        """
+        return pulumi.get(self, "http")
 
     @_builtins.property
     @pulumi.getter
@@ -8081,6 +8192,54 @@ class GatewayPortConfigWanProbeOverride(dict):
         WAN probe profile used for health checks on this port
         """
         return pulumi.get(self, "probe_profile")
+
+
+@pulumi.output_type
+class GatewayPortConfigWanProbeOverrideHttp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acceptedStatusCodes":
+            suggest = "accepted_status_codes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GatewayPortConfigWanProbeOverrideHttp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GatewayPortConfigWanProbeOverrideHttp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GatewayPortConfigWanProbeOverrideHttp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 accepted_status_codes: Optional[Sequence[_builtins.int]] = None,
+                 urls: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.int] accepted_status_codes: HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+        :param Sequence[_builtins.str] urls: HTTP or HTTPS URLs to probe
+        """
+        if accepted_status_codes is not None:
+            pulumi.set(__self__, "accepted_status_codes", accepted_status_codes)
+        if urls is not None:
+            pulumi.set(__self__, "urls", urls)
+
+    @_builtins.property
+    @pulumi.getter(name="acceptedStatusCodes")
+    def accepted_status_codes(self) -> Optional[Sequence[_builtins.int]]:
+        """
+        HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+        """
+        return pulumi.get(self, "accepted_status_codes")
+
+    @_builtins.property
+    @pulumi.getter
+    def urls(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        HTTP or HTTPS URLs to probe
+        """
+        return pulumi.get(self, "urls")
 
 
 @pulumi.output_type
@@ -8338,6 +8497,10 @@ class GatewayRoutingPoliciesTermActions(dict):
             suggest = "export_communities"
         elif key == "localPreference":
             suggest = "local_preference"
+        elif key == "nextPolicy":
+            suggest = "next_policy"
+        elif key == "nextTerm":
+            suggest = "next_term"
         elif key == "prependAsPaths":
             suggest = "prepend_as_paths"
 
@@ -8361,9 +8524,11 @@ class GatewayRoutingPoliciesTermActions(dict):
                  exclude_communities: Optional[Sequence[_builtins.str]] = None,
                  export_communities: Optional[Sequence[_builtins.str]] = None,
                  local_preference: Optional[_builtins.str] = None,
+                 next_policy: Optional[_builtins.bool] = None,
+                 next_term: Optional[_builtins.bool] = None,
                  prepend_as_paths: Optional[Sequence[_builtins.str]] = None):
         """
-        :param _builtins.bool accept: Whether to accept routes that match this term
+        :param _builtins.bool accept: Whether to accept routes that match this term. Precedence is `accept` > `next_term` > `next_policy`; routes are rejected if all three are false
         :param Sequence[_builtins.str] add_communities: BGP communities to add to routes that match this term
         :param Sequence[_builtins.str] add_target_vrfs: SSR target VRFs to add when leaking routes from hub to spoke
         :param Sequence[_builtins.str] communities: BGP communities to set when this term is used as an export policy
@@ -8371,6 +8536,8 @@ class GatewayRoutingPoliciesTermActions(dict):
         :param Sequence[_builtins.str] exclude_communities: BGP communities to exclude from routes that match this term
         :param Sequence[_builtins.str] export_communities: BGP communities allowed for export when this term is used as an export policy
         :param _builtins.str local_preference: Preference value to set when this term is used as an import policy
+        :param _builtins.bool next_policy: When true, continue evaluating the next routing policy in the chain after this term matches; default is false
+        :param _builtins.bool next_term: When true, continue evaluating the next term in the same routing policy after this term matches; default is false
         :param Sequence[_builtins.str] prepend_as_paths: AS path values to prepend when this term is used as an export policy
         """
         if accept is not None:
@@ -8389,6 +8556,10 @@ class GatewayRoutingPoliciesTermActions(dict):
             pulumi.set(__self__, "export_communities", export_communities)
         if local_preference is not None:
             pulumi.set(__self__, "local_preference", local_preference)
+        if next_policy is not None:
+            pulumi.set(__self__, "next_policy", next_policy)
+        if next_term is not None:
+            pulumi.set(__self__, "next_term", next_term)
         if prepend_as_paths is not None:
             pulumi.set(__self__, "prepend_as_paths", prepend_as_paths)
 
@@ -8396,7 +8567,7 @@ class GatewayRoutingPoliciesTermActions(dict):
     @pulumi.getter
     def accept(self) -> Optional[_builtins.bool]:
         """
-        Whether to accept routes that match this term
+        Whether to accept routes that match this term. Precedence is `accept` > `next_term` > `next_policy`; routes are rejected if all three are false
         """
         return pulumi.get(self, "accept")
 
@@ -8455,6 +8626,22 @@ class GatewayRoutingPoliciesTermActions(dict):
         Preference value to set when this term is used as an import policy
         """
         return pulumi.get(self, "local_preference")
+
+    @_builtins.property
+    @pulumi.getter(name="nextPolicy")
+    def next_policy(self) -> Optional[_builtins.bool]:
+        """
+        When true, continue evaluating the next routing policy in the chain after this term matches; default is false
+        """
+        return pulumi.get(self, "next_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="nextTerm")
+    def next_term(self) -> Optional[_builtins.bool]:
+        """
+        When true, continue evaluating the next term in the same routing policy after this term matches; default is false
+        """
+        return pulumi.get(self, "next_term")
 
     @_builtins.property
     @pulumi.getter(name="prependAsPaths")
@@ -10055,8 +10242,16 @@ class GatewayTunnelConfigsPrimary(dict):
         suggest = None
         if key == "wanNames":
             suggest = "wan_names"
+        elif key == "internalIp6s":
+            suggest = "internal_ip6s"
         elif key == "internalIps":
             suggest = "internal_ips"
+        elif key == "probeHostnames":
+            suggest = "probe_hostnames"
+        elif key == "probeHttp":
+            suggest = "probe_http"
+        elif key == "probeIp6s":
+            suggest = "probe_ip6s"
         elif key == "probeIps":
             suggest = "probe_ips"
         elif key == "remoteIds":
@@ -10076,20 +10271,36 @@ class GatewayTunnelConfigsPrimary(dict):
     def __init__(__self__, *,
                  hosts: Sequence[_builtins.str],
                  wan_names: Sequence[_builtins.str],
+                 internal_ip6s: Optional[Sequence[_builtins.str]] = None,
                  internal_ips: Optional[Sequence[_builtins.str]] = None,
+                 probe_hostnames: Optional[Sequence[_builtins.str]] = None,
+                 probe_http: Optional['outputs.GatewayTunnelConfigsPrimaryProbeHttp'] = None,
+                 probe_ip6s: Optional[Sequence[_builtins.str]] = None,
                  probe_ips: Optional[Sequence[_builtins.str]] = None,
                  remote_ids: Optional[Sequence[_builtins.str]] = None):
         """
         :param Sequence[_builtins.str] hosts: Remote gateway host addresses for this tunnel node
         :param Sequence[_builtins.str] wan_names: Interface names that source tunnel traffic for this node
+        :param Sequence[_builtins.str] internal_ip6s: IPv6 addresses configured on this tunnel node
         :param Sequence[_builtins.str] internal_ips: Internal IP addresses configured on this tunnel node
+        :param Sequence[_builtins.str] probe_hostnames: Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+        :param 'GatewayTunnelConfigsPrimaryProbeHttpArgs' probe_http: HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+        :param Sequence[_builtins.str] probe_ip6s: IPv6 ICMP probe addresses used to monitor this tunnel node
         :param Sequence[_builtins.str] probe_ips: Health-check IP addresses used to monitor this tunnel node
         :param Sequence[_builtins.str] remote_ids: IKE identities expected from this tunnel node
         """
         pulumi.set(__self__, "hosts", hosts)
         pulumi.set(__self__, "wan_names", wan_names)
+        if internal_ip6s is not None:
+            pulumi.set(__self__, "internal_ip6s", internal_ip6s)
         if internal_ips is not None:
             pulumi.set(__self__, "internal_ips", internal_ips)
+        if probe_hostnames is not None:
+            pulumi.set(__self__, "probe_hostnames", probe_hostnames)
+        if probe_http is not None:
+            pulumi.set(__self__, "probe_http", probe_http)
+        if probe_ip6s is not None:
+            pulumi.set(__self__, "probe_ip6s", probe_ip6s)
         if probe_ips is not None:
             pulumi.set(__self__, "probe_ips", probe_ips)
         if remote_ids is not None:
@@ -10112,12 +10323,44 @@ class GatewayTunnelConfigsPrimary(dict):
         return pulumi.get(self, "wan_names")
 
     @_builtins.property
+    @pulumi.getter(name="internalIp6s")
+    def internal_ip6s(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        IPv6 addresses configured on this tunnel node
+        """
+        return pulumi.get(self, "internal_ip6s")
+
+    @_builtins.property
     @pulumi.getter(name="internalIps")
     def internal_ips(self) -> Optional[Sequence[_builtins.str]]:
         """
         Internal IP addresses configured on this tunnel node
         """
         return pulumi.get(self, "internal_ips")
+
+    @_builtins.property
+    @pulumi.getter(name="probeHostnames")
+    def probe_hostnames(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+        """
+        return pulumi.get(self, "probe_hostnames")
+
+    @_builtins.property
+    @pulumi.getter(name="probeHttp")
+    def probe_http(self) -> Optional['outputs.GatewayTunnelConfigsPrimaryProbeHttp']:
+        """
+        HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+        """
+        return pulumi.get(self, "probe_http")
+
+    @_builtins.property
+    @pulumi.getter(name="probeIp6s")
+    def probe_ip6s(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        IPv6 ICMP probe addresses used to monitor this tunnel node
+        """
+        return pulumi.get(self, "probe_ip6s")
 
     @_builtins.property
     @pulumi.getter(name="probeIps")
@@ -10134,6 +10377,54 @@ class GatewayTunnelConfigsPrimary(dict):
         IKE identities expected from this tunnel node
         """
         return pulumi.get(self, "remote_ids")
+
+
+@pulumi.output_type
+class GatewayTunnelConfigsPrimaryProbeHttp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acceptedStatusCodes":
+            suggest = "accepted_status_codes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GatewayTunnelConfigsPrimaryProbeHttp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GatewayTunnelConfigsPrimaryProbeHttp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GatewayTunnelConfigsPrimaryProbeHttp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 accepted_status_codes: Optional[Sequence[_builtins.int]] = None,
+                 urls: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.int] accepted_status_codes: HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+        :param Sequence[_builtins.str] urls: HTTP or HTTPS URLs to probe
+        """
+        if accepted_status_codes is not None:
+            pulumi.set(__self__, "accepted_status_codes", accepted_status_codes)
+        if urls is not None:
+            pulumi.set(__self__, "urls", urls)
+
+    @_builtins.property
+    @pulumi.getter(name="acceptedStatusCodes")
+    def accepted_status_codes(self) -> Optional[Sequence[_builtins.int]]:
+        """
+        HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+        """
+        return pulumi.get(self, "accepted_status_codes")
+
+    @_builtins.property
+    @pulumi.getter
+    def urls(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        HTTP or HTTPS URLs to probe
+        """
+        return pulumi.get(self, "urls")
 
 
 @pulumi.output_type
@@ -10198,8 +10489,16 @@ class GatewayTunnelConfigsSecondary(dict):
         suggest = None
         if key == "wanNames":
             suggest = "wan_names"
+        elif key == "internalIp6s":
+            suggest = "internal_ip6s"
         elif key == "internalIps":
             suggest = "internal_ips"
+        elif key == "probeHostnames":
+            suggest = "probe_hostnames"
+        elif key == "probeHttp":
+            suggest = "probe_http"
+        elif key == "probeIp6s":
+            suggest = "probe_ip6s"
         elif key == "probeIps":
             suggest = "probe_ips"
         elif key == "remoteIds":
@@ -10219,20 +10518,36 @@ class GatewayTunnelConfigsSecondary(dict):
     def __init__(__self__, *,
                  hosts: Sequence[_builtins.str],
                  wan_names: Sequence[_builtins.str],
+                 internal_ip6s: Optional[Sequence[_builtins.str]] = None,
                  internal_ips: Optional[Sequence[_builtins.str]] = None,
+                 probe_hostnames: Optional[Sequence[_builtins.str]] = None,
+                 probe_http: Optional['outputs.GatewayTunnelConfigsSecondaryProbeHttp'] = None,
+                 probe_ip6s: Optional[Sequence[_builtins.str]] = None,
                  probe_ips: Optional[Sequence[_builtins.str]] = None,
                  remote_ids: Optional[Sequence[_builtins.str]] = None):
         """
         :param Sequence[_builtins.str] hosts: Remote gateway host addresses for this tunnel node
         :param Sequence[_builtins.str] wan_names: Interface names that source tunnel traffic for this node
+        :param Sequence[_builtins.str] internal_ip6s: IPv6 addresses configured on this tunnel node
         :param Sequence[_builtins.str] internal_ips: Internal IP addresses configured on this tunnel node
+        :param Sequence[_builtins.str] probe_hostnames: Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+        :param 'GatewayTunnelConfigsSecondaryProbeHttpArgs' probe_http: HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+        :param Sequence[_builtins.str] probe_ip6s: IPv6 ICMP probe addresses used to monitor this tunnel node
         :param Sequence[_builtins.str] probe_ips: Health-check IP addresses used to monitor this tunnel node
         :param Sequence[_builtins.str] remote_ids: IKE identities expected from this tunnel node
         """
         pulumi.set(__self__, "hosts", hosts)
         pulumi.set(__self__, "wan_names", wan_names)
+        if internal_ip6s is not None:
+            pulumi.set(__self__, "internal_ip6s", internal_ip6s)
         if internal_ips is not None:
             pulumi.set(__self__, "internal_ips", internal_ips)
+        if probe_hostnames is not None:
+            pulumi.set(__self__, "probe_hostnames", probe_hostnames)
+        if probe_http is not None:
+            pulumi.set(__self__, "probe_http", probe_http)
+        if probe_ip6s is not None:
+            pulumi.set(__self__, "probe_ip6s", probe_ip6s)
         if probe_ips is not None:
             pulumi.set(__self__, "probe_ips", probe_ips)
         if remote_ids is not None:
@@ -10255,12 +10570,44 @@ class GatewayTunnelConfigsSecondary(dict):
         return pulumi.get(self, "wan_names")
 
     @_builtins.property
+    @pulumi.getter(name="internalIp6s")
+    def internal_ip6s(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        IPv6 addresses configured on this tunnel node
+        """
+        return pulumi.get(self, "internal_ip6s")
+
+    @_builtins.property
     @pulumi.getter(name="internalIps")
     def internal_ips(self) -> Optional[Sequence[_builtins.str]]:
         """
         Internal IP addresses configured on this tunnel node
         """
         return pulumi.get(self, "internal_ips")
+
+    @_builtins.property
+    @pulumi.getter(name="probeHostnames")
+    def probe_hostnames(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+        """
+        return pulumi.get(self, "probe_hostnames")
+
+    @_builtins.property
+    @pulumi.getter(name="probeHttp")
+    def probe_http(self) -> Optional['outputs.GatewayTunnelConfigsSecondaryProbeHttp']:
+        """
+        HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+        """
+        return pulumi.get(self, "probe_http")
+
+    @_builtins.property
+    @pulumi.getter(name="probeIp6s")
+    def probe_ip6s(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        IPv6 ICMP probe addresses used to monitor this tunnel node
+        """
+        return pulumi.get(self, "probe_ip6s")
 
     @_builtins.property
     @pulumi.getter(name="probeIps")
@@ -10277,6 +10624,54 @@ class GatewayTunnelConfigsSecondary(dict):
         IKE identities expected from this tunnel node
         """
         return pulumi.get(self, "remote_ids")
+
+
+@pulumi.output_type
+class GatewayTunnelConfigsSecondaryProbeHttp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acceptedStatusCodes":
+            suggest = "accepted_status_codes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GatewayTunnelConfigsSecondaryProbeHttp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GatewayTunnelConfigsSecondaryProbeHttp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GatewayTunnelConfigsSecondaryProbeHttp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 accepted_status_codes: Optional[Sequence[_builtins.int]] = None,
+                 urls: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.int] accepted_status_codes: HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+        :param Sequence[_builtins.str] urls: HTTP or HTTPS URLs to probe
+        """
+        if accepted_status_codes is not None:
+            pulumi.set(__self__, "accepted_status_codes", accepted_status_codes)
+        if urls is not None:
+            pulumi.set(__self__, "urls", urls)
+
+    @_builtins.property
+    @pulumi.getter(name="acceptedStatusCodes")
+    def accepted_status_codes(self) -> Optional[Sequence[_builtins.int]]:
+        """
+        HTTP response status codes that indicate a successful probe. Defaults to 200 if not specified.
+        """
+        return pulumi.get(self, "accepted_status_codes")
+
+    @_builtins.property
+    @pulumi.getter
+    def urls(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        HTTP or HTTPS URLs to probe
+        """
+        return pulumi.get(self, "urls")
 
 
 @pulumi.output_type
@@ -10915,15 +11310,19 @@ class SwitchAclPolicy(dict):
 
     def __init__(__self__, *,
                  actions: Optional[Sequence['outputs.SwitchAclPolicyAction']] = None,
+                 disabled: Optional[_builtins.bool] = None,
                  name: Optional[_builtins.str] = None,
                  src_tags: Optional[Sequence[_builtins.str]] = None):
         """
         :param Sequence['SwitchAclPolicyActionArgs'] actions: Destination tag actions evaluated for sources matching this ACL policy
+        :param _builtins.bool disabled: Whether this ACL policy is disabled
         :param _builtins.str name: Display name of the ACL policy
         :param Sequence[_builtins.str] src_tags: Source ACL tags that select traffic for this ACL policy
         """
         if actions is not None:
             pulumi.set(__self__, "actions", actions)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if src_tags is not None:
@@ -10936,6 +11335,14 @@ class SwitchAclPolicy(dict):
         Destination tag actions evaluated for sources matching this ACL policy
         """
         return pulumi.get(self, "actions")
+
+    @_builtins.property
+    @pulumi.getter
+    def disabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether this ACL policy is disabled
+        """
+        return pulumi.get(self, "disabled")
 
     @_builtins.property
     @pulumi.getter
@@ -11053,6 +11460,7 @@ class SwitchAclTags(dict):
         :param _builtins.str port_usage: Required if `type`==`port_usage`. Switch port usage name matched by this ACL tag
         :param _builtins.str radius_group: Required if:
                  * `type`==`radius_group`
+                 * `type`==`aruba_user_role`
                  * `type`==`static_gbp`
                if from matching radius_group
         :param Sequence['SwitchAclTagsSpecArgs'] specs: Layer 4 protocol and destination-port constraints for this ACL tag
@@ -11138,6 +11546,7 @@ class SwitchAclTags(dict):
         """
         Required if:
           * `type`==`radius_group`
+          * `type`==`aruba_user_role`
           * `type`==`static_gbp`
         if from matching radius_group
         """
@@ -12946,6 +13355,7 @@ class SwitchNetworks(dict):
                  gateway6: Optional[_builtins.str] = None,
                  isolation: Optional[_builtins.bool] = None,
                  isolation_vlan_id: Optional[_builtins.str] = None,
+                 multicast: Optional['outputs.SwitchNetworksMulticast'] = None,
                  subnet: Optional[_builtins.str] = None,
                  subnet6: Optional[_builtins.str] = None):
         """
@@ -12954,6 +13364,7 @@ class SwitchNetworks(dict):
         :param _builtins.str gateway6: Only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
         :param _builtins.bool isolation: whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required). NOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set. See also `inter_isolation_network_link` and `community_vlan_id` in port_usage
         :param _builtins.str isolation_vlan_id: Required when `isolation`==`true`. Unique VLAN ID used for client isolation
+        :param 'SwitchNetworksMulticastArgs' multicast: Multicast (IGMP snooping) settings for this VLAN
         :param _builtins.str subnet: Optional for pure switching, required when L3 / routing features are used
         :param _builtins.str subnet6: Optional for pure switching, required when L3 / routing features are used
         """
@@ -12966,6 +13377,8 @@ class SwitchNetworks(dict):
             pulumi.set(__self__, "isolation", isolation)
         if isolation_vlan_id is not None:
             pulumi.set(__self__, "isolation_vlan_id", isolation_vlan_id)
+        if multicast is not None:
+            pulumi.set(__self__, "multicast", multicast)
         if subnet is not None:
             pulumi.set(__self__, "subnet", subnet)
         if subnet6 is not None:
@@ -13013,6 +13426,14 @@ class SwitchNetworks(dict):
 
     @_builtins.property
     @pulumi.getter
+    def multicast(self) -> Optional['outputs.SwitchNetworksMulticast']:
+        """
+        Multicast (IGMP snooping) settings for this VLAN
+        """
+        return pulumi.get(self, "multicast")
+
+    @_builtins.property
+    @pulumi.getter
     def subnet(self) -> Optional[_builtins.str]:
         """
         Optional for pure switching, required when L3 / routing features are used
@@ -13026,6 +13447,54 @@ class SwitchNetworks(dict):
         Optional for pure switching, required when L3 / routing features are used
         """
         return pulumi.get(self, "subnet6")
+
+
+@pulumi.output_type
+class SwitchNetworksMulticast(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "igmpVersion":
+            suggest = "igmp_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SwitchNetworksMulticast. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SwitchNetworksMulticast.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SwitchNetworksMulticast.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None,
+                 igmp_version: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool enabled: Whether to enable IGMP snooping on this VLAN
+        :param _builtins.str igmp_version: IGMP version. '2' (default, ASM/IGMPv2) / '3' (SSM/IGMPv3)
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if igmp_version is not None:
+            pulumi.set(__self__, "igmp_version", igmp_version)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether to enable IGMP snooping on this VLAN
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="igmpVersion")
+    def igmp_version(self) -> Optional[_builtins.str]:
+        """
+        IGMP version. '2' (default, ASM/IGMPv2) / '3' (SSM/IGMPv3)
+        """
+        return pulumi.get(self, "igmp_version")
 
 
 @pulumi.output_type
@@ -16826,16 +17295,28 @@ class SwitchSnmpConfigV3ConfigNotifyFilter(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 categories: Optional[Sequence[_builtins.str]] = None,
                  contents: Optional[Sequence['outputs.SwitchSnmpConfigV3ConfigNotifyFilterContent']] = None,
                  profile_name: Optional[_builtins.str] = None):
         """
+        :param Sequence[_builtins.str] categories: CX only. List of SNMP trap group categories included in this filter profile. See https://www.juniper.net/documentation/software/topics/task/configuration/snmp-trap-groups-configuring-junos-nm.html for valid category names.
         :param Sequence['SwitchSnmpConfigV3ConfigNotifyFilterContentArgs'] contents: OID filter rules in this notification filter profile
         :param _builtins.str profile_name: Notification filter profile name
         """
+        if categories is not None:
+            pulumi.set(__self__, "categories", categories)
         if contents is not None:
             pulumi.set(__self__, "contents", contents)
         if profile_name is not None:
             pulumi.set(__self__, "profile_name", profile_name)
+
+    @_builtins.property
+    @pulumi.getter
+    def categories(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        CX only. List of SNMP trap group categories included in this filter profile. See https://www.juniper.net/documentation/software/topics/task/configuration/snmp-trap-groups-configuring-junos-nm.html for valid category names.
+        """
+        return pulumi.get(self, "categories")
 
     @_builtins.property
     @pulumi.getter
@@ -18376,6 +18857,8 @@ class SwitchVrfInstances(dict):
             suggest = "extra_routes"
         elif key == "extraRoutes6":
             suggest = "extra_routes6"
+        elif key == "multicastConfig":
+            suggest = "multicast_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in SwitchVrfInstances. Access the value via the '{suggest}' property getter instead.")
@@ -18393,12 +18876,14 @@ class SwitchVrfInstances(dict):
                  evpn_auto_loopback_subnet6: Optional[_builtins.str] = None,
                  extra_routes: Optional[Mapping[str, 'outputs.SwitchVrfInstancesExtraRoutes']] = None,
                  extra_routes6: Optional[Mapping[str, 'outputs.SwitchVrfInstancesExtraRoutes6']] = None,
+                 multicast_config: Optional['outputs.SwitchVrfInstancesMulticastConfig'] = None,
                  networks: Optional[Sequence[_builtins.str]] = None):
         """
         :param _builtins.str evpn_auto_loopback_subnet: IPv4 subnet used for automatic EVPN loopback addresses in this VRF instance
         :param _builtins.str evpn_auto_loopback_subnet6: IPv6 subnet used for automatic EVPN loopback addresses in this VRF instance
         :param Mapping[str, 'SwitchVrfInstancesExtraRoutesArgs'] extra_routes: Additional IPv4 static routes configured for this VRF instance
         :param Mapping[str, 'SwitchVrfInstancesExtraRoutes6Args'] extra_routes6: Additional IPv6 static routes configured for this VRF instance
+        :param 'SwitchVrfInstancesMulticastConfigArgs' multicast_config: Multicast configuration for this VRF instance. PIM is automatically enabled when any network in this VRF has `multicast.enabled`==`true`
         :param Sequence[_builtins.str] networks: Names of switch networks included in this VRF instance
         """
         if evpn_auto_loopback_subnet is not None:
@@ -18409,6 +18894,8 @@ class SwitchVrfInstances(dict):
             pulumi.set(__self__, "extra_routes", extra_routes)
         if extra_routes6 is not None:
             pulumi.set(__self__, "extra_routes6", extra_routes6)
+        if multicast_config is not None:
+            pulumi.set(__self__, "multicast_config", multicast_config)
         if networks is not None:
             pulumi.set(__self__, "networks", networks)
 
@@ -18443,6 +18930,14 @@ class SwitchVrfInstances(dict):
         Additional IPv6 static routes configured for this VRF instance
         """
         return pulumi.get(self, "extra_routes6")
+
+    @_builtins.property
+    @pulumi.getter(name="multicastConfig")
+    def multicast_config(self) -> Optional['outputs.SwitchVrfInstancesMulticastConfig']:
+        """
+        Multicast configuration for this VRF instance. PIM is automatically enabled when any network in this VRF has `multicast.enabled`==`true`
+        """
+        return pulumi.get(self, "multicast_config")
 
     @_builtins.property
     @pulumi.getter
@@ -18488,6 +18983,84 @@ class SwitchVrfInstancesExtraRoutes(dict):
         IPv4 next-hop address for this VRF extra route
         """
         return pulumi.get(self, "via")
+
+
+@pulumi.output_type
+class SwitchVrfInstancesMulticastConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "anycastRp":
+            suggest = "anycast_rp"
+        elif key == "rpIp":
+            suggest = "rp_ip"
+        elif key == "sbdSubnet":
+            suggest = "sbd_subnet"
+        elif key == "sbdVlanId":
+            suggest = "sbd_vlan_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SwitchVrfInstancesMulticastConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SwitchVrfInstancesMulticastConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SwitchVrfInstancesMulticastConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 anycast_rp: Optional[_builtins.bool] = None,
+                 rp_ip: Optional[_builtins.str] = None,
+                 sbd_subnet: Optional[_builtins.str] = None,
+                 sbd_vlan_id: Optional[_builtins.int] = None):
+        """
+        :param _builtins.bool anycast_rp: When `true`, auto-generates a shared RP on `is_l3_border` devices (ERB/IPClos topologies only)
+        :param _builtins.str rp_ip: RP address used when `anycast_rp`==`false`. If the address matches a device SVI, it is configured as a local RP; otherwise a static RP is configured
+        :param _builtins.str sbd_subnet: SBD IRB subnet; Mist auto-assigns per-device IPs from this range (EVPN eOISM only)
+        :param _builtins.int sbd_vlan_id: Supplemental Bridge Domain VLAN ID (EVPN topology / eOISM only)
+        """
+        if anycast_rp is not None:
+            pulumi.set(__self__, "anycast_rp", anycast_rp)
+        if rp_ip is not None:
+            pulumi.set(__self__, "rp_ip", rp_ip)
+        if sbd_subnet is not None:
+            pulumi.set(__self__, "sbd_subnet", sbd_subnet)
+        if sbd_vlan_id is not None:
+            pulumi.set(__self__, "sbd_vlan_id", sbd_vlan_id)
+
+    @_builtins.property
+    @pulumi.getter(name="anycastRp")
+    def anycast_rp(self) -> Optional[_builtins.bool]:
+        """
+        When `true`, auto-generates a shared RP on `is_l3_border` devices (ERB/IPClos topologies only)
+        """
+        return pulumi.get(self, "anycast_rp")
+
+    @_builtins.property
+    @pulumi.getter(name="rpIp")
+    def rp_ip(self) -> Optional[_builtins.str]:
+        """
+        RP address used when `anycast_rp`==`false`. If the address matches a device SVI, it is configured as a local RP; otherwise a static RP is configured
+        """
+        return pulumi.get(self, "rp_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="sbdSubnet")
+    def sbd_subnet(self) -> Optional[_builtins.str]:
+        """
+        SBD IRB subnet; Mist auto-assigns per-device IPs from this range (EVPN eOISM only)
+        """
+        return pulumi.get(self, "sbd_subnet")
+
+    @_builtins.property
+    @pulumi.getter(name="sbdVlanId")
+    def sbd_vlan_id(self) -> Optional[_builtins.int]:
+        """
+        Supplemental Bridge Domain VLAN ID (EVPN topology / eOISM only)
+        """
+        return pulumi.get(self, "sbd_vlan_id")
 
 
 @pulumi.output_type

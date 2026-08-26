@@ -17,42 +17,74 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworktemplateExtraRoutes {
     /**
-     * @return This takes precedence
+     * @return Whether to install a discard route; this takes precedence over next-hop settings
      * 
      */
     private @Nullable Boolean discard;
+    /**
+     * @return Route metric for the IPv4 static route
+     * 
+     */
     private @Nullable Integer metric;
+    /**
+     * @return Qualified next-hop settings keyed by IPv4 next-hop address
+     * 
+     */
     private @Nullable Map<String,NetworktemplateExtraRoutesNextQualified> nextQualified;
+    /**
+     * @return Whether to prevent recursive next-hop resolution for the IPv4 static route
+     * 
+     */
     private @Nullable Boolean noResolve;
+    /**
+     * @return Route preference for the IPv4 static route
+     * 
+     */
     private @Nullable Integer preference;
     /**
-     * @return Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
+     * @return Next-hop IPv4 address or ECMP next-hop IPv4 addresses for the route
      * 
      */
     private String via;
 
     private NetworktemplateExtraRoutes() {}
     /**
-     * @return This takes precedence
+     * @return Whether to install a discard route; this takes precedence over next-hop settings
      * 
      */
     public Optional<Boolean> discard() {
         return Optional.ofNullable(this.discard);
     }
+    /**
+     * @return Route metric for the IPv4 static route
+     * 
+     */
     public Optional<Integer> metric() {
         return Optional.ofNullable(this.metric);
     }
+    /**
+     * @return Qualified next-hop settings keyed by IPv4 next-hop address
+     * 
+     */
     public Map<String,NetworktemplateExtraRoutesNextQualified> nextQualified() {
         return this.nextQualified == null ? Map.of() : this.nextQualified;
     }
+    /**
+     * @return Whether to prevent recursive next-hop resolution for the IPv4 static route
+     * 
+     */
     public Optional<Boolean> noResolve() {
         return Optional.ofNullable(this.noResolve);
     }
+    /**
+     * @return Route preference for the IPv4 static route
+     * 
+     */
     public Optional<Integer> preference() {
         return Optional.ofNullable(this.preference);
     }
     /**
-     * @return Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
+     * @return Next-hop IPv4 address or ECMP next-hop IPv4 addresses for the route
      * 
      */
     public String via() {

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.junipermist.site.inputs.NetworktemplateVrfInstancesExtraRoutes6Args;
 import com.pulumi.junipermist.site.inputs.NetworktemplateVrfInstancesExtraRoutesArgs;
+import com.pulumi.junipermist.site.inputs.NetworktemplateVrfInstancesMulticastConfigArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -19,29 +20,45 @@ public final class NetworktemplateVrfInstancesArgs extends com.pulumi.resources.
 
     public static final NetworktemplateVrfInstancesArgs Empty = new NetworktemplateVrfInstancesArgs();
 
+    /**
+     * IPv4 subnet used for automatic EVPN loopback addresses in this VRF instance
+     * 
+     */
     @Import(name="evpnAutoLoopbackSubnet")
     private @Nullable Output<String> evpnAutoLoopbackSubnet;
 
+    /**
+     * @return IPv4 subnet used for automatic EVPN loopback addresses in this VRF instance
+     * 
+     */
     public Optional<Output<String>> evpnAutoLoopbackSubnet() {
         return Optional.ofNullable(this.evpnAutoLoopbackSubnet);
     }
 
+    /**
+     * IPv6 subnet used for automatic EVPN loopback addresses in this VRF instance
+     * 
+     */
     @Import(name="evpnAutoLoopbackSubnet6")
     private @Nullable Output<String> evpnAutoLoopbackSubnet6;
 
+    /**
+     * @return IPv6 subnet used for automatic EVPN loopback addresses in this VRF instance
+     * 
+     */
     public Optional<Output<String>> evpnAutoLoopbackSubnet6() {
         return Optional.ofNullable(this.evpnAutoLoopbackSubnet6);
     }
 
     /**
-     * Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+     * Additional IPv4 static routes configured for this VRF instance
      * 
      */
     @Import(name="extraRoutes")
     private @Nullable Output<Map<String,NetworktemplateVrfInstancesExtraRoutesArgs>> extraRoutes;
 
     /**
-     * @return Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+     * @return Additional IPv4 static routes configured for this VRF instance
      * 
      */
     public Optional<Output<Map<String,NetworktemplateVrfInstancesExtraRoutesArgs>>> extraRoutes() {
@@ -49,23 +66,46 @@ public final class NetworktemplateVrfInstancesArgs extends com.pulumi.resources.
     }
 
     /**
-     * Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+     * Additional IPv6 static routes configured for this VRF instance
      * 
      */
     @Import(name="extraRoutes6")
     private @Nullable Output<Map<String,NetworktemplateVrfInstancesExtraRoutes6Args>> extraRoutes6;
 
     /**
-     * @return Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+     * @return Additional IPv6 static routes configured for this VRF instance
      * 
      */
     public Optional<Output<Map<String,NetworktemplateVrfInstancesExtraRoutes6Args>>> extraRoutes6() {
         return Optional.ofNullable(this.extraRoutes6);
     }
 
+    /**
+     * Multicast configuration for this VRF instance. PIM is automatically enabled when any network in this VRF has `multicast.enabled`==`true`
+     * 
+     */
+    @Import(name="multicastConfig")
+    private @Nullable Output<NetworktemplateVrfInstancesMulticastConfigArgs> multicastConfig;
+
+    /**
+     * @return Multicast configuration for this VRF instance. PIM is automatically enabled when any network in this VRF has `multicast.enabled`==`true`
+     * 
+     */
+    public Optional<Output<NetworktemplateVrfInstancesMulticastConfigArgs>> multicastConfig() {
+        return Optional.ofNullable(this.multicastConfig);
+    }
+
+    /**
+     * Names of switch networks included in this VRF instance
+     * 
+     */
     @Import(name="networks")
     private @Nullable Output<List<String>> networks;
 
+    /**
+     * @return Names of switch networks included in this VRF instance
+     * 
+     */
     public Optional<Output<List<String>>> networks() {
         return Optional.ofNullable(this.networks);
     }
@@ -77,6 +117,7 @@ public final class NetworktemplateVrfInstancesArgs extends com.pulumi.resources.
         this.evpnAutoLoopbackSubnet6 = $.evpnAutoLoopbackSubnet6;
         this.extraRoutes = $.extraRoutes;
         this.extraRoutes6 = $.extraRoutes6;
+        this.multicastConfig = $.multicastConfig;
         this.networks = $.networks;
     }
 
@@ -98,26 +139,50 @@ public final class NetworktemplateVrfInstancesArgs extends com.pulumi.resources.
             $ = new NetworktemplateVrfInstancesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param evpnAutoLoopbackSubnet IPv4 subnet used for automatic EVPN loopback addresses in this VRF instance
+         * 
+         * @return builder
+         * 
+         */
         public Builder evpnAutoLoopbackSubnet(@Nullable Output<String> evpnAutoLoopbackSubnet) {
             $.evpnAutoLoopbackSubnet = evpnAutoLoopbackSubnet;
             return this;
         }
 
+        /**
+         * @param evpnAutoLoopbackSubnet IPv4 subnet used for automatic EVPN loopback addresses in this VRF instance
+         * 
+         * @return builder
+         * 
+         */
         public Builder evpnAutoLoopbackSubnet(String evpnAutoLoopbackSubnet) {
             return evpnAutoLoopbackSubnet(Output.of(evpnAutoLoopbackSubnet));
         }
 
+        /**
+         * @param evpnAutoLoopbackSubnet6 IPv6 subnet used for automatic EVPN loopback addresses in this VRF instance
+         * 
+         * @return builder
+         * 
+         */
         public Builder evpnAutoLoopbackSubnet6(@Nullable Output<String> evpnAutoLoopbackSubnet6) {
             $.evpnAutoLoopbackSubnet6 = evpnAutoLoopbackSubnet6;
             return this;
         }
 
+        /**
+         * @param evpnAutoLoopbackSubnet6 IPv6 subnet used for automatic EVPN loopback addresses in this VRF instance
+         * 
+         * @return builder
+         * 
+         */
         public Builder evpnAutoLoopbackSubnet6(String evpnAutoLoopbackSubnet6) {
             return evpnAutoLoopbackSubnet6(Output.of(evpnAutoLoopbackSubnet6));
         }
 
         /**
-         * @param extraRoutes Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+         * @param extraRoutes Additional IPv4 static routes configured for this VRF instance
          * 
          * @return builder
          * 
@@ -128,7 +193,7 @@ public final class NetworktemplateVrfInstancesArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param extraRoutes Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+         * @param extraRoutes Additional IPv4 static routes configured for this VRF instance
          * 
          * @return builder
          * 
@@ -138,7 +203,7 @@ public final class NetworktemplateVrfInstancesArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param extraRoutes6 Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+         * @param extraRoutes6 Additional IPv6 static routes configured for this VRF instance
          * 
          * @return builder
          * 
@@ -149,7 +214,7 @@ public final class NetworktemplateVrfInstancesArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param extraRoutes6 Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+         * @param extraRoutes6 Additional IPv6 static routes configured for this VRF instance
          * 
          * @return builder
          * 
@@ -158,15 +223,54 @@ public final class NetworktemplateVrfInstancesArgs extends com.pulumi.resources.
             return extraRoutes6(Output.of(extraRoutes6));
         }
 
+        /**
+         * @param multicastConfig Multicast configuration for this VRF instance. PIM is automatically enabled when any network in this VRF has `multicast.enabled`==`true`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multicastConfig(@Nullable Output<NetworktemplateVrfInstancesMulticastConfigArgs> multicastConfig) {
+            $.multicastConfig = multicastConfig;
+            return this;
+        }
+
+        /**
+         * @param multicastConfig Multicast configuration for this VRF instance. PIM is automatically enabled when any network in this VRF has `multicast.enabled`==`true`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multicastConfig(NetworktemplateVrfInstancesMulticastConfigArgs multicastConfig) {
+            return multicastConfig(Output.of(multicastConfig));
+        }
+
+        /**
+         * @param networks Names of switch networks included in this VRF instance
+         * 
+         * @return builder
+         * 
+         */
         public Builder networks(@Nullable Output<List<String>> networks) {
             $.networks = networks;
             return this;
         }
 
+        /**
+         * @param networks Names of switch networks included in this VRF instance
+         * 
+         * @return builder
+         * 
+         */
         public Builder networks(List<String> networks) {
             return networks(Output.of(networks));
         }
 
+        /**
+         * @param networks Names of switch networks included in this VRF instance
+         * 
+         * @return builder
+         * 
+         */
         public Builder networks(String... networks) {
             return networks(List.of(networks));
         }

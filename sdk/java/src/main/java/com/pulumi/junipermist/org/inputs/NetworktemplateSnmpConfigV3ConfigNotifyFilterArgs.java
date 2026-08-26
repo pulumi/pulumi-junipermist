@@ -18,6 +18,21 @@ public final class NetworktemplateSnmpConfigV3ConfigNotifyFilterArgs extends com
     public static final NetworktemplateSnmpConfigV3ConfigNotifyFilterArgs Empty = new NetworktemplateSnmpConfigV3ConfigNotifyFilterArgs();
 
     /**
+     * CX only. List of SNMP trap group categories included in this filter profile. See https://www.juniper.net/documentation/software/topics/task/configuration/snmp-trap-groups-configuring-junos-nm.html for valid category names.
+     * 
+     */
+    @Import(name="categories")
+    private @Nullable Output<List<String>> categories;
+
+    /**
+     * @return CX only. List of SNMP trap group categories included in this filter profile. See https://www.juniper.net/documentation/software/topics/task/configuration/snmp-trap-groups-configuring-junos-nm.html for valid category names.
+     * 
+     */
+    public Optional<Output<List<String>>> categories() {
+        return Optional.ofNullable(this.categories);
+    }
+
+    /**
      * OID filter rules in this notification filter profile
      * 
      */
@@ -50,6 +65,7 @@ public final class NetworktemplateSnmpConfigV3ConfigNotifyFilterArgs extends com
     private NetworktemplateSnmpConfigV3ConfigNotifyFilterArgs() {}
 
     private NetworktemplateSnmpConfigV3ConfigNotifyFilterArgs(NetworktemplateSnmpConfigV3ConfigNotifyFilterArgs $) {
+        this.categories = $.categories;
         this.contents = $.contents;
         this.profileName = $.profileName;
     }
@@ -70,6 +86,37 @@ public final class NetworktemplateSnmpConfigV3ConfigNotifyFilterArgs extends com
 
         public Builder(NetworktemplateSnmpConfigV3ConfigNotifyFilterArgs defaults) {
             $ = new NetworktemplateSnmpConfigV3ConfigNotifyFilterArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param categories CX only. List of SNMP trap group categories included in this filter profile. See https://www.juniper.net/documentation/software/topics/task/configuration/snmp-trap-groups-configuring-junos-nm.html for valid category names.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder categories(@Nullable Output<List<String>> categories) {
+            $.categories = categories;
+            return this;
+        }
+
+        /**
+         * @param categories CX only. List of SNMP trap group categories included in this filter profile. See https://www.juniper.net/documentation/software/topics/task/configuration/snmp-trap-groups-configuring-junos-nm.html for valid category names.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder categories(List<String> categories) {
+            return categories(Output.of(categories));
+        }
+
+        /**
+         * @param categories CX only. List of SNMP trap group categories included in this filter profile. See https://www.juniper.net/documentation/software/topics/task/configuration/snmp-trap-groups-configuring-junos-nm.html for valid category names.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder categories(String... categories) {
+            return categories(List.of(categories));
         }
 
         /**

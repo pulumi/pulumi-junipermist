@@ -18,6 +18,21 @@ public final class SettingApiPolicyArgs extends com.pulumi.resources.ResourceArg
     public static final SettingApiPolicyArgs Empty = new SettingApiPolicyArgs();
 
     /**
+     * Optional. When `true`, Org API tokens without their own `srcIps` also respect the org policy `srcIps`. Default is `false`.
+     * 
+     */
+    @Import(name="enforceSrcIpsForTokens")
+    private @Nullable Output<Boolean> enforceSrcIpsForTokens;
+
+    /**
+     * @return Optional. When `true`, Org API tokens without their own `srcIps` also respect the org policy `srcIps`. Default is `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> enforceSrcIpsForTokens() {
+        return Optional.ofNullable(this.enforceSrcIpsForTokens);
+    }
+
+    /**
      * By default, API hides password/secrets when the user doesn&#39;t have write access
      *   * `true`: API will hide passwords/secrets for all users
      *   * `false`: API will hide passwords/secrets for read-only users
@@ -54,6 +69,7 @@ public final class SettingApiPolicyArgs extends com.pulumi.resources.ResourceArg
     private SettingApiPolicyArgs() {}
 
     private SettingApiPolicyArgs(SettingApiPolicyArgs $) {
+        this.enforceSrcIpsForTokens = $.enforceSrcIpsForTokens;
         this.noReveal = $.noReveal;
         this.srcIps = $.srcIps;
     }
@@ -74,6 +90,27 @@ public final class SettingApiPolicyArgs extends com.pulumi.resources.ResourceArg
 
         public Builder(SettingApiPolicyArgs defaults) {
             $ = new SettingApiPolicyArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param enforceSrcIpsForTokens Optional. When `true`, Org API tokens without their own `srcIps` also respect the org policy `srcIps`. Default is `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enforceSrcIpsForTokens(@Nullable Output<Boolean> enforceSrcIpsForTokens) {
+            $.enforceSrcIpsForTokens = enforceSrcIpsForTokens;
+            return this;
+        }
+
+        /**
+         * @param enforceSrcIpsForTokens Optional. When `true`, Org API tokens without their own `srcIps` also respect the org policy `srcIps`. Default is `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enforceSrcIpsForTokens(Boolean enforceSrcIpsForTokens) {
+            return enforceSrcIpsForTokens(Output.of(enforceSrcIpsForTokens));
         }
 
         /**

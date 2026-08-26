@@ -14,6 +14,14 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class GatewaytemplatePortConfigWanProbeOverride
     {
         /// <summary>
+        /// List of hostnames used as probe destinations; applicable for both IPv4 and IPv6
+        /// </summary>
+        public readonly ImmutableArray<string> Hostnames;
+        /// <summary>
+        /// HTTP probe settings; success from any ICMP or HTTP probe indicates the WAN is up
+        /// </summary>
+        public readonly Outputs.GatewaytemplatePortConfigWanProbeOverrideHttp? Http;
+        /// <summary>
         /// List of IPv6 probe host addresses used by this WAN override
         /// </summary>
         public readonly ImmutableArray<string> Ip6s;
@@ -28,12 +36,18 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
         [OutputConstructor]
         private GatewaytemplatePortConfigWanProbeOverride(
+            ImmutableArray<string> hostnames,
+
+            Outputs.GatewaytemplatePortConfigWanProbeOverrideHttp? http,
+
             ImmutableArray<string> ip6s,
 
             ImmutableArray<string> ips,
 
             string? probeProfile)
         {
+            Hostnames = hostnames;
+            Http = http;
             Ip6s = ip6s;
             Ips = ips;
             ProbeProfile = probeProfile;

@@ -12,9 +12,15 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class NetworktemplateSnmpConfigV3ConfigNotifyFilterContentArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether the matching OID subtree is included
+        /// </summary>
         [Input("include")]
         public Input<bool>? Include { get; set; }
 
+        /// <summary>
+        /// Matched OID subtree for this notification filter rule
+        /// </summary>
         [Input("oid", required: true)]
         public Input<string> Oid { get; set; } = null!;
 

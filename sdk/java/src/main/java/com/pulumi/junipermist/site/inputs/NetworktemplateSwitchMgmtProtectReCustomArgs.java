@@ -47,9 +47,17 @@ public final class NetworktemplateSwitchMgmtProtectReCustomArgs extends com.pulu
         return Optional.ofNullable(this.protocol);
     }
 
+    /**
+     * Source subnets matched by this custom Protect RE ACL
+     * 
+     */
     @Import(name="subnets", required=true)
     private Output<List<String>> subnets;
 
+    /**
+     * @return Source subnets matched by this custom Protect RE ACL
+     * 
+     */
     public Output<List<String>> subnets() {
         return this.subnets;
     }
@@ -122,15 +130,33 @@ public final class NetworktemplateSwitchMgmtProtectReCustomArgs extends com.pulu
             return protocol(Output.of(protocol));
         }
 
+        /**
+         * @param subnets Source subnets matched by this custom Protect RE ACL
+         * 
+         * @return builder
+         * 
+         */
         public Builder subnets(Output<List<String>> subnets) {
             $.subnets = subnets;
             return this;
         }
 
+        /**
+         * @param subnets Source subnets matched by this custom Protect RE ACL
+         * 
+         * @return builder
+         * 
+         */
         public Builder subnets(List<String> subnets) {
             return subnets(Output.of(subnets));
         }
 
+        /**
+         * @param subnets Source subnets matched by this custom Protect RE ACL
+         * 
+         * @return builder
+         * 
+         */
         public Builder subnets(String... subnets) {
             return subnets(List.of(subnets));
         }

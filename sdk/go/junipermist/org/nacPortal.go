@@ -107,6 +107,8 @@ type NacPortal struct {
 	CertExpireTime pulumi.IntPtrOutput `pulumi:"certExpireTime"`
 	// EAP mode used when onboarding wireless clients through the NAC portal
 	EapType pulumi.StringOutput `pulumi:"eapType"`
+	// Whether location data collection is enabled for devices onboarding through this NAC portal
+	EnableLocation pulumi.BoolPtrOutput `pulumi:"enableLocation"`
 	// Model, version, fingering, events (connecting, disconnect, roaming), which ap
 	EnableTelemetry pulumi.BoolPtrOutput `pulumi:"enableTelemetry"`
 	// Number of days before certificate expiration to start sending reminder notifications
@@ -172,6 +174,8 @@ type nacPortalState struct {
 	CertExpireTime *int `pulumi:"certExpireTime"`
 	// EAP mode used when onboarding wireless clients through the NAC portal
 	EapType *string `pulumi:"eapType"`
+	// Whether location data collection is enabled for devices onboarding through this NAC portal
+	EnableLocation *bool `pulumi:"enableLocation"`
 	// Model, version, fingering, events (connecting, disconnect, roaming), which ap
 	EnableTelemetry *bool `pulumi:"enableTelemetry"`
 	// Number of days before certificate expiration to start sending reminder notifications
@@ -205,6 +209,8 @@ type NacPortalState struct {
 	CertExpireTime pulumi.IntPtrInput
 	// EAP mode used when onboarding wireless clients through the NAC portal
 	EapType pulumi.StringPtrInput
+	// Whether location data collection is enabled for devices onboarding through this NAC portal
+	EnableLocation pulumi.BoolPtrInput
 	// Model, version, fingering, events (connecting, disconnect, roaming), which ap
 	EnableTelemetry pulumi.BoolPtrInput
 	// Number of days before certificate expiration to start sending reminder notifications
@@ -242,6 +248,8 @@ type nacPortalArgs struct {
 	CertExpireTime *int `pulumi:"certExpireTime"`
 	// EAP mode used when onboarding wireless clients through the NAC portal
 	EapType *string `pulumi:"eapType"`
+	// Whether location data collection is enabled for devices onboarding through this NAC portal
+	EnableLocation *bool `pulumi:"enableLocation"`
 	// Model, version, fingering, events (connecting, disconnect, roaming), which ap
 	EnableTelemetry *bool `pulumi:"enableTelemetry"`
 	// Number of days before certificate expiration to start sending reminder notifications
@@ -276,6 +284,8 @@ type NacPortalArgs struct {
 	CertExpireTime pulumi.IntPtrInput
 	// EAP mode used when onboarding wireless clients through the NAC portal
 	EapType pulumi.StringPtrInput
+	// Whether location data collection is enabled for devices onboarding through this NAC portal
+	EnableLocation pulumi.BoolPtrInput
 	// Model, version, fingering, events (connecting, disconnect, roaming), which ap
 	EnableTelemetry pulumi.BoolPtrInput
 	// Number of days before certificate expiration to start sending reminder notifications
@@ -408,6 +418,11 @@ func (o NacPortalOutput) CertExpireTime() pulumi.IntPtrOutput {
 // EAP mode used when onboarding wireless clients through the NAC portal
 func (o NacPortalOutput) EapType() pulumi.StringOutput {
 	return o.ApplyT(func(v *NacPortal) pulumi.StringOutput { return v.EapType }).(pulumi.StringOutput)
+}
+
+// Whether location data collection is enabled for devices onboarding through this NAC portal
+func (o NacPortalOutput) EnableLocation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NacPortal) pulumi.BoolPtrOutput { return v.EnableLocation }).(pulumi.BoolPtrOutput)
 }
 
 // Model, version, fingering, events (connecting, disconnect, roaming), which ap

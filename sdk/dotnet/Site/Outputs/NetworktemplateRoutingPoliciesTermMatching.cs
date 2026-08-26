@@ -17,9 +17,12 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
         /// </summary>
         public readonly ImmutableArray<string> AsPaths;
+        /// <summary>
+        /// BGP communities that routes must match
+        /// </summary>
         public readonly ImmutableArray<string> Communities;
         /// <summary>
-        /// zero or more criteria/filter can be specified to match the term, all criteria have to be met
+        /// Route prefixes that routes must match
         /// </summary>
         public readonly ImmutableArray<string> Prefixes;
         /// <summary>

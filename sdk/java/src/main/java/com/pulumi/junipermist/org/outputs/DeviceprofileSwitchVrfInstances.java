@@ -6,6 +6,7 @@ package com.pulumi.junipermist.org.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.junipermist.org.outputs.DeviceprofileSwitchVrfInstancesExtraRoutes6;
 import com.pulumi.junipermist.org.outputs.DeviceprofileSwitchVrfInstancesExtraRoutes;
+import com.pulumi.junipermist.org.outputs.DeviceprofileSwitchVrfInstancesMulticastConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -35,6 +36,11 @@ public final class DeviceprofileSwitchVrfInstances {
      * 
      */
     private @Nullable Map<String,DeviceprofileSwitchVrfInstancesExtraRoutes6> extraRoutes6;
+    /**
+     * @return Multicast configuration for this VRF instance. PIM is automatically enabled when any network in this VRF has `multicast.enabled`==`true`
+     * 
+     */
+    private @Nullable DeviceprofileSwitchVrfInstancesMulticastConfig multicastConfig;
     /**
      * @return Names of switch networks included in this VRF instance
      * 
@@ -71,6 +77,13 @@ public final class DeviceprofileSwitchVrfInstances {
         return this.extraRoutes6 == null ? Map.of() : this.extraRoutes6;
     }
     /**
+     * @return Multicast configuration for this VRF instance. PIM is automatically enabled when any network in this VRF has `multicast.enabled`==`true`
+     * 
+     */
+    public Optional<DeviceprofileSwitchVrfInstancesMulticastConfig> multicastConfig() {
+        return Optional.ofNullable(this.multicastConfig);
+    }
+    /**
      * @return Names of switch networks included in this VRF instance
      * 
      */
@@ -91,6 +104,7 @@ public final class DeviceprofileSwitchVrfInstances {
         private @Nullable String evpnAutoLoopbackSubnet6;
         private @Nullable Map<String,DeviceprofileSwitchVrfInstancesExtraRoutes> extraRoutes;
         private @Nullable Map<String,DeviceprofileSwitchVrfInstancesExtraRoutes6> extraRoutes6;
+        private @Nullable DeviceprofileSwitchVrfInstancesMulticastConfig multicastConfig;
         private @Nullable List<String> networks;
         public Builder() {}
         public Builder(DeviceprofileSwitchVrfInstances defaults) {
@@ -99,6 +113,7 @@ public final class DeviceprofileSwitchVrfInstances {
     	      this.evpnAutoLoopbackSubnet6 = defaults.evpnAutoLoopbackSubnet6;
     	      this.extraRoutes = defaults.extraRoutes;
     	      this.extraRoutes6 = defaults.extraRoutes6;
+    	      this.multicastConfig = defaults.multicastConfig;
     	      this.networks = defaults.networks;
         }
 
@@ -127,6 +142,12 @@ public final class DeviceprofileSwitchVrfInstances {
             return this;
         }
         @CustomType.Setter
+        public Builder multicastConfig(@Nullable DeviceprofileSwitchVrfInstancesMulticastConfig multicastConfig) {
+
+            this.multicastConfig = multicastConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder networks(@Nullable List<String> networks) {
 
             this.networks = networks;
@@ -141,6 +162,7 @@ public final class DeviceprofileSwitchVrfInstances {
             _resultValue.evpnAutoLoopbackSubnet6 = evpnAutoLoopbackSubnet6;
             _resultValue.extraRoutes = extraRoutes;
             _resultValue.extraRoutes6 = extraRoutes6;
+            _resultValue.multicastConfig = multicastConfig;
             _resultValue.networks = networks;
             return _resultValue;
         }

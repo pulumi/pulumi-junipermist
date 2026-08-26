@@ -44,6 +44,7 @@ class DeviceprofileApArgs:
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  uplink_port_config: pulumi.Input[Optional['DeviceprofileApUplinkPortConfigArgs']] = None,
                  usb_config: pulumi.Input[Optional['DeviceprofileApUsbConfigArgs']] = None,
+                 uwb_config: pulumi.Input[Optional['DeviceprofileApUwbConfigArgs']] = None,
                  vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  zigbee_config: pulumi.Input[Optional['DeviceprofileApZigbeeConfigArgs']] = None):
         """
@@ -72,6 +73,7 @@ class DeviceprofileApArgs:
         :param pulumi.Input[_builtins.str] site_id: Site where this AP device profile is defined, when scoped to a site
         :param pulumi.Input['DeviceprofileApUplinkPortConfigArgs'] uplink_port_config: Authentication and failover defaults for AP uplink ports
         :param pulumi.Input['DeviceprofileApUsbConfigArgs'] usb_config: Legacy USB integration defaults in this AP profile
+        :param pulumi.Input['DeviceprofileApUwbConfigArgs'] uwb_config: UWB RTLS / OMLOX asset-visibility settings; overrides the site-level `uwb_config` and is overridden by device-level `uwb_config`
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Variable values provided by this AP device profile
         :param pulumi.Input['DeviceprofileApZigbeeConfigArgs'] zigbee_config: Zigbee radio and network defaults in this AP profile
         """
@@ -120,6 +122,8 @@ class DeviceprofileApArgs:
             pulumi.set(__self__, "uplink_port_config", uplink_port_config)
         if usb_config is not None:
             pulumi.set(__self__, "usb_config", usb_config)
+        if uwb_config is not None:
+            pulumi.set(__self__, "uwb_config", uwb_config)
         if vars is not None:
             pulumi.set(__self__, "vars", vars)
         if zigbee_config is not None:
@@ -402,6 +406,18 @@ class DeviceprofileApArgs:
         pulumi.set(self, "usb_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="uwbConfig")
+    def uwb_config(self) -> pulumi.Input[Optional['DeviceprofileApUwbConfigArgs']]:
+        """
+        UWB RTLS / OMLOX asset-visibility settings; overrides the site-level `uwb_config` and is overridden by device-level `uwb_config`
+        """
+        return pulumi.get(self, "uwb_config")
+
+    @uwb_config.setter
+    def uwb_config(self, value: pulumi.Input[Optional['DeviceprofileApUwbConfigArgs']]):
+        pulumi.set(self, "uwb_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def vars(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -453,6 +469,7 @@ class _DeviceprofileApState:
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  uplink_port_config: pulumi.Input[Optional['DeviceprofileApUplinkPortConfigArgs']] = None,
                  usb_config: pulumi.Input[Optional['DeviceprofileApUsbConfigArgs']] = None,
+                 uwb_config: pulumi.Input[Optional['DeviceprofileApUwbConfigArgs']] = None,
                  vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  zigbee_config: pulumi.Input[Optional['DeviceprofileApZigbeeConfigArgs']] = None):
         """
@@ -482,6 +499,7 @@ class _DeviceprofileApState:
         :param pulumi.Input[_builtins.str] type: Device type discriminator for AP device profiles
         :param pulumi.Input['DeviceprofileApUplinkPortConfigArgs'] uplink_port_config: Authentication and failover defaults for AP uplink ports
         :param pulumi.Input['DeviceprofileApUsbConfigArgs'] usb_config: Legacy USB integration defaults in this AP profile
+        :param pulumi.Input['DeviceprofileApUwbConfigArgs'] uwb_config: UWB RTLS / OMLOX asset-visibility settings; overrides the site-level `uwb_config` and is overridden by device-level `uwb_config`
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Variable values provided by this AP device profile
         :param pulumi.Input['DeviceprofileApZigbeeConfigArgs'] zigbee_config: Zigbee radio and network defaults in this AP profile
         """
@@ -533,6 +551,8 @@ class _DeviceprofileApState:
             pulumi.set(__self__, "uplink_port_config", uplink_port_config)
         if usb_config is not None:
             pulumi.set(__self__, "usb_config", usb_config)
+        if uwb_config is not None:
+            pulumi.set(__self__, "uwb_config", uwb_config)
         if vars is not None:
             pulumi.set(__self__, "vars", vars)
         if zigbee_config is not None:
@@ -827,6 +847,18 @@ class _DeviceprofileApState:
         pulumi.set(self, "usb_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="uwbConfig")
+    def uwb_config(self) -> pulumi.Input[Optional['DeviceprofileApUwbConfigArgs']]:
+        """
+        UWB RTLS / OMLOX asset-visibility settings; overrides the site-level `uwb_config` and is overridden by device-level `uwb_config`
+        """
+        return pulumi.get(self, "uwb_config")
+
+    @uwb_config.setter
+    def uwb_config(self, value: pulumi.Input[Optional['DeviceprofileApUwbConfigArgs']]):
+        pulumi.set(self, "uwb_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def vars(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -880,6 +912,7 @@ class DeviceprofileAp(pulumi.CustomResource):
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  uplink_port_config: pulumi.Input[Optional[Union['DeviceprofileApUplinkPortConfigArgs', 'DeviceprofileApUplinkPortConfigArgsDict']]] = None,
                  usb_config: pulumi.Input[Optional[Union['DeviceprofileApUsbConfigArgs', 'DeviceprofileApUsbConfigArgsDict']]] = None,
+                 uwb_config: pulumi.Input[Optional[Union['DeviceprofileApUwbConfigArgs', 'DeviceprofileApUwbConfigArgsDict']]] = None,
                  vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  zigbee_config: pulumi.Input[Optional[Union['DeviceprofileApZigbeeConfigArgs', 'DeviceprofileApZigbeeConfigArgsDict']]] = None,
                  __props__=None):
@@ -940,6 +973,7 @@ class DeviceprofileAp(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] site_id: Site where this AP device profile is defined, when scoped to a site
         :param pulumi.Input[Union['DeviceprofileApUplinkPortConfigArgs', 'DeviceprofileApUplinkPortConfigArgsDict']] uplink_port_config: Authentication and failover defaults for AP uplink ports
         :param pulumi.Input[Union['DeviceprofileApUsbConfigArgs', 'DeviceprofileApUsbConfigArgsDict']] usb_config: Legacy USB integration defaults in this AP profile
+        :param pulumi.Input[Union['DeviceprofileApUwbConfigArgs', 'DeviceprofileApUwbConfigArgsDict']] uwb_config: UWB RTLS / OMLOX asset-visibility settings; overrides the site-level `uwb_config` and is overridden by device-level `uwb_config`
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Variable values provided by this AP device profile
         :param pulumi.Input[Union['DeviceprofileApZigbeeConfigArgs', 'DeviceprofileApZigbeeConfigArgsDict']] zigbee_config: Zigbee radio and network defaults in this AP profile
         """
@@ -1019,6 +1053,7 @@ class DeviceprofileAp(pulumi.CustomResource):
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  uplink_port_config: pulumi.Input[Optional[Union['DeviceprofileApUplinkPortConfigArgs', 'DeviceprofileApUplinkPortConfigArgsDict']]] = None,
                  usb_config: pulumi.Input[Optional[Union['DeviceprofileApUsbConfigArgs', 'DeviceprofileApUsbConfigArgsDict']]] = None,
+                 uwb_config: pulumi.Input[Optional[Union['DeviceprofileApUwbConfigArgs', 'DeviceprofileApUwbConfigArgsDict']]] = None,
                  vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  zigbee_config: pulumi.Input[Optional[Union['DeviceprofileApZigbeeConfigArgs', 'DeviceprofileApZigbeeConfigArgsDict']]] = None,
                  __props__=None):
@@ -1055,6 +1090,7 @@ class DeviceprofileAp(pulumi.CustomResource):
             __props__.__dict__["site_id"] = site_id
             __props__.__dict__["uplink_port_config"] = uplink_port_config
             __props__.__dict__["usb_config"] = usb_config
+            __props__.__dict__["uwb_config"] = uwb_config
             __props__.__dict__["vars"] = vars
             __props__.__dict__["zigbee_config"] = zigbee_config
             __props__.__dict__["type"] = None
@@ -1092,6 +1128,7 @@ class DeviceprofileAp(pulumi.CustomResource):
             type: pulumi.Input[Optional[_builtins.str]] = None,
             uplink_port_config: pulumi.Input[Optional[Union['DeviceprofileApUplinkPortConfigArgs', 'DeviceprofileApUplinkPortConfigArgsDict']]] = None,
             usb_config: pulumi.Input[Optional[Union['DeviceprofileApUsbConfigArgs', 'DeviceprofileApUsbConfigArgsDict']]] = None,
+            uwb_config: pulumi.Input[Optional[Union['DeviceprofileApUwbConfigArgs', 'DeviceprofileApUwbConfigArgsDict']]] = None,
             vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             zigbee_config: pulumi.Input[Optional[Union['DeviceprofileApZigbeeConfigArgs', 'DeviceprofileApZigbeeConfigArgsDict']]] = None) -> 'DeviceprofileAp':
         """
@@ -1125,6 +1162,7 @@ class DeviceprofileAp(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] type: Device type discriminator for AP device profiles
         :param pulumi.Input[Union['DeviceprofileApUplinkPortConfigArgs', 'DeviceprofileApUplinkPortConfigArgsDict']] uplink_port_config: Authentication and failover defaults for AP uplink ports
         :param pulumi.Input[Union['DeviceprofileApUsbConfigArgs', 'DeviceprofileApUsbConfigArgsDict']] usb_config: Legacy USB integration defaults in this AP profile
+        :param pulumi.Input[Union['DeviceprofileApUwbConfigArgs', 'DeviceprofileApUwbConfigArgsDict']] uwb_config: UWB RTLS / OMLOX asset-visibility settings; overrides the site-level `uwb_config` and is overridden by device-level `uwb_config`
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Variable values provided by this AP device profile
         :param pulumi.Input[Union['DeviceprofileApZigbeeConfigArgs', 'DeviceprofileApZigbeeConfigArgsDict']] zigbee_config: Zigbee radio and network defaults in this AP profile
         """
@@ -1156,6 +1194,7 @@ class DeviceprofileAp(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         __props__.__dict__["uplink_port_config"] = uplink_port_config
         __props__.__dict__["usb_config"] = usb_config
+        __props__.__dict__["uwb_config"] = uwb_config
         __props__.__dict__["vars"] = vars
         __props__.__dict__["zigbee_config"] = zigbee_config
         return DeviceprofileAp(resource_name, opts=opts, __props__=__props__)
@@ -1351,6 +1390,14 @@ class DeviceprofileAp(pulumi.CustomResource):
         Legacy USB integration defaults in this AP profile
         """
         return pulumi.get(self, "usb_config")
+
+    @_builtins.property
+    @pulumi.getter(name="uwbConfig")
+    def uwb_config(self) -> pulumi.Output[Optional['outputs.DeviceprofileApUwbConfig']]:
+        """
+        UWB RTLS / OMLOX asset-visibility settings; overrides the site-level `uwb_config` and is overridden by device-level `uwb_config`
+        """
+        return pulumi.get(self, "uwb_config")
 
     @_builtins.property
     @pulumi.getter

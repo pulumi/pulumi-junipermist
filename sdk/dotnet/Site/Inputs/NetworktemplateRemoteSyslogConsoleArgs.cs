@@ -14,6 +14,10 @@ namespace Pulumi.JuniperMist.Site.Inputs
     {
         [Input("contents")]
         private InputList<Inputs.NetworktemplateRemoteSyslogConsoleContentArgs>? _contents;
+
+        /// <summary>
+        /// Syslog facilities and severities forwarded from console logs
+        /// </summary>
         public InputList<Inputs.NetworktemplateRemoteSyslogConsoleContentArgs> Contents
         {
             get => _contents ?? (_contents = new InputList<Inputs.NetworktemplateRemoteSyslogConsoleContentArgs>());

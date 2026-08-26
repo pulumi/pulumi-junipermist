@@ -13,10 +13,16 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class NetworktemplateOspfAreas
     {
+        /// <summary>
+        /// Whether loopback interfaces are included in this OSPF area
+        /// </summary>
         public readonly bool? IncludeLoopback;
+        /// <summary>
+        /// OSPF network settings keyed by network name
+        /// </summary>
         public readonly ImmutableDictionary<string, Outputs.NetworktemplateOspfAreasNetworks> Networks;
         /// <summary>
-        /// OSPF type. enum: `Default`, `Nssa`, `Stub`
+        /// Area type for this OSPF area
         /// </summary>
         public readonly string? Type;
 

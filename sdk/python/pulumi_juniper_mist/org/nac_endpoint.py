@@ -25,6 +25,7 @@ class NacEndpointArgs:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  notes: pulumi.Input[Optional[_builtins.str]] = None,
                  radius_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  vlan: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a NacEndpoint resource.
@@ -34,6 +35,7 @@ class NacEndpointArgs:
         :param pulumi.Input[_builtins.str] name: Display name for this user MAC entry
         :param pulumi.Input[_builtins.str] notes: Free-form notes about this user MAC entry
         :param pulumi.Input[_builtins.str] radius_group: RADIUS group associated with this user MAC entry
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] site_ids: Optional list of site IDs this user MAC entry is scoped to
         :param pulumi.Input[_builtins.str] vlan: Network VLAN value associated with this user MAC entry
         """
         pulumi.set(__self__, "mac", mac)
@@ -46,6 +48,8 @@ class NacEndpointArgs:
             pulumi.set(__self__, "notes", notes)
         if radius_group is not None:
             pulumi.set(__self__, "radius_group", radius_group)
+        if site_ids is not None:
+            pulumi.set(__self__, "site_ids", site_ids)
         if vlan is not None:
             pulumi.set(__self__, "vlan", vlan)
 
@@ -119,6 +123,18 @@ class NacEndpointArgs:
         pulumi.set(self, "radius_group", value)
 
     @_builtins.property
+    @pulumi.getter(name="siteIds")
+    def site_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional list of site IDs this user MAC entry is scoped to
+        """
+        return pulumi.get(self, "site_ids")
+
+    @site_ids.setter
+    def site_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "site_ids", value)
+
+    @_builtins.property
     @pulumi.getter
     def vlan(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -140,6 +156,7 @@ class _NacEndpointState:
                  notes: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  radius_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  vlan: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NacEndpoint resources.
@@ -149,6 +166,7 @@ class _NacEndpointState:
         :param pulumi.Input[_builtins.str] name: Display name for this user MAC entry
         :param pulumi.Input[_builtins.str] notes: Free-form notes about this user MAC entry
         :param pulumi.Input[_builtins.str] radius_group: RADIUS group associated with this user MAC entry
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] site_ids: Optional list of site IDs this user MAC entry is scoped to
         :param pulumi.Input[_builtins.str] vlan: Network VLAN value associated with this user MAC entry
         """
         if labels is not None:
@@ -163,6 +181,8 @@ class _NacEndpointState:
             pulumi.set(__self__, "org_id", org_id)
         if radius_group is not None:
             pulumi.set(__self__, "radius_group", radius_group)
+        if site_ids is not None:
+            pulumi.set(__self__, "site_ids", site_ids)
         if vlan is not None:
             pulumi.set(__self__, "vlan", vlan)
 
@@ -236,6 +256,18 @@ class _NacEndpointState:
         pulumi.set(self, "radius_group", value)
 
     @_builtins.property
+    @pulumi.getter(name="siteIds")
+    def site_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional list of site IDs this user MAC entry is scoped to
+        """
+        return pulumi.get(self, "site_ids")
+
+    @site_ids.setter
+    def site_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "site_ids", value)
+
+    @_builtins.property
     @pulumi.getter
     def vlan(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -260,6 +292,7 @@ class NacEndpoint(pulumi.CustomResource):
                  notes: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  radius_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  vlan: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -307,6 +340,7 @@ class NacEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Display name for this user MAC entry
         :param pulumi.Input[_builtins.str] notes: Free-form notes about this user MAC entry
         :param pulumi.Input[_builtins.str] radius_group: RADIUS group associated with this user MAC entry
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] site_ids: Optional list of site IDs this user MAC entry is scoped to
         :param pulumi.Input[_builtins.str] vlan: Network VLAN value associated with this user MAC entry
         """
         ...
@@ -374,6 +408,7 @@ class NacEndpoint(pulumi.CustomResource):
                  notes: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  radius_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  vlan: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -394,6 +429,7 @@ class NacEndpoint(pulumi.CustomResource):
                 raise TypeError("Missing required property 'org_id'")
             __props__.__dict__["org_id"] = org_id
             __props__.__dict__["radius_group"] = radius_group
+            __props__.__dict__["site_ids"] = site_ids
             __props__.__dict__["vlan"] = vlan
         super(NacEndpoint, __self__).__init__(
             'junipermist:org/nacEndpoint:NacEndpoint',
@@ -411,6 +447,7 @@ class NacEndpoint(pulumi.CustomResource):
             notes: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             radius_group: pulumi.Input[Optional[_builtins.str]] = None,
+            site_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             vlan: pulumi.Input[Optional[_builtins.str]] = None) -> 'NacEndpoint':
         """
         Get an existing NacEndpoint resource's state with the given name, id, and optional extra
@@ -424,6 +461,7 @@ class NacEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Display name for this user MAC entry
         :param pulumi.Input[_builtins.str] notes: Free-form notes about this user MAC entry
         :param pulumi.Input[_builtins.str] radius_group: RADIUS group associated with this user MAC entry
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] site_ids: Optional list of site IDs this user MAC entry is scoped to
         :param pulumi.Input[_builtins.str] vlan: Network VLAN value associated with this user MAC entry
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -436,6 +474,7 @@ class NacEndpoint(pulumi.CustomResource):
         __props__.__dict__["notes"] = notes
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["radius_group"] = radius_group
+        __props__.__dict__["site_ids"] = site_ids
         __props__.__dict__["vlan"] = vlan
         return NacEndpoint(resource_name, opts=opts, __props__=__props__)
 
@@ -483,6 +522,14 @@ class NacEndpoint(pulumi.CustomResource):
         RADIUS group associated with this user MAC entry
         """
         return pulumi.get(self, "radius_group")
+
+    @_builtins.property
+    @pulumi.getter(name="siteIds")
+    def site_ids(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        Optional list of site IDs this user MAC entry is scoped to
+        """
+        return pulumi.get(self, "site_ids")
 
     @_builtins.property
     @pulumi.getter

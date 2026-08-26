@@ -37,6 +37,12 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? IsolationVlanId { get; set; }
 
         /// <summary>
+        /// Multicast (IGMP snooping) settings for this VLAN
+        /// </summary>
+        [Input("multicast")]
+        public Input<Inputs.SwitchNetworksMulticastArgs>? Multicast { get; set; }
+
+        /// <summary>
         /// Optional for pure switching, required when L3 / routing features are used
         /// </summary>
         [Input("subnet")]

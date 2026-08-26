@@ -22,6 +22,7 @@ import com.pulumi.junipermist.device.inputs.ApPwrConfigArgs;
 import com.pulumi.junipermist.device.inputs.ApRadioConfigArgs;
 import com.pulumi.junipermist.device.inputs.ApUplinkPortConfigArgs;
 import com.pulumi.junipermist.device.inputs.ApUsbConfigArgs;
+import com.pulumi.junipermist.device.inputs.ApUwbConfigArgs;
 import com.pulumi.junipermist.device.inputs.ApZigbeeConfigArgs;
 import java.lang.Boolean;
 import java.lang.Double;
@@ -178,6 +179,21 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> disableModule() {
         return Optional.ofNullable(this.disableModule);
+    }
+
+    /**
+     * Whether U-NII-4 channels (169, 173, 177) are enabled on this access point
+     * 
+     */
+    @Import(name="enableUnii4")
+    private @Nullable Output<Boolean> enableUnii4;
+
+    /**
+     * @return Whether U-NII-4 channels (169, 173, 177) are enabled on this access point
+     * 
+     */
+    public Optional<Output<Boolean>> enableUnii4() {
+        return Optional.ofNullable(this.enableUnii4);
     }
 
     /**
@@ -496,6 +512,21 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * UWB RTLS / OMLOX asset-visibility settings; overrides the device profile and site-level `uwbConfig`
+     * 
+     */
+    @Import(name="uwbConfig")
+    private @Nullable Output<ApUwbConfigArgs> uwbConfig;
+
+    /**
+     * @return UWB RTLS / OMLOX asset-visibility settings; overrides the device profile and site-level `uwbConfig`
+     * 
+     */
+    public Optional<Output<ApUwbConfigArgs>> uwbConfig() {
+        return Optional.ofNullable(this.uwbConfig);
+    }
+
+    /**
      * Variable values that override site variables for this access point
      * 
      */
@@ -568,6 +599,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         this.disableEth2 = $.disableEth2;
         this.disableEth3 = $.disableEth3;
         this.disableModule = $.disableModule;
+        this.enableUnii4 = $.enableUnii4;
         this.eslConfig = $.eslConfig;
         this.flowControl = $.flowControl;
         this.height = $.height;
@@ -589,6 +621,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         this.siteId = $.siteId;
         this.uplinkPortConfig = $.uplinkPortConfig;
         this.usbConfig = $.usbConfig;
+        this.uwbConfig = $.uwbConfig;
         this.vars = $.vars;
         this.x = $.x;
         this.y = $.y;
@@ -809,6 +842,27 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder disableModule(Boolean disableModule) {
             return disableModule(Output.of(disableModule));
+        }
+
+        /**
+         * @param enableUnii4 Whether U-NII-4 channels (169, 173, 177) are enabled on this access point
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableUnii4(@Nullable Output<Boolean> enableUnii4) {
+            $.enableUnii4 = enableUnii4;
+            return this;
+        }
+
+        /**
+         * @param enableUnii4 Whether U-NII-4 channels (169, 173, 177) are enabled on this access point
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableUnii4(Boolean enableUnii4) {
+            return enableUnii4(Output.of(enableUnii4));
         }
 
         /**
@@ -1260,6 +1314,27 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder usbConfig(ApUsbConfigArgs usbConfig) {
             return usbConfig(Output.of(usbConfig));
+        }
+
+        /**
+         * @param uwbConfig UWB RTLS / OMLOX asset-visibility settings; overrides the device profile and site-level `uwbConfig`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uwbConfig(@Nullable Output<ApUwbConfigArgs> uwbConfig) {
+            $.uwbConfig = uwbConfig;
+            return this;
+        }
+
+        /**
+         * @param uwbConfig UWB RTLS / OMLOX asset-visibility settings; overrides the device profile and site-level `uwbConfig`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uwbConfig(ApUwbConfigArgs uwbConfig) {
+            return uwbConfig(Output.of(uwbConfig));
         }
 
         /**

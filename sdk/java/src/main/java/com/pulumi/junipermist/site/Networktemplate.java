@@ -144,283 +144,323 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="junipermist:site/networktemplate:Networktemplate")
 public class Networktemplate extends com.pulumi.resources.CustomResource {
+    /**
+     * Access control policies configured for the site
+     * 
+     */
     @Export(name="aclPolicies", refs={List.class,NetworktemplateAclPolicy.class}, tree="[0,1]")
     private Output</* @Nullable */ List<NetworktemplateAclPolicy>> aclPolicies;
 
+    /**
+     * @return Access control policies configured for the site
+     * 
+     */
     public Output<Optional<List<NetworktemplateAclPolicy>>> aclPolicies() {
         return Codegen.optional(this.aclPolicies);
     }
     /**
-     * ACL Tags to identify traffic source or destination. Key name is the tag name
+     * Access control tag definitions available to site policies
      * 
      */
     @Export(name="aclTags", refs={Map.class,String.class,NetworktemplateAclTags.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,NetworktemplateAclTags>> aclTags;
 
     /**
-     * @return ACL Tags to identify traffic source or destination. Key name is the tag name
+     * @return Access control tag definitions available to site policies
      * 
      */
     public Output<Optional<Map<String,NetworktemplateAclTags>>> aclTags() {
         return Codegen.optional(this.aclTags);
     }
     /**
-     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
+     * Additional CLI configuration commands applied through the site setting
      * 
      */
     @Export(name="additionalConfigCmds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> additionalConfigCmds;
 
     /**
-     * @return additional CLI commands to append to the generated Junos config. **Note**: no check is done
+     * @return Additional CLI configuration commands applied through the site setting
      * 
      */
     public Output<Optional<List<String>>> additionalConfigCmds() {
         return Codegen.optional(this.additionalConfigCmds);
     }
+    /**
+     * Whether line cards are included in automatic switch upgrades
+     * 
+     */
     @Export(name="autoUpgradeLinecard", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> autoUpgradeLinecard;
 
+    /**
+     * @return Whether line cards are included in automatic switch upgrades
+     * 
+     */
     public Output<Boolean> autoUpgradeLinecard() {
         return this.autoUpgradeLinecard;
     }
+    /**
+     * Layer 2 DHCP snooping settings for the site
+     * 
+     */
     @Export(name="dhcpSnooping", refs={NetworktemplateDhcpSnooping.class}, tree="[0]")
     private Output</* @Nullable */ NetworktemplateDhcpSnooping> dhcpSnooping;
 
+    /**
+     * @return Layer 2 DHCP snooping settings for the site
+     * 
+     */
     public Output<Optional<NetworktemplateDhcpSnooping>> dhcpSnooping() {
         return Codegen.optional(this.dhcpSnooping);
     }
     /**
-     * If some system-default port usages are not desired - namely, ap / iot / uplink
+     * System-defined switch port usages disabled for the site
      * 
      */
     @Export(name="disabledSystemDefinedPortUsages", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> disabledSystemDefinedPortUsages;
 
     /**
-     * @return If some system-default port usages are not desired - namely, ap / iot / uplink
+     * @return System-defined switch port usages disabled for the site
      * 
      */
     public Output<Optional<List<String>>> disabledSystemDefinedPortUsages() {
         return Codegen.optional(this.disabledSystemDefinedPortUsages);
     }
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * Name server addresses configured for the site
      * 
      */
     @Export(name="dnsServers", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> dnsServers;
 
     /**
-     * @return Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * @return Name server addresses configured for the site
      * 
      */
     public Output<List<String>> dnsServers() {
         return this.dnsServers;
     }
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * Search suffixes used for DNS lookups at the site
      * 
      */
     @Export(name="dnsSuffixes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> dnsSuffixes;
 
     /**
-     * @return Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * @return Search suffixes used for DNS lookups at the site
      * 
      */
     public Output<List<String>> dnsSuffixes() {
         return this.dnsSuffixes;
     }
     /**
-     * Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+     * Additional IPv4 routes configured for the site
      * 
      */
     @Export(name="extraRoutes", refs={Map.class,String.class,NetworktemplateExtraRoutes.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,NetworktemplateExtraRoutes>> extraRoutes;
 
     /**
-     * @return Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+     * @return Additional IPv4 routes configured for the site
      * 
      */
     public Output<Optional<Map<String,NetworktemplateExtraRoutes>>> extraRoutes() {
         return Codegen.optional(this.extraRoutes);
     }
     /**
-     * Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+     * Additional IPv6 routes configured for the site
      * 
      */
     @Export(name="extraRoutes6", refs={Map.class,String.class,NetworktemplateExtraRoutes6.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,NetworktemplateExtraRoutes6>> extraRoutes6;
 
     /**
-     * @return Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+     * @return Additional IPv6 routes configured for the site
      * 
      */
     public Output<Optional<Map<String,NetworktemplateExtraRoutes6>>> extraRoutes6() {
         return Codegen.optional(this.extraRoutes6);
     }
     /**
-     * Enable mistNac to use RadSec
+     * Network access control settings for switches at the site
      * 
      */
     @Export(name="mistNac", refs={NetworktemplateMistNac.class}, tree="[0]")
     private Output</* @Nullable */ NetworktemplateMistNac> mistNac;
 
     /**
-     * @return Enable mistNac to use RadSec
+     * @return Network access control settings for switches at the site
      * 
      */
     public Output<Optional<NetworktemplateMistNac>> mistNac() {
         return Codegen.optional(this.mistNac);
     }
     /**
-     * Property key is network name
+     * Switch network definitions configured for the site
      * 
      */
     @Export(name="networks", refs={Map.class,String.class,NetworktemplateNetworks.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,NetworktemplateNetworks>> networks;
 
     /**
-     * @return Property key is network name
+     * @return Switch network definitions configured for the site
      * 
      */
     public Output<Optional<Map<String,NetworktemplateNetworks>>> networks() {
         return Codegen.optional(this.networks);
     }
     /**
-     * List of NTP servers
+     * Time synchronization server addresses configured for the site
      * 
      */
     @Export(name="ntpServers", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> ntpServers;
 
     /**
-     * @return List of NTP servers
+     * @return Time synchronization server addresses configured for the site
      * 
      */
     public Output<List<String>> ntpServers() {
         return this.ntpServers;
     }
     /**
-     * Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+     * Routing area settings for OSPF on site switches
      * 
      */
     @Export(name="ospfAreas", refs={Map.class,String.class,NetworktemplateOspfAreas.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,NetworktemplateOspfAreas>> ospfAreas;
 
     /**
-     * @return Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+     * @return Routing area settings for OSPF on site switches
      * 
      */
     public Output<Optional<Map<String,NetworktemplateOspfAreas>>> ospfAreas() {
         return Codegen.optional(this.ospfAreas);
     }
     /**
-     * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+     * Switch port mirroring settings for the site
      * 
      */
     @Export(name="portMirroring", refs={Map.class,String.class,NetworktemplatePortMirroring.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,NetworktemplatePortMirroring>> portMirroring;
 
     /**
-     * @return Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+     * @return Switch port mirroring settings for the site
      * 
      */
     public Output<Optional<Map<String,NetworktemplatePortMirroring>>> portMirroring() {
         return Codegen.optional(this.portMirroring);
     }
     /**
-     * Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     * Switch port usage profiles available at the site
      * 
      */
     @Export(name="portUsages", refs={Map.class,String.class,NetworktemplatePortUsages.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,NetworktemplatePortUsages>> portUsages;
 
     /**
-     * @return Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     * @return Switch port usage profiles available at the site
      * 
      */
     public Output<Optional<Map<String,NetworktemplatePortUsages>>> portUsages() {
         return Codegen.optional(this.portUsages);
     }
     /**
-     * Junos Radius config
+     * Switch RADIUS configuration for the site
      * 
      */
     @Export(name="radiusConfig", refs={NetworktemplateRadiusConfig.class}, tree="[0]")
     private Output</* @Nullable */ NetworktemplateRadiusConfig> radiusConfig;
 
     /**
-     * @return Junos Radius config
+     * @return Switch RADIUS configuration for the site
      * 
      */
     public Output<Optional<NetworktemplateRadiusConfig>> radiusConfig() {
         return Codegen.optional(this.radiusConfig);
     }
+    /**
+     * Syslog forwarding settings for devices at the site
+     * 
+     */
     @Export(name="remoteSyslog", refs={NetworktemplateRemoteSyslog.class}, tree="[0]")
     private Output</* @Nullable */ NetworktemplateRemoteSyslog> remoteSyslog;
 
+    /**
+     * @return Syslog forwarding settings for devices at the site
+     * 
+     */
     public Output<Optional<NetworktemplateRemoteSyslog>> remoteSyslog() {
         return Codegen.optional(this.remoteSyslog);
     }
     /**
-     * Property key is the routing policy name
+     * Switch routing policy definitions for the site
      * 
      */
     @Export(name="routingPolicies", refs={Map.class,String.class,NetworktemplateRoutingPolicies.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,NetworktemplateRoutingPolicies>> routingPolicies;
 
     /**
-     * @return Property key is the routing policy name
+     * @return Switch routing policy definitions for the site
      * 
      */
     public Output<Optional<Map<String,NetworktemplateRoutingPolicies>>> routingPolicies() {
         return Codegen.optional(this.routingPolicies);
     }
     /**
-     * Unique ID of the object instance in the Mist Organization
+     * Unique value identifying the site settings object
      * 
      */
     @Export(name="siteId", refs={String.class}, tree="[0]")
     private Output<String> siteId;
 
     /**
-     * @return Unique ID of the object instance in the Mist Organization
+     * @return Unique value identifying the site settings object
      * 
      */
     public Output<String> siteId() {
         return this.siteId;
     }
+    /**
+     * Management polling settings for SNMP on site devices
+     * 
+     */
     @Export(name="snmpConfig", refs={NetworktemplateSnmpConfig.class}, tree="[0]")
     private Output</* @Nullable */ NetworktemplateSnmpConfig> snmpConfig;
 
+    /**
+     * @return Management polling settings for SNMP on site devices
+     * 
+     */
     public Output<Optional<NetworktemplateSnmpConfig>> snmpConfig() {
         return Codegen.optional(this.snmpConfig);
     }
     /**
-     * Defines custom switch configuration based on different criteria
+     * Rules for matching switches to model-specific settings
      * 
      */
     @Export(name="switchMatching", refs={NetworktemplateSwitchMatching.class}, tree="[0]")
     private Output</* @Nullable */ NetworktemplateSwitchMatching> switchMatching;
 
     /**
-     * @return Defines custom switch configuration based on different criteria
+     * @return Rules for matching switches to model-specific settings
      * 
      */
     public Output<Optional<NetworktemplateSwitchMatching>> switchMatching() {
         return Codegen.optional(this.switchMatching);
     }
     /**
-     * Switch Management settings
+     * Management access settings for switches at the site
      * 
      */
     @Export(name="switchMgmt", refs={NetworktemplateSwitchMgmt.class}, tree="[0]")
     private Output</* @Nullable */ NetworktemplateSwitchMgmt> switchMgmt;
 
     /**
-     * @return Switch Management settings
+     * @return Management access settings for switches at the site
      * 
      */
     public Output<Optional<NetworktemplateSwitchMgmt>> switchMgmt() {
@@ -440,21 +480,29 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> usesDescriptionFromPortUsage() {
         return Codegen.optional(this.usesDescriptionFromPortUsage);
     }
+    /**
+     * Routing instance configuration for the site
+     * 
+     */
     @Export(name="vrfConfig", refs={NetworktemplateVrfConfig.class}, tree="[0]")
     private Output</* @Nullable */ NetworktemplateVrfConfig> vrfConfig;
 
+    /**
+     * @return Routing instance configuration for the site
+     * 
+     */
     public Output<Optional<NetworktemplateVrfConfig>> vrfConfig() {
         return Codegen.optional(this.vrfConfig);
     }
     /**
-     * Property key is the network name
+     * Switch VRF instances configured for the site
      * 
      */
     @Export(name="vrfInstances", refs={Map.class,String.class,NetworktemplateVrfInstances.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,NetworktemplateVrfInstances>> vrfInstances;
 
     /**
-     * @return Property key is the network name
+     * @return Switch VRF instances configured for the site
      * 
      */
     public Output<Optional<Map<String,NetworktemplateVrfInstances>>> vrfInstances() {

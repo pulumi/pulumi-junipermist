@@ -48,6 +48,11 @@ public final class GatewayGatewayMgmt {
      */
     private @Nullable Boolean disableConsole;
     /**
+     * @return For SRX only, disable IDP packet capture
+     * 
+     */
+    private @Nullable Boolean disableIdpPcap;
+    /**
      * @return For SSR and SRX, disable management interface
      * 
      */
@@ -137,6 +142,13 @@ public final class GatewayGatewayMgmt {
         return Optional.ofNullable(this.disableConsole);
     }
     /**
+     * @return For SRX only, disable IDP packet capture
+     * 
+     */
+    public Optional<Boolean> disableIdpPcap() {
+        return Optional.ofNullable(this.disableIdpPcap);
+    }
+    /**
      * @return For SSR and SRX, disable management interface
      * 
      */
@@ -215,6 +227,7 @@ public final class GatewayGatewayMgmt {
         private @Nullable GatewayGatewayMgmtAutoSignatureUpdate autoSignatureUpdate;
         private @Nullable Integer configRevertTimer;
         private @Nullable Boolean disableConsole;
+        private @Nullable Boolean disableIdpPcap;
         private @Nullable Boolean disableOob;
         private @Nullable Boolean disableUsb;
         private @Nullable Boolean fipsEnabled;
@@ -233,6 +246,7 @@ public final class GatewayGatewayMgmt {
     	      this.autoSignatureUpdate = defaults.autoSignatureUpdate;
     	      this.configRevertTimer = defaults.configRevertTimer;
     	      this.disableConsole = defaults.disableConsole;
+    	      this.disableIdpPcap = defaults.disableIdpPcap;
     	      this.disableOob = defaults.disableOob;
     	      this.disableUsb = defaults.disableUsb;
     	      this.fipsEnabled = defaults.fipsEnabled;
@@ -281,6 +295,12 @@ public final class GatewayGatewayMgmt {
         public Builder disableConsole(@Nullable Boolean disableConsole) {
 
             this.disableConsole = disableConsole;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder disableIdpPcap(@Nullable Boolean disableIdpPcap) {
+
+            this.disableIdpPcap = disableIdpPcap;
             return this;
         }
         @CustomType.Setter
@@ -351,6 +371,7 @@ public final class GatewayGatewayMgmt {
             _resultValue.autoSignatureUpdate = autoSignatureUpdate;
             _resultValue.configRevertTimer = configRevertTimer;
             _resultValue.disableConsole = disableConsole;
+            _resultValue.disableIdpPcap = disableIdpPcap;
             _resultValue.disableOob = disableOob;
             _resultValue.disableUsb = disableUsb;
             _resultValue.fipsEnabled = fipsEnabled;

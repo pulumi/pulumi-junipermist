@@ -12,20 +12,26 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class NetworktemplateSnmpConfigV2cConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Access level for the SNMPv2c community
+        /// </summary>
         [Input("authorization")]
         public Input<string>? Authorization { get; set; }
 
         /// <summary>
-        /// Client_list_name here should refer to ClientList above
+        /// SNMP client list name referenced by this community
         /// </summary>
         [Input("clientListName")]
         public Input<string>? ClientListName { get; set; }
 
+        /// <summary>
+        /// SNMPv2c community string name
+        /// </summary>
         [Input("communityName")]
         public Input<string>? CommunityName { get; set; }
 
         /// <summary>
-        /// View name here should be defined in views above
+        /// SNMP view name that must be defined in the views list
         /// </summary>
         [Input("view")]
         public Input<string>? View { get; set; }

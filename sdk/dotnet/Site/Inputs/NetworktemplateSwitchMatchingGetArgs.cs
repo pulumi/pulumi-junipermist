@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class NetworktemplateSwitchMatchingGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether custom switch matching rules are enabled
+        /// </summary>
         [Input("enable")]
         public Input<bool>? Enable { get; set; }
 

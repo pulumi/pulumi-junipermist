@@ -4,6 +4,7 @@
 package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.junipermist.org.outputs.DeviceprofileGatewayPortConfigWanProbeOverrideHttp;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -12,6 +13,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DeviceprofileGatewayPortConfigWanProbeOverride {
+    /**
+     * @return List of hostnames used as probe destinations; applicable for both IPv4 and IPv6
+     * 
+     */
+    private @Nullable List<String> hostnames;
+    /**
+     * @return HTTP probe settings; success from any ICMP or HTTP probe indicates the WAN is up
+     * 
+     */
+    private @Nullable DeviceprofileGatewayPortConfigWanProbeOverrideHttp http;
     /**
      * @return List of IPv6 probe host addresses used by this WAN override
      * 
@@ -29,6 +40,20 @@ public final class DeviceprofileGatewayPortConfigWanProbeOverride {
     private @Nullable String probeProfile;
 
     private DeviceprofileGatewayPortConfigWanProbeOverride() {}
+    /**
+     * @return List of hostnames used as probe destinations; applicable for both IPv4 and IPv6
+     * 
+     */
+    public List<String> hostnames() {
+        return this.hostnames == null ? List.of() : this.hostnames;
+    }
+    /**
+     * @return HTTP probe settings; success from any ICMP or HTTP probe indicates the WAN is up
+     * 
+     */
+    public Optional<DeviceprofileGatewayPortConfigWanProbeOverrideHttp> http() {
+        return Optional.ofNullable(this.http);
+    }
     /**
      * @return List of IPv6 probe host addresses used by this WAN override
      * 
@@ -60,17 +85,36 @@ public final class DeviceprofileGatewayPortConfigWanProbeOverride {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> hostnames;
+        private @Nullable DeviceprofileGatewayPortConfigWanProbeOverrideHttp http;
         private @Nullable List<String> ip6s;
         private @Nullable List<String> ips;
         private @Nullable String probeProfile;
         public Builder() {}
         public Builder(DeviceprofileGatewayPortConfigWanProbeOverride defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.hostnames = defaults.hostnames;
+    	      this.http = defaults.http;
     	      this.ip6s = defaults.ip6s;
     	      this.ips = defaults.ips;
     	      this.probeProfile = defaults.probeProfile;
         }
 
+        @CustomType.Setter
+        public Builder hostnames(@Nullable List<String> hostnames) {
+
+            this.hostnames = hostnames;
+            return this;
+        }
+        public Builder hostnames(String... hostnames) {
+            return hostnames(List.of(hostnames));
+        }
+        @CustomType.Setter
+        public Builder http(@Nullable DeviceprofileGatewayPortConfigWanProbeOverrideHttp http) {
+
+            this.http = http;
+            return this;
+        }
         @CustomType.Setter
         public Builder ip6s(@Nullable List<String> ip6s) {
 
@@ -97,6 +141,8 @@ public final class DeviceprofileGatewayPortConfigWanProbeOverride {
         }
         public DeviceprofileGatewayPortConfigWanProbeOverride build() {
             final var _resultValue = new DeviceprofileGatewayPortConfigWanProbeOverride();
+            _resultValue.hostnames = hostnames;
+            _resultValue.http = http;
             _resultValue.ip6s = ip6s;
             _resultValue.ips = ips;
             _resultValue.probeProfile = probeProfile;

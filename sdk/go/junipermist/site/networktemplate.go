@@ -120,51 +120,57 @@ import (
 type Networktemplate struct {
 	pulumi.CustomResourceState
 
+	// Access control policies configured for the site
 	AclPolicies NetworktemplateAclPolicyArrayOutput `pulumi:"aclPolicies"`
-	// ACL Tags to identify traffic source or destination. Key name is the tag name
+	// Access control tag definitions available to site policies
 	AclTags NetworktemplateAclTagsMapOutput `pulumi:"aclTags"`
-	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
-	AdditionalConfigCmds pulumi.StringArrayOutput             `pulumi:"additionalConfigCmds"`
-	AutoUpgradeLinecard  pulumi.BoolOutput                    `pulumi:"autoUpgradeLinecard"`
-	DhcpSnooping         NetworktemplateDhcpSnoopingPtrOutput `pulumi:"dhcpSnooping"`
-	// If some system-default port usages are not desired - namely, ap / iot / uplink
+	// Additional CLI configuration commands applied through the site setting
+	AdditionalConfigCmds pulumi.StringArrayOutput `pulumi:"additionalConfigCmds"`
+	// Whether line cards are included in automatic switch upgrades
+	AutoUpgradeLinecard pulumi.BoolOutput `pulumi:"autoUpgradeLinecard"`
+	// Layer 2 DHCP snooping settings for the site
+	DhcpSnooping NetworktemplateDhcpSnoopingPtrOutput `pulumi:"dhcpSnooping"`
+	// System-defined switch port usages disabled for the site
 	DisabledSystemDefinedPortUsages pulumi.StringArrayOutput `pulumi:"disabledSystemDefinedPortUsages"`
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// Name server addresses configured for the site
 	DnsServers pulumi.StringArrayOutput `pulumi:"dnsServers"`
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// Search suffixes used for DNS lookups at the site
 	DnsSuffixes pulumi.StringArrayOutput `pulumi:"dnsSuffixes"`
-	// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+	// Additional IPv4 routes configured for the site
 	ExtraRoutes NetworktemplateExtraRoutesMapOutput `pulumi:"extraRoutes"`
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+	// Additional IPv6 routes configured for the site
 	ExtraRoutes6 NetworktemplateExtraRoutes6MapOutput `pulumi:"extraRoutes6"`
-	// Enable mistNac to use RadSec
+	// Network access control settings for switches at the site
 	MistNac NetworktemplateMistNacPtrOutput `pulumi:"mistNac"`
-	// Property key is network name
+	// Switch network definitions configured for the site
 	Networks NetworktemplateNetworksMapOutput `pulumi:"networks"`
-	// List of NTP servers
+	// Time synchronization server addresses configured for the site
 	NtpServers pulumi.StringArrayOutput `pulumi:"ntpServers"`
-	// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+	// Routing area settings for OSPF on site switches
 	OspfAreas NetworktemplateOspfAreasMapOutput `pulumi:"ospfAreas"`
-	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+	// Switch port mirroring settings for the site
 	PortMirroring NetworktemplatePortMirroringMapOutput `pulumi:"portMirroring"`
-	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+	// Switch port usage profiles available at the site
 	PortUsages NetworktemplatePortUsagesMapOutput `pulumi:"portUsages"`
-	// Junos Radius config
+	// Switch RADIUS configuration for the site
 	RadiusConfig NetworktemplateRadiusConfigPtrOutput `pulumi:"radiusConfig"`
+	// Syslog forwarding settings for devices at the site
 	RemoteSyslog NetworktemplateRemoteSyslogPtrOutput `pulumi:"remoteSyslog"`
-	// Property key is the routing policy name
+	// Switch routing policy definitions for the site
 	RoutingPolicies NetworktemplateRoutingPoliciesMapOutput `pulumi:"routingPolicies"`
-	// Unique ID of the object instance in the Mist Organization
-	SiteId     pulumi.StringOutput                `pulumi:"siteId"`
+	// Unique value identifying the site settings object
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
+	// Management polling settings for SNMP on site devices
 	SnmpConfig NetworktemplateSnmpConfigPtrOutput `pulumi:"snmpConfig"`
-	// Defines custom switch configuration based on different criteria
+	// Rules for matching switches to model-specific settings
 	SwitchMatching NetworktemplateSwitchMatchingPtrOutput `pulumi:"switchMatching"`
-	// Switch Management settings
+	// Management access settings for switches at the site
 	SwitchMgmt NetworktemplateSwitchMgmtPtrOutput `pulumi:"switchMgmt"`
 	// by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
-	UsesDescriptionFromPortUsage pulumi.BoolPtrOutput              `pulumi:"usesDescriptionFromPortUsage"`
-	VrfConfig                    NetworktemplateVrfConfigPtrOutput `pulumi:"vrfConfig"`
-	// Property key is the network name
+	UsesDescriptionFromPortUsage pulumi.BoolPtrOutput `pulumi:"usesDescriptionFromPortUsage"`
+	// Routing instance configuration for the site
+	VrfConfig NetworktemplateVrfConfigPtrOutput `pulumi:"vrfConfig"`
+	// Switch VRF instances configured for the site
 	VrfInstances NetworktemplateVrfInstancesMapOutput `pulumi:"vrfInstances"`
 }
 
@@ -201,100 +207,112 @@ func GetNetworktemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Networktemplate resources.
 type networktemplateState struct {
+	// Access control policies configured for the site
 	AclPolicies []NetworktemplateAclPolicy `pulumi:"aclPolicies"`
-	// ACL Tags to identify traffic source or destination. Key name is the tag name
+	// Access control tag definitions available to site policies
 	AclTags map[string]NetworktemplateAclTags `pulumi:"aclTags"`
-	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
-	AdditionalConfigCmds []string                     `pulumi:"additionalConfigCmds"`
-	AutoUpgradeLinecard  *bool                        `pulumi:"autoUpgradeLinecard"`
-	DhcpSnooping         *NetworktemplateDhcpSnooping `pulumi:"dhcpSnooping"`
-	// If some system-default port usages are not desired - namely, ap / iot / uplink
+	// Additional CLI configuration commands applied through the site setting
+	AdditionalConfigCmds []string `pulumi:"additionalConfigCmds"`
+	// Whether line cards are included in automatic switch upgrades
+	AutoUpgradeLinecard *bool `pulumi:"autoUpgradeLinecard"`
+	// Layer 2 DHCP snooping settings for the site
+	DhcpSnooping *NetworktemplateDhcpSnooping `pulumi:"dhcpSnooping"`
+	// System-defined switch port usages disabled for the site
 	DisabledSystemDefinedPortUsages []string `pulumi:"disabledSystemDefinedPortUsages"`
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// Name server addresses configured for the site
 	DnsServers []string `pulumi:"dnsServers"`
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// Search suffixes used for DNS lookups at the site
 	DnsSuffixes []string `pulumi:"dnsSuffixes"`
-	// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+	// Additional IPv4 routes configured for the site
 	ExtraRoutes map[string]NetworktemplateExtraRoutes `pulumi:"extraRoutes"`
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+	// Additional IPv6 routes configured for the site
 	ExtraRoutes6 map[string]NetworktemplateExtraRoutes6 `pulumi:"extraRoutes6"`
-	// Enable mistNac to use RadSec
+	// Network access control settings for switches at the site
 	MistNac *NetworktemplateMistNac `pulumi:"mistNac"`
-	// Property key is network name
+	// Switch network definitions configured for the site
 	Networks map[string]NetworktemplateNetworks `pulumi:"networks"`
-	// List of NTP servers
+	// Time synchronization server addresses configured for the site
 	NtpServers []string `pulumi:"ntpServers"`
-	// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+	// Routing area settings for OSPF on site switches
 	OspfAreas map[string]NetworktemplateOspfAreas `pulumi:"ospfAreas"`
-	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+	// Switch port mirroring settings for the site
 	PortMirroring map[string]NetworktemplatePortMirroring `pulumi:"portMirroring"`
-	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+	// Switch port usage profiles available at the site
 	PortUsages map[string]NetworktemplatePortUsages `pulumi:"portUsages"`
-	// Junos Radius config
+	// Switch RADIUS configuration for the site
 	RadiusConfig *NetworktemplateRadiusConfig `pulumi:"radiusConfig"`
+	// Syslog forwarding settings for devices at the site
 	RemoteSyslog *NetworktemplateRemoteSyslog `pulumi:"remoteSyslog"`
-	// Property key is the routing policy name
+	// Switch routing policy definitions for the site
 	RoutingPolicies map[string]NetworktemplateRoutingPolicies `pulumi:"routingPolicies"`
-	// Unique ID of the object instance in the Mist Organization
-	SiteId     *string                    `pulumi:"siteId"`
+	// Unique value identifying the site settings object
+	SiteId *string `pulumi:"siteId"`
+	// Management polling settings for SNMP on site devices
 	SnmpConfig *NetworktemplateSnmpConfig `pulumi:"snmpConfig"`
-	// Defines custom switch configuration based on different criteria
+	// Rules for matching switches to model-specific settings
 	SwitchMatching *NetworktemplateSwitchMatching `pulumi:"switchMatching"`
-	// Switch Management settings
+	// Management access settings for switches at the site
 	SwitchMgmt *NetworktemplateSwitchMgmt `pulumi:"switchMgmt"`
 	// by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
-	UsesDescriptionFromPortUsage *bool                     `pulumi:"usesDescriptionFromPortUsage"`
-	VrfConfig                    *NetworktemplateVrfConfig `pulumi:"vrfConfig"`
-	// Property key is the network name
+	UsesDescriptionFromPortUsage *bool `pulumi:"usesDescriptionFromPortUsage"`
+	// Routing instance configuration for the site
+	VrfConfig *NetworktemplateVrfConfig `pulumi:"vrfConfig"`
+	// Switch VRF instances configured for the site
 	VrfInstances map[string]NetworktemplateVrfInstances `pulumi:"vrfInstances"`
 }
 
 type NetworktemplateState struct {
+	// Access control policies configured for the site
 	AclPolicies NetworktemplateAclPolicyArrayInput
-	// ACL Tags to identify traffic source or destination. Key name is the tag name
+	// Access control tag definitions available to site policies
 	AclTags NetworktemplateAclTagsMapInput
-	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
+	// Additional CLI configuration commands applied through the site setting
 	AdditionalConfigCmds pulumi.StringArrayInput
-	AutoUpgradeLinecard  pulumi.BoolPtrInput
-	DhcpSnooping         NetworktemplateDhcpSnoopingPtrInput
-	// If some system-default port usages are not desired - namely, ap / iot / uplink
+	// Whether line cards are included in automatic switch upgrades
+	AutoUpgradeLinecard pulumi.BoolPtrInput
+	// Layer 2 DHCP snooping settings for the site
+	DhcpSnooping NetworktemplateDhcpSnoopingPtrInput
+	// System-defined switch port usages disabled for the site
 	DisabledSystemDefinedPortUsages pulumi.StringArrayInput
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// Name server addresses configured for the site
 	DnsServers pulumi.StringArrayInput
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// Search suffixes used for DNS lookups at the site
 	DnsSuffixes pulumi.StringArrayInput
-	// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+	// Additional IPv4 routes configured for the site
 	ExtraRoutes NetworktemplateExtraRoutesMapInput
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+	// Additional IPv6 routes configured for the site
 	ExtraRoutes6 NetworktemplateExtraRoutes6MapInput
-	// Enable mistNac to use RadSec
+	// Network access control settings for switches at the site
 	MistNac NetworktemplateMistNacPtrInput
-	// Property key is network name
+	// Switch network definitions configured for the site
 	Networks NetworktemplateNetworksMapInput
-	// List of NTP servers
+	// Time synchronization server addresses configured for the site
 	NtpServers pulumi.StringArrayInput
-	// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+	// Routing area settings for OSPF on site switches
 	OspfAreas NetworktemplateOspfAreasMapInput
-	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+	// Switch port mirroring settings for the site
 	PortMirroring NetworktemplatePortMirroringMapInput
-	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+	// Switch port usage profiles available at the site
 	PortUsages NetworktemplatePortUsagesMapInput
-	// Junos Radius config
+	// Switch RADIUS configuration for the site
 	RadiusConfig NetworktemplateRadiusConfigPtrInput
+	// Syslog forwarding settings for devices at the site
 	RemoteSyslog NetworktemplateRemoteSyslogPtrInput
-	// Property key is the routing policy name
+	// Switch routing policy definitions for the site
 	RoutingPolicies NetworktemplateRoutingPoliciesMapInput
-	// Unique ID of the object instance in the Mist Organization
-	SiteId     pulumi.StringPtrInput
+	// Unique value identifying the site settings object
+	SiteId pulumi.StringPtrInput
+	// Management polling settings for SNMP on site devices
 	SnmpConfig NetworktemplateSnmpConfigPtrInput
-	// Defines custom switch configuration based on different criteria
+	// Rules for matching switches to model-specific settings
 	SwitchMatching NetworktemplateSwitchMatchingPtrInput
-	// Switch Management settings
+	// Management access settings for switches at the site
 	SwitchMgmt NetworktemplateSwitchMgmtPtrInput
 	// by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
 	UsesDescriptionFromPortUsage pulumi.BoolPtrInput
-	VrfConfig                    NetworktemplateVrfConfigPtrInput
-	// Property key is the network name
+	// Routing instance configuration for the site
+	VrfConfig NetworktemplateVrfConfigPtrInput
+	// Switch VRF instances configured for the site
 	VrfInstances NetworktemplateVrfInstancesMapInput
 }
 
@@ -303,101 +321,113 @@ func (NetworktemplateState) ElementType() reflect.Type {
 }
 
 type networktemplateArgs struct {
+	// Access control policies configured for the site
 	AclPolicies []NetworktemplateAclPolicy `pulumi:"aclPolicies"`
-	// ACL Tags to identify traffic source or destination. Key name is the tag name
+	// Access control tag definitions available to site policies
 	AclTags map[string]NetworktemplateAclTags `pulumi:"aclTags"`
-	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
-	AdditionalConfigCmds []string                     `pulumi:"additionalConfigCmds"`
-	AutoUpgradeLinecard  *bool                        `pulumi:"autoUpgradeLinecard"`
-	DhcpSnooping         *NetworktemplateDhcpSnooping `pulumi:"dhcpSnooping"`
-	// If some system-default port usages are not desired - namely, ap / iot / uplink
+	// Additional CLI configuration commands applied through the site setting
+	AdditionalConfigCmds []string `pulumi:"additionalConfigCmds"`
+	// Whether line cards are included in automatic switch upgrades
+	AutoUpgradeLinecard *bool `pulumi:"autoUpgradeLinecard"`
+	// Layer 2 DHCP snooping settings for the site
+	DhcpSnooping *NetworktemplateDhcpSnooping `pulumi:"dhcpSnooping"`
+	// System-defined switch port usages disabled for the site
 	DisabledSystemDefinedPortUsages []string `pulumi:"disabledSystemDefinedPortUsages"`
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// Name server addresses configured for the site
 	DnsServers []string `pulumi:"dnsServers"`
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// Search suffixes used for DNS lookups at the site
 	DnsSuffixes []string `pulumi:"dnsSuffixes"`
-	// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+	// Additional IPv4 routes configured for the site
 	ExtraRoutes map[string]NetworktemplateExtraRoutes `pulumi:"extraRoutes"`
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+	// Additional IPv6 routes configured for the site
 	ExtraRoutes6 map[string]NetworktemplateExtraRoutes6 `pulumi:"extraRoutes6"`
-	// Enable mistNac to use RadSec
+	// Network access control settings for switches at the site
 	MistNac *NetworktemplateMistNac `pulumi:"mistNac"`
-	// Property key is network name
+	// Switch network definitions configured for the site
 	Networks map[string]NetworktemplateNetworks `pulumi:"networks"`
-	// List of NTP servers
+	// Time synchronization server addresses configured for the site
 	NtpServers []string `pulumi:"ntpServers"`
-	// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+	// Routing area settings for OSPF on site switches
 	OspfAreas map[string]NetworktemplateOspfAreas `pulumi:"ospfAreas"`
-	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+	// Switch port mirroring settings for the site
 	PortMirroring map[string]NetworktemplatePortMirroring `pulumi:"portMirroring"`
-	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+	// Switch port usage profiles available at the site
 	PortUsages map[string]NetworktemplatePortUsages `pulumi:"portUsages"`
-	// Junos Radius config
+	// Switch RADIUS configuration for the site
 	RadiusConfig *NetworktemplateRadiusConfig `pulumi:"radiusConfig"`
+	// Syslog forwarding settings for devices at the site
 	RemoteSyslog *NetworktemplateRemoteSyslog `pulumi:"remoteSyslog"`
-	// Property key is the routing policy name
+	// Switch routing policy definitions for the site
 	RoutingPolicies map[string]NetworktemplateRoutingPolicies `pulumi:"routingPolicies"`
-	// Unique ID of the object instance in the Mist Organization
-	SiteId     string                     `pulumi:"siteId"`
+	// Unique value identifying the site settings object
+	SiteId string `pulumi:"siteId"`
+	// Management polling settings for SNMP on site devices
 	SnmpConfig *NetworktemplateSnmpConfig `pulumi:"snmpConfig"`
-	// Defines custom switch configuration based on different criteria
+	// Rules for matching switches to model-specific settings
 	SwitchMatching *NetworktemplateSwitchMatching `pulumi:"switchMatching"`
-	// Switch Management settings
+	// Management access settings for switches at the site
 	SwitchMgmt *NetworktemplateSwitchMgmt `pulumi:"switchMgmt"`
 	// by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
-	UsesDescriptionFromPortUsage *bool                     `pulumi:"usesDescriptionFromPortUsage"`
-	VrfConfig                    *NetworktemplateVrfConfig `pulumi:"vrfConfig"`
-	// Property key is the network name
+	UsesDescriptionFromPortUsage *bool `pulumi:"usesDescriptionFromPortUsage"`
+	// Routing instance configuration for the site
+	VrfConfig *NetworktemplateVrfConfig `pulumi:"vrfConfig"`
+	// Switch VRF instances configured for the site
 	VrfInstances map[string]NetworktemplateVrfInstances `pulumi:"vrfInstances"`
 }
 
 // The set of arguments for constructing a Networktemplate resource.
 type NetworktemplateArgs struct {
+	// Access control policies configured for the site
 	AclPolicies NetworktemplateAclPolicyArrayInput
-	// ACL Tags to identify traffic source or destination. Key name is the tag name
+	// Access control tag definitions available to site policies
 	AclTags NetworktemplateAclTagsMapInput
-	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
+	// Additional CLI configuration commands applied through the site setting
 	AdditionalConfigCmds pulumi.StringArrayInput
-	AutoUpgradeLinecard  pulumi.BoolPtrInput
-	DhcpSnooping         NetworktemplateDhcpSnoopingPtrInput
-	// If some system-default port usages are not desired - namely, ap / iot / uplink
+	// Whether line cards are included in automatic switch upgrades
+	AutoUpgradeLinecard pulumi.BoolPtrInput
+	// Layer 2 DHCP snooping settings for the site
+	DhcpSnooping NetworktemplateDhcpSnoopingPtrInput
+	// System-defined switch port usages disabled for the site
 	DisabledSystemDefinedPortUsages pulumi.StringArrayInput
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// Name server addresses configured for the site
 	DnsServers pulumi.StringArrayInput
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// Search suffixes used for DNS lookups at the site
 	DnsSuffixes pulumi.StringArrayInput
-	// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+	// Additional IPv4 routes configured for the site
 	ExtraRoutes NetworktemplateExtraRoutesMapInput
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+	// Additional IPv6 routes configured for the site
 	ExtraRoutes6 NetworktemplateExtraRoutes6MapInput
-	// Enable mistNac to use RadSec
+	// Network access control settings for switches at the site
 	MistNac NetworktemplateMistNacPtrInput
-	// Property key is network name
+	// Switch network definitions configured for the site
 	Networks NetworktemplateNetworksMapInput
-	// List of NTP servers
+	// Time synchronization server addresses configured for the site
 	NtpServers pulumi.StringArrayInput
-	// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+	// Routing area settings for OSPF on site switches
 	OspfAreas NetworktemplateOspfAreasMapInput
-	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+	// Switch port mirroring settings for the site
 	PortMirroring NetworktemplatePortMirroringMapInput
-	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+	// Switch port usage profiles available at the site
 	PortUsages NetworktemplatePortUsagesMapInput
-	// Junos Radius config
+	// Switch RADIUS configuration for the site
 	RadiusConfig NetworktemplateRadiusConfigPtrInput
+	// Syslog forwarding settings for devices at the site
 	RemoteSyslog NetworktemplateRemoteSyslogPtrInput
-	// Property key is the routing policy name
+	// Switch routing policy definitions for the site
 	RoutingPolicies NetworktemplateRoutingPoliciesMapInput
-	// Unique ID of the object instance in the Mist Organization
-	SiteId     pulumi.StringInput
+	// Unique value identifying the site settings object
+	SiteId pulumi.StringInput
+	// Management polling settings for SNMP on site devices
 	SnmpConfig NetworktemplateSnmpConfigPtrInput
-	// Defines custom switch configuration based on different criteria
+	// Rules for matching switches to model-specific settings
 	SwitchMatching NetworktemplateSwitchMatchingPtrInput
-	// Switch Management settings
+	// Management access settings for switches at the site
 	SwitchMgmt NetworktemplateSwitchMgmtPtrInput
 	// by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
 	UsesDescriptionFromPortUsage pulumi.BoolPtrInput
-	VrfConfig                    NetworktemplateVrfConfigPtrInput
-	// Property key is the network name
+	// Routing instance configuration for the site
+	VrfConfig NetworktemplateVrfConfigPtrInput
+	// Switch VRF instances configured for the site
 	VrfInstances NetworktemplateVrfInstancesMapInput
 }
 
@@ -488,112 +518,117 @@ func (o NetworktemplateOutput) ToNetworktemplateOutputWithContext(ctx context.Co
 	return o
 }
 
+// Access control policies configured for the site
 func (o NetworktemplateOutput) AclPolicies() NetworktemplateAclPolicyArrayOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateAclPolicyArrayOutput { return v.AclPolicies }).(NetworktemplateAclPolicyArrayOutput)
 }
 
-// ACL Tags to identify traffic source or destination. Key name is the tag name
+// Access control tag definitions available to site policies
 func (o NetworktemplateOutput) AclTags() NetworktemplateAclTagsMapOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateAclTagsMapOutput { return v.AclTags }).(NetworktemplateAclTagsMapOutput)
 }
 
-// additional CLI commands to append to the generated Junos config. **Note**: no check is done
+// Additional CLI configuration commands applied through the site setting
 func (o NetworktemplateOutput) AdditionalConfigCmds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Networktemplate) pulumi.StringArrayOutput { return v.AdditionalConfigCmds }).(pulumi.StringArrayOutput)
 }
 
+// Whether line cards are included in automatic switch upgrades
 func (o NetworktemplateOutput) AutoUpgradeLinecard() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Networktemplate) pulumi.BoolOutput { return v.AutoUpgradeLinecard }).(pulumi.BoolOutput)
 }
 
+// Layer 2 DHCP snooping settings for the site
 func (o NetworktemplateOutput) DhcpSnooping() NetworktemplateDhcpSnoopingPtrOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateDhcpSnoopingPtrOutput { return v.DhcpSnooping }).(NetworktemplateDhcpSnoopingPtrOutput)
 }
 
-// If some system-default port usages are not desired - namely, ap / iot / uplink
+// System-defined switch port usages disabled for the site
 func (o NetworktemplateOutput) DisabledSystemDefinedPortUsages() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Networktemplate) pulumi.StringArrayOutput { return v.DisabledSystemDefinedPortUsages }).(pulumi.StringArrayOutput)
 }
 
-// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+// Name server addresses configured for the site
 func (o NetworktemplateOutput) DnsServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Networktemplate) pulumi.StringArrayOutput { return v.DnsServers }).(pulumi.StringArrayOutput)
 }
 
-// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+// Search suffixes used for DNS lookups at the site
 func (o NetworktemplateOutput) DnsSuffixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Networktemplate) pulumi.StringArrayOutput { return v.DnsSuffixes }).(pulumi.StringArrayOutput)
 }
 
-// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+// Additional IPv4 routes configured for the site
 func (o NetworktemplateOutput) ExtraRoutes() NetworktemplateExtraRoutesMapOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateExtraRoutesMapOutput { return v.ExtraRoutes }).(NetworktemplateExtraRoutesMapOutput)
 }
 
-// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+// Additional IPv6 routes configured for the site
 func (o NetworktemplateOutput) ExtraRoutes6() NetworktemplateExtraRoutes6MapOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateExtraRoutes6MapOutput { return v.ExtraRoutes6 }).(NetworktemplateExtraRoutes6MapOutput)
 }
 
-// Enable mistNac to use RadSec
+// Network access control settings for switches at the site
 func (o NetworktemplateOutput) MistNac() NetworktemplateMistNacPtrOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateMistNacPtrOutput { return v.MistNac }).(NetworktemplateMistNacPtrOutput)
 }
 
-// Property key is network name
+// Switch network definitions configured for the site
 func (o NetworktemplateOutput) Networks() NetworktemplateNetworksMapOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateNetworksMapOutput { return v.Networks }).(NetworktemplateNetworksMapOutput)
 }
 
-// List of NTP servers
+// Time synchronization server addresses configured for the site
 func (o NetworktemplateOutput) NtpServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Networktemplate) pulumi.StringArrayOutput { return v.NtpServers }).(pulumi.StringArrayOutput)
 }
 
-// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+// Routing area settings for OSPF on site switches
 func (o NetworktemplateOutput) OspfAreas() NetworktemplateOspfAreasMapOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateOspfAreasMapOutput { return v.OspfAreas }).(NetworktemplateOspfAreasMapOutput)
 }
 
-// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+// Switch port mirroring settings for the site
 func (o NetworktemplateOutput) PortMirroring() NetworktemplatePortMirroringMapOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplatePortMirroringMapOutput { return v.PortMirroring }).(NetworktemplatePortMirroringMapOutput)
 }
 
-// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+// Switch port usage profiles available at the site
 func (o NetworktemplateOutput) PortUsages() NetworktemplatePortUsagesMapOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplatePortUsagesMapOutput { return v.PortUsages }).(NetworktemplatePortUsagesMapOutput)
 }
 
-// Junos Radius config
+// Switch RADIUS configuration for the site
 func (o NetworktemplateOutput) RadiusConfig() NetworktemplateRadiusConfigPtrOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateRadiusConfigPtrOutput { return v.RadiusConfig }).(NetworktemplateRadiusConfigPtrOutput)
 }
 
+// Syslog forwarding settings for devices at the site
 func (o NetworktemplateOutput) RemoteSyslog() NetworktemplateRemoteSyslogPtrOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateRemoteSyslogPtrOutput { return v.RemoteSyslog }).(NetworktemplateRemoteSyslogPtrOutput)
 }
 
-// Property key is the routing policy name
+// Switch routing policy definitions for the site
 func (o NetworktemplateOutput) RoutingPolicies() NetworktemplateRoutingPoliciesMapOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateRoutingPoliciesMapOutput { return v.RoutingPolicies }).(NetworktemplateRoutingPoliciesMapOutput)
 }
 
-// Unique ID of the object instance in the Mist Organization
+// Unique value identifying the site settings object
 func (o NetworktemplateOutput) SiteId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Networktemplate) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
+// Management polling settings for SNMP on site devices
 func (o NetworktemplateOutput) SnmpConfig() NetworktemplateSnmpConfigPtrOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateSnmpConfigPtrOutput { return v.SnmpConfig }).(NetworktemplateSnmpConfigPtrOutput)
 }
 
-// Defines custom switch configuration based on different criteria
+// Rules for matching switches to model-specific settings
 func (o NetworktemplateOutput) SwitchMatching() NetworktemplateSwitchMatchingPtrOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateSwitchMatchingPtrOutput { return v.SwitchMatching }).(NetworktemplateSwitchMatchingPtrOutput)
 }
 
-// Switch Management settings
+// Management access settings for switches at the site
 func (o NetworktemplateOutput) SwitchMgmt() NetworktemplateSwitchMgmtPtrOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateSwitchMgmtPtrOutput { return v.SwitchMgmt }).(NetworktemplateSwitchMgmtPtrOutput)
 }
@@ -603,11 +638,12 @@ func (o NetworktemplateOutput) UsesDescriptionFromPortUsage() pulumi.BoolPtrOutp
 	return o.ApplyT(func(v *Networktemplate) pulumi.BoolPtrOutput { return v.UsesDescriptionFromPortUsage }).(pulumi.BoolPtrOutput)
 }
 
+// Routing instance configuration for the site
 func (o NetworktemplateOutput) VrfConfig() NetworktemplateVrfConfigPtrOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateVrfConfigPtrOutput { return v.VrfConfig }).(NetworktemplateVrfConfigPtrOutput)
 }
 
-// Property key is the network name
+// Switch VRF instances configured for the site
 func (o NetworktemplateOutput) VrfInstances() NetworktemplateVrfInstancesMapOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateVrfInstancesMapOutput { return v.VrfInstances }).(NetworktemplateVrfInstancesMapOutput)
 }

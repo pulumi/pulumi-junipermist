@@ -14,15 +14,27 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class NetworktemplateExtraRoutes
     {
         /// <summary>
-        /// This takes precedence
+        /// Whether to install a discard route; this takes precedence over next-hop settings
         /// </summary>
         public readonly bool? Discard;
+        /// <summary>
+        /// Route metric for the IPv4 static route
+        /// </summary>
         public readonly int? Metric;
+        /// <summary>
+        /// Qualified next-hop settings keyed by IPv4 next-hop address
+        /// </summary>
         public readonly ImmutableDictionary<string, Outputs.NetworktemplateExtraRoutesNextQualified>? NextQualified;
+        /// <summary>
+        /// Whether to prevent recursive next-hop resolution for the IPv4 static route
+        /// </summary>
         public readonly bool? NoResolve;
+        /// <summary>
+        /// Route preference for the IPv4 static route
+        /// </summary>
         public readonly int? Preference;
         /// <summary>
-        /// Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
+        /// Next-hop IPv4 address or ECMP next-hop IPv4 addresses for the route
         /// </summary>
         public readonly string Via;
 

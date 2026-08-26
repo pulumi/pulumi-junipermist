@@ -30,6 +30,10 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.SwitchVrfInstancesExtraRoutes6>? ExtraRoutes6;
         /// <summary>
+        /// Multicast configuration for this VRF instance. PIM is automatically enabled when any network in this VRF has `multicast.enabled`==`True`
+        /// </summary>
+        public readonly Outputs.SwitchVrfInstancesMulticastConfig? MulticastConfig;
+        /// <summary>
         /// Names of switch networks included in this VRF instance
         /// </summary>
         public readonly ImmutableArray<string> Networks;
@@ -44,12 +48,15 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             ImmutableDictionary<string, Outputs.SwitchVrfInstancesExtraRoutes6>? extraRoutes6,
 
+            Outputs.SwitchVrfInstancesMulticastConfig? multicastConfig,
+
             ImmutableArray<string> networks)
         {
             EvpnAutoLoopbackSubnet = evpnAutoLoopbackSubnet;
             EvpnAutoLoopbackSubnet6 = evpnAutoLoopbackSubnet6;
             ExtraRoutes = extraRoutes;
             ExtraRoutes6 = extraRoutes6;
+            MulticastConfig = multicastConfig;
             Networks = networks;
         }
     }

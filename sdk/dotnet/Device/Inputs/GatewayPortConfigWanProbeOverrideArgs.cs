@@ -12,6 +12,24 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class GatewayPortConfigWanProbeOverrideArgs : global::Pulumi.ResourceArgs
     {
+        [Input("hostnames")]
+        private InputList<string>? _hostnames;
+
+        /// <summary>
+        /// List of hostnames used as probe destinations; applicable for both IPv4 and IPv6
+        /// </summary>
+        public InputList<string> Hostnames
+        {
+            get => _hostnames ?? (_hostnames = new InputList<string>());
+            set => _hostnames = value;
+        }
+
+        /// <summary>
+        /// HTTP probe settings; success from any ICMP or HTTP probe indicates the WAN is up
+        /// </summary>
+        [Input("http")]
+        public Input<Inputs.GatewayPortConfigWanProbeOverrideHttpArgs>? Http { get; set; }
+
         [Input("ip6s")]
         private InputList<string>? _ip6s;
 

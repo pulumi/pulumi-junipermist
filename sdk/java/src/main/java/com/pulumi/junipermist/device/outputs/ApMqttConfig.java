@@ -29,6 +29,11 @@ public final class ApMqttConfig {
      */
     private @Nullable String brokerProto;
     /**
+     * @return Optional catch-all MQTT topic; BLE advertisements matching no AssetFilter are published here
+     * 
+     */
+    private @Nullable String defaultTopic;
+    /**
      * @return Whether to enable MQTT publishing
      * 
      */
@@ -72,6 +77,13 @@ public final class ApMqttConfig {
         return Optional.ofNullable(this.brokerProto);
     }
     /**
+     * @return Optional catch-all MQTT topic; BLE advertisements matching no AssetFilter are published here
+     * 
+     */
+    public Optional<String> defaultTopic() {
+        return Optional.ofNullable(this.defaultTopic);
+    }
+    /**
      * @return Whether to enable MQTT publishing
      * 
      */
@@ -112,6 +124,7 @@ public final class ApMqttConfig {
         private @Nullable String brokerHost;
         private @Nullable Integer brokerPort;
         private @Nullable String brokerProto;
+        private @Nullable String defaultTopic;
         private @Nullable Boolean enabled;
         private @Nullable String format;
         private @Nullable String password;
@@ -122,6 +135,7 @@ public final class ApMqttConfig {
     	      this.brokerHost = defaults.brokerHost;
     	      this.brokerPort = defaults.brokerPort;
     	      this.brokerProto = defaults.brokerProto;
+    	      this.defaultTopic = defaults.defaultTopic;
     	      this.enabled = defaults.enabled;
     	      this.format = defaults.format;
     	      this.password = defaults.password;
@@ -144,6 +158,12 @@ public final class ApMqttConfig {
         public Builder brokerProto(@Nullable String brokerProto) {
 
             this.brokerProto = brokerProto;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder defaultTopic(@Nullable String defaultTopic) {
+
+            this.defaultTopic = defaultTopic;
             return this;
         }
         @CustomType.Setter
@@ -175,6 +195,7 @@ public final class ApMqttConfig {
             _resultValue.brokerHost = brokerHost;
             _resultValue.brokerPort = brokerPort;
             _resultValue.brokerProto = brokerProto;
+            _resultValue.defaultTopic = defaultTopic;
             _resultValue.enabled = enabled;
             _resultValue.format = format;
             _resultValue.password = password;

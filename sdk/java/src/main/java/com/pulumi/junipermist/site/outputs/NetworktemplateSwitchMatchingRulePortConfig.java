@@ -31,16 +31,29 @@ public final class NetworktemplateSwitchMatchingRulePortConfig {
      */
     private @Nullable Boolean aeLacpForceUp;
     /**
+     * @return If `aggregated`==`true`, sets LACP to passive mode on this AE interface; by default, active (fast) mode is used
+     * 
+     */
+    private @Nullable Boolean aeLacpPassive;
+    /**
      * @return To use slow timeout
      * 
      */
     private @Nullable Boolean aeLacpSlow;
+    /**
+     * @return Whether this port is configured as an aggregated Ethernet member
+     * 
+     */
     private @Nullable Boolean aggregated;
     /**
      * @return To generate port up/down alarm
      * 
      */
     private @Nullable Boolean critical;
+    /**
+     * @return Human-readable description for this Junos port
+     * 
+     */
     private @Nullable String description;
     /**
      * @return If `speed` and `duplex` are specified, whether to disable autonegotiation
@@ -48,7 +61,7 @@ public final class NetworktemplateSwitchMatchingRulePortConfig {
      */
     private @Nullable Boolean disableAutoneg;
     /**
-     * @return enum: `auto`, `full`, `half`
+     * @return Link duplex mode for this Junos port
      * 
      */
     private @Nullable String duplex;
@@ -57,6 +70,10 @@ public final class NetworktemplateSwitchMatchingRulePortConfig {
      * 
      */
     private @Nullable String dynamicUsage;
+    /**
+     * @return Whether this Junos port participates in an ESI-LAG
+     * 
+     */
     private @Nullable Boolean esilag;
     /**
      * @return Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
@@ -73,6 +90,10 @@ public final class NetworktemplateSwitchMatchingRulePortConfig {
      * 
      */
     private @Nullable Boolean noLocalOverwrite;
+    /**
+     * @return Whether PoE capabilities are disabled for this Junos port
+     * 
+     */
     private @Nullable Boolean poeDisabled;
     /**
      * @return Required if `usage`==`vlanTunnel`. Q-in-Q tunneling using All-in-one bundling. This also enables standard L2PT for interfaces that are not encapsulation tunnel interfaces and uses MAC rewrite operation. [View more information](https://www.juniper.net/documentation/us/en/software/junos/multicast-l2/topics/topic-map/q-in-q.html#id-understanding-qinq-tunneling-and-vlan-translation)
@@ -80,7 +101,7 @@ public final class NetworktemplateSwitchMatchingRulePortConfig {
      */
     private @Nullable String portNetwork;
     /**
-     * @return enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+     * @return Link speed for this Junos port
      * 
      */
     private @Nullable String speed;
@@ -113,12 +134,23 @@ public final class NetworktemplateSwitchMatchingRulePortConfig {
         return Optional.ofNullable(this.aeLacpForceUp);
     }
     /**
+     * @return If `aggregated`==`true`, sets LACP to passive mode on this AE interface; by default, active (fast) mode is used
+     * 
+     */
+    public Optional<Boolean> aeLacpPassive() {
+        return Optional.ofNullable(this.aeLacpPassive);
+    }
+    /**
      * @return To use slow timeout
      * 
      */
     public Optional<Boolean> aeLacpSlow() {
         return Optional.ofNullable(this.aeLacpSlow);
     }
+    /**
+     * @return Whether this port is configured as an aggregated Ethernet member
+     * 
+     */
     public Optional<Boolean> aggregated() {
         return Optional.ofNullable(this.aggregated);
     }
@@ -129,6 +161,10 @@ public final class NetworktemplateSwitchMatchingRulePortConfig {
     public Optional<Boolean> critical() {
         return Optional.ofNullable(this.critical);
     }
+    /**
+     * @return Human-readable description for this Junos port
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
@@ -140,7 +176,7 @@ public final class NetworktemplateSwitchMatchingRulePortConfig {
         return Optional.ofNullable(this.disableAutoneg);
     }
     /**
-     * @return enum: `auto`, `full`, `half`
+     * @return Link duplex mode for this Junos port
      * 
      */
     public Optional<String> duplex() {
@@ -153,6 +189,10 @@ public final class NetworktemplateSwitchMatchingRulePortConfig {
     public Optional<String> dynamicUsage() {
         return Optional.ofNullable(this.dynamicUsage);
     }
+    /**
+     * @return Whether this Junos port participates in an ESI-LAG
+     * 
+     */
     public Optional<Boolean> esilag() {
         return Optional.ofNullable(this.esilag);
     }
@@ -177,6 +217,10 @@ public final class NetworktemplateSwitchMatchingRulePortConfig {
     public Optional<Boolean> noLocalOverwrite() {
         return Optional.ofNullable(this.noLocalOverwrite);
     }
+    /**
+     * @return Whether PoE capabilities are disabled for this Junos port
+     * 
+     */
     public Optional<Boolean> poeDisabled() {
         return Optional.ofNullable(this.poeDisabled);
     }
@@ -188,7 +232,7 @@ public final class NetworktemplateSwitchMatchingRulePortConfig {
         return Optional.ofNullable(this.portNetwork);
     }
     /**
-     * @return enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+     * @return Link speed for this Junos port
      * 
      */
     public Optional<String> speed() {
@@ -214,6 +258,7 @@ public final class NetworktemplateSwitchMatchingRulePortConfig {
         private @Nullable Boolean aeDisableLacp;
         private @Nullable Integer aeIdx;
         private @Nullable Boolean aeLacpForceUp;
+        private @Nullable Boolean aeLacpPassive;
         private @Nullable Boolean aeLacpSlow;
         private @Nullable Boolean aggregated;
         private @Nullable Boolean critical;
@@ -235,6 +280,7 @@ public final class NetworktemplateSwitchMatchingRulePortConfig {
     	      this.aeDisableLacp = defaults.aeDisableLacp;
     	      this.aeIdx = defaults.aeIdx;
     	      this.aeLacpForceUp = defaults.aeLacpForceUp;
+    	      this.aeLacpPassive = defaults.aeLacpPassive;
     	      this.aeLacpSlow = defaults.aeLacpSlow;
     	      this.aggregated = defaults.aggregated;
     	      this.critical = defaults.critical;
@@ -268,6 +314,12 @@ public final class NetworktemplateSwitchMatchingRulePortConfig {
         public Builder aeLacpForceUp(@Nullable Boolean aeLacpForceUp) {
 
             this.aeLacpForceUp = aeLacpForceUp;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder aeLacpPassive(@Nullable Boolean aeLacpPassive) {
+
+            this.aeLacpPassive = aeLacpPassive;
             return this;
         }
         @CustomType.Setter
@@ -370,6 +422,7 @@ public final class NetworktemplateSwitchMatchingRulePortConfig {
             _resultValue.aeDisableLacp = aeDisableLacp;
             _resultValue.aeIdx = aeIdx;
             _resultValue.aeLacpForceUp = aeLacpForceUp;
+            _resultValue.aeLacpPassive = aeLacpPassive;
             _resultValue.aeLacpSlow = aeLacpSlow;
             _resultValue.aggregated = aggregated;
             _resultValue.critical = critical;

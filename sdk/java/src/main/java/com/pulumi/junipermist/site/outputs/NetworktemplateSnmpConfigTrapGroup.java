@@ -12,35 +12,51 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NetworktemplateSnmpConfigTrapGroup {
+    /**
+     * @return Trap categories included in this SNMP trap group
+     * 
+     */
     private @Nullable List<String> categories;
     /**
-     * @return Categories list can refer to https://www.juniper.net/documentation/software/topics/task/configuration/snmp_trap-groups-configuring-junos-nm.html
+     * @return Trap group name for this SNMP trap group
      * 
      */
     private @Nullable String groupName;
+    /**
+     * @return Trap target addresses for this SNMP trap group
+     * 
+     */
     private @Nullable List<String> targets;
     /**
-     * @return enum: `all`, `v1`, `v2`
+     * @return SNMP trap protocol version used by this group
      * 
      */
     private @Nullable String version;
 
     private NetworktemplateSnmpConfigTrapGroup() {}
+    /**
+     * @return Trap categories included in this SNMP trap group
+     * 
+     */
     public List<String> categories() {
         return this.categories == null ? List.of() : this.categories;
     }
     /**
-     * @return Categories list can refer to https://www.juniper.net/documentation/software/topics/task/configuration/snmp_trap-groups-configuring-junos-nm.html
+     * @return Trap group name for this SNMP trap group
      * 
      */
     public Optional<String> groupName() {
         return Optional.ofNullable(this.groupName);
     }
+    /**
+     * @return Trap target addresses for this SNMP trap group
+     * 
+     */
     public List<String> targets() {
         return this.targets == null ? List.of() : this.targets;
     }
     /**
-     * @return enum: `all`, `v1`, `v2`
+     * @return SNMP trap protocol version used by this group
      * 
      */
     public Optional<String> version() {

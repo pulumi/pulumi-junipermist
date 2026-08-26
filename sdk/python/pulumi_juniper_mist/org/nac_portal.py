@@ -27,6 +27,7 @@ class NacPortalArgs:
                  additional_nac_server_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  cert_expire_time: pulumi.Input[Optional[_builtins.int]] = None,
                  eap_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_location: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_telemetry: pulumi.Input[Optional[_builtins.bool]] = None,
                  expiry_notification_time: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -45,6 +46,7 @@ class NacPortalArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_nac_server_names: Optional list of additional NAC server names
         :param pulumi.Input[_builtins.int] cert_expire_time: Validity duration for portal-issued client certificates, in days
         :param pulumi.Input[_builtins.str] eap_type: EAP mode used when onboarding wireless clients through the NAC portal
+        :param pulumi.Input[_builtins.bool] enable_location: Whether location data collection is enabled for devices onboarding through this NAC portal
         :param pulumi.Input[_builtins.bool] enable_telemetry: Model, version, fingering, events (connecting, disconnect, roaming), which ap
         :param pulumi.Input[_builtins.int] expiry_notification_time: Number of days before certificate expiration to start sending reminder notifications
         :param pulumi.Input[_builtins.str] name: Human-readable name of the NAC portal
@@ -66,6 +68,8 @@ class NacPortalArgs:
             pulumi.set(__self__, "cert_expire_time", cert_expire_time)
         if eap_type is not None:
             pulumi.set(__self__, "eap_type", eap_type)
+        if enable_location is not None:
+            pulumi.set(__self__, "enable_location", enable_location)
         if enable_telemetry is not None:
             pulumi.set(__self__, "enable_telemetry", enable_telemetry)
         if expiry_notification_time is not None:
@@ -156,6 +160,18 @@ class NacPortalArgs:
     @eap_type.setter
     def eap_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eap_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableLocation")
+    def enable_location(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether location data collection is enabled for devices onboarding through this NAC portal
+        """
+        return pulumi.get(self, "enable_location")
+
+    @enable_location.setter
+    def enable_location(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_location", value)
 
     @_builtins.property
     @pulumi.getter(name="enableTelemetry")
@@ -274,6 +290,7 @@ class _NacPortalState:
                  additional_nac_server_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  cert_expire_time: pulumi.Input[Optional[_builtins.int]] = None,
                  eap_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_location: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_telemetry: pulumi.Input[Optional[_builtins.bool]] = None,
                  expiry_notification_time: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -292,6 +309,7 @@ class _NacPortalState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_nac_server_names: Optional list of additional NAC server names
         :param pulumi.Input[_builtins.int] cert_expire_time: Validity duration for portal-issued client certificates, in days
         :param pulumi.Input[_builtins.str] eap_type: EAP mode used when onboarding wireless clients through the NAC portal
+        :param pulumi.Input[_builtins.bool] enable_location: Whether location data collection is enabled for devices onboarding through this NAC portal
         :param pulumi.Input[_builtins.bool] enable_telemetry: Model, version, fingering, events (connecting, disconnect, roaming), which ap
         :param pulumi.Input[_builtins.int] expiry_notification_time: Number of days before certificate expiration to start sending reminder notifications
         :param pulumi.Input[_builtins.str] name: Human-readable name of the NAC portal
@@ -313,6 +331,8 @@ class _NacPortalState:
             pulumi.set(__self__, "cert_expire_time", cert_expire_time)
         if eap_type is not None:
             pulumi.set(__self__, "eap_type", eap_type)
+        if enable_location is not None:
+            pulumi.set(__self__, "enable_location", enable_location)
         if enable_telemetry is not None:
             pulumi.set(__self__, "enable_telemetry", enable_telemetry)
         if expiry_notification_time is not None:
@@ -393,6 +413,18 @@ class _NacPortalState:
     @eap_type.setter
     def eap_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eap_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableLocation")
+    def enable_location(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether location data collection is enabled for devices onboarding through this NAC portal
+        """
+        return pulumi.get(self, "enable_location")
+
+    @enable_location.setter
+    def enable_location(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_location", value)
 
     @_builtins.property
     @pulumi.getter(name="enableTelemetry")
@@ -526,6 +558,7 @@ class NacPortal(pulumi.CustomResource):
                  additional_nac_server_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  cert_expire_time: pulumi.Input[Optional[_builtins.int]] = None,
                  eap_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_location: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_telemetry: pulumi.Input[Optional[_builtins.bool]] = None,
                  expiry_notification_time: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -615,6 +648,7 @@ class NacPortal(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_nac_server_names: Optional list of additional NAC server names
         :param pulumi.Input[_builtins.int] cert_expire_time: Validity duration for portal-issued client certificates, in days
         :param pulumi.Input[_builtins.str] eap_type: EAP mode used when onboarding wireless clients through the NAC portal
+        :param pulumi.Input[_builtins.bool] enable_location: Whether location data collection is enabled for devices onboarding through this NAC portal
         :param pulumi.Input[_builtins.bool] enable_telemetry: Model, version, fingering, events (connecting, disconnect, roaming), which ap
         :param pulumi.Input[_builtins.int] expiry_notification_time: Number of days before certificate expiration to start sending reminder notifications
         :param pulumi.Input[_builtins.str] name: Human-readable name of the NAC portal
@@ -723,6 +757,7 @@ class NacPortal(pulumi.CustomResource):
                  additional_nac_server_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  cert_expire_time: pulumi.Input[Optional[_builtins.int]] = None,
                  eap_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_location: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_telemetry: pulumi.Input[Optional[_builtins.bool]] = None,
                  expiry_notification_time: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -747,6 +782,7 @@ class NacPortal(pulumi.CustomResource):
             __props__.__dict__["additional_nac_server_names"] = additional_nac_server_names
             __props__.__dict__["cert_expire_time"] = cert_expire_time
             __props__.__dict__["eap_type"] = eap_type
+            __props__.__dict__["enable_location"] = enable_location
             __props__.__dict__["enable_telemetry"] = enable_telemetry
             __props__.__dict__["expiry_notification_time"] = expiry_notification_time
             __props__.__dict__["name"] = name
@@ -774,6 +810,7 @@ class NacPortal(pulumi.CustomResource):
             additional_nac_server_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             cert_expire_time: pulumi.Input[Optional[_builtins.int]] = None,
             eap_type: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_location: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_telemetry: pulumi.Input[Optional[_builtins.bool]] = None,
             expiry_notification_time: pulumi.Input[Optional[_builtins.int]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -796,6 +833,7 @@ class NacPortal(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_nac_server_names: Optional list of additional NAC server names
         :param pulumi.Input[_builtins.int] cert_expire_time: Validity duration for portal-issued client certificates, in days
         :param pulumi.Input[_builtins.str] eap_type: EAP mode used when onboarding wireless clients through the NAC portal
+        :param pulumi.Input[_builtins.bool] enable_location: Whether location data collection is enabled for devices onboarding through this NAC portal
         :param pulumi.Input[_builtins.bool] enable_telemetry: Model, version, fingering, events (connecting, disconnect, roaming), which ap
         :param pulumi.Input[_builtins.int] expiry_notification_time: Number of days before certificate expiration to start sending reminder notifications
         :param pulumi.Input[_builtins.str] name: Human-readable name of the NAC portal
@@ -816,6 +854,7 @@ class NacPortal(pulumi.CustomResource):
         __props__.__dict__["additional_nac_server_names"] = additional_nac_server_names
         __props__.__dict__["cert_expire_time"] = cert_expire_time
         __props__.__dict__["eap_type"] = eap_type
+        __props__.__dict__["enable_location"] = enable_location
         __props__.__dict__["enable_telemetry"] = enable_telemetry
         __props__.__dict__["expiry_notification_time"] = expiry_notification_time
         __props__.__dict__["name"] = name
@@ -867,6 +906,14 @@ class NacPortal(pulumi.CustomResource):
         EAP mode used when onboarding wireless clients through the NAC portal
         """
         return pulumi.get(self, "eap_type")
+
+    @_builtins.property
+    @pulumi.getter(name="enableLocation")
+    def enable_location(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether location data collection is enabled for devices onboarding through this NAC portal
+        """
+        return pulumi.get(self, "enable_location")
 
     @_builtins.property
     @pulumi.getter(name="enableTelemetry")

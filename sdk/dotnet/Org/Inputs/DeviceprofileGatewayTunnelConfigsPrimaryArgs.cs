@@ -24,6 +24,18 @@ namespace Pulumi.JuniperMist.Org.Inputs
             set => _hosts = value;
         }
 
+        [Input("internalIp6s")]
+        private InputList<string>? _internalIp6s;
+
+        /// <summary>
+        /// IPv6 addresses configured on this tunnel node
+        /// </summary>
+        public InputList<string> InternalIp6s
+        {
+            get => _internalIp6s ?? (_internalIp6s = new InputList<string>());
+            set => _internalIp6s = value;
+        }
+
         [Input("internalIps")]
         private InputList<string>? _internalIps;
 
@@ -34,6 +46,36 @@ namespace Pulumi.JuniperMist.Org.Inputs
         {
             get => _internalIps ?? (_internalIps = new InputList<string>());
             set => _internalIps = value;
+        }
+
+        [Input("probeHostnames")]
+        private InputList<string>? _probeHostnames;
+
+        /// <summary>
+        /// Hostnames used as ICMP probe destinations for this tunnel node; applicable for both IPv4 and IPv6
+        /// </summary>
+        public InputList<string> ProbeHostnames
+        {
+            get => _probeHostnames ?? (_probeHostnames = new InputList<string>());
+            set => _probeHostnames = value;
+        }
+
+        /// <summary>
+        /// HTTP probe settings for this tunnel node; success from any ICMP or HTTP probe indicates the tunnel is up
+        /// </summary>
+        [Input("probeHttp")]
+        public Input<Inputs.DeviceprofileGatewayTunnelConfigsPrimaryProbeHttpArgs>? ProbeHttp { get; set; }
+
+        [Input("probeIp6s")]
+        private InputList<string>? _probeIp6s;
+
+        /// <summary>
+        /// IPv6 ICMP probe addresses used to monitor this tunnel node
+        /// </summary>
+        public InputList<string> ProbeIp6s
+        {
+            get => _probeIp6s ?? (_probeIp6s = new InputList<string>());
+            set => _probeIp6s = value;
         }
 
         [Input("probeIps")]

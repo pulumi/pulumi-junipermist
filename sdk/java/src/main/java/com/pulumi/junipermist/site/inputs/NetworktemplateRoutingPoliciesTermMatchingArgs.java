@@ -31,22 +31,30 @@ public final class NetworktemplateRoutingPoliciesTermMatchingArgs extends com.pu
         return Optional.ofNullable(this.asPaths);
     }
 
+    /**
+     * BGP communities that routes must match
+     * 
+     */
     @Import(name="communities")
     private @Nullable Output<List<String>> communities;
 
+    /**
+     * @return BGP communities that routes must match
+     * 
+     */
     public Optional<Output<List<String>>> communities() {
         return Optional.ofNullable(this.communities);
     }
 
     /**
-     * zero or more criteria/filter can be specified to match the term, all criteria have to be met
+     * Route prefixes that routes must match
      * 
      */
     @Import(name="prefixes")
     private @Nullable Output<List<String>> prefixes;
 
     /**
-     * @return zero or more criteria/filter can be specified to match the term, all criteria have to be met
+     * @return Route prefixes that routes must match
      * 
      */
     public Optional<Output<List<String>>> prefixes() {
@@ -126,21 +134,39 @@ public final class NetworktemplateRoutingPoliciesTermMatchingArgs extends com.pu
             return asPaths(List.of(asPaths));
         }
 
+        /**
+         * @param communities BGP communities that routes must match
+         * 
+         * @return builder
+         * 
+         */
         public Builder communities(@Nullable Output<List<String>> communities) {
             $.communities = communities;
             return this;
         }
 
+        /**
+         * @param communities BGP communities that routes must match
+         * 
+         * @return builder
+         * 
+         */
         public Builder communities(List<String> communities) {
             return communities(Output.of(communities));
         }
 
+        /**
+         * @param communities BGP communities that routes must match
+         * 
+         * @return builder
+         * 
+         */
         public Builder communities(String... communities) {
             return communities(List.of(communities));
         }
 
         /**
-         * @param prefixes zero or more criteria/filter can be specified to match the term, all criteria have to be met
+         * @param prefixes Route prefixes that routes must match
          * 
          * @return builder
          * 
@@ -151,7 +177,7 @@ public final class NetworktemplateRoutingPoliciesTermMatchingArgs extends com.pu
         }
 
         /**
-         * @param prefixes zero or more criteria/filter can be specified to match the term, all criteria have to be met
+         * @param prefixes Route prefixes that routes must match
          * 
          * @return builder
          * 
@@ -161,7 +187,7 @@ public final class NetworktemplateRoutingPoliciesTermMatchingArgs extends com.pu
         }
 
         /**
-         * @param prefixes zero or more criteria/filter can be specified to match the term, all criteria have to be met
+         * @param prefixes Route prefixes that routes must match
          * 
          * @return builder
          * 

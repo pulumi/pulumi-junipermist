@@ -17,6 +17,7 @@ import com.pulumi.junipermist.org.outputs.NetworktemplateDhcpSnooping;
 import com.pulumi.junipermist.org.outputs.NetworktemplateExtraRoutes6;
 import com.pulumi.junipermist.org.outputs.NetworktemplateExtraRoutes;
 import com.pulumi.junipermist.org.outputs.NetworktemplateMistNac;
+import com.pulumi.junipermist.org.outputs.NetworktemplateMulticastConfig;
 import com.pulumi.junipermist.org.outputs.NetworktemplateNetworks;
 import com.pulumi.junipermist.org.outputs.NetworktemplateOspfAreas;
 import com.pulumi.junipermist.org.outputs.NetworktemplatePortMirroring;
@@ -282,6 +283,20 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<NetworktemplateMistNac>> mistNac() {
         return Codegen.optional(this.mistNac);
+    }
+    /**
+     * Multicast settings for networks in the master VRF (not assigned to any vrf_instances); PIM is automatically enabled when any master-VRF network has `multicast.enabled`==`true`
+     * 
+     */
+    @Export(name="multicastConfig", refs={NetworktemplateMulticastConfig.class}, tree="[0]")
+    private Output</* @Nullable */ NetworktemplateMulticastConfig> multicastConfig;
+
+    /**
+     * @return Multicast settings for networks in the master VRF (not assigned to any vrf_instances); PIM is automatically enabled when any master-VRF network has `multicast.enabled`==`true`
+     * 
+     */
+    public Output<Optional<NetworktemplateMulticastConfig>> multicastConfig() {
+        return Codegen.optional(this.multicastConfig);
     }
     /**
      * Display name of the network template

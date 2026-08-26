@@ -12,26 +12,38 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class NetworktemplateSnmpConfigV3ConfigTargetAddressArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// IP address or hostname of the SNMP target
+        /// </summary>
         [Input("address", required: true)]
         public Input<string> Address { get; set; } = null!;
 
+        /// <summary>
+        /// Mask applied to the SNMP target address
+        /// </summary>
         [Input("addressMask", required: true)]
         public Input<string> AddressMask { get; set; } = null!;
 
+        /// <summary>
+        /// UDP port used by the SNMP target
+        /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
 
         /// <summary>
-        /// Refer to notify tag, can be multiple with blank
+        /// Set of notification tags for this target address; use spaces between multiple tags
         /// </summary>
         [Input("tagList")]
         public Input<string>? TagList { get; set; }
 
+        /// <summary>
+        /// Name of the SNMP target address entry
+        /// </summary>
         [Input("targetAddressName", required: true)]
         public Input<string> TargetAddressName { get; set; } = null!;
 
         /// <summary>
-        /// Refer to notify target parameters name
+        /// Target parameter profile referenced by this target address
         /// </summary>
         [Input("targetParameters")]
         public Input<string>? TargetParameters { get; set; }

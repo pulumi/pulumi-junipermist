@@ -126,6 +126,10 @@ export class NacPortal extends pulumi.CustomResource {
      */
     declare public readonly eapType: pulumi.Output<string>;
     /**
+     * Whether location data collection is enabled for devices onboarding through this NAC portal
+     */
+    declare public readonly enableLocation: pulumi.Output<boolean | undefined>;
+    /**
      * Model, version, fingering, events (connecting, disconnect, roaming), which ap
      */
     declare public readonly enableTelemetry: pulumi.Output<boolean | undefined>;
@@ -184,6 +188,7 @@ export class NacPortal extends pulumi.CustomResource {
             resourceInputs["additionalNacServerNames"] = state?.additionalNacServerNames;
             resourceInputs["certExpireTime"] = state?.certExpireTime;
             resourceInputs["eapType"] = state?.eapType;
+            resourceInputs["enableLocation"] = state?.enableLocation;
             resourceInputs["enableTelemetry"] = state?.enableTelemetry;
             resourceInputs["expiryNotificationTime"] = state?.expiryNotificationTime;
             resourceInputs["name"] = state?.name;
@@ -204,6 +209,7 @@ export class NacPortal extends pulumi.CustomResource {
             resourceInputs["additionalNacServerNames"] = args?.additionalNacServerNames;
             resourceInputs["certExpireTime"] = args?.certExpireTime;
             resourceInputs["eapType"] = args?.eapType;
+            resourceInputs["enableLocation"] = args?.enableLocation;
             resourceInputs["enableTelemetry"] = args?.enableTelemetry;
             resourceInputs["expiryNotificationTime"] = args?.expiryNotificationTime;
             resourceInputs["name"] = args?.name;
@@ -244,6 +250,10 @@ export interface NacPortalState {
      * EAP mode used when onboarding wireless clients through the NAC portal
      */
     eapType?: pulumi.Input<string | undefined>;
+    /**
+     * Whether location data collection is enabled for devices onboarding through this NAC portal
+     */
+    enableLocation?: pulumi.Input<boolean | undefined>;
     /**
      * Model, version, fingering, events (connecting, disconnect, roaming), which ap
      */
@@ -310,6 +320,10 @@ export interface NacPortalArgs {
      * EAP mode used when onboarding wireless clients through the NAC portal
      */
     eapType?: pulumi.Input<string | undefined>;
+    /**
+     * Whether location data collection is enabled for devices onboarding through this NAC portal
+     */
+    enableLocation?: pulumi.Input<boolean | undefined>;
     /**
      * Model, version, fingering, events (connecting, disconnect, roaming), which ap
      */

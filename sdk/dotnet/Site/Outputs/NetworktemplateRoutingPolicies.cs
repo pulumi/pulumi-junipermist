@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class NetworktemplateRoutingPolicies
     {
         /// <summary>
-        /// at least criteria/filter must be specified to match the term, all criteria have to be met
+        /// Ordered terms evaluated by this switch routing policy
         /// </summary>
         public readonly ImmutableArray<Outputs.NetworktemplateRoutingPoliciesTerm> Terms;
 

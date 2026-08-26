@@ -5,6 +5,7 @@ package com.pulumi.junipermist.site.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.junipermist.site.outputs.NetworktemplateNetworksMulticast;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -28,7 +29,16 @@ public final class NetworktemplateNetworks {
      * 
      */
     private @Nullable Boolean isolation;
+    /**
+     * @return Required when `isolation`==`true`. Unique VLAN ID used for client isolation
+     * 
+     */
     private @Nullable String isolationVlanId;
+    /**
+     * @return Multicast (IGMP snooping) settings for this VLAN
+     * 
+     */
+    private @Nullable NetworktemplateNetworksMulticast multicast;
     /**
      * @return Optional for pure switching, required when L3 / routing features are used
      * 
@@ -39,6 +49,10 @@ public final class NetworktemplateNetworks {
      * 
      */
     private @Nullable String subnet6;
+    /**
+     * @return VLAN identifier for this switch network
+     * 
+     */
     private String vlanId;
 
     private NetworktemplateNetworks() {}
@@ -63,8 +77,19 @@ public final class NetworktemplateNetworks {
     public Optional<Boolean> isolation() {
         return Optional.ofNullable(this.isolation);
     }
+    /**
+     * @return Required when `isolation`==`true`. Unique VLAN ID used for client isolation
+     * 
+     */
     public Optional<String> isolationVlanId() {
         return Optional.ofNullable(this.isolationVlanId);
+    }
+    /**
+     * @return Multicast (IGMP snooping) settings for this VLAN
+     * 
+     */
+    public Optional<NetworktemplateNetworksMulticast> multicast() {
+        return Optional.ofNullable(this.multicast);
     }
     /**
      * @return Optional for pure switching, required when L3 / routing features are used
@@ -80,6 +105,10 @@ public final class NetworktemplateNetworks {
     public Optional<String> subnet6() {
         return Optional.ofNullable(this.subnet6);
     }
+    /**
+     * @return VLAN identifier for this switch network
+     * 
+     */
     public String vlanId() {
         return this.vlanId;
     }
@@ -97,6 +126,7 @@ public final class NetworktemplateNetworks {
         private @Nullable String gateway6;
         private @Nullable Boolean isolation;
         private @Nullable String isolationVlanId;
+        private @Nullable NetworktemplateNetworksMulticast multicast;
         private @Nullable String subnet;
         private @Nullable String subnet6;
         private String vlanId;
@@ -107,6 +137,7 @@ public final class NetworktemplateNetworks {
     	      this.gateway6 = defaults.gateway6;
     	      this.isolation = defaults.isolation;
     	      this.isolationVlanId = defaults.isolationVlanId;
+    	      this.multicast = defaults.multicast;
     	      this.subnet = defaults.subnet;
     	      this.subnet6 = defaults.subnet6;
     	      this.vlanId = defaults.vlanId;
@@ -137,6 +168,12 @@ public final class NetworktemplateNetworks {
             return this;
         }
         @CustomType.Setter
+        public Builder multicast(@Nullable NetworktemplateNetworksMulticast multicast) {
+
+            this.multicast = multicast;
+            return this;
+        }
+        @CustomType.Setter
         public Builder subnet(@Nullable String subnet) {
 
             this.subnet = subnet;
@@ -162,6 +199,7 @@ public final class NetworktemplateNetworks {
             _resultValue.gateway6 = gateway6;
             _resultValue.isolation = isolation;
             _resultValue.isolationVlanId = isolationVlanId;
+            _resultValue.multicast = multicast;
             _resultValue.subnet = subnet;
             _resultValue.subnet6 = subnet6;
             _resultValue.vlanId = vlanId;

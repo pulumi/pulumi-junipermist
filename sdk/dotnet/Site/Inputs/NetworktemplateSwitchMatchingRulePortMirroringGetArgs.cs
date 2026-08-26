@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputList<string>? _inputNetworksIngresses;
 
         /// <summary>
-        /// At least one of the `InputPortIdsIngress`, `InputPortIdsEgress` or `InputNetworksIngress ` should be specified
+        /// At least one mirror input source should be specified. Networks whose ingress traffic is mirrored
         /// </summary>
         public InputList<string> InputNetworksIngresses
         {
@@ -28,7 +28,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputList<string>? _inputPortIdsEgresses;
 
         /// <summary>
-        /// At least one of the `InputPortIdsIngress`, `InputPortIdsEgress` or `InputNetworksIngress ` should be specified
+        /// At least one mirror input source should be specified. Switch ports whose egress traffic is mirrored
         /// </summary>
         public InputList<string> InputPortIdsEgresses
         {
@@ -40,7 +40,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputList<string>? _inputPortIdsIngresses;
 
         /// <summary>
-        /// At least one of the `InputPortIdsIngress`, `InputPortIdsEgress` or `InputNetworksIngress ` should be specified
+        /// At least one mirror input source should be specified. Switch ports whose ingress traffic is mirrored
         /// </summary>
         public InputList<string> InputPortIdsIngresses
         {

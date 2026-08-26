@@ -94,6 +94,8 @@ type Psk struct {
 	Ssid pulumi.StringOutput `pulumi:"ssid"`
 	// enum: `multi`, `single`
 	Usage pulumi.StringOutput `pulumi:"usage"`
+	// Usermac labels allowed when `usage`==`usermacLabels`; this list is capped at 100 entries
+	UsermacLabels pulumi.StringArrayOutput `pulumi:"usermacLabels"`
 	// VLAN ID returned for clients using this PSK
 	VlanId pulumi.StringPtrOutput `pulumi:"vlanId"`
 	// VLAN name to be assigned. Optional, `vlanId` takes precedence if both are provided
@@ -180,6 +182,8 @@ type pskState struct {
 	Ssid *string `pulumi:"ssid"`
 	// enum: `multi`, `single`
 	Usage *string `pulumi:"usage"`
+	// Usermac labels allowed when `usage`==`usermacLabels`; this list is capped at 100 entries
+	UsermacLabels []string `pulumi:"usermacLabels"`
 	// VLAN ID returned for clients using this PSK
 	VlanId *string `pulumi:"vlanId"`
 	// VLAN name to be assigned. Optional, `vlanId` takes precedence if both are provided
@@ -217,6 +221,8 @@ type PskState struct {
 	Ssid pulumi.StringPtrInput
 	// enum: `multi`, `single`
 	Usage pulumi.StringPtrInput
+	// Usermac labels allowed when `usage`==`usermacLabels`; this list is capped at 100 entries
+	UsermacLabels pulumi.StringArrayInput
 	// VLAN ID returned for clients using this PSK
 	VlanId pulumi.StringPtrInput
 	// VLAN name to be assigned. Optional, `vlanId` takes precedence if both are provided
@@ -256,6 +262,8 @@ type pskArgs struct {
 	Ssid string `pulumi:"ssid"`
 	// enum: `multi`, `single`
 	Usage *string `pulumi:"usage"`
+	// Usermac labels allowed when `usage`==`usermacLabels`; this list is capped at 100 entries
+	UsermacLabels []string `pulumi:"usermacLabels"`
 	// VLAN ID returned for clients using this PSK
 	VlanId *string `pulumi:"vlanId"`
 	// VLAN name to be assigned. Optional, `vlanId` takes precedence if both are provided
@@ -292,6 +300,8 @@ type PskArgs struct {
 	Ssid pulumi.StringInput
 	// enum: `multi`, `single`
 	Usage pulumi.StringPtrInput
+	// Usermac labels allowed when `usage`==`usermacLabels`; this list is capped at 100 entries
+	UsermacLabels pulumi.StringArrayInput
 	// VLAN ID returned for clients using this PSK
 	VlanId pulumi.StringPtrInput
 	// VLAN name to be assigned. Optional, `vlanId` takes precedence if both are provided
@@ -458,6 +468,11 @@ func (o PskOutput) Ssid() pulumi.StringOutput {
 // enum: `multi`, `single`
 func (o PskOutput) Usage() pulumi.StringOutput {
 	return o.ApplyT(func(v *Psk) pulumi.StringOutput { return v.Usage }).(pulumi.StringOutput)
+}
+
+// Usermac labels allowed when `usage`==`usermacLabels`; this list is capped at 100 entries
+func (o PskOutput) UsermacLabels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Psk) pulumi.StringArrayOutput { return v.UsermacLabels }).(pulumi.StringArrayOutput)
 }
 
 // VLAN ID returned for clients using this PSK

@@ -146,6 +146,12 @@ namespace Pulumi.JuniperMist.Site
         public Output<string> Usage { get; private set; } = null!;
 
         /// <summary>
+        /// Usermac labels allowed when `Usage`==`UsermacLabels`; this list is capped at 100 entries
+        /// </summary>
+        [Output("usermacLabels")]
+        public Output<ImmutableArray<string>> UsermacLabels { get; private set; } = null!;
+
+        /// <summary>
         /// VLAN ID returned for clients using this PSK
         /// </summary>
         [Output("vlanId")]
@@ -313,6 +319,18 @@ namespace Pulumi.JuniperMist.Site
         [Input("usage")]
         public Input<string>? Usage { get; set; }
 
+        [Input("usermacLabels")]
+        private InputList<string>? _usermacLabels;
+
+        /// <summary>
+        /// Usermac labels allowed when `Usage`==`UsermacLabels`; this list is capped at 100 entries
+        /// </summary>
+        public InputList<string> UsermacLabels
+        {
+            get => _usermacLabels ?? (_usermacLabels = new InputList<string>());
+            set => _usermacLabels = value;
+        }
+
         /// <summary>
         /// VLAN ID returned for clients using this PSK
         /// </summary>
@@ -442,6 +460,18 @@ namespace Pulumi.JuniperMist.Site
         /// </summary>
         [Input("usage")]
         public Input<string>? Usage { get; set; }
+
+        [Input("usermacLabels")]
+        private InputList<string>? _usermacLabels;
+
+        /// <summary>
+        /// Usermac labels allowed when `Usage`==`UsermacLabels`; this list is capped at 100 entries
+        /// </summary>
+        public InputList<string> UsermacLabels
+        {
+            get => _usermacLabels ?? (_usermacLabels = new InputList<string>());
+            set => _usermacLabels = value;
+        }
 
         /// <summary>
         /// VLAN ID returned for clients using this PSK

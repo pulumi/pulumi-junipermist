@@ -111,14 +111,14 @@ type Setting struct {
 	ApiPolicy SettingApiPolicyPtrOutput `pulumi:"apiPolicy"`
 	// AP automatic firmware upgrade policy for the organization
 	AutoUpgrade SettingAutoUpgradePtrOutput `pulumi:"autoUpgrade"`
-	// CA certificates used by organization-level RADIUS and RADSec settings
+	// Legacy CA certificate list used to verify client certificates. If `cacertsConfigs` is provided and non-empty, this field is ignored.
 	Cacerts pulumi.StringArrayOutput `pulumi:"cacerts"`
+	// Preferred per-issuer CA certificate configuration with optional OCSP and CRL settings. When provided and non-empty, `cacerts` is ignored.
+	CacertsConfigs SettingCacertsConfigArrayOutput `pulumi:"cacertsConfigs"`
 	// Integration settings for Celona
 	Celona SettingCelonaPtrOutput `pulumi:"celona"`
 	// Packet capture integration settings for CloudShark
 	Cloudshark SettingCloudsharkPtrOutput `pulumi:"cloudshark"`
-	// Integration settings for Cradlepoint devices
-	Cradlepoint SettingCradlepointOutput `pulumi:"cradlepoint"`
 	// Common device certificate used by organization settings
 	DeviceCert SettingDeviceCertPtrOutput `pulumi:"deviceCert"`
 	// Enable threshold-based device down delivery via
@@ -228,14 +228,14 @@ type settingState struct {
 	ApiPolicy *SettingApiPolicy `pulumi:"apiPolicy"`
 	// AP automatic firmware upgrade policy for the organization
 	AutoUpgrade *SettingAutoUpgrade `pulumi:"autoUpgrade"`
-	// CA certificates used by organization-level RADIUS and RADSec settings
+	// Legacy CA certificate list used to verify client certificates. If `cacertsConfigs` is provided and non-empty, this field is ignored.
 	Cacerts []string `pulumi:"cacerts"`
+	// Preferred per-issuer CA certificate configuration with optional OCSP and CRL settings. When provided and non-empty, `cacerts` is ignored.
+	CacertsConfigs []SettingCacertsConfig `pulumi:"cacertsConfigs"`
 	// Integration settings for Celona
 	Celona *SettingCelona `pulumi:"celona"`
 	// Packet capture integration settings for CloudShark
 	Cloudshark *SettingCloudshark `pulumi:"cloudshark"`
-	// Integration settings for Cradlepoint devices
-	Cradlepoint *SettingCradlepoint `pulumi:"cradlepoint"`
 	// Common device certificate used by organization settings
 	DeviceCert *SettingDeviceCert `pulumi:"deviceCert"`
 	// Enable threshold-based device down delivery via
@@ -313,14 +313,14 @@ type SettingState struct {
 	ApiPolicy SettingApiPolicyPtrInput
 	// AP automatic firmware upgrade policy for the organization
 	AutoUpgrade SettingAutoUpgradePtrInput
-	// CA certificates used by organization-level RADIUS and RADSec settings
+	// Legacy CA certificate list used to verify client certificates. If `cacertsConfigs` is provided and non-empty, this field is ignored.
 	Cacerts pulumi.StringArrayInput
+	// Preferred per-issuer CA certificate configuration with optional OCSP and CRL settings. When provided and non-empty, `cacerts` is ignored.
+	CacertsConfigs SettingCacertsConfigArrayInput
 	// Integration settings for Celona
 	Celona SettingCelonaPtrInput
 	// Packet capture integration settings for CloudShark
 	Cloudshark SettingCloudsharkPtrInput
-	// Integration settings for Cradlepoint devices
-	Cradlepoint SettingCradlepointPtrInput
 	// Common device certificate used by organization settings
 	DeviceCert SettingDeviceCertPtrInput
 	// Enable threshold-based device down delivery via
@@ -400,8 +400,10 @@ type settingArgs struct {
 	ApiPolicy *SettingApiPolicy `pulumi:"apiPolicy"`
 	// AP automatic firmware upgrade policy for the organization
 	AutoUpgrade *SettingAutoUpgrade `pulumi:"autoUpgrade"`
-	// CA certificates used by organization-level RADIUS and RADSec settings
+	// Legacy CA certificate list used to verify client certificates. If `cacertsConfigs` is provided and non-empty, this field is ignored.
 	Cacerts []string `pulumi:"cacerts"`
+	// Preferred per-issuer CA certificate configuration with optional OCSP and CRL settings. When provided and non-empty, `cacerts` is ignored.
+	CacertsConfigs []SettingCacertsConfig `pulumi:"cacertsConfigs"`
 	// Integration settings for Celona
 	Celona *SettingCelona `pulumi:"celona"`
 	// Packet capture integration settings for CloudShark
@@ -478,8 +480,10 @@ type SettingArgs struct {
 	ApiPolicy SettingApiPolicyPtrInput
 	// AP automatic firmware upgrade policy for the organization
 	AutoUpgrade SettingAutoUpgradePtrInput
-	// CA certificates used by organization-level RADIUS and RADSec settings
+	// Legacy CA certificate list used to verify client certificates. If `cacertsConfigs` is provided and non-empty, this field is ignored.
 	Cacerts pulumi.StringArrayInput
+	// Preferred per-issuer CA certificate configuration with optional OCSP and CRL settings. When provided and non-empty, `cacerts` is ignored.
+	CacertsConfigs SettingCacertsConfigArrayInput
 	// Integration settings for Celona
 	Celona SettingCelonaPtrInput
 	// Packet capture integration settings for CloudShark
@@ -655,9 +659,14 @@ func (o SettingOutput) AutoUpgrade() SettingAutoUpgradePtrOutput {
 	return o.ApplyT(func(v *Setting) SettingAutoUpgradePtrOutput { return v.AutoUpgrade }).(SettingAutoUpgradePtrOutput)
 }
 
-// CA certificates used by organization-level RADIUS and RADSec settings
+// Legacy CA certificate list used to verify client certificates. If `cacertsConfigs` is provided and non-empty, this field is ignored.
 func (o SettingOutput) Cacerts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Setting) pulumi.StringArrayOutput { return v.Cacerts }).(pulumi.StringArrayOutput)
+}
+
+// Preferred per-issuer CA certificate configuration with optional OCSP and CRL settings. When provided and non-empty, `cacerts` is ignored.
+func (o SettingOutput) CacertsConfigs() SettingCacertsConfigArrayOutput {
+	return o.ApplyT(func(v *Setting) SettingCacertsConfigArrayOutput { return v.CacertsConfigs }).(SettingCacertsConfigArrayOutput)
 }
 
 // Integration settings for Celona
@@ -668,11 +677,6 @@ func (o SettingOutput) Celona() SettingCelonaPtrOutput {
 // Packet capture integration settings for CloudShark
 func (o SettingOutput) Cloudshark() SettingCloudsharkPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingCloudsharkPtrOutput { return v.Cloudshark }).(SettingCloudsharkPtrOutput)
-}
-
-// Integration settings for Cradlepoint devices
-func (o SettingOutput) Cradlepoint() SettingCradlepointOutput {
-	return o.ApplyT(func(v *Setting) SettingCradlepointOutput { return v.Cradlepoint }).(SettingCradlepointOutput)
 }
 
 // Common device certificate used by organization settings

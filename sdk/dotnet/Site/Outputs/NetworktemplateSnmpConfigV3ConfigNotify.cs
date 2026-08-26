@@ -13,10 +13,16 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class NetworktemplateSnmpConfigV3ConfigNotify
     {
+        /// <summary>
+        /// Identifier for this SNMPv3 notification definition
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Notification tag used to select target addresses
+        /// </summary>
         public readonly string Tag;
         /// <summary>
-        /// enum: `Inform`, `Trap`
+        /// Delivery mode for this SNMPv3 notification, such as trap or inform
         /// </summary>
         public readonly string Type;
 

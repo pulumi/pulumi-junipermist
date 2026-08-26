@@ -208,18 +208,6 @@ namespace Pulumi.JuniperMist.Device.Inputs
         [Input("rethNode")]
         public Input<string>? RethNode { get; set; }
 
-        [Input("rethNodes")]
-        private InputList<string>? _rethNodes;
-
-        /// <summary>
-        /// If HA mode and for SSR only. Per-network node assignment used for VLAN-based redundancy
-        /// </summary>
-        public InputList<string> RethNodes
-        {
-            get => _rethNodes ?? (_rethNodes = new InputList<string>());
-            set => _rethNodes = value;
-        }
-
         /// <summary>
         /// Link speed configured on the port
         /// </summary>

@@ -18,6 +18,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.DeviceprofileSwitchAclPolicyAction> Actions;
         /// <summary>
+        /// Whether this ACL policy is disabled
+        /// </summary>
+        public readonly bool? Disabled;
+        /// <summary>
         /// Display name of the ACL policy
         /// </summary>
         public readonly string? Name;
@@ -30,11 +34,14 @@ namespace Pulumi.JuniperMist.Org.Outputs
         private DeviceprofileSwitchAclPolicy(
             ImmutableArray<Outputs.DeviceprofileSwitchAclPolicyAction> actions,
 
+            bool? disabled,
+
             string? name,
 
             ImmutableArray<string> srcTags)
         {
             Actions = actions;
+            Disabled = disabled;
             Name = name;
             SrcTags = srcTags;
         }

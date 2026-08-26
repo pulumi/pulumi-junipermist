@@ -12,11 +12,21 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class NetworktemplateBgpConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("authKey")]
+        private Input<string>? _authKey;
+
         /// <summary>
         /// Authentication key used for BGP neighbor sessions, when configured
         /// </summary>
-        [Input("authKey")]
-        public Input<string>? AuthKey { get; set; }
+        public Input<string>? AuthKey
+        {
+            get => _authKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _authKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Minimum interval in milliseconds for BFD hello packets. A neighbor is considered failed when the device stops receiving replies after the specified interval. Value must be between 1 and 255000.

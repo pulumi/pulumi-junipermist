@@ -58,7 +58,7 @@ public final class DeviceprofileApPortConfig {
      */
     private @Nullable String mxTunnelId;
     /**
-     * @return If `forwarding`==`siteMxedge`, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+     * @return If `forwarding`==`siteMxedge`, vlanIds comes from siteMxedge (`mxtunnel` under site setting)
      * 
      */
     private @Nullable String mxtunnelName;
@@ -85,7 +85,7 @@ public final class DeviceprofileApPortConfig {
     /**
      * @return Optional to specify the VLAN ID for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `siteMxedge`.
      *   * if vlanId is not specified then it will use first one in vlan_ids[] of the mxtunnel.
-     *   * if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+     *   * if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnel` under site setting)
      * 
      */
     private @Nullable Integer vlanId;
@@ -163,7 +163,7 @@ public final class DeviceprofileApPortConfig {
         return Optional.ofNullable(this.mxTunnelId);
     }
     /**
-     * @return If `forwarding`==`siteMxedge`, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+     * @return If `forwarding`==`siteMxedge`, vlanIds comes from siteMxedge (`mxtunnel` under site setting)
      * 
      */
     public Optional<String> mxtunnelName() {
@@ -200,7 +200,7 @@ public final class DeviceprofileApPortConfig {
     /**
      * @return Optional to specify the VLAN ID for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `siteMxedge`.
      *   * if vlanId is not specified then it will use first one in vlan_ids[] of the mxtunnel.
-     *   * if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+     *   * if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnel` under site setting)
      * 
      */
     public Optional<Integer> vlanId() {

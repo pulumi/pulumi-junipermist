@@ -26,6 +26,10 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? BrokerProto;
         /// <summary>
+        /// Optional catch-all MQTT topic; BLE advertisements matching no AssetFilter are published here
+        /// </summary>
+        public readonly string? DefaultTopic;
+        /// <summary>
         /// Whether to enable MQTT publishing
         /// </summary>
         public readonly bool? Enabled;
@@ -50,6 +54,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             string? brokerProto,
 
+            string? defaultTopic,
+
             bool? enabled,
 
             string? format,
@@ -61,6 +67,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
             BrokerHost = brokerHost;
             BrokerPort = brokerPort;
             BrokerProto = brokerProto;
+            DefaultTopic = defaultTopic;
             Enabled = enabled;
             Format = format;
             Password = password;

@@ -17,6 +17,9 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// optionally, services we'll allow. enum: `Icmp`, `Ssh`
         /// </summary>
         public readonly ImmutableArray<string> AllowedServices;
+        /// <summary>
+        /// Additional ACL entries allowed by the Protect RE policy
+        /// </summary>
         public readonly ImmutableArray<Outputs.NetworktemplateSwitchMgmtProtectReCustom> Customs;
         /// <summary>
         /// When enabled, all traffic that is not essential to our operation will be dropped
@@ -29,7 +32,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly bool? HitCount;
         /// <summary>
-        /// host/subnets we'll allow traffic to/from
+        /// Trusted host or subnet entries allowed by the Protect RE policy
         /// </summary>
         public readonly ImmutableArray<string> TrustedHosts;
 

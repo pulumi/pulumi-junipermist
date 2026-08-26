@@ -290,18 +290,32 @@ public class Psk extends com.pulumi.resources.CustomResource {
         return this.ssid;
     }
     /**
-     * Binding mode for this PSK, enum: `macs`, `multi`, `single`
+     * Binding mode for this PSK, enum: `macs`, `multi`, `single`, `usermacLabels`
      * 
      */
     @Export(name="usage", refs={String.class}, tree="[0]")
     private Output<String> usage;
 
     /**
-     * @return Binding mode for this PSK, enum: `macs`, `multi`, `single`
+     * @return Binding mode for this PSK, enum: `macs`, `multi`, `single`, `usermacLabels`
      * 
      */
     public Output<String> usage() {
         return this.usage;
+    }
+    /**
+     * Usermac labels allowed when `usage`==`usermacLabels`; this list is capped at 100 entries
+     * 
+     */
+    @Export(name="usermacLabels", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> usermacLabels;
+
+    /**
+     * @return Usermac labels allowed when `usage`==`usermacLabels`; this list is capped at 100 entries
+     * 
+     */
+    public Output<Optional<List<String>>> usermacLabels() {
+        return Codegen.optional(this.usermacLabels);
     }
     /**
      * VLAN ID returned for clients using this PSK

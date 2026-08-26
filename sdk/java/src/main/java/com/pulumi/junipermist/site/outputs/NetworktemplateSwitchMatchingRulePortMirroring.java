@@ -13,17 +13,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworktemplateSwitchMatchingRulePortMirroring {
     /**
-     * @return At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
+     * @return At least one mirror input source should be specified. Networks whose ingress traffic is mirrored
      * 
      */
     private @Nullable List<String> inputNetworksIngresses;
     /**
-     * @return At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
+     * @return At least one mirror input source should be specified. Switch ports whose egress traffic is mirrored
      * 
      */
     private @Nullable List<String> inputPortIdsEgresses;
     /**
-     * @return At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
+     * @return At least one mirror input source should be specified. Switch ports whose ingress traffic is mirrored
      * 
      */
     private @Nullable List<String> inputPortIdsIngresses;
@@ -45,21 +45,21 @@ public final class NetworktemplateSwitchMatchingRulePortMirroring {
 
     private NetworktemplateSwitchMatchingRulePortMirroring() {}
     /**
-     * @return At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
+     * @return At least one mirror input source should be specified. Networks whose ingress traffic is mirrored
      * 
      */
     public List<String> inputNetworksIngresses() {
         return this.inputNetworksIngresses == null ? List.of() : this.inputNetworksIngresses;
     }
     /**
-     * @return At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
+     * @return At least one mirror input source should be specified. Switch ports whose egress traffic is mirrored
      * 
      */
     public List<String> inputPortIdsEgresses() {
         return this.inputPortIdsEgresses == null ? List.of() : this.inputPortIdsEgresses;
     }
     /**
-     * @return At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
+     * @return At least one mirror input source should be specified. Switch ports whose ingress traffic is mirrored
      * 
      */
     public List<String> inputPortIdsIngresses() {

@@ -123,6 +123,10 @@ export class Rftemplate extends pulumi.CustomResource {
      */
     declare public readonly countryCode: pulumi.Output<string | undefined>;
     /**
+     * Whether U-NII-4 channels (169, 173, 177) are enabled
+     */
+    declare public readonly enableUnii4: pulumi.Output<boolean | undefined>;
+    /**
      * overwrites for a specific model. If a band is specified, it will shadow the default. Property key is the model name (e.g. "AP63")
      */
     declare public readonly modelSpecific: pulumi.Output<{[key: string]: outputs.org.RftemplateModelSpecific} | undefined>;
@@ -161,6 +165,7 @@ export class Rftemplate extends pulumi.CustomResource {
             resourceInputs["band5On24Radio"] = state?.band5On24Radio;
             resourceInputs["band6"] = state?.band6;
             resourceInputs["countryCode"] = state?.countryCode;
+            resourceInputs["enableUnii4"] = state?.enableUnii4;
             resourceInputs["modelSpecific"] = state?.modelSpecific;
             resourceInputs["name"] = state?.name;
             resourceInputs["orgId"] = state?.orgId;
@@ -179,6 +184,7 @@ export class Rftemplate extends pulumi.CustomResource {
             resourceInputs["band5On24Radio"] = args?.band5On24Radio;
             resourceInputs["band6"] = args?.band6;
             resourceInputs["countryCode"] = args?.countryCode;
+            resourceInputs["enableUnii4"] = args?.enableUnii4;
             resourceInputs["modelSpecific"] = args?.modelSpecific;
             resourceInputs["name"] = args?.name;
             resourceInputs["orgId"] = args?.orgId;
@@ -229,6 +235,10 @@ export interface RftemplateState {
      * Optional, country code to use. If specified, this gets applied to all sites using the RF Template
      */
     countryCode?: pulumi.Input<string | undefined>;
+    /**
+     * Whether U-NII-4 channels (169, 173, 177) are enabled
+     */
+    enableUnii4?: pulumi.Input<boolean | undefined>;
     /**
      * overwrites for a specific model. If a band is specified, it will shadow the default. Property key is the model name (e.g. "AP63")
      */
@@ -287,6 +297,10 @@ export interface RftemplateArgs {
      * Optional, country code to use. If specified, this gets applied to all sites using the RF Template
      */
     countryCode?: pulumi.Input<string | undefined>;
+    /**
+     * Whether U-NII-4 channels (169, 173, 177) are enabled
+     */
+    enableUnii4?: pulumi.Input<boolean | undefined>;
     /**
      * overwrites for a specific model. If a band is specified, it will shadow the default. Property key is the model name (e.g. "AP63")
      */

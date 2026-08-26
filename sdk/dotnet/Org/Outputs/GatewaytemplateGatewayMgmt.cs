@@ -38,6 +38,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? DisableConsole;
         /// <summary>
+        /// For SRX only, disable IDP packet capture
+        /// </summary>
+        public readonly bool? DisableIdpPcap;
+        /// <summary>
         /// For SSR and SRX, disable management interface
         /// </summary>
         public readonly bool? DisableOob;
@@ -88,6 +92,8 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             bool? disableConsole,
 
+            bool? disableIdpPcap,
+
             bool? disableOob,
 
             bool? disableUsb,
@@ -112,6 +118,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
             AutoSignatureUpdate = autoSignatureUpdate;
             ConfigRevertTimer = configRevertTimer;
             DisableConsole = disableConsole;
+            DisableIdpPcap = disableIdpPcap;
             DisableOob = disableOob;
             DisableUsb = disableUsb;
             FipsEnabled = fipsEnabled;

@@ -163,6 +163,10 @@ export class DeviceprofileAp extends pulumi.CustomResource {
      */
     declare public readonly usbConfig: pulumi.Output<outputs.org.DeviceprofileApUsbConfig | undefined>;
     /**
+     * UWB RTLS / OMLOX asset-visibility settings; overrides the site-level `uwbConfig` and is overridden by device-level `uwbConfig`
+     */
+    declare public readonly uwbConfig: pulumi.Output<outputs.org.DeviceprofileApUwbConfig | undefined>;
+    /**
      * Variable values provided by this AP device profile
      */
     declare public readonly vars: pulumi.Output<{[key: string]: string} | undefined>;
@@ -208,6 +212,7 @@ export class DeviceprofileAp extends pulumi.CustomResource {
             resourceInputs["type"] = state?.type;
             resourceInputs["uplinkPortConfig"] = state?.uplinkPortConfig;
             resourceInputs["usbConfig"] = state?.usbConfig;
+            resourceInputs["uwbConfig"] = state?.uwbConfig;
             resourceInputs["vars"] = state?.vars;
             resourceInputs["zigbeeConfig"] = state?.zigbeeConfig;
         } else {
@@ -238,6 +243,7 @@ export class DeviceprofileAp extends pulumi.CustomResource {
             resourceInputs["siteId"] = args?.siteId;
             resourceInputs["uplinkPortConfig"] = args?.uplinkPortConfig;
             resourceInputs["usbConfig"] = args?.usbConfig;
+            resourceInputs["uwbConfig"] = args?.uwbConfig;
             resourceInputs["vars"] = args?.vars;
             resourceInputs["zigbeeConfig"] = args?.zigbeeConfig;
             resourceInputs["type"] = undefined /*out*/;
@@ -348,6 +354,10 @@ export interface DeviceprofileApState {
      */
     usbConfig?: pulumi.Input<inputs.org.DeviceprofileApUsbConfig | undefined>;
     /**
+     * UWB RTLS / OMLOX asset-visibility settings; overrides the site-level `uwbConfig` and is overridden by device-level `uwbConfig`
+     */
+    uwbConfig?: pulumi.Input<inputs.org.DeviceprofileApUwbConfig | undefined>;
+    /**
      * Variable values provided by this AP device profile
      */
     vars?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
@@ -453,6 +463,10 @@ export interface DeviceprofileApArgs {
      * Legacy USB integration defaults in this AP profile
      */
     usbConfig?: pulumi.Input<inputs.org.DeviceprofileApUsbConfig | undefined>;
+    /**
+     * UWB RTLS / OMLOX asset-visibility settings; overrides the site-level `uwbConfig` and is overridden by device-level `uwbConfig`
+     */
+    uwbConfig?: pulumi.Input<inputs.org.DeviceprofileApUwbConfig | undefined>;
     /**
      * Variable values provided by this AP device profile
      */

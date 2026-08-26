@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['WebhookArgs', 'Webhook']
 
@@ -23,6 +25,7 @@ class WebhookArgs:
                  topics: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  url: pulumi.Input[_builtins.str],
                  assetfilter_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 default_action: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  headers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -33,6 +36,7 @@ class WebhookArgs:
                  oauth2_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  oauth2_token_url: pulumi.Input[Optional[_builtins.str]] = None,
                  oauth2_username: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['WebhookRuleArgs']]]] = None,
                  secret: pulumi.Input[Optional[_builtins.str]] = None,
                  single_event_per_message: pulumi.Input[Optional[_builtins.bool]] = None,
                  splunk_token: pulumi.Input[Optional[_builtins.str]] = None,
@@ -45,6 +49,7 @@ class WebhookArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] topics: enum: `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `rssizone`, `sdkclient-scan-data`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
         :param pulumi.Input[_builtins.str] url: Destination URL that receives webhook deliveries
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] assetfilter_ids: Asset filter identifiers used to restrict `asset-raw-rssi` webhook events
+        :param pulumi.Input[_builtins.str] default_action: Default action applied when none of the `rules` match the incoming event
         :param pulumi.Input[_builtins.bool] enabled: Whether webhook is enabled
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] headers: If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
         :param pulumi.Input[_builtins.str] name: Display name of the webhook
@@ -55,6 +60,7 @@ class WebhookArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] oauth2_scopes: OAuth2 scopes included in the token request when `type`==`oauth2`
         :param pulumi.Input[_builtins.str] oauth2_token_url: Required when `type`==`oauth2`; token endpoint URL used to obtain the OAuth2 access token
         :param pulumi.Input[_builtins.str] oauth2_username: Required when `oauth2_grant_type`==`password`; username used for the OAuth2 token request
+        :param pulumi.Input[Sequence[pulumi.Input['WebhookRuleArgs']]] rules: Optional filtering rules to override `topics`. Each rule permits or blocks events for a topic, optionally based on event payload matching criteria
         :param pulumi.Input[_builtins.str] secret: Only if `type`=`http-post`
         :param pulumi.Input[_builtins.bool] single_event_per_message: Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
         :param pulumi.Input[_builtins.str] splunk_token: Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
@@ -66,6 +72,8 @@ class WebhookArgs:
         pulumi.set(__self__, "url", url)
         if assetfilter_ids is not None:
             pulumi.set(__self__, "assetfilter_ids", assetfilter_ids)
+        if default_action is not None:
+            pulumi.set(__self__, "default_action", default_action)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if headers is not None:
@@ -86,6 +94,8 @@ class WebhookArgs:
             pulumi.set(__self__, "oauth2_token_url", oauth2_token_url)
         if oauth2_username is not None:
             pulumi.set(__self__, "oauth2_username", oauth2_username)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
         if secret is not None:
             pulumi.set(__self__, "secret", secret)
         if single_event_per_message is not None:
@@ -144,6 +154,18 @@ class WebhookArgs:
     @assetfilter_ids.setter
     def assetfilter_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "assetfilter_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultAction")
+    def default_action(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Default action applied when none of the `rules` match the incoming event
+        """
+        return pulumi.get(self, "default_action")
+
+    @default_action.setter
+    def default_action(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "default_action", value)
 
     @_builtins.property
     @pulumi.getter
@@ -267,6 +289,18 @@ class WebhookArgs:
 
     @_builtins.property
     @pulumi.getter
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WebhookRuleArgs']]]]:
+        """
+        Optional filtering rules to override `topics`. Each rule permits or blocks events for a topic, optionally based on event payload matching criteria
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WebhookRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @_builtins.property
+    @pulumi.getter
     def secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Only if `type`=`http-post`
@@ -330,6 +364,7 @@ class WebhookArgs:
 class _WebhookState:
     def __init__(__self__, *,
                  assetfilter_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 default_action: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  headers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -341,6 +376,7 @@ class _WebhookState:
                  oauth2_token_url: pulumi.Input[Optional[_builtins.str]] = None,
                  oauth2_username: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['WebhookRuleArgs']]]] = None,
                  secret: pulumi.Input[Optional[_builtins.str]] = None,
                  single_event_per_message: pulumi.Input[Optional[_builtins.bool]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -353,6 +389,7 @@ class _WebhookState:
         Input properties used for looking up and filtering Webhook resources.
 
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] assetfilter_ids: Asset filter identifiers used to restrict `asset-raw-rssi` webhook events
+        :param pulumi.Input[_builtins.str] default_action: Default action applied when none of the `rules` match the incoming event
         :param pulumi.Input[_builtins.bool] enabled: Whether webhook is enabled
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] headers: If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
         :param pulumi.Input[_builtins.str] name: Display name of the webhook
@@ -364,6 +401,7 @@ class _WebhookState:
         :param pulumi.Input[_builtins.str] oauth2_token_url: Required when `type`==`oauth2`; token endpoint URL used to obtain the OAuth2 access token
         :param pulumi.Input[_builtins.str] oauth2_username: Required when `oauth2_grant_type`==`password`; username used for the OAuth2 token request
         :param pulumi.Input[_builtins.str] org_id: Organization that owns the webhook
+        :param pulumi.Input[Sequence[pulumi.Input['WebhookRuleArgs']]] rules: Optional filtering rules to override `topics`. Each rule permits or blocks events for a topic, optionally based on event payload matching criteria
         :param pulumi.Input[_builtins.str] secret: Only if `type`=`http-post`
         :param pulumi.Input[_builtins.bool] single_event_per_message: Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
         :param pulumi.Input[_builtins.str] site_id: Site associated with this webhook when it is site-scoped
@@ -375,6 +413,8 @@ class _WebhookState:
         """
         if assetfilter_ids is not None:
             pulumi.set(__self__, "assetfilter_ids", assetfilter_ids)
+        if default_action is not None:
+            pulumi.set(__self__, "default_action", default_action)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if headers is not None:
@@ -397,6 +437,8 @@ class _WebhookState:
             pulumi.set(__self__, "oauth2_username", oauth2_username)
         if org_id is not None:
             pulumi.set(__self__, "org_id", org_id)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
         if secret is not None:
             pulumi.set(__self__, "secret", secret)
         if single_event_per_message is not None:
@@ -425,6 +467,18 @@ class _WebhookState:
     @assetfilter_ids.setter
     def assetfilter_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "assetfilter_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultAction")
+    def default_action(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Default action applied when none of the `rules` match the incoming event
+        """
+        return pulumi.get(self, "default_action")
+
+    @default_action.setter
+    def default_action(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "default_action", value)
 
     @_builtins.property
     @pulumi.getter
@@ -560,6 +614,18 @@ class _WebhookState:
 
     @_builtins.property
     @pulumi.getter
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WebhookRuleArgs']]]]:
+        """
+        Optional filtering rules to override `topics`. Each rule permits or blocks events for a topic, optionally based on event payload matching criteria
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WebhookRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @_builtins.property
+    @pulumi.getter
     def secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Only if `type`=`http-post`
@@ -662,6 +728,7 @@ class Webhook(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  assetfilter_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 default_action: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  headers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -672,6 +739,7 @@ class Webhook(pulumi.CustomResource):
                  oauth2_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  oauth2_token_url: pulumi.Input[Optional[_builtins.str]] = None,
                  oauth2_username: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WebhookRuleArgs', 'WebhookRuleArgsDict']]]]] = None,
                  secret: pulumi.Input[Optional[_builtins.str]] = None,
                  single_event_per_message: pulumi.Input[Optional[_builtins.bool]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -728,6 +796,7 @@ class Webhook(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] assetfilter_ids: Asset filter identifiers used to restrict `asset-raw-rssi` webhook events
+        :param pulumi.Input[_builtins.str] default_action: Default action applied when none of the `rules` match the incoming event
         :param pulumi.Input[_builtins.bool] enabled: Whether webhook is enabled
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] headers: If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
         :param pulumi.Input[_builtins.str] name: Display name of the webhook
@@ -738,6 +807,7 @@ class Webhook(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] oauth2_scopes: OAuth2 scopes included in the token request when `type`==`oauth2`
         :param pulumi.Input[_builtins.str] oauth2_token_url: Required when `type`==`oauth2`; token endpoint URL used to obtain the OAuth2 access token
         :param pulumi.Input[_builtins.str] oauth2_username: Required when `oauth2_grant_type`==`password`; username used for the OAuth2 token request
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WebhookRuleArgs', 'WebhookRuleArgsDict']]]] rules: Optional filtering rules to override `topics`. Each rule permits or blocks events for a topic, optionally based on event payload matching criteria
         :param pulumi.Input[_builtins.str] secret: Only if `type`=`http-post`
         :param pulumi.Input[_builtins.bool] single_event_per_message: Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
         :param pulumi.Input[_builtins.str] site_id: Site associated with this webhook when it is site-scoped
@@ -813,6 +883,7 @@ class Webhook(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  assetfilter_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 default_action: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  headers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -823,6 +894,7 @@ class Webhook(pulumi.CustomResource):
                  oauth2_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  oauth2_token_url: pulumi.Input[Optional[_builtins.str]] = None,
                  oauth2_username: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WebhookRuleArgs', 'WebhookRuleArgsDict']]]]] = None,
                  secret: pulumi.Input[Optional[_builtins.str]] = None,
                  single_event_per_message: pulumi.Input[Optional[_builtins.bool]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -841,6 +913,7 @@ class Webhook(pulumi.CustomResource):
             __props__ = WebhookArgs.__new__(WebhookArgs)
 
             __props__.__dict__["assetfilter_ids"] = assetfilter_ids
+            __props__.__dict__["default_action"] = default_action
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["headers"] = headers
             __props__.__dict__["name"] = name
@@ -851,6 +924,7 @@ class Webhook(pulumi.CustomResource):
             __props__.__dict__["oauth2_scopes"] = oauth2_scopes
             __props__.__dict__["oauth2_token_url"] = oauth2_token_url
             __props__.__dict__["oauth2_username"] = oauth2_username
+            __props__.__dict__["rules"] = rules
             __props__.__dict__["secret"] = None if secret is None else pulumi.Output.secret(secret)
             __props__.__dict__["single_event_per_message"] = single_event_per_message
             if site_id is None and not opts.urn:
@@ -879,6 +953,7 @@ class Webhook(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             assetfilter_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            default_action: pulumi.Input[Optional[_builtins.str]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             headers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -890,6 +965,7 @@ class Webhook(pulumi.CustomResource):
             oauth2_token_url: pulumi.Input[Optional[_builtins.str]] = None,
             oauth2_username: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WebhookRuleArgs', 'WebhookRuleArgsDict']]]]] = None,
             secret: pulumi.Input[Optional[_builtins.str]] = None,
             single_event_per_message: pulumi.Input[Optional[_builtins.bool]] = None,
             site_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -906,6 +982,7 @@ class Webhook(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] assetfilter_ids: Asset filter identifiers used to restrict `asset-raw-rssi` webhook events
+        :param pulumi.Input[_builtins.str] default_action: Default action applied when none of the `rules` match the incoming event
         :param pulumi.Input[_builtins.bool] enabled: Whether webhook is enabled
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] headers: If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
         :param pulumi.Input[_builtins.str] name: Display name of the webhook
@@ -917,6 +994,7 @@ class Webhook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] oauth2_token_url: Required when `type`==`oauth2`; token endpoint URL used to obtain the OAuth2 access token
         :param pulumi.Input[_builtins.str] oauth2_username: Required when `oauth2_grant_type`==`password`; username used for the OAuth2 token request
         :param pulumi.Input[_builtins.str] org_id: Organization that owns the webhook
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WebhookRuleArgs', 'WebhookRuleArgsDict']]]] rules: Optional filtering rules to override `topics`. Each rule permits or blocks events for a topic, optionally based on event payload matching criteria
         :param pulumi.Input[_builtins.str] secret: Only if `type`=`http-post`
         :param pulumi.Input[_builtins.bool] single_event_per_message: Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
         :param pulumi.Input[_builtins.str] site_id: Site associated with this webhook when it is site-scoped
@@ -931,6 +1009,7 @@ class Webhook(pulumi.CustomResource):
         __props__ = _WebhookState.__new__(_WebhookState)
 
         __props__.__dict__["assetfilter_ids"] = assetfilter_ids
+        __props__.__dict__["default_action"] = default_action
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["headers"] = headers
         __props__.__dict__["name"] = name
@@ -942,6 +1021,7 @@ class Webhook(pulumi.CustomResource):
         __props__.__dict__["oauth2_token_url"] = oauth2_token_url
         __props__.__dict__["oauth2_username"] = oauth2_username
         __props__.__dict__["org_id"] = org_id
+        __props__.__dict__["rules"] = rules
         __props__.__dict__["secret"] = secret
         __props__.__dict__["single_event_per_message"] = single_event_per_message
         __props__.__dict__["site_id"] = site_id
@@ -959,6 +1039,14 @@ class Webhook(pulumi.CustomResource):
         Asset filter identifiers used to restrict `asset-raw-rssi` webhook events
         """
         return pulumi.get(self, "assetfilter_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultAction")
+    def default_action(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Default action applied when none of the `rules` match the incoming event
+        """
+        return pulumi.get(self, "default_action")
 
     @_builtins.property
     @pulumi.getter
@@ -1047,6 +1135,14 @@ class Webhook(pulumi.CustomResource):
         Organization that owns the webhook
         """
         return pulumi.get(self, "org_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def rules(self) -> pulumi.Output[Optional[Sequence['outputs.WebhookRule']]]:
+        """
+        Optional filtering rules to override `topics`. Each rule permits or blocks events for a topic, optionally based on event payload matching criteria
+        """
+        return pulumi.get(self, "rules")
 
     @_builtins.property
     @pulumi.getter

@@ -12,11 +12,18 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class NetworktemplateRemoteSyslogFileGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Retention settings for this generated syslog file
+        /// </summary>
         [Input("archive")]
         public Input<Inputs.NetworktemplateRemoteSyslogFileArchiveGetArgs>? Archive { get; set; }
 
         [Input("contents")]
         private InputList<Inputs.NetworktemplateRemoteSyslogFileContentGetArgs>? _contents;
+
+        /// <summary>
+        /// Syslog facilities and severities written to this file
+        /// </summary>
         public InputList<Inputs.NetworktemplateRemoteSyslogFileContentGetArgs> Contents
         {
             get => _contents ?? (_contents = new InputList<Inputs.NetworktemplateRemoteSyslogFileContentGetArgs>());
@@ -24,20 +31,32 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// Only if `Protocol`==`Tcp`
+        /// Only if `Protocol`==`Tcp`, enable TLS for this syslog file destination
         /// </summary>
         [Input("enableTls")]
         public Input<bool>? EnableTls { get; set; }
 
+        /// <summary>
+        /// Whether to include explicit syslog priority values in file output
+        /// </summary>
         [Input("explicitPriority")]
         public Input<bool>? ExplicitPriority { get; set; }
 
+        /// <summary>
+        /// Generated syslog file name
+        /// </summary>
         [Input("file")]
         public Input<string>? File { get; set; }
 
+        /// <summary>
+        /// Expression used to filter log messages written to this file
+        /// </summary>
         [Input("match")]
         public Input<string>? Match { get; set; }
 
+        /// <summary>
+        /// Whether to include structured syslog data in file output
+        /// </summary>
         [Input("structuredData")]
         public Input<bool>? StructuredData { get; set; }
 

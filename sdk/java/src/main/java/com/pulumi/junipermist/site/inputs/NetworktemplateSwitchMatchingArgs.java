@@ -17,9 +17,17 @@ public final class NetworktemplateSwitchMatchingArgs extends com.pulumi.resource
 
     public static final NetworktemplateSwitchMatchingArgs Empty = new NetworktemplateSwitchMatchingArgs();
 
+    /**
+     * Whether custom switch matching rules are enabled
+     * 
+     */
     @Import(name="enable")
     private @Nullable Output<Boolean> enable;
 
+    /**
+     * @return Whether custom switch matching rules are enabled
+     * 
+     */
     public Optional<Output<Boolean>> enable() {
         return Optional.ofNullable(this.enable);
     }
@@ -64,11 +72,23 @@ public final class NetworktemplateSwitchMatchingArgs extends com.pulumi.resource
             $ = new NetworktemplateSwitchMatchingArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enable Whether custom switch matching rules are enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enable(@Nullable Output<Boolean> enable) {
             $.enable = enable;
             return this;
         }
 
+        /**
+         * @param enable Whether custom switch matching rules are enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enable(Boolean enable) {
             return enable(Output.of(enable));
         }

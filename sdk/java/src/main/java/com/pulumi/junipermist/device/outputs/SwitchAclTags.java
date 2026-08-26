@@ -51,6 +51,7 @@ public final class SwitchAclTags {
     /**
      * @return Required if:
      *   * `type`==`radiusGroup`
+     *   * `type`==`arubaUserRole`
      *   * `type`==`staticGbp`
      *     if from matching radius_group
      * 
@@ -119,6 +120,7 @@ public final class SwitchAclTags {
     /**
      * @return Required if:
      *   * `type`==`radiusGroup`
+     *   * `type`==`arubaUserRole`
      *   * `type`==`staticGbp`
      *     if from matching radius_group
      * 

@@ -14,97 +14,161 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NetworktemplateRemoteSyslogServer {
+    /**
+     * @return Syslog facilities and severities sent to this server
+     * 
+     */
     private @Nullable List<NetworktemplateRemoteSyslogServerContent> contents;
+    /**
+     * @return Whether to include explicit syslog priority values in messages sent to this server
+     * 
+     */
     private @Nullable Boolean explicitPriority;
     /**
-     * @return enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`
+     * @return Default syslog facility for messages sent to this server
      * 
      */
     private @Nullable String facility;
+    /**
+     * @return Address or hostname of the remote syslog server
+     * 
+     */
     private @Nullable String host;
+    /**
+     * @return Expression used to filter log messages sent to this server
+     * 
+     */
     private @Nullable String match;
+    /**
+     * @return Network port used by the remote syslog server
+     * 
+     */
     private @Nullable String port;
     /**
-     * @return enum: `tcp`, `udp`
+     * @return Transport protocol used for this remote syslog server
      * 
      */
     private @Nullable String protocol;
+    /**
+     * @return Routing instance used to reach this remote syslog server
+     * 
+     */
     private @Nullable String routingInstance;
     /**
-     * @return Name of the server
+     * @return TLS server name used when verifying the remote syslog server certificate
      * 
      */
     private @Nullable String serverName;
     /**
-     * @return enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
+     * @return Default syslog severity for messages sent to this server
      * 
      */
     private @Nullable String severity;
     /**
-     * @return If sourceAddress is configured, will use the vlan firstly otherwise use source_ip
+     * @return Source address for syslog traffic. If configured, Mist uses the VLAN first; otherwise it uses `sourceIp`
      * 
      */
     private @Nullable String sourceAddress;
+    /**
+     * @return Whether to include structured syslog data in messages sent to this server
+     * 
+     */
     private @Nullable Boolean structuredData;
+    /**
+     * @return Syslog tag value added to messages sent to this server
+     * 
+     */
     private @Nullable String tag;
 
     private NetworktemplateRemoteSyslogServer() {}
+    /**
+     * @return Syslog facilities and severities sent to this server
+     * 
+     */
     public List<NetworktemplateRemoteSyslogServerContent> contents() {
         return this.contents == null ? List.of() : this.contents;
     }
+    /**
+     * @return Whether to include explicit syslog priority values in messages sent to this server
+     * 
+     */
     public Optional<Boolean> explicitPriority() {
         return Optional.ofNullable(this.explicitPriority);
     }
     /**
-     * @return enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`
+     * @return Default syslog facility for messages sent to this server
      * 
      */
     public Optional<String> facility() {
         return Optional.ofNullable(this.facility);
     }
+    /**
+     * @return Address or hostname of the remote syslog server
+     * 
+     */
     public Optional<String> host() {
         return Optional.ofNullable(this.host);
     }
+    /**
+     * @return Expression used to filter log messages sent to this server
+     * 
+     */
     public Optional<String> match() {
         return Optional.ofNullable(this.match);
     }
+    /**
+     * @return Network port used by the remote syslog server
+     * 
+     */
     public Optional<String> port() {
         return Optional.ofNullable(this.port);
     }
     /**
-     * @return enum: `tcp`, `udp`
+     * @return Transport protocol used for this remote syslog server
      * 
      */
     public Optional<String> protocol() {
         return Optional.ofNullable(this.protocol);
     }
+    /**
+     * @return Routing instance used to reach this remote syslog server
+     * 
+     */
     public Optional<String> routingInstance() {
         return Optional.ofNullable(this.routingInstance);
     }
     /**
-     * @return Name of the server
+     * @return TLS server name used when verifying the remote syslog server certificate
      * 
      */
     public Optional<String> serverName() {
         return Optional.ofNullable(this.serverName);
     }
     /**
-     * @return enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
+     * @return Default syslog severity for messages sent to this server
      * 
      */
     public Optional<String> severity() {
         return Optional.ofNullable(this.severity);
     }
     /**
-     * @return If sourceAddress is configured, will use the vlan firstly otherwise use source_ip
+     * @return Source address for syslog traffic. If configured, Mist uses the VLAN first; otherwise it uses `sourceIp`
      * 
      */
     public Optional<String> sourceAddress() {
         return Optional.ofNullable(this.sourceAddress);
     }
+    /**
+     * @return Whether to include structured syslog data in messages sent to this server
+     * 
+     */
     public Optional<Boolean> structuredData() {
         return Optional.ofNullable(this.structuredData);
     }
+    /**
+     * @return Syslog tag value added to messages sent to this server
+     * 
+     */
     public Optional<String> tag() {
         return Optional.ofNullable(this.tag);
     }

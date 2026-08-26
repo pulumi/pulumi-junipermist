@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.org.inputs.SettingApiPolicyArgs;
 import com.pulumi.junipermist.org.inputs.SettingAutoUpgradeArgs;
+import com.pulumi.junipermist.org.inputs.SettingCacertsConfigArgs;
 import com.pulumi.junipermist.org.inputs.SettingCelonaArgs;
 import com.pulumi.junipermist.org.inputs.SettingCloudsharkArgs;
 import com.pulumi.junipermist.org.inputs.SettingDeviceCertArgs;
@@ -91,18 +92,33 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * CA certificates used by organization-level RADIUS and RADSec settings
+     * Legacy CA certificate list used to verify client certificates. If `cacertsConfigs` is provided and non-empty, this field is ignored.
      * 
      */
     @Import(name="cacerts")
     private @Nullable Output<List<String>> cacerts;
 
     /**
-     * @return CA certificates used by organization-level RADIUS and RADSec settings
+     * @return Legacy CA certificate list used to verify client certificates. If `cacertsConfigs` is provided and non-empty, this field is ignored.
      * 
      */
     public Optional<Output<List<String>>> cacerts() {
         return Optional.ofNullable(this.cacerts);
+    }
+
+    /**
+     * Preferred per-issuer CA certificate configuration with optional OCSP and CRL settings. When provided and non-empty, `cacerts` is ignored.
+     * 
+     */
+    @Import(name="cacertsConfigs")
+    private @Nullable Output<List<SettingCacertsConfigArgs>> cacertsConfigs;
+
+    /**
+     * @return Preferred per-issuer CA certificate configuration with optional OCSP and CRL settings. When provided and non-empty, `cacerts` is ignored.
+     * 
+     */
+    public Optional<Output<List<SettingCacertsConfigArgs>>> cacertsConfigs() {
+        return Optional.ofNullable(this.cacertsConfigs);
     }
 
     /**
@@ -596,6 +612,7 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         this.apiPolicy = $.apiPolicy;
         this.autoUpgrade = $.autoUpgrade;
         this.cacerts = $.cacerts;
+        this.cacertsConfigs = $.cacertsConfigs;
         this.celona = $.celona;
         this.cloudshark = $.cloudshark;
         this.deviceCert = $.deviceCert;
@@ -712,7 +729,7 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cacerts CA certificates used by organization-level RADIUS and RADSec settings
+         * @param cacerts Legacy CA certificate list used to verify client certificates. If `cacertsConfigs` is provided and non-empty, this field is ignored.
          * 
          * @return builder
          * 
@@ -723,7 +740,7 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cacerts CA certificates used by organization-level RADIUS and RADSec settings
+         * @param cacerts Legacy CA certificate list used to verify client certificates. If `cacertsConfigs` is provided and non-empty, this field is ignored.
          * 
          * @return builder
          * 
@@ -733,13 +750,44 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cacerts CA certificates used by organization-level RADIUS and RADSec settings
+         * @param cacerts Legacy CA certificate list used to verify client certificates. If `cacertsConfigs` is provided and non-empty, this field is ignored.
          * 
          * @return builder
          * 
          */
         public Builder cacerts(String... cacerts) {
             return cacerts(List.of(cacerts));
+        }
+
+        /**
+         * @param cacertsConfigs Preferred per-issuer CA certificate configuration with optional OCSP and CRL settings. When provided and non-empty, `cacerts` is ignored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cacertsConfigs(@Nullable Output<List<SettingCacertsConfigArgs>> cacertsConfigs) {
+            $.cacertsConfigs = cacertsConfigs;
+            return this;
+        }
+
+        /**
+         * @param cacertsConfigs Preferred per-issuer CA certificate configuration with optional OCSP and CRL settings. When provided and non-empty, `cacerts` is ignored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cacertsConfigs(List<SettingCacertsConfigArgs> cacertsConfigs) {
+            return cacertsConfigs(Output.of(cacertsConfigs));
+        }
+
+        /**
+         * @param cacertsConfigs Preferred per-issuer CA certificate configuration with optional OCSP and CRL settings. When provided and non-empty, `cacerts` is ignored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cacertsConfigs(SettingCacertsConfigArgs... cacertsConfigs) {
+            return cacertsConfigs(List.of(cacertsConfigs));
         }
 
         /**

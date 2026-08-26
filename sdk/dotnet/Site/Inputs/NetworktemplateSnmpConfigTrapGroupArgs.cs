@@ -14,6 +14,10 @@ namespace Pulumi.JuniperMist.Site.Inputs
     {
         [Input("categories")]
         private InputList<string>? _categories;
+
+        /// <summary>
+        /// Trap categories included in this SNMP trap group
+        /// </summary>
         public InputList<string> Categories
         {
             get => _categories ?? (_categories = new InputList<string>());
@@ -21,13 +25,17 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// Categories list can refer to https://www.juniper.net/documentation/software/topics/task/configuration/snmp_trap-groups-configuring-junos-nm.html
+        /// Trap group name for this SNMP trap group
         /// </summary>
         [Input("groupName")]
         public Input<string>? GroupName { get; set; }
 
         [Input("targets")]
         private InputList<string>? _targets;
+
+        /// <summary>
+        /// Trap target addresses for this SNMP trap group
+        /// </summary>
         public InputList<string> Targets
         {
             get => _targets ?? (_targets = new InputList<string>());
@@ -35,7 +43,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// enum: `All`, `V1`, `V2`
+        /// SNMP trap protocol version used by this group
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

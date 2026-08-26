@@ -17,7 +17,7 @@ public final class NetworktemplateSwitchMatchingRuleIpConfig {
      */
     private @Nullable String network;
     /**
-     * @return enum: `dhcp`, `static`
+     * @return IP assignment mode for in-band switch management
      * 
      */
     private @Nullable String type;
@@ -31,7 +31,7 @@ public final class NetworktemplateSwitchMatchingRuleIpConfig {
         return Optional.ofNullable(this.network);
     }
     /**
-     * @return enum: `dhcp`, `static`
+     * @return IP assignment mode for in-band switch management
      * 
      */
     public Optional<String> type() {

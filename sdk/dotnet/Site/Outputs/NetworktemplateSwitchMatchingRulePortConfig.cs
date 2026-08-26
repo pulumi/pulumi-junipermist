@@ -26,27 +26,40 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly bool? AeLacpForceUp;
         /// <summary>
+        /// If `Aggregated`==`True`, sets LACP to passive mode on this AE interface; by default, active (fast) mode is used
+        /// </summary>
+        public readonly bool? AeLacpPassive;
+        /// <summary>
         /// To use slow timeout
         /// </summary>
         public readonly bool? AeLacpSlow;
+        /// <summary>
+        /// Whether this port is configured as an aggregated Ethernet member
+        /// </summary>
         public readonly bool? Aggregated;
         /// <summary>
         /// To generate port up/down alarm
         /// </summary>
         public readonly bool? Critical;
+        /// <summary>
+        /// Human-readable description for this Junos port
+        /// </summary>
         public readonly string? Description;
         /// <summary>
         /// If `Speed` and `Duplex` are specified, whether to disable autonegotiation
         /// </summary>
         public readonly bool? DisableAutoneg;
         /// <summary>
-        /// enum: `Auto`, `Full`, `Half`
+        /// Link duplex mode for this Junos port
         /// </summary>
         public readonly string? Duplex;
         /// <summary>
         /// Enable dynamic usage for this port. Set to `Dynamic` to enable.
         /// </summary>
         public readonly string? DynamicUsage;
+        /// <summary>
+        /// Whether this Junos port participates in an ESI-LAG
+        /// </summary>
         public readonly bool? Esilag;
         /// <summary>
         /// Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
@@ -60,13 +73,16 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// Prevent helpdesk to override the port config
         /// </summary>
         public readonly bool? NoLocalOverwrite;
+        /// <summary>
+        /// Whether PoE capabilities are disabled for this Junos port
+        /// </summary>
         public readonly bool? PoeDisabled;
         /// <summary>
         /// Required if `Usage`==`VlanTunnel`. Q-in-Q tunneling using All-in-one bundling. This also enables standard L2PT for interfaces that are not encapsulation tunnel interfaces and uses MAC rewrite operation. [View more information](https://www.juniper.net/documentation/us/en/software/junos/multicast-l2/topics/topic-map/q-in-q.html#id-understanding-qinq-tunneling-and-vlan-translation)
         /// </summary>
         public readonly string? PortNetwork;
         /// <summary>
-        /// enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`Auto`
+        /// Link speed for this Junos port
         /// </summary>
         public readonly string? Speed;
         /// <summary>
@@ -81,6 +97,8 @@ namespace Pulumi.JuniperMist.Site.Outputs
             int? aeIdx,
 
             bool? aeLacpForceUp,
+
+            bool? aeLacpPassive,
 
             bool? aeLacpSlow,
 
@@ -115,6 +133,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
             AeDisableLacp = aeDisableLacp;
             AeIdx = aeIdx;
             AeLacpForceUp = aeLacpForceUp;
+            AeLacpPassive = aeLacpPassive;
             AeLacpSlow = aeLacpSlow;
             Aggregated = aggregated;
             Critical = critical;

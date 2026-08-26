@@ -136,7 +136,7 @@ export class Setting extends pulumi.CustomResource {
     /**
      * Whether UNII-4 channels are enabled for the site
      */
-    declare public readonly enableUnii4: pulumi.Output<boolean>;
+    declare public readonly enableUnii4: pulumi.Output<boolean | undefined>;
     /**
      * Dwell-time analytics rules for the site
      */
@@ -262,6 +262,10 @@ export class Setting extends pulumi.CustomResource {
      */
     declare public readonly uplinkPortConfig: pulumi.Output<outputs.site.SettingUplinkPortConfig>;
     /**
+     * UWB RTLS (OMLOX asset visibility) settings for the site, only effective on AP models with a UWB radio and in countries where the UWB radio is permitted. Overridden by the device profile and device-level settings
+     */
+    declare public readonly uwbConfig: pulumi.Output<outputs.site.SettingUwbConfig | undefined>;
+    /**
      * Template variables defined for the site
      */
     declare public readonly vars: pulumi.Output<{[key: string]: string} | undefined>;
@@ -372,6 +376,7 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["tuntermMonitorings"] = state?.tuntermMonitorings;
             resourceInputs["tuntermMulticastConfig"] = state?.tuntermMulticastConfig;
             resourceInputs["uplinkPortConfig"] = state?.uplinkPortConfig;
+            resourceInputs["uwbConfig"] = state?.uwbConfig;
             resourceInputs["vars"] = state?.vars;
             resourceInputs["varsAnnotations"] = state?.varsAnnotations;
             resourceInputs["vna"] = state?.vna;
@@ -434,6 +439,7 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["tuntermMonitorings"] = args?.tuntermMonitorings;
             resourceInputs["tuntermMulticastConfig"] = args?.tuntermMulticastConfig;
             resourceInputs["uplinkPortConfig"] = args?.uplinkPortConfig;
+            resourceInputs["uwbConfig"] = args?.uwbConfig;
             resourceInputs["vars"] = args?.vars;
             resourceInputs["varsAnnotations"] = args?.varsAnnotations;
             resourceInputs["vna"] = args?.vna;
@@ -638,6 +644,10 @@ export interface SettingState {
      * AP uplink port configuration for the site
      */
     uplinkPortConfig?: pulumi.Input<inputs.site.SettingUplinkPortConfig | undefined>;
+    /**
+     * UWB RTLS (OMLOX asset visibility) settings for the site, only effective on AP models with a UWB radio and in countries where the UWB radio is permitted. Overridden by the device profile and device-level settings
+     */
+    uwbConfig?: pulumi.Input<inputs.site.SettingUwbConfig | undefined>;
     /**
      * Template variables defined for the site
      */
@@ -872,6 +882,10 @@ export interface SettingArgs {
      * AP uplink port configuration for the site
      */
     uplinkPortConfig?: pulumi.Input<inputs.site.SettingUplinkPortConfig | undefined>;
+    /**
+     * UWB RTLS (OMLOX asset visibility) settings for the site, only effective on AP models with a UWB radio and in countries where the UWB radio is permitted. Overridden by the device profile and device-level settings
+     */
+    uwbConfig?: pulumi.Input<inputs.site.SettingUwbConfig | undefined>;
     /**
      * Template variables defined for the site
      */

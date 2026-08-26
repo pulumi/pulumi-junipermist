@@ -6,6 +6,7 @@ package com.pulumi.junipermist.org.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.junipermist.org.inputs.DeviceprofileSwitchNetworksMulticastArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -78,6 +79,21 @@ public final class DeviceprofileSwitchNetworksArgs extends com.pulumi.resources.
     }
 
     /**
+     * Multicast (IGMP snooping) settings for this VLAN
+     * 
+     */
+    @Import(name="multicast")
+    private @Nullable Output<DeviceprofileSwitchNetworksMulticastArgs> multicast;
+
+    /**
+     * @return Multicast (IGMP snooping) settings for this VLAN
+     * 
+     */
+    public Optional<Output<DeviceprofileSwitchNetworksMulticastArgs>> multicast() {
+        return Optional.ofNullable(this.multicast);
+    }
+
+    /**
      * Optional for pure switching, required when L3 / routing features are used
      * 
      */
@@ -129,6 +145,7 @@ public final class DeviceprofileSwitchNetworksArgs extends com.pulumi.resources.
         this.gateway6 = $.gateway6;
         this.isolation = $.isolation;
         this.isolationVlanId = $.isolationVlanId;
+        this.multicast = $.multicast;
         this.subnet = $.subnet;
         this.subnet6 = $.subnet6;
         this.vlanId = $.vlanId;
@@ -234,6 +251,27 @@ public final class DeviceprofileSwitchNetworksArgs extends com.pulumi.resources.
          */
         public Builder isolationVlanId(String isolationVlanId) {
             return isolationVlanId(Output.of(isolationVlanId));
+        }
+
+        /**
+         * @param multicast Multicast (IGMP snooping) settings for this VLAN
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multicast(@Nullable Output<DeviceprofileSwitchNetworksMulticastArgs> multicast) {
+            $.multicast = multicast;
+            return this;
+        }
+
+        /**
+         * @param multicast Multicast (IGMP snooping) settings for this VLAN
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multicast(DeviceprofileSwitchNetworksMulticastArgs multicast) {
+            return multicast(Output.of(multicast));
         }
 
         /**

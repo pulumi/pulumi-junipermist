@@ -13,34 +13,37 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class NetworktemplateSnmpConfigV3ConfigTargetParameterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `V1`, `V2c`, `V3`
+        /// SNMP message processing model used by this target parameter profile
         /// </summary>
         [Input("messageProcessingModel", required: true)]
         public Input<string> MessageProcessingModel { get; set; } = null!;
 
+        /// <summary>
+        /// Target parameter profile name
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Refer to profile-name in notify_filter
+        /// Notification filter profile referenced by this target parameter profile
         /// </summary>
         [Input("notifyFilter")]
         public Input<string>? NotifyFilter { get; set; }
 
         /// <summary>
-        /// enum: `Authentication`, `None`, `Privacy`
+        /// Required security level for this target parameter profile
         /// </summary>
         [Input("securityLevel")]
         public Input<string>? SecurityLevel { get; set; }
 
         /// <summary>
-        /// enum: `Usm`, `V1`, `V2c`
+        /// Required security model for this target parameter profile
         /// </summary>
         [Input("securityModel")]
         public Input<string>? SecurityModel { get; set; }
 
         /// <summary>
-        /// Refer to SecurityName in usm
+        /// USM security name referenced by this target parameter profile
         /// </summary>
         [Input("securityName")]
         public Input<string>? SecurityName { get; set; }

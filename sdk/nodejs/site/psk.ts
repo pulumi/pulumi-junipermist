@@ -129,6 +129,10 @@ export class Psk extends pulumi.CustomResource {
      */
     declare public readonly usage: pulumi.Output<string>;
     /**
+     * Usermac labels allowed when `usage`==`usermacLabels`; this list is capped at 100 entries
+     */
+    declare public readonly usermacLabels: pulumi.Output<string[] | undefined>;
+    /**
      * VLAN ID returned for clients using this PSK
      */
     declare public readonly vlanId: pulumi.Output<string | undefined>;
@@ -165,6 +169,7 @@ export class Psk extends pulumi.CustomResource {
             resourceInputs["siteId"] = state?.siteId;
             resourceInputs["ssid"] = state?.ssid;
             resourceInputs["usage"] = state?.usage;
+            resourceInputs["usermacLabels"] = state?.usermacLabels;
             resourceInputs["vlanId"] = state?.vlanId;
             resourceInputs["vlanName"] = state?.vlanName;
         } else {
@@ -192,6 +197,7 @@ export class Psk extends pulumi.CustomResource {
             resourceInputs["siteId"] = args?.siteId;
             resourceInputs["ssid"] = args?.ssid;
             resourceInputs["usage"] = args?.usage;
+            resourceInputs["usermacLabels"] = args?.usermacLabels;
             resourceInputs["vlanId"] = args?.vlanId;
             resourceInputs["vlanName"] = args?.vlanName;
             resourceInputs["orgId"] = undefined /*out*/;
@@ -268,6 +274,10 @@ export interface PskState {
      */
     usage?: pulumi.Input<string | undefined>;
     /**
+     * Usermac labels allowed when `usage`==`usermacLabels`; this list is capped at 100 entries
+     */
+    usermacLabels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
      * VLAN ID returned for clients using this PSK
      */
     vlanId?: pulumi.Input<string | undefined>;
@@ -337,6 +347,10 @@ export interface PskArgs {
      * enum: `multi`, `single`
      */
     usage?: pulumi.Input<string | undefined>;
+    /**
+     * Usermac labels allowed when `usage`==`usermacLabels`; this list is capped at 100 entries
+     */
+    usermacLabels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * VLAN ID returned for clients using this PSK
      */

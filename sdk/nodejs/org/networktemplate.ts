@@ -155,6 +155,10 @@ export class Networktemplate extends pulumi.CustomResource {
      */
     declare public readonly mistNac: pulumi.Output<outputs.org.NetworktemplateMistNac | undefined>;
     /**
+     * Multicast settings for networks in the master VRF (not assigned to any vrf_instances); PIM is automatically enabled when any master-VRF network has `multicast.enabled`==`true`
+     */
+    declare public readonly multicastConfig: pulumi.Output<outputs.org.NetworktemplateMulticastConfig | undefined>;
+    /**
      * Display name of the network template
      */
     declare public readonly name: pulumi.Output<string>;
@@ -242,6 +246,7 @@ export class Networktemplate extends pulumi.CustomResource {
             resourceInputs["extraRoutes"] = state?.extraRoutes;
             resourceInputs["extraRoutes6"] = state?.extraRoutes6;
             resourceInputs["mistNac"] = state?.mistNac;
+            resourceInputs["multicastConfig"] = state?.multicastConfig;
             resourceInputs["name"] = state?.name;
             resourceInputs["networks"] = state?.networks;
             resourceInputs["ntpServers"] = state?.ntpServers;
@@ -273,6 +278,7 @@ export class Networktemplate extends pulumi.CustomResource {
             resourceInputs["extraRoutes"] = args?.extraRoutes;
             resourceInputs["extraRoutes6"] = args?.extraRoutes6;
             resourceInputs["mistNac"] = args?.mistNac;
+            resourceInputs["multicastConfig"] = args?.multicastConfig;
             resourceInputs["name"] = args?.name;
             resourceInputs["networks"] = args?.networks;
             resourceInputs["ntpServers"] = args?.ntpServers;
@@ -339,6 +345,10 @@ export interface NetworktemplateState {
      * Mist NAC defaults applied by this network template
      */
     mistNac?: pulumi.Input<inputs.org.NetworktemplateMistNac | undefined>;
+    /**
+     * Multicast settings for networks in the master VRF (not assigned to any vrf_instances); PIM is automatically enabled when any master-VRF network has `multicast.enabled`==`true`
+     */
+    multicastConfig?: pulumi.Input<inputs.org.NetworktemplateMulticastConfig | undefined>;
     /**
      * Display name of the network template
      */
@@ -449,6 +459,10 @@ export interface NetworktemplateArgs {
      * Mist NAC defaults applied by this network template
      */
     mistNac?: pulumi.Input<inputs.org.NetworktemplateMistNac | undefined>;
+    /**
+     * Multicast settings for networks in the master VRF (not assigned to any vrf_instances); PIM is automatically enabled when any master-VRF network has `multicast.enabled`==`true`
+     */
+    multicastConfig?: pulumi.Input<inputs.org.NetworktemplateMulticastConfig | undefined>;
     /**
      * Display name of the network template
      */

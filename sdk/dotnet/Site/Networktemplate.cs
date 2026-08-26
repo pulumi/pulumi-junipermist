@@ -130,125 +130,140 @@ namespace Pulumi.JuniperMist.Site
     [JuniperMistResourceType("junipermist:site/networktemplate:Networktemplate")]
     public partial class Networktemplate : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Access control policies configured for the site
+        /// </summary>
         [Output("aclPolicies")]
         public Output<ImmutableArray<Outputs.NetworktemplateAclPolicy>> AclPolicies { get; private set; } = null!;
 
         /// <summary>
-        /// ACL Tags to identify traffic source or destination. Key name is the tag name
+        /// Access control tag definitions available to site policies
         /// </summary>
         [Output("aclTags")]
         public Output<ImmutableDictionary<string, Outputs.NetworktemplateAclTags>?> AclTags { get; private set; } = null!;
 
         /// <summary>
-        /// additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        /// Additional CLI configuration commands applied through the site setting
         /// </summary>
         [Output("additionalConfigCmds")]
         public Output<ImmutableArray<string>> AdditionalConfigCmds { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether line cards are included in automatic switch upgrades
+        /// </summary>
         [Output("autoUpgradeLinecard")]
         public Output<bool> AutoUpgradeLinecard { get; private set; } = null!;
 
+        /// <summary>
+        /// Layer 2 DHCP snooping settings for the site
+        /// </summary>
         [Output("dhcpSnooping")]
         public Output<Outputs.NetworktemplateDhcpSnooping?> DhcpSnooping { get; private set; } = null!;
 
         /// <summary>
-        /// If some system-default port usages are not desired - namely, ap / iot / uplink
+        /// System-defined switch port usages disabled for the site
         /// </summary>
         [Output("disabledSystemDefinedPortUsages")]
         public Output<ImmutableArray<string>> DisabledSystemDefinedPortUsages { get; private set; } = null!;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
+        /// Name server addresses configured for the site
         /// </summary>
         [Output("dnsServers")]
         public Output<ImmutableArray<string>> DnsServers { get; private set; } = null!;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
+        /// Search suffixes used for DNS lookups at the site
         /// </summary>
         [Output("dnsSuffixes")]
         public Output<ImmutableArray<string>> DnsSuffixes { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+        /// Additional IPv4 routes configured for the site
         /// </summary>
         [Output("extraRoutes")]
         public Output<ImmutableDictionary<string, Outputs.NetworktemplateExtraRoutes>?> ExtraRoutes { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+        /// Additional IPv6 routes configured for the site
         /// </summary>
         [Output("extraRoutes6")]
         public Output<ImmutableDictionary<string, Outputs.NetworktemplateExtraRoutes6>?> ExtraRoutes6 { get; private set; } = null!;
 
         /// <summary>
-        /// Enable MistNac to use RadSec
+        /// Network access control settings for switches at the site
         /// </summary>
         [Output("mistNac")]
         public Output<Outputs.NetworktemplateMistNac?> MistNac { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is network name
+        /// Switch network definitions configured for the site
         /// </summary>
         [Output("networks")]
         public Output<ImmutableDictionary<string, Outputs.NetworktemplateNetworks>?> Networks { get; private set; } = null!;
 
         /// <summary>
-        /// List of NTP servers
+        /// Time synchronization server addresses configured for the site
         /// </summary>
         [Output("ntpServers")]
         public Output<ImmutableArray<string>> NtpServers { get; private set; } = null!;
 
         /// <summary>
-        /// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+        /// Routing area settings for OSPF on site switches
         /// </summary>
         [Output("ospfAreas")]
         public Output<ImmutableDictionary<string, Outputs.NetworktemplateOspfAreas>?> OspfAreas { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the port mirroring instance name. `PortMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+        /// Switch port mirroring settings for the site
         /// </summary>
         [Output("portMirroring")]
         public Output<ImmutableDictionary<string, Outputs.NetworktemplatePortMirroring>?> PortMirroring { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+        /// Switch port usage profiles available at the site
         /// </summary>
         [Output("portUsages")]
         public Output<ImmutableDictionary<string, Outputs.NetworktemplatePortUsages>?> PortUsages { get; private set; } = null!;
 
         /// <summary>
-        /// Junos Radius config
+        /// Switch RADIUS configuration for the site
         /// </summary>
         [Output("radiusConfig")]
         public Output<Outputs.NetworktemplateRadiusConfig?> RadiusConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// Syslog forwarding settings for devices at the site
+        /// </summary>
         [Output("remoteSyslog")]
         public Output<Outputs.NetworktemplateRemoteSyslog?> RemoteSyslog { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the routing policy name
+        /// Switch routing policy definitions for the site
         /// </summary>
         [Output("routingPolicies")]
         public Output<ImmutableDictionary<string, Outputs.NetworktemplateRoutingPolicies>?> RoutingPolicies { get; private set; } = null!;
 
         /// <summary>
-        /// Unique ID of the object instance in the Mist Organization
+        /// Unique value identifying the site settings object
         /// </summary>
         [Output("siteId")]
         public Output<string> SiteId { get; private set; } = null!;
 
+        /// <summary>
+        /// Management polling settings for SNMP on site devices
+        /// </summary>
         [Output("snmpConfig")]
         public Output<Outputs.NetworktemplateSnmpConfig?> SnmpConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Defines custom switch configuration based on different criteria
+        /// Rules for matching switches to model-specific settings
         /// </summary>
         [Output("switchMatching")]
         public Output<Outputs.NetworktemplateSwitchMatching?> SwitchMatching { get; private set; } = null!;
 
         /// <summary>
-        /// Switch Management settings
+        /// Management access settings for switches at the site
         /// </summary>
         [Output("switchMgmt")]
         public Output<Outputs.NetworktemplateSwitchMgmt?> SwitchMgmt { get; private set; } = null!;
@@ -259,11 +274,14 @@ namespace Pulumi.JuniperMist.Site
         [Output("usesDescriptionFromPortUsage")]
         public Output<bool?> UsesDescriptionFromPortUsage { get; private set; } = null!;
 
+        /// <summary>
+        /// Routing instance configuration for the site
+        /// </summary>
         [Output("vrfConfig")]
         public Output<Outputs.NetworktemplateVrfConfig?> VrfConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the network name
+        /// Switch VRF instances configured for the site
         /// </summary>
         [Output("vrfInstances")]
         public Output<ImmutableDictionary<string, Outputs.NetworktemplateVrfInstances>?> VrfInstances { get; private set; } = null!;
@@ -317,6 +335,10 @@ namespace Pulumi.JuniperMist.Site
     {
         [Input("aclPolicies")]
         private InputList<Inputs.NetworktemplateAclPolicyArgs>? _aclPolicies;
+
+        /// <summary>
+        /// Access control policies configured for the site
+        /// </summary>
         public InputList<Inputs.NetworktemplateAclPolicyArgs> AclPolicies
         {
             get => _aclPolicies ?? (_aclPolicies = new InputList<Inputs.NetworktemplateAclPolicyArgs>());
@@ -327,7 +349,7 @@ namespace Pulumi.JuniperMist.Site
         private InputMap<Inputs.NetworktemplateAclTagsArgs>? _aclTags;
 
         /// <summary>
-        /// ACL Tags to identify traffic source or destination. Key name is the tag name
+        /// Access control tag definitions available to site policies
         /// </summary>
         public InputMap<Inputs.NetworktemplateAclTagsArgs> AclTags
         {
@@ -339,7 +361,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _additionalConfigCmds;
 
         /// <summary>
-        /// additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        /// Additional CLI configuration commands applied through the site setting
         /// </summary>
         public InputList<string> AdditionalConfigCmds
         {
@@ -347,9 +369,15 @@ namespace Pulumi.JuniperMist.Site
             set => _additionalConfigCmds = value;
         }
 
+        /// <summary>
+        /// Whether line cards are included in automatic switch upgrades
+        /// </summary>
         [Input("autoUpgradeLinecard")]
         public Input<bool>? AutoUpgradeLinecard { get; set; }
 
+        /// <summary>
+        /// Layer 2 DHCP snooping settings for the site
+        /// </summary>
         [Input("dhcpSnooping")]
         public Input<Inputs.NetworktemplateDhcpSnoopingArgs>? DhcpSnooping { get; set; }
 
@@ -357,7 +385,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _disabledSystemDefinedPortUsages;
 
         /// <summary>
-        /// If some system-default port usages are not desired - namely, ap / iot / uplink
+        /// System-defined switch port usages disabled for the site
         /// </summary>
         public InputList<string> DisabledSystemDefinedPortUsages
         {
@@ -369,7 +397,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _dnsServers;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
+        /// Name server addresses configured for the site
         /// </summary>
         public InputList<string> DnsServers
         {
@@ -381,7 +409,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _dnsSuffixes;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
+        /// Search suffixes used for DNS lookups at the site
         /// </summary>
         public InputList<string> DnsSuffixes
         {
@@ -393,7 +421,7 @@ namespace Pulumi.JuniperMist.Site
         private InputMap<Inputs.NetworktemplateExtraRoutesArgs>? _extraRoutes;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+        /// Additional IPv4 routes configured for the site
         /// </summary>
         public InputMap<Inputs.NetworktemplateExtraRoutesArgs> ExtraRoutes
         {
@@ -405,7 +433,7 @@ namespace Pulumi.JuniperMist.Site
         private InputMap<Inputs.NetworktemplateExtraRoutes6Args>? _extraRoutes6;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+        /// Additional IPv6 routes configured for the site
         /// </summary>
         public InputMap<Inputs.NetworktemplateExtraRoutes6Args> ExtraRoutes6
         {
@@ -414,7 +442,7 @@ namespace Pulumi.JuniperMist.Site
         }
 
         /// <summary>
-        /// Enable MistNac to use RadSec
+        /// Network access control settings for switches at the site
         /// </summary>
         [Input("mistNac")]
         public Input<Inputs.NetworktemplateMistNacArgs>? MistNac { get; set; }
@@ -423,7 +451,7 @@ namespace Pulumi.JuniperMist.Site
         private InputMap<Inputs.NetworktemplateNetworksArgs>? _networks;
 
         /// <summary>
-        /// Property key is network name
+        /// Switch network definitions configured for the site
         /// </summary>
         public InputMap<Inputs.NetworktemplateNetworksArgs> Networks
         {
@@ -435,7 +463,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _ntpServers;
 
         /// <summary>
-        /// List of NTP servers
+        /// Time synchronization server addresses configured for the site
         /// </summary>
         public InputList<string> NtpServers
         {
@@ -447,7 +475,7 @@ namespace Pulumi.JuniperMist.Site
         private InputMap<Inputs.NetworktemplateOspfAreasArgs>? _ospfAreas;
 
         /// <summary>
-        /// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+        /// Routing area settings for OSPF on site switches
         /// </summary>
         public InputMap<Inputs.NetworktemplateOspfAreasArgs> OspfAreas
         {
@@ -459,7 +487,7 @@ namespace Pulumi.JuniperMist.Site
         private InputMap<Inputs.NetworktemplatePortMirroringArgs>? _portMirroring;
 
         /// <summary>
-        /// Property key is the port mirroring instance name. `PortMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+        /// Switch port mirroring settings for the site
         /// </summary>
         public InputMap<Inputs.NetworktemplatePortMirroringArgs> PortMirroring
         {
@@ -471,7 +499,7 @@ namespace Pulumi.JuniperMist.Site
         private InputMap<Inputs.NetworktemplatePortUsagesArgs>? _portUsages;
 
         /// <summary>
-        /// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+        /// Switch port usage profiles available at the site
         /// </summary>
         public InputMap<Inputs.NetworktemplatePortUsagesArgs> PortUsages
         {
@@ -480,11 +508,14 @@ namespace Pulumi.JuniperMist.Site
         }
 
         /// <summary>
-        /// Junos Radius config
+        /// Switch RADIUS configuration for the site
         /// </summary>
         [Input("radiusConfig")]
         public Input<Inputs.NetworktemplateRadiusConfigArgs>? RadiusConfig { get; set; }
 
+        /// <summary>
+        /// Syslog forwarding settings for devices at the site
+        /// </summary>
         [Input("remoteSyslog")]
         public Input<Inputs.NetworktemplateRemoteSyslogArgs>? RemoteSyslog { get; set; }
 
@@ -492,7 +523,7 @@ namespace Pulumi.JuniperMist.Site
         private InputMap<Inputs.NetworktemplateRoutingPoliciesArgs>? _routingPolicies;
 
         /// <summary>
-        /// Property key is the routing policy name
+        /// Switch routing policy definitions for the site
         /// </summary>
         public InputMap<Inputs.NetworktemplateRoutingPoliciesArgs> RoutingPolicies
         {
@@ -501,22 +532,25 @@ namespace Pulumi.JuniperMist.Site
         }
 
         /// <summary>
-        /// Unique ID of the object instance in the Mist Organization
+        /// Unique value identifying the site settings object
         /// </summary>
         [Input("siteId", required: true)]
         public Input<string> SiteId { get; set; } = null!;
 
+        /// <summary>
+        /// Management polling settings for SNMP on site devices
+        /// </summary>
         [Input("snmpConfig")]
         public Input<Inputs.NetworktemplateSnmpConfigArgs>? SnmpConfig { get; set; }
 
         /// <summary>
-        /// Defines custom switch configuration based on different criteria
+        /// Rules for matching switches to model-specific settings
         /// </summary>
         [Input("switchMatching")]
         public Input<Inputs.NetworktemplateSwitchMatchingArgs>? SwitchMatching { get; set; }
 
         /// <summary>
-        /// Switch Management settings
+        /// Management access settings for switches at the site
         /// </summary>
         [Input("switchMgmt")]
         public Input<Inputs.NetworktemplateSwitchMgmtArgs>? SwitchMgmt { get; set; }
@@ -527,6 +561,9 @@ namespace Pulumi.JuniperMist.Site
         [Input("usesDescriptionFromPortUsage")]
         public Input<bool>? UsesDescriptionFromPortUsage { get; set; }
 
+        /// <summary>
+        /// Routing instance configuration for the site
+        /// </summary>
         [Input("vrfConfig")]
         public Input<Inputs.NetworktemplateVrfConfigArgs>? VrfConfig { get; set; }
 
@@ -534,7 +571,7 @@ namespace Pulumi.JuniperMist.Site
         private InputMap<Inputs.NetworktemplateVrfInstancesArgs>? _vrfInstances;
 
         /// <summary>
-        /// Property key is the network name
+        /// Switch VRF instances configured for the site
         /// </summary>
         public InputMap<Inputs.NetworktemplateVrfInstancesArgs> VrfInstances
         {
@@ -552,6 +589,10 @@ namespace Pulumi.JuniperMist.Site
     {
         [Input("aclPolicies")]
         private InputList<Inputs.NetworktemplateAclPolicyGetArgs>? _aclPolicies;
+
+        /// <summary>
+        /// Access control policies configured for the site
+        /// </summary>
         public InputList<Inputs.NetworktemplateAclPolicyGetArgs> AclPolicies
         {
             get => _aclPolicies ?? (_aclPolicies = new InputList<Inputs.NetworktemplateAclPolicyGetArgs>());
@@ -562,7 +603,7 @@ namespace Pulumi.JuniperMist.Site
         private InputMap<Inputs.NetworktemplateAclTagsGetArgs>? _aclTags;
 
         /// <summary>
-        /// ACL Tags to identify traffic source or destination. Key name is the tag name
+        /// Access control tag definitions available to site policies
         /// </summary>
         public InputMap<Inputs.NetworktemplateAclTagsGetArgs> AclTags
         {
@@ -574,7 +615,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _additionalConfigCmds;
 
         /// <summary>
-        /// additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        /// Additional CLI configuration commands applied through the site setting
         /// </summary>
         public InputList<string> AdditionalConfigCmds
         {
@@ -582,9 +623,15 @@ namespace Pulumi.JuniperMist.Site
             set => _additionalConfigCmds = value;
         }
 
+        /// <summary>
+        /// Whether line cards are included in automatic switch upgrades
+        /// </summary>
         [Input("autoUpgradeLinecard")]
         public Input<bool>? AutoUpgradeLinecard { get; set; }
 
+        /// <summary>
+        /// Layer 2 DHCP snooping settings for the site
+        /// </summary>
         [Input("dhcpSnooping")]
         public Input<Inputs.NetworktemplateDhcpSnoopingGetArgs>? DhcpSnooping { get; set; }
 
@@ -592,7 +639,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _disabledSystemDefinedPortUsages;
 
         /// <summary>
-        /// If some system-default port usages are not desired - namely, ap / iot / uplink
+        /// System-defined switch port usages disabled for the site
         /// </summary>
         public InputList<string> DisabledSystemDefinedPortUsages
         {
@@ -604,7 +651,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _dnsServers;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
+        /// Name server addresses configured for the site
         /// </summary>
         public InputList<string> DnsServers
         {
@@ -616,7 +663,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _dnsSuffixes;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
+        /// Search suffixes used for DNS lookups at the site
         /// </summary>
         public InputList<string> DnsSuffixes
         {
@@ -628,7 +675,7 @@ namespace Pulumi.JuniperMist.Site
         private InputMap<Inputs.NetworktemplateExtraRoutesGetArgs>? _extraRoutes;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+        /// Additional IPv4 routes configured for the site
         /// </summary>
         public InputMap<Inputs.NetworktemplateExtraRoutesGetArgs> ExtraRoutes
         {
@@ -640,7 +687,7 @@ namespace Pulumi.JuniperMist.Site
         private InputMap<Inputs.NetworktemplateExtraRoutes6GetArgs>? _extraRoutes6;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+        /// Additional IPv6 routes configured for the site
         /// </summary>
         public InputMap<Inputs.NetworktemplateExtraRoutes6GetArgs> ExtraRoutes6
         {
@@ -649,7 +696,7 @@ namespace Pulumi.JuniperMist.Site
         }
 
         /// <summary>
-        /// Enable MistNac to use RadSec
+        /// Network access control settings for switches at the site
         /// </summary>
         [Input("mistNac")]
         public Input<Inputs.NetworktemplateMistNacGetArgs>? MistNac { get; set; }
@@ -658,7 +705,7 @@ namespace Pulumi.JuniperMist.Site
         private InputMap<Inputs.NetworktemplateNetworksGetArgs>? _networks;
 
         /// <summary>
-        /// Property key is network name
+        /// Switch network definitions configured for the site
         /// </summary>
         public InputMap<Inputs.NetworktemplateNetworksGetArgs> Networks
         {
@@ -670,7 +717,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _ntpServers;
 
         /// <summary>
-        /// List of NTP servers
+        /// Time synchronization server addresses configured for the site
         /// </summary>
         public InputList<string> NtpServers
         {
@@ -682,7 +729,7 @@ namespace Pulumi.JuniperMist.Site
         private InputMap<Inputs.NetworktemplateOspfAreasGetArgs>? _ospfAreas;
 
         /// <summary>
-        /// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+        /// Routing area settings for OSPF on site switches
         /// </summary>
         public InputMap<Inputs.NetworktemplateOspfAreasGetArgs> OspfAreas
         {
@@ -694,7 +741,7 @@ namespace Pulumi.JuniperMist.Site
         private InputMap<Inputs.NetworktemplatePortMirroringGetArgs>? _portMirroring;
 
         /// <summary>
-        /// Property key is the port mirroring instance name. `PortMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+        /// Switch port mirroring settings for the site
         /// </summary>
         public InputMap<Inputs.NetworktemplatePortMirroringGetArgs> PortMirroring
         {
@@ -706,7 +753,7 @@ namespace Pulumi.JuniperMist.Site
         private InputMap<Inputs.NetworktemplatePortUsagesGetArgs>? _portUsages;
 
         /// <summary>
-        /// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+        /// Switch port usage profiles available at the site
         /// </summary>
         public InputMap<Inputs.NetworktemplatePortUsagesGetArgs> PortUsages
         {
@@ -715,11 +762,14 @@ namespace Pulumi.JuniperMist.Site
         }
 
         /// <summary>
-        /// Junos Radius config
+        /// Switch RADIUS configuration for the site
         /// </summary>
         [Input("radiusConfig")]
         public Input<Inputs.NetworktemplateRadiusConfigGetArgs>? RadiusConfig { get; set; }
 
+        /// <summary>
+        /// Syslog forwarding settings for devices at the site
+        /// </summary>
         [Input("remoteSyslog")]
         public Input<Inputs.NetworktemplateRemoteSyslogGetArgs>? RemoteSyslog { get; set; }
 
@@ -727,7 +777,7 @@ namespace Pulumi.JuniperMist.Site
         private InputMap<Inputs.NetworktemplateRoutingPoliciesGetArgs>? _routingPolicies;
 
         /// <summary>
-        /// Property key is the routing policy name
+        /// Switch routing policy definitions for the site
         /// </summary>
         public InputMap<Inputs.NetworktemplateRoutingPoliciesGetArgs> RoutingPolicies
         {
@@ -736,22 +786,25 @@ namespace Pulumi.JuniperMist.Site
         }
 
         /// <summary>
-        /// Unique ID of the object instance in the Mist Organization
+        /// Unique value identifying the site settings object
         /// </summary>
         [Input("siteId")]
         public Input<string>? SiteId { get; set; }
 
+        /// <summary>
+        /// Management polling settings for SNMP on site devices
+        /// </summary>
         [Input("snmpConfig")]
         public Input<Inputs.NetworktemplateSnmpConfigGetArgs>? SnmpConfig { get; set; }
 
         /// <summary>
-        /// Defines custom switch configuration based on different criteria
+        /// Rules for matching switches to model-specific settings
         /// </summary>
         [Input("switchMatching")]
         public Input<Inputs.NetworktemplateSwitchMatchingGetArgs>? SwitchMatching { get; set; }
 
         /// <summary>
-        /// Switch Management settings
+        /// Management access settings for switches at the site
         /// </summary>
         [Input("switchMgmt")]
         public Input<Inputs.NetworktemplateSwitchMgmtGetArgs>? SwitchMgmt { get; set; }
@@ -762,6 +815,9 @@ namespace Pulumi.JuniperMist.Site
         [Input("usesDescriptionFromPortUsage")]
         public Input<bool>? UsesDescriptionFromPortUsage { get; set; }
 
+        /// <summary>
+        /// Routing instance configuration for the site
+        /// </summary>
         [Input("vrfConfig")]
         public Input<Inputs.NetworktemplateVrfConfigGetArgs>? VrfConfig { get; set; }
 
@@ -769,7 +825,7 @@ namespace Pulumi.JuniperMist.Site
         private InputMap<Inputs.NetworktemplateVrfInstancesGetArgs>? _vrfInstances;
 
         /// <summary>
-        /// Property key is the network name
+        /// Switch VRF instances configured for the site
         /// </summary>
         public InputMap<Inputs.NetworktemplateVrfInstancesGetArgs> VrfInstances
         {

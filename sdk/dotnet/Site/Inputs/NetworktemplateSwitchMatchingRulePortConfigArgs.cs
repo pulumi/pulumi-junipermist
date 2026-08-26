@@ -31,11 +31,20 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<bool>? AeLacpForceUp { get; set; }
 
         /// <summary>
+        /// If `Aggregated`==`True`, sets LACP to passive mode on this AE interface; by default, active (fast) mode is used
+        /// </summary>
+        [Input("aeLacpPassive")]
+        public Input<bool>? AeLacpPassive { get; set; }
+
+        /// <summary>
         /// To use slow timeout
         /// </summary>
         [Input("aeLacpSlow")]
         public Input<bool>? AeLacpSlow { get; set; }
 
+        /// <summary>
+        /// Whether this port is configured as an aggregated Ethernet member
+        /// </summary>
         [Input("aggregated")]
         public Input<bool>? Aggregated { get; set; }
 
@@ -45,6 +54,9 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("critical")]
         public Input<bool>? Critical { get; set; }
 
+        /// <summary>
+        /// Human-readable description for this Junos port
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
@@ -55,7 +67,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<bool>? DisableAutoneg { get; set; }
 
         /// <summary>
-        /// enum: `Auto`, `Full`, `Half`
+        /// Link duplex mode for this Junos port
         /// </summary>
         [Input("duplex")]
         public Input<string>? Duplex { get; set; }
@@ -66,6 +78,9 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("dynamicUsage")]
         public Input<string>? DynamicUsage { get; set; }
 
+        /// <summary>
+        /// Whether this Junos port participates in an ESI-LAG
+        /// </summary>
         [Input("esilag")]
         public Input<bool>? Esilag { get; set; }
 
@@ -93,6 +108,9 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("noLocalOverwrite")]
         public Input<bool>? NoLocalOverwrite { get; set; }
 
+        /// <summary>
+        /// Whether PoE capabilities are disabled for this Junos port
+        /// </summary>
         [Input("poeDisabled")]
         public Input<bool>? PoeDisabled { get; set; }
 
@@ -103,7 +121,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? PortNetwork { get; set; }
 
         /// <summary>
-        /// enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`Auto`
+        /// Link speed for this Junos port
         /// </summary>
         [Input("speed")]
         public Input<string>? Speed { get; set; }

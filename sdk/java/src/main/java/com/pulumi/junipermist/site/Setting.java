@@ -38,6 +38,7 @@ import com.pulumi.junipermist.site.outputs.SettingSyntheticTest;
 import com.pulumi.junipermist.site.outputs.SettingTuntermMonitoring;
 import com.pulumi.junipermist.site.outputs.SettingTuntermMulticastConfig;
 import com.pulumi.junipermist.site.outputs.SettingUplinkPortConfig;
+import com.pulumi.junipermist.site.outputs.SettingUwbConfig;
 import com.pulumi.junipermist.site.outputs.SettingVarsAnnotations;
 import com.pulumi.junipermist.site.outputs.SettingVna;
 import com.pulumi.junipermist.site.outputs.SettingVsInstance;
@@ -316,14 +317,14 @@ public class Setting extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="enableUnii4", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> enableUnii4;
+    private Output</* @Nullable */ Boolean> enableUnii4;
 
     /**
      * @return Whether UNII-4 channels are enabled for the site
      * 
      */
-    public Output<Boolean> enableUnii4() {
-        return this.enableUnii4;
+    public Output<Optional<Boolean>> enableUnii4() {
+        return Codegen.optional(this.enableUnii4);
     }
     /**
      * Dwell-time analytics rules for the site
@@ -758,6 +759,20 @@ public class Setting extends com.pulumi.resources.CustomResource {
      */
     public Output<SettingUplinkPortConfig> uplinkPortConfig() {
         return this.uplinkPortConfig;
+    }
+    /**
+     * UWB RTLS (OMLOX asset visibility) settings for the site, only effective on AP models with a UWB radio and in countries where the UWB radio is permitted. Overridden by the device profile and device-level settings
+     * 
+     */
+    @Export(name="uwbConfig", refs={SettingUwbConfig.class}, tree="[0]")
+    private Output</* @Nullable */ SettingUwbConfig> uwbConfig;
+
+    /**
+     * @return UWB RTLS (OMLOX asset visibility) settings for the site, only effective on AP models with a UWB radio and in countries where the UWB radio is permitted. Overridden by the device profile and device-level settings
+     * 
+     */
+    public Output<Optional<SettingUwbConfig>> uwbConfig() {
+        return Codegen.optional(this.uwbConfig);
     }
     /**
      * Template variables defined for the site

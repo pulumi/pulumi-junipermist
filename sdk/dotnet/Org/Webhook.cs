@@ -65,6 +65,12 @@ namespace Pulumi.JuniperMist.Org
     public partial class Webhook : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Default action applied when none of the `Rules` match the incoming event
+        /// </summary>
+        [Output("defaultAction")]
+        public Output<string?> DefaultAction { get; private set; } = null!;
+
+        /// <summary>
         /// Whether webhook is enabled
         /// </summary>
         [Output("enabled")]
@@ -129,6 +135,12 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional filtering rules to override `Topics`. Each rule permits or blocks events for a topic, optionally based on event payload matching criteria
+        /// </summary>
+        [Output("rules")]
+        public Output<ImmutableArray<Outputs.WebhookRule>> Rules { get; private set; } = null!;
 
         /// <summary>
         /// Only if `Type`=`http-post`
@@ -227,6 +239,12 @@ namespace Pulumi.JuniperMist.Org
     public sealed class WebhookArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Default action applied when none of the `Rules` match the incoming event
+        /// </summary>
+        [Input("defaultAction")]
+        public Input<string>? DefaultAction { get; set; }
+
+        /// <summary>
         /// Whether webhook is enabled
         /// </summary>
         [Input("enabled")]
@@ -324,6 +342,18 @@ namespace Pulumi.JuniperMist.Org
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
+        [Input("rules")]
+        private InputList<Inputs.WebhookRuleArgs>? _rules;
+
+        /// <summary>
+        /// Optional filtering rules to override `Topics`. Each rule permits or blocks events for a topic, optionally based on event payload matching criteria
+        /// </summary>
+        public InputList<Inputs.WebhookRuleArgs> Rules
+        {
+            get => _rules ?? (_rules = new InputList<Inputs.WebhookRuleArgs>());
+            set => _rules = value;
+        }
+
         [Input("secret")]
         private Input<string>? _secret;
 
@@ -400,6 +430,12 @@ namespace Pulumi.JuniperMist.Org
 
     public sealed class WebhookState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Default action applied when none of the `Rules` match the incoming event
+        /// </summary>
+        [Input("defaultAction")]
+        public Input<string>? DefaultAction { get; set; }
+
         /// <summary>
         /// Whether webhook is enabled
         /// </summary>
@@ -497,6 +533,18 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
+
+        [Input("rules")]
+        private InputList<Inputs.WebhookRuleGetArgs>? _rules;
+
+        /// <summary>
+        /// Optional filtering rules to override `Topics`. Each rule permits or blocks events for a topic, optionally based on event payload matching criteria
+        /// </summary>
+        public InputList<Inputs.WebhookRuleGetArgs> Rules
+        {
+            get => _rules ?? (_rules = new InputList<Inputs.WebhookRuleGetArgs>());
+            set => _rules = value;
+        }
 
         [Input("secret")]
         private Input<string>? _secret;

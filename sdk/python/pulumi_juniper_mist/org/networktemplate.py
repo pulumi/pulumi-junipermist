@@ -32,6 +32,7 @@ class NetworktemplateArgs:
                  extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworktemplateExtraRoutesArgs']]]] = None,
                  extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworktemplateExtraRoutes6Args']]]] = None,
                  mist_nac: pulumi.Input[Optional['NetworktemplateMistNacArgs']] = None,
+                 multicast_config: pulumi.Input[Optional['NetworktemplateMulticastConfigArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  networks: pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworktemplateNetworksArgs']]]] = None,
                  ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -61,6 +62,7 @@ class NetworktemplateArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateExtraRoutesArgs']]] extra_routes: Additional IPv4 route defaults in this network template
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateExtraRoutes6Args']]] extra_routes6: Additional IPv6 route defaults in this network template
         :param pulumi.Input['NetworktemplateMistNacArgs'] mist_nac: Mist NAC defaults applied by this network template
+        :param pulumi.Input['NetworktemplateMulticastConfigArgs'] multicast_config: Multicast settings for networks in the master VRF (not assigned to any vrf_instances); PIM is automatically enabled when any master-VRF network has `multicast.enabled`==`true`
         :param pulumi.Input[_builtins.str] name: Display name of the network template
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateNetworksArgs']]] networks: Layer 3 networks configured by this network template
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: NTP servers provided by this network template
@@ -98,6 +100,8 @@ class NetworktemplateArgs:
             pulumi.set(__self__, "extra_routes6", extra_routes6)
         if mist_nac is not None:
             pulumi.set(__self__, "mist_nac", mist_nac)
+        if multicast_config is not None:
+            pulumi.set(__self__, "multicast_config", multicast_config)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if networks is not None:
@@ -260,6 +264,18 @@ class NetworktemplateArgs:
     @mist_nac.setter
     def mist_nac(self, value: pulumi.Input[Optional['NetworktemplateMistNacArgs']]):
         pulumi.set(self, "mist_nac", value)
+
+    @_builtins.property
+    @pulumi.getter(name="multicastConfig")
+    def multicast_config(self) -> pulumi.Input[Optional['NetworktemplateMulticastConfigArgs']]:
+        """
+        Multicast settings for networks in the master VRF (not assigned to any vrf_instances); PIM is automatically enabled when any master-VRF network has `multicast.enabled`==`true`
+        """
+        return pulumi.get(self, "multicast_config")
+
+    @multicast_config.setter
+    def multicast_config(self, value: pulumi.Input[Optional['NetworktemplateMulticastConfigArgs']]):
+        pulumi.set(self, "multicast_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -455,6 +471,7 @@ class _NetworktemplateState:
                  extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworktemplateExtraRoutesArgs']]]] = None,
                  extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworktemplateExtraRoutes6Args']]]] = None,
                  mist_nac: pulumi.Input[Optional['NetworktemplateMistNacArgs']] = None,
+                 multicast_config: pulumi.Input[Optional['NetworktemplateMulticastConfigArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  networks: pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworktemplateNetworksArgs']]]] = None,
                  ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -484,6 +501,7 @@ class _NetworktemplateState:
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateExtraRoutesArgs']]] extra_routes: Additional IPv4 route defaults in this network template
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateExtraRoutes6Args']]] extra_routes6: Additional IPv6 route defaults in this network template
         :param pulumi.Input['NetworktemplateMistNacArgs'] mist_nac: Mist NAC defaults applied by this network template
+        :param pulumi.Input['NetworktemplateMulticastConfigArgs'] multicast_config: Multicast settings for networks in the master VRF (not assigned to any vrf_instances); PIM is automatically enabled when any master-VRF network has `multicast.enabled`==`true`
         :param pulumi.Input[_builtins.str] name: Display name of the network template
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateNetworksArgs']]] networks: Layer 3 networks configured by this network template
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: NTP servers provided by this network template
@@ -521,6 +539,8 @@ class _NetworktemplateState:
             pulumi.set(__self__, "extra_routes6", extra_routes6)
         if mist_nac is not None:
             pulumi.set(__self__, "mist_nac", mist_nac)
+        if multicast_config is not None:
+            pulumi.set(__self__, "multicast_config", multicast_config)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if networks is not None:
@@ -673,6 +693,18 @@ class _NetworktemplateState:
     @mist_nac.setter
     def mist_nac(self, value: pulumi.Input[Optional['NetworktemplateMistNacArgs']]):
         pulumi.set(self, "mist_nac", value)
+
+    @_builtins.property
+    @pulumi.getter(name="multicastConfig")
+    def multicast_config(self) -> pulumi.Input[Optional['NetworktemplateMulticastConfigArgs']]:
+        """
+        Multicast settings for networks in the master VRF (not assigned to any vrf_instances); PIM is automatically enabled when any master-VRF network has `multicast.enabled`==`true`
+        """
+        return pulumi.get(self, "multicast_config")
+
+    @multicast_config.setter
+    def multicast_config(self, value: pulumi.Input[Optional['NetworktemplateMulticastConfigArgs']]):
+        pulumi.set(self, "multicast_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -883,6 +915,7 @@ class Networktemplate(pulumi.CustomResource):
                  extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworktemplateExtraRoutesArgs', 'NetworktemplateExtraRoutesArgsDict']]]]] = None,
                  extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworktemplateExtraRoutes6Args', 'NetworktemplateExtraRoutes6ArgsDict']]]]] = None,
                  mist_nac: pulumi.Input[Optional[Union['NetworktemplateMistNacArgs', 'NetworktemplateMistNacArgsDict']]] = None,
+                 multicast_config: pulumi.Input[Optional[Union['NetworktemplateMulticastConfigArgs', 'NetworktemplateMulticastConfigArgsDict']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  networks: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworktemplateNetworksArgs', 'NetworktemplateNetworksArgsDict']]]]] = None,
                  ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -992,6 +1025,7 @@ class Networktemplate(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateExtraRoutesArgs', 'NetworktemplateExtraRoutesArgsDict']]]] extra_routes: Additional IPv4 route defaults in this network template
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateExtraRoutes6Args', 'NetworktemplateExtraRoutes6ArgsDict']]]] extra_routes6: Additional IPv6 route defaults in this network template
         :param pulumi.Input[Union['NetworktemplateMistNacArgs', 'NetworktemplateMistNacArgsDict']] mist_nac: Mist NAC defaults applied by this network template
+        :param pulumi.Input[Union['NetworktemplateMulticastConfigArgs', 'NetworktemplateMulticastConfigArgsDict']] multicast_config: Multicast settings for networks in the master VRF (not assigned to any vrf_instances); PIM is automatically enabled when any master-VRF network has `multicast.enabled`==`true`
         :param pulumi.Input[_builtins.str] name: Display name of the network template
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateNetworksArgs', 'NetworktemplateNetworksArgsDict']]]] networks: Layer 3 networks configured by this network template
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: NTP servers provided by this network template
@@ -1120,6 +1154,7 @@ class Networktemplate(pulumi.CustomResource):
                  extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworktemplateExtraRoutesArgs', 'NetworktemplateExtraRoutesArgsDict']]]]] = None,
                  extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworktemplateExtraRoutes6Args', 'NetworktemplateExtraRoutes6ArgsDict']]]]] = None,
                  mist_nac: pulumi.Input[Optional[Union['NetworktemplateMistNacArgs', 'NetworktemplateMistNacArgsDict']]] = None,
+                 multicast_config: pulumi.Input[Optional[Union['NetworktemplateMulticastConfigArgs', 'NetworktemplateMulticastConfigArgsDict']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  networks: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworktemplateNetworksArgs', 'NetworktemplateNetworksArgsDict']]]]] = None,
                  ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1155,6 +1190,7 @@ class Networktemplate(pulumi.CustomResource):
             __props__.__dict__["extra_routes"] = extra_routes
             __props__.__dict__["extra_routes6"] = extra_routes6
             __props__.__dict__["mist_nac"] = mist_nac
+            __props__.__dict__["multicast_config"] = multicast_config
             __props__.__dict__["name"] = name
             __props__.__dict__["networks"] = networks
             __props__.__dict__["ntp_servers"] = ntp_servers
@@ -1193,6 +1229,7 @@ class Networktemplate(pulumi.CustomResource):
             extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworktemplateExtraRoutesArgs', 'NetworktemplateExtraRoutesArgsDict']]]]] = None,
             extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworktemplateExtraRoutes6Args', 'NetworktemplateExtraRoutes6ArgsDict']]]]] = None,
             mist_nac: pulumi.Input[Optional[Union['NetworktemplateMistNacArgs', 'NetworktemplateMistNacArgsDict']]] = None,
+            multicast_config: pulumi.Input[Optional[Union['NetworktemplateMulticastConfigArgs', 'NetworktemplateMulticastConfigArgsDict']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             networks: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworktemplateNetworksArgs', 'NetworktemplateNetworksArgsDict']]]]] = None,
             ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1226,6 +1263,7 @@ class Networktemplate(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateExtraRoutesArgs', 'NetworktemplateExtraRoutesArgsDict']]]] extra_routes: Additional IPv4 route defaults in this network template
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateExtraRoutes6Args', 'NetworktemplateExtraRoutes6ArgsDict']]]] extra_routes6: Additional IPv6 route defaults in this network template
         :param pulumi.Input[Union['NetworktemplateMistNacArgs', 'NetworktemplateMistNacArgsDict']] mist_nac: Mist NAC defaults applied by this network template
+        :param pulumi.Input[Union['NetworktemplateMulticastConfigArgs', 'NetworktemplateMulticastConfigArgsDict']] multicast_config: Multicast settings for networks in the master VRF (not assigned to any vrf_instances); PIM is automatically enabled when any master-VRF network has `multicast.enabled`==`true`
         :param pulumi.Input[_builtins.str] name: Display name of the network template
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateNetworksArgs', 'NetworktemplateNetworksArgsDict']]]] networks: Layer 3 networks configured by this network template
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: NTP servers provided by this network template
@@ -1257,6 +1295,7 @@ class Networktemplate(pulumi.CustomResource):
         __props__.__dict__["extra_routes"] = extra_routes
         __props__.__dict__["extra_routes6"] = extra_routes6
         __props__.__dict__["mist_nac"] = mist_nac
+        __props__.__dict__["multicast_config"] = multicast_config
         __props__.__dict__["name"] = name
         __props__.__dict__["networks"] = networks
         __props__.__dict__["ntp_servers"] = ntp_servers
@@ -1354,6 +1393,14 @@ class Networktemplate(pulumi.CustomResource):
         Mist NAC defaults applied by this network template
         """
         return pulumi.get(self, "mist_nac")
+
+    @_builtins.property
+    @pulumi.getter(name="multicastConfig")
+    def multicast_config(self) -> pulumi.Output[Optional['outputs.NetworktemplateMulticastConfig']]:
+        """
+        Multicast settings for networks in the master VRF (not assigned to any vrf_instances); PIM is automatically enabled when any master-VRF network has `multicast.enabled`==`true`
+        """
+        return pulumi.get(self, "multicast_config")
 
     @_builtins.property
     @pulumi.getter

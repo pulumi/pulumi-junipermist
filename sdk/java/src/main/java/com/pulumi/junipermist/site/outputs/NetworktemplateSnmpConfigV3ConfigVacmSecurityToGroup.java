@@ -13,19 +13,27 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroup {
+    /**
+     * @return VACM security-name to group mapping entries
+     * 
+     */
     private @Nullable List<NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupContent> contents;
     /**
-     * @return enum: `usm`, `v1`, `v2c`
+     * @return Required security model for these VACM group mappings
      * 
      */
     private @Nullable String securityModel;
 
     private NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroup() {}
+    /**
+     * @return VACM security-name to group mapping entries
+     * 
+     */
     public List<NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupContent> contents() {
         return this.contents == null ? List.of() : this.contents;
     }
     /**
-     * @return enum: `usm`, `v1`, `v2c`
+     * @return Required security model for these VACM group mappings
      * 
      */
     public Optional<String> securityModel() {

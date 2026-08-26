@@ -12,6 +12,18 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class SwitchSnmpConfigV3ConfigNotifyFilterArgs : global::Pulumi.ResourceArgs
     {
+        [Input("categories")]
+        private InputList<string>? _categories;
+
+        /// <summary>
+        /// CX only. List of SNMP trap group categories included in this filter profile. See https://www.juniper.net/documentation/software/topics/task/configuration/snmp-trap-groups-configuring-junos-nm.html for valid category names.
+        /// </summary>
+        public InputList<string> Categories
+        {
+            get => _categories ?? (_categories = new InputList<string>());
+            set => _categories = value;
+        }
+
         [Input("contents")]
         private InputList<Inputs.SwitchSnmpConfigV3ConfigNotifyFilterContentArgs>? _contents;
 

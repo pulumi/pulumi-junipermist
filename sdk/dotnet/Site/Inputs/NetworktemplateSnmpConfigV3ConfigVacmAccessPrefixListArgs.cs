@@ -13,43 +13,43 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Only required if `Type`==`ContextPrefix`
+        /// Context prefix for this VACM access rule. Required only if `Type`==`ContextPrefix`
         /// </summary>
         [Input("contextPrefix")]
         public Input<string>? ContextPrefix { get; set; }
 
         /// <summary>
-        /// Refer to view name
+        /// Notify view name referenced by this VACM access rule
         /// </summary>
         [Input("notifyView")]
         public Input<string>? NotifyView { get; set; }
 
         /// <summary>
-        /// Refer to view name
+        /// Read view name referenced by this VACM access rule
         /// </summary>
         [Input("readView")]
         public Input<string>? ReadView { get; set; }
 
         /// <summary>
-        /// enum: `Authentication`, `None`, `Privacy`
+        /// Required security level for this VACM access rule
         /// </summary>
         [Input("securityLevel")]
         public Input<string>? SecurityLevel { get; set; }
 
         /// <summary>
-        /// enum: `Any`, `Usm`, `V1`, `V2c`
+        /// Required security model for this VACM access rule
         /// </summary>
         [Input("securityModel")]
         public Input<string>? SecurityModel { get; set; }
 
         /// <summary>
-        /// enum: `ContextPrefix`, `DefaultContextPrefix`
+        /// VACM context matching type for this access rule
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// Refer to view name
+        /// Write view name referenced by this VACM access rule
         /// </summary>
         [Input("writeView")]
         public Input<string>? WriteView { get; set; }

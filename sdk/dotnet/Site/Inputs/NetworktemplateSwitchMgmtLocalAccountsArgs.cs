@@ -14,6 +14,10 @@ namespace Pulumi.JuniperMist.Site.Inputs
     {
         [Input("password")]
         private Input<string>? _password;
+
+        /// <summary>
+        /// Local password for the switch user account
+        /// </summary>
         public Input<string>? Password
         {
             get => _password;
@@ -25,7 +29,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// enum: `Admin`, `Helpdesk`, `None`, `Read`
+        /// Access role granted to the local switch user account
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }

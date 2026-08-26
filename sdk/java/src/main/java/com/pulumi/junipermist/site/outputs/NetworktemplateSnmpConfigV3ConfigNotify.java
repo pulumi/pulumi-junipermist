@@ -10,23 +10,39 @@ import java.util.Objects;
 
 @CustomType
 public final class NetworktemplateSnmpConfigV3ConfigNotify {
+    /**
+     * @return Identifier for this SNMPv3 notification definition
+     * 
+     */
     private String name;
+    /**
+     * @return Notification tag used to select target addresses
+     * 
+     */
     private String tag;
     /**
-     * @return enum: `inform`, `trap`
+     * @return Delivery mode for this SNMPv3 notification, such as trap or inform
      * 
      */
     private String type;
 
     private NetworktemplateSnmpConfigV3ConfigNotify() {}
+    /**
+     * @return Identifier for this SNMPv3 notification definition
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Notification tag used to select target addresses
+     * 
+     */
     public String tag() {
         return this.tag;
     }
     /**
-     * @return enum: `inform`, `trap`
+     * @return Delivery mode for this SNMPv3 notification, such as trap or inform
      * 
      */
     public String type() {

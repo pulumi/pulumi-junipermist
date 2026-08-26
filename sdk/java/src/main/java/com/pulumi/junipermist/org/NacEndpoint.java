@@ -12,6 +12,7 @@ import com.pulumi.junipermist.org.NacEndpointArgs;
 import com.pulumi.junipermist.org.inputs.NacEndpointState;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -151,6 +152,20 @@ public class NacEndpoint extends com.pulumi.resources.CustomResource {
      */
     public Output<String> radiusGroup() {
         return this.radiusGroup;
+    }
+    /**
+     * Optional list of site IDs this user MAC entry is scoped to
+     * 
+     */
+    @Export(name="siteIds", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> siteIds;
+
+    /**
+     * @return Optional list of site IDs this user MAC entry is scoped to
+     * 
+     */
+    public Output<Optional<List<String>>> siteIds() {
+        return Codegen.optional(this.siteIds);
     }
     /**
      * Network VLAN value associated with this user MAC entry

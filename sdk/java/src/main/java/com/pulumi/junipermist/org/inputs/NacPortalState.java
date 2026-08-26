@@ -96,6 +96,21 @@ public final class NacPortalState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether location data collection is enabled for devices onboarding through this NAC portal
+     * 
+     */
+    @Import(name="enableLocation")
+    private @Nullable Output<Boolean> enableLocation;
+
+    /**
+     * @return Whether location data collection is enabled for devices onboarding through this NAC portal
+     * 
+     */
+    public Optional<Output<Boolean>> enableLocation() {
+        return Optional.ofNullable(this.enableLocation);
+    }
+
+    /**
      * Model, version, fingering, events (connecting, disconnect, roaming), which ap
      * 
      */
@@ -253,6 +268,7 @@ public final class NacPortalState extends com.pulumi.resources.ResourceArgs {
         this.additionalNacServerNames = $.additionalNacServerNames;
         this.certExpireTime = $.certExpireTime;
         this.eapType = $.eapType;
+        this.enableLocation = $.enableLocation;
         this.enableTelemetry = $.enableTelemetry;
         this.expiryNotificationTime = $.expiryNotificationTime;
         this.name = $.name;
@@ -406,6 +422,27 @@ public final class NacPortalState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder eapType(String eapType) {
             return eapType(Output.of(eapType));
+        }
+
+        /**
+         * @param enableLocation Whether location data collection is enabled for devices onboarding through this NAC portal
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableLocation(@Nullable Output<Boolean> enableLocation) {
+            $.enableLocation = enableLocation;
+            return this;
+        }
+
+        /**
+         * @param enableLocation Whether location data collection is enabled for devices onboarding through this NAC portal
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableLocation(Boolean enableLocation) {
+            return enableLocation(Output.of(enableLocation));
         }
 
         /**

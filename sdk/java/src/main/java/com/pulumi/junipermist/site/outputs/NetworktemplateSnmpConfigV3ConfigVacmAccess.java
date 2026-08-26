@@ -13,13 +13,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NetworktemplateSnmpConfigV3ConfigVacmAccess {
+    /**
+     * @return SNMP VACM group name
+     * 
+     */
     private @Nullable String groupName;
+    /**
+     * @return Context prefix rules for this VACM group
+     * 
+     */
     private @Nullable List<NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixList> prefixLists;
 
     private NetworktemplateSnmpConfigV3ConfigVacmAccess() {}
+    /**
+     * @return SNMP VACM group name
+     * 
+     */
     public Optional<String> groupName() {
         return Optional.ofNullable(this.groupName);
     }
+    /**
+     * @return Context prefix rules for this VACM group
+     * 
+     */
     public List<NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixList> prefixLists() {
         return this.prefixLists == null ? List.of() : this.prefixLists;
     }

@@ -99,6 +99,21 @@ public final class NacEndpointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Optional list of site IDs this user MAC entry is scoped to
+     * 
+     */
+    @Import(name="siteIds")
+    private @Nullable Output<List<String>> siteIds;
+
+    /**
+     * @return Optional list of site IDs this user MAC entry is scoped to
+     * 
+     */
+    public Optional<Output<List<String>>> siteIds() {
+        return Optional.ofNullable(this.siteIds);
+    }
+
+    /**
      * Network VLAN value associated with this user MAC entry
      * 
      */
@@ -122,6 +137,7 @@ public final class NacEndpointState extends com.pulumi.resources.ResourceArgs {
         this.notes = $.notes;
         this.orgId = $.orgId;
         this.radiusGroup = $.radiusGroup;
+        this.siteIds = $.siteIds;
         this.vlan = $.vlan;
     }
 
@@ -265,6 +281,37 @@ public final class NacEndpointState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder radiusGroup(String radiusGroup) {
             return radiusGroup(Output.of(radiusGroup));
+        }
+
+        /**
+         * @param siteIds Optional list of site IDs this user MAC entry is scoped to
+         * 
+         * @return builder
+         * 
+         */
+        public Builder siteIds(@Nullable Output<List<String>> siteIds) {
+            $.siteIds = siteIds;
+            return this;
+        }
+
+        /**
+         * @param siteIds Optional list of site IDs this user MAC entry is scoped to
+         * 
+         * @return builder
+         * 
+         */
+        public Builder siteIds(List<String> siteIds) {
+            return siteIds(Output.of(siteIds));
+        }
+
+        /**
+         * @param siteIds Optional list of site IDs this user MAC entry is scoped to
+         * 
+         * @return builder
+         * 
+         */
+        public Builder siteIds(String... siteIds) {
+            return siteIds(List.of(siteIds));
         }
 
         /**

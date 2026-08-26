@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.junipermist.device.inputs.SwitchVrfInstancesExtraRoutes6Args;
 import com.pulumi.junipermist.device.inputs.SwitchVrfInstancesExtraRoutesArgs;
+import com.pulumi.junipermist.device.inputs.SwitchVrfInstancesMulticastConfigArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -80,6 +81,21 @@ public final class SwitchVrfInstancesArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Multicast configuration for this VRF instance. PIM is automatically enabled when any network in this VRF has `multicast.enabled`==`true`
+     * 
+     */
+    @Import(name="multicastConfig")
+    private @Nullable Output<SwitchVrfInstancesMulticastConfigArgs> multicastConfig;
+
+    /**
+     * @return Multicast configuration for this VRF instance. PIM is automatically enabled when any network in this VRF has `multicast.enabled`==`true`
+     * 
+     */
+    public Optional<Output<SwitchVrfInstancesMulticastConfigArgs>> multicastConfig() {
+        return Optional.ofNullable(this.multicastConfig);
+    }
+
+    /**
      * Names of switch networks included in this VRF instance
      * 
      */
@@ -101,6 +117,7 @@ public final class SwitchVrfInstancesArgs extends com.pulumi.resources.ResourceA
         this.evpnAutoLoopbackSubnet6 = $.evpnAutoLoopbackSubnet6;
         this.extraRoutes = $.extraRoutes;
         this.extraRoutes6 = $.extraRoutes6;
+        this.multicastConfig = $.multicastConfig;
         this.networks = $.networks;
     }
 
@@ -204,6 +221,27 @@ public final class SwitchVrfInstancesArgs extends com.pulumi.resources.ResourceA
          */
         public Builder extraRoutes6(Map<String,SwitchVrfInstancesExtraRoutes6Args> extraRoutes6) {
             return extraRoutes6(Output.of(extraRoutes6));
+        }
+
+        /**
+         * @param multicastConfig Multicast configuration for this VRF instance. PIM is automatically enabled when any network in this VRF has `multicast.enabled`==`true`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multicastConfig(@Nullable Output<SwitchVrfInstancesMulticastConfigArgs> multicastConfig) {
+            $.multicastConfig = multicastConfig;
+            return this;
+        }
+
+        /**
+         * @param multicastConfig Multicast configuration for this VRF instance. PIM is automatically enabled when any network in this VRF has `multicast.enabled`==`true`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multicastConfig(SwitchVrfInstancesMulticastConfigArgs multicastConfig) {
+            return multicastConfig(Output.of(multicastConfig));
         }
 
         /**

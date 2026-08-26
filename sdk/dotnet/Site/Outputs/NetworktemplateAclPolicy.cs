@@ -14,16 +14,19 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class NetworktemplateAclPolicy
     {
         /// <summary>
-        /// ACL Policy Actions:
-        ///   - for GBP-based policy, all SrcTags and DstTags have to be gbp-based
-        ///   - for ACL-based policy, `Network` is required in either the source or destination so that we know where to attach the policy to
+        /// Destination tag actions evaluated for sources matching this ACL policy
         /// </summary>
         public readonly ImmutableArray<Outputs.NetworktemplateAclPolicyAction> Actions;
+        /// <summary>
+        /// Whether this ACL policy is disabled
+        /// </summary>
+        public readonly bool? Disabled;
+        /// <summary>
+        /// Display name of the ACL policy
+        /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// ACL Policy Source Tags:
-        ///   - for GBP-based policy, all SrcTags and DstTags have to be gbp-based
-        ///   - for ACL-based policy, `Network` is required in either the source or destination so that we know where to attach the policy to
+        /// Source ACL tags that select traffic for this ACL policy
         /// </summary>
         public readonly ImmutableArray<string> SrcTags;
 
@@ -31,11 +34,14 @@ namespace Pulumi.JuniperMist.Site.Outputs
         private NetworktemplateAclPolicy(
             ImmutableArray<Outputs.NetworktemplateAclPolicyAction> actions,
 
+            bool? disabled,
+
             string? name,
 
             ImmutableArray<string> srcTags)
         {
             Actions = actions;
+            Disabled = disabled;
             Name = name;
             SrcTags = srcTags;
         }

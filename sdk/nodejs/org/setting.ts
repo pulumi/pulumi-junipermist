@@ -124,9 +124,13 @@ export class Setting extends pulumi.CustomResource {
      */
     declare public readonly autoUpgrade: pulumi.Output<outputs.org.SettingAutoUpgrade | undefined>;
     /**
-     * CA certificates used by organization-level RADIUS and RADSec settings
+     * Legacy CA certificate list used to verify client certificates. If `cacertsConfigs` is provided and non-empty, this field is ignored.
      */
     declare public readonly cacerts: pulumi.Output<string[]>;
+    /**
+     * Preferred per-issuer CA certificate configuration with optional OCSP and CRL settings. When provided and non-empty, `cacerts` is ignored.
+     */
+    declare public readonly cacertsConfigs: pulumi.Output<outputs.org.SettingCacertsConfig[] | undefined>;
     /**
      * Integration settings for Celona
      */
@@ -135,10 +139,6 @@ export class Setting extends pulumi.CustomResource {
      * Packet capture integration settings for CloudShark
      */
     declare public readonly cloudshark: pulumi.Output<outputs.org.SettingCloudshark | undefined>;
-    /**
-     * Integration settings for Cradlepoint devices
-     */
-    declare public /*out*/ readonly cradlepoint: pulumi.Output<outputs.org.SettingCradlepoint>;
     /**
      * Common device certificate used by organization settings
      */
@@ -288,9 +288,9 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["apiPolicy"] = state?.apiPolicy;
             resourceInputs["autoUpgrade"] = state?.autoUpgrade;
             resourceInputs["cacerts"] = state?.cacerts;
+            resourceInputs["cacertsConfigs"] = state?.cacertsConfigs;
             resourceInputs["celona"] = state?.celona;
             resourceInputs["cloudshark"] = state?.cloudshark;
-            resourceInputs["cradlepoint"] = state?.cradlepoint;
             resourceInputs["deviceCert"] = state?.deviceCert;
             resourceInputs["deviceUpdownThreshold"] = state?.deviceUpdownThreshold;
             resourceInputs["disablePcap"] = state?.disablePcap;
@@ -332,6 +332,7 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["apiPolicy"] = args?.apiPolicy;
             resourceInputs["autoUpgrade"] = args?.autoUpgrade;
             resourceInputs["cacerts"] = args?.cacerts;
+            resourceInputs["cacertsConfigs"] = args?.cacertsConfigs;
             resourceInputs["celona"] = args?.celona;
             resourceInputs["cloudshark"] = args?.cloudshark;
             resourceInputs["deviceCert"] = args?.deviceCert;
@@ -365,7 +366,6 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["wiredPma"] = args?.wiredPma;
             resourceInputs["wirelessPma"] = args?.wirelessPma;
             resourceInputs["allowMist"] = undefined /*out*/;
-            resourceInputs["cradlepoint"] = undefined /*out*/;
             resourceInputs["juniper"] = undefined /*out*/;
             resourceInputs["pcap"] = undefined /*out*/;
         }
@@ -395,9 +395,13 @@ export interface SettingState {
      */
     autoUpgrade?: pulumi.Input<inputs.org.SettingAutoUpgrade | undefined>;
     /**
-     * CA certificates used by organization-level RADIUS and RADSec settings
+     * Legacy CA certificate list used to verify client certificates. If `cacertsConfigs` is provided and non-empty, this field is ignored.
      */
     cacerts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Preferred per-issuer CA certificate configuration with optional OCSP and CRL settings. When provided and non-empty, `cacerts` is ignored.
+     */
+    cacertsConfigs?: pulumi.Input<pulumi.Input<inputs.org.SettingCacertsConfig>[] | undefined>;
     /**
      * Integration settings for Celona
      */
@@ -406,10 +410,6 @@ export interface SettingState {
      * Packet capture integration settings for CloudShark
      */
     cloudshark?: pulumi.Input<inputs.org.SettingCloudshark | undefined>;
-    /**
-     * Integration settings for Cradlepoint devices
-     */
-    cradlepoint?: pulumi.Input<inputs.org.SettingCradlepoint | undefined>;
     /**
      * Common device certificate used by organization settings
      */
@@ -559,9 +559,13 @@ export interface SettingArgs {
      */
     autoUpgrade?: pulumi.Input<inputs.org.SettingAutoUpgrade | undefined>;
     /**
-     * CA certificates used by organization-level RADIUS and RADSec settings
+     * Legacy CA certificate list used to verify client certificates. If `cacertsConfigs` is provided and non-empty, this field is ignored.
      */
     cacerts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Preferred per-issuer CA certificate configuration with optional OCSP and CRL settings. When provided and non-empty, `cacerts` is ignored.
+     */
+    cacertsConfigs?: pulumi.Input<pulumi.Input<inputs.org.SettingCacertsConfig>[] | undefined>;
     /**
      * Integration settings for Celona
      */
