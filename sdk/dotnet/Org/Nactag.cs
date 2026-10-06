@@ -70,7 +70,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string?> GbpTag { get; private set; } = null!;
 
         /// <summary>
-        /// If `Type`==`Match`, client or authentication attribute used for rule matching
+        /// If `Type`==`Match`, client or authentication attribute used for rule matching. enum: `CertCn`, `CertEku`, `CertIssuer`, `CertSan`, `CertSerial`, `CertSub`, `CertTemplate`, `ClientMac`, `EdrStatus`, `GbpTag`, `Hostname`, `IdpRole`, `IngressVlan`, `MdmStatus`, `NasIp`, `RadiusGroup`, `Realm`, `Ssid`, `UserName`, `UsermacLabel`.
         /// </summary>
         [Output("match")]
         public Output<string?> Match { get; private set; } = null!;
@@ -129,13 +129,13 @@ namespace Pulumi.JuniperMist.Org
         public Output<int?> SessionTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// NAC tag type that determines whether the tag is a matcher or a result attribute
+        /// NAC tag type that determines whether the tag is a matcher or a result attribute. enum: `EgressVlanNames`, `GbpTag`, `Match`, `RadiusAttrs`, `RadiusGroup`, `RadiusVendorAttrs`, `RedirectNacportalId`, `SessionTimeout`, `UsernameAttr`, `Vlan`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// If `Type`==`UsernameAttr`, attribute used to derive the username returned by the NAC rule
+        /// If `Type`==`UsernameAttr`, attribute used to derive the username returned by the NAC rule. enum: `Automatic`, `Cn`, `Dns`, `Email`, `Upn`.
         /// </summary>
         [Output("usernameAttr")]
         public Output<string?> UsernameAttr { get; private set; } = null!;
@@ -224,7 +224,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? GbpTag { get; set; }
 
         /// <summary>
-        /// If `Type`==`Match`, client or authentication attribute used for rule matching
+        /// If `Type`==`Match`, client or authentication attribute used for rule matching. enum: `CertCn`, `CertEku`, `CertIssuer`, `CertSan`, `CertSerial`, `CertSub`, `CertTemplate`, `ClientMac`, `EdrStatus`, `GbpTag`, `Hostname`, `IdpRole`, `IngressVlan`, `MdmStatus`, `NasIp`, `RadiusGroup`, `Realm`, `Ssid`, `UserName`, `UsermacLabel`.
         /// </summary>
         [Input("match")]
         public Input<string>? Match { get; set; }
@@ -295,13 +295,13 @@ namespace Pulumi.JuniperMist.Org
         public Input<int>? SessionTimeout { get; set; }
 
         /// <summary>
-        /// NAC tag type that determines whether the tag is a matcher or a result attribute
+        /// NAC tag type that determines whether the tag is a matcher or a result attribute. enum: `EgressVlanNames`, `GbpTag`, `Match`, `RadiusAttrs`, `RadiusGroup`, `RadiusVendorAttrs`, `RedirectNacportalId`, `SessionTimeout`, `UsernameAttr`, `Vlan`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
         /// <summary>
-        /// If `Type`==`UsernameAttr`, attribute used to derive the username returned by the NAC rule
+        /// If `Type`==`UsernameAttr`, attribute used to derive the username returned by the NAC rule. enum: `Automatic`, `Cn`, `Dns`, `Email`, `Upn`.
         /// </summary>
         [Input("usernameAttr")]
         public Input<string>? UsernameAttr { get; set; }
@@ -357,7 +357,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? GbpTag { get; set; }
 
         /// <summary>
-        /// If `Type`==`Match`, client or authentication attribute used for rule matching
+        /// If `Type`==`Match`, client or authentication attribute used for rule matching. enum: `CertCn`, `CertEku`, `CertIssuer`, `CertSan`, `CertSerial`, `CertSub`, `CertTemplate`, `ClientMac`, `EdrStatus`, `GbpTag`, `Hostname`, `IdpRole`, `IngressVlan`, `MdmStatus`, `NasIp`, `RadiusGroup`, `Realm`, `Ssid`, `UserName`, `UsermacLabel`.
         /// </summary>
         [Input("match")]
         public Input<string>? Match { get; set; }
@@ -428,13 +428,13 @@ namespace Pulumi.JuniperMist.Org
         public Input<int>? SessionTimeout { get; set; }
 
         /// <summary>
-        /// NAC tag type that determines whether the tag is a matcher or a result attribute
+        /// NAC tag type that determines whether the tag is a matcher or a result attribute. enum: `EgressVlanNames`, `GbpTag`, `Match`, `RadiusAttrs`, `RadiusGroup`, `RadiusVendorAttrs`, `RedirectNacportalId`, `SessionTimeout`, `UsernameAttr`, `Vlan`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// If `Type`==`UsernameAttr`, attribute used to derive the username returned by the NAC rule
+        /// If `Type`==`UsernameAttr`, attribute used to derive the username returned by the NAC rule. enum: `Automatic`, `Cn`, `Dns`, `Email`, `Upn`.
         /// </summary>
         [Input("usernameAttr")]
         public Input<string>? UsernameAttr { get; set; }

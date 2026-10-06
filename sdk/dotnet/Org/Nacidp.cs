@@ -166,7 +166,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<ImmutableArray<string>> LdapServerHosts { get; private set; } = null!;
 
         /// <summary>
-        /// Provider template for LDAP SSO when `IdpType`==`Ldap`
+        /// Provider template for LDAP SSO when `IdpType`==`Ldap`. enum: `Azure`, `Custom`, `Google`, `Okta`.
         /// </summary>
         [Output("ldapType")]
         public Output<string?> LdapType { get; private set; } = null!;
@@ -184,7 +184,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string?> MemberFilter { get; private set; } = null!;
 
         /// <summary>
-        /// Display name of the NAC IDP configuration
+        /// Display name of the SSO configuration
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -208,13 +208,13 @@ namespace Pulumi.JuniperMist.Org
         public Output<string?> OauthDiscoveryUrl { get; private set; } = null!;
 
         /// <summary>
-        /// Ping Identity region for OAuth SSO when `OauthType`==`PingIdentity`
+        /// Ping Identity region for OAuth SSO when `OauthType`==`PingIdentity`. enum: `Asia`, `Au`, `Ca`, `Eu`, `Us`.
         /// </summary>
         [Output("oauthPingIdentityRegion")]
         public Output<string> OauthPingIdentityRegion { get; private set; } = null!;
 
         /// <summary>
-        /// Provider domain for Okta OAuth SSO when `OauthType`==`Okta`
+        /// Provider domain for Okta OAuth SSO when `OauthType`==`Okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
         /// </summary>
         [Output("oauthProviderDomain")]
         public Output<string> OauthProviderDomain { get; private set; } = null!;
@@ -238,7 +238,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string?> OauthTenantId { get; private set; } = null!;
 
         /// <summary>
-        /// Provider type for OAuth SSO when `IdpType`==`Oauth`
+        /// Provider type for OAuth SSO when `IdpType`==`Oauth`. enum: `Azure`, `azure-gov`, `Okta`, `PingIdentity`.
         /// </summary>
         [Output("oauthType")]
         public Output<string> OauthType { get; private set; } = null!;
@@ -262,7 +262,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string?> OpenroamingWbaClientKey { get; private set; } = null!;
 
         /// <summary>
-        /// Owning organization identifier for this NAC IDP configuration
+        /// Owning organization identifier for this SSO configuration
         /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
@@ -419,7 +419,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Provider template for LDAP SSO when `IdpType`==`Ldap`
+        /// Provider template for LDAP SSO when `IdpType`==`Ldap`. enum: `Azure`, `Custom`, `Google`, `Okta`.
         /// </summary>
         [Input("ldapType")]
         public Input<string>? LdapType { get; set; }
@@ -437,7 +437,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? MemberFilter { get; set; }
 
         /// <summary>
-        /// Display name of the NAC IDP configuration
+        /// Display name of the SSO configuration
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -471,13 +471,13 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? OauthDiscoveryUrl { get; set; }
 
         /// <summary>
-        /// Ping Identity region for OAuth SSO when `OauthType`==`PingIdentity`
+        /// Ping Identity region for OAuth SSO when `OauthType`==`PingIdentity`. enum: `Asia`, `Au`, `Ca`, `Eu`, `Us`.
         /// </summary>
         [Input("oauthPingIdentityRegion")]
         public Input<string>? OauthPingIdentityRegion { get; set; }
 
         /// <summary>
-        /// Provider domain for Okta OAuth SSO when `OauthType`==`Okta`
+        /// Provider domain for Okta OAuth SSO when `OauthType`==`Okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
         /// </summary>
         [Input("oauthProviderDomain")]
         public Input<string>? OauthProviderDomain { get; set; }
@@ -511,7 +511,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? OauthTenantId { get; set; }
 
         /// <summary>
-        /// Provider type for OAuth SSO when `IdpType`==`Oauth`
+        /// Provider type for OAuth SSO when `IdpType`==`Oauth`. enum: `Azure`, `azure-gov`, `Okta`, `PingIdentity`.
         /// </summary>
         [Input("oauthType")]
         public Input<string>? OauthType { get; set; }
@@ -561,7 +561,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Owning organization identifier for this NAC IDP configuration
+        /// Owning organization identifier for this SSO configuration
         /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
@@ -681,7 +681,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Provider template for LDAP SSO when `IdpType`==`Ldap`
+        /// Provider template for LDAP SSO when `IdpType`==`Ldap`. enum: `Azure`, `Custom`, `Google`, `Okta`.
         /// </summary>
         [Input("ldapType")]
         public Input<string>? LdapType { get; set; }
@@ -699,7 +699,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? MemberFilter { get; set; }
 
         /// <summary>
-        /// Display name of the NAC IDP configuration
+        /// Display name of the SSO configuration
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -733,13 +733,13 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? OauthDiscoveryUrl { get; set; }
 
         /// <summary>
-        /// Ping Identity region for OAuth SSO when `OauthType`==`PingIdentity`
+        /// Ping Identity region for OAuth SSO when `OauthType`==`PingIdentity`. enum: `Asia`, `Au`, `Ca`, `Eu`, `Us`.
         /// </summary>
         [Input("oauthPingIdentityRegion")]
         public Input<string>? OauthPingIdentityRegion { get; set; }
 
         /// <summary>
-        /// Provider domain for Okta OAuth SSO when `OauthType`==`Okta`
+        /// Provider domain for Okta OAuth SSO when `OauthType`==`Okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
         /// </summary>
         [Input("oauthProviderDomain")]
         public Input<string>? OauthProviderDomain { get; set; }
@@ -773,7 +773,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? OauthTenantId { get; set; }
 
         /// <summary>
-        /// Provider type for OAuth SSO when `IdpType`==`Oauth`
+        /// Provider type for OAuth SSO when `IdpType`==`Oauth`. enum: `Azure`, `azure-gov`, `Okta`, `PingIdentity`.
         /// </summary>
         [Input("oauthType")]
         public Input<string>? OauthType { get; set; }
@@ -823,7 +823,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Owning organization identifier for this NAC IDP configuration
+        /// Owning organization identifier for this SSO configuration
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }

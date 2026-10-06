@@ -151,7 +151,7 @@ export class Nacidp extends pulumi.CustomResource {
      */
     declare public readonly ldapServerHosts: pulumi.Output<string[] | undefined>;
     /**
-     * Provider template for LDAP SSO when `idpType`==`ldap`
+     * Provider template for LDAP SSO when `idpType`==`ldap`. enum: `azure`, `custom`, `google`, `okta`.
      */
     declare public readonly ldapType: pulumi.Output<string | undefined>;
     /**
@@ -163,7 +163,7 @@ export class Nacidp extends pulumi.CustomResource {
      */
     declare public readonly memberFilter: pulumi.Output<string | undefined>;
     /**
-     * Display name of the NAC IDP configuration
+     * Display name of the SSO configuration
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -179,11 +179,11 @@ export class Nacidp extends pulumi.CustomResource {
      */
     declare public readonly oauthDiscoveryUrl: pulumi.Output<string | undefined>;
     /**
-     * Ping Identity region for OAuth SSO when `oauthType`==`pingIdentity`
+     * Ping Identity region for OAuth SSO when `oauthType`==`pingIdentity`. enum: `asia`, `au`, `ca`, `eu`, `us`.
      */
     declare public readonly oauthPingIdentityRegion: pulumi.Output<string>;
     /**
-     * Provider domain for Okta OAuth SSO when `oauthType`==`okta`
+     * Provider domain for Okta OAuth SSO when `oauthType`==`okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
      */
     declare public readonly oauthProviderDomain: pulumi.Output<string>;
     /**
@@ -199,7 +199,7 @@ export class Nacidp extends pulumi.CustomResource {
      */
     declare public readonly oauthTenantId: pulumi.Output<string | undefined>;
     /**
-     * Provider type for OAuth SSO when `idpType`==`oauth`
+     * Provider type for OAuth SSO when `idpType`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `pingIdentity`.
      */
     declare public readonly oauthType: pulumi.Output<string>;
     /**
@@ -215,7 +215,7 @@ export class Nacidp extends pulumi.CustomResource {
      */
     declare public readonly openroamingWbaClientKey: pulumi.Output<string | undefined>;
     /**
-     * Owning organization identifier for this NAC IDP configuration
+     * Owning organization identifier for this SSO configuration
      */
     declare public readonly orgId: pulumi.Output<string>;
     /**
@@ -371,7 +371,7 @@ export interface NacidpState {
      */
     ldapServerHosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Provider template for LDAP SSO when `idpType`==`ldap`
+     * Provider template for LDAP SSO when `idpType`==`ldap`. enum: `azure`, `custom`, `google`, `okta`.
      */
     ldapType?: pulumi.Input<string | undefined>;
     /**
@@ -383,7 +383,7 @@ export interface NacidpState {
      */
     memberFilter?: pulumi.Input<string | undefined>;
     /**
-     * Display name of the NAC IDP configuration
+     * Display name of the SSO configuration
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -399,11 +399,11 @@ export interface NacidpState {
      */
     oauthDiscoveryUrl?: pulumi.Input<string | undefined>;
     /**
-     * Ping Identity region for OAuth SSO when `oauthType`==`pingIdentity`
+     * Ping Identity region for OAuth SSO when `oauthType`==`pingIdentity`. enum: `asia`, `au`, `ca`, `eu`, `us`.
      */
     oauthPingIdentityRegion?: pulumi.Input<string | undefined>;
     /**
-     * Provider domain for Okta OAuth SSO when `oauthType`==`okta`
+     * Provider domain for Okta OAuth SSO when `oauthType`==`okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
      */
     oauthProviderDomain?: pulumi.Input<string | undefined>;
     /**
@@ -419,7 +419,7 @@ export interface NacidpState {
      */
     oauthTenantId?: pulumi.Input<string | undefined>;
     /**
-     * Provider type for OAuth SSO when `idpType`==`oauth`
+     * Provider type for OAuth SSO when `idpType`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `pingIdentity`.
      */
     oauthType?: pulumi.Input<string | undefined>;
     /**
@@ -435,7 +435,7 @@ export interface NacidpState {
      */
     openroamingWbaClientKey?: pulumi.Input<string | undefined>;
     /**
-     * Owning organization identifier for this NAC IDP configuration
+     * Owning organization identifier for this SSO configuration
      */
     orgId?: pulumi.Input<string | undefined>;
     /**
@@ -501,7 +501,7 @@ export interface NacidpArgs {
      */
     ldapServerHosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Provider template for LDAP SSO when `idpType`==`ldap`
+     * Provider template for LDAP SSO when `idpType`==`ldap`. enum: `azure`, `custom`, `google`, `okta`.
      */
     ldapType?: pulumi.Input<string | undefined>;
     /**
@@ -513,7 +513,7 @@ export interface NacidpArgs {
      */
     memberFilter?: pulumi.Input<string | undefined>;
     /**
-     * Display name of the NAC IDP configuration
+     * Display name of the SSO configuration
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -529,11 +529,11 @@ export interface NacidpArgs {
      */
     oauthDiscoveryUrl?: pulumi.Input<string | undefined>;
     /**
-     * Ping Identity region for OAuth SSO when `oauthType`==`pingIdentity`
+     * Ping Identity region for OAuth SSO when `oauthType`==`pingIdentity`. enum: `asia`, `au`, `ca`, `eu`, `us`.
      */
     oauthPingIdentityRegion?: pulumi.Input<string | undefined>;
     /**
-     * Provider domain for Okta OAuth SSO when `oauthType`==`okta`
+     * Provider domain for Okta OAuth SSO when `oauthType`==`okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
      */
     oauthProviderDomain?: pulumi.Input<string | undefined>;
     /**
@@ -549,7 +549,7 @@ export interface NacidpArgs {
      */
     oauthTenantId?: pulumi.Input<string | undefined>;
     /**
-     * Provider type for OAuth SSO when `idpType`==`oauth`
+     * Provider type for OAuth SSO when `idpType`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `pingIdentity`.
      */
     oauthType?: pulumi.Input<string | undefined>;
     /**
@@ -565,7 +565,7 @@ export interface NacidpArgs {
      */
     openroamingWbaClientKey?: pulumi.Input<string | undefined>;
     /**
-     * Owning organization identifier for this NAC IDP configuration
+     * Owning organization identifier for this SSO configuration
      */
     orgId: pulumi.Input<string>;
     /**

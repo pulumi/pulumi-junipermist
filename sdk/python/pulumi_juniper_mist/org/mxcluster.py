@@ -55,9 +55,9 @@ class MxclusterArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input['MxclusterTuntermExtraRoutesArgs']]] tunterm_extra_routes: Extra routes for Mist Tunnel VLAN traffic
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tunterm_hosts: Hostnames or IP addresses used as Mist Tunnel peers
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] tunterm_hosts_orders: Explicit host ordering indexes used when ordered selection is configured
-        :param pulumi.Input[_builtins.str] tunterm_hosts_selection: Selection strategy for ordering tunnel termination hosts
+        :param pulumi.Input[_builtins.str] tunterm_hosts_selection: Selection strategy for ordering tunnel termination hosts. enum: `ordered`, `shuffle`, `shuffle-by-site`.
         :param pulumi.Input[_builtins.bool] tunterm_monitoring_disabled: Whether tunnel termination monitoring is disabled for the cluster
-        :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input['MxclusterTuntermMonitoringArgs']]]]] tunterm_monitorings: Monitoring checks for tunnel termination reachability
+        :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input['MxclusterTuntermMonitoringArgs']]]]] tunterm_monitorings: Monitoring checks for tunnel termination reachability. Only for Org Mist Edges; use `tunterm_monitoring` in the `site_setting` for site-scoped Mist Edges
         """
         pulumi.set(__self__, "org_id", org_id)
         if mist_das is not None:
@@ -265,7 +265,7 @@ class MxclusterArgs:
     @pulumi.getter(name="tuntermHostsSelection")
     def tunterm_hosts_selection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Selection strategy for ordering tunnel termination hosts
+        Selection strategy for ordering tunnel termination hosts. enum: `ordered`, `shuffle`, `shuffle-by-site`.
         """
         return pulumi.get(self, "tunterm_hosts_selection")
 
@@ -289,7 +289,7 @@ class MxclusterArgs:
     @pulumi.getter(name="tuntermMonitorings")
     def tunterm_monitorings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input['MxclusterTuntermMonitoringArgs']]]]]]:
         """
-        Monitoring checks for tunnel termination reachability
+        Monitoring checks for tunnel termination reachability. Only for Org Mist Edges; use `tunterm_monitoring` in the `site_setting` for site-scoped Mist Edges
         """
         return pulumi.get(self, "tunterm_monitorings")
 
@@ -337,9 +337,9 @@ class _MxclusterState:
         :param pulumi.Input[Mapping[str, pulumi.Input['MxclusterTuntermExtraRoutesArgs']]] tunterm_extra_routes: Extra routes for Mist Tunnel VLAN traffic
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tunterm_hosts: Hostnames or IP addresses used as Mist Tunnel peers
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] tunterm_hosts_orders: Explicit host ordering indexes used when ordered selection is configured
-        :param pulumi.Input[_builtins.str] tunterm_hosts_selection: Selection strategy for ordering tunnel termination hosts
+        :param pulumi.Input[_builtins.str] tunterm_hosts_selection: Selection strategy for ordering tunnel termination hosts. enum: `ordered`, `shuffle`, `shuffle-by-site`.
         :param pulumi.Input[_builtins.bool] tunterm_monitoring_disabled: Whether tunnel termination monitoring is disabled for the cluster
-        :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input['MxclusterTuntermMonitoringArgs']]]]] tunterm_monitorings: Monitoring checks for tunnel termination reachability
+        :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input['MxclusterTuntermMonitoringArgs']]]]] tunterm_monitorings: Monitoring checks for tunnel termination reachability. Only for Org Mist Edges; use `tunterm_monitoring` in the `site_setting` for site-scoped Mist Edges
         """
         if mist_das is not None:
             pulumi.set(__self__, "mist_das", mist_das)
@@ -562,7 +562,7 @@ class _MxclusterState:
     @pulumi.getter(name="tuntermHostsSelection")
     def tunterm_hosts_selection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Selection strategy for ordering tunnel termination hosts
+        Selection strategy for ordering tunnel termination hosts. enum: `ordered`, `shuffle`, `shuffle-by-site`.
         """
         return pulumi.get(self, "tunterm_hosts_selection")
 
@@ -586,7 +586,7 @@ class _MxclusterState:
     @pulumi.getter(name="tuntermMonitorings")
     def tunterm_monitorings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input['MxclusterTuntermMonitoringArgs']]]]]]:
         """
-        Monitoring checks for tunnel termination reachability
+        Monitoring checks for tunnel termination reachability. Only for Org Mist Edges; use `tunterm_monitoring` in the `site_setting` for site-scoped Mist Edges
         """
         return pulumi.get(self, "tunterm_monitorings")
 
@@ -650,9 +650,9 @@ class Mxcluster(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxclusterTuntermExtraRoutesArgs', 'MxclusterTuntermExtraRoutesArgsDict']]]] tunterm_extra_routes: Extra routes for Mist Tunnel VLAN traffic
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tunterm_hosts: Hostnames or IP addresses used as Mist Tunnel peers
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] tunterm_hosts_orders: Explicit host ordering indexes used when ordered selection is configured
-        :param pulumi.Input[_builtins.str] tunterm_hosts_selection: Selection strategy for ordering tunnel termination hosts
+        :param pulumi.Input[_builtins.str] tunterm_hosts_selection: Selection strategy for ordering tunnel termination hosts. enum: `ordered`, `shuffle`, `shuffle-by-site`.
         :param pulumi.Input[_builtins.bool] tunterm_monitoring_disabled: Whether tunnel termination monitoring is disabled for the cluster
-        :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['MxclusterTuntermMonitoringArgs', 'MxclusterTuntermMonitoringArgsDict']]]]]] tunterm_monitorings: Monitoring checks for tunnel termination reachability
+        :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['MxclusterTuntermMonitoringArgs', 'MxclusterTuntermMonitoringArgsDict']]]]]] tunterm_monitorings: Monitoring checks for tunnel termination reachability. Only for Org Mist Edges; use `tunterm_monitoring` in the `site_setting` for site-scoped Mist Edges
         """
         ...
     @overload
@@ -786,9 +786,9 @@ class Mxcluster(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxclusterTuntermExtraRoutesArgs', 'MxclusterTuntermExtraRoutesArgsDict']]]] tunterm_extra_routes: Extra routes for Mist Tunnel VLAN traffic
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tunterm_hosts: Hostnames or IP addresses used as Mist Tunnel peers
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] tunterm_hosts_orders: Explicit host ordering indexes used when ordered selection is configured
-        :param pulumi.Input[_builtins.str] tunterm_hosts_selection: Selection strategy for ordering tunnel termination hosts
+        :param pulumi.Input[_builtins.str] tunterm_hosts_selection: Selection strategy for ordering tunnel termination hosts. enum: `ordered`, `shuffle`, `shuffle-by-site`.
         :param pulumi.Input[_builtins.bool] tunterm_monitoring_disabled: Whether tunnel termination monitoring is disabled for the cluster
-        :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['MxclusterTuntermMonitoringArgs', 'MxclusterTuntermMonitoringArgsDict']]]]]] tunterm_monitorings: Monitoring checks for tunnel termination reachability
+        :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['MxclusterTuntermMonitoringArgs', 'MxclusterTuntermMonitoringArgsDict']]]]]] tunterm_monitorings: Monitoring checks for tunnel termination reachability. Only for Org Mist Edges; use `tunterm_monitoring` in the `site_setting` for site-scoped Mist Edges
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -938,7 +938,7 @@ class Mxcluster(pulumi.CustomResource):
     @pulumi.getter(name="tuntermHostsSelection")
     def tunterm_hosts_selection(self) -> pulumi.Output[_builtins.str]:
         """
-        Selection strategy for ordering tunnel termination hosts
+        Selection strategy for ordering tunnel termination hosts. enum: `ordered`, `shuffle`, `shuffle-by-site`.
         """
         return pulumi.get(self, "tunterm_hosts_selection")
 
@@ -954,7 +954,7 @@ class Mxcluster(pulumi.CustomResource):
     @pulumi.getter(name="tuntermMonitorings")
     def tunterm_monitorings(self) -> pulumi.Output[Optional[Sequence[Sequence['outputs.MxclusterTuntermMonitoring']]]]:
         """
-        Monitoring checks for tunnel termination reachability
+        Monitoring checks for tunnel termination reachability. Only for Org Mist Edges; use `tunterm_monitoring` in the `site_setting` for site-scoped Mist Edges
         """
         return pulumi.get(self, "tunterm_monitorings")
 

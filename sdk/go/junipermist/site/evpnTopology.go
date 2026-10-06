@@ -25,59 +25,70 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-mist/sdk/go/mist"
+//	"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/org"
+//	"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/site"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := mist.NewSiteSiteEvpnTopology(ctx, "evpn_one", &mist.SiteSiteEvpnTopologyArgs{
-//				SiteId: terraformTest.Id,
-//				Name:   "evpn_one",
-//				EvpnOptions: map[string]interface{}{
-//					"routedAt": "core",
-//					"overlay": map[string]interface{}{
-//						"as": 65000,
+//			evpnTopologySwitches, err := org.NewInventory(ctx, "evpn_topology_switches", &org.InventoryArgs{
+//				OrgId: pulumi.String("c0c92f93-d702-4cb7-a661-aaca08cfcf74"),
+//				Inventory: org.InventoryInventoryMap{
+//					"HY5BD8EVMSRQRCV": &org.InventoryInventoryArgs{
+//						SiteId: pulumi.String("87e30472-720a-42c5-acd9-ac95213d08b3"),
 //					},
-//					"coreAsBorder":        true,
-//					"autoLoopbackSubnet":  "172.16.192.0/24",
-//					"autoLoopbackSubnet6": "fd33:ab00:2::/64",
-//					"perVlanVgaV4Mac":     false,
-//					"underlay": map[string]interface{}{
-//						"asBase":  65001,
-//						"useIpv6": false,
-//						"subnet":  "10.255.240.0/20",
+//					"P9ZRN52RXQEQNH5": &org.InventoryInventoryArgs{
+//						SiteId: pulumi.String("87e30472-720a-42c5-acd9-ac95213d08b3"),
 //					},
-//					"autoRouterIdSubnet": "172.16.254.0/23",
-//				},
-//				Switches: []map[string]interface{}{
-//					map[string]interface{}{
-//						"mac":  "020004000001",
-//						"role": "core",
+//					"HNCNY3DWSAKJFPB": &org.InventoryInventoryArgs{
+//						SiteId: pulumi.String("87e30472-720a-42c5-acd9-ac95213d08b3"),
 //					},
-//					map[string]interface{}{
-//						"mac":  "02000400002",
-//						"role": "core",
-//					},
-//					map[string]interface{}{
-//						"mac":  "02000400003",
-//						"role": "distribution",
-//					},
-//					map[string]interface{}{
-//						"mac":  "02000400004",
-//						"role": "distribution",
-//					},
-//					map[string]interface{}{
-//						"mac":  "02000400005",
-//						"role": "access",
-//					},
-//					map[string]interface{}{
-//						"mac":  "02000400006",
-//						"role": "access",
+//					"GSK46S5XKH657DG": &org.InventoryInventoryArgs{
+//						SiteId: pulumi.String("87e30472-720a-42c5-acd9-ac95213d08b3"),
 //					},
 //				},
 //			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = site.NewEvpnTopology(ctx, "evpn_one", &site.EvpnTopologyArgs{
+//				SiteId: pulumi.String("87e30472-720a-42c5-acd9-ac95213d08b3"),
+//				Name:   pulumi.String("evpn_one"),
+//				EvpnOptions: &site.EvpnTopologyEvpnOptionsArgs{
+//					RoutedAt: pulumi.String("core"),
+//					Overlay: &site.EvpnTopologyEvpnOptionsOverlayArgs{
+//						As: pulumi.Int(65000),
+//					},
+//					CoreAsBorder:        pulumi.Bool(true),
+//					AutoLoopbackSubnet:  pulumi.String("172.16.192.0/24"),
+//					AutoLoopbackSubnet6: pulumi.String("fd33:ab00:2::/64"),
+//					PerVlanVgaV4Mac:     pulumi.Bool(false),
+//					Underlay: &site.EvpnTopologyEvpnOptionsUnderlayArgs{
+//						AsBase:  pulumi.Int(65001),
+//						UseIpv6: pulumi.Bool(false),
+//						Subnet:  pulumi.String("10.255.240.0/20"),
+//					},
+//					AutoRouterIdSubnet: pulumi.String("172.16.254.0/23"),
+//				},
+//				Switches: site.EvpnTopologySwitchesMap{
+//					"0200030001fe": &site.EvpnTopologySwitchesArgs{
+//						Role: pulumi.String("core"),
+//					},
+//					"0200030001ff": &site.EvpnTopologySwitchesArgs{
+//						Role: pulumi.String("core"),
+//					},
+//					"020003000200": &site.EvpnTopologySwitchesArgs{
+//						Role: pulumi.String("access"),
+//					},
+//					"020003000201": &site.EvpnTopologySwitchesArgs{
+//						Role: pulumi.String("access"),
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				evpnTopologySwitches,
+//			}))
 //			if err != nil {
 //				return err
 //			}

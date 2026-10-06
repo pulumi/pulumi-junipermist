@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class SettingGatewayMgmtAutoSignatureUpdateGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Scheduled weekday for automatic signature updates
+        /// Scheduled weekday for automatic signature updates. enum: `Any`, `Fri`, `Mon`, `Sat`, `Sun`, `Thu`, `Tue`, `Wed`.
         /// </summary>
         [Input("dayOfWeek")]
         public Input<string>? DayOfWeek { get; set; }

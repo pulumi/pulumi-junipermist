@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Inputs
     public sealed class UpgradeDeviceAutoUpgradeStatGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Time when the device last checked for auto-upgrade, in epoch seconds
+        /// Time when the AP last checked for auto-upgrade, in epoch seconds
         /// </summary>
         [Input("lastcheck")]
         public Input<int>? Lastcheck { get; set; }

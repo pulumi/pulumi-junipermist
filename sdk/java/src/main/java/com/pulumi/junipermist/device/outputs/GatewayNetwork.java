@@ -90,6 +90,11 @@ public final class GatewayNetwork {
      * 
      */
     private @Nullable Map<String,GatewayNetworkVpnAccess> vpnAccess;
+    /**
+     * @return SecurityZone this network belongs to. When set, the zone name is used as the security zone name on the SRX, and multiple networks can share the same zone. When omitted, the network `name` is used as the security zone name.
+     * 
+     */
+    private @Nullable String zoneId;
 
     private GatewayNetwork() {}
     /**
@@ -190,6 +195,13 @@ public final class GatewayNetwork {
     public Map<String,GatewayNetworkVpnAccess> vpnAccess() {
         return this.vpnAccess == null ? Map.of() : this.vpnAccess;
     }
+    /**
+     * @return SecurityZone this network belongs to. When set, the zone name is used as the security zone name on the SRX, and multiple networks can share the same zone. When omitted, the network `name` is used as the security zone name.
+     * 
+     */
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -214,6 +226,7 @@ public final class GatewayNetwork {
         private @Nullable Map<String,GatewayNetworkTenants> tenants;
         private @Nullable String vlanId;
         private @Nullable Map<String,GatewayNetworkVpnAccess> vpnAccess;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GatewayNetwork defaults) {
     	      Objects.requireNonNull(defaults);
@@ -231,6 +244,7 @@ public final class GatewayNetwork {
     	      this.tenants = defaults.tenants;
     	      this.vlanId = defaults.vlanId;
     	      this.vpnAccess = defaults.vpnAccess;
+    	      this.zoneId = defaults.zoneId;
         }
 
         @CustomType.Setter
@@ -324,6 +338,12 @@ public final class GatewayNetwork {
             this.vpnAccess = vpnAccess;
             return this;
         }
+        @CustomType.Setter
+        public Builder zoneId(@Nullable String zoneId) {
+
+            this.zoneId = zoneId;
+            return this;
+        }
         public GatewayNetwork build() {
             final var _resultValue = new GatewayNetwork();
             _resultValue.disallowMistServices = disallowMistServices;
@@ -340,6 +360,7 @@ public final class GatewayNetwork {
             _resultValue.tenants = tenants;
             _resultValue.vlanId = vlanId;
             _resultValue.vpnAccess = vpnAccess;
+            _resultValue.zoneId = zoneId;
             return _resultValue;
         }
     }

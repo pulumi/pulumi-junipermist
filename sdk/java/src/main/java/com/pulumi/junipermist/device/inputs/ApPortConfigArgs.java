@@ -67,14 +67,14 @@ public final class ApPortConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Traffic forwarding mode for this AP Ethernet port
+     * Traffic forwarding mode for this AP Ethernet port. enum: `all`, `limited`, `mxtunnel`, `siteMxedge`, `wxtunnel`.
      * 
      */
     @Import(name="forwarding")
     private @Nullable Output<String> forwarding;
 
     /**
-     * @return Traffic forwarding mode for this AP Ethernet port
+     * @return Traffic forwarding mode for this AP Ethernet port. enum: `all`, `limited`, `mxtunnel`, `siteMxedge`, `wxtunnel`.
      * 
      */
     public Optional<Output<String>> forwarding() {
@@ -97,14 +97,14 @@ public final class ApPortConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Protocol used for MAC authentication when `enableMacAuth` is `true`
+     * Protocol used for MAC authentication when `enableMacAuth` is `true`. enum: `eap-md5`, `eap-peap`, `pap`.
      * 
      */
     @Import(name="macAuthProtocol")
     private @Nullable Output<String> macAuthProtocol;
 
     /**
-     * @return Protocol used for MAC authentication when `enableMacAuth` is `true`
+     * @return Protocol used for MAC authentication when `enableMacAuth` is `true`. enum: `eap-md5`, `eap-peap`, `pap`.
      * 
      */
     public Optional<Output<String>> macAuthProtocol() {
@@ -157,14 +157,14 @@ public final class ApPortConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Authentication mode for this AP Ethernet port
+     * Authentication mode for this AP Ethernet port. enum: `dot1x`, `none`.
      * 
      */
     @Import(name="portAuth")
     private @Nullable Output<String> portAuth;
 
     /**
-     * @return Authentication mode for this AP Ethernet port
+     * @return Authentication mode for this AP Ethernet port. enum: `dot1x`, `none`.
      * 
      */
     public Optional<Output<String>> portAuth() {
@@ -384,7 +384,7 @@ public final class ApPortConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forwarding Traffic forwarding mode for this AP Ethernet port
+         * @param forwarding Traffic forwarding mode for this AP Ethernet port. enum: `all`, `limited`, `mxtunnel`, `siteMxedge`, `wxtunnel`.
          * 
          * @return builder
          * 
@@ -395,7 +395,7 @@ public final class ApPortConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forwarding Traffic forwarding mode for this AP Ethernet port
+         * @param forwarding Traffic forwarding mode for this AP Ethernet port. enum: `all`, `limited`, `mxtunnel`, `siteMxedge`, `wxtunnel`.
          * 
          * @return builder
          * 
@@ -426,7 +426,7 @@ public final class ApPortConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param macAuthProtocol Protocol used for MAC authentication when `enableMacAuth` is `true`
+         * @param macAuthProtocol Protocol used for MAC authentication when `enableMacAuth` is `true`. enum: `eap-md5`, `eap-peap`, `pap`.
          * 
          * @return builder
          * 
@@ -437,7 +437,7 @@ public final class ApPortConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param macAuthProtocol Protocol used for MAC authentication when `enableMacAuth` is `true`
+         * @param macAuthProtocol Protocol used for MAC authentication when `enableMacAuth` is `true`. enum: `eap-md5`, `eap-peap`, `pap`.
          * 
          * @return builder
          * 
@@ -510,7 +510,7 @@ public final class ApPortConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portAuth Authentication mode for this AP Ethernet port
+         * @param portAuth Authentication mode for this AP Ethernet port. enum: `dot1x`, `none`.
          * 
          * @return builder
          * 
@@ -521,7 +521,7 @@ public final class ApPortConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portAuth Authentication mode for this AP Ethernet port
+         * @param portAuth Authentication mode for this AP Ethernet port. enum: `dot1x`, `none`.
          * 
          * @return builder
          * 

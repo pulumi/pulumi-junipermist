@@ -57,11 +57,11 @@ type Mxcluster struct {
 	TuntermHosts pulumi.StringArrayOutput `pulumi:"tuntermHosts"`
 	// Explicit host ordering indexes used when ordered selection is configured
 	TuntermHostsOrders pulumi.IntArrayOutput `pulumi:"tuntermHostsOrders"`
-	// Selection strategy for ordering tunnel termination hosts
+	// Selection strategy for ordering tunnel termination hosts. enum: `ordered`, `shuffle`, `shuffle-by-site`.
 	TuntermHostsSelection pulumi.StringOutput `pulumi:"tuntermHostsSelection"`
 	// Whether tunnel termination monitoring is disabled for the cluster
 	TuntermMonitoringDisabled pulumi.BoolPtrOutput `pulumi:"tuntermMonitoringDisabled"`
-	// Monitoring checks for tunnel termination reachability
+	// Monitoring checks for tunnel termination reachability. Only for Org Mist Edges; use `tuntermMonitoring` in the `siteSetting` for site-scoped Mist Edges
 	TuntermMonitorings MxclusterTuntermMonitoringArrayArrayOutput `pulumi:"tuntermMonitorings"`
 }
 
@@ -128,11 +128,11 @@ type mxclusterState struct {
 	TuntermHosts []string `pulumi:"tuntermHosts"`
 	// Explicit host ordering indexes used when ordered selection is configured
 	TuntermHostsOrders []int `pulumi:"tuntermHostsOrders"`
-	// Selection strategy for ordering tunnel termination hosts
+	// Selection strategy for ordering tunnel termination hosts. enum: `ordered`, `shuffle`, `shuffle-by-site`.
 	TuntermHostsSelection *string `pulumi:"tuntermHostsSelection"`
 	// Whether tunnel termination monitoring is disabled for the cluster
 	TuntermMonitoringDisabled *bool `pulumi:"tuntermMonitoringDisabled"`
-	// Monitoring checks for tunnel termination reachability
+	// Monitoring checks for tunnel termination reachability. Only for Org Mist Edges; use `tuntermMonitoring` in the `siteSetting` for site-scoped Mist Edges
 	TuntermMonitorings [][]MxclusterTuntermMonitoring `pulumi:"tuntermMonitorings"`
 }
 
@@ -167,11 +167,11 @@ type MxclusterState struct {
 	TuntermHosts pulumi.StringArrayInput
 	// Explicit host ordering indexes used when ordered selection is configured
 	TuntermHostsOrders pulumi.IntArrayInput
-	// Selection strategy for ordering tunnel termination hosts
+	// Selection strategy for ordering tunnel termination hosts. enum: `ordered`, `shuffle`, `shuffle-by-site`.
 	TuntermHostsSelection pulumi.StringPtrInput
 	// Whether tunnel termination monitoring is disabled for the cluster
 	TuntermMonitoringDisabled pulumi.BoolPtrInput
-	// Monitoring checks for tunnel termination reachability
+	// Monitoring checks for tunnel termination reachability. Only for Org Mist Edges; use `tuntermMonitoring` in the `siteSetting` for site-scoped Mist Edges
 	TuntermMonitorings MxclusterTuntermMonitoringArrayArrayInput
 }
 
@@ -208,11 +208,11 @@ type mxclusterArgs struct {
 	TuntermHosts []string `pulumi:"tuntermHosts"`
 	// Explicit host ordering indexes used when ordered selection is configured
 	TuntermHostsOrders []int `pulumi:"tuntermHostsOrders"`
-	// Selection strategy for ordering tunnel termination hosts
+	// Selection strategy for ordering tunnel termination hosts. enum: `ordered`, `shuffle`, `shuffle-by-site`.
 	TuntermHostsSelection *string `pulumi:"tuntermHostsSelection"`
 	// Whether tunnel termination monitoring is disabled for the cluster
 	TuntermMonitoringDisabled *bool `pulumi:"tuntermMonitoringDisabled"`
-	// Monitoring checks for tunnel termination reachability
+	// Monitoring checks for tunnel termination reachability. Only for Org Mist Edges; use `tuntermMonitoring` in the `siteSetting` for site-scoped Mist Edges
 	TuntermMonitorings [][]MxclusterTuntermMonitoring `pulumi:"tuntermMonitorings"`
 }
 
@@ -246,11 +246,11 @@ type MxclusterArgs struct {
 	TuntermHosts pulumi.StringArrayInput
 	// Explicit host ordering indexes used when ordered selection is configured
 	TuntermHostsOrders pulumi.IntArrayInput
-	// Selection strategy for ordering tunnel termination hosts
+	// Selection strategy for ordering tunnel termination hosts. enum: `ordered`, `shuffle`, `shuffle-by-site`.
 	TuntermHostsSelection pulumi.StringPtrInput
 	// Whether tunnel termination monitoring is disabled for the cluster
 	TuntermMonitoringDisabled pulumi.BoolPtrInput
-	// Monitoring checks for tunnel termination reachability
+	// Monitoring checks for tunnel termination reachability. Only for Org Mist Edges; use `tuntermMonitoring` in the `siteSetting` for site-scoped Mist Edges
 	TuntermMonitorings MxclusterTuntermMonitoringArrayArrayInput
 }
 
@@ -416,7 +416,7 @@ func (o MxclusterOutput) TuntermHostsOrders() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *Mxcluster) pulumi.IntArrayOutput { return v.TuntermHostsOrders }).(pulumi.IntArrayOutput)
 }
 
-// Selection strategy for ordering tunnel termination hosts
+// Selection strategy for ordering tunnel termination hosts. enum: `ordered`, `shuffle`, `shuffle-by-site`.
 func (o MxclusterOutput) TuntermHostsSelection() pulumi.StringOutput {
 	return o.ApplyT(func(v *Mxcluster) pulumi.StringOutput { return v.TuntermHostsSelection }).(pulumi.StringOutput)
 }
@@ -426,7 +426,7 @@ func (o MxclusterOutput) TuntermMonitoringDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Mxcluster) pulumi.BoolPtrOutput { return v.TuntermMonitoringDisabled }).(pulumi.BoolPtrOutput)
 }
 
-// Monitoring checks for tunnel termination reachability
+// Monitoring checks for tunnel termination reachability. Only for Org Mist Edges; use `tuntermMonitoring` in the `siteSetting` for site-scoped Mist Edges
 func (o MxclusterOutput) TuntermMonitorings() MxclusterTuntermMonitoringArrayArrayOutput {
 	return o.ApplyT(func(v *Mxcluster) MxclusterTuntermMonitoringArrayArrayOutput { return v.TuntermMonitorings }).(MxclusterTuntermMonitoringArrayArrayOutput)
 }

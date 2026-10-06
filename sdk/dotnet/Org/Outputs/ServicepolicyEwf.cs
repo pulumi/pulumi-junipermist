@@ -26,7 +26,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Enhanced web filtering profile applied by this rule
+        /// Enhanced web filtering profile applied by this rule. enum: `Critical`, `Standard`, `Strict`.
         /// </summary>
         public readonly string? Profile;
 

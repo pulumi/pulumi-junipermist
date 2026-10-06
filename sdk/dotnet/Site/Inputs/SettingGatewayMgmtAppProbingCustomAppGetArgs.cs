@@ -60,7 +60,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<int>? PacketSize { get; set; }
 
         /// <summary>
-        /// Probe protocol used by this custom application definition
+        /// Probe protocol used by this custom application definition. enum: `Http`, `Icmp`.
         /// </summary>
         [Input("protocol", required: true)]
         public Input<string> Protocol { get; set; } = null!;

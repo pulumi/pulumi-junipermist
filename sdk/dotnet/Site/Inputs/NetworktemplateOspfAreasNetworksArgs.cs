@@ -45,7 +45,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// Authentication method used by this OSPF network
+        /// Authentication method used by this OSPF network. enum: `Md5`, `None`, `Password`.
         /// </summary>
         [Input("authType")]
         public Input<string>? AuthType { get; set; }
@@ -81,7 +81,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? ImportPolicy { get; set; }
 
         /// <summary>
-        /// OSPF interface type used for this network
+        /// OSPF interface type used for this network. enum: `Broadcast`, `Nbma`, `P2mp`, `P2p`.
         /// </summary>
         [Input("interfaceType")]
         public Input<string>? InterfaceType { get; set; }

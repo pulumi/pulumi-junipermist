@@ -31,7 +31,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? Netmask { get; set; }
 
         /// <summary>
-        /// IP assignment mode for the node1 out-of-band management interface
+        /// IP assignment mode for the node1 out-of-band management interface. enum: `Dhcp`, `Static`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

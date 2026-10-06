@@ -33,14 +33,14 @@ public final class DeviceprofileSwitchSnmpConfigV3ConfigVacmSecurityToGroupArgs 
     }
 
     /**
-     * Required security model for these VACM group mappings
+     * Required security model for these VACM group mappings. enum: `usm`, `v1`, `v2c`.
      * 
      */
     @Import(name="securityModel")
     private @Nullable Output<String> securityModel;
 
     /**
-     * @return Required security model for these VACM group mappings
+     * @return Required security model for these VACM group mappings. enum: `usm`, `v1`, `v2c`.
      * 
      */
     public Optional<Output<String>> securityModel() {
@@ -104,7 +104,7 @@ public final class DeviceprofileSwitchSnmpConfigV3ConfigVacmSecurityToGroupArgs 
         }
 
         /**
-         * @param securityModel Required security model for these VACM group mappings
+         * @param securityModel Required security model for these VACM group mappings. enum: `usm`, `v1`, `v2c`.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class DeviceprofileSwitchSnmpConfigV3ConfigVacmSecurityToGroupArgs 
         }
 
         /**
-         * @param securityModel Required security model for these VACM group mappings
+         * @param securityModel Required security model for these VACM group mappings. enum: `usm`, `v1`, `v2c`.
          * 
          * @return builder
          * 

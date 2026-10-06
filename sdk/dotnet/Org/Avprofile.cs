@@ -70,7 +70,7 @@ namespace Pulumi.JuniperMist.Org
     public partial class Avprofile : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Action to take when antivirus scanning cannot complete
+        /// Action to take when antivirus scanning cannot complete. enum: `Block`, `log-and-permit`, `Permit`.
         /// </summary>
         [Output("fallbackAction")]
         public Output<string?> FallbackAction { get; private set; } = null!;
@@ -159,7 +159,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class AvprofileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Action to take when antivirus scanning cannot complete
+        /// Action to take when antivirus scanning cannot complete. enum: `Block`, `log-and-permit`, `Permit`.
         /// </summary>
         [Input("fallbackAction")]
         public Input<string>? FallbackAction { get; set; }
@@ -227,7 +227,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class AvprofileState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Action to take when antivirus scanning cannot complete
+        /// Action to take when antivirus scanning cannot complete. enum: `Block`, `log-and-permit`, `Permit`.
         /// </summary>
         [Input("fallbackAction")]
         public Input<string>? FallbackAction { get; set; }

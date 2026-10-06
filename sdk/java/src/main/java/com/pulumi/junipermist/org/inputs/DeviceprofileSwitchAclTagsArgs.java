@@ -164,14 +164,14 @@ public final class DeviceprofileSwitchAclTagsArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Classifier type that determines which ACL tag fields are evaluated
+     * Classifier type that determines which ACL tag fields are evaluated. enum: `any`, `arubaUserRole`, `dynamicGbp`, `gbpResource`, `mac`, `network`, `portUsage`, `radiusGroup`, `resource`, `staticGbp`, `subnet`.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return Classifier type that determines which ACL tag fields are evaluated
+     * @return Classifier type that determines which ACL tag fields are evaluated. enum: `any`, `arubaUserRole`, `dynamicGbp`, `gbpResource`, `mac`, `network`, `portUsage`, `radiusGroup`, `resource`, `staticGbp`, `subnet`.
      * 
      */
     public Output<String> type() {
@@ -443,7 +443,7 @@ public final class DeviceprofileSwitchAclTagsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param type Classifier type that determines which ACL tag fields are evaluated
+         * @param type Classifier type that determines which ACL tag fields are evaluated. enum: `any`, `arubaUserRole`, `dynamicGbp`, `gbpResource`, `mac`, `network`, `portUsage`, `radiusGroup`, `resource`, `staticGbp`, `subnet`.
          * 
          * @return builder
          * 
@@ -454,7 +454,7 @@ public final class DeviceprofileSwitchAclTagsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param type Classifier type that determines which ACL tag fields are evaluated
+         * @param type Classifier type that determines which ACL tag fields are evaluated. enum: `any`, `arubaUserRole`, `dynamicGbp`, `gbpResource`, `mac`, `network`, `portUsage`, `radiusGroup`, `resource`, `staticGbp`, `subnet`.
          * 
          * @return builder
          * 

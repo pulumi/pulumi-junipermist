@@ -49,7 +49,7 @@ public final class GatewayGatewayMgmtAppProbingCustomApp {
      */
     private @Nullable Integer packetSize;
     /**
-     * @return Probe protocol used by this custom application definition
+     * @return Probe protocol used by this custom application definition. enum: `http`, `icmp`.
      * 
      */
     private @Nullable String protocol;
@@ -115,7 +115,7 @@ public final class GatewayGatewayMgmtAppProbingCustomApp {
         return Optional.ofNullable(this.packetSize);
     }
     /**
-     * @return Probe protocol used by this custom application definition
+     * @return Probe protocol used by this custom application definition. enum: `http`, `icmp`.
      * 
      */
     public Optional<String> protocol() {

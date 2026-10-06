@@ -21,7 +21,7 @@ public final class WlanPortalTemplatePortalTemplate {
      */
     private @Nullable String accessCodeAlternateEmail;
     /**
-     * @return Text and content alignment used by the guest portal template
+     * @return Text and content alignment used by the guest portal template. enum: `center`, `left`, `right`.
      * 
      */
     private @Nullable String alignment;
@@ -668,7 +668,7 @@ public final class WlanPortalTemplatePortalTemplate {
         return Optional.ofNullable(this.accessCodeAlternateEmail);
     }
     /**
-     * @return Text and content alignment used by the guest portal template
+     * @return Text and content alignment used by the guest portal template. enum: `center`, `left`, `right`.
      * 
      */
     public Optional<String> alignment() {

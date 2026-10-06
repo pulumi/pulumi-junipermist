@@ -84,7 +84,7 @@ type UpgradeDevice struct {
 	Snapshot pulumi.BoolOutput `pulumi:"snapshot"`
 	// Firmware download start time in epoch
 	StartTime pulumi.IntPtrOutput `pulumi:"startTime"`
-	// Current status of the requested device upgrade
+	// Current status of the requested device upgrade. enum: `error`, `inprogress`, `scheduled`, `starting`, `success`.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// if set to `false`, the provider will just trigger the upgrade and not wait for the end of the upgrade process. Default is `true`
 	SyncUpgrade pulumi.BoolOutput `pulumi:"syncUpgrade"`
@@ -166,7 +166,7 @@ type upgradeDeviceState struct {
 	Snapshot *bool `pulumi:"snapshot"`
 	// Firmware download start time in epoch
 	StartTime *int `pulumi:"startTime"`
-	// Current status of the requested device upgrade
+	// Current status of the requested device upgrade. enum: `error`, `inprogress`, `scheduled`, `starting`, `success`.
 	Status *string `pulumi:"status"`
 	// if set to `false`, the provider will just trigger the upgrade and not wait for the end of the upgrade process. Default is `true`
 	SyncUpgrade *bool `pulumi:"syncUpgrade"`
@@ -210,7 +210,7 @@ type UpgradeDeviceState struct {
 	Snapshot pulumi.BoolPtrInput
 	// Firmware download start time in epoch
 	StartTime pulumi.IntPtrInput
-	// Current status of the requested device upgrade
+	// Current status of the requested device upgrade. enum: `error`, `inprogress`, `scheduled`, `starting`, `success`.
 	Status pulumi.StringPtrInput
 	// if set to `false`, the provider will just trigger the upgrade and not wait for the end of the upgrade process. Default is `true`
 	SyncUpgrade pulumi.BoolPtrInput
@@ -429,7 +429,7 @@ func (o UpgradeDeviceOutput) StartTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *UpgradeDevice) pulumi.IntPtrOutput { return v.StartTime }).(pulumi.IntPtrOutput)
 }
 
-// Current status of the requested device upgrade
+// Current status of the requested device upgrade. enum: `error`, `inprogress`, `scheduled`, `starting`, `success`.
 func (o UpgradeDeviceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *UpgradeDevice) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

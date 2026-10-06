@@ -24,7 +24,7 @@ public final class MxclusterTuntermDhcpdConfig {
      */
     private @Nullable List<String> servers;
     /**
-     * @return DHCP forwarding mode for this tunneled VLAN
+     * @return DHCP forwarding mode for this tunneled VLAN. enum: `relay`.
      * 
      */
     private @Nullable String type;
@@ -45,7 +45,7 @@ public final class MxclusterTuntermDhcpdConfig {
         return this.servers == null ? List.of() : this.servers;
     }
     /**
-     * @return DHCP forwarding mode for this tunneled VLAN
+     * @return DHCP forwarding mode for this tunneled VLAN. enum: `relay`.
      * 
      */
     public Optional<String> type() {

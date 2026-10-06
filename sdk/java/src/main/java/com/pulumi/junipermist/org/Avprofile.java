@@ -84,14 +84,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:org/avprofile:Avprofile")
 public class Avprofile extends com.pulumi.resources.CustomResource {
     /**
-     * Action to take when antivirus scanning cannot complete
+     * Action to take when antivirus scanning cannot complete. enum: `block`, `log-and-permit`, `permit`.
      * 
      */
     @Export(name="fallbackAction", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> fallbackAction;
 
     /**
-     * @return Action to take when antivirus scanning cannot complete
+     * @return Action to take when antivirus scanning cannot complete. enum: `block`, `log-and-permit`, `permit`.
      * 
      */
     public Output<Optional<String>> fallbackAction() {

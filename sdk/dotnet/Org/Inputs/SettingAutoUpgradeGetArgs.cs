@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// Day of the week for the AP auto-upgrade maintenance window
+        /// Day of the week for the AP auto-upgrade maintenance window. enum: `Any`, `Fri`, `Mon`, `Sat`, `Sun`, `Thu`, `Tue`, `Wed`.
         /// </summary>
         [Input("dayOfWeek")]
         public Input<string>? DayOfWeek { get; set; }
@@ -43,7 +43,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? TimeOfDay { get; set; }
 
         /// <summary>
-        /// Firmware release channel or specific version used for AP auto-upgrade
+        /// Firmware release channel or specific version used for AP auto-upgrade. enum: `Beta`, `Custom`, `Stable`.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

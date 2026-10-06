@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? ExportPolicy;
         /// <summary>
-        /// BGP hold time for this neighbor
+        /// BGP hold time for this neighbor.
         /// </summary>
         public readonly int? HoldTime;
         /// <summary>

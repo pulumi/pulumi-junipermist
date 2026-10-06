@@ -148,14 +148,14 @@ public class Vpn extends com.pulumi.resources.CustomResource {
         return this.paths;
     }
     /**
-     * VPN topology mode for this configuration
+     * VPN topology mode for this configuration. enum: `hubSpoke`, `mesh`.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return VPN topology mode for this configuration
+     * @return VPN topology mode for this configuration. enum: `hubSpoke`, `mesh`.
      * 
      */
     public Output<Optional<String>> type() {

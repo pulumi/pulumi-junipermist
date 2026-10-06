@@ -31,7 +31,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// Area type for this OSPF area
+        /// Area type for this OSPF area. enum: `Default`, `Nssa`, `Stub`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

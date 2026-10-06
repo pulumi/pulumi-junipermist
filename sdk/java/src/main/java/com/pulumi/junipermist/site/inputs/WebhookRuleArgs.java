@@ -19,14 +19,14 @@ public final class WebhookRuleArgs extends com.pulumi.resources.ResourceArgs {
     public static final WebhookRuleArgs Empty = new WebhookRuleArgs();
 
     /**
-     * Action applied when the rule matches the incoming event
+     * Action applied when the rule matches the incoming event. enum: `permit`, `block`.
      * 
      */
     @Import(name="action")
     private @Nullable Output<String> action;
 
     /**
-     * @return Action applied when the rule matches the incoming event
+     * @return Action applied when the rule matches the incoming event. enum: `permit`, `block`.
      * 
      */
     public Optional<Output<String>> action() {
@@ -90,7 +90,7 @@ public final class WebhookRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param action Action applied when the rule matches the incoming event
+         * @param action Action applied when the rule matches the incoming event. enum: `permit`, `block`.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class WebhookRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param action Action applied when the rule matches the incoming event
+         * @param action Action applied when the rule matches the incoming event. enum: `permit`, `block`.
          * 
          * @return builder
          * 

@@ -69,7 +69,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string?> Mac { get; private set; } = null!;
 
         /// <summary>
-        /// Required if `Type`==`Match`; attribute compared against `Values`
+        /// Required if `Type`==`Match`; attribute compared against `Values`. enum: `ApId`, `App`, `AssetMac`, `ClientMac`, `Hostname`, `IpRangeSubnet`, `Port`, `PskName`, `PskRole`, `RadiusAttr`, `RadiusClass`, `RadiusGroup`, `RadiusUsername`, `SdkclientUuid`, `WlanId`.
         /// </summary>
         [Output("match")]
         public Output<string?> Match { get; private set; } = null!;
@@ -81,7 +81,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Required if `Type`==`Match`; whether `Values` are inclusive or exclusive matches
+        /// Required if `Type`==`Match`; whether `Values` are inclusive or exclusive matches. enum: `In`, `NotIn`.
         /// </summary>
         [Output("op")]
         public Output<string?> Op { get; private set; } = null!;
@@ -99,7 +99,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<ImmutableArray<Outputs.WxtagSpec>> Specs { get; private set; } = null!;
 
         /// <summary>
-        /// Kind of WxLAN tag and how it is populated
+        /// Kind of WxLAN tag and how it is populated. enum: `Client`, `Match`, `Resource`, `Spec`, `Subnet`, `Vlan`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -170,7 +170,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? Mac { get; set; }
 
         /// <summary>
-        /// Required if `Type`==`Match`; attribute compared against `Values`
+        /// Required if `Type`==`Match`; attribute compared against `Values`. enum: `ApId`, `App`, `AssetMac`, `ClientMac`, `Hostname`, `IpRangeSubnet`, `Port`, `PskName`, `PskRole`, `RadiusAttr`, `RadiusClass`, `RadiusGroup`, `RadiusUsername`, `SdkclientUuid`, `WlanId`.
         /// </summary>
         [Input("match")]
         public Input<string>? Match { get; set; }
@@ -182,7 +182,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Required if `Type`==`Match`; whether `Values` are inclusive or exclusive matches
+        /// Required if `Type`==`Match`; whether `Values` are inclusive or exclusive matches. enum: `In`, `NotIn`.
         /// </summary>
         [Input("op")]
         public Input<string>? Op { get; set; }
@@ -206,7 +206,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Kind of WxLAN tag and how it is populated
+        /// Kind of WxLAN tag and how it is populated. enum: `Client`, `Match`, `Resource`, `Spec`, `Subnet`, `Vlan`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -244,7 +244,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? Mac { get; set; }
 
         /// <summary>
-        /// Required if `Type`==`Match`; attribute compared against `Values`
+        /// Required if `Type`==`Match`; attribute compared against `Values`. enum: `ApId`, `App`, `AssetMac`, `ClientMac`, `Hostname`, `IpRangeSubnet`, `Port`, `PskName`, `PskRole`, `RadiusAttr`, `RadiusClass`, `RadiusGroup`, `RadiusUsername`, `SdkclientUuid`, `WlanId`.
         /// </summary>
         [Input("match")]
         public Input<string>? Match { get; set; }
@@ -256,7 +256,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Required if `Type`==`Match`; whether `Values` are inclusive or exclusive matches
+        /// Required if `Type`==`Match`; whether `Values` are inclusive or exclusive matches. enum: `In`, `NotIn`.
         /// </summary>
         [Input("op")]
         public Input<string>? Op { get; set; }
@@ -280,7 +280,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Kind of WxLAN tag and how it is populated
+        /// Kind of WxLAN tag and how it is populated. enum: `Client`, `Match`, `Resource`, `Spec`, `Subnet`, `Vlan`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

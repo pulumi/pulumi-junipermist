@@ -35,7 +35,8 @@ class NetworkArgs:
                  subnet6: pulumi.Input[Optional[_builtins.str]] = None,
                  tenants: pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworkTenantsArgs']]]] = None,
                  vlan_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 vpn_access: pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworkVpnAccessArgs']]]] = None):
+                 vpn_access: pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworkVpnAccessArgs']]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Network resource.
 
@@ -54,6 +55,7 @@ class NetworkArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworkTenantsArgs']]] tenants: Tenant address mappings associated with this network
         :param pulumi.Input[_builtins.str] vlan_id: VLAN ID or variable associated with this network
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworkVpnAccessArgs']]] vpn_access: VPN access settings keyed by VPN name for this network
+        :param pulumi.Input[_builtins.str] zone_id: SecurityZone this network belongs to. When set, the zone name is used as the security zone name on the SRX, and multiple networks can share the same zone. When omitted, the network `name` is used as the security zone name.
         """
         pulumi.set(__self__, "org_id", org_id)
         pulumi.set(__self__, "subnet", subnet)
@@ -83,6 +85,8 @@ class NetworkArgs:
             pulumi.set(__self__, "vlan_id", vlan_id)
         if vpn_access is not None:
             pulumi.set(__self__, "vpn_access", vpn_access)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
@@ -264,6 +268,18 @@ class NetworkArgs:
     def vpn_access(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworkVpnAccessArgs']]]]):
         pulumi.set(self, "vpn_access", value)
 
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        SecurityZone this network belongs to. When set, the zone name is used as the security zone name on the SRX, and multiple networks can share the same zone. When omitted, the network `name` is used as the security zone name.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "zone_id", value)
+
 
 @pulumi.input_type
 class _NetworkState:
@@ -282,7 +298,8 @@ class _NetworkState:
                  subnet6: pulumi.Input[Optional[_builtins.str]] = None,
                  tenants: pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworkTenantsArgs']]]] = None,
                  vlan_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 vpn_access: pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworkVpnAccessArgs']]]] = None):
+                 vpn_access: pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworkVpnAccessArgs']]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Network resources.
 
@@ -301,6 +318,7 @@ class _NetworkState:
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworkTenantsArgs']]] tenants: Tenant address mappings associated with this network
         :param pulumi.Input[_builtins.str] vlan_id: VLAN ID or variable associated with this network
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworkVpnAccessArgs']]] vpn_access: VPN access settings keyed by VPN name for this network
+        :param pulumi.Input[_builtins.str] zone_id: SecurityZone this network belongs to. When set, the zone name is used as the security zone name on the SRX, and multiple networks can share the same zone. When omitted, the network `name` is used as the security zone name.
         """
         if disallow_mist_services is not None:
             pulumi.set(__self__, "disallow_mist_services", disallow_mist_services)
@@ -332,6 +350,8 @@ class _NetworkState:
             pulumi.set(__self__, "vlan_id", vlan_id)
         if vpn_access is not None:
             pulumi.set(__self__, "vpn_access", vpn_access)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter(name="disallowMistServices")
@@ -513,6 +533,18 @@ class _NetworkState:
     def vpn_access(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworkVpnAccessArgs']]]]):
         pulumi.set(self, "vpn_access", value)
 
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        SecurityZone this network belongs to. When set, the zone name is used as the security zone name on the SRX, and multiple networks can share the same zone. When omitted, the network `name` is used as the security zone name.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "zone_id", value)
+
 
 @pulumi.type_token("junipermist:org/network:Network")
 class Network(pulumi.CustomResource):
@@ -535,6 +567,7 @@ class Network(pulumi.CustomResource):
                  tenants: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworkTenantsArgs', 'NetworkTenantsArgsDict']]]]] = None,
                  vlan_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vpn_access: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworkVpnAccessArgs', 'NetworkVpnAccessArgsDict']]]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource manages the WAN Assurance Networks.
@@ -581,6 +614,7 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkTenantsArgs', 'NetworkTenantsArgsDict']]]] tenants: Tenant address mappings associated with this network
         :param pulumi.Input[_builtins.str] vlan_id: VLAN ID or variable associated with this network
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkVpnAccessArgs', 'NetworkVpnAccessArgsDict']]]] vpn_access: VPN access settings keyed by VPN name for this network
+        :param pulumi.Input[_builtins.str] zone_id: SecurityZone this network belongs to. When set, the zone name is used as the security zone name on the SRX, and multiple networks can share the same zone. When omitted, the network `name` is used as the security zone name.
         """
         ...
     @overload
@@ -646,6 +680,7 @@ class Network(pulumi.CustomResource):
                  tenants: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworkTenantsArgs', 'NetworkTenantsArgsDict']]]]] = None,
                  vlan_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vpn_access: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworkVpnAccessArgs', 'NetworkVpnAccessArgsDict']]]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -674,6 +709,7 @@ class Network(pulumi.CustomResource):
             __props__.__dict__["tenants"] = tenants
             __props__.__dict__["vlan_id"] = vlan_id
             __props__.__dict__["vpn_access"] = vpn_access
+            __props__.__dict__["zone_id"] = zone_id
         super(Network, __self__).__init__(
             'junipermist:org/network:Network',
             resource_name,
@@ -698,7 +734,8 @@ class Network(pulumi.CustomResource):
             subnet6: pulumi.Input[Optional[_builtins.str]] = None,
             tenants: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworkTenantsArgs', 'NetworkTenantsArgsDict']]]]] = None,
             vlan_id: pulumi.Input[Optional[_builtins.str]] = None,
-            vpn_access: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworkVpnAccessArgs', 'NetworkVpnAccessArgsDict']]]]] = None) -> 'Network':
+            vpn_access: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworkVpnAccessArgs', 'NetworkVpnAccessArgsDict']]]]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Network':
         """
         Get an existing Network resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -721,6 +758,7 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkTenantsArgs', 'NetworkTenantsArgsDict']]]] tenants: Tenant address mappings associated with this network
         :param pulumi.Input[_builtins.str] vlan_id: VLAN ID or variable associated with this network
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkVpnAccessArgs', 'NetworkVpnAccessArgsDict']]]] vpn_access: VPN access settings keyed by VPN name for this network
+        :param pulumi.Input[_builtins.str] zone_id: SecurityZone this network belongs to. When set, the zone name is used as the security zone name on the SRX, and multiple networks can share the same zone. When omitted, the network `name` is used as the security zone name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -741,6 +779,7 @@ class Network(pulumi.CustomResource):
         __props__.__dict__["tenants"] = tenants
         __props__.__dict__["vlan_id"] = vlan_id
         __props__.__dict__["vpn_access"] = vpn_access
+        __props__.__dict__["zone_id"] = zone_id
         return Network(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -862,4 +901,12 @@ class Network(pulumi.CustomResource):
         VPN access settings keyed by VPN name for this network
         """
         return pulumi.get(self, "vpn_access")
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        SecurityZone this network belongs to. When set, the zone name is used as the security zone name on the SRX, and multiple networks can share the same zone. When omitted, the network `name` is used as the security zone name.
+        """
+        return pulumi.get(self, "zone_id")
 

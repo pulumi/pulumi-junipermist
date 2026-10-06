@@ -46,7 +46,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>
-        /// If `WanType`==`Dsl`. DSL technology used by the WAN port
+        /// If `WanType`==`Dsl`. DSL technology used by the WAN port. enum: `Adsl`, `Vdsl`.
         /// </summary>
         public readonly string? DslType;
         /// <summary>
@@ -58,7 +58,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly int? DslVpi;
         /// <summary>
-        /// Ethernet duplex mode configured on the port
+        /// Ethernet duplex mode configured on the port. enum: `Auto`, `Full`, `Half`.
         /// </summary>
         public readonly string? Duplex;
         /// <summary>
@@ -70,7 +70,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? LteApn;
         /// <summary>
-        /// If `WanType`==`Lte`. Authentication method used by the LTE uplink
+        /// If `WanType`==`Lte`. Authentication method used by the LTE uplink. enum: `Chap`, `None`, `Pap`.
         /// </summary>
         public readonly string? LteAuth;
         /// <summary>
@@ -150,7 +150,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly Outputs.DeviceprofileGatewayPortConfigTrafficShaping? TrafficShaping;
         /// <summary>
-        /// Logical usage assigned to the port
+        /// Logical usage assigned to the port. enum: `HaControl`, `HaData`, `Lan`, `Wan`.
         /// </summary>
         public readonly string Usage;
         /// <summary>
@@ -162,7 +162,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.DeviceprofileGatewayPortConfigVpnPaths>? VpnPaths;
         /// <summary>
-        /// Only when `WanType`==`Broadband`. ARP policer profile applied to the WAN port
+        /// Only when `WanType`==`Broadband`. ARP policer profile applied to the WAN port. enum: `Default`, `Max`, `Recommended`.
         /// </summary>
         public readonly string? WanArpPolicer;
         /// <summary>
@@ -194,11 +194,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly Outputs.DeviceprofileGatewayPortConfigWanSourceNat? WanSourceNat;
         /// <summary>
-        /// Controls whether Marvis or the scheduler can run speed tests on this WAN port
+        /// Controls whether Marvis or the scheduler can run speed tests on this WAN port. enum: `Auto`, `Enabled`, `Disabled`.
         /// </summary>
         public readonly string? WanSpeedtestMode;
         /// <summary>
-        /// Only if `Usage`==`Wan`. WAN uplink type configured on the port
+        /// Only if `Usage`==`Wan`. WAN uplink type configured on the port. enum: `Broadband`, `Dsl`, `Lte`.
         /// </summary>
         public readonly string? WanType;
 

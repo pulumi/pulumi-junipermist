@@ -27,6 +27,7 @@ class NacruleArgs:
                  apply_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  guest_auth_state: pulumi.Input[Optional[_builtins.str]] = None,
                  matching: pulumi.Input[Optional['NacruleMatchingArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -40,7 +41,8 @@ class NacruleArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] apply_tags: NAC tag IDs to include in the Access-Accept when the rule allows access
         :param pulumi.Input[_builtins.bool] dry_run: Whether the NAC rule is in dry-run mode, where matches are logged but the action is not enforced
         :param pulumi.Input[_builtins.bool] enabled: Whether the NAC rule is evaluated during policy matching
-        :param pulumi.Input[_builtins.str] guest_auth_state: Guest portal authorization state condition for the rule
+        :param pulumi.Input[_builtins.str] group_name: Name of the group the NAC rule belongs to
+        :param pulumi.Input[_builtins.str] guest_auth_state: Guest portal authorization state condition for the rule. enum: `authorized`, `unknown`.
         :param pulumi.Input['NacruleMatchingArgs'] matching: Criteria that must match for the NAC rule to apply
         :param pulumi.Input[_builtins.str] name: Human-readable name of the NAC rule
         :param pulumi.Input['NacruleNotMatchingArgs'] not_matching: Criteria that must not match for the NAC rule to apply
@@ -54,6 +56,8 @@ class NacruleArgs:
             pulumi.set(__self__, "dry_run", dry_run)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if group_name is not None:
+            pulumi.set(__self__, "group_name", group_name)
         if guest_auth_state is not None:
             pulumi.set(__self__, "guest_auth_state", guest_auth_state)
         if matching is not None:
@@ -136,10 +140,22 @@ class NacruleArgs:
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
+    @pulumi.getter(name="groupName")
+    def group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Name of the group the NAC rule belongs to
+        """
+        return pulumi.get(self, "group_name")
+
+    @group_name.setter
+    def group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "group_name", value)
+
+    @_builtins.property
     @pulumi.getter(name="guestAuthState")
     def guest_auth_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Guest portal authorization state condition for the rule
+        Guest portal authorization state condition for the rule. enum: `authorized`, `unknown`.
         """
         return pulumi.get(self, "guest_auth_state")
 
@@ -191,6 +207,7 @@ class _NacruleState:
                  apply_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  guest_auth_state: pulumi.Input[Optional[_builtins.str]] = None,
                  matching: pulumi.Input[Optional['NacruleMatchingArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -204,7 +221,8 @@ class _NacruleState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] apply_tags: NAC tag IDs to include in the Access-Accept when the rule allows access
         :param pulumi.Input[_builtins.bool] dry_run: Whether the NAC rule is in dry-run mode, where matches are logged but the action is not enforced
         :param pulumi.Input[_builtins.bool] enabled: Whether the NAC rule is evaluated during policy matching
-        :param pulumi.Input[_builtins.str] guest_auth_state: Guest portal authorization state condition for the rule
+        :param pulumi.Input[_builtins.str] group_name: Name of the group the NAC rule belongs to
+        :param pulumi.Input[_builtins.str] guest_auth_state: Guest portal authorization state condition for the rule. enum: `authorized`, `unknown`.
         :param pulumi.Input['NacruleMatchingArgs'] matching: Criteria that must match for the NAC rule to apply
         :param pulumi.Input[_builtins.str] name: Human-readable name of the NAC rule
         :param pulumi.Input['NacruleNotMatchingArgs'] not_matching: Criteria that must not match for the NAC rule to apply
@@ -219,6 +237,8 @@ class _NacruleState:
             pulumi.set(__self__, "dry_run", dry_run)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if group_name is not None:
+            pulumi.set(__self__, "group_name", group_name)
         if guest_auth_state is not None:
             pulumi.set(__self__, "guest_auth_state", guest_auth_state)
         if matching is not None:
@@ -281,10 +301,22 @@ class _NacruleState:
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
+    @pulumi.getter(name="groupName")
+    def group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Name of the group the NAC rule belongs to
+        """
+        return pulumi.get(self, "group_name")
+
+    @group_name.setter
+    def group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "group_name", value)
+
+    @_builtins.property
     @pulumi.getter(name="guestAuthState")
     def guest_auth_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Guest portal authorization state condition for the rule
+        Guest portal authorization state condition for the rule. enum: `authorized`, `unknown`.
         """
         return pulumi.get(self, "guest_auth_state")
 
@@ -363,6 +395,7 @@ class Nacrule(pulumi.CustomResource):
                  apply_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  guest_auth_state: pulumi.Input[Optional[_builtins.str]] = None,
                  matching: pulumi.Input[Optional[Union['NacruleMatchingArgs', 'NacruleMatchingArgsDict']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -414,7 +447,8 @@ class Nacrule(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] apply_tags: NAC tag IDs to include in the Access-Accept when the rule allows access
         :param pulumi.Input[_builtins.bool] dry_run: Whether the NAC rule is in dry-run mode, where matches are logged but the action is not enforced
         :param pulumi.Input[_builtins.bool] enabled: Whether the NAC rule is evaluated during policy matching
-        :param pulumi.Input[_builtins.str] guest_auth_state: Guest portal authorization state condition for the rule
+        :param pulumi.Input[_builtins.str] group_name: Name of the group the NAC rule belongs to
+        :param pulumi.Input[_builtins.str] guest_auth_state: Guest portal authorization state condition for the rule. enum: `authorized`, `unknown`.
         :param pulumi.Input[Union['NacruleMatchingArgs', 'NacruleMatchingArgsDict']] matching: Criteria that must match for the NAC rule to apply
         :param pulumi.Input[_builtins.str] name: Human-readable name of the NAC rule
         :param pulumi.Input[Union['NacruleNotMatchingArgs', 'NacruleNotMatchingArgsDict']] not_matching: Criteria that must not match for the NAC rule to apply
@@ -484,6 +518,7 @@ class Nacrule(pulumi.CustomResource):
                  apply_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  guest_auth_state: pulumi.Input[Optional[_builtins.str]] = None,
                  matching: pulumi.Input[Optional[Union['NacruleMatchingArgs', 'NacruleMatchingArgsDict']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -505,6 +540,7 @@ class Nacrule(pulumi.CustomResource):
             __props__.__dict__["apply_tags"] = apply_tags
             __props__.__dict__["dry_run"] = dry_run
             __props__.__dict__["enabled"] = enabled
+            __props__.__dict__["group_name"] = group_name
             __props__.__dict__["guest_auth_state"] = guest_auth_state
             __props__.__dict__["matching"] = matching
             __props__.__dict__["name"] = name
@@ -529,6 +565,7 @@ class Nacrule(pulumi.CustomResource):
             apply_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            group_name: pulumi.Input[Optional[_builtins.str]] = None,
             guest_auth_state: pulumi.Input[Optional[_builtins.str]] = None,
             matching: pulumi.Input[Optional[Union['NacruleMatchingArgs', 'NacruleMatchingArgsDict']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -546,7 +583,8 @@ class Nacrule(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] apply_tags: NAC tag IDs to include in the Access-Accept when the rule allows access
         :param pulumi.Input[_builtins.bool] dry_run: Whether the NAC rule is in dry-run mode, where matches are logged but the action is not enforced
         :param pulumi.Input[_builtins.bool] enabled: Whether the NAC rule is evaluated during policy matching
-        :param pulumi.Input[_builtins.str] guest_auth_state: Guest portal authorization state condition for the rule
+        :param pulumi.Input[_builtins.str] group_name: Name of the group the NAC rule belongs to
+        :param pulumi.Input[_builtins.str] guest_auth_state: Guest portal authorization state condition for the rule. enum: `authorized`, `unknown`.
         :param pulumi.Input[Union['NacruleMatchingArgs', 'NacruleMatchingArgsDict']] matching: Criteria that must match for the NAC rule to apply
         :param pulumi.Input[_builtins.str] name: Human-readable name of the NAC rule
         :param pulumi.Input[Union['NacruleNotMatchingArgs', 'NacruleNotMatchingArgsDict']] not_matching: Criteria that must not match for the NAC rule to apply
@@ -561,6 +599,7 @@ class Nacrule(pulumi.CustomResource):
         __props__.__dict__["apply_tags"] = apply_tags
         __props__.__dict__["dry_run"] = dry_run
         __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["group_name"] = group_name
         __props__.__dict__["guest_auth_state"] = guest_auth_state
         __props__.__dict__["matching"] = matching
         __props__.__dict__["name"] = name
@@ -602,10 +641,18 @@ class Nacrule(pulumi.CustomResource):
         return pulumi.get(self, "enabled")
 
     @_builtins.property
+    @pulumi.getter(name="groupName")
+    def group_name(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Name of the group the NAC rule belongs to
+        """
+        return pulumi.get(self, "group_name")
+
+    @_builtins.property
     @pulumi.getter(name="guestAuthState")
     def guest_auth_state(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Guest portal authorization state condition for the rule
+        Guest portal authorization state condition for the rule. enum: `authorized`, `unknown`.
         """
         return pulumi.get(self, "guest_auth_state")
 

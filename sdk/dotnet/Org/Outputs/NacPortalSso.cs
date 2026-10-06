@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? IdpCert;
         /// <summary>
-        /// Signing algorithm expected for SAML assertions from the identity provider
+        /// Signing algorithm expected for SAML assertions from the identity provider. enum: `Sha1`, `Sha256`, `Sha384`, `Sha512`.
         /// </summary>
         public readonly string? IdpSignAlgo;
         /// <summary>

@@ -13,19 +13,19 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class GatewayTunnelConfigsIpsecProposalGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Integrity algorithm used by this IPsec proposal
+        /// Integrity algorithm used by this IPsec proposal. enum: `Md5`, `Sha1`, `Sha2`.
         /// </summary>
         [Input("authAlgo")]
         public Input<string>? AuthAlgo { get; set; }
 
         /// <summary>
-        /// Diffie-Hellman group used by this IPsec proposal
+        /// Diffie-Hellman group used by this IPsec proposal. enum: `1`, `14`, `15`, `16`, `19`, `2`, `20`, `21`, `24`, `5`.
         /// </summary>
         [Input("dhGroup")]
         public Input<string>? DhGroup { get; set; }
 
         /// <summary>
-        /// Cipher algorithm used by this IPsec proposal
+        /// Cipher algorithm used by this IPsec proposal. enum: `3des`, `Aes128`, `Aes256`, `AesGcm128`, `AesGcm256`.
         /// </summary>
         [Input("encAlgo")]
         public Input<string>? EncAlgo { get; set; }

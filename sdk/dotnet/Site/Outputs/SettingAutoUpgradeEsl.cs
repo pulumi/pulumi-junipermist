@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? CustomVersions;
         /// <summary>
-        /// Weekly ESL auto-upgrade day for the maintenance window
+        /// Weekly ESL auto-upgrade day for the maintenance window. enum: `Any`, `Fri`, `Mon`, `Sat`, `Sun`, `Thu`, `Tue`, `Wed`.
         /// </summary>
         public readonly string? DayOfWeek;
         /// <summary>

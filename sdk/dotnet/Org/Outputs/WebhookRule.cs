@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class WebhookRule
     {
         /// <summary>
-        /// Action applied when the rule matches the incoming event
+        /// Action applied when the rule matches the incoming event. enum: `Permit`, `Block`.
         /// </summary>
         public readonly string? Action;
         /// <summary>

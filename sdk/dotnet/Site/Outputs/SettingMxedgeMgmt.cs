@@ -26,11 +26,11 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? MistPassword;
         /// <summary>
-        /// IPv4 address assignment mode for out-of-band management
+        /// IPv4 address assignment mode for out-of-band management. enum: `Dhcp`, `Disabled`, `Static`.
         /// </summary>
         public readonly string? OobIpType;
         /// <summary>
-        /// IPv6 address assignment mode for out-of-band management
+        /// IPv6 address assignment mode for out-of-band management. enum: `Autoconf`, `Dhcp`, `Disabled`, `Static`.
         /// </summary>
         public readonly string? OobIpType6;
         /// <summary>

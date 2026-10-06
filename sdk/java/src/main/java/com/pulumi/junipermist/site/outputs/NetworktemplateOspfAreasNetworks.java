@@ -25,7 +25,7 @@ public final class NetworktemplateOspfAreasNetworks {
      */
     private @Nullable String authPassword;
     /**
-     * @return Authentication method used by this OSPF network
+     * @return Authentication method used by this OSPF network. enum: `md5`, `none`, `password`.
      * 
      */
     private @Nullable String authType;
@@ -55,7 +55,7 @@ public final class NetworktemplateOspfAreasNetworks {
      */
     private @Nullable String importPolicy;
     /**
-     * @return OSPF interface type used for this network
+     * @return OSPF interface type used for this network. enum: `broadcast`, `nbma`, `p2mp`, `p2p`.
      * 
      */
     private @Nullable String interfaceType;
@@ -91,7 +91,7 @@ public final class NetworktemplateOspfAreasNetworks {
         return Optional.ofNullable(this.authPassword);
     }
     /**
-     * @return Authentication method used by this OSPF network
+     * @return Authentication method used by this OSPF network. enum: `md5`, `none`, `password`.
      * 
      */
     public Optional<String> authType() {
@@ -133,7 +133,7 @@ public final class NetworktemplateOspfAreasNetworks {
         return Optional.ofNullable(this.importPolicy);
     }
     /**
-     * @return OSPF interface type used for this network
+     * @return OSPF interface type used for this network. enum: `broadcast`, `nbma`, `p2mp`, `p2p`.
      * 
      */
     public Optional<String> interfaceType() {

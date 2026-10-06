@@ -28,12 +28,12 @@ public final class MxedgeMxedgeMgmt {
      */
     private @Nullable String mistPassword;
     /**
-     * @return IPv4 address assignment mode for out-of-band management
+     * @return IPv4 address assignment mode for out-of-band management. enum: `dhcp`, `disabled`, `static`.
      * 
      */
     private @Nullable String oobIpType;
     /**
-     * @return IPv6 address assignment mode for out-of-band management
+     * @return IPv6 address assignment mode for out-of-band management. enum: `autoconf`, `dhcp`, `disabled`, `static`.
      * 
      */
     private @Nullable String oobIpType6;
@@ -66,14 +66,14 @@ public final class MxedgeMxedgeMgmt {
         return Optional.ofNullable(this.mistPassword);
     }
     /**
-     * @return IPv4 address assignment mode for out-of-band management
+     * @return IPv4 address assignment mode for out-of-band management. enum: `dhcp`, `disabled`, `static`.
      * 
      */
     public Optional<String> oobIpType() {
         return Optional.ofNullable(this.oobIpType);
     }
     /**
-     * @return IPv6 address assignment mode for out-of-band management
+     * @return IPv6 address assignment mode for out-of-band management. enum: `autoconf`, `dhcp`, `disabled`, `static`.
      * 
      */
     public Optional<String> oobIpType6() {

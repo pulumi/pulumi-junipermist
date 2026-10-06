@@ -37,7 +37,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<Inputs.GatewaytemplateOobIpConfigNode1GetArgs>? Node1 { get; set; }
 
         /// <summary>
-        /// IP assignment mode for the out-of-band management interface
+        /// IP assignment mode for the out-of-band management interface. enum: `Dhcp`, `Static`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

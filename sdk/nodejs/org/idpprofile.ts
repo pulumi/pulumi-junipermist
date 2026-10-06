@@ -82,7 +82,7 @@ export class Idpprofile extends pulumi.CustomResource {
     }
 
     /**
-     * Built-in IDP baseline profile inherited before applying overwrites
+     * Built-in IDP baseline profile inherited before applying overwrites. enum: `critical`, `standard`, `strict`.
      */
     declare public readonly baseProfile: pulumi.Output<string>;
     /**
@@ -138,7 +138,7 @@ export class Idpprofile extends pulumi.CustomResource {
  */
 export interface IdpprofileState {
     /**
-     * Built-in IDP baseline profile inherited before applying overwrites
+     * Built-in IDP baseline profile inherited before applying overwrites. enum: `critical`, `standard`, `strict`.
      */
     baseProfile?: pulumi.Input<string | undefined>;
     /**
@@ -160,7 +160,7 @@ export interface IdpprofileState {
  */
 export interface IdpprofileArgs {
     /**
-     * Built-in IDP baseline profile inherited before applying overwrites
+     * Built-in IDP baseline profile inherited before applying overwrites. enum: `critical`, `standard`, `strict`.
      */
     baseProfile: pulumi.Input<string>;
     /**

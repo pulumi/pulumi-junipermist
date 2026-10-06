@@ -236,14 +236,14 @@ public class UpgradeDevice extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.startTime);
     }
     /**
-     * Current status of the requested device upgrade
+     * Current status of the requested device upgrade. enum: `error`, `inprogress`, `scheduled`, `starting`, `success`.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return Current status of the requested device upgrade
+     * @return Current status of the requested device upgrade. enum: `error`, `inprogress`, `scheduled`, `starting`, `success`.
      * 
      */
     public Output<String> status() {

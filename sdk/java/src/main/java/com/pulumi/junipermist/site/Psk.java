@@ -205,14 +205,14 @@ public class Psk extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.oldPassphrase);
     }
     /**
-     * Organization that owns the site-level PSK
+     * Organization that owns the org-level PSK
      * 
      */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
     /**
-     * @return Organization that owns the site-level PSK
+     * @return Organization that owns the org-level PSK
      * 
      */
     public Output<String> orgId() {

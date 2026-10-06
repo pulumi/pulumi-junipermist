@@ -24,7 +24,7 @@ public final class ApMqttConfig {
      */
     private @Nullable Integer brokerPort;
     /**
-     * @return MQTT broker transport protocol
+     * @return MQTT broker transport protocol. enum: `ssl`, `tcp`.
      * 
      */
     private @Nullable String brokerProto;
@@ -39,7 +39,7 @@ public final class ApMqttConfig {
      */
     private @Nullable Boolean enabled;
     /**
-     * @return Payload format for published messages
+     * @return Payload format for published messages. enum: `json`, `raw`.
      * 
      */
     private @Nullable String format;
@@ -70,7 +70,7 @@ public final class ApMqttConfig {
         return Optional.ofNullable(this.brokerPort);
     }
     /**
-     * @return MQTT broker transport protocol
+     * @return MQTT broker transport protocol. enum: `ssl`, `tcp`.
      * 
      */
     public Optional<String> brokerProto() {
@@ -91,7 +91,7 @@ public final class ApMqttConfig {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Payload format for published messages
+     * @return Payload format for published messages. enum: `json`, `raw`.
      * 
      */
     public Optional<String> format() {

@@ -81,14 +81,14 @@ public final class RftemplateModelSpecificArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Model-specific radio usage mode for the 2.4 GHz-capable radio
+     * Model-specific radio usage mode for the 2.4 GHz-capable radio. enum: `24`, `5`, `6`, `auto`.
      * 
      */
     @Import(name="band24Usage")
     private @Nullable Output<String> band24Usage;
 
     /**
-     * @return Model-specific radio usage mode for the 2.4 GHz-capable radio
+     * @return Model-specific radio usage mode for the 2.4 GHz-capable radio. enum: `24`, `5`, `6`, `auto`.
      * 
      */
     public Optional<Output<String>> band24Usage() {
@@ -256,7 +256,7 @@ public final class RftemplateModelSpecificArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param band24Usage Model-specific radio usage mode for the 2.4 GHz-capable radio
+         * @param band24Usage Model-specific radio usage mode for the 2.4 GHz-capable radio. enum: `24`, `5`, `6`, `auto`.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class RftemplateModelSpecificArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param band24Usage Model-specific radio usage mode for the 2.4 GHz-capable radio
+         * @param band24Usage Model-specific radio usage mode for the 2.4 GHz-capable radio. enum: `24`, `5`, `6`, `auto`.
          * 
          * @return builder
          * 

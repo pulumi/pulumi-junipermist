@@ -19,7 +19,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? IdpCert { get; set; }
 
         /// <summary>
-        /// Signing algorithm expected for SAML assertions from the identity provider
+        /// Signing algorithm expected for SAML assertions from the identity provider. enum: `Sha1`, `Sha256`, `Sha384`, `Sha512`.
         /// </summary>
         [Input("idpSignAlgo")]
         public Input<string>? IdpSignAlgo { get; set; }

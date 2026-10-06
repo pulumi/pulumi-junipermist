@@ -13,10 +13,10 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class SettingSyntheticTestWanSpeedtestArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether scheduled WAN speedtests are enabled
+        /// Whether scheduled WAN speedtests are disabled. Defaults to `False` (enabled); set this to `True` to disable speedtests.
         /// </summary>
-        [Input("enabled")]
-        public Input<bool>? Enabled { get; set; }
+        [Input("disabled")]
+        public Input<bool>? Disabled { get; set; }
 
         /// <summary>
         /// Scheduled time of day for WAN speedtests

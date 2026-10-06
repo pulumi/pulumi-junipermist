@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class ApZigbeeConfig
     {
         /// <summary>
-        /// Join policy for new Zigbee devices on this AP
+        /// Join policy for new Zigbee devices on this AP. enum: `Always`, `Manual`.
         /// </summary>
         public readonly string? AllowJoin;
         /// <summary>

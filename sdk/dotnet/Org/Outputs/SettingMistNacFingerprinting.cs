@@ -26,7 +26,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? GenerateWirelessCoa;
         /// <summary>
-        /// Change of Authorization action sent to wireless clients when fingerprints change
+        /// Change of Authorization action sent to wireless clients when fingerprints change. enum: `Reauth`, `Disconnect`.
         /// </summary>
         public readonly string? WirelessCoaType;
 

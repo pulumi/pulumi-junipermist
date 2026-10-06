@@ -250,7 +250,7 @@ export class Setting extends pulumi.CustomResource {
      */
     declare public readonly uiIdleTimeout: pulumi.Output<number>;
     /**
-     * Whether UI usage tracking is disabled for the organization
+     * Whether to disable UI usage tracking (e.g. Fullstory, Pendo) for the whole organization
      */
     declare public readonly uiNoTracking: pulumi.Output<boolean | undefined>;
     /**
@@ -521,7 +521,7 @@ export interface SettingState {
      */
     uiIdleTimeout?: pulumi.Input<number | undefined>;
     /**
-     * Whether UI usage tracking is disabled for the organization
+     * Whether to disable UI usage tracking (e.g. Fullstory, Pendo) for the whole organization
      */
     uiNoTracking?: pulumi.Input<boolean | undefined>;
     /**
@@ -677,7 +677,7 @@ export interface SettingArgs {
      */
     uiIdleTimeout?: pulumi.Input<number | undefined>;
     /**
-     * Whether UI usage tracking is disabled for the organization
+     * Whether to disable UI usage tracking (e.g. Fullstory, Pendo) for the whole organization
      */
     uiNoTracking?: pulumi.Input<boolean | undefined>;
     /**

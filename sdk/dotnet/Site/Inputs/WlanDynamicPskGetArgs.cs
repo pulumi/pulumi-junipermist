@@ -59,7 +59,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// Origin used to retrieve per-user PSKs
+        /// Origin used to retrieve per-user PSKs. enum: `CloudPsks`, `Radius`.
         /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }

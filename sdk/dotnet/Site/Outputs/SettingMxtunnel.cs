@@ -70,7 +70,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? OrgId;
         /// <summary>
-        /// Encapsulation protocol used for the site Mist Tunnel
+        /// Encapsulation protocol used for the site Mist Tunnel. enum: `Ip`, `Udp`.
         /// </summary>
         public readonly string? Protocol;
         /// <summary>

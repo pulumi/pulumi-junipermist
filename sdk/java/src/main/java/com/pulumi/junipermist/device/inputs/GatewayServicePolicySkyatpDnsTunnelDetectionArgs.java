@@ -32,14 +32,14 @@ public final class GatewayServicePolicySkyatpDnsTunnelDetectionArgs extends com.
     }
 
     /**
-     * Sky ATP DNS tunneling detection profile to apply
+     * Sky ATP DNS tunneling detection profile to apply. enum: `default`, `standard`, `strict`.
      * 
      */
     @Import(name="profile")
     private @Nullable Output<String> profile;
 
     /**
-     * @return Sky ATP DNS tunneling detection profile to apply
+     * @return Sky ATP DNS tunneling detection profile to apply. enum: `default`, `standard`, `strict`.
      * 
      */
     public Optional<Output<String>> profile() {
@@ -93,7 +93,7 @@ public final class GatewayServicePolicySkyatpDnsTunnelDetectionArgs extends com.
         }
 
         /**
-         * @param profile Sky ATP DNS tunneling detection profile to apply
+         * @param profile Sky ATP DNS tunneling detection profile to apply. enum: `default`, `standard`, `strict`.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class GatewayServicePolicySkyatpDnsTunnelDetectionArgs extends com.
         }
 
         /**
-         * @param profile Sky ATP DNS tunneling detection profile to apply
+         * @param profile Sky ATP DNS tunneling detection profile to apply. enum: `default`, `standard`, `strict`.
          * 
          * @return builder
          * 

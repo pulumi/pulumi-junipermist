@@ -190,14 +190,14 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Scope that determines where this WLAN is applied
+     * Scope that determines where this WLAN is applied. enum: `aps`, `site`, `wxtags`.
      * 
      */
     @Import(name="applyTo")
     private @Nullable Output<String> applyTo;
 
     /**
-     * @return Scope that determines where this WLAN is applied
+     * @return Scope that determines where this WLAN is applied. enum: `aps`, `site`, `wxtags`.
      * 
      */
     public Optional<Output<String>> applyTo() {
@@ -235,14 +235,14 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * RADIUS authentication server selection behavior for this WLAN
+     * RADIUS authentication server selection behavior for this WLAN. enum: `ordered`, `unordered`.
      * 
      */
     @Import(name="authServerSelection")
     private @Nullable Output<String> authServerSelection;
 
     /**
-     * @return RADIUS authentication server selection behavior for this WLAN
+     * @return RADIUS authentication server selection behavior for this WLAN. enum: `ordered`, `unordered`.
      * 
      */
     public Optional<Output<String>> authServerSelection() {
@@ -856,14 +856,14 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Network interface or tunnel where this WLAN bridges client traffic
+     * Network interface or tunnel where this WLAN bridges client traffic. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`.
      * 
      */
     @Import(name="interface")
     private @Nullable Output<String> interface_;
 
     /**
-     * @return Network interface or tunnel where this WLAN bridges client traffic
+     * @return Network interface or tunnel where this WLAN bridges client traffic. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`.
      * 
      */
     public Optional<Output<String>> interface_() {
@@ -1246,14 +1246,14 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Fast roaming mode configured for this WLAN
+     * Fast roaming mode configured for this WLAN. enum: `11r`, `NONE`, `OKC`.
      * 
      */
     @Import(name="roamMode")
     private @Nullable Output<String> roamMode;
 
     /**
-     * @return Fast roaming mode configured for this WLAN
+     * @return Fast roaming mode configured for this WLAN. enum: `11r`, `NONE`, `OKC`.
      * 
      */
     public Optional<Output<String>> roamMode() {
@@ -1851,7 +1851,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param applyTo Scope that determines where this WLAN is applied
+         * @param applyTo Scope that determines where this WLAN is applied. enum: `aps`, `site`, `wxtags`.
          * 
          * @return builder
          * 
@@ -1862,7 +1862,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param applyTo Scope that determines where this WLAN is applied
+         * @param applyTo Scope that determines where this WLAN is applied. enum: `aps`, `site`, `wxtags`.
          * 
          * @return builder
          * 
@@ -1914,7 +1914,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authServerSelection RADIUS authentication server selection behavior for this WLAN
+         * @param authServerSelection RADIUS authentication server selection behavior for this WLAN. enum: `ordered`, `unordered`.
          * 
          * @return builder
          * 
@@ -1925,7 +1925,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authServerSelection RADIUS authentication server selection behavior for this WLAN
+         * @param authServerSelection RADIUS authentication server selection behavior for this WLAN. enum: `ordered`, `unordered`.
          * 
          * @return builder
          * 
@@ -2811,7 +2811,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param interface_ Network interface or tunnel where this WLAN bridges client traffic
+         * @param interface_ Network interface or tunnel where this WLAN bridges client traffic. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`.
          * 
          * @return builder
          * 
@@ -2822,7 +2822,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param interface_ Network interface or tunnel where this WLAN bridges client traffic
+         * @param interface_ Network interface or tunnel where this WLAN bridges client traffic. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`.
          * 
          * @return builder
          * 
@@ -3407,7 +3407,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roamMode Fast roaming mode configured for this WLAN
+         * @param roamMode Fast roaming mode configured for this WLAN. enum: `11r`, `NONE`, `OKC`.
          * 
          * @return builder
          * 
@@ -3418,7 +3418,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roamMode Fast roaming mode configured for this WLAN
+         * @param roamMode Fast roaming mode configured for this WLAN. enum: `11r`, `NONE`, `OKC`.
          * 
          * @return builder
          * 

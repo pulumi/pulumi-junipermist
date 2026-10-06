@@ -49,14 +49,14 @@ public final class SwitchOspfAreasNetworksArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Authentication method used by this OSPF network
+     * Authentication method used by this OSPF network. enum: `md5`, `none`, `password`.
      * 
      */
     @Import(name="authType")
     private @Nullable Output<String> authType;
 
     /**
-     * @return Authentication method used by this OSPF network
+     * @return Authentication method used by this OSPF network. enum: `md5`, `none`, `password`.
      * 
      */
     public Optional<Output<String>> authType() {
@@ -139,14 +139,14 @@ public final class SwitchOspfAreasNetworksArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * OSPF interface type used for this network
+     * OSPF interface type used for this network. enum: `broadcast`, `nbma`, `p2mp`, `p2p`.
      * 
      */
     @Import(name="interfaceType")
     private @Nullable Output<String> interfaceType;
 
     /**
-     * @return OSPF interface type used for this network
+     * @return OSPF interface type used for this network. enum: `broadcast`, `nbma`, `p2mp`, `p2p`.
      * 
      */
     public Optional<Output<String>> interfaceType() {
@@ -276,7 +276,7 @@ public final class SwitchOspfAreasNetworksArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param authType Authentication method used by this OSPF network
+         * @param authType Authentication method used by this OSPF network. enum: `md5`, `none`, `password`.
          * 
          * @return builder
          * 
@@ -287,7 +287,7 @@ public final class SwitchOspfAreasNetworksArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param authType Authentication method used by this OSPF network
+         * @param authType Authentication method used by this OSPF network. enum: `md5`, `none`, `password`.
          * 
          * @return builder
          * 
@@ -402,7 +402,7 @@ public final class SwitchOspfAreasNetworksArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param interfaceType OSPF interface type used for this network
+         * @param interfaceType OSPF interface type used for this network. enum: `broadcast`, `nbma`, `p2mp`, `p2p`.
          * 
          * @return builder
          * 
@@ -413,7 +413,7 @@ public final class SwitchOspfAreasNetworksArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param interfaceType OSPF interface type used for this network
+         * @param interfaceType OSPF interface type used for this network. enum: `broadcast`, `nbma`, `p2mp`, `p2p`.
          * 
          * @return builder
          * 

@@ -32,7 +32,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Expression;
         /// <summary>
-        /// Source attribute evaluated by this dynamic rule
+        /// Source attribute evaluated by this dynamic rule. enum: `LinkPeermac`, `LldpChassisId`, `LldpHardwareRevision`, `LldpManufacturerName`, `LldpOui`, `LldpSerialNumber`, `LldpSystemDescription`, `LldpSystemName`, `RadiusDynamicfilter`, `RadiusUsermac`, `RadiusUsername`.
         /// </summary>
         public readonly string Src;
         /// <summary>

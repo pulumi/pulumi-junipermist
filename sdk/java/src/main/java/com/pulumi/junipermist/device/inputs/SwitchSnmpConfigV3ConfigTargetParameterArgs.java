@@ -17,14 +17,14 @@ public final class SwitchSnmpConfigV3ConfigTargetParameterArgs extends com.pulum
     public static final SwitchSnmpConfigV3ConfigTargetParameterArgs Empty = new SwitchSnmpConfigV3ConfigTargetParameterArgs();
 
     /**
-     * SNMP message processing model used by this target parameter profile
+     * SNMP message processing model used by this target parameter profile. enum: `v1`, `v2c`, `v3`.
      * 
      */
     @Import(name="messageProcessingModel", required=true)
     private Output<String> messageProcessingModel;
 
     /**
-     * @return SNMP message processing model used by this target parameter profile
+     * @return SNMP message processing model used by this target parameter profile. enum: `v1`, `v2c`, `v3`.
      * 
      */
     public Output<String> messageProcessingModel() {
@@ -62,14 +62,14 @@ public final class SwitchSnmpConfigV3ConfigTargetParameterArgs extends com.pulum
     }
 
     /**
-     * Required security level for this target parameter profile
+     * Required security level for this target parameter profile. enum: `authentication`, `none`, `privacy`.
      * 
      */
     @Import(name="securityLevel")
     private @Nullable Output<String> securityLevel;
 
     /**
-     * @return Required security level for this target parameter profile
+     * @return Required security level for this target parameter profile. enum: `authentication`, `none`, `privacy`.
      * 
      */
     public Optional<Output<String>> securityLevel() {
@@ -77,14 +77,14 @@ public final class SwitchSnmpConfigV3ConfigTargetParameterArgs extends com.pulum
     }
 
     /**
-     * Required security model for this target parameter profile
+     * Required security model for this target parameter profile. enum: `usm`, `v1`, `v2c`.
      * 
      */
     @Import(name="securityModel")
     private @Nullable Output<String> securityModel;
 
     /**
-     * @return Required security model for this target parameter profile
+     * @return Required security model for this target parameter profile. enum: `usm`, `v1`, `v2c`.
      * 
      */
     public Optional<Output<String>> securityModel() {
@@ -136,7 +136,7 @@ public final class SwitchSnmpConfigV3ConfigTargetParameterArgs extends com.pulum
         }
 
         /**
-         * @param messageProcessingModel SNMP message processing model used by this target parameter profile
+         * @param messageProcessingModel SNMP message processing model used by this target parameter profile. enum: `v1`, `v2c`, `v3`.
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class SwitchSnmpConfigV3ConfigTargetParameterArgs extends com.pulum
         }
 
         /**
-         * @param messageProcessingModel SNMP message processing model used by this target parameter profile
+         * @param messageProcessingModel SNMP message processing model used by this target parameter profile. enum: `v1`, `v2c`, `v3`.
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class SwitchSnmpConfigV3ConfigTargetParameterArgs extends com.pulum
         }
 
         /**
-         * @param securityLevel Required security level for this target parameter profile
+         * @param securityLevel Required security level for this target parameter profile. enum: `authentication`, `none`, `privacy`.
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class SwitchSnmpConfigV3ConfigTargetParameterArgs extends com.pulum
         }
 
         /**
-         * @param securityLevel Required security level for this target parameter profile
+         * @param securityLevel Required security level for this target parameter profile. enum: `authentication`, `none`, `privacy`.
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class SwitchSnmpConfigV3ConfigTargetParameterArgs extends com.pulum
         }
 
         /**
-         * @param securityModel Required security model for this target parameter profile
+         * @param securityModel Required security model for this target parameter profile. enum: `usm`, `v1`, `v2c`.
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class SwitchSnmpConfigV3ConfigTargetParameterArgs extends com.pulum
         }
 
         /**
-         * @param securityModel Required security model for this target parameter profile
+         * @param securityModel Required security model for this target parameter profile. enum: `usm`, `v1`, `v2c`.
          * 
          * @return builder
          * 

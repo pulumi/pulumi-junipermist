@@ -21,14 +21,14 @@ public final class VpnPathsArgs extends com.pulumi.resources.ResourceArgs {
     public static final VpnPathsArgs Empty = new VpnPathsArgs();
 
     /**
-     * BFD profile used for this VPN path
+     * BFD profile used for this VPN path. enum: `broadband`, `lte`.
      * 
      */
     @Import(name="bfdProfile")
     private @Nullable Output<String> bfdProfile;
 
     /**
-     * @return BFD profile used for this VPN path
+     * @return BFD profile used for this VPN path. enum: `broadband`, `lte`.
      * 
      */
     public Optional<Output<String>> bfdProfile() {
@@ -140,7 +140,7 @@ public final class VpnPathsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bfdProfile BFD profile used for this VPN path
+         * @param bfdProfile BFD profile used for this VPN path. enum: `broadband`, `lte`.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class VpnPathsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bfdProfile BFD profile used for this VPN path
+         * @param bfdProfile BFD profile used for this VPN path. enum: `broadband`, `lte`.
          * 
          * @return builder
          * 

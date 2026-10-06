@@ -46,7 +46,7 @@ public final class WlanPortal {
      */
     private @Nullable Integer amazonExpire;
     /**
-     * @return Guest portal login scheme used by the WLAN
+     * @return Guest portal login scheme used by the WLAN. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`.
      * 
      */
     private @Nullable String auth;
@@ -281,7 +281,7 @@ public final class WlanPortal {
      */
     private @Nullable String smsMessageFormat;
     /**
-     * @return Optional if `smsEnabled`==`true`. SMS provider used to deliver guest portal access codes
+     * @return Optional if `smsEnabled`==`true`. SMS provider used to deliver guest portal access codes. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`, `smsglobal`.
      * 
      */
     private @Nullable String smsProvider;
@@ -359,7 +359,7 @@ public final class WlanPortal {
      */
     private @Nullable String ssoIdpCert;
     /**
-     * @return Optional if `wlanPortalAuth`==`sso`. Signing algorithm used for SAML assertions from the identity provider
+     * @return Optional if `wlanPortalAuth`==`sso`. Signing algorithm used for SAML assertions from the identity provider. enum: `sha1`, `sha256`, `sha384`, `sha512`.
      * 
      */
     private @Nullable String ssoIdpSignAlgo;
@@ -374,7 +374,7 @@ public final class WlanPortal {
      */
     private @Nullable String ssoIssuer;
     /**
-     * @return Optional if `wlanPortalAuth`==`sso`. SAML NameID format expected from the identity provider
+     * @return Optional if `wlanPortalAuth`==`sso`. SAML NameID format expected from the identity provider. enum: `email`, `unspecified`.
      * 
      */
     private @Nullable String ssoNameidFormat;
@@ -448,7 +448,7 @@ public final class WlanPortal {
         return Optional.ofNullable(this.amazonExpire);
     }
     /**
-     * @return Guest portal login scheme used by the WLAN
+     * @return Guest portal login scheme used by the WLAN. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`.
      * 
      */
     public Optional<String> auth() {
@@ -777,7 +777,7 @@ public final class WlanPortal {
         return Optional.ofNullable(this.smsMessageFormat);
     }
     /**
-     * @return Optional if `smsEnabled`==`true`. SMS provider used to deliver guest portal access codes
+     * @return Optional if `smsEnabled`==`true`. SMS provider used to deliver guest portal access codes. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`, `smsglobal`.
      * 
      */
     public Optional<String> smsProvider() {
@@ -885,7 +885,7 @@ public final class WlanPortal {
         return Optional.ofNullable(this.ssoIdpCert);
     }
     /**
-     * @return Optional if `wlanPortalAuth`==`sso`. Signing algorithm used for SAML assertions from the identity provider
+     * @return Optional if `wlanPortalAuth`==`sso`. Signing algorithm used for SAML assertions from the identity provider. enum: `sha1`, `sha256`, `sha384`, `sha512`.
      * 
      */
     public Optional<String> ssoIdpSignAlgo() {
@@ -906,7 +906,7 @@ public final class WlanPortal {
         return Optional.ofNullable(this.ssoIssuer);
     }
     /**
-     * @return Optional if `wlanPortalAuth`==`sso`. SAML NameID format expected from the identity provider
+     * @return Optional if `wlanPortalAuth`==`sso`. SAML NameID format expected from the identity provider. enum: `email`, `unspecified`.
      * 
      */
     public Optional<String> ssoNameidFormat() {

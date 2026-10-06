@@ -208,6 +208,12 @@ namespace Pulumi.JuniperMist.Org
         public Output<ImmutableDictionary<string, Outputs.GatewaytemplateIpConfigs>?> IpConfigs { get; private set; } = null!;
 
         /// <summary>
+        /// Multi-Node HA (MNHA) settings applied by this gateway template, SRX only
+        /// </summary>
+        [Output("mnhaConfig")]
+        public Output<Outputs.GatewaytemplateMnhaConfig?> MnhaConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Display name of the gateway template
         /// </summary>
         [Output("name")]
@@ -292,7 +298,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<Outputs.GatewaytemplateTunnelProviderOptions?> TunnelProviderOptions { get; private set; } = null!;
 
         /// <summary>
-        /// Gateway template deployment type
+        /// Gateway template deployment type. enum: `Spoke`, `Standalone`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -477,6 +483,12 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
+        /// Multi-Node HA (MNHA) settings applied by this gateway template, SRX only
+        /// </summary>
+        [Input("mnhaConfig")]
+        public Input<Inputs.GatewaytemplateMnhaConfigArgs>? MnhaConfig { get; set; }
+
+        /// <summary>
         /// Display name of the gateway template
         /// </summary>
         [Input("name")]
@@ -609,7 +621,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.GatewaytemplateTunnelProviderOptionsArgs>? TunnelProviderOptions { get; set; }
 
         /// <summary>
-        /// Gateway template deployment type
+        /// Gateway template deployment type. enum: `Spoke`, `Standalone`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -761,6 +773,12 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
+        /// Multi-Node HA (MNHA) settings applied by this gateway template, SRX only
+        /// </summary>
+        [Input("mnhaConfig")]
+        public Input<Inputs.GatewaytemplateMnhaConfigGetArgs>? MnhaConfig { get; set; }
+
+        /// <summary>
         /// Display name of the gateway template
         /// </summary>
         [Input("name")]
@@ -893,7 +911,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.GatewaytemplateTunnelProviderOptionsGetArgs>? TunnelProviderOptions { get; set; }
 
         /// <summary>
-        /// Gateway template deployment type
+        /// Gateway template deployment type. enum: `Spoke`, `Standalone`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

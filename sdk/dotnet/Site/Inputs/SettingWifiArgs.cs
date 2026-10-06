@@ -101,7 +101,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? MeshSsid { get; set; }
 
         /// <summary>
-        /// ARP proxy mode for site Wi-Fi
+        /// ARP proxy mode for site Wi-Fi. enum: `Default`, `Disabled`, `Enabled`.
         /// </summary>
         [Input("proxyArp")]
         public Input<string>? ProxyArp { get; set; }

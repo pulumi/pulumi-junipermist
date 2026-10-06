@@ -65,7 +65,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<int>? AmazonExpire { get; set; }
 
         /// <summary>
-        /// Guest portal login scheme used by the WLAN
+        /// Guest portal login scheme used by the WLAN. enum: `Amazon`, `Azure`, `Email`, `External`, `Facebook`, `Google`, `Microsoft`, `Multi`, `None`, `Password`, `Sms`, `Sponsor`, `Sso`.
         /// </summary>
         [Input("auth")]
         public Input<string>? Auth { get; set; }
@@ -445,7 +445,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? SmsMessageFormat { get; set; }
 
         /// <summary>
-        /// Optional if `SmsEnabled`==`True`. SMS provider used to deliver guest portal access codes
+        /// Optional if `SmsEnabled`==`True`. SMS provider used to deliver guest portal access codes. enum: `Broadnet`, `Clickatell`, `Gupshup`, `Manual`, `Puzzel`, `Telstra`, `Twilio`, `Smsglobal`.
         /// </summary>
         [Input("smsProvider")]
         public Input<string>? SmsProvider { get; set; }
@@ -560,7 +560,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? SsoIdpCert { get; set; }
 
         /// <summary>
-        /// Optional if `WlanPortalAuth`==`Sso`. Signing algorithm used for SAML assertions from the identity provider
+        /// Optional if `WlanPortalAuth`==`Sso`. Signing algorithm used for SAML assertions from the identity provider. enum: `Sha1`, `Sha256`, `Sha384`, `Sha512`.
         /// </summary>
         [Input("ssoIdpSignAlgo")]
         public Input<string>? SsoIdpSignAlgo { get; set; }
@@ -578,7 +578,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? SsoIssuer { get; set; }
 
         /// <summary>
-        /// Optional if `WlanPortalAuth`==`Sso`. SAML NameID format expected from the identity provider
+        /// Optional if `WlanPortalAuth`==`Sso`. SAML NameID format expected from the identity provider. enum: `Email`, `Unspecified`.
         /// </summary>
         [Input("ssoNameidFormat")]
         public Input<string>? SsoNameidFormat { get; set; }

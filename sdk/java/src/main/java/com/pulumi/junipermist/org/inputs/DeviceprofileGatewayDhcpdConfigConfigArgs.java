@@ -228,14 +228,14 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
     }
 
     /**
-     * IPv4 DHCP mode for this network
+     * IPv4 DHCP mode for this network. enum: `local`, `none`, `relay`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return IPv4 DHCP mode for this network
+     * @return IPv4 DHCP mode for this network. enum: `local`, `none`, `relay`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -243,14 +243,14 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
     }
 
     /**
-     * IPv6 DHCP mode for this network
+     * IPv6 DHCP mode for this network. enum: `local`, `none`, `relay`.
      * 
      */
     @Import(name="type6")
     private @Nullable Output<String> type6;
 
     /**
-     * @return IPv6 DHCP mode for this network
+     * @return IPv6 DHCP mode for this network. enum: `local`, `none`, `relay`.
      * 
      */
     public Optional<Output<String>> type6() {
@@ -639,7 +639,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param type IPv4 DHCP mode for this network
+         * @param type IPv4 DHCP mode for this network. enum: `local`, `none`, `relay`.
          * 
          * @return builder
          * 
@@ -650,7 +650,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param type IPv4 DHCP mode for this network
+         * @param type IPv4 DHCP mode for this network. enum: `local`, `none`, `relay`.
          * 
          * @return builder
          * 
@@ -660,7 +660,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param type6 IPv6 DHCP mode for this network
+         * @param type6 IPv6 DHCP mode for this network. enum: `local`, `none`, `relay`.
          * 
          * @return builder
          * 
@@ -671,7 +671,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param type6 IPv6 DHCP mode for this network
+         * @param type6 IPv6 DHCP mode for this network. enum: `local`, `none`, `relay`.
          * 
          * @return builder
          * 

@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class SettingMxtunnelAutoPreemptionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Scheduled weekday for auto preemption
+        /// Scheduled weekday for auto preemption. enum: `Any`, `Fri`, `Mon`, `Sat`, `Sun`, `Thu`, `Tue`, `Wed`.
         /// </summary>
         [Input("dayOfWeek")]
         public Input<string>? DayOfWeek { get; set; }

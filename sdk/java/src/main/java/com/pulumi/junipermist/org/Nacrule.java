@@ -139,14 +139,28 @@ public class Nacrule extends com.pulumi.resources.CustomResource {
         return this.enabled;
     }
     /**
-     * Guest portal authorization state condition for the rule
+     * Name of the group the NAC rule belongs to
+     * 
+     */
+    @Export(name="groupName", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> groupName;
+
+    /**
+     * @return Name of the group the NAC rule belongs to
+     * 
+     */
+    public Output<Optional<String>> groupName() {
+        return Codegen.optional(this.groupName);
+    }
+    /**
+     * Guest portal authorization state condition for the rule. enum: `authorized`, `unknown`.
      * 
      */
     @Export(name="guestAuthState", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> guestAuthState;
 
     /**
-     * @return Guest portal authorization state condition for the rule
+     * @return Guest portal authorization state condition for the rule. enum: `authorized`, `unknown`.
      * 
      */
     public Output<Optional<String>> guestAuthState() {

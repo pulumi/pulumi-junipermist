@@ -19,7 +19,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Sky ATP DNS DGA detection profile to apply
+        /// Sky ATP DNS DGA detection profile to apply. enum: `Default`, `Standard`, `Strict`.
         /// </summary>
         [Input("profile")]
         public Input<string>? Profile { get; set; }

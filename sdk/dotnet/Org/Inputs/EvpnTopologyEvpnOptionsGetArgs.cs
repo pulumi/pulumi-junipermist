@@ -73,7 +73,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? PerVlanVgaV6Mac { get; set; }
 
         /// <summary>
-        /// Topology tier where EVPN virtual gateway routing is placed
+        /// Topology tier where EVPN virtual gateway routing is placed. enum: `Core`, `Distribution`, `Edge`.
         /// </summary>
         [Input("routedAt")]
         public Input<string>? RoutedAt { get; set; }

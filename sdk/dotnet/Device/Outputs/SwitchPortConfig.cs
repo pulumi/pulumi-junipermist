@@ -50,7 +50,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool? DisableAutoneg;
         /// <summary>
-        /// Link duplex mode for this Junos port
+        /// Link duplex mode for this Junos port. enum: `Auto`, `Full`, `Half`.
         /// </summary>
         public readonly string? Duplex;
         /// <summary>
@@ -82,7 +82,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? PortNetwork;
         /// <summary>
-        /// Link speed for this Junos port
+        /// Link speed for this Junos port. enum: `10m`, `100m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`, `Auto`.
         /// </summary>
         public readonly string? Speed;
         /// <summary>

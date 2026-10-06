@@ -198,14 +198,14 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Provider template for LDAP SSO when `idpType`==`ldap`
+     * Provider template for LDAP SSO when `idpType`==`ldap`. enum: `azure`, `custom`, `google`, `okta`.
      * 
      */
     @Import(name="ldapType")
     private @Nullable Output<String> ldapType;
 
     /**
-     * @return Provider template for LDAP SSO when `idpType`==`ldap`
+     * @return Provider template for LDAP SSO when `idpType`==`ldap`. enum: `azure`, `custom`, `google`, `okta`.
      * 
      */
     public Optional<Output<String>> ldapType() {
@@ -243,14 +243,14 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Display name of the NAC IDP configuration
+     * Display name of the SSO configuration
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Display name of the NAC IDP configuration
+     * @return Display name of the SSO configuration
      * 
      */
     public Optional<Output<String>> name() {
@@ -303,14 +303,14 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Ping Identity region for OAuth SSO when `oauthType`==`pingIdentity`
+     * Ping Identity region for OAuth SSO when `oauthType`==`pingIdentity`. enum: `asia`, `au`, `ca`, `eu`, `us`.
      * 
      */
     @Import(name="oauthPingIdentityRegion")
     private @Nullable Output<String> oauthPingIdentityRegion;
 
     /**
-     * @return Ping Identity region for OAuth SSO when `oauthType`==`pingIdentity`
+     * @return Ping Identity region for OAuth SSO when `oauthType`==`pingIdentity`. enum: `asia`, `au`, `ca`, `eu`, `us`.
      * 
      */
     public Optional<Output<String>> oauthPingIdentityRegion() {
@@ -318,14 +318,14 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Provider domain for Okta OAuth SSO when `oauthType`==`okta`
+     * Provider domain for Okta OAuth SSO when `oauthType`==`okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
      * 
      */
     @Import(name="oauthProviderDomain")
     private @Nullable Output<String> oauthProviderDomain;
 
     /**
-     * @return Provider domain for Okta OAuth SSO when `oauthType`==`okta`
+     * @return Provider domain for Okta OAuth SSO when `oauthType`==`okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
      * 
      */
     public Optional<Output<String>> oauthProviderDomain() {
@@ -378,14 +378,14 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Provider type for OAuth SSO when `idpType`==`oauth`
+     * Provider type for OAuth SSO when `idpType`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `pingIdentity`.
      * 
      */
     @Import(name="oauthType")
     private @Nullable Output<String> oauthType;
 
     /**
-     * @return Provider type for OAuth SSO when `idpType`==`oauth`
+     * @return Provider type for OAuth SSO when `idpType`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `pingIdentity`.
      * 
      */
     public Optional<Output<String>> oauthType() {
@@ -438,14 +438,14 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Owning organization identifier for this NAC IDP configuration
+     * Owning organization identifier for this SSO configuration
      * 
      */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
     /**
-     * @return Owning organization identifier for this NAC IDP configuration
+     * @return Owning organization identifier for this SSO configuration
      * 
      */
     public Optional<Output<String>> orgId() {
@@ -809,7 +809,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapType Provider template for LDAP SSO when `idpType`==`ldap`
+         * @param ldapType Provider template for LDAP SSO when `idpType`==`ldap`. enum: `azure`, `custom`, `google`, `okta`.
          * 
          * @return builder
          * 
@@ -820,7 +820,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapType Provider template for LDAP SSO when `idpType`==`ldap`
+         * @param ldapType Provider template for LDAP SSO when `idpType`==`ldap`. enum: `azure`, `custom`, `google`, `okta`.
          * 
          * @return builder
          * 
@@ -872,7 +872,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Display name of the NAC IDP configuration
+         * @param name Display name of the SSO configuration
          * 
          * @return builder
          * 
@@ -883,7 +883,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Display name of the NAC IDP configuration
+         * @param name Display name of the SSO configuration
          * 
          * @return builder
          * 
@@ -956,7 +956,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauthPingIdentityRegion Ping Identity region for OAuth SSO when `oauthType`==`pingIdentity`
+         * @param oauthPingIdentityRegion Ping Identity region for OAuth SSO when `oauthType`==`pingIdentity`. enum: `asia`, `au`, `ca`, `eu`, `us`.
          * 
          * @return builder
          * 
@@ -967,7 +967,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauthPingIdentityRegion Ping Identity region for OAuth SSO when `oauthType`==`pingIdentity`
+         * @param oauthPingIdentityRegion Ping Identity region for OAuth SSO when `oauthType`==`pingIdentity`. enum: `asia`, `au`, `ca`, `eu`, `us`.
          * 
          * @return builder
          * 
@@ -977,7 +977,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauthProviderDomain Provider domain for Okta OAuth SSO when `oauthType`==`okta`
+         * @param oauthProviderDomain Provider domain for Okta OAuth SSO when `oauthType`==`okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
          * 
          * @return builder
          * 
@@ -988,7 +988,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauthProviderDomain Provider domain for Okta OAuth SSO when `oauthType`==`okta`
+         * @param oauthProviderDomain Provider domain for Okta OAuth SSO when `oauthType`==`okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
          * 
          * @return builder
          * 
@@ -1061,7 +1061,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauthType Provider type for OAuth SSO when `idpType`==`oauth`
+         * @param oauthType Provider type for OAuth SSO when `idpType`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `pingIdentity`.
          * 
          * @return builder
          * 
@@ -1072,7 +1072,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauthType Provider type for OAuth SSO when `idpType`==`oauth`
+         * @param oauthType Provider type for OAuth SSO when `idpType`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `pingIdentity`.
          * 
          * @return builder
          * 
@@ -1155,7 +1155,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orgId Owning organization identifier for this NAC IDP configuration
+         * @param orgId Owning organization identifier for this SSO configuration
          * 
          * @return builder
          * 
@@ -1166,7 +1166,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orgId Owning organization identifier for this NAC IDP configuration
+         * @param orgId Owning organization identifier for this SSO configuration
          * 
          * @return builder
          * 

@@ -121,7 +121,7 @@ namespace Pulumi.JuniperMist
         public Output<int?> StartTime { get; private set; } = null!;
 
         /// <summary>
-        /// Current status of the requested device upgrade
+        /// Current status of the requested device upgrade. enum: `Error`, `Inprogress`, `Scheduled`, `Starting`, `Success`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -362,7 +362,7 @@ namespace Pulumi.JuniperMist
         public Input<int>? StartTime { get; set; }
 
         /// <summary>
-        /// Current status of the requested device upgrade
+        /// Current status of the requested device upgrade. enum: `Error`, `Inprogress`, `Scheduled`, `Starting`, `Success`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

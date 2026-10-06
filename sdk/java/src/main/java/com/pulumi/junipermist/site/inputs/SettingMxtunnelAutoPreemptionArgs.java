@@ -17,14 +17,14 @@ public final class SettingMxtunnelAutoPreemptionArgs extends com.pulumi.resource
     public static final SettingMxtunnelAutoPreemptionArgs Empty = new SettingMxtunnelAutoPreemptionArgs();
 
     /**
-     * Scheduled weekday for auto preemption
+     * Scheduled weekday for auto preemption. enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`.
      * 
      */
     @Import(name="dayOfWeek")
     private @Nullable Output<String> dayOfWeek;
 
     /**
-     * @return Scheduled weekday for auto preemption
+     * @return Scheduled weekday for auto preemption. enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`.
      * 
      */
     public Optional<Output<String>> dayOfWeek() {
@@ -88,7 +88,7 @@ public final class SettingMxtunnelAutoPreemptionArgs extends com.pulumi.resource
         }
 
         /**
-         * @param dayOfWeek Scheduled weekday for auto preemption
+         * @param dayOfWeek Scheduled weekday for auto preemption. enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class SettingMxtunnelAutoPreemptionArgs extends com.pulumi.resource
         }
 
         /**
-         * @param dayOfWeek Scheduled weekday for auto preemption
+         * @param dayOfWeek Scheduled weekday for auto preemption. enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`.
          * 
          * @return builder
          * 

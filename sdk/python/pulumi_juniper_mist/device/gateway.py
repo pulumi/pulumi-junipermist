@@ -36,6 +36,7 @@ class GatewayArgs:
                  managed: pulumi.Input[Optional[_builtins.bool]] = None,
                  map_id: pulumi.Input[Optional[_builtins.str]] = None,
                  mist_configured: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mnha_config: pulumi.Input[Optional['GatewayMnhaConfigArgs']] = None,
                  msp_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  networks: pulumi.Input[Optional[Sequence[pulumi.Input['GatewayNetworkArgs']]]] = None,
@@ -74,6 +75,7 @@ class GatewayArgs:
         :param pulumi.Input[_builtins.bool] managed: Whether the device is managed by Mist. Deprecated in favour of mist_configured.
         :param pulumi.Input[_builtins.str] map_id: Map where the device belongs to
         :param pulumi.Input[_builtins.bool] mist_configured: whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
+        :param pulumi.Input['GatewayMnhaConfigArgs'] mnha_config: Multi-Node HA (MNHA) settings for this gateway, SRX only
         :param pulumi.Input[_builtins.str] msp_id: MSP that manages this gateway, when applicable
         :param pulumi.Input[_builtins.str] name: Friendly display name assigned to the gateway
         :param pulumi.Input[Sequence[pulumi.Input['GatewayNetworkArgs']]] networks: Layer 3 networks configured for use by this gateway
@@ -127,6 +129,8 @@ class GatewayArgs:
             pulumi.set(__self__, "map_id", map_id)
         if mist_configured is not None:
             pulumi.set(__self__, "mist_configured", mist_configured)
+        if mnha_config is not None:
+            pulumi.set(__self__, "mnha_config", mnha_config)
         if msp_id is not None:
             pulumi.set(__self__, "msp_id", msp_id)
         if name is not None:
@@ -347,6 +351,18 @@ class GatewayArgs:
     @mist_configured.setter
     def mist_configured(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mist_configured", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mnhaConfig")
+    def mnha_config(self) -> pulumi.Input[Optional['GatewayMnhaConfigArgs']]:
+        """
+        Multi-Node HA (MNHA) settings for this gateway, SRX only
+        """
+        return pulumi.get(self, "mnha_config")
+
+    @mnha_config.setter
+    def mnha_config(self, value: pulumi.Input[Optional['GatewayMnhaConfigArgs']]):
+        pulumi.set(self, "mnha_config", value)
 
     @_builtins.property
     @pulumi.getter(name="mspId")
@@ -622,6 +638,7 @@ class _GatewayState:
                  managed: pulumi.Input[Optional[_builtins.bool]] = None,
                  map_id: pulumi.Input[Optional[_builtins.str]] = None,
                  mist_configured: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mnha_config: pulumi.Input[Optional['GatewayMnhaConfigArgs']] = None,
                  model: pulumi.Input[Optional[_builtins.str]] = None,
                  msp_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -668,6 +685,7 @@ class _GatewayState:
         :param pulumi.Input[_builtins.bool] managed: Whether the device is managed by Mist. Deprecated in favour of mist_configured.
         :param pulumi.Input[_builtins.str] map_id: Map where the device belongs to
         :param pulumi.Input[_builtins.bool] mist_configured: whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
+        :param pulumi.Input['GatewayMnhaConfigArgs'] mnha_config: Multi-Node HA (MNHA) settings for this gateway, SRX only
         :param pulumi.Input[_builtins.str] model: Gateway model reported for the device
         :param pulumi.Input[_builtins.str] msp_id: MSP that manages this gateway, when applicable
         :param pulumi.Input[_builtins.str] name: Friendly display name assigned to the gateway
@@ -734,6 +752,8 @@ class _GatewayState:
             pulumi.set(__self__, "map_id", map_id)
         if mist_configured is not None:
             pulumi.set(__self__, "mist_configured", mist_configured)
+        if mnha_config is not None:
+            pulumi.set(__self__, "mnha_config", mnha_config)
         if model is not None:
             pulumi.set(__self__, "model", model)
         if msp_id is not None:
@@ -1000,6 +1020,18 @@ class _GatewayState:
     @mist_configured.setter
     def mist_configured(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mist_configured", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mnhaConfig")
+    def mnha_config(self) -> pulumi.Input[Optional['GatewayMnhaConfigArgs']]:
+        """
+        Multi-Node HA (MNHA) settings for this gateway, SRX only
+        """
+        return pulumi.get(self, "mnha_config")
+
+    @mnha_config.setter
+    def mnha_config(self, value: pulumi.Input[Optional['GatewayMnhaConfigArgs']]):
+        pulumi.set(self, "mnha_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1334,6 +1366,7 @@ class Gateway(pulumi.CustomResource):
                  managed: pulumi.Input[Optional[_builtins.bool]] = None,
                  map_id: pulumi.Input[Optional[_builtins.str]] = None,
                  mist_configured: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mnha_config: pulumi.Input[Optional[Union['GatewayMnhaConfigArgs', 'GatewayMnhaConfigArgsDict']]] = None,
                  msp_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewayNetworkArgs', 'GatewayNetworkArgsDict']]]]] = None,
@@ -1413,6 +1446,7 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] managed: Whether the device is managed by Mist. Deprecated in favour of mist_configured.
         :param pulumi.Input[_builtins.str] map_id: Map where the device belongs to
         :param pulumi.Input[_builtins.bool] mist_configured: whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
+        :param pulumi.Input[Union['GatewayMnhaConfigArgs', 'GatewayMnhaConfigArgsDict']] mnha_config: Multi-Node HA (MNHA) settings for this gateway, SRX only
         :param pulumi.Input[_builtins.str] msp_id: MSP that manages this gateway, when applicable
         :param pulumi.Input[_builtins.str] name: Friendly display name assigned to the gateway
         :param pulumi.Input[Sequence[pulumi.Input[Union['GatewayNetworkArgs', 'GatewayNetworkArgsDict']]]] networks: Layer 3 networks configured for use by this gateway
@@ -1512,6 +1546,7 @@ class Gateway(pulumi.CustomResource):
                  managed: pulumi.Input[Optional[_builtins.bool]] = None,
                  map_id: pulumi.Input[Optional[_builtins.str]] = None,
                  mist_configured: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mnha_config: pulumi.Input[Optional[Union['GatewayMnhaConfigArgs', 'GatewayMnhaConfigArgsDict']]] = None,
                  msp_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewayNetworkArgs', 'GatewayNetworkArgsDict']]]]] = None,
@@ -1559,6 +1594,7 @@ class Gateway(pulumi.CustomResource):
             __props__.__dict__["managed"] = managed
             __props__.__dict__["map_id"] = map_id
             __props__.__dict__["mist_configured"] = mist_configured
+            __props__.__dict__["mnha_config"] = mnha_config
             __props__.__dict__["msp_id"] = msp_id
             __props__.__dict__["name"] = name
             __props__.__dict__["networks"] = networks
@@ -1619,6 +1655,7 @@ class Gateway(pulumi.CustomResource):
             managed: pulumi.Input[Optional[_builtins.bool]] = None,
             map_id: pulumi.Input[Optional[_builtins.str]] = None,
             mist_configured: pulumi.Input[Optional[_builtins.bool]] = None,
+            mnha_config: pulumi.Input[Optional[Union['GatewayMnhaConfigArgs', 'GatewayMnhaConfigArgsDict']]] = None,
             model: pulumi.Input[Optional[_builtins.str]] = None,
             msp_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1669,6 +1706,7 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] managed: Whether the device is managed by Mist. Deprecated in favour of mist_configured.
         :param pulumi.Input[_builtins.str] map_id: Map where the device belongs to
         :param pulumi.Input[_builtins.bool] mist_configured: whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
+        :param pulumi.Input[Union['GatewayMnhaConfigArgs', 'GatewayMnhaConfigArgsDict']] mnha_config: Multi-Node HA (MNHA) settings for this gateway, SRX only
         :param pulumi.Input[_builtins.str] model: Gateway model reported for the device
         :param pulumi.Input[_builtins.str] msp_id: MSP that manages this gateway, when applicable
         :param pulumi.Input[_builtins.str] name: Friendly display name assigned to the gateway
@@ -1718,6 +1756,7 @@ class Gateway(pulumi.CustomResource):
         __props__.__dict__["managed"] = managed
         __props__.__dict__["map_id"] = map_id
         __props__.__dict__["mist_configured"] = mist_configured
+        __props__.__dict__["mnha_config"] = mnha_config
         __props__.__dict__["model"] = model
         __props__.__dict__["msp_id"] = msp_id
         __props__.__dict__["name"] = name
@@ -1887,6 +1926,14 @@ class Gateway(pulumi.CustomResource):
         whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
         """
         return pulumi.get(self, "mist_configured")
+
+    @_builtins.property
+    @pulumi.getter(name="mnhaConfig")
+    def mnha_config(self) -> pulumi.Output[Optional['outputs.GatewayMnhaConfig']]:
+        """
+        Multi-Node HA (MNHA) settings for this gateway, SRX only
+        """
+        return pulumi.get(self, "mnha_config")
 
     @_builtins.property
     @pulumi.getter

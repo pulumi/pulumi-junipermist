@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class GatewayServicePolicySslProxy
     {
         /// <summary>
-        /// Allowed cipher strength category for SSL proxy inspection
+        /// Allowed cipher strength category for SSL proxy inspection. enum: `Medium`, `Strong`, `Weak`.
         /// </summary>
         public readonly string? CiphersCategory;
         /// <summary>

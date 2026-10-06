@@ -33,14 +33,14 @@ public final class NetworktemplateBgpConfigNeighborsArgs extends com.pulumi.reso
     }
 
     /**
-     * BGP hold time for this neighbor
+     * BGP hold time for this neighbor.
      * 
      */
     @Import(name="holdTime")
     private @Nullable Output<Integer> holdTime;
 
     /**
-     * @return BGP hold time for this neighbor
+     * @return BGP hold time for this neighbor.
      * 
      */
     public Optional<Output<Integer>> holdTime() {
@@ -142,7 +142,7 @@ public final class NetworktemplateBgpConfigNeighborsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param holdTime BGP hold time for this neighbor
+         * @param holdTime BGP hold time for this neighbor.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class NetworktemplateBgpConfigNeighborsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param holdTime BGP hold time for this neighbor
+         * @param holdTime BGP hold time for this neighbor.
          * 
          * @return builder
          * 

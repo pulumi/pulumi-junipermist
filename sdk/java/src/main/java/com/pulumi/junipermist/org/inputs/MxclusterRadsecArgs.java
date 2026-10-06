@@ -80,14 +80,14 @@ public final class MxclusterRadsecArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Source used to populate NAS-IP-Address and NAS-IPv6-Address attributes
+     * Source used to populate NAS-IP-Address and NAS-IPv6-Address attributes. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`.
      * 
      */
     @Import(name="nasIpSource")
     private @Nullable Output<String> nasIpSource;
 
     /**
-     * @return Source used to populate NAS-IP-Address and NAS-IPv6-Address attributes
+     * @return Source used to populate NAS-IP-Address and NAS-IPv6-Address attributes. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`.
      * 
      */
     public Optional<Output<String>> nasIpSource() {
@@ -110,14 +110,14 @@ public final class MxclusterRadsecArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * RADIUS server selection strategy for RadSec failover
+     * RADIUS server selection strategy for RadSec failover. enum: `ordered`, `unordered`.
      * 
      */
     @Import(name="serverSelection")
     private @Nullable Output<String> serverSelection;
 
     /**
-     * @return RADIUS server selection strategy for RadSec failover
+     * @return RADIUS server selection strategy for RadSec failover. enum: `ordered`, `unordered`.
      * 
      */
     public Optional<Output<String>> serverSelection() {
@@ -125,14 +125,14 @@ public final class MxclusterRadsecArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Connection source interface or address used when reaching RADIUS servers
+     * Connection source interface or address used when reaching RADIUS servers. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`.
      * 
      */
     @Import(name="srcIpSource")
     private @Nullable Output<String> srcIpSource;
 
     /**
-     * @return Connection source interface or address used when reaching RADIUS servers
+     * @return Connection source interface or address used when reaching RADIUS servers. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`.
      * 
      */
     public Optional<Output<String>> srcIpSource() {
@@ -275,7 +275,7 @@ public final class MxclusterRadsecArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param nasIpSource Source used to populate NAS-IP-Address and NAS-IPv6-Address attributes
+         * @param nasIpSource Source used to populate NAS-IP-Address and NAS-IPv6-Address attributes. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`.
          * 
          * @return builder
          * 
@@ -286,7 +286,7 @@ public final class MxclusterRadsecArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param nasIpSource Source used to populate NAS-IP-Address and NAS-IPv6-Address attributes
+         * @param nasIpSource Source used to populate NAS-IP-Address and NAS-IPv6-Address attributes. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`.
          * 
          * @return builder
          * 
@@ -327,7 +327,7 @@ public final class MxclusterRadsecArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param serverSelection RADIUS server selection strategy for RadSec failover
+         * @param serverSelection RADIUS server selection strategy for RadSec failover. enum: `ordered`, `unordered`.
          * 
          * @return builder
          * 
@@ -338,7 +338,7 @@ public final class MxclusterRadsecArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param serverSelection RADIUS server selection strategy for RadSec failover
+         * @param serverSelection RADIUS server selection strategy for RadSec failover. enum: `ordered`, `unordered`.
          * 
          * @return builder
          * 
@@ -348,7 +348,7 @@ public final class MxclusterRadsecArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param srcIpSource Connection source interface or address used when reaching RADIUS servers
+         * @param srcIpSource Connection source interface or address used when reaching RADIUS servers. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`.
          * 
          * @return builder
          * 
@@ -359,7 +359,7 @@ public final class MxclusterRadsecArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param srcIpSource Connection source interface or address used when reaching RADIUS servers
+         * @param srcIpSource Connection source interface or address used when reaching RADIUS servers. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`.
          * 
          * @return builder
          * 

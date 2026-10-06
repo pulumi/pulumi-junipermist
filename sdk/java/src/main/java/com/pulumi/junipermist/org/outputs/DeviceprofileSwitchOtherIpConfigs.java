@@ -38,12 +38,12 @@ public final class DeviceprofileSwitchOtherIpConfigs {
      */
     private @Nullable String netmask6;
     /**
-     * @return IPv4 assignment mode for the additional Junos L3 presence
+     * @return IPv4 assignment mode for the additional Junos L3 presence. enum: `dhcp`, `static`.
      * 
      */
     private @Nullable String type;
     /**
-     * @return IPv6 assignment mode for the additional Junos L3 presence
+     * @return IPv6 assignment mode for the additional Junos L3 presence. enum: `autoconf`, `dhcp`, `disabled`, `static`.
      * 
      */
     private @Nullable String type6;
@@ -85,14 +85,14 @@ public final class DeviceprofileSwitchOtherIpConfigs {
         return Optional.ofNullable(this.netmask6);
     }
     /**
-     * @return IPv4 assignment mode for the additional Junos L3 presence
+     * @return IPv4 assignment mode for the additional Junos L3 presence. enum: `dhcp`, `static`.
      * 
      */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return IPv6 assignment mode for the additional Junos L3 presence
+     * @return IPv6 assignment mode for the additional Junos L3 presence. enum: `autoconf`, `dhcp`, `disabled`, `static`.
      * 
      */
     public Optional<String> type6() {

@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// Monitoring method used for this tunnel termination check
+        /// Monitoring method used for this tunnel termination check. enum: `Arp`, `Ping`, `Tcp`.
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }

@@ -31,7 +31,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// Weekly ESL auto-upgrade day for the maintenance window
+        /// Weekly ESL auto-upgrade day for the maintenance window. enum: `Any`, `Fri`, `Mon`, `Sat`, `Sun`, `Thu`, `Tue`, `Wed`.
         /// </summary>
         [Input("dayOfWeek")]
         public Input<string>? DayOfWeek { get; set; }

@@ -34,11 +34,11 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? Netmask6;
         /// <summary>
-        /// IPv4 assignment mode for the additional Junos L3 presence
+        /// IPv4 assignment mode for the additional Junos L3 presence. enum: `Dhcp`, `Static`.
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// IPv6 assignment mode for the additional Junos L3 presence
+        /// IPv6 assignment mode for the additional Junos L3 presence. enum: `Autoconf`, `Dhcp`, `Disabled`, `Static`.
         /// </summary>
         public readonly string? Type6;
 

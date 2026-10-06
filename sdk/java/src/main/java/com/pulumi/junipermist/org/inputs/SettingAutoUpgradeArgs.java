@@ -33,14 +33,14 @@ public final class SettingAutoUpgradeArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Day of the week for the AP auto-upgrade maintenance window
+     * Day of the week for the AP auto-upgrade maintenance window. enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`.
      * 
      */
     @Import(name="dayOfWeek")
     private @Nullable Output<String> dayOfWeek;
 
     /**
-     * @return Day of the week for the AP auto-upgrade maintenance window
+     * @return Day of the week for the AP auto-upgrade maintenance window. enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`.
      * 
      */
     public Optional<Output<String>> dayOfWeek() {
@@ -78,14 +78,14 @@ public final class SettingAutoUpgradeArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Firmware release channel or specific version used for AP auto-upgrade
+     * Firmware release channel or specific version used for AP auto-upgrade. enum: `beta`, `custom`, `stable`.
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return Firmware release channel or specific version used for AP auto-upgrade
+     * @return Firmware release channel or specific version used for AP auto-upgrade. enum: `beta`, `custom`, `stable`.
      * 
      */
     public Optional<Output<String>> version() {
@@ -142,7 +142,7 @@ public final class SettingAutoUpgradeArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param dayOfWeek Day of the week for the AP auto-upgrade maintenance window
+         * @param dayOfWeek Day of the week for the AP auto-upgrade maintenance window. enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class SettingAutoUpgradeArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param dayOfWeek Day of the week for the AP auto-upgrade maintenance window
+         * @param dayOfWeek Day of the week for the AP auto-upgrade maintenance window. enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class SettingAutoUpgradeArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param version Firmware release channel or specific version used for AP auto-upgrade
+         * @param version Firmware release channel or specific version used for AP auto-upgrade. enum: `beta`, `custom`, `stable`.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class SettingAutoUpgradeArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param version Firmware release channel or specific version used for AP auto-upgrade
+         * @param version Firmware release channel or specific version used for AP auto-upgrade. enum: `beta`, `custom`, `stable`.
          * 
          * @return builder
          * 

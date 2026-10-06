@@ -37,7 +37,7 @@ public final class RftemplateModelSpecific {
      */
     private @Nullable RftemplateModelSpecificBand24 band24;
     /**
-     * @return Model-specific radio usage mode for the 2.4 GHz-capable radio
+     * @return Model-specific radio usage mode for the 2.4 GHz-capable radio. enum: `24`, `5`, `6`, `auto`.
      * 
      */
     private @Nullable String band24Usage;
@@ -87,7 +87,7 @@ public final class RftemplateModelSpecific {
         return Optional.ofNullable(this.band24);
     }
     /**
-     * @return Model-specific radio usage mode for the 2.4 GHz-capable radio
+     * @return Model-specific radio usage mode for the 2.4 GHz-capable radio. enum: `24`, `5`, `6`, `auto`.
      * 
      */
     public Optional<String> band24Usage() {

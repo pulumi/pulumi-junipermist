@@ -65,7 +65,7 @@ type Nactag struct {
 	EgressVlanNames pulumi.StringArrayOutput `pulumi:"egressVlanNames"`
 	// If `type`==`gbpTag`, GBP tag value returned by the NAC rule
 	GbpTag pulumi.StringPtrOutput `pulumi:"gbpTag"`
-	// If `type`==`match`, client or authentication attribute used for rule matching
+	// If `type`==`match`, client or authentication attribute used for rule matching. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrStatus`, `gbpTag`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`.
 	Match pulumi.StringPtrOutput `pulumi:"match"`
 	// This field is applicable only when `type`==`match`
 	//   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
@@ -87,9 +87,9 @@ type Nactag struct {
 	RadiusVendorAttrs pulumi.StringArrayOutput `pulumi:"radiusVendorAttrs"`
 	// If `type`==`sessionTimeout`, session timeout returned by the NAC rule, in seconds
 	SessionTimeout pulumi.IntPtrOutput `pulumi:"sessionTimeout"`
-	// NAC tag type that determines whether the tag is a matcher or a result attribute
+	// NAC tag type that determines whether the tag is a matcher or a result attribute. enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// If `type`==`usernameAttr`, attribute used to derive the username returned by the NAC rule
+	// If `type`==`usernameAttr`, attribute used to derive the username returned by the NAC rule. enum: `automatic`, `cn`, `dns`, `email`, `upn`.
 	UsernameAttr pulumi.StringPtrOutput `pulumi:"usernameAttr"`
 	// If `type`==`match`, attribute values used by the NAC tag matcher
 	Values pulumi.StringArrayOutput `pulumi:"values"`
@@ -139,7 +139,7 @@ type nactagState struct {
 	EgressVlanNames []string `pulumi:"egressVlanNames"`
 	// If `type`==`gbpTag`, GBP tag value returned by the NAC rule
 	GbpTag *string `pulumi:"gbpTag"`
-	// If `type`==`match`, client or authentication attribute used for rule matching
+	// If `type`==`match`, client or authentication attribute used for rule matching. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrStatus`, `gbpTag`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`.
 	Match *string `pulumi:"match"`
 	// This field is applicable only when `type`==`match`
 	//   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
@@ -161,9 +161,9 @@ type nactagState struct {
 	RadiusVendorAttrs []string `pulumi:"radiusVendorAttrs"`
 	// If `type`==`sessionTimeout`, session timeout returned by the NAC rule, in seconds
 	SessionTimeout *int `pulumi:"sessionTimeout"`
-	// NAC tag type that determines whether the tag is a matcher or a result attribute
+	// NAC tag type that determines whether the tag is a matcher or a result attribute. enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`.
 	Type *string `pulumi:"type"`
-	// If `type`==`usernameAttr`, attribute used to derive the username returned by the NAC rule
+	// If `type`==`usernameAttr`, attribute used to derive the username returned by the NAC rule. enum: `automatic`, `cn`, `dns`, `email`, `upn`.
 	UsernameAttr *string `pulumi:"usernameAttr"`
 	// If `type`==`match`, attribute values used by the NAC tag matcher
 	Values []string `pulumi:"values"`
@@ -178,7 +178,7 @@ type NactagState struct {
 	EgressVlanNames pulumi.StringArrayInput
 	// If `type`==`gbpTag`, GBP tag value returned by the NAC rule
 	GbpTag pulumi.StringPtrInput
-	// If `type`==`match`, client or authentication attribute used for rule matching
+	// If `type`==`match`, client or authentication attribute used for rule matching. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrStatus`, `gbpTag`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`.
 	Match pulumi.StringPtrInput
 	// This field is applicable only when `type`==`match`
 	//   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
@@ -200,9 +200,9 @@ type NactagState struct {
 	RadiusVendorAttrs pulumi.StringArrayInput
 	// If `type`==`sessionTimeout`, session timeout returned by the NAC rule, in seconds
 	SessionTimeout pulumi.IntPtrInput
-	// NAC tag type that determines whether the tag is a matcher or a result attribute
+	// NAC tag type that determines whether the tag is a matcher or a result attribute. enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`.
 	Type pulumi.StringPtrInput
-	// If `type`==`usernameAttr`, attribute used to derive the username returned by the NAC rule
+	// If `type`==`usernameAttr`, attribute used to derive the username returned by the NAC rule. enum: `automatic`, `cn`, `dns`, `email`, `upn`.
 	UsernameAttr pulumi.StringPtrInput
 	// If `type`==`match`, attribute values used by the NAC tag matcher
 	Values pulumi.StringArrayInput
@@ -221,7 +221,7 @@ type nactagArgs struct {
 	EgressVlanNames []string `pulumi:"egressVlanNames"`
 	// If `type`==`gbpTag`, GBP tag value returned by the NAC rule
 	GbpTag *string `pulumi:"gbpTag"`
-	// If `type`==`match`, client or authentication attribute used for rule matching
+	// If `type`==`match`, client or authentication attribute used for rule matching. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrStatus`, `gbpTag`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`.
 	Match *string `pulumi:"match"`
 	// This field is applicable only when `type`==`match`
 	//   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
@@ -243,9 +243,9 @@ type nactagArgs struct {
 	RadiusVendorAttrs []string `pulumi:"radiusVendorAttrs"`
 	// If `type`==`sessionTimeout`, session timeout returned by the NAC rule, in seconds
 	SessionTimeout *int `pulumi:"sessionTimeout"`
-	// NAC tag type that determines whether the tag is a matcher or a result attribute
+	// NAC tag type that determines whether the tag is a matcher or a result attribute. enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`.
 	Type string `pulumi:"type"`
-	// If `type`==`usernameAttr`, attribute used to derive the username returned by the NAC rule
+	// If `type`==`usernameAttr`, attribute used to derive the username returned by the NAC rule. enum: `automatic`, `cn`, `dns`, `email`, `upn`.
 	UsernameAttr *string `pulumi:"usernameAttr"`
 	// If `type`==`match`, attribute values used by the NAC tag matcher
 	Values []string `pulumi:"values"`
@@ -261,7 +261,7 @@ type NactagArgs struct {
 	EgressVlanNames pulumi.StringArrayInput
 	// If `type`==`gbpTag`, GBP tag value returned by the NAC rule
 	GbpTag pulumi.StringPtrInput
-	// If `type`==`match`, client or authentication attribute used for rule matching
+	// If `type`==`match`, client or authentication attribute used for rule matching. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrStatus`, `gbpTag`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`.
 	Match pulumi.StringPtrInput
 	// This field is applicable only when `type`==`match`
 	//   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
@@ -283,9 +283,9 @@ type NactagArgs struct {
 	RadiusVendorAttrs pulumi.StringArrayInput
 	// If `type`==`sessionTimeout`, session timeout returned by the NAC rule, in seconds
 	SessionTimeout pulumi.IntPtrInput
-	// NAC tag type that determines whether the tag is a matcher or a result attribute
+	// NAC tag type that determines whether the tag is a matcher or a result attribute. enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`.
 	Type pulumi.StringInput
-	// If `type`==`usernameAttr`, attribute used to derive the username returned by the NAC rule
+	// If `type`==`usernameAttr`, attribute used to derive the username returned by the NAC rule. enum: `automatic`, `cn`, `dns`, `email`, `upn`.
 	UsernameAttr pulumi.StringPtrInput
 	// If `type`==`match`, attribute values used by the NAC tag matcher
 	Values pulumi.StringArrayInput
@@ -395,7 +395,7 @@ func (o NactagOutput) GbpTag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Nactag) pulumi.StringPtrOutput { return v.GbpTag }).(pulumi.StringPtrOutput)
 }
 
-// If `type`==`match`, client or authentication attribute used for rule matching
+// If `type`==`match`, client or authentication attribute used for rule matching. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrStatus`, `gbpTag`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`.
 func (o NactagOutput) Match() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Nactag) pulumi.StringPtrOutput { return v.Match }).(pulumi.StringPtrOutput)
 }
@@ -444,12 +444,12 @@ func (o NactagOutput) SessionTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Nactag) pulumi.IntPtrOutput { return v.SessionTimeout }).(pulumi.IntPtrOutput)
 }
 
-// NAC tag type that determines whether the tag is a matcher or a result attribute
+// NAC tag type that determines whether the tag is a matcher or a result attribute. enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`.
 func (o NactagOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Nactag) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// If `type`==`usernameAttr`, attribute used to derive the username returned by the NAC rule
+// If `type`==`usernameAttr`, attribute used to derive the username returned by the NAC rule. enum: `automatic`, `cn`, `dns`, `email`, `upn`.
 func (o NactagOutput) UsernameAttr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Nactag) pulumi.StringPtrOutput { return v.UsernameAttr }).(pulumi.StringPtrOutput)
 }

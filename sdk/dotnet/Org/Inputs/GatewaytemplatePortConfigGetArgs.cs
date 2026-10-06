@@ -61,7 +61,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// If `WanType`==`Dsl`. DSL technology used by the WAN port
+        /// If `WanType`==`Dsl`. DSL technology used by the WAN port. enum: `Adsl`, `Vdsl`.
         /// </summary>
         [Input("dslType")]
         public Input<string>? DslType { get; set; }
@@ -79,7 +79,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<int>? DslVpi { get; set; }
 
         /// <summary>
-        /// Ethernet duplex mode configured on the port
+        /// Ethernet duplex mode configured on the port. enum: `Auto`, `Full`, `Half`.
         /// </summary>
         [Input("duplex")]
         public Input<string>? Duplex { get; set; }
@@ -97,7 +97,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? LteApn { get; set; }
 
         /// <summary>
-        /// If `WanType`==`Lte`. Authentication method used by the LTE uplink
+        /// If `WanType`==`Lte`. Authentication method used by the LTE uplink. enum: `Chap`, `None`, `Pap`.
         /// </summary>
         [Input("lteAuth")]
         public Input<string>? LteAuth { get; set; }
@@ -233,7 +233,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<Inputs.GatewaytemplatePortConfigTrafficShapingGetArgs>? TrafficShaping { get; set; }
 
         /// <summary>
-        /// Logical usage assigned to the port
+        /// Logical usage assigned to the port. enum: `HaControl`, `HaData`, `Lan`, `Wan`.
         /// </summary>
         [Input("usage", required: true)]
         public Input<string> Usage { get; set; } = null!;
@@ -257,7 +257,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// Only when `WanType`==`Broadband`. ARP policer profile applied to the WAN port
+        /// Only when `WanType`==`Broadband`. ARP policer profile applied to the WAN port. enum: `Default`, `Max`, `Recommended`.
         /// </summary>
         [Input("wanArpPolicer")]
         public Input<string>? WanArpPolicer { get; set; }
@@ -323,13 +323,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<Inputs.GatewaytemplatePortConfigWanSourceNatGetArgs>? WanSourceNat { get; set; }
 
         /// <summary>
-        /// Controls whether Marvis or the scheduler can run speed tests on this WAN port
+        /// Controls whether Marvis or the scheduler can run speed tests on this WAN port. enum: `Auto`, `Enabled`, `Disabled`.
         /// </summary>
         [Input("wanSpeedtestMode")]
         public Input<string>? WanSpeedtestMode { get; set; }
 
         /// <summary>
-        /// Only if `Usage`==`Wan`. WAN uplink type configured on the port
+        /// Only if `Usage`==`Wan`. WAN uplink type configured on the port. enum: `Broadband`, `Dsl`, `Lte`.
         /// </summary>
         [Input("wanType")]
         public Input<string>? WanType { get; set; }

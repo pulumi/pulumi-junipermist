@@ -92,14 +92,14 @@ public final class DeviceprofileSwitchOtherIpConfigsArgs extends com.pulumi.reso
     }
 
     /**
-     * IPv4 assignment mode for the additional Junos L3 presence
+     * IPv4 assignment mode for the additional Junos L3 presence. enum: `dhcp`, `static`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return IPv4 assignment mode for the additional Junos L3 presence
+     * @return IPv4 assignment mode for the additional Junos L3 presence. enum: `dhcp`, `static`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -107,14 +107,14 @@ public final class DeviceprofileSwitchOtherIpConfigsArgs extends com.pulumi.reso
     }
 
     /**
-     * IPv6 assignment mode for the additional Junos L3 presence
+     * IPv6 assignment mode for the additional Junos L3 presence. enum: `autoconf`, `dhcp`, `disabled`, `static`.
      * 
      */
     @Import(name="type6")
     private @Nullable Output<String> type6;
 
     /**
-     * @return IPv6 assignment mode for the additional Junos L3 presence
+     * @return IPv6 assignment mode for the additional Junos L3 presence. enum: `autoconf`, `dhcp`, `disabled`, `static`.
      * 
      */
     public Optional<Output<String>> type6() {
@@ -257,7 +257,7 @@ public final class DeviceprofileSwitchOtherIpConfigsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param type IPv4 assignment mode for the additional Junos L3 presence
+         * @param type IPv4 assignment mode for the additional Junos L3 presence. enum: `dhcp`, `static`.
          * 
          * @return builder
          * 
@@ -268,7 +268,7 @@ public final class DeviceprofileSwitchOtherIpConfigsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param type IPv4 assignment mode for the additional Junos L3 presence
+         * @param type IPv4 assignment mode for the additional Junos L3 presence. enum: `dhcp`, `static`.
          * 
          * @return builder
          * 
@@ -278,7 +278,7 @@ public final class DeviceprofileSwitchOtherIpConfigsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param type6 IPv6 assignment mode for the additional Junos L3 presence
+         * @param type6 IPv6 assignment mode for the additional Junos L3 presence. enum: `autoconf`, `dhcp`, `disabled`, `static`.
          * 
          * @return builder
          * 
@@ -289,7 +289,7 @@ public final class DeviceprofileSwitchOtherIpConfigsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param type6 IPv6 assignment mode for the additional Junos L3 presence
+         * @param type6 IPv6 assignment mode for the additional Junos L3 presence. enum: `autoconf`, `dhcp`, `disabled`, `static`.
          * 
          * @return builder
          * 

@@ -194,7 +194,7 @@ export class Ap extends pulumi.CustomResource {
      */
     declare public readonly siteId: pulumi.Output<string>;
     /**
-     * Device type discriminator for access point records
+     * Device type discriminator for access point records. enum: `ap`.
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
@@ -493,7 +493,7 @@ export interface ApState {
      */
     siteId?: pulumi.Input<string | undefined>;
     /**
-     * Device type discriminator for access point records
+     * Device type discriminator for access point records. enum: `ap`.
      */
     type?: pulumi.Input<string | undefined>;
     /**

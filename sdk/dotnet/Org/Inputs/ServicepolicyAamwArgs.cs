@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Built-in advanced anti-malware inspection profile to apply
+        /// Built-in advanced anti-malware inspection profile to apply. enum: `Docsonly`, `Executables`, `Standard`.
         /// </summary>
         [Input("profile")]
         public Input<string>? Profile { get; set; }

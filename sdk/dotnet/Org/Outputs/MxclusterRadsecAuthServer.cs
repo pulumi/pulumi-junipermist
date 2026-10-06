@@ -30,7 +30,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? KeywrapEnabled;
         /// <summary>
-        /// Encoding format for Mist AP RADIUS keywrap keys
+        /// Encoding format for Mist AP RADIUS keywrap keys. enum: `Ascii`, `Hex`.
         /// </summary>
         public readonly string? KeywrapFormat;
         /// <summary>

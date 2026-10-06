@@ -92,14 +92,14 @@ public final class GatewaytemplateIpConfigsArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * IPv4 address assignment mode for this gateway network interface
+     * IPv4 address assignment mode for this gateway network interface. enum: `dhcp`, `static`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return IPv4 address assignment mode for this gateway network interface
+     * @return IPv4 address assignment mode for this gateway network interface. enum: `dhcp`, `static`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -107,14 +107,14 @@ public final class GatewaytemplateIpConfigsArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * IPv6 address assignment mode for this gateway network interface
+     * IPv6 address assignment mode for this gateway network interface. enum: `autoconf`, `dhcp`, `disabled`, `static`.
      * 
      */
     @Import(name="type6")
     private @Nullable Output<String> type6;
 
     /**
-     * @return IPv6 address assignment mode for this gateway network interface
+     * @return IPv6 address assignment mode for this gateway network interface. enum: `autoconf`, `dhcp`, `disabled`, `static`.
      * 
      */
     public Optional<Output<String>> type6() {
@@ -267,7 +267,7 @@ public final class GatewaytemplateIpConfigsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param type IPv4 address assignment mode for this gateway network interface
+         * @param type IPv4 address assignment mode for this gateway network interface. enum: `dhcp`, `static`.
          * 
          * @return builder
          * 
@@ -278,7 +278,7 @@ public final class GatewaytemplateIpConfigsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param type IPv4 address assignment mode for this gateway network interface
+         * @param type IPv4 address assignment mode for this gateway network interface. enum: `dhcp`, `static`.
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class GatewaytemplateIpConfigsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param type6 IPv6 address assignment mode for this gateway network interface
+         * @param type6 IPv6 address assignment mode for this gateway network interface. enum: `autoconf`, `dhcp`, `disabled`, `static`.
          * 
          * @return builder
          * 
@@ -299,7 +299,7 @@ public final class GatewaytemplateIpConfigsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param type6 IPv6 address assignment mode for this gateway network interface
+         * @param type6 IPv6 address assignment mode for this gateway network interface. enum: `autoconf`, `dhcp`, `disabled`, `static`.
          * 
          * @return builder
          * 

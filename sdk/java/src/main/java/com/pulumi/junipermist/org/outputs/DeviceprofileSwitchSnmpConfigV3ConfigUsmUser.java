@@ -17,7 +17,7 @@ public final class DeviceprofileSwitchSnmpConfigV3ConfigUsmUser {
      */
     private @Nullable String authenticationPassword;
     /**
-     * @return Authentication protocol used by this SNMPv3 USM user
+     * @return Authentication protocol used by this SNMPv3 USM user. enum: `authentication-md5`, `authentication-none`, `authentication-sha`, `authentication-sha224`, `authentication-sha256`, `authentication-sha384`, `authentication-sha512`.
      * 
      */
     private @Nullable String authenticationType;
@@ -27,7 +27,7 @@ public final class DeviceprofileSwitchSnmpConfigV3ConfigUsmUser {
      */
     private @Nullable String encryptionPassword;
     /**
-     * @return Privacy protocol used by this SNMPv3 USM user
+     * @return Privacy protocol used by this SNMPv3 USM user. enum: `privacy-3des`, `privacy-aes128`, `privacy-des`, `privacy-none`.
      * 
      */
     private @Nullable String encryptionType;
@@ -46,7 +46,7 @@ public final class DeviceprofileSwitchSnmpConfigV3ConfigUsmUser {
         return Optional.ofNullable(this.authenticationPassword);
     }
     /**
-     * @return Authentication protocol used by this SNMPv3 USM user
+     * @return Authentication protocol used by this SNMPv3 USM user. enum: `authentication-md5`, `authentication-none`, `authentication-sha`, `authentication-sha224`, `authentication-sha256`, `authentication-sha384`, `authentication-sha512`.
      * 
      */
     public Optional<String> authenticationType() {
@@ -60,7 +60,7 @@ public final class DeviceprofileSwitchSnmpConfigV3ConfigUsmUser {
         return Optional.ofNullable(this.encryptionPassword);
     }
     /**
-     * @return Privacy protocol used by this SNMPv3 USM user
+     * @return Privacy protocol used by this SNMPv3 USM user. enum: `privacy-3des`, `privacy-aes128`, `privacy-des`, `privacy-none`.
      * 
      */
     public Optional<String> encryptionType() {

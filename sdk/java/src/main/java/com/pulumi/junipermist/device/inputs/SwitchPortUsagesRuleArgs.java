@@ -82,14 +82,14 @@ public final class SwitchPortUsagesRuleArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Source attribute evaluated by this dynamic rule
+     * Source attribute evaluated by this dynamic rule. enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemDescription`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`.
      * 
      */
     @Import(name="src", required=true)
     private Output<String> src;
 
     /**
-     * @return Source attribute evaluated by this dynamic rule
+     * @return Source attribute evaluated by this dynamic rule. enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemDescription`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`.
      * 
      */
     public Output<String> src() {
@@ -239,7 +239,7 @@ public final class SwitchPortUsagesRuleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param src Source attribute evaluated by this dynamic rule
+         * @param src Source attribute evaluated by this dynamic rule. enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemDescription`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`.
          * 
          * @return builder
          * 
@@ -250,7 +250,7 @@ public final class SwitchPortUsagesRuleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param src Source attribute evaluated by this dynamic rule
+         * @param src Source attribute evaluated by this dynamic rule. enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemDescription`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`.
          * 
          * @return builder
          * 

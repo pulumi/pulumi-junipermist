@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.junipermist.site.inputs.SettingJuniperSrxAutoUpgradeArgs;
 import com.pulumi.junipermist.site.inputs.SettingJuniperSrxGatewayArgs;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -49,6 +50,21 @@ public final class SettingJuniperSrxArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Source of the Mist NAC user role sent to Juniper SRX gateways. enum: `idpRole`, `radiusGroup`, `none`
+     * 
+     */
+    @Import(name="mistNacUserRoleSource")
+    private @Nullable Output<String> mistNacUserRoleSource;
+
+    /**
+     * @return Source of the Mist NAC user role sent to Juniper SRX gateways. enum: `idpRole`, `radiusGroup`, `none`
+     * 
+     */
+    public Optional<Output<String>> mistNacUserRoleSource() {
+        return Optional.ofNullable(this.mistNacUserRoleSource);
+    }
+
+    /**
      * Whether Mist NAC user information is sent to Juniper SRX gateways
      * 
      */
@@ -68,6 +84,7 @@ public final class SettingJuniperSrxArgs extends com.pulumi.resources.ResourceAr
     private SettingJuniperSrxArgs(SettingJuniperSrxArgs $) {
         this.autoUpgrade = $.autoUpgrade;
         this.gateways = $.gateways;
+        this.mistNacUserRoleSource = $.mistNacUserRoleSource;
         this.sendMistNacUserInfo = $.sendMistNacUserInfo;
     }
 
@@ -139,6 +156,27 @@ public final class SettingJuniperSrxArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder gateways(SettingJuniperSrxGatewayArgs... gateways) {
             return gateways(List.of(gateways));
+        }
+
+        /**
+         * @param mistNacUserRoleSource Source of the Mist NAC user role sent to Juniper SRX gateways. enum: `idpRole`, `radiusGroup`, `none`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mistNacUserRoleSource(@Nullable Output<String> mistNacUserRoleSource) {
+            $.mistNacUserRoleSource = mistNacUserRoleSource;
+            return this;
+        }
+
+        /**
+         * @param mistNacUserRoleSource Source of the Mist NAC user role sent to Juniper SRX gateways. enum: `idpRole`, `radiusGroup`, `none`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mistNacUserRoleSource(String mistNacUserRoleSource) {
+            return mistNacUserRoleSource(Output.of(mistNacUserRoleSource));
         }
 
         /**

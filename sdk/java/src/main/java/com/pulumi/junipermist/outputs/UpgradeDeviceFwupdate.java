@@ -20,7 +20,7 @@ public final class UpgradeDeviceFwupdate {
      */
     private @Nullable Integer progress;
     /**
-     * @return Current firmware update status
+     * @return Current firmware update status. enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`.
      * 
      */
     private @Nullable String status;
@@ -49,7 +49,7 @@ public final class UpgradeDeviceFwupdate {
         return Optional.ofNullable(this.progress);
     }
     /**
-     * @return Current firmware update status
+     * @return Current firmware update status. enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`.
      * 
      */
     public Optional<String> status() {

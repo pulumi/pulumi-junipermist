@@ -79,14 +79,14 @@ public final class MxclusterRadsecAuthServerArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Encoding format for Mist AP RADIUS keywrap keys
+     * Encoding format for Mist AP RADIUS keywrap keys. enum: `ascii`, `hex`.
      * 
      */
     @Import(name="keywrapFormat")
     private @Nullable Output<String> keywrapFormat;
 
     /**
-     * @return Encoding format for Mist AP RADIUS keywrap keys
+     * @return Encoding format for Mist AP RADIUS keywrap keys. enum: `ascii`, `hex`.
      * 
      */
     public Optional<Output<String>> keywrapFormat() {
@@ -318,7 +318,7 @@ public final class MxclusterRadsecAuthServerArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param keywrapFormat Encoding format for Mist AP RADIUS keywrap keys
+         * @param keywrapFormat Encoding format for Mist AP RADIUS keywrap keys. enum: `ascii`, `hex`.
          * 
          * @return builder
          * 
@@ -329,7 +329,7 @@ public final class MxclusterRadsecAuthServerArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param keywrapFormat Encoding format for Mist AP RADIUS keywrap keys
+         * @param keywrapFormat Encoding format for Mist AP RADIUS keywrap keys. enum: `ascii`, `hex`.
          * 
          * @return builder
          * 

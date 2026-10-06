@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewaytemplatePortConfigVpnPaths {
     /**
-     * @return BFD profile used for this VPN path when the VPN `type`==`hubSpoke`
+     * @return BFD profile used for this VPN path when the VPN `type`==`hubSpoke`. enum: `broadband`, `lte`.
      * 
      */
     private @Nullable String bfdProfile;
@@ -30,7 +30,7 @@ public final class GatewaytemplatePortConfigVpnPaths {
      */
     private @Nullable Integer preference;
     /**
-     * @return Gateway role for this VPN path; valid values depend on the VPN `type`
+     * @return Gateway role for this VPN path; valid values depend on the VPN `type`. enum: `hub`, `mesh`, `spoke`.
      * 
      */
     private @Nullable String role;
@@ -42,7 +42,7 @@ public final class GatewaytemplatePortConfigVpnPaths {
 
     private GatewaytemplatePortConfigVpnPaths() {}
     /**
-     * @return BFD profile used for this VPN path when the VPN `type`==`hubSpoke`
+     * @return BFD profile used for this VPN path when the VPN `type`==`hubSpoke`. enum: `broadband`, `lte`.
      * 
      */
     public Optional<String> bfdProfile() {
@@ -63,7 +63,7 @@ public final class GatewaytemplatePortConfigVpnPaths {
         return Optional.ofNullable(this.preference);
     }
     /**
-     * @return Gateway role for this VPN path; valid values depend on the VPN `type`
+     * @return Gateway role for this VPN path; valid values depend on the VPN `type`. enum: `hub`, `mesh`, `spoke`.
      * 
      */
     public Optional<String> role() {

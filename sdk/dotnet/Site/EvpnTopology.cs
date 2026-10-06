@@ -22,65 +22,81 @@ namespace Pulumi.JuniperMist.Site
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Mist = Pulumi.Mist;
+    /// using JuniperMist = Pulumi.JuniperMist;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var evpnOne = new Mist.SiteSiteEvpnTopology("evpn_one", new()
+    ///     var evpnTopologySwitches = new JuniperMist.Org.Inventory("evpn_topology_switches", new()
     ///     {
-    ///         SiteId = terraformTest.Id,
-    ///         Name = "evpn_one",
-    ///         EvpnOptions = 
+    ///         OrgId = "c0c92f93-d702-4cb7-a661-aaca08cfcf74",
+    ///         InventoryDetails = 
     ///         {
-    ///             { "routedAt", "core" },
-    ///             { "overlay", 
+    ///             { "HY5BD8EVMSRQRCV", new JuniperMist.Org.Inputs.InventoryInventoryArgs
     ///             {
-    ///                 { "as", 65000 },
+    ///                 SiteId = "87e30472-720a-42c5-acd9-ac95213d08b3",
     ///             } },
-    ///             { "coreAsBorder", true },
-    ///             { "autoLoopbackSubnet", "172.16.192.0/24" },
-    ///             { "autoLoopbackSubnet6", "fd33:ab00:2::/64" },
-    ///             { "perVlanVgaV4Mac", false },
-    ///             { "underlay", 
+    ///             { "P9ZRN52RXQEQNH5", new JuniperMist.Org.Inputs.InventoryInventoryArgs
     ///             {
-    ///                 { "asBase", 65001 },
-    ///                 { "useIpv6", false },
-    ///                 { "subnet", "10.255.240.0/20" },
+    ///                 SiteId = "87e30472-720a-42c5-acd9-ac95213d08b3",
     ///             } },
-    ///             { "autoRouterIdSubnet", "172.16.254.0/23" },
+    ///             { "HNCNY3DWSAKJFPB", new JuniperMist.Org.Inputs.InventoryInventoryArgs
+    ///             {
+    ///                 SiteId = "87e30472-720a-42c5-acd9-ac95213d08b3",
+    ///             } },
+    ///             { "GSK46S5XKH657DG", new JuniperMist.Org.Inputs.InventoryInventoryArgs
+    ///             {
+    ///                 SiteId = "87e30472-720a-42c5-acd9-ac95213d08b3",
+    ///             } },
     ///         },
-    ///         Switches = new[]
+    ///     });
+    /// 
+    ///     var evpnOne = new JuniperMist.Site.EvpnTopology("evpn_one", new()
+    ///     {
+    ///         SiteId = "87e30472-720a-42c5-acd9-ac95213d08b3",
+    ///         Name = "evpn_one",
+    ///         EvpnOptions = new JuniperMist.Site.Inputs.EvpnTopologyEvpnOptionsArgs
     ///         {
-    ///             
+    ///             RoutedAt = "core",
+    ///             Overlay = new JuniperMist.Site.Inputs.EvpnTopologyEvpnOptionsOverlayArgs
     ///             {
-    ///                 { "mac", "020004000001" },
-    ///                 { "role", "core" },
+    ///                 As = 65000,
     ///             },
-    ///             
+    ///             CoreAsBorder = true,
+    ///             AutoLoopbackSubnet = "172.16.192.0/24",
+    ///             AutoLoopbackSubnet6 = "fd33:ab00:2::/64",
+    ///             PerVlanVgaV4Mac = false,
+    ///             Underlay = new JuniperMist.Site.Inputs.EvpnTopologyEvpnOptionsUnderlayArgs
     ///             {
-    ///                 { "mac", "02000400002" },
-    ///                 { "role", "core" },
+    ///                 AsBase = 65001,
+    ///                 UseIpv6 = false,
+    ///                 Subnet = "10.255.240.0/20",
     ///             },
-    ///             
+    ///             AutoRouterIdSubnet = "172.16.254.0/23",
+    ///         },
+    ///         Switches = 
+    ///         {
+    ///             { "0200030001fe", new JuniperMist.Site.Inputs.EvpnTopologySwitchesArgs
     ///             {
-    ///                 { "mac", "02000400003" },
-    ///                 { "role", "distribution" },
-    ///             },
-    ///             
+    ///                 Role = "core",
+    ///             } },
+    ///             { "0200030001ff", new JuniperMist.Site.Inputs.EvpnTopologySwitchesArgs
     ///             {
-    ///                 { "mac", "02000400004" },
-    ///                 { "role", "distribution" },
-    ///             },
-    ///             
+    ///                 Role = "core",
+    ///             } },
+    ///             { "020003000200", new JuniperMist.Site.Inputs.EvpnTopologySwitchesArgs
     ///             {
-    ///                 { "mac", "02000400005" },
-    ///                 { "role", "access" },
-    ///             },
-    ///             
+    ///                 Role = "access",
+    ///             } },
+    ///             { "020003000201", new JuniperMist.Site.Inputs.EvpnTopologySwitchesArgs
     ///             {
-    ///                 { "mac", "02000400006" },
-    ///                 { "role", "access" },
-    ///             },
+    ///                 Role = "access",
+    ///             } },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             evpnTopologySwitches,
     ///         },
     ///     });
     /// 

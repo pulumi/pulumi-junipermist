@@ -18,14 +18,14 @@ public final class NetworktemplateMulticastConfigArgs extends com.pulumi.resourc
     public static final NetworktemplateMulticastConfigArgs Empty = new NetworktemplateMulticastConfigArgs();
 
     /**
-     * When `true`, auto-generates a shared RP on `isL3Border` devices (ERB/IPClos topologies only)
+     * When `true`, generates a shared anycast RP on all `isL3Border` devices in EVPN (ERB/IPClos) topologies. Uses `rpIp` as the shared RP address, or an internal default when `rpIp` is omitted. Takes precedence over `rpMac` and `rpIp` when multiple RP options are set.
      * 
      */
     @Import(name="anycastRp")
     private @Nullable Output<Boolean> anycastRp;
 
     /**
-     * @return When `true`, auto-generates a shared RP on `isL3Border` devices (ERB/IPClos topologies only)
+     * @return When `true`, generates a shared anycast RP on all `isL3Border` devices in EVPN (ERB/IPClos) topologies. Uses `rpIp` as the shared RP address, or an internal default when `rpIp` is omitted. Takes precedence over `rpMac` and `rpIp` when multiple RP options are set.
      * 
      */
     public Optional<Output<Boolean>> anycastRp() {
@@ -33,18 +33,48 @@ public final class NetworktemplateMulticastConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * RP address used when `anycastRp`==`false`. If the address matches a device SVI, it is configured as a local RP; otherwise a static RP is configured
+     * When `true`, enables the PIM EVPN Gateway on `isL3Border` devices. Required for external sources or receivers in EVPN topologies.
+     * 
+     */
+    @Import(name="pegEnabled")
+    private @Nullable Output<Boolean> pegEnabled;
+
+    /**
+     * @return When `true`, enables the PIM EVPN Gateway on `isL3Border` devices. Required for external sources or receivers in EVPN topologies.
+     * 
+     */
+    public Optional<Output<Boolean>> pegEnabled() {
+        return Optional.ofNullable(this.pegEnabled);
+    }
+
+    /**
+     * RP address used for EVPN anycast RP when `anycastRp` is true, or for an external RP when it is false. In non-EVPN topologies, a matching device router ID configures a local RP; otherwise a static RP is configured.
      * 
      */
     @Import(name="rpIp")
     private @Nullable Output<String> rpIp;
 
     /**
-     * @return RP address used when `anycastRp`==`false`. If the address matches a device SVI, it is configured as a local RP; otherwise a static RP is configured
+     * @return RP address used for EVPN anycast RP when `anycastRp` is true, or for an external RP when it is false. In non-EVPN topologies, a matching device router ID configures a local RP; otherwise a static RP is configured.
      * 
      */
     public Optional<Output<String>> rpIp() {
         return Optional.ofNullable(this.rpIp);
+    }
+
+    /**
+     * Device MAC address of a fabric RP in EVPN topologies. The RP address is the first usable IP of the VRF `evpnAutoLoopbackSubnet`, not `rpIp`; requires `evpnAutoLoopbackSubnet`. Takes precedence over `rpIp` when `anycastRp` is false.
+     * 
+     */
+    @Import(name="rpMac")
+    private @Nullable Output<String> rpMac;
+
+    /**
+     * @return Device MAC address of a fabric RP in EVPN topologies. The RP address is the first usable IP of the VRF `evpnAutoLoopbackSubnet`, not `rpIp`; requires `evpnAutoLoopbackSubnet`. Takes precedence over `rpIp` when `anycastRp` is false.
+     * 
+     */
+    public Optional<Output<String>> rpMac() {
+        return Optional.ofNullable(this.rpMac);
     }
 
     /**
@@ -77,13 +107,31 @@ public final class NetworktemplateMulticastConfigArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.sbdVlanId);
     }
 
+    /**
+     * When `true` on PEG borders, builds an eBGP mesh between PEG borders over SBD IRBs so WAN-learned routes can satisfy the PIM RPF check during a border WAN-uplink failure.
+     * 
+     */
+    @Import(name="sbdWanRpf")
+    private @Nullable Output<Boolean> sbdWanRpf;
+
+    /**
+     * @return When `true` on PEG borders, builds an eBGP mesh between PEG borders over SBD IRBs so WAN-learned routes can satisfy the PIM RPF check during a border WAN-uplink failure.
+     * 
+     */
+    public Optional<Output<Boolean>> sbdWanRpf() {
+        return Optional.ofNullable(this.sbdWanRpf);
+    }
+
     private NetworktemplateMulticastConfigArgs() {}
 
     private NetworktemplateMulticastConfigArgs(NetworktemplateMulticastConfigArgs $) {
         this.anycastRp = $.anycastRp;
+        this.pegEnabled = $.pegEnabled;
         this.rpIp = $.rpIp;
+        this.rpMac = $.rpMac;
         this.sbdSubnet = $.sbdSubnet;
         this.sbdVlanId = $.sbdVlanId;
+        this.sbdWanRpf = $.sbdWanRpf;
     }
 
     public static Builder builder() {
@@ -105,7 +153,7 @@ public final class NetworktemplateMulticastConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param anycastRp When `true`, auto-generates a shared RP on `isL3Border` devices (ERB/IPClos topologies only)
+         * @param anycastRp When `true`, generates a shared anycast RP on all `isL3Border` devices in EVPN (ERB/IPClos) topologies. Uses `rpIp` as the shared RP address, or an internal default when `rpIp` is omitted. Takes precedence over `rpMac` and `rpIp` when multiple RP options are set.
          * 
          * @return builder
          * 
@@ -116,7 +164,7 @@ public final class NetworktemplateMulticastConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param anycastRp When `true`, auto-generates a shared RP on `isL3Border` devices (ERB/IPClos topologies only)
+         * @param anycastRp When `true`, generates a shared anycast RP on all `isL3Border` devices in EVPN (ERB/IPClos) topologies. Uses `rpIp` as the shared RP address, or an internal default when `rpIp` is omitted. Takes precedence over `rpMac` and `rpIp` when multiple RP options are set.
          * 
          * @return builder
          * 
@@ -126,7 +174,28 @@ public final class NetworktemplateMulticastConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param rpIp RP address used when `anycastRp`==`false`. If the address matches a device SVI, it is configured as a local RP; otherwise a static RP is configured
+         * @param pegEnabled When `true`, enables the PIM EVPN Gateway on `isL3Border` devices. Required for external sources or receivers in EVPN topologies.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pegEnabled(@Nullable Output<Boolean> pegEnabled) {
+            $.pegEnabled = pegEnabled;
+            return this;
+        }
+
+        /**
+         * @param pegEnabled When `true`, enables the PIM EVPN Gateway on `isL3Border` devices. Required for external sources or receivers in EVPN topologies.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pegEnabled(Boolean pegEnabled) {
+            return pegEnabled(Output.of(pegEnabled));
+        }
+
+        /**
+         * @param rpIp RP address used for EVPN anycast RP when `anycastRp` is true, or for an external RP when it is false. In non-EVPN topologies, a matching device router ID configures a local RP; otherwise a static RP is configured.
          * 
          * @return builder
          * 
@@ -137,13 +206,34 @@ public final class NetworktemplateMulticastConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param rpIp RP address used when `anycastRp`==`false`. If the address matches a device SVI, it is configured as a local RP; otherwise a static RP is configured
+         * @param rpIp RP address used for EVPN anycast RP when `anycastRp` is true, or for an external RP when it is false. In non-EVPN topologies, a matching device router ID configures a local RP; otherwise a static RP is configured.
          * 
          * @return builder
          * 
          */
         public Builder rpIp(String rpIp) {
             return rpIp(Output.of(rpIp));
+        }
+
+        /**
+         * @param rpMac Device MAC address of a fabric RP in EVPN topologies. The RP address is the first usable IP of the VRF `evpnAutoLoopbackSubnet`, not `rpIp`; requires `evpnAutoLoopbackSubnet`. Takes precedence over `rpIp` when `anycastRp` is false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rpMac(@Nullable Output<String> rpMac) {
+            $.rpMac = rpMac;
+            return this;
+        }
+
+        /**
+         * @param rpMac Device MAC address of a fabric RP in EVPN topologies. The RP address is the first usable IP of the VRF `evpnAutoLoopbackSubnet`, not `rpIp`; requires `evpnAutoLoopbackSubnet`. Takes precedence over `rpIp` when `anycastRp` is false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rpMac(String rpMac) {
+            return rpMac(Output.of(rpMac));
         }
 
         /**
@@ -186,6 +276,27 @@ public final class NetworktemplateMulticastConfigArgs extends com.pulumi.resourc
          */
         public Builder sbdVlanId(Integer sbdVlanId) {
             return sbdVlanId(Output.of(sbdVlanId));
+        }
+
+        /**
+         * @param sbdWanRpf When `true` on PEG borders, builds an eBGP mesh between PEG borders over SBD IRBs so WAN-learned routes can satisfy the PIM RPF check during a border WAN-uplink failure.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sbdWanRpf(@Nullable Output<Boolean> sbdWanRpf) {
+            $.sbdWanRpf = sbdWanRpf;
+            return this;
+        }
+
+        /**
+         * @param sbdWanRpf When `true` on PEG borders, builds an eBGP mesh between PEG borders over SBD IRBs so WAN-learned routes can satisfy the PIM RPF check during a border WAN-uplink failure.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sbdWanRpf(Boolean sbdWanRpf) {
+            return sbdWanRpf(Output.of(sbdWanRpf));
         }
 
         public NetworktemplateMulticastConfigArgs build() {

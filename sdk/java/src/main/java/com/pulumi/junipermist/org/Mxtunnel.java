@@ -226,14 +226,14 @@ public class Mxtunnel extends com.pulumi.resources.CustomResource {
         return this.orgId;
     }
     /**
-     * Encapsulation protocol used for the Mist Tunnel
+     * Encapsulation protocol used for the Mist Tunnel. enum: `ip`, `udp`.
      * 
      */
     @Export(name="protocol", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> protocol;
 
     /**
-     * @return Encapsulation protocol used for the Mist Tunnel
+     * @return Encapsulation protocol used for the Mist Tunnel. enum: `ip`, `udp`.
      * 
      */
     public Output<Optional<String>> protocol() {

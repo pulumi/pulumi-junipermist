@@ -22,15 +22,15 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly int? AntGain;
         /// <summary>
-        /// Beam pattern used by the 5 GHz radio antenna
+        /// Beam pattern used by the 5 GHz radio antenna. enum: `Narrow`, `Medium`, `Wide`.
         /// </summary>
         public readonly string? AntennaBeamPattern;
         /// <summary>
-        /// Radio chain mode for the 5 GHz radio
+        /// Radio chain mode for the 5 GHz radio. enum: `1x1`, `2x2`, `3x3`, `4x4`, `Default`.
         /// </summary>
         public readonly string? AntennaMode;
         /// <summary>
-        /// Channel width configured for the 5 GHz radio
+        /// Channel width configured for the 5 GHz radio. enum: `0`, `20`, `40`, `80`.
         /// </summary>
         public readonly int? Bandwidth;
         /// <summary>
@@ -58,7 +58,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly int? PowerMin;
         /// <summary>
-        /// 802.11 preamble mode used by the 5 GHz radio
+        /// 802.11 preamble mode used by the 5 GHz radio. enum: `Auto`, `Long`, `Short`.
         /// </summary>
         public readonly string? Preamble;
 

@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class SettingSyntheticTestCustomProbesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Probe aggressiveness level for this custom synthetic probe
+        /// Probe aggressiveness level for this custom synthetic probe. enum: `Auto`, `High`, `Med`, `Low`.
         /// </summary>
         [Input("aggressiveness")]
         public Input<string>? Aggressiveness { get; set; }
@@ -31,7 +31,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<int>? Threshold { get; set; }
 
         /// <summary>
-        /// Probe type used by this custom synthetic probe
+        /// Probe type used by this custom synthetic probe. enum: `Application`, `Curl`, `Icmp`, `Reachability`, `Tcp`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

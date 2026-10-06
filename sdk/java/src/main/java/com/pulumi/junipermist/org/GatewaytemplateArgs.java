@@ -13,6 +13,7 @@ import com.pulumi.junipermist.org.inputs.GatewaytemplateExtraRoutesArgs;
 import com.pulumi.junipermist.org.inputs.GatewaytemplateGatewayMgmtArgs;
 import com.pulumi.junipermist.org.inputs.GatewaytemplateIdpProfilesArgs;
 import com.pulumi.junipermist.org.inputs.GatewaytemplateIpConfigsArgs;
+import com.pulumi.junipermist.org.inputs.GatewaytemplateMnhaConfigArgs;
 import com.pulumi.junipermist.org.inputs.GatewaytemplateNetworkArgs;
 import com.pulumi.junipermist.org.inputs.GatewaytemplateOobIpConfigArgs;
 import com.pulumi.junipermist.org.inputs.GatewaytemplatePathPreferencesArgs;
@@ -199,6 +200,21 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<Map<String,GatewaytemplateIpConfigsArgs>>> ipConfigs() {
         return Optional.ofNullable(this.ipConfigs);
+    }
+
+    /**
+     * Multi-Node HA (MNHA) settings applied by this gateway template, SRX only
+     * 
+     */
+    @Import(name="mnhaConfig")
+    private @Nullable Output<GatewaytemplateMnhaConfigArgs> mnhaConfig;
+
+    /**
+     * @return Multi-Node HA (MNHA) settings applied by this gateway template, SRX only
+     * 
+     */
+    public Optional<Output<GatewaytemplateMnhaConfigArgs>> mnhaConfig() {
+        return Optional.ofNullable(this.mnhaConfig);
     }
 
     /**
@@ -412,14 +428,14 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Gateway template deployment type
+     * Gateway template deployment type. enum: `spoke`, `standalone`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Gateway template deployment type
+     * @return Gateway template deployment type. enum: `spoke`, `standalone`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -485,6 +501,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         this.gatewayMgmt = $.gatewayMgmt;
         this.idpProfiles = $.idpProfiles;
         this.ipConfigs = $.ipConfigs;
+        this.mnhaConfig = $.mnhaConfig;
         this.name = $.name;
         this.networks = $.networks;
         this.ntpOverride = $.ntpOverride;
@@ -782,6 +799,27 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder ipConfigs(Map<String,GatewaytemplateIpConfigsArgs> ipConfigs) {
             return ipConfigs(Output.of(ipConfigs));
+        }
+
+        /**
+         * @param mnhaConfig Multi-Node HA (MNHA) settings applied by this gateway template, SRX only
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mnhaConfig(@Nullable Output<GatewaytemplateMnhaConfigArgs> mnhaConfig) {
+            $.mnhaConfig = mnhaConfig;
+            return this;
+        }
+
+        /**
+         * @param mnhaConfig Multi-Node HA (MNHA) settings applied by this gateway template, SRX only
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mnhaConfig(GatewaytemplateMnhaConfigArgs mnhaConfig) {
+            return mnhaConfig(Output.of(mnhaConfig));
         }
 
         /**
@@ -1119,7 +1157,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type Gateway template deployment type
+         * @param type Gateway template deployment type. enum: `spoke`, `standalone`.
          * 
          * @return builder
          * 
@@ -1130,7 +1168,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type Gateway template deployment type
+         * @param type Gateway template deployment type. enum: `spoke`, `standalone`.
          * 
          * @return builder
          * 

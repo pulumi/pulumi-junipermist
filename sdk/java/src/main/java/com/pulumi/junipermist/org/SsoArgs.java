@@ -154,14 +154,14 @@ public final class SsoArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Provider domain for Okta OAuth SSO when `oauthType`==`okta`
+     * Provider domain for Okta OAuth SSO when `oauthType`==`okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
      * 
      */
     @Import(name="oauthProviderDomain")
     private @Nullable Output<String> oauthProviderDomain;
 
     /**
-     * @return Provider domain for Okta OAuth SSO when `oauthType`==`okta`
+     * @return Provider domain for Okta OAuth SSO when `oauthType`==`okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
      * 
      */
     public Optional<Output<String>> oauthProviderDomain() {
@@ -487,7 +487,7 @@ public final class SsoArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauthProviderDomain Provider domain for Okta OAuth SSO when `oauthType`==`okta`
+         * @param oauthProviderDomain Provider domain for Okta OAuth SSO when `oauthType`==`okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
          * 
          * @return builder
          * 
@@ -498,7 +498,7 @@ public final class SsoArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauthProviderDomain Provider domain for Okta OAuth SSO when `oauthType`==`okta`
+         * @param oauthProviderDomain Provider domain for Okta OAuth SSO when `oauthType`==`okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
          * 
          * @return builder
          * 

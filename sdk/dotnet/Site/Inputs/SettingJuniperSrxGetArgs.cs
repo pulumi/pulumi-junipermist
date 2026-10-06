@@ -31,6 +31,12 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
+        /// Source of the Mist NAC user role sent to Juniper SRX gateways. enum: `IdpRole`, `RadiusGroup`, `None`
+        /// </summary>
+        [Input("mistNacUserRoleSource")]
+        public Input<string>? MistNacUserRoleSource { get; set; }
+
+        /// <summary>
         /// Whether Mist NAC user information is sent to Juniper SRX gateways
         /// </summary>
         [Input("sendMistNacUserInfo")]

@@ -93,14 +93,14 @@ public final class DeviceprofileApUsbConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * USB integration type for this legacy AP USB configuration
+     * USB integration type for this legacy AP USB configuration. enum: `hanshow`, `imagotag`, `solum`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return USB integration type for this legacy AP USB configuration
+     * @return USB integration type for this legacy AP USB configuration. enum: `hanshow`, `imagotag`, `solum`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -274,7 +274,7 @@ public final class DeviceprofileApUsbConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param type USB integration type for this legacy AP USB configuration
+         * @param type USB integration type for this legacy AP USB configuration. enum: `hanshow`, `imagotag`, `solum`.
          * 
          * @return builder
          * 
@@ -285,7 +285,7 @@ public final class DeviceprofileApUsbConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param type USB integration type for this legacy AP USB configuration
+         * @param type USB integration type for this legacy AP USB configuration. enum: `hanshow`, `imagotag`, `solum`.
          * 
          * @return builder
          * 

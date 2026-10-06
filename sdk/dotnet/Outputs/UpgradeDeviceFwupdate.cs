@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Outputs
         /// </summary>
         public readonly int? Progress;
         /// <summary>
-        /// Current firmware update status
+        /// Current firmware update status. enum: `Inprogress`, `Failed`, `Upgraded`, `Success`, `Scheduled`, `Error`.
         /// </summary>
         public readonly string? Status;
         /// <summary>

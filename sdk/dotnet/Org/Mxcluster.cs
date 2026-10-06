@@ -117,7 +117,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<ImmutableArray<int>> TuntermHostsOrders { get; private set; } = null!;
 
         /// <summary>
-        /// Selection strategy for ordering tunnel termination hosts
+        /// Selection strategy for ordering tunnel termination hosts. enum: `Ordered`, `Shuffle`, `shuffle-by-site`.
         /// </summary>
         [Output("tuntermHostsSelection")]
         public Output<string> TuntermHostsSelection { get; private set; } = null!;
@@ -129,7 +129,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<bool?> TuntermMonitoringDisabled { get; private set; } = null!;
 
         /// <summary>
-        /// Monitoring checks for tunnel termination reachability
+        /// Monitoring checks for tunnel termination reachability. Only for Org Mist Edges; use `TuntermMonitoring` in the `SiteSetting` for site-scoped Mist Edges
         /// </summary>
         [Output("tuntermMonitorings")]
         public Output<ImmutableArray<ImmutableArray<Outputs.MxclusterTuntermMonitoring>>> TuntermMonitorings { get; private set; } = null!;
@@ -296,7 +296,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Selection strategy for ordering tunnel termination hosts
+        /// Selection strategy for ordering tunnel termination hosts. enum: `Ordered`, `Shuffle`, `shuffle-by-site`.
         /// </summary>
         [Input("tuntermHostsSelection")]
         public Input<string>? TuntermHostsSelection { get; set; }
@@ -311,7 +311,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<ImmutableArray<Inputs.MxclusterTuntermMonitoringArgs>>? _tuntermMonitorings;
 
         /// <summary>
-        /// Monitoring checks for tunnel termination reachability
+        /// Monitoring checks for tunnel termination reachability. Only for Org Mist Edges; use `TuntermMonitoring` in the `SiteSetting` for site-scoped Mist Edges
         /// </summary>
         public InputList<ImmutableArray<Inputs.MxclusterTuntermMonitoringArgs>> TuntermMonitorings
         {
@@ -448,7 +448,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Selection strategy for ordering tunnel termination hosts
+        /// Selection strategy for ordering tunnel termination hosts. enum: `Ordered`, `Shuffle`, `shuffle-by-site`.
         /// </summary>
         [Input("tuntermHostsSelection")]
         public Input<string>? TuntermHostsSelection { get; set; }
@@ -463,7 +463,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<ImmutableArray<Inputs.MxclusterTuntermMonitoringGetArgs>>? _tuntermMonitorings;
 
         /// <summary>
-        /// Monitoring checks for tunnel termination reachability
+        /// Monitoring checks for tunnel termination reachability. Only for Org Mist Edges; use `TuntermMonitoring` in the `SiteSetting` for site-scoped Mist Edges
         /// </summary>
         public InputList<ImmutableArray<Inputs.MxclusterTuntermMonitoringGetArgs>> TuntermMonitorings
         {

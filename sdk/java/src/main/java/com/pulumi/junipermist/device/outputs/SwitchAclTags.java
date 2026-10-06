@@ -68,7 +68,7 @@ public final class SwitchAclTags {
      */
     private @Nullable List<String> subnets;
     /**
-     * @return Classifier type that determines which ACL tag fields are evaluated
+     * @return Classifier type that determines which ACL tag fields are evaluated. enum: `any`, `arubaUserRole`, `dynamicGbp`, `gbpResource`, `mac`, `network`, `portUsage`, `radiusGroup`, `resource`, `staticGbp`, `subnet`.
      * 
      */
     private String type;
@@ -143,7 +143,7 @@ public final class SwitchAclTags {
         return this.subnets == null ? List.of() : this.subnets;
     }
     /**
-     * @return Classifier type that determines which ACL tag fields are evaluated
+     * @return Classifier type that determines which ACL tag fields are evaluated. enum: `any`, `arubaUserRole`, `dynamicGbp`, `gbpResource`, `mac`, `network`, `portUsage`, `radiusGroup`, `resource`, `staticGbp`, `subnet`.
      * 
      */
     public String type() {

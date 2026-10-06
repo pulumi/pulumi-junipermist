@@ -19,7 +19,7 @@ public final class SettingAutoUpgrade {
      */
     private @Nullable Map<String,String> customVersions;
     /**
-     * @return Day of the week for the AP auto-upgrade maintenance window
+     * @return Day of the week for the AP auto-upgrade maintenance window. enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`.
      * 
      */
     private @Nullable String dayOfWeek;
@@ -34,7 +34,7 @@ public final class SettingAutoUpgrade {
      */
     private @Nullable String timeOfDay;
     /**
-     * @return Firmware release channel or specific version used for AP auto-upgrade
+     * @return Firmware release channel or specific version used for AP auto-upgrade. enum: `beta`, `custom`, `stable`.
      * 
      */
     private @Nullable String version;
@@ -48,7 +48,7 @@ public final class SettingAutoUpgrade {
         return this.customVersions == null ? Map.of() : this.customVersions;
     }
     /**
-     * @return Day of the week for the AP auto-upgrade maintenance window
+     * @return Day of the week for the AP auto-upgrade maintenance window. enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`.
      * 
      */
     public Optional<String> dayOfWeek() {
@@ -69,7 +69,7 @@ public final class SettingAutoUpgrade {
         return Optional.ofNullable(this.timeOfDay);
     }
     /**
-     * @return Firmware release channel or specific version used for AP auto-upgrade
+     * @return Firmware release channel or specific version used for AP auto-upgrade. enum: `beta`, `custom`, `stable`.
      * 
      */
     public Optional<String> version() {

@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<int>? IkeLifetime { get; set; }
 
         /// <summary>
-        /// Only if `Provider`==`custom-ipsec`. IKE negotiation mode for the tunnel
+        /// Only if `Provider`==`custom-ipsec`. IKE negotiation mode for the tunnel. enum: `Aggressive`, `Main`.
         /// </summary>
         [Input("ikeMode")]
         public Input<string>? IkeMode { get; set; }
@@ -79,7 +79,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// Tunnel failover mode used for primary and secondary endpoints
+        /// Tunnel failover mode used for primary and secondary endpoints. enum: `active-active`, `active-standby`.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -109,13 +109,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<Inputs.GatewaytemplateTunnelConfigsProbeArgs>? Probe { get; set; }
 
         /// <summary>
-        /// Only if `Provider`==`custom-ipsec`. Tunnel protocol for custom tunnel negotiation
+        /// Only if `Provider`==`custom-ipsec`. Tunnel protocol for custom tunnel negotiation. enum: `Gre`, `Ipsec`.
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// Tunnel provider used when auto provisioning is disabled
+        /// Tunnel provider used when auto provisioning is disabled. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`.
         /// </summary>
         [Input("provider")]
         public Input<string>? Provider { get; set; }
@@ -155,7 +155,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<Inputs.GatewaytemplateTunnelConfigsSecondaryArgs>? Secondary { get; set; }
 
         /// <summary>
-        /// Only if `Provider`==`custom-gre` or `Provider`==`custom-ipsec`. Tunnel version value for custom tunnel configuration
+        /// Only if `Provider`==`custom-gre` or `Provider`==`custom-ipsec`. Tunnel version value for custom tunnel configuration. enum: `1`, `2`.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

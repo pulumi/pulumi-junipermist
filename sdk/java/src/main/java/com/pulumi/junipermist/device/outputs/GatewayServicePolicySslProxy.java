@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewayServicePolicySslProxy {
     /**
-     * @return Allowed cipher strength category for SSL proxy inspection
+     * @return Allowed cipher strength category for SSL proxy inspection. enum: `medium`, `strong`, `weak`.
      * 
      */
     private @Nullable String ciphersCategory;
@@ -25,7 +25,7 @@ public final class GatewayServicePolicySslProxy {
 
     private GatewayServicePolicySslProxy() {}
     /**
-     * @return Allowed cipher strength category for SSL proxy inspection
+     * @return Allowed cipher strength category for SSL proxy inspection. enum: `medium`, `strong`, `weak`.
      * 
      */
     public Optional<String> ciphersCategory() {

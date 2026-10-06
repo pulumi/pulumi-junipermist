@@ -47,14 +47,14 @@ public final class SettingTuntermMonitoringArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Monitoring method used for this tunnel termination check
+     * Monitoring method used for this tunnel termination check. enum: `arp`, `ping`, `tcp`.
      * 
      */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
     /**
-     * @return Monitoring method used for this tunnel termination check
+     * @return Monitoring method used for this tunnel termination check. enum: `arp`, `ping`, `tcp`.
      * 
      */
     public Optional<Output<String>> protocol() {
@@ -162,7 +162,7 @@ public final class SettingTuntermMonitoringArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param protocol Monitoring method used for this tunnel termination check
+         * @param protocol Monitoring method used for this tunnel termination check. enum: `arp`, `ping`, `tcp`.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class SettingTuntermMonitoringArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param protocol Monitoring method used for this tunnel termination check
+         * @param protocol Monitoring method used for this tunnel termination check. enum: `arp`, `ping`, `tcp`.
          * 
          * @return builder
          * 

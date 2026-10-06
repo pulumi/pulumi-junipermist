@@ -49,14 +49,14 @@ public final class NetworktemplateRemoteSyslogServerArgs extends com.pulumi.reso
     }
 
     /**
-     * Default syslog facility for messages sent to this server
+     * Default syslog facility for messages sent to this server. enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`.
      * 
      */
     @Import(name="facility")
     private @Nullable Output<String> facility;
 
     /**
-     * @return Default syslog facility for messages sent to this server
+     * @return Default syslog facility for messages sent to this server. enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`.
      * 
      */
     public Optional<Output<String>> facility() {
@@ -109,14 +109,14 @@ public final class NetworktemplateRemoteSyslogServerArgs extends com.pulumi.reso
     }
 
     /**
-     * Transport protocol used for this remote syslog server
+     * Transport protocol used for this remote syslog server. enum: `tcp`, `udp`.
      * 
      */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
     /**
-     * @return Transport protocol used for this remote syslog server
+     * @return Transport protocol used for this remote syslog server. enum: `tcp`, `udp`.
      * 
      */
     public Optional<Output<String>> protocol() {
@@ -154,14 +154,14 @@ public final class NetworktemplateRemoteSyslogServerArgs extends com.pulumi.reso
     }
 
     /**
-     * Default syslog severity for messages sent to this server
+     * Default syslog severity for messages sent to this server. enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`.
      * 
      */
     @Import(name="severity")
     private @Nullable Output<String> severity;
 
     /**
-     * @return Default syslog severity for messages sent to this server
+     * @return Default syslog severity for messages sent to this server. enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`.
      * 
      */
     public Optional<Output<String>> severity() {
@@ -302,7 +302,7 @@ public final class NetworktemplateRemoteSyslogServerArgs extends com.pulumi.reso
         }
 
         /**
-         * @param facility Default syslog facility for messages sent to this server
+         * @param facility Default syslog facility for messages sent to this server. enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`.
          * 
          * @return builder
          * 
@@ -313,7 +313,7 @@ public final class NetworktemplateRemoteSyslogServerArgs extends com.pulumi.reso
         }
 
         /**
-         * @param facility Default syslog facility for messages sent to this server
+         * @param facility Default syslog facility for messages sent to this server. enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`.
          * 
          * @return builder
          * 
@@ -386,7 +386,7 @@ public final class NetworktemplateRemoteSyslogServerArgs extends com.pulumi.reso
         }
 
         /**
-         * @param protocol Transport protocol used for this remote syslog server
+         * @param protocol Transport protocol used for this remote syslog server. enum: `tcp`, `udp`.
          * 
          * @return builder
          * 
@@ -397,7 +397,7 @@ public final class NetworktemplateRemoteSyslogServerArgs extends com.pulumi.reso
         }
 
         /**
-         * @param protocol Transport protocol used for this remote syslog server
+         * @param protocol Transport protocol used for this remote syslog server. enum: `tcp`, `udp`.
          * 
          * @return builder
          * 
@@ -449,7 +449,7 @@ public final class NetworktemplateRemoteSyslogServerArgs extends com.pulumi.reso
         }
 
         /**
-         * @param severity Default syslog severity for messages sent to this server
+         * @param severity Default syslog severity for messages sent to this server. enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`.
          * 
          * @return builder
          * 
@@ -460,7 +460,7 @@ public final class NetworktemplateRemoteSyslogServerArgs extends com.pulumi.reso
         }
 
         /**
-         * @param severity Default syslog severity for messages sent to this server
+         * @param severity Default syslog severity for messages sent to this server. enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`.
          * 
          * @return builder
          * 

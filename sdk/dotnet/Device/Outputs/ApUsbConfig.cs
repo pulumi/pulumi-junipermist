@@ -34,7 +34,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly int? Port;
         /// <summary>
-        /// USB integration type for this legacy AP USB configuration
+        /// USB integration type for this legacy AP USB configuration. enum: `Hanshow`, `Imagotag`, `Solum`.
         /// </summary>
         public readonly string? Type;
         /// <summary>

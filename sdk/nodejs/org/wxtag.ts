@@ -79,7 +79,7 @@ export class Wxtag extends pulumi.CustomResource {
      */
     declare public readonly mac: pulumi.Output<string | undefined>;
     /**
-     * Required if `type`==`match`; attribute compared against `values`
+     * Required if `type`==`match`; attribute compared against `values`. enum: `apId`, `app`, `assetMac`, `clientMac`, `hostname`, `ipRangeSubnet`, `port`, `pskName`, `pskRole`, `radiusAttr`, `radiusClass`, `radiusGroup`, `radiusUsername`, `sdkclientUuid`, `wlanId`.
      */
     declare public readonly match: pulumi.Output<string | undefined>;
     /**
@@ -87,7 +87,7 @@ export class Wxtag extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * Required if `type`==`match`; whether `values` are inclusive or exclusive matches
+     * Required if `type`==`match`; whether `values` are inclusive or exclusive matches. enum: `in`, `notIn`.
      */
     declare public readonly op: pulumi.Output<string | undefined>;
     /**
@@ -99,7 +99,7 @@ export class Wxtag extends pulumi.CustomResource {
      */
     declare public readonly specs: pulumi.Output<outputs.org.WxtagSpec[] | undefined>;
     /**
-     * Kind of WxLAN tag and how it is populated
+     * Kind of WxLAN tag and how it is populated. enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`.
      */
     declare public readonly type: pulumi.Output<string>;
     /**
@@ -165,7 +165,7 @@ export interface WxtagState {
      */
     mac?: pulumi.Input<string | undefined>;
     /**
-     * Required if `type`==`match`; attribute compared against `values`
+     * Required if `type`==`match`; attribute compared against `values`. enum: `apId`, `app`, `assetMac`, `clientMac`, `hostname`, `ipRangeSubnet`, `port`, `pskName`, `pskRole`, `radiusAttr`, `radiusClass`, `radiusGroup`, `radiusUsername`, `sdkclientUuid`, `wlanId`.
      */
     match?: pulumi.Input<string | undefined>;
     /**
@@ -173,7 +173,7 @@ export interface WxtagState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * Required if `type`==`match`; whether `values` are inclusive or exclusive matches
+     * Required if `type`==`match`; whether `values` are inclusive or exclusive matches. enum: `in`, `notIn`.
      */
     op?: pulumi.Input<string | undefined>;
     /**
@@ -185,7 +185,7 @@ export interface WxtagState {
      */
     specs?: pulumi.Input<pulumi.Input<inputs.org.WxtagSpec>[] | undefined>;
     /**
-     * Kind of WxLAN tag and how it is populated
+     * Kind of WxLAN tag and how it is populated. enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`.
      */
     type?: pulumi.Input<string | undefined>;
     /**
@@ -207,7 +207,7 @@ export interface WxtagArgs {
      */
     mac?: pulumi.Input<string | undefined>;
     /**
-     * Required if `type`==`match`; attribute compared against `values`
+     * Required if `type`==`match`; attribute compared against `values`. enum: `apId`, `app`, `assetMac`, `clientMac`, `hostname`, `ipRangeSubnet`, `port`, `pskName`, `pskRole`, `radiusAttr`, `radiusClass`, `radiusGroup`, `radiusUsername`, `sdkclientUuid`, `wlanId`.
      */
     match?: pulumi.Input<string | undefined>;
     /**
@@ -215,7 +215,7 @@ export interface WxtagArgs {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * Required if `type`==`match`; whether `values` are inclusive or exclusive matches
+     * Required if `type`==`match`; whether `values` are inclusive or exclusive matches. enum: `in`, `notIn`.
      */
     op?: pulumi.Input<string | undefined>;
     /**
@@ -227,7 +227,7 @@ export interface WxtagArgs {
      */
     specs?: pulumi.Input<pulumi.Input<inputs.org.WxtagSpec>[] | undefined>;
     /**
-     * Kind of WxLAN tag and how it is populated
+     * Kind of WxLAN tag and how it is populated. enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`.
      */
     type: pulumi.Input<string>;
     /**

@@ -30,7 +30,7 @@ public final class WlanDynamicVlan {
      */
     private @Nullable List<String> localVlanIds;
     /**
-     * @return Dynamic VLAN mapping method used for RADIUS-provided VLAN attributes
+     * @return Dynamic VLAN mapping method used for RADIUS-provided VLAN attributes. enum: `airespace-interface-name`, `standard`.
      * 
      */
     private @Nullable String type;
@@ -65,7 +65,7 @@ public final class WlanDynamicVlan {
         return this.localVlanIds == null ? List.of() : this.localVlanIds;
     }
     /**
-     * @return Dynamic VLAN mapping method used for RADIUS-provided VLAN attributes
+     * @return Dynamic VLAN mapping method used for RADIUS-provided VLAN attributes. enum: `airespace-interface-name`, `standard`.
      * 
      */
     public Optional<String> type() {

@@ -586,14 +586,14 @@ public final class ApState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Device type discriminator for access point records
+     * Device type discriminator for access point records. enum: `ap`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Device type discriminator for access point records
+     * @return Device type discriminator for access point records. enum: `ap`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -1549,7 +1549,7 @@ public final class ApState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Device type discriminator for access point records
+         * @param type Device type discriminator for access point records. enum: `ap`.
          * 
          * @return builder
          * 
@@ -1560,7 +1560,7 @@ public final class ApState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Device type discriminator for access point records
+         * @param type Device type discriminator for access point records. enum: `ap`.
          * 
          * @return builder
          * 

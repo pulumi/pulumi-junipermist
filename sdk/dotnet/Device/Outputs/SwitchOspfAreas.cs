@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.SwitchOspfAreasNetworks> Networks;
         /// <summary>
-        /// Area type for this OSPF area
+        /// Area type for this OSPF area. enum: `Default`, `Nssa`, `Stub`.
         /// </summary>
         public readonly string? Type;
 

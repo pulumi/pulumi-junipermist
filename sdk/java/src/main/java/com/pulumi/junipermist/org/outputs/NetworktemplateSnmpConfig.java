@@ -44,7 +44,7 @@ public final class NetworktemplateSnmpConfig {
      */
     private @Nullable String engineId;
     /**
-     * @return Method used to derive the SNMP engine ID
+     * @return Method used to derive the SNMP engine ID. enum: `local`, `useMacAddress`.
      * 
      */
     private @Nullable String engineIdType;
@@ -121,7 +121,7 @@ public final class NetworktemplateSnmpConfig {
         return Optional.ofNullable(this.engineId);
     }
     /**
-     * @return Method used to derive the SNMP engine ID
+     * @return Method used to derive the SNMP engine ID. enum: `local`, `useMacAddress`.
      * 
      */
     public Optional<String> engineIdType() {

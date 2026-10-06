@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingSyntheticTestCustomProbes {
     /**
-     * @return Probe aggressiveness level for this custom synthetic probe
+     * @return Probe aggressiveness level for this custom synthetic probe. enum: `auto`, `high`, `med`, `low`.
      * 
      */
     private @Nullable String aggressiveness;
@@ -28,14 +28,14 @@ public final class SettingSyntheticTestCustomProbes {
      */
     private @Nullable Integer threshold;
     /**
-     * @return Probe type used by this custom synthetic probe
+     * @return Probe type used by this custom synthetic probe. enum: `application`, `curl`, `icmp`, `reachability`, `tcp`.
      * 
      */
     private @Nullable String type;
 
     private SettingSyntheticTestCustomProbes() {}
     /**
-     * @return Probe aggressiveness level for this custom synthetic probe
+     * @return Probe aggressiveness level for this custom synthetic probe. enum: `auto`, `high`, `med`, `low`.
      * 
      */
     public Optional<String> aggressiveness() {
@@ -56,7 +56,7 @@ public final class SettingSyntheticTestCustomProbes {
         return Optional.ofNullable(this.threshold);
     }
     /**
-     * @return Probe type used by this custom synthetic probe
+     * @return Probe type used by this custom synthetic probe. enum: `application`, `curl`, `icmp`, `reachability`, `tcp`.
      * 
      */
     public Optional<String> type() {

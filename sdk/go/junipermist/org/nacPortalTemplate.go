@@ -80,7 +80,7 @@ import (
 type NacPortalTemplate struct {
 	pulumi.CustomResourceState
 
-	// Text and content alignment for the NAC portal page
+	// Text and content alignment for the NAC portal page. enum: `center`, `left`, `right`.
 	Alignment pulumi.StringOutput `pulumi:"alignment"`
 	// Primary color used by the NAC portal template
 	Color pulumi.StringOutput `pulumi:"color"`
@@ -129,7 +129,7 @@ func GetNacPortalTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NacPortalTemplate resources.
 type nacPortalTemplateState struct {
-	// Text and content alignment for the NAC portal page
+	// Text and content alignment for the NAC portal page. enum: `center`, `left`, `right`.
 	Alignment *string `pulumi:"alignment"`
 	// Primary color used by the NAC portal template
 	Color *string `pulumi:"color"`
@@ -143,7 +143,7 @@ type nacPortalTemplateState struct {
 }
 
 type NacPortalTemplateState struct {
-	// Text and content alignment for the NAC portal page
+	// Text and content alignment for the NAC portal page. enum: `center`, `left`, `right`.
 	Alignment pulumi.StringPtrInput
 	// Primary color used by the NAC portal template
 	Color pulumi.StringPtrInput
@@ -161,7 +161,7 @@ func (NacPortalTemplateState) ElementType() reflect.Type {
 }
 
 type nacPortalTemplateArgs struct {
-	// Text and content alignment for the NAC portal page
+	// Text and content alignment for the NAC portal page. enum: `center`, `left`, `right`.
 	Alignment *string `pulumi:"alignment"`
 	// Primary color used by the NAC portal template
 	Color *string `pulumi:"color"`
@@ -176,7 +176,7 @@ type nacPortalTemplateArgs struct {
 
 // The set of arguments for constructing a NacPortalTemplate resource.
 type NacPortalTemplateArgs struct {
-	// Text and content alignment for the NAC portal page
+	// Text and content alignment for the NAC portal page. enum: `center`, `left`, `right`.
 	Alignment pulumi.StringPtrInput
 	// Primary color used by the NAC portal template
 	Color pulumi.StringPtrInput
@@ -276,7 +276,7 @@ func (o NacPortalTemplateOutput) ToNacPortalTemplateOutputWithContext(ctx contex
 	return o
 }
 
-// Text and content alignment for the NAC portal page
+// Text and content alignment for the NAC portal page. enum: `center`, `left`, `right`.
 func (o NacPortalTemplateOutput) Alignment() pulumi.StringOutput {
 	return o.ApplyT(func(v *NacPortalTemplate) pulumi.StringOutput { return v.Alignment }).(pulumi.StringOutput)
 }

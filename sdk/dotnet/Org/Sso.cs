@@ -116,7 +116,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> NameidFormat { get; private set; } = null!;
 
         /// <summary>
-        /// Provider domain for Okta OAuth SSO when `OauthType`==`Okta`
+        /// Provider domain for Okta OAuth SSO when `OauthType`==`Okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
         /// </summary>
         [Output("oauthProviderDomain")]
         public Output<string> OauthProviderDomain { get; private set; } = null!;
@@ -264,7 +264,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? NameidFormat { get; set; }
 
         /// <summary>
-        /// Provider domain for Okta OAuth SSO when `OauthType`==`Okta`
+        /// Provider domain for Okta OAuth SSO when `OauthType`==`Okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
         /// </summary>
         [Input("oauthProviderDomain")]
         public Input<string>? OauthProviderDomain { get; set; }
@@ -402,7 +402,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? NameidFormat { get; set; }
 
         /// <summary>
-        /// Provider domain for Okta OAuth SSO when `OauthType`==`Okta`
+        /// Provider domain for Okta OAuth SSO when `OauthType`==`Okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
         /// </summary>
         [Input("oauthProviderDomain")]
         public Input<string>? OauthProviderDomain { get; set; }

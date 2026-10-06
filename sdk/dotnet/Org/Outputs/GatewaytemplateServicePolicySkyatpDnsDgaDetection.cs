@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Sky ATP DNS DGA detection profile to apply
+        /// Sky ATP DNS DGA detection profile to apply. enum: `Default`, `Standard`, `Strict`.
         /// </summary>
         public readonly string? Profile;
 

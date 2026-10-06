@@ -18,14 +18,14 @@ public final class DeviceprofileApZigbeeConfigArgs extends com.pulumi.resources.
     public static final DeviceprofileApZigbeeConfigArgs Empty = new DeviceprofileApZigbeeConfigArgs();
 
     /**
-     * Join policy for new Zigbee devices on this AP
+     * Join policy for new Zigbee devices on this AP. enum: `always`, `manual`.
      * 
      */
     @Import(name="allowJoin")
     private @Nullable Output<String> allowJoin;
 
     /**
-     * @return Join policy for new Zigbee devices on this AP
+     * @return Join policy for new Zigbee devices on this AP. enum: `always`, `manual`.
      * 
      */
     public Optional<Output<String>> allowJoin() {
@@ -121,7 +121,7 @@ public final class DeviceprofileApZigbeeConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param allowJoin Join policy for new Zigbee devices on this AP
+         * @param allowJoin Join policy for new Zigbee devices on this AP. enum: `always`, `manual`.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class DeviceprofileApZigbeeConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param allowJoin Join policy for new Zigbee devices on this AP
+         * @param allowJoin Join policy for new Zigbee devices on this AP. enum: `always`, `manual`.
          * 
          * @return builder
          * 

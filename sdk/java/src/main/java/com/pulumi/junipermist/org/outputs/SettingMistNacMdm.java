@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingMistNacMdm {
     /**
-     * @return Change of Authorization action sent for MDM posture changes
+     * @return Change of Authorization action sent for MDM posture changes. enum: `reauth`, `disconnect`.
      * 
      */
     private @Nullable String coaType;
 
     private SettingMistNacMdm() {}
     /**
-     * @return Change of Authorization action sent for MDM posture changes
+     * @return Change of Authorization action sent for MDM posture changes. enum: `reauth`, `disconnect`.
      * 
      */
     public Optional<String> coaType() {

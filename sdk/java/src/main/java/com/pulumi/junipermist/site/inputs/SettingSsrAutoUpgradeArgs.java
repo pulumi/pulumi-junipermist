@@ -18,14 +18,14 @@ public final class SettingSsrAutoUpgradeArgs extends com.pulumi.resources.Resour
     public static final SettingSsrAutoUpgradeArgs Empty = new SettingSsrAutoUpgradeArgs();
 
     /**
-     * Firmware release channel used for SSR auto-upgrade
+     * Firmware release channel used for SSR auto-upgrade. enum: `alpha`, `beta`, `stable`.
      * 
      */
     @Import(name="channel")
     private @Nullable Output<String> channel;
 
     /**
-     * @return Firmware release channel used for SSR auto-upgrade
+     * @return Firmware release channel used for SSR auto-upgrade. enum: `alpha`, `beta`, `stable`.
      * 
      */
     public Optional<Output<String>> channel() {
@@ -105,7 +105,7 @@ public final class SettingSsrAutoUpgradeArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param channel Firmware release channel used for SSR auto-upgrade
+         * @param channel Firmware release channel used for SSR auto-upgrade. enum: `alpha`, `beta`, `stable`.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class SettingSsrAutoUpgradeArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param channel Firmware release channel used for SSR auto-upgrade
+         * @param channel Firmware release channel used for SSR auto-upgrade. enum: `alpha`, `beta`, `stable`.
          * 
          * @return builder
          * 

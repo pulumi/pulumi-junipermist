@@ -16,14 +16,14 @@ public final class GatewayDhcpdConfigConfigVendorEncapsulatedArgs extends com.pu
     public static final GatewayDhcpdConfigConfigVendorEncapsulatedArgs Empty = new GatewayDhcpdConfigConfigVendorEncapsulatedArgs();
 
     /**
-     * Data type used to encode this vendor option value
+     * Data type used to encode this vendor option value. enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Data type used to encode this vendor option value
+     * @return Data type used to encode this vendor option value. enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -71,7 +71,7 @@ public final class GatewayDhcpdConfigConfigVendorEncapsulatedArgs extends com.pu
         }
 
         /**
-         * @param type Data type used to encode this vendor option value
+         * @param type Data type used to encode this vendor option value. enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class GatewayDhcpdConfigConfigVendorEncapsulatedArgs extends com.pu
         }
 
         /**
-         * @param type Data type used to encode this vendor option value
+         * @param type Data type used to encode this vendor option value. enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`.
          * 
          * @return builder
          * 

@@ -31,7 +31,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// Discovery scope for this Bonjour service on the WLAN
+        /// Discovery scope for this Bonjour service on the WLAN. enum: `SameAp`, `SameMap`, `SameSite`.
         /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }

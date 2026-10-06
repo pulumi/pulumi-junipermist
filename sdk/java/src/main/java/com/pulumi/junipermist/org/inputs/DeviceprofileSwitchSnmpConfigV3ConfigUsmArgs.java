@@ -19,14 +19,14 @@ public final class DeviceprofileSwitchSnmpConfigV3ConfigUsmArgs extends com.pulu
     public static final DeviceprofileSwitchSnmpConfigV3ConfigUsmArgs Empty = new DeviceprofileSwitchSnmpConfigV3ConfigUsmArgs();
 
     /**
-     * SNMP engine type used for this USM configuration
+     * SNMP engine type used for this USM configuration. enum: `localEngine`, `remoteEngine`.
      * 
      */
     @Import(name="engineType", required=true)
     private Output<String> engineType;
 
     /**
-     * @return SNMP engine type used for this USM configuration
+     * @return SNMP engine type used for this USM configuration. enum: `localEngine`, `remoteEngine`.
      * 
      */
     public Output<String> engineType() {
@@ -90,7 +90,7 @@ public final class DeviceprofileSwitchSnmpConfigV3ConfigUsmArgs extends com.pulu
         }
 
         /**
-         * @param engineType SNMP engine type used for this USM configuration
+         * @param engineType SNMP engine type used for this USM configuration. enum: `localEngine`, `remoteEngine`.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class DeviceprofileSwitchSnmpConfigV3ConfigUsmArgs extends com.pulu
         }
 
         /**
-         * @param engineType SNMP engine type used for this USM configuration
+         * @param engineType SNMP engine type used for this USM configuration. enum: `localEngine`, `remoteEngine`.
          * 
          * @return builder
          * 

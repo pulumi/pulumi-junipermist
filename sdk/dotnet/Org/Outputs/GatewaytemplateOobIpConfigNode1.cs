@@ -26,7 +26,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Netmask;
         /// <summary>
-        /// IP assignment mode for the node1 out-of-band management interface
+        /// IP assignment mode for the node1 out-of-band management interface. enum: `Dhcp`, `Static`.
         /// </summary>
         public readonly string? Type;
         /// <summary>

@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class SwitchSnmpConfigV3ConfigTargetParameterGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// SNMP message processing model used by this target parameter profile
+        /// SNMP message processing model used by this target parameter profile. enum: `V1`, `V2c`, `V3`.
         /// </summary>
         [Input("messageProcessingModel", required: true)]
         public Input<string> MessageProcessingModel { get; set; } = null!;
@@ -31,13 +31,13 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? NotifyFilter { get; set; }
 
         /// <summary>
-        /// Required security level for this target parameter profile
+        /// Required security level for this target parameter profile. enum: `Authentication`, `None`, `Privacy`.
         /// </summary>
         [Input("securityLevel")]
         public Input<string>? SecurityLevel { get; set; }
 
         /// <summary>
-        /// Required security model for this target parameter profile
+        /// Required security model for this target parameter profile. enum: `Usm`, `V1`, `V2c`.
         /// </summary>
         [Input("securityModel")]
         public Input<string>? SecurityModel { get; set; }

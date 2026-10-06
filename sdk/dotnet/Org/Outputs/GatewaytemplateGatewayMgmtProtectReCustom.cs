@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? PortRange;
         /// <summary>
-        /// Transport protocol matched by this custom Protect RE ACL
+        /// Transport protocol matched by this custom Protect RE ACL. enum: `Any`, `Icmp`, `Tcp`, `Udp`.
         /// </summary>
         public readonly string? Protocol;
         /// <summary>

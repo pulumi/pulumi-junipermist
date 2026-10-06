@@ -64,7 +64,7 @@ public final class GatewaytemplatePortConfig {
      */
     private @Nullable Boolean disabled;
     /**
-     * @return If `wanType`==`dsl`. DSL technology used by the WAN port
+     * @return If `wanType`==`dsl`. DSL technology used by the WAN port. enum: `adsl`, `vdsl`.
      * 
      */
     private @Nullable String dslType;
@@ -79,7 +79,7 @@ public final class GatewaytemplatePortConfig {
      */
     private @Nullable Integer dslVpi;
     /**
-     * @return Ethernet duplex mode configured on the port
+     * @return Ethernet duplex mode configured on the port. enum: `auto`, `full`, `half`.
      * 
      */
     private @Nullable String duplex;
@@ -94,7 +94,7 @@ public final class GatewaytemplatePortConfig {
      */
     private @Nullable String lteApn;
     /**
-     * @return If `wanType`==`lte`. Authentication method used by the LTE uplink
+     * @return If `wanType`==`lte`. Authentication method used by the LTE uplink. enum: `chap`, `none`, `pap`.
      * 
      */
     private @Nullable String lteAuth;
@@ -194,7 +194,7 @@ public final class GatewaytemplatePortConfig {
      */
     private @Nullable GatewaytemplatePortConfigTrafficShaping trafficShaping;
     /**
-     * @return Logical usage assigned to the port
+     * @return Logical usage assigned to the port. enum: `haControl`, `haData`, `lan`, `wan`.
      * 
      */
     private String usage;
@@ -209,7 +209,7 @@ public final class GatewaytemplatePortConfig {
      */
     private @Nullable Map<String,GatewaytemplatePortConfigVpnPaths> vpnPaths;
     /**
-     * @return Only when `wanType`==`broadband`. ARP policer profile applied to the WAN port
+     * @return Only when `wanType`==`broadband`. ARP policer profile applied to the WAN port. enum: `default`, `max`, `recommended`.
      * 
      */
     private @Nullable String wanArpPolicer;
@@ -249,12 +249,12 @@ public final class GatewaytemplatePortConfig {
      */
     private @Nullable GatewaytemplatePortConfigWanSourceNat wanSourceNat;
     /**
-     * @return Controls whether Marvis or the scheduler can run speed tests on this WAN port
+     * @return Controls whether Marvis or the scheduler can run speed tests on this WAN port. enum: `auto`, `enabled`, `disabled`.
      * 
      */
     private @Nullable String wanSpeedtestMode;
     /**
-     * @return Only if `usage`==`wan`. WAN uplink type configured on the port
+     * @return Only if `usage`==`wan`. WAN uplink type configured on the port. enum: `broadband`, `dsl`, `lte`.
      * 
      */
     private @Nullable String wanType;
@@ -317,7 +317,7 @@ public final class GatewaytemplatePortConfig {
         return Optional.ofNullable(this.disabled);
     }
     /**
-     * @return If `wanType`==`dsl`. DSL technology used by the WAN port
+     * @return If `wanType`==`dsl`. DSL technology used by the WAN port. enum: `adsl`, `vdsl`.
      * 
      */
     public Optional<String> dslType() {
@@ -338,7 +338,7 @@ public final class GatewaytemplatePortConfig {
         return Optional.ofNullable(this.dslVpi);
     }
     /**
-     * @return Ethernet duplex mode configured on the port
+     * @return Ethernet duplex mode configured on the port. enum: `auto`, `full`, `half`.
      * 
      */
     public Optional<String> duplex() {
@@ -359,7 +359,7 @@ public final class GatewaytemplatePortConfig {
         return Optional.ofNullable(this.lteApn);
     }
     /**
-     * @return If `wanType`==`lte`. Authentication method used by the LTE uplink
+     * @return If `wanType`==`lte`. Authentication method used by the LTE uplink. enum: `chap`, `none`, `pap`.
      * 
      */
     public Optional<String> lteAuth() {
@@ -499,7 +499,7 @@ public final class GatewaytemplatePortConfig {
         return Optional.ofNullable(this.trafficShaping);
     }
     /**
-     * @return Logical usage assigned to the port
+     * @return Logical usage assigned to the port. enum: `haControl`, `haData`, `lan`, `wan`.
      * 
      */
     public String usage() {
@@ -520,7 +520,7 @@ public final class GatewaytemplatePortConfig {
         return this.vpnPaths == null ? Map.of() : this.vpnPaths;
     }
     /**
-     * @return Only when `wanType`==`broadband`. ARP policer profile applied to the WAN port
+     * @return Only when `wanType`==`broadband`. ARP policer profile applied to the WAN port. enum: `default`, `max`, `recommended`.
      * 
      */
     public Optional<String> wanArpPolicer() {
@@ -576,14 +576,14 @@ public final class GatewaytemplatePortConfig {
         return Optional.ofNullable(this.wanSourceNat);
     }
     /**
-     * @return Controls whether Marvis or the scheduler can run speed tests on this WAN port
+     * @return Controls whether Marvis or the scheduler can run speed tests on this WAN port. enum: `auto`, `enabled`, `disabled`.
      * 
      */
     public Optional<String> wanSpeedtestMode() {
         return Optional.ofNullable(this.wanSpeedtestMode);
     }
     /**
-     * @return Only if `usage`==`wan`. WAN uplink type configured on the port
+     * @return Only if `usage`==`wan`. WAN uplink type configured on the port. enum: `broadband`, `dsl`, `lte`.
      * 
      */
     public Optional<String> wanType() {

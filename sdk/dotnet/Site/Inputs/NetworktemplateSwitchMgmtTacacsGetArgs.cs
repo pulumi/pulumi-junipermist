@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// Default switch-management role to use for TACACS+ logins
+        /// Default switch-management role to use for TACACS+ logins. enum: `Admin`, `Helpdesk`, `None`, `Read`.
         /// </summary>
         [Input("defaultRole")]
         public Input<string>? DefaultRole { get; set; }

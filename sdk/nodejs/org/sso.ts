@@ -109,7 +109,7 @@ export class Sso extends pulumi.CustomResource {
      */
     declare public readonly nameidFormat: pulumi.Output<string>;
     /**
-     * Provider domain for Okta OAuth SSO when `oauthType`==`okta`
+     * Provider domain for Okta OAuth SSO when `oauthType`==`okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
      */
     declare public readonly oauthProviderDomain: pulumi.Output<string>;
     /**
@@ -256,7 +256,7 @@ export interface SsoState {
      */
     nameidFormat?: pulumi.Input<string | undefined>;
     /**
-     * Provider domain for Okta OAuth SSO when `oauthType`==`okta`
+     * Provider domain for Okta OAuth SSO when `oauthType`==`okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
      */
     oauthProviderDomain?: pulumi.Input<string | undefined>;
     /**
@@ -326,7 +326,7 @@ export interface SsoArgs {
      */
     nameidFormat?: pulumi.Input<string | undefined>;
     /**
-     * Provider domain for Okta OAuth SSO when `oauthType`==`okta`
+     * Provider domain for Okta OAuth SSO when `oauthType`==`okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
      */
     oauthProviderDomain?: pulumi.Input<string | undefined>;
     /**

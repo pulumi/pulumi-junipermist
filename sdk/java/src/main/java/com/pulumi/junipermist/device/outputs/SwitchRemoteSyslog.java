@@ -59,7 +59,7 @@ public final class SwitchRemoteSyslog {
      */
     private @Nullable List<SwitchRemoteSyslogServer> servers;
     /**
-     * @return Timestamp format used in forwarded syslog messages
+     * @return Timestamp format used in forwarded syslog messages. enum: `millisecond`, `year`, `year millisecond`.
      * 
      */
     private @Nullable String timeFormat;
@@ -127,7 +127,7 @@ public final class SwitchRemoteSyslog {
         return this.servers == null ? List.of() : this.servers;
     }
     /**
-     * @return Timestamp format used in forwarded syslog messages
+     * @return Timestamp format used in forwarded syslog messages. enum: `millisecond`, `year`, `year millisecond`.
      * 
      */
     public Optional<String> timeFormat() {

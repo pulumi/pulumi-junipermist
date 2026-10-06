@@ -26,7 +26,7 @@ public final class DeviceprofileSwitchOspfAreas {
      */
     private Map<String,DeviceprofileSwitchOspfAreasNetworks> networks;
     /**
-     * @return Area type for this OSPF area
+     * @return Area type for this OSPF area. enum: `default`, `nssa`, `stub`.
      * 
      */
     private @Nullable String type;
@@ -47,7 +47,7 @@ public final class DeviceprofileSwitchOspfAreas {
         return this.networks;
     }
     /**
-     * @return Area type for this OSPF area
+     * @return Area type for this OSPF area. enum: `default`, `nssa`, `stub`.
      * 
      */
     public Optional<String> type() {

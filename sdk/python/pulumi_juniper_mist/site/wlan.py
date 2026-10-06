@@ -128,10 +128,10 @@ class WlanArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ap_ids: Access point identifiers used when `apply_to`==`aps`
         :param pulumi.Input['WlanAppLimitArgs'] app_limit: Bandwidth limits for applications on this WLAN
         :param pulumi.Input['WlanAppQosArgs'] app_qos: QoS rules for application traffic on this WLAN
-        :param pulumi.Input[_builtins.str] apply_to: Scope that determines where this WLAN is applied
+        :param pulumi.Input[_builtins.str] apply_to: Scope that determines where this WLAN is applied. enum: `aps`, `site`, `wxtags`.
         :param pulumi.Input[_builtins.bool] arp_filter: Whether to enable smart arp filter
         :param pulumi.Input['WlanAuthArgs'] auth: Settings that control client authentication for this WLAN
-        :param pulumi.Input[_builtins.str] auth_server_selection: RADIUS authentication server selection behavior for this WLAN
+        :param pulumi.Input[_builtins.str] auth_server_selection: RADIUS authentication server selection behavior for this WLAN. enum: `ordered`, `unordered`.
         :param pulumi.Input[Sequence[pulumi.Input['WlanAuthServerArgs']]] auth_servers: RADIUS authentication servers used by this WLAN. Required when `auth.type`==`eap`
         :param pulumi.Input[_builtins.str] auth_servers_nas_id: Optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
         :param pulumi.Input[_builtins.str] auth_servers_nas_ip: Optional, NAS-IP-ADDRESS to use
@@ -175,7 +175,7 @@ class WlanArgs:
         :param pulumi.Input[_builtins.bool] hostname_ie: Include hostname inside IE in AP beacons / probe responses
         :param pulumi.Input['WlanHotspot20Args'] hotspot20: Passpoint and Hotspot 2.0 settings for this WLAN
         :param pulumi.Input['WlanInjectDhcpOption82Args'] inject_dhcp_option82: DHCP Option 82 insertion settings for this WLAN
-        :param pulumi.Input[_builtins.str] interface: Network interface or tunnel where this WLAN bridges client traffic
+        :param pulumi.Input[_builtins.str] interface: Network interface or tunnel where this WLAN bridges client traffic. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `site_mxedge`, `wxtunnel`.
         :param pulumi.Input[_builtins.bool] isolation: Whether to stop clients to talk to each other
         :param pulumi.Input[_builtins.bool] l2_isolation: If isolation is enabled, whether to deny clients to talk to L2 on the LAN
         :param pulumi.Input[_builtins.bool] legacy_overds: Legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning! Enabling this will cause problem for iOS devices.
@@ -196,7 +196,7 @@ class WlanArgs:
         :param pulumi.Input['WlanRadsecArgs'] radsec: TLS-secured RADIUS transport settings for this WLAN
         :param pulumi.Input[Mapping[str, pulumi.Input['WlanRatesetArgs']]] rateset: Data rate settings by RF band for this WLAN
         :param pulumi.Input[_builtins.bool] reconnect_clients_when_roaming_mxcluster: When different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
-        :param pulumi.Input[_builtins.str] roam_mode: Fast roaming mode configured for this WLAN
+        :param pulumi.Input[_builtins.str] roam_mode: Fast roaming mode configured for this WLAN. enum: `11r`, `NONE`, `OKC`.
         :param pulumi.Input['WlanScheduleArgs'] schedule: Operating schedule controlling when this WLAN is active
         :param pulumi.Input[_builtins.bool] sle_excluded: Whether to exclude this WLAN from SLE metrics
         :param pulumi.Input[_builtins.bool] use_eapol_v1: If `auth.type`==`eap` or `auth.type`==`psk`, should only be set for legacy client, such as pre-2004, 802.11b devices
@@ -543,7 +543,7 @@ class WlanArgs:
     @pulumi.getter(name="applyTo")
     def apply_to(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Scope that determines where this WLAN is applied
+        Scope that determines where this WLAN is applied. enum: `aps`, `site`, `wxtags`.
         """
         return pulumi.get(self, "apply_to")
 
@@ -579,7 +579,7 @@ class WlanArgs:
     @pulumi.getter(name="authServerSelection")
     def auth_server_selection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        RADIUS authentication server selection behavior for this WLAN
+        RADIUS authentication server selection behavior for this WLAN. enum: `ordered`, `unordered`.
         """
         return pulumi.get(self, "auth_server_selection")
 
@@ -1074,7 +1074,7 @@ class WlanArgs:
     @pulumi.getter
     def interface(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Network interface or tunnel where this WLAN bridges client traffic
+        Network interface or tunnel where this WLAN bridges client traffic. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `site_mxedge`, `wxtunnel`.
         """
         return pulumi.get(self, "interface")
 
@@ -1326,7 +1326,7 @@ class WlanArgs:
     @pulumi.getter(name="roamMode")
     def roam_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Fast roaming mode configured for this WLAN
+        Fast roaming mode configured for this WLAN. enum: `11r`, `NONE`, `OKC`.
         """
         return pulumi.get(self, "roam_mode")
 
@@ -1616,10 +1616,10 @@ class _WlanState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ap_ids: Access point identifiers used when `apply_to`==`aps`
         :param pulumi.Input['WlanAppLimitArgs'] app_limit: Bandwidth limits for applications on this WLAN
         :param pulumi.Input['WlanAppQosArgs'] app_qos: QoS rules for application traffic on this WLAN
-        :param pulumi.Input[_builtins.str] apply_to: Scope that determines where this WLAN is applied
+        :param pulumi.Input[_builtins.str] apply_to: Scope that determines where this WLAN is applied. enum: `aps`, `site`, `wxtags`.
         :param pulumi.Input[_builtins.bool] arp_filter: Whether to enable smart arp filter
         :param pulumi.Input['WlanAuthArgs'] auth: Settings that control client authentication for this WLAN
-        :param pulumi.Input[_builtins.str] auth_server_selection: RADIUS authentication server selection behavior for this WLAN
+        :param pulumi.Input[_builtins.str] auth_server_selection: RADIUS authentication server selection behavior for this WLAN. enum: `ordered`, `unordered`.
         :param pulumi.Input[Sequence[pulumi.Input['WlanAuthServerArgs']]] auth_servers: RADIUS authentication servers used by this WLAN. Required when `auth.type`==`eap`
         :param pulumi.Input[_builtins.str] auth_servers_nas_id: Optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
         :param pulumi.Input[_builtins.str] auth_servers_nas_ip: Optional, NAS-IP-ADDRESS to use
@@ -1663,7 +1663,7 @@ class _WlanState:
         :param pulumi.Input[_builtins.bool] hostname_ie: Include hostname inside IE in AP beacons / probe responses
         :param pulumi.Input['WlanHotspot20Args'] hotspot20: Passpoint and Hotspot 2.0 settings for this WLAN
         :param pulumi.Input['WlanInjectDhcpOption82Args'] inject_dhcp_option82: DHCP Option 82 insertion settings for this WLAN
-        :param pulumi.Input[_builtins.str] interface: Network interface or tunnel where this WLAN bridges client traffic
+        :param pulumi.Input[_builtins.str] interface: Network interface or tunnel where this WLAN bridges client traffic. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `site_mxedge`, `wxtunnel`.
         :param pulumi.Input[_builtins.bool] isolation: Whether to stop clients to talk to each other
         :param pulumi.Input[_builtins.bool] l2_isolation: If isolation is enabled, whether to deny clients to talk to L2 on the LAN
         :param pulumi.Input[_builtins.bool] legacy_overds: Legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning! Enabling this will cause problem for iOS devices.
@@ -1689,7 +1689,7 @@ class _WlanState:
         :param pulumi.Input['WlanRadsecArgs'] radsec: TLS-secured RADIUS transport settings for this WLAN
         :param pulumi.Input[Mapping[str, pulumi.Input['WlanRatesetArgs']]] rateset: Data rate settings by RF band for this WLAN
         :param pulumi.Input[_builtins.bool] reconnect_clients_when_roaming_mxcluster: When different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
-        :param pulumi.Input[_builtins.str] roam_mode: Fast roaming mode configured for this WLAN
+        :param pulumi.Input[_builtins.str] roam_mode: Fast roaming mode configured for this WLAN. enum: `11r`, `NONE`, `OKC`.
         :param pulumi.Input['WlanScheduleArgs'] schedule: Operating schedule controlling when this WLAN is active
         :param pulumi.Input[_builtins.str] site_id: Mist site associated with this WLAN, when site-scoped
         :param pulumi.Input[_builtins.bool] sle_excluded: Whether to exclude this WLAN from SLE metrics
@@ -2026,7 +2026,7 @@ class _WlanState:
     @pulumi.getter(name="applyTo")
     def apply_to(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Scope that determines where this WLAN is applied
+        Scope that determines where this WLAN is applied. enum: `aps`, `site`, `wxtags`.
         """
         return pulumi.get(self, "apply_to")
 
@@ -2062,7 +2062,7 @@ class _WlanState:
     @pulumi.getter(name="authServerSelection")
     def auth_server_selection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        RADIUS authentication server selection behavior for this WLAN
+        RADIUS authentication server selection behavior for this WLAN. enum: `ordered`, `unordered`.
         """
         return pulumi.get(self, "auth_server_selection")
 
@@ -2557,7 +2557,7 @@ class _WlanState:
     @pulumi.getter
     def interface(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Network interface or tunnel where this WLAN bridges client traffic
+        Network interface or tunnel where this WLAN bridges client traffic. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `site_mxedge`, `wxtunnel`.
         """
         return pulumi.get(self, "interface")
 
@@ -2869,7 +2869,7 @@ class _WlanState:
     @pulumi.getter(name="roamMode")
     def roam_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Fast roaming mode configured for this WLAN
+        Fast roaming mode configured for this WLAN. enum: `11r`, `NONE`, `OKC`.
         """
         return pulumi.get(self, "roam_mode")
 
@@ -3221,10 +3221,10 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ap_ids: Access point identifiers used when `apply_to`==`aps`
         :param pulumi.Input[Union['WlanAppLimitArgs', 'WlanAppLimitArgsDict']] app_limit: Bandwidth limits for applications on this WLAN
         :param pulumi.Input[Union['WlanAppQosArgs', 'WlanAppQosArgsDict']] app_qos: QoS rules for application traffic on this WLAN
-        :param pulumi.Input[_builtins.str] apply_to: Scope that determines where this WLAN is applied
+        :param pulumi.Input[_builtins.str] apply_to: Scope that determines where this WLAN is applied. enum: `aps`, `site`, `wxtags`.
         :param pulumi.Input[_builtins.bool] arp_filter: Whether to enable smart arp filter
         :param pulumi.Input[Union['WlanAuthArgs', 'WlanAuthArgsDict']] auth: Settings that control client authentication for this WLAN
-        :param pulumi.Input[_builtins.str] auth_server_selection: RADIUS authentication server selection behavior for this WLAN
+        :param pulumi.Input[_builtins.str] auth_server_selection: RADIUS authentication server selection behavior for this WLAN. enum: `ordered`, `unordered`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WlanAuthServerArgs', 'WlanAuthServerArgsDict']]]] auth_servers: RADIUS authentication servers used by this WLAN. Required when `auth.type`==`eap`
         :param pulumi.Input[_builtins.str] auth_servers_nas_id: Optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
         :param pulumi.Input[_builtins.str] auth_servers_nas_ip: Optional, NAS-IP-ADDRESS to use
@@ -3268,7 +3268,7 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] hostname_ie: Include hostname inside IE in AP beacons / probe responses
         :param pulumi.Input[Union['WlanHotspot20Args', 'WlanHotspot20ArgsDict']] hotspot20: Passpoint and Hotspot 2.0 settings for this WLAN
         :param pulumi.Input[Union['WlanInjectDhcpOption82Args', 'WlanInjectDhcpOption82ArgsDict']] inject_dhcp_option82: DHCP Option 82 insertion settings for this WLAN
-        :param pulumi.Input[_builtins.str] interface: Network interface or tunnel where this WLAN bridges client traffic
+        :param pulumi.Input[_builtins.str] interface: Network interface or tunnel where this WLAN bridges client traffic. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `site_mxedge`, `wxtunnel`.
         :param pulumi.Input[_builtins.bool] isolation: Whether to stop clients to talk to each other
         :param pulumi.Input[_builtins.bool] l2_isolation: If isolation is enabled, whether to deny clients to talk to L2 on the LAN
         :param pulumi.Input[_builtins.bool] legacy_overds: Legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning! Enabling this will cause problem for iOS devices.
@@ -3289,7 +3289,7 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[Union['WlanRadsecArgs', 'WlanRadsecArgsDict']] radsec: TLS-secured RADIUS transport settings for this WLAN
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['WlanRatesetArgs', 'WlanRatesetArgsDict']]]] rateset: Data rate settings by RF band for this WLAN
         :param pulumi.Input[_builtins.bool] reconnect_clients_when_roaming_mxcluster: When different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
-        :param pulumi.Input[_builtins.str] roam_mode: Fast roaming mode configured for this WLAN
+        :param pulumi.Input[_builtins.str] roam_mode: Fast roaming mode configured for this WLAN. enum: `11r`, `NONE`, `OKC`.
         :param pulumi.Input[Union['WlanScheduleArgs', 'WlanScheduleArgsDict']] schedule: Operating schedule controlling when this WLAN is active
         :param pulumi.Input[_builtins.str] site_id: Mist site associated with this WLAN, when site-scoped
         :param pulumi.Input[_builtins.bool] sle_excluded: Whether to exclude this WLAN from SLE metrics
@@ -3694,10 +3694,10 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ap_ids: Access point identifiers used when `apply_to`==`aps`
         :param pulumi.Input[Union['WlanAppLimitArgs', 'WlanAppLimitArgsDict']] app_limit: Bandwidth limits for applications on this WLAN
         :param pulumi.Input[Union['WlanAppQosArgs', 'WlanAppQosArgsDict']] app_qos: QoS rules for application traffic on this WLAN
-        :param pulumi.Input[_builtins.str] apply_to: Scope that determines where this WLAN is applied
+        :param pulumi.Input[_builtins.str] apply_to: Scope that determines where this WLAN is applied. enum: `aps`, `site`, `wxtags`.
         :param pulumi.Input[_builtins.bool] arp_filter: Whether to enable smart arp filter
         :param pulumi.Input[Union['WlanAuthArgs', 'WlanAuthArgsDict']] auth: Settings that control client authentication for this WLAN
-        :param pulumi.Input[_builtins.str] auth_server_selection: RADIUS authentication server selection behavior for this WLAN
+        :param pulumi.Input[_builtins.str] auth_server_selection: RADIUS authentication server selection behavior for this WLAN. enum: `ordered`, `unordered`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WlanAuthServerArgs', 'WlanAuthServerArgsDict']]]] auth_servers: RADIUS authentication servers used by this WLAN. Required when `auth.type`==`eap`
         :param pulumi.Input[_builtins.str] auth_servers_nas_id: Optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
         :param pulumi.Input[_builtins.str] auth_servers_nas_ip: Optional, NAS-IP-ADDRESS to use
@@ -3741,7 +3741,7 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] hostname_ie: Include hostname inside IE in AP beacons / probe responses
         :param pulumi.Input[Union['WlanHotspot20Args', 'WlanHotspot20ArgsDict']] hotspot20: Passpoint and Hotspot 2.0 settings for this WLAN
         :param pulumi.Input[Union['WlanInjectDhcpOption82Args', 'WlanInjectDhcpOption82ArgsDict']] inject_dhcp_option82: DHCP Option 82 insertion settings for this WLAN
-        :param pulumi.Input[_builtins.str] interface: Network interface or tunnel where this WLAN bridges client traffic
+        :param pulumi.Input[_builtins.str] interface: Network interface or tunnel where this WLAN bridges client traffic. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `site_mxedge`, `wxtunnel`.
         :param pulumi.Input[_builtins.bool] isolation: Whether to stop clients to talk to each other
         :param pulumi.Input[_builtins.bool] l2_isolation: If isolation is enabled, whether to deny clients to talk to L2 on the LAN
         :param pulumi.Input[_builtins.bool] legacy_overds: Legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning! Enabling this will cause problem for iOS devices.
@@ -3767,7 +3767,7 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[Union['WlanRadsecArgs', 'WlanRadsecArgsDict']] radsec: TLS-secured RADIUS transport settings for this WLAN
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['WlanRatesetArgs', 'WlanRatesetArgsDict']]]] rateset: Data rate settings by RF band for this WLAN
         :param pulumi.Input[_builtins.bool] reconnect_clients_when_roaming_mxcluster: When different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
-        :param pulumi.Input[_builtins.str] roam_mode: Fast roaming mode configured for this WLAN
+        :param pulumi.Input[_builtins.str] roam_mode: Fast roaming mode configured for this WLAN. enum: `11r`, `NONE`, `OKC`.
         :param pulumi.Input[Union['WlanScheduleArgs', 'WlanScheduleArgsDict']] schedule: Operating schedule controlling when this WLAN is active
         :param pulumi.Input[_builtins.str] site_id: Mist site associated with this WLAN, when site-scoped
         :param pulumi.Input[_builtins.bool] sle_excluded: Whether to exclude this WLAN from SLE metrics
@@ -3972,7 +3972,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="applyTo")
     def apply_to(self) -> pulumi.Output[_builtins.str]:
         """
-        Scope that determines where this WLAN is applied
+        Scope that determines where this WLAN is applied. enum: `aps`, `site`, `wxtags`.
         """
         return pulumi.get(self, "apply_to")
 
@@ -3996,7 +3996,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="authServerSelection")
     def auth_server_selection(self) -> pulumi.Output[_builtins.str]:
         """
-        RADIUS authentication server selection behavior for this WLAN
+        RADIUS authentication server selection behavior for this WLAN. enum: `ordered`, `unordered`.
         """
         return pulumi.get(self, "auth_server_selection")
 
@@ -4327,7 +4327,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter
     def interface(self) -> pulumi.Output[_builtins.str]:
         """
-        Network interface or tunnel where this WLAN bridges client traffic
+        Network interface or tunnel where this WLAN bridges client traffic. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `site_mxedge`, `wxtunnel`.
         """
         return pulumi.get(self, "interface")
 
@@ -4535,7 +4535,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="roamMode")
     def roam_mode(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Fast roaming mode configured for this WLAN
+        Fast roaming mode configured for this WLAN. enum: `11r`, `NONE`, `OKC`.
         """
         return pulumi.get(self, "roam_mode")
 
