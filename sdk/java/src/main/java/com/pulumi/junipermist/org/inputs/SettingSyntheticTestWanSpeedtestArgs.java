@@ -17,18 +17,18 @@ public final class SettingSyntheticTestWanSpeedtestArgs extends com.pulumi.resou
     public static final SettingSyntheticTestWanSpeedtestArgs Empty = new SettingSyntheticTestWanSpeedtestArgs();
 
     /**
-     * Whether scheduled WAN speedtests are enabled
+     * Whether scheduled WAN speedtests are disabled. Defaults to `false` (enabled); set this to `true` to disable speedtests.
      * 
      */
-    @Import(name="enabled")
-    private @Nullable Output<Boolean> enabled;
+    @Import(name="disabled")
+    private @Nullable Output<Boolean> disabled;
 
     /**
-     * @return Whether scheduled WAN speedtests are enabled
+     * @return Whether scheduled WAN speedtests are disabled. Defaults to `false` (enabled); set this to `true` to disable speedtests.
      * 
      */
-    public Optional<Output<Boolean>> enabled() {
-        return Optional.ofNullable(this.enabled);
+    public Optional<Output<Boolean>> disabled() {
+        return Optional.ofNullable(this.disabled);
     }
 
     /**
@@ -49,7 +49,7 @@ public final class SettingSyntheticTestWanSpeedtestArgs extends com.pulumi.resou
     private SettingSyntheticTestWanSpeedtestArgs() {}
 
     private SettingSyntheticTestWanSpeedtestArgs(SettingSyntheticTestWanSpeedtestArgs $) {
-        this.enabled = $.enabled;
+        this.disabled = $.disabled;
         this.timeOfDay = $.timeOfDay;
     }
 
@@ -72,24 +72,24 @@ public final class SettingSyntheticTestWanSpeedtestArgs extends com.pulumi.resou
         }
 
         /**
-         * @param enabled Whether scheduled WAN speedtests are enabled
+         * @param disabled Whether scheduled WAN speedtests are disabled. Defaults to `false` (enabled); set this to `true` to disable speedtests.
          * 
          * @return builder
          * 
          */
-        public Builder enabled(@Nullable Output<Boolean> enabled) {
-            $.enabled = enabled;
+        public Builder disabled(@Nullable Output<Boolean> disabled) {
+            $.disabled = disabled;
             return this;
         }
 
         /**
-         * @param enabled Whether scheduled WAN speedtests are enabled
+         * @param disabled Whether scheduled WAN speedtests are disabled. Defaults to `false` (enabled); set this to `true` to disable speedtests.
          * 
          * @return builder
          * 
          */
-        public Builder enabled(Boolean enabled) {
-            return enabled(Output.of(enabled));
+        public Builder disabled(Boolean disabled) {
+            return disabled(Output.of(disabled));
         }
 
         /**

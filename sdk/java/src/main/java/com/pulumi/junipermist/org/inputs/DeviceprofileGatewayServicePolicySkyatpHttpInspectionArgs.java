@@ -32,14 +32,14 @@ public final class DeviceprofileGatewayServicePolicySkyatpHttpInspectionArgs ext
     }
 
     /**
-     * Sky ATP HTTP inspection profile to apply
+     * Sky ATP HTTP inspection profile to apply. enum: `standard`, `strict`.
      * 
      */
     @Import(name="profile")
     private @Nullable Output<String> profile;
 
     /**
-     * @return Sky ATP HTTP inspection profile to apply
+     * @return Sky ATP HTTP inspection profile to apply. enum: `standard`, `strict`.
      * 
      */
     public Optional<Output<String>> profile() {
@@ -93,7 +93,7 @@ public final class DeviceprofileGatewayServicePolicySkyatpHttpInspectionArgs ext
         }
 
         /**
-         * @param profile Sky ATP HTTP inspection profile to apply
+         * @param profile Sky ATP HTTP inspection profile to apply. enum: `standard`, `strict`.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class DeviceprofileGatewayServicePolicySkyatpHttpInspectionArgs ext
         }
 
         /**
-         * @param profile Sky ATP HTTP inspection profile to apply
+         * @param profile Sky ATP HTTP inspection profile to apply. enum: `standard`, `strict`.
          * 
          * @return builder
          * 

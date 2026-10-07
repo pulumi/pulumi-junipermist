@@ -16,14 +16,14 @@ public final class DeviceprofileGatewayTunnelConfigsIkeProposalArgs extends com.
     public static final DeviceprofileGatewayTunnelConfigsIkeProposalArgs Empty = new DeviceprofileGatewayTunnelConfigsIkeProposalArgs();
 
     /**
-     * Integrity algorithm used by this IKE proposal
+     * Integrity algorithm used by this IKE proposal. enum: `md5`, `sha1`, `sha2`.
      * 
      */
     @Import(name="authAlgo")
     private @Nullable Output<String> authAlgo;
 
     /**
-     * @return Integrity algorithm used by this IKE proposal
+     * @return Integrity algorithm used by this IKE proposal. enum: `md5`, `sha1`, `sha2`.
      * 
      */
     public Optional<Output<String>> authAlgo() {
@@ -31,14 +31,14 @@ public final class DeviceprofileGatewayTunnelConfigsIkeProposalArgs extends com.
     }
 
     /**
-     * Diffie-Hellman group used by this IKE proposal
+     * Diffie-Hellman group used by this IKE proposal. enum: `1`, `14`, `15`, `16`, `19`, `2`, `20`, `21`, `24`, `5`.
      * 
      */
     @Import(name="dhGroup")
     private @Nullable Output<String> dhGroup;
 
     /**
-     * @return Diffie-Hellman group used by this IKE proposal
+     * @return Diffie-Hellman group used by this IKE proposal. enum: `1`, `14`, `15`, `16`, `19`, `2`, `20`, `21`, `24`, `5`.
      * 
      */
     public Optional<Output<String>> dhGroup() {
@@ -46,14 +46,14 @@ public final class DeviceprofileGatewayTunnelConfigsIkeProposalArgs extends com.
     }
 
     /**
-     * Cipher algorithm used by this IKE proposal
+     * Cipher algorithm used by this IKE proposal. enum: `3des`, `aes128`, `aes256`, `aesGcm128`, `aesGcm256`.
      * 
      */
     @Import(name="encAlgo")
     private @Nullable Output<String> encAlgo;
 
     /**
-     * @return Cipher algorithm used by this IKE proposal
+     * @return Cipher algorithm used by this IKE proposal. enum: `3des`, `aes128`, `aes256`, `aesGcm128`, `aesGcm256`.
      * 
      */
     public Optional<Output<String>> encAlgo() {
@@ -87,7 +87,7 @@ public final class DeviceprofileGatewayTunnelConfigsIkeProposalArgs extends com.
         }
 
         /**
-         * @param authAlgo Integrity algorithm used by this IKE proposal
+         * @param authAlgo Integrity algorithm used by this IKE proposal. enum: `md5`, `sha1`, `sha2`.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class DeviceprofileGatewayTunnelConfigsIkeProposalArgs extends com.
         }
 
         /**
-         * @param authAlgo Integrity algorithm used by this IKE proposal
+         * @param authAlgo Integrity algorithm used by this IKE proposal. enum: `md5`, `sha1`, `sha2`.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class DeviceprofileGatewayTunnelConfigsIkeProposalArgs extends com.
         }
 
         /**
-         * @param dhGroup Diffie-Hellman group used by this IKE proposal
+         * @param dhGroup Diffie-Hellman group used by this IKE proposal. enum: `1`, `14`, `15`, `16`, `19`, `2`, `20`, `21`, `24`, `5`.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class DeviceprofileGatewayTunnelConfigsIkeProposalArgs extends com.
         }
 
         /**
-         * @param dhGroup Diffie-Hellman group used by this IKE proposal
+         * @param dhGroup Diffie-Hellman group used by this IKE proposal. enum: `1`, `14`, `15`, `16`, `19`, `2`, `20`, `21`, `24`, `5`.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class DeviceprofileGatewayTunnelConfigsIkeProposalArgs extends com.
         }
 
         /**
-         * @param encAlgo Cipher algorithm used by this IKE proposal
+         * @param encAlgo Cipher algorithm used by this IKE proposal. enum: `3des`, `aes128`, `aes256`, `aesGcm128`, `aesGcm256`.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class DeviceprofileGatewayTunnelConfigsIkeProposalArgs extends com.
         }
 
         /**
-         * @param encAlgo Cipher algorithm used by this IKE proposal
+         * @param encAlgo Cipher algorithm used by this IKE proposal. enum: `3des`, `aes128`, `aes256`, `aesGcm128`, `aesGcm256`.
          * 
          * @return builder
          * 

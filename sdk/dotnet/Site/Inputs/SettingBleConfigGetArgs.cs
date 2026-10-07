@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<int>? BeaconRate { get; set; }
 
         /// <summary>
-        /// Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate
+        /// Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate. enum: `Custom`, `Default`.
         /// </summary>
         [Input("beaconRateMode")]
         public Input<string>? BeaconRateMode { get; set; }
@@ -175,7 +175,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<int>? Power { get; set; }
 
         /// <summary>
-        /// Transmit power mode for BLE beacons; use custom to set `Power`
+        /// Transmit power mode for BLE beacons; use custom to set `Power`. enum: `Custom`, `Default`.
         /// </summary>
         [Input("powerMode")]
         public Input<string>? PowerMode { get; set; }

@@ -35,7 +35,7 @@ class UpgradeDeviceAutoUpgradeStat(dict):
     def __init__(__self__, *,
                  lastcheck: Optional[_builtins.int] = None):
         """
-        :param _builtins.int lastcheck: Time when the device last checked for auto-upgrade, in epoch seconds
+        :param _builtins.int lastcheck: Time when the AP last checked for auto-upgrade, in epoch seconds
         """
         if lastcheck is not None:
             pulumi.set(__self__, "lastcheck", lastcheck)
@@ -44,7 +44,7 @@ class UpgradeDeviceAutoUpgradeStat(dict):
     @pulumi.getter
     def lastcheck(self) -> Optional[_builtins.int]:
         """
-        Time when the device last checked for auto-upgrade, in epoch seconds
+        Time when the AP last checked for auto-upgrade, in epoch seconds
         """
         return pulumi.get(self, "lastcheck")
 
@@ -78,7 +78,7 @@ class UpgradeDeviceFwupdate(dict):
                  will_retry: Optional[_builtins.bool] = None):
         """
         :param _builtins.int progress: Firmware update progress percentage, or null when unavailable
-        :param _builtins.str status: Current firmware update status
+        :param _builtins.str status: Current firmware update status. enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`.
         :param _builtins.int status_id: Numeric firmware update status identifier
         :param _builtins.float timestamp: Time when the firmware update status was last updated
         :param _builtins.bool will_retry: Whether the firmware update process will retry after the current status
@@ -106,7 +106,7 @@ class UpgradeDeviceFwupdate(dict):
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
         """
-        Current firmware update status
+        Current firmware update status. enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`.
         """
         return pulumi.get(self, "status")
 

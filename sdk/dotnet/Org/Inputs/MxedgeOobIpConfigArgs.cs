@@ -73,13 +73,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? Netmask6 { get; set; }
 
         /// <summary>
-        /// IPv4 address assignment mode for out-of-band management
+        /// IPv4 address assignment mode for out-of-band management. enum: `Dhcp`, `Static`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// IPv6 address assignment mode for out-of-band management
+        /// IPv6 address assignment mode for out-of-band management. enum: `Dhcp`, `Static`.
         /// </summary>
         [Input("type6")]
         public Input<string>? Type6 { get; set; }

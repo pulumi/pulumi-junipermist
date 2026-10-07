@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class SwitchDhcpdConfigConfigOptions
     {
         /// <summary>
-        /// Data type used to encode this DHCP option value
+        /// Data type used to encode this DHCP option value. enum: `Boolean`, `Hex`, `Int16`, `Int32`, `Ip`, `String`, `Uint16`, `Uint32`.
         /// </summary>
         public readonly string? Type;
         /// <summary>

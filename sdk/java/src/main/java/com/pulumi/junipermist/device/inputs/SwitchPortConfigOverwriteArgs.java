@@ -47,14 +47,14 @@ public final class SwitchPortConfigOverwriteArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Link duplex mode override for the switch port
+     * Link duplex mode override for the switch port. enum: `auto`, `full`, `half`.
      * 
      */
     @Import(name="duplex")
     private @Nullable Output<String> duplex;
 
     /**
-     * @return Link duplex mode override for the switch port
+     * @return Link duplex mode override for the switch port. enum: `auto`, `full`, `half`.
      * 
      */
     public Optional<Output<String>> duplex() {
@@ -122,14 +122,14 @@ public final class SwitchPortConfigOverwriteArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Link speed override for the switch port
+     * Link speed override for the switch port. enum: `10m`, `100m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`, `auto`.
      * 
      */
     @Import(name="speed")
     private @Nullable Output<String> speed;
 
     /**
-     * @return Link speed override for the switch port
+     * @return Link speed override for the switch port. enum: `10m`, `100m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`, `auto`.
      * 
      */
     public Optional<Output<String>> speed() {
@@ -210,7 +210,7 @@ public final class SwitchPortConfigOverwriteArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param duplex Link duplex mode override for the switch port
+         * @param duplex Link duplex mode override for the switch port. enum: `auto`, `full`, `half`.
          * 
          * @return builder
          * 
@@ -221,7 +221,7 @@ public final class SwitchPortConfigOverwriteArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param duplex Link duplex mode override for the switch port
+         * @param duplex Link duplex mode override for the switch port. enum: `auto`, `full`, `half`.
          * 
          * @return builder
          * 
@@ -315,7 +315,7 @@ public final class SwitchPortConfigOverwriteArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param speed Link speed override for the switch port
+         * @param speed Link speed override for the switch port. enum: `10m`, `100m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`, `auto`.
          * 
          * @return builder
          * 
@@ -326,7 +326,7 @@ public final class SwitchPortConfigOverwriteArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param speed Link speed override for the switch port
+         * @param speed Link speed override for the switch port. enum: `10m`, `100m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`, `auto`.
          * 
          * @return builder
          * 

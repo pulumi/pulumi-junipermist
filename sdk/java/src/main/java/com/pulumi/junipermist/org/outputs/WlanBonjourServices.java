@@ -24,7 +24,7 @@ public final class WlanBonjourServices {
      */
     private @Nullable List<String> radiusGroups;
     /**
-     * @return Discovery scope for this Bonjour service on the WLAN
+     * @return Discovery scope for this Bonjour service on the WLAN. enum: `sameAp`, `sameMap`, `sameSite`.
      * 
      */
     private @Nullable String scope;
@@ -45,7 +45,7 @@ public final class WlanBonjourServices {
         return this.radiusGroups == null ? List.of() : this.radiusGroups;
     }
     /**
-     * @return Discovery scope for this Bonjour service on the WLAN
+     * @return Discovery scope for this Bonjour service on the WLAN. enum: `sameAp`, `sameMap`, `sameSite`.
      * 
      */
     public Optional<String> scope() {

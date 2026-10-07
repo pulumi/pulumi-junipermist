@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class IdpprofileOverwrite
     {
         /// <summary>
-        /// Enforcement action applied when this overwrite rule matches
+        /// Enforcement action applied when this overwrite rule matches. enum: `Alert`, `Close`, `Drop`.
         /// </summary>
         public readonly string? Action;
         /// <summary>

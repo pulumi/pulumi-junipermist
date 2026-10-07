@@ -171,14 +171,14 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Topology tier where EVPN virtual gateway routing is placed
+     * Topology tier where EVPN virtual gateway routing is placed. enum: `core`, `distribution`, `edge`.
      * 
      */
     @Import(name="routedAt")
     private @Nullable Output<String> routedAt;
 
     /**
-     * @return Topology tier where EVPN virtual gateway routing is placed
+     * @return Topology tier where EVPN virtual gateway routing is placed. enum: `core`, `distribution`, `edge`.
      * 
      */
     public Optional<Output<String>> routedAt() {
@@ -462,7 +462,7 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param routedAt Topology tier where EVPN virtual gateway routing is placed
+         * @param routedAt Topology tier where EVPN virtual gateway routing is placed. enum: `core`, `distribution`, `edge`.
          * 
          * @return builder
          * 
@@ -473,7 +473,7 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param routedAt Topology tier where EVPN virtual gateway routing is placed
+         * @param routedAt Topology tier where EVPN virtual gateway routing is placed. enum: `core`, `distribution`, `edge`.
          * 
          * @return builder
          * 

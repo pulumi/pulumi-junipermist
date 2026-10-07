@@ -154,14 +154,14 @@ public final class PskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Organization that owns the site-level PSK
+     * Organization that owns the org-level PSK
      * 
      */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
     /**
-     * @return Organization that owns the site-level PSK
+     * @return Organization that owns the org-level PSK
      * 
      */
     public Optional<Output<String>> orgId() {
@@ -519,7 +519,7 @@ public final class PskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orgId Organization that owns the site-level PSK
+         * @param orgId Organization that owns the org-level PSK
          * 
          * @return builder
          * 
@@ -530,7 +530,7 @@ public final class PskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orgId Organization that owns the site-level PSK
+         * @param orgId Organization that owns the org-level PSK
          * 
          * @return builder
          * 

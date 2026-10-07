@@ -121,7 +121,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Encapsulation protocol used for the site Mist Tunnel
+        /// Encapsulation protocol used for the site Mist Tunnel. enum: `Ip`, `Udp`.
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }

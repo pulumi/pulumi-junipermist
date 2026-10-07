@@ -28,7 +28,7 @@ public final class DeviceprofileGatewayTunnelConfigsProbe {
      */
     private @Nullable Integer timeout;
     /**
-     * @return Protocol used by the custom IPsec tunnel health probe
+     * @return Protocol used by the custom IPsec tunnel health probe. enum: `http`, `icmp`.
      * 
      */
     private @Nullable String type;
@@ -56,7 +56,7 @@ public final class DeviceprofileGatewayTunnelConfigsProbe {
         return Optional.ofNullable(this.timeout);
     }
     /**
-     * @return Protocol used by the custom IPsec tunnel health probe
+     * @return Protocol used by the custom IPsec tunnel health probe. enum: `http`, `icmp`.
      * 
      */
     public Optional<String> type() {

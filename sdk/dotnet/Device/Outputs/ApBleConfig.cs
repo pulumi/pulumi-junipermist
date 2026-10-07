@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly int? BeaconRate;
         /// <summary>
-        /// Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate
+        /// Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate. enum: `Custom`, `Default`.
         /// </summary>
         public readonly string? BeaconRateMode;
         /// <summary>
@@ -118,7 +118,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly int? Power;
         /// <summary>
-        /// Transmit power mode for BLE beacons; use custom to set `Power`
+        /// Transmit power mode for BLE beacons; use custom to set `Power`. enum: `Custom`, `Default`.
         /// </summary>
         public readonly string? PowerMode;
 

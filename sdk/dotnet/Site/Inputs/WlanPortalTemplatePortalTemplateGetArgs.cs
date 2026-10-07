@@ -19,7 +19,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? AccessCodeAlternateEmail { get; set; }
 
         /// <summary>
-        /// Text and content alignment used by the guest portal template
+        /// Text and content alignment used by the guest portal template. enum: `Center`, `Left`, `Right`.
         /// </summary>
         [Input("alignment")]
         public Input<string>? Alignment { get; set; }

@@ -318,7 +318,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<int> UiIdleTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// Whether UI usage tracking is disabled for the organization
+        /// Whether to disable UI usage tracking (e.g. Fullstory, Pendo) for the whole organization
         /// </summary>
         [Output("uiNoTracking")]
         public Output<bool?> UiNoTracking { get; private set; } = null!;
@@ -607,7 +607,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<int>? UiIdleTimeout { get; set; }
 
         /// <summary>
-        /// Whether UI usage tracking is disabled for the organization
+        /// Whether to disable UI usage tracking (e.g. Fullstory, Pendo) for the whole organization
         /// </summary>
         [Input("uiNoTracking")]
         public Input<bool>? UiNoTracking { get; set; }
@@ -875,7 +875,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<int>? UiIdleTimeout { get; set; }
 
         /// <summary>
-        /// Whether UI usage tracking is disabled for the organization
+        /// Whether to disable UI usage tracking (e.g. Fullstory, Pendo) for the whole organization
         /// </summary>
         [Input("uiNoTracking")]
         public Input<bool>? UiNoTracking { get; set; }

@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworktemplateSnmpConfigV3ConfigUsm {
     /**
-     * @return SNMP engine type used for this USM configuration
+     * @return SNMP engine type used for this USM configuration. enum: `localEngine`, `remoteEngine`.
      * 
      */
     private String engineType;
@@ -32,7 +32,7 @@ public final class NetworktemplateSnmpConfigV3ConfigUsm {
 
     private NetworktemplateSnmpConfigV3ConfigUsm() {}
     /**
-     * @return SNMP engine type used for this USM configuration
+     * @return SNMP engine type used for this USM configuration. enum: `localEngine`, `remoteEngine`.
      * 
      */
     public String engineType() {

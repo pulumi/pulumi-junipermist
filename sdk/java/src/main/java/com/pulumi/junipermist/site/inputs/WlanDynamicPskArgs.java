@@ -93,14 +93,14 @@ public final class WlanDynamicPskArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Origin used to retrieve per-user PSKs
+     * Origin used to retrieve per-user PSKs. enum: `cloudPsks`, `radius`.
      * 
      */
     @Import(name="source")
     private @Nullable Output<String> source;
 
     /**
-     * @return Origin used to retrieve per-user PSKs
+     * @return Origin used to retrieve per-user PSKs. enum: `cloudPsks`, `radius`.
      * 
      */
     public Optional<Output<String>> source() {
@@ -252,7 +252,7 @@ public final class WlanDynamicPskArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param source Origin used to retrieve per-user PSKs
+         * @param source Origin used to retrieve per-user PSKs. enum: `cloudPsks`, `radius`.
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class WlanDynamicPskArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param source Origin used to retrieve per-user PSKs
+         * @param source Origin used to retrieve per-user PSKs. enum: `cloudPsks`, `radius`.
          * 
          * @return builder
          * 

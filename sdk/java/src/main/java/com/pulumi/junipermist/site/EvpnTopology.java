@@ -33,8 +33,16 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.mist.SiteSiteEvpnTopology;
- * import com.pulumi.mist.SiteSiteEvpnTopologyArgs;
+ * import com.pulumi.junipermist.org.Inventory;
+ * import com.pulumi.junipermist.org.InventoryArgs;
+ * import com.pulumi.junipermist.org.inputs.InventoryInventoryArgs;
+ * import com.pulumi.junipermist.site.EvpnTopology;
+ * import com.pulumi.junipermist.site.EvpnTopologyArgs;
+ * import com.pulumi.junipermist.site.inputs.EvpnTopologyEvpnOptionsArgs;
+ * import com.pulumi.junipermist.site.inputs.EvpnTopologyEvpnOptionsOverlayArgs;
+ * import com.pulumi.junipermist.site.inputs.EvpnTopologyEvpnOptionsUnderlayArgs;
+ * import com.pulumi.junipermist.site.inputs.EvpnTopologySwitchesArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -48,49 +56,60 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var evpnOne = new SiteSiteEvpnTopology("evpnOne", SiteSiteEvpnTopologyArgs.builder()
- *             .siteId(terraformTest.id())
- *             .name("evpn_one")
- *             .evpnOptions(Map.ofEntries(
- *                 Map.entry("routedAt", "core"),
- *                 Map.entry("overlay", Map.of("as", 65000)),
- *                 Map.entry("coreAsBorder", true),
- *                 Map.entry("autoLoopbackSubnet", "172.16.192.0/24"),
- *                 Map.entry("autoLoopbackSubnet6", "fd33:ab00:2::/64"),
- *                 Map.entry("perVlanVgaV4Mac", false),
- *                 Map.entry("underlay", Map.ofEntries(
- *                     Map.entry("asBase", 65001),
- *                     Map.entry("useIpv6", false),
- *                     Map.entry("subnet", "10.255.240.0/20")
- *                 )),
- *                 Map.entry("autoRouterIdSubnet", "172.16.254.0/23")
+ *         var evpnTopologySwitches = new Inventory("evpnTopologySwitches", InventoryArgs.builder()
+ *             .orgId("c0c92f93-d702-4cb7-a661-aaca08cfcf74")
+ *             .inventory(Map.ofEntries(
+ *                 Map.entry("HY5BD8EVMSRQRCV", InventoryInventoryArgs.builder()
+ *                     .siteId("87e30472-720a-42c5-acd9-ac95213d08b3")
+ *                     .build()),
+ *                 Map.entry("P9ZRN52RXQEQNH5", InventoryInventoryArgs.builder()
+ *                     .siteId("87e30472-720a-42c5-acd9-ac95213d08b3")
+ *                     .build()),
+ *                 Map.entry("HNCNY3DWSAKJFPB", InventoryInventoryArgs.builder()
+ *                     .siteId("87e30472-720a-42c5-acd9-ac95213d08b3")
+ *                     .build()),
+ *                 Map.entry("GSK46S5XKH657DG", InventoryInventoryArgs.builder()
+ *                     .siteId("87e30472-720a-42c5-acd9-ac95213d08b3")
+ *                     .build())
  *             ))
- *             .switches(Arrays.asList(            
- *                 Map.ofEntries(
- *                     Map.entry("mac", "020004000001"),
- *                     Map.entry("role", "core")
- *                 ),
- *                 Map.ofEntries(
- *                     Map.entry("mac", "02000400002"),
- *                     Map.entry("role", "core")
- *                 ),
- *                 Map.ofEntries(
- *                     Map.entry("mac", "02000400003"),
- *                     Map.entry("role", "distribution")
- *                 ),
- *                 Map.ofEntries(
- *                     Map.entry("mac", "02000400004"),
- *                     Map.entry("role", "distribution")
- *                 ),
- *                 Map.ofEntries(
- *                     Map.entry("mac", "02000400005"),
- *                     Map.entry("role", "access")
- *                 ),
- *                 Map.ofEntries(
- *                     Map.entry("mac", "02000400006"),
- *                     Map.entry("role", "access")
- *                 )))
  *             .build());
+ * 
+ *         var evpnOne = new EvpnTopology("evpnOne", EvpnTopologyArgs.builder()
+ *             .siteId("87e30472-720a-42c5-acd9-ac95213d08b3")
+ *             .name("evpn_one")
+ *             .evpnOptions(EvpnTopologyEvpnOptionsArgs.builder()
+ *                 .routedAt("core")
+ *                 .overlay(EvpnTopologyEvpnOptionsOverlayArgs.builder()
+ *                     .as(65000)
+ *                     .build())
+ *                 .coreAsBorder(true)
+ *                 .autoLoopbackSubnet("172.16.192.0/24")
+ *                 .autoLoopbackSubnet6("fd33:ab00:2::/64")
+ *                 .perVlanVgaV4Mac(false)
+ *                 .underlay(EvpnTopologyEvpnOptionsUnderlayArgs.builder()
+ *                     .asBase(65001)
+ *                     .useIpv6(false)
+ *                     .subnet("10.255.240.0/20")
+ *                     .build())
+ *                 .autoRouterIdSubnet("172.16.254.0/23")
+ *                 .build())
+ *             .switches(Map.ofEntries(
+ *                 Map.entry("0200030001fe", EvpnTopologySwitchesArgs.builder()
+ *                     .role("core")
+ *                     .build()),
+ *                 Map.entry("0200030001ff", EvpnTopologySwitchesArgs.builder()
+ *                     .role("core")
+ *                     .build()),
+ *                 Map.entry("020003000200", EvpnTopologySwitchesArgs.builder()
+ *                     .role("access")
+ *                     .build()),
+ *                 Map.entry("020003000201", EvpnTopologySwitchesArgs.builder()
+ *                     .role("access")
+ *                     .build())
+ *             ))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(evpnTopologySwitches)
+ *                 .build());
  * 
  *     }
  * }

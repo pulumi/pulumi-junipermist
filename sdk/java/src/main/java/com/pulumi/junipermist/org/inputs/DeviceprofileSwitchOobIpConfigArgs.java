@@ -77,14 +77,14 @@ public final class DeviceprofileSwitchOobIpConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * IP assignment mode for the out-of-band management interface
+     * IP assignment mode for the out-of-band management interface. enum: `dhcp`, `static`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return IP assignment mode for the out-of-band management interface
+     * @return IP assignment mode for the out-of-band management interface. enum: `dhcp`, `static`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -236,7 +236,7 @@ public final class DeviceprofileSwitchOobIpConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param type IP assignment mode for the out-of-band management interface
+         * @param type IP assignment mode for the out-of-band management interface. enum: `dhcp`, `static`.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class DeviceprofileSwitchOobIpConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param type IP assignment mode for the out-of-band management interface
+         * @param type IP assignment mode for the out-of-band management interface. enum: `dhcp`, `static`.
          * 
          * @return builder
          * 

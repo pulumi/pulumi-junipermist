@@ -55,7 +55,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// WAN probe profile used for health checks on this port
+        /// WAN probe profile used for health checks on this port. enum: `Broadband`, `Lte`.
         /// </summary>
         [Input("probeProfile")]
         public Input<string>? ProbeProfile { get; set; }

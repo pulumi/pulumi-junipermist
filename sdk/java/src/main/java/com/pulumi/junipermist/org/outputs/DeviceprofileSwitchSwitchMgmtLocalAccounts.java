@@ -17,7 +17,7 @@ public final class DeviceprofileSwitchSwitchMgmtLocalAccounts {
      */
     private @Nullable String password;
     /**
-     * @return Access role granted to the local switch user account
+     * @return Access role granted to the local switch user account. enum: `admin`, `helpdesk`, `none`, `read`.
      * 
      */
     private @Nullable String role;
@@ -31,7 +31,7 @@ public final class DeviceprofileSwitchSwitchMgmtLocalAccounts {
         return Optional.ofNullable(this.password);
     }
     /**
-     * @return Access role granted to the local switch user account
+     * @return Access role granted to the local switch user account. enum: `admin`, `helpdesk`, `none`, `read`.
      * 
      */
     public Optional<String> role() {

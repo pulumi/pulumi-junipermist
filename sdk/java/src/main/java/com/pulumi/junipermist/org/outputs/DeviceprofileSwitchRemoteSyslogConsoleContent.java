@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DeviceprofileSwitchRemoteSyslogConsoleContent {
     /**
-     * @return Syslog facility to match for this selector
+     * @return Syslog facility to match for this selector. enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`.
      * 
      */
     private @Nullable String facility;
     /**
-     * @return Syslog severity to match for this selector
+     * @return Syslog severity to match for this selector. enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`.
      * 
      */
     private @Nullable String severity;
 
     private DeviceprofileSwitchRemoteSyslogConsoleContent() {}
     /**
-     * @return Syslog facility to match for this selector
+     * @return Syslog facility to match for this selector. enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`.
      * 
      */
     public Optional<String> facility() {
         return Optional.ofNullable(this.facility);
     }
     /**
-     * @return Syslog severity to match for this selector
+     * @return Syslog severity to match for this selector. enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`.
      * 
      */
     public Optional<String> severity() {

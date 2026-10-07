@@ -66,7 +66,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? MeshSsid;
         /// <summary>
-        /// ARP proxy mode for site Wi-Fi
+        /// ARP proxy mode for site Wi-Fi. enum: `Default`, `Disabled`, `Enabled`.
         /// </summary>
         public readonly string? ProxyArp;
 

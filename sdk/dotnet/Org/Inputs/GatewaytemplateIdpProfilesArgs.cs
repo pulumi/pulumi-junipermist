@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class GatewaytemplateIdpProfilesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Built-in IDP baseline profile inherited before applying overwrites
+        /// Built-in IDP baseline profile inherited before applying overwrites. enum: `Critical`, `Standard`, `Strict`.
         /// </summary>
         [Input("baseProfile")]
         public Input<string>? BaseProfile { get; set; }

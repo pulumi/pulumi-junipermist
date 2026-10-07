@@ -25,7 +25,7 @@ public final class SwitchRemoteSyslogServer {
      */
     private @Nullable Boolean explicitPriority;
     /**
-     * @return Default syslog facility for messages sent to this server
+     * @return Default syslog facility for messages sent to this server. enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`.
      * 
      */
     private @Nullable String facility;
@@ -45,7 +45,7 @@ public final class SwitchRemoteSyslogServer {
      */
     private @Nullable String port;
     /**
-     * @return Transport protocol used for this remote syslog server
+     * @return Transport protocol used for this remote syslog server. enum: `tcp`, `udp`.
      * 
      */
     private @Nullable String protocol;
@@ -60,7 +60,7 @@ public final class SwitchRemoteSyslogServer {
      */
     private @Nullable String serverName;
     /**
-     * @return Default syslog severity for messages sent to this server
+     * @return Default syslog severity for messages sent to this server. enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`.
      * 
      */
     private @Nullable String severity;
@@ -96,7 +96,7 @@ public final class SwitchRemoteSyslogServer {
         return Optional.ofNullable(this.explicitPriority);
     }
     /**
-     * @return Default syslog facility for messages sent to this server
+     * @return Default syslog facility for messages sent to this server. enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`.
      * 
      */
     public Optional<String> facility() {
@@ -124,7 +124,7 @@ public final class SwitchRemoteSyslogServer {
         return Optional.ofNullable(this.port);
     }
     /**
-     * @return Transport protocol used for this remote syslog server
+     * @return Transport protocol used for this remote syslog server. enum: `tcp`, `udp`.
      * 
      */
     public Optional<String> protocol() {
@@ -145,7 +145,7 @@ public final class SwitchRemoteSyslogServer {
         return Optional.ofNullable(this.serverName);
     }
     /**
-     * @return Default syslog severity for messages sent to this server
+     * @return Default syslog severity for messages sent to this server. enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`.
      * 
      */
     public Optional<String> severity() {

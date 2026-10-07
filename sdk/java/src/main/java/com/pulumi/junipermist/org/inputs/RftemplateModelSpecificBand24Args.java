@@ -49,14 +49,14 @@ public final class RftemplateModelSpecificBand24Args extends com.pulumi.resource
     }
 
     /**
-     * Radio chain mode for the 2.4 GHz radio
+     * Radio chain mode for the 2.4 GHz radio. enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`.
      * 
      */
     @Import(name="antennaMode")
     private @Nullable Output<String> antennaMode;
 
     /**
-     * @return Radio chain mode for the 2.4 GHz radio
+     * @return Radio chain mode for the 2.4 GHz radio. enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`.
      * 
      */
     public Optional<Output<String>> antennaMode() {
@@ -64,14 +64,14 @@ public final class RftemplateModelSpecificBand24Args extends com.pulumi.resource
     }
 
     /**
-     * Channel width configured for the 2.4 GHz radio
+     * Channel width configured for the 2.4 GHz radio. enum: `0`, `20`, `40`.
      * 
      */
     @Import(name="bandwidth")
     private @Nullable Output<Integer> bandwidth;
 
     /**
-     * @return Channel width configured for the 2.4 GHz radio
+     * @return Channel width configured for the 2.4 GHz radio. enum: `0`, `20`, `40`.
      * 
      */
     public Optional<Output<Integer>> bandwidth() {
@@ -154,14 +154,14 @@ public final class RftemplateModelSpecificBand24Args extends com.pulumi.resource
     }
 
     /**
-     * 802.11 preamble mode used by the 2.4 GHz radio
+     * 802.11 preamble mode used by the 2.4 GHz radio. enum: `auto`, `long`, `short`.
      * 
      */
     @Import(name="preamble")
     private @Nullable Output<String> preamble;
 
     /**
-     * @return 802.11 preamble mode used by the 2.4 GHz radio
+     * @return 802.11 preamble mode used by the 2.4 GHz radio. enum: `auto`, `long`, `short`.
      * 
      */
     public Optional<Output<String>> preamble() {
@@ -244,7 +244,7 @@ public final class RftemplateModelSpecificBand24Args extends com.pulumi.resource
         }
 
         /**
-         * @param antennaMode Radio chain mode for the 2.4 GHz radio
+         * @param antennaMode Radio chain mode for the 2.4 GHz radio. enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`.
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class RftemplateModelSpecificBand24Args extends com.pulumi.resource
         }
 
         /**
-         * @param antennaMode Radio chain mode for the 2.4 GHz radio
+         * @param antennaMode Radio chain mode for the 2.4 GHz radio. enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`.
          * 
          * @return builder
          * 
@@ -265,7 +265,7 @@ public final class RftemplateModelSpecificBand24Args extends com.pulumi.resource
         }
 
         /**
-         * @param bandwidth Channel width configured for the 2.4 GHz radio
+         * @param bandwidth Channel width configured for the 2.4 GHz radio. enum: `0`, `20`, `40`.
          * 
          * @return builder
          * 
@@ -276,7 +276,7 @@ public final class RftemplateModelSpecificBand24Args extends com.pulumi.resource
         }
 
         /**
-         * @param bandwidth Channel width configured for the 2.4 GHz radio
+         * @param bandwidth Channel width configured for the 2.4 GHz radio. enum: `0`, `20`, `40`.
          * 
          * @return builder
          * 
@@ -401,7 +401,7 @@ public final class RftemplateModelSpecificBand24Args extends com.pulumi.resource
         }
 
         /**
-         * @param preamble 802.11 preamble mode used by the 2.4 GHz radio
+         * @param preamble 802.11 preamble mode used by the 2.4 GHz radio. enum: `auto`, `long`, `short`.
          * 
          * @return builder
          * 
@@ -412,7 +412,7 @@ public final class RftemplateModelSpecificBand24Args extends com.pulumi.resource
         }
 
         /**
-         * @param preamble 802.11 preamble mode used by the 2.4 GHz radio
+         * @param preamble 802.11 preamble mode used by the 2.4 GHz radio. enum: `auto`, `long`, `short`.
          * 
          * @return builder
          * 

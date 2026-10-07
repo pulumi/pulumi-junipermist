@@ -26,7 +26,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly Outputs.GatewayTunnelConfigsAutoProvisionPrimary? Primary;
         /// <summary>
-        /// Tunnel provider used for automatic endpoint provisioning
+        /// Tunnel provider used for automatic endpoint provisioning. enum: `jse-ipsec`, `zscaler-ipsec`.
         /// </summary>
         public readonly string Provider;
         /// <summary>

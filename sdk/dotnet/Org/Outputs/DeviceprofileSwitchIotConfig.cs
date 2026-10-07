@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class DeviceprofileSwitchIotConfig
     {
         /// <summary>
-        /// Alarm severity class raised for input-triggered switch IOT port events
+        /// Alarm severity class raised for input-triggered switch IOT port events. enum: `Minor`, `Major`.
         /// </summary>
         public readonly string? AlarmClass;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Only for `OUT` ports. Input port that triggers this output port
+        /// Only for `OUT` ports. Input port that triggers this output port. enum: `IN0`, `IN1`.
         /// </summary>
         public readonly string? InputSrc;
         /// <summary>

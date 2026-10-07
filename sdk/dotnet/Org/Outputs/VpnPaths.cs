@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class VpnPaths
     {
         /// <summary>
-        /// BFD profile used for this VPN path
+        /// BFD profile used for this VPN path. enum: `Broadband`, `Lte`.
         /// </summary>
         public readonly string? BfdProfile;
         /// <summary>

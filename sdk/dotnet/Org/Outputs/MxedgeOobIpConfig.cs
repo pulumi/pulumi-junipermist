@@ -50,11 +50,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Netmask6;
         /// <summary>
-        /// IPv4 address assignment mode for out-of-band management
+        /// IPv4 address assignment mode for out-of-band management. enum: `Dhcp`, `Static`.
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// IPv6 address assignment mode for out-of-band management
+        /// IPv6 address assignment mode for out-of-band management. enum: `Dhcp`, `Static`.
         /// </summary>
         public readonly string? Type6;
 

@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? CustomVersions;
         /// <summary>
-        /// Day of the week for the AP auto-upgrade maintenance window
+        /// Day of the week for the AP auto-upgrade maintenance window. enum: `Any`, `Fri`, `Mon`, `Sat`, `Sun`, `Thu`, `Tue`, `Wed`.
         /// </summary>
         public readonly string? DayOfWeek;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? TimeOfDay;
         /// <summary>
-        /// Firmware release channel or specific version used for AP auto-upgrade
+        /// Firmware release channel or specific version used for AP auto-upgrade. enum: `Beta`, `Custom`, `Stable`.
         /// </summary>
         public readonly string? Version;
 

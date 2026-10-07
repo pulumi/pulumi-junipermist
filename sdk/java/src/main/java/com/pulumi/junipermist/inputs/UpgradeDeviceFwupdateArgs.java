@@ -34,14 +34,14 @@ public final class UpgradeDeviceFwupdateArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Current firmware update status
+     * Current firmware update status. enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Current firmware update status
+     * @return Current firmware update status. enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -143,7 +143,7 @@ public final class UpgradeDeviceFwupdateArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param status Current firmware update status
+         * @param status Current firmware update status. enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`.
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class UpgradeDeviceFwupdateArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param status Current firmware update status
+         * @param status Current firmware update status. enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`.
          * 
          * @return builder
          * 

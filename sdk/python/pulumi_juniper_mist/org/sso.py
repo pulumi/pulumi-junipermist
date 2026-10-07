@@ -48,7 +48,7 @@ class SsoArgs:
         :param pulumi.Input[_builtins.bool] ignore_unmatched_roles: ignore any unmatched roles provided in assertion. By default, an assertion is treated as invalid for any unmatched role
         :param pulumi.Input[_builtins.str] name: Display name of the SSO configuration
         :param pulumi.Input[_builtins.str] nameid_format: enum: `email`, `unspecified`
-        :param pulumi.Input[_builtins.str] oauth_provider_domain: Provider domain for Okta OAuth SSO when `oauth_type`==`okta`
+        :param pulumi.Input[_builtins.str] oauth_provider_domain: Provider domain for Okta OAuth SSO when `oauth_type`==`okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] openroaming_ssids: SSIDs that support OpenRoaming, used when `idp_type`==`openroaming`
         :param pulumi.Input[_builtins.str] openroaming_wba_client_cert: Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
         :param pulumi.Input[_builtins.str] openroaming_wba_client_key: Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
@@ -207,7 +207,7 @@ class SsoArgs:
     @pulumi.getter(name="oauthProviderDomain")
     def oauth_provider_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Provider domain for Okta OAuth SSO when `oauth_type`==`okta`
+        Provider domain for Okta OAuth SSO when `oauth_type`==`okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
         """
         return pulumi.get(self, "oauth_provider_domain")
 
@@ -311,7 +311,7 @@ class _SsoState:
         :param pulumi.Input[_builtins.str] issuer: IDP issuer URL
         :param pulumi.Input[_builtins.str] name: Display name of the SSO configuration
         :param pulumi.Input[_builtins.str] nameid_format: enum: `email`, `unspecified`
-        :param pulumi.Input[_builtins.str] oauth_provider_domain: Provider domain for Okta OAuth SSO when `oauth_type`==`okta`
+        :param pulumi.Input[_builtins.str] oauth_provider_domain: Provider domain for Okta OAuth SSO when `oauth_type`==`okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] openroaming_ssids: SSIDs that support OpenRoaming, used when `idp_type`==`openroaming`
         :param pulumi.Input[_builtins.str] openroaming_wba_client_cert: Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
         :param pulumi.Input[_builtins.str] openroaming_wba_client_key: Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
@@ -480,7 +480,7 @@ class _SsoState:
     @pulumi.getter(name="oauthProviderDomain")
     def oauth_provider_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Provider domain for Okta OAuth SSO when `oauth_type`==`okta`
+        Provider domain for Okta OAuth SSO when `oauth_type`==`okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
         """
         return pulumi.get(self, "oauth_provider_domain")
 
@@ -629,7 +629,7 @@ class Sso(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] issuer: IDP issuer URL
         :param pulumi.Input[_builtins.str] name: Display name of the SSO configuration
         :param pulumi.Input[_builtins.str] nameid_format: enum: `email`, `unspecified`
-        :param pulumi.Input[_builtins.str] oauth_provider_domain: Provider domain for Okta OAuth SSO when `oauth_type`==`okta`
+        :param pulumi.Input[_builtins.str] oauth_provider_domain: Provider domain for Okta OAuth SSO when `oauth_type`==`okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] openroaming_ssids: SSIDs that support OpenRoaming, used when `idp_type`==`openroaming`
         :param pulumi.Input[_builtins.str] openroaming_wba_client_cert: Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
         :param pulumi.Input[_builtins.str] openroaming_wba_client_key: Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
@@ -792,7 +792,7 @@ class Sso(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] issuer: IDP issuer URL
         :param pulumi.Input[_builtins.str] name: Display name of the SSO configuration
         :param pulumi.Input[_builtins.str] nameid_format: enum: `email`, `unspecified`
-        :param pulumi.Input[_builtins.str] oauth_provider_domain: Provider domain for Okta OAuth SSO when `oauth_type`==`okta`
+        :param pulumi.Input[_builtins.str] oauth_provider_domain: Provider domain for Okta OAuth SSO when `oauth_type`==`okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] openroaming_ssids: SSIDs that support OpenRoaming, used when `idp_type`==`openroaming`
         :param pulumi.Input[_builtins.str] openroaming_wba_client_cert: Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
         :param pulumi.Input[_builtins.str] openroaming_wba_client_key: Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
@@ -909,7 +909,7 @@ class Sso(pulumi.CustomResource):
     @pulumi.getter(name="oauthProviderDomain")
     def oauth_provider_domain(self) -> pulumi.Output[_builtins.str]:
         """
-        Provider domain for Okta OAuth SSO when `oauth_type`==`okta`
+        Provider domain for Okta OAuth SSO when `oauth_type`==`okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
         """
         return pulumi.get(self, "oauth_provider_domain")
 

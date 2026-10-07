@@ -139,14 +139,14 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When `type`==`open`, Opportunistic Wireless Encryption mode for this WLAN
+     * When `type`==`open`, Opportunistic Wireless Encryption mode for this WLAN. enum: `disabled`, `enabled`, `required`.
      * 
      */
     @Import(name="owe")
     private @Nullable Output<String> owe;
 
     /**
-     * @return When `type`==`open`, Opportunistic Wireless Encryption mode for this WLAN
+     * @return When `type`==`open`, Opportunistic Wireless Encryption mode for this WLAN. enum: `disabled`, `enabled`, `required`.
      * 
      */
     public Optional<Output<String>> owe() {
@@ -199,14 +199,14 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Authentication mode used by this WLAN
+     * Authentication mode used by this WLAN. enum: `eap`, `eap192`, `open`, `psk`, `psk-tkip`, `psk-wpa2-tkip`, `wep`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Authentication mode used by this WLAN
+     * @return Authentication mode used by this WLAN. enum: `eap`, `eap192`, `open`, `psk`, `psk-tkip`, `psk-wpa2-tkip`, `wep`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -444,7 +444,7 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param owe When `type`==`open`, Opportunistic Wireless Encryption mode for this WLAN
+         * @param owe When `type`==`open`, Opportunistic Wireless Encryption mode for this WLAN. enum: `disabled`, `enabled`, `required`.
          * 
          * @return builder
          * 
@@ -455,7 +455,7 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param owe When `type`==`open`, Opportunistic Wireless Encryption mode for this WLAN
+         * @param owe When `type`==`open`, Opportunistic Wireless Encryption mode for this WLAN. enum: `disabled`, `enabled`, `required`.
          * 
          * @return builder
          * 
@@ -538,7 +538,7 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Authentication mode used by this WLAN
+         * @param type Authentication mode used by this WLAN. enum: `eap`, `eap192`, `open`, `psk`, `psk-tkip`, `psk-wpa2-tkip`, `wep`.
          * 
          * @return builder
          * 
@@ -549,7 +549,7 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Authentication mode used by this WLAN
+         * @param type Authentication mode used by this WLAN. enum: `eap`, `eap192`, `open`, `psk`, `psk-tkip`, `psk-wpa2-tkip`, `wep`.
          * 
          * @return builder
          * 

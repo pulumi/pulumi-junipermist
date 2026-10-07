@@ -24,7 +24,7 @@ public final class WlanAuthServer {
      */
     private @Nullable Boolean keywrapEnabled;
     /**
-     * @return Encoding format for RADIUS keywrap KEK and MACK values
+     * @return Encoding format for RADIUS keywrap KEK and MACK values. enum: `ascii`, `hex`.
      * 
      */
     private @Nullable String keywrapFormat;
@@ -70,7 +70,7 @@ public final class WlanAuthServer {
         return Optional.ofNullable(this.keywrapEnabled);
     }
     /**
-     * @return Encoding format for RADIUS keywrap KEK and MACK values
+     * @return Encoding format for RADIUS keywrap KEK and MACK values. enum: `ascii`, `hex`.
      * 
      */
     public Optional<String> keywrapFormat() {

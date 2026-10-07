@@ -54,7 +54,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>
-        /// Only if `Mode`!=`Dynamic`. Link duplex mode for this port usage
+        /// Only if `Mode`!=`Dynamic`. Link duplex mode for this port usage. enum: `Auto`, `Full`, `Half`.
         /// </summary>
         public readonly string? Duplex;
         /// <summary>
@@ -90,7 +90,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? MacAuthPreferred;
         /// <summary>
-        /// Only if `Mode`!=`Dynamic` and `EnableMacAuth`==`True`. MAC authentication protocol to use; ignored if Mist NAC is enabled
+        /// Only if `Mode`!=`Dynamic` and `EnableMacAuth`==`True`. Select `Pap`, `eap-peap`, or `eap-md5`. When Mist NAC is enabled, this is forced to `Pap`, unless `mist_nac.enable_eap_md5_for_mab` is enabled; then `eap-md5` is kept and the port performs MAB (mac-radius) while sending EAP-MD5. enum: `eap-md5`, `eap-peap`, `Pap`.
         /// </summary>
         public readonly string? MacAuthProtocol;
         /// <summary>
@@ -98,7 +98,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? MacLimit;
         /// <summary>
-        /// Switching mode for this port usage
+        /// Switching mode for this port usage. enum: `Access`, `Dynamic`, `Inet`, `Trunk`.
         /// </summary>
         public readonly string? Mode;
         /// <summary>
@@ -109,6 +109,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// Only if `Mode`==`Trunk`. Network or VLAN names to trunk
         /// </summary>
         public readonly ImmutableArray<string> Networks;
+        /// <summary>
+        /// Whether this port usage can be overridden in local port configuration
+        /// </summary>
+        public readonly bool? NoLocalPortConfig;
         /// <summary>
         /// Only if `Mode`==`Access` and `PortAuth`!=`Dot1x`. Whether the port should retain dynamically learned MAC addresses
         /// </summary>
@@ -122,11 +126,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? PoeKeepStateWhenReboot;
         /// <summary>
-        /// Only if `Mode`!=`Dynamic`. PoE priority for ports using this port usage
+        /// Only if `Mode`!=`Dynamic`. PoE priority for ports using this port usage. enum: `Low`, `High`.
         /// </summary>
         public readonly string? PoePriority;
         /// <summary>
-        /// Only if `Mode`!=`Dynamic`. 802.1X authentication mode for this port usage
+        /// Only if `Mode`!=`Dynamic`. 802.1X authentication mode for this port usage. enum: `Dot1x`.
         /// </summary>
         public readonly string? PortAuth;
         /// <summary>
@@ -138,7 +142,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? ReauthInterval;
         /// <summary>
-        /// Only if `Mode`==`Dynamic`. Condition that resets a dynamic port to the default port usage
+        /// Only if `Mode`==`Dynamic`. Condition that resets a dynamic port to the default port usage. enum: `LinkDown`, `None`.
         /// </summary>
         public readonly string? ResetDefaultWhen;
         /// <summary>
@@ -158,7 +162,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? ServerRejectNetwork;
         /// <summary>
-        /// Only if `Mode`!=`Dynamic`. Link speed for this port usage
+        /// Only if `Mode`!=`Dynamic`. Link speed for this port usage. enum: `10m`, `100m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`, `Auto`.
         /// </summary>
         public readonly string? Speed;
         /// <summary>
@@ -244,6 +248,8 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             ImmutableArray<string> networks,
 
+            bool? noLocalPortConfig,
+
             bool? persistMac,
 
             bool? poeDisabled,
@@ -310,6 +316,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
             Mode = mode;
             Mtu = mtu;
             Networks = networks;
+            NoLocalPortConfig = noLocalPortConfig;
             PersistMac = persistMac;
             PoeDisabled = poeDisabled;
             PoeKeepStateWhenReboot = poeKeepStateWhenReboot;

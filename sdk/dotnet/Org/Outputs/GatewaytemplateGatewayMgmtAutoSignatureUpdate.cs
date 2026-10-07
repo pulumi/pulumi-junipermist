@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class GatewaytemplateGatewayMgmtAutoSignatureUpdate
     {
         /// <summary>
-        /// Scheduled weekday for automatic signature updates
+        /// Scheduled weekday for automatic signature updates. enum: `Any`, `Fri`, `Mon`, `Sat`, `Sun`, `Thu`, `Tue`, `Wed`.
         /// </summary>
         public readonly string? DayOfWeek;
         /// <summary>

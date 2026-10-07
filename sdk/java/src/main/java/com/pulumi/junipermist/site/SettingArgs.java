@@ -673,14 +673,14 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Tunnel termination monitoring settings for the site
+     * Tunnel termination monitoring settings for the Mist Edges assigned to the site
      * 
      */
     @Import(name="tuntermMonitorings")
     private @Nullable Output<List<SettingTuntermMonitoringArgs>> tuntermMonitorings;
 
     /**
-     * @return Tunnel termination monitoring settings for the site
+     * @return Tunnel termination monitoring settings for the Mist Edges assigned to the site
      * 
      */
     public Optional<Output<List<SettingTuntermMonitoringArgs>>> tuntermMonitorings() {
@@ -1848,7 +1848,7 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tuntermMonitorings Tunnel termination monitoring settings for the site
+         * @param tuntermMonitorings Tunnel termination monitoring settings for the Mist Edges assigned to the site
          * 
          * @return builder
          * 
@@ -1859,7 +1859,7 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tuntermMonitorings Tunnel termination monitoring settings for the site
+         * @param tuntermMonitorings Tunnel termination monitoring settings for the Mist Edges assigned to the site
          * 
          * @return builder
          * 
@@ -1869,7 +1869,7 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tuntermMonitorings Tunnel termination monitoring settings for the site
+         * @param tuntermMonitorings Tunnel termination monitoring settings for the Mist Edges assigned to the site
          * 
          * @return builder
          * 

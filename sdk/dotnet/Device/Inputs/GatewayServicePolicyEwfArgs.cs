@@ -31,7 +31,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Enhanced web filtering profile applied by this rule
+        /// Enhanced web filtering profile applied by this rule. enum: `Critical`, `Standard`, `Strict`.
         /// </summary>
         [Input("profile")]
         public Input<string>? Profile { get; set; }

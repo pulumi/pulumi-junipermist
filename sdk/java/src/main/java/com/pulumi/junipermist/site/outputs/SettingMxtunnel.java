@@ -91,7 +91,7 @@ public final class SettingMxtunnel {
      */
     private @Nullable String orgId;
     /**
-     * @return Encapsulation protocol used for the site Mist Tunnel
+     * @return Encapsulation protocol used for the site Mist Tunnel. enum: `ip`, `udp`.
      * 
      */
     private @Nullable String protocol;
@@ -211,7 +211,7 @@ public final class SettingMxtunnel {
         return Optional.ofNullable(this.orgId);
     }
     /**
-     * @return Encapsulation protocol used for the site Mist Tunnel
+     * @return Encapsulation protocol used for the site Mist Tunnel. enum: `ip`, `udp`.
      * 
      */
     public Optional<String> protocol() {

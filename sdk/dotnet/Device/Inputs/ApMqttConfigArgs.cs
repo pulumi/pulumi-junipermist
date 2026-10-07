@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<int>? BrokerPort { get; set; }
 
         /// <summary>
-        /// MQTT broker transport protocol
+        /// MQTT broker transport protocol. enum: `Ssl`, `Tcp`.
         /// </summary>
         [Input("brokerProto")]
         public Input<string>? BrokerProto { get; set; }
@@ -43,7 +43,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Payload format for published messages
+        /// Payload format for published messages. enum: `Json`, `Raw`.
         /// </summary>
         [Input("format")]
         public Input<string>? Format { get; set; }

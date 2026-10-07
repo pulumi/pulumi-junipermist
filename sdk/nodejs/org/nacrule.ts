@@ -89,7 +89,11 @@ export class Nacrule extends pulumi.CustomResource {
      */
     declare public readonly enabled: pulumi.Output<boolean>;
     /**
-     * Guest portal authorization state condition for the rule
+     * Name of the group the NAC rule belongs to
+     */
+    declare public readonly groupName: pulumi.Output<string | undefined>;
+    /**
+     * Guest portal authorization state condition for the rule. enum: `authorized`, `unknown`.
      */
     declare public readonly guestAuthState: pulumi.Output<string | undefined>;
     /**
@@ -130,6 +134,7 @@ export class Nacrule extends pulumi.CustomResource {
             resourceInputs["applyTags"] = state?.applyTags;
             resourceInputs["dryRun"] = state?.dryRun;
             resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["groupName"] = state?.groupName;
             resourceInputs["guestAuthState"] = state?.guestAuthState;
             resourceInputs["matching"] = state?.matching;
             resourceInputs["name"] = state?.name;
@@ -151,6 +156,7 @@ export class Nacrule extends pulumi.CustomResource {
             resourceInputs["applyTags"] = args?.applyTags;
             resourceInputs["dryRun"] = args?.dryRun;
             resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["groupName"] = args?.groupName;
             resourceInputs["guestAuthState"] = args?.guestAuthState;
             resourceInputs["matching"] = args?.matching;
             resourceInputs["name"] = args?.name;
@@ -184,7 +190,11 @@ export interface NacruleState {
      */
     enabled?: pulumi.Input<boolean | undefined>;
     /**
-     * Guest portal authorization state condition for the rule
+     * Name of the group the NAC rule belongs to
+     */
+    groupName?: pulumi.Input<string | undefined>;
+    /**
+     * Guest portal authorization state condition for the rule. enum: `authorized`, `unknown`.
      */
     guestAuthState?: pulumi.Input<string | undefined>;
     /**
@@ -230,7 +240,11 @@ export interface NacruleArgs {
      */
     enabled?: pulumi.Input<boolean | undefined>;
     /**
-     * Guest portal authorization state condition for the rule
+     * Name of the group the NAC rule belongs to
+     */
+    groupName?: pulumi.Input<string | undefined>;
+    /**
+     * Guest portal authorization state condition for the rule. enum: `authorized`, `unknown`.
      */
     guestAuthState?: pulumi.Input<string | undefined>;
     /**

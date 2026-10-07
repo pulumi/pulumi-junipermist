@@ -61,7 +61,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// Link duplex mode for this local port configuration
+        /// Link duplex mode for this local port configuration. enum: `Auto`, `Full`, `Half`.
         /// </summary>
         [Input("duplex")]
         public Input<string>? Duplex { get; set; }
@@ -115,7 +115,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? MacAuthPreferred { get; set; }
 
         /// <summary>
-        /// Only if `EnableMacAuth`==`True`, MAC authentication protocol to use
+        /// Only if `EnableMacAuth`==`True`, MAC authentication protocol to use. enum: `eap-md5`, `eap-peap`, `Pap`.
         /// </summary>
         [Input("macAuthProtocol")]
         public Input<string>? MacAuthProtocol { get; set; }
@@ -127,7 +127,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<int>? MacLimit { get; set; }
 
         /// <summary>
-        /// Switching mode for this local port configuration
+        /// Switching mode for this local port configuration. enum: `Access`, `Inet`, `Trunk`.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -169,7 +169,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? PoeDisabled { get; set; }
 
         /// <summary>
-        /// 802.1X authentication mode for this local port configuration
+        /// 802.1X authentication mode for this local port configuration. enum: `Dot1x`.
         /// </summary>
         [Input("portAuth")]
         public Input<string>? PortAuth { get; set; }
@@ -199,7 +199,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? ServerRejectNetwork { get; set; }
 
         /// <summary>
-        /// Link speed for this local port configuration
+        /// Link speed for this local port configuration. enum: `10m`, `100m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`, `Auto`.
         /// </summary>
         [Input("speed")]
         public Input<string>? Speed { get; set; }

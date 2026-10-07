@@ -18,14 +18,14 @@ public final class SsoRolePrivilegeArgs extends com.pulumi.resources.ResourceArg
     public static final SsoRolePrivilegeArgs Empty = new SsoRolePrivilegeArgs();
 
     /**
-     * Access role granted by this organization privilege
+     * Access role granted by this organization privilege. enum: `admin`, `helpdesk`, `installer`, `read`, `write`.
      * 
      */
     @Import(name="role", required=true)
     private Output<String> role;
 
     /**
-     * @return Access role granted by this organization privilege
+     * @return Access role granted by this organization privilege. enum: `admin`, `helpdesk`, `installer`, `read`, `write`.
      * 
      */
     public Output<String> role() {
@@ -33,14 +33,14 @@ public final class SsoRolePrivilegeArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Organization hierarchy level where this privilege applies
+     * Organization hierarchy level where this privilege applies. enum: `org`, `site`, `sitegroup`, `orgsites`.
      * 
      */
     @Import(name="scope", required=true)
     private Output<String> scope;
 
     /**
-     * @return Organization hierarchy level where this privilege applies
+     * @return Organization hierarchy level where this privilege applies. enum: `org`, `site`, `sitegroup`, `orgsites`.
      * 
      */
     public Output<String> scope() {
@@ -121,7 +121,7 @@ public final class SsoRolePrivilegeArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param role Access role granted by this organization privilege
+         * @param role Access role granted by this organization privilege. enum: `admin`, `helpdesk`, `installer`, `read`, `write`.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class SsoRolePrivilegeArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param role Access role granted by this organization privilege
+         * @param role Access role granted by this organization privilege. enum: `admin`, `helpdesk`, `installer`, `read`, `write`.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class SsoRolePrivilegeArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param scope Organization hierarchy level where this privilege applies
+         * @param scope Organization hierarchy level where this privilege applies. enum: `org`, `site`, `sitegroup`, `orgsites`.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class SsoRolePrivilegeArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param scope Organization hierarchy level where this privilege applies
+         * @param scope Organization hierarchy level where this privilege applies. enum: `org`, `site`, `sitegroup`, `orgsites`.
          * 
          * @return builder
          * 

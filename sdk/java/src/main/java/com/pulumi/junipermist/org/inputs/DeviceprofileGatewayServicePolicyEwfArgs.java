@@ -62,14 +62,14 @@ public final class DeviceprofileGatewayServicePolicyEwfArgs extends com.pulumi.r
     }
 
     /**
-     * Enhanced web filtering profile applied by this rule
+     * Enhanced web filtering profile applied by this rule. enum: `critical`, `standard`, `strict`.
      * 
      */
     @Import(name="profile")
     private @Nullable Output<String> profile;
 
     /**
-     * @return Enhanced web filtering profile applied by this rule
+     * @return Enhanced web filtering profile applied by this rule. enum: `critical`, `standard`, `strict`.
      * 
      */
     public Optional<Output<String>> profile() {
@@ -167,7 +167,7 @@ public final class DeviceprofileGatewayServicePolicyEwfArgs extends com.pulumi.r
         }
 
         /**
-         * @param profile Enhanced web filtering profile applied by this rule
+         * @param profile Enhanced web filtering profile applied by this rule. enum: `critical`, `standard`, `strict`.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class DeviceprofileGatewayServicePolicyEwfArgs extends com.pulumi.r
         }
 
         /**
-         * @param profile Enhanced web filtering profile applied by this rule
+         * @param profile Enhanced web filtering profile applied by this rule. enum: `critical`, `standard`, `strict`.
          * 
          * @return builder
          * 

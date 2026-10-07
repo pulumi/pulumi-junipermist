@@ -27,17 +27,17 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixList {
      */
     private @Nullable String readView;
     /**
-     * @return Required security level for this VACM access rule
+     * @return Required security level for this VACM access rule. enum: `authentication`, `none`, `privacy`.
      * 
      */
     private @Nullable String securityLevel;
     /**
-     * @return Required security model for this VACM access rule
+     * @return Required security model for this VACM access rule. enum: `any`, `usm`, `v1`, `v2c`.
      * 
      */
     private @Nullable String securityModel;
     /**
-     * @return VACM context matching type for this access rule
+     * @return VACM context matching type for this access rule. enum: `contextPrefix`, `defaultContextPrefix`.
      * 
      */
     private @Nullable String type;
@@ -70,21 +70,21 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixList {
         return Optional.ofNullable(this.readView);
     }
     /**
-     * @return Required security level for this VACM access rule
+     * @return Required security level for this VACM access rule. enum: `authentication`, `none`, `privacy`.
      * 
      */
     public Optional<String> securityLevel() {
         return Optional.ofNullable(this.securityLevel);
     }
     /**
-     * @return Required security model for this VACM access rule
+     * @return Required security model for this VACM access rule. enum: `any`, `usm`, `v1`, `v2c`.
      * 
      */
     public Optional<String> securityModel() {
         return Optional.ofNullable(this.securityModel);
     }
     /**
-     * @return VACM context matching type for this access rule
+     * @return VACM context matching type for this access rule. enum: `contextPrefix`, `defaultContextPrefix`.
      * 
      */
     public Optional<String> type() {

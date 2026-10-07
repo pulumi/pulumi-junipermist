@@ -18,7 +18,7 @@ public final class GatewaytemplateGatewayMgmtProtectReCustom {
      */
     private @Nullable String portRange;
     /**
-     * @return Transport protocol matched by this custom Protect RE ACL
+     * @return Transport protocol matched by this custom Protect RE ACL. enum: `any`, `icmp`, `tcp`, `udp`.
      * 
      */
     private @Nullable String protocol;
@@ -37,7 +37,7 @@ public final class GatewaytemplateGatewayMgmtProtectReCustom {
         return Optional.ofNullable(this.portRange);
     }
     /**
-     * @return Transport protocol matched by this custom Protect RE ACL
+     * @return Transport protocol matched by this custom Protect RE ACL. enum: `any`, `icmp`, `tcp`, `udp`.
      * 
      */
     public Optional<String> protocol() {

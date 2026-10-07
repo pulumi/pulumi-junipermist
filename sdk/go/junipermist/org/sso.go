@@ -84,7 +84,7 @@ type Sso struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// enum: `email`, `unspecified`
 	NameidFormat pulumi.StringOutput `pulumi:"nameidFormat"`
-	// Provider domain for Okta OAuth SSO when `oauthType`==`okta`
+	// Provider domain for Okta OAuth SSO when `oauthType`==`okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
 	OauthProviderDomain pulumi.StringOutput `pulumi:"oauthProviderDomain"`
 	// SSIDs that support OpenRoaming, used when `idpType`==`openroaming`
 	OpenroamingSsids pulumi.StringArrayOutput `pulumi:"openroamingSsids"`
@@ -178,7 +178,7 @@ type ssoState struct {
 	Name *string `pulumi:"name"`
 	// enum: `email`, `unspecified`
 	NameidFormat *string `pulumi:"nameidFormat"`
-	// Provider domain for Okta OAuth SSO when `oauthType`==`okta`
+	// Provider domain for Okta OAuth SSO when `oauthType`==`okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
 	OauthProviderDomain *string `pulumi:"oauthProviderDomain"`
 	// SSIDs that support OpenRoaming, used when `idpType`==`openroaming`
 	OpenroamingSsids []string `pulumi:"openroamingSsids"`
@@ -217,7 +217,7 @@ type SsoState struct {
 	Name pulumi.StringPtrInput
 	// enum: `email`, `unspecified`
 	NameidFormat pulumi.StringPtrInput
-	// Provider domain for Okta OAuth SSO when `oauthType`==`okta`
+	// Provider domain for Okta OAuth SSO when `oauthType`==`okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
 	OauthProviderDomain pulumi.StringPtrInput
 	// SSIDs that support OpenRoaming, used when `idpType`==`openroaming`
 	OpenroamingSsids pulumi.StringArrayInput
@@ -256,7 +256,7 @@ type ssoArgs struct {
 	Name *string `pulumi:"name"`
 	// enum: `email`, `unspecified`
 	NameidFormat *string `pulumi:"nameidFormat"`
-	// Provider domain for Okta OAuth SSO when `oauthType`==`okta`
+	// Provider domain for Okta OAuth SSO when `oauthType`==`okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
 	OauthProviderDomain *string `pulumi:"oauthProviderDomain"`
 	// SSIDs that support OpenRoaming, used when `idpType`==`openroaming`
 	OpenroamingSsids []string `pulumi:"openroamingSsids"`
@@ -292,7 +292,7 @@ type SsoArgs struct {
 	Name pulumi.StringPtrInput
 	// enum: `email`, `unspecified`
 	NameidFormat pulumi.StringPtrInput
-	// Provider domain for Okta OAuth SSO when `oauthType`==`okta`
+	// Provider domain for Okta OAuth SSO when `oauthType`==`okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
 	OauthProviderDomain pulumi.StringPtrInput
 	// SSIDs that support OpenRoaming, used when `idpType`==`openroaming`
 	OpenroamingSsids pulumi.StringArrayInput
@@ -447,7 +447,7 @@ func (o SsoOutput) NameidFormat() pulumi.StringOutput {
 	return o.ApplyT(func(v *Sso) pulumi.StringOutput { return v.NameidFormat }).(pulumi.StringOutput)
 }
 
-// Provider domain for Okta OAuth SSO when `oauthType`==`okta`
+// Provider domain for Okta OAuth SSO when `oauthType`==`okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
 func (o SsoOutput) OauthProviderDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v *Sso) pulumi.StringOutput { return v.OauthProviderDomain }).(pulumi.StringOutput)
 }

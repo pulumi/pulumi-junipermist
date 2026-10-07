@@ -105,7 +105,7 @@ export class Psk extends pulumi.CustomResource {
      */
     declare public readonly oldPassphrase: pulumi.Output<string | undefined>;
     /**
-     * Organization that owns the site-level PSK
+     * Organization that owns the org-level PSK
      */
     declare public /*out*/ readonly orgId: pulumi.Output<string>;
     /**
@@ -250,7 +250,7 @@ export interface PskState {
      */
     oldPassphrase?: pulumi.Input<string | undefined>;
     /**
-     * Organization that owns the site-level PSK
+     * Organization that owns the org-level PSK
      */
     orgId?: pulumi.Input<string | undefined>;
     /**

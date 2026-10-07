@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class GatewayServicePolicySslProxyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Allowed cipher strength category for SSL proxy inspection
+        /// Allowed cipher strength category for SSL proxy inspection. enum: `Medium`, `Strong`, `Weak`.
         /// </summary>
         [Input("ciphersCategory")]
         public Input<string>? CiphersCategory { get; set; }

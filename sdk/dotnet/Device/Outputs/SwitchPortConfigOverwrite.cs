@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>
-        /// Link duplex mode override for the switch port
+        /// Link duplex mode override for the switch port. enum: `Auto`, `Full`, `Half`.
         /// </summary>
         public readonly string? Duplex;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? PortNetwork;
         /// <summary>
-        /// Link speed override for the switch port
+        /// Link speed override for the switch port. enum: `10m`, `100m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`, `Auto`.
         /// </summary>
         public readonly string? Speed;
 

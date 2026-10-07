@@ -87,14 +87,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:org/webhook:Webhook")
 public class Webhook extends com.pulumi.resources.CustomResource {
     /**
-     * Default action applied when none of the `rules` match the incoming event
+     * Default action applied when none of the `rules` match the incoming event. enum: `permit`, `block`.
      * 
      */
     @Export(name="defaultAction", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> defaultAction;
 
     /**
-     * @return Default action applied when none of the `rules` match the incoming event
+     * @return Default action applied when none of the `rules` match the incoming event. enum: `permit`, `block`.
      * 
      */
     public Output<Optional<String>> defaultAction() {
@@ -171,14 +171,14 @@ public class Webhook extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.oauth2ClientSecret);
     }
     /**
-     * OAuth2 grant type used when `type`==`oauth2`
+     * OAuth2 grant type used when `type`==`oauth2`. enum: `clientCredentials`, `password`.
      * 
      */
     @Export(name="oauth2GrantType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oauth2GrantType;
 
     /**
-     * @return OAuth2 grant type used when `type`==`oauth2`
+     * @return OAuth2 grant type used when `type`==`oauth2`. enum: `clientCredentials`, `password`.
      * 
      */
     public Output<Optional<String>> oauth2GrantType() {
@@ -325,14 +325,14 @@ public class Webhook extends com.pulumi.resources.CustomResource {
         return this.topics;
     }
     /**
-     * Delivery mechanism used by this webhook
+     * Delivery mechanism used by this webhook. enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Delivery mechanism used by this webhook
+     * @return Delivery mechanism used by this webhook. enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`.
      * 
      */
     public Output<String> type() {

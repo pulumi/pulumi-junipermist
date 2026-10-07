@@ -84,14 +84,14 @@ public final class RftemplateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Radio usage mode for the 2.4 GHz-capable radio in this RF template
+     * Radio usage mode for the 2.4 GHz-capable radio in this RF template. enum: `24`, `5`, `6`, `auto`.
      * 
      */
     @Import(name="band24Usage")
     private @Nullable Output<String> band24Usage;
 
     /**
-     * @return Radio usage mode for the 2.4 GHz-capable radio in this RF template
+     * @return Radio usage mode for the 2.4 GHz-capable radio in this RF template. enum: `24`, `5`, `6`, `auto`.
      * 
      */
     public Optional<Output<String>> band24Usage() {
@@ -355,7 +355,7 @@ public final class RftemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param band24Usage Radio usage mode for the 2.4 GHz-capable radio in this RF template
+         * @param band24Usage Radio usage mode for the 2.4 GHz-capable radio in this RF template. enum: `24`, `5`, `6`, `auto`.
          * 
          * @return builder
          * 
@@ -366,7 +366,7 @@ public final class RftemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param band24Usage Radio usage mode for the 2.4 GHz-capable radio in this RF template
+         * @param band24Usage Radio usage mode for the 2.4 GHz-capable radio in this RF template. enum: `24`, `5`, `6`, `auto`.
          * 
          * @return builder
          * 

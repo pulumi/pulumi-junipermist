@@ -39,7 +39,7 @@ public final class WlanDynamicPsk {
      */
     private @Nullable List<String> localVlanIds;
     /**
-     * @return Origin used to retrieve per-user PSKs
+     * @return Origin used to retrieve per-user PSKs. enum: `cloudPsks`, `radius`.
      * 
      */
     private @Nullable String source;
@@ -81,7 +81,7 @@ public final class WlanDynamicPsk {
         return this.localVlanIds == null ? List.of() : this.localVlanIds;
     }
     /**
-     * @return Origin used to retrieve per-user PSKs
+     * @return Origin used to retrieve per-user PSKs. enum: `cloudPsks`, `radius`.
      * 
      */
     public Optional<String> source() {

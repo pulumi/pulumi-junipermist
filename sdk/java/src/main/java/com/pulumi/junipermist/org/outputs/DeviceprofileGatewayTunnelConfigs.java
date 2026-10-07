@@ -30,7 +30,7 @@ public final class DeviceprofileGatewayTunnelConfigs {
      */
     private @Nullable Integer ikeLifetime;
     /**
-     * @return Only if `provider`==`custom-ipsec`. IKE negotiation mode for the tunnel
+     * @return Only if `provider`==`custom-ipsec`. IKE negotiation mode for the tunnel. enum: `aggressive`, `main`.
      * 
      */
     private @Nullable String ikeMode;
@@ -60,7 +60,7 @@ public final class DeviceprofileGatewayTunnelConfigs {
      */
     private @Nullable List<String> localSubnets;
     /**
-     * @return Tunnel failover mode used for primary and secondary endpoints
+     * @return Tunnel failover mode used for primary and secondary endpoints. enum: `active-active`, `active-standby`.
      * 
      */
     private @Nullable String mode;
@@ -80,12 +80,12 @@ public final class DeviceprofileGatewayTunnelConfigs {
      */
     private @Nullable DeviceprofileGatewayTunnelConfigsProbe probe;
     /**
-     * @return Only if `provider`==`custom-ipsec`. Tunnel protocol for custom tunnel negotiation
+     * @return Only if `provider`==`custom-ipsec`. Tunnel protocol for custom tunnel negotiation. enum: `gre`, `ipsec`.
      * 
      */
     private @Nullable String protocol;
     /**
-     * @return Tunnel provider used when auto provisioning is disabled
+     * @return Tunnel provider used when auto provisioning is disabled. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`.
      * 
      */
     private @Nullable String provider;
@@ -105,7 +105,7 @@ public final class DeviceprofileGatewayTunnelConfigs {
      */
     private @Nullable DeviceprofileGatewayTunnelConfigsSecondary secondary;
     /**
-     * @return Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. Tunnel version value for custom tunnel configuration
+     * @return Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. Tunnel version value for custom tunnel configuration. enum: `1`, `2`.
      * 
      */
     private @Nullable String version;
@@ -126,7 +126,7 @@ public final class DeviceprofileGatewayTunnelConfigs {
         return Optional.ofNullable(this.ikeLifetime);
     }
     /**
-     * @return Only if `provider`==`custom-ipsec`. IKE negotiation mode for the tunnel
+     * @return Only if `provider`==`custom-ipsec`. IKE negotiation mode for the tunnel. enum: `aggressive`, `main`.
      * 
      */
     public Optional<String> ikeMode() {
@@ -168,7 +168,7 @@ public final class DeviceprofileGatewayTunnelConfigs {
         return this.localSubnets == null ? List.of() : this.localSubnets;
     }
     /**
-     * @return Tunnel failover mode used for primary and secondary endpoints
+     * @return Tunnel failover mode used for primary and secondary endpoints. enum: `active-active`, `active-standby`.
      * 
      */
     public Optional<String> mode() {
@@ -196,14 +196,14 @@ public final class DeviceprofileGatewayTunnelConfigs {
         return Optional.ofNullable(this.probe);
     }
     /**
-     * @return Only if `provider`==`custom-ipsec`. Tunnel protocol for custom tunnel negotiation
+     * @return Only if `provider`==`custom-ipsec`. Tunnel protocol for custom tunnel negotiation. enum: `gre`, `ipsec`.
      * 
      */
     public Optional<String> protocol() {
         return Optional.ofNullable(this.protocol);
     }
     /**
-     * @return Tunnel provider used when auto provisioning is disabled
+     * @return Tunnel provider used when auto provisioning is disabled. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`.
      * 
      */
     public Optional<String> provider() {
@@ -231,7 +231,7 @@ public final class DeviceprofileGatewayTunnelConfigs {
         return Optional.ofNullable(this.secondary);
     }
     /**
-     * @return Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. Tunnel version value for custom tunnel configuration
+     * @return Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. Tunnel version value for custom tunnel configuration. enum: `1`, `2`.
      * 
      */
     public Optional<String> version() {

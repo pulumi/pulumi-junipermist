@@ -57,7 +57,7 @@ class ServiceArgs:
         :param pulumi.Input[_builtins.int] client_limit_up: 0 means unlimited, value from 0 to 107374182
         :param pulumi.Input[_builtins.str] description: Free-form description of the service definition
         :param pulumi.Input[_builtins.str] dscp: QoS DSCP value used for custom SSR traffic classification
-        :param pulumi.Input[_builtins.str] failover_policy: Failover behavior for traffic matched by this service
+        :param pulumi.Input[_builtins.str] failover_policy: Failover behavior for traffic matched by this service. enum: `non_revertible`, `none`, `revertible`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hostnames: Domain hostnames matched by this custom service for web filtering
         :param pulumi.Input[_builtins.str] max_jitter: Maximum jitter threshold used for SSR uplink selection when `traffic_type`==`custom`
         :param pulumi.Input[_builtins.str] max_latency: Maximum latency threshold used for SSR uplink selection when `traffic_type`==`custom`
@@ -68,9 +68,9 @@ class ServiceArgs:
         :param pulumi.Input[_builtins.bool] sle_enabled: Whether to enable measure SLE
         :param pulumi.Input[Sequence[pulumi.Input['ServiceSpecArgs']]] specs: Protocol and port match rules used when `type`==`custom`
         :param pulumi.Input[_builtins.bool] ssr_relaxed_tcp_state_enforcement: Whether SSR relaxes TCP state enforcement for this service
-        :param pulumi.Input[_builtins.str] traffic_class: Traffic class applied when `traffic_type`==`custom`
+        :param pulumi.Input[_builtins.str] traffic_class: Traffic class applied when `traffic_type`==`custom`. enum: `best_effort`, `high`, `low`, `medium`.
         :param pulumi.Input[_builtins.str] traffic_type: values from List Traffic Types
-        :param pulumi.Input[_builtins.str] type: Matching mode that determines which app, URL, or custom fields are used
+        :param pulumi.Input[_builtins.str] type: Matching mode that determines which app, URL, or custom fields are used. enum: `app_categories`, `apps`, `custom`, `urls`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] urls: URL patterns matched by this service when `type`==`urls`
         """
         pulumi.set(__self__, "org_id", org_id)
@@ -233,7 +233,7 @@ class ServiceArgs:
     @pulumi.getter(name="failoverPolicy")
     def failover_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Failover behavior for traffic matched by this service
+        Failover behavior for traffic matched by this service. enum: `non_revertible`, `none`, `revertible`.
         """
         return pulumi.get(self, "failover_policy")
 
@@ -365,7 +365,7 @@ class ServiceArgs:
     @pulumi.getter(name="trafficClass")
     def traffic_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Traffic class applied when `traffic_type`==`custom`
+        Traffic class applied when `traffic_type`==`custom`. enum: `best_effort`, `high`, `low`, `medium`.
         """
         return pulumi.get(self, "traffic_class")
 
@@ -389,7 +389,7 @@ class ServiceArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Matching mode that determines which app, URL, or custom fields are used
+        Matching mode that determines which app, URL, or custom fields are used. enum: `app_categories`, `apps`, `custom`, `urls`.
         """
         return pulumi.get(self, "type")
 
@@ -448,7 +448,7 @@ class _ServiceState:
         :param pulumi.Input[_builtins.int] client_limit_up: 0 means unlimited, value from 0 to 107374182
         :param pulumi.Input[_builtins.str] description: Free-form description of the service definition
         :param pulumi.Input[_builtins.str] dscp: QoS DSCP value used for custom SSR traffic classification
-        :param pulumi.Input[_builtins.str] failover_policy: Failover behavior for traffic matched by this service
+        :param pulumi.Input[_builtins.str] failover_policy: Failover behavior for traffic matched by this service. enum: `non_revertible`, `none`, `revertible`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hostnames: Domain hostnames matched by this custom service for web filtering
         :param pulumi.Input[_builtins.str] max_jitter: Maximum jitter threshold used for SSR uplink selection when `traffic_type`==`custom`
         :param pulumi.Input[_builtins.str] max_latency: Maximum latency threshold used for SSR uplink selection when `traffic_type`==`custom`
@@ -460,9 +460,9 @@ class _ServiceState:
         :param pulumi.Input[_builtins.bool] sle_enabled: Whether to enable measure SLE
         :param pulumi.Input[Sequence[pulumi.Input['ServiceSpecArgs']]] specs: Protocol and port match rules used when `type`==`custom`
         :param pulumi.Input[_builtins.bool] ssr_relaxed_tcp_state_enforcement: Whether SSR relaxes TCP state enforcement for this service
-        :param pulumi.Input[_builtins.str] traffic_class: Traffic class applied when `traffic_type`==`custom`
+        :param pulumi.Input[_builtins.str] traffic_class: Traffic class applied when `traffic_type`==`custom`. enum: `best_effort`, `high`, `low`, `medium`.
         :param pulumi.Input[_builtins.str] traffic_type: values from List Traffic Types
-        :param pulumi.Input[_builtins.str] type: Matching mode that determines which app, URL, or custom fields are used
+        :param pulumi.Input[_builtins.str] type: Matching mode that determines which app, URL, or custom fields are used. enum: `app_categories`, `apps`, `custom`, `urls`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] urls: URL patterns matched by this service when `type`==`urls`
         """
         if addresses is not None:
@@ -614,7 +614,7 @@ class _ServiceState:
     @pulumi.getter(name="failoverPolicy")
     def failover_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Failover behavior for traffic matched by this service
+        Failover behavior for traffic matched by this service. enum: `non_revertible`, `none`, `revertible`.
         """
         return pulumi.get(self, "failover_policy")
 
@@ -758,7 +758,7 @@ class _ServiceState:
     @pulumi.getter(name="trafficClass")
     def traffic_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Traffic class applied when `traffic_type`==`custom`
+        Traffic class applied when `traffic_type`==`custom`. enum: `best_effort`, `high`, `low`, `medium`.
         """
         return pulumi.get(self, "traffic_class")
 
@@ -782,7 +782,7 @@ class _ServiceState:
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Matching mode that determines which app, URL, or custom fields are used
+        Matching mode that determines which app, URL, or custom fields are used. enum: `app_categories`, `apps`, `custom`, `urls`.
         """
         return pulumi.get(self, "type")
 
@@ -883,7 +883,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] client_limit_up: 0 means unlimited, value from 0 to 107374182
         :param pulumi.Input[_builtins.str] description: Free-form description of the service definition
         :param pulumi.Input[_builtins.str] dscp: QoS DSCP value used for custom SSR traffic classification
-        :param pulumi.Input[_builtins.str] failover_policy: Failover behavior for traffic matched by this service
+        :param pulumi.Input[_builtins.str] failover_policy: Failover behavior for traffic matched by this service. enum: `non_revertible`, `none`, `revertible`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hostnames: Domain hostnames matched by this custom service for web filtering
         :param pulumi.Input[_builtins.str] max_jitter: Maximum jitter threshold used for SSR uplink selection when `traffic_type`==`custom`
         :param pulumi.Input[_builtins.str] max_latency: Maximum latency threshold used for SSR uplink selection when `traffic_type`==`custom`
@@ -895,9 +895,9 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] sle_enabled: Whether to enable measure SLE
         :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceSpecArgs', 'ServiceSpecArgsDict']]]] specs: Protocol and port match rules used when `type`==`custom`
         :param pulumi.Input[_builtins.bool] ssr_relaxed_tcp_state_enforcement: Whether SSR relaxes TCP state enforcement for this service
-        :param pulumi.Input[_builtins.str] traffic_class: Traffic class applied when `traffic_type`==`custom`
+        :param pulumi.Input[_builtins.str] traffic_class: Traffic class applied when `traffic_type`==`custom`. enum: `best_effort`, `high`, `low`, `medium`.
         :param pulumi.Input[_builtins.str] traffic_type: values from List Traffic Types
-        :param pulumi.Input[_builtins.str] type: Matching mode that determines which app, URL, or custom fields are used
+        :param pulumi.Input[_builtins.str] type: Matching mode that determines which app, URL, or custom fields are used. enum: `app_categories`, `apps`, `custom`, `urls`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] urls: URL patterns matched by this service when `type`==`urls`
         """
         ...
@@ -1068,7 +1068,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] client_limit_up: 0 means unlimited, value from 0 to 107374182
         :param pulumi.Input[_builtins.str] description: Free-form description of the service definition
         :param pulumi.Input[_builtins.str] dscp: QoS DSCP value used for custom SSR traffic classification
-        :param pulumi.Input[_builtins.str] failover_policy: Failover behavior for traffic matched by this service
+        :param pulumi.Input[_builtins.str] failover_policy: Failover behavior for traffic matched by this service. enum: `non_revertible`, `none`, `revertible`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hostnames: Domain hostnames matched by this custom service for web filtering
         :param pulumi.Input[_builtins.str] max_jitter: Maximum jitter threshold used for SSR uplink selection when `traffic_type`==`custom`
         :param pulumi.Input[_builtins.str] max_latency: Maximum latency threshold used for SSR uplink selection when `traffic_type`==`custom`
@@ -1080,9 +1080,9 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] sle_enabled: Whether to enable measure SLE
         :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceSpecArgs', 'ServiceSpecArgsDict']]]] specs: Protocol and port match rules used when `type`==`custom`
         :param pulumi.Input[_builtins.bool] ssr_relaxed_tcp_state_enforcement: Whether SSR relaxes TCP state enforcement for this service
-        :param pulumi.Input[_builtins.str] traffic_class: Traffic class applied when `traffic_type`==`custom`
+        :param pulumi.Input[_builtins.str] traffic_class: Traffic class applied when `traffic_type`==`custom`. enum: `best_effort`, `high`, `low`, `medium`.
         :param pulumi.Input[_builtins.str] traffic_type: values from List Traffic Types
-        :param pulumi.Input[_builtins.str] type: Matching mode that determines which app, URL, or custom fields are used
+        :param pulumi.Input[_builtins.str] type: Matching mode that determines which app, URL, or custom fields are used. enum: `app_categories`, `apps`, `custom`, `urls`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] urls: URL patterns matched by this service when `type`==`urls`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1183,7 +1183,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter(name="failoverPolicy")
     def failover_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Failover behavior for traffic matched by this service
+        Failover behavior for traffic matched by this service. enum: `non_revertible`, `none`, `revertible`.
         """
         return pulumi.get(self, "failover_policy")
 
@@ -1279,7 +1279,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter(name="trafficClass")
     def traffic_class(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Traffic class applied when `traffic_type`==`custom`
+        Traffic class applied when `traffic_type`==`custom`. enum: `best_effort`, `high`, `low`, `medium`.
         """
         return pulumi.get(self, "traffic_class")
 
@@ -1295,7 +1295,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        Matching mode that determines which app, URL, or custom fields are used
+        Matching mode that determines which app, URL, or custom fields are used. enum: `app_categories`, `apps`, `custom`, `urls`.
         """
         return pulumi.get(self, "type")
 

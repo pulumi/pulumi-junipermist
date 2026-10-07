@@ -38,12 +38,12 @@ public final class ApRadioConfig {
      */
     private @Nullable Integer antGain6;
     /**
-     * @return Selected radio chain mode for AP models that support antenna mode control
+     * @return Selected radio chain mode for AP models that support antenna mode control. enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`.
      * 
      */
     private @Nullable String antennaMode;
     /**
-     * @return Internal or external antenna selection for AP models with selectable antennas
+     * @return Internal or external antenna selection for AP models with selectable antennas. enum: ``, `external`, `internal`.
      * 
      */
     private @Nullable String antennaSelect;
@@ -53,7 +53,7 @@ public final class ApRadioConfig {
      */
     private @Nullable ApRadioConfigBand24 band24;
     /**
-     * @return Radio usage mode for the 2.4 GHz-capable radio
+     * @return Radio usage mode for the 2.4 GHz-capable radio. enum: `24`, `5`, `6`, `auto`.
      * 
      */
     private @Nullable String band24Usage;
@@ -123,14 +123,14 @@ public final class ApRadioConfig {
         return Optional.ofNullable(this.antGain6);
     }
     /**
-     * @return Selected radio chain mode for AP models that support antenna mode control
+     * @return Selected radio chain mode for AP models that support antenna mode control. enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`.
      * 
      */
     public Optional<String> antennaMode() {
         return Optional.ofNullable(this.antennaMode);
     }
     /**
-     * @return Internal or external antenna selection for AP models with selectable antennas
+     * @return Internal or external antenna selection for AP models with selectable antennas. enum: ``, `external`, `internal`.
      * 
      */
     public Optional<String> antennaSelect() {
@@ -144,7 +144,7 @@ public final class ApRadioConfig {
         return Optional.ofNullable(this.band24);
     }
     /**
-     * @return Radio usage mode for the 2.4 GHz-capable radio
+     * @return Radio usage mode for the 2.4 GHz-capable radio. enum: `24`, `5`, `6`, `auto`.
      * 
      */
     public Optional<String> band24Usage() {

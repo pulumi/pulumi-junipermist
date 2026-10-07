@@ -39,7 +39,7 @@ public final class WlanRateset {
      */
     private @Nullable Integer minRssi;
     /**
-     * @return Data rate template used to derive WLAN rate settings
+     * @return Data rate template used to derive WLAN rate settings. enum: `compatible`, `legacy-only`, `custom`, `no-legacy`, `high-density`.
      * 
      */
     private @Nullable String template;
@@ -86,7 +86,7 @@ public final class WlanRateset {
         return Optional.ofNullable(this.minRssi);
     }
     /**
-     * @return Data rate template used to derive WLAN rate settings
+     * @return Data rate template used to derive WLAN rate settings. enum: `compatible`, `legacy-only`, `custom`, `no-legacy`, `high-density`.
      * 
      */
     public Optional<String> template() {

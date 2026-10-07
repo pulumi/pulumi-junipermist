@@ -19,7 +19,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? PortRange { get; set; }
 
         /// <summary>
-        /// Transport protocol matched by this custom Protect RE ACL
+        /// Transport protocol matched by this custom Protect RE ACL. enum: `Any`, `Icmp`, `Tcp`, `Udp`.
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }

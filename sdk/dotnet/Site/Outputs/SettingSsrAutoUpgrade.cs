@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class SettingSsrAutoUpgrade
     {
         /// <summary>
-        /// Firmware release channel used for SSR auto-upgrade
+        /// Firmware release channel used for SSR auto-upgrade. enum: `Alpha`, `Beta`, `Stable`.
         /// </summary>
         public readonly string? Channel;
         /// <summary>

@@ -43,7 +43,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// Dynamic VLAN mapping method used for RADIUS-provided VLAN attributes
+        /// Dynamic VLAN mapping method used for RADIUS-provided VLAN attributes. enum: `airespace-interface-name`, `Standard`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

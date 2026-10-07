@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? Password;
         /// <summary>
-        /// Access role granted to the local switch user account
+        /// Access role granted to the local switch user account. enum: `Admin`, `Helpdesk`, `None`, `Read`.
         /// </summary>
         public readonly string? Role;
 

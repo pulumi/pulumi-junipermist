@@ -32,7 +32,7 @@ public final class GatewayTunnelConfigsAutoProvision {
      */
     private @Nullable GatewayTunnelConfigsAutoProvisionPrimary primary;
     /**
-     * @return Tunnel provider used for automatic endpoint provisioning
+     * @return Tunnel provider used for automatic endpoint provisioning. enum: `jse-ipsec`, `zscaler-ipsec`.
      * 
      */
     private String provider;
@@ -75,7 +75,7 @@ public final class GatewayTunnelConfigsAutoProvision {
         return Optional.ofNullable(this.primary);
     }
     /**
-     * @return Tunnel provider used for automatic endpoint provisioning
+     * @return Tunnel provider used for automatic endpoint provisioning. enum: `jse-ipsec`, `zscaler-ipsec`.
      * 
      */
     public String provider() {

@@ -12,6 +12,7 @@ import com.pulumi.junipermist.device.inputs.GatewayExtraRoutesArgs;
 import com.pulumi.junipermist.device.inputs.GatewayGatewayMgmtArgs;
 import com.pulumi.junipermist.device.inputs.GatewayIdpProfilesArgs;
 import com.pulumi.junipermist.device.inputs.GatewayIpConfigsArgs;
+import com.pulumi.junipermist.device.inputs.GatewayMnhaConfigArgs;
 import com.pulumi.junipermist.device.inputs.GatewayNetworkArgs;
 import com.pulumi.junipermist.device.inputs.GatewayOobIpConfigArgs;
 import com.pulumi.junipermist.device.inputs.GatewayPathPreferencesArgs;
@@ -305,6 +306,21 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> mistConfigured() {
         return Optional.ofNullable(this.mistConfigured);
+    }
+
+    /**
+     * Multi-Node HA (MNHA) settings for this gateway, SRX only
+     * 
+     */
+    @Import(name="mnhaConfig")
+    private @Nullable Output<GatewayMnhaConfigArgs> mnhaConfig;
+
+    /**
+     * @return Multi-Node HA (MNHA) settings for this gateway, SRX only
+     * 
+     */
+    public Optional<Output<GatewayMnhaConfigArgs>> mnhaConfig() {
+        return Optional.ofNullable(this.mnhaConfig);
     }
 
     /**
@@ -718,6 +734,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         this.managed = $.managed;
         this.mapId = $.mapId;
         this.mistConfigured = $.mistConfigured;
+        this.mnhaConfig = $.mnhaConfig;
         this.model = $.model;
         this.mspId = $.mspId;
         this.name = $.name;
@@ -1166,6 +1183,27 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder mistConfigured(Boolean mistConfigured) {
             return mistConfigured(Output.of(mistConfigured));
+        }
+
+        /**
+         * @param mnhaConfig Multi-Node HA (MNHA) settings for this gateway, SRX only
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mnhaConfig(@Nullable Output<GatewayMnhaConfigArgs> mnhaConfig) {
+            $.mnhaConfig = mnhaConfig;
+            return this;
+        }
+
+        /**
+         * @param mnhaConfig Multi-Node HA (MNHA) settings for this gateway, SRX only
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mnhaConfig(GatewayMnhaConfigArgs mnhaConfig) {
+            return mnhaConfig(Output.of(mnhaConfig));
         }
 
         /**

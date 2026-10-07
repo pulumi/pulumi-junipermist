@@ -46,7 +46,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.SwitchRemoteSyslogServer> Servers;
         /// <summary>
-        /// Timestamp format used in forwarded syslog messages
+        /// Timestamp format used in forwarded syslog messages. enum: `Millisecond`, `Year`, `year millisecond`.
         /// </summary>
         public readonly string? TimeFormat;
         /// <summary>

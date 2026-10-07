@@ -153,14 +153,14 @@ public final class ApIpConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * IPv4 address assignment mode for AP management traffic
+     * IPv4 address assignment mode for AP management traffic. enum: `dhcp`, `static`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return IPv4 address assignment mode for AP management traffic
+     * @return IPv4 address assignment mode for AP management traffic. enum: `dhcp`, `static`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -168,14 +168,14 @@ public final class ApIpConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * IPv6 address assignment mode for AP management traffic
+     * IPv6 address assignment mode for AP management traffic. enum: `autoconf`, `dhcp`, `disabled`, `static`.
      * 
      */
     @Import(name="type6")
     private @Nullable Output<String> type6;
 
     /**
-     * @return IPv6 address assignment mode for AP management traffic
+     * @return IPv6 address assignment mode for AP management traffic. enum: `autoconf`, `dhcp`, `disabled`, `static`.
      * 
      */
     public Optional<Output<String>> type6() {
@@ -442,7 +442,7 @@ public final class ApIpConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type IPv4 address assignment mode for AP management traffic
+         * @param type IPv4 address assignment mode for AP management traffic. enum: `dhcp`, `static`.
          * 
          * @return builder
          * 
@@ -453,7 +453,7 @@ public final class ApIpConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type IPv4 address assignment mode for AP management traffic
+         * @param type IPv4 address assignment mode for AP management traffic. enum: `dhcp`, `static`.
          * 
          * @return builder
          * 
@@ -463,7 +463,7 @@ public final class ApIpConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type6 IPv6 address assignment mode for AP management traffic
+         * @param type6 IPv6 address assignment mode for AP management traffic. enum: `autoconf`, `dhcp`, `disabled`, `static`.
          * 
          * @return builder
          * 
@@ -474,7 +474,7 @@ public final class ApIpConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type6 IPv6 address assignment mode for AP management traffic
+         * @param type6 IPv6 address assignment mode for AP management traffic. enum: `autoconf`, `dhcp`, `disabled`, `static`.
          * 
          * @return builder
          * 

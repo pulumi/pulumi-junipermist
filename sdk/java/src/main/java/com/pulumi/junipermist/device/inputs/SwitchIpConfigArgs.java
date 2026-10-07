@@ -107,14 +107,14 @@ public final class SwitchIpConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * IP assignment mode for this Junos IP configuration
+     * IP assignment mode for this Junos IP configuration. enum: `dhcp`, `static`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return IP assignment mode for this Junos IP configuration
+     * @return IP assignment mode for this Junos IP configuration. enum: `dhcp`, `static`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -298,7 +298,7 @@ public final class SwitchIpConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param type IP assignment mode for this Junos IP configuration
+         * @param type IP assignment mode for this Junos IP configuration. enum: `dhcp`, `static`.
          * 
          * @return builder
          * 
@@ -309,7 +309,7 @@ public final class SwitchIpConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param type IP assignment mode for this Junos IP configuration
+         * @param type IP assignment mode for this Junos IP configuration. enum: `dhcp`, `static`.
          * 
          * @return builder
          * 

@@ -67,7 +67,7 @@ public final class SwitchPortUsages {
      */
     private @Nullable Boolean disabled;
     /**
-     * @return Only if `mode`!=`dynamic`. Link duplex mode for this port usage
+     * @return Only if `mode`!=`dynamic`. Link duplex mode for this port usage. enum: `auto`, `full`, `half`.
      * 
      */
     private @Nullable String duplex;
@@ -112,7 +112,7 @@ public final class SwitchPortUsages {
      */
     private @Nullable Boolean macAuthPreferred;
     /**
-     * @return Only if `mode`!=`dynamic` and `enableMacAuth`==`true`. MAC authentication protocol to use; ignored if Mist NAC is enabled
+     * @return Only if `mode`!=`dynamic` and `enableMacAuth`==`true`. Select `pap`, `eap-peap`, or `eap-md5`. When Mist NAC is enabled, this is forced to `pap`, unless `mist_nac.enable_eap_md5_for_mab` is enabled; then `eap-md5` is kept and the port performs MAB (mac-radius) while sending EAP-MD5. enum: `eap-md5`, `eap-peap`, `pap`.
      * 
      */
     private @Nullable String macAuthProtocol;
@@ -122,7 +122,7 @@ public final class SwitchPortUsages {
      */
     private @Nullable String macLimit;
     /**
-     * @return Switching mode for this port usage
+     * @return Switching mode for this port usage. enum: `access`, `dynamic`, `inet`, `trunk`.
      * 
      */
     private @Nullable String mode;
@@ -136,6 +136,11 @@ public final class SwitchPortUsages {
      * 
      */
     private @Nullable List<String> networks;
+    /**
+     * @return Whether this port usage can be overridden in local port configuration
+     * 
+     */
+    private @Nullable Boolean noLocalPortConfig;
     /**
      * @return Only if `mode`==`access` and `portAuth`!=`dot1x`. Whether the port should retain dynamically learned MAC addresses
      * 
@@ -152,12 +157,12 @@ public final class SwitchPortUsages {
      */
     private @Nullable Boolean poeKeepStateWhenReboot;
     /**
-     * @return Only if `mode`!=`dynamic`. PoE priority for ports using this port usage
+     * @return Only if `mode`!=`dynamic`. PoE priority for ports using this port usage. enum: `low`, `high`.
      * 
      */
     private @Nullable String poePriority;
     /**
-     * @return Only if `mode`!=`dynamic`. 802.1X authentication mode for this port usage
+     * @return Only if `mode`!=`dynamic`. 802.1X authentication mode for this port usage. enum: `dot1x`.
      * 
      */
     private @Nullable String portAuth;
@@ -172,7 +177,7 @@ public final class SwitchPortUsages {
      */
     private @Nullable String reauthInterval;
     /**
-     * @return Only if `mode`==`dynamic`. Condition that resets a dynamic port to the default port usage
+     * @return Only if `mode`==`dynamic`. Condition that resets a dynamic port to the default port usage. enum: `linkDown`, `none`.
      * 
      */
     private @Nullable String resetDefaultWhen;
@@ -197,7 +202,7 @@ public final class SwitchPortUsages {
      */
     private @Nullable String serverRejectNetwork;
     /**
-     * @return Only if `mode`!=`dynamic`. Link speed for this port usage
+     * @return Only if `mode`!=`dynamic`. Link speed for this port usage. enum: `10m`, `100m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`, `auto`.
      * 
      */
     private @Nullable String speed;
@@ -314,7 +319,7 @@ public final class SwitchPortUsages {
         return Optional.ofNullable(this.disabled);
     }
     /**
-     * @return Only if `mode`!=`dynamic`. Link duplex mode for this port usage
+     * @return Only if `mode`!=`dynamic`. Link duplex mode for this port usage. enum: `auto`, `full`, `half`.
      * 
      */
     public Optional<String> duplex() {
@@ -377,7 +382,7 @@ public final class SwitchPortUsages {
         return Optional.ofNullable(this.macAuthPreferred);
     }
     /**
-     * @return Only if `mode`!=`dynamic` and `enableMacAuth`==`true`. MAC authentication protocol to use; ignored if Mist NAC is enabled
+     * @return Only if `mode`!=`dynamic` and `enableMacAuth`==`true`. Select `pap`, `eap-peap`, or `eap-md5`. When Mist NAC is enabled, this is forced to `pap`, unless `mist_nac.enable_eap_md5_for_mab` is enabled; then `eap-md5` is kept and the port performs MAB (mac-radius) while sending EAP-MD5. enum: `eap-md5`, `eap-peap`, `pap`.
      * 
      */
     public Optional<String> macAuthProtocol() {
@@ -391,7 +396,7 @@ public final class SwitchPortUsages {
         return Optional.ofNullable(this.macLimit);
     }
     /**
-     * @return Switching mode for this port usage
+     * @return Switching mode for this port usage. enum: `access`, `dynamic`, `inet`, `trunk`.
      * 
      */
     public Optional<String> mode() {
@@ -410,6 +415,13 @@ public final class SwitchPortUsages {
      */
     public List<String> networks() {
         return this.networks == null ? List.of() : this.networks;
+    }
+    /**
+     * @return Whether this port usage can be overridden in local port configuration
+     * 
+     */
+    public Optional<Boolean> noLocalPortConfig() {
+        return Optional.ofNullable(this.noLocalPortConfig);
     }
     /**
      * @return Only if `mode`==`access` and `portAuth`!=`dot1x`. Whether the port should retain dynamically learned MAC addresses
@@ -433,14 +445,14 @@ public final class SwitchPortUsages {
         return Optional.ofNullable(this.poeKeepStateWhenReboot);
     }
     /**
-     * @return Only if `mode`!=`dynamic`. PoE priority for ports using this port usage
+     * @return Only if `mode`!=`dynamic`. PoE priority for ports using this port usage. enum: `low`, `high`.
      * 
      */
     public Optional<String> poePriority() {
         return Optional.ofNullable(this.poePriority);
     }
     /**
-     * @return Only if `mode`!=`dynamic`. 802.1X authentication mode for this port usage
+     * @return Only if `mode`!=`dynamic`. 802.1X authentication mode for this port usage. enum: `dot1x`.
      * 
      */
     public Optional<String> portAuth() {
@@ -461,7 +473,7 @@ public final class SwitchPortUsages {
         return Optional.ofNullable(this.reauthInterval);
     }
     /**
-     * @return Only if `mode`==`dynamic`. Condition that resets a dynamic port to the default port usage
+     * @return Only if `mode`==`dynamic`. Condition that resets a dynamic port to the default port usage. enum: `linkDown`, `none`.
      * 
      */
     public Optional<String> resetDefaultWhen() {
@@ -496,7 +508,7 @@ public final class SwitchPortUsages {
         return Optional.ofNullable(this.serverRejectNetwork);
     }
     /**
-     * @return Only if `mode`!=`dynamic`. Link speed for this port usage
+     * @return Only if `mode`!=`dynamic`. Link speed for this port usage. enum: `10m`, `100m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`, `auto`.
      * 
      */
     public Optional<String> speed() {
@@ -592,6 +604,7 @@ public final class SwitchPortUsages {
         private @Nullable String mode;
         private @Nullable String mtu;
         private @Nullable List<String> networks;
+        private @Nullable Boolean noLocalPortConfig;
         private @Nullable Boolean persistMac;
         private @Nullable Boolean poeDisabled;
         private @Nullable Boolean poeKeepStateWhenReboot;
@@ -640,6 +653,7 @@ public final class SwitchPortUsages {
     	      this.mode = defaults.mode;
     	      this.mtu = defaults.mtu;
     	      this.networks = defaults.networks;
+    	      this.noLocalPortConfig = defaults.noLocalPortConfig;
     	      this.persistMac = defaults.persistMac;
     	      this.poeDisabled = defaults.poeDisabled;
     	      this.poeKeepStateWhenReboot = defaults.poeKeepStateWhenReboot;
@@ -814,6 +828,12 @@ public final class SwitchPortUsages {
             return networks(List.of(networks));
         }
         @CustomType.Setter
+        public Builder noLocalPortConfig(@Nullable Boolean noLocalPortConfig) {
+
+            this.noLocalPortConfig = noLocalPortConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder persistMac(@Nullable Boolean persistMac) {
 
             this.persistMac = persistMac;
@@ -968,6 +988,7 @@ public final class SwitchPortUsages {
             _resultValue.mode = mode;
             _resultValue.mtu = mtu;
             _resultValue.networks = networks;
+            _resultValue.noLocalPortConfig = noLocalPortConfig;
             _resultValue.persistMac = persistMac;
             _resultValue.poeDisabled = poeDisabled;
             _resultValue.poeKeepStateWhenReboot = poeKeepStateWhenReboot;

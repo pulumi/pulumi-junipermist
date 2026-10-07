@@ -73,7 +73,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// Only if `Mode`!=`Dynamic`. Link duplex mode for this port usage
+        /// Only if `Mode`!=`Dynamic`. Link duplex mode for this port usage. enum: `Auto`, `Full`, `Half`.
         /// </summary>
         [Input("duplex")]
         public Input<string>? Duplex { get; set; }
@@ -133,7 +133,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? MacAuthPreferred { get; set; }
 
         /// <summary>
-        /// Only if `Mode`!=`Dynamic` and `EnableMacAuth`==`True`. MAC authentication protocol to use; ignored if Mist NAC is enabled
+        /// Only if `Mode`!=`Dynamic` and `EnableMacAuth`==`True`. Select `Pap`, `eap-peap`, or `eap-md5`. When Mist NAC is enabled, this is forced to `Pap`, unless `mist_nac.enable_eap_md5_for_mab` is enabled; then `eap-md5` is kept and the port performs MAB (mac-radius) while sending EAP-MD5. enum: `eap-md5`, `eap-peap`, `Pap`.
         /// </summary>
         [Input("macAuthProtocol")]
         public Input<string>? MacAuthProtocol { get; set; }
@@ -145,7 +145,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? MacLimit { get; set; }
 
         /// <summary>
-        /// Switching mode for this port usage
+        /// Switching mode for this port usage. enum: `Access`, `Dynamic`, `Inet`, `Trunk`.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -169,6 +169,12 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
+        /// Whether this port usage can be overridden in local port configuration
+        /// </summary>
+        [Input("noLocalPortConfig")]
+        public Input<bool>? NoLocalPortConfig { get; set; }
+
+        /// <summary>
         /// Only if `Mode`==`Access` and `PortAuth`!=`Dot1x`. Whether the port should retain dynamically learned MAC addresses
         /// </summary>
         [Input("persistMac")]
@@ -187,13 +193,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? PoeKeepStateWhenReboot { get; set; }
 
         /// <summary>
-        /// Only if `Mode`!=`Dynamic`. PoE priority for ports using this port usage
+        /// Only if `Mode`!=`Dynamic`. PoE priority for ports using this port usage. enum: `Low`, `High`.
         /// </summary>
         [Input("poePriority")]
         public Input<string>? PoePriority { get; set; }
 
         /// <summary>
-        /// Only if `Mode`!=`Dynamic`. 802.1X authentication mode for this port usage
+        /// Only if `Mode`!=`Dynamic`. 802.1X authentication mode for this port usage. enum: `Dot1x`.
         /// </summary>
         [Input("portAuth")]
         public Input<string>? PortAuth { get; set; }
@@ -211,7 +217,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? ReauthInterval { get; set; }
 
         /// <summary>
-        /// Only if `Mode`==`Dynamic`. Condition that resets a dynamic port to the default port usage
+        /// Only if `Mode`==`Dynamic`. Condition that resets a dynamic port to the default port usage. enum: `LinkDown`, `None`.
         /// </summary>
         [Input("resetDefaultWhen")]
         public Input<string>? ResetDefaultWhen { get; set; }
@@ -247,7 +253,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? ServerRejectNetwork { get; set; }
 
         /// <summary>
-        /// Only if `Mode`!=`Dynamic`. Link speed for this port usage
+        /// Only if `Mode`!=`Dynamic`. Link speed for this port usage. enum: `10m`, `100m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`, `Auto`.
         /// </summary>
         [Input("speed")]
         public Input<string>? Speed { get; set; }

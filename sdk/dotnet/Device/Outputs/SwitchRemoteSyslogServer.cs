@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool? ExplicitPriority;
         /// <summary>
-        /// Default syslog facility for messages sent to this server
+        /// Default syslog facility for messages sent to this server. enum: `Any`, `Authorization`, `change-log`, `Config`, `conflict-log`, `Daemon`, `Dfc`, `External`, `Firewall`, `Ftp`, `interactive-commands`, `Kernel`, `Ntp`, `Pfe`, `Security`, `User`.
         /// </summary>
         public readonly string? Facility;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? Port;
         /// <summary>
-        /// Transport protocol used for this remote syslog server
+        /// Transport protocol used for this remote syslog server. enum: `Tcp`, `Udp`.
         /// </summary>
         public readonly string? Protocol;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? ServerName;
         /// <summary>
-        /// Default syslog severity for messages sent to this server
+        /// Default syslog severity for messages sent to this server. enum: `Alert`, `Any`, `Critical`, `Emergency`, `Error`, `Info`, `Notice`, `Warning`.
         /// </summary>
         public readonly string? Severity;
         /// <summary>

@@ -14,11 +14,11 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class NetworktemplateRemoteSyslogConsoleContent
     {
         /// <summary>
-        /// Syslog facility to match for this selector
+        /// Syslog facility to match for this selector. enum: `Any`, `Authorization`, `change-log`, `Config`, `conflict-log`, `Daemon`, `Dfc`, `External`, `Firewall`, `Ftp`, `interactive-commands`, `Kernel`, `Ntp`, `Pfe`, `Security`, `User`.
         /// </summary>
         public readonly string? Facility;
         /// <summary>
-        /// Syslog severity to match for this selector
+        /// Syslog severity to match for this selector. enum: `Alert`, `Any`, `Critical`, `Emergency`, `Error`, `Info`, `Notice`, `Warning`.
         /// </summary>
         public readonly string? Severity;
 

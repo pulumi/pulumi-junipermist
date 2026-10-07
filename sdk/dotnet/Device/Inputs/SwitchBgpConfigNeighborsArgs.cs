@@ -19,7 +19,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? ExportPolicy { get; set; }
 
         /// <summary>
-        /// BGP hold time for this neighbor
+        /// BGP hold time for this neighbor.
         /// </summary>
         [Input("holdTime")]
         public Input<int>? HoldTime { get; set; }

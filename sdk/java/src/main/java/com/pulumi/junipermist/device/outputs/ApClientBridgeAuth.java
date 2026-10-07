@@ -17,7 +17,7 @@ public final class ApClientBridgeAuth {
      */
     private @Nullable String psk;
     /**
-     * @return Authentication mode for the client bridge connection
+     * @return Authentication mode for the client bridge connection. enum: `open`, `psk`.
      * 
      */
     private @Nullable String type;
@@ -31,7 +31,7 @@ public final class ApClientBridgeAuth {
         return Optional.ofNullable(this.psk);
     }
     /**
-     * @return Authentication mode for the client bridge connection
+     * @return Authentication mode for the client bridge connection. enum: `open`, `psk`.
      * 
      */
     public Optional<String> type() {

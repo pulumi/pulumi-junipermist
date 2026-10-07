@@ -17,6 +17,7 @@ import com.pulumi.junipermist.org.outputs.GatewaytemplateExtraRoutes;
 import com.pulumi.junipermist.org.outputs.GatewaytemplateGatewayMgmt;
 import com.pulumi.junipermist.org.outputs.GatewaytemplateIdpProfiles;
 import com.pulumi.junipermist.org.outputs.GatewaytemplateIpConfigs;
+import com.pulumi.junipermist.org.outputs.GatewaytemplateMnhaConfig;
 import com.pulumi.junipermist.org.outputs.GatewaytemplateNetwork;
 import com.pulumi.junipermist.org.outputs.GatewaytemplateOobIpConfig;
 import com.pulumi.junipermist.org.outputs.GatewaytemplatePathPreferences;
@@ -317,6 +318,20 @@ public class Gatewaytemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ipConfigs);
     }
     /**
+     * Multi-Node HA (MNHA) settings applied by this gateway template, SRX only
+     * 
+     */
+    @Export(name="mnhaConfig", refs={GatewaytemplateMnhaConfig.class}, tree="[0]")
+    private Output</* @Nullable */ GatewaytemplateMnhaConfig> mnhaConfig;
+
+    /**
+     * @return Multi-Node HA (MNHA) settings applied by this gateway template, SRX only
+     * 
+     */
+    public Output<Optional<GatewaytemplateMnhaConfig>> mnhaConfig() {
+        return Codegen.optional(this.mnhaConfig);
+    }
+    /**
      * Display name of the gateway template
      * 
      */
@@ -513,14 +528,14 @@ public class Gatewaytemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tunnelProviderOptions);
     }
     /**
-     * Gateway template deployment type
+     * Gateway template deployment type. enum: `spoke`, `standalone`.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Gateway template deployment type
+     * @return Gateway template deployment type. enum: `spoke`, `standalone`.
      * 
      */
     public Output<String> type() {

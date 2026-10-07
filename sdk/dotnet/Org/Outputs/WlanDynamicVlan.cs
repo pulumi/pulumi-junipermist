@@ -26,7 +26,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableArray<string> LocalVlanIds;
         /// <summary>
-        /// Dynamic VLAN mapping method used for RADIUS-provided VLAN attributes
+        /// Dynamic VLAN mapping method used for RADIUS-provided VLAN attributes. enum: `airespace-interface-name`, `Standard`.
         /// </summary>
         public readonly string? Type;
         /// <summary>

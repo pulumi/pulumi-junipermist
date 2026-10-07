@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DeviceprofileSwitchSnmpConfigV3ConfigTargetParameter {
     /**
-     * @return SNMP message processing model used by this target parameter profile
+     * @return SNMP message processing model used by this target parameter profile. enum: `v1`, `v2c`, `v3`.
      * 
      */
     private String messageProcessingModel;
@@ -28,12 +28,12 @@ public final class DeviceprofileSwitchSnmpConfigV3ConfigTargetParameter {
      */
     private @Nullable String notifyFilter;
     /**
-     * @return Required security level for this target parameter profile
+     * @return Required security level for this target parameter profile. enum: `authentication`, `none`, `privacy`.
      * 
      */
     private @Nullable String securityLevel;
     /**
-     * @return Required security model for this target parameter profile
+     * @return Required security model for this target parameter profile. enum: `usm`, `v1`, `v2c`.
      * 
      */
     private @Nullable String securityModel;
@@ -45,7 +45,7 @@ public final class DeviceprofileSwitchSnmpConfigV3ConfigTargetParameter {
 
     private DeviceprofileSwitchSnmpConfigV3ConfigTargetParameter() {}
     /**
-     * @return SNMP message processing model used by this target parameter profile
+     * @return SNMP message processing model used by this target parameter profile. enum: `v1`, `v2c`, `v3`.
      * 
      */
     public String messageProcessingModel() {
@@ -66,14 +66,14 @@ public final class DeviceprofileSwitchSnmpConfigV3ConfigTargetParameter {
         return Optional.ofNullable(this.notifyFilter);
     }
     /**
-     * @return Required security level for this target parameter profile
+     * @return Required security level for this target parameter profile. enum: `authentication`, `none`, `privacy`.
      * 
      */
     public Optional<String> securityLevel() {
         return Optional.ofNullable(this.securityLevel);
     }
     /**
-     * @return Required security model for this target parameter profile
+     * @return Required security model for this target parameter profile. enum: `usm`, `v1`, `v2c`.
      * 
      */
     public Optional<String> securityModel() {

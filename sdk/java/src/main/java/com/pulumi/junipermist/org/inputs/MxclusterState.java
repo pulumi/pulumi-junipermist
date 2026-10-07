@@ -255,14 +255,14 @@ public final class MxclusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Selection strategy for ordering tunnel termination hosts
+     * Selection strategy for ordering tunnel termination hosts. enum: `ordered`, `shuffle`, `shuffle-by-site`.
      * 
      */
     @Import(name="tuntermHostsSelection")
     private @Nullable Output<String> tuntermHostsSelection;
 
     /**
-     * @return Selection strategy for ordering tunnel termination hosts
+     * @return Selection strategy for ordering tunnel termination hosts. enum: `ordered`, `shuffle`, `shuffle-by-site`.
      * 
      */
     public Optional<Output<String>> tuntermHostsSelection() {
@@ -285,14 +285,14 @@ public final class MxclusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Monitoring checks for tunnel termination reachability
+     * Monitoring checks for tunnel termination reachability. Only for Org Mist Edges; use `tuntermMonitoring` in the `siteSetting` for site-scoped Mist Edges
      * 
      */
     @Import(name="tuntermMonitorings")
     private @Nullable Output<List<List<MxclusterTuntermMonitoringArgs>>> tuntermMonitorings;
 
     /**
-     * @return Monitoring checks for tunnel termination reachability
+     * @return Monitoring checks for tunnel termination reachability. Only for Org Mist Edges; use `tuntermMonitoring` in the `siteSetting` for site-scoped Mist Edges
      * 
      */
     public Optional<Output<List<List<MxclusterTuntermMonitoringArgs>>>> tuntermMonitorings() {
@@ -686,7 +686,7 @@ public final class MxclusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tuntermHostsSelection Selection strategy for ordering tunnel termination hosts
+         * @param tuntermHostsSelection Selection strategy for ordering tunnel termination hosts. enum: `ordered`, `shuffle`, `shuffle-by-site`.
          * 
          * @return builder
          * 
@@ -697,7 +697,7 @@ public final class MxclusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tuntermHostsSelection Selection strategy for ordering tunnel termination hosts
+         * @param tuntermHostsSelection Selection strategy for ordering tunnel termination hosts. enum: `ordered`, `shuffle`, `shuffle-by-site`.
          * 
          * @return builder
          * 
@@ -728,7 +728,7 @@ public final class MxclusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tuntermMonitorings Monitoring checks for tunnel termination reachability
+         * @param tuntermMonitorings Monitoring checks for tunnel termination reachability. Only for Org Mist Edges; use `tuntermMonitoring` in the `siteSetting` for site-scoped Mist Edges
          * 
          * @return builder
          * 
@@ -739,7 +739,7 @@ public final class MxclusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tuntermMonitorings Monitoring checks for tunnel termination reachability
+         * @param tuntermMonitorings Monitoring checks for tunnel termination reachability. Only for Org Mist Edges; use `tuntermMonitoring` in the `siteSetting` for site-scoped Mist Edges
          * 
          * @return builder
          * 
@@ -749,7 +749,7 @@ public final class MxclusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tuntermMonitorings Monitoring checks for tunnel termination reachability
+         * @param tuntermMonitorings Monitoring checks for tunnel termination reachability. Only for Org Mist Edges; use `tuntermMonitoring` in the `siteSetting` for site-scoped Mist Edges
          * 
          * @return builder
          * 

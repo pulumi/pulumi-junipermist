@@ -66,14 +66,14 @@ public final class SwitchRadiusConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Selection strategy for RADIUS authentication servers
+     * Selection strategy for RADIUS authentication servers. enum: `ordered`, `unordered`.
      * 
      */
     @Import(name="authServerSelection")
     private @Nullable Output<String> authServerSelection;
 
     /**
-     * @return Selection strategy for RADIUS authentication servers
+     * @return Selection strategy for RADIUS authentication servers. enum: `ordered`, `unordered`.
      * 
      */
     public Optional<Output<String>> authServerSelection() {
@@ -309,7 +309,7 @@ public final class SwitchRadiusConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param authServerSelection Selection strategy for RADIUS authentication servers
+         * @param authServerSelection Selection strategy for RADIUS authentication servers. enum: `ordered`, `unordered`.
          * 
          * @return builder
          * 
@@ -320,7 +320,7 @@ public final class SwitchRadiusConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param authServerSelection Selection strategy for RADIUS authentication servers
+         * @param authServerSelection Selection strategy for RADIUS authentication servers. enum: `ordered`, `unordered`.
          * 
          * @return builder
          * 

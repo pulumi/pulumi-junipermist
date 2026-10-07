@@ -107,7 +107,7 @@ type Mxtunnel struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Identifier of the org that owns the Mist Tunnel
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
-	// Encapsulation protocol used for the Mist Tunnel
+	// Encapsulation protocol used for the Mist Tunnel. enum: `ip`, `udp`.
 	Protocol pulumi.StringPtrOutput `pulumi:"protocol"`
 	// List of VLAN IDs carried by this Mist Tunnel
 	VlanIds pulumi.IntArrayOutput `pulumi:"vlanIds"`
@@ -164,7 +164,7 @@ type mxtunnelState struct {
 	Name *string `pulumi:"name"`
 	// Identifier of the org that owns the Mist Tunnel
 	OrgId *string `pulumi:"orgId"`
-	// Encapsulation protocol used for the Mist Tunnel
+	// Encapsulation protocol used for the Mist Tunnel. enum: `ip`, `udp`.
 	Protocol *string `pulumi:"protocol"`
 	// List of VLAN IDs carried by this Mist Tunnel
 	VlanIds []int `pulumi:"vlanIds"`
@@ -189,7 +189,7 @@ type MxtunnelState struct {
 	Name pulumi.StringPtrInput
 	// Identifier of the org that owns the Mist Tunnel
 	OrgId pulumi.StringPtrInput
-	// Encapsulation protocol used for the Mist Tunnel
+	// Encapsulation protocol used for the Mist Tunnel. enum: `ip`, `udp`.
 	Protocol pulumi.StringPtrInput
 	// List of VLAN IDs carried by this Mist Tunnel
 	VlanIds pulumi.IntArrayInput
@@ -218,7 +218,7 @@ type mxtunnelArgs struct {
 	Name *string `pulumi:"name"`
 	// Identifier of the org that owns the Mist Tunnel
 	OrgId string `pulumi:"orgId"`
-	// Encapsulation protocol used for the Mist Tunnel
+	// Encapsulation protocol used for the Mist Tunnel. enum: `ip`, `udp`.
 	Protocol *string `pulumi:"protocol"`
 	// List of VLAN IDs carried by this Mist Tunnel
 	VlanIds []int `pulumi:"vlanIds"`
@@ -244,7 +244,7 @@ type MxtunnelArgs struct {
 	Name pulumi.StringPtrInput
 	// Identifier of the org that owns the Mist Tunnel
 	OrgId pulumi.StringInput
-	// Encapsulation protocol used for the Mist Tunnel
+	// Encapsulation protocol used for the Mist Tunnel. enum: `ip`, `udp`.
 	Protocol pulumi.StringPtrInput
 	// List of VLAN IDs carried by this Mist Tunnel
 	VlanIds pulumi.IntArrayInput
@@ -382,7 +382,7 @@ func (o MxtunnelOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Mxtunnel) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// Encapsulation protocol used for the Mist Tunnel
+// Encapsulation protocol used for the Mist Tunnel. enum: `ip`, `udp`.
 func (o MxtunnelOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Mxtunnel) pulumi.StringPtrOutput { return v.Protocol }).(pulumi.StringPtrOutput)
 }

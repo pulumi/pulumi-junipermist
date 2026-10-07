@@ -120,13 +120,13 @@ type Nacidp struct {
 	LdapResolveGroups pulumi.BoolOutput `pulumi:"ldapResolveGroups"`
 	// Server hostnames or IP addresses for LDAP or LDAPS when `idpType`==`ldap`
 	LdapServerHosts pulumi.StringArrayOutput `pulumi:"ldapServerHosts"`
-	// Provider template for LDAP SSO when `idpType`==`ldap`
+	// Provider template for LDAP SSO when `idpType`==`ldap`. enum: `azure`, `custom`, `google`, `okta`.
 	LdapType pulumi.StringPtrOutput `pulumi:"ldapType"`
 	// Required if `ldapType`==`custom`, LDAP filter that will identify the type of user
 	LdapUserFilter pulumi.StringPtrOutput `pulumi:"ldapUserFilter"`
 	// Required if `ldapType`==`custom`,LDAP filter that will identify the type of member
 	MemberFilter pulumi.StringPtrOutput `pulumi:"memberFilter"`
-	// Display name of the NAC IDP configuration
+	// Display name of the SSO configuration
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Required if `idpType`==`oauth`, Client Credentials
 	OauthCcClientId pulumi.StringPtrOutput `pulumi:"oauthCcClientId"`
@@ -134,9 +134,9 @@ type Nacidp struct {
 	OauthCcClientSecret pulumi.StringPtrOutput `pulumi:"oauthCcClientSecret"`
 	// OAuth discovery document URL used when `idpType`==`oauth`
 	OauthDiscoveryUrl pulumi.StringPtrOutput `pulumi:"oauthDiscoveryUrl"`
-	// Ping Identity region for OAuth SSO when `oauthType`==`pingIdentity`
+	// Ping Identity region for OAuth SSO when `oauthType`==`pingIdentity`. enum: `asia`, `au`, `ca`, `eu`, `us`.
 	OauthPingIdentityRegion pulumi.StringOutput `pulumi:"oauthPingIdentityRegion"`
-	// Provider domain for Okta OAuth SSO when `oauthType`==`okta`
+	// Provider domain for Okta OAuth SSO when `oauthType`==`okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
 	OauthProviderDomain pulumi.StringOutput `pulumi:"oauthProviderDomain"`
 	// If `idpType`==`oauth`, ropc = Resource Owner Password Credentials
 	OauthRopcClientId pulumi.StringPtrOutput `pulumi:"oauthRopcClientId"`
@@ -144,7 +144,7 @@ type Nacidp struct {
 	OauthRopcClientSecret pulumi.StringPtrOutput `pulumi:"oauthRopcClientSecret"`
 	// Required if `idpType`==`oauth`, oauth*tenant*id
 	OauthTenantId pulumi.StringPtrOutput `pulumi:"oauthTenantId"`
-	// Provider type for OAuth SSO when `idpType`==`oauth`
+	// Provider type for OAuth SSO when `idpType`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `pingIdentity`.
 	OauthType pulumi.StringOutput `pulumi:"oauthType"`
 	// SSIDs that support OpenRoaming, used when `idpType`==`openroaming`
 	OpenroamingSsids pulumi.StringArrayOutput `pulumi:"openroamingSsids"`
@@ -152,7 +152,7 @@ type Nacidp struct {
 	OpenroamingWbaClientCert pulumi.StringPtrOutput `pulumi:"openroamingWbaClientCert"`
 	// Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
 	OpenroamingWbaClientKey pulumi.StringPtrOutput `pulumi:"openroamingWbaClientKey"`
-	// Owning organization identifier for this NAC IDP configuration
+	// Owning organization identifier for this SSO configuration
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// If `idpType`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
 	ScimEnabled pulumi.BoolOutput `pulumi:"scimEnabled"`
@@ -243,13 +243,13 @@ type nacidpState struct {
 	LdapResolveGroups *bool `pulumi:"ldapResolveGroups"`
 	// Server hostnames or IP addresses for LDAP or LDAPS when `idpType`==`ldap`
 	LdapServerHosts []string `pulumi:"ldapServerHosts"`
-	// Provider template for LDAP SSO when `idpType`==`ldap`
+	// Provider template for LDAP SSO when `idpType`==`ldap`. enum: `azure`, `custom`, `google`, `okta`.
 	LdapType *string `pulumi:"ldapType"`
 	// Required if `ldapType`==`custom`, LDAP filter that will identify the type of user
 	LdapUserFilter *string `pulumi:"ldapUserFilter"`
 	// Required if `ldapType`==`custom`,LDAP filter that will identify the type of member
 	MemberFilter *string `pulumi:"memberFilter"`
-	// Display name of the NAC IDP configuration
+	// Display name of the SSO configuration
 	Name *string `pulumi:"name"`
 	// Required if `idpType`==`oauth`, Client Credentials
 	OauthCcClientId *string `pulumi:"oauthCcClientId"`
@@ -257,9 +257,9 @@ type nacidpState struct {
 	OauthCcClientSecret *string `pulumi:"oauthCcClientSecret"`
 	// OAuth discovery document URL used when `idpType`==`oauth`
 	OauthDiscoveryUrl *string `pulumi:"oauthDiscoveryUrl"`
-	// Ping Identity region for OAuth SSO when `oauthType`==`pingIdentity`
+	// Ping Identity region for OAuth SSO when `oauthType`==`pingIdentity`. enum: `asia`, `au`, `ca`, `eu`, `us`.
 	OauthPingIdentityRegion *string `pulumi:"oauthPingIdentityRegion"`
-	// Provider domain for Okta OAuth SSO when `oauthType`==`okta`
+	// Provider domain for Okta OAuth SSO when `oauthType`==`okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
 	OauthProviderDomain *string `pulumi:"oauthProviderDomain"`
 	// If `idpType`==`oauth`, ropc = Resource Owner Password Credentials
 	OauthRopcClientId *string `pulumi:"oauthRopcClientId"`
@@ -267,7 +267,7 @@ type nacidpState struct {
 	OauthRopcClientSecret *string `pulumi:"oauthRopcClientSecret"`
 	// Required if `idpType`==`oauth`, oauth*tenant*id
 	OauthTenantId *string `pulumi:"oauthTenantId"`
-	// Provider type for OAuth SSO when `idpType`==`oauth`
+	// Provider type for OAuth SSO when `idpType`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `pingIdentity`.
 	OauthType *string `pulumi:"oauthType"`
 	// SSIDs that support OpenRoaming, used when `idpType`==`openroaming`
 	OpenroamingSsids []string `pulumi:"openroamingSsids"`
@@ -275,7 +275,7 @@ type nacidpState struct {
 	OpenroamingWbaClientCert *string `pulumi:"openroamingWbaClientCert"`
 	// Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
 	OpenroamingWbaClientKey *string `pulumi:"openroamingWbaClientKey"`
-	// Owning organization identifier for this NAC IDP configuration
+	// Owning organization identifier for this SSO configuration
 	OrgId *string `pulumi:"orgId"`
 	// If `idpType`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
 	ScimEnabled *bool `pulumi:"scimEnabled"`
@@ -308,13 +308,13 @@ type NacidpState struct {
 	LdapResolveGroups pulumi.BoolPtrInput
 	// Server hostnames or IP addresses for LDAP or LDAPS when `idpType`==`ldap`
 	LdapServerHosts pulumi.StringArrayInput
-	// Provider template for LDAP SSO when `idpType`==`ldap`
+	// Provider template for LDAP SSO when `idpType`==`ldap`. enum: `azure`, `custom`, `google`, `okta`.
 	LdapType pulumi.StringPtrInput
 	// Required if `ldapType`==`custom`, LDAP filter that will identify the type of user
 	LdapUserFilter pulumi.StringPtrInput
 	// Required if `ldapType`==`custom`,LDAP filter that will identify the type of member
 	MemberFilter pulumi.StringPtrInput
-	// Display name of the NAC IDP configuration
+	// Display name of the SSO configuration
 	Name pulumi.StringPtrInput
 	// Required if `idpType`==`oauth`, Client Credentials
 	OauthCcClientId pulumi.StringPtrInput
@@ -322,9 +322,9 @@ type NacidpState struct {
 	OauthCcClientSecret pulumi.StringPtrInput
 	// OAuth discovery document URL used when `idpType`==`oauth`
 	OauthDiscoveryUrl pulumi.StringPtrInput
-	// Ping Identity region for OAuth SSO when `oauthType`==`pingIdentity`
+	// Ping Identity region for OAuth SSO when `oauthType`==`pingIdentity`. enum: `asia`, `au`, `ca`, `eu`, `us`.
 	OauthPingIdentityRegion pulumi.StringPtrInput
-	// Provider domain for Okta OAuth SSO when `oauthType`==`okta`
+	// Provider domain for Okta OAuth SSO when `oauthType`==`okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
 	OauthProviderDomain pulumi.StringPtrInput
 	// If `idpType`==`oauth`, ropc = Resource Owner Password Credentials
 	OauthRopcClientId pulumi.StringPtrInput
@@ -332,7 +332,7 @@ type NacidpState struct {
 	OauthRopcClientSecret pulumi.StringPtrInput
 	// Required if `idpType`==`oauth`, oauth*tenant*id
 	OauthTenantId pulumi.StringPtrInput
-	// Provider type for OAuth SSO when `idpType`==`oauth`
+	// Provider type for OAuth SSO when `idpType`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `pingIdentity`.
 	OauthType pulumi.StringPtrInput
 	// SSIDs that support OpenRoaming, used when `idpType`==`openroaming`
 	OpenroamingSsids pulumi.StringArrayInput
@@ -340,7 +340,7 @@ type NacidpState struct {
 	OpenroamingWbaClientCert pulumi.StringPtrInput
 	// Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
 	OpenroamingWbaClientKey pulumi.StringPtrInput
-	// Owning organization identifier for this NAC IDP configuration
+	// Owning organization identifier for this SSO configuration
 	OrgId pulumi.StringPtrInput
 	// If `idpType`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
 	ScimEnabled pulumi.BoolPtrInput
@@ -377,13 +377,13 @@ type nacidpArgs struct {
 	LdapResolveGroups *bool `pulumi:"ldapResolveGroups"`
 	// Server hostnames or IP addresses for LDAP or LDAPS when `idpType`==`ldap`
 	LdapServerHosts []string `pulumi:"ldapServerHosts"`
-	// Provider template for LDAP SSO when `idpType`==`ldap`
+	// Provider template for LDAP SSO when `idpType`==`ldap`. enum: `azure`, `custom`, `google`, `okta`.
 	LdapType *string `pulumi:"ldapType"`
 	// Required if `ldapType`==`custom`, LDAP filter that will identify the type of user
 	LdapUserFilter *string `pulumi:"ldapUserFilter"`
 	// Required if `ldapType`==`custom`,LDAP filter that will identify the type of member
 	MemberFilter *string `pulumi:"memberFilter"`
-	// Display name of the NAC IDP configuration
+	// Display name of the SSO configuration
 	Name *string `pulumi:"name"`
 	// Required if `idpType`==`oauth`, Client Credentials
 	OauthCcClientId *string `pulumi:"oauthCcClientId"`
@@ -391,9 +391,9 @@ type nacidpArgs struct {
 	OauthCcClientSecret *string `pulumi:"oauthCcClientSecret"`
 	// OAuth discovery document URL used when `idpType`==`oauth`
 	OauthDiscoveryUrl *string `pulumi:"oauthDiscoveryUrl"`
-	// Ping Identity region for OAuth SSO when `oauthType`==`pingIdentity`
+	// Ping Identity region for OAuth SSO when `oauthType`==`pingIdentity`. enum: `asia`, `au`, `ca`, `eu`, `us`.
 	OauthPingIdentityRegion *string `pulumi:"oauthPingIdentityRegion"`
-	// Provider domain for Okta OAuth SSO when `oauthType`==`okta`
+	// Provider domain for Okta OAuth SSO when `oauthType`==`okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
 	OauthProviderDomain *string `pulumi:"oauthProviderDomain"`
 	// If `idpType`==`oauth`, ropc = Resource Owner Password Credentials
 	OauthRopcClientId *string `pulumi:"oauthRopcClientId"`
@@ -401,7 +401,7 @@ type nacidpArgs struct {
 	OauthRopcClientSecret *string `pulumi:"oauthRopcClientSecret"`
 	// Required if `idpType`==`oauth`, oauth*tenant*id
 	OauthTenantId *string `pulumi:"oauthTenantId"`
-	// Provider type for OAuth SSO when `idpType`==`oauth`
+	// Provider type for OAuth SSO when `idpType`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `pingIdentity`.
 	OauthType *string `pulumi:"oauthType"`
 	// SSIDs that support OpenRoaming, used when `idpType`==`openroaming`
 	OpenroamingSsids []string `pulumi:"openroamingSsids"`
@@ -409,7 +409,7 @@ type nacidpArgs struct {
 	OpenroamingWbaClientCert *string `pulumi:"openroamingWbaClientCert"`
 	// Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
 	OpenroamingWbaClientKey *string `pulumi:"openroamingWbaClientKey"`
-	// Owning organization identifier for this NAC IDP configuration
+	// Owning organization identifier for this SSO configuration
 	OrgId string `pulumi:"orgId"`
 	// If `idpType`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
 	ScimEnabled *bool `pulumi:"scimEnabled"`
@@ -443,13 +443,13 @@ type NacidpArgs struct {
 	LdapResolveGroups pulumi.BoolPtrInput
 	// Server hostnames or IP addresses for LDAP or LDAPS when `idpType`==`ldap`
 	LdapServerHosts pulumi.StringArrayInput
-	// Provider template for LDAP SSO when `idpType`==`ldap`
+	// Provider template for LDAP SSO when `idpType`==`ldap`. enum: `azure`, `custom`, `google`, `okta`.
 	LdapType pulumi.StringPtrInput
 	// Required if `ldapType`==`custom`, LDAP filter that will identify the type of user
 	LdapUserFilter pulumi.StringPtrInput
 	// Required if `ldapType`==`custom`,LDAP filter that will identify the type of member
 	MemberFilter pulumi.StringPtrInput
-	// Display name of the NAC IDP configuration
+	// Display name of the SSO configuration
 	Name pulumi.StringPtrInput
 	// Required if `idpType`==`oauth`, Client Credentials
 	OauthCcClientId pulumi.StringPtrInput
@@ -457,9 +457,9 @@ type NacidpArgs struct {
 	OauthCcClientSecret pulumi.StringPtrInput
 	// OAuth discovery document URL used when `idpType`==`oauth`
 	OauthDiscoveryUrl pulumi.StringPtrInput
-	// Ping Identity region for OAuth SSO when `oauthType`==`pingIdentity`
+	// Ping Identity region for OAuth SSO when `oauthType`==`pingIdentity`. enum: `asia`, `au`, `ca`, `eu`, `us`.
 	OauthPingIdentityRegion pulumi.StringPtrInput
-	// Provider domain for Okta OAuth SSO when `oauthType`==`okta`
+	// Provider domain for Okta OAuth SSO when `oauthType`==`okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
 	OauthProviderDomain pulumi.StringPtrInput
 	// If `idpType`==`oauth`, ropc = Resource Owner Password Credentials
 	OauthRopcClientId pulumi.StringPtrInput
@@ -467,7 +467,7 @@ type NacidpArgs struct {
 	OauthRopcClientSecret pulumi.StringPtrInput
 	// Required if `idpType`==`oauth`, oauth*tenant*id
 	OauthTenantId pulumi.StringPtrInput
-	// Provider type for OAuth SSO when `idpType`==`oauth`
+	// Provider type for OAuth SSO when `idpType`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `pingIdentity`.
 	OauthType pulumi.StringPtrInput
 	// SSIDs that support OpenRoaming, used when `idpType`==`openroaming`
 	OpenroamingSsids pulumi.StringArrayInput
@@ -475,7 +475,7 @@ type NacidpArgs struct {
 	OpenroamingWbaClientCert pulumi.StringPtrInput
 	// Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
 	OpenroamingWbaClientKey pulumi.StringPtrInput
-	// Owning organization identifier for this NAC IDP configuration
+	// Owning organization identifier for this SSO configuration
 	OrgId pulumi.StringInput
 	// If `idpType`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
 	ScimEnabled pulumi.BoolPtrInput
@@ -630,7 +630,7 @@ func (o NacidpOutput) LdapServerHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Nacidp) pulumi.StringArrayOutput { return v.LdapServerHosts }).(pulumi.StringArrayOutput)
 }
 
-// Provider template for LDAP SSO when `idpType`==`ldap`
+// Provider template for LDAP SSO when `idpType`==`ldap`. enum: `azure`, `custom`, `google`, `okta`.
 func (o NacidpOutput) LdapType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Nacidp) pulumi.StringPtrOutput { return v.LdapType }).(pulumi.StringPtrOutput)
 }
@@ -645,7 +645,7 @@ func (o NacidpOutput) MemberFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Nacidp) pulumi.StringPtrOutput { return v.MemberFilter }).(pulumi.StringPtrOutput)
 }
 
-// Display name of the NAC IDP configuration
+// Display name of the SSO configuration
 func (o NacidpOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Nacidp) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -665,12 +665,12 @@ func (o NacidpOutput) OauthDiscoveryUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Nacidp) pulumi.StringPtrOutput { return v.OauthDiscoveryUrl }).(pulumi.StringPtrOutput)
 }
 
-// Ping Identity region for OAuth SSO when `oauthType`==`pingIdentity`
+// Ping Identity region for OAuth SSO when `oauthType`==`pingIdentity`. enum: `asia`, `au`, `ca`, `eu`, `us`.
 func (o NacidpOutput) OauthPingIdentityRegion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Nacidp) pulumi.StringOutput { return v.OauthPingIdentityRegion }).(pulumi.StringOutput)
 }
 
-// Provider domain for Okta OAuth SSO when `oauthType`==`okta`
+// Provider domain for Okta OAuth SSO when `oauthType`==`okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
 func (o NacidpOutput) OauthProviderDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v *Nacidp) pulumi.StringOutput { return v.OauthProviderDomain }).(pulumi.StringOutput)
 }
@@ -690,7 +690,7 @@ func (o NacidpOutput) OauthTenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Nacidp) pulumi.StringPtrOutput { return v.OauthTenantId }).(pulumi.StringPtrOutput)
 }
 
-// Provider type for OAuth SSO when `idpType`==`oauth`
+// Provider type for OAuth SSO when `idpType`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `pingIdentity`.
 func (o NacidpOutput) OauthType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Nacidp) pulumi.StringOutput { return v.OauthType }).(pulumi.StringOutput)
 }
@@ -710,7 +710,7 @@ func (o NacidpOutput) OpenroamingWbaClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Nacidp) pulumi.StringPtrOutput { return v.OpenroamingWbaClientKey }).(pulumi.StringPtrOutput)
 }
 
-// Owning organization identifier for this NAC IDP configuration
+// Owning organization identifier for this SSO configuration
 func (o NacidpOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Nacidp) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }

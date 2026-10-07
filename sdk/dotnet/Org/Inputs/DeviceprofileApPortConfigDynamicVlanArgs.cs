@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Mapping mode for interpreting dynamic VLAN attributes returned by RADIUS
+        /// Mapping mode for interpreting dynamic VLAN attributes returned by RADIUS. enum: `airespace-interface-name`, `Standard`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

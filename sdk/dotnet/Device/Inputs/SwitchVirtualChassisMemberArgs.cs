@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<int> MemberId { get; set; } = null!;
 
         /// <summary>
-        /// Role of this member in the Virtual Chassis
+        /// Role of this member in the Virtual Chassis. enum: `Backup`, `Linecard`, `Master`.
         /// </summary>
         [Input("vcRole", required: true)]
         public Input<string> VcRole { get; set; } = null!;

@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// Link duplex mode override for the switch port
+        /// Link duplex mode override for the switch port. enum: `Auto`, `Full`, `Half`.
         /// </summary>
         [Input("duplex")]
         public Input<string>? Duplex { get; set; }
@@ -55,7 +55,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? PortNetwork { get; set; }
 
         /// <summary>
-        /// Link speed override for the switch port
+        /// Link speed override for the switch port. enum: `10m`, `100m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`, `Auto`.
         /// </summary>
         [Input("speed")]
         public Input<string>? Speed { get; set; }

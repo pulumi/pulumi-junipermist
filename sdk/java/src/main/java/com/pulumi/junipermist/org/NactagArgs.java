@@ -65,14 +65,14 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `type`==`match`, client or authentication attribute used for rule matching
+     * If `type`==`match`, client or authentication attribute used for rule matching. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrStatus`, `gbpTag`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`.
      * 
      */
     @Import(name="match")
     private @Nullable Output<String> match;
 
     /**
-     * @return If `type`==`match`, client or authentication attribute used for rule matching
+     * @return If `type`==`match`, client or authentication attribute used for rule matching. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrStatus`, `gbpTag`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`.
      * 
      */
     public Optional<Output<String>> match() {
@@ -208,14 +208,14 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * NAC tag type that determines whether the tag is a matcher or a result attribute
+     * NAC tag type that determines whether the tag is a matcher or a result attribute. enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return NAC tag type that determines whether the tag is a matcher or a result attribute
+     * @return NAC tag type that determines whether the tag is a matcher or a result attribute. enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`.
      * 
      */
     public Output<String> type() {
@@ -223,14 +223,14 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `type`==`usernameAttr`, attribute used to derive the username returned by the NAC rule
+     * If `type`==`usernameAttr`, attribute used to derive the username returned by the NAC rule. enum: `automatic`, `cn`, `dns`, `email`, `upn`.
      * 
      */
     @Import(name="usernameAttr")
     private @Nullable Output<String> usernameAttr;
 
     /**
-     * @return If `type`==`usernameAttr`, attribute used to derive the username returned by the NAC rule
+     * @return If `type`==`usernameAttr`, attribute used to derive the username returned by the NAC rule. enum: `automatic`, `cn`, `dns`, `email`, `upn`.
      * 
      */
     public Optional<Output<String>> usernameAttr() {
@@ -380,7 +380,7 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param match If `type`==`match`, client or authentication attribute used for rule matching
+         * @param match If `type`==`match`, client or authentication attribute used for rule matching. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrStatus`, `gbpTag`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`.
          * 
          * @return builder
          * 
@@ -391,7 +391,7 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param match If `type`==`match`, client or authentication attribute used for rule matching
+         * @param match If `type`==`match`, client or authentication attribute used for rule matching. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrStatus`, `gbpTag`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`.
          * 
          * @return builder
          * 
@@ -597,7 +597,7 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type NAC tag type that determines whether the tag is a matcher or a result attribute
+         * @param type NAC tag type that determines whether the tag is a matcher or a result attribute. enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`.
          * 
          * @return builder
          * 
@@ -608,7 +608,7 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type NAC tag type that determines whether the tag is a matcher or a result attribute
+         * @param type NAC tag type that determines whether the tag is a matcher or a result attribute. enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`.
          * 
          * @return builder
          * 
@@ -618,7 +618,7 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param usernameAttr If `type`==`usernameAttr`, attribute used to derive the username returned by the NAC rule
+         * @param usernameAttr If `type`==`usernameAttr`, attribute used to derive the username returned by the NAC rule. enum: `automatic`, `cn`, `dns`, `email`, `upn`.
          * 
          * @return builder
          * 
@@ -629,7 +629,7 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param usernameAttr If `type`==`usernameAttr`, attribute used to derive the username returned by the NAC rule
+         * @param usernameAttr If `type`==`usernameAttr`, attribute used to derive the username returned by the NAC rule. enum: `automatic`, `cn`, `dns`, `email`, `upn`.
          * 
          * @return builder
          * 

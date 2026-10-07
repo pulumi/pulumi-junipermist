@@ -256,14 +256,14 @@ public class Mxcluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tuntermHostsOrders);
     }
     /**
-     * Selection strategy for ordering tunnel termination hosts
+     * Selection strategy for ordering tunnel termination hosts. enum: `ordered`, `shuffle`, `shuffle-by-site`.
      * 
      */
     @Export(name="tuntermHostsSelection", refs={String.class}, tree="[0]")
     private Output<String> tuntermHostsSelection;
 
     /**
-     * @return Selection strategy for ordering tunnel termination hosts
+     * @return Selection strategy for ordering tunnel termination hosts. enum: `ordered`, `shuffle`, `shuffle-by-site`.
      * 
      */
     public Output<String> tuntermHostsSelection() {
@@ -284,14 +284,14 @@ public class Mxcluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tuntermMonitoringDisabled);
     }
     /**
-     * Monitoring checks for tunnel termination reachability
+     * Monitoring checks for tunnel termination reachability. Only for Org Mist Edges; use `tuntermMonitoring` in the `siteSetting` for site-scoped Mist Edges
      * 
      */
     @Export(name="tuntermMonitorings", refs={List.class,MxclusterTuntermMonitoring.class}, tree="[0,[0,1]]")
     private Output</* @Nullable */ List<List<MxclusterTuntermMonitoring>>> tuntermMonitorings;
 
     /**
-     * @return Monitoring checks for tunnel termination reachability
+     * @return Monitoring checks for tunnel termination reachability. Only for Org Mist Edges; use `tuntermMonitoring` in the `siteSetting` for site-scoped Mist Edges
      * 
      */
     public Output<Optional<List<List<MxclusterTuntermMonitoring>>>> tuntermMonitorings() {

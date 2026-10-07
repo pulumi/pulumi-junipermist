@@ -48,14 +48,14 @@ public final class SettingAutoUpgradeEslArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Weekly ESL auto-upgrade day for the maintenance window
+     * Weekly ESL auto-upgrade day for the maintenance window. enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`.
      * 
      */
     @Import(name="dayOfWeek")
     private @Nullable Output<String> dayOfWeek;
 
     /**
-     * @return Weekly ESL auto-upgrade day for the maintenance window
+     * @return Weekly ESL auto-upgrade day for the maintenance window. enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`.
      * 
      */
     public Optional<Output<String>> dayOfWeek() {
@@ -179,7 +179,7 @@ public final class SettingAutoUpgradeEslArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param dayOfWeek Weekly ESL auto-upgrade day for the maintenance window
+         * @param dayOfWeek Weekly ESL auto-upgrade day for the maintenance window. enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class SettingAutoUpgradeEslArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param dayOfWeek Weekly ESL auto-upgrade day for the maintenance window
+         * @param dayOfWeek Weekly ESL auto-upgrade day for the maintenance window. enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`.
          * 
          * @return builder
          * 

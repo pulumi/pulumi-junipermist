@@ -79,7 +79,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// Timestamp format used in forwarded syslog messages
+        /// Timestamp format used in forwarded syslog messages. enum: `Millisecond`, `Year`, `year millisecond`.
         /// </summary>
         [Input("timeFormat")]
         public Input<string>? TimeFormat { get; set; }

@@ -26,7 +26,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? ExportPolicy;
         /// <summary>
-        /// Default BGP hold time for switch BGP sessions
+        /// Default BGP hold time for switch BGP sessions.
         /// </summary>
         public readonly int? HoldTime;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Networks;
         /// <summary>
-        /// BGP session type for this switch BGP configuration
+        /// BGP session type for this switch BGP configuration. enum: `External`, `Internal`.
         /// </summary>
         public readonly string Type;
 

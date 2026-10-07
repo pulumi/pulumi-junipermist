@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly int? HelloRetries;
         /// <summary>
-        /// Encapsulation protocol used for this additional Mist Tunnel
+        /// Encapsulation protocol used for this additional Mist Tunnel. enum: `Ip`, `Udp`.
         /// </summary>
         public readonly string? Protocol;
         /// <summary>

@@ -119,14 +119,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:org/nacPortal:NacPortal")
 public class NacPortal extends com.pulumi.resources.CustomResource {
     /**
-     * If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients
+     * If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients. enum: `wireless`, `wireless+wired`.
      * 
      */
     @Export(name="accessType", refs={String.class}, tree="[0]")
     private Output<String> accessType;
 
     /**
-     * @return If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients
+     * @return If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients. enum: `wireless`, `wireless+wired`.
      * 
      */
     public Output<String> accessType() {
@@ -175,14 +175,14 @@ public class NacPortal extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.certExpireTime);
     }
     /**
-     * EAP mode used when onboarding wireless clients through the NAC portal
+     * EAP mode used when onboarding wireless clients through the NAC portal. enum: `wpa2`, `wpa3`.
      * 
      */
     @Export(name="eapType", refs={String.class}, tree="[0]")
     private Output<String> eapType;
 
     /**
-     * @return EAP mode used when onboarding wireless clients through the NAC portal
+     * @return EAP mode used when onboarding wireless clients through the NAC portal. enum: `wpa2`, `wpa3`.
      * 
      */
     public Output<String> eapType() {
@@ -203,14 +203,14 @@ public class NacPortal extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enableLocation);
     }
     /**
-     * Model, version, fingering, events (connecting, disconnect, roaming), which ap
+     * Optional, model, version, fingerprinting, events (connecting, disconnect, roaming), which ap, default is false
      * 
      */
     @Export(name="enableTelemetry", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableTelemetry;
 
     /**
-     * @return Model, version, fingering, events (connecting, disconnect, roaming), which ap
+     * @return Optional, model, version, fingerprinting, events (connecting, disconnect, roaming), which ap, default is false
      * 
      */
     public Output<Optional<Boolean>> enableTelemetry() {
@@ -329,14 +329,14 @@ public class NacPortal extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tos);
     }
     /**
-     * NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
+     * NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding. enum: `guestAdmin`, `guestPortal`, `marvisClient`.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
+     * @return NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding. enum: `guestAdmin`, `guestPortal`, `marvisClient`.
      * 
      */
     public Output<Optional<String>> type() {

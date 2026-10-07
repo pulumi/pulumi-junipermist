@@ -13,10 +13,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingSyntheticTestWanSpeedtest {
     /**
-     * @return Whether scheduled WAN speedtests are enabled
+     * @return Whether scheduled WAN speedtests are disabled. Defaults to `false` (enabled); set this to `true` to disable speedtests.
      * 
      */
-    private @Nullable Boolean enabled;
+    private @Nullable Boolean disabled;
     /**
      * @return Scheduled time of day for WAN speedtests
      * 
@@ -25,11 +25,11 @@ public final class SettingSyntheticTestWanSpeedtest {
 
     private SettingSyntheticTestWanSpeedtest() {}
     /**
-     * @return Whether scheduled WAN speedtests are enabled
+     * @return Whether scheduled WAN speedtests are disabled. Defaults to `false` (enabled); set this to `true` to disable speedtests.
      * 
      */
-    public Optional<Boolean> enabled() {
-        return Optional.ofNullable(this.enabled);
+    public Optional<Boolean> disabled() {
+        return Optional.ofNullable(this.disabled);
     }
     /**
      * @return Scheduled time of day for WAN speedtests
@@ -48,19 +48,19 @@ public final class SettingSyntheticTestWanSpeedtest {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Boolean enabled;
+        private @Nullable Boolean disabled;
         private @Nullable String timeOfDay;
         public Builder() {}
         public Builder(SettingSyntheticTestWanSpeedtest defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.enabled = defaults.enabled;
+    	      this.disabled = defaults.disabled;
     	      this.timeOfDay = defaults.timeOfDay;
         }
 
         @CustomType.Setter
-        public Builder enabled(@Nullable Boolean enabled) {
+        public Builder disabled(@Nullable Boolean disabled) {
 
-            this.enabled = enabled;
+            this.disabled = disabled;
             return this;
         }
         @CustomType.Setter
@@ -71,7 +71,7 @@ public final class SettingSyntheticTestWanSpeedtest {
         }
         public SettingSyntheticTestWanSpeedtest build() {
             final var _resultValue = new SettingSyntheticTestWanSpeedtest();
-            _resultValue.enabled = enabled;
+            _resultValue.disabled = disabled;
             _resultValue.timeOfDay = timeOfDay;
             return _resultValue;
         }

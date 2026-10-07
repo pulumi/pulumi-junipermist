@@ -719,14 +719,14 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tuntermMonitoringDisabled);
     }
     /**
-     * Tunnel termination monitoring settings for the site
+     * Tunnel termination monitoring settings for the Mist Edges assigned to the site
      * 
      */
     @Export(name="tuntermMonitorings", refs={List.class,SettingTuntermMonitoring.class}, tree="[0,1]")
     private Output</* @Nullable */ List<SettingTuntermMonitoring>> tuntermMonitorings;
 
     /**
-     * @return Tunnel termination monitoring settings for the site
+     * @return Tunnel termination monitoring settings for the Mist Edges assigned to the site
      * 
      */
     public Output<Optional<List<SettingTuntermMonitoring>>> tuntermMonitorings() {

@@ -34,7 +34,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly int? MinRssi;
         /// <summary>
-        /// Data rate template used to derive WLAN rate settings
+        /// Data rate template used to derive WLAN rate settings. enum: `Compatible`, `legacy-only`, `Custom`, `no-legacy`, `high-density`.
         /// </summary>
         public readonly string? Template;
         /// <summary>

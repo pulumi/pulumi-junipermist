@@ -106,7 +106,7 @@ export class Service extends pulumi.CustomResource {
      */
     declare public readonly dscp: pulumi.Output<string | undefined>;
     /**
-     * Failover behavior for traffic matched by this service
+     * Failover behavior for traffic matched by this service. enum: `nonRevertible`, `none`, `revertible`.
      */
     declare public readonly failoverPolicy: pulumi.Output<string | undefined>;
     /**
@@ -154,7 +154,7 @@ export class Service extends pulumi.CustomResource {
      */
     declare public readonly ssrRelaxedTcpStateEnforcement: pulumi.Output<boolean | undefined>;
     /**
-     * Traffic class applied when `trafficType`==`custom`
+     * Traffic class applied when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`.
      */
     declare public readonly trafficClass: pulumi.Output<string | undefined>;
     /**
@@ -162,7 +162,7 @@ export class Service extends pulumi.CustomResource {
      */
     declare public readonly trafficType: pulumi.Output<string>;
     /**
-     * Matching mode that determines which app, URL, or custom fields are used
+     * Matching mode that determines which app, URL, or custom fields are used. enum: `appCategories`, `apps`, `custom`, `urls`.
      */
     declare public readonly type: pulumi.Output<string>;
     /**
@@ -279,7 +279,7 @@ export interface ServiceState {
      */
     dscp?: pulumi.Input<string | undefined>;
     /**
-     * Failover behavior for traffic matched by this service
+     * Failover behavior for traffic matched by this service. enum: `nonRevertible`, `none`, `revertible`.
      */
     failoverPolicy?: pulumi.Input<string | undefined>;
     /**
@@ -327,7 +327,7 @@ export interface ServiceState {
      */
     ssrRelaxedTcpStateEnforcement?: pulumi.Input<boolean | undefined>;
     /**
-     * Traffic class applied when `trafficType`==`custom`
+     * Traffic class applied when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`.
      */
     trafficClass?: pulumi.Input<string | undefined>;
     /**
@@ -335,7 +335,7 @@ export interface ServiceState {
      */
     trafficType?: pulumi.Input<string | undefined>;
     /**
-     * Matching mode that determines which app, URL, or custom fields are used
+     * Matching mode that determines which app, URL, or custom fields are used. enum: `appCategories`, `apps`, `custom`, `urls`.
      */
     type?: pulumi.Input<string | undefined>;
     /**
@@ -381,7 +381,7 @@ export interface ServiceArgs {
      */
     dscp?: pulumi.Input<string | undefined>;
     /**
-     * Failover behavior for traffic matched by this service
+     * Failover behavior for traffic matched by this service. enum: `nonRevertible`, `none`, `revertible`.
      */
     failoverPolicy?: pulumi.Input<string | undefined>;
     /**
@@ -429,7 +429,7 @@ export interface ServiceArgs {
      */
     ssrRelaxedTcpStateEnforcement?: pulumi.Input<boolean | undefined>;
     /**
-     * Traffic class applied when `trafficType`==`custom`
+     * Traffic class applied when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`.
      */
     trafficClass?: pulumi.Input<string | undefined>;
     /**
@@ -437,7 +437,7 @@ export interface ServiceArgs {
      */
     trafficType?: pulumi.Input<string | undefined>;
     /**
-     * Matching mode that determines which app, URL, or custom fields are used
+     * Matching mode that determines which app, URL, or custom fields are used. enum: `appCategories`, `apps`, `custom`, `urls`.
      */
     type?: pulumi.Input<string | undefined>;
     /**

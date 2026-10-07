@@ -12,50 +12,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingJunosShellAccess {
     /**
-     * @return Shell access level used for administrator web-shell sessions
+     * @return Shell access level used for administrator web-shell sessions. enum: `admin`, `none`, `viewer`.
      * 
      */
     private @Nullable String admin;
     /**
-     * @return Shell access level used for helpdesk web-shell sessions
+     * @return Shell access level used for helpdesk web-shell sessions. enum: `admin`, `none`, `viewer`.
      * 
      */
     private @Nullable String helpdesk;
     /**
-     * @return Shell access level used for read-only web-shell sessions
+     * @return Shell access level used for read-only web-shell sessions. enum: `admin`, `none`, `viewer`.
      * 
      */
     private @Nullable String read;
     /**
-     * @return Shell access level used for write-role web-shell sessions
+     * @return Shell access level used for write-role web-shell sessions. enum: `admin`, `none`, `viewer`.
      * 
      */
     private @Nullable String write;
 
     private SettingJunosShellAccess() {}
     /**
-     * @return Shell access level used for administrator web-shell sessions
+     * @return Shell access level used for administrator web-shell sessions. enum: `admin`, `none`, `viewer`.
      * 
      */
     public Optional<String> admin() {
         return Optional.ofNullable(this.admin);
     }
     /**
-     * @return Shell access level used for helpdesk web-shell sessions
+     * @return Shell access level used for helpdesk web-shell sessions. enum: `admin`, `none`, `viewer`.
      * 
      */
     public Optional<String> helpdesk() {
         return Optional.ofNullable(this.helpdesk);
     }
     /**
-     * @return Shell access level used for read-only web-shell sessions
+     * @return Shell access level used for read-only web-shell sessions. enum: `admin`, `none`, `viewer`.
      * 
      */
     public Optional<String> read() {
         return Optional.ofNullable(this.read);
     }
     /**
-     * @return Shell access level used for write-role web-shell sessions
+     * @return Shell access level used for write-role web-shell sessions. enum: `admin`, `none`, `viewer`.
      * 
      */
     public Optional<String> write() {

@@ -108,6 +108,8 @@ type Gateway struct {
 	MapId pulumi.StringPtrOutput `pulumi:"mapId"`
 	// whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
 	MistConfigured pulumi.BoolOutput `pulumi:"mistConfigured"`
+	// Multi-Node HA (MNHA) settings for this gateway, SRX only
+	MnhaConfig GatewayMnhaConfigPtrOutput `pulumi:"mnhaConfig"`
 	// Gateway model reported for the device
 	Model pulumi.StringOutput `pulumi:"model"`
 	// MSP that manages this gateway, when applicable
@@ -235,6 +237,8 @@ type gatewayState struct {
 	MapId *string `pulumi:"mapId"`
 	// whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
 	MistConfigured *bool `pulumi:"mistConfigured"`
+	// Multi-Node HA (MNHA) settings for this gateway, SRX only
+	MnhaConfig *GatewayMnhaConfig `pulumi:"mnhaConfig"`
 	// Gateway model reported for the device
 	Model *string `pulumi:"model"`
 	// MSP that manages this gateway, when applicable
@@ -327,6 +331,8 @@ type GatewayState struct {
 	MapId pulumi.StringPtrInput
 	// whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
 	MistConfigured pulumi.BoolPtrInput
+	// Multi-Node HA (MNHA) settings for this gateway, SRX only
+	MnhaConfig GatewayMnhaConfigPtrInput
 	// Gateway model reported for the device
 	Model pulumi.StringPtrInput
 	// MSP that manages this gateway, when applicable
@@ -415,6 +421,8 @@ type gatewayArgs struct {
 	MapId *string `pulumi:"mapId"`
 	// whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
 	MistConfigured *bool `pulumi:"mistConfigured"`
+	// Multi-Node HA (MNHA) settings for this gateway, SRX only
+	MnhaConfig *GatewayMnhaConfig `pulumi:"mnhaConfig"`
 	// MSP that manages this gateway, when applicable
 	MspId *string `pulumi:"mspId"`
 	// Friendly display name assigned to the gateway
@@ -492,6 +500,8 @@ type GatewayArgs struct {
 	MapId pulumi.StringPtrInput
 	// whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
 	MistConfigured pulumi.BoolPtrInput
+	// Multi-Node HA (MNHA) settings for this gateway, SRX only
+	MnhaConfig GatewayMnhaConfigPtrInput
 	// MSP that manages this gateway, when applicable
 	MspId pulumi.StringPtrInput
 	// Friendly display name assigned to the gateway
@@ -714,6 +724,11 @@ func (o GatewayOutput) MapId() pulumi.StringPtrOutput {
 // whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
 func (o GatewayOutput) MistConfigured() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.BoolOutput { return v.MistConfigured }).(pulumi.BoolOutput)
+}
+
+// Multi-Node HA (MNHA) settings for this gateway, SRX only
+func (o GatewayOutput) MnhaConfig() GatewayMnhaConfigPtrOutput {
+	return o.ApplyT(func(v *Gateway) GatewayMnhaConfigPtrOutput { return v.MnhaConfig }).(GatewayMnhaConfigPtrOutput)
 }
 
 // Gateway model reported for the device

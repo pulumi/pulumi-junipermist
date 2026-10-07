@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly ImmutableArray<string> RadiusGroups;
         /// <summary>
-        /// Discovery scope for this Bonjour service on the WLAN
+        /// Discovery scope for this Bonjour service on the WLAN. enum: `SameAp`, `SameMap`, `SameSite`.
         /// </summary>
         public readonly string? Scope;
 

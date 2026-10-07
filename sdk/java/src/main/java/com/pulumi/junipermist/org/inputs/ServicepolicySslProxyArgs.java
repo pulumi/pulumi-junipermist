@@ -17,14 +17,14 @@ public final class ServicepolicySslProxyArgs extends com.pulumi.resources.Resour
     public static final ServicepolicySslProxyArgs Empty = new ServicepolicySslProxyArgs();
 
     /**
-     * Allowed cipher strength category for SSL proxy inspection
+     * Allowed cipher strength category for SSL proxy inspection. enum: `medium`, `strong`, `weak`.
      * 
      */
     @Import(name="ciphersCategory")
     private @Nullable Output<String> ciphersCategory;
 
     /**
-     * @return Allowed cipher strength category for SSL proxy inspection
+     * @return Allowed cipher strength category for SSL proxy inspection. enum: `medium`, `strong`, `weak`.
      * 
      */
     public Optional<Output<String>> ciphersCategory() {
@@ -72,7 +72,7 @@ public final class ServicepolicySslProxyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param ciphersCategory Allowed cipher strength category for SSL proxy inspection
+         * @param ciphersCategory Allowed cipher strength category for SSL proxy inspection. enum: `medium`, `strong`, `weak`.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ServicepolicySslProxyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param ciphersCategory Allowed cipher strength category for SSL proxy inspection
+         * @param ciphersCategory Allowed cipher strength category for SSL proxy inspection. enum: `medium`, `strong`, `weak`.
          * 
          * @return builder
          * 

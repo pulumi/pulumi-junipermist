@@ -195,14 +195,14 @@ public class Service extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dscp);
     }
     /**
-     * Failover behavior for traffic matched by this service
+     * Failover behavior for traffic matched by this service. enum: `nonRevertible`, `none`, `revertible`.
      * 
      */
     @Export(name="failoverPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> failoverPolicy;
 
     /**
-     * @return Failover behavior for traffic matched by this service
+     * @return Failover behavior for traffic matched by this service. enum: `nonRevertible`, `none`, `revertible`.
      * 
      */
     public Output<Optional<String>> failoverPolicy() {
@@ -363,14 +363,14 @@ public class Service extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ssrRelaxedTcpStateEnforcement);
     }
     /**
-     * Traffic class applied when `trafficType`==`custom`
+     * Traffic class applied when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`.
      * 
      */
     @Export(name="trafficClass", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> trafficClass;
 
     /**
-     * @return Traffic class applied when `trafficType`==`custom`
+     * @return Traffic class applied when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`.
      * 
      */
     public Output<Optional<String>> trafficClass() {
@@ -391,14 +391,14 @@ public class Service extends com.pulumi.resources.CustomResource {
         return this.trafficType;
     }
     /**
-     * Matching mode that determines which app, URL, or custom fields are used
+     * Matching mode that determines which app, URL, or custom fields are used. enum: `appCategories`, `apps`, `custom`, `urls`.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Matching mode that determines which app, URL, or custom fields are used
+     * @return Matching mode that determines which app, URL, or custom fields are used. enum: `appCategories`, `apps`, `custom`, `urls`.
      * 
      */
     public Output<String> type() {

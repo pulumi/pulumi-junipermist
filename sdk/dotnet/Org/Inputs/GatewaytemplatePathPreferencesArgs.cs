@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// Selection strategy used to evaluate the candidate paths
+        /// Selection strategy used to evaluate the candidate paths. enum: `Ecmp`, `Ordered`, `Weighted`.
         /// </summary>
         [Input("strategy")]
         public Input<string>? Strategy { get; set; }

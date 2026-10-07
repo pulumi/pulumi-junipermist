@@ -24,7 +24,7 @@ public final class MxedgeTuntermDhcpdConfig {
      */
     private @Nullable List<String> servers;
     /**
-     * @return DHCP handling mode for this tunneled VLAN
+     * @return DHCP handling mode for this tunneled VLAN. enum: `relay`.
      * 
      */
     private @Nullable String type;
@@ -45,7 +45,7 @@ public final class MxedgeTuntermDhcpdConfig {
         return this.servers == null ? List.of() : this.servers;
     }
     /**
-     * @return DHCP handling mode for this tunneled VLAN
+     * @return DHCP handling mode for this tunneled VLAN. enum: `relay`.
      * 
      */
     public Optional<String> type() {

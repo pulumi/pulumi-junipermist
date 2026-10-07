@@ -37,7 +37,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// Selection strategy for RADIUS authentication servers
+        /// Selection strategy for RADIUS authentication servers. enum: `Ordered`, `Unordered`.
         /// </summary>
         [Input("authServerSelection")]
         public Input<string>? AuthServerSelection { get; set; }

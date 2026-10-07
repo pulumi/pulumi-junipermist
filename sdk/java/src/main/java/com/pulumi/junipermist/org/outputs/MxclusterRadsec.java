@@ -36,7 +36,7 @@ public final class MxclusterRadsec {
      */
     private @Nullable Boolean matchSsid;
     /**
-     * @return Source used to populate NAS-IP-Address and NAS-IPv6-Address attributes
+     * @return Source used to populate NAS-IP-Address and NAS-IPv6-Address attributes. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`.
      * 
      */
     private @Nullable String nasIpSource;
@@ -46,12 +46,12 @@ public final class MxclusterRadsec {
      */
     private @Nullable List<String> proxyHosts;
     /**
-     * @return RADIUS server selection strategy for RadSec failover
+     * @return RADIUS server selection strategy for RadSec failover. enum: `ordered`, `unordered`.
      * 
      */
     private @Nullable String serverSelection;
     /**
-     * @return Connection source interface or address used when reaching RADIUS servers
+     * @return Connection source interface or address used when reaching RADIUS servers. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`.
      * 
      */
     private @Nullable String srcIpSource;
@@ -86,7 +86,7 @@ public final class MxclusterRadsec {
         return Optional.ofNullable(this.matchSsid);
     }
     /**
-     * @return Source used to populate NAS-IP-Address and NAS-IPv6-Address attributes
+     * @return Source used to populate NAS-IP-Address and NAS-IPv6-Address attributes. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`.
      * 
      */
     public Optional<String> nasIpSource() {
@@ -100,14 +100,14 @@ public final class MxclusterRadsec {
         return this.proxyHosts == null ? List.of() : this.proxyHosts;
     }
     /**
-     * @return RADIUS server selection strategy for RadSec failover
+     * @return RADIUS server selection strategy for RadSec failover. enum: `ordered`, `unordered`.
      * 
      */
     public Optional<String> serverSelection() {
         return Optional.ofNullable(this.serverSelection);
     }
     /**
-     * @return Connection source interface or address used when reaching RADIUS servers
+     * @return Connection source interface or address used when reaching RADIUS servers. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`.
      * 
      */
     public Optional<String> srcIpSource() {

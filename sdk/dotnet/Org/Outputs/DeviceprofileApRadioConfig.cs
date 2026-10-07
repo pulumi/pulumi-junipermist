@@ -30,11 +30,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly int? AntGain6;
         /// <summary>
-        /// Selected radio chain mode for AP models that support antenna mode control
+        /// Selected radio chain mode for AP models that support antenna mode control. enum: `1x1`, `2x2`, `3x3`, `4x4`, `Default`.
         /// </summary>
         public readonly string? AntennaMode;
         /// <summary>
-        /// Internal or external antenna selection for AP models with selectable antennas
+        /// Internal or external antenna selection for AP models with selectable antennas. enum: ``, `External`, `Internal`.
         /// </summary>
         public readonly string? AntennaSelect;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly Outputs.DeviceprofileApRadioConfigBand24? Band24;
         /// <summary>
-        /// Radio usage mode for the 2.4 GHz-capable radio
+        /// Radio usage mode for the 2.4 GHz-capable radio. enum: `24`, `5`, `6`, `Auto`.
         /// </summary>
         public readonly string? Band24Usage;
         /// <summary>

@@ -121,7 +121,7 @@ class SettingArgs:
         :param pulumi.Input['SettingSyntheticTestArgs'] synthetic_test: Active monitoring test configuration for the site
         :param pulumi.Input[_builtins.bool] track_anonymous_devices: Whether to track anonymous BLE assets (requires ‘track_asset’  enabled)
         :param pulumi.Input[_builtins.bool] tunterm_monitoring_disabled: Whether tunnel termination monitoring is disabled for the site
-        :param pulumi.Input[Sequence[pulumi.Input['SettingTuntermMonitoringArgs']]] tunterm_monitorings: Tunnel termination monitoring settings for the site
+        :param pulumi.Input[Sequence[pulumi.Input['SettingTuntermMonitoringArgs']]] tunterm_monitorings: Tunnel termination monitoring settings for the Mist Edges assigned to the site
         :param pulumi.Input['SettingTuntermMulticastConfigArgs'] tunterm_multicast_config: Multicast settings for tunnel termination at the site
         :param pulumi.Input['SettingUplinkPortConfigArgs'] uplink_port_config: AP uplink port configuration for the site
         :param pulumi.Input['SettingUwbConfigArgs'] uwb_config: UWB RTLS (OMLOX asset visibility) settings for the site, only effective on AP models with a UWB radio and in countries where the UWB radio is permitted. Overridden by the device profile and device-level settings
@@ -745,7 +745,7 @@ class SettingArgs:
     @pulumi.getter(name="tuntermMonitorings")
     def tunterm_monitorings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SettingTuntermMonitoringArgs']]]]:
         """
-        Tunnel termination monitoring settings for the site
+        Tunnel termination monitoring settings for the Mist Edges assigned to the site
         """
         return pulumi.get(self, "tunterm_monitorings")
 
@@ -1029,7 +1029,7 @@ class _SettingState:
         :param pulumi.Input['SettingSyntheticTestArgs'] synthetic_test: Active monitoring test configuration for the site
         :param pulumi.Input[_builtins.bool] track_anonymous_devices: Whether to track anonymous BLE assets (requires ‘track_asset’  enabled)
         :param pulumi.Input[_builtins.bool] tunterm_monitoring_disabled: Whether tunnel termination monitoring is disabled for the site
-        :param pulumi.Input[Sequence[pulumi.Input['SettingTuntermMonitoringArgs']]] tunterm_monitorings: Tunnel termination monitoring settings for the site
+        :param pulumi.Input[Sequence[pulumi.Input['SettingTuntermMonitoringArgs']]] tunterm_monitorings: Tunnel termination monitoring settings for the Mist Edges assigned to the site
         :param pulumi.Input['SettingTuntermMulticastConfigArgs'] tunterm_multicast_config: Multicast settings for tunnel termination at the site
         :param pulumi.Input['SettingUplinkPortConfigArgs'] uplink_port_config: AP uplink port configuration for the site
         :param pulumi.Input['SettingUwbConfigArgs'] uwb_config: UWB RTLS (OMLOX asset visibility) settings for the site, only effective on AP models with a UWB radio and in countries where the UWB radio is permitted. Overridden by the device profile and device-level settings
@@ -1674,7 +1674,7 @@ class _SettingState:
     @pulumi.getter(name="tuntermMonitorings")
     def tunterm_monitorings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SettingTuntermMonitoringArgs']]]]:
         """
-        Tunnel termination monitoring settings for the site
+        Tunnel termination monitoring settings for the Mist Edges assigned to the site
         """
         return pulumi.get(self, "tunterm_monitorings")
 
@@ -2028,7 +2028,7 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[Union['SettingSyntheticTestArgs', 'SettingSyntheticTestArgsDict']] synthetic_test: Active monitoring test configuration for the site
         :param pulumi.Input[_builtins.bool] track_anonymous_devices: Whether to track anonymous BLE assets (requires ‘track_asset’  enabled)
         :param pulumi.Input[_builtins.bool] tunterm_monitoring_disabled: Whether tunnel termination monitoring is disabled for the site
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SettingTuntermMonitoringArgs', 'SettingTuntermMonitoringArgsDict']]]] tunterm_monitorings: Tunnel termination monitoring settings for the site
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SettingTuntermMonitoringArgs', 'SettingTuntermMonitoringArgsDict']]]] tunterm_monitorings: Tunnel termination monitoring settings for the Mist Edges assigned to the site
         :param pulumi.Input[Union['SettingTuntermMulticastConfigArgs', 'SettingTuntermMulticastConfigArgsDict']] tunterm_multicast_config: Multicast settings for tunnel termination at the site
         :param pulumi.Input[Union['SettingUplinkPortConfigArgs', 'SettingUplinkPortConfigArgsDict']] uplink_port_config: AP uplink port configuration for the site
         :param pulumi.Input[Union['SettingUwbConfigArgs', 'SettingUwbConfigArgsDict']] uwb_config: UWB RTLS (OMLOX asset visibility) settings for the site, only effective on AP models with a UWB radio and in countries where the UWB radio is permitted. Overridden by the device profile and device-level settings
@@ -2356,7 +2356,7 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[Union['SettingSyntheticTestArgs', 'SettingSyntheticTestArgsDict']] synthetic_test: Active monitoring test configuration for the site
         :param pulumi.Input[_builtins.bool] track_anonymous_devices: Whether to track anonymous BLE assets (requires ‘track_asset’  enabled)
         :param pulumi.Input[_builtins.bool] tunterm_monitoring_disabled: Whether tunnel termination monitoring is disabled for the site
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SettingTuntermMonitoringArgs', 'SettingTuntermMonitoringArgsDict']]]] tunterm_monitorings: Tunnel termination monitoring settings for the site
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SettingTuntermMonitoringArgs', 'SettingTuntermMonitoringArgsDict']]]] tunterm_monitorings: Tunnel termination monitoring settings for the Mist Edges assigned to the site
         :param pulumi.Input[Union['SettingTuntermMulticastConfigArgs', 'SettingTuntermMulticastConfigArgsDict']] tunterm_multicast_config: Multicast settings for tunnel termination at the site
         :param pulumi.Input[Union['SettingUplinkPortConfigArgs', 'SettingUplinkPortConfigArgsDict']] uplink_port_config: AP uplink port configuration for the site
         :param pulumi.Input[Union['SettingUwbConfigArgs', 'SettingUwbConfigArgsDict']] uwb_config: UWB RTLS (OMLOX asset visibility) settings for the site, only effective on AP models with a UWB radio and in countries where the UWB radio is permitted. Overridden by the device profile and device-level settings
@@ -2779,7 +2779,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="tuntermMonitorings")
     def tunterm_monitorings(self) -> pulumi.Output[Optional[Sequence['outputs.SettingTuntermMonitoring']]]:
         """
-        Tunnel termination monitoring settings for the site
+        Tunnel termination monitoring settings for the Mist Edges assigned to the site
         """
         return pulumi.get(self, "tunterm_monitorings")
 

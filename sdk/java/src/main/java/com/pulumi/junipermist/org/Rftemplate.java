@@ -158,14 +158,14 @@ public class Rftemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.band24);
     }
     /**
-     * Radio usage mode for the 2.4 GHz-capable radio in this RF template
+     * Radio usage mode for the 2.4 GHz-capable radio in this RF template. enum: `24`, `5`, `6`, `auto`.
      * 
      */
     @Export(name="band24Usage", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> band24Usage;
 
     /**
-     * @return Radio usage mode for the 2.4 GHz-capable radio in this RF template
+     * @return Radio usage mode for the 2.4 GHz-capable radio in this RF template. enum: `24`, `5`, `6`, `auto`.
      * 
      */
     public Output<Optional<String>> band24Usage() {

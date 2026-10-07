@@ -178,6 +178,10 @@ export class Gatewaytemplate extends pulumi.CustomResource {
      */
     declare public readonly ipConfigs: pulumi.Output<{[key: string]: outputs.org.GatewaytemplateIpConfigs} | undefined>;
     /**
+     * Multi-Node HA (MNHA) settings applied by this gateway template, SRX only
+     */
+    declare public readonly mnhaConfig: pulumi.Output<outputs.org.GatewaytemplateMnhaConfig | undefined>;
+    /**
      * Display name of the gateway template
      */
     declare public readonly name: pulumi.Output<string>;
@@ -234,7 +238,7 @@ export class Gatewaytemplate extends pulumi.CustomResource {
      */
     declare public readonly tunnelProviderOptions: pulumi.Output<outputs.org.GatewaytemplateTunnelProviderOptions | undefined>;
     /**
-     * Gateway template deployment type
+     * Gateway template deployment type. enum: `spoke`, `standalone`.
      */
     declare public readonly type: pulumi.Output<string>;
     /**
@@ -274,6 +278,7 @@ export class Gatewaytemplate extends pulumi.CustomResource {
             resourceInputs["gatewayMgmt"] = state?.gatewayMgmt;
             resourceInputs["idpProfiles"] = state?.idpProfiles;
             resourceInputs["ipConfigs"] = state?.ipConfigs;
+            resourceInputs["mnhaConfig"] = state?.mnhaConfig;
             resourceInputs["name"] = state?.name;
             resourceInputs["networks"] = state?.networks;
             resourceInputs["ntpOverride"] = state?.ntpOverride;
@@ -308,6 +313,7 @@ export class Gatewaytemplate extends pulumi.CustomResource {
             resourceInputs["gatewayMgmt"] = args?.gatewayMgmt;
             resourceInputs["idpProfiles"] = args?.idpProfiles;
             resourceInputs["ipConfigs"] = args?.ipConfigs;
+            resourceInputs["mnhaConfig"] = args?.mnhaConfig;
             resourceInputs["name"] = args?.name;
             resourceInputs["networks"] = args?.networks;
             resourceInputs["ntpOverride"] = args?.ntpOverride;
@@ -381,6 +387,10 @@ export interface GatewaytemplateState {
      */
     ipConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplateIpConfigs>} | undefined>;
     /**
+     * Multi-Node HA (MNHA) settings applied by this gateway template, SRX only
+     */
+    mnhaConfig?: pulumi.Input<inputs.org.GatewaytemplateMnhaConfig | undefined>;
+    /**
      * Display name of the gateway template
      */
     name?: pulumi.Input<string | undefined>;
@@ -437,7 +447,7 @@ export interface GatewaytemplateState {
      */
     tunnelProviderOptions?: pulumi.Input<inputs.org.GatewaytemplateTunnelProviderOptions | undefined>;
     /**
-     * Gateway template deployment type
+     * Gateway template deployment type. enum: `spoke`, `standalone`.
      */
     type?: pulumi.Input<string | undefined>;
     /**
@@ -503,6 +513,10 @@ export interface GatewaytemplateArgs {
      */
     ipConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplateIpConfigs>} | undefined>;
     /**
+     * Multi-Node HA (MNHA) settings applied by this gateway template, SRX only
+     */
+    mnhaConfig?: pulumi.Input<inputs.org.GatewaytemplateMnhaConfig | undefined>;
+    /**
      * Display name of the gateway template
      */
     name?: pulumi.Input<string | undefined>;
@@ -559,7 +573,7 @@ export interface GatewaytemplateArgs {
      */
     tunnelProviderOptions?: pulumi.Input<inputs.org.GatewaytemplateTunnelProviderOptions | undefined>;
     /**
-     * Gateway template deployment type
+     * Gateway template deployment type. enum: `spoke`, `standalone`.
      */
     type?: pulumi.Input<string | undefined>;
     /**

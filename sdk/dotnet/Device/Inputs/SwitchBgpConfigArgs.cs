@@ -31,7 +31,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? ExportPolicy { get; set; }
 
         /// <summary>
-        /// Default BGP hold time for switch BGP sessions
+        /// Default BGP hold time for switch BGP sessions.
         /// </summary>
         [Input("holdTime")]
         public Input<int>? HoldTime { get; set; }
@@ -73,7 +73,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// BGP session type for this switch BGP configuration
+        /// BGP session type for this switch BGP configuration. enum: `External`, `Internal`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

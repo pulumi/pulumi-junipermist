@@ -17,10 +17,27 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as mist from "@pulumi/mist";
+ * import * as junipermist from "@pulumi/juniper-mist";
  *
- * const evpnOne = new mist.index.SiteSiteEvpnTopology("evpn_one", {
- *     siteId: terraformTest.id,
+ * const evpnTopologySwitches = new junipermist.org.Inventory("evpn_topology_switches", {
+ *     orgId: "c0c92f93-d702-4cb7-a661-aaca08cfcf74",
+ *     inventory: {
+ *         HY5BD8EVMSRQRCV: {
+ *             siteId: "87e30472-720a-42c5-acd9-ac95213d08b3",
+ *         },
+ *         P9ZRN52RXQEQNH5: {
+ *             siteId: "87e30472-720a-42c5-acd9-ac95213d08b3",
+ *         },
+ *         HNCNY3DWSAKJFPB: {
+ *             siteId: "87e30472-720a-42c5-acd9-ac95213d08b3",
+ *         },
+ *         GSK46S5XKH657DG: {
+ *             siteId: "87e30472-720a-42c5-acd9-ac95213d08b3",
+ *         },
+ *     },
+ * });
+ * const evpnOne = new junipermist.site.EvpnTopology("evpn_one", {
+ *     siteId: "87e30472-720a-42c5-acd9-ac95213d08b3",
  *     name: "evpn_one",
  *     evpnOptions: {
  *         routedAt: "core",
@@ -38,32 +55,22 @@ import * as utilities from "../utilities";
  *         },
  *         autoRouterIdSubnet: "172.16.254.0/23",
  *     },
- *     switches: [
- *         {
- *             mac: "020004000001",
+ *     switches: {
+ *         "0200030001fe": {
  *             role: "core",
  *         },
- *         {
- *             mac: "02000400002",
+ *         "0200030001ff": {
  *             role: "core",
  *         },
- *         {
- *             mac: "02000400003",
- *             role: "distribution",
- *         },
- *         {
- *             mac: "02000400004",
- *             role: "distribution",
- *         },
- *         {
- *             mac: "02000400005",
+ *         "020003000200": {
  *             role: "access",
  *         },
- *         {
- *             mac: "02000400006",
+ *         "020003000201": {
  *             role: "access",
  *         },
- *     ],
+ *     },
+ * }, {
+ *     dependsOn: [evpnTopologySwitches],
  * });
  * ```
  *

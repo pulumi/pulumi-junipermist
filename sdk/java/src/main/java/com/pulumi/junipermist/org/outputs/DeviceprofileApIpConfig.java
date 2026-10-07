@@ -59,12 +59,12 @@ public final class DeviceprofileApIpConfig {
      */
     private @Nullable String netmask6;
     /**
-     * @return IPv4 address assignment mode for AP management traffic
+     * @return IPv4 address assignment mode for AP management traffic. enum: `dhcp`, `static`.
      * 
      */
     private @Nullable String type;
     /**
-     * @return IPv6 address assignment mode for AP management traffic
+     * @return IPv6 address assignment mode for AP management traffic. enum: `autoconf`, `dhcp`, `disabled`, `static`.
      * 
      */
     private @Nullable String type6;
@@ -139,14 +139,14 @@ public final class DeviceprofileApIpConfig {
         return Optional.ofNullable(this.netmask6);
     }
     /**
-     * @return IPv4 address assignment mode for AP management traffic
+     * @return IPv4 address assignment mode for AP management traffic. enum: `dhcp`, `static`.
      * 
      */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return IPv6 address assignment mode for AP management traffic
+     * @return IPv6 address assignment mode for AP management traffic. enum: `autoconf`, `dhcp`, `disabled`, `static`.
      * 
      */
     public Optional<String> type6() {

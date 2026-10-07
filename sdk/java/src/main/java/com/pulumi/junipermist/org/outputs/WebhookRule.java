@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WebhookRule {
     /**
-     * @return Action applied when the rule matches the incoming event
+     * @return Action applied when the rule matches the incoming event. enum: `permit`, `block`.
      * 
      */
     private @Nullable String action;
@@ -32,7 +32,7 @@ public final class WebhookRule {
 
     private WebhookRule() {}
     /**
-     * @return Action applied when the rule matches the incoming event
+     * @return Action applied when the rule matches the incoming event. enum: `permit`, `block`.
      * 
      */
     public Optional<String> action() {

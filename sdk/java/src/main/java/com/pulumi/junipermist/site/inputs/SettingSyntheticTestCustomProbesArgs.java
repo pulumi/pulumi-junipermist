@@ -17,14 +17,14 @@ public final class SettingSyntheticTestCustomProbesArgs extends com.pulumi.resou
     public static final SettingSyntheticTestCustomProbesArgs Empty = new SettingSyntheticTestCustomProbesArgs();
 
     /**
-     * Probe aggressiveness level for this custom synthetic probe
+     * Probe aggressiveness level for this custom synthetic probe. enum: `auto`, `high`, `med`, `low`.
      * 
      */
     @Import(name="aggressiveness")
     private @Nullable Output<String> aggressiveness;
 
     /**
-     * @return Probe aggressiveness level for this custom synthetic probe
+     * @return Probe aggressiveness level for this custom synthetic probe. enum: `auto`, `high`, `med`, `low`.
      * 
      */
     public Optional<Output<String>> aggressiveness() {
@@ -62,14 +62,14 @@ public final class SettingSyntheticTestCustomProbesArgs extends com.pulumi.resou
     }
 
     /**
-     * Probe type used by this custom synthetic probe
+     * Probe type used by this custom synthetic probe. enum: `application`, `curl`, `icmp`, `reachability`, `tcp`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Probe type used by this custom synthetic probe
+     * @return Probe type used by this custom synthetic probe. enum: `application`, `curl`, `icmp`, `reachability`, `tcp`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -104,7 +104,7 @@ public final class SettingSyntheticTestCustomProbesArgs extends com.pulumi.resou
         }
 
         /**
-         * @param aggressiveness Probe aggressiveness level for this custom synthetic probe
+         * @param aggressiveness Probe aggressiveness level for this custom synthetic probe. enum: `auto`, `high`, `med`, `low`.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class SettingSyntheticTestCustomProbesArgs extends com.pulumi.resou
         }
 
         /**
-         * @param aggressiveness Probe aggressiveness level for this custom synthetic probe
+         * @param aggressiveness Probe aggressiveness level for this custom synthetic probe. enum: `auto`, `high`, `med`, `low`.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class SettingSyntheticTestCustomProbesArgs extends com.pulumi.resou
         }
 
         /**
-         * @param type Probe type used by this custom synthetic probe
+         * @param type Probe type used by this custom synthetic probe. enum: `application`, `curl`, `icmp`, `reachability`, `tcp`.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class SettingSyntheticTestCustomProbesArgs extends com.pulumi.resou
         }
 
         /**
-         * @param type Probe type used by this custom synthetic probe
+         * @param type Probe type used by this custom synthetic probe. enum: `application`, `curl`, `icmp`, `reachability`, `tcp`.
          * 
          * @return builder
          * 

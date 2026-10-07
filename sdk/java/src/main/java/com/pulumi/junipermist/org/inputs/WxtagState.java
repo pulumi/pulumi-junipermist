@@ -33,14 +33,14 @@ public final class WxtagState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `type`==`match`; attribute compared against `values`
+     * Required if `type`==`match`; attribute compared against `values`. enum: `apId`, `app`, `assetMac`, `clientMac`, `hostname`, `ipRangeSubnet`, `port`, `pskName`, `pskRole`, `radiusAttr`, `radiusClass`, `radiusGroup`, `radiusUsername`, `sdkclientUuid`, `wlanId`.
      * 
      */
     @Import(name="match")
     private @Nullable Output<String> match;
 
     /**
-     * @return Required if `type`==`match`; attribute compared against `values`
+     * @return Required if `type`==`match`; attribute compared against `values`. enum: `apId`, `app`, `assetMac`, `clientMac`, `hostname`, `ipRangeSubnet`, `port`, `pskName`, `pskRole`, `radiusAttr`, `radiusClass`, `radiusGroup`, `radiusUsername`, `sdkclientUuid`, `wlanId`.
      * 
      */
     public Optional<Output<String>> match() {
@@ -63,14 +63,14 @@ public final class WxtagState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `type`==`match`; whether `values` are inclusive or exclusive matches
+     * Required if `type`==`match`; whether `values` are inclusive or exclusive matches. enum: `in`, `notIn`.
      * 
      */
     @Import(name="op")
     private @Nullable Output<String> op;
 
     /**
-     * @return Required if `type`==`match`; whether `values` are inclusive or exclusive matches
+     * @return Required if `type`==`match`; whether `values` are inclusive or exclusive matches. enum: `in`, `notIn`.
      * 
      */
     public Optional<Output<String>> op() {
@@ -108,14 +108,14 @@ public final class WxtagState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Kind of WxLAN tag and how it is populated
+     * Kind of WxLAN tag and how it is populated. enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Kind of WxLAN tag and how it is populated
+     * @return Kind of WxLAN tag and how it is populated. enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -206,7 +206,7 @@ public final class WxtagState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param match Required if `type`==`match`; attribute compared against `values`
+         * @param match Required if `type`==`match`; attribute compared against `values`. enum: `apId`, `app`, `assetMac`, `clientMac`, `hostname`, `ipRangeSubnet`, `port`, `pskName`, `pskRole`, `radiusAttr`, `radiusClass`, `radiusGroup`, `radiusUsername`, `sdkclientUuid`, `wlanId`.
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class WxtagState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param match Required if `type`==`match`; attribute compared against `values`
+         * @param match Required if `type`==`match`; attribute compared against `values`. enum: `apId`, `app`, `assetMac`, `clientMac`, `hostname`, `ipRangeSubnet`, `port`, `pskName`, `pskRole`, `radiusAttr`, `radiusClass`, `radiusGroup`, `radiusUsername`, `sdkclientUuid`, `wlanId`.
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class WxtagState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param op Required if `type`==`match`; whether `values` are inclusive or exclusive matches
+         * @param op Required if `type`==`match`; whether `values` are inclusive or exclusive matches. enum: `in`, `notIn`.
          * 
          * @return builder
          * 
@@ -259,7 +259,7 @@ public final class WxtagState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param op Required if `type`==`match`; whether `values` are inclusive or exclusive matches
+         * @param op Required if `type`==`match`; whether `values` are inclusive or exclusive matches. enum: `in`, `notIn`.
          * 
          * @return builder
          * 
@@ -321,7 +321,7 @@ public final class WxtagState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Kind of WxLAN tag and how it is populated
+         * @param type Kind of WxLAN tag and how it is populated. enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`.
          * 
          * @return builder
          * 
@@ -332,7 +332,7 @@ public final class WxtagState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Kind of WxLAN tag and how it is populated
+         * @param type Kind of WxLAN tag and how it is populated. enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`.
          * 
          * @return builder
          * 

@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DeviceprofileApZigbeeConfig {
     /**
-     * @return Join policy for new Zigbee devices on this AP
+     * @return Join policy for new Zigbee devices on this AP. enum: `always`, `manual`.
      * 
      */
     private @Nullable String allowJoin;
@@ -41,7 +41,7 @@ public final class DeviceprofileApZigbeeConfig {
 
     private DeviceprofileApZigbeeConfig() {}
     /**
-     * @return Join policy for new Zigbee devices on this AP
+     * @return Join policy for new Zigbee devices on this AP. enum: `always`, `manual`.
      * 
      */
     public Optional<String> allowJoin() {

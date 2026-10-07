@@ -17,14 +17,14 @@ public final class GatewaytemplateGatewayMgmtAutoSignatureUpdateArgs extends com
     public static final GatewaytemplateGatewayMgmtAutoSignatureUpdateArgs Empty = new GatewaytemplateGatewayMgmtAutoSignatureUpdateArgs();
 
     /**
-     * Scheduled weekday for automatic signature updates
+     * Scheduled weekday for automatic signature updates. enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`.
      * 
      */
     @Import(name="dayOfWeek")
     private @Nullable Output<String> dayOfWeek;
 
     /**
-     * @return Scheduled weekday for automatic signature updates
+     * @return Scheduled weekday for automatic signature updates. enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`.
      * 
      */
     public Optional<Output<String>> dayOfWeek() {
@@ -88,7 +88,7 @@ public final class GatewaytemplateGatewayMgmtAutoSignatureUpdateArgs extends com
         }
 
         /**
-         * @param dayOfWeek Scheduled weekday for automatic signature updates
+         * @param dayOfWeek Scheduled weekday for automatic signature updates. enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class GatewaytemplateGatewayMgmtAutoSignatureUpdateArgs extends com
         }
 
         /**
-         * @param dayOfWeek Scheduled weekday for automatic signature updates
+         * @param dayOfWeek Scheduled weekday for automatic signature updates. enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`.
          * 
          * @return builder
          * 

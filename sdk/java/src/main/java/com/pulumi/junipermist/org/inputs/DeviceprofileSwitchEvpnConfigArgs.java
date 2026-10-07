@@ -32,14 +32,14 @@ public final class DeviceprofileSwitchEvpnConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * EVPN topology role for the switch
+     * EVPN topology role for the switch. enum: `access`, `border`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`.
      * 
      */
     @Import(name="role")
     private @Nullable Output<String> role;
 
     /**
-     * @return EVPN topology role for the switch
+     * @return EVPN topology role for the switch. enum: `access`, `border`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`.
      * 
      */
     public Optional<Output<String>> role() {
@@ -93,7 +93,7 @@ public final class DeviceprofileSwitchEvpnConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param role EVPN topology role for the switch
+         * @param role EVPN topology role for the switch. enum: `access`, `border`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class DeviceprofileSwitchEvpnConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param role EVPN topology role for the switch
+         * @param role EVPN topology role for the switch. enum: `access`, `border`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`.
          * 
          * @return builder
          * 

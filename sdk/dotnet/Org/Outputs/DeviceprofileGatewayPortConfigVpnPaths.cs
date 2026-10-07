@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class DeviceprofileGatewayPortConfigVpnPaths
     {
         /// <summary>
-        /// BFD profile used for this VPN path when the VPN `Type`==`HubSpoke`
+        /// BFD profile used for this VPN path when the VPN `Type`==`HubSpoke`. enum: `Broadband`, `Lte`.
         /// </summary>
         public readonly string? BfdProfile;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly int? Preference;
         /// <summary>
-        /// Gateway role for this VPN path; valid values depend on the VPN `Type`
+        /// Gateway role for this VPN path; valid values depend on the VPN `Type`. enum: `Hub`, `Mesh`, `Spoke`.
         /// </summary>
         public readonly string? Role;
         /// <summary>

@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly int? BrokerPort;
         /// <summary>
-        /// MQTT broker transport protocol
+        /// MQTT broker transport protocol. enum: `Ssl`, `Tcp`.
         /// </summary>
         public readonly string? BrokerProto;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Payload format for published messages
+        /// Payload format for published messages. enum: `Json`, `Raw`.
         /// </summary>
         public readonly string? Format;
         /// <summary>

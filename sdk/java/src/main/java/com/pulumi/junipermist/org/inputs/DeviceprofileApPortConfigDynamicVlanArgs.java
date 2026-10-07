@@ -49,14 +49,14 @@ public final class DeviceprofileApPortConfigDynamicVlanArgs extends com.pulumi.r
     }
 
     /**
-     * Mapping mode for interpreting dynamic VLAN attributes returned by RADIUS
+     * Mapping mode for interpreting dynamic VLAN attributes returned by RADIUS. enum: `airespace-interface-name`, `standard`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Mapping mode for interpreting dynamic VLAN attributes returned by RADIUS
+     * @return Mapping mode for interpreting dynamic VLAN attributes returned by RADIUS. enum: `airespace-interface-name`, `standard`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -148,7 +148,7 @@ public final class DeviceprofileApPortConfigDynamicVlanArgs extends com.pulumi.r
         }
 
         /**
-         * @param type Mapping mode for interpreting dynamic VLAN attributes returned by RADIUS
+         * @param type Mapping mode for interpreting dynamic VLAN attributes returned by RADIUS. enum: `airespace-interface-name`, `standard`.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class DeviceprofileApPortConfigDynamicVlanArgs extends com.pulumi.r
         }
 
         /**
-         * @param type Mapping mode for interpreting dynamic VLAN attributes returned by RADIUS
+         * @param type Mapping mode for interpreting dynamic VLAN attributes returned by RADIUS. enum: `airespace-interface-name`, `standard`.
          * 
          * @return builder
          * 

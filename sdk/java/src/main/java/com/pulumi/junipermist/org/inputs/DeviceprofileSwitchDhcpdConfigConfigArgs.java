@@ -220,14 +220,14 @@ public final class DeviceprofileSwitchDhcpdConfigConfigArgs extends com.pulumi.r
     }
 
     /**
-     * IPv4 DHCP mode for this switch network
+     * IPv4 DHCP mode for this switch network. enum: `none`, `relay`, `server`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return IPv4 DHCP mode for this switch network
+     * @return IPv4 DHCP mode for this switch network. enum: `none`, `relay`, `server`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -235,14 +235,14 @@ public final class DeviceprofileSwitchDhcpdConfigConfigArgs extends com.pulumi.r
     }
 
     /**
-     * IPv6 DHCP mode for this switch network
+     * IPv6 DHCP mode for this switch network. enum: `none`, `relay`, `server`.
      * 
      */
     @Import(name="type6")
     private @Nullable Output<String> type6;
 
     /**
-     * @return IPv6 DHCP mode for this switch network
+     * @return IPv6 DHCP mode for this switch network. enum: `none`, `relay`, `server`.
      * 
      */
     public Optional<Output<String>> type6() {
@@ -619,7 +619,7 @@ public final class DeviceprofileSwitchDhcpdConfigConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param type IPv4 DHCP mode for this switch network
+         * @param type IPv4 DHCP mode for this switch network. enum: `none`, `relay`, `server`.
          * 
          * @return builder
          * 
@@ -630,7 +630,7 @@ public final class DeviceprofileSwitchDhcpdConfigConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param type IPv4 DHCP mode for this switch network
+         * @param type IPv4 DHCP mode for this switch network. enum: `none`, `relay`, `server`.
          * 
          * @return builder
          * 
@@ -640,7 +640,7 @@ public final class DeviceprofileSwitchDhcpdConfigConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param type6 IPv6 DHCP mode for this switch network
+         * @param type6 IPv6 DHCP mode for this switch network. enum: `none`, `relay`, `server`.
          * 
          * @return builder
          * 
@@ -651,7 +651,7 @@ public final class DeviceprofileSwitchDhcpdConfigConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param type6 IPv6 DHCP mode for this switch network
+         * @param type6 IPv6 DHCP mode for this switch network. enum: `none`, `relay`, `server`.
          * 
          * @return builder
          * 

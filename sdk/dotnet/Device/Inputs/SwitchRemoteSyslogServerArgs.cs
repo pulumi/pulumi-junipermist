@@ -31,7 +31,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? ExplicitPriority { get; set; }
 
         /// <summary>
-        /// Default syslog facility for messages sent to this server
+        /// Default syslog facility for messages sent to this server. enum: `Any`, `Authorization`, `change-log`, `Config`, `conflict-log`, `Daemon`, `Dfc`, `External`, `Firewall`, `Ftp`, `interactive-commands`, `Kernel`, `Ntp`, `Pfe`, `Security`, `User`.
         /// </summary>
         [Input("facility")]
         public Input<string>? Facility { get; set; }
@@ -55,7 +55,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? Port { get; set; }
 
         /// <summary>
-        /// Transport protocol used for this remote syslog server
+        /// Transport protocol used for this remote syslog server. enum: `Tcp`, `Udp`.
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
@@ -73,7 +73,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? ServerName { get; set; }
 
         /// <summary>
-        /// Default syslog severity for messages sent to this server
+        /// Default syslog severity for messages sent to this server. enum: `Alert`, `Any`, `Critical`, `Emergency`, `Error`, `Info`, `Notice`, `Warning`.
         /// </summary>
         [Input("severity")]
         public Input<string>? Severity { get; set; }

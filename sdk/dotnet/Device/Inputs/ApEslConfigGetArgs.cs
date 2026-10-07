@@ -43,7 +43,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// ESL integration type to enable on the AP
+        /// ESL integration type to enable on the AP. enum: `Hanshow`, `Imagotag`, `Native`, `Solum`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

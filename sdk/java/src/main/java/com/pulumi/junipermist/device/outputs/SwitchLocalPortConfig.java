@@ -57,7 +57,7 @@ public final class SwitchLocalPortConfig {
      */
     private @Nullable Boolean disabled;
     /**
-     * @return Link duplex mode for this local port configuration
+     * @return Link duplex mode for this local port configuration. enum: `auto`, `full`, `half`.
      * 
      */
     private @Nullable String duplex;
@@ -97,7 +97,7 @@ public final class SwitchLocalPortConfig {
      */
     private @Nullable Boolean macAuthPreferred;
     /**
-     * @return Only if `enableMacAuth`==`true`, MAC authentication protocol to use
+     * @return Only if `enableMacAuth`==`true`, MAC authentication protocol to use. enum: `eap-md5`, `eap-peap`, `pap`.
      * 
      */
     private @Nullable String macAuthProtocol;
@@ -107,7 +107,7 @@ public final class SwitchLocalPortConfig {
      */
     private @Nullable Integer macLimit;
     /**
-     * @return Switching mode for this local port configuration
+     * @return Switching mode for this local port configuration. enum: `access`, `inet`, `trunk`.
      * 
      */
     private @Nullable String mode;
@@ -137,7 +137,7 @@ public final class SwitchLocalPortConfig {
      */
     private @Nullable Boolean poeDisabled;
     /**
-     * @return 802.1X authentication mode for this local port configuration
+     * @return 802.1X authentication mode for this local port configuration. enum: `dot1x`.
      * 
      */
     private @Nullable String portAuth;
@@ -162,7 +162,7 @@ public final class SwitchLocalPortConfig {
      */
     private @Nullable String serverRejectNetwork;
     /**
-     * @return Link speed for this local port configuration
+     * @return Link speed for this local port configuration. enum: `10m`, `100m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`, `auto`.
      * 
      */
     private @Nullable String speed;
@@ -260,7 +260,7 @@ public final class SwitchLocalPortConfig {
         return Optional.ofNullable(this.disabled);
     }
     /**
-     * @return Link duplex mode for this local port configuration
+     * @return Link duplex mode for this local port configuration. enum: `auto`, `full`, `half`.
      * 
      */
     public Optional<String> duplex() {
@@ -316,7 +316,7 @@ public final class SwitchLocalPortConfig {
         return Optional.ofNullable(this.macAuthPreferred);
     }
     /**
-     * @return Only if `enableMacAuth`==`true`, MAC authentication protocol to use
+     * @return Only if `enableMacAuth`==`true`, MAC authentication protocol to use. enum: `eap-md5`, `eap-peap`, `pap`.
      * 
      */
     public Optional<String> macAuthProtocol() {
@@ -330,7 +330,7 @@ public final class SwitchLocalPortConfig {
         return Optional.ofNullable(this.macLimit);
     }
     /**
-     * @return Switching mode for this local port configuration
+     * @return Switching mode for this local port configuration. enum: `access`, `inet`, `trunk`.
      * 
      */
     public Optional<String> mode() {
@@ -372,7 +372,7 @@ public final class SwitchLocalPortConfig {
         return Optional.ofNullable(this.poeDisabled);
     }
     /**
-     * @return 802.1X authentication mode for this local port configuration
+     * @return 802.1X authentication mode for this local port configuration. enum: `dot1x`.
      * 
      */
     public Optional<String> portAuth() {
@@ -407,7 +407,7 @@ public final class SwitchLocalPortConfig {
         return Optional.ofNullable(this.serverRejectNetwork);
     }
     /**
-     * @return Link speed for this local port configuration
+     * @return Link speed for this local port configuration. enum: `10m`, `100m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`, `auto`.
      * 
      */
     public Optional<String> speed() {

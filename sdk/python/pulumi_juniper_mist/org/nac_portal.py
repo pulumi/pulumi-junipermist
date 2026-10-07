@@ -41,13 +41,13 @@ class NacPortalArgs:
         The set of arguments for constructing a NacPortal resource.
 
         :param pulumi.Input[_builtins.str] org_id: Organization that owns this NAC portal
-        :param pulumi.Input[_builtins.str] access_type: If `type`==`marvis_client`, whether onboarding applies to wireless clients or both wireless and wired clients
+        :param pulumi.Input[_builtins.str] access_type: If `type`==`marvis_client`, whether onboarding applies to wireless clients or both wireless and wired clients. enum: `wireless`, `wireless+wired`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_cacerts: Additional CA certificates trusted during NAC portal certificate onboarding
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_nac_server_names: Optional list of additional NAC server names
         :param pulumi.Input[_builtins.int] cert_expire_time: Validity duration for portal-issued client certificates, in days
-        :param pulumi.Input[_builtins.str] eap_type: EAP mode used when onboarding wireless clients through the NAC portal
+        :param pulumi.Input[_builtins.str] eap_type: EAP mode used when onboarding wireless clients through the NAC portal. enum: `wpa2`, `wpa3`.
         :param pulumi.Input[_builtins.bool] enable_location: Whether location data collection is enabled for devices onboarding through this NAC portal
-        :param pulumi.Input[_builtins.bool] enable_telemetry: Model, version, fingering, events (connecting, disconnect, roaming), which ap
+        :param pulumi.Input[_builtins.bool] enable_telemetry: Optional, model, version, fingerprinting, events (connecting, disconnect, roaming), which ap, default is false
         :param pulumi.Input[_builtins.int] expiry_notification_time: Number of days before certificate expiration to start sending reminder notifications
         :param pulumi.Input[_builtins.str] name: Human-readable name of the NAC portal
         :param pulumi.Input[_builtins.bool] notify_expiry: Whether to send reminder notifications before portal-issued certificates expire
@@ -55,7 +55,7 @@ class NacPortalArgs:
         :param pulumi.Input[_builtins.str] ssid: Wireless SSID associated with the NAC portal
         :param pulumi.Input['NacPortalSsoArgs'] sso: SAML SSO settings for NAC portal authentication and role mapping
         :param pulumi.Input[_builtins.str] tos: Terms of service text shown in the NAC portal
-        :param pulumi.Input[_builtins.str] type: NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
+        :param pulumi.Input[_builtins.str] type: NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding. enum: `guest_admin`, `guest_portal`, `marvis_client`.
         """
         pulumi.set(__self__, "org_id", org_id)
         if access_type is not None:
@@ -105,7 +105,7 @@ class NacPortalArgs:
     @pulumi.getter(name="accessType")
     def access_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        If `type`==`marvis_client`, whether onboarding applies to wireless clients or both wireless and wired clients
+        If `type`==`marvis_client`, whether onboarding applies to wireless clients or both wireless and wired clients. enum: `wireless`, `wireless+wired`.
         """
         return pulumi.get(self, "access_type")
 
@@ -153,7 +153,7 @@ class NacPortalArgs:
     @pulumi.getter(name="eapType")
     def eap_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        EAP mode used when onboarding wireless clients through the NAC portal
+        EAP mode used when onboarding wireless clients through the NAC portal. enum: `wpa2`, `wpa3`.
         """
         return pulumi.get(self, "eap_type")
 
@@ -177,7 +177,7 @@ class NacPortalArgs:
     @pulumi.getter(name="enableTelemetry")
     def enable_telemetry(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Model, version, fingering, events (connecting, disconnect, roaming), which ap
+        Optional, model, version, fingerprinting, events (connecting, disconnect, roaming), which ap, default is false
         """
         return pulumi.get(self, "enable_telemetry")
 
@@ -273,7 +273,7 @@ class NacPortalArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
+        NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding. enum: `guest_admin`, `guest_portal`, `marvis_client`.
         """
         return pulumi.get(self, "type")
 
@@ -304,13 +304,13 @@ class _NacPortalState:
         """
         Input properties used for looking up and filtering NacPortal resources.
 
-        :param pulumi.Input[_builtins.str] access_type: If `type`==`marvis_client`, whether onboarding applies to wireless clients or both wireless and wired clients
+        :param pulumi.Input[_builtins.str] access_type: If `type`==`marvis_client`, whether onboarding applies to wireless clients or both wireless and wired clients. enum: `wireless`, `wireless+wired`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_cacerts: Additional CA certificates trusted during NAC portal certificate onboarding
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_nac_server_names: Optional list of additional NAC server names
         :param pulumi.Input[_builtins.int] cert_expire_time: Validity duration for portal-issued client certificates, in days
-        :param pulumi.Input[_builtins.str] eap_type: EAP mode used when onboarding wireless clients through the NAC portal
+        :param pulumi.Input[_builtins.str] eap_type: EAP mode used when onboarding wireless clients through the NAC portal. enum: `wpa2`, `wpa3`.
         :param pulumi.Input[_builtins.bool] enable_location: Whether location data collection is enabled for devices onboarding through this NAC portal
-        :param pulumi.Input[_builtins.bool] enable_telemetry: Model, version, fingering, events (connecting, disconnect, roaming), which ap
+        :param pulumi.Input[_builtins.bool] enable_telemetry: Optional, model, version, fingerprinting, events (connecting, disconnect, roaming), which ap, default is false
         :param pulumi.Input[_builtins.int] expiry_notification_time: Number of days before certificate expiration to start sending reminder notifications
         :param pulumi.Input[_builtins.str] name: Human-readable name of the NAC portal
         :param pulumi.Input[_builtins.bool] notify_expiry: Whether to send reminder notifications before portal-issued certificates expire
@@ -319,7 +319,7 @@ class _NacPortalState:
         :param pulumi.Input[_builtins.str] ssid: Wireless SSID associated with the NAC portal
         :param pulumi.Input['NacPortalSsoArgs'] sso: SAML SSO settings for NAC portal authentication and role mapping
         :param pulumi.Input[_builtins.str] tos: Terms of service text shown in the NAC portal
-        :param pulumi.Input[_builtins.str] type: NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
+        :param pulumi.Input[_builtins.str] type: NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding. enum: `guest_admin`, `guest_portal`, `marvis_client`.
         """
         if access_type is not None:
             pulumi.set(__self__, "access_type", access_type)
@@ -358,7 +358,7 @@ class _NacPortalState:
     @pulumi.getter(name="accessType")
     def access_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        If `type`==`marvis_client`, whether onboarding applies to wireless clients or both wireless and wired clients
+        If `type`==`marvis_client`, whether onboarding applies to wireless clients or both wireless and wired clients. enum: `wireless`, `wireless+wired`.
         """
         return pulumi.get(self, "access_type")
 
@@ -406,7 +406,7 @@ class _NacPortalState:
     @pulumi.getter(name="eapType")
     def eap_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        EAP mode used when onboarding wireless clients through the NAC portal
+        EAP mode used when onboarding wireless clients through the NAC portal. enum: `wpa2`, `wpa3`.
         """
         return pulumi.get(self, "eap_type")
 
@@ -430,7 +430,7 @@ class _NacPortalState:
     @pulumi.getter(name="enableTelemetry")
     def enable_telemetry(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Model, version, fingering, events (connecting, disconnect, roaming), which ap
+        Optional, model, version, fingerprinting, events (connecting, disconnect, roaming), which ap, default is false
         """
         return pulumi.get(self, "enable_telemetry")
 
@@ -538,7 +538,7 @@ class _NacPortalState:
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
+        NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding. enum: `guest_admin`, `guest_portal`, `marvis_client`.
         """
         return pulumi.get(self, "type")
 
@@ -643,13 +643,13 @@ class NacPortal(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] access_type: If `type`==`marvis_client`, whether onboarding applies to wireless clients or both wireless and wired clients
+        :param pulumi.Input[_builtins.str] access_type: If `type`==`marvis_client`, whether onboarding applies to wireless clients or both wireless and wired clients. enum: `wireless`, `wireless+wired`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_cacerts: Additional CA certificates trusted during NAC portal certificate onboarding
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_nac_server_names: Optional list of additional NAC server names
         :param pulumi.Input[_builtins.int] cert_expire_time: Validity duration for portal-issued client certificates, in days
-        :param pulumi.Input[_builtins.str] eap_type: EAP mode used when onboarding wireless clients through the NAC portal
+        :param pulumi.Input[_builtins.str] eap_type: EAP mode used when onboarding wireless clients through the NAC portal. enum: `wpa2`, `wpa3`.
         :param pulumi.Input[_builtins.bool] enable_location: Whether location data collection is enabled for devices onboarding through this NAC portal
-        :param pulumi.Input[_builtins.bool] enable_telemetry: Model, version, fingering, events (connecting, disconnect, roaming), which ap
+        :param pulumi.Input[_builtins.bool] enable_telemetry: Optional, model, version, fingerprinting, events (connecting, disconnect, roaming), which ap, default is false
         :param pulumi.Input[_builtins.int] expiry_notification_time: Number of days before certificate expiration to start sending reminder notifications
         :param pulumi.Input[_builtins.str] name: Human-readable name of the NAC portal
         :param pulumi.Input[_builtins.bool] notify_expiry: Whether to send reminder notifications before portal-issued certificates expire
@@ -658,7 +658,7 @@ class NacPortal(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] ssid: Wireless SSID associated with the NAC portal
         :param pulumi.Input[Union['NacPortalSsoArgs', 'NacPortalSsoArgsDict']] sso: SAML SSO settings for NAC portal authentication and role mapping
         :param pulumi.Input[_builtins.str] tos: Terms of service text shown in the NAC portal
-        :param pulumi.Input[_builtins.str] type: NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
+        :param pulumi.Input[_builtins.str] type: NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding. enum: `guest_admin`, `guest_portal`, `marvis_client`.
         """
         ...
     @overload
@@ -828,13 +828,13 @@ class NacPortal(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] access_type: If `type`==`marvis_client`, whether onboarding applies to wireless clients or both wireless and wired clients
+        :param pulumi.Input[_builtins.str] access_type: If `type`==`marvis_client`, whether onboarding applies to wireless clients or both wireless and wired clients. enum: `wireless`, `wireless+wired`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_cacerts: Additional CA certificates trusted during NAC portal certificate onboarding
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_nac_server_names: Optional list of additional NAC server names
         :param pulumi.Input[_builtins.int] cert_expire_time: Validity duration for portal-issued client certificates, in days
-        :param pulumi.Input[_builtins.str] eap_type: EAP mode used when onboarding wireless clients through the NAC portal
+        :param pulumi.Input[_builtins.str] eap_type: EAP mode used when onboarding wireless clients through the NAC portal. enum: `wpa2`, `wpa3`.
         :param pulumi.Input[_builtins.bool] enable_location: Whether location data collection is enabled for devices onboarding through this NAC portal
-        :param pulumi.Input[_builtins.bool] enable_telemetry: Model, version, fingering, events (connecting, disconnect, roaming), which ap
+        :param pulumi.Input[_builtins.bool] enable_telemetry: Optional, model, version, fingerprinting, events (connecting, disconnect, roaming), which ap, default is false
         :param pulumi.Input[_builtins.int] expiry_notification_time: Number of days before certificate expiration to start sending reminder notifications
         :param pulumi.Input[_builtins.str] name: Human-readable name of the NAC portal
         :param pulumi.Input[_builtins.bool] notify_expiry: Whether to send reminder notifications before portal-issued certificates expire
@@ -843,7 +843,7 @@ class NacPortal(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] ssid: Wireless SSID associated with the NAC portal
         :param pulumi.Input[Union['NacPortalSsoArgs', 'NacPortalSsoArgsDict']] sso: SAML SSO settings for NAC portal authentication and role mapping
         :param pulumi.Input[_builtins.str] tos: Terms of service text shown in the NAC portal
-        :param pulumi.Input[_builtins.str] type: NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
+        :param pulumi.Input[_builtins.str] type: NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding. enum: `guest_admin`, `guest_portal`, `marvis_client`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -871,7 +871,7 @@ class NacPortal(pulumi.CustomResource):
     @pulumi.getter(name="accessType")
     def access_type(self) -> pulumi.Output[_builtins.str]:
         """
-        If `type`==`marvis_client`, whether onboarding applies to wireless clients or both wireless and wired clients
+        If `type`==`marvis_client`, whether onboarding applies to wireless clients or both wireless and wired clients. enum: `wireless`, `wireless+wired`.
         """
         return pulumi.get(self, "access_type")
 
@@ -903,7 +903,7 @@ class NacPortal(pulumi.CustomResource):
     @pulumi.getter(name="eapType")
     def eap_type(self) -> pulumi.Output[_builtins.str]:
         """
-        EAP mode used when onboarding wireless clients through the NAC portal
+        EAP mode used when onboarding wireless clients through the NAC portal. enum: `wpa2`, `wpa3`.
         """
         return pulumi.get(self, "eap_type")
 
@@ -919,7 +919,7 @@ class NacPortal(pulumi.CustomResource):
     @pulumi.getter(name="enableTelemetry")
     def enable_telemetry(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Model, version, fingering, events (connecting, disconnect, roaming), which ap
+        Optional, model, version, fingerprinting, events (connecting, disconnect, roaming), which ap, default is false
         """
         return pulumi.get(self, "enable_telemetry")
 
@@ -991,7 +991,7 @@ class NacPortal(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
+        NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding. enum: `guest_admin`, `guest_portal`, `marvis_client`.
         """
         return pulumi.get(self, "type")
 

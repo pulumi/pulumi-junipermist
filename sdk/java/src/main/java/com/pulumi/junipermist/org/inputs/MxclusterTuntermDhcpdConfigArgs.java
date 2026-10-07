@@ -48,14 +48,14 @@ public final class MxclusterTuntermDhcpdConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * DHCP forwarding mode for this tunneled VLAN
+     * DHCP forwarding mode for this tunneled VLAN. enum: `relay`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return DHCP forwarding mode for this tunneled VLAN
+     * @return DHCP forwarding mode for this tunneled VLAN. enum: `relay`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -141,7 +141,7 @@ public final class MxclusterTuntermDhcpdConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param type DHCP forwarding mode for this tunneled VLAN
+         * @param type DHCP forwarding mode for this tunneled VLAN. enum: `relay`.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class MxclusterTuntermDhcpdConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param type DHCP forwarding mode for this tunneled VLAN
+         * @param type DHCP forwarding mode for this tunneled VLAN. enum: `relay`.
          * 
          * @return builder
          * 

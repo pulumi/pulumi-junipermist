@@ -97,7 +97,7 @@ import (
 type NacPortal struct {
 	pulumi.CustomResourceState
 
-	// If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients
+	// If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients. enum: `wireless`, `wireless+wired`.
 	AccessType pulumi.StringOutput `pulumi:"accessType"`
 	// Additional CA certificates trusted during NAC portal certificate onboarding
 	AdditionalCacerts pulumi.StringArrayOutput `pulumi:"additionalCacerts"`
@@ -105,11 +105,11 @@ type NacPortal struct {
 	AdditionalNacServerNames pulumi.StringArrayOutput `pulumi:"additionalNacServerNames"`
 	// Validity duration for portal-issued client certificates, in days
 	CertExpireTime pulumi.IntPtrOutput `pulumi:"certExpireTime"`
-	// EAP mode used when onboarding wireless clients through the NAC portal
+	// EAP mode used when onboarding wireless clients through the NAC portal. enum: `wpa2`, `wpa3`.
 	EapType pulumi.StringOutput `pulumi:"eapType"`
 	// Whether location data collection is enabled for devices onboarding through this NAC portal
 	EnableLocation pulumi.BoolPtrOutput `pulumi:"enableLocation"`
-	// Model, version, fingering, events (connecting, disconnect, roaming), which ap
+	// Optional, model, version, fingerprinting, events (connecting, disconnect, roaming), which ap, default is false
 	EnableTelemetry pulumi.BoolPtrOutput `pulumi:"enableTelemetry"`
 	// Number of days before certificate expiration to start sending reminder notifications
 	ExpiryNotificationTime pulumi.IntPtrOutput `pulumi:"expiryNotificationTime"`
@@ -127,7 +127,7 @@ type NacPortal struct {
 	Sso NacPortalSsoPtrOutput `pulumi:"sso"`
 	// Terms of service text shown in the NAC portal
 	Tos pulumi.StringPtrOutput `pulumi:"tos"`
-	// NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
+	// NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding. enum: `guestAdmin`, `guestPortal`, `marvisClient`.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
 
@@ -164,7 +164,7 @@ func GetNacPortal(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NacPortal resources.
 type nacPortalState struct {
-	// If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients
+	// If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients. enum: `wireless`, `wireless+wired`.
 	AccessType *string `pulumi:"accessType"`
 	// Additional CA certificates trusted during NAC portal certificate onboarding
 	AdditionalCacerts []string `pulumi:"additionalCacerts"`
@@ -172,11 +172,11 @@ type nacPortalState struct {
 	AdditionalNacServerNames []string `pulumi:"additionalNacServerNames"`
 	// Validity duration for portal-issued client certificates, in days
 	CertExpireTime *int `pulumi:"certExpireTime"`
-	// EAP mode used when onboarding wireless clients through the NAC portal
+	// EAP mode used when onboarding wireless clients through the NAC portal. enum: `wpa2`, `wpa3`.
 	EapType *string `pulumi:"eapType"`
 	// Whether location data collection is enabled for devices onboarding through this NAC portal
 	EnableLocation *bool `pulumi:"enableLocation"`
-	// Model, version, fingering, events (connecting, disconnect, roaming), which ap
+	// Optional, model, version, fingerprinting, events (connecting, disconnect, roaming), which ap, default is false
 	EnableTelemetry *bool `pulumi:"enableTelemetry"`
 	// Number of days before certificate expiration to start sending reminder notifications
 	ExpiryNotificationTime *int `pulumi:"expiryNotificationTime"`
@@ -194,12 +194,12 @@ type nacPortalState struct {
 	Sso *NacPortalSso `pulumi:"sso"`
 	// Terms of service text shown in the NAC portal
 	Tos *string `pulumi:"tos"`
-	// NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
+	// NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding. enum: `guestAdmin`, `guestPortal`, `marvisClient`.
 	Type *string `pulumi:"type"`
 }
 
 type NacPortalState struct {
-	// If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients
+	// If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients. enum: `wireless`, `wireless+wired`.
 	AccessType pulumi.StringPtrInput
 	// Additional CA certificates trusted during NAC portal certificate onboarding
 	AdditionalCacerts pulumi.StringArrayInput
@@ -207,11 +207,11 @@ type NacPortalState struct {
 	AdditionalNacServerNames pulumi.StringArrayInput
 	// Validity duration for portal-issued client certificates, in days
 	CertExpireTime pulumi.IntPtrInput
-	// EAP mode used when onboarding wireless clients through the NAC portal
+	// EAP mode used when onboarding wireless clients through the NAC portal. enum: `wpa2`, `wpa3`.
 	EapType pulumi.StringPtrInput
 	// Whether location data collection is enabled for devices onboarding through this NAC portal
 	EnableLocation pulumi.BoolPtrInput
-	// Model, version, fingering, events (connecting, disconnect, roaming), which ap
+	// Optional, model, version, fingerprinting, events (connecting, disconnect, roaming), which ap, default is false
 	EnableTelemetry pulumi.BoolPtrInput
 	// Number of days before certificate expiration to start sending reminder notifications
 	ExpiryNotificationTime pulumi.IntPtrInput
@@ -229,7 +229,7 @@ type NacPortalState struct {
 	Sso NacPortalSsoPtrInput
 	// Terms of service text shown in the NAC portal
 	Tos pulumi.StringPtrInput
-	// NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
+	// NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding. enum: `guestAdmin`, `guestPortal`, `marvisClient`.
 	Type pulumi.StringPtrInput
 }
 
@@ -238,7 +238,7 @@ func (NacPortalState) ElementType() reflect.Type {
 }
 
 type nacPortalArgs struct {
-	// If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients
+	// If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients. enum: `wireless`, `wireless+wired`.
 	AccessType *string `pulumi:"accessType"`
 	// Additional CA certificates trusted during NAC portal certificate onboarding
 	AdditionalCacerts []string `pulumi:"additionalCacerts"`
@@ -246,11 +246,11 @@ type nacPortalArgs struct {
 	AdditionalNacServerNames []string `pulumi:"additionalNacServerNames"`
 	// Validity duration for portal-issued client certificates, in days
 	CertExpireTime *int `pulumi:"certExpireTime"`
-	// EAP mode used when onboarding wireless clients through the NAC portal
+	// EAP mode used when onboarding wireless clients through the NAC portal. enum: `wpa2`, `wpa3`.
 	EapType *string `pulumi:"eapType"`
 	// Whether location data collection is enabled for devices onboarding through this NAC portal
 	EnableLocation *bool `pulumi:"enableLocation"`
-	// Model, version, fingering, events (connecting, disconnect, roaming), which ap
+	// Optional, model, version, fingerprinting, events (connecting, disconnect, roaming), which ap, default is false
 	EnableTelemetry *bool `pulumi:"enableTelemetry"`
 	// Number of days before certificate expiration to start sending reminder notifications
 	ExpiryNotificationTime *int `pulumi:"expiryNotificationTime"`
@@ -268,13 +268,13 @@ type nacPortalArgs struct {
 	Sso *NacPortalSso `pulumi:"sso"`
 	// Terms of service text shown in the NAC portal
 	Tos *string `pulumi:"tos"`
-	// NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
+	// NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding. enum: `guestAdmin`, `guestPortal`, `marvisClient`.
 	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a NacPortal resource.
 type NacPortalArgs struct {
-	// If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients
+	// If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients. enum: `wireless`, `wireless+wired`.
 	AccessType pulumi.StringPtrInput
 	// Additional CA certificates trusted during NAC portal certificate onboarding
 	AdditionalCacerts pulumi.StringArrayInput
@@ -282,11 +282,11 @@ type NacPortalArgs struct {
 	AdditionalNacServerNames pulumi.StringArrayInput
 	// Validity duration for portal-issued client certificates, in days
 	CertExpireTime pulumi.IntPtrInput
-	// EAP mode used when onboarding wireless clients through the NAC portal
+	// EAP mode used when onboarding wireless clients through the NAC portal. enum: `wpa2`, `wpa3`.
 	EapType pulumi.StringPtrInput
 	// Whether location data collection is enabled for devices onboarding through this NAC portal
 	EnableLocation pulumi.BoolPtrInput
-	// Model, version, fingering, events (connecting, disconnect, roaming), which ap
+	// Optional, model, version, fingerprinting, events (connecting, disconnect, roaming), which ap, default is false
 	EnableTelemetry pulumi.BoolPtrInput
 	// Number of days before certificate expiration to start sending reminder notifications
 	ExpiryNotificationTime pulumi.IntPtrInput
@@ -304,7 +304,7 @@ type NacPortalArgs struct {
 	Sso NacPortalSsoPtrInput
 	// Terms of service text shown in the NAC portal
 	Tos pulumi.StringPtrInput
-	// NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
+	// NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding. enum: `guestAdmin`, `guestPortal`, `marvisClient`.
 	Type pulumi.StringPtrInput
 }
 
@@ -395,7 +395,7 @@ func (o NacPortalOutput) ToNacPortalOutputWithContext(ctx context.Context) NacPo
 	return o
 }
 
-// If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients
+// If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients. enum: `wireless`, `wireless+wired`.
 func (o NacPortalOutput) AccessType() pulumi.StringOutput {
 	return o.ApplyT(func(v *NacPortal) pulumi.StringOutput { return v.AccessType }).(pulumi.StringOutput)
 }
@@ -415,7 +415,7 @@ func (o NacPortalOutput) CertExpireTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NacPortal) pulumi.IntPtrOutput { return v.CertExpireTime }).(pulumi.IntPtrOutput)
 }
 
-// EAP mode used when onboarding wireless clients through the NAC portal
+// EAP mode used when onboarding wireless clients through the NAC portal. enum: `wpa2`, `wpa3`.
 func (o NacPortalOutput) EapType() pulumi.StringOutput {
 	return o.ApplyT(func(v *NacPortal) pulumi.StringOutput { return v.EapType }).(pulumi.StringOutput)
 }
@@ -425,7 +425,7 @@ func (o NacPortalOutput) EnableLocation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NacPortal) pulumi.BoolPtrOutput { return v.EnableLocation }).(pulumi.BoolPtrOutput)
 }
 
-// Model, version, fingering, events (connecting, disconnect, roaming), which ap
+// Optional, model, version, fingerprinting, events (connecting, disconnect, roaming), which ap, default is false
 func (o NacPortalOutput) EnableTelemetry() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NacPortal) pulumi.BoolPtrOutput { return v.EnableTelemetry }).(pulumi.BoolPtrOutput)
 }
@@ -470,7 +470,7 @@ func (o NacPortalOutput) Tos() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NacPortal) pulumi.StringPtrOutput { return v.Tos }).(pulumi.StringPtrOutput)
 }
 
-// NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
+// NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding. enum: `guestAdmin`, `guestPortal`, `marvisClient`.
 func (o NacPortalOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NacPortal) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

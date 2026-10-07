@@ -143,14 +143,14 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Client certificate field used to look up machine groups in identity providers
+     * Client certificate field used to look up machine groups in identity providers. enum: `automatic`, `cn`, `dns`.
      * 
      */
     @Import(name="idpMachineCertLookupField")
     private @Nullable Output<String> idpMachineCertLookupField;
 
     /**
-     * @return Client certificate field used to look up machine groups in identity providers
+     * @return Client certificate field used to look up machine groups in identity providers. enum: `automatic`, `cn`, `dns`.
      * 
      */
     public Optional<Output<String>> idpMachineCertLookupField() {
@@ -158,14 +158,14 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Client certificate field used to look up user groups in identity providers
+     * Client certificate field used to look up user groups in identity providers. enum: `automatic`, `cn`, `email`, `upn`.
      * 
      */
     @Import(name="idpUserCertLookupField")
     private @Nullable Output<String> idpUserCertLookupField;
 
     /**
-     * @return Client certificate field used to look up user groups in identity providers
+     * @return Client certificate field used to look up user groups in identity providers. enum: `automatic`, `cn`, `email`, `upn`.
      * 
      */
     public Optional<Output<String>> idpUserCertLookupField() {
@@ -218,14 +218,14 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * IP version used by NAS devices and Mist Edge proxies to reach Mist NAC
+     * IP version used by NAS devices and Mist Edge proxies to reach Mist NAC. enum: `v4`, `v6`.
      * 
      */
     @Import(name="useIpVersion")
     private @Nullable Output<String> useIpVersion;
 
     /**
-     * @return IP version used by NAS devices and Mist Edge proxies to reach Mist NAC
+     * @return IP version used by NAS devices and Mist Edge proxies to reach Mist NAC. enum: `v4`, `v6`.
      * 
      */
     public Optional<Output<String>> useIpVersion() {
@@ -480,7 +480,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param idpMachineCertLookupField Client certificate field used to look up machine groups in identity providers
+         * @param idpMachineCertLookupField Client certificate field used to look up machine groups in identity providers. enum: `automatic`, `cn`, `dns`.
          * 
          * @return builder
          * 
@@ -491,7 +491,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param idpMachineCertLookupField Client certificate field used to look up machine groups in identity providers
+         * @param idpMachineCertLookupField Client certificate field used to look up machine groups in identity providers. enum: `automatic`, `cn`, `dns`.
          * 
          * @return builder
          * 
@@ -501,7 +501,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param idpUserCertLookupField Client certificate field used to look up user groups in identity providers
+         * @param idpUserCertLookupField Client certificate field used to look up user groups in identity providers. enum: `automatic`, `cn`, `email`, `upn`.
          * 
          * @return builder
          * 
@@ -512,7 +512,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param idpUserCertLookupField Client certificate field used to look up user groups in identity providers
+         * @param idpUserCertLookupField Client certificate field used to look up user groups in identity providers. enum: `automatic`, `cn`, `email`, `upn`.
          * 
          * @return builder
          * 
@@ -595,7 +595,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param useIpVersion IP version used by NAS devices and Mist Edge proxies to reach Mist NAC
+         * @param useIpVersion IP version used by NAS devices and Mist Edge proxies to reach Mist NAC. enum: `v4`, `v6`.
          * 
          * @return builder
          * 
@@ -606,7 +606,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param useIpVersion IP version used by NAS devices and Mist Edge proxies to reach Mist NAC
+         * @param useIpVersion IP version used by NAS devices and Mist Edge proxies to reach Mist NAC. enum: `v4`, `v6`.
          * 
          * @return builder
          * 

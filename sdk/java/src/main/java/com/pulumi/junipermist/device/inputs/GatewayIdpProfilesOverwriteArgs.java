@@ -17,14 +17,14 @@ public final class GatewayIdpProfilesOverwriteArgs extends com.pulumi.resources.
     public static final GatewayIdpProfilesOverwriteArgs Empty = new GatewayIdpProfilesOverwriteArgs();
 
     /**
-     * Enforcement action applied when this overwrite rule matches
+     * Enforcement action applied when this overwrite rule matches. enum: `alert`, `close`, `drop`.
      * 
      */
     @Import(name="action")
     private @Nullable Output<String> action;
 
     /**
-     * @return Enforcement action applied when this overwrite rule matches
+     * @return Enforcement action applied when this overwrite rule matches. enum: `alert`, `close`, `drop`.
      * 
      */
     public Optional<Output<String>> action() {
@@ -88,7 +88,7 @@ public final class GatewayIdpProfilesOverwriteArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param action Enforcement action applied when this overwrite rule matches
+         * @param action Enforcement action applied when this overwrite rule matches. enum: `alert`, `close`, `drop`.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class GatewayIdpProfilesOverwriteArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param action Enforcement action applied when this overwrite rule matches
+         * @param action Enforcement action applied when this overwrite rule matches. enum: `alert`, `close`, `drop`.
          * 
          * @return builder
          * 

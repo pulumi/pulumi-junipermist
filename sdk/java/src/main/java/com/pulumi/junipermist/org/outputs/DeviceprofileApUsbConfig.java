@@ -39,7 +39,7 @@ public final class DeviceprofileApUsbConfig {
      */
     private @Nullable Integer port;
     /**
-     * @return USB integration type for this legacy AP USB configuration
+     * @return USB integration type for this legacy AP USB configuration. enum: `hanshow`, `imagotag`, `solum`.
      * 
      */
     private @Nullable String type;
@@ -91,7 +91,7 @@ public final class DeviceprofileApUsbConfig {
         return Optional.ofNullable(this.port);
     }
     /**
-     * @return USB integration type for this legacy AP USB configuration
+     * @return USB integration type for this legacy AP USB configuration. enum: `hanshow`, `imagotag`, `solum`.
      * 
      */
     public Optional<String> type() {

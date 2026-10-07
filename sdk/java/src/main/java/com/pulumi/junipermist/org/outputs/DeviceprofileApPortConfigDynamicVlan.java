@@ -25,7 +25,7 @@ public final class DeviceprofileApPortConfigDynamicVlan {
      */
     private @Nullable Boolean enabled;
     /**
-     * @return Mapping mode for interpreting dynamic VLAN attributes returned by RADIUS
+     * @return Mapping mode for interpreting dynamic VLAN attributes returned by RADIUS. enum: `airespace-interface-name`, `standard`.
      * 
      */
     private @Nullable String type;
@@ -51,7 +51,7 @@ public final class DeviceprofileApPortConfigDynamicVlan {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Mapping mode for interpreting dynamic VLAN attributes returned by RADIUS
+     * @return Mapping mode for interpreting dynamic VLAN attributes returned by RADIUS. enum: `airespace-interface-name`, `standard`.
      * 
      */
     public Optional<String> type() {

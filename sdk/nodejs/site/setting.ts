@@ -250,7 +250,7 @@ export class Setting extends pulumi.CustomResource {
      */
     declare public readonly tuntermMonitoringDisabled: pulumi.Output<boolean | undefined>;
     /**
-     * Tunnel termination monitoring settings for the site
+     * Tunnel termination monitoring settings for the Mist Edges assigned to the site
      */
     declare public readonly tuntermMonitorings: pulumi.Output<outputs.site.SettingTuntermMonitoring[] | undefined>;
     /**
@@ -633,7 +633,7 @@ export interface SettingState {
      */
     tuntermMonitoringDisabled?: pulumi.Input<boolean | undefined>;
     /**
-     * Tunnel termination monitoring settings for the site
+     * Tunnel termination monitoring settings for the Mist Edges assigned to the site
      */
     tuntermMonitorings?: pulumi.Input<pulumi.Input<inputs.site.SettingTuntermMonitoring>[] | undefined>;
     /**
@@ -871,7 +871,7 @@ export interface SettingArgs {
      */
     tuntermMonitoringDisabled?: pulumi.Input<boolean | undefined>;
     /**
-     * Tunnel termination monitoring settings for the site
+     * Tunnel termination monitoring settings for the Mist Edges assigned to the site
      */
     tuntermMonitorings?: pulumi.Input<pulumi.Input<inputs.site.SettingTuntermMonitoring>[] | undefined>;
     /**

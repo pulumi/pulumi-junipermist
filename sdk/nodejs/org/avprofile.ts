@@ -76,7 +76,7 @@ export class Avprofile extends pulumi.CustomResource {
     }
 
     /**
-     * Action to take when antivirus scanning cannot complete
+     * Action to take when antivirus scanning cannot complete. enum: `block`, `log-and-permit`, `permit`.
      */
     declare public readonly fallbackAction: pulumi.Output<string | undefined>;
     /**
@@ -150,7 +150,7 @@ export class Avprofile extends pulumi.CustomResource {
  */
 export interface AvprofileState {
     /**
-     * Action to take when antivirus scanning cannot complete
+     * Action to take when antivirus scanning cannot complete. enum: `block`, `log-and-permit`, `permit`.
      */
     fallbackAction?: pulumi.Input<string | undefined>;
     /**
@@ -184,7 +184,7 @@ export interface AvprofileState {
  */
 export interface AvprofileArgs {
     /**
-     * Action to take when antivirus scanning cannot complete
+     * Action to take when antivirus scanning cannot complete. enum: `block`, `log-and-permit`, `permit`.
      */
     fallbackAction?: pulumi.Input<string | undefined>;
     /**

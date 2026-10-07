@@ -18,14 +18,14 @@ public final class IdpprofileOverwriteArgs extends com.pulumi.resources.Resource
     public static final IdpprofileOverwriteArgs Empty = new IdpprofileOverwriteArgs();
 
     /**
-     * Enforcement action applied when this overwrite rule matches
+     * Enforcement action applied when this overwrite rule matches. enum: `alert`, `close`, `drop`.
      * 
      */
     @Import(name="action")
     private @Nullable Output<String> action;
 
     /**
-     * @return Enforcement action applied when this overwrite rule matches
+     * @return Enforcement action applied when this overwrite rule matches. enum: `alert`, `close`, `drop`.
      * 
      */
     public Optional<Output<String>> action() {
@@ -89,7 +89,7 @@ public final class IdpprofileOverwriteArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param action Enforcement action applied when this overwrite rule matches
+         * @param action Enforcement action applied when this overwrite rule matches. enum: `alert`, `close`, `drop`.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class IdpprofileOverwriteArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param action Enforcement action applied when this overwrite rule matches
+         * @param action Enforcement action applied when this overwrite rule matches. enum: `alert`, `close`, `drop`.
          * 
          * @return builder
          * 

@@ -49,14 +49,14 @@ public final class ApBleConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate
+     * Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate. enum: `custom`, `default`.
      * 
      */
     @Import(name="beaconRateMode")
     private @Nullable Output<String> beaconRateMode;
 
     /**
-     * @return Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate
+     * @return Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate. enum: `custom`, `default`.
      * 
      */
     public Optional<Output<String>> beaconRateMode() {
@@ -409,14 +409,14 @@ public final class ApBleConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Transmit power mode for BLE beacons; use custom to set `power`
+     * Transmit power mode for BLE beacons; use custom to set `power`. enum: `custom`, `default`.
      * 
      */
     @Import(name="powerMode")
     private @Nullable Output<String> powerMode;
 
     /**
-     * @return Transmit power mode for BLE beacons; use custom to set `power`
+     * @return Transmit power mode for BLE beacons; use custom to set `power`. enum: `custom`, `default`.
      * 
      */
     public Optional<Output<String>> powerMode() {
@@ -516,7 +516,7 @@ public final class ApBleConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param beaconRateMode Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate
+         * @param beaconRateMode Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate. enum: `custom`, `default`.
          * 
          * @return builder
          * 
@@ -527,7 +527,7 @@ public final class ApBleConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param beaconRateMode Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate
+         * @param beaconRateMode Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate. enum: `custom`, `default`.
          * 
          * @return builder
          * 
@@ -1030,7 +1030,7 @@ public final class ApBleConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param powerMode Transmit power mode for BLE beacons; use custom to set `power`
+         * @param powerMode Transmit power mode for BLE beacons; use custom to set `power`. enum: `custom`, `default`.
          * 
          * @return builder
          * 
@@ -1041,7 +1041,7 @@ public final class ApBleConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param powerMode Transmit power mode for BLE beacons; use custom to set `power`
+         * @param powerMode Transmit power mode for BLE beacons; use custom to set `power`. enum: `custom`, `default`.
          * 
          * @return builder
          * 

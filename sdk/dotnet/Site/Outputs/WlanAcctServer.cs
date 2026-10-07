@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly bool? KeywrapEnabled;
         /// <summary>
-        /// Encoding format for RADIUS keywrap KEK and MACK values
+        /// Encoding format for RADIUS keywrap KEK and MACK values. enum: `Ascii`, `Hex`.
         /// </summary>
         public readonly string? KeywrapFormat;
         /// <summary>

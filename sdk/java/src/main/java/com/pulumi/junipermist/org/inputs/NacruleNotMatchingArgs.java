@@ -17,14 +17,14 @@ public final class NacruleNotMatchingArgs extends com.pulumi.resources.ResourceA
     public static final NacruleNotMatchingArgs Empty = new NacruleNotMatchingArgs();
 
     /**
-     * NAC authentication method that must match the request
+     * NAC authentication method that must match the request. enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `eap-peap`.
      * 
      */
     @Import(name="authType")
     private @Nullable Output<String> authType;
 
     /**
-     * @return NAC authentication method that must match the request
+     * @return NAC authentication method that must match the request. enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `eap-peap`.
      * 
      */
     public Optional<Output<String>> authType() {
@@ -200,7 +200,7 @@ public final class NacruleNotMatchingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param authType NAC authentication method that must match the request
+         * @param authType NAC authentication method that must match the request. enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `eap-peap`.
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class NacruleNotMatchingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param authType NAC authentication method that must match the request
+         * @param authType NAC authentication method that must match the request. enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `eap-peap`.
          * 
          * @return builder
          * 

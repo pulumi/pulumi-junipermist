@@ -39,11 +39,11 @@ class NactagArgs:
         The set of arguments for constructing a Nactag resource.
 
         :param pulumi.Input[_builtins.str] org_id: Org identifier that owns the NAC tag
-        :param pulumi.Input[_builtins.str] type: NAC tag type that determines whether the tag is a matcher or a result attribute
+        :param pulumi.Input[_builtins.str] type: NAC tag type that determines whether the tag is a matcher or a result attribute. enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `redirect_nacportal_id`, `session_timeout`, `username_attr`, `vlan`.
         :param pulumi.Input[_builtins.bool] allow_usermac_override: Whether usermac result values can override this NAC tag when the result type is also supported by usermac
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] egress_vlan_names: If `type`==`egress_vlan_names`, list of egress VLAN names returned by the NAC rule
         :param pulumi.Input[_builtins.str] gbp_tag: If `type`==`gbp_tag`, GBP tag value returned by the NAC rule
-        :param pulumi.Input[_builtins.str] match: If `type`==`match`, client or authentication attribute used for rule matching
+        :param pulumi.Input[_builtins.str] match: If `type`==`match`, client or authentication attribute used for rule matching. enum: `cert_cn`, `cert_eku`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `edr_status`, `gbp_tag`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`.
         :param pulumi.Input[_builtins.bool] match_all: This field is applicable only when `type`==`match`
                  * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
                  * `true`: means all values should be matched (i.e., match-all behavior)
@@ -56,7 +56,7 @@ class NactagArgs:
         :param pulumi.Input[_builtins.str] radius_group: If `type`==`radius_group`, RADIUS group value returned by the NAC rule
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] radius_vendor_attrs: If `type`==`radius_vendor_attrs`, vendor-specific RADIUS attributes returned by the NAC rule
         :param pulumi.Input[_builtins.int] session_timeout: If `type`==`session_timeout`, session timeout returned by the NAC rule, in seconds
-        :param pulumi.Input[_builtins.str] username_attr: If `type`==`username_attr`, attribute used to derive the username returned by the NAC rule
+        :param pulumi.Input[_builtins.str] username_attr: If `type`==`username_attr`, attribute used to derive the username returned by the NAC rule. enum: `automatic`, `cn`, `dns`, `email`, `upn`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] values: If `type`==`match`, attribute values used by the NAC tag matcher
         :param pulumi.Input[_builtins.str] vlan: If `type`==`vlan`, VLAN name or ID returned by the NAC rule
         """
@@ -107,7 +107,7 @@ class NactagArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
         """
-        NAC tag type that determines whether the tag is a matcher or a result attribute
+        NAC tag type that determines whether the tag is a matcher or a result attribute. enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `redirect_nacportal_id`, `session_timeout`, `username_attr`, `vlan`.
         """
         return pulumi.get(self, "type")
 
@@ -155,7 +155,7 @@ class NactagArgs:
     @pulumi.getter
     def match(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        If `type`==`match`, client or authentication attribute used for rule matching
+        If `type`==`match`, client or authentication attribute used for rule matching. enum: `cert_cn`, `cert_eku`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `edr_status`, `gbp_tag`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`.
         """
         return pulumi.get(self, "match")
 
@@ -256,7 +256,7 @@ class NactagArgs:
     @pulumi.getter(name="usernameAttr")
     def username_attr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        If `type`==`username_attr`, attribute used to derive the username returned by the NAC rule
+        If `type`==`username_attr`, attribute used to derive the username returned by the NAC rule. enum: `automatic`, `cn`, `dns`, `email`, `upn`.
         """
         return pulumi.get(self, "username_attr")
 
@@ -314,7 +314,7 @@ class _NactagState:
         :param pulumi.Input[_builtins.bool] allow_usermac_override: Whether usermac result values can override this NAC tag when the result type is also supported by usermac
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] egress_vlan_names: If `type`==`egress_vlan_names`, list of egress VLAN names returned by the NAC rule
         :param pulumi.Input[_builtins.str] gbp_tag: If `type`==`gbp_tag`, GBP tag value returned by the NAC rule
-        :param pulumi.Input[_builtins.str] match: If `type`==`match`, client or authentication attribute used for rule matching
+        :param pulumi.Input[_builtins.str] match: If `type`==`match`, client or authentication attribute used for rule matching. enum: `cert_cn`, `cert_eku`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `edr_status`, `gbp_tag`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`.
         :param pulumi.Input[_builtins.bool] match_all: This field is applicable only when `type`==`match`
                  * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
                  * `true`: means all values should be matched (i.e., match-all behavior)
@@ -328,8 +328,8 @@ class _NactagState:
         :param pulumi.Input[_builtins.str] radius_group: If `type`==`radius_group`, RADIUS group value returned by the NAC rule
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] radius_vendor_attrs: If `type`==`radius_vendor_attrs`, vendor-specific RADIUS attributes returned by the NAC rule
         :param pulumi.Input[_builtins.int] session_timeout: If `type`==`session_timeout`, session timeout returned by the NAC rule, in seconds
-        :param pulumi.Input[_builtins.str] type: NAC tag type that determines whether the tag is a matcher or a result attribute
-        :param pulumi.Input[_builtins.str] username_attr: If `type`==`username_attr`, attribute used to derive the username returned by the NAC rule
+        :param pulumi.Input[_builtins.str] type: NAC tag type that determines whether the tag is a matcher or a result attribute. enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `redirect_nacportal_id`, `session_timeout`, `username_attr`, `vlan`.
+        :param pulumi.Input[_builtins.str] username_attr: If `type`==`username_attr`, attribute used to derive the username returned by the NAC rule. enum: `automatic`, `cn`, `dns`, `email`, `upn`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] values: If `type`==`match`, attribute values used by the NAC tag matcher
         :param pulumi.Input[_builtins.str] vlan: If `type`==`vlan`, VLAN name or ID returned by the NAC rule
         """
@@ -406,7 +406,7 @@ class _NactagState:
     @pulumi.getter
     def match(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        If `type`==`match`, client or authentication attribute used for rule matching
+        If `type`==`match`, client or authentication attribute used for rule matching. enum: `cert_cn`, `cert_eku`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `edr_status`, `gbp_tag`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`.
         """
         return pulumi.get(self, "match")
 
@@ -519,7 +519,7 @@ class _NactagState:
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        NAC tag type that determines whether the tag is a matcher or a result attribute
+        NAC tag type that determines whether the tag is a matcher or a result attribute. enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `redirect_nacportal_id`, `session_timeout`, `username_attr`, `vlan`.
         """
         return pulumi.get(self, "type")
 
@@ -531,7 +531,7 @@ class _NactagState:
     @pulumi.getter(name="usernameAttr")
     def username_attr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        If `type`==`username_attr`, attribute used to derive the username returned by the NAC rule
+        If `type`==`username_attr`, attribute used to derive the username returned by the NAC rule. enum: `automatic`, `cn`, `dns`, `email`, `upn`.
         """
         return pulumi.get(self, "username_attr")
 
@@ -621,7 +621,7 @@ class Nactag(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] allow_usermac_override: Whether usermac result values can override this NAC tag when the result type is also supported by usermac
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] egress_vlan_names: If `type`==`egress_vlan_names`, list of egress VLAN names returned by the NAC rule
         :param pulumi.Input[_builtins.str] gbp_tag: If `type`==`gbp_tag`, GBP tag value returned by the NAC rule
-        :param pulumi.Input[_builtins.str] match: If `type`==`match`, client or authentication attribute used for rule matching
+        :param pulumi.Input[_builtins.str] match: If `type`==`match`, client or authentication attribute used for rule matching. enum: `cert_cn`, `cert_eku`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `edr_status`, `gbp_tag`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`.
         :param pulumi.Input[_builtins.bool] match_all: This field is applicable only when `type`==`match`
                  * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
                  * `true`: means all values should be matched (i.e., match-all behavior)
@@ -635,8 +635,8 @@ class Nactag(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] radius_group: If `type`==`radius_group`, RADIUS group value returned by the NAC rule
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] radius_vendor_attrs: If `type`==`radius_vendor_attrs`, vendor-specific RADIUS attributes returned by the NAC rule
         :param pulumi.Input[_builtins.int] session_timeout: If `type`==`session_timeout`, session timeout returned by the NAC rule, in seconds
-        :param pulumi.Input[_builtins.str] type: NAC tag type that determines whether the tag is a matcher or a result attribute
-        :param pulumi.Input[_builtins.str] username_attr: If `type`==`username_attr`, attribute used to derive the username returned by the NAC rule
+        :param pulumi.Input[_builtins.str] type: NAC tag type that determines whether the tag is a matcher or a result attribute. enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `redirect_nacportal_id`, `session_timeout`, `username_attr`, `vlan`.
+        :param pulumi.Input[_builtins.str] username_attr: If `type`==`username_attr`, attribute used to derive the username returned by the NAC rule. enum: `automatic`, `cn`, `dns`, `email`, `upn`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] values: If `type`==`match`, attribute values used by the NAC tag matcher
         :param pulumi.Input[_builtins.str] vlan: If `type`==`vlan`, VLAN name or ID returned by the NAC rule
         """
@@ -771,7 +771,7 @@ class Nactag(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] allow_usermac_override: Whether usermac result values can override this NAC tag when the result type is also supported by usermac
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] egress_vlan_names: If `type`==`egress_vlan_names`, list of egress VLAN names returned by the NAC rule
         :param pulumi.Input[_builtins.str] gbp_tag: If `type`==`gbp_tag`, GBP tag value returned by the NAC rule
-        :param pulumi.Input[_builtins.str] match: If `type`==`match`, client or authentication attribute used for rule matching
+        :param pulumi.Input[_builtins.str] match: If `type`==`match`, client or authentication attribute used for rule matching. enum: `cert_cn`, `cert_eku`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `edr_status`, `gbp_tag`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`.
         :param pulumi.Input[_builtins.bool] match_all: This field is applicable only when `type`==`match`
                  * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
                  * `true`: means all values should be matched (i.e., match-all behavior)
@@ -785,8 +785,8 @@ class Nactag(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] radius_group: If `type`==`radius_group`, RADIUS group value returned by the NAC rule
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] radius_vendor_attrs: If `type`==`radius_vendor_attrs`, vendor-specific RADIUS attributes returned by the NAC rule
         :param pulumi.Input[_builtins.int] session_timeout: If `type`==`session_timeout`, session timeout returned by the NAC rule, in seconds
-        :param pulumi.Input[_builtins.str] type: NAC tag type that determines whether the tag is a matcher or a result attribute
-        :param pulumi.Input[_builtins.str] username_attr: If `type`==`username_attr`, attribute used to derive the username returned by the NAC rule
+        :param pulumi.Input[_builtins.str] type: NAC tag type that determines whether the tag is a matcher or a result attribute. enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `redirect_nacportal_id`, `session_timeout`, `username_attr`, `vlan`.
+        :param pulumi.Input[_builtins.str] username_attr: If `type`==`username_attr`, attribute used to derive the username returned by the NAC rule. enum: `automatic`, `cn`, `dns`, `email`, `upn`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] values: If `type`==`match`, attribute values used by the NAC tag matcher
         :param pulumi.Input[_builtins.str] vlan: If `type`==`vlan`, VLAN name or ID returned by the NAC rule
         """
@@ -840,7 +840,7 @@ class Nactag(pulumi.CustomResource):
     @pulumi.getter
     def match(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        If `type`==`match`, client or authentication attribute used for rule matching
+        If `type`==`match`, client or authentication attribute used for rule matching. enum: `cert_cn`, `cert_eku`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `edr_status`, `gbp_tag`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`.
         """
         return pulumi.get(self, "match")
 
@@ -917,7 +917,7 @@ class Nactag(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        NAC tag type that determines whether the tag is a matcher or a result attribute
+        NAC tag type that determines whether the tag is a matcher or a result attribute. enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `redirect_nacportal_id`, `session_timeout`, `username_attr`, `vlan`.
         """
         return pulumi.get(self, "type")
 
@@ -925,7 +925,7 @@ class Nactag(pulumi.CustomResource):
     @pulumi.getter(name="usernameAttr")
     def username_attr(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        If `type`==`username_attr`, attribute used to derive the username returned by the NAC rule
+        If `type`==`username_attr`, attribute used to derive the username returned by the NAC rule. enum: `automatic`, `cn`, `dns`, `email`, `upn`.
         """
         return pulumi.get(self, "username_attr")
 

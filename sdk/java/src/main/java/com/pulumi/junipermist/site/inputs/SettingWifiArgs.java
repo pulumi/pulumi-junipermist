@@ -212,14 +212,14 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * ARP proxy mode for site Wi-Fi
+     * ARP proxy mode for site Wi-Fi. enum: `default`, `disabled`, `enabled`.
      * 
      */
     @Import(name="proxyArp")
     private @Nullable Output<String> proxyArp;
 
     /**
-     * @return ARP proxy mode for site Wi-Fi
+     * @return ARP proxy mode for site Wi-Fi. enum: `default`, `disabled`, `enabled`.
      * 
      */
     public Optional<Output<String>> proxyArp() {
@@ -537,7 +537,7 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxyArp ARP proxy mode for site Wi-Fi
+         * @param proxyArp ARP proxy mode for site Wi-Fi. enum: `default`, `disabled`, `enabled`.
          * 
          * @return builder
          * 
@@ -548,7 +548,7 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxyArp ARP proxy mode for site Wi-Fi
+         * @param proxyArp ARP proxy mode for site Wi-Fi. enum: `default`, `disabled`, `enabled`.
          * 
          * @return builder
          * 

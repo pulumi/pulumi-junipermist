@@ -26,7 +26,7 @@ public final class SwitchOspfAreas {
      */
     private Map<String,SwitchOspfAreasNetworks> networks;
     /**
-     * @return Area type for this OSPF area
+     * @return Area type for this OSPF area. enum: `default`, `nssa`, `stub`.
      * 
      */
     private @Nullable String type;
@@ -47,7 +47,7 @@ public final class SwitchOspfAreas {
         return this.networks;
     }
     /**
-     * @return Area type for this OSPF area
+     * @return Area type for this OSPF area. enum: `default`, `nssa`, `stub`.
      * 
      */
     public Optional<String> type() {
