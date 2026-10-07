@@ -82,7 +82,7 @@ type Psk struct {
 	NotifyOnCreateOrEdit pulumi.BoolPtrOutput `pulumi:"notifyOnCreateOrEdit"`
 	// previous passphrase of the PSK if it has been rotated
 	OldPassphrase pulumi.StringPtrOutput `pulumi:"oldPassphrase"`
-	// Organization that owns the site-level PSK
+	// Organization that owns the org-level PSK
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// PSK passphrase, 8-63 characters or 64 hexadecimal characters
 	Passphrase pulumi.StringOutput `pulumi:"passphrase"`
@@ -170,7 +170,7 @@ type pskState struct {
 	NotifyOnCreateOrEdit *bool `pulumi:"notifyOnCreateOrEdit"`
 	// previous passphrase of the PSK if it has been rotated
 	OldPassphrase *string `pulumi:"oldPassphrase"`
-	// Organization that owns the site-level PSK
+	// Organization that owns the org-level PSK
 	OrgId *string `pulumi:"orgId"`
 	// PSK passphrase, 8-63 characters or 64 hexadecimal characters
 	Passphrase *string `pulumi:"passphrase"`
@@ -209,7 +209,7 @@ type PskState struct {
 	NotifyOnCreateOrEdit pulumi.BoolPtrInput
 	// previous passphrase of the PSK if it has been rotated
 	OldPassphrase pulumi.StringPtrInput
-	// Organization that owns the site-level PSK
+	// Organization that owns the org-level PSK
 	OrgId pulumi.StringPtrInput
 	// PSK passphrase, 8-63 characters or 64 hexadecimal characters
 	Passphrase pulumi.StringPtrInput
@@ -440,7 +440,7 @@ func (o PskOutput) OldPassphrase() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Psk) pulumi.StringPtrOutput { return v.OldPassphrase }).(pulumi.StringPtrOutput)
 }
 
-// Organization that owns the site-level PSK
+// Organization that owns the org-level PSK
 func (o PskOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Psk) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }

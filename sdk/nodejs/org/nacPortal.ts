@@ -106,7 +106,7 @@ export class NacPortal extends pulumi.CustomResource {
     }
 
     /**
-     * If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients
+     * If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients. enum: `wireless`, `wireless+wired`.
      */
     declare public readonly accessType: pulumi.Output<string>;
     /**
@@ -122,7 +122,7 @@ export class NacPortal extends pulumi.CustomResource {
      */
     declare public readonly certExpireTime: pulumi.Output<number | undefined>;
     /**
-     * EAP mode used when onboarding wireless clients through the NAC portal
+     * EAP mode used when onboarding wireless clients through the NAC portal. enum: `wpa2`, `wpa3`.
      */
     declare public readonly eapType: pulumi.Output<string>;
     /**
@@ -130,7 +130,7 @@ export class NacPortal extends pulumi.CustomResource {
      */
     declare public readonly enableLocation: pulumi.Output<boolean | undefined>;
     /**
-     * Model, version, fingering, events (connecting, disconnect, roaming), which ap
+     * Optional, model, version, fingerprinting, events (connecting, disconnect, roaming), which ap, default is false
      */
     declare public readonly enableTelemetry: pulumi.Output<boolean | undefined>;
     /**
@@ -166,7 +166,7 @@ export class NacPortal extends pulumi.CustomResource {
      */
     declare public readonly tos: pulumi.Output<string | undefined>;
     /**
-     * NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
+     * NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding. enum: `guestAdmin`, `guestPortal`, `marvisClient`.
      */
     declare public readonly type: pulumi.Output<string | undefined>;
 
@@ -231,7 +231,7 @@ export class NacPortal extends pulumi.CustomResource {
  */
 export interface NacPortalState {
     /**
-     * If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients
+     * If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients. enum: `wireless`, `wireless+wired`.
      */
     accessType?: pulumi.Input<string | undefined>;
     /**
@@ -247,7 +247,7 @@ export interface NacPortalState {
      */
     certExpireTime?: pulumi.Input<number | undefined>;
     /**
-     * EAP mode used when onboarding wireless clients through the NAC portal
+     * EAP mode used when onboarding wireless clients through the NAC portal. enum: `wpa2`, `wpa3`.
      */
     eapType?: pulumi.Input<string | undefined>;
     /**
@@ -255,7 +255,7 @@ export interface NacPortalState {
      */
     enableLocation?: pulumi.Input<boolean | undefined>;
     /**
-     * Model, version, fingering, events (connecting, disconnect, roaming), which ap
+     * Optional, model, version, fingerprinting, events (connecting, disconnect, roaming), which ap, default is false
      */
     enableTelemetry?: pulumi.Input<boolean | undefined>;
     /**
@@ -291,7 +291,7 @@ export interface NacPortalState {
      */
     tos?: pulumi.Input<string | undefined>;
     /**
-     * NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
+     * NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding. enum: `guestAdmin`, `guestPortal`, `marvisClient`.
      */
     type?: pulumi.Input<string | undefined>;
 }
@@ -301,7 +301,7 @@ export interface NacPortalState {
  */
 export interface NacPortalArgs {
     /**
-     * If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients
+     * If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients. enum: `wireless`, `wireless+wired`.
      */
     accessType?: pulumi.Input<string | undefined>;
     /**
@@ -317,7 +317,7 @@ export interface NacPortalArgs {
      */
     certExpireTime?: pulumi.Input<number | undefined>;
     /**
-     * EAP mode used when onboarding wireless clients through the NAC portal
+     * EAP mode used when onboarding wireless clients through the NAC portal. enum: `wpa2`, `wpa3`.
      */
     eapType?: pulumi.Input<string | undefined>;
     /**
@@ -325,7 +325,7 @@ export interface NacPortalArgs {
      */
     enableLocation?: pulumi.Input<boolean | undefined>;
     /**
-     * Model, version, fingering, events (connecting, disconnect, roaming), which ap
+     * Optional, model, version, fingerprinting, events (connecting, disconnect, roaming), which ap, default is false
      */
     enableTelemetry?: pulumi.Input<boolean | undefined>;
     /**
@@ -361,7 +361,7 @@ export interface NacPortalArgs {
      */
     tos?: pulumi.Input<string | undefined>;
     /**
-     * NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
+     * NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding. enum: `guestAdmin`, `guestPortal`, `marvisClient`.
      */
     type?: pulumi.Input<string | undefined>;
 }

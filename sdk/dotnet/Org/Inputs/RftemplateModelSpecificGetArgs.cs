@@ -37,7 +37,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<Inputs.RftemplateModelSpecificBand24GetArgs>? Band24 { get; set; }
 
         /// <summary>
-        /// Model-specific radio usage mode for the 2.4 GHz-capable radio
+        /// Model-specific radio usage mode for the 2.4 GHz-capable radio. enum: `24`, `5`, `6`, `Auto`.
         /// </summary>
         [Input("band24Usage")]
         public Input<string>? Band24Usage { get; set; }

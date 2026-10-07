@@ -29,7 +29,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// Access role granted to the local switch user account
+        /// Access role granted to the local switch user account. enum: `Admin`, `Helpdesk`, `None`, `Read`.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }

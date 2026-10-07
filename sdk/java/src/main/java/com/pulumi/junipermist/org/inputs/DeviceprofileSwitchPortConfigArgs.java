@@ -155,14 +155,14 @@ public final class DeviceprofileSwitchPortConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * Link duplex mode for this Junos port
+     * Link duplex mode for this Junos port. enum: `auto`, `full`, `half`.
      * 
      */
     @Import(name="duplex")
     private @Nullable Output<String> duplex;
 
     /**
-     * @return Link duplex mode for this Junos port
+     * @return Link duplex mode for this Junos port. enum: `auto`, `full`, `half`.
      * 
      */
     public Optional<Output<String>> duplex() {
@@ -275,14 +275,14 @@ public final class DeviceprofileSwitchPortConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * Link speed for this Junos port
+     * Link speed for this Junos port. enum: `10m`, `100m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`, `auto`.
      * 
      */
     @Import(name="speed")
     private @Nullable Output<String> speed;
 
     /**
-     * @return Link speed for this Junos port
+     * @return Link speed for this Junos port. enum: `10m`, `100m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`, `auto`.
      * 
      */
     public Optional<Output<String>> speed() {
@@ -536,7 +536,7 @@ public final class DeviceprofileSwitchPortConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param duplex Link duplex mode for this Junos port
+         * @param duplex Link duplex mode for this Junos port. enum: `auto`, `full`, `half`.
          * 
          * @return builder
          * 
@@ -547,7 +547,7 @@ public final class DeviceprofileSwitchPortConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param duplex Link duplex mode for this Junos port
+         * @param duplex Link duplex mode for this Junos port. enum: `auto`, `full`, `half`.
          * 
          * @return builder
          * 
@@ -714,7 +714,7 @@ public final class DeviceprofileSwitchPortConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param speed Link speed for this Junos port
+         * @param speed Link speed for this Junos port. enum: `10m`, `100m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`, `auto`.
          * 
          * @return builder
          * 
@@ -725,7 +725,7 @@ public final class DeviceprofileSwitchPortConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param speed Link speed for this Junos port
+         * @param speed Link speed for this Junos port. enum: `10m`, `100m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`, `auto`.
          * 
          * @return builder
          * 

@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class MxtunnelAutoPreemption
     {
         /// <summary>
-        /// Scheduled weekday for auto preemption
+        /// Scheduled weekday for auto preemption. enum: `Any`, `Fri`, `Mon`, `Sat`, `Sun`, `Thu`, `Tue`, `Wed`.
         /// </summary>
         public readonly string? DayOfWeek;
         /// <summary>

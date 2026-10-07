@@ -122,6 +122,10 @@ export class Network extends pulumi.CustomResource {
      * VPN access settings keyed by VPN name for this network
      */
     declare public readonly vpnAccess: pulumi.Output<{[key: string]: outputs.org.NetworkVpnAccess} | undefined>;
+    /**
+     * SecurityZone this network belongs to. When set, the zone name is used as the security zone name on the SRX, and multiple networks can share the same zone. When omitted, the network `name` is used as the security zone name.
+     */
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a Network resource with the given unique name, arguments, and options.
@@ -151,6 +155,7 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["tenants"] = state?.tenants;
             resourceInputs["vlanId"] = state?.vlanId;
             resourceInputs["vpnAccess"] = state?.vpnAccess;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as NetworkArgs | undefined;
             if (args?.orgId === undefined && !opts.urn) {
@@ -174,6 +179,7 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["tenants"] = args?.tenants;
             resourceInputs["vlanId"] = args?.vlanId;
             resourceInputs["vpnAccess"] = args?.vpnAccess;
+            resourceInputs["zoneId"] = args?.zoneId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Network.__pulumiType, name, resourceInputs, opts);
@@ -244,6 +250,10 @@ export interface NetworkState {
      * VPN access settings keyed by VPN name for this network
      */
     vpnAccess?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworkVpnAccess>} | undefined>;
+    /**
+     * SecurityZone this network belongs to. When set, the zone name is used as the security zone name on the SRX, and multiple networks can share the same zone. When omitted, the network `name` is used as the security zone name.
+     */
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -310,4 +320,8 @@ export interface NetworkArgs {
      * VPN access settings keyed by VPN name for this network
      */
     vpnAccess?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworkVpnAccess>} | undefined>;
+    /**
+     * SecurityZone this network belongs to. When set, the zone name is used as the security zone name on the SRX, and multiple networks can share the same zone. When omitted, the network `name` is used as the security zone name.
+     */
+    zoneId?: pulumi.Input<string | undefined>;
 }

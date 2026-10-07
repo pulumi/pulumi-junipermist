@@ -14,9 +14,9 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class SettingSyntheticTestWanSpeedtest
     {
         /// <summary>
-        /// Whether scheduled WAN speedtests are enabled
+        /// Whether scheduled WAN speedtests are disabled. Defaults to `False` (enabled); set this to `True` to disable speedtests.
         /// </summary>
-        public readonly bool? Enabled;
+        public readonly bool? Disabled;
         /// <summary>
         /// Scheduled time of day for WAN speedtests
         /// </summary>
@@ -24,11 +24,11 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
         [OutputConstructor]
         private SettingSyntheticTestWanSpeedtest(
-            bool? enabled,
+            bool? disabled,
 
             string? timeOfDay)
         {
-            Enabled = enabled;
+            Disabled = disabled;
             TimeOfDay = timeOfDay;
         }
     }

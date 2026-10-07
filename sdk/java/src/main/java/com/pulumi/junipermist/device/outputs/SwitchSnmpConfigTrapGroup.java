@@ -28,7 +28,7 @@ public final class SwitchSnmpConfigTrapGroup {
      */
     private @Nullable List<String> targets;
     /**
-     * @return SNMP trap protocol version used by this group
+     * @return SNMP trap protocol version used by this group. enum: `all`, `v1`, `v2`.
      * 
      */
     private @Nullable String version;
@@ -56,7 +56,7 @@ public final class SwitchSnmpConfigTrapGroup {
         return this.targets == null ? List.of() : this.targets;
     }
     /**
-     * @return SNMP trap protocol version used by this group
+     * @return SNMP trap protocol version used by this group. enum: `all`, `v1`, `v2`.
      * 
      */
     public Optional<String> version() {

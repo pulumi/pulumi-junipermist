@@ -25,17 +25,17 @@ public final class ApRadioConfigBand5On24Radio {
      */
     private @Nullable Integer antGain;
     /**
-     * @return Beam pattern used by the 5 GHz radio antenna
+     * @return Beam pattern used by the 5 GHz radio antenna. enum: `narrow`, `medium`, `wide`.
      * 
      */
     private @Nullable String antennaBeamPattern;
     /**
-     * @return Radio chain mode for the 5 GHz radio
+     * @return Radio chain mode for the 5 GHz radio. enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`.
      * 
      */
     private @Nullable String antennaMode;
     /**
-     * @return Channel width configured for the 5 GHz radio
+     * @return Channel width configured for the 5 GHz radio. enum: `0`, `20`, `40`, `80`.
      * 
      */
     private @Nullable Integer bandwidth;
@@ -70,7 +70,7 @@ public final class ApRadioConfigBand5On24Radio {
      */
     private @Nullable Integer powerMin;
     /**
-     * @return 802.11 preamble mode used by the 5 GHz radio
+     * @return 802.11 preamble mode used by the 5 GHz radio. enum: `auto`, `long`, `short`.
      * 
      */
     private @Nullable String preamble;
@@ -91,21 +91,21 @@ public final class ApRadioConfigBand5On24Radio {
         return Optional.ofNullable(this.antGain);
     }
     /**
-     * @return Beam pattern used by the 5 GHz radio antenna
+     * @return Beam pattern used by the 5 GHz radio antenna. enum: `narrow`, `medium`, `wide`.
      * 
      */
     public Optional<String> antennaBeamPattern() {
         return Optional.ofNullable(this.antennaBeamPattern);
     }
     /**
-     * @return Radio chain mode for the 5 GHz radio
+     * @return Radio chain mode for the 5 GHz radio. enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`.
      * 
      */
     public Optional<String> antennaMode() {
         return Optional.ofNullable(this.antennaMode);
     }
     /**
-     * @return Channel width configured for the 5 GHz radio
+     * @return Channel width configured for the 5 GHz radio. enum: `0`, `20`, `40`, `80`.
      * 
      */
     public Optional<Integer> bandwidth() {
@@ -154,7 +154,7 @@ public final class ApRadioConfigBand5On24Radio {
         return Optional.ofNullable(this.powerMin);
     }
     /**
-     * @return 802.11 preamble mode used by the 5 GHz radio
+     * @return 802.11 preamble mode used by the 5 GHz radio. enum: `auto`, `long`, `short`.
      * 
      */
     public Optional<String> preamble() {

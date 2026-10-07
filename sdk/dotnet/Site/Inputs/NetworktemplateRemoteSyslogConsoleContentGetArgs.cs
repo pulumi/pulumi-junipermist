@@ -13,13 +13,13 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class NetworktemplateRemoteSyslogConsoleContentGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Syslog facility to match for this selector
+        /// Syslog facility to match for this selector. enum: `Any`, `Authorization`, `change-log`, `Config`, `conflict-log`, `Daemon`, `Dfc`, `External`, `Firewall`, `Ftp`, `interactive-commands`, `Kernel`, `Ntp`, `Pfe`, `Security`, `User`.
         /// </summary>
         [Input("facility")]
         public Input<string>? Facility { get; set; }
 
         /// <summary>
-        /// Syslog severity to match for this selector
+        /// Syslog severity to match for this selector. enum: `Alert`, `Any`, `Critical`, `Emergency`, `Error`, `Info`, `Notice`, `Warning`.
         /// </summary>
         [Input("severity")]
         public Input<string>? Severity { get; set; }

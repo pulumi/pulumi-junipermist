@@ -114,6 +114,12 @@ namespace Pulumi.JuniperMist.Device.Inputs
             set => _vpnAccess = value;
         }
 
+        /// <summary>
+        /// SecurityZone this network belongs to. When set, the zone name is used as the security zone name on the SRX, and multiple networks can share the same zone. When omitted, the network `Name` is used as the security zone name.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
+
         public GatewayNetworkArgs()
         {
         }

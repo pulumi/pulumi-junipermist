@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class NacPortalPortal
     {
         /// <summary>
-        /// Mode presented by the NAC guest portal for user authentication
+        /// Mode presented by the NAC guest portal for user authentication. enum: `External`, `Multi`, `None`.
         /// </summary>
         public readonly string? Auth;
         /// <summary>

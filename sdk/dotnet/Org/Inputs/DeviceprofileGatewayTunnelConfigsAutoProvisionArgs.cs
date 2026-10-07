@@ -31,7 +31,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<Inputs.DeviceprofileGatewayTunnelConfigsAutoProvisionPrimaryArgs>? Primary { get; set; }
 
         /// <summary>
-        /// Tunnel provider used for automatic endpoint provisioning
+        /// Tunnel provider used for automatic endpoint provisioning. enum: `jse-ipsec`, `zscaler-ipsec`.
         /// </summary>
         [Input("provider", required: true)]
         public Input<string> Provider { get; set; } = null!;

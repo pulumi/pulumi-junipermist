@@ -12,38 +12,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewayTunnelConfigsIpsecProposal {
     /**
-     * @return Integrity algorithm used by this IPsec proposal
+     * @return Integrity algorithm used by this IPsec proposal. enum: `md5`, `sha1`, `sha2`.
      * 
      */
     private @Nullable String authAlgo;
     /**
-     * @return Diffie-Hellman group used by this IPsec proposal
+     * @return Diffie-Hellman group used by this IPsec proposal. enum: `1`, `14`, `15`, `16`, `19`, `2`, `20`, `21`, `24`, `5`.
      * 
      */
     private @Nullable String dhGroup;
     /**
-     * @return Cipher algorithm used by this IPsec proposal
+     * @return Cipher algorithm used by this IPsec proposal. enum: `3des`, `aes128`, `aes256`, `aesGcm128`, `aesGcm256`.
      * 
      */
     private @Nullable String encAlgo;
 
     private GatewayTunnelConfigsIpsecProposal() {}
     /**
-     * @return Integrity algorithm used by this IPsec proposal
+     * @return Integrity algorithm used by this IPsec proposal. enum: `md5`, `sha1`, `sha2`.
      * 
      */
     public Optional<String> authAlgo() {
         return Optional.ofNullable(this.authAlgo);
     }
     /**
-     * @return Diffie-Hellman group used by this IPsec proposal
+     * @return Diffie-Hellman group used by this IPsec proposal. enum: `1`, `14`, `15`, `16`, `19`, `2`, `20`, `21`, `24`, `5`.
      * 
      */
     public Optional<String> dhGroup() {
         return Optional.ofNullable(this.dhGroup);
     }
     /**
-     * @return Cipher algorithm used by this IPsec proposal
+     * @return Cipher algorithm used by this IPsec proposal. enum: `3des`, `aes128`, `aes256`, `aesGcm128`, `aesGcm256`.
      * 
      */
     public Optional<String> encAlgo() {

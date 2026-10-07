@@ -122,7 +122,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<Outputs.WlanAppQos> AppQos { get; private set; } = null!;
 
         /// <summary>
-        /// Scope that determines where this WLAN is applied
+        /// Scope that determines where this WLAN is applied. enum: `Aps`, `Site`, `Wxtags`.
         /// </summary>
         [Output("applyTo")]
         public Output<string> ApplyTo { get; private set; } = null!;
@@ -140,7 +140,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<Outputs.WlanAuth?> Auth { get; private set; } = null!;
 
         /// <summary>
-        /// RADIUS authentication server selection behavior for this WLAN
+        /// RADIUS authentication server selection behavior for this WLAN. enum: `Ordered`, `Unordered`.
         /// </summary>
         [Output("authServerSelection")]
         public Output<string> AuthServerSelection { get; private set; } = null!;
@@ -389,7 +389,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<Outputs.WlanInjectDhcpOption82?> InjectDhcpOption82 { get; private set; } = null!;
 
         /// <summary>
-        /// Network interface or tunnel where this WLAN bridges client traffic
+        /// Network interface or tunnel where this WLAN bridges client traffic. enum: `All`, `Eth0`, `Eth1`, `Eth2`, `Eth3`, `Mxtunnel`, `SiteMxedge`, `Wxtunnel`.
         /// </summary>
         [Output("interface")]
         public Output<string> Interface { get; private set; } = null!;
@@ -545,7 +545,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<bool?> ReconnectClientsWhenRoamingMxcluster { get; private set; } = null!;
 
         /// <summary>
-        /// Fast roaming mode configured for this WLAN
+        /// Fast roaming mode configured for this WLAN. enum: `11r`, `NONE`, `OKC`.
         /// </summary>
         [Output("roamMode")]
         public Output<string?> RoamMode { get; private set; } = null!;
@@ -766,7 +766,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.WlanAppQosArgs>? AppQos { get; set; }
 
         /// <summary>
-        /// Scope that determines where this WLAN is applied
+        /// Scope that determines where this WLAN is applied. enum: `Aps`, `Site`, `Wxtags`.
         /// </summary>
         [Input("applyTo")]
         public Input<string>? ApplyTo { get; set; }
@@ -784,7 +784,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.WlanAuthArgs>? Auth { get; set; }
 
         /// <summary>
-        /// RADIUS authentication server selection behavior for this WLAN
+        /// RADIUS authentication server selection behavior for this WLAN. enum: `Ordered`, `Unordered`.
         /// </summary>
         [Input("authServerSelection")]
         public Input<string>? AuthServerSelection { get; set; }
@@ -1051,7 +1051,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.WlanInjectDhcpOption82Args>? InjectDhcpOption82 { get; set; }
 
         /// <summary>
-        /// Network interface or tunnel where this WLAN bridges client traffic
+        /// Network interface or tunnel where this WLAN bridges client traffic. enum: `All`, `Eth0`, `Eth1`, `Eth2`, `Eth3`, `Mxtunnel`, `SiteMxedge`, `Wxtunnel`.
         /// </summary>
         [Input("interface")]
         public Input<string>? Interface { get; set; }
@@ -1213,7 +1213,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<bool>? ReconnectClientsWhenRoamingMxcluster { get; set; }
 
         /// <summary>
-        /// Fast roaming mode configured for this WLAN
+        /// Fast roaming mode configured for this WLAN. enum: `11r`, `NONE`, `OKC`.
         /// </summary>
         [Input("roamMode")]
         public Input<string>? RoamMode { get; set; }
@@ -1407,7 +1407,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.WlanAppQosGetArgs>? AppQos { get; set; }
 
         /// <summary>
-        /// Scope that determines where this WLAN is applied
+        /// Scope that determines where this WLAN is applied. enum: `Aps`, `Site`, `Wxtags`.
         /// </summary>
         [Input("applyTo")]
         public Input<string>? ApplyTo { get; set; }
@@ -1425,7 +1425,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.WlanAuthGetArgs>? Auth { get; set; }
 
         /// <summary>
-        /// RADIUS authentication server selection behavior for this WLAN
+        /// RADIUS authentication server selection behavior for this WLAN. enum: `Ordered`, `Unordered`.
         /// </summary>
         [Input("authServerSelection")]
         public Input<string>? AuthServerSelection { get; set; }
@@ -1692,7 +1692,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.WlanInjectDhcpOption82GetArgs>? InjectDhcpOption82 { get; set; }
 
         /// <summary>
-        /// Network interface or tunnel where this WLAN bridges client traffic
+        /// Network interface or tunnel where this WLAN bridges client traffic. enum: `All`, `Eth0`, `Eth1`, `Eth2`, `Eth3`, `Mxtunnel`, `SiteMxedge`, `Wxtunnel`.
         /// </summary>
         [Input("interface")]
         public Input<string>? Interface { get; set; }
@@ -1884,7 +1884,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<bool>? ReconnectClientsWhenRoamingMxcluster { get; set; }
 
         /// <summary>
-        /// Fast roaming mode configured for this WLAN
+        /// Fast roaming mode configured for this WLAN. enum: `11r`, `NONE`, `OKC`.
         /// </summary>
         [Input("roamMode")]
         public Input<string>? RoamMode { get; set; }

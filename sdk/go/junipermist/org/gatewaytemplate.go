@@ -155,6 +155,8 @@ type Gatewaytemplate struct {
 	IdpProfiles GatewaytemplateIdpProfilesMapOutput `pulumi:"idpProfiles"`
 	// Gateway interface IP configuration defaults by network name
 	IpConfigs GatewaytemplateIpConfigsMapOutput `pulumi:"ipConfigs"`
+	// Multi-Node HA (MNHA) settings applied by this gateway template, SRX only
+	MnhaConfig GatewaytemplateMnhaConfigPtrOutput `pulumi:"mnhaConfig"`
 	// Display name of the gateway template
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Layer 3 networks configured by this gateway template
@@ -183,7 +185,7 @@ type Gatewaytemplate struct {
 	TunnelConfigs GatewaytemplateTunnelConfigsMapOutput `pulumi:"tunnelConfigs"`
 	// Provider-specific tunnel options defined by this gateway template
 	TunnelProviderOptions GatewaytemplateTunnelProviderOptionsPtrOutput `pulumi:"tunnelProviderOptions"`
-	// Gateway template deployment type
+	// Gateway template deployment type. enum: `spoke`, `standalone`.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// When a service policy denies a app_category, what message to show in user's browser
 	UrlFilteringDenyMsg pulumi.StringPtrOutput `pulumi:"urlFilteringDenyMsg"`
@@ -248,6 +250,8 @@ type gatewaytemplateState struct {
 	IdpProfiles map[string]GatewaytemplateIdpProfiles `pulumi:"idpProfiles"`
 	// Gateway interface IP configuration defaults by network name
 	IpConfigs map[string]GatewaytemplateIpConfigs `pulumi:"ipConfigs"`
+	// Multi-Node HA (MNHA) settings applied by this gateway template, SRX only
+	MnhaConfig *GatewaytemplateMnhaConfig `pulumi:"mnhaConfig"`
 	// Display name of the gateway template
 	Name *string `pulumi:"name"`
 	// Layer 3 networks configured by this gateway template
@@ -276,7 +280,7 @@ type gatewaytemplateState struct {
 	TunnelConfigs map[string]GatewaytemplateTunnelConfigs `pulumi:"tunnelConfigs"`
 	// Provider-specific tunnel options defined by this gateway template
 	TunnelProviderOptions *GatewaytemplateTunnelProviderOptions `pulumi:"tunnelProviderOptions"`
-	// Gateway template deployment type
+	// Gateway template deployment type. enum: `spoke`, `standalone`.
 	Type *string `pulumi:"type"`
 	// When a service policy denies a app_category, what message to show in user's browser
 	UrlFilteringDenyMsg *string `pulumi:"urlFilteringDenyMsg"`
@@ -309,6 +313,8 @@ type GatewaytemplateState struct {
 	IdpProfiles GatewaytemplateIdpProfilesMapInput
 	// Gateway interface IP configuration defaults by network name
 	IpConfigs GatewaytemplateIpConfigsMapInput
+	// Multi-Node HA (MNHA) settings applied by this gateway template, SRX only
+	MnhaConfig GatewaytemplateMnhaConfigPtrInput
 	// Display name of the gateway template
 	Name pulumi.StringPtrInput
 	// Layer 3 networks configured by this gateway template
@@ -337,7 +343,7 @@ type GatewaytemplateState struct {
 	TunnelConfigs GatewaytemplateTunnelConfigsMapInput
 	// Provider-specific tunnel options defined by this gateway template
 	TunnelProviderOptions GatewaytemplateTunnelProviderOptionsPtrInput
-	// Gateway template deployment type
+	// Gateway template deployment type. enum: `spoke`, `standalone`.
 	Type pulumi.StringPtrInput
 	// When a service policy denies a app_category, what message to show in user's browser
 	UrlFilteringDenyMsg pulumi.StringPtrInput
@@ -374,6 +380,8 @@ type gatewaytemplateArgs struct {
 	IdpProfiles map[string]GatewaytemplateIdpProfiles `pulumi:"idpProfiles"`
 	// Gateway interface IP configuration defaults by network name
 	IpConfigs map[string]GatewaytemplateIpConfigs `pulumi:"ipConfigs"`
+	// Multi-Node HA (MNHA) settings applied by this gateway template, SRX only
+	MnhaConfig *GatewaytemplateMnhaConfig `pulumi:"mnhaConfig"`
 	// Display name of the gateway template
 	Name *string `pulumi:"name"`
 	// Layer 3 networks configured by this gateway template
@@ -402,7 +410,7 @@ type gatewaytemplateArgs struct {
 	TunnelConfigs map[string]GatewaytemplateTunnelConfigs `pulumi:"tunnelConfigs"`
 	// Provider-specific tunnel options defined by this gateway template
 	TunnelProviderOptions *GatewaytemplateTunnelProviderOptions `pulumi:"tunnelProviderOptions"`
-	// Gateway template deployment type
+	// Gateway template deployment type. enum: `spoke`, `standalone`.
 	Type *string `pulumi:"type"`
 	// When a service policy denies a app_category, what message to show in user's browser
 	UrlFilteringDenyMsg *string `pulumi:"urlFilteringDenyMsg"`
@@ -436,6 +444,8 @@ type GatewaytemplateArgs struct {
 	IdpProfiles GatewaytemplateIdpProfilesMapInput
 	// Gateway interface IP configuration defaults by network name
 	IpConfigs GatewaytemplateIpConfigsMapInput
+	// Multi-Node HA (MNHA) settings applied by this gateway template, SRX only
+	MnhaConfig GatewaytemplateMnhaConfigPtrInput
 	// Display name of the gateway template
 	Name pulumi.StringPtrInput
 	// Layer 3 networks configured by this gateway template
@@ -464,7 +474,7 @@ type GatewaytemplateArgs struct {
 	TunnelConfigs GatewaytemplateTunnelConfigsMapInput
 	// Provider-specific tunnel options defined by this gateway template
 	TunnelProviderOptions GatewaytemplateTunnelProviderOptionsPtrInput
-	// Gateway template deployment type
+	// Gateway template deployment type. enum: `spoke`, `standalone`.
 	Type pulumi.StringPtrInput
 	// When a service policy denies a app_category, what message to show in user's browser
 	UrlFilteringDenyMsg pulumi.StringPtrInput
@@ -616,6 +626,11 @@ func (o GatewaytemplateOutput) IpConfigs() GatewaytemplateIpConfigsMapOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) GatewaytemplateIpConfigsMapOutput { return v.IpConfigs }).(GatewaytemplateIpConfigsMapOutput)
 }
 
+// Multi-Node HA (MNHA) settings applied by this gateway template, SRX only
+func (o GatewaytemplateOutput) MnhaConfig() GatewaytemplateMnhaConfigPtrOutput {
+	return o.ApplyT(func(v *Gatewaytemplate) GatewaytemplateMnhaConfigPtrOutput { return v.MnhaConfig }).(GatewaytemplateMnhaConfigPtrOutput)
+}
+
 // Display name of the gateway template
 func (o GatewaytemplateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -686,7 +701,7 @@ func (o GatewaytemplateOutput) TunnelProviderOptions() GatewaytemplateTunnelProv
 	return o.ApplyT(func(v *Gatewaytemplate) GatewaytemplateTunnelProviderOptionsPtrOutput { return v.TunnelProviderOptions }).(GatewaytemplateTunnelProviderOptionsPtrOutput)
 }
 
-// Gateway template deployment type
+// Gateway template deployment type. enum: `spoke`, `standalone`.
 func (o GatewaytemplateOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -30,7 +30,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly Outputs.RftemplateModelSpecificBand24? Band24;
         /// <summary>
-        /// Model-specific radio usage mode for the 2.4 GHz-capable radio
+        /// Model-specific radio usage mode for the 2.4 GHz-capable radio. enum: `24`, `5`, `6`, `Auto`.
         /// </summary>
         public readonly string? Band24Usage;
         /// <summary>

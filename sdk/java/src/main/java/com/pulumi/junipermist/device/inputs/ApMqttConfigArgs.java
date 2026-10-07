@@ -48,14 +48,14 @@ public final class ApMqttConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * MQTT broker transport protocol
+     * MQTT broker transport protocol. enum: `ssl`, `tcp`.
      * 
      */
     @Import(name="brokerProto")
     private @Nullable Output<String> brokerProto;
 
     /**
-     * @return MQTT broker transport protocol
+     * @return MQTT broker transport protocol. enum: `ssl`, `tcp`.
      * 
      */
     public Optional<Output<String>> brokerProto() {
@@ -93,14 +93,14 @@ public final class ApMqttConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Payload format for published messages
+     * Payload format for published messages. enum: `json`, `raw`.
      * 
      */
     @Import(name="format")
     private @Nullable Output<String> format;
 
     /**
-     * @return Payload format for published messages
+     * @return Payload format for published messages. enum: `json`, `raw`.
      * 
      */
     public Optional<Output<String>> format() {
@@ -211,7 +211,7 @@ public final class ApMqttConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param brokerProto MQTT broker transport protocol
+         * @param brokerProto MQTT broker transport protocol. enum: `ssl`, `tcp`.
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class ApMqttConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param brokerProto MQTT broker transport protocol
+         * @param brokerProto MQTT broker transport protocol. enum: `ssl`, `tcp`.
          * 
          * @return builder
          * 
@@ -274,7 +274,7 @@ public final class ApMqttConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param format Payload format for published messages
+         * @param format Payload format for published messages. enum: `json`, `raw`.
          * 
          * @return builder
          * 
@@ -285,7 +285,7 @@ public final class ApMqttConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param format Payload format for published messages
+         * @param format Payload format for published messages. enum: `json`, `raw`.
          * 
          * @return builder
          * 

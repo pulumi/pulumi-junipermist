@@ -26,7 +26,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.SwitchRadiusConfigAcctServer> AcctServers;
         /// <summary>
-        /// Selection strategy for RADIUS authentication servers
+        /// Selection strategy for RADIUS authentication servers. enum: `Ordered`, `Unordered`.
         /// </summary>
         public readonly string? AuthServerSelection;
         /// <summary>

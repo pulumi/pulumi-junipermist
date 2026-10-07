@@ -38,12 +38,12 @@ public final class GatewaytemplateIpConfigs {
      */
     private @Nullable List<String> secondaryIps;
     /**
-     * @return IPv4 address assignment mode for this gateway network interface
+     * @return IPv4 address assignment mode for this gateway network interface. enum: `dhcp`, `static`.
      * 
      */
     private @Nullable String type;
     /**
-     * @return IPv6 address assignment mode for this gateway network interface
+     * @return IPv6 address assignment mode for this gateway network interface. enum: `autoconf`, `dhcp`, `disabled`, `static`.
      * 
      */
     private @Nullable String type6;
@@ -85,14 +85,14 @@ public final class GatewaytemplateIpConfigs {
         return this.secondaryIps == null ? List.of() : this.secondaryIps;
     }
     /**
-     * @return IPv4 address assignment mode for this gateway network interface
+     * @return IPv4 address assignment mode for this gateway network interface. enum: `dhcp`, `static`.
      * 
      */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return IPv6 address assignment mode for this gateway network interface
+     * @return IPv6 address assignment mode for this gateway network interface. enum: `autoconf`, `dhcp`, `disabled`, `static`.
      * 
      */
     public Optional<String> type6() {

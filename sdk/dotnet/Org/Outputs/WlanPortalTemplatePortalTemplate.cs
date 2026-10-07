@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? AccessCodeAlternateEmail;
         /// <summary>
-        /// Text and content alignment used by the guest portal template
+        /// Text and content alignment used by the guest portal template. enum: `Center`, `Left`, `Right`.
         /// </summary>
         public readonly string? Alignment;
         /// <summary>

@@ -30,7 +30,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? MatchSsid;
         /// <summary>
-        /// Source used to populate NAS-IP-Address and NAS-IPv6-Address attributes
+        /// Source used to populate NAS-IP-Address and NAS-IPv6-Address attributes. enum: `Any`, `Oob`, `Oob6`, `Tunnel`, `Tunnel6`.
         /// </summary>
         public readonly string? NasIpSource;
         /// <summary>
@@ -38,11 +38,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ProxyHosts;
         /// <summary>
-        /// RADIUS server selection strategy for RadSec failover
+        /// RADIUS server selection strategy for RadSec failover. enum: `Ordered`, `Unordered`.
         /// </summary>
         public readonly string? ServerSelection;
         /// <summary>
-        /// Connection source interface or address used when reaching RADIUS servers
+        /// Connection source interface or address used when reaching RADIUS servers. enum: `Any`, `Oob`, `Oob6`, `Tunnel`, `Tunnel6`.
         /// </summary>
         public readonly string? SrcIpSource;
 

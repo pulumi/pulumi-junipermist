@@ -129,13 +129,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// IPv4 DHCP mode for this network
+        /// IPv4 DHCP mode for this network. enum: `Local`, `None`, `Relay`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// IPv6 DHCP mode for this network
+        /// IPv6 DHCP mode for this network. enum: `Local`, `None`, `Relay`.
         /// </summary>
         [Input("type6")]
         public Input<string>? Type6 { get; set; }

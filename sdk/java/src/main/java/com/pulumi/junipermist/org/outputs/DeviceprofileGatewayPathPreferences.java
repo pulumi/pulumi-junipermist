@@ -19,7 +19,7 @@ public final class DeviceprofileGatewayPathPreferences {
      */
     private @Nullable List<DeviceprofileGatewayPathPreferencesPath> paths;
     /**
-     * @return Selection strategy used to evaluate the candidate paths
+     * @return Selection strategy used to evaluate the candidate paths. enum: `ecmp`, `ordered`, `weighted`.
      * 
      */
     private @Nullable String strategy;
@@ -33,7 +33,7 @@ public final class DeviceprofileGatewayPathPreferences {
         return this.paths == null ? List.of() : this.paths;
     }
     /**
-     * @return Selection strategy used to evaluate the candidate paths
+     * @return Selection strategy used to evaluate the candidate paths. enum: `ecmp`, `ordered`, `weighted`.
      * 
      */
     public Optional<String> strategy() {

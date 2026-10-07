@@ -90,14 +90,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:org/idpprofile:Idpprofile")
 public class Idpprofile extends com.pulumi.resources.CustomResource {
     /**
-     * Built-in IDP baseline profile inherited before applying overwrites
+     * Built-in IDP baseline profile inherited before applying overwrites. enum: `critical`, `standard`, `strict`.
      * 
      */
     @Export(name="baseProfile", refs={String.class}, tree="[0]")
     private Output<String> baseProfile;
 
     /**
-     * @return Built-in IDP baseline profile inherited before applying overwrites
+     * @return Built-in IDP baseline profile inherited before applying overwrites. enum: `critical`, `standard`, `strict`.
      * 
      */
     public Output<String> baseProfile() {

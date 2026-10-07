@@ -148,14 +148,14 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * If `wanType`==`dsl`. DSL technology used by the WAN port
+     * If `wanType`==`dsl`. DSL technology used by the WAN port. enum: `adsl`, `vdsl`.
      * 
      */
     @Import(name="dslType")
     private @Nullable Output<String> dslType;
 
     /**
-     * @return If `wanType`==`dsl`. DSL technology used by the WAN port
+     * @return If `wanType`==`dsl`. DSL technology used by the WAN port. enum: `adsl`, `vdsl`.
      * 
      */
     public Optional<Output<String>> dslType() {
@@ -193,14 +193,14 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Ethernet duplex mode configured on the port
+     * Ethernet duplex mode configured on the port. enum: `auto`, `full`, `half`.
      * 
      */
     @Import(name="duplex")
     private @Nullable Output<String> duplex;
 
     /**
-     * @return Ethernet duplex mode configured on the port
+     * @return Ethernet duplex mode configured on the port. enum: `auto`, `full`, `half`.
      * 
      */
     public Optional<Output<String>> duplex() {
@@ -238,14 +238,14 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * If `wanType`==`lte`. Authentication method used by the LTE uplink
+     * If `wanType`==`lte`. Authentication method used by the LTE uplink. enum: `chap`, `none`, `pap`.
      * 
      */
     @Import(name="lteAuth")
     private @Nullable Output<String> lteAuth;
 
     /**
-     * @return If `wanType`==`lte`. Authentication method used by the LTE uplink
+     * @return If `wanType`==`lte`. Authentication method used by the LTE uplink. enum: `chap`, `none`, `pap`.
      * 
      */
     public Optional<Output<String>> lteAuth() {
@@ -538,14 +538,14 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Logical usage assigned to the port
+     * Logical usage assigned to the port. enum: `haControl`, `haData`, `lan`, `wan`.
      * 
      */
     @Import(name="usage", required=true)
     private Output<String> usage;
 
     /**
-     * @return Logical usage assigned to the port
+     * @return Logical usage assigned to the port. enum: `haControl`, `haData`, `lan`, `wan`.
      * 
      */
     public Output<String> usage() {
@@ -583,14 +583,14 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Only when `wanType`==`broadband`. ARP policer profile applied to the WAN port
+     * Only when `wanType`==`broadband`. ARP policer profile applied to the WAN port. enum: `default`, `max`, `recommended`.
      * 
      */
     @Import(name="wanArpPolicer")
     private @Nullable Output<String> wanArpPolicer;
 
     /**
-     * @return Only when `wanType`==`broadband`. ARP policer profile applied to the WAN port
+     * @return Only when `wanType`==`broadband`. ARP policer profile applied to the WAN port. enum: `default`, `max`, `recommended`.
      * 
      */
     public Optional<Output<String>> wanArpPolicer() {
@@ -703,14 +703,14 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Controls whether Marvis or the scheduler can run speed tests on this WAN port
+     * Controls whether Marvis or the scheduler can run speed tests on this WAN port. enum: `auto`, `enabled`, `disabled`.
      * 
      */
     @Import(name="wanSpeedtestMode")
     private @Nullable Output<String> wanSpeedtestMode;
 
     /**
-     * @return Controls whether Marvis or the scheduler can run speed tests on this WAN port
+     * @return Controls whether Marvis or the scheduler can run speed tests on this WAN port. enum: `auto`, `enabled`, `disabled`.
      * 
      */
     public Optional<Output<String>> wanSpeedtestMode() {
@@ -718,14 +718,14 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Only if `usage`==`wan`. WAN uplink type configured on the port
+     * Only if `usage`==`wan`. WAN uplink type configured on the port. enum: `broadband`, `dsl`, `lte`.
      * 
      */
     @Import(name="wanType")
     private @Nullable Output<String> wanType;
 
     /**
-     * @return Only if `usage`==`wan`. WAN uplink type configured on the port
+     * @return Only if `usage`==`wan`. WAN uplink type configured on the port. enum: `broadband`, `dsl`, `lte`.
      * 
      */
     public Optional<Output<String>> wanType() {
@@ -971,7 +971,7 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param dslType If `wanType`==`dsl`. DSL technology used by the WAN port
+         * @param dslType If `wanType`==`dsl`. DSL technology used by the WAN port. enum: `adsl`, `vdsl`.
          * 
          * @return builder
          * 
@@ -982,7 +982,7 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param dslType If `wanType`==`dsl`. DSL technology used by the WAN port
+         * @param dslType If `wanType`==`dsl`. DSL technology used by the WAN port. enum: `adsl`, `vdsl`.
          * 
          * @return builder
          * 
@@ -1034,7 +1034,7 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param duplex Ethernet duplex mode configured on the port
+         * @param duplex Ethernet duplex mode configured on the port. enum: `auto`, `full`, `half`.
          * 
          * @return builder
          * 
@@ -1045,7 +1045,7 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param duplex Ethernet duplex mode configured on the port
+         * @param duplex Ethernet duplex mode configured on the port. enum: `auto`, `full`, `half`.
          * 
          * @return builder
          * 
@@ -1097,7 +1097,7 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param lteAuth If `wanType`==`lte`. Authentication method used by the LTE uplink
+         * @param lteAuth If `wanType`==`lte`. Authentication method used by the LTE uplink. enum: `chap`, `none`, `pap`.
          * 
          * @return builder
          * 
@@ -1108,7 +1108,7 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param lteAuth If `wanType`==`lte`. Authentication method used by the LTE uplink
+         * @param lteAuth If `wanType`==`lte`. Authentication method used by the LTE uplink. enum: `chap`, `none`, `pap`.
          * 
          * @return builder
          * 
@@ -1527,7 +1527,7 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param usage Logical usage assigned to the port
+         * @param usage Logical usage assigned to the port. enum: `haControl`, `haData`, `lan`, `wan`.
          * 
          * @return builder
          * 
@@ -1538,7 +1538,7 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param usage Logical usage assigned to the port
+         * @param usage Logical usage assigned to the port. enum: `haControl`, `haData`, `lan`, `wan`.
          * 
          * @return builder
          * 
@@ -1590,7 +1590,7 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param wanArpPolicer Only when `wanType`==`broadband`. ARP policer profile applied to the WAN port
+         * @param wanArpPolicer Only when `wanType`==`broadband`. ARP policer profile applied to the WAN port. enum: `default`, `max`, `recommended`.
          * 
          * @return builder
          * 
@@ -1601,7 +1601,7 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param wanArpPolicer Only when `wanType`==`broadband`. ARP policer profile applied to the WAN port
+         * @param wanArpPolicer Only when `wanType`==`broadband`. ARP policer profile applied to the WAN port. enum: `default`, `max`, `recommended`.
          * 
          * @return builder
          * 
@@ -1768,7 +1768,7 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param wanSpeedtestMode Controls whether Marvis or the scheduler can run speed tests on this WAN port
+         * @param wanSpeedtestMode Controls whether Marvis or the scheduler can run speed tests on this WAN port. enum: `auto`, `enabled`, `disabled`.
          * 
          * @return builder
          * 
@@ -1779,7 +1779,7 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param wanSpeedtestMode Controls whether Marvis or the scheduler can run speed tests on this WAN port
+         * @param wanSpeedtestMode Controls whether Marvis or the scheduler can run speed tests on this WAN port. enum: `auto`, `enabled`, `disabled`.
          * 
          * @return builder
          * 
@@ -1789,7 +1789,7 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param wanType Only if `usage`==`wan`. WAN uplink type configured on the port
+         * @param wanType Only if `usage`==`wan`. WAN uplink type configured on the port. enum: `broadband`, `dsl`, `lte`.
          * 
          * @return builder
          * 
@@ -1800,7 +1800,7 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param wanType Only if `usage`==`wan`. WAN uplink type configured on the port
+         * @param wanType Only if `usage`==`wan`. WAN uplink type configured on the port. enum: `broadband`, `dsl`, `lte`.
          * 
          * @return builder
          * 

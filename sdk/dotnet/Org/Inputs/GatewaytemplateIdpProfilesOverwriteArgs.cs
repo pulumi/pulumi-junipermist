@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class GatewaytemplateIdpProfilesOverwriteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enforcement action applied when this overwrite rule matches
+        /// Enforcement action applied when this overwrite rule matches. enum: `Alert`, `Close`, `Drop`.
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }

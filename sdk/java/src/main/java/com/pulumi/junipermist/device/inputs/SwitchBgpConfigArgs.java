@@ -66,14 +66,14 @@ public final class SwitchBgpConfigArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Default BGP hold time for switch BGP sessions
+     * Default BGP hold time for switch BGP sessions.
      * 
      */
     @Import(name="holdTime")
     private @Nullable Output<Integer> holdTime;
 
     /**
-     * @return Default BGP hold time for switch BGP sessions
+     * @return Default BGP hold time for switch BGP sessions.
      * 
      */
     public Optional<Output<Integer>> holdTime() {
@@ -141,14 +141,14 @@ public final class SwitchBgpConfigArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * BGP session type for this switch BGP configuration
+     * BGP session type for this switch BGP configuration. enum: `external`, `internal`.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return BGP session type for this switch BGP configuration
+     * @return BGP session type for this switch BGP configuration. enum: `external`, `internal`.
      * 
      */
     public Output<String> type() {
@@ -251,7 +251,7 @@ public final class SwitchBgpConfigArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param holdTime Default BGP hold time for switch BGP sessions
+         * @param holdTime Default BGP hold time for switch BGP sessions.
          * 
          * @return builder
          * 
@@ -262,7 +262,7 @@ public final class SwitchBgpConfigArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param holdTime Default BGP hold time for switch BGP sessions
+         * @param holdTime Default BGP hold time for switch BGP sessions.
          * 
          * @return builder
          * 
@@ -366,7 +366,7 @@ public final class SwitchBgpConfigArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type BGP session type for this switch BGP configuration
+         * @param type BGP session type for this switch BGP configuration. enum: `external`, `internal`.
          * 
          * @return builder
          * 
@@ -377,7 +377,7 @@ public final class SwitchBgpConfigArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type BGP session type for this switch BGP configuration
+         * @param type BGP session type for this switch BGP configuration. enum: `external`, `internal`.
          * 
          * @return builder
          * 

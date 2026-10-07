@@ -141,14 +141,14 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Link duplex mode for this local port configuration
+     * Link duplex mode for this local port configuration. enum: `auto`, `full`, `half`.
      * 
      */
     @Import(name="duplex")
     private @Nullable Output<String> duplex;
 
     /**
-     * @return Link duplex mode for this local port configuration
+     * @return Link duplex mode for this local port configuration. enum: `auto`, `full`, `half`.
      * 
      */
     public Optional<Output<String>> duplex() {
@@ -261,14 +261,14 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Only if `enableMacAuth`==`true`, MAC authentication protocol to use
+     * Only if `enableMacAuth`==`true`, MAC authentication protocol to use. enum: `eap-md5`, `eap-peap`, `pap`.
      * 
      */
     @Import(name="macAuthProtocol")
     private @Nullable Output<String> macAuthProtocol;
 
     /**
-     * @return Only if `enableMacAuth`==`true`, MAC authentication protocol to use
+     * @return Only if `enableMacAuth`==`true`, MAC authentication protocol to use. enum: `eap-md5`, `eap-peap`, `pap`.
      * 
      */
     public Optional<Output<String>> macAuthProtocol() {
@@ -291,14 +291,14 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Switching mode for this local port configuration
+     * Switching mode for this local port configuration. enum: `access`, `inet`, `trunk`.
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return Switching mode for this local port configuration
+     * @return Switching mode for this local port configuration. enum: `access`, `inet`, `trunk`.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -381,14 +381,14 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * 802.1X authentication mode for this local port configuration
+     * 802.1X authentication mode for this local port configuration. enum: `dot1x`.
      * 
      */
     @Import(name="portAuth")
     private @Nullable Output<String> portAuth;
 
     /**
-     * @return 802.1X authentication mode for this local port configuration
+     * @return 802.1X authentication mode for this local port configuration. enum: `dot1x`.
      * 
      */
     public Optional<Output<String>> portAuth() {
@@ -456,14 +456,14 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Link speed for this local port configuration
+     * Link speed for this local port configuration. enum: `10m`, `100m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`, `auto`.
      * 
      */
     @Import(name="speed")
     private @Nullable Output<String> speed;
 
     /**
-     * @return Link speed for this local port configuration
+     * @return Link speed for this local port configuration. enum: `10m`, `100m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`, `auto`.
      * 
      */
     public Optional<Output<String>> speed() {
@@ -804,7 +804,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param duplex Link duplex mode for this local port configuration
+         * @param duplex Link duplex mode for this local port configuration. enum: `auto`, `full`, `half`.
          * 
          * @return builder
          * 
@@ -815,7 +815,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param duplex Link duplex mode for this local port configuration
+         * @param duplex Link duplex mode for this local port configuration. enum: `auto`, `full`, `half`.
          * 
          * @return builder
          * 
@@ -982,7 +982,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param macAuthProtocol Only if `enableMacAuth`==`true`, MAC authentication protocol to use
+         * @param macAuthProtocol Only if `enableMacAuth`==`true`, MAC authentication protocol to use. enum: `eap-md5`, `eap-peap`, `pap`.
          * 
          * @return builder
          * 
@@ -993,7 +993,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param macAuthProtocol Only if `enableMacAuth`==`true`, MAC authentication protocol to use
+         * @param macAuthProtocol Only if `enableMacAuth`==`true`, MAC authentication protocol to use. enum: `eap-md5`, `eap-peap`, `pap`.
          * 
          * @return builder
          * 
@@ -1024,7 +1024,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param mode Switching mode for this local port configuration
+         * @param mode Switching mode for this local port configuration. enum: `access`, `inet`, `trunk`.
          * 
          * @return builder
          * 
@@ -1035,7 +1035,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param mode Switching mode for this local port configuration
+         * @param mode Switching mode for this local port configuration. enum: `access`, `inet`, `trunk`.
          * 
          * @return builder
          * 
@@ -1160,7 +1160,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param portAuth 802.1X authentication mode for this local port configuration
+         * @param portAuth 802.1X authentication mode for this local port configuration. enum: `dot1x`.
          * 
          * @return builder
          * 
@@ -1171,7 +1171,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param portAuth 802.1X authentication mode for this local port configuration
+         * @param portAuth 802.1X authentication mode for this local port configuration. enum: `dot1x`.
          * 
          * @return builder
          * 
@@ -1265,7 +1265,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param speed Link speed for this local port configuration
+         * @param speed Link speed for this local port configuration. enum: `10m`, `100m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`, `auto`.
          * 
          * @return builder
          * 
@@ -1276,7 +1276,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param speed Link speed for this local port configuration
+         * @param speed Link speed for this local port configuration. enum: `10m`, `100m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`, `auto`.
          * 
          * @return builder
          * 

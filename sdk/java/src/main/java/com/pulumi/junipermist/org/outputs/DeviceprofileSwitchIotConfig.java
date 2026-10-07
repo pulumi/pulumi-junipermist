@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DeviceprofileSwitchIotConfig {
     /**
-     * @return Alarm severity class raised for input-triggered switch IOT port events
+     * @return Alarm severity class raised for input-triggered switch IOT port events. enum: `minor`, `major`.
      * 
      */
     private @Nullable String alarmClass;
@@ -23,7 +23,7 @@ public final class DeviceprofileSwitchIotConfig {
      */
     private @Nullable Boolean enabled;
     /**
-     * @return Only for `OUT` ports. Input port that triggers this output port
+     * @return Only for `OUT` ports. Input port that triggers this output port. enum: `IN0`, `IN1`.
      * 
      */
     private @Nullable String inputSrc;
@@ -35,7 +35,7 @@ public final class DeviceprofileSwitchIotConfig {
 
     private DeviceprofileSwitchIotConfig() {}
     /**
-     * @return Alarm severity class raised for input-triggered switch IOT port events
+     * @return Alarm severity class raised for input-triggered switch IOT port events. enum: `minor`, `major`.
      * 
      */
     public Optional<String> alarmClass() {
@@ -49,7 +49,7 @@ public final class DeviceprofileSwitchIotConfig {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Only for `OUT` ports. Input port that triggers this output port
+     * @return Only for `OUT` ports. Input port that triggers this output port. enum: `IN0`, `IN1`.
      * 
      */
     public Optional<String> inputSrc() {

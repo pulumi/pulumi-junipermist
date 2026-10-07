@@ -65,7 +65,7 @@ namespace Pulumi.JuniperMist.Org
     public partial class Webhook : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Default action applied when none of the `Rules` match the incoming event
+        /// Default action applied when none of the `Rules` match the incoming event. enum: `Permit`, `Block`.
         /// </summary>
         [Output("defaultAction")]
         public Output<string?> DefaultAction { get; private set; } = null!;
@@ -101,7 +101,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string?> Oauth2ClientSecret { get; private set; } = null!;
 
         /// <summary>
-        /// OAuth2 grant type used when `Type`==`Oauth2`
+        /// OAuth2 grant type used when `Type`==`Oauth2`. enum: `ClientCredentials`, `Password`.
         /// </summary>
         [Output("oauth2GrantType")]
         public Output<string?> Oauth2GrantType { get; private set; } = null!;
@@ -167,7 +167,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<ImmutableArray<string>> Topics { get; private set; } = null!;
 
         /// <summary>
-        /// Delivery mechanism used by this webhook
+        /// Delivery mechanism used by this webhook. enum: `aws-sns`, `google-pubsub`, `http-post`, `Oauth2`, `Splunk`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -239,7 +239,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class WebhookArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Default action applied when none of the `Rules` match the incoming event
+        /// Default action applied when none of the `Rules` match the incoming event. enum: `Permit`, `Block`.
         /// </summary>
         [Input("defaultAction")]
         public Input<string>? DefaultAction { get; set; }
@@ -291,7 +291,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// OAuth2 grant type used when `Type`==`Oauth2`
+        /// OAuth2 grant type used when `Type`==`Oauth2`. enum: `ClientCredentials`, `Password`.
         /// </summary>
         [Input("oauth2GrantType")]
         public Input<string>? Oauth2GrantType { get; set; }
@@ -405,7 +405,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Delivery mechanism used by this webhook
+        /// Delivery mechanism used by this webhook. enum: `aws-sns`, `google-pubsub`, `http-post`, `Oauth2`, `Splunk`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -431,7 +431,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class WebhookState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Default action applied when none of the `Rules` match the incoming event
+        /// Default action applied when none of the `Rules` match the incoming event. enum: `Permit`, `Block`.
         /// </summary>
         [Input("defaultAction")]
         public Input<string>? DefaultAction { get; set; }
@@ -483,7 +483,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// OAuth2 grant type used when `Type`==`Oauth2`
+        /// OAuth2 grant type used when `Type`==`Oauth2`. enum: `ClientCredentials`, `Password`.
         /// </summary>
         [Input("oauth2GrantType")]
         public Input<string>? Oauth2GrantType { get; set; }
@@ -597,7 +597,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Delivery mechanism used by this webhook
+        /// Delivery mechanism used by this webhook. enum: `aws-sns`, `google-pubsub`, `http-post`, `Oauth2`, `Splunk`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

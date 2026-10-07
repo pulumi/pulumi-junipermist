@@ -233,53 +233,58 @@ class EvpnTopology(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi_mist as mist
+        import pulumi_juniper_mist as junipermist
 
-        evpn_one = mist.SiteSiteEvpnTopology("evpn_one",
-            site_id=terraform_test.id,
-            name=evpn_one,
+        evpn_topology_switches = junipermist.org.Inventory("evpn_topology_switches",
+            org_id="c0c92f93-d702-4cb7-a661-aaca08cfcf74",
+            inventory={
+                "HY5BD8EVMSRQRCV": {
+                    "site_id": "87e30472-720a-42c5-acd9-ac95213d08b3",
+                },
+                "P9ZRN52RXQEQNH5": {
+                    "site_id": "87e30472-720a-42c5-acd9-ac95213d08b3",
+                },
+                "HNCNY3DWSAKJFPB": {
+                    "site_id": "87e30472-720a-42c5-acd9-ac95213d08b3",
+                },
+                "GSK46S5XKH657DG": {
+                    "site_id": "87e30472-720a-42c5-acd9-ac95213d08b3",
+                },
+            })
+        evpn_one = junipermist.site.EvpnTopology("evpn_one",
+            site_id="87e30472-720a-42c5-acd9-ac95213d08b3",
+            name="evpn_one",
             evpn_options={
-                routedAt: core,
-                overlay: {
-                    as: 65000,
+                "routed_at": "core",
+                "overlay": {
+                    "as_": 65000,
                 },
-                coreAsBorder: True,
-                autoLoopbackSubnet: 172.16.192.0/24,
-                autoLoopbackSubnet6: fd33:ab00:2::/64,
-                perVlanVgaV4Mac: False,
-                underlay: {
-                    asBase: 65001,
-                    useIpv6: False,
-                    subnet: 10.255.240.0/20,
+                "core_as_border": True,
+                "auto_loopback_subnet": "172.16.192.0/24",
+                "auto_loopback_subnet6": "fd33:ab00:2::/64",
+                "per_vlan_vga_v4_mac": False,
+                "underlay": {
+                    "as_base": 65001,
+                    "use_ipv6": False,
+                    "subnet": "10.255.240.0/20",
                 },
-                autoRouterIdSubnet: 172.16.254.0/23,
+                "auto_router_id_subnet": "172.16.254.0/23",
             },
-            switches=[
-                {
-                    mac: 020004000001,
-                    role: core,
+            switches={
+                "0200030001fe": {
+                    "role": "core",
                 },
-                {
-                    mac: 02000400002,
-                    role: core,
+                "0200030001ff": {
+                    "role": "core",
                 },
-                {
-                    mac: 02000400003,
-                    role: distribution,
+                "020003000200": {
+                    "role": "access",
                 },
-                {
-                    mac: 02000400004,
-                    role: distribution,
+                "020003000201": {
+                    "role": "access",
                 },
-                {
-                    mac: 02000400005,
-                    role: access,
-                },
-                {
-                    mac: 02000400006,
-                    role: access,
-                },
-            ])
+            },
+            opts = pulumi.ResourceOptions(depends_on=[evpn_topology_switches]))
         ```
 
         ## Import
@@ -317,53 +322,58 @@ class EvpnTopology(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi_mist as mist
+        import pulumi_juniper_mist as junipermist
 
-        evpn_one = mist.SiteSiteEvpnTopology("evpn_one",
-            site_id=terraform_test.id,
-            name=evpn_one,
+        evpn_topology_switches = junipermist.org.Inventory("evpn_topology_switches",
+            org_id="c0c92f93-d702-4cb7-a661-aaca08cfcf74",
+            inventory={
+                "HY5BD8EVMSRQRCV": {
+                    "site_id": "87e30472-720a-42c5-acd9-ac95213d08b3",
+                },
+                "P9ZRN52RXQEQNH5": {
+                    "site_id": "87e30472-720a-42c5-acd9-ac95213d08b3",
+                },
+                "HNCNY3DWSAKJFPB": {
+                    "site_id": "87e30472-720a-42c5-acd9-ac95213d08b3",
+                },
+                "GSK46S5XKH657DG": {
+                    "site_id": "87e30472-720a-42c5-acd9-ac95213d08b3",
+                },
+            })
+        evpn_one = junipermist.site.EvpnTopology("evpn_one",
+            site_id="87e30472-720a-42c5-acd9-ac95213d08b3",
+            name="evpn_one",
             evpn_options={
-                routedAt: core,
-                overlay: {
-                    as: 65000,
+                "routed_at": "core",
+                "overlay": {
+                    "as_": 65000,
                 },
-                coreAsBorder: True,
-                autoLoopbackSubnet: 172.16.192.0/24,
-                autoLoopbackSubnet6: fd33:ab00:2::/64,
-                perVlanVgaV4Mac: False,
-                underlay: {
-                    asBase: 65001,
-                    useIpv6: False,
-                    subnet: 10.255.240.0/20,
+                "core_as_border": True,
+                "auto_loopback_subnet": "172.16.192.0/24",
+                "auto_loopback_subnet6": "fd33:ab00:2::/64",
+                "per_vlan_vga_v4_mac": False,
+                "underlay": {
+                    "as_base": 65001,
+                    "use_ipv6": False,
+                    "subnet": "10.255.240.0/20",
                 },
-                autoRouterIdSubnet: 172.16.254.0/23,
+                "auto_router_id_subnet": "172.16.254.0/23",
             },
-            switches=[
-                {
-                    mac: 020004000001,
-                    role: core,
+            switches={
+                "0200030001fe": {
+                    "role": "core",
                 },
-                {
-                    mac: 02000400002,
-                    role: core,
+                "0200030001ff": {
+                    "role": "core",
                 },
-                {
-                    mac: 02000400003,
-                    role: distribution,
+                "020003000200": {
+                    "role": "access",
                 },
-                {
-                    mac: 02000400004,
-                    role: distribution,
+                "020003000201": {
+                    "role": "access",
                 },
-                {
-                    mac: 02000400005,
-                    role: access,
-                },
-                {
-                    mac: 02000400006,
-                    role: access,
-                },
-            ])
+            },
+            opts = pulumi.ResourceOptions(depends_on=[evpn_topology_switches]))
         ```
 
         ## Import

@@ -21,14 +21,14 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
     public static final WebhookArgs Empty = new WebhookArgs();
 
     /**
-     * Default action applied when none of the `rules` match the incoming event
+     * Default action applied when none of the `rules` match the incoming event. enum: `permit`, `block`.
      * 
      */
     @Import(name="defaultAction")
     private @Nullable Output<String> defaultAction;
 
     /**
-     * @return Default action applied when none of the `rules` match the incoming event
+     * @return Default action applied when none of the `rules` match the incoming event. enum: `permit`, `block`.
      * 
      */
     public Optional<Output<String>> defaultAction() {
@@ -111,14 +111,14 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * OAuth2 grant type used when `type`==`oauth2`
+     * OAuth2 grant type used when `type`==`oauth2`. enum: `clientCredentials`, `password`.
      * 
      */
     @Import(name="oauth2GrantType")
     private @Nullable Output<String> oauth2GrantType;
 
     /**
-     * @return OAuth2 grant type used when `type`==`oauth2`
+     * @return OAuth2 grant type used when `type`==`oauth2`. enum: `clientCredentials`, `password`.
      * 
      */
     public Optional<Output<String>> oauth2GrantType() {
@@ -276,14 +276,14 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Delivery mechanism used by this webhook
+     * Delivery mechanism used by this webhook. enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Delivery mechanism used by this webhook
+     * @return Delivery mechanism used by this webhook. enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -364,7 +364,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultAction Default action applied when none of the `rules` match the incoming event
+         * @param defaultAction Default action applied when none of the `rules` match the incoming event. enum: `permit`, `block`.
          * 
          * @return builder
          * 
@@ -375,7 +375,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultAction Default action applied when none of the `rules` match the incoming event
+         * @param defaultAction Default action applied when none of the `rules` match the incoming event. enum: `permit`, `block`.
          * 
          * @return builder
          * 
@@ -490,7 +490,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2GrantType OAuth2 grant type used when `type`==`oauth2`
+         * @param oauth2GrantType OAuth2 grant type used when `type`==`oauth2`. enum: `clientCredentials`, `password`.
          * 
          * @return builder
          * 
@@ -501,7 +501,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2GrantType OAuth2 grant type used when `type`==`oauth2`
+         * @param oauth2GrantType OAuth2 grant type used when `type`==`oauth2`. enum: `clientCredentials`, `password`.
          * 
          * @return builder
          * 
@@ -751,7 +751,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Delivery mechanism used by this webhook
+         * @param type Delivery mechanism used by this webhook. enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`.
          * 
          * @return builder
          * 
@@ -762,7 +762,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Delivery mechanism used by this webhook
+         * @param type Delivery mechanism used by this webhook. enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`.
          * 
          * @return builder
          * 

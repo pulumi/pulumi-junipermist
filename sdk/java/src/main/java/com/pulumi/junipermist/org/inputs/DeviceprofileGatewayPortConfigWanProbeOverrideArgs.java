@@ -78,14 +78,14 @@ public final class DeviceprofileGatewayPortConfigWanProbeOverrideArgs extends co
     }
 
     /**
-     * WAN probe profile used for health checks on this port
+     * WAN probe profile used for health checks on this port. enum: `broadband`, `lte`.
      * 
      */
     @Import(name="probeProfile")
     private @Nullable Output<String> probeProfile;
 
     /**
-     * @return WAN probe profile used for health checks on this port
+     * @return WAN probe profile used for health checks on this port. enum: `broadband`, `lte`.
      * 
      */
     public Optional<Output<String>> probeProfile() {
@@ -235,7 +235,7 @@ public final class DeviceprofileGatewayPortConfigWanProbeOverrideArgs extends co
         }
 
         /**
-         * @param probeProfile WAN probe profile used for health checks on this port
+         * @param probeProfile WAN probe profile used for health checks on this port. enum: `broadband`, `lte`.
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class DeviceprofileGatewayPortConfigWanProbeOverrideArgs extends co
         }
 
         /**
-         * @param probeProfile WAN probe profile used for health checks on this port
+         * @param probeProfile WAN probe profile used for health checks on this port. enum: `broadband`, `lte`.
          * 
          * @return builder
          * 

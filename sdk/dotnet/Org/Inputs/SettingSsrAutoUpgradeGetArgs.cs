@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class SettingSsrAutoUpgradeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Firmware release channel used for SSR auto-upgrade
+        /// Firmware release channel used for SSR auto-upgrade. enum: `Alpha`, `Beta`, `Stable`.
         /// </summary>
         [Input("channel")]
         public Input<string>? Channel { get; set; }

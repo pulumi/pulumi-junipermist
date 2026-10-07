@@ -98,14 +98,14 @@ public final class SwitchSnmpConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Method used to derive the SNMP engine ID
+     * Method used to derive the SNMP engine ID. enum: `local`, `useMacAddress`.
      * 
      */
     @Import(name="engineIdType")
     private @Nullable Output<String> engineIdType;
 
     /**
-     * @return Method used to derive the SNMP engine ID
+     * @return Method used to derive the SNMP engine ID. enum: `local`, `useMacAddress`.
      * 
      */
     public Optional<Output<String>> engineIdType() {
@@ -369,7 +369,7 @@ public final class SwitchSnmpConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param engineIdType Method used to derive the SNMP engine ID
+         * @param engineIdType Method used to derive the SNMP engine ID. enum: `local`, `useMacAddress`.
          * 
          * @return builder
          * 
@@ -380,7 +380,7 @@ public final class SwitchSnmpConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param engineIdType Method used to derive the SNMP engine ID
+         * @param engineIdType Method used to derive the SNMP engine ID. enum: `local`, `useMacAddress`.
          * 
          * @return builder
          * 

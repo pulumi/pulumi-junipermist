@@ -59,12 +59,12 @@ public final class SettingMistNac {
      */
     private @Nullable SettingMistNacFingerprinting fingerprinting;
     /**
-     * @return Client certificate field used to look up machine groups in identity providers
+     * @return Client certificate field used to look up machine groups in identity providers. enum: `automatic`, `cn`, `dns`.
      * 
      */
     private @Nullable String idpMachineCertLookupField;
     /**
-     * @return Client certificate field used to look up user groups in identity providers
+     * @return Client certificate field used to look up user groups in identity providers. enum: `automatic`, `cn`, `email`, `upn`.
      * 
      */
     private @Nullable String idpUserCertLookupField;
@@ -84,7 +84,7 @@ public final class SettingMistNac {
      */
     private @Nullable SettingMistNacServerCert serverCert;
     /**
-     * @return IP version used by NAS devices and Mist Edge proxies to reach Mist NAC
+     * @return IP version used by NAS devices and Mist Edge proxies to reach Mist NAC. enum: `v4`, `v6`.
      * 
      */
     private @Nullable String useIpVersion;
@@ -157,14 +157,14 @@ public final class SettingMistNac {
         return Optional.ofNullable(this.fingerprinting);
     }
     /**
-     * @return Client certificate field used to look up machine groups in identity providers
+     * @return Client certificate field used to look up machine groups in identity providers. enum: `automatic`, `cn`, `dns`.
      * 
      */
     public Optional<String> idpMachineCertLookupField() {
         return Optional.ofNullable(this.idpMachineCertLookupField);
     }
     /**
-     * @return Client certificate field used to look up user groups in identity providers
+     * @return Client certificate field used to look up user groups in identity providers. enum: `automatic`, `cn`, `email`, `upn`.
      * 
      */
     public Optional<String> idpUserCertLookupField() {
@@ -192,7 +192,7 @@ public final class SettingMistNac {
         return Optional.ofNullable(this.serverCert);
     }
     /**
-     * @return IP version used by NAS devices and Mist Edge proxies to reach Mist NAC
+     * @return IP version used by NAS devices and Mist Edge proxies to reach Mist NAC. enum: `v4`, `v6`.
      * 
      */
     public Optional<String> useIpVersion() {

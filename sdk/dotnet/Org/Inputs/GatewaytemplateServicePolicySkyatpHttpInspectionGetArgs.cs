@@ -19,7 +19,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Sky ATP HTTP inspection profile to apply
+        /// Sky ATP HTTP inspection profile to apply. enum: `Standard`, `Strict`.
         /// </summary>
         [Input("profile")]
         public Input<string>? Profile { get; set; }

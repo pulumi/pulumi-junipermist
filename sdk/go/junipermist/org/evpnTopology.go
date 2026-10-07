@@ -53,27 +53,27 @@ import (
 //				},
 //				Switches: org.EvpnTopologySwitchesMap{
 //					&org.EvpnTopologySwitchesArgs{
-//						Mac:  pulumi.String("020004000001"),
+//						Mac:  "020004000001",
 //						Role: pulumi.String("core"),
 //					},
 //					&org.EvpnTopologySwitchesArgs{
-//						Mac:  pulumi.String("02000400002"),
+//						Mac:  "02000400002",
 //						Role: pulumi.String("core"),
 //					},
 //					&org.EvpnTopologySwitchesArgs{
-//						Mac:  pulumi.String("02000400003"),
+//						Mac:  "02000400003",
 //						Role: pulumi.String("distribution"),
 //					},
 //					&org.EvpnTopologySwitchesArgs{
-//						Mac:  pulumi.String("02000400004"),
+//						Mac:  "02000400004",
 //						Role: pulumi.String("distribution"),
 //					},
 //					&org.EvpnTopologySwitchesArgs{
-//						Mac:  pulumi.String("02000400005"),
+//						Mac:  "02000400005",
 //						Role: pulumi.String("access"),
 //					},
 //					&org.EvpnTopologySwitchesArgs{
-//						Mac:  pulumi.String("02000400006"),
+//						Mac:  "02000400006",
 //						Role: pulumi.String("access"),
 //					},
 //				},

@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Built-in advanced anti-malware inspection profile to apply
+        /// Built-in advanced anti-malware inspection profile to apply. enum: `Docsonly`, `Executables`, `Standard`.
         /// </summary>
         public readonly string? Profile;
 

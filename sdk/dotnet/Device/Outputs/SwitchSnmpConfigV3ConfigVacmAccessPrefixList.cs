@@ -26,15 +26,15 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? ReadView;
         /// <summary>
-        /// Required security level for this VACM access rule
+        /// Required security level for this VACM access rule. enum: `Authentication`, `None`, `Privacy`.
         /// </summary>
         public readonly string? SecurityLevel;
         /// <summary>
-        /// Required security model for this VACM access rule
+        /// Required security model for this VACM access rule. enum: `Any`, `Usm`, `V1`, `V2c`.
         /// </summary>
         public readonly string? SecurityModel;
         /// <summary>
-        /// VACM context matching type for this access rule
+        /// VACM context matching type for this access rule. enum: `ContextPrefix`, `DefaultContextPrefix`.
         /// </summary>
         public readonly string? Type;
         /// <summary>

@@ -20,7 +20,7 @@ public final class NacPortalSso {
      */
     private @Nullable String idpCert;
     /**
-     * @return Signing algorithm expected for SAML assertions from the identity provider
+     * @return Signing algorithm expected for SAML assertions from the identity provider. enum: `sha1`, `sha256`, `sha384`, `sha512`.
      * 
      */
     private @Nullable String idpSignAlgo;
@@ -59,7 +59,7 @@ public final class NacPortalSso {
         return Optional.ofNullable(this.idpCert);
     }
     /**
-     * @return Signing algorithm expected for SAML assertions from the identity provider
+     * @return Signing algorithm expected for SAML assertions from the identity provider. enum: `sha1`, `sha256`, `sha384`, `sha512`.
      * 
      */
     public Optional<String> idpSignAlgo() {

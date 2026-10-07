@@ -79,7 +79,7 @@ export class NacPortalTemplate extends pulumi.CustomResource {
     }
 
     /**
-     * Text and content alignment for the NAC portal page
+     * Text and content alignment for the NAC portal page. enum: `center`, `left`, `right`.
      */
     declare public readonly alignment: pulumi.Output<string>;
     /**
@@ -144,7 +144,7 @@ export class NacPortalTemplate extends pulumi.CustomResource {
  */
 export interface NacPortalTemplateState {
     /**
-     * Text and content alignment for the NAC portal page
+     * Text and content alignment for the NAC portal page. enum: `center`, `left`, `right`.
      */
     alignment?: pulumi.Input<string | undefined>;
     /**
@@ -171,7 +171,7 @@ export interface NacPortalTemplateState {
  */
 export interface NacPortalTemplateArgs {
     /**
-     * Text and content alignment for the NAC portal page
+     * Text and content alignment for the NAC portal page. enum: `center`, `left`, `right`.
      */
     alignment?: pulumi.Input<string | undefined>;
     /**

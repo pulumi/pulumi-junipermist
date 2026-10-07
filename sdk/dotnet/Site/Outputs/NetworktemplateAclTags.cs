@@ -58,7 +58,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Subnets;
         /// <summary>
-        /// Classifier type that determines which ACL tag fields are evaluated
+        /// Classifier type that determines which ACL tag fields are evaluated. enum: `Any`, `ArubaUserRole`, `DynamicGbp`, `GbpResource`, `Mac`, `Network`, `PortUsage`, `RadiusGroup`, `Resource`, `StaticGbp`, `Subnet`.
         /// </summary>
         public readonly string Type;
 

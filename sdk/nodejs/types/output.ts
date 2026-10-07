@@ -183,7 +183,7 @@ export interface GetSitesSiteLatlng {
 
 export interface UpgradeDeviceAutoUpgradeStat {
     /**
-     * Time when the device last checked for auto-upgrade, in epoch seconds
+     * Time when the AP last checked for auto-upgrade, in epoch seconds
      */
     lastcheck: number;
 }
@@ -194,7 +194,7 @@ export interface UpgradeDeviceFwupdate {
      */
     progress: number;
     /**
-     * Current firmware update status
+     * Current firmware update status. enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`.
      */
     status: string;
     /**
@@ -256,7 +256,7 @@ export namespace device {
          */
         beaconRate?: number;
         /**
-         * Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate
+         * Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate. enum: `custom`, `default`.
          */
         beaconRateMode?: string;
         /**
@@ -352,7 +352,7 @@ export namespace device {
          */
         power?: number;
         /**
-         * Transmit power mode for BLE beacons; use custom to set `power`
+         * Transmit power mode for BLE beacons; use custom to set `power`. enum: `custom`, `default`.
          */
         powerMode?: string;
     }
@@ -387,7 +387,7 @@ export namespace device {
          */
         psk?: string;
         /**
-         * Authentication mode for the client bridge connection
+         * Authentication mode for the client bridge connection. enum: `open`, `psk`.
          */
         type: string;
     }
@@ -414,7 +414,7 @@ export namespace device {
          */
         port?: number;
         /**
-         * ESL integration type to enable on the AP
+         * ESL integration type to enable on the AP. enum: `hanshow`, `imagotag`, `native`, `solum`.
          */
         type: string;
         /**
@@ -465,11 +465,11 @@ export namespace device {
          */
         netmask6?: string;
         /**
-         * IPv4 address assignment mode for AP management traffic
+         * IPv4 address assignment mode for AP management traffic. enum: `dhcp`, `static`.
          */
         type: string;
         /**
-         * IPv6 address assignment mode for AP management traffic
+         * IPv6 address assignment mode for AP management traffic. enum: `autoconf`, `dhcp`, `disabled`, `static`.
          */
         type6?: string;
         /**
@@ -529,7 +529,7 @@ export namespace device {
          */
         brokerPort?: number;
         /**
-         * MQTT broker transport protocol
+         * MQTT broker transport protocol. enum: `ssl`, `tcp`.
          */
         brokerProto?: string;
         /**
@@ -541,7 +541,7 @@ export namespace device {
          */
         enabled?: boolean;
         /**
-         * Payload format for published messages
+         * Payload format for published messages. enum: `json`, `raw`.
          */
         format?: string;
         /**
@@ -568,7 +568,7 @@ export namespace device {
          */
         enableMacAuth: boolean;
         /**
-         * Traffic forwarding mode for this AP Ethernet port
+         * Traffic forwarding mode for this AP Ethernet port. enum: `all`, `limited`, `mxtunnel`, `siteMxedge`, `wxtunnel`.
          */
         forwarding: string;
         /**
@@ -576,7 +576,7 @@ export namespace device {
          */
         macAuthPreferred: boolean;
         /**
-         * Protocol used for MAC authentication when `enableMacAuth` is `true`
+         * Protocol used for MAC authentication when `enableMacAuth` is `true`. enum: `eap-md5`, `eap-peap`, `pap`.
          */
         macAuthProtocol: string;
         /**
@@ -592,7 +592,7 @@ export namespace device {
          */
         mxtunnelName: string;
         /**
-         * Authentication mode for this AP Ethernet port
+         * Authentication mode for this AP Ethernet port. enum: `dot1x`, `none`.
          */
         portAuth: string;
         /**
@@ -637,7 +637,7 @@ export namespace device {
          */
         enabled?: boolean;
         /**
-         * Mapping mode for interpreting dynamic VLAN attributes returned by RADIUS
+         * Mapping mode for interpreting dynamic VLAN attributes returned by RADIUS. enum: `airespace-interface-name`, `standard`.
          */
         type?: string;
         /**
@@ -740,7 +740,7 @@ export namespace device {
          */
         keywrapEnabled?: boolean;
         /**
-         * Encoding format for RADIUS keywrap KEK and MACK values
+         * Encoding format for RADIUS keywrap KEK and MACK values. enum: `ascii`, `hex`.
          */
         keywrapFormat?: string;
         /**
@@ -771,7 +771,7 @@ export namespace device {
          */
         keywrapEnabled?: boolean;
         /**
-         * Encoding format for RADIUS keywrap KEK and MACK values
+         * Encoding format for RADIUS keywrap KEK and MACK values. enum: `ascii`, `hex`.
          */
         keywrapFormat?: string;
         /**
@@ -875,11 +875,11 @@ export namespace device {
          */
         antGain6?: number;
         /**
-         * Selected radio chain mode for AP models that support antenna mode control
+         * Selected radio chain mode for AP models that support antenna mode control. enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`.
          */
         antennaMode?: string;
         /**
-         * Internal or external antenna selection for AP models with selectable antennas
+         * Internal or external antenna selection for AP models with selectable antennas. enum: ``, `external`, `internal`.
          */
         antennaSelect?: string;
         /**
@@ -887,7 +887,7 @@ export namespace device {
          */
         band24?: outputs.device.ApRadioConfigBand24;
         /**
-         * Radio usage mode for the 2.4 GHz-capable radio
+         * Radio usage mode for the 2.4 GHz-capable radio. enum: `24`, `5`, `6`, `auto`.
          */
         band24Usage?: string;
         /**
@@ -930,11 +930,11 @@ export namespace device {
          */
         antGain: number;
         /**
-         * Radio chain mode for the 2.4 GHz radio
+         * Radio chain mode for the 2.4 GHz radio. enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`.
          */
         antennaMode: string;
         /**
-         * Channel width configured for the 2.4 GHz radio
+         * Channel width configured for the 2.4 GHz radio. enum: `0`, `20`, `40`.
          */
         bandwidth: number;
         /**
@@ -962,7 +962,7 @@ export namespace device {
          */
         powerMin?: number;
         /**
-         * 802.11 preamble mode used by the 2.4 GHz radio
+         * 802.11 preamble mode used by the 2.4 GHz radio. enum: `auto`, `long`, `short`.
          */
         preamble: string;
     }
@@ -977,15 +977,15 @@ export namespace device {
          */
         antGain: number;
         /**
-         * Beam pattern used by the 5 GHz radio antenna
+         * Beam pattern used by the 5 GHz radio antenna. enum: `narrow`, `medium`, `wide`.
          */
         antennaBeamPattern?: string;
         /**
-         * Radio chain mode for the 5 GHz radio
+         * Radio chain mode for the 5 GHz radio. enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`.
          */
         antennaMode: string;
         /**
-         * Channel width configured for the 5 GHz radio
+         * Channel width configured for the 5 GHz radio. enum: `0`, `20`, `40`, `80`.
          */
         bandwidth: number;
         /**
@@ -1013,7 +1013,7 @@ export namespace device {
          */
         powerMin?: number;
         /**
-         * 802.11 preamble mode used by the 5 GHz radio
+         * 802.11 preamble mode used by the 5 GHz radio. enum: `auto`, `long`, `short`.
          */
         preamble: string;
     }
@@ -1028,15 +1028,15 @@ export namespace device {
          */
         antGain: number;
         /**
-         * Beam pattern used by the 5 GHz radio antenna
+         * Beam pattern used by the 5 GHz radio antenna. enum: `narrow`, `medium`, `wide`.
          */
         antennaBeamPattern?: string;
         /**
-         * Radio chain mode for the 5 GHz radio
+         * Radio chain mode for the 5 GHz radio. enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`.
          */
         antennaMode: string;
         /**
-         * Channel width configured for the 5 GHz radio
+         * Channel width configured for the 5 GHz radio. enum: `0`, `20`, `40`, `80`.
          */
         bandwidth: number;
         /**
@@ -1064,7 +1064,7 @@ export namespace device {
          */
         powerMin?: number;
         /**
-         * 802.11 preamble mode used by the 5 GHz radio
+         * 802.11 preamble mode used by the 5 GHz radio. enum: `auto`, `long`, `short`.
          */
         preamble: string;
     }
@@ -1079,15 +1079,15 @@ export namespace device {
          */
         antGain: number;
         /**
-         * Beam pattern used by the 6 GHz radio antenna
+         * Beam pattern used by the 6 GHz radio antenna. enum: `narrow`, `medium`, `wide`.
          */
         antennaBeamPattern?: string;
         /**
-         * Radio chain mode for the 6 GHz radio
+         * Radio chain mode for the 6 GHz radio. enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`.
          */
         antennaMode: string;
         /**
-         * Channel width configured for the 6 GHz radio
+         * Channel width configured for the 6 GHz radio. enum: `0`, `20`, `40`, `80`, `160`.
          */
         bandwidth: number;
         /**
@@ -1115,7 +1115,7 @@ export namespace device {
          */
         powerMin?: number;
         /**
-         * 802.11 preamble mode used by the 6 GHz radio
+         * 802.11 preamble mode used by the 6 GHz radio. enum: `auto`, `long`, `short`.
          */
         preamble: string;
         /**
@@ -1157,7 +1157,7 @@ export namespace device {
          */
         port?: number;
         /**
-         * USB integration type for this legacy AP USB configuration
+         * USB integration type for this legacy AP USB configuration. enum: `hanshow`, `imagotag`, `solum`.
          */
         type?: string;
         /**
@@ -1195,7 +1195,7 @@ export namespace device {
 
     export interface ApZigbeeConfig {
         /**
-         * Join policy for new Zigbee devices on this AP
+         * Join policy for new Zigbee devices on this AP. enum: `always`, `manual`.
          */
         allowJoin: string;
         /**
@@ -1426,11 +1426,11 @@ export namespace device {
          */
         serversv6s?: string[];
         /**
-         * IPv4 DHCP mode for this network
+         * IPv4 DHCP mode for this network. enum: `local`, `none`, `relay`.
          */
         type?: string;
         /**
-         * IPv6 DHCP mode for this network
+         * IPv6 DHCP mode for this network. enum: `local`, `none`, `relay`.
          */
         type6?: string;
         /**
@@ -1456,7 +1456,7 @@ export namespace device {
 
     export interface GatewayDhcpdConfigConfigOptions {
         /**
-         * Data type used to encode this DHCP option value
+         * Data type used to encode this DHCP option value. enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`.
          */
         type?: string;
         /**
@@ -1467,7 +1467,7 @@ export namespace device {
 
     export interface GatewayDhcpdConfigConfigVendorEncapsulated {
         /**
-         * Data type used to encode this vendor option value
+         * Data type used to encode this vendor option value. enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`.
          */
         type?: string;
         /**
@@ -1602,7 +1602,7 @@ export namespace device {
          */
         packetSize?: number;
         /**
-         * Probe protocol used by this custom application definition
+         * Probe protocol used by this custom application definition. enum: `http`, `icmp`.
          */
         protocol: string;
         /**
@@ -1617,7 +1617,7 @@ export namespace device {
 
     export interface GatewayGatewayMgmtAutoSignatureUpdate {
         /**
-         * Scheduled weekday for automatic signature updates
+         * Scheduled weekday for automatic signature updates. enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`.
          */
         dayOfWeek?: string;
         /**
@@ -1661,7 +1661,7 @@ export namespace device {
          */
         portRange?: string;
         /**
-         * Transport protocol matched by this custom Protect RE ACL
+         * Transport protocol matched by this custom Protect RE ACL. enum: `any`, `icmp`, `tcp`, `udp`.
          */
         protocol: string;
         /**
@@ -1672,7 +1672,7 @@ export namespace device {
 
     export interface GatewayIdpProfiles {
         /**
-         * Built-in IDP baseline profile inherited before applying overwrites
+         * Built-in IDP baseline profile inherited before applying overwrites. enum: `critical`, `standard`, `strict`.
          */
         baseProfile?: string;
         /**
@@ -1695,7 +1695,7 @@ export namespace device {
 
     export interface GatewayIdpProfilesOverwrite {
         /**
-         * Enforcement action applied when this overwrite rule matches
+         * Enforcement action applied when this overwrite rule matches. enum: `alert`, `close`, `drop`.
          */
         action?: string;
         /**
@@ -1745,13 +1745,20 @@ export namespace device {
          */
         secondaryIps: string[];
         /**
-         * IPv4 address assignment mode for this gateway network interface
+         * IPv4 address assignment mode for this gateway network interface. enum: `dhcp`, `static`.
          */
         type: string;
         /**
-         * IPv6 address assignment mode for this gateway network interface
+         * IPv6 address assignment mode for this gateway network interface. enum: `autoconf`, `dhcp`, `disabled`, `static`.
          */
         type6?: string;
+    }
+
+    export interface GatewayMnhaConfig {
+        /**
+         * Whether MNHA mode is enabled
+         */
+        enabled?: boolean;
     }
 
     export interface GatewayNetwork {
@@ -1811,6 +1818,10 @@ export namespace device {
          * VPN access settings keyed by VPN name for this network
          */
         vpnAccess?: {[key: string]: outputs.device.GatewayNetworkVpnAccess};
+        /**
+         * SecurityZone this network belongs to. When set, the zone name is used as the security zone name on the SRX, and multiple networks can share the same zone. When omitted, the network `name` is used as the security zone name.
+         */
+        zoneId?: string;
     }
 
     export interface GatewayNetworkInternalAccess {
@@ -2016,7 +2027,7 @@ export namespace device {
          */
         node1: outputs.device.GatewayOobIpConfigNode1;
         /**
-         * IP assignment mode for the out-of-band management interface
+         * IP assignment mode for the out-of-band management interface. enum: `dhcp`, `static`.
          */
         type?: string;
         /**
@@ -2047,7 +2058,7 @@ export namespace device {
          */
         netmask?: string;
         /**
-         * IP assignment mode for the node1 out-of-band management interface
+         * IP assignment mode for the node1 out-of-band management interface. enum: `dhcp`, `static`.
          */
         type?: string;
         /**
@@ -2070,7 +2081,7 @@ export namespace device {
          */
         paths?: outputs.device.GatewayPathPreferencesPath[];
         /**
-         * Selection strategy used to evaluate the candidate paths
+         * Selection strategy used to evaluate the candidate paths. enum: `ecmp`, `ordered`, `weighted`.
          */
         strategy: string;
     }
@@ -2150,7 +2161,7 @@ export namespace device {
          */
         disabled: boolean;
         /**
-         * If `wanType`==`dsl`. DSL technology used by the WAN port
+         * If `wanType`==`dsl`. DSL technology used by the WAN port. enum: `adsl`, `vdsl`.
          */
         dslType?: string;
         /**
@@ -2162,7 +2173,7 @@ export namespace device {
          */
         dslVpi?: number;
         /**
-         * Ethernet duplex mode configured on the port
+         * Ethernet duplex mode configured on the port. enum: `auto`, `full`, `half`.
          */
         duplex?: string;
         /**
@@ -2174,7 +2185,7 @@ export namespace device {
          */
         lteApn?: string;
         /**
-         * If `wanType`==`lte`. Authentication method used by the LTE uplink
+         * If `wanType`==`lte`. Authentication method used by the LTE uplink. enum: `chap`, `none`, `pap`.
          */
         lteAuth?: string;
         /**
@@ -2254,7 +2265,7 @@ export namespace device {
          */
         trafficShaping?: outputs.device.GatewayPortConfigTrafficShaping;
         /**
-         * Logical usage assigned to the port
+         * Logical usage assigned to the port. enum: `haControl`, `haData`, `lan`, `wan`.
          */
         usage: string;
         /**
@@ -2266,7 +2277,7 @@ export namespace device {
          */
         vpnPaths?: {[key: string]: outputs.device.GatewayPortConfigVpnPaths};
         /**
-         * Only when `wanType`==`broadband`. ARP policer profile applied to the WAN port
+         * Only when `wanType`==`broadband`. ARP policer profile applied to the WAN port. enum: `default`, `max`, `recommended`.
          */
         wanArpPolicer?: string;
         /**
@@ -2298,11 +2309,11 @@ export namespace device {
          */
         wanSourceNat?: outputs.device.GatewayPortConfigWanSourceNat;
         /**
-         * Controls whether Marvis or the scheduler can run speed tests on this WAN port
+         * Controls whether Marvis or the scheduler can run speed tests on this WAN port. enum: `auto`, `enabled`, `disabled`.
          */
         wanSpeedtestMode: string;
         /**
-         * Only if `usage`==`wan`. WAN uplink type configured on the port
+         * Only if `usage`==`wan`. WAN uplink type configured on the port. enum: `broadband`, `dsl`, `lte`.
          */
         wanType?: string;
     }
@@ -2349,7 +2360,7 @@ export namespace device {
          */
         poserPassword?: string;
         /**
-         * Authentication protocol used for PPPoE when `type`==`pppoe`
+         * Authentication protocol used for PPPoE when `type`==`pppoe`. enum: `chap`, `none`, `pap`.
          */
         pppoeAuth?: string;
         /**
@@ -2357,11 +2368,11 @@ export namespace device {
          */
         pppoeUsername?: string;
         /**
-         * IPv4 assignment mode for this gateway port interface
+         * IPv4 assignment mode for this gateway port interface. enum: `dhcp`, `pppoe`, `static`.
          */
         type?: string;
         /**
-         * IPv6 assignment mode for this gateway port interface
+         * IPv6 assignment mode for this gateway port interface. enum: `autoconf`, `dhcp`, `static`.
          */
         type6?: string;
     }
@@ -2383,7 +2394,7 @@ export namespace device {
 
     export interface GatewayPortConfigVpnPaths {
         /**
-         * BFD profile used for this VPN path when the VPN `type`==`hubSpoke`
+         * BFD profile used for this VPN path when the VPN `type`==`hubSpoke`. enum: `broadband`, `lte`.
          */
         bfdProfile?: string;
         /**
@@ -2395,7 +2406,7 @@ export namespace device {
          */
         preference?: number;
         /**
-         * Gateway role for this VPN path; valid values depend on the VPN `type`
+         * Gateway role for this VPN path; valid values depend on the VPN `type`. enum: `hub`, `mesh`, `spoke`.
          */
         role?: string;
         /**
@@ -2451,7 +2462,7 @@ export namespace device {
          */
         ips?: string[];
         /**
-         * WAN probe profile used for health checks on this port
+         * WAN probe profile used for health checks on this port. enum: `broadband`, `lte`.
          */
         probeProfile?: string;
     }
@@ -2737,7 +2748,7 @@ export namespace device {
          */
         enabled?: boolean;
         /**
-         * Enhanced web filtering profile applied by this rule
+         * Enhanced web filtering profile applied by this rule. enum: `critical`, `standard`, `strict`.
          */
         profile?: string;
     }
@@ -2786,7 +2797,7 @@ export namespace device {
          */
         enabled?: boolean;
         /**
-         * Sky ATP DNS DGA detection profile to apply
+         * Sky ATP DNS DGA detection profile to apply. enum: `default`, `standard`, `strict`.
          */
         profile?: string;
     }
@@ -2797,7 +2808,7 @@ export namespace device {
          */
         enabled?: boolean;
         /**
-         * Sky ATP DNS tunneling detection profile to apply
+         * Sky ATP DNS tunneling detection profile to apply. enum: `default`, `standard`, `strict`.
          */
         profile?: string;
     }
@@ -2808,7 +2819,7 @@ export namespace device {
          */
         enabled?: boolean;
         /**
-         * Sky ATP HTTP inspection profile to apply
+         * Sky ATP HTTP inspection profile to apply. enum: `standard`, `strict`.
          */
         profile?: string;
     }
@@ -2822,7 +2833,7 @@ export namespace device {
 
     export interface GatewayServicePolicySslProxy {
         /**
-         * Allowed cipher strength category for SSL proxy inspection
+         * Allowed cipher strength category for SSL proxy inspection. enum: `medium`, `strong`, `weak`.
          */
         ciphersCategory?: string;
         /**
@@ -2852,7 +2863,7 @@ export namespace device {
          */
         ikeLifetime?: number;
         /**
-         * Only if `provider`==`custom-ipsec`. IKE negotiation mode for the tunnel
+         * Only if `provider`==`custom-ipsec`. IKE negotiation mode for the tunnel. enum: `aggressive`, `main`.
          */
         ikeMode?: string;
         /**
@@ -2876,7 +2887,7 @@ export namespace device {
          */
         localSubnets?: string[];
         /**
-         * Tunnel failover mode used for primary and secondary endpoints
+         * Tunnel failover mode used for primary and secondary endpoints. enum: `active-active`, `active-standby`.
          */
         mode?: string;
         /**
@@ -2892,11 +2903,11 @@ export namespace device {
          */
         probe?: outputs.device.GatewayTunnelConfigsProbe;
         /**
-         * Only if `provider`==`custom-ipsec`. Tunnel protocol for custom tunnel negotiation
+         * Only if `provider`==`custom-ipsec`. Tunnel protocol for custom tunnel negotiation. enum: `gre`, `ipsec`.
          */
         protocol?: string;
         /**
-         * Tunnel provider used when auto provisioning is disabled
+         * Tunnel provider used when auto provisioning is disabled. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`.
          */
         provider?: string;
         /**
@@ -2912,7 +2923,7 @@ export namespace device {
          */
         secondary?: outputs.device.GatewayTunnelConfigsSecondary;
         /**
-         * Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. Tunnel version value for custom tunnel configuration
+         * Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. Tunnel version value for custom tunnel configuration. enum: `1`, `2`.
          */
         version?: string;
     }
@@ -2931,7 +2942,7 @@ export namespace device {
          */
         primary?: outputs.device.GatewayTunnelConfigsAutoProvisionPrimary;
         /**
-         * Tunnel provider used for automatic endpoint provisioning
+         * Tunnel provider used for automatic endpoint provisioning. enum: `jse-ipsec`, `zscaler-ipsec`.
          */
         provider: string;
         /**
@@ -2983,30 +2994,30 @@ export namespace device {
 
     export interface GatewayTunnelConfigsIkeProposal {
         /**
-         * Integrity algorithm used by this IKE proposal
+         * Integrity algorithm used by this IKE proposal. enum: `md5`, `sha1`, `sha2`.
          */
         authAlgo?: string;
         /**
-         * Diffie-Hellman group used by this IKE proposal
+         * Diffie-Hellman group used by this IKE proposal. enum: `1`, `14`, `15`, `16`, `19`, `2`, `20`, `21`, `24`, `5`.
          */
         dhGroup?: string;
         /**
-         * Cipher algorithm used by this IKE proposal
+         * Cipher algorithm used by this IKE proposal. enum: `3des`, `aes128`, `aes256`, `aesGcm128`, `aesGcm256`.
          */
         encAlgo?: string;
     }
 
     export interface GatewayTunnelConfigsIpsecProposal {
         /**
-         * Integrity algorithm used by this IPsec proposal
+         * Integrity algorithm used by this IPsec proposal. enum: `md5`, `sha1`, `sha2`.
          */
         authAlgo?: string;
         /**
-         * Diffie-Hellman group used by this IPsec proposal
+         * Diffie-Hellman group used by this IPsec proposal. enum: `1`, `14`, `15`, `16`, `19`, `2`, `20`, `21`, `24`, `5`.
          */
         dhGroup?: string;
         /**
-         * Cipher algorithm used by this IPsec proposal
+         * Cipher algorithm used by this IPsec proposal. enum: `3des`, `aes128`, `aes256`, `aesGcm128`, `aesGcm256`.
          */
         encAlgo?: string;
     }
@@ -3075,7 +3086,7 @@ export namespace device {
          */
         timeout?: number;
         /**
-         * Protocol used by the custom IPsec tunnel health probe
+         * Protocol used by the custom IPsec tunnel health probe. enum: `http`, `icmp`.
          */
         type: string;
     }
@@ -5953,7 +5964,7 @@ export namespace device {
          */
         subnets?: string[];
         /**
-         * Classifier type that determines which ACL tag fields are evaluated
+         * Classifier type that determines which ACL tag fields are evaluated. enum: `any`, `arubaUserRole`, `dynamicGbp`, `gbpResource`, `mac`, `network`, `portUsage`, `radiusGroup`, `resource`, `staticGbp`, `subnet`.
          */
         type: string;
     }
@@ -5983,7 +5994,7 @@ export namespace device {
          */
         exportPolicy?: string;
         /**
-         * Default BGP hold time for switch BGP sessions
+         * Default BGP hold time for switch BGP sessions.
          */
         holdTime?: number;
         /**
@@ -6003,7 +6014,7 @@ export namespace device {
          */
         networks?: string[];
         /**
-         * BGP session type for this switch BGP configuration
+         * BGP session type for this switch BGP configuration. enum: `external`, `internal`.
          */
         type: string;
     }
@@ -6014,7 +6025,7 @@ export namespace device {
          */
         exportPolicy?: string;
         /**
-         * BGP hold time for this neighbor
+         * BGP hold time for this neighbor.
          */
         holdTime?: number;
         /**
@@ -6120,11 +6131,11 @@ export namespace device {
          */
         servers6s: string[];
         /**
-         * IPv4 DHCP mode for this switch network
+         * IPv4 DHCP mode for this switch network. enum: `none`, `relay`, `server`.
          */
         type?: string;
         /**
-         * IPv6 DHCP mode for this switch network
+         * IPv6 DHCP mode for this switch network. enum: `none`, `relay`, `server`.
          */
         type6: string;
         /**
@@ -6150,7 +6161,7 @@ export namespace device {
 
     export interface SwitchDhcpdConfigConfigOptions {
         /**
-         * Data type used to encode this DHCP option value
+         * Data type used to encode this DHCP option value. enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`.
          */
         type?: string;
         /**
@@ -6161,7 +6172,7 @@ export namespace device {
 
     export interface SwitchDhcpdConfigConfigVendorEncapsulated {
         /**
-         * Data type used to encode this vendor option value
+         * Data type used to encode this vendor option value. enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`.
          */
         type?: string;
         /**
@@ -6272,7 +6283,7 @@ export namespace device {
          */
         network?: string;
         /**
-         * IP assignment mode for this Junos IP configuration
+         * IP assignment mode for this Junos IP configuration. enum: `dhcp`, `static`.
          */
         type: string;
     }
@@ -6311,7 +6322,7 @@ export namespace device {
          */
         disabled?: boolean;
         /**
-         * Link duplex mode for this local port configuration
+         * Link duplex mode for this local port configuration. enum: `auto`, `full`, `half`.
          */
         duplex: string;
         /**
@@ -6343,7 +6354,7 @@ export namespace device {
          */
         macAuthPreferred?: boolean;
         /**
-         * Only if `enableMacAuth`==`true`, MAC authentication protocol to use
+         * Only if `enableMacAuth`==`true`, MAC authentication protocol to use. enum: `eap-md5`, `eap-peap`, `pap`.
          */
         macAuthProtocol?: string;
         /**
@@ -6351,7 +6362,7 @@ export namespace device {
          */
         macLimit?: number;
         /**
-         * Switching mode for this local port configuration
+         * Switching mode for this local port configuration. enum: `access`, `inet`, `trunk`.
          */
         mode?: string;
         /**
@@ -6375,7 +6386,7 @@ export namespace device {
          */
         poeDisabled: boolean;
         /**
-         * 802.1X authentication mode for this local port configuration
+         * 802.1X authentication mode for this local port configuration. enum: `dot1x`.
          */
         portAuth?: string;
         /**
@@ -6395,7 +6406,7 @@ export namespace device {
          */
         serverRejectNetwork?: string;
         /**
-         * Link speed for this local port configuration
+         * Link speed for this local port configuration. enum: `10m`, `100m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`, `auto`.
          */
         speed: string;
         /**
@@ -6530,7 +6541,7 @@ export namespace device {
          */
         network?: string;
         /**
-         * IP assignment mode for the out-of-band management interface
+         * IP assignment mode for the out-of-band management interface. enum: `dhcp`, `static`.
          */
         type: string;
         /**
@@ -6553,7 +6564,7 @@ export namespace device {
          */
         networks: {[key: string]: outputs.device.SwitchOspfAreasNetworks};
         /**
-         * Area type for this OSPF area
+         * Area type for this OSPF area. enum: `default`, `nssa`, `stub`.
          */
         type: string;
     }
@@ -6568,7 +6579,7 @@ export namespace device {
          */
         authPassword?: string;
         /**
-         * Authentication method used by this OSPF network
+         * Authentication method used by this OSPF network. enum: `md5`, `none`, `password`.
          */
         authType?: string;
         /**
@@ -6592,7 +6603,7 @@ export namespace device {
          */
         importPolicy?: string;
         /**
-         * OSPF interface type used for this network
+         * OSPF interface type used for this network. enum: `broadcast`, `nbma`, `p2mp`, `p2p`.
          */
         interfaceType: string;
         /**
@@ -6661,11 +6672,11 @@ export namespace device {
          */
         netmask6?: string;
         /**
-         * IPv4 assignment mode for the additional Junos L3 presence
+         * IPv4 assignment mode for the additional Junos L3 presence. enum: `dhcp`, `static`.
          */
         type: string;
         /**
-         * IPv6 assignment mode for the additional Junos L3 presence
+         * IPv6 assignment mode for the additional Junos L3 presence. enum: `autoconf`, `dhcp`, `disabled`, `static`.
          */
         type6: string;
     }
@@ -6708,7 +6719,7 @@ export namespace device {
          */
         disableAutoneg?: boolean;
         /**
-         * Link duplex mode for this Junos port
+         * Link duplex mode for this Junos port. enum: `auto`, `full`, `half`.
          */
         duplex?: string;
         /**
@@ -6740,7 +6751,7 @@ export namespace device {
          */
         portNetwork?: string;
         /**
-         * Link speed for this Junos port
+         * Link speed for this Junos port. enum: `10m`, `100m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`, `auto`.
          */
         speed?: string;
         /**
@@ -6759,7 +6770,7 @@ export namespace device {
          */
         disabled: boolean;
         /**
-         * Link duplex mode override for the switch port
+         * Link duplex mode override for the switch port. enum: `auto`, `full`, `half`.
          */
         duplex: string;
         /**
@@ -6779,7 +6790,7 @@ export namespace device {
          */
         portNetwork?: string;
         /**
-         * Link speed override for the switch port
+         * Link speed override for the switch port. enum: `10m`, `100m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`, `auto`.
          */
         speed: string;
     }
@@ -6853,7 +6864,7 @@ export namespace device {
          */
         disabled?: boolean;
         /**
-         * Only if `mode`!=`dynamic`. Link duplex mode for this port usage
+         * Only if `mode`!=`dynamic`. Link duplex mode for this port usage. enum: `auto`, `full`, `half`.
          */
         duplex?: string;
         /**
@@ -6889,7 +6900,7 @@ export namespace device {
          */
         macAuthPreferred?: boolean;
         /**
-         * Only if `mode`!=`dynamic` and `enableMacAuth`==`true`. MAC authentication protocol to use; ignored if Mist NAC is enabled
+         * Only if `mode`!=`dynamic` and `enableMacAuth`==`true`. Select `pap`, `eap-peap`, or `eap-md5`. When Mist NAC is enabled, this is forced to `pap`, unless `mist_nac.enable_eap_md5_for_mab` is enabled; then `eap-md5` is kept and the port performs MAB (mac-radius) while sending EAP-MD5. enum: `eap-md5`, `eap-peap`, `pap`.
          */
         macAuthProtocol?: string;
         /**
@@ -6897,7 +6908,7 @@ export namespace device {
          */
         macLimit?: string;
         /**
-         * Switching mode for this port usage
+         * Switching mode for this port usage. enum: `access`, `dynamic`, `inet`, `trunk`.
          */
         mode?: string;
         /**
@@ -6908,6 +6919,10 @@ export namespace device {
          * Only if `mode`==`trunk`. Network or VLAN names to trunk
          */
         networks: string[];
+        /**
+         * Whether this port usage can be overridden in local port configuration
+         */
+        noLocalPortConfig?: boolean;
         /**
          * Only if `mode`==`access` and `portAuth`!=`dot1x`. Whether the port should retain dynamically learned MAC addresses
          */
@@ -6921,11 +6936,11 @@ export namespace device {
          */
         poeKeepStateWhenReboot?: boolean;
         /**
-         * Only if `mode`!=`dynamic`. PoE priority for ports using this port usage
+         * Only if `mode`!=`dynamic`. PoE priority for ports using this port usage. enum: `low`, `high`.
          */
         poePriority?: string;
         /**
-         * Only if `mode`!=`dynamic`. 802.1X authentication mode for this port usage
+         * Only if `mode`!=`dynamic`. 802.1X authentication mode for this port usage. enum: `dot1x`.
          */
         portAuth?: string;
         /**
@@ -6937,7 +6952,7 @@ export namespace device {
          */
         reauthInterval?: string;
         /**
-         * Only if `mode`==`dynamic`. Condition that resets a dynamic port to the default port usage
+         * Only if `mode`==`dynamic`. Condition that resets a dynamic port to the default port usage. enum: `linkDown`, `none`.
          */
         resetDefaultWhen?: string;
         /**
@@ -6957,7 +6972,7 @@ export namespace device {
          */
         serverRejectNetwork?: string;
         /**
-         * Only if `mode`!=`dynamic`. Link speed for this port usage
+         * Only if `mode`!=`dynamic`. Link speed for this port usage. enum: `10m`, `100m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`, `auto`.
          */
         speed?: string;
         /**
@@ -7014,7 +7029,7 @@ export namespace device {
          */
         expression?: string;
         /**
-         * Source attribute evaluated by this dynamic rule
+         * Source attribute evaluated by this dynamic rule. enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemDescription`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`.
          */
         src: string;
         /**
@@ -7064,7 +7079,7 @@ export namespace device {
          */
         acctServers?: outputs.device.SwitchRadiusConfigAcctServer[];
         /**
-         * Selection strategy for RADIUS authentication servers
+         * Selection strategy for RADIUS authentication servers. enum: `ordered`, `unordered`.
          */
         authServerSelection: string;
         /**
@@ -7111,7 +7126,7 @@ export namespace device {
          */
         keywrapEnabled?: boolean;
         /**
-         * Encoding format for RADIUS keywrap KEK and MACK values
+         * Encoding format for RADIUS keywrap KEK and MACK values. enum: `ascii`, `hex`.
          */
         keywrapFormat?: string;
         /**
@@ -7142,7 +7157,7 @@ export namespace device {
          */
         keywrapEnabled?: boolean;
         /**
-         * Encoding format for RADIUS keywrap KEK and MACK values
+         * Encoding format for RADIUS keywrap KEK and MACK values. enum: `ascii`, `hex`.
          */
         keywrapFormat?: string;
         /**
@@ -7201,7 +7216,7 @@ export namespace device {
          */
         servers?: outputs.device.SwitchRemoteSyslogServer[];
         /**
-         * Timestamp format used in forwarded syslog messages
+         * Timestamp format used in forwarded syslog messages. enum: `millisecond`, `year`, `year millisecond`.
          */
         timeFormat?: string;
         /**
@@ -7230,11 +7245,11 @@ export namespace device {
 
     export interface SwitchRemoteSyslogConsoleContent {
         /**
-         * Syslog facility to match for this selector
+         * Syslog facility to match for this selector. enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`.
          */
         facility: string;
         /**
-         * Syslog severity to match for this selector
+         * Syslog severity to match for this selector. enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`.
          */
         severity: string;
     }
@@ -7283,11 +7298,11 @@ export namespace device {
 
     export interface SwitchRemoteSyslogFileContent {
         /**
-         * Syslog facility to match for this selector
+         * Syslog facility to match for this selector. enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`.
          */
         facility: string;
         /**
-         * Syslog severity to match for this selector
+         * Syslog severity to match for this selector. enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`.
          */
         severity: string;
     }
@@ -7302,7 +7317,7 @@ export namespace device {
          */
         explicitPriority?: boolean;
         /**
-         * Default syslog facility for messages sent to this server
+         * Default syslog facility for messages sent to this server. enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`.
          */
         facility: string;
         /**
@@ -7318,7 +7333,7 @@ export namespace device {
          */
         port?: string;
         /**
-         * Transport protocol used for this remote syslog server
+         * Transport protocol used for this remote syslog server. enum: `tcp`, `udp`.
          */
         protocol: string;
         /**
@@ -7330,7 +7345,7 @@ export namespace device {
          */
         serverName?: string;
         /**
-         * Default syslog severity for messages sent to this server
+         * Default syslog severity for messages sent to this server. enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`.
          */
         severity: string;
         /**
@@ -7349,11 +7364,11 @@ export namespace device {
 
     export interface SwitchRemoteSyslogServerContent {
         /**
-         * Syslog facility to match for this selector
+         * Syslog facility to match for this selector. enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`.
          */
         facility: string;
         /**
-         * Syslog severity to match for this selector
+         * Syslog severity to match for this selector. enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`.
          */
         severity: string;
     }
@@ -7375,11 +7390,11 @@ export namespace device {
 
     export interface SwitchRemoteSyslogUserContent {
         /**
-         * Syslog facility to match for this selector
+         * Syslog facility to match for this selector. enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`.
          */
         facility: string;
         /**
-         * Syslog severity to match for this selector
+         * Syslog severity to match for this selector. enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`.
          */
         severity: string;
     }
@@ -7466,7 +7481,7 @@ export namespace device {
          */
         engineId?: string;
         /**
-         * Method used to derive the SNMP engine ID
+         * Method used to derive the SNMP engine ID. enum: `local`, `useMacAddress`.
          */
         engineIdType: string;
         /**
@@ -7524,7 +7539,7 @@ export namespace device {
          */
         targets?: string[];
         /**
-         * SNMP trap protocol version used by this group
+         * SNMP trap protocol version used by this group. enum: `all`, `v1`, `v2`.
          */
         version: string;
     }
@@ -7645,7 +7660,7 @@ export namespace device {
 
     export interface SwitchSnmpConfigV3ConfigTargetParameter {
         /**
-         * SNMP message processing model used by this target parameter profile
+         * SNMP message processing model used by this target parameter profile. enum: `v1`, `v2c`, `v3`.
          */
         messageProcessingModel: string;
         /**
@@ -7657,11 +7672,11 @@ export namespace device {
          */
         notifyFilter?: string;
         /**
-         * Required security level for this target parameter profile
+         * Required security level for this target parameter profile. enum: `authentication`, `none`, `privacy`.
          */
         securityLevel?: string;
         /**
-         * Required security model for this target parameter profile
+         * Required security model for this target parameter profile. enum: `usm`, `v1`, `v2c`.
          */
         securityModel?: string;
         /**
@@ -7672,7 +7687,7 @@ export namespace device {
 
     export interface SwitchSnmpConfigV3ConfigUsm {
         /**
-         * SNMP engine type used for this USM configuration
+         * SNMP engine type used for this USM configuration. enum: `localEngine`, `remoteEngine`.
          */
         engineType: string;
         /**
@@ -7691,7 +7706,7 @@ export namespace device {
          */
         authenticationPassword?: string;
         /**
-         * Authentication protocol used by this SNMPv3 USM user
+         * Authentication protocol used by this SNMPv3 USM user. enum: `authentication-md5`, `authentication-none`, `authentication-sha`, `authentication-sha224`, `authentication-sha256`, `authentication-sha384`, `authentication-sha512`.
          */
         authenticationType?: string;
         /**
@@ -7699,7 +7714,7 @@ export namespace device {
          */
         encryptionPassword?: string;
         /**
-         * Privacy protocol used by this SNMPv3 USM user
+         * Privacy protocol used by this SNMPv3 USM user. enum: `privacy-3des`, `privacy-aes128`, `privacy-des`, `privacy-none`.
          */
         encryptionType?: string;
         /**
@@ -7744,15 +7759,15 @@ export namespace device {
          */
         readView?: string;
         /**
-         * Required security level for this VACM access rule
+         * Required security level for this VACM access rule. enum: `authentication`, `none`, `privacy`.
          */
         securityLevel?: string;
         /**
-         * Required security model for this VACM access rule
+         * Required security model for this VACM access rule. enum: `any`, `usm`, `v1`, `v2c`.
          */
         securityModel?: string;
         /**
-         * VACM context matching type for this access rule
+         * VACM context matching type for this access rule. enum: `contextPrefix`, `defaultContextPrefix`.
          */
         type?: string;
         /**
@@ -7767,7 +7782,7 @@ export namespace device {
          */
         contents?: outputs.device.SwitchSnmpConfigV3ConfigVacmSecurityToGroupContent[];
         /**
-         * Required security model for these VACM group mappings
+         * Required security model for these VACM group mappings. enum: `usm`, `v1`, `v2c`.
          */
         securityModel?: string;
     }
@@ -7851,6 +7866,10 @@ export namespace device {
          */
         protectRe?: outputs.device.SwitchSwitchMgmtProtectRe;
         /**
+         * Management authentication settings using RADIUS
+         */
+        radius?: outputs.device.SwitchSwitchMgmtRadius;
+        /**
          * By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
          */
         removeExistingConfigs?: boolean;
@@ -7874,7 +7893,7 @@ export namespace device {
          */
         password?: string;
         /**
-         * Access role granted to the local switch user account
+         * Access role granted to the local switch user account. enum: `admin`, `helpdesk`, `none`, `read`.
          */
         role: string;
     }
@@ -7919,13 +7938,59 @@ export namespace device {
         subnets: string[];
     }
 
+    export interface SwitchSwitchMgmtRadius {
+        /**
+         * RADIUS authentication servers used for switch management authentication. Required when `enabled`==`true` and `useDifferentRadius`==`true`.
+         */
+        authServers?: outputs.device.SwitchSwitchMgmtRadiusAuthServer[];
+        /**
+         * RADIUS auth session retries. Required when `enabled`==`true` and `useDifferentRadius`==`true`.
+         */
+        authServersRetries: number;
+        /**
+         * RADIUS auth session timeout, in seconds. Required when `enabled`==`true` and `useDifferentRadius`==`true`.
+         */
+        authServersTimeout: number;
+        /**
+         * Whether RADIUS is enabled for switch management authentication
+         */
+        enabled?: boolean;
+        /**
+         * Source network used for connectivity to the RADIUS servers
+         */
+        network?: string;
+        /**
+         * Whether to use alternate RADIUS settings instead of the default switch `radiusConfig`
+         */
+        useDifferentRadius?: boolean;
+    }
+
+    export interface SwitchSwitchMgmtRadiusAuthServer {
+        /**
+         * Address or hostname of the RADIUS authentication server
+         */
+        host: string;
+        /**
+         * Unique identifier for this RADIUS authentication server entry
+         */
+        id: string;
+        /**
+         * UDP port used by the RADIUS authentication server
+         */
+        port?: string;
+        /**
+         * Shared secret used with this RADIUS authentication server
+         */
+        secret: string;
+    }
+
     export interface SwitchSwitchMgmtTacacs {
         /**
          * TACACS+ accounting servers used for switch management sessions
          */
         acctServers?: outputs.device.SwitchSwitchMgmtTacacsAcctServer[];
         /**
-         * Default switch-management role to use for TACACS+ logins
+         * Default switch-management role to use for TACACS+ logins. enum: `admin`, `helpdesk`, `none`, `read`.
          */
         defaultRole?: string;
         /**
@@ -8001,7 +8066,7 @@ export namespace device {
          */
         memberId: number;
         /**
-         * Role of this member in the Virtual Chassis
+         * Role of this member in the Virtual Chassis. enum: `backup`, `linecard`, `master`.
          */
         vcRole: string;
     }
@@ -8056,13 +8121,21 @@ export namespace device {
 
     export interface SwitchVrfInstancesMulticastConfig {
         /**
-         * When `true`, auto-generates a shared RP on `isL3Border` devices (ERB/IPClos topologies only)
+         * When `true`, generates a shared anycast RP on all `isL3Border` devices in EVPN (ERB/IPClos) topologies. Uses `rpIp` as the shared RP address, or an internal default when `rpIp` is omitted. Takes precedence over `rpMac` and `rpIp` when multiple RP options are set.
          */
         anycastRp?: boolean;
         /**
-         * RP address used when `anycastRp`==`false`. If the address matches a device SVI, it is configured as a local RP; otherwise a static RP is configured
+         * When `true`, enables the PIM EVPN Gateway on `isL3Border` devices. Required for external sources or receivers in EVPN topologies.
+         */
+        pegEnabled?: boolean;
+        /**
+         * RP address used for EVPN anycast RP when `anycastRp` is true, or for an external RP when it is false. In non-EVPN topologies, a matching device router ID configures a local RP; otherwise a static RP is configured.
          */
         rpIp?: string;
+        /**
+         * Device MAC address of a fabric RP in EVPN topologies. The RP address is the first usable IP of the VRF `evpnAutoLoopbackSubnet`, not `rpIp`; requires `evpnAutoLoopbackSubnet`. Takes precedence over `rpIp` when `anycastRp` is false.
+         */
+        rpMac?: string;
         /**
          * SBD IRB subnet; Mist auto-assigns per-device IPs from this range (EVPN eOISM only)
          */
@@ -8071,6 +8144,10 @@ export namespace device {
          * Supplemental Bridge Domain VLAN ID (EVPN topology / eOISM only)
          */
         sbdVlanId?: number;
+        /**
+         * When `true` on PEG borders, builds an eBGP mesh between PEG borders over SBD IRBs so WAN-learned routes can satisfy the PIM RPF check during a border WAN-uplink failure.
+         */
+        sbdWanRpf?: boolean;
     }
 
     export interface SwitchVrrpConfig {
@@ -8149,11 +8226,11 @@ export namespace org {
 
     export interface ApitokenPrivilege {
         /**
-         * Access role granted by this organization privilege
+         * Access role granted by this organization privilege. enum: `admin`, `helpdesk`, `installer`, `read`, `write`.
          */
         role: string;
         /**
-         * Organization hierarchy level where this privilege applies
+         * Organization hierarchy level where this privilege applies. enum: `org`, `site`, `sitegroup`, `orgsites`.
          */
         scope: string;
         /**
@@ -8210,7 +8287,7 @@ export namespace org {
          */
         beaconRate?: number;
         /**
-         * Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate
+         * Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate. enum: `custom`, `default`.
          */
         beaconRateMode?: string;
         /**
@@ -8306,7 +8383,7 @@ export namespace org {
          */
         power?: number;
         /**
-         * Transmit power mode for BLE beacons; use custom to set `power`
+         * Transmit power mode for BLE beacons; use custom to set `power`. enum: `custom`, `default`.
          */
         powerMode?: string;
     }
@@ -8333,7 +8410,7 @@ export namespace org {
          */
         port?: number;
         /**
-         * ESL integration type to enable on the AP
+         * ESL integration type to enable on the AP. enum: `hanshow`, `imagotag`, `native`, `solum`.
          */
         type: string;
         /**
@@ -8384,11 +8461,11 @@ export namespace org {
          */
         netmask6?: string;
         /**
-         * IPv4 address assignment mode for AP management traffic
+         * IPv4 address assignment mode for AP management traffic. enum: `dhcp`, `static`.
          */
         type: string;
         /**
-         * IPv6 address assignment mode for AP management traffic
+         * IPv6 address assignment mode for AP management traffic. enum: `autoconf`, `dhcp`, `disabled`, `static`.
          */
         type6?: string;
         /**
@@ -8448,7 +8525,7 @@ export namespace org {
          */
         brokerPort?: number;
         /**
-         * MQTT broker transport protocol
+         * MQTT broker transport protocol. enum: `ssl`, `tcp`.
          */
         brokerProto?: string;
         /**
@@ -8460,7 +8537,7 @@ export namespace org {
          */
         enabled?: boolean;
         /**
-         * Payload format for published messages
+         * Payload format for published messages. enum: `json`, `raw`.
          */
         format?: string;
         /**
@@ -8487,7 +8564,7 @@ export namespace org {
          */
         enableMacAuth: boolean;
         /**
-         * Traffic forwarding mode for this AP Ethernet port
+         * Traffic forwarding mode for this AP Ethernet port. enum: `all`, `limited`, `mxtunnel`, `siteMxedge`, `wxtunnel`.
          */
         forwarding: string;
         /**
@@ -8495,7 +8572,7 @@ export namespace org {
          */
         macAuthPreferred: boolean;
         /**
-         * Protocol used for MAC authentication when `enableMacAuth` is `true`
+         * Protocol used for MAC authentication when `enableMacAuth` is `true`. enum: `eap-md5`, `eap-peap`, `pap`.
          */
         macAuthProtocol: string;
         /**
@@ -8511,7 +8588,7 @@ export namespace org {
          */
         mxtunnelName: string;
         /**
-         * Authentication mode for this AP Ethernet port
+         * Authentication mode for this AP Ethernet port. enum: `dot1x`, `none`.
          */
         portAuth: string;
         /**
@@ -8556,7 +8633,7 @@ export namespace org {
          */
         enabled?: boolean;
         /**
-         * Mapping mode for interpreting dynamic VLAN attributes returned by RADIUS
+         * Mapping mode for interpreting dynamic VLAN attributes returned by RADIUS. enum: `airespace-interface-name`, `standard`.
          */
         type?: string;
         /**
@@ -8659,7 +8736,7 @@ export namespace org {
          */
         keywrapEnabled?: boolean;
         /**
-         * Encoding format for RADIUS keywrap KEK and MACK values
+         * Encoding format for RADIUS keywrap KEK and MACK values. enum: `ascii`, `hex`.
          */
         keywrapFormat?: string;
         /**
@@ -8690,7 +8767,7 @@ export namespace org {
          */
         keywrapEnabled?: boolean;
         /**
-         * Encoding format for RADIUS keywrap KEK and MACK values
+         * Encoding format for RADIUS keywrap KEK and MACK values. enum: `ascii`, `hex`.
          */
         keywrapFormat?: string;
         /**
@@ -8794,11 +8871,11 @@ export namespace org {
          */
         antGain6?: number;
         /**
-         * Selected radio chain mode for AP models that support antenna mode control
+         * Selected radio chain mode for AP models that support antenna mode control. enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`.
          */
         antennaMode?: string;
         /**
-         * Internal or external antenna selection for AP models with selectable antennas
+         * Internal or external antenna selection for AP models with selectable antennas. enum: ``, `external`, `internal`.
          */
         antennaSelect?: string;
         /**
@@ -8806,7 +8883,7 @@ export namespace org {
          */
         band24?: outputs.org.DeviceprofileApRadioConfigBand24;
         /**
-         * Radio usage mode for the 2.4 GHz-capable radio
+         * Radio usage mode for the 2.4 GHz-capable radio. enum: `24`, `5`, `6`, `auto`.
          */
         band24Usage?: string;
         /**
@@ -8849,11 +8926,11 @@ export namespace org {
          */
         antGain: number;
         /**
-         * Radio chain mode for the 2.4 GHz radio
+         * Radio chain mode for the 2.4 GHz radio. enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`.
          */
         antennaMode: string;
         /**
-         * Channel width configured for the 2.4 GHz radio
+         * Channel width configured for the 2.4 GHz radio. enum: `0`, `20`, `40`.
          */
         bandwidth: number;
         /**
@@ -8881,7 +8958,7 @@ export namespace org {
          */
         powerMin?: number;
         /**
-         * 802.11 preamble mode used by the 2.4 GHz radio
+         * 802.11 preamble mode used by the 2.4 GHz radio. enum: `auto`, `long`, `short`.
          */
         preamble: string;
     }
@@ -8896,15 +8973,15 @@ export namespace org {
          */
         antGain: number;
         /**
-         * Beam pattern used by the 5 GHz radio antenna
+         * Beam pattern used by the 5 GHz radio antenna. enum: `narrow`, `medium`, `wide`.
          */
         antennaBeamPattern?: string;
         /**
-         * Radio chain mode for the 5 GHz radio
+         * Radio chain mode for the 5 GHz radio. enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`.
          */
         antennaMode: string;
         /**
-         * Channel width configured for the 5 GHz radio
+         * Channel width configured for the 5 GHz radio. enum: `0`, `20`, `40`, `80`.
          */
         bandwidth: number;
         /**
@@ -8932,7 +9009,7 @@ export namespace org {
          */
         powerMin?: number;
         /**
-         * 802.11 preamble mode used by the 5 GHz radio
+         * 802.11 preamble mode used by the 5 GHz radio. enum: `auto`, `long`, `short`.
          */
         preamble: string;
     }
@@ -8947,15 +9024,15 @@ export namespace org {
          */
         antGain: number;
         /**
-         * Beam pattern used by the 5 GHz radio antenna
+         * Beam pattern used by the 5 GHz radio antenna. enum: `narrow`, `medium`, `wide`.
          */
         antennaBeamPattern?: string;
         /**
-         * Radio chain mode for the 5 GHz radio
+         * Radio chain mode for the 5 GHz radio. enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`.
          */
         antennaMode: string;
         /**
-         * Channel width configured for the 5 GHz radio
+         * Channel width configured for the 5 GHz radio. enum: `0`, `20`, `40`, `80`.
          */
         bandwidth: number;
         /**
@@ -8983,7 +9060,7 @@ export namespace org {
          */
         powerMin?: number;
         /**
-         * 802.11 preamble mode used by the 5 GHz radio
+         * 802.11 preamble mode used by the 5 GHz radio. enum: `auto`, `long`, `short`.
          */
         preamble: string;
     }
@@ -8998,15 +9075,15 @@ export namespace org {
          */
         antGain: number;
         /**
-         * Beam pattern used by the 6 GHz radio antenna
+         * Beam pattern used by the 6 GHz radio antenna. enum: `narrow`, `medium`, `wide`.
          */
         antennaBeamPattern?: string;
         /**
-         * Radio chain mode for the 6 GHz radio
+         * Radio chain mode for the 6 GHz radio. enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`.
          */
         antennaMode: string;
         /**
-         * Channel width configured for the 6 GHz radio
+         * Channel width configured for the 6 GHz radio. enum: `0`, `20`, `40`, `80`, `160`.
          */
         bandwidth: number;
         /**
@@ -9034,7 +9111,7 @@ export namespace org {
          */
         powerMin?: number;
         /**
-         * 802.11 preamble mode used by the 6 GHz radio
+         * 802.11 preamble mode used by the 6 GHz radio. enum: `auto`, `long`, `short`.
          */
         preamble: string;
         /**
@@ -9076,7 +9153,7 @@ export namespace org {
          */
         port?: number;
         /**
-         * USB integration type for this legacy AP USB configuration
+         * USB integration type for this legacy AP USB configuration. enum: `hanshow`, `imagotag`, `solum`.
          */
         type?: string;
         /**
@@ -9114,7 +9191,7 @@ export namespace org {
 
     export interface DeviceprofileApZigbeeConfig {
         /**
-         * Join policy for new Zigbee devices on this AP
+         * Join policy for new Zigbee devices on this AP. enum: `always`, `manual`.
          */
         allowJoin: string;
         /**
@@ -9327,11 +9404,11 @@ export namespace org {
          */
         serversv6s?: string[];
         /**
-         * IPv4 DHCP mode for this network
+         * IPv4 DHCP mode for this network. enum: `local`, `none`, `relay`.
          */
         type?: string;
         /**
-         * IPv6 DHCP mode for this network
+         * IPv6 DHCP mode for this network. enum: `local`, `none`, `relay`.
          */
         type6?: string;
         /**
@@ -9357,7 +9434,7 @@ export namespace org {
 
     export interface DeviceprofileGatewayDhcpdConfigConfigOptions {
         /**
-         * Data type used to encode this DHCP option value
+         * Data type used to encode this DHCP option value. enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`.
          */
         type?: string;
         /**
@@ -9368,7 +9445,7 @@ export namespace org {
 
     export interface DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulated {
         /**
-         * Data type used to encode this vendor option value
+         * Data type used to encode this vendor option value. enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`.
          */
         type?: string;
         /**
@@ -9393,7 +9470,7 @@ export namespace org {
 
     export interface DeviceprofileGatewayIdpProfiles {
         /**
-         * Built-in IDP baseline profile inherited before applying overwrites
+         * Built-in IDP baseline profile inherited before applying overwrites. enum: `critical`, `standard`, `strict`.
          */
         baseProfile?: string;
         /**
@@ -9412,7 +9489,7 @@ export namespace org {
 
     export interface DeviceprofileGatewayIdpProfilesOverwrite {
         /**
-         * Enforcement action applied when this overwrite rule matches
+         * Enforcement action applied when this overwrite rule matches. enum: `alert`, `close`, `drop`.
          */
         action?: string;
         /**
@@ -9462,11 +9539,11 @@ export namespace org {
          */
         secondaryIps: string[];
         /**
-         * IPv4 address assignment mode for this gateway network interface
+         * IPv4 address assignment mode for this gateway network interface. enum: `dhcp`, `static`.
          */
         type: string;
         /**
-         * IPv6 address assignment mode for this gateway network interface
+         * IPv6 address assignment mode for this gateway network interface. enum: `autoconf`, `dhcp`, `disabled`, `static`.
          */
         type6?: string;
     }
@@ -9528,6 +9605,10 @@ export namespace org {
          * VPN access settings keyed by VPN name for this network
          */
         vpnAccess?: {[key: string]: outputs.org.DeviceprofileGatewayNetworkVpnAccess};
+        /**
+         * SecurityZone this network belongs to. When set, the zone name is used as the security zone name on the SRX, and multiple networks can share the same zone. When omitted, the network `name` is used as the security zone name.
+         */
+        zoneId?: string;
     }
 
     export interface DeviceprofileGatewayNetworkInternalAccess {
@@ -9733,7 +9814,7 @@ export namespace org {
          */
         node1: outputs.org.DeviceprofileGatewayOobIpConfigNode1;
         /**
-         * IP assignment mode for the out-of-band management interface
+         * IP assignment mode for the out-of-band management interface. enum: `dhcp`, `static`.
          */
         type: string;
         /**
@@ -9764,7 +9845,7 @@ export namespace org {
          */
         netmask?: string;
         /**
-         * IP assignment mode for the node1 out-of-band management interface
+         * IP assignment mode for the node1 out-of-band management interface. enum: `dhcp`, `static`.
          */
         type: string;
         /**
@@ -9787,7 +9868,7 @@ export namespace org {
          */
         paths?: outputs.org.DeviceprofileGatewayPathPreferencesPath[];
         /**
-         * Selection strategy used to evaluate the candidate paths
+         * Selection strategy used to evaluate the candidate paths. enum: `ecmp`, `ordered`, `weighted`.
          */
         strategy: string;
     }
@@ -9867,7 +9948,7 @@ export namespace org {
          */
         disabled: boolean;
         /**
-         * If `wanType`==`dsl`. DSL technology used by the WAN port
+         * If `wanType`==`dsl`. DSL technology used by the WAN port. enum: `adsl`, `vdsl`.
          */
         dslType?: string;
         /**
@@ -9879,7 +9960,7 @@ export namespace org {
          */
         dslVpi?: number;
         /**
-         * Ethernet duplex mode configured on the port
+         * Ethernet duplex mode configured on the port. enum: `auto`, `full`, `half`.
          */
         duplex?: string;
         /**
@@ -9891,7 +9972,7 @@ export namespace org {
          */
         lteApn?: string;
         /**
-         * If `wanType`==`lte`. Authentication method used by the LTE uplink
+         * If `wanType`==`lte`. Authentication method used by the LTE uplink. enum: `chap`, `none`, `pap`.
          */
         lteAuth?: string;
         /**
@@ -9971,7 +10052,7 @@ export namespace org {
          */
         trafficShaping?: outputs.org.DeviceprofileGatewayPortConfigTrafficShaping;
         /**
-         * Logical usage assigned to the port
+         * Logical usage assigned to the port. enum: `haControl`, `haData`, `lan`, `wan`.
          */
         usage: string;
         /**
@@ -9983,7 +10064,7 @@ export namespace org {
          */
         vpnPaths?: {[key: string]: outputs.org.DeviceprofileGatewayPortConfigVpnPaths};
         /**
-         * Only when `wanType`==`broadband`. ARP policer profile applied to the WAN port
+         * Only when `wanType`==`broadband`. ARP policer profile applied to the WAN port. enum: `default`, `max`, `recommended`.
          */
         wanArpPolicer?: string;
         /**
@@ -10015,11 +10096,11 @@ export namespace org {
          */
         wanSourceNat?: outputs.org.DeviceprofileGatewayPortConfigWanSourceNat;
         /**
-         * Controls whether Marvis or the scheduler can run speed tests on this WAN port
+         * Controls whether Marvis or the scheduler can run speed tests on this WAN port. enum: `auto`, `enabled`, `disabled`.
          */
         wanSpeedtestMode: string;
         /**
-         * Only if `usage`==`wan`. WAN uplink type configured on the port
+         * Only if `usage`==`wan`. WAN uplink type configured on the port. enum: `broadband`, `dsl`, `lte`.
          */
         wanType?: string;
     }
@@ -10066,7 +10147,7 @@ export namespace org {
          */
         poserPassword?: string;
         /**
-         * Authentication protocol used for PPPoE when `type`==`pppoe`
+         * Authentication protocol used for PPPoE when `type`==`pppoe`. enum: `chap`, `none`, `pap`.
          */
         pppoeAuth?: string;
         /**
@@ -10074,11 +10155,11 @@ export namespace org {
          */
         pppoeUsername?: string;
         /**
-         * IPv4 assignment mode for this gateway port interface
+         * IPv4 assignment mode for this gateway port interface. enum: `dhcp`, `pppoe`, `static`.
          */
         type?: string;
         /**
-         * IPv6 assignment mode for this gateway port interface
+         * IPv6 assignment mode for this gateway port interface. enum: `autoconf`, `dhcp`, `static`.
          */
         type6?: string;
     }
@@ -10100,7 +10181,7 @@ export namespace org {
 
     export interface DeviceprofileGatewayPortConfigVpnPaths {
         /**
-         * BFD profile used for this VPN path when the VPN `type`==`hubSpoke`
+         * BFD profile used for this VPN path when the VPN `type`==`hubSpoke`. enum: `broadband`, `lte`.
          */
         bfdProfile?: string;
         /**
@@ -10112,7 +10193,7 @@ export namespace org {
          */
         preference?: number;
         /**
-         * Gateway role for this VPN path; valid values depend on the VPN `type`
+         * Gateway role for this VPN path; valid values depend on the VPN `type`. enum: `hub`, `mesh`, `spoke`.
          */
         role?: string;
         /**
@@ -10168,7 +10249,7 @@ export namespace org {
          */
         ips?: string[];
         /**
-         * WAN probe profile used for health checks on this port
+         * WAN probe profile used for health checks on this port. enum: `broadband`, `lte`.
          */
         probeProfile?: string;
     }
@@ -10424,7 +10505,7 @@ export namespace org {
          */
         enabled?: boolean;
         /**
-         * Enhanced web filtering profile applied by this rule
+         * Enhanced web filtering profile applied by this rule. enum: `critical`, `standard`, `strict`.
          */
         profile?: string;
     }
@@ -10473,7 +10554,7 @@ export namespace org {
          */
         enabled?: boolean;
         /**
-         * Sky ATP DNS DGA detection profile to apply
+         * Sky ATP DNS DGA detection profile to apply. enum: `default`, `standard`, `strict`.
          */
         profile?: string;
     }
@@ -10484,7 +10565,7 @@ export namespace org {
          */
         enabled?: boolean;
         /**
-         * Sky ATP DNS tunneling detection profile to apply
+         * Sky ATP DNS tunneling detection profile to apply. enum: `default`, `standard`, `strict`.
          */
         profile?: string;
     }
@@ -10495,7 +10576,7 @@ export namespace org {
          */
         enabled?: boolean;
         /**
-         * Sky ATP HTTP inspection profile to apply
+         * Sky ATP HTTP inspection profile to apply. enum: `standard`, `strict`.
          */
         profile?: string;
     }
@@ -10509,7 +10590,7 @@ export namespace org {
 
     export interface DeviceprofileGatewayServicePolicySslProxy {
         /**
-         * Allowed cipher strength category for SSL proxy inspection
+         * Allowed cipher strength category for SSL proxy inspection. enum: `medium`, `strong`, `weak`.
          */
         ciphersCategory?: string;
         /**
@@ -10539,7 +10620,7 @@ export namespace org {
          */
         ikeLifetime?: number;
         /**
-         * Only if `provider`==`custom-ipsec`. IKE negotiation mode for the tunnel
+         * Only if `provider`==`custom-ipsec`. IKE negotiation mode for the tunnel. enum: `aggressive`, `main`.
          */
         ikeMode?: string;
         /**
@@ -10563,7 +10644,7 @@ export namespace org {
          */
         localSubnets?: string[];
         /**
-         * Tunnel failover mode used for primary and secondary endpoints
+         * Tunnel failover mode used for primary and secondary endpoints. enum: `active-active`, `active-standby`.
          */
         mode?: string;
         /**
@@ -10579,11 +10660,11 @@ export namespace org {
          */
         probe?: outputs.org.DeviceprofileGatewayTunnelConfigsProbe;
         /**
-         * Only if `provider`==`custom-ipsec`. Tunnel protocol for custom tunnel negotiation
+         * Only if `provider`==`custom-ipsec`. Tunnel protocol for custom tunnel negotiation. enum: `gre`, `ipsec`.
          */
         protocol?: string;
         /**
-         * Tunnel provider used when auto provisioning is disabled
+         * Tunnel provider used when auto provisioning is disabled. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`.
          */
         provider?: string;
         /**
@@ -10599,7 +10680,7 @@ export namespace org {
          */
         secondary?: outputs.org.DeviceprofileGatewayTunnelConfigsSecondary;
         /**
-         * Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. Tunnel version value for custom tunnel configuration
+         * Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. Tunnel version value for custom tunnel configuration. enum: `1`, `2`.
          */
         version?: string;
     }
@@ -10618,7 +10699,7 @@ export namespace org {
          */
         primary?: outputs.org.DeviceprofileGatewayTunnelConfigsAutoProvisionPrimary;
         /**
-         * Tunnel provider used for automatic endpoint provisioning
+         * Tunnel provider used for automatic endpoint provisioning. enum: `jse-ipsec`, `zscaler-ipsec`.
          */
         provider: string;
         /**
@@ -10670,30 +10751,30 @@ export namespace org {
 
     export interface DeviceprofileGatewayTunnelConfigsIkeProposal {
         /**
-         * Integrity algorithm used by this IKE proposal
+         * Integrity algorithm used by this IKE proposal. enum: `md5`, `sha1`, `sha2`.
          */
         authAlgo?: string;
         /**
-         * Diffie-Hellman group used by this IKE proposal
+         * Diffie-Hellman group used by this IKE proposal. enum: `1`, `14`, `15`, `16`, `19`, `2`, `20`, `21`, `24`, `5`.
          */
         dhGroup?: string;
         /**
-         * Cipher algorithm used by this IKE proposal
+         * Cipher algorithm used by this IKE proposal. enum: `3des`, `aes128`, `aes256`, `aesGcm128`, `aesGcm256`.
          */
         encAlgo?: string;
     }
 
     export interface DeviceprofileGatewayTunnelConfigsIpsecProposal {
         /**
-         * Integrity algorithm used by this IPsec proposal
+         * Integrity algorithm used by this IPsec proposal. enum: `md5`, `sha1`, `sha2`.
          */
         authAlgo?: string;
         /**
-         * Diffie-Hellman group used by this IPsec proposal
+         * Diffie-Hellman group used by this IPsec proposal. enum: `1`, `14`, `15`, `16`, `19`, `2`, `20`, `21`, `24`, `5`.
          */
         dhGroup?: string;
         /**
-         * Cipher algorithm used by this IPsec proposal
+         * Cipher algorithm used by this IPsec proposal. enum: `3des`, `aes128`, `aes256`, `aesGcm128`, `aesGcm256`.
          */
         encAlgo?: string;
     }
@@ -10762,7 +10843,7 @@ export namespace org {
          */
         timeout?: number;
         /**
-         * Protocol used by the custom IPsec tunnel health probe
+         * Protocol used by the custom IPsec tunnel health probe. enum: `http`, `icmp`.
          */
         type: string;
     }
@@ -11062,7 +11143,7 @@ export namespace org {
          */
         subnets?: string[];
         /**
-         * Classifier type that determines which ACL tag fields are evaluated
+         * Classifier type that determines which ACL tag fields are evaluated. enum: `any`, `arubaUserRole`, `dynamicGbp`, `gbpResource`, `mac`, `network`, `portUsage`, `radiusGroup`, `resource`, `staticGbp`, `subnet`.
          */
         type: string;
     }
@@ -11167,11 +11248,11 @@ export namespace org {
          */
         servers6s?: string[];
         /**
-         * IPv4 DHCP mode for this switch network
+         * IPv4 DHCP mode for this switch network. enum: `none`, `relay`, `server`.
          */
         type?: string;
         /**
-         * IPv6 DHCP mode for this switch network
+         * IPv6 DHCP mode for this switch network. enum: `none`, `relay`, `server`.
          */
         type6?: string;
         /**
@@ -11197,7 +11278,7 @@ export namespace org {
 
     export interface DeviceprofileSwitchDhcpdConfigConfigOptions {
         /**
-         * Data type used to encode this DHCP option value
+         * Data type used to encode this DHCP option value. enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`.
          */
         type?: string;
         /**
@@ -11208,7 +11289,7 @@ export namespace org {
 
     export interface DeviceprofileSwitchDhcpdConfigConfigVendorEncapsulated {
         /**
-         * Data type used to encode this vendor option value
+         * Data type used to encode this vendor option value. enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`.
          */
         type?: string;
         /**
@@ -11223,7 +11304,7 @@ export namespace org {
          */
         enabled?: boolean;
         /**
-         * EVPN topology role for the switch
+         * EVPN topology role for the switch. enum: `access`, `border`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`.
          */
         role?: string;
     }
@@ -11306,7 +11387,7 @@ export namespace org {
 
     export interface DeviceprofileSwitchIotConfig {
         /**
-         * Alarm severity class raised for input-triggered switch IOT port events
+         * Alarm severity class raised for input-triggered switch IOT port events. enum: `minor`, `major`.
          */
         alarmClass?: string;
         /**
@@ -11314,7 +11395,7 @@ export namespace org {
          */
         enabled?: boolean;
         /**
-         * Only for `OUT` ports. Input port that triggers this output port
+         * Only for `OUT` ports. Input port that triggers this output port. enum: `IN0`, `IN1`.
          */
         inputSrc?: string;
         /**
@@ -11349,7 +11430,7 @@ export namespace org {
          */
         network?: string;
         /**
-         * IP assignment mode for this Junos IP configuration
+         * IP assignment mode for this Junos IP configuration. enum: `dhcp`, `static`.
          */
         type?: string;
     }
@@ -11429,7 +11510,7 @@ export namespace org {
          */
         network?: string;
         /**
-         * IP assignment mode for the out-of-band management interface
+         * IP assignment mode for the out-of-band management interface. enum: `dhcp`, `static`.
          */
         type?: string;
         /**
@@ -11452,7 +11533,7 @@ export namespace org {
          */
         networks: {[key: string]: outputs.org.DeviceprofileSwitchOspfAreasNetworks};
         /**
-         * Area type for this OSPF area
+         * Area type for this OSPF area. enum: `default`, `nssa`, `stub`.
          */
         type?: string;
     }
@@ -11467,7 +11548,7 @@ export namespace org {
          */
         authPassword?: string;
         /**
-         * Authentication method used by this OSPF network
+         * Authentication method used by this OSPF network. enum: `md5`, `none`, `password`.
          */
         authType?: string;
         /**
@@ -11491,7 +11572,7 @@ export namespace org {
          */
         importPolicy?: string;
         /**
-         * OSPF interface type used for this network
+         * OSPF interface type used for this network. enum: `broadcast`, `nbma`, `p2mp`, `p2p`.
          */
         interfaceType?: string;
         /**
@@ -11530,11 +11611,11 @@ export namespace org {
          */
         netmask6?: string;
         /**
-         * IPv4 assignment mode for the additional Junos L3 presence
+         * IPv4 assignment mode for the additional Junos L3 presence. enum: `dhcp`, `static`.
          */
         type?: string;
         /**
-         * IPv6 assignment mode for the additional Junos L3 presence
+         * IPv6 assignment mode for the additional Junos L3 presence. enum: `autoconf`, `dhcp`, `disabled`, `static`.
          */
         type6?: string;
     }
@@ -11577,7 +11658,7 @@ export namespace org {
          */
         disableAutoneg?: boolean;
         /**
-         * Link duplex mode for this Junos port
+         * Link duplex mode for this Junos port. enum: `auto`, `full`, `half`.
          */
         duplex?: string;
         /**
@@ -11609,7 +11690,7 @@ export namespace org {
          */
         portNetwork?: string;
         /**
-         * Link speed for this Junos port
+         * Link speed for this Junos port. enum: `10m`, `100m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`, `auto`.
          */
         speed?: string;
         /**
@@ -11687,7 +11768,7 @@ export namespace org {
          */
         disabled?: boolean;
         /**
-         * Only if `mode`!=`dynamic`. Link duplex mode for this port usage
+         * Only if `mode`!=`dynamic`. Link duplex mode for this port usage. enum: `auto`, `full`, `half`.
          */
         duplex?: string;
         /**
@@ -11723,7 +11804,7 @@ export namespace org {
          */
         macAuthPreferred?: boolean;
         /**
-         * Only if `mode`!=`dynamic` and `enableMacAuth`==`true`. MAC authentication protocol to use; ignored if Mist NAC is enabled
+         * Only if `mode`!=`dynamic` and `enableMacAuth`==`true`. Select `pap`, `eap-peap`, or `eap-md5`. When Mist NAC is enabled, this is forced to `pap`, unless `mist_nac.enable_eap_md5_for_mab` is enabled; then `eap-md5` is kept and the port performs MAB (mac-radius) while sending EAP-MD5. enum: `eap-md5`, `eap-peap`, `pap`.
          */
         macAuthProtocol?: string;
         /**
@@ -11731,7 +11812,7 @@ export namespace org {
          */
         macLimit?: string;
         /**
-         * Switching mode for this port usage
+         * Switching mode for this port usage. enum: `access`, `dynamic`, `inet`, `trunk`.
          */
         mode?: string;
         /**
@@ -11742,6 +11823,10 @@ export namespace org {
          * Only if `mode`==`trunk`. Network or VLAN names to trunk
          */
         networks: string[];
+        /**
+         * Whether this port usage can be overridden in local port configuration
+         */
+        noLocalPortConfig?: boolean;
         /**
          * Only if `mode`==`access` and `portAuth`!=`dot1x`. Whether the port should retain dynamically learned MAC addresses
          */
@@ -11755,11 +11840,11 @@ export namespace org {
          */
         poeKeepStateWhenReboot?: boolean;
         /**
-         * Only if `mode`!=`dynamic`. PoE priority for ports using this port usage
+         * Only if `mode`!=`dynamic`. PoE priority for ports using this port usage. enum: `low`, `high`.
          */
         poePriority?: string;
         /**
-         * Only if `mode`!=`dynamic`. 802.1X authentication mode for this port usage
+         * Only if `mode`!=`dynamic`. 802.1X authentication mode for this port usage. enum: `dot1x`.
          */
         portAuth?: string;
         /**
@@ -11771,7 +11856,7 @@ export namespace org {
          */
         reauthInterval?: string;
         /**
-         * Only if `mode`==`dynamic`. Condition that resets a dynamic port to the default port usage
+         * Only if `mode`==`dynamic`. Condition that resets a dynamic port to the default port usage. enum: `linkDown`, `none`.
          */
         resetDefaultWhen?: string;
         /**
@@ -11785,13 +11870,13 @@ export namespace org {
         /**
          * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Interval, in seconds. Sets the wait time before retrying authentication after RADIUS failure to reduce client flapping. Range 120-65535
          */
-        serverFailRetryInterval: number;
+        serverFailRetryInterval?: number;
         /**
          * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. When RADIUS server reject / fails
          */
         serverRejectNetwork?: string;
         /**
-         * Only if `mode`!=`dynamic`. Link speed for this port usage
+         * Only if `mode`!=`dynamic`. Link speed for this port usage. enum: `10m`, `100m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`, `auto`.
          */
         speed?: string;
         /**
@@ -11848,7 +11933,7 @@ export namespace org {
          */
         expression?: string;
         /**
-         * Source attribute evaluated by this dynamic rule
+         * Source attribute evaluated by this dynamic rule. enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemDescription`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`.
          */
         src: string;
         /**
@@ -11898,7 +11983,7 @@ export namespace org {
          */
         acctServers?: outputs.org.DeviceprofileSwitchRadiusConfigAcctServer[];
         /**
-         * Selection strategy for RADIUS authentication servers
+         * Selection strategy for RADIUS authentication servers. enum: `ordered`, `unordered`.
          */
         authServerSelection?: string;
         /**
@@ -11945,7 +12030,7 @@ export namespace org {
          */
         keywrapEnabled?: boolean;
         /**
-         * Encoding format for RADIUS keywrap KEK and MACK values
+         * Encoding format for RADIUS keywrap KEK and MACK values. enum: `ascii`, `hex`.
          */
         keywrapFormat?: string;
         /**
@@ -11976,7 +12061,7 @@ export namespace org {
          */
         keywrapEnabled?: boolean;
         /**
-         * Encoding format for RADIUS keywrap KEK and MACK values
+         * Encoding format for RADIUS keywrap KEK and MACK values. enum: `ascii`, `hex`.
          */
         keywrapFormat?: string;
         /**
@@ -12035,7 +12120,7 @@ export namespace org {
          */
         servers?: outputs.org.DeviceprofileSwitchRemoteSyslogServer[];
         /**
-         * Timestamp format used in forwarded syslog messages
+         * Timestamp format used in forwarded syslog messages. enum: `millisecond`, `year`, `year millisecond`.
          */
         timeFormat?: string;
         /**
@@ -12064,11 +12149,11 @@ export namespace org {
 
     export interface DeviceprofileSwitchRemoteSyslogConsoleContent {
         /**
-         * Syslog facility to match for this selector
+         * Syslog facility to match for this selector. enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`.
          */
         facility?: string;
         /**
-         * Syslog severity to match for this selector
+         * Syslog severity to match for this selector. enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`.
          */
         severity?: string;
     }
@@ -12117,11 +12202,11 @@ export namespace org {
 
     export interface DeviceprofileSwitchRemoteSyslogFileContent {
         /**
-         * Syslog facility to match for this selector
+         * Syslog facility to match for this selector. enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`.
          */
         facility?: string;
         /**
-         * Syslog severity to match for this selector
+         * Syslog severity to match for this selector. enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`.
          */
         severity?: string;
     }
@@ -12136,7 +12221,7 @@ export namespace org {
          */
         explicitPriority?: boolean;
         /**
-         * Default syslog facility for messages sent to this server
+         * Default syslog facility for messages sent to this server. enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`.
          */
         facility?: string;
         /**
@@ -12152,7 +12237,7 @@ export namespace org {
          */
         port?: string;
         /**
-         * Transport protocol used for this remote syslog server
+         * Transport protocol used for this remote syslog server. enum: `tcp`, `udp`.
          */
         protocol?: string;
         /**
@@ -12164,7 +12249,7 @@ export namespace org {
          */
         serverName?: string;
         /**
-         * Default syslog severity for messages sent to this server
+         * Default syslog severity for messages sent to this server. enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`.
          */
         severity?: string;
         /**
@@ -12183,11 +12268,11 @@ export namespace org {
 
     export interface DeviceprofileSwitchRemoteSyslogServerContent {
         /**
-         * Syslog facility to match for this selector
+         * Syslog facility to match for this selector. enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`.
          */
         facility?: string;
         /**
-         * Syslog severity to match for this selector
+         * Syslog severity to match for this selector. enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`.
          */
         severity?: string;
     }
@@ -12209,11 +12294,11 @@ export namespace org {
 
     export interface DeviceprofileSwitchRemoteSyslogUserContent {
         /**
-         * Syslog facility to match for this selector
+         * Syslog facility to match for this selector. enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`.
          */
         facility?: string;
         /**
-         * Syslog severity to match for this selector
+         * Syslog severity to match for this selector. enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`.
          */
         severity?: string;
     }
@@ -12300,7 +12385,7 @@ export namespace org {
          */
         engineId?: string;
         /**
-         * Method used to derive the SNMP engine ID
+         * Method used to derive the SNMP engine ID. enum: `local`, `useMacAddress`.
          */
         engineIdType?: string;
         /**
@@ -12358,7 +12443,7 @@ export namespace org {
          */
         targets?: string[];
         /**
-         * SNMP trap protocol version used by this group
+         * SNMP trap protocol version used by this group. enum: `all`, `v1`, `v2`.
          */
         version?: string;
     }
@@ -12479,7 +12564,7 @@ export namespace org {
 
     export interface DeviceprofileSwitchSnmpConfigV3ConfigTargetParameter {
         /**
-         * SNMP message processing model used by this target parameter profile
+         * SNMP message processing model used by this target parameter profile. enum: `v1`, `v2c`, `v3`.
          */
         messageProcessingModel: string;
         /**
@@ -12491,11 +12576,11 @@ export namespace org {
          */
         notifyFilter?: string;
         /**
-         * Required security level for this target parameter profile
+         * Required security level for this target parameter profile. enum: `authentication`, `none`, `privacy`.
          */
         securityLevel?: string;
         /**
-         * Required security model for this target parameter profile
+         * Required security model for this target parameter profile. enum: `usm`, `v1`, `v2c`.
          */
         securityModel?: string;
         /**
@@ -12506,7 +12591,7 @@ export namespace org {
 
     export interface DeviceprofileSwitchSnmpConfigV3ConfigUsm {
         /**
-         * SNMP engine type used for this USM configuration
+         * SNMP engine type used for this USM configuration. enum: `localEngine`, `remoteEngine`.
          */
         engineType: string;
         /**
@@ -12525,7 +12610,7 @@ export namespace org {
          */
         authenticationPassword?: string;
         /**
-         * Authentication protocol used by this SNMPv3 USM user
+         * Authentication protocol used by this SNMPv3 USM user. enum: `authentication-md5`, `authentication-none`, `authentication-sha`, `authentication-sha224`, `authentication-sha256`, `authentication-sha384`, `authentication-sha512`.
          */
         authenticationType?: string;
         /**
@@ -12533,7 +12618,7 @@ export namespace org {
          */
         encryptionPassword?: string;
         /**
-         * Privacy protocol used by this SNMPv3 USM user
+         * Privacy protocol used by this SNMPv3 USM user. enum: `privacy-3des`, `privacy-aes128`, `privacy-des`, `privacy-none`.
          */
         encryptionType?: string;
         /**
@@ -12578,15 +12663,15 @@ export namespace org {
          */
         readView?: string;
         /**
-         * Required security level for this VACM access rule
+         * Required security level for this VACM access rule. enum: `authentication`, `none`, `privacy`.
          */
         securityLevel?: string;
         /**
-         * Required security model for this VACM access rule
+         * Required security model for this VACM access rule. enum: `any`, `usm`, `v1`, `v2c`.
          */
         securityModel?: string;
         /**
-         * VACM context matching type for this access rule
+         * VACM context matching type for this access rule. enum: `contextPrefix`, `defaultContextPrefix`.
          */
         type?: string;
         /**
@@ -12601,7 +12686,7 @@ export namespace org {
          */
         contents?: outputs.org.DeviceprofileSwitchSnmpConfigV3ConfigVacmSecurityToGroupContent[];
         /**
-         * Required security model for these VACM group mappings
+         * Required security model for these VACM group mappings. enum: `usm`, `v1`, `v2c`.
          */
         securityModel?: string;
     }
@@ -12685,6 +12770,10 @@ export namespace org {
          */
         protectRe?: outputs.org.DeviceprofileSwitchSwitchMgmtProtectRe;
         /**
+         * Management authentication settings using RADIUS
+         */
+        radius?: outputs.org.DeviceprofileSwitchSwitchMgmtRadius;
+        /**
          * By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
          */
         removeExistingConfigs?: boolean;
@@ -12708,7 +12797,7 @@ export namespace org {
          */
         password?: string;
         /**
-         * Access role granted to the local switch user account
+         * Access role granted to the local switch user account. enum: `admin`, `helpdesk`, `none`, `read`.
          */
         role?: string;
     }
@@ -12753,13 +12842,59 @@ export namespace org {
         subnets: string[];
     }
 
+    export interface DeviceprofileSwitchSwitchMgmtRadius {
+        /**
+         * RADIUS authentication servers used for switch management authentication. Required when `enabled`==`true` and `useDifferentRadius`==`true`.
+         */
+        authServers?: outputs.org.DeviceprofileSwitchSwitchMgmtRadiusAuthServer[];
+        /**
+         * RADIUS auth session retries. Required when `enabled`==`true` and `useDifferentRadius`==`true`.
+         */
+        authServersRetries: number;
+        /**
+         * RADIUS auth session timeout, in seconds. Required when `enabled`==`true` and `useDifferentRadius`==`true`.
+         */
+        authServersTimeout: number;
+        /**
+         * Whether RADIUS is enabled for switch management authentication
+         */
+        enabled?: boolean;
+        /**
+         * Source network used for connectivity to the RADIUS servers
+         */
+        network?: string;
+        /**
+         * Whether to use alternate RADIUS settings instead of the default switch `radiusConfig`
+         */
+        useDifferentRadius?: boolean;
+    }
+
+    export interface DeviceprofileSwitchSwitchMgmtRadiusAuthServer {
+        /**
+         * Address or hostname of the RADIUS authentication server
+         */
+        host: string;
+        /**
+         * Unique identifier for this RADIUS authentication server entry
+         */
+        id: string;
+        /**
+         * UDP port used by the RADIUS authentication server
+         */
+        port?: string;
+        /**
+         * Shared secret used with this RADIUS authentication server
+         */
+        secret: string;
+    }
+
     export interface DeviceprofileSwitchSwitchMgmtTacacs {
         /**
          * TACACS+ accounting servers used for switch management sessions
          */
         acctServers?: outputs.org.DeviceprofileSwitchSwitchMgmtTacacsAcctServer[];
         /**
-         * Default switch-management role to use for TACACS+ logins
+         * Default switch-management role to use for TACACS+ logins. enum: `admin`, `helpdesk`, `none`, `read`.
          */
         defaultRole?: string;
         /**
@@ -12864,13 +12999,21 @@ export namespace org {
 
     export interface DeviceprofileSwitchVrfInstancesMulticastConfig {
         /**
-         * When `true`, auto-generates a shared RP on `isL3Border` devices (ERB/IPClos topologies only)
+         * When `true`, generates a shared anycast RP on all `isL3Border` devices in EVPN (ERB/IPClos) topologies. Uses `rpIp` as the shared RP address, or an internal default when `rpIp` is omitted. Takes precedence over `rpMac` and `rpIp` when multiple RP options are set.
          */
         anycastRp?: boolean;
         /**
-         * RP address used when `anycastRp`==`false`. If the address matches a device SVI, it is configured as a local RP; otherwise a static RP is configured
+         * When `true`, enables the PIM EVPN Gateway on `isL3Border` devices. Required for external sources or receivers in EVPN topologies.
+         */
+        pegEnabled?: boolean;
+        /**
+         * RP address used for EVPN anycast RP when `anycastRp` is true, or for an external RP when it is false. In non-EVPN topologies, a matching device router ID configures a local RP; otherwise a static RP is configured.
          */
         rpIp?: string;
+        /**
+         * Device MAC address of a fabric RP in EVPN topologies. The RP address is the first usable IP of the VRF `evpnAutoLoopbackSubnet`, not `rpIp`; requires `evpnAutoLoopbackSubnet`. Takes precedence over `rpIp` when `anycastRp` is false.
+         */
+        rpMac?: string;
         /**
          * SBD IRB subnet; Mist auto-assigns per-device IPs from this range (EVPN eOISM only)
          */
@@ -12879,6 +13022,10 @@ export namespace org {
          * Supplemental Bridge Domain VLAN ID (EVPN topology / eOISM only)
          */
         sbdVlanId?: number;
+        /**
+         * When `true` on PEG borders, builds an eBGP mesh between PEG borders over SBD IRBs so WAN-learned routes can satisfy the PIM RPF check during a border WAN-uplink failure.
+         */
+        sbdWanRpf?: boolean;
     }
 
     export interface DeviceprofileSwitchVrrpConfig {
@@ -12945,7 +13092,7 @@ export namespace org {
          */
         perVlanVgaV6Mac: boolean;
         /**
-         * Topology tier where EVPN virtual gateway routing is placed
+         * Topology tier where EVPN virtual gateway routing is placed. enum: `core`, `distribution`, `edge`.
          */
         routedAt: string;
         /**
@@ -12993,34 +13140,6 @@ export namespace org {
 
     export interface EvpnTopologySwitches {
         /**
-         * Associated device profile identifier for the switch. Use the Assign Org Device Profile endpoint to assign a Device Profile to the switch.
-         */
-        deviceprofileId: string;
-        /**
-         * IP addresses used by this switch for EVPN downlinks
-         */
-        downlinkIps: string[];
-        /**
-         * Switch MAC addresses connected as downlinks from this topology member
-         */
-        downlinks: string[];
-        /**
-         * Switch MAC addresses connected through ESI-LAG from this topology member
-         */
-        esilaglinks: string[];
-        /**
-         * Topology identifier number for this EVPN switch member
-         */
-        evpnId: number;
-        /**
-         * Switch MAC address used to identify the topology member
-         */
-        mac: string;
-        /**
-         * Switch model for this topology member
-         */
-        model: string;
-        /**
          * Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g. 
          *   * for CLOS, to group dist / access switches into pods
          *   * for ERB/CRB, to group dist / esilag-access into pods
@@ -13031,33 +13150,9 @@ export namespace org {
          */
         pods: number[];
         /**
-         * EVPN topology role for this switch
+         * EVPN topology role for this switch. enum: `access`, `border`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`.
          */
         role: string;
-        /**
-         * Routing identifier used by this switch for EVPN routing
-         */
-        routerId: string;
-        /**
-         * Associated site for this EVPN topology switch
-         */
-        siteId: string;
-        /**
-         * Builder-suggested downlink switch MAC addresses
-         */
-        suggestedDownlinks: string[];
-        /**
-         * Builder-suggested ESI-LAG switch MAC addresses
-         */
-        suggestedEsilaglinks: string[];
-        /**
-         * Builder-suggested uplink switch MAC addresses
-         */
-        suggestedUplinks: string[];
-        /**
-         * Switch MAC addresses connected as uplinks from this topology member
-         */
-        uplinks: string[];
     }
 
     export interface GatewaytemplateBgpConfig {
@@ -13252,11 +13347,11 @@ export namespace org {
          */
         serversv6s?: string[];
         /**
-         * IPv4 DHCP mode for this network
+         * IPv4 DHCP mode for this network. enum: `local`, `none`, `relay`.
          */
         type?: string;
         /**
-         * IPv6 DHCP mode for this network
+         * IPv6 DHCP mode for this network. enum: `local`, `none`, `relay`.
          */
         type6?: string;
         /**
@@ -13282,7 +13377,7 @@ export namespace org {
 
     export interface GatewaytemplateDhcpdConfigConfigOptions {
         /**
-         * Data type used to encode this DHCP option value
+         * Data type used to encode this DHCP option value. enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`.
          */
         type?: string;
         /**
@@ -13293,7 +13388,7 @@ export namespace org {
 
     export interface GatewaytemplateDhcpdConfigConfigVendorEncapsulated {
         /**
-         * Data type used to encode this vendor option value
+         * Data type used to encode this vendor option value. enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`.
          */
         type?: string;
         /**
@@ -13428,7 +13523,7 @@ export namespace org {
          */
         packetSize?: number;
         /**
-         * Probe protocol used by this custom application definition
+         * Probe protocol used by this custom application definition. enum: `http`, `icmp`.
          */
         protocol: string;
         /**
@@ -13443,7 +13538,7 @@ export namespace org {
 
     export interface GatewaytemplateGatewayMgmtAutoSignatureUpdate {
         /**
-         * Scheduled weekday for automatic signature updates
+         * Scheduled weekday for automatic signature updates. enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`.
          */
         dayOfWeek?: string;
         /**
@@ -13487,7 +13582,7 @@ export namespace org {
          */
         portRange: string;
         /**
-         * Transport protocol matched by this custom Protect RE ACL
+         * Transport protocol matched by this custom Protect RE ACL. enum: `any`, `icmp`, `tcp`, `udp`.
          */
         protocol: string;
         /**
@@ -13498,7 +13593,7 @@ export namespace org {
 
     export interface GatewaytemplateIdpProfiles {
         /**
-         * Built-in IDP baseline profile inherited before applying overwrites
+         * Built-in IDP baseline profile inherited before applying overwrites. enum: `critical`, `standard`, `strict`.
          */
         baseProfile?: string;
         /**
@@ -13517,7 +13612,7 @@ export namespace org {
 
     export interface GatewaytemplateIdpProfilesOverwrite {
         /**
-         * Enforcement action applied when this overwrite rule matches
+         * Enforcement action applied when this overwrite rule matches. enum: `alert`, `close`, `drop`.
          */
         action?: string;
         /**
@@ -13567,13 +13662,20 @@ export namespace org {
          */
         secondaryIps: string[];
         /**
-         * IPv4 address assignment mode for this gateway network interface
+         * IPv4 address assignment mode for this gateway network interface. enum: `dhcp`, `static`.
          */
         type: string;
         /**
-         * IPv6 address assignment mode for this gateway network interface
+         * IPv6 address assignment mode for this gateway network interface. enum: `autoconf`, `dhcp`, `disabled`, `static`.
          */
         type6?: string;
+    }
+
+    export interface GatewaytemplateMnhaConfig {
+        /**
+         * Whether MNHA mode is enabled
+         */
+        enabled?: boolean;
     }
 
     export interface GatewaytemplateNetwork {
@@ -13633,6 +13735,10 @@ export namespace org {
          * VPN access settings keyed by VPN name for this network
          */
         vpnAccess?: {[key: string]: outputs.org.GatewaytemplateNetworkVpnAccess};
+        /**
+         * SecurityZone this network belongs to. When set, the zone name is used as the security zone name on the SRX, and multiple networks can share the same zone. When omitted, the network `name` is used as the security zone name.
+         */
+        zoneId?: string;
     }
 
     export interface GatewaytemplateNetworkInternalAccess {
@@ -13838,7 +13944,7 @@ export namespace org {
          */
         node1: outputs.org.GatewaytemplateOobIpConfigNode1;
         /**
-         * IP assignment mode for the out-of-band management interface
+         * IP assignment mode for the out-of-band management interface. enum: `dhcp`, `static`.
          */
         type: string;
         /**
@@ -13869,7 +13975,7 @@ export namespace org {
          */
         netmask?: string;
         /**
-         * IP assignment mode for the node1 out-of-band management interface
+         * IP assignment mode for the node1 out-of-band management interface. enum: `dhcp`, `static`.
          */
         type: string;
         /**
@@ -13892,7 +13998,7 @@ export namespace org {
          */
         paths?: outputs.org.GatewaytemplatePathPreferencesPath[];
         /**
-         * Selection strategy used to evaluate the candidate paths
+         * Selection strategy used to evaluate the candidate paths. enum: `ecmp`, `ordered`, `weighted`.
          */
         strategy: string;
     }
@@ -13972,7 +14078,7 @@ export namespace org {
          */
         disabled: boolean;
         /**
-         * If `wanType`==`dsl`. DSL technology used by the WAN port
+         * If `wanType`==`dsl`. DSL technology used by the WAN port. enum: `adsl`, `vdsl`.
          */
         dslType?: string;
         /**
@@ -13984,7 +14090,7 @@ export namespace org {
          */
         dslVpi?: number;
         /**
-         * Ethernet duplex mode configured on the port
+         * Ethernet duplex mode configured on the port. enum: `auto`, `full`, `half`.
          */
         duplex?: string;
         /**
@@ -13996,7 +14102,7 @@ export namespace org {
          */
         lteApn?: string;
         /**
-         * If `wanType`==`lte`. Authentication method used by the LTE uplink
+         * If `wanType`==`lte`. Authentication method used by the LTE uplink. enum: `chap`, `none`, `pap`.
          */
         lteAuth?: string;
         /**
@@ -14076,7 +14182,7 @@ export namespace org {
          */
         trafficShaping?: outputs.org.GatewaytemplatePortConfigTrafficShaping;
         /**
-         * Logical usage assigned to the port
+         * Logical usage assigned to the port. enum: `haControl`, `haData`, `lan`, `wan`.
          */
         usage: string;
         /**
@@ -14088,7 +14194,7 @@ export namespace org {
          */
         vpnPaths?: {[key: string]: outputs.org.GatewaytemplatePortConfigVpnPaths};
         /**
-         * Only when `wanType`==`broadband`. ARP policer profile applied to the WAN port
+         * Only when `wanType`==`broadband`. ARP policer profile applied to the WAN port. enum: `default`, `max`, `recommended`.
          */
         wanArpPolicer?: string;
         /**
@@ -14120,11 +14226,11 @@ export namespace org {
          */
         wanSourceNat?: outputs.org.GatewaytemplatePortConfigWanSourceNat;
         /**
-         * Controls whether Marvis or the scheduler can run speed tests on this WAN port
+         * Controls whether Marvis or the scheduler can run speed tests on this WAN port. enum: `auto`, `enabled`, `disabled`.
          */
         wanSpeedtestMode: string;
         /**
-         * Only if `usage`==`wan`. WAN uplink type configured on the port
+         * Only if `usage`==`wan`. WAN uplink type configured on the port. enum: `broadband`, `dsl`, `lte`.
          */
         wanType?: string;
     }
@@ -14171,7 +14277,7 @@ export namespace org {
          */
         poserPassword?: string;
         /**
-         * Authentication protocol used for PPPoE when `type`==`pppoe`
+         * Authentication protocol used for PPPoE when `type`==`pppoe`. enum: `chap`, `none`, `pap`.
          */
         pppoeAuth?: string;
         /**
@@ -14179,11 +14285,11 @@ export namespace org {
          */
         pppoeUsername?: string;
         /**
-         * IPv4 assignment mode for this gateway port interface
+         * IPv4 assignment mode for this gateway port interface. enum: `dhcp`, `pppoe`, `static`.
          */
         type?: string;
         /**
-         * IPv6 assignment mode for this gateway port interface
+         * IPv6 assignment mode for this gateway port interface. enum: `autoconf`, `dhcp`, `static`.
          */
         type6?: string;
     }
@@ -14205,7 +14311,7 @@ export namespace org {
 
     export interface GatewaytemplatePortConfigVpnPaths {
         /**
-         * BFD profile used for this VPN path when the VPN `type`==`hubSpoke`
+         * BFD profile used for this VPN path when the VPN `type`==`hubSpoke`. enum: `broadband`, `lte`.
          */
         bfdProfile?: string;
         /**
@@ -14217,7 +14323,7 @@ export namespace org {
          */
         preference?: number;
         /**
-         * Gateway role for this VPN path; valid values depend on the VPN `type`
+         * Gateway role for this VPN path; valid values depend on the VPN `type`. enum: `hub`, `mesh`, `spoke`.
          */
         role?: string;
         /**
@@ -14273,7 +14379,7 @@ export namespace org {
          */
         ips?: string[];
         /**
-         * WAN probe profile used for health checks on this port
+         * WAN probe profile used for health checks on this port. enum: `broadband`, `lte`.
          */
         probeProfile?: string;
     }
@@ -14529,7 +14635,7 @@ export namespace org {
          */
         enabled?: boolean;
         /**
-         * Enhanced web filtering profile applied by this rule
+         * Enhanced web filtering profile applied by this rule. enum: `critical`, `standard`, `strict`.
          */
         profile?: string;
     }
@@ -14578,7 +14684,7 @@ export namespace org {
          */
         enabled?: boolean;
         /**
-         * Sky ATP DNS DGA detection profile to apply
+         * Sky ATP DNS DGA detection profile to apply. enum: `default`, `standard`, `strict`.
          */
         profile?: string;
     }
@@ -14589,7 +14695,7 @@ export namespace org {
          */
         enabled?: boolean;
         /**
-         * Sky ATP DNS tunneling detection profile to apply
+         * Sky ATP DNS tunneling detection profile to apply. enum: `default`, `standard`, `strict`.
          */
         profile?: string;
     }
@@ -14600,7 +14706,7 @@ export namespace org {
          */
         enabled?: boolean;
         /**
-         * Sky ATP HTTP inspection profile to apply
+         * Sky ATP HTTP inspection profile to apply. enum: `standard`, `strict`.
          */
         profile?: string;
     }
@@ -14614,7 +14720,7 @@ export namespace org {
 
     export interface GatewaytemplateServicePolicySslProxy {
         /**
-         * Allowed cipher strength category for SSL proxy inspection
+         * Allowed cipher strength category for SSL proxy inspection. enum: `medium`, `strong`, `weak`.
          */
         ciphersCategory?: string;
         /**
@@ -14644,7 +14750,7 @@ export namespace org {
          */
         ikeLifetime?: number;
         /**
-         * Only if `provider`==`custom-ipsec`. IKE negotiation mode for the tunnel
+         * Only if `provider`==`custom-ipsec`. IKE negotiation mode for the tunnel. enum: `aggressive`, `main`.
          */
         ikeMode?: string;
         /**
@@ -14668,7 +14774,7 @@ export namespace org {
          */
         localSubnets?: string[];
         /**
-         * Tunnel failover mode used for primary and secondary endpoints
+         * Tunnel failover mode used for primary and secondary endpoints. enum: `active-active`, `active-standby`.
          */
         mode?: string;
         /**
@@ -14684,11 +14790,11 @@ export namespace org {
          */
         probe?: outputs.org.GatewaytemplateTunnelConfigsProbe;
         /**
-         * Only if `provider`==`custom-ipsec`. Tunnel protocol for custom tunnel negotiation
+         * Only if `provider`==`custom-ipsec`. Tunnel protocol for custom tunnel negotiation. enum: `gre`, `ipsec`.
          */
         protocol?: string;
         /**
-         * Tunnel provider used when auto provisioning is disabled
+         * Tunnel provider used when auto provisioning is disabled. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`.
          */
         provider?: string;
         /**
@@ -14704,7 +14810,7 @@ export namespace org {
          */
         secondary?: outputs.org.GatewaytemplateTunnelConfigsSecondary;
         /**
-         * Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. Tunnel version value for custom tunnel configuration
+         * Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. Tunnel version value for custom tunnel configuration. enum: `1`, `2`.
          */
         version?: string;
     }
@@ -14723,7 +14829,7 @@ export namespace org {
          */
         primary?: outputs.org.GatewaytemplateTunnelConfigsAutoProvisionPrimary;
         /**
-         * Tunnel provider used for automatic endpoint provisioning
+         * Tunnel provider used for automatic endpoint provisioning. enum: `jse-ipsec`, `zscaler-ipsec`.
          */
         provider: string;
         /**
@@ -14775,30 +14881,30 @@ export namespace org {
 
     export interface GatewaytemplateTunnelConfigsIkeProposal {
         /**
-         * Integrity algorithm used by this IKE proposal
+         * Integrity algorithm used by this IKE proposal. enum: `md5`, `sha1`, `sha2`.
          */
         authAlgo?: string;
         /**
-         * Diffie-Hellman group used by this IKE proposal
+         * Diffie-Hellman group used by this IKE proposal. enum: `1`, `14`, `15`, `16`, `19`, `2`, `20`, `21`, `24`, `5`.
          */
         dhGroup?: string;
         /**
-         * Cipher algorithm used by this IKE proposal
+         * Cipher algorithm used by this IKE proposal. enum: `3des`, `aes128`, `aes256`, `aesGcm128`, `aesGcm256`.
          */
         encAlgo?: string;
     }
 
     export interface GatewaytemplateTunnelConfigsIpsecProposal {
         /**
-         * Integrity algorithm used by this IPsec proposal
+         * Integrity algorithm used by this IPsec proposal. enum: `md5`, `sha1`, `sha2`.
          */
         authAlgo?: string;
         /**
-         * Diffie-Hellman group used by this IPsec proposal
+         * Diffie-Hellman group used by this IPsec proposal. enum: `1`, `14`, `15`, `16`, `19`, `2`, `20`, `21`, `24`, `5`.
          */
         dhGroup?: string;
         /**
-         * Cipher algorithm used by this IPsec proposal
+         * Cipher algorithm used by this IPsec proposal. enum: `3des`, `aes128`, `aes256`, `aesGcm128`, `aesGcm256`.
          */
         encAlgo?: string;
     }
@@ -14867,7 +14973,7 @@ export namespace org {
          */
         timeout?: number;
         /**
-         * Protocol used by the custom IPsec tunnel health probe
+         * Protocol used by the custom IPsec tunnel health probe. enum: `http`, `icmp`.
          */
         type: string;
     }
@@ -17540,7 +17646,7 @@ export namespace org {
 
     export interface IdpprofileOverwrite {
         /**
-         * Enforcement action applied when this overwrite rule matches
+         * Enforcement action applied when this overwrite rule matches. enum: `alert`, `close`, `drop`.
          */
         action: string;
         /**
@@ -17724,11 +17830,11 @@ export namespace org {
          */
         mistPassword?: string;
         /**
-         * IPv4 address assignment mode for out-of-band management
+         * IPv4 address assignment mode for out-of-band management. enum: `dhcp`, `disabled`, `static`.
          */
         oobIpType: string;
         /**
-         * IPv6 address assignment mode for out-of-band management
+         * IPv6 address assignment mode for out-of-band management. enum: `autoconf`, `dhcp`, `disabled`, `static`.
          */
         oobIpType6: string;
         /**
@@ -17766,7 +17872,7 @@ export namespace org {
          */
         matchSsid?: boolean;
         /**
-         * Source used to populate NAS-IP-Address and NAS-IPv6-Address attributes
+         * Source used to populate NAS-IP-Address and NAS-IPv6-Address attributes. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`.
          */
         nasIpSource: string;
         /**
@@ -17774,11 +17880,11 @@ export namespace org {
          */
         proxyHosts?: string[];
         /**
-         * RADIUS server selection strategy for RadSec failover
+         * RADIUS server selection strategy for RadSec failover. enum: `ordered`, `unordered`.
          */
         serverSelection: string;
         /**
-         * Connection source interface or address used when reaching RADIUS servers
+         * Connection source interface or address used when reaching RADIUS servers. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`.
          */
         srcIpSource: string;
     }
@@ -17820,7 +17926,7 @@ export namespace org {
          */
         keywrapEnabled?: boolean;
         /**
-         * Encoding format for Mist AP RADIUS keywrap keys
+         * Encoding format for Mist AP RADIUS keywrap keys. enum: `ascii`, `hex`.
          */
         keywrapFormat: string;
         /**
@@ -17870,7 +17976,7 @@ export namespace org {
          */
         servers?: string[];
         /**
-         * DHCP forwarding mode for this tunneled VLAN
+         * DHCP forwarding mode for this tunneled VLAN. enum: `relay`.
          */
         type: string;
     }
@@ -17907,11 +18013,11 @@ export namespace org {
          */
         mistPassword?: string;
         /**
-         * IPv4 address assignment mode for out-of-band management
+         * IPv4 address assignment mode for out-of-band management. enum: `dhcp`, `disabled`, `static`.
          */
         oobIpType: string;
         /**
-         * IPv6 address assignment mode for out-of-band management
+         * IPv6 address assignment mode for out-of-band management. enum: `autoconf`, `dhcp`, `disabled`, `static`.
          */
         oobIpType6: string;
         /**
@@ -17958,11 +18064,11 @@ export namespace org {
          */
         netmask6?: string;
         /**
-         * IPv4 address assignment mode for out-of-band management
+         * IPv4 address assignment mode for out-of-band management. enum: `dhcp`, `static`.
          */
         type: string;
         /**
-         * IPv6 address assignment mode for out-of-band management
+         * IPv6 address assignment mode for out-of-band management. enum: `dhcp`, `static`.
          */
         type6: string;
     }
@@ -17988,7 +18094,7 @@ export namespace org {
          */
         servers?: string[];
         /**
-         * DHCP handling mode for this tunneled VLAN
+         * DHCP handling mode for this tunneled VLAN. enum: `relay`.
          */
         type: string;
     }
@@ -18160,7 +18266,7 @@ export namespace org {
 
     export interface MxtunnelAutoPreemption {
         /**
-         * Scheduled weekday for auto preemption
+         * Scheduled weekday for auto preemption. enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`.
          */
         dayOfWeek?: string;
         /**
@@ -18213,7 +18319,7 @@ export namespace org {
 
     export interface NacPortalPortal {
         /**
-         * Mode presented by the NAC guest portal for user authentication
+         * Mode presented by the NAC guest portal for user authentication. enum: `external`, `multi`, `none`.
          */
         auth?: string;
         /**
@@ -18252,7 +18358,7 @@ export namespace org {
          */
         idpCert?: string;
         /**
-         * Signing algorithm expected for SAML assertions from the identity provider
+         * Signing algorithm expected for SAML assertions from the identity provider. enum: `sha1`, `sha256`, `sha384`, `sha512`.
          */
         idpSignAlgo?: string;
         /**
@@ -18290,7 +18396,7 @@ export namespace org {
 
     export interface NacruleMatching {
         /**
-         * NAC authentication method that must match the request
+         * NAC authentication method that must match the request. enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `eap-peap`.
          */
         authType?: string;
         /**
@@ -18333,7 +18439,7 @@ export namespace org {
 
     export interface NacruleNotMatching {
         /**
-         * NAC authentication method that must match the request
+         * NAC authentication method that must match the request. enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `eap-peap`.
          */
         authType?: string;
         /**
@@ -18635,7 +18741,7 @@ export namespace org {
          */
         subnets?: string[];
         /**
-         * Classifier type that determines which ACL tag fields are evaluated
+         * Classifier type that determines which ACL tag fields are evaluated. enum: `any`, `arubaUserRole`, `dynamicGbp`, `gbpResource`, `mac`, `network`, `portUsage`, `radiusGroup`, `resource`, `staticGbp`, `subnet`.
          */
         type: string;
     }
@@ -18665,7 +18771,7 @@ export namespace org {
          */
         exportPolicy?: string;
         /**
-         * Default BGP hold time for switch BGP sessions
+         * Default BGP hold time for switch BGP sessions.
          */
         holdTime?: number;
         /**
@@ -18685,7 +18791,7 @@ export namespace org {
          */
         networks?: string[];
         /**
-         * BGP session type for this switch BGP configuration
+         * BGP session type for this switch BGP configuration. enum: `external`, `internal`.
          */
         type: string;
     }
@@ -18696,7 +18802,7 @@ export namespace org {
          */
         exportPolicy?: string;
         /**
-         * BGP hold time for this neighbor
+         * BGP hold time for this neighbor.
          */
         holdTime?: number;
         /**
@@ -18825,13 +18931,21 @@ export namespace org {
 
     export interface NetworktemplateMulticastConfig {
         /**
-         * When `true`, auto-generates a shared RP on `isL3Border` devices (ERB/IPClos topologies only)
+         * When `true`, generates a shared anycast RP on all `isL3Border` devices in EVPN (ERB/IPClos) topologies. Uses `rpIp` as the shared RP address, or an internal default when `rpIp` is omitted. Takes precedence over `rpMac` and `rpIp` when multiple RP options are set.
          */
         anycastRp?: boolean;
         /**
-         * RP address used when `anycastRp`==`false`. If the address matches a device SVI, it is configured as a local RP; otherwise a static RP is configured
+         * When `true`, enables the PIM EVPN Gateway on `isL3Border` devices. Required for external sources or receivers in EVPN topologies.
+         */
+        pegEnabled?: boolean;
+        /**
+         * RP address used for EVPN anycast RP when `anycastRp` is true, or for an external RP when it is false. In non-EVPN topologies, a matching device router ID configures a local RP; otherwise a static RP is configured.
          */
         rpIp?: string;
+        /**
+         * Device MAC address of a fabric RP in EVPN topologies. The RP address is the first usable IP of the VRF `evpnAutoLoopbackSubnet`, not `rpIp`; requires `evpnAutoLoopbackSubnet`. Takes precedence over `rpIp` when `anycastRp` is false.
+         */
+        rpMac?: string;
         /**
          * SBD IRB subnet; Mist auto-assigns per-device IPs from this range (EVPN eOISM only)
          */
@@ -18840,6 +18954,10 @@ export namespace org {
          * Supplemental Bridge Domain VLAN ID (EVPN topology / eOISM only)
          */
         sbdVlanId?: number;
+        /**
+         * When `true` on PEG borders, builds an eBGP mesh between PEG borders over SBD IRBs so WAN-learned routes can satisfy the PIM RPF check during a border WAN-uplink failure.
+         */
+        sbdWanRpf?: boolean;
     }
 
     export interface NetworktemplateNetworks {
@@ -18898,7 +19016,7 @@ export namespace org {
          */
         networks: {[key: string]: outputs.org.NetworktemplateOspfAreasNetworks};
         /**
-         * Area type for this OSPF area
+         * Area type for this OSPF area. enum: `default`, `nssa`, `stub`.
          */
         type: string;
     }
@@ -18913,7 +19031,7 @@ export namespace org {
          */
         authPassword?: string;
         /**
-         * Authentication method used by this OSPF network
+         * Authentication method used by this OSPF network. enum: `md5`, `none`, `password`.
          */
         authType?: string;
         /**
@@ -18937,7 +19055,7 @@ export namespace org {
          */
         importPolicy?: string;
         /**
-         * OSPF interface type used for this network
+         * OSPF interface type used for this network. enum: `broadcast`, `nbma`, `p2mp`, `p2p`.
          */
         interfaceType: string;
         /**
@@ -19023,7 +19141,7 @@ export namespace org {
          */
         disabled?: boolean;
         /**
-         * Only if `mode`!=`dynamic`. Link duplex mode for this port usage
+         * Only if `mode`!=`dynamic`. Link duplex mode for this port usage. enum: `auto`, `full`, `half`.
          */
         duplex?: string;
         /**
@@ -19059,7 +19177,7 @@ export namespace org {
          */
         macAuthPreferred?: boolean;
         /**
-         * Only if `mode`!=`dynamic` and `enableMacAuth`==`true`. MAC authentication protocol to use; ignored if Mist NAC is enabled
+         * Only if `mode`!=`dynamic` and `enableMacAuth`==`true`. Select `pap`, `eap-peap`, or `eap-md5`. When Mist NAC is enabled, this is forced to `pap`, unless `mist_nac.enable_eap_md5_for_mab` is enabled; then `eap-md5` is kept and the port performs MAB (mac-radius) while sending EAP-MD5. enum: `eap-md5`, `eap-peap`, `pap`.
          */
         macAuthProtocol?: string;
         /**
@@ -19067,7 +19185,7 @@ export namespace org {
          */
         macLimit?: string;
         /**
-         * Switching mode for this port usage
+         * Switching mode for this port usage. enum: `access`, `dynamic`, `inet`, `trunk`.
          */
         mode?: string;
         /**
@@ -19078,6 +19196,10 @@ export namespace org {
          * Only if `mode`==`trunk`. Network or VLAN names to trunk
          */
         networks: string[];
+        /**
+         * Whether this port usage can be overridden in local port configuration
+         */
+        noLocalPortConfig?: boolean;
         /**
          * Only if `mode`==`access` and `portAuth`!=`dot1x`. Whether the port should retain dynamically learned MAC addresses
          */
@@ -19091,11 +19213,11 @@ export namespace org {
          */
         poeKeepStateWhenReboot: boolean;
         /**
-         * Only if `mode`!=`dynamic`. PoE priority for ports using this port usage
+         * Only if `mode`!=`dynamic`. PoE priority for ports using this port usage. enum: `low`, `high`.
          */
         poePriority?: string;
         /**
-         * Only if `mode`!=`dynamic`. 802.1X authentication mode for this port usage
+         * Only if `mode`!=`dynamic`. 802.1X authentication mode for this port usage. enum: `dot1x`.
          */
         portAuth?: string;
         /**
@@ -19107,7 +19229,7 @@ export namespace org {
          */
         reauthInterval?: string;
         /**
-         * Only if `mode`==`dynamic`. Condition that resets a dynamic port to the default port usage
+         * Only if `mode`==`dynamic`. Condition that resets a dynamic port to the default port usage. enum: `linkDown`, `none`.
          */
         resetDefaultWhen?: string;
         /**
@@ -19121,13 +19243,13 @@ export namespace org {
         /**
          * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Interval, in seconds. Sets the wait time before retrying authentication after RADIUS failure to reduce client flapping. Range 120-65535
          */
-        serverFailRetryInterval: number;
+        serverFailRetryInterval?: number;
         /**
          * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. When RADIUS server reject / fails
          */
         serverRejectNetwork?: string;
         /**
-         * Only if `mode`!=`dynamic`. Link speed for this port usage
+         * Only if `mode`!=`dynamic`. Link speed for this port usage. enum: `10m`, `100m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`, `auto`.
          */
         speed?: string;
         /**
@@ -19188,7 +19310,7 @@ export namespace org {
          */
         expression?: string;
         /**
-         * Source attribute evaluated by this dynamic rule
+         * Source attribute evaluated by this dynamic rule. enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemDescription`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`.
          */
         src: string;
         /**
@@ -19238,7 +19360,7 @@ export namespace org {
          */
         acctServers?: outputs.org.NetworktemplateRadiusConfigAcctServer[];
         /**
-         * Selection strategy for RADIUS authentication servers
+         * Selection strategy for RADIUS authentication servers. enum: `ordered`, `unordered`.
          */
         authServerSelection: string;
         /**
@@ -19285,7 +19407,7 @@ export namespace org {
          */
         keywrapEnabled?: boolean;
         /**
-         * Encoding format for RADIUS keywrap KEK and MACK values
+         * Encoding format for RADIUS keywrap KEK and MACK values. enum: `ascii`, `hex`.
          */
         keywrapFormat?: string;
         /**
@@ -19316,7 +19438,7 @@ export namespace org {
          */
         keywrapEnabled?: boolean;
         /**
-         * Encoding format for RADIUS keywrap KEK and MACK values
+         * Encoding format for RADIUS keywrap KEK and MACK values. enum: `ascii`, `hex`.
          */
         keywrapFormat?: string;
         /**
@@ -19375,7 +19497,7 @@ export namespace org {
          */
         servers?: outputs.org.NetworktemplateRemoteSyslogServer[];
         /**
-         * Timestamp format used in forwarded syslog messages
+         * Timestamp format used in forwarded syslog messages. enum: `millisecond`, `year`, `year millisecond`.
          */
         timeFormat?: string;
         /**
@@ -19404,11 +19526,11 @@ export namespace org {
 
     export interface NetworktemplateRemoteSyslogConsoleContent {
         /**
-         * Syslog facility to match for this selector
+         * Syslog facility to match for this selector. enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`.
          */
         facility: string;
         /**
-         * Syslog severity to match for this selector
+         * Syslog severity to match for this selector. enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`.
          */
         severity: string;
     }
@@ -19457,11 +19579,11 @@ export namespace org {
 
     export interface NetworktemplateRemoteSyslogFileContent {
         /**
-         * Syslog facility to match for this selector
+         * Syslog facility to match for this selector. enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`.
          */
         facility: string;
         /**
-         * Syslog severity to match for this selector
+         * Syslog severity to match for this selector. enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`.
          */
         severity: string;
     }
@@ -19476,7 +19598,7 @@ export namespace org {
          */
         explicitPriority?: boolean;
         /**
-         * Default syslog facility for messages sent to this server
+         * Default syslog facility for messages sent to this server. enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`.
          */
         facility: string;
         /**
@@ -19492,7 +19614,7 @@ export namespace org {
          */
         port?: string;
         /**
-         * Transport protocol used for this remote syslog server
+         * Transport protocol used for this remote syslog server. enum: `tcp`, `udp`.
          */
         protocol: string;
         /**
@@ -19504,7 +19626,7 @@ export namespace org {
          */
         serverName?: string;
         /**
-         * Default syslog severity for messages sent to this server
+         * Default syslog severity for messages sent to this server. enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`.
          */
         severity: string;
         /**
@@ -19523,11 +19645,11 @@ export namespace org {
 
     export interface NetworktemplateRemoteSyslogServerContent {
         /**
-         * Syslog facility to match for this selector
+         * Syslog facility to match for this selector. enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`.
          */
         facility: string;
         /**
-         * Syslog severity to match for this selector
+         * Syslog severity to match for this selector. enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`.
          */
         severity: string;
     }
@@ -19549,11 +19671,11 @@ export namespace org {
 
     export interface NetworktemplateRemoteSyslogUserContent {
         /**
-         * Syslog facility to match for this selector
+         * Syslog facility to match for this selector. enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`.
          */
         facility: string;
         /**
-         * Syslog severity to match for this selector
+         * Syslog severity to match for this selector. enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`.
          */
         severity: string;
     }
@@ -19640,7 +19762,7 @@ export namespace org {
          */
         engineId?: string;
         /**
-         * Method used to derive the SNMP engine ID
+         * Method used to derive the SNMP engine ID. enum: `local`, `useMacAddress`.
          */
         engineIdType: string;
         /**
@@ -19698,7 +19820,7 @@ export namespace org {
          */
         targets?: string[];
         /**
-         * SNMP trap protocol version used by this group
+         * SNMP trap protocol version used by this group. enum: `all`, `v1`, `v2`.
          */
         version: string;
     }
@@ -19819,7 +19941,7 @@ export namespace org {
 
     export interface NetworktemplateSnmpConfigV3ConfigTargetParameter {
         /**
-         * SNMP message processing model used by this target parameter profile
+         * SNMP message processing model used by this target parameter profile. enum: `v1`, `v2c`, `v3`.
          */
         messageProcessingModel: string;
         /**
@@ -19831,11 +19953,11 @@ export namespace org {
          */
         notifyFilter?: string;
         /**
-         * Required security level for this target parameter profile
+         * Required security level for this target parameter profile. enum: `authentication`, `none`, `privacy`.
          */
         securityLevel?: string;
         /**
-         * Required security model for this target parameter profile
+         * Required security model for this target parameter profile. enum: `usm`, `v1`, `v2c`.
          */
         securityModel?: string;
         /**
@@ -19846,7 +19968,7 @@ export namespace org {
 
     export interface NetworktemplateSnmpConfigV3ConfigUsm {
         /**
-         * SNMP engine type used for this USM configuration
+         * SNMP engine type used for this USM configuration. enum: `localEngine`, `remoteEngine`.
          */
         engineType: string;
         /**
@@ -19865,7 +19987,7 @@ export namespace org {
          */
         authenticationPassword?: string;
         /**
-         * Authentication protocol used by this SNMPv3 USM user
+         * Authentication protocol used by this SNMPv3 USM user. enum: `authentication-md5`, `authentication-none`, `authentication-sha`, `authentication-sha224`, `authentication-sha256`, `authentication-sha384`, `authentication-sha512`.
          */
         authenticationType?: string;
         /**
@@ -19873,7 +19995,7 @@ export namespace org {
          */
         encryptionPassword?: string;
         /**
-         * Privacy protocol used by this SNMPv3 USM user
+         * Privacy protocol used by this SNMPv3 USM user. enum: `privacy-3des`, `privacy-aes128`, `privacy-des`, `privacy-none`.
          */
         encryptionType?: string;
         /**
@@ -19918,15 +20040,15 @@ export namespace org {
          */
         readView?: string;
         /**
-         * Required security level for this VACM access rule
+         * Required security level for this VACM access rule. enum: `authentication`, `none`, `privacy`.
          */
         securityLevel?: string;
         /**
-         * Required security model for this VACM access rule
+         * Required security model for this VACM access rule. enum: `any`, `usm`, `v1`, `v2c`.
          */
         securityModel?: string;
         /**
-         * VACM context matching type for this access rule
+         * VACM context matching type for this access rule. enum: `contextPrefix`, `defaultContextPrefix`.
          */
         type?: string;
         /**
@@ -19941,7 +20063,7 @@ export namespace org {
          */
         contents?: outputs.org.NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupContent[];
         /**
-         * Required security model for these VACM group mappings
+         * Required security model for these VACM group mappings. enum: `usm`, `v1`, `v2c`.
          */
         securityModel?: string;
     }
@@ -20040,14 +20162,14 @@ export namespace org {
          */
         network?: string;
         /**
-         * IP assignment mode for in-band switch management
+         * IP assignment mode for in-band switch management. enum: `dhcp`, `static`.
          */
         type: string;
     }
 
     export interface NetworktemplateSwitchMatchingRuleOobIpConfig {
         /**
-         * IP assignment mode for out-of-band switch management
+         * IP assignment mode for out-of-band switch management. enum: `dhcp`, `static`.
          */
         type: string;
         /**
@@ -20098,7 +20220,7 @@ export namespace org {
          */
         disableAutoneg?: boolean;
         /**
-         * Link duplex mode for this Junos port
+         * Link duplex mode for this Junos port. enum: `auto`, `full`, `half`.
          */
         duplex?: string;
         /**
@@ -20130,7 +20252,7 @@ export namespace org {
          */
         portNetwork?: string;
         /**
-         * Link speed for this Junos port
+         * Link speed for this Junos port. enum: `10m`, `100m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`, `auto`.
          */
         speed?: string;
         /**
@@ -20219,6 +20341,10 @@ export namespace org {
          */
         protectRe?: outputs.org.NetworktemplateSwitchMgmtProtectRe;
         /**
+         * Management authentication settings using RADIUS
+         */
+        radius?: outputs.org.NetworktemplateSwitchMgmtRadius;
+        /**
          * By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
          */
         removeExistingConfigs?: boolean;
@@ -20242,7 +20368,7 @@ export namespace org {
          */
         password?: string;
         /**
-         * Access role granted to the local switch user account
+         * Access role granted to the local switch user account. enum: `admin`, `helpdesk`, `none`, `read`.
          */
         role: string;
     }
@@ -20287,13 +20413,59 @@ export namespace org {
         subnets: string[];
     }
 
+    export interface NetworktemplateSwitchMgmtRadius {
+        /**
+         * RADIUS authentication servers used for switch management authentication. Required when `enabled`==`true` and `useDifferentRadius`==`true`.
+         */
+        authServers?: outputs.org.NetworktemplateSwitchMgmtRadiusAuthServer[];
+        /**
+         * RADIUS auth session retries. Required when `enabled`==`true` and `useDifferentRadius`==`true`.
+         */
+        authServersRetries: number;
+        /**
+         * RADIUS auth session timeout, in seconds. Required when `enabled`==`true` and `useDifferentRadius`==`true`.
+         */
+        authServersTimeout: number;
+        /**
+         * Whether RADIUS is enabled for switch management authentication
+         */
+        enabled?: boolean;
+        /**
+         * Source network used for connectivity to the RADIUS servers
+         */
+        network?: string;
+        /**
+         * Whether to use alternate RADIUS settings instead of the default switch `radiusConfig`
+         */
+        useDifferentRadius?: boolean;
+    }
+
+    export interface NetworktemplateSwitchMgmtRadiusAuthServer {
+        /**
+         * Address or hostname of the RADIUS authentication server
+         */
+        host: string;
+        /**
+         * Unique identifier for this RADIUS authentication server entry
+         */
+        id: string;
+        /**
+         * UDP port used by the RADIUS authentication server
+         */
+        port?: string;
+        /**
+         * Shared secret used with this RADIUS authentication server
+         */
+        secret: string;
+    }
+
     export interface NetworktemplateSwitchMgmtTacacs {
         /**
          * TACACS+ accounting servers used for switch management sessions
          */
         acctServers?: outputs.org.NetworktemplateSwitchMgmtTacacsAcctServer[];
         /**
-         * Default switch-management role to use for TACACS+ logins
+         * Default switch-management role to use for TACACS+ logins. enum: `admin`, `helpdesk`, `none`, `read`.
          */
         defaultRole?: string;
         /**
@@ -20398,13 +20570,21 @@ export namespace org {
 
     export interface NetworktemplateVrfInstancesMulticastConfig {
         /**
-         * When `true`, auto-generates a shared RP on `isL3Border` devices (ERB/IPClos topologies only)
+         * When `true`, generates a shared anycast RP on all `isL3Border` devices in EVPN (ERB/IPClos) topologies. Uses `rpIp` as the shared RP address, or an internal default when `rpIp` is omitted. Takes precedence over `rpMac` and `rpIp` when multiple RP options are set.
          */
         anycastRp?: boolean;
         /**
-         * RP address used when `anycastRp`==`false`. If the address matches a device SVI, it is configured as a local RP; otherwise a static RP is configured
+         * When `true`, enables the PIM EVPN Gateway on `isL3Border` devices. Required for external sources or receivers in EVPN topologies.
+         */
+        pegEnabled?: boolean;
+        /**
+         * RP address used for EVPN anycast RP when `anycastRp` is true, or for an external RP when it is false. In non-EVPN topologies, a matching device router ID configures a local RP; otherwise a static RP is configured.
          */
         rpIp?: string;
+        /**
+         * Device MAC address of a fabric RP in EVPN topologies. The RP address is the first usable IP of the VRF `evpnAutoLoopbackSubnet`, not `rpIp`; requires `evpnAutoLoopbackSubnet`. Takes precedence over `rpIp` when `anycastRp` is false.
+         */
+        rpMac?: string;
         /**
          * SBD IRB subnet; Mist auto-assigns per-device IPs from this range (EVPN eOISM only)
          */
@@ -20413,6 +20593,10 @@ export namespace org {
          * Supplemental Bridge Domain VLAN ID (EVPN topology / eOISM only)
          */
         sbdVlanId?: number;
+        /**
+         * When `true` on PEG borders, builds an eBGP mesh between PEG borders over SBD IRBs so WAN-learned routes can satisfy the PIM RPF check during a border WAN-uplink failure.
+         */
+        sbdWanRpf?: boolean;
     }
 
     export interface RftemplateBand24 {
@@ -20425,11 +20609,11 @@ export namespace org {
          */
         antGain: number;
         /**
-         * Radio chain mode for the 2.4 GHz radio
+         * Radio chain mode for the 2.4 GHz radio. enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`.
          */
         antennaMode?: string;
         /**
-         * Channel width configured for the 2.4 GHz radio
+         * Channel width configured for the 2.4 GHz radio. enum: `0`, `20`, `40`.
          */
         bandwidth: number;
         /**
@@ -20453,7 +20637,7 @@ export namespace org {
          */
         powerMin?: number;
         /**
-         * 802.11 preamble mode used by the 2.4 GHz radio
+         * 802.11 preamble mode used by the 2.4 GHz radio. enum: `auto`, `long`, `short`.
          */
         preamble?: string;
     }
@@ -20468,11 +20652,11 @@ export namespace org {
          */
         antGain: number;
         /**
-         * Radio chain mode for the 5 GHz radio
+         * Radio chain mode for the 5 GHz radio. enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`.
          */
         antennaMode?: string;
         /**
-         * Channel width configured for the 5 GHz radio
+         * Channel width configured for the 5 GHz radio. enum: `0`, `20`, `40`, `80`.
          */
         bandwidth: number;
         /**
@@ -20496,7 +20680,7 @@ export namespace org {
          */
         powerMin?: number;
         /**
-         * 802.11 preamble mode used by the 5 GHz radio
+         * 802.11 preamble mode used by the 5 GHz radio. enum: `auto`, `long`, `short`.
          */
         preamble?: string;
     }
@@ -20511,11 +20695,11 @@ export namespace org {
          */
         antGain: number;
         /**
-         * Radio chain mode for the 5 GHz radio
+         * Radio chain mode for the 5 GHz radio. enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`.
          */
         antennaMode: string;
         /**
-         * Channel width configured for the 5 GHz radio
+         * Channel width configured for the 5 GHz radio. enum: `0`, `20`, `40`, `80`.
          */
         bandwidth: number;
         /**
@@ -20539,7 +20723,7 @@ export namespace org {
          */
         powerMin?: number;
         /**
-         * 802.11 preamble mode used by the 5 GHz radio
+         * 802.11 preamble mode used by the 5 GHz radio. enum: `auto`, `long`, `short`.
          */
         preamble: string;
     }
@@ -20554,11 +20738,11 @@ export namespace org {
          */
         antGain: number;
         /**
-         * Radio chain mode for the 6 GHz radio
+         * Radio chain mode for the 6 GHz radio. enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`.
          */
         antennaMode?: string;
         /**
-         * Channel width configured for the 6 GHz radio
+         * Channel width configured for the 6 GHz radio. enum: `0`, `20`, `40`, `80`, `160`.
          */
         bandwidth: number;
         /**
@@ -20582,7 +20766,7 @@ export namespace org {
          */
         powerMin?: number;
         /**
-         * 802.11 preamble mode used by the 6 GHz radio
+         * 802.11 preamble mode used by the 6 GHz radio. enum: `auto`, `long`, `short`.
          */
         preamble?: string;
         /**
@@ -20609,7 +20793,7 @@ export namespace org {
          */
         band24?: outputs.org.RftemplateModelSpecificBand24;
         /**
-         * Model-specific radio usage mode for the 2.4 GHz-capable radio
+         * Model-specific radio usage mode for the 2.4 GHz-capable radio. enum: `24`, `5`, `6`, `auto`.
          */
         band24Usage?: string;
         /**
@@ -20636,11 +20820,11 @@ export namespace org {
          */
         antGain?: number;
         /**
-         * Radio chain mode for the 2.4 GHz radio
+         * Radio chain mode for the 2.4 GHz radio. enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`.
          */
         antennaMode?: string;
         /**
-         * Channel width configured for the 2.4 GHz radio
+         * Channel width configured for the 2.4 GHz radio. enum: `0`, `20`, `40`.
          */
         bandwidth?: number;
         /**
@@ -20664,7 +20848,7 @@ export namespace org {
          */
         powerMin?: number;
         /**
-         * 802.11 preamble mode used by the 2.4 GHz radio
+         * 802.11 preamble mode used by the 2.4 GHz radio. enum: `auto`, `long`, `short`.
          */
         preamble?: string;
     }
@@ -20679,11 +20863,11 @@ export namespace org {
          */
         antGain?: number;
         /**
-         * Radio chain mode for the 5 GHz radio
+         * Radio chain mode for the 5 GHz radio. enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`.
          */
         antennaMode?: string;
         /**
-         * Channel width configured for the 5 GHz radio
+         * Channel width configured for the 5 GHz radio. enum: `0`, `20`, `40`, `80`.
          */
         bandwidth?: number;
         /**
@@ -20707,7 +20891,7 @@ export namespace org {
          */
         powerMin?: number;
         /**
-         * 802.11 preamble mode used by the 5 GHz radio
+         * 802.11 preamble mode used by the 5 GHz radio. enum: `auto`, `long`, `short`.
          */
         preamble?: string;
     }
@@ -20722,11 +20906,11 @@ export namespace org {
          */
         antGain: number;
         /**
-         * Radio chain mode for the 5 GHz radio
+         * Radio chain mode for the 5 GHz radio. enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`.
          */
         antennaMode: string;
         /**
-         * Channel width configured for the 5 GHz radio
+         * Channel width configured for the 5 GHz radio. enum: `0`, `20`, `40`, `80`.
          */
         bandwidth: number;
         /**
@@ -20750,7 +20934,7 @@ export namespace org {
          */
         powerMin?: number;
         /**
-         * 802.11 preamble mode used by the 5 GHz radio
+         * 802.11 preamble mode used by the 5 GHz radio. enum: `auto`, `long`, `short`.
          */
         preamble: string;
     }
@@ -20765,11 +20949,11 @@ export namespace org {
          */
         antGain?: number;
         /**
-         * Radio chain mode for the 6 GHz radio
+         * Radio chain mode for the 6 GHz radio. enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`.
          */
         antennaMode?: string;
         /**
-         * Channel width configured for the 6 GHz radio
+         * Channel width configured for the 6 GHz radio. enum: `0`, `20`, `40`, `80`, `160`.
          */
         bandwidth?: number;
         /**
@@ -20793,7 +20977,7 @@ export namespace org {
          */
         powerMin?: number;
         /**
-         * 802.11 preamble mode used by the 6 GHz radio
+         * 802.11 preamble mode used by the 6 GHz radio. enum: `auto`, `long`, `short`.
          */
         preamble?: string;
         /**
@@ -20823,7 +21007,7 @@ export namespace org {
          */
         enabled: boolean;
         /**
-         * Built-in advanced anti-malware inspection profile to apply
+         * Built-in advanced anti-malware inspection profile to apply. enum: `docsonly`, `executables`, `standard`.
          */
         profile?: string;
     }
@@ -20864,7 +21048,7 @@ export namespace org {
          */
         enabled: boolean;
         /**
-         * Enhanced web filtering profile applied by this rule
+         * Enhanced web filtering profile applied by this rule. enum: `critical`, `standard`, `strict`.
          */
         profile?: string;
     }
@@ -20890,7 +21074,7 @@ export namespace org {
 
     export interface ServicepolicySslProxy {
         /**
-         * Allowed cipher strength category for SSL proxy inspection
+         * Allowed cipher strength category for SSL proxy inspection. enum: `medium`, `strong`, `weak`.
          */
         ciphersCategory: string;
         /**
@@ -20922,7 +21106,7 @@ export namespace org {
          */
         customVersions?: {[key: string]: string};
         /**
-         * Day of the week for the AP auto-upgrade maintenance window
+         * Day of the week for the AP auto-upgrade maintenance window. enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`.
          */
         dayOfWeek?: string;
         /**
@@ -20934,7 +21118,7 @@ export namespace org {
          */
         timeOfDay?: string;
         /**
-         * Firmware release channel or specific version used for AP auto-upgrade
+         * Firmware release channel or specific version used for AP auto-upgrade. enum: `beta`, `custom`, `stable`.
          */
         version: string;
     }
@@ -21094,19 +21278,19 @@ export namespace org {
 
     export interface SettingJunosShellAccess {
         /**
-         * Shell access level used for administrator web-shell sessions
+         * Shell access level used for administrator web-shell sessions. enum: `admin`, `none`, `viewer`.
          */
         admin: string;
         /**
-         * Shell access level used for helpdesk web-shell sessions
+         * Shell access level used for helpdesk web-shell sessions. enum: `admin`, `none`, `viewer`.
          */
         helpdesk: string;
         /**
-         * Shell access level used for read-only web-shell sessions
+         * Shell access level used for read-only web-shell sessions. enum: `admin`, `none`, `viewer`.
          */
         read: string;
         /**
-         * Shell access level used for write-role web-shell sessions
+         * Shell access level used for write-role web-shell sessions. enum: `admin`, `none`, `viewer`.
          */
         write: string;
     }
@@ -21207,11 +21391,11 @@ export namespace org {
          */
         fingerprinting?: outputs.org.SettingMistNacFingerprinting;
         /**
-         * Client certificate field used to look up machine groups in identity providers
+         * Client certificate field used to look up machine groups in identity providers. enum: `automatic`, `cn`, `dns`.
          */
         idpMachineCertLookupField?: string;
         /**
-         * Client certificate field used to look up user groups in identity providers
+         * Client certificate field used to look up user groups in identity providers. enum: `automatic`, `cn`, `email`, `upn`.
          */
         idpUserCertLookupField?: string;
         /**
@@ -21227,7 +21411,7 @@ export namespace org {
          */
         serverCert?: outputs.org.SettingMistNacServerCert;
         /**
-         * IP version used by NAS devices and Mist Edge proxies to reach Mist NAC
+         * IP version used by NAS devices and Mist Edge proxies to reach Mist NAC. enum: `v4`, `v6`.
          */
         useIpVersion?: string;
         /**
@@ -21254,7 +21438,7 @@ export namespace org {
          */
         generateWirelessCoa: boolean;
         /**
-         * Change of Authorization action sent to wireless clients when fingerprints change
+         * Change of Authorization action sent to wireless clients when fingerprints change. enum: `reauth`, `disconnect`.
          */
         wirelessCoaType?: string;
     }
@@ -21276,7 +21460,7 @@ export namespace org {
 
     export interface SettingMistNacMdm {
         /**
-         * Change of Authorization action sent for MDM posture changes
+         * Change of Authorization action sent for MDM posture changes. enum: `reauth`, `disconnect`.
          */
         coaType: string;
     }
@@ -21310,11 +21494,11 @@ export namespace org {
          */
         mistPassword?: string;
         /**
-         * IPv4 address assignment mode for out-of-band management
+         * IPv4 address assignment mode for out-of-band management. enum: `dhcp`, `disabled`, `static`.
          */
         oobIpType?: string;
         /**
-         * IPv6 address assignment mode for out-of-band management
+         * IPv6 address assignment mode for out-of-band management. enum: `autoconf`, `dhcp`, `disabled`, `static`.
          */
         oobIpType6?: string;
         /**
@@ -21408,7 +21592,7 @@ export namespace org {
 
     export interface SettingSsrAutoUpgrade {
         /**
-         * Firmware release channel used for SSR auto-upgrade
+         * Firmware release channel used for SSR auto-upgrade. enum: `alpha`, `beta`, `stable`.
          */
         channel?: string;
         /**
@@ -21467,7 +21651,7 @@ export namespace org {
 
     export interface SettingSyntheticTest {
         /**
-         * Overall aggressiveness level for synthetic test probes
+         * Overall aggressiveness level for synthetic test probes. enum: `auto`, `high`, `med`, `low`.
          */
         aggressiveness: string;
         /**
@@ -21496,7 +21680,7 @@ export namespace org {
 
     export interface SettingSyntheticTestCustomProbes {
         /**
-         * Probe aggressiveness level for this custom synthetic probe
+         * Probe aggressiveness level for this custom synthetic probe. enum: `auto`, `high`, `med`, `low`.
          */
         aggressiveness: string;
         /**
@@ -21508,7 +21692,7 @@ export namespace org {
          */
         threshold?: number;
         /**
-         * Probe type used by this custom synthetic probe
+         * Probe type used by this custom synthetic probe. enum: `application`, `curl`, `icmp`, `reachability`, `tcp`.
          */
         type: string;
     }
@@ -21547,9 +21731,9 @@ export namespace org {
 
     export interface SettingSyntheticTestWanSpeedtest {
         /**
-         * Whether scheduled WAN speedtests are enabled
+         * Whether scheduled WAN speedtests are disabled. Defaults to `false` (enabled); set this to `true` to disable speedtests.
          */
-        enabled?: boolean;
+        disabled?: boolean;
         /**
          * Scheduled time of day for WAN speedtests
          */
@@ -21594,11 +21778,11 @@ export namespace org {
 
     export interface SsoRolePrivilege {
         /**
-         * Access role granted by this organization privilege
+         * Access role granted by this organization privilege. enum: `admin`, `helpdesk`, `installer`, `read`, `write`.
          */
         role: string;
         /**
-         * Organization hierarchy level where this privilege applies
+         * Organization hierarchy level where this privilege applies. enum: `org`, `site`, `sitegroup`, `orgsites`.
          */
         scope: string;
         /**
@@ -21617,14 +21801,14 @@ export namespace org {
 
     export interface VpnPathSelection {
         /**
-         * Path selection strategy for a hub-and-spoke VPN
+         * Path selection strategy for a hub-and-spoke VPN. enum: `disabled`, `simple`, `manual`.
          */
         strategy: string;
     }
 
     export interface VpnPaths {
         /**
-         * BFD profile used for this VPN path
+         * BFD profile used for this VPN path. enum: `broadband`, `lte`.
          */
         bfdProfile?: string;
         /**
@@ -21673,7 +21857,7 @@ export namespace org {
 
     export interface WebhookRule {
         /**
-         * Action applied when the rule matches the incoming event
+         * Action applied when the rule matches the incoming event. enum: `permit`, `block`.
          */
         action?: string;
         /**
@@ -21696,7 +21880,7 @@ export namespace org {
          */
         keywrapEnabled?: boolean;
         /**
-         * Encoding format for RADIUS keywrap KEK and MACK values
+         * Encoding format for RADIUS keywrap KEK and MACK values. enum: `ascii`, `hex`.
          */
         keywrapFormat?: string;
         /**
@@ -21843,7 +22027,7 @@ export namespace org {
          */
         multiPskOnly: boolean;
         /**
-         * When `type`==`open`, Opportunistic Wireless Encryption mode for this WLAN
+         * When `type`==`open`, Opportunistic Wireless Encryption mode for this WLAN. enum: `disabled`, `enabled`, `required`.
          */
         owe?: string;
         /**
@@ -21859,7 +22043,7 @@ export namespace org {
          */
         psk: string;
         /**
-         * Authentication mode used by this WLAN
+         * Authentication mode used by this WLAN. enum: `eap`, `eap192`, `open`, `psk`, `psk-tkip`, `psk-wpa2-tkip`, `wep`.
          */
         type: string;
         /**
@@ -21878,7 +22062,7 @@ export namespace org {
          */
         keywrapEnabled?: boolean;
         /**
-         * Encoding format for RADIUS keywrap KEK and MACK values
+         * Encoding format for RADIUS keywrap KEK and MACK values. enum: `ascii`, `hex`.
          */
         keywrapFormat?: string;
         /**
@@ -21929,7 +22113,7 @@ export namespace org {
          */
         radiusGroups?: string[];
         /**
-         * Discovery scope for this Bonjour service on the WLAN
+         * Discovery scope for this Bonjour service on the WLAN. enum: `sameAp`, `sameMap`, `sameSite`.
          */
         scope: string;
     }
@@ -22009,7 +22193,7 @@ export namespace org {
          */
         localVlanIds?: string[];
         /**
-         * Origin used to retrieve per-user PSKs
+         * Origin used to retrieve per-user PSKs. enum: `cloudPsks`, `radius`.
          */
         source: string;
     }
@@ -22028,7 +22212,7 @@ export namespace org {
          */
         localVlanIds: string[];
         /**
-         * Dynamic VLAN mapping method used for RADIUS-provided VLAN attributes
+         * Dynamic VLAN mapping method used for RADIUS-provided VLAN attributes. enum: `airespace-interface-name`, `standard`.
          */
         type: string;
         /**
@@ -22154,7 +22338,7 @@ export namespace org {
          */
         amazonExpire?: number;
         /**
-         * Guest portal login scheme used by the WLAN
+         * Guest portal login scheme used by the WLAN. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`.
          */
         auth: string;
         /**
@@ -22342,7 +22526,7 @@ export namespace org {
          */
         smsMessageFormat: string;
         /**
-         * Optional if `smsEnabled`==`true`. SMS provider used to deliver guest portal access codes
+         * Optional if `smsEnabled`==`true`. SMS provider used to deliver guest portal access codes. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`, `smsglobal`.
          */
         smsProvider: string;
         /**
@@ -22405,7 +22589,7 @@ export namespace org {
          */
         ssoIdpCert: string;
         /**
-         * Optional if `wlanPortalAuth`==`sso`. Signing algorithm used for SAML assertions from the identity provider
+         * Optional if `wlanPortalAuth`==`sso`. Signing algorithm used for SAML assertions from the identity provider. enum: `sha1`, `sha256`, `sha384`, `sha512`.
          */
         ssoIdpSignAlgo: string;
         /**
@@ -22417,7 +22601,7 @@ export namespace org {
          */
         ssoIssuer: string;
         /**
-         * Optional if `wlanPortalAuth`==`sso`. SAML NameID format expected from the identity provider
+         * Optional if `wlanPortalAuth`==`sso`. SAML NameID format expected from the identity provider. enum: `email`, `unspecified`.
          */
         ssoNameidFormat: string;
         /**
@@ -22448,7 +22632,7 @@ export namespace org {
          */
         accessCodeAlternateEmail: string;
         /**
-         * Text and content alignment used by the guest portal template
+         * Text and content alignment used by the guest portal template. enum: `center`, `left`, `right`.
          */
         alignment: string;
         /**
@@ -23359,7 +23543,7 @@ export namespace org {
 
     export interface WlanQos {
         /**
-         * QoS traffic class applied when WLAN QoS override is enabled
+         * QoS traffic class applied when WLAN QoS override is enabled. enum: `background`, `bestEffort`, `video`, `voice`.
          */
         class: string;
         /**
@@ -23440,7 +23624,7 @@ export namespace org {
          */
         minRssi: number;
         /**
-         * Data rate template used to derive WLAN rate settings
+         * Data rate template used to derive WLAN rate settings. enum: `compatible`, `legacy-only`, `custom`, `no-legacy`, `high-density`.
          */
         template: string;
         /**
@@ -23588,7 +23772,7 @@ export namespace site {
          */
         perVlanVgaV6Mac: boolean;
         /**
-         * Topology tier where EVPN virtual gateway routing is placed
+         * Topology tier where EVPN virtual gateway routing is placed. enum: `core`, `distribution`, `edge`.
          */
         routedAt: string;
         /**
@@ -23636,34 +23820,6 @@ export namespace site {
 
     export interface EvpnTopologySwitches {
         /**
-         * Associated device profile identifier for the switch. Use the Assign Org Device Profile endpoint to assign a Device Profile to the switch.
-         */
-        deviceprofileId: string;
-        /**
-         * IP addresses used by this switch for EVPN downlinks
-         */
-        downlinkIps: string[];
-        /**
-         * Switch MAC addresses connected as downlinks from this topology member
-         */
-        downlinks: string[];
-        /**
-         * Switch MAC addresses connected through ESI-LAG from this topology member
-         */
-        esilaglinks: string[];
-        /**
-         * Topology identifier number for this EVPN switch member
-         */
-        evpnId: number;
-        /**
-         * Switch MAC address used to identify the topology member
-         */
-        mac: string;
-        /**
-         * Switch model for this topology member
-         */
-        model: string;
-        /**
          * Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g. 
          *   * for CLOS, to group dist / access switches into pods
          *   * for ERB/CRB, to group dist / esilag-access into pods
@@ -23674,33 +23830,9 @@ export namespace site {
          */
         pods: number[];
         /**
-         * EVPN topology role for this switch
+         * EVPN topology role for this switch. enum: `access`, `border`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`.
          */
         role: string;
-        /**
-         * Routing identifier used by this switch for EVPN routing
-         */
-        routerId: string;
-        /**
-         * Associated site for this EVPN topology switch
-         */
-        siteId: string;
-        /**
-         * Builder-suggested downlink switch MAC addresses
-         */
-        suggestedDownlinks: string[];
-        /**
-         * Builder-suggested ESI-LAG switch MAC addresses
-         */
-        suggestedEsilaglinks: string[];
-        /**
-         * Builder-suggested uplink switch MAC addresses
-         */
-        suggestedUplinks: string[];
-        /**
-         * Switch MAC addresses connected as uplinks from this topology member
-         */
-        uplinks: string[];
     }
 
     export interface GetEvpnTopologiesSiteEvpnTopology {
@@ -25159,7 +25291,7 @@ export namespace site {
          */
         subnets?: string[];
         /**
-         * Classifier type that determines which ACL tag fields are evaluated
+         * Classifier type that determines which ACL tag fields are evaluated. enum: `any`, `arubaUserRole`, `dynamicGbp`, `gbpResource`, `mac`, `network`, `portUsage`, `radiusGroup`, `resource`, `staticGbp`, `subnet`.
          */
         type: string;
     }
@@ -25341,7 +25473,7 @@ export namespace site {
          */
         networks: {[key: string]: outputs.site.NetworktemplateOspfAreasNetworks};
         /**
-         * Area type for this OSPF area
+         * Area type for this OSPF area. enum: `default`, `nssa`, `stub`.
          */
         type: string;
     }
@@ -25356,7 +25488,7 @@ export namespace site {
          */
         authPassword?: string;
         /**
-         * Authentication method used by this OSPF network
+         * Authentication method used by this OSPF network. enum: `md5`, `none`, `password`.
          */
         authType?: string;
         /**
@@ -25380,7 +25512,7 @@ export namespace site {
          */
         importPolicy?: string;
         /**
-         * OSPF interface type used for this network
+         * OSPF interface type used for this network. enum: `broadcast`, `nbma`, `p2mp`, `p2p`.
          */
         interfaceType: string;
         /**
@@ -25466,7 +25598,7 @@ export namespace site {
          */
         disabled?: boolean;
         /**
-         * Only if `mode`!=`dynamic`. Link duplex mode for this port usage
+         * Only if `mode`!=`dynamic`. Link duplex mode for this port usage. enum: `auto`, `full`, `half`.
          */
         duplex?: string;
         /**
@@ -25502,7 +25634,7 @@ export namespace site {
          */
         macAuthPreferred?: boolean;
         /**
-         * Only if `mode`!=`dynamic` and `enableMacAuth`==`true`. MAC authentication protocol to use; ignored if Mist NAC is enabled
+         * Only if `mode`!=`dynamic` and `enableMacAuth`==`true`. Select `pap`, `eap-peap`, or `eap-md5`. When Mist NAC is enabled, this is forced to `pap`, unless `mist_nac.enable_eap_md5_for_mab` is enabled; then `eap-md5` is kept and the port performs MAB (mac-radius) while sending EAP-MD5. enum: `eap-md5`, `eap-peap`, `pap`.
          */
         macAuthProtocol?: string;
         /**
@@ -25510,7 +25642,7 @@ export namespace site {
          */
         macLimit?: string;
         /**
-         * Switching mode for this port usage
+         * Switching mode for this port usage. enum: `access`, `dynamic`, `inet`, `trunk`.
          */
         mode?: string;
         /**
@@ -25521,6 +25653,10 @@ export namespace site {
          * Only if `mode`==`trunk`. Network or VLAN names to trunk
          */
         networks: string[];
+        /**
+         * Whether this port usage can be overridden in local port configuration
+         */
+        noLocalPortConfig?: boolean;
         /**
          * Only if `mode`==`access` and `portAuth`!=`dot1x`. Whether the port should retain dynamically learned MAC addresses
          */
@@ -25534,11 +25670,11 @@ export namespace site {
          */
         poeKeepStateWhenReboot: boolean;
         /**
-         * Only if `mode`!=`dynamic`. PoE priority for ports using this port usage
+         * Only if `mode`!=`dynamic`. PoE priority for ports using this port usage. enum: `low`, `high`.
          */
         poePriority?: string;
         /**
-         * Only if `mode`!=`dynamic`. 802.1X authentication mode for this port usage
+         * Only if `mode`!=`dynamic`. 802.1X authentication mode for this port usage. enum: `dot1x`.
          */
         portAuth?: string;
         /**
@@ -25550,7 +25686,7 @@ export namespace site {
          */
         reauthInterval?: string;
         /**
-         * Only if `mode`==`dynamic`. Condition that resets a dynamic port to the default port usage
+         * Only if `mode`==`dynamic`. Condition that resets a dynamic port to the default port usage. enum: `linkDown`, `none`.
          */
         resetDefaultWhen?: string;
         /**
@@ -25564,13 +25700,13 @@ export namespace site {
         /**
          * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Interval, in seconds. Sets the wait time before retrying authentication after RADIUS failure to reduce client flapping. Range 120-65535
          */
-        serverFailRetryInterval: number;
+        serverFailRetryInterval?: number;
         /**
          * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. When RADIUS server reject / fails
          */
         serverRejectNetwork?: string;
         /**
-         * Only if `mode`!=`dynamic`. Link speed for this port usage
+         * Only if `mode`!=`dynamic`. Link speed for this port usage. enum: `10m`, `100m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`, `auto`.
          */
         speed?: string;
         /**
@@ -25631,7 +25767,7 @@ export namespace site {
          */
         expression?: string;
         /**
-         * Source attribute evaluated by this dynamic rule
+         * Source attribute evaluated by this dynamic rule. enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemDescription`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`.
          */
         src: string;
         /**
@@ -25681,7 +25817,7 @@ export namespace site {
          */
         acctServers?: outputs.site.NetworktemplateRadiusConfigAcctServer[];
         /**
-         * Selection strategy for RADIUS authentication servers
+         * Selection strategy for RADIUS authentication servers. enum: `ordered`, `unordered`.
          */
         authServerSelection: string;
         /**
@@ -25728,7 +25864,7 @@ export namespace site {
          */
         keywrapEnabled?: boolean;
         /**
-         * Encoding format for RADIUS keywrap KEK and MACK values
+         * Encoding format for RADIUS keywrap KEK and MACK values. enum: `ascii`, `hex`.
          */
         keywrapFormat?: string;
         /**
@@ -25759,7 +25895,7 @@ export namespace site {
          */
         keywrapEnabled?: boolean;
         /**
-         * Encoding format for RADIUS keywrap KEK and MACK values
+         * Encoding format for RADIUS keywrap KEK and MACK values. enum: `ascii`, `hex`.
          */
         keywrapFormat?: string;
         /**
@@ -25818,7 +25954,7 @@ export namespace site {
          */
         servers?: outputs.site.NetworktemplateRemoteSyslogServer[];
         /**
-         * Timestamp format used in forwarded syslog messages
+         * Timestamp format used in forwarded syslog messages. enum: `millisecond`, `year`, `year millisecond`.
          */
         timeFormat?: string;
         /**
@@ -25847,11 +25983,11 @@ export namespace site {
 
     export interface NetworktemplateRemoteSyslogConsoleContent {
         /**
-         * Syslog facility to match for this selector
+         * Syslog facility to match for this selector. enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`.
          */
         facility: string;
         /**
-         * Syslog severity to match for this selector
+         * Syslog severity to match for this selector. enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`.
          */
         severity: string;
     }
@@ -25900,11 +26036,11 @@ export namespace site {
 
     export interface NetworktemplateRemoteSyslogFileContent {
         /**
-         * Syslog facility to match for this selector
+         * Syslog facility to match for this selector. enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`.
          */
         facility: string;
         /**
-         * Syslog severity to match for this selector
+         * Syslog severity to match for this selector. enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`.
          */
         severity: string;
     }
@@ -25919,7 +26055,7 @@ export namespace site {
          */
         explicitPriority?: boolean;
         /**
-         * Default syslog facility for messages sent to this server
+         * Default syslog facility for messages sent to this server. enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`.
          */
         facility: string;
         /**
@@ -25935,7 +26071,7 @@ export namespace site {
          */
         port?: string;
         /**
-         * Transport protocol used for this remote syslog server
+         * Transport protocol used for this remote syslog server. enum: `tcp`, `udp`.
          */
         protocol: string;
         /**
@@ -25947,7 +26083,7 @@ export namespace site {
          */
         serverName?: string;
         /**
-         * Default syslog severity for messages sent to this server
+         * Default syslog severity for messages sent to this server. enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`.
          */
         severity: string;
         /**
@@ -25966,11 +26102,11 @@ export namespace site {
 
     export interface NetworktemplateRemoteSyslogServerContent {
         /**
-         * Syslog facility to match for this selector
+         * Syslog facility to match for this selector. enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`.
          */
         facility: string;
         /**
-         * Syslog severity to match for this selector
+         * Syslog severity to match for this selector. enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`.
          */
         severity: string;
     }
@@ -25992,11 +26128,11 @@ export namespace site {
 
     export interface NetworktemplateRemoteSyslogUserContent {
         /**
-         * Syslog facility to match for this selector
+         * Syslog facility to match for this selector. enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`.
          */
         facility: string;
         /**
-         * Syslog severity to match for this selector
+         * Syslog severity to match for this selector. enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`.
          */
         severity: string;
     }
@@ -26083,7 +26219,7 @@ export namespace site {
          */
         engineId?: string;
         /**
-         * Method used to derive the SNMP engine ID
+         * Method used to derive the SNMP engine ID. enum: `local`, `useMacAddress`.
          */
         engineIdType: string;
         /**
@@ -26141,7 +26277,7 @@ export namespace site {
          */
         targets?: string[];
         /**
-         * SNMP trap protocol version used by this group
+         * SNMP trap protocol version used by this group. enum: `all`, `v1`, `v2`.
          */
         version: string;
     }
@@ -26262,7 +26398,7 @@ export namespace site {
 
     export interface NetworktemplateSnmpConfigV3ConfigTargetParameter {
         /**
-         * SNMP message processing model used by this target parameter profile
+         * SNMP message processing model used by this target parameter profile. enum: `v1`, `v2c`, `v3`.
          */
         messageProcessingModel: string;
         /**
@@ -26274,11 +26410,11 @@ export namespace site {
          */
         notifyFilter?: string;
         /**
-         * Required security level for this target parameter profile
+         * Required security level for this target parameter profile. enum: `authentication`, `none`, `privacy`.
          */
         securityLevel?: string;
         /**
-         * Required security model for this target parameter profile
+         * Required security model for this target parameter profile. enum: `usm`, `v1`, `v2c`.
          */
         securityModel?: string;
         /**
@@ -26289,7 +26425,7 @@ export namespace site {
 
     export interface NetworktemplateSnmpConfigV3ConfigUsm {
         /**
-         * SNMP engine type used for this USM configuration
+         * SNMP engine type used for this USM configuration. enum: `localEngine`, `remoteEngine`.
          */
         engineType: string;
         /**
@@ -26308,7 +26444,7 @@ export namespace site {
          */
         authenticationPassword?: string;
         /**
-         * Authentication protocol used by this SNMPv3 USM user
+         * Authentication protocol used by this SNMPv3 USM user. enum: `authentication-md5`, `authentication-none`, `authentication-sha`, `authentication-sha224`, `authentication-sha256`, `authentication-sha384`, `authentication-sha512`.
          */
         authenticationType?: string;
         /**
@@ -26316,7 +26452,7 @@ export namespace site {
          */
         encryptionPassword?: string;
         /**
-         * Privacy protocol used by this SNMPv3 USM user
+         * Privacy protocol used by this SNMPv3 USM user. enum: `privacy-3des`, `privacy-aes128`, `privacy-des`, `privacy-none`.
          */
         encryptionType?: string;
         /**
@@ -26361,15 +26497,15 @@ export namespace site {
          */
         readView?: string;
         /**
-         * Required security level for this VACM access rule
+         * Required security level for this VACM access rule. enum: `authentication`, `none`, `privacy`.
          */
         securityLevel?: string;
         /**
-         * Required security model for this VACM access rule
+         * Required security model for this VACM access rule. enum: `any`, `usm`, `v1`, `v2c`.
          */
         securityModel?: string;
         /**
-         * VACM context matching type for this access rule
+         * VACM context matching type for this access rule. enum: `contextPrefix`, `defaultContextPrefix`.
          */
         type?: string;
         /**
@@ -26384,7 +26520,7 @@ export namespace site {
          */
         contents?: outputs.site.NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupContent[];
         /**
-         * Required security model for these VACM group mappings
+         * Required security model for these VACM group mappings. enum: `usm`, `v1`, `v2c`.
          */
         securityModel?: string;
     }
@@ -26483,14 +26619,14 @@ export namespace site {
          */
         network?: string;
         /**
-         * IP assignment mode for in-band switch management
+         * IP assignment mode for in-band switch management. enum: `dhcp`, `static`.
          */
         type: string;
     }
 
     export interface NetworktemplateSwitchMatchingRuleOobIpConfig {
         /**
-         * IP assignment mode for out-of-band switch management
+         * IP assignment mode for out-of-band switch management. enum: `dhcp`, `static`.
          */
         type: string;
         /**
@@ -26541,7 +26677,7 @@ export namespace site {
          */
         disableAutoneg?: boolean;
         /**
-         * Link duplex mode for this Junos port
+         * Link duplex mode for this Junos port. enum: `auto`, `full`, `half`.
          */
         duplex?: string;
         /**
@@ -26573,7 +26709,7 @@ export namespace site {
          */
         portNetwork?: string;
         /**
-         * Link speed for this Junos port
+         * Link speed for this Junos port. enum: `10m`, `100m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`, `auto`.
          */
         speed?: string;
         /**
@@ -26662,6 +26798,10 @@ export namespace site {
          */
         protectRe?: outputs.site.NetworktemplateSwitchMgmtProtectRe;
         /**
+         * Management authentication settings using RADIUS
+         */
+        radius?: outputs.site.NetworktemplateSwitchMgmtRadius;
+        /**
          * By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
          */
         removeExistingConfigs?: boolean;
@@ -26685,7 +26825,7 @@ export namespace site {
          */
         password?: string;
         /**
-         * Access role granted to the local switch user account
+         * Access role granted to the local switch user account. enum: `admin`, `helpdesk`, `none`, `read`.
          */
         role: string;
     }
@@ -26730,13 +26870,59 @@ export namespace site {
         subnets: string[];
     }
 
+    export interface NetworktemplateSwitchMgmtRadius {
+        /**
+         * RADIUS authentication servers used for switch management authentication. Required when `enabled`==`true` and `useDifferentRadius`==`true`.
+         */
+        authServers?: outputs.site.NetworktemplateSwitchMgmtRadiusAuthServer[];
+        /**
+         * RADIUS auth session retries. Required when `enabled`==`true` and `useDifferentRadius`==`true`.
+         */
+        authServersRetries: number;
+        /**
+         * RADIUS auth session timeout, in seconds. Required when `enabled`==`true` and `useDifferentRadius`==`true`.
+         */
+        authServersTimeout: number;
+        /**
+         * Whether RADIUS is enabled for switch management authentication
+         */
+        enabled?: boolean;
+        /**
+         * Source network used for connectivity to the RADIUS servers
+         */
+        network?: string;
+        /**
+         * Whether to use alternate RADIUS settings instead of the default switch `radiusConfig`
+         */
+        useDifferentRadius?: boolean;
+    }
+
+    export interface NetworktemplateSwitchMgmtRadiusAuthServer {
+        /**
+         * Address or hostname of the RADIUS authentication server
+         */
+        host: string;
+        /**
+         * Unique identifier for this RADIUS authentication server entry
+         */
+        id: string;
+        /**
+         * UDP port used by the RADIUS authentication server
+         */
+        port?: string;
+        /**
+         * Shared secret used with this RADIUS authentication server
+         */
+        secret: string;
+    }
+
     export interface NetworktemplateSwitchMgmtTacacs {
         /**
          * TACACS+ accounting servers used for switch management sessions
          */
         acctServers?: outputs.site.NetworktemplateSwitchMgmtTacacsAcctServer[];
         /**
-         * Default switch-management role to use for TACACS+ logins
+         * Default switch-management role to use for TACACS+ logins. enum: `admin`, `helpdesk`, `none`, `read`.
          */
         defaultRole?: string;
         /**
@@ -26841,13 +27027,21 @@ export namespace site {
 
     export interface NetworktemplateVrfInstancesMulticastConfig {
         /**
-         * When `true`, auto-generates a shared RP on `isL3Border` devices (ERB/IPClos topologies only)
+         * When `true`, generates a shared anycast RP on all `isL3Border` devices in EVPN (ERB/IPClos) topologies. Uses `rpIp` as the shared RP address, or an internal default when `rpIp` is omitted. Takes precedence over `rpMac` and `rpIp` when multiple RP options are set.
          */
         anycastRp?: boolean;
         /**
-         * RP address used when `anycastRp`==`false`. If the address matches a device SVI, it is configured as a local RP; otherwise a static RP is configured
+         * When `true`, enables the PIM EVPN Gateway on `isL3Border` devices. Required for external sources or receivers in EVPN topologies.
+         */
+        pegEnabled?: boolean;
+        /**
+         * RP address used for EVPN anycast RP when `anycastRp` is true, or for an external RP when it is false. In non-EVPN topologies, a matching device router ID configures a local RP; otherwise a static RP is configured.
          */
         rpIp?: string;
+        /**
+         * Device MAC address of a fabric RP in EVPN topologies. The RP address is the first usable IP of the VRF `evpnAutoLoopbackSubnet`, not `rpIp`; requires `evpnAutoLoopbackSubnet`. Takes precedence over `rpIp` when `anycastRp` is false.
+         */
+        rpMac?: string;
         /**
          * SBD IRB subnet; Mist auto-assigns per-device IPs from this range (EVPN eOISM only)
          */
@@ -26856,6 +27050,10 @@ export namespace site {
          * Supplemental Bridge Domain VLAN ID (EVPN topology / eOISM only)
          */
         sbdVlanId?: number;
+        /**
+         * When `true` on PEG borders, builds an eBGP mesh between PEG borders over SBD IRBs so WAN-learned routes can satisfy the PIM RPF check during a border WAN-uplink failure.
+         */
+        sbdWanRpf?: boolean;
     }
 
     export interface SettingAnalytic {
@@ -26878,7 +27076,7 @@ export namespace site {
          */
         customVersions: {[key: string]: string};
         /**
-         * Weekly AP auto-upgrade day for the maintenance window
+         * Weekly AP auto-upgrade day for the maintenance window. enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`.
          */
         dayOfWeek?: string;
         /**
@@ -26890,7 +27088,7 @@ export namespace site {
          */
         timeOfDay?: string;
         /**
-         * Firmware release channel or custom version used for AP auto-upgrade
+         * Firmware release channel or custom version used for AP auto-upgrade. enum: `beta`, `custom`, `stable`.
          */
         version: string;
     }
@@ -26905,7 +27103,7 @@ export namespace site {
          */
         customVersions?: {[key: string]: string};
         /**
-         * Weekly ESL auto-upgrade day for the maintenance window
+         * Weekly ESL auto-upgrade day for the maintenance window. enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`.
          */
         dayOfWeek?: string;
         /**
@@ -26932,7 +27130,7 @@ export namespace site {
          */
         beaconRate?: number;
         /**
-         * Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate
+         * Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate. enum: `custom`, `default`.
          */
         beaconRateMode: string;
         /**
@@ -27028,7 +27226,7 @@ export namespace site {
          */
         power: number;
         /**
-         * Transmit power mode for BLE beacons; use custom to set `power`
+         * Transmit power mode for BLE beacons; use custom to set `power`. enum: `custom`, `default`.
          */
         powerMode: string;
     }
@@ -27311,7 +27509,7 @@ export namespace site {
          */
         packetSize?: number;
         /**
-         * Probe protocol used by this custom application definition
+         * Probe protocol used by this custom application definition. enum: `http`, `icmp`.
          */
         protocol: string;
         url: string;
@@ -27323,7 +27521,7 @@ export namespace site {
 
     export interface SettingGatewayMgmtAutoSignatureUpdate {
         /**
-         * Scheduled weekday for automatic signature updates
+         * Scheduled weekday for automatic signature updates. enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`.
          */
         dayOfWeek: string;
         /**
@@ -27427,6 +27625,10 @@ export namespace site {
          * SRX gateways integrated with this site
          */
         gateways?: outputs.site.SettingJuniperSrxGateway[];
+        /**
+         * Source of the Mist NAC user role sent to Juniper SRX gateways. enum: `idpRole`, `radiusGroup`, `none`
+         */
+        mistNacUserRoleSource?: string;
         /**
          * Whether Mist NAC user information is sent to Juniper SRX gateways
          */
@@ -27538,11 +27740,11 @@ export namespace site {
          */
         mistPassword?: string;
         /**
-         * IPv4 address assignment mode for out-of-band management
+         * IPv4 address assignment mode for out-of-band management. enum: `dhcp`, `disabled`, `static`.
          */
         oobIpType: string;
         /**
-         * IPv6 address assignment mode for out-of-band management
+         * IPv6 address assignment mode for out-of-band management. enum: `autoconf`, `dhcp`, `disabled`, `static`.
          */
         oobIpType6: string;
         /**
@@ -27609,7 +27811,7 @@ export namespace site {
          */
         orgId?: string;
         /**
-         * Encapsulation protocol used for the site Mist Tunnel
+         * Encapsulation protocol used for the site Mist Tunnel. enum: `ip`, `udp`.
          */
         protocol: string;
         /**
@@ -27636,7 +27838,7 @@ export namespace site {
          */
         helloRetries: number;
         /**
-         * Encapsulation protocol used for this additional Mist Tunnel
+         * Encapsulation protocol used for this additional Mist Tunnel. enum: `ip`, `udp`.
          */
         protocol?: string;
         /**
@@ -27662,7 +27864,7 @@ export namespace site {
 
     export interface SettingMxtunnelAutoPreemption {
         /**
-         * Scheduled weekday for auto preemption
+         * Scheduled weekday for auto preemption. enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`.
          */
         dayOfWeek?: string;
         /**
@@ -27715,7 +27917,7 @@ export namespace site {
          */
         keywrapEnabled?: boolean;
         /**
-         * Encoding format for RADIUS keywrap KEK and MACK values
+         * Encoding format for RADIUS keywrap KEK and MACK values. enum: `ascii`, `hex`.
          */
         keywrapFormat?: string;
         /**
@@ -27746,7 +27948,7 @@ export namespace site {
          */
         keywrapEnabled?: boolean;
         /**
-         * Encoding format for RADIUS keywrap KEK and MACK values
+         * Encoding format for RADIUS keywrap KEK and MACK values. enum: `ascii`, `hex`.
          */
         keywrapFormat?: string;
         /**
@@ -27989,7 +28191,7 @@ export namespace site {
 
     export interface SettingSsrAutoUpgrade {
         /**
-         * Firmware release channel used for SSR auto-upgrade
+         * Firmware release channel used for SSR auto-upgrade. enum: `alpha`, `beta`, `stable`.
          */
         channel?: string;
         /**
@@ -28019,7 +28221,7 @@ export namespace site {
 
     export interface SettingSyntheticTest {
         /**
-         * Overall aggressiveness level for synthetic test probes
+         * Overall aggressiveness level for synthetic test probes. enum: `auto`, `high`, `med`, `low`.
          */
         aggressiveness?: string;
         /**
@@ -28048,7 +28250,7 @@ export namespace site {
 
     export interface SettingSyntheticTestCustomProbes {
         /**
-         * Probe aggressiveness level for this custom synthetic probe
+         * Probe aggressiveness level for this custom synthetic probe. enum: `auto`, `high`, `med`, `low`.
          */
         aggressiveness: string;
         /**
@@ -28060,7 +28262,7 @@ export namespace site {
          */
         threshold?: number;
         /**
-         * Probe type used by this custom synthetic probe
+         * Probe type used by this custom synthetic probe. enum: `application`, `curl`, `icmp`, `reachability`, `tcp`.
          */
         type: string;
     }
@@ -28099,9 +28301,9 @@ export namespace site {
 
     export interface SettingSyntheticTestWanSpeedtest {
         /**
-         * Whether scheduled WAN speedtests are enabled
+         * Whether scheduled WAN speedtests are disabled. Defaults to `false` (enabled); set this to `true` to disable speedtests.
          */
-        enabled?: boolean;
+        disabled?: boolean;
         /**
          * Scheduled time of day for WAN speedtests
          */
@@ -28118,7 +28320,7 @@ export namespace site {
          */
         port?: number;
         /**
-         * Monitoring method used for this tunnel termination check
+         * Monitoring method used for this tunnel termination check. enum: `arp`, `ping`, `tcp`.
          */
         protocol?: string;
         /**
@@ -28308,7 +28510,7 @@ export namespace site {
          */
         meshSsid?: string;
         /**
-         * ARP proxy mode for site Wi-Fi
+         * ARP proxy mode for site Wi-Fi. enum: `default`, `disabled`, `enabled`.
          */
         proxyArp?: string;
     }
@@ -28337,7 +28539,7 @@ export namespace site {
 
     export interface WebhookRule {
         /**
-         * Action applied when the rule matches the incoming event
+         * Action applied when the rule matches the incoming event. enum: `permit`, `block`.
          */
         action?: string;
         /**
@@ -28360,7 +28562,7 @@ export namespace site {
          */
         keywrapEnabled?: boolean;
         /**
-         * Encoding format for RADIUS keywrap KEK and MACK values
+         * Encoding format for RADIUS keywrap KEK and MACK values. enum: `ascii`, `hex`.
          */
         keywrapFormat?: string;
         /**
@@ -28507,7 +28709,7 @@ export namespace site {
          */
         multiPskOnly: boolean;
         /**
-         * When `type`==`open`, Opportunistic Wireless Encryption mode for this WLAN
+         * When `type`==`open`, Opportunistic Wireless Encryption mode for this WLAN. enum: `disabled`, `enabled`, `required`.
          */
         owe?: string;
         /**
@@ -28523,7 +28725,7 @@ export namespace site {
          */
         psk: string;
         /**
-         * Authentication mode used by this WLAN
+         * Authentication mode used by this WLAN. enum: `eap`, `eap192`, `open`, `psk`, `psk-tkip`, `psk-wpa2-tkip`, `wep`.
          */
         type: string;
         /**
@@ -28542,7 +28744,7 @@ export namespace site {
          */
         keywrapEnabled?: boolean;
         /**
-         * Encoding format for RADIUS keywrap KEK and MACK values
+         * Encoding format for RADIUS keywrap KEK and MACK values. enum: `ascii`, `hex`.
          */
         keywrapFormat?: string;
         /**
@@ -28593,7 +28795,7 @@ export namespace site {
          */
         radiusGroups?: string[];
         /**
-         * Discovery scope for this Bonjour service on the WLAN
+         * Discovery scope for this Bonjour service on the WLAN. enum: `sameAp`, `sameMap`, `sameSite`.
          */
         scope: string;
     }
@@ -28673,7 +28875,7 @@ export namespace site {
          */
         localVlanIds?: string[];
         /**
-         * Origin used to retrieve per-user PSKs
+         * Origin used to retrieve per-user PSKs. enum: `cloudPsks`, `radius`.
          */
         source: string;
     }
@@ -28692,7 +28894,7 @@ export namespace site {
          */
         localVlanIds: string[];
         /**
-         * Dynamic VLAN mapping method used for RADIUS-provided VLAN attributes
+         * Dynamic VLAN mapping method used for RADIUS-provided VLAN attributes. enum: `airespace-interface-name`, `standard`.
          */
         type: string;
         /**
@@ -28818,7 +29020,7 @@ export namespace site {
          */
         amazonExpire?: number;
         /**
-         * Guest portal login scheme used by the WLAN
+         * Guest portal login scheme used by the WLAN. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`.
          */
         auth: string;
         /**
@@ -29006,7 +29208,7 @@ export namespace site {
          */
         smsMessageFormat: string;
         /**
-         * Optional if `smsEnabled`==`true`. SMS provider used to deliver guest portal access codes
+         * Optional if `smsEnabled`==`true`. SMS provider used to deliver guest portal access codes. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`, `smsglobal`.
          */
         smsProvider: string;
         /**
@@ -29069,7 +29271,7 @@ export namespace site {
          */
         ssoIdpCert: string;
         /**
-         * Optional if `wlanPortalAuth`==`sso`. Signing algorithm used for SAML assertions from the identity provider
+         * Optional if `wlanPortalAuth`==`sso`. Signing algorithm used for SAML assertions from the identity provider. enum: `sha1`, `sha256`, `sha384`, `sha512`.
          */
         ssoIdpSignAlgo: string;
         /**
@@ -29081,7 +29283,7 @@ export namespace site {
          */
         ssoIssuer: string;
         /**
-         * Optional if `wlanPortalAuth`==`sso`. SAML NameID format expected from the identity provider
+         * Optional if `wlanPortalAuth`==`sso`. SAML NameID format expected from the identity provider. enum: `email`, `unspecified`.
          */
         ssoNameidFormat: string;
         /**
@@ -29112,7 +29314,7 @@ export namespace site {
          */
         accessCodeAlternateEmail: string;
         /**
-         * Text and content alignment used by the guest portal template
+         * Text and content alignment used by the guest portal template. enum: `center`, `left`, `right`.
          */
         alignment: string;
         /**
@@ -30023,7 +30225,7 @@ export namespace site {
 
     export interface WlanQos {
         /**
-         * QoS traffic class applied when WLAN QoS override is enabled
+         * QoS traffic class applied when WLAN QoS override is enabled. enum: `background`, `bestEffort`, `video`, `voice`.
          */
         class: string;
         /**
@@ -30104,7 +30306,7 @@ export namespace site {
          */
         minRssi: number;
         /**
-         * Data rate template used to derive WLAN rate settings
+         * Data rate template used to derive WLAN rate settings. enum: `compatible`, `legacy-only`, `custom`, `no-legacy`, `high-density`.
          */
         template: string;
         /**

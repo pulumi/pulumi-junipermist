@@ -246,7 +246,7 @@ namespace Pulumi.JuniperMist.Device
         public Output<string> SiteId { get; private set; } = null!;
 
         /// <summary>
-        /// Device type discriminator for access point records
+        /// Device type discriminator for access point records. enum: `Ap`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -817,7 +817,7 @@ namespace Pulumi.JuniperMist.Device
         public Input<string>? SiteId { get; set; }
 
         /// <summary>
-        /// Device type discriminator for access point records
+        /// Device type discriminator for access point records. enum: `Ap`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

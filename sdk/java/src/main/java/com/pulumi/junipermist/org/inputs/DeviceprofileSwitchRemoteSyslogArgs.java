@@ -143,14 +143,14 @@ public final class DeviceprofileSwitchRemoteSyslogArgs extends com.pulumi.resour
     }
 
     /**
-     * Timestamp format used in forwarded syslog messages
+     * Timestamp format used in forwarded syslog messages. enum: `millisecond`, `year`, `year millisecond`.
      * 
      */
     @Import(name="timeFormat")
     private @Nullable Output<String> timeFormat;
 
     /**
-     * @return Timestamp format used in forwarded syslog messages
+     * @return Timestamp format used in forwarded syslog messages. enum: `millisecond`, `year`, `year millisecond`.
      * 
      */
     public Optional<Output<String>> timeFormat() {
@@ -404,7 +404,7 @@ public final class DeviceprofileSwitchRemoteSyslogArgs extends com.pulumi.resour
         }
 
         /**
-         * @param timeFormat Timestamp format used in forwarded syslog messages
+         * @param timeFormat Timestamp format used in forwarded syslog messages. enum: `millisecond`, `year`, `year millisecond`.
          * 
          * @return builder
          * 
@@ -415,7 +415,7 @@ public final class DeviceprofileSwitchRemoteSyslogArgs extends com.pulumi.resour
         }
 
         /**
-         * @param timeFormat Timestamp format used in forwarded syslog messages
+         * @param timeFormat Timestamp format used in forwarded syslog messages. enum: `millisecond`, `year`, `year millisecond`.
          * 
          * @return builder
          * 

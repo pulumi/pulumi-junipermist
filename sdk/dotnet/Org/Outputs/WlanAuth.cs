@@ -46,7 +46,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? MultiPskOnly;
         /// <summary>
-        /// When `Type`==`Open`, Opportunistic Wireless Encryption mode for this WLAN
+        /// When `Type`==`Open`, Opportunistic Wireless Encryption mode for this WLAN. enum: `Disabled`, `Enabled`, `Required`.
         /// </summary>
         public readonly string? Owe;
         /// <summary>
@@ -62,7 +62,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Psk;
         /// <summary>
-        /// Authentication mode used by this WLAN
+        /// Authentication mode used by this WLAN. enum: `Eap`, `Eap192`, `Open`, `Psk`, `psk-tkip`, `psk-wpa2-tkip`, `Wep`.
         /// </summary>
         public readonly string? Type;
         /// <summary>

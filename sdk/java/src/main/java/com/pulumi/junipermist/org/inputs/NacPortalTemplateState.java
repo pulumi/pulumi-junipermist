@@ -17,14 +17,14 @@ public final class NacPortalTemplateState extends com.pulumi.resources.ResourceA
     public static final NacPortalTemplateState Empty = new NacPortalTemplateState();
 
     /**
-     * Text and content alignment for the NAC portal page
+     * Text and content alignment for the NAC portal page. enum: `center`, `left`, `right`.
      * 
      */
     @Import(name="alignment")
     private @Nullable Output<String> alignment;
 
     /**
-     * @return Text and content alignment for the NAC portal page
+     * @return Text and content alignment for the NAC portal page. enum: `center`, `left`, `right`.
      * 
      */
     public Optional<Output<String>> alignment() {
@@ -128,7 +128,7 @@ public final class NacPortalTemplateState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param alignment Text and content alignment for the NAC portal page
+         * @param alignment Text and content alignment for the NAC portal page. enum: `center`, `left`, `right`.
          * 
          * @return builder
          * 
@@ -139,7 +139,7 @@ public final class NacPortalTemplateState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param alignment Text and content alignment for the NAC portal page
+         * @param alignment Text and content alignment for the NAC portal page. enum: `center`, `left`, `right`.
          * 
          * @return builder
          * 

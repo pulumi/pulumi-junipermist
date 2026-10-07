@@ -25,7 +25,7 @@ public final class SettingMxtunnelAdditionalMxtunnels {
      */
     private @Nullable Integer helloRetries;
     /**
-     * @return Encapsulation protocol used for this additional Mist Tunnel
+     * @return Encapsulation protocol used for this additional Mist Tunnel. enum: `ip`, `udp`.
      * 
      */
     private @Nullable String protocol;
@@ -56,7 +56,7 @@ public final class SettingMxtunnelAdditionalMxtunnels {
         return Optional.ofNullable(this.helloRetries);
     }
     /**
-     * @return Encapsulation protocol used for this additional Mist Tunnel
+     * @return Encapsulation protocol used for this additional Mist Tunnel. enum: `ip`, `udp`.
      * 
      */
     public Optional<String> protocol() {

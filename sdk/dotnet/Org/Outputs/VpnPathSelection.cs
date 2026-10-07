@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class VpnPathSelection
     {
         /// <summary>
-        /// Path selection strategy for a hub-and-spoke VPN
+        /// Path selection strategy for a hub-and-spoke VPN. enum: `Disabled`, `Simple`, `Manual`.
         /// </summary>
         public readonly string? Strategy;
 

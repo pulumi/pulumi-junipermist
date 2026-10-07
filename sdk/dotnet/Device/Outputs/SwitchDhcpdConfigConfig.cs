@@ -67,11 +67,11 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Servers6s;
         /// <summary>
-        /// IPv4 DHCP mode for this switch network
+        /// IPv4 DHCP mode for this switch network. enum: `None`, `Relay`, `Server`.
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// IPv6 DHCP mode for this switch network
+        /// IPv6 DHCP mode for this switch network. enum: `None`, `Relay`, `Server`.
         /// </summary>
         public readonly string? Type6;
         /// <summary>

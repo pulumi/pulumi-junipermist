@@ -85,12 +85,12 @@ public final class DeviceprofileSwitchDhcpdConfigConfig {
      */
     private @Nullable List<String> servers6s;
     /**
-     * @return IPv4 DHCP mode for this switch network
+     * @return IPv4 DHCP mode for this switch network. enum: `none`, `relay`, `server`.
      * 
      */
     private @Nullable String type;
     /**
-     * @return IPv6 DHCP mode for this switch network
+     * @return IPv6 DHCP mode for this switch network. enum: `none`, `relay`, `server`.
      * 
      */
     private @Nullable String type6;
@@ -194,14 +194,14 @@ public final class DeviceprofileSwitchDhcpdConfigConfig {
         return this.servers6s == null ? List.of() : this.servers6s;
     }
     /**
-     * @return IPv4 DHCP mode for this switch network
+     * @return IPv4 DHCP mode for this switch network. enum: `none`, `relay`, `server`.
      * 
      */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return IPv6 DHCP mode for this switch network
+     * @return IPv6 DHCP mode for this switch network. enum: `none`, `relay`, `server`.
      * 
      */
     public Optional<String> type6() {

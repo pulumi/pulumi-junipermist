@@ -81,7 +81,7 @@ namespace Pulumi.JuniperMist.Org
     public partial class Idpprofile : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Built-in IDP baseline profile inherited before applying overwrites
+        /// Built-in IDP baseline profile inherited before applying overwrites. enum: `Critical`, `Standard`, `Strict`.
         /// </summary>
         [Output("baseProfile")]
         public Output<string> BaseProfile { get; private set; } = null!;
@@ -152,7 +152,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class IdpprofileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Built-in IDP baseline profile inherited before applying overwrites
+        /// Built-in IDP baseline profile inherited before applying overwrites. enum: `Critical`, `Standard`, `Strict`.
         /// </summary>
         [Input("baseProfile", required: true)]
         public Input<string> BaseProfile { get; set; } = null!;
@@ -190,7 +190,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class IdpprofileState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Built-in IDP baseline profile inherited before applying overwrites
+        /// Built-in IDP baseline profile inherited before applying overwrites. enum: `Critical`, `Standard`, `Strict`.
         /// </summary>
         [Input("baseProfile")]
         public Input<string>? BaseProfile { get; set; }

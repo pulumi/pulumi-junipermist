@@ -141,14 +141,14 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Failover behavior for traffic matched by this service
+     * Failover behavior for traffic matched by this service. enum: `nonRevertible`, `none`, `revertible`.
      * 
      */
     @Import(name="failoverPolicy")
     private @Nullable Output<String> failoverPolicy;
 
     /**
-     * @return Failover behavior for traffic matched by this service
+     * @return Failover behavior for traffic matched by this service. enum: `nonRevertible`, `none`, `revertible`.
      * 
      */
     public Optional<Output<String>> failoverPolicy() {
@@ -321,14 +321,14 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Traffic class applied when `trafficType`==`custom`
+     * Traffic class applied when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`.
      * 
      */
     @Import(name="trafficClass")
     private @Nullable Output<String> trafficClass;
 
     /**
-     * @return Traffic class applied when `trafficType`==`custom`
+     * @return Traffic class applied when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`.
      * 
      */
     public Optional<Output<String>> trafficClass() {
@@ -351,14 +351,14 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Matching mode that determines which app, URL, or custom fields are used
+     * Matching mode that determines which app, URL, or custom fields are used. enum: `appCategories`, `apps`, `custom`, `urls`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Matching mode that determines which app, URL, or custom fields are used
+     * @return Matching mode that determines which app, URL, or custom fields are used. enum: `appCategories`, `apps`, `custom`, `urls`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -636,7 +636,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param failoverPolicy Failover behavior for traffic matched by this service
+         * @param failoverPolicy Failover behavior for traffic matched by this service. enum: `nonRevertible`, `none`, `revertible`.
          * 
          * @return builder
          * 
@@ -647,7 +647,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param failoverPolicy Failover behavior for traffic matched by this service
+         * @param failoverPolicy Failover behavior for traffic matched by this service. enum: `nonRevertible`, `none`, `revertible`.
          * 
          * @return builder
          * 
@@ -908,7 +908,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param trafficClass Traffic class applied when `trafficType`==`custom`
+         * @param trafficClass Traffic class applied when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`.
          * 
          * @return builder
          * 
@@ -919,7 +919,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param trafficClass Traffic class applied when `trafficType`==`custom`
+         * @param trafficClass Traffic class applied when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`.
          * 
          * @return builder
          * 
@@ -950,7 +950,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Matching mode that determines which app, URL, or custom fields are used
+         * @param type Matching mode that determines which app, URL, or custom fields are used. enum: `appCategories`, `apps`, `custom`, `urls`.
          * 
          * @return builder
          * 
@@ -961,7 +961,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Matching mode that determines which app, URL, or custom fields are used
+         * @param type Matching mode that determines which app, URL, or custom fields are used. enum: `appCategories`, `apps`, `custom`, `urls`.
          * 
          * @return builder
          * 

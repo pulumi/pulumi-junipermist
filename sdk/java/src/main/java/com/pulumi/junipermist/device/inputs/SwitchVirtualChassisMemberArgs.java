@@ -46,14 +46,14 @@ public final class SwitchVirtualChassisMemberArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Role of this member in the Virtual Chassis
+     * Role of this member in the Virtual Chassis. enum: `backup`, `linecard`, `master`.
      * 
      */
     @Import(name="vcRole", required=true)
     private Output<String> vcRole;
 
     /**
-     * @return Role of this member in the Virtual Chassis
+     * @return Role of this member in the Virtual Chassis. enum: `backup`, `linecard`, `master`.
      * 
      */
     public Output<String> vcRole() {
@@ -129,7 +129,7 @@ public final class SwitchVirtualChassisMemberArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param vcRole Role of this member in the Virtual Chassis
+         * @param vcRole Role of this member in the Virtual Chassis. enum: `backup`, `linecard`, `master`.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class SwitchVirtualChassisMemberArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param vcRole Role of this member in the Virtual Chassis
+         * @param vcRole Role of this member in the Virtual Chassis. enum: `backup`, `linecard`, `master`.
          * 
          * @return builder
          * 

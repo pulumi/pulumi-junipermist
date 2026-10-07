@@ -41,7 +41,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly int? PacketSize;
         /// <summary>
-        /// Probe protocol used by this custom application definition
+        /// Probe protocol used by this custom application definition. enum: `Http`, `Icmp`.
         /// </summary>
         public readonly string Protocol;
         public readonly string? Url;

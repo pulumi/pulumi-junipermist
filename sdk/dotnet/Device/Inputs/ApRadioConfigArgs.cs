@@ -37,13 +37,13 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<int>? AntGain6 { get; set; }
 
         /// <summary>
-        /// Selected radio chain mode for AP models that support antenna mode control
+        /// Selected radio chain mode for AP models that support antenna mode control. enum: `1x1`, `2x2`, `3x3`, `4x4`, `Default`.
         /// </summary>
         [Input("antennaMode")]
         public Input<string>? AntennaMode { get; set; }
 
         /// <summary>
-        /// Internal or external antenna selection for AP models with selectable antennas
+        /// Internal or external antenna selection for AP models with selectable antennas. enum: ``, `External`, `Internal`.
         /// </summary>
         [Input("antennaSelect")]
         public Input<string>? AntennaSelect { get; set; }
@@ -55,7 +55,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<Inputs.ApRadioConfigBand24Args>? Band24 { get; set; }
 
         /// <summary>
-        /// Radio usage mode for the 2.4 GHz-capable radio
+        /// Radio usage mode for the 2.4 GHz-capable radio. enum: `24`, `5`, `6`, `Auto`.
         /// </summary>
         [Input("band24Usage")]
         public Input<string>? Band24Usage { get; set; }

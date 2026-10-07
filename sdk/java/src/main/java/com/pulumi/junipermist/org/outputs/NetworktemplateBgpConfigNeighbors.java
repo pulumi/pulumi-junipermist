@@ -19,7 +19,7 @@ public final class NetworktemplateBgpConfigNeighbors {
      */
     private @Nullable String exportPolicy;
     /**
-     * @return BGP hold time for this neighbor
+     * @return BGP hold time for this neighbor.
      * 
      */
     private @Nullable Integer holdTime;
@@ -48,7 +48,7 @@ public final class NetworktemplateBgpConfigNeighbors {
         return Optional.ofNullable(this.exportPolicy);
     }
     /**
-     * @return BGP hold time for this neighbor
+     * @return BGP hold time for this neighbor.
      * 
      */
     public Optional<Integer> holdTime() {

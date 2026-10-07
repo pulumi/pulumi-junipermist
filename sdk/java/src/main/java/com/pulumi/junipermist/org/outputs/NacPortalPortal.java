@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NacPortalPortal {
     /**
-     * @return Mode presented by the NAC guest portal for user authentication
+     * @return Mode presented by the NAC guest portal for user authentication. enum: `external`, `multi`, `none`.
      * 
      */
     private @Nullable String auth;
@@ -56,7 +56,7 @@ public final class NacPortalPortal {
 
     private NacPortalPortal() {}
     /**
-     * @return Mode presented by the NAC guest portal for user authentication
+     * @return Mode presented by the NAC guest portal for user authentication. enum: `external`, `multi`, `none`.
      * 
      */
     public Optional<String> auth() {

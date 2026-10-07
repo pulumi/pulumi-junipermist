@@ -26,7 +26,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Targets;
         /// <summary>
-        /// SNMP trap protocol version used by this group
+        /// SNMP trap protocol version used by this group. enum: `All`, `V1`, `V2`.
         /// </summary>
         public readonly string? Version;
 

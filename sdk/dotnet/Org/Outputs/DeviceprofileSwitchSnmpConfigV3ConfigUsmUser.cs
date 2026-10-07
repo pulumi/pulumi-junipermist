@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? AuthenticationPassword;
         /// <summary>
-        /// Authentication protocol used by this SNMPv3 USM user
+        /// Authentication protocol used by this SNMPv3 USM user. enum: `authentication-md5`, `authentication-none`, `authentication-sha`, `authentication-sha224`, `authentication-sha256`, `authentication-sha384`, `authentication-sha512`.
         /// </summary>
         public readonly string? AuthenticationType;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? EncryptionPassword;
         /// <summary>
-        /// Privacy protocol used by this SNMPv3 USM user
+        /// Privacy protocol used by this SNMPv3 USM user. enum: `privacy-3des`, `privacy-aes128`, `privacy-des`, `privacy-none`.
         /// </summary>
         public readonly string? EncryptionType;
         /// <summary>

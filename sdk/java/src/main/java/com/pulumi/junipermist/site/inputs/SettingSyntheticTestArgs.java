@@ -23,14 +23,14 @@ public final class SettingSyntheticTestArgs extends com.pulumi.resources.Resourc
     public static final SettingSyntheticTestArgs Empty = new SettingSyntheticTestArgs();
 
     /**
-     * Overall aggressiveness level for synthetic test probes
+     * Overall aggressiveness level for synthetic test probes. enum: `auto`, `high`, `med`, `low`.
      * 
      */
     @Import(name="aggressiveness")
     private @Nullable Output<String> aggressiveness;
 
     /**
-     * @return Overall aggressiveness level for synthetic test probes
+     * @return Overall aggressiveness level for synthetic test probes. enum: `auto`, `high`, `med`, `low`.
      * 
      */
     public Optional<Output<String>> aggressiveness() {
@@ -150,7 +150,7 @@ public final class SettingSyntheticTestArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param aggressiveness Overall aggressiveness level for synthetic test probes
+         * @param aggressiveness Overall aggressiveness level for synthetic test probes. enum: `auto`, `high`, `med`, `low`.
          * 
          * @return builder
          * 
@@ -161,7 +161,7 @@ public final class SettingSyntheticTestArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param aggressiveness Overall aggressiveness level for synthetic test probes
+         * @param aggressiveness Overall aggressiveness level for synthetic test probes. enum: `auto`, `high`, `med`, `low`.
          * 
          * @return builder
          * 

@@ -67,13 +67,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<Inputs.SettingMistNacFingerprintingArgs>? Fingerprinting { get; set; }
 
         /// <summary>
-        /// Client certificate field used to look up machine groups in identity providers
+        /// Client certificate field used to look up machine groups in identity providers. enum: `Automatic`, `Cn`, `Dns`.
         /// </summary>
         [Input("idpMachineCertLookupField")]
         public Input<string>? IdpMachineCertLookupField { get; set; }
 
         /// <summary>
-        /// Client certificate field used to look up user groups in identity providers
+        /// Client certificate field used to look up user groups in identity providers. enum: `Automatic`, `Cn`, `Email`, `Upn`.
         /// </summary>
         [Input("idpUserCertLookupField")]
         public Input<string>? IdpUserCertLookupField { get; set; }
@@ -103,7 +103,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<Inputs.SettingMistNacServerCertArgs>? ServerCert { get; set; }
 
         /// <summary>
-        /// IP version used by NAS devices and Mist Edge proxies to reach Mist NAC
+        /// IP version used by NAS devices and Mist Edge proxies to reach Mist NAC. enum: `V4`, `V6`.
         /// </summary>
         [Input("useIpVersion")]
         public Input<string>? UseIpVersion { get; set; }

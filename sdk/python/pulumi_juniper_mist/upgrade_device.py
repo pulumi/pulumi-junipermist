@@ -234,7 +234,7 @@ class _UpgradeDeviceState:
         :param pulumi.Input[_builtins.str] site_id: Associated site identifier for the switch statistics record
         :param pulumi.Input[_builtins.bool] snapshot: For Junos devices only. Perform recovery snapshot after device is rebooted
         :param pulumi.Input[_builtins.int] start_time: Firmware download start time in epoch
-        :param pulumi.Input[_builtins.str] status: Current status of the requested device upgrade
+        :param pulumi.Input[_builtins.str] status: Current status of the requested device upgrade. enum: `error`, `inprogress`, `scheduled`, `starting`, `success`.
         :param pulumi.Input[_builtins.bool] sync_upgrade: if set to `false`, the provider will just trigger the upgrade and not wait for the end of the upgrade process. Default is `true`
         :param pulumi.Input[_builtins.int] sync_upgrade_refresh_interval: if set to `sync_upgrade`==`true`, how long to wait between each refresh of the upgrade status, in seconds. Default is 30, minimum is 15
         :param pulumi.Input[_builtins.int] sync_upgrade_start_timeout: if set to `sync_upgrade`==`true`, how long to wait for the upgrade to start before raising an error, in seconds. Default is 60, minimum is 60
@@ -432,7 +432,7 @@ class _UpgradeDeviceState:
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Current status of the requested device upgrade
+        Current status of the requested device upgrade. enum: `error`, `inprogress`, `scheduled`, `starting`, `success`.
         """
         return pulumi.get(self, "status")
 
@@ -743,7 +743,7 @@ class UpgradeDevice(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] site_id: Associated site identifier for the switch statistics record
         :param pulumi.Input[_builtins.bool] snapshot: For Junos devices only. Perform recovery snapshot after device is rebooted
         :param pulumi.Input[_builtins.int] start_time: Firmware download start time in epoch
-        :param pulumi.Input[_builtins.str] status: Current status of the requested device upgrade
+        :param pulumi.Input[_builtins.str] status: Current status of the requested device upgrade. enum: `error`, `inprogress`, `scheduled`, `starting`, `success`.
         :param pulumi.Input[_builtins.bool] sync_upgrade: if set to `false`, the provider will just trigger the upgrade and not wait for the end of the upgrade process. Default is `true`
         :param pulumi.Input[_builtins.int] sync_upgrade_refresh_interval: if set to `sync_upgrade`==`true`, how long to wait between each refresh of the upgrade status, in seconds. Default is 30, minimum is 15
         :param pulumi.Input[_builtins.int] sync_upgrade_start_timeout: if set to `sync_upgrade`==`true`, how long to wait for the upgrade to start before raising an error, in seconds. Default is 60, minimum is 60
@@ -877,7 +877,7 @@ class UpgradeDevice(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        Current status of the requested device upgrade
+        Current status of the requested device upgrade. enum: `error`, `inprogress`, `scheduled`, `starting`, `success`.
         """
         return pulumi.get(self, "status")
 

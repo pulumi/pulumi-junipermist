@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NacruleNotMatching {
     /**
-     * @return NAC authentication method that must match the request
+     * @return NAC authentication method that must match the request. enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `eap-peap`.
      * 
      */
     private @Nullable String authType;
@@ -65,7 +65,7 @@ public final class NacruleNotMatching {
 
     private NacruleNotMatching() {}
     /**
-     * @return NAC authentication method that must match the request
+     * @return NAC authentication method that must match the request. enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `eap-peap`.
      * 
      */
     public Optional<String> authType() {

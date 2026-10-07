@@ -43,7 +43,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// USB integration type for this legacy AP USB configuration
+        /// USB integration type for this legacy AP USB configuration. enum: `Hanshow`, `Imagotag`, `Solum`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

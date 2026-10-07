@@ -34,11 +34,11 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly ImmutableArray<string> SecondaryIps;
         /// <summary>
-        /// IPv4 address assignment mode for this gateway network interface
+        /// IPv4 address assignment mode for this gateway network interface. enum: `Dhcp`, `Static`.
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// IPv6 address assignment mode for this gateway network interface
+        /// IPv6 address assignment mode for this gateway network interface. enum: `Autoconf`, `Dhcp`, `Disabled`, `Static`.
         /// </summary>
         public readonly string? Type6;
 

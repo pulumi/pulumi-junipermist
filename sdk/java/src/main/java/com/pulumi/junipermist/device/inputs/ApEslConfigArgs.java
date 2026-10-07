@@ -93,14 +93,14 @@ public final class ApEslConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * ESL integration type to enable on the AP
+     * ESL integration type to enable on the AP. enum: `hanshow`, `imagotag`, `native`, `solum`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return ESL integration type to enable on the AP
+     * @return ESL integration type to enable on the AP. enum: `hanshow`, `imagotag`, `native`, `solum`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -274,7 +274,7 @@ public final class ApEslConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type ESL integration type to enable on the AP
+         * @param type ESL integration type to enable on the AP. enum: `hanshow`, `imagotag`, `native`, `solum`.
          * 
          * @return builder
          * 
@@ -285,7 +285,7 @@ public final class ApEslConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type ESL integration type to enable on the AP
+         * @param type ESL integration type to enable on the AP. enum: `hanshow`, `imagotag`, `native`, `solum`.
          * 
          * @return builder
          * 

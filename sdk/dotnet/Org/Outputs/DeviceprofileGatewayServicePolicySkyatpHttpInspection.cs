@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Sky ATP HTTP inspection profile to apply
+        /// Sky ATP HTTP inspection profile to apply. enum: `Standard`, `Strict`.
         /// </summary>
         public readonly string? Profile;
 

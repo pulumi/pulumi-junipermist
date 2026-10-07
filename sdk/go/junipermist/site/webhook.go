@@ -74,7 +74,7 @@ type Webhook struct {
 
 	// Asset filter identifiers used to restrict `asset-raw-rssi` webhook events
 	AssetfilterIds pulumi.StringArrayOutput `pulumi:"assetfilterIds"`
-	// Default action applied when none of the `rules` match the incoming event
+	// Default action applied when none of the `rules` match the incoming event. enum: `permit`, `block`.
 	DefaultAction pulumi.StringPtrOutput `pulumi:"defaultAction"`
 	// Whether webhook is enabled
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
@@ -86,7 +86,7 @@ type Webhook struct {
 	Oauth2ClientId pulumi.StringPtrOutput `pulumi:"oauth2ClientId"`
 	// Required when `oauth2GrantType`==`clientCredentials`; OAuth2 client secret used to request an access token
 	Oauth2ClientSecret pulumi.StringPtrOutput `pulumi:"oauth2ClientSecret"`
-	// OAuth2 grant type used when `type`==`oauth2`
+	// OAuth2 grant type used when `type`==`oauth2`. enum: `clientCredentials`, `password`.
 	Oauth2GrantType pulumi.StringPtrOutput `pulumi:"oauth2GrantType"`
 	// Required when `oauth2GrantType`==`password`; password used for the OAuth2 token request
 	Oauth2Password pulumi.StringPtrOutput `pulumi:"oauth2Password"`
@@ -110,7 +110,7 @@ type Webhook struct {
 	SplunkToken pulumi.StringPtrOutput `pulumi:"splunkToken"`
 	// enum: `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `rssizone`, `sdkclient-scan-data`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
 	Topics pulumi.StringArrayOutput `pulumi:"topics"`
-	// Delivery mechanism used by this webhook
+	// Delivery mechanism used by this webhook. enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Destination URL that receives webhook deliveries
 	Url pulumi.StringOutput `pulumi:"url"`
@@ -178,7 +178,7 @@ func GetWebhook(ctx *pulumi.Context,
 type webhookState struct {
 	// Asset filter identifiers used to restrict `asset-raw-rssi` webhook events
 	AssetfilterIds []string `pulumi:"assetfilterIds"`
-	// Default action applied when none of the `rules` match the incoming event
+	// Default action applied when none of the `rules` match the incoming event. enum: `permit`, `block`.
 	DefaultAction *string `pulumi:"defaultAction"`
 	// Whether webhook is enabled
 	Enabled *bool `pulumi:"enabled"`
@@ -190,7 +190,7 @@ type webhookState struct {
 	Oauth2ClientId *string `pulumi:"oauth2ClientId"`
 	// Required when `oauth2GrantType`==`clientCredentials`; OAuth2 client secret used to request an access token
 	Oauth2ClientSecret *string `pulumi:"oauth2ClientSecret"`
-	// OAuth2 grant type used when `type`==`oauth2`
+	// OAuth2 grant type used when `type`==`oauth2`. enum: `clientCredentials`, `password`.
 	Oauth2GrantType *string `pulumi:"oauth2GrantType"`
 	// Required when `oauth2GrantType`==`password`; password used for the OAuth2 token request
 	Oauth2Password *string `pulumi:"oauth2Password"`
@@ -214,7 +214,7 @@ type webhookState struct {
 	SplunkToken *string `pulumi:"splunkToken"`
 	// enum: `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `rssizone`, `sdkclient-scan-data`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
 	Topics []string `pulumi:"topics"`
-	// Delivery mechanism used by this webhook
+	// Delivery mechanism used by this webhook. enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`.
 	Type *string `pulumi:"type"`
 	// Destination URL that receives webhook deliveries
 	Url *string `pulumi:"url"`
@@ -225,7 +225,7 @@ type webhookState struct {
 type WebhookState struct {
 	// Asset filter identifiers used to restrict `asset-raw-rssi` webhook events
 	AssetfilterIds pulumi.StringArrayInput
-	// Default action applied when none of the `rules` match the incoming event
+	// Default action applied when none of the `rules` match the incoming event. enum: `permit`, `block`.
 	DefaultAction pulumi.StringPtrInput
 	// Whether webhook is enabled
 	Enabled pulumi.BoolPtrInput
@@ -237,7 +237,7 @@ type WebhookState struct {
 	Oauth2ClientId pulumi.StringPtrInput
 	// Required when `oauth2GrantType`==`clientCredentials`; OAuth2 client secret used to request an access token
 	Oauth2ClientSecret pulumi.StringPtrInput
-	// OAuth2 grant type used when `type`==`oauth2`
+	// OAuth2 grant type used when `type`==`oauth2`. enum: `clientCredentials`, `password`.
 	Oauth2GrantType pulumi.StringPtrInput
 	// Required when `oauth2GrantType`==`password`; password used for the OAuth2 token request
 	Oauth2Password pulumi.StringPtrInput
@@ -261,7 +261,7 @@ type WebhookState struct {
 	SplunkToken pulumi.StringPtrInput
 	// enum: `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `rssizone`, `sdkclient-scan-data`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
 	Topics pulumi.StringArrayInput
-	// Delivery mechanism used by this webhook
+	// Delivery mechanism used by this webhook. enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`.
 	Type pulumi.StringPtrInput
 	// Destination URL that receives webhook deliveries
 	Url pulumi.StringPtrInput
@@ -276,7 +276,7 @@ func (WebhookState) ElementType() reflect.Type {
 type webhookArgs struct {
 	// Asset filter identifiers used to restrict `asset-raw-rssi` webhook events
 	AssetfilterIds []string `pulumi:"assetfilterIds"`
-	// Default action applied when none of the `rules` match the incoming event
+	// Default action applied when none of the `rules` match the incoming event. enum: `permit`, `block`.
 	DefaultAction *string `pulumi:"defaultAction"`
 	// Whether webhook is enabled
 	Enabled *bool `pulumi:"enabled"`
@@ -288,7 +288,7 @@ type webhookArgs struct {
 	Oauth2ClientId *string `pulumi:"oauth2ClientId"`
 	// Required when `oauth2GrantType`==`clientCredentials`; OAuth2 client secret used to request an access token
 	Oauth2ClientSecret *string `pulumi:"oauth2ClientSecret"`
-	// OAuth2 grant type used when `type`==`oauth2`
+	// OAuth2 grant type used when `type`==`oauth2`. enum: `clientCredentials`, `password`.
 	Oauth2GrantType *string `pulumi:"oauth2GrantType"`
 	// Required when `oauth2GrantType`==`password`; password used for the OAuth2 token request
 	Oauth2Password *string `pulumi:"oauth2Password"`
@@ -310,7 +310,7 @@ type webhookArgs struct {
 	SplunkToken *string `pulumi:"splunkToken"`
 	// enum: `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `rssizone`, `sdkclient-scan-data`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
 	Topics []string `pulumi:"topics"`
-	// Delivery mechanism used by this webhook
+	// Delivery mechanism used by this webhook. enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`.
 	Type *string `pulumi:"type"`
 	// Destination URL that receives webhook deliveries
 	Url string `pulumi:"url"`
@@ -322,7 +322,7 @@ type webhookArgs struct {
 type WebhookArgs struct {
 	// Asset filter identifiers used to restrict `asset-raw-rssi` webhook events
 	AssetfilterIds pulumi.StringArrayInput
-	// Default action applied when none of the `rules` match the incoming event
+	// Default action applied when none of the `rules` match the incoming event. enum: `permit`, `block`.
 	DefaultAction pulumi.StringPtrInput
 	// Whether webhook is enabled
 	Enabled pulumi.BoolPtrInput
@@ -334,7 +334,7 @@ type WebhookArgs struct {
 	Oauth2ClientId pulumi.StringPtrInput
 	// Required when `oauth2GrantType`==`clientCredentials`; OAuth2 client secret used to request an access token
 	Oauth2ClientSecret pulumi.StringPtrInput
-	// OAuth2 grant type used when `type`==`oauth2`
+	// OAuth2 grant type used when `type`==`oauth2`. enum: `clientCredentials`, `password`.
 	Oauth2GrantType pulumi.StringPtrInput
 	// Required when `oauth2GrantType`==`password`; password used for the OAuth2 token request
 	Oauth2Password pulumi.StringPtrInput
@@ -356,7 +356,7 @@ type WebhookArgs struct {
 	SplunkToken pulumi.StringPtrInput
 	// enum: `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `rssizone`, `sdkclient-scan-data`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
 	Topics pulumi.StringArrayInput
-	// Delivery mechanism used by this webhook
+	// Delivery mechanism used by this webhook. enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`.
 	Type pulumi.StringPtrInput
 	// Destination URL that receives webhook deliveries
 	Url pulumi.StringInput
@@ -456,7 +456,7 @@ func (o WebhookOutput) AssetfilterIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.StringArrayOutput { return v.AssetfilterIds }).(pulumi.StringArrayOutput)
 }
 
-// Default action applied when none of the `rules` match the incoming event
+// Default action applied when none of the `rules` match the incoming event. enum: `permit`, `block`.
 func (o WebhookOutput) DefaultAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.StringPtrOutput { return v.DefaultAction }).(pulumi.StringPtrOutput)
 }
@@ -486,7 +486,7 @@ func (o WebhookOutput) Oauth2ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.StringPtrOutput { return v.Oauth2ClientSecret }).(pulumi.StringPtrOutput)
 }
 
-// OAuth2 grant type used when `type`==`oauth2`
+// OAuth2 grant type used when `type`==`oauth2`. enum: `clientCredentials`, `password`.
 func (o WebhookOutput) Oauth2GrantType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.StringPtrOutput { return v.Oauth2GrantType }).(pulumi.StringPtrOutput)
 }
@@ -546,7 +546,7 @@ func (o WebhookOutput) Topics() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.StringArrayOutput { return v.Topics }).(pulumi.StringArrayOutput)
 }
 
-// Delivery mechanism used by this webhook
+// Delivery mechanism used by this webhook. enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`.
 func (o WebhookOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

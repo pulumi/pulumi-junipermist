@@ -114,14 +114,14 @@ public class Nactag extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.gbpTag);
     }
     /**
-     * If `type`==`match`, client or authentication attribute used for rule matching
+     * If `type`==`match`, client or authentication attribute used for rule matching. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrStatus`, `gbpTag`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`.
      * 
      */
     @Export(name="match", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> match;
 
     /**
-     * @return If `type`==`match`, client or authentication attribute used for rule matching
+     * @return If `type`==`match`, client or authentication attribute used for rule matching. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrStatus`, `gbpTag`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`.
      * 
      */
     public Output<Optional<String>> match() {
@@ -248,28 +248,28 @@ public class Nactag extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sessionTimeout);
     }
     /**
-     * NAC tag type that determines whether the tag is a matcher or a result attribute
+     * NAC tag type that determines whether the tag is a matcher or a result attribute. enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return NAC tag type that determines whether the tag is a matcher or a result attribute
+     * @return NAC tag type that determines whether the tag is a matcher or a result attribute. enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`.
      * 
      */
     public Output<String> type() {
         return this.type;
     }
     /**
-     * If `type`==`usernameAttr`, attribute used to derive the username returned by the NAC rule
+     * If `type`==`usernameAttr`, attribute used to derive the username returned by the NAC rule. enum: `automatic`, `cn`, `dns`, `email`, `upn`.
      * 
      */
     @Export(name="usernameAttr", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> usernameAttr;
 
     /**
-     * @return If `type`==`usernameAttr`, attribute used to derive the username returned by the NAC rule
+     * @return If `type`==`usernameAttr`, attribute used to derive the username returned by the NAC rule. enum: `automatic`, `cn`, `dns`, `email`, `upn`.
      * 
      */
     public Output<Optional<String>> usernameAttr() {

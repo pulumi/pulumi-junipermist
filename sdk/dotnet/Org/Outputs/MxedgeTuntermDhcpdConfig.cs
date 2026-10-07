@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Servers;
         /// <summary>
-        /// DHCP handling mode for this tunneled VLAN
+        /// DHCP handling mode for this tunneled VLAN. enum: `Relay`.
         /// </summary>
         public readonly string? Type;
 

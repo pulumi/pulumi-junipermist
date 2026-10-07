@@ -34,7 +34,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? EngineId;
         /// <summary>
-        /// Method used to derive the SNMP engine ID
+        /// Method used to derive the SNMP engine ID. enum: `Local`, `UseMacAddress`.
         /// </summary>
         public readonly string? EngineIdType;
         /// <summary>

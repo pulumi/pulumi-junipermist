@@ -21,7 +21,7 @@ public final class DeviceprofileSwitchSwitchMgmtTacacs {
      */
     private @Nullable List<DeviceprofileSwitchSwitchMgmtTacacsAcctServer> acctServers;
     /**
-     * @return Default switch-management role to use for TACACS+ logins
+     * @return Default switch-management role to use for TACACS+ logins. enum: `admin`, `helpdesk`, `none`, `read`.
      * 
      */
     private @Nullable String defaultRole;
@@ -50,7 +50,7 @@ public final class DeviceprofileSwitchSwitchMgmtTacacs {
         return this.acctServers == null ? List.of() : this.acctServers;
     }
     /**
-     * @return Default switch-management role to use for TACACS+ logins
+     * @return Default switch-management role to use for TACACS+ logins. enum: `admin`, `helpdesk`, `none`, `read`.
      * 
      */
     public Optional<String> defaultRole() {

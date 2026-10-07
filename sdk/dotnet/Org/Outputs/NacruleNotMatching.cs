@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class NacruleNotMatching
     {
         /// <summary>
-        /// NAC authentication method that must match the request
+        /// NAC authentication method that must match the request. enum: `Cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `Idp`, `Mab`, `eap-peap`.
         /// </summary>
         public readonly string? AuthType;
         /// <summary>

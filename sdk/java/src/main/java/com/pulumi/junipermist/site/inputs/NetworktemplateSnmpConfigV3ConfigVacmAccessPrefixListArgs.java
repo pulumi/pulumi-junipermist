@@ -61,14 +61,14 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
     }
 
     /**
-     * Required security level for this VACM access rule
+     * Required security level for this VACM access rule. enum: `authentication`, `none`, `privacy`.
      * 
      */
     @Import(name="securityLevel")
     private @Nullable Output<String> securityLevel;
 
     /**
-     * @return Required security level for this VACM access rule
+     * @return Required security level for this VACM access rule. enum: `authentication`, `none`, `privacy`.
      * 
      */
     public Optional<Output<String>> securityLevel() {
@@ -76,14 +76,14 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
     }
 
     /**
-     * Required security model for this VACM access rule
+     * Required security model for this VACM access rule. enum: `any`, `usm`, `v1`, `v2c`.
      * 
      */
     @Import(name="securityModel")
     private @Nullable Output<String> securityModel;
 
     /**
-     * @return Required security model for this VACM access rule
+     * @return Required security model for this VACM access rule. enum: `any`, `usm`, `v1`, `v2c`.
      * 
      */
     public Optional<Output<String>> securityModel() {
@@ -91,14 +91,14 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
     }
 
     /**
-     * VACM context matching type for this access rule
+     * VACM context matching type for this access rule. enum: `contextPrefix`, `defaultContextPrefix`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return VACM context matching type for this access rule
+     * @return VACM context matching type for this access rule. enum: `contextPrefix`, `defaultContextPrefix`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -214,7 +214,7 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
         }
 
         /**
-         * @param securityLevel Required security level for this VACM access rule
+         * @param securityLevel Required security level for this VACM access rule. enum: `authentication`, `none`, `privacy`.
          * 
          * @return builder
          * 
@@ -225,7 +225,7 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
         }
 
         /**
-         * @param securityLevel Required security level for this VACM access rule
+         * @param securityLevel Required security level for this VACM access rule. enum: `authentication`, `none`, `privacy`.
          * 
          * @return builder
          * 
@@ -235,7 +235,7 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
         }
 
         /**
-         * @param securityModel Required security model for this VACM access rule
+         * @param securityModel Required security model for this VACM access rule. enum: `any`, `usm`, `v1`, `v2c`.
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
         }
 
         /**
-         * @param securityModel Required security model for this VACM access rule
+         * @param securityModel Required security model for this VACM access rule. enum: `any`, `usm`, `v1`, `v2c`.
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
         }
 
         /**
-         * @param type VACM context matching type for this access rule
+         * @param type VACM context matching type for this access rule. enum: `contextPrefix`, `defaultContextPrefix`.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
         }
 
         /**
-         * @param type VACM context matching type for this access rule
+         * @param type VACM context matching type for this access rule. enum: `contextPrefix`, `defaultContextPrefix`.
          * 
          * @return builder
          * 

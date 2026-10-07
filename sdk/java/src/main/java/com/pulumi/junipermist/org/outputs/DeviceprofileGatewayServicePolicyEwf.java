@@ -28,7 +28,7 @@ public final class DeviceprofileGatewayServicePolicyEwf {
      */
     private @Nullable Boolean enabled;
     /**
-     * @return Enhanced web filtering profile applied by this rule
+     * @return Enhanced web filtering profile applied by this rule. enum: `critical`, `standard`, `strict`.
      * 
      */
     private @Nullable String profile;
@@ -56,7 +56,7 @@ public final class DeviceprofileGatewayServicePolicyEwf {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Enhanced web filtering profile applied by this rule
+     * @return Enhanced web filtering profile applied by this rule. enum: `critical`, `standard`, `strict`.
      * 
      */
     public Optional<String> profile() {

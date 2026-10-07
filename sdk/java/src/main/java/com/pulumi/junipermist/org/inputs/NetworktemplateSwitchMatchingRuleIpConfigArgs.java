@@ -31,14 +31,14 @@ public final class NetworktemplateSwitchMatchingRuleIpConfigArgs extends com.pul
     }
 
     /**
-     * IP assignment mode for in-band switch management
+     * IP assignment mode for in-band switch management. enum: `dhcp`, `static`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return IP assignment mode for in-band switch management
+     * @return IP assignment mode for in-band switch management. enum: `dhcp`, `static`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -92,7 +92,7 @@ public final class NetworktemplateSwitchMatchingRuleIpConfigArgs extends com.pul
         }
 
         /**
-         * @param type IP assignment mode for in-band switch management
+         * @param type IP assignment mode for in-band switch management. enum: `dhcp`, `static`.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class NetworktemplateSwitchMatchingRuleIpConfigArgs extends com.pul
         }
 
         /**
-         * @param type IP assignment mode for in-band switch management
+         * @param type IP assignment mode for in-band switch management. enum: `dhcp`, `static`.
          * 
          * @return builder
          * 

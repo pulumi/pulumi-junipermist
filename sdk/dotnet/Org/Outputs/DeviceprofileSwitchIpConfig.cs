@@ -38,7 +38,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Network;
         /// <summary>
-        /// IP assignment mode for this Junos IP configuration
+        /// IP assignment mode for this Junos IP configuration. enum: `Dhcp`, `Static`.
         /// </summary>
         public readonly string? Type;
 

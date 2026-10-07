@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Mapping mode for interpreting dynamic VLAN attributes returned by RADIUS
+        /// Mapping mode for interpreting dynamic VLAN attributes returned by RADIUS. enum: `airespace-interface-name`, `Standard`.
         /// </summary>
         public readonly string? Type;
         /// <summary>

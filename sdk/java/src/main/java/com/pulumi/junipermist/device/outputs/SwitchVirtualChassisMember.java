@@ -22,7 +22,7 @@ public final class SwitchVirtualChassisMember {
      */
     private Integer memberId;
     /**
-     * @return Role of this member in the Virtual Chassis
+     * @return Role of this member in the Virtual Chassis. enum: `backup`, `linecard`, `master`.
      * 
      */
     private String vcRole;
@@ -43,7 +43,7 @@ public final class SwitchVirtualChassisMember {
         return this.memberId;
     }
     /**
-     * @return Role of this member in the Virtual Chassis
+     * @return Role of this member in the Virtual Chassis. enum: `backup`, `linecard`, `master`.
      * 
      */
     public String vcRole() {

@@ -30,7 +30,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly Outputs.DeviceprofileGatewayOobIpConfigNode1? Node1;
         /// <summary>
-        /// IP assignment mode for the out-of-band management interface
+        /// IP assignment mode for the out-of-band management interface. enum: `Dhcp`, `Static`.
         /// </summary>
         public readonly string? Type;
         /// <summary>

@@ -31,7 +31,7 @@ class AvprofileArgs:
 
         :param pulumi.Input[_builtins.str] org_id: Owning organization identifier for this antivirus profile
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: Network protocols inspected by this antivirus profile
-        :param pulumi.Input[_builtins.str] fallback_action: Action to take when antivirus scanning cannot complete
+        :param pulumi.Input[_builtins.str] fallback_action: Action to take when antivirus scanning cannot complete. enum: `block`, `log-and-permit`, `permit`.
         :param pulumi.Input[_builtins.int] max_filesize: Maximum file size scanned by this antivirus profile, in KB
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mime_whitelists: Content MIME types exempted from antivirus scanning
         :param pulumi.Input[_builtins.str] name: Display name of the antivirus profile
@@ -78,7 +78,7 @@ class AvprofileArgs:
     @pulumi.getter(name="fallbackAction")
     def fallback_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Action to take when antivirus scanning cannot complete
+        Action to take when antivirus scanning cannot complete. enum: `block`, `log-and-permit`, `permit`.
         """
         return pulumi.get(self, "fallback_action")
 
@@ -148,7 +148,7 @@ class _AvprofileState:
         """
         Input properties used for looking up and filtering Avprofile resources.
 
-        :param pulumi.Input[_builtins.str] fallback_action: Action to take when antivirus scanning cannot complete
+        :param pulumi.Input[_builtins.str] fallback_action: Action to take when antivirus scanning cannot complete. enum: `block`, `log-and-permit`, `permit`.
         :param pulumi.Input[_builtins.int] max_filesize: Maximum file size scanned by this antivirus profile, in KB
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mime_whitelists: Content MIME types exempted from antivirus scanning
         :param pulumi.Input[_builtins.str] name: Display name of the antivirus profile
@@ -175,7 +175,7 @@ class _AvprofileState:
     @pulumi.getter(name="fallbackAction")
     def fallback_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Action to take when antivirus scanning cannot complete
+        Action to take when antivirus scanning cannot complete. enum: `block`, `log-and-permit`, `permit`.
         """
         return pulumi.get(self, "fallback_action")
 
@@ -315,7 +315,7 @@ class Avprofile(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] fallback_action: Action to take when antivirus scanning cannot complete
+        :param pulumi.Input[_builtins.str] fallback_action: Action to take when antivirus scanning cannot complete. enum: `block`, `log-and-permit`, `permit`.
         :param pulumi.Input[_builtins.int] max_filesize: Maximum file size scanned by this antivirus profile, in KB
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mime_whitelists: Content MIME types exempted from antivirus scanning
         :param pulumi.Input[_builtins.str] name: Display name of the antivirus profile
@@ -438,7 +438,7 @@ class Avprofile(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] fallback_action: Action to take when antivirus scanning cannot complete
+        :param pulumi.Input[_builtins.str] fallback_action: Action to take when antivirus scanning cannot complete. enum: `block`, `log-and-permit`, `permit`.
         :param pulumi.Input[_builtins.int] max_filesize: Maximum file size scanned by this antivirus profile, in KB
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mime_whitelists: Content MIME types exempted from antivirus scanning
         :param pulumi.Input[_builtins.str] name: Display name of the antivirus profile
@@ -463,7 +463,7 @@ class Avprofile(pulumi.CustomResource):
     @pulumi.getter(name="fallbackAction")
     def fallback_action(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Action to take when antivirus scanning cannot complete
+        Action to take when antivirus scanning cannot complete. enum: `block`, `log-and-permit`, `permit`.
         """
         return pulumi.get(self, "fallback_action")
 

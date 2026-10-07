@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class VpnPathsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// BFD profile used for this VPN path
+        /// BFD profile used for this VPN path. enum: `Broadband`, `Lte`.
         /// </summary>
         [Input("bfdProfile")]
         public Input<string>? BfdProfile { get; set; }

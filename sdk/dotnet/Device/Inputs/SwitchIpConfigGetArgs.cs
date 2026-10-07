@@ -61,7 +61,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// IP assignment mode for this Junos IP configuration
+        /// IP assignment mode for this Junos IP configuration. enum: `Dhcp`, `Static`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

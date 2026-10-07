@@ -67,7 +67,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<bool>? DisableAutoneg { get; set; }
 
         /// <summary>
-        /// Link duplex mode for this Junos port
+        /// Link duplex mode for this Junos port. enum: `Auto`, `Full`, `Half`.
         /// </summary>
         [Input("duplex")]
         public Input<string>? Duplex { get; set; }
@@ -121,7 +121,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? PortNetwork { get; set; }
 
         /// <summary>
-        /// Link speed for this Junos port
+        /// Link speed for this Junos port. enum: `10m`, `100m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`, `Auto`.
         /// </summary>
         [Input("speed")]
         public Input<string>? Speed { get; set; }

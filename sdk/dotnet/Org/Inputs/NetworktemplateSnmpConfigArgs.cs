@@ -49,7 +49,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? EngineId { get; set; }
 
         /// <summary>
-        /// Method used to derive the SNMP engine ID
+        /// Method used to derive the SNMP engine ID. enum: `Local`, `UseMacAddress`.
         /// </summary>
         [Input("engineIdType")]
         public Input<string>? EngineIdType { get; set; }

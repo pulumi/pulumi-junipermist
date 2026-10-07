@@ -32,14 +32,14 @@ public final class GatewayGatewayMgmtProtectReCustomArgs extends com.pulumi.reso
     }
 
     /**
-     * Transport protocol matched by this custom Protect RE ACL
+     * Transport protocol matched by this custom Protect RE ACL. enum: `any`, `icmp`, `tcp`, `udp`.
      * 
      */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
     /**
-     * @return Transport protocol matched by this custom Protect RE ACL
+     * @return Transport protocol matched by this custom Protect RE ACL. enum: `any`, `icmp`, `tcp`, `udp`.
      * 
      */
     public Optional<Output<String>> protocol() {
@@ -109,7 +109,7 @@ public final class GatewayGatewayMgmtProtectReCustomArgs extends com.pulumi.reso
         }
 
         /**
-         * @param protocol Transport protocol matched by this custom Protect RE ACL
+         * @param protocol Transport protocol matched by this custom Protect RE ACL. enum: `any`, `icmp`, `tcp`, `udp`.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class GatewayGatewayMgmtProtectReCustomArgs extends com.pulumi.reso
         }
 
         /**
-         * @param protocol Transport protocol matched by this custom Protect RE ACL
+         * @param protocol Transport protocol matched by this custom Protect RE ACL. enum: `any`, `icmp`, `tcp`, `udp`.
          * 
          * @return builder
          * 

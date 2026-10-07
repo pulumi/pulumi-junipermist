@@ -35,7 +35,7 @@ public final class MxclusterRadsecAuthServer {
      */
     private @Nullable Boolean keywrapEnabled;
     /**
-     * @return Encoding format for Mist AP RADIUS keywrap keys
+     * @return Encoding format for Mist AP RADIUS keywrap keys. enum: `ascii`, `hex`.
      * 
      */
     private @Nullable String keywrapFormat;
@@ -105,7 +105,7 @@ public final class MxclusterRadsecAuthServer {
         return Optional.ofNullable(this.keywrapEnabled);
     }
     /**
-     * @return Encoding format for Mist AP RADIUS keywrap keys
+     * @return Encoding format for Mist AP RADIUS keywrap keys. enum: `ascii`, `hex`.
      * 
      */
     public Optional<String> keywrapFormat() {

@@ -100,7 +100,7 @@ type Ap struct {
 	Serial pulumi.StringOutput `pulumi:"serial"`
 	// Site where this access point is assigned
 	SiteId pulumi.StringOutput `pulumi:"siteId"`
-	// Device type discriminator for access point records
+	// Device type discriminator for access point records. enum: `ap`.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Authentication and failover behavior for AP uplink ports
 	UplinkPortConfig ApUplinkPortConfigPtrOutput `pulumi:"uplinkPortConfig"`
@@ -227,7 +227,7 @@ type apState struct {
 	Serial *string `pulumi:"serial"`
 	// Site where this access point is assigned
 	SiteId *string `pulumi:"siteId"`
-	// Device type discriminator for access point records
+	// Device type discriminator for access point records. enum: `ap`.
 	Type *string `pulumi:"type"`
 	// Authentication and failover behavior for AP uplink ports
 	UplinkPortConfig *ApUplinkPortConfig `pulumi:"uplinkPortConfig"`
@@ -319,7 +319,7 @@ type ApState struct {
 	Serial pulumi.StringPtrInput
 	// Site where this access point is assigned
 	SiteId pulumi.StringPtrInput
-	// Device type discriminator for access point records
+	// Device type discriminator for access point records. enum: `ap`.
 	Type pulumi.StringPtrInput
 	// Authentication and failover behavior for AP uplink ports
 	UplinkPortConfig ApUplinkPortConfigPtrInput
@@ -765,7 +765,7 @@ func (o ApOutput) SiteId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ap) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
-// Device type discriminator for access point records
+// Device type discriminator for access point records. enum: `ap`.
 func (o ApOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ap) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

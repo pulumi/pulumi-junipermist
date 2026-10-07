@@ -89,12 +89,12 @@ public final class GatewaytemplateDhcpdConfigConfig {
      */
     private @Nullable List<String> serversv6s;
     /**
-     * @return IPv4 DHCP mode for this network
+     * @return IPv4 DHCP mode for this network. enum: `local`, `none`, `relay`.
      * 
      */
     private @Nullable String type;
     /**
-     * @return IPv6 DHCP mode for this network
+     * @return IPv6 DHCP mode for this network. enum: `local`, `none`, `relay`.
      * 
      */
     private @Nullable String type6;
@@ -202,14 +202,14 @@ public final class GatewaytemplateDhcpdConfigConfig {
         return this.serversv6s == null ? List.of() : this.serversv6s;
     }
     /**
-     * @return IPv4 DHCP mode for this network
+     * @return IPv4 DHCP mode for this network. enum: `local`, `none`, `relay`.
      * 
      */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return IPv6 DHCP mode for this network
+     * @return IPv6 DHCP mode for this network. enum: `local`, `none`, `relay`.
      * 
      */
     public Optional<String> type6() {

@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? KeywrapEnabled { get; set; }
 
         /// <summary>
-        /// Encoding format for RADIUS keywrap KEK and MACK values
+        /// Encoding format for RADIUS keywrap KEK and MACK values. enum: `Ascii`, `Hex`.
         /// </summary>
         [Input("keywrapFormat")]
         public Input<string>? KeywrapFormat { get; set; }

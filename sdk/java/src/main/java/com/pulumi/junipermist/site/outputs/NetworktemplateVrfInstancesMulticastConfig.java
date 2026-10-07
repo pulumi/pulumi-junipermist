@@ -14,15 +14,25 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworktemplateVrfInstancesMulticastConfig {
     /**
-     * @return When `true`, auto-generates a shared RP on `isL3Border` devices (ERB/IPClos topologies only)
+     * @return When `true`, generates a shared anycast RP on all `isL3Border` devices in EVPN (ERB/IPClos) topologies. Uses `rpIp` as the shared RP address, or an internal default when `rpIp` is omitted. Takes precedence over `rpMac` and `rpIp` when multiple RP options are set.
      * 
      */
     private @Nullable Boolean anycastRp;
     /**
-     * @return RP address used when `anycastRp`==`false`. If the address matches a device SVI, it is configured as a local RP; otherwise a static RP is configured
+     * @return When `true`, enables the PIM EVPN Gateway on `isL3Border` devices. Required for external sources or receivers in EVPN topologies.
+     * 
+     */
+    private @Nullable Boolean pegEnabled;
+    /**
+     * @return RP address used for EVPN anycast RP when `anycastRp` is true, or for an external RP when it is false. In non-EVPN topologies, a matching device router ID configures a local RP; otherwise a static RP is configured.
      * 
      */
     private @Nullable String rpIp;
+    /**
+     * @return Device MAC address of a fabric RP in EVPN topologies. The RP address is the first usable IP of the VRF `evpnAutoLoopbackSubnet`, not `rpIp`; requires `evpnAutoLoopbackSubnet`. Takes precedence over `rpIp` when `anycastRp` is false.
+     * 
+     */
+    private @Nullable String rpMac;
     /**
      * @return SBD IRB subnet; Mist auto-assigns per-device IPs from this range (EVPN eOISM only)
      * 
@@ -33,21 +43,40 @@ public final class NetworktemplateVrfInstancesMulticastConfig {
      * 
      */
     private @Nullable Integer sbdVlanId;
+    /**
+     * @return When `true` on PEG borders, builds an eBGP mesh between PEG borders over SBD IRBs so WAN-learned routes can satisfy the PIM RPF check during a border WAN-uplink failure.
+     * 
+     */
+    private @Nullable Boolean sbdWanRpf;
 
     private NetworktemplateVrfInstancesMulticastConfig() {}
     /**
-     * @return When `true`, auto-generates a shared RP on `isL3Border` devices (ERB/IPClos topologies only)
+     * @return When `true`, generates a shared anycast RP on all `isL3Border` devices in EVPN (ERB/IPClos) topologies. Uses `rpIp` as the shared RP address, or an internal default when `rpIp` is omitted. Takes precedence over `rpMac` and `rpIp` when multiple RP options are set.
      * 
      */
     public Optional<Boolean> anycastRp() {
         return Optional.ofNullable(this.anycastRp);
     }
     /**
-     * @return RP address used when `anycastRp`==`false`. If the address matches a device SVI, it is configured as a local RP; otherwise a static RP is configured
+     * @return When `true`, enables the PIM EVPN Gateway on `isL3Border` devices. Required for external sources or receivers in EVPN topologies.
+     * 
+     */
+    public Optional<Boolean> pegEnabled() {
+        return Optional.ofNullable(this.pegEnabled);
+    }
+    /**
+     * @return RP address used for EVPN anycast RP when `anycastRp` is true, or for an external RP when it is false. In non-EVPN topologies, a matching device router ID configures a local RP; otherwise a static RP is configured.
      * 
      */
     public Optional<String> rpIp() {
         return Optional.ofNullable(this.rpIp);
+    }
+    /**
+     * @return Device MAC address of a fabric RP in EVPN topologies. The RP address is the first usable IP of the VRF `evpnAutoLoopbackSubnet`, not `rpIp`; requires `evpnAutoLoopbackSubnet`. Takes precedence over `rpIp` when `anycastRp` is false.
+     * 
+     */
+    public Optional<String> rpMac() {
+        return Optional.ofNullable(this.rpMac);
     }
     /**
      * @return SBD IRB subnet; Mist auto-assigns per-device IPs from this range (EVPN eOISM only)
@@ -63,6 +92,13 @@ public final class NetworktemplateVrfInstancesMulticastConfig {
     public Optional<Integer> sbdVlanId() {
         return Optional.ofNullable(this.sbdVlanId);
     }
+    /**
+     * @return When `true` on PEG borders, builds an eBGP mesh between PEG borders over SBD IRBs so WAN-learned routes can satisfy the PIM RPF check during a border WAN-uplink failure.
+     * 
+     */
+    public Optional<Boolean> sbdWanRpf() {
+        return Optional.ofNullable(this.sbdWanRpf);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -74,16 +110,22 @@ public final class NetworktemplateVrfInstancesMulticastConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean anycastRp;
+        private @Nullable Boolean pegEnabled;
         private @Nullable String rpIp;
+        private @Nullable String rpMac;
         private @Nullable String sbdSubnet;
         private @Nullable Integer sbdVlanId;
+        private @Nullable Boolean sbdWanRpf;
         public Builder() {}
         public Builder(NetworktemplateVrfInstancesMulticastConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.anycastRp = defaults.anycastRp;
+    	      this.pegEnabled = defaults.pegEnabled;
     	      this.rpIp = defaults.rpIp;
+    	      this.rpMac = defaults.rpMac;
     	      this.sbdSubnet = defaults.sbdSubnet;
     	      this.sbdVlanId = defaults.sbdVlanId;
+    	      this.sbdWanRpf = defaults.sbdWanRpf;
         }
 
         @CustomType.Setter
@@ -93,9 +135,21 @@ public final class NetworktemplateVrfInstancesMulticastConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder pegEnabled(@Nullable Boolean pegEnabled) {
+
+            this.pegEnabled = pegEnabled;
+            return this;
+        }
+        @CustomType.Setter
         public Builder rpIp(@Nullable String rpIp) {
 
             this.rpIp = rpIp;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder rpMac(@Nullable String rpMac) {
+
+            this.rpMac = rpMac;
             return this;
         }
         @CustomType.Setter
@@ -110,12 +164,21 @@ public final class NetworktemplateVrfInstancesMulticastConfig {
             this.sbdVlanId = sbdVlanId;
             return this;
         }
+        @CustomType.Setter
+        public Builder sbdWanRpf(@Nullable Boolean sbdWanRpf) {
+
+            this.sbdWanRpf = sbdWanRpf;
+            return this;
+        }
         public NetworktemplateVrfInstancesMulticastConfig build() {
             final var _resultValue = new NetworktemplateVrfInstancesMulticastConfig();
             _resultValue.anycastRp = anycastRp;
+            _resultValue.pegEnabled = pegEnabled;
             _resultValue.rpIp = rpIp;
+            _resultValue.rpMac = rpMac;
             _resultValue.sbdSubnet = sbdSubnet;
             _resultValue.sbdVlanId = sbdVlanId;
+            _resultValue.sbdWanRpf = sbdWanRpf;
             return _resultValue;
         }
     }

@@ -82,14 +82,14 @@ public final class DeviceprofileApRadioConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Selected radio chain mode for AP models that support antenna mode control
+     * Selected radio chain mode for AP models that support antenna mode control. enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`.
      * 
      */
     @Import(name="antennaMode")
     private @Nullable Output<String> antennaMode;
 
     /**
-     * @return Selected radio chain mode for AP models that support antenna mode control
+     * @return Selected radio chain mode for AP models that support antenna mode control. enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`.
      * 
      */
     public Optional<Output<String>> antennaMode() {
@@ -97,14 +97,14 @@ public final class DeviceprofileApRadioConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Internal or external antenna selection for AP models with selectable antennas
+     * Internal or external antenna selection for AP models with selectable antennas. enum: ``, `external`, `internal`.
      * 
      */
     @Import(name="antennaSelect")
     private @Nullable Output<String> antennaSelect;
 
     /**
-     * @return Internal or external antenna selection for AP models with selectable antennas
+     * @return Internal or external antenna selection for AP models with selectable antennas. enum: ``, `external`, `internal`.
      * 
      */
     public Optional<Output<String>> antennaSelect() {
@@ -127,14 +127,14 @@ public final class DeviceprofileApRadioConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Radio usage mode for the 2.4 GHz-capable radio
+     * Radio usage mode for the 2.4 GHz-capable radio. enum: `24`, `5`, `6`, `auto`.
      * 
      */
     @Import(name="band24Usage")
     private @Nullable Output<String> band24Usage;
 
     /**
-     * @return Radio usage mode for the 2.4 GHz-capable radio
+     * @return Radio usage mode for the 2.4 GHz-capable radio. enum: `24`, `5`, `6`, `auto`.
      * 
      */
     public Optional<Output<String>> band24Usage() {
@@ -369,7 +369,7 @@ public final class DeviceprofileApRadioConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param antennaMode Selected radio chain mode for AP models that support antenna mode control
+         * @param antennaMode Selected radio chain mode for AP models that support antenna mode control. enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`.
          * 
          * @return builder
          * 
@@ -380,7 +380,7 @@ public final class DeviceprofileApRadioConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param antennaMode Selected radio chain mode for AP models that support antenna mode control
+         * @param antennaMode Selected radio chain mode for AP models that support antenna mode control. enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`.
          * 
          * @return builder
          * 
@@ -390,7 +390,7 @@ public final class DeviceprofileApRadioConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param antennaSelect Internal or external antenna selection for AP models with selectable antennas
+         * @param antennaSelect Internal or external antenna selection for AP models with selectable antennas. enum: ``, `external`, `internal`.
          * 
          * @return builder
          * 
@@ -401,7 +401,7 @@ public final class DeviceprofileApRadioConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param antennaSelect Internal or external antenna selection for AP models with selectable antennas
+         * @param antennaSelect Internal or external antenna selection for AP models with selectable antennas. enum: ``, `external`, `internal`.
          * 
          * @return builder
          * 
@@ -432,7 +432,7 @@ public final class DeviceprofileApRadioConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param band24Usage Radio usage mode for the 2.4 GHz-capable radio
+         * @param band24Usage Radio usage mode for the 2.4 GHz-capable radio. enum: `24`, `5`, `6`, `auto`.
          * 
          * @return builder
          * 
@@ -443,7 +443,7 @@ public final class DeviceprofileApRadioConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param band24Usage Radio usage mode for the 2.4 GHz-capable radio
+         * @param band24Usage Radio usage mode for the 2.4 GHz-capable radio. enum: `24`, `5`, `6`, `auto`.
          * 
          * @return builder
          * 

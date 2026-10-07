@@ -81,7 +81,7 @@ import (
 type Idpprofile struct {
 	pulumi.CustomResourceState
 
-	// Built-in IDP baseline profile inherited before applying overwrites
+	// Built-in IDP baseline profile inherited before applying overwrites. enum: `critical`, `standard`, `strict`.
 	BaseProfile pulumi.StringOutput `pulumi:"baseProfile"`
 	// Display name of the IDP profile
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -127,7 +127,7 @@ func GetIdpprofile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Idpprofile resources.
 type idpprofileState struct {
-	// Built-in IDP baseline profile inherited before applying overwrites
+	// Built-in IDP baseline profile inherited before applying overwrites. enum: `critical`, `standard`, `strict`.
 	BaseProfile *string `pulumi:"baseProfile"`
 	// Display name of the IDP profile
 	Name *string `pulumi:"name"`
@@ -138,7 +138,7 @@ type idpprofileState struct {
 }
 
 type IdpprofileState struct {
-	// Built-in IDP baseline profile inherited before applying overwrites
+	// Built-in IDP baseline profile inherited before applying overwrites. enum: `critical`, `standard`, `strict`.
 	BaseProfile pulumi.StringPtrInput
 	// Display name of the IDP profile
 	Name pulumi.StringPtrInput
@@ -153,7 +153,7 @@ func (IdpprofileState) ElementType() reflect.Type {
 }
 
 type idpprofileArgs struct {
-	// Built-in IDP baseline profile inherited before applying overwrites
+	// Built-in IDP baseline profile inherited before applying overwrites. enum: `critical`, `standard`, `strict`.
 	BaseProfile string `pulumi:"baseProfile"`
 	// Display name of the IDP profile
 	Name *string `pulumi:"name"`
@@ -165,7 +165,7 @@ type idpprofileArgs struct {
 
 // The set of arguments for constructing a Idpprofile resource.
 type IdpprofileArgs struct {
-	// Built-in IDP baseline profile inherited before applying overwrites
+	// Built-in IDP baseline profile inherited before applying overwrites. enum: `critical`, `standard`, `strict`.
 	BaseProfile pulumi.StringInput
 	// Display name of the IDP profile
 	Name pulumi.StringPtrInput
@@ -262,7 +262,7 @@ func (o IdpprofileOutput) ToIdpprofileOutputWithContext(ctx context.Context) Idp
 	return o
 }
 
-// Built-in IDP baseline profile inherited before applying overwrites
+// Built-in IDP baseline profile inherited before applying overwrites. enum: `critical`, `standard`, `strict`.
 func (o IdpprofileOutput) BaseProfile() pulumi.StringOutput {
 	return o.ApplyT(func(v *Idpprofile) pulumi.StringOutput { return v.BaseProfile }).(pulumi.StringOutput)
 }

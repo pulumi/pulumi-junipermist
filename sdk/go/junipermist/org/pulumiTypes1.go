@@ -13,6 +13,853 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type WlanScheduleHours struct {
+	// Operating hour range for Friday
+	Fri *string `pulumi:"fri"`
+	// Operating hour range for Monday
+	Mon *string `pulumi:"mon"`
+	// Operating hour range for Saturday
+	Sat *string `pulumi:"sat"`
+	// Operating hour range for Sunday
+	Sun *string `pulumi:"sun"`
+	// Operating hour range for Thursday
+	Thu *string `pulumi:"thu"`
+	// Operating hour range for Tuesday
+	Tue *string `pulumi:"tue"`
+	// Operating hour range for Wednesday
+	Wed *string `pulumi:"wed"`
+}
+
+// WlanScheduleHoursInput is an input type that accepts WlanScheduleHoursArgs and WlanScheduleHoursOutput values.
+// You can construct a concrete instance of `WlanScheduleHoursInput` via:
+//
+//	WlanScheduleHoursArgs{...}
+type WlanScheduleHoursInput interface {
+	pulumi.Input
+
+	ToWlanScheduleHoursOutput() WlanScheduleHoursOutput
+	ToWlanScheduleHoursOutputWithContext(context.Context) WlanScheduleHoursOutput
+}
+
+type WlanScheduleHoursArgs struct {
+	// Operating hour range for Friday
+	Fri pulumi.StringPtrInput `pulumi:"fri"`
+	// Operating hour range for Monday
+	Mon pulumi.StringPtrInput `pulumi:"mon"`
+	// Operating hour range for Saturday
+	Sat pulumi.StringPtrInput `pulumi:"sat"`
+	// Operating hour range for Sunday
+	Sun pulumi.StringPtrInput `pulumi:"sun"`
+	// Operating hour range for Thursday
+	Thu pulumi.StringPtrInput `pulumi:"thu"`
+	// Operating hour range for Tuesday
+	Tue pulumi.StringPtrInput `pulumi:"tue"`
+	// Operating hour range for Wednesday
+	Wed pulumi.StringPtrInput `pulumi:"wed"`
+}
+
+func (WlanScheduleHoursArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WlanScheduleHours)(nil)).Elem()
+}
+
+func (i WlanScheduleHoursArgs) ToWlanScheduleHoursOutput() WlanScheduleHoursOutput {
+	return i.ToWlanScheduleHoursOutputWithContext(context.Background())
+}
+
+func (i WlanScheduleHoursArgs) ToWlanScheduleHoursOutputWithContext(ctx context.Context) WlanScheduleHoursOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WlanScheduleHoursOutput)
+}
+
+func (i WlanScheduleHoursArgs) ToWlanScheduleHoursPtrOutput() WlanScheduleHoursPtrOutput {
+	return i.ToWlanScheduleHoursPtrOutputWithContext(context.Background())
+}
+
+func (i WlanScheduleHoursArgs) ToWlanScheduleHoursPtrOutputWithContext(ctx context.Context) WlanScheduleHoursPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WlanScheduleHoursOutput).ToWlanScheduleHoursPtrOutputWithContext(ctx)
+}
+
+// WlanScheduleHoursPtrInput is an input type that accepts WlanScheduleHoursArgs, WlanScheduleHoursPtr and WlanScheduleHoursPtrOutput values.
+// You can construct a concrete instance of `WlanScheduleHoursPtrInput` via:
+//
+//	        WlanScheduleHoursArgs{...}
+//
+//	or:
+//
+//	        nil
+type WlanScheduleHoursPtrInput interface {
+	pulumi.Input
+
+	ToWlanScheduleHoursPtrOutput() WlanScheduleHoursPtrOutput
+	ToWlanScheduleHoursPtrOutputWithContext(context.Context) WlanScheduleHoursPtrOutput
+}
+
+type wlanScheduleHoursPtrType WlanScheduleHoursArgs
+
+func WlanScheduleHoursPtr(v *WlanScheduleHoursArgs) WlanScheduleHoursPtrInput {
+	return (*wlanScheduleHoursPtrType)(v)
+}
+
+func (*wlanScheduleHoursPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WlanScheduleHours)(nil)).Elem()
+}
+
+func (i *wlanScheduleHoursPtrType) ToWlanScheduleHoursPtrOutput() WlanScheduleHoursPtrOutput {
+	return i.ToWlanScheduleHoursPtrOutputWithContext(context.Background())
+}
+
+func (i *wlanScheduleHoursPtrType) ToWlanScheduleHoursPtrOutputWithContext(ctx context.Context) WlanScheduleHoursPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WlanScheduleHoursPtrOutput)
+}
+
+type WlanScheduleHoursOutput struct{ *pulumi.OutputState }
+
+func (WlanScheduleHoursOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WlanScheduleHours)(nil)).Elem()
+}
+
+func (o WlanScheduleHoursOutput) ToWlanScheduleHoursOutput() WlanScheduleHoursOutput {
+	return o
+}
+
+func (o WlanScheduleHoursOutput) ToWlanScheduleHoursOutputWithContext(ctx context.Context) WlanScheduleHoursOutput {
+	return o
+}
+
+func (o WlanScheduleHoursOutput) ToWlanScheduleHoursPtrOutput() WlanScheduleHoursPtrOutput {
+	return o.ToWlanScheduleHoursPtrOutputWithContext(context.Background())
+}
+
+func (o WlanScheduleHoursOutput) ToWlanScheduleHoursPtrOutputWithContext(ctx context.Context) WlanScheduleHoursPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WlanScheduleHours) *WlanScheduleHours {
+		return &v
+	}).(WlanScheduleHoursPtrOutput)
+}
+
+// Operating hour range for Friday
+func (o WlanScheduleHoursOutput) Fri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanScheduleHours) *string { return v.Fri }).(pulumi.StringPtrOutput)
+}
+
+// Operating hour range for Monday
+func (o WlanScheduleHoursOutput) Mon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanScheduleHours) *string { return v.Mon }).(pulumi.StringPtrOutput)
+}
+
+// Operating hour range for Saturday
+func (o WlanScheduleHoursOutput) Sat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanScheduleHours) *string { return v.Sat }).(pulumi.StringPtrOutput)
+}
+
+// Operating hour range for Sunday
+func (o WlanScheduleHoursOutput) Sun() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanScheduleHours) *string { return v.Sun }).(pulumi.StringPtrOutput)
+}
+
+// Operating hour range for Thursday
+func (o WlanScheduleHoursOutput) Thu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanScheduleHours) *string { return v.Thu }).(pulumi.StringPtrOutput)
+}
+
+// Operating hour range for Tuesday
+func (o WlanScheduleHoursOutput) Tue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanScheduleHours) *string { return v.Tue }).(pulumi.StringPtrOutput)
+}
+
+// Operating hour range for Wednesday
+func (o WlanScheduleHoursOutput) Wed() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanScheduleHours) *string { return v.Wed }).(pulumi.StringPtrOutput)
+}
+
+type WlanScheduleHoursPtrOutput struct{ *pulumi.OutputState }
+
+func (WlanScheduleHoursPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WlanScheduleHours)(nil)).Elem()
+}
+
+func (o WlanScheduleHoursPtrOutput) ToWlanScheduleHoursPtrOutput() WlanScheduleHoursPtrOutput {
+	return o
+}
+
+func (o WlanScheduleHoursPtrOutput) ToWlanScheduleHoursPtrOutputWithContext(ctx context.Context) WlanScheduleHoursPtrOutput {
+	return o
+}
+
+func (o WlanScheduleHoursPtrOutput) Elem() WlanScheduleHoursOutput {
+	return o.ApplyT(func(v *WlanScheduleHours) WlanScheduleHours {
+		if v != nil {
+			return *v
+		}
+		var ret WlanScheduleHours
+		return ret
+	}).(WlanScheduleHoursOutput)
+}
+
+// Operating hour range for Friday
+func (o WlanScheduleHoursPtrOutput) Fri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanScheduleHours) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Fri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Operating hour range for Monday
+func (o WlanScheduleHoursPtrOutput) Mon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanScheduleHours) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mon
+	}).(pulumi.StringPtrOutput)
+}
+
+// Operating hour range for Saturday
+func (o WlanScheduleHoursPtrOutput) Sat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanScheduleHours) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Operating hour range for Sunday
+func (o WlanScheduleHoursPtrOutput) Sun() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanScheduleHours) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sun
+	}).(pulumi.StringPtrOutput)
+}
+
+// Operating hour range for Thursday
+func (o WlanScheduleHoursPtrOutput) Thu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanScheduleHours) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Thu
+	}).(pulumi.StringPtrOutput)
+}
+
+// Operating hour range for Tuesday
+func (o WlanScheduleHoursPtrOutput) Tue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanScheduleHours) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tue
+	}).(pulumi.StringPtrOutput)
+}
+
+// Operating hour range for Wednesday
+func (o WlanScheduleHoursPtrOutput) Wed() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanScheduleHours) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Wed
+	}).(pulumi.StringPtrOutput)
+}
+
+type WlantemplateApplies struct {
+	// Organization included in the WLAN template application scope
+	OrgId *string `pulumi:"orgId"`
+	// Sites included in the WLAN template application scope
+	SiteIds []string `pulumi:"siteIds"`
+	// Site groups included in the WLAN template application scope
+	SitegroupIds []string `pulumi:"sitegroupIds"`
+}
+
+// WlantemplateAppliesInput is an input type that accepts WlantemplateAppliesArgs and WlantemplateAppliesOutput values.
+// You can construct a concrete instance of `WlantemplateAppliesInput` via:
+//
+//	WlantemplateAppliesArgs{...}
+type WlantemplateAppliesInput interface {
+	pulumi.Input
+
+	ToWlantemplateAppliesOutput() WlantemplateAppliesOutput
+	ToWlantemplateAppliesOutputWithContext(context.Context) WlantemplateAppliesOutput
+}
+
+type WlantemplateAppliesArgs struct {
+	// Organization included in the WLAN template application scope
+	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
+	// Sites included in the WLAN template application scope
+	SiteIds pulumi.StringArrayInput `pulumi:"siteIds"`
+	// Site groups included in the WLAN template application scope
+	SitegroupIds pulumi.StringArrayInput `pulumi:"sitegroupIds"`
+}
+
+func (WlantemplateAppliesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WlantemplateApplies)(nil)).Elem()
+}
+
+func (i WlantemplateAppliesArgs) ToWlantemplateAppliesOutput() WlantemplateAppliesOutput {
+	return i.ToWlantemplateAppliesOutputWithContext(context.Background())
+}
+
+func (i WlantemplateAppliesArgs) ToWlantemplateAppliesOutputWithContext(ctx context.Context) WlantemplateAppliesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WlantemplateAppliesOutput)
+}
+
+func (i WlantemplateAppliesArgs) ToWlantemplateAppliesPtrOutput() WlantemplateAppliesPtrOutput {
+	return i.ToWlantemplateAppliesPtrOutputWithContext(context.Background())
+}
+
+func (i WlantemplateAppliesArgs) ToWlantemplateAppliesPtrOutputWithContext(ctx context.Context) WlantemplateAppliesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WlantemplateAppliesOutput).ToWlantemplateAppliesPtrOutputWithContext(ctx)
+}
+
+// WlantemplateAppliesPtrInput is an input type that accepts WlantemplateAppliesArgs, WlantemplateAppliesPtr and WlantemplateAppliesPtrOutput values.
+// You can construct a concrete instance of `WlantemplateAppliesPtrInput` via:
+//
+//	        WlantemplateAppliesArgs{...}
+//
+//	or:
+//
+//	        nil
+type WlantemplateAppliesPtrInput interface {
+	pulumi.Input
+
+	ToWlantemplateAppliesPtrOutput() WlantemplateAppliesPtrOutput
+	ToWlantemplateAppliesPtrOutputWithContext(context.Context) WlantemplateAppliesPtrOutput
+}
+
+type wlantemplateAppliesPtrType WlantemplateAppliesArgs
+
+func WlantemplateAppliesPtr(v *WlantemplateAppliesArgs) WlantemplateAppliesPtrInput {
+	return (*wlantemplateAppliesPtrType)(v)
+}
+
+func (*wlantemplateAppliesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WlantemplateApplies)(nil)).Elem()
+}
+
+func (i *wlantemplateAppliesPtrType) ToWlantemplateAppliesPtrOutput() WlantemplateAppliesPtrOutput {
+	return i.ToWlantemplateAppliesPtrOutputWithContext(context.Background())
+}
+
+func (i *wlantemplateAppliesPtrType) ToWlantemplateAppliesPtrOutputWithContext(ctx context.Context) WlantemplateAppliesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WlantemplateAppliesPtrOutput)
+}
+
+type WlantemplateAppliesOutput struct{ *pulumi.OutputState }
+
+func (WlantemplateAppliesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WlantemplateApplies)(nil)).Elem()
+}
+
+func (o WlantemplateAppliesOutput) ToWlantemplateAppliesOutput() WlantemplateAppliesOutput {
+	return o
+}
+
+func (o WlantemplateAppliesOutput) ToWlantemplateAppliesOutputWithContext(ctx context.Context) WlantemplateAppliesOutput {
+	return o
+}
+
+func (o WlantemplateAppliesOutput) ToWlantemplateAppliesPtrOutput() WlantemplateAppliesPtrOutput {
+	return o.ToWlantemplateAppliesPtrOutputWithContext(context.Background())
+}
+
+func (o WlantemplateAppliesOutput) ToWlantemplateAppliesPtrOutputWithContext(ctx context.Context) WlantemplateAppliesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WlantemplateApplies) *WlantemplateApplies {
+		return &v
+	}).(WlantemplateAppliesPtrOutput)
+}
+
+// Organization included in the WLAN template application scope
+func (o WlantemplateAppliesOutput) OrgId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlantemplateApplies) *string { return v.OrgId }).(pulumi.StringPtrOutput)
+}
+
+// Sites included in the WLAN template application scope
+func (o WlantemplateAppliesOutput) SiteIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WlantemplateApplies) []string { return v.SiteIds }).(pulumi.StringArrayOutput)
+}
+
+// Site groups included in the WLAN template application scope
+func (o WlantemplateAppliesOutput) SitegroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WlantemplateApplies) []string { return v.SitegroupIds }).(pulumi.StringArrayOutput)
+}
+
+type WlantemplateAppliesPtrOutput struct{ *pulumi.OutputState }
+
+func (WlantemplateAppliesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WlantemplateApplies)(nil)).Elem()
+}
+
+func (o WlantemplateAppliesPtrOutput) ToWlantemplateAppliesPtrOutput() WlantemplateAppliesPtrOutput {
+	return o
+}
+
+func (o WlantemplateAppliesPtrOutput) ToWlantemplateAppliesPtrOutputWithContext(ctx context.Context) WlantemplateAppliesPtrOutput {
+	return o
+}
+
+func (o WlantemplateAppliesPtrOutput) Elem() WlantemplateAppliesOutput {
+	return o.ApplyT(func(v *WlantemplateApplies) WlantemplateApplies {
+		if v != nil {
+			return *v
+		}
+		var ret WlantemplateApplies
+		return ret
+	}).(WlantemplateAppliesOutput)
+}
+
+// Organization included in the WLAN template application scope
+func (o WlantemplateAppliesPtrOutput) OrgId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlantemplateApplies) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OrgId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sites included in the WLAN template application scope
+func (o WlantemplateAppliesPtrOutput) SiteIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WlantemplateApplies) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SiteIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Site groups included in the WLAN template application scope
+func (o WlantemplateAppliesPtrOutput) SitegroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WlantemplateApplies) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SitegroupIds
+	}).(pulumi.StringArrayOutput)
+}
+
+type WlantemplateExceptions struct {
+	// Sites excluded from the WLAN template application scope
+	SiteIds []string `pulumi:"siteIds"`
+	// Site groups excluded from the WLAN template application scope
+	SitegroupIds []string `pulumi:"sitegroupIds"`
+}
+
+// WlantemplateExceptionsInput is an input type that accepts WlantemplateExceptionsArgs and WlantemplateExceptionsOutput values.
+// You can construct a concrete instance of `WlantemplateExceptionsInput` via:
+//
+//	WlantemplateExceptionsArgs{...}
+type WlantemplateExceptionsInput interface {
+	pulumi.Input
+
+	ToWlantemplateExceptionsOutput() WlantemplateExceptionsOutput
+	ToWlantemplateExceptionsOutputWithContext(context.Context) WlantemplateExceptionsOutput
+}
+
+type WlantemplateExceptionsArgs struct {
+	// Sites excluded from the WLAN template application scope
+	SiteIds pulumi.StringArrayInput `pulumi:"siteIds"`
+	// Site groups excluded from the WLAN template application scope
+	SitegroupIds pulumi.StringArrayInput `pulumi:"sitegroupIds"`
+}
+
+func (WlantemplateExceptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WlantemplateExceptions)(nil)).Elem()
+}
+
+func (i WlantemplateExceptionsArgs) ToWlantemplateExceptionsOutput() WlantemplateExceptionsOutput {
+	return i.ToWlantemplateExceptionsOutputWithContext(context.Background())
+}
+
+func (i WlantemplateExceptionsArgs) ToWlantemplateExceptionsOutputWithContext(ctx context.Context) WlantemplateExceptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WlantemplateExceptionsOutput)
+}
+
+func (i WlantemplateExceptionsArgs) ToWlantemplateExceptionsPtrOutput() WlantemplateExceptionsPtrOutput {
+	return i.ToWlantemplateExceptionsPtrOutputWithContext(context.Background())
+}
+
+func (i WlantemplateExceptionsArgs) ToWlantemplateExceptionsPtrOutputWithContext(ctx context.Context) WlantemplateExceptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WlantemplateExceptionsOutput).ToWlantemplateExceptionsPtrOutputWithContext(ctx)
+}
+
+// WlantemplateExceptionsPtrInput is an input type that accepts WlantemplateExceptionsArgs, WlantemplateExceptionsPtr and WlantemplateExceptionsPtrOutput values.
+// You can construct a concrete instance of `WlantemplateExceptionsPtrInput` via:
+//
+//	        WlantemplateExceptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WlantemplateExceptionsPtrInput interface {
+	pulumi.Input
+
+	ToWlantemplateExceptionsPtrOutput() WlantemplateExceptionsPtrOutput
+	ToWlantemplateExceptionsPtrOutputWithContext(context.Context) WlantemplateExceptionsPtrOutput
+}
+
+type wlantemplateExceptionsPtrType WlantemplateExceptionsArgs
+
+func WlantemplateExceptionsPtr(v *WlantemplateExceptionsArgs) WlantemplateExceptionsPtrInput {
+	return (*wlantemplateExceptionsPtrType)(v)
+}
+
+func (*wlantemplateExceptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WlantemplateExceptions)(nil)).Elem()
+}
+
+func (i *wlantemplateExceptionsPtrType) ToWlantemplateExceptionsPtrOutput() WlantemplateExceptionsPtrOutput {
+	return i.ToWlantemplateExceptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *wlantemplateExceptionsPtrType) ToWlantemplateExceptionsPtrOutputWithContext(ctx context.Context) WlantemplateExceptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WlantemplateExceptionsPtrOutput)
+}
+
+type WlantemplateExceptionsOutput struct{ *pulumi.OutputState }
+
+func (WlantemplateExceptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WlantemplateExceptions)(nil)).Elem()
+}
+
+func (o WlantemplateExceptionsOutput) ToWlantemplateExceptionsOutput() WlantemplateExceptionsOutput {
+	return o
+}
+
+func (o WlantemplateExceptionsOutput) ToWlantemplateExceptionsOutputWithContext(ctx context.Context) WlantemplateExceptionsOutput {
+	return o
+}
+
+func (o WlantemplateExceptionsOutput) ToWlantemplateExceptionsPtrOutput() WlantemplateExceptionsPtrOutput {
+	return o.ToWlantemplateExceptionsPtrOutputWithContext(context.Background())
+}
+
+func (o WlantemplateExceptionsOutput) ToWlantemplateExceptionsPtrOutputWithContext(ctx context.Context) WlantemplateExceptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WlantemplateExceptions) *WlantemplateExceptions {
+		return &v
+	}).(WlantemplateExceptionsPtrOutput)
+}
+
+// Sites excluded from the WLAN template application scope
+func (o WlantemplateExceptionsOutput) SiteIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WlantemplateExceptions) []string { return v.SiteIds }).(pulumi.StringArrayOutput)
+}
+
+// Site groups excluded from the WLAN template application scope
+func (o WlantemplateExceptionsOutput) SitegroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WlantemplateExceptions) []string { return v.SitegroupIds }).(pulumi.StringArrayOutput)
+}
+
+type WlantemplateExceptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (WlantemplateExceptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WlantemplateExceptions)(nil)).Elem()
+}
+
+func (o WlantemplateExceptionsPtrOutput) ToWlantemplateExceptionsPtrOutput() WlantemplateExceptionsPtrOutput {
+	return o
+}
+
+func (o WlantemplateExceptionsPtrOutput) ToWlantemplateExceptionsPtrOutputWithContext(ctx context.Context) WlantemplateExceptionsPtrOutput {
+	return o
+}
+
+func (o WlantemplateExceptionsPtrOutput) Elem() WlantemplateExceptionsOutput {
+	return o.ApplyT(func(v *WlantemplateExceptions) WlantemplateExceptions {
+		if v != nil {
+			return *v
+		}
+		var ret WlantemplateExceptions
+		return ret
+	}).(WlantemplateExceptionsOutput)
+}
+
+// Sites excluded from the WLAN template application scope
+func (o WlantemplateExceptionsPtrOutput) SiteIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WlantemplateExceptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SiteIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Site groups excluded from the WLAN template application scope
+func (o WlantemplateExceptionsPtrOutput) SitegroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WlantemplateExceptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SitegroupIds
+	}).(pulumi.StringArrayOutput)
+}
+
+type WxtagSpec struct {
+	// Matched destination port, "0" means any
+	PortRange *string `pulumi:"portRange"`
+	// tcp / udp / icmp / gre / any / ":protocol_number", `protocolNumber` is between 1-254
+	Protocol *string `pulumi:"protocol"`
+	// Destination subnets or IP addresses matched by this WxLAN tag spec
+	Subnets []string `pulumi:"subnets"`
+}
+
+// WxtagSpecInput is an input type that accepts WxtagSpecArgs and WxtagSpecOutput values.
+// You can construct a concrete instance of `WxtagSpecInput` via:
+//
+//	WxtagSpecArgs{...}
+type WxtagSpecInput interface {
+	pulumi.Input
+
+	ToWxtagSpecOutput() WxtagSpecOutput
+	ToWxtagSpecOutputWithContext(context.Context) WxtagSpecOutput
+}
+
+type WxtagSpecArgs struct {
+	// Matched destination port, "0" means any
+	PortRange pulumi.StringPtrInput `pulumi:"portRange"`
+	// tcp / udp / icmp / gre / any / ":protocol_number", `protocolNumber` is between 1-254
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+	// Destination subnets or IP addresses matched by this WxLAN tag spec
+	Subnets pulumi.StringArrayInput `pulumi:"subnets"`
+}
+
+func (WxtagSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WxtagSpec)(nil)).Elem()
+}
+
+func (i WxtagSpecArgs) ToWxtagSpecOutput() WxtagSpecOutput {
+	return i.ToWxtagSpecOutputWithContext(context.Background())
+}
+
+func (i WxtagSpecArgs) ToWxtagSpecOutputWithContext(ctx context.Context) WxtagSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WxtagSpecOutput)
+}
+
+// WxtagSpecArrayInput is an input type that accepts WxtagSpecArray and WxtagSpecArrayOutput values.
+// You can construct a concrete instance of `WxtagSpecArrayInput` via:
+//
+//	WxtagSpecArray{ WxtagSpecArgs{...} }
+type WxtagSpecArrayInput interface {
+	pulumi.Input
+
+	ToWxtagSpecArrayOutput() WxtagSpecArrayOutput
+	ToWxtagSpecArrayOutputWithContext(context.Context) WxtagSpecArrayOutput
+}
+
+type WxtagSpecArray []WxtagSpecInput
+
+func (WxtagSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WxtagSpec)(nil)).Elem()
+}
+
+func (i WxtagSpecArray) ToWxtagSpecArrayOutput() WxtagSpecArrayOutput {
+	return i.ToWxtagSpecArrayOutputWithContext(context.Background())
+}
+
+func (i WxtagSpecArray) ToWxtagSpecArrayOutputWithContext(ctx context.Context) WxtagSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WxtagSpecArrayOutput)
+}
+
+type WxtagSpecOutput struct{ *pulumi.OutputState }
+
+func (WxtagSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WxtagSpec)(nil)).Elem()
+}
+
+func (o WxtagSpecOutput) ToWxtagSpecOutput() WxtagSpecOutput {
+	return o
+}
+
+func (o WxtagSpecOutput) ToWxtagSpecOutputWithContext(ctx context.Context) WxtagSpecOutput {
+	return o
+}
+
+// Matched destination port, "0" means any
+func (o WxtagSpecOutput) PortRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WxtagSpec) *string { return v.PortRange }).(pulumi.StringPtrOutput)
+}
+
+// tcp / udp / icmp / gre / any / ":protocol_number", `protocolNumber` is between 1-254
+func (o WxtagSpecOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WxtagSpec) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// Destination subnets or IP addresses matched by this WxLAN tag spec
+func (o WxtagSpecOutput) Subnets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WxtagSpec) []string { return v.Subnets }).(pulumi.StringArrayOutput)
+}
+
+type WxtagSpecArrayOutput struct{ *pulumi.OutputState }
+
+func (WxtagSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WxtagSpec)(nil)).Elem()
+}
+
+func (o WxtagSpecArrayOutput) ToWxtagSpecArrayOutput() WxtagSpecArrayOutput {
+	return o
+}
+
+func (o WxtagSpecArrayOutput) ToWxtagSpecArrayOutputWithContext(ctx context.Context) WxtagSpecArrayOutput {
+	return o
+}
+
+func (o WxtagSpecArrayOutput) Index(i pulumi.IntInput) WxtagSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WxtagSpec {
+		return vs[0].([]WxtagSpec)[vs[1].(int)]
+	}).(WxtagSpecOutput)
+}
+
+type GetAlarmtemplatesOrgAlarmtemplate struct {
+	// When the object has been created, in epoch
+	CreatedTime float64 `pulumi:"createdTime"`
+	// Delivery object to configure the alarm delivery
+	Delivery GetAlarmtemplatesOrgAlarmtemplateDelivery `pulumi:"delivery"`
+	// Unique ID of the object instance in the Mist Organization
+	Id string `pulumi:"id"`
+	// When the object has been modified for the last time, in epoch
+	ModifiedTime float64 `pulumi:"modifiedTime"`
+	// Some string to name the alarm template
+	Name  string `pulumi:"name"`
+	OrgId string `pulumi:"orgId"`
+	// Alarm Rules object to configure the individual alarm keys/types. Property key is the alarm name.
+	Rules map[string]GetAlarmtemplatesOrgAlarmtemplateRules `pulumi:"rules"`
+}
+
+// GetAlarmtemplatesOrgAlarmtemplateInput is an input type that accepts GetAlarmtemplatesOrgAlarmtemplateArgs and GetAlarmtemplatesOrgAlarmtemplateOutput values.
+// You can construct a concrete instance of `GetAlarmtemplatesOrgAlarmtemplateInput` via:
+//
+//	GetAlarmtemplatesOrgAlarmtemplateArgs{...}
+type GetAlarmtemplatesOrgAlarmtemplateInput interface {
+	pulumi.Input
+
+	ToGetAlarmtemplatesOrgAlarmtemplateOutput() GetAlarmtemplatesOrgAlarmtemplateOutput
+	ToGetAlarmtemplatesOrgAlarmtemplateOutputWithContext(context.Context) GetAlarmtemplatesOrgAlarmtemplateOutput
+}
+
+type GetAlarmtemplatesOrgAlarmtemplateArgs struct {
+	// When the object has been created, in epoch
+	CreatedTime pulumi.Float64Input `pulumi:"createdTime"`
+	// Delivery object to configure the alarm delivery
+	Delivery GetAlarmtemplatesOrgAlarmtemplateDeliveryInput `pulumi:"delivery"`
+	// Unique ID of the object instance in the Mist Organization
+	Id pulumi.StringInput `pulumi:"id"`
+	// When the object has been modified for the last time, in epoch
+	ModifiedTime pulumi.Float64Input `pulumi:"modifiedTime"`
+	// Some string to name the alarm template
+	Name  pulumi.StringInput `pulumi:"name"`
+	OrgId pulumi.StringInput `pulumi:"orgId"`
+	// Alarm Rules object to configure the individual alarm keys/types. Property key is the alarm name.
+	Rules GetAlarmtemplatesOrgAlarmtemplateRulesMapInput `pulumi:"rules"`
+}
+
+func (GetAlarmtemplatesOrgAlarmtemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlarmtemplatesOrgAlarmtemplate)(nil)).Elem()
+}
+
+func (i GetAlarmtemplatesOrgAlarmtemplateArgs) ToGetAlarmtemplatesOrgAlarmtemplateOutput() GetAlarmtemplatesOrgAlarmtemplateOutput {
+	return i.ToGetAlarmtemplatesOrgAlarmtemplateOutputWithContext(context.Background())
+}
+
+func (i GetAlarmtemplatesOrgAlarmtemplateArgs) ToGetAlarmtemplatesOrgAlarmtemplateOutputWithContext(ctx context.Context) GetAlarmtemplatesOrgAlarmtemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlarmtemplatesOrgAlarmtemplateOutput)
+}
+
+// GetAlarmtemplatesOrgAlarmtemplateArrayInput is an input type that accepts GetAlarmtemplatesOrgAlarmtemplateArray and GetAlarmtemplatesOrgAlarmtemplateArrayOutput values.
+// You can construct a concrete instance of `GetAlarmtemplatesOrgAlarmtemplateArrayInput` via:
+//
+//	GetAlarmtemplatesOrgAlarmtemplateArray{ GetAlarmtemplatesOrgAlarmtemplateArgs{...} }
+type GetAlarmtemplatesOrgAlarmtemplateArrayInput interface {
+	pulumi.Input
+
+	ToGetAlarmtemplatesOrgAlarmtemplateArrayOutput() GetAlarmtemplatesOrgAlarmtemplateArrayOutput
+	ToGetAlarmtemplatesOrgAlarmtemplateArrayOutputWithContext(context.Context) GetAlarmtemplatesOrgAlarmtemplateArrayOutput
+}
+
+type GetAlarmtemplatesOrgAlarmtemplateArray []GetAlarmtemplatesOrgAlarmtemplateInput
+
+func (GetAlarmtemplatesOrgAlarmtemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlarmtemplatesOrgAlarmtemplate)(nil)).Elem()
+}
+
+func (i GetAlarmtemplatesOrgAlarmtemplateArray) ToGetAlarmtemplatesOrgAlarmtemplateArrayOutput() GetAlarmtemplatesOrgAlarmtemplateArrayOutput {
+	return i.ToGetAlarmtemplatesOrgAlarmtemplateArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlarmtemplatesOrgAlarmtemplateArray) ToGetAlarmtemplatesOrgAlarmtemplateArrayOutputWithContext(ctx context.Context) GetAlarmtemplatesOrgAlarmtemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlarmtemplatesOrgAlarmtemplateArrayOutput)
+}
+
+type GetAlarmtemplatesOrgAlarmtemplateOutput struct{ *pulumi.OutputState }
+
+func (GetAlarmtemplatesOrgAlarmtemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlarmtemplatesOrgAlarmtemplate)(nil)).Elem()
+}
+
+func (o GetAlarmtemplatesOrgAlarmtemplateOutput) ToGetAlarmtemplatesOrgAlarmtemplateOutput() GetAlarmtemplatesOrgAlarmtemplateOutput {
+	return o
+}
+
+func (o GetAlarmtemplatesOrgAlarmtemplateOutput) ToGetAlarmtemplatesOrgAlarmtemplateOutputWithContext(ctx context.Context) GetAlarmtemplatesOrgAlarmtemplateOutput {
+	return o
+}
+
+// When the object has been created, in epoch
+func (o GetAlarmtemplatesOrgAlarmtemplateOutput) CreatedTime() pulumi.Float64Output {
+	return o.ApplyT(func(v GetAlarmtemplatesOrgAlarmtemplate) float64 { return v.CreatedTime }).(pulumi.Float64Output)
+}
+
+// Delivery object to configure the alarm delivery
+func (o GetAlarmtemplatesOrgAlarmtemplateOutput) Delivery() GetAlarmtemplatesOrgAlarmtemplateDeliveryOutput {
+	return o.ApplyT(func(v GetAlarmtemplatesOrgAlarmtemplate) GetAlarmtemplatesOrgAlarmtemplateDelivery { return v.Delivery }).(GetAlarmtemplatesOrgAlarmtemplateDeliveryOutput)
+}
+
+// Unique ID of the object instance in the Mist Organization
+func (o GetAlarmtemplatesOrgAlarmtemplateOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmtemplatesOrgAlarmtemplate) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// When the object has been modified for the last time, in epoch
+func (o GetAlarmtemplatesOrgAlarmtemplateOutput) ModifiedTime() pulumi.Float64Output {
+	return o.ApplyT(func(v GetAlarmtemplatesOrgAlarmtemplate) float64 { return v.ModifiedTime }).(pulumi.Float64Output)
+}
+
+// Some string to name the alarm template
+func (o GetAlarmtemplatesOrgAlarmtemplateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmtemplatesOrgAlarmtemplate) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetAlarmtemplatesOrgAlarmtemplateOutput) OrgId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmtemplatesOrgAlarmtemplate) string { return v.OrgId }).(pulumi.StringOutput)
+}
+
+// Alarm Rules object to configure the individual alarm keys/types. Property key is the alarm name.
+func (o GetAlarmtemplatesOrgAlarmtemplateOutput) Rules() GetAlarmtemplatesOrgAlarmtemplateRulesMapOutput {
+	return o.ApplyT(func(v GetAlarmtemplatesOrgAlarmtemplate) map[string]GetAlarmtemplatesOrgAlarmtemplateRules {
+		return v.Rules
+	}).(GetAlarmtemplatesOrgAlarmtemplateRulesMapOutput)
+}
+
+type GetAlarmtemplatesOrgAlarmtemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlarmtemplatesOrgAlarmtemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlarmtemplatesOrgAlarmtemplate)(nil)).Elem()
+}
+
+func (o GetAlarmtemplatesOrgAlarmtemplateArrayOutput) ToGetAlarmtemplatesOrgAlarmtemplateArrayOutput() GetAlarmtemplatesOrgAlarmtemplateArrayOutput {
+	return o
+}
+
+func (o GetAlarmtemplatesOrgAlarmtemplateArrayOutput) ToGetAlarmtemplatesOrgAlarmtemplateArrayOutputWithContext(ctx context.Context) GetAlarmtemplatesOrgAlarmtemplateArrayOutput {
+	return o
+}
+
+func (o GetAlarmtemplatesOrgAlarmtemplateArrayOutput) Index(i pulumi.IntInput) GetAlarmtemplatesOrgAlarmtemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlarmtemplatesOrgAlarmtemplate {
+		return vs[0].([]GetAlarmtemplatesOrgAlarmtemplate)[vs[1].(int)]
+	}).(GetAlarmtemplatesOrgAlarmtemplateOutput)
+}
+
 type GetAlarmtemplatesOrgAlarmtemplateDelivery struct {
 	// List of additional email string to deliver the alarms via emails
 	AdditionalEmails []string `pulumi:"additionalEmails"`
@@ -11234,6 +12081,16 @@ func (o GetWxtagsOrgWxtagSpecArrayOutput) Index(i pulumi.IntInput) GetWxtagsOrgW
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*WlanScheduleHoursInput)(nil)).Elem(), WlanScheduleHoursArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WlanScheduleHoursPtrInput)(nil)).Elem(), WlanScheduleHoursArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WlantemplateAppliesInput)(nil)).Elem(), WlantemplateAppliesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WlantemplateAppliesPtrInput)(nil)).Elem(), WlantemplateAppliesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WlantemplateExceptionsInput)(nil)).Elem(), WlantemplateExceptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WlantemplateExceptionsPtrInput)(nil)).Elem(), WlantemplateExceptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WxtagSpecInput)(nil)).Elem(), WxtagSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WxtagSpecArrayInput)(nil)).Elem(), WxtagSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmtemplatesOrgAlarmtemplateInput)(nil)).Elem(), GetAlarmtemplatesOrgAlarmtemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmtemplatesOrgAlarmtemplateArrayInput)(nil)).Elem(), GetAlarmtemplatesOrgAlarmtemplateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmtemplatesOrgAlarmtemplateDeliveryInput)(nil)).Elem(), GetAlarmtemplatesOrgAlarmtemplateDeliveryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmtemplatesOrgAlarmtemplateRulesInput)(nil)).Elem(), GetAlarmtemplatesOrgAlarmtemplateRulesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmtemplatesOrgAlarmtemplateRulesMapInput)(nil)).Elem(), GetAlarmtemplatesOrgAlarmtemplateRulesMap{})
@@ -11362,6 +12219,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWxtagsOrgWxtagArrayInput)(nil)).Elem(), GetWxtagsOrgWxtagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWxtagsOrgWxtagSpecInput)(nil)).Elem(), GetWxtagsOrgWxtagSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWxtagsOrgWxtagSpecArrayInput)(nil)).Elem(), GetWxtagsOrgWxtagSpecArray{})
+	pulumi.RegisterOutputType(WlanScheduleHoursOutput{})
+	pulumi.RegisterOutputType(WlanScheduleHoursPtrOutput{})
+	pulumi.RegisterOutputType(WlantemplateAppliesOutput{})
+	pulumi.RegisterOutputType(WlantemplateAppliesPtrOutput{})
+	pulumi.RegisterOutputType(WlantemplateExceptionsOutput{})
+	pulumi.RegisterOutputType(WlantemplateExceptionsPtrOutput{})
+	pulumi.RegisterOutputType(WxtagSpecOutput{})
+	pulumi.RegisterOutputType(WxtagSpecArrayOutput{})
+	pulumi.RegisterOutputType(GetAlarmtemplatesOrgAlarmtemplateOutput{})
+	pulumi.RegisterOutputType(GetAlarmtemplatesOrgAlarmtemplateArrayOutput{})
 	pulumi.RegisterOutputType(GetAlarmtemplatesOrgAlarmtemplateDeliveryOutput{})
 	pulumi.RegisterOutputType(GetAlarmtemplatesOrgAlarmtemplateRulesOutput{})
 	pulumi.RegisterOutputType(GetAlarmtemplatesOrgAlarmtemplateRulesMapOutput{})

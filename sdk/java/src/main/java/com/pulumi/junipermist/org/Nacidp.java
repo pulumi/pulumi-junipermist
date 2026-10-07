@@ -282,14 +282,14 @@ public class Nacidp extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ldapServerHosts);
     }
     /**
-     * Provider template for LDAP SSO when `idpType`==`ldap`
+     * Provider template for LDAP SSO when `idpType`==`ldap`. enum: `azure`, `custom`, `google`, `okta`.
      * 
      */
     @Export(name="ldapType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ldapType;
 
     /**
-     * @return Provider template for LDAP SSO when `idpType`==`ldap`
+     * @return Provider template for LDAP SSO when `idpType`==`ldap`. enum: `azure`, `custom`, `google`, `okta`.
      * 
      */
     public Output<Optional<String>> ldapType() {
@@ -324,14 +324,14 @@ public class Nacidp extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.memberFilter);
     }
     /**
-     * Display name of the NAC IDP configuration
+     * Display name of the SSO configuration
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Display name of the NAC IDP configuration
+     * @return Display name of the SSO configuration
      * 
      */
     public Output<String> name() {
@@ -380,28 +380,28 @@ public class Nacidp extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.oauthDiscoveryUrl);
     }
     /**
-     * Ping Identity region for OAuth SSO when `oauthType`==`pingIdentity`
+     * Ping Identity region for OAuth SSO when `oauthType`==`pingIdentity`. enum: `asia`, `au`, `ca`, `eu`, `us`.
      * 
      */
     @Export(name="oauthPingIdentityRegion", refs={String.class}, tree="[0]")
     private Output<String> oauthPingIdentityRegion;
 
     /**
-     * @return Ping Identity region for OAuth SSO when `oauthType`==`pingIdentity`
+     * @return Ping Identity region for OAuth SSO when `oauthType`==`pingIdentity`. enum: `asia`, `au`, `ca`, `eu`, `us`.
      * 
      */
     public Output<String> oauthPingIdentityRegion() {
         return this.oauthPingIdentityRegion;
     }
     /**
-     * Provider domain for Okta OAuth SSO when `oauthType`==`okta`
+     * Provider domain for Okta OAuth SSO when `oauthType`==`okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
      * 
      */
     @Export(name="oauthProviderDomain", refs={String.class}, tree="[0]")
     private Output<String> oauthProviderDomain;
 
     /**
-     * @return Provider domain for Okta OAuth SSO when `oauthType`==`okta`
+     * @return Provider domain for Okta OAuth SSO when `oauthType`==`okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
      * 
      */
     public Output<String> oauthProviderDomain() {
@@ -450,14 +450,14 @@ public class Nacidp extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.oauthTenantId);
     }
     /**
-     * Provider type for OAuth SSO when `idpType`==`oauth`
+     * Provider type for OAuth SSO when `idpType`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `pingIdentity`.
      * 
      */
     @Export(name="oauthType", refs={String.class}, tree="[0]")
     private Output<String> oauthType;
 
     /**
-     * @return Provider type for OAuth SSO when `idpType`==`oauth`
+     * @return Provider type for OAuth SSO when `idpType`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `pingIdentity`.
      * 
      */
     public Output<String> oauthType() {
@@ -506,14 +506,14 @@ public class Nacidp extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.openroamingWbaClientKey);
     }
     /**
-     * Owning organization identifier for this NAC IDP configuration
+     * Owning organization identifier for this SSO configuration
      * 
      */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
     /**
-     * @return Owning organization identifier for this NAC IDP configuration
+     * @return Owning organization identifier for this SSO configuration
      * 
      */
     public Output<String> orgId() {

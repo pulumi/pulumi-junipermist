@@ -235,14 +235,14 @@ public final class SettingMxtunnelArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Encapsulation protocol used for the site Mist Tunnel
+     * Encapsulation protocol used for the site Mist Tunnel. enum: `ip`, `udp`.
      * 
      */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
     /**
-     * @return Encapsulation protocol used for the site Mist Tunnel
+     * @return Encapsulation protocol used for the site Mist Tunnel. enum: `ip`, `udp`.
      * 
      */
     public Optional<Output<String>> protocol() {
@@ -660,7 +660,7 @@ public final class SettingMxtunnelArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param protocol Encapsulation protocol used for the site Mist Tunnel
+         * @param protocol Encapsulation protocol used for the site Mist Tunnel. enum: `ip`, `udp`.
          * 
          * @return builder
          * 
@@ -671,7 +671,7 @@ public final class SettingMxtunnelArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param protocol Encapsulation protocol used for the site Mist Tunnel
+         * @param protocol Encapsulation protocol used for the site Mist Tunnel. enum: `ip`, `udp`.
          * 
          * @return builder
          * 

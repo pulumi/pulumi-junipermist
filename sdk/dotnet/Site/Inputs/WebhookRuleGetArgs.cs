@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class WebhookRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Action applied when the rule matches the incoming event
+        /// Action applied when the rule matches the incoming event. enum: `Permit`, `Block`.
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }

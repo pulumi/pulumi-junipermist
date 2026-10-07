@@ -220,14 +220,14 @@ public class Sso extends com.pulumi.resources.CustomResource {
         return this.nameidFormat;
     }
     /**
-     * Provider domain for Okta OAuth SSO when `oauthType`==`okta`
+     * Provider domain for Okta OAuth SSO when `oauthType`==`okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
      * 
      */
     @Export(name="oauthProviderDomain", refs={String.class}, tree="[0]")
     private Output<String> oauthProviderDomain;
 
     /**
-     * @return Provider domain for Okta OAuth SSO when `oauthType`==`okta`
+     * @return Provider domain for Okta OAuth SSO when `oauthType`==`okta`. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`.
      * 
      */
     public Output<String> oauthProviderDomain() {

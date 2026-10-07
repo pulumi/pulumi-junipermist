@@ -31,19 +31,19 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? ReadView { get; set; }
 
         /// <summary>
-        /// Required security level for this VACM access rule
+        /// Required security level for this VACM access rule. enum: `Authentication`, `None`, `Privacy`.
         /// </summary>
         [Input("securityLevel")]
         public Input<string>? SecurityLevel { get; set; }
 
         /// <summary>
-        /// Required security model for this VACM access rule
+        /// Required security model for this VACM access rule. enum: `Any`, `Usm`, `V1`, `V2c`.
         /// </summary>
         [Input("securityModel")]
         public Input<string>? SecurityModel { get; set; }
 
         /// <summary>
-        /// VACM context matching type for this access rule
+        /// VACM context matching type for this access rule. enum: `ContextPrefix`, `DefaultContextPrefix`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

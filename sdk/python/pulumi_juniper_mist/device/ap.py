@@ -700,7 +700,7 @@ class _ApState:
         :param pulumi.Input['ApRadioConfigArgs'] radio_config: Radio configuration overrides for this access point
         :param pulumi.Input[_builtins.str] serial: Manufacturer serial number for the access point
         :param pulumi.Input[_builtins.str] site_id: Site where this access point is assigned
-        :param pulumi.Input[_builtins.str] type: Device type discriminator for access point records
+        :param pulumi.Input[_builtins.str] type: Device type discriminator for access point records. enum: `ap`.
         :param pulumi.Input['ApUplinkPortConfigArgs'] uplink_port_config: Authentication and failover behavior for AP uplink ports
         :param pulumi.Input['ApUsbConfigArgs'] usb_config: Legacy USB integration settings for this access point
         :param pulumi.Input['ApUwbConfigArgs'] uwb_config: UWB RTLS / OMLOX asset-visibility settings; overrides the device profile and site-level `uwb_config`
@@ -1245,7 +1245,7 @@ class _ApState:
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Device type discriminator for access point records
+        Device type discriminator for access point records. enum: `ap`.
         """
         return pulumi.get(self, "type")
 
@@ -1665,7 +1665,7 @@ class Ap(pulumi.CustomResource):
         :param pulumi.Input[Union['ApRadioConfigArgs', 'ApRadioConfigArgsDict']] radio_config: Radio configuration overrides for this access point
         :param pulumi.Input[_builtins.str] serial: Manufacturer serial number for the access point
         :param pulumi.Input[_builtins.str] site_id: Site where this access point is assigned
-        :param pulumi.Input[_builtins.str] type: Device type discriminator for access point records
+        :param pulumi.Input[_builtins.str] type: Device type discriminator for access point records. enum: `ap`.
         :param pulumi.Input[Union['ApUplinkPortConfigArgs', 'ApUplinkPortConfigArgsDict']] uplink_port_config: Authentication and failover behavior for AP uplink ports
         :param pulumi.Input[Union['ApUsbConfigArgs', 'ApUsbConfigArgsDict']] usb_config: Legacy USB integration settings for this access point
         :param pulumi.Input[Union['ApUwbConfigArgs', 'ApUwbConfigArgsDict']] uwb_config: UWB RTLS / OMLOX asset-visibility settings; overrides the device profile and site-level `uwb_config`
@@ -2022,7 +2022,7 @@ class Ap(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        Device type discriminator for access point records
+        Device type discriminator for access point records. enum: `ap`.
         """
         return pulumi.get(self, "type")
 

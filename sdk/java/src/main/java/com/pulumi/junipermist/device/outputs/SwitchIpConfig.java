@@ -43,7 +43,7 @@ public final class SwitchIpConfig {
      */
     private @Nullable String network;
     /**
-     * @return IP assignment mode for this Junos IP configuration
+     * @return IP assignment mode for this Junos IP configuration. enum: `dhcp`, `static`.
      * 
      */
     private @Nullable String type;
@@ -92,7 +92,7 @@ public final class SwitchIpConfig {
         return Optional.ofNullable(this.network);
     }
     /**
-     * @return IP assignment mode for this Junos IP configuration
+     * @return IP assignment mode for this Junos IP configuration. enum: `dhcp`, `static`.
      * 
      */
     public Optional<String> type() {

@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<int>? HelloRetries { get; set; }
 
         /// <summary>
-        /// Encapsulation protocol used for this additional Mist Tunnel
+        /// Encapsulation protocol used for this additional Mist Tunnel. enum: `Ip`, `Udp`.
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }

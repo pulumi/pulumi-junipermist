@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingSyntheticTest {
     /**
-     * @return Overall aggressiveness level for synthetic test probes
+     * @return Overall aggressiveness level for synthetic test probes. enum: `auto`, `high`, `med`, `low`.
      * 
      */
     private @Nullable String aggressiveness;
@@ -55,7 +55,7 @@ public final class SettingSyntheticTest {
 
     private SettingSyntheticTest() {}
     /**
-     * @return Overall aggressiveness level for synthetic test probes
+     * @return Overall aggressiveness level for synthetic test probes. enum: `auto`, `high`, `med`, `low`.
      * 
      */
     public Optional<String> aggressiveness() {

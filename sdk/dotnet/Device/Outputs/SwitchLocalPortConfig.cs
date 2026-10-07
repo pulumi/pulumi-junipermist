@@ -46,7 +46,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>
-        /// Link duplex mode for this local port configuration
+        /// Link duplex mode for this local port configuration. enum: `Auto`, `Full`, `Half`.
         /// </summary>
         public readonly string? Duplex;
         /// <summary>
@@ -78,7 +78,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool? MacAuthPreferred;
         /// <summary>
-        /// Only if `EnableMacAuth`==`True`, MAC authentication protocol to use
+        /// Only if `EnableMacAuth`==`True`, MAC authentication protocol to use. enum: `eap-md5`, `eap-peap`, `Pap`.
         /// </summary>
         public readonly string? MacAuthProtocol;
         /// <summary>
@@ -86,7 +86,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly int? MacLimit;
         /// <summary>
-        /// Switching mode for this local port configuration
+        /// Switching mode for this local port configuration. enum: `Access`, `Inet`, `Trunk`.
         /// </summary>
         public readonly string? Mode;
         /// <summary>
@@ -110,7 +110,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool? PoeDisabled;
         /// <summary>
-        /// 802.1X authentication mode for this local port configuration
+        /// 802.1X authentication mode for this local port configuration. enum: `Dot1x`.
         /// </summary>
         public readonly string? PortAuth;
         /// <summary>
@@ -130,7 +130,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? ServerRejectNetwork;
         /// <summary>
-        /// Link speed for this local port configuration
+        /// Link speed for this local port configuration. enum: `10m`, `100m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`, `Auto`.
         /// </summary>
         public readonly string? Speed;
         /// <summary>

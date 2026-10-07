@@ -18,14 +18,14 @@ public final class DeviceprofileGatewayIdpProfilesArgs extends com.pulumi.resour
     public static final DeviceprofileGatewayIdpProfilesArgs Empty = new DeviceprofileGatewayIdpProfilesArgs();
 
     /**
-     * Built-in IDP baseline profile inherited before applying overwrites
+     * Built-in IDP baseline profile inherited before applying overwrites. enum: `critical`, `standard`, `strict`.
      * 
      */
     @Import(name="baseProfile")
     private @Nullable Output<String> baseProfile;
 
     /**
-     * @return Built-in IDP baseline profile inherited before applying overwrites
+     * @return Built-in IDP baseline profile inherited before applying overwrites. enum: `critical`, `standard`, `strict`.
      * 
      */
     public Optional<Output<String>> baseProfile() {
@@ -105,7 +105,7 @@ public final class DeviceprofileGatewayIdpProfilesArgs extends com.pulumi.resour
         }
 
         /**
-         * @param baseProfile Built-in IDP baseline profile inherited before applying overwrites
+         * @param baseProfile Built-in IDP baseline profile inherited before applying overwrites. enum: `critical`, `standard`, `strict`.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class DeviceprofileGatewayIdpProfilesArgs extends com.pulumi.resour
         }
 
         /**
-         * @param baseProfile Built-in IDP baseline profile inherited before applying overwrites
+         * @param baseProfile Built-in IDP baseline profile inherited before applying overwrites. enum: `critical`, `standard`, `strict`.
          * 
          * @return builder
          * 

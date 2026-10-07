@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly int MemberId;
         /// <summary>
-        /// Role of this member in the Virtual Chassis
+        /// Role of this member in the Virtual Chassis. enum: `Backup`, `Linecard`, `Master`.
         /// </summary>
         public readonly string VcRole;
 

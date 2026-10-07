@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GatewaytemplatePathPreferencesPath> Paths;
         /// <summary>
-        /// Selection strategy used to evaluate the candidate paths
+        /// Selection strategy used to evaluate the candidate paths. enum: `Ecmp`, `Ordered`, `Weighted`.
         /// </summary>
         public readonly string? Strategy;
 

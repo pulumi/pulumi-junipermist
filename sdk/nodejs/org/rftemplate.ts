@@ -103,7 +103,7 @@ export class Rftemplate extends pulumi.CustomResource {
      */
     declare public readonly band24: pulumi.Output<outputs.org.RftemplateBand24 | undefined>;
     /**
-     * Radio usage mode for the 2.4 GHz-capable radio in this RF template
+     * Radio usage mode for the 2.4 GHz-capable radio in this RF template. enum: `24`, `5`, `6`, `auto`.
      */
     declare public readonly band24Usage: pulumi.Output<string | undefined>;
     /**
@@ -216,7 +216,7 @@ export interface RftemplateState {
      */
     band24?: pulumi.Input<inputs.org.RftemplateBand24 | undefined>;
     /**
-     * Radio usage mode for the 2.4 GHz-capable radio in this RF template
+     * Radio usage mode for the 2.4 GHz-capable radio in this RF template. enum: `24`, `5`, `6`, `auto`.
      */
     band24Usage?: pulumi.Input<string | undefined>;
     /**
@@ -278,7 +278,7 @@ export interface RftemplateArgs {
      */
     band24?: pulumi.Input<inputs.org.RftemplateBand24 | undefined>;
     /**
-     * Radio usage mode for the 2.4 GHz-capable radio in this RF template
+     * Radio usage mode for the 2.4 GHz-capable radio in this RF template. enum: `24`, `5`, `6`, `auto`.
      */
     band24Usage?: pulumi.Input<string | undefined>;
     /**

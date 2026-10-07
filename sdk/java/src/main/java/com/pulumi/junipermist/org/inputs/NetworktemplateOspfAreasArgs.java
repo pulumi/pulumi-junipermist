@@ -50,14 +50,14 @@ public final class NetworktemplateOspfAreasArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Area type for this OSPF area
+     * Area type for this OSPF area. enum: `default`, `nssa`, `stub`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Area type for this OSPF area
+     * @return Area type for this OSPF area. enum: `default`, `nssa`, `stub`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -133,7 +133,7 @@ public final class NetworktemplateOspfAreasArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param type Area type for this OSPF area
+         * @param type Area type for this OSPF area. enum: `default`, `nssa`, `stub`.
          * 
          * @return builder
          * 
@@ -144,7 +144,7 @@ public final class NetworktemplateOspfAreasArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param type Area type for this OSPF area
+         * @param type Area type for this OSPF area. enum: `default`, `nssa`, `stub`.
          * 
          * @return builder
          * 

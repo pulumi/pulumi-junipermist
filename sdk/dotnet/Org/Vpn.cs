@@ -98,7 +98,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<ImmutableDictionary<string, Outputs.VpnPaths>> Paths { get; private set; } = null!;
 
         /// <summary>
-        /// VPN topology mode for this configuration
+        /// VPN topology mode for this configuration. enum: `HubSpoke`, `Mesh`.
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -181,7 +181,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// VPN topology mode for this configuration
+        /// VPN topology mode for this configuration. enum: `HubSpoke`, `Mesh`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -225,7 +225,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// VPN topology mode for this configuration
+        /// VPN topology mode for this configuration. enum: `HubSpoke`, `Mesh`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

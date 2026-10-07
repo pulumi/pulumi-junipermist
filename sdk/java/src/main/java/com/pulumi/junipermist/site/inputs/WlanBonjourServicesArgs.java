@@ -48,14 +48,14 @@ public final class WlanBonjourServicesArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Discovery scope for this Bonjour service on the WLAN
+     * Discovery scope for this Bonjour service on the WLAN. enum: `sameAp`, `sameMap`, `sameSite`.
      * 
      */
     @Import(name="scope")
     private @Nullable Output<String> scope;
 
     /**
-     * @return Discovery scope for this Bonjour service on the WLAN
+     * @return Discovery scope for this Bonjour service on the WLAN. enum: `sameAp`, `sameMap`, `sameSite`.
      * 
      */
     public Optional<Output<String>> scope() {
@@ -141,7 +141,7 @@ public final class WlanBonjourServicesArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param scope Discovery scope for this Bonjour service on the WLAN
+         * @param scope Discovery scope for this Bonjour service on the WLAN. enum: `sameAp`, `sameMap`, `sameSite`.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class WlanBonjourServicesArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param scope Discovery scope for this Bonjour service on the WLAN
+         * @param scope Discovery scope for this Bonjour service on the WLAN. enum: `sameAp`, `sameMap`, `sameSite`.
          * 
          * @return builder
          * 

@@ -49,13 +49,13 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// IPv4 address assignment mode for this gateway network interface
+        /// IPv4 address assignment mode for this gateway network interface. enum: `Dhcp`, `Static`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// IPv6 address assignment mode for this gateway network interface
+        /// IPv6 address assignment mode for this gateway network interface. enum: `Autoconf`, `Dhcp`, `Disabled`, `Static`.
         /// </summary>
         [Input("type6")]
         public Input<string>? Type6 { get; set; }

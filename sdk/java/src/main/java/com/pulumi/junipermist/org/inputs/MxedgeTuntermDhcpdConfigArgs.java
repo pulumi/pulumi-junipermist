@@ -48,14 +48,14 @@ public final class MxedgeTuntermDhcpdConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * DHCP handling mode for this tunneled VLAN
+     * DHCP handling mode for this tunneled VLAN. enum: `relay`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return DHCP handling mode for this tunneled VLAN
+     * @return DHCP handling mode for this tunneled VLAN. enum: `relay`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -141,7 +141,7 @@ public final class MxedgeTuntermDhcpdConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param type DHCP handling mode for this tunneled VLAN
+         * @param type DHCP handling mode for this tunneled VLAN. enum: `relay`.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class MxedgeTuntermDhcpdConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param type DHCP handling mode for this tunneled VLAN
+         * @param type DHCP handling mode for this tunneled VLAN. enum: `relay`.
          * 
          * @return builder
          * 

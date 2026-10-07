@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly int? IkeLifetime;
         /// <summary>
-        /// Only if `Provider`==`custom-ipsec`. IKE negotiation mode for the tunnel
+        /// Only if `Provider`==`custom-ipsec`. IKE negotiation mode for the tunnel. enum: `Aggressive`, `Main`.
         /// </summary>
         public readonly string? IkeMode;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableArray<string> LocalSubnets;
         /// <summary>
-        /// Tunnel failover mode used for primary and secondary endpoints
+        /// Tunnel failover mode used for primary and secondary endpoints. enum: `active-active`, `active-standby`.
         /// </summary>
         public readonly string? Mode;
         /// <summary>
@@ -62,11 +62,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly Outputs.GatewaytemplateTunnelConfigsProbe? Probe;
         /// <summary>
-        /// Only if `Provider`==`custom-ipsec`. Tunnel protocol for custom tunnel negotiation
+        /// Only if `Provider`==`custom-ipsec`. Tunnel protocol for custom tunnel negotiation. enum: `Gre`, `Ipsec`.
         /// </summary>
         public readonly string? Protocol;
         /// <summary>
-        /// Tunnel provider used when auto provisioning is disabled
+        /// Tunnel provider used when auto provisioning is disabled. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`.
         /// </summary>
         public readonly string? Provider;
         /// <summary>
@@ -82,7 +82,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly Outputs.GatewaytemplateTunnelConfigsSecondary? Secondary;
         /// <summary>
-        /// Only if `Provider`==`custom-gre` or `Provider`==`custom-ipsec`. Tunnel version value for custom tunnel configuration
+        /// Only if `Provider`==`custom-gre` or `Provider`==`custom-ipsec`. Tunnel version value for custom tunnel configuration. enum: `1`, `2`.
         /// </summary>
         public readonly string? Version;
 

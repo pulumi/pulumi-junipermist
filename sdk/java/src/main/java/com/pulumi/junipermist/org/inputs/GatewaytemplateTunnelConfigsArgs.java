@@ -54,14 +54,14 @@ public final class GatewaytemplateTunnelConfigsArgs extends com.pulumi.resources
     }
 
     /**
-     * Only if `provider`==`custom-ipsec`. IKE negotiation mode for the tunnel
+     * Only if `provider`==`custom-ipsec`. IKE negotiation mode for the tunnel. enum: `aggressive`, `main`.
      * 
      */
     @Import(name="ikeMode")
     private @Nullable Output<String> ikeMode;
 
     /**
-     * @return Only if `provider`==`custom-ipsec`. IKE negotiation mode for the tunnel
+     * @return Only if `provider`==`custom-ipsec`. IKE negotiation mode for the tunnel. enum: `aggressive`, `main`.
      * 
      */
     public Optional<Output<String>> ikeMode() {
@@ -144,14 +144,14 @@ public final class GatewaytemplateTunnelConfigsArgs extends com.pulumi.resources
     }
 
     /**
-     * Tunnel failover mode used for primary and secondary endpoints
+     * Tunnel failover mode used for primary and secondary endpoints. enum: `active-active`, `active-standby`.
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return Tunnel failover mode used for primary and secondary endpoints
+     * @return Tunnel failover mode used for primary and secondary endpoints. enum: `active-active`, `active-standby`.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -204,14 +204,14 @@ public final class GatewaytemplateTunnelConfigsArgs extends com.pulumi.resources
     }
 
     /**
-     * Only if `provider`==`custom-ipsec`. Tunnel protocol for custom tunnel negotiation
+     * Only if `provider`==`custom-ipsec`. Tunnel protocol for custom tunnel negotiation. enum: `gre`, `ipsec`.
      * 
      */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
     /**
-     * @return Only if `provider`==`custom-ipsec`. Tunnel protocol for custom tunnel negotiation
+     * @return Only if `provider`==`custom-ipsec`. Tunnel protocol for custom tunnel negotiation. enum: `gre`, `ipsec`.
      * 
      */
     public Optional<Output<String>> protocol() {
@@ -219,14 +219,14 @@ public final class GatewaytemplateTunnelConfigsArgs extends com.pulumi.resources
     }
 
     /**
-     * Tunnel provider used when auto provisioning is disabled
+     * Tunnel provider used when auto provisioning is disabled. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`.
      * 
      */
     @Import(name="provider")
     private @Nullable Output<String> provider;
 
     /**
-     * @return Tunnel provider used when auto provisioning is disabled
+     * @return Tunnel provider used when auto provisioning is disabled. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`.
      * 
      */
     public Optional<Output<String>> provider() {
@@ -279,14 +279,14 @@ public final class GatewaytemplateTunnelConfigsArgs extends com.pulumi.resources
     }
 
     /**
-     * Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. Tunnel version value for custom tunnel configuration
+     * Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. Tunnel version value for custom tunnel configuration. enum: `1`, `2`.
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. Tunnel version value for custom tunnel configuration
+     * @return Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. Tunnel version value for custom tunnel configuration. enum: `1`, `2`.
      * 
      */
     public Optional<Output<String>> version() {
@@ -377,7 +377,7 @@ public final class GatewaytemplateTunnelConfigsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param ikeMode Only if `provider`==`custom-ipsec`. IKE negotiation mode for the tunnel
+         * @param ikeMode Only if `provider`==`custom-ipsec`. IKE negotiation mode for the tunnel. enum: `aggressive`, `main`.
          * 
          * @return builder
          * 
@@ -388,7 +388,7 @@ public final class GatewaytemplateTunnelConfigsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param ikeMode Only if `provider`==`custom-ipsec`. IKE negotiation mode for the tunnel
+         * @param ikeMode Only if `provider`==`custom-ipsec`. IKE negotiation mode for the tunnel. enum: `aggressive`, `main`.
          * 
          * @return builder
          * 
@@ -533,7 +533,7 @@ public final class GatewaytemplateTunnelConfigsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param mode Tunnel failover mode used for primary and secondary endpoints
+         * @param mode Tunnel failover mode used for primary and secondary endpoints. enum: `active-active`, `active-standby`.
          * 
          * @return builder
          * 
@@ -544,7 +544,7 @@ public final class GatewaytemplateTunnelConfigsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param mode Tunnel failover mode used for primary and secondary endpoints
+         * @param mode Tunnel failover mode used for primary and secondary endpoints. enum: `active-active`, `active-standby`.
          * 
          * @return builder
          * 
@@ -627,7 +627,7 @@ public final class GatewaytemplateTunnelConfigsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param protocol Only if `provider`==`custom-ipsec`. Tunnel protocol for custom tunnel negotiation
+         * @param protocol Only if `provider`==`custom-ipsec`. Tunnel protocol for custom tunnel negotiation. enum: `gre`, `ipsec`.
          * 
          * @return builder
          * 
@@ -638,7 +638,7 @@ public final class GatewaytemplateTunnelConfigsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param protocol Only if `provider`==`custom-ipsec`. Tunnel protocol for custom tunnel negotiation
+         * @param protocol Only if `provider`==`custom-ipsec`. Tunnel protocol for custom tunnel negotiation. enum: `gre`, `ipsec`.
          * 
          * @return builder
          * 
@@ -648,7 +648,7 @@ public final class GatewaytemplateTunnelConfigsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param provider Tunnel provider used when auto provisioning is disabled
+         * @param provider Tunnel provider used when auto provisioning is disabled. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`.
          * 
          * @return builder
          * 
@@ -659,7 +659,7 @@ public final class GatewaytemplateTunnelConfigsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param provider Tunnel provider used when auto provisioning is disabled
+         * @param provider Tunnel provider used when auto provisioning is disabled. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`.
          * 
          * @return builder
          * 
@@ -742,7 +742,7 @@ public final class GatewaytemplateTunnelConfigsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param version Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. Tunnel version value for custom tunnel configuration
+         * @param version Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. Tunnel version value for custom tunnel configuration. enum: `1`, `2`.
          * 
          * @return builder
          * 
@@ -753,7 +753,7 @@ public final class GatewaytemplateTunnelConfigsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param version Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. Tunnel version value for custom tunnel configuration
+         * @param version Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. Tunnel version value for custom tunnel configuration. enum: `1`, `2`.
          * 
          * @return builder
          * 

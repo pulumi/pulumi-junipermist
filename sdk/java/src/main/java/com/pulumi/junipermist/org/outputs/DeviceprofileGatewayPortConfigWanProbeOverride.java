@@ -34,7 +34,7 @@ public final class DeviceprofileGatewayPortConfigWanProbeOverride {
      */
     private @Nullable List<String> ips;
     /**
-     * @return WAN probe profile used for health checks on this port
+     * @return WAN probe profile used for health checks on this port. enum: `broadband`, `lte`.
      * 
      */
     private @Nullable String probeProfile;
@@ -69,7 +69,7 @@ public final class DeviceprofileGatewayPortConfigWanProbeOverride {
         return this.ips == null ? List.of() : this.ips;
     }
     /**
-     * @return WAN probe profile used for health checks on this port
+     * @return WAN probe profile used for health checks on this port. enum: `broadband`, `lte`.
      * 
      */
     public Optional<String> probeProfile() {

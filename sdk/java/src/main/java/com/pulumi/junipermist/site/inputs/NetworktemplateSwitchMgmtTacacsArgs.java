@@ -35,14 +35,14 @@ public final class NetworktemplateSwitchMgmtTacacsArgs extends com.pulumi.resour
     }
 
     /**
-     * Default switch-management role to use for TACACS+ logins
+     * Default switch-management role to use for TACACS+ logins. enum: `admin`, `helpdesk`, `none`, `read`.
      * 
      */
     @Import(name="defaultRole")
     private @Nullable Output<String> defaultRole;
 
     /**
-     * @return Default switch-management role to use for TACACS+ logins
+     * @return Default switch-management role to use for TACACS+ logins. enum: `admin`, `helpdesk`, `none`, `read`.
      * 
      */
     public Optional<Output<String>> defaultRole() {
@@ -154,7 +154,7 @@ public final class NetworktemplateSwitchMgmtTacacsArgs extends com.pulumi.resour
         }
 
         /**
-         * @param defaultRole Default switch-management role to use for TACACS+ logins
+         * @param defaultRole Default switch-management role to use for TACACS+ logins. enum: `admin`, `helpdesk`, `none`, `read`.
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class NetworktemplateSwitchMgmtTacacsArgs extends com.pulumi.resour
         }
 
         /**
-         * @param defaultRole Default switch-management role to use for TACACS+ logins
+         * @param defaultRole Default switch-management role to use for TACACS+ logins. enum: `admin`, `helpdesk`, `none`, `read`.
          * 
          * @return builder
          * 

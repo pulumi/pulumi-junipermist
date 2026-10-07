@@ -31,14 +31,14 @@ public final class ApClientBridgeAuthArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Authentication mode for the client bridge connection
+     * Authentication mode for the client bridge connection. enum: `open`, `psk`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Authentication mode for the client bridge connection
+     * @return Authentication mode for the client bridge connection. enum: `open`, `psk`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -92,7 +92,7 @@ public final class ApClientBridgeAuthArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param type Authentication mode for the client bridge connection
+         * @param type Authentication mode for the client bridge connection. enum: `open`, `psk`.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ApClientBridgeAuthArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param type Authentication mode for the client bridge connection
+         * @param type Authentication mode for the client bridge connection. enum: `open`, `psk`.
          * 
          * @return builder
          * 

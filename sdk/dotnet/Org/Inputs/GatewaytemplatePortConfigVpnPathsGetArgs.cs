@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class GatewaytemplatePortConfigVpnPathsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// BFD profile used for this VPN path when the VPN `Type`==`HubSpoke`
+        /// BFD profile used for this VPN path when the VPN `Type`==`HubSpoke`. enum: `Broadband`, `Lte`.
         /// </summary>
         [Input("bfdProfile")]
         public Input<string>? BfdProfile { get; set; }
@@ -31,7 +31,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<int>? Preference { get; set; }
 
         /// <summary>
-        /// Gateway role for this VPN path; valid values depend on the VPN `Type`
+        /// Gateway role for this VPN path; valid values depend on the VPN `Type`. enum: `Hub`, `Mesh`, `Spoke`.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }

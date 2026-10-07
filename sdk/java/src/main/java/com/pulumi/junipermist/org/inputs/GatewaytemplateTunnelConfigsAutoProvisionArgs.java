@@ -66,14 +66,14 @@ public final class GatewaytemplateTunnelConfigsAutoProvisionArgs extends com.pul
     }
 
     /**
-     * Tunnel provider used for automatic endpoint provisioning
+     * Tunnel provider used for automatic endpoint provisioning. enum: `jse-ipsec`, `zscaler-ipsec`.
      * 
      */
     @Import(name="provider", required=true)
     private Output<String> provider;
 
     /**
-     * @return Tunnel provider used for automatic endpoint provisioning
+     * @return Tunnel provider used for automatic endpoint provisioning. enum: `jse-ipsec`, `zscaler-ipsec`.
      * 
      */
     public Output<String> provider() {
@@ -219,7 +219,7 @@ public final class GatewaytemplateTunnelConfigsAutoProvisionArgs extends com.pul
         }
 
         /**
-         * @param provider Tunnel provider used for automatic endpoint provisioning
+         * @param provider Tunnel provider used for automatic endpoint provisioning. enum: `jse-ipsec`, `zscaler-ipsec`.
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class GatewaytemplateTunnelConfigsAutoProvisionArgs extends com.pul
         }
 
         /**
-         * @param provider Tunnel provider used for automatic endpoint provisioning
+         * @param provider Tunnel provider used for automatic endpoint provisioning. enum: `jse-ipsec`, `zscaler-ipsec`.
          * 
          * @return builder
          * 

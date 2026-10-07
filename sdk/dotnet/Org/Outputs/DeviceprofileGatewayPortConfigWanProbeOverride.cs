@@ -30,7 +30,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Ips;
         /// <summary>
-        /// WAN probe profile used for health checks on this port
+        /// WAN probe profile used for health checks on this port. enum: `Broadband`, `Lte`.
         /// </summary>
         public readonly string? ProbeProfile;
 

@@ -193,14 +193,14 @@ public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Current status of the requested device upgrade
+     * Current status of the requested device upgrade. enum: `error`, `inprogress`, `scheduled`, `starting`, `success`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Current status of the requested device upgrade
+     * @return Current status of the requested device upgrade. enum: `error`, `inprogress`, `scheduled`, `starting`, `success`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -612,7 +612,7 @@ public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param status Current status of the requested device upgrade
+         * @param status Current status of the requested device upgrade. enum: `error`, `inprogress`, `scheduled`, `starting`, `success`.
          * 
          * @return builder
          * 
@@ -623,7 +623,7 @@ public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param status Current status of the requested device upgrade
+         * @param status Current status of the requested device upgrade. enum: `error`, `inprogress`, `scheduled`, `starting`, `success`.
          * 
          * @return builder
          * 

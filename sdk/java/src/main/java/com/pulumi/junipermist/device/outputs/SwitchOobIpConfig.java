@@ -33,7 +33,7 @@ public final class SwitchOobIpConfig {
      */
     private @Nullable String network;
     /**
-     * @return IP assignment mode for the out-of-band management interface
+     * @return IP assignment mode for the out-of-band management interface. enum: `dhcp`, `static`.
      * 
      */
     private @Nullable String type;
@@ -78,7 +78,7 @@ public final class SwitchOobIpConfig {
         return Optional.ofNullable(this.network);
     }
     /**
-     * @return IP assignment mode for the out-of-band management interface
+     * @return IP assignment mode for the out-of-band management interface. enum: `dhcp`, `static`.
      * 
      */
     public Optional<String> type() {

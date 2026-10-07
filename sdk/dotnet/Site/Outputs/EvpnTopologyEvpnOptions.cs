@@ -54,7 +54,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly bool? PerVlanVgaV6Mac;
         /// <summary>
-        /// Topology tier where EVPN virtual gateway routing is placed
+        /// Topology tier where EVPN virtual gateway routing is placed. enum: `Core`, `Distribution`, `Edge`.
         /// </summary>
         public readonly string? RoutedAt;
         /// <summary>

@@ -78,7 +78,7 @@ public final class SettingWifi {
      */
     private @Nullable String meshSsid;
     /**
-     * @return ARP proxy mode for site Wi-Fi
+     * @return ARP proxy mode for site Wi-Fi. enum: `default`, `disabled`, `enabled`.
      * 
      */
     private @Nullable String proxyArp;
@@ -176,7 +176,7 @@ public final class SettingWifi {
         return Optional.ofNullable(this.meshSsid);
     }
     /**
-     * @return ARP proxy mode for site Wi-Fi
+     * @return ARP proxy mode for site Wi-Fi. enum: `default`, `disabled`, `enabled`.
      * 
      */
     public Optional<String> proxyArp() {

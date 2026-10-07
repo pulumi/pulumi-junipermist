@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class GatewayIdpProfiles
     {
         /// <summary>
-        /// Built-in IDP baseline profile inherited before applying overwrites
+        /// Built-in IDP baseline profile inherited before applying overwrites. enum: `Critical`, `Standard`, `Strict`.
         /// </summary>
         public readonly string? BaseProfile;
         /// <summary>

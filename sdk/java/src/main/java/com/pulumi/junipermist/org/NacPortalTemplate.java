@@ -91,14 +91,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:org/nacPortalTemplate:NacPortalTemplate")
 public class NacPortalTemplate extends com.pulumi.resources.CustomResource {
     /**
-     * Text and content alignment for the NAC portal page
+     * Text and content alignment for the NAC portal page. enum: `center`, `left`, `right`.
      * 
      */
     @Export(name="alignment", refs={String.class}, tree="[0]")
     private Output<String> alignment;
 
     /**
-     * @return Text and content alignment for the NAC portal page
+     * @return Text and content alignment for the NAC portal page. enum: `center`, `left`, `right`.
      * 
      */
     public Output<String> alignment() {

@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.junipermist.site.outputs.SettingJuniperSrxAutoUpgrade;
 import com.pulumi.junipermist.site.outputs.SettingJuniperSrxGateway;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -24,6 +25,11 @@ public final class SettingJuniperSrx {
      * 
      */
     private @Nullable List<SettingJuniperSrxGateway> gateways;
+    /**
+     * @return Source of the Mist NAC user role sent to Juniper SRX gateways. enum: `idpRole`, `radiusGroup`, `none`
+     * 
+     */
+    private @Nullable String mistNacUserRoleSource;
     /**
      * @return Whether Mist NAC user information is sent to Juniper SRX gateways
      * 
@@ -46,6 +52,13 @@ public final class SettingJuniperSrx {
         return this.gateways == null ? List.of() : this.gateways;
     }
     /**
+     * @return Source of the Mist NAC user role sent to Juniper SRX gateways. enum: `idpRole`, `radiusGroup`, `none`
+     * 
+     */
+    public Optional<String> mistNacUserRoleSource() {
+        return Optional.ofNullable(this.mistNacUserRoleSource);
+    }
+    /**
      * @return Whether Mist NAC user information is sent to Juniper SRX gateways
      * 
      */
@@ -64,12 +77,14 @@ public final class SettingJuniperSrx {
     public static final class Builder {
         private @Nullable SettingJuniperSrxAutoUpgrade autoUpgrade;
         private @Nullable List<SettingJuniperSrxGateway> gateways;
+        private @Nullable String mistNacUserRoleSource;
         private @Nullable Boolean sendMistNacUserInfo;
         public Builder() {}
         public Builder(SettingJuniperSrx defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoUpgrade = defaults.autoUpgrade;
     	      this.gateways = defaults.gateways;
+    	      this.mistNacUserRoleSource = defaults.mistNacUserRoleSource;
     	      this.sendMistNacUserInfo = defaults.sendMistNacUserInfo;
         }
 
@@ -89,6 +104,12 @@ public final class SettingJuniperSrx {
             return gateways(List.of(gateways));
         }
         @CustomType.Setter
+        public Builder mistNacUserRoleSource(@Nullable String mistNacUserRoleSource) {
+
+            this.mistNacUserRoleSource = mistNacUserRoleSource;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sendMistNacUserInfo(@Nullable Boolean sendMistNacUserInfo) {
 
             this.sendMistNacUserInfo = sendMistNacUserInfo;
@@ -98,6 +119,7 @@ public final class SettingJuniperSrx {
             final var _resultValue = new SettingJuniperSrx();
             _resultValue.autoUpgrade = autoUpgrade;
             _resultValue.gateways = gateways;
+            _resultValue.mistNacUserRoleSource = mistNacUserRoleSource;
             _resultValue.sendMistNacUserInfo = sendMistNacUserInfo;
             return _resultValue;
         }

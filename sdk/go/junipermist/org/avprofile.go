@@ -75,7 +75,7 @@ import (
 type Avprofile struct {
 	pulumi.CustomResourceState
 
-	// Action to take when antivirus scanning cannot complete
+	// Action to take when antivirus scanning cannot complete. enum: `block`, `log-and-permit`, `permit`.
 	FallbackAction pulumi.StringPtrOutput `pulumi:"fallbackAction"`
 	// Maximum file size scanned by this antivirus profile, in KB
 	MaxFilesize pulumi.IntOutput `pulumi:"maxFilesize"`
@@ -127,7 +127,7 @@ func GetAvprofile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Avprofile resources.
 type avprofileState struct {
-	// Action to take when antivirus scanning cannot complete
+	// Action to take when antivirus scanning cannot complete. enum: `block`, `log-and-permit`, `permit`.
 	FallbackAction *string `pulumi:"fallbackAction"`
 	// Maximum file size scanned by this antivirus profile, in KB
 	MaxFilesize *int `pulumi:"maxFilesize"`
@@ -144,7 +144,7 @@ type avprofileState struct {
 }
 
 type AvprofileState struct {
-	// Action to take when antivirus scanning cannot complete
+	// Action to take when antivirus scanning cannot complete. enum: `block`, `log-and-permit`, `permit`.
 	FallbackAction pulumi.StringPtrInput
 	// Maximum file size scanned by this antivirus profile, in KB
 	MaxFilesize pulumi.IntPtrInput
@@ -165,7 +165,7 @@ func (AvprofileState) ElementType() reflect.Type {
 }
 
 type avprofileArgs struct {
-	// Action to take when antivirus scanning cannot complete
+	// Action to take when antivirus scanning cannot complete. enum: `block`, `log-and-permit`, `permit`.
 	FallbackAction *string `pulumi:"fallbackAction"`
 	// Maximum file size scanned by this antivirus profile, in KB
 	MaxFilesize *int `pulumi:"maxFilesize"`
@@ -183,7 +183,7 @@ type avprofileArgs struct {
 
 // The set of arguments for constructing a Avprofile resource.
 type AvprofileArgs struct {
-	// Action to take when antivirus scanning cannot complete
+	// Action to take when antivirus scanning cannot complete. enum: `block`, `log-and-permit`, `permit`.
 	FallbackAction pulumi.StringPtrInput
 	// Maximum file size scanned by this antivirus profile, in KB
 	MaxFilesize pulumi.IntPtrInput
@@ -286,7 +286,7 @@ func (o AvprofileOutput) ToAvprofileOutputWithContext(ctx context.Context) Avpro
 	return o
 }
 
-// Action to take when antivirus scanning cannot complete
+// Action to take when antivirus scanning cannot complete. enum: `block`, `log-and-permit`, `permit`.
 func (o AvprofileOutput) FallbackAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Avprofile) pulumi.StringPtrOutput { return v.FallbackAction }).(pulumi.StringPtrOutput)
 }

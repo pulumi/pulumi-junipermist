@@ -110,7 +110,7 @@ export class UpgradeDevice extends pulumi.CustomResource {
      */
     declare public readonly startTime: pulumi.Output<number | undefined>;
     /**
-     * Current status of the requested device upgrade
+     * Current status of the requested device upgrade. enum: `error`, `inprogress`, `scheduled`, `starting`, `success`.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
@@ -268,7 +268,7 @@ export interface UpgradeDeviceState {
      */
     startTime?: pulumi.Input<number | undefined>;
     /**
-     * Current status of the requested device upgrade
+     * Current status of the requested device upgrade. enum: `error`, `inprogress`, `scheduled`, `starting`, `success`.
      */
     status?: pulumi.Input<string | undefined>;
     /**

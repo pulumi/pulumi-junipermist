@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.DeviceprofileSwitchSnmpConfigV3ConfigVacmSecurityToGroupContent> Contents;
         /// <summary>
-        /// Required security model for these VACM group mappings
+        /// Required security model for these VACM group mappings. enum: `Usm`, `V1`, `V2c`.
         /// </summary>
         public readonly string? SecurityModel;
 

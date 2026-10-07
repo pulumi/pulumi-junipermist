@@ -62,14 +62,14 @@ public final class SettingMxedgeMgmtArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * IPv4 address assignment mode for out-of-band management
+     * IPv4 address assignment mode for out-of-band management. enum: `dhcp`, `disabled`, `static`.
      * 
      */
     @Import(name="oobIpType")
     private @Nullable Output<String> oobIpType;
 
     /**
-     * @return IPv4 address assignment mode for out-of-band management
+     * @return IPv4 address assignment mode for out-of-band management. enum: `dhcp`, `disabled`, `static`.
      * 
      */
     public Optional<Output<String>> oobIpType() {
@@ -77,14 +77,14 @@ public final class SettingMxedgeMgmtArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * IPv6 address assignment mode for out-of-band management
+     * IPv6 address assignment mode for out-of-band management. enum: `autoconf`, `dhcp`, `disabled`, `static`.
      * 
      */
     @Import(name="oobIpType6")
     private @Nullable Output<String> oobIpType6;
 
     /**
-     * @return IPv6 address assignment mode for out-of-band management
+     * @return IPv6 address assignment mode for out-of-band management. enum: `autoconf`, `dhcp`, `disabled`, `static`.
      * 
      */
     public Optional<Output<String>> oobIpType6() {
@@ -199,7 +199,7 @@ public final class SettingMxedgeMgmtArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param oobIpType IPv4 address assignment mode for out-of-band management
+         * @param oobIpType IPv4 address assignment mode for out-of-band management. enum: `dhcp`, `disabled`, `static`.
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class SettingMxedgeMgmtArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param oobIpType IPv4 address assignment mode for out-of-band management
+         * @param oobIpType IPv4 address assignment mode for out-of-band management. enum: `dhcp`, `disabled`, `static`.
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class SettingMxedgeMgmtArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param oobIpType6 IPv6 address assignment mode for out-of-band management
+         * @param oobIpType6 IPv6 address assignment mode for out-of-band management. enum: `autoconf`, `dhcp`, `disabled`, `static`.
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class SettingMxedgeMgmtArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param oobIpType6 IPv6 address assignment mode for out-of-band management
+         * @param oobIpType6 IPv6 address assignment mode for out-of-band management. enum: `autoconf`, `dhcp`, `disabled`, `static`.
          * 
          * @return builder
          * 
