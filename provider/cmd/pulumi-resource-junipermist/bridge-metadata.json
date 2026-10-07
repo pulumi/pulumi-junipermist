@@ -948,6 +948,13 @@
                                     }
                                 }
                             },
+                            "radius": {
+                                "fields": {
+                                    "auth_servers": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            },
                             "tacacs": {
                                 "fields": {
                                     "acct_servers": {
@@ -1898,6 +1905,13 @@
                                     }
                                 }
                             },
+                            "radius": {
+                                "fields": {
+                                    "auth_servers": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            },
                             "tacacs": {
                                 "fields": {
                                     "acct_servers": {
@@ -1940,28 +1954,7 @@
                     "switches": {
                         "elem": {
                             "fields": {
-                                "downlink_ips": {
-                                    "maxItemsOne": false
-                                },
-                                "downlinks": {
-                                    "maxItemsOne": false
-                                },
-                                "esilaglinks": {
-                                    "maxItemsOne": false
-                                },
                                 "pods": {
-                                    "maxItemsOne": false
-                                },
-                                "suggested_downlinks": {
-                                    "maxItemsOne": false
-                                },
-                                "suggested_esilaglinks": {
-                                    "maxItemsOne": false
-                                },
-                                "suggested_uplinks": {
-                                    "maxItemsOne": false
-                                },
-                                "uplinks": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -3153,6 +3146,13 @@
                                     }
                                 }
                             },
+                            "radius": {
+                                "fields": {
+                                    "auth_servers": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            },
                             "tacacs": {
                                 "fields": {
                                     "acct_servers": {
@@ -3730,28 +3730,7 @@
                     "switches": {
                         "elem": {
                             "fields": {
-                                "downlink_ips": {
-                                    "maxItemsOne": false
-                                },
-                                "downlinks": {
-                                    "maxItemsOne": false
-                                },
-                                "esilaglinks": {
-                                    "maxItemsOne": false
-                                },
                                 "pods": {
-                                    "maxItemsOne": false
-                                },
-                                "suggested_downlinks": {
-                                    "maxItemsOne": false
-                                },
-                                "suggested_esilaglinks": {
-                                    "maxItemsOne": false
-                                },
-                                "suggested_uplinks": {
-                                    "maxItemsOne": false
-                                },
-                                "uplinks": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -4091,6 +4070,13 @@
                                         }
                                     },
                                     "trusted_hosts": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            },
+                            "radius": {
+                                "fields": {
+                                    "auth_servers": {
                                         "maxItemsOne": false
                                     }
                                 }
