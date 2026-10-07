@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DeviceprofileGatewayIdpProfilesOverwrite {
     /**
-     * @return Enforcement action applied when this overwrite rule matches
+     * @return Enforcement action applied when this overwrite rule matches. enum: `alert`, `close`, `drop`.
      * 
      */
     private @Nullable String action;
@@ -30,7 +30,7 @@ public final class DeviceprofileGatewayIdpProfilesOverwrite {
 
     private DeviceprofileGatewayIdpProfilesOverwrite() {}
     /**
-     * @return Enforcement action applied when this overwrite rule matches
+     * @return Enforcement action applied when this overwrite rule matches. enum: `alert`, `close`, `drop`.
      * 
      */
     public Optional<String> action() {

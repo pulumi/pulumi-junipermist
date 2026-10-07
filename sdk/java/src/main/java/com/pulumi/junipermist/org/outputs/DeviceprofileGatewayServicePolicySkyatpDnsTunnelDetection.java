@@ -18,7 +18,7 @@ public final class DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetection {
      */
     private @Nullable Boolean enabled;
     /**
-     * @return Sky ATP DNS tunneling detection profile to apply
+     * @return Sky ATP DNS tunneling detection profile to apply. enum: `default`, `standard`, `strict`.
      * 
      */
     private @Nullable String profile;
@@ -32,7 +32,7 @@ public final class DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetection {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Sky ATP DNS tunneling detection profile to apply
+     * @return Sky ATP DNS tunneling detection profile to apply. enum: `default`, `standard`, `strict`.
      * 
      */
     public Optional<String> profile() {

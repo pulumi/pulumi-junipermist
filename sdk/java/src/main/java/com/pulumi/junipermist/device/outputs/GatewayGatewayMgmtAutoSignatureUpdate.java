@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewayGatewayMgmtAutoSignatureUpdate {
     /**
-     * @return Scheduled weekday for automatic signature updates
+     * @return Scheduled weekday for automatic signature updates. enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`.
      * 
      */
     private @Nullable String dayOfWeek;
@@ -30,7 +30,7 @@ public final class GatewayGatewayMgmtAutoSignatureUpdate {
 
     private GatewayGatewayMgmtAutoSignatureUpdate() {}
     /**
-     * @return Scheduled weekday for automatic signature updates
+     * @return Scheduled weekday for automatic signature updates. enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`.
      * 
      */
     public Optional<String> dayOfWeek() {

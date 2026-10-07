@@ -67,7 +67,7 @@ public final class EvpnTopologyEvpnOptions {
      */
     private @Nullable Boolean perVlanVgaV6Mac;
     /**
-     * @return Topology tier where EVPN virtual gateway routing is placed
+     * @return Topology tier where EVPN virtual gateway routing is placed. enum: `core`, `distribution`, `edge`.
      * 
      */
     private @Nullable String routedAt;
@@ -154,7 +154,7 @@ public final class EvpnTopologyEvpnOptions {
         return Optional.ofNullable(this.perVlanVgaV6Mac);
     }
     /**
-     * @return Topology tier where EVPN virtual gateway routing is placed
+     * @return Topology tier where EVPN virtual gateway routing is placed. enum: `core`, `distribution`, `edge`.
      * 
      */
     public Optional<String> routedAt() {

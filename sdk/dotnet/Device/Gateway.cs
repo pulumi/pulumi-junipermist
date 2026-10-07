@@ -171,6 +171,12 @@ namespace Pulumi.JuniperMist.Device
         public Output<bool> MistConfigured { get; private set; } = null!;
 
         /// <summary>
+        /// Multi-Node HA (MNHA) settings for this gateway, SRX only
+        /// </summary>
+        [Output("mnhaConfig")]
+        public Output<Outputs.GatewayMnhaConfig?> MnhaConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Gateway model reported for the device
         /// </summary>
         [Output("model")]
@@ -501,6 +507,12 @@ namespace Pulumi.JuniperMist.Device
         /// </summary>
         [Input("mistConfigured")]
         public Input<bool>? MistConfigured { get; set; }
+
+        /// <summary>
+        /// Multi-Node HA (MNHA) settings for this gateway, SRX only
+        /// </summary>
+        [Input("mnhaConfig")]
+        public Input<Inputs.GatewayMnhaConfigArgs>? MnhaConfig { get; set; }
 
         /// <summary>
         /// MSP that manages this gateway, when applicable
@@ -854,6 +866,12 @@ namespace Pulumi.JuniperMist.Device
         /// </summary>
         [Input("mistConfigured")]
         public Input<bool>? MistConfigured { get; set; }
+
+        /// <summary>
+        /// Multi-Node HA (MNHA) settings for this gateway, SRX only
+        /// </summary>
+        [Input("mnhaConfig")]
+        public Input<Inputs.GatewayMnhaConfigGetArgs>? MnhaConfig { get; set; }
 
         /// <summary>
         /// Gateway model reported for the device

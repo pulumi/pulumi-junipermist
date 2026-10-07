@@ -31,7 +31,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// DHCP handling mode for this tunneled VLAN
+        /// DHCP handling mode for this tunneled VLAN. enum: `Relay`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

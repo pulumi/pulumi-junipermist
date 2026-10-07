@@ -28,7 +28,7 @@ public final class DeviceprofileGatewayOobIpConfigNode1 {
      */
     private @Nullable String netmask;
     /**
-     * @return IP assignment mode for the node1 out-of-band management interface
+     * @return IP assignment mode for the node1 out-of-band management interface. enum: `dhcp`, `static`.
      * 
      */
     private @Nullable String type;
@@ -71,7 +71,7 @@ public final class DeviceprofileGatewayOobIpConfigNode1 {
         return Optional.ofNullable(this.netmask);
     }
     /**
-     * @return IP assignment mode for the node1 out-of-band management interface
+     * @return IP assignment mode for the node1 out-of-band management interface. enum: `dhcp`, `static`.
      * 
      */
     public Optional<String> type() {

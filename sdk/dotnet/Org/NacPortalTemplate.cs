@@ -70,7 +70,7 @@ namespace Pulumi.JuniperMist.Org
     public partial class NacPortalTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Text and content alignment for the NAC portal page
+        /// Text and content alignment for the NAC portal page. enum: `Center`, `Left`, `Right`.
         /// </summary>
         [Output("alignment")]
         public Output<string> Alignment { get; private set; } = null!;
@@ -150,7 +150,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class NacPortalTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Text and content alignment for the NAC portal page
+        /// Text and content alignment for the NAC portal page. enum: `Center`, `Left`, `Right`.
         /// </summary>
         [Input("alignment")]
         public Input<string>? Alignment { get; set; }
@@ -191,7 +191,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class NacPortalTemplateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Text and content alignment for the NAC portal page
+        /// Text and content alignment for the NAC portal page. enum: `Center`, `Left`, `Right`.
         /// </summary>
         [Input("alignment")]
         public Input<string>? Alignment { get; set; }

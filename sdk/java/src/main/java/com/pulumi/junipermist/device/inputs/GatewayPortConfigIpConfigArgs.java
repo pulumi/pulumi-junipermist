@@ -167,14 +167,14 @@ public final class GatewayPortConfigIpConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Authentication protocol used for PPPoE when `type`==`pppoe`
+     * Authentication protocol used for PPPoE when `type`==`pppoe`. enum: `chap`, `none`, `pap`.
      * 
      */
     @Import(name="pppoeAuth")
     private @Nullable Output<String> pppoeAuth;
 
     /**
-     * @return Authentication protocol used for PPPoE when `type`==`pppoe`
+     * @return Authentication protocol used for PPPoE when `type`==`pppoe`. enum: `chap`, `none`, `pap`.
      * 
      */
     public Optional<Output<String>> pppoeAuth() {
@@ -197,14 +197,14 @@ public final class GatewayPortConfigIpConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * IPv4 assignment mode for this gateway port interface
+     * IPv4 assignment mode for this gateway port interface. enum: `dhcp`, `pppoe`, `static`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return IPv4 assignment mode for this gateway port interface
+     * @return IPv4 assignment mode for this gateway port interface. enum: `dhcp`, `pppoe`, `static`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -212,14 +212,14 @@ public final class GatewayPortConfigIpConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * IPv6 assignment mode for this gateway port interface
+     * IPv6 assignment mode for this gateway port interface. enum: `autoconf`, `dhcp`, `static`.
      * 
      */
     @Import(name="type6")
     private @Nullable Output<String> type6;
 
     /**
-     * @return IPv6 assignment mode for this gateway port interface
+     * @return IPv6 assignment mode for this gateway port interface. enum: `autoconf`, `dhcp`, `static`.
      * 
      */
     public Optional<Output<String>> type6() {
@@ -494,7 +494,7 @@ public final class GatewayPortConfigIpConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param pppoeAuth Authentication protocol used for PPPoE when `type`==`pppoe`
+         * @param pppoeAuth Authentication protocol used for PPPoE when `type`==`pppoe`. enum: `chap`, `none`, `pap`.
          * 
          * @return builder
          * 
@@ -505,7 +505,7 @@ public final class GatewayPortConfigIpConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param pppoeAuth Authentication protocol used for PPPoE when `type`==`pppoe`
+         * @param pppoeAuth Authentication protocol used for PPPoE when `type`==`pppoe`. enum: `chap`, `none`, `pap`.
          * 
          * @return builder
          * 
@@ -536,7 +536,7 @@ public final class GatewayPortConfigIpConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param type IPv4 assignment mode for this gateway port interface
+         * @param type IPv4 assignment mode for this gateway port interface. enum: `dhcp`, `pppoe`, `static`.
          * 
          * @return builder
          * 
@@ -547,7 +547,7 @@ public final class GatewayPortConfigIpConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param type IPv4 assignment mode for this gateway port interface
+         * @param type IPv4 assignment mode for this gateway port interface. enum: `dhcp`, `pppoe`, `static`.
          * 
          * @return builder
          * 
@@ -557,7 +557,7 @@ public final class GatewayPortConfigIpConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param type6 IPv6 assignment mode for this gateway port interface
+         * @param type6 IPv6 assignment mode for this gateway port interface. enum: `autoconf`, `dhcp`, `static`.
          * 
          * @return builder
          * 
@@ -568,7 +568,7 @@ public final class GatewayPortConfigIpConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param type6 IPv6 assignment mode for this gateway port interface
+         * @param type6 IPv6 assignment mode for this gateway port interface. enum: `autoconf`, `dhcp`, `static`.
          * 
          * @return builder
          * 

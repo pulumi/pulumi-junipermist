@@ -110,7 +110,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<string?> OldPassphrase { get; private set; } = null!;
 
         /// <summary>
-        /// Organization that owns the site-level PSK
+        /// Organization that owns the org-level PSK
         /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
@@ -416,7 +416,7 @@ namespace Pulumi.JuniperMist.Site
         }
 
         /// <summary>
-        /// Organization that owns the site-level PSK
+        /// Organization that owns the org-level PSK
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }

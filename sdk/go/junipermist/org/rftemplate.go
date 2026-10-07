@@ -88,7 +88,7 @@ type Rftemplate struct {
 	AntGain6 pulumi.IntOutput `pulumi:"antGain6"`
 	// 2.4 GHz radio settings in this RF template
 	Band24 RftemplateBand24PtrOutput `pulumi:"band24"`
-	// Radio usage mode for the 2.4 GHz-capable radio in this RF template
+	// Radio usage mode for the 2.4 GHz-capable radio in this RF template. enum: `24`, `5`, `6`, `auto`.
 	Band24Usage pulumi.StringPtrOutput `pulumi:"band24Usage"`
 	// 5 GHz radio settings in this RF template
 	Band5 RftemplateBand5PtrOutput `pulumi:"band5"`
@@ -151,7 +151,7 @@ type rftemplateState struct {
 	AntGain6 *int `pulumi:"antGain6"`
 	// 2.4 GHz radio settings in this RF template
 	Band24 *RftemplateBand24 `pulumi:"band24"`
-	// Radio usage mode for the 2.4 GHz-capable radio in this RF template
+	// Radio usage mode for the 2.4 GHz-capable radio in this RF template. enum: `24`, `5`, `6`, `auto`.
 	Band24Usage *string `pulumi:"band24Usage"`
 	// 5 GHz radio settings in this RF template
 	Band5 *RftemplateBand5 `pulumi:"band5"`
@@ -182,7 +182,7 @@ type RftemplateState struct {
 	AntGain6 pulumi.IntPtrInput
 	// 2.4 GHz radio settings in this RF template
 	Band24 RftemplateBand24PtrInput
-	// Radio usage mode for the 2.4 GHz-capable radio in this RF template
+	// Radio usage mode for the 2.4 GHz-capable radio in this RF template. enum: `24`, `5`, `6`, `auto`.
 	Band24Usage pulumi.StringPtrInput
 	// 5 GHz radio settings in this RF template
 	Band5 RftemplateBand5PtrInput
@@ -217,7 +217,7 @@ type rftemplateArgs struct {
 	AntGain6 *int `pulumi:"antGain6"`
 	// 2.4 GHz radio settings in this RF template
 	Band24 *RftemplateBand24 `pulumi:"band24"`
-	// Radio usage mode for the 2.4 GHz-capable radio in this RF template
+	// Radio usage mode for the 2.4 GHz-capable radio in this RF template. enum: `24`, `5`, `6`, `auto`.
 	Band24Usage *string `pulumi:"band24Usage"`
 	// 5 GHz radio settings in this RF template
 	Band5 *RftemplateBand5 `pulumi:"band5"`
@@ -249,7 +249,7 @@ type RftemplateArgs struct {
 	AntGain6 pulumi.IntPtrInput
 	// 2.4 GHz radio settings in this RF template
 	Band24 RftemplateBand24PtrInput
-	// Radio usage mode for the 2.4 GHz-capable radio in this RF template
+	// Radio usage mode for the 2.4 GHz-capable radio in this RF template. enum: `24`, `5`, `6`, `auto`.
 	Band24Usage pulumi.StringPtrInput
 	// 5 GHz radio settings in this RF template
 	Band5 RftemplateBand5PtrInput
@@ -378,7 +378,7 @@ func (o RftemplateOutput) Band24() RftemplateBand24PtrOutput {
 	return o.ApplyT(func(v *Rftemplate) RftemplateBand24PtrOutput { return v.Band24 }).(RftemplateBand24PtrOutput)
 }
 
-// Radio usage mode for the 2.4 GHz-capable radio in this RF template
+// Radio usage mode for the 2.4 GHz-capable radio in this RF template. enum: `24`, `5`, `6`, `auto`.
 func (o RftemplateOutput) Band24Usage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Rftemplate) pulumi.StringPtrOutput { return v.Band24Usage }).(pulumi.StringPtrOutput)
 }

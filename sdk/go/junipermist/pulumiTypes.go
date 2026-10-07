@@ -14,7 +14,7 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type UpgradeDeviceAutoUpgradeStat struct {
-	// Time when the device last checked for auto-upgrade, in epoch seconds
+	// Time when the AP last checked for auto-upgrade, in epoch seconds
 	Lastcheck *int `pulumi:"lastcheck"`
 }
 
@@ -30,7 +30,7 @@ type UpgradeDeviceAutoUpgradeStatInput interface {
 }
 
 type UpgradeDeviceAutoUpgradeStatArgs struct {
-	// Time when the device last checked for auto-upgrade, in epoch seconds
+	// Time when the AP last checked for auto-upgrade, in epoch seconds
 	Lastcheck pulumi.IntPtrInput `pulumi:"lastcheck"`
 }
 
@@ -111,7 +111,7 @@ func (o UpgradeDeviceAutoUpgradeStatOutput) ToUpgradeDeviceAutoUpgradeStatPtrOut
 	}).(UpgradeDeviceAutoUpgradeStatPtrOutput)
 }
 
-// Time when the device last checked for auto-upgrade, in epoch seconds
+// Time when the AP last checked for auto-upgrade, in epoch seconds
 func (o UpgradeDeviceAutoUpgradeStatOutput) Lastcheck() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v UpgradeDeviceAutoUpgradeStat) *int { return v.Lastcheck }).(pulumi.IntPtrOutput)
 }
@@ -140,7 +140,7 @@ func (o UpgradeDeviceAutoUpgradeStatPtrOutput) Elem() UpgradeDeviceAutoUpgradeSt
 	}).(UpgradeDeviceAutoUpgradeStatOutput)
 }
 
-// Time when the device last checked for auto-upgrade, in epoch seconds
+// Time when the AP last checked for auto-upgrade, in epoch seconds
 func (o UpgradeDeviceAutoUpgradeStatPtrOutput) Lastcheck() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *UpgradeDeviceAutoUpgradeStat) *int {
 		if v == nil {
@@ -153,7 +153,7 @@ func (o UpgradeDeviceAutoUpgradeStatPtrOutput) Lastcheck() pulumi.IntPtrOutput {
 type UpgradeDeviceFwupdate struct {
 	// Firmware update progress percentage, or null when unavailable
 	Progress *int `pulumi:"progress"`
-	// Current firmware update status
+	// Current firmware update status. enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`.
 	Status *string `pulumi:"status"`
 	// Numeric firmware update status identifier
 	StatusId *int `pulumi:"statusId"`
@@ -177,7 +177,7 @@ type UpgradeDeviceFwupdateInput interface {
 type UpgradeDeviceFwupdateArgs struct {
 	// Firmware update progress percentage, or null when unavailable
 	Progress pulumi.IntPtrInput `pulumi:"progress"`
-	// Current firmware update status
+	// Current firmware update status. enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// Numeric firmware update status identifier
 	StatusId pulumi.IntPtrInput `pulumi:"statusId"`
@@ -269,7 +269,7 @@ func (o UpgradeDeviceFwupdateOutput) Progress() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v UpgradeDeviceFwupdate) *int { return v.Progress }).(pulumi.IntPtrOutput)
 }
 
-// Current firmware update status
+// Current firmware update status. enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`.
 func (o UpgradeDeviceFwupdateOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UpgradeDeviceFwupdate) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -323,7 +323,7 @@ func (o UpgradeDeviceFwupdatePtrOutput) Progress() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Current firmware update status
+// Current firmware update status. enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`.
 func (o UpgradeDeviceFwupdatePtrOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UpgradeDeviceFwupdate) *string {
 		if v == nil {

@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class DeviceprofileSwitchSnmpConfigV3ConfigUsm
     {
         /// <summary>
-        /// SNMP engine type used for this USM configuration
+        /// SNMP engine type used for this USM configuration. enum: `LocalEngine`, `RemoteEngine`.
         /// </summary>
         public readonly string EngineType;
         /// <summary>

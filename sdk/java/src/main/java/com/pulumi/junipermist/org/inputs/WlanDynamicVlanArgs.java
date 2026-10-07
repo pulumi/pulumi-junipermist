@@ -64,14 +64,14 @@ public final class WlanDynamicVlanArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Dynamic VLAN mapping method used for RADIUS-provided VLAN attributes
+     * Dynamic VLAN mapping method used for RADIUS-provided VLAN attributes. enum: `airespace-interface-name`, `standard`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Dynamic VLAN mapping method used for RADIUS-provided VLAN attributes
+     * @return Dynamic VLAN mapping method used for RADIUS-provided VLAN attributes. enum: `airespace-interface-name`, `standard`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -209,7 +209,7 @@ public final class WlanDynamicVlanArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type Dynamic VLAN mapping method used for RADIUS-provided VLAN attributes
+         * @param type Dynamic VLAN mapping method used for RADIUS-provided VLAN attributes. enum: `airespace-interface-name`, `standard`.
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class WlanDynamicVlanArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type Dynamic VLAN mapping method used for RADIUS-provided VLAN attributes
+         * @param type Dynamic VLAN mapping method used for RADIUS-provided VLAN attributes. enum: `airespace-interface-name`, `standard`.
          * 
          * @return builder
          * 

@@ -16,14 +16,14 @@ public final class DeviceprofileSwitchDhcpdConfigConfigOptionsArgs extends com.p
     public static final DeviceprofileSwitchDhcpdConfigConfigOptionsArgs Empty = new DeviceprofileSwitchDhcpdConfigConfigOptionsArgs();
 
     /**
-     * Data type used to encode this DHCP option value
+     * Data type used to encode this DHCP option value. enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Data type used to encode this DHCP option value
+     * @return Data type used to encode this DHCP option value. enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -71,7 +71,7 @@ public final class DeviceprofileSwitchDhcpdConfigConfigOptionsArgs extends com.p
         }
 
         /**
-         * @param type Data type used to encode this DHCP option value
+         * @param type Data type used to encode this DHCP option value. enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class DeviceprofileSwitchDhcpdConfigConfigOptionsArgs extends com.p
         }
 
         /**
-         * @param type Data type used to encode this DHCP option value
+         * @param type Data type used to encode this DHCP option value. enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`.
          * 
          * @return builder
          * 

@@ -96,7 +96,7 @@ export class Vpn extends pulumi.CustomResource {
      */
     declare public readonly paths: pulumi.Output<{[key: string]: outputs.org.VpnPaths}>;
     /**
-     * VPN topology mode for this configuration
+     * VPN topology mode for this configuration. enum: `hubSpoke`, `mesh`.
      */
     declare public readonly type: pulumi.Output<string | undefined>;
 
@@ -155,7 +155,7 @@ export interface VpnState {
      */
     paths?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.VpnPaths>} | undefined>;
     /**
-     * VPN topology mode for this configuration
+     * VPN topology mode for this configuration. enum: `hubSpoke`, `mesh`.
      */
     type?: pulumi.Input<string | undefined>;
 }
@@ -181,7 +181,7 @@ export interface VpnArgs {
      */
     paths: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.VpnPaths>}>;
     /**
-     * VPN topology mode for this configuration
+     * VPN topology mode for this configuration. enum: `hubSpoke`, `mesh`.
      */
     type?: pulumi.Input<string | undefined>;
 }

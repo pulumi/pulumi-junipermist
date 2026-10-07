@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class NetworktemplateSwitchMatchingRuleOobIpConfig
     {
         /// <summary>
-        /// IP assignment mode for out-of-band switch management
+        /// IP assignment mode for out-of-band switch management. enum: `Dhcp`, `Static`.
         /// </summary>
         public readonly string? Type;
         /// <summary>

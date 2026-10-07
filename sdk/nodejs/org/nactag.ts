@@ -74,7 +74,7 @@ export class Nactag extends pulumi.CustomResource {
      */
     declare public readonly gbpTag: pulumi.Output<string | undefined>;
     /**
-     * If `type`==`match`, client or authentication attribute used for rule matching
+     * If `type`==`match`, client or authentication attribute used for rule matching. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrStatus`, `gbpTag`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`.
      */
     declare public readonly match: pulumi.Output<string | undefined>;
     /**
@@ -115,11 +115,11 @@ export class Nactag extends pulumi.CustomResource {
      */
     declare public readonly sessionTimeout: pulumi.Output<number | undefined>;
     /**
-     * NAC tag type that determines whether the tag is a matcher or a result attribute
+     * NAC tag type that determines whether the tag is a matcher or a result attribute. enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`.
      */
     declare public readonly type: pulumi.Output<string>;
     /**
-     * If `type`==`usernameAttr`, attribute used to derive the username returned by the NAC rule
+     * If `type`==`usernameAttr`, attribute used to derive the username returned by the NAC rule. enum: `automatic`, `cn`, `dns`, `email`, `upn`.
      */
     declare public readonly usernameAttr: pulumi.Output<string | undefined>;
     /**
@@ -207,7 +207,7 @@ export interface NactagState {
      */
     gbpTag?: pulumi.Input<string | undefined>;
     /**
-     * If `type`==`match`, client or authentication attribute used for rule matching
+     * If `type`==`match`, client or authentication attribute used for rule matching. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrStatus`, `gbpTag`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`.
      */
     match?: pulumi.Input<string | undefined>;
     /**
@@ -248,11 +248,11 @@ export interface NactagState {
      */
     sessionTimeout?: pulumi.Input<number | undefined>;
     /**
-     * NAC tag type that determines whether the tag is a matcher or a result attribute
+     * NAC tag type that determines whether the tag is a matcher or a result attribute. enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`.
      */
     type?: pulumi.Input<string | undefined>;
     /**
-     * If `type`==`usernameAttr`, attribute used to derive the username returned by the NAC rule
+     * If `type`==`usernameAttr`, attribute used to derive the username returned by the NAC rule. enum: `automatic`, `cn`, `dns`, `email`, `upn`.
      */
     usernameAttr?: pulumi.Input<string | undefined>;
     /**
@@ -282,7 +282,7 @@ export interface NactagArgs {
      */
     gbpTag?: pulumi.Input<string | undefined>;
     /**
-     * If `type`==`match`, client or authentication attribute used for rule matching
+     * If `type`==`match`, client or authentication attribute used for rule matching. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrStatus`, `gbpTag`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`.
      */
     match?: pulumi.Input<string | undefined>;
     /**
@@ -323,11 +323,11 @@ export interface NactagArgs {
      */
     sessionTimeout?: pulumi.Input<number | undefined>;
     /**
-     * NAC tag type that determines whether the tag is a matcher or a result attribute
+     * NAC tag type that determines whether the tag is a matcher or a result attribute. enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`.
      */
     type: pulumi.Input<string>;
     /**
-     * If `type`==`usernameAttr`, attribute used to derive the username returned by the NAC rule
+     * If `type`==`usernameAttr`, attribute used to derive the username returned by the NAC rule. enum: `automatic`, `cn`, `dns`, `email`, `upn`.
      */
     usernameAttr?: pulumi.Input<string | undefined>;
     /**

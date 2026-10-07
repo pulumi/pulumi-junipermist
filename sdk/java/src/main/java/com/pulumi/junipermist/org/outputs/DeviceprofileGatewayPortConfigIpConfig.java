@@ -63,7 +63,7 @@ public final class DeviceprofileGatewayPortConfigIpConfig {
      */
     private @Nullable String poserPassword;
     /**
-     * @return Authentication protocol used for PPPoE when `type`==`pppoe`
+     * @return Authentication protocol used for PPPoE when `type`==`pppoe`. enum: `chap`, `none`, `pap`.
      * 
      */
     private @Nullable String pppoeAuth;
@@ -73,12 +73,12 @@ public final class DeviceprofileGatewayPortConfigIpConfig {
      */
     private @Nullable String pppoeUsername;
     /**
-     * @return IPv4 assignment mode for this gateway port interface
+     * @return IPv4 assignment mode for this gateway port interface. enum: `dhcp`, `pppoe`, `static`.
      * 
      */
     private @Nullable String type;
     /**
-     * @return IPv6 assignment mode for this gateway port interface
+     * @return IPv6 assignment mode for this gateway port interface. enum: `autoconf`, `dhcp`, `static`.
      * 
      */
     private @Nullable String type6;
@@ -155,7 +155,7 @@ public final class DeviceprofileGatewayPortConfigIpConfig {
         return Optional.ofNullable(this.poserPassword);
     }
     /**
-     * @return Authentication protocol used for PPPoE when `type`==`pppoe`
+     * @return Authentication protocol used for PPPoE when `type`==`pppoe`. enum: `chap`, `none`, `pap`.
      * 
      */
     public Optional<String> pppoeAuth() {
@@ -169,14 +169,14 @@ public final class DeviceprofileGatewayPortConfigIpConfig {
         return Optional.ofNullable(this.pppoeUsername);
     }
     /**
-     * @return IPv4 assignment mode for this gateway port interface
+     * @return IPv4 assignment mode for this gateway port interface. enum: `dhcp`, `pppoe`, `static`.
      * 
      */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return IPv6 assignment mode for this gateway port interface
+     * @return IPv6 assignment mode for this gateway port interface. enum: `autoconf`, `dhcp`, `static`.
      * 
      */
     public Optional<String> type6() {

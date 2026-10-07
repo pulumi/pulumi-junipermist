@@ -95,7 +95,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// Authentication protocol used for PPPoE when `Type`==`Pppoe`
+        /// Authentication protocol used for PPPoE when `Type`==`Pppoe`. enum: `Chap`, `None`, `Pap`.
         /// </summary>
         [Input("pppoeAuth")]
         public Input<string>? PppoeAuth { get; set; }
@@ -107,13 +107,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? PppoeUsername { get; set; }
 
         /// <summary>
-        /// IPv4 assignment mode for this gateway port interface
+        /// IPv4 assignment mode for this gateway port interface. enum: `Dhcp`, `Pppoe`, `Static`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// IPv6 assignment mode for this gateway port interface
+        /// IPv6 assignment mode for this gateway port interface. enum: `Autoconf`, `Dhcp`, `Static`.
         /// </summary>
         [Input("type6")]
         public Input<string>? Type6 { get; set; }

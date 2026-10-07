@@ -62,14 +62,14 @@ public final class DeviceprofileSwitchSnmpConfigTrapGroupArgs extends com.pulumi
     }
 
     /**
-     * SNMP trap protocol version used by this group
+     * SNMP trap protocol version used by this group. enum: `all`, `v1`, `v2`.
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return SNMP trap protocol version used by this group
+     * @return SNMP trap protocol version used by this group. enum: `all`, `v1`, `v2`.
      * 
      */
     public Optional<Output<String>> version() {
@@ -187,7 +187,7 @@ public final class DeviceprofileSwitchSnmpConfigTrapGroupArgs extends com.pulumi
         }
 
         /**
-         * @param version SNMP trap protocol version used by this group
+         * @param version SNMP trap protocol version used by this group. enum: `all`, `v1`, `v2`.
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class DeviceprofileSwitchSnmpConfigTrapGroupArgs extends com.pulumi
         }
 
         /**
-         * @param version SNMP trap protocol version used by this group
+         * @param version SNMP trap protocol version used by this group. enum: `all`, `v1`, `v2`.
          * 
          * @return builder
          * 

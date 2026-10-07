@@ -83,7 +83,7 @@ type Vpn struct {
 	PathSelection VpnPathSelectionPtrOutput `pulumi:"pathSelection"`
 	// VPN path definitions keyed by VPN name for `hubSpoke` mode or interface name for `mesh` mode
 	Paths VpnPathsMapOutput `pulumi:"paths"`
-	// VPN topology mode for this configuration
+	// VPN topology mode for this configuration. enum: `hubSpoke`, `mesh`.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
 
@@ -128,7 +128,7 @@ type vpnState struct {
 	PathSelection *VpnPathSelection `pulumi:"pathSelection"`
 	// VPN path definitions keyed by VPN name for `hubSpoke` mode or interface name for `mesh` mode
 	Paths map[string]VpnPaths `pulumi:"paths"`
-	// VPN topology mode for this configuration
+	// VPN topology mode for this configuration. enum: `hubSpoke`, `mesh`.
 	Type *string `pulumi:"type"`
 }
 
@@ -141,7 +141,7 @@ type VpnState struct {
 	PathSelection VpnPathSelectionPtrInput
 	// VPN path definitions keyed by VPN name for `hubSpoke` mode or interface name for `mesh` mode
 	Paths VpnPathsMapInput
-	// VPN topology mode for this configuration
+	// VPN topology mode for this configuration. enum: `hubSpoke`, `mesh`.
 	Type pulumi.StringPtrInput
 }
 
@@ -158,7 +158,7 @@ type vpnArgs struct {
 	PathSelection *VpnPathSelection `pulumi:"pathSelection"`
 	// VPN path definitions keyed by VPN name for `hubSpoke` mode or interface name for `mesh` mode
 	Paths map[string]VpnPaths `pulumi:"paths"`
-	// VPN topology mode for this configuration
+	// VPN topology mode for this configuration. enum: `hubSpoke`, `mesh`.
 	Type *string `pulumi:"type"`
 }
 
@@ -172,7 +172,7 @@ type VpnArgs struct {
 	PathSelection VpnPathSelectionPtrInput
 	// VPN path definitions keyed by VPN name for `hubSpoke` mode or interface name for `mesh` mode
 	Paths VpnPathsMapInput
-	// VPN topology mode for this configuration
+	// VPN topology mode for this configuration. enum: `hubSpoke`, `mesh`.
 	Type pulumi.StringPtrInput
 }
 
@@ -283,7 +283,7 @@ func (o VpnOutput) Paths() VpnPathsMapOutput {
 	return o.ApplyT(func(v *Vpn) VpnPathsMapOutput { return v.Paths }).(VpnPathsMapOutput)
 }
 
-// VPN topology mode for this configuration
+// VPN topology mode for this configuration. enum: `hubSpoke`, `mesh`.
 func (o VpnOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Vpn) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

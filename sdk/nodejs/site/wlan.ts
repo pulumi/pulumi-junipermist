@@ -115,7 +115,7 @@ export class Wlan extends pulumi.CustomResource {
      */
     declare public readonly appQos: pulumi.Output<outputs.site.WlanAppQos>;
     /**
-     * Scope that determines where this WLAN is applied
+     * Scope that determines where this WLAN is applied. enum: `aps`, `site`, `wxtags`.
      */
     declare public readonly applyTo: pulumi.Output<string>;
     /**
@@ -127,7 +127,7 @@ export class Wlan extends pulumi.CustomResource {
      */
     declare public readonly auth: pulumi.Output<outputs.site.WlanAuth | undefined>;
     /**
-     * RADIUS authentication server selection behavior for this WLAN
+     * RADIUS authentication server selection behavior for this WLAN. enum: `ordered`, `unordered`.
      */
     declare public readonly authServerSelection: pulumi.Output<string>;
     /**
@@ -294,7 +294,7 @@ export class Wlan extends pulumi.CustomResource {
      */
     declare public readonly injectDhcpOption82: pulumi.Output<outputs.site.WlanInjectDhcpOption82 | undefined>;
     /**
-     * Network interface or tunnel where this WLAN bridges client traffic
+     * Network interface or tunnel where this WLAN bridges client traffic. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`.
      */
     declare public readonly interface: pulumi.Output<string>;
     /**
@@ -398,7 +398,7 @@ export class Wlan extends pulumi.CustomResource {
      */
     declare public readonly reconnectClientsWhenRoamingMxcluster: pulumi.Output<boolean | undefined>;
     /**
-     * Fast roaming mode configured for this WLAN
+     * Fast roaming mode configured for this WLAN. enum: `11r`, `NONE`, `OKC`.
      */
     declare public readonly roamMode: pulumi.Output<string | undefined>;
     /**
@@ -732,7 +732,7 @@ export interface WlanState {
      */
     appQos?: pulumi.Input<inputs.site.WlanAppQos | undefined>;
     /**
-     * Scope that determines where this WLAN is applied
+     * Scope that determines where this WLAN is applied. enum: `aps`, `site`, `wxtags`.
      */
     applyTo?: pulumi.Input<string | undefined>;
     /**
@@ -744,7 +744,7 @@ export interface WlanState {
      */
     auth?: pulumi.Input<inputs.site.WlanAuth | undefined>;
     /**
-     * RADIUS authentication server selection behavior for this WLAN
+     * RADIUS authentication server selection behavior for this WLAN. enum: `ordered`, `unordered`.
      */
     authServerSelection?: pulumi.Input<string | undefined>;
     /**
@@ -911,7 +911,7 @@ export interface WlanState {
      */
     injectDhcpOption82?: pulumi.Input<inputs.site.WlanInjectDhcpOption82 | undefined>;
     /**
-     * Network interface or tunnel where this WLAN bridges client traffic
+     * Network interface or tunnel where this WLAN bridges client traffic. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`.
      */
     interface?: pulumi.Input<string | undefined>;
     /**
@@ -1015,7 +1015,7 @@ export interface WlanState {
      */
     reconnectClientsWhenRoamingMxcluster?: pulumi.Input<boolean | undefined>;
     /**
-     * Fast roaming mode configured for this WLAN
+     * Fast roaming mode configured for this WLAN. enum: `11r`, `NONE`, `OKC`.
      */
     roamMode?: pulumi.Input<string | undefined>;
     /**
@@ -1129,7 +1129,7 @@ export interface WlanArgs {
      */
     appQos?: pulumi.Input<inputs.site.WlanAppQos | undefined>;
     /**
-     * Scope that determines where this WLAN is applied
+     * Scope that determines where this WLAN is applied. enum: `aps`, `site`, `wxtags`.
      */
     applyTo?: pulumi.Input<string | undefined>;
     /**
@@ -1141,7 +1141,7 @@ export interface WlanArgs {
      */
     auth?: pulumi.Input<inputs.site.WlanAuth | undefined>;
     /**
-     * RADIUS authentication server selection behavior for this WLAN
+     * RADIUS authentication server selection behavior for this WLAN. enum: `ordered`, `unordered`.
      */
     authServerSelection?: pulumi.Input<string | undefined>;
     /**
@@ -1308,7 +1308,7 @@ export interface WlanArgs {
      */
     injectDhcpOption82?: pulumi.Input<inputs.site.WlanInjectDhcpOption82 | undefined>;
     /**
-     * Network interface or tunnel where this WLAN bridges client traffic
+     * Network interface or tunnel where this WLAN bridges client traffic. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`.
      */
     interface?: pulumi.Input<string | undefined>;
     /**
@@ -1392,7 +1392,7 @@ export interface WlanArgs {
      */
     reconnectClientsWhenRoamingMxcluster?: pulumi.Input<boolean | undefined>;
     /**
-     * Fast roaming mode configured for this WLAN
+     * Fast roaming mode configured for this WLAN. enum: `11r`, `NONE`, `OKC`.
      */
     roamMode?: pulumi.Input<string | undefined>;
     /**

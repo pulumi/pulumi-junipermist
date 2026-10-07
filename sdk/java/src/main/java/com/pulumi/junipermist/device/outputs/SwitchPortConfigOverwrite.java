@@ -23,7 +23,7 @@ public final class SwitchPortConfigOverwrite {
      */
     private @Nullable Boolean disabled;
     /**
-     * @return Link duplex mode override for the switch port
+     * @return Link duplex mode override for the switch port. enum: `auto`, `full`, `half`.
      * 
      */
     private @Nullable String duplex;
@@ -48,7 +48,7 @@ public final class SwitchPortConfigOverwrite {
      */
     private @Nullable String portNetwork;
     /**
-     * @return Link speed override for the switch port
+     * @return Link speed override for the switch port. enum: `10m`, `100m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`, `auto`.
      * 
      */
     private @Nullable String speed;
@@ -69,7 +69,7 @@ public final class SwitchPortConfigOverwrite {
         return Optional.ofNullable(this.disabled);
     }
     /**
-     * @return Link duplex mode override for the switch port
+     * @return Link duplex mode override for the switch port. enum: `auto`, `full`, `half`.
      * 
      */
     public Optional<String> duplex() {
@@ -104,7 +104,7 @@ public final class SwitchPortConfigOverwrite {
         return Optional.ofNullable(this.portNetwork);
     }
     /**
-     * @return Link speed override for the switch port
+     * @return Link speed override for the switch port. enum: `10m`, `100m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`, `auto`.
      * 
      */
     public Optional<String> speed() {

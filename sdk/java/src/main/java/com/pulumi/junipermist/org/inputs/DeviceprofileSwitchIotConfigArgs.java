@@ -17,14 +17,14 @@ public final class DeviceprofileSwitchIotConfigArgs extends com.pulumi.resources
     public static final DeviceprofileSwitchIotConfigArgs Empty = new DeviceprofileSwitchIotConfigArgs();
 
     /**
-     * Alarm severity class raised for input-triggered switch IOT port events
+     * Alarm severity class raised for input-triggered switch IOT port events. enum: `minor`, `major`.
      * 
      */
     @Import(name="alarmClass")
     private @Nullable Output<String> alarmClass;
 
     /**
-     * @return Alarm severity class raised for input-triggered switch IOT port events
+     * @return Alarm severity class raised for input-triggered switch IOT port events. enum: `minor`, `major`.
      * 
      */
     public Optional<Output<String>> alarmClass() {
@@ -47,14 +47,14 @@ public final class DeviceprofileSwitchIotConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * Only for `OUT` ports. Input port that triggers this output port
+     * Only for `OUT` ports. Input port that triggers this output port. enum: `IN0`, `IN1`.
      * 
      */
     @Import(name="inputSrc")
     private @Nullable Output<String> inputSrc;
 
     /**
-     * @return Only for `OUT` ports. Input port that triggers this output port
+     * @return Only for `OUT` ports. Input port that triggers this output port. enum: `IN0`, `IN1`.
      * 
      */
     public Optional<Output<String>> inputSrc() {
@@ -104,7 +104,7 @@ public final class DeviceprofileSwitchIotConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param alarmClass Alarm severity class raised for input-triggered switch IOT port events
+         * @param alarmClass Alarm severity class raised for input-triggered switch IOT port events. enum: `minor`, `major`.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class DeviceprofileSwitchIotConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param alarmClass Alarm severity class raised for input-triggered switch IOT port events
+         * @param alarmClass Alarm severity class raised for input-triggered switch IOT port events. enum: `minor`, `major`.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class DeviceprofileSwitchIotConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param inputSrc Only for `OUT` ports. Input port that triggers this output port
+         * @param inputSrc Only for `OUT` ports. Input port that triggers this output port. enum: `IN0`, `IN1`.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class DeviceprofileSwitchIotConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param inputSrc Only for `OUT` ports. Input port that triggers this output port
+         * @param inputSrc Only for `OUT` ports. Input port that triggers this output port. enum: `IN0`, `IN1`.
          * 
          * @return builder
          * 

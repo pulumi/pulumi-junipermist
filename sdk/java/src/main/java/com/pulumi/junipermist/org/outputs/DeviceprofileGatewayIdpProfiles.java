@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DeviceprofileGatewayIdpProfiles {
     /**
-     * @return Built-in IDP baseline profile inherited before applying overwrites
+     * @return Built-in IDP baseline profile inherited before applying overwrites. enum: `critical`, `standard`, `strict`.
      * 
      */
     private @Nullable String baseProfile;
@@ -36,7 +36,7 @@ public final class DeviceprofileGatewayIdpProfiles {
 
     private DeviceprofileGatewayIdpProfiles() {}
     /**
-     * @return Built-in IDP baseline profile inherited before applying overwrites
+     * @return Built-in IDP baseline profile inherited before applying overwrites. enum: `critical`, `standard`, `strict`.
      * 
      */
     public Optional<String> baseProfile() {

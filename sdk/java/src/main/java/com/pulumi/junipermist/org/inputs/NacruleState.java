@@ -81,14 +81,29 @@ public final class NacruleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Guest portal authorization state condition for the rule
+     * Name of the group the NAC rule belongs to
+     * 
+     */
+    @Import(name="groupName")
+    private @Nullable Output<String> groupName;
+
+    /**
+     * @return Name of the group the NAC rule belongs to
+     * 
+     */
+    public Optional<Output<String>> groupName() {
+        return Optional.ofNullable(this.groupName);
+    }
+
+    /**
+     * Guest portal authorization state condition for the rule. enum: `authorized`, `unknown`.
      * 
      */
     @Import(name="guestAuthState")
     private @Nullable Output<String> guestAuthState;
 
     /**
-     * @return Guest portal authorization state condition for the rule
+     * @return Guest portal authorization state condition for the rule. enum: `authorized`, `unknown`.
      * 
      */
     public Optional<Output<String>> guestAuthState() {
@@ -177,6 +192,7 @@ public final class NacruleState extends com.pulumi.resources.ResourceArgs {
         this.applyTags = $.applyTags;
         this.dryRun = $.dryRun;
         this.enabled = $.enabled;
+        this.groupName = $.groupName;
         this.guestAuthState = $.guestAuthState;
         this.matching = $.matching;
         this.name = $.name;
@@ -298,7 +314,28 @@ public final class NacruleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param guestAuthState Guest portal authorization state condition for the rule
+         * @param groupName Name of the group the NAC rule belongs to
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupName(@Nullable Output<String> groupName) {
+            $.groupName = groupName;
+            return this;
+        }
+
+        /**
+         * @param groupName Name of the group the NAC rule belongs to
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupName(String groupName) {
+            return groupName(Output.of(groupName));
+        }
+
+        /**
+         * @param guestAuthState Guest portal authorization state condition for the rule. enum: `authorized`, `unknown`.
          * 
          * @return builder
          * 
@@ -309,7 +346,7 @@ public final class NacruleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param guestAuthState Guest portal authorization state condition for the rule
+         * @param guestAuthState Guest portal authorization state condition for the rule. enum: `authorized`, `unknown`.
          * 
          * @return builder
          * 

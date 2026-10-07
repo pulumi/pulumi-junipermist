@@ -17,14 +17,14 @@ public final class NetworktemplateSwitchMatchingRuleOobIpConfigArgs extends com.
     public static final NetworktemplateSwitchMatchingRuleOobIpConfigArgs Empty = new NetworktemplateSwitchMatchingRuleOobIpConfigArgs();
 
     /**
-     * IP assignment mode for out-of-band switch management
+     * IP assignment mode for out-of-band switch management. enum: `dhcp`, `static`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return IP assignment mode for out-of-band switch management
+     * @return IP assignment mode for out-of-band switch management. enum: `dhcp`, `static`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -88,7 +88,7 @@ public final class NetworktemplateSwitchMatchingRuleOobIpConfigArgs extends com.
         }
 
         /**
-         * @param type IP assignment mode for out-of-band switch management
+         * @param type IP assignment mode for out-of-band switch management. enum: `dhcp`, `static`.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class NetworktemplateSwitchMatchingRuleOobIpConfigArgs extends com.
         }
 
         /**
-         * @param type IP assignment mode for out-of-band switch management
+         * @param type IP assignment mode for out-of-band switch management. enum: `dhcp`, `static`.
          * 
          * @return builder
          * 

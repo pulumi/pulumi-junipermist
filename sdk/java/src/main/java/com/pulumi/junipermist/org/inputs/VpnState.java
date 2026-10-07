@@ -79,14 +79,14 @@ public final class VpnState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * VPN topology mode for this configuration
+     * VPN topology mode for this configuration. enum: `hubSpoke`, `mesh`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return VPN topology mode for this configuration
+     * @return VPN topology mode for this configuration. enum: `hubSpoke`, `mesh`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -206,7 +206,7 @@ public final class VpnState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type VPN topology mode for this configuration
+         * @param type VPN topology mode for this configuration. enum: `hubSpoke`, `mesh`.
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class VpnState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type VPN topology mode for this configuration
+         * @param type VPN topology mode for this configuration. enum: `hubSpoke`, `mesh`.
          * 
          * @return builder
          * 

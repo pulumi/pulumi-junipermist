@@ -86,6 +86,8 @@ type Network struct {
 	VlanId pulumi.StringPtrOutput `pulumi:"vlanId"`
 	// VPN access settings keyed by VPN name for this network
 	VpnAccess NetworkVpnAccessMapOutput `pulumi:"vpnAccess"`
+	// SecurityZone this network belongs to. When set, the zone name is used as the security zone name on the SRX, and multiple networks can share the same zone. When omitted, the network `name` is used as the security zone name.
+	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
 // NewNetwork registers a new resource with the given unique name, arguments, and options.
@@ -154,6 +156,8 @@ type networkState struct {
 	VlanId *string `pulumi:"vlanId"`
 	// VPN access settings keyed by VPN name for this network
 	VpnAccess map[string]NetworkVpnAccess `pulumi:"vpnAccess"`
+	// SecurityZone this network belongs to. When set, the zone name is used as the security zone name on the SRX, and multiple networks can share the same zone. When omitted, the network `name` is used as the security zone name.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 type NetworkState struct {
@@ -187,6 +191,8 @@ type NetworkState struct {
 	VlanId pulumi.StringPtrInput
 	// VPN access settings keyed by VPN name for this network
 	VpnAccess NetworkVpnAccessMapInput
+	// SecurityZone this network belongs to. When set, the zone name is used as the security zone name on the SRX, and multiple networks can share the same zone. When omitted, the network `name` is used as the security zone name.
+	ZoneId pulumi.StringPtrInput
 }
 
 func (NetworkState) ElementType() reflect.Type {
@@ -224,6 +230,8 @@ type networkArgs struct {
 	VlanId *string `pulumi:"vlanId"`
 	// VPN access settings keyed by VPN name for this network
 	VpnAccess map[string]NetworkVpnAccess `pulumi:"vpnAccess"`
+	// SecurityZone this network belongs to. When set, the zone name is used as the security zone name on the SRX, and multiple networks can share the same zone. When omitted, the network `name` is used as the security zone name.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a Network resource.
@@ -258,6 +266,8 @@ type NetworkArgs struct {
 	VlanId pulumi.StringPtrInput
 	// VPN access settings keyed by VPN name for this network
 	VpnAccess NetworkVpnAccessMapInput
+	// SecurityZone this network belongs to. When set, the zone name is used as the security zone name on the SRX, and multiple networks can share the same zone. When omitted, the network `name` is used as the security zone name.
+	ZoneId pulumi.StringPtrInput
 }
 
 func (NetworkArgs) ElementType() reflect.Type {
@@ -420,6 +430,11 @@ func (o NetworkOutput) VlanId() pulumi.StringPtrOutput {
 // VPN access settings keyed by VPN name for this network
 func (o NetworkOutput) VpnAccess() NetworkVpnAccessMapOutput {
 	return o.ApplyT(func(v *Network) NetworkVpnAccessMapOutput { return v.VpnAccess }).(NetworkVpnAccessMapOutput)
+}
+
+// SecurityZone this network belongs to. When set, the zone name is used as the security zone name on the SRX, and multiple networks can share the same zone. When omitted, the network `name` is used as the security zone name.
+func (o NetworkOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 type NetworkArrayOutput struct{ *pulumi.OutputState }

@@ -43,13 +43,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? Netmask6 { get; set; }
 
         /// <summary>
-        /// IPv4 assignment mode for the additional Junos L3 presence
+        /// IPv4 assignment mode for the additional Junos L3 presence. enum: `Dhcp`, `Static`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// IPv6 assignment mode for the additional Junos L3 presence
+        /// IPv6 assignment mode for the additional Junos L3 presence. enum: `Autoconf`, `Dhcp`, `Disabled`, `Static`.
         /// </summary>
         [Input("type6")]
         public Input<string>? Type6 { get; set; }

@@ -69,6 +69,10 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// VPN access settings keyed by VPN name for this network
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.GatewayNetworkVpnAccess>? VpnAccess;
+        /// <summary>
+        /// SecurityZone this network belongs to. When set, the zone name is used as the security zone name on the SRX, and multiple networks can share the same zone. When omitted, the network `Name` is used as the security zone name.
+        /// </summary>
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GatewayNetwork(
@@ -98,7 +102,9 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             string? vlanId,
 
-            ImmutableDictionary<string, Outputs.GatewayNetworkVpnAccess>? vpnAccess)
+            ImmutableDictionary<string, Outputs.GatewayNetworkVpnAccess>? vpnAccess,
+
+            string? zoneId)
         {
             DisallowMistServices = disallowMistServices;
             Gateway = gateway;
@@ -114,6 +120,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
             Tenants = tenants;
             VlanId = vlanId;
             VpnAccess = vpnAccess;
+            ZoneId = zoneId;
         }
     }
 }

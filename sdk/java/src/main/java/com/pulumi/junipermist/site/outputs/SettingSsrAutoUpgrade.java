@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingSsrAutoUpgrade {
     /**
-     * @return Firmware release channel used for SSR auto-upgrade
+     * @return Firmware release channel used for SSR auto-upgrade. enum: `alpha`, `beta`, `stable`.
      * 
      */
     private @Nullable String channel;
@@ -36,7 +36,7 @@ public final class SettingSsrAutoUpgrade {
 
     private SettingSsrAutoUpgrade() {}
     /**
-     * @return Firmware release channel used for SSR auto-upgrade
+     * @return Firmware release channel used for SSR auto-upgrade. enum: `alpha`, `beta`, `stable`.
      * 
      */
     public Optional<String> channel() {

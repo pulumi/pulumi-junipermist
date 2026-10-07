@@ -23,7 +23,7 @@ public final class SettingTuntermMonitoring {
      */
     private @Nullable Integer port;
     /**
-     * @return Monitoring method used for this tunnel termination check
+     * @return Monitoring method used for this tunnel termination check. enum: `arp`, `ping`, `tcp`.
      * 
      */
     private @Nullable String protocol;
@@ -54,7 +54,7 @@ public final class SettingTuntermMonitoring {
         return Optional.ofNullable(this.port);
     }
     /**
-     * @return Monitoring method used for this tunnel termination check
+     * @return Monitoring method used for this tunnel termination check. enum: `arp`, `ping`, `tcp`.
      * 
      */
     public Optional<String> protocol() {

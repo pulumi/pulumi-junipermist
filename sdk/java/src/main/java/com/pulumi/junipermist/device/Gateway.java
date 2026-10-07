@@ -17,6 +17,7 @@ import com.pulumi.junipermist.device.outputs.GatewayExtraRoutes;
 import com.pulumi.junipermist.device.outputs.GatewayGatewayMgmt;
 import com.pulumi.junipermist.device.outputs.GatewayIdpProfiles;
 import com.pulumi.junipermist.device.outputs.GatewayIpConfigs;
+import com.pulumi.junipermist.device.outputs.GatewayMnhaConfig;
 import com.pulumi.junipermist.device.outputs.GatewayNetwork;
 import com.pulumi.junipermist.device.outputs.GatewayOobIpConfig;
 import com.pulumi.junipermist.device.outputs.GatewayPathPreferences;
@@ -349,6 +350,20 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> mistConfigured() {
         return this.mistConfigured;
+    }
+    /**
+     * Multi-Node HA (MNHA) settings for this gateway, SRX only
+     * 
+     */
+    @Export(name="mnhaConfig", refs={GatewayMnhaConfig.class}, tree="[0]")
+    private Output</* @Nullable */ GatewayMnhaConfig> mnhaConfig;
+
+    /**
+     * @return Multi-Node HA (MNHA) settings for this gateway, SRX only
+     * 
+     */
+    public Output<Optional<GatewayMnhaConfig>> mnhaConfig() {
+        return Codegen.optional(this.mnhaConfig);
     }
     /**
      * Gateway model reported for the device

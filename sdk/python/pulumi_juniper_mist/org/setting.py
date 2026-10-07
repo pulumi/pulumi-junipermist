@@ -95,7 +95,7 @@ class SettingArgs:
         :param pulumi.Input[_builtins.int] switch_updown_threshold: Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
         :param pulumi.Input['SettingSyntheticTestArgs'] synthetic_test: Configuration for organization synthetic tests
         :param pulumi.Input[_builtins.int] ui_idle_timeout: Automatically logout the user when UI session is inactive. `0` means disabled
-        :param pulumi.Input[_builtins.bool] ui_no_tracking: Whether UI usage tracking is disabled for the organization
+        :param pulumi.Input[_builtins.bool] ui_no_tracking: Whether to disable UI usage tracking (e.g. Fullstory, Pendo) for the whole organization
         :param pulumi.Input['SettingVpnOptionsArgs'] vpn_options: Options for organization VPN behavior
         :param pulumi.Input['SettingWanPmaArgs'] wan_pma: PMA feature settings for WAN Assurance
         :param pulumi.Input['SettingWiredPmaArgs'] wired_pma: PMA feature settings for Wired Assurance
@@ -565,7 +565,7 @@ class SettingArgs:
     @pulumi.getter(name="uiNoTracking")
     def ui_no_tracking(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether UI usage tracking is disabled for the organization
+        Whether to disable UI usage tracking (e.g. Fullstory, Pendo) for the whole organization
         """
         return pulumi.get(self, "ui_no_tracking")
 
@@ -705,7 +705,7 @@ class _SettingState:
         :param pulumi.Input[_builtins.int] switch_updown_threshold: Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
         :param pulumi.Input['SettingSyntheticTestArgs'] synthetic_test: Configuration for organization synthetic tests
         :param pulumi.Input[_builtins.int] ui_idle_timeout: Automatically logout the user when UI session is inactive. `0` means disabled
-        :param pulumi.Input[_builtins.bool] ui_no_tracking: Whether UI usage tracking is disabled for the organization
+        :param pulumi.Input[_builtins.bool] ui_no_tracking: Whether to disable UI usage tracking (e.g. Fullstory, Pendo) for the whole organization
         :param pulumi.Input['SettingVpnOptionsArgs'] vpn_options: Options for organization VPN behavior
         :param pulumi.Input['SettingWanPmaArgs'] wan_pma: PMA feature settings for WAN Assurance
         :param pulumi.Input['SettingWiredPmaArgs'] wired_pma: PMA feature settings for Wired Assurance
@@ -1218,7 +1218,7 @@ class _SettingState:
     @pulumi.getter(name="uiNoTracking")
     def ui_no_tracking(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether UI usage tracking is disabled for the organization
+        Whether to disable UI usage tracking (e.g. Fullstory, Pendo) for the whole organization
         """
         return pulumi.get(self, "ui_no_tracking")
 
@@ -1428,7 +1428,7 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] switch_updown_threshold: Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
         :param pulumi.Input[Union['SettingSyntheticTestArgs', 'SettingSyntheticTestArgsDict']] synthetic_test: Configuration for organization synthetic tests
         :param pulumi.Input[_builtins.int] ui_idle_timeout: Automatically logout the user when UI session is inactive. `0` means disabled
-        :param pulumi.Input[_builtins.bool] ui_no_tracking: Whether UI usage tracking is disabled for the organization
+        :param pulumi.Input[_builtins.bool] ui_no_tracking: Whether to disable UI usage tracking (e.g. Fullstory, Pendo) for the whole organization
         :param pulumi.Input[Union['SettingVpnOptionsArgs', 'SettingVpnOptionsArgsDict']] vpn_options: Options for organization VPN behavior
         :param pulumi.Input[Union['SettingWanPmaArgs', 'SettingWanPmaArgsDict']] wan_pma: PMA feature settings for WAN Assurance
         :param pulumi.Input[Union['SettingWiredPmaArgs', 'SettingWiredPmaArgsDict']] wired_pma: PMA feature settings for Wired Assurance
@@ -1710,7 +1710,7 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] switch_updown_threshold: Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
         :param pulumi.Input[Union['SettingSyntheticTestArgs', 'SettingSyntheticTestArgsDict']] synthetic_test: Configuration for organization synthetic tests
         :param pulumi.Input[_builtins.int] ui_idle_timeout: Automatically logout the user when UI session is inactive. `0` means disabled
-        :param pulumi.Input[_builtins.bool] ui_no_tracking: Whether UI usage tracking is disabled for the organization
+        :param pulumi.Input[_builtins.bool] ui_no_tracking: Whether to disable UI usage tracking (e.g. Fullstory, Pendo) for the whole organization
         :param pulumi.Input[Union['SettingVpnOptionsArgs', 'SettingVpnOptionsArgsDict']] vpn_options: Options for organization VPN behavior
         :param pulumi.Input[Union['SettingWanPmaArgs', 'SettingWanPmaArgsDict']] wan_pma: PMA feature settings for WAN Assurance
         :param pulumi.Input[Union['SettingWiredPmaArgs', 'SettingWiredPmaArgsDict']] wired_pma: PMA feature settings for Wired Assurance
@@ -2048,7 +2048,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="uiNoTracking")
     def ui_no_tracking(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Whether UI usage tracking is disabled for the organization
+        Whether to disable UI usage tracking (e.g. Fullstory, Pendo) for the whole organization
         """
         return pulumi.get(self, "ui_no_tracking")
 

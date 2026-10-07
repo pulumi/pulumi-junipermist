@@ -48,14 +48,14 @@ public final class DeviceprofileSwitchRadiusConfigAcctServerArgs extends com.pul
     }
 
     /**
-     * Encoding format for RADIUS keywrap KEK and MACK values
+     * Encoding format for RADIUS keywrap KEK and MACK values. enum: `ascii`, `hex`.
      * 
      */
     @Import(name="keywrapFormat")
     private @Nullable Output<String> keywrapFormat;
 
     /**
-     * @return Encoding format for RADIUS keywrap KEK and MACK values
+     * @return Encoding format for RADIUS keywrap KEK and MACK values. enum: `ascii`, `hex`.
      * 
      */
     public Optional<Output<String>> keywrapFormat() {
@@ -195,7 +195,7 @@ public final class DeviceprofileSwitchRadiusConfigAcctServerArgs extends com.pul
         }
 
         /**
-         * @param keywrapFormat Encoding format for RADIUS keywrap KEK and MACK values
+         * @param keywrapFormat Encoding format for RADIUS keywrap KEK and MACK values. enum: `ascii`, `hex`.
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class DeviceprofileSwitchRadiusConfigAcctServerArgs extends com.pul
         }
 
         /**
-         * @param keywrapFormat Encoding format for RADIUS keywrap KEK and MACK values
+         * @param keywrapFormat Encoding format for RADIUS keywrap KEK and MACK values. enum: `ascii`, `hex`.
          * 
          * @return builder
          * 

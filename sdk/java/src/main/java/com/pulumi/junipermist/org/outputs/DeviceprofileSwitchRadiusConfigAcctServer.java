@@ -24,7 +24,7 @@ public final class DeviceprofileSwitchRadiusConfigAcctServer {
      */
     private @Nullable Boolean keywrapEnabled;
     /**
-     * @return Encoding format for RADIUS keywrap KEK and MACK values
+     * @return Encoding format for RADIUS keywrap KEK and MACK values. enum: `ascii`, `hex`.
      * 
      */
     private @Nullable String keywrapFormat;
@@ -65,7 +65,7 @@ public final class DeviceprofileSwitchRadiusConfigAcctServer {
         return Optional.ofNullable(this.keywrapEnabled);
     }
     /**
-     * @return Encoding format for RADIUS keywrap KEK and MACK values
+     * @return Encoding format for RADIUS keywrap KEK and MACK values. enum: `ascii`, `hex`.
      * 
      */
     public Optional<String> keywrapFormat() {

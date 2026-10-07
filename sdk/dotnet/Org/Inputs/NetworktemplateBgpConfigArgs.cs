@@ -12,21 +12,11 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class NetworktemplateBgpConfigArgs : global::Pulumi.ResourceArgs
     {
-        [Input("authKey")]
-        private Input<string>? _authKey;
-
         /// <summary>
         /// Authentication key used for BGP neighbor sessions, when configured
         /// </summary>
-        public Input<string>? AuthKey
-        {
-            get => _authKey;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _authKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        [Input("authKey")]
+        public Input<string>? AuthKey { get; set; }
 
         /// <summary>
         /// Minimum interval in milliseconds for BFD hello packets. A neighbor is considered failed when the device stops receiving replies after the specified interval. Value must be between 1 and 255000.
@@ -41,7 +31,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? ExportPolicy { get; set; }
 
         /// <summary>
-        /// Default BGP hold time for switch BGP sessions
+        /// Default BGP hold time for switch BGP sessions.
         /// </summary>
         [Input("holdTime")]
         public Input<int>? HoldTime { get; set; }
@@ -83,7 +73,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// BGP session type for this switch BGP configuration
+        /// BGP session type for this switch BGP configuration. enum: `External`, `Internal`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

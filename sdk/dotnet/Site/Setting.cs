@@ -322,7 +322,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<bool?> TuntermMonitoringDisabled { get; private set; } = null!;
 
         /// <summary>
-        /// Tunnel termination monitoring settings for the site
+        /// Tunnel termination monitoring settings for the Mist Edges assigned to the site
         /// </summary>
         [Output("tuntermMonitorings")]
         public Output<ImmutableArray<Outputs.SettingTuntermMonitoring>> TuntermMonitorings { get; private set; } = null!;
@@ -726,7 +726,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<Inputs.SettingTuntermMonitoringArgs>? _tuntermMonitorings;
 
         /// <summary>
-        /// Tunnel termination monitoring settings for the site
+        /// Tunnel termination monitoring settings for the Mist Edges assigned to the site
         /// </summary>
         public InputList<Inputs.SettingTuntermMonitoringArgs> TuntermMonitorings
         {
@@ -1106,7 +1106,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<Inputs.SettingTuntermMonitoringGetArgs>? _tuntermMonitorings;
 
         /// <summary>
-        /// Tunnel termination monitoring settings for the site
+        /// Tunnel termination monitoring settings for the Mist Edges assigned to the site
         /// </summary>
         public InputList<Inputs.SettingTuntermMonitoringGetArgs> TuntermMonitorings
         {

@@ -34,14 +34,14 @@ public final class NacPortalSsoArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Signing algorithm expected for SAML assertions from the identity provider
+     * Signing algorithm expected for SAML assertions from the identity provider. enum: `sha1`, `sha256`, `sha384`, `sha512`.
      * 
      */
     @Import(name="idpSignAlgo")
     private @Nullable Output<String> idpSignAlgo;
 
     /**
-     * @return Signing algorithm expected for SAML assertions from the identity provider
+     * @return Signing algorithm expected for SAML assertions from the identity provider. enum: `sha1`, `sha256`, `sha384`, `sha512`.
      * 
      */
     public Optional<Output<String>> idpSignAlgo() {
@@ -175,7 +175,7 @@ public final class NacPortalSsoArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param idpSignAlgo Signing algorithm expected for SAML assertions from the identity provider
+         * @param idpSignAlgo Signing algorithm expected for SAML assertions from the identity provider. enum: `sha1`, `sha256`, `sha384`, `sha512`.
          * 
          * @return builder
          * 
@@ -186,7 +186,7 @@ public final class NacPortalSsoArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param idpSignAlgo Signing algorithm expected for SAML assertions from the identity provider
+         * @param idpSignAlgo Signing algorithm expected for SAML assertions from the identity provider. enum: `sha1`, `sha256`, `sha384`, `sha512`.
          * 
          * @return builder
          * 

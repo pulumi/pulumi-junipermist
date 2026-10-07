@@ -95,14 +95,14 @@ public class Wxtag extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.mac);
     }
     /**
-     * Required if `type`==`match`; attribute compared against `values`
+     * Required if `type`==`match`; attribute compared against `values`. enum: `apId`, `app`, `assetMac`, `clientMac`, `hostname`, `ipRangeSubnet`, `port`, `pskName`, `pskRole`, `radiusAttr`, `radiusClass`, `radiusGroup`, `radiusUsername`, `sdkclientUuid`, `wlanId`.
      * 
      */
     @Export(name="match", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> match;
 
     /**
-     * @return Required if `type`==`match`; attribute compared against `values`
+     * @return Required if `type`==`match`; attribute compared against `values`. enum: `apId`, `app`, `assetMac`, `clientMac`, `hostname`, `ipRangeSubnet`, `port`, `pskName`, `pskRole`, `radiusAttr`, `radiusClass`, `radiusGroup`, `radiusUsername`, `sdkclientUuid`, `wlanId`.
      * 
      */
     public Output<Optional<String>> match() {
@@ -123,14 +123,14 @@ public class Wxtag extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Required if `type`==`match`; whether `values` are inclusive or exclusive matches
+     * Required if `type`==`match`; whether `values` are inclusive or exclusive matches. enum: `in`, `notIn`.
      * 
      */
     @Export(name="op", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> op;
 
     /**
-     * @return Required if `type`==`match`; whether `values` are inclusive or exclusive matches
+     * @return Required if `type`==`match`; whether `values` are inclusive or exclusive matches. enum: `in`, `notIn`.
      * 
      */
     public Output<Optional<String>> op() {
@@ -165,14 +165,14 @@ public class Wxtag extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.specs);
     }
     /**
-     * Kind of WxLAN tag and how it is populated
+     * Kind of WxLAN tag and how it is populated. enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Kind of WxLAN tag and how it is populated
+     * @return Kind of WxLAN tag and how it is populated. enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`.
      * 
      */
     public Output<String> type() {

@@ -13,16 +13,28 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class NetworktemplateVrfInstancesMulticastConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// When `True`, auto-generates a shared RP on `IsL3Border` devices (ERB/IPClos topologies only)
+        /// When `True`, generates a shared anycast RP on all `IsL3Border` devices in EVPN (ERB/IPClos) topologies. Uses `RpIp` as the shared RP address, or an internal default when `RpIp` is omitted. Takes precedence over `RpMac` and `RpIp` when multiple RP options are set.
         /// </summary>
         [Input("anycastRp")]
         public Input<bool>? AnycastRp { get; set; }
 
         /// <summary>
-        /// RP address used when `AnycastRp`==`False`. If the address matches a device SVI, it is configured as a local RP; otherwise a static RP is configured
+        /// When `True`, enables the PIM EVPN Gateway on `IsL3Border` devices. Required for external sources or receivers in EVPN topologies.
+        /// </summary>
+        [Input("pegEnabled")]
+        public Input<bool>? PegEnabled { get; set; }
+
+        /// <summary>
+        /// RP address used for EVPN anycast RP when `AnycastRp` is true, or for an external RP when it is false. In non-EVPN topologies, a matching device router ID configures a local RP; otherwise a static RP is configured.
         /// </summary>
         [Input("rpIp")]
         public Input<string>? RpIp { get; set; }
+
+        /// <summary>
+        /// Device MAC address of a fabric RP in EVPN topologies. The RP address is the first usable IP of the VRF `EvpnAutoLoopbackSubnet`, not `RpIp`; requires `EvpnAutoLoopbackSubnet`. Takes precedence over `RpIp` when `AnycastRp` is false.
+        /// </summary>
+        [Input("rpMac")]
+        public Input<string>? RpMac { get; set; }
 
         /// <summary>
         /// SBD IRB subnet; Mist auto-assigns per-device IPs from this range (EVPN eOISM only)
@@ -35,6 +47,12 @@ namespace Pulumi.JuniperMist.Site.Inputs
         /// </summary>
         [Input("sbdVlanId")]
         public Input<int>? SbdVlanId { get; set; }
+
+        /// <summary>
+        /// When `True` on PEG borders, builds an eBGP mesh between PEG borders over SBD IRBs so WAN-learned routes can satisfy the PIM RPF check during a border WAN-uplink failure.
+        /// </summary>
+        [Input("sbdWanRpf")]
+        public Input<bool>? SbdWanRpf { get; set; }
 
         public NetworktemplateVrfInstancesMulticastConfigArgs()
         {

@@ -32,7 +32,7 @@ public final class SwitchBgpConfig {
      */
     private @Nullable String exportPolicy;
     /**
-     * @return Default BGP hold time for switch BGP sessions
+     * @return Default BGP hold time for switch BGP sessions.
      * 
      */
     private @Nullable Integer holdTime;
@@ -57,7 +57,7 @@ public final class SwitchBgpConfig {
      */
     private @Nullable List<String> networks;
     /**
-     * @return BGP session type for this switch BGP configuration
+     * @return BGP session type for this switch BGP configuration. enum: `external`, `internal`.
      * 
      */
     private String type;
@@ -85,7 +85,7 @@ public final class SwitchBgpConfig {
         return Optional.ofNullable(this.exportPolicy);
     }
     /**
-     * @return Default BGP hold time for switch BGP sessions
+     * @return Default BGP hold time for switch BGP sessions.
      * 
      */
     public Optional<Integer> holdTime() {
@@ -120,7 +120,7 @@ public final class SwitchBgpConfig {
         return this.networks == null ? List.of() : this.networks;
     }
     /**
-     * @return BGP session type for this switch BGP configuration
+     * @return BGP session type for this switch BGP configuration. enum: `external`, `internal`.
      * 
      */
     public String type() {

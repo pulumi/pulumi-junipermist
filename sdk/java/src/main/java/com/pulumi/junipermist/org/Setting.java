@@ -641,14 +641,14 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return this.uiIdleTimeout;
     }
     /**
-     * Whether UI usage tracking is disabled for the organization
+     * Whether to disable UI usage tracking (e.g. Fullstory, Pendo) for the whole organization
      * 
      */
     @Export(name="uiNoTracking", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> uiNoTracking;
 
     /**
-     * @return Whether UI usage tracking is disabled for the organization
+     * @return Whether to disable UI usage tracking (e.g. Fullstory, Pendo) for the whole organization
      * 
      */
     public Output<Optional<Boolean>> uiNoTracking() {

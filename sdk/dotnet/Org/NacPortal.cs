@@ -102,7 +102,7 @@ namespace Pulumi.JuniperMist.Org
     public partial class NacPortal : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// If `Type`==`MarvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients
+        /// If `Type`==`MarvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients. enum: `Wireless`, `wireless+wired`.
         /// </summary>
         [Output("accessType")]
         public Output<string> AccessType { get; private set; } = null!;
@@ -126,7 +126,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<int?> CertExpireTime { get; private set; } = null!;
 
         /// <summary>
-        /// EAP mode used when onboarding wireless clients through the NAC portal
+        /// EAP mode used when onboarding wireless clients through the NAC portal. enum: `Wpa2`, `Wpa3`.
         /// </summary>
         [Output("eapType")]
         public Output<string> EapType { get; private set; } = null!;
@@ -138,7 +138,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<bool?> EnableLocation { get; private set; } = null!;
 
         /// <summary>
-        /// Model, version, fingering, events (connecting, disconnect, roaming), which ap
+        /// Optional, model, version, fingerprinting, events (connecting, disconnect, roaming), which ap, default is false
         /// </summary>
         [Output("enableTelemetry")]
         public Output<bool?> EnableTelemetry { get; private set; } = null!;
@@ -192,7 +192,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string?> Tos { get; private set; } = null!;
 
         /// <summary>
-        /// NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
+        /// NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding. enum: `GuestAdmin`, `GuestPortal`, `MarvisClient`.
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -245,7 +245,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class NacPortalArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If `Type`==`MarvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients
+        /// If `Type`==`MarvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients. enum: `Wireless`, `wireless+wired`.
         /// </summary>
         [Input("accessType")]
         public Input<string>? AccessType { get; set; }
@@ -281,7 +281,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<int>? CertExpireTime { get; set; }
 
         /// <summary>
-        /// EAP mode used when onboarding wireless clients through the NAC portal
+        /// EAP mode used when onboarding wireless clients through the NAC portal. enum: `Wpa2`, `Wpa3`.
         /// </summary>
         [Input("eapType")]
         public Input<string>? EapType { get; set; }
@@ -293,7 +293,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<bool>? EnableLocation { get; set; }
 
         /// <summary>
-        /// Model, version, fingering, events (connecting, disconnect, roaming), which ap
+        /// Optional, model, version, fingerprinting, events (connecting, disconnect, roaming), which ap, default is false
         /// </summary>
         [Input("enableTelemetry")]
         public Input<bool>? EnableTelemetry { get; set; }
@@ -347,7 +347,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? Tos { get; set; }
 
         /// <summary>
-        /// NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
+        /// NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding. enum: `GuestAdmin`, `GuestPortal`, `MarvisClient`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -361,7 +361,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class NacPortalState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If `Type`==`MarvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients
+        /// If `Type`==`MarvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients. enum: `Wireless`, `wireless+wired`.
         /// </summary>
         [Input("accessType")]
         public Input<string>? AccessType { get; set; }
@@ -397,7 +397,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<int>? CertExpireTime { get; set; }
 
         /// <summary>
-        /// EAP mode used when onboarding wireless clients through the NAC portal
+        /// EAP mode used when onboarding wireless clients through the NAC portal. enum: `Wpa2`, `Wpa3`.
         /// </summary>
         [Input("eapType")]
         public Input<string>? EapType { get; set; }
@@ -409,7 +409,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<bool>? EnableLocation { get; set; }
 
         /// <summary>
-        /// Model, version, fingering, events (connecting, disconnect, roaming), which ap
+        /// Optional, model, version, fingerprinting, events (connecting, disconnect, roaming), which ap, default is false
         /// </summary>
         [Input("enableTelemetry")]
         public Input<bool>? EnableTelemetry { get; set; }
@@ -463,7 +463,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? Tos { get; set; }
 
         /// <summary>
-        /// NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
+        /// NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding. enum: `GuestAdmin`, `GuestPortal`, `MarvisClient`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

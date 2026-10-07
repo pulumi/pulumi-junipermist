@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class SettingSyntheticTest
     {
         /// <summary>
-        /// Overall aggressiveness level for synthetic test probes
+        /// Overall aggressiveness level for synthetic test probes. enum: `Auto`, `High`, `Med`, `Low`.
         /// </summary>
         public readonly string? Aggressiveness;
         /// <summary>

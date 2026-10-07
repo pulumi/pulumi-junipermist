@@ -285,6 +285,20 @@ public class Network extends com.pulumi.resources.CustomResource {
     public Output<Optional<Map<String,NetworkVpnAccess>>> vpnAccess() {
         return Codegen.optional(this.vpnAccess);
     }
+    /**
+     * SecurityZone this network belongs to. When set, the zone name is used as the security zone name on the SRX, and multiple networks can share the same zone. When omitted, the network `name` is used as the security zone name.
+     * 
+     */
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> zoneId;
+
+    /**
+     * @return SecurityZone this network belongs to. When set, the zone name is used as the security zone name on the SRX, and multiple networks can share the same zone. When omitted, the network `name` is used as the security zone name.
+     * 
+     */
+    public Output<Optional<String>> zoneId() {
+        return Codegen.optional(this.zoneId);
+    }
 
     /**
      *

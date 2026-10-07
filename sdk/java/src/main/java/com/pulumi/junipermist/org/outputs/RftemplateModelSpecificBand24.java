@@ -25,12 +25,12 @@ public final class RftemplateModelSpecificBand24 {
      */
     private @Nullable Integer antGain;
     /**
-     * @return Radio chain mode for the 2.4 GHz radio
+     * @return Radio chain mode for the 2.4 GHz radio. enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`.
      * 
      */
     private @Nullable String antennaMode;
     /**
-     * @return Channel width configured for the 2.4 GHz radio
+     * @return Channel width configured for the 2.4 GHz radio. enum: `0`, `20`, `40`.
      * 
      */
     private @Nullable Integer bandwidth;
@@ -60,7 +60,7 @@ public final class RftemplateModelSpecificBand24 {
      */
     private @Nullable Integer powerMin;
     /**
-     * @return 802.11 preamble mode used by the 2.4 GHz radio
+     * @return 802.11 preamble mode used by the 2.4 GHz radio. enum: `auto`, `long`, `short`.
      * 
      */
     private @Nullable String preamble;
@@ -81,14 +81,14 @@ public final class RftemplateModelSpecificBand24 {
         return Optional.ofNullable(this.antGain);
     }
     /**
-     * @return Radio chain mode for the 2.4 GHz radio
+     * @return Radio chain mode for the 2.4 GHz radio. enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`.
      * 
      */
     public Optional<String> antennaMode() {
         return Optional.ofNullable(this.antennaMode);
     }
     /**
-     * @return Channel width configured for the 2.4 GHz radio
+     * @return Channel width configured for the 2.4 GHz radio. enum: `0`, `20`, `40`.
      * 
      */
     public Optional<Integer> bandwidth() {
@@ -130,7 +130,7 @@ public final class RftemplateModelSpecificBand24 {
         return Optional.ofNullable(this.powerMin);
     }
     /**
-     * @return 802.11 preamble mode used by the 2.4 GHz radio
+     * @return 802.11 preamble mode used by the 2.4 GHz radio. enum: `auto`, `long`, `short`.
      * 
      */
     public Optional<String> preamble() {

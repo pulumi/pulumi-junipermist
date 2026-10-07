@@ -31,14 +31,14 @@ public final class DeviceprofileSwitchSnmpConfigV3ConfigUsmUserArgs extends com.
     }
 
     /**
-     * Authentication protocol used by this SNMPv3 USM user
+     * Authentication protocol used by this SNMPv3 USM user. enum: `authentication-md5`, `authentication-none`, `authentication-sha`, `authentication-sha224`, `authentication-sha256`, `authentication-sha384`, `authentication-sha512`.
      * 
      */
     @Import(name="authenticationType")
     private @Nullable Output<String> authenticationType;
 
     /**
-     * @return Authentication protocol used by this SNMPv3 USM user
+     * @return Authentication protocol used by this SNMPv3 USM user. enum: `authentication-md5`, `authentication-none`, `authentication-sha`, `authentication-sha224`, `authentication-sha256`, `authentication-sha384`, `authentication-sha512`.
      * 
      */
     public Optional<Output<String>> authenticationType() {
@@ -61,14 +61,14 @@ public final class DeviceprofileSwitchSnmpConfigV3ConfigUsmUserArgs extends com.
     }
 
     /**
-     * Privacy protocol used by this SNMPv3 USM user
+     * Privacy protocol used by this SNMPv3 USM user. enum: `privacy-3des`, `privacy-aes128`, `privacy-des`, `privacy-none`.
      * 
      */
     @Import(name="encryptionType")
     private @Nullable Output<String> encryptionType;
 
     /**
-     * @return Privacy protocol used by this SNMPv3 USM user
+     * @return Privacy protocol used by this SNMPv3 USM user. enum: `privacy-3des`, `privacy-aes128`, `privacy-des`, `privacy-none`.
      * 
      */
     public Optional<Output<String>> encryptionType() {
@@ -140,7 +140,7 @@ public final class DeviceprofileSwitchSnmpConfigV3ConfigUsmUserArgs extends com.
         }
 
         /**
-         * @param authenticationType Authentication protocol used by this SNMPv3 USM user
+         * @param authenticationType Authentication protocol used by this SNMPv3 USM user. enum: `authentication-md5`, `authentication-none`, `authentication-sha`, `authentication-sha224`, `authentication-sha256`, `authentication-sha384`, `authentication-sha512`.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class DeviceprofileSwitchSnmpConfigV3ConfigUsmUserArgs extends com.
         }
 
         /**
-         * @param authenticationType Authentication protocol used by this SNMPv3 USM user
+         * @param authenticationType Authentication protocol used by this SNMPv3 USM user. enum: `authentication-md5`, `authentication-none`, `authentication-sha`, `authentication-sha224`, `authentication-sha256`, `authentication-sha384`, `authentication-sha512`.
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class DeviceprofileSwitchSnmpConfigV3ConfigUsmUserArgs extends com.
         }
 
         /**
-         * @param encryptionType Privacy protocol used by this SNMPv3 USM user
+         * @param encryptionType Privacy protocol used by this SNMPv3 USM user. enum: `privacy-3des`, `privacy-aes128`, `privacy-des`, `privacy-none`.
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class DeviceprofileSwitchSnmpConfigV3ConfigUsmUserArgs extends com.
         }
 
         /**
-         * @param encryptionType Privacy protocol used by this SNMPv3 USM user
+         * @param encryptionType Privacy protocol used by this SNMPv3 USM user. enum: `privacy-3des`, `privacy-aes128`, `privacy-des`, `privacy-none`.
          * 
          * @return builder
          * 

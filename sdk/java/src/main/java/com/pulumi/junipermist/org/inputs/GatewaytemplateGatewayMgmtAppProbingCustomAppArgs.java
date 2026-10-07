@@ -123,14 +123,14 @@ public final class GatewaytemplateGatewayMgmtAppProbingCustomAppArgs extends com
     }
 
     /**
-     * Probe protocol used by this custom application definition
+     * Probe protocol used by this custom application definition. enum: `http`, `icmp`.
      * 
      */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
     /**
-     * @return Probe protocol used by this custom application definition
+     * @return Probe protocol used by this custom application definition. enum: `http`, `icmp`.
      * 
      */
     public Optional<Output<String>> protocol() {
@@ -358,7 +358,7 @@ public final class GatewaytemplateGatewayMgmtAppProbingCustomAppArgs extends com
         }
 
         /**
-         * @param protocol Probe protocol used by this custom application definition
+         * @param protocol Probe protocol used by this custom application definition. enum: `http`, `icmp`.
          * 
          * @return builder
          * 
@@ -369,7 +369,7 @@ public final class GatewaytemplateGatewayMgmtAppProbingCustomAppArgs extends com
         }
 
         /**
-         * @param protocol Probe protocol used by this custom application definition
+         * @param protocol Probe protocol used by this custom application definition. enum: `http`, `icmp`.
          * 
          * @return builder
          * 

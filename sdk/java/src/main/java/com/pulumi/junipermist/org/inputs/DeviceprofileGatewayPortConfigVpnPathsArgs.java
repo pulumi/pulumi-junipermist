@@ -19,14 +19,14 @@ public final class DeviceprofileGatewayPortConfigVpnPathsArgs extends com.pulumi
     public static final DeviceprofileGatewayPortConfigVpnPathsArgs Empty = new DeviceprofileGatewayPortConfigVpnPathsArgs();
 
     /**
-     * BFD profile used for this VPN path when the VPN `type`==`hubSpoke`
+     * BFD profile used for this VPN path when the VPN `type`==`hubSpoke`. enum: `broadband`, `lte`.
      * 
      */
     @Import(name="bfdProfile")
     private @Nullable Output<String> bfdProfile;
 
     /**
-     * @return BFD profile used for this VPN path when the VPN `type`==`hubSpoke`
+     * @return BFD profile used for this VPN path when the VPN `type`==`hubSpoke`. enum: `broadband`, `lte`.
      * 
      */
     public Optional<Output<String>> bfdProfile() {
@@ -64,14 +64,14 @@ public final class DeviceprofileGatewayPortConfigVpnPathsArgs extends com.pulumi
     }
 
     /**
-     * Gateway role for this VPN path; valid values depend on the VPN `type`
+     * Gateway role for this VPN path; valid values depend on the VPN `type`. enum: `hub`, `mesh`, `spoke`.
      * 
      */
     @Import(name="role")
     private @Nullable Output<String> role;
 
     /**
-     * @return Gateway role for this VPN path; valid values depend on the VPN `type`
+     * @return Gateway role for this VPN path; valid values depend on the VPN `type`. enum: `hub`, `mesh`, `spoke`.
      * 
      */
     public Optional<Output<String>> role() {
@@ -122,7 +122,7 @@ public final class DeviceprofileGatewayPortConfigVpnPathsArgs extends com.pulumi
         }
 
         /**
-         * @param bfdProfile BFD profile used for this VPN path when the VPN `type`==`hubSpoke`
+         * @param bfdProfile BFD profile used for this VPN path when the VPN `type`==`hubSpoke`. enum: `broadband`, `lte`.
          * 
          * @return builder
          * 
@@ -133,7 +133,7 @@ public final class DeviceprofileGatewayPortConfigVpnPathsArgs extends com.pulumi
         }
 
         /**
-         * @param bfdProfile BFD profile used for this VPN path when the VPN `type`==`hubSpoke`
+         * @param bfdProfile BFD profile used for this VPN path when the VPN `type`==`hubSpoke`. enum: `broadband`, `lte`.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class DeviceprofileGatewayPortConfigVpnPathsArgs extends com.pulumi
         }
 
         /**
-         * @param role Gateway role for this VPN path; valid values depend on the VPN `type`
+         * @param role Gateway role for this VPN path; valid values depend on the VPN `type`. enum: `hub`, `mesh`, `spoke`.
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class DeviceprofileGatewayPortConfigVpnPathsArgs extends com.pulumi
         }
 
         /**
-         * @param role Gateway role for this VPN path; valid values depend on the VPN `type`
+         * @param role Gateway role for this VPN path; valid values depend on the VPN `type`. enum: `hub`, `mesh`, `spoke`.
          * 
          * @return builder
          * 

@@ -93,14 +93,14 @@ public final class WlanRatesetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Data rate template used to derive WLAN rate settings
+     * Data rate template used to derive WLAN rate settings. enum: `compatible`, `legacy-only`, `custom`, `no-legacy`, `high-density`.
      * 
      */
     @Import(name="template")
     private @Nullable Output<String> template;
 
     /**
-     * @return Data rate template used to derive WLAN rate settings
+     * @return Data rate template used to derive WLAN rate settings. enum: `compatible`, `legacy-only`, `custom`, `no-legacy`, `high-density`.
      * 
      */
     public Optional<Output<String>> template() {
@@ -268,7 +268,7 @@ public final class WlanRatesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param template Data rate template used to derive WLAN rate settings
+         * @param template Data rate template used to derive WLAN rate settings. enum: `compatible`, `legacy-only`, `custom`, `no-legacy`, `high-density`.
          * 
          * @return builder
          * 
@@ -279,7 +279,7 @@ public final class WlanRatesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param template Data rate template used to derive WLAN rate settings
+         * @param template Data rate template used to derive WLAN rate settings. enum: `compatible`, `legacy-only`, `custom`, `no-legacy`, `high-density`.
          * 
          * @return builder
          * 

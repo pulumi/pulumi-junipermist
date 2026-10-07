@@ -43,7 +43,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// SNMP trap protocol version used by this group
+        /// SNMP trap protocol version used by this group. enum: `All`, `V1`, `V2`.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

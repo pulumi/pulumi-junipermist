@@ -147,6 +147,10 @@ export class Gateway extends pulumi.CustomResource {
      */
     declare public readonly mistConfigured: pulumi.Output<boolean>;
     /**
+     * Multi-Node HA (MNHA) settings for this gateway, SRX only
+     */
+    declare public readonly mnhaConfig: pulumi.Output<outputs.device.GatewayMnhaConfig | undefined>;
+    /**
      * Gateway model reported for the device
      */
     declare public /*out*/ readonly model: pulumi.Output<string>;
@@ -282,6 +286,7 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["managed"] = state?.managed;
             resourceInputs["mapId"] = state?.mapId;
             resourceInputs["mistConfigured"] = state?.mistConfigured;
+            resourceInputs["mnhaConfig"] = state?.mnhaConfig;
             resourceInputs["model"] = state?.model;
             resourceInputs["mspId"] = state?.mspId;
             resourceInputs["name"] = state?.name;
@@ -330,6 +335,7 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["managed"] = args?.managed;
             resourceInputs["mapId"] = args?.mapId;
             resourceInputs["mistConfigured"] = args?.mistConfigured;
+            resourceInputs["mnhaConfig"] = args?.mnhaConfig;
             resourceInputs["mspId"] = args?.mspId;
             resourceInputs["name"] = args?.name;
             resourceInputs["networks"] = args?.networks;
@@ -441,6 +447,10 @@ export interface GatewayState {
      * whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
      */
     mistConfigured?: pulumi.Input<boolean | undefined>;
+    /**
+     * Multi-Node HA (MNHA) settings for this gateway, SRX only
+     */
+    mnhaConfig?: pulumi.Input<inputs.device.GatewayMnhaConfig | undefined>;
     /**
      * Gateway model reported for the device
      */
@@ -606,6 +616,10 @@ export interface GatewayArgs {
      * whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
      */
     mistConfigured?: pulumi.Input<boolean | undefined>;
+    /**
+     * Multi-Node HA (MNHA) settings for this gateway, SRX only
+     */
+    mnhaConfig?: pulumi.Input<inputs.device.GatewayMnhaConfig | undefined>;
     /**
      * MSP that manages this gateway, when applicable
      */

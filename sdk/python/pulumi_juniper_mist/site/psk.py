@@ -327,7 +327,7 @@ class _PskState:
         :param pulumi.Input[_builtins.bool] notify_expiry: If set to true, reminder notification will be sent when psk is about to expire
         :param pulumi.Input[_builtins.bool] notify_on_create_or_edit: If set to true, notification will be sent when psk is created or edited
         :param pulumi.Input[_builtins.str] old_passphrase: previous passphrase of the PSK if it has been rotated
-        :param pulumi.Input[_builtins.str] org_id: Organization that owns the site-level PSK
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns the org-level PSK
         :param pulumi.Input[_builtins.str] passphrase: PSK passphrase, 8-63 characters or 64 hexadecimal characters
         :param pulumi.Input[_builtins.str] role: Client role applied to users authenticated with this PSK
         :param pulumi.Input[_builtins.str] site_id: Site associated with the site-level PSK
@@ -486,7 +486,7 @@ class _PskState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Organization that owns the site-level PSK
+        Organization that owns the org-level PSK
         """
         return pulumi.get(self, "org_id")
 
@@ -824,7 +824,7 @@ class Psk(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] notify_expiry: If set to true, reminder notification will be sent when psk is about to expire
         :param pulumi.Input[_builtins.bool] notify_on_create_or_edit: If set to true, notification will be sent when psk is created or edited
         :param pulumi.Input[_builtins.str] old_passphrase: previous passphrase of the PSK if it has been rotated
-        :param pulumi.Input[_builtins.str] org_id: Organization that owns the site-level PSK
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns the org-level PSK
         :param pulumi.Input[_builtins.str] passphrase: PSK passphrase, 8-63 characters or 64 hexadecimal characters
         :param pulumi.Input[_builtins.str] role: Client role applied to users authenticated with this PSK
         :param pulumi.Input[_builtins.str] site_id: Site associated with the site-level PSK
@@ -934,7 +934,7 @@ class Psk(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Organization that owns the site-level PSK
+        Organization that owns the org-level PSK
         """
         return pulumi.get(self, "org_id")
 

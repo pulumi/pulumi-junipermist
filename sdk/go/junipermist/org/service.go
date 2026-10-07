@@ -85,7 +85,7 @@ type Service struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// QoS DSCP value used for custom SSR traffic classification
 	Dscp pulumi.StringPtrOutput `pulumi:"dscp"`
-	// Failover behavior for traffic matched by this service
+	// Failover behavior for traffic matched by this service. enum: `nonRevertible`, `none`, `revertible`.
 	FailoverPolicy pulumi.StringPtrOutput `pulumi:"failoverPolicy"`
 	// Domain hostnames matched by this custom service for web filtering
 	Hostnames pulumi.StringArrayOutput `pulumi:"hostnames"`
@@ -109,11 +109,11 @@ type Service struct {
 	Specs ServiceSpecArrayOutput `pulumi:"specs"`
 	// Whether SSR relaxes TCP state enforcement for this service
 	SsrRelaxedTcpStateEnforcement pulumi.BoolPtrOutput `pulumi:"ssrRelaxedTcpStateEnforcement"`
-	// Traffic class applied when `trafficType`==`custom`
+	// Traffic class applied when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`.
 	TrafficClass pulumi.StringPtrOutput `pulumi:"trafficClass"`
 	// values from List Traffic Types
 	TrafficType pulumi.StringOutput `pulumi:"trafficType"`
-	// Matching mode that determines which app, URL, or custom fields are used
+	// Matching mode that determines which app, URL, or custom fields are used. enum: `appCategories`, `apps`, `custom`, `urls`.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// URL patterns matched by this service when `type`==`urls`
 	Urls pulumi.StringArrayOutput `pulumi:"urls"`
@@ -168,7 +168,7 @@ type serviceState struct {
 	Description *string `pulumi:"description"`
 	// QoS DSCP value used for custom SSR traffic classification
 	Dscp *string `pulumi:"dscp"`
-	// Failover behavior for traffic matched by this service
+	// Failover behavior for traffic matched by this service. enum: `nonRevertible`, `none`, `revertible`.
 	FailoverPolicy *string `pulumi:"failoverPolicy"`
 	// Domain hostnames matched by this custom service for web filtering
 	Hostnames []string `pulumi:"hostnames"`
@@ -192,11 +192,11 @@ type serviceState struct {
 	Specs []ServiceSpec `pulumi:"specs"`
 	// Whether SSR relaxes TCP state enforcement for this service
 	SsrRelaxedTcpStateEnforcement *bool `pulumi:"ssrRelaxedTcpStateEnforcement"`
-	// Traffic class applied when `trafficType`==`custom`
+	// Traffic class applied when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`.
 	TrafficClass *string `pulumi:"trafficClass"`
 	// values from List Traffic Types
 	TrafficType *string `pulumi:"trafficType"`
-	// Matching mode that determines which app, URL, or custom fields are used
+	// Matching mode that determines which app, URL, or custom fields are used. enum: `appCategories`, `apps`, `custom`, `urls`.
 	Type *string `pulumi:"type"`
 	// URL patterns matched by this service when `type`==`urls`
 	Urls []string `pulumi:"urls"`
@@ -219,7 +219,7 @@ type ServiceState struct {
 	Description pulumi.StringPtrInput
 	// QoS DSCP value used for custom SSR traffic classification
 	Dscp pulumi.StringPtrInput
-	// Failover behavior for traffic matched by this service
+	// Failover behavior for traffic matched by this service. enum: `nonRevertible`, `none`, `revertible`.
 	FailoverPolicy pulumi.StringPtrInput
 	// Domain hostnames matched by this custom service for web filtering
 	Hostnames pulumi.StringArrayInput
@@ -243,11 +243,11 @@ type ServiceState struct {
 	Specs ServiceSpecArrayInput
 	// Whether SSR relaxes TCP state enforcement for this service
 	SsrRelaxedTcpStateEnforcement pulumi.BoolPtrInput
-	// Traffic class applied when `trafficType`==`custom`
+	// Traffic class applied when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`.
 	TrafficClass pulumi.StringPtrInput
 	// values from List Traffic Types
 	TrafficType pulumi.StringPtrInput
-	// Matching mode that determines which app, URL, or custom fields are used
+	// Matching mode that determines which app, URL, or custom fields are used. enum: `appCategories`, `apps`, `custom`, `urls`.
 	Type pulumi.StringPtrInput
 	// URL patterns matched by this service when `type`==`urls`
 	Urls pulumi.StringArrayInput
@@ -274,7 +274,7 @@ type serviceArgs struct {
 	Description *string `pulumi:"description"`
 	// QoS DSCP value used for custom SSR traffic classification
 	Dscp *string `pulumi:"dscp"`
-	// Failover behavior for traffic matched by this service
+	// Failover behavior for traffic matched by this service. enum: `nonRevertible`, `none`, `revertible`.
 	FailoverPolicy *string `pulumi:"failoverPolicy"`
 	// Domain hostnames matched by this custom service for web filtering
 	Hostnames []string `pulumi:"hostnames"`
@@ -298,11 +298,11 @@ type serviceArgs struct {
 	Specs []ServiceSpec `pulumi:"specs"`
 	// Whether SSR relaxes TCP state enforcement for this service
 	SsrRelaxedTcpStateEnforcement *bool `pulumi:"ssrRelaxedTcpStateEnforcement"`
-	// Traffic class applied when `trafficType`==`custom`
+	// Traffic class applied when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`.
 	TrafficClass *string `pulumi:"trafficClass"`
 	// values from List Traffic Types
 	TrafficType *string `pulumi:"trafficType"`
-	// Matching mode that determines which app, URL, or custom fields are used
+	// Matching mode that determines which app, URL, or custom fields are used. enum: `appCategories`, `apps`, `custom`, `urls`.
 	Type *string `pulumi:"type"`
 	// URL patterns matched by this service when `type`==`urls`
 	Urls []string `pulumi:"urls"`
@@ -326,7 +326,7 @@ type ServiceArgs struct {
 	Description pulumi.StringPtrInput
 	// QoS DSCP value used for custom SSR traffic classification
 	Dscp pulumi.StringPtrInput
-	// Failover behavior for traffic matched by this service
+	// Failover behavior for traffic matched by this service. enum: `nonRevertible`, `none`, `revertible`.
 	FailoverPolicy pulumi.StringPtrInput
 	// Domain hostnames matched by this custom service for web filtering
 	Hostnames pulumi.StringArrayInput
@@ -350,11 +350,11 @@ type ServiceArgs struct {
 	Specs ServiceSpecArrayInput
 	// Whether SSR relaxes TCP state enforcement for this service
 	SsrRelaxedTcpStateEnforcement pulumi.BoolPtrInput
-	// Traffic class applied when `trafficType`==`custom`
+	// Traffic class applied when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`.
 	TrafficClass pulumi.StringPtrInput
 	// values from List Traffic Types
 	TrafficType pulumi.StringPtrInput
-	// Matching mode that determines which app, URL, or custom fields are used
+	// Matching mode that determines which app, URL, or custom fields are used. enum: `appCategories`, `apps`, `custom`, `urls`.
 	Type pulumi.StringPtrInput
 	// URL patterns matched by this service when `type`==`urls`
 	Urls pulumi.StringArrayInput
@@ -487,7 +487,7 @@ func (o ServiceOutput) Dscp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.Dscp }).(pulumi.StringPtrOutput)
 }
 
-// Failover behavior for traffic matched by this service
+// Failover behavior for traffic matched by this service. enum: `nonRevertible`, `none`, `revertible`.
 func (o ServiceOutput) FailoverPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.FailoverPolicy }).(pulumi.StringPtrOutput)
 }
@@ -547,7 +547,7 @@ func (o ServiceOutput) SsrRelaxedTcpStateEnforcement() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.BoolPtrOutput { return v.SsrRelaxedTcpStateEnforcement }).(pulumi.BoolPtrOutput)
 }
 
-// Traffic class applied when `trafficType`==`custom`
+// Traffic class applied when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`.
 func (o ServiceOutput) TrafficClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.TrafficClass }).(pulumi.StringPtrOutput)
 }
@@ -557,7 +557,7 @@ func (o ServiceOutput) TrafficType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.TrafficType }).(pulumi.StringOutput)
 }
 
-// Matching mode that determines which app, URL, or custom fields are used
+// Matching mode that determines which app, URL, or custom fields are used. enum: `appCategories`, `apps`, `custom`, `urls`.
 func (o ServiceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

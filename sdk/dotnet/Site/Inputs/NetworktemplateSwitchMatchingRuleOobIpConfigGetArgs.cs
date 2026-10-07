@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class NetworktemplateSwitchMatchingRuleOobIpConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// IP assignment mode for out-of-band switch management
+        /// IP assignment mode for out-of-band switch management. enum: `Dhcp`, `Static`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

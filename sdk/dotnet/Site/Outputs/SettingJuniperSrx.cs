@@ -22,6 +22,10 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.SettingJuniperSrxGateway> Gateways;
         /// <summary>
+        /// Source of the Mist NAC user role sent to Juniper SRX gateways. enum: `IdpRole`, `RadiusGroup`, `None`
+        /// </summary>
+        public readonly string? MistNacUserRoleSource;
+        /// <summary>
         /// Whether Mist NAC user information is sent to Juniper SRX gateways
         /// </summary>
         public readonly bool? SendMistNacUserInfo;
@@ -32,10 +36,13 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             ImmutableArray<Outputs.SettingJuniperSrxGateway> gateways,
 
+            string? mistNacUserRoleSource,
+
             bool? sendMistNacUserInfo)
         {
             AutoUpgrade = autoUpgrade;
             Gateways = gateways;
+            MistNacUserRoleSource = mistNacUserRoleSource;
             SendMistNacUserInfo = sendMistNacUserInfo;
         }
     }

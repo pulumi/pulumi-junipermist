@@ -159,7 +159,7 @@ type Setting struct {
 	TrackAnonymousDevices pulumi.BoolPtrOutput `pulumi:"trackAnonymousDevices"`
 	// Whether tunnel termination monitoring is disabled for the site
 	TuntermMonitoringDisabled pulumi.BoolPtrOutput `pulumi:"tuntermMonitoringDisabled"`
-	// Tunnel termination monitoring settings for the site
+	// Tunnel termination monitoring settings for the Mist Edges assigned to the site
 	TuntermMonitorings SettingTuntermMonitoringArrayOutput `pulumi:"tuntermMonitorings"`
 	// Multicast settings for tunnel termination at the site
 	TuntermMulticastConfig SettingTuntermMulticastConfigPtrOutput `pulumi:"tuntermMulticastConfig"`
@@ -312,7 +312,7 @@ type settingState struct {
 	TrackAnonymousDevices *bool `pulumi:"trackAnonymousDevices"`
 	// Whether tunnel termination monitoring is disabled for the site
 	TuntermMonitoringDisabled *bool `pulumi:"tuntermMonitoringDisabled"`
-	// Tunnel termination monitoring settings for the site
+	// Tunnel termination monitoring settings for the Mist Edges assigned to the site
 	TuntermMonitorings []SettingTuntermMonitoring `pulumi:"tuntermMonitorings"`
 	// Multicast settings for tunnel termination at the site
 	TuntermMulticastConfig *SettingTuntermMulticastConfig `pulumi:"tuntermMulticastConfig"`
@@ -433,7 +433,7 @@ type SettingState struct {
 	TrackAnonymousDevices pulumi.BoolPtrInput
 	// Whether tunnel termination monitoring is disabled for the site
 	TuntermMonitoringDisabled pulumi.BoolPtrInput
-	// Tunnel termination monitoring settings for the site
+	// Tunnel termination monitoring settings for the Mist Edges assigned to the site
 	TuntermMonitorings SettingTuntermMonitoringArrayInput
 	// Multicast settings for tunnel termination at the site
 	TuntermMulticastConfig SettingTuntermMulticastConfigPtrInput
@@ -556,7 +556,7 @@ type settingArgs struct {
 	TrackAnonymousDevices *bool `pulumi:"trackAnonymousDevices"`
 	// Whether tunnel termination monitoring is disabled for the site
 	TuntermMonitoringDisabled *bool `pulumi:"tuntermMonitoringDisabled"`
-	// Tunnel termination monitoring settings for the site
+	// Tunnel termination monitoring settings for the Mist Edges assigned to the site
 	TuntermMonitorings []SettingTuntermMonitoring `pulumi:"tuntermMonitorings"`
 	// Multicast settings for tunnel termination at the site
 	TuntermMulticastConfig *SettingTuntermMulticastConfig `pulumi:"tuntermMulticastConfig"`
@@ -672,7 +672,7 @@ type SettingArgs struct {
 	TrackAnonymousDevices pulumi.BoolPtrInput
 	// Whether tunnel termination monitoring is disabled for the site
 	TuntermMonitoringDisabled pulumi.BoolPtrInput
-	// Tunnel termination monitoring settings for the site
+	// Tunnel termination monitoring settings for the Mist Edges assigned to the site
 	TuntermMonitorings SettingTuntermMonitoringArrayInput
 	// Multicast settings for tunnel termination at the site
 	TuntermMulticastConfig SettingTuntermMulticastConfigPtrInput
@@ -1001,7 +1001,7 @@ func (o SettingOutput) TuntermMonitoringDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Setting) pulumi.BoolPtrOutput { return v.TuntermMonitoringDisabled }).(pulumi.BoolPtrOutput)
 }
 
-// Tunnel termination monitoring settings for the site
+// Tunnel termination monitoring settings for the Mist Edges assigned to the site
 func (o SettingOutput) TuntermMonitorings() SettingTuntermMonitoringArrayOutput {
 	return o.ApplyT(func(v *Setting) SettingTuntermMonitoringArrayOutput { return v.TuntermMonitorings }).(SettingTuntermMonitoringArrayOutput)
 }

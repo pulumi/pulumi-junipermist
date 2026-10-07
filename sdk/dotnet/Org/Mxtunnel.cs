@@ -143,7 +143,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Encapsulation protocol used for the Mist Tunnel
+        /// Encapsulation protocol used for the Mist Tunnel. enum: `Ip`, `Udp`.
         /// </summary>
         [Output("protocol")]
         public Output<string?> Protocol { get; private set; } = null!;
@@ -268,7 +268,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string> OrgId { get; set; } = null!;
 
         /// <summary>
-        /// Encapsulation protocol used for the Mist Tunnel
+        /// Encapsulation protocol used for the Mist Tunnel. enum: `Ip`, `Udp`.
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
@@ -360,7 +360,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Encapsulation protocol used for the Mist Tunnel
+        /// Encapsulation protocol used for the Mist Tunnel. enum: `Ip`, `Udp`.
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }

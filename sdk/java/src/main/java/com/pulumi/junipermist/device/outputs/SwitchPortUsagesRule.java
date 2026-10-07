@@ -36,7 +36,7 @@ public final class SwitchPortUsagesRule {
      */
     private @Nullable String expression;
     /**
-     * @return Source attribute evaluated by this dynamic rule
+     * @return Source attribute evaluated by this dynamic rule. enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemDescription`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`.
      * 
      */
     private String src;
@@ -78,7 +78,7 @@ public final class SwitchPortUsagesRule {
         return Optional.ofNullable(this.expression);
     }
     /**
-     * @return Source attribute evaluated by this dynamic rule
+     * @return Source attribute evaluated by this dynamic rule. enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemDescription`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`.
      * 
      */
     public String src() {

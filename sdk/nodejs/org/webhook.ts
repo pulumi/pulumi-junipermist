@@ -79,7 +79,7 @@ export class Webhook extends pulumi.CustomResource {
     }
 
     /**
-     * Default action applied when none of the `rules` match the incoming event
+     * Default action applied when none of the `rules` match the incoming event. enum: `permit`, `block`.
      */
     declare public readonly defaultAction: pulumi.Output<string | undefined>;
     /**
@@ -103,7 +103,7 @@ export class Webhook extends pulumi.CustomResource {
      */
     declare public readonly oauth2ClientSecret: pulumi.Output<string | undefined>;
     /**
-     * OAuth2 grant type used when `type`==`oauth2`
+     * OAuth2 grant type used when `type`==`oauth2`. enum: `clientCredentials`, `password`.
      */
     declare public readonly oauth2GrantType: pulumi.Output<string | undefined>;
     /**
@@ -147,7 +147,7 @@ export class Webhook extends pulumi.CustomResource {
      */
     declare public readonly topics: pulumi.Output<string[]>;
     /**
-     * Delivery mechanism used by this webhook
+     * Delivery mechanism used by this webhook. enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`.
      */
     declare public readonly type: pulumi.Output<string>;
     /**
@@ -236,7 +236,7 @@ export class Webhook extends pulumi.CustomResource {
  */
 export interface WebhookState {
     /**
-     * Default action applied when none of the `rules` match the incoming event
+     * Default action applied when none of the `rules` match the incoming event. enum: `permit`, `block`.
      */
     defaultAction?: pulumi.Input<string | undefined>;
     /**
@@ -260,7 +260,7 @@ export interface WebhookState {
      */
     oauth2ClientSecret?: pulumi.Input<string | undefined>;
     /**
-     * OAuth2 grant type used when `type`==`oauth2`
+     * OAuth2 grant type used when `type`==`oauth2`. enum: `clientCredentials`, `password`.
      */
     oauth2GrantType?: pulumi.Input<string | undefined>;
     /**
@@ -304,7 +304,7 @@ export interface WebhookState {
      */
     topics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Delivery mechanism used by this webhook
+     * Delivery mechanism used by this webhook. enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`.
      */
     type?: pulumi.Input<string | undefined>;
     /**
@@ -322,7 +322,7 @@ export interface WebhookState {
  */
 export interface WebhookArgs {
     /**
-     * Default action applied when none of the `rules` match the incoming event
+     * Default action applied when none of the `rules` match the incoming event. enum: `permit`, `block`.
      */
     defaultAction?: pulumi.Input<string | undefined>;
     /**
@@ -346,7 +346,7 @@ export interface WebhookArgs {
      */
     oauth2ClientSecret?: pulumi.Input<string | undefined>;
     /**
-     * OAuth2 grant type used when `type`==`oauth2`
+     * OAuth2 grant type used when `type`==`oauth2`. enum: `clientCredentials`, `password`.
      */
     oauth2GrantType?: pulumi.Input<string | undefined>;
     /**
@@ -390,7 +390,7 @@ export interface WebhookArgs {
      */
     topics: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Delivery mechanism used by this webhook
+     * Delivery mechanism used by this webhook. enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`.
      */
     type?: pulumi.Input<string | undefined>;
     /**

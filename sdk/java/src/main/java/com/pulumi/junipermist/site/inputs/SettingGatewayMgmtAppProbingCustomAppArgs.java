@@ -120,14 +120,14 @@ public final class SettingGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
     }
 
     /**
-     * Probe protocol used by this custom application definition
+     * Probe protocol used by this custom application definition. enum: `http`, `icmp`.
      * 
      */
     @Import(name="protocol", required=true)
     private Output<String> protocol;
 
     /**
-     * @return Probe protocol used by this custom application definition
+     * @return Probe protocol used by this custom application definition. enum: `http`, `icmp`.
      * 
      */
     public Output<String> protocol() {
@@ -341,7 +341,7 @@ public final class SettingGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
         }
 
         /**
-         * @param protocol Probe protocol used by this custom application definition
+         * @param protocol Probe protocol used by this custom application definition. enum: `http`, `icmp`.
          * 
          * @return builder
          * 
@@ -352,7 +352,7 @@ public final class SettingGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
         }
 
         /**
-         * @param protocol Probe protocol used by this custom application definition
+         * @param protocol Probe protocol used by this custom application definition. enum: `http`, `icmp`.
          * 
          * @return builder
          * 

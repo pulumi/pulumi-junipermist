@@ -29,7 +29,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// Authentication mode for the client bridge connection
+        /// Authentication mode for the client bridge connection. enum: `Open`, `Psk`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

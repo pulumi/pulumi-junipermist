@@ -18,7 +18,7 @@ public final class GatewaytemplateServicePolicySkyatpHttpInspection {
      */
     private @Nullable Boolean enabled;
     /**
-     * @return Sky ATP HTTP inspection profile to apply
+     * @return Sky ATP HTTP inspection profile to apply. enum: `standard`, `strict`.
      * 
      */
     private @Nullable String profile;
@@ -32,7 +32,7 @@ public final class GatewaytemplateServicePolicySkyatpHttpInspection {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Sky ATP HTTP inspection profile to apply
+     * @return Sky ATP HTTP inspection profile to apply. enum: `standard`, `strict`.
      * 
      */
     public Optional<String> profile() {

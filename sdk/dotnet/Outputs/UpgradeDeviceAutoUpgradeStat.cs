@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Outputs
     public sealed class UpgradeDeviceAutoUpgradeStat
     {
         /// <summary>
-        /// Time when the device last checked for auto-upgrade, in epoch seconds
+        /// Time when the AP last checked for auto-upgrade, in epoch seconds
         /// </summary>
         public readonly int? Lastcheck;
 

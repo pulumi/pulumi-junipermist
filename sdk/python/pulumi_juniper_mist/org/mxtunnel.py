@@ -44,7 +44,7 @@ class MxtunnelArgs:
         :param pulumi.Input[_builtins.int] mtu: 0 to enable PMTU, 552-1500 to start PMTU with a lower MTU
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mxcluster_ids: Mist Edge cluster IDs that host this Mist Tunnel
         :param pulumi.Input[_builtins.str] name: Display name of the Mist Tunnel
-        :param pulumi.Input[_builtins.str] protocol: Encapsulation protocol used for the Mist Tunnel
+        :param pulumi.Input[_builtins.str] protocol: Encapsulation protocol used for the Mist Tunnel. enum: `ip`, `udp`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] vlan_ids: List of VLAN IDs carried by this Mist Tunnel
         """
         pulumi.set(__self__, "org_id", org_id)
@@ -181,7 +181,7 @@ class MxtunnelArgs:
     @pulumi.getter
     def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Encapsulation protocol used for the Mist Tunnel
+        Encapsulation protocol used for the Mist Tunnel. enum: `ip`, `udp`.
         """
         return pulumi.get(self, "protocol")
 
@@ -228,7 +228,7 @@ class _MxtunnelState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mxcluster_ids: Mist Edge cluster IDs that host this Mist Tunnel
         :param pulumi.Input[_builtins.str] name: Display name of the Mist Tunnel
         :param pulumi.Input[_builtins.str] org_id: Identifier of the org that owns the Mist Tunnel
-        :param pulumi.Input[_builtins.str] protocol: Encapsulation protocol used for the Mist Tunnel
+        :param pulumi.Input[_builtins.str] protocol: Encapsulation protocol used for the Mist Tunnel. enum: `ip`, `udp`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] vlan_ids: List of VLAN IDs carried by this Mist Tunnel
         """
         if anchor_mxtunnel_ids is not None:
@@ -366,7 +366,7 @@ class _MxtunnelState:
     @pulumi.getter
     def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Encapsulation protocol used for the Mist Tunnel
+        Encapsulation protocol used for the Mist Tunnel. enum: `ip`, `udp`.
         """
         return pulumi.get(self, "protocol")
 
@@ -471,7 +471,7 @@ class Mxtunnel(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mxcluster_ids: Mist Edge cluster IDs that host this Mist Tunnel
         :param pulumi.Input[_builtins.str] name: Display name of the Mist Tunnel
         :param pulumi.Input[_builtins.str] org_id: Identifier of the org that owns the Mist Tunnel
-        :param pulumi.Input[_builtins.str] protocol: Encapsulation protocol used for the Mist Tunnel
+        :param pulumi.Input[_builtins.str] protocol: Encapsulation protocol used for the Mist Tunnel. enum: `ip`, `udp`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] vlan_ids: List of VLAN IDs carried by this Mist Tunnel
         """
         ...
@@ -620,7 +620,7 @@ class Mxtunnel(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mxcluster_ids: Mist Edge cluster IDs that host this Mist Tunnel
         :param pulumi.Input[_builtins.str] name: Display name of the Mist Tunnel
         :param pulumi.Input[_builtins.str] org_id: Identifier of the org that owns the Mist Tunnel
-        :param pulumi.Input[_builtins.str] protocol: Encapsulation protocol used for the Mist Tunnel
+        :param pulumi.Input[_builtins.str] protocol: Encapsulation protocol used for the Mist Tunnel. enum: `ip`, `udp`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] vlan_ids: List of VLAN IDs carried by this Mist Tunnel
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -716,7 +716,7 @@ class Mxtunnel(pulumi.CustomResource):
     @pulumi.getter
     def protocol(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Encapsulation protocol used for the Mist Tunnel
+        Encapsulation protocol used for the Mist Tunnel. enum: `ip`, `udp`.
         """
         return pulumi.get(self, "protocol")
 

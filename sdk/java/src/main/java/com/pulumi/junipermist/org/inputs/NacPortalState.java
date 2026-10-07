@@ -21,14 +21,14 @@ public final class NacPortalState extends com.pulumi.resources.ResourceArgs {
     public static final NacPortalState Empty = new NacPortalState();
 
     /**
-     * If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients
+     * If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients. enum: `wireless`, `wireless+wired`.
      * 
      */
     @Import(name="accessType")
     private @Nullable Output<String> accessType;
 
     /**
-     * @return If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients
+     * @return If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients. enum: `wireless`, `wireless+wired`.
      * 
      */
     public Optional<Output<String>> accessType() {
@@ -81,14 +81,14 @@ public final class NacPortalState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * EAP mode used when onboarding wireless clients through the NAC portal
+     * EAP mode used when onboarding wireless clients through the NAC portal. enum: `wpa2`, `wpa3`.
      * 
      */
     @Import(name="eapType")
     private @Nullable Output<String> eapType;
 
     /**
-     * @return EAP mode used when onboarding wireless clients through the NAC portal
+     * @return EAP mode used when onboarding wireless clients through the NAC portal. enum: `wpa2`, `wpa3`.
      * 
      */
     public Optional<Output<String>> eapType() {
@@ -111,14 +111,14 @@ public final class NacPortalState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Model, version, fingering, events (connecting, disconnect, roaming), which ap
+     * Optional, model, version, fingerprinting, events (connecting, disconnect, roaming), which ap, default is false
      * 
      */
     @Import(name="enableTelemetry")
     private @Nullable Output<Boolean> enableTelemetry;
 
     /**
-     * @return Model, version, fingering, events (connecting, disconnect, roaming), which ap
+     * @return Optional, model, version, fingerprinting, events (connecting, disconnect, roaming), which ap, default is false
      * 
      */
     public Optional<Output<Boolean>> enableTelemetry() {
@@ -246,14 +246,14 @@ public final class NacPortalState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
+     * NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding. enum: `guestAdmin`, `guestPortal`, `marvisClient`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
+     * @return NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding. enum: `guestAdmin`, `guestPortal`, `marvisClient`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -300,7 +300,7 @@ public final class NacPortalState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessType If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients
+         * @param accessType If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients. enum: `wireless`, `wireless+wired`.
          * 
          * @return builder
          * 
@@ -311,7 +311,7 @@ public final class NacPortalState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessType If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients
+         * @param accessType If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients. enum: `wireless`, `wireless+wired`.
          * 
          * @return builder
          * 
@@ -404,7 +404,7 @@ public final class NacPortalState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eapType EAP mode used when onboarding wireless clients through the NAC portal
+         * @param eapType EAP mode used when onboarding wireless clients through the NAC portal. enum: `wpa2`, `wpa3`.
          * 
          * @return builder
          * 
@@ -415,7 +415,7 @@ public final class NacPortalState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eapType EAP mode used when onboarding wireless clients through the NAC portal
+         * @param eapType EAP mode used when onboarding wireless clients through the NAC portal. enum: `wpa2`, `wpa3`.
          * 
          * @return builder
          * 
@@ -446,7 +446,7 @@ public final class NacPortalState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableTelemetry Model, version, fingering, events (connecting, disconnect, roaming), which ap
+         * @param enableTelemetry Optional, model, version, fingerprinting, events (connecting, disconnect, roaming), which ap, default is false
          * 
          * @return builder
          * 
@@ -457,7 +457,7 @@ public final class NacPortalState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableTelemetry Model, version, fingering, events (connecting, disconnect, roaming), which ap
+         * @param enableTelemetry Optional, model, version, fingerprinting, events (connecting, disconnect, roaming), which ap, default is false
          * 
          * @return builder
          * 
@@ -635,7 +635,7 @@ public final class NacPortalState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
+         * @param type NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding. enum: `guestAdmin`, `guestPortal`, `marvisClient`.
          * 
          * @return builder
          * 
@@ -646,7 +646,7 @@ public final class NacPortalState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
+         * @param type NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding. enum: `guestAdmin`, `guestPortal`, `marvisClient`.
          * 
          * @return builder
          * 

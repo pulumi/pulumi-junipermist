@@ -112,7 +112,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string?> Dscp { get; private set; } = null!;
 
         /// <summary>
-        /// Failover behavior for traffic matched by this service
+        /// Failover behavior for traffic matched by this service. enum: `NonRevertible`, `None`, `Revertible`.
         /// </summary>
         [Output("failoverPolicy")]
         public Output<string?> FailoverPolicy { get; private set; } = null!;
@@ -184,7 +184,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<bool?> SsrRelaxedTcpStateEnforcement { get; private set; } = null!;
 
         /// <summary>
-        /// Traffic class applied when `TrafficType`==`Custom`
+        /// Traffic class applied when `TrafficType`==`Custom`. enum: `BestEffort`, `High`, `Low`, `Medium`.
         /// </summary>
         [Output("trafficClass")]
         public Output<string?> TrafficClass { get; private set; } = null!;
@@ -196,7 +196,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> TrafficType { get; private set; } = null!;
 
         /// <summary>
-        /// Matching mode that determines which app, URL, or custom fields are used
+        /// Matching mode that determines which app, URL, or custom fields are used. enum: `AppCategories`, `Apps`, `Custom`, `Urls`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -327,7 +327,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? Dscp { get; set; }
 
         /// <summary>
-        /// Failover behavior for traffic matched by this service
+        /// Failover behavior for traffic matched by this service. enum: `NonRevertible`, `None`, `Revertible`.
         /// </summary>
         [Input("failoverPolicy")]
         public Input<string>? FailoverPolicy { get; set; }
@@ -411,7 +411,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<bool>? SsrRelaxedTcpStateEnforcement { get; set; }
 
         /// <summary>
-        /// Traffic class applied when `TrafficType`==`Custom`
+        /// Traffic class applied when `TrafficType`==`Custom`. enum: `BestEffort`, `High`, `Low`, `Medium`.
         /// </summary>
         [Input("trafficClass")]
         public Input<string>? TrafficClass { get; set; }
@@ -423,7 +423,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? TrafficType { get; set; }
 
         /// <summary>
-        /// Matching mode that determines which app, URL, or custom fields are used
+        /// Matching mode that determines which app, URL, or custom fields are used. enum: `AppCategories`, `Apps`, `Custom`, `Urls`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -521,7 +521,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? Dscp { get; set; }
 
         /// <summary>
-        /// Failover behavior for traffic matched by this service
+        /// Failover behavior for traffic matched by this service. enum: `NonRevertible`, `None`, `Revertible`.
         /// </summary>
         [Input("failoverPolicy")]
         public Input<string>? FailoverPolicy { get; set; }
@@ -605,7 +605,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<bool>? SsrRelaxedTcpStateEnforcement { get; set; }
 
         /// <summary>
-        /// Traffic class applied when `TrafficType`==`Custom`
+        /// Traffic class applied when `TrafficType`==`Custom`. enum: `BestEffort`, `High`, `Low`, `Medium`.
         /// </summary>
         [Input("trafficClass")]
         public Input<string>? TrafficClass { get; set; }
@@ -617,7 +617,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? TrafficType { get; set; }
 
         /// <summary>
-        /// Matching mode that determines which app, URL, or custom fields are used
+        /// Matching mode that determines which app, URL, or custom fields are used. enum: `AppCategories`, `Apps`, `Custom`, `Urls`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -90,7 +90,13 @@ namespace Pulumi.JuniperMist.Org
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Guest portal authorization state condition for the rule
+        /// Name of the group the NAC rule belongs to
+        /// </summary>
+        [Output("groupName")]
+        public Output<string?> GroupName { get; private set; } = null!;
+
+        /// <summary>
+        /// Guest portal authorization state condition for the rule. enum: `Authorized`, `Unknown`.
         /// </summary>
         [Output("guestAuthState")]
         public Output<string?> GuestAuthState { get; private set; } = null!;
@@ -203,7 +209,13 @@ namespace Pulumi.JuniperMist.Org
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Guest portal authorization state condition for the rule
+        /// Name of the group the NAC rule belongs to
+        /// </summary>
+        [Input("groupName")]
+        public Input<string>? GroupName { get; set; }
+
+        /// <summary>
+        /// Guest portal authorization state condition for the rule. enum: `Authorized`, `Unknown`.
         /// </summary>
         [Input("guestAuthState")]
         public Input<string>? GuestAuthState { get; set; }
@@ -277,7 +289,13 @@ namespace Pulumi.JuniperMist.Org
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Guest portal authorization state condition for the rule
+        /// Name of the group the NAC rule belongs to
+        /// </summary>
+        [Input("groupName")]
+        public Input<string>? GroupName { get; set; }
+
+        /// <summary>
+        /// Guest portal authorization state condition for the rule. enum: `Authorized`, `Unknown`.
         /// </summary>
         [Input("guestAuthState")]
         public Input<string>? GuestAuthState { get; set; }

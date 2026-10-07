@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.NetworktemplateSwitchMgmtTacacsAcctServer> AcctServers;
         /// <summary>
-        /// Default switch-management role to use for TACACS+ logins
+        /// Default switch-management role to use for TACACS+ logins. enum: `Admin`, `Helpdesk`, `None`, `Read`.
         /// </summary>
         public readonly string? DefaultRole;
         /// <summary>

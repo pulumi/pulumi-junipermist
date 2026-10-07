@@ -18,14 +18,14 @@ public final class GatewaytemplateIdpProfilesArgs extends com.pulumi.resources.R
     public static final GatewaytemplateIdpProfilesArgs Empty = new GatewaytemplateIdpProfilesArgs();
 
     /**
-     * Built-in IDP baseline profile inherited before applying overwrites
+     * Built-in IDP baseline profile inherited before applying overwrites. enum: `critical`, `standard`, `strict`.
      * 
      */
     @Import(name="baseProfile")
     private @Nullable Output<String> baseProfile;
 
     /**
-     * @return Built-in IDP baseline profile inherited before applying overwrites
+     * @return Built-in IDP baseline profile inherited before applying overwrites. enum: `critical`, `standard`, `strict`.
      * 
      */
     public Optional<Output<String>> baseProfile() {
@@ -105,7 +105,7 @@ public final class GatewaytemplateIdpProfilesArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param baseProfile Built-in IDP baseline profile inherited before applying overwrites
+         * @param baseProfile Built-in IDP baseline profile inherited before applying overwrites. enum: `critical`, `standard`, `strict`.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class GatewaytemplateIdpProfilesArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param baseProfile Built-in IDP baseline profile inherited before applying overwrites
+         * @param baseProfile Built-in IDP baseline profile inherited before applying overwrites. enum: `critical`, `standard`, `strict`.
          * 
          * @return builder
          * 

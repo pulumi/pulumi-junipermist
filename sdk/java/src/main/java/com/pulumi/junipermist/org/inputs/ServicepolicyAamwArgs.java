@@ -47,14 +47,14 @@ public final class ServicepolicyAamwArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Built-in advanced anti-malware inspection profile to apply
+     * Built-in advanced anti-malware inspection profile to apply. enum: `docsonly`, `executables`, `standard`.
      * 
      */
     @Import(name="profile")
     private @Nullable Output<String> profile;
 
     /**
-     * @return Built-in advanced anti-malware inspection profile to apply
+     * @return Built-in advanced anti-malware inspection profile to apply. enum: `docsonly`, `executables`, `standard`.
      * 
      */
     public Optional<Output<String>> profile() {
@@ -130,7 +130,7 @@ public final class ServicepolicyAamwArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param profile Built-in advanced anti-malware inspection profile to apply
+         * @param profile Built-in advanced anti-malware inspection profile to apply. enum: `docsonly`, `executables`, `standard`.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class ServicepolicyAamwArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param profile Built-in advanced anti-malware inspection profile to apply
+         * @param profile Built-in advanced anti-malware inspection profile to apply. enum: `docsonly`, `executables`, `standard`.
          * 
          * @return builder
          * 

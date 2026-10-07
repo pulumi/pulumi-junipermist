@@ -25,7 +25,7 @@ public final class DeviceprofileApBleConfig {
      */
     private @Nullable Integer beaconRate;
     /**
-     * @return Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate
+     * @return Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate. enum: `custom`, `default`.
      * 
      */
     private @Nullable String beaconRateMode;
@@ -145,7 +145,7 @@ public final class DeviceprofileApBleConfig {
      */
     private @Nullable Integer power;
     /**
-     * @return Transmit power mode for BLE beacons; use custom to set `power`
+     * @return Transmit power mode for BLE beacons; use custom to set `power`. enum: `custom`, `default`.
      * 
      */
     private @Nullable String powerMode;
@@ -166,7 +166,7 @@ public final class DeviceprofileApBleConfig {
         return Optional.ofNullable(this.beaconRate);
     }
     /**
-     * @return Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate
+     * @return Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate. enum: `custom`, `default`.
      * 
      */
     public Optional<String> beaconRateMode() {
@@ -334,7 +334,7 @@ public final class DeviceprofileApBleConfig {
         return Optional.ofNullable(this.power);
     }
     /**
-     * @return Transmit power mode for BLE beacons; use custom to set `power`
+     * @return Transmit power mode for BLE beacons; use custom to set `power`. enum: `custom`, `default`.
      * 
      */
     public Optional<String> powerMode() {

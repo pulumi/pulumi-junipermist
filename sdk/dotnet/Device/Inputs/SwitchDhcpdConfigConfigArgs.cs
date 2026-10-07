@@ -128,13 +128,13 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// IPv4 DHCP mode for this switch network
+        /// IPv4 DHCP mode for this switch network. enum: `None`, `Relay`, `Server`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// IPv6 DHCP mode for this switch network
+        /// IPv6 DHCP mode for this switch network. enum: `None`, `Relay`, `Server`.
         /// </summary>
         [Input("type6")]
         public Input<string>? Type6 { get; set; }

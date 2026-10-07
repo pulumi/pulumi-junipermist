@@ -19,14 +19,14 @@ public final class AvprofileArgs extends com.pulumi.resources.ResourceArgs {
     public static final AvprofileArgs Empty = new AvprofileArgs();
 
     /**
-     * Action to take when antivirus scanning cannot complete
+     * Action to take when antivirus scanning cannot complete. enum: `block`, `log-and-permit`, `permit`.
      * 
      */
     @Import(name="fallbackAction")
     private @Nullable Output<String> fallbackAction;
 
     /**
-     * @return Action to take when antivirus scanning cannot complete
+     * @return Action to take when antivirus scanning cannot complete. enum: `block`, `log-and-permit`, `permit`.
      * 
      */
     public Optional<Output<String>> fallbackAction() {
@@ -154,7 +154,7 @@ public final class AvprofileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fallbackAction Action to take when antivirus scanning cannot complete
+         * @param fallbackAction Action to take when antivirus scanning cannot complete. enum: `block`, `log-and-permit`, `permit`.
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class AvprofileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fallbackAction Action to take when antivirus scanning cannot complete
+         * @param fallbackAction Action to take when antivirus scanning cannot complete. enum: `block`, `log-and-permit`, `permit`.
          * 
          * @return builder
          * 

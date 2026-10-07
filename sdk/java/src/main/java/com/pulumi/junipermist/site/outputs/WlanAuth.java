@@ -55,7 +55,7 @@ public final class WlanAuth {
      */
     private @Nullable Boolean multiPskOnly;
     /**
-     * @return When `type`==`open`, Opportunistic Wireless Encryption mode for this WLAN
+     * @return When `type`==`open`, Opportunistic Wireless Encryption mode for this WLAN. enum: `disabled`, `enabled`, `required`.
      * 
      */
     private @Nullable String owe;
@@ -75,7 +75,7 @@ public final class WlanAuth {
      */
     private @Nullable String psk;
     /**
-     * @return Authentication mode used by this WLAN
+     * @return Authentication mode used by this WLAN. enum: `eap`, `eap192`, `open`, `psk`, `psk-tkip`, `psk-wpa2-tkip`, `wep`.
      * 
      */
     private @Nullable String type;
@@ -143,7 +143,7 @@ public final class WlanAuth {
         return Optional.ofNullable(this.multiPskOnly);
     }
     /**
-     * @return When `type`==`open`, Opportunistic Wireless Encryption mode for this WLAN
+     * @return When `type`==`open`, Opportunistic Wireless Encryption mode for this WLAN. enum: `disabled`, `enabled`, `required`.
      * 
      */
     public Optional<String> owe() {
@@ -171,7 +171,7 @@ public final class WlanAuth {
         return Optional.ofNullable(this.psk);
     }
     /**
-     * @return Authentication mode used by this WLAN
+     * @return Authentication mode used by this WLAN. enum: `eap`, `eap192`, `open`, `psk`, `psk-tkip`, `psk-wpa2-tkip`, `wep`.
      * 
      */
     public Optional<String> type() {

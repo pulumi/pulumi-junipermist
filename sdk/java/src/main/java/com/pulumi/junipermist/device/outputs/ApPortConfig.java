@@ -33,7 +33,7 @@ public final class ApPortConfig {
      */
     private @Nullable Boolean enableMacAuth;
     /**
-     * @return Traffic forwarding mode for this AP Ethernet port
+     * @return Traffic forwarding mode for this AP Ethernet port. enum: `all`, `limited`, `mxtunnel`, `siteMxedge`, `wxtunnel`.
      * 
      */
     private @Nullable String forwarding;
@@ -43,7 +43,7 @@ public final class ApPortConfig {
      */
     private @Nullable Boolean macAuthPreferred;
     /**
-     * @return Protocol used for MAC authentication when `enableMacAuth` is `true`
+     * @return Protocol used for MAC authentication when `enableMacAuth` is `true`. enum: `eap-md5`, `eap-peap`, `pap`.
      * 
      */
     private @Nullable String macAuthProtocol;
@@ -63,7 +63,7 @@ public final class ApPortConfig {
      */
     private @Nullable String mxtunnelName;
     /**
-     * @return Authentication mode for this AP Ethernet port
+     * @return Authentication mode for this AP Ethernet port. enum: `dot1x`, `none`.
      * 
      */
     private @Nullable String portAuth;
@@ -128,7 +128,7 @@ public final class ApPortConfig {
         return Optional.ofNullable(this.enableMacAuth);
     }
     /**
-     * @return Traffic forwarding mode for this AP Ethernet port
+     * @return Traffic forwarding mode for this AP Ethernet port. enum: `all`, `limited`, `mxtunnel`, `siteMxedge`, `wxtunnel`.
      * 
      */
     public Optional<String> forwarding() {
@@ -142,7 +142,7 @@ public final class ApPortConfig {
         return Optional.ofNullable(this.macAuthPreferred);
     }
     /**
-     * @return Protocol used for MAC authentication when `enableMacAuth` is `true`
+     * @return Protocol used for MAC authentication when `enableMacAuth` is `true`. enum: `eap-md5`, `eap-peap`, `pap`.
      * 
      */
     public Optional<String> macAuthProtocol() {
@@ -170,7 +170,7 @@ public final class ApPortConfig {
         return Optional.ofNullable(this.mxtunnelName);
     }
     /**
-     * @return Authentication mode for this AP Ethernet port
+     * @return Authentication mode for this AP Ethernet port. enum: `dot1x`, `none`.
      * 
      */
     public Optional<String> portAuth() {

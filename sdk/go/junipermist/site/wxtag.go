@@ -74,17 +74,17 @@ type Wxtag struct {
 
 	// If `type`==`client`, Client MAC address
 	Mac pulumi.StringPtrOutput `pulumi:"mac"`
-	// Required if `type`==`match`; attribute compared against `values`
+	// Required if `type`==`match`; attribute compared against `values`. enum: `apId`, `app`, `assetMac`, `clientMac`, `hostname`, `ipRangeSubnet`, `port`, `pskName`, `pskRole`, `radiusAttr`, `radiusClass`, `radiusGroup`, `radiusUsername`, `sdkclientUuid`, `wlanId`.
 	Match pulumi.StringPtrOutput `pulumi:"match"`
 	// Display name of the WxLAN tag
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Required if `type`==`match`; whether `values` are inclusive or exclusive matches
+	// Required if `type`==`match`; whether `values` are inclusive or exclusive matches. enum: `in`, `notIn`.
 	Op pulumi.StringPtrOutput `pulumi:"op"`
 	// Mist site associated with this WxLAN tag, when site-scoped
 	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// Traffic match specifications used when `type`==`spec`
 	Specs WxtagSpecArrayOutput `pulumi:"specs"`
-	// Kind of WxLAN tag and how it is populated
+	// Kind of WxLAN tag and how it is populated. enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Comparison values for the selected `match` attribute when `type`==`match`
 	Values pulumi.StringArrayOutput `pulumi:"values"`
@@ -130,17 +130,17 @@ func GetWxtag(ctx *pulumi.Context,
 type wxtagState struct {
 	// If `type`==`client`, Client MAC address
 	Mac *string `pulumi:"mac"`
-	// Required if `type`==`match`; attribute compared against `values`
+	// Required if `type`==`match`; attribute compared against `values`. enum: `apId`, `app`, `assetMac`, `clientMac`, `hostname`, `ipRangeSubnet`, `port`, `pskName`, `pskRole`, `radiusAttr`, `radiusClass`, `radiusGroup`, `radiusUsername`, `sdkclientUuid`, `wlanId`.
 	Match *string `pulumi:"match"`
 	// Display name of the WxLAN tag
 	Name *string `pulumi:"name"`
-	// Required if `type`==`match`; whether `values` are inclusive or exclusive matches
+	// Required if `type`==`match`; whether `values` are inclusive or exclusive matches. enum: `in`, `notIn`.
 	Op *string `pulumi:"op"`
 	// Mist site associated with this WxLAN tag, when site-scoped
 	SiteId *string `pulumi:"siteId"`
 	// Traffic match specifications used when `type`==`spec`
 	Specs []WxtagSpec `pulumi:"specs"`
-	// Kind of WxLAN tag and how it is populated
+	// Kind of WxLAN tag and how it is populated. enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`.
 	Type *string `pulumi:"type"`
 	// Comparison values for the selected `match` attribute when `type`==`match`
 	Values []string `pulumi:"values"`
@@ -151,17 +151,17 @@ type wxtagState struct {
 type WxtagState struct {
 	// If `type`==`client`, Client MAC address
 	Mac pulumi.StringPtrInput
-	// Required if `type`==`match`; attribute compared against `values`
+	// Required if `type`==`match`; attribute compared against `values`. enum: `apId`, `app`, `assetMac`, `clientMac`, `hostname`, `ipRangeSubnet`, `port`, `pskName`, `pskRole`, `radiusAttr`, `radiusClass`, `radiusGroup`, `radiusUsername`, `sdkclientUuid`, `wlanId`.
 	Match pulumi.StringPtrInput
 	// Display name of the WxLAN tag
 	Name pulumi.StringPtrInput
-	// Required if `type`==`match`; whether `values` are inclusive or exclusive matches
+	// Required if `type`==`match`; whether `values` are inclusive or exclusive matches. enum: `in`, `notIn`.
 	Op pulumi.StringPtrInput
 	// Mist site associated with this WxLAN tag, when site-scoped
 	SiteId pulumi.StringPtrInput
 	// Traffic match specifications used when `type`==`spec`
 	Specs WxtagSpecArrayInput
-	// Kind of WxLAN tag and how it is populated
+	// Kind of WxLAN tag and how it is populated. enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`.
 	Type pulumi.StringPtrInput
 	// Comparison values for the selected `match` attribute when `type`==`match`
 	Values pulumi.StringArrayInput
@@ -176,17 +176,17 @@ func (WxtagState) ElementType() reflect.Type {
 type wxtagArgs struct {
 	// If `type`==`client`, Client MAC address
 	Mac *string `pulumi:"mac"`
-	// Required if `type`==`match`; attribute compared against `values`
+	// Required if `type`==`match`; attribute compared against `values`. enum: `apId`, `app`, `assetMac`, `clientMac`, `hostname`, `ipRangeSubnet`, `port`, `pskName`, `pskRole`, `radiusAttr`, `radiusClass`, `radiusGroup`, `radiusUsername`, `sdkclientUuid`, `wlanId`.
 	Match *string `pulumi:"match"`
 	// Display name of the WxLAN tag
 	Name *string `pulumi:"name"`
-	// Required if `type`==`match`; whether `values` are inclusive or exclusive matches
+	// Required if `type`==`match`; whether `values` are inclusive or exclusive matches. enum: `in`, `notIn`.
 	Op *string `pulumi:"op"`
 	// Mist site associated with this WxLAN tag, when site-scoped
 	SiteId string `pulumi:"siteId"`
 	// Traffic match specifications used when `type`==`spec`
 	Specs []WxtagSpec `pulumi:"specs"`
-	// Kind of WxLAN tag and how it is populated
+	// Kind of WxLAN tag and how it is populated. enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`.
 	Type string `pulumi:"type"`
 	// Comparison values for the selected `match` attribute when `type`==`match`
 	Values []string `pulumi:"values"`
@@ -198,17 +198,17 @@ type wxtagArgs struct {
 type WxtagArgs struct {
 	// If `type`==`client`, Client MAC address
 	Mac pulumi.StringPtrInput
-	// Required if `type`==`match`; attribute compared against `values`
+	// Required if `type`==`match`; attribute compared against `values`. enum: `apId`, `app`, `assetMac`, `clientMac`, `hostname`, `ipRangeSubnet`, `port`, `pskName`, `pskRole`, `radiusAttr`, `radiusClass`, `radiusGroup`, `radiusUsername`, `sdkclientUuid`, `wlanId`.
 	Match pulumi.StringPtrInput
 	// Display name of the WxLAN tag
 	Name pulumi.StringPtrInput
-	// Required if `type`==`match`; whether `values` are inclusive or exclusive matches
+	// Required if `type`==`match`; whether `values` are inclusive or exclusive matches. enum: `in`, `notIn`.
 	Op pulumi.StringPtrInput
 	// Mist site associated with this WxLAN tag, when site-scoped
 	SiteId pulumi.StringInput
 	// Traffic match specifications used when `type`==`spec`
 	Specs WxtagSpecArrayInput
-	// Kind of WxLAN tag and how it is populated
+	// Kind of WxLAN tag and how it is populated. enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`.
 	Type pulumi.StringInput
 	// Comparison values for the selected `match` attribute when `type`==`match`
 	Values pulumi.StringArrayInput
@@ -308,7 +308,7 @@ func (o WxtagOutput) Mac() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Wxtag) pulumi.StringPtrOutput { return v.Mac }).(pulumi.StringPtrOutput)
 }
 
-// Required if `type`==`match`; attribute compared against `values`
+// Required if `type`==`match`; attribute compared against `values`. enum: `apId`, `app`, `assetMac`, `clientMac`, `hostname`, `ipRangeSubnet`, `port`, `pskName`, `pskRole`, `radiusAttr`, `radiusClass`, `radiusGroup`, `radiusUsername`, `sdkclientUuid`, `wlanId`.
 func (o WxtagOutput) Match() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Wxtag) pulumi.StringPtrOutput { return v.Match }).(pulumi.StringPtrOutput)
 }
@@ -318,7 +318,7 @@ func (o WxtagOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Wxtag) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Required if `type`==`match`; whether `values` are inclusive or exclusive matches
+// Required if `type`==`match`; whether `values` are inclusive or exclusive matches. enum: `in`, `notIn`.
 func (o WxtagOutput) Op() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Wxtag) pulumi.StringPtrOutput { return v.Op }).(pulumi.StringPtrOutput)
 }
@@ -333,7 +333,7 @@ func (o WxtagOutput) Specs() WxtagSpecArrayOutput {
 	return o.ApplyT(func(v *Wxtag) WxtagSpecArrayOutput { return v.Specs }).(WxtagSpecArrayOutput)
 }
 
-// Kind of WxLAN tag and how it is populated
+// Kind of WxLAN tag and how it is populated. enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`.
 func (o WxtagOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Wxtag) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

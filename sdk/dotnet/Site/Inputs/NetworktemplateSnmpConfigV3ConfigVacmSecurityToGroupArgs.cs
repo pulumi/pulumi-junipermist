@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// Required security model for these VACM group mappings
+        /// Required security model for these VACM group mappings. enum: `Usm`, `V1`, `V2c`.
         /// </summary>
         [Input("securityModel")]
         public Input<string>? SecurityModel { get; set; }

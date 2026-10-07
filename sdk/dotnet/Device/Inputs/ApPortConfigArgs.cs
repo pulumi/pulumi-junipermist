@@ -31,7 +31,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? EnableMacAuth { get; set; }
 
         /// <summary>
-        /// Traffic forwarding mode for this AP Ethernet port
+        /// Traffic forwarding mode for this AP Ethernet port. enum: `All`, `Limited`, `Mxtunnel`, `SiteMxedge`, `Wxtunnel`.
         /// </summary>
         [Input("forwarding")]
         public Input<string>? Forwarding { get; set; }
@@ -43,7 +43,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? MacAuthPreferred { get; set; }
 
         /// <summary>
-        /// Protocol used for MAC authentication when `EnableMacAuth` is `True`
+        /// Protocol used for MAC authentication when `EnableMacAuth` is `True`. enum: `eap-md5`, `eap-peap`, `Pap`.
         /// </summary>
         [Input("macAuthProtocol")]
         public Input<string>? MacAuthProtocol { get; set; }
@@ -67,7 +67,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? MxtunnelName { get; set; }
 
         /// <summary>
-        /// Authentication mode for this AP Ethernet port
+        /// Authentication mode for this AP Ethernet port. enum: `Dot1x`, `None`.
         /// </summary>
         [Input("portAuth")]
         public Input<string>? PortAuth { get; set; }

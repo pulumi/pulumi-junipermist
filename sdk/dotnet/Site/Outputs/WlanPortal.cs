@@ -38,7 +38,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly int? AmazonExpire;
         /// <summary>
-        /// Guest portal login scheme used by the WLAN
+        /// Guest portal login scheme used by the WLAN. enum: `Amazon`, `Azure`, `Email`, `External`, `Facebook`, `Google`, `Microsoft`, `Multi`, `None`, `Password`, `Sms`, `Sponsor`, `Sso`.
         /// </summary>
         public readonly string? Auth;
         /// <summary>
@@ -226,7 +226,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? SmsMessageFormat;
         /// <summary>
-        /// Optional if `SmsEnabled`==`True`. SMS provider used to deliver guest portal access codes
+        /// Optional if `SmsEnabled`==`True`. SMS provider used to deliver guest portal access codes. enum: `Broadnet`, `Clickatell`, `Gupshup`, `Manual`, `Puzzel`, `Telstra`, `Twilio`, `Smsglobal`.
         /// </summary>
         public readonly string? SmsProvider;
         /// <summary>
@@ -289,7 +289,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? SsoIdpCert;
         /// <summary>
-        /// Optional if `WlanPortalAuth`==`Sso`. Signing algorithm used for SAML assertions from the identity provider
+        /// Optional if `WlanPortalAuth`==`Sso`. Signing algorithm used for SAML assertions from the identity provider. enum: `Sha1`, `Sha256`, `Sha384`, `Sha512`.
         /// </summary>
         public readonly string? SsoIdpSignAlgo;
         /// <summary>
@@ -301,7 +301,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? SsoIssuer;
         /// <summary>
-        /// Optional if `WlanPortalAuth`==`Sso`. SAML NameID format expected from the identity provider
+        /// Optional if `WlanPortalAuth`==`Sso`. SAML NameID format expected from the identity provider. enum: `Email`, `Unspecified`.
         /// </summary>
         public readonly string? SsoNameidFormat;
         /// <summary>

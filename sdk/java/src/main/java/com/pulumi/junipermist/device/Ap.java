@@ -565,14 +565,14 @@ public class Ap extends com.pulumi.resources.CustomResource {
         return this.siteId;
     }
     /**
-     * Device type discriminator for access point records
+     * Device type discriminator for access point records. enum: `ap`.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Device type discriminator for access point records
+     * @return Device type discriminator for access point records. enum: `ap`.
      * 
      */
     public Output<String> type() {

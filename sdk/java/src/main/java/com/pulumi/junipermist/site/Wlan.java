@@ -244,14 +244,14 @@ public class Wlan extends com.pulumi.resources.CustomResource {
         return this.appQos;
     }
     /**
-     * Scope that determines where this WLAN is applied
+     * Scope that determines where this WLAN is applied. enum: `aps`, `site`, `wxtags`.
      * 
      */
     @Export(name="applyTo", refs={String.class}, tree="[0]")
     private Output<String> applyTo;
 
     /**
-     * @return Scope that determines where this WLAN is applied
+     * @return Scope that determines where this WLAN is applied. enum: `aps`, `site`, `wxtags`.
      * 
      */
     public Output<String> applyTo() {
@@ -286,14 +286,14 @@ public class Wlan extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.auth);
     }
     /**
-     * RADIUS authentication server selection behavior for this WLAN
+     * RADIUS authentication server selection behavior for this WLAN. enum: `ordered`, `unordered`.
      * 
      */
     @Export(name="authServerSelection", refs={String.class}, tree="[0]")
     private Output<String> authServerSelection;
 
     /**
-     * @return RADIUS authentication server selection behavior for this WLAN
+     * @return RADIUS authentication server selection behavior for this WLAN. enum: `ordered`, `unordered`.
      * 
      */
     public Output<String> authServerSelection() {
@@ -866,14 +866,14 @@ public class Wlan extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.injectDhcpOption82);
     }
     /**
-     * Network interface or tunnel where this WLAN bridges client traffic
+     * Network interface or tunnel where this WLAN bridges client traffic. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`.
      * 
      */
     @Export(name="interface", refs={String.class}, tree="[0]")
     private Output<String> interface_;
 
     /**
-     * @return Network interface or tunnel where this WLAN bridges client traffic
+     * @return Network interface or tunnel where this WLAN bridges client traffic. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`.
      * 
      */
     public Output<String> interface_() {
@@ -1230,14 +1230,14 @@ public class Wlan extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.reconnectClientsWhenRoamingMxcluster);
     }
     /**
-     * Fast roaming mode configured for this WLAN
+     * Fast roaming mode configured for this WLAN. enum: `11r`, `NONE`, `OKC`.
      * 
      */
     @Export(name="roamMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> roamMode;
 
     /**
-     * @return Fast roaming mode configured for this WLAN
+     * @return Fast roaming mode configured for this WLAN. enum: `11r`, `NONE`, `OKC`.
      * 
      */
     public Output<Optional<String>> roamMode() {

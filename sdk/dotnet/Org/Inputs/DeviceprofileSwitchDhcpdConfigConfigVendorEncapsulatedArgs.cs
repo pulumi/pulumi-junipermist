@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class DeviceprofileSwitchDhcpdConfigConfigVendorEncapsulatedArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Data type used to encode this vendor option value
+        /// Data type used to encode this vendor option value. enum: `Boolean`, `Hex`, `Int16`, `Int32`, `Ip`, `String`, `Uint16`, `Uint32`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

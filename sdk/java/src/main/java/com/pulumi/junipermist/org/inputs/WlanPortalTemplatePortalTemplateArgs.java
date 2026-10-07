@@ -35,14 +35,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * Text and content alignment used by the guest portal template
+     * Text and content alignment used by the guest portal template. enum: `center`, `left`, `right`.
      * 
      */
     @Import(name="alignment")
     private @Nullable Output<String> alignment;
 
     /**
-     * @return Text and content alignment used by the guest portal template
+     * @return Text and content alignment used by the guest portal template. enum: `center`, `left`, `right`.
      * 
      */
     public Optional<Output<String>> alignment() {
@@ -2106,7 +2106,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param alignment Text and content alignment used by the guest portal template
+         * @param alignment Text and content alignment used by the guest portal template. enum: `center`, `left`, `right`.
          * 
          * @return builder
          * 
@@ -2117,7 +2117,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param alignment Text and content alignment used by the guest portal template
+         * @param alignment Text and content alignment used by the guest portal template. enum: `center`, `left`, `right`.
          * 
          * @return builder
          * 

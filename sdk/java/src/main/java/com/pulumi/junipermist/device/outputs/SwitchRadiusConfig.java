@@ -32,7 +32,7 @@ public final class SwitchRadiusConfig {
      */
     private @Nullable List<SwitchRadiusConfigAcctServer> acctServers;
     /**
-     * @return Selection strategy for RADIUS authentication servers
+     * @return Selection strategy for RADIUS authentication servers. enum: `ordered`, `unordered`.
      * 
      */
     private @Nullable String authServerSelection;
@@ -100,7 +100,7 @@ public final class SwitchRadiusConfig {
         return this.acctServers == null ? List.of() : this.acctServers;
     }
     /**
-     * @return Selection strategy for RADIUS authentication servers
+     * @return Selection strategy for RADIUS authentication servers. enum: `ordered`, `unordered`.
      * 
      */
     public Optional<String> authServerSelection() {

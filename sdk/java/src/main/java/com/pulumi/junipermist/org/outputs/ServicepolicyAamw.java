@@ -23,7 +23,7 @@ public final class ServicepolicyAamw {
      */
     private @Nullable Boolean enabled;
     /**
-     * @return Built-in advanced anti-malware inspection profile to apply
+     * @return Built-in advanced anti-malware inspection profile to apply. enum: `docsonly`, `executables`, `standard`.
      * 
      */
     private @Nullable String profile;
@@ -44,7 +44,7 @@ public final class ServicepolicyAamw {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Built-in advanced anti-malware inspection profile to apply
+     * @return Built-in advanced anti-malware inspection profile to apply. enum: `docsonly`, `executables`, `standard`.
      * 
      */
     public Optional<String> profile() {

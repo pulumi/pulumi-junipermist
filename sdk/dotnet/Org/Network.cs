@@ -137,6 +137,12 @@ namespace Pulumi.JuniperMist.Org
         [Output("vpnAccess")]
         public Output<ImmutableDictionary<string, Outputs.NetworkVpnAccess>?> VpnAccess { get; private set; } = null!;
 
+        /// <summary>
+        /// SecurityZone this network belongs to. When set, the zone name is used as the security zone name on the SRX, and multiple networks can share the same zone. When omitted, the network `Name` is used as the security zone name.
+        /// </summary>
+        [Output("zoneId")]
+        public Output<string?> ZoneId { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Network resource with the given unique name, arguments, and options.
@@ -292,6 +298,12 @@ namespace Pulumi.JuniperMist.Org
             set => _vpnAccess = value;
         }
 
+        /// <summary>
+        /// SecurityZone this network belongs to. When set, the zone name is used as the security zone name on the SRX, and multiple networks can share the same zone. When omitted, the network `Name` is used as the security zone name.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
+
         public NetworkArgs()
         {
         }
@@ -407,6 +419,12 @@ namespace Pulumi.JuniperMist.Org
             get => _vpnAccess ?? (_vpnAccess = new InputMap<Inputs.NetworkVpnAccessGetArgs>());
             set => _vpnAccess = value;
         }
+
+        /// <summary>
+        /// SecurityZone this network belongs to. When set, the zone name is used as the security zone name on the SRX, and multiple networks can share the same zone. When omitted, the network `Name` is used as the security zone name.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public NetworkState()
         {

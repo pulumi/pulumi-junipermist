@@ -109,7 +109,7 @@ export class Mxcluster extends pulumi.CustomResource {
      */
     declare public readonly tuntermHostsOrders: pulumi.Output<number[] | undefined>;
     /**
-     * Selection strategy for ordering tunnel termination hosts
+     * Selection strategy for ordering tunnel termination hosts. enum: `ordered`, `shuffle`, `shuffle-by-site`.
      */
     declare public readonly tuntermHostsSelection: pulumi.Output<string>;
     /**
@@ -117,7 +117,7 @@ export class Mxcluster extends pulumi.CustomResource {
      */
     declare public readonly tuntermMonitoringDisabled: pulumi.Output<boolean | undefined>;
     /**
-     * Monitoring checks for tunnel termination reachability
+     * Monitoring checks for tunnel termination reachability. Only for Org Mist Edges; use `tuntermMonitoring` in the `siteSetting` for site-scoped Mist Edges
      */
     declare public readonly tuntermMonitorings: pulumi.Output<outputs.org.MxclusterTuntermMonitoring[][] | undefined>;
 
@@ -246,7 +246,7 @@ export interface MxclusterState {
      */
     tuntermHostsOrders?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
-     * Selection strategy for ordering tunnel termination hosts
+     * Selection strategy for ordering tunnel termination hosts. enum: `ordered`, `shuffle`, `shuffle-by-site`.
      */
     tuntermHostsSelection?: pulumi.Input<string | undefined>;
     /**
@@ -254,7 +254,7 @@ export interface MxclusterState {
      */
     tuntermMonitoringDisabled?: pulumi.Input<boolean | undefined>;
     /**
-     * Monitoring checks for tunnel termination reachability
+     * Monitoring checks for tunnel termination reachability. Only for Org Mist Edges; use `tuntermMonitoring` in the `siteSetting` for site-scoped Mist Edges
      */
     tuntermMonitorings?: pulumi.Input<pulumi.Input<pulumi.Input<inputs.org.MxclusterTuntermMonitoring>[]>[] | undefined>;
 }
@@ -320,7 +320,7 @@ export interface MxclusterArgs {
      */
     tuntermHostsOrders?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
-     * Selection strategy for ordering tunnel termination hosts
+     * Selection strategy for ordering tunnel termination hosts. enum: `ordered`, `shuffle`, `shuffle-by-site`.
      */
     tuntermHostsSelection?: pulumi.Input<string | undefined>;
     /**
@@ -328,7 +328,7 @@ export interface MxclusterArgs {
      */
     tuntermMonitoringDisabled?: pulumi.Input<boolean | undefined>;
     /**
-     * Monitoring checks for tunnel termination reachability
+     * Monitoring checks for tunnel termination reachability. Only for Org Mist Edges; use `tuntermMonitoring` in the `siteSetting` for site-scoped Mist Edges
      */
     tuntermMonitorings?: pulumi.Input<pulumi.Input<pulumi.Input<inputs.org.MxclusterTuntermMonitoring>[]>[] | undefined>;
 }

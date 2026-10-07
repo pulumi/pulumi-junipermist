@@ -175,7 +175,7 @@ type Setting struct {
 	SyntheticTest SettingSyntheticTestPtrOutput `pulumi:"syntheticTest"`
 	// Automatically logout the user when UI session is inactive. `0` means disabled
 	UiIdleTimeout pulumi.IntOutput `pulumi:"uiIdleTimeout"`
-	// Whether UI usage tracking is disabled for the organization
+	// Whether to disable UI usage tracking (e.g. Fullstory, Pendo) for the whole organization
 	UiNoTracking pulumi.BoolPtrOutput `pulumi:"uiNoTracking"`
 	// Options for organization VPN behavior
 	VpnOptions SettingVpnOptionsPtrOutput `pulumi:"vpnOptions"`
@@ -292,7 +292,7 @@ type settingState struct {
 	SyntheticTest *SettingSyntheticTest `pulumi:"syntheticTest"`
 	// Automatically logout the user when UI session is inactive. `0` means disabled
 	UiIdleTimeout *int `pulumi:"uiIdleTimeout"`
-	// Whether UI usage tracking is disabled for the organization
+	// Whether to disable UI usage tracking (e.g. Fullstory, Pendo) for the whole organization
 	UiNoTracking *bool `pulumi:"uiNoTracking"`
 	// Options for organization VPN behavior
 	VpnOptions *SettingVpnOptions `pulumi:"vpnOptions"`
@@ -377,7 +377,7 @@ type SettingState struct {
 	SyntheticTest SettingSyntheticTestPtrInput
 	// Automatically logout the user when UI session is inactive. `0` means disabled
 	UiIdleTimeout pulumi.IntPtrInput
-	// Whether UI usage tracking is disabled for the organization
+	// Whether to disable UI usage tracking (e.g. Fullstory, Pendo) for the whole organization
 	UiNoTracking pulumi.BoolPtrInput
 	// Options for organization VPN behavior
 	VpnOptions SettingVpnOptionsPtrInput
@@ -460,7 +460,7 @@ type settingArgs struct {
 	SyntheticTest *SettingSyntheticTest `pulumi:"syntheticTest"`
 	// Automatically logout the user when UI session is inactive. `0` means disabled
 	UiIdleTimeout *int `pulumi:"uiIdleTimeout"`
-	// Whether UI usage tracking is disabled for the organization
+	// Whether to disable UI usage tracking (e.g. Fullstory, Pendo) for the whole organization
 	UiNoTracking *bool `pulumi:"uiNoTracking"`
 	// Options for organization VPN behavior
 	VpnOptions *SettingVpnOptions `pulumi:"vpnOptions"`
@@ -540,7 +540,7 @@ type SettingArgs struct {
 	SyntheticTest SettingSyntheticTestPtrInput
 	// Automatically logout the user when UI session is inactive. `0` means disabled
 	UiIdleTimeout pulumi.IntPtrInput
-	// Whether UI usage tracking is disabled for the organization
+	// Whether to disable UI usage tracking (e.g. Fullstory, Pendo) for the whole organization
 	UiNoTracking pulumi.BoolPtrInput
 	// Options for organization VPN behavior
 	VpnOptions SettingVpnOptionsPtrInput
@@ -816,7 +816,7 @@ func (o SettingOutput) UiIdleTimeout() pulumi.IntOutput {
 	return o.ApplyT(func(v *Setting) pulumi.IntOutput { return v.UiIdleTimeout }).(pulumi.IntOutput)
 }
 
-// Whether UI usage tracking is disabled for the organization
+// Whether to disable UI usage tracking (e.g. Fullstory, Pendo) for the whole organization
 func (o SettingOutput) UiNoTracking() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Setting) pulumi.BoolPtrOutput { return v.UiNoTracking }).(pulumi.BoolPtrOutput)
 }

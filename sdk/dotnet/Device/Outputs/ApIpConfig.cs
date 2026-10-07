@@ -50,11 +50,11 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? Netmask6;
         /// <summary>
-        /// IPv4 address assignment mode for AP management traffic
+        /// IPv4 address assignment mode for AP management traffic. enum: `Dhcp`, `Static`.
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// IPv6 address assignment mode for AP management traffic
+        /// IPv6 address assignment mode for AP management traffic. enum: `Autoconf`, `Dhcp`, `Disabled`, `Static`.
         /// </summary>
         public readonly string? Type6;
         /// <summary>

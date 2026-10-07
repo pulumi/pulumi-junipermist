@@ -61,7 +61,7 @@ public final class SwitchPortConfig {
      */
     private @Nullable Boolean disableAutoneg;
     /**
-     * @return Link duplex mode for this Junos port
+     * @return Link duplex mode for this Junos port. enum: `auto`, `full`, `half`.
      * 
      */
     private @Nullable String duplex;
@@ -101,7 +101,7 @@ public final class SwitchPortConfig {
      */
     private @Nullable String portNetwork;
     /**
-     * @return Link speed for this Junos port
+     * @return Link speed for this Junos port. enum: `10m`, `100m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`, `auto`.
      * 
      */
     private @Nullable String speed;
@@ -176,7 +176,7 @@ public final class SwitchPortConfig {
         return Optional.ofNullable(this.disableAutoneg);
     }
     /**
-     * @return Link duplex mode for this Junos port
+     * @return Link duplex mode for this Junos port. enum: `auto`, `full`, `half`.
      * 
      */
     public Optional<String> duplex() {
@@ -232,7 +232,7 @@ public final class SwitchPortConfig {
         return Optional.ofNullable(this.portNetwork);
     }
     /**
-     * @return Link speed for this Junos port
+     * @return Link speed for this Junos port. enum: `10m`, `100m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`, `auto`.
      * 
      */
     public Optional<String> speed() {

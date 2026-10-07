@@ -88,13 +88,13 @@ type Wlan struct {
 	AppLimit WlanAppLimitPtrOutput `pulumi:"appLimit"`
 	// QoS rules for application traffic on this WLAN
 	AppQos WlanAppQosOutput `pulumi:"appQos"`
-	// Scope that determines where this WLAN is applied
+	// Scope that determines where this WLAN is applied. enum: `aps`, `site`, `wxtags`.
 	ApplyTo pulumi.StringOutput `pulumi:"applyTo"`
 	// Whether to enable smart arp filter
 	ArpFilter pulumi.BoolOutput `pulumi:"arpFilter"`
 	// Settings that control client authentication for this WLAN
 	Auth WlanAuthPtrOutput `pulumi:"auth"`
-	// RADIUS authentication server selection behavior for this WLAN
+	// RADIUS authentication server selection behavior for this WLAN. enum: `ordered`, `unordered`.
 	AuthServerSelection pulumi.StringOutput `pulumi:"authServerSelection"`
 	// RADIUS authentication servers used by this WLAN. Required when `auth.type`==`eap`
 	AuthServers WlanAuthServerArrayOutput `pulumi:"authServers"`
@@ -179,7 +179,7 @@ type Wlan struct {
 	Hotspot20 WlanHotspot20PtrOutput `pulumi:"hotspot20"`
 	// DHCP Option 82 insertion settings for this WLAN
 	InjectDhcpOption82 WlanInjectDhcpOption82PtrOutput `pulumi:"injectDhcpOption82"`
-	// Network interface or tunnel where this WLAN bridges client traffic
+	// Network interface or tunnel where this WLAN bridges client traffic. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`.
 	Interface pulumi.StringOutput `pulumi:"interface"`
 	// Whether to stop clients to talk to each other
 	Isolation pulumi.BoolPtrOutput `pulumi:"isolation"`
@@ -231,7 +231,7 @@ type Wlan struct {
 	Rateset WlanRatesetMapOutput `pulumi:"rateset"`
 	// When different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
 	ReconnectClientsWhenRoamingMxcluster pulumi.BoolPtrOutput `pulumi:"reconnectClientsWhenRoamingMxcluster"`
-	// Fast roaming mode configured for this WLAN
+	// Fast roaming mode configured for this WLAN. enum: `11r`, `NONE`, `OKC`.
 	RoamMode pulumi.StringPtrOutput `pulumi:"roamMode"`
 	// Operating schedule controlling when this WLAN is active
 	Schedule WlanScheduleOutput `pulumi:"schedule"`
@@ -323,13 +323,13 @@ type wlanState struct {
 	AppLimit *WlanAppLimit `pulumi:"appLimit"`
 	// QoS rules for application traffic on this WLAN
 	AppQos *WlanAppQos `pulumi:"appQos"`
-	// Scope that determines where this WLAN is applied
+	// Scope that determines where this WLAN is applied. enum: `aps`, `site`, `wxtags`.
 	ApplyTo *string `pulumi:"applyTo"`
 	// Whether to enable smart arp filter
 	ArpFilter *bool `pulumi:"arpFilter"`
 	// Settings that control client authentication for this WLAN
 	Auth *WlanAuth `pulumi:"auth"`
-	// RADIUS authentication server selection behavior for this WLAN
+	// RADIUS authentication server selection behavior for this WLAN. enum: `ordered`, `unordered`.
 	AuthServerSelection *string `pulumi:"authServerSelection"`
 	// RADIUS authentication servers used by this WLAN. Required when `auth.type`==`eap`
 	AuthServers []WlanAuthServer `pulumi:"authServers"`
@@ -414,7 +414,7 @@ type wlanState struct {
 	Hotspot20 *WlanHotspot20 `pulumi:"hotspot20"`
 	// DHCP Option 82 insertion settings for this WLAN
 	InjectDhcpOption82 *WlanInjectDhcpOption82 `pulumi:"injectDhcpOption82"`
-	// Network interface or tunnel where this WLAN bridges client traffic
+	// Network interface or tunnel where this WLAN bridges client traffic. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`.
 	Interface *string `pulumi:"interface"`
 	// Whether to stop clients to talk to each other
 	Isolation *bool `pulumi:"isolation"`
@@ -466,7 +466,7 @@ type wlanState struct {
 	Rateset map[string]WlanRateset `pulumi:"rateset"`
 	// When different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
 	ReconnectClientsWhenRoamingMxcluster *bool `pulumi:"reconnectClientsWhenRoamingMxcluster"`
-	// Fast roaming mode configured for this WLAN
+	// Fast roaming mode configured for this WLAN. enum: `11r`, `NONE`, `OKC`.
 	RoamMode *string `pulumi:"roamMode"`
 	// Operating schedule controlling when this WLAN is active
 	Schedule *WlanSchedule `pulumi:"schedule"`
@@ -523,13 +523,13 @@ type WlanState struct {
 	AppLimit WlanAppLimitPtrInput
 	// QoS rules for application traffic on this WLAN
 	AppQos WlanAppQosPtrInput
-	// Scope that determines where this WLAN is applied
+	// Scope that determines where this WLAN is applied. enum: `aps`, `site`, `wxtags`.
 	ApplyTo pulumi.StringPtrInput
 	// Whether to enable smart arp filter
 	ArpFilter pulumi.BoolPtrInput
 	// Settings that control client authentication for this WLAN
 	Auth WlanAuthPtrInput
-	// RADIUS authentication server selection behavior for this WLAN
+	// RADIUS authentication server selection behavior for this WLAN. enum: `ordered`, `unordered`.
 	AuthServerSelection pulumi.StringPtrInput
 	// RADIUS authentication servers used by this WLAN. Required when `auth.type`==`eap`
 	AuthServers WlanAuthServerArrayInput
@@ -614,7 +614,7 @@ type WlanState struct {
 	Hotspot20 WlanHotspot20PtrInput
 	// DHCP Option 82 insertion settings for this WLAN
 	InjectDhcpOption82 WlanInjectDhcpOption82PtrInput
-	// Network interface or tunnel where this WLAN bridges client traffic
+	// Network interface or tunnel where this WLAN bridges client traffic. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`.
 	Interface pulumi.StringPtrInput
 	// Whether to stop clients to talk to each other
 	Isolation pulumi.BoolPtrInput
@@ -666,7 +666,7 @@ type WlanState struct {
 	Rateset WlanRatesetMapInput
 	// When different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
 	ReconnectClientsWhenRoamingMxcluster pulumi.BoolPtrInput
-	// Fast roaming mode configured for this WLAN
+	// Fast roaming mode configured for this WLAN. enum: `11r`, `NONE`, `OKC`.
 	RoamMode pulumi.StringPtrInput
 	// Operating schedule controlling when this WLAN is active
 	Schedule WlanSchedulePtrInput
@@ -727,13 +727,13 @@ type wlanArgs struct {
 	AppLimit *WlanAppLimit `pulumi:"appLimit"`
 	// QoS rules for application traffic on this WLAN
 	AppQos *WlanAppQos `pulumi:"appQos"`
-	// Scope that determines where this WLAN is applied
+	// Scope that determines where this WLAN is applied. enum: `aps`, `site`, `wxtags`.
 	ApplyTo *string `pulumi:"applyTo"`
 	// Whether to enable smart arp filter
 	ArpFilter *bool `pulumi:"arpFilter"`
 	// Settings that control client authentication for this WLAN
 	Auth *WlanAuth `pulumi:"auth"`
-	// RADIUS authentication server selection behavior for this WLAN
+	// RADIUS authentication server selection behavior for this WLAN. enum: `ordered`, `unordered`.
 	AuthServerSelection *string `pulumi:"authServerSelection"`
 	// RADIUS authentication servers used by this WLAN. Required when `auth.type`==`eap`
 	AuthServers []WlanAuthServer `pulumi:"authServers"`
@@ -818,7 +818,7 @@ type wlanArgs struct {
 	Hotspot20 *WlanHotspot20 `pulumi:"hotspot20"`
 	// DHCP Option 82 insertion settings for this WLAN
 	InjectDhcpOption82 *WlanInjectDhcpOption82 `pulumi:"injectDhcpOption82"`
-	// Network interface or tunnel where this WLAN bridges client traffic
+	// Network interface or tunnel where this WLAN bridges client traffic. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`.
 	Interface *string `pulumi:"interface"`
 	// Whether to stop clients to talk to each other
 	Isolation *bool `pulumi:"isolation"`
@@ -860,7 +860,7 @@ type wlanArgs struct {
 	Rateset map[string]WlanRateset `pulumi:"rateset"`
 	// When different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
 	ReconnectClientsWhenRoamingMxcluster *bool `pulumi:"reconnectClientsWhenRoamingMxcluster"`
-	// Fast roaming mode configured for this WLAN
+	// Fast roaming mode configured for this WLAN. enum: `11r`, `NONE`, `OKC`.
 	RoamMode *string `pulumi:"roamMode"`
 	// Operating schedule controlling when this WLAN is active
 	Schedule *WlanSchedule `pulumi:"schedule"`
@@ -918,13 +918,13 @@ type WlanArgs struct {
 	AppLimit WlanAppLimitPtrInput
 	// QoS rules for application traffic on this WLAN
 	AppQos WlanAppQosPtrInput
-	// Scope that determines where this WLAN is applied
+	// Scope that determines where this WLAN is applied. enum: `aps`, `site`, `wxtags`.
 	ApplyTo pulumi.StringPtrInput
 	// Whether to enable smart arp filter
 	ArpFilter pulumi.BoolPtrInput
 	// Settings that control client authentication for this WLAN
 	Auth WlanAuthPtrInput
-	// RADIUS authentication server selection behavior for this WLAN
+	// RADIUS authentication server selection behavior for this WLAN. enum: `ordered`, `unordered`.
 	AuthServerSelection pulumi.StringPtrInput
 	// RADIUS authentication servers used by this WLAN. Required when `auth.type`==`eap`
 	AuthServers WlanAuthServerArrayInput
@@ -1009,7 +1009,7 @@ type WlanArgs struct {
 	Hotspot20 WlanHotspot20PtrInput
 	// DHCP Option 82 insertion settings for this WLAN
 	InjectDhcpOption82 WlanInjectDhcpOption82PtrInput
-	// Network interface or tunnel where this WLAN bridges client traffic
+	// Network interface or tunnel where this WLAN bridges client traffic. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`.
 	Interface pulumi.StringPtrInput
 	// Whether to stop clients to talk to each other
 	Isolation pulumi.BoolPtrInput
@@ -1051,7 +1051,7 @@ type WlanArgs struct {
 	Rateset WlanRatesetMapInput
 	// When different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
 	ReconnectClientsWhenRoamingMxcluster pulumi.BoolPtrInput
-	// Fast roaming mode configured for this WLAN
+	// Fast roaming mode configured for this WLAN. enum: `11r`, `NONE`, `OKC`.
 	RoamMode pulumi.StringPtrInput
 	// Operating schedule controlling when this WLAN is active
 	Schedule WlanSchedulePtrInput
@@ -1224,7 +1224,7 @@ func (o WlanOutput) AppQos() WlanAppQosOutput {
 	return o.ApplyT(func(v *Wlan) WlanAppQosOutput { return v.AppQos }).(WlanAppQosOutput)
 }
 
-// Scope that determines where this WLAN is applied
+// Scope that determines where this WLAN is applied. enum: `aps`, `site`, `wxtags`.
 func (o WlanOutput) ApplyTo() pulumi.StringOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.StringOutput { return v.ApplyTo }).(pulumi.StringOutput)
 }
@@ -1239,7 +1239,7 @@ func (o WlanOutput) Auth() WlanAuthPtrOutput {
 	return o.ApplyT(func(v *Wlan) WlanAuthPtrOutput { return v.Auth }).(WlanAuthPtrOutput)
 }
 
-// RADIUS authentication server selection behavior for this WLAN
+// RADIUS authentication server selection behavior for this WLAN. enum: `ordered`, `unordered`.
 func (o WlanOutput) AuthServerSelection() pulumi.StringOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.StringOutput { return v.AuthServerSelection }).(pulumi.StringOutput)
 }
@@ -1447,7 +1447,7 @@ func (o WlanOutput) InjectDhcpOption82() WlanInjectDhcpOption82PtrOutput {
 	return o.ApplyT(func(v *Wlan) WlanInjectDhcpOption82PtrOutput { return v.InjectDhcpOption82 }).(WlanInjectDhcpOption82PtrOutput)
 }
 
-// Network interface or tunnel where this WLAN bridges client traffic
+// Network interface or tunnel where this WLAN bridges client traffic. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`.
 func (o WlanOutput) Interface() pulumi.StringOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.StringOutput { return v.Interface }).(pulumi.StringOutput)
 }
@@ -1577,7 +1577,7 @@ func (o WlanOutput) ReconnectClientsWhenRoamingMxcluster() pulumi.BoolPtrOutput 
 	return o.ApplyT(func(v *Wlan) pulumi.BoolPtrOutput { return v.ReconnectClientsWhenRoamingMxcluster }).(pulumi.BoolPtrOutput)
 }
 
-// Fast roaming mode configured for this WLAN
+// Fast roaming mode configured for this WLAN. enum: `11r`, `NONE`, `OKC`.
 func (o WlanOutput) RoamMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.StringPtrOutput { return v.RoamMode }).(pulumi.StringPtrOutput)
 }

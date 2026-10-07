@@ -39,7 +39,7 @@ public final class ApEslConfig {
      */
     private @Nullable Integer port;
     /**
-     * @return ESL integration type to enable on the AP
+     * @return ESL integration type to enable on the AP. enum: `hanshow`, `imagotag`, `native`, `solum`.
      * 
      */
     private @Nullable String type;
@@ -91,7 +91,7 @@ public final class ApEslConfig {
         return Optional.ofNullable(this.port);
     }
     /**
-     * @return ESL integration type to enable on the AP
+     * @return ESL integration type to enable on the AP. enum: `hanshow`, `imagotag`, `native`, `solum`.
      * 
      */
     public Optional<String> type() {

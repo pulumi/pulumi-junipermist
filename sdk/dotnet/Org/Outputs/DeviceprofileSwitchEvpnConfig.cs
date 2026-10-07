@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// EVPN topology role for the switch
+        /// EVPN topology role for the switch. enum: `Access`, `Border`, `collapsed-core`, `Core`, `Distribution`, `esilag-access`, `None`.
         /// </summary>
         public readonly string? Role;
 

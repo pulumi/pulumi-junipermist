@@ -19,7 +19,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// EVPN topology role for the switch
+        /// EVPN topology role for the switch. enum: `Access`, `Border`, `collapsed-core`, `Core`, `Distribution`, `esilag-access`, `None`.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }

@@ -62,14 +62,14 @@ public final class GatewayTunnelConfigsProbeArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Protocol used by the custom IPsec tunnel health probe
+     * Protocol used by the custom IPsec tunnel health probe. enum: `http`, `icmp`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Protocol used by the custom IPsec tunnel health probe
+     * @return Protocol used by the custom IPsec tunnel health probe. enum: `http`, `icmp`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -167,7 +167,7 @@ public final class GatewayTunnelConfigsProbeArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param type Protocol used by the custom IPsec tunnel health probe
+         * @param type Protocol used by the custom IPsec tunnel health probe. enum: `http`, `icmp`.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class GatewayTunnelConfigsProbeArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param type Protocol used by the custom IPsec tunnel health probe
+         * @param type Protocol used by the custom IPsec tunnel health probe. enum: `http`, `icmp`.
          * 
          * @return builder
          * 

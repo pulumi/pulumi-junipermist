@@ -16,14 +16,14 @@ public final class VpnPathSelectionArgs extends com.pulumi.resources.ResourceArg
     public static final VpnPathSelectionArgs Empty = new VpnPathSelectionArgs();
 
     /**
-     * Path selection strategy for a hub-and-spoke VPN
+     * Path selection strategy for a hub-and-spoke VPN. enum: `disabled`, `simple`, `manual`.
      * 
      */
     @Import(name="strategy")
     private @Nullable Output<String> strategy;
 
     /**
-     * @return Path selection strategy for a hub-and-spoke VPN
+     * @return Path selection strategy for a hub-and-spoke VPN. enum: `disabled`, `simple`, `manual`.
      * 
      */
     public Optional<Output<String>> strategy() {
@@ -55,7 +55,7 @@ public final class VpnPathSelectionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param strategy Path selection strategy for a hub-and-spoke VPN
+         * @param strategy Path selection strategy for a hub-and-spoke VPN. enum: `disabled`, `simple`, `manual`.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class VpnPathSelectionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param strategy Path selection strategy for a hub-and-spoke VPN
+         * @param strategy Path selection strategy for a hub-and-spoke VPN. enum: `disabled`, `simple`, `manual`.
          * 
          * @return builder
          * 

@@ -14,34 +14,6 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class EvpnTopologySwitches
     {
         /// <summary>
-        /// Associated device profile identifier for the switch. Use the Assign Org Device Profile endpoint to assign a Device Profile to the switch.
-        /// </summary>
-        public readonly string? DeviceprofileId;
-        /// <summary>
-        /// IP addresses used by this switch for EVPN downlinks
-        /// </summary>
-        public readonly ImmutableArray<string> DownlinkIps;
-        /// <summary>
-        /// Switch MAC addresses connected as downlinks from this topology member
-        /// </summary>
-        public readonly ImmutableArray<string> Downlinks;
-        /// <summary>
-        /// Switch MAC addresses connected through ESI-LAG from this topology member
-        /// </summary>
-        public readonly ImmutableArray<string> Esilaglinks;
-        /// <summary>
-        /// Topology identifier number for this EVPN switch member
-        /// </summary>
-        public readonly int? EvpnId;
-        /// <summary>
-        /// Switch MAC address used to identify the topology member
-        /// </summary>
-        public readonly string? Mac;
-        /// <summary>
-        /// Switch model for this topology member
-        /// </summary>
-        public readonly string? Model;
-        /// <summary>
         /// Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g. 
         ///   * for CLOS, to group dist / access switches into pods
         ///   * for ERB/CRB, to group dist / esilag-access into pods
@@ -52,84 +24,21 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly ImmutableArray<int> Pods;
         /// <summary>
-        /// EVPN topology role for this switch
+        /// EVPN topology role for this switch. enum: `Access`, `Border`, `collapsed-core`, `Core`, `Distribution`, `esilag-access`, `None`.
         /// </summary>
         public readonly string Role;
-        /// <summary>
-        /// Routing identifier used by this switch for EVPN routing
-        /// </summary>
-        public readonly string? RouterId;
-        /// <summary>
-        /// Associated site for this EVPN topology switch
-        /// </summary>
-        public readonly string? SiteId;
-        /// <summary>
-        /// Builder-suggested downlink switch MAC addresses
-        /// </summary>
-        public readonly ImmutableArray<string> SuggestedDownlinks;
-        /// <summary>
-        /// Builder-suggested ESI-LAG switch MAC addresses
-        /// </summary>
-        public readonly ImmutableArray<string> SuggestedEsilaglinks;
-        /// <summary>
-        /// Builder-suggested uplink switch MAC addresses
-        /// </summary>
-        public readonly ImmutableArray<string> SuggestedUplinks;
-        /// <summary>
-        /// Switch MAC addresses connected as uplinks from this topology member
-        /// </summary>
-        public readonly ImmutableArray<string> Uplinks;
 
         [OutputConstructor]
         private EvpnTopologySwitches(
-            string? deviceprofileId,
-
-            ImmutableArray<string> downlinkIps,
-
-            ImmutableArray<string> downlinks,
-
-            ImmutableArray<string> esilaglinks,
-
-            int? evpnId,
-
-            string? mac,
-
-            string? model,
-
             int? pod,
 
             ImmutableArray<int> pods,
 
-            string role,
-
-            string? routerId,
-
-            string? siteId,
-
-            ImmutableArray<string> suggestedDownlinks,
-
-            ImmutableArray<string> suggestedEsilaglinks,
-
-            ImmutableArray<string> suggestedUplinks,
-
-            ImmutableArray<string> uplinks)
+            string role)
         {
-            DeviceprofileId = deviceprofileId;
-            DownlinkIps = downlinkIps;
-            Downlinks = downlinks;
-            Esilaglinks = esilaglinks;
-            EvpnId = evpnId;
-            Mac = mac;
-            Model = model;
             Pod = pod;
             Pods = pods;
             Role = role;
-            RouterId = routerId;
-            SiteId = siteId;
-            SuggestedDownlinks = suggestedDownlinks;
-            SuggestedEsilaglinks = suggestedEsilaglinks;
-            SuggestedUplinks = suggestedUplinks;
-            Uplinks = uplinks;
         }
     }
 }

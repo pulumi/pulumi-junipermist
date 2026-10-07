@@ -100,7 +100,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<Outputs.RftemplateBand24?> Band24 { get; private set; } = null!;
 
         /// <summary>
-        /// Radio usage mode for the 2.4 GHz-capable radio in this RF template
+        /// Radio usage mode for the 2.4 GHz-capable radio in this RF template. enum: `24`, `5`, `6`, `Auto`.
         /// </summary>
         [Output("band24Usage")]
         public Output<string?> Band24Usage { get; private set; } = null!;
@@ -231,7 +231,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.RftemplateBand24Args>? Band24 { get; set; }
 
         /// <summary>
-        /// Radio usage mode for the 2.4 GHz-capable radio in this RF template
+        /// Radio usage mode for the 2.4 GHz-capable radio in this RF template. enum: `24`, `5`, `6`, `Auto`.
         /// </summary>
         [Input("band24Usage")]
         public Input<string>? Band24Usage { get; set; }
@@ -329,7 +329,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.RftemplateBand24GetArgs>? Band24 { get; set; }
 
         /// <summary>
-        /// Radio usage mode for the 2.4 GHz-capable radio in this RF template
+        /// Radio usage mode for the 2.4 GHz-capable radio in this RF template. enum: `24`, `5`, `6`, `Auto`.
         /// </summary>
         [Input("band24Usage")]
         public Input<string>? Band24Usage { get; set; }

@@ -33,6 +33,7 @@ class GatewaytemplateArgs:
                  gateway_mgmt: pulumi.Input[Optional['GatewaytemplateGatewayMgmtArgs']] = None,
                  idp_profiles: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateIdpProfilesArgs']]]] = None,
                  ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateIpConfigsArgs']]]] = None,
+                 mnha_config: pulumi.Input[Optional['GatewaytemplateMnhaConfigArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  networks: pulumi.Input[Optional[Sequence[pulumi.Input['GatewaytemplateNetworkArgs']]]] = None,
                  ntp_override: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -65,6 +66,7 @@ class GatewaytemplateArgs:
         :param pulumi.Input['GatewaytemplateGatewayMgmtArgs'] gateway_mgmt: Management-plane defaults provided by this gateway template
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateIdpProfilesArgs']]] idp_profiles: Intrusion detection and prevention profile defaults in this gateway template
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateIpConfigsArgs']]] ip_configs: Gateway interface IP configuration defaults by network name
+        :param pulumi.Input['GatewaytemplateMnhaConfigArgs'] mnha_config: Multi-Node HA (MNHA) settings applied by this gateway template, SRX only
         :param pulumi.Input[_builtins.str] name: Display name of the gateway template
         :param pulumi.Input[Sequence[pulumi.Input['GatewaytemplateNetworkArgs']]] networks: Layer 3 networks configured by this gateway template
         :param pulumi.Input[_builtins.bool] ntp_override: Whether NTP servers in this template override inherited values
@@ -78,7 +80,7 @@ class GatewaytemplateArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateTunnelConfigsArgs']]] tunnel_configs: Property key is the tunnel name
         :param pulumi.Input['GatewaytemplateTunnelProviderOptionsArgs'] tunnel_provider_options: Provider-specific tunnel options defined by this gateway template
-        :param pulumi.Input[_builtins.str] type: Gateway template deployment type
+        :param pulumi.Input[_builtins.str] type: Gateway template deployment type. enum: `spoke`, `standalone`.
         :param pulumi.Input[_builtins.str] url_filtering_deny_msg: When a service policy denies a app_category, what message to show in user's browser
         :param pulumi.Input['GatewaytemplateVrfConfigArgs'] vrf_config: VRF defaults applied by this gateway template
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateVrfInstancesArgs']]] vrf_instances: VRF instances configured by this gateway template
@@ -106,6 +108,8 @@ class GatewaytemplateArgs:
             pulumi.set(__self__, "idp_profiles", idp_profiles)
         if ip_configs is not None:
             pulumi.set(__self__, "ip_configs", ip_configs)
+        if mnha_config is not None:
+            pulumi.set(__self__, "mnha_config", mnha_config)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if networks is not None:
@@ -286,6 +290,18 @@ class GatewaytemplateArgs:
         pulumi.set(self, "ip_configs", value)
 
     @_builtins.property
+    @pulumi.getter(name="mnhaConfig")
+    def mnha_config(self) -> pulumi.Input[Optional['GatewaytemplateMnhaConfigArgs']]:
+        """
+        Multi-Node HA (MNHA) settings applied by this gateway template, SRX only
+        """
+        return pulumi.get(self, "mnha_config")
+
+    @mnha_config.setter
+    def mnha_config(self, value: pulumi.Input[Optional['GatewaytemplateMnhaConfigArgs']]):
+        pulumi.set(self, "mnha_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -445,7 +461,7 @@ class GatewaytemplateArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Gateway template deployment type
+        Gateway template deployment type. enum: `spoke`, `standalone`.
         """
         return pulumi.get(self, "type")
 
@@ -504,6 +520,7 @@ class _GatewaytemplateState:
                  gateway_mgmt: pulumi.Input[Optional['GatewaytemplateGatewayMgmtArgs']] = None,
                  idp_profiles: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateIdpProfilesArgs']]]] = None,
                  ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateIpConfigsArgs']]]] = None,
+                 mnha_config: pulumi.Input[Optional['GatewaytemplateMnhaConfigArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  networks: pulumi.Input[Optional[Sequence[pulumi.Input['GatewaytemplateNetworkArgs']]]] = None,
                  ntp_override: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -536,6 +553,7 @@ class _GatewaytemplateState:
         :param pulumi.Input['GatewaytemplateGatewayMgmtArgs'] gateway_mgmt: Management-plane defaults provided by this gateway template
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateIdpProfilesArgs']]] idp_profiles: Intrusion detection and prevention profile defaults in this gateway template
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateIpConfigsArgs']]] ip_configs: Gateway interface IP configuration defaults by network name
+        :param pulumi.Input['GatewaytemplateMnhaConfigArgs'] mnha_config: Multi-Node HA (MNHA) settings applied by this gateway template, SRX only
         :param pulumi.Input[_builtins.str] name: Display name of the gateway template
         :param pulumi.Input[Sequence[pulumi.Input['GatewaytemplateNetworkArgs']]] networks: Layer 3 networks configured by this gateway template
         :param pulumi.Input[_builtins.bool] ntp_override: Whether NTP servers in this template override inherited values
@@ -550,7 +568,7 @@ class _GatewaytemplateState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateTunnelConfigsArgs']]] tunnel_configs: Property key is the tunnel name
         :param pulumi.Input['GatewaytemplateTunnelProviderOptionsArgs'] tunnel_provider_options: Provider-specific tunnel options defined by this gateway template
-        :param pulumi.Input[_builtins.str] type: Gateway template deployment type
+        :param pulumi.Input[_builtins.str] type: Gateway template deployment type. enum: `spoke`, `standalone`.
         :param pulumi.Input[_builtins.str] url_filtering_deny_msg: When a service policy denies a app_category, what message to show in user's browser
         :param pulumi.Input['GatewaytemplateVrfConfigArgs'] vrf_config: VRF defaults applied by this gateway template
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateVrfInstancesArgs']]] vrf_instances: VRF instances configured by this gateway template
@@ -577,6 +595,8 @@ class _GatewaytemplateState:
             pulumi.set(__self__, "idp_profiles", idp_profiles)
         if ip_configs is not None:
             pulumi.set(__self__, "ip_configs", ip_configs)
+        if mnha_config is not None:
+            pulumi.set(__self__, "mnha_config", mnha_config)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if networks is not None:
@@ -745,6 +765,18 @@ class _GatewaytemplateState:
     @ip_configs.setter
     def ip_configs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateIpConfigsArgs']]]]):
         pulumi.set(self, "ip_configs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mnhaConfig")
+    def mnha_config(self) -> pulumi.Input[Optional['GatewaytemplateMnhaConfigArgs']]:
+        """
+        Multi-Node HA (MNHA) settings applied by this gateway template, SRX only
+        """
+        return pulumi.get(self, "mnha_config")
+
+    @mnha_config.setter
+    def mnha_config(self, value: pulumi.Input[Optional['GatewaytemplateMnhaConfigArgs']]):
+        pulumi.set(self, "mnha_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -918,7 +950,7 @@ class _GatewaytemplateState:
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Gateway template deployment type
+        Gateway template deployment type. enum: `spoke`, `standalone`.
         """
         return pulumi.get(self, "type")
 
@@ -980,6 +1012,7 @@ class Gatewaytemplate(pulumi.CustomResource):
                  gateway_mgmt: pulumi.Input[Optional[Union['GatewaytemplateGatewayMgmtArgs', 'GatewaytemplateGatewayMgmtArgsDict']]] = None,
                  idp_profiles: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateIdpProfilesArgs', 'GatewaytemplateIdpProfilesArgsDict']]]]] = None,
                  ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateIpConfigsArgs', 'GatewaytemplateIpConfigsArgsDict']]]]] = None,
+                 mnha_config: pulumi.Input[Optional[Union['GatewaytemplateMnhaConfigArgs', 'GatewaytemplateMnhaConfigArgsDict']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewaytemplateNetworkArgs', 'GatewaytemplateNetworkArgsDict']]]]] = None,
                  ntp_override: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1111,6 +1144,7 @@ class Gatewaytemplate(pulumi.CustomResource):
         :param pulumi.Input[Union['GatewaytemplateGatewayMgmtArgs', 'GatewaytemplateGatewayMgmtArgsDict']] gateway_mgmt: Management-plane defaults provided by this gateway template
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateIdpProfilesArgs', 'GatewaytemplateIdpProfilesArgsDict']]]] idp_profiles: Intrusion detection and prevention profile defaults in this gateway template
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateIpConfigsArgs', 'GatewaytemplateIpConfigsArgsDict']]]] ip_configs: Gateway interface IP configuration defaults by network name
+        :param pulumi.Input[Union['GatewaytemplateMnhaConfigArgs', 'GatewaytemplateMnhaConfigArgsDict']] mnha_config: Multi-Node HA (MNHA) settings applied by this gateway template, SRX only
         :param pulumi.Input[_builtins.str] name: Display name of the gateway template
         :param pulumi.Input[Sequence[pulumi.Input[Union['GatewaytemplateNetworkArgs', 'GatewaytemplateNetworkArgsDict']]]] networks: Layer 3 networks configured by this gateway template
         :param pulumi.Input[_builtins.bool] ntp_override: Whether NTP servers in this template override inherited values
@@ -1125,7 +1159,7 @@ class Gatewaytemplate(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateTunnelConfigsArgs', 'GatewaytemplateTunnelConfigsArgsDict']]]] tunnel_configs: Property key is the tunnel name
         :param pulumi.Input[Union['GatewaytemplateTunnelProviderOptionsArgs', 'GatewaytemplateTunnelProviderOptionsArgsDict']] tunnel_provider_options: Provider-specific tunnel options defined by this gateway template
-        :param pulumi.Input[_builtins.str] type: Gateway template deployment type
+        :param pulumi.Input[_builtins.str] type: Gateway template deployment type. enum: `spoke`, `standalone`.
         :param pulumi.Input[_builtins.str] url_filtering_deny_msg: When a service policy denies a app_category, what message to show in user's browser
         :param pulumi.Input[Union['GatewaytemplateVrfConfigArgs', 'GatewaytemplateVrfConfigArgsDict']] vrf_config: VRF defaults applied by this gateway template
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateVrfInstancesArgs', 'GatewaytemplateVrfInstancesArgsDict']]]] vrf_instances: VRF instances configured by this gateway template
@@ -1261,6 +1295,7 @@ class Gatewaytemplate(pulumi.CustomResource):
                  gateway_mgmt: pulumi.Input[Optional[Union['GatewaytemplateGatewayMgmtArgs', 'GatewaytemplateGatewayMgmtArgsDict']]] = None,
                  idp_profiles: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateIdpProfilesArgs', 'GatewaytemplateIdpProfilesArgsDict']]]]] = None,
                  ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateIpConfigsArgs', 'GatewaytemplateIpConfigsArgsDict']]]]] = None,
+                 mnha_config: pulumi.Input[Optional[Union['GatewaytemplateMnhaConfigArgs', 'GatewaytemplateMnhaConfigArgsDict']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewaytemplateNetworkArgs', 'GatewaytemplateNetworkArgsDict']]]]] = None,
                  ntp_override: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1299,6 +1334,7 @@ class Gatewaytemplate(pulumi.CustomResource):
             __props__.__dict__["gateway_mgmt"] = gateway_mgmt
             __props__.__dict__["idp_profiles"] = idp_profiles
             __props__.__dict__["ip_configs"] = ip_configs
+            __props__.__dict__["mnha_config"] = mnha_config
             __props__.__dict__["name"] = name
             __props__.__dict__["networks"] = networks
             __props__.__dict__["ntp_override"] = ntp_override
@@ -1340,6 +1376,7 @@ class Gatewaytemplate(pulumi.CustomResource):
             gateway_mgmt: pulumi.Input[Optional[Union['GatewaytemplateGatewayMgmtArgs', 'GatewaytemplateGatewayMgmtArgsDict']]] = None,
             idp_profiles: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateIdpProfilesArgs', 'GatewaytemplateIdpProfilesArgsDict']]]]] = None,
             ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateIpConfigsArgs', 'GatewaytemplateIpConfigsArgsDict']]]]] = None,
+            mnha_config: pulumi.Input[Optional[Union['GatewaytemplateMnhaConfigArgs', 'GatewaytemplateMnhaConfigArgsDict']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewaytemplateNetworkArgs', 'GatewaytemplateNetworkArgsDict']]]]] = None,
             ntp_override: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1376,6 +1413,7 @@ class Gatewaytemplate(pulumi.CustomResource):
         :param pulumi.Input[Union['GatewaytemplateGatewayMgmtArgs', 'GatewaytemplateGatewayMgmtArgsDict']] gateway_mgmt: Management-plane defaults provided by this gateway template
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateIdpProfilesArgs', 'GatewaytemplateIdpProfilesArgsDict']]]] idp_profiles: Intrusion detection and prevention profile defaults in this gateway template
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateIpConfigsArgs', 'GatewaytemplateIpConfigsArgsDict']]]] ip_configs: Gateway interface IP configuration defaults by network name
+        :param pulumi.Input[Union['GatewaytemplateMnhaConfigArgs', 'GatewaytemplateMnhaConfigArgsDict']] mnha_config: Multi-Node HA (MNHA) settings applied by this gateway template, SRX only
         :param pulumi.Input[_builtins.str] name: Display name of the gateway template
         :param pulumi.Input[Sequence[pulumi.Input[Union['GatewaytemplateNetworkArgs', 'GatewaytemplateNetworkArgsDict']]]] networks: Layer 3 networks configured by this gateway template
         :param pulumi.Input[_builtins.bool] ntp_override: Whether NTP servers in this template override inherited values
@@ -1390,7 +1428,7 @@ class Gatewaytemplate(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateTunnelConfigsArgs', 'GatewaytemplateTunnelConfigsArgsDict']]]] tunnel_configs: Property key is the tunnel name
         :param pulumi.Input[Union['GatewaytemplateTunnelProviderOptionsArgs', 'GatewaytemplateTunnelProviderOptionsArgsDict']] tunnel_provider_options: Provider-specific tunnel options defined by this gateway template
-        :param pulumi.Input[_builtins.str] type: Gateway template deployment type
+        :param pulumi.Input[_builtins.str] type: Gateway template deployment type. enum: `spoke`, `standalone`.
         :param pulumi.Input[_builtins.str] url_filtering_deny_msg: When a service policy denies a app_category, what message to show in user's browser
         :param pulumi.Input[Union['GatewaytemplateVrfConfigArgs', 'GatewaytemplateVrfConfigArgsDict']] vrf_config: VRF defaults applied by this gateway template
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateVrfInstancesArgs', 'GatewaytemplateVrfInstancesArgsDict']]]] vrf_instances: VRF instances configured by this gateway template
@@ -1410,6 +1448,7 @@ class Gatewaytemplate(pulumi.CustomResource):
         __props__.__dict__["gateway_mgmt"] = gateway_mgmt
         __props__.__dict__["idp_profiles"] = idp_profiles
         __props__.__dict__["ip_configs"] = ip_configs
+        __props__.__dict__["mnha_config"] = mnha_config
         __props__.__dict__["name"] = name
         __props__.__dict__["networks"] = networks
         __props__.__dict__["ntp_override"] = ntp_override
@@ -1517,6 +1556,14 @@ class Gatewaytemplate(pulumi.CustomResource):
         Gateway interface IP configuration defaults by network name
         """
         return pulumi.get(self, "ip_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="mnhaConfig")
+    def mnha_config(self) -> pulumi.Output[Optional['outputs.GatewaytemplateMnhaConfig']]:
+        """
+        Multi-Node HA (MNHA) settings applied by this gateway template, SRX only
+        """
+        return pulumi.get(self, "mnha_config")
 
     @_builtins.property
     @pulumi.getter
@@ -1634,7 +1681,7 @@ class Gatewaytemplate(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        Gateway template deployment type
+        Gateway template deployment type. enum: `spoke`, `standalone`.
         """
         return pulumi.get(self, "type")
 

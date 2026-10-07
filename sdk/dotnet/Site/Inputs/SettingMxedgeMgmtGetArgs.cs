@@ -41,13 +41,13 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// IPv4 address assignment mode for out-of-band management
+        /// IPv4 address assignment mode for out-of-band management. enum: `Dhcp`, `Disabled`, `Static`.
         /// </summary>
         [Input("oobIpType")]
         public Input<string>? OobIpType { get; set; }
 
         /// <summary>
-        /// IPv6 address assignment mode for out-of-band management
+        /// IPv6 address assignment mode for out-of-band management. enum: `Autoconf`, `Dhcp`, `Disabled`, `Static`.
         /// </summary>
         [Input("oobIpType6")]
         public Input<string>? OobIpType6 { get; set; }

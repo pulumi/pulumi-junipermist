@@ -249,6 +249,21 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.vpnAccess);
     }
 
+    /**
+     * SecurityZone this network belongs to. When set, the zone name is used as the security zone name on the SRX, and multiple networks can share the same zone. When omitted, the network `name` is used as the security zone name.
+     * 
+     */
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
+
+    /**
+     * @return SecurityZone this network belongs to. When set, the zone name is used as the security zone name on the SRX, and multiple networks can share the same zone. When omitted, the network `name` is used as the security zone name.
+     * 
+     */
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
+    }
+
     private NetworkArgs() {}
 
     private NetworkArgs(NetworkArgs $) {
@@ -267,6 +282,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         this.tenants = $.tenants;
         this.vlanId = $.vlanId;
         this.vpnAccess = $.vpnAccess;
+        this.zoneId = $.zoneId;
     }
 
     public static Builder builder() {
@@ -610,6 +626,27 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder vpnAccess(Map<String,NetworkVpnAccessArgs> vpnAccess) {
             return vpnAccess(Output.of(vpnAccess));
+        }
+
+        /**
+         * @param zoneId SecurityZone this network belongs to. When set, the zone name is used as the security zone name on the SRX, and multiple networks can share the same zone. When omitted, the network `name` is used as the security zone name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneId(@Nullable Output<String> zoneId) {
+            $.zoneId = zoneId;
+            return this;
+        }
+
+        /**
+         * @param zoneId SecurityZone this network belongs to. When set, the zone name is used as the security zone name on the SRX, and multiple networks can share the same zone. When omitted, the network `name` is used as the security zone name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneId(String zoneId) {
+            return zoneId(Output.of(zoneId));
         }
 
         public NetworkArgs build() {

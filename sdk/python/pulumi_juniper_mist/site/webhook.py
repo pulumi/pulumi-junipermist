@@ -49,13 +49,13 @@ class WebhookArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] topics: enum: `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `rssizone`, `sdkclient-scan-data`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
         :param pulumi.Input[_builtins.str] url: Destination URL that receives webhook deliveries
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] assetfilter_ids: Asset filter identifiers used to restrict `asset-raw-rssi` webhook events
-        :param pulumi.Input[_builtins.str] default_action: Default action applied when none of the `rules` match the incoming event
+        :param pulumi.Input[_builtins.str] default_action: Default action applied when none of the `rules` match the incoming event. enum: `permit`, `block`.
         :param pulumi.Input[_builtins.bool] enabled: Whether webhook is enabled
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] headers: If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
         :param pulumi.Input[_builtins.str] name: Display name of the webhook
         :param pulumi.Input[_builtins.str] oauth2_client_id: Required when `oauth2_grant_type`==`client_credentials`; OAuth2 client identifier used to request an access token
         :param pulumi.Input[_builtins.str] oauth2_client_secret: Required when `oauth2_grant_type`==`client_credentials`; OAuth2 client secret used to request an access token
-        :param pulumi.Input[_builtins.str] oauth2_grant_type: OAuth2 grant type used when `type`==`oauth2`
+        :param pulumi.Input[_builtins.str] oauth2_grant_type: OAuth2 grant type used when `type`==`oauth2`. enum: `client_credentials`, `password`.
         :param pulumi.Input[_builtins.str] oauth2_password: Required when `oauth2_grant_type`==`password`; password used for the OAuth2 token request
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] oauth2_scopes: OAuth2 scopes included in the token request when `type`==`oauth2`
         :param pulumi.Input[_builtins.str] oauth2_token_url: Required when `type`==`oauth2`; token endpoint URL used to obtain the OAuth2 access token
@@ -64,7 +64,7 @@ class WebhookArgs:
         :param pulumi.Input[_builtins.str] secret: Only if `type`=`http-post`
         :param pulumi.Input[_builtins.bool] single_event_per_message: Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
         :param pulumi.Input[_builtins.str] splunk_token: Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
-        :param pulumi.Input[_builtins.str] type: Delivery mechanism used by this webhook
+        :param pulumi.Input[_builtins.str] type: Delivery mechanism used by this webhook. enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`.
         :param pulumi.Input[_builtins.bool] verify_cert: When url uses HTTPS, whether to verify the certificate
         """
         pulumi.set(__self__, "site_id", site_id)
@@ -159,7 +159,7 @@ class WebhookArgs:
     @pulumi.getter(name="defaultAction")
     def default_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Default action applied when none of the `rules` match the incoming event
+        Default action applied when none of the `rules` match the incoming event. enum: `permit`, `block`.
         """
         return pulumi.get(self, "default_action")
 
@@ -231,7 +231,7 @@ class WebhookArgs:
     @pulumi.getter(name="oauth2GrantType")
     def oauth2_grant_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        OAuth2 grant type used when `type`==`oauth2`
+        OAuth2 grant type used when `type`==`oauth2`. enum: `client_credentials`, `password`.
         """
         return pulumi.get(self, "oauth2_grant_type")
 
@@ -339,7 +339,7 @@ class WebhookArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Delivery mechanism used by this webhook
+        Delivery mechanism used by this webhook. enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`.
         """
         return pulumi.get(self, "type")
 
@@ -389,13 +389,13 @@ class _WebhookState:
         Input properties used for looking up and filtering Webhook resources.
 
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] assetfilter_ids: Asset filter identifiers used to restrict `asset-raw-rssi` webhook events
-        :param pulumi.Input[_builtins.str] default_action: Default action applied when none of the `rules` match the incoming event
+        :param pulumi.Input[_builtins.str] default_action: Default action applied when none of the `rules` match the incoming event. enum: `permit`, `block`.
         :param pulumi.Input[_builtins.bool] enabled: Whether webhook is enabled
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] headers: If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
         :param pulumi.Input[_builtins.str] name: Display name of the webhook
         :param pulumi.Input[_builtins.str] oauth2_client_id: Required when `oauth2_grant_type`==`client_credentials`; OAuth2 client identifier used to request an access token
         :param pulumi.Input[_builtins.str] oauth2_client_secret: Required when `oauth2_grant_type`==`client_credentials`; OAuth2 client secret used to request an access token
-        :param pulumi.Input[_builtins.str] oauth2_grant_type: OAuth2 grant type used when `type`==`oauth2`
+        :param pulumi.Input[_builtins.str] oauth2_grant_type: OAuth2 grant type used when `type`==`oauth2`. enum: `client_credentials`, `password`.
         :param pulumi.Input[_builtins.str] oauth2_password: Required when `oauth2_grant_type`==`password`; password used for the OAuth2 token request
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] oauth2_scopes: OAuth2 scopes included in the token request when `type`==`oauth2`
         :param pulumi.Input[_builtins.str] oauth2_token_url: Required when `type`==`oauth2`; token endpoint URL used to obtain the OAuth2 access token
@@ -407,7 +407,7 @@ class _WebhookState:
         :param pulumi.Input[_builtins.str] site_id: Site associated with this webhook when it is site-scoped
         :param pulumi.Input[_builtins.str] splunk_token: Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] topics: enum: `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `rssizone`, `sdkclient-scan-data`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
-        :param pulumi.Input[_builtins.str] type: Delivery mechanism used by this webhook
+        :param pulumi.Input[_builtins.str] type: Delivery mechanism used by this webhook. enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`.
         :param pulumi.Input[_builtins.str] url: Destination URL that receives webhook deliveries
         :param pulumi.Input[_builtins.bool] verify_cert: When url uses HTTPS, whether to verify the certificate
         """
@@ -472,7 +472,7 @@ class _WebhookState:
     @pulumi.getter(name="defaultAction")
     def default_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Default action applied when none of the `rules` match the incoming event
+        Default action applied when none of the `rules` match the incoming event. enum: `permit`, `block`.
         """
         return pulumi.get(self, "default_action")
 
@@ -544,7 +544,7 @@ class _WebhookState:
     @pulumi.getter(name="oauth2GrantType")
     def oauth2_grant_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        OAuth2 grant type used when `type`==`oauth2`
+        OAuth2 grant type used when `type`==`oauth2`. enum: `client_credentials`, `password`.
         """
         return pulumi.get(self, "oauth2_grant_type")
 
@@ -688,7 +688,7 @@ class _WebhookState:
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Delivery mechanism used by this webhook
+        Delivery mechanism used by this webhook. enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`.
         """
         return pulumi.get(self, "type")
 
@@ -796,13 +796,13 @@ class Webhook(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] assetfilter_ids: Asset filter identifiers used to restrict `asset-raw-rssi` webhook events
-        :param pulumi.Input[_builtins.str] default_action: Default action applied when none of the `rules` match the incoming event
+        :param pulumi.Input[_builtins.str] default_action: Default action applied when none of the `rules` match the incoming event. enum: `permit`, `block`.
         :param pulumi.Input[_builtins.bool] enabled: Whether webhook is enabled
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] headers: If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
         :param pulumi.Input[_builtins.str] name: Display name of the webhook
         :param pulumi.Input[_builtins.str] oauth2_client_id: Required when `oauth2_grant_type`==`client_credentials`; OAuth2 client identifier used to request an access token
         :param pulumi.Input[_builtins.str] oauth2_client_secret: Required when `oauth2_grant_type`==`client_credentials`; OAuth2 client secret used to request an access token
-        :param pulumi.Input[_builtins.str] oauth2_grant_type: OAuth2 grant type used when `type`==`oauth2`
+        :param pulumi.Input[_builtins.str] oauth2_grant_type: OAuth2 grant type used when `type`==`oauth2`. enum: `client_credentials`, `password`.
         :param pulumi.Input[_builtins.str] oauth2_password: Required when `oauth2_grant_type`==`password`; password used for the OAuth2 token request
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] oauth2_scopes: OAuth2 scopes included in the token request when `type`==`oauth2`
         :param pulumi.Input[_builtins.str] oauth2_token_url: Required when `type`==`oauth2`; token endpoint URL used to obtain the OAuth2 access token
@@ -813,7 +813,7 @@ class Webhook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] site_id: Site associated with this webhook when it is site-scoped
         :param pulumi.Input[_builtins.str] splunk_token: Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] topics: enum: `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `rssizone`, `sdkclient-scan-data`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
-        :param pulumi.Input[_builtins.str] type: Delivery mechanism used by this webhook
+        :param pulumi.Input[_builtins.str] type: Delivery mechanism used by this webhook. enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`.
         :param pulumi.Input[_builtins.str] url: Destination URL that receives webhook deliveries
         :param pulumi.Input[_builtins.bool] verify_cert: When url uses HTTPS, whether to verify the certificate
         """
@@ -982,13 +982,13 @@ class Webhook(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] assetfilter_ids: Asset filter identifiers used to restrict `asset-raw-rssi` webhook events
-        :param pulumi.Input[_builtins.str] default_action: Default action applied when none of the `rules` match the incoming event
+        :param pulumi.Input[_builtins.str] default_action: Default action applied when none of the `rules` match the incoming event. enum: `permit`, `block`.
         :param pulumi.Input[_builtins.bool] enabled: Whether webhook is enabled
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] headers: If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
         :param pulumi.Input[_builtins.str] name: Display name of the webhook
         :param pulumi.Input[_builtins.str] oauth2_client_id: Required when `oauth2_grant_type`==`client_credentials`; OAuth2 client identifier used to request an access token
         :param pulumi.Input[_builtins.str] oauth2_client_secret: Required when `oauth2_grant_type`==`client_credentials`; OAuth2 client secret used to request an access token
-        :param pulumi.Input[_builtins.str] oauth2_grant_type: OAuth2 grant type used when `type`==`oauth2`
+        :param pulumi.Input[_builtins.str] oauth2_grant_type: OAuth2 grant type used when `type`==`oauth2`. enum: `client_credentials`, `password`.
         :param pulumi.Input[_builtins.str] oauth2_password: Required when `oauth2_grant_type`==`password`; password used for the OAuth2 token request
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] oauth2_scopes: OAuth2 scopes included in the token request when `type`==`oauth2`
         :param pulumi.Input[_builtins.str] oauth2_token_url: Required when `type`==`oauth2`; token endpoint URL used to obtain the OAuth2 access token
@@ -1000,7 +1000,7 @@ class Webhook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] site_id: Site associated with this webhook when it is site-scoped
         :param pulumi.Input[_builtins.str] splunk_token: Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] topics: enum: `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `rssizone`, `sdkclient-scan-data`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
-        :param pulumi.Input[_builtins.str] type: Delivery mechanism used by this webhook
+        :param pulumi.Input[_builtins.str] type: Delivery mechanism used by this webhook. enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`.
         :param pulumi.Input[_builtins.str] url: Destination URL that receives webhook deliveries
         :param pulumi.Input[_builtins.bool] verify_cert: When url uses HTTPS, whether to verify the certificate
         """
@@ -1044,7 +1044,7 @@ class Webhook(pulumi.CustomResource):
     @pulumi.getter(name="defaultAction")
     def default_action(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Default action applied when none of the `rules` match the incoming event
+        Default action applied when none of the `rules` match the incoming event. enum: `permit`, `block`.
         """
         return pulumi.get(self, "default_action")
 
@@ -1092,7 +1092,7 @@ class Webhook(pulumi.CustomResource):
     @pulumi.getter(name="oauth2GrantType")
     def oauth2_grant_type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        OAuth2 grant type used when `type`==`oauth2`
+        OAuth2 grant type used when `type`==`oauth2`. enum: `client_credentials`, `password`.
         """
         return pulumi.get(self, "oauth2_grant_type")
 
@@ -1188,7 +1188,7 @@ class Webhook(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        Delivery mechanism used by this webhook
+        Delivery mechanism used by this webhook. enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`.
         """
         return pulumi.get(self, "type")
 

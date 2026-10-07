@@ -110,14 +110,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Guest portal login scheme used by the WLAN
+     * Guest portal login scheme used by the WLAN. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`.
      * 
      */
     @Import(name="auth")
     private @Nullable Output<String> auth;
 
     /**
-     * @return Guest portal login scheme used by the WLAN
+     * @return Guest portal login scheme used by the WLAN. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`.
      * 
      */
     public Optional<Output<String>> auth() {
@@ -815,14 +815,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional if `smsEnabled`==`true`. SMS provider used to deliver guest portal access codes
+     * Optional if `smsEnabled`==`true`. SMS provider used to deliver guest portal access codes. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`, `smsglobal`.
      * 
      */
     @Import(name="smsProvider")
     private @Nullable Output<String> smsProvider;
 
     /**
-     * @return Optional if `smsEnabled`==`true`. SMS provider used to deliver guest portal access codes
+     * @return Optional if `smsEnabled`==`true`. SMS provider used to deliver guest portal access codes. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`, `smsglobal`.
      * 
      */
     public Optional<Output<String>> smsProvider() {
@@ -1046,14 +1046,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional if `wlanPortalAuth`==`sso`. Signing algorithm used for SAML assertions from the identity provider
+     * Optional if `wlanPortalAuth`==`sso`. Signing algorithm used for SAML assertions from the identity provider. enum: `sha1`, `sha256`, `sha384`, `sha512`.
      * 
      */
     @Import(name="ssoIdpSignAlgo")
     private @Nullable Output<String> ssoIdpSignAlgo;
 
     /**
-     * @return Optional if `wlanPortalAuth`==`sso`. Signing algorithm used for SAML assertions from the identity provider
+     * @return Optional if `wlanPortalAuth`==`sso`. Signing algorithm used for SAML assertions from the identity provider. enum: `sha1`, `sha256`, `sha384`, `sha512`.
      * 
      */
     public Optional<Output<String>> ssoIdpSignAlgo() {
@@ -1091,14 +1091,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional if `wlanPortalAuth`==`sso`. SAML NameID format expected from the identity provider
+     * Optional if `wlanPortalAuth`==`sso`. SAML NameID format expected from the identity provider. enum: `email`, `unspecified`.
      * 
      */
     @Import(name="ssoNameidFormat")
     private @Nullable Output<String> ssoNameidFormat;
 
     /**
-     * @return Optional if `wlanPortalAuth`==`sso`. SAML NameID format expected from the identity provider
+     * @return Optional if `wlanPortalAuth`==`sso`. SAML NameID format expected from the identity provider. enum: `email`, `unspecified`.
      * 
      */
     public Optional<Output<String>> ssoNameidFormat() {
@@ -1417,7 +1417,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param auth Guest portal login scheme used by the WLAN
+         * @param auth Guest portal login scheme used by the WLAN. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`.
          * 
          * @return builder
          * 
@@ -1428,7 +1428,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param auth Guest portal login scheme used by the WLAN
+         * @param auth Guest portal login scheme used by the WLAN. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`.
          * 
          * @return builder
          * 
@@ -2434,7 +2434,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param smsProvider Optional if `smsEnabled`==`true`. SMS provider used to deliver guest portal access codes
+         * @param smsProvider Optional if `smsEnabled`==`true`. SMS provider used to deliver guest portal access codes. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`, `smsglobal`.
          * 
          * @return builder
          * 
@@ -2445,7 +2445,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param smsProvider Optional if `smsEnabled`==`true`. SMS provider used to deliver guest portal access codes
+         * @param smsProvider Optional if `smsEnabled`==`true`. SMS provider used to deliver guest portal access codes. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`, `smsglobal`.
          * 
          * @return builder
          * 
@@ -2765,7 +2765,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssoIdpSignAlgo Optional if `wlanPortalAuth`==`sso`. Signing algorithm used for SAML assertions from the identity provider
+         * @param ssoIdpSignAlgo Optional if `wlanPortalAuth`==`sso`. Signing algorithm used for SAML assertions from the identity provider. enum: `sha1`, `sha256`, `sha384`, `sha512`.
          * 
          * @return builder
          * 
@@ -2776,7 +2776,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssoIdpSignAlgo Optional if `wlanPortalAuth`==`sso`. Signing algorithm used for SAML assertions from the identity provider
+         * @param ssoIdpSignAlgo Optional if `wlanPortalAuth`==`sso`. Signing algorithm used for SAML assertions from the identity provider. enum: `sha1`, `sha256`, `sha384`, `sha512`.
          * 
          * @return builder
          * 
@@ -2828,7 +2828,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssoNameidFormat Optional if `wlanPortalAuth`==`sso`. SAML NameID format expected from the identity provider
+         * @param ssoNameidFormat Optional if `wlanPortalAuth`==`sso`. SAML NameID format expected from the identity provider. enum: `email`, `unspecified`.
          * 
          * @return builder
          * 
@@ -2839,7 +2839,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssoNameidFormat Optional if `wlanPortalAuth`==`sso`. SAML NameID format expected from the identity provider
+         * @param ssoNameidFormat Optional if `wlanPortalAuth`==`sso`. SAML NameID format expected from the identity provider. enum: `email`, `unspecified`.
          * 
          * @return builder
          * 

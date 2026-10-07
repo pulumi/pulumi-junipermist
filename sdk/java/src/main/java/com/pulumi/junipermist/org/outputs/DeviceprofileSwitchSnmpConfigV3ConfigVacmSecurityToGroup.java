@@ -19,7 +19,7 @@ public final class DeviceprofileSwitchSnmpConfigV3ConfigVacmSecurityToGroup {
      */
     private @Nullable List<DeviceprofileSwitchSnmpConfigV3ConfigVacmSecurityToGroupContent> contents;
     /**
-     * @return Required security model for these VACM group mappings
+     * @return Required security model for these VACM group mappings. enum: `usm`, `v1`, `v2c`.
      * 
      */
     private @Nullable String securityModel;
@@ -33,7 +33,7 @@ public final class DeviceprofileSwitchSnmpConfigV3ConfigVacmSecurityToGroup {
         return this.contents == null ? List.of() : this.contents;
     }
     /**
-     * @return Required security model for these VACM group mappings
+     * @return Required security model for these VACM group mappings. enum: `usm`, `v1`, `v2c`.
      * 
      */
     public Optional<String> securityModel() {

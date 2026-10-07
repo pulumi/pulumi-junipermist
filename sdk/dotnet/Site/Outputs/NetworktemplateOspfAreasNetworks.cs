@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? AuthPassword;
         /// <summary>
-        /// Authentication method used by this OSPF network
+        /// Authentication method used by this OSPF network. enum: `Md5`, `None`, `Password`.
         /// </summary>
         public readonly string? AuthType;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? ImportPolicy;
         /// <summary>
-        /// OSPF interface type used for this network
+        /// OSPF interface type used for this network. enum: `Broadcast`, `Nbma`, `P2mp`, `P2p`.
         /// </summary>
         public readonly string? InterfaceType;
         /// <summary>

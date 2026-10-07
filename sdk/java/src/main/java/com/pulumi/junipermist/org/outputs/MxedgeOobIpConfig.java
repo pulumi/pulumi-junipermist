@@ -59,12 +59,12 @@ public final class MxedgeOobIpConfig {
      */
     private @Nullable String netmask6;
     /**
-     * @return IPv4 address assignment mode for out-of-band management
+     * @return IPv4 address assignment mode for out-of-band management. enum: `dhcp`, `static`.
      * 
      */
     private @Nullable String type;
     /**
-     * @return IPv6 address assignment mode for out-of-band management
+     * @return IPv6 address assignment mode for out-of-band management. enum: `dhcp`, `static`.
      * 
      */
     private @Nullable String type6;
@@ -134,14 +134,14 @@ public final class MxedgeOobIpConfig {
         return Optional.ofNullable(this.netmask6);
     }
     /**
-     * @return IPv4 address assignment mode for out-of-band management
+     * @return IPv4 address assignment mode for out-of-band management. enum: `dhcp`, `static`.
      * 
      */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return IPv6 address assignment mode for out-of-band management
+     * @return IPv6 address assignment mode for out-of-band management. enum: `dhcp`, `static`.
      * 
      */
     public Optional<String> type6() {

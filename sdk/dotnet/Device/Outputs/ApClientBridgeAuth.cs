@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? Psk;
         /// <summary>
-        /// Authentication mode for the client bridge connection
+        /// Authentication mode for the client bridge connection. enum: `Open`, `Psk`.
         /// </summary>
         public readonly string? Type;
 

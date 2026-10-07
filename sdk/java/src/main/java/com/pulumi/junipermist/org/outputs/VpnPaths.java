@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VpnPaths {
     /**
-     * @return BFD profile used for this VPN path
+     * @return BFD profile used for this VPN path. enum: `broadband`, `lte`.
      * 
      */
     private @Nullable String bfdProfile;
@@ -49,7 +49,7 @@ public final class VpnPaths {
 
     private VpnPaths() {}
     /**
-     * @return BFD profile used for this VPN path
+     * @return BFD profile used for this VPN path. enum: `broadband`, `lte`.
      * 
      */
     public Optional<String> bfdProfile() {

@@ -14,11 +14,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class SsoRolePrivilege
     {
         /// <summary>
-        /// Access role granted by this organization privilege
+        /// Access role granted by this organization privilege. enum: `Admin`, `Helpdesk`, `Installer`, `Read`, `Write`.
         /// </summary>
         public readonly string Role;
         /// <summary>
-        /// Organization hierarchy level where this privilege applies
+        /// Organization hierarchy level where this privilege applies. enum: `Org`, `Site`, `Sitegroup`, `Orgsites`.
         /// </summary>
         public readonly string Scope;
         /// <summary>

@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly int? Port;
         /// <summary>
-        /// Monitoring method used for this tunnel termination check
+        /// Monitoring method used for this tunnel termination check. enum: `Arp`, `Ping`, `Tcp`.
         /// </summary>
         public readonly string? Protocol;
         /// <summary>

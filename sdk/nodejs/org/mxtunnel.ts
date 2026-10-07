@@ -126,7 +126,7 @@ export class Mxtunnel extends pulumi.CustomResource {
      */
     declare public readonly orgId: pulumi.Output<string>;
     /**
-     * Encapsulation protocol used for the Mist Tunnel
+     * Encapsulation protocol used for the Mist Tunnel. enum: `ip`, `udp`.
      */
     declare public readonly protocol: pulumi.Output<string | undefined>;
     /**
@@ -221,7 +221,7 @@ export interface MxtunnelState {
      */
     orgId?: pulumi.Input<string | undefined>;
     /**
-     * Encapsulation protocol used for the Mist Tunnel
+     * Encapsulation protocol used for the Mist Tunnel. enum: `ip`, `udp`.
      */
     protocol?: pulumi.Input<string | undefined>;
     /**
@@ -271,7 +271,7 @@ export interface MxtunnelArgs {
      */
     orgId: pulumi.Input<string>;
     /**
-     * Encapsulation protocol used for the Mist Tunnel
+     * Encapsulation protocol used for the Mist Tunnel. enum: `ip`, `udp`.
      */
     protocol?: pulumi.Input<string | undefined>;
     /**

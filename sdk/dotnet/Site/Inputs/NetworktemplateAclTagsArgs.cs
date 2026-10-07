@@ -97,7 +97,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// Classifier type that determines which ACL tag fields are evaluated
+        /// Classifier type that determines which ACL tag fields are evaluated. enum: `Any`, `ArubaUserRole`, `DynamicGbp`, `GbpResource`, `Mac`, `Network`, `PortUsage`, `RadiusGroup`, `Resource`, `StaticGbp`, `Subnet`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

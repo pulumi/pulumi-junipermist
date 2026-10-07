@@ -31,14 +31,14 @@ public final class DeviceprofileSwitchSwitchMgmtLocalAccountsArgs extends com.pu
     }
 
     /**
-     * Access role granted to the local switch user account
+     * Access role granted to the local switch user account. enum: `admin`, `helpdesk`, `none`, `read`.
      * 
      */
     @Import(name="role")
     private @Nullable Output<String> role;
 
     /**
-     * @return Access role granted to the local switch user account
+     * @return Access role granted to the local switch user account. enum: `admin`, `helpdesk`, `none`, `read`.
      * 
      */
     public Optional<Output<String>> role() {
@@ -92,7 +92,7 @@ public final class DeviceprofileSwitchSwitchMgmtLocalAccountsArgs extends com.pu
         }
 
         /**
-         * @param role Access role granted to the local switch user account
+         * @param role Access role granted to the local switch user account. enum: `admin`, `helpdesk`, `none`, `read`.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class DeviceprofileSwitchSwitchMgmtLocalAccountsArgs extends com.pu
         }
 
         /**
-         * @param role Access role granted to the local switch user account
+         * @param role Access role granted to the local switch user account. enum: `admin`, `helpdesk`, `none`, `read`.
          * 
          * @return builder
          * 

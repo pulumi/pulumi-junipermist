@@ -45,7 +45,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? Expression { get; set; }
 
         /// <summary>
-        /// Source attribute evaluated by this dynamic rule
+        /// Source attribute evaluated by this dynamic rule. enum: `LinkPeermac`, `LldpChassisId`, `LldpHardwareRevision`, `LldpManufacturerName`, `LldpOui`, `LldpSerialNumber`, `LldpSystemDescription`, `LldpSystemName`, `RadiusDynamicfilter`, `RadiusUsermac`, `RadiusUsername`.
         /// </summary>
         [Input("src", required: true)]
         public Input<string> Src { get; set; } = null!;

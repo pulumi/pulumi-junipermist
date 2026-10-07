@@ -577,14 +577,14 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether UI usage tracking is disabled for the organization
+     * Whether to disable UI usage tracking (e.g. Fullstory, Pendo) for the whole organization
      * 
      */
     @Import(name="uiNoTracking")
     private @Nullable Output<Boolean> uiNoTracking;
 
     /**
-     * @return Whether UI usage tracking is disabled for the organization
+     * @return Whether to disable UI usage tracking (e.g. Fullstory, Pendo) for the whole organization
      * 
      */
     public Optional<Output<Boolean>> uiNoTracking() {
@@ -1474,7 +1474,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uiNoTracking Whether UI usage tracking is disabled for the organization
+         * @param uiNoTracking Whether to disable UI usage tracking (e.g. Fullstory, Pendo) for the whole organization
          * 
          * @return builder
          * 
@@ -1485,7 +1485,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uiNoTracking Whether UI usage tracking is disabled for the organization
+         * @param uiNoTracking Whether to disable UI usage tracking (e.g. Fullstory, Pendo) for the whole organization
          * 
          * @return builder
          * 

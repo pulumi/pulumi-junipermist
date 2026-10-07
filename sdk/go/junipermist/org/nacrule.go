@@ -78,7 +78,9 @@ type Nacrule struct {
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// Whether the NAC rule is evaluated during policy matching
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
-	// Guest portal authorization state condition for the rule
+	// Name of the group the NAC rule belongs to
+	GroupName pulumi.StringPtrOutput `pulumi:"groupName"`
+	// Guest portal authorization state condition for the rule. enum: `authorized`, `unknown`.
 	GuestAuthState pulumi.StringPtrOutput `pulumi:"guestAuthState"`
 	// Criteria that must match for the NAC rule to apply
 	Matching NacruleMatchingPtrOutput `pulumi:"matching"`
@@ -139,7 +141,9 @@ type nacruleState struct {
 	DryRun *bool `pulumi:"dryRun"`
 	// Whether the NAC rule is evaluated during policy matching
 	Enabled *bool `pulumi:"enabled"`
-	// Guest portal authorization state condition for the rule
+	// Name of the group the NAC rule belongs to
+	GroupName *string `pulumi:"groupName"`
+	// Guest portal authorization state condition for the rule. enum: `authorized`, `unknown`.
 	GuestAuthState *string `pulumi:"guestAuthState"`
 	// Criteria that must match for the NAC rule to apply
 	Matching *NacruleMatching `pulumi:"matching"`
@@ -162,7 +166,9 @@ type NacruleState struct {
 	DryRun pulumi.BoolPtrInput
 	// Whether the NAC rule is evaluated during policy matching
 	Enabled pulumi.BoolPtrInput
-	// Guest portal authorization state condition for the rule
+	// Name of the group the NAC rule belongs to
+	GroupName pulumi.StringPtrInput
+	// Guest portal authorization state condition for the rule. enum: `authorized`, `unknown`.
 	GuestAuthState pulumi.StringPtrInput
 	// Criteria that must match for the NAC rule to apply
 	Matching NacruleMatchingPtrInput
@@ -189,7 +195,9 @@ type nacruleArgs struct {
 	DryRun *bool `pulumi:"dryRun"`
 	// Whether the NAC rule is evaluated during policy matching
 	Enabled *bool `pulumi:"enabled"`
-	// Guest portal authorization state condition for the rule
+	// Name of the group the NAC rule belongs to
+	GroupName *string `pulumi:"groupName"`
+	// Guest portal authorization state condition for the rule. enum: `authorized`, `unknown`.
 	GuestAuthState *string `pulumi:"guestAuthState"`
 	// Criteria that must match for the NAC rule to apply
 	Matching *NacruleMatching `pulumi:"matching"`
@@ -213,7 +221,9 @@ type NacruleArgs struct {
 	DryRun pulumi.BoolPtrInput
 	// Whether the NAC rule is evaluated during policy matching
 	Enabled pulumi.BoolPtrInput
-	// Guest portal authorization state condition for the rule
+	// Name of the group the NAC rule belongs to
+	GroupName pulumi.StringPtrInput
+	// Guest portal authorization state condition for the rule. enum: `authorized`, `unknown`.
 	GuestAuthState pulumi.StringPtrInput
 	// Criteria that must match for the NAC rule to apply
 	Matching NacruleMatchingPtrInput
@@ -334,7 +344,12 @@ func (o NacruleOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Nacrule) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// Guest portal authorization state condition for the rule
+// Name of the group the NAC rule belongs to
+func (o NacruleOutput) GroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Nacrule) pulumi.StringPtrOutput { return v.GroupName }).(pulumi.StringPtrOutput)
+}
+
+// Guest portal authorization state condition for the rule. enum: `authorized`, `unknown`.
 func (o NacruleOutput) GuestAuthState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Nacrule) pulumi.StringPtrOutput { return v.GuestAuthState }).(pulumi.StringPtrOutput)
 }

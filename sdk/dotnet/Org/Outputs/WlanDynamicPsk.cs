@@ -34,7 +34,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableArray<string> LocalVlanIds;
         /// <summary>
-        /// Origin used to retrieve per-user PSKs
+        /// Origin used to retrieve per-user PSKs. enum: `CloudPsks`, `Radius`.
         /// </summary>
         public readonly string? Source;
 

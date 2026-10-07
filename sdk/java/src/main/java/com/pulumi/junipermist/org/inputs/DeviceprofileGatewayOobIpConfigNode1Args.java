@@ -62,14 +62,14 @@ public final class DeviceprofileGatewayOobIpConfigNode1Args extends com.pulumi.r
     }
 
     /**
-     * IP assignment mode for the node1 out-of-band management interface
+     * IP assignment mode for the node1 out-of-band management interface. enum: `dhcp`, `static`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return IP assignment mode for the node1 out-of-band management interface
+     * @return IP assignment mode for the node1 out-of-band management interface. enum: `dhcp`, `static`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -215,7 +215,7 @@ public final class DeviceprofileGatewayOobIpConfigNode1Args extends com.pulumi.r
         }
 
         /**
-         * @param type IP assignment mode for the node1 out-of-band management interface
+         * @param type IP assignment mode for the node1 out-of-band management interface. enum: `dhcp`, `static`.
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class DeviceprofileGatewayOobIpConfigNode1Args extends com.pulumi.r
         }
 
         /**
-         * @param type IP assignment mode for the node1 out-of-band management interface
+         * @param type IP assignment mode for the node1 out-of-band management interface. enum: `dhcp`, `static`.
          * 
          * @return builder
          * 

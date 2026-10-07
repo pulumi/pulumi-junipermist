@@ -33,14 +33,14 @@ public final class GatewaytemplatePathPreferencesArgs extends com.pulumi.resourc
     }
 
     /**
-     * Selection strategy used to evaluate the candidate paths
+     * Selection strategy used to evaluate the candidate paths. enum: `ecmp`, `ordered`, `weighted`.
      * 
      */
     @Import(name="strategy")
     private @Nullable Output<String> strategy;
 
     /**
-     * @return Selection strategy used to evaluate the candidate paths
+     * @return Selection strategy used to evaluate the candidate paths. enum: `ecmp`, `ordered`, `weighted`.
      * 
      */
     public Optional<Output<String>> strategy() {
@@ -104,7 +104,7 @@ public final class GatewaytemplatePathPreferencesArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param strategy Selection strategy used to evaluate the candidate paths
+         * @param strategy Selection strategy used to evaluate the candidate paths. enum: `ecmp`, `ordered`, `weighted`.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class GatewaytemplatePathPreferencesArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param strategy Selection strategy used to evaluate the candidate paths
+         * @param strategy Selection strategy used to evaluate the candidate paths. enum: `ecmp`, `ordered`, `weighted`.
          * 
          * @return builder
          * 
