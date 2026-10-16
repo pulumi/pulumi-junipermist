@@ -27,24 +27,13 @@ class GetGatewaytemplatesResult:
     """
     A collection of values returned by getGatewaytemplates.
     """
-    def __init__(__self__, id=None, org_gatewaytemplates=None, org_id=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, org_gatewaytemplates=None, org_id=None):
         if org_gatewaytemplates and not isinstance(org_gatewaytemplates, list):
             raise TypeError("Expected argument 'org_gatewaytemplates' to be a list")
         pulumi.set(__self__, "org_gatewaytemplates", org_gatewaytemplates)
         if org_id and not isinstance(org_id, str):
             raise TypeError("Expected argument 'org_id' to be a str")
         pulumi.set(__self__, "org_id", org_id)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="orgGatewaytemplates")
@@ -63,7 +52,6 @@ class AwaitableGetGatewaytemplatesResult(GetGatewaytemplatesResult):
         if False:
             yield self
         return GetGatewaytemplatesResult(
-            id=self.id,
             org_gatewaytemplates=self.org_gatewaytemplates,
             org_id=self.org_id)
 
@@ -90,7 +78,6 @@ def get_gatewaytemplates(org_id: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('junipermist:org/getGatewaytemplates:getGatewaytemplates', __args__, opts=opts, typ=GetGatewaytemplatesResult).value
 
     return AwaitableGetGatewaytemplatesResult(
-        id=pulumi.get(__ret__, 'id'),
         org_gatewaytemplates=pulumi.get(__ret__, 'org_gatewaytemplates'),
         org_id=pulumi.get(__ret__, 'org_id'))
 def get_gatewaytemplates_output(org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -114,6 +101,5 @@ def get_gatewaytemplates_output(org_id: pulumi.Input[Optional[_builtins.str]] = 
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:org/getGatewaytemplates:getGatewaytemplates', __args__, opts=opts, typ=GetGatewaytemplatesResult)
     return __ret__.apply(lambda __response__: GetGatewaytemplatesResult(
-        id=pulumi.get(__response__, 'id'),
         org_gatewaytemplates=pulumi.get(__response__, 'org_gatewaytemplates'),
         org_id=pulumi.get(__response__, 'org_id')))

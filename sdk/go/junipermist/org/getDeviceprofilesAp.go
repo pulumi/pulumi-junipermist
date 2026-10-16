@@ -58,18 +58,12 @@ type GetDeviceprofilesApArgs struct {
 // A collection of values returned by getDeviceprofilesAp.
 type GetDeviceprofilesApResult struct {
 	Deviceprofiles []GetDeviceprofilesApDeviceprofile `pulumi:"deviceprofiles"`
-	// The provider-assigned unique ID for this managed resource.
-	Id    string `pulumi:"id"`
-	OrgId string `pulumi:"orgId"`
+	OrgId          string                             `pulumi:"orgId"`
 }
 
 func GetDeviceprofilesApOutput(ctx *pulumi.Context, args GetDeviceprofilesApOutputArgs, opts ...pulumi.InvokeOption) GetDeviceprofilesApResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDeviceprofilesApResultOutput, error) {
-			args := v.(GetDeviceprofilesApArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("junipermist:org/getDeviceprofilesAp:getDeviceprofilesAp", args, GetDeviceprofilesApResultOutput{}, options).(GetDeviceprofilesApResultOutput), nil
-		}).(GetDeviceprofilesApResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("junipermist:org/getDeviceprofilesAp:getDeviceprofilesAp", args, GetDeviceprofilesApResultOutput{}, options).(GetDeviceprofilesApResultOutput)
 }
 
 // A collection of arguments for invoking getDeviceprofilesAp.
@@ -98,11 +92,6 @@ func (o GetDeviceprofilesApResultOutput) ToGetDeviceprofilesApResultOutputWithCo
 
 func (o GetDeviceprofilesApResultOutput) Deviceprofiles() GetDeviceprofilesApDeviceprofileArrayOutput {
 	return o.ApplyT(func(v GetDeviceprofilesApResult) []GetDeviceprofilesApDeviceprofile { return v.Deviceprofiles }).(GetDeviceprofilesApDeviceprofileArrayOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetDeviceprofilesApResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDeviceprofilesApResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetDeviceprofilesApResultOutput) OrgId() pulumi.StringOutput {

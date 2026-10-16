@@ -43,10 +43,6 @@ export interface GetDeviceprofilesGatewayArgs {
  */
 export interface GetDeviceprofilesGatewayResult {
     readonly deviceprofiles: outputs.org.GetDeviceprofilesGatewayDeviceprofile[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly orgId: string;
 }
 /**

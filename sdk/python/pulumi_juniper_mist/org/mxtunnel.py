@@ -394,10 +394,10 @@ class Mxtunnel(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  anchor_mxtunnel_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 auto_preemption: pulumi.Input[Optional[Union['MxtunnelAutoPreemptionArgs', 'MxtunnelAutoPreemptionArgsDict']]] = None,
+                 auto_preemption: pulumi.Input[Optional[Union['MxtunnelAutoPreemptionArgs', 'MxtunnelAutoPreemptionArgsDict', 'outputs.MxtunnelAutoPreemption']]] = None,
                  hello_interval: pulumi.Input[Optional[_builtins.int]] = None,
                  hello_retries: pulumi.Input[Optional[_builtins.int]] = None,
-                 ipsec: pulumi.Input[Optional[Union['MxtunnelIpsecArgs', 'MxtunnelIpsecArgsDict']]] = None,
+                 ipsec: pulumi.Input[Optional[Union['MxtunnelIpsecArgs', 'MxtunnelIpsecArgsDict', 'outputs.MxtunnelIpsec']]] = None,
                  mtu: pulumi.Input[Optional[_builtins.int]] = None,
                  mxcluster_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -463,10 +463,10 @@ class Mxtunnel(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] anchor_mxtunnel_ids: IDs of anchor Mist Tunnels used for edge-to-edge tunnel formation
-        :param pulumi.Input[Union['MxtunnelAutoPreemptionArgs', 'MxtunnelAutoPreemptionArgsDict']] auto_preemption: Preemption behavior for restoring preferred tunnel peers after failover
+        :param pulumi.Input[Union['MxtunnelAutoPreemptionArgs', 'MxtunnelAutoPreemptionArgsDict', 'outputs.MxtunnelAutoPreemption']] auto_preemption: Preemption behavior for restoring preferred tunnel peers after failover
         :param pulumi.Input[_builtins.int] hello_interval: In seconds, used as heartbeat to detect if a tunnel is alive. AP will try another peer after missing N hellos specified by `hello_retries`.
         :param pulumi.Input[_builtins.int] hello_retries: Number of missed hello heartbeats before an AP tries another tunnel peer
-        :param pulumi.Input[Union['MxtunnelIpsecArgs', 'MxtunnelIpsecArgsDict']] ipsec: Security settings for IPsec support on this Mist Tunnel
+        :param pulumi.Input[Union['MxtunnelIpsecArgs', 'MxtunnelIpsecArgsDict', 'outputs.MxtunnelIpsec']] ipsec: Security settings for IPsec support on this Mist Tunnel
         :param pulumi.Input[_builtins.int] mtu: 0 to enable PMTU, 552-1500 to start PMTU with a lower MTU
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mxcluster_ids: Mist Edge cluster IDs that host this Mist Tunnel
         :param pulumi.Input[_builtins.str] name: Display name of the Mist Tunnel
@@ -551,10 +551,10 @@ class Mxtunnel(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  anchor_mxtunnel_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 auto_preemption: pulumi.Input[Optional[Union['MxtunnelAutoPreemptionArgs', 'MxtunnelAutoPreemptionArgsDict']]] = None,
+                 auto_preemption: pulumi.Input[Optional[Union['MxtunnelAutoPreemptionArgs', 'MxtunnelAutoPreemptionArgsDict', 'outputs.MxtunnelAutoPreemption']]] = None,
                  hello_interval: pulumi.Input[Optional[_builtins.int]] = None,
                  hello_retries: pulumi.Input[Optional[_builtins.int]] = None,
-                 ipsec: pulumi.Input[Optional[Union['MxtunnelIpsecArgs', 'MxtunnelIpsecArgsDict']]] = None,
+                 ipsec: pulumi.Input[Optional[Union['MxtunnelIpsecArgs', 'MxtunnelIpsecArgsDict', 'outputs.MxtunnelIpsec']]] = None,
                  mtu: pulumi.Input[Optional[_builtins.int]] = None,
                  mxcluster_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -594,10 +594,10 @@ class Mxtunnel(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             anchor_mxtunnel_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            auto_preemption: pulumi.Input[Optional[Union['MxtunnelAutoPreemptionArgs', 'MxtunnelAutoPreemptionArgsDict']]] = None,
+            auto_preemption: pulumi.Input[Optional[Union['MxtunnelAutoPreemptionArgs', 'MxtunnelAutoPreemptionArgsDict', 'outputs.MxtunnelAutoPreemption']]] = None,
             hello_interval: pulumi.Input[Optional[_builtins.int]] = None,
             hello_retries: pulumi.Input[Optional[_builtins.int]] = None,
-            ipsec: pulumi.Input[Optional[Union['MxtunnelIpsecArgs', 'MxtunnelIpsecArgsDict']]] = None,
+            ipsec: pulumi.Input[Optional[Union['MxtunnelIpsecArgs', 'MxtunnelIpsecArgsDict', 'outputs.MxtunnelIpsec']]] = None,
             mtu: pulumi.Input[Optional[_builtins.int]] = None,
             mxcluster_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -612,10 +612,10 @@ class Mxtunnel(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] anchor_mxtunnel_ids: IDs of anchor Mist Tunnels used for edge-to-edge tunnel formation
-        :param pulumi.Input[Union['MxtunnelAutoPreemptionArgs', 'MxtunnelAutoPreemptionArgsDict']] auto_preemption: Preemption behavior for restoring preferred tunnel peers after failover
+        :param pulumi.Input[Union['MxtunnelAutoPreemptionArgs', 'MxtunnelAutoPreemptionArgsDict', 'outputs.MxtunnelAutoPreemption']] auto_preemption: Preemption behavior for restoring preferred tunnel peers after failover
         :param pulumi.Input[_builtins.int] hello_interval: In seconds, used as heartbeat to detect if a tunnel is alive. AP will try another peer after missing N hellos specified by `hello_retries`.
         :param pulumi.Input[_builtins.int] hello_retries: Number of missed hello heartbeats before an AP tries another tunnel peer
-        :param pulumi.Input[Union['MxtunnelIpsecArgs', 'MxtunnelIpsecArgsDict']] ipsec: Security settings for IPsec support on this Mist Tunnel
+        :param pulumi.Input[Union['MxtunnelIpsecArgs', 'MxtunnelIpsecArgsDict', 'outputs.MxtunnelIpsec']] ipsec: Security settings for IPsec support on this Mist Tunnel
         :param pulumi.Input[_builtins.int] mtu: 0 to enable PMTU, 552-1500 to start PMTU with a lower MTU
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mxcluster_ids: Mist Edge cluster IDs that host this Mist Tunnel
         :param pulumi.Input[_builtins.str] name: Display name of the Mist Tunnel

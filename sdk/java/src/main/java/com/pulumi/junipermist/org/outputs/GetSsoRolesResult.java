@@ -12,22 +12,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSsoRolesResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private String orgId;
     private List<GetSsoRolesOrgSsoRole> orgSsoRoles;
 
     private GetSsoRolesResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public String orgId() {
         return this.orgId;
     }
@@ -44,25 +32,15 @@ public final class GetSsoRolesResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private String orgId;
         private List<GetSsoRolesOrgSsoRole> orgSsoRoles;
         public Builder() {}
         public Builder(GetSsoRolesResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.orgId = defaults.orgId;
     	      this.orgSsoRoles = defaults.orgSsoRoles;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetSsoRolesResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder orgId(String orgId) {
             if (orgId == null) {
@@ -84,7 +62,6 @@ public final class GetSsoRolesResult {
         }
         public GetSsoRolesResult build() {
             final var _resultValue = new GetSsoRolesResult();
-            _resultValue.id = id;
             _resultValue.orgId = orgId;
             _resultValue.orgSsoRoles = orgSsoRoles;
             return _resultValue;

@@ -31,8 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.junipermist.org.base;
- * import com.pulumi.junipermist.org.baseArgs;
+ * import com.pulumi.junipermist.org.Base;
+ * import com.pulumi.junipermist.org.BaseArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var orgOne = new Base("orgOne", BaseArgs.builder()
  *             .name("Org One")
- *             .alarmtemplateId(alarmtemplateOne.id())
+ *             .alarmtemplateId(alarmtemplateOne.get("id"))
  *             .build());
  * 
  *     }

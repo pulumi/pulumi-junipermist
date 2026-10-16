@@ -60,18 +60,12 @@ type GetDeviceprofilesGatewayArgs struct {
 // A collection of values returned by getDeviceprofilesGateway.
 type GetDeviceprofilesGatewayResult struct {
 	Deviceprofiles []GetDeviceprofilesGatewayDeviceprofile `pulumi:"deviceprofiles"`
-	// The provider-assigned unique ID for this managed resource.
-	Id    string `pulumi:"id"`
-	OrgId string `pulumi:"orgId"`
+	OrgId          string                                  `pulumi:"orgId"`
 }
 
 func GetDeviceprofilesGatewayOutput(ctx *pulumi.Context, args GetDeviceprofilesGatewayOutputArgs, opts ...pulumi.InvokeOption) GetDeviceprofilesGatewayResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDeviceprofilesGatewayResultOutput, error) {
-			args := v.(GetDeviceprofilesGatewayArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("junipermist:org/getDeviceprofilesGateway:getDeviceprofilesGateway", args, GetDeviceprofilesGatewayResultOutput{}, options).(GetDeviceprofilesGatewayResultOutput), nil
-		}).(GetDeviceprofilesGatewayResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("junipermist:org/getDeviceprofilesGateway:getDeviceprofilesGateway", args, GetDeviceprofilesGatewayResultOutput{}, options).(GetDeviceprofilesGatewayResultOutput)
 }
 
 // A collection of arguments for invoking getDeviceprofilesGateway.
@@ -102,11 +96,6 @@ func (o GetDeviceprofilesGatewayResultOutput) Deviceprofiles() GetDeviceprofiles
 	return o.ApplyT(func(v GetDeviceprofilesGatewayResult) []GetDeviceprofilesGatewayDeviceprofile {
 		return v.Deviceprofiles
 	}).(GetDeviceprofilesGatewayDeviceprofileArrayOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetDeviceprofilesGatewayResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDeviceprofilesGatewayResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetDeviceprofilesGatewayResultOutput) OrgId() pulumi.StringOutput {

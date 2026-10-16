@@ -12,22 +12,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGatewaytemplatesResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private List<GetGatewaytemplatesOrgGatewaytemplate> orgGatewaytemplates;
     private String orgId;
 
     private GetGatewaytemplatesResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public List<GetGatewaytemplatesOrgGatewaytemplate> orgGatewaytemplates() {
         return this.orgGatewaytemplates;
     }
@@ -44,25 +32,15 @@ public final class GetGatewaytemplatesResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private List<GetGatewaytemplatesOrgGatewaytemplate> orgGatewaytemplates;
         private String orgId;
         public Builder() {}
         public Builder(GetGatewaytemplatesResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.orgGatewaytemplates = defaults.orgGatewaytemplates;
     	      this.orgId = defaults.orgId;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetGatewaytemplatesResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder orgGatewaytemplates(List<GetGatewaytemplatesOrgGatewaytemplate> orgGatewaytemplates) {
             if (orgGatewaytemplates == null) {
@@ -84,7 +62,6 @@ public final class GetGatewaytemplatesResult {
         }
         public GetGatewaytemplatesResult build() {
             final var _resultValue = new GetGatewaytemplatesResult();
-            _resultValue.id = id;
             _resultValue.orgGatewaytemplates = orgGatewaytemplates;
             _resultValue.orgId = orgId;
             return _resultValue;

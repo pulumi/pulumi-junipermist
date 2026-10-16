@@ -57,19 +57,13 @@ type GetWlansArgs struct {
 
 // A collection of values returned by getWlans.
 type GetWlansResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id        string             `pulumi:"id"`
 	SiteId    string             `pulumi:"siteId"`
 	SiteWlans []GetWlansSiteWlan `pulumi:"siteWlans"`
 }
 
 func GetWlansOutput(ctx *pulumi.Context, args GetWlansOutputArgs, opts ...pulumi.InvokeOption) GetWlansResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetWlansResultOutput, error) {
-			args := v.(GetWlansArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("junipermist:site/getWlans:getWlans", args, GetWlansResultOutput{}, options).(GetWlansResultOutput), nil
-		}).(GetWlansResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("junipermist:site/getWlans:getWlans", args, GetWlansResultOutput{}, options).(GetWlansResultOutput)
 }
 
 // A collection of arguments for invoking getWlans.
@@ -94,11 +88,6 @@ func (o GetWlansResultOutput) ToGetWlansResultOutput() GetWlansResultOutput {
 
 func (o GetWlansResultOutput) ToGetWlansResultOutputWithContext(ctx context.Context) GetWlansResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetWlansResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWlansResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetWlansResultOutput) SiteId() pulumi.StringOutput {

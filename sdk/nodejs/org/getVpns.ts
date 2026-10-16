@@ -38,10 +38,6 @@ export interface GetVpnsArgs {
  * A collection of values returned by getVpns.
  */
 export interface GetVpnsResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly orgId: string;
     readonly orgVpns: outputs.org.GetVpnsOrgVpn[];
 }

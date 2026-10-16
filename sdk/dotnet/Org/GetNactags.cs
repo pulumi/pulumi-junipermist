@@ -144,10 +144,6 @@ namespace Pulumi.JuniperMist.Org
     [OutputType]
     public sealed class GetNactagsResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly string? Match;
         public readonly string? Name;
         public readonly string OrgId;
@@ -156,8 +152,6 @@ namespace Pulumi.JuniperMist.Org
 
         [OutputConstructor]
         private GetNactagsResult(
-            string id,
-
             string? match,
 
             string? name,
@@ -168,7 +162,6 @@ namespace Pulumi.JuniperMist.Org
 
             string? type)
         {
-            Id = id;
             Match = match;
             Name = name;
             OrgId = orgId;

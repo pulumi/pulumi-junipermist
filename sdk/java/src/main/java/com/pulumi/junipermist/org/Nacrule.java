@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *         var nacruleOne = new Nacrule("nacruleOne", NacruleArgs.builder()
  *             .name("rule_one")
  *             .action("allow")
- *             .orgId(terraformTest.id())
+ *             .orgId(terraformTest.get("id"))
  *             .matching(NacruleMatchingArgs.builder()
  *                 .portTypes("wired")
  *                 .authType("mab")

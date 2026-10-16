@@ -27,24 +27,13 @@ class GetAvprofilesResult:
     """
     A collection of values returned by getAvprofiles.
     """
-    def __init__(__self__, id=None, org_avprofiles=None, org_id=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, org_avprofiles=None, org_id=None):
         if org_avprofiles and not isinstance(org_avprofiles, list):
             raise TypeError("Expected argument 'org_avprofiles' to be a list")
         pulumi.set(__self__, "org_avprofiles", org_avprofiles)
         if org_id and not isinstance(org_id, str):
             raise TypeError("Expected argument 'org_id' to be a str")
         pulumi.set(__self__, "org_id", org_id)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="orgAvprofiles")
@@ -63,7 +52,6 @@ class AwaitableGetAvprofilesResult(GetAvprofilesResult):
         if False:
             yield self
         return GetAvprofilesResult(
-            id=self.id,
             org_avprofiles=self.org_avprofiles,
             org_id=self.org_id)
 
@@ -96,7 +84,6 @@ def get_avprofiles(org_id: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('junipermist:org/getAvprofiles:getAvprofiles', __args__, opts=opts, typ=GetAvprofilesResult).value
 
     return AwaitableGetAvprofilesResult(
-        id=pulumi.get(__ret__, 'id'),
         org_avprofiles=pulumi.get(__ret__, 'org_avprofiles'),
         org_id=pulumi.get(__ret__, 'org_id'))
 def get_avprofiles_output(org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -126,6 +113,5 @@ def get_avprofiles_output(org_id: pulumi.Input[Optional[_builtins.str]] = None,
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:org/getAvprofiles:getAvprofiles', __args__, opts=opts, typ=GetAvprofilesResult)
     return __ret__.apply(lambda __response__: GetAvprofilesResult(
-        id=pulumi.get(__response__, 'id'),
         org_avprofiles=pulumi.get(__response__, 'org_avprofiles'),
         org_id=pulumi.get(__response__, 'org_id')))

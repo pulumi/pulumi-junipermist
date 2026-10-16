@@ -42,10 +42,6 @@ export interface GetIdpprofilesArgs {
  * A collection of values returned by getIdpprofiles.
  */
 export interface GetIdpprofilesResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly orgId: string;
     readonly orgIdpprofiles: outputs.org.GetIdpprofilesOrgIdpprofile[];
 }

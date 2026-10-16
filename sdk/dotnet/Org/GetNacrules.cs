@@ -120,22 +120,15 @@ namespace Pulumi.JuniperMist.Org
     [OutputType]
     public sealed class GetNacrulesResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly string OrgId;
         public readonly ImmutableArray<Outputs.GetNacrulesOrgNacruleResult> OrgNacrules;
 
         [OutputConstructor]
         private GetNacrulesResult(
-            string id,
-
             string orgId,
 
             ImmutableArray<Outputs.GetNacrulesOrgNacruleResult> orgNacrules)
         {
-            Id = id;
             OrgId = orgId;
             OrgNacrules = orgNacrules;
         }

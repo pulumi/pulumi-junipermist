@@ -48,12 +48,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var ssoRoleOne = new SsoRole("ssoRoleOne", SsoRoleArgs.builder()
- *             .orgId(terraformTest.id())
+ *             .orgId(terraformTest.get("id"))
  *             .name("admin_sso")
  *             .privileges(SsoRolePrivilegeArgs.builder()
  *                 .scope("site")
  *                 .role("read")
- *                 .siteId(terraformSite.id())
+ *                 .siteId(terraformSite.get("id"))
  *                 .build())
  *             .build());
  * 

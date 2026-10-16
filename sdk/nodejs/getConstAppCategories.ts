@@ -31,10 +31,6 @@ export function getConstAppCategories(opts?: pulumi.InvokeOptions): Promise<GetC
  */
 export interface GetConstAppCategoriesResult {
     readonly constAppCategories: outputs.GetConstAppCategoriesConstAppCategory[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }
 /**
  * This data source provides the of ConstAppCategories.

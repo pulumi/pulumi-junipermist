@@ -86,8 +86,8 @@ export class Inventory extends pulumi.CustomResource {
      * Property key can be the device Claim Code or the device MAC Address:
      *   * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
      *   * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
-     *
-     *     >
+     *     
+     *     > 
      */
     declare public readonly inventory: pulumi.Output<{[key: string]: outputs.org.InventoryInventory}>;
     declare public readonly orgId: pulumi.Output<string>;
@@ -134,8 +134,8 @@ export interface InventoryState {
      * Property key can be the device Claim Code or the device MAC Address:
      *   * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
      *   * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
-     *
-     *     >
+     *     
+     *     > 
      */
     inventory?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.InventoryInventory>} | undefined>;
     orgId?: pulumi.Input<string | undefined>;
@@ -153,8 +153,8 @@ export interface InventoryArgs {
      * Property key can be the device Claim Code or the device MAC Address:
      *   * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
      *   * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
-     *
-     *     >
+     *     
+     *     > 
      */
     inventory?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.InventoryInventory>} | undefined>;
     orgId: pulumi.Input<string>;

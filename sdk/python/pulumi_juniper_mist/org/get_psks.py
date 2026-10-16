@@ -27,10 +27,7 @@ class GetPsksResult:
     """
     A collection of values returned by getPsks.
     """
-    def __init__(__self__, id=None, name=None, org_id=None, org_psks=None, role=None, ssid=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, name=None, org_id=None, org_psks=None, role=None, ssid=None):
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -46,14 +43,6 @@ class GetPsksResult:
         if ssid and not isinstance(ssid, str):
             raise TypeError("Expected argument 'ssid' to be a str")
         pulumi.set(__self__, "ssid", ssid)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -87,7 +76,6 @@ class AwaitableGetPsksResult(GetPsksResult):
         if False:
             yield self
         return GetPsksResult(
-            id=self.id,
             name=self.name,
             org_id=self.org_id,
             org_psks=self.org_psks,
@@ -129,7 +117,6 @@ def get_psks(name: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('junipermist:org/getPsks:getPsks', __args__, opts=opts, typ=GetPsksResult).value
 
     return AwaitableGetPsksResult(
-        id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         org_id=pulumi.get(__ret__, 'org_id'),
         org_psks=pulumi.get(__ret__, 'org_psks'),
@@ -168,7 +155,6 @@ def get_psks_output(name: pulumi.Input[Optional[Optional[_builtins.str]]] = None
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:org/getPsks:getPsks', __args__, opts=opts, typ=GetPsksResult)
     return __ret__.apply(lambda __response__: GetPsksResult(
-        id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         org_id=pulumi.get(__response__, 'org_id'),
         org_psks=pulumi.get(__response__, 'org_psks'),

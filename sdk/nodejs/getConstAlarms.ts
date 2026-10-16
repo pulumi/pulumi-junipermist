@@ -31,10 +31,6 @@ export function getConstAlarms(opts?: pulumi.InvokeOptions): Promise<GetConstAla
  */
 export interface GetConstAlarmsResult {
     readonly constAlarms: outputs.GetConstAlarmsConstAlarm[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }
 /**
  * This data source provides the list of available Alarms.

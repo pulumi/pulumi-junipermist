@@ -138,22 +138,15 @@ namespace Pulumi.JuniperMist.Org
     [OutputType]
     public sealed class GetAvprofilesResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly ImmutableArray<Outputs.GetAvprofilesOrgAvprofileResult> OrgAvprofiles;
         public readonly string OrgId;
 
         [OutputConstructor]
         private GetAvprofilesResult(
-            string id,
-
             ImmutableArray<Outputs.GetAvprofilesOrgAvprofileResult> orgAvprofiles,
 
             string orgId)
         {
-            Id = id;
             OrgAvprofiles = orgAvprofiles;
             OrgId = orgId;
         }

@@ -156,10 +156,6 @@ namespace Pulumi.JuniperMist.Site
     [OutputType]
     public sealed class GetPsksResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly string? Name;
         public readonly string? Role;
         public readonly string SiteId;
@@ -168,8 +164,6 @@ namespace Pulumi.JuniperMist.Site
 
         [OutputConstructor]
         private GetPsksResult(
-            string id,
-
             string? name,
 
             string? role,
@@ -180,7 +174,6 @@ namespace Pulumi.JuniperMist.Site
 
             string? ssid)
         {
-            Id = id;
             Name = name;
             Role = role;
             SiteId = siteId;

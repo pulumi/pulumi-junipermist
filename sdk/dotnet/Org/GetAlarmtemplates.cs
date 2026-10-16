@@ -120,22 +120,15 @@ namespace Pulumi.JuniperMist.Org
     [OutputType]
     public sealed class GetAlarmtemplatesResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly ImmutableArray<Outputs.GetAlarmtemplatesOrgAlarmtemplateResult> OrgAlarmtemplates;
         public readonly string OrgId;
 
         [OutputConstructor]
         private GetAlarmtemplatesResult(
-            string id,
-
             ImmutableArray<Outputs.GetAlarmtemplatesOrgAlarmtemplateResult> orgAlarmtemplates,
 
             string orgId)
         {
-            Id = id;
             OrgAlarmtemplates = orgAlarmtemplates;
             OrgId = orgId;
         }

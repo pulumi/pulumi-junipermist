@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var deviceprofileApOne = new DeviceprofileAp("deviceprofileApOne", DeviceprofileApArgs.builder()
  *             .name("deviceprofile_ap_one")
- *             .orgId(terraformTest.id())
+ *             .orgId(terraformTest.get("id"))
  *             .eslConfig(DeviceprofileApEslConfigArgs.builder()
  *                 .enabled(true)
  *                 .host("1.2.3.4")

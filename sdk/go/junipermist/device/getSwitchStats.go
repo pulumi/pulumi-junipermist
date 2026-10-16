@@ -86,11 +86,9 @@ type GetSwitchStatsResult struct {
 	EvpnUnused *string `pulumi:"evpnUnused"`
 	// EVPN Topology ID
 	EvpntopoId *string `pulumi:"evpntopoId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id     string  `pulumi:"id"`
-	Mac    *string `pulumi:"mac"`
-	OrgId  string  `pulumi:"orgId"`
-	SiteId *string `pulumi:"siteId"`
+	Mac        *string `pulumi:"mac"`
+	OrgId      string  `pulumi:"orgId"`
+	SiteId     *string `pulumi:"siteId"`
 	// Start time (epoch timestamp in seconds, or relative string like "-1d", "-1w")
 	Start *string `pulumi:"start"`
 	// enum: `all`, `connected`, `disconnected`
@@ -98,12 +96,8 @@ type GetSwitchStatsResult struct {
 }
 
 func GetSwitchStatsOutput(ctx *pulumi.Context, args GetSwitchStatsOutputArgs, opts ...pulumi.InvokeOption) GetSwitchStatsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSwitchStatsResultOutput, error) {
-			args := v.(GetSwitchStatsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("junipermist:device/getSwitchStats:getSwitchStats", args, GetSwitchStatsResultOutput{}, options).(GetSwitchStatsResultOutput), nil
-		}).(GetSwitchStatsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("junipermist:device/getSwitchStats:getSwitchStats", args, GetSwitchStatsResultOutput{}, options).(GetSwitchStatsResultOutput)
 }
 
 // A collection of arguments for invoking getSwitchStats.
@@ -166,11 +160,6 @@ func (o GetSwitchStatsResultOutput) EvpnUnused() pulumi.StringPtrOutput {
 // EVPN Topology ID
 func (o GetSwitchStatsResultOutput) EvpntopoId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSwitchStatsResult) *string { return v.EvpntopoId }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetSwitchStatsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSwitchStatsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetSwitchStatsResultOutput) Mac() pulumi.StringPtrOutput {

@@ -123,22 +123,15 @@ namespace Pulumi.JuniperMist.Org
     [OutputType]
     public sealed class GetSitegroupsResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly string OrgId;
         public readonly ImmutableArray<Outputs.GetSitegroupsOrgSitegroupResult> OrgSitegroups;
 
         [OutputConstructor]
         private GetSitegroupsResult(
-            string id,
-
             string orgId,
 
             ImmutableArray<Outputs.GetSitegroupsOrgSitegroupResult> orgSitegroups)
         {
-            Id = id;
             OrgId = orgId;
             OrgSitegroups = orgSitegroups;
         }

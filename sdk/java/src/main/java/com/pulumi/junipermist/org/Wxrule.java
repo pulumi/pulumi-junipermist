@@ -48,12 +48,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var wxruleOne = new Wxrule("wxruleOne", WxruleArgs.builder()
- *             .orgId(terraformTest.id())
- *             .templateId(wlantemplateOne.id())
- *             .srcWxtags(wxtagOne.id())
+ *             .orgId(terraformTest.get("id"))
+ *             .templateId(wlantemplateOne.get("id"))
+ *             .srcWxtags(wxtagOne.get("id"))
  *             .enabled(true)
  *             .action("allow")
- *             .dstDenyWxtags(wxtagTwo.id())
+ *             .dstDenyWxtags(wxtagTwo.get("id"))
  *             .order(1)
  *             .build());
  * 

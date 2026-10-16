@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var networktemplateOne = new Networktemplate("networktemplateOne", NetworktemplateArgs.builder()
- *             .siteId(terraformTest.id())
+ *             .siteId(terraformTest.get("id"))
  *             .dnsServers(            
  *                 "8.8.8.8",
  *                 "1.1.1.1")

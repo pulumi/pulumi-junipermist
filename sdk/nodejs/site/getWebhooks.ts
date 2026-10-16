@@ -42,10 +42,6 @@ export interface GetWebhooksArgs {
  * A collection of values returned by getWebhooks.
  */
 export interface GetWebhooksResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly siteId: string;
     readonly siteWebhooks: outputs.site.GetWebhooksSiteWebhook[];
 }

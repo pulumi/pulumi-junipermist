@@ -51,15 +51,11 @@ func GetConstAppSubCategories(ctx *pulumi.Context, opts ...pulumi.InvokeOption) 
 // A collection of values returned by getConstAppSubCategories.
 type GetConstAppSubCategoriesResult struct {
 	ConstAppSubCategories []GetConstAppSubCategoriesConstAppSubCategory `pulumi:"constAppSubCategories"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 }
 
 func GetConstAppSubCategoriesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetConstAppSubCategoriesResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetConstAppSubCategoriesResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("junipermist:index/getConstAppSubCategories:getConstAppSubCategories", nil, GetConstAppSubCategoriesResultOutput{}, options).(GetConstAppSubCategoriesResultOutput), nil
-	}).(GetConstAppSubCategoriesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("junipermist:index/getConstAppSubCategories:getConstAppSubCategories", nil, GetConstAppSubCategoriesResultOutput{}, options).(GetConstAppSubCategoriesResultOutput)
 }
 
 // A collection of values returned by getConstAppSubCategories.
@@ -81,11 +77,6 @@ func (o GetConstAppSubCategoriesResultOutput) ConstAppSubCategories() GetConstAp
 	return o.ApplyT(func(v GetConstAppSubCategoriesResult) []GetConstAppSubCategoriesConstAppSubCategory {
 		return v.ConstAppSubCategories
 	}).(GetConstAppSubCategoriesConstAppSubCategoryArrayOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetConstAppSubCategoriesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConstAppSubCategoriesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func init() {

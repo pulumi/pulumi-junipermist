@@ -47,11 +47,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var wxruleOne = new Wxrule("wxruleOne", WxruleArgs.builder()
- *             .siteId(terraformTest.id())
- *             .srcWxtags(wxtagOne.id())
+ *             .siteId(terraformTest.get("id"))
+ *             .srcWxtags(wxtagOne.get("id"))
  *             .enabled(true)
  *             .action("allow")
- *             .dstDenyWxtags(wxtagTwo.id())
+ *             .dstDenyWxtags(wxtagTwo.get("id"))
  *             .order(1)
  *             .build());
  * 

@@ -126,22 +126,15 @@ namespace Pulumi.JuniperMist.Org
     [OutputType]
     public sealed class GetWebhooksResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly string OrgId;
         public readonly ImmutableArray<Outputs.GetWebhooksOrgWebhookResult> OrgWebhooks;
 
         [OutputConstructor]
         private GetWebhooksResult(
-            string id,
-
             string orgId,
 
             ImmutableArray<Outputs.GetWebhooksOrgWebhookResult> orgWebhooks)
         {
-            Id = id;
             OrgId = orgId;
             OrgWebhooks = orgWebhooks;
         }

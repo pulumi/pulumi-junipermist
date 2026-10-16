@@ -55,19 +55,13 @@ type GetVpnsArgs struct {
 
 // A collection of values returned by getVpns.
 type GetVpnsResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id      string          `pulumi:"id"`
 	OrgId   string          `pulumi:"orgId"`
 	OrgVpns []GetVpnsOrgVpn `pulumi:"orgVpns"`
 }
 
 func GetVpnsOutput(ctx *pulumi.Context, args GetVpnsOutputArgs, opts ...pulumi.InvokeOption) GetVpnsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetVpnsResultOutput, error) {
-			args := v.(GetVpnsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("junipermist:org/getVpns:getVpns", args, GetVpnsResultOutput{}, options).(GetVpnsResultOutput), nil
-		}).(GetVpnsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("junipermist:org/getVpns:getVpns", args, GetVpnsResultOutput{}, options).(GetVpnsResultOutput)
 }
 
 // A collection of arguments for invoking getVpns.
@@ -92,11 +86,6 @@ func (o GetVpnsResultOutput) ToGetVpnsResultOutput() GetVpnsResultOutput {
 
 func (o GetVpnsResultOutput) ToGetVpnsResultOutputWithContext(ctx context.Context) GetVpnsResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetVpnsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVpnsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetVpnsResultOutput) OrgId() pulumi.StringOutput {

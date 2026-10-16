@@ -13,23 +13,11 @@ import java.util.Objects;
 @CustomType
 public final class GetDeviceprofilesGatewayResult {
     private List<GetDeviceprofilesGatewayDeviceprofile> deviceprofiles;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private String orgId;
 
     private GetDeviceprofilesGatewayResult() {}
     public List<GetDeviceprofilesGatewayDeviceprofile> deviceprofiles() {
         return this.deviceprofiles;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     public String orgId() {
         return this.orgId;
@@ -45,13 +33,11 @@ public final class GetDeviceprofilesGatewayResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetDeviceprofilesGatewayDeviceprofile> deviceprofiles;
-        private String id;
         private String orgId;
         public Builder() {}
         public Builder(GetDeviceprofilesGatewayResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.deviceprofiles = defaults.deviceprofiles;
-    	      this.id = defaults.id;
     	      this.orgId = defaults.orgId;
         }
 
@@ -67,14 +53,6 @@ public final class GetDeviceprofilesGatewayResult {
             return deviceprofiles(List.of(deviceprofiles));
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetDeviceprofilesGatewayResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder orgId(String orgId) {
             if (orgId == null) {
               throw new MissingRequiredPropertyException("GetDeviceprofilesGatewayResult", "orgId");
@@ -85,7 +63,6 @@ public final class GetDeviceprofilesGatewayResult {
         public GetDeviceprofilesGatewayResult build() {
             final var _resultValue = new GetDeviceprofilesGatewayResult();
             _resultValue.deviceprofiles = deviceprofiles;
-            _resultValue.id = id;
             _resultValue.orgId = orgId;
             return _resultValue;
         }

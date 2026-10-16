@@ -171,7 +171,7 @@ class Idpprofile(pulumi.CustomResource):
                  base_profile: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 overwrites: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IdpprofileOverwriteArgs', 'IdpprofileOverwriteArgsDict']]]]] = None,
+                 overwrites: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IdpprofileOverwriteArgs', 'IdpprofileOverwriteArgsDict', 'outputs.IdpprofileOverwrite']]]]] = None,
                  __props__=None):
         """
         This resource manages WAN Assurance Idp Profiles.
@@ -225,7 +225,7 @@ class Idpprofile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] base_profile: Built-in IDP baseline profile inherited before applying overwrites. enum: `critical`, `standard`, `strict`.
         :param pulumi.Input[_builtins.str] name: Display name of the IDP profile
         :param pulumi.Input[_builtins.str] org_id: Owning organization for the IDP profile
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IdpprofileOverwriteArgs', 'IdpprofileOverwriteArgsDict']]]] overwrites: IDP signature override rules applied on top of the base profile
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IdpprofileOverwriteArgs', 'IdpprofileOverwriteArgsDict', 'outputs.IdpprofileOverwrite']]]] overwrites: IDP signature override rules applied on top of the base profile
         """
         ...
     @overload
@@ -298,7 +298,7 @@ class Idpprofile(pulumi.CustomResource):
                  base_profile: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 overwrites: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IdpprofileOverwriteArgs', 'IdpprofileOverwriteArgsDict']]]]] = None,
+                 overwrites: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IdpprofileOverwriteArgs', 'IdpprofileOverwriteArgsDict', 'outputs.IdpprofileOverwrite']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -329,7 +329,7 @@ class Idpprofile(pulumi.CustomResource):
             base_profile: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
-            overwrites: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IdpprofileOverwriteArgs', 'IdpprofileOverwriteArgsDict']]]]] = None) -> 'Idpprofile':
+            overwrites: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IdpprofileOverwriteArgs', 'IdpprofileOverwriteArgsDict', 'outputs.IdpprofileOverwrite']]]]] = None) -> 'Idpprofile':
         """
         Get an existing Idpprofile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -340,7 +340,7 @@ class Idpprofile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] base_profile: Built-in IDP baseline profile inherited before applying overwrites. enum: `critical`, `standard`, `strict`.
         :param pulumi.Input[_builtins.str] name: Display name of the IDP profile
         :param pulumi.Input[_builtins.str] org_id: Owning organization for the IDP profile
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IdpprofileOverwriteArgs', 'IdpprofileOverwriteArgsDict']]]] overwrites: IDP signature override rules applied on top of the base profile
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IdpprofileOverwriteArgs', 'IdpprofileOverwriteArgsDict', 'outputs.IdpprofileOverwrite']]]] overwrites: IDP signature override rules applied on top of the base profile
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

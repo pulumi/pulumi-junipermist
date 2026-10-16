@@ -6,29 +6,16 @@ package com.pulumi.junipermist.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.outputs.GetConstApplicationsConstApplication;
-import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetConstApplicationsResult {
     private List<GetConstApplicationsConstApplication> constApplications;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
 
     private GetConstApplicationsResult() {}
     public List<GetConstApplicationsConstApplication> constApplications() {
         return this.constApplications;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
 
     public static Builder builder() {
@@ -41,12 +28,10 @@ public final class GetConstApplicationsResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetConstApplicationsConstApplication> constApplications;
-        private String id;
         public Builder() {}
         public Builder(GetConstApplicationsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.constApplications = defaults.constApplications;
-    	      this.id = defaults.id;
         }
 
         @CustomType.Setter
@@ -60,18 +45,9 @@ public final class GetConstApplicationsResult {
         public Builder constApplications(GetConstApplicationsConstApplication... constApplications) {
             return constApplications(List.of(constApplications));
         }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetConstApplicationsResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         public GetConstApplicationsResult build() {
             final var _resultValue = new GetConstApplicationsResult();
             _resultValue.constApplications = constApplications;
-            _resultValue.id = id;
             return _resultValue;
         }
     }

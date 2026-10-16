@@ -691,7 +691,7 @@ class Webhook(pulumi.CustomResource):
                  oauth2_token_url: pulumi.Input[Optional[_builtins.str]] = None,
                  oauth2_username: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WebhookRuleArgs', 'WebhookRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WebhookRuleArgs', 'WebhookRuleArgsDict', 'outputs.WebhookRule']]]]] = None,
                  secret: pulumi.Input[Optional[_builtins.str]] = None,
                  single_event_per_message: pulumi.Input[Optional[_builtins.bool]] = None,
                  splunk_token: pulumi.Input[Optional[_builtins.str]] = None,
@@ -758,7 +758,7 @@ class Webhook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] oauth2_token_url: Required when `type`==`oauth2`; token endpoint URL used to obtain the OAuth2 access token
         :param pulumi.Input[_builtins.str] oauth2_username: Required when `oauth2_grant_type`==`password`; username used for the OAuth2 token request
         :param pulumi.Input[_builtins.str] org_id: Organization that owns the webhook
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WebhookRuleArgs', 'WebhookRuleArgsDict']]]] rules: Optional filtering rules to override `topics`. Each rule permits or blocks events for a topic, optionally based on event payload matching criteria
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WebhookRuleArgs', 'WebhookRuleArgsDict', 'outputs.WebhookRule']]]] rules: Optional filtering rules to override `topics`. Each rule permits or blocks events for a topic, optionally based on event payload matching criteria
         :param pulumi.Input[_builtins.str] secret: Only if `type`=`http-post`
         :param pulumi.Input[_builtins.bool] single_event_per_message: Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
         :param pulumi.Input[_builtins.str] splunk_token: Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
@@ -844,7 +844,7 @@ class Webhook(pulumi.CustomResource):
                  oauth2_token_url: pulumi.Input[Optional[_builtins.str]] = None,
                  oauth2_username: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WebhookRuleArgs', 'WebhookRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WebhookRuleArgs', 'WebhookRuleArgsDict', 'outputs.WebhookRule']]]]] = None,
                  secret: pulumi.Input[Optional[_builtins.str]] = None,
                  single_event_per_message: pulumi.Input[Optional[_builtins.bool]] = None,
                  splunk_token: pulumi.Input[Optional[_builtins.str]] = None,
@@ -911,7 +911,7 @@ class Webhook(pulumi.CustomResource):
             oauth2_token_url: pulumi.Input[Optional[_builtins.str]] = None,
             oauth2_username: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
-            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WebhookRuleArgs', 'WebhookRuleArgsDict']]]]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WebhookRuleArgs', 'WebhookRuleArgsDict', 'outputs.WebhookRule']]]]] = None,
             secret: pulumi.Input[Optional[_builtins.str]] = None,
             single_event_per_message: pulumi.Input[Optional[_builtins.bool]] = None,
             splunk_token: pulumi.Input[Optional[_builtins.str]] = None,
@@ -938,7 +938,7 @@ class Webhook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] oauth2_token_url: Required when `type`==`oauth2`; token endpoint URL used to obtain the OAuth2 access token
         :param pulumi.Input[_builtins.str] oauth2_username: Required when `oauth2_grant_type`==`password`; username used for the OAuth2 token request
         :param pulumi.Input[_builtins.str] org_id: Organization that owns the webhook
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WebhookRuleArgs', 'WebhookRuleArgsDict']]]] rules: Optional filtering rules to override `topics`. Each rule permits or blocks events for a topic, optionally based on event payload matching criteria
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WebhookRuleArgs', 'WebhookRuleArgsDict', 'outputs.WebhookRule']]]] rules: Optional filtering rules to override `topics`. Each rule permits or blocks events for a topic, optionally based on event payload matching criteria
         :param pulumi.Input[_builtins.str] secret: Only if `type`=`http-post`
         :param pulumi.Input[_builtins.bool] single_event_per_message: Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
         :param pulumi.Input[_builtins.str] splunk_token: Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.

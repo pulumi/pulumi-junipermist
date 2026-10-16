@@ -12,22 +12,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEvpnTopologiesResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private List<GetEvpnTopologiesSiteEvpnTopology> siteEvpnTopologies;
     private String siteId;
 
     private GetEvpnTopologiesResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public List<GetEvpnTopologiesSiteEvpnTopology> siteEvpnTopologies() {
         return this.siteEvpnTopologies;
     }
@@ -44,25 +32,15 @@ public final class GetEvpnTopologiesResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private List<GetEvpnTopologiesSiteEvpnTopology> siteEvpnTopologies;
         private String siteId;
         public Builder() {}
         public Builder(GetEvpnTopologiesResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.siteEvpnTopologies = defaults.siteEvpnTopologies;
     	      this.siteId = defaults.siteId;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetEvpnTopologiesResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder siteEvpnTopologies(List<GetEvpnTopologiesSiteEvpnTopology> siteEvpnTopologies) {
             if (siteEvpnTopologies == null) {
@@ -84,7 +62,6 @@ public final class GetEvpnTopologiesResult {
         }
         public GetEvpnTopologiesResult build() {
             final var _resultValue = new GetEvpnTopologiesResult();
-            _resultValue.id = id;
             _resultValue.siteEvpnTopologies = siteEvpnTopologies;
             _resultValue.siteId = siteId;
             return _resultValue;

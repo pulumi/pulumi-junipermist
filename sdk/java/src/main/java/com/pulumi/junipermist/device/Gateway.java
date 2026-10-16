@@ -71,8 +71,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var gatewayOne = new Gateway("gatewayOne", GatewayArgs.builder()
  *             .name("gateway_one")
- *             .deviceId(clusterOne.deviceId())
- *             .siteId(clusterOne.siteId())
+ *             .deviceId(clusterOne.get("deviceId"))
+ *             .siteId(clusterOne.get("siteId"))
  *             .oobIpConfig(GatewayOobIpConfigArgs.builder()
  *                 .type("dhcp")
  *                 .build())

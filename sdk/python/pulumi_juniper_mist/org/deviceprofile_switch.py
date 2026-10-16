@@ -1160,41 +1160,41 @@ class DeviceprofileSwitch(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeviceprofileSwitchAclPolicyArgs', 'DeviceprofileSwitchAclPolicyArgsDict']]]]] = None,
-                 acl_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchAclTagsArgs', 'DeviceprofileSwitchAclTagsArgsDict']]]]] = None,
+                 acl_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeviceprofileSwitchAclPolicyArgs', 'DeviceprofileSwitchAclPolicyArgsDict', 'outputs.DeviceprofileSwitchAclPolicy']]]]] = None,
+                 acl_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchAclTagsArgs', 'DeviceprofileSwitchAclTagsArgsDict', 'outputs.DeviceprofileSwitchAclTags']]]]] = None,
                  additional_config_cmds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dhcp_snooping: pulumi.Input[Optional[Union['DeviceprofileSwitchDhcpSnoopingArgs', 'DeviceprofileSwitchDhcpSnoopingArgsDict']]] = None,
-                 dhcpd_config: pulumi.Input[Optional[Union['DeviceprofileSwitchDhcpdConfigArgs', 'DeviceprofileSwitchDhcpdConfigArgsDict']]] = None,
+                 dhcp_snooping: pulumi.Input[Optional[Union['DeviceprofileSwitchDhcpSnoopingArgs', 'DeviceprofileSwitchDhcpSnoopingArgsDict', 'outputs.DeviceprofileSwitchDhcpSnooping']]] = None,
+                 dhcpd_config: pulumi.Input[Optional[Union['DeviceprofileSwitchDhcpdConfigArgs', 'DeviceprofileSwitchDhcpdConfigArgsDict', 'outputs.DeviceprofileSwitchDhcpdConfig']]] = None,
                  dns_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  dns_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 evpn_config: pulumi.Input[Optional[Union['DeviceprofileSwitchEvpnConfigArgs', 'DeviceprofileSwitchEvpnConfigArgsDict']]] = None,
-                 extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchExtraRoutesArgs', 'DeviceprofileSwitchExtraRoutesArgsDict']]]]] = None,
-                 extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchExtraRoutes6Args', 'DeviceprofileSwitchExtraRoutes6ArgsDict']]]]] = None,
-                 iot_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchIotConfigArgs', 'DeviceprofileSwitchIotConfigArgsDict']]]]] = None,
-                 ip_config: pulumi.Input[Optional[Union['DeviceprofileSwitchIpConfigArgs', 'DeviceprofileSwitchIpConfigArgsDict']]] = None,
-                 mist_nac: pulumi.Input[Optional[Union['DeviceprofileSwitchMistNacArgs', 'DeviceprofileSwitchMistNacArgsDict']]] = None,
+                 evpn_config: pulumi.Input[Optional[Union['DeviceprofileSwitchEvpnConfigArgs', 'DeviceprofileSwitchEvpnConfigArgsDict', 'outputs.DeviceprofileSwitchEvpnConfig']]] = None,
+                 extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchExtraRoutesArgs', 'DeviceprofileSwitchExtraRoutesArgsDict', 'outputs.DeviceprofileSwitchExtraRoutes']]]]] = None,
+                 extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchExtraRoutes6Args', 'DeviceprofileSwitchExtraRoutes6ArgsDict', 'outputs.DeviceprofileSwitchExtraRoutes6']]]]] = None,
+                 iot_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchIotConfigArgs', 'DeviceprofileSwitchIotConfigArgsDict', 'outputs.DeviceprofileSwitchIotConfig']]]]] = None,
+                 ip_config: pulumi.Input[Optional[Union['DeviceprofileSwitchIpConfigArgs', 'DeviceprofileSwitchIpConfigArgsDict', 'outputs.DeviceprofileSwitchIpConfig']]] = None,
+                 mist_nac: pulumi.Input[Optional[Union['DeviceprofileSwitchMistNacArgs', 'DeviceprofileSwitchMistNacArgsDict', 'outputs.DeviceprofileSwitchMistNac']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 networks: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchNetworksArgs', 'DeviceprofileSwitchNetworksArgsDict']]]]] = None,
+                 networks: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchNetworksArgs', 'DeviceprofileSwitchNetworksArgsDict', 'outputs.DeviceprofileSwitchNetworks']]]]] = None,
                  ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 oob_ip_config: pulumi.Input[Optional[Union['DeviceprofileSwitchOobIpConfigArgs', 'DeviceprofileSwitchOobIpConfigArgsDict']]] = None,
+                 oob_ip_config: pulumi.Input[Optional[Union['DeviceprofileSwitchOobIpConfigArgs', 'DeviceprofileSwitchOobIpConfigArgsDict', 'outputs.DeviceprofileSwitchOobIpConfig']]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 ospf_areas: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchOspfAreasArgs', 'DeviceprofileSwitchOspfAreasArgsDict']]]]] = None,
-                 other_ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchOtherIpConfigsArgs', 'DeviceprofileSwitchOtherIpConfigsArgsDict']]]]] = None,
-                 port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchPortConfigArgs', 'DeviceprofileSwitchPortConfigArgsDict']]]]] = None,
-                 port_mirroring: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchPortMirroringArgs', 'DeviceprofileSwitchPortMirroringArgsDict']]]]] = None,
-                 port_usages: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchPortUsagesArgs', 'DeviceprofileSwitchPortUsagesArgsDict']]]]] = None,
-                 radius_config: pulumi.Input[Optional[Union['DeviceprofileSwitchRadiusConfigArgs', 'DeviceprofileSwitchRadiusConfigArgsDict']]] = None,
-                 remote_syslog: pulumi.Input[Optional[Union['DeviceprofileSwitchRemoteSyslogArgs', 'DeviceprofileSwitchRemoteSyslogArgsDict']]] = None,
-                 routing_policies: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchRoutingPoliciesArgs', 'DeviceprofileSwitchRoutingPoliciesArgsDict']]]]] = None,
+                 ospf_areas: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchOspfAreasArgs', 'DeviceprofileSwitchOspfAreasArgsDict', 'outputs.DeviceprofileSwitchOspfAreas']]]]] = None,
+                 other_ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchOtherIpConfigsArgs', 'DeviceprofileSwitchOtherIpConfigsArgsDict', 'outputs.DeviceprofileSwitchOtherIpConfigs']]]]] = None,
+                 port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchPortConfigArgs', 'DeviceprofileSwitchPortConfigArgsDict', 'outputs.DeviceprofileSwitchPortConfig']]]]] = None,
+                 port_mirroring: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchPortMirroringArgs', 'DeviceprofileSwitchPortMirroringArgsDict', 'outputs.DeviceprofileSwitchPortMirroring']]]]] = None,
+                 port_usages: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchPortUsagesArgs', 'DeviceprofileSwitchPortUsagesArgsDict', 'outputs.DeviceprofileSwitchPortUsages']]]]] = None,
+                 radius_config: pulumi.Input[Optional[Union['DeviceprofileSwitchRadiusConfigArgs', 'DeviceprofileSwitchRadiusConfigArgsDict', 'outputs.DeviceprofileSwitchRadiusConfig']]] = None,
+                 remote_syslog: pulumi.Input[Optional[Union['DeviceprofileSwitchRemoteSyslogArgs', 'DeviceprofileSwitchRemoteSyslogArgsDict', 'outputs.DeviceprofileSwitchRemoteSyslog']]] = None,
+                 routing_policies: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchRoutingPoliciesArgs', 'DeviceprofileSwitchRoutingPoliciesArgsDict', 'outputs.DeviceprofileSwitchRoutingPolicies']]]]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 snmp_config: pulumi.Input[Optional[Union['DeviceprofileSwitchSnmpConfigArgs', 'DeviceprofileSwitchSnmpConfigArgsDict']]] = None,
-                 stp_config: pulumi.Input[Optional[Union['DeviceprofileSwitchStpConfigArgs', 'DeviceprofileSwitchStpConfigArgsDict']]] = None,
-                 switch_mgmt: pulumi.Input[Optional[Union['DeviceprofileSwitchSwitchMgmtArgs', 'DeviceprofileSwitchSwitchMgmtArgsDict']]] = None,
+                 snmp_config: pulumi.Input[Optional[Union['DeviceprofileSwitchSnmpConfigArgs', 'DeviceprofileSwitchSnmpConfigArgsDict', 'outputs.DeviceprofileSwitchSnmpConfig']]] = None,
+                 stp_config: pulumi.Input[Optional[Union['DeviceprofileSwitchStpConfigArgs', 'DeviceprofileSwitchStpConfigArgsDict', 'outputs.DeviceprofileSwitchStpConfig']]] = None,
+                 switch_mgmt: pulumi.Input[Optional[Union['DeviceprofileSwitchSwitchMgmtArgs', 'DeviceprofileSwitchSwitchMgmtArgsDict', 'outputs.DeviceprofileSwitchSwitchMgmt']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  use_router_id_as_source_ip: pulumi.Input[Optional[_builtins.bool]] = None,
-                 vrf_config: pulumi.Input[Optional[Union['DeviceprofileSwitchVrfConfigArgs', 'DeviceprofileSwitchVrfConfigArgsDict']]] = None,
-                 vrf_instances: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchVrfInstancesArgs', 'DeviceprofileSwitchVrfInstancesArgsDict']]]]] = None,
-                 vrrp_config: pulumi.Input[Optional[Union['DeviceprofileSwitchVrrpConfigArgs', 'DeviceprofileSwitchVrrpConfigArgsDict']]] = None,
+                 vrf_config: pulumi.Input[Optional[Union['DeviceprofileSwitchVrfConfigArgs', 'DeviceprofileSwitchVrfConfigArgsDict', 'outputs.DeviceprofileSwitchVrfConfig']]] = None,
+                 vrf_instances: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchVrfInstancesArgs', 'DeviceprofileSwitchVrfInstancesArgsDict', 'outputs.DeviceprofileSwitchVrfInstances']]]]] = None,
+                 vrrp_config: pulumi.Input[Optional[Union['DeviceprofileSwitchVrrpConfigArgs', 'DeviceprofileSwitchVrrpConfigArgsDict', 'outputs.DeviceprofileSwitchVrrpConfig']]] = None,
                  __props__=None):
         """
         This resource manages the Switch Device Profiles.
@@ -1217,41 +1217,41 @@ class DeviceprofileSwitch(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DeviceprofileSwitchAclPolicyArgs', 'DeviceprofileSwitchAclPolicyArgsDict']]]] acl_policies: ACL policy defaults provided by this switch profile
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchAclTagsArgs', 'DeviceprofileSwitchAclTagsArgsDict']]]] acl_tags: ACL tags available to switch access policies in this profile
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DeviceprofileSwitchAclPolicyArgs', 'DeviceprofileSwitchAclPolicyArgsDict', 'outputs.DeviceprofileSwitchAclPolicy']]]] acl_policies: ACL policy defaults provided by this switch profile
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchAclTagsArgs', 'DeviceprofileSwitchAclTagsArgsDict', 'outputs.DeviceprofileSwitchAclTags']]]] acl_tags: ACL tags available to switch access policies in this profile
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: Additional CLI configuration commands provided by this switch profile
-        :param pulumi.Input[Union['DeviceprofileSwitchDhcpSnoopingArgs', 'DeviceprofileSwitchDhcpSnoopingArgsDict']] dhcp_snooping: DHCP snooping defaults provided by this switch profile
-        :param pulumi.Input[Union['DeviceprofileSwitchDhcpdConfigArgs', 'DeviceprofileSwitchDhcpdConfigArgsDict']] dhcpd_config: DHCP server defaults provided by this switch profile
+        :param pulumi.Input[Union['DeviceprofileSwitchDhcpSnoopingArgs', 'DeviceprofileSwitchDhcpSnoopingArgsDict', 'outputs.DeviceprofileSwitchDhcpSnooping']] dhcp_snooping: DHCP snooping defaults provided by this switch profile
+        :param pulumi.Input[Union['DeviceprofileSwitchDhcpdConfigArgs', 'DeviceprofileSwitchDhcpdConfigArgsDict', 'outputs.DeviceprofileSwitchDhcpdConfig']] dhcpd_config: DHCP server defaults provided by this switch profile
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: DNS servers provided by this switch profile
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: DNS search suffixes provided by this switch profile
-        :param pulumi.Input[Union['DeviceprofileSwitchEvpnConfigArgs', 'DeviceprofileSwitchEvpnConfigArgsDict']] evpn_config: EVPN defaults applied by this switch profile
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchExtraRoutesArgs', 'DeviceprofileSwitchExtraRoutesArgsDict']]]] extra_routes: Additional IPv4 route defaults in this switch profile
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchExtraRoutes6Args', 'DeviceprofileSwitchExtraRoutes6ArgsDict']]]] extra_routes6: Additional IPv6 route defaults in this switch profile
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchIotConfigArgs', 'DeviceprofileSwitchIotConfigArgsDict']]]] iot_config: IoT port defaults provided by this switch profile
-        :param pulumi.Input[Union['DeviceprofileSwitchIpConfigArgs', 'DeviceprofileSwitchIpConfigArgsDict']] ip_config: Management IP addressing defaults in this switch profile
-        :param pulumi.Input[Union['DeviceprofileSwitchMistNacArgs', 'DeviceprofileSwitchMistNacArgsDict']] mist_nac: Mist NAC defaults applied by this switch profile
+        :param pulumi.Input[Union['DeviceprofileSwitchEvpnConfigArgs', 'DeviceprofileSwitchEvpnConfigArgsDict', 'outputs.DeviceprofileSwitchEvpnConfig']] evpn_config: EVPN defaults applied by this switch profile
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchExtraRoutesArgs', 'DeviceprofileSwitchExtraRoutesArgsDict', 'outputs.DeviceprofileSwitchExtraRoutes']]]] extra_routes: Additional IPv4 route defaults in this switch profile
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchExtraRoutes6Args', 'DeviceprofileSwitchExtraRoutes6ArgsDict', 'outputs.DeviceprofileSwitchExtraRoutes6']]]] extra_routes6: Additional IPv6 route defaults in this switch profile
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchIotConfigArgs', 'DeviceprofileSwitchIotConfigArgsDict', 'outputs.DeviceprofileSwitchIotConfig']]]] iot_config: IoT port defaults provided by this switch profile
+        :param pulumi.Input[Union['DeviceprofileSwitchIpConfigArgs', 'DeviceprofileSwitchIpConfigArgsDict', 'outputs.DeviceprofileSwitchIpConfig']] ip_config: Management IP addressing defaults in this switch profile
+        :param pulumi.Input[Union['DeviceprofileSwitchMistNacArgs', 'DeviceprofileSwitchMistNacArgsDict', 'outputs.DeviceprofileSwitchMistNac']] mist_nac: Mist NAC defaults applied by this switch profile
         :param pulumi.Input[_builtins.str] name: Display name of the switch profile
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchNetworksArgs', 'DeviceprofileSwitchNetworksArgsDict']]]] networks: Layer 3 networks configured by this switch profile
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchNetworksArgs', 'DeviceprofileSwitchNetworksArgsDict', 'outputs.DeviceprofileSwitchNetworks']]]] networks: Layer 3 networks configured by this switch profile
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: NTP servers provided by this switch profile
-        :param pulumi.Input[Union['DeviceprofileSwitchOobIpConfigArgs', 'DeviceprofileSwitchOobIpConfigArgsDict']] oob_ip_config: Out-of-band management IP defaults in this switch profile
+        :param pulumi.Input[Union['DeviceprofileSwitchOobIpConfigArgs', 'DeviceprofileSwitchOobIpConfigArgsDict', 'outputs.DeviceprofileSwitchOobIpConfig']] oob_ip_config: Out-of-band management IP defaults in this switch profile
         :param pulumi.Input[_builtins.str] org_id: Organization that owns this switch profile
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchOspfAreasArgs', 'DeviceprofileSwitchOspfAreasArgsDict']]]] ospf_areas: OSPF area defaults provided by this switch profile
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchOtherIpConfigsArgs', 'DeviceprofileSwitchOtherIpConfigsArgsDict']]]] other_ip_configs: Property key is the network name. Defines the additional IP Addresses configured on the device.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchPortConfigArgs', 'DeviceprofileSwitchPortConfigArgsDict']]]] port_config: Per-port wired defaults provided by this switch profile
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchPortMirroringArgs', 'DeviceprofileSwitchPortMirroringArgsDict']]]] port_mirroring: Port mirroring defaults provided by this switch profile
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchPortUsagesArgs', 'DeviceprofileSwitchPortUsagesArgsDict']]]] port_usages: Reusable switch port usage profiles provided by this switch profile
-        :param pulumi.Input[Union['DeviceprofileSwitchRadiusConfigArgs', 'DeviceprofileSwitchRadiusConfigArgsDict']] radius_config: RADIUS authentication and accounting defaults in this switch profile
-        :param pulumi.Input[Union['DeviceprofileSwitchRemoteSyslogArgs', 'DeviceprofileSwitchRemoteSyslogArgsDict']] remote_syslog: Remote syslog defaults provided by this switch profile
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchRoutingPoliciesArgs', 'DeviceprofileSwitchRoutingPoliciesArgsDict']]]] routing_policies: Routing policy defaults applied by this switch profile
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchOspfAreasArgs', 'DeviceprofileSwitchOspfAreasArgsDict', 'outputs.DeviceprofileSwitchOspfAreas']]]] ospf_areas: OSPF area defaults provided by this switch profile
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchOtherIpConfigsArgs', 'DeviceprofileSwitchOtherIpConfigsArgsDict', 'outputs.DeviceprofileSwitchOtherIpConfigs']]]] other_ip_configs: Property key is the network name. Defines the additional IP Addresses configured on the device.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchPortConfigArgs', 'DeviceprofileSwitchPortConfigArgsDict', 'outputs.DeviceprofileSwitchPortConfig']]]] port_config: Per-port wired defaults provided by this switch profile
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchPortMirroringArgs', 'DeviceprofileSwitchPortMirroringArgsDict', 'outputs.DeviceprofileSwitchPortMirroring']]]] port_mirroring: Port mirroring defaults provided by this switch profile
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchPortUsagesArgs', 'DeviceprofileSwitchPortUsagesArgsDict', 'outputs.DeviceprofileSwitchPortUsages']]]] port_usages: Reusable switch port usage profiles provided by this switch profile
+        :param pulumi.Input[Union['DeviceprofileSwitchRadiusConfigArgs', 'DeviceprofileSwitchRadiusConfigArgsDict', 'outputs.DeviceprofileSwitchRadiusConfig']] radius_config: RADIUS authentication and accounting defaults in this switch profile
+        :param pulumi.Input[Union['DeviceprofileSwitchRemoteSyslogArgs', 'DeviceprofileSwitchRemoteSyslogArgsDict', 'outputs.DeviceprofileSwitchRemoteSyslog']] remote_syslog: Remote syslog defaults provided by this switch profile
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchRoutingPoliciesArgs', 'DeviceprofileSwitchRoutingPoliciesArgsDict', 'outputs.DeviceprofileSwitchRoutingPolicies']]]] routing_policies: Routing policy defaults applied by this switch profile
         :param pulumi.Input[_builtins.str] site_id: Site where this switch profile is defined, when scoped to a site
-        :param pulumi.Input[Union['DeviceprofileSwitchSnmpConfigArgs', 'DeviceprofileSwitchSnmpConfigArgsDict']] snmp_config: SNMP defaults provided by this switch profile
-        :param pulumi.Input[Union['DeviceprofileSwitchStpConfigArgs', 'DeviceprofileSwitchStpConfigArgsDict']] stp_config: Spanning Tree Protocol defaults provided by this switch profile
-        :param pulumi.Input[Union['DeviceprofileSwitchSwitchMgmtArgs', 'DeviceprofileSwitchSwitchMgmtArgsDict']] switch_mgmt: Management-plane defaults provided by this switch profile
+        :param pulumi.Input[Union['DeviceprofileSwitchSnmpConfigArgs', 'DeviceprofileSwitchSnmpConfigArgsDict', 'outputs.DeviceprofileSwitchSnmpConfig']] snmp_config: SNMP defaults provided by this switch profile
+        :param pulumi.Input[Union['DeviceprofileSwitchStpConfigArgs', 'DeviceprofileSwitchStpConfigArgsDict', 'outputs.DeviceprofileSwitchStpConfig']] stp_config: Spanning Tree Protocol defaults provided by this switch profile
+        :param pulumi.Input[Union['DeviceprofileSwitchSwitchMgmtArgs', 'DeviceprofileSwitchSwitchMgmtArgsDict', 'outputs.DeviceprofileSwitchSwitchMgmt']] switch_mgmt: Management-plane defaults provided by this switch profile
         :param pulumi.Input[_builtins.str] type: Device type discriminator for switch profiles
         :param pulumi.Input[_builtins.bool] use_router_id_as_source_ip: Whether to use it for snmp / syslog / tacplus / radius
-        :param pulumi.Input[Union['DeviceprofileSwitchVrfConfigArgs', 'DeviceprofileSwitchVrfConfigArgsDict']] vrf_config: VRF defaults applied by this switch profile
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchVrfInstancesArgs', 'DeviceprofileSwitchVrfInstancesArgsDict']]]] vrf_instances: VRF instances configured by this switch profile
-        :param pulumi.Input[Union['DeviceprofileSwitchVrrpConfigArgs', 'DeviceprofileSwitchVrrpConfigArgsDict']] vrrp_config: VRRP defaults applied by this switch profile
+        :param pulumi.Input[Union['DeviceprofileSwitchVrfConfigArgs', 'DeviceprofileSwitchVrfConfigArgsDict', 'outputs.DeviceprofileSwitchVrfConfig']] vrf_config: VRF defaults applied by this switch profile
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchVrfInstancesArgs', 'DeviceprofileSwitchVrfInstancesArgsDict', 'outputs.DeviceprofileSwitchVrfInstances']]]] vrf_instances: VRF instances configured by this switch profile
+        :param pulumi.Input[Union['DeviceprofileSwitchVrrpConfigArgs', 'DeviceprofileSwitchVrrpConfigArgsDict', 'outputs.DeviceprofileSwitchVrrpConfig']] vrrp_config: VRRP defaults applied by this switch profile
         """
         ...
     @overload
@@ -1293,41 +1293,41 @@ class DeviceprofileSwitch(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeviceprofileSwitchAclPolicyArgs', 'DeviceprofileSwitchAclPolicyArgsDict']]]]] = None,
-                 acl_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchAclTagsArgs', 'DeviceprofileSwitchAclTagsArgsDict']]]]] = None,
+                 acl_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeviceprofileSwitchAclPolicyArgs', 'DeviceprofileSwitchAclPolicyArgsDict', 'outputs.DeviceprofileSwitchAclPolicy']]]]] = None,
+                 acl_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchAclTagsArgs', 'DeviceprofileSwitchAclTagsArgsDict', 'outputs.DeviceprofileSwitchAclTags']]]]] = None,
                  additional_config_cmds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dhcp_snooping: pulumi.Input[Optional[Union['DeviceprofileSwitchDhcpSnoopingArgs', 'DeviceprofileSwitchDhcpSnoopingArgsDict']]] = None,
-                 dhcpd_config: pulumi.Input[Optional[Union['DeviceprofileSwitchDhcpdConfigArgs', 'DeviceprofileSwitchDhcpdConfigArgsDict']]] = None,
+                 dhcp_snooping: pulumi.Input[Optional[Union['DeviceprofileSwitchDhcpSnoopingArgs', 'DeviceprofileSwitchDhcpSnoopingArgsDict', 'outputs.DeviceprofileSwitchDhcpSnooping']]] = None,
+                 dhcpd_config: pulumi.Input[Optional[Union['DeviceprofileSwitchDhcpdConfigArgs', 'DeviceprofileSwitchDhcpdConfigArgsDict', 'outputs.DeviceprofileSwitchDhcpdConfig']]] = None,
                  dns_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  dns_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 evpn_config: pulumi.Input[Optional[Union['DeviceprofileSwitchEvpnConfigArgs', 'DeviceprofileSwitchEvpnConfigArgsDict']]] = None,
-                 extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchExtraRoutesArgs', 'DeviceprofileSwitchExtraRoutesArgsDict']]]]] = None,
-                 extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchExtraRoutes6Args', 'DeviceprofileSwitchExtraRoutes6ArgsDict']]]]] = None,
-                 iot_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchIotConfigArgs', 'DeviceprofileSwitchIotConfigArgsDict']]]]] = None,
-                 ip_config: pulumi.Input[Optional[Union['DeviceprofileSwitchIpConfigArgs', 'DeviceprofileSwitchIpConfigArgsDict']]] = None,
-                 mist_nac: pulumi.Input[Optional[Union['DeviceprofileSwitchMistNacArgs', 'DeviceprofileSwitchMistNacArgsDict']]] = None,
+                 evpn_config: pulumi.Input[Optional[Union['DeviceprofileSwitchEvpnConfigArgs', 'DeviceprofileSwitchEvpnConfigArgsDict', 'outputs.DeviceprofileSwitchEvpnConfig']]] = None,
+                 extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchExtraRoutesArgs', 'DeviceprofileSwitchExtraRoutesArgsDict', 'outputs.DeviceprofileSwitchExtraRoutes']]]]] = None,
+                 extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchExtraRoutes6Args', 'DeviceprofileSwitchExtraRoutes6ArgsDict', 'outputs.DeviceprofileSwitchExtraRoutes6']]]]] = None,
+                 iot_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchIotConfigArgs', 'DeviceprofileSwitchIotConfigArgsDict', 'outputs.DeviceprofileSwitchIotConfig']]]]] = None,
+                 ip_config: pulumi.Input[Optional[Union['DeviceprofileSwitchIpConfigArgs', 'DeviceprofileSwitchIpConfigArgsDict', 'outputs.DeviceprofileSwitchIpConfig']]] = None,
+                 mist_nac: pulumi.Input[Optional[Union['DeviceprofileSwitchMistNacArgs', 'DeviceprofileSwitchMistNacArgsDict', 'outputs.DeviceprofileSwitchMistNac']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 networks: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchNetworksArgs', 'DeviceprofileSwitchNetworksArgsDict']]]]] = None,
+                 networks: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchNetworksArgs', 'DeviceprofileSwitchNetworksArgsDict', 'outputs.DeviceprofileSwitchNetworks']]]]] = None,
                  ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 oob_ip_config: pulumi.Input[Optional[Union['DeviceprofileSwitchOobIpConfigArgs', 'DeviceprofileSwitchOobIpConfigArgsDict']]] = None,
+                 oob_ip_config: pulumi.Input[Optional[Union['DeviceprofileSwitchOobIpConfigArgs', 'DeviceprofileSwitchOobIpConfigArgsDict', 'outputs.DeviceprofileSwitchOobIpConfig']]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 ospf_areas: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchOspfAreasArgs', 'DeviceprofileSwitchOspfAreasArgsDict']]]]] = None,
-                 other_ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchOtherIpConfigsArgs', 'DeviceprofileSwitchOtherIpConfigsArgsDict']]]]] = None,
-                 port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchPortConfigArgs', 'DeviceprofileSwitchPortConfigArgsDict']]]]] = None,
-                 port_mirroring: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchPortMirroringArgs', 'DeviceprofileSwitchPortMirroringArgsDict']]]]] = None,
-                 port_usages: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchPortUsagesArgs', 'DeviceprofileSwitchPortUsagesArgsDict']]]]] = None,
-                 radius_config: pulumi.Input[Optional[Union['DeviceprofileSwitchRadiusConfigArgs', 'DeviceprofileSwitchRadiusConfigArgsDict']]] = None,
-                 remote_syslog: pulumi.Input[Optional[Union['DeviceprofileSwitchRemoteSyslogArgs', 'DeviceprofileSwitchRemoteSyslogArgsDict']]] = None,
-                 routing_policies: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchRoutingPoliciesArgs', 'DeviceprofileSwitchRoutingPoliciesArgsDict']]]]] = None,
+                 ospf_areas: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchOspfAreasArgs', 'DeviceprofileSwitchOspfAreasArgsDict', 'outputs.DeviceprofileSwitchOspfAreas']]]]] = None,
+                 other_ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchOtherIpConfigsArgs', 'DeviceprofileSwitchOtherIpConfigsArgsDict', 'outputs.DeviceprofileSwitchOtherIpConfigs']]]]] = None,
+                 port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchPortConfigArgs', 'DeviceprofileSwitchPortConfigArgsDict', 'outputs.DeviceprofileSwitchPortConfig']]]]] = None,
+                 port_mirroring: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchPortMirroringArgs', 'DeviceprofileSwitchPortMirroringArgsDict', 'outputs.DeviceprofileSwitchPortMirroring']]]]] = None,
+                 port_usages: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchPortUsagesArgs', 'DeviceprofileSwitchPortUsagesArgsDict', 'outputs.DeviceprofileSwitchPortUsages']]]]] = None,
+                 radius_config: pulumi.Input[Optional[Union['DeviceprofileSwitchRadiusConfigArgs', 'DeviceprofileSwitchRadiusConfigArgsDict', 'outputs.DeviceprofileSwitchRadiusConfig']]] = None,
+                 remote_syslog: pulumi.Input[Optional[Union['DeviceprofileSwitchRemoteSyslogArgs', 'DeviceprofileSwitchRemoteSyslogArgsDict', 'outputs.DeviceprofileSwitchRemoteSyslog']]] = None,
+                 routing_policies: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchRoutingPoliciesArgs', 'DeviceprofileSwitchRoutingPoliciesArgsDict', 'outputs.DeviceprofileSwitchRoutingPolicies']]]]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 snmp_config: pulumi.Input[Optional[Union['DeviceprofileSwitchSnmpConfigArgs', 'DeviceprofileSwitchSnmpConfigArgsDict']]] = None,
-                 stp_config: pulumi.Input[Optional[Union['DeviceprofileSwitchStpConfigArgs', 'DeviceprofileSwitchStpConfigArgsDict']]] = None,
-                 switch_mgmt: pulumi.Input[Optional[Union['DeviceprofileSwitchSwitchMgmtArgs', 'DeviceprofileSwitchSwitchMgmtArgsDict']]] = None,
+                 snmp_config: pulumi.Input[Optional[Union['DeviceprofileSwitchSnmpConfigArgs', 'DeviceprofileSwitchSnmpConfigArgsDict', 'outputs.DeviceprofileSwitchSnmpConfig']]] = None,
+                 stp_config: pulumi.Input[Optional[Union['DeviceprofileSwitchStpConfigArgs', 'DeviceprofileSwitchStpConfigArgsDict', 'outputs.DeviceprofileSwitchStpConfig']]] = None,
+                 switch_mgmt: pulumi.Input[Optional[Union['DeviceprofileSwitchSwitchMgmtArgs', 'DeviceprofileSwitchSwitchMgmtArgsDict', 'outputs.DeviceprofileSwitchSwitchMgmt']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  use_router_id_as_source_ip: pulumi.Input[Optional[_builtins.bool]] = None,
-                 vrf_config: pulumi.Input[Optional[Union['DeviceprofileSwitchVrfConfigArgs', 'DeviceprofileSwitchVrfConfigArgsDict']]] = None,
-                 vrf_instances: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchVrfInstancesArgs', 'DeviceprofileSwitchVrfInstancesArgsDict']]]]] = None,
-                 vrrp_config: pulumi.Input[Optional[Union['DeviceprofileSwitchVrrpConfigArgs', 'DeviceprofileSwitchVrrpConfigArgsDict']]] = None,
+                 vrf_config: pulumi.Input[Optional[Union['DeviceprofileSwitchVrfConfigArgs', 'DeviceprofileSwitchVrfConfigArgsDict', 'outputs.DeviceprofileSwitchVrfConfig']]] = None,
+                 vrf_instances: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchVrfInstancesArgs', 'DeviceprofileSwitchVrfInstancesArgsDict', 'outputs.DeviceprofileSwitchVrfInstances']]]]] = None,
+                 vrrp_config: pulumi.Input[Optional[Union['DeviceprofileSwitchVrrpConfigArgs', 'DeviceprofileSwitchVrrpConfigArgsDict', 'outputs.DeviceprofileSwitchVrrpConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1386,41 +1386,41 @@ class DeviceprofileSwitch(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acl_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeviceprofileSwitchAclPolicyArgs', 'DeviceprofileSwitchAclPolicyArgsDict']]]]] = None,
-            acl_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchAclTagsArgs', 'DeviceprofileSwitchAclTagsArgsDict']]]]] = None,
+            acl_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeviceprofileSwitchAclPolicyArgs', 'DeviceprofileSwitchAclPolicyArgsDict', 'outputs.DeviceprofileSwitchAclPolicy']]]]] = None,
+            acl_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchAclTagsArgs', 'DeviceprofileSwitchAclTagsArgsDict', 'outputs.DeviceprofileSwitchAclTags']]]]] = None,
             additional_config_cmds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            dhcp_snooping: pulumi.Input[Optional[Union['DeviceprofileSwitchDhcpSnoopingArgs', 'DeviceprofileSwitchDhcpSnoopingArgsDict']]] = None,
-            dhcpd_config: pulumi.Input[Optional[Union['DeviceprofileSwitchDhcpdConfigArgs', 'DeviceprofileSwitchDhcpdConfigArgsDict']]] = None,
+            dhcp_snooping: pulumi.Input[Optional[Union['DeviceprofileSwitchDhcpSnoopingArgs', 'DeviceprofileSwitchDhcpSnoopingArgsDict', 'outputs.DeviceprofileSwitchDhcpSnooping']]] = None,
+            dhcpd_config: pulumi.Input[Optional[Union['DeviceprofileSwitchDhcpdConfigArgs', 'DeviceprofileSwitchDhcpdConfigArgsDict', 'outputs.DeviceprofileSwitchDhcpdConfig']]] = None,
             dns_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             dns_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            evpn_config: pulumi.Input[Optional[Union['DeviceprofileSwitchEvpnConfigArgs', 'DeviceprofileSwitchEvpnConfigArgsDict']]] = None,
-            extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchExtraRoutesArgs', 'DeviceprofileSwitchExtraRoutesArgsDict']]]]] = None,
-            extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchExtraRoutes6Args', 'DeviceprofileSwitchExtraRoutes6ArgsDict']]]]] = None,
-            iot_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchIotConfigArgs', 'DeviceprofileSwitchIotConfigArgsDict']]]]] = None,
-            ip_config: pulumi.Input[Optional[Union['DeviceprofileSwitchIpConfigArgs', 'DeviceprofileSwitchIpConfigArgsDict']]] = None,
-            mist_nac: pulumi.Input[Optional[Union['DeviceprofileSwitchMistNacArgs', 'DeviceprofileSwitchMistNacArgsDict']]] = None,
+            evpn_config: pulumi.Input[Optional[Union['DeviceprofileSwitchEvpnConfigArgs', 'DeviceprofileSwitchEvpnConfigArgsDict', 'outputs.DeviceprofileSwitchEvpnConfig']]] = None,
+            extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchExtraRoutesArgs', 'DeviceprofileSwitchExtraRoutesArgsDict', 'outputs.DeviceprofileSwitchExtraRoutes']]]]] = None,
+            extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchExtraRoutes6Args', 'DeviceprofileSwitchExtraRoutes6ArgsDict', 'outputs.DeviceprofileSwitchExtraRoutes6']]]]] = None,
+            iot_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchIotConfigArgs', 'DeviceprofileSwitchIotConfigArgsDict', 'outputs.DeviceprofileSwitchIotConfig']]]]] = None,
+            ip_config: pulumi.Input[Optional[Union['DeviceprofileSwitchIpConfigArgs', 'DeviceprofileSwitchIpConfigArgsDict', 'outputs.DeviceprofileSwitchIpConfig']]] = None,
+            mist_nac: pulumi.Input[Optional[Union['DeviceprofileSwitchMistNacArgs', 'DeviceprofileSwitchMistNacArgsDict', 'outputs.DeviceprofileSwitchMistNac']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            networks: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchNetworksArgs', 'DeviceprofileSwitchNetworksArgsDict']]]]] = None,
+            networks: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchNetworksArgs', 'DeviceprofileSwitchNetworksArgsDict', 'outputs.DeviceprofileSwitchNetworks']]]]] = None,
             ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            oob_ip_config: pulumi.Input[Optional[Union['DeviceprofileSwitchOobIpConfigArgs', 'DeviceprofileSwitchOobIpConfigArgsDict']]] = None,
+            oob_ip_config: pulumi.Input[Optional[Union['DeviceprofileSwitchOobIpConfigArgs', 'DeviceprofileSwitchOobIpConfigArgsDict', 'outputs.DeviceprofileSwitchOobIpConfig']]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
-            ospf_areas: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchOspfAreasArgs', 'DeviceprofileSwitchOspfAreasArgsDict']]]]] = None,
-            other_ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchOtherIpConfigsArgs', 'DeviceprofileSwitchOtherIpConfigsArgsDict']]]]] = None,
-            port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchPortConfigArgs', 'DeviceprofileSwitchPortConfigArgsDict']]]]] = None,
-            port_mirroring: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchPortMirroringArgs', 'DeviceprofileSwitchPortMirroringArgsDict']]]]] = None,
-            port_usages: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchPortUsagesArgs', 'DeviceprofileSwitchPortUsagesArgsDict']]]]] = None,
-            radius_config: pulumi.Input[Optional[Union['DeviceprofileSwitchRadiusConfigArgs', 'DeviceprofileSwitchRadiusConfigArgsDict']]] = None,
-            remote_syslog: pulumi.Input[Optional[Union['DeviceprofileSwitchRemoteSyslogArgs', 'DeviceprofileSwitchRemoteSyslogArgsDict']]] = None,
-            routing_policies: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchRoutingPoliciesArgs', 'DeviceprofileSwitchRoutingPoliciesArgsDict']]]]] = None,
+            ospf_areas: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchOspfAreasArgs', 'DeviceprofileSwitchOspfAreasArgsDict', 'outputs.DeviceprofileSwitchOspfAreas']]]]] = None,
+            other_ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchOtherIpConfigsArgs', 'DeviceprofileSwitchOtherIpConfigsArgsDict', 'outputs.DeviceprofileSwitchOtherIpConfigs']]]]] = None,
+            port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchPortConfigArgs', 'DeviceprofileSwitchPortConfigArgsDict', 'outputs.DeviceprofileSwitchPortConfig']]]]] = None,
+            port_mirroring: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchPortMirroringArgs', 'DeviceprofileSwitchPortMirroringArgsDict', 'outputs.DeviceprofileSwitchPortMirroring']]]]] = None,
+            port_usages: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchPortUsagesArgs', 'DeviceprofileSwitchPortUsagesArgsDict', 'outputs.DeviceprofileSwitchPortUsages']]]]] = None,
+            radius_config: pulumi.Input[Optional[Union['DeviceprofileSwitchRadiusConfigArgs', 'DeviceprofileSwitchRadiusConfigArgsDict', 'outputs.DeviceprofileSwitchRadiusConfig']]] = None,
+            remote_syslog: pulumi.Input[Optional[Union['DeviceprofileSwitchRemoteSyslogArgs', 'DeviceprofileSwitchRemoteSyslogArgsDict', 'outputs.DeviceprofileSwitchRemoteSyslog']]] = None,
+            routing_policies: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchRoutingPoliciesArgs', 'DeviceprofileSwitchRoutingPoliciesArgsDict', 'outputs.DeviceprofileSwitchRoutingPolicies']]]]] = None,
             site_id: pulumi.Input[Optional[_builtins.str]] = None,
-            snmp_config: pulumi.Input[Optional[Union['DeviceprofileSwitchSnmpConfigArgs', 'DeviceprofileSwitchSnmpConfigArgsDict']]] = None,
-            stp_config: pulumi.Input[Optional[Union['DeviceprofileSwitchStpConfigArgs', 'DeviceprofileSwitchStpConfigArgsDict']]] = None,
-            switch_mgmt: pulumi.Input[Optional[Union['DeviceprofileSwitchSwitchMgmtArgs', 'DeviceprofileSwitchSwitchMgmtArgsDict']]] = None,
+            snmp_config: pulumi.Input[Optional[Union['DeviceprofileSwitchSnmpConfigArgs', 'DeviceprofileSwitchSnmpConfigArgsDict', 'outputs.DeviceprofileSwitchSnmpConfig']]] = None,
+            stp_config: pulumi.Input[Optional[Union['DeviceprofileSwitchStpConfigArgs', 'DeviceprofileSwitchStpConfigArgsDict', 'outputs.DeviceprofileSwitchStpConfig']]] = None,
+            switch_mgmt: pulumi.Input[Optional[Union['DeviceprofileSwitchSwitchMgmtArgs', 'DeviceprofileSwitchSwitchMgmtArgsDict', 'outputs.DeviceprofileSwitchSwitchMgmt']]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             use_router_id_as_source_ip: pulumi.Input[Optional[_builtins.bool]] = None,
-            vrf_config: pulumi.Input[Optional[Union['DeviceprofileSwitchVrfConfigArgs', 'DeviceprofileSwitchVrfConfigArgsDict']]] = None,
-            vrf_instances: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchVrfInstancesArgs', 'DeviceprofileSwitchVrfInstancesArgsDict']]]]] = None,
-            vrrp_config: pulumi.Input[Optional[Union['DeviceprofileSwitchVrrpConfigArgs', 'DeviceprofileSwitchVrrpConfigArgsDict']]] = None) -> 'DeviceprofileSwitch':
+            vrf_config: pulumi.Input[Optional[Union['DeviceprofileSwitchVrfConfigArgs', 'DeviceprofileSwitchVrfConfigArgsDict', 'outputs.DeviceprofileSwitchVrfConfig']]] = None,
+            vrf_instances: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchVrfInstancesArgs', 'DeviceprofileSwitchVrfInstancesArgsDict', 'outputs.DeviceprofileSwitchVrfInstances']]]]] = None,
+            vrrp_config: pulumi.Input[Optional[Union['DeviceprofileSwitchVrrpConfigArgs', 'DeviceprofileSwitchVrrpConfigArgsDict', 'outputs.DeviceprofileSwitchVrrpConfig']]] = None) -> 'DeviceprofileSwitch':
         """
         Get an existing DeviceprofileSwitch resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1428,41 +1428,41 @@ class DeviceprofileSwitch(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DeviceprofileSwitchAclPolicyArgs', 'DeviceprofileSwitchAclPolicyArgsDict']]]] acl_policies: ACL policy defaults provided by this switch profile
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchAclTagsArgs', 'DeviceprofileSwitchAclTagsArgsDict']]]] acl_tags: ACL tags available to switch access policies in this profile
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DeviceprofileSwitchAclPolicyArgs', 'DeviceprofileSwitchAclPolicyArgsDict', 'outputs.DeviceprofileSwitchAclPolicy']]]] acl_policies: ACL policy defaults provided by this switch profile
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchAclTagsArgs', 'DeviceprofileSwitchAclTagsArgsDict', 'outputs.DeviceprofileSwitchAclTags']]]] acl_tags: ACL tags available to switch access policies in this profile
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: Additional CLI configuration commands provided by this switch profile
-        :param pulumi.Input[Union['DeviceprofileSwitchDhcpSnoopingArgs', 'DeviceprofileSwitchDhcpSnoopingArgsDict']] dhcp_snooping: DHCP snooping defaults provided by this switch profile
-        :param pulumi.Input[Union['DeviceprofileSwitchDhcpdConfigArgs', 'DeviceprofileSwitchDhcpdConfigArgsDict']] dhcpd_config: DHCP server defaults provided by this switch profile
+        :param pulumi.Input[Union['DeviceprofileSwitchDhcpSnoopingArgs', 'DeviceprofileSwitchDhcpSnoopingArgsDict', 'outputs.DeviceprofileSwitchDhcpSnooping']] dhcp_snooping: DHCP snooping defaults provided by this switch profile
+        :param pulumi.Input[Union['DeviceprofileSwitchDhcpdConfigArgs', 'DeviceprofileSwitchDhcpdConfigArgsDict', 'outputs.DeviceprofileSwitchDhcpdConfig']] dhcpd_config: DHCP server defaults provided by this switch profile
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: DNS servers provided by this switch profile
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: DNS search suffixes provided by this switch profile
-        :param pulumi.Input[Union['DeviceprofileSwitchEvpnConfigArgs', 'DeviceprofileSwitchEvpnConfigArgsDict']] evpn_config: EVPN defaults applied by this switch profile
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchExtraRoutesArgs', 'DeviceprofileSwitchExtraRoutesArgsDict']]]] extra_routes: Additional IPv4 route defaults in this switch profile
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchExtraRoutes6Args', 'DeviceprofileSwitchExtraRoutes6ArgsDict']]]] extra_routes6: Additional IPv6 route defaults in this switch profile
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchIotConfigArgs', 'DeviceprofileSwitchIotConfigArgsDict']]]] iot_config: IoT port defaults provided by this switch profile
-        :param pulumi.Input[Union['DeviceprofileSwitchIpConfigArgs', 'DeviceprofileSwitchIpConfigArgsDict']] ip_config: Management IP addressing defaults in this switch profile
-        :param pulumi.Input[Union['DeviceprofileSwitchMistNacArgs', 'DeviceprofileSwitchMistNacArgsDict']] mist_nac: Mist NAC defaults applied by this switch profile
+        :param pulumi.Input[Union['DeviceprofileSwitchEvpnConfigArgs', 'DeviceprofileSwitchEvpnConfigArgsDict', 'outputs.DeviceprofileSwitchEvpnConfig']] evpn_config: EVPN defaults applied by this switch profile
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchExtraRoutesArgs', 'DeviceprofileSwitchExtraRoutesArgsDict', 'outputs.DeviceprofileSwitchExtraRoutes']]]] extra_routes: Additional IPv4 route defaults in this switch profile
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchExtraRoutes6Args', 'DeviceprofileSwitchExtraRoutes6ArgsDict', 'outputs.DeviceprofileSwitchExtraRoutes6']]]] extra_routes6: Additional IPv6 route defaults in this switch profile
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchIotConfigArgs', 'DeviceprofileSwitchIotConfigArgsDict', 'outputs.DeviceprofileSwitchIotConfig']]]] iot_config: IoT port defaults provided by this switch profile
+        :param pulumi.Input[Union['DeviceprofileSwitchIpConfigArgs', 'DeviceprofileSwitchIpConfigArgsDict', 'outputs.DeviceprofileSwitchIpConfig']] ip_config: Management IP addressing defaults in this switch profile
+        :param pulumi.Input[Union['DeviceprofileSwitchMistNacArgs', 'DeviceprofileSwitchMistNacArgsDict', 'outputs.DeviceprofileSwitchMistNac']] mist_nac: Mist NAC defaults applied by this switch profile
         :param pulumi.Input[_builtins.str] name: Display name of the switch profile
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchNetworksArgs', 'DeviceprofileSwitchNetworksArgsDict']]]] networks: Layer 3 networks configured by this switch profile
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchNetworksArgs', 'DeviceprofileSwitchNetworksArgsDict', 'outputs.DeviceprofileSwitchNetworks']]]] networks: Layer 3 networks configured by this switch profile
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: NTP servers provided by this switch profile
-        :param pulumi.Input[Union['DeviceprofileSwitchOobIpConfigArgs', 'DeviceprofileSwitchOobIpConfigArgsDict']] oob_ip_config: Out-of-band management IP defaults in this switch profile
+        :param pulumi.Input[Union['DeviceprofileSwitchOobIpConfigArgs', 'DeviceprofileSwitchOobIpConfigArgsDict', 'outputs.DeviceprofileSwitchOobIpConfig']] oob_ip_config: Out-of-band management IP defaults in this switch profile
         :param pulumi.Input[_builtins.str] org_id: Organization that owns this switch profile
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchOspfAreasArgs', 'DeviceprofileSwitchOspfAreasArgsDict']]]] ospf_areas: OSPF area defaults provided by this switch profile
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchOtherIpConfigsArgs', 'DeviceprofileSwitchOtherIpConfigsArgsDict']]]] other_ip_configs: Property key is the network name. Defines the additional IP Addresses configured on the device.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchPortConfigArgs', 'DeviceprofileSwitchPortConfigArgsDict']]]] port_config: Per-port wired defaults provided by this switch profile
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchPortMirroringArgs', 'DeviceprofileSwitchPortMirroringArgsDict']]]] port_mirroring: Port mirroring defaults provided by this switch profile
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchPortUsagesArgs', 'DeviceprofileSwitchPortUsagesArgsDict']]]] port_usages: Reusable switch port usage profiles provided by this switch profile
-        :param pulumi.Input[Union['DeviceprofileSwitchRadiusConfigArgs', 'DeviceprofileSwitchRadiusConfigArgsDict']] radius_config: RADIUS authentication and accounting defaults in this switch profile
-        :param pulumi.Input[Union['DeviceprofileSwitchRemoteSyslogArgs', 'DeviceprofileSwitchRemoteSyslogArgsDict']] remote_syslog: Remote syslog defaults provided by this switch profile
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchRoutingPoliciesArgs', 'DeviceprofileSwitchRoutingPoliciesArgsDict']]]] routing_policies: Routing policy defaults applied by this switch profile
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchOspfAreasArgs', 'DeviceprofileSwitchOspfAreasArgsDict', 'outputs.DeviceprofileSwitchOspfAreas']]]] ospf_areas: OSPF area defaults provided by this switch profile
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchOtherIpConfigsArgs', 'DeviceprofileSwitchOtherIpConfigsArgsDict', 'outputs.DeviceprofileSwitchOtherIpConfigs']]]] other_ip_configs: Property key is the network name. Defines the additional IP Addresses configured on the device.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchPortConfigArgs', 'DeviceprofileSwitchPortConfigArgsDict', 'outputs.DeviceprofileSwitchPortConfig']]]] port_config: Per-port wired defaults provided by this switch profile
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchPortMirroringArgs', 'DeviceprofileSwitchPortMirroringArgsDict', 'outputs.DeviceprofileSwitchPortMirroring']]]] port_mirroring: Port mirroring defaults provided by this switch profile
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchPortUsagesArgs', 'DeviceprofileSwitchPortUsagesArgsDict', 'outputs.DeviceprofileSwitchPortUsages']]]] port_usages: Reusable switch port usage profiles provided by this switch profile
+        :param pulumi.Input[Union['DeviceprofileSwitchRadiusConfigArgs', 'DeviceprofileSwitchRadiusConfigArgsDict', 'outputs.DeviceprofileSwitchRadiusConfig']] radius_config: RADIUS authentication and accounting defaults in this switch profile
+        :param pulumi.Input[Union['DeviceprofileSwitchRemoteSyslogArgs', 'DeviceprofileSwitchRemoteSyslogArgsDict', 'outputs.DeviceprofileSwitchRemoteSyslog']] remote_syslog: Remote syslog defaults provided by this switch profile
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchRoutingPoliciesArgs', 'DeviceprofileSwitchRoutingPoliciesArgsDict', 'outputs.DeviceprofileSwitchRoutingPolicies']]]] routing_policies: Routing policy defaults applied by this switch profile
         :param pulumi.Input[_builtins.str] site_id: Site where this switch profile is defined, when scoped to a site
-        :param pulumi.Input[Union['DeviceprofileSwitchSnmpConfigArgs', 'DeviceprofileSwitchSnmpConfigArgsDict']] snmp_config: SNMP defaults provided by this switch profile
-        :param pulumi.Input[Union['DeviceprofileSwitchStpConfigArgs', 'DeviceprofileSwitchStpConfigArgsDict']] stp_config: Spanning Tree Protocol defaults provided by this switch profile
-        :param pulumi.Input[Union['DeviceprofileSwitchSwitchMgmtArgs', 'DeviceprofileSwitchSwitchMgmtArgsDict']] switch_mgmt: Management-plane defaults provided by this switch profile
+        :param pulumi.Input[Union['DeviceprofileSwitchSnmpConfigArgs', 'DeviceprofileSwitchSnmpConfigArgsDict', 'outputs.DeviceprofileSwitchSnmpConfig']] snmp_config: SNMP defaults provided by this switch profile
+        :param pulumi.Input[Union['DeviceprofileSwitchStpConfigArgs', 'DeviceprofileSwitchStpConfigArgsDict', 'outputs.DeviceprofileSwitchStpConfig']] stp_config: Spanning Tree Protocol defaults provided by this switch profile
+        :param pulumi.Input[Union['DeviceprofileSwitchSwitchMgmtArgs', 'DeviceprofileSwitchSwitchMgmtArgsDict', 'outputs.DeviceprofileSwitchSwitchMgmt']] switch_mgmt: Management-plane defaults provided by this switch profile
         :param pulumi.Input[_builtins.str] type: Device type discriminator for switch profiles
         :param pulumi.Input[_builtins.bool] use_router_id_as_source_ip: Whether to use it for snmp / syslog / tacplus / radius
-        :param pulumi.Input[Union['DeviceprofileSwitchVrfConfigArgs', 'DeviceprofileSwitchVrfConfigArgsDict']] vrf_config: VRF defaults applied by this switch profile
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchVrfInstancesArgs', 'DeviceprofileSwitchVrfInstancesArgsDict']]]] vrf_instances: VRF instances configured by this switch profile
-        :param pulumi.Input[Union['DeviceprofileSwitchVrrpConfigArgs', 'DeviceprofileSwitchVrrpConfigArgsDict']] vrrp_config: VRRP defaults applied by this switch profile
+        :param pulumi.Input[Union['DeviceprofileSwitchVrfConfigArgs', 'DeviceprofileSwitchVrfConfigArgsDict', 'outputs.DeviceprofileSwitchVrfConfig']] vrf_config: VRF defaults applied by this switch profile
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileSwitchVrfInstancesArgs', 'DeviceprofileSwitchVrfInstancesArgsDict', 'outputs.DeviceprofileSwitchVrfInstances']]]] vrf_instances: VRF instances configured by this switch profile
+        :param pulumi.Input[Union['DeviceprofileSwitchVrrpConfigArgs', 'DeviceprofileSwitchVrrpConfigArgsDict', 'outputs.DeviceprofileSwitchVrrpConfig']] vrrp_config: VRRP defaults applied by this switch profile
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -48,7 +48,6 @@ class NactagArgs:
                  * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
                  * `true`: means all values should be matched (i.e., match-all behavior)
                
-               
                Currently it makes sense to set this field to `true` only if the `match`==`idp_role`, `match`==`usermac_label` and `edr_status`
         :param pulumi.Input[_builtins.str] nacportal_id: If `type`==`redirect_nacportal_id`, NAC portal ID used for client redirection
         :param pulumi.Input[_builtins.str] name: Human-readable name of the NAC tag
@@ -170,7 +169,6 @@ class NactagArgs:
         This field is applicable only when `type`==`match`
           * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
           * `true`: means all values should be matched (i.e., match-all behavior)
-
 
         Currently it makes sense to set this field to `true` only if the `match`==`idp_role`, `match`==`usermac_label` and `edr_status`
         """
@@ -319,7 +317,6 @@ class _NactagState:
                  * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
                  * `true`: means all values should be matched (i.e., match-all behavior)
                
-               
                Currently it makes sense to set this field to `true` only if the `match`==`idp_role`, `match`==`usermac_label` and `edr_status`
         :param pulumi.Input[_builtins.str] nacportal_id: If `type`==`redirect_nacportal_id`, NAC portal ID used for client redirection
         :param pulumi.Input[_builtins.str] name: Human-readable name of the NAC tag
@@ -421,7 +418,6 @@ class _NactagState:
         This field is applicable only when `type`==`match`
           * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
           * `true`: means all values should be matched (i.e., match-all behavior)
-
 
         Currently it makes sense to set this field to `true` only if the `match`==`idp_role`, `match`==`usermac_label` and `edr_status`
         """
@@ -626,7 +622,6 @@ class Nactag(pulumi.CustomResource):
                  * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
                  * `true`: means all values should be matched (i.e., match-all behavior)
                
-               
                Currently it makes sense to set this field to `true` only if the `match`==`idp_role`, `match`==`usermac_label` and `edr_status`
         :param pulumi.Input[_builtins.str] nacportal_id: If `type`==`redirect_nacportal_id`, NAC portal ID used for client redirection
         :param pulumi.Input[_builtins.str] name: Human-readable name of the NAC tag
@@ -776,7 +771,6 @@ class Nactag(pulumi.CustomResource):
                  * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
                  * `true`: means all values should be matched (i.e., match-all behavior)
                
-               
                Currently it makes sense to set this field to `true` only if the `match`==`idp_role`, `match`==`usermac_label` and `edr_status`
         :param pulumi.Input[_builtins.str] nacportal_id: If `type`==`redirect_nacportal_id`, NAC portal ID used for client redirection
         :param pulumi.Input[_builtins.str] name: Human-readable name of the NAC tag
@@ -851,7 +845,6 @@ class Nactag(pulumi.CustomResource):
         This field is applicable only when `type`==`match`
           * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
           * `true`: means all values should be matched (i.e., match-all behavior)
-
 
         Currently it makes sense to set this field to `true` only if the `match`==`idp_role`, `match`==`usermac_label` and `edr_status`
         """

@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var wxtagOne = new Wxtag("wxtagOne", WxtagArgs.builder()
- *             .orgId(terraformTest.id())
+ *             .orgId(terraformTest.get("id"))
  *             .name("wxtag_one")
  *             .values("10.3.0.0/16")
  *             .op("in")

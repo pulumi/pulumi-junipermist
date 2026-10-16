@@ -26,16 +26,13 @@ class GetSsoMetadataResult:
     """
     A collection of values returned by getSsoMetadata.
     """
-    def __init__(__self__, acs_url=None, entity_id=None, id=None, logout_url=None, metadata=None, org_id=None, scim_base_url=None, sso_id=None):
+    def __init__(__self__, acs_url=None, entity_id=None, logout_url=None, metadata=None, org_id=None, scim_base_url=None, sso_id=None):
         if acs_url and not isinstance(acs_url, str):
             raise TypeError("Expected argument 'acs_url' to be a str")
         pulumi.set(__self__, "acs_url", acs_url)
         if entity_id and not isinstance(entity_id, str):
             raise TypeError("Expected argument 'entity_id' to be a str")
         pulumi.set(__self__, "entity_id", entity_id)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if logout_url and not isinstance(logout_url, str):
             raise TypeError("Expected argument 'logout_url' to be a str")
         pulumi.set(__self__, "logout_url", logout_url)
@@ -67,14 +64,6 @@ class GetSsoMetadataResult:
         If `idp_type`==`saml`
         """
         return pulumi.get(self, "entity_id")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="logoutUrl")
@@ -119,7 +108,6 @@ class AwaitableGetSsoMetadataResult(GetSsoMetadataResult):
         return GetSsoMetadataResult(
             acs_url=self.acs_url,
             entity_id=self.entity_id,
-            id=self.id,
             logout_url=self.logout_url,
             metadata=self.metadata,
             org_id=self.org_id,
@@ -154,7 +142,6 @@ def get_sso_metadata(org_id: Optional[_builtins.str] = None,
     return AwaitableGetSsoMetadataResult(
         acs_url=pulumi.get(__ret__, 'acs_url'),
         entity_id=pulumi.get(__ret__, 'entity_id'),
-        id=pulumi.get(__ret__, 'id'),
         logout_url=pulumi.get(__ret__, 'logout_url'),
         metadata=pulumi.get(__ret__, 'metadata'),
         org_id=pulumi.get(__ret__, 'org_id'),
@@ -186,7 +173,6 @@ def get_sso_metadata_output(org_id: pulumi.Input[Optional[_builtins.str]] = None
     return __ret__.apply(lambda __response__: GetSsoMetadataResult(
         acs_url=pulumi.get(__response__, 'acs_url'),
         entity_id=pulumi.get(__response__, 'entity_id'),
-        id=pulumi.get(__response__, 'id'),
         logout_url=pulumi.get(__response__, 'logout_url'),
         metadata=pulumi.get(__response__, 'metadata'),
         org_id=pulumi.get(__response__, 'org_id'),

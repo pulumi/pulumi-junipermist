@@ -34,10 +34,6 @@ export function getConstFingerprints(opts?: pulumi.InvokeOptions): Promise<GetCo
  */
 export interface GetConstFingerprintsResult {
     readonly families: string[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly mfgs: string[];
     readonly models: string[];
     readonly os: string[];

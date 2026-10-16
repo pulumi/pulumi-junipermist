@@ -126,25 +126,18 @@ namespace Pulumi.JuniperMist.Org
     [OutputType]
     public sealed class GetRftemplatesResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly string OrgId;
         public readonly ImmutableArray<Outputs.GetRftemplatesOrgRftemplateResult> OrgRftemplates;
         public readonly int? Page;
 
         [OutputConstructor]
         private GetRftemplatesResult(
-            string id,
-
             string orgId,
 
             ImmutableArray<Outputs.GetRftemplatesOrgRftemplateResult> orgRftemplates,
 
             int? page)
         {
-            Id = id;
             OrgId = orgId;
             OrgRftemplates = orgRftemplates;
             Page = page;

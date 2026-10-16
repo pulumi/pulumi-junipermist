@@ -62,8 +62,6 @@ type GetNactagsArgs struct {
 
 // A collection of values returned by getNactags.
 type GetNactagsResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id         string                `pulumi:"id"`
 	Match      *string               `pulumi:"match"`
 	Name       *string               `pulumi:"name"`
 	OrgId      string                `pulumi:"orgId"`
@@ -72,12 +70,8 @@ type GetNactagsResult struct {
 }
 
 func GetNactagsOutput(ctx *pulumi.Context, args GetNactagsOutputArgs, opts ...pulumi.InvokeOption) GetNactagsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNactagsResultOutput, error) {
-			args := v.(GetNactagsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("junipermist:org/getNactags:getNactags", args, GetNactagsResultOutput{}, options).(GetNactagsResultOutput), nil
-		}).(GetNactagsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("junipermist:org/getNactags:getNactags", args, GetNactagsResultOutput{}, options).(GetNactagsResultOutput)
 }
 
 // A collection of arguments for invoking getNactags.
@@ -105,11 +99,6 @@ func (o GetNactagsResultOutput) ToGetNactagsResultOutput() GetNactagsResultOutpu
 
 func (o GetNactagsResultOutput) ToGetNactagsResultOutputWithContext(ctx context.Context) GetNactagsResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetNactagsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNactagsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetNactagsResultOutput) Match() pulumi.StringPtrOutput {

@@ -104,10 +104,6 @@ namespace Pulumi.JuniperMist
     public sealed class GetConstFingerprintsResult
     {
         public readonly ImmutableArray<string> Families;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly ImmutableArray<string> Mfgs;
         public readonly ImmutableArray<string> Models;
         public readonly ImmutableArray<string> Os;
@@ -116,8 +112,6 @@ namespace Pulumi.JuniperMist
         private GetConstFingerprintsResult(
             ImmutableArray<string> families,
 
-            string id,
-
             ImmutableArray<string> mfgs,
 
             ImmutableArray<string> models,
@@ -125,7 +119,6 @@ namespace Pulumi.JuniperMist
             ImmutableArray<string> os)
         {
             Families = families;
-            Id = id;
             Mfgs = mfgs;
             Models = models;
             Os = os;

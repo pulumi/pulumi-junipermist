@@ -58,19 +58,13 @@ type GetNetworktemplatesArgs struct {
 
 // A collection of values returned by getNetworktemplates.
 type GetNetworktemplatesResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id                  string                                  `pulumi:"id"`
 	OrgId               string                                  `pulumi:"orgId"`
 	OrgNetworktemplates []GetNetworktemplatesOrgNetworktemplate `pulumi:"orgNetworktemplates"`
 }
 
 func GetNetworktemplatesOutput(ctx *pulumi.Context, args GetNetworktemplatesOutputArgs, opts ...pulumi.InvokeOption) GetNetworktemplatesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNetworktemplatesResultOutput, error) {
-			args := v.(GetNetworktemplatesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("junipermist:org/getNetworktemplates:getNetworktemplates", args, GetNetworktemplatesResultOutput{}, options).(GetNetworktemplatesResultOutput), nil
-		}).(GetNetworktemplatesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("junipermist:org/getNetworktemplates:getNetworktemplates", args, GetNetworktemplatesResultOutput{}, options).(GetNetworktemplatesResultOutput)
 }
 
 // A collection of arguments for invoking getNetworktemplates.
@@ -95,11 +89,6 @@ func (o GetNetworktemplatesResultOutput) ToGetNetworktemplatesResultOutput() Get
 
 func (o GetNetworktemplatesResultOutput) ToGetNetworktemplatesResultOutputWithContext(ctx context.Context) GetNetworktemplatesResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetNetworktemplatesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNetworktemplatesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetNetworktemplatesResultOutput) OrgId() pulumi.StringOutput {

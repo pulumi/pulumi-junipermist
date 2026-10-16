@@ -44,10 +44,6 @@ export interface GetServicepoliciesArgs {
  * A collection of values returned by getServicepolicies.
  */
 export interface GetServicepoliciesResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly orgId: string;
     readonly orgServicepolicies: outputs.org.GetServicepoliciesOrgServicepolicy[];
 }

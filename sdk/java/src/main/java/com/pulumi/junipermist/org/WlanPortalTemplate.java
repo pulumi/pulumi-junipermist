@@ -52,8 +52,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var wlanOne = new WlanPortalTemplate("wlanOne", WlanPortalTemplateArgs.builder()
- *             .orgId(terraformTest.id())
- *             .wlanId(wlanOneMistOrg.id())
+ *             .orgId(terraformTest.get("id"))
+ *             .wlanId(wlanOneMistOrg.get("id"))
  *             .portalTemplate(WlanPortalTemplatePortalTemplateArgs.builder()
  *                 .smsMessageFormat("Code {{code}} expires in {{duration}} minutes.")
  *                 .smsValidityDuration(10)

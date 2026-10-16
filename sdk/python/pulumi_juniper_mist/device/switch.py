@@ -1712,52 +1712,52 @@ class Switch(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SwitchAclPolicyArgs', 'SwitchAclPolicyArgsDict']]]]] = None,
-                 acl_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchAclTagsArgs', 'SwitchAclTagsArgsDict']]]]] = None,
+                 acl_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SwitchAclPolicyArgs', 'SwitchAclPolicyArgsDict', 'outputs.SwitchAclPolicy']]]]] = None,
+                 acl_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchAclTagsArgs', 'SwitchAclTagsArgsDict', 'outputs.SwitchAclTags']]]]] = None,
                  additional_config_cmds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 bgp_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchBgpConfigArgs', 'SwitchBgpConfigArgsDict']]]]] = None,
+                 bgp_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchBgpConfigArgs', 'SwitchBgpConfigArgsDict', 'outputs.SwitchBgpConfig']]]]] = None,
                  default_port_usage: pulumi.Input[Optional[_builtins.str]] = None,
                  device_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 dhcp_snooping: pulumi.Input[Optional[Union['SwitchDhcpSnoopingArgs', 'SwitchDhcpSnoopingArgsDict']]] = None,
-                 dhcpd_config: pulumi.Input[Optional[Union['SwitchDhcpdConfigArgs', 'SwitchDhcpdConfigArgsDict']]] = None,
+                 dhcp_snooping: pulumi.Input[Optional[Union['SwitchDhcpSnoopingArgs', 'SwitchDhcpSnoopingArgsDict', 'outputs.SwitchDhcpSnooping']]] = None,
+                 dhcpd_config: pulumi.Input[Optional[Union['SwitchDhcpdConfigArgs', 'SwitchDhcpdConfigArgsDict', 'outputs.SwitchDhcpdConfig']]] = None,
                  disable_auto_config: pulumi.Input[Optional[_builtins.bool]] = None,
                  dns_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  dns_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchExtraRoutesArgs', 'SwitchExtraRoutesArgsDict']]]]] = None,
-                 extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchExtraRoutes6Args', 'SwitchExtraRoutes6ArgsDict']]]]] = None,
-                 ip_config: pulumi.Input[Optional[Union['SwitchIpConfigArgs', 'SwitchIpConfigArgsDict']]] = None,
-                 local_port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchLocalPortConfigArgs', 'SwitchLocalPortConfigArgsDict']]]]] = None,
+                 extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchExtraRoutesArgs', 'SwitchExtraRoutesArgsDict', 'outputs.SwitchExtraRoutes']]]]] = None,
+                 extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchExtraRoutes6Args', 'SwitchExtraRoutes6ArgsDict', 'outputs.SwitchExtraRoutes6']]]]] = None,
+                 ip_config: pulumi.Input[Optional[Union['SwitchIpConfigArgs', 'SwitchIpConfigArgsDict', 'outputs.SwitchIpConfig']]] = None,
+                 local_port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchLocalPortConfigArgs', 'SwitchLocalPortConfigArgsDict', 'outputs.SwitchLocalPortConfig']]]]] = None,
                  managed: pulumi.Input[Optional[_builtins.bool]] = None,
                  map_id: pulumi.Input[Optional[_builtins.str]] = None,
                  mist_configured: pulumi.Input[Optional[_builtins.bool]] = None,
-                 mist_nac: pulumi.Input[Optional[Union['SwitchMistNacArgs', 'SwitchMistNacArgsDict']]] = None,
+                 mist_nac: pulumi.Input[Optional[Union['SwitchMistNacArgs', 'SwitchMistNacArgsDict', 'outputs.SwitchMistNac']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 networks: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchNetworksArgs', 'SwitchNetworksArgsDict']]]]] = None,
+                 networks: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchNetworksArgs', 'SwitchNetworksArgsDict', 'outputs.SwitchNetworks']]]]] = None,
                  notes: pulumi.Input[Optional[_builtins.str]] = None,
                  ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 oob_ip_config: pulumi.Input[Optional[Union['SwitchOobIpConfigArgs', 'SwitchOobIpConfigArgsDict']]] = None,
-                 ospf_areas: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchOspfAreasArgs', 'SwitchOspfAreasArgsDict']]]]] = None,
-                 ospf_config: pulumi.Input[Optional[Union['SwitchOspfConfigArgs', 'SwitchOspfConfigArgsDict']]] = None,
-                 other_ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchOtherIpConfigsArgs', 'SwitchOtherIpConfigsArgsDict']]]]] = None,
-                 port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchPortConfigArgs', 'SwitchPortConfigArgsDict']]]]] = None,
-                 port_config_overwrite: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchPortConfigOverwriteArgs', 'SwitchPortConfigOverwriteArgsDict']]]]] = None,
-                 port_mirroring: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict']]]]] = None,
-                 port_usages: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchPortUsagesArgs', 'SwitchPortUsagesArgsDict']]]]] = None,
-                 radius_config: pulumi.Input[Optional[Union['SwitchRadiusConfigArgs', 'SwitchRadiusConfigArgsDict']]] = None,
-                 remote_syslog: pulumi.Input[Optional[Union['SwitchRemoteSyslogArgs', 'SwitchRemoteSyslogArgsDict']]] = None,
+                 oob_ip_config: pulumi.Input[Optional[Union['SwitchOobIpConfigArgs', 'SwitchOobIpConfigArgsDict', 'outputs.SwitchOobIpConfig']]] = None,
+                 ospf_areas: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchOspfAreasArgs', 'SwitchOspfAreasArgsDict', 'outputs.SwitchOspfAreas']]]]] = None,
+                 ospf_config: pulumi.Input[Optional[Union['SwitchOspfConfigArgs', 'SwitchOspfConfigArgsDict', 'outputs.SwitchOspfConfig']]] = None,
+                 other_ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchOtherIpConfigsArgs', 'SwitchOtherIpConfigsArgsDict', 'outputs.SwitchOtherIpConfigs']]]]] = None,
+                 port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchPortConfigArgs', 'SwitchPortConfigArgsDict', 'outputs.SwitchPortConfig']]]]] = None,
+                 port_config_overwrite: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchPortConfigOverwriteArgs', 'SwitchPortConfigOverwriteArgsDict', 'outputs.SwitchPortConfigOverwrite']]]]] = None,
+                 port_mirroring: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict', 'outputs.SwitchPortMirroring']]]]] = None,
+                 port_usages: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchPortUsagesArgs', 'SwitchPortUsagesArgsDict', 'outputs.SwitchPortUsages']]]]] = None,
+                 radius_config: pulumi.Input[Optional[Union['SwitchRadiusConfigArgs', 'SwitchRadiusConfigArgsDict', 'outputs.SwitchRadiusConfig']]] = None,
+                 remote_syslog: pulumi.Input[Optional[Union['SwitchRemoteSyslogArgs', 'SwitchRemoteSyslogArgsDict', 'outputs.SwitchRemoteSyslog']]] = None,
                  role: pulumi.Input[Optional[_builtins.str]] = None,
                  router_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 routing_policies: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchRoutingPoliciesArgs', 'SwitchRoutingPoliciesArgsDict']]]]] = None,
+                 routing_policies: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchRoutingPoliciesArgs', 'SwitchRoutingPoliciesArgsDict', 'outputs.SwitchRoutingPolicies']]]]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 snmp_config: pulumi.Input[Optional[Union['SwitchSnmpConfigArgs', 'SwitchSnmpConfigArgsDict']]] = None,
-                 stp_config: pulumi.Input[Optional[Union['SwitchStpConfigArgs', 'SwitchStpConfigArgsDict']]] = None,
-                 switch_mgmt: pulumi.Input[Optional[Union['SwitchSwitchMgmtArgs', 'SwitchSwitchMgmtArgsDict']]] = None,
+                 snmp_config: pulumi.Input[Optional[Union['SwitchSnmpConfigArgs', 'SwitchSnmpConfigArgsDict', 'outputs.SwitchSnmpConfig']]] = None,
+                 stp_config: pulumi.Input[Optional[Union['SwitchStpConfigArgs', 'SwitchStpConfigArgsDict', 'outputs.SwitchStpConfig']]] = None,
+                 switch_mgmt: pulumi.Input[Optional[Union['SwitchSwitchMgmtArgs', 'SwitchSwitchMgmtArgsDict', 'outputs.SwitchSwitchMgmt']]] = None,
                  use_router_id_as_source_ip: pulumi.Input[Optional[_builtins.bool]] = None,
                  vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 virtual_chassis: pulumi.Input[Optional[Union['SwitchVirtualChassisArgs', 'SwitchVirtualChassisArgsDict']]] = None,
-                 vrf_config: pulumi.Input[Optional[Union['SwitchVrfConfigArgs', 'SwitchVrfConfigArgsDict']]] = None,
-                 vrf_instances: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchVrfInstancesArgs', 'SwitchVrfInstancesArgsDict']]]]] = None,
-                 vrrp_config: pulumi.Input[Optional[Union['SwitchVrrpConfigArgs', 'SwitchVrrpConfigArgsDict']]] = None,
+                 virtual_chassis: pulumi.Input[Optional[Union['SwitchVirtualChassisArgs', 'SwitchVirtualChassisArgsDict', 'outputs.SwitchVirtualChassis']]] = None,
+                 vrf_config: pulumi.Input[Optional[Union['SwitchVrfConfigArgs', 'SwitchVrfConfigArgsDict', 'outputs.SwitchVrfConfig']]] = None,
+                 vrf_instances: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchVrfInstancesArgs', 'SwitchVrfInstancesArgsDict', 'outputs.SwitchVrfInstances']]]]] = None,
+                 vrrp_config: pulumi.Input[Optional[Union['SwitchVrrpConfigArgs', 'SwitchVrrpConfigArgsDict', 'outputs.SwitchVrrpConfig']]] = None,
                  x: pulumi.Input[Optional[_builtins.float]] = None,
                  y: pulumi.Input[Optional[_builtins.float]] = None,
                  __props__=None):
@@ -1780,51 +1780,51 @@ class Switch(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SwitchAclPolicyArgs', 'SwitchAclPolicyArgsDict']]]] acl_policies: ACL policies applied to traffic handled by this switch
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchAclTagsArgs', 'SwitchAclTagsArgsDict']]]] acl_tags: ACL tags used by switch access policies
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SwitchAclPolicyArgs', 'SwitchAclPolicyArgsDict', 'outputs.SwitchAclPolicy']]]] acl_policies: ACL policies applied to traffic handled by this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchAclTagsArgs', 'SwitchAclTagsArgsDict', 'outputs.SwitchAclTags']]]] acl_tags: ACL tags used by switch access policies
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: Additional CLI configuration commands to apply to this switch
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchBgpConfigArgs', 'SwitchBgpConfigArgsDict']]]] bgp_config: BGP routing configuration for this switch. Property key is the BGP session name
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchBgpConfigArgs', 'SwitchBgpConfigArgsDict', 'outputs.SwitchBgpConfig']]]] bgp_config: BGP routing configuration for this switch. Property key is the BGP session name
         :param pulumi.Input[_builtins.str] default_port_usage: Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
-        :param pulumi.Input[Union['SwitchDhcpSnoopingArgs', 'SwitchDhcpSnoopingArgsDict']] dhcp_snooping: DHCP snooping configuration for this switch
-        :param pulumi.Input[Union['SwitchDhcpdConfigArgs', 'SwitchDhcpdConfigArgsDict']] dhcpd_config: DHCP server configuration served by this switch
+        :param pulumi.Input[Union['SwitchDhcpSnoopingArgs', 'SwitchDhcpSnoopingArgsDict', 'outputs.SwitchDhcpSnooping']] dhcp_snooping: DHCP snooping configuration for this switch
+        :param pulumi.Input[Union['SwitchDhcpdConfigArgs', 'SwitchDhcpdConfigArgsDict', 'outputs.SwitchDhcpdConfig']] dhcpd_config: DHCP server configuration served by this switch
         :param pulumi.Input[_builtins.bool] disable_auto_config: This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: DNS servers configured for this switch
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: DNS search suffixes configured for this switch
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchExtraRoutesArgs', 'SwitchExtraRoutesArgsDict']]]] extra_routes: Additional IPv4 routes configured on this switch
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchExtraRoutes6Args', 'SwitchExtraRoutes6ArgsDict']]]] extra_routes6: Additional IPv6 routes configured on this switch
-        :param pulumi.Input[Union['SwitchIpConfigArgs', 'SwitchIpConfigArgsDict']] ip_config: Management IP addressing settings for this switch
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchLocalPortConfigArgs', 'SwitchLocalPortConfigArgsDict']]]] local_port_config: Local port configuration settings for this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchExtraRoutesArgs', 'SwitchExtraRoutesArgsDict', 'outputs.SwitchExtraRoutes']]]] extra_routes: Additional IPv4 routes configured on this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchExtraRoutes6Args', 'SwitchExtraRoutes6ArgsDict', 'outputs.SwitchExtraRoutes6']]]] extra_routes6: Additional IPv6 routes configured on this switch
+        :param pulumi.Input[Union['SwitchIpConfigArgs', 'SwitchIpConfigArgsDict', 'outputs.SwitchIpConfig']] ip_config: Management IP addressing settings for this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchLocalPortConfigArgs', 'SwitchLocalPortConfigArgsDict', 'outputs.SwitchLocalPortConfig']]]] local_port_config: Local port configuration settings for this switch
         :param pulumi.Input[_builtins.bool] managed: An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist. Deprecated in favour of mist_configured, which is more intuitive and can be used for both adopted and claimed devices.
         :param pulumi.Input[_builtins.str] map_id: Map where the device belongs to
         :param pulumi.Input[_builtins.bool] mist_configured: whether the device can be configured by Mist or not. This deprecates `managed` (for adopted device) and `disable_auto_config` for claimed device)
-        :param pulumi.Input[Union['SwitchMistNacArgs', 'SwitchMistNacArgsDict']] mist_nac: Mist NAC settings applied to this switch
+        :param pulumi.Input[Union['SwitchMistNacArgs', 'SwitchMistNacArgsDict', 'outputs.SwitchMistNac']] mist_nac: Mist NAC settings applied to this switch
         :param pulumi.Input[_builtins.str] name: Friendly display name assigned to the switch
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchNetworksArgs', 'SwitchNetworksArgsDict']]]] networks: Layer 3 networks configured for use by this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchNetworksArgs', 'SwitchNetworksArgsDict', 'outputs.SwitchNetworks']]]] networks: Layer 3 networks configured for use by this switch
         :param pulumi.Input[_builtins.str] notes: Free-form administrative notes for this switch
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: NTP servers used by this switch
-        :param pulumi.Input[Union['SwitchOobIpConfigArgs', 'SwitchOobIpConfigArgsDict']] oob_ip_config: Out-of-band management IP configuration for this switch
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOspfAreasArgs', 'SwitchOspfAreasArgsDict']]]] ospf_areas: OSPF area configuration for this switch
-        :param pulumi.Input[Union['SwitchOspfConfigArgs', 'SwitchOspfConfigArgsDict']] ospf_config: OSPF routing configuration for this switch
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOtherIpConfigsArgs', 'SwitchOtherIpConfigsArgsDict']]]] other_ip_configs: Property key is the network name. Defines the additional IP Addresses configured on the device.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigArgs', 'SwitchPortConfigArgsDict']]]] port_config: Per-port wired configuration for this switch
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigOverwriteArgs', 'SwitchPortConfigOverwriteArgsDict']]]] port_config_overwrite: Per-port overrides for switch port usage attributes
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict']]]] port_mirroring: Port mirroring configuration for this switch
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortUsagesArgs', 'SwitchPortUsagesArgsDict']]]] port_usages: Reusable switch port usage profiles available on this switch
-        :param pulumi.Input[Union['SwitchRadiusConfigArgs', 'SwitchRadiusConfigArgsDict']] radius_config: RADIUS authentication and accounting settings for this switch
-        :param pulumi.Input[Union['SwitchRemoteSyslogArgs', 'SwitchRemoteSyslogArgsDict']] remote_syslog: Remote syslog settings for this switch
+        :param pulumi.Input[Union['SwitchOobIpConfigArgs', 'SwitchOobIpConfigArgsDict', 'outputs.SwitchOobIpConfig']] oob_ip_config: Out-of-band management IP configuration for this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOspfAreasArgs', 'SwitchOspfAreasArgsDict', 'outputs.SwitchOspfAreas']]]] ospf_areas: OSPF area configuration for this switch
+        :param pulumi.Input[Union['SwitchOspfConfigArgs', 'SwitchOspfConfigArgsDict', 'outputs.SwitchOspfConfig']] ospf_config: OSPF routing configuration for this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOtherIpConfigsArgs', 'SwitchOtherIpConfigsArgsDict', 'outputs.SwitchOtherIpConfigs']]]] other_ip_configs: Property key is the network name. Defines the additional IP Addresses configured on the device.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigArgs', 'SwitchPortConfigArgsDict', 'outputs.SwitchPortConfig']]]] port_config: Per-port wired configuration for this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigOverwriteArgs', 'SwitchPortConfigOverwriteArgsDict', 'outputs.SwitchPortConfigOverwrite']]]] port_config_overwrite: Per-port overrides for switch port usage attributes
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict', 'outputs.SwitchPortMirroring']]]] port_mirroring: Port mirroring configuration for this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortUsagesArgs', 'SwitchPortUsagesArgsDict', 'outputs.SwitchPortUsages']]]] port_usages: Reusable switch port usage profiles available on this switch
+        :param pulumi.Input[Union['SwitchRadiusConfigArgs', 'SwitchRadiusConfigArgsDict', 'outputs.SwitchRadiusConfig']] radius_config: RADIUS authentication and accounting settings for this switch
+        :param pulumi.Input[Union['SwitchRemoteSyslogArgs', 'SwitchRemoteSyslogArgsDict', 'outputs.SwitchRemoteSyslog']] remote_syslog: Remote syslog settings for this switch
         :param pulumi.Input[_builtins.str] role: Deployment role label for this switch
         :param pulumi.Input[_builtins.str] router_id: Used for OSPF / BGP / EVPN
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchRoutingPoliciesArgs', 'SwitchRoutingPoliciesArgsDict']]]] routing_policies: Routing policies applied by this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchRoutingPoliciesArgs', 'SwitchRoutingPoliciesArgsDict', 'outputs.SwitchRoutingPolicies']]]] routing_policies: Routing policies applied by this switch
         :param pulumi.Input[_builtins.str] site_id: Site where this switch is assigned
-        :param pulumi.Input[Union['SwitchSnmpConfigArgs', 'SwitchSnmpConfigArgsDict']] snmp_config: SNMP configuration for this switch
-        :param pulumi.Input[Union['SwitchStpConfigArgs', 'SwitchStpConfigArgsDict']] stp_config: Spanning Tree Protocol configuration for this switch
-        :param pulumi.Input[Union['SwitchSwitchMgmtArgs', 'SwitchSwitchMgmtArgsDict']] switch_mgmt: Management-plane settings for this switch
+        :param pulumi.Input[Union['SwitchSnmpConfigArgs', 'SwitchSnmpConfigArgsDict', 'outputs.SwitchSnmpConfig']] snmp_config: SNMP configuration for this switch
+        :param pulumi.Input[Union['SwitchStpConfigArgs', 'SwitchStpConfigArgsDict', 'outputs.SwitchStpConfig']] stp_config: Spanning Tree Protocol configuration for this switch
+        :param pulumi.Input[Union['SwitchSwitchMgmtArgs', 'SwitchSwitchMgmtArgsDict', 'outputs.SwitchSwitchMgmt']] switch_mgmt: Management-plane settings for this switch
         :param pulumi.Input[_builtins.bool] use_router_id_as_source_ip: Whether to use it for snmp / syslog / tacplus / radius
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Variable values that override site variables for this switch
-        :param pulumi.Input[Union['SwitchVirtualChassisArgs', 'SwitchVirtualChassisArgsDict']] virtual_chassis: Virtual Chassis membership and provisioning settings for this switch
-        :param pulumi.Input[Union['SwitchVrfConfigArgs', 'SwitchVrfConfigArgsDict']] vrf_config: VRF configuration applied to this switch
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchVrfInstancesArgs', 'SwitchVrfInstancesArgsDict']]]] vrf_instances: VRF instances configured on this switch
-        :param pulumi.Input[Union['SwitchVrrpConfigArgs', 'SwitchVrrpConfigArgsDict']] vrrp_config: VRRP configuration applied to this switch
+        :param pulumi.Input[Union['SwitchVirtualChassisArgs', 'SwitchVirtualChassisArgsDict', 'outputs.SwitchVirtualChassis']] virtual_chassis: Virtual Chassis membership and provisioning settings for this switch
+        :param pulumi.Input[Union['SwitchVrfConfigArgs', 'SwitchVrfConfigArgsDict', 'outputs.SwitchVrfConfig']] vrf_config: VRF configuration applied to this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchVrfInstancesArgs', 'SwitchVrfInstancesArgsDict', 'outputs.SwitchVrfInstances']]]] vrf_instances: VRF instances configured on this switch
+        :param pulumi.Input[Union['SwitchVrrpConfigArgs', 'SwitchVrrpConfigArgsDict', 'outputs.SwitchVrrpConfig']] vrrp_config: VRRP configuration applied to this switch
         :param pulumi.Input[_builtins.float] x: Horizontal map position of the switch, in pixels
         :param pulumi.Input[_builtins.float] y: Vertical map position of the switch, in pixels
         """
@@ -1866,52 +1866,52 @@ class Switch(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SwitchAclPolicyArgs', 'SwitchAclPolicyArgsDict']]]]] = None,
-                 acl_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchAclTagsArgs', 'SwitchAclTagsArgsDict']]]]] = None,
+                 acl_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SwitchAclPolicyArgs', 'SwitchAclPolicyArgsDict', 'outputs.SwitchAclPolicy']]]]] = None,
+                 acl_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchAclTagsArgs', 'SwitchAclTagsArgsDict', 'outputs.SwitchAclTags']]]]] = None,
                  additional_config_cmds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 bgp_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchBgpConfigArgs', 'SwitchBgpConfigArgsDict']]]]] = None,
+                 bgp_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchBgpConfigArgs', 'SwitchBgpConfigArgsDict', 'outputs.SwitchBgpConfig']]]]] = None,
                  default_port_usage: pulumi.Input[Optional[_builtins.str]] = None,
                  device_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 dhcp_snooping: pulumi.Input[Optional[Union['SwitchDhcpSnoopingArgs', 'SwitchDhcpSnoopingArgsDict']]] = None,
-                 dhcpd_config: pulumi.Input[Optional[Union['SwitchDhcpdConfigArgs', 'SwitchDhcpdConfigArgsDict']]] = None,
+                 dhcp_snooping: pulumi.Input[Optional[Union['SwitchDhcpSnoopingArgs', 'SwitchDhcpSnoopingArgsDict', 'outputs.SwitchDhcpSnooping']]] = None,
+                 dhcpd_config: pulumi.Input[Optional[Union['SwitchDhcpdConfigArgs', 'SwitchDhcpdConfigArgsDict', 'outputs.SwitchDhcpdConfig']]] = None,
                  disable_auto_config: pulumi.Input[Optional[_builtins.bool]] = None,
                  dns_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  dns_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchExtraRoutesArgs', 'SwitchExtraRoutesArgsDict']]]]] = None,
-                 extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchExtraRoutes6Args', 'SwitchExtraRoutes6ArgsDict']]]]] = None,
-                 ip_config: pulumi.Input[Optional[Union['SwitchIpConfigArgs', 'SwitchIpConfigArgsDict']]] = None,
-                 local_port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchLocalPortConfigArgs', 'SwitchLocalPortConfigArgsDict']]]]] = None,
+                 extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchExtraRoutesArgs', 'SwitchExtraRoutesArgsDict', 'outputs.SwitchExtraRoutes']]]]] = None,
+                 extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchExtraRoutes6Args', 'SwitchExtraRoutes6ArgsDict', 'outputs.SwitchExtraRoutes6']]]]] = None,
+                 ip_config: pulumi.Input[Optional[Union['SwitchIpConfigArgs', 'SwitchIpConfigArgsDict', 'outputs.SwitchIpConfig']]] = None,
+                 local_port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchLocalPortConfigArgs', 'SwitchLocalPortConfigArgsDict', 'outputs.SwitchLocalPortConfig']]]]] = None,
                  managed: pulumi.Input[Optional[_builtins.bool]] = None,
                  map_id: pulumi.Input[Optional[_builtins.str]] = None,
                  mist_configured: pulumi.Input[Optional[_builtins.bool]] = None,
-                 mist_nac: pulumi.Input[Optional[Union['SwitchMistNacArgs', 'SwitchMistNacArgsDict']]] = None,
+                 mist_nac: pulumi.Input[Optional[Union['SwitchMistNacArgs', 'SwitchMistNacArgsDict', 'outputs.SwitchMistNac']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 networks: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchNetworksArgs', 'SwitchNetworksArgsDict']]]]] = None,
+                 networks: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchNetworksArgs', 'SwitchNetworksArgsDict', 'outputs.SwitchNetworks']]]]] = None,
                  notes: pulumi.Input[Optional[_builtins.str]] = None,
                  ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 oob_ip_config: pulumi.Input[Optional[Union['SwitchOobIpConfigArgs', 'SwitchOobIpConfigArgsDict']]] = None,
-                 ospf_areas: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchOspfAreasArgs', 'SwitchOspfAreasArgsDict']]]]] = None,
-                 ospf_config: pulumi.Input[Optional[Union['SwitchOspfConfigArgs', 'SwitchOspfConfigArgsDict']]] = None,
-                 other_ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchOtherIpConfigsArgs', 'SwitchOtherIpConfigsArgsDict']]]]] = None,
-                 port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchPortConfigArgs', 'SwitchPortConfigArgsDict']]]]] = None,
-                 port_config_overwrite: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchPortConfigOverwriteArgs', 'SwitchPortConfigOverwriteArgsDict']]]]] = None,
-                 port_mirroring: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict']]]]] = None,
-                 port_usages: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchPortUsagesArgs', 'SwitchPortUsagesArgsDict']]]]] = None,
-                 radius_config: pulumi.Input[Optional[Union['SwitchRadiusConfigArgs', 'SwitchRadiusConfigArgsDict']]] = None,
-                 remote_syslog: pulumi.Input[Optional[Union['SwitchRemoteSyslogArgs', 'SwitchRemoteSyslogArgsDict']]] = None,
+                 oob_ip_config: pulumi.Input[Optional[Union['SwitchOobIpConfigArgs', 'SwitchOobIpConfigArgsDict', 'outputs.SwitchOobIpConfig']]] = None,
+                 ospf_areas: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchOspfAreasArgs', 'SwitchOspfAreasArgsDict', 'outputs.SwitchOspfAreas']]]]] = None,
+                 ospf_config: pulumi.Input[Optional[Union['SwitchOspfConfigArgs', 'SwitchOspfConfigArgsDict', 'outputs.SwitchOspfConfig']]] = None,
+                 other_ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchOtherIpConfigsArgs', 'SwitchOtherIpConfigsArgsDict', 'outputs.SwitchOtherIpConfigs']]]]] = None,
+                 port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchPortConfigArgs', 'SwitchPortConfigArgsDict', 'outputs.SwitchPortConfig']]]]] = None,
+                 port_config_overwrite: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchPortConfigOverwriteArgs', 'SwitchPortConfigOverwriteArgsDict', 'outputs.SwitchPortConfigOverwrite']]]]] = None,
+                 port_mirroring: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict', 'outputs.SwitchPortMirroring']]]]] = None,
+                 port_usages: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchPortUsagesArgs', 'SwitchPortUsagesArgsDict', 'outputs.SwitchPortUsages']]]]] = None,
+                 radius_config: pulumi.Input[Optional[Union['SwitchRadiusConfigArgs', 'SwitchRadiusConfigArgsDict', 'outputs.SwitchRadiusConfig']]] = None,
+                 remote_syslog: pulumi.Input[Optional[Union['SwitchRemoteSyslogArgs', 'SwitchRemoteSyslogArgsDict', 'outputs.SwitchRemoteSyslog']]] = None,
                  role: pulumi.Input[Optional[_builtins.str]] = None,
                  router_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 routing_policies: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchRoutingPoliciesArgs', 'SwitchRoutingPoliciesArgsDict']]]]] = None,
+                 routing_policies: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchRoutingPoliciesArgs', 'SwitchRoutingPoliciesArgsDict', 'outputs.SwitchRoutingPolicies']]]]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 snmp_config: pulumi.Input[Optional[Union['SwitchSnmpConfigArgs', 'SwitchSnmpConfigArgsDict']]] = None,
-                 stp_config: pulumi.Input[Optional[Union['SwitchStpConfigArgs', 'SwitchStpConfigArgsDict']]] = None,
-                 switch_mgmt: pulumi.Input[Optional[Union['SwitchSwitchMgmtArgs', 'SwitchSwitchMgmtArgsDict']]] = None,
+                 snmp_config: pulumi.Input[Optional[Union['SwitchSnmpConfigArgs', 'SwitchSnmpConfigArgsDict', 'outputs.SwitchSnmpConfig']]] = None,
+                 stp_config: pulumi.Input[Optional[Union['SwitchStpConfigArgs', 'SwitchStpConfigArgsDict', 'outputs.SwitchStpConfig']]] = None,
+                 switch_mgmt: pulumi.Input[Optional[Union['SwitchSwitchMgmtArgs', 'SwitchSwitchMgmtArgsDict', 'outputs.SwitchSwitchMgmt']]] = None,
                  use_router_id_as_source_ip: pulumi.Input[Optional[_builtins.bool]] = None,
                  vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 virtual_chassis: pulumi.Input[Optional[Union['SwitchVirtualChassisArgs', 'SwitchVirtualChassisArgsDict']]] = None,
-                 vrf_config: pulumi.Input[Optional[Union['SwitchVrfConfigArgs', 'SwitchVrfConfigArgsDict']]] = None,
-                 vrf_instances: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchVrfInstancesArgs', 'SwitchVrfInstancesArgsDict']]]]] = None,
-                 vrrp_config: pulumi.Input[Optional[Union['SwitchVrrpConfigArgs', 'SwitchVrrpConfigArgsDict']]] = None,
+                 virtual_chassis: pulumi.Input[Optional[Union['SwitchVirtualChassisArgs', 'SwitchVirtualChassisArgsDict', 'outputs.SwitchVirtualChassis']]] = None,
+                 vrf_config: pulumi.Input[Optional[Union['SwitchVrfConfigArgs', 'SwitchVrfConfigArgsDict', 'outputs.SwitchVrfConfig']]] = None,
+                 vrf_instances: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchVrfInstancesArgs', 'SwitchVrfInstancesArgsDict', 'outputs.SwitchVrfInstances']]]]] = None,
+                 vrrp_config: pulumi.Input[Optional[Union['SwitchVrrpConfigArgs', 'SwitchVrrpConfigArgsDict', 'outputs.SwitchVrrpConfig']]] = None,
                  x: pulumi.Input[Optional[_builtins.float]] = None,
                  y: pulumi.Input[Optional[_builtins.float]] = None,
                  __props__=None):
@@ -1993,60 +1993,60 @@ class Switch(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acl_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SwitchAclPolicyArgs', 'SwitchAclPolicyArgsDict']]]]] = None,
-            acl_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchAclTagsArgs', 'SwitchAclTagsArgsDict']]]]] = None,
+            acl_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SwitchAclPolicyArgs', 'SwitchAclPolicyArgsDict', 'outputs.SwitchAclPolicy']]]]] = None,
+            acl_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchAclTagsArgs', 'SwitchAclTagsArgsDict', 'outputs.SwitchAclTags']]]]] = None,
             additional_config_cmds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            bgp_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchBgpConfigArgs', 'SwitchBgpConfigArgsDict']]]]] = None,
+            bgp_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchBgpConfigArgs', 'SwitchBgpConfigArgsDict', 'outputs.SwitchBgpConfig']]]]] = None,
             default_port_usage: pulumi.Input[Optional[_builtins.str]] = None,
             device_id: pulumi.Input[Optional[_builtins.str]] = None,
-            dhcp_snooping: pulumi.Input[Optional[Union['SwitchDhcpSnoopingArgs', 'SwitchDhcpSnoopingArgsDict']]] = None,
-            dhcpd_config: pulumi.Input[Optional[Union['SwitchDhcpdConfigArgs', 'SwitchDhcpdConfigArgsDict']]] = None,
+            dhcp_snooping: pulumi.Input[Optional[Union['SwitchDhcpSnoopingArgs', 'SwitchDhcpSnoopingArgsDict', 'outputs.SwitchDhcpSnooping']]] = None,
+            dhcpd_config: pulumi.Input[Optional[Union['SwitchDhcpdConfigArgs', 'SwitchDhcpdConfigArgsDict', 'outputs.SwitchDhcpdConfig']]] = None,
             disable_auto_config: pulumi.Input[Optional[_builtins.bool]] = None,
             dns_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             dns_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchExtraRoutesArgs', 'SwitchExtraRoutesArgsDict']]]]] = None,
-            extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchExtraRoutes6Args', 'SwitchExtraRoutes6ArgsDict']]]]] = None,
+            extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchExtraRoutesArgs', 'SwitchExtraRoutesArgsDict', 'outputs.SwitchExtraRoutes']]]]] = None,
+            extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchExtraRoutes6Args', 'SwitchExtraRoutes6ArgsDict', 'outputs.SwitchExtraRoutes6']]]]] = None,
             image1_url: pulumi.Input[Optional[_builtins.str]] = None,
             image2_url: pulumi.Input[Optional[_builtins.str]] = None,
             image3_url: pulumi.Input[Optional[_builtins.str]] = None,
-            ip_config: pulumi.Input[Optional[Union['SwitchIpConfigArgs', 'SwitchIpConfigArgsDict']]] = None,
-            local_port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchLocalPortConfigArgs', 'SwitchLocalPortConfigArgsDict']]]]] = None,
+            ip_config: pulumi.Input[Optional[Union['SwitchIpConfigArgs', 'SwitchIpConfigArgsDict', 'outputs.SwitchIpConfig']]] = None,
+            local_port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchLocalPortConfigArgs', 'SwitchLocalPortConfigArgsDict', 'outputs.SwitchLocalPortConfig']]]]] = None,
             mac: pulumi.Input[Optional[_builtins.str]] = None,
             managed: pulumi.Input[Optional[_builtins.bool]] = None,
             map_id: pulumi.Input[Optional[_builtins.str]] = None,
             mist_configured: pulumi.Input[Optional[_builtins.bool]] = None,
-            mist_nac: pulumi.Input[Optional[Union['SwitchMistNacArgs', 'SwitchMistNacArgsDict']]] = None,
+            mist_nac: pulumi.Input[Optional[Union['SwitchMistNacArgs', 'SwitchMistNacArgsDict', 'outputs.SwitchMistNac']]] = None,
             model: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            networks: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchNetworksArgs', 'SwitchNetworksArgsDict']]]]] = None,
+            networks: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchNetworksArgs', 'SwitchNetworksArgsDict', 'outputs.SwitchNetworks']]]]] = None,
             notes: pulumi.Input[Optional[_builtins.str]] = None,
             ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            oob_ip_config: pulumi.Input[Optional[Union['SwitchOobIpConfigArgs', 'SwitchOobIpConfigArgsDict']]] = None,
+            oob_ip_config: pulumi.Input[Optional[Union['SwitchOobIpConfigArgs', 'SwitchOobIpConfigArgsDict', 'outputs.SwitchOobIpConfig']]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
-            ospf_areas: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchOspfAreasArgs', 'SwitchOspfAreasArgsDict']]]]] = None,
-            ospf_config: pulumi.Input[Optional[Union['SwitchOspfConfigArgs', 'SwitchOspfConfigArgsDict']]] = None,
-            other_ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchOtherIpConfigsArgs', 'SwitchOtherIpConfigsArgsDict']]]]] = None,
-            port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchPortConfigArgs', 'SwitchPortConfigArgsDict']]]]] = None,
-            port_config_overwrite: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchPortConfigOverwriteArgs', 'SwitchPortConfigOverwriteArgsDict']]]]] = None,
-            port_mirroring: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict']]]]] = None,
-            port_usages: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchPortUsagesArgs', 'SwitchPortUsagesArgsDict']]]]] = None,
-            radius_config: pulumi.Input[Optional[Union['SwitchRadiusConfigArgs', 'SwitchRadiusConfigArgsDict']]] = None,
-            remote_syslog: pulumi.Input[Optional[Union['SwitchRemoteSyslogArgs', 'SwitchRemoteSyslogArgsDict']]] = None,
+            ospf_areas: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchOspfAreasArgs', 'SwitchOspfAreasArgsDict', 'outputs.SwitchOspfAreas']]]]] = None,
+            ospf_config: pulumi.Input[Optional[Union['SwitchOspfConfigArgs', 'SwitchOspfConfigArgsDict', 'outputs.SwitchOspfConfig']]] = None,
+            other_ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchOtherIpConfigsArgs', 'SwitchOtherIpConfigsArgsDict', 'outputs.SwitchOtherIpConfigs']]]]] = None,
+            port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchPortConfigArgs', 'SwitchPortConfigArgsDict', 'outputs.SwitchPortConfig']]]]] = None,
+            port_config_overwrite: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchPortConfigOverwriteArgs', 'SwitchPortConfigOverwriteArgsDict', 'outputs.SwitchPortConfigOverwrite']]]]] = None,
+            port_mirroring: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict', 'outputs.SwitchPortMirroring']]]]] = None,
+            port_usages: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchPortUsagesArgs', 'SwitchPortUsagesArgsDict', 'outputs.SwitchPortUsages']]]]] = None,
+            radius_config: pulumi.Input[Optional[Union['SwitchRadiusConfigArgs', 'SwitchRadiusConfigArgsDict', 'outputs.SwitchRadiusConfig']]] = None,
+            remote_syslog: pulumi.Input[Optional[Union['SwitchRemoteSyslogArgs', 'SwitchRemoteSyslogArgsDict', 'outputs.SwitchRemoteSyslog']]] = None,
             role: pulumi.Input[Optional[_builtins.str]] = None,
             router_id: pulumi.Input[Optional[_builtins.str]] = None,
-            routing_policies: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchRoutingPoliciesArgs', 'SwitchRoutingPoliciesArgsDict']]]]] = None,
+            routing_policies: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchRoutingPoliciesArgs', 'SwitchRoutingPoliciesArgsDict', 'outputs.SwitchRoutingPolicies']]]]] = None,
             serial: pulumi.Input[Optional[_builtins.str]] = None,
             site_id: pulumi.Input[Optional[_builtins.str]] = None,
-            snmp_config: pulumi.Input[Optional[Union['SwitchSnmpConfigArgs', 'SwitchSnmpConfigArgsDict']]] = None,
-            stp_config: pulumi.Input[Optional[Union['SwitchStpConfigArgs', 'SwitchStpConfigArgsDict']]] = None,
-            switch_mgmt: pulumi.Input[Optional[Union['SwitchSwitchMgmtArgs', 'SwitchSwitchMgmtArgsDict']]] = None,
+            snmp_config: pulumi.Input[Optional[Union['SwitchSnmpConfigArgs', 'SwitchSnmpConfigArgsDict', 'outputs.SwitchSnmpConfig']]] = None,
+            stp_config: pulumi.Input[Optional[Union['SwitchStpConfigArgs', 'SwitchStpConfigArgsDict', 'outputs.SwitchStpConfig']]] = None,
+            switch_mgmt: pulumi.Input[Optional[Union['SwitchSwitchMgmtArgs', 'SwitchSwitchMgmtArgsDict', 'outputs.SwitchSwitchMgmt']]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             use_router_id_as_source_ip: pulumi.Input[Optional[_builtins.bool]] = None,
             vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            virtual_chassis: pulumi.Input[Optional[Union['SwitchVirtualChassisArgs', 'SwitchVirtualChassisArgsDict']]] = None,
-            vrf_config: pulumi.Input[Optional[Union['SwitchVrfConfigArgs', 'SwitchVrfConfigArgsDict']]] = None,
-            vrf_instances: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchVrfInstancesArgs', 'SwitchVrfInstancesArgsDict']]]]] = None,
-            vrrp_config: pulumi.Input[Optional[Union['SwitchVrrpConfigArgs', 'SwitchVrrpConfigArgsDict']]] = None,
+            virtual_chassis: pulumi.Input[Optional[Union['SwitchVirtualChassisArgs', 'SwitchVirtualChassisArgsDict', 'outputs.SwitchVirtualChassis']]] = None,
+            vrf_config: pulumi.Input[Optional[Union['SwitchVrfConfigArgs', 'SwitchVrfConfigArgsDict', 'outputs.SwitchVrfConfig']]] = None,
+            vrf_instances: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchVrfInstancesArgs', 'SwitchVrfInstancesArgsDict', 'outputs.SwitchVrfInstances']]]]] = None,
+            vrrp_config: pulumi.Input[Optional[Union['SwitchVrrpConfigArgs', 'SwitchVrrpConfigArgsDict', 'outputs.SwitchVrrpConfig']]] = None,
             x: pulumi.Input[Optional[_builtins.float]] = None,
             y: pulumi.Input[Optional[_builtins.float]] = None) -> 'Switch':
         """
@@ -2056,59 +2056,59 @@ class Switch(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SwitchAclPolicyArgs', 'SwitchAclPolicyArgsDict']]]] acl_policies: ACL policies applied to traffic handled by this switch
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchAclTagsArgs', 'SwitchAclTagsArgsDict']]]] acl_tags: ACL tags used by switch access policies
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SwitchAclPolicyArgs', 'SwitchAclPolicyArgsDict', 'outputs.SwitchAclPolicy']]]] acl_policies: ACL policies applied to traffic handled by this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchAclTagsArgs', 'SwitchAclTagsArgsDict', 'outputs.SwitchAclTags']]]] acl_tags: ACL tags used by switch access policies
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: Additional CLI configuration commands to apply to this switch
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchBgpConfigArgs', 'SwitchBgpConfigArgsDict']]]] bgp_config: BGP routing configuration for this switch. Property key is the BGP session name
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchBgpConfigArgs', 'SwitchBgpConfigArgsDict', 'outputs.SwitchBgpConfig']]]] bgp_config: BGP routing configuration for this switch. Property key is the BGP session name
         :param pulumi.Input[_builtins.str] default_port_usage: Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
-        :param pulumi.Input[Union['SwitchDhcpSnoopingArgs', 'SwitchDhcpSnoopingArgsDict']] dhcp_snooping: DHCP snooping configuration for this switch
-        :param pulumi.Input[Union['SwitchDhcpdConfigArgs', 'SwitchDhcpdConfigArgsDict']] dhcpd_config: DHCP server configuration served by this switch
+        :param pulumi.Input[Union['SwitchDhcpSnoopingArgs', 'SwitchDhcpSnoopingArgsDict', 'outputs.SwitchDhcpSnooping']] dhcp_snooping: DHCP snooping configuration for this switch
+        :param pulumi.Input[Union['SwitchDhcpdConfigArgs', 'SwitchDhcpdConfigArgsDict', 'outputs.SwitchDhcpdConfig']] dhcpd_config: DHCP server configuration served by this switch
         :param pulumi.Input[_builtins.bool] disable_auto_config: This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: DNS servers configured for this switch
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: DNS search suffixes configured for this switch
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchExtraRoutesArgs', 'SwitchExtraRoutesArgsDict']]]] extra_routes: Additional IPv4 routes configured on this switch
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchExtraRoutes6Args', 'SwitchExtraRoutes6ArgsDict']]]] extra_routes6: Additional IPv6 routes configured on this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchExtraRoutesArgs', 'SwitchExtraRoutesArgsDict', 'outputs.SwitchExtraRoutes']]]] extra_routes: Additional IPv4 routes configured on this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchExtraRoutes6Args', 'SwitchExtraRoutes6ArgsDict', 'outputs.SwitchExtraRoutes6']]]] extra_routes6: Additional IPv6 routes configured on this switch
         :param pulumi.Input[_builtins.str] image1_url: First custom image URL associated with the switch
         :param pulumi.Input[_builtins.str] image2_url: Second custom image URL associated with the switch
         :param pulumi.Input[_builtins.str] image3_url: Third custom image URL associated with the switch
-        :param pulumi.Input[Union['SwitchIpConfigArgs', 'SwitchIpConfigArgsDict']] ip_config: Management IP addressing settings for this switch
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchLocalPortConfigArgs', 'SwitchLocalPortConfigArgsDict']]]] local_port_config: Local port configuration settings for this switch
+        :param pulumi.Input[Union['SwitchIpConfigArgs', 'SwitchIpConfigArgsDict', 'outputs.SwitchIpConfig']] ip_config: Management IP addressing settings for this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchLocalPortConfigArgs', 'SwitchLocalPortConfigArgsDict', 'outputs.SwitchLocalPortConfig']]]] local_port_config: Local port configuration settings for this switch
         :param pulumi.Input[_builtins.str] mac: Switch MAC address used to identify the device
         :param pulumi.Input[_builtins.bool] managed: An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist. Deprecated in favour of mist_configured, which is more intuitive and can be used for both adopted and claimed devices.
         :param pulumi.Input[_builtins.str] map_id: Map where the device belongs to
         :param pulumi.Input[_builtins.bool] mist_configured: whether the device can be configured by Mist or not. This deprecates `managed` (for adopted device) and `disable_auto_config` for claimed device)
-        :param pulumi.Input[Union['SwitchMistNacArgs', 'SwitchMistNacArgsDict']] mist_nac: Mist NAC settings applied to this switch
+        :param pulumi.Input[Union['SwitchMistNacArgs', 'SwitchMistNacArgsDict', 'outputs.SwitchMistNac']] mist_nac: Mist NAC settings applied to this switch
         :param pulumi.Input[_builtins.str] model: Switch model reported for the device
         :param pulumi.Input[_builtins.str] name: Friendly display name assigned to the switch
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchNetworksArgs', 'SwitchNetworksArgsDict']]]] networks: Layer 3 networks configured for use by this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchNetworksArgs', 'SwitchNetworksArgsDict', 'outputs.SwitchNetworks']]]] networks: Layer 3 networks configured for use by this switch
         :param pulumi.Input[_builtins.str] notes: Free-form administrative notes for this switch
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: NTP servers used by this switch
-        :param pulumi.Input[Union['SwitchOobIpConfigArgs', 'SwitchOobIpConfigArgsDict']] oob_ip_config: Out-of-band management IP configuration for this switch
+        :param pulumi.Input[Union['SwitchOobIpConfigArgs', 'SwitchOobIpConfigArgsDict', 'outputs.SwitchOobIpConfig']] oob_ip_config: Out-of-band management IP configuration for this switch
         :param pulumi.Input[_builtins.str] org_id: Organization that owns this switch
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOspfAreasArgs', 'SwitchOspfAreasArgsDict']]]] ospf_areas: OSPF area configuration for this switch
-        :param pulumi.Input[Union['SwitchOspfConfigArgs', 'SwitchOspfConfigArgsDict']] ospf_config: OSPF routing configuration for this switch
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOtherIpConfigsArgs', 'SwitchOtherIpConfigsArgsDict']]]] other_ip_configs: Property key is the network name. Defines the additional IP Addresses configured on the device.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigArgs', 'SwitchPortConfigArgsDict']]]] port_config: Per-port wired configuration for this switch
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigOverwriteArgs', 'SwitchPortConfigOverwriteArgsDict']]]] port_config_overwrite: Per-port overrides for switch port usage attributes
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict']]]] port_mirroring: Port mirroring configuration for this switch
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortUsagesArgs', 'SwitchPortUsagesArgsDict']]]] port_usages: Reusable switch port usage profiles available on this switch
-        :param pulumi.Input[Union['SwitchRadiusConfigArgs', 'SwitchRadiusConfigArgsDict']] radius_config: RADIUS authentication and accounting settings for this switch
-        :param pulumi.Input[Union['SwitchRemoteSyslogArgs', 'SwitchRemoteSyslogArgsDict']] remote_syslog: Remote syslog settings for this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOspfAreasArgs', 'SwitchOspfAreasArgsDict', 'outputs.SwitchOspfAreas']]]] ospf_areas: OSPF area configuration for this switch
+        :param pulumi.Input[Union['SwitchOspfConfigArgs', 'SwitchOspfConfigArgsDict', 'outputs.SwitchOspfConfig']] ospf_config: OSPF routing configuration for this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOtherIpConfigsArgs', 'SwitchOtherIpConfigsArgsDict', 'outputs.SwitchOtherIpConfigs']]]] other_ip_configs: Property key is the network name. Defines the additional IP Addresses configured on the device.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigArgs', 'SwitchPortConfigArgsDict', 'outputs.SwitchPortConfig']]]] port_config: Per-port wired configuration for this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigOverwriteArgs', 'SwitchPortConfigOverwriteArgsDict', 'outputs.SwitchPortConfigOverwrite']]]] port_config_overwrite: Per-port overrides for switch port usage attributes
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict', 'outputs.SwitchPortMirroring']]]] port_mirroring: Port mirroring configuration for this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortUsagesArgs', 'SwitchPortUsagesArgsDict', 'outputs.SwitchPortUsages']]]] port_usages: Reusable switch port usage profiles available on this switch
+        :param pulumi.Input[Union['SwitchRadiusConfigArgs', 'SwitchRadiusConfigArgsDict', 'outputs.SwitchRadiusConfig']] radius_config: RADIUS authentication and accounting settings for this switch
+        :param pulumi.Input[Union['SwitchRemoteSyslogArgs', 'SwitchRemoteSyslogArgsDict', 'outputs.SwitchRemoteSyslog']] remote_syslog: Remote syslog settings for this switch
         :param pulumi.Input[_builtins.str] role: Deployment role label for this switch
         :param pulumi.Input[_builtins.str] router_id: Used for OSPF / BGP / EVPN
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchRoutingPoliciesArgs', 'SwitchRoutingPoliciesArgsDict']]]] routing_policies: Routing policies applied by this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchRoutingPoliciesArgs', 'SwitchRoutingPoliciesArgsDict', 'outputs.SwitchRoutingPolicies']]]] routing_policies: Routing policies applied by this switch
         :param pulumi.Input[_builtins.str] serial: Manufacturer serial number for the switch
         :param pulumi.Input[_builtins.str] site_id: Site where this switch is assigned
-        :param pulumi.Input[Union['SwitchSnmpConfigArgs', 'SwitchSnmpConfigArgsDict']] snmp_config: SNMP configuration for this switch
-        :param pulumi.Input[Union['SwitchStpConfigArgs', 'SwitchStpConfigArgsDict']] stp_config: Spanning Tree Protocol configuration for this switch
-        :param pulumi.Input[Union['SwitchSwitchMgmtArgs', 'SwitchSwitchMgmtArgsDict']] switch_mgmt: Management-plane settings for this switch
+        :param pulumi.Input[Union['SwitchSnmpConfigArgs', 'SwitchSnmpConfigArgsDict', 'outputs.SwitchSnmpConfig']] snmp_config: SNMP configuration for this switch
+        :param pulumi.Input[Union['SwitchStpConfigArgs', 'SwitchStpConfigArgsDict', 'outputs.SwitchStpConfig']] stp_config: Spanning Tree Protocol configuration for this switch
+        :param pulumi.Input[Union['SwitchSwitchMgmtArgs', 'SwitchSwitchMgmtArgsDict', 'outputs.SwitchSwitchMgmt']] switch_mgmt: Management-plane settings for this switch
         :param pulumi.Input[_builtins.str] type: Device type discriminator for switch records
         :param pulumi.Input[_builtins.bool] use_router_id_as_source_ip: Whether to use it for snmp / syslog / tacplus / radius
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Variable values that override site variables for this switch
-        :param pulumi.Input[Union['SwitchVirtualChassisArgs', 'SwitchVirtualChassisArgsDict']] virtual_chassis: Virtual Chassis membership and provisioning settings for this switch
-        :param pulumi.Input[Union['SwitchVrfConfigArgs', 'SwitchVrfConfigArgsDict']] vrf_config: VRF configuration applied to this switch
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchVrfInstancesArgs', 'SwitchVrfInstancesArgsDict']]]] vrf_instances: VRF instances configured on this switch
-        :param pulumi.Input[Union['SwitchVrrpConfigArgs', 'SwitchVrrpConfigArgsDict']] vrrp_config: VRRP configuration applied to this switch
+        :param pulumi.Input[Union['SwitchVirtualChassisArgs', 'SwitchVirtualChassisArgsDict', 'outputs.SwitchVirtualChassis']] virtual_chassis: Virtual Chassis membership and provisioning settings for this switch
+        :param pulumi.Input[Union['SwitchVrfConfigArgs', 'SwitchVrfConfigArgsDict', 'outputs.SwitchVrfConfig']] vrf_config: VRF configuration applied to this switch
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchVrfInstancesArgs', 'SwitchVrfInstancesArgsDict', 'outputs.SwitchVrfInstances']]]] vrf_instances: VRF instances configured on this switch
+        :param pulumi.Input[Union['SwitchVrrpConfigArgs', 'SwitchVrrpConfigArgsDict', 'outputs.SwitchVrrpConfig']] vrrp_config: VRRP configuration applied to this switch
         :param pulumi.Input[_builtins.float] x: Horizontal map position of the switch, in pixels
         :param pulumi.Input[_builtins.float] y: Vertical map position of the switch, in pixels
         """

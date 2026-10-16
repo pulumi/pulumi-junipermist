@@ -1236,7 +1236,7 @@ export namespace device {
          */
         options?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayDhcpdConfigConfigOptions>} | undefined>;
         /**
-         * `serverIdOverride`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
+         * `serverIdOverride`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
          * should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
          */
         serverIdOverride?: pulumi.Input<boolean | undefined>;
@@ -1927,8 +1927,8 @@ export namespace device {
          */
         internetAccess?: pulumi.Input<boolean | undefined>;
         /**
-         * Required when 
-         *   * `type`==`vpn`: the name of the VPN Path to use 
+         * Required when
+         *   * `type`==`vpn`: the name of the VPN Path to use
          *   * `type`==`wan`: the name of the WAN interface to use
          */
         name?: pulumi.Input<string | undefined>;
@@ -3197,7 +3197,7 @@ export namespace device {
          *   * `type`==`radiusGroup`
          *   * `type`==`arubaUserRole`
          *   * `type`==`staticGbp`
-         * if from matching radius_group
+         *     if from matching radius_group
          */
         radiusGroup?: pulumi.Input<string | undefined>;
         /**
@@ -3363,7 +3363,7 @@ export namespace device {
          */
         options?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchDhcpdConfigConfigOptions>} | undefined>;
         /**
-         * `serverIdOverride`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
+         * `serverIdOverride`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
          * should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
          */
         serverIdOverride?: pulumi.Input<boolean | undefined>;
@@ -6635,7 +6635,7 @@ export namespace org {
          */
         options?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayDhcpdConfigConfigOptions>} | undefined>;
         /**
-         * `serverIdOverride`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
+         * `serverIdOverride`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
          * should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
          */
         serverIdOverride?: pulumi.Input<boolean | undefined>;
@@ -7135,8 +7135,8 @@ export namespace org {
          */
         internetAccess?: pulumi.Input<boolean | undefined>;
         /**
-         * Required when 
-         *   * `type`==`vpn`: the name of the VPN Path to use 
+         * Required when
+         *   * `type`==`vpn`: the name of the VPN Path to use
          *   * `type`==`wan`: the name of the WAN interface to use
          */
         name?: pulumi.Input<string | undefined>;
@@ -8375,7 +8375,7 @@ export namespace org {
          *   * `type`==`radiusGroup`
          *   * `type`==`arubaUserRole`
          *   * `type`==`staticGbp`
-         * if from matching radius_group
+         *     if from matching radius_group
          */
         radiusGroup?: pulumi.Input<string | undefined>;
         /**
@@ -8479,7 +8479,7 @@ export namespace org {
          */
         options?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileSwitchDhcpdConfigConfigOptions>} | undefined>;
         /**
-         * `serverIdOverride`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
+         * `serverIdOverride`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
          * should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
          */
         serverIdOverride?: pulumi.Input<boolean | undefined>;
@@ -10384,7 +10384,7 @@ export namespace org {
 
     export interface EvpnTopologySwitches {
         /**
-         * Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g. 
+         * Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g.
          *   * for CLOS, to group dist / access switches into pods
          *   * for ERB/CRB, to group dist / esilag-access into pods
          */
@@ -10578,7 +10578,7 @@ export namespace org {
          */
         options?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplateDhcpdConfigConfigOptions>} | undefined>;
         /**
-         * `serverIdOverride`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
+         * `serverIdOverride`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
          * should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
          */
         serverIdOverride?: pulumi.Input<boolean | undefined>;
@@ -11265,8 +11265,8 @@ export namespace org {
          */
         internetAccess?: pulumi.Input<boolean | undefined>;
         /**
-         * Required when 
-         *   * `type`==`vpn`: the name of the VPN Path to use 
+         * Required when
+         *   * `type`==`vpn`: the name of the VPN Path to use
          *   * `type`==`wan`: the name of the WAN interface to use
          */
         name?: pulumi.Input<string | undefined>;
@@ -13526,7 +13526,7 @@ export namespace org {
          *   * `type`==`radiusGroup`
          *   * `type`==`arubaUserRole`
          *   * `type`==`staticGbp`
-         * if from matching radius_group
+         *     if from matching radius_group
          */
         radiusGroup?: pulumi.Input<string | undefined>;
         /**
@@ -16723,7 +16723,7 @@ export namespace org {
 
     export interface WlanAppLimit {
         /**
-         * Map from app key to bandwidth in kbps. 
+         * Map from app key to bandwidth in kbps.
          * Property key is the app key, defined in Get Application List
          */
         apps?: pulumi.Input<{[key: string]: pulumi.Input<number>} | undefined>;
@@ -16894,7 +16894,7 @@ export namespace org {
          */
         enabled?: pulumi.Input<boolean | undefined>;
         /**
-         * What services are allowed. 
+         * What services are allowed.
          * Property key is the service name
          */
         services?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.WlanBonjourServices>} | undefined>;
@@ -17626,9 +17626,9 @@ export namespace org {
         field4required?: pulumi.Input<boolean | undefined>;
         /**
          * Can be used to localize the portal based on the User Agent. Allowed property key values are:
-         *   `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`, 
-         *   `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`, 
-         *   `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`, 
+         *   `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`,
+         *   `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`,
+         *   `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`,
          *   `zh-Hans`, `zh-Hant`
          */
         locales?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.WlanPortalTemplatePortalTemplateLocales>} | undefined>;
@@ -17857,7 +17857,7 @@ export namespace org {
          */
         sponsorEmailError?: pulumi.Input<string | undefined>;
         /**
-         * HTML template to replace/override default sponsor email template 
+         * HTML template to replace/override default sponsor email template
          * Sponsor Email Template supports following template variables:
          *   * `approveUrl`: Renders URL to approve the request; optionally &minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
          *   * `denyUrl`: Renders URL to reject the request
@@ -18616,7 +18616,7 @@ export namespace site {
 
     export interface EvpnTopologySwitches {
         /**
-         * Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g. 
+         * Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g.
          *   * for CLOS, to group dist / access switches into pods
          *   * for ERB/CRB, to group dist / esilag-access into pods
          */
@@ -18695,7 +18695,7 @@ export namespace site {
          *   * `type`==`radiusGroup`
          *   * `type`==`arubaUserRole`
          *   * `type`==`staticGbp`
-         * if from matching radius_group
+         *     if from matching radius_group
          */
         radiusGroup?: pulumi.Input<string | undefined>;
         /**
@@ -22024,7 +22024,7 @@ export namespace site {
 
     export interface WlanAppLimit {
         /**
-         * Map from app key to bandwidth in kbps. 
+         * Map from app key to bandwidth in kbps.
          * Property key is the app key, defined in Get Application List
          */
         apps?: pulumi.Input<{[key: string]: pulumi.Input<number>} | undefined>;
@@ -22195,7 +22195,7 @@ export namespace site {
          */
         enabled?: pulumi.Input<boolean | undefined>;
         /**
-         * What services are allowed. 
+         * What services are allowed.
          * Property key is the service name
          */
         services?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.WlanBonjourServices>} | undefined>;
@@ -22927,9 +22927,9 @@ export namespace site {
         field4required?: pulumi.Input<boolean | undefined>;
         /**
          * Can be used to localize the portal based on the User Agent. Allowed property key values are:
-         *   `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`, 
-         *   `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`, 
-         *   `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`, 
+         *   `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`,
+         *   `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`,
+         *   `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`,
          *   `zh-Hans`, `zh-Hant`
          */
         locales?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.WlanPortalTemplatePortalTemplateLocales>} | undefined>;
@@ -23158,7 +23158,7 @@ export namespace site {
          */
         sponsorEmailError?: pulumi.Input<string | undefined>;
         /**
-         * HTML template to replace/override default sponsor email template 
+         * HTML template to replace/override default sponsor email template
          * Sponsor Email Template supports following template variables:
          *   * `approveUrl`: Renders URL to approve the request; optionally &minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
          *   * `denyUrl`: Renders URL to reject the request

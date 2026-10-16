@@ -2095,8 +2095,8 @@ public final class OrgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var samlIdp = OrgFunctions.getNacidpMetadata(GetNacidpMetadataArgs.builder()
-     *             .orgId(terraformTest.id())
-     *             .nacidpId(samlIdpOne.id())
+     *             .orgId(terraformTest.get("id"))
+     *             .nacidpId(samlIdpOne.get("id"))
      *             .build());
      * 
      *     }
@@ -2138,8 +2138,8 @@ public final class OrgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var samlIdp = OrgFunctions.getNacidpMetadata(GetNacidpMetadataArgs.builder()
-     *             .orgId(terraformTest.id())
-     *             .nacidpId(samlIdpOne.id())
+     *             .orgId(terraformTest.get("id"))
+     *             .nacidpId(samlIdpOne.get("id"))
      *             .build());
      * 
      *     }
@@ -2181,8 +2181,8 @@ public final class OrgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var samlIdp = OrgFunctions.getNacidpMetadata(GetNacidpMetadataArgs.builder()
-     *             .orgId(terraformTest.id())
-     *             .nacidpId(samlIdpOne.id())
+     *             .orgId(terraformTest.get("id"))
+     *             .nacidpId(samlIdpOne.get("id"))
      *             .build());
      * 
      *     }
@@ -2224,8 +2224,8 @@ public final class OrgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var samlIdp = OrgFunctions.getNacidpMetadata(GetNacidpMetadataArgs.builder()
-     *             .orgId(terraformTest.id())
-     *             .nacidpId(samlIdpOne.id())
+     *             .orgId(terraformTest.get("id"))
+     *             .nacidpId(samlIdpOne.get("id"))
      *             .build());
      * 
      *     }
@@ -2267,8 +2267,8 @@ public final class OrgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var samlIdp = OrgFunctions.getNacidpMetadata(GetNacidpMetadataArgs.builder()
-     *             .orgId(terraformTest.id())
-     *             .nacidpId(samlIdpOne.id())
+     *             .orgId(terraformTest.get("id"))
+     *             .nacidpId(samlIdpOne.get("id"))
      *             .build());
      * 
      *     }
@@ -4290,8 +4290,8 @@ public final class OrgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ssoIdp = OrgFunctions.getSsoMetadata(GetSsoMetadataArgs.builder()
-     *             .orgId(terraformTest.id())
-     *             .ssoId(ssoOne.id())
+     *             .orgId(terraformTest.get("id"))
+     *             .ssoId(ssoOne.get("id"))
      *             .build());
      * 
      *     }
@@ -4333,8 +4333,8 @@ public final class OrgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ssoIdp = OrgFunctions.getSsoMetadata(GetSsoMetadataArgs.builder()
-     *             .orgId(terraformTest.id())
-     *             .ssoId(ssoOne.id())
+     *             .orgId(terraformTest.get("id"))
+     *             .ssoId(ssoOne.get("id"))
      *             .build());
      * 
      *     }
@@ -4376,8 +4376,8 @@ public final class OrgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ssoIdp = OrgFunctions.getSsoMetadata(GetSsoMetadataArgs.builder()
-     *             .orgId(terraformTest.id())
-     *             .ssoId(ssoOne.id())
+     *             .orgId(terraformTest.get("id"))
+     *             .ssoId(ssoOne.get("id"))
      *             .build());
      * 
      *     }
@@ -4419,8 +4419,8 @@ public final class OrgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ssoIdp = OrgFunctions.getSsoMetadata(GetSsoMetadataArgs.builder()
-     *             .orgId(terraformTest.id())
-     *             .ssoId(ssoOne.id())
+     *             .orgId(terraformTest.get("id"))
+     *             .ssoId(ssoOne.get("id"))
      *             .build());
      * 
      *     }
@@ -4462,8 +4462,8 @@ public final class OrgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ssoIdp = OrgFunctions.getSsoMetadata(GetSsoMetadataArgs.builder()
-     *             .orgId(terraformTest.id())
-     *             .ssoId(ssoOne.id())
+     *             .orgId(terraformTest.get("id"))
+     *             .ssoId(ssoOne.get("id"))
      *             .build());
      * 
      *     }

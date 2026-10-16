@@ -27,24 +27,13 @@ class GetWlantemplatesResult:
     """
     A collection of values returned by getWlantemplates.
     """
-    def __init__(__self__, id=None, org_id=None, org_wlantemplates=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, org_id=None, org_wlantemplates=None):
         if org_id and not isinstance(org_id, str):
             raise TypeError("Expected argument 'org_id' to be a str")
         pulumi.set(__self__, "org_id", org_id)
         if org_wlantemplates and not isinstance(org_wlantemplates, list):
             raise TypeError("Expected argument 'org_wlantemplates' to be a list")
         pulumi.set(__self__, "org_wlantemplates", org_wlantemplates)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="orgId")
@@ -63,7 +52,6 @@ class AwaitableGetWlantemplatesResult(GetWlantemplatesResult):
         if False:
             yield self
         return GetWlantemplatesResult(
-            id=self.id,
             org_id=self.org_id,
             org_wlantemplates=self.org_wlantemplates)
 
@@ -92,7 +80,6 @@ def get_wlantemplates(org_id: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('junipermist:org/getWlantemplates:getWlantemplates', __args__, opts=opts, typ=GetWlantemplatesResult).value
 
     return AwaitableGetWlantemplatesResult(
-        id=pulumi.get(__ret__, 'id'),
         org_id=pulumi.get(__ret__, 'org_id'),
         org_wlantemplates=pulumi.get(__ret__, 'org_wlantemplates'))
 def get_wlantemplates_output(org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -118,6 +105,5 @@ def get_wlantemplates_output(org_id: pulumi.Input[Optional[_builtins.str]] = Non
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:org/getWlantemplates:getWlantemplates', __args__, opts=opts, typ=GetWlantemplatesResult)
     return __ret__.apply(lambda __response__: GetWlantemplatesResult(
-        id=pulumi.get(__response__, 'id'),
         org_id=pulumi.get(__response__, 'org_id'),
         org_wlantemplates=pulumi.get(__response__, 'org_wlantemplates')))

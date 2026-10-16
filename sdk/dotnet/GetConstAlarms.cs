@@ -89,19 +89,11 @@ namespace Pulumi.JuniperMist
     public sealed class GetConstAlarmsResult
     {
         public readonly ImmutableArray<Outputs.GetConstAlarmsConstAlarmResult> ConstAlarms;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
-        private GetConstAlarmsResult(
-            ImmutableArray<Outputs.GetConstAlarmsConstAlarmResult> constAlarms,
-
-            string id)
+        private GetConstAlarmsResult(ImmutableArray<Outputs.GetConstAlarmsConstAlarmResult> constAlarms)
         {
             ConstAlarms = constAlarms;
-            Id = id;
         }
     }
 }

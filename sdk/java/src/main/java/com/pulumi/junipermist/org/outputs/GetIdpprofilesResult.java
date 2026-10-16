@@ -12,22 +12,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetIdpprofilesResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private String orgId;
     private List<GetIdpprofilesOrgIdpprofile> orgIdpprofiles;
 
     private GetIdpprofilesResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public String orgId() {
         return this.orgId;
     }
@@ -44,25 +32,15 @@ public final class GetIdpprofilesResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private String orgId;
         private List<GetIdpprofilesOrgIdpprofile> orgIdpprofiles;
         public Builder() {}
         public Builder(GetIdpprofilesResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.orgId = defaults.orgId;
     	      this.orgIdpprofiles = defaults.orgIdpprofiles;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetIdpprofilesResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder orgId(String orgId) {
             if (orgId == null) {
@@ -84,7 +62,6 @@ public final class GetIdpprofilesResult {
         }
         public GetIdpprofilesResult build() {
             final var _resultValue = new GetIdpprofilesResult();
-            _resultValue.id = id;
             _resultValue.orgId = orgId;
             _resultValue.orgIdpprofiles = orgIdpprofiles;
             return _resultValue;

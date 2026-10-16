@@ -12,22 +12,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetWebhooksResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private String orgId;
     private List<GetWebhooksOrgWebhook> orgWebhooks;
 
     private GetWebhooksResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public String orgId() {
         return this.orgId;
     }
@@ -44,25 +32,15 @@ public final class GetWebhooksResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private String orgId;
         private List<GetWebhooksOrgWebhook> orgWebhooks;
         public Builder() {}
         public Builder(GetWebhooksResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.orgId = defaults.orgId;
     	      this.orgWebhooks = defaults.orgWebhooks;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetWebhooksResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder orgId(String orgId) {
             if (orgId == null) {
@@ -84,7 +62,6 @@ public final class GetWebhooksResult {
         }
         public GetWebhooksResult build() {
             final var _resultValue = new GetWebhooksResult();
-            _resultValue.id = id;
             _resultValue.orgId = orgId;
             _resultValue.orgWebhooks = orgWebhooks;
             return _resultValue;

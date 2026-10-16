@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var webhookOne = new Webhook("webhookOne", WebhookArgs.builder()
- *             .siteId(terraformTest.id())
+ *             .siteId(terraformTest.get("id"))
  *             .name("webhook_one")
  *             .type("http-post")
  *             .url("https://myserver.com:4321/")

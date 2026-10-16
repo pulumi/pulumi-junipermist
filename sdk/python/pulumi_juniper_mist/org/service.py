@@ -827,7 +827,7 @@ class Service(pulumi.CustomResource):
                  service_limit_down: pulumi.Input[Optional[_builtins.int]] = None,
                  service_limit_up: pulumi.Input[Optional[_builtins.int]] = None,
                  sle_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 specs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceSpecArgs', 'ServiceSpecArgsDict']]]]] = None,
+                 specs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceSpecArgs', 'ServiceSpecArgsDict', 'outputs.ServiceSpec']]]]] = None,
                  ssr_relaxed_tcp_state_enforcement: pulumi.Input[Optional[_builtins.bool]] = None,
                  traffic_class: pulumi.Input[Optional[_builtins.str]] = None,
                  traffic_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -893,7 +893,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] service_limit_down: 0 means unlimited, value from 0 to 107374182
         :param pulumi.Input[_builtins.int] service_limit_up: 0 means unlimited, value from 0 to 107374182
         :param pulumi.Input[_builtins.bool] sle_enabled: Whether to enable measure SLE
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceSpecArgs', 'ServiceSpecArgsDict']]]] specs: Protocol and port match rules used when `type`==`custom`
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceSpecArgs', 'ServiceSpecArgsDict', 'outputs.ServiceSpec']]]] specs: Protocol and port match rules used when `type`==`custom`
         :param pulumi.Input[_builtins.bool] ssr_relaxed_tcp_state_enforcement: Whether SSR relaxes TCP state enforcement for this service
         :param pulumi.Input[_builtins.str] traffic_class: Traffic class applied when `traffic_type`==`custom`. enum: `best_effort`, `high`, `low`, `medium`.
         :param pulumi.Input[_builtins.str] traffic_type: values from List Traffic Types
@@ -978,7 +978,7 @@ class Service(pulumi.CustomResource):
                  service_limit_down: pulumi.Input[Optional[_builtins.int]] = None,
                  service_limit_up: pulumi.Input[Optional[_builtins.int]] = None,
                  sle_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 specs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceSpecArgs', 'ServiceSpecArgsDict']]]]] = None,
+                 specs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceSpecArgs', 'ServiceSpecArgsDict', 'outputs.ServiceSpec']]]]] = None,
                  ssr_relaxed_tcp_state_enforcement: pulumi.Input[Optional[_builtins.bool]] = None,
                  traffic_class: pulumi.Input[Optional[_builtins.str]] = None,
                  traffic_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1047,7 +1047,7 @@ class Service(pulumi.CustomResource):
             service_limit_down: pulumi.Input[Optional[_builtins.int]] = None,
             service_limit_up: pulumi.Input[Optional[_builtins.int]] = None,
             sle_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-            specs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceSpecArgs', 'ServiceSpecArgsDict']]]]] = None,
+            specs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceSpecArgs', 'ServiceSpecArgsDict', 'outputs.ServiceSpec']]]]] = None,
             ssr_relaxed_tcp_state_enforcement: pulumi.Input[Optional[_builtins.bool]] = None,
             traffic_class: pulumi.Input[Optional[_builtins.str]] = None,
             traffic_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1078,7 +1078,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] service_limit_down: 0 means unlimited, value from 0 to 107374182
         :param pulumi.Input[_builtins.int] service_limit_up: 0 means unlimited, value from 0 to 107374182
         :param pulumi.Input[_builtins.bool] sle_enabled: Whether to enable measure SLE
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceSpecArgs', 'ServiceSpecArgsDict']]]] specs: Protocol and port match rules used when `type`==`custom`
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceSpecArgs', 'ServiceSpecArgsDict', 'outputs.ServiceSpec']]]] specs: Protocol and port match rules used when `type`==`custom`
         :param pulumi.Input[_builtins.bool] ssr_relaxed_tcp_state_enforcement: Whether SSR relaxes TCP state enforcement for this service
         :param pulumi.Input[_builtins.str] traffic_class: Traffic class applied when `traffic_type`==`custom`. enum: `best_effort`, `high`, `low`, `medium`.
         :param pulumi.Input[_builtins.str] traffic_type: values from List Traffic Types

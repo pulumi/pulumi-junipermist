@@ -564,9 +564,9 @@ class NacPortal(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  notify_expiry: pulumi.Input[Optional[_builtins.bool]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 portal: pulumi.Input[Optional[Union['NacPortalPortalArgs', 'NacPortalPortalArgsDict']]] = None,
+                 portal: pulumi.Input[Optional[Union['NacPortalPortalArgs', 'NacPortalPortalArgsDict', 'outputs.NacPortalPortal']]] = None,
                  ssid: pulumi.Input[Optional[_builtins.str]] = None,
-                 sso: pulumi.Input[Optional[Union['NacPortalSsoArgs', 'NacPortalSsoArgsDict']]] = None,
+                 sso: pulumi.Input[Optional[Union['NacPortalSsoArgs', 'NacPortalSsoArgsDict', 'outputs.NacPortalSso']]] = None,
                  tos: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -654,9 +654,9 @@ class NacPortal(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Human-readable name of the NAC portal
         :param pulumi.Input[_builtins.bool] notify_expiry: Whether to send reminder notifications before portal-issued certificates expire
         :param pulumi.Input[_builtins.str] org_id: Organization that owns this NAC portal
-        :param pulumi.Input[Union['NacPortalPortalArgs', 'NacPortalPortalArgsDict']] portal: Guest portal settings used when `type`==`guest_portal`
+        :param pulumi.Input[Union['NacPortalPortalArgs', 'NacPortalPortalArgsDict', 'outputs.NacPortalPortal']] portal: Guest portal settings used when `type`==`guest_portal`
         :param pulumi.Input[_builtins.str] ssid: Wireless SSID associated with the NAC portal
-        :param pulumi.Input[Union['NacPortalSsoArgs', 'NacPortalSsoArgsDict']] sso: SAML SSO settings for NAC portal authentication and role mapping
+        :param pulumi.Input[Union['NacPortalSsoArgs', 'NacPortalSsoArgsDict', 'outputs.NacPortalSso']] sso: SAML SSO settings for NAC portal authentication and role mapping
         :param pulumi.Input[_builtins.str] tos: Terms of service text shown in the NAC portal
         :param pulumi.Input[_builtins.str] type: NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding. enum: `guest_admin`, `guest_portal`, `marvis_client`.
         """
@@ -763,9 +763,9 @@ class NacPortal(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  notify_expiry: pulumi.Input[Optional[_builtins.bool]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 portal: pulumi.Input[Optional[Union['NacPortalPortalArgs', 'NacPortalPortalArgsDict']]] = None,
+                 portal: pulumi.Input[Optional[Union['NacPortalPortalArgs', 'NacPortalPortalArgsDict', 'outputs.NacPortalPortal']]] = None,
                  ssid: pulumi.Input[Optional[_builtins.str]] = None,
-                 sso: pulumi.Input[Optional[Union['NacPortalSsoArgs', 'NacPortalSsoArgsDict']]] = None,
+                 sso: pulumi.Input[Optional[Union['NacPortalSsoArgs', 'NacPortalSsoArgsDict', 'outputs.NacPortalSso']]] = None,
                  tos: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -816,9 +816,9 @@ class NacPortal(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             notify_expiry: pulumi.Input[Optional[_builtins.bool]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
-            portal: pulumi.Input[Optional[Union['NacPortalPortalArgs', 'NacPortalPortalArgsDict']]] = None,
+            portal: pulumi.Input[Optional[Union['NacPortalPortalArgs', 'NacPortalPortalArgsDict', 'outputs.NacPortalPortal']]] = None,
             ssid: pulumi.Input[Optional[_builtins.str]] = None,
-            sso: pulumi.Input[Optional[Union['NacPortalSsoArgs', 'NacPortalSsoArgsDict']]] = None,
+            sso: pulumi.Input[Optional[Union['NacPortalSsoArgs', 'NacPortalSsoArgsDict', 'outputs.NacPortalSso']]] = None,
             tos: pulumi.Input[Optional[_builtins.str]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None) -> 'NacPortal':
         """
@@ -839,9 +839,9 @@ class NacPortal(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Human-readable name of the NAC portal
         :param pulumi.Input[_builtins.bool] notify_expiry: Whether to send reminder notifications before portal-issued certificates expire
         :param pulumi.Input[_builtins.str] org_id: Organization that owns this NAC portal
-        :param pulumi.Input[Union['NacPortalPortalArgs', 'NacPortalPortalArgsDict']] portal: Guest portal settings used when `type`==`guest_portal`
+        :param pulumi.Input[Union['NacPortalPortalArgs', 'NacPortalPortalArgsDict', 'outputs.NacPortalPortal']] portal: Guest portal settings used when `type`==`guest_portal`
         :param pulumi.Input[_builtins.str] ssid: Wireless SSID associated with the NAC portal
-        :param pulumi.Input[Union['NacPortalSsoArgs', 'NacPortalSsoArgsDict']] sso: SAML SSO settings for NAC portal authentication and role mapping
+        :param pulumi.Input[Union['NacPortalSsoArgs', 'NacPortalSsoArgsDict', 'outputs.NacPortalSso']] sso: SAML SSO settings for NAC portal authentication and role mapping
         :param pulumi.Input[_builtins.str] tos: Terms of service text shown in the NAC portal
         :param pulumi.Input[_builtins.str] type: NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding. enum: `guest_admin`, `guest_portal`, `marvis_client`.
         """

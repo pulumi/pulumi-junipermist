@@ -61,19 +61,13 @@ type GetServicepoliciesArgs struct {
 
 // A collection of values returned by getServicepolicies.
 type GetServicepoliciesResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id                 string                               `pulumi:"id"`
 	OrgId              string                               `pulumi:"orgId"`
 	OrgServicepolicies []GetServicepoliciesOrgServicepolicy `pulumi:"orgServicepolicies"`
 }
 
 func GetServicepoliciesOutput(ctx *pulumi.Context, args GetServicepoliciesOutputArgs, opts ...pulumi.InvokeOption) GetServicepoliciesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetServicepoliciesResultOutput, error) {
-			args := v.(GetServicepoliciesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("junipermist:org/getServicepolicies:getServicepolicies", args, GetServicepoliciesResultOutput{}, options).(GetServicepoliciesResultOutput), nil
-		}).(GetServicepoliciesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("junipermist:org/getServicepolicies:getServicepolicies", args, GetServicepoliciesResultOutput{}, options).(GetServicepoliciesResultOutput)
 }
 
 // A collection of arguments for invoking getServicepolicies.
@@ -98,11 +92,6 @@ func (o GetServicepoliciesResultOutput) ToGetServicepoliciesResultOutput() GetSe
 
 func (o GetServicepoliciesResultOutput) ToGetServicepoliciesResultOutputWithContext(ctx context.Context) GetServicepoliciesResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetServicepoliciesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServicepoliciesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetServicepoliciesResultOutput) OrgId() pulumi.StringOutput {

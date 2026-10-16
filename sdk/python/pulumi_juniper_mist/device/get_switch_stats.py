@@ -27,7 +27,7 @@ class GetSwitchStatsResult:
     """
     A collection of values returned by getSwitchStats.
     """
-    def __init__(__self__, device_switch_stats=None, duration=None, end=None, evpn_unused=None, evpntopo_id=None, id=None, mac=None, org_id=None, site_id=None, start=None, status=None):
+    def __init__(__self__, device_switch_stats=None, duration=None, end=None, evpn_unused=None, evpntopo_id=None, mac=None, org_id=None, site_id=None, start=None, status=None):
         if device_switch_stats and not isinstance(device_switch_stats, list):
             raise TypeError("Expected argument 'device_switch_stats' to be a list")
         pulumi.set(__self__, "device_switch_stats", device_switch_stats)
@@ -43,9 +43,6 @@ class GetSwitchStatsResult:
         if evpntopo_id and not isinstance(evpntopo_id, str):
             raise TypeError("Expected argument 'evpntopo_id' to be a str")
         pulumi.set(__self__, "evpntopo_id", evpntopo_id)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if mac and not isinstance(mac, str):
             raise TypeError("Expected argument 'mac' to be a str")
         pulumi.set(__self__, "mac", mac)
@@ -101,14 +98,6 @@ class GetSwitchStatsResult:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter
     def mac(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "mac")
 
@@ -150,7 +139,6 @@ class AwaitableGetSwitchStatsResult(GetSwitchStatsResult):
             end=self.end,
             evpn_unused=self.evpn_unused,
             evpntopo_id=self.evpntopo_id,
-            id=self.id,
             mac=self.mac,
             org_id=self.org_id,
             site_id=self.site_id,
@@ -215,7 +203,6 @@ def get_switch_stats(duration: Optional[_builtins.str] = None,
         end=pulumi.get(__ret__, 'end'),
         evpn_unused=pulumi.get(__ret__, 'evpn_unused'),
         evpntopo_id=pulumi.get(__ret__, 'evpntopo_id'),
-        id=pulumi.get(__ret__, 'id'),
         mac=pulumi.get(__ret__, 'mac'),
         org_id=pulumi.get(__ret__, 'org_id'),
         site_id=pulumi.get(__ret__, 'site_id'),
@@ -277,7 +264,6 @@ def get_switch_stats_output(duration: pulumi.Input[Optional[Optional[_builtins.s
         end=pulumi.get(__response__, 'end'),
         evpn_unused=pulumi.get(__response__, 'evpn_unused'),
         evpntopo_id=pulumi.get(__response__, 'evpntopo_id'),
-        id=pulumi.get(__response__, 'id'),
         mac=pulumi.get(__response__, 'mac'),
         org_id=pulumi.get(__response__, 'org_id'),
         site_id=pulumi.get(__response__, 'site_id'),

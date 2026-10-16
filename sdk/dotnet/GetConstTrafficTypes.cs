@@ -89,19 +89,11 @@ namespace Pulumi.JuniperMist
     public sealed class GetConstTrafficTypesResult
     {
         public readonly ImmutableArray<Outputs.GetConstTrafficTypesConstTrafficTypeResult> ConstTrafficTypes;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
-        private GetConstTrafficTypesResult(
-            ImmutableArray<Outputs.GetConstTrafficTypesConstTrafficTypeResult> constTrafficTypes,
-
-            string id)
+        private GetConstTrafficTypesResult(ImmutableArray<Outputs.GetConstTrafficTypesConstTrafficTypeResult> constTrafficTypes)
         {
             ConstTrafficTypes = constTrafficTypes;
-            Id = id;
         }
     }
 }

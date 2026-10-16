@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // OAuth with Azure Example
  *         var idpAzure = new Nacidp("idpAzure", NacidpArgs.builder()
- *             .orgId(terraformTest.id())
+ *             .orgId(terraformTest.get("id"))
  *             .name("idp_azure")
  *             .idpType("oauth")
  *             .oauthCcClientId("client_id")
@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  * 
  *         // Custom LDAP Example
  *         var idpLdap = new Nacidp("idpLdap", NacidpArgs.builder()
- *             .orgId(terraformTest.id())
+ *             .orgId(terraformTest.get("id"))
  *             .name("idp_ldap")
  *             .idpType("ldap")
  *             .ldapType("custom")

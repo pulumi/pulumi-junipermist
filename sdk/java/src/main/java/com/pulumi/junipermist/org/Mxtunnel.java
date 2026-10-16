@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var mxtunnelOne = new Mxtunnel("mxtunnelOne", MxtunnelArgs.builder()
- *             .orgId(terraformTest.id())
+ *             .orgId(terraformTest.get("id"))
  *             .name("mxtunnel_one")
  *             .protocol("udp")
  *             .helloInterval(60)
@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *                 10,
  *                 20,
  *                 30)
- *             .mxclusterIds(mxclusterOne.id())
+ *             .mxclusterIds(mxclusterOne.get("id"))
  *             .autoPreemption(MxtunnelAutoPreemptionArgs.builder()
  *                 .enabled(true)
  *                 .dayOfWeek("mon")

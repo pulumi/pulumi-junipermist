@@ -66,8 +66,6 @@ type GetPsksArgs struct {
 
 // A collection of values returned by getPsks.
 type GetPsksResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id       string           `pulumi:"id"`
 	Name     *string          `pulumi:"name"`
 	Role     *string          `pulumi:"role"`
 	SiteId   string           `pulumi:"siteId"`
@@ -76,12 +74,8 @@ type GetPsksResult struct {
 }
 
 func GetPsksOutput(ctx *pulumi.Context, args GetPsksOutputArgs, opts ...pulumi.InvokeOption) GetPsksResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPsksResultOutput, error) {
-			args := v.(GetPsksArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("junipermist:site/getPsks:getPsks", args, GetPsksResultOutput{}, options).(GetPsksResultOutput), nil
-		}).(GetPsksResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("junipermist:site/getPsks:getPsks", args, GetPsksResultOutput{}, options).(GetPsksResultOutput)
 }
 
 // A collection of arguments for invoking getPsks.
@@ -109,11 +103,6 @@ func (o GetPsksResultOutput) ToGetPsksResultOutput() GetPsksResultOutput {
 
 func (o GetPsksResultOutput) ToGetPsksResultOutputWithContext(ctx context.Context) GetPsksResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetPsksResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPsksResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetPsksResultOutput) Name() pulumi.StringPtrOutput {

@@ -57,19 +57,13 @@ type GetNacrulesArgs struct {
 
 // A collection of values returned by getNacrules.
 type GetNacrulesResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id          string                  `pulumi:"id"`
 	OrgId       string                  `pulumi:"orgId"`
 	OrgNacrules []GetNacrulesOrgNacrule `pulumi:"orgNacrules"`
 }
 
 func GetNacrulesOutput(ctx *pulumi.Context, args GetNacrulesOutputArgs, opts ...pulumi.InvokeOption) GetNacrulesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNacrulesResultOutput, error) {
-			args := v.(GetNacrulesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("junipermist:org/getNacrules:getNacrules", args, GetNacrulesResultOutput{}, options).(GetNacrulesResultOutput), nil
-		}).(GetNacrulesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("junipermist:org/getNacrules:getNacrules", args, GetNacrulesResultOutput{}, options).(GetNacrulesResultOutput)
 }
 
 // A collection of arguments for invoking getNacrules.
@@ -94,11 +88,6 @@ func (o GetNacrulesResultOutput) ToGetNacrulesResultOutput() GetNacrulesResultOu
 
 func (o GetNacrulesResultOutput) ToGetNacrulesResultOutputWithContext(ctx context.Context) GetNacrulesResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetNacrulesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNacrulesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetNacrulesResultOutput) OrgId() pulumi.StringOutput {

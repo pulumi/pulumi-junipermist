@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var terraformTest = new Setting("terraformTest", SettingArgs.builder()
- *             .orgId(terraformTestMistOrg.id())
+ *             .orgId(terraformTestMistOrg.get("id"))
  *             .passwordPolicy(SettingPasswordPolicyArgs.builder()
  *                 .enabled(true)
  *                 .minLength(8)

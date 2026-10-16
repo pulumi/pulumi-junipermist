@@ -52,10 +52,6 @@ export interface GetVersionsArgs {
 export interface GetVersionsResult {
     readonly deviceVersions: outputs.device.GetVersionsDeviceVersion[];
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * Fetch version for device model, use/combine with `type` as needed (for switch and gateway devices)
      */
     readonly model: string;

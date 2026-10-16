@@ -92,7 +92,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var siteOne = new Setting("siteOne", SettingArgs.builder()
- *             .siteId(terraformSite.id())
+ *             .siteId(terraformSite.get("id"))
  *             .apUpdownThreshold(5)
  *             .deviceUpdownThreshold(5)
  *             .autoUpgrade(SettingAutoUpgradeArgs.builder()

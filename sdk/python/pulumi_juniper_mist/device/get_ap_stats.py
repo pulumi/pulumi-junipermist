@@ -27,7 +27,7 @@ class GetApStatsResult:
     """
     A collection of values returned by getApStats.
     """
-    def __init__(__self__, device_ap_stats=None, duration=None, end=None, id=None, mac=None, org_id=None, site_id=None, start=None, status=None):
+    def __init__(__self__, device_ap_stats=None, duration=None, end=None, mac=None, org_id=None, site_id=None, start=None, status=None):
         if device_ap_stats and not isinstance(device_ap_stats, list):
             raise TypeError("Expected argument 'device_ap_stats' to be a list")
         pulumi.set(__self__, "device_ap_stats", device_ap_stats)
@@ -37,9 +37,6 @@ class GetApStatsResult:
         if end and not isinstance(end, str):
             raise TypeError("Expected argument 'end' to be a str")
         pulumi.set(__self__, "end", end)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if mac and not isinstance(mac, str):
             raise TypeError("Expected argument 'mac' to be a str")
         pulumi.set(__self__, "mac", mac)
@@ -76,14 +73,6 @@ class GetApStatsResult:
         End time (epoch timestamp in seconds, or relative string like "-1d", "-2h", "now")
         """
         return pulumi.get(self, "end")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -126,7 +115,6 @@ class AwaitableGetApStatsResult(GetApStatsResult):
             device_ap_stats=self.device_ap_stats,
             duration=self.duration,
             end=self.end,
-            id=self.id,
             mac=self.mac,
             org_id=self.org_id,
             site_id=self.site_id,
@@ -181,7 +169,6 @@ def get_ap_stats(duration: Optional[_builtins.str] = None,
         device_ap_stats=pulumi.get(__ret__, 'device_ap_stats'),
         duration=pulumi.get(__ret__, 'duration'),
         end=pulumi.get(__ret__, 'end'),
-        id=pulumi.get(__ret__, 'id'),
         mac=pulumi.get(__ret__, 'mac'),
         org_id=pulumi.get(__ret__, 'org_id'),
         site_id=pulumi.get(__ret__, 'site_id'),
@@ -233,7 +220,6 @@ def get_ap_stats_output(duration: pulumi.Input[Optional[Optional[_builtins.str]]
         device_ap_stats=pulumi.get(__response__, 'device_ap_stats'),
         duration=pulumi.get(__response__, 'duration'),
         end=pulumi.get(__response__, 'end'),
-        id=pulumi.get(__response__, 'id'),
         mac=pulumi.get(__response__, 'mac'),
         org_id=pulumi.get(__response__, 'org_id'),
         site_id=pulumi.get(__response__, 'site_id'),

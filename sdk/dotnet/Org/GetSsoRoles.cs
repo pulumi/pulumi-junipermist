@@ -126,22 +126,15 @@ namespace Pulumi.JuniperMist.Org
     [OutputType]
     public sealed class GetSsoRolesResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly string OrgId;
         public readonly ImmutableArray<Outputs.GetSsoRolesOrgSsoRoleResult> OrgSsoRoles;
 
         [OutputConstructor]
         private GetSsoRolesResult(
-            string id,
-
             string orgId,
 
             ImmutableArray<Outputs.GetSsoRolesOrgSsoRoleResult> orgSsoRoles)
         {
-            Id = id;
             OrgId = orgId;
             OrgSsoRoles = orgSsoRoles;
         }

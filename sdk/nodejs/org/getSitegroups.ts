@@ -41,10 +41,6 @@ export interface GetSitegroupsArgs {
  * A collection of values returned by getSitegroups.
  */
 export interface GetSitegroupsResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly orgId: string;
     readonly orgSitegroups: outputs.org.GetSitegroupsOrgSitegroup[];
 }

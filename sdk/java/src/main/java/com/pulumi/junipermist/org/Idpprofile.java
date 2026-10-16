@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var idpprofileOne = new Idpprofile("idpprofileOne", IdpprofileArgs.builder()
- *             .orgId(terraformTest.id())
+ *             .orgId(terraformTest.get("id"))
  *             .baseProfile("standard")
  *             .overwrites(            
  *                 IdpprofileOverwriteArgs.builder()

@@ -78,8 +78,6 @@ type LookupInventoryArgs struct {
 
 // A collection of values returned by getInventory.
 type LookupInventoryResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// MAC address
 	Mac *string `pulumi:"mac"`
 	// Device model
@@ -101,12 +99,8 @@ type LookupInventoryResult struct {
 }
 
 func LookupInventoryOutput(ctx *pulumi.Context, args LookupInventoryOutputArgs, opts ...pulumi.InvokeOption) LookupInventoryResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupInventoryResultOutput, error) {
-			args := v.(LookupInventoryArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("junipermist:org/getInventory:getInventory", args, LookupInventoryResultOutput{}, options).(LookupInventoryResultOutput), nil
-		}).(LookupInventoryResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("junipermist:org/getInventory:getInventory", args, LookupInventoryResultOutput{}, options).(LookupInventoryResultOutput)
 }
 
 // A collection of arguments for invoking getInventory.
@@ -147,11 +141,6 @@ func (o LookupInventoryResultOutput) ToLookupInventoryResultOutput() LookupInven
 
 func (o LookupInventoryResultOutput) ToLookupInventoryResultOutputWithContext(ctx context.Context) LookupInventoryResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupInventoryResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupInventoryResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // MAC address

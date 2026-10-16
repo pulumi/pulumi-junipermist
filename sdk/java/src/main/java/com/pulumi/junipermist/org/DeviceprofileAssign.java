@@ -44,8 +44,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var deviceprofileAssign = new DeviceprofileAssign("deviceprofileAssign", DeviceprofileAssignArgs.builder()
- *             .orgId(terraformTest.id())
- *             .deviceprofileId(hubOne.id())
+ *             .orgId(terraformTest.get("id"))
+ *             .deviceprofileId(hubOne.get("id"))
  *             .macs(            
  *                 "4c9614000000",
  *                 "4c9614000001")

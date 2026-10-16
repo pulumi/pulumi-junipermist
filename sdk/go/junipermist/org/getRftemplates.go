@@ -58,20 +58,14 @@ type GetRftemplatesArgs struct {
 
 // A collection of values returned by getRftemplates.
 type GetRftemplatesResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id             string                        `pulumi:"id"`
 	OrgId          string                        `pulumi:"orgId"`
 	OrgRftemplates []GetRftemplatesOrgRftemplate `pulumi:"orgRftemplates"`
 	Page           *int                          `pulumi:"page"`
 }
 
 func GetRftemplatesOutput(ctx *pulumi.Context, args GetRftemplatesOutputArgs, opts ...pulumi.InvokeOption) GetRftemplatesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetRftemplatesResultOutput, error) {
-			args := v.(GetRftemplatesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("junipermist:org/getRftemplates:getRftemplates", args, GetRftemplatesResultOutput{}, options).(GetRftemplatesResultOutput), nil
-		}).(GetRftemplatesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("junipermist:org/getRftemplates:getRftemplates", args, GetRftemplatesResultOutput{}, options).(GetRftemplatesResultOutput)
 }
 
 // A collection of arguments for invoking getRftemplates.
@@ -97,11 +91,6 @@ func (o GetRftemplatesResultOutput) ToGetRftemplatesResultOutput() GetRftemplate
 
 func (o GetRftemplatesResultOutput) ToGetRftemplatesResultOutputWithContext(ctx context.Context) GetRftemplatesResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetRftemplatesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRftemplatesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetRftemplatesResultOutput) OrgId() pulumi.StringOutput {

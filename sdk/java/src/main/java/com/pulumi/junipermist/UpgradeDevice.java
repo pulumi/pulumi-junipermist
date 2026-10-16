@@ -54,14 +54,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var apUpgrade = new UpgradeDevice("apUpgrade", UpgradeDeviceArgs.builder()
- *             .siteId(terraformTest.id())
- *             .deviceId(apOne.id())
+ *             .siteId(terraformTest.get("id"))
+ *             .deviceId(apOne.get("id"))
  *             .targetVersion("0.14.29543")
  *             .build());
  * 
  *         var switchUpgrade = new UpgradeDevice("switchUpgrade", UpgradeDeviceArgs.builder()
- *             .siteId(terraformTest.id())
- *             .deviceId(switchOne.id())
+ *             .siteId(terraformTest.get("id"))
+ *             .deviceId(switchOne.get("id"))
  *             .targetVersion("24.2R1-S1.10")
  *             .reboot(true)
  *             .syncUpgradeTimeout(3600)
