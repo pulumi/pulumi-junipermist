@@ -1413,7 +1413,7 @@ export namespace device {
          */
         options?: {[key: string]: outputs.device.GatewayDhcpdConfigConfigOptions};
         /**
-         * `serverIdOverride`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
+         * `serverIdOverride`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
          * should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
          */
         serverIdOverride?: boolean;
@@ -2104,8 +2104,8 @@ export namespace device {
          */
         internetAccess?: boolean;
         /**
-         * Required when 
-         *   * `type`==`vpn`: the name of the VPN Path to use 
+         * Required when
+         *   * `type`==`vpn`: the name of the VPN Path to use
          *   * `type`==`wan`: the name of the WAN interface to use
          */
         name?: string;
@@ -5952,7 +5952,7 @@ export namespace device {
          *   * `type`==`radiusGroup`
          *   * `type`==`arubaUserRole`
          *   * `type`==`staticGbp`
-         * if from matching radius_group
+         *     if from matching radius_group
          */
         radiusGroup?: string;
         /**
@@ -6118,7 +6118,7 @@ export namespace device {
          */
         options?: {[key: string]: outputs.device.SwitchDhcpdConfigConfigOptions};
         /**
-         * `serverIdOverride`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
+         * `serverIdOverride`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
          * should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
          */
         serverIdOverride: boolean;
@@ -9391,7 +9391,7 @@ export namespace org {
          */
         options?: {[key: string]: outputs.org.DeviceprofileGatewayDhcpdConfigConfigOptions};
         /**
-         * `serverIdOverride`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
+         * `serverIdOverride`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
          * should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
          */
         serverIdOverride?: boolean;
@@ -9891,8 +9891,8 @@ export namespace org {
          */
         internetAccess?: boolean;
         /**
-         * Required when 
-         *   * `type`==`vpn`: the name of the VPN Path to use 
+         * Required when
+         *   * `type`==`vpn`: the name of the VPN Path to use
          *   * `type`==`wan`: the name of the WAN interface to use
          */
         name?: string;
@@ -11131,7 +11131,7 @@ export namespace org {
          *   * `type`==`radiusGroup`
          *   * `type`==`arubaUserRole`
          *   * `type`==`staticGbp`
-         * if from matching radius_group
+         *     if from matching radius_group
          */
         radiusGroup?: string;
         /**
@@ -11235,7 +11235,7 @@ export namespace org {
          */
         options?: {[key: string]: outputs.org.DeviceprofileSwitchDhcpdConfigConfigOptions};
         /**
-         * `serverIdOverride`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
+         * `serverIdOverride`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
          * should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
          */
         serverIdOverride?: boolean;
@@ -13140,7 +13140,7 @@ export namespace org {
 
     export interface EvpnTopologySwitches {
         /**
-         * Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g. 
+         * Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g.
          *   * for CLOS, to group dist / access switches into pods
          *   * for ERB/CRB, to group dist / esilag-access into pods
          */
@@ -13334,7 +13334,7 @@ export namespace org {
          */
         options?: {[key: string]: outputs.org.GatewaytemplateDhcpdConfigConfigOptions};
         /**
-         * `serverIdOverride`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
+         * `serverIdOverride`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
          * should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
          */
         serverIdOverride?: boolean;
@@ -14021,8 +14021,8 @@ export namespace org {
          */
         internetAccess?: boolean;
         /**
-         * Required when 
-         *   * `type`==`vpn`: the name of the VPN Path to use 
+         * Required when
+         *   * `type`==`vpn`: the name of the VPN Path to use
          *   * `type`==`wan`: the name of the WAN interface to use
          */
         name?: string;
@@ -15608,7 +15608,6 @@ export namespace org {
          *   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
          *   * `true`: means all values should be matched (i.e., match-all behavior)
          *
-         *
          * Currently it makes sense to set this field to `true` only if the `match`==`idpRole`, `match`==`usermacLabel` and `edrStatus`
          */
         matchAll: boolean;
@@ -15623,7 +15622,7 @@ export namespace org {
         name: string;
         orgId: string;
         /**
-         * If `type`==`radiusAttrs`, user can specify a list of one or more standard attributes in the field "radiusAttrs". 
+         * If `type`==`radiusAttrs`, user can specify a list of one or more standard attributes in the field "radiusAttrs".
          * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
          * Note that it is allowed to have more than one radiusAttrs in the result of a given rule.
          */
@@ -15633,7 +15632,7 @@ export namespace org {
          */
         radiusGroup: string;
         /**
-         * If `type`==`radiusVendorAttrs`, user can specify a list of one or more vendor-specific attributes in the field "radiusVendorAttrs". 
+         * If `type`==`radiusVendorAttrs`, user can specify a list of one or more vendor-specific attributes in the field "radiusVendorAttrs".
          * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
          * Note that it is allowed to have more than one radiusVendorAttrs in the result of a given rule.
          */
@@ -16239,9 +16238,9 @@ export namespace org {
          */
         sitegroupId: string;
         /**
-         * Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.  
-         * You can define custom roles by adding the `views` attribute along with `role` when assigning privileges.  
-         * Below are the list of supported UI views. Note that this is UI only feature.  
+         * Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.\
+         * You can define custom roles by adding the `views` attribute along with `role` when assigning privileges.\
+         * Below are the list of supported UI views. Note that this is UI only feature.
          *
          *   | UI View | Required Role | Description |
          *   | --- | --- | --- |
@@ -16820,7 +16819,7 @@ export namespace org {
 
     export interface GetWlansOrgWlanAppLimit {
         /**
-         * Map from app key to bandwidth in kbps. 
+         * Map from app key to bandwidth in kbps.
          * Property key is the app key, defined in Get Application List
          */
         apps: {[key: string]: number};
@@ -16941,7 +16940,7 @@ export namespace org {
          */
         enabled: boolean;
         /**
-         * What services are allowed. 
+         * What services are allowed.
          * Property key is the service name
          */
         services: {[key: string]: outputs.org.GetWlansOrgWlanBonjourServices};
@@ -17491,7 +17490,7 @@ export namespace org {
          */
         minRssi: number;
         /**
-         * Data Rates template to apply. enum: 
+         * Data Rates template to apply. enum:
          *   * `no-legacy`: no 11b
          *   * `compatible`: all, like before, default setting that Broadcom/Atheros used
          *   * `legacy-only`: disable 802.11n and 802.11ac
@@ -18729,7 +18728,7 @@ export namespace org {
          *   * `type`==`radiusGroup`
          *   * `type`==`arubaUserRole`
          *   * `type`==`staticGbp`
-         * if from matching radius_group
+         *     if from matching radius_group
          */
         radiusGroup?: string;
         /**
@@ -21926,7 +21925,7 @@ export namespace org {
 
     export interface WlanAppLimit {
         /**
-         * Map from app key to bandwidth in kbps. 
+         * Map from app key to bandwidth in kbps.
          * Property key is the app key, defined in Get Application List
          */
         apps: {[key: string]: number};
@@ -22097,7 +22096,7 @@ export namespace org {
          */
         enabled?: boolean;
         /**
-         * What services are allowed. 
+         * What services are allowed.
          * Property key is the service name
          */
         services?: {[key: string]: outputs.org.WlanBonjourServices};
@@ -22829,9 +22828,9 @@ export namespace org {
         field4required?: boolean;
         /**
          * Can be used to localize the portal based on the User Agent. Allowed property key values are:
-         *   `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`, 
-         *   `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`, 
-         *   `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`, 
+         *   `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`,
+         *   `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`,
+         *   `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`,
          *   `zh-Hans`, `zh-Hant`
          */
         locales?: {[key: string]: outputs.org.WlanPortalTemplatePortalTemplateLocales};
@@ -23060,7 +23059,7 @@ export namespace org {
          */
         sponsorEmailError: string;
         /**
-         * HTML template to replace/override default sponsor email template 
+         * HTML template to replace/override default sponsor email template
          * Sponsor Email Template supports following template variables:
          *   * `approveUrl`: Renders URL to approve the request; optionally &minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
          *   * `denyUrl`: Renders URL to reject the request
@@ -23820,7 +23819,7 @@ export namespace site {
 
     export interface EvpnTopologySwitches {
         /**
-         * Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g. 
+         * Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g.
          *   * for CLOS, to group dist / access switches into pods
          *   * for ERB/CRB, to group dist / esilag-access into pods
          */
@@ -24491,7 +24490,7 @@ export namespace site {
 
     export interface GetWlansSiteWlanAppLimit {
         /**
-         * Map from app key to bandwidth in kbps. 
+         * Map from app key to bandwidth in kbps.
          * Property key is the app key, defined in Get Application List
          */
         apps: {[key: string]: number};
@@ -24612,7 +24611,7 @@ export namespace site {
          */
         enabled: boolean;
         /**
-         * What services are allowed. 
+         * What services are allowed.
          * Property key is the service name
          */
         services: {[key: string]: outputs.site.GetWlansSiteWlanBonjourServices};
@@ -25162,7 +25161,7 @@ export namespace site {
          */
         minRssi: number;
         /**
-         * Data Rates template to apply. enum: 
+         * Data Rates template to apply. enum:
          *   * `no-legacy`: no 11b
          *   * `compatible`: all, like before, default setting that Broadcom/Atheros used
          *   * `legacy-only`: disable 802.11n and 802.11ac
@@ -25279,7 +25278,7 @@ export namespace site {
          *   * `type`==`radiusGroup`
          *   * `type`==`arubaUserRole`
          *   * `type`==`staticGbp`
-         * if from matching radius_group
+         *     if from matching radius_group
          */
         radiusGroup?: string;
         /**
@@ -28608,7 +28607,7 @@ export namespace site {
 
     export interface WlanAppLimit {
         /**
-         * Map from app key to bandwidth in kbps. 
+         * Map from app key to bandwidth in kbps.
          * Property key is the app key, defined in Get Application List
          */
         apps: {[key: string]: number};
@@ -28779,7 +28778,7 @@ export namespace site {
          */
         enabled?: boolean;
         /**
-         * What services are allowed. 
+         * What services are allowed.
          * Property key is the service name
          */
         services?: {[key: string]: outputs.site.WlanBonjourServices};
@@ -29511,9 +29510,9 @@ export namespace site {
         field4required?: boolean;
         /**
          * Can be used to localize the portal based on the User Agent. Allowed property key values are:
-         *   `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`, 
-         *   `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`, 
-         *   `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`, 
+         *   `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`,
+         *   `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`,
+         *   `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`,
          *   `zh-Hans`, `zh-Hant`
          */
         locales?: {[key: string]: outputs.site.WlanPortalTemplatePortalTemplateLocales};
@@ -29742,7 +29741,7 @@ export namespace site {
          */
         sponsorEmailError: string;
         /**
-         * HTML template to replace/override default sponsor email template 
+         * HTML template to replace/override default sponsor email template
          * Sponsor Email Template supports following template variables:
          *   * `approveUrl`: Renders URL to approve the request; optionally &minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
          *   * `denyUrl`: Renders URL to reject the request

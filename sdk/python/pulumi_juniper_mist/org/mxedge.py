@@ -796,24 +796,24 @@ class Mxedge(pulumi.CustomResource):
                  claim_code: pulumi.Input[Optional[_builtins.str]] = None,
                  model: pulumi.Input[Optional[_builtins.str]] = None,
                  mxcluster_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 mxedge_mgmt: pulumi.Input[Optional[Union['MxedgeMxedgeMgmtArgs', 'MxedgeMxedgeMgmtArgsDict']]] = None,
+                 mxedge_mgmt: pulumi.Input[Optional[Union['MxedgeMxedgeMgmtArgs', 'MxedgeMxedgeMgmtArgsDict', 'outputs.MxedgeMxedgeMgmt']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  notes: pulumi.Input[Optional[_builtins.str]] = None,
                  ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 oob_ip_config: pulumi.Input[Optional[Union['MxedgeOobIpConfigArgs', 'MxedgeOobIpConfigArgsDict']]] = None,
+                 oob_ip_config: pulumi.Input[Optional[Union['MxedgeOobIpConfigArgs', 'MxedgeOobIpConfigArgsDict', 'outputs.MxedgeOobIpConfig']]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 proxy: pulumi.Input[Optional[Union['MxedgeProxyArgs', 'MxedgeProxyArgsDict']]] = None,
+                 proxy: pulumi.Input[Optional[Union['MxedgeProxyArgs', 'MxedgeProxyArgsDict', 'outputs.MxedgeProxy']]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 tunterm_dhcpd_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermDhcpdConfigArgs', 'MxedgeTuntermDhcpdConfigArgsDict']]]]] = None,
-                 tunterm_extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermExtraRoutesArgs', 'MxedgeTuntermExtraRoutesArgsDict']]]]] = None,
-                 tunterm_igmp_snooping_config: pulumi.Input[Optional[Union['MxedgeTuntermIgmpSnoopingConfigArgs', 'MxedgeTuntermIgmpSnoopingConfigArgsDict']]] = None,
-                 tunterm_ip_config: pulumi.Input[Optional[Union['MxedgeTuntermIpConfigArgs', 'MxedgeTuntermIpConfigArgsDict']]] = None,
-                 tunterm_monitorings: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['MxedgeTuntermMonitoringArgs', 'MxedgeTuntermMonitoringArgsDict']]]]]]] = None,
-                 tunterm_multicast_config: pulumi.Input[Optional[Union['MxedgeTuntermMulticastConfigArgs', 'MxedgeTuntermMulticastConfigArgsDict']]] = None,
-                 tunterm_other_ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermOtherIpConfigsArgs', 'MxedgeTuntermOtherIpConfigsArgsDict']]]]] = None,
-                 tunterm_port_config: pulumi.Input[Optional[Union['MxedgeTuntermPortConfigArgs', 'MxedgeTuntermPortConfigArgsDict']]] = None,
-                 tunterm_switch_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermSwitchConfigArgs', 'MxedgeTuntermSwitchConfigArgsDict']]]]] = None,
-                 versions: pulumi.Input[Optional[Union['MxedgeVersionsArgs', 'MxedgeVersionsArgsDict']]] = None,
+                 tunterm_dhcpd_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermDhcpdConfigArgs', 'MxedgeTuntermDhcpdConfigArgsDict', 'outputs.MxedgeTuntermDhcpdConfig']]]]] = None,
+                 tunterm_extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermExtraRoutesArgs', 'MxedgeTuntermExtraRoutesArgsDict', 'outputs.MxedgeTuntermExtraRoutes']]]]] = None,
+                 tunterm_igmp_snooping_config: pulumi.Input[Optional[Union['MxedgeTuntermIgmpSnoopingConfigArgs', 'MxedgeTuntermIgmpSnoopingConfigArgsDict', 'outputs.MxedgeTuntermIgmpSnoopingConfig']]] = None,
+                 tunterm_ip_config: pulumi.Input[Optional[Union['MxedgeTuntermIpConfigArgs', 'MxedgeTuntermIpConfigArgsDict', 'outputs.MxedgeTuntermIpConfig']]] = None,
+                 tunterm_monitorings: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['MxedgeTuntermMonitoringArgs', 'MxedgeTuntermMonitoringArgsDict', 'outputs.MxedgeTuntermMonitoring']]]]]]] = None,
+                 tunterm_multicast_config: pulumi.Input[Optional[Union['MxedgeTuntermMulticastConfigArgs', 'MxedgeTuntermMulticastConfigArgsDict', 'outputs.MxedgeTuntermMulticastConfig']]] = None,
+                 tunterm_other_ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermOtherIpConfigsArgs', 'MxedgeTuntermOtherIpConfigsArgsDict', 'outputs.MxedgeTuntermOtherIpConfigs']]]]] = None,
+                 tunterm_port_config: pulumi.Input[Optional[Union['MxedgeTuntermPortConfigArgs', 'MxedgeTuntermPortConfigArgsDict', 'outputs.MxedgeTuntermPortConfig']]] = None,
+                 tunterm_switch_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermSwitchConfigArgs', 'MxedgeTuntermSwitchConfigArgsDict', 'outputs.MxedgeTuntermSwitchConfig']]]]] = None,
+                 versions: pulumi.Input[Optional[Union['MxedgeVersionsArgs', 'MxedgeVersionsArgsDict', 'outputs.MxedgeVersions']]] = None,
                  __props__=None):
         """
         This resource manages MxEdge devices in the Mist Organization.
@@ -835,24 +835,24 @@ class Mxedge(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] claim_code: Registration claim code for the Mist Edge
         :param pulumi.Input[_builtins.str] model: Mist Edge hardware or virtual appliance model
         :param pulumi.Input[_builtins.str] mxcluster_id: Mist Edge cluster identifier that this appliance belongs to
-        :param pulumi.Input[Union['MxedgeMxedgeMgmtArgs', 'MxedgeMxedgeMgmtArgsDict']] mxedge_mgmt: Management credentials and settings for the Mist Edge
+        :param pulumi.Input[Union['MxedgeMxedgeMgmtArgs', 'MxedgeMxedgeMgmtArgsDict', 'outputs.MxedgeMxedgeMgmt']] mxedge_mgmt: Management credentials and settings for the Mist Edge
         :param pulumi.Input[_builtins.str] name: Display name of the Mist Edge
         :param pulumi.Input[_builtins.str] notes: Free-form notes for the Mist Edge
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: Time synchronization servers used by the Mist Edge
-        :param pulumi.Input[Union['MxedgeOobIpConfigArgs', 'MxedgeOobIpConfigArgsDict']] oob_ip_config: Out-of-band management IP configuration for the Mist Edge
+        :param pulumi.Input[Union['MxedgeOobIpConfigArgs', 'MxedgeOobIpConfigArgsDict', 'outputs.MxedgeOobIpConfig']] oob_ip_config: Out-of-band management IP configuration for the Mist Edge
         :param pulumi.Input[_builtins.str] org_id: Identifier of the org that owns the Mist Edge
-        :param pulumi.Input[Union['MxedgeProxyArgs', 'MxedgeProxyArgsDict']] proxy: Network proxy settings used by the Mist Edge
+        :param pulumi.Input[Union['MxedgeProxyArgs', 'MxedgeProxyArgsDict', 'outputs.MxedgeProxy']] proxy: Network proxy settings used by the Mist Edge
         :param pulumi.Input[_builtins.str] site_id: Identifier of the site when the Mist Edge is site-scoped
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermDhcpdConfigArgs', 'MxedgeTuntermDhcpdConfigArgsDict']]]] tunterm_dhcpd_config: DHCP relay or server settings for Mist Tunneled VLANs
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermExtraRoutesArgs', 'MxedgeTuntermExtraRoutesArgsDict']]]] tunterm_extra_routes: Extra routes for Mist Tunneled VLAN traffic; property key is a CIDR
-        :param pulumi.Input[Union['MxedgeTuntermIgmpSnoopingConfigArgs', 'MxedgeTuntermIgmpSnoopingConfigArgsDict']] tunterm_igmp_snooping_config: IGMP snooping settings for Mist Tunneled VLANs
-        :param pulumi.Input[Union['MxedgeTuntermIpConfigArgs', 'MxedgeTuntermIpConfigArgsDict']] tunterm_ip_config: Tunnel termination IP configuration for the Mist Edge
-        :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['MxedgeTuntermMonitoringArgs', 'MxedgeTuntermMonitoringArgsDict']]]]]] tunterm_monitorings: Monitoring checks for tunnel termination reachability
-        :param pulumi.Input[Union['MxedgeTuntermMulticastConfigArgs', 'MxedgeTuntermMulticastConfigArgsDict']] tunterm_multicast_config: Multicast forwarding settings for tunnel termination
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermOtherIpConfigsArgs', 'MxedgeTuntermOtherIpConfigsArgsDict']]]] tunterm_other_ip_configs: IPconfigs by VLAN ID. Property key is the VLAN ID
-        :param pulumi.Input[Union['MxedgeTuntermPortConfigArgs', 'MxedgeTuntermPortConfigArgsDict']] tunterm_port_config: Port configuration for tunnel termination traffic
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermSwitchConfigArgs', 'MxedgeTuntermSwitchConfigArgsDict']]]] tunterm_switch_config: Switch VLAN settings for tunnel termination
-        :param pulumi.Input[Union['MxedgeVersionsArgs', 'MxedgeVersionsArgsDict']] versions: Service version information reported by the Mist Edge
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermDhcpdConfigArgs', 'MxedgeTuntermDhcpdConfigArgsDict', 'outputs.MxedgeTuntermDhcpdConfig']]]] tunterm_dhcpd_config: DHCP relay or server settings for Mist Tunneled VLANs
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermExtraRoutesArgs', 'MxedgeTuntermExtraRoutesArgsDict', 'outputs.MxedgeTuntermExtraRoutes']]]] tunterm_extra_routes: Extra routes for Mist Tunneled VLAN traffic; property key is a CIDR
+        :param pulumi.Input[Union['MxedgeTuntermIgmpSnoopingConfigArgs', 'MxedgeTuntermIgmpSnoopingConfigArgsDict', 'outputs.MxedgeTuntermIgmpSnoopingConfig']] tunterm_igmp_snooping_config: IGMP snooping settings for Mist Tunneled VLANs
+        :param pulumi.Input[Union['MxedgeTuntermIpConfigArgs', 'MxedgeTuntermIpConfigArgsDict', 'outputs.MxedgeTuntermIpConfig']] tunterm_ip_config: Tunnel termination IP configuration for the Mist Edge
+        :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['MxedgeTuntermMonitoringArgs', 'MxedgeTuntermMonitoringArgsDict', 'outputs.MxedgeTuntermMonitoring']]]]]] tunterm_monitorings: Monitoring checks for tunnel termination reachability
+        :param pulumi.Input[Union['MxedgeTuntermMulticastConfigArgs', 'MxedgeTuntermMulticastConfigArgsDict', 'outputs.MxedgeTuntermMulticastConfig']] tunterm_multicast_config: Multicast forwarding settings for tunnel termination
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermOtherIpConfigsArgs', 'MxedgeTuntermOtherIpConfigsArgsDict', 'outputs.MxedgeTuntermOtherIpConfigs']]]] tunterm_other_ip_configs: IPconfigs by VLAN ID. Property key is the VLAN ID
+        :param pulumi.Input[Union['MxedgeTuntermPortConfigArgs', 'MxedgeTuntermPortConfigArgsDict', 'outputs.MxedgeTuntermPortConfig']] tunterm_port_config: Port configuration for tunnel termination traffic
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermSwitchConfigArgs', 'MxedgeTuntermSwitchConfigArgsDict', 'outputs.MxedgeTuntermSwitchConfig']]]] tunterm_switch_config: Switch VLAN settings for tunnel termination
+        :param pulumi.Input[Union['MxedgeVersionsArgs', 'MxedgeVersionsArgsDict', 'outputs.MxedgeVersions']] versions: Service version information reported by the Mist Edge
         """
         ...
     @overload
@@ -893,24 +893,24 @@ class Mxedge(pulumi.CustomResource):
                  claim_code: pulumi.Input[Optional[_builtins.str]] = None,
                  model: pulumi.Input[Optional[_builtins.str]] = None,
                  mxcluster_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 mxedge_mgmt: pulumi.Input[Optional[Union['MxedgeMxedgeMgmtArgs', 'MxedgeMxedgeMgmtArgsDict']]] = None,
+                 mxedge_mgmt: pulumi.Input[Optional[Union['MxedgeMxedgeMgmtArgs', 'MxedgeMxedgeMgmtArgsDict', 'outputs.MxedgeMxedgeMgmt']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  notes: pulumi.Input[Optional[_builtins.str]] = None,
                  ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 oob_ip_config: pulumi.Input[Optional[Union['MxedgeOobIpConfigArgs', 'MxedgeOobIpConfigArgsDict']]] = None,
+                 oob_ip_config: pulumi.Input[Optional[Union['MxedgeOobIpConfigArgs', 'MxedgeOobIpConfigArgsDict', 'outputs.MxedgeOobIpConfig']]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 proxy: pulumi.Input[Optional[Union['MxedgeProxyArgs', 'MxedgeProxyArgsDict']]] = None,
+                 proxy: pulumi.Input[Optional[Union['MxedgeProxyArgs', 'MxedgeProxyArgsDict', 'outputs.MxedgeProxy']]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 tunterm_dhcpd_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermDhcpdConfigArgs', 'MxedgeTuntermDhcpdConfigArgsDict']]]]] = None,
-                 tunterm_extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermExtraRoutesArgs', 'MxedgeTuntermExtraRoutesArgsDict']]]]] = None,
-                 tunterm_igmp_snooping_config: pulumi.Input[Optional[Union['MxedgeTuntermIgmpSnoopingConfigArgs', 'MxedgeTuntermIgmpSnoopingConfigArgsDict']]] = None,
-                 tunterm_ip_config: pulumi.Input[Optional[Union['MxedgeTuntermIpConfigArgs', 'MxedgeTuntermIpConfigArgsDict']]] = None,
-                 tunterm_monitorings: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['MxedgeTuntermMonitoringArgs', 'MxedgeTuntermMonitoringArgsDict']]]]]]] = None,
-                 tunterm_multicast_config: pulumi.Input[Optional[Union['MxedgeTuntermMulticastConfigArgs', 'MxedgeTuntermMulticastConfigArgsDict']]] = None,
-                 tunterm_other_ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermOtherIpConfigsArgs', 'MxedgeTuntermOtherIpConfigsArgsDict']]]]] = None,
-                 tunterm_port_config: pulumi.Input[Optional[Union['MxedgeTuntermPortConfigArgs', 'MxedgeTuntermPortConfigArgsDict']]] = None,
-                 tunterm_switch_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermSwitchConfigArgs', 'MxedgeTuntermSwitchConfigArgsDict']]]]] = None,
-                 versions: pulumi.Input[Optional[Union['MxedgeVersionsArgs', 'MxedgeVersionsArgsDict']]] = None,
+                 tunterm_dhcpd_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermDhcpdConfigArgs', 'MxedgeTuntermDhcpdConfigArgsDict', 'outputs.MxedgeTuntermDhcpdConfig']]]]] = None,
+                 tunterm_extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermExtraRoutesArgs', 'MxedgeTuntermExtraRoutesArgsDict', 'outputs.MxedgeTuntermExtraRoutes']]]]] = None,
+                 tunterm_igmp_snooping_config: pulumi.Input[Optional[Union['MxedgeTuntermIgmpSnoopingConfigArgs', 'MxedgeTuntermIgmpSnoopingConfigArgsDict', 'outputs.MxedgeTuntermIgmpSnoopingConfig']]] = None,
+                 tunterm_ip_config: pulumi.Input[Optional[Union['MxedgeTuntermIpConfigArgs', 'MxedgeTuntermIpConfigArgsDict', 'outputs.MxedgeTuntermIpConfig']]] = None,
+                 tunterm_monitorings: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['MxedgeTuntermMonitoringArgs', 'MxedgeTuntermMonitoringArgsDict', 'outputs.MxedgeTuntermMonitoring']]]]]]] = None,
+                 tunterm_multicast_config: pulumi.Input[Optional[Union['MxedgeTuntermMulticastConfigArgs', 'MxedgeTuntermMulticastConfigArgsDict', 'outputs.MxedgeTuntermMulticastConfig']]] = None,
+                 tunterm_other_ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermOtherIpConfigsArgs', 'MxedgeTuntermOtherIpConfigsArgsDict', 'outputs.MxedgeTuntermOtherIpConfigs']]]]] = None,
+                 tunterm_port_config: pulumi.Input[Optional[Union['MxedgeTuntermPortConfigArgs', 'MxedgeTuntermPortConfigArgsDict', 'outputs.MxedgeTuntermPortConfig']]] = None,
+                 tunterm_switch_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermSwitchConfigArgs', 'MxedgeTuntermSwitchConfigArgsDict', 'outputs.MxedgeTuntermSwitchConfig']]]]] = None,
+                 versions: pulumi.Input[Optional[Union['MxedgeVersionsArgs', 'MxedgeVersionsArgsDict', 'outputs.MxedgeVersions']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -964,26 +964,26 @@ class Mxedge(pulumi.CustomResource):
             model: pulumi.Input[Optional[_builtins.str]] = None,
             mxagent_registered: pulumi.Input[Optional[_builtins.bool]] = None,
             mxcluster_id: pulumi.Input[Optional[_builtins.str]] = None,
-            mxedge_mgmt: pulumi.Input[Optional[Union['MxedgeMxedgeMgmtArgs', 'MxedgeMxedgeMgmtArgsDict']]] = None,
+            mxedge_mgmt: pulumi.Input[Optional[Union['MxedgeMxedgeMgmtArgs', 'MxedgeMxedgeMgmtArgsDict', 'outputs.MxedgeMxedgeMgmt']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             notes: pulumi.Input[Optional[_builtins.str]] = None,
             ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            oob_ip_config: pulumi.Input[Optional[Union['MxedgeOobIpConfigArgs', 'MxedgeOobIpConfigArgsDict']]] = None,
+            oob_ip_config: pulumi.Input[Optional[Union['MxedgeOobIpConfigArgs', 'MxedgeOobIpConfigArgsDict', 'outputs.MxedgeOobIpConfig']]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
-            proxy: pulumi.Input[Optional[Union['MxedgeProxyArgs', 'MxedgeProxyArgsDict']]] = None,
+            proxy: pulumi.Input[Optional[Union['MxedgeProxyArgs', 'MxedgeProxyArgsDict', 'outputs.MxedgeProxy']]] = None,
             services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             site_id: pulumi.Input[Optional[_builtins.str]] = None,
-            tunterm_dhcpd_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermDhcpdConfigArgs', 'MxedgeTuntermDhcpdConfigArgsDict']]]]] = None,
-            tunterm_extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermExtraRoutesArgs', 'MxedgeTuntermExtraRoutesArgsDict']]]]] = None,
-            tunterm_igmp_snooping_config: pulumi.Input[Optional[Union['MxedgeTuntermIgmpSnoopingConfigArgs', 'MxedgeTuntermIgmpSnoopingConfigArgsDict']]] = None,
-            tunterm_ip_config: pulumi.Input[Optional[Union['MxedgeTuntermIpConfigArgs', 'MxedgeTuntermIpConfigArgsDict']]] = None,
-            tunterm_monitorings: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['MxedgeTuntermMonitoringArgs', 'MxedgeTuntermMonitoringArgsDict']]]]]]] = None,
-            tunterm_multicast_config: pulumi.Input[Optional[Union['MxedgeTuntermMulticastConfigArgs', 'MxedgeTuntermMulticastConfigArgsDict']]] = None,
-            tunterm_other_ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermOtherIpConfigsArgs', 'MxedgeTuntermOtherIpConfigsArgsDict']]]]] = None,
-            tunterm_port_config: pulumi.Input[Optional[Union['MxedgeTuntermPortConfigArgs', 'MxedgeTuntermPortConfigArgsDict']]] = None,
+            tunterm_dhcpd_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermDhcpdConfigArgs', 'MxedgeTuntermDhcpdConfigArgsDict', 'outputs.MxedgeTuntermDhcpdConfig']]]]] = None,
+            tunterm_extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermExtraRoutesArgs', 'MxedgeTuntermExtraRoutesArgsDict', 'outputs.MxedgeTuntermExtraRoutes']]]]] = None,
+            tunterm_igmp_snooping_config: pulumi.Input[Optional[Union['MxedgeTuntermIgmpSnoopingConfigArgs', 'MxedgeTuntermIgmpSnoopingConfigArgsDict', 'outputs.MxedgeTuntermIgmpSnoopingConfig']]] = None,
+            tunterm_ip_config: pulumi.Input[Optional[Union['MxedgeTuntermIpConfigArgs', 'MxedgeTuntermIpConfigArgsDict', 'outputs.MxedgeTuntermIpConfig']]] = None,
+            tunterm_monitorings: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['MxedgeTuntermMonitoringArgs', 'MxedgeTuntermMonitoringArgsDict', 'outputs.MxedgeTuntermMonitoring']]]]]]] = None,
+            tunterm_multicast_config: pulumi.Input[Optional[Union['MxedgeTuntermMulticastConfigArgs', 'MxedgeTuntermMulticastConfigArgsDict', 'outputs.MxedgeTuntermMulticastConfig']]] = None,
+            tunterm_other_ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermOtherIpConfigsArgs', 'MxedgeTuntermOtherIpConfigsArgsDict', 'outputs.MxedgeTuntermOtherIpConfigs']]]]] = None,
+            tunterm_port_config: pulumi.Input[Optional[Union['MxedgeTuntermPortConfigArgs', 'MxedgeTuntermPortConfigArgsDict', 'outputs.MxedgeTuntermPortConfig']]] = None,
             tunterm_registered: pulumi.Input[Optional[_builtins.bool]] = None,
-            tunterm_switch_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermSwitchConfigArgs', 'MxedgeTuntermSwitchConfigArgsDict']]]]] = None,
-            versions: pulumi.Input[Optional[Union['MxedgeVersionsArgs', 'MxedgeVersionsArgsDict']]] = None) -> 'Mxedge':
+            tunterm_switch_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermSwitchConfigArgs', 'MxedgeTuntermSwitchConfigArgsDict', 'outputs.MxedgeTuntermSwitchConfig']]]]] = None,
+            versions: pulumi.Input[Optional[Union['MxedgeVersionsArgs', 'MxedgeVersionsArgsDict', 'outputs.MxedgeVersions']]] = None) -> 'Mxedge':
         """
         Get an existing Mxedge resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -997,26 +997,26 @@ class Mxedge(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] model: Mist Edge hardware or virtual appliance model
         :param pulumi.Input[_builtins.bool] mxagent_registered: Whether the Mist Edge agent has registered with Mist cloud
         :param pulumi.Input[_builtins.str] mxcluster_id: Mist Edge cluster identifier that this appliance belongs to
-        :param pulumi.Input[Union['MxedgeMxedgeMgmtArgs', 'MxedgeMxedgeMgmtArgsDict']] mxedge_mgmt: Management credentials and settings for the Mist Edge
+        :param pulumi.Input[Union['MxedgeMxedgeMgmtArgs', 'MxedgeMxedgeMgmtArgsDict', 'outputs.MxedgeMxedgeMgmt']] mxedge_mgmt: Management credentials and settings for the Mist Edge
         :param pulumi.Input[_builtins.str] name: Display name of the Mist Edge
         :param pulumi.Input[_builtins.str] notes: Free-form notes for the Mist Edge
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: Time synchronization servers used by the Mist Edge
-        :param pulumi.Input[Union['MxedgeOobIpConfigArgs', 'MxedgeOobIpConfigArgsDict']] oob_ip_config: Out-of-band management IP configuration for the Mist Edge
+        :param pulumi.Input[Union['MxedgeOobIpConfigArgs', 'MxedgeOobIpConfigArgsDict', 'outputs.MxedgeOobIpConfig']] oob_ip_config: Out-of-band management IP configuration for the Mist Edge
         :param pulumi.Input[_builtins.str] org_id: Identifier of the org that owns the Mist Edge
-        :param pulumi.Input[Union['MxedgeProxyArgs', 'MxedgeProxyArgsDict']] proxy: Network proxy settings used by the Mist Edge
+        :param pulumi.Input[Union['MxedgeProxyArgs', 'MxedgeProxyArgsDict', 'outputs.MxedgeProxy']] proxy: Network proxy settings used by the Mist Edge
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] services: List of services enabled to run on the Mist Edge
         :param pulumi.Input[_builtins.str] site_id: Identifier of the site when the Mist Edge is site-scoped
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermDhcpdConfigArgs', 'MxedgeTuntermDhcpdConfigArgsDict']]]] tunterm_dhcpd_config: DHCP relay or server settings for Mist Tunneled VLANs
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermExtraRoutesArgs', 'MxedgeTuntermExtraRoutesArgsDict']]]] tunterm_extra_routes: Extra routes for Mist Tunneled VLAN traffic; property key is a CIDR
-        :param pulumi.Input[Union['MxedgeTuntermIgmpSnoopingConfigArgs', 'MxedgeTuntermIgmpSnoopingConfigArgsDict']] tunterm_igmp_snooping_config: IGMP snooping settings for Mist Tunneled VLANs
-        :param pulumi.Input[Union['MxedgeTuntermIpConfigArgs', 'MxedgeTuntermIpConfigArgsDict']] tunterm_ip_config: Tunnel termination IP configuration for the Mist Edge
-        :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['MxedgeTuntermMonitoringArgs', 'MxedgeTuntermMonitoringArgsDict']]]]]] tunterm_monitorings: Monitoring checks for tunnel termination reachability
-        :param pulumi.Input[Union['MxedgeTuntermMulticastConfigArgs', 'MxedgeTuntermMulticastConfigArgsDict']] tunterm_multicast_config: Multicast forwarding settings for tunnel termination
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermOtherIpConfigsArgs', 'MxedgeTuntermOtherIpConfigsArgsDict']]]] tunterm_other_ip_configs: IPconfigs by VLAN ID. Property key is the VLAN ID
-        :param pulumi.Input[Union['MxedgeTuntermPortConfigArgs', 'MxedgeTuntermPortConfigArgsDict']] tunterm_port_config: Port configuration for tunnel termination traffic
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermDhcpdConfigArgs', 'MxedgeTuntermDhcpdConfigArgsDict', 'outputs.MxedgeTuntermDhcpdConfig']]]] tunterm_dhcpd_config: DHCP relay or server settings for Mist Tunneled VLANs
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermExtraRoutesArgs', 'MxedgeTuntermExtraRoutesArgsDict', 'outputs.MxedgeTuntermExtraRoutes']]]] tunterm_extra_routes: Extra routes for Mist Tunneled VLAN traffic; property key is a CIDR
+        :param pulumi.Input[Union['MxedgeTuntermIgmpSnoopingConfigArgs', 'MxedgeTuntermIgmpSnoopingConfigArgsDict', 'outputs.MxedgeTuntermIgmpSnoopingConfig']] tunterm_igmp_snooping_config: IGMP snooping settings for Mist Tunneled VLANs
+        :param pulumi.Input[Union['MxedgeTuntermIpConfigArgs', 'MxedgeTuntermIpConfigArgsDict', 'outputs.MxedgeTuntermIpConfig']] tunterm_ip_config: Tunnel termination IP configuration for the Mist Edge
+        :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['MxedgeTuntermMonitoringArgs', 'MxedgeTuntermMonitoringArgsDict', 'outputs.MxedgeTuntermMonitoring']]]]]] tunterm_monitorings: Monitoring checks for tunnel termination reachability
+        :param pulumi.Input[Union['MxedgeTuntermMulticastConfigArgs', 'MxedgeTuntermMulticastConfigArgsDict', 'outputs.MxedgeTuntermMulticastConfig']] tunterm_multicast_config: Multicast forwarding settings for tunnel termination
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermOtherIpConfigsArgs', 'MxedgeTuntermOtherIpConfigsArgsDict', 'outputs.MxedgeTuntermOtherIpConfigs']]]] tunterm_other_ip_configs: IPconfigs by VLAN ID. Property key is the VLAN ID
+        :param pulumi.Input[Union['MxedgeTuntermPortConfigArgs', 'MxedgeTuntermPortConfigArgsDict', 'outputs.MxedgeTuntermPortConfig']] tunterm_port_config: Port configuration for tunnel termination traffic
         :param pulumi.Input[_builtins.bool] tunterm_registered: Whether the tunnel termination service has registered with Mist cloud
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermSwitchConfigArgs', 'MxedgeTuntermSwitchConfigArgsDict']]]] tunterm_switch_config: Switch VLAN settings for tunnel termination
-        :param pulumi.Input[Union['MxedgeVersionsArgs', 'MxedgeVersionsArgsDict']] versions: Service version information reported by the Mist Edge
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermSwitchConfigArgs', 'MxedgeTuntermSwitchConfigArgsDict', 'outputs.MxedgeTuntermSwitchConfig']]]] tunterm_switch_config: Switch VLAN settings for tunnel termination
+        :param pulumi.Input[Union['MxedgeVersionsArgs', 'MxedgeVersionsArgsDict', 'outputs.MxedgeVersions']] versions: Service version information reported by the Mist Edge
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

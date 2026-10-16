@@ -216,11 +216,11 @@ class EvpnTopology(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 evpn_options: pulumi.Input[Optional[Union['EvpnTopologyEvpnOptionsArgs', 'EvpnTopologyEvpnOptionsArgsDict']]] = None,
+                 evpn_options: pulumi.Input[Optional[Union['EvpnTopologyEvpnOptionsArgs', 'EvpnTopologyEvpnOptionsArgsDict', 'outputs.EvpnTopologyEvpnOptions']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  pod_names: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 switches: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['EvpnTopologySwitchesArgs', 'EvpnTopologySwitchesArgsDict']]]]] = None,
+                 switches: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['EvpnTopologySwitchesArgs', 'EvpnTopologySwitchesArgsDict', 'outputs.EvpnTopologySwitches']]]]] = None,
                  __props__=None):
         """
         This resource manages the Site Evpn Topology.
@@ -299,11 +299,11 @@ class EvpnTopology(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['EvpnTopologyEvpnOptionsArgs', 'EvpnTopologyEvpnOptionsArgsDict']] evpn_options: Generation options applied to the EVPN topology
+        :param pulumi.Input[Union['EvpnTopologyEvpnOptionsArgs', 'EvpnTopologyEvpnOptionsArgsDict', 'outputs.EvpnTopologyEvpnOptions']] evpn_options: Generation options applied to the EVPN topology
         :param pulumi.Input[_builtins.str] name: Display name for the EVPN topology
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pod_names: Property key is the pod number
         :param pulumi.Input[_builtins.str] site_id: Site associated with the EVPN topology
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['EvpnTopologySwitchesArgs', 'EvpnTopologySwitchesArgsDict']]]] switches: Topology member switches, roles, and links
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['EvpnTopologySwitchesArgs', 'EvpnTopologySwitchesArgsDict', 'outputs.EvpnTopologySwitches']]]] switches: Topology member switches, roles, and links
         """
         ...
     @overload
@@ -401,11 +401,11 @@ class EvpnTopology(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 evpn_options: pulumi.Input[Optional[Union['EvpnTopologyEvpnOptionsArgs', 'EvpnTopologyEvpnOptionsArgsDict']]] = None,
+                 evpn_options: pulumi.Input[Optional[Union['EvpnTopologyEvpnOptionsArgs', 'EvpnTopologyEvpnOptionsArgsDict', 'outputs.EvpnTopologyEvpnOptions']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  pod_names: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 switches: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['EvpnTopologySwitchesArgs', 'EvpnTopologySwitchesArgsDict']]]]] = None,
+                 switches: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['EvpnTopologySwitchesArgs', 'EvpnTopologySwitchesArgsDict', 'outputs.EvpnTopologySwitches']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -435,12 +435,12 @@ class EvpnTopology(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            evpn_options: pulumi.Input[Optional[Union['EvpnTopologyEvpnOptionsArgs', 'EvpnTopologyEvpnOptionsArgsDict']]] = None,
+            evpn_options: pulumi.Input[Optional[Union['EvpnTopologyEvpnOptionsArgs', 'EvpnTopologyEvpnOptionsArgsDict', 'outputs.EvpnTopologyEvpnOptions']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             pod_names: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             site_id: pulumi.Input[Optional[_builtins.str]] = None,
-            switches: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['EvpnTopologySwitchesArgs', 'EvpnTopologySwitchesArgsDict']]]]] = None) -> 'EvpnTopology':
+            switches: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['EvpnTopologySwitchesArgs', 'EvpnTopologySwitchesArgsDict', 'outputs.EvpnTopologySwitches']]]]] = None) -> 'EvpnTopology':
         """
         Get an existing EvpnTopology resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -448,12 +448,12 @@ class EvpnTopology(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['EvpnTopologyEvpnOptionsArgs', 'EvpnTopologyEvpnOptionsArgsDict']] evpn_options: Generation options applied to the EVPN topology
+        :param pulumi.Input[Union['EvpnTopologyEvpnOptionsArgs', 'EvpnTopologyEvpnOptionsArgsDict', 'outputs.EvpnTopologyEvpnOptions']] evpn_options: Generation options applied to the EVPN topology
         :param pulumi.Input[_builtins.str] name: Display name for the EVPN topology
         :param pulumi.Input[_builtins.str] org_id: Organization that owns the EVPN topology
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pod_names: Property key is the pod number
         :param pulumi.Input[_builtins.str] site_id: Site associated with the EVPN topology
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['EvpnTopologySwitchesArgs', 'EvpnTopologySwitchesArgsDict']]]] switches: Topology member switches, roles, and links
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['EvpnTopologySwitchesArgs', 'EvpnTopologySwitchesArgsDict', 'outputs.EvpnTopologySwitches']]]] switches: Topology member switches, roles, and links
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

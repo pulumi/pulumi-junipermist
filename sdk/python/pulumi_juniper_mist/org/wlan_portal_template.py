@@ -128,7 +128,7 @@ class WlanPortalTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 portal_template: pulumi.Input[Optional[Union['WlanPortalTemplatePortalTemplateArgs', 'WlanPortalTemplatePortalTemplateArgsDict']]] = None,
+                 portal_template: pulumi.Input[Optional[Union['WlanPortalTemplatePortalTemplateArgs', 'WlanPortalTemplatePortalTemplateArgsDict', 'outputs.WlanPortalTemplatePortalTemplate']]] = None,
                  wlan_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -166,7 +166,7 @@ class WlanPortalTemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['WlanPortalTemplatePortalTemplateArgs', 'WlanPortalTemplatePortalTemplateArgsDict']] portal_template: Template settings that define guest portal text, layout, and localization
+        :param pulumi.Input[Union['WlanPortalTemplatePortalTemplateArgs', 'WlanPortalTemplatePortalTemplateArgsDict', 'outputs.WlanPortalTemplatePortalTemplate']] portal_template: Template settings that define guest portal text, layout, and localization
         :param pulumi.Input[_builtins.str] wlan_id: Org WLAN ID
         """
         ...
@@ -224,7 +224,7 @@ class WlanPortalTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 portal_template: pulumi.Input[Optional[Union['WlanPortalTemplatePortalTemplateArgs', 'WlanPortalTemplatePortalTemplateArgsDict']]] = None,
+                 portal_template: pulumi.Input[Optional[Union['WlanPortalTemplatePortalTemplateArgs', 'WlanPortalTemplatePortalTemplateArgsDict', 'outputs.WlanPortalTemplatePortalTemplate']]] = None,
                  wlan_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -255,7 +255,7 @@ class WlanPortalTemplate(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
-            portal_template: pulumi.Input[Optional[Union['WlanPortalTemplatePortalTemplateArgs', 'WlanPortalTemplatePortalTemplateArgsDict']]] = None,
+            portal_template: pulumi.Input[Optional[Union['WlanPortalTemplatePortalTemplateArgs', 'WlanPortalTemplatePortalTemplateArgsDict', 'outputs.WlanPortalTemplatePortalTemplate']]] = None,
             wlan_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'WlanPortalTemplate':
         """
         Get an existing WlanPortalTemplate resource's state with the given name, id, and optional extra
@@ -264,7 +264,7 @@ class WlanPortalTemplate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['WlanPortalTemplatePortalTemplateArgs', 'WlanPortalTemplatePortalTemplateArgsDict']] portal_template: Template settings that define guest portal text, layout, and localization
+        :param pulumi.Input[Union['WlanPortalTemplatePortalTemplateArgs', 'WlanPortalTemplatePortalTemplateArgsDict', 'outputs.WlanPortalTemplatePortalTemplate']] portal_template: Template settings that define guest portal text, layout, and localization
         :param pulumi.Input[_builtins.str] wlan_id: Org WLAN ID
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

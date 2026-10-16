@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var apitokenOne = new Apitoken("apitokenOne", ApitokenArgs.builder()
- *             .orgId(terraformTest.id())
+ *             .orgId(terraformTest.get("id"))
  *             .name("apitoken_one")
  *             .privileges(            
  *                 ApitokenPrivilegeArgs.builder()

@@ -27,24 +27,13 @@ class GetWebhooksResult:
     """
     A collection of values returned by getWebhooks.
     """
-    def __init__(__self__, id=None, org_id=None, org_webhooks=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, org_id=None, org_webhooks=None):
         if org_id and not isinstance(org_id, str):
             raise TypeError("Expected argument 'org_id' to be a str")
         pulumi.set(__self__, "org_id", org_id)
         if org_webhooks and not isinstance(org_webhooks, list):
             raise TypeError("Expected argument 'org_webhooks' to be a list")
         pulumi.set(__self__, "org_webhooks", org_webhooks)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="orgId")
@@ -63,7 +52,6 @@ class AwaitableGetWebhooksResult(GetWebhooksResult):
         if False:
             yield self
         return GetWebhooksResult(
-            id=self.id,
             org_id=self.org_id,
             org_webhooks=self.org_webhooks)
 
@@ -92,7 +80,6 @@ def get_webhooks(org_id: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('junipermist:org/getWebhooks:getWebhooks', __args__, opts=opts, typ=GetWebhooksResult).value
 
     return AwaitableGetWebhooksResult(
-        id=pulumi.get(__ret__, 'id'),
         org_id=pulumi.get(__ret__, 'org_id'),
         org_webhooks=pulumi.get(__ret__, 'org_webhooks'))
 def get_webhooks_output(org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -118,6 +105,5 @@ def get_webhooks_output(org_id: pulumi.Input[Optional[_builtins.str]] = None,
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:org/getWebhooks:getWebhooks', __args__, opts=opts, typ=GetWebhooksResult)
     return __ret__.apply(lambda __response__: GetWebhooksResult(
-        id=pulumi.get(__response__, 'id'),
         org_id=pulumi.get(__response__, 'org_id'),
         org_webhooks=pulumi.get(__response__, 'org_webhooks')))

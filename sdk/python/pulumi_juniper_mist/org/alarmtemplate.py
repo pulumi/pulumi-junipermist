@@ -167,10 +167,10 @@ class Alarmtemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delivery: pulumi.Input[Optional[Union['AlarmtemplateDeliveryArgs', 'AlarmtemplateDeliveryArgsDict']]] = None,
+                 delivery: pulumi.Input[Optional[Union['AlarmtemplateDeliveryArgs', 'AlarmtemplateDeliveryArgsDict', 'outputs.AlarmtemplateDelivery']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['AlarmtemplateRulesArgs', 'AlarmtemplateRulesArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['AlarmtemplateRulesArgs', 'AlarmtemplateRulesArgsDict', 'outputs.AlarmtemplateRules']]]]] = None,
                  __props__=None):
         """
         This resource manages Alarm Templates.
@@ -228,10 +228,10 @@ class Alarmtemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AlarmtemplateDeliveryArgs', 'AlarmtemplateDeliveryArgsDict']] delivery: Default alarm delivery settings for rules in this template
+        :param pulumi.Input[Union['AlarmtemplateDeliveryArgs', 'AlarmtemplateDeliveryArgsDict', 'outputs.AlarmtemplateDelivery']] delivery: Default alarm delivery settings for rules in this template
         :param pulumi.Input[_builtins.str] name: Some string to name the alarm template
         :param pulumi.Input[_builtins.str] org_id: Organization that owns this alarm template
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['AlarmtemplateRulesArgs', 'AlarmtemplateRulesArgsDict']]]] rules: Alarm Rules object to configure the individual alarm keys/types. Property key is the alarm name (list available with the `get_const_alarms` data source).
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['AlarmtemplateRulesArgs', 'AlarmtemplateRulesArgsDict', 'outputs.AlarmtemplateRules']]]] rules: Alarm Rules object to configure the individual alarm keys/types. Property key is the alarm name (list available with the `get_const_alarms` data source).
         """
         ...
     @overload
@@ -308,10 +308,10 @@ class Alarmtemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delivery: pulumi.Input[Optional[Union['AlarmtemplateDeliveryArgs', 'AlarmtemplateDeliveryArgsDict']]] = None,
+                 delivery: pulumi.Input[Optional[Union['AlarmtemplateDeliveryArgs', 'AlarmtemplateDeliveryArgsDict', 'outputs.AlarmtemplateDelivery']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['AlarmtemplateRulesArgs', 'AlarmtemplateRulesArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['AlarmtemplateRulesArgs', 'AlarmtemplateRulesArgsDict', 'outputs.AlarmtemplateRules']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -341,10 +341,10 @@ class Alarmtemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            delivery: pulumi.Input[Optional[Union['AlarmtemplateDeliveryArgs', 'AlarmtemplateDeliveryArgsDict']]] = None,
+            delivery: pulumi.Input[Optional[Union['AlarmtemplateDeliveryArgs', 'AlarmtemplateDeliveryArgsDict', 'outputs.AlarmtemplateDelivery']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
-            rules: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['AlarmtemplateRulesArgs', 'AlarmtemplateRulesArgsDict']]]]] = None) -> 'Alarmtemplate':
+            rules: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['AlarmtemplateRulesArgs', 'AlarmtemplateRulesArgsDict', 'outputs.AlarmtemplateRules']]]]] = None) -> 'Alarmtemplate':
         """
         Get an existing Alarmtemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -352,10 +352,10 @@ class Alarmtemplate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AlarmtemplateDeliveryArgs', 'AlarmtemplateDeliveryArgsDict']] delivery: Default alarm delivery settings for rules in this template
+        :param pulumi.Input[Union['AlarmtemplateDeliveryArgs', 'AlarmtemplateDeliveryArgsDict', 'outputs.AlarmtemplateDelivery']] delivery: Default alarm delivery settings for rules in this template
         :param pulumi.Input[_builtins.str] name: Some string to name the alarm template
         :param pulumi.Input[_builtins.str] org_id: Organization that owns this alarm template
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['AlarmtemplateRulesArgs', 'AlarmtemplateRulesArgsDict']]]] rules: Alarm Rules object to configure the individual alarm keys/types. Property key is the alarm name (list available with the `get_const_alarms` data source).
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['AlarmtemplateRulesArgs', 'AlarmtemplateRulesArgsDict', 'outputs.AlarmtemplateRules']]]] rules: Alarm Rules object to configure the individual alarm keys/types. Property key is the alarm name (list available with the `get_const_alarms` data source).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

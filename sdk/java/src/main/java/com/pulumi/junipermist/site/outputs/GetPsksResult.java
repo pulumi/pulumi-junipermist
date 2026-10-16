@@ -14,11 +14,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPsksResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable String name;
     private @Nullable String role;
     private String siteId;
@@ -26,13 +21,6 @@ public final class GetPsksResult {
     private @Nullable String ssid;
 
     private GetPsksResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
@@ -58,7 +46,6 @@ public final class GetPsksResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private @Nullable String name;
         private @Nullable String role;
         private String siteId;
@@ -67,7 +54,6 @@ public final class GetPsksResult {
         public Builder() {}
         public Builder(GetPsksResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.role = defaults.role;
     	      this.siteId = defaults.siteId;
@@ -75,14 +61,6 @@ public final class GetPsksResult {
     	      this.ssid = defaults.ssid;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetPsksResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
 
@@ -122,7 +100,6 @@ public final class GetPsksResult {
         }
         public GetPsksResult build() {
             final var _resultValue = new GetPsksResult();
-            _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.role = role;
             _resultValue.siteId = siteId;

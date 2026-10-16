@@ -59,19 +59,13 @@ type GetWlantemplatesArgs struct {
 
 // A collection of values returned by getWlantemplates.
 type GetWlantemplatesResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id               string                            `pulumi:"id"`
 	OrgId            string                            `pulumi:"orgId"`
 	OrgWlantemplates []GetWlantemplatesOrgWlantemplate `pulumi:"orgWlantemplates"`
 }
 
 func GetWlantemplatesOutput(ctx *pulumi.Context, args GetWlantemplatesOutputArgs, opts ...pulumi.InvokeOption) GetWlantemplatesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetWlantemplatesResultOutput, error) {
-			args := v.(GetWlantemplatesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("junipermist:org/getWlantemplates:getWlantemplates", args, GetWlantemplatesResultOutput{}, options).(GetWlantemplatesResultOutput), nil
-		}).(GetWlantemplatesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("junipermist:org/getWlantemplates:getWlantemplates", args, GetWlantemplatesResultOutput{}, options).(GetWlantemplatesResultOutput)
 }
 
 // A collection of arguments for invoking getWlantemplates.
@@ -96,11 +90,6 @@ func (o GetWlantemplatesResultOutput) ToGetWlantemplatesResultOutput() GetWlante
 
 func (o GetWlantemplatesResultOutput) ToGetWlantemplatesResultOutputWithContext(ctx context.Context) GetWlantemplatesResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetWlantemplatesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWlantemplatesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetWlantemplatesResultOutput) OrgId() pulumi.StringOutput {

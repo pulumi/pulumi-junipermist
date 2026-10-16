@@ -51,15 +51,11 @@ func GetConstAlarms(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetConst
 // A collection of values returned by getConstAlarms.
 type GetConstAlarmsResult struct {
 	ConstAlarms []GetConstAlarmsConstAlarm `pulumi:"constAlarms"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 }
 
 func GetConstAlarmsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetConstAlarmsResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetConstAlarmsResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("junipermist:index/getConstAlarms:getConstAlarms", nil, GetConstAlarmsResultOutput{}, options).(GetConstAlarmsResultOutput), nil
-	}).(GetConstAlarmsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("junipermist:index/getConstAlarms:getConstAlarms", nil, GetConstAlarmsResultOutput{}, options).(GetConstAlarmsResultOutput)
 }
 
 // A collection of values returned by getConstAlarms.
@@ -79,11 +75,6 @@ func (o GetConstAlarmsResultOutput) ToGetConstAlarmsResultOutputWithContext(ctx 
 
 func (o GetConstAlarmsResultOutput) ConstAlarms() GetConstAlarmsConstAlarmArrayOutput {
 	return o.ApplyT(func(v GetConstAlarmsResult) []GetConstAlarmsConstAlarm { return v.ConstAlarms }).(GetConstAlarmsConstAlarmArrayOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetConstAlarmsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConstAlarmsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func init() {

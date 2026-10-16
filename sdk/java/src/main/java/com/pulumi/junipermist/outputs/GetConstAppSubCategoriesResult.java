@@ -6,29 +6,16 @@ package com.pulumi.junipermist.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.outputs.GetConstAppSubCategoriesConstAppSubCategory;
-import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetConstAppSubCategoriesResult {
     private List<GetConstAppSubCategoriesConstAppSubCategory> constAppSubCategories;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
 
     private GetConstAppSubCategoriesResult() {}
     public List<GetConstAppSubCategoriesConstAppSubCategory> constAppSubCategories() {
         return this.constAppSubCategories;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
 
     public static Builder builder() {
@@ -41,12 +28,10 @@ public final class GetConstAppSubCategoriesResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetConstAppSubCategoriesConstAppSubCategory> constAppSubCategories;
-        private String id;
         public Builder() {}
         public Builder(GetConstAppSubCategoriesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.constAppSubCategories = defaults.constAppSubCategories;
-    	      this.id = defaults.id;
         }
 
         @CustomType.Setter
@@ -60,18 +45,9 @@ public final class GetConstAppSubCategoriesResult {
         public Builder constAppSubCategories(GetConstAppSubCategoriesConstAppSubCategory... constAppSubCategories) {
             return constAppSubCategories(List.of(constAppSubCategories));
         }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetConstAppSubCategoriesResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         public GetConstAppSubCategoriesResult build() {
             final var _resultValue = new GetConstAppSubCategoriesResult();
             _resultValue.constAppSubCategories = constAppSubCategories;
-            _resultValue.id = id;
             return _resultValue;
         }
     }

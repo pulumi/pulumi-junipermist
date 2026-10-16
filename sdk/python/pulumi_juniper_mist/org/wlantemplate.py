@@ -233,9 +233,9 @@ class Wlantemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 applies: pulumi.Input[Optional[Union['WlantemplateAppliesArgs', 'WlantemplateAppliesArgsDict']]] = None,
+                 applies: pulumi.Input[Optional[Union['WlantemplateAppliesArgs', 'WlantemplateAppliesArgsDict', 'outputs.WlantemplateApplies']]] = None,
                  deviceprofile_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 exceptions: pulumi.Input[Optional[Union['WlantemplateExceptionsArgs', 'WlantemplateExceptionsArgsDict']]] = None,
+                 exceptions: pulumi.Input[Optional[Union['WlantemplateExceptionsArgs', 'WlantemplateExceptionsArgsDict', 'outputs.WlantemplateExceptions']]] = None,
                  filter_by_deviceprofile: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -273,9 +273,9 @@ class Wlantemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['WlantemplateAppliesArgs', 'WlantemplateAppliesArgsDict']] applies: Organizations, sites, or site groups targeted by this WLAN template
+        :param pulumi.Input[Union['WlantemplateAppliesArgs', 'WlantemplateAppliesArgsDict', 'outputs.WlantemplateApplies']] applies: Organizations, sites, or site groups targeted by this WLAN template
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] deviceprofile_ids: Device profile IDs that further limit where this WLAN template applies
-        :param pulumi.Input[Union['WlantemplateExceptionsArgs', 'WlantemplateExceptionsArgsDict']] exceptions: Sites or site groups excluded from this WLAN template even when included by the application scope
+        :param pulumi.Input[Union['WlantemplateExceptionsArgs', 'WlantemplateExceptionsArgsDict', 'outputs.WlantemplateExceptions']] exceptions: Sites or site groups excluded from this WLAN template even when included by the application scope
         :param pulumi.Input[_builtins.bool] filter_by_deviceprofile: Whether to further filter by Device Profile
         :param pulumi.Input[_builtins.str] name: Display name of the WLAN template
         :param pulumi.Input[_builtins.str] org_id: Organization that owns this WLAN template
@@ -332,9 +332,9 @@ class Wlantemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 applies: pulumi.Input[Optional[Union['WlantemplateAppliesArgs', 'WlantemplateAppliesArgsDict']]] = None,
+                 applies: pulumi.Input[Optional[Union['WlantemplateAppliesArgs', 'WlantemplateAppliesArgsDict', 'outputs.WlantemplateApplies']]] = None,
                  deviceprofile_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 exceptions: pulumi.Input[Optional[Union['WlantemplateExceptionsArgs', 'WlantemplateExceptionsArgsDict']]] = None,
+                 exceptions: pulumi.Input[Optional[Union['WlantemplateExceptionsArgs', 'WlantemplateExceptionsArgsDict', 'outputs.WlantemplateExceptions']]] = None,
                  filter_by_deviceprofile: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -365,9 +365,9 @@ class Wlantemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            applies: pulumi.Input[Optional[Union['WlantemplateAppliesArgs', 'WlantemplateAppliesArgsDict']]] = None,
+            applies: pulumi.Input[Optional[Union['WlantemplateAppliesArgs', 'WlantemplateAppliesArgsDict', 'outputs.WlantemplateApplies']]] = None,
             deviceprofile_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            exceptions: pulumi.Input[Optional[Union['WlantemplateExceptionsArgs', 'WlantemplateExceptionsArgsDict']]] = None,
+            exceptions: pulumi.Input[Optional[Union['WlantemplateExceptionsArgs', 'WlantemplateExceptionsArgsDict', 'outputs.WlantemplateExceptions']]] = None,
             filter_by_deviceprofile: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Wlantemplate':
@@ -378,9 +378,9 @@ class Wlantemplate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['WlantemplateAppliesArgs', 'WlantemplateAppliesArgsDict']] applies: Organizations, sites, or site groups targeted by this WLAN template
+        :param pulumi.Input[Union['WlantemplateAppliesArgs', 'WlantemplateAppliesArgsDict', 'outputs.WlantemplateApplies']] applies: Organizations, sites, or site groups targeted by this WLAN template
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] deviceprofile_ids: Device profile IDs that further limit where this WLAN template applies
-        :param pulumi.Input[Union['WlantemplateExceptionsArgs', 'WlantemplateExceptionsArgsDict']] exceptions: Sites or site groups excluded from this WLAN template even when included by the application scope
+        :param pulumi.Input[Union['WlantemplateExceptionsArgs', 'WlantemplateExceptionsArgsDict', 'outputs.WlantemplateExceptions']] exceptions: Sites or site groups excluded from this WLAN template even when included by the application scope
         :param pulumi.Input[_builtins.bool] filter_by_deviceprofile: Whether to further filter by Device Profile
         :param pulumi.Input[_builtins.str] name: Display name of the WLAN template
         :param pulumi.Input[_builtins.str] org_id: Organization that owns this WLAN template

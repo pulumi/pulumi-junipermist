@@ -117,22 +117,15 @@ namespace Pulumi.JuniperMist
     [OutputType]
     public sealed class GetSitesResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly string OrgId;
         public readonly ImmutableArray<Outputs.GetSitesSiteResult> Sites;
 
         [OutputConstructor]
         private GetSitesResult(
-            string id,
-
             string orgId,
 
             ImmutableArray<Outputs.GetSitesSiteResult> sites)
         {
-            Id = id;
             OrgId = orgId;
             Sites = sites;
         }

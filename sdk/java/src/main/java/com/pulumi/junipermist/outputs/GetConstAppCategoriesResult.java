@@ -6,29 +6,16 @@ package com.pulumi.junipermist.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.outputs.GetConstAppCategoriesConstAppCategory;
-import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetConstAppCategoriesResult {
     private List<GetConstAppCategoriesConstAppCategory> constAppCategories;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
 
     private GetConstAppCategoriesResult() {}
     public List<GetConstAppCategoriesConstAppCategory> constAppCategories() {
         return this.constAppCategories;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
 
     public static Builder builder() {
@@ -41,12 +28,10 @@ public final class GetConstAppCategoriesResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetConstAppCategoriesConstAppCategory> constAppCategories;
-        private String id;
         public Builder() {}
         public Builder(GetConstAppCategoriesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.constAppCategories = defaults.constAppCategories;
-    	      this.id = defaults.id;
         }
 
         @CustomType.Setter
@@ -60,18 +45,9 @@ public final class GetConstAppCategoriesResult {
         public Builder constAppCategories(GetConstAppCategoriesConstAppCategory... constAppCategories) {
             return constAppCategories(List.of(constAppCategories));
         }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetConstAppCategoriesResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         public GetConstAppCategoriesResult build() {
             final var _resultValue = new GetConstAppCategoriesResult();
             _resultValue.constAppCategories = constAppCategories;
-            _resultValue.id = id;
             return _resultValue;
         }
     }

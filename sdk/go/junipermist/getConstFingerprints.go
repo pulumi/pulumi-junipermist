@@ -56,18 +56,14 @@ func GetConstFingerprints(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*Ge
 // A collection of values returned by getConstFingerprints.
 type GetConstFingerprintsResult struct {
 	Families []string `pulumi:"families"`
-	// The provider-assigned unique ID for this managed resource.
-	Id     string   `pulumi:"id"`
-	Mfgs   []string `pulumi:"mfgs"`
-	Models []string `pulumi:"models"`
-	Os     []string `pulumi:"os"`
+	Mfgs     []string `pulumi:"mfgs"`
+	Models   []string `pulumi:"models"`
+	Os       []string `pulumi:"os"`
 }
 
 func GetConstFingerprintsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetConstFingerprintsResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetConstFingerprintsResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("junipermist:index/getConstFingerprints:getConstFingerprints", nil, GetConstFingerprintsResultOutput{}, options).(GetConstFingerprintsResultOutput), nil
-	}).(GetConstFingerprintsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("junipermist:index/getConstFingerprints:getConstFingerprints", nil, GetConstFingerprintsResultOutput{}, options).(GetConstFingerprintsResultOutput)
 }
 
 // A collection of values returned by getConstFingerprints.
@@ -87,11 +83,6 @@ func (o GetConstFingerprintsResultOutput) ToGetConstFingerprintsResultOutputWith
 
 func (o GetConstFingerprintsResultOutput) Families() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetConstFingerprintsResult) []string { return v.Families }).(pulumi.StringArrayOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetConstFingerprintsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConstFingerprintsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetConstFingerprintsResultOutput) Mfgs() pulumi.StringArrayOutput {

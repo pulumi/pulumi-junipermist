@@ -126,22 +126,15 @@ namespace Pulumi.JuniperMist.Org
     [OutputType]
     public sealed class GetWlantemplatesResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly string OrgId;
         public readonly ImmutableArray<Outputs.GetWlantemplatesOrgWlantemplateResult> OrgWlantemplates;
 
         [OutputConstructor]
         private GetWlantemplatesResult(
-            string id,
-
             string orgId,
 
             ImmutableArray<Outputs.GetWlantemplatesOrgWlantemplateResult> orgWlantemplates)
         {
-            Id = id;
             OrgId = orgId;
             OrgWlantemplates = orgWlantemplates;
         }

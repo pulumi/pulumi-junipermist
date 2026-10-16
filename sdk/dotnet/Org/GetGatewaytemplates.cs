@@ -120,22 +120,15 @@ namespace Pulumi.JuniperMist.Org
     [OutputType]
     public sealed class GetGatewaytemplatesResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly ImmutableArray<Outputs.GetGatewaytemplatesOrgGatewaytemplateResult> OrgGatewaytemplates;
         public readonly string OrgId;
 
         [OutputConstructor]
         private GetGatewaytemplatesResult(
-            string id,
-
             ImmutableArray<Outputs.GetGatewaytemplatesOrgGatewaytemplateResult> orgGatewaytemplates,
 
             string orgId)
         {
-            Id = id;
             OrgGatewaytemplates = orgGatewaytemplates;
             OrgId = orgId;
         }

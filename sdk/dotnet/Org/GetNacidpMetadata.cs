@@ -138,10 +138,6 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         public readonly string EntityId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// If `IdpType`==`Saml`
         /// </summary>
         public readonly string LogoutUrl;
@@ -162,8 +158,6 @@ namespace Pulumi.JuniperMist.Org
 
             string entityId,
 
-            string id,
-
             string logoutUrl,
 
             string metadata,
@@ -176,7 +170,6 @@ namespace Pulumi.JuniperMist.Org
         {
             AcsUrl = acsUrl;
             EntityId = entityId;
-            Id = id;
             LogoutUrl = logoutUrl;
             Metadata = metadata;
             NacidpId = nacidpId;

@@ -4814,7 +4814,7 @@ class DeviceprofileGatewayDhcpdConfigConfig(dict):
         :param _builtins.str ip_start: If `type`==`local`, starting IPv4 address for the DHCP lease pool
         :param _builtins.int lease_time: In seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
         :param Mapping[str, 'DeviceprofileGatewayDhcpdConfigConfigOptionsArgs'] options: If `type`==`local` or `type6`==`local`, custom DHCP options advertised to clients
-        :param _builtins.bool server_id_override: `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
+        :param _builtins.bool server_id_override: `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
                should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
         :param Sequence[_builtins.str] servers: If `type`==`relay`, upstream IPv4 DHCP servers
         :param Sequence[_builtins.str] serversv6s: If `type6`==`relay`, upstream IPv6 DHCP servers
@@ -4940,7 +4940,7 @@ class DeviceprofileGatewayDhcpdConfigConfig(dict):
     @pulumi.getter(name="serverIdOverride")
     def server_id_override(self) -> Optional[_builtins.bool]:
         """
-        `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
+        `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
         should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
         """
         return pulumi.get(self, "server_id_override")
@@ -6650,8 +6650,8 @@ class DeviceprofileGatewayPathPreferencesPath(dict):
         :param _builtins.bool disabled: For SSR Only. `true`, if this specific path is undesired
         :param _builtins.str gateway_ip: Only if `type`==`local`, if a different gateway is desired
         :param _builtins.bool internet_access: Only if `type`==`vpn`, if this vpn path can be used for internet
-        :param _builtins.str name: Required when 
-                 * `type`==`vpn`: the name of the VPN Path to use 
+        :param _builtins.str name: Required when
+                 * `type`==`vpn`: the name of the VPN Path to use
                  * `type`==`wan`: the name of the WAN interface to use
         :param Sequence[_builtins.str] networks: List of network names used when `type`==`local`
         :param Sequence[_builtins.str] target_ips: List of destination IP addresses to replace when `type`==`local`
@@ -6719,8 +6719,8 @@ class DeviceprofileGatewayPathPreferencesPath(dict):
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
         """
-        Required when 
-          * `type`==`vpn`: the name of the VPN Path to use 
+        Required when
+          * `type`==`vpn`: the name of the VPN Path to use
           * `type`==`wan`: the name of the WAN interface to use
         """
         return pulumi.get(self, "name")
@@ -11081,7 +11081,7 @@ class DeviceprofileSwitchAclTags(dict):
                  * `type`==`radius_group`
                  * `type`==`aruba_user_role`
                  * `type`==`static_gbp`
-               if from matching radius_group
+                   if from matching radius_group
         :param Sequence['DeviceprofileSwitchAclTagsSpecArgs'] specs: Layer 4 protocol and destination-port constraints for this ACL tag
         :param Sequence[_builtins.str] subnets: IP subnets matched by this ACL tag
         """
@@ -11167,7 +11167,7 @@ class DeviceprofileSwitchAclTags(dict):
           * `type`==`radius_group`
           * `type`==`aruba_user_role`
           * `type`==`static_gbp`
-        if from matching radius_group
+            if from matching radius_group
         """
         return pulumi.get(self, "radius_group")
 
@@ -11420,7 +11420,7 @@ class DeviceprofileSwitchDhcpdConfigConfig(dict):
         :param _builtins.str ip_start6: If `type6`==`server`, starting IPv6 address for the DHCP lease pool
         :param _builtins.int lease_time: In seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
         :param Mapping[str, 'DeviceprofileSwitchDhcpdConfigConfigOptionsArgs'] options: If `type`==`server` or `type6`==`server`, custom DHCP options advertised to clients
-        :param _builtins.bool server_id_override: `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
+        :param _builtins.bool server_id_override: `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
                should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
         :param Sequence[_builtins.str] servers: If `type`==`relay`, upstream IPv4 DHCP servers
         :param Sequence[_builtins.str] servers6s: If `type6`==`relay`, upstream IPv6 DHCP servers
@@ -11545,7 +11545,7 @@ class DeviceprofileSwitchDhcpdConfigConfig(dict):
     @pulumi.getter(name="serverIdOverride")
     def server_id_override(self) -> Optional[_builtins.bool]:
         """
-        `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
+        `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
         should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
         """
         return pulumi.get(self, "server_id_override")
@@ -18232,7 +18232,7 @@ class EvpnTopologySwitches(dict):
                  pods: Optional[Sequence[_builtins.int]] = None):
         """
         :param _builtins.str role: EVPN topology role for this switch. enum: `access`, `border`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`.
-        :param _builtins.int pod: Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g. 
+        :param _builtins.int pod: Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g.
                  * for CLOS, to group dist / access switches into pods
                  * for ERB/CRB, to group dist / esilag-access into pods
         :param Sequence[_builtins.int] pods: List of pod numbers this switch participates in
@@ -18255,7 +18255,7 @@ class EvpnTopologySwitches(dict):
     @pulumi.getter
     def pod(self) -> Optional[_builtins.int]:
         """
-        Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g. 
+        Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g.
           * for CLOS, to group dist / access switches into pods
           * for ERB/CRB, to group dist / esilag-access into pods
         """
@@ -18806,7 +18806,7 @@ class GatewaytemplateDhcpdConfigConfig(dict):
         :param _builtins.str ip_start: If `type`==`local`, starting IPv4 address for the DHCP lease pool
         :param _builtins.int lease_time: In seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
         :param Mapping[str, 'GatewaytemplateDhcpdConfigConfigOptionsArgs'] options: If `type`==`local` or `type6`==`local`, custom DHCP options advertised to clients
-        :param _builtins.bool server_id_override: `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
+        :param _builtins.bool server_id_override: `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
                should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
         :param Sequence[_builtins.str] servers: If `type`==`relay`, upstream IPv4 DHCP servers
         :param Sequence[_builtins.str] serversv6s: If `type6`==`relay`, upstream IPv6 DHCP servers
@@ -18932,7 +18932,7 @@ class GatewaytemplateDhcpdConfigConfig(dict):
     @pulumi.getter(name="serverIdOverride")
     def server_id_override(self) -> Optional[_builtins.bool]:
         """
-        `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
+        `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
         should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
         """
         return pulumi.get(self, "server_id_override")
@@ -21327,8 +21327,8 @@ class GatewaytemplatePathPreferencesPath(dict):
         :param _builtins.bool disabled: For SSR Only. `true`, if this specific path is undesired
         :param _builtins.str gateway_ip: Only if `type`==`local`, if a different gateway is desired
         :param _builtins.bool internet_access: Only if `type`==`vpn`, if this vpn path can be used for internet
-        :param _builtins.str name: Required when 
-                 * `type`==`vpn`: the name of the VPN Path to use 
+        :param _builtins.str name: Required when
+                 * `type`==`vpn`: the name of the VPN Path to use
                  * `type`==`wan`: the name of the WAN interface to use
         :param Sequence[_builtins.str] networks: List of network names used when `type`==`local`
         :param Sequence[_builtins.str] target_ips: List of destination IP addresses to replace when `type`==`local`
@@ -21396,8 +21396,8 @@ class GatewaytemplatePathPreferencesPath(dict):
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
         """
-        Required when 
-          * `type`==`vpn`: the name of the VPN Path to use 
+        Required when
+          * `type`==`vpn`: the name of the VPN Path to use
           * `type`==`wan`: the name of the WAN interface to use
         """
         return pulumi.get(self, "name")
@@ -29469,7 +29469,7 @@ class NetworktemplateAclTags(dict):
                  * `type`==`radius_group`
                  * `type`==`aruba_user_role`
                  * `type`==`static_gbp`
-               if from matching radius_group
+                   if from matching radius_group
         :param Sequence['NetworktemplateAclTagsSpecArgs'] specs: Layer 4 protocol and destination-port constraints for this ACL tag
         :param Sequence[_builtins.str] subnets: IP subnets matched by this ACL tag
         """
@@ -29555,7 +29555,7 @@ class NetworktemplateAclTags(dict):
           * `type`==`radius_group`
           * `type`==`aruba_user_role`
           * `type`==`static_gbp`
-        if from matching radius_group
+            if from matching radius_group
         """
         return pulumi.get(self, "radius_group")
 
@@ -41047,7 +41047,7 @@ class WlanAppLimit(dict):
                  enabled: Optional[_builtins.bool] = None,
                  wxtag_ids: Optional[Mapping[str, _builtins.int]] = None):
         """
-        :param Mapping[str, _builtins.int] apps: Map from app key to bandwidth in kbps. 
+        :param Mapping[str, _builtins.int] apps: Map from app key to bandwidth in kbps.
                Property key is the app key, defined in Get Application List
         :param _builtins.bool enabled: Whether application bandwidth limits are enabled for this WLAN
         :param Mapping[str, _builtins.int] wxtag_ids: Map from wxtag_id of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtag_id`
@@ -41063,7 +41063,7 @@ class WlanAppLimit(dict):
     @pulumi.getter
     def apps(self) -> Optional[Mapping[str, _builtins.int]]:
         """
-        Map from app key to bandwidth in kbps. 
+        Map from app key to bandwidth in kbps.
         Property key is the app key, defined in Get Application List
         """
         return pulumi.get(self, "apps")
@@ -41638,7 +41638,7 @@ class WlanBonjour(dict):
         """
         :param Sequence[_builtins.str] additional_vlan_ids: additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
         :param _builtins.bool enabled: Whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
-        :param Mapping[str, 'WlanBonjourServicesArgs'] services: What services are allowed. 
+        :param Mapping[str, 'WlanBonjourServicesArgs'] services: What services are allowed.
                Property key is the service name
         """
         if additional_vlan_ids is not None:
@@ -41668,7 +41668,7 @@ class WlanBonjour(dict):
     @pulumi.getter
     def services(self) -> Optional[Mapping[str, 'outputs.WlanBonjourServices']]:
         """
-        What services are allowed. 
+        What services are allowed.
         Property key is the service name
         """
         return pulumi.get(self, "services")
@@ -43936,9 +43936,9 @@ class WlanPortalTemplatePortalTemplate(dict):
         :param _builtins.str field4label: Label for custom field 4 input
         :param _builtins.bool field4required: Whether custom field 4 must be provided when the field is shown
         :param Mapping[str, 'WlanPortalTemplatePortalTemplateLocalesArgs'] locales: Can be used to localize the portal based on the User Agent. Allowed property key values are:
-                 `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`, 
-                 `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`, 
-                 `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`, 
+                 `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`,
+                 `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`,
+                 `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`,
                  `zh-Hans`, `zh-Hant`
         :param _builtins.str logo: path to the background image file. File must be a `png` image less than 100kB and image dimension must be less 500px x 200px (width x height).
         :param _builtins.str marketing_policy_link: label of the link to go to /marketing_policy
@@ -43996,7 +43996,7 @@ class WlanPortalTemplatePortalTemplate(dict):
         :param _builtins.str sponsor_cancel: Button label for canceling sponsor authentication
         :param _builtins.str sponsor_email: Label for Sponsor Email
         :param _builtins.str sponsor_email_error: Error message shown when the sponsor email address is invalid
-        :param _builtins.str sponsor_email_template: HTML template to replace/override default sponsor email template 
+        :param _builtins.str sponsor_email_template: HTML template to replace/override default sponsor email template
                Sponsor Email Template supports following template variables:
                  * `approve_url`: Renders URL to approve the request; optionally &minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
                  * `deny_url`: Renders URL to reject the request
@@ -44683,9 +44683,9 @@ class WlanPortalTemplatePortalTemplate(dict):
     def locales(self) -> Optional[Mapping[str, 'outputs.WlanPortalTemplatePortalTemplateLocales']]:
         """
         Can be used to localize the portal based on the User Agent. Allowed property key values are:
-          `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`, 
-          `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`, 
-          `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`, 
+          `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`,
+          `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`,
+          `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`,
           `zh-Hans`, `zh-Hant`
         """
         return pulumi.get(self, "locales")
@@ -45142,7 +45142,7 @@ class WlanPortalTemplatePortalTemplate(dict):
     @pulumi.getter(name="sponsorEmailTemplate")
     def sponsor_email_template(self) -> Optional[_builtins.str]:
         """
-        HTML template to replace/override default sponsor email template 
+        HTML template to replace/override default sponsor email template
         Sponsor Email Template supports following template variables:
           * `approve_url`: Renders URL to approve the request; optionally &minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
           * `deny_url`: Renders URL to reject the request
@@ -48542,15 +48542,14 @@ class GetNactagsOrgNactagResult(dict):
                  * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
                  * `true`: means all values should be matched (i.e., match-all behavior)
                
-               
                Currently it makes sense to set this field to `true` only if the `match`==`idp_role`, `match`==`usermac_label` and `edr_status`
         :param _builtins.float modified_time: When the object has been modified for the last time, in epoch
         :param _builtins.str nacportal_id: If `type`==`redirect_nacportal_id`, the ID of the NAC portal to redirect to
-        :param Sequence[_builtins.str] radius_attrs: If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field "radius_attrs". 
+        :param Sequence[_builtins.str] radius_attrs: If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field "radius_attrs".
                It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
                Note that it is allowed to have more than one radius_attrs in the result of a given rule.
         :param _builtins.str radius_group: If `type`==`radius_group`
-        :param Sequence[_builtins.str] radius_vendor_attrs: If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field "radius_vendor_attrs". 
+        :param Sequence[_builtins.str] radius_vendor_attrs: If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field "radius_vendor_attrs".
                It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
                Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
         :param _builtins.int session_timeout: If `type`==`session_timeout, in seconds
@@ -48632,7 +48631,6 @@ class GetNactagsOrgNactagResult(dict):
           * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
           * `true`: means all values should be matched (i.e., match-all behavior)
 
-
         Currently it makes sense to set this field to `true` only if the `match`==`idp_role`, `match`==`usermac_label` and `edr_status`
         """
         return pulumi.get(self, "match_all")
@@ -48667,7 +48665,7 @@ class GetNactagsOrgNactagResult(dict):
     @pulumi.getter(name="radiusAttrs")
     def radius_attrs(self) -> Sequence[_builtins.str]:
         """
-        If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field "radius_attrs". 
+        If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field "radius_attrs".
         It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
         Note that it is allowed to have more than one radius_attrs in the result of a given rule.
         """
@@ -48685,7 +48683,7 @@ class GetNactagsOrgNactagResult(dict):
     @pulumi.getter(name="radiusVendorAttrs")
     def radius_vendor_attrs(self) -> Sequence[_builtins.str]:
         """
-        If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field "radius_vendor_attrs". 
+        If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field "radius_vendor_attrs".
         It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
         Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
         """
@@ -50483,9 +50481,9 @@ class GetSsoRolesOrgSsoRolePrivilegeResult(dict):
         :param _builtins.str scope: enum: `org`, `site`, `sitegroup`, `orgsites`
         :param _builtins.str site_id: If `scope`==`site`
         :param _builtins.str sitegroup_id: If `scope`==`sitegroup`
-        :param Sequence[_builtins.str] views: Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.  
-               You can define custom roles by adding the `views` attribute along with `role` when assigning privileges.  
-               Below are the list of supported UI views. Note that this is UI only feature.  
+        :param Sequence[_builtins.str] views: Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.\\
+               You can define custom roles by adding the `views` attribute along with `role` when assigning privileges.\\
+               Below are the list of supported UI views. Note that this is UI only feature.
                
                  | UI View | Required Role | Description |
                  | --- | --- | --- |
@@ -50540,9 +50538,9 @@ class GetSsoRolesOrgSsoRolePrivilegeResult(dict):
     @pulumi.getter
     def views(self) -> Sequence[_builtins.str]:
         """
-        Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.  
-        You can define custom roles by adding the `views` attribute along with `role` when assigning privileges.  
-        Below are the list of supported UI views. Note that this is UI only feature.  
+        Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.\\
+        You can define custom roles by adding the `views` attribute along with `role` when assigning privileges.\\
+        Below are the list of supported UI views. Note that this is UI only feature.
 
           | UI View | Required Role | Description |
           | --- | --- | --- |
@@ -52201,7 +52199,7 @@ class GetWlansOrgWlanAppLimitResult(dict):
                  enabled: _builtins.bool,
                  wxtag_ids: Mapping[str, _builtins.int]):
         """
-        :param Mapping[str, _builtins.int] apps: Map from app key to bandwidth in kbps. 
+        :param Mapping[str, _builtins.int] apps: Map from app key to bandwidth in kbps.
                Property key is the app key, defined in Get Application List
         :param Mapping[str, _builtins.int] wxtag_ids: Map from wxtag_id of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtag_id`
         """
@@ -52213,7 +52211,7 @@ class GetWlansOrgWlanAppLimitResult(dict):
     @pulumi.getter
     def apps(self) -> Mapping[str, _builtins.int]:
         """
-        Map from app key to bandwidth in kbps. 
+        Map from app key to bandwidth in kbps.
         Property key is the app key, defined in Get Application List
         """
         return pulumi.get(self, "apps")
@@ -52561,7 +52559,7 @@ class GetWlansOrgWlanBonjourResult(dict):
         """
         :param Sequence[_builtins.str] additional_vlan_ids: additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
         :param _builtins.bool enabled: Whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
-        :param Mapping[str, 'GetWlansOrgWlanBonjourServicesArgs'] services: What services are allowed. 
+        :param Mapping[str, 'GetWlansOrgWlanBonjourServicesArgs'] services: What services are allowed.
                Property key is the service name
         """
         pulumi.set(__self__, "additional_vlan_ids", additional_vlan_ids)
@@ -52588,7 +52586,7 @@ class GetWlansOrgWlanBonjourResult(dict):
     @pulumi.getter
     def services(self) -> Mapping[str, 'outputs.GetWlansOrgWlanBonjourServicesResult']:
         """
-        What services are allowed. 
+        What services are allowed.
         Property key is the service name
         """
         return pulumi.get(self, "services")
@@ -54091,7 +54089,7 @@ class GetWlansOrgWlanRatesetResult(dict):
         :param _builtins.str ht: If `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
         :param Sequence[_builtins.str] legacies: If `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
         :param _builtins.int min_rssi: Minimum RSSI for client to connect, 0 means not enforcing
-        :param _builtins.str template: Data Rates template to apply. enum: 
+        :param _builtins.str template: Data Rates template to apply. enum:
                  * `no-legacy`: no 11b
                  * `compatible`: all, like before, default setting that Broadcom/Atheros used
                  * `legacy-only`: disable 802.11n and 802.11ac
@@ -54151,7 +54149,7 @@ class GetWlansOrgWlanRatesetResult(dict):
     @pulumi.getter
     def template(self) -> _builtins.str:
         """
-        Data Rates template to apply. enum: 
+        Data Rates template to apply. enum:
           * `no-legacy`: no 11b
           * `compatible`: all, like before, default setting that Broadcom/Atheros used
           * `legacy-only`: disable 802.11n and 802.11ac

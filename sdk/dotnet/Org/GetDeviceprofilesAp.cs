@@ -121,22 +121,15 @@ namespace Pulumi.JuniperMist.Org
     public sealed class GetDeviceprofilesApResult
     {
         public readonly ImmutableArray<Outputs.GetDeviceprofilesApDeviceprofileResult> Deviceprofiles;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly string OrgId;
 
         [OutputConstructor]
         private GetDeviceprofilesApResult(
             ImmutableArray<Outputs.GetDeviceprofilesApDeviceprofileResult> deviceprofiles,
 
-            string id,
-
             string orgId)
         {
             Deviceprofiles = deviceprofiles;
-            Id = id;
             OrgId = orgId;
         }
     }

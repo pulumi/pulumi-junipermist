@@ -27,26 +27,15 @@ class GetConstTrafficTypesResult:
     """
     A collection of values returned by getConstTrafficTypes.
     """
-    def __init__(__self__, const_traffic_types=None, id=None):
+    def __init__(__self__, const_traffic_types=None):
         if const_traffic_types and not isinstance(const_traffic_types, list):
             raise TypeError("Expected argument 'const_traffic_types' to be a list")
         pulumi.set(__self__, "const_traffic_types", const_traffic_types)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
 
     @_builtins.property
     @pulumi.getter(name="constTrafficTypes")
     def const_traffic_types(self) -> Sequence['outputs.GetConstTrafficTypesConstTrafficTypeResult']:
         return pulumi.get(self, "const_traffic_types")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
 
 class AwaitableGetConstTrafficTypesResult(GetConstTrafficTypesResult):
@@ -55,8 +44,7 @@ class AwaitableGetConstTrafficTypesResult(GetConstTrafficTypesResult):
         if False:
             yield self
         return GetConstTrafficTypesResult(
-            const_traffic_types=self.const_traffic_types,
-            id=self.id)
+            const_traffic_types=self.const_traffic_types)
 
 
 def get_const_traffic_types(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConstTrafficTypesResult:
@@ -79,8 +67,7 @@ def get_const_traffic_types(opts: Optional[pulumi.InvokeOptions] = None) -> Awai
     __ret__ = pulumi.runtime.invoke('junipermist:index/getConstTrafficTypes:getConstTrafficTypes', __args__, opts=opts, typ=GetConstTrafficTypesResult).value
 
     return AwaitableGetConstTrafficTypesResult(
-        const_traffic_types=pulumi.get(__ret__, 'const_traffic_types'),
-        id=pulumi.get(__ret__, 'id'))
+        const_traffic_types=pulumi.get(__ret__, 'const_traffic_types'))
 def get_const_traffic_types_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConstTrafficTypesResult]:
     """
     This data source provides the of ConstTrafficTypes.
@@ -100,5 +87,4 @@ def get_const_traffic_types_output(opts: Optional[Union[pulumi.InvokeOptions, pu
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:index/getConstTrafficTypes:getConstTrafficTypes', __args__, opts=opts, typ=GetConstTrafficTypesResult)
     return __ret__.apply(lambda __response__: GetConstTrafficTypesResult(
-        const_traffic_types=pulumi.get(__response__, 'const_traffic_types'),
-        id=pulumi.get(__response__, 'id')))
+        const_traffic_types=pulumi.get(__response__, 'const_traffic_types')))

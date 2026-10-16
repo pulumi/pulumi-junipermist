@@ -26,13 +26,10 @@ class GetConstFingerprintsResult:
     """
     A collection of values returned by getConstFingerprints.
     """
-    def __init__(__self__, families=None, id=None, mfgs=None, models=None, os=None):
+    def __init__(__self__, families=None, mfgs=None, models=None, os=None):
         if families and not isinstance(families, list):
             raise TypeError("Expected argument 'families' to be a list")
         pulumi.set(__self__, "families", families)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if mfgs and not isinstance(mfgs, list):
             raise TypeError("Expected argument 'mfgs' to be a list")
         pulumi.set(__self__, "mfgs", mfgs)
@@ -47,14 +44,6 @@ class GetConstFingerprintsResult:
     @pulumi.getter
     def families(self) -> Sequence[_builtins.str]:
         return pulumi.get(self, "families")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -79,7 +68,6 @@ class AwaitableGetConstFingerprintsResult(GetConstFingerprintsResult):
             yield self
         return GetConstFingerprintsResult(
             families=self.families,
-            id=self.id,
             mfgs=self.mfgs,
             models=self.models,
             os=self.os)
@@ -111,7 +99,6 @@ def get_const_fingerprints(opts: Optional[pulumi.InvokeOptions] = None) -> Await
 
     return AwaitableGetConstFingerprintsResult(
         families=pulumi.get(__ret__, 'families'),
-        id=pulumi.get(__ret__, 'id'),
         mfgs=pulumi.get(__ret__, 'mfgs'),
         models=pulumi.get(__ret__, 'models'),
         os=pulumi.get(__ret__, 'os'))
@@ -140,7 +127,6 @@ def get_const_fingerprints_output(opts: Optional[Union[pulumi.InvokeOptions, pul
     __ret__ = pulumi.runtime.invoke_output('junipermist:index/getConstFingerprints:getConstFingerprints', __args__, opts=opts, typ=GetConstFingerprintsResult)
     return __ret__.apply(lambda __response__: GetConstFingerprintsResult(
         families=pulumi.get(__response__, 'families'),
-        id=pulumi.get(__response__, 'id'),
         mfgs=pulumi.get(__response__, 'mfgs'),
         models=pulumi.get(__response__, 'models'),
         os=pulumi.get(__response__, 'os')))

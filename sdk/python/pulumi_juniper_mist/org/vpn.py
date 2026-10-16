@@ -203,8 +203,8 @@ class Vpn(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 path_selection: pulumi.Input[Optional[Union['VpnPathSelectionArgs', 'VpnPathSelectionArgsDict']]] = None,
-                 paths: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['VpnPathsArgs', 'VpnPathsArgsDict']]]]] = None,
+                 path_selection: pulumi.Input[Optional[Union['VpnPathSelectionArgs', 'VpnPathSelectionArgsDict', 'outputs.VpnPathSelection']]] = None,
+                 paths: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['VpnPathsArgs', 'VpnPathsArgsDict', 'outputs.VpnPaths']]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -256,8 +256,8 @@ class Vpn(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: Display name of the VPN configuration
         :param pulumi.Input[_builtins.str] org_id: Organization that owns the VPN configuration
-        :param pulumi.Input[Union['VpnPathSelectionArgs', 'VpnPathSelectionArgsDict']] path_selection: Path selection settings used when `type`==`hub_spoke`
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['VpnPathsArgs', 'VpnPathsArgsDict']]]] paths: VPN path definitions keyed by VPN name for `hub_spoke` mode or interface name for `mesh` mode
+        :param pulumi.Input[Union['VpnPathSelectionArgs', 'VpnPathSelectionArgsDict', 'outputs.VpnPathSelection']] path_selection: Path selection settings used when `type`==`hub_spoke`
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['VpnPathsArgs', 'VpnPathsArgsDict', 'outputs.VpnPaths']]]] paths: VPN path definitions keyed by VPN name for `hub_spoke` mode or interface name for `mesh` mode
         :param pulumi.Input[_builtins.str] type: VPN topology mode for this configuration. enum: `hub_spoke`, `mesh`.
         """
         ...
@@ -328,8 +328,8 @@ class Vpn(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 path_selection: pulumi.Input[Optional[Union['VpnPathSelectionArgs', 'VpnPathSelectionArgsDict']]] = None,
-                 paths: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['VpnPathsArgs', 'VpnPathsArgsDict']]]]] = None,
+                 path_selection: pulumi.Input[Optional[Union['VpnPathSelectionArgs', 'VpnPathSelectionArgsDict', 'outputs.VpnPathSelection']]] = None,
+                 paths: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['VpnPathsArgs', 'VpnPathsArgsDict', 'outputs.VpnPaths']]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -359,8 +359,8 @@ class Vpn(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
-            path_selection: pulumi.Input[Optional[Union['VpnPathSelectionArgs', 'VpnPathSelectionArgsDict']]] = None,
-            paths: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['VpnPathsArgs', 'VpnPathsArgsDict']]]]] = None,
+            path_selection: pulumi.Input[Optional[Union['VpnPathSelectionArgs', 'VpnPathSelectionArgsDict', 'outputs.VpnPathSelection']]] = None,
+            paths: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['VpnPathsArgs', 'VpnPathsArgsDict', 'outputs.VpnPaths']]]]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Vpn':
         """
         Get an existing Vpn resource's state with the given name, id, and optional extra
@@ -371,8 +371,8 @@ class Vpn(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: Display name of the VPN configuration
         :param pulumi.Input[_builtins.str] org_id: Organization that owns the VPN configuration
-        :param pulumi.Input[Union['VpnPathSelectionArgs', 'VpnPathSelectionArgsDict']] path_selection: Path selection settings used when `type`==`hub_spoke`
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['VpnPathsArgs', 'VpnPathsArgsDict']]]] paths: VPN path definitions keyed by VPN name for `hub_spoke` mode or interface name for `mesh` mode
+        :param pulumi.Input[Union['VpnPathSelectionArgs', 'VpnPathSelectionArgsDict', 'outputs.VpnPathSelection']] path_selection: Path selection settings used when `type`==`hub_spoke`
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['VpnPathsArgs', 'VpnPathsArgsDict', 'outputs.VpnPaths']]]] paths: VPN path definitions keyed by VPN name for `hub_spoke` mode or interface name for `mesh` mode
         :param pulumi.Input[_builtins.str] type: VPN topology mode for this configuration. enum: `hub_spoke`, `mesh`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

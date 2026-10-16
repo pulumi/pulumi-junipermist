@@ -96,7 +96,7 @@ class GatewayCluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewayClusterNodeArgs', 'GatewayClusterNodeArgsDict']]]]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewayClusterNodeArgs', 'GatewayClusterNodeArgsDict', 'outputs.GatewayClusterNode']]]]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -141,7 +141,7 @@ class GatewayCluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewayClusterNodeArgs', 'GatewayClusterNodeArgsDict']]]] nodes: Gateway nodes that form the HA cluster
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewayClusterNodeArgs', 'GatewayClusterNodeArgsDict', 'outputs.GatewayClusterNode']]]] nodes: Gateway nodes that form the HA cluster
         """
         ...
     @overload
@@ -204,7 +204,7 @@ class GatewayCluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewayClusterNodeArgs', 'GatewayClusterNodeArgsDict']]]]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewayClusterNodeArgs', 'GatewayClusterNodeArgsDict', 'outputs.GatewayClusterNode']]]]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -231,7 +231,7 @@ class GatewayCluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewayClusterNodeArgs', 'GatewayClusterNodeArgsDict']]]]] = None,
+            nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewayClusterNodeArgs', 'GatewayClusterNodeArgsDict', 'outputs.GatewayClusterNode']]]]] = None,
             site_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'GatewayCluster':
         """
         Get an existing GatewayCluster resource's state with the given name, id, and optional extra
@@ -240,7 +240,7 @@ class GatewayCluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewayClusterNodeArgs', 'GatewayClusterNodeArgsDict']]]] nodes: Gateway nodes that form the HA cluster
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewayClusterNodeArgs', 'GatewayClusterNodeArgsDict', 'outputs.GatewayClusterNode']]]] nodes: Gateway nodes that form the HA cluster
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

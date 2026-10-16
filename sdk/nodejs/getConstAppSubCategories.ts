@@ -31,10 +31,6 @@ export function getConstAppSubCategories(opts?: pulumi.InvokeOptions): Promise<G
  */
 export interface GetConstAppSubCategoriesResult {
     readonly constAppSubCategories: outputs.GetConstAppSubCategoriesConstAppSubCategory[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }
 /**
  * This data source provides the of ConstAppSubCategories.

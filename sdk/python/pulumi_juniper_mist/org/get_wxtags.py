@@ -27,24 +27,13 @@ class GetWxtagsResult:
     """
     A collection of values returned by getWxtags.
     """
-    def __init__(__self__, id=None, org_id=None, org_wxtags=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, org_id=None, org_wxtags=None):
         if org_id and not isinstance(org_id, str):
             raise TypeError("Expected argument 'org_id' to be a str")
         pulumi.set(__self__, "org_id", org_id)
         if org_wxtags and not isinstance(org_wxtags, list):
             raise TypeError("Expected argument 'org_wxtags' to be a list")
         pulumi.set(__self__, "org_wxtags", org_wxtags)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="orgId")
@@ -63,7 +52,6 @@ class AwaitableGetWxtagsResult(GetWxtagsResult):
         if False:
             yield self
         return GetWxtagsResult(
-            id=self.id,
             org_id=self.org_id,
             org_wxtags=self.org_wxtags)
 
@@ -99,7 +87,6 @@ def get_wxtags(org_id: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('junipermist:org/getWxtags:getWxtags', __args__, opts=opts, typ=GetWxtagsResult).value
 
     return AwaitableGetWxtagsResult(
-        id=pulumi.get(__ret__, 'id'),
         org_id=pulumi.get(__ret__, 'org_id'),
         org_wxtags=pulumi.get(__ret__, 'org_wxtags'))
 def get_wxtags_output(org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -132,6 +119,5 @@ def get_wxtags_output(org_id: pulumi.Input[Optional[_builtins.str]] = None,
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:org/getWxtags:getWxtags', __args__, opts=opts, typ=GetWxtagsResult)
     return __ret__.apply(lambda __response__: GetWxtagsResult(
-        id=pulumi.get(__response__, 'id'),
         org_id=pulumi.get(__response__, 'org_id'),
         org_wxtags=pulumi.get(__response__, 'org_wxtags')))

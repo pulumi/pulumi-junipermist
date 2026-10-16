@@ -3078,19 +3078,19 @@ class Wlan(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acct_immediate_update: pulumi.Input[Optional[_builtins.bool]] = None,
                  acct_interim_interval: pulumi.Input[Optional[_builtins.int]] = None,
-                 acct_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WlanAcctServerArgs', 'WlanAcctServerArgsDict']]]]] = None,
-                 airwatch: pulumi.Input[Optional[Union['WlanAirwatchArgs', 'WlanAirwatchArgsDict']]] = None,
+                 acct_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WlanAcctServerArgs', 'WlanAcctServerArgsDict', 'outputs.WlanAcctServer']]]]] = None,
+                 airwatch: pulumi.Input[Optional[Union['WlanAirwatchArgs', 'WlanAirwatchArgsDict', 'outputs.WlanAirwatch']]] = None,
                  allow_ipv6_ndp: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_mdns: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_ssdp: pulumi.Input[Optional[_builtins.bool]] = None,
                  ap_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 app_limit: pulumi.Input[Optional[Union['WlanAppLimitArgs', 'WlanAppLimitArgsDict']]] = None,
-                 app_qos: pulumi.Input[Optional[Union['WlanAppQosArgs', 'WlanAppQosArgsDict']]] = None,
+                 app_limit: pulumi.Input[Optional[Union['WlanAppLimitArgs', 'WlanAppLimitArgsDict', 'outputs.WlanAppLimit']]] = None,
+                 app_qos: pulumi.Input[Optional[Union['WlanAppQosArgs', 'WlanAppQosArgsDict', 'outputs.WlanAppQos']]] = None,
                  apply_to: pulumi.Input[Optional[_builtins.str]] = None,
                  arp_filter: pulumi.Input[Optional[_builtins.bool]] = None,
-                 auth: pulumi.Input[Optional[Union['WlanAuthArgs', 'WlanAuthArgsDict']]] = None,
+                 auth: pulumi.Input[Optional[Union['WlanAuthArgs', 'WlanAuthArgsDict', 'outputs.WlanAuth']]] = None,
                  auth_server_selection: pulumi.Input[Optional[_builtins.str]] = None,
-                 auth_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WlanAuthServerArgs', 'WlanAuthServerArgsDict']]]]] = None,
+                 auth_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WlanAuthServerArgs', 'WlanAuthServerArgsDict', 'outputs.WlanAuthServer']]]]] = None,
                  auth_servers_nas_id: pulumi.Input[Optional[_builtins.str]] = None,
                  auth_servers_nas_ip: pulumi.Input[Optional[_builtins.str]] = None,
                  auth_servers_retries: pulumi.Input[Optional[_builtins.int]] = None,
@@ -3099,13 +3099,13 @@ class Wlan(pulumi.CustomResource):
                  band_steer_force_band5: pulumi.Input[Optional[_builtins.bool]] = None,
                  bands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  block_blacklist_clients: pulumi.Input[Optional[_builtins.bool]] = None,
-                 bonjour: pulumi.Input[Optional[Union['WlanBonjourArgs', 'WlanBonjourArgsDict']]] = None,
-                 cisco_cwa: pulumi.Input[Optional[Union['WlanCiscoCwaArgs', 'WlanCiscoCwaArgsDict']]] = None,
+                 bonjour: pulumi.Input[Optional[Union['WlanBonjourArgs', 'WlanBonjourArgsDict', 'outputs.WlanBonjour']]] = None,
+                 cisco_cwa: pulumi.Input[Optional[Union['WlanCiscoCwaArgs', 'WlanCiscoCwaArgsDict', 'outputs.WlanCiscoCwa']]] = None,
                  client_limit_down: pulumi.Input[Optional[_builtins.str]] = None,
                  client_limit_down_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  client_limit_up: pulumi.Input[Optional[_builtins.str]] = None,
                  client_limit_up_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 coa_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WlanCoaServerArgs', 'WlanCoaServerArgsDict']]]]] = None,
+                 coa_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WlanCoaServerArgs', 'WlanCoaServerArgsDict', 'outputs.WlanCoaServer']]]]] = None,
                  disable11ax: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable11be: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_ht_vht_rates: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -3116,10 +3116,10 @@ class Wlan(pulumi.CustomResource):
                  disable_when_gateway_unreachable: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_when_mxtunnel_down: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_wmm: pulumi.Input[Optional[_builtins.bool]] = None,
-                 dns_server_rewrite: pulumi.Input[Optional[Union['WlanDnsServerRewriteArgs', 'WlanDnsServerRewriteArgsDict']]] = None,
+                 dns_server_rewrite: pulumi.Input[Optional[Union['WlanDnsServerRewriteArgs', 'WlanDnsServerRewriteArgsDict', 'outputs.WlanDnsServerRewrite']]] = None,
                  dtim: pulumi.Input[Optional[_builtins.int]] = None,
-                 dynamic_psk: pulumi.Input[Optional[Union['WlanDynamicPskArgs', 'WlanDynamicPskArgsDict']]] = None,
-                 dynamic_vlan: pulumi.Input[Optional[Union['WlanDynamicVlanArgs', 'WlanDynamicVlanArgsDict']]] = None,
+                 dynamic_psk: pulumi.Input[Optional[Union['WlanDynamicPskArgs', 'WlanDynamicPskArgsDict', 'outputs.WlanDynamicPsk']]] = None,
+                 dynamic_vlan: pulumi.Input[Optional[Union['WlanDynamicVlanArgs', 'WlanDynamicVlanArgsDict', 'outputs.WlanDynamicVlan']]] = None,
                  enable_ftm: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_local_keycaching: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_wireless_bridging: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -3128,8 +3128,8 @@ class Wlan(pulumi.CustomResource):
                  fast_dot1x_timers: pulumi.Input[Optional[_builtins.bool]] = None,
                  hide_ssid: pulumi.Input[Optional[_builtins.bool]] = None,
                  hostname_ie: pulumi.Input[Optional[_builtins.bool]] = None,
-                 hotspot20: pulumi.Input[Optional[Union['WlanHotspot20Args', 'WlanHotspot20ArgsDict']]] = None,
-                 inject_dhcp_option82: pulumi.Input[Optional[Union['WlanInjectDhcpOption82Args', 'WlanInjectDhcpOption82ArgsDict']]] = None,
+                 hotspot20: pulumi.Input[Optional[Union['WlanHotspot20Args', 'WlanHotspot20ArgsDict', 'outputs.WlanHotspot20']]] = None,
+                 inject_dhcp_option82: pulumi.Input[Optional[Union['WlanInjectDhcpOption82Args', 'WlanInjectDhcpOption82ArgsDict', 'outputs.WlanInjectDhcpOption82']]] = None,
                  interface: pulumi.Input[Optional[_builtins.str]] = None,
                  isolation: pulumi.Input[Optional[_builtins.bool]] = None,
                  l2_isolation: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -3138,21 +3138,21 @@ class Wlan(pulumi.CustomResource):
                  limit_probe_response: pulumi.Input[Optional[_builtins.bool]] = None,
                  max_idletime: pulumi.Input[Optional[_builtins.int]] = None,
                  max_num_clients: pulumi.Input[Optional[_builtins.int]] = None,
-                 mist_nac: pulumi.Input[Optional[Union['WlanMistNacArgs', 'WlanMistNacArgsDict']]] = None,
+                 mist_nac: pulumi.Input[Optional[Union['WlanMistNacArgs', 'WlanMistNacArgsDict', 'outputs.WlanMistNac']]] = None,
                  mxtunnel_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  mxtunnel_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  no_static_dns: pulumi.Input[Optional[_builtins.bool]] = None,
                  no_static_ip: pulumi.Input[Optional[_builtins.bool]] = None,
-                 portal: pulumi.Input[Optional[Union['WlanPortalArgs', 'WlanPortalArgsDict']]] = None,
+                 portal: pulumi.Input[Optional[Union['WlanPortalArgs', 'WlanPortalArgsDict', 'outputs.WlanPortal']]] = None,
                  portal_allowed_hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  portal_allowed_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  portal_denied_hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 qos: pulumi.Input[Optional[Union['WlanQosArgs', 'WlanQosArgsDict']]] = None,
-                 radsec: pulumi.Input[Optional[Union['WlanRadsecArgs', 'WlanRadsecArgsDict']]] = None,
-                 rateset: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WlanRatesetArgs', 'WlanRatesetArgsDict']]]]] = None,
+                 qos: pulumi.Input[Optional[Union['WlanQosArgs', 'WlanQosArgsDict', 'outputs.WlanQos']]] = None,
+                 radsec: pulumi.Input[Optional[Union['WlanRadsecArgs', 'WlanRadsecArgsDict', 'outputs.WlanRadsec']]] = None,
+                 rateset: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WlanRatesetArgs', 'WlanRatesetArgsDict', 'outputs.WlanRateset']]]]] = None,
                  reconnect_clients_when_roaming_mxcluster: pulumi.Input[Optional[_builtins.bool]] = None,
                  roam_mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 schedule: pulumi.Input[Optional[Union['WlanScheduleArgs', 'WlanScheduleArgsDict']]] = None,
+                 schedule: pulumi.Input[Optional[Union['WlanScheduleArgs', 'WlanScheduleArgsDict', 'outputs.WlanSchedule']]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  sle_excluded: pulumi.Input[Optional[_builtins.bool]] = None,
                  ssid: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3213,19 +3213,19 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] acct_immediate_update: Enable coa-immediate-update and address-change-immediate-update on the access profile.
         :param pulumi.Input[_builtins.int] acct_interim_interval: How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WlanAcctServerArgs', 'WlanAcctServerArgsDict']]]] acct_servers: RADIUS accounting servers used by this WLAN
-        :param pulumi.Input[Union['WlanAirwatchArgs', 'WlanAirwatchArgsDict']] airwatch: Integration settings for AirWatch device compliance on this WLAN
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WlanAcctServerArgs', 'WlanAcctServerArgsDict', 'outputs.WlanAcctServer']]]] acct_servers: RADIUS accounting servers used by this WLAN
+        :param pulumi.Input[Union['WlanAirwatchArgs', 'WlanAirwatchArgsDict', 'outputs.WlanAirwatch']] airwatch: Integration settings for AirWatch device compliance on this WLAN
         :param pulumi.Input[_builtins.bool] allow_ipv6_ndp: Only applicable when `limit_bcast`==`true`, which allows or disallows ipv6 Neighbor Discovery packets to go through
         :param pulumi.Input[_builtins.bool] allow_mdns: Only applicable when `limit_bcast`==`true`, which allows mDNS / Bonjour packets to go through
         :param pulumi.Input[_builtins.bool] allow_ssdp: Only applicable when `limit_bcast`==`true`, which allows SSDP
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ap_ids: Access point identifiers used when `apply_to`==`aps`
-        :param pulumi.Input[Union['WlanAppLimitArgs', 'WlanAppLimitArgsDict']] app_limit: Bandwidth limits for applications on this WLAN
-        :param pulumi.Input[Union['WlanAppQosArgs', 'WlanAppQosArgsDict']] app_qos: QoS rules for application traffic on this WLAN
+        :param pulumi.Input[Union['WlanAppLimitArgs', 'WlanAppLimitArgsDict', 'outputs.WlanAppLimit']] app_limit: Bandwidth limits for applications on this WLAN
+        :param pulumi.Input[Union['WlanAppQosArgs', 'WlanAppQosArgsDict', 'outputs.WlanAppQos']] app_qos: QoS rules for application traffic on this WLAN
         :param pulumi.Input[_builtins.str] apply_to: Scope that determines where this WLAN is applied. enum: `aps`, `site`, `wxtags`.
         :param pulumi.Input[_builtins.bool] arp_filter: Whether to enable smart arp filter
-        :param pulumi.Input[Union['WlanAuthArgs', 'WlanAuthArgsDict']] auth: Settings that control client authentication for this WLAN
+        :param pulumi.Input[Union['WlanAuthArgs', 'WlanAuthArgsDict', 'outputs.WlanAuth']] auth: Settings that control client authentication for this WLAN
         :param pulumi.Input[_builtins.str] auth_server_selection: RADIUS authentication server selection behavior for this WLAN. enum: `ordered`, `unordered`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WlanAuthServerArgs', 'WlanAuthServerArgsDict']]]] auth_servers: RADIUS authentication servers used by this WLAN. Required when `auth.type`==`eap`
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WlanAuthServerArgs', 'WlanAuthServerArgsDict', 'outputs.WlanAuthServer']]]] auth_servers: RADIUS authentication servers used by this WLAN. Required when `auth.type`==`eap`
         :param pulumi.Input[_builtins.str] auth_servers_nas_id: Optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
         :param pulumi.Input[_builtins.str] auth_servers_nas_ip: Optional, NAS-IP-ADDRESS to use
         :param pulumi.Input[_builtins.int] auth_servers_retries: RADIUS auth session retries. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default value to 3.
@@ -3234,13 +3234,13 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] band_steer_force_band5: Force dual_band capable client to connect to 5G
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] bands: list of radios that the wlan should apply to. enum: `24`, `5`, `6`
         :param pulumi.Input[_builtins.bool] block_blacklist_clients: Whether to block the clients in the blacklist (up to first 256 macs)
-        :param pulumi.Input[Union['WlanBonjourArgs', 'WlanBonjourArgsDict']] bonjour: Service discovery gateway settings for Bonjour traffic on this WLAN
-        :param pulumi.Input[Union['WlanCiscoCwaArgs', 'WlanCiscoCwaArgsDict']] cisco_cwa: Central web authentication settings for Cisco CWA on this WLAN
+        :param pulumi.Input[Union['WlanBonjourArgs', 'WlanBonjourArgsDict', 'outputs.WlanBonjour']] bonjour: Service discovery gateway settings for Bonjour traffic on this WLAN
+        :param pulumi.Input[Union['WlanCiscoCwaArgs', 'WlanCiscoCwaArgsDict', 'outputs.WlanCiscoCwa']] cisco_cwa: Central web authentication settings for Cisco CWA on this WLAN
         :param pulumi.Input[_builtins.str] client_limit_down: Downlink bandwidth limit applied per client
         :param pulumi.Input[_builtins.bool] client_limit_down_enabled: If downlink limiting per-client is enabled
         :param pulumi.Input[_builtins.str] client_limit_up: Uplink bandwidth limit applied per client
         :param pulumi.Input[_builtins.bool] client_limit_up_enabled: If uplink limiting per-client is enabled
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WlanCoaServerArgs', 'WlanCoaServerArgsDict']]]] coa_servers: RADIUS Change of Authorization servers available to this WLAN
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WlanCoaServerArgs', 'WlanCoaServerArgsDict', 'outputs.WlanCoaServer']]]] coa_servers: RADIUS Change of Authorization servers available to this WLAN
         :param pulumi.Input[_builtins.bool] disable11ax: Some old WLAN drivers may not be compatible
         :param pulumi.Input[_builtins.bool] disable11be: To disable Wi-Fi 7 EHT IEs
         :param pulumi.Input[_builtins.bool] disable_ht_vht_rates: To disable ht or vht rates
@@ -3254,10 +3254,10 @@ class Wlan(pulumi.CustomResource):
                   * cannot reach default gateway
         :param pulumi.Input[_builtins.bool] disable_when_mxtunnel_down: Whether to disable this WLAN when the configured Mist tunnel is down
         :param pulumi.Input[_builtins.bool] disable_wmm: Whether to disable WMM
-        :param pulumi.Input[Union['WlanDnsServerRewriteArgs', 'WlanDnsServerRewriteArgsDict']] dns_server_rewrite: RADIUS group based DNS server rewrite settings for this WLAN
+        :param pulumi.Input[Union['WlanDnsServerRewriteArgs', 'WlanDnsServerRewriteArgsDict', 'outputs.WlanDnsServerRewrite']] dns_server_rewrite: RADIUS group based DNS server rewrite settings for this WLAN
         :param pulumi.Input[_builtins.int] dtim: Delivery Traffic Indication Message interval for this WLAN
-        :param pulumi.Input[Union['WlanDynamicPskArgs', 'WlanDynamicPskArgsDict']] dynamic_psk: Per-user PSK selection settings for this WLAN
-        :param pulumi.Input[Union['WlanDynamicVlanArgs', 'WlanDynamicVlanArgsDict']] dynamic_vlan: VLAN assignment settings for 802.1X dynamic VLANs
+        :param pulumi.Input[Union['WlanDynamicPskArgs', 'WlanDynamicPskArgsDict', 'outputs.WlanDynamicPsk']] dynamic_psk: Per-user PSK selection settings for this WLAN
+        :param pulumi.Input[Union['WlanDynamicVlanArgs', 'WlanDynamicVlanArgsDict', 'outputs.WlanDynamicVlan']] dynamic_vlan: VLAN assignment settings for 802.1X dynamic VLANs
         :param pulumi.Input[_builtins.bool] enable_ftm: Enable FTM (Fine-Time Measurement, 802.11mc); configures the AP as an FTM Responder (target), allowing clients to perform ranging requests against it
         :param pulumi.Input[_builtins.bool] enable_local_keycaching: Enable AP-AP keycaching via multicast
         :param pulumi.Input[_builtins.bool] enable_wireless_bridging: By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wireless_bridging can be enabled
@@ -3266,8 +3266,8 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] fast_dot1x_timers: If set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and ‘auth_server_retries’ .
         :param pulumi.Input[_builtins.bool] hide_ssid: Whether to hide SSID in beacon
         :param pulumi.Input[_builtins.bool] hostname_ie: Include hostname inside IE in AP beacons / probe responses
-        :param pulumi.Input[Union['WlanHotspot20Args', 'WlanHotspot20ArgsDict']] hotspot20: Passpoint and Hotspot 2.0 settings for this WLAN
-        :param pulumi.Input[Union['WlanInjectDhcpOption82Args', 'WlanInjectDhcpOption82ArgsDict']] inject_dhcp_option82: DHCP Option 82 insertion settings for this WLAN
+        :param pulumi.Input[Union['WlanHotspot20Args', 'WlanHotspot20ArgsDict', 'outputs.WlanHotspot20']] hotspot20: Passpoint and Hotspot 2.0 settings for this WLAN
+        :param pulumi.Input[Union['WlanInjectDhcpOption82Args', 'WlanInjectDhcpOption82ArgsDict', 'outputs.WlanInjectDhcpOption82']] inject_dhcp_option82: DHCP Option 82 insertion settings for this WLAN
         :param pulumi.Input[_builtins.str] interface: Network interface or tunnel where this WLAN bridges client traffic. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `site_mxedge`, `wxtunnel`.
         :param pulumi.Input[_builtins.bool] isolation: Whether to stop clients to talk to each other
         :param pulumi.Input[_builtins.bool] l2_isolation: If isolation is enabled, whether to deny clients to talk to L2 on the LAN
@@ -3276,21 +3276,21 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] limit_probe_response: Limit probe response base on some heuristic rules
         :param pulumi.Input[_builtins.int] max_idletime: Max idle time in seconds
         :param pulumi.Input[_builtins.int] max_num_clients: Maximum number of client connected to the SSID. `0` means unlimited
-        :param pulumi.Input[Union['WlanMistNacArgs', 'WlanMistNacArgsDict']] mist_nac: Juniper Mist NAC settings used by this WLAN
+        :param pulumi.Input[Union['WlanMistNacArgs', 'WlanMistNacArgsDict', 'outputs.WlanMistNac']] mist_nac: Juniper Mist NAC settings used by this WLAN
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mxtunnel_ids: Mist Tunnel identifiers used when `interface`==`mxtunnel`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mxtunnel_names: Mist Tunnel names used when `interface`==`site_mxedge`
         :param pulumi.Input[_builtins.bool] no_static_dns: Whether to only allow client to use DNS that we’ve learned from DHCP response
         :param pulumi.Input[_builtins.bool] no_static_ip: Whether to only allow client that we’ve learned from DHCP exchange to talk
-        :param pulumi.Input[Union['WlanPortalArgs', 'WlanPortalArgsDict']] portal: Guest portal settings for this WLAN
+        :param pulumi.Input[Union['WlanPortalArgs', 'WlanPortalArgsDict', 'outputs.WlanPortal']] portal: Guest portal settings for this WLAN
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] portal_allowed_hostnames: Guest portal hostnames that clients may reach before authorization
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] portal_allowed_subnets: Guest portal CIDR subnets that clients may reach before authorization
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] portal_denied_hostnames: Guest portal hostnames denied before authorization, taking precedence over allowed hostnames
-        :param pulumi.Input[Union['WlanQosArgs', 'WlanQosArgsDict']] qos: Quality-of-service settings for WLAN client traffic
-        :param pulumi.Input[Union['WlanRadsecArgs', 'WlanRadsecArgsDict']] radsec: TLS-secured RADIUS transport settings for this WLAN
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['WlanRatesetArgs', 'WlanRatesetArgsDict']]]] rateset: Data rate settings by RF band for this WLAN
+        :param pulumi.Input[Union['WlanQosArgs', 'WlanQosArgsDict', 'outputs.WlanQos']] qos: Quality-of-service settings for WLAN client traffic
+        :param pulumi.Input[Union['WlanRadsecArgs', 'WlanRadsecArgsDict', 'outputs.WlanRadsec']] radsec: TLS-secured RADIUS transport settings for this WLAN
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['WlanRatesetArgs', 'WlanRatesetArgsDict', 'outputs.WlanRateset']]]] rateset: Data rate settings by RF band for this WLAN
         :param pulumi.Input[_builtins.bool] reconnect_clients_when_roaming_mxcluster: When different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
         :param pulumi.Input[_builtins.str] roam_mode: Fast roaming mode configured for this WLAN. enum: `11r`, `NONE`, `OKC`.
-        :param pulumi.Input[Union['WlanScheduleArgs', 'WlanScheduleArgsDict']] schedule: Operating schedule controlling when this WLAN is active
+        :param pulumi.Input[Union['WlanScheduleArgs', 'WlanScheduleArgsDict', 'outputs.WlanSchedule']] schedule: Operating schedule controlling when this WLAN is active
         :param pulumi.Input[_builtins.str] site_id: Mist site associated with this WLAN, when site-scoped
         :param pulumi.Input[_builtins.bool] sle_excluded: Whether to exclude this WLAN from SLE metrics
         :param pulumi.Input[_builtins.str] ssid: Name of the SSID
@@ -3370,19 +3370,19 @@ class Wlan(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acct_immediate_update: pulumi.Input[Optional[_builtins.bool]] = None,
                  acct_interim_interval: pulumi.Input[Optional[_builtins.int]] = None,
-                 acct_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WlanAcctServerArgs', 'WlanAcctServerArgsDict']]]]] = None,
-                 airwatch: pulumi.Input[Optional[Union['WlanAirwatchArgs', 'WlanAirwatchArgsDict']]] = None,
+                 acct_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WlanAcctServerArgs', 'WlanAcctServerArgsDict', 'outputs.WlanAcctServer']]]]] = None,
+                 airwatch: pulumi.Input[Optional[Union['WlanAirwatchArgs', 'WlanAirwatchArgsDict', 'outputs.WlanAirwatch']]] = None,
                  allow_ipv6_ndp: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_mdns: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_ssdp: pulumi.Input[Optional[_builtins.bool]] = None,
                  ap_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 app_limit: pulumi.Input[Optional[Union['WlanAppLimitArgs', 'WlanAppLimitArgsDict']]] = None,
-                 app_qos: pulumi.Input[Optional[Union['WlanAppQosArgs', 'WlanAppQosArgsDict']]] = None,
+                 app_limit: pulumi.Input[Optional[Union['WlanAppLimitArgs', 'WlanAppLimitArgsDict', 'outputs.WlanAppLimit']]] = None,
+                 app_qos: pulumi.Input[Optional[Union['WlanAppQosArgs', 'WlanAppQosArgsDict', 'outputs.WlanAppQos']]] = None,
                  apply_to: pulumi.Input[Optional[_builtins.str]] = None,
                  arp_filter: pulumi.Input[Optional[_builtins.bool]] = None,
-                 auth: pulumi.Input[Optional[Union['WlanAuthArgs', 'WlanAuthArgsDict']]] = None,
+                 auth: pulumi.Input[Optional[Union['WlanAuthArgs', 'WlanAuthArgsDict', 'outputs.WlanAuth']]] = None,
                  auth_server_selection: pulumi.Input[Optional[_builtins.str]] = None,
-                 auth_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WlanAuthServerArgs', 'WlanAuthServerArgsDict']]]]] = None,
+                 auth_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WlanAuthServerArgs', 'WlanAuthServerArgsDict', 'outputs.WlanAuthServer']]]]] = None,
                  auth_servers_nas_id: pulumi.Input[Optional[_builtins.str]] = None,
                  auth_servers_nas_ip: pulumi.Input[Optional[_builtins.str]] = None,
                  auth_servers_retries: pulumi.Input[Optional[_builtins.int]] = None,
@@ -3391,13 +3391,13 @@ class Wlan(pulumi.CustomResource):
                  band_steer_force_band5: pulumi.Input[Optional[_builtins.bool]] = None,
                  bands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  block_blacklist_clients: pulumi.Input[Optional[_builtins.bool]] = None,
-                 bonjour: pulumi.Input[Optional[Union['WlanBonjourArgs', 'WlanBonjourArgsDict']]] = None,
-                 cisco_cwa: pulumi.Input[Optional[Union['WlanCiscoCwaArgs', 'WlanCiscoCwaArgsDict']]] = None,
+                 bonjour: pulumi.Input[Optional[Union['WlanBonjourArgs', 'WlanBonjourArgsDict', 'outputs.WlanBonjour']]] = None,
+                 cisco_cwa: pulumi.Input[Optional[Union['WlanCiscoCwaArgs', 'WlanCiscoCwaArgsDict', 'outputs.WlanCiscoCwa']]] = None,
                  client_limit_down: pulumi.Input[Optional[_builtins.str]] = None,
                  client_limit_down_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  client_limit_up: pulumi.Input[Optional[_builtins.str]] = None,
                  client_limit_up_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 coa_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WlanCoaServerArgs', 'WlanCoaServerArgsDict']]]]] = None,
+                 coa_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WlanCoaServerArgs', 'WlanCoaServerArgsDict', 'outputs.WlanCoaServer']]]]] = None,
                  disable11ax: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable11be: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_ht_vht_rates: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -3408,10 +3408,10 @@ class Wlan(pulumi.CustomResource):
                  disable_when_gateway_unreachable: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_when_mxtunnel_down: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_wmm: pulumi.Input[Optional[_builtins.bool]] = None,
-                 dns_server_rewrite: pulumi.Input[Optional[Union['WlanDnsServerRewriteArgs', 'WlanDnsServerRewriteArgsDict']]] = None,
+                 dns_server_rewrite: pulumi.Input[Optional[Union['WlanDnsServerRewriteArgs', 'WlanDnsServerRewriteArgsDict', 'outputs.WlanDnsServerRewrite']]] = None,
                  dtim: pulumi.Input[Optional[_builtins.int]] = None,
-                 dynamic_psk: pulumi.Input[Optional[Union['WlanDynamicPskArgs', 'WlanDynamicPskArgsDict']]] = None,
-                 dynamic_vlan: pulumi.Input[Optional[Union['WlanDynamicVlanArgs', 'WlanDynamicVlanArgsDict']]] = None,
+                 dynamic_psk: pulumi.Input[Optional[Union['WlanDynamicPskArgs', 'WlanDynamicPskArgsDict', 'outputs.WlanDynamicPsk']]] = None,
+                 dynamic_vlan: pulumi.Input[Optional[Union['WlanDynamicVlanArgs', 'WlanDynamicVlanArgsDict', 'outputs.WlanDynamicVlan']]] = None,
                  enable_ftm: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_local_keycaching: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_wireless_bridging: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -3420,8 +3420,8 @@ class Wlan(pulumi.CustomResource):
                  fast_dot1x_timers: pulumi.Input[Optional[_builtins.bool]] = None,
                  hide_ssid: pulumi.Input[Optional[_builtins.bool]] = None,
                  hostname_ie: pulumi.Input[Optional[_builtins.bool]] = None,
-                 hotspot20: pulumi.Input[Optional[Union['WlanHotspot20Args', 'WlanHotspot20ArgsDict']]] = None,
-                 inject_dhcp_option82: pulumi.Input[Optional[Union['WlanInjectDhcpOption82Args', 'WlanInjectDhcpOption82ArgsDict']]] = None,
+                 hotspot20: pulumi.Input[Optional[Union['WlanHotspot20Args', 'WlanHotspot20ArgsDict', 'outputs.WlanHotspot20']]] = None,
+                 inject_dhcp_option82: pulumi.Input[Optional[Union['WlanInjectDhcpOption82Args', 'WlanInjectDhcpOption82ArgsDict', 'outputs.WlanInjectDhcpOption82']]] = None,
                  interface: pulumi.Input[Optional[_builtins.str]] = None,
                  isolation: pulumi.Input[Optional[_builtins.bool]] = None,
                  l2_isolation: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -3430,21 +3430,21 @@ class Wlan(pulumi.CustomResource):
                  limit_probe_response: pulumi.Input[Optional[_builtins.bool]] = None,
                  max_idletime: pulumi.Input[Optional[_builtins.int]] = None,
                  max_num_clients: pulumi.Input[Optional[_builtins.int]] = None,
-                 mist_nac: pulumi.Input[Optional[Union['WlanMistNacArgs', 'WlanMistNacArgsDict']]] = None,
+                 mist_nac: pulumi.Input[Optional[Union['WlanMistNacArgs', 'WlanMistNacArgsDict', 'outputs.WlanMistNac']]] = None,
                  mxtunnel_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  mxtunnel_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  no_static_dns: pulumi.Input[Optional[_builtins.bool]] = None,
                  no_static_ip: pulumi.Input[Optional[_builtins.bool]] = None,
-                 portal: pulumi.Input[Optional[Union['WlanPortalArgs', 'WlanPortalArgsDict']]] = None,
+                 portal: pulumi.Input[Optional[Union['WlanPortalArgs', 'WlanPortalArgsDict', 'outputs.WlanPortal']]] = None,
                  portal_allowed_hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  portal_allowed_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  portal_denied_hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 qos: pulumi.Input[Optional[Union['WlanQosArgs', 'WlanQosArgsDict']]] = None,
-                 radsec: pulumi.Input[Optional[Union['WlanRadsecArgs', 'WlanRadsecArgsDict']]] = None,
-                 rateset: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WlanRatesetArgs', 'WlanRatesetArgsDict']]]]] = None,
+                 qos: pulumi.Input[Optional[Union['WlanQosArgs', 'WlanQosArgsDict', 'outputs.WlanQos']]] = None,
+                 radsec: pulumi.Input[Optional[Union['WlanRadsecArgs', 'WlanRadsecArgsDict', 'outputs.WlanRadsec']]] = None,
+                 rateset: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WlanRatesetArgs', 'WlanRatesetArgsDict', 'outputs.WlanRateset']]]]] = None,
                  reconnect_clients_when_roaming_mxcluster: pulumi.Input[Optional[_builtins.bool]] = None,
                  roam_mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 schedule: pulumi.Input[Optional[Union['WlanScheduleArgs', 'WlanScheduleArgsDict']]] = None,
+                 schedule: pulumi.Input[Optional[Union['WlanScheduleArgs', 'WlanScheduleArgsDict', 'outputs.WlanSchedule']]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  sle_excluded: pulumi.Input[Optional[_builtins.bool]] = None,
                  ssid: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3582,19 +3582,19 @@ class Wlan(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             acct_immediate_update: pulumi.Input[Optional[_builtins.bool]] = None,
             acct_interim_interval: pulumi.Input[Optional[_builtins.int]] = None,
-            acct_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WlanAcctServerArgs', 'WlanAcctServerArgsDict']]]]] = None,
-            airwatch: pulumi.Input[Optional[Union['WlanAirwatchArgs', 'WlanAirwatchArgsDict']]] = None,
+            acct_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WlanAcctServerArgs', 'WlanAcctServerArgsDict', 'outputs.WlanAcctServer']]]]] = None,
+            airwatch: pulumi.Input[Optional[Union['WlanAirwatchArgs', 'WlanAirwatchArgsDict', 'outputs.WlanAirwatch']]] = None,
             allow_ipv6_ndp: pulumi.Input[Optional[_builtins.bool]] = None,
             allow_mdns: pulumi.Input[Optional[_builtins.bool]] = None,
             allow_ssdp: pulumi.Input[Optional[_builtins.bool]] = None,
             ap_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            app_limit: pulumi.Input[Optional[Union['WlanAppLimitArgs', 'WlanAppLimitArgsDict']]] = None,
-            app_qos: pulumi.Input[Optional[Union['WlanAppQosArgs', 'WlanAppQosArgsDict']]] = None,
+            app_limit: pulumi.Input[Optional[Union['WlanAppLimitArgs', 'WlanAppLimitArgsDict', 'outputs.WlanAppLimit']]] = None,
+            app_qos: pulumi.Input[Optional[Union['WlanAppQosArgs', 'WlanAppQosArgsDict', 'outputs.WlanAppQos']]] = None,
             apply_to: pulumi.Input[Optional[_builtins.str]] = None,
             arp_filter: pulumi.Input[Optional[_builtins.bool]] = None,
-            auth: pulumi.Input[Optional[Union['WlanAuthArgs', 'WlanAuthArgsDict']]] = None,
+            auth: pulumi.Input[Optional[Union['WlanAuthArgs', 'WlanAuthArgsDict', 'outputs.WlanAuth']]] = None,
             auth_server_selection: pulumi.Input[Optional[_builtins.str]] = None,
-            auth_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WlanAuthServerArgs', 'WlanAuthServerArgsDict']]]]] = None,
+            auth_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WlanAuthServerArgs', 'WlanAuthServerArgsDict', 'outputs.WlanAuthServer']]]]] = None,
             auth_servers_nas_id: pulumi.Input[Optional[_builtins.str]] = None,
             auth_servers_nas_ip: pulumi.Input[Optional[_builtins.str]] = None,
             auth_servers_retries: pulumi.Input[Optional[_builtins.int]] = None,
@@ -3603,13 +3603,13 @@ class Wlan(pulumi.CustomResource):
             band_steer_force_band5: pulumi.Input[Optional[_builtins.bool]] = None,
             bands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             block_blacklist_clients: pulumi.Input[Optional[_builtins.bool]] = None,
-            bonjour: pulumi.Input[Optional[Union['WlanBonjourArgs', 'WlanBonjourArgsDict']]] = None,
-            cisco_cwa: pulumi.Input[Optional[Union['WlanCiscoCwaArgs', 'WlanCiscoCwaArgsDict']]] = None,
+            bonjour: pulumi.Input[Optional[Union['WlanBonjourArgs', 'WlanBonjourArgsDict', 'outputs.WlanBonjour']]] = None,
+            cisco_cwa: pulumi.Input[Optional[Union['WlanCiscoCwaArgs', 'WlanCiscoCwaArgsDict', 'outputs.WlanCiscoCwa']]] = None,
             client_limit_down: pulumi.Input[Optional[_builtins.str]] = None,
             client_limit_down_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             client_limit_up: pulumi.Input[Optional[_builtins.str]] = None,
             client_limit_up_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-            coa_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WlanCoaServerArgs', 'WlanCoaServerArgsDict']]]]] = None,
+            coa_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WlanCoaServerArgs', 'WlanCoaServerArgsDict', 'outputs.WlanCoaServer']]]]] = None,
             disable11ax: pulumi.Input[Optional[_builtins.bool]] = None,
             disable11be: pulumi.Input[Optional[_builtins.bool]] = None,
             disable_ht_vht_rates: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -3620,10 +3620,10 @@ class Wlan(pulumi.CustomResource):
             disable_when_gateway_unreachable: pulumi.Input[Optional[_builtins.bool]] = None,
             disable_when_mxtunnel_down: pulumi.Input[Optional[_builtins.bool]] = None,
             disable_wmm: pulumi.Input[Optional[_builtins.bool]] = None,
-            dns_server_rewrite: pulumi.Input[Optional[Union['WlanDnsServerRewriteArgs', 'WlanDnsServerRewriteArgsDict']]] = None,
+            dns_server_rewrite: pulumi.Input[Optional[Union['WlanDnsServerRewriteArgs', 'WlanDnsServerRewriteArgsDict', 'outputs.WlanDnsServerRewrite']]] = None,
             dtim: pulumi.Input[Optional[_builtins.int]] = None,
-            dynamic_psk: pulumi.Input[Optional[Union['WlanDynamicPskArgs', 'WlanDynamicPskArgsDict']]] = None,
-            dynamic_vlan: pulumi.Input[Optional[Union['WlanDynamicVlanArgs', 'WlanDynamicVlanArgsDict']]] = None,
+            dynamic_psk: pulumi.Input[Optional[Union['WlanDynamicPskArgs', 'WlanDynamicPskArgsDict', 'outputs.WlanDynamicPsk']]] = None,
+            dynamic_vlan: pulumi.Input[Optional[Union['WlanDynamicVlanArgs', 'WlanDynamicVlanArgsDict', 'outputs.WlanDynamicVlan']]] = None,
             enable_ftm: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_local_keycaching: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_wireless_bridging: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -3632,8 +3632,8 @@ class Wlan(pulumi.CustomResource):
             fast_dot1x_timers: pulumi.Input[Optional[_builtins.bool]] = None,
             hide_ssid: pulumi.Input[Optional[_builtins.bool]] = None,
             hostname_ie: pulumi.Input[Optional[_builtins.bool]] = None,
-            hotspot20: pulumi.Input[Optional[Union['WlanHotspot20Args', 'WlanHotspot20ArgsDict']]] = None,
-            inject_dhcp_option82: pulumi.Input[Optional[Union['WlanInjectDhcpOption82Args', 'WlanInjectDhcpOption82ArgsDict']]] = None,
+            hotspot20: pulumi.Input[Optional[Union['WlanHotspot20Args', 'WlanHotspot20ArgsDict', 'outputs.WlanHotspot20']]] = None,
+            inject_dhcp_option82: pulumi.Input[Optional[Union['WlanInjectDhcpOption82Args', 'WlanInjectDhcpOption82ArgsDict', 'outputs.WlanInjectDhcpOption82']]] = None,
             interface: pulumi.Input[Optional[_builtins.str]] = None,
             isolation: pulumi.Input[Optional[_builtins.bool]] = None,
             l2_isolation: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -3642,26 +3642,26 @@ class Wlan(pulumi.CustomResource):
             limit_probe_response: pulumi.Input[Optional[_builtins.bool]] = None,
             max_idletime: pulumi.Input[Optional[_builtins.int]] = None,
             max_num_clients: pulumi.Input[Optional[_builtins.int]] = None,
-            mist_nac: pulumi.Input[Optional[Union['WlanMistNacArgs', 'WlanMistNacArgsDict']]] = None,
+            mist_nac: pulumi.Input[Optional[Union['WlanMistNacArgs', 'WlanMistNacArgsDict', 'outputs.WlanMistNac']]] = None,
             msp_id: pulumi.Input[Optional[_builtins.str]] = None,
             mxtunnel_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             mxtunnel_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             no_static_dns: pulumi.Input[Optional[_builtins.bool]] = None,
             no_static_ip: pulumi.Input[Optional[_builtins.bool]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
-            portal: pulumi.Input[Optional[Union['WlanPortalArgs', 'WlanPortalArgsDict']]] = None,
+            portal: pulumi.Input[Optional[Union['WlanPortalArgs', 'WlanPortalArgsDict', 'outputs.WlanPortal']]] = None,
             portal_allowed_hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             portal_allowed_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             portal_api_secret: pulumi.Input[Optional[_builtins.str]] = None,
             portal_denied_hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             portal_image: pulumi.Input[Optional[_builtins.str]] = None,
             portal_sso_url: pulumi.Input[Optional[_builtins.str]] = None,
-            qos: pulumi.Input[Optional[Union['WlanQosArgs', 'WlanQosArgsDict']]] = None,
-            radsec: pulumi.Input[Optional[Union['WlanRadsecArgs', 'WlanRadsecArgsDict']]] = None,
-            rateset: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WlanRatesetArgs', 'WlanRatesetArgsDict']]]]] = None,
+            qos: pulumi.Input[Optional[Union['WlanQosArgs', 'WlanQosArgsDict', 'outputs.WlanQos']]] = None,
+            radsec: pulumi.Input[Optional[Union['WlanRadsecArgs', 'WlanRadsecArgsDict', 'outputs.WlanRadsec']]] = None,
+            rateset: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WlanRatesetArgs', 'WlanRatesetArgsDict', 'outputs.WlanRateset']]]]] = None,
             reconnect_clients_when_roaming_mxcluster: pulumi.Input[Optional[_builtins.bool]] = None,
             roam_mode: pulumi.Input[Optional[_builtins.str]] = None,
-            schedule: pulumi.Input[Optional[Union['WlanScheduleArgs', 'WlanScheduleArgsDict']]] = None,
+            schedule: pulumi.Input[Optional[Union['WlanScheduleArgs', 'WlanScheduleArgsDict', 'outputs.WlanSchedule']]] = None,
             site_id: pulumi.Input[Optional[_builtins.str]] = None,
             sle_excluded: pulumi.Input[Optional[_builtins.bool]] = None,
             ssid: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3686,19 +3686,19 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] acct_immediate_update: Enable coa-immediate-update and address-change-immediate-update on the access profile.
         :param pulumi.Input[_builtins.int] acct_interim_interval: How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WlanAcctServerArgs', 'WlanAcctServerArgsDict']]]] acct_servers: RADIUS accounting servers used by this WLAN
-        :param pulumi.Input[Union['WlanAirwatchArgs', 'WlanAirwatchArgsDict']] airwatch: Integration settings for AirWatch device compliance on this WLAN
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WlanAcctServerArgs', 'WlanAcctServerArgsDict', 'outputs.WlanAcctServer']]]] acct_servers: RADIUS accounting servers used by this WLAN
+        :param pulumi.Input[Union['WlanAirwatchArgs', 'WlanAirwatchArgsDict', 'outputs.WlanAirwatch']] airwatch: Integration settings for AirWatch device compliance on this WLAN
         :param pulumi.Input[_builtins.bool] allow_ipv6_ndp: Only applicable when `limit_bcast`==`true`, which allows or disallows ipv6 Neighbor Discovery packets to go through
         :param pulumi.Input[_builtins.bool] allow_mdns: Only applicable when `limit_bcast`==`true`, which allows mDNS / Bonjour packets to go through
         :param pulumi.Input[_builtins.bool] allow_ssdp: Only applicable when `limit_bcast`==`true`, which allows SSDP
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ap_ids: Access point identifiers used when `apply_to`==`aps`
-        :param pulumi.Input[Union['WlanAppLimitArgs', 'WlanAppLimitArgsDict']] app_limit: Bandwidth limits for applications on this WLAN
-        :param pulumi.Input[Union['WlanAppQosArgs', 'WlanAppQosArgsDict']] app_qos: QoS rules for application traffic on this WLAN
+        :param pulumi.Input[Union['WlanAppLimitArgs', 'WlanAppLimitArgsDict', 'outputs.WlanAppLimit']] app_limit: Bandwidth limits for applications on this WLAN
+        :param pulumi.Input[Union['WlanAppQosArgs', 'WlanAppQosArgsDict', 'outputs.WlanAppQos']] app_qos: QoS rules for application traffic on this WLAN
         :param pulumi.Input[_builtins.str] apply_to: Scope that determines where this WLAN is applied. enum: `aps`, `site`, `wxtags`.
         :param pulumi.Input[_builtins.bool] arp_filter: Whether to enable smart arp filter
-        :param pulumi.Input[Union['WlanAuthArgs', 'WlanAuthArgsDict']] auth: Settings that control client authentication for this WLAN
+        :param pulumi.Input[Union['WlanAuthArgs', 'WlanAuthArgsDict', 'outputs.WlanAuth']] auth: Settings that control client authentication for this WLAN
         :param pulumi.Input[_builtins.str] auth_server_selection: RADIUS authentication server selection behavior for this WLAN. enum: `ordered`, `unordered`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WlanAuthServerArgs', 'WlanAuthServerArgsDict']]]] auth_servers: RADIUS authentication servers used by this WLAN. Required when `auth.type`==`eap`
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WlanAuthServerArgs', 'WlanAuthServerArgsDict', 'outputs.WlanAuthServer']]]] auth_servers: RADIUS authentication servers used by this WLAN. Required when `auth.type`==`eap`
         :param pulumi.Input[_builtins.str] auth_servers_nas_id: Optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
         :param pulumi.Input[_builtins.str] auth_servers_nas_ip: Optional, NAS-IP-ADDRESS to use
         :param pulumi.Input[_builtins.int] auth_servers_retries: RADIUS auth session retries. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default value to 3.
@@ -3707,13 +3707,13 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] band_steer_force_band5: Force dual_band capable client to connect to 5G
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] bands: list of radios that the wlan should apply to. enum: `24`, `5`, `6`
         :param pulumi.Input[_builtins.bool] block_blacklist_clients: Whether to block the clients in the blacklist (up to first 256 macs)
-        :param pulumi.Input[Union['WlanBonjourArgs', 'WlanBonjourArgsDict']] bonjour: Service discovery gateway settings for Bonjour traffic on this WLAN
-        :param pulumi.Input[Union['WlanCiscoCwaArgs', 'WlanCiscoCwaArgsDict']] cisco_cwa: Central web authentication settings for Cisco CWA on this WLAN
+        :param pulumi.Input[Union['WlanBonjourArgs', 'WlanBonjourArgsDict', 'outputs.WlanBonjour']] bonjour: Service discovery gateway settings for Bonjour traffic on this WLAN
+        :param pulumi.Input[Union['WlanCiscoCwaArgs', 'WlanCiscoCwaArgsDict', 'outputs.WlanCiscoCwa']] cisco_cwa: Central web authentication settings for Cisco CWA on this WLAN
         :param pulumi.Input[_builtins.str] client_limit_down: Downlink bandwidth limit applied per client
         :param pulumi.Input[_builtins.bool] client_limit_down_enabled: If downlink limiting per-client is enabled
         :param pulumi.Input[_builtins.str] client_limit_up: Uplink bandwidth limit applied per client
         :param pulumi.Input[_builtins.bool] client_limit_up_enabled: If uplink limiting per-client is enabled
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WlanCoaServerArgs', 'WlanCoaServerArgsDict']]]] coa_servers: RADIUS Change of Authorization servers available to this WLAN
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WlanCoaServerArgs', 'WlanCoaServerArgsDict', 'outputs.WlanCoaServer']]]] coa_servers: RADIUS Change of Authorization servers available to this WLAN
         :param pulumi.Input[_builtins.bool] disable11ax: Some old WLAN drivers may not be compatible
         :param pulumi.Input[_builtins.bool] disable11be: To disable Wi-Fi 7 EHT IEs
         :param pulumi.Input[_builtins.bool] disable_ht_vht_rates: To disable ht or vht rates
@@ -3727,10 +3727,10 @@ class Wlan(pulumi.CustomResource):
                   * cannot reach default gateway
         :param pulumi.Input[_builtins.bool] disable_when_mxtunnel_down: Whether to disable this WLAN when the configured Mist tunnel is down
         :param pulumi.Input[_builtins.bool] disable_wmm: Whether to disable WMM
-        :param pulumi.Input[Union['WlanDnsServerRewriteArgs', 'WlanDnsServerRewriteArgsDict']] dns_server_rewrite: RADIUS group based DNS server rewrite settings for this WLAN
+        :param pulumi.Input[Union['WlanDnsServerRewriteArgs', 'WlanDnsServerRewriteArgsDict', 'outputs.WlanDnsServerRewrite']] dns_server_rewrite: RADIUS group based DNS server rewrite settings for this WLAN
         :param pulumi.Input[_builtins.int] dtim: Delivery Traffic Indication Message interval for this WLAN
-        :param pulumi.Input[Union['WlanDynamicPskArgs', 'WlanDynamicPskArgsDict']] dynamic_psk: Per-user PSK selection settings for this WLAN
-        :param pulumi.Input[Union['WlanDynamicVlanArgs', 'WlanDynamicVlanArgsDict']] dynamic_vlan: VLAN assignment settings for 802.1X dynamic VLANs
+        :param pulumi.Input[Union['WlanDynamicPskArgs', 'WlanDynamicPskArgsDict', 'outputs.WlanDynamicPsk']] dynamic_psk: Per-user PSK selection settings for this WLAN
+        :param pulumi.Input[Union['WlanDynamicVlanArgs', 'WlanDynamicVlanArgsDict', 'outputs.WlanDynamicVlan']] dynamic_vlan: VLAN assignment settings for 802.1X dynamic VLANs
         :param pulumi.Input[_builtins.bool] enable_ftm: Enable FTM (Fine-Time Measurement, 802.11mc); configures the AP as an FTM Responder (target), allowing clients to perform ranging requests against it
         :param pulumi.Input[_builtins.bool] enable_local_keycaching: Enable AP-AP keycaching via multicast
         :param pulumi.Input[_builtins.bool] enable_wireless_bridging: By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wireless_bridging can be enabled
@@ -3739,8 +3739,8 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] fast_dot1x_timers: If set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and ‘auth_server_retries’ .
         :param pulumi.Input[_builtins.bool] hide_ssid: Whether to hide SSID in beacon
         :param pulumi.Input[_builtins.bool] hostname_ie: Include hostname inside IE in AP beacons / probe responses
-        :param pulumi.Input[Union['WlanHotspot20Args', 'WlanHotspot20ArgsDict']] hotspot20: Passpoint and Hotspot 2.0 settings for this WLAN
-        :param pulumi.Input[Union['WlanInjectDhcpOption82Args', 'WlanInjectDhcpOption82ArgsDict']] inject_dhcp_option82: DHCP Option 82 insertion settings for this WLAN
+        :param pulumi.Input[Union['WlanHotspot20Args', 'WlanHotspot20ArgsDict', 'outputs.WlanHotspot20']] hotspot20: Passpoint and Hotspot 2.0 settings for this WLAN
+        :param pulumi.Input[Union['WlanInjectDhcpOption82Args', 'WlanInjectDhcpOption82ArgsDict', 'outputs.WlanInjectDhcpOption82']] inject_dhcp_option82: DHCP Option 82 insertion settings for this WLAN
         :param pulumi.Input[_builtins.str] interface: Network interface or tunnel where this WLAN bridges client traffic. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `site_mxedge`, `wxtunnel`.
         :param pulumi.Input[_builtins.bool] isolation: Whether to stop clients to talk to each other
         :param pulumi.Input[_builtins.bool] l2_isolation: If isolation is enabled, whether to deny clients to talk to L2 on the LAN
@@ -3749,26 +3749,26 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] limit_probe_response: Limit probe response base on some heuristic rules
         :param pulumi.Input[_builtins.int] max_idletime: Max idle time in seconds
         :param pulumi.Input[_builtins.int] max_num_clients: Maximum number of client connected to the SSID. `0` means unlimited
-        :param pulumi.Input[Union['WlanMistNacArgs', 'WlanMistNacArgsDict']] mist_nac: Juniper Mist NAC settings used by this WLAN
+        :param pulumi.Input[Union['WlanMistNacArgs', 'WlanMistNacArgsDict', 'outputs.WlanMistNac']] mist_nac: Juniper Mist NAC settings used by this WLAN
         :param pulumi.Input[_builtins.str] msp_id: Managed service provider identifier associated with this WLAN
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mxtunnel_ids: Mist Tunnel identifiers used when `interface`==`mxtunnel`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mxtunnel_names: Mist Tunnel names used when `interface`==`site_mxedge`
         :param pulumi.Input[_builtins.bool] no_static_dns: Whether to only allow client to use DNS that we’ve learned from DHCP response
         :param pulumi.Input[_builtins.bool] no_static_ip: Whether to only allow client that we’ve learned from DHCP exchange to talk
         :param pulumi.Input[_builtins.str] org_id: Owning organization associated with this WLAN
-        :param pulumi.Input[Union['WlanPortalArgs', 'WlanPortalArgsDict']] portal: Guest portal settings for this WLAN
+        :param pulumi.Input[Union['WlanPortalArgs', 'WlanPortalArgsDict', 'outputs.WlanPortal']] portal: Guest portal settings for this WLAN
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] portal_allowed_hostnames: Guest portal hostnames that clients may reach before authorization
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] portal_allowed_subnets: Guest portal CIDR subnets that clients may reach before authorization
         :param pulumi.Input[_builtins.str] portal_api_secret: API secret (auto-generated) that can be used to sign guest authorization requests, only generated when auth is set to `external`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] portal_denied_hostnames: Guest portal hostnames denied before authorization, taking precedence over allowed hostnames
         :param pulumi.Input[_builtins.str] portal_image: Url of portal background image
         :param pulumi.Input[_builtins.str] portal_sso_url: URL used in the SSO process, auto-generated when auth is set to `sso`
-        :param pulumi.Input[Union['WlanQosArgs', 'WlanQosArgsDict']] qos: Quality-of-service settings for WLAN client traffic
-        :param pulumi.Input[Union['WlanRadsecArgs', 'WlanRadsecArgsDict']] radsec: TLS-secured RADIUS transport settings for this WLAN
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['WlanRatesetArgs', 'WlanRatesetArgsDict']]]] rateset: Data rate settings by RF band for this WLAN
+        :param pulumi.Input[Union['WlanQosArgs', 'WlanQosArgsDict', 'outputs.WlanQos']] qos: Quality-of-service settings for WLAN client traffic
+        :param pulumi.Input[Union['WlanRadsecArgs', 'WlanRadsecArgsDict', 'outputs.WlanRadsec']] radsec: TLS-secured RADIUS transport settings for this WLAN
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['WlanRatesetArgs', 'WlanRatesetArgsDict', 'outputs.WlanRateset']]]] rateset: Data rate settings by RF band for this WLAN
         :param pulumi.Input[_builtins.bool] reconnect_clients_when_roaming_mxcluster: When different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
         :param pulumi.Input[_builtins.str] roam_mode: Fast roaming mode configured for this WLAN. enum: `11r`, `NONE`, `OKC`.
-        :param pulumi.Input[Union['WlanScheduleArgs', 'WlanScheduleArgsDict']] schedule: Operating schedule controlling when this WLAN is active
+        :param pulumi.Input[Union['WlanScheduleArgs', 'WlanScheduleArgsDict', 'outputs.WlanSchedule']] schedule: Operating schedule controlling when this WLAN is active
         :param pulumi.Input[_builtins.str] site_id: Mist site associated with this WLAN, when site-scoped
         :param pulumi.Input[_builtins.bool] sle_excluded: Whether to exclude this WLAN from SLE metrics
         :param pulumi.Input[_builtins.str] ssid: Name of the SSID

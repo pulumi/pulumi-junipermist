@@ -120,22 +120,15 @@ namespace Pulumi.JuniperMist.Org
     [OutputType]
     public sealed class GetWlansResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly string OrgId;
         public readonly ImmutableArray<Outputs.GetWlansOrgWlanResult> OrgWlans;
 
         [OutputConstructor]
         private GetWlansResult(
-            string id,
-
             string orgId,
 
             ImmutableArray<Outputs.GetWlansOrgWlanResult> orgWlans)
         {
-            Id = id;
             OrgId = orgId;
             OrgWlans = orgWlans;
         }

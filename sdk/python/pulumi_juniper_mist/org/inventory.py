@@ -31,8 +31,8 @@ class InventoryArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input['InventoryInventoryArgs']]] inventory: Property key can be the device Claim Code or the device MAC Address:
                  * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
                  * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
-               
-                   >
+                   
+                   > 
         """
         pulumi.set(__self__, "org_id", org_id)
         if disconnected_before is not None:
@@ -68,8 +68,8 @@ class InventoryArgs:
         Property key can be the device Claim Code or the device MAC Address:
           * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
           * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
-
-            >
+            
+            > 
         """
         return pulumi.get(self, "inventory")
 
@@ -91,8 +91,8 @@ class _InventoryState:
         :param pulumi.Input[Mapping[str, pulumi.Input['InventoryInventoryArgs']]] inventory: Property key can be the device Claim Code or the device MAC Address:
                  * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
                  * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
-               
-                   >
+                   
+                   > 
         """
         if disconnected_before is not None:
             pulumi.set(__self__, "disconnected_before", disconnected_before)
@@ -120,8 +120,8 @@ class _InventoryState:
         Property key can be the device Claim Code or the device MAC Address:
           * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
           * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
-
-            >
+            
+            > 
         """
         return pulumi.get(self, "inventory")
 
@@ -146,7 +146,7 @@ class Inventory(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  disconnected_before: pulumi.Input[Optional[_builtins.int]] = None,
-                 inventory: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['InventoryInventoryArgs', 'InventoryInventoryArgsDict']]]]] = None,
+                 inventory: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['InventoryInventoryArgs', 'InventoryInventoryArgsDict', 'outputs.InventoryInventory']]]]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -196,11 +196,11 @@ class Inventory(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] disconnected_before: Filter results to devices that were last disconnected before this time, in epoch seconds
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['InventoryInventoryArgs', 'InventoryInventoryArgsDict']]]] inventory: Property key can be the device Claim Code or the device MAC Address:
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['InventoryInventoryArgs', 'InventoryInventoryArgsDict', 'outputs.InventoryInventory']]]] inventory: Property key can be the device Claim Code or the device MAC Address:
                  * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
                  * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
-               
-                   >
+                   
+                   > 
         """
         ...
     @overload
@@ -268,7 +268,7 @@ class Inventory(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  disconnected_before: pulumi.Input[Optional[_builtins.int]] = None,
-                 inventory: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['InventoryInventoryArgs', 'InventoryInventoryArgsDict']]]]] = None,
+                 inventory: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['InventoryInventoryArgs', 'InventoryInventoryArgsDict', 'outputs.InventoryInventory']]]]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -295,7 +295,7 @@ class Inventory(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             disconnected_before: pulumi.Input[Optional[_builtins.int]] = None,
-            inventory: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['InventoryInventoryArgs', 'InventoryInventoryArgsDict']]]]] = None,
+            inventory: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['InventoryInventoryArgs', 'InventoryInventoryArgsDict', 'outputs.InventoryInventory']]]]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Inventory':
         """
         Get an existing Inventory resource's state with the given name, id, and optional extra
@@ -305,11 +305,11 @@ class Inventory(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] disconnected_before: Filter results to devices that were last disconnected before this time, in epoch seconds
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['InventoryInventoryArgs', 'InventoryInventoryArgsDict']]]] inventory: Property key can be the device Claim Code or the device MAC Address:
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['InventoryInventoryArgs', 'InventoryInventoryArgsDict', 'outputs.InventoryInventory']]]] inventory: Property key can be the device Claim Code or the device MAC Address:
                  * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
                  * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
-               
-                   >
+                   
+                   > 
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -335,8 +335,8 @@ class Inventory(pulumi.CustomResource):
         Property key can be the device Claim Code or the device MAC Address:
           * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
           * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
-
-            >
+            
+            > 
         """
         return pulumi.get(self, "inventory")
 

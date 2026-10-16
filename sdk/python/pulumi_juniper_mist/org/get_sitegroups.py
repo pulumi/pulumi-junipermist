@@ -27,24 +27,13 @@ class GetSitegroupsResult:
     """
     A collection of values returned by getSitegroups.
     """
-    def __init__(__self__, id=None, org_id=None, org_sitegroups=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, org_id=None, org_sitegroups=None):
         if org_id and not isinstance(org_id, str):
             raise TypeError("Expected argument 'org_id' to be a str")
         pulumi.set(__self__, "org_id", org_id)
         if org_sitegroups and not isinstance(org_sitegroups, list):
             raise TypeError("Expected argument 'org_sitegroups' to be a list")
         pulumi.set(__self__, "org_sitegroups", org_sitegroups)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="orgId")
@@ -63,7 +52,6 @@ class AwaitableGetSitegroupsResult(GetSitegroupsResult):
         if False:
             yield self
         return GetSitegroupsResult(
-            id=self.id,
             org_id=self.org_id,
             org_sitegroups=self.org_sitegroups)
 
@@ -91,7 +79,6 @@ def get_sitegroups(org_id: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('junipermist:org/getSitegroups:getSitegroups', __args__, opts=opts, typ=GetSitegroupsResult).value
 
     return AwaitableGetSitegroupsResult(
-        id=pulumi.get(__ret__, 'id'),
         org_id=pulumi.get(__ret__, 'org_id'),
         org_sitegroups=pulumi.get(__ret__, 'org_sitegroups'))
 def get_sitegroups_output(org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -116,6 +103,5 @@ def get_sitegroups_output(org_id: pulumi.Input[Optional[_builtins.str]] = None,
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:org/getSitegroups:getSitegroups', __args__, opts=opts, typ=GetSitegroupsResult)
     return __ret__.apply(lambda __response__: GetSitegroupsResult(
-        id=pulumi.get(__response__, 'id'),
         org_id=pulumi.get(__response__, 'org_id'),
         org_sitegroups=pulumi.get(__response__, 'org_sitegroups')))

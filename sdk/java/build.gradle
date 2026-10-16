@@ -96,7 +96,7 @@ publishing {
                 inceptionYear = "2022"
                 name = "pulumi-junipermist"
                 packaging = "jar"
-                description = "A Pulumi package for creating and managing Juniper Mist resources."
+                description = $/A Pulumi package for creating and managing Juniper Mist resources./$
 
                 url = "https://github.com/pulumi/pulumi-junipermist"
 

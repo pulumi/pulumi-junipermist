@@ -114,22 +114,15 @@ namespace Pulumi.JuniperMist.Org
     [OutputType]
     public sealed class GetVpnsResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly string OrgId;
         public readonly ImmutableArray<Outputs.GetVpnsOrgVpnResult> OrgVpns;
 
         [OutputConstructor]
         private GetVpnsResult(
-            string id,
-
             string orgId,
 
             ImmutableArray<Outputs.GetVpnsOrgVpnResult> orgVpns)
         {
-            Id = id;
             OrgId = orgId;
             OrgVpns = orgVpns;
         }

@@ -77,10 +77,6 @@ export interface GetApStatsResult {
      * End time (epoch timestamp in seconds, or relative string like "-1d", "-2h", "now")
      */
     readonly end?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly mac?: string;
     readonly orgId: string;
     readonly siteId?: string;

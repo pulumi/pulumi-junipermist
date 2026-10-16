@@ -57,19 +57,13 @@ type GetEvpnTopologiesArgs struct {
 
 // A collection of values returned by getEvpnTopologies.
 type GetEvpnTopologiesResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id                 string                              `pulumi:"id"`
 	SiteEvpnTopologies []GetEvpnTopologiesSiteEvpnTopology `pulumi:"siteEvpnTopologies"`
 	SiteId             string                              `pulumi:"siteId"`
 }
 
 func GetEvpnTopologiesOutput(ctx *pulumi.Context, args GetEvpnTopologiesOutputArgs, opts ...pulumi.InvokeOption) GetEvpnTopologiesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEvpnTopologiesResultOutput, error) {
-			args := v.(GetEvpnTopologiesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("junipermist:site/getEvpnTopologies:getEvpnTopologies", args, GetEvpnTopologiesResultOutput{}, options).(GetEvpnTopologiesResultOutput), nil
-		}).(GetEvpnTopologiesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("junipermist:site/getEvpnTopologies:getEvpnTopologies", args, GetEvpnTopologiesResultOutput{}, options).(GetEvpnTopologiesResultOutput)
 }
 
 // A collection of arguments for invoking getEvpnTopologies.
@@ -94,11 +88,6 @@ func (o GetEvpnTopologiesResultOutput) ToGetEvpnTopologiesResultOutput() GetEvpn
 
 func (o GetEvpnTopologiesResultOutput) ToGetEvpnTopologiesResultOutputWithContext(ctx context.Context) GetEvpnTopologiesResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetEvpnTopologiesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetEvpnTopologiesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetEvpnTopologiesResultOutput) SiteEvpnTopologies() GetEvpnTopologiesSiteEvpnTopologyArrayOutput {

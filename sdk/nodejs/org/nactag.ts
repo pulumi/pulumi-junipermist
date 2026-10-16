@@ -82,7 +82,6 @@ export class Nactag extends pulumi.CustomResource {
      *   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
      *   * `true`: means all values should be matched (i.e., match-all behavior)
      *
-     *
      * Currently it makes sense to set this field to `true` only if the `match`==`idpRole`, `match`==`usermacLabel` and `edrStatus`
      */
     declare public readonly matchAll: pulumi.Output<boolean | undefined>;
@@ -215,7 +214,6 @@ export interface NactagState {
      *   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
      *   * `true`: means all values should be matched (i.e., match-all behavior)
      *
-     *
      * Currently it makes sense to set this field to `true` only if the `match`==`idpRole`, `match`==`usermacLabel` and `edrStatus`
      */
     matchAll?: pulumi.Input<boolean | undefined>;
@@ -289,7 +287,6 @@ export interface NactagArgs {
      * This field is applicable only when `type`==`match`
      *   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
      *   * `true`: means all values should be matched (i.e., match-all behavior)
-     *
      *
      * Currently it makes sense to set this field to `true` only if the `match`==`idpRole`, `match`==`usermacLabel` and `edrStatus`
      */

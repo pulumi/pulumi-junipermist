@@ -75,9 +75,7 @@ type GetApStatsResult struct {
 	// Duration like 7d, 2w
 	Duration *string `pulumi:"duration"`
 	// End time (epoch timestamp in seconds, or relative string like "-1d", "-2h", "now")
-	End *string `pulumi:"end"`
-	// The provider-assigned unique ID for this managed resource.
-	Id     string  `pulumi:"id"`
+	End    *string `pulumi:"end"`
 	Mac    *string `pulumi:"mac"`
 	OrgId  string  `pulumi:"orgId"`
 	SiteId *string `pulumi:"siteId"`
@@ -88,12 +86,8 @@ type GetApStatsResult struct {
 }
 
 func GetApStatsOutput(ctx *pulumi.Context, args GetApStatsOutputArgs, opts ...pulumi.InvokeOption) GetApStatsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetApStatsResultOutput, error) {
-			args := v.(GetApStatsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("junipermist:device/getApStats:getApStats", args, GetApStatsResultOutput{}, options).(GetApStatsResultOutput), nil
-		}).(GetApStatsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("junipermist:device/getApStats:getApStats", args, GetApStatsResultOutput{}, options).(GetApStatsResultOutput)
 }
 
 // A collection of arguments for invoking getApStats.
@@ -142,11 +136,6 @@ func (o GetApStatsResultOutput) Duration() pulumi.StringPtrOutput {
 // End time (epoch timestamp in seconds, or relative string like "-1d", "-2h", "now")
 func (o GetApStatsResultOutput) End() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetApStatsResult) *string { return v.End }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetApStatsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApStatsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetApStatsResultOutput) Mac() pulumi.StringPtrOutput {

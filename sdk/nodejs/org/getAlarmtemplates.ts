@@ -40,10 +40,6 @@ export interface GetAlarmtemplatesArgs {
  * A collection of values returned by getAlarmtemplates.
  */
 export interface GetAlarmtemplatesResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly orgAlarmtemplates: outputs.org.GetAlarmtemplatesOrgAlarmtemplate[];
     readonly orgId: string;
 }

@@ -56,19 +56,13 @@ type GetSitesArgs struct {
 
 // A collection of values returned by getSites.
 type GetSitesResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id    string         `pulumi:"id"`
 	OrgId string         `pulumi:"orgId"`
 	Sites []GetSitesSite `pulumi:"sites"`
 }
 
 func GetSitesOutput(ctx *pulumi.Context, args GetSitesOutputArgs, opts ...pulumi.InvokeOption) GetSitesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSitesResultOutput, error) {
-			args := v.(GetSitesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("junipermist:index/getSites:getSites", args, GetSitesResultOutput{}, options).(GetSitesResultOutput), nil
-		}).(GetSitesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("junipermist:index/getSites:getSites", args, GetSitesResultOutput{}, options).(GetSitesResultOutput)
 }
 
 // A collection of arguments for invoking getSites.
@@ -93,11 +87,6 @@ func (o GetSitesResultOutput) ToGetSitesResultOutput() GetSitesResultOutput {
 
 func (o GetSitesResultOutput) ToGetSitesResultOutputWithContext(ctx context.Context) GetSitesResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetSitesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSitesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetSitesResultOutput) OrgId() pulumi.StringOutput {

@@ -457,18 +457,18 @@ class Servicepolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aamw: pulumi.Input[Optional[Union['ServicepolicyAamwArgs', 'ServicepolicyAamwArgsDict']]] = None,
+                 aamw: pulumi.Input[Optional[Union['ServicepolicyAamwArgs', 'ServicepolicyAamwArgsDict', 'outputs.ServicepolicyAamw']]] = None,
                  action: pulumi.Input[Optional[_builtins.str]] = None,
-                 antivirus: pulumi.Input[Optional[Union['ServicepolicyAntivirusArgs', 'ServicepolicyAntivirusArgsDict']]] = None,
-                 appqoe: pulumi.Input[Optional[Union['ServicepolicyAppqoeArgs', 'ServicepolicyAppqoeArgsDict']]] = None,
-                 ewfs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServicepolicyEwfArgs', 'ServicepolicyEwfArgsDict']]]]] = None,
-                 idp: pulumi.Input[Optional[Union['ServicepolicyIdpArgs', 'ServicepolicyIdpArgsDict']]] = None,
+                 antivirus: pulumi.Input[Optional[Union['ServicepolicyAntivirusArgs', 'ServicepolicyAntivirusArgsDict', 'outputs.ServicepolicyAntivirus']]] = None,
+                 appqoe: pulumi.Input[Optional[Union['ServicepolicyAppqoeArgs', 'ServicepolicyAppqoeArgsDict', 'outputs.ServicepolicyAppqoe']]] = None,
+                 ewfs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServicepolicyEwfArgs', 'ServicepolicyEwfArgsDict', 'outputs.ServicepolicyEwf']]]]] = None,
+                 idp: pulumi.Input[Optional[Union['ServicepolicyIdpArgs', 'ServicepolicyIdpArgsDict', 'outputs.ServicepolicyIdp']]] = None,
                  local_routing: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  path_preference: pulumi.Input[Optional[_builtins.str]] = None,
                  services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ssl_proxy: pulumi.Input[Optional[Union['ServicepolicySslProxyArgs', 'ServicepolicySslProxyArgsDict']]] = None,
+                 ssl_proxy: pulumi.Input[Optional[Union['ServicepolicySslProxyArgs', 'ServicepolicySslProxyArgsDict', 'outputs.ServicepolicySslProxy']]] = None,
                  tenants: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -511,18 +511,18 @@ class Servicepolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ServicepolicyAamwArgs', 'ServicepolicyAamwArgsDict']] aamw: Advanced anti-malware settings applied by this service policy
+        :param pulumi.Input[Union['ServicepolicyAamwArgs', 'ServicepolicyAamwArgsDict', 'outputs.ServicepolicyAamw']] aamw: Advanced anti-malware settings applied by this service policy
         :param pulumi.Input[_builtins.str] action: Allow or deny action for traffic matched by this service policy
-        :param pulumi.Input[Union['ServicepolicyAntivirusArgs', 'ServicepolicyAntivirusArgsDict']] antivirus: Malware and virus inspection settings applied by this service policy
-        :param pulumi.Input[Union['ServicepolicyAppqoeArgs', 'ServicepolicyAppqoeArgsDict']] appqoe: Application QoE settings applied by this service policy
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServicepolicyEwfArgs', 'ServicepolicyEwfArgsDict']]]] ewfs: Enhanced web filtering rules applied by this service policy
-        :param pulumi.Input[Union['ServicepolicyIdpArgs', 'ServicepolicyIdpArgsDict']] idp: Intrusion detection and prevention settings applied by this service policy
+        :param pulumi.Input[Union['ServicepolicyAntivirusArgs', 'ServicepolicyAntivirusArgsDict', 'outputs.ServicepolicyAntivirus']] antivirus: Malware and virus inspection settings applied by this service policy
+        :param pulumi.Input[Union['ServicepolicyAppqoeArgs', 'ServicepolicyAppqoeArgsDict', 'outputs.ServicepolicyAppqoe']] appqoe: Application QoE settings applied by this service policy
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServicepolicyEwfArgs', 'ServicepolicyEwfArgsDict', 'outputs.ServicepolicyEwf']]]] ewfs: Enhanced web filtering rules applied by this service policy
+        :param pulumi.Input[Union['ServicepolicyIdpArgs', 'ServicepolicyIdpArgsDict', 'outputs.ServicepolicyIdp']] idp: Intrusion detection and prevention settings applied by this service policy
         :param pulumi.Input[_builtins.bool] local_routing: Whether the policy permits access within the same VRF
         :param pulumi.Input[_builtins.str] name: Display name of the service policy
         :param pulumi.Input[_builtins.str] org_id: Organization that owns this service policy
         :param pulumi.Input[_builtins.str] path_preference: By default, we derive all paths available and use them, optionally, you can customize by using `path_preference`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] services: Application services or groups matched by this policy
-        :param pulumi.Input[Union['ServicepolicySslProxyArgs', 'ServicepolicySslProxyArgsDict']] ssl_proxy: SSL proxy inspection settings applied by this service policy
+        :param pulumi.Input[Union['ServicepolicySslProxyArgs', 'ServicepolicySslProxyArgsDict', 'outputs.ServicepolicySslProxy']] ssl_proxy: SSL proxy inspection settings applied by this service policy
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tenants: Tenant names matched by this service policy
         """
         ...
@@ -584,18 +584,18 @@ class Servicepolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aamw: pulumi.Input[Optional[Union['ServicepolicyAamwArgs', 'ServicepolicyAamwArgsDict']]] = None,
+                 aamw: pulumi.Input[Optional[Union['ServicepolicyAamwArgs', 'ServicepolicyAamwArgsDict', 'outputs.ServicepolicyAamw']]] = None,
                  action: pulumi.Input[Optional[_builtins.str]] = None,
-                 antivirus: pulumi.Input[Optional[Union['ServicepolicyAntivirusArgs', 'ServicepolicyAntivirusArgsDict']]] = None,
-                 appqoe: pulumi.Input[Optional[Union['ServicepolicyAppqoeArgs', 'ServicepolicyAppqoeArgsDict']]] = None,
-                 ewfs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServicepolicyEwfArgs', 'ServicepolicyEwfArgsDict']]]]] = None,
-                 idp: pulumi.Input[Optional[Union['ServicepolicyIdpArgs', 'ServicepolicyIdpArgsDict']]] = None,
+                 antivirus: pulumi.Input[Optional[Union['ServicepolicyAntivirusArgs', 'ServicepolicyAntivirusArgsDict', 'outputs.ServicepolicyAntivirus']]] = None,
+                 appqoe: pulumi.Input[Optional[Union['ServicepolicyAppqoeArgs', 'ServicepolicyAppqoeArgsDict', 'outputs.ServicepolicyAppqoe']]] = None,
+                 ewfs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServicepolicyEwfArgs', 'ServicepolicyEwfArgsDict', 'outputs.ServicepolicyEwf']]]]] = None,
+                 idp: pulumi.Input[Optional[Union['ServicepolicyIdpArgs', 'ServicepolicyIdpArgsDict', 'outputs.ServicepolicyIdp']]] = None,
                  local_routing: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  path_preference: pulumi.Input[Optional[_builtins.str]] = None,
                  services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ssl_proxy: pulumi.Input[Optional[Union['ServicepolicySslProxyArgs', 'ServicepolicySslProxyArgsDict']]] = None,
+                 ssl_proxy: pulumi.Input[Optional[Union['ServicepolicySslProxyArgs', 'ServicepolicySslProxyArgsDict', 'outputs.ServicepolicySslProxy']]] = None,
                  tenants: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -631,18 +631,18 @@ class Servicepolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aamw: pulumi.Input[Optional[Union['ServicepolicyAamwArgs', 'ServicepolicyAamwArgsDict']]] = None,
+            aamw: pulumi.Input[Optional[Union['ServicepolicyAamwArgs', 'ServicepolicyAamwArgsDict', 'outputs.ServicepolicyAamw']]] = None,
             action: pulumi.Input[Optional[_builtins.str]] = None,
-            antivirus: pulumi.Input[Optional[Union['ServicepolicyAntivirusArgs', 'ServicepolicyAntivirusArgsDict']]] = None,
-            appqoe: pulumi.Input[Optional[Union['ServicepolicyAppqoeArgs', 'ServicepolicyAppqoeArgsDict']]] = None,
-            ewfs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServicepolicyEwfArgs', 'ServicepolicyEwfArgsDict']]]]] = None,
-            idp: pulumi.Input[Optional[Union['ServicepolicyIdpArgs', 'ServicepolicyIdpArgsDict']]] = None,
+            antivirus: pulumi.Input[Optional[Union['ServicepolicyAntivirusArgs', 'ServicepolicyAntivirusArgsDict', 'outputs.ServicepolicyAntivirus']]] = None,
+            appqoe: pulumi.Input[Optional[Union['ServicepolicyAppqoeArgs', 'ServicepolicyAppqoeArgsDict', 'outputs.ServicepolicyAppqoe']]] = None,
+            ewfs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServicepolicyEwfArgs', 'ServicepolicyEwfArgsDict', 'outputs.ServicepolicyEwf']]]]] = None,
+            idp: pulumi.Input[Optional[Union['ServicepolicyIdpArgs', 'ServicepolicyIdpArgsDict', 'outputs.ServicepolicyIdp']]] = None,
             local_routing: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             path_preference: pulumi.Input[Optional[_builtins.str]] = None,
             services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            ssl_proxy: pulumi.Input[Optional[Union['ServicepolicySslProxyArgs', 'ServicepolicySslProxyArgsDict']]] = None,
+            ssl_proxy: pulumi.Input[Optional[Union['ServicepolicySslProxyArgs', 'ServicepolicySslProxyArgsDict', 'outputs.ServicepolicySslProxy']]] = None,
             tenants: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Servicepolicy':
         """
         Get an existing Servicepolicy resource's state with the given name, id, and optional extra
@@ -651,18 +651,18 @@ class Servicepolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ServicepolicyAamwArgs', 'ServicepolicyAamwArgsDict']] aamw: Advanced anti-malware settings applied by this service policy
+        :param pulumi.Input[Union['ServicepolicyAamwArgs', 'ServicepolicyAamwArgsDict', 'outputs.ServicepolicyAamw']] aamw: Advanced anti-malware settings applied by this service policy
         :param pulumi.Input[_builtins.str] action: Allow or deny action for traffic matched by this service policy
-        :param pulumi.Input[Union['ServicepolicyAntivirusArgs', 'ServicepolicyAntivirusArgsDict']] antivirus: Malware and virus inspection settings applied by this service policy
-        :param pulumi.Input[Union['ServicepolicyAppqoeArgs', 'ServicepolicyAppqoeArgsDict']] appqoe: Application QoE settings applied by this service policy
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServicepolicyEwfArgs', 'ServicepolicyEwfArgsDict']]]] ewfs: Enhanced web filtering rules applied by this service policy
-        :param pulumi.Input[Union['ServicepolicyIdpArgs', 'ServicepolicyIdpArgsDict']] idp: Intrusion detection and prevention settings applied by this service policy
+        :param pulumi.Input[Union['ServicepolicyAntivirusArgs', 'ServicepolicyAntivirusArgsDict', 'outputs.ServicepolicyAntivirus']] antivirus: Malware and virus inspection settings applied by this service policy
+        :param pulumi.Input[Union['ServicepolicyAppqoeArgs', 'ServicepolicyAppqoeArgsDict', 'outputs.ServicepolicyAppqoe']] appqoe: Application QoE settings applied by this service policy
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServicepolicyEwfArgs', 'ServicepolicyEwfArgsDict', 'outputs.ServicepolicyEwf']]]] ewfs: Enhanced web filtering rules applied by this service policy
+        :param pulumi.Input[Union['ServicepolicyIdpArgs', 'ServicepolicyIdpArgsDict', 'outputs.ServicepolicyIdp']] idp: Intrusion detection and prevention settings applied by this service policy
         :param pulumi.Input[_builtins.bool] local_routing: Whether the policy permits access within the same VRF
         :param pulumi.Input[_builtins.str] name: Display name of the service policy
         :param pulumi.Input[_builtins.str] org_id: Organization that owns this service policy
         :param pulumi.Input[_builtins.str] path_preference: By default, we derive all paths available and use them, optionally, you can customize by using `path_preference`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] services: Application services or groups matched by this policy
-        :param pulumi.Input[Union['ServicepolicySslProxyArgs', 'ServicepolicySslProxyArgsDict']] ssl_proxy: SSL proxy inspection settings applied by this service policy
+        :param pulumi.Input[Union['ServicepolicySslProxyArgs', 'ServicepolicySslProxyArgsDict', 'outputs.ServicepolicySslProxy']] ssl_proxy: SSL proxy inspection settings applied by this service policy
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tenants: Tenant names matched by this service policy
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

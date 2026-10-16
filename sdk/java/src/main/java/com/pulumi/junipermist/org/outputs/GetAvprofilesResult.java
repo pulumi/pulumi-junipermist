@@ -12,22 +12,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAvprofilesResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private List<GetAvprofilesOrgAvprofile> orgAvprofiles;
     private String orgId;
 
     private GetAvprofilesResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public List<GetAvprofilesOrgAvprofile> orgAvprofiles() {
         return this.orgAvprofiles;
     }
@@ -44,25 +32,15 @@ public final class GetAvprofilesResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private List<GetAvprofilesOrgAvprofile> orgAvprofiles;
         private String orgId;
         public Builder() {}
         public Builder(GetAvprofilesResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.orgAvprofiles = defaults.orgAvprofiles;
     	      this.orgId = defaults.orgId;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetAvprofilesResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder orgAvprofiles(List<GetAvprofilesOrgAvprofile> orgAvprofiles) {
             if (orgAvprofiles == null) {
@@ -84,7 +62,6 @@ public final class GetAvprofilesResult {
         }
         public GetAvprofilesResult build() {
             final var _resultValue = new GetAvprofilesResult();
-            _resultValue.id = id;
             _resultValue.orgAvprofiles = orgAvprofiles;
             _resultValue.orgId = orgId;
             return _resultValue;

@@ -132,22 +132,15 @@ namespace Pulumi.JuniperMist.Org
     [OutputType]
     public sealed class GetServicepoliciesResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly string OrgId;
         public readonly ImmutableArray<Outputs.GetServicepoliciesOrgServicepolicyResult> OrgServicepolicies;
 
         [OutputConstructor]
         private GetServicepoliciesResult(
-            string id,
-
             string orgId,
 
             ImmutableArray<Outputs.GetServicepoliciesOrgServicepolicyResult> orgServicepolicies)
         {
-            Id = id;
             OrgId = orgId;
             OrgServicepolicies = orgServicepolicies;
         }

@@ -12,22 +12,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEvpnTopologiesResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private List<GetEvpnTopologiesOrgEvpnTopology> orgEvpnTopologies;
     private String orgId;
 
     private GetEvpnTopologiesResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public List<GetEvpnTopologiesOrgEvpnTopology> orgEvpnTopologies() {
         return this.orgEvpnTopologies;
     }
@@ -44,25 +32,15 @@ public final class GetEvpnTopologiesResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private List<GetEvpnTopologiesOrgEvpnTopology> orgEvpnTopologies;
         private String orgId;
         public Builder() {}
         public Builder(GetEvpnTopologiesResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.orgEvpnTopologies = defaults.orgEvpnTopologies;
     	      this.orgId = defaults.orgId;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetEvpnTopologiesResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder orgEvpnTopologies(List<GetEvpnTopologiesOrgEvpnTopology> orgEvpnTopologies) {
             if (orgEvpnTopologies == null) {
@@ -84,7 +62,6 @@ public final class GetEvpnTopologiesResult {
         }
         public GetEvpnTopologiesResult build() {
             final var _resultValue = new GetEvpnTopologiesResult();
-            _resultValue.id = id;
             _resultValue.orgEvpnTopologies = orgEvpnTopologies;
             _resultValue.orgId = orgId;
             return _resultValue;

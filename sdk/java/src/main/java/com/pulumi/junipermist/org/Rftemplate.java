@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var rftemplateOne = new Rftemplate("rftemplateOne", RftemplateArgs.builder()
  *             .name("rftemplate_one")
- *             .orgId(terraformTest.id())
+ *             .orgId(terraformTest.get("id"))
  *             .band24Usage("auto")
  *             .band5(RftemplateBand5Args.builder()
  *                 .antGain(2)

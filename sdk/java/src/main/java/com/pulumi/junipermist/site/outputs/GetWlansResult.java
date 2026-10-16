@@ -12,22 +12,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetWlansResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private String siteId;
     private List<GetWlansSiteWlan> siteWlans;
 
     private GetWlansResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public String siteId() {
         return this.siteId;
     }
@@ -44,25 +32,15 @@ public final class GetWlansResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private String siteId;
         private List<GetWlansSiteWlan> siteWlans;
         public Builder() {}
         public Builder(GetWlansResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.siteId = defaults.siteId;
     	      this.siteWlans = defaults.siteWlans;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetWlansResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder siteId(String siteId) {
             if (siteId == null) {
@@ -84,7 +62,6 @@ public final class GetWlansResult {
         }
         public GetWlansResult build() {
             final var _resultValue = new GetWlansResult();
-            _resultValue.id = id;
             _resultValue.siteId = siteId;
             _resultValue.siteWlans = siteWlans;
             return _resultValue;

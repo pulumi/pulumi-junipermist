@@ -69,19 +69,13 @@ type GetWxtagsArgs struct {
 
 // A collection of values returned by getWxtags.
 type GetWxtagsResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id        string              `pulumi:"id"`
 	OrgId     string              `pulumi:"orgId"`
 	OrgWxtags []GetWxtagsOrgWxtag `pulumi:"orgWxtags"`
 }
 
 func GetWxtagsOutput(ctx *pulumi.Context, args GetWxtagsOutputArgs, opts ...pulumi.InvokeOption) GetWxtagsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetWxtagsResultOutput, error) {
-			args := v.(GetWxtagsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("junipermist:org/getWxtags:getWxtags", args, GetWxtagsResultOutput{}, options).(GetWxtagsResultOutput), nil
-		}).(GetWxtagsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("junipermist:org/getWxtags:getWxtags", args, GetWxtagsResultOutput{}, options).(GetWxtagsResultOutput)
 }
 
 // A collection of arguments for invoking getWxtags.
@@ -106,11 +100,6 @@ func (o GetWxtagsResultOutput) ToGetWxtagsResultOutput() GetWxtagsResultOutput {
 
 func (o GetWxtagsResultOutput) ToGetWxtagsResultOutputWithContext(ctx context.Context) GetWxtagsResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetWxtagsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWxtagsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetWxtagsResultOutput) OrgId() pulumi.StringOutput {

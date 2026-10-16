@@ -232,10 +232,6 @@ namespace Pulumi.JuniperMist.Org
     public sealed class GetInventoryResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// MAC address
         /// </summary>
         public readonly string? Mac;
@@ -272,8 +268,6 @@ namespace Pulumi.JuniperMist.Org
 
         [OutputConstructor]
         private GetInventoryResult(
-            string id,
-
             string? mac,
 
             string? model,
@@ -294,7 +288,6 @@ namespace Pulumi.JuniperMist.Org
 
             string? vcMac)
         {
-            Id = id;
             Mac = mac;
             Model = model;
             OrgId = orgId;

@@ -1002,35 +1002,35 @@ class Gatewaytemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additional_config_cmds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 bgp_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateBgpConfigArgs', 'GatewaytemplateBgpConfigArgsDict']]]]] = None,
-                 dhcpd_config: pulumi.Input[Optional[Union['GatewaytemplateDhcpdConfigArgs', 'GatewaytemplateDhcpdConfigArgsDict']]] = None,
+                 bgp_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateBgpConfigArgs', 'GatewaytemplateBgpConfigArgsDict', 'outputs.GatewaytemplateBgpConfig']]]]] = None,
+                 dhcpd_config: pulumi.Input[Optional[Union['GatewaytemplateDhcpdConfigArgs', 'GatewaytemplateDhcpdConfigArgsDict', 'outputs.GatewaytemplateDhcpdConfig']]] = None,
                  dns_override: pulumi.Input[Optional[_builtins.bool]] = None,
                  dns_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  dns_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutesArgs', 'GatewaytemplateExtraRoutesArgsDict']]]]] = None,
-                 extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutes6Args', 'GatewaytemplateExtraRoutes6ArgsDict']]]]] = None,
-                 gateway_mgmt: pulumi.Input[Optional[Union['GatewaytemplateGatewayMgmtArgs', 'GatewaytemplateGatewayMgmtArgsDict']]] = None,
-                 idp_profiles: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateIdpProfilesArgs', 'GatewaytemplateIdpProfilesArgsDict']]]]] = None,
-                 ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateIpConfigsArgs', 'GatewaytemplateIpConfigsArgsDict']]]]] = None,
-                 mnha_config: pulumi.Input[Optional[Union['GatewaytemplateMnhaConfigArgs', 'GatewaytemplateMnhaConfigArgsDict']]] = None,
+                 extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutesArgs', 'GatewaytemplateExtraRoutesArgsDict', 'outputs.GatewaytemplateExtraRoutes']]]]] = None,
+                 extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutes6Args', 'GatewaytemplateExtraRoutes6ArgsDict', 'outputs.GatewaytemplateExtraRoutes6']]]]] = None,
+                 gateway_mgmt: pulumi.Input[Optional[Union['GatewaytemplateGatewayMgmtArgs', 'GatewaytemplateGatewayMgmtArgsDict', 'outputs.GatewaytemplateGatewayMgmt']]] = None,
+                 idp_profiles: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateIdpProfilesArgs', 'GatewaytemplateIdpProfilesArgsDict', 'outputs.GatewaytemplateIdpProfiles']]]]] = None,
+                 ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateIpConfigsArgs', 'GatewaytemplateIpConfigsArgsDict', 'outputs.GatewaytemplateIpConfigs']]]]] = None,
+                 mnha_config: pulumi.Input[Optional[Union['GatewaytemplateMnhaConfigArgs', 'GatewaytemplateMnhaConfigArgsDict', 'outputs.GatewaytemplateMnhaConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewaytemplateNetworkArgs', 'GatewaytemplateNetworkArgsDict']]]]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewaytemplateNetworkArgs', 'GatewaytemplateNetworkArgsDict', 'outputs.GatewaytemplateNetwork']]]]] = None,
                  ntp_override: pulumi.Input[Optional[_builtins.bool]] = None,
                  ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 oob_ip_config: pulumi.Input[Optional[Union['GatewaytemplateOobIpConfigArgs', 'GatewaytemplateOobIpConfigArgsDict']]] = None,
+                 oob_ip_config: pulumi.Input[Optional[Union['GatewaytemplateOobIpConfigArgs', 'GatewaytemplateOobIpConfigArgsDict', 'outputs.GatewaytemplateOobIpConfig']]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 path_preferences: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplatePathPreferencesArgs', 'GatewaytemplatePathPreferencesArgsDict']]]]] = None,
-                 port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplatePortConfigArgs', 'GatewaytemplatePortConfigArgsDict']]]]] = None,
+                 path_preferences: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplatePathPreferencesArgs', 'GatewaytemplatePathPreferencesArgsDict', 'outputs.GatewaytemplatePathPreferences']]]]] = None,
+                 port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplatePortConfigArgs', 'GatewaytemplatePortConfigArgsDict', 'outputs.GatewaytemplatePortConfig']]]]] = None,
                  router_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 routing_policies: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateRoutingPoliciesArgs', 'GatewaytemplateRoutingPoliciesArgsDict']]]]] = None,
-                 service_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewaytemplateServicePolicyArgs', 'GatewaytemplateServicePolicyArgsDict']]]]] = None,
+                 routing_policies: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateRoutingPoliciesArgs', 'GatewaytemplateRoutingPoliciesArgsDict', 'outputs.GatewaytemplateRoutingPolicies']]]]] = None,
+                 service_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewaytemplateServicePolicyArgs', 'GatewaytemplateServicePolicyArgsDict', 'outputs.GatewaytemplateServicePolicy']]]]] = None,
                  ssr_additional_config_cmds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tunnel_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateTunnelConfigsArgs', 'GatewaytemplateTunnelConfigsArgsDict']]]]] = None,
-                 tunnel_provider_options: pulumi.Input[Optional[Union['GatewaytemplateTunnelProviderOptionsArgs', 'GatewaytemplateTunnelProviderOptionsArgsDict']]] = None,
+                 tunnel_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateTunnelConfigsArgs', 'GatewaytemplateTunnelConfigsArgsDict', 'outputs.GatewaytemplateTunnelConfigs']]]]] = None,
+                 tunnel_provider_options: pulumi.Input[Optional[Union['GatewaytemplateTunnelProviderOptionsArgs', 'GatewaytemplateTunnelProviderOptionsArgsDict', 'outputs.GatewaytemplateTunnelProviderOptions']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  url_filtering_deny_msg: pulumi.Input[Optional[_builtins.str]] = None,
-                 vrf_config: pulumi.Input[Optional[Union['GatewaytemplateVrfConfigArgs', 'GatewaytemplateVrfConfigArgsDict']]] = None,
-                 vrf_instances: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateVrfInstancesArgs', 'GatewaytemplateVrfInstancesArgsDict']]]]] = None,
+                 vrf_config: pulumi.Input[Optional[Union['GatewaytemplateVrfConfigArgs', 'GatewaytemplateVrfConfigArgsDict', 'outputs.GatewaytemplateVrfConfig']]] = None,
+                 vrf_instances: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateVrfInstancesArgs', 'GatewaytemplateVrfInstancesArgsDict', 'outputs.GatewaytemplateVrfInstances']]]]] = None,
                  __props__=None):
         """
         This resource manages the Gateway Templates.
@@ -1134,35 +1134,35 @@ class Gatewaytemplate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: Additional CLI configuration commands provided by this gateway template
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateBgpConfigArgs', 'GatewaytemplateBgpConfigArgsDict']]]] bgp_config: BGP routing defaults for this gateway template. Property key is the BGP session name
-        :param pulumi.Input[Union['GatewaytemplateDhcpdConfigArgs', 'GatewaytemplateDhcpdConfigArgsDict']] dhcpd_config: DHCP server defaults provided by this gateway template
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateBgpConfigArgs', 'GatewaytemplateBgpConfigArgsDict', 'outputs.GatewaytemplateBgpConfig']]]] bgp_config: BGP routing defaults for this gateway template. Property key is the BGP session name
+        :param pulumi.Input[Union['GatewaytemplateDhcpdConfigArgs', 'GatewaytemplateDhcpdConfigArgsDict', 'outputs.GatewaytemplateDhcpdConfig']] dhcpd_config: DHCP server defaults provided by this gateway template
         :param pulumi.Input[_builtins.bool] dns_override: Whether DNS server and suffix settings in this template override inherited values
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: DNS servers provided by this gateway template
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: DNS search suffixes provided by this gateway template
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutesArgs', 'GatewaytemplateExtraRoutesArgsDict']]]] extra_routes: Additional IPv4 route defaults in this gateway template
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutes6Args', 'GatewaytemplateExtraRoutes6ArgsDict']]]] extra_routes6: Additional IPv6 route defaults in this gateway template
-        :param pulumi.Input[Union['GatewaytemplateGatewayMgmtArgs', 'GatewaytemplateGatewayMgmtArgsDict']] gateway_mgmt: Management-plane defaults provided by this gateway template
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateIdpProfilesArgs', 'GatewaytemplateIdpProfilesArgsDict']]]] idp_profiles: Intrusion detection and prevention profile defaults in this gateway template
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateIpConfigsArgs', 'GatewaytemplateIpConfigsArgsDict']]]] ip_configs: Gateway interface IP configuration defaults by network name
-        :param pulumi.Input[Union['GatewaytemplateMnhaConfigArgs', 'GatewaytemplateMnhaConfigArgsDict']] mnha_config: Multi-Node HA (MNHA) settings applied by this gateway template, SRX only
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutesArgs', 'GatewaytemplateExtraRoutesArgsDict', 'outputs.GatewaytemplateExtraRoutes']]]] extra_routes: Additional IPv4 route defaults in this gateway template
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutes6Args', 'GatewaytemplateExtraRoutes6ArgsDict', 'outputs.GatewaytemplateExtraRoutes6']]]] extra_routes6: Additional IPv6 route defaults in this gateway template
+        :param pulumi.Input[Union['GatewaytemplateGatewayMgmtArgs', 'GatewaytemplateGatewayMgmtArgsDict', 'outputs.GatewaytemplateGatewayMgmt']] gateway_mgmt: Management-plane defaults provided by this gateway template
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateIdpProfilesArgs', 'GatewaytemplateIdpProfilesArgsDict', 'outputs.GatewaytemplateIdpProfiles']]]] idp_profiles: Intrusion detection and prevention profile defaults in this gateway template
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateIpConfigsArgs', 'GatewaytemplateIpConfigsArgsDict', 'outputs.GatewaytemplateIpConfigs']]]] ip_configs: Gateway interface IP configuration defaults by network name
+        :param pulumi.Input[Union['GatewaytemplateMnhaConfigArgs', 'GatewaytemplateMnhaConfigArgsDict', 'outputs.GatewaytemplateMnhaConfig']] mnha_config: Multi-Node HA (MNHA) settings applied by this gateway template, SRX only
         :param pulumi.Input[_builtins.str] name: Display name of the gateway template
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewaytemplateNetworkArgs', 'GatewaytemplateNetworkArgsDict']]]] networks: Layer 3 networks configured by this gateway template
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewaytemplateNetworkArgs', 'GatewaytemplateNetworkArgsDict', 'outputs.GatewaytemplateNetwork']]]] networks: Layer 3 networks configured by this gateway template
         :param pulumi.Input[_builtins.bool] ntp_override: Whether NTP servers in this template override inherited values
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: NTP servers provided by this gateway template
-        :param pulumi.Input[Union['GatewaytemplateOobIpConfigArgs', 'GatewaytemplateOobIpConfigArgsDict']] oob_ip_config: Out-of-band management IP defaults in this gateway template
+        :param pulumi.Input[Union['GatewaytemplateOobIpConfigArgs', 'GatewaytemplateOobIpConfigArgsDict', 'outputs.GatewaytemplateOobIpConfig']] oob_ip_config: Out-of-band management IP defaults in this gateway template
         :param pulumi.Input[_builtins.str] org_id: Organization that owns this gateway template
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplatePathPreferencesArgs', 'GatewaytemplatePathPreferencesArgsDict']]]] path_preferences: Property key is the path name
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplatePortConfigArgs', 'GatewaytemplatePortConfigArgsDict']]]] port_config: Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e. "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplatePathPreferencesArgs', 'GatewaytemplatePathPreferencesArgsDict', 'outputs.GatewaytemplatePathPreferences']]]] path_preferences: Property key is the path name
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplatePortConfigArgs', 'GatewaytemplatePortConfigArgsDict', 'outputs.GatewaytemplatePortConfig']]]] port_config: Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e. "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
         :param pulumi.Input[_builtins.str] router_id: Auto assigned if not set
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateRoutingPoliciesArgs', 'GatewaytemplateRoutingPoliciesArgsDict']]]] routing_policies: Routing policy defaults applied by this gateway template
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewaytemplateServicePolicyArgs', 'GatewaytemplateServicePolicyArgsDict']]]] service_policies: Traffic service policy defaults enforced by this gateway template
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateRoutingPoliciesArgs', 'GatewaytemplateRoutingPoliciesArgsDict', 'outputs.GatewaytemplateRoutingPolicies']]]] routing_policies: Routing policy defaults applied by this gateway template
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewaytemplateServicePolicyArgs', 'GatewaytemplateServicePolicyArgsDict', 'outputs.GatewaytemplateServicePolicy']]]] service_policies: Traffic service policy defaults enforced by this gateway template
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateTunnelConfigsArgs', 'GatewaytemplateTunnelConfigsArgsDict']]]] tunnel_configs: Property key is the tunnel name
-        :param pulumi.Input[Union['GatewaytemplateTunnelProviderOptionsArgs', 'GatewaytemplateTunnelProviderOptionsArgsDict']] tunnel_provider_options: Provider-specific tunnel options defined by this gateway template
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateTunnelConfigsArgs', 'GatewaytemplateTunnelConfigsArgsDict', 'outputs.GatewaytemplateTunnelConfigs']]]] tunnel_configs: Property key is the tunnel name
+        :param pulumi.Input[Union['GatewaytemplateTunnelProviderOptionsArgs', 'GatewaytemplateTunnelProviderOptionsArgsDict', 'outputs.GatewaytemplateTunnelProviderOptions']] tunnel_provider_options: Provider-specific tunnel options defined by this gateway template
         :param pulumi.Input[_builtins.str] type: Gateway template deployment type. enum: `spoke`, `standalone`.
         :param pulumi.Input[_builtins.str] url_filtering_deny_msg: When a service policy denies a app_category, what message to show in user's browser
-        :param pulumi.Input[Union['GatewaytemplateVrfConfigArgs', 'GatewaytemplateVrfConfigArgsDict']] vrf_config: VRF defaults applied by this gateway template
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateVrfInstancesArgs', 'GatewaytemplateVrfInstancesArgsDict']]]] vrf_instances: VRF instances configured by this gateway template
+        :param pulumi.Input[Union['GatewaytemplateVrfConfigArgs', 'GatewaytemplateVrfConfigArgsDict', 'outputs.GatewaytemplateVrfConfig']] vrf_config: VRF defaults applied by this gateway template
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateVrfInstancesArgs', 'GatewaytemplateVrfInstancesArgsDict', 'outputs.GatewaytemplateVrfInstances']]]] vrf_instances: VRF instances configured by this gateway template
         """
         ...
     @overload
@@ -1285,35 +1285,35 @@ class Gatewaytemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additional_config_cmds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 bgp_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateBgpConfigArgs', 'GatewaytemplateBgpConfigArgsDict']]]]] = None,
-                 dhcpd_config: pulumi.Input[Optional[Union['GatewaytemplateDhcpdConfigArgs', 'GatewaytemplateDhcpdConfigArgsDict']]] = None,
+                 bgp_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateBgpConfigArgs', 'GatewaytemplateBgpConfigArgsDict', 'outputs.GatewaytemplateBgpConfig']]]]] = None,
+                 dhcpd_config: pulumi.Input[Optional[Union['GatewaytemplateDhcpdConfigArgs', 'GatewaytemplateDhcpdConfigArgsDict', 'outputs.GatewaytemplateDhcpdConfig']]] = None,
                  dns_override: pulumi.Input[Optional[_builtins.bool]] = None,
                  dns_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  dns_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutesArgs', 'GatewaytemplateExtraRoutesArgsDict']]]]] = None,
-                 extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutes6Args', 'GatewaytemplateExtraRoutes6ArgsDict']]]]] = None,
-                 gateway_mgmt: pulumi.Input[Optional[Union['GatewaytemplateGatewayMgmtArgs', 'GatewaytemplateGatewayMgmtArgsDict']]] = None,
-                 idp_profiles: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateIdpProfilesArgs', 'GatewaytemplateIdpProfilesArgsDict']]]]] = None,
-                 ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateIpConfigsArgs', 'GatewaytemplateIpConfigsArgsDict']]]]] = None,
-                 mnha_config: pulumi.Input[Optional[Union['GatewaytemplateMnhaConfigArgs', 'GatewaytemplateMnhaConfigArgsDict']]] = None,
+                 extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutesArgs', 'GatewaytemplateExtraRoutesArgsDict', 'outputs.GatewaytemplateExtraRoutes']]]]] = None,
+                 extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutes6Args', 'GatewaytemplateExtraRoutes6ArgsDict', 'outputs.GatewaytemplateExtraRoutes6']]]]] = None,
+                 gateway_mgmt: pulumi.Input[Optional[Union['GatewaytemplateGatewayMgmtArgs', 'GatewaytemplateGatewayMgmtArgsDict', 'outputs.GatewaytemplateGatewayMgmt']]] = None,
+                 idp_profiles: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateIdpProfilesArgs', 'GatewaytemplateIdpProfilesArgsDict', 'outputs.GatewaytemplateIdpProfiles']]]]] = None,
+                 ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateIpConfigsArgs', 'GatewaytemplateIpConfigsArgsDict', 'outputs.GatewaytemplateIpConfigs']]]]] = None,
+                 mnha_config: pulumi.Input[Optional[Union['GatewaytemplateMnhaConfigArgs', 'GatewaytemplateMnhaConfigArgsDict', 'outputs.GatewaytemplateMnhaConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewaytemplateNetworkArgs', 'GatewaytemplateNetworkArgsDict']]]]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewaytemplateNetworkArgs', 'GatewaytemplateNetworkArgsDict', 'outputs.GatewaytemplateNetwork']]]]] = None,
                  ntp_override: pulumi.Input[Optional[_builtins.bool]] = None,
                  ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 oob_ip_config: pulumi.Input[Optional[Union['GatewaytemplateOobIpConfigArgs', 'GatewaytemplateOobIpConfigArgsDict']]] = None,
+                 oob_ip_config: pulumi.Input[Optional[Union['GatewaytemplateOobIpConfigArgs', 'GatewaytemplateOobIpConfigArgsDict', 'outputs.GatewaytemplateOobIpConfig']]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 path_preferences: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplatePathPreferencesArgs', 'GatewaytemplatePathPreferencesArgsDict']]]]] = None,
-                 port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplatePortConfigArgs', 'GatewaytemplatePortConfigArgsDict']]]]] = None,
+                 path_preferences: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplatePathPreferencesArgs', 'GatewaytemplatePathPreferencesArgsDict', 'outputs.GatewaytemplatePathPreferences']]]]] = None,
+                 port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplatePortConfigArgs', 'GatewaytemplatePortConfigArgsDict', 'outputs.GatewaytemplatePortConfig']]]]] = None,
                  router_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 routing_policies: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateRoutingPoliciesArgs', 'GatewaytemplateRoutingPoliciesArgsDict']]]]] = None,
-                 service_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewaytemplateServicePolicyArgs', 'GatewaytemplateServicePolicyArgsDict']]]]] = None,
+                 routing_policies: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateRoutingPoliciesArgs', 'GatewaytemplateRoutingPoliciesArgsDict', 'outputs.GatewaytemplateRoutingPolicies']]]]] = None,
+                 service_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewaytemplateServicePolicyArgs', 'GatewaytemplateServicePolicyArgsDict', 'outputs.GatewaytemplateServicePolicy']]]]] = None,
                  ssr_additional_config_cmds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tunnel_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateTunnelConfigsArgs', 'GatewaytemplateTunnelConfigsArgsDict']]]]] = None,
-                 tunnel_provider_options: pulumi.Input[Optional[Union['GatewaytemplateTunnelProviderOptionsArgs', 'GatewaytemplateTunnelProviderOptionsArgsDict']]] = None,
+                 tunnel_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateTunnelConfigsArgs', 'GatewaytemplateTunnelConfigsArgsDict', 'outputs.GatewaytemplateTunnelConfigs']]]]] = None,
+                 tunnel_provider_options: pulumi.Input[Optional[Union['GatewaytemplateTunnelProviderOptionsArgs', 'GatewaytemplateTunnelProviderOptionsArgsDict', 'outputs.GatewaytemplateTunnelProviderOptions']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  url_filtering_deny_msg: pulumi.Input[Optional[_builtins.str]] = None,
-                 vrf_config: pulumi.Input[Optional[Union['GatewaytemplateVrfConfigArgs', 'GatewaytemplateVrfConfigArgsDict']]] = None,
-                 vrf_instances: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateVrfInstancesArgs', 'GatewaytemplateVrfInstancesArgsDict']]]]] = None,
+                 vrf_config: pulumi.Input[Optional[Union['GatewaytemplateVrfConfigArgs', 'GatewaytemplateVrfConfigArgsDict', 'outputs.GatewaytemplateVrfConfig']]] = None,
+                 vrf_instances: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateVrfInstancesArgs', 'GatewaytemplateVrfInstancesArgsDict', 'outputs.GatewaytemplateVrfInstances']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1366,35 +1366,35 @@ class Gatewaytemplate(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             additional_config_cmds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            bgp_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateBgpConfigArgs', 'GatewaytemplateBgpConfigArgsDict']]]]] = None,
-            dhcpd_config: pulumi.Input[Optional[Union['GatewaytemplateDhcpdConfigArgs', 'GatewaytemplateDhcpdConfigArgsDict']]] = None,
+            bgp_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateBgpConfigArgs', 'GatewaytemplateBgpConfigArgsDict', 'outputs.GatewaytemplateBgpConfig']]]]] = None,
+            dhcpd_config: pulumi.Input[Optional[Union['GatewaytemplateDhcpdConfigArgs', 'GatewaytemplateDhcpdConfigArgsDict', 'outputs.GatewaytemplateDhcpdConfig']]] = None,
             dns_override: pulumi.Input[Optional[_builtins.bool]] = None,
             dns_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             dns_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutesArgs', 'GatewaytemplateExtraRoutesArgsDict']]]]] = None,
-            extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutes6Args', 'GatewaytemplateExtraRoutes6ArgsDict']]]]] = None,
-            gateway_mgmt: pulumi.Input[Optional[Union['GatewaytemplateGatewayMgmtArgs', 'GatewaytemplateGatewayMgmtArgsDict']]] = None,
-            idp_profiles: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateIdpProfilesArgs', 'GatewaytemplateIdpProfilesArgsDict']]]]] = None,
-            ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateIpConfigsArgs', 'GatewaytemplateIpConfigsArgsDict']]]]] = None,
-            mnha_config: pulumi.Input[Optional[Union['GatewaytemplateMnhaConfigArgs', 'GatewaytemplateMnhaConfigArgsDict']]] = None,
+            extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutesArgs', 'GatewaytemplateExtraRoutesArgsDict', 'outputs.GatewaytemplateExtraRoutes']]]]] = None,
+            extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutes6Args', 'GatewaytemplateExtraRoutes6ArgsDict', 'outputs.GatewaytemplateExtraRoutes6']]]]] = None,
+            gateway_mgmt: pulumi.Input[Optional[Union['GatewaytemplateGatewayMgmtArgs', 'GatewaytemplateGatewayMgmtArgsDict', 'outputs.GatewaytemplateGatewayMgmt']]] = None,
+            idp_profiles: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateIdpProfilesArgs', 'GatewaytemplateIdpProfilesArgsDict', 'outputs.GatewaytemplateIdpProfiles']]]]] = None,
+            ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateIpConfigsArgs', 'GatewaytemplateIpConfigsArgsDict', 'outputs.GatewaytemplateIpConfigs']]]]] = None,
+            mnha_config: pulumi.Input[Optional[Union['GatewaytemplateMnhaConfigArgs', 'GatewaytemplateMnhaConfigArgsDict', 'outputs.GatewaytemplateMnhaConfig']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewaytemplateNetworkArgs', 'GatewaytemplateNetworkArgsDict']]]]] = None,
+            networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewaytemplateNetworkArgs', 'GatewaytemplateNetworkArgsDict', 'outputs.GatewaytemplateNetwork']]]]] = None,
             ntp_override: pulumi.Input[Optional[_builtins.bool]] = None,
             ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            oob_ip_config: pulumi.Input[Optional[Union['GatewaytemplateOobIpConfigArgs', 'GatewaytemplateOobIpConfigArgsDict']]] = None,
+            oob_ip_config: pulumi.Input[Optional[Union['GatewaytemplateOobIpConfigArgs', 'GatewaytemplateOobIpConfigArgsDict', 'outputs.GatewaytemplateOobIpConfig']]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
-            path_preferences: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplatePathPreferencesArgs', 'GatewaytemplatePathPreferencesArgsDict']]]]] = None,
-            port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplatePortConfigArgs', 'GatewaytemplatePortConfigArgsDict']]]]] = None,
+            path_preferences: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplatePathPreferencesArgs', 'GatewaytemplatePathPreferencesArgsDict', 'outputs.GatewaytemplatePathPreferences']]]]] = None,
+            port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplatePortConfigArgs', 'GatewaytemplatePortConfigArgsDict', 'outputs.GatewaytemplatePortConfig']]]]] = None,
             router_id: pulumi.Input[Optional[_builtins.str]] = None,
-            routing_policies: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateRoutingPoliciesArgs', 'GatewaytemplateRoutingPoliciesArgsDict']]]]] = None,
-            service_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewaytemplateServicePolicyArgs', 'GatewaytemplateServicePolicyArgsDict']]]]] = None,
+            routing_policies: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateRoutingPoliciesArgs', 'GatewaytemplateRoutingPoliciesArgsDict', 'outputs.GatewaytemplateRoutingPolicies']]]]] = None,
+            service_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewaytemplateServicePolicyArgs', 'GatewaytemplateServicePolicyArgsDict', 'outputs.GatewaytemplateServicePolicy']]]]] = None,
             ssr_additional_config_cmds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            tunnel_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateTunnelConfigsArgs', 'GatewaytemplateTunnelConfigsArgsDict']]]]] = None,
-            tunnel_provider_options: pulumi.Input[Optional[Union['GatewaytemplateTunnelProviderOptionsArgs', 'GatewaytemplateTunnelProviderOptionsArgsDict']]] = None,
+            tunnel_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateTunnelConfigsArgs', 'GatewaytemplateTunnelConfigsArgsDict', 'outputs.GatewaytemplateTunnelConfigs']]]]] = None,
+            tunnel_provider_options: pulumi.Input[Optional[Union['GatewaytemplateTunnelProviderOptionsArgs', 'GatewaytemplateTunnelProviderOptionsArgsDict', 'outputs.GatewaytemplateTunnelProviderOptions']]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             url_filtering_deny_msg: pulumi.Input[Optional[_builtins.str]] = None,
-            vrf_config: pulumi.Input[Optional[Union['GatewaytemplateVrfConfigArgs', 'GatewaytemplateVrfConfigArgsDict']]] = None,
-            vrf_instances: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateVrfInstancesArgs', 'GatewaytemplateVrfInstancesArgsDict']]]]] = None) -> 'Gatewaytemplate':
+            vrf_config: pulumi.Input[Optional[Union['GatewaytemplateVrfConfigArgs', 'GatewaytemplateVrfConfigArgsDict', 'outputs.GatewaytemplateVrfConfig']]] = None,
+            vrf_instances: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateVrfInstancesArgs', 'GatewaytemplateVrfInstancesArgsDict', 'outputs.GatewaytemplateVrfInstances']]]]] = None) -> 'Gatewaytemplate':
         """
         Get an existing Gatewaytemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1403,35 +1403,35 @@ class Gatewaytemplate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: Additional CLI configuration commands provided by this gateway template
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateBgpConfigArgs', 'GatewaytemplateBgpConfigArgsDict']]]] bgp_config: BGP routing defaults for this gateway template. Property key is the BGP session name
-        :param pulumi.Input[Union['GatewaytemplateDhcpdConfigArgs', 'GatewaytemplateDhcpdConfigArgsDict']] dhcpd_config: DHCP server defaults provided by this gateway template
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateBgpConfigArgs', 'GatewaytemplateBgpConfigArgsDict', 'outputs.GatewaytemplateBgpConfig']]]] bgp_config: BGP routing defaults for this gateway template. Property key is the BGP session name
+        :param pulumi.Input[Union['GatewaytemplateDhcpdConfigArgs', 'GatewaytemplateDhcpdConfigArgsDict', 'outputs.GatewaytemplateDhcpdConfig']] dhcpd_config: DHCP server defaults provided by this gateway template
         :param pulumi.Input[_builtins.bool] dns_override: Whether DNS server and suffix settings in this template override inherited values
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: DNS servers provided by this gateway template
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: DNS search suffixes provided by this gateway template
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutesArgs', 'GatewaytemplateExtraRoutesArgsDict']]]] extra_routes: Additional IPv4 route defaults in this gateway template
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutes6Args', 'GatewaytemplateExtraRoutes6ArgsDict']]]] extra_routes6: Additional IPv6 route defaults in this gateway template
-        :param pulumi.Input[Union['GatewaytemplateGatewayMgmtArgs', 'GatewaytemplateGatewayMgmtArgsDict']] gateway_mgmt: Management-plane defaults provided by this gateway template
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateIdpProfilesArgs', 'GatewaytemplateIdpProfilesArgsDict']]]] idp_profiles: Intrusion detection and prevention profile defaults in this gateway template
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateIpConfigsArgs', 'GatewaytemplateIpConfigsArgsDict']]]] ip_configs: Gateway interface IP configuration defaults by network name
-        :param pulumi.Input[Union['GatewaytemplateMnhaConfigArgs', 'GatewaytemplateMnhaConfigArgsDict']] mnha_config: Multi-Node HA (MNHA) settings applied by this gateway template, SRX only
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutesArgs', 'GatewaytemplateExtraRoutesArgsDict', 'outputs.GatewaytemplateExtraRoutes']]]] extra_routes: Additional IPv4 route defaults in this gateway template
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutes6Args', 'GatewaytemplateExtraRoutes6ArgsDict', 'outputs.GatewaytemplateExtraRoutes6']]]] extra_routes6: Additional IPv6 route defaults in this gateway template
+        :param pulumi.Input[Union['GatewaytemplateGatewayMgmtArgs', 'GatewaytemplateGatewayMgmtArgsDict', 'outputs.GatewaytemplateGatewayMgmt']] gateway_mgmt: Management-plane defaults provided by this gateway template
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateIdpProfilesArgs', 'GatewaytemplateIdpProfilesArgsDict', 'outputs.GatewaytemplateIdpProfiles']]]] idp_profiles: Intrusion detection and prevention profile defaults in this gateway template
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateIpConfigsArgs', 'GatewaytemplateIpConfigsArgsDict', 'outputs.GatewaytemplateIpConfigs']]]] ip_configs: Gateway interface IP configuration defaults by network name
+        :param pulumi.Input[Union['GatewaytemplateMnhaConfigArgs', 'GatewaytemplateMnhaConfigArgsDict', 'outputs.GatewaytemplateMnhaConfig']] mnha_config: Multi-Node HA (MNHA) settings applied by this gateway template, SRX only
         :param pulumi.Input[_builtins.str] name: Display name of the gateway template
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewaytemplateNetworkArgs', 'GatewaytemplateNetworkArgsDict']]]] networks: Layer 3 networks configured by this gateway template
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewaytemplateNetworkArgs', 'GatewaytemplateNetworkArgsDict', 'outputs.GatewaytemplateNetwork']]]] networks: Layer 3 networks configured by this gateway template
         :param pulumi.Input[_builtins.bool] ntp_override: Whether NTP servers in this template override inherited values
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: NTP servers provided by this gateway template
-        :param pulumi.Input[Union['GatewaytemplateOobIpConfigArgs', 'GatewaytemplateOobIpConfigArgsDict']] oob_ip_config: Out-of-band management IP defaults in this gateway template
+        :param pulumi.Input[Union['GatewaytemplateOobIpConfigArgs', 'GatewaytemplateOobIpConfigArgsDict', 'outputs.GatewaytemplateOobIpConfig']] oob_ip_config: Out-of-band management IP defaults in this gateway template
         :param pulumi.Input[_builtins.str] org_id: Organization that owns this gateway template
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplatePathPreferencesArgs', 'GatewaytemplatePathPreferencesArgsDict']]]] path_preferences: Property key is the path name
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplatePortConfigArgs', 'GatewaytemplatePortConfigArgsDict']]]] port_config: Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e. "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplatePathPreferencesArgs', 'GatewaytemplatePathPreferencesArgsDict', 'outputs.GatewaytemplatePathPreferences']]]] path_preferences: Property key is the path name
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplatePortConfigArgs', 'GatewaytemplatePortConfigArgsDict', 'outputs.GatewaytemplatePortConfig']]]] port_config: Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e. "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
         :param pulumi.Input[_builtins.str] router_id: Auto assigned if not set
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateRoutingPoliciesArgs', 'GatewaytemplateRoutingPoliciesArgsDict']]]] routing_policies: Routing policy defaults applied by this gateway template
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewaytemplateServicePolicyArgs', 'GatewaytemplateServicePolicyArgsDict']]]] service_policies: Traffic service policy defaults enforced by this gateway template
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateRoutingPoliciesArgs', 'GatewaytemplateRoutingPoliciesArgsDict', 'outputs.GatewaytemplateRoutingPolicies']]]] routing_policies: Routing policy defaults applied by this gateway template
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewaytemplateServicePolicyArgs', 'GatewaytemplateServicePolicyArgsDict', 'outputs.GatewaytemplateServicePolicy']]]] service_policies: Traffic service policy defaults enforced by this gateway template
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateTunnelConfigsArgs', 'GatewaytemplateTunnelConfigsArgsDict']]]] tunnel_configs: Property key is the tunnel name
-        :param pulumi.Input[Union['GatewaytemplateTunnelProviderOptionsArgs', 'GatewaytemplateTunnelProviderOptionsArgsDict']] tunnel_provider_options: Provider-specific tunnel options defined by this gateway template
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateTunnelConfigsArgs', 'GatewaytemplateTunnelConfigsArgsDict', 'outputs.GatewaytemplateTunnelConfigs']]]] tunnel_configs: Property key is the tunnel name
+        :param pulumi.Input[Union['GatewaytemplateTunnelProviderOptionsArgs', 'GatewaytemplateTunnelProviderOptionsArgsDict', 'outputs.GatewaytemplateTunnelProviderOptions']] tunnel_provider_options: Provider-specific tunnel options defined by this gateway template
         :param pulumi.Input[_builtins.str] type: Gateway template deployment type. enum: `spoke`, `standalone`.
         :param pulumi.Input[_builtins.str] url_filtering_deny_msg: When a service policy denies a app_category, what message to show in user's browser
-        :param pulumi.Input[Union['GatewaytemplateVrfConfigArgs', 'GatewaytemplateVrfConfigArgsDict']] vrf_config: VRF defaults applied by this gateway template
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateVrfInstancesArgs', 'GatewaytemplateVrfInstancesArgsDict']]]] vrf_instances: VRF instances configured by this gateway template
+        :param pulumi.Input[Union['GatewaytemplateVrfConfigArgs', 'GatewaytemplateVrfConfigArgsDict', 'outputs.GatewaytemplateVrfConfig']] vrf_config: VRF defaults applied by this gateway template
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateVrfInstancesArgs', 'GatewaytemplateVrfInstancesArgsDict', 'outputs.GatewaytemplateVrfInstances']]]] vrf_instances: VRF instances configured by this gateway template
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

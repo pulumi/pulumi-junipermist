@@ -57,19 +57,13 @@ type GetNetworksArgs struct {
 
 // A collection of values returned by getNetworks.
 type GetNetworksResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id          string                  `pulumi:"id"`
 	OrgId       string                  `pulumi:"orgId"`
 	OrgNetworks []GetNetworksOrgNetwork `pulumi:"orgNetworks"`
 }
 
 func GetNetworksOutput(ctx *pulumi.Context, args GetNetworksOutputArgs, opts ...pulumi.InvokeOption) GetNetworksResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNetworksResultOutput, error) {
-			args := v.(GetNetworksArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("junipermist:org/getNetworks:getNetworks", args, GetNetworksResultOutput{}, options).(GetNetworksResultOutput), nil
-		}).(GetNetworksResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("junipermist:org/getNetworks:getNetworks", args, GetNetworksResultOutput{}, options).(GetNetworksResultOutput)
 }
 
 // A collection of arguments for invoking getNetworks.
@@ -94,11 +88,6 @@ func (o GetNetworksResultOutput) ToGetNetworksResultOutput() GetNetworksResultOu
 
 func (o GetNetworksResultOutput) ToGetNetworksResultOutputWithContext(ctx context.Context) GetNetworksResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetNetworksResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNetworksResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetNetworksResultOutput) OrgId() pulumi.StringOutput {

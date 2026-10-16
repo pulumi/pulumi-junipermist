@@ -57,19 +57,13 @@ type GetGatewaytemplatesArgs struct {
 
 // A collection of values returned by getGatewaytemplates.
 type GetGatewaytemplatesResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id                  string                                  `pulumi:"id"`
 	OrgGatewaytemplates []GetGatewaytemplatesOrgGatewaytemplate `pulumi:"orgGatewaytemplates"`
 	OrgId               string                                  `pulumi:"orgId"`
 }
 
 func GetGatewaytemplatesOutput(ctx *pulumi.Context, args GetGatewaytemplatesOutputArgs, opts ...pulumi.InvokeOption) GetGatewaytemplatesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGatewaytemplatesResultOutput, error) {
-			args := v.(GetGatewaytemplatesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("junipermist:org/getGatewaytemplates:getGatewaytemplates", args, GetGatewaytemplatesResultOutput{}, options).(GetGatewaytemplatesResultOutput), nil
-		}).(GetGatewaytemplatesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("junipermist:org/getGatewaytemplates:getGatewaytemplates", args, GetGatewaytemplatesResultOutput{}, options).(GetGatewaytemplatesResultOutput)
 }
 
 // A collection of arguments for invoking getGatewaytemplates.
@@ -94,11 +88,6 @@ func (o GetGatewaytemplatesResultOutput) ToGetGatewaytemplatesResultOutput() Get
 
 func (o GetGatewaytemplatesResultOutput) ToGetGatewaytemplatesResultOutputWithContext(ctx context.Context) GetGatewaytemplatesResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetGatewaytemplatesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGatewaytemplatesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetGatewaytemplatesResultOutput) OrgGatewaytemplates() GetGatewaytemplatesOrgGatewaytemplateArrayOutput {

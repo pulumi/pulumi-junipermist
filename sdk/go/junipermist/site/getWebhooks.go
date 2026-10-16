@@ -59,19 +59,13 @@ type GetWebhooksArgs struct {
 
 // A collection of values returned by getWebhooks.
 type GetWebhooksResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id           string                   `pulumi:"id"`
 	SiteId       string                   `pulumi:"siteId"`
 	SiteWebhooks []GetWebhooksSiteWebhook `pulumi:"siteWebhooks"`
 }
 
 func GetWebhooksOutput(ctx *pulumi.Context, args GetWebhooksOutputArgs, opts ...pulumi.InvokeOption) GetWebhooksResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetWebhooksResultOutput, error) {
-			args := v.(GetWebhooksArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("junipermist:site/getWebhooks:getWebhooks", args, GetWebhooksResultOutput{}, options).(GetWebhooksResultOutput), nil
-		}).(GetWebhooksResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("junipermist:site/getWebhooks:getWebhooks", args, GetWebhooksResultOutput{}, options).(GetWebhooksResultOutput)
 }
 
 // A collection of arguments for invoking getWebhooks.
@@ -96,11 +90,6 @@ func (o GetWebhooksResultOutput) ToGetWebhooksResultOutput() GetWebhooksResultOu
 
 func (o GetWebhooksResultOutput) ToGetWebhooksResultOutputWithContext(ctx context.Context) GetWebhooksResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetWebhooksResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWebhooksResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetWebhooksResultOutput) SiteId() pulumi.StringOutput {

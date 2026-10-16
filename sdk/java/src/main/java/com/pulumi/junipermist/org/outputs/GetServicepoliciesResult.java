@@ -12,22 +12,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServicepoliciesResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private String orgId;
     private List<GetServicepoliciesOrgServicepolicy> orgServicepolicies;
 
     private GetServicepoliciesResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public String orgId() {
         return this.orgId;
     }
@@ -44,25 +32,15 @@ public final class GetServicepoliciesResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private String orgId;
         private List<GetServicepoliciesOrgServicepolicy> orgServicepolicies;
         public Builder() {}
         public Builder(GetServicepoliciesResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.orgId = defaults.orgId;
     	      this.orgServicepolicies = defaults.orgServicepolicies;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetServicepoliciesResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder orgId(String orgId) {
             if (orgId == null) {
@@ -84,7 +62,6 @@ public final class GetServicepoliciesResult {
         }
         public GetServicepoliciesResult build() {
             final var _resultValue = new GetServicepoliciesResult();
-            _resultValue.id = id;
             _resultValue.orgId = orgId;
             _resultValue.orgServicepolicies = orgServicepolicies;
             return _resultValue;

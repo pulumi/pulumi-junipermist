@@ -49,10 +49,6 @@ export interface GetWxtagsArgs {
  * A collection of values returned by getWxtags.
  */
 export interface GetWxtagsResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly orgId: string;
     readonly orgWxtags: outputs.org.GetWxtagsOrgWxtag[];
 }

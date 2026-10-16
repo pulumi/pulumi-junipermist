@@ -397,9 +397,9 @@ class Nacrule(pulumi.CustomResource):
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  guest_auth_state: pulumi.Input[Optional[_builtins.str]] = None,
-                 matching: pulumi.Input[Optional[Union['NacruleMatchingArgs', 'NacruleMatchingArgsDict']]] = None,
+                 matching: pulumi.Input[Optional[Union['NacruleMatchingArgs', 'NacruleMatchingArgsDict', 'outputs.NacruleMatching']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 not_matching: pulumi.Input[Optional[Union['NacruleNotMatchingArgs', 'NacruleNotMatchingArgsDict']]] = None,
+                 not_matching: pulumi.Input[Optional[Union['NacruleNotMatchingArgs', 'NacruleNotMatchingArgsDict', 'outputs.NacruleNotMatching']]] = None,
                  order: pulumi.Input[Optional[_builtins.int]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -449,9 +449,9 @@ class Nacrule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enabled: Whether the NAC rule is evaluated during policy matching
         :param pulumi.Input[_builtins.str] group_name: Name of the group the NAC rule belongs to
         :param pulumi.Input[_builtins.str] guest_auth_state: Guest portal authorization state condition for the rule. enum: `authorized`, `unknown`.
-        :param pulumi.Input[Union['NacruleMatchingArgs', 'NacruleMatchingArgsDict']] matching: Criteria that must match for the NAC rule to apply
+        :param pulumi.Input[Union['NacruleMatchingArgs', 'NacruleMatchingArgsDict', 'outputs.NacruleMatching']] matching: Criteria that must match for the NAC rule to apply
         :param pulumi.Input[_builtins.str] name: Human-readable name of the NAC rule
-        :param pulumi.Input[Union['NacruleNotMatchingArgs', 'NacruleNotMatchingArgsDict']] not_matching: Criteria that must not match for the NAC rule to apply
+        :param pulumi.Input[Union['NacruleNotMatchingArgs', 'NacruleNotMatchingArgsDict', 'outputs.NacruleNotMatching']] not_matching: Criteria that must not match for the NAC rule to apply
         :param pulumi.Input[_builtins.int] order: Rule priority; lower values are evaluated with higher priority
         :param pulumi.Input[_builtins.str] org_id: Org identifier that owns the NAC rule
         """
@@ -520,9 +520,9 @@ class Nacrule(pulumi.CustomResource):
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  guest_auth_state: pulumi.Input[Optional[_builtins.str]] = None,
-                 matching: pulumi.Input[Optional[Union['NacruleMatchingArgs', 'NacruleMatchingArgsDict']]] = None,
+                 matching: pulumi.Input[Optional[Union['NacruleMatchingArgs', 'NacruleMatchingArgsDict', 'outputs.NacruleMatching']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 not_matching: pulumi.Input[Optional[Union['NacruleNotMatchingArgs', 'NacruleNotMatchingArgsDict']]] = None,
+                 not_matching: pulumi.Input[Optional[Union['NacruleNotMatchingArgs', 'NacruleNotMatchingArgsDict', 'outputs.NacruleNotMatching']]] = None,
                  order: pulumi.Input[Optional[_builtins.int]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -567,9 +567,9 @@ class Nacrule(pulumi.CustomResource):
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             group_name: pulumi.Input[Optional[_builtins.str]] = None,
             guest_auth_state: pulumi.Input[Optional[_builtins.str]] = None,
-            matching: pulumi.Input[Optional[Union['NacruleMatchingArgs', 'NacruleMatchingArgsDict']]] = None,
+            matching: pulumi.Input[Optional[Union['NacruleMatchingArgs', 'NacruleMatchingArgsDict', 'outputs.NacruleMatching']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            not_matching: pulumi.Input[Optional[Union['NacruleNotMatchingArgs', 'NacruleNotMatchingArgsDict']]] = None,
+            not_matching: pulumi.Input[Optional[Union['NacruleNotMatchingArgs', 'NacruleNotMatchingArgsDict', 'outputs.NacruleNotMatching']]] = None,
             order: pulumi.Input[Optional[_builtins.int]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Nacrule':
         """
@@ -585,9 +585,9 @@ class Nacrule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enabled: Whether the NAC rule is evaluated during policy matching
         :param pulumi.Input[_builtins.str] group_name: Name of the group the NAC rule belongs to
         :param pulumi.Input[_builtins.str] guest_auth_state: Guest portal authorization state condition for the rule. enum: `authorized`, `unknown`.
-        :param pulumi.Input[Union['NacruleMatchingArgs', 'NacruleMatchingArgsDict']] matching: Criteria that must match for the NAC rule to apply
+        :param pulumi.Input[Union['NacruleMatchingArgs', 'NacruleMatchingArgsDict', 'outputs.NacruleMatching']] matching: Criteria that must match for the NAC rule to apply
         :param pulumi.Input[_builtins.str] name: Human-readable name of the NAC rule
-        :param pulumi.Input[Union['NacruleNotMatchingArgs', 'NacruleNotMatchingArgsDict']] not_matching: Criteria that must not match for the NAC rule to apply
+        :param pulumi.Input[Union['NacruleNotMatchingArgs', 'NacruleNotMatchingArgsDict', 'outputs.NacruleNotMatching']] not_matching: Criteria that must not match for the NAC rule to apply
         :param pulumi.Input[_builtins.int] order: Rule priority; lower values are evaluated with higher priority
         :param pulumi.Input[_builtins.str] org_id: Org identifier that owns the NAC rule
         """

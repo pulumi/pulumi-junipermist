@@ -27,10 +27,7 @@ class GetNactagsResult:
     """
     A collection of values returned by getNactags.
     """
-    def __init__(__self__, id=None, match=None, name=None, org_id=None, org_nactags=None, type=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, match=None, name=None, org_id=None, org_nactags=None, type=None):
         if match and not isinstance(match, str):
             raise TypeError("Expected argument 'match' to be a str")
         pulumi.set(__self__, "match", match)
@@ -46,14 +43,6 @@ class GetNactagsResult:
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -87,7 +76,6 @@ class AwaitableGetNactagsResult(GetNactagsResult):
         if False:
             yield self
         return GetNactagsResult(
-            id=self.id,
             match=self.match,
             name=self.name,
             org_id=self.org_id,
@@ -125,7 +113,6 @@ def get_nactags(match: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('junipermist:org/getNactags:getNactags', __args__, opts=opts, typ=GetNactagsResult).value
 
     return AwaitableGetNactagsResult(
-        id=pulumi.get(__ret__, 'id'),
         match=pulumi.get(__ret__, 'match'),
         name=pulumi.get(__ret__, 'name'),
         org_id=pulumi.get(__ret__, 'org_id'),
@@ -160,7 +147,6 @@ def get_nactags_output(match: pulumi.Input[Optional[Optional[_builtins.str]]] = 
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:org/getNactags:getNactags', __args__, opts=opts, typ=GetNactagsResult)
     return __ret__.apply(lambda __response__: GetNactagsResult(
-        id=pulumi.get(__response__, 'id'),
         match=pulumi.get(__response__, 'match'),
         name=pulumi.get(__response__, 'name'),
         org_id=pulumi.get(__response__, 'org_id'),

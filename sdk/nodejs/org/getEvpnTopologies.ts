@@ -40,10 +40,6 @@ export interface GetEvpnTopologiesArgs {
  * A collection of values returned by getEvpnTopologies.
  */
 export interface GetEvpnTopologiesResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly orgEvpnTopologies: outputs.org.GetEvpnTopologiesOrgEvpnTopology[];
     readonly orgId: string;
 }

@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var avprofileOne = new Avprofile("avprofileOne", AvprofileArgs.builder()
- *             .orgId(terraformTest.id())
+ *             .orgId(terraformTest.get("id"))
  *             .fallbackAction("block")
  *             .maxFilesize(5000)
  *             .mimeWhitelists("image/png")

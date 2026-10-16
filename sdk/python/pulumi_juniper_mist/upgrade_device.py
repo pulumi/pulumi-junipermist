@@ -704,13 +704,13 @@ class UpgradeDevice(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_upgrade_stat: pulumi.Input[Optional[Union['UpgradeDeviceAutoUpgradeStatArgs', 'UpgradeDeviceAutoUpgradeStatArgsDict']]] = None,
+            auto_upgrade_stat: pulumi.Input[Optional[Union['UpgradeDeviceAutoUpgradeStatArgs', 'UpgradeDeviceAutoUpgradeStatArgsDict', 'outputs.UpgradeDeviceAutoUpgradeStat']]] = None,
             config_timestamp: pulumi.Input[Optional[_builtins.int]] = None,
             config_version: pulumi.Input[Optional[_builtins.int]] = None,
             device_id: pulumi.Input[Optional[_builtins.str]] = None,
             device_version: pulumi.Input[Optional[_builtins.str]] = None,
             ext_ip: pulumi.Input[Optional[_builtins.str]] = None,
-            fwupdate: pulumi.Input[Optional[Union['UpgradeDeviceFwupdateArgs', 'UpgradeDeviceFwupdateArgsDict']]] = None,
+            fwupdate: pulumi.Input[Optional[Union['UpgradeDeviceFwupdateArgs', 'UpgradeDeviceFwupdateArgsDict', 'outputs.UpgradeDeviceFwupdate']]] = None,
             reboot: pulumi.Input[Optional[_builtins.bool]] = None,
             reboot_at: pulumi.Input[Optional[_builtins.int]] = None,
             site_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -732,12 +732,12 @@ class UpgradeDevice(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['UpgradeDeviceAutoUpgradeStatArgs', 'UpgradeDeviceAutoUpgradeStatArgsDict']] auto_upgrade_stat: Automatic firmware upgrade status for the switch
+        :param pulumi.Input[Union['UpgradeDeviceAutoUpgradeStatArgs', 'UpgradeDeviceAutoUpgradeStatArgsDict', 'outputs.UpgradeDeviceAutoUpgradeStat']] auto_upgrade_stat: Automatic firmware upgrade status for the switch
         :param pulumi.Input[_builtins.int] config_timestamp: Time when the switch configuration status was last updated, in epoch seconds
         :param pulumi.Input[_builtins.int] config_version: Currently applied configuration version for the switch
         :param pulumi.Input[_builtins.str] device_version: current device firmware version
         :param pulumi.Input[_builtins.str] ext_ip: Public IP address observed for the switch
-        :param pulumi.Input[Union['UpgradeDeviceFwupdateArgs', 'UpgradeDeviceFwupdateArgsDict']] fwupdate: Firmware update status for the switch
+        :param pulumi.Input[Union['UpgradeDeviceFwupdateArgs', 'UpgradeDeviceFwupdateArgsDict', 'outputs.UpgradeDeviceFwupdate']] fwupdate: Firmware update status for the switch
         :param pulumi.Input[_builtins.bool] reboot: For Switches and Gateways only (APs are automatically rebooted). Reboot device immediately after upgrade is completed
         :param pulumi.Input[_builtins.int] reboot_at: For Switches and Gateways only and if `reboot`==`true`. Reboot start time in epoch seconds, default is `start_time`
         :param pulumi.Input[_builtins.str] site_id: Associated site identifier for the switch statistics record

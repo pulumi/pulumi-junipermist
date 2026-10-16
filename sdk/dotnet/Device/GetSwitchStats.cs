@@ -239,10 +239,6 @@ namespace Pulumi.JuniperMist.Device
         /// EVPN Topology ID
         /// </summary>
         public readonly string? EvpntopoId;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly string? Mac;
         public readonly string OrgId;
         public readonly string? SiteId;
@@ -267,8 +263,6 @@ namespace Pulumi.JuniperMist.Device
 
             string? evpntopoId,
 
-            string id,
-
             string? mac,
 
             string orgId,
@@ -284,7 +278,6 @@ namespace Pulumi.JuniperMist.Device
             End = end;
             EvpnUnused = evpnUnused;
             EvpntopoId = evpntopoId;
-            Id = id;
             Mac = mac;
             OrgId = orgId;
             SiteId = siteId;

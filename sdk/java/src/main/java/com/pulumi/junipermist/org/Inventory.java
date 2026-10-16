@@ -53,16 +53,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var inventory = new Inventory("inventory", InventoryArgs.builder()
- *             .orgId(terraformTest.id())
+ *             .orgId(terraformTest.get("id"))
  *             .inventory(Map.ofEntries(
  *                 Map.entry("CPKL2EXXXXXXXXX", InventoryInventoryArgs.builder()
  *                     .build()),
  *                 Map.entry("G87JHBFXXXXXXXX", InventoryInventoryArgs.builder()
- *                     .siteId(terraformSite.id())
+ *                     .siteId(terraformSite.get("id"))
  *                     .unclaimWhenDestroyed(true)
  *                     .build()),
  *                 Map.entry("2c2131000000", InventoryInventoryArgs.builder()
- *                     .siteId(terraformSite.id())
+ *                     .siteId(terraformSite.get("id"))
  *                     .unclaimWhenDestroyed(true)
  *                     .build()),
  *                 Map.entry("2c2131000001", InventoryInventoryArgs.builder()

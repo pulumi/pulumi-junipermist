@@ -147,22 +147,15 @@ namespace Pulumi.JuniperMist.Org
     [OutputType]
     public sealed class GetWxtagsResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly string OrgId;
         public readonly ImmutableArray<Outputs.GetWxtagsOrgWxtagResult> OrgWxtags;
 
         [OutputConstructor]
         private GetWxtagsResult(
-            string id,
-
             string orgId,
 
             ImmutableArray<Outputs.GetWxtagsOrgWxtagResult> orgWxtags)
         {
-            Id = id;
             OrgId = orgId;
             OrgWxtags = orgWxtags;
         }

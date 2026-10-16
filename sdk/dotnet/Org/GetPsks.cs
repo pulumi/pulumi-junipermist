@@ -156,10 +156,6 @@ namespace Pulumi.JuniperMist.Org
     [OutputType]
     public sealed class GetPsksResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly string? Name;
         public readonly string OrgId;
         public readonly ImmutableArray<Outputs.GetPsksOrgPskResult> OrgPsks;
@@ -168,8 +164,6 @@ namespace Pulumi.JuniperMist.Org
 
         [OutputConstructor]
         private GetPsksResult(
-            string id,
-
             string? name,
 
             string orgId,
@@ -180,7 +174,6 @@ namespace Pulumi.JuniperMist.Org
 
             string? ssid)
         {
-            Id = id;
             Name = name;
             OrgId = orgId;
             OrgPsks = orgPsks;

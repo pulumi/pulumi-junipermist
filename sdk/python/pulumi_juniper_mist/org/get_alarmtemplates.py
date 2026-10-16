@@ -27,24 +27,13 @@ class GetAlarmtemplatesResult:
     """
     A collection of values returned by getAlarmtemplates.
     """
-    def __init__(__self__, id=None, org_alarmtemplates=None, org_id=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, org_alarmtemplates=None, org_id=None):
         if org_alarmtemplates and not isinstance(org_alarmtemplates, list):
             raise TypeError("Expected argument 'org_alarmtemplates' to be a list")
         pulumi.set(__self__, "org_alarmtemplates", org_alarmtemplates)
         if org_id and not isinstance(org_id, str):
             raise TypeError("Expected argument 'org_id' to be a str")
         pulumi.set(__self__, "org_id", org_id)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="orgAlarmtemplates")
@@ -63,7 +52,6 @@ class AwaitableGetAlarmtemplatesResult(GetAlarmtemplatesResult):
         if False:
             yield self
         return GetAlarmtemplatesResult(
-            id=self.id,
             org_alarmtemplates=self.org_alarmtemplates,
             org_id=self.org_id)
 
@@ -90,7 +78,6 @@ def get_alarmtemplates(org_id: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('junipermist:org/getAlarmtemplates:getAlarmtemplates', __args__, opts=opts, typ=GetAlarmtemplatesResult).value
 
     return AwaitableGetAlarmtemplatesResult(
-        id=pulumi.get(__ret__, 'id'),
         org_alarmtemplates=pulumi.get(__ret__, 'org_alarmtemplates'),
         org_id=pulumi.get(__ret__, 'org_id'))
 def get_alarmtemplates_output(org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -114,6 +101,5 @@ def get_alarmtemplates_output(org_id: pulumi.Input[Optional[_builtins.str]] = No
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:org/getAlarmtemplates:getAlarmtemplates', __args__, opts=opts, typ=GetAlarmtemplatesResult)
     return __ret__.apply(lambda __response__: GetAlarmtemplatesResult(
-        id=pulumi.get(__response__, 'id'),
         org_alarmtemplates=pulumi.get(__response__, 'org_alarmtemplates'),
         org_id=pulumi.get(__response__, 'org_id')))

@@ -42,10 +42,6 @@ export interface GetRftemplatesArgs {
  * A collection of values returned by getRftemplates.
  */
 export interface GetRftemplatesResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly orgId: string;
     readonly orgRftemplates: outputs.org.GetRftemplatesOrgRftemplate[];
     readonly page?: number;

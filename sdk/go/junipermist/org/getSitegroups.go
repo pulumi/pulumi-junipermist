@@ -58,19 +58,13 @@ type GetSitegroupsArgs struct {
 
 // A collection of values returned by getSitegroups.
 type GetSitegroupsResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id            string                      `pulumi:"id"`
 	OrgId         string                      `pulumi:"orgId"`
 	OrgSitegroups []GetSitegroupsOrgSitegroup `pulumi:"orgSitegroups"`
 }
 
 func GetSitegroupsOutput(ctx *pulumi.Context, args GetSitegroupsOutputArgs, opts ...pulumi.InvokeOption) GetSitegroupsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSitegroupsResultOutput, error) {
-			args := v.(GetSitegroupsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("junipermist:org/getSitegroups:getSitegroups", args, GetSitegroupsResultOutput{}, options).(GetSitegroupsResultOutput), nil
-		}).(GetSitegroupsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("junipermist:org/getSitegroups:getSitegroups", args, GetSitegroupsResultOutput{}, options).(GetSitegroupsResultOutput)
 }
 
 // A collection of arguments for invoking getSitegroups.
@@ -95,11 +89,6 @@ func (o GetSitegroupsResultOutput) ToGetSitegroupsResultOutput() GetSitegroupsRe
 
 func (o GetSitegroupsResultOutput) ToGetSitegroupsResultOutputWithContext(ctx context.Context) GetSitegroupsResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetSitegroupsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSitegroupsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetSitegroupsResultOutput) OrgId() pulumi.StringOutput {

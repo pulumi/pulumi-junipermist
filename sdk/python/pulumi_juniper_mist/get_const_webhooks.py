@@ -27,26 +27,15 @@ class GetConstWebhooksResult:
     """
     A collection of values returned by getConstWebhooks.
     """
-    def __init__(__self__, const_webhooks=None, id=None):
+    def __init__(__self__, const_webhooks=None):
         if const_webhooks and not isinstance(const_webhooks, list):
             raise TypeError("Expected argument 'const_webhooks' to be a list")
         pulumi.set(__self__, "const_webhooks", const_webhooks)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
 
     @_builtins.property
     @pulumi.getter(name="constWebhooks")
     def const_webhooks(self) -> Sequence['outputs.GetConstWebhooksConstWebhookResult']:
         return pulumi.get(self, "const_webhooks")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
 
 class AwaitableGetConstWebhooksResult(GetConstWebhooksResult):
@@ -55,8 +44,7 @@ class AwaitableGetConstWebhooksResult(GetConstWebhooksResult):
         if False:
             yield self
         return GetConstWebhooksResult(
-            const_webhooks=self.const_webhooks,
-            id=self.id)
+            const_webhooks=self.const_webhooks)
 
 
 def get_const_webhooks(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConstWebhooksResult:
@@ -81,8 +69,7 @@ def get_const_webhooks(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitable
     __ret__ = pulumi.runtime.invoke('junipermist:index/getConstWebhooks:getConstWebhooks', __args__, opts=opts, typ=GetConstWebhooksResult).value
 
     return AwaitableGetConstWebhooksResult(
-        const_webhooks=pulumi.get(__ret__, 'const_webhooks'),
-        id=pulumi.get(__ret__, 'id'))
+        const_webhooks=pulumi.get(__ret__, 'const_webhooks'))
 def get_const_webhooks_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConstWebhooksResult]:
     """
     This data source provides the list of Webhook Topics.
@@ -104,5 +91,4 @@ def get_const_webhooks_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:index/getConstWebhooks:getConstWebhooks', __args__, opts=opts, typ=GetConstWebhooksResult)
     return __ret__.apply(lambda __response__: GetConstWebhooksResult(
-        const_webhooks=pulumi.get(__response__, 'const_webhooks'),
-        id=pulumi.get(__response__, 'id')))
+        const_webhooks=pulumi.get(__response__, 'const_webhooks')))

@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var networkOne = new Network("networkOne", NetworkArgs.builder()
- *             .orgId(terraformTest.id())
+ *             .orgId(terraformTest.get("id"))
  *             .name("network_one")
  *             .subnet("10.4.0.0/24")
  *             .disallowMistServices(false)

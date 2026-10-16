@@ -14,11 +14,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNactagsResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable String match;
     private @Nullable String name;
     private String orgId;
@@ -26,13 +21,6 @@ public final class GetNactagsResult {
     private @Nullable String type;
 
     private GetNactagsResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public Optional<String> match() {
         return Optional.ofNullable(this.match);
     }
@@ -58,7 +46,6 @@ public final class GetNactagsResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private @Nullable String match;
         private @Nullable String name;
         private String orgId;
@@ -67,7 +54,6 @@ public final class GetNactagsResult {
         public Builder() {}
         public Builder(GetNactagsResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.match = defaults.match;
     	      this.name = defaults.name;
     	      this.orgId = defaults.orgId;
@@ -75,14 +61,6 @@ public final class GetNactagsResult {
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetNactagsResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder match(@Nullable String match) {
 
@@ -122,7 +100,6 @@ public final class GetNactagsResult {
         }
         public GetNactagsResult build() {
             final var _resultValue = new GetNactagsResult();
-            _resultValue.id = id;
             _resultValue.match = match;
             _resultValue.name = name;
             _resultValue.orgId = orgId;

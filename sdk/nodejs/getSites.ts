@@ -39,10 +39,6 @@ export interface GetSitesArgs {
  * A collection of values returned by getSites.
  */
 export interface GetSitesResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly orgId: string;
     readonly sites: outputs.GetSitesSite[];
 }

@@ -131,6 +131,23 @@ func Provider(_ context.Context) tfbridge.ProviderInfo {
 	prov.MustComputeTokens(strategy)
 	prov.MustApplyAutoAliases()
 
+	// Terraform provider-defined functions are exposed by the bridge as multi-argument
+	// invokes. The upstream search_* functions all take an object-typed argument (the whole
+	// mist_org_inventory value), which pulumi-java cannot currently generate: it emits the
+	// same `inputs/<Fn>Inventory.java` class twice and panics with "duplicate file". These
+	// functions have never been part of the Pulumi SDKs, so skip them until Java codegen
+	// supports object-typed multi-argument inputs.
+	for _, fn := range []string{
+		"search_inventory_by_claimcode",
+		"search_inventory_by_mac",
+		"search_inventory_by_serial",
+		"search_vc_by_member_claimcode",
+		"search_vc_by_member_serial",
+	} {
+		delete(prov.Functions, fn)
+		prov.IgnoreMappings = append(prov.IgnoreMappings, fn)
+	}
+
 	prov.SetAutonaming(255, "-")
 
 	return prov

@@ -126,22 +126,15 @@ namespace Pulumi.JuniperMist.Org
     [OutputType]
     public sealed class GetIdpprofilesResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly string OrgId;
         public readonly ImmutableArray<Outputs.GetIdpprofilesOrgIdpprofileResult> OrgIdpprofiles;
 
         [OutputConstructor]
         private GetIdpprofilesResult(
-            string id,
-
             string orgId,
 
             ImmutableArray<Outputs.GetIdpprofilesOrgIdpprofileResult> orgIdpprofiles)
         {
-            Id = id;
             OrgId = orgId;
             OrgIdpprofiles = orgIdpprofiles;
         }

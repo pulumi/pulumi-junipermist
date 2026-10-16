@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var sitegroupOne = new Sitegroup("sitegroupOne", SitegroupArgs.builder()
- *             .orgId(terraformTest.id())
+ *             .orgId(terraformTest.get("id"))
  *             .name("sitegroup_one")
  *             .build());
  * 

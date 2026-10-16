@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var wlanOne = new Wlan("wlanOne", WlanArgs.builder()
  *             .ssid("wlan_one")
- *             .siteId(terraformTest.id())
+ *             .siteId(terraformTest.get("id"))
  *             .bands(            
  *                 "5",
  *                 "6")

@@ -4408,7 +4408,7 @@ class GatewayDhcpdConfigConfig(dict):
         :param _builtins.str ip_start: If `type`==`local`, starting IPv4 address for the DHCP lease pool
         :param _builtins.int lease_time: In seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
         :param Mapping[str, 'GatewayDhcpdConfigConfigOptionsArgs'] options: If `type`==`local` or `type6`==`local`, custom DHCP options advertised to clients
-        :param _builtins.bool server_id_override: `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
+        :param _builtins.bool server_id_override: `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
                should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
         :param Sequence[_builtins.str] servers: If `type`==`relay`, upstream IPv4 DHCP servers
         :param Sequence[_builtins.str] serversv6s: If `type6`==`relay`, upstream IPv6 DHCP servers
@@ -4534,7 +4534,7 @@ class GatewayDhcpdConfigConfig(dict):
     @pulumi.getter(name="serverIdOverride")
     def server_id_override(self) -> Optional[_builtins.bool]:
         """
-        `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
+        `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
         should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
         """
         return pulumi.get(self, "server_id_override")
@@ -6941,8 +6941,8 @@ class GatewayPathPreferencesPath(dict):
         :param _builtins.bool disabled: For SSR Only. `true`, if this specific path is undesired
         :param _builtins.str gateway_ip: Only if `type`==`local`, if a different gateway is desired
         :param _builtins.bool internet_access: Only if `type`==`vpn`, if this vpn path can be used for internet
-        :param _builtins.str name: Required when 
-                 * `type`==`vpn`: the name of the VPN Path to use 
+        :param _builtins.str name: Required when
+                 * `type`==`vpn`: the name of the VPN Path to use
                  * `type`==`wan`: the name of the WAN interface to use
         :param Sequence[_builtins.str] networks: List of network names used when `type`==`local`
         :param Sequence[_builtins.str] target_ips: List of destination IP addresses to replace when `type`==`local`
@@ -7010,8 +7010,8 @@ class GatewayPathPreferencesPath(dict):
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
         """
-        Required when 
-          * `type`==`vpn`: the name of the VPN Path to use 
+        Required when
+          * `type`==`vpn`: the name of the VPN Path to use
           * `type`==`wan`: the name of the WAN interface to use
         """
         return pulumi.get(self, "name")
@@ -11498,7 +11498,7 @@ class SwitchAclTags(dict):
                  * `type`==`radius_group`
                  * `type`==`aruba_user_role`
                  * `type`==`static_gbp`
-               if from matching radius_group
+                   if from matching radius_group
         :param Sequence['SwitchAclTagsSpecArgs'] specs: Layer 4 protocol and destination-port constraints for this ACL tag
         :param Sequence[_builtins.str] subnets: IP subnets matched by this ACL tag
         """
@@ -11584,7 +11584,7 @@ class SwitchAclTags(dict):
           * `type`==`radius_group`
           * `type`==`aruba_user_role`
           * `type`==`static_gbp`
-        if from matching radius_group
+            if from matching radius_group
         """
         return pulumi.get(self, "radius_group")
 
@@ -12068,7 +12068,7 @@ class SwitchDhcpdConfigConfig(dict):
         :param _builtins.str ip_start6: If `type6`==`server`, starting IPv6 address for the DHCP lease pool
         :param _builtins.int lease_time: In seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
         :param Mapping[str, 'SwitchDhcpdConfigConfigOptionsArgs'] options: If `type`==`server` or `type6`==`server`, custom DHCP options advertised to clients
-        :param _builtins.bool server_id_override: `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
+        :param _builtins.bool server_id_override: `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
                should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
         :param Sequence[_builtins.str] servers: If `type`==`relay`, upstream IPv4 DHCP servers
         :param Sequence[_builtins.str] servers6s: If `type6`==`relay`, upstream IPv6 DHCP servers
@@ -12193,7 +12193,7 @@ class SwitchDhcpdConfigConfig(dict):
     @pulumi.getter(name="serverIdOverride")
     def server_id_override(self) -> Optional[_builtins.bool]:
         """
-        `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
+        `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
         should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
         """
         return pulumi.get(self, "server_id_override")

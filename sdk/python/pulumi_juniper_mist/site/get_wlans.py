@@ -27,24 +27,13 @@ class GetWlansResult:
     """
     A collection of values returned by getWlans.
     """
-    def __init__(__self__, id=None, site_id=None, site_wlans=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, site_id=None, site_wlans=None):
         if site_id and not isinstance(site_id, str):
             raise TypeError("Expected argument 'site_id' to be a str")
         pulumi.set(__self__, "site_id", site_id)
         if site_wlans and not isinstance(site_wlans, list):
             raise TypeError("Expected argument 'site_wlans' to be a list")
         pulumi.set(__self__, "site_wlans", site_wlans)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="siteId")
@@ -63,7 +52,6 @@ class AwaitableGetWlansResult(GetWlansResult):
         if False:
             yield self
         return GetWlansResult(
-            id=self.id,
             site_id=self.site_id,
             site_wlans=self.site_wlans)
 
@@ -90,7 +78,6 @@ def get_wlans(site_id: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('junipermist:site/getWlans:getWlans', __args__, opts=opts, typ=GetWlansResult).value
 
     return AwaitableGetWlansResult(
-        id=pulumi.get(__ret__, 'id'),
         site_id=pulumi.get(__ret__, 'site_id'),
         site_wlans=pulumi.get(__ret__, 'site_wlans'))
 def get_wlans_output(site_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -114,6 +101,5 @@ def get_wlans_output(site_id: pulumi.Input[Optional[_builtins.str]] = None,
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:site/getWlans:getWlans', __args__, opts=opts, typ=GetWlansResult)
     return __ret__.apply(lambda __response__: GetWlansResult(
-        id=pulumi.get(__response__, 'id'),
         site_id=pulumi.get(__response__, 'site_id'),
         site_wlans=pulumi.get(__response__, 'site_wlans')))

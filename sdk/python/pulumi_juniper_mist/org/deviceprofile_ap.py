@@ -889,32 +889,32 @@ class DeviceprofileAp(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aeroscout: pulumi.Input[Optional[Union['DeviceprofileApAeroscoutArgs', 'DeviceprofileApAeroscoutArgsDict']]] = None,
-                 airista: pulumi.Input[Optional[Union['DeviceprofileApAiristaArgs', 'DeviceprofileApAiristaArgsDict']]] = None,
-                 ble_config: pulumi.Input[Optional[Union['DeviceprofileApBleConfigArgs', 'DeviceprofileApBleConfigArgsDict']]] = None,
+                 aeroscout: pulumi.Input[Optional[Union['DeviceprofileApAeroscoutArgs', 'DeviceprofileApAeroscoutArgsDict', 'outputs.DeviceprofileApAeroscout']]] = None,
+                 airista: pulumi.Input[Optional[Union['DeviceprofileApAiristaArgs', 'DeviceprofileApAiristaArgsDict', 'outputs.DeviceprofileApAirista']]] = None,
+                 ble_config: pulumi.Input[Optional[Union['DeviceprofileApBleConfigArgs', 'DeviceprofileApBleConfigArgsDict', 'outputs.DeviceprofileApBleConfig']]] = None,
                  disable_eth1: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_eth2: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_eth3: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_module: pulumi.Input[Optional[_builtins.bool]] = None,
-                 esl_config: pulumi.Input[Optional[Union['DeviceprofileApEslConfigArgs', 'DeviceprofileApEslConfigArgsDict']]] = None,
-                 ip_config: pulumi.Input[Optional[Union['DeviceprofileApIpConfigArgs', 'DeviceprofileApIpConfigArgsDict']]] = None,
-                 lacp_config: pulumi.Input[Optional[Union['DeviceprofileApLacpConfigArgs', 'DeviceprofileApLacpConfigArgsDict']]] = None,
-                 led: pulumi.Input[Optional[Union['DeviceprofileApLedArgs', 'DeviceprofileApLedArgsDict']]] = None,
-                 mesh: pulumi.Input[Optional[Union['DeviceprofileApMeshArgs', 'DeviceprofileApMeshArgsDict']]] = None,
-                 mqtt_config: pulumi.Input[Optional[Union['DeviceprofileApMqttConfigArgs', 'DeviceprofileApMqttConfigArgsDict']]] = None,
+                 esl_config: pulumi.Input[Optional[Union['DeviceprofileApEslConfigArgs', 'DeviceprofileApEslConfigArgsDict', 'outputs.DeviceprofileApEslConfig']]] = None,
+                 ip_config: pulumi.Input[Optional[Union['DeviceprofileApIpConfigArgs', 'DeviceprofileApIpConfigArgsDict', 'outputs.DeviceprofileApIpConfig']]] = None,
+                 lacp_config: pulumi.Input[Optional[Union['DeviceprofileApLacpConfigArgs', 'DeviceprofileApLacpConfigArgsDict', 'outputs.DeviceprofileApLacpConfig']]] = None,
+                 led: pulumi.Input[Optional[Union['DeviceprofileApLedArgs', 'DeviceprofileApLedArgsDict', 'outputs.DeviceprofileApLed']]] = None,
+                 mesh: pulumi.Input[Optional[Union['DeviceprofileApMeshArgs', 'DeviceprofileApMeshArgsDict', 'outputs.DeviceprofileApMesh']]] = None,
+                 mqtt_config: pulumi.Input[Optional[Union['DeviceprofileApMqttConfigArgs', 'DeviceprofileApMqttConfigArgsDict', 'outputs.DeviceprofileApMqttConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  poe_passthrough: pulumi.Input[Optional[_builtins.bool]] = None,
-                 port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileApPortConfigArgs', 'DeviceprofileApPortConfigArgsDict']]]]] = None,
-                 pwr_config: pulumi.Input[Optional[Union['DeviceprofileApPwrConfigArgs', 'DeviceprofileApPwrConfigArgsDict']]] = None,
-                 radio_config: pulumi.Input[Optional[Union['DeviceprofileApRadioConfigArgs', 'DeviceprofileApRadioConfigArgsDict']]] = None,
+                 port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileApPortConfigArgs', 'DeviceprofileApPortConfigArgsDict', 'outputs.DeviceprofileApPortConfig']]]]] = None,
+                 pwr_config: pulumi.Input[Optional[Union['DeviceprofileApPwrConfigArgs', 'DeviceprofileApPwrConfigArgsDict', 'outputs.DeviceprofileApPwrConfig']]] = None,
+                 radio_config: pulumi.Input[Optional[Union['DeviceprofileApRadioConfigArgs', 'DeviceprofileApRadioConfigArgsDict', 'outputs.DeviceprofileApRadioConfig']]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 uplink_port_config: pulumi.Input[Optional[Union['DeviceprofileApUplinkPortConfigArgs', 'DeviceprofileApUplinkPortConfigArgsDict']]] = None,
-                 usb_config: pulumi.Input[Optional[Union['DeviceprofileApUsbConfigArgs', 'DeviceprofileApUsbConfigArgsDict']]] = None,
-                 uwb_config: pulumi.Input[Optional[Union['DeviceprofileApUwbConfigArgs', 'DeviceprofileApUwbConfigArgsDict']]] = None,
+                 uplink_port_config: pulumi.Input[Optional[Union['DeviceprofileApUplinkPortConfigArgs', 'DeviceprofileApUplinkPortConfigArgsDict', 'outputs.DeviceprofileApUplinkPortConfig']]] = None,
+                 usb_config: pulumi.Input[Optional[Union['DeviceprofileApUsbConfigArgs', 'DeviceprofileApUsbConfigArgsDict', 'outputs.DeviceprofileApUsbConfig']]] = None,
+                 uwb_config: pulumi.Input[Optional[Union['DeviceprofileApUwbConfigArgs', 'DeviceprofileApUwbConfigArgsDict', 'outputs.DeviceprofileApUwbConfig']]] = None,
                  vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 zigbee_config: pulumi.Input[Optional[Union['DeviceprofileApZigbeeConfigArgs', 'DeviceprofileApZigbeeConfigArgsDict']]] = None,
+                 zigbee_config: pulumi.Input[Optional[Union['DeviceprofileApZigbeeConfigArgs', 'DeviceprofileApZigbeeConfigArgsDict', 'outputs.DeviceprofileApZigbeeConfig']]] = None,
                  __props__=None):
         """
         This resource manages the AP Device Profiles.
@@ -950,32 +950,32 @@ class DeviceprofileAp(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DeviceprofileApAeroscoutArgs', 'DeviceprofileApAeroscoutArgsDict']] aeroscout: Location integration defaults for AeroScout in this AP profile
-        :param pulumi.Input[Union['DeviceprofileApAiristaArgs', 'DeviceprofileApAiristaArgsDict']] airista: Location integration defaults for Airista in this AP profile
-        :param pulumi.Input[Union['DeviceprofileApBleConfigArgs', 'DeviceprofileApBleConfigArgsDict']] ble_config: Bluetooth Low Energy beacon and asset defaults in this AP profile
+        :param pulumi.Input[Union['DeviceprofileApAeroscoutArgs', 'DeviceprofileApAeroscoutArgsDict', 'outputs.DeviceprofileApAeroscout']] aeroscout: Location integration defaults for AeroScout in this AP profile
+        :param pulumi.Input[Union['DeviceprofileApAiristaArgs', 'DeviceprofileApAiristaArgsDict', 'outputs.DeviceprofileApAirista']] airista: Location integration defaults for Airista in this AP profile
+        :param pulumi.Input[Union['DeviceprofileApBleConfigArgs', 'DeviceprofileApBleConfigArgsDict', 'outputs.DeviceprofileApBleConfig']] ble_config: Bluetooth Low Energy beacon and asset defaults in this AP profile
         :param pulumi.Input[_builtins.bool] disable_eth1: Whether to disable eth1 port
         :param pulumi.Input[_builtins.bool] disable_eth2: Whether to disable eth2 port
         :param pulumi.Input[_builtins.bool] disable_eth3: Whether to disable eth3 port
         :param pulumi.Input[_builtins.bool] disable_module: Whether to disable module port
-        :param pulumi.Input[Union['DeviceprofileApEslConfigArgs', 'DeviceprofileApEslConfigArgsDict']] esl_config: Electronic shelf label integration defaults in this AP profile
-        :param pulumi.Input[Union['DeviceprofileApIpConfigArgs', 'DeviceprofileApIpConfigArgsDict']] ip_config: Management IP addressing defaults in this AP profile
-        :param pulumi.Input[Union['DeviceprofileApLacpConfigArgs', 'DeviceprofileApLacpConfigArgsDict']] lacp_config: Link aggregation defaults for supported AP Ethernet uplinks
-        :param pulumi.Input[Union['DeviceprofileApLedArgs', 'DeviceprofileApLedArgsDict']] led: Indicator light behavior defaults in this AP profile
-        :param pulumi.Input[Union['DeviceprofileApMeshArgs', 'DeviceprofileApMeshArgsDict']] mesh: Wireless mesh role and band defaults in this AP profile
-        :param pulumi.Input[Union['DeviceprofileApMqttConfigArgs', 'DeviceprofileApMqttConfigArgsDict']] mqtt_config: MQTT broker publishing settings for this AP profile
+        :param pulumi.Input[Union['DeviceprofileApEslConfigArgs', 'DeviceprofileApEslConfigArgsDict', 'outputs.DeviceprofileApEslConfig']] esl_config: Electronic shelf label integration defaults in this AP profile
+        :param pulumi.Input[Union['DeviceprofileApIpConfigArgs', 'DeviceprofileApIpConfigArgsDict', 'outputs.DeviceprofileApIpConfig']] ip_config: Management IP addressing defaults in this AP profile
+        :param pulumi.Input[Union['DeviceprofileApLacpConfigArgs', 'DeviceprofileApLacpConfigArgsDict', 'outputs.DeviceprofileApLacpConfig']] lacp_config: Link aggregation defaults for supported AP Ethernet uplinks
+        :param pulumi.Input[Union['DeviceprofileApLedArgs', 'DeviceprofileApLedArgsDict', 'outputs.DeviceprofileApLed']] led: Indicator light behavior defaults in this AP profile
+        :param pulumi.Input[Union['DeviceprofileApMeshArgs', 'DeviceprofileApMeshArgsDict', 'outputs.DeviceprofileApMesh']] mesh: Wireless mesh role and band defaults in this AP profile
+        :param pulumi.Input[Union['DeviceprofileApMqttConfigArgs', 'DeviceprofileApMqttConfigArgsDict', 'outputs.DeviceprofileApMqttConfig']] mqtt_config: MQTT broker publishing settings for this AP profile
         :param pulumi.Input[_builtins.str] name: Display name of the AP device profile
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: NTP servers configured by this AP profile
         :param pulumi.Input[_builtins.str] org_id: Organization that owns this AP device profile
         :param pulumi.Input[_builtins.bool] poe_passthrough: Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileApPortConfigArgs', 'DeviceprofileApPortConfigArgsDict']]]] port_config: eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes precedence over switch_config (deprecated)
-        :param pulumi.Input[Union['DeviceprofileApPwrConfigArgs', 'DeviceprofileApPwrConfigArgsDict']] pwr_config: Power negotiation and peripheral power defaults in this AP profile
-        :param pulumi.Input[Union['DeviceprofileApRadioConfigArgs', 'DeviceprofileApRadioConfigArgsDict']] radio_config: Radio configuration defaults in this AP profile
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileApPortConfigArgs', 'DeviceprofileApPortConfigArgsDict', 'outputs.DeviceprofileApPortConfig']]]] port_config: eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes precedence over switch_config (deprecated)
+        :param pulumi.Input[Union['DeviceprofileApPwrConfigArgs', 'DeviceprofileApPwrConfigArgsDict', 'outputs.DeviceprofileApPwrConfig']] pwr_config: Power negotiation and peripheral power defaults in this AP profile
+        :param pulumi.Input[Union['DeviceprofileApRadioConfigArgs', 'DeviceprofileApRadioConfigArgsDict', 'outputs.DeviceprofileApRadioConfig']] radio_config: Radio configuration defaults in this AP profile
         :param pulumi.Input[_builtins.str] site_id: Site where this AP device profile is defined, when scoped to a site
-        :param pulumi.Input[Union['DeviceprofileApUplinkPortConfigArgs', 'DeviceprofileApUplinkPortConfigArgsDict']] uplink_port_config: Authentication and failover defaults for AP uplink ports
-        :param pulumi.Input[Union['DeviceprofileApUsbConfigArgs', 'DeviceprofileApUsbConfigArgsDict']] usb_config: Legacy USB integration defaults in this AP profile
-        :param pulumi.Input[Union['DeviceprofileApUwbConfigArgs', 'DeviceprofileApUwbConfigArgsDict']] uwb_config: UWB RTLS / OMLOX asset-visibility settings; overrides the site-level `uwb_config` and is overridden by device-level `uwb_config`
+        :param pulumi.Input[Union['DeviceprofileApUplinkPortConfigArgs', 'DeviceprofileApUplinkPortConfigArgsDict', 'outputs.DeviceprofileApUplinkPortConfig']] uplink_port_config: Authentication and failover defaults for AP uplink ports
+        :param pulumi.Input[Union['DeviceprofileApUsbConfigArgs', 'DeviceprofileApUsbConfigArgsDict', 'outputs.DeviceprofileApUsbConfig']] usb_config: Legacy USB integration defaults in this AP profile
+        :param pulumi.Input[Union['DeviceprofileApUwbConfigArgs', 'DeviceprofileApUwbConfigArgsDict', 'outputs.DeviceprofileApUwbConfig']] uwb_config: UWB RTLS / OMLOX asset-visibility settings; overrides the site-level `uwb_config` and is overridden by device-level `uwb_config`
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Variable values provided by this AP device profile
-        :param pulumi.Input[Union['DeviceprofileApZigbeeConfigArgs', 'DeviceprofileApZigbeeConfigArgsDict']] zigbee_config: Zigbee radio and network defaults in this AP profile
+        :param pulumi.Input[Union['DeviceprofileApZigbeeConfigArgs', 'DeviceprofileApZigbeeConfigArgsDict', 'outputs.DeviceprofileApZigbeeConfig']] zigbee_config: Zigbee radio and network defaults in this AP profile
         """
         ...
     @overload
@@ -1030,32 +1030,32 @@ class DeviceprofileAp(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aeroscout: pulumi.Input[Optional[Union['DeviceprofileApAeroscoutArgs', 'DeviceprofileApAeroscoutArgsDict']]] = None,
-                 airista: pulumi.Input[Optional[Union['DeviceprofileApAiristaArgs', 'DeviceprofileApAiristaArgsDict']]] = None,
-                 ble_config: pulumi.Input[Optional[Union['DeviceprofileApBleConfigArgs', 'DeviceprofileApBleConfigArgsDict']]] = None,
+                 aeroscout: pulumi.Input[Optional[Union['DeviceprofileApAeroscoutArgs', 'DeviceprofileApAeroscoutArgsDict', 'outputs.DeviceprofileApAeroscout']]] = None,
+                 airista: pulumi.Input[Optional[Union['DeviceprofileApAiristaArgs', 'DeviceprofileApAiristaArgsDict', 'outputs.DeviceprofileApAirista']]] = None,
+                 ble_config: pulumi.Input[Optional[Union['DeviceprofileApBleConfigArgs', 'DeviceprofileApBleConfigArgsDict', 'outputs.DeviceprofileApBleConfig']]] = None,
                  disable_eth1: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_eth2: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_eth3: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_module: pulumi.Input[Optional[_builtins.bool]] = None,
-                 esl_config: pulumi.Input[Optional[Union['DeviceprofileApEslConfigArgs', 'DeviceprofileApEslConfigArgsDict']]] = None,
-                 ip_config: pulumi.Input[Optional[Union['DeviceprofileApIpConfigArgs', 'DeviceprofileApIpConfigArgsDict']]] = None,
-                 lacp_config: pulumi.Input[Optional[Union['DeviceprofileApLacpConfigArgs', 'DeviceprofileApLacpConfigArgsDict']]] = None,
-                 led: pulumi.Input[Optional[Union['DeviceprofileApLedArgs', 'DeviceprofileApLedArgsDict']]] = None,
-                 mesh: pulumi.Input[Optional[Union['DeviceprofileApMeshArgs', 'DeviceprofileApMeshArgsDict']]] = None,
-                 mqtt_config: pulumi.Input[Optional[Union['DeviceprofileApMqttConfigArgs', 'DeviceprofileApMqttConfigArgsDict']]] = None,
+                 esl_config: pulumi.Input[Optional[Union['DeviceprofileApEslConfigArgs', 'DeviceprofileApEslConfigArgsDict', 'outputs.DeviceprofileApEslConfig']]] = None,
+                 ip_config: pulumi.Input[Optional[Union['DeviceprofileApIpConfigArgs', 'DeviceprofileApIpConfigArgsDict', 'outputs.DeviceprofileApIpConfig']]] = None,
+                 lacp_config: pulumi.Input[Optional[Union['DeviceprofileApLacpConfigArgs', 'DeviceprofileApLacpConfigArgsDict', 'outputs.DeviceprofileApLacpConfig']]] = None,
+                 led: pulumi.Input[Optional[Union['DeviceprofileApLedArgs', 'DeviceprofileApLedArgsDict', 'outputs.DeviceprofileApLed']]] = None,
+                 mesh: pulumi.Input[Optional[Union['DeviceprofileApMeshArgs', 'DeviceprofileApMeshArgsDict', 'outputs.DeviceprofileApMesh']]] = None,
+                 mqtt_config: pulumi.Input[Optional[Union['DeviceprofileApMqttConfigArgs', 'DeviceprofileApMqttConfigArgsDict', 'outputs.DeviceprofileApMqttConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  poe_passthrough: pulumi.Input[Optional[_builtins.bool]] = None,
-                 port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileApPortConfigArgs', 'DeviceprofileApPortConfigArgsDict']]]]] = None,
-                 pwr_config: pulumi.Input[Optional[Union['DeviceprofileApPwrConfigArgs', 'DeviceprofileApPwrConfigArgsDict']]] = None,
-                 radio_config: pulumi.Input[Optional[Union['DeviceprofileApRadioConfigArgs', 'DeviceprofileApRadioConfigArgsDict']]] = None,
+                 port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileApPortConfigArgs', 'DeviceprofileApPortConfigArgsDict', 'outputs.DeviceprofileApPortConfig']]]]] = None,
+                 pwr_config: pulumi.Input[Optional[Union['DeviceprofileApPwrConfigArgs', 'DeviceprofileApPwrConfigArgsDict', 'outputs.DeviceprofileApPwrConfig']]] = None,
+                 radio_config: pulumi.Input[Optional[Union['DeviceprofileApRadioConfigArgs', 'DeviceprofileApRadioConfigArgsDict', 'outputs.DeviceprofileApRadioConfig']]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 uplink_port_config: pulumi.Input[Optional[Union['DeviceprofileApUplinkPortConfigArgs', 'DeviceprofileApUplinkPortConfigArgsDict']]] = None,
-                 usb_config: pulumi.Input[Optional[Union['DeviceprofileApUsbConfigArgs', 'DeviceprofileApUsbConfigArgsDict']]] = None,
-                 uwb_config: pulumi.Input[Optional[Union['DeviceprofileApUwbConfigArgs', 'DeviceprofileApUwbConfigArgsDict']]] = None,
+                 uplink_port_config: pulumi.Input[Optional[Union['DeviceprofileApUplinkPortConfigArgs', 'DeviceprofileApUplinkPortConfigArgsDict', 'outputs.DeviceprofileApUplinkPortConfig']]] = None,
+                 usb_config: pulumi.Input[Optional[Union['DeviceprofileApUsbConfigArgs', 'DeviceprofileApUsbConfigArgsDict', 'outputs.DeviceprofileApUsbConfig']]] = None,
+                 uwb_config: pulumi.Input[Optional[Union['DeviceprofileApUwbConfigArgs', 'DeviceprofileApUwbConfigArgsDict', 'outputs.DeviceprofileApUwbConfig']]] = None,
                  vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 zigbee_config: pulumi.Input[Optional[Union['DeviceprofileApZigbeeConfigArgs', 'DeviceprofileApZigbeeConfigArgsDict']]] = None,
+                 zigbee_config: pulumi.Input[Optional[Union['DeviceprofileApZigbeeConfigArgs', 'DeviceprofileApZigbeeConfigArgsDict', 'outputs.DeviceprofileApZigbeeConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1104,33 +1104,33 @@ class DeviceprofileAp(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aeroscout: pulumi.Input[Optional[Union['DeviceprofileApAeroscoutArgs', 'DeviceprofileApAeroscoutArgsDict']]] = None,
-            airista: pulumi.Input[Optional[Union['DeviceprofileApAiristaArgs', 'DeviceprofileApAiristaArgsDict']]] = None,
-            ble_config: pulumi.Input[Optional[Union['DeviceprofileApBleConfigArgs', 'DeviceprofileApBleConfigArgsDict']]] = None,
+            aeroscout: pulumi.Input[Optional[Union['DeviceprofileApAeroscoutArgs', 'DeviceprofileApAeroscoutArgsDict', 'outputs.DeviceprofileApAeroscout']]] = None,
+            airista: pulumi.Input[Optional[Union['DeviceprofileApAiristaArgs', 'DeviceprofileApAiristaArgsDict', 'outputs.DeviceprofileApAirista']]] = None,
+            ble_config: pulumi.Input[Optional[Union['DeviceprofileApBleConfigArgs', 'DeviceprofileApBleConfigArgsDict', 'outputs.DeviceprofileApBleConfig']]] = None,
             disable_eth1: pulumi.Input[Optional[_builtins.bool]] = None,
             disable_eth2: pulumi.Input[Optional[_builtins.bool]] = None,
             disable_eth3: pulumi.Input[Optional[_builtins.bool]] = None,
             disable_module: pulumi.Input[Optional[_builtins.bool]] = None,
-            esl_config: pulumi.Input[Optional[Union['DeviceprofileApEslConfigArgs', 'DeviceprofileApEslConfigArgsDict']]] = None,
-            ip_config: pulumi.Input[Optional[Union['DeviceprofileApIpConfigArgs', 'DeviceprofileApIpConfigArgsDict']]] = None,
-            lacp_config: pulumi.Input[Optional[Union['DeviceprofileApLacpConfigArgs', 'DeviceprofileApLacpConfigArgsDict']]] = None,
-            led: pulumi.Input[Optional[Union['DeviceprofileApLedArgs', 'DeviceprofileApLedArgsDict']]] = None,
-            mesh: pulumi.Input[Optional[Union['DeviceprofileApMeshArgs', 'DeviceprofileApMeshArgsDict']]] = None,
-            mqtt_config: pulumi.Input[Optional[Union['DeviceprofileApMqttConfigArgs', 'DeviceprofileApMqttConfigArgsDict']]] = None,
+            esl_config: pulumi.Input[Optional[Union['DeviceprofileApEslConfigArgs', 'DeviceprofileApEslConfigArgsDict', 'outputs.DeviceprofileApEslConfig']]] = None,
+            ip_config: pulumi.Input[Optional[Union['DeviceprofileApIpConfigArgs', 'DeviceprofileApIpConfigArgsDict', 'outputs.DeviceprofileApIpConfig']]] = None,
+            lacp_config: pulumi.Input[Optional[Union['DeviceprofileApLacpConfigArgs', 'DeviceprofileApLacpConfigArgsDict', 'outputs.DeviceprofileApLacpConfig']]] = None,
+            led: pulumi.Input[Optional[Union['DeviceprofileApLedArgs', 'DeviceprofileApLedArgsDict', 'outputs.DeviceprofileApLed']]] = None,
+            mesh: pulumi.Input[Optional[Union['DeviceprofileApMeshArgs', 'DeviceprofileApMeshArgsDict', 'outputs.DeviceprofileApMesh']]] = None,
+            mqtt_config: pulumi.Input[Optional[Union['DeviceprofileApMqttConfigArgs', 'DeviceprofileApMqttConfigArgsDict', 'outputs.DeviceprofileApMqttConfig']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             poe_passthrough: pulumi.Input[Optional[_builtins.bool]] = None,
-            port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileApPortConfigArgs', 'DeviceprofileApPortConfigArgsDict']]]]] = None,
-            pwr_config: pulumi.Input[Optional[Union['DeviceprofileApPwrConfigArgs', 'DeviceprofileApPwrConfigArgsDict']]] = None,
-            radio_config: pulumi.Input[Optional[Union['DeviceprofileApRadioConfigArgs', 'DeviceprofileApRadioConfigArgsDict']]] = None,
+            port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileApPortConfigArgs', 'DeviceprofileApPortConfigArgsDict', 'outputs.DeviceprofileApPortConfig']]]]] = None,
+            pwr_config: pulumi.Input[Optional[Union['DeviceprofileApPwrConfigArgs', 'DeviceprofileApPwrConfigArgsDict', 'outputs.DeviceprofileApPwrConfig']]] = None,
+            radio_config: pulumi.Input[Optional[Union['DeviceprofileApRadioConfigArgs', 'DeviceprofileApRadioConfigArgsDict', 'outputs.DeviceprofileApRadioConfig']]] = None,
             site_id: pulumi.Input[Optional[_builtins.str]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
-            uplink_port_config: pulumi.Input[Optional[Union['DeviceprofileApUplinkPortConfigArgs', 'DeviceprofileApUplinkPortConfigArgsDict']]] = None,
-            usb_config: pulumi.Input[Optional[Union['DeviceprofileApUsbConfigArgs', 'DeviceprofileApUsbConfigArgsDict']]] = None,
-            uwb_config: pulumi.Input[Optional[Union['DeviceprofileApUwbConfigArgs', 'DeviceprofileApUwbConfigArgsDict']]] = None,
+            uplink_port_config: pulumi.Input[Optional[Union['DeviceprofileApUplinkPortConfigArgs', 'DeviceprofileApUplinkPortConfigArgsDict', 'outputs.DeviceprofileApUplinkPortConfig']]] = None,
+            usb_config: pulumi.Input[Optional[Union['DeviceprofileApUsbConfigArgs', 'DeviceprofileApUsbConfigArgsDict', 'outputs.DeviceprofileApUsbConfig']]] = None,
+            uwb_config: pulumi.Input[Optional[Union['DeviceprofileApUwbConfigArgs', 'DeviceprofileApUwbConfigArgsDict', 'outputs.DeviceprofileApUwbConfig']]] = None,
             vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            zigbee_config: pulumi.Input[Optional[Union['DeviceprofileApZigbeeConfigArgs', 'DeviceprofileApZigbeeConfigArgsDict']]] = None) -> 'DeviceprofileAp':
+            zigbee_config: pulumi.Input[Optional[Union['DeviceprofileApZigbeeConfigArgs', 'DeviceprofileApZigbeeConfigArgsDict', 'outputs.DeviceprofileApZigbeeConfig']]] = None) -> 'DeviceprofileAp':
         """
         Get an existing DeviceprofileAp resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1138,33 +1138,33 @@ class DeviceprofileAp(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DeviceprofileApAeroscoutArgs', 'DeviceprofileApAeroscoutArgsDict']] aeroscout: Location integration defaults for AeroScout in this AP profile
-        :param pulumi.Input[Union['DeviceprofileApAiristaArgs', 'DeviceprofileApAiristaArgsDict']] airista: Location integration defaults for Airista in this AP profile
-        :param pulumi.Input[Union['DeviceprofileApBleConfigArgs', 'DeviceprofileApBleConfigArgsDict']] ble_config: Bluetooth Low Energy beacon and asset defaults in this AP profile
+        :param pulumi.Input[Union['DeviceprofileApAeroscoutArgs', 'DeviceprofileApAeroscoutArgsDict', 'outputs.DeviceprofileApAeroscout']] aeroscout: Location integration defaults for AeroScout in this AP profile
+        :param pulumi.Input[Union['DeviceprofileApAiristaArgs', 'DeviceprofileApAiristaArgsDict', 'outputs.DeviceprofileApAirista']] airista: Location integration defaults for Airista in this AP profile
+        :param pulumi.Input[Union['DeviceprofileApBleConfigArgs', 'DeviceprofileApBleConfigArgsDict', 'outputs.DeviceprofileApBleConfig']] ble_config: Bluetooth Low Energy beacon and asset defaults in this AP profile
         :param pulumi.Input[_builtins.bool] disable_eth1: Whether to disable eth1 port
         :param pulumi.Input[_builtins.bool] disable_eth2: Whether to disable eth2 port
         :param pulumi.Input[_builtins.bool] disable_eth3: Whether to disable eth3 port
         :param pulumi.Input[_builtins.bool] disable_module: Whether to disable module port
-        :param pulumi.Input[Union['DeviceprofileApEslConfigArgs', 'DeviceprofileApEslConfigArgsDict']] esl_config: Electronic shelf label integration defaults in this AP profile
-        :param pulumi.Input[Union['DeviceprofileApIpConfigArgs', 'DeviceprofileApIpConfigArgsDict']] ip_config: Management IP addressing defaults in this AP profile
-        :param pulumi.Input[Union['DeviceprofileApLacpConfigArgs', 'DeviceprofileApLacpConfigArgsDict']] lacp_config: Link aggregation defaults for supported AP Ethernet uplinks
-        :param pulumi.Input[Union['DeviceprofileApLedArgs', 'DeviceprofileApLedArgsDict']] led: Indicator light behavior defaults in this AP profile
-        :param pulumi.Input[Union['DeviceprofileApMeshArgs', 'DeviceprofileApMeshArgsDict']] mesh: Wireless mesh role and band defaults in this AP profile
-        :param pulumi.Input[Union['DeviceprofileApMqttConfigArgs', 'DeviceprofileApMqttConfigArgsDict']] mqtt_config: MQTT broker publishing settings for this AP profile
+        :param pulumi.Input[Union['DeviceprofileApEslConfigArgs', 'DeviceprofileApEslConfigArgsDict', 'outputs.DeviceprofileApEslConfig']] esl_config: Electronic shelf label integration defaults in this AP profile
+        :param pulumi.Input[Union['DeviceprofileApIpConfigArgs', 'DeviceprofileApIpConfigArgsDict', 'outputs.DeviceprofileApIpConfig']] ip_config: Management IP addressing defaults in this AP profile
+        :param pulumi.Input[Union['DeviceprofileApLacpConfigArgs', 'DeviceprofileApLacpConfigArgsDict', 'outputs.DeviceprofileApLacpConfig']] lacp_config: Link aggregation defaults for supported AP Ethernet uplinks
+        :param pulumi.Input[Union['DeviceprofileApLedArgs', 'DeviceprofileApLedArgsDict', 'outputs.DeviceprofileApLed']] led: Indicator light behavior defaults in this AP profile
+        :param pulumi.Input[Union['DeviceprofileApMeshArgs', 'DeviceprofileApMeshArgsDict', 'outputs.DeviceprofileApMesh']] mesh: Wireless mesh role and band defaults in this AP profile
+        :param pulumi.Input[Union['DeviceprofileApMqttConfigArgs', 'DeviceprofileApMqttConfigArgsDict', 'outputs.DeviceprofileApMqttConfig']] mqtt_config: MQTT broker publishing settings for this AP profile
         :param pulumi.Input[_builtins.str] name: Display name of the AP device profile
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: NTP servers configured by this AP profile
         :param pulumi.Input[_builtins.str] org_id: Organization that owns this AP device profile
         :param pulumi.Input[_builtins.bool] poe_passthrough: Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileApPortConfigArgs', 'DeviceprofileApPortConfigArgsDict']]]] port_config: eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes precedence over switch_config (deprecated)
-        :param pulumi.Input[Union['DeviceprofileApPwrConfigArgs', 'DeviceprofileApPwrConfigArgsDict']] pwr_config: Power negotiation and peripheral power defaults in this AP profile
-        :param pulumi.Input[Union['DeviceprofileApRadioConfigArgs', 'DeviceprofileApRadioConfigArgsDict']] radio_config: Radio configuration defaults in this AP profile
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileApPortConfigArgs', 'DeviceprofileApPortConfigArgsDict', 'outputs.DeviceprofileApPortConfig']]]] port_config: eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes precedence over switch_config (deprecated)
+        :param pulumi.Input[Union['DeviceprofileApPwrConfigArgs', 'DeviceprofileApPwrConfigArgsDict', 'outputs.DeviceprofileApPwrConfig']] pwr_config: Power negotiation and peripheral power defaults in this AP profile
+        :param pulumi.Input[Union['DeviceprofileApRadioConfigArgs', 'DeviceprofileApRadioConfigArgsDict', 'outputs.DeviceprofileApRadioConfig']] radio_config: Radio configuration defaults in this AP profile
         :param pulumi.Input[_builtins.str] site_id: Site where this AP device profile is defined, when scoped to a site
         :param pulumi.Input[_builtins.str] type: Device type discriminator for AP device profiles
-        :param pulumi.Input[Union['DeviceprofileApUplinkPortConfigArgs', 'DeviceprofileApUplinkPortConfigArgsDict']] uplink_port_config: Authentication and failover defaults for AP uplink ports
-        :param pulumi.Input[Union['DeviceprofileApUsbConfigArgs', 'DeviceprofileApUsbConfigArgsDict']] usb_config: Legacy USB integration defaults in this AP profile
-        :param pulumi.Input[Union['DeviceprofileApUwbConfigArgs', 'DeviceprofileApUwbConfigArgsDict']] uwb_config: UWB RTLS / OMLOX asset-visibility settings; overrides the site-level `uwb_config` and is overridden by device-level `uwb_config`
+        :param pulumi.Input[Union['DeviceprofileApUplinkPortConfigArgs', 'DeviceprofileApUplinkPortConfigArgsDict', 'outputs.DeviceprofileApUplinkPortConfig']] uplink_port_config: Authentication and failover defaults for AP uplink ports
+        :param pulumi.Input[Union['DeviceprofileApUsbConfigArgs', 'DeviceprofileApUsbConfigArgsDict', 'outputs.DeviceprofileApUsbConfig']] usb_config: Legacy USB integration defaults in this AP profile
+        :param pulumi.Input[Union['DeviceprofileApUwbConfigArgs', 'DeviceprofileApUwbConfigArgsDict', 'outputs.DeviceprofileApUwbConfig']] uwb_config: UWB RTLS / OMLOX asset-visibility settings; overrides the site-level `uwb_config` and is overridden by device-level `uwb_config`
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Variable values provided by this AP device profile
-        :param pulumi.Input[Union['DeviceprofileApZigbeeConfigArgs', 'DeviceprofileApZigbeeConfigArgsDict']] zigbee_config: Zigbee radio and network defaults in this AP profile
+        :param pulumi.Input[Union['DeviceprofileApZigbeeConfigArgs', 'DeviceprofileApZigbeeConfigArgsDict', 'outputs.DeviceprofileApZigbeeConfig']] zigbee_config: Zigbee radio and network defaults in this AP profile
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

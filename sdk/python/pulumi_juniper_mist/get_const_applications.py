@@ -27,26 +27,15 @@ class GetConstApplicationsResult:
     """
     A collection of values returned by getConstApplications.
     """
-    def __init__(__self__, const_applications=None, id=None):
+    def __init__(__self__, const_applications=None):
         if const_applications and not isinstance(const_applications, list):
             raise TypeError("Expected argument 'const_applications' to be a list")
         pulumi.set(__self__, "const_applications", const_applications)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
 
     @_builtins.property
     @pulumi.getter(name="constApplications")
     def const_applications(self) -> Sequence['outputs.GetConstApplicationsConstApplicationResult']:
         return pulumi.get(self, "const_applications")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
 
 class AwaitableGetConstApplicationsResult(GetConstApplicationsResult):
@@ -55,8 +44,7 @@ class AwaitableGetConstApplicationsResult(GetConstApplicationsResult):
         if False:
             yield self
         return GetConstApplicationsResult(
-            const_applications=self.const_applications,
-            id=self.id)
+            const_applications=self.const_applications)
 
 
 def get_const_applications(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConstApplicationsResult:
@@ -82,8 +70,7 @@ def get_const_applications(opts: Optional[pulumi.InvokeOptions] = None) -> Await
     __ret__ = pulumi.runtime.invoke('junipermist:index/getConstApplications:getConstApplications', __args__, opts=opts, typ=GetConstApplicationsResult).value
 
     return AwaitableGetConstApplicationsResult(
-        const_applications=pulumi.get(__ret__, 'const_applications'),
-        id=pulumi.get(__ret__, 'id'))
+        const_applications=pulumi.get(__ret__, 'const_applications'))
 def get_const_applications_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConstApplicationsResult]:
     """
     This data source provides the of ConstApplications.
@@ -106,5 +93,4 @@ def get_const_applications_output(opts: Optional[Union[pulumi.InvokeOptions, pul
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:index/getConstApplications:getConstApplications', __args__, opts=opts, typ=GetConstApplicationsResult)
     return __ret__.apply(lambda __response__: GetConstApplicationsResult(
-        const_applications=pulumi.get(__response__, 'const_applications'),
-        id=pulumi.get(__response__, 'id')))
+        const_applications=pulumi.get(__response__, 'const_applications')))

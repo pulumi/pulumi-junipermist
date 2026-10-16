@@ -54,15 +54,11 @@ func GetConstApplications(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*Ge
 // A collection of values returned by getConstApplications.
 type GetConstApplicationsResult struct {
 	ConstApplications []GetConstApplicationsConstApplication `pulumi:"constApplications"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 }
 
 func GetConstApplicationsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetConstApplicationsResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetConstApplicationsResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("junipermist:index/getConstApplications:getConstApplications", nil, GetConstApplicationsResultOutput{}, options).(GetConstApplicationsResultOutput), nil
-	}).(GetConstApplicationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("junipermist:index/getConstApplications:getConstApplications", nil, GetConstApplicationsResultOutput{}, options).(GetConstApplicationsResultOutput)
 }
 
 // A collection of values returned by getConstApplications.
@@ -82,11 +78,6 @@ func (o GetConstApplicationsResultOutput) ToGetConstApplicationsResultOutputWith
 
 func (o GetConstApplicationsResultOutput) ConstApplications() GetConstApplicationsConstApplicationArrayOutput {
 	return o.ApplyT(func(v GetConstApplicationsResult) []GetConstApplicationsConstApplication { return v.ConstApplications }).(GetConstApplicationsConstApplicationArrayOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetConstApplicationsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConstApplicationsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func init() {

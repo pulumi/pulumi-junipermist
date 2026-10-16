@@ -75,9 +75,7 @@ type GetGatewayStatsResult struct {
 	// Duration like 7d, 2w
 	Duration *string `pulumi:"duration"`
 	// End time (epoch timestamp in seconds, or relative string like "-1d", "-2h", "now")
-	End *string `pulumi:"end"`
-	// The provider-assigned unique ID for this managed resource.
-	Id     string  `pulumi:"id"`
+	End    *string `pulumi:"end"`
 	Mac    *string `pulumi:"mac"`
 	OrgId  string  `pulumi:"orgId"`
 	SiteId *string `pulumi:"siteId"`
@@ -88,12 +86,8 @@ type GetGatewayStatsResult struct {
 }
 
 func GetGatewayStatsOutput(ctx *pulumi.Context, args GetGatewayStatsOutputArgs, opts ...pulumi.InvokeOption) GetGatewayStatsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGatewayStatsResultOutput, error) {
-			args := v.(GetGatewayStatsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("junipermist:device/getGatewayStats:getGatewayStats", args, GetGatewayStatsResultOutput{}, options).(GetGatewayStatsResultOutput), nil
-		}).(GetGatewayStatsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("junipermist:device/getGatewayStats:getGatewayStats", args, GetGatewayStatsResultOutput{}, options).(GetGatewayStatsResultOutput)
 }
 
 // A collection of arguments for invoking getGatewayStats.
@@ -142,11 +136,6 @@ func (o GetGatewayStatsResultOutput) Duration() pulumi.StringPtrOutput {
 // End time (epoch timestamp in seconds, or relative string like "-1d", "-2h", "now")
 func (o GetGatewayStatsResultOutput) End() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGatewayStatsResult) *string { return v.End }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetGatewayStatsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGatewayStatsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetGatewayStatsResultOutput) Mac() pulumi.StringPtrOutput {

@@ -27,10 +27,7 @@ class GetInventoryResult:
     """
     A collection of values returned by getInventory.
     """
-    def __init__(__self__, id=None, mac=None, model=None, org_id=None, org_inventories=None, serial=None, site_id=None, type=None, unassigned=None, vc=None, vc_mac=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, mac=None, model=None, org_id=None, org_inventories=None, serial=None, site_id=None, type=None, unassigned=None, vc=None, vc_mac=None):
         if mac and not isinstance(mac, str):
             raise TypeError("Expected argument 'mac' to be a str")
         pulumi.set(__self__, "mac", mac)
@@ -61,14 +58,6 @@ class GetInventoryResult:
         if vc_mac and not isinstance(vc_mac, str):
             raise TypeError("Expected argument 'vc_mac' to be a str")
         pulumi.set(__self__, "vc_mac", vc_mac)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -151,7 +140,6 @@ class AwaitableGetInventoryResult(GetInventoryResult):
         if False:
             yield self
         return GetInventoryResult(
-            id=self.id,
             mac=self.mac,
             model=self.model,
             org_id=self.org_id,
@@ -217,7 +205,6 @@ def get_inventory(mac: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('junipermist:org/getInventory:getInventory', __args__, opts=opts, typ=GetInventoryResult).value
 
     return AwaitableGetInventoryResult(
-        id=pulumi.get(__ret__, 'id'),
         mac=pulumi.get(__ret__, 'mac'),
         model=pulumi.get(__ret__, 'model'),
         org_id=pulumi.get(__ret__, 'org_id'),
@@ -280,7 +267,6 @@ def get_inventory_output(mac: pulumi.Input[Optional[Optional[_builtins.str]]] = 
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:org/getInventory:getInventory', __args__, opts=opts, typ=GetInventoryResult)
     return __ret__.apply(lambda __response__: GetInventoryResult(
-        id=pulumi.get(__response__, 'id'),
         mac=pulumi.get(__response__, 'mac'),
         model=pulumi.get(__response__, 'model'),
         org_id=pulumi.get(__response__, 'org_id'),

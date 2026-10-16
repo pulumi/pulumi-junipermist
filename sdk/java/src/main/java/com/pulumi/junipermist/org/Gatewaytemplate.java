@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *         var gatewaytemplateOne = new Gatewaytemplate("gatewaytemplateOne", GatewaytemplateArgs.builder()
  *             .type("spoke")
  *             .name("gatewaytemplate_one")
- *             .orgId(terraformTest.id())
+ *             .orgId(terraformTest.get("id"))
  *             .portConfig(Map.ofEntries(
  *                 Map.entry("ge-0/0/3", GatewaytemplatePortConfigArgs.builder()
  *                     .name("FTTH")

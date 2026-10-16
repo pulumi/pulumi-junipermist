@@ -27,26 +27,15 @@ class GetConstCountriesResult:
     """
     A collection of values returned by getConstCountries.
     """
-    def __init__(__self__, const_countries=None, id=None):
+    def __init__(__self__, const_countries=None):
         if const_countries and not isinstance(const_countries, list):
             raise TypeError("Expected argument 'const_countries' to be a list")
         pulumi.set(__self__, "const_countries", const_countries)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
 
     @_builtins.property
     @pulumi.getter(name="constCountries")
     def const_countries(self) -> Sequence['outputs.GetConstCountriesConstCountryResult']:
         return pulumi.get(self, "const_countries")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
 
 class AwaitableGetConstCountriesResult(GetConstCountriesResult):
@@ -55,8 +44,7 @@ class AwaitableGetConstCountriesResult(GetConstCountriesResult):
         if False:
             yield self
         return GetConstCountriesResult(
-            const_countries=self.const_countries,
-            id=self.id)
+            const_countries=self.const_countries)
 
 
 def get_const_countries(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConstCountriesResult:
@@ -79,8 +67,7 @@ def get_const_countries(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitabl
     __ret__ = pulumi.runtime.invoke('junipermist:index/getConstCountries:getConstCountries', __args__, opts=opts, typ=GetConstCountriesResult).value
 
     return AwaitableGetConstCountriesResult(
-        const_countries=pulumi.get(__ret__, 'const_countries'),
-        id=pulumi.get(__ret__, 'id'))
+        const_countries=pulumi.get(__ret__, 'const_countries'))
 def get_const_countries_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConstCountriesResult]:
     """
     This data source provides the of ConstCountries.
@@ -100,5 +87,4 @@ def get_const_countries_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:index/getConstCountries:getConstCountries', __args__, opts=opts, typ=GetConstCountriesResult)
     return __ret__.apply(lambda __response__: GetConstCountriesResult(
-        const_countries=pulumi.get(__response__, 'const_countries'),
-        id=pulumi.get(__response__, 'id')))
+        const_countries=pulumi.get(__response__, 'const_countries')))
