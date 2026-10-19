@@ -12,22 +12,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAlarmtemplatesResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private List<GetAlarmtemplatesOrgAlarmtemplate> orgAlarmtemplates;
     private String orgId;
 
     private GetAlarmtemplatesResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public List<GetAlarmtemplatesOrgAlarmtemplate> orgAlarmtemplates() {
         return this.orgAlarmtemplates;
     }
@@ -44,25 +32,15 @@ public final class GetAlarmtemplatesResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private List<GetAlarmtemplatesOrgAlarmtemplate> orgAlarmtemplates;
         private String orgId;
         public Builder() {}
         public Builder(GetAlarmtemplatesResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.orgAlarmtemplates = defaults.orgAlarmtemplates;
     	      this.orgId = defaults.orgId;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetAlarmtemplatesResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder orgAlarmtemplates(List<GetAlarmtemplatesOrgAlarmtemplate> orgAlarmtemplates) {
             if (orgAlarmtemplates == null) {
@@ -84,7 +62,6 @@ public final class GetAlarmtemplatesResult {
         }
         public GetAlarmtemplatesResult build() {
             final var _resultValue = new GetAlarmtemplatesResult();
-            _resultValue.id = id;
             _resultValue.orgAlarmtemplates = orgAlarmtemplates;
             _resultValue.orgId = orgId;
             return _resultValue;

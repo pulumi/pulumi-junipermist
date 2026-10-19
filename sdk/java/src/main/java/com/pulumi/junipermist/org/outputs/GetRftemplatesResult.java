@@ -15,23 +15,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRftemplatesResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private String orgId;
     private List<GetRftemplatesOrgRftemplate> orgRftemplates;
     private @Nullable Integer page;
 
     private GetRftemplatesResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public String orgId() {
         return this.orgId;
     }
@@ -51,27 +39,17 @@ public final class GetRftemplatesResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private String orgId;
         private List<GetRftemplatesOrgRftemplate> orgRftemplates;
         private @Nullable Integer page;
         public Builder() {}
         public Builder(GetRftemplatesResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.orgId = defaults.orgId;
     	      this.orgRftemplates = defaults.orgRftemplates;
     	      this.page = defaults.page;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetRftemplatesResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder orgId(String orgId) {
             if (orgId == null) {
@@ -99,7 +77,6 @@ public final class GetRftemplatesResult {
         }
         public GetRftemplatesResult build() {
             final var _resultValue = new GetRftemplatesResult();
-            _resultValue.id = id;
             _resultValue.orgId = orgId;
             _resultValue.orgRftemplates = orgRftemplates;
             _resultValue.page = page;

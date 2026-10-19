@@ -27,10 +27,7 @@ class GetRftemplatesResult:
     """
     A collection of values returned by getRftemplates.
     """
-    def __init__(__self__, id=None, org_id=None, org_rftemplates=None, page=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, org_id=None, org_rftemplates=None, page=None):
         if org_id and not isinstance(org_id, str):
             raise TypeError("Expected argument 'org_id' to be a str")
         pulumi.set(__self__, "org_id", org_id)
@@ -40,14 +37,6 @@ class GetRftemplatesResult:
         if page and not isinstance(page, int):
             raise TypeError("Expected argument 'page' to be a int")
         pulumi.set(__self__, "page", page)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="orgId")
@@ -71,7 +60,6 @@ class AwaitableGetRftemplatesResult(GetRftemplatesResult):
         if False:
             yield self
         return GetRftemplatesResult(
-            id=self.id,
             org_id=self.org_id,
             org_rftemplates=self.org_rftemplates,
             page=self.page)
@@ -101,7 +89,6 @@ def get_rftemplates(org_id: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('junipermist:org/getRftemplates:getRftemplates', __args__, opts=opts, typ=GetRftemplatesResult).value
 
     return AwaitableGetRftemplatesResult(
-        id=pulumi.get(__ret__, 'id'),
         org_id=pulumi.get(__ret__, 'org_id'),
         org_rftemplates=pulumi.get(__ret__, 'org_rftemplates'),
         page=pulumi.get(__ret__, 'page'))
@@ -128,7 +115,6 @@ def get_rftemplates_output(org_id: pulumi.Input[Optional[_builtins.str]] = None,
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:org/getRftemplates:getRftemplates', __args__, opts=opts, typ=GetRftemplatesResult)
     return __ret__.apply(lambda __response__: GetRftemplatesResult(
-        id=pulumi.get(__response__, 'id'),
         org_id=pulumi.get(__response__, 'org_id'),
         org_rftemplates=pulumi.get(__response__, 'org_rftemplates'),
         page=pulumi.get(__response__, 'page')))

@@ -63,19 +63,13 @@ type GetAvprofilesArgs struct {
 
 // A collection of values returned by getAvprofiles.
 type GetAvprofilesResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id            string                      `pulumi:"id"`
 	OrgAvprofiles []GetAvprofilesOrgAvprofile `pulumi:"orgAvprofiles"`
 	OrgId         string                      `pulumi:"orgId"`
 }
 
 func GetAvprofilesOutput(ctx *pulumi.Context, args GetAvprofilesOutputArgs, opts ...pulumi.InvokeOption) GetAvprofilesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAvprofilesResultOutput, error) {
-			args := v.(GetAvprofilesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("junipermist:org/getAvprofiles:getAvprofiles", args, GetAvprofilesResultOutput{}, options).(GetAvprofilesResultOutput), nil
-		}).(GetAvprofilesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("junipermist:org/getAvprofiles:getAvprofiles", args, GetAvprofilesResultOutput{}, options).(GetAvprofilesResultOutput)
 }
 
 // A collection of arguments for invoking getAvprofiles.
@@ -100,11 +94,6 @@ func (o GetAvprofilesResultOutput) ToGetAvprofilesResultOutput() GetAvprofilesRe
 
 func (o GetAvprofilesResultOutput) ToGetAvprofilesResultOutputWithContext(ctx context.Context) GetAvprofilesResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetAvprofilesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAvprofilesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetAvprofilesResultOutput) OrgAvprofiles() GetAvprofilesOrgAvprofileArrayOutput {

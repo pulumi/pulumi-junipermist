@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var clusterOne = new GatewayCluster("clusterOne", GatewayClusterArgs.builder()
- *             .siteId(terraformSite2.id())
+ *             .siteId(terraformSite2.get("id"))
  *             .nodes(            
  *                 GatewayClusterNodeArgs.builder()
  *                     .mac("4c961000000")

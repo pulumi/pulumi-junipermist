@@ -123,22 +123,15 @@ namespace Pulumi.JuniperMist.Org
     [OutputType]
     public sealed class GetNetworktemplatesResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly string OrgId;
         public readonly ImmutableArray<Outputs.GetNetworktemplatesOrgNetworktemplateResult> OrgNetworktemplates;
 
         [OutputConstructor]
         private GetNetworktemplatesResult(
-            string id,
-
             string orgId,
 
             ImmutableArray<Outputs.GetNetworktemplatesOrgNetworktemplateResult> orgNetworktemplates)
         {
-            Id = id;
             OrgId = orgId;
             OrgNetworktemplates = orgNetworktemplates;
         }

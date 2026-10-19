@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var alarmtemplateOne = new Alarmtemplate("alarmtemplateOne", AlarmtemplateArgs.builder()
- *             .orgId(terraformTest.id())
+ *             .orgId(terraformTest.get("id"))
  *             .name("alarmtemplate_one")
  *             .delivery(AlarmtemplateDeliveryArgs.builder()
  *                 .enabled(true)

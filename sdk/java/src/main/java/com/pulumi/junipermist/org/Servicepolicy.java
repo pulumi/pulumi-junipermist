@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var servicepolicyOne = new Servicepolicy("servicepolicyOne", ServicepolicyArgs.builder()
- *             .orgId(terraformTest.id())
+ *             .orgId(terraformTest.get("id"))
  *             .tenants("guest")
  *             .services("guest-internet")
  *             .action("allow")

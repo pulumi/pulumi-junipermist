@@ -81,7 +81,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var terraformTest = new Setting("terraformTest", SettingArgs.builder()
- *             .orgId(terraformTestMistOrg.id())
+ *             .orgId(terraformTestMistOrg.get("id"))
  *             .apUpdownThreshold(10)
  *             .cradlepoint(Map.ofEntries(
  *                 Map.entry("cpApiId", "cp_api_id_test"),

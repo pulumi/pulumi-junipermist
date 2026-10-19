@@ -555,18 +555,18 @@ class Network(pulumi.CustomResource):
                  disallow_mist_services: pulumi.Input[Optional[_builtins.bool]] = None,
                  gateway: pulumi.Input[Optional[_builtins.str]] = None,
                  gateway6: pulumi.Input[Optional[_builtins.str]] = None,
-                 internal_access: pulumi.Input[Optional[Union['NetworkInternalAccessArgs', 'NetworkInternalAccessArgsDict']]] = None,
-                 internet_access: pulumi.Input[Optional[Union['NetworkInternetAccessArgs', 'NetworkInternetAccessArgsDict']]] = None,
+                 internal_access: pulumi.Input[Optional[Union['NetworkInternalAccessArgs', 'NetworkInternalAccessArgsDict', 'outputs.NetworkInternalAccess']]] = None,
+                 internet_access: pulumi.Input[Optional[Union['NetworkInternetAccessArgs', 'NetworkInternetAccessArgsDict', 'outputs.NetworkInternetAccess']]] = None,
                  isolation: pulumi.Input[Optional[_builtins.bool]] = None,
-                 multicast: pulumi.Input[Optional[Union['NetworkMulticastArgs', 'NetworkMulticastArgsDict']]] = None,
+                 multicast: pulumi.Input[Optional[Union['NetworkMulticastArgs', 'NetworkMulticastArgsDict', 'outputs.NetworkMulticast']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  routed_for_networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  subnet: pulumi.Input[Optional[_builtins.str]] = None,
                  subnet6: pulumi.Input[Optional[_builtins.str]] = None,
-                 tenants: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworkTenantsArgs', 'NetworkTenantsArgsDict']]]]] = None,
+                 tenants: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworkTenantsArgs', 'NetworkTenantsArgsDict', 'outputs.NetworkTenants']]]]] = None,
                  vlan_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 vpn_access: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworkVpnAccessArgs', 'NetworkVpnAccessArgsDict']]]]] = None,
+                 vpn_access: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworkVpnAccessArgs', 'NetworkVpnAccessArgsDict', 'outputs.NetworkVpnAccess']]]]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -602,18 +602,18 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] disallow_mist_services: Whether to disallow Mist Devices in the network
         :param pulumi.Input[_builtins.str] gateway: IPv4 gateway address for this network
         :param pulumi.Input[_builtins.str] gateway6: IPv6 gateway address for this network
-        :param pulumi.Input[Union['NetworkInternalAccessArgs', 'NetworkInternalAccessArgsDict']] internal_access: Internal access settings for this network
-        :param pulumi.Input[Union['NetworkInternetAccessArgs', 'NetworkInternetAccessArgsDict']] internet_access: Direct internet access and NAT settings for this network
+        :param pulumi.Input[Union['NetworkInternalAccessArgs', 'NetworkInternalAccessArgsDict', 'outputs.NetworkInternalAccess']] internal_access: Internal access settings for this network
+        :param pulumi.Input[Union['NetworkInternetAccessArgs', 'NetworkInternetAccessArgsDict', 'outputs.NetworkInternetAccess']] internet_access: Direct internet access and NAT settings for this network
         :param pulumi.Input[_builtins.bool] isolation: Whether to allow clients in the network to talk to each other
-        :param pulumi.Input[Union['NetworkMulticastArgs', 'NetworkMulticastArgsDict']] multicast: Settings for multicast routing on this network
+        :param pulumi.Input[Union['NetworkMulticastArgs', 'NetworkMulticastArgsDict', 'outputs.NetworkMulticast']] multicast: Settings for multicast routing on this network
         :param pulumi.Input[_builtins.str] name: Display name of the organization network
         :param pulumi.Input[_builtins.str] org_id: Organization that owns this network
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] routed_for_networks: Other network names this network can route to, for example through BGP, OSPF or static routes
         :param pulumi.Input[_builtins.str] subnet: IPv4 subnet CIDR for this network
         :param pulumi.Input[_builtins.str] subnet6: IPv6 subnet CIDR for this network
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkTenantsArgs', 'NetworkTenantsArgsDict']]]] tenants: Tenant address mappings associated with this network
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkTenantsArgs', 'NetworkTenantsArgsDict', 'outputs.NetworkTenants']]]] tenants: Tenant address mappings associated with this network
         :param pulumi.Input[_builtins.str] vlan_id: VLAN ID or variable associated with this network
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkVpnAccessArgs', 'NetworkVpnAccessArgsDict']]]] vpn_access: VPN access settings keyed by VPN name for this network
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkVpnAccessArgs', 'NetworkVpnAccessArgsDict', 'outputs.NetworkVpnAccess']]]] vpn_access: VPN access settings keyed by VPN name for this network
         :param pulumi.Input[_builtins.str] zone_id: SecurityZone this network belongs to. When set, the zone name is used as the security zone name on the SRX, and multiple networks can share the same zone. When omitted, the network `name` is used as the security zone name.
         """
         ...
@@ -668,18 +668,18 @@ class Network(pulumi.CustomResource):
                  disallow_mist_services: pulumi.Input[Optional[_builtins.bool]] = None,
                  gateway: pulumi.Input[Optional[_builtins.str]] = None,
                  gateway6: pulumi.Input[Optional[_builtins.str]] = None,
-                 internal_access: pulumi.Input[Optional[Union['NetworkInternalAccessArgs', 'NetworkInternalAccessArgsDict']]] = None,
-                 internet_access: pulumi.Input[Optional[Union['NetworkInternetAccessArgs', 'NetworkInternetAccessArgsDict']]] = None,
+                 internal_access: pulumi.Input[Optional[Union['NetworkInternalAccessArgs', 'NetworkInternalAccessArgsDict', 'outputs.NetworkInternalAccess']]] = None,
+                 internet_access: pulumi.Input[Optional[Union['NetworkInternetAccessArgs', 'NetworkInternetAccessArgsDict', 'outputs.NetworkInternetAccess']]] = None,
                  isolation: pulumi.Input[Optional[_builtins.bool]] = None,
-                 multicast: pulumi.Input[Optional[Union['NetworkMulticastArgs', 'NetworkMulticastArgsDict']]] = None,
+                 multicast: pulumi.Input[Optional[Union['NetworkMulticastArgs', 'NetworkMulticastArgsDict', 'outputs.NetworkMulticast']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  routed_for_networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  subnet: pulumi.Input[Optional[_builtins.str]] = None,
                  subnet6: pulumi.Input[Optional[_builtins.str]] = None,
-                 tenants: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworkTenantsArgs', 'NetworkTenantsArgsDict']]]]] = None,
+                 tenants: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworkTenantsArgs', 'NetworkTenantsArgsDict', 'outputs.NetworkTenants']]]]] = None,
                  vlan_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 vpn_access: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworkVpnAccessArgs', 'NetworkVpnAccessArgsDict']]]]] = None,
+                 vpn_access: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworkVpnAccessArgs', 'NetworkVpnAccessArgsDict', 'outputs.NetworkVpnAccess']]]]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -723,18 +723,18 @@ class Network(pulumi.CustomResource):
             disallow_mist_services: pulumi.Input[Optional[_builtins.bool]] = None,
             gateway: pulumi.Input[Optional[_builtins.str]] = None,
             gateway6: pulumi.Input[Optional[_builtins.str]] = None,
-            internal_access: pulumi.Input[Optional[Union['NetworkInternalAccessArgs', 'NetworkInternalAccessArgsDict']]] = None,
-            internet_access: pulumi.Input[Optional[Union['NetworkInternetAccessArgs', 'NetworkInternetAccessArgsDict']]] = None,
+            internal_access: pulumi.Input[Optional[Union['NetworkInternalAccessArgs', 'NetworkInternalAccessArgsDict', 'outputs.NetworkInternalAccess']]] = None,
+            internet_access: pulumi.Input[Optional[Union['NetworkInternetAccessArgs', 'NetworkInternetAccessArgsDict', 'outputs.NetworkInternetAccess']]] = None,
             isolation: pulumi.Input[Optional[_builtins.bool]] = None,
-            multicast: pulumi.Input[Optional[Union['NetworkMulticastArgs', 'NetworkMulticastArgsDict']]] = None,
+            multicast: pulumi.Input[Optional[Union['NetworkMulticastArgs', 'NetworkMulticastArgsDict', 'outputs.NetworkMulticast']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             routed_for_networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             subnet: pulumi.Input[Optional[_builtins.str]] = None,
             subnet6: pulumi.Input[Optional[_builtins.str]] = None,
-            tenants: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworkTenantsArgs', 'NetworkTenantsArgsDict']]]]] = None,
+            tenants: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworkTenantsArgs', 'NetworkTenantsArgsDict', 'outputs.NetworkTenants']]]]] = None,
             vlan_id: pulumi.Input[Optional[_builtins.str]] = None,
-            vpn_access: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworkVpnAccessArgs', 'NetworkVpnAccessArgsDict']]]]] = None,
+            vpn_access: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworkVpnAccessArgs', 'NetworkVpnAccessArgsDict', 'outputs.NetworkVpnAccess']]]]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Network':
         """
         Get an existing Network resource's state with the given name, id, and optional extra
@@ -746,18 +746,18 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] disallow_mist_services: Whether to disallow Mist Devices in the network
         :param pulumi.Input[_builtins.str] gateway: IPv4 gateway address for this network
         :param pulumi.Input[_builtins.str] gateway6: IPv6 gateway address for this network
-        :param pulumi.Input[Union['NetworkInternalAccessArgs', 'NetworkInternalAccessArgsDict']] internal_access: Internal access settings for this network
-        :param pulumi.Input[Union['NetworkInternetAccessArgs', 'NetworkInternetAccessArgsDict']] internet_access: Direct internet access and NAT settings for this network
+        :param pulumi.Input[Union['NetworkInternalAccessArgs', 'NetworkInternalAccessArgsDict', 'outputs.NetworkInternalAccess']] internal_access: Internal access settings for this network
+        :param pulumi.Input[Union['NetworkInternetAccessArgs', 'NetworkInternetAccessArgsDict', 'outputs.NetworkInternetAccess']] internet_access: Direct internet access and NAT settings for this network
         :param pulumi.Input[_builtins.bool] isolation: Whether to allow clients in the network to talk to each other
-        :param pulumi.Input[Union['NetworkMulticastArgs', 'NetworkMulticastArgsDict']] multicast: Settings for multicast routing on this network
+        :param pulumi.Input[Union['NetworkMulticastArgs', 'NetworkMulticastArgsDict', 'outputs.NetworkMulticast']] multicast: Settings for multicast routing on this network
         :param pulumi.Input[_builtins.str] name: Display name of the organization network
         :param pulumi.Input[_builtins.str] org_id: Organization that owns this network
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] routed_for_networks: Other network names this network can route to, for example through BGP, OSPF or static routes
         :param pulumi.Input[_builtins.str] subnet: IPv4 subnet CIDR for this network
         :param pulumi.Input[_builtins.str] subnet6: IPv6 subnet CIDR for this network
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkTenantsArgs', 'NetworkTenantsArgsDict']]]] tenants: Tenant address mappings associated with this network
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkTenantsArgs', 'NetworkTenantsArgsDict', 'outputs.NetworkTenants']]]] tenants: Tenant address mappings associated with this network
         :param pulumi.Input[_builtins.str] vlan_id: VLAN ID or variable associated with this network
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkVpnAccessArgs', 'NetworkVpnAccessArgsDict']]]] vpn_access: VPN access settings keyed by VPN name for this network
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkVpnAccessArgs', 'NetworkVpnAccessArgsDict', 'outputs.NetworkVpnAccess']]]] vpn_access: VPN access settings keyed by VPN name for this network
         :param pulumi.Input[_builtins.str] zone_id: SecurityZone this network belongs to. When set, the zone name is used as the security zone name on the SRX, and multiple networks can share the same zone. When omitted, the network `name` is used as the security zone name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

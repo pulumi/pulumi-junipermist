@@ -51,9 +51,9 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var wlantemplateOne = new Wlantemplate("wlantemplateOne", WlantemplateArgs.builder()
  *             .name("wlantemplate_one")
- *             .orgId(terraformTest.id())
+ *             .orgId(terraformTest.get("id"))
  *             .applies(WlantemplateAppliesArgs.builder()
- *                 .siteIds(terraformSite.id())
+ *                 .siteIds(terraformSite.get("id"))
  *                 .build())
  *             .build());
  * 

@@ -86,10 +86,6 @@ export interface GetInventoryArgs {
  */
 export interface GetInventoryResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * MAC address
      */
     readonly mac?: string;

@@ -120,22 +120,15 @@ namespace Pulumi.JuniperMist.Site
     [OutputType]
     public sealed class GetEvpnTopologiesResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly ImmutableArray<Outputs.GetEvpnTopologiesSiteEvpnTopologyResult> SiteEvpnTopologies;
         public readonly string SiteId;
 
         [OutputConstructor]
         private GetEvpnTopologiesResult(
-            string id,
-
             ImmutableArray<Outputs.GetEvpnTopologiesSiteEvpnTopologyResult> siteEvpnTopologies,
 
             string siteId)
         {
-            Id = id;
             SiteEvpnTopologies = siteEvpnTopologies;
             SiteId = siteId;
         }

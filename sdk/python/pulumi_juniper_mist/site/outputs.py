@@ -571,7 +571,7 @@ class EvpnTopologySwitches(dict):
                  pods: Optional[Sequence[_builtins.int]] = None):
         """
         :param _builtins.str role: EVPN topology role for this switch. enum: `access`, `border`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`.
-        :param _builtins.int pod: Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g. 
+        :param _builtins.int pod: Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g.
                  * for CLOS, to group dist / access switches into pods
                  * for ERB/CRB, to group dist / esilag-access into pods
         :param Sequence[_builtins.int] pods: List of pod numbers this switch participates in
@@ -594,7 +594,7 @@ class EvpnTopologySwitches(dict):
     @pulumi.getter
     def pod(self) -> Optional[_builtins.int]:
         """
-        Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g. 
+        Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g.
           * for CLOS, to group dist / access switches into pods
           * for ERB/CRB, to group dist / esilag-access into pods
         """
@@ -782,7 +782,7 @@ class NetworktemplateAclTags(dict):
                  * `type`==`radius_group`
                  * `type`==`aruba_user_role`
                  * `type`==`static_gbp`
-               if from matching radius_group
+                   if from matching radius_group
         :param Sequence['NetworktemplateAclTagsSpecArgs'] specs: Layer 4 protocol and destination-port constraints for this ACL tag
         :param Sequence[_builtins.str] subnets: IP subnets matched by this ACL tag
         """
@@ -868,7 +868,7 @@ class NetworktemplateAclTags(dict):
           * `type`==`radius_group`
           * `type`==`aruba_user_role`
           * `type`==`static_gbp`
-        if from matching radius_group
+            if from matching radius_group
         """
         return pulumi.get(self, "radius_group")
 
@@ -12786,7 +12786,7 @@ class WlanAppLimit(dict):
                  enabled: Optional[_builtins.bool] = None,
                  wxtag_ids: Optional[Mapping[str, _builtins.int]] = None):
         """
-        :param Mapping[str, _builtins.int] apps: Map from app key to bandwidth in kbps. 
+        :param Mapping[str, _builtins.int] apps: Map from app key to bandwidth in kbps.
                Property key is the app key, defined in Get Application List
         :param _builtins.bool enabled: Whether application bandwidth limits are enabled for this WLAN
         :param Mapping[str, _builtins.int] wxtag_ids: Map from wxtag_id of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtag_id`
@@ -12802,7 +12802,7 @@ class WlanAppLimit(dict):
     @pulumi.getter
     def apps(self) -> Optional[Mapping[str, _builtins.int]]:
         """
-        Map from app key to bandwidth in kbps. 
+        Map from app key to bandwidth in kbps.
         Property key is the app key, defined in Get Application List
         """
         return pulumi.get(self, "apps")
@@ -13377,7 +13377,7 @@ class WlanBonjour(dict):
         """
         :param Sequence[_builtins.str] additional_vlan_ids: additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
         :param _builtins.bool enabled: Whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
-        :param Mapping[str, 'WlanBonjourServicesArgs'] services: What services are allowed. 
+        :param Mapping[str, 'WlanBonjourServicesArgs'] services: What services are allowed.
                Property key is the service name
         """
         if additional_vlan_ids is not None:
@@ -13407,7 +13407,7 @@ class WlanBonjour(dict):
     @pulumi.getter
     def services(self) -> Optional[Mapping[str, 'outputs.WlanBonjourServices']]:
         """
-        What services are allowed. 
+        What services are allowed.
         Property key is the service name
         """
         return pulumi.get(self, "services")
@@ -15675,9 +15675,9 @@ class WlanPortalTemplatePortalTemplate(dict):
         :param _builtins.str field4label: Label for custom field 4 input
         :param _builtins.bool field4required: Whether custom field 4 must be provided when the field is shown
         :param Mapping[str, 'WlanPortalTemplatePortalTemplateLocalesArgs'] locales: Can be used to localize the portal based on the User Agent. Allowed property key values are:
-                 `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`, 
-                 `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`, 
-                 `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`, 
+                 `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`,
+                 `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`,
+                 `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`,
                  `zh-Hans`, `zh-Hant`
         :param _builtins.str logo: path to the background image file. File must be a `png` image`
         :param _builtins.str marketing_policy_link: label of the link to go to /marketing_policy
@@ -15735,7 +15735,7 @@ class WlanPortalTemplatePortalTemplate(dict):
         :param _builtins.str sponsor_cancel: Button label for canceling sponsor authentication
         :param _builtins.str sponsor_email: Label for Sponsor Email
         :param _builtins.str sponsor_email_error: Error message shown when the sponsor email address is invalid
-        :param _builtins.str sponsor_email_template: HTML template to replace/override default sponsor email template 
+        :param _builtins.str sponsor_email_template: HTML template to replace/override default sponsor email template
                Sponsor Email Template supports following template variables:
                  * `approve_url`: Renders URL to approve the request; optionally &minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
                  * `deny_url`: Renders URL to reject the request
@@ -16422,9 +16422,9 @@ class WlanPortalTemplatePortalTemplate(dict):
     def locales(self) -> Optional[Mapping[str, 'outputs.WlanPortalTemplatePortalTemplateLocales']]:
         """
         Can be used to localize the portal based on the User Agent. Allowed property key values are:
-          `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`, 
-          `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`, 
-          `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`, 
+          `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`,
+          `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`,
+          `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`,
           `zh-Hans`, `zh-Hant`
         """
         return pulumi.get(self, "locales")
@@ -16881,7 +16881,7 @@ class WlanPortalTemplatePortalTemplate(dict):
     @pulumi.getter(name="sponsorEmailTemplate")
     def sponsor_email_template(self) -> Optional[_builtins.str]:
         """
-        HTML template to replace/override default sponsor email template 
+        HTML template to replace/override default sponsor email template
         Sponsor Email Template supports following template variables:
           * `approve_url`: Renders URL to approve the request; optionally &minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
           * `deny_url`: Renders URL to reject the request
@@ -20880,7 +20880,7 @@ class GetWlansSiteWlanAppLimitResult(dict):
                  enabled: _builtins.bool,
                  wxtag_ids: Mapping[str, _builtins.int]):
         """
-        :param Mapping[str, _builtins.int] apps: Map from app key to bandwidth in kbps. 
+        :param Mapping[str, _builtins.int] apps: Map from app key to bandwidth in kbps.
                Property key is the app key, defined in Get Application List
         :param Mapping[str, _builtins.int] wxtag_ids: Map from wxtag_id of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtag_id`
         """
@@ -20892,7 +20892,7 @@ class GetWlansSiteWlanAppLimitResult(dict):
     @pulumi.getter
     def apps(self) -> Mapping[str, _builtins.int]:
         """
-        Map from app key to bandwidth in kbps. 
+        Map from app key to bandwidth in kbps.
         Property key is the app key, defined in Get Application List
         """
         return pulumi.get(self, "apps")
@@ -21240,7 +21240,7 @@ class GetWlansSiteWlanBonjourResult(dict):
         """
         :param Sequence[_builtins.str] additional_vlan_ids: additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
         :param _builtins.bool enabled: Whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
-        :param Mapping[str, 'GetWlansSiteWlanBonjourServicesArgs'] services: What services are allowed. 
+        :param Mapping[str, 'GetWlansSiteWlanBonjourServicesArgs'] services: What services are allowed.
                Property key is the service name
         """
         pulumi.set(__self__, "additional_vlan_ids", additional_vlan_ids)
@@ -21267,7 +21267,7 @@ class GetWlansSiteWlanBonjourResult(dict):
     @pulumi.getter
     def services(self) -> Mapping[str, 'outputs.GetWlansSiteWlanBonjourServicesResult']:
         """
-        What services are allowed. 
+        What services are allowed.
         Property key is the service name
         """
         return pulumi.get(self, "services")
@@ -22770,7 +22770,7 @@ class GetWlansSiteWlanRatesetResult(dict):
         :param _builtins.str ht: If `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
         :param Sequence[_builtins.str] legacies: If `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
         :param _builtins.int min_rssi: Minimum RSSI for client to connect, 0 means not enforcing
-        :param _builtins.str template: Data Rates template to apply. enum: 
+        :param _builtins.str template: Data Rates template to apply. enum:
                  * `no-legacy`: no 11b
                  * `compatible`: all, like before, default setting that Broadcom/Atheros used
                  * `legacy-only`: disable 802.11n and 802.11ac
@@ -22830,7 +22830,7 @@ class GetWlansSiteWlanRatesetResult(dict):
     @pulumi.getter
     def template(self) -> _builtins.str:
         """
-        Data Rates template to apply. enum: 
+        Data Rates template to apply. enum:
           * `no-legacy`: no 11b
           * `compatible`: all, like before, default setting that Broadcom/Atheros used
           * `legacy-only`: disable 802.11n and 802.11ac

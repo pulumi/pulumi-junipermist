@@ -63,8 +63,6 @@ type GetNacidpMetadataResult struct {
 	AcsUrl string `pulumi:"acsUrl"`
 	// If `idpType`==`saml`
 	EntityId string `pulumi:"entityId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// If `idpType`==`saml`
 	LogoutUrl string `pulumi:"logoutUrl"`
 	// If `idpType`==`saml`
@@ -76,12 +74,8 @@ type GetNacidpMetadataResult struct {
 }
 
 func GetNacidpMetadataOutput(ctx *pulumi.Context, args GetNacidpMetadataOutputArgs, opts ...pulumi.InvokeOption) GetNacidpMetadataResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNacidpMetadataResultOutput, error) {
-			args := v.(GetNacidpMetadataArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("junipermist:org/getNacidpMetadata:getNacidpMetadata", args, GetNacidpMetadataResultOutput{}, options).(GetNacidpMetadataResultOutput), nil
-		}).(GetNacidpMetadataResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("junipermist:org/getNacidpMetadata:getNacidpMetadata", args, GetNacidpMetadataResultOutput{}, options).(GetNacidpMetadataResultOutput)
 }
 
 // A collection of arguments for invoking getNacidpMetadata.
@@ -117,11 +111,6 @@ func (o GetNacidpMetadataResultOutput) AcsUrl() pulumi.StringOutput {
 // If `idpType`==`saml`
 func (o GetNacidpMetadataResultOutput) EntityId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNacidpMetadataResult) string { return v.EntityId }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetNacidpMetadataResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNacidpMetadataResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // If `idpType`==`saml`

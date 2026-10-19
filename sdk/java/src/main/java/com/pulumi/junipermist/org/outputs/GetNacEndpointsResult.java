@@ -15,11 +15,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetNacEndpointsResult {
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Optional, array of strings of labels
      * 
      */
@@ -33,13 +28,6 @@ public final class GetNacEndpointsResult {
     private List<GetNacEndpointsOrgUsermac> orgUsermacs;
 
     private GetNacEndpointsResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     /**
      * @return Optional, array of strings of labels
      * 
@@ -70,7 +58,6 @@ public final class GetNacEndpointsResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private @Nullable List<String> labels;
         private @Nullable String mac;
         private String orgId;
@@ -78,21 +65,12 @@ public final class GetNacEndpointsResult {
         public Builder() {}
         public Builder(GetNacEndpointsResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.labels = defaults.labels;
     	      this.mac = defaults.mac;
     	      this.orgId = defaults.orgId;
     	      this.orgUsermacs = defaults.orgUsermacs;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetNacEndpointsResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder labels(@Nullable List<String> labels) {
 
@@ -129,7 +107,6 @@ public final class GetNacEndpointsResult {
         }
         public GetNacEndpointsResult build() {
             final var _resultValue = new GetNacEndpointsResult();
-            _resultValue.id = id;
             _resultValue.labels = labels;
             _resultValue.mac = mac;
             _resultValue.orgId = orgId;

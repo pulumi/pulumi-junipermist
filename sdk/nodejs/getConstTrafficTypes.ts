@@ -31,10 +31,6 @@ export function getConstTrafficTypes(opts?: pulumi.InvokeOptions): Promise<GetCo
  */
 export interface GetConstTrafficTypesResult {
     readonly constTrafficTypes: outputs.GetConstTrafficTypesConstTrafficType[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }
 /**
  * This data source provides the of ConstTrafficTypes.

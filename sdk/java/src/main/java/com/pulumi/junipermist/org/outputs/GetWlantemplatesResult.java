@@ -12,22 +12,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetWlantemplatesResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private String orgId;
     private List<GetWlantemplatesOrgWlantemplate> orgWlantemplates;
 
     private GetWlantemplatesResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public String orgId() {
         return this.orgId;
     }
@@ -44,25 +32,15 @@ public final class GetWlantemplatesResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private String orgId;
         private List<GetWlantemplatesOrgWlantemplate> orgWlantemplates;
         public Builder() {}
         public Builder(GetWlantemplatesResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.orgId = defaults.orgId;
     	      this.orgWlantemplates = defaults.orgWlantemplates;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetWlantemplatesResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder orgId(String orgId) {
             if (orgId == null) {
@@ -84,7 +62,6 @@ public final class GetWlantemplatesResult {
         }
         public GetWlantemplatesResult build() {
             final var _resultValue = new GetWlantemplatesResult();
-            _resultValue.id = id;
             _resultValue.orgId = orgId;
             _resultValue.orgWlantemplates = orgWlantemplates;
             return _resultValue;

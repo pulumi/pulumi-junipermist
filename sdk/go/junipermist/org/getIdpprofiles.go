@@ -59,19 +59,13 @@ type GetIdpprofilesArgs struct {
 
 // A collection of values returned by getIdpprofiles.
 type GetIdpprofilesResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id             string                        `pulumi:"id"`
 	OrgId          string                        `pulumi:"orgId"`
 	OrgIdpprofiles []GetIdpprofilesOrgIdpprofile `pulumi:"orgIdpprofiles"`
 }
 
 func GetIdpprofilesOutput(ctx *pulumi.Context, args GetIdpprofilesOutputArgs, opts ...pulumi.InvokeOption) GetIdpprofilesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetIdpprofilesResultOutput, error) {
-			args := v.(GetIdpprofilesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("junipermist:org/getIdpprofiles:getIdpprofiles", args, GetIdpprofilesResultOutput{}, options).(GetIdpprofilesResultOutput), nil
-		}).(GetIdpprofilesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("junipermist:org/getIdpprofiles:getIdpprofiles", args, GetIdpprofilesResultOutput{}, options).(GetIdpprofilesResultOutput)
 }
 
 // A collection of arguments for invoking getIdpprofiles.
@@ -96,11 +90,6 @@ func (o GetIdpprofilesResultOutput) ToGetIdpprofilesResultOutput() GetIdpprofile
 
 func (o GetIdpprofilesResultOutput) ToGetIdpprofilesResultOutputWithContext(ctx context.Context) GetIdpprofilesResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetIdpprofilesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetIdpprofilesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetIdpprofilesResultOutput) OrgId() pulumi.StringOutput {

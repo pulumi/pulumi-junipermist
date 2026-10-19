@@ -53,10 +53,6 @@ export interface GetNacEndpointsArgs {
  */
 export interface GetNacEndpointsResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * Optional, array of strings of labels
      */
     readonly labels?: string[];

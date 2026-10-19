@@ -51,15 +51,11 @@ func GetConstTrafficTypes(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*Ge
 // A collection of values returned by getConstTrafficTypes.
 type GetConstTrafficTypesResult struct {
 	ConstTrafficTypes []GetConstTrafficTypesConstTrafficType `pulumi:"constTrafficTypes"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 }
 
 func GetConstTrafficTypesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetConstTrafficTypesResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetConstTrafficTypesResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("junipermist:index/getConstTrafficTypes:getConstTrafficTypes", nil, GetConstTrafficTypesResultOutput{}, options).(GetConstTrafficTypesResultOutput), nil
-	}).(GetConstTrafficTypesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("junipermist:index/getConstTrafficTypes:getConstTrafficTypes", nil, GetConstTrafficTypesResultOutput{}, options).(GetConstTrafficTypesResultOutput)
 }
 
 // A collection of values returned by getConstTrafficTypes.
@@ -79,11 +75,6 @@ func (o GetConstTrafficTypesResultOutput) ToGetConstTrafficTypesResultOutputWith
 
 func (o GetConstTrafficTypesResultOutput) ConstTrafficTypes() GetConstTrafficTypesConstTrafficTypeArrayOutput {
 	return o.ApplyT(func(v GetConstTrafficTypesResult) []GetConstTrafficTypesConstTrafficType { return v.ConstTrafficTypes }).(GetConstTrafficTypesConstTrafficTypeArrayOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetConstTrafficTypesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConstTrafficTypesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func init() {

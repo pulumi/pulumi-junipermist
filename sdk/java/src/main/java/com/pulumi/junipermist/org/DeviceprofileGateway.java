@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var deviceprofileGwOne = new DeviceprofileGateway("deviceprofileGwOne", DeviceprofileGatewayArgs.builder()
  *             .name("deviceprofile_gw_one")
- *             .orgId(terraformTest.id())
+ *             .orgId(terraformTest.get("id"))
  *             .portConfig(Map.ofEntries(
  *                 Map.entry("ge-0/0/3", DeviceprofileGatewayPortConfigArgs.builder()
  *                     .name("FTTH")

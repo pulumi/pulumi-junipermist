@@ -46,10 +46,6 @@ export interface GetAvprofilesArgs {
  * A collection of values returned by getAvprofiles.
  */
 export interface GetAvprofilesResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly orgAvprofiles: outputs.org.GetAvprofilesOrgAvprofile[];
     readonly orgId: string;
 }

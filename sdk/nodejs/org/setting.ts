@@ -145,7 +145,7 @@ export class Setting extends pulumi.CustomResource {
     declare public readonly deviceCert: pulumi.Output<outputs.org.SettingDeviceCert | undefined>;
     /**
      * Enable threshold-based device down delivery via
-     *   * device-updowns webhooks topic, 
+     *   * device-updowns webhooks topic,
      *   * Mist Alert Framework; e.g. send AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger immediate)
      */
     declare public readonly deviceUpdownThreshold: pulumi.Output<number | undefined>;
@@ -416,7 +416,7 @@ export interface SettingState {
     deviceCert?: pulumi.Input<inputs.org.SettingDeviceCert | undefined>;
     /**
      * Enable threshold-based device down delivery via
-     *   * device-updowns webhooks topic, 
+     *   * device-updowns webhooks topic,
      *   * Mist Alert Framework; e.g. send AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger immediate)
      */
     deviceUpdownThreshold?: pulumi.Input<number | undefined>;
@@ -580,7 +580,7 @@ export interface SettingArgs {
     deviceCert?: pulumi.Input<inputs.org.SettingDeviceCert | undefined>;
     /**
      * Enable threshold-based device down delivery via
-     *   * device-updowns webhooks topic, 
+     *   * device-updowns webhooks topic,
      *   * Mist Alert Framework; e.g. send AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger immediate)
      */
     deviceUpdownThreshold?: pulumi.Input<number | undefined>;

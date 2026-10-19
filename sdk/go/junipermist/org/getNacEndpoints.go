@@ -65,8 +65,6 @@ type GetNacEndpointsArgs struct {
 
 // A collection of values returned by getNacEndpoints.
 type GetNacEndpointsResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Optional, array of strings of labels
 	Labels []string `pulumi:"labels"`
 	// Partial/full MAC address
@@ -76,12 +74,8 @@ type GetNacEndpointsResult struct {
 }
 
 func GetNacEndpointsOutput(ctx *pulumi.Context, args GetNacEndpointsOutputArgs, opts ...pulumi.InvokeOption) GetNacEndpointsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNacEndpointsResultOutput, error) {
-			args := v.(GetNacEndpointsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("junipermist:org/getNacEndpoints:getNacEndpoints", args, GetNacEndpointsResultOutput{}, options).(GetNacEndpointsResultOutput), nil
-		}).(GetNacEndpointsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("junipermist:org/getNacEndpoints:getNacEndpoints", args, GetNacEndpointsResultOutput{}, options).(GetNacEndpointsResultOutput)
 }
 
 // A collection of arguments for invoking getNacEndpoints.
@@ -110,11 +104,6 @@ func (o GetNacEndpointsResultOutput) ToGetNacEndpointsResultOutput() GetNacEndpo
 
 func (o GetNacEndpointsResultOutput) ToGetNacEndpointsResultOutputWithContext(ctx context.Context) GetNacEndpointsResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetNacEndpointsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNacEndpointsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Optional, array of strings of labels

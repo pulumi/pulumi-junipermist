@@ -95,19 +95,11 @@ namespace Pulumi.JuniperMist
     public sealed class GetConstWebhooksResult
     {
         public readonly ImmutableArray<Outputs.GetConstWebhooksConstWebhookResult> ConstWebhooks;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
-        private GetConstWebhooksResult(
-            ImmutableArray<Outputs.GetConstWebhooksConstWebhookResult> constWebhooks,
-
-            string id)
+        private GetConstWebhooksResult(ImmutableArray<Outputs.GetConstWebhooksConstWebhookResult> constWebhooks)
         {
             ConstWebhooks = constWebhooks;
-            Id = id;
         }
     }
 }

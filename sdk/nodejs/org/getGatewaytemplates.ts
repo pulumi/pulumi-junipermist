@@ -40,10 +40,6 @@ export interface GetGatewaytemplatesArgs {
  * A collection of values returned by getGatewaytemplates.
  */
 export interface GetGatewaytemplatesResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly orgGatewaytemplates: outputs.org.GetGatewaytemplatesOrgGatewaytemplate[];
     readonly orgId: string;
 }

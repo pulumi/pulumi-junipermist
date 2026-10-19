@@ -802,7 +802,7 @@ class EvpnTopologySwitchesArgsDict(TypedDict):
     """
     pod: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g. 
+    Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g.
       * for CLOS, to group dist / access switches into pods
       * for ERB/CRB, to group dist / esilag-access into pods
     """
@@ -819,7 +819,7 @@ class EvpnTopologySwitchesArgs:
                  pods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None):
         """
         :param pulumi.Input[_builtins.str] role: EVPN topology role for this switch. enum: `access`, `border`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`.
-        :param pulumi.Input[_builtins.int] pod: Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g. 
+        :param pulumi.Input[_builtins.int] pod: Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g.
                  * for CLOS, to group dist / access switches into pods
                  * for ERB/CRB, to group dist / esilag-access into pods
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] pods: List of pod numbers this switch participates in
@@ -846,7 +846,7 @@ class EvpnTopologySwitchesArgs:
     @pulumi.getter
     def pod(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g. 
+        Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g.
           * for CLOS, to group dist / access switches into pods
           * for ERB/CRB, to group dist / esilag-access into pods
         """
@@ -1045,7 +1045,7 @@ class NetworktemplateAclTagsArgsDict(TypedDict):
       * `type`==`radius_group`
       * `type`==`aruba_user_role`
       * `type`==`static_gbp`
-    if from matching radius_group
+        if from matching radius_group
     """
     specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateAclTagsSpecArgsDict']]]]]
     """
@@ -1087,7 +1087,7 @@ class NetworktemplateAclTagsArgs:
                  * `type`==`radius_group`
                  * `type`==`aruba_user_role`
                  * `type`==`static_gbp`
-               if from matching radius_group
+                   if from matching radius_group
         :param pulumi.Input[Sequence[pulumi.Input['NetworktemplateAclTagsSpecArgs']]] specs: Layer 4 protocol and destination-port constraints for this ACL tag
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] subnets: IP subnets matched by this ACL tag
         """
@@ -1197,7 +1197,7 @@ class NetworktemplateAclTagsArgs:
           * `type`==`radius_group`
           * `type`==`aruba_user_role`
           * `type`==`static_gbp`
-        if from matching radius_group
+            if from matching radius_group
         """
         return pulumi.get(self, "radius_group")
 
@@ -16855,7 +16855,7 @@ class WlanAirwatchArgs:
 class WlanAppLimitArgsDict(TypedDict):
     apps: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]]]
     """
-    Map from app key to bandwidth in kbps. 
+    Map from app key to bandwidth in kbps.
     Property key is the app key, defined in Get Application List
     """
     enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
@@ -16874,7 +16874,7 @@ class WlanAppLimitArgs:
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  wxtag_ids: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]] = None):
         """
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]] apps: Map from app key to bandwidth in kbps. 
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]] apps: Map from app key to bandwidth in kbps.
                Property key is the app key, defined in Get Application List
         :param pulumi.Input[_builtins.bool] enabled: Whether application bandwidth limits are enabled for this WLAN
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]] wxtag_ids: Map from wxtag_id of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtag_id`
@@ -16890,7 +16890,7 @@ class WlanAppLimitArgs:
     @pulumi.getter
     def apps(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]]:
         """
-        Map from app key to bandwidth in kbps. 
+        Map from app key to bandwidth in kbps.
         Property key is the app key, defined in Get Application List
         """
         return pulumi.get(self, "apps")
@@ -17638,7 +17638,7 @@ class WlanBonjourArgsDict(TypedDict):
     """
     services: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['WlanBonjourServicesArgsDict']]]]]
     """
-    What services are allowed. 
+    What services are allowed.
     Property key is the service name
     """
 
@@ -17651,7 +17651,7 @@ class WlanBonjourArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_vlan_ids: additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
         :param pulumi.Input[_builtins.bool] enabled: Whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
-        :param pulumi.Input[Mapping[str, pulumi.Input['WlanBonjourServicesArgs']]] services: What services are allowed. 
+        :param pulumi.Input[Mapping[str, pulumi.Input['WlanBonjourServicesArgs']]] services: What services are allowed.
                Property key is the service name
         """
         if additional_vlan_ids is not None:
@@ -17689,7 +17689,7 @@ class WlanBonjourArgs:
     @pulumi.getter
     def services(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['WlanBonjourServicesArgs']]]]:
         """
-        What services are allowed. 
+        What services are allowed.
         Property key is the service name
         """
         return pulumi.get(self, "services")
@@ -20422,9 +20422,9 @@ class WlanPortalTemplatePortalTemplateArgsDict(TypedDict):
     locales: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['WlanPortalTemplatePortalTemplateLocalesArgsDict']]]]]
     """
     Can be used to localize the portal based on the User Agent. Allowed property key values are:
-      `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`, 
-      `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`, 
-      `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`, 
+      `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`,
+      `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`,
+      `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`,
       `zh-Hans`, `zh-Hant`
     """
     logo: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -20653,7 +20653,7 @@ class WlanPortalTemplatePortalTemplateArgsDict(TypedDict):
     """
     sponsor_email_template: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    HTML template to replace/override default sponsor email template 
+    HTML template to replace/override default sponsor email template
     Sponsor Email Template supports following template variables:
       * `approve_url`: Renders URL to approve the request; optionally &minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
       * `deny_url`: Renders URL to reject the request
@@ -20918,9 +20918,9 @@ class WlanPortalTemplatePortalTemplateArgs:
         :param pulumi.Input[_builtins.str] field4label: Label for custom field 4 input
         :param pulumi.Input[_builtins.bool] field4required: Whether custom field 4 must be provided when the field is shown
         :param pulumi.Input[Mapping[str, pulumi.Input['WlanPortalTemplatePortalTemplateLocalesArgs']]] locales: Can be used to localize the portal based on the User Agent. Allowed property key values are:
-                 `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`, 
-                 `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`, 
-                 `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`, 
+                 `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`,
+                 `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`,
+                 `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`,
                  `zh-Hans`, `zh-Hant`
         :param pulumi.Input[_builtins.str] logo: path to the background image file. File must be a `png` image`
         :param pulumi.Input[_builtins.str] marketing_policy_link: label of the link to go to /marketing_policy
@@ -20978,7 +20978,7 @@ class WlanPortalTemplatePortalTemplateArgs:
         :param pulumi.Input[_builtins.str] sponsor_cancel: Button label for canceling sponsor authentication
         :param pulumi.Input[_builtins.str] sponsor_email: Label for Sponsor Email
         :param pulumi.Input[_builtins.str] sponsor_email_error: Error message shown when the sponsor email address is invalid
-        :param pulumi.Input[_builtins.str] sponsor_email_template: HTML template to replace/override default sponsor email template 
+        :param pulumi.Input[_builtins.str] sponsor_email_template: HTML template to replace/override default sponsor email template
                Sponsor Email Template supports following template variables:
                  * `approve_url`: Renders URL to approve the request; optionally &minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
                  * `deny_url`: Renders URL to reject the request
@@ -21865,9 +21865,9 @@ class WlanPortalTemplatePortalTemplateArgs:
     def locales(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['WlanPortalTemplatePortalTemplateLocalesArgs']]]]:
         """
         Can be used to localize the portal based on the User Agent. Allowed property key values are:
-          `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`, 
-          `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`, 
-          `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`, 
+          `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`,
+          `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`,
+          `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`,
           `zh-Hans`, `zh-Hant`
         """
         return pulumi.get(self, "locales")
@@ -22552,7 +22552,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="sponsorEmailTemplate")
     def sponsor_email_template(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        HTML template to replace/override default sponsor email template 
+        HTML template to replace/override default sponsor email template
         Sponsor Email Template supports following template variables:
           * `approve_url`: Renders URL to approve the request; optionally &minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
           * `deny_url`: Renders URL to reject the request

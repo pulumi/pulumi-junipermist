@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var ssoAdminOne = new Sso("ssoAdminOne", SsoArgs.builder()
- *             .orgId(terraformTest.id())
+ *             .orgId(terraformTest.get("id"))
  *             .name("sso_admin_one")
  *             .customLogoutUrl("https://idp.com/logout")
  *             .idpCert("-----BEGIN CERTIFICATE-----MIIF0jC .../fSCGx7-----END CERTIFICATE-----")

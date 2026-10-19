@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var guestPortal = new NacPortal("guestPortal", NacPortalArgs.builder()
- *             .orgId(terraformTest.id())
+ *             .orgId(terraformTest.get("id"))
  *             .name("Guest Portal")
  *             .type("marvis_client")
  *             .accessType("wireless+wired")

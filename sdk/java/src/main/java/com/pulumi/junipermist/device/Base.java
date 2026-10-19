@@ -31,8 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.junipermist.site.base;
- * import com.pulumi.junipermist.site.baseArgs;
+ * import com.pulumi.junipermist.site.Base;
+ * import com.pulumi.junipermist.site.BaseArgs;
  * import com.pulumi.junipermist.site.inputs.BaseLatlngArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var juniperFrance = new Base("juniperFrance", BaseArgs.builder()
- *             .orgId(terraformTest.id())
+ *             .orgId(terraformTest.get("id"))
  *             .name("JNP-FR-PAR")
  *             .countryCode("FR")
  *             .timezone("Europe/Paris")
@@ -59,12 +59,12 @@ import javax.annotation.Nullable;
  *                 .lng(2.214447)
  *                 .build())
  *             .sitegroupIds(            
- *                 testGroup.id(),
- *                 testGroup2.id())
- *             .networktemplateId(networktemplateOne.id())
- *             .rftemplateId(rftemplateOne.id())
- *             .gatewaytemplateId(gatewaytemplateOne.id())
- *             .alarmtemplateId(alarmtemplateOne.id())
+ *                 testGroup.get("id"),
+ *                 testGroup2.get("id"))
+ *             .networktemplateId(networktemplateOne.get("id"))
+ *             .rftemplateId(rftemplateOne.get("id"))
+ *             .gatewaytemplateId(gatewaytemplateOne.get("id"))
+ *             .alarmtemplateId(alarmtemplateOne.get("id"))
  *             .build());
  * 
  *     }

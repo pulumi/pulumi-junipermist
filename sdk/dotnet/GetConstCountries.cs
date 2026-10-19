@@ -89,19 +89,11 @@ namespace Pulumi.JuniperMist
     public sealed class GetConstCountriesResult
     {
         public readonly ImmutableArray<Outputs.GetConstCountriesConstCountryResult> ConstCountries;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
-        private GetConstCountriesResult(
-            ImmutableArray<Outputs.GetConstCountriesConstCountryResult> constCountries,
-
-            string id)
+        private GetConstCountriesResult(ImmutableArray<Outputs.GetConstCountriesConstCountryResult> constCountries)
         {
             ConstCountries = constCountries;
-            Id = id;
         }
     }
 }

@@ -40,10 +40,6 @@ export interface GetNetworksArgs {
  * A collection of values returned by getNetworks.
  */
 export interface GetNetworksResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly orgId: string;
     readonly orgNetworks: outputs.org.GetNetworksOrgNetwork[];
 }

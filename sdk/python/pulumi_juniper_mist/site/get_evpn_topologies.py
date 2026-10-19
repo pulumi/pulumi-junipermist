@@ -27,24 +27,13 @@ class GetEvpnTopologiesResult:
     """
     A collection of values returned by getEvpnTopologies.
     """
-    def __init__(__self__, id=None, site_evpn_topologies=None, site_id=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, site_evpn_topologies=None, site_id=None):
         if site_evpn_topologies and not isinstance(site_evpn_topologies, list):
             raise TypeError("Expected argument 'site_evpn_topologies' to be a list")
         pulumi.set(__self__, "site_evpn_topologies", site_evpn_topologies)
         if site_id and not isinstance(site_id, str):
             raise TypeError("Expected argument 'site_id' to be a str")
         pulumi.set(__self__, "site_id", site_id)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="siteEvpnTopologies")
@@ -63,7 +52,6 @@ class AwaitableGetEvpnTopologiesResult(GetEvpnTopologiesResult):
         if False:
             yield self
         return GetEvpnTopologiesResult(
-            id=self.id,
             site_evpn_topologies=self.site_evpn_topologies,
             site_id=self.site_id)
 
@@ -90,7 +78,6 @@ def get_evpn_topologies(site_id: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('junipermist:site/getEvpnTopologies:getEvpnTopologies', __args__, opts=opts, typ=GetEvpnTopologiesResult).value
 
     return AwaitableGetEvpnTopologiesResult(
-        id=pulumi.get(__ret__, 'id'),
         site_evpn_topologies=pulumi.get(__ret__, 'site_evpn_topologies'),
         site_id=pulumi.get(__ret__, 'site_id'))
 def get_evpn_topologies_output(site_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -114,6 +101,5 @@ def get_evpn_topologies_output(site_id: pulumi.Input[Optional[_builtins.str]] = 
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:site/getEvpnTopologies:getEvpnTopologies', __args__, opts=opts, typ=GetEvpnTopologiesResult)
     return __ret__.apply(lambda __response__: GetEvpnTopologiesResult(
-        id=pulumi.get(__response__, 'id'),
         site_evpn_topologies=pulumi.get(__response__, 'site_evpn_topologies'),
         site_id=pulumi.get(__response__, 'site_id')))

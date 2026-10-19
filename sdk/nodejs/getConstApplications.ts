@@ -34,10 +34,6 @@ export function getConstApplications(opts?: pulumi.InvokeOptions): Promise<GetCo
  */
 export interface GetConstApplicationsResult {
     readonly constApplications: outputs.GetConstApplicationsConstApplication[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }
 /**
  * This data source provides the of ConstApplications.

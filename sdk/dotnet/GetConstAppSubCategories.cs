@@ -89,19 +89,11 @@ namespace Pulumi.JuniperMist
     public sealed class GetConstAppSubCategoriesResult
     {
         public readonly ImmutableArray<Outputs.GetConstAppSubCategoriesConstAppSubCategoryResult> ConstAppSubCategories;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
-        private GetConstAppSubCategoriesResult(
-            ImmutableArray<Outputs.GetConstAppSubCategoriesConstAppSubCategoryResult> constAppSubCategories,
-
-            string id)
+        private GetConstAppSubCategoriesResult(ImmutableArray<Outputs.GetConstAppSubCategoriesConstAppSubCategoryResult> constAppSubCategories)
         {
             ConstAppSubCategories = constAppSubCategories;
-            Id = id;
         }
     }
 }

@@ -12,11 +12,6 @@ import java.util.Objects;
 @CustomType
 public final class GetConstFingerprintsResult {
     private List<String> families;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private List<String> mfgs;
     private List<String> models;
     private List<String> os;
@@ -24,13 +19,6 @@ public final class GetConstFingerprintsResult {
     private GetConstFingerprintsResult() {}
     public List<String> families() {
         return this.families;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     public List<String> mfgs() {
         return this.mfgs;
@@ -52,7 +40,6 @@ public final class GetConstFingerprintsResult {
     @CustomType.Builder
     public static final class Builder {
         private List<String> families;
-        private String id;
         private List<String> mfgs;
         private List<String> models;
         private List<String> os;
@@ -60,7 +47,6 @@ public final class GetConstFingerprintsResult {
         public Builder(GetConstFingerprintsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.families = defaults.families;
-    	      this.id = defaults.id;
     	      this.mfgs = defaults.mfgs;
     	      this.models = defaults.models;
     	      this.os = defaults.os;
@@ -76,14 +62,6 @@ public final class GetConstFingerprintsResult {
         }
         public Builder families(String... families) {
             return families(List.of(families));
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetConstFingerprintsResult", "id");
-            }
-            this.id = id;
-            return this;
         }
         @CustomType.Setter
         public Builder mfgs(List<String> mfgs) {
@@ -121,7 +99,6 @@ public final class GetConstFingerprintsResult {
         public GetConstFingerprintsResult build() {
             final var _resultValue = new GetConstFingerprintsResult();
             _resultValue.families = families;
-            _resultValue.id = id;
             _resultValue.mfgs = mfgs;
             _resultValue.models = models;
             _resultValue.os = os;

@@ -6,29 +6,16 @@ package com.pulumi.junipermist.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.outputs.GetConstCountriesConstCountry;
-import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetConstCountriesResult {
     private List<GetConstCountriesConstCountry> constCountries;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
 
     private GetConstCountriesResult() {}
     public List<GetConstCountriesConstCountry> constCountries() {
         return this.constCountries;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
 
     public static Builder builder() {
@@ -41,12 +28,10 @@ public final class GetConstCountriesResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetConstCountriesConstCountry> constCountries;
-        private String id;
         public Builder() {}
         public Builder(GetConstCountriesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.constCountries = defaults.constCountries;
-    	      this.id = defaults.id;
         }
 
         @CustomType.Setter
@@ -60,18 +45,9 @@ public final class GetConstCountriesResult {
         public Builder constCountries(GetConstCountriesConstCountry... constCountries) {
             return constCountries(List.of(constCountries));
         }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetConstCountriesResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         public GetConstCountriesResult build() {
             final var _resultValue = new GetConstCountriesResult();
             _resultValue.constCountries = constCountries;
-            _resultValue.id = id;
             return _resultValue;
         }
     }

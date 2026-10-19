@@ -120,22 +120,15 @@ namespace Pulumi.JuniperMist.Org
     [OutputType]
     public sealed class GetNetworksResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly string OrgId;
         public readonly ImmutableArray<Outputs.GetNetworksOrgNetworkResult> OrgNetworks;
 
         [OutputConstructor]
         private GetNetworksResult(
-            string id,
-
             string orgId,
 
             ImmutableArray<Outputs.GetNetworksOrgNetworkResult> orgNetworks)
         {
-            Id = id;
             OrgId = orgId;
             OrgNetworks = orgNetworks;
         }

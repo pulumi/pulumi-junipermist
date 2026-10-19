@@ -6694,7 +6694,7 @@ class DeviceprofileGatewayDhcpdConfigConfigArgsDict(TypedDict):
     """
     server_id_override: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
+    `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
     should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
     """
     servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
@@ -6748,7 +6748,7 @@ class DeviceprofileGatewayDhcpdConfigConfigArgs:
         :param pulumi.Input[_builtins.str] ip_start: If `type`==`local`, starting IPv4 address for the DHCP lease pool
         :param pulumi.Input[_builtins.int] lease_time: In seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayDhcpdConfigConfigOptionsArgs']]] options: If `type`==`local` or `type6`==`local`, custom DHCP options advertised to clients
-        :param pulumi.Input[_builtins.bool] server_id_override: `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
+        :param pulumi.Input[_builtins.bool] server_id_override: `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
                should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] servers: If `type`==`relay`, upstream IPv4 DHCP servers
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] serversv6s: If `type6`==`relay`, upstream IPv6 DHCP servers
@@ -6917,7 +6917,7 @@ class DeviceprofileGatewayDhcpdConfigConfigArgs:
     @pulumi.getter(name="serverIdOverride")
     def server_id_override(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
+        `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
         should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
         """
         return pulumi.get(self, "server_id_override")
@@ -9138,8 +9138,8 @@ class DeviceprofileGatewayPathPreferencesPathArgsDict(TypedDict):
     """
     name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Required when 
-      * `type`==`vpn`: the name of the VPN Path to use 
+    Required when
+      * `type`==`vpn`: the name of the VPN Path to use
       * `type`==`wan`: the name of the WAN interface to use
     """
     networks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
@@ -9173,8 +9173,8 @@ class DeviceprofileGatewayPathPreferencesPathArgs:
         :param pulumi.Input[_builtins.bool] disabled: For SSR Only. `true`, if this specific path is undesired
         :param pulumi.Input[_builtins.str] gateway_ip: Only if `type`==`local`, if a different gateway is desired
         :param pulumi.Input[_builtins.bool] internet_access: Only if `type`==`vpn`, if this vpn path can be used for internet
-        :param pulumi.Input[_builtins.str] name: Required when 
-                 * `type`==`vpn`: the name of the VPN Path to use 
+        :param pulumi.Input[_builtins.str] name: Required when
+                 * `type`==`vpn`: the name of the VPN Path to use
                  * `type`==`wan`: the name of the WAN interface to use
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] networks: List of network names used when `type`==`local`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_ips: List of destination IP addresses to replace when `type`==`local`
@@ -9262,8 +9262,8 @@ class DeviceprofileGatewayPathPreferencesPathArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Required when 
-          * `type`==`vpn`: the name of the VPN Path to use 
+        Required when
+          * `type`==`vpn`: the name of the VPN Path to use
           * `type`==`wan`: the name of the WAN interface to use
         """
         return pulumi.get(self, "name")
@@ -14960,7 +14960,7 @@ class DeviceprofileSwitchAclTagsArgsDict(TypedDict):
       * `type`==`radius_group`
       * `type`==`aruba_user_role`
       * `type`==`static_gbp`
-    if from matching radius_group
+        if from matching radius_group
     """
     specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeviceprofileSwitchAclTagsSpecArgsDict']]]]]
     """
@@ -15002,7 +15002,7 @@ class DeviceprofileSwitchAclTagsArgs:
                  * `type`==`radius_group`
                  * `type`==`aruba_user_role`
                  * `type`==`static_gbp`
-               if from matching radius_group
+                   if from matching radius_group
         :param pulumi.Input[Sequence[pulumi.Input['DeviceprofileSwitchAclTagsSpecArgs']]] specs: Layer 4 protocol and destination-port constraints for this ACL tag
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] subnets: IP subnets matched by this ACL tag
         """
@@ -15112,7 +15112,7 @@ class DeviceprofileSwitchAclTagsArgs:
           * `type`==`radius_group`
           * `type`==`aruba_user_role`
           * `type`==`static_gbp`
-        if from matching radius_group
+            if from matching radius_group
         """
         return pulumi.get(self, "radius_group")
 
@@ -15395,7 +15395,7 @@ class DeviceprofileSwitchDhcpdConfigConfigArgsDict(TypedDict):
     """
     server_id_override: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
+    `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
     should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
     """
     servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
@@ -15449,7 +15449,7 @@ class DeviceprofileSwitchDhcpdConfigConfigArgs:
         :param pulumi.Input[_builtins.str] ip_start6: If `type6`==`server`, starting IPv6 address for the DHCP lease pool
         :param pulumi.Input[_builtins.int] lease_time: In seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileSwitchDhcpdConfigConfigOptionsArgs']]] options: If `type`==`server` or `type6`==`server`, custom DHCP options advertised to clients
-        :param pulumi.Input[_builtins.bool] server_id_override: `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
+        :param pulumi.Input[_builtins.bool] server_id_override: `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
                should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] servers: If `type`==`relay`, upstream IPv4 DHCP servers
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] servers6s: If `type6`==`relay`, upstream IPv6 DHCP servers
@@ -15614,7 +15614,7 @@ class DeviceprofileSwitchDhcpdConfigConfigArgs:
     @pulumi.getter(name="serverIdOverride")
     def server_id_override(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
+        `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
         should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
         """
         return pulumi.get(self, "server_id_override")
@@ -24569,7 +24569,7 @@ class EvpnTopologySwitchesArgsDict(TypedDict):
     """
     pod: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g. 
+    Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g.
       * for CLOS, to group dist / access switches into pods
       * for ERB/CRB, to group dist / esilag-access into pods
     """
@@ -24586,7 +24586,7 @@ class EvpnTopologySwitchesArgs:
                  pods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None):
         """
         :param pulumi.Input[_builtins.str] role: EVPN topology role for this switch. enum: `access`, `border`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`.
-        :param pulumi.Input[_builtins.int] pod: Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g. 
+        :param pulumi.Input[_builtins.int] pod: Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g.
                  * for CLOS, to group dist / access switches into pods
                  * for ERB/CRB, to group dist / esilag-access into pods
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] pods: List of pod numbers this switch participates in
@@ -24613,7 +24613,7 @@ class EvpnTopologySwitchesArgs:
     @pulumi.getter
     def pod(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g. 
+        Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g.
           * for CLOS, to group dist / access switches into pods
           * for ERB/CRB, to group dist / esilag-access into pods
         """
@@ -25330,7 +25330,7 @@ class GatewaytemplateDhcpdConfigConfigArgsDict(TypedDict):
     """
     server_id_override: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
+    `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
     should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
     """
     servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
@@ -25384,7 +25384,7 @@ class GatewaytemplateDhcpdConfigConfigArgs:
         :param pulumi.Input[_builtins.str] ip_start: If `type`==`local`, starting IPv4 address for the DHCP lease pool
         :param pulumi.Input[_builtins.int] lease_time: In seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateDhcpdConfigConfigOptionsArgs']]] options: If `type`==`local` or `type6`==`local`, custom DHCP options advertised to clients
-        :param pulumi.Input[_builtins.bool] server_id_override: `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
+        :param pulumi.Input[_builtins.bool] server_id_override: `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
                should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] servers: If `type`==`relay`, upstream IPv4 DHCP servers
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] serversv6s: If `type6`==`relay`, upstream IPv6 DHCP servers
@@ -25553,7 +25553,7 @@ class GatewaytemplateDhcpdConfigConfigArgs:
     @pulumi.getter(name="serverIdOverride")
     def server_id_override(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
+        `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
         should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
         """
         return pulumi.get(self, "server_id_override")
@@ -28663,8 +28663,8 @@ class GatewaytemplatePathPreferencesPathArgsDict(TypedDict):
     """
     name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Required when 
-      * `type`==`vpn`: the name of the VPN Path to use 
+    Required when
+      * `type`==`vpn`: the name of the VPN Path to use
       * `type`==`wan`: the name of the WAN interface to use
     """
     networks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
@@ -28698,8 +28698,8 @@ class GatewaytemplatePathPreferencesPathArgs:
         :param pulumi.Input[_builtins.bool] disabled: For SSR Only. `true`, if this specific path is undesired
         :param pulumi.Input[_builtins.str] gateway_ip: Only if `type`==`local`, if a different gateway is desired
         :param pulumi.Input[_builtins.bool] internet_access: Only if `type`==`vpn`, if this vpn path can be used for internet
-        :param pulumi.Input[_builtins.str] name: Required when 
-                 * `type`==`vpn`: the name of the VPN Path to use 
+        :param pulumi.Input[_builtins.str] name: Required when
+                 * `type`==`vpn`: the name of the VPN Path to use
                  * `type`==`wan`: the name of the WAN interface to use
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] networks: List of network names used when `type`==`local`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_ips: List of destination IP addresses to replace when `type`==`local`
@@ -28787,8 +28787,8 @@ class GatewaytemplatePathPreferencesPathArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Required when 
-          * `type`==`vpn`: the name of the VPN Path to use 
+        Required when
+          * `type`==`vpn`: the name of the VPN Path to use
           * `type`==`wan`: the name of the WAN interface to use
         """
         return pulumi.get(self, "name")
@@ -39328,7 +39328,7 @@ class NetworktemplateAclTagsArgsDict(TypedDict):
       * `type`==`radius_group`
       * `type`==`aruba_user_role`
       * `type`==`static_gbp`
-    if from matching radius_group
+        if from matching radius_group
     """
     specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateAclTagsSpecArgsDict']]]]]
     """
@@ -39370,7 +39370,7 @@ class NetworktemplateAclTagsArgs:
                  * `type`==`radius_group`
                  * `type`==`aruba_user_role`
                  * `type`==`static_gbp`
-               if from matching radius_group
+                   if from matching radius_group
         :param pulumi.Input[Sequence[pulumi.Input['NetworktemplateAclTagsSpecArgs']]] specs: Layer 4 protocol and destination-port constraints for this ACL tag
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] subnets: IP subnets matched by this ACL tag
         """
@@ -39480,7 +39480,7 @@ class NetworktemplateAclTagsArgs:
           * `type`==`radius_group`
           * `type`==`aruba_user_role`
           * `type`==`static_gbp`
-        if from matching radius_group
+            if from matching radius_group
         """
         return pulumi.get(self, "radius_group")
 
@@ -54475,7 +54475,7 @@ class WlanAirwatchArgs:
 class WlanAppLimitArgsDict(TypedDict):
     apps: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]]]
     """
-    Map from app key to bandwidth in kbps. 
+    Map from app key to bandwidth in kbps.
     Property key is the app key, defined in Get Application List
     """
     enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
@@ -54494,7 +54494,7 @@ class WlanAppLimitArgs:
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  wxtag_ids: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]] = None):
         """
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]] apps: Map from app key to bandwidth in kbps. 
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]] apps: Map from app key to bandwidth in kbps.
                Property key is the app key, defined in Get Application List
         :param pulumi.Input[_builtins.bool] enabled: Whether application bandwidth limits are enabled for this WLAN
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]] wxtag_ids: Map from wxtag_id of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtag_id`
@@ -54510,7 +54510,7 @@ class WlanAppLimitArgs:
     @pulumi.getter
     def apps(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]]:
         """
-        Map from app key to bandwidth in kbps. 
+        Map from app key to bandwidth in kbps.
         Property key is the app key, defined in Get Application List
         """
         return pulumi.get(self, "apps")
@@ -55258,7 +55258,7 @@ class WlanBonjourArgsDict(TypedDict):
     """
     services: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['WlanBonjourServicesArgsDict']]]]]
     """
-    What services are allowed. 
+    What services are allowed.
     Property key is the service name
     """
 
@@ -55271,7 +55271,7 @@ class WlanBonjourArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_vlan_ids: additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
         :param pulumi.Input[_builtins.bool] enabled: Whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
-        :param pulumi.Input[Mapping[str, pulumi.Input['WlanBonjourServicesArgs']]] services: What services are allowed. 
+        :param pulumi.Input[Mapping[str, pulumi.Input['WlanBonjourServicesArgs']]] services: What services are allowed.
                Property key is the service name
         """
         if additional_vlan_ids is not None:
@@ -55309,7 +55309,7 @@ class WlanBonjourArgs:
     @pulumi.getter
     def services(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['WlanBonjourServicesArgs']]]]:
         """
-        What services are allowed. 
+        What services are allowed.
         Property key is the service name
         """
         return pulumi.get(self, "services")
@@ -58042,9 +58042,9 @@ class WlanPortalTemplatePortalTemplateArgsDict(TypedDict):
     locales: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['WlanPortalTemplatePortalTemplateLocalesArgsDict']]]]]
     """
     Can be used to localize the portal based on the User Agent. Allowed property key values are:
-      `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`, 
-      `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`, 
-      `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`, 
+      `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`,
+      `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`,
+      `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`,
       `zh-Hans`, `zh-Hant`
     """
     logo: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -58273,7 +58273,7 @@ class WlanPortalTemplatePortalTemplateArgsDict(TypedDict):
     """
     sponsor_email_template: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    HTML template to replace/override default sponsor email template 
+    HTML template to replace/override default sponsor email template
     Sponsor Email Template supports following template variables:
       * `approve_url`: Renders URL to approve the request; optionally &minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
       * `deny_url`: Renders URL to reject the request
@@ -58538,9 +58538,9 @@ class WlanPortalTemplatePortalTemplateArgs:
         :param pulumi.Input[_builtins.str] field4label: Label for custom field 4 input
         :param pulumi.Input[_builtins.bool] field4required: Whether custom field 4 must be provided when the field is shown
         :param pulumi.Input[Mapping[str, pulumi.Input['WlanPortalTemplatePortalTemplateLocalesArgs']]] locales: Can be used to localize the portal based on the User Agent. Allowed property key values are:
-                 `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`, 
-                 `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`, 
-                 `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`, 
+                 `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`,
+                 `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`,
+                 `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`,
                  `zh-Hans`, `zh-Hant`
         :param pulumi.Input[_builtins.str] logo: path to the background image file. File must be a `png` image less than 100kB and image dimension must be less 500px x 200px (width x height).
         :param pulumi.Input[_builtins.str] marketing_policy_link: label of the link to go to /marketing_policy
@@ -58598,7 +58598,7 @@ class WlanPortalTemplatePortalTemplateArgs:
         :param pulumi.Input[_builtins.str] sponsor_cancel: Button label for canceling sponsor authentication
         :param pulumi.Input[_builtins.str] sponsor_email: Label for Sponsor Email
         :param pulumi.Input[_builtins.str] sponsor_email_error: Error message shown when the sponsor email address is invalid
-        :param pulumi.Input[_builtins.str] sponsor_email_template: HTML template to replace/override default sponsor email template 
+        :param pulumi.Input[_builtins.str] sponsor_email_template: HTML template to replace/override default sponsor email template
                Sponsor Email Template supports following template variables:
                  * `approve_url`: Renders URL to approve the request; optionally &minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
                  * `deny_url`: Renders URL to reject the request
@@ -59485,9 +59485,9 @@ class WlanPortalTemplatePortalTemplateArgs:
     def locales(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['WlanPortalTemplatePortalTemplateLocalesArgs']]]]:
         """
         Can be used to localize the portal based on the User Agent. Allowed property key values are:
-          `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`, 
-          `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`, 
-          `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`, 
+          `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`,
+          `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`,
+          `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`,
           `zh-Hans`, `zh-Hant`
         """
         return pulumi.get(self, "locales")
@@ -60172,7 +60172,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="sponsorEmailTemplate")
     def sponsor_email_template(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        HTML template to replace/override default sponsor email template 
+        HTML template to replace/override default sponsor email template
         Sponsor Email Template supports following template variables:
           * `approve_url`: Renders URL to approve the request; optionally &minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
           * `deny_url`: Renders URL to reject the request

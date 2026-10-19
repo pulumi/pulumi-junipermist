@@ -33,10 +33,6 @@ export function getConstWebhooks(opts?: pulumi.InvokeOptions): Promise<GetConstW
  */
 export interface GetConstWebhooksResult {
     readonly constWebhooks: outputs.GetConstWebhooksConstWebhook[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }
 /**
  * This data source provides the list of Webhook Topics.

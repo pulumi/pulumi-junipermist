@@ -27,13 +27,10 @@ class GetVersionsResult:
     """
     A collection of values returned by getVersions.
     """
-    def __init__(__self__, device_versions=None, id=None, model=None, org_id=None, type=None):
+    def __init__(__self__, device_versions=None, model=None, org_id=None, type=None):
         if device_versions and not isinstance(device_versions, list):
             raise TypeError("Expected argument 'device_versions' to be a list")
         pulumi.set(__self__, "device_versions", device_versions)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if model and not isinstance(model, str):
             raise TypeError("Expected argument 'model' to be a str")
         pulumi.set(__self__, "model", model)
@@ -48,14 +45,6 @@ class GetVersionsResult:
     @pulumi.getter(name="deviceVersions")
     def device_versions(self) -> Sequence['outputs.GetVersionsDeviceVersionResult']:
         return pulumi.get(self, "device_versions")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -86,7 +75,6 @@ class AwaitableGetVersionsResult(GetVersionsResult):
             yield self
         return GetVersionsResult(
             device_versions=self.device_versions,
-            id=self.id,
             model=self.model,
             org_id=self.org_id,
             type=self.type)
@@ -123,7 +111,6 @@ def get_versions(model: Optional[_builtins.str] = None,
 
     return AwaitableGetVersionsResult(
         device_versions=pulumi.get(__ret__, 'device_versions'),
-        id=pulumi.get(__ret__, 'id'),
         model=pulumi.get(__ret__, 'model'),
         org_id=pulumi.get(__ret__, 'org_id'),
         type=pulumi.get(__ret__, 'type'))
@@ -157,7 +144,6 @@ def get_versions_output(model: pulumi.Input[Optional[_builtins.str]] = None,
     __ret__ = pulumi.runtime.invoke_output('junipermist:device/getVersions:getVersions', __args__, opts=opts, typ=GetVersionsResult)
     return __ret__.apply(lambda __response__: GetVersionsResult(
         device_versions=pulumi.get(__response__, 'device_versions'),
-        id=pulumi.get(__response__, 'id'),
         model=pulumi.get(__response__, 'model'),
         org_id=pulumi.get(__response__, 'org_id'),
         type=pulumi.get(__response__, 'type')))

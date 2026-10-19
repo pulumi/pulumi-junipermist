@@ -97,10 +97,6 @@ export interface GetSwitchStatsResult {
      * EVPN Topology ID
      */
     readonly evpntopoId?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly mac?: string;
     readonly orgId: string;
     readonly siteId?: string;

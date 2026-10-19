@@ -48,10 +48,6 @@ export interface GetNactagsArgs {
  * A collection of values returned by getNactags.
  */
 export interface GetNactagsResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly match?: string;
     readonly name?: string;
     readonly orgId: string;

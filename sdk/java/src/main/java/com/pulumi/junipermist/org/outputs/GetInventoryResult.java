@@ -16,11 +16,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetInventoryResult {
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return MAC address
      * 
      */
@@ -64,13 +59,6 @@ public final class GetInventoryResult {
     private @Nullable String vcMac;
 
     private GetInventoryResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     /**
      * @return MAC address
      * 
@@ -143,7 +131,6 @@ public final class GetInventoryResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private @Nullable String mac;
         private @Nullable String model;
         private String orgId;
@@ -157,7 +144,6 @@ public final class GetInventoryResult {
         public Builder() {}
         public Builder(GetInventoryResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.mac = defaults.mac;
     	      this.model = defaults.model;
     	      this.orgId = defaults.orgId;
@@ -170,14 +156,6 @@ public final class GetInventoryResult {
     	      this.vcMac = defaults.vcMac;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetInventoryResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder mac(@Nullable String mac) {
 
@@ -247,7 +225,6 @@ public final class GetInventoryResult {
         }
         public GetInventoryResult build() {
             final var _resultValue = new GetInventoryResult();
-            _resultValue.id = id;
             _resultValue.mac = mac;
             _resultValue.model = model;
             _resultValue.orgId = orgId;

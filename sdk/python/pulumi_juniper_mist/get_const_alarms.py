@@ -27,26 +27,15 @@ class GetConstAlarmsResult:
     """
     A collection of values returned by getConstAlarms.
     """
-    def __init__(__self__, const_alarms=None, id=None):
+    def __init__(__self__, const_alarms=None):
         if const_alarms and not isinstance(const_alarms, list):
             raise TypeError("Expected argument 'const_alarms' to be a list")
         pulumi.set(__self__, "const_alarms", const_alarms)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
 
     @_builtins.property
     @pulumi.getter(name="constAlarms")
     def const_alarms(self) -> Sequence['outputs.GetConstAlarmsConstAlarmResult']:
         return pulumi.get(self, "const_alarms")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
 
 class AwaitableGetConstAlarmsResult(GetConstAlarmsResult):
@@ -55,8 +44,7 @@ class AwaitableGetConstAlarmsResult(GetConstAlarmsResult):
         if False:
             yield self
         return GetConstAlarmsResult(
-            const_alarms=self.const_alarms,
-            id=self.id)
+            const_alarms=self.const_alarms)
 
 
 def get_const_alarms(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConstAlarmsResult:
@@ -79,8 +67,7 @@ def get_const_alarms(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
     __ret__ = pulumi.runtime.invoke('junipermist:index/getConstAlarms:getConstAlarms', __args__, opts=opts, typ=GetConstAlarmsResult).value
 
     return AwaitableGetConstAlarmsResult(
-        const_alarms=pulumi.get(__ret__, 'const_alarms'),
-        id=pulumi.get(__ret__, 'id'))
+        const_alarms=pulumi.get(__ret__, 'const_alarms'))
 def get_const_alarms_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConstAlarmsResult]:
     """
     This data source provides the list of available Alarms.
@@ -100,5 +87,4 @@ def get_const_alarms_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.In
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:index/getConstAlarms:getConstAlarms', __args__, opts=opts, typ=GetConstAlarmsResult)
     return __ret__.apply(lambda __response__: GetConstAlarmsResult(
-        const_alarms=pulumi.get(__response__, 'const_alarms'),
-        id=pulumi.get(__response__, 'id')))
+        const_alarms=pulumi.get(__response__, 'const_alarms')))

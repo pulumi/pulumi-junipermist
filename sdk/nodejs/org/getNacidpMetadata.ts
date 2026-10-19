@@ -50,10 +50,6 @@ export interface GetNacidpMetadataResult {
      */
     readonly entityId: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * If `idpType`==`saml`
      */
     readonly logoutUrl: string;

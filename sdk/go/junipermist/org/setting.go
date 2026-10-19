@@ -33,7 +33,7 @@ import (
 //			_, err := org.NewSetting(ctx, "terraform_test", &org.SettingArgs{
 //				OrgId:             pulumi.Any(terraformTestMistOrg.Id),
 //				ApUpdownThreshold: pulumi.Int(10),
-//				Cradlepoint: map[string]interface{}{
+//				Cradlepoint: map[string]string{
 //					"cpApiId":   "cp_api_id_test",
 //					"cpApiKey":  "secret",
 //					"ecmApiId":  "ecm_api_id_test",

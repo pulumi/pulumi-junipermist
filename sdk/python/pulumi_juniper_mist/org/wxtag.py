@@ -333,7 +333,7 @@ class Wxtag(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  op: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 specs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WxtagSpecArgs', 'WxtagSpecArgsDict']]]]] = None,
+                 specs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WxtagSpecArgs', 'WxtagSpecArgsDict', 'outputs.WxtagSpec']]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  vlan_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -385,7 +385,7 @@ class Wxtag(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Display name of the WxLAN tag
         :param pulumi.Input[_builtins.str] op: Required if `type`==`match`; whether `values` are inclusive or exclusive matches. enum: `in`, `not_in`.
         :param pulumi.Input[_builtins.str] org_id: Owning organization associated with this WxLAN tag
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WxtagSpecArgs', 'WxtagSpecArgsDict']]]] specs: Traffic match specifications used when `type`==`spec`
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WxtagSpecArgs', 'WxtagSpecArgsDict', 'outputs.WxtagSpec']]]] specs: Traffic match specifications used when `type`==`spec`
         :param pulumi.Input[_builtins.str] type: Kind of WxLAN tag and how it is populated. enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] values: Comparison values for the selected `match` attribute when `type`==`match`
         :param pulumi.Input[_builtins.str] vlan_id: Identifier of the VLAN associated with this WxLAN tag when `type`==`vlan`
@@ -456,7 +456,7 @@ class Wxtag(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  op: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 specs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WxtagSpecArgs', 'WxtagSpecArgsDict']]]]] = None,
+                 specs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WxtagSpecArgs', 'WxtagSpecArgsDict', 'outputs.WxtagSpec']]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  vlan_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -497,7 +497,7 @@ class Wxtag(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             op: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
-            specs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WxtagSpecArgs', 'WxtagSpecArgsDict']]]]] = None,
+            specs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WxtagSpecArgs', 'WxtagSpecArgsDict', 'outputs.WxtagSpec']]]]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             vlan_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Wxtag':
@@ -513,7 +513,7 @@ class Wxtag(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Display name of the WxLAN tag
         :param pulumi.Input[_builtins.str] op: Required if `type`==`match`; whether `values` are inclusive or exclusive matches. enum: `in`, `not_in`.
         :param pulumi.Input[_builtins.str] org_id: Owning organization associated with this WxLAN tag
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WxtagSpecArgs', 'WxtagSpecArgsDict']]]] specs: Traffic match specifications used when `type`==`spec`
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WxtagSpecArgs', 'WxtagSpecArgsDict', 'outputs.WxtagSpec']]]] specs: Traffic match specifications used when `type`==`spec`
         :param pulumi.Input[_builtins.str] type: Kind of WxLAN tag and how it is populated. enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] values: Comparison values for the selected `match` attribute when `type`==`match`
         :param pulumi.Input[_builtins.str] vlan_id: Identifier of the VLAN associated with this WxLAN tag when `type`==`vlan`

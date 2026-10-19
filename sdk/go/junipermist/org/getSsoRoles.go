@@ -59,19 +59,13 @@ type GetSsoRolesArgs struct {
 
 // A collection of values returned by getSsoRoles.
 type GetSsoRolesResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id          string                  `pulumi:"id"`
 	OrgId       string                  `pulumi:"orgId"`
 	OrgSsoRoles []GetSsoRolesOrgSsoRole `pulumi:"orgSsoRoles"`
 }
 
 func GetSsoRolesOutput(ctx *pulumi.Context, args GetSsoRolesOutputArgs, opts ...pulumi.InvokeOption) GetSsoRolesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSsoRolesResultOutput, error) {
-			args := v.(GetSsoRolesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("junipermist:org/getSsoRoles:getSsoRoles", args, GetSsoRolesResultOutput{}, options).(GetSsoRolesResultOutput), nil
-		}).(GetSsoRolesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("junipermist:org/getSsoRoles:getSsoRoles", args, GetSsoRolesResultOutput{}, options).(GetSsoRolesResultOutput)
 }
 
 // A collection of arguments for invoking getSsoRoles.
@@ -96,11 +90,6 @@ func (o GetSsoRolesResultOutput) ToGetSsoRolesResultOutput() GetSsoRolesResultOu
 
 func (o GetSsoRolesResultOutput) ToGetSsoRolesResultOutputWithContext(ctx context.Context) GetSsoRolesResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetSsoRolesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSsoRolesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetSsoRolesResultOutput) OrgId() pulumi.StringOutput {

@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var evpnOne = new EvpnTopology("evpnOne", EvpnTopologyArgs.builder()
- *             .orgId(terraformTest.id())
+ *             .orgId(terraformTest.get("id"))
  *             .name("evpn_one")
  *             .evpnOptions(EvpnTopologyEvpnOptionsArgs.builder()
  *                 .routedAt("core")

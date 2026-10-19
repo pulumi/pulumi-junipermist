@@ -31,10 +31,6 @@ export function getConstCountries(opts?: pulumi.InvokeOptions): Promise<GetConst
  */
 export interface GetConstCountriesResult {
     readonly constCountries: outputs.GetConstCountriesConstCountry[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }
 /**
  * This data source provides the of ConstCountries.

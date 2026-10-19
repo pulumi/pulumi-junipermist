@@ -51,15 +51,11 @@ func GetConstCountries(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetCo
 // A collection of values returned by getConstCountries.
 type GetConstCountriesResult struct {
 	ConstCountries []GetConstCountriesConstCountry `pulumi:"constCountries"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 }
 
 func GetConstCountriesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetConstCountriesResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetConstCountriesResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("junipermist:index/getConstCountries:getConstCountries", nil, GetConstCountriesResultOutput{}, options).(GetConstCountriesResultOutput), nil
-	}).(GetConstCountriesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("junipermist:index/getConstCountries:getConstCountries", nil, GetConstCountriesResultOutput{}, options).(GetConstCountriesResultOutput)
 }
 
 // A collection of values returned by getConstCountries.
@@ -79,11 +75,6 @@ func (o GetConstCountriesResultOutput) ToGetConstCountriesResultOutputWithContex
 
 func (o GetConstCountriesResultOutput) ConstCountries() GetConstCountriesConstCountryArrayOutput {
 	return o.ApplyT(func(v GetConstCountriesResult) []GetConstCountriesConstCountry { return v.ConstCountries }).(GetConstCountriesConstCountryArrayOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetConstCountriesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConstCountriesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func init() {

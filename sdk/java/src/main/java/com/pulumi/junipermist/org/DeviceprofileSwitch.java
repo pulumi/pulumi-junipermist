@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var deviceprofileSwitchOne = new DeviceprofileSwitch("deviceprofileSwitchOne", DeviceprofileSwitchArgs.builder()
  *             .name("deviceprofile_switch_one")
- *             .orgId(terraformTest.id())
+ *             .orgId(terraformTest.get("id"))
  *             .build());
  * 
  *     }

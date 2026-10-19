@@ -27,24 +27,13 @@ class GetServicesResult:
     """
     A collection of values returned by getServices.
     """
-    def __init__(__self__, id=None, org_id=None, org_services=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, org_id=None, org_services=None):
         if org_id and not isinstance(org_id, str):
             raise TypeError("Expected argument 'org_id' to be a str")
         pulumi.set(__self__, "org_id", org_id)
         if org_services and not isinstance(org_services, list):
             raise TypeError("Expected argument 'org_services' to be a list")
         pulumi.set(__self__, "org_services", org_services)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="orgId")
@@ -63,7 +52,6 @@ class AwaitableGetServicesResult(GetServicesResult):
         if False:
             yield self
         return GetServicesResult(
-            id=self.id,
             org_id=self.org_id,
             org_services=self.org_services)
 
@@ -94,7 +82,6 @@ def get_services(org_id: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('junipermist:org/getServices:getServices', __args__, opts=opts, typ=GetServicesResult).value
 
     return AwaitableGetServicesResult(
-        id=pulumi.get(__ret__, 'id'),
         org_id=pulumi.get(__ret__, 'org_id'),
         org_services=pulumi.get(__ret__, 'org_services'))
 def get_services_output(org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -122,6 +109,5 @@ def get_services_output(org_id: pulumi.Input[Optional[_builtins.str]] = None,
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:org/getServices:getServices', __args__, opts=opts, typ=GetServicesResult)
     return __ret__.apply(lambda __response__: GetServicesResult(
-        id=pulumi.get(__response__, 'id'),
         org_id=pulumi.get(__response__, 'org_id'),
         org_services=pulumi.get(__response__, 'org_services')))

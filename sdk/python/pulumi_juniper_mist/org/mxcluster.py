@@ -601,23 +601,23 @@ class Mxcluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 mist_das: pulumi.Input[Optional[Union['MxclusterMistDasArgs', 'MxclusterMistDasArgsDict']]] = None,
-                 mist_nac: pulumi.Input[Optional[Union['MxclusterMistNacArgs', 'MxclusterMistNacArgsDict']]] = None,
-                 mist_nacedge: pulumi.Input[Optional[Union['MxclusterMistNacedgeArgs', 'MxclusterMistNacedgeArgsDict']]] = None,
-                 mxedge_mgmt: pulumi.Input[Optional[Union['MxclusterMxedgeMgmtArgs', 'MxclusterMxedgeMgmtArgsDict']]] = None,
+                 mist_das: pulumi.Input[Optional[Union['MxclusterMistDasArgs', 'MxclusterMistDasArgsDict', 'outputs.MxclusterMistDas']]] = None,
+                 mist_nac: pulumi.Input[Optional[Union['MxclusterMistNacArgs', 'MxclusterMistNacArgsDict', 'outputs.MxclusterMistNac']]] = None,
+                 mist_nacedge: pulumi.Input[Optional[Union['MxclusterMistNacedgeArgs', 'MxclusterMistNacedgeArgsDict', 'outputs.MxclusterMistNacedge']]] = None,
+                 mxedge_mgmt: pulumi.Input[Optional[Union['MxclusterMxedgeMgmtArgs', 'MxclusterMxedgeMgmtArgsDict', 'outputs.MxclusterMxedgeMgmt']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 proxy: pulumi.Input[Optional[Union['MxclusterProxyArgs', 'MxclusterProxyArgsDict']]] = None,
-                 radsec: pulumi.Input[Optional[Union['MxclusterRadsecArgs', 'MxclusterRadsecArgsDict']]] = None,
+                 proxy: pulumi.Input[Optional[Union['MxclusterProxyArgs', 'MxclusterProxyArgsDict', 'outputs.MxclusterProxy']]] = None,
+                 radsec: pulumi.Input[Optional[Union['MxclusterRadsecArgs', 'MxclusterRadsecArgsDict', 'outputs.MxclusterRadsec']]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tunterm_ap_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tunterm_dhcpd_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxclusterTuntermDhcpdConfigArgs', 'MxclusterTuntermDhcpdConfigArgsDict']]]]] = None,
-                 tunterm_extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxclusterTuntermExtraRoutesArgs', 'MxclusterTuntermExtraRoutesArgsDict']]]]] = None,
+                 tunterm_dhcpd_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxclusterTuntermDhcpdConfigArgs', 'MxclusterTuntermDhcpdConfigArgsDict', 'outputs.MxclusterTuntermDhcpdConfig']]]]] = None,
+                 tunterm_extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxclusterTuntermExtraRoutesArgs', 'MxclusterTuntermExtraRoutesArgsDict', 'outputs.MxclusterTuntermExtraRoutes']]]]] = None,
                  tunterm_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tunterm_hosts_orders: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  tunterm_hosts_selection: pulumi.Input[Optional[_builtins.str]] = None,
                  tunterm_monitoring_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 tunterm_monitorings: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['MxclusterTuntermMonitoringArgs', 'MxclusterTuntermMonitoringArgsDict']]]]]]] = None,
+                 tunterm_monitorings: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['MxclusterTuntermMonitoringArgs', 'MxclusterTuntermMonitoringArgsDict', 'outputs.MxclusterTuntermMonitoring']]]]]]] = None,
                  __props__=None):
         """
         This resource manages MxCluster (cluster of MxEdge devices) in the Mist Organization.
@@ -636,23 +636,23 @@ class Mxcluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['MxclusterMistDasArgs', 'MxclusterMistDasArgsDict']] mist_das: Dynamic authorization service settings for the cluster
-        :param pulumi.Input[Union['MxclusterMistNacArgs', 'MxclusterMistNacArgsDict']] mist_nac: NAC settings for the Mist Edge cluster
-        :param pulumi.Input[Union['MxclusterMistNacedgeArgs', 'MxclusterMistNacedgeArgsDict']] mist_nacedge: NAC Edge survivability settings for the cluster; requires `mist_nac` to be enabled
-        :param pulumi.Input[Union['MxclusterMxedgeMgmtArgs', 'MxclusterMxedgeMgmtArgsDict']] mxedge_mgmt: Out-of-band management settings for Mist Edges in the cluster
+        :param pulumi.Input[Union['MxclusterMistDasArgs', 'MxclusterMistDasArgsDict', 'outputs.MxclusterMistDas']] mist_das: Dynamic authorization service settings for the cluster
+        :param pulumi.Input[Union['MxclusterMistNacArgs', 'MxclusterMistNacArgsDict', 'outputs.MxclusterMistNac']] mist_nac: NAC settings for the Mist Edge cluster
+        :param pulumi.Input[Union['MxclusterMistNacedgeArgs', 'MxclusterMistNacedgeArgsDict', 'outputs.MxclusterMistNacedge']] mist_nacedge: NAC Edge survivability settings for the cluster; requires `mist_nac` to be enabled
+        :param pulumi.Input[Union['MxclusterMxedgeMgmtArgs', 'MxclusterMxedgeMgmtArgsDict', 'outputs.MxclusterMxedgeMgmt']] mxedge_mgmt: Out-of-band management settings for Mist Edges in the cluster
         :param pulumi.Input[_builtins.str] name: Display name of the Mist Edge cluster
         :param pulumi.Input[_builtins.str] org_id: Identifier of the org that owns the Mist Edge cluster
-        :param pulumi.Input[Union['MxclusterProxyArgs', 'MxclusterProxyArgsDict']] proxy: Network proxy settings used by Mist Edges in the cluster to communicate with the Mist Cloud
-        :param pulumi.Input[Union['MxclusterRadsecArgs', 'MxclusterRadsecArgsDict']] radsec: TLS RADIUS proxy settings for the Mist Edge cluster
+        :param pulumi.Input[Union['MxclusterProxyArgs', 'MxclusterProxyArgsDict', 'outputs.MxclusterProxy']] proxy: Network proxy settings used by Mist Edges in the cluster to communicate with the Mist Cloud
+        :param pulumi.Input[Union['MxclusterRadsecArgs', 'MxclusterRadsecArgsDict', 'outputs.MxclusterRadsec']] radsec: TLS RADIUS proxy settings for the Mist Edge cluster
         :param pulumi.Input[_builtins.str] site_id: Identifier of the site when the Mist Edge cluster is site-scoped
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tunterm_ap_subnets: AP source subnets allowed to establish Mist tunnels
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxclusterTuntermDhcpdConfigArgs', 'MxclusterTuntermDhcpdConfigArgsDict']]]] tunterm_dhcpd_config: DHCP relay or server settings for tunneled VLANs
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxclusterTuntermExtraRoutesArgs', 'MxclusterTuntermExtraRoutesArgsDict']]]] tunterm_extra_routes: Extra routes for Mist Tunnel VLAN traffic
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxclusterTuntermDhcpdConfigArgs', 'MxclusterTuntermDhcpdConfigArgsDict', 'outputs.MxclusterTuntermDhcpdConfig']]]] tunterm_dhcpd_config: DHCP relay or server settings for tunneled VLANs
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxclusterTuntermExtraRoutesArgs', 'MxclusterTuntermExtraRoutesArgsDict', 'outputs.MxclusterTuntermExtraRoutes']]]] tunterm_extra_routes: Extra routes for Mist Tunnel VLAN traffic
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tunterm_hosts: Hostnames or IP addresses used as Mist Tunnel peers
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] tunterm_hosts_orders: Explicit host ordering indexes used when ordered selection is configured
         :param pulumi.Input[_builtins.str] tunterm_hosts_selection: Selection strategy for ordering tunnel termination hosts. enum: `ordered`, `shuffle`, `shuffle-by-site`.
         :param pulumi.Input[_builtins.bool] tunterm_monitoring_disabled: Whether tunnel termination monitoring is disabled for the cluster
-        :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['MxclusterTuntermMonitoringArgs', 'MxclusterTuntermMonitoringArgsDict']]]]]] tunterm_monitorings: Monitoring checks for tunnel termination reachability. Only for Org Mist Edges; use `tunterm_monitoring` in the `site_setting` for site-scoped Mist Edges
+        :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['MxclusterTuntermMonitoringArgs', 'MxclusterTuntermMonitoringArgsDict', 'outputs.MxclusterTuntermMonitoring']]]]]] tunterm_monitorings: Monitoring checks for tunnel termination reachability. Only for Org Mist Edges; use `tunterm_monitoring` in the `site_setting` for site-scoped Mist Edges
         """
         ...
     @overload
@@ -690,23 +690,23 @@ class Mxcluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 mist_das: pulumi.Input[Optional[Union['MxclusterMistDasArgs', 'MxclusterMistDasArgsDict']]] = None,
-                 mist_nac: pulumi.Input[Optional[Union['MxclusterMistNacArgs', 'MxclusterMistNacArgsDict']]] = None,
-                 mist_nacedge: pulumi.Input[Optional[Union['MxclusterMistNacedgeArgs', 'MxclusterMistNacedgeArgsDict']]] = None,
-                 mxedge_mgmt: pulumi.Input[Optional[Union['MxclusterMxedgeMgmtArgs', 'MxclusterMxedgeMgmtArgsDict']]] = None,
+                 mist_das: pulumi.Input[Optional[Union['MxclusterMistDasArgs', 'MxclusterMistDasArgsDict', 'outputs.MxclusterMistDas']]] = None,
+                 mist_nac: pulumi.Input[Optional[Union['MxclusterMistNacArgs', 'MxclusterMistNacArgsDict', 'outputs.MxclusterMistNac']]] = None,
+                 mist_nacedge: pulumi.Input[Optional[Union['MxclusterMistNacedgeArgs', 'MxclusterMistNacedgeArgsDict', 'outputs.MxclusterMistNacedge']]] = None,
+                 mxedge_mgmt: pulumi.Input[Optional[Union['MxclusterMxedgeMgmtArgs', 'MxclusterMxedgeMgmtArgsDict', 'outputs.MxclusterMxedgeMgmt']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 proxy: pulumi.Input[Optional[Union['MxclusterProxyArgs', 'MxclusterProxyArgsDict']]] = None,
-                 radsec: pulumi.Input[Optional[Union['MxclusterRadsecArgs', 'MxclusterRadsecArgsDict']]] = None,
+                 proxy: pulumi.Input[Optional[Union['MxclusterProxyArgs', 'MxclusterProxyArgsDict', 'outputs.MxclusterProxy']]] = None,
+                 radsec: pulumi.Input[Optional[Union['MxclusterRadsecArgs', 'MxclusterRadsecArgsDict', 'outputs.MxclusterRadsec']]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tunterm_ap_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tunterm_dhcpd_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxclusterTuntermDhcpdConfigArgs', 'MxclusterTuntermDhcpdConfigArgsDict']]]]] = None,
-                 tunterm_extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxclusterTuntermExtraRoutesArgs', 'MxclusterTuntermExtraRoutesArgsDict']]]]] = None,
+                 tunterm_dhcpd_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxclusterTuntermDhcpdConfigArgs', 'MxclusterTuntermDhcpdConfigArgsDict', 'outputs.MxclusterTuntermDhcpdConfig']]]]] = None,
+                 tunterm_extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxclusterTuntermExtraRoutesArgs', 'MxclusterTuntermExtraRoutesArgsDict', 'outputs.MxclusterTuntermExtraRoutes']]]]] = None,
                  tunterm_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tunterm_hosts_orders: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  tunterm_hosts_selection: pulumi.Input[Optional[_builtins.str]] = None,
                  tunterm_monitoring_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 tunterm_monitorings: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['MxclusterTuntermMonitoringArgs', 'MxclusterTuntermMonitoringArgsDict']]]]]]] = None,
+                 tunterm_monitorings: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['MxclusterTuntermMonitoringArgs', 'MxclusterTuntermMonitoringArgsDict', 'outputs.MxclusterTuntermMonitoring']]]]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -746,24 +746,24 @@ class Mxcluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            mist_das: pulumi.Input[Optional[Union['MxclusterMistDasArgs', 'MxclusterMistDasArgsDict']]] = None,
-            mist_nac: pulumi.Input[Optional[Union['MxclusterMistNacArgs', 'MxclusterMistNacArgsDict']]] = None,
-            mist_nacedge: pulumi.Input[Optional[Union['MxclusterMistNacedgeArgs', 'MxclusterMistNacedgeArgsDict']]] = None,
-            mxedge_mgmt: pulumi.Input[Optional[Union['MxclusterMxedgeMgmtArgs', 'MxclusterMxedgeMgmtArgsDict']]] = None,
+            mist_das: pulumi.Input[Optional[Union['MxclusterMistDasArgs', 'MxclusterMistDasArgsDict', 'outputs.MxclusterMistDas']]] = None,
+            mist_nac: pulumi.Input[Optional[Union['MxclusterMistNacArgs', 'MxclusterMistNacArgsDict', 'outputs.MxclusterMistNac']]] = None,
+            mist_nacedge: pulumi.Input[Optional[Union['MxclusterMistNacedgeArgs', 'MxclusterMistNacedgeArgsDict', 'outputs.MxclusterMistNacedge']]] = None,
+            mxedge_mgmt: pulumi.Input[Optional[Union['MxclusterMxedgeMgmtArgs', 'MxclusterMxedgeMgmtArgsDict', 'outputs.MxclusterMxedgeMgmt']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
-            proxy: pulumi.Input[Optional[Union['MxclusterProxyArgs', 'MxclusterProxyArgsDict']]] = None,
-            radsec: pulumi.Input[Optional[Union['MxclusterRadsecArgs', 'MxclusterRadsecArgsDict']]] = None,
-            radsec_tls: pulumi.Input[Optional[Union['MxclusterRadsecTlsArgs', 'MxclusterRadsecTlsArgsDict']]] = None,
+            proxy: pulumi.Input[Optional[Union['MxclusterProxyArgs', 'MxclusterProxyArgsDict', 'outputs.MxclusterProxy']]] = None,
+            radsec: pulumi.Input[Optional[Union['MxclusterRadsecArgs', 'MxclusterRadsecArgsDict', 'outputs.MxclusterRadsec']]] = None,
+            radsec_tls: pulumi.Input[Optional[Union['MxclusterRadsecTlsArgs', 'MxclusterRadsecTlsArgsDict', 'outputs.MxclusterRadsecTls']]] = None,
             site_id: pulumi.Input[Optional[_builtins.str]] = None,
             tunterm_ap_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            tunterm_dhcpd_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxclusterTuntermDhcpdConfigArgs', 'MxclusterTuntermDhcpdConfigArgsDict']]]]] = None,
-            tunterm_extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxclusterTuntermExtraRoutesArgs', 'MxclusterTuntermExtraRoutesArgsDict']]]]] = None,
+            tunterm_dhcpd_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxclusterTuntermDhcpdConfigArgs', 'MxclusterTuntermDhcpdConfigArgsDict', 'outputs.MxclusterTuntermDhcpdConfig']]]]] = None,
+            tunterm_extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxclusterTuntermExtraRoutesArgs', 'MxclusterTuntermExtraRoutesArgsDict', 'outputs.MxclusterTuntermExtraRoutes']]]]] = None,
             tunterm_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             tunterm_hosts_orders: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
             tunterm_hosts_selection: pulumi.Input[Optional[_builtins.str]] = None,
             tunterm_monitoring_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
-            tunterm_monitorings: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['MxclusterTuntermMonitoringArgs', 'MxclusterTuntermMonitoringArgsDict']]]]]]] = None) -> 'Mxcluster':
+            tunterm_monitorings: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['MxclusterTuntermMonitoringArgs', 'MxclusterTuntermMonitoringArgsDict', 'outputs.MxclusterTuntermMonitoring']]]]]]] = None) -> 'Mxcluster':
         """
         Get an existing Mxcluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -771,24 +771,24 @@ class Mxcluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['MxclusterMistDasArgs', 'MxclusterMistDasArgsDict']] mist_das: Dynamic authorization service settings for the cluster
-        :param pulumi.Input[Union['MxclusterMistNacArgs', 'MxclusterMistNacArgsDict']] mist_nac: NAC settings for the Mist Edge cluster
-        :param pulumi.Input[Union['MxclusterMistNacedgeArgs', 'MxclusterMistNacedgeArgsDict']] mist_nacedge: NAC Edge survivability settings for the cluster; requires `mist_nac` to be enabled
-        :param pulumi.Input[Union['MxclusterMxedgeMgmtArgs', 'MxclusterMxedgeMgmtArgsDict']] mxedge_mgmt: Out-of-band management settings for Mist Edges in the cluster
+        :param pulumi.Input[Union['MxclusterMistDasArgs', 'MxclusterMistDasArgsDict', 'outputs.MxclusterMistDas']] mist_das: Dynamic authorization service settings for the cluster
+        :param pulumi.Input[Union['MxclusterMistNacArgs', 'MxclusterMistNacArgsDict', 'outputs.MxclusterMistNac']] mist_nac: NAC settings for the Mist Edge cluster
+        :param pulumi.Input[Union['MxclusterMistNacedgeArgs', 'MxclusterMistNacedgeArgsDict', 'outputs.MxclusterMistNacedge']] mist_nacedge: NAC Edge survivability settings for the cluster; requires `mist_nac` to be enabled
+        :param pulumi.Input[Union['MxclusterMxedgeMgmtArgs', 'MxclusterMxedgeMgmtArgsDict', 'outputs.MxclusterMxedgeMgmt']] mxedge_mgmt: Out-of-band management settings for Mist Edges in the cluster
         :param pulumi.Input[_builtins.str] name: Display name of the Mist Edge cluster
         :param pulumi.Input[_builtins.str] org_id: Identifier of the org that owns the Mist Edge cluster
-        :param pulumi.Input[Union['MxclusterProxyArgs', 'MxclusterProxyArgsDict']] proxy: Network proxy settings used by Mist Edges in the cluster to communicate with the Mist Cloud
-        :param pulumi.Input[Union['MxclusterRadsecArgs', 'MxclusterRadsecArgsDict']] radsec: TLS RADIUS proxy settings for the Mist Edge cluster
-        :param pulumi.Input[Union['MxclusterRadsecTlsArgs', 'MxclusterRadsecTlsArgsDict']] radsec_tls: TLS keypair settings for RadSec on the Mist Edge cluster
+        :param pulumi.Input[Union['MxclusterProxyArgs', 'MxclusterProxyArgsDict', 'outputs.MxclusterProxy']] proxy: Network proxy settings used by Mist Edges in the cluster to communicate with the Mist Cloud
+        :param pulumi.Input[Union['MxclusterRadsecArgs', 'MxclusterRadsecArgsDict', 'outputs.MxclusterRadsec']] radsec: TLS RADIUS proxy settings for the Mist Edge cluster
+        :param pulumi.Input[Union['MxclusterRadsecTlsArgs', 'MxclusterRadsecTlsArgsDict', 'outputs.MxclusterRadsecTls']] radsec_tls: TLS keypair settings for RadSec on the Mist Edge cluster
         :param pulumi.Input[_builtins.str] site_id: Identifier of the site when the Mist Edge cluster is site-scoped
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tunterm_ap_subnets: AP source subnets allowed to establish Mist tunnels
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxclusterTuntermDhcpdConfigArgs', 'MxclusterTuntermDhcpdConfigArgsDict']]]] tunterm_dhcpd_config: DHCP relay or server settings for tunneled VLANs
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxclusterTuntermExtraRoutesArgs', 'MxclusterTuntermExtraRoutesArgsDict']]]] tunterm_extra_routes: Extra routes for Mist Tunnel VLAN traffic
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxclusterTuntermDhcpdConfigArgs', 'MxclusterTuntermDhcpdConfigArgsDict', 'outputs.MxclusterTuntermDhcpdConfig']]]] tunterm_dhcpd_config: DHCP relay or server settings for tunneled VLANs
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxclusterTuntermExtraRoutesArgs', 'MxclusterTuntermExtraRoutesArgsDict', 'outputs.MxclusterTuntermExtraRoutes']]]] tunterm_extra_routes: Extra routes for Mist Tunnel VLAN traffic
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tunterm_hosts: Hostnames or IP addresses used as Mist Tunnel peers
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] tunterm_hosts_orders: Explicit host ordering indexes used when ordered selection is configured
         :param pulumi.Input[_builtins.str] tunterm_hosts_selection: Selection strategy for ordering tunnel termination hosts. enum: `ordered`, `shuffle`, `shuffle-by-site`.
         :param pulumi.Input[_builtins.bool] tunterm_monitoring_disabled: Whether tunnel termination monitoring is disabled for the cluster
-        :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['MxclusterTuntermMonitoringArgs', 'MxclusterTuntermMonitoringArgsDict']]]]]] tunterm_monitorings: Monitoring checks for tunnel termination reachability. Only for Org Mist Edges; use `tunterm_monitoring` in the `site_setting` for site-scoped Mist Edges
+        :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['MxclusterTuntermMonitoringArgs', 'MxclusterTuntermMonitoringArgsDict', 'outputs.MxclusterTuntermMonitoring']]]]]] tunterm_monitorings: Monitoring checks for tunnel termination reachability. Only for Org Mist Edges; use `tunterm_monitoring` in the `site_setting` for site-scoped Mist Edges
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

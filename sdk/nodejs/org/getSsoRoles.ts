@@ -42,10 +42,6 @@ export interface GetSsoRolesArgs {
  * A collection of values returned by getSsoRoles.
  */
 export interface GetSsoRolesResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly orgId: string;
     readonly orgSsoRoles: outputs.org.GetSsoRolesOrgSsoRole[];
 }

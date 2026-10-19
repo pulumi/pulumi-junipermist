@@ -57,19 +57,13 @@ type GetAlarmtemplatesArgs struct {
 
 // A collection of values returned by getAlarmtemplates.
 type GetAlarmtemplatesResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id                string                              `pulumi:"id"`
 	OrgAlarmtemplates []GetAlarmtemplatesOrgAlarmtemplate `pulumi:"orgAlarmtemplates"`
 	OrgId             string                              `pulumi:"orgId"`
 }
 
 func GetAlarmtemplatesOutput(ctx *pulumi.Context, args GetAlarmtemplatesOutputArgs, opts ...pulumi.InvokeOption) GetAlarmtemplatesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAlarmtemplatesResultOutput, error) {
-			args := v.(GetAlarmtemplatesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("junipermist:org/getAlarmtemplates:getAlarmtemplates", args, GetAlarmtemplatesResultOutput{}, options).(GetAlarmtemplatesResultOutput), nil
-		}).(GetAlarmtemplatesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("junipermist:org/getAlarmtemplates:getAlarmtemplates", args, GetAlarmtemplatesResultOutput{}, options).(GetAlarmtemplatesResultOutput)
 }
 
 // A collection of arguments for invoking getAlarmtemplates.
@@ -94,11 +88,6 @@ func (o GetAlarmtemplatesResultOutput) ToGetAlarmtemplatesResultOutput() GetAlar
 
 func (o GetAlarmtemplatesResultOutput) ToGetAlarmtemplatesResultOutputWithContext(ctx context.Context) GetAlarmtemplatesResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetAlarmtemplatesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAlarmtemplatesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetAlarmtemplatesResultOutput) OrgAlarmtemplates() GetAlarmtemplatesOrgAlarmtemplateArrayOutput {

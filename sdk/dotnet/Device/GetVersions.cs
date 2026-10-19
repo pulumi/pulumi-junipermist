@@ -146,10 +146,6 @@ namespace Pulumi.JuniperMist.Device
     {
         public readonly ImmutableArray<Outputs.GetVersionsDeviceVersionResult> DeviceVersions;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Fetch version for device model, use/combine with `Type` as needed (for switch and gateway devices)
         /// </summary>
         public readonly string Model;
@@ -163,8 +159,6 @@ namespace Pulumi.JuniperMist.Device
         private GetVersionsResult(
             ImmutableArray<Outputs.GetVersionsDeviceVersionResult> deviceVersions,
 
-            string id,
-
             string model,
 
             string orgId,
@@ -172,7 +166,6 @@ namespace Pulumi.JuniperMist.Device
             string type)
         {
             DeviceVersions = deviceVersions;
-            Id = id;
             Model = model;
             OrgId = orgId;
             Type = type;

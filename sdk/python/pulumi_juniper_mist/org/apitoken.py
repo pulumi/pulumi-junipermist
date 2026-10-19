@@ -202,7 +202,7 @@ class Apitoken(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 privileges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApitokenPrivilegeArgs', 'ApitokenPrivilegeArgsDict']]]]] = None,
+                 privileges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApitokenPrivilegeArgs', 'ApitokenPrivilegeArgsDict', 'outputs.ApitokenPrivilege']]]]] = None,
                  src_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -241,7 +241,7 @@ class Apitoken(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: Display name of the organization API token
         :param pulumi.Input[_builtins.str] org_id: Organization that owns this API token
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ApitokenPrivilegeArgs', 'ApitokenPrivilegeArgsDict']]]] privileges: Access scopes and roles granted to the organization API token
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApitokenPrivilegeArgs', 'ApitokenPrivilegeArgsDict', 'outputs.ApitokenPrivilege']]]] privileges: Access scopes and roles granted to the organization API token
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] src_ips: Allowed source IP addresses or CIDRs from which the token may be used
         """
         ...
@@ -299,7 +299,7 @@ class Apitoken(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 privileges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApitokenPrivilegeArgs', 'ApitokenPrivilegeArgsDict']]]]] = None,
+                 privileges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApitokenPrivilegeArgs', 'ApitokenPrivilegeArgsDict', 'outputs.ApitokenPrivilege']]]]] = None,
                  src_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -336,7 +336,7 @@ class Apitoken(pulumi.CustomResource):
             key: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
-            privileges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApitokenPrivilegeArgs', 'ApitokenPrivilegeArgsDict']]]]] = None,
+            privileges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApitokenPrivilegeArgs', 'ApitokenPrivilegeArgsDict', 'outputs.ApitokenPrivilege']]]]] = None,
             src_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Apitoken':
         """
         Get an existing Apitoken resource's state with the given name, id, and optional extra
@@ -349,7 +349,7 @@ class Apitoken(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] key: Token secret key. The full API Token is only returned when the API token is created and can only be partially retrieved afterward
         :param pulumi.Input[_builtins.str] name: Display name of the organization API token
         :param pulumi.Input[_builtins.str] org_id: Organization that owns this API token
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ApitokenPrivilegeArgs', 'ApitokenPrivilegeArgsDict']]]] privileges: Access scopes and roles granted to the organization API token
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApitokenPrivilegeArgs', 'ApitokenPrivilegeArgsDict', 'outputs.ApitokenPrivilege']]]] privileges: Access scopes and roles granted to the organization API token
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] src_ips: Allowed source IP addresses or CIDRs from which the token may be used
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

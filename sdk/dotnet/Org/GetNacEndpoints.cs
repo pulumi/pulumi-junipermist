@@ -172,10 +172,6 @@ namespace Pulumi.JuniperMist.Org
     public sealed class GetNacEndpointsResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Optional, array of strings of labels
         /// </summary>
         public readonly ImmutableArray<string> Labels;
@@ -188,8 +184,6 @@ namespace Pulumi.JuniperMist.Org
 
         [OutputConstructor]
         private GetNacEndpointsResult(
-            string id,
-
             ImmutableArray<string> labels,
 
             string? mac,
@@ -198,7 +192,6 @@ namespace Pulumi.JuniperMist.Org
 
             ImmutableArray<Outputs.GetNacEndpointsOrgUsermacResult> orgUsermacs)
         {
-            Id = id;
             Labels = labels;
             Mac = mac;
             OrgId = orgId;

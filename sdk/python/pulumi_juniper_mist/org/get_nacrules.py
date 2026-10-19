@@ -27,24 +27,13 @@ class GetNacrulesResult:
     """
     A collection of values returned by getNacrules.
     """
-    def __init__(__self__, id=None, org_id=None, org_nacrules=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, org_id=None, org_nacrules=None):
         if org_id and not isinstance(org_id, str):
             raise TypeError("Expected argument 'org_id' to be a str")
         pulumi.set(__self__, "org_id", org_id)
         if org_nacrules and not isinstance(org_nacrules, list):
             raise TypeError("Expected argument 'org_nacrules' to be a list")
         pulumi.set(__self__, "org_nacrules", org_nacrules)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="orgId")
@@ -63,7 +52,6 @@ class AwaitableGetNacrulesResult(GetNacrulesResult):
         if False:
             yield self
         return GetNacrulesResult(
-            id=self.id,
             org_id=self.org_id,
             org_nacrules=self.org_nacrules)
 
@@ -90,7 +78,6 @@ def get_nacrules(org_id: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('junipermist:org/getNacrules:getNacrules', __args__, opts=opts, typ=GetNacrulesResult).value
 
     return AwaitableGetNacrulesResult(
-        id=pulumi.get(__ret__, 'id'),
         org_id=pulumi.get(__ret__, 'org_id'),
         org_nacrules=pulumi.get(__ret__, 'org_nacrules'))
 def get_nacrules_output(org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -114,6 +101,5 @@ def get_nacrules_output(org_id: pulumi.Input[Optional[_builtins.str]] = None,
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:org/getNacrules:getNacrules', __args__, opts=opts, typ=GetNacrulesResult)
     return __ret__.apply(lambda __response__: GetNacrulesResult(
-        id=pulumi.get(__response__, 'id'),
         org_id=pulumi.get(__response__, 'org_id'),
         org_nacrules=pulumi.get(__response__, 'org_nacrules')))

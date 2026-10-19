@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *             .name("tag_one")
  *             .type("match")
  *             .match("client_mac")
- *             .orgId(terraformTest.id())
+ *             .orgId(terraformTest.get("id"))
  *             .values("5c5b35*")
  *             .build());
  * 

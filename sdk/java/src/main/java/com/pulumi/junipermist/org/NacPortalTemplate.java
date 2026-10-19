@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a NAC Portal first
  *         var guestPortal = new NacPortal("guestPortal", NacPortalArgs.builder()
- *             .orgId(terraformTest.id())
+ *             .orgId(terraformTest.get("id"))
  *             .name("Guest Portal")
  *             .type("guest_portal")
  *             .accessType("wireless")
@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  * 
  *         // Example 1: Basic NAC Portal Template with centered alignment
  *         var centeredTemplate = new NacPortalTemplate("centeredTemplate", NacPortalTemplateArgs.builder()
- *             .orgId(terraformTest.id())
+ *             .orgId(terraformTest.get("id"))
  *             .nacportalId(guestPortal.id())
  *             .alignment("center")
  *             .color("#1074bc")
@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  * 
  *         // Example 2: NAC Portal Template with logo and left alignment
  *         var logoTemplate = new NacPortalTemplate("logoTemplate", NacPortalTemplateArgs.builder()
- *             .orgId(terraformTest.id())
+ *             .orgId(terraformTest.get("id"))
  *             .nacportalId(guestPortal.id())
  *             .alignment("left")
  *             .color("#ff6600")

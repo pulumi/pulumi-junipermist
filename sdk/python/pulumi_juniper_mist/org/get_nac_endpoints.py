@@ -27,10 +27,7 @@ class GetNacEndpointsResult:
     """
     A collection of values returned by getNacEndpoints.
     """
-    def __init__(__self__, id=None, labels=None, mac=None, org_id=None, org_usermacs=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, labels=None, mac=None, org_id=None, org_usermacs=None):
         if labels and not isinstance(labels, list):
             raise TypeError("Expected argument 'labels' to be a list")
         pulumi.set(__self__, "labels", labels)
@@ -43,14 +40,6 @@ class GetNacEndpointsResult:
         if org_usermacs and not isinstance(org_usermacs, list):
             raise TypeError("Expected argument 'org_usermacs' to be a list")
         pulumi.set(__self__, "org_usermacs", org_usermacs)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -85,7 +74,6 @@ class AwaitableGetNacEndpointsResult(GetNacEndpointsResult):
         if False:
             yield self
         return GetNacEndpointsResult(
-            id=self.id,
             labels=self.labels,
             mac=self.mac,
             org_id=self.org_id,
@@ -124,7 +112,6 @@ def get_nac_endpoints(labels: Optional[Sequence[_builtins.str]] = None,
     __ret__ = pulumi.runtime.invoke('junipermist:org/getNacEndpoints:getNacEndpoints', __args__, opts=opts, typ=GetNacEndpointsResult).value
 
     return AwaitableGetNacEndpointsResult(
-        id=pulumi.get(__ret__, 'id'),
         labels=pulumi.get(__ret__, 'labels'),
         mac=pulumi.get(__ret__, 'mac'),
         org_id=pulumi.get(__ret__, 'org_id'),
@@ -160,7 +147,6 @@ def get_nac_endpoints_output(labels: pulumi.Input[Optional[Optional[Sequence[_bu
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:org/getNacEndpoints:getNacEndpoints', __args__, opts=opts, typ=GetNacEndpointsResult)
     return __ret__.apply(lambda __response__: GetNacEndpointsResult(
-        id=pulumi.get(__response__, 'id'),
         labels=pulumi.get(__response__, 'labels'),
         mac=pulumi.get(__response__, 'mac'),
         org_id=pulumi.get(__response__, 'org_id'),

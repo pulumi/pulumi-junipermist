@@ -41,8 +41,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var wlanOne = new WlanPortalImage("wlanOne", WlanPortalImageArgs.builder()
- *             .siteId(terraformTest.id())
- *             .wlanId(wlanOneMistOrg.id())
+ *             .siteId(terraformTest.get("id"))
+ *             .wlanId(wlanOneMistOrg.get("id"))
  *             .file("/Users/johndoe/Documents/image.jpg")
  *             .build());
  * 

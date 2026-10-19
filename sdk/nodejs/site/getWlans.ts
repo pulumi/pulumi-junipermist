@@ -40,10 +40,6 @@ export interface GetWlansArgs {
  * A collection of values returned by getWlans.
  */
 export interface GetWlansResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly siteId: string;
     readonly siteWlans: outputs.site.GetWlansSiteWlan[];
 }

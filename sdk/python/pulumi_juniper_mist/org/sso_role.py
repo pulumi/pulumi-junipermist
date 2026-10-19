@@ -138,7 +138,7 @@ class SsoRole(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 privileges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SsoRolePrivilegeArgs', 'SsoRolePrivilegeArgsDict']]]]] = None,
+                 privileges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SsoRolePrivilegeArgs', 'SsoRolePrivilegeArgsDict', 'outputs.SsoRolePrivilege']]]]] = None,
                  __props__=None):
         """
         This resource manages Org SSO Roles for Admin Authentication.
@@ -177,7 +177,7 @@ class SsoRole(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: Display name of the organization SSO role
         :param pulumi.Input[_builtins.str] org_id: Owning organization identifier for this SSO role
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SsoRolePrivilegeArgs', 'SsoRolePrivilegeArgsDict']]]] privileges: Access privileges granted by this organization SSO role
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SsoRolePrivilegeArgs', 'SsoRolePrivilegeArgsDict', 'outputs.SsoRolePrivilege']]]] privileges: Access privileges granted by this organization SSO role
         """
         ...
     @overload
@@ -235,7 +235,7 @@ class SsoRole(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 privileges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SsoRolePrivilegeArgs', 'SsoRolePrivilegeArgsDict']]]]] = None,
+                 privileges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SsoRolePrivilegeArgs', 'SsoRolePrivilegeArgsDict', 'outputs.SsoRolePrivilege']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -264,7 +264,7 @@ class SsoRole(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
-            privileges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SsoRolePrivilegeArgs', 'SsoRolePrivilegeArgsDict']]]]] = None) -> 'SsoRole':
+            privileges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SsoRolePrivilegeArgs', 'SsoRolePrivilegeArgsDict', 'outputs.SsoRolePrivilege']]]]] = None) -> 'SsoRole':
         """
         Get an existing SsoRole resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -274,7 +274,7 @@ class SsoRole(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: Display name of the organization SSO role
         :param pulumi.Input[_builtins.str] org_id: Owning organization identifier for this SSO role
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SsoRolePrivilegeArgs', 'SsoRolePrivilegeArgsDict']]]] privileges: Access privileges granted by this organization SSO role
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SsoRolePrivilegeArgs', 'SsoRolePrivilegeArgsDict', 'outputs.SsoRolePrivilege']]]] privileges: Access privileges granted by this organization SSO role
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

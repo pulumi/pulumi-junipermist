@@ -6,29 +6,16 @@ package com.pulumi.junipermist.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.outputs.GetConstTrafficTypesConstTrafficType;
-import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetConstTrafficTypesResult {
     private List<GetConstTrafficTypesConstTrafficType> constTrafficTypes;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
 
     private GetConstTrafficTypesResult() {}
     public List<GetConstTrafficTypesConstTrafficType> constTrafficTypes() {
         return this.constTrafficTypes;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
 
     public static Builder builder() {
@@ -41,12 +28,10 @@ public final class GetConstTrafficTypesResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetConstTrafficTypesConstTrafficType> constTrafficTypes;
-        private String id;
         public Builder() {}
         public Builder(GetConstTrafficTypesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.constTrafficTypes = defaults.constTrafficTypes;
-    	      this.id = defaults.id;
         }
 
         @CustomType.Setter
@@ -60,18 +45,9 @@ public final class GetConstTrafficTypesResult {
         public Builder constTrafficTypes(GetConstTrafficTypesConstTrafficType... constTrafficTypes) {
             return constTrafficTypes(List.of(constTrafficTypes));
         }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetConstTrafficTypesResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         public GetConstTrafficTypesResult build() {
             final var _resultValue = new GetConstTrafficTypesResult();
             _resultValue.constTrafficTypes = constTrafficTypes;
-            _resultValue.id = id;
             return _resultValue;
         }
     }

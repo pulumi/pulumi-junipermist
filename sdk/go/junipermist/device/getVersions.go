@@ -62,8 +62,6 @@ type GetVersionsArgs struct {
 // A collection of values returned by getVersions.
 type GetVersionsResult struct {
 	DeviceVersions []GetVersionsDeviceVersion `pulumi:"deviceVersions"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Fetch version for device model, use/combine with `type` as needed (for switch and gateway devices)
 	Model string `pulumi:"model"`
 	OrgId string `pulumi:"orgId"`
@@ -72,12 +70,8 @@ type GetVersionsResult struct {
 }
 
 func GetVersionsOutput(ctx *pulumi.Context, args GetVersionsOutputArgs, opts ...pulumi.InvokeOption) GetVersionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetVersionsResultOutput, error) {
-			args := v.(GetVersionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("junipermist:device/getVersions:getVersions", args, GetVersionsResultOutput{}, options).(GetVersionsResultOutput), nil
-		}).(GetVersionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("junipermist:device/getVersions:getVersions", args, GetVersionsResultOutput{}, options).(GetVersionsResultOutput)
 }
 
 // A collection of arguments for invoking getVersions.
@@ -110,11 +104,6 @@ func (o GetVersionsResultOutput) ToGetVersionsResultOutputWithContext(ctx contex
 
 func (o GetVersionsResultOutput) DeviceVersions() GetVersionsDeviceVersionArrayOutput {
 	return o.ApplyT(func(v GetVersionsResult) []GetVersionsDeviceVersion { return v.DeviceVersions }).(GetVersionsDeviceVersionArrayOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetVersionsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVersionsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Fetch version for device model, use/combine with `type` as needed (for switch and gateway devices)

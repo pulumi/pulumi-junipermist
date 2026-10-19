@@ -35,11 +35,6 @@ public final class GetSwitchStatsResult {
      * 
      */
     private @Nullable String evpntopoId;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable String mac;
     private String orgId;
     private @Nullable String siteId;
@@ -86,13 +81,6 @@ public final class GetSwitchStatsResult {
     public Optional<String> evpntopoId() {
         return Optional.ofNullable(this.evpntopoId);
     }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public Optional<String> mac() {
         return Optional.ofNullable(this.mac);
     }
@@ -131,7 +119,6 @@ public final class GetSwitchStatsResult {
         private @Nullable String end;
         private @Nullable String evpnUnused;
         private @Nullable String evpntopoId;
-        private String id;
         private @Nullable String mac;
         private String orgId;
         private @Nullable String siteId;
@@ -145,7 +132,6 @@ public final class GetSwitchStatsResult {
     	      this.end = defaults.end;
     	      this.evpnUnused = defaults.evpnUnused;
     	      this.evpntopoId = defaults.evpntopoId;
-    	      this.id = defaults.id;
     	      this.mac = defaults.mac;
     	      this.orgId = defaults.orgId;
     	      this.siteId = defaults.siteId;
@@ -189,14 +175,6 @@ public final class GetSwitchStatsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetSwitchStatsResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder mac(@Nullable String mac) {
 
             this.mac = mac;
@@ -235,7 +213,6 @@ public final class GetSwitchStatsResult {
             _resultValue.end = end;
             _resultValue.evpnUnused = evpnUnused;
             _resultValue.evpntopoId = evpntopoId;
-            _resultValue.id = id;
             _resultValue.mac = mac;
             _resultValue.orgId = orgId;
             _resultValue.siteId = siteId;

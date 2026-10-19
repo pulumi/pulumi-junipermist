@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var serviceOne = new Service("serviceOne", ServiceArgs.builder()
- *             .orgId(terraformTest.id())
+ *             .orgId(terraformTest.get("id"))
  *             .name("service_one")
  *             .addresses(            
  *                 "10.3.0.0/24",

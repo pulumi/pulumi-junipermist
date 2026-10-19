@@ -25,11 +25,6 @@ public final class GetApStatsResult {
      * 
      */
     private @Nullable String end;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable String mac;
     private String orgId;
     private @Nullable String siteId;
@@ -61,13 +56,6 @@ public final class GetApStatsResult {
      */
     public Optional<String> end() {
         return Optional.ofNullable(this.end);
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     public Optional<String> mac() {
         return Optional.ofNullable(this.mac);
@@ -105,7 +93,6 @@ public final class GetApStatsResult {
         private List<GetApStatsDeviceApStat> deviceApStats;
         private @Nullable String duration;
         private @Nullable String end;
-        private String id;
         private @Nullable String mac;
         private String orgId;
         private @Nullable String siteId;
@@ -117,7 +104,6 @@ public final class GetApStatsResult {
     	      this.deviceApStats = defaults.deviceApStats;
     	      this.duration = defaults.duration;
     	      this.end = defaults.end;
-    	      this.id = defaults.id;
     	      this.mac = defaults.mac;
     	      this.orgId = defaults.orgId;
     	      this.siteId = defaults.siteId;
@@ -146,14 +132,6 @@ public final class GetApStatsResult {
         public Builder end(@Nullable String end) {
 
             this.end = end;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetApStatsResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -193,7 +171,6 @@ public final class GetApStatsResult {
             _resultValue.deviceApStats = deviceApStats;
             _resultValue.duration = duration;
             _resultValue.end = end;
-            _resultValue.id = id;
             _resultValue.mac = mac;
             _resultValue.orgId = orgId;
             _resultValue.siteId = siteId;

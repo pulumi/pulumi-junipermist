@@ -578,7 +578,7 @@ class Base(pulumi.CustomResource):
                  aptemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
                  country_code: pulumi.Input[Optional[_builtins.str]] = None,
                  gatewaytemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 latlng: pulumi.Input[Optional[Union['BaseLatlngArgs', 'BaseLatlngArgsDict']]] = None,
+                 latlng: pulumi.Input[Optional[Union['BaseLatlngArgs', 'BaseLatlngArgsDict', 'outputs.BaseLatlng']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  networktemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
                  notes: pulumi.Input[Optional[_builtins.str]] = None,
@@ -639,7 +639,7 @@ class Base(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] aptemplate_id: AP Template ID, used by APs
         :param pulumi.Input[_builtins.str] country_code: Country code for the site (for AP config generation), in two-character
         :param pulumi.Input[_builtins.str] gatewaytemplate_id: Gateway Template ID, used by gateways
-        :param pulumi.Input[Union['BaseLatlngArgs', 'BaseLatlngArgsDict']] latlng: Latitude and longitude for the site location
+        :param pulumi.Input[Union['BaseLatlngArgs', 'BaseLatlngArgsDict', 'outputs.BaseLatlng']] latlng: Latitude and longitude for the site location
         :param pulumi.Input[_builtins.str] name: Display name of the site
         :param pulumi.Input[_builtins.str] networktemplate_id: Network Template ID, this takes precedence over Site Settings
         :param pulumi.Input[_builtins.str] notes: Optional, any notes about the site
@@ -719,7 +719,7 @@ class Base(pulumi.CustomResource):
                  aptemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
                  country_code: pulumi.Input[Optional[_builtins.str]] = None,
                  gatewaytemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 latlng: pulumi.Input[Optional[Union['BaseLatlngArgs', 'BaseLatlngArgsDict']]] = None,
+                 latlng: pulumi.Input[Optional[Union['BaseLatlngArgs', 'BaseLatlngArgsDict', 'outputs.BaseLatlng']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  networktemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
                  notes: pulumi.Input[Optional[_builtins.str]] = None,
@@ -776,7 +776,7 @@ class Base(pulumi.CustomResource):
             aptemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
             country_code: pulumi.Input[Optional[_builtins.str]] = None,
             gatewaytemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
-            latlng: pulumi.Input[Optional[Union['BaseLatlngArgs', 'BaseLatlngArgsDict']]] = None,
+            latlng: pulumi.Input[Optional[Union['BaseLatlngArgs', 'BaseLatlngArgsDict', 'outputs.BaseLatlng']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             networktemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
             notes: pulumi.Input[Optional[_builtins.str]] = None,
@@ -800,7 +800,7 @@ class Base(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] aptemplate_id: AP Template ID, used by APs
         :param pulumi.Input[_builtins.str] country_code: Country code for the site (for AP config generation), in two-character
         :param pulumi.Input[_builtins.str] gatewaytemplate_id: Gateway Template ID, used by gateways
-        :param pulumi.Input[Union['BaseLatlngArgs', 'BaseLatlngArgsDict']] latlng: Latitude and longitude for the site location
+        :param pulumi.Input[Union['BaseLatlngArgs', 'BaseLatlngArgsDict', 'outputs.BaseLatlng']] latlng: Latitude and longitude for the site location
         :param pulumi.Input[_builtins.str] name: Display name of the site
         :param pulumi.Input[_builtins.str] networktemplate_id: Network Template ID, this takes precedence over Site Settings
         :param pulumi.Input[_builtins.str] notes: Optional, any notes about the site

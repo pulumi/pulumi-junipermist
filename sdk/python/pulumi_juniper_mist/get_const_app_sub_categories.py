@@ -27,26 +27,15 @@ class GetConstAppSubCategoriesResult:
     """
     A collection of values returned by getConstAppSubCategories.
     """
-    def __init__(__self__, const_app_sub_categories=None, id=None):
+    def __init__(__self__, const_app_sub_categories=None):
         if const_app_sub_categories and not isinstance(const_app_sub_categories, list):
             raise TypeError("Expected argument 'const_app_sub_categories' to be a list")
         pulumi.set(__self__, "const_app_sub_categories", const_app_sub_categories)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
 
     @_builtins.property
     @pulumi.getter(name="constAppSubCategories")
     def const_app_sub_categories(self) -> Sequence['outputs.GetConstAppSubCategoriesConstAppSubCategoryResult']:
         return pulumi.get(self, "const_app_sub_categories")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
 
 class AwaitableGetConstAppSubCategoriesResult(GetConstAppSubCategoriesResult):
@@ -55,8 +44,7 @@ class AwaitableGetConstAppSubCategoriesResult(GetConstAppSubCategoriesResult):
         if False:
             yield self
         return GetConstAppSubCategoriesResult(
-            const_app_sub_categories=self.const_app_sub_categories,
-            id=self.id)
+            const_app_sub_categories=self.const_app_sub_categories)
 
 
 def get_const_app_sub_categories(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConstAppSubCategoriesResult:
@@ -79,8 +67,7 @@ def get_const_app_sub_categories(opts: Optional[pulumi.InvokeOptions] = None) ->
     __ret__ = pulumi.runtime.invoke('junipermist:index/getConstAppSubCategories:getConstAppSubCategories', __args__, opts=opts, typ=GetConstAppSubCategoriesResult).value
 
     return AwaitableGetConstAppSubCategoriesResult(
-        const_app_sub_categories=pulumi.get(__ret__, 'const_app_sub_categories'),
-        id=pulumi.get(__ret__, 'id'))
+        const_app_sub_categories=pulumi.get(__ret__, 'const_app_sub_categories'))
 def get_const_app_sub_categories_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConstAppSubCategoriesResult]:
     """
     This data source provides the of ConstAppSubCategories.
@@ -100,5 +87,4 @@ def get_const_app_sub_categories_output(opts: Optional[Union[pulumi.InvokeOption
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:index/getConstAppSubCategories:getConstAppSubCategories', __args__, opts=opts, typ=GetConstAppSubCategoriesResult)
     return __ret__.apply(lambda __response__: GetConstAppSubCategoriesResult(
-        const_app_sub_categories=pulumi.get(__response__, 'const_app_sub_categories'),
-        id=pulumi.get(__response__, 'id')))
+        const_app_sub_categories=pulumi.get(__response__, 'const_app_sub_categories')))

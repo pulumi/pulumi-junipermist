@@ -12,22 +12,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServicesResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private String orgId;
     private List<GetServicesOrgService> orgServices;
 
     private GetServicesResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public String orgId() {
         return this.orgId;
     }
@@ -44,25 +32,15 @@ public final class GetServicesResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private String orgId;
         private List<GetServicesOrgService> orgServices;
         public Builder() {}
         public Builder(GetServicesResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.orgId = defaults.orgId;
     	      this.orgServices = defaults.orgServices;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetServicesResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder orgId(String orgId) {
             if (orgId == null) {
@@ -84,7 +62,6 @@ public final class GetServicesResult {
         }
         public GetServicesResult build() {
             final var _resultValue = new GetServicesResult();
-            _resultValue.id = id;
             _resultValue.orgId = orgId;
             _resultValue.orgServices = orgServices;
             return _resultValue;

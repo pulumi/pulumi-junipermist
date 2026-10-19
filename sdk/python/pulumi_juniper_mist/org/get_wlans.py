@@ -27,24 +27,13 @@ class GetWlansResult:
     """
     A collection of values returned by getWlans.
     """
-    def __init__(__self__, id=None, org_id=None, org_wlans=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, org_id=None, org_wlans=None):
         if org_id and not isinstance(org_id, str):
             raise TypeError("Expected argument 'org_id' to be a str")
         pulumi.set(__self__, "org_id", org_id)
         if org_wlans and not isinstance(org_wlans, list):
             raise TypeError("Expected argument 'org_wlans' to be a list")
         pulumi.set(__self__, "org_wlans", org_wlans)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="orgId")
@@ -63,7 +52,6 @@ class AwaitableGetWlansResult(GetWlansResult):
         if False:
             yield self
         return GetWlansResult(
-            id=self.id,
             org_id=self.org_id,
             org_wlans=self.org_wlans)
 
@@ -90,7 +78,6 @@ def get_wlans(org_id: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('junipermist:org/getWlans:getWlans', __args__, opts=opts, typ=GetWlansResult).value
 
     return AwaitableGetWlansResult(
-        id=pulumi.get(__ret__, 'id'),
         org_id=pulumi.get(__ret__, 'org_id'),
         org_wlans=pulumi.get(__ret__, 'org_wlans'))
 def get_wlans_output(org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -114,6 +101,5 @@ def get_wlans_output(org_id: pulumi.Input[Optional[_builtins.str]] = None,
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:org/getWlans:getWlans', __args__, opts=opts, typ=GetWlansResult)
     return __ret__.apply(lambda __response__: GetWlansResult(
-        id=pulumi.get(__response__, 'id'),
         org_id=pulumi.get(__response__, 'org_id'),
         org_wlans=pulumi.get(__response__, 'org_wlans')))

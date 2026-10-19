@@ -53,15 +53,11 @@ func GetConstWebhooks(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetCon
 // A collection of values returned by getConstWebhooks.
 type GetConstWebhooksResult struct {
 	ConstWebhooks []GetConstWebhooksConstWebhook `pulumi:"constWebhooks"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 }
 
 func GetConstWebhooksOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetConstWebhooksResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetConstWebhooksResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("junipermist:index/getConstWebhooks:getConstWebhooks", nil, GetConstWebhooksResultOutput{}, options).(GetConstWebhooksResultOutput), nil
-	}).(GetConstWebhooksResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("junipermist:index/getConstWebhooks:getConstWebhooks", nil, GetConstWebhooksResultOutput{}, options).(GetConstWebhooksResultOutput)
 }
 
 // A collection of values returned by getConstWebhooks.
@@ -81,11 +77,6 @@ func (o GetConstWebhooksResultOutput) ToGetConstWebhooksResultOutputWithContext(
 
 func (o GetConstWebhooksResultOutput) ConstWebhooks() GetConstWebhooksConstWebhookArrayOutput {
 	return o.ApplyT(func(v GetConstWebhooksResult) []GetConstWebhooksConstWebhook { return v.ConstWebhooks }).(GetConstWebhooksConstWebhookArrayOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetConstWebhooksResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConstWebhooksResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func init() {

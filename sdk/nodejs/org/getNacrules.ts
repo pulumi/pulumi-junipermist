@@ -40,10 +40,6 @@ export interface GetNacrulesArgs {
  * A collection of values returned by getNacrules.
  */
 export interface GetNacrulesResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly orgId: string;
     readonly orgNacrules: outputs.org.GetNacrulesOrgNacrule[];
 }

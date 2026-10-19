@@ -41,10 +41,6 @@ export interface GetDeviceprofilesApArgs {
  */
 export interface GetDeviceprofilesApResult {
     readonly deviceprofiles: outputs.org.GetDeviceprofilesApDeviceprofile[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly orgId: string;
 }
 /**

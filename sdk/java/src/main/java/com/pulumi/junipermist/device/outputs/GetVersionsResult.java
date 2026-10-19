@@ -14,11 +14,6 @@ import java.util.Objects;
 public final class GetVersionsResult {
     private List<GetVersionsDeviceVersion> deviceVersions;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Fetch version for device model, use/combine with `type` as needed (for switch and gateway devices)
      * 
      */
@@ -33,13 +28,6 @@ public final class GetVersionsResult {
     private GetVersionsResult() {}
     public List<GetVersionsDeviceVersion> deviceVersions() {
         return this.deviceVersions;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Fetch version for device model, use/combine with `type` as needed (for switch and gateway devices)
@@ -69,7 +57,6 @@ public final class GetVersionsResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetVersionsDeviceVersion> deviceVersions;
-        private String id;
         private String model;
         private String orgId;
         private String type;
@@ -77,7 +64,6 @@ public final class GetVersionsResult {
         public Builder(GetVersionsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.deviceVersions = defaults.deviceVersions;
-    	      this.id = defaults.id;
     	      this.model = defaults.model;
     	      this.orgId = defaults.orgId;
     	      this.type = defaults.type;
@@ -93,14 +79,6 @@ public final class GetVersionsResult {
         }
         public Builder deviceVersions(GetVersionsDeviceVersion... deviceVersions) {
             return deviceVersions(List.of(deviceVersions));
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetVersionsResult", "id");
-            }
-            this.id = id;
-            return this;
         }
         @CustomType.Setter
         public Builder model(String model) {
@@ -129,7 +107,6 @@ public final class GetVersionsResult {
         public GetVersionsResult build() {
             final var _resultValue = new GetVersionsResult();
             _resultValue.deviceVersions = deviceVersions;
-            _resultValue.id = id;
             _resultValue.model = model;
             _resultValue.orgId = orgId;
             _resultValue.type = type;

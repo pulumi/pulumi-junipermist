@@ -55,10 +55,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var pskOne = new Psk("pskOne", PskArgs.builder()
- *             .orgId(terraformTest.id())
+ *             .orgId(terraformTest.get("id"))
  *             .name("JNP-FR-PAR")
  *             .passphrase("secretone")
- *             .ssid(wlanOne.ssid())
+ *             .ssid(wlanOne.get("ssid"))
  *             .usage("multi")
  *             .build());
  * 
