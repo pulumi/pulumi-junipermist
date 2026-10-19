@@ -137,6 +137,8 @@ func Provider(_ context.Context) tfbridge.ProviderInfo {
 	// same `inputs/<Fn>Inventory.java` class twice and panics with "duplicate file". These
 	// functions have never been part of the Pulumi SDKs, so skip them until Java codegen
 	// supports object-typed multi-argument inputs.
+	// TODO(https://github.com/pulumi/pulumi-junipermist/issues/775): Re-enable these functions
+	// after https://github.com/pulumi/pulumi-java/issues/2368 is fixed and released.
 	for _, fn := range []string{
 		"search_inventory_by_claimcode",
 		"search_inventory_by_mac",
