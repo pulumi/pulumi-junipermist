@@ -52,7 +52,7 @@ import (
 //			// Example 1: Basic NAC Portal Template with centered alignment
 //			_, err = org.NewNacPortalTemplate(ctx, "centered_template", &org.NacPortalTemplateArgs{
 //				OrgId:       pulumi.Any(terraformTest.Id),
-//				NacportalId: guestPortal.ID().ToIDOutput().ToStringOutput(),
+//				NacportalId: guestPortal.ID(),
 //				Alignment:   pulumi.String("center"),
 //				Color:       pulumi.String("#1074bc"),
 //				PoweredBy:   pulumi.Bool(false),
@@ -63,7 +63,7 @@ import (
 //			// Example 2: NAC Portal Template with logo and left alignment
 //			_, err = org.NewNacPortalTemplate(ctx, "logo_template", &org.NacPortalTemplateArgs{
 //				OrgId:       pulumi.Any(terraformTest.Id),
-//				NacportalId: guestPortal.ID().ToIDOutput().ToStringOutput(),
+//				NacportalId: guestPortal.ID(),
 //				Alignment:   pulumi.String("left"),
 //				Color:       pulumi.String("#ff6600"),
 //				Logo:        pulumi.String("logo.png"),
