@@ -285,6 +285,18 @@ class SsoRole(pulumi.CustomResource):
         __props__.__dict__["privileges"] = privileges
         return SsoRole(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            privileges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SsoRolePrivilegeArgs', 'SsoRolePrivilegeArgsDict', 'outputs.SsoRolePrivilege']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["privileges"] = privileges
+        return pulumi.runtime.exists_resource(None, 'junipermist:org/ssoRole:SsoRole', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:

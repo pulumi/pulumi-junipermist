@@ -234,6 +234,12 @@ func (UpgradeDeviceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*upgradeDeviceState)(nil)).Elem()
 }
 
+// UpgradeDeviceExists checks whether an existing UpgradeDevice resource with the given ID exists.
+func UpgradeDeviceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UpgradeDeviceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:index/upgradeDevice:UpgradeDevice", id, state, "", opts...)
+}
+
 type upgradeDeviceArgs struct {
 	DeviceId string `pulumi:"deviceId"`
 	// For Switches and Gateways only (APs are automatically rebooted). Reboot device immediately after upgrade is completed

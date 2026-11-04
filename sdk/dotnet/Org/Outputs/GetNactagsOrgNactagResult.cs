@@ -39,7 +39,6 @@ namespace Pulumi.JuniperMist.Org.Outputs
         ///   * `False`: means it is sufficient to match any of the values (i.e., match-any behavior)
         ///   * `True`: means all values should be matched (i.e., match-all behavior)
         /// 
-        /// 
         /// Currently it makes sense to set this field to `True` only if the `Match`==`IdpRole`, `Match`==`UsermacLabel` and `EdrStatus`
         /// </summary>
         public readonly bool MatchAll;
@@ -54,7 +53,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly string Name;
         public readonly string OrgId;
         /// <summary>
-        /// If `Type`==`RadiusAttrs`, user can specify a list of one or more standard attributes in the field "RadiusAttrs". 
+        /// If `Type`==`RadiusAttrs`, user can specify a list of one or more standard attributes in the field "RadiusAttrs".
         /// It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
         /// Note that it is allowed to have more than one RadiusAttrs in the result of a given rule.
         /// </summary>
@@ -64,7 +63,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string RadiusGroup;
         /// <summary>
-        /// If `Type`==`RadiusVendorAttrs`, user can specify a list of one or more vendor-specific attributes in the field "RadiusVendorAttrs". 
+        /// If `Type`==`RadiusVendorAttrs`, user can specify a list of one or more vendor-specific attributes in the field "RadiusVendorAttrs".
         /// It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
         /// Note that it is allowed to have more than one RadiusVendorAttrs in the result of a given rule.
         /// </summary>

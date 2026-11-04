@@ -1725,6 +1725,102 @@ class Ap(pulumi.CustomResource):
         __props__.__dict__["zigbee_config"] = zigbee_config
         return Ap(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            aeroscout: pulumi.Input[Optional[Union['ApAeroscoutArgs', 'ApAeroscoutArgsDict', 'outputs.ApAeroscout']]] = None,
+            airista: pulumi.Input[Optional[Union['ApAiristaArgs', 'ApAiristaArgsDict', 'outputs.ApAirista']]] = None,
+            ble_config: pulumi.Input[Optional[Union['ApBleConfigArgs', 'ApBleConfigArgsDict', 'outputs.ApBleConfig']]] = None,
+            centrak: pulumi.Input[Optional[Union['ApCentrakArgs', 'ApCentrakArgsDict', 'outputs.ApCentrak']]] = None,
+            client_bridge: pulumi.Input[Optional[Union['ApClientBridgeArgs', 'ApClientBridgeArgsDict', 'outputs.ApClientBridge']]] = None,
+            device_id: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_eth1: pulumi.Input[Optional[_builtins.bool]] = None,
+            disable_eth2: pulumi.Input[Optional[_builtins.bool]] = None,
+            disable_eth3: pulumi.Input[Optional[_builtins.bool]] = None,
+            disable_module: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_unii4: pulumi.Input[Optional[_builtins.bool]] = None,
+            esl_config: pulumi.Input[Optional[Union['ApEslConfigArgs', 'ApEslConfigArgsDict', 'outputs.ApEslConfig']]] = None,
+            flow_control: pulumi.Input[Optional[_builtins.bool]] = None,
+            height: pulumi.Input[Optional[_builtins.float]] = None,
+            image1_url: pulumi.Input[Optional[_builtins.str]] = None,
+            image2_url: pulumi.Input[Optional[_builtins.str]] = None,
+            image3_url: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_config: pulumi.Input[Optional[Union['ApIpConfigArgs', 'ApIpConfigArgsDict', 'outputs.ApIpConfig']]] = None,
+            lacp_config: pulumi.Input[Optional[Union['ApLacpConfigArgs', 'ApLacpConfigArgsDict', 'outputs.ApLacpConfig']]] = None,
+            led: pulumi.Input[Optional[Union['ApLedArgs', 'ApLedArgsDict', 'outputs.ApLed']]] = None,
+            locked: pulumi.Input[Optional[_builtins.bool]] = None,
+            mac: pulumi.Input[Optional[_builtins.str]] = None,
+            map_id: pulumi.Input[Optional[_builtins.str]] = None,
+            mesh: pulumi.Input[Optional[Union['ApMeshArgs', 'ApMeshArgsDict', 'outputs.ApMesh']]] = None,
+            model: pulumi.Input[Optional[_builtins.str]] = None,
+            mqtt_config: pulumi.Input[Optional[Union['ApMqttConfigArgs', 'ApMqttConfigArgsDict', 'outputs.ApMqttConfig']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notes: pulumi.Input[Optional[_builtins.str]] = None,
+            ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            orientation: pulumi.Input[Optional[_builtins.int]] = None,
+            poe_passthrough: pulumi.Input[Optional[_builtins.bool]] = None,
+            port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['ApPortConfigArgs', 'ApPortConfigArgsDict', 'outputs.ApPortConfig']]]]] = None,
+            pwr_config: pulumi.Input[Optional[Union['ApPwrConfigArgs', 'ApPwrConfigArgsDict', 'outputs.ApPwrConfig']]] = None,
+            radio_config: pulumi.Input[Optional[Union['ApRadioConfigArgs', 'ApRadioConfigArgsDict', 'outputs.ApRadioConfig']]] = None,
+            serial: pulumi.Input[Optional[_builtins.str]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            uplink_port_config: pulumi.Input[Optional[Union['ApUplinkPortConfigArgs', 'ApUplinkPortConfigArgsDict', 'outputs.ApUplinkPortConfig']]] = None,
+            usb_config: pulumi.Input[Optional[Union['ApUsbConfigArgs', 'ApUsbConfigArgsDict', 'outputs.ApUsbConfig']]] = None,
+            uwb_config: pulumi.Input[Optional[Union['ApUwbConfigArgs', 'ApUwbConfigArgsDict', 'outputs.ApUwbConfig']]] = None,
+            vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            x: pulumi.Input[Optional[_builtins.float]] = None,
+            y: pulumi.Input[Optional[_builtins.float]] = None,
+            zigbee_config: pulumi.Input[Optional[Union['ApZigbeeConfigArgs', 'ApZigbeeConfigArgsDict', 'outputs.ApZigbeeConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aeroscout"] = aeroscout
+        __props__["airista"] = airista
+        __props__["bleConfig"] = ble_config
+        __props__["centrak"] = centrak
+        __props__["clientBridge"] = client_bridge
+        __props__["deviceId"] = device_id
+        __props__["disableEth1"] = disable_eth1
+        __props__["disableEth2"] = disable_eth2
+        __props__["disableEth3"] = disable_eth3
+        __props__["disableModule"] = disable_module
+        __props__["enableUnii4"] = enable_unii4
+        __props__["eslConfig"] = esl_config
+        __props__["flowControl"] = flow_control
+        __props__["height"] = height
+        __props__["image1Url"] = image1_url
+        __props__["image2Url"] = image2_url
+        __props__["image3Url"] = image3_url
+        __props__["ipConfig"] = ip_config
+        __props__["lacpConfig"] = lacp_config
+        __props__["led"] = led
+        __props__["locked"] = locked
+        __props__["mac"] = mac
+        __props__["mapId"] = map_id
+        __props__["mesh"] = mesh
+        __props__["model"] = model
+        __props__["mqttConfig"] = mqtt_config
+        __props__["name"] = name
+        __props__["notes"] = notes
+        __props__["ntpServers"] = ntp_servers
+        __props__["orgId"] = org_id
+        __props__["orientation"] = orientation
+        __props__["poePassthrough"] = poe_passthrough
+        __props__["portConfig"] = port_config
+        __props__["pwrConfig"] = pwr_config
+        __props__["radioConfig"] = radio_config
+        __props__["serial"] = serial
+        __props__["siteId"] = site_id
+        __props__["type"] = type
+        __props__["uplinkPortConfig"] = uplink_port_config
+        __props__["usbConfig"] = usb_config
+        __props__["uwbConfig"] = uwb_config
+        __props__["vars"] = vars
+        __props__["x"] = x
+        __props__["y"] = y
+        __props__["zigbeeConfig"] = zigbee_config
+        return pulumi.runtime.exists_resource(None, 'junipermist:device/ap:Ap', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def aeroscout(self) -> pulumi.Output[Optional['outputs.ApAeroscout']]:

@@ -317,9 +317,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
         /// <summary>
         /// Can be used to localize the portal based on the User Agent. Allowed property key values are:
-        ///   `Ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`, 
-        ///   `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`, 
-        ///   `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`, 
+        ///   `Ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`,
+        ///   `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`,
+        ///   `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`,
         ///   `zh-Hans`, `zh-Hant`
         /// </summary>
         public InputMap<Inputs.WlanPortalTemplatePortalTemplateLocalesArgs> Locales
@@ -665,7 +665,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? SponsorEmailError { get; set; }
 
         /// <summary>
-        /// HTML template to replace/override default sponsor email template 
+        /// HTML template to replace/override default sponsor email template
         /// Sponsor Email Template supports following template variables:
         ///   * `ApproveUrl`: Renders URL to approve the request; optionally &amp;minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
         ///   * `DenyUrl`: Renders URL to reject the request

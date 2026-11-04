@@ -126,6 +126,12 @@ func (WlanPortalTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*wlanPortalTemplateState)(nil)).Elem()
 }
 
+// WlanPortalTemplateExists checks whether an existing WlanPortalTemplate resource with the given ID exists.
+func WlanPortalTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WlanPortalTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:org/wlanPortalTemplate:WlanPortalTemplate", id, state, "", opts...)
+}
+
 type wlanPortalTemplateArgs struct {
 	OrgId string `pulumi:"orgId"`
 	// Template settings that define guest portal text, layout, and localization

@@ -215,9 +215,9 @@ namespace Pulumi.JuniperMist.Site.Outputs
         public readonly bool? Field4required;
         /// <summary>
         /// Can be used to localize the portal based on the User Agent. Allowed property key values are:
-        ///   `Ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`, 
-        ///   `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`, 
-        ///   `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`, 
+        ///   `Ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`,
+        ///   `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`,
+        ///   `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`,
         ///   `zh-Hans`, `zh-Hant`
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.WlanPortalTemplatePortalTemplateLocales>? Locales;
@@ -446,7 +446,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? SponsorEmailError;
         /// <summary>
-        /// HTML template to replace/override default sponsor email template 
+        /// HTML template to replace/override default sponsor email template
         /// Sponsor Email Template supports following template variables:
         ///   * `ApproveUrl`: Renders URL to approve the request; optionally &amp;minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
         ///   * `DenyUrl`: Renders URL to reject the request

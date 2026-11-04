@@ -233,6 +233,12 @@ func (PskState) ElementType() reflect.Type {
 	return reflect.TypeOf((*pskState)(nil)).Elem()
 }
 
+// PskExists checks whether an existing Psk resource with the given ID exists.
+func PskExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PskState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:site/psk:Psk", id, state, "", opts...)
+}
+
 type pskArgs struct {
 	// Notification recipient email address for PSK creation notification and expiration reminders
 	Email *string `pulumi:"email"`

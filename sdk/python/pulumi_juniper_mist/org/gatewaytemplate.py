@@ -1469,6 +1469,72 @@ class Gatewaytemplate(pulumi.CustomResource):
         __props__.__dict__["vrf_instances"] = vrf_instances
         return Gatewaytemplate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            additional_config_cmds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            bgp_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateBgpConfigArgs', 'GatewaytemplateBgpConfigArgsDict', 'outputs.GatewaytemplateBgpConfig']]]]] = None,
+            dhcpd_config: pulumi.Input[Optional[Union['GatewaytemplateDhcpdConfigArgs', 'GatewaytemplateDhcpdConfigArgsDict', 'outputs.GatewaytemplateDhcpdConfig']]] = None,
+            dns_override: pulumi.Input[Optional[_builtins.bool]] = None,
+            dns_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            dns_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutesArgs', 'GatewaytemplateExtraRoutesArgsDict', 'outputs.GatewaytemplateExtraRoutes']]]]] = None,
+            extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutes6Args', 'GatewaytemplateExtraRoutes6ArgsDict', 'outputs.GatewaytemplateExtraRoutes6']]]]] = None,
+            gateway_mgmt: pulumi.Input[Optional[Union['GatewaytemplateGatewayMgmtArgs', 'GatewaytemplateGatewayMgmtArgsDict', 'outputs.GatewaytemplateGatewayMgmt']]] = None,
+            idp_profiles: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateIdpProfilesArgs', 'GatewaytemplateIdpProfilesArgsDict', 'outputs.GatewaytemplateIdpProfiles']]]]] = None,
+            ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateIpConfigsArgs', 'GatewaytemplateIpConfigsArgsDict', 'outputs.GatewaytemplateIpConfigs']]]]] = None,
+            mnha_config: pulumi.Input[Optional[Union['GatewaytemplateMnhaConfigArgs', 'GatewaytemplateMnhaConfigArgsDict', 'outputs.GatewaytemplateMnhaConfig']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewaytemplateNetworkArgs', 'GatewaytemplateNetworkArgsDict', 'outputs.GatewaytemplateNetwork']]]]] = None,
+            ntp_override: pulumi.Input[Optional[_builtins.bool]] = None,
+            ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            oob_ip_config: pulumi.Input[Optional[Union['GatewaytemplateOobIpConfigArgs', 'GatewaytemplateOobIpConfigArgsDict', 'outputs.GatewaytemplateOobIpConfig']]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            path_preferences: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplatePathPreferencesArgs', 'GatewaytemplatePathPreferencesArgsDict', 'outputs.GatewaytemplatePathPreferences']]]]] = None,
+            port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplatePortConfigArgs', 'GatewaytemplatePortConfigArgsDict', 'outputs.GatewaytemplatePortConfig']]]]] = None,
+            router_id: pulumi.Input[Optional[_builtins.str]] = None,
+            routing_policies: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateRoutingPoliciesArgs', 'GatewaytemplateRoutingPoliciesArgsDict', 'outputs.GatewaytemplateRoutingPolicies']]]]] = None,
+            service_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewaytemplateServicePolicyArgs', 'GatewaytemplateServicePolicyArgsDict', 'outputs.GatewaytemplateServicePolicy']]]]] = None,
+            ssr_additional_config_cmds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tunnel_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateTunnelConfigsArgs', 'GatewaytemplateTunnelConfigsArgsDict', 'outputs.GatewaytemplateTunnelConfigs']]]]] = None,
+            tunnel_provider_options: pulumi.Input[Optional[Union['GatewaytemplateTunnelProviderOptionsArgs', 'GatewaytemplateTunnelProviderOptionsArgsDict', 'outputs.GatewaytemplateTunnelProviderOptions']]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            url_filtering_deny_msg: pulumi.Input[Optional[_builtins.str]] = None,
+            vrf_config: pulumi.Input[Optional[Union['GatewaytemplateVrfConfigArgs', 'GatewaytemplateVrfConfigArgsDict', 'outputs.GatewaytemplateVrfConfig']]] = None,
+            vrf_instances: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateVrfInstancesArgs', 'GatewaytemplateVrfInstancesArgsDict', 'outputs.GatewaytemplateVrfInstances']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["additionalConfigCmds"] = additional_config_cmds
+        __props__["bgpConfig"] = bgp_config
+        __props__["dhcpdConfig"] = dhcpd_config
+        __props__["dnsOverride"] = dns_override
+        __props__["dnsServers"] = dns_servers
+        __props__["dnsSuffixes"] = dns_suffixes
+        __props__["extraRoutes"] = extra_routes
+        __props__["extraRoutes6"] = extra_routes6
+        __props__["gatewayMgmt"] = gateway_mgmt
+        __props__["idpProfiles"] = idp_profiles
+        __props__["ipConfigs"] = ip_configs
+        __props__["mnhaConfig"] = mnha_config
+        __props__["name"] = name
+        __props__["networks"] = networks
+        __props__["ntpOverride"] = ntp_override
+        __props__["ntpServers"] = ntp_servers
+        __props__["oobIpConfig"] = oob_ip_config
+        __props__["orgId"] = org_id
+        __props__["pathPreferences"] = path_preferences
+        __props__["portConfig"] = port_config
+        __props__["routerId"] = router_id
+        __props__["routingPolicies"] = routing_policies
+        __props__["servicePolicies"] = service_policies
+        __props__["ssrAdditionalConfigCmds"] = ssr_additional_config_cmds
+        __props__["tunnelConfigs"] = tunnel_configs
+        __props__["tunnelProviderOptions"] = tunnel_provider_options
+        __props__["type"] = type
+        __props__["urlFilteringDenyMsg"] = url_filtering_deny_msg
+        __props__["vrfConfig"] = vrf_config
+        __props__["vrfInstances"] = vrf_instances
+        return pulumi.runtime.exists_resource(None, 'junipermist:org/gatewaytemplate:Gatewaytemplate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="additionalConfigCmds")
     def additional_config_cmds(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

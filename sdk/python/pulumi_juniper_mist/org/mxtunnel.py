@@ -640,6 +640,34 @@ class Mxtunnel(pulumi.CustomResource):
         __props__.__dict__["vlan_ids"] = vlan_ids
         return Mxtunnel(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            anchor_mxtunnel_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            auto_preemption: pulumi.Input[Optional[Union['MxtunnelAutoPreemptionArgs', 'MxtunnelAutoPreemptionArgsDict', 'outputs.MxtunnelAutoPreemption']]] = None,
+            hello_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            hello_retries: pulumi.Input[Optional[_builtins.int]] = None,
+            ipsec: pulumi.Input[Optional[Union['MxtunnelIpsecArgs', 'MxtunnelIpsecArgsDict', 'outputs.MxtunnelIpsec']]] = None,
+            mtu: pulumi.Input[Optional[_builtins.int]] = None,
+            mxcluster_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            vlan_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["anchorMxtunnelIds"] = anchor_mxtunnel_ids
+        __props__["autoPreemption"] = auto_preemption
+        __props__["helloInterval"] = hello_interval
+        __props__["helloRetries"] = hello_retries
+        __props__["ipsec"] = ipsec
+        __props__["mtu"] = mtu
+        __props__["mxclusterIds"] = mxcluster_ids
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["protocol"] = protocol
+        __props__["vlanIds"] = vlan_ids
+        return pulumi.runtime.exists_resource(None, 'junipermist:org/mxtunnel:Mxtunnel', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="anchorMxtunnelIds")
     def anchor_mxtunnel_ids(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

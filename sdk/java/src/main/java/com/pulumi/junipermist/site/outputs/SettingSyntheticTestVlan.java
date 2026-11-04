@@ -16,11 +16,10 @@ public final class SettingSyntheticTestVlan {
     /**
      * @return Deprecated custom URLs tested by VLAN-based synthetic probes
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     private @Nullable List<String> customTestUrls;
     /**
      * @return For some vlans where we don&#39;t want this to run
@@ -42,11 +41,10 @@ public final class SettingSyntheticTestVlan {
     /**
      * @return Deprecated custom URLs tested by VLAN-based synthetic probes
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public List<String> customTestUrls() {
         return this.customTestUrls == null ? List.of() : this.customTestUrls;
     }

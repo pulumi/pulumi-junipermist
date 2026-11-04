@@ -54,7 +54,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.DeviceprofileGatewayDhcpdConfigConfigOptions>? Options;
         /// <summary>
-        /// `ServerIdOverride`==`True` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
+        /// `ServerIdOverride`==`True` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
         /// should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
         /// </summary>
         public readonly bool? ServerIdOverride;

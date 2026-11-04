@@ -124,6 +124,12 @@ func (GatewayClusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gatewayClusterState)(nil)).Elem()
 }
 
+// GatewayClusterExists checks whether an existing GatewayCluster resource with the given ID exists.
+func GatewayClusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GatewayClusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:device/gatewayCluster:GatewayCluster", id, state, "", opts...)
+}
+
 type gatewayClusterArgs struct {
 	// Gateway nodes that form the HA cluster
 	Nodes  []GatewayClusterNode `pulumi:"nodes"`

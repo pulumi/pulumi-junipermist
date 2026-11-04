@@ -20,7 +20,6 @@ namespace Pulumi.JuniperMist.Org
         /// * the Gateway Templates (`mist_org_gatewaytemplate.service_policies.services`)
         /// * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies.services`)
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -51,7 +50,6 @@ namespace Pulumi.JuniperMist.Org
         /// * the Gateway Templates (`mist_org_gatewaytemplate.service_policies.services`)
         /// * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies.services`)
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -81,7 +79,6 @@ namespace Pulumi.JuniperMist.Org
         /// * the Gateway configuration (`mist_device_gateway.service_policies.services`)
         /// * the Gateway Templates (`mist_org_gatewaytemplate.service_policies.services`)
         /// * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies.services`)
-        /// 
         /// 
         /// ## Example Usage
         /// 

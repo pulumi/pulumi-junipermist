@@ -608,6 +608,34 @@ class Nacrule(pulumi.CustomResource):
         __props__.__dict__["org_id"] = org_id
         return Nacrule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            apply_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            guest_auth_state: pulumi.Input[Optional[_builtins.str]] = None,
+            matching: pulumi.Input[Optional[Union['NacruleMatchingArgs', 'NacruleMatchingArgsDict', 'outputs.NacruleMatching']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            not_matching: pulumi.Input[Optional[Union['NacruleNotMatchingArgs', 'NacruleNotMatchingArgsDict', 'outputs.NacruleNotMatching']]] = None,
+            order: pulumi.Input[Optional[_builtins.int]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["action"] = action
+        __props__["applyTags"] = apply_tags
+        __props__["dryRun"] = dry_run
+        __props__["enabled"] = enabled
+        __props__["groupName"] = group_name
+        __props__["guestAuthState"] = guest_auth_state
+        __props__["matching"] = matching
+        __props__["name"] = name
+        __props__["notMatching"] = not_matching
+        __props__["order"] = order
+        __props__["orgId"] = org_id
+        return pulumi.runtime.exists_resource(None, 'junipermist:org/nacrule:Nacrule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def action(self) -> pulumi.Output[_builtins.str]:

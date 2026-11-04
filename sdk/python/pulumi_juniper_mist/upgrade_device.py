@@ -780,6 +780,54 @@ class UpgradeDevice(pulumi.CustomResource):
         __props__.__dict__["timestamp"] = timestamp
         return UpgradeDevice(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_upgrade_stat: pulumi.Input[Optional[Union['UpgradeDeviceAutoUpgradeStatArgs', 'UpgradeDeviceAutoUpgradeStatArgsDict', 'outputs.UpgradeDeviceAutoUpgradeStat']]] = None,
+            config_timestamp: pulumi.Input[Optional[_builtins.int]] = None,
+            config_version: pulumi.Input[Optional[_builtins.int]] = None,
+            device_id: pulumi.Input[Optional[_builtins.str]] = None,
+            device_version: pulumi.Input[Optional[_builtins.str]] = None,
+            ext_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            fwupdate: pulumi.Input[Optional[Union['UpgradeDeviceFwupdateArgs', 'UpgradeDeviceFwupdateArgsDict', 'outputs.UpgradeDeviceFwupdate']]] = None,
+            reboot: pulumi.Input[Optional[_builtins.bool]] = None,
+            reboot_at: pulumi.Input[Optional[_builtins.int]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            snapshot: pulumi.Input[Optional[_builtins.bool]] = None,
+            start_time: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            sync_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
+            sync_upgrade_refresh_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            sync_upgrade_start_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            sync_upgrade_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            tag_id: pulumi.Input[Optional[_builtins.int]] = None,
+            tag_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            target_version: pulumi.Input[Optional[_builtins.str]] = None,
+            timestamp: pulumi.Input[Optional[_builtins.float]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoUpgradeStat"] = auto_upgrade_stat
+        __props__["configTimestamp"] = config_timestamp
+        __props__["configVersion"] = config_version
+        __props__["deviceId"] = device_id
+        __props__["deviceVersion"] = device_version
+        __props__["extIp"] = ext_ip
+        __props__["fwupdate"] = fwupdate
+        __props__["reboot"] = reboot
+        __props__["rebootAt"] = reboot_at
+        __props__["siteId"] = site_id
+        __props__["snapshot"] = snapshot
+        __props__["startTime"] = start_time
+        __props__["status"] = status
+        __props__["syncUpgrade"] = sync_upgrade
+        __props__["syncUpgradeRefreshInterval"] = sync_upgrade_refresh_interval
+        __props__["syncUpgradeStartTimeout"] = sync_upgrade_start_timeout
+        __props__["syncUpgradeTimeout"] = sync_upgrade_timeout
+        __props__["tagId"] = tag_id
+        __props__["tagUuid"] = tag_uuid
+        __props__["targetVersion"] = target_version
+        __props__["timestamp"] = timestamp
+        return pulumi.runtime.exists_resource(None, 'junipermist:index/upgradeDevice:UpgradeDevice', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoUpgradeStat")
     def auto_upgrade_stat(self) -> pulumi.Output['outputs.UpgradeDeviceAutoUpgradeStat']:

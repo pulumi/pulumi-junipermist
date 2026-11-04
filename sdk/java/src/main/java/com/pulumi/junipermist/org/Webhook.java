@@ -21,8 +21,8 @@ import javax.annotation.Nullable;
 /**
  * This resource manages Org Webhooks.
  * 
- * A Webhook is a configuration that allows real-time events and data from the Org to be pushed to a provided url.\
- * It enables the collection of information about various topics such as device events, alarms, and audits updates at the org level.\
+ * A Webhook is a configuration that allows real-time events and data from the Org to be pushed to a provided url.&#92;
+ * It enables the collection of information about various topics such as device events, alarms, and audits updates at the org level.&#92;
  * The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
  * 
  * ## Example Usage

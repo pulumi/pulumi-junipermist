@@ -341,6 +341,12 @@ func (ApState) ElementType() reflect.Type {
 	return reflect.TypeOf((*apState)(nil)).Elem()
 }
 
+// ApExists checks whether an existing Ap resource with the given ID exists.
+func ApExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:device/ap:Ap", id, state, "", opts...)
+}
+
 type apArgs struct {
 	// Location integration settings for AeroScout on this access point
 	Aeroscout *ApAeroscout `pulumi:"aeroscout"`

@@ -141,6 +141,12 @@ func (WlantemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*wlantemplateState)(nil)).Elem()
 }
 
+// WlantemplateExists checks whether an existing Wlantemplate resource with the given ID exists.
+func WlantemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WlantemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:org/wlantemplate:Wlantemplate", id, state, "", opts...)
+}
+
 type wlantemplateArgs struct {
 	// Organizations, sites, or site groups targeted by this WLAN template
 	Applies *WlantemplateApplies `pulumi:"applies"`

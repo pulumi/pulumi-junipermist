@@ -261,6 +261,12 @@ func (WebhookState) ElementType() reflect.Type {
 	return reflect.TypeOf((*webhookState)(nil)).Elem()
 }
 
+// WebhookExists checks whether an existing Webhook resource with the given ID exists.
+func WebhookExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WebhookState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:org/webhook:Webhook", id, state, "", opts...)
+}
+
 type webhookArgs struct {
 	// Default action applied when none of the `rules` match the incoming event. enum: `permit`, `block`.
 	DefaultAction *string `pulumi:"defaultAction"`

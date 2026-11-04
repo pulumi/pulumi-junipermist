@@ -14,7 +14,6 @@ namespace Pulumi.JuniperMist.Device
         /// <summary>
         /// This data source provides the list of available Firmware Versions.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -41,7 +40,6 @@ namespace Pulumi.JuniperMist.Device
         /// <summary>
         /// This data source provides the list of available Firmware Versions.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -67,7 +65,6 @@ namespace Pulumi.JuniperMist.Device
 
         /// <summary>
         /// This data source provides the list of available Firmware Versions.
-        /// 
         /// 
         /// ## Example Usage
         /// 

@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// What services are allowed. 
+        /// What services are allowed.
         /// Property key is the service name
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.GetWlansSiteWlanBonjourServicesResult> Services;

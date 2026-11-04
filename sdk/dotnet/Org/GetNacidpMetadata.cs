@@ -16,7 +16,6 @@ namespace Pulumi.JuniperMist.Org
         /// 
         /// The provided information (`EntityId`, `AcsUrl`, `LogoutUrl` and `Metadata`) are the information required to configure the IDP
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -44,7 +43,6 @@ namespace Pulumi.JuniperMist.Org
         /// 
         /// The provided information (`EntityId`, `AcsUrl`, `LogoutUrl` and `Metadata`) are the information required to configure the IDP
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -71,7 +69,6 @@ namespace Pulumi.JuniperMist.Org
         /// This data source provides the NAC IDP Metadata information.
         /// 
         /// The provided information (`EntityId`, `AcsUrl`, `LogoutUrl` and `Metadata`) are the information required to configure the IDP
-        /// 
         /// 
         /// ## Example Usage
         /// 

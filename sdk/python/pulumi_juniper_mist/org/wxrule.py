@@ -595,6 +595,34 @@ class Wxrule(pulumi.CustomResource):
         __props__.__dict__["template_id"] = template_id
         return Wxrule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            apply_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            blocked_apps: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            dst_allow_wxtags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            dst_deny_wxtags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            dst_wxtags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            order: pulumi.Input[Optional[_builtins.int]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            src_wxtags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            template_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["action"] = action
+        __props__["applyTags"] = apply_tags
+        __props__["blockedApps"] = blocked_apps
+        __props__["dstAllowWxtags"] = dst_allow_wxtags
+        __props__["dstDenyWxtags"] = dst_deny_wxtags
+        __props__["dstWxtags"] = dst_wxtags
+        __props__["enabled"] = enabled
+        __props__["order"] = order
+        __props__["orgId"] = org_id
+        __props__["srcWxtags"] = src_wxtags
+        __props__["templateId"] = template_id
+        return pulumi.runtime.exists_resource(None, 'junipermist:org/wxrule:Wxrule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def action(self) -> pulumi.Output[_builtins.str]:

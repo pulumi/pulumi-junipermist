@@ -397,6 +397,24 @@ class Wlantemplate(pulumi.CustomResource):
         __props__.__dict__["org_id"] = org_id
         return Wlantemplate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            applies: pulumi.Input[Optional[Union['WlantemplateAppliesArgs', 'WlantemplateAppliesArgsDict', 'outputs.WlantemplateApplies']]] = None,
+            deviceprofile_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            exceptions: pulumi.Input[Optional[Union['WlantemplateExceptionsArgs', 'WlantemplateExceptionsArgsDict', 'outputs.WlantemplateExceptions']]] = None,
+            filter_by_deviceprofile: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["applies"] = applies
+        __props__["deviceprofileIds"] = deviceprofile_ids
+        __props__["exceptions"] = exceptions
+        __props__["filterByDeviceprofile"] = filter_by_deviceprofile
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        return pulumi.runtime.exists_resource(None, 'junipermist:org/wlantemplate:Wlantemplate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def applies(self) -> pulumi.Output['outputs.WlantemplateApplies']:

@@ -320,6 +320,18 @@ class Inventory(pulumi.CustomResource):
         __props__.__dict__["org_id"] = org_id
         return Inventory(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            disconnected_before: pulumi.Input[Optional[_builtins.int]] = None,
+            inventory: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['InventoryInventoryArgs', 'InventoryInventoryArgsDict', 'outputs.InventoryInventory']]]]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["disconnectedBefore"] = disconnected_before
+        __props__["inventory"] = inventory
+        __props__["orgId"] = org_id
+        return pulumi.runtime.exists_resource(None, 'junipermist:org/inventory:Inventory', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="disconnectedBefore")
     def disconnected_before(self) -> pulumi.Output[Optional[_builtins.int]]:

@@ -867,6 +867,44 @@ class NacPortal(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return NacPortal(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_type: pulumi.Input[Optional[_builtins.str]] = None,
+            additional_cacerts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            additional_nac_server_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            cert_expire_time: pulumi.Input[Optional[_builtins.int]] = None,
+            eap_type: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_location: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_telemetry: pulumi.Input[Optional[_builtins.bool]] = None,
+            expiry_notification_time: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notify_expiry: pulumi.Input[Optional[_builtins.bool]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            portal: pulumi.Input[Optional[Union['NacPortalPortalArgs', 'NacPortalPortalArgsDict', 'outputs.NacPortalPortal']]] = None,
+            ssid: pulumi.Input[Optional[_builtins.str]] = None,
+            sso: pulumi.Input[Optional[Union['NacPortalSsoArgs', 'NacPortalSsoArgsDict', 'outputs.NacPortalSso']]] = None,
+            tos: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessType"] = access_type
+        __props__["additionalCacerts"] = additional_cacerts
+        __props__["additionalNacServerNames"] = additional_nac_server_names
+        __props__["certExpireTime"] = cert_expire_time
+        __props__["eapType"] = eap_type
+        __props__["enableLocation"] = enable_location
+        __props__["enableTelemetry"] = enable_telemetry
+        __props__["expiryNotificationTime"] = expiry_notification_time
+        __props__["name"] = name
+        __props__["notifyExpiry"] = notify_expiry
+        __props__["orgId"] = org_id
+        __props__["portal"] = portal
+        __props__["ssid"] = ssid
+        __props__["sso"] = sso
+        __props__["tos"] = tos
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'junipermist:org/nacPortal:NacPortal', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessType")
     def access_type(self) -> pulumi.Output[_builtins.str]:

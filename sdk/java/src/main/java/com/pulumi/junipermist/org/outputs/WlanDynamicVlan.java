@@ -36,7 +36,7 @@ public final class WlanDynamicVlan {
     private @Nullable String type;
     /**
      * @return Map between vlanId (as string) to airespace interface names (comma-separated) or null for standard mapping
-     *   * if `dynamic_vlan.type`==`standard`, property key is the VLAN ID and property value is \&#34;\&#34;
+     *   * if `dynamic_vlan.type`==`standard`, property key is the VLAN ID and property value is &#92;&#34;&#92;&#34;
      *   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the VLAN ID and property value is the Airespace Interface Name
      * 
      */
@@ -73,7 +73,7 @@ public final class WlanDynamicVlan {
     }
     /**
      * @return Map between vlanId (as string) to airespace interface names (comma-separated) or null for standard mapping
-     *   * if `dynamic_vlan.type`==`standard`, property key is the VLAN ID and property value is \&#34;\&#34;
+     *   * if `dynamic_vlan.type`==`standard`, property key is the VLAN ID and property value is &#92;&#34;&#92;&#34;
      *   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the VLAN ID and property value is the Airespace Interface Name
      * 
      */

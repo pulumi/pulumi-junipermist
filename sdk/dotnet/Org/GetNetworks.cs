@@ -16,7 +16,6 @@ namespace Pulumi.JuniperMist.Org
         /// 
         /// The Networks are used in the `ServicePolicies` from the Gateway configuration, Gateway templates or HUB Profiles
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -43,7 +42,6 @@ namespace Pulumi.JuniperMist.Org
         /// 
         /// The Networks are used in the `ServicePolicies` from the Gateway configuration, Gateway templates or HUB Profiles
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -69,7 +67,6 @@ namespace Pulumi.JuniperMist.Org
         /// This data source provides the list of WAN Assurance Networks.
         /// 
         /// The Networks are used in the `ServicePolicies` from the Gateway configuration, Gateway templates or HUB Profiles
-        /// 
         /// 
         /// ## Example Usage
         /// 

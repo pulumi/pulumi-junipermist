@@ -20,22 +20,20 @@ public final class SettingSyntheticTestVlanArgs extends com.pulumi.resources.Res
     /**
      * Deprecated custom URLs tested by VLAN-based synthetic probes
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     @Import(name="customTestUrls")
     private @Nullable Output<List<String>> customTestUrls;
 
     /**
      * @return Deprecated custom URLs tested by VLAN-based synthetic probes
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public Optional<Output<List<String>>> customTestUrls() {
         return Optional.ofNullable(this.customTestUrls);
     }
@@ -117,11 +115,10 @@ public final class SettingSyntheticTestVlanArgs extends com.pulumi.resources.Res
          * 
          * @return builder
          * 
-         * @deprecated
-         * This attribute is deprecated.
+         * @deprecated This attribute is deprecated.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated
         public Builder customTestUrls(@Nullable Output<List<String>> customTestUrls) {
             $.customTestUrls = customTestUrls;
             return this;
@@ -132,11 +129,10 @@ public final class SettingSyntheticTestVlanArgs extends com.pulumi.resources.Res
          * 
          * @return builder
          * 
-         * @deprecated
-         * This attribute is deprecated.
+         * @deprecated This attribute is deprecated.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated
         public Builder customTestUrls(List<String> customTestUrls) {
             return customTestUrls(Output.of(customTestUrls));
         }
@@ -146,11 +142,10 @@ public final class SettingSyntheticTestVlanArgs extends com.pulumi.resources.Res
          * 
          * @return builder
          * 
-         * @deprecated
-         * This attribute is deprecated.
+         * @deprecated This attribute is deprecated.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated
         public Builder customTestUrls(String... customTestUrls) {
             return customTestUrls(List.of(customTestUrls));
         }

@@ -32,8 +32,8 @@ public final class GetSsoRolesOrgSsoRolePrivilege {
      */
     private String sitegroupId;
     /**
-     * @return Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.\
-     * You can define custom roles by adding the `views` attribute along with `role` when assigning privileges.\
+     * @return Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.&#92;
+     * You can define custom roles by adding the `views` attribute along with `role` when assigning privileges.&#92;
      * Below are the list of supported UI views. Note that this is UI only feature.
      * 
      *   | UI View | Required Role | Description |
@@ -80,8 +80,8 @@ public final class GetSsoRolesOrgSsoRolePrivilege {
         return this.sitegroupId;
     }
     /**
-     * @return Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.\
-     * You can define custom roles by adding the `views` attribute along with `role` when assigning privileges.\
+     * @return Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.&#92;
+     * You can define custom roles by adding the `views` attribute along with `role` when assigning privileges.&#92;
      * Below are the list of supported UI views. Note that this is UI only feature.
      * 
      *   | UI View | Required Role | Description |

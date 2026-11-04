@@ -14,7 +14,6 @@ namespace Pulumi.JuniperMist.Org
         /// <summary>
         /// This data source provide the list of the Org VPNs.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -39,7 +38,6 @@ namespace Pulumi.JuniperMist.Org
         /// <summary>
         /// This data source provide the list of the Org VPNs.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -63,7 +61,6 @@ namespace Pulumi.JuniperMist.Org
 
         /// <summary>
         /// This data source provide the list of the Org VPNs.
-        /// 
         /// 
         /// ## Example Usage
         /// 

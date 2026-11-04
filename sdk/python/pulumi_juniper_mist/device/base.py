@@ -836,6 +836,46 @@ class Base(pulumi.CustomResource):
         __props__.__dict__["tzoffset"] = tzoffset
         return Base(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            address: pulumi.Input[Optional[_builtins.str]] = None,
+            alarmtemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+            aptemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+            country_code: pulumi.Input[Optional[_builtins.str]] = None,
+            gatewaytemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+            latlng: pulumi.Input[Optional[Union['BaseLatlngArgs', 'BaseLatlngArgsDict', 'outputs.BaseLatlng']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            networktemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+            notes: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rftemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+            routertemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+            secpolicy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sitegroup_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            sitetemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+            timezone: pulumi.Input[Optional[_builtins.str]] = None,
+            tzoffset: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["address"] = address
+        __props__["alarmtemplateId"] = alarmtemplate_id
+        __props__["aptemplateId"] = aptemplate_id
+        __props__["countryCode"] = country_code
+        __props__["gatewaytemplateId"] = gatewaytemplate_id
+        __props__["latlng"] = latlng
+        __props__["name"] = name
+        __props__["networktemplateId"] = networktemplate_id
+        __props__["notes"] = notes
+        __props__["orgId"] = org_id
+        __props__["rftemplateId"] = rftemplate_id
+        __props__["routertemplateId"] = routertemplate_id
+        __props__["secpolicyId"] = secpolicy_id
+        __props__["sitegroupIds"] = sitegroup_ids
+        __props__["sitetemplateId"] = sitetemplate_id
+        __props__["timezone"] = timezone
+        __props__["tzoffset"] = tzoffset
+        return pulumi.runtime.exists_resource(None, 'junipermist:device/base:base', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def address(self) -> pulumi.Output[_builtins.str]:

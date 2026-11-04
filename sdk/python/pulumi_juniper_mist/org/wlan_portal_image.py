@@ -240,6 +240,18 @@ class WlanPortalImage(pulumi.CustomResource):
         __props__.__dict__["wlan_id"] = wlan_id
         return WlanPortalImage(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            file: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            wlan_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["file"] = file
+        __props__["orgId"] = org_id
+        __props__["wlanId"] = wlan_id
+        return pulumi.runtime.exists_resource(None, 'junipermist:org/wlanPortalImage:WlanPortalImage', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def file(self) -> pulumi.Output[_builtins.str]:

@@ -81,11 +81,10 @@ import javax.annotation.Nullable;
  * $ pulumi import junipermist:device/base:base site_one d3c42998-9012-4859-9743-6b9bee475309
  * ```
  * 
- * @deprecated
- * junipermist.device/base.base has been deprecated in favor of junipermist.site/base.base
+ * @deprecated junipermist.device/base.base has been deprecated in favor of junipermist.site/base.base
  * 
  */
-@Deprecated /* junipermist.device/base.base has been deprecated in favor of junipermist.site/base.base */
+@Deprecated
 @ResourceType(type="junipermist:device/base:base")
 public class Base extends com.pulumi.resources.CustomResource {
     /**

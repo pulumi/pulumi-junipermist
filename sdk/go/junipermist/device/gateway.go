@@ -391,6 +391,12 @@ func (GatewayState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gatewayState)(nil)).Elem()
 }
 
+// GatewayExists checks whether an existing Gateway resource with the given ID exists.
+func GatewayExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GatewayState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:device/gateway:Gateway", id, state, "", opts...)
+}
+
 type gatewayArgs struct {
 	// Additional CLI configuration commands to apply to this gateway
 	AdditionalConfigCmds []string `pulumi:"additionalConfigCmds"`

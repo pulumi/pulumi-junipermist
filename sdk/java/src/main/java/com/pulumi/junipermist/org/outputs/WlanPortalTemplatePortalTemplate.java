@@ -375,7 +375,7 @@ public final class WlanPortalTemplatePortalTemplate {
      */
     private @Nullable String passphraseTitle;
     /**
-     * @return Whether to show \&#34;Powered by Mist\&#34;
+     * @return Whether to show &#92;&#34;Powered by Mist&#92;&#34;
      * 
      */
     private @Nullable Boolean poweredBy;
@@ -1162,7 +1162,7 @@ public final class WlanPortalTemplatePortalTemplate {
         return Optional.ofNullable(this.passphraseTitle);
     }
     /**
-     * @return Whether to show \&#34;Powered by Mist\&#34;
+     * @return Whether to show &#92;&#34;Powered by Mist&#92;&#34;
      * 
      */
     public Optional<Boolean> poweredBy() {

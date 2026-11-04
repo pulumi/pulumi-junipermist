@@ -192,6 +192,12 @@ func (ServicepolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*servicepolicyState)(nil)).Elem()
 }
 
+// ServicepolicyExists checks whether an existing Servicepolicy resource with the given ID exists.
+func ServicepolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServicepolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:org/servicepolicy:Servicepolicy", id, state, "", opts...)
+}
+
 type servicepolicyArgs struct {
 	// Advanced anti-malware settings applied by this service policy
 	Aamw *ServicepolicyAamw `pulumi:"aamw"`

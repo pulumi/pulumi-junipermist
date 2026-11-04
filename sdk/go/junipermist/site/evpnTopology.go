@@ -192,6 +192,12 @@ func (EvpnTopologyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*evpnTopologyState)(nil)).Elem()
 }
 
+// EvpnTopologyExists checks whether an existing EvpnTopology resource with the given ID exists.
+func EvpnTopologyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EvpnTopologyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:site/evpnTopology:EvpnTopology", id, state, "", opts...)
+}
+
 type evpnTopologyArgs struct {
 	// Generation options applied to the EVPN topology
 	EvpnOptions *EvpnTopologyEvpnOptions `pulumi:"evpnOptions"`

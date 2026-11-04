@@ -1093,14 +1093,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * Whether to show \&#34;Powered by Mist\&#34;
+     * Whether to show &#92;&#34;Powered by Mist&#92;&#34;
      * 
      */
     @Import(name="poweredBy")
     private @Nullable Output<Boolean> poweredBy;
 
     /**
-     * @return Whether to show \&#34;Powered by Mist\&#34;
+     * @return Whether to show &#92;&#34;Powered by Mist&#92;&#34;
      * 
      */
     public Optional<Output<Boolean>> poweredBy() {
@@ -3584,7 +3584,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param poweredBy Whether to show \&#34;Powered by Mist\&#34;
+         * @param poweredBy Whether to show &#92;&#34;Powered by Mist&#92;&#34;
          * 
          * @return builder
          * 
@@ -3595,7 +3595,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param poweredBy Whether to show \&#34;Powered by Mist\&#34;
+         * @param poweredBy Whether to show &#92;&#34;Powered by Mist&#92;&#34;
          * 
          * @return builder
          * 

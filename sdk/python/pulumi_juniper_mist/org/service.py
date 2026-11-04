@@ -1115,6 +1115,60 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["urls"] = urls
         return Service(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            app_categories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            app_subcategories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            apps: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            client_limit_down: pulumi.Input[Optional[_builtins.int]] = None,
+            client_limit_up: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dscp: pulumi.Input[Optional[_builtins.str]] = None,
+            failover_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            max_jitter: pulumi.Input[Optional[_builtins.str]] = None,
+            max_latency: pulumi.Input[Optional[_builtins.str]] = None,
+            max_loss: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_limit_down: pulumi.Input[Optional[_builtins.int]] = None,
+            service_limit_up: pulumi.Input[Optional[_builtins.int]] = None,
+            sle_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            specs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceSpecArgs', 'ServiceSpecArgsDict', 'outputs.ServiceSpec']]]]] = None,
+            ssr_relaxed_tcp_state_enforcement: pulumi.Input[Optional[_builtins.bool]] = None,
+            traffic_class: pulumi.Input[Optional[_builtins.str]] = None,
+            traffic_type: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["addresses"] = addresses
+        __props__["appCategories"] = app_categories
+        __props__["appSubcategories"] = app_subcategories
+        __props__["apps"] = apps
+        __props__["clientLimitDown"] = client_limit_down
+        __props__["clientLimitUp"] = client_limit_up
+        __props__["description"] = description
+        __props__["dscp"] = dscp
+        __props__["failoverPolicy"] = failover_policy
+        __props__["hostnames"] = hostnames
+        __props__["maxJitter"] = max_jitter
+        __props__["maxLatency"] = max_latency
+        __props__["maxLoss"] = max_loss
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["serviceLimitDown"] = service_limit_down
+        __props__["serviceLimitUp"] = service_limit_up
+        __props__["sleEnabled"] = sle_enabled
+        __props__["specs"] = specs
+        __props__["ssrRelaxedTcpStateEnforcement"] = ssr_relaxed_tcp_state_enforcement
+        __props__["trafficClass"] = traffic_class
+        __props__["trafficType"] = traffic_type
+        __props__["type"] = type
+        __props__["urls"] = urls
+        return pulumi.runtime.exists_resource(None, 'junipermist:org/service:Service', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def addresses(self) -> pulumi.Output[Sequence[_builtins.str]]:

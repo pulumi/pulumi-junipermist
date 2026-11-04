@@ -346,6 +346,12 @@ func (DeviceprofileGatewayState) ElementType() reflect.Type {
 	return reflect.TypeOf((*deviceprofileGatewayState)(nil)).Elem()
 }
 
+// DeviceprofileGatewayExists checks whether an existing DeviceprofileGateway resource with the given ID exists.
+func DeviceprofileGatewayExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DeviceprofileGatewayState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:org/deviceprofileGateway:DeviceprofileGateway", id, state, "", opts...)
+}
+
 type deviceprofileGatewayArgs struct {
 	// Additional CLI configuration commands provided by this gateway profile
 	AdditionalConfigCmds []string `pulumi:"additionalConfigCmds"`

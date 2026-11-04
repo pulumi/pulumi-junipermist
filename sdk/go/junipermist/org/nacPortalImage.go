@@ -81,6 +81,12 @@ func (NacPortalImageState) ElementType() reflect.Type {
 	return reflect.TypeOf((*nacPortalImageState)(nil)).Elem()
 }
 
+// NacPortalImageExists checks whether an existing NacPortalImage resource with the given ID exists.
+func NacPortalImageExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NacPortalImageState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:org/nacPortalImage:NacPortalImage", id, state, "", opts...)
+}
+
 type nacPortalImageArgs struct {
 	// path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
 	File string `pulumi:"file"`

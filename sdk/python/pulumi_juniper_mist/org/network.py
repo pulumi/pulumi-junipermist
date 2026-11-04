@@ -782,6 +782,44 @@ class Network(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return Network(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            disallow_mist_services: pulumi.Input[Optional[_builtins.bool]] = None,
+            gateway: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway6: pulumi.Input[Optional[_builtins.str]] = None,
+            internal_access: pulumi.Input[Optional[Union['NetworkInternalAccessArgs', 'NetworkInternalAccessArgsDict', 'outputs.NetworkInternalAccess']]] = None,
+            internet_access: pulumi.Input[Optional[Union['NetworkInternetAccessArgs', 'NetworkInternetAccessArgsDict', 'outputs.NetworkInternetAccess']]] = None,
+            isolation: pulumi.Input[Optional[_builtins.bool]] = None,
+            multicast: pulumi.Input[Optional[Union['NetworkMulticastArgs', 'NetworkMulticastArgsDict', 'outputs.NetworkMulticast']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            routed_for_networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            subnet: pulumi.Input[Optional[_builtins.str]] = None,
+            subnet6: pulumi.Input[Optional[_builtins.str]] = None,
+            tenants: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworkTenantsArgs', 'NetworkTenantsArgsDict', 'outputs.NetworkTenants']]]]] = None,
+            vlan_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpn_access: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworkVpnAccessArgs', 'NetworkVpnAccessArgsDict', 'outputs.NetworkVpnAccess']]]]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["disallowMistServices"] = disallow_mist_services
+        __props__["gateway"] = gateway
+        __props__["gateway6"] = gateway6
+        __props__["internalAccess"] = internal_access
+        __props__["internetAccess"] = internet_access
+        __props__["isolation"] = isolation
+        __props__["multicast"] = multicast
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["routedForNetworks"] = routed_for_networks
+        __props__["subnet"] = subnet
+        __props__["subnet6"] = subnet6
+        __props__["tenants"] = tenants
+        __props__["vlanId"] = vlan_id
+        __props__["vpnAccess"] = vpn_access
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'junipermist:org/network:Network', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="disallowMistServices")
     def disallow_mist_services(self) -> pulumi.Output[_builtins.bool]:

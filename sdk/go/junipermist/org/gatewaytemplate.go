@@ -357,6 +357,12 @@ func (GatewaytemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gatewaytemplateState)(nil)).Elem()
 }
 
+// GatewaytemplateExists checks whether an existing Gatewaytemplate resource with the given ID exists.
+func GatewaytemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GatewaytemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:org/gatewaytemplate:Gatewaytemplate", id, state, "", opts...)
+}
+
 type gatewaytemplateArgs struct {
 	// Additional CLI configuration commands provided by this gateway template
 	AdditionalConfigCmds []string `pulumi:"additionalConfigCmds"`

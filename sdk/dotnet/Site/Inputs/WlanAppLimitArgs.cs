@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputMap<int>? _apps;
 
         /// <summary>
-        /// Map from app key to bandwidth in kbps. 
+        /// Map from app key to bandwidth in kbps.
         /// Property key is the app key, defined in Get Application List
         /// </summary>
         public InputMap<int> Apps

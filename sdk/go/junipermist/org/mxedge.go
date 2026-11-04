@@ -227,6 +227,12 @@ func (MxedgeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*mxedgeState)(nil)).Elem()
 }
 
+// MxedgeExists checks whether an existing Mxedge resource with the given ID exists.
+func MxedgeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MxedgeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:org/mxedge:Mxedge", id, state, "", opts...)
+}
+
 type mxedgeArgs struct {
 	// Registration claim code for the Mist Edge
 	ClaimCode *string `pulumi:"claimCode"`

@@ -1374,6 +1374,68 @@ class DeviceprofileGateway(pulumi.CustomResource):
         __props__.__dict__["vrf_instances"] = vrf_instances
         return DeviceprofileGateway(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            additional_config_cmds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            bgp_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayBgpConfigArgs', 'DeviceprofileGatewayBgpConfigArgsDict', 'outputs.DeviceprofileGatewayBgpConfig']]]]] = None,
+            dhcpd_config: pulumi.Input[Optional[Union['DeviceprofileGatewayDhcpdConfigArgs', 'DeviceprofileGatewayDhcpdConfigArgsDict', 'outputs.DeviceprofileGatewayDhcpdConfig']]] = None,
+            dns_override: pulumi.Input[Optional[_builtins.bool]] = None,
+            dns_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            dns_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayExtraRoutesArgs', 'DeviceprofileGatewayExtraRoutesArgsDict', 'outputs.DeviceprofileGatewayExtraRoutes']]]]] = None,
+            extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayExtraRoutes6Args', 'DeviceprofileGatewayExtraRoutes6ArgsDict', 'outputs.DeviceprofileGatewayExtraRoutes6']]]]] = None,
+            idp_profiles: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayIdpProfilesArgs', 'DeviceprofileGatewayIdpProfilesArgsDict', 'outputs.DeviceprofileGatewayIdpProfiles']]]]] = None,
+            ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayIpConfigsArgs', 'DeviceprofileGatewayIpConfigsArgsDict', 'outputs.DeviceprofileGatewayIpConfigs']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeviceprofileGatewayNetworkArgs', 'DeviceprofileGatewayNetworkArgsDict', 'outputs.DeviceprofileGatewayNetwork']]]]] = None,
+            ntp_override: pulumi.Input[Optional[_builtins.bool]] = None,
+            ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            oob_ip_config: pulumi.Input[Optional[Union['DeviceprofileGatewayOobIpConfigArgs', 'DeviceprofileGatewayOobIpConfigArgsDict', 'outputs.DeviceprofileGatewayOobIpConfig']]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            path_preferences: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayPathPreferencesArgs', 'DeviceprofileGatewayPathPreferencesArgsDict', 'outputs.DeviceprofileGatewayPathPreferences']]]]] = None,
+            port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayPortConfigArgs', 'DeviceprofileGatewayPortConfigArgsDict', 'outputs.DeviceprofileGatewayPortConfig']]]]] = None,
+            router_id: pulumi.Input[Optional[_builtins.str]] = None,
+            routing_policies: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayRoutingPoliciesArgs', 'DeviceprofileGatewayRoutingPoliciesArgsDict', 'outputs.DeviceprofileGatewayRoutingPolicies']]]]] = None,
+            service_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeviceprofileGatewayServicePolicyArgs', 'DeviceprofileGatewayServicePolicyArgsDict', 'outputs.DeviceprofileGatewayServicePolicy']]]]] = None,
+            ssr_additional_config_cmds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tunnel_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayTunnelConfigsArgs', 'DeviceprofileGatewayTunnelConfigsArgsDict', 'outputs.DeviceprofileGatewayTunnelConfigs']]]]] = None,
+            tunnel_provider_options: pulumi.Input[Optional[Union['DeviceprofileGatewayTunnelProviderOptionsArgs', 'DeviceprofileGatewayTunnelProviderOptionsArgsDict', 'outputs.DeviceprofileGatewayTunnelProviderOptions']]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            url_filtering_deny_msg: pulumi.Input[Optional[_builtins.str]] = None,
+            vrf_config: pulumi.Input[Optional[Union['DeviceprofileGatewayVrfConfigArgs', 'DeviceprofileGatewayVrfConfigArgsDict', 'outputs.DeviceprofileGatewayVrfConfig']]] = None,
+            vrf_instances: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayVrfInstancesArgs', 'DeviceprofileGatewayVrfInstancesArgsDict', 'outputs.DeviceprofileGatewayVrfInstances']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["additionalConfigCmds"] = additional_config_cmds
+        __props__["bgpConfig"] = bgp_config
+        __props__["dhcpdConfig"] = dhcpd_config
+        __props__["dnsOverride"] = dns_override
+        __props__["dnsServers"] = dns_servers
+        __props__["dnsSuffixes"] = dns_suffixes
+        __props__["extraRoutes"] = extra_routes
+        __props__["extraRoutes6"] = extra_routes6
+        __props__["idpProfiles"] = idp_profiles
+        __props__["ipConfigs"] = ip_configs
+        __props__["name"] = name
+        __props__["networks"] = networks
+        __props__["ntpOverride"] = ntp_override
+        __props__["ntpServers"] = ntp_servers
+        __props__["oobIpConfig"] = oob_ip_config
+        __props__["orgId"] = org_id
+        __props__["pathPreferences"] = path_preferences
+        __props__["portConfig"] = port_config
+        __props__["routerId"] = router_id
+        __props__["routingPolicies"] = routing_policies
+        __props__["servicePolicies"] = service_policies
+        __props__["ssrAdditionalConfigCmds"] = ssr_additional_config_cmds
+        __props__["tunnelConfigs"] = tunnel_configs
+        __props__["tunnelProviderOptions"] = tunnel_provider_options
+        __props__["type"] = type
+        __props__["urlFilteringDenyMsg"] = url_filtering_deny_msg
+        __props__["vrfConfig"] = vrf_config
+        __props__["vrfInstances"] = vrf_instances
+        return pulumi.runtime.exists_resource(None, 'junipermist:org/deviceprofileGateway:DeviceprofileGateway', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="additionalConfigCmds")
     def additional_config_cmds(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

@@ -367,6 +367,20 @@ class Alarmtemplate(pulumi.CustomResource):
         __props__.__dict__["rules"] = rules
         return Alarmtemplate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            delivery: pulumi.Input[Optional[Union['AlarmtemplateDeliveryArgs', 'AlarmtemplateDeliveryArgsDict', 'outputs.AlarmtemplateDelivery']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['AlarmtemplateRulesArgs', 'AlarmtemplateRulesArgsDict', 'outputs.AlarmtemplateRules']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["delivery"] = delivery
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["rules"] = rules
+        return pulumi.runtime.exists_resource(None, 'junipermist:org/alarmtemplate:Alarmtemplate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def delivery(self) -> pulumi.Output['outputs.AlarmtemplateDelivery']:

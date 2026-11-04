@@ -1199,6 +1199,66 @@ class DeviceprofileAp(pulumi.CustomResource):
         __props__.__dict__["zigbee_config"] = zigbee_config
         return DeviceprofileAp(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            aeroscout: pulumi.Input[Optional[Union['DeviceprofileApAeroscoutArgs', 'DeviceprofileApAeroscoutArgsDict', 'outputs.DeviceprofileApAeroscout']]] = None,
+            airista: pulumi.Input[Optional[Union['DeviceprofileApAiristaArgs', 'DeviceprofileApAiristaArgsDict', 'outputs.DeviceprofileApAirista']]] = None,
+            ble_config: pulumi.Input[Optional[Union['DeviceprofileApBleConfigArgs', 'DeviceprofileApBleConfigArgsDict', 'outputs.DeviceprofileApBleConfig']]] = None,
+            disable_eth1: pulumi.Input[Optional[_builtins.bool]] = None,
+            disable_eth2: pulumi.Input[Optional[_builtins.bool]] = None,
+            disable_eth3: pulumi.Input[Optional[_builtins.bool]] = None,
+            disable_module: pulumi.Input[Optional[_builtins.bool]] = None,
+            esl_config: pulumi.Input[Optional[Union['DeviceprofileApEslConfigArgs', 'DeviceprofileApEslConfigArgsDict', 'outputs.DeviceprofileApEslConfig']]] = None,
+            ip_config: pulumi.Input[Optional[Union['DeviceprofileApIpConfigArgs', 'DeviceprofileApIpConfigArgsDict', 'outputs.DeviceprofileApIpConfig']]] = None,
+            lacp_config: pulumi.Input[Optional[Union['DeviceprofileApLacpConfigArgs', 'DeviceprofileApLacpConfigArgsDict', 'outputs.DeviceprofileApLacpConfig']]] = None,
+            led: pulumi.Input[Optional[Union['DeviceprofileApLedArgs', 'DeviceprofileApLedArgsDict', 'outputs.DeviceprofileApLed']]] = None,
+            mesh: pulumi.Input[Optional[Union['DeviceprofileApMeshArgs', 'DeviceprofileApMeshArgsDict', 'outputs.DeviceprofileApMesh']]] = None,
+            mqtt_config: pulumi.Input[Optional[Union['DeviceprofileApMqttConfigArgs', 'DeviceprofileApMqttConfigArgsDict', 'outputs.DeviceprofileApMqttConfig']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            poe_passthrough: pulumi.Input[Optional[_builtins.bool]] = None,
+            port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['DeviceprofileApPortConfigArgs', 'DeviceprofileApPortConfigArgsDict', 'outputs.DeviceprofileApPortConfig']]]]] = None,
+            pwr_config: pulumi.Input[Optional[Union['DeviceprofileApPwrConfigArgs', 'DeviceprofileApPwrConfigArgsDict', 'outputs.DeviceprofileApPwrConfig']]] = None,
+            radio_config: pulumi.Input[Optional[Union['DeviceprofileApRadioConfigArgs', 'DeviceprofileApRadioConfigArgsDict', 'outputs.DeviceprofileApRadioConfig']]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            uplink_port_config: pulumi.Input[Optional[Union['DeviceprofileApUplinkPortConfigArgs', 'DeviceprofileApUplinkPortConfigArgsDict', 'outputs.DeviceprofileApUplinkPortConfig']]] = None,
+            usb_config: pulumi.Input[Optional[Union['DeviceprofileApUsbConfigArgs', 'DeviceprofileApUsbConfigArgsDict', 'outputs.DeviceprofileApUsbConfig']]] = None,
+            uwb_config: pulumi.Input[Optional[Union['DeviceprofileApUwbConfigArgs', 'DeviceprofileApUwbConfigArgsDict', 'outputs.DeviceprofileApUwbConfig']]] = None,
+            vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            zigbee_config: pulumi.Input[Optional[Union['DeviceprofileApZigbeeConfigArgs', 'DeviceprofileApZigbeeConfigArgsDict', 'outputs.DeviceprofileApZigbeeConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aeroscout"] = aeroscout
+        __props__["airista"] = airista
+        __props__["bleConfig"] = ble_config
+        __props__["disableEth1"] = disable_eth1
+        __props__["disableEth2"] = disable_eth2
+        __props__["disableEth3"] = disable_eth3
+        __props__["disableModule"] = disable_module
+        __props__["eslConfig"] = esl_config
+        __props__["ipConfig"] = ip_config
+        __props__["lacpConfig"] = lacp_config
+        __props__["led"] = led
+        __props__["mesh"] = mesh
+        __props__["mqttConfig"] = mqtt_config
+        __props__["name"] = name
+        __props__["ntpServers"] = ntp_servers
+        __props__["orgId"] = org_id
+        __props__["poePassthrough"] = poe_passthrough
+        __props__["portConfig"] = port_config
+        __props__["pwrConfig"] = pwr_config
+        __props__["radioConfig"] = radio_config
+        __props__["siteId"] = site_id
+        __props__["type"] = type
+        __props__["uplinkPortConfig"] = uplink_port_config
+        __props__["usbConfig"] = usb_config
+        __props__["uwbConfig"] = uwb_config
+        __props__["vars"] = vars
+        __props__["zigbeeConfig"] = zigbee_config
+        return pulumi.runtime.exists_resource(None, 'junipermist:org/deviceprofileAp:DeviceprofileAp', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def aeroscout(self) -> pulumi.Output[Optional['outputs.DeviceprofileApAeroscout']]:

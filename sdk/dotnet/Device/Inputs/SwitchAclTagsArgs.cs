@@ -67,7 +67,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         ///   * `Type`==`RadiusGroup`
         ///   * `Type`==`ArubaUserRole`
         ///   * `Type`==`StaticGbp`
-        /// if from matching radius_group
+        ///     if from matching radius_group
         /// </summary>
         [Input("radiusGroup")]
         public Input<string>? RadiusGroup { get; set; }

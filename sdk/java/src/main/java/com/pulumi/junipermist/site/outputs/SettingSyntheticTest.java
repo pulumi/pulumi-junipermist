@@ -41,11 +41,10 @@ public final class SettingSyntheticTest {
     /**
      * @return Deprecated VLAN-based synthetic test settings
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     private @Nullable List<SettingSyntheticTestVlan> vlans;
     /**
      * @return WAN speedtest settings for synthetic tests
@@ -85,11 +84,10 @@ public final class SettingSyntheticTest {
     /**
      * @return Deprecated VLAN-based synthetic test settings
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public List<SettingSyntheticTestVlan> vlans() {
         return this.vlans == null ? List.of() : this.vlans;
     }

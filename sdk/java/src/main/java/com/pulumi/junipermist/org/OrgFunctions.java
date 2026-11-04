@@ -2923,7 +2923,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of Org Network Templates (Switch templates).
      * 
-     * A network template is a predefined configuration that provides a consistent and reusable set of network settings for devices within an organization. It includes various parameters such as ip addressing, vlan configurations, routing protocols, security policies, and other network-specific settings.\
+     * A network template is a predefined configuration that provides a consistent and reusable set of network settings for devices within an organization. It includes various parameters such as ip addressing, vlan configurations, routing protocols, security policies, and other network-specific settings.&#92;
      * Network templates simplify the deployment and management of switches by ensuring consistent configurations across multiple devices and sites. They help enforce standardization, reduce human error, and streamline troubleshooting and maintenance tasks.
      * 
      * ## Example Usage
@@ -2966,7 +2966,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of Org Network Templates (Switch templates).
      * 
-     * A network template is a predefined configuration that provides a consistent and reusable set of network settings for devices within an organization. It includes various parameters such as ip addressing, vlan configurations, routing protocols, security policies, and other network-specific settings.\
+     * A network template is a predefined configuration that provides a consistent and reusable set of network settings for devices within an organization. It includes various parameters such as ip addressing, vlan configurations, routing protocols, security policies, and other network-specific settings.&#92;
      * Network templates simplify the deployment and management of switches by ensuring consistent configurations across multiple devices and sites. They help enforce standardization, reduce human error, and streamline troubleshooting and maintenance tasks.
      * 
      * ## Example Usage
@@ -3009,7 +3009,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of Org Network Templates (Switch templates).
      * 
-     * A network template is a predefined configuration that provides a consistent and reusable set of network settings for devices within an organization. It includes various parameters such as ip addressing, vlan configurations, routing protocols, security policies, and other network-specific settings.\
+     * A network template is a predefined configuration that provides a consistent and reusable set of network settings for devices within an organization. It includes various parameters such as ip addressing, vlan configurations, routing protocols, security policies, and other network-specific settings.&#92;
      * Network templates simplify the deployment and management of switches by ensuring consistent configurations across multiple devices and sites. They help enforce standardization, reduce human error, and streamline troubleshooting and maintenance tasks.
      * 
      * ## Example Usage
@@ -3052,7 +3052,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of Org Network Templates (Switch templates).
      * 
-     * A network template is a predefined configuration that provides a consistent and reusable set of network settings for devices within an organization. It includes various parameters such as ip addressing, vlan configurations, routing protocols, security policies, and other network-specific settings.\
+     * A network template is a predefined configuration that provides a consistent and reusable set of network settings for devices within an organization. It includes various parameters such as ip addressing, vlan configurations, routing protocols, security policies, and other network-specific settings.&#92;
      * Network templates simplify the deployment and management of switches by ensuring consistent configurations across multiple devices and sites. They help enforce standardization, reduce human error, and streamline troubleshooting and maintenance tasks.
      * 
      * ## Example Usage
@@ -3095,7 +3095,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of Org Network Templates (Switch templates).
      * 
-     * A network template is a predefined configuration that provides a consistent and reusable set of network settings for devices within an organization. It includes various parameters such as ip addressing, vlan configurations, routing protocols, security policies, and other network-specific settings.\
+     * A network template is a predefined configuration that provides a consistent and reusable set of network settings for devices within an organization. It includes various parameters such as ip addressing, vlan configurations, routing protocols, security policies, and other network-specific settings.&#92;
      * Network templates simplify the deployment and management of switches by ensuring consistent configurations across multiple devices and sites. They help enforce standardization, reduce human error, and streamline troubleshooting and maintenance tasks.
      * 
      * ## Example Usage
@@ -3138,9 +3138,9 @@ public final class OrgFunctions {
     /**
      * This data source provides the list Org Psks.
      * 
-     * A multi PSK (Pre-Shared Key) is a feature that allows the use of multiple PSKs for securing network connections.\
-     * It provides a simple and comprehensive way to onboard client devices without relying on client mac addresses.\
-     * Each psk has its own key name, which can be used for user-level accountability, key rotation, and visibility in the management platform. It supports the creation, rotation, and auto-expiration of psks, and allows vlan assignment and role assignment for dynamic per-user policies.\
+     * A multi PSK (Pre-Shared Key) is a feature that allows the use of multiple PSKs for securing network connections.&#92;
+     * It provides a simple and comprehensive way to onboard client devices without relying on client mac addresses.&#92;
+     * Each psk has its own key name, which can be used for user-level accountability, key rotation, and visibility in the management platform. It supports the creation, rotation, and auto-expiration of psks, and allows vlan assignment and role assignment for dynamic per-user policies.&#92;
      * Multi PSKs create virtual broadcast domains and can be used for end-user onboarding via authenticated sso login.
      * 
      * ## Example Usage
@@ -3186,9 +3186,9 @@ public final class OrgFunctions {
     /**
      * This data source provides the list Org Psks.
      * 
-     * A multi PSK (Pre-Shared Key) is a feature that allows the use of multiple PSKs for securing network connections.\
-     * It provides a simple and comprehensive way to onboard client devices without relying on client mac addresses.\
-     * Each psk has its own key name, which can be used for user-level accountability, key rotation, and visibility in the management platform. It supports the creation, rotation, and auto-expiration of psks, and allows vlan assignment and role assignment for dynamic per-user policies.\
+     * A multi PSK (Pre-Shared Key) is a feature that allows the use of multiple PSKs for securing network connections.&#92;
+     * It provides a simple and comprehensive way to onboard client devices without relying on client mac addresses.&#92;
+     * Each psk has its own key name, which can be used for user-level accountability, key rotation, and visibility in the management platform. It supports the creation, rotation, and auto-expiration of psks, and allows vlan assignment and role assignment for dynamic per-user policies.&#92;
      * Multi PSKs create virtual broadcast domains and can be used for end-user onboarding via authenticated sso login.
      * 
      * ## Example Usage
@@ -3234,9 +3234,9 @@ public final class OrgFunctions {
     /**
      * This data source provides the list Org Psks.
      * 
-     * A multi PSK (Pre-Shared Key) is a feature that allows the use of multiple PSKs for securing network connections.\
-     * It provides a simple and comprehensive way to onboard client devices without relying on client mac addresses.\
-     * Each psk has its own key name, which can be used for user-level accountability, key rotation, and visibility in the management platform. It supports the creation, rotation, and auto-expiration of psks, and allows vlan assignment and role assignment for dynamic per-user policies.\
+     * A multi PSK (Pre-Shared Key) is a feature that allows the use of multiple PSKs for securing network connections.&#92;
+     * It provides a simple and comprehensive way to onboard client devices without relying on client mac addresses.&#92;
+     * Each psk has its own key name, which can be used for user-level accountability, key rotation, and visibility in the management platform. It supports the creation, rotation, and auto-expiration of psks, and allows vlan assignment and role assignment for dynamic per-user policies.&#92;
      * Multi PSKs create virtual broadcast domains and can be used for end-user onboarding via authenticated sso login.
      * 
      * ## Example Usage
@@ -3282,9 +3282,9 @@ public final class OrgFunctions {
     /**
      * This data source provides the list Org Psks.
      * 
-     * A multi PSK (Pre-Shared Key) is a feature that allows the use of multiple PSKs for securing network connections.\
-     * It provides a simple and comprehensive way to onboard client devices without relying on client mac addresses.\
-     * Each psk has its own key name, which can be used for user-level accountability, key rotation, and visibility in the management platform. It supports the creation, rotation, and auto-expiration of psks, and allows vlan assignment and role assignment for dynamic per-user policies.\
+     * A multi PSK (Pre-Shared Key) is a feature that allows the use of multiple PSKs for securing network connections.&#92;
+     * It provides a simple and comprehensive way to onboard client devices without relying on client mac addresses.&#92;
+     * Each psk has its own key name, which can be used for user-level accountability, key rotation, and visibility in the management platform. It supports the creation, rotation, and auto-expiration of psks, and allows vlan assignment and role assignment for dynamic per-user policies.&#92;
      * Multi PSKs create virtual broadcast domains and can be used for end-user onboarding via authenticated sso login.
      * 
      * ## Example Usage
@@ -3330,9 +3330,9 @@ public final class OrgFunctions {
     /**
      * This data source provides the list Org Psks.
      * 
-     * A multi PSK (Pre-Shared Key) is a feature that allows the use of multiple PSKs for securing network connections.\
-     * It provides a simple and comprehensive way to onboard client devices without relying on client mac addresses.\
-     * Each psk has its own key name, which can be used for user-level accountability, key rotation, and visibility in the management platform. It supports the creation, rotation, and auto-expiration of psks, and allows vlan assignment and role assignment for dynamic per-user policies.\
+     * A multi PSK (Pre-Shared Key) is a feature that allows the use of multiple PSKs for securing network connections.&#92;
+     * It provides a simple and comprehensive way to onboard client devices without relying on client mac addresses.&#92;
+     * Each psk has its own key name, which can be used for user-level accountability, key rotation, and visibility in the management platform. It supports the creation, rotation, and auto-expiration of psks, and allows vlan assignment and role assignment for dynamic per-user policies.&#92;
      * Multi PSKs create virtual broadcast domains and can be used for end-user onboarding via authenticated sso login.
      * 
      * ## Example Usage
@@ -4048,7 +4048,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of Org Site Groups (sitegroups).
      * 
-     * A site group is a feature that allows users to group multiple sites together based on regions, functions, or other parameters for efficient management of devices.\
+     * A site group is a feature that allows users to group multiple sites together based on regions, functions, or other parameters for efficient management of devices.&#92;
      * Sites can exist in multiple groups simultaneously, and site groups can be used to ensure consistent settings, manage administrator access, and apply specific templates to groups of sites.
      * 
      * ## Example Usage
@@ -4091,7 +4091,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of Org Site Groups (sitegroups).
      * 
-     * A site group is a feature that allows users to group multiple sites together based on regions, functions, or other parameters for efficient management of devices.\
+     * A site group is a feature that allows users to group multiple sites together based on regions, functions, or other parameters for efficient management of devices.&#92;
      * Sites can exist in multiple groups simultaneously, and site groups can be used to ensure consistent settings, manage administrator access, and apply specific templates to groups of sites.
      * 
      * ## Example Usage
@@ -4134,7 +4134,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of Org Site Groups (sitegroups).
      * 
-     * A site group is a feature that allows users to group multiple sites together based on regions, functions, or other parameters for efficient management of devices.\
+     * A site group is a feature that allows users to group multiple sites together based on regions, functions, or other parameters for efficient management of devices.&#92;
      * Sites can exist in multiple groups simultaneously, and site groups can be used to ensure consistent settings, manage administrator access, and apply specific templates to groups of sites.
      * 
      * ## Example Usage
@@ -4177,7 +4177,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of Org Site Groups (sitegroups).
      * 
-     * A site group is a feature that allows users to group multiple sites together based on regions, functions, or other parameters for efficient management of devices.\
+     * A site group is a feature that allows users to group multiple sites together based on regions, functions, or other parameters for efficient management of devices.&#92;
      * Sites can exist in multiple groups simultaneously, and site groups can be used to ensure consistent settings, manage administrator access, and apply specific templates to groups of sites.
      * 
      * ## Example Usage
@@ -4220,7 +4220,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of Org Site Groups (sitegroups).
      * 
-     * A site group is a feature that allows users to group multiple sites together based on regions, functions, or other parameters for efficient management of devices.\
+     * A site group is a feature that allows users to group multiple sites together based on regions, functions, or other parameters for efficient management of devices.&#92;
      * Sites can exist in multiple groups simultaneously, and site groups can be used to ensure consistent settings, manage administrator access, and apply specific templates to groups of sites.
      * 
      * ## Example Usage
@@ -4478,8 +4478,8 @@ public final class OrgFunctions {
     /**
      * This resource provides the list of SSO Roles.
      * 
-     * SSO roles refer to the different functions assigned to users within a Single Sign-On (SSO) system.\
-     * These roles determine the tasks and actions that users can perform within the SSO system. There are typically predefined roles and custom roles in an SSO system.\
+     * SSO roles refer to the different functions assigned to users within a Single Sign-On (SSO) system.&#92;
+     * These roles determine the tasks and actions that users can perform within the SSO system. There are typically predefined roles and custom roles in an SSO system.&#92;
      * Roles in SSO provide a well-defined separation of responsibility and visibility, allowing for granular-level access control on SSO objects.
      * 
      * ## Example Usage
@@ -4522,8 +4522,8 @@ public final class OrgFunctions {
     /**
      * This resource provides the list of SSO Roles.
      * 
-     * SSO roles refer to the different functions assigned to users within a Single Sign-On (SSO) system.\
-     * These roles determine the tasks and actions that users can perform within the SSO system. There are typically predefined roles and custom roles in an SSO system.\
+     * SSO roles refer to the different functions assigned to users within a Single Sign-On (SSO) system.&#92;
+     * These roles determine the tasks and actions that users can perform within the SSO system. There are typically predefined roles and custom roles in an SSO system.&#92;
      * Roles in SSO provide a well-defined separation of responsibility and visibility, allowing for granular-level access control on SSO objects.
      * 
      * ## Example Usage
@@ -4566,8 +4566,8 @@ public final class OrgFunctions {
     /**
      * This resource provides the list of SSO Roles.
      * 
-     * SSO roles refer to the different functions assigned to users within a Single Sign-On (SSO) system.\
-     * These roles determine the tasks and actions that users can perform within the SSO system. There are typically predefined roles and custom roles in an SSO system.\
+     * SSO roles refer to the different functions assigned to users within a Single Sign-On (SSO) system.&#92;
+     * These roles determine the tasks and actions that users can perform within the SSO system. There are typically predefined roles and custom roles in an SSO system.&#92;
      * Roles in SSO provide a well-defined separation of responsibility and visibility, allowing for granular-level access control on SSO objects.
      * 
      * ## Example Usage
@@ -4610,8 +4610,8 @@ public final class OrgFunctions {
     /**
      * This resource provides the list of SSO Roles.
      * 
-     * SSO roles refer to the different functions assigned to users within a Single Sign-On (SSO) system.\
-     * These roles determine the tasks and actions that users can perform within the SSO system. There are typically predefined roles and custom roles in an SSO system.\
+     * SSO roles refer to the different functions assigned to users within a Single Sign-On (SSO) system.&#92;
+     * These roles determine the tasks and actions that users can perform within the SSO system. There are typically predefined roles and custom roles in an SSO system.&#92;
      * Roles in SSO provide a well-defined separation of responsibility and visibility, allowing for granular-level access control on SSO objects.
      * 
      * ## Example Usage
@@ -4654,8 +4654,8 @@ public final class OrgFunctions {
     /**
      * This resource provides the list of SSO Roles.
      * 
-     * SSO roles refer to the different functions assigned to users within a Single Sign-On (SSO) system.\
-     * These roles determine the tasks and actions that users can perform within the SSO system. There are typically predefined roles and custom roles in an SSO system.\
+     * SSO roles refer to the different functions assigned to users within a Single Sign-On (SSO) system.&#92;
+     * These roles determine the tasks and actions that users can perform within the SSO system. There are typically predefined roles and custom roles in an SSO system.&#92;
      * Roles in SSO provide a well-defined separation of responsibility and visibility, allowing for granular-level access control on SSO objects.
      * 
      * ## Example Usage
@@ -4898,8 +4898,8 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of Org Webhooks.
      * 
-     * A Webhook is a configuration that allows real-time events and data from the Org to be pushed to a provided url.\
-     * It enables the collection of information about various topics such as device events, alarms, and audits updates at the org level.\
+     * A Webhook is a configuration that allows real-time events and data from the Org to be pushed to a provided url.&#92;
+     * It enables the collection of information about various topics such as device events, alarms, and audits updates at the org level.&#92;
      * The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
      * 
      * ## Example Usage
@@ -4942,8 +4942,8 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of Org Webhooks.
      * 
-     * A Webhook is a configuration that allows real-time events and data from the Org to be pushed to a provided url.\
-     * It enables the collection of information about various topics such as device events, alarms, and audits updates at the org level.\
+     * A Webhook is a configuration that allows real-time events and data from the Org to be pushed to a provided url.&#92;
+     * It enables the collection of information about various topics such as device events, alarms, and audits updates at the org level.&#92;
      * The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
      * 
      * ## Example Usage
@@ -4986,8 +4986,8 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of Org Webhooks.
      * 
-     * A Webhook is a configuration that allows real-time events and data from the Org to be pushed to a provided url.\
-     * It enables the collection of information about various topics such as device events, alarms, and audits updates at the org level.\
+     * A Webhook is a configuration that allows real-time events and data from the Org to be pushed to a provided url.&#92;
+     * It enables the collection of information about various topics such as device events, alarms, and audits updates at the org level.&#92;
      * The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
      * 
      * ## Example Usage
@@ -5030,8 +5030,8 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of Org Webhooks.
      * 
-     * A Webhook is a configuration that allows real-time events and data from the Org to be pushed to a provided url.\
-     * It enables the collection of information about various topics such as device events, alarms, and audits updates at the org level.\
+     * A Webhook is a configuration that allows real-time events and data from the Org to be pushed to a provided url.&#92;
+     * It enables the collection of information about various topics such as device events, alarms, and audits updates at the org level.&#92;
      * The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
      * 
      * ## Example Usage
@@ -5074,8 +5074,8 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of Org Webhooks.
      * 
-     * A Webhook is a configuration that allows real-time events and data from the Org to be pushed to a provided url.\
-     * It enables the collection of information about various topics such as device events, alarms, and audits updates at the org level.\
+     * A Webhook is a configuration that allows real-time events and data from the Org to be pushed to a provided url.&#92;
+     * It enables the collection of information about various topics such as device events, alarms, and audits updates at the org level.&#92;
      * The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
      * 
      * ## Example Usage
@@ -5328,8 +5328,8 @@ public final class OrgFunctions {
     /**
      * This datasource provides the list of WLAN Templates in a Mist Organization.
      * 
-     * A WLAN template is a collection of WLANs, tunneling policies, and wxlan policies. It is used to create and manage wlan configurations at an organizational level.\
-     * WLAN templates allow for modular, scalable, and easy-to-manage configuration of ssids and their application to specific sites, site groups, or ap device profiles.\
+     * A WLAN template is a collection of WLANs, tunneling policies, and wxlan policies. It is used to create and manage wlan configurations at an organizational level.&#92;
+     * WLAN templates allow for modular, scalable, and easy-to-manage configuration of ssids and their application to specific sites, site groups, or ap device profiles.&#92;
      * They are valuable for automating configuration across multiple sites and profiles, making it easier to scale efficiently.
      * 
      * ## Example Usage
@@ -5372,8 +5372,8 @@ public final class OrgFunctions {
     /**
      * This datasource provides the list of WLAN Templates in a Mist Organization.
      * 
-     * A WLAN template is a collection of WLANs, tunneling policies, and wxlan policies. It is used to create and manage wlan configurations at an organizational level.\
-     * WLAN templates allow for modular, scalable, and easy-to-manage configuration of ssids and their application to specific sites, site groups, or ap device profiles.\
+     * A WLAN template is a collection of WLANs, tunneling policies, and wxlan policies. It is used to create and manage wlan configurations at an organizational level.&#92;
+     * WLAN templates allow for modular, scalable, and easy-to-manage configuration of ssids and their application to specific sites, site groups, or ap device profiles.&#92;
      * They are valuable for automating configuration across multiple sites and profiles, making it easier to scale efficiently.
      * 
      * ## Example Usage
@@ -5416,8 +5416,8 @@ public final class OrgFunctions {
     /**
      * This datasource provides the list of WLAN Templates in a Mist Organization.
      * 
-     * A WLAN template is a collection of WLANs, tunneling policies, and wxlan policies. It is used to create and manage wlan configurations at an organizational level.\
-     * WLAN templates allow for modular, scalable, and easy-to-manage configuration of ssids and their application to specific sites, site groups, or ap device profiles.\
+     * A WLAN template is a collection of WLANs, tunneling policies, and wxlan policies. It is used to create and manage wlan configurations at an organizational level.&#92;
+     * WLAN templates allow for modular, scalable, and easy-to-manage configuration of ssids and their application to specific sites, site groups, or ap device profiles.&#92;
      * They are valuable for automating configuration across multiple sites and profiles, making it easier to scale efficiently.
      * 
      * ## Example Usage
@@ -5460,8 +5460,8 @@ public final class OrgFunctions {
     /**
      * This datasource provides the list of WLAN Templates in a Mist Organization.
      * 
-     * A WLAN template is a collection of WLANs, tunneling policies, and wxlan policies. It is used to create and manage wlan configurations at an organizational level.\
-     * WLAN templates allow for modular, scalable, and easy-to-manage configuration of ssids and their application to specific sites, site groups, or ap device profiles.\
+     * A WLAN template is a collection of WLANs, tunneling policies, and wxlan policies. It is used to create and manage wlan configurations at an organizational level.&#92;
+     * WLAN templates allow for modular, scalable, and easy-to-manage configuration of ssids and their application to specific sites, site groups, or ap device profiles.&#92;
      * They are valuable for automating configuration across multiple sites and profiles, making it easier to scale efficiently.
      * 
      * ## Example Usage
@@ -5504,8 +5504,8 @@ public final class OrgFunctions {
     /**
      * This datasource provides the list of WLAN Templates in a Mist Organization.
      * 
-     * A WLAN template is a collection of WLANs, tunneling policies, and wxlan policies. It is used to create and manage wlan configurations at an organizational level.\
-     * WLAN templates allow for modular, scalable, and easy-to-manage configuration of ssids and their application to specific sites, site groups, or ap device profiles.\
+     * A WLAN template is a collection of WLANs, tunneling policies, and wxlan policies. It is used to create and manage wlan configurations at an organizational level.&#92;
+     * WLAN templates allow for modular, scalable, and easy-to-manage configuration of ssids and their application to specific sites, site groups, or ap device profiles.&#92;
      * They are valuable for automating configuration across multiple sites and profiles, making it easier to scale efficiently.
      * 
      * ## Example Usage

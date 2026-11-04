@@ -14,7 +14,6 @@ namespace Pulumi.JuniperMist.Device
         /// <summary>
         /// This data source provides the list of Switches with their statistics.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -47,7 +46,6 @@ namespace Pulumi.JuniperMist.Device
         /// <summary>
         /// This data source provides the list of Switches with their statistics.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -79,7 +77,6 @@ namespace Pulumi.JuniperMist.Device
 
         /// <summary>
         /// This data source provides the list of Switches with their statistics.
-        /// 
         /// 
         /// ## Example Usage
         /// 

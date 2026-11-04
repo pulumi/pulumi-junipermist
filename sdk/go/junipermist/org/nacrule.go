@@ -186,6 +186,12 @@ func (NacruleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*nacruleState)(nil)).Elem()
 }
 
+// NacruleExists checks whether an existing Nacrule resource with the given ID exists.
+func NacruleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NacruleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:org/nacrule:Nacrule", id, state, "", opts...)
+}
+
 type nacruleArgs struct {
 	// Allow or block decision applied when the NAC rule matches
 	Action string `pulumi:"action"`

@@ -531,6 +531,30 @@ class Wxtag(pulumi.CustomResource):
         __props__.__dict__["vlan_id"] = vlan_id
         return Wxtag(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            mac: pulumi.Input[Optional[_builtins.str]] = None,
+            match: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            op: pulumi.Input[Optional[_builtins.str]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            specs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WxtagSpecArgs', 'WxtagSpecArgsDict', 'outputs.WxtagSpec']]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            vlan_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["mac"] = mac
+        __props__["match"] = match
+        __props__["name"] = name
+        __props__["op"] = op
+        __props__["siteId"] = site_id
+        __props__["specs"] = specs
+        __props__["type"] = type
+        __props__["values"] = values
+        __props__["vlanId"] = vlan_id
+        return pulumi.runtime.exists_resource(None, 'junipermist:site/wxtag:Wxtag', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def mac(self) -> pulumi.Output[Optional[_builtins.str]]:

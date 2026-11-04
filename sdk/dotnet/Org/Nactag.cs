@@ -80,7 +80,6 @@ namespace Pulumi.JuniperMist.Org
         ///   * `False`: means it is sufficient to match any of the values (i.e., match-any behavior)
         ///   * `True`: means all values should be matched (i.e., match-all behavior)
         /// 
-        /// 
         /// Currently it makes sense to set this field to `True` only if the `Match`==`IdpRole`, `Match`==`UsermacLabel` and `EdrStatus`
         /// </summary>
         [Output("matchAll")]
@@ -234,7 +233,6 @@ namespace Pulumi.JuniperMist.Org
         ///   * `False`: means it is sufficient to match any of the values (i.e., match-any behavior)
         ///   * `True`: means all values should be matched (i.e., match-all behavior)
         /// 
-        /// 
         /// Currently it makes sense to set this field to `True` only if the `Match`==`IdpRole`, `Match`==`UsermacLabel` and `EdrStatus`
         /// </summary>
         [Input("matchAll")]
@@ -366,7 +364,6 @@ namespace Pulumi.JuniperMist.Org
         /// This field is applicable only when `Type`==`Match`
         ///   * `False`: means it is sufficient to match any of the values (i.e., match-any behavior)
         ///   * `True`: means all values should be matched (i.e., match-all behavior)
-        /// 
         /// 
         /// Currently it makes sense to set this field to `True` only if the `Match`==`IdpRole`, `Match`==`UsermacLabel` and `EdrStatus`
         /// </summary>

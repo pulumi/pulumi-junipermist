@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org
     {
         /// <summary>
         /// This resource provides the list of Org WxLan tags (labels).
-        /// A WxTag is a label or tag used in the mist system to classify and categorize applications, users, and resources for the purpose of creating policies and making network management decisions.They can be used 
+        /// A WxTag is a label or tag used in the mist system to classify and categorize applications, users, and resources for the purpose of creating policies and making network management decisions.They can be used
         /// * within the Org WxRules to create filtering rules:
         ///   * `mist_org_wxrule.dst_allow_wxtags`
         ///   * `mist_org_wxrule.dst_deny_wxtags`
@@ -24,7 +24,6 @@ namespace Pulumi.JuniperMist.Org
         /// * in the WLANs configuration to assign a WLAN to specific APs:
         ///   * `mist_org_wlan.wxtag_ids`
         /// * to identify unknown application used by Wi-Fi clients
-        /// 
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +48,7 @@ namespace Pulumi.JuniperMist.Org
 
         /// <summary>
         /// This resource provides the list of Org WxLan tags (labels).
-        /// A WxTag is a label or tag used in the mist system to classify and categorize applications, users, and resources for the purpose of creating policies and making network management decisions.They can be used 
+        /// A WxTag is a label or tag used in the mist system to classify and categorize applications, users, and resources for the purpose of creating policies and making network management decisions.They can be used
         /// * within the Org WxRules to create filtering rules:
         ///   * `mist_org_wxrule.dst_allow_wxtags`
         ///   * `mist_org_wxrule.dst_deny_wxtags`
@@ -60,7 +59,6 @@ namespace Pulumi.JuniperMist.Org
         /// * in the WLANs configuration to assign a WLAN to specific APs:
         ///   * `mist_org_wlan.wxtag_ids`
         /// * to identify unknown application used by Wi-Fi clients
-        /// 
         /// 
         /// ## Example Usage
         /// 
@@ -85,7 +83,7 @@ namespace Pulumi.JuniperMist.Org
 
         /// <summary>
         /// This resource provides the list of Org WxLan tags (labels).
-        /// A WxTag is a label or tag used in the mist system to classify and categorize applications, users, and resources for the purpose of creating policies and making network management decisions.They can be used 
+        /// A WxTag is a label or tag used in the mist system to classify and categorize applications, users, and resources for the purpose of creating policies and making network management decisions.They can be used
         /// * within the Org WxRules to create filtering rules:
         ///   * `mist_org_wxrule.dst_allow_wxtags`
         ///   * `mist_org_wxrule.dst_deny_wxtags`
@@ -96,7 +94,6 @@ namespace Pulumi.JuniperMist.Org
         /// * in the WLANs configuration to assign a WLAN to specific APs:
         ///   * `mist_org_wlan.wxtag_ids`
         /// * to identify unknown application used by Wi-Fi clients
-        /// 
         /// 
         /// ## Example Usage
         /// 

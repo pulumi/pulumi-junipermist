@@ -1050,6 +1050,64 @@ class Mxedge(pulumi.CustomResource):
         __props__.__dict__["versions"] = versions
         return Mxedge(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            claim_code: pulumi.Input[Optional[_builtins.str]] = None,
+            for_site: pulumi.Input[Optional[_builtins.bool]] = None,
+            mac: pulumi.Input[Optional[_builtins.str]] = None,
+            model: pulumi.Input[Optional[_builtins.str]] = None,
+            mxagent_registered: pulumi.Input[Optional[_builtins.bool]] = None,
+            mxcluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            mxedge_mgmt: pulumi.Input[Optional[Union['MxedgeMxedgeMgmtArgs', 'MxedgeMxedgeMgmtArgsDict', 'outputs.MxedgeMxedgeMgmt']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notes: pulumi.Input[Optional[_builtins.str]] = None,
+            ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            oob_ip_config: pulumi.Input[Optional[Union['MxedgeOobIpConfigArgs', 'MxedgeOobIpConfigArgsDict', 'outputs.MxedgeOobIpConfig']]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy: pulumi.Input[Optional[Union['MxedgeProxyArgs', 'MxedgeProxyArgsDict', 'outputs.MxedgeProxy']]] = None,
+            services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tunterm_dhcpd_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermDhcpdConfigArgs', 'MxedgeTuntermDhcpdConfigArgsDict', 'outputs.MxedgeTuntermDhcpdConfig']]]]] = None,
+            tunterm_extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermExtraRoutesArgs', 'MxedgeTuntermExtraRoutesArgsDict', 'outputs.MxedgeTuntermExtraRoutes']]]]] = None,
+            tunterm_igmp_snooping_config: pulumi.Input[Optional[Union['MxedgeTuntermIgmpSnoopingConfigArgs', 'MxedgeTuntermIgmpSnoopingConfigArgsDict', 'outputs.MxedgeTuntermIgmpSnoopingConfig']]] = None,
+            tunterm_ip_config: pulumi.Input[Optional[Union['MxedgeTuntermIpConfigArgs', 'MxedgeTuntermIpConfigArgsDict', 'outputs.MxedgeTuntermIpConfig']]] = None,
+            tunterm_monitorings: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['MxedgeTuntermMonitoringArgs', 'MxedgeTuntermMonitoringArgsDict', 'outputs.MxedgeTuntermMonitoring']]]]]]] = None,
+            tunterm_multicast_config: pulumi.Input[Optional[Union['MxedgeTuntermMulticastConfigArgs', 'MxedgeTuntermMulticastConfigArgsDict', 'outputs.MxedgeTuntermMulticastConfig']]] = None,
+            tunterm_other_ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermOtherIpConfigsArgs', 'MxedgeTuntermOtherIpConfigsArgsDict', 'outputs.MxedgeTuntermOtherIpConfigs']]]]] = None,
+            tunterm_port_config: pulumi.Input[Optional[Union['MxedgeTuntermPortConfigArgs', 'MxedgeTuntermPortConfigArgsDict', 'outputs.MxedgeTuntermPortConfig']]] = None,
+            tunterm_registered: pulumi.Input[Optional[_builtins.bool]] = None,
+            tunterm_switch_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermSwitchConfigArgs', 'MxedgeTuntermSwitchConfigArgsDict', 'outputs.MxedgeTuntermSwitchConfig']]]]] = None,
+            versions: pulumi.Input[Optional[Union['MxedgeVersionsArgs', 'MxedgeVersionsArgsDict', 'outputs.MxedgeVersions']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["claimCode"] = claim_code
+        __props__["forSite"] = for_site
+        __props__["mac"] = mac
+        __props__["model"] = model
+        __props__["mxagentRegistered"] = mxagent_registered
+        __props__["mxclusterId"] = mxcluster_id
+        __props__["mxedgeMgmt"] = mxedge_mgmt
+        __props__["name"] = name
+        __props__["notes"] = notes
+        __props__["ntpServers"] = ntp_servers
+        __props__["oobIpConfig"] = oob_ip_config
+        __props__["orgId"] = org_id
+        __props__["proxy"] = proxy
+        __props__["services"] = services
+        __props__["siteId"] = site_id
+        __props__["tuntermDhcpdConfig"] = tunterm_dhcpd_config
+        __props__["tuntermExtraRoutes"] = tunterm_extra_routes
+        __props__["tuntermIgmpSnoopingConfig"] = tunterm_igmp_snooping_config
+        __props__["tuntermIpConfig"] = tunterm_ip_config
+        __props__["tuntermMonitorings"] = tunterm_monitorings
+        __props__["tuntermMulticastConfig"] = tunterm_multicast_config
+        __props__["tuntermOtherIpConfigs"] = tunterm_other_ip_configs
+        __props__["tuntermPortConfig"] = tunterm_port_config
+        __props__["tuntermRegistered"] = tunterm_registered
+        __props__["tuntermSwitchConfig"] = tunterm_switch_config
+        __props__["versions"] = versions
+        return pulumi.runtime.exists_resource(None, 'junipermist:org/mxedge:Mxedge', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="claimCode")
     def claim_code(self) -> pulumi.Output[_builtins.str]:

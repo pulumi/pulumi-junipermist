@@ -85,22 +85,20 @@ public final class SettingSyntheticTestArgs extends com.pulumi.resources.Resourc
     /**
      * Deprecated VLAN-based synthetic test settings
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     @Import(name="vlans")
     private @Nullable Output<List<SettingSyntheticTestVlanArgs>> vlans;
 
     /**
      * @return Deprecated VLAN-based synthetic test settings
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public Optional<Output<List<SettingSyntheticTestVlanArgs>>> vlans() {
         return Optional.ofNullable(this.vlans);
     }
@@ -248,11 +246,10 @@ public final class SettingSyntheticTestArgs extends com.pulumi.resources.Resourc
          * 
          * @return builder
          * 
-         * @deprecated
-         * This attribute is deprecated.
+         * @deprecated This attribute is deprecated.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated
         public Builder vlans(@Nullable Output<List<SettingSyntheticTestVlanArgs>> vlans) {
             $.vlans = vlans;
             return this;
@@ -263,11 +260,10 @@ public final class SettingSyntheticTestArgs extends com.pulumi.resources.Resourc
          * 
          * @return builder
          * 
-         * @deprecated
-         * This attribute is deprecated.
+         * @deprecated This attribute is deprecated.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated
         public Builder vlans(List<SettingSyntheticTestVlanArgs> vlans) {
             return vlans(Output.of(vlans));
         }
@@ -277,11 +273,10 @@ public final class SettingSyntheticTestArgs extends com.pulumi.resources.Resourc
          * 
          * @return builder
          * 
-         * @deprecated
-         * This attribute is deprecated.
+         * @deprecated This attribute is deprecated.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated
         public Builder vlans(SettingSyntheticTestVlanArgs... vlans) {
             return vlans(List.of(vlans));
         }

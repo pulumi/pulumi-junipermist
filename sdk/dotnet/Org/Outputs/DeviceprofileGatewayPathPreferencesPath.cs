@@ -30,8 +30,8 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? InternetAccess;
         /// <summary>
-        /// Required when 
-        ///   * `Type`==`Vpn`: the name of the VPN Path to use 
+        /// Required when
+        ///   * `Type`==`Vpn`: the name of the VPN Path to use
         ///   * `Type`==`Wan`: the name of the WAN interface to use
         /// </summary>
         public readonly string? Name;

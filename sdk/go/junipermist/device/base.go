@@ -221,6 +221,12 @@ func (BaseState) ElementType() reflect.Type {
 	return reflect.TypeOf((*baseState)(nil)).Elem()
 }
 
+// BaseExists checks whether an existing Base resource with the given ID exists.
+func BaseExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BaseState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:device/base:base", id, state, "", opts...)
+}
+
 type baseArgs struct {
 	// full address of the site
 	Address string `pulumi:"address"`

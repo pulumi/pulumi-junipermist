@@ -237,6 +237,12 @@ func (SsoState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ssoState)(nil)).Elem()
 }
 
+// SsoExists checks whether an existing Sso resource with the given ID exists.
+func SsoExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SsoState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:org/sso:Sso", id, state, "", opts...)
+}
+
 type ssoArgs struct {
 	// a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is different from SP-initiated SLO process)
 	CustomLogoutUrl *string `pulumi:"customLogoutUrl"`

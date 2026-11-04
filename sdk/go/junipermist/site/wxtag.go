@@ -173,6 +173,12 @@ func (WxtagState) ElementType() reflect.Type {
 	return reflect.TypeOf((*wxtagState)(nil)).Elem()
 }
 
+// WxtagExists checks whether an existing Wxtag resource with the given ID exists.
+func WxtagExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WxtagState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:site/wxtag:Wxtag", id, state, "", opts...)
+}
+
 type wxtagArgs struct {
 	// If `type`==`client`, Client MAC address
 	Mac *string `pulumi:"mac"`

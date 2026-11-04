@@ -364,6 +364,24 @@ class Apitoken(pulumi.CustomResource):
         __props__.__dict__["src_ips"] = src_ips
         return Apitoken(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            privileges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApitokenPrivilegeArgs', 'ApitokenPrivilegeArgsDict', 'outputs.ApitokenPrivilege']]]]] = None,
+            src_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createdBy"] = created_by
+        __props__["key"] = key
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["privileges"] = privileges
+        __props__["srcIps"] = src_ips
+        return pulumi.runtime.exists_resource(None, 'junipermist:org/apitoken:Apitoken', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createdBy")
     def created_by(self) -> pulumi.Output[_builtins.str]:
