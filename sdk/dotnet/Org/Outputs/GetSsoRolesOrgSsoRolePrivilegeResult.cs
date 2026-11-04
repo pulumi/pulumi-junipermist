@@ -30,9 +30,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string SitegroupId;
         /// <summary>
-        /// Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.  
-        /// You can define custom roles by adding the `Views` attribute along with `Role` when assigning privileges.  
-        /// Below are the list of supported UI views. Note that this is UI only feature.  
+        /// Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.\
+        /// You can define custom roles by adding the `Views` attribute along with `Role` when assigning privileges.\
+        /// Below are the list of supported UI views. Note that this is UI only feature.
         /// 
         ///   | UI View | Required Role | Description |
         ///   | --- | --- | --- |

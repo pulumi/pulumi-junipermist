@@ -16,7 +16,6 @@ namespace Pulumi.JuniperMist.Org
         /// 
         /// An Alarm Template is a set of Alarm Rules that could be applied to one or more sites (while each site can only pick one Alarm Template), or to the whole org.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -43,7 +42,6 @@ namespace Pulumi.JuniperMist.Org
         /// 
         /// An Alarm Template is a set of Alarm Rules that could be applied to one or more sites (while each site can only pick one Alarm Template), or to the whole org.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -69,7 +67,6 @@ namespace Pulumi.JuniperMist.Org
         /// This data source provides the list of Alarm Templates.
         /// 
         /// An Alarm Template is a set of Alarm Rules that could be applied to one or more sites (while each site can only pick one Alarm Template), or to the whole org.
-        /// 
         /// 
         /// ## Example Usage
         /// 

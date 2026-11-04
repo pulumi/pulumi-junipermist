@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 /**
  * This resource managed the Org Site Groups (sitegroups).
  * 
- * A site group is a feature that allows admins to group multiple sites together based on regions, functions, or other parameters for efficient management of devices.\
+ * A site group is a feature that allows admins to group multiple sites together based on regions, functions, or other parameters for efficient management of devices.&#92;
  * Sites can exist in multiple groups simultaneously, and site groups can be used to ensure consistent settings, manage administrator access, and apply specific templates to groups of sites.
  * 
  * ## Example Usage

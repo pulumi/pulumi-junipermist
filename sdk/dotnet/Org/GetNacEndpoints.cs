@@ -16,7 +16,6 @@ namespace Pulumi.JuniperMist.Org
         /// 
         /// NAC Endpoints (User MACs) provide a database of endpoints identified by their MAC addresses. They can be used assign each endpoint with various attributes, such as name, VLAN, role and client label.  Once an endpoint is labeled, the label name can be used to create `junipermist.org.Nactag` resource as match criteria.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -48,7 +47,6 @@ namespace Pulumi.JuniperMist.Org
         /// 
         /// NAC Endpoints (User MACs) provide a database of endpoints identified by their MAC addresses. They can be used assign each endpoint with various attributes, such as name, VLAN, role and client label.  Once an endpoint is labeled, the label name can be used to create `junipermist.org.Nactag` resource as match criteria.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -79,7 +77,6 @@ namespace Pulumi.JuniperMist.Org
         /// This data source provides the list of NAC Endpoints (User MACs).
         /// 
         /// NAC Endpoints (User MACs) provide a database of endpoints identified by their MAC addresses. They can be used assign each endpoint with various attributes, such as name, VLAN, role and client label.  Once an endpoint is labeled, the label name can be used to create `junipermist.org.Nactag` resource as match criteria.
-        /// 
         /// 
         /// ## Example Usage
         /// 

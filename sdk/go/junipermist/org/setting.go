@@ -393,6 +393,12 @@ func (SettingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*settingState)(nil)).Elem()
 }
 
+// SettingExists checks whether an existing Setting resource with the given ID exists.
+func SettingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SettingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:org/setting:Setting", id, state, "", opts...)
+}
+
 type settingArgs struct {
 	// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
 	ApUpdownThreshold *int `pulumi:"apUpdownThreshold"`

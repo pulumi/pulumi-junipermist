@@ -324,6 +324,12 @@ func (NetworktemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*networktemplateState)(nil)).Elem()
 }
 
+// NetworktemplateExists checks whether an existing Networktemplate resource with the given ID exists.
+func NetworktemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NetworktemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:org/networktemplate:Networktemplate", id, state, "", opts...)
+}
+
 type networktemplateArgs struct {
 	// ACL policy defaults provided by this network template
 	AclPolicies []NetworktemplateAclPolicy `pulumi:"aclPolicies"`

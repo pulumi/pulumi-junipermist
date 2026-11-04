@@ -684,6 +684,38 @@ class Servicepolicy(pulumi.CustomResource):
         __props__.__dict__["tenants"] = tenants
         return Servicepolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            aamw: pulumi.Input[Optional[Union['ServicepolicyAamwArgs', 'ServicepolicyAamwArgsDict', 'outputs.ServicepolicyAamw']]] = None,
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            antivirus: pulumi.Input[Optional[Union['ServicepolicyAntivirusArgs', 'ServicepolicyAntivirusArgsDict', 'outputs.ServicepolicyAntivirus']]] = None,
+            appqoe: pulumi.Input[Optional[Union['ServicepolicyAppqoeArgs', 'ServicepolicyAppqoeArgsDict', 'outputs.ServicepolicyAppqoe']]] = None,
+            ewfs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServicepolicyEwfArgs', 'ServicepolicyEwfArgsDict', 'outputs.ServicepolicyEwf']]]]] = None,
+            idp: pulumi.Input[Optional[Union['ServicepolicyIdpArgs', 'ServicepolicyIdpArgsDict', 'outputs.ServicepolicyIdp']]] = None,
+            local_routing: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            path_preference: pulumi.Input[Optional[_builtins.str]] = None,
+            services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ssl_proxy: pulumi.Input[Optional[Union['ServicepolicySslProxyArgs', 'ServicepolicySslProxyArgsDict', 'outputs.ServicepolicySslProxy']]] = None,
+            tenants: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aamw"] = aamw
+        __props__["action"] = action
+        __props__["antivirus"] = antivirus
+        __props__["appqoe"] = appqoe
+        __props__["ewfs"] = ewfs
+        __props__["idp"] = idp
+        __props__["localRouting"] = local_routing
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["pathPreference"] = path_preference
+        __props__["services"] = services
+        __props__["sslProxy"] = ssl_proxy
+        __props__["tenants"] = tenants
+        return pulumi.runtime.exists_resource(None, 'junipermist:org/servicepolicy:Servicepolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def aamw(self) -> pulumi.Output[Optional['outputs.ServicepolicyAamw']]:

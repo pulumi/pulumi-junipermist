@@ -16,7 +16,6 @@ namespace Pulumi.JuniperMist.Org
         /// 
         /// EVPN allows an alternative but more efficient LAN architecture utilizing VxLAN / MP-BGP to separate the control plane (MAC / IP Learning) from the forwarding plane.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -43,7 +42,6 @@ namespace Pulumi.JuniperMist.Org
         /// 
         /// EVPN allows an alternative but more efficient LAN architecture utilizing VxLAN / MP-BGP to separate the control plane (MAC / IP Learning) from the forwarding plane.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -69,7 +67,6 @@ namespace Pulumi.JuniperMist.Org
         /// This data source provides the list of Org Evpn Topologies
         /// 
         /// EVPN allows an alternative but more efficient LAN architecture utilizing VxLAN / MP-BGP to separate the control plane (MAC / IP Learning) from the forwarding plane.
-        /// 
         /// 
         /// ## Example Usage
         /// 

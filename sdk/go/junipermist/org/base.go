@@ -142,6 +142,12 @@ func (BaseState) ElementType() reflect.Type {
 	return reflect.TypeOf((*baseState)(nil)).Elem()
 }
 
+// BaseExists checks whether an existing Base resource with the given ID exists.
+func BaseExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BaseState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:org/base:base", id, state, "", opts...)
+}
+
 type baseArgs struct {
 	// Org-level alarm template ID used as the default for sites
 	AlarmtemplateId *string `pulumi:"alarmtemplateId"`

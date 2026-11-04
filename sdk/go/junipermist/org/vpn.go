@@ -149,6 +149,12 @@ func (VpnState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpnState)(nil)).Elem()
 }
 
+// VpnExists checks whether an existing Vpn resource with the given ID exists.
+func VpnExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VpnState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:org/vpn:Vpn", id, state, "", opts...)
+}
+
 type vpnArgs struct {
 	// Display name of the VPN configuration
 	Name *string `pulumi:"name"`

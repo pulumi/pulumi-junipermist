@@ -128,6 +128,12 @@ func (SsoRoleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ssoRoleState)(nil)).Elem()
 }
 
+// SsoRoleExists checks whether an existing SsoRole resource with the given ID exists.
+func SsoRoleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SsoRoleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:org/ssoRole:SsoRole", id, state, "", opts...)
+}
+
 type ssoRoleArgs struct {
 	// Display name of the organization SSO role
 	Name *string `pulumi:"name"`

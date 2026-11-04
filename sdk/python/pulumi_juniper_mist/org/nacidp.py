@@ -1449,6 +1449,74 @@ class Nacidp(pulumi.CustomResource):
         __props__.__dict__["scim_secret_token"] = scim_secret_token
         return Nacidp(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            group_filter: pulumi.Input[Optional[_builtins.str]] = None,
+            idp_type: pulumi.Input[Optional[_builtins.str]] = None,
+            ldap_base_dn: pulumi.Input[Optional[_builtins.str]] = None,
+            ldap_bind_dn: pulumi.Input[Optional[_builtins.str]] = None,
+            ldap_bind_password: pulumi.Input[Optional[_builtins.str]] = None,
+            ldap_cacerts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ldap_client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            ldap_client_key: pulumi.Input[Optional[_builtins.str]] = None,
+            ldap_group_attr: pulumi.Input[Optional[_builtins.str]] = None,
+            ldap_group_dn: pulumi.Input[Optional[_builtins.str]] = None,
+            ldap_resolve_groups: pulumi.Input[Optional[_builtins.bool]] = None,
+            ldap_server_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ldap_type: pulumi.Input[Optional[_builtins.str]] = None,
+            ldap_user_filter: pulumi.Input[Optional[_builtins.str]] = None,
+            member_filter: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth_cc_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth_cc_client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth_discovery_url: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth_ping_identity_region: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth_provider_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth_ropc_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth_ropc_client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth_tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth_type: pulumi.Input[Optional[_builtins.str]] = None,
+            openroaming_ssids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            openroaming_wba_client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            openroaming_wba_client_key: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scim_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            scim_secret_token: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["groupFilter"] = group_filter
+        __props__["idpType"] = idp_type
+        __props__["ldapBaseDn"] = ldap_base_dn
+        __props__["ldapBindDn"] = ldap_bind_dn
+        __props__["ldapBindPassword"] = ldap_bind_password
+        __props__["ldapCacerts"] = ldap_cacerts
+        __props__["ldapClientCert"] = ldap_client_cert
+        __props__["ldapClientKey"] = ldap_client_key
+        __props__["ldapGroupAttr"] = ldap_group_attr
+        __props__["ldapGroupDn"] = ldap_group_dn
+        __props__["ldapResolveGroups"] = ldap_resolve_groups
+        __props__["ldapServerHosts"] = ldap_server_hosts
+        __props__["ldapType"] = ldap_type
+        __props__["ldapUserFilter"] = ldap_user_filter
+        __props__["memberFilter"] = member_filter
+        __props__["name"] = name
+        __props__["oauthCcClientId"] = oauth_cc_client_id
+        __props__["oauthCcClientSecret"] = oauth_cc_client_secret
+        __props__["oauthDiscoveryUrl"] = oauth_discovery_url
+        __props__["oauthPingIdentityRegion"] = oauth_ping_identity_region
+        __props__["oauthProviderDomain"] = oauth_provider_domain
+        __props__["oauthRopcClientId"] = oauth_ropc_client_id
+        __props__["oauthRopcClientSecret"] = oauth_ropc_client_secret
+        __props__["oauthTenantId"] = oauth_tenant_id
+        __props__["oauthType"] = oauth_type
+        __props__["openroamingSsids"] = openroaming_ssids
+        __props__["openroamingWbaClientCert"] = openroaming_wba_client_cert
+        __props__["openroamingWbaClientKey"] = openroaming_wba_client_key
+        __props__["orgId"] = org_id
+        __props__["scimEnabled"] = scim_enabled
+        __props__["scimSecretToken"] = scim_secret_token
+        return pulumi.runtime.exists_resource(None, 'junipermist:org/nacidp:Nacidp', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="groupFilter")
     def group_filter(self) -> pulumi.Output[Optional[_builtins.str]]:

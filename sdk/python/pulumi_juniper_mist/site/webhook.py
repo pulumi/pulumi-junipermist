@@ -1032,6 +1032,56 @@ class Webhook(pulumi.CustomResource):
         __props__.__dict__["verify_cert"] = verify_cert
         return Webhook(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            assetfilter_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            default_action: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            headers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth2_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth2_client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth2_grant_type: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth2_password: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth2_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            oauth2_token_url: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth2_username: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WebhookRuleArgs', 'WebhookRuleArgsDict', 'outputs.WebhookRule']]]]] = None,
+            secret: pulumi.Input[Optional[_builtins.str]] = None,
+            single_event_per_message: pulumi.Input[Optional[_builtins.bool]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            splunk_token: pulumi.Input[Optional[_builtins.str]] = None,
+            topics: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            verify_cert: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["assetfilterIds"] = assetfilter_ids
+        __props__["defaultAction"] = default_action
+        __props__["enabled"] = enabled
+        __props__["headers"] = headers
+        __props__["name"] = name
+        __props__["oauth2ClientId"] = oauth2_client_id
+        __props__["oauth2ClientSecret"] = oauth2_client_secret
+        __props__["oauth2GrantType"] = oauth2_grant_type
+        __props__["oauth2Password"] = oauth2_password
+        __props__["oauth2Scopes"] = oauth2_scopes
+        __props__["oauth2TokenUrl"] = oauth2_token_url
+        __props__["oauth2Username"] = oauth2_username
+        __props__["orgId"] = org_id
+        __props__["rules"] = rules
+        __props__["secret"] = secret
+        __props__["singleEventPerMessage"] = single_event_per_message
+        __props__["siteId"] = site_id
+        __props__["splunkToken"] = splunk_token
+        __props__["topics"] = topics
+        __props__["type"] = type
+        __props__["url"] = url
+        __props__["verifyCert"] = verify_cert
+        return pulumi.runtime.exists_resource(None, 'junipermist:site/webhook:Webhook', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="assetfilterIds")
     def assetfilter_ids(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

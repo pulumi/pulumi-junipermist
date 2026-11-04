@@ -237,9 +237,9 @@ public final class SiteFunctions {
     /**
      * This data source provides the list of Site Psks.
      * 
-     * A multi PSK (Pre-Shared Key) is a feature that allows the use of multiple PSKs for securing network connections.\
-     * It provides a simple and comprehensive way to onboard client devices without relying on client mac addresses.\
-     * Each psk has its own key name, which can be used for user-level accountability, key rotation, and visibility in the management platform. It supports the creation, rotation, and auto-expiration of psks, and allows vlan assignment and role assignment for dynamic per-user policies.\
+     * A multi PSK (Pre-Shared Key) is a feature that allows the use of multiple PSKs for securing network connections.&#92;
+     * It provides a simple and comprehensive way to onboard client devices without relying on client mac addresses.&#92;
+     * Each psk has its own key name, which can be used for user-level accountability, key rotation, and visibility in the management platform. It supports the creation, rotation, and auto-expiration of psks, and allows vlan assignment and role assignment for dynamic per-user policies.&#92;
      * Multi PSKs create virtual broadcast domains and can be used for end-user onboarding via authenticated sso login.
      * 
      * ## Example Usage
@@ -285,9 +285,9 @@ public final class SiteFunctions {
     /**
      * This data source provides the list of Site Psks.
      * 
-     * A multi PSK (Pre-Shared Key) is a feature that allows the use of multiple PSKs for securing network connections.\
-     * It provides a simple and comprehensive way to onboard client devices without relying on client mac addresses.\
-     * Each psk has its own key name, which can be used for user-level accountability, key rotation, and visibility in the management platform. It supports the creation, rotation, and auto-expiration of psks, and allows vlan assignment and role assignment for dynamic per-user policies.\
+     * A multi PSK (Pre-Shared Key) is a feature that allows the use of multiple PSKs for securing network connections.&#92;
+     * It provides a simple and comprehensive way to onboard client devices without relying on client mac addresses.&#92;
+     * Each psk has its own key name, which can be used for user-level accountability, key rotation, and visibility in the management platform. It supports the creation, rotation, and auto-expiration of psks, and allows vlan assignment and role assignment for dynamic per-user policies.&#92;
      * Multi PSKs create virtual broadcast domains and can be used for end-user onboarding via authenticated sso login.
      * 
      * ## Example Usage
@@ -333,9 +333,9 @@ public final class SiteFunctions {
     /**
      * This data source provides the list of Site Psks.
      * 
-     * A multi PSK (Pre-Shared Key) is a feature that allows the use of multiple PSKs for securing network connections.\
-     * It provides a simple and comprehensive way to onboard client devices without relying on client mac addresses.\
-     * Each psk has its own key name, which can be used for user-level accountability, key rotation, and visibility in the management platform. It supports the creation, rotation, and auto-expiration of psks, and allows vlan assignment and role assignment for dynamic per-user policies.\
+     * A multi PSK (Pre-Shared Key) is a feature that allows the use of multiple PSKs for securing network connections.&#92;
+     * It provides a simple and comprehensive way to onboard client devices without relying on client mac addresses.&#92;
+     * Each psk has its own key name, which can be used for user-level accountability, key rotation, and visibility in the management platform. It supports the creation, rotation, and auto-expiration of psks, and allows vlan assignment and role assignment for dynamic per-user policies.&#92;
      * Multi PSKs create virtual broadcast domains and can be used for end-user onboarding via authenticated sso login.
      * 
      * ## Example Usage
@@ -381,9 +381,9 @@ public final class SiteFunctions {
     /**
      * This data source provides the list of Site Psks.
      * 
-     * A multi PSK (Pre-Shared Key) is a feature that allows the use of multiple PSKs for securing network connections.\
-     * It provides a simple and comprehensive way to onboard client devices without relying on client mac addresses.\
-     * Each psk has its own key name, which can be used for user-level accountability, key rotation, and visibility in the management platform. It supports the creation, rotation, and auto-expiration of psks, and allows vlan assignment and role assignment for dynamic per-user policies.\
+     * A multi PSK (Pre-Shared Key) is a feature that allows the use of multiple PSKs for securing network connections.&#92;
+     * It provides a simple and comprehensive way to onboard client devices without relying on client mac addresses.&#92;
+     * Each psk has its own key name, which can be used for user-level accountability, key rotation, and visibility in the management platform. It supports the creation, rotation, and auto-expiration of psks, and allows vlan assignment and role assignment for dynamic per-user policies.&#92;
      * Multi PSKs create virtual broadcast domains and can be used for end-user onboarding via authenticated sso login.
      * 
      * ## Example Usage
@@ -429,9 +429,9 @@ public final class SiteFunctions {
     /**
      * This data source provides the list of Site Psks.
      * 
-     * A multi PSK (Pre-Shared Key) is a feature that allows the use of multiple PSKs for securing network connections.\
-     * It provides a simple and comprehensive way to onboard client devices without relying on client mac addresses.\
-     * Each psk has its own key name, which can be used for user-level accountability, key rotation, and visibility in the management platform. It supports the creation, rotation, and auto-expiration of psks, and allows vlan assignment and role assignment for dynamic per-user policies.\
+     * A multi PSK (Pre-Shared Key) is a feature that allows the use of multiple PSKs for securing network connections.&#92;
+     * It provides a simple and comprehensive way to onboard client devices without relying on client mac addresses.&#92;
+     * Each psk has its own key name, which can be used for user-level accountability, key rotation, and visibility in the management platform. It supports the creation, rotation, and auto-expiration of psks, and allows vlan assignment and role assignment for dynamic per-user policies.&#92;
      * Multi PSKs create virtual broadcast domains and can be used for end-user onboarding via authenticated sso login.
      * 
      * ## Example Usage
@@ -477,8 +477,8 @@ public final class SiteFunctions {
     /**
      * This data source provides the list of Site Webhooks.
      * 
-     * A Site Webhook is a configuration that allows real-time events and data from a specific site to be pushed to a provided url.\
-     * It enables the collection of information about various topics such as device events, alarms, audits, client sessions and location updates at the site level.\
+     * A Site Webhook is a configuration that allows real-time events and data from a specific site to be pushed to a provided url.&#92;
+     * It enables the collection of information about various topics such as device events, alarms, audits, client sessions and location updates at the site level.&#92;
      * The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
      * 
      * ## Example Usage
@@ -521,8 +521,8 @@ public final class SiteFunctions {
     /**
      * This data source provides the list of Site Webhooks.
      * 
-     * A Site Webhook is a configuration that allows real-time events and data from a specific site to be pushed to a provided url.\
-     * It enables the collection of information about various topics such as device events, alarms, audits, client sessions and location updates at the site level.\
+     * A Site Webhook is a configuration that allows real-time events and data from a specific site to be pushed to a provided url.&#92;
+     * It enables the collection of information about various topics such as device events, alarms, audits, client sessions and location updates at the site level.&#92;
      * The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
      * 
      * ## Example Usage
@@ -565,8 +565,8 @@ public final class SiteFunctions {
     /**
      * This data source provides the list of Site Webhooks.
      * 
-     * A Site Webhook is a configuration that allows real-time events and data from a specific site to be pushed to a provided url.\
-     * It enables the collection of information about various topics such as device events, alarms, audits, client sessions and location updates at the site level.\
+     * A Site Webhook is a configuration that allows real-time events and data from a specific site to be pushed to a provided url.&#92;
+     * It enables the collection of information about various topics such as device events, alarms, audits, client sessions and location updates at the site level.&#92;
      * The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
      * 
      * ## Example Usage
@@ -609,8 +609,8 @@ public final class SiteFunctions {
     /**
      * This data source provides the list of Site Webhooks.
      * 
-     * A Site Webhook is a configuration that allows real-time events and data from a specific site to be pushed to a provided url.\
-     * It enables the collection of information about various topics such as device events, alarms, audits, client sessions and location updates at the site level.\
+     * A Site Webhook is a configuration that allows real-time events and data from a specific site to be pushed to a provided url.&#92;
+     * It enables the collection of information about various topics such as device events, alarms, audits, client sessions and location updates at the site level.&#92;
      * The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
      * 
      * ## Example Usage
@@ -653,8 +653,8 @@ public final class SiteFunctions {
     /**
      * This data source provides the list of Site Webhooks.
      * 
-     * A Site Webhook is a configuration that allows real-time events and data from a specific site to be pushed to a provided url.\
-     * It enables the collection of information about various topics such as device events, alarms, audits, client sessions and location updates at the site level.\
+     * A Site Webhook is a configuration that allows real-time events and data from a specific site to be pushed to a provided url.&#92;
+     * It enables the collection of information about various topics such as device events, alarms, audits, client sessions and location updates at the site level.&#92;
      * The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
      * 
      * ## Example Usage

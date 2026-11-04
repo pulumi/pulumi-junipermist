@@ -158,6 +158,12 @@ func (AlarmtemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*alarmtemplateState)(nil)).Elem()
 }
 
+// AlarmtemplateExists checks whether an existing Alarmtemplate resource with the given ID exists.
+func AlarmtemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AlarmtemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:org/alarmtemplate:Alarmtemplate", id, state, "", opts...)
+}
+
 type alarmtemplateArgs struct {
 	// Default alarm delivery settings for rules in this template
 	Delivery AlarmtemplateDelivery `pulumi:"delivery"`

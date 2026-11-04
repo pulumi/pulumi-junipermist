@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 /**
  * This resource manages the Org WxRules (WxLAN policies).
  * 
- * A WxLAN policy is a set of rules and settings that can be applied to devices in a network to determine how they are treated. it provides support for access policies, network segmentation, role-based policies, micro-segmentation, and least privilege.\
+ * A WxLAN policy is a set of rules and settings that can be applied to devices in a network to determine how they are treated. it provides support for access policies, network segmentation, role-based policies, micro-segmentation, and least privilege.&#92;
  * WxLAN policies are used to allow or deny specific users from accessing specific resources in a wireless network.
  * 
  * ## Example Usage

@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class EvpnTopologySwitchesGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g. 
+        /// Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g.
         ///   * for CLOS, to group dist / access switches into pods
         ///   * for ERB/CRB, to group dist / esilag-access into pods
         /// </summary>

@@ -111,6 +111,12 @@ func (DeviceprofileAssignState) ElementType() reflect.Type {
 	return reflect.TypeOf((*deviceprofileAssignState)(nil)).Elem()
 }
 
+// DeviceprofileAssignExists checks whether an existing DeviceprofileAssign resource with the given ID exists.
+func DeviceprofileAssignExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DeviceprofileAssignState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:org/deviceprofileAssign:DeviceprofileAssign", id, state, "", opts...)
+}
+
 type deviceprofileAssignArgs struct {
 	DeviceprofileId string `pulumi:"deviceprofileId"`
 	// List of MAC addresses included in the request

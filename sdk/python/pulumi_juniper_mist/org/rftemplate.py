@@ -751,6 +751,40 @@ class Rftemplate(pulumi.CustomResource):
         __props__.__dict__["scanning_enabled"] = scanning_enabled
         return Rftemplate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            ant_gain24: pulumi.Input[Optional[_builtins.int]] = None,
+            ant_gain5: pulumi.Input[Optional[_builtins.int]] = None,
+            ant_gain6: pulumi.Input[Optional[_builtins.int]] = None,
+            band24: pulumi.Input[Optional[Union['RftemplateBand24Args', 'RftemplateBand24ArgsDict', 'outputs.RftemplateBand24']]] = None,
+            band24_usage: pulumi.Input[Optional[_builtins.str]] = None,
+            band5: pulumi.Input[Optional[Union['RftemplateBand5Args', 'RftemplateBand5ArgsDict', 'outputs.RftemplateBand5']]] = None,
+            band5_on24_radio: pulumi.Input[Optional[Union['RftemplateBand5On24RadioArgs', 'RftemplateBand5On24RadioArgsDict', 'outputs.RftemplateBand5On24Radio']]] = None,
+            band6: pulumi.Input[Optional[Union['RftemplateBand6Args', 'RftemplateBand6ArgsDict', 'outputs.RftemplateBand6']]] = None,
+            country_code: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_unii4: pulumi.Input[Optional[_builtins.bool]] = None,
+            model_specific: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['RftemplateModelSpecificArgs', 'RftemplateModelSpecificArgsDict', 'outputs.RftemplateModelSpecific']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scanning_enabled: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["antGain24"] = ant_gain24
+        __props__["antGain5"] = ant_gain5
+        __props__["antGain6"] = ant_gain6
+        __props__["band24"] = band24
+        __props__["band24Usage"] = band24_usage
+        __props__["band5"] = band5
+        __props__["band5On24Radio"] = band5_on24_radio
+        __props__["band6"] = band6
+        __props__["countryCode"] = country_code
+        __props__["enableUnii4"] = enable_unii4
+        __props__["modelSpecific"] = model_specific
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["scanningEnabled"] = scanning_enabled
+        return pulumi.runtime.exists_resource(None, 'junipermist:org/rftemplate:Rftemplate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="antGain24")
     def ant_gain24(self) -> pulumi.Output[_builtins.int]:

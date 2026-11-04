@@ -276,6 +276,18 @@ class WlanPortalTemplate(pulumi.CustomResource):
         __props__.__dict__["wlan_id"] = wlan_id
         return WlanPortalTemplate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            portal_template: pulumi.Input[Optional[Union['WlanPortalTemplatePortalTemplateArgs', 'WlanPortalTemplatePortalTemplateArgsDict', 'outputs.WlanPortalTemplatePortalTemplate']]] = None,
+            wlan_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["orgId"] = org_id
+        __props__["portalTemplate"] = portal_template
+        __props__["wlanId"] = wlan_id
+        return pulumi.runtime.exists_resource(None, 'junipermist:org/wlanPortalTemplate:WlanPortalTemplate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[_builtins.str]:

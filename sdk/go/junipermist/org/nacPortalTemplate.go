@@ -160,6 +160,12 @@ func (NacPortalTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*nacPortalTemplateState)(nil)).Elem()
 }
 
+// NacPortalTemplateExists checks whether an existing NacPortalTemplate resource with the given ID exists.
+func NacPortalTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NacPortalTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:org/nacPortalTemplate:NacPortalTemplate", id, state, "", opts...)
+}
+
 type nacPortalTemplateArgs struct {
 	// Text and content alignment for the NAC portal page. enum: `center`, `left`, `right`.
 	Alignment *string `pulumi:"alignment"`

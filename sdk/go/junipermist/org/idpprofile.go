@@ -152,6 +152,12 @@ func (IdpprofileState) ElementType() reflect.Type {
 	return reflect.TypeOf((*idpprofileState)(nil)).Elem()
 }
 
+// IdpprofileExists checks whether an existing Idpprofile resource with the given ID exists.
+func IdpprofileExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IdpprofileState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:org/idpprofile:Idpprofile", id, state, "", opts...)
+}
+
 type idpprofileArgs struct {
 	// Built-in IDP baseline profile inherited before applying overwrites. enum: `critical`, `standard`, `strict`.
 	BaseProfile string `pulumi:"baseProfile"`

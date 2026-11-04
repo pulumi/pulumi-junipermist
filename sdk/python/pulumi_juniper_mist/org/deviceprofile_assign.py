@@ -240,6 +240,18 @@ class DeviceprofileAssign(pulumi.CustomResource):
         __props__.__dict__["org_id"] = org_id
         return DeviceprofileAssign(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deviceprofile_id: pulumi.Input[Optional[_builtins.str]] = None,
+            macs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deviceprofileId"] = deviceprofile_id
+        __props__["macs"] = macs
+        __props__["orgId"] = org_id
+        return pulumi.runtime.exists_resource(None, 'junipermist:org/deviceprofileAssign:DeviceprofileAssign', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deviceprofileId")
     def deviceprofile_id(self) -> pulumi.Output[_builtins.str]:

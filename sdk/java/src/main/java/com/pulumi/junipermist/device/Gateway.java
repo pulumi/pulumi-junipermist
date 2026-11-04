@@ -63,12 +63,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var gatewayOne = new Gateway("gatewayOne", GatewayArgs.builder()
  *             .name("gateway_one")
  *             .deviceId(clusterOne.get("deviceId"))
@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .dnsServers("8.8.8.8")
  *             .additionalConfigCmds(            
- *                 "annotate system \" -- custom-main -- Template level --\"",
+ *                 "annotate system }&#92;{@code " -- custom-main -- Template level --}&#92;{@code "",
  *                 "delete apply-groups custom-main",
  *                 "delete groups custom-main",
  *                 "set groups custom-main",
@@ -86,8 +86,8 @@ import javax.annotation.Nullable;
  *                 "set apply-groups custom-main")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -308,11 +308,10 @@ public class Gateway extends com.pulumi.resources.CustomResource {
     /**
      * Whether the device is managed by Mist. Deprecated in favour of mist_configured.
      * 
-     * @deprecated
-     * This attribute is being deprecated, please use `mistConfigured` instead
+     * @deprecated This attribute is being deprecated, please use `mistConfigured` instead
      * 
      */
-    @Deprecated /* This attribute is being deprecated, please use `mistConfigured` instead */
+    @Deprecated
     @Export(name="managed", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> managed;
 

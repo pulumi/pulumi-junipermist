@@ -173,11 +173,10 @@ public class Switch extends com.pulumi.resources.CustomResource {
     /**
      * This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
      * 
-     * @deprecated
-     * This attribute is being deprecated, please use `mistConfigured` instead
+     * @deprecated This attribute is being deprecated, please use `mistConfigured` instead
      * 
      */
-    @Deprecated /* This attribute is being deprecated, please use `mistConfigured` instead */
+    @Deprecated
     @Export(name="disableAutoConfig", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> disableAutoConfig;
 
@@ -331,11 +330,10 @@ public class Switch extends com.pulumi.resources.CustomResource {
     /**
      * An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist. Deprecated in favour of mist_configured, which is more intuitive and can be used for both adopted and claimed devices.
      * 
-     * @deprecated
-     * This attribute is being deprecated, please use `mistConfigured` instead
+     * @deprecated This attribute is being deprecated, please use `mistConfigured` instead
      * 
      */
-    @Deprecated /* This attribute is being deprecated, please use `mistConfigured` instead */
+    @Deprecated
     @Export(name="managed", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> managed;
 

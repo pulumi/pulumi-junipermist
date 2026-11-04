@@ -208,6 +208,12 @@ func (RftemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*rftemplateState)(nil)).Elem()
 }
 
+// RftemplateExists checks whether an existing Rftemplate resource with the given ID exists.
+func RftemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RftemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:org/rftemplate:Rftemplate", id, state, "", opts...)
+}
+
 type rftemplateArgs struct {
 	// External antenna gain for the 2.4 GHz radio
 	AntGain24 *int `pulumi:"antGain24"`

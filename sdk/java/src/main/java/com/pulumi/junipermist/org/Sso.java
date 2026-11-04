@@ -19,8 +19,8 @@ import javax.annotation.Nullable;
 /**
  * This resource manages Org SSO Configuration.
  * 
- * Org SSO, or Single Sign-On, is a method of authentication that allows users to securely log in to multiple applications and websites with a single set of login credentials.\
- * It involves integrating the Org portal with an Identity Provider (IdP) using the Security Assertion Markup Language (SAML) framework.\
+ * Org SSO, or Single Sign-On, is a method of authentication that allows users to securely log in to multiple applications and websites with a single set of login credentials.&#92;
+ * It involves integrating the Org portal with an Identity Provider (IdP) using the Security Assertion Markup Language (SAML) framework.&#92;
  * This enables users to authenticate themselves through their corporate IdP, eliminating the need to remember separate passwords or enter credentials each time they access the Org portal.
  * 
  * ## Example Usage

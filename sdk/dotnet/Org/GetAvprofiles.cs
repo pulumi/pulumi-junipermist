@@ -16,12 +16,11 @@ namespace Pulumi.JuniperMist.Org
         /// 
         /// An Antivirus Profile is used to configure the Antivirus feature on SRX devices. It specifies which content the Antivirus should analyse and which content should be ignored.
         /// 
-        /// The Antivirus profiles can be used within the following resources: 
-        ///  * `mist_org_servicepolicy.antivirus` 
-        ///  * `mist_org_gatewaytemplate.service_policies.antivirus` 
-        ///  * `mist_org_deviceprofile_gateway.service_policies.antivirus` 
+        /// The Antivirus profiles can be used within the following resources:
+        ///  * `mist_org_servicepolicy.antivirus`
+        ///  * `mist_org_gatewaytemplate.service_policies.antivirus`
+        ///  * `mist_org_deviceprofile_gateway.service_policies.antivirus`
         ///  * `mist_device_gateway.service_policies.antivirus`
-        /// 
         /// 
         /// ## Example Usage
         /// 
@@ -49,12 +48,11 @@ namespace Pulumi.JuniperMist.Org
         /// 
         /// An Antivirus Profile is used to configure the Antivirus feature on SRX devices. It specifies which content the Antivirus should analyse and which content should be ignored.
         /// 
-        /// The Antivirus profiles can be used within the following resources: 
-        ///  * `mist_org_servicepolicy.antivirus` 
-        ///  * `mist_org_gatewaytemplate.service_policies.antivirus` 
-        ///  * `mist_org_deviceprofile_gateway.service_policies.antivirus` 
+        /// The Antivirus profiles can be used within the following resources:
+        ///  * `mist_org_servicepolicy.antivirus`
+        ///  * `mist_org_gatewaytemplate.service_policies.antivirus`
+        ///  * `mist_org_deviceprofile_gateway.service_policies.antivirus`
         ///  * `mist_device_gateway.service_policies.antivirus`
-        /// 
         /// 
         /// ## Example Usage
         /// 
@@ -82,12 +80,11 @@ namespace Pulumi.JuniperMist.Org
         /// 
         /// An Antivirus Profile is used to configure the Antivirus feature on SRX devices. It specifies which content the Antivirus should analyse and which content should be ignored.
         /// 
-        /// The Antivirus profiles can be used within the following resources: 
-        ///  * `mist_org_servicepolicy.antivirus` 
-        ///  * `mist_org_gatewaytemplate.service_policies.antivirus` 
-        ///  * `mist_org_deviceprofile_gateway.service_policies.antivirus` 
+        /// The Antivirus profiles can be used within the following resources:
+        ///  * `mist_org_servicepolicy.antivirus`
+        ///  * `mist_org_gatewaytemplate.service_policies.antivirus`
+        ///  * `mist_org_deviceprofile_gateway.service_policies.antivirus`
         ///  * `mist_device_gateway.service_policies.antivirus`
-        /// 
         /// 
         /// ## Example Usage
         /// 

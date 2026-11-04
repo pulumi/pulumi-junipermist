@@ -1762,6 +1762,92 @@ class Setting(pulumi.CustomResource):
         __props__.__dict__["wireless_pma"] = wireless_pma
         return Setting(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allow_mist: pulumi.Input[Optional[_builtins.bool]] = None,
+            ap_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            api_policy: pulumi.Input[Optional[Union['SettingApiPolicyArgs', 'SettingApiPolicyArgsDict', 'outputs.SettingApiPolicy']]] = None,
+            auto_upgrade: pulumi.Input[Optional[Union['SettingAutoUpgradeArgs', 'SettingAutoUpgradeArgsDict', 'outputs.SettingAutoUpgrade']]] = None,
+            cacerts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            cacerts_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SettingCacertsConfigArgs', 'SettingCacertsConfigArgsDict', 'outputs.SettingCacertsConfig']]]]] = None,
+            celona: pulumi.Input[Optional[Union['SettingCelonaArgs', 'SettingCelonaArgsDict', 'outputs.SettingCelona']]] = None,
+            cloudshark: pulumi.Input[Optional[Union['SettingCloudsharkArgs', 'SettingCloudsharkArgsDict', 'outputs.SettingCloudshark']]] = None,
+            device_cert: pulumi.Input[Optional[Union['SettingDeviceCertArgs', 'SettingDeviceCertArgsDict', 'outputs.SettingDeviceCert']]] = None,
+            device_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            disable_pcap: pulumi.Input[Optional[_builtins.bool]] = None,
+            disable_remote_shell: pulumi.Input[Optional[_builtins.bool]] = None,
+            gateway_tunnel_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            gateway_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            installer: pulumi.Input[Optional[Union['SettingInstallerArgs', 'SettingInstallerArgsDict', 'outputs.SettingInstaller']]] = None,
+            jcloud: pulumi.Input[Optional[Union['SettingJcloudArgs', 'SettingJcloudArgsDict', 'outputs.SettingJcloud']]] = None,
+            jcloud_ra: pulumi.Input[Optional[Union['SettingJcloudRaArgs', 'SettingJcloudRaArgsDict', 'outputs.SettingJcloudRa']]] = None,
+            juniper: pulumi.Input[Optional[Union['SettingJuniperArgs', 'SettingJuniperArgsDict', 'outputs.SettingJuniper']]] = None,
+            juniper_srx: pulumi.Input[Optional[Union['SettingJuniperSrxArgs', 'SettingJuniperSrxArgsDict', 'outputs.SettingJuniperSrx']]] = None,
+            junos_shell_access: pulumi.Input[Optional[Union['SettingJunosShellAccessArgs', 'SettingJunosShellAccessArgsDict', 'outputs.SettingJunosShellAccess']]] = None,
+            marvis: pulumi.Input[Optional[Union['SettingMarvisArgs', 'SettingMarvisArgsDict', 'outputs.SettingMarvis']]] = None,
+            mgmt: pulumi.Input[Optional[Union['SettingMgmtArgs', 'SettingMgmtArgsDict', 'outputs.SettingMgmt']]] = None,
+            mist_nac: pulumi.Input[Optional[Union['SettingMistNacArgs', 'SettingMistNacArgsDict', 'outputs.SettingMistNac']]] = None,
+            mxedge_mgmt: pulumi.Input[Optional[Union['SettingMxedgeMgmtArgs', 'SettingMxedgeMgmtArgsDict', 'outputs.SettingMxedgeMgmt']]] = None,
+            optic_port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SettingOpticPortConfigArgs', 'SettingOpticPortConfigArgsDict', 'outputs.SettingOpticPortConfig']]]]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            password_policy: pulumi.Input[Optional[Union['SettingPasswordPolicyArgs', 'SettingPasswordPolicyArgsDict', 'outputs.SettingPasswordPolicy']]] = None,
+            pcap: pulumi.Input[Optional[Union['SettingPcapArgs', 'SettingPcapArgsDict', 'outputs.SettingPcap']]] = None,
+            security: pulumi.Input[Optional[Union['SettingSecurityArgs', 'SettingSecurityArgsDict', 'outputs.SettingSecurity']]] = None,
+            ssr: pulumi.Input[Optional[Union['SettingSsrArgs', 'SettingSsrArgsDict', 'outputs.SettingSsr']]] = None,
+            switch: pulumi.Input[Optional[Union['SettingSwitchArgs', 'SettingSwitchArgsDict', 'outputs.SettingSwitch']]] = None,
+            switch_mgmt: pulumi.Input[Optional[Union['SettingSwitchMgmtArgs', 'SettingSwitchMgmtArgsDict', 'outputs.SettingSwitchMgmt']]] = None,
+            switch_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            synthetic_test: pulumi.Input[Optional[Union['SettingSyntheticTestArgs', 'SettingSyntheticTestArgsDict', 'outputs.SettingSyntheticTest']]] = None,
+            ui_idle_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            ui_no_tracking: pulumi.Input[Optional[_builtins.bool]] = None,
+            vpn_options: pulumi.Input[Optional[Union['SettingVpnOptionsArgs', 'SettingVpnOptionsArgsDict', 'outputs.SettingVpnOptions']]] = None,
+            wan_pma: pulumi.Input[Optional[Union['SettingWanPmaArgs', 'SettingWanPmaArgsDict', 'outputs.SettingWanPma']]] = None,
+            wired_pma: pulumi.Input[Optional[Union['SettingWiredPmaArgs', 'SettingWiredPmaArgsDict', 'outputs.SettingWiredPma']]] = None,
+            wireless_pma: pulumi.Input[Optional[Union['SettingWirelessPmaArgs', 'SettingWirelessPmaArgsDict', 'outputs.SettingWirelessPma']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allowMist"] = allow_mist
+        __props__["apUpdownThreshold"] = ap_updown_threshold
+        __props__["apiPolicy"] = api_policy
+        __props__["autoUpgrade"] = auto_upgrade
+        __props__["cacerts"] = cacerts
+        __props__["cacertsConfigs"] = cacerts_configs
+        __props__["celona"] = celona
+        __props__["cloudshark"] = cloudshark
+        __props__["deviceCert"] = device_cert
+        __props__["deviceUpdownThreshold"] = device_updown_threshold
+        __props__["disablePcap"] = disable_pcap
+        __props__["disableRemoteShell"] = disable_remote_shell
+        __props__["gatewayTunnelUpdownThreshold"] = gateway_tunnel_updown_threshold
+        __props__["gatewayUpdownThreshold"] = gateway_updown_threshold
+        __props__["installer"] = installer
+        __props__["jcloud"] = jcloud
+        __props__["jcloudRa"] = jcloud_ra
+        __props__["juniper"] = juniper
+        __props__["juniperSrx"] = juniper_srx
+        __props__["junosShellAccess"] = junos_shell_access
+        __props__["marvis"] = marvis
+        __props__["mgmt"] = mgmt
+        __props__["mistNac"] = mist_nac
+        __props__["mxedgeMgmt"] = mxedge_mgmt
+        __props__["opticPortConfig"] = optic_port_config
+        __props__["orgId"] = org_id
+        __props__["passwordPolicy"] = password_policy
+        __props__["pcap"] = pcap
+        __props__["security"] = security
+        __props__["ssr"] = ssr
+        __props__["switch"] = switch
+        __props__["switchMgmt"] = switch_mgmt
+        __props__["switchUpdownThreshold"] = switch_updown_threshold
+        __props__["syntheticTest"] = synthetic_test
+        __props__["uiIdleTimeout"] = ui_idle_timeout
+        __props__["uiNoTracking"] = ui_no_tracking
+        __props__["vpnOptions"] = vpn_options
+        __props__["wanPma"] = wan_pma
+        __props__["wiredPma"] = wired_pma
+        __props__["wirelessPma"] = wireless_pma
+        return pulumi.runtime.exists_resource(None, 'junipermist:org/setting:Setting', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allowMist")
     def allow_mist(self) -> pulumi.Output[_builtins.bool]:

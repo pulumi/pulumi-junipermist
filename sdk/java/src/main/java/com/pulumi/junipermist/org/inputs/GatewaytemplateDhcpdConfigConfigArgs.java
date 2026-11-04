@@ -40,22 +40,20 @@ public final class GatewaytemplateDhcpdConfigConfigArgs extends com.pulumi.resou
     /**
      * If `type`==`local` or `type6`==`local`, DNS search suffixes advertised to DHCP clients
      * 
-     * @deprecated
-     * Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
+     * @deprecated Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
      * 
      */
-    @Deprecated /* Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead */
+    @Deprecated
     @Import(name="dnsSuffixes")
     private @Nullable Output<List<String>> dnsSuffixes;
 
     /**
      * @return If `type`==`local` or `type6`==`local`, DNS search suffixes advertised to DHCP clients
      * 
-     * @deprecated
-     * Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
+     * @deprecated Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
      * 
      */
-    @Deprecated /* Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead */
+    @Deprecated
     public Optional<Output<List<String>>> dnsSuffixes() {
         return Optional.ofNullable(this.dnsSuffixes);
     }
@@ -347,11 +345,10 @@ public final class GatewaytemplateDhcpdConfigConfigArgs extends com.pulumi.resou
          * 
          * @return builder
          * 
-         * @deprecated
-         * Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
+         * @deprecated Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
          * 
          */
-        @Deprecated /* Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead */
+        @Deprecated
         public Builder dnsSuffixes(@Nullable Output<List<String>> dnsSuffixes) {
             $.dnsSuffixes = dnsSuffixes;
             return this;
@@ -362,11 +359,10 @@ public final class GatewaytemplateDhcpdConfigConfigArgs extends com.pulumi.resou
          * 
          * @return builder
          * 
-         * @deprecated
-         * Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
+         * @deprecated Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
          * 
          */
-        @Deprecated /* Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead */
+        @Deprecated
         public Builder dnsSuffixes(List<String> dnsSuffixes) {
             return dnsSuffixes(Output.of(dnsSuffixes));
         }
@@ -376,11 +372,10 @@ public final class GatewaytemplateDhcpdConfigConfigArgs extends com.pulumi.resou
          * 
          * @return builder
          * 
-         * @deprecated
-         * Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
+         * @deprecated Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
          * 
          */
-        @Deprecated /* Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead */
+        @Deprecated
         public Builder dnsSuffixes(String... dnsSuffixes) {
             return dnsSuffixes(List.of(dnsSuffixes));
         }

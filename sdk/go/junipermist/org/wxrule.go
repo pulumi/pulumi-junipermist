@@ -183,6 +183,12 @@ func (WxruleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*wxruleState)(nil)).Elem()
 }
 
+// WxruleExists checks whether an existing Wxrule resource with the given ID exists.
+func WxruleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WxruleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:org/wxrule:Wxrule", id, state, "", opts...)
+}
+
 type wxruleArgs struct {
 	// Allow or block behavior applied by this WxLAN rule
 	Action string `pulumi:"action"`

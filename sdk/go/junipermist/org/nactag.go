@@ -214,6 +214,12 @@ func (NactagState) ElementType() reflect.Type {
 	return reflect.TypeOf((*nactagState)(nil)).Elem()
 }
 
+// NactagExists checks whether an existing Nactag resource with the given ID exists.
+func NactagExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NactagState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:org/nactag:Nactag", id, state, "", opts...)
+}
+
 type nactagArgs struct {
 	// Whether usermac result values can override this NAC tag when the result type is also supported by usermac
 	AllowUsermacOverride *bool `pulumi:"allowUsermacOverride"`

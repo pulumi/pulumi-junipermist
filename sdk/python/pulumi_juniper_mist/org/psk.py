@@ -918,6 +918,50 @@ class Psk(pulumi.CustomResource):
         __props__.__dict__["vlan_name"] = vlan_name
         return Psk(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            expire_time: pulumi.Input[Optional[_builtins.int]] = None,
+            expiry_notification_time: pulumi.Input[Optional[_builtins.int]] = None,
+            mac: pulumi.Input[Optional[_builtins.str]] = None,
+            macs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            max_usage: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            note: pulumi.Input[Optional[_builtins.str]] = None,
+            notify_expiry: pulumi.Input[Optional[_builtins.bool]] = None,
+            notify_on_create_or_edit: pulumi.Input[Optional[_builtins.bool]] = None,
+            old_passphrase: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            passphrase: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None,
+            ssid: pulumi.Input[Optional[_builtins.str]] = None,
+            usage: pulumi.Input[Optional[_builtins.str]] = None,
+            usermac_labels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            vlan_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vlan_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["email"] = email
+        __props__["expireTime"] = expire_time
+        __props__["expiryNotificationTime"] = expiry_notification_time
+        __props__["mac"] = mac
+        __props__["macs"] = macs
+        __props__["maxUsage"] = max_usage
+        __props__["name"] = name
+        __props__["note"] = note
+        __props__["notifyExpiry"] = notify_expiry
+        __props__["notifyOnCreateOrEdit"] = notify_on_create_or_edit
+        __props__["oldPassphrase"] = old_passphrase
+        __props__["orgId"] = org_id
+        __props__["passphrase"] = passphrase
+        __props__["role"] = role
+        __props__["ssid"] = ssid
+        __props__["usage"] = usage
+        __props__["usermacLabels"] = usermac_labels
+        __props__["vlanId"] = vlan_id
+        __props__["vlanName"] = vlan_name
+        return pulumi.runtime.exists_resource(None, 'junipermist:org/psk:Psk', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def email(self) -> pulumi.Output[Optional[_builtins.str]]:

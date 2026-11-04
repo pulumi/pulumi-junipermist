@@ -814,6 +814,48 @@ class Mxcluster(pulumi.CustomResource):
         __props__.__dict__["tunterm_monitorings"] = tunterm_monitorings
         return Mxcluster(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            mist_das: pulumi.Input[Optional[Union['MxclusterMistDasArgs', 'MxclusterMistDasArgsDict', 'outputs.MxclusterMistDas']]] = None,
+            mist_nac: pulumi.Input[Optional[Union['MxclusterMistNacArgs', 'MxclusterMistNacArgsDict', 'outputs.MxclusterMistNac']]] = None,
+            mist_nacedge: pulumi.Input[Optional[Union['MxclusterMistNacedgeArgs', 'MxclusterMistNacedgeArgsDict', 'outputs.MxclusterMistNacedge']]] = None,
+            mxedge_mgmt: pulumi.Input[Optional[Union['MxclusterMxedgeMgmtArgs', 'MxclusterMxedgeMgmtArgsDict', 'outputs.MxclusterMxedgeMgmt']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy: pulumi.Input[Optional[Union['MxclusterProxyArgs', 'MxclusterProxyArgsDict', 'outputs.MxclusterProxy']]] = None,
+            radsec: pulumi.Input[Optional[Union['MxclusterRadsecArgs', 'MxclusterRadsecArgsDict', 'outputs.MxclusterRadsec']]] = None,
+            radsec_tls: pulumi.Input[Optional[Union['MxclusterRadsecTlsArgs', 'MxclusterRadsecTlsArgsDict', 'outputs.MxclusterRadsecTls']]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tunterm_ap_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tunterm_dhcpd_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxclusterTuntermDhcpdConfigArgs', 'MxclusterTuntermDhcpdConfigArgsDict', 'outputs.MxclusterTuntermDhcpdConfig']]]]] = None,
+            tunterm_extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxclusterTuntermExtraRoutesArgs', 'MxclusterTuntermExtraRoutesArgsDict', 'outputs.MxclusterTuntermExtraRoutes']]]]] = None,
+            tunterm_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tunterm_hosts_orders: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            tunterm_hosts_selection: pulumi.Input[Optional[_builtins.str]] = None,
+            tunterm_monitoring_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            tunterm_monitorings: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['MxclusterTuntermMonitoringArgs', 'MxclusterTuntermMonitoringArgsDict', 'outputs.MxclusterTuntermMonitoring']]]]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["mistDas"] = mist_das
+        __props__["mistNac"] = mist_nac
+        __props__["mistNacedge"] = mist_nacedge
+        __props__["mxedgeMgmt"] = mxedge_mgmt
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["proxy"] = proxy
+        __props__["radsec"] = radsec
+        __props__["radsecTls"] = radsec_tls
+        __props__["siteId"] = site_id
+        __props__["tuntermApSubnets"] = tunterm_ap_subnets
+        __props__["tuntermDhcpdConfig"] = tunterm_dhcpd_config
+        __props__["tuntermExtraRoutes"] = tunterm_extra_routes
+        __props__["tuntermHosts"] = tunterm_hosts
+        __props__["tuntermHostsOrders"] = tunterm_hosts_orders
+        __props__["tuntermHostsSelection"] = tunterm_hosts_selection
+        __props__["tuntermMonitoringDisabled"] = tunterm_monitoring_disabled
+        __props__["tuntermMonitorings"] = tunterm_monitorings
+        return pulumi.runtime.exists_resource(None, 'junipermist:org/mxcluster:Mxcluster', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="mistDas")
     def mist_das(self) -> pulumi.Output[Optional['outputs.MxclusterMistDas']]:

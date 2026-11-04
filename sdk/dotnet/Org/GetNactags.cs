@@ -16,7 +16,6 @@ namespace Pulumi.JuniperMist.Org
         /// 
         /// The NAC Tags can be used in the NAC Rules to define the matching criteria or the returned RADIUS Attributes
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -45,7 +44,6 @@ namespace Pulumi.JuniperMist.Org
         /// 
         /// The NAC Tags can be used in the NAC Rules to define the matching criteria or the returned RADIUS Attributes
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -73,7 +71,6 @@ namespace Pulumi.JuniperMist.Org
         /// This data source provides the list of NAC Tags (Auth Policy Labels).
         /// 
         /// The NAC Tags can be used in the NAC Rules to define the matching criteria or the returned RADIUS Attributes
-        /// 
         /// 
         /// ## Example Usage
         /// 

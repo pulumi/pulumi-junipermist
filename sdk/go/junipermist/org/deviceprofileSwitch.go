@@ -304,6 +304,12 @@ func (DeviceprofileSwitchState) ElementType() reflect.Type {
 	return reflect.TypeOf((*deviceprofileSwitchState)(nil)).Elem()
 }
 
+// DeviceprofileSwitchExists checks whether an existing DeviceprofileSwitch resource with the given ID exists.
+func DeviceprofileSwitchExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DeviceprofileSwitchState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:org/deviceprofileSwitch:DeviceprofileSwitch", id, state, "", opts...)
+}
+
 type deviceprofileSwitchArgs struct {
 	// ACL policy defaults provided by this switch profile
 	AclPolicies []DeviceprofileSwitchAclPolicy `pulumi:"aclPolicies"`

@@ -19,7 +19,6 @@ namespace Pulumi.JuniperMist
         /// * `junipermist.site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`)
         /// * `junipermist.org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -46,7 +45,6 @@ namespace Pulumi.JuniperMist
         /// * `junipermist.site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`)
         /// * `junipermist.org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -72,7 +70,6 @@ namespace Pulumi.JuniperMist
         /// * `junipermist.org.Service` resource
         /// * `junipermist.site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`)
         /// * `junipermist.org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
-        /// 
         /// 
         /// ## Example Usage
         /// 

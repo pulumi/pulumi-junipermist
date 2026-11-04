@@ -16,7 +16,6 @@ namespace Pulumi.JuniperMist.Org
         /// 
         /// A NAC Rule defines a list of criteria (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -43,7 +42,6 @@ namespace Pulumi.JuniperMist.Org
         /// 
         /// A NAC Rule defines a list of criteria (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -69,7 +67,6 @@ namespace Pulumi.JuniperMist.Org
         /// This data source provides the list of NAC Rules (Auth Policies).
         /// 
         /// A NAC Rule defines a list of criteria (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
-        /// 
         /// 
         /// ## Example Usage
         /// 

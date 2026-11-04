@@ -823,6 +823,46 @@ class Sso(pulumi.CustomResource):
         __props__.__dict__["role_attr_from"] = role_attr_from
         return Sso(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            custom_logout_url: pulumi.Input[Optional[_builtins.str]] = None,
+            default_role: pulumi.Input[Optional[_builtins.str]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            idp_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            idp_sign_algo: pulumi.Input[Optional[_builtins.str]] = None,
+            idp_sso_url: pulumi.Input[Optional[_builtins.str]] = None,
+            ignore_unmatched_roles: pulumi.Input[Optional[_builtins.bool]] = None,
+            issuer: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            nameid_format: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth_provider_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            openroaming_ssids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            openroaming_wba_client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            openroaming_wba_client_key: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            role_attr_extraction: pulumi.Input[Optional[_builtins.str]] = None,
+            role_attr_from: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["customLogoutUrl"] = custom_logout_url
+        __props__["defaultRole"] = default_role
+        __props__["domain"] = domain
+        __props__["idpCert"] = idp_cert
+        __props__["idpSignAlgo"] = idp_sign_algo
+        __props__["idpSsoUrl"] = idp_sso_url
+        __props__["ignoreUnmatchedRoles"] = ignore_unmatched_roles
+        __props__["issuer"] = issuer
+        __props__["name"] = name
+        __props__["nameidFormat"] = nameid_format
+        __props__["oauthProviderDomain"] = oauth_provider_domain
+        __props__["openroamingSsids"] = openroaming_ssids
+        __props__["openroamingWbaClientCert"] = openroaming_wba_client_cert
+        __props__["openroamingWbaClientKey"] = openroaming_wba_client_key
+        __props__["orgId"] = org_id
+        __props__["roleAttrExtraction"] = role_attr_extraction
+        __props__["roleAttrFrom"] = role_attr_from
+        return pulumi.runtime.exists_resource(None, 'junipermist:org/sso:Sso', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="customLogoutUrl")
     def custom_logout_url(self) -> pulumi.Output[Optional[_builtins.str]]:

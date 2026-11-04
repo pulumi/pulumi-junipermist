@@ -421,6 +421,12 @@ func (SwitchState) ElementType() reflect.Type {
 	return reflect.TypeOf((*switchState)(nil)).Elem()
 }
 
+// SwitchExists checks whether an existing Switch resource with the given ID exists.
+func SwitchExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SwitchState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:device/switch:Switch", id, state, "", opts...)
+}
+
 type switchArgs struct {
 	// ACL policies applied to traffic handled by this switch
 	AclPolicies []SwitchAclPolicy `pulumi:"aclPolicies"`

@@ -14,7 +14,6 @@ namespace Pulumi.JuniperMist.Org
         /// <summary>
         /// This data source provides the list of Devices in the Org inventory.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -46,7 +45,6 @@ namespace Pulumi.JuniperMist.Org
         /// <summary>
         /// This data source provides the list of Devices in the Org inventory.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -77,7 +75,6 @@ namespace Pulumi.JuniperMist.Org
 
         /// <summary>
         /// This data source provides the list of Devices in the Org inventory.
-        /// 
         /// 
         /// ## Example Usage
         /// 

@@ -199,6 +199,12 @@ func (MxtunnelState) ElementType() reflect.Type {
 	return reflect.TypeOf((*mxtunnelState)(nil)).Elem()
 }
 
+// MxtunnelExists checks whether an existing Mxtunnel resource with the given ID exists.
+func MxtunnelExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MxtunnelState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:org/mxtunnel:Mxtunnel", id, state, "", opts...)
+}
+
 type mxtunnelArgs struct {
 	// IDs of anchor Mist Tunnels used for edge-to-edge tunnel formation
 	AnchorMxtunnelIds []string `pulumi:"anchorMxtunnelIds"`

@@ -34,7 +34,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputMap<Inputs.WlanBonjourServicesGetArgs>? _services;
 
         /// <summary>
-        /// What services are allowed. 
+        /// What services are allowed.
         /// Property key is the service name
         /// </summary>
         public InputMap<Inputs.WlanBonjourServicesGetArgs> Services

@@ -26,11 +26,10 @@ public final class GatewayDhcpdConfigConfig {
     /**
      * @return If `type`==`local` or `type6`==`local`, DNS search suffixes advertised to DHCP clients
      * 
-     * @deprecated
-     * Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
+     * @deprecated Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
      * 
      */
-    @Deprecated /* Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead */
+    @Deprecated
     private @Nullable List<String> dnsSuffixes;
     /**
      * @return If `type`==`local` or `type6`==`local`, fixed client bindings for local DHCP service
@@ -115,11 +114,10 @@ public final class GatewayDhcpdConfigConfig {
     /**
      * @return If `type`==`local` or `type6`==`local`, DNS search suffixes advertised to DHCP clients
      * 
-     * @deprecated
-     * Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
+     * @deprecated Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
      * 
      */
-    @Deprecated /* Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead */
+    @Deprecated
     public List<String> dnsSuffixes() {
         return this.dnsSuffixes == null ? List.of() : this.dnsSuffixes;
     }

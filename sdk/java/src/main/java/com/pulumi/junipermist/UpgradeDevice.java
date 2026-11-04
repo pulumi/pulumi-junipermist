@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * The resource will send the upgrade command to Mist, which will take care of deploying the new firmware version to the device, and reboot it if required.
  * 
- * The time required to upgrade a device depends on the type of device and its hardware. By default, the resource will track the upgrade process and only return the result once the device is upgraded and rebooted (unless `reboot`==`false` or `rebootAt` is set).\
+ * The time required to upgrade a device depends on the type of device and its hardware. By default, the resource will track the upgrade process and only return the result once the device is upgraded and rebooted (unless `reboot`==`false` or `rebootAt` is set).&#92;
  * If required it is possible to run the upgrade in async mode (attribute `sync`=`false`). In this case, the resource will only trigger the upgrade and return the Mist response, but will not track the upgrade progress.
  * 
  * The list of available firmware versions can be retrieved with the `junipermist.device.getVersions` data source.

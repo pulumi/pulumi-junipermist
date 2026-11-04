@@ -216,6 +216,18 @@ class NacPortalImage(pulumi.CustomResource):
         __props__.__dict__["org_id"] = org_id
         return NacPortalImage(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            file: pulumi.Input[Optional[_builtins.str]] = None,
+            nacportal_id: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["file"] = file
+        __props__["nacportalId"] = nacportal_id
+        __props__["orgId"] = org_id
+        return pulumi.runtime.exists_resource(None, 'junipermist:org/nacPortalImage:NacPortalImage', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def file(self) -> pulumi.Output[_builtins.str]:

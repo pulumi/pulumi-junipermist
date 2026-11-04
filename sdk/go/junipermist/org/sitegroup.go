@@ -111,6 +111,12 @@ func (SitegroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sitegroupState)(nil)).Elem()
 }
 
+// SitegroupExists checks whether an existing Sitegroup resource with the given ID exists.
+func SitegroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SitegroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:org/sitegroup:Sitegroup", id, state, "", opts...)
+}
+
 type sitegroupArgs struct {
 	// Display name of the site group
 	Name *string `pulumi:"name"`

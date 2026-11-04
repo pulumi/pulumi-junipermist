@@ -21,7 +21,6 @@ namespace Pulumi.JuniperMist
         /// * Mfg
         /// * OS Type
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -50,7 +49,6 @@ namespace Pulumi.JuniperMist
         /// * Mfg
         /// * OS Type
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -78,7 +76,6 @@ namespace Pulumi.JuniperMist
         /// * Model
         /// * Mfg
         /// * OS Type
-        /// 
         /// 
         /// ## Example Usage
         /// 

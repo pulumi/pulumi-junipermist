@@ -386,6 +386,28 @@ class Base(pulumi.CustomResource):
         __props__.__dict__["session_expiry"] = session_expiry
         return Base(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alarmtemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+            allow_mist: pulumi.Input[Optional[_builtins.bool]] = None,
+            msp_id: pulumi.Input[Optional[_builtins.str]] = None,
+            msp_logo_url: pulumi.Input[Optional[_builtins.str]] = None,
+            msp_name: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            orggroup_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            session_expiry: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["alarmtemplateId"] = alarmtemplate_id
+        __props__["allowMist"] = allow_mist
+        __props__["mspId"] = msp_id
+        __props__["mspLogoUrl"] = msp_logo_url
+        __props__["mspName"] = msp_name
+        __props__["name"] = name
+        __props__["orggroupIds"] = orggroup_ids
+        __props__["sessionExpiry"] = session_expiry
+        return pulumi.runtime.exists_resource(None, 'junipermist:org/base:base', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="alarmtemplateId")
     def alarmtemplate_id(self) -> pulumi.Output[Optional[_builtins.str]]:

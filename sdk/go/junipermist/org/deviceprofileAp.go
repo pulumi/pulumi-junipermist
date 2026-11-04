@@ -266,6 +266,12 @@ func (DeviceprofileApState) ElementType() reflect.Type {
 	return reflect.TypeOf((*deviceprofileApState)(nil)).Elem()
 }
 
+// DeviceprofileApExists checks whether an existing DeviceprofileAp resource with the given ID exists.
+func DeviceprofileApExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DeviceprofileApState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:org/deviceprofileAp:DeviceprofileAp", id, state, "", opts...)
+}
+
 type deviceprofileApArgs struct {
 	// Location integration defaults for AeroScout in this AP profile
 	Aeroscout *DeviceprofileApAeroscout `pulumi:"aeroscout"`

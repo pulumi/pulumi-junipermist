@@ -179,6 +179,12 @@ func (MxclusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*mxclusterState)(nil)).Elem()
 }
 
+// MxclusterExists checks whether an existing Mxcluster resource with the given ID exists.
+func MxclusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MxclusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:org/mxcluster:Mxcluster", id, state, "", opts...)
+}
+
 type mxclusterArgs struct {
 	// Dynamic authorization service settings for the cluster
 	MistDas *MxclusterMistDas `pulumi:"mistDas"`

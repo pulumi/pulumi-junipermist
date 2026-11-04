@@ -16,7 +16,6 @@ namespace Pulumi.JuniperMist.Site
         /// 
         /// The WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -43,7 +42,6 @@ namespace Pulumi.JuniperMist.Site
         /// 
         /// The WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -69,7 +67,6 @@ namespace Pulumi.JuniperMist.Site
         /// This data source provides the list of Site Wlans.
         /// 
         /// The WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)
-        /// 
         /// 
         /// ## Example Usage
         /// 

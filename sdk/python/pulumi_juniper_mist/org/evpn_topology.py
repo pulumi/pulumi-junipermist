@@ -437,6 +437,22 @@ class EvpnTopology(pulumi.CustomResource):
         __props__.__dict__["switches"] = switches
         return EvpnTopology(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            evpn_options: pulumi.Input[Optional[Union['EvpnTopologyEvpnOptionsArgs', 'EvpnTopologyEvpnOptionsArgsDict', 'outputs.EvpnTopologyEvpnOptions']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            pod_names: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            switches: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['EvpnTopologySwitchesArgs', 'EvpnTopologySwitchesArgsDict', 'outputs.EvpnTopologySwitches']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["evpnOptions"] = evpn_options
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["podNames"] = pod_names
+        __props__["switches"] = switches
+        return pulumi.runtime.exists_resource(None, 'junipermist:org/evpnTopology:EvpnTopology', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="evpnOptions")
     def evpn_options(self) -> pulumi.Output[Optional['outputs.EvpnTopologyEvpnOptions']]:

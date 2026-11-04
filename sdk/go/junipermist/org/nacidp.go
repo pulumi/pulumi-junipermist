@@ -352,6 +352,12 @@ func (NacidpState) ElementType() reflect.Type {
 	return reflect.TypeOf((*nacidpState)(nil)).Elem()
 }
 
+// NacidpExists checks whether an existing Nacidp resource with the given ID exists.
+func NacidpExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NacidpState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:org/nacidp:Nacidp", id, state, "", opts...)
+}
+
 type nacidpArgs struct {
 	// Required if `ldapType`==`custom`, LDAP filter that will identify the type of group
 	GroupFilter *string `pulumi:"groupFilter"`

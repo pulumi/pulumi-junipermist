@@ -34,7 +34,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly int MinRssi;
         /// <summary>
-        /// Data Rates template to apply. enum: 
+        /// Data Rates template to apply. enum:
         ///   * `no-legacy`: no 11b
         ///   * `Compatible`: all, like before, default setting that Broadcom/Atheros used
         ///   * `legacy-only`: disable 802.11n and 802.11ac

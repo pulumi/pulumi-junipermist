@@ -199,22 +199,20 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Whether the device is managed by Mist. Deprecated in favour of mist_configured.
      * 
-     * @deprecated
-     * This attribute is being deprecated, please use `mistConfigured` instead
+     * @deprecated This attribute is being deprecated, please use `mistConfigured` instead
      * 
      */
-    @Deprecated /* This attribute is being deprecated, please use `mistConfigured` instead */
+    @Deprecated
     @Import(name="managed")
     private @Nullable Output<Boolean> managed;
 
     /**
      * @return Whether the device is managed by Mist. Deprecated in favour of mist_configured.
      * 
-     * @deprecated
-     * This attribute is being deprecated, please use `mistConfigured` instead
+     * @deprecated This attribute is being deprecated, please use `mistConfigured` instead
      * 
      */
-    @Deprecated /* This attribute is being deprecated, please use `mistConfigured` instead */
+    @Deprecated
     public Optional<Output<Boolean>> managed() {
         return Optional.ofNullable(this.managed);
     }
@@ -908,11 +906,10 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This attribute is being deprecated, please use `mistConfigured` instead
+         * @deprecated This attribute is being deprecated, please use `mistConfigured` instead
          * 
          */
-        @Deprecated /* This attribute is being deprecated, please use `mistConfigured` instead */
+        @Deprecated
         public Builder managed(@Nullable Output<Boolean> managed) {
             $.managed = managed;
             return this;
@@ -923,11 +920,10 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This attribute is being deprecated, please use `mistConfigured` instead
+         * @deprecated This attribute is being deprecated, please use `mistConfigured` instead
          * 
          */
-        @Deprecated /* This attribute is being deprecated, please use `mistConfigured` instead */
+        @Deprecated
         public Builder managed(Boolean managed) {
             return managed(Output.of(managed));
         }

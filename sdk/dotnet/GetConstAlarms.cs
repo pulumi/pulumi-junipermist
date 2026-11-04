@@ -16,7 +16,6 @@ namespace Pulumi.JuniperMist
         /// 
         /// The alarm `Key` can be used to configure the `mist_org_alarmtemplate.rules`.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -40,7 +39,6 @@ namespace Pulumi.JuniperMist
         /// 
         /// The alarm `Key` can be used to configure the `mist_org_alarmtemplate.rules`.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -63,7 +61,6 @@ namespace Pulumi.JuniperMist
         /// This data source provides the list of available Alarms.
         /// 
         /// The alarm `Key` can be used to configure the `mist_org_alarmtemplate.rules`.
-        /// 
         /// 
         /// ## Example Usage
         /// 

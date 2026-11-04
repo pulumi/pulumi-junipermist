@@ -149,6 +149,12 @@ func (ApitokenState) ElementType() reflect.Type {
 	return reflect.TypeOf((*apitokenState)(nil)).Elem()
 }
 
+// ApitokenExists checks whether an existing Apitoken resource with the given ID exists.
+func ApitokenExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApitokenState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:org/apitoken:Apitoken", id, state, "", opts...)
+}
+
 type apitokenArgs struct {
 	// Display name of the organization API token
 	Name *string `pulumi:"name"`

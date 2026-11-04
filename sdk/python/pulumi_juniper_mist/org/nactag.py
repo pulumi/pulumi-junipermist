@@ -806,6 +806,44 @@ class Nactag(pulumi.CustomResource):
         __props__.__dict__["vlan"] = vlan
         return Nactag(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allow_usermac_override: pulumi.Input[Optional[_builtins.bool]] = None,
+            egress_vlan_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            gbp_tag: pulumi.Input[Optional[_builtins.str]] = None,
+            match: pulumi.Input[Optional[_builtins.str]] = None,
+            match_all: pulumi.Input[Optional[_builtins.bool]] = None,
+            nacportal_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            radius_attrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            radius_group: pulumi.Input[Optional[_builtins.str]] = None,
+            radius_vendor_attrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            session_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            username_attr: pulumi.Input[Optional[_builtins.str]] = None,
+            values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            vlan: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allowUsermacOverride"] = allow_usermac_override
+        __props__["egressVlanNames"] = egress_vlan_names
+        __props__["gbpTag"] = gbp_tag
+        __props__["match"] = match
+        __props__["matchAll"] = match_all
+        __props__["nacportalId"] = nacportal_id
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["radiusAttrs"] = radius_attrs
+        __props__["radiusGroup"] = radius_group
+        __props__["radiusVendorAttrs"] = radius_vendor_attrs
+        __props__["sessionTimeout"] = session_timeout
+        __props__["type"] = type
+        __props__["usernameAttr"] = username_attr
+        __props__["values"] = values
+        __props__["vlan"] = vlan
+        return pulumi.runtime.exists_resource(None, 'junipermist:org/nactag:Nactag', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allowUsermacOverride")
     def allow_usermac_override(self) -> pulumi.Output[Optional[_builtins.bool]]:

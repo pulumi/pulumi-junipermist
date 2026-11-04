@@ -46,7 +46,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         ///   * `Type`==`RadiusGroup`
         ///   * `Type`==`ArubaUserRole`
         ///   * `Type`==`StaticGbp`
-        /// if from matching radius_group
+        ///     if from matching radius_group
         /// </summary>
         public readonly string? RadiusGroup;
         /// <summary>

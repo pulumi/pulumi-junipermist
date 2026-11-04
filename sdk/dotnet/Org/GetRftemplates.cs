@@ -16,7 +16,6 @@ namespace Pulumi.JuniperMist.Org
         /// 
         /// The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -43,7 +42,6 @@ namespace Pulumi.JuniperMist.Org
         /// 
         /// The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -69,7 +67,6 @@ namespace Pulumi.JuniperMist.Org
         /// This data source provides the list of RF Templates.
         /// 
         /// The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
-        /// 
         /// 
         /// ## Example Usage
         /// 

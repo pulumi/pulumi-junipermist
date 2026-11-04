@@ -158,6 +158,12 @@ func (NacEndpointState) ElementType() reflect.Type {
 	return reflect.TypeOf((*nacEndpointState)(nil)).Elem()
 }
 
+// NacEndpointExists checks whether an existing NacEndpoint resource with the given ID exists.
+func NacEndpointExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NacEndpointState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:org/nacEndpoint:NacEndpoint", id, state, "", opts...)
+}
+
 type nacEndpointArgs struct {
 	// Applied labels for this user MAC entry
 	Labels []string `pulumi:"labels"`

@@ -1279,6 +1279,64 @@ class Networktemplate(pulumi.CustomResource):
         __props__.__dict__["vrf_instances"] = vrf_instances
         return Networktemplate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acl_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworktemplateAclPolicyArgs', 'NetworktemplateAclPolicyArgsDict', 'outputs.NetworktemplateAclPolicy']]]]] = None,
+            acl_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworktemplateAclTagsArgs', 'NetworktemplateAclTagsArgsDict', 'outputs.NetworktemplateAclTags']]]]] = None,
+            additional_config_cmds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            auto_upgrade_linecard: pulumi.Input[Optional[_builtins.bool]] = None,
+            dhcp_snooping: pulumi.Input[Optional[Union['NetworktemplateDhcpSnoopingArgs', 'NetworktemplateDhcpSnoopingArgsDict', 'outputs.NetworktemplateDhcpSnooping']]] = None,
+            disabled_system_defined_port_usages: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            dns_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            dns_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworktemplateExtraRoutesArgs', 'NetworktemplateExtraRoutesArgsDict', 'outputs.NetworktemplateExtraRoutes']]]]] = None,
+            extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworktemplateExtraRoutes6Args', 'NetworktemplateExtraRoutes6ArgsDict', 'outputs.NetworktemplateExtraRoutes6']]]]] = None,
+            mist_nac: pulumi.Input[Optional[Union['NetworktemplateMistNacArgs', 'NetworktemplateMistNacArgsDict', 'outputs.NetworktemplateMistNac']]] = None,
+            networks: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworktemplateNetworksArgs', 'NetworktemplateNetworksArgsDict', 'outputs.NetworktemplateNetworks']]]]] = None,
+            ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ospf_areas: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworktemplateOspfAreasArgs', 'NetworktemplateOspfAreasArgsDict', 'outputs.NetworktemplateOspfAreas']]]]] = None,
+            port_mirroring: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworktemplatePortMirroringArgs', 'NetworktemplatePortMirroringArgsDict', 'outputs.NetworktemplatePortMirroring']]]]] = None,
+            port_usages: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworktemplatePortUsagesArgs', 'NetworktemplatePortUsagesArgsDict', 'outputs.NetworktemplatePortUsages']]]]] = None,
+            radius_config: pulumi.Input[Optional[Union['NetworktemplateRadiusConfigArgs', 'NetworktemplateRadiusConfigArgsDict', 'outputs.NetworktemplateRadiusConfig']]] = None,
+            remote_syslog: pulumi.Input[Optional[Union['NetworktemplateRemoteSyslogArgs', 'NetworktemplateRemoteSyslogArgsDict', 'outputs.NetworktemplateRemoteSyslog']]] = None,
+            routing_policies: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworktemplateRoutingPoliciesArgs', 'NetworktemplateRoutingPoliciesArgsDict', 'outputs.NetworktemplateRoutingPolicies']]]]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            snmp_config: pulumi.Input[Optional[Union['NetworktemplateSnmpConfigArgs', 'NetworktemplateSnmpConfigArgsDict', 'outputs.NetworktemplateSnmpConfig']]] = None,
+            switch_matching: pulumi.Input[Optional[Union['NetworktemplateSwitchMatchingArgs', 'NetworktemplateSwitchMatchingArgsDict', 'outputs.NetworktemplateSwitchMatching']]] = None,
+            switch_mgmt: pulumi.Input[Optional[Union['NetworktemplateSwitchMgmtArgs', 'NetworktemplateSwitchMgmtArgsDict', 'outputs.NetworktemplateSwitchMgmt']]] = None,
+            uses_description_from_port_usage: pulumi.Input[Optional[_builtins.bool]] = None,
+            vrf_config: pulumi.Input[Optional[Union['NetworktemplateVrfConfigArgs', 'NetworktemplateVrfConfigArgsDict', 'outputs.NetworktemplateVrfConfig']]] = None,
+            vrf_instances: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworktemplateVrfInstancesArgs', 'NetworktemplateVrfInstancesArgsDict', 'outputs.NetworktemplateVrfInstances']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aclPolicies"] = acl_policies
+        __props__["aclTags"] = acl_tags
+        __props__["additionalConfigCmds"] = additional_config_cmds
+        __props__["autoUpgradeLinecard"] = auto_upgrade_linecard
+        __props__["dhcpSnooping"] = dhcp_snooping
+        __props__["disabledSystemDefinedPortUsages"] = disabled_system_defined_port_usages
+        __props__["dnsServers"] = dns_servers
+        __props__["dnsSuffixes"] = dns_suffixes
+        __props__["extraRoutes"] = extra_routes
+        __props__["extraRoutes6"] = extra_routes6
+        __props__["mistNac"] = mist_nac
+        __props__["networks"] = networks
+        __props__["ntpServers"] = ntp_servers
+        __props__["ospfAreas"] = ospf_areas
+        __props__["portMirroring"] = port_mirroring
+        __props__["portUsages"] = port_usages
+        __props__["radiusConfig"] = radius_config
+        __props__["remoteSyslog"] = remote_syslog
+        __props__["routingPolicies"] = routing_policies
+        __props__["siteId"] = site_id
+        __props__["snmpConfig"] = snmp_config
+        __props__["switchMatching"] = switch_matching
+        __props__["switchMgmt"] = switch_mgmt
+        __props__["usesDescriptionFromPortUsage"] = uses_description_from_port_usage
+        __props__["vrfConfig"] = vrf_config
+        __props__["vrfInstances"] = vrf_instances
+        return pulumi.runtime.exists_resource(None, 'junipermist:site/networktemplate:Networktemplate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aclPolicies")
     def acl_policies(self) -> pulumi.Output[Optional[Sequence['outputs.NetworktemplateAclPolicy']]]:

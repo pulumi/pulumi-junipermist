@@ -459,6 +459,26 @@ class Avprofile(pulumi.CustomResource):
         __props__.__dict__["url_whitelists"] = url_whitelists
         return Avprofile(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            fallback_action: pulumi.Input[Optional[_builtins.str]] = None,
+            max_filesize: pulumi.Input[Optional[_builtins.int]] = None,
+            mime_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            url_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["fallbackAction"] = fallback_action
+        __props__["maxFilesize"] = max_filesize
+        __props__["mimeWhitelists"] = mime_whitelists
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["protocols"] = protocols
+        __props__["urlWhitelists"] = url_whitelists
+        return pulumi.runtime.exists_resource(None, 'junipermist:org/avprofile:Avprofile', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="fallbackAction")
     def fallback_action(self) -> pulumi.Output[Optional[_builtins.str]]:

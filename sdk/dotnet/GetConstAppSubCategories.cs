@@ -16,7 +16,6 @@ namespace Pulumi.JuniperMist
         /// 
         /// This information can be used as `AppSubcategories` in the `junipermist.org.Service` resource
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -40,7 +39,6 @@ namespace Pulumi.JuniperMist
         /// 
         /// This information can be used as `AppSubcategories` in the `junipermist.org.Service` resource
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -63,7 +61,6 @@ namespace Pulumi.JuniperMist
         /// This data source provides the of ConstAppSubCategories.
         /// 
         /// This information can be used as `AppSubcategories` in the `junipermist.org.Service` resource
-        /// 
         /// 
         /// ## Example Usage
         /// 

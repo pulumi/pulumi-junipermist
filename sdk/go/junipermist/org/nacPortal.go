@@ -237,6 +237,12 @@ func (NacPortalState) ElementType() reflect.Type {
 	return reflect.TypeOf((*nacPortalState)(nil)).Elem()
 }
 
+// NacPortalExists checks whether an existing NacPortal resource with the given ID exists.
+func NacPortalExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NacPortalState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:org/nacPortal:NacPortal", id, state, "", opts...)
+}
+
 type nacPortalArgs struct {
 	// If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients. enum: `wireless`, `wireless+wired`.
 	AccessType *string `pulumi:"accessType"`

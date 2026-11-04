@@ -18,8 +18,7 @@ namespace Pulumi.JuniperMist.Org
         /// * the Gateway configuration (`mist_device_gateway.service_policies`)
         /// * the Gateway Templates (`mist_org_gatewaytemplate.service_policies`)
         /// * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies`)
-        /// They can be used to manage common policies between multiples configurations
-        /// 
+        ///   They can be used to manage common policies between multiples configurations
         /// 
         /// ## Example Usage
         /// 
@@ -49,8 +48,7 @@ namespace Pulumi.JuniperMist.Org
         /// * the Gateway configuration (`mist_device_gateway.service_policies`)
         /// * the Gateway Templates (`mist_org_gatewaytemplate.service_policies`)
         /// * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies`)
-        /// They can be used to manage common policies between multiples configurations
-        /// 
+        ///   They can be used to manage common policies between multiples configurations
         /// 
         /// ## Example Usage
         /// 
@@ -80,8 +78,7 @@ namespace Pulumi.JuniperMist.Org
         /// * the Gateway configuration (`mist_device_gateway.service_policies`)
         /// * the Gateway Templates (`mist_org_gatewaytemplate.service_policies`)
         /// * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies`)
-        /// They can be used to manage common policies between multiples configurations
-        /// 
+        ///   They can be used to manage common policies between multiples configurations
         /// 
         /// ## Example Usage
         /// 

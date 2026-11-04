@@ -109,6 +109,12 @@ func (WlanPortalImageState) ElementType() reflect.Type {
 	return reflect.TypeOf((*wlanPortalImageState)(nil)).Elem()
 }
 
+// WlanPortalImageExists checks whether an existing WlanPortalImage resource with the given ID exists.
+func WlanPortalImageExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WlanPortalImageState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:org/wlanPortalImage:WlanPortalImage", id, state, "", opts...)
+}
+
 type wlanPortalImageArgs struct {
 	// path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
 	File  string `pulumi:"file"`

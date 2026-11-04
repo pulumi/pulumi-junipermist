@@ -164,6 +164,12 @@ func (AvprofileState) ElementType() reflect.Type {
 	return reflect.TypeOf((*avprofileState)(nil)).Elem()
 }
 
+// AvprofileExists checks whether an existing Avprofile resource with the given ID exists.
+func AvprofileExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AvprofileState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("junipermist:org/avprofile:Avprofile", id, state, "", opts...)
+}
+
 type avprofileArgs struct {
 	// Action to take when antivirus scanning cannot complete. enum: `block`, `log-and-permit`, `permit`.
 	FallbackAction *string `pulumi:"fallbackAction"`

@@ -18,7 +18,6 @@ namespace Pulumi.JuniperMist.Org
         /// 
         /// HUB profiles are used to create consistent configurations for hub devices and ensure efficient connectivity between hubs and spokes in a network.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -47,7 +46,6 @@ namespace Pulumi.JuniperMist.Org
         /// 
         /// HUB profiles are used to create consistent configurations for hub devices and ensure efficient connectivity between hubs and spokes in a network.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -75,7 +73,6 @@ namespace Pulumi.JuniperMist.Org
         /// A HUB profile is a configuration profile that automates the creation of overlay networks and defines the attributes of a hub device in a network. It includes settings for wan interfaces, lan interfaces, dns servers, traffic steering preferences, application policies, and routing options.
         /// 
         /// HUB profiles are used to create consistent configurations for hub devices and ensure efficient connectivity between hubs and spokes in a network.
-        /// 
         /// 
         /// ## Example Usage
         /// 

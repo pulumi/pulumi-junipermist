@@ -352,6 +352,20 @@ class Idpprofile(pulumi.CustomResource):
         __props__.__dict__["overwrites"] = overwrites
         return Idpprofile(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            base_profile: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            overwrites: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IdpprofileOverwriteArgs', 'IdpprofileOverwriteArgsDict', 'outputs.IdpprofileOverwrite']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["baseProfile"] = base_profile
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["overwrites"] = overwrites
+        return pulumi.runtime.exists_resource(None, 'junipermist:org/idpprofile:Idpprofile', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="baseProfile")
     def base_profile(self) -> pulumi.Output[_builtins.str]:
