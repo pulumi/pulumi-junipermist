@@ -22040,7 +22040,7 @@ export namespace org {
         /**
          * When `type`==`psk`, 8-64 characters, or 64 hex characters
          */
-        psk: string;
+        psk?: string;
         /**
          * Authentication mode used by this WLAN. enum: `eap`, `eap192`, `open`, `psk`, `psk-tkip`, `psk-wpa2-tkip`, `wep`.
          */
@@ -28722,7 +28722,7 @@ export namespace site {
         /**
          * When `type`==`psk`, 8-64 characters, or 64 hex characters
          */
-        psk: string;
+        psk?: string;
         /**
          * Authentication mode used by this WLAN. enum: `eap`, `eap192`, `open`, `psk`, `psk-tkip`, `psk-wpa2-tkip`, `wep`.
          */
