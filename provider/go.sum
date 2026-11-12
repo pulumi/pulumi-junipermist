@@ -524,8 +524,8 @@ github.com/teekennedy/goldmark-markdown v0.3.0 h1:ik9/biVGCwGWFg8dQ3KVm2pQ/wiiG0
 github.com/teekennedy/goldmark-markdown v0.3.0/go.mod h1:kMhDz8La77A9UHvJGsxejd0QUflN9sS+QXCqnhmxmNo=
 github.com/texttheater/golang-levenshtein v1.0.1 h1:+cRNoVrfiwufQPhoMzB6N0Yf/Mqajr6t1lOv8GyGE2U=
 github.com/texttheater/golang-levenshtein v1.0.1/go.mod h1:PYAKrbF5sAiq9wd+H82hs7gNaen0CplQ9uvm6+enD/8=
-github.com/tmunzer/mistapi-go v0.4.109 h1:5+ALJKMU0ZorBUE3yLvScWwj+xtMZ/WyNmAH+qYokXY=
-github.com/tmunzer/mistapi-go v0.4.109/go.mod h1:eG4MxvzT5kPeQzhM5hjrrpcTTMylsOM4m7HgH1nmONY=
+github.com/tmunzer/mistapi-go v0.4.110 h1:y6YTe0wos1qlcgNiHHwqZUc7R7e0uQEtV2UKewMURdQ=
+github.com/tmunzer/mistapi-go v0.4.110/go.mod h1:eG4MxvzT5kPeQzhM5hjrrpcTTMylsOM4m7HgH1nmONY=
 github.com/uber/jaeger-client-go v2.30.0+incompatible h1:D6wyKGCecFaSRUpo8lCVbaOOb6ThwMmTEbhRwtKR97o=
 github.com/uber/jaeger-client-go v2.30.0+incompatible/go.mod h1:WVhlPFC8FDjOFMMWRy2pZqQJSXxYSwNYOkTr/Z6d3Kk=
 github.com/uber/jaeger-lib v2.4.1+incompatible h1:td4jdvLcExb4cBISKIpHuGoVXh+dVKhn2Um6rjCsSsg=

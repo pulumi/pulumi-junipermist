@@ -29154,7 +29154,6 @@
                         "keys",
                         "multiPskOnly",
                         "privateWlan",
-                        "psk",
                         "type"
                     ]
                 }
@@ -40848,7 +40847,6 @@
                         "keys",
                         "multiPskOnly",
                         "privateWlan",
-                        "psk",
                         "type"
                     ]
                 }
